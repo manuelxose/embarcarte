@@ -1,0 +1,26 @@
+{
+	email {$ACME_EMAIL:info@embarcarte.com}
+}
+
+www.embarcarte.com {
+	redir https://embarcarte.com{uri} permanent
+}
+
+embarcarte.com {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		-Server
+	}
+
+	# URLs canónicas sin barra final.
+	@trailing path_regexp trailing ^(.+)/$
+	redir @trailing {re.trailing.1} permanent
+
+	reverse_proxy web:4000
+}
