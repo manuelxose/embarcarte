@@ -5,10 +5,14 @@ import {
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
 import express from 'express';
-import { join } from 'node:path';
-import nodemailer from 'nodemailer';
+import { readdirSync, statSync } from 'node:fs';
+import { join, relative, sep } from 'node:path';
+import { api } from './server/api';
+import { ensureAdmin, purgeExpiredSessions } from './server/auth';
+import { UPLOADS_DIR, db } from './server/db';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
+const SITE_URL = process.env['SITE_URL'] ?? 'https://embarcarte.com';
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
@@ -21,73 +25,47 @@ app.get('/healthz', (_req, res) => {
   res.json({ ok: true });
 });
 
-const mailer = process.env['SMTP_HOST']
-  ? nodemailer.createTransport({
-      host: process.env['SMTP_HOST'],
-      port: Number(process.env['SMTP_PORT'] ?? 587),
-      secure: process.env['SMTP_SECURE'] === 'true',
-      auth: process.env['SMTP_USER']
-        ? { user: process.env['SMTP_USER'], pass: process.env['SMTP_PASS'] }
-        : undefined,
-    })
-  : null;
+app.use('/api', api);
+app.use('/uploads', express.static(UPLOADS_DIR, { maxAge: '30d', index: false, redirect: false }));
 
-const recentByIp = new Map<string, number[]>();
-const RATE_WINDOW_MS = 10 * 60 * 1000;
-const RATE_MAX = 5;
-
-const isRateLimited = (ip: string): boolean => {
-  const now = Date.now();
-  const hits = (recentByIp.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
-  hits.push(now);
-  recentByIp.set(ip, hits);
-  return hits.length > RATE_MAX;
-};
-
-const text = (value: unknown, max: number): string =>
-  typeof value === 'string' ? value.trim().slice(0, max) : '';
-
-app.post('/api/contact', express.json({ limit: '20kb' }), async (req, res) => {
-  const body = req.body ?? {};
-  // Campo trampa: los bots lo rellenan, las personas no lo ven.
-  if (text(body.website, 200)) {
-    res.status(204).end();
-    return;
-  }
-  if (isRateLimited(req.ip ?? 'unknown')) {
-    res.status(429).json({ error: 'too_many_requests' });
-    return;
-  }
-
-  const name = text(body.name, 120);
-  const email = text(body.email, 200);
-  const phone = text(body.phone, 40);
-  const product = text(body.product, 60);
-  const message = text(body.message, 5000);
-  if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !message || body.consent !== true) {
-    res.status(400).json({ error: 'invalid' });
-    return;
-  }
-
-  const summary = `Nombre: ${name}\nEmail: ${email}\nTeléfono: ${phone || '-'}\nInterés: ${product || '-'}\n\n${message}`;
-  if (!mailer) {
-    console.warn('[contact] SMTP no configurado; mensaje recibido:\n' + summary);
-    res.status(202).json({ ok: true });
-    return;
-  }
+/** Páginas prerenderizadas (una carpeta con index.html por ruta) + productos activos de la tienda. */
+const prerenderedPaths = (() => {
+  const paths: string[] = [];
+  const walk = (dir: string) => {
+    for (const entry of readdirSync(dir)) {
+      const full = join(dir, entry);
+      if (statSync(full).isDirectory()) walk(full);
+      else if (entry === 'index.html') paths.push('/' + relative(browserDistFolder, dir).split(sep).join('/'));
+    }
+  };
   try {
-    await mailer.sendMail({
-      from: process.env['CONTACT_FROM'] ?? process.env['SMTP_USER'],
-      to: process.env['CONTACT_TO'] ?? 'info@embarcarte.com',
-      replyTo: email,
-      subject: `[embarcarte.com] Consulta de ${name}`,
-      text: summary,
-    });
-    res.status(202).json({ ok: true });
-  } catch (err) {
-    console.error('[contact] error enviando email', err);
-    res.status(502).json({ error: 'mail_failed' });
+    walk(browserDistFolder);
+  } catch {
+    // En el servidor de desarrollo no existe dist/browser.
   }
+  return paths.map((p) => (p === '/' ? '/' : p.replace(/\/$/, '')));
+})();
+
+app.get('/sitemap.xml', (_req, res) => {
+  const products = db.prepare('SELECT slug, updated_at FROM products WHERE active = 1').all() as {
+    slug: string;
+    updated_at: string;
+  }[];
+  const today = new Date().toISOString().slice(0, 10);
+  const urls = [
+    ...prerenderedPaths.map((path) => ({ path, lastmod: today })),
+    { path: '/tienda', lastmod: today },
+    ...products.map((p) => ({ path: `/tienda/${p.slug}`, lastmod: p.updated_at.slice(0, 10) })),
+  ];
+  res.type('application/xml').setHeader('Cache-Control', 'public, max-age=3600');
+  res.send(
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+      urls
+        .sort((a, b) => a.path.localeCompare(b.path))
+        .map((u) => `  <url><loc>${SITE_URL}${u.path === '/' ? '/' : u.path}</loc><lastmod>${u.lastmod}</lastmod></url>`)
+        .join('\n') +
+      '\n</urlset>\n',
+  );
 });
 
 /**
@@ -100,7 +78,7 @@ app.use(
     redirect: false,
     setHeaders: (res, path) => {
       // Los ficheros con hash pueden cachearse para siempre; el resto, poco tiempo.
-      if (!/\.[0-9A-Z]{8,}\.(js|css)$/i.test(path)) {
+      if (!/-[0-9A-Z]{8,}\.(js|css|woff2?)$/i.test(path)) {
         res.setHeader('Cache-Control', 'public, max-age=3600');
       }
     },
@@ -124,6 +102,10 @@ app.use((req, res, next) => {
  * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
 if (isMainModule(import.meta.url) || process.env['pm_id']) {
+  await ensureAdmin();
+  purgeExpiredSessions();
+  setInterval(purgeExpiredSessions, 6 * 3_600_000).unref();
+
   const port = process.env['PORT'] || 4000;
   app.listen(port, (error) => {
     if (error) {

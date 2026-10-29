@@ -6,15 +6,15 @@ import { SeoService } from '../core/seo.service';
   selector: 'app-not-found',
   imports: [RouterLink],
   template: `
-    <section class="page-hero">
-      <div class="container narrow">
+    <section class="page-hero" style="min-height: 60vh">
+      <div class="wrap">
         <p class="eyebrow">Error 404</p>
-        <h1>Esta página se ha ido a la deriva</h1>
-        <p class="lead">No encontramos lo que buscas. Vuelve a puerto seguro:</p>
-        <p class="actions">
-          <a routerLink="/" class="btn">Ir al inicio</a>
-          <a routerLink="/productos" class="btn btn-ghost">Ver productos</a>
-        </p>
+        <h1 class="display h-xl">Esta página<br /><em>se ha ido a la deriva.</em></h1>
+        <p class="lead">No encontramos lo que buscas. Vuelve a puerto seguro.</p>
+        <div class="hero-actions" style="margin-top: 30px">
+          <a routerLink="/" class="button button-dark">Ir al inicio <span>↗</span></a>
+          <a routerLink="/tienda" class="text-link">Ver la tienda <span>→</span></a>
+        </div>
       </div>
     </section>
   `,

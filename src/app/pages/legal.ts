@@ -3,22 +3,23 @@ import { ActivatedRoute } from '@angular/router';
 import { SeoService } from '../core/seo.service';
 import { SITE } from '../core/site.config';
 
-type LegalPage = 'aviso-legal' | 'privacidad' | 'cookies';
+type LegalPage = 'aviso-legal' | 'privacidad' | 'cookies' | 'condiciones-de-venta';
 
 const TITLES: Record<LegalPage, string> = {
   'aviso-legal': 'Aviso legal',
   privacidad: 'Política de privacidad',
   cookies: 'Política de cookies',
+  'condiciones-de-venta': 'Condiciones de venta',
 };
 
 @Component({
   selector: 'app-legal',
   template: `
     <section class="page-hero">
-      <div class="container narrow"><h1>{{ title }}</h1></div>
+      <div class="wrap"><p class="eyebrow">Legal</p><h1 class="display h-lg">{{ title }}</h1></div>
     </section>
-    <section class="section">
-      <div class="container narrow prose">
+    <section class="section-pad">
+      <div class="wrap-narrow prose">
         @switch (page) {
           @case ('aviso-legal') {
             <p>
@@ -58,6 +59,11 @@ const TITLES: Record<LegalPage, string> = {
               Los datos que nos envías a través del formulario de contacto (nombre, email, teléfono y mensaje) se usan
               exclusivamente para responder a tu consulta y, en su caso, preparar un presupuesto.
             </p>
+            <p>
+              Si creas una cuenta o haces un pedido, tratamos tus datos de cuenta, envío y pedidos para gestionar la
+              compra, la entrega, la facturación y la garantía. Los pagos con tarjeta los procesa Stripe; no almacenamos
+              los datos de tu tarjeta.
+            </p>
             <h2>Base legal y conservación</h2>
             <p>
               La base legal es tu consentimiento y la aplicación de medidas precontractuales a tu solicitud. Conservamos
@@ -73,10 +79,41 @@ const TITLES: Record<LegalPage, string> = {
           }
           @case ('cookies') {
             <p>
-              Este sitio web no utiliza cookies de analítica, publicidad ni seguimiento. Solo podrían utilizarse
-              cookies técnicas estrictamente necesarias para su funcionamiento, que no requieren consentimiento.
+              Este sitio web no utiliza cookies de analítica, publicidad ni seguimiento. Solo usa elementos técnicos
+              estrictamente necesarios, que no requieren consentimiento:
             </p>
+            <ul>
+              <li><strong>emb_session</strong> (cookie): mantiene tu sesión iniciada en el área de cliente. Caduca a los 30 días o al cerrar sesión.</li>
+              <li><strong>emb_cart</strong> (almacenamiento local del navegador): recuerda los productos de tu carrito.</li>
+            </ul>
+            <p>Las fotografías se cargan desde Unsplash, que puede registrar tu dirección IP al servirlas.</p>
             <p>Si en el futuro incorporamos otro tipo de cookies, actualizaremos esta política y te pediremos permiso.</p>
+          }
+          @case ('condiciones-de-venta') {
+            <p>
+              Estas condiciones regulan las compras realizadas en la tienda de embarcarte.com, cuyo vendedor es
+              {{ legal.owner }}.
+            </p>
+            <h2>Pedidos y precios</h2>
+            <p>
+              Los precios se muestran en euros e incluyen el IVA aplicable. El pedido se considera aceptado cuando te
+              enviamos la confirmación por email. Si un producto no estuviera disponible, te avisaremos y te
+              devolveremos el importe pagado.
+            </p>
+            <h2>Formas de pago</h2>
+            <p>Tarjeta (a través de Stripe) o transferencia bancaria. Los pedidos por transferencia se preparan al recibir el pago.</p>
+            <h2>Envío y plazos</h2>
+            <p>Te indicaremos el plazo y el coste de envío o instalación antes de preparar el pedido.</p>
+            <h2>Derecho de desistimiento</h2>
+            <p>
+              Como consumidor, dispones de 14 días naturales desde la recepción para desistir de la compra sin indicar el
+              motivo, escribiendo a {{ site.email }}. Devolveremos el importe en un máximo de 14 días desde que
+              recibamos el producto en su estado original. No aplica a productos configurados o fabricados a medida.
+            </p>
+            <h2>Garantía</h2>
+            <p>Los productos tienen la garantía legal de conformidad de tres años prevista en la normativa de consumo.</p>
+            <h2>Resolución de conflictos</h2>
+            <p>Puedes dirigirte a nosotros en {{ site.email }} o a los servicios de consumo de tu comunidad autónoma.</p>
           }
         }
       </div>

@@ -1,123 +1,133 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { PRODUCTS, SERVICES } from '../core/catalog';
+import { IMAGES } from '../core/images';
 import { SeoService } from '../core/seo.service';
 import { SITE } from '../core/site.config';
-import { ProductCard } from './product-card';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, ProductCard],
+  imports: [RouterLink],
   template: `
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="hero-image" role="img" aria-label="Velero navegando en mar abierto" [style.background-image]="'url(' + images.hero + ')'"></div>
+      <div class="hero-shade"></div>
+      <div class="hero-content wrap">
+        <p class="eyebrow">Tecnología · Navegación · Servicios</p>
+        <h1 class="display h-xl">El mar cambia.<br /><em>La libertad permanece.</em></h1>
+        <p class="hero-copy">
+          Tecnología náutica abierta y soluciones para disfrutar, comprender y recorrer el mar con más libertad.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-light" routerLink="/tecnologia">Descubre Embarcarte <span aria-hidden="true">↗</span></a>
+          <a class="text-link" routerLink="/" fragment="servicios">Explorar servicios <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+      <div class="hero-bottom wrap"><span>Hecho para quienes miran al horizonte</span><span class="scroll-note">Desliza para explorar ↓</span></div>
+    </section>
+
+    <section class="section-pad">
+      <div class="wrap intro-grid">
+        <p class="eyebrow">Una forma diferente de navegar</p>
         <div>
-          <p class="eyebrow">Tecnología náutica abierta</p>
-          <h1>Electrónica de navegación que entiende a tu barco</h1>
-          <p class="lead">
-            En Embarcarte diseñamos, instalamos y damos soporte a sistemas de navegación basados en
-            <strong>Open Marine</strong>: cartas offline, instrumentos, AIS y piloto automático en
-            cualquier tablet de a bordo, sin quedar atado a una sola marca.
+          <h2 class="display h-lg">Más conexión con tu barco.<br /><em>Menos límites.</em></h2>
+          <p class="intro-copy">
+            En Embarcarte creemos que la tecnología náutica debe ayudarte a navegar, no complicarte la vida. Unimos
+            desarrollo técnico, pasión por el mar y servicios pensados desde la experiencia real a bordo.
           </p>
-          <div class="actions">
-            <a routerLink="/contacto" class="btn">Pide presupuesto</a>
-            <a routerLink="/open-marine" class="btn btn-ghost">Descubre Open Marine</a>
-          </div>
-        </div>
-        <div class="hero-visual" aria-hidden="true">
-          <svg viewBox="0 0 400 320">
-            <defs>
-              <linearGradient id="sea" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0" stop-color="#0e3a5c" /><stop offset="1" stop-color="#061a2b" />
-              </linearGradient>
-            </defs>
-            <rect x="10" y="10" width="380" height="300" rx="22" fill="url(#sea)" stroke="#2bb3c0" stroke-opacity=".4" />
-            <g stroke="#2bb3c0" stroke-opacity=".18" fill="none">
-              <circle cx="200" cy="165" r="50" /><circle cx="200" cy="165" r="95" /><circle cx="200" cy="165" r="140" />
-              <path d="M200 20v290M10 165h380" />
-            </g>
-            <path d="M40 260c40-30 70-10 110-40s60-70 120-60 70 30 100 20" stroke="#7fd6de" stroke-width="2" stroke-dasharray="6 6" fill="none" />
-            <path d="M200 140l14 40-14-8-14 8z" fill="#f2b84b" />
-            <g fill="#7fd6de"><circle cx="300" cy="95" r="5" /><circle cx="110" cy="110" r="5" /><circle cx="320" cy="230" r="5" /></g>
-            <g font-family="system-ui,sans-serif" fill="#cfe9ee" font-size="13">
-              <text x="30" y="44">SOG 6.4 kn</text><text x="30" y="64">COG 042°</text>
-              <text x="300" y="44">TWS 14 kn</text><text x="300" y="64">DPT 12.3 m</text>
-            </g>
-          </svg>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <div class="grid-3">
-          <div class="feature">
-            <h2 class="h3">Abierto y sin ataduras</h2>
-            <p>Basado en Signal K y NMEA. Conecta la electrónica que ya tienes y amplíala cuando quieras.</p>
+    <section class="services bg-soft section-pad" id="servicios">
+      <div class="wrap">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Qué hacemos</p>
+            <h2 class="display h-lg">Tres formas de<br /><em>estar más cerca del mar.</em></h2>
           </div>
-          <div class="feature">
-            <h2 class="h3">Funciona sin Internet</h2>
-            <p>Todo corre a bordo: cartas, instrumentos y alarmas siguen disponibles lejos de la costa.</p>
-          </div>
-          <div class="feature">
-            <h2 class="h3">Instalado y soportado</h2>
-            <p>Te entregamos el sistema configurado para tu embarcación y te acompañamos cada temporada.</p>
-          </div>
+          <p class="heading-note">
+            Desde la electrónica que desarrolla nuevas posibilidades hasta los servicios que hacen más fácil llegar al
+            próximo puerto.
+          </p>
         </div>
-      </div>
-    </section>
-
-    <section class="section section-alt">
-      <div class="container">
-        <header class="section-head">
-          <p class="eyebrow">Catálogo</p>
-          <h2>Software y hardware Open Marine</h2>
-          <p class="muted">Elige piezas sueltas o un sistema completo listo para navegar.</p>
-        </header>
-        <div class="grid-2">
-          @for (p of products; track p.slug) {
-            <app-product-card [product]="p" />
+        <div class="service-grid">
+          @for (line of lines; track line.path) {
+            <article class="service-card">
+              <div class="card-image" [style.background-image]="'url(' + line.image + ')'"></div>
+              <div class="card-content">
+                <span class="card-number">{{ line.number }}</span>
+                <h3>{{ line.title }}</h3>
+                <p>{{ line.text }}</p>
+                <a class="arrow-link stretched" [routerLink]="line.path">{{ line.cta }} <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
           }
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container">
-        <header class="section-head">
-          <p class="eyebrow">Servicios</p>
-          <h2>De la idea al barco navegando</h2>
-        </header>
-        <div class="grid-4">
-          @for (s of services; track s.title) {
-            <div class="feature">
-              <h3>{{ s.title }}</h3>
-              <p>{{ s.text }}</p>
-            </div>
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="section cta">
-      <div class="container cta-inner">
+    <section class="section-pad">
+      <div class="wrap intro-grid">
+        <p class="eyebrow">Tienda Open Marine</p>
         <div>
-          <h2>¿Preparamos el sistema de tu embarcación?</h2>
-          <p>Cuéntanos qué barco tienes y qué electrónica llevas. Te respondemos con una propuesta.</p>
+          <h2 class="display h-lg">Electrónica abierta,<br /><em>lista para tu barco.</em></h2>
+          <p class="intro-copy">
+            Ordenador de navegación, controlador de piloto automático y accesorios del ecosistema Open Marine. Compra
+            online y sigue tu pedido desde tu área de cliente.
+          </p>
+          <div class="hero-actions" style="margin-top: 30px">
+            <a class="button button-dark" routerLink="/tienda">Ver la tienda <span aria-hidden="true">↗</span></a>
+            <a class="text-link" routerLink="/tecnologia">Conocer Open Marine <span aria-hidden="true">→</span></a>
+          </div>
         </div>
-        <a routerLink="/contacto" class="btn btn-light">Hablar con nosotros</a>
+      </div>
+    </section>
+
+    <section class="manifesto section-pad">
+      <div class="manifesto-bg"></div>
+      <div class="wrap manifesto-inner">
+        <p class="eyebrow">Nuestra filosofía</p>
+        <h2 class="display">La mejor tecnología<br />es la que te deja<br /><em>mirar al horizonte.</em></h2>
+        <p>Diseñamos para conectar sistemas, compartir conocimiento y dar más control a quienes navegan.</p>
+        <a class="button button-outline" routerLink="/sobre-nosotros">Conoce nuestro enfoque <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   `,
 })
 export class Home {
-  protected readonly products = PRODUCTS;
-  protected readonly services = SERVICES;
+  protected readonly images = IMAGES;
+  protected readonly lines = [
+    {
+      number: '01 / Tecnología',
+      title: 'Electrónica náutica sin cajas negras.',
+      text: 'Sensores, instrumentación y sistemas abiertos diseñados para integrarse con tu ecosistema de navegación.',
+      cta: 'Explorar desarrollos',
+      path: '/tecnologia',
+      image: IMAGES.tech,
+    },
+    {
+      number: '02 / Experiencias',
+      title: 'El mar se disfruta desde dentro.',
+      text: 'Salidas y experiencias náuticas para descubrir la costa, aprender y vivir el mar de otra manera.',
+      cta: 'Consultar experiencias',
+      path: '/experiencias',
+      image: IMAGES.experiences,
+    },
+    {
+      number: '03 / Traslados',
+      title: 'Tu barco, rumbo al próximo puerto.',
+      text: 'Traslados marítimos de embarcaciones con planificación cuidada y comunicación clara en cada etapa.',
+      cta: 'Solicitar presupuesto',
+      path: '/traslados',
+      image: IMAGES.transfers,
+    },
+  ];
 
   constructor() {
     inject(SeoService).set({
-      title: 'Embarcarte · Tecnología náutica abierta y electrónica de navegación',
-      description: SITE.defaultDescription,
+      title: 'Embarcarte — Tecnología abierta. Libertad en el mar.',
+      description:
+        'Embarcarte: tecnología náutica abierta con Open Marine, experiencias en el mar y traslado de embarcaciones.',
       path: '/',
       jsonLd: [
         {

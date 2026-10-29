@@ -3,6 +3,8 @@ services:
     image: ${WEB_IMAGE:-ghcr.io/manuelxose/embarcarte:latest}
     restart: unless-stopped
     env_file: .env
+    volumes:
+      - app_data:/app/data
     expose:
       - "4000"
 
@@ -21,5 +23,6 @@ services:
       - caddy_config:/config
 
 volumes:
+  app_data:
   caddy_data:
   caddy_config:

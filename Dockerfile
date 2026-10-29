@@ -8,10 +8,13 @@ RUN npm run build
 
 FROM ${NODE_IMAGE} AS runtime
 WORKDIR /app
-ENV NODE_ENV=production PORT=4000
+ENV NODE_ENV=production PORT=4000 DATA_DIR=/app/data \
+    NODE_OPTIONS=--disable-warning=ExperimentalWarning
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev --no-audit --no-fund && npm cache clean --force
 COPY --from=build /app/dist ./dist
+RUN mkdir -p /app/data && chown node:node /app/data
+VOLUME /app/data
 USER node
 EXPOSE 4000
 HEALTHCHECK --interval=30s --timeout=3s --start-period=10s \

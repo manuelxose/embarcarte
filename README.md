@@ -1,13 +1,22 @@
 # embarcarte.com
 
-Web comercial de **Embarcarte**: tecnología náutica abierta y catálogo de la plataforma
-[Open Marine](https://github.com/manuelxose/open-marine) (software y hardware).
+Web comercial de **Embarcarte**: tecnología náutica abierta ([Open Marine](https://github.com/manuelxose/open-marine)),
+experiencias en el mar y traslados de embarcaciones, con tienda online, área de cliente y panel de administración.
 
-- Angular 21 con SSR y prerenderizado de todas las páginas (HTML completo para buscadores).
-- SEO: título, descripción, canonical, Open Graph/Twitter y JSON-LD (Organization, WebSite,
-  Product, Service, BreadcrumbList) por página; `sitemap.xml` generado en el build; `robots.txt`;
-  404 real para rutas desconocidas.
-- Formulario de contacto con envío por SMTP (`/api/contact`), campo trampa anti-bots y límite por IP.
+- Angular 21 con SSR. Páginas corporativas prerenderizadas; tienda renderizada en servidor en cada petición
+  (precio y stock siempre actuales para Google); carrito, cuenta y admin solo en el navegador.
+- SEO: título, descripción, canonical, Open Graph/Twitter y JSON-LD (Organization, WebSite, Product con Offer,
+  Service, BreadcrumbList); `sitemap.xml` dinámico (incluye los productos publicados); 404 y 301 reales.
+- **Tienda** (`/tienda`, `/carrito`): catálogo gestionado desde el admin, control de stock, pago con tarjeta vía
+  Stripe Checkout (opcional) o por transferencia, emails de confirmación.
+- **Área de cliente** (`/acceso`, `/cuenta`): registro, inicio de sesión, pedidos y su estado, datos de envío y
+  cambio de contraseña.
+- **Administración** (`/admin`): resumen de ventas, pedidos (cambio de estado; al cancelar se repone stock),
+  productos (alta, edición, publicación, subida de fotos), clientes y mensajes del formulario de contacto.
+- Backend en el propio servidor Express (`src/server/`): SQLite (`node:sqlite`), contraseñas con scrypt, sesión en
+  cookie HttpOnly/SameSite, límites por IP, comprobación de origen y verificación de firma del webhook de Stripe.
+- Diseño de la maqueta: Manrope y DM Sans servidas desde el propio dominio (sin Google Fonts) y fotografías de
+  Unsplash configuradas en `src/app/core/images.ts`.
 - Producción: imagen Docker + Caddy (HTTPS automático con Let's Encrypt, HTTP/3, compresión,
   cabeceras de seguridad, redirección `www` → dominio raíz).
 
@@ -20,8 +29,17 @@ npm run build          # dist/ + sitemap.xml
 npm run serve:ssr      # servidor de producción en http://localhost:4000
 ```
 
-El contenido vive en `src/app/core/catalog.ts` (productos y servicios) y `src/app/core/site.config.ts`
-(email, datos legales). **Antes del lanzamiento completa `SITE.legal`** (titular, NIF, domicilio): se muestra en
+Para probar la tienda y el admin en local:
+
+```bash
+ADMIN_EMAIL=admin@example.com ADMIN_PASSWORD=cambia-esto npm run serve:ssr
+```
+
+Los datos (base de datos y fotos subidas) se guardan en `./data` (o en `DATA_DIR`).
+
+Los textos de las fichas de tecnología viven en `src/app/core/catalog.ts`, las fotos en `src/app/core/images.ts` y
+los datos de la empresa en `src/app/core/site.config.ts`. Los productos de la tienda se gestionan en `/admin`: se
+crean tres borradores (Hub, Autopilot y kit AIS) **sin precio ni stock**; revísalos y publícalos desde el panel. **Antes del lanzamiento completa `SITE.legal`** (titular, NIF, domicilio): se muestra en
 el aviso legal y la política de privacidad.
 
 ## Despliegue en Contabo
@@ -62,7 +80,15 @@ ssh root@IP_DEL_VPS 'bash /root/setup-server.sh "$(cat)"' < embarcarte_deploy.pu
 Instala Docker, crea el usuario `deploy`, activa el cortafuegos (22, 80, 443), fail2ban, actualizaciones
 automáticas y desactiva el acceso SSH por contraseña. **Comprueba que entras con tu clave antes de cerrar la sesión.**
 
-Opcional, para que el formulario envíe emails: copia `deploy/.env.example` a `/opt/embarcarte/.env` y rellena el SMTP.
+Crea la configuración de la app a partir de `deploy/.env.example`:
+
+```bash
+ssh deploy@IP_DEL_VPS 'install -m 600 /dev/null /opt/embarcarte/.env && nano /opt/embarcarte/.env'
+```
+
+Como mínimo rellena `ADMIN_EMAIL` y `ADMIN_PASSWORD` (acceso a `/admin`). Para emails, el SMTP; para cobrar con
+tarjeta, las claves de Stripe y un webhook a `https://embarcarte.com/api/stripe/webhook` con el evento
+`checkout.session.completed`.
 
 ### 3. Secretos en GitHub
 
@@ -87,6 +113,12 @@ ssh deploy@IP_DEL_VPS
 cd /opt/embarcarte
 docker compose ps
 docker compose logs -f web
+```
+
+Copia de seguridad de la base de datos y las fotos (volumen `app_data`), por ejemplo cada noche con cron:
+
+```bash
+docker run --rm -v embarcarte_app_data:/data -v /home/deploy/backups:/backup alpine tar czf /backup/embarcarte-$(date +%F).tgz -C /data .
 ```
 
 Para volver a una versión anterior: `WEB_IMAGE=ghcr.io/manuelxose/embarcarte:<sha> docker compose up -d`.

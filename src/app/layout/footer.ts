@@ -1,34 +1,34 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { PRODUCTS } from '../core/catalog';
 import { SITE } from '../core/site.config';
-import { Logo } from './logo';
+import { Brand } from './brand';
 
 @Component({
   selector: 'app-footer',
-  imports: [RouterLink, Logo],
+  imports: [RouterLink, Brand],
   template: `
     <footer class="site-footer">
-      <div class="container footer-grid">
+      <div class="wrap footer-top">
         <div>
-          <a routerLink="/" class="brand"><app-logo /><span>Embarcarte</span></a>
-          <p class="muted">Tecnología náutica abierta para navegar con más información y menos dependencia.</p>
+          <app-brand />
+          <p>Tecnología abierta. Libertad en el mar.</p>
           <p><a [href]="'mailto:' + site.email">{{ site.email }}</a></p>
         </div>
         <div>
-          <h2 class="footer-title">Productos</h2>
+          <h2 class="footer-title">Qué hacemos</h2>
           <ul>
-            @for (p of products; track p.slug) {
-              <li><a [routerLink]="['/productos', p.slug]">{{ p.name }}</a></li>
-            }
+            <li><a routerLink="/tecnologia">Tecnología Open Marine</a></li>
+            <li><a routerLink="/experiencias">Experiencias en el mar</a></li>
+            <li><a routerLink="/traslados">Traslados de embarcaciones</a></li>
+            <li><a routerLink="/servicios">Instalación y soporte</a></li>
           </ul>
         </div>
         <div>
-          <h2 class="footer-title">Empresa</h2>
+          <h2 class="footer-title">Tienda</h2>
           <ul>
-            <li><a routerLink="/open-marine">Plataforma Open Marine</a></li>
-            <li><a routerLink="/servicios">Servicios</a></li>
-            <li><a routerLink="/sobre-nosotros">Sobre nosotros</a></li>
+            <li><a routerLink="/tienda">Catálogo</a></li>
+            <li><a routerLink="/carrito">Carrito</a></li>
+            <li><a routerLink="/cuenta">Mi cuenta</a></li>
             <li><a routerLink="/contacto">Contacto</a></li>
           </ul>
         </div>
@@ -38,15 +38,19 @@ import { Logo } from './logo';
             <li><a routerLink="/aviso-legal">Aviso legal</a></li>
             <li><a routerLink="/privacidad">Privacidad</a></li>
             <li><a routerLink="/cookies">Cookies</a></li>
+            <li><a routerLink="/condiciones-de-venta">Condiciones de venta</a></li>
           </ul>
         </div>
       </div>
-      <div class="container footer-bottom muted">© {{ year }} {{ site.name }}. Todos los derechos reservados.</div>
+      <div class="wrap footer-bottom">
+        <span>© {{ year }} Embarcarte</span>
+        <span>Hecho para quienes miran al horizonte.</span>
+        <span class="footer-domain">embarcarte.com</span>
+      </div>
     </footer>
   `,
 })
 export class Footer {
   protected readonly site = SITE;
-  protected readonly products = PRODUCTS;
   protected readonly year = new Date().getFullYear();
 }

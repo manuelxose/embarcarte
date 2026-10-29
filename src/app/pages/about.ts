@@ -7,33 +7,44 @@ import { SeoService, breadcrumb } from '../core/seo.service';
   imports: [RouterLink],
   template: `
     <section class="page-hero">
-      <div class="container narrow">
-        <p class="eyebrow">Sobre nosotros</p>
-        <h1>Navegantes que construyen tecnología náutica</h1>
+      <div class="wrap">
+        <p class="eyebrow">Nosotros</p>
+        <h1 class="display h-xl">Más conexión con tu barco.<br /><em>Menos límites.</em></h1>
         <p class="lead">
-          Embarcarte nace para acercar a cualquier embarcación una electrónica de navegación moderna, abierta y
-          mantenible. Somos la empresa que desarrolla y comercializa los proyectos náuticos de la familia Open Marine.
+          En Embarcarte creemos que la tecnología náutica debe ayudarte a navegar, no complicarte la vida. Unimos
+          desarrollo técnico, pasión por el mar y servicios pensados desde la experiencia real a bordo.
         </p>
       </div>
     </section>
-    <section class="section">
-      <div class="container narrow prose">
-        <h2>Nuestra forma de trabajar</h2>
-        <p>
-          Cada sistema se prueba primero en un banco de simulación que reproduce viento, corriente, AIS y fallos de
-          sensores. Solo después lo llevamos al barco. Así reducimos sorpresas en el agua.
-        </p>
-        <p>
-          Apostamos por estándares abiertos como Signal K y NMEA para que tu inversión no dependa de un único fabricante,
-          y por la seguridad por diseño: el piloto automático incluye parada de emergencia física y vigilancia
-          permanente de la comunicación.
-        </p>
-        <h2>Proyectos</h2>
-        <p>
-          Open Marine es nuestra primera línea de producto: software de navegación, cartografía local, ordenador de a bordo
-          y piloto automático. Seguimos ampliando el catálogo con nuevos proyectos náuticos.
-        </p>
-        <p><a routerLink="/contacto" class="btn">Contacta con nosotros</a></p>
+
+    <section class="section-pad">
+      <div class="wrap intro-grid">
+        <p class="eyebrow">Cómo trabajamos</p>
+        <div class="prose">
+          <p>
+            Cada sistema se prueba primero en un banco de simulación que reproduce viento, corriente, AIS y fallos de
+            sensores. Solo después lo llevamos al barco. Así reducimos sorpresas en el agua.
+          </p>
+          <p>
+            Apostamos por estándares abiertos como Signal K y NMEA para que tu inversión no dependa de un único
+            fabricante, y por la seguridad por diseño: el piloto automático incluye parada de emergencia física y
+            vigilancia permanente de la comunicación.
+          </p>
+          <p>
+            Además de la tecnología, organizamos experiencias en el mar y trasladamos embarcaciones entre puertos, con la
+            misma forma de hacer las cosas: planificación cuidada y comunicación clara.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto section-pad">
+      <div class="manifesto-bg"></div>
+      <div class="wrap manifesto-inner">
+        <p class="eyebrow">Nuestra filosofía</p>
+        <h2 class="display">La mejor tecnología<br />es la que te deja<br /><em>mirar al horizonte.</em></h2>
+        <p>Diseñamos para conectar sistemas, compartir conocimiento y dar más control a quienes navegan.</p>
+        <a class="button button-outline" routerLink="/contacto">Hablemos <span aria-hidden="true">↗</span></a>
       </div>
     </section>
   `,
@@ -43,8 +54,7 @@ export class About {
     inject(SeoService).set({
       title: 'Sobre Embarcarte',
       description:
-        'Embarcarte desarrolla y comercializa tecnología náutica abierta: la plataforma Open Marine de navegación, ' +
-        'cartografía e instrumentación para embarcaciones.',
+        'Embarcarte une tecnología náutica abierta, experiencias en el mar y traslados de embarcaciones, con la plataforma Open Marine.',
       path: '/sobre-nosotros',
       jsonLd: [breadcrumb([{ name: 'Sobre nosotros', path: '/sobre-nosotros' }])],
     });
