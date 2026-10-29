@@ -5,11 +5,15 @@ services:
     env_file: .env
     volumes:
       - app_data:/app/data
-    expose:
-      - "4000"
+    # Solo accesible desde el propio servidor: lo publica nginx (servidor compartido) o Caddy.
+    ports:
+      - "127.0.0.1:${WEB_PORT:-4000}:4000"
 
+  # Caddy solo para un VPS dedicado (sin otro servidor web en 80/443).
+  # Actívalo con COMPOSE_PROFILES=caddy en /opt/embarcarte/.env
   caddy:
     image: caddy:2-alpine
+    profiles: ["caddy"]
     restart: unless-stopped
     depends_on:
       - web

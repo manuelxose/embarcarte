@@ -47,7 +47,22 @@ el aviso legal y la política de privacidad.
 Arquitectura: GitHub Actions compila, publica la imagen en `ghcr.io/manuelxose/embarcarte` y despliega por SSH en
 el VPS, donde `docker compose` levanta `web` (Node SSR) y `caddy` (puertos 80/443).
 
-### 1. DNS en Namecheap
+### 0. ¿Servidor dedicado o compartido?
+
+- **Compartido** (el VPS ya tiene nginx con otra web, como Auctorio): el contenedor escucha solo en
+  `127.0.0.1:4000` y nginx lo publica con `deploy/nginx/embarcarte.com.conf`. Deja `COMPOSE_PROFILES` vacío.
+- **Dedicado**: pon `COMPOSE_PROFILES=caddy` en el `.env` y Caddy se encarga de 80/443 y del certificado.
+
+Si al abrir embarcarte.com aparece otra web del servidor (p. ej. Auctorio), nginx no tiene un bloque
+`server_name embarcarte.com` y está respondiendo el sitio por defecto: instala la configuración de `deploy/nginx/`.
+
+### 1. DNS (Cloudflare)
+
+Con el dominio en Cloudflare: registros `A` de `@` y `www` a la IP del VPS, proxy activado (nube naranja),
+**SSL/TLS → Full (strict)** con un *Origin Certificate* instalado en nginx, y sin *Redirect Rules* / *Page Rules*
+heredadas que apunten a otro dominio. En Namecheap solo deben figurar los nameservers de Cloudflare.
+
+### 1b. DNS en Namecheap (si no usas Cloudflare)
 
 En *Domain List → embarcarte.com → Manage → Advanced DNS* (con *Nameservers: Namecheap BasicDNS*):
 
