@@ -52,6 +52,18 @@ jobs:
     environment: production
     steps:
       - uses: actions/checkout@v4
+      - name: Guardar configuración anterior
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.CONTABO_HOST }}
+          username: deploy
+          key: ${{ secrets.CONTABO_SSH_KEY }}
+          script: |
+            set -e
+            stamp=$(date +%Y%m%d%H%M%S)
+            for file in /opt/embarcarte/docker-compose.yml /opt/embarcarte/Caddyfile /opt/embarcarte/nginx/*.conf; do
+              [ ! -f "$file" ] || cp -p "$file" "$file.bak-$stamp"
+            done
       - name: Copiar configuración al servidor
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -70,12 +82,13 @@ jobs:
           script: |
             set -e
             cd /opt/embarcarte
-            touch .env
+            test -f .env
+            export DOCKER_CONFIG=$(mktemp -d)
+            trap 'rm -rf "$DOCKER_CONFIG"' EXIT
             echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             export WEB_IMAGE=${{ env.IMAGE }}:${{ github.sha }}
             docker compose pull
             docker compose up -d --remove-orphans
-            docker image prune -f
             sleep 5
             docker compose exec -T web wget -qO- http://127.0.0.1:4000/healthz
             docker compose ps
