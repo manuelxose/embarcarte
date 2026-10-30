@@ -1,0 +1,184 @@
+# =============================================================================
+# MAREA — asset manifest TEMPLATE
+# =============================================================================
+# File:    docs/marea/assets/ASSET-MANIFEST.template.yaml
+# Date:    2026-10-30
+# Status:  TEMPLATE — no real asset exists. Every value below is illustrative.
+# Related: docs/marea/assets/ASSET-PIPELINE.md (schema, workflow, quality gate)
+# Owner:   EMBARCARTE / MAREA program
+#
+# PURPOSE
+#   One entry per visual asset. The manifest is the source of truth for
+#   provenance, rights, localization, optimization and verification status.
+#   A file without a manifest entry must not ship.
+#
+# HOW TO USE
+#   1. Copy the `assets:` list shape into the real manifest
+#      (proposed: docs/marea/assets/ASSET-MANIFEST.yaml, or one file per asset
+#      under docs/marea/assets/manifest/).
+#   2. Never edit the EXAMPLE entry in place; replace it with a real entry.
+#   3. Keep history append-only. Retire entries instead of deleting them.
+#   4. `files:` stays empty until a real generation produced real files.
+#   5. Model ids must be documented by the provider at generation time
+#      (verified 2026-10-30: gpt-image-2.5-sunburst, gpt-image-2.5-flare —
+#      see ASSET-PIPELINE.md §2.4). Use `NONE_YET` before a provider exists.
+#   6. No secrets, API keys, account ids or private URLs in this file.
+#
+# ENUMS
+#   category:       brand | corporate | ecosystem | product-family | product-detail |
+#                   bundle | install-scenario | professional | diagram | campaign
+#   classification: CONCEPT | REAL_PRODUCT | DIAGRAM | BRAND
+#   status:         DRAFT | BRIEF_APPROVED | GENERATED | REVIEW_PENDING | ACCEPTED |
+#                   REJECTED | QUARANTINED | RETIRED
+#   checks.*:       PASS | FAIL | PENDING | NOT_APPLICABLE
+#   files[].format: avif | webp | jpeg | png | svg
+#   provider.model: documented provider model id | NONE_YET
+# =============================================================================
+
+schema_version: 1
+updated_at: "2026-10-30"          # date of the last edit to this manifest
+owner: "EMBARCARTE / MAREA program"
+notes: >
+  Template only. The example entry below is marked EXAMPLE and describes no real file.
+  MAREA is a PROPOSED brand pending trademark clearance; nothing here asserts clearance,
+  certification, physical availability or commercial readiness.
+
+# -----------------------------------------------------------------------------
+# Example entry — EXAMPLE ONLY / NO IMAGE EXISTS
+# -----------------------------------------------------------------------------
+assets:
+  - example_only: true            # must be removed/false in a real manifest
+    example_note: >
+      Illustrative entry for MR-PRD-014. No image has been generated, committed or
+      uploaded anywhere. `files` is intentionally empty. Paths are proposed targets.
+    id: "MR-PRD-014"
+    slug: "hub-hero-installed-concept"
+    category: product-detail
+    purpose: >
+      Show a realistic, clearly labelled concept of a MAREA HUB-class appliance installed
+      in a small cruising yacht's electronics bay, to support the HUB product page hero.
+    classification: CONCEPT
+    status: BRIEF_APPROVED
+
+    target:
+      pages: ["mareaHub"]                  # proposed routeId; not yet in LOCALIZED_ROUTES
+      section: "hero"
+      audience: "owner of an older 8-12 m cruising yacht considering an electronics refit"
+
+    brief:
+      summary: >
+        Below-decks view of an anonymous small cruising yacht's nav station: an anodised
+        aluminium gateway appliance with labelled marine connectors, tidy cabling, a
+        half-open instrument panel, Atlantic daylight through the companionway.
+      subject: "installed gateway appliance in a yacht electronics bay"
+      composition: >
+        Three-quarter view, appliance in the left third, cable run leading right, shallow
+        depth of field, safe margins for 16:9 and 1:1 crops.
+      lighting: "soft overcast Atlantic daylight, no visible sun flare, warm teak highlights"
+      palette: ["#17365d", "#1776ad", "#f2f9fd", "#d9e6ee", "warm teak"]
+      must_include:
+        - "labelled connector block and cable glands"
+        - "plausible yacht structure (bulkhead, fiddle rail, instrument panel)"
+      must_avoid:
+        - "competitor brand names, chart plotter logos, NMEA or CE badges"
+        - "legible invented UI or screen text"
+        - "routed cables floating in mid-air, or water/hull geometry errors"
+      negative_prompt: >
+        watermark, logo, trademark, certification badge, fake UI text, neon lighting,
+        storm damage, people, stock-photo style, distorted wiring, extra fingers
+
+    prompt:
+      text: >-
+        [PILOT PLACEHOLDER — no prompt was sent to any provider. Replace only after
+        written budget authorization.]
+      input_images: []                    # owned/licensed inputs only, with rights note
+      seed: null                          # provider seed if supported/returned
+
+    provider:
+      name: NONE_YET                      # e.g. OpenAI Images API after authorization
+      api: NONE_YET                       # Images API | Responses API
+      endpoint: NONE_YET
+      model: NONE_YET                     # documented id only, e.g. gpt-image-2.5-flare
+      params:
+        size: "1536x1024"                 # recommended landscape size (documented)
+        quality: "high"                   # low|medium|high|xhigh|max|auto (2.5 models)
+        format: "png"                     # documented output formats: png|jpeg|webp
+        background: "opaque"
+      terms_version: "NOT_REVIEWED"
+      account_entitlement: NOT_VERIFIED   # docs document the id; account access unproven
+
+    created_at: "2026-10-30"
+    generated_at: null
+    author: "visual-specialist"
+    reviewer: null                        # must differ from author before ACCEPTED
+
+    dimensions:
+      width: 1536
+      height: 1024
+      aspect_ratio: "3:2"
+
+    files: []                             # NO FILE EXISTS. Filled only after generation.
+
+    optimization:
+      formats: ["avif", "webp"]
+      responsive_widths: [640, 960, 1280]
+      compression: "avif crf ~30 / webp quality ~78 via ffmpeg (verified local encoders)"
+      target_bytes: 120000
+      lcp: false                          # HUB page may use a different hero as LCP
+      notes: "OG derivative, if used, must be exactly 1200x630 (SeoService hard-codes it)."
+
+    rights:
+      classification: CONCEPT
+      license: "provider output terms — pending review"
+      provenance: "synthetic concept render; illustrative only"
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: >
+        PENDING LEGAL REVIEW — decide the on-page disclosure form before publication.
+
+    alt:
+      es: "Concepto ilustrativo de una pasarela de datos MAREA instalada en el panel de electrónica de un velero"
+      en: "Illustrative concept of a MAREA data gateway installed in a sailing yacht's electronics panel"
+      decorative: false
+
+    caption:
+      es: "Render conceptual — no representa un producto certificado."
+      en: "Concept render — not a photograph of a certified product."
+
+    seo:
+      og_image: false
+      og_width: null
+      og_height: null
+
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []                        # commands, artefact paths, reviewer ids
+
+    integration:
+      angular_path: "/assets/marea/products/hub/hub-hero-installed-concept-1280w.avif"
+      component: "none yet — page not implemented"
+      last_build_verified_at: null
+
+    history:
+      - at: "2026-10-30"
+        by: "visual-specialist"
+        from: null
+        to: BRIEF_APPROVED
+        reason: "Template example created during MC-01; no provider call, no file."
+
+# -----------------------------------------------------------------------------
+# Real entries go below (each must satisfy every validation rule in
+# ASSET-PIPELINE.md §4.3). Delete the example block from the real manifest.
+# -----------------------------------------------------------------------------
+#  - id: "MR-XXX-NNN"
+#    slug: "..."
+#    category: ...
+#    ...
