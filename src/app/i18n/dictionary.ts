@@ -12,7 +12,8 @@ export type TranslationParams = Record<string, string | number>;
  */
 export const DICTIONARIES: Record<Locale, Readonly<Partial<Record<TranslationKey, string>>>> = { es, en };
 
-const interpolate = (template: string, params?: TranslationParams): string =>
+/** Replaces `{name}` placeholders; unknown names keep the placeholder visible. */
+export const interpolate = (template: string, params?: TranslationParams): string =>
   params
     ? template.replace(/\{(\w+)\}/g, (placeholder, name: string) =>
         Object.prototype.hasOwnProperty.call(params, name) ? String(params[name]) : placeholder,

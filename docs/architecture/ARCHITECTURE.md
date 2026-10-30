@@ -20,9 +20,13 @@ src/app/
 └── i18n/                es.ts, en.ts, dictionary.ts                 ← M01
 ```
 
-This is a destination, not a mandate to move every file now. M01 introduces `core/i18n/`
-and `i18n/` only; the rest of the tree stays where it is so that the foundation can be
-verified in isolation. Prompt 2 owns the component migration, Prompt 3 the commerce move.
+This is a destination, not a mandate to move every file now. M01 introduced `core/i18n/`
+and `i18n/`; M02 moved the bilingual presentation into `features/` and `shared/`, deleted
+the four English-only duplicate components and the duplicate footer, and rewrote
+`app.routes.ts` / `app.routes.server.ts` on top of the registry. `core/seo.service.ts`,
+`core/auth.service.ts` and `core/http` were **not** moved: they have no duplicated
+presentation and moving them would only enlarge the M02 diff. The commerce screens
+(`shop/`, `account/`, `admin/`) stay where they are until M03.
 
 ## 2. Locale contract
 
@@ -83,10 +87,12 @@ Rules encoded here:
   redirects). Callers decide; nothing is silently redirected to a home page.
 - Query string and fragment survive a locale switch.
 
-The registry is the single source for public URLs. `app.routes.ts` is **not** refactored
-onto it in M01 (that is Prompt 2, where templates stop building URLs by hand); new code is
-expected to use it. `app.routes.server.ts` and the sitemap keep their explicit path lists
-so prerendering output is unchanged.
+The registry is the single source for public URLs. Since M02, `app.routes.ts` and
+`app.routes.server.ts` derive every public path from it (`path('technologyDetail', 'en')`),
+and the prerender parameter lists come from the content models, so a published slug is
+declared once. Pages never build a URL by hand: they call `LocaleService.url(id, params)`,
+and SEO metadata goes through `pageSeo()`, which computes the canonical path, the locale
+and the `hreflang` pair from the same registry.
 
 ## 6. Feature boundaries
 

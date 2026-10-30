@@ -1,7 +1,10 @@
 import { DOCUMENT, Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { translate } from '../i18n/dictionary';
 import { LOCALE_INFO } from './i18n/locale.config';
-import { DEFAULT_LOCALE } from './i18n/locale.types';
+import { localizedUrl } from './i18n/locale-routes';
+import type { RouteId, RouteParams } from './i18n/locale-routes';
+import { DEFAULT_LOCALE, LOCALES } from './i18n/locale.types';
 import type { Locale } from './i18n/locale.types';
 import { SITE, absoluteUrl } from './site.config';
 
@@ -90,12 +93,25 @@ export class SeoService {
   }
 }
 
-export const breadcrumb = (items: { name: string; path: string }[]) => ({
+export const breadcrumb = (items: { name: string; path: string }[], locale: Locale = DEFAULT_LOCALE) => ({
   '@type': 'BreadcrumbList',
-  itemListElement: [{ name: 'Inicio', path: '/' }, ...items].map((item, i) => ({
+  itemListElement: [{ name: translate(locale, 'nav.home'), path: localizedUrl('home', locale) }, ...items].map((item, i) => ({
     '@type': 'ListItem',
     position: i + 1,
     name: item.name,
     item: absoluteUrl(item.path),
   })),
+});
+
+export type PageSeoData = Omit<SeoData, 'path' | 'language' | 'alternates'> & { params?: RouteParams };
+
+/**
+ * Canonical path, locale and `hreflang` alternates derived from the localized
+ * route registry, so a page cannot disagree with its own URL.
+ */
+export const pageSeo = (id: RouteId, locale: Locale, { params = {}, ...data }: PageSeoData): SeoData => ({
+  ...data,
+  path: localizedUrl(id, locale, params),
+  language: locale,
+  alternates: LOCALES.map((alternate) => ({ language: alternate, path: localizedUrl(id, alternate, params) })),
 });
