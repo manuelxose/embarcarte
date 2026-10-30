@@ -1,0 +1,289 @@
+{
+  "contractVersion": "1.0.0",
+  "status": "PROPOSED",
+  "date": "2026-10-30",
+  "programme": "EMBARCARTE / MAREA — MC-03 brand governance",
+  "company": {
+    "id": "EMBARCARTE",
+    "displayName": "EMBARCARTE",
+    "role": "SELLER_AND_LEGAL_COMMERCIAL_IDENTITY",
+    "description": "EMBARCARTE is the commercial company and legal seller. It owns the customer relationship, the installation and service model, support and warranty communication.",
+    "permittedAttributionStatements": [
+      "EMBARCARTE comercializa, instala y da soporte a la familia de productos MAREA.",
+      "MAREA is a product brand of EMBARCARTE.",
+      "MAREA is an EMBARCARTE product family.",
+      "EMBARCARTE sells, installs and supports MAREA products."
+    ]
+  },
+  "productBrand": {
+    "id": "MAREA",
+    "displayName": "MAREA",
+    "role": "PROPOSED_PRODUCT_BRAND",
+    "meaning": "MAREA is the Spanish word for tide. It is used as the proposed product brand for the marine technology family.",
+    "status": "PROPOSED",
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "publicationState": "INTERNAL_ONLY",
+    "registeredSymbolsAllowed": false,
+    "registrationPolicy": "No registered-trademark or unregistered-trademark symbol may be attached to MAREA, and no text may present MAREA as a registered trademark, until written legal clearance exists.",
+    "availabilityPolicy": "MAREA products are not commercially available while there is no released product, no validated stock and no authorised sale. Brand copy must not assert availability."
+  },
+  "technologyFoundation": {
+    "id": "OPEN-MARINE",
+    "displayName": "OPEN-MARINE",
+    "role": "INTERNAL_OPEN_ENGINEERING_IDENTIFIER",
+    "publicUse": "INTERNAL_ONLY",
+    "rightsClearance": "NOT_CLEARED",
+    "neverPresentedAsPublicProductBrand": true,
+    "rule": "OPEN-MARINE is the internal open engineering foundation and technical identifier. It must never be presented as the public product brand, as a consumer-facing brand, or as the brand behind MAREA. Public brand copy names MAREA, sold by EMBARCARTE.",
+    "permittedContexts": [
+      "internal engineering documentation",
+      "repository and module identifiers",
+      "legitimate technical references outside public brand copy"
+    ],
+    "forbiddenContexts": [
+      "public page titles, headings or logo lockups",
+      "attribution statements that present a product as OPEN-MARINE branded",
+      "using OPEN-MARINE and MAREA as interchangeable public brand names"
+    ]
+  },
+  "productFamilies": [
+    {
+      "id": "NAV",
+      "displayName": "MAREA NAV",
+      "domain": "navigation software",
+      "type": "SOFTWARE"
+    },
+    {
+      "id": "HUB",
+      "displayName": "MAREA HUB",
+      "domain": "onboard data gateway and connectivity",
+      "type": "HARDWARE"
+    },
+    {
+      "id": "AIS",
+      "displayName": "MAREA AIS",
+      "domain": "receive-only marine traffic awareness",
+      "type": "HARDWARE"
+    },
+    {
+      "id": "PILOT",
+      "displayName": "MAREA PILOT",
+      "domain": "supervised steering control",
+      "type": "HARDWARE_SOFTWARE"
+    },
+    {
+      "id": "SENSE",
+      "displayName": "MAREA SENSE",
+      "domain": "sensors and monitoring modules",
+      "type": "HARDWARE"
+    },
+    {
+      "id": "WATCH",
+      "displayName": "MAREA WATCH",
+      "domain": "remote monitoring and alerts",
+      "type": "HARDWARE_SERVICE"
+    },
+    {
+      "id": "DISPLAY",
+      "displayName": "MAREA DISPLAY",
+      "domain": "dedicated marine display",
+      "type": "HARDWARE"
+    },
+    {
+      "id": "WEATHER",
+      "displayName": "MAREA WEATHER",
+      "domain": "forecast and marine data service",
+      "type": "SOFTWARE_SERVICE"
+    },
+    {
+      "id": "FLEET",
+      "displayName": "MAREA FLEET",
+      "domain": "multi-vessel SaaS for professional operations",
+      "type": "SOFTWARE_SERVICE"
+    }
+  ],
+  "bundles": [
+    {
+      "id": "START",
+      "displayName": "MAREA START",
+      "customerOutcome": "connect existing onboard data to modern navigation",
+      "minimumContent": "MAREA NAV + compatible MAREA HUB"
+    },
+    {
+      "id": "CRUISE",
+      "displayName": "MAREA CRUISE",
+      "customerOutcome": "combined navigation and traffic awareness",
+      "minimumContent": "MAREA NAV + MAREA HUB + receive-only MAREA AIS + MAREA DISPLAY"
+    },
+    {
+      "id": "SAIL",
+      "displayName": "MAREA SAIL",
+      "customerOutcome": "sail-focused integrated helm",
+      "minimumContent": "MAREA NAV + MAREA HUB + MAREA PILOT + compatible wind measurement"
+    },
+    {
+      "id": "PROTECT",
+      "displayName": "MAREA PROTECT",
+      "customerOutcome": "unattended monitoring",
+      "minimumContent": "MAREA WATCH + essential MAREA SENSE sensors"
+    },
+    {
+      "id": "COMPLETE",
+      "displayName": "MAREA COMPLETE",
+      "customerOutcome": "coordinated boat integration",
+      "minimumContent": "MAREA NAV, instruments, monitoring, display and supervised pilot (only once its safety gate is complete)"
+    },
+    {
+      "id": "FLEET",
+      "displayName": "MAREA FLEET",
+      "customerFacingName": "MAREA FLEET package",
+      "customerOutcome": "fleet operations",
+      "minimumContent": "vessel SaaS, onboarding and optionally hardware and communications"
+    }
+  ],
+  "fleetDisambiguation": {
+    "rule": "MAREA FLEET names two different things: (1) the MAREA FLEET product family, the professional multi-vessel operations SaaS; (2) the integrated B2B package that combines vessel SaaS, onboarding and optionally hardware and communications, whose customer-facing name is 'MAREA FLEET package'. The bundle id stays FLEET and its machine displayName stays MAREA FLEET; the customer-facing bundle form is always 'MAREA FLEET package'. Written copy must make the sense explicit whenever the context is ambiguous, for example by saying the MAREA FLEET product family or the MAREA FLEET package, and must never merge the two into a single price or offer.",
+    "product": "MAREA FLEET product family: professional multi-vessel operations SaaS.",
+    "bundle": "MAREA FLEET package: integrated B2B package with vessel SaaS, onboarding and optional hardware and communications."
+  },
+  "namingRules": {
+    "masterBrand": "MAREA",
+    "canonicalSyntax": "MAREA <FAMILY> [<Edition>] [<Size or Generation>]",
+    "separator": "Exactly one space between the master brand and the family identifier.",
+    "edition": {
+      "pattern": "MAREA <FAMILY> <Edition>",
+      "examples": [
+        "MAREA NAV Essential",
+        "MAREA NAV Pro",
+        "MAREA HUB Standard",
+        "MAREA HUB Pro",
+        "MAREA WATCH Core",
+        "MAREA WATCH Plus"
+      ],
+      "rule": "Edition names describe commercial packaging. They never encode hardware revisions."
+    },
+    "generation": {
+      "pattern": "MAREA <FAMILY> Gen <n>",
+      "examples": ["MAREA HUB Gen 2"],
+      "rule": "Generation names are used only when a generation is formally defined and announced. No unannounced generation may appear in published copy."
+    },
+    "hardwareSize": {
+      "pattern": "MAREA DISPLAY <size>",
+      "examples": ["MAREA DISPLAY 7", "MAREA DISPLAY 10", "MAREA DISPLAY 12"],
+      "rule": "Physical sizes follow the family with one space. Sizes are published only once verified enclosure capability exists."
+    },
+    "version": {
+      "rule": "Software versions use semantic versioning in engineering contexts only. A version number never appears inside the commercial display name.",
+      "examples": [
+        "MAREA NAV 2.4.0 is an engineering reference; the commercial name is MAREA NAV Pro."
+      ]
+    },
+    "commercialVsEngineeringIdentifier": {
+      "rule": "Commercial names use the MAREA naming syntax. Engineering identifiers may reference the OPEN-MARINE foundation, repository modules and versions, and are never presented as public brand names.",
+      "commercial": "MAREA NAV Essential",
+      "engineering": "open-marine navigation module, release 2.4.0"
+    },
+    "allowedPatterns": [
+      "MAREA <FAMILY>",
+      "MAREA <FAMILY> <Edition>",
+      "MAREA DISPLAY <size>",
+      "MAREA <FAMILY> Gen <n>"
+    ],
+    "forbiddenPatterns": [
+      "MAREA-FAMILY (any hyphen between the master brand and the family)",
+      "Marea Family (title case for the master brand or the family)",
+      "MareaFamily (master brand and family concatenated)",
+      "Attaching a registered-trademark or unregistered-trademark symbol to MAREA",
+      "Inventing family names outside the nine mandated identifiers",
+      "Using a software version number as part of a commercial display name",
+      "Mixing edition names with hardware revision identifiers"
+    ],
+    "forbiddenFamilyNames": ["MAREA ONE", "MAREA CORE", "MAREA LINK"],
+    "newProductRule": "A new product family requires an explicit contract revision, a naming review and a legal review. Agents must not invent families."
+  },
+  "attributionRules": {
+    "owner": "EMBARCARTE",
+    "allowedStatements": [
+      "MAREA is a product brand of EMBARCARTE.",
+      "EMBARCARTE comercializa, instala y da soporte a la familia MAREA.",
+      "EMBARCARTE sells, installs and supports MAREA products.",
+      "For technical audiences: the MAREA ecosystem builds on the internal OPEN-MARINE engineering foundation."
+    ],
+    "forbiddenStatements": [
+      "MAREA by Open Marine",
+      "MAREA is a brand of Open Marine",
+      "EMBARCARTE by MAREA",
+      "EMBARCARTE is a brand of MAREA",
+      "OPEN-MARINE presents MAREA",
+      "MAREA is a registered trademark"
+    ]
+  },
+  "claimsPolicy": {
+    "summary": "No brand or product copy may assert certification, guaranteed safety, autonomy, comparative superiority, a reliability percentage or immediate availability without an approved evidence file. Claims are limited to what has been verified.",
+    "prohibitedClaimPatterns": [
+      "NMEA 2000 certified",
+      "guaranteed collision avoidance",
+      "fully autonomous",
+      "most accurate",
+      "100% reliable",
+      "immediately available"
+    ],
+    "rules": [
+      "Protocol, certification and conformity claims require an approved certificate or written authorisation.",
+      "Safety and autonomy claims require verified safety evidence and an approved operating envelope.",
+      "Superlatives such as most accurate, best or safest are prohibited without independent evidence.",
+      "Reliability percentages require measured test evidence.",
+      "Availability, stock and delivery statements require released products and validated operations.",
+      "Prices are hypotheses until costed, approved and published in a released offer."
+    ]
+  },
+  "messages": {
+    "es": {
+      "companyDescription": "EMBARCARTE comercializa, instala y da soporte a tecnología marina para embarcaciones de recreo y profesionales.",
+      "mareaShortDescription": "MAREA es la familia de productos de navegación, conectividad e instrumentación de EMBARCARTE: un solo barco, un solo conjunto de datos.",
+      "mareaExtendedDescription": "MAREA reúne navegación, datos a bordo, control, sensores y monitorización en un ecosistema modular. Es una marca propuesta: no está registrada y no se presenta como marca registrada.",
+      "headlinePrimary": "Instrumentación marina para el barco que ya tienes.",
+      "headlineSecondaryOne": "Todos los datos de tu barco, en un mismo sitio.",
+      "headlineSecondaryTwo": "Empieza por lo que ya llevas a bordo.",
+      "trustLine": "Publicamos qué hace el producto, qué no hace y con qué versión funciona.",
+      "ctaPrimary": "Solicitar estudio de compatibilidad",
+      "b2bLine": "Para instaladores, marinas, escuelas y flotas: propuesta técnica con matriz de compatibilidad y plan de servicio.",
+      "attributionLine": "MAREA es una marca de producto de EMBARCARTE."
+    },
+    "en": {
+      "companyDescription": "EMBARCARTE sells, installs and supports marine technology for recreational and professional vessels.",
+      "mareaShortDescription": "MAREA is EMBARCARTE's family of navigation, connectivity and instrumentation products: one vessel, one set of data.",
+      "mareaExtendedDescription": "MAREA brings navigation, onboard data, control, sensors and monitoring together in one modular ecosystem. It is a proposed brand: it is not registered and it is not presented as a registered trademark.",
+      "headlinePrimary": "Marine instrumentation for the boat you already own.",
+      "headlineSecondaryOne": "All your boat's data in one place.",
+      "headlineSecondaryTwo": "Start with what is already aboard.",
+      "trustLine": "We publish what a product does, what it does not do, and which version supports it.",
+      "ctaPrimary": "Request a compatibility review",
+      "b2bLine": "For installers, marinas, sailing schools and fleets: a technical proposal with a compatibility matrix and a service plan.",
+      "attributionLine": "MAREA is a product brand of EMBARCARTE."
+    }
+  },
+  "publicationCopies": [],
+  "checkProfiles": {
+    "default": ["trademarkSymbols", "productNames", "attribution", "clearanceClaims"],
+    "docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md": [
+      "trademarkSymbols",
+      "productNames",
+      "attribution",
+      "clearanceClaims"
+    ]
+  },
+  "governedPaths": [
+    "docs/marea/brand/brand-identity.contract.json",
+    "docs/marea/brand/BRAND-ARCHITECTURE.md",
+    "docs/marea/brand/BRAND-VOICE-ES-EN.md",
+    "docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md",
+    "docs/marea/brand/BRAND-AND-IP-DECISION-PACKAGE.md",
+    "docs/marea/brand/TRADEMARK-CLEARANCE-RESEARCH.md",
+    "docs/marea/brand/MAREA-BRAND-STRATEGY.md",
+    "docs/marea/brand/PRODUCT-NAMING-SYSTEM.md",
+    "docs/marea/brand/COMPETITIVE-POSITIONING-EVIDENCE.md",
+    "docs/marea/brand/MC-04-VISUAL-IDENTITY-BRIEF.md",
+    "docs/marea/brand/WEBSITE-BRAND-MIGRATION.md"
+  ]
+}

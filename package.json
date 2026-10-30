@@ -11,6 +11,8 @@
     "test:e2e": "playwright test",
     "test:backup": "node scripts/check-backup.mjs",
     "test:performance": "node scripts/check-performance.mjs",
+    "test:brand": "node scripts/check-brand.mjs",
+    "test:brand:unit": "node --test scripts/check-brand.test.mjs",
     "format": "prettier --write e2e playwright.config.ts scripts/e2e-server.mjs scripts/backup.mjs scripts/restore.mjs scripts/check-backup.mjs scripts/check-performance.mjs scripts/check-seo.mjs",
     "format:check": "prettier --check e2e playwright.config.ts scripts/e2e-server.mjs scripts/backup.mjs scripts/restore.mjs scripts/check-backup.mjs scripts/check-performance.mjs scripts/check-seo.mjs",
     "watch": "ng build --watch --configuration development",

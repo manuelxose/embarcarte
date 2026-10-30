@@ -88,3 +88,61 @@ not exercised.
 **Evidence.** `docs/marea/compliance/INTELLECTUAL-PROPERTY-CHAIN.md`,
 `docs/marea/compliance/LICENSE-NOTICE-AND-DISTRIBUTION-POLICY.md`,
 `docs/marea/compliance/MC-02-BLOCKERS-AND-DECISIONS.md`.
+
+## D-003 — 2026-10-30 — MC-03 brand architecture adopted; MAREA trademark gate recorded as OPTION B
+
+**Context.** MC-03 (prompt 03/36) required the corporate/product brand architecture, an evidence-based
+trademark availability research, commercial positioning and an enforceable governance layer. MC-02 left
+the trademark question open (blocker X-01) and the technology ownership question open (DEC-01). During
+MC-03 the trademark research verified, directly against the EUIPO record, live EU trade marks whose
+dominant verbal element is MAREA in Nice classes 9, 35 and 37 — including class 9 goods that literally
+cover mobile apps and software for mobile devices, i.e. the category MAREA NAV would occupy.
+
+**Decision.** (1) The programme adopts an **endorsed-brand architecture**: EMBARCARTE is the commercial
+company and seller; MAREA is the proposed product brand for the nine families; OPEN-MARINE is an internal
+engineering identifier only and never a public brand. (2) The trademark decision gate is recorded as
+**OPTION B — MATERIAL CONFLICT INDICATED, SPECIALIST REVIEW REQUIRED**, with
+`TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`. (3) Consequence: public use of MAREA, trademark filing,
+packaging procurement, domain acquisition and advertising are **NO-GO** until qualified counsel issues a
+written opinion; internal, non-public strategy, naming, governance and MC-04 concept development remain
+allowed. (4) No rename of MAREA is executed or decided by this milestone; rename is one mitigation option
+for human review.
+
+**Rationale.** A verified earlier right in the core class cannot be argued away by agents, and "continue
+and hope" would authorise publication and spend before the decisive question (class-9 similarity) is
+answered. MC-03 can still PASS because the research task and the clearance gate were completed honestly;
+the mandate explicitly separates a research milestone from legal clearance.
+
+**Status effect.** MC-03 status set in `MASTER-PROMPT-REGISTRY.md` from the delivered evidence. MC-01
+stays `PARTIAL` (image generation BLOCKED). MC-02 stays `PASS` for audit scope. No later prompt is marked
+complete and MC-04 is not started.
+
+**Evidence.** `docs/marea/brand/TRADEMARK-CLEARANCE-RESEARCH.md`,
+`docs/marea/brand/TRADEMARK-SEARCH-RESULTS.csv`, `docs/marea/brand/BRAND-ARCHITECTURE.md`,
+`docs/marea/brand/BRAND-AND-IP-DECISION-PACKAGE.md`, `docs/marea/brand/MC-03-DELIVERY.md`.
+
+## D-004 — 2026-10-30 — Brand governance is documentation-scoped; no public brand migration in MC-03
+
+**Context.** MC-03 introduced a machine-readable brand identity contract, a deterministic validator and
+tests, and audited every public brand reference on the live site (209 references). The site currently
+renders a single EMBARCARTE identity and its `SITE.legal` block is empty.
+
+**Decision.** (1) The brand governance layer is implemented as documentation + `scripts/check-brand.mjs`
+over `governedPaths`; it does **not** scan or modify `src/`, so the live site cannot regress. (2) No
+public brand migration is performed in MC-03: no route, dictionary, metadata, legal page or commerce
+behaviour changes. (3) Separating seller identity / product brand / internal technology inside `SITE` is
+deferred to an authorised migration milestone and only as a backward-compatible change; the boundary and
+the phased plan are recorded in `docs/marea/brand/WEBSITE-BRAND-MIGRATION.md`. (4) The public claims
+risks found by the audit (NMEA 2000 support, "alarmas de colisión", PILOT safety) are recorded as copy
+corrections for the catalog/copy milestones, not fixed here.
+
+**Rationale.** Changing `SITE` or page copy in a brand-strategy milestone would alter rendered output and
+indexed pages without an authorised migration and without verified corporate data (X-02), risking SEO and
+claims exposure. A governance layer that fails on legacy pages would also be unusable.
+
+**Status effect.** MC-03 delivery is additive: 11 brand documents + 3 code files + two npm scripts + two CI
+steps. Existing application tests remain green (build, i18n, commerce, SEO, backup, E2E 15/15).
+
+**Evidence.** `docs/marea/brand/BRAND-GOVERNANCE-IMPLEMENTATION.md`,
+`docs/marea/brand/WEBSITE-BRAND-MIGRATION.md`, `docs/marea/brand/brand-identity.contract.json`,
+`docs/marea/brand/MC-03-DELIVERY.md`.
