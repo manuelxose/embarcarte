@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { IMAGES } from '../core/images';
 import { SeoService, breadcrumb } from '../core/seo.service';
 
@@ -8,14 +8,14 @@ import { SeoService, breadcrumb } from '../core/seo.service';
   imports: [RouterLink],
   template: `
     <section class="hero" style="height: min(600px, calc(100svh - 76px))">
-      <div class="hero-image" role="img" aria-label="Costa vista desde el mar" [style.background-image]="'url(' + images.experiences + ')'"></div>
+      <div class="hero-image" role="img" [attr.aria-label]="english ? 'Coast viewed from the sea' : 'Costa vista desde el mar'" [style.background-image]="'url(' + images.experiences + ')'"></div>
       <div class="hero-shade"></div>
       <div class="hero-content wrap">
-        <p class="eyebrow">02 / Experiencias</p>
-        <h1 class="display h-xl">El mar se disfruta<br /><em>desde dentro.</em></h1>
-        <p class="hero-copy">Salidas y experiencias náuticas para descubrir la costa, aprender y vivir el mar de otra manera.</p>
+        <p class="eyebrow">02 / {{ english ? 'Experiences' : 'Experiencias' }}</p>
+        <h1 class="display h-xl">{{ english ? 'Experience the sea' : 'El mar se disfruta' }}<br /><em>{{ english ? 'from on board.' : 'desde dentro.' }}</em></h1>
+        <p class="hero-copy">{{ english ? 'Boat trips and marine experiences to explore the coast and learn about sailing.' : 'Salidas y experiencias náuticas para descubrir la costa, aprender y vivir el mar de otra manera.' }}</p>
         <div class="hero-actions">
-          <a class="button button-light" routerLink="/contacto" [queryParams]="{ tema: 'experiencias' }">Consultar disponibilidad <span>↗</span></a>
+          <a class="button button-light" [routerLink]="english ? '/en/contact' : '/contacto'" [queryParams]="{ tema: 'experiencias' }">{{ english ? 'Check availability' : 'Consultar disponibilidad' }} <span>↗</span></a>
         </div>
       </div>
     </section>
@@ -24,10 +24,10 @@ import { SeoService, breadcrumb } from '../core/seo.service';
       <div class="wrap">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Propuestas</p>
-            <h2 class="display h-lg">Cada salida,<br /><em>a tu medida.</em></h2>
+            <p class="eyebrow">{{ english ? 'Our experiences' : 'Propuestas' }}</p>
+            <h2 class="display h-lg">{{ english ? 'Every trip,' : 'Cada salida,' }}<br /><em>{{ english ? 'tailored to you.' : 'a tu medida.' }}</em></h2>
           </div>
-          <p class="heading-note">Adaptamos la ruta, la duración y el ritmo al grupo, a la previsión y a lo que queráis vivir.</p>
+          <p class="heading-note">{{ english ? 'We adapt the route, duration and pace to your group, the forecast and your plans.' : 'Adaptamos la ruta, la duración y el ritmo al grupo, a la previsión y a lo que queráis vivir.' }}</p>
         </div>
         <div class="service-grid">
           @for (e of experiences; track e.title; let i = $index) {
@@ -45,15 +45,15 @@ import { SeoService, breadcrumb } from '../core/seo.service';
 
     <section class="section-pad">
       <div class="wrap intro-grid">
-        <p class="eyebrow">Cómo reservar</p>
+        <p class="eyebrow">{{ english ? 'How to book' : 'Cómo reservar' }}</p>
         <div>
           <ol class="steps">
-            <li><strong>Cuéntanos tu idea.</strong> Fechas, número de personas y qué os gustaría hacer.</li>
-            <li><strong>Te proponemos un plan.</strong> Ruta, horario y precio cerrado según la previsión.</li>
-            <li><strong>Confirmamos.</strong> Revisamos la meteo los días previos y te avisamos de cualquier cambio.</li>
+            <li>{{ english ? 'Tell us your idea: dates, group size and what you would like to do.' : 'Cuéntanos tu idea: fechas, número de personas y qué os gustaría hacer.' }}</li>
+            <li>{{ english ? 'We propose a route, schedule and price according to the forecast.' : 'Te proponemos una ruta, horario y precio cerrado según la previsión.' }}</li>
+            <li>{{ english ? 'We confirm and review the weather, informing you of any changes.' : 'Confirmamos y revisamos la meteo los días previos, avisándote de cualquier cambio.' }}</li>
           </ol>
           <div class="hero-actions" style="margin-top: 28px">
-            <a class="button button-dark" routerLink="/contacto" [queryParams]="{ tema: 'experiencias' }">Preparar consulta <span>↗</span></a>
+            <a class="button button-dark" [routerLink]="english ? '/en/contact' : '/contacto'" [queryParams]="{ tema: 'experiencias' }">{{ english ? 'Send an enquiry' : 'Preparar consulta' }} <span>↗</span></a>
           </div>
         </div>
       </div>
@@ -61,8 +61,13 @@ import { SeoService, breadcrumb } from '../core/seo.service';
   `,
 })
 export class Experiences {
+  protected readonly english = inject(ActivatedRoute).snapshot.data['language'] === 'en';
   protected readonly images = IMAGES;
-  protected readonly experiences = [
+  protected readonly experiences = this.english ? [
+    { title: 'Coastal trips', text: 'Explore the coast at a relaxed pace in small groups, by sail or motor.' },
+    { title: 'Introduction to sailing', text: 'Learn basic manoeuvres, wind awareness and use of onboard electronics.' },
+    { title: 'Tailored trips', text: 'Special days, celebrations or longer trips designed with you.' },
+  ] : [
     { title: 'Salidas por la costa', text: 'Navega calas y tramos de costa con calma, a vela o a motor, en grupos reducidos.' },
     { title: 'Iniciación a la navegación', text: 'Aprende maniobras básicas, lectura del viento y uso de la electrónica de a bordo.' },
     { title: 'Travesías y planes a medida', text: 'Jornadas especiales, celebraciones o travesías más largas diseñadas contigo.' },
@@ -70,12 +75,12 @@ export class Experiences {
 
   constructor() {
     inject(SeoService).set({
-      title: 'Experiencias y salidas en barco',
-      description:
-        'Salidas en barco por la costa, iniciación a la navegación y travesías a medida con Embarcarte. Consulta disponibilidad.',
-      path: '/experiencias',
+      title: this.english ? 'Boat trips and marine experiences' : 'Experiencias y salidas en barco',
+      description: this.english ? 'Coastal trips, sailing introductions and tailored boat experiences with Embarcarte.' : 'Salidas en barco por la costa, iniciación a la navegación y travesías a medida con Embarcarte. Consulta disponibilidad.',
+      path: this.english ? '/en/experiences' : '/experiencias',
+      language: this.english ? 'en' : 'es',
       alternates: [{ language: 'es', path: '/experiencias' }, { language: 'en', path: '/en/experiences' }],
-      jsonLd: [breadcrumb([{ name: 'Experiencias', path: '/experiencias' }])],
+      jsonLd: [breadcrumb([{ name: this.english ? 'Experiences' : 'Experiencias', path: this.english ? '/en/experiences' : '/experiencias' }])],
     });
   }
 }

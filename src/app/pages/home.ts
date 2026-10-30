@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { SeoService } from '../core/seo.service';
 import { SITE } from '../core/site.config';
 import { GUIDES } from '../core/guides';
+import { ENGLISH_GUIDES } from '../core/guides-en';
 
 @Component({
   selector: 'app-home',
@@ -11,18 +12,17 @@ import { GUIDES } from '../core/guides';
     <section class="home-hero">
       <div class="home-hero-image"></div>
       <div class="wrap home-hero-content">
-        <p class="eyebrow">Tecnología · Experiencias · Traslados</p>
-        <h1>Navega con<br />más posibilidades</h1>
-        <p>Desarrollamos soluciones electrónicas náuticas y conectamos la tecnología con la experiencia real de navegar.</p>
+        <p class="eyebrow">{{ english ? 'Technology · Experiences · Boat delivery' : 'Tecnología · Experiencias · Traslados' }}</p>
+        <h1>{{ english ? 'Sail with' : 'Navega con' }}<br />{{ english ? 'more possibilities' : 'más posibilidades' }}</h1>
+        <p>{{ english ? 'We develop marine electronics and connect technology with the real experience of being at sea.' : 'Desarrollamos soluciones electrónicas náuticas y conectamos la tecnología con la experiencia real de navegar.' }}</p>
         <div class="hero-actions">
-          <a class="button button-dark" routerLink="/tecnologia">Explorar tecnología <span aria-hidden="true">→</span></a>
-          <a class="button button-outline" routerLink="/" fragment="servicios">Nuestros servicios</a>
+          <a class="button button-dark" [routerLink]="english ? '/en/technology' : '/tecnologia'">{{ english ? 'Explore technology' : 'Explorar tecnología' }} <span aria-hidden="true">→</span></a>
+          <a class="button button-outline" [routerLink]="english ? '/en' : '/'" fragment="servicios">{{ english ? 'Our services' : 'Nuestros servicios' }}</a>
         </div>
       </div>
-      <p class="home-hero-note">Tecnología abierta.<br />Libertad en el mar.</p>
     </section>
 
-    <section class="home-services wrap" id="servicios" aria-label="Nuestros servicios">
+    <section class="home-services wrap" id="servicios" [attr.aria-label]="english ? 'Our services' : 'Nuestros servicios'">
       @for (line of lines; track line.path) {
         <article class="home-service">
           <img [src]="line.image" alt="" />
@@ -39,10 +39,10 @@ import { GUIDES } from '../core/guides';
     <section class="home-products">
       <div class="wrap home-products-grid">
         <div class="home-products-intro">
-          <p class="eyebrow">Productos destacados</p>
-          <h2>Instrumentación náutica<br />de última generación</h2>
-          <p>Soluciones abiertas diseñadas para integrarse con los sistemas que ya conoces.</p>
-          <a class="button button-outline" routerLink="/tecnologia">Ver toda la tecnología <span aria-hidden="true">→</span></a>
+          <p class="eyebrow">{{ english ? 'Featured products' : 'Productos destacados' }}</p>
+          <h2>{{ english ? 'Marine instruments' : 'Instrumentación náutica' }}<br />{{ english ? 'for your boat' : 'de última generación' }}</h2>
+          <p>{{ english ? 'Open solutions designed to work with the systems you already know.' : 'Soluciones abiertas diseñadas para integrarse con los sistemas que ya conoces.' }}</p>
+          <a class="button button-outline" [routerLink]="english ? '/en/technology' : '/tecnologia'">{{ english ? 'Explore technology' : 'Ver toda la tecnología' }} <span aria-hidden="true">→</span></a>
         </div>
         <div class="home-product-list">
           @for (product of products; track product.title) {
@@ -54,20 +54,30 @@ import { GUIDES } from '../core/guides';
             </a>
           }
         </div>
-        <p class="home-products-note">Tecnología abierta<br />para un futuro<br />sin límites</p>
+        <p class="home-products-note">{{ english ? 'Open technology' : 'Tecnología abierta' }}<br />{{ english ? 'for a future' : 'para un futuro' }}<br />{{ english ? 'without limits' : 'sin límites' }}</p>
       </div>
     </section>
-    <section class="section-tight bg-soft"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">Conocimiento a bordo</p><h2 class="display h-md">Guías para navegar mejor</h2></div><a class="button button-outline" routerLink="/guias">Ver todas las guías →</a></div><div class="service-grid">@for (guide of guides; track guide.slug) { <article class="service-card"><div class="card-content"><h3>{{ guide.title }}</h3><p>{{ guide.description }}</p><a class="arrow-link stretched" [routerLink]="['/guias', guide.slug]">Leer guía →</a></div></article> }</div></div></section>
+    <section class="section-tight bg-soft"><div class="wrap"><div class="section-heading"><div><p class="eyebrow">{{ english ? 'Knowledge on board' : 'Conocimiento a bordo' }}</p><h2 class="display h-md">{{ english ? 'Guides for better navigation' : 'Guías para navegar mejor' }}</h2></div><a class="button button-outline" [routerLink]="guidesPath">{{ english ? 'All guides' : 'Ver todas las guías' }} →</a></div><div class="service-grid">@for (guide of guides; track guide.slug) { <article class="service-card"><div class="card-content"><h3>{{ guide.title }}</h3><p>{{ guide.description }}</p><a class="arrow-link stretched" [routerLink]="[guidesPath, guide.slug]">{{ english ? 'Read guide' : 'Leer guía' }} →</a></div></article> }</div></div></section>
   `,
 })
 export class Home {
-  protected readonly guides = GUIDES.slice(0, 3);
-  protected readonly lines = [
+  protected readonly english = inject(ActivatedRoute).snapshot.data['language'] === 'en';
+  protected readonly guidesPath = this.english ? '/en/guides' : '/guias';
+  protected readonly guides = GUIDES.slice(0, 3).map((guide) => this.english ? { slug: guide.slug, ...ENGLISH_GUIDES[guide.slug] } : guide);
+  protected readonly lines = this.english ? [
+    { title: 'Marine technology', text: 'Sensors, instruments and autopilots using open systems and standard protocols.', cta: 'Explore technology', path: '/en/technology', image: '/images/home-tech.webp', icon: '⚙' },
+    { title: 'Marine experiences', text: 'Trips at sea to enjoy the coast from another perspective.', cta: 'Explore experiences', path: '/en/experiences', image: '/images/home-experiences.webp', icon: '⛵' },
+    { title: 'Boat delivery', text: 'Carefully planned vessel deliveries between ports.', cta: 'Request a quote', path: '/en/delivery', image: '/images/home-transfers.webp', icon: '♧' },
+  ] : [
     { title: 'Tecnología náutica', text: 'Sensores, instrumentación y pilotos automáticos con sistemas abiertos y protocolos estándar.', cta: 'Ver tecnología', path: '/tecnologia', image: '/images/home-tech.webp', icon: '⚙' },
     { title: 'Experiencias náuticas', text: 'Salidas por mar para disfrutar del entorno desde otra perspectiva.', cta: 'Ver experiencias', path: '/experiencias', image: '/images/home-experiences.webp', icon: '⛵' },
     { title: 'Traslados de embarcaciones', text: 'Transporte seguro y eficiente de barcos de un puerto a otro por vía marítima.', cta: 'Solicitar presupuesto', path: '/traslados', image: '/images/home-transfers.webp', icon: '♧' },
   ];
-  protected readonly products = [
+  protected readonly products = this.english ? [
+    { title: 'Instruments', description: 'Data · Precision · Open protocol', image: '/images/home-anemometro.webp', path: '/en/technology' },
+    { title: 'Wind sensors', description: 'Wind direction · Integration', image: '/images/home-veleta.webp', path: '/en/technology' },
+    { title: 'Autopilot', description: 'Intelligent control · Open', image: '/images/home-piloto.webp', path: '/en/technology/piloto-automatico' },
+  ] : [
     { title: 'Instrumentación', description: 'Datos · Precisión · Protocolo abierto', image: '/images/home-anemometro.webp', path: '/tecnologia' },
     { title: 'Sensores de viento', description: 'Dirección del viento · Integración', image: '/images/home-veleta.webp', path: '/tecnologia' },
     { title: 'Piloto automático', description: 'Control inteligente · Abierto', image: '/images/home-piloto.webp', path: '/tecnologia/piloto-automatico' },
@@ -75,13 +85,14 @@ export class Home {
 
   constructor() {
     inject(SeoService).set({
-      title: 'Embarcarte - Tecnología abierta. Libertad en el mar.',
-      description: 'Tecnología náutica abierta, experiencias en el mar y traslado de embarcaciones.',
-      path: '/',
+      title: this.english ? 'Open marine technology and boat services' : 'Embarcarte - Tecnología abierta. Libertad en el mar.',
+      description: this.english ? 'Open marine electronics, experiences at sea and boat delivery with Embarcarte.' : 'Tecnología náutica abierta, experiencias en el mar y traslado de embarcaciones.',
+      path: this.english ? '/en' : '/',
+      language: this.english ? 'en' : 'es',
       alternates: [{ language: 'es', path: '/' }, { language: 'en', path: '/en' }],
       jsonLd: [
         { '@type': 'Organization', name: SITE.name, url: SITE.url, logo: `${SITE.url}/icon-512.png`, email: SITE.email, ...(SITE.social.length ? { sameAs: SITE.social } : {}) },
-        { '@type': 'WebSite', name: SITE.name, url: SITE.url, inLanguage: 'es-ES' },
+        { '@type': 'WebSite', name: SITE.name, url: SITE.url, inLanguage: this.english ? 'en' : 'es-ES' },
       ],
     });
   }

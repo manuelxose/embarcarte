@@ -7,7 +7,8 @@
     "build": "ng build",
     "test:commerce": "node scripts/check-commerce.mjs",
     "watch": "ng build --watch --configuration development",
-    "serve:ssr": "node dist/embarcarte/server/server.mjs"
+    "serve:ssr": "node dist/embarcarte/server/server.mjs",
+    "serve:ssr:watch": "node --watch-path=dist/embarcarte/server dist/embarcarte/server/server.mjs"
   },
   "private": true,
   "dependencies": {

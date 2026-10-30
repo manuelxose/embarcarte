@@ -358,7 +358,6 @@ table.data .num { text-align: right; white-space: nowrap; }
 .home-hero .eyebrow::before, .home-products .eyebrow::before { display: none; }
 .home-hero h1 { font-family: var(--display); font-size: clamp(42px, 4vw, 58px); line-height: 1.08; letter-spacing: -2px; font-weight: 700; margin: 0; }
 .home-hero-content > p:not(.eyebrow) { max-width: 450px; color: var(--muted); line-height: 1.6; margin: 20px 0 28px; }
-.home-hero-note { position: absolute; right: 7%; top: 45px; color: white; line-height: 1.4; font-size: 14px; }
 .home-services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding-top: 42px; padding-bottom: 42px; }
 .home-service { display: grid; grid-template-columns: 38% 1fr; gap: 22px; min-width: 0; }
 .home-service img { width: 100%; height: 185px; object-fit: cover; border-radius: 38% 22% 35% 25%; }
@@ -383,4 +382,4 @@ table.data .num { text-align: right; white-space: nowrap; }
 .page-hero h1 { font-weight: 700; }
 .service-card { box-shadow: none; }
 @media (max-width: 950px) { .home-services { grid-template-columns: 1fr; gap: 26px; } .home-service { grid-template-columns: 150px 1fr; } .home-products-grid { grid-template-columns: 1fr 2fr; } .home-products-note { display: none; } }
-@media (max-width: 650px) { .home-hero { min-height: 510px; align-items: flex-start; } .home-hero-image { background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,.94) 40%, rgba(255,255,255,.1) 75%), url('/images/home-hero.webp') 70% bottom / auto 65% no-repeat; } .home-hero-content { padding-top: 45px; } .home-hero-note { display: none; } .home-hero h1 { font-size: 40px; } .home-service { grid-template-columns: 110px 1fr; gap: 18px; } .home-service img { height: 150px; } .home-products-grid { grid-template-columns: 1fr; } .home-product-list { gap: 10px; } }
+@media (max-width: 650px) { .home-hero { min-height: 510px; align-items: flex-start; } .home-hero-image { background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,.94) 40%, rgba(255,255,255,.1) 75%), url('/images/home-hero.webp') 70% bottom / auto 65% no-repeat; } .home-hero-content { padding-top: 45px; } .home-hero h1 { font-size: 40px; } .home-service { grid-template-columns: 110px 1fr; gap: 18px; } .home-service img { height: 150px; } .home-products-grid { grid-template-columns: 1fr; } .home-product-list { gap: 10px; } }

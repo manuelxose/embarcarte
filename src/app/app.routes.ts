@@ -16,8 +16,12 @@ const LEGAL = ['aviso-legal', 'privacidad', 'cookies', 'condiciones-de-venta'] a
 
 export const routes: Routes = [
   { path: '', loadComponent: () => import('./pages/home').then((m) => m.Home) },
-  { path: 'en', loadComponent: () => import('./pages/home-en').then((m) => m.HomeEn) },
-  ...['technology', 'experiences', 'delivery', 'services', 'about'].map((page) => ({ path: `en/${page}`, data: { page }, loadComponent: () => import('./pages/english').then((m) => m.EnglishPage) })),
+  { path: 'en', data: { language: 'en' }, loadComponent: () => import('./pages/home').then((m) => m.Home) },
+  { path: 'en/technology', data: { language: 'en' }, loadComponent: () => import('./pages/open-marine').then((m) => m.OpenMarine) },
+  { path: 'en/experiences', data: { language: 'en' }, loadComponent: () => import('./pages/experiences').then((m) => m.Experiences) },
+  { path: 'en/delivery', data: { language: 'en' }, loadComponent: () => import('./pages/transfers').then((m) => m.Transfers) },
+  { path: 'en/services', data: { language: 'en' }, loadComponent: () => import('./pages/services').then((m) => m.Services) },
+  { path: 'en/about', data: { page: 'about' }, loadComponent: () => import('./pages/english').then((m) => m.EnglishPage) },
   { path: 'en/technology/:slug', canMatch: [englishTechExists], loadComponent: () => import('./pages/product-detail-en').then((m) => m.ProductDetailEn) },
   { path: 'tecnologia', loadComponent: () => import('./pages/open-marine').then((m) => m.OpenMarine) },
   {

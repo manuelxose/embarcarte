@@ -27,6 +27,7 @@ npm ci
 npm start              # http://localhost:4200
 npm run build          # dist/ + sitemap.xml
 npm run serve:ssr      # servidor de producción en http://localhost:4000
+npm run serve:ssr:watch # servidor local que se reinicia con cada compilación vigilada (Windows/macOS)
 ```
 
 Para probar la tienda y el admin en local:
