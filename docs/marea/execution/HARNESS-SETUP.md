@@ -28,7 +28,7 @@ AVAILABLE / AVAILABLE-DISABLED / INSTALLABLE / REQUIRES CREDENTIALS / REQUIRES A
 | Runtime pnpm | 11.28.5 | `desktop-runtime.json.release.pnpmVersion` |
 | PowerShell | 7.6.9, **ConstrainedLanguage** | `$PSVersionTable`, `$ExecutionContext.SessionState.LanguageMode` |
 | Git | 2.38.0.windows.1 | `git --version` |
-| Repo | branch `feature/marea-mc01-agent-foundation`, HEAD `092ae74`, origin `manuelxose/embarcarte` | `git status/rev-parse/remote -v` |
+| Repo | branch `feature/marea-mc01-agent-foundation`, HEAD `092ae74` **at audit time** (the MC-01 integration commit `2662356` adds only docs/skills), origin `manuelxose/embarcarte` | `git status/rev-parse/remote -v` |
 
 **Profile and CLI.** The desktop profile is managed exclusively by the Electron app:
 `dsh --profile desktop --dump-config` → `error: profile "desktop" is managed exclusively by the
@@ -41,12 +41,16 @@ A profile is a layered patch stack: `package.json` → `dsh.profile.bundles`, th
 `@deepseek-ai/dsh-experimental-auto-review`.
 
 **Runtime packaging.** `resources/app.asar` is 182,766,714 bytes; `app.asar/dsh/node_modules` holds
-**194 top-level package entries** and **307 `@deepseek-ai/*` packages**, all `0.2.1-rc.5` — verified
+**194 top-level package entries** and **307 `@deepseek-ai/*` package directories** — verified
 by running the Electron binary as Node (`ELECTRON_RUN_AS_NODE=1 "<DeepSeek Harness.exe>"`) on a
-script that reads `package.json` through Electron's asar-aware `fs`. `desktop-runtime.json` pins
-`platform: win32`, `arch: x64`, `sharedPackages: 305`, `files: 17187`, `nodeVersion: 24.21.0`,
-`pnpmVersion: 11.28.5`. The whole plugin ecosystem is vendored inside the app; no network install
-is needed for the capabilities below.
+script that reads `package.json` through Electron's asar-aware `fs`. Of the 307, **297 are at
+`0.2.1-rc.5`** and 10 are vendored third-party packages at their own versions
+(`cordis@4.0.5`, `cordis-plugin-*` 1.0.x, `cosmokit@1.8.6`, `schemastery@3.18.5`,
+`node-addon-system@0.1.2`, `libreoffice-kit@0.1.5`, `libreoffice-kit-win32-x64@0.1.5`).
+`desktop-runtime.json` pins `platform: win32`, `arch: x64`, `sharedPackages: 305`, `files: 17187`,
+`nodeVersion: 24.21.0`, `pnpmVersion: 11.28.5` (its `sharedPackages` list likewise contains 8
+non-rc third-party entries). The whole plugin ecosystem is vendored inside the app; no network
+install is needed for the capabilities below.
 
 **Current session.** Teammate `harness-engineer` in Team Lead session (roster: `lead`,
 `repo-auditor`, `harness-engineer`, `visual-specialist`, `skills-author`). Route is
@@ -284,7 +288,8 @@ All commands ran as PowerShell 7.6.9. No secrets printed; outputs summarized whe
 5. `Get-ChildItem C:\Users\Admin\.dsh` → `attachments/`, `llm-deepseek/`, `profiles/`, `sessions/`,
    `storages/`, `.anonymous-user-id`, `.credentials.yaml` (not read)
 6. Asar inventory: `$env:ELECTRON_RUN_AS_NODE='1'; & "<DeepSeek Harness.exe>" asar-inventory.js` →
-   `node=v24.21.0`, `electron=44.7.0`, `topLevelCount=194`, `@deepseek-ai` packages `=307` (all rc.5)
+   `node=v24.21.0`, `electron=44.7.0`, `topLevelCount=194`, `@deepseek-ai` packages `=307`
+   (297 × `0.2.1-rc.5` + 10 vendored third-party versions; see §1)
 7. Read `app.asar/dsh/desktop-runtime.json` → release `0.2.1-rc.5`, hostProtocolVersion 4,
    nodeVersion 24.21.0, pnpmVersion 11.28.5, win32/x64, sharedPackages 305, files 17187
 8. Read `dsh-base/cordis.patch.yml` (529 lines, 96 inserted rows), `dsh-web-app/cordis.patch.yml`,

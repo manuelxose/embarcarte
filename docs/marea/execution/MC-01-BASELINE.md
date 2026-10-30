@@ -63,6 +63,11 @@ Key standing truths from those documents (re-used in this baseline, not re-litig
 
 Agent A wrote exactly one file: `docs/marea/execution/MC-01-BASELINE.md`. No source file was modified, no git write command was run.
 
+> **Post-review addendum (Lead, 2026-10-30):** the `.tmp-mc01/` hygiene risk above was closed in the
+> MC-01 integration commit by adding `/.tmp-mc*/` to `.gitignore` and deleting the scratch tree
+> before commit. The `e2e/public.spec.ts` empty-diff artefact was confirmed to be a CRLF-only
+> working-copy effect (identical blob hash, no content change) and is not part of the commit.
+
 ### 1.5 CI / deploy state (GitHub Actions)
 
 | Item | Observation | Status |

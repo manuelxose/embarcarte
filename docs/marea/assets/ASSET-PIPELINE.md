@@ -84,7 +84,7 @@ MAREA pages, and any claim that MAREA products exist physically.
 |---|---|---|
 | Native image-generation tool or plugin | **NOT AVAILABLE** | Runtime `0.2.1-rc.5`, profile `desktop`. Package inventory of the runtime: **307** packages under `@deepseek-ai`; the only entries matching image/media/render/browser patterns are `dsh-client-ui-renderer`, `dsh-client-ui-sidebar-browser`, `dsh-compaction-image-offload` — UI/context-compaction packages, none of which generates images. The agent tool surface in this session contains no image-generation tool. |
 | Installed profile bundles | base + web app + agent team + auto review | `C:\Users\Admin\.dsh\profiles\desktop\package.json` → `@deepseek-ai/dsh-base`, `@deepseek-ai/dsh-web-app`, `@deepseek-ai/dsh-experimental-agent-team-profile`, `@deepseek-ai/dsh-experimental-auto-review`. No imaging bundle. |
-| Local image *conversion* (not generation) | **AVAILABLE** | `C:\ffmpeg\bin\ffmpeg.exe` 7.1 (gyan.dev essentials) with `libwebp` and `libaom-av1` encoders. Test run: `favicon.ico` → WebP (1,144 bytes) and `.avif` (1,272 bytes), both exit code 0. ImageMagick, `cwebp`, `avifenc`, `squoosh-cli` and the npm `sharp` package are **not** present. This satisfies Section 8 optimization without adding dependencies; browser decode of the produced AVIF was **NOT VERIFIED**. |
+| Local image *conversion* (not generation) | **AVAILABLE** | `C:\ffmpeg\bin\ffmpeg.exe` 7.1 (gyan.dev essentials) with `libwebp` and `libaom-av1` encoders. Test run: `favicon.ico` → WebP (1,144 bytes) and `.avif` (1,272 bytes), both exit code 0. ImageMagick, `cwebp`, `avifenc`, `squoosh-cli` and the npm `sharp` package are **not** present (i.e. not a *project* dependency; the Harness runtime vendors its own `sharp` for attachment handling, not usable from repo scripts). This satisfies Section 8 optimization without adding dependencies; browser decode of the produced AVIF was **NOT VERIFIED**. |
 
 ### 2.2 Credentials present on this machine (variable names only, values never read into this document)
 
@@ -162,8 +162,10 @@ Quoted/paraphrased from the retrieved page:
 Scope of that verdict, stated precisely: the identifiers are **documented in official provider
 documentation**. What is **NOT VERIFIED**: that this account, organisation or machine has access to
 them; their effective availability/rate limits; their output quality for our briefs; their cost for
-our sizes; and their terms applying to commercial use of the produced images. The three documented
-models must be re-verified on the first authorized call and recorded in the manifest.
+our sizes; and their terms applying to commercial use of the produced images. The two 2.5 models
+(`gpt-image-2.5-sunburst`, `gpt-image-2.5-flare`; earlier ids `gpt-image-2` and `gpt-image-1` are
+listed separately in §2.4) must be re-verified on the first authorized call and recorded in the
+manifest.
 
 No other model name may be used in a brief or manifest. A model that appears in a search snippet but
 not in the guide is **NOT VERIFIED** and must not be written into a brief.
@@ -652,7 +654,7 @@ Stop the batch immediately and escalate if any of these is true:
 | Local WebP/AVIF encoding works | VERIFIED | ffmpeg 7.1 (libwebp, libaom-av1): favicon.ico → `.webp` 1,144 B and `.avif` 1,272 B, exit 0; ImageMagick/cwebp/avifenc/sharp absent |
 | Existing image conventions | VERIFIED | `angular.json` assets glob; `public/images/*.webp`; `src/app/core/images.ts`; `home.content.ts`; `product-image.ts`; `styles.scss` tokens; `seo.service.ts` OG 1200×630; `scripts/check-performance.mjs` regex |
 | `public/assets/` exists | VERIFIED ABSENT | Repository file listing: `public/` contains only favicons/icons/OG/robots/manifest and `images/` |
-| Branch/base | VERIFIED | `git rev-parse --abbrev-ref HEAD` → `feature/marea-mc01-agent-foundation`; HEAD `092ae74` |
+| Branch/base | VERIFIED | `git rev-parse --abbrev-ref HEAD` → `feature/marea-mc01-agent-foundation`; HEAD `092ae74` at audit time (base commit) |
 | Graphify map update after docs change | PENDING (Lead) | Policy requires `graphify update .` after documentation changes; `graphify-out/graph.json` exists and the binary is at `C:\Users\Admin\.local\bin\graphify.exe`. This milestone's write scope is `docs/marea/assets/` only, so the graph refresh is left to the Lead's integration step |
 
 ## Appendix B — Deferred decisions (recorded, not decided here)
