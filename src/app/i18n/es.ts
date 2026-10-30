@@ -1,28 +1,92 @@
 /**
  * Shared interface strings (navigation, chrome, common actions, accessibility
- * labels and generic errors). Editorial and product copy stays with the
- * content modules; only framework-level UI lives here.
+ * labels and generic messages). Editorial copy stays with each feature's
+ * content module; only framework-level UI lives here.
  *
  * Placeholders use `{name}` and are interpolated by `translate()`.
  */
 export const es = {
   'a11y.skipToContent': 'Saltar al contenido',
+  'a11y.brand': 'Embarcarte, inicio',
   'a11y.mainNavigation': 'Navegación principal',
   'a11y.openMenu': 'Abrir menú',
   'a11y.closeMenu': 'Cerrar menú',
+  'a11y.cart': 'Carrito',
+  'a11y.account': 'Mi cuenta',
+  'a11y.signIn': 'Acceder',
+  'a11y.breadcrumb': 'Migas de pan',
   'a11y.switchLanguage': 'Ver la web en {language}',
+
+  'nav.home': 'Inicio',
   'nav.technology': 'Tecnología',
   'nav.shop': 'Tienda',
   'nav.experiences': 'Experiencias',
   'nav.delivery': 'Traslados',
   'nav.about': 'Nosotros',
   'nav.guides': 'Guías',
+  'nav.services': 'Servicios',
+  'nav.contact': 'Contacto',
   'header.contact': 'Hablemos',
+
   'footer.explore': 'Qué hacemos',
   'footer.shop': 'Tienda',
   'footer.legal': 'Legal',
-  'footer.language': 'Sitio en español',
+  'footer.tagline': 'Tecnología abierta. Libertad en el mar.',
+  'footer.technology': 'Tecnología Open Marine',
+  'footer.experiences': 'Experiencias en el mar',
+  'footer.delivery': 'Traslados de embarcaciones',
+  'footer.services': 'Instalación y soporte',
+  'footer.guides': 'Guías náuticas',
+  'footer.about': 'Sobre nosotros',
+  'footer.catalogue': 'Catálogo',
+  'footer.cart': 'Carrito',
+  'footer.account': 'Mi cuenta',
+  'footer.contact': 'Contacto',
+  'footer.legalNotice': 'Aviso legal',
+  'footer.privacy': 'Privacidad',
+  'footer.cookies': 'Cookies',
+  'footer.termsOfSale': 'Condiciones de venta',
+  'footer.developedBy': 'Desarrollado por',
+
   'common.viewDetails': 'Ver detalles',
   'common.backHome': 'Volver al inicio',
   'error.generic': 'No se ha podido completar la operación. Inténtalo de nuevo.',
+
+  'guides.read': 'Leer guía',
+  'guides.all': 'Ver todas las guías',
+  'guides.label': 'Guía náutica',
+  /** Labels the link to the other language: it names the target, not the current page. */
+  'guides.otherLanguage': 'Read in English',
+
+  'contact.name': 'Tu nombre',
+  'contact.namePlaceholder': '¿Cómo te llamas?',
+  'contact.email': 'Correo electrónico',
+  'contact.emailPlaceholder': 'tu@correo.com',
+  'contact.phone': 'Teléfono (opcional)',
+  'contact.topic': '¿En qué podemos ayudarte?',
+  'contact.topicPlaceholder': 'Selecciona una opción',
+  'contact.topic.technology': 'Electrónica y tecnología náutica',
+  'contact.topic.shop': 'Pedido o producto de la tienda',
+  'contact.topic.experiences': 'Experiencias y salidas al mar',
+  'contact.topic.delivery': 'Traslado de embarcaciones',
+  'contact.topic.other': 'Otra consulta',
+  'contact.message': 'Cuéntanos un poco más',
+  'contact.messagePlaceholder': 'Tu idea, embarcación, fechas aproximadas…',
+  'contact.consent': 'He leído y acepto la',
+  'contact.consentLink': 'política de privacidad',
+  'contact.productMessage': 'Me gustaría consultar disponibilidad y presupuesto para: {product}.',
+  'contact.invalid': 'Revisa los campos: nombre, email válido, tema, mensaje y aceptación de la privacidad.',
+  'contact.error': 'No hemos podido enviar el mensaje. Escríbenos a {email}.',
+  'contact.send': 'Enviar consulta',
+  'contact.sending': 'Enviando…',
+  'contact.sentTitle': '¡Mensaje recibido!',
+  'contact.sentText': 'Gracias. Te responderemos lo antes posible.',
+
+  'legal.owner': 'Titular',
+  'legal.taxId': 'NIF/CIF',
+  'legal.address': 'Domicilio',
+  'legal.registry': 'Datos registrales',
+  'legal.pending': 'Datos fiscales y domicilio: pendientes de confirmación.',
+  'legal.email': 'Email',
+  'legal.description': '{title} de {name}.',
 } as const;

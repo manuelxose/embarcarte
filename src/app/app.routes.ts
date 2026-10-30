@@ -1,71 +1,92 @@
 import { CanMatchFn, Routes } from '@angular/router';
-import { findProduct } from './core/catalog';
-import { GUIDES } from './core/guides';
+import { LOCALIZED_ROUTES } from './core/i18n/locale-routes';
+import type { RouteId } from './core/i18n/locale-routes';
 import { SAMPLE_PRODUCTS } from './core/sample-products';
-import { CATALOG_EN } from './core/catalog-en';
 import { adminGuard, authGuard } from './core/guards';
+import { findGuide } from './features/guides/models/guides';
+import { findTechnology } from './features/technology/models/technology';
 
-const techExists: CanMatchFn = (_route, segments) => !!findProduct(segments[1]?.path ?? '');
-const guideExists: CanMatchFn = (_route, segments) => GUIDES.some((guide) => guide.slug === segments[1]?.path);
-const englishGuideExists: CanMatchFn = (_route, segments) => GUIDES.some((guide) => guide.slug === segments[2]?.path);
-const sampleExists: CanMatchFn = (_route, segments) => SAMPLE_PRODUCTS.some((product) => product.slug === segments[2]?.path);
-const englishSampleExists: CanMatchFn = (_route, segments) => SAMPLE_PRODUCTS.some((product) => product.slug === segments[3]?.path);
-const englishTechExists: CanMatchFn = (_route, segments) => !!CATALOG_EN[segments[2]?.path ?? ''];
+/** Path of a semantic route, so public URLs are written once, in the registry. */
+const path = (id: RouteId, locale: 'es' | 'en'): string => LOCALIZED_ROUTES[id][locale];
 
-const LEGAL = ['aviso-legal', 'privacidad', 'cookies', 'condiciones-de-venta'] as const;
+const technologyExists: CanMatchFn = (_route, segments) => !!findTechnology(segments.at(-1)?.path ?? '');
+const guideExists: CanMatchFn = (_route, segments) => !!findGuide(segments.at(-1)?.path ?? '');
+const sampleExists: CanMatchFn = (_route, segments) => SAMPLE_PRODUCTS.some((product) => product.slug === segments.at(-1)?.path);
 
 export const routes: Routes = [
-  { path: '', loadComponent: () => import('./pages/home').then((m) => m.Home) },
-  { path: 'en', data: { language: 'en' }, loadComponent: () => import('./pages/home').then((m) => m.Home) },
-  { path: 'en/technology', data: { language: 'en' }, loadComponent: () => import('./pages/open-marine').then((m) => m.OpenMarine) },
-  { path: 'en/experiences', data: { language: 'en' }, loadComponent: () => import('./pages/experiences').then((m) => m.Experiences) },
-  { path: 'en/delivery', data: { language: 'en' }, loadComponent: () => import('./pages/transfers').then((m) => m.Transfers) },
-  { path: 'en/services', data: { language: 'en' }, loadComponent: () => import('./pages/services').then((m) => m.Services) },
-  { path: 'en/about', data: { page: 'about' }, loadComponent: () => import('./pages/english').then((m) => m.EnglishPage) },
-  { path: 'en/technology/:slug', canMatch: [englishTechExists], loadComponent: () => import('./pages/product-detail-en').then((m) => m.ProductDetailEn) },
-  { path: 'tecnologia', loadComponent: () => import('./pages/open-marine').then((m) => m.OpenMarine) },
+  // Páginas compartidas: un componente atiende las dos lenguas.
+  { path: path('home', 'es'), loadComponent: () => import('./features/home/home').then((m) => m.Home) },
+  { path: path('home', 'en'), loadComponent: () => import('./features/home/home').then((m) => m.Home) },
+  { path: path('technology', 'es'), loadComponent: () => import('./features/technology/technology').then((m) => m.Technology) },
+  { path: path('technology', 'en'), loadComponent: () => import('./features/technology/technology').then((m) => m.Technology) },
   {
-    path: 'tecnologia/:slug',
-    canMatch: [techExists],
-    loadComponent: () => import('./pages/product-detail').then((m) => m.ProductDetail),
+    path: path('technologyDetail', 'es'),
+    canMatch: [technologyExists],
+    loadComponent: () => import('./features/technology/product-detail').then((m) => m.ProductDetail),
   },
-  { path: 'experiencias', loadComponent: () => import('./pages/experiences').then((m) => m.Experiences) },
-  { path: 'traslados', loadComponent: () => import('./pages/transfers').then((m) => m.Transfers) },
-  { path: 'servicios', loadComponent: () => import('./pages/services').then((m) => m.Services) },
-  { path: 'sobre-nosotros', loadComponent: () => import('./pages/about').then((m) => m.About) },
-  { path: 'contacto', loadComponent: () => import('./pages/contact').then((m) => m.Contact) },
-  { path: 'en/contact', loadComponent: () => import('./pages/contact-en').then((m) => m.ContactEn) },
-  { path: 'guias', loadComponent: () => import('./pages/guides').then((m) => m.Guides) },
-  { path: 'guias/:slug', canMatch: [guideExists], loadComponent: () => import('./pages/guides').then((m) => m.Guides) },
-  { path: 'en/guides', data: { language: 'en' }, loadComponent: () => import('./pages/guides').then((m) => m.Guides) },
-  { path: 'en/guides/:slug', canMatch: [englishGuideExists], data: { language: 'en' }, loadComponent: () => import('./pages/guides').then((m) => m.Guides) },
-  ...LEGAL.map((page) => ({
-    path: page,
-    data: { page },
-    loadComponent: () => import('./pages/legal').then((m) => m.Legal),
-  })),
-  ...['legal-notice', 'privacy', 'cookies', 'terms-of-sale'].map((page) => ({ path: `en/${page}`, data: { page }, loadComponent: () => import('./pages/legal-en').then((m) => m.LegalEn) })),
+  {
+    path: path('technologyDetail', 'en'),
+    canMatch: [technologyExists],
+    loadComponent: () => import('./features/technology/product-detail').then((m) => m.ProductDetail),
+  },
+  { path: path('experiences', 'es'), loadComponent: () => import('./features/experiences/experiences').then((m) => m.Experiences) },
+  { path: path('experiences', 'en'), loadComponent: () => import('./features/experiences/experiences').then((m) => m.Experiences) },
+  { path: path('delivery', 'es'), loadComponent: () => import('./features/delivery/delivery').then((m) => m.Delivery) },
+  { path: path('delivery', 'en'), loadComponent: () => import('./features/delivery/delivery').then((m) => m.Delivery) },
+  { path: path('services', 'es'), loadComponent: () => import('./features/services/services').then((m) => m.Services) },
+  { path: path('services', 'en'), loadComponent: () => import('./features/services/services').then((m) => m.Services) },
+  { path: path('about', 'es'), loadComponent: () => import('./features/about/about').then((m) => m.About) },
+  { path: path('about', 'en'), loadComponent: () => import('./features/about/about').then((m) => m.About) },
+  { path: path('contact', 'es'), loadComponent: () => import('./features/contact/contact').then((m) => m.Contact) },
+  { path: path('contact', 'en'), loadComponent: () => import('./features/contact/contact').then((m) => m.Contact) },
+  { path: path('guides', 'es'), loadComponent: () => import('./features/guides/guides').then((m) => m.Guides) },
+  { path: path('guides', 'en'), loadComponent: () => import('./features/guides/guides').then((m) => m.Guides) },
+  {
+    path: path('guideDetail', 'es'),
+    canMatch: [guideExists],
+    loadComponent: () => import('./features/guides/guides').then((m) => m.Guides),
+  },
+  {
+    path: path('guideDetail', 'en'),
+    canMatch: [guideExists],
+    loadComponent: () => import('./features/guides/guides').then((m) => m.Guides),
+  },
 
-  // Tienda
-  { path: 'tienda', loadComponent: () => import('./shop/shop-list').then((m) => m.ShopList) },
-  { path: 'tienda/muestra/:slug', canMatch: [sampleExists], loadComponent: () => import('./shop/sample-detail').then((m) => m.SampleDetail) },
-  { path: 'tienda/:slug', loadComponent: () => import('./shop/shop-detail').then((m) => m.ShopDetail) },
-  { path: 'en/shop', loadComponent: () => import('./shop/shop-en').then((m) => m.ShopEn) },
-  { path: 'en/shop/sample/:slug', data: { language: 'en' }, canMatch: [englishSampleExists], loadComponent: () => import('./shop/sample-detail').then((m) => m.SampleDetail) },
-  { path: 'en/shop/:slug', loadComponent: () => import('./shop/commerce-en').then((m) => m.ShopDetailEn) },
-  { path: 'en/cart', loadComponent: () => import('./shop/commerce-en').then((m) => m.CartEn) },
-  { path: 'en/login', loadComponent: () => import('./shop/commerce-en').then((m) => m.LoginEn) },
-  { path: 'en/account', canActivate: [authGuard], loadComponent: () => import('./shop/commerce-en').then((m) => m.AccountEn) },
-  { path: 'en/account/orders/:id', canActivate: [authGuard], loadComponent: () => import('./shop/commerce-en').then((m) => m.OrderEn) },
-  { path: 'carrito', loadComponent: () => import('./shop/cart').then((m) => m.Cart) },
+  // Legal: una presentación, contenido por idioma.
+  ...(['legalNotice', 'privacy', 'cookies', 'termsOfSale'] as const).flatMap((id) => [
+    { path: path(id, 'es'), data: { page: id }, loadComponent: () => import('./features/legal/legal').then((m) => m.Legal) },
+    { path: path(id, 'en'), data: { page: id }, loadComponent: () => import('./features/legal/legal').then((m) => m.Legal) },
+  ]),
+
+  // Tienda: la traducción completa de la compra sigue siendo de M03.
+  { path: path('shop', 'es'), loadComponent: () => import('./shop/shop-list').then((m) => m.ShopList) },
+  { path: path('shopSample', 'es'), canMatch: [sampleExists], loadComponent: () => import('./shop/sample-detail').then((m) => m.SampleDetail) },
+  { path: path('shopDetail', 'es'), loadComponent: () => import('./shop/shop-detail').then((m) => m.ShopDetail) },
+  { path: path('shop', 'en'), loadComponent: () => import('./shop/shop-en').then((m) => m.ShopEn) },
+  {
+    path: path('shopSample', 'en'),
+    data: { language: 'en' },
+    canMatch: [sampleExists],
+    loadComponent: () => import('./shop/sample-detail').then((m) => m.SampleDetail),
+  },
+  { path: path('shopDetail', 'en'), loadComponent: () => import('./shop/commerce-en').then((m) => m.ShopDetailEn) },
+  { path: path('cart', 'es'), loadComponent: () => import('./shop/cart').then((m) => m.Cart) },
+  { path: path('cart', 'en'), loadComponent: () => import('./shop/commerce-en').then((m) => m.CartEn) },
 
   // Área de cliente
-  { path: 'acceso', loadComponent: () => import('./account/login').then((m) => m.Login) },
-  { path: 'cuenta', canActivate: [authGuard], loadComponent: () => import('./account/account').then((m) => m.Account) },
+  { path: path('login', 'es'), loadComponent: () => import('./account/login').then((m) => m.Login) },
+  { path: path('login', 'en'), loadComponent: () => import('./shop/commerce-en').then((m) => m.LoginEn) },
+  { path: path('account', 'es'), canActivate: [authGuard], loadComponent: () => import('./account/account').then((m) => m.Account) },
+  { path: path('account', 'en'), canActivate: [authGuard], loadComponent: () => import('./shop/commerce-en').then((m) => m.AccountEn) },
   {
-    path: 'cuenta/pedidos/:id',
+    path: `${path('account', 'es')}/pedidos/:id`,
     canActivate: [authGuard],
     loadComponent: () => import('./account/order-detail').then((m) => m.OrderDetail),
+  },
+  {
+    path: `${path('account', 'en')}/orders/:id`,
+    canActivate: [authGuard],
+    loadComponent: () => import('./shop/commerce-en').then((m) => m.OrderEn),
   },
 
   // Administración

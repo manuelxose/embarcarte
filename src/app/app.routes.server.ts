@@ -1,60 +1,57 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
-import { PRODUCTS } from './core/catalog';
-import { GUIDES } from './core/guides';
+import { LOCALIZED_ROUTES } from './core/i18n/locale-routes';
+import type { RouteId } from './core/i18n/locale-routes';
+import { LOCALES } from './core/i18n/locale.types';
+import type { Locale } from './core/i18n/locale.types';
+import { GUIDE_SLUGS } from './features/guides/models/guides';
+import { TECHNOLOGY } from './features/technology/models/technology';
 
-const STATIC_PAGES = [
-  '',
-  'en',
-  'en/technology',
-  'en/experiences',
-  'en/delivery',
-  'en/services',
-  'en/about',
-  'en/legal-notice',
-  'en/privacy',
-  'en/cookies',
-  'en/terms-of-sale',
-  'tecnologia',
-  'experiencias',
-  'traslados',
-  'servicios',
-  'sobre-nosotros',
-  'contacto',
-  'en/contact',
-  'guias',
-  'en/guides',
-  'aviso-legal',
-  'privacidad',
+/** Path of a semantic route in a locale: the registry is the only list of public URLs. */
+const path = (id: RouteId, locale: Locale): string => LOCALIZED_ROUTES[id][locale];
+
+/** Páginas cuyo contenido no depende de la base de datos: se generan en el build. */
+const PRERENDERED: readonly RouteId[] = [
+  'home',
+  'technology',
+  'experiences',
+  'delivery',
+  'services',
+  'about',
+  'contact',
+  'guides',
+  'legalNotice',
+  'privacy',
   'cookies',
-  'condiciones-de-venta',
+  'termsOfSale',
 ];
 
+/** Detalle estático: el mismo slug en las dos lenguas. */
+const DETAILS: readonly { readonly id: RouteId; readonly slugs: readonly string[] }[] = [
+  { id: 'technologyDetail', slugs: TECHNOLOGY.map((product) => product.slug) },
+  { id: 'guideDetail', slugs: GUIDE_SLUGS },
+];
+
+const prerender = (id: RouteId, locale: Locale): ServerRoute => ({ path: path(id, locale), renderMode: RenderMode.Prerender });
+
 export const serverRoutes: ServerRoute[] = [
-  ...STATIC_PAGES.map((path) => ({ path, renderMode: RenderMode.Prerender as const })),
-  { path: 'guias/:slug', renderMode: RenderMode.Prerender, getPrerenderParams: async () => GUIDES.map((guide) => ({ slug: guide.slug })) },
-  { path: 'en/guides/:slug', renderMode: RenderMode.Prerender, getPrerenderParams: async () => GUIDES.map((guide) => ({ slug: guide.slug })) },
-  { path: 'en/technology/:slug', renderMode: RenderMode.Prerender, getPrerenderParams: async () => PRODUCTS.map((product) => ({ slug: product.slug })) },
-  {
-    path: 'tecnologia/:slug',
-    renderMode: RenderMode.Prerender,
-    getPrerenderParams: async () => PRODUCTS.map((p) => ({ slug: p.slug })),
-  },
+  ...LOCALES.flatMap((locale) => PRERENDERED.map((id) => prerender(id, locale))),
+  ...LOCALES.flatMap((locale) =>
+    DETAILS.map(({ id, slugs }) => ({
+      ...prerender(id, locale),
+      getPrerenderParams: async () => slugs.map((slug) => ({ slug })),
+    })),
+  ),
   // La tienda cambia desde el panel: se renderiza en servidor en cada petición para Google.
-  { path: 'tienda', renderMode: RenderMode.Server },
-  { path: 'tienda/muestra/:slug', renderMode: RenderMode.Server },
-  { path: 'tienda/:slug', renderMode: RenderMode.Server },
-  { path: 'en/shop', renderMode: RenderMode.Server },
-  { path: 'en/shop/sample/:slug', renderMode: RenderMode.Server },
-  { path: 'en/shop/:slug', renderMode: RenderMode.Server },
+  ...LOCALES.flatMap((locale) =>
+    (['shop', 'shopSample', 'shopDetail'] as const).map((id): ServerRoute => ({ path: path(id, locale), renderMode: RenderMode.Server })),
+  ),
   // Zonas privadas: solo en el navegador (dependen de la sesión).
-  { path: 'carrito', renderMode: RenderMode.Client },
-  { path: 'acceso', renderMode: RenderMode.Client },
-  { path: 'cuenta', renderMode: RenderMode.Client },
-  { path: 'cuenta/**', renderMode: RenderMode.Client },
-  { path: 'en/cart', renderMode: RenderMode.Client },
-  { path: 'en/login', renderMode: RenderMode.Client },
-  { path: 'en/account', renderMode: RenderMode.Client },
-  { path: 'en/account/**', renderMode: RenderMode.Client },
+  ...LOCALES.flatMap((locale) =>
+    (['cart', 'login', 'account'] as const).flatMap((id): ServerRoute[] => [
+      { path: path(id, locale), renderMode: RenderMode.Client },
+      { path: `${path(id, locale)}/**`, renderMode: RenderMode.Client },
+    ]),
+  ),
   { path: 'admin', renderMode: RenderMode.Client },
   { path: 'admin/**', renderMode: RenderMode.Client },
   { path: 'open-marine', renderMode: RenderMode.Server, status: 301 },
