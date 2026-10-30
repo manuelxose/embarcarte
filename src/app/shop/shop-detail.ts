@@ -82,6 +82,7 @@ export class ShopDetail {
           title: `${p.name} — Tienda`,
           description: p.summary || p.description.slice(0, 155),
           path,
+          alternates: p.name_en && p.summary_en && p.description_en ? [{ language: 'es', path }, { language: 'en', path: `/en/shop/${p.slug}` }] : [],
           image: p.image.startsWith('/') ? p.image : undefined,
           jsonLd: [
             breadcrumb([

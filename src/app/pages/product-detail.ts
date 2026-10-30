@@ -85,6 +85,7 @@ export class ProductDetail {
       title: `${this.product.name}: ${this.product.kind === 'Hardware' ? 'hardware náutico' : 'software de navegación'}`,
       description: summarize(this.product.description),
       path,
+      alternates: [{ language: 'es', path }, { language: 'en', path: `/en/technology/${this.product.slug}` }],
       jsonLd: [
         breadcrumb([
           { name: 'Tecnología', path: '/tecnologia' },

@@ -167,7 +167,7 @@ api.put('/account/password', requireUser, rateLimit('password', 10), async (req,
 
 // --- tienda -----------------------------------------------------------------
 
-const PUBLIC_PRODUCT = 'id, slug, name, category, summary, description, price_cents, stock, image';
+const PUBLIC_PRODUCT = 'id, slug, name, category, summary, description, price_cents, stock, image, name_en, category_en, summary_en, description_en';
 
 api.get('/shop/products', (_req, res) => {
   res.json(db.prepare(`SELECT ${PUBLIC_PRODUCT} FROM products WHERE active = 1 ORDER BY name`).all());
@@ -195,8 +195,10 @@ api.post('/orders', requireUser, rateLimit('orders', 20), async (req, res) => {
   const shippingName = text(req.body.shippingName, 120);
   const shippingAddress = text(req.body.shippingAddress, 500);
   const shippingPhone = text(req.body.shippingPhone, 40);
-  const payment = stripeEnabled() && req.body.payment === 'tarjeta' ? 'tarjeta' : 'transferencia';
-  if (!items.length || !shippingName || !shippingAddress || !shippingPhone) {
+  const payment = req.body.payment;
+  const language = req.body.language === 'en' ? 'en' : 'es';
+  if (!items.length || !shippingName || !shippingAddress || !shippingPhone || req.body.terms !== true ||
+      (payment !== 'transferencia' && payment !== 'tarjeta') || (payment === 'tarjeta' && !stripeEnabled())) {
     res.status(400).json({ error: 'invalid' });
     return;
   }
@@ -206,14 +208,18 @@ api.post('/orders', requireUser, rateLimit('orders', 20), async (req, res) => {
   try {
     ({ orderId, lines } = transaction(() => {
       const lines: { id: number; name: string; unit_cents: number; qty: number }[] = [];
+      const seen = new Set<number>();
       for (const item of items) {
         const qty = int(item?.qty);
         const product = db
-          .prepare('SELECT id, name, price_cents, stock FROM products WHERE slug = ? AND active = 1')
-          .get(text(item?.slug, 120)) as { id: number; name: string; price_cents: number; stock: number } | undefined;
+          .prepare('SELECT id, name, name_en, price_cents, stock FROM products WHERE slug = ? AND active = 1')
+          .get(text(item?.slug, 120)) as { id: number; name: string; name_en: string; price_cents: number; stock: number } | undefined;
         if (!product || !qty || qty < 1 || qty > 99) throw new OrderError('invalid_item');
+        if (int(item?.price_cents) !== product.price_cents) throw new OrderError('price_changed');
+        if (seen.has(product.id)) throw new OrderError('invalid_item');
+        seen.add(product.id);
         if (product.stock < qty) throw new OrderError('out_of_stock');
-        lines.push({ id: product.id, name: product.name, unit_cents: product.price_cents, qty });
+        lines.push({ id: product.id, name: language === 'en' && product.name_en ? product.name_en : product.name, unit_cents: product.price_cents, qty });
       }
       const total = lines.reduce((sum, l) => sum + l.unit_cents * l.qty, 0);
       const order = db
@@ -252,22 +258,22 @@ api.post('/orders', requireUser, rateLimit('orders', 20), async (req, res) => {
   );
   void sendMail(
     req.user!.email,
-    `Hemos recibido tu pedido #${orderId}`,
-    `Hola ${req.user!.name},\n\nGracias por tu pedido en Embarcarte.\n\n${summary}\n\nTotal: ${euros(total)}\n\n` +
-      (payment === 'transferencia'
-        ? 'Te enviaremos los datos para la transferencia y confirmaremos el plazo de entrega.\n'
-        : '') +
-      `Puedes seguirlo en ${SITE_URL}/cuenta/pedidos/${orderId}\n`,
+    language === 'en' ? `We received your order #${orderId}` : `Hemos recibido tu pedido #${orderId}`,
+    language === 'en'
+      ? `Hello ${req.user!.name},\n\nThank you for your order with Embarcarte.\n\n${summary}\n\nTotal: ${euros(total)}\n\n${payment === 'transferencia' ? 'We will send the bank transfer details and confirm delivery timing.\n' : ''}Track your order at ${SITE_URL}/en/account/orders/${orderId}\n`
+      : `Hola ${req.user!.name},\n\nGracias por tu pedido en Embarcarte.\n\n${summary}\n\nTotal: ${euros(total)}\n\n${payment === 'transferencia' ? 'Te enviaremos los datos para la transferencia y confirmaremos el plazo de entrega.\n' : ''}Puedes seguirlo en ${SITE_URL}/cuenta/pedidos/${orderId}\n`,
   );
 
   if (payment === 'tarjeta') {
     try {
-      const session = await createCheckoutSession(orderId, req.user!.email, lines, SITE_URL);
+      const session = await createCheckoutSession(orderId, req.user!.email, lines, SITE_URL, language);
       db.prepare('UPDATE orders SET stripe_session_id = ? WHERE id = ?').run(session.id, orderId);
       res.status(201).json({ id: orderId, checkoutUrl: session.url });
       return;
     } catch (err) {
       console.error('[orders] error creando la sesión de Stripe', err);
+      res.status(201).json({ id: orderId, paymentError: true });
+      return;
     }
   }
   res.status(201).json({ id: orderId });
@@ -369,6 +375,10 @@ const productInput = (body: Record<string, unknown>) => {
     category: text(body['category'], 60) || 'Tecnología',
     summary: text(body['summary'], 300),
     description: text(body['description'], 10_000),
+    name_en: typeof body['name_en'] === 'string' ? text(body['name_en'], 160) : null,
+    category_en: typeof body['category_en'] === 'string' ? text(body['category_en'], 60) : null,
+    summary_en: typeof body['summary_en'] === 'string' ? text(body['summary_en'], 300) : null,
+    description_en: typeof body['description_en'] === 'string' ? text(body['description_en'], 10_000) : null,
     price_cents: int(body['price_cents']),
     stock: int(body['stock']),
     image: text(body['image'], 500),
@@ -397,10 +407,10 @@ admin.post('/products', (req, res) => {
   }
   const r = db
     .prepare(
-      `INSERT INTO products (slug, name, category, summary, description, price_cents, stock, image, active)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO products (slug, name, category, summary, description, price_cents, stock, image, active, name_en, category_en, summary_en, description_en)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
     )
-    .run(p.slug, p.name, p.category, p.summary, p.description, p.price_cents!, p.stock!, p.image, p.active);
+    .run(p.slug, p.name, p.category, p.summary, p.description, p.price_cents!, p.stock!, p.image, p.active, p.name_en ?? '', p.category_en ?? '', p.summary_en ?? '', p.description_en ?? '');
   res.status(201).json(db.prepare('SELECT * FROM products WHERE id = ?').get(Number(r.lastInsertRowid)));
 });
 
@@ -418,9 +428,9 @@ admin.put('/products/:id', (req, res) => {
   const r = db
     .prepare(
       `UPDATE products SET slug = ?, name = ?, category = ?, summary = ?, description = ?, price_cents = ?,
-       stock = ?, image = ?, active = ?, updated_at = datetime('now') WHERE id = ?`,
+       stock = ?, image = ?, active = ?, name_en = COALESCE(?, name_en), category_en = COALESCE(?, category_en), summary_en = COALESCE(?, summary_en), description_en = COALESCE(?, description_en), updated_at = datetime('now') WHERE id = ?`,
     )
-    .run(p.slug, p.name, p.category, p.summary, p.description, p.price_cents!, p.stock!, p.image, p.active, id);
+    .run(p.slug, p.name, p.category, p.summary, p.description, p.price_cents!, p.stock!, p.image, p.active, p.name_en, p.category_en, p.summary_en, p.description_en, id);
   if (!r.changes) {
     res.status(404).json({ error: 'not_found' });
     return;
@@ -482,7 +492,7 @@ admin.put('/orders/:id', (req, res) => {
     res.status(404).json({ error: 'not_found' });
     return;
   }
-  transaction(() => {
+  try { transaction(() => {
     // Al cancelar se repone el stock; al reactivar un pedido cancelado se vuelve a descontar.
     const delta = status === 'cancelado' && current.status !== 'cancelado' ? 1 : current.status === 'cancelado' && status !== 'cancelado' ? -1 : 0;
     if (delta) {
@@ -491,12 +501,16 @@ admin.put('/orders/:id', (req, res) => {
         qty: number;
       }[]) {
         if (item.product_id) {
-          db.prepare('UPDATE products SET stock = MAX(stock + ?, 0) WHERE id = ?').run(delta * item.qty, item.product_id);
+          const change = db.prepare('UPDATE products SET stock = stock + ? WHERE id = ? AND stock + ? >= 0').run(delta * item.qty, item.product_id, delta * item.qty);
+          if (delta < 0 && !change.changes) throw new OrderError('out_of_stock');
         }
       }
     }
     db.prepare("UPDATE orders SET status = ?, updated_at = datetime('now') WHERE id = ?").run(status, id);
-  });
+  }); } catch (err) {
+    if (err instanceof OrderError) { res.status(409).json({ error: err.message }); return; }
+    throw err;
+  }
   res.json(orderWithItems(id));
 });
 

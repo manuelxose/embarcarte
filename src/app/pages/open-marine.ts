@@ -40,8 +40,10 @@ import { SeoService, breadcrumb } from '../core/seo.service';
           </div>
           <p class="heading-note">Elige piezas sueltas o un sistema completo, instalado y configurado para tu embarcación.</p>
         </div>
+        @for (kind of kinds; track kind) {
+        <h3 class="display h-md" style="margin: 40px 0 24px">{{ kind === 'Software' ? 'Software de navegación' : 'Hardware a medida' }}</h3>
         <div class="service-grid two">
-          @for (p of products; track p.slug; let i = $index) {
+          @for (p of byKind(kind); track p.slug; let i = $index) {
             <article class="service-card">
               <div class="card-content">
                 <span class="card-number">0{{ i + 1 }} / {{ p.kind }}</span>
@@ -52,6 +54,7 @@ import { SeoService, breadcrumb } from '../core/seo.service';
             </article>
           }
         </div>
+        }
       </div>
     </section>
 
@@ -78,7 +81,8 @@ import { SeoService, breadcrumb } from '../core/seo.service';
   `,
 })
 export class OpenMarine {
-  protected readonly products = PRODUCTS;
+  protected readonly kinds = ['Software', 'Hardware'] as const;
+  protected readonly byKind = (kind: 'Software' | 'Hardware') => PRODUCTS.filter((product) => product.kind === kind);
   protected readonly images = IMAGES;
 
   constructor() {
@@ -88,6 +92,7 @@ export class OpenMarine {
         'Open Marine integra GPS, AIS, sonda, viento y piloto automático en un sistema abierto basado en Signal K, ' +
         'con cartas náuticas offline en cualquier tablet de a bordo.',
       path: '/tecnologia',
+      alternates: [{ language: 'es', path: '/tecnologia' }, { language: 'en', path: '/en/technology' }],
       jsonLd: [breadcrumb([{ name: 'Tecnología', path: '/tecnologia' }])],
     });
   }

@@ -52,6 +52,7 @@ import { ProductImage } from './product-image';
               <dl class="specs">
                 <div><dt>Total (IVA incluido)</dt><dd class="price">{{ price(cart.totalCents()) }}</dd></div>
               </dl>
+              <p class="small muted">Los costes de envío o instalación, si corresponden, se confirmarán por separado.</p>
               @if (!auth.user()) {
                 <p class="muted small">Para completar la compra, accede o crea tu cuenta. Así podrás seguir el pedido.</p>
                 <a class="button button-dark button-block" routerLink="/acceso" [queryParams]="{ volver: '/carrito' }">Acceder para comprar <span>↗</span></a>
@@ -129,12 +130,12 @@ export class Cart {
     }
     this.sending.set(true);
     this.error.set('');
-    const { terms: _terms, ...value } = this.form.getRawValue();
+    const value = this.form.getRawValue();
     try {
       const order = await firstValueFrom(
-        this.http.post<{ id: number; checkoutUrl?: string }>('/api/orders', {
+        this.http.post<{ id: number; checkoutUrl?: string; paymentError?: boolean }>('/api/orders', {
           ...value,
-          items: this.cart.items().map((i) => ({ slug: i.slug, qty: i.qty })),
+          items: this.cart.items().map((i) => ({ slug: i.slug, qty: i.qty, price_cents: i.price_cents })),
         }),
       );
       this.cart.clear();
@@ -142,11 +143,13 @@ export class Cart {
         window.location.href = order.checkoutUrl;
         return;
       }
-      await this.router.navigate(['/cuenta/pedidos', order.id], { queryParams: { nuevo: 1 } });
+      await this.router.navigate(['/cuenta/pedidos', order.id], { queryParams: order.paymentError ? { pago: 'error' } : { nuevo: 1 } });
     } catch (err) {
       const code = err instanceof HttpErrorResponse ? err.error?.error : '';
       this.error.set(
-        code === 'out_of_stock'
+        code === 'price_changed'
+          ? 'Ha cambiado el precio de algún producto. Elimínalo y vuelve a añadirlo para revisar el precio actual.'
+          : code === 'out_of_stock'
           ? 'Alguno de los productos ya no tiene stock suficiente. Revisa las cantidades.'
           : code === 'invalid_item'
             ? 'Algún producto del carrito ya no está disponible. Quítalo e inténtalo de nuevo.'

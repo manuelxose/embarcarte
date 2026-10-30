@@ -7,7 +7,7 @@ import { AuthService } from './auth.service';
 export const authGuard: CanActivateFn = async (_route, state) => {
   const router = inject(Router);
   const user = await inject(AuthService).load();
-  return user ? true : router.createUrlTree(['/acceso'], { queryParams: { volver: state.url } });
+  return user ? true : router.createUrlTree([state.url.startsWith('/en/') ? '/en/login' : '/acceso'], { queryParams: { volver: state.url } });
 };
 
 export const adminGuard: CanActivateFn = async (_route, state) => {

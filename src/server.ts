@@ -47,22 +47,26 @@ const prerenderedPaths = (() => {
 })();
 
 app.get('/sitemap.xml', (_req, res) => {
-  const products = db.prepare('SELECT slug, updated_at FROM products WHERE active = 1').all() as {
+  const products = db.prepare('SELECT slug, updated_at, name_en, summary_en, description_en FROM products WHERE active = 1').all() as {
     slug: string;
     updated_at: string;
+    name_en: string;
+    summary_en: string;
+    description_en: string;
   }[];
-  const today = new Date().toISOString().slice(0, 10);
   const urls = [
-    ...prerenderedPaths.map((path) => ({ path, lastmod: today })),
-    { path: '/tienda', lastmod: today },
+    ...prerenderedPaths.map((path) => ({ path, lastmod: '' })),
+    { path: '/tienda', lastmod: '' },
+    { path: '/en/shop', lastmod: '' },
     ...products.map((p) => ({ path: `/tienda/${p.slug}`, lastmod: p.updated_at.slice(0, 10) })),
+    ...products.filter((p) => p.name_en && p.summary_en && p.description_en).map((p) => ({ path: `/en/shop/${p.slug}`, lastmod: p.updated_at.slice(0, 10) })),
   ];
   res.type('application/xml').setHeader('Cache-Control', 'public, max-age=3600');
   res.send(
     `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
       urls
         .sort((a, b) => a.path.localeCompare(b.path))
-        .map((u) => `  <url><loc>${SITE_URL}${u.path === '/' ? '/' : u.path}</loc><lastmod>${u.lastmod}</lastmod></url>`)
+        .map((u) => `  <url><loc>${(SITE_URL.replace(/\/$/, '') + u.path).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`)
         .join('\n') +
       '\n</urlset>\n',
   );

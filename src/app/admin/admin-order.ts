@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
@@ -30,6 +30,7 @@ type AdminOrderDetail = Order & { customer: { id: number; name: string; email: s
             <button class="button button-dark" type="button" [disabled]="status === o.status || saving()" (click)="save()">Guardar</button>
           </div>
           <p class="form-hint">Al cancelar un pedido se repone el stock de sus productos.</p>
+          @if (error()) { <p class="error" role="alert">{{ error() }}</p> }
         </div>
         <div class="table-wrap">
           <table class="data">
@@ -65,6 +66,7 @@ export class AdminOrder {
   protected readonly statuses = ORDER_STATUSES;
   protected readonly order = signal<AdminOrderDetail | null>(null);
   protected readonly saving = signal(false);
+  protected readonly error = signal('');
   protected status: OrderStatus = 'pendiente';
   protected readonly price = formatPrice;
   protected readonly date = formatDate;
@@ -78,9 +80,12 @@ export class AdminOrder {
 
   protected async save(): Promise<void> {
     this.saving.set(true);
+    this.error.set('');
     try {
       const updated = await firstValueFrom(this.http.put<Order>(`/api/admin/orders/${this.id()}`, { status: this.status }));
       this.order.update((o) => (o ? { ...o, ...updated, customer: o.customer } : o));
+    } catch (err) {
+      this.error.set(err instanceof HttpErrorResponse && err.status === 409 ? 'No hay stock suficiente para reactivar el pedido.' : 'No se ha podido actualizar el pedido.');
     } finally {
       this.saving.set(false);
     }

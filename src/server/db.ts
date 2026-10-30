@@ -84,6 +84,11 @@ db.exec(`
   );
 `);
 
+const productColumns = new Set((db.prepare('PRAGMA table_info(products)').all() as { name: string }[]).map((column) => column.name));
+for (const name of ['name_en', 'category_en', 'summary_en', 'description_en']) {
+  if (!productColumns.has(name)) db.exec(`ALTER TABLE products ADD COLUMN ${name} TEXT NOT NULL DEFAULT ''`);
+}
+
 /** Ejecuta `fn` en una transacción y hace rollback si lanza. */
 export const transaction = <T>(fn: () => T): T => {
   db.exec('BEGIN IMMEDIATE');

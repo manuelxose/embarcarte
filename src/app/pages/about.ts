@@ -56,6 +56,7 @@ export class About {
       description:
         'Embarcarte une tecnología náutica abierta, experiencias en el mar y traslados de embarcaciones, con la plataforma Open Marine.',
       path: '/sobre-nosotros',
+      alternates: [{ language: 'es', path: '/sobre-nosotros' }, { language: 'en', path: '/en/about' }],
       jsonLd: [breadcrumb([{ name: 'Sobre nosotros', path: '/sobre-nosotros' }])],
     });
   }

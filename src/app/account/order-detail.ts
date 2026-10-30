@@ -17,12 +17,15 @@ import { StatusBadge } from './status-badge';
           <strong>¡Gracias por tu pedido!</strong>
           <p class="muted" style="margin: 6px 0 0">
             @if (pago() === 'ok') {
-              Hemos recibido tu pago. Te avisaremos por email cuando lo enviemos.
+              Estamos verificando tu pago. Consulta el estado del pedido para ver su confirmación.
             } @else {
-              Te hemos enviado un email con el resumen. Te mandaremos los datos de la transferencia y el plazo de entrega.
+              El pedido está pendiente. Te facilitaremos los datos de la transferencia y el plazo de entrega.
             }
           </p>
         </div>
+      }
+      @if (pago() === 'error') {
+        <div class="panel notice" style="margin-bottom: 24px" role="status">No hemos podido iniciar el pago. El pedido se ha guardado pendiente; escríbenos a {{ site.email }} para completarlo.</div>
       }
       @if (pago() === 'cancelado') {
         <div class="panel notice" style="margin-bottom: 24px" role="status">

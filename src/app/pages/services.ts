@@ -54,6 +54,7 @@ export class Services {
       description:
         'Integración de instrumentos NMEA, instalación de ordenadores de navegación, desarrollo a medida y soporte técnico para embarcaciones.',
       path: '/servicios',
+      alternates: [{ language: 'es', path: '/servicios' }, { language: 'en', path: '/en/services' }],
       jsonLd: [breadcrumb([{ name: 'Servicios', path: '/servicios' }])],
     });
   }

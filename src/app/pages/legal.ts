@@ -31,6 +31,7 @@ const TITLES: Record<LegalPage, string> = {
               @if (legal.taxId) { <li>NIF/CIF: {{ legal.taxId }}</li> }
               @if (legal.address) { <li>Domicilio: {{ legal.address }}</li> }
               @if (legal.registry) { <li>Datos registrales: {{ legal.registry }}</li> }
+              @if (!legal.taxId || !legal.address) { <li>Datos fiscales y domicilio: pendientes de confirmación.</li> }
               <li>Email: {{ site.email }}</li>
             </ul>
             <h2>Condiciones de uso</h2>
@@ -131,6 +132,7 @@ export class Legal {
       title: this.title,
       description: `${this.title} de ${SITE.name}.`,
       path: `/${this.page}`,
+      alternates: [{ language: 'es', path: `/${this.page}` }, { language: 'en', path: `/en/${({ 'aviso-legal': 'legal-notice', privacidad: 'privacy', cookies: 'cookies', 'condiciones-de-venta': 'terms-of-sale' } as const)[this.page]}` }],
     });
   }
 }

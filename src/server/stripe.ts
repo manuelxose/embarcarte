@@ -1,7 +1,7 @@
 import { createHmac, timingSafeEqual } from 'node:crypto';
 
 const secretKey = () => process.env['STRIPE_SECRET_KEY'];
-export const stripeEnabled = () => !!secretKey();
+export const stripeEnabled = () => !!secretKey() && !!process.env['STRIPE_WEBHOOK_SECRET'];
 
 interface LineItem {
   name: string;
@@ -15,15 +15,16 @@ export const createCheckoutSession = async (
   email: string,
   items: LineItem[],
   siteUrl: string,
+  language: 'es' | 'en' = 'es',
 ): Promise<{ id: string; url: string }> => {
   const form = new URLSearchParams({
     mode: 'payment',
     customer_email: email,
     client_reference_id: String(orderId),
     'metadata[order_id]': String(orderId),
-    success_url: `${siteUrl}/cuenta/pedidos/${orderId}?pago=ok`,
-    cancel_url: `${siteUrl}/cuenta/pedidos/${orderId}?pago=cancelado`,
-    locale: 'es',
+    success_url: `${siteUrl}${language === 'en' ? '/en/account/orders' : '/cuenta/pedidos'}/${orderId}?pago=ok`,
+    cancel_url: `${siteUrl}${language === 'en' ? '/en/account/orders' : '/cuenta/pedidos'}/${orderId}?pago=cancelado`,
+    locale: language,
   });
   items.forEach((item, i) => {
     form.set(`line_items[${i}][quantity]`, String(item.qty));

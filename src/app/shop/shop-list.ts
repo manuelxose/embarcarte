@@ -6,6 +6,7 @@ import { ShopProduct, formatPrice } from '../core/models';
 import { SeoService, breadcrumb } from '../core/seo.service';
 import { absoluteUrl } from '../core/site.config';
 import { ProductImage } from './product-image';
+import { searchSamples } from '../core/sample-products';
 
 @Component({
   selector: 'app-shop-list',
@@ -18,6 +19,18 @@ import { ProductImage } from './product-image';
         <p class="lead">Hardware y accesorios del ecosistema Open Marine. Compra online y sigue tu pedido desde tu área de cliente.</p>
       </div>
     </section>
+
+    <section class="section-pad"><div class="wrap">
+      <div class="section-heading"><div><p class="eyebrow">Catálogo de muestra</p><h2 class="display h-lg">Instrumentación y accesorios</h2></div><p class="heading-note">Estos ejemplos no están a la venta. Consulta disponibilidad y compatibilidad antes de comprar.</p></div>
+      <label for="sample-search">Buscar productos</label><input id="sample-search" type="search" placeholder="Por ejemplo, viento o GPS" (input)="search.set($any($event.target).value)" />
+      <div class="service-grid">
+        @for (item of filteredSamples(); track item.slug) {
+          <article class="service-card"><div class="card-image"><app-product-image [src]="item.image" [alt]="item.name" /></div><div class="card-content"><span class="card-number">{{ item.category }} · Muestra</span><h3>{{ item.name }}</h3><p>{{ item.summary }}</p><a class="arrow-link stretched" [routerLink]="['/tienda/muestra', item.slug]">Ver detalles <span aria-hidden="true">→</span></a></div></article>
+        } @empty {
+          <p class="empty">No hay productos de muestra que coincidan con la búsqueda.</p>
+        }
+      </div>
+    </div></section>
 
     <section class="services bg-soft section-pad">
       <div class="wrap">
@@ -59,6 +72,8 @@ import { ProductImage } from './product-image';
   `,
 })
 export class ShopList {
+  protected readonly search = signal('');
+  protected filteredSamples() { return searchSamples(this.search()); }
   protected readonly cart = inject(CartService);
   protected readonly products = signal<ShopProduct[] | null>(null);
   protected readonly error = signal(false);
@@ -76,6 +91,7 @@ export class ShopList {
             description:
               'Compra el ordenador de navegación Open Marine Hub, el controlador de piloto automático y accesorios náuticos abiertos.',
             path: '/tienda',
+            alternates: [{ language: 'es', path: '/tienda' }, { language: 'en', path: '/en/shop' }],
             jsonLd: [
               breadcrumb([{ name: 'Tienda', path: '/tienda' }]),
               {
@@ -97,6 +113,7 @@ export class ShopList {
       description:
         'Compra el ordenador de navegación Open Marine Hub, el controlador de piloto automático y accesorios náuticos abiertos.',
       path: '/tienda',
+      alternates: [{ language: 'es', path: '/tienda' }, { language: 'en', path: '/en/shop' }],
     });
   }
 }

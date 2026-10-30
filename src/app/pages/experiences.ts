@@ -74,6 +74,7 @@ export class Experiences {
       description:
         'Salidas en barco por la costa, iniciación a la navegación y travesías a medida con Embarcarte. Consulta disponibilidad.',
       path: '/experiencias',
+      alternates: [{ language: 'es', path: '/experiencias' }, { language: 'en', path: '/en/experiences' }],
       jsonLd: [breadcrumb([{ name: 'Experiencias', path: '/experiencias' }])],
     });
   }

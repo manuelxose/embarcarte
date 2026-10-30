@@ -9,6 +9,8 @@ export interface SeoData {
   image?: string;
   type?: 'website' | 'article' | 'product';
   noindex?: boolean;
+  language?: 'es' | 'en';
+  alternates?: { language: 'es' | 'en'; path: string }[];
   jsonLd?: Record<string, unknown>[];
 }
 
@@ -22,13 +24,14 @@ export class SeoService {
     const url = absoluteUrl(data.path);
     const image = SITE.url + (data.image ?? '/og-image.png');
     const fullTitle = data.path === '/' ? data.title : `${data.title} | ${SITE.name}`;
+    this.document.documentElement.lang = data.language ?? 'es';
 
     this.title.setTitle(fullTitle);
     this.tag('name', 'description', data.description);
     this.tag('name', 'robots', data.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large');
     this.tag('property', 'og:type', data.type === 'article' ? 'article' : 'website');
     this.tag('property', 'og:site_name', SITE.name);
-    this.tag('property', 'og:locale', SITE.locale);
+    this.tag('property', 'og:locale', data.language === 'en' ? 'en_GB' : SITE.locale);
     this.tag('property', 'og:title', fullTitle);
     this.tag('property', 'og:description', data.description);
     this.tag('property', 'og:url', url);
@@ -41,6 +44,7 @@ export class SeoService {
     this.tag('name', 'twitter:image', image);
 
     this.setCanonical(url);
+    this.setAlternates(data.alternates ?? []);
     this.setJsonLd(data.jsonLd ?? []);
   }
 
@@ -56,6 +60,18 @@ export class SeoService {
       this.document.head.appendChild(link);
     }
     link.setAttribute('href', url);
+  }
+
+  private setAlternates(alternates: NonNullable<SeoData['alternates']>): void {
+    this.document.head.querySelectorAll('link[data-seo="alternate"]').forEach((el) => el.remove());
+    for (const alternate of alternates) {
+      const link = this.document.createElement('link');
+      link.setAttribute('rel', 'alternate');
+      link.setAttribute('hreflang', alternate.language);
+      link.setAttribute('href', absoluteUrl(alternate.path));
+      link.setAttribute('data-seo', 'alternate');
+      this.document.head.appendChild(link);
+    }
   }
 
   private setJsonLd(items: Record<string, unknown>[]): void {

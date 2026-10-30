@@ -106,6 +106,22 @@ export const PRODUCTS: Product[] = [
     ],
     audience: 'Armadores que quieren renovar o crear un piloto automático mantenible.',
   },
+  {
+    slug: 'simulacion', name: 'Open Marine Simulation', kind: 'Software',
+    tagline: 'Simulación de datos y escenarios para desarrollo y pruebas.',
+    description: 'Plataforma de simulación para generar señales, ejecutar escenarios y probar integraciones con Signal K en un entorno controlado.',
+    features: ['Generación determinista de señales', 'Registro compartido de escenarios y canales', 'Publicación de datos en Signal K', 'Banco de pruebas con ejecución y registro de muestras'],
+    specs: [{ label: 'Uso', value: 'Desarrollo, diagnóstico y pruebas' }, { label: 'Integración', value: 'Signal K mediante WebSocket o HTTP' }],
+    audience: 'Desarrolladores, integradores y equipos de formación o I+D.',
+  },
+  {
+    slug: 'pasarela-sensores', name: 'Pasarela de sensores Open Marine', kind: 'Hardware',
+    tagline: 'Integración de sensores y datos de navegación para tu embarcación.',
+    description: 'Solución de integración a medida para recoger datos de los sensores y equipos disponibles a bordo y compartirlos con Open Marine.',
+    features: ['Conexión de fuentes de datos según compatibilidad', 'Integración con Signal K', 'Configuración adaptada a los instrumentos existentes'],
+    specs: [{ label: 'Configuración', value: 'A medida de cada instalación' }, { label: 'Conectividad', value: 'Según equipos y adaptadores' }],
+    audience: 'Armadores y profesionales que necesitan integrar instrumentación existente.',
+  },
 ];
 
 export const SERVICES = [

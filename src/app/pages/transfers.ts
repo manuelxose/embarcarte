@@ -52,6 +52,7 @@ export class Transfers {
       description:
         'Traslados marítimos de veleros y barcos a motor entre puertos, con planificación, seguimiento y entrega documentada.',
       path: '/traslados',
+      alternates: [{ language: 'es', path: '/traslados' }, { language: 'en', path: '/en/delivery' }],
       jsonLd: [
         breadcrumb([{ name: 'Traslados', path: '/traslados' }]),
         {

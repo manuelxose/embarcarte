@@ -47,6 +47,11 @@ const slugify = (value: string) =>
       <textarea id="summary" rows="2" maxlength="300" formControlName="summary"></textarea>
       <label for="description">Descripción</label>
       <textarea id="description" rows="8" formControlName="description"></textarea>
+      <h2 class="footer-title">Traducción al inglés</h2>
+      <label for="name_en">Nombre en inglés</label><input id="name_en" formControlName="name_en" />
+      <label for="category_en">Categoría en inglés</label><input id="category_en" formControlName="category_en" />
+      <label for="summary_en">Resumen en inglés</label><textarea id="summary_en" rows="2" maxlength="300" formControlName="summary_en"></textarea>
+      <label for="description_en">Descripción en inglés</label><textarea id="description_en" rows="8" formControlName="description_en"></textarea>
 
       <span class="field-label">Imagen</span>
       <div class="hero-actions" style="gap: 16px; margin-bottom: 19px; align-items: center">
@@ -87,6 +92,10 @@ export class AdminProductEdit {
     category: ['Tecnología'],
     summary: [''],
     description: [''],
+    name_en: [''],
+    category_en: [''],
+    summary_en: [''],
+    description_en: [''],
     price: [0, [Validators.required, Validators.min(0)]],
     stock: [0, [Validators.required, Validators.min(0)]],
     image: [''],
@@ -104,6 +113,10 @@ export class AdminProductEdit {
         category: p.category,
         summary: p.summary,
         description: p.description,
+        name_en: p.name_en,
+        category_en: p.category_en,
+        summary_en: p.summary_en,
+        description_en: p.description_en,
         price: p.price_cents / 100,
         stock: p.stock,
         image: p.image,

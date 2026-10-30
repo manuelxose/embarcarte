@@ -18,6 +18,10 @@ export interface ShopProduct {
   price_cents: number;
   stock: number;
   image: string;
+  name_en: string;
+  category_en: string;
+  summary_en: string;
+  description_en: string;
 }
 
 export interface AdminProduct extends ShopProduct {

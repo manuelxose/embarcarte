@@ -93,15 +93,19 @@ export class Contact {
   });
 
   constructor() {
-    const topic = inject(ActivatedRoute).snapshot.queryParamMap.get('tema');
+    const params = inject(ActivatedRoute).snapshot.queryParamMap;
+    const topic = params.get('tema');
     if (topic && TOPICS.some((t) => t.value === topic)) {
       this.form.controls.topic.setValue(topic);
     }
+    const product = params.get('producto');
+    if (product && product.length <= 120) this.form.controls.message.setValue(`Me gustaría consultar disponibilidad y presupuesto para: ${product}.`);
     inject(SeoService).set({
       title: 'Contacto',
       description:
         'Habla con Embarcarte sobre electrónica náutica, experiencias en el mar o traslados de embarcaciones.',
       path: '/contacto',
+      alternates: [{ language: 'es', path: '/contacto' }, { language: 'en', path: '/en/contact' }],
       jsonLd: [breadcrumb([{ name: 'Contacto', path: '/contacto' }])],
     });
   }

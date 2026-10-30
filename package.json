@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "test:commerce": "node scripts/check-commerce.mjs",
     "watch": "ng build --watch --configuration development",
     "serve:ssr": "node dist/embarcarte/server/server.mjs"
   },

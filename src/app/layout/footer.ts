@@ -21,6 +21,7 @@ import { Brand } from './brand';
             <li><a routerLink="/experiencias">Experiencias en el mar</a></li>
             <li><a routerLink="/traslados">Traslados de embarcaciones</a></li>
             <li><a routerLink="/servicios">Instalación y soporte</a></li>
+            <li><a routerLink="/guias">Guías náuticas</a></li>
           </ul>
         </div>
         <div>
@@ -44,7 +45,7 @@ import { Brand } from './brand';
       </div>
       <div class="wrap footer-bottom">
         <span>© {{ year }} Embarcarte</span>
-        <span>Hecho para quienes miran al horizonte.</span>
+        <span>Desarrollado por <a href="https://tecnoriasl.com" target="_blank" rel="noopener noreferrer">Tecnoria</a></span>
         <span class="footer-domain">embarcarte.com</span>
       </div>
     </footer>
