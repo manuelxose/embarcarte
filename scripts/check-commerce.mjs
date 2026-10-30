@@ -241,6 +241,18 @@ try {
   assert.equal((await request('/api/admin/orders', { cookie: customer.cookie })).response.status, 403, 'a customer cannot read the admin API');
   assert.equal((await request('/api/admin/orders', { cookie: admin.cookie })).response.status, 200);
   assert.equal((await request('/api/auth/login', { body: { email: 'customer@example.test', password: 'wrong-password' } })).response.status, 401);
+  assert.equal((await request('/api/auth/google', { body: {} })).response.status, 400, 'Google login requires a credential');
+
+  const googleDb = new DatabaseSync(join(temp, 'embarcarte.sqlite'));
+  googleDb
+    .prepare("INSERT INTO users (email, name, password_hash, google_id) VALUES (?, ?, 'x', 'google-sub-test')")
+    .run('google-only@example.test', 'Google Only');
+  googleDb.close();
+  const googleTaken = await request('/api/auth/register', {
+    body: { name: 'Google Only', email: 'google-only@example.test', password: 'test-password-123' },
+  });
+  assert.equal(googleTaken.response.status, 409);
+  assert.equal(googleTaken.data.error, 'email_taken_google', 'a Google-only email tells the user to use Google');
 
   // --- Stripe webhook -------------------------------------------------------
   const webhook = (payload, signature) =>

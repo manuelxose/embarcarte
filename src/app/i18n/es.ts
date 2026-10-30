@@ -154,7 +154,14 @@ export const es = {
   'auth.invalidLogin': 'Introduce tu email y contraseña.',
   'auth.badCredentials': 'Email o contraseña incorrectos.',
   'auth.emailTaken': 'Ya existe una cuenta con ese email. Accede con tu contraseña.',
+  'auth.emailGoogle': 'Ese email ya está registrado con Google. Usa «Continuar con Google».',
   'auth.tooManyAttempts': 'Demasiados intentos. Espera unos minutos.',
+  'auth.or': 'o',
+  'auth.googleError': 'No pudimos completar el acceso con Google. Inténtalo de nuevo.',
+  'auth.googleConflict': 'Ese email ya está vinculado a otra cuenta de Google.',
+  'auth.googleExists': 'Ese email ya tiene una cuenta con contraseña. Accede con ella.',
+  'auth.googleUnavailable':
+    'Google no está disponible ahora mismo. Puedes acceder con email y contraseña.',
   'auth.seoTitle': 'Acceso clientes',
   'auth.seoDescription': 'Accede a tu área de cliente.',
 

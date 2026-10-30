@@ -148,7 +148,13 @@ export const en: Record<keyof typeof es, string> = {
   'auth.invalidLogin': 'Enter your email and password.',
   'auth.badCredentials': 'Incorrect email or password.',
   'auth.emailTaken': 'An account already exists with that email. Sign in with your password.',
+  'auth.emailGoogle': 'That email is registered with Google. Use “Continue with Google”.',
   'auth.tooManyAttempts': 'Too many attempts. Please wait a few minutes.',
+  'auth.or': 'or',
+  'auth.googleError': 'We could not complete Google sign-in. Please try again.',
+  'auth.googleConflict': 'That email is already linked to another Google account.',
+  'auth.googleExists': 'That email already has a password account. Sign in with it.',
+  'auth.googleUnavailable': 'Google is unavailable right now. You can sign in with email and password.',
   'auth.seoTitle': 'Customer sign in',
   'auth.seoDescription': 'Sign in to your customer account.',
 

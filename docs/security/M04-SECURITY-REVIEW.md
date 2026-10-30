@@ -27,7 +27,21 @@ has been penetration-tested or that production infrastructure is secure.
 | S11 | Medium (fixed) | `ensureAdmin` re-hashed and overwrote the admin password on every boot, silently reverting a password change and not revoking sessions | `auth.ts` old `ensureAdmin` | Password is set on first creation only; `ADMIN_PASSWORD_RESET=true` explicitly rotates it and deletes the admin's sessions | Code review; env example/runbook updated |
 | S12 | High (fixed) | Two concurrent admin cancellations could both see `pendiente` and restore stock twice | `SELECT` was outside `transaction()` | The status read, stock change and update are inside one `BEGIN IMMEDIATE` transaction; concurrency regression added | `test:commerce` concurrent cancel asserts stock restored once |
 
-## 3. Authentication and session review
+## 3. Google sign-in
+
+Added after the M04 release. It reuses the GuíaTV Google OAuth web client ID. No client
+secret is used: the browser obtains a Google ID token and `POST /api/auth/google` verifies
+signature, issuer, audience and expiry with `google-auth-library`. The server rejects
+tokens without `email_verified === true`, rate-limits the endpoint (10/10 min/IP), refuses
+to replace a different existing Google `sub`, and creates Google-only users with an
+unguessable random local password hash. It deliberately does **not** auto-link an existing
+password account by email: local registration does not verify email, so that would let a
+Google account claim an account registered with that address. The Google token is never
+stored or logged. CSP allows only `accounts.google.com` for GIS script/style/connect/frame.
+The Google Cloud client still needs the Embarcarte JavaScript origins; without them Google
+returns `origin_mismatch` and no credential is issued.
+
+## 4. Authentication and session review
 
 - Passwords: `scrypt` with a random 16-byte salt and 64-byte hash, constant-time compare.
 - Login: always performs scrypt (dummy hash when the email is unknown); generic
@@ -44,7 +58,7 @@ has been penetration-tested or that production infrastructure is secure.
   means the environment variable is operationally sensitive; it is documented in the
   release runbook.
 
-## 4. Authorization review
+## 5. Authorization review
 
 The server, not the Angular guard, is the boundary:
 
@@ -60,7 +74,7 @@ The server, not the Angular guard, is the boundary:
 Verified with the commerce suite: unauthenticated 401, foreign order 404, customer admin
 403, admin 200.
 
-## 5. Web security review
+## 6. Web security review
 
 | Control | State |
 | --- | --- |
@@ -72,14 +86,14 @@ Verified with the commerce suite: unauthenticated 401, foreign order 404, custom
 | MIME sniffing | `X-Content-Type-Options: nosniff` |
 | Referrer | `strict-origin-when-cross-origin` |
 | HSTS | App sends it in production; Caddy/nginx also send it |
-| CSP | Enforced with `default-src 'self'`, `object-src 'none'`, `base-uri 'self'`, `frame-ancestors 'none'`, `form-action` limited to self + Stripe; inline scripts remain allowed (S5) |
+| CSP | Enforced with `default-src 'self'`, `object-src 'none'`, `base-uri 'self'`, `frame-ancestors 'none'`, `form-action` limited to self + Stripe; inline scripts remain allowed (S5). Google Identity Services is allowed only on `accounts.google.com` for script/style/connect/frame |
 | Input validation | Length caps, email regex, slug regex, integer price/stock, order quantity 1–99, terms and payment enums, image signature |
 | Uploads | Random filename, extension derived from MIME allowlist, magic bytes, 8 MB cap |
 | Rate limits | In-process map, pruned; see S6 |
 | Error handling | API returns generic `server_error`, no stack or SQL; SSR error handler returns plain 500 |
 | Logging | JSON method/path/status/duration and request id; no cookies, bodies, passwords or tokens |
 
-## 6. Payment review
+## 7. Payment review
 
 - Stripe is disabled unless both `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET` exist.
 - Checkout is created server-side from authoritative line items; the browser only sends
@@ -98,7 +112,7 @@ Residual: if Stripe session creation fails after the order row exists, the order
 pending with stock reserved (S9). This needs either an automatic cleanup job or an explicit
 manual reconciliation step.
 
-## 7. Sensitive data and repository hygiene
+## 8. Sensitive data and repository hygiene
 
 - `git ls-files` contains `deploy/.env.example` only; no `.env`, database, key or token.
 - SQLite lives in `DATA_DIR` (`/app/data` in Docker); `/data` is gitignored and excluded from
@@ -109,13 +123,14 @@ manual reconciliation step.
 - Mail failures no longer print message bodies.
 - `X-Request-Id` is random per request and does not encode user data.
 
-## 8. Open risks and required production evidence
+## 9. Open risks and required production evidence
 
 | Risk | Status |
 | --- | --- |
 | Strict CSP without inline exceptions | **Open Medium**, requires nonce/hash build work |
 | Distributed rate limiting | **Not applicable to one container**; required before scaling |
 | Stripe outage reconciliation | **Mitigated**: session-creation failure cancels the order and restores stock; manual reconciliation still needed for a provider outage after order creation |
+| Google OAuth JavaScript origins | **BLOCKED**: the shared GuíaTV client currently rejects Embarcarte origins; add `https://embarcarte.com` in Google Cloud before enabling the button in production |
 | External alerting / paging | **Not configured**; logs and probes only |
 | Branch protection / production approval | **Not configured** on GitHub (verified 404 / no protection rules) |
 | Production backup and restore | **Not verified** against production; only isolated restore tested |

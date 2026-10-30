@@ -1,8 +1,19 @@
+import { isPlatformBrowser } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, effect, inject, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  PLATFORM_ID,
+  effect,
+  inject,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../core/auth.service';
+import { mountGoogleButton } from '../../core/google-identity';
 import { LocaleService } from '../../core/i18n/locale.service';
 import { TranslationService } from '../../core/i18n/translation.service';
 import { SeoService } from '../../core/seo.service';
@@ -51,22 +62,32 @@ const AUTH_ERRORS: Record<number, TranslationKey> = {
               {{ i18n.t(mode() === 'login' ? 'auth.signIn' : 'auth.register') }} <span aria-hidden="true">↗</span>
             </button>
           </form>
+
+          <div class="google-divider"><span>{{ i18n.t('auth.or') }}</span></div>
+          <div #googleButton class="google-button" [attr.aria-busy]="sending()"></div>
+          @if (googleError()) {
+            <p class="error" role="alert">{{ googleError() }}</p>
+          }
+
           <p class="form-hint">{{ i18n.t('auth.forgot', { email: site.email }) }}</p>
         </div>
       </div>
     </section>
   `,
 })
-export class Login {
+export class Login implements AfterViewInit {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly platformId = inject(PLATFORM_ID);
   private readonly returnUrl = inject(ActivatedRoute).snapshot.queryParamMap.get('volver');
+  private readonly googleButton = viewChild<ElementRef<HTMLDivElement>>('googleButton');
   protected readonly locale = inject(LocaleService);
   protected readonly i18n = inject(TranslationService);
   protected readonly site = SITE;
   protected readonly mode = signal<'login' | 'register'>('login');
   protected readonly sending = signal(false);
   protected readonly error = signal('');
+  protected readonly googleError = signal('');
 
   protected readonly form = inject(FormBuilder).nonNullable.group({
     name: [''],
@@ -89,6 +110,44 @@ export class Login {
     void this.auth.load().then((user) => user && this.redirect(user.role));
   }
 
+  ngAfterViewInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const element = this.googleButton()?.nativeElement;
+    if (!element) return;
+    void mountGoogleButton(element, this.locale.locale(), (credential) => {
+      void this.googleLogin(credential);
+    }).catch(() => {
+      this.googleError.set(this.i18n.t('auth.googleUnavailable'));
+    });
+  }
+
+  private async googleLogin(credential: string): Promise<void> {
+    if (this.sending()) return;
+    this.sending.set(true);
+    this.googleError.set('');
+    this.error.set('');
+    try {
+      const user = await this.auth.loginWithGoogle(credential);
+      this.redirect(user.role);
+    } catch (err) {
+      const status = err instanceof HttpErrorResponse ? err.status : 0;
+      const code = err instanceof HttpErrorResponse ? err.error?.error : '';
+      this.googleError.set(
+        this.i18n.t(
+          status === 409
+            ? code === 'google_email_exists'
+              ? 'auth.googleExists'
+              : 'auth.googleConflict'
+            : status === 429
+              ? 'auth.tooManyAttempts'
+              : 'auth.googleError',
+        ),
+      );
+    } finally {
+      this.sending.set(false);
+    }
+  }
+
   protected async submit(): Promise<void> {
     const { name, email, password, consent } = this.form.getRawValue();
     const register = this.mode() === 'register';
@@ -103,12 +162,15 @@ export class Login {
       this.redirect(user.role);
     } catch (err) {
       const status = err instanceof HttpErrorResponse ? err.status : 0;
+      const code = err instanceof HttpErrorResponse ? err.error?.error : '';
       const key =
-        status === 400
-          ? register
-            ? 'auth.invalidRegister'
-            : 'auth.invalidLogin'
-          : (AUTH_ERRORS[status] ?? 'error.generic');
+        status === 409 && code === 'email_taken_google'
+          ? 'auth.emailGoogle'
+          : status === 400
+            ? register
+              ? 'auth.invalidRegister'
+              : 'auth.invalidLogin'
+            : (AUTH_ERRORS[status] ?? 'error.generic');
       this.error.set(this.i18n.t(key));
     } finally {
       this.sending.set(false);

@@ -13,6 +13,7 @@ import {
   verifyPassword,
 } from './auth';
 import { UPLOADS_DIR, db, transaction } from './db';
+import { verifyGoogleCredential } from './google';
 import { adminInbox, sendMail } from './mail';
 import { createCheckoutSession, stripeEnabled, verifyWebhook } from './stripe';
 
@@ -154,8 +155,11 @@ api.post('/auth/register', rateLimit('register', 10), async (req, res) => {
     res.status(400).json({ error: 'invalid' });
     return;
   }
-  if (db.prepare('SELECT 1 FROM users WHERE email = ?').get(email)) {
-    res.status(409).json({ error: 'email_taken' });
+  const existing = db.prepare('SELECT google_id FROM users WHERE email = ?').get(email) as
+    | { google_id: string | null }
+    | undefined;
+  if (existing) {
+    res.status(409).json({ error: existing.google_id ? 'email_taken_google' : 'email_taken' });
     return;
   }
   const result = db
@@ -184,6 +188,81 @@ api.post('/auth/login', rateLimit('login', 10), async (req, res) => {
 api.post('/auth/logout', (req, res) => {
   destroySession(req, res);
   res.status(204).end();
+});
+
+/**
+ * Inicio de sesión y alta con Google Identity Services.
+ *
+ * El navegador envía el `credential` (ID token) y el servidor valida firma,
+ * emisor, audiencia, caducidad y `email_verified` antes de crear la sesión.
+ * Una cuenta local con el mismo email NO se vincula automáticamente: como el
+ * registro local no verifica el email, hacerlo permitiría reclamar una cuenta
+ * ajena. El usuario debe acceder con su contraseña; vincular Google requiere un
+ * flujo autenticado aparte.
+ */
+api.post('/auth/google', rateLimit('google', 10), async (req, res) => {
+  const credential =
+    typeof req.body?.credential === 'string'
+      ? req.body.credential
+      : typeof req.body?.idToken === 'string'
+        ? req.body.idToken
+        : '';
+  if (!credential || credential.length > 5000) {
+    res.status(400).json({ error: 'invalid' });
+    return;
+  }
+
+  let identity;
+  try {
+    identity = await verifyGoogleCredential(credential);
+  } catch {
+    res.status(401).json({ error: 'invalid_google_token' });
+    return;
+  }
+
+  const byGoogle = db.prepare('SELECT id FROM users WHERE google_id = ?').get(identity.googleId) as
+    | { id: number }
+    | undefined;
+  let userId: number;
+
+  if (byGoogle) {
+    userId = byGoogle.id;
+  } else {
+    const byEmail = db
+      .prepare('SELECT id, google_id FROM users WHERE email = ?')
+      .get(identity.email) as { id: number; google_id: string | null } | undefined;
+    if (byEmail) {
+      res.status(409).json({
+        error: byEmail.google_id ? 'google_account_conflict' : 'google_email_exists',
+      });
+      return;
+    }
+
+    const passwordHash = await hashPassword(randomBytes(32).toString('base64url'));
+    try {
+      const created = db
+        .prepare('INSERT INTO users (email, name, password_hash, google_id) VALUES (?, ?, ?, ?)')
+        .run(identity.email, identity.name || identity.email.split('@')[0], passwordHash, identity.googleId);
+      userId = Number(created.lastInsertRowid);
+    } catch (err) {
+      // Dos peticiones simultáneas pueden competir por el email o el google_id.
+      const raced = db
+        .prepare('SELECT id, google_id FROM users WHERE email = ? OR google_id = ?')
+        .get(identity.email, identity.googleId) as { id: number; google_id: string | null } | undefined;
+      if (!raced) throw err;
+      if (raced.google_id === identity.googleId) {
+        userId = raced.id;
+      } else {
+        res.status(409).json({
+          error: raced.google_id ? 'google_account_conflict' : 'google_email_exists',
+        });
+        return;
+      }
+    }
+  }
+
+  createSession(res, userId);
+  res.json(currentUserById(userId));
 });
 
 api.get('/auth/me', (req, res) => {
