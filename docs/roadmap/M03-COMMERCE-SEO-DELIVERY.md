@@ -373,7 +373,7 @@ repository now suggests:
 | --- | --- |
 | `f5c7196` | feat(m03): unify the bilingual commerce experience and harden international SEO |
 | `f7cb186` | fix(m03): close the three review findings on translated product pages |
-| _(this commit)_ | docs(m03): audit, slug-migration plan and delivery report |
+| `801503c` | docs(m03): record the audit, the slug-migration plan and the delivery report |
 
 ## 20. Pull request
 
