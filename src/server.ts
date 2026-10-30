@@ -4,9 +4,11 @@ import {
   isMainModule,
   writeResponseToNodeResponse,
 } from '@angular/ssr/node';
-import express from 'express';
-import { readdirSync, statSync } from 'node:fs';
+import express, { type NextFunction, type Request, type Response } from 'express';
+import { randomUUID } from 'node:crypto';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
+import type { RouteId } from './app/core/i18n/locale-routes';
 import { LOCALE_INFO } from './app/core/i18n/locale.config';
 import { localizedUrl, matchRoute } from './app/core/i18n/locale-routes';
 import { LOCALES } from './app/core/i18n/locale.types';
@@ -20,12 +22,109 @@ const SITE_URL = process.env['SITE_URL'] ?? 'https://embarcarte.com';
 const app = express();
 const angularApp = new AngularNodeAppEngine({ trustProxyHeaders: ['x-forwarded-for', 'x-forwarded-proto'] });
 
-// Detrás de Caddy: confiar en X-Forwarded-For para la IP real del cliente.
+// Detrás de Caddy o nginx: confiar en X-Forwarded-For para la IP real del cliente.
 app.set('trust proxy', 1);
 app.disable('x-powered-by');
 
+/** Rutas privadas que Angular renderiza en el navegador (`RenderMode.Client`). */
+const CLIENT_ROUTES = new Set<RouteId>(['cart', 'login', 'account', 'orderDetail']);
+
+/**
+ * Shell CSR localizado. Se sirve antes de Angular para que la primera respuesta
+ * de `/en/cart` ya declare `lang="en"`, sin renderizar datos privados ni tocar la
+ * sesión. `noindex` se emite también como cabecera: el shell no debe indexarse
+ * aunque un rastreador no ejecute JavaScript.
+ */
+const csrShells = (() => {
+  try {
+    const shell = readFileSync(join(browserDistFolder, 'index.csr.html'), 'utf8');
+    return {
+      es: shell,
+      en: shell
+        .replace('<html lang="es"', '<html lang="en"')
+        .replace(
+          /<title>[^<]*<\/title>/,
+          '<title>Embarcarte · Open marine technology</title>',
+        )
+        .replace(
+          /<meta name="description" content="[^"]*">/,
+          '<meta name="description" content="Embarcarte designs and sells open marine technology: navigation electronics, charts, instrumentation and autopilot with Open Marine.">',
+        ),
+    } satisfies Record<'es' | 'en', string>;
+  } catch {
+    return null;
+  }
+})();
+
+/**
+ * Cabeceras de seguridad para todas las respuestas de la aplicación.
+ *
+ * `script-src` conserva `'unsafe-inline'`: Angular SSR inserta scripts de
+ * arranque/event-replay en el HTML y el shell CSR los necesita para hidratar.
+ * El resto de directivas sí son restrictivas. Se documenta como riesgo residual
+ * en `docs/security/M04-SECURITY-REVIEW.md`.
+ */
+const CSP = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-ancestors 'none'",
+  "form-action 'self' https://checkout.stripe.com",
+  "img-src 'self' data: https:",
+  "font-src 'self'",
+  "style-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline'",
+  "connect-src 'self'",
+  "manifest-src 'self'",
+  ...(process.env['NODE_ENV'] === 'production' ? ["upgrade-insecure-requests"] : []),
+].join('; ');
+
+app.use((req, res, next) => {
+  const requestId = randomUUID();
+  res.setHeader('X-Request-Id', requestId);
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  res.setHeader('Content-Security-Policy', CSP);
+  if (process.env['NODE_ENV'] === 'production') {
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  }
+
+  const started = process.hrtime.bigint();
+  res.once('finish', () => {
+    // Los assets con hash no aportan señal operativa; sí se registran páginas y API.
+    if (/\.(?:js|css|woff2?|png|jpe?g|webp|svg|ico|map)$/i.test(req.path) && res.statusCode < 400) return;
+    // Solo método, ruta y estado: nunca cookies, cuerpos ni datos de cliente.
+    const level = res.statusCode >= 500 ? 'error' : res.statusCode >= 400 ? 'warn' : 'info';
+    console.log(
+      JSON.stringify({
+        level,
+        event: 'http_request',
+        request_id: requestId,
+        method: req.method,
+        path: req.path,
+        status: res.statusCode,
+        duration_ms: Number(process.hrtime.bigint() - started) / 1_000_000,
+      }),
+    );
+  });
+  next();
+});
+
 app.get('/healthz', (_req, res) => {
-  res.json({ ok: true });
+  res.setHeader('Cache-Control', 'no-store');
+  res.json({ ok: true, uptime_s: Math.round(process.uptime()) });
+});
+
+app.get('/readyz', (_req, res) => {
+  res.setHeader('Cache-Control', 'no-store');
+  try {
+    db.prepare('SELECT 1').get();
+    res.json({ ok: true, checks: { database: 'ok' } });
+  } catch {
+    res.status(503).json({ ok: false, checks: { database: 'unavailable' } });
+  }
 });
 
 app.use('/api', api);
@@ -127,6 +226,26 @@ app.use(
 );
 
 /**
+ * Rutas privadas: Angular las renderiza en el navegador. Servir el shell CSR
+ * localizado evita que la primera respuesta declare español bajo `/en` y evita
+ * que el HTML inicial contenga datos de sesión o de cliente.
+ */
+app.use((req, res, next) => {
+  if ((req.method !== 'GET' && req.method !== 'HEAD') || !csrShells) return next();
+  if (!req.accepts('html')) return next();
+
+  const match = matchRoute(req.path);
+  const admin = req.path === '/admin' || req.path.startsWith('/admin/');
+  if (!admin && (!match || !CLIENT_ROUTES.has(match.id))) return next();
+
+  const locale = match?.locale ?? 'es';
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+  res.send(csrShells[locale]);
+});
+
+/**
  * Handle all other requests by rendering the Angular application.
  */
 app.use((req, res, next) => {
@@ -136,6 +255,23 @@ app.use((req, res, next) => {
       response ? writeResponseToNodeResponse(response, res) : next(),
     )
     .catch(next);
+});
+
+// Errores no controlados de Express o del render SSR: respuesta genérica y log
+// estructurado, sin cuerpo de petición ni trazas con datos de cliente.
+app.use((err: unknown, req: Request, res: Response, next: NextFunction) => {
+  if (res.headersSent) return next(err);
+  const message = err instanceof Error ? err.message : 'unknown error';
+  console.error(
+    JSON.stringify({
+      level: 'error',
+      event: 'request_error',
+      method: req.method,
+      path: req.path,
+      message,
+    }),
+  );
+  if (!res.headersSent) res.status(500).type('text/plain').send('Internal Server Error');
 });
 
 /**

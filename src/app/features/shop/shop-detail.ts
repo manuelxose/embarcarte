@@ -1,6 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, RESPONSE_INIT, computed, effect, inject, input, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { isPlatformServer } from '@angular/common';
+import {
+  Component,
+  PLATFORM_ID,
+  RESPONSE_INIT,
+  TransferState,
+  computed,
+  effect,
+  inject,
+  makeStateKey,
+  signal,
+} from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CartService } from '../../core/cart.service';
 import { LocaleService } from '../../core/i18n/locale.service';
 import { TranslationService } from '../../core/i18n/translation.service';
@@ -68,15 +79,20 @@ const summarize = (text: string, max = 158): string =>
   `,
 })
 export class ShopDetail {
-  readonly slug = input.required<string>();
+  private readonly route = inject(ActivatedRoute);
+  private readonly slug = this.route.snapshot.paramMap.get('slug') ?? '';
 
   private readonly http = inject(HttpClient);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly transferState = inject(TransferState);
+  /** The SSR response is transferred so hydration starts with the same product. */
+  private readonly stateKey = makeStateKey<ShopProduct>(`shop-product:${this.slug}`);
   private readonly seo = inject(SeoService);
   private readonly response = inject(RESPONSE_INIT, { optional: true });
   protected readonly locale = inject(LocaleService);
   protected readonly i18n = inject(TranslationService);
   protected readonly cart = inject(CartService);
-  protected readonly product = signal<ShopProduct | null>(null);
+  protected readonly product = signal<ShopProduct | null>(this.transferState.get(this.stateKey, null));
   protected readonly notFound = signal(false);
   protected readonly qty = signal(1);
   protected readonly added = signal(false);
@@ -156,8 +172,14 @@ export class ShopDetail {
   }
 
   ngOnInit(): void {
-    this.http.get<ShopProduct>(`/api/shop/products/${encodeURIComponent(this.slug())}`).subscribe({
-      next: (product) => this.product.set(product),
+    // Hydration already had the server product: no duplicate request and no
+    // empty first render (which caused a large layout shift on mobile).
+    if (this.product()) return;
+    this.http.get<ShopProduct>(`/api/shop/products/${encodeURIComponent(this.slug)}`).subscribe({
+      next: (product) => {
+        this.product.set(product);
+        if (isPlatformServer(this.platformId)) this.transferState.set(this.stateKey, product);
+      },
       error: () => {
         this.notFound.set(true);
         if (this.response) this.response.status = 404;

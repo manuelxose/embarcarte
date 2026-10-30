@@ -23,7 +23,7 @@ const NAV: readonly { readonly id: RouteId; readonly key: TranslationKey }[] = [
   selector: 'app-header',
   imports: [RouterLink, RouterLinkActive, Brand, LanguageSwitcher],
   template: `
-    <header class="site-header">
+    <header class="site-header" (keydown.escape)="open.set(false)">
       <app-brand (click)="open.set(false)" />
       <div class="header-right">
         <nav id="main-nav" class="nav-links" [class.open]="open()" [attr.aria-label]="i18n.t('a11y.mainNavigation')">

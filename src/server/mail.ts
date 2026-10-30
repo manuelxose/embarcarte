@@ -13,10 +13,16 @@ const transport = process.env['SMTP_HOST']
 
 export const adminInbox = () => process.env['CONTACT_TO'] ?? 'info@embarcarte.com';
 
-/** Envía un email si hay SMTP configurado; si no, lo deja en el log. Nunca lanza. */
+/** No se registra el destinatario completo ni el cuerpo: pueden contener datos personales. */
+const maskRecipient = (to: string): string => to.replace(/^(.).*(@.*)$/, '$1***$2');
+
+/**
+ * Envía un email si hay SMTP configurado. Sin SMTP no se escribe el contenido en
+ * el log: los pedidos y mensajes contienen datos personales. Nunca lanza.
+ */
 export const sendMail = async (to: string, subject: string, text: string, replyTo?: string): Promise<void> => {
   if (!transport) {
-    console.warn(`[mail] SMTP no configurado. Para ${to}: ${subject}\n${text}`);
+    console.warn(`[mail] SMTP no configurado; email omitido (${maskRecipient(to)}): ${subject}`);
     return;
   }
   try {
@@ -28,6 +34,7 @@ export const sendMail = async (to: string, subject: string, text: string, replyT
       text,
     });
   } catch (err) {
-    console.error('[mail] error enviando email', err);
+    const message = err instanceof Error ? err.message : 'unknown error';
+    console.error(`[mail] error enviando email (${maskRecipient(to)}): ${message}`);
   }
 };

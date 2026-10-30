@@ -56,6 +56,19 @@ export const destroySession = (req: Request, res: Response): void => {
   res.clearCookie(COOKIE, { path: '/' });
 };
 
+/**
+ * Tras cambiar la contraseña se invalidan las demás sesiones de la cuenta,
+ * conservando la actual (el usuario que acaba de cambiarla no debe ser expulsado).
+ */
+export const revokeOtherSessions = (req: Request, userId: number): void => {
+  const token = readCookie(req, COOKIE);
+  if (token) {
+    db.prepare('DELETE FROM sessions WHERE user_id = ? AND token_hash != ?').run(userId, sha256(token));
+  } else {
+    db.prepare('DELETE FROM sessions WHERE user_id = ?').run(userId);
+  }
+};
+
 const readCookie = (req: Request, name: string): string | undefined => {
   for (const part of (req.headers.cookie ?? '').split(';')) {
     const [key, ...rest] = part.trim().split('=');

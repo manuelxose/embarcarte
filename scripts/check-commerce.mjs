@@ -259,7 +259,58 @@ try {
   assert.equal((await webhook(event, signed(event))).status, 200);
   assert.equal((await request(`/api/orders/${second.data.id}`, { cookie: customer.cookie })).data.status, 'pendiente', 'a mismatched session never marks the order paid');
 
-  console.log('Commerce integration checks passed: bilingual catalogue, localized SEO, stock, cart payload integrity, accounts, authorization, sitemap alternates and webhook verification.');
+  // A signed body that is not JSON is rejected cleanly.
+  const malformed = 'not-json';
+  assert.equal((await webhook(malformed, signed(malformed))).status, 400, 'malformed signed JSON is rejected');
+
+  // An expired Checkout session releases the stock reserved by the pending order.
+  const direct = new DatabaseSync(join(temp, 'embarcarte.sqlite'));
+  direct.prepare("UPDATE orders SET stripe_session_id = 'cs_expired_test' WHERE id = ?").run(second.data.id);
+  direct.close();
+  const expired = JSON.stringify({ type: 'checkout.session.expired', data: { object: { id: 'cs_expired_test' } } });
+  assert.equal((await webhook(expired, signed(expired))).status, 200);
+  assert.equal((await request(`/api/orders/${second.data.id}`, { cookie: customer.cookie })).data.status, 'cancelado');
+  assert.equal((await request('/api/shop/products/integration-product')).data.stock, 2, 'expired checkout restores stock');
+
+  // --- security regressions -------------------------------------------------
+  // Password changes invalidate every other session but keep the current one.
+  const sessionUser = await request('/api/auth/register', { body: { name: 'Sessions', email: 'sessions@example.test', password: 'test-password-123' } });
+  const sessionOne = sessionUser.cookie;
+  const loginTwo = await request('/api/auth/login', { body: { email: 'sessions@example.test', password: 'test-password-123' } });
+  const sessionTwo = loginTwo.cookie;
+  assert.equal((await request('/api/auth/me', { cookie: sessionTwo })).data.email, 'sessions@example.test');
+  const changedPassword = await request('/api/account/password', {
+    method: 'PUT',
+    cookie: sessionOne,
+    body: { current: 'test-password-123', next: 'new-password-456' },
+  });
+  assert.equal(changedPassword.response.status, 204);
+  assert.equal((await request('/api/auth/me', { cookie: sessionOne })).data.email, 'sessions@example.test', 'the current session survives');
+  assert.equal((await request('/api/auth/me', { cookie: sessionTwo })).data, null, 'other sessions are revoked');
+  assert.equal((await request('/api/auth/login', { body: { email: 'sessions@example.test', password: 'test-password-123' } })).response.status, 401);
+  assert.equal((await request('/api/auth/login', { body: { email: 'sessions@example.test', password: 'new-password-456' } })).response.status, 200);
+
+  // Uploads require the real image signature, not only a declared MIME type.
+  const upload = (contentType, bytes) =>
+    fetch(base + '/api/admin/uploads', { method: 'POST', headers: { 'content-type': contentType, cookie: admin.cookie }, body: bytes });
+  assert.equal((await upload('image/png', Buffer.from('not a png'))).status, 400, 'a fake PNG is rejected');
+  const png = Buffer.concat([
+    Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+    Buffer.alloc(32, 1),
+  ]);
+  const uploaded = await upload('image/png', png);
+  assert.equal(uploaded.status, 201, 'a real PNG signature is accepted');
+  const uploadedUrl = (await uploaded.json()).url;
+  assert.match(uploadedUrl, /^\/uploads\/[a-z0-9-]+\.png$/);
+  assert.equal((await fetch(base + uploadedUrl)).status, 200, 'the uploaded image is served');
+
+  // Operational probes.
+  assert.equal((await fetch(base + '/healthz')).status, 200);
+  const readiness = await fetch(base + '/readyz');
+  assert.equal(readiness.status, 200);
+  assert.deepEqual(await readiness.json(), { ok: true, checks: { database: 'ok' } });
+
+  console.log('Commerce integration checks passed: bilingual catalogue, localized SEO, stock, cart payload integrity, accounts, authorization, sitemap alternates, webhook verification and security regressions.');
 } finally {
   if (server.exitCode === null && server.signalCode === null) {
     const exited = new Promise((resolve) => server.once('exit', resolve));

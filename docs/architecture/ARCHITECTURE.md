@@ -134,6 +134,14 @@ M03 made the rules explicit:
   same registry and emits an `xhtml:link` pair only when both URLs are in the sitemap, so it
   can never point at a page that is not served.
 
+M04 added the missing first-response metadata for client-rendered private pages. The server
+serves a localized copy of `index.csr.html` for cart/login/account/order/admin, with the URL
+language, `X-Robots-Tag: noindex, nofollow` and `Cache-Control: no-store`; no session is read
+and no private content is rendered. Product detail remains server-rendered, but its product
+is now transferred through `TransferState` and read synchronously on the client, so hydration
+starts from the same tree instead of re-creating it (the M04 performance report records the
+CLS/LCP impact).
+
 ## 8. Testing strategy
 
 `npm run test:i18n` (`scripts/check-i18n.mjs`, `node:assert`, same shape as the existing

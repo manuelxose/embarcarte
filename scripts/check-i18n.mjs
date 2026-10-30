@@ -542,7 +542,52 @@ try {
       assert.doesNotMatch(spanishShop, /Open technology\. Freedom at sea\./, 'concurrent Spanish render keeps its own locale');
     }
 
-    console.log('Server-rendering checks passed: lang attributes, alternates and per-request locale isolation.');
+    // Private pages are client-rendered: the initial shell must still carry the
+    // URL locale, must not leak session data and must be explicitly noindex.
+    const privatePages = [
+      ['/carrito', 'es'],
+      ['/en/cart', 'en'],
+      ['/acceso', 'es'],
+      ['/en/login', 'en'],
+      ['/cuenta', 'es'],
+      ['/en/account', 'en'],
+      ['/cuenta/pedidos/1', 'es'],
+      ['/en/account/orders/1', 'en'],
+    ];
+    for (const [path, locale] of privatePages) {
+      const response = await fetch(base + path);
+      assert.equal(response.status, 200, `${path} serves its shell`);
+      const markup = await response.text();
+      assert.match(markup, new RegExp(`<html lang="${locale}"`), `${path} declares lang="${locale}" before hydration`);
+      assert.match(markup, /<app-root><\/app-root>/, `${path} is the empty CSR shell, not private content`);
+      assert.equal(response.headers.get('x-robots-tag'), 'noindex, nofollow', `${path} is noindex at HTTP level`);
+      assert.equal(response.headers.get('cache-control'), 'no-store', `${path} is not cacheable`);
+      assert.doesNotMatch(markup, /rel="canonical"|hreflang=/, `${path} publishes no canonical or alternate`);
+      assert.doesNotMatch(markup, /emb_session|admin@example\.test|customer@example\.test/, `${path} leaks no session or customer data`);
+      assert.equal(response.headers.get('set-cookie'), null, `${path} sets no cookie`);
+    }
+    const privatePairs = await Promise.all(
+      Array.from({ length: 5 }, () => Promise.all([fetch(base + '/en/cart').then((r) => r.text()), fetch(base + '/carrito').then((r) => r.text())])),
+    );
+    for (const [englishCart, spanishCart] of privatePairs) {
+      assert.match(englishCart, /<html lang="en"/, 'concurrent English private shell keeps lang="en"');
+      assert.match(spanishCart, /<html lang="es"/, 'concurrent Spanish private shell keeps lang="es"');
+    }
+
+    // Security and operations headers are present on normal and private pages.
+    for (const path of ['/', '/en/cart', '/healthz', '/readyz']) {
+      const response = await fetch(base + path);
+      assert.equal(response.headers.get('x-content-type-options'), 'nosniff', `${path} sets nosniff`);
+      assert.match(response.headers.get('content-security-policy') ?? '', /frame-ancestors 'none'/, `${path} sets a CSP`);
+      assert.equal(response.headers.get('x-frame-options'), 'DENY', `${path} sets frame denial`);
+      assert.equal(response.headers.get('referrer-policy'), 'strict-origin-when-cross-origin', `${path} sets referrer policy`);
+      assert.ok(/^[0-9a-f-]{36}$/.test(response.headers.get('x-request-id') ?? ''), `${path} has a request id`);
+    }
+    const readiness = await fetch(base + '/readyz');
+    assert.equal(readiness.status, 200, 'readiness is 200 when the database answers');
+    assert.deepEqual(await readiness.json(), { ok: true, checks: { database: 'ok' } });
+
+    console.log('Server-rendering checks passed: lang attributes, private shells, alternates and per-request locale isolation.');
   }
 
   console.log('i18n foundation checks passed: locale detection, route mapping and translations.');
