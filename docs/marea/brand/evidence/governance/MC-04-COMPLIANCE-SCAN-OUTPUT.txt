@@ -1,0 +1,736 @@
+============================================================
+MC-04 PROHIBITED-PATTERN / INTEGRITY SCAN
+Exact command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/run-compliance-scan.ps1
+Run at             : 2026-10-30T18:50:02+01:00
+Host / shell       : MSI-MANUEL / PowerShell 7.6.9
+Working directory  : C:\Users\Admin\Documents\workspace\embarcarte
+Text files in scope: 48
+SVG files in scope : 104
+HTML files in scope: 15
+Excluded from scope: docs/marea/brand/evidence/** (this report quotes prohibited strings)
+============================================================
+
+--- SCAN 1: trademark symbols and registration words ---
+PATTERN registered-symbol-R | files_hit=21 | lines_hit=78
+   docs\marea\brand\territories\evidence\svg-geometry-report.json: 32 line(s)
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 9 line(s)
+   docs\marea\brand\MC-03-REVIEW.md: 8 line(s)
+   docs\marea\brand\territories\territory-comparison.html: 2 line(s)
+   docs\marea\brand\territories\proof\territory-c-proof-sheet.html: 2 line(s)
+   docs\marea\brand\territories\proof\territory-b-proof-sheet.html: 2 line(s)
+   docs\marea\brand\territories\proof\territory-a-proof-sheet.html: 2 line(s)
+   docs\marea\brand\PACKAGING-DIRECTION.md: 2 line(s)
+   docs\marea\brand\TERRITORY-COMPARISON.md: 2 line(s)
+   docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md: 2 line(s)
+   docs\marea\brand\HARDWARE-CMF-DIRECTION.md: 2 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 2 line(s)
+   docs\marea\brand\BRAND-VOICE-ES-EN.md: 2 line(s)
+   docs\marea\brand\BRAND-ARCHITECTURE.md: 2 line(s)
+   docs\marea\brand\MC-04-EXECUTION-PLAN.md: 1 line(s)
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md: 1 line(s)
+   docs\marea\brand\MC-04-ACCESSIBILITY-EVIDENCE.md: 1 line(s)
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md: 1 line(s)
+   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md: 1 line(s)
+   docs\marea\brand\MC-04-REVIEW.md: 1 line(s)
+   docs\marea\brand\TYPOGRAPHY-SYSTEM.md: 1 line(s)
+PATTERN unregistered-symbol-TM | files_hit=20 | lines_hit=72
+   docs\marea\brand\territories\evidence\svg-geometry-report.json: 32 line(s)
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 9 line(s)
+   docs\marea\brand\MC-03-REVIEW.md: 3 line(s)
+   docs\marea\brand\territories\proof\territory-c-proof-sheet.html: 2 line(s)
+   docs\marea\brand\territories\proof\territory-b-proof-sheet.html: 2 line(s)
+   docs\marea\brand\territories\proof\territory-a-proof-sheet.html: 2 line(s)
+   docs\marea\brand\territories\misuse-examples.html: 2 line(s)
+   docs\marea\brand\PACKAGING-DIRECTION.md: 2 line(s)
+   docs\marea\brand\territories\territory-comparison.html: 2 line(s)
+   docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md: 2 line(s)
+   docs\marea\brand\HARDWARE-CMF-DIRECTION.md: 2 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 2 line(s)
+   docs\marea\brand\BRAND-VOICE-ES-EN.md: 2 line(s)
+   docs\marea\brand\BRAND-ARCHITECTURE.md: 2 line(s)
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md: 1 line(s)
+   docs\marea\brand\MC-04-EXECUTION-PLAN.md: 1 line(s)
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md: 1 line(s)
+   docs\marea\brand\MC-04-ACCESSIBILITY-EVIDENCE.md: 1 line(s)
+   docs\marea\brand\MC-04-REVIEW.md: 1 line(s)
+   docs\marea\brand\TYPOGRAPHY-SYSTEM.md: 1 line(s)
+PATTERN registered-trademark-words | files_hit=17 | lines_hit=25
+   docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md:98: - No `®` or `™`; no "registered", "registrada", "marca registrada", "trade mark" beside MAREA.
+   docs\marea\brand\BRAND-GOVERNANCE-IMPLEMENTATION.md:69: | `brand.docs.trademarkSymbols` | A registered/unregistered trademark glyph is a failure **only when attached to the brand, a family name or a bundle name** | Does not flag governance prose that discusses the s...
+   docs\marea\brand\brand-identity.contract.json:27: "registrationPolicy": "No registered-trademark or unregistered-trademark symbol may be attached to MAREA, and no text may present MAREA as a registered trademark, until written legal clearance exists.",
+   docs\marea\brand\brand-identity.contract.json:218: "MAREA is a registered trademark"
+   docs\marea\brand\brand-identity.contract.json:244: "mareaExtendedDescription": "MAREA reúne navegación, datos a bordo, control, sensores y monitorización en un ecosistema modular. Es una marca propuesta: no está registrada y no se presenta como marca registrada...
+   docs\marea\brand\brand-identity.contract.json:256: "mareaExtendedDescription": "MAREA brings navigation, onboard data, control, sensors and monitoring together in one modular ecosystem. It is a proposed brand: it is not registered and it is not presented as a r...
+   docs\marea\brand\BRAND-VOICE-ES-EN.md:44: | `mareaExtendedDescription` | MAREA reúne navegación, datos a bordo, control, sensores y monitorización en un ecosistema modular. Es una marca propuesta: no está registrada y no se presenta como marca registra...
+   docs\marea\brand\ICONOGRAPHY-SYSTEM.md:20: It is **not** an approved icon library, **not** a registered trade mark, **not** a certification, and
+   docs\marea\brand\IDENTITY-SYSTEM.md:23: > of third-party rights. No registered or unregistered trademark symbol may be used with MAREA,
+   docs\marea\brand\IDENTITY-SYSTEM.md:297: unregistered trademark symbol. A visual misuse sheet is delivered at
+   docs\marea\brand\MC-03-REVIEW.md:148: `Marea Nav` casing (`brand.docs.productNames`), "registered trademark / available for purchase now"
+   docs\marea\brand\MC-03-REVIEW.md:153: `Marea Nav no es el nombre correcto.` → exit 0; `MAREA is a registered trademark, not a proposal.` →
+   docs\marea\brand\MC-03-REVIEW.md:188: | **N-6** | Validator false-negative surface: a line-wide negation exemption plus table/absence tolerance lets real violations pass. | `scripts/check-brand.mjs:64` (`EXEMPT_CONTEXT` contains `no`, `not`, `sin`,...
+   docs\marea\brand\MC-04-EXECUTION-PLAN.md:19: 3. **MAREA is a proposed brand.** No `®`, no `™`, no "registered"/"registrada"/"marca registrada".
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md:1803: 3. `®`/`™`, "registered", "registrada", "marca registrada" or any registration claim appears with
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md:378: | `MAREA NAUTIC SL` (Spanish company name, nautical-adjacent per one directory, real-estate per another) | Corporate-name signal; rights unverified | Company-name/registry signal only; not an earlier registered...
+   docs\marea\brand\PACKAGING-DIRECTION.md:161: - `®` or `™`, "registered", "registrada", "marca registrada";
+   docs\marea\brand\TERRITORY-COMPARISON.md:255: No `®` or registered/unregistered trademark symbol may be used with MAREA, any family name or
+   docs\marea\brand\TRADEMARK-CLEARANCE-RESEARCH.md:216: | 6.7 | **`MAREA NAUTIC SL`** — Spanish limited company, registered address Polígono Industrial Atalaya (Cabra, Córdoba), constituted **22/11/2022**, share capital in the EUR 3,500–10,000 band. **Sources confli...
+   docs\marea\brand\TRADEMARK-SEARCH-RESULTS.csv:21: "MAREA NAUTIC SL company registry entry",Company directory (Axesor via Expansion - direct fetch); Cinco Dias directory (snippet only),2026-10-30,SECONDARY_AGGREGATOR,MAREA NAUTIC SL,,,"Company active; constitut...
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:460: | R1 | `technology.es.ts:59` / `technology.en.ts:60`: "Entradas NMEA 0183 y NMEA 2000 (mediante adaptador)" / "NMEA 0183 and NMEA 2000 inputs (via adapter)"; repeated at `technology.es.ts:69` / `technology.en.t...
+   docs\marea\brand\assets\icons\ui\index.html:8: <p class="lede"><span lang="es">D-09. Conjunto propio de 57 iconos vectoriales (autoría EMBARCARTE), rejilla 24×24, trazo 2 px equivalente. Demuestra el vocabulario visual de instrumentación marina de MAREA. No...
+   docs\marea\brand\specimens\index.html:476: <li>PROPUESTO e interno: MAREA no es una marca registrada ni un producto certificado; `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`, `PUBLICATION = BLOCKED`.</li>
+   docs\marea\brand\assets\icons\ui\index.html:8: <p class="lede"><span lang="es">D-09. Conjunto propio de 57 iconos vectoriales (autoría EMBARCARTE), rejilla 24×24, trazo 2 px equivalente. Demuestra el vocabulario visual de instrumentación marina de MAREA. No...
+   docs\marea\brand\specimens\index.html:476: <li>PROPUESTO e interno: MAREA no es una marca registrada ni un producto certificado; `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`, `PUBLICATION = BLOCKED`.</li>
+PATTERN registered-words-es | files_hit=8 | lines_hit=10
+   docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md:98: - No `®` or `™`; no "registered", "registrada", "marca registrada", "trade mark" beside MAREA.
+   docs\marea\brand\brand-identity.contract.json:244: "mareaExtendedDescription": "MAREA reúne navegación, datos a bordo, control, sensores y monitorización en un ecosistema modular. Es una marca propuesta: no está registrada y no se presenta como marca registrada...
+   docs\marea\brand\BRAND-VOICE-ES-EN.md:44: | `mareaExtendedDescription` | MAREA reúne navegación, datos a bordo, control, sensores y monitorización en un ecosistema modular. Es una marca propuesta: no está registrada y no se presenta como marca registra...
+   docs\marea\brand\MC-04-EXECUTION-PLAN.md:19: 3. **MAREA is a proposed brand.** No `®`, no `™`, no "registered"/"registrada"/"marca registrada".
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md:1803: 3. `®`/`™`, "registered", "registrada", "marca registrada" or any registration claim appears with
+   docs\marea\brand\PACKAGING-DIRECTION.md:161: - `®` or `™`, "registered", "registrada", "marca registrada";
+   docs\marea\brand\assets\icons\ui\index.html:8: <p class="lede"><span lang="es">D-09. Conjunto propio de 57 iconos vectoriales (autoría EMBARCARTE), rejilla 24×24, trazo 2 px equivalente. Demuestra el vocabulario visual de instrumentación marina de MAREA. No...
+   docs\marea\brand\specimens\index.html:476: <li>PROPUESTO e interno: MAREA no es una marca registrada ni un producto certificado; `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`, `PUBLICATION = BLOCKED`.</li>
+   docs\marea\brand\assets\icons\ui\index.html:8: <p class="lede"><span lang="es">D-09. Conjunto propio de 57 iconos vectoriales (autoría EMBARCARTE), rejilla 24×24, trazo 2 px equivalente. Demuestra el vocabulario visual de instrumentación marina de MAREA. No...
+   docs\marea\brand\specimens\index.html:476: <li>PROPUESTO e interno: MAREA no es una marca registrada ni un producto certificado; `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`, `PUBLICATION = BLOCKED`.</li>
+
+--- SCAN 2: certification / standard / IP-rating claim language ---
+PATTERN CE-mark-word | files_hit=19 | lines_hit=38
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md:59: | "CE marked" / "CE compliant" | EU declaration of conformity and test reports for that product family | H-06, H-08 |
+   docs\marea\brand\HARDWARE-CMF-DIRECTION.md:129: | **L5 — Regulatory / disposal** | WEEE/battery/disposal symbols, conformity marks | Only where the product, jurisdiction and evidence require | Per applicable rules | **Only where true.** Never decorative. CE,...
+   docs\marea\brand\HARDWARE-CMF-DIRECTION.md:247: - [ ] No `®`/`™`, CE, NMEA, IP or certification mark is designed or reproduced.
+   docs\marea\brand\ILLUSTRATION-STANDARDS.md:204: 6. **No certification cue**: no seals, shields, checkmarks, standards logos, `CE`, IP-rating, NMEA, or
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md:288: | S3 Hardware batches | HUB, AIS, SENSE, WATCH, DISPLAY after conformity and support readiness | BOM/quotes (H-05…H-08, X-05), conformity (H-06), support/RMA (MC-28), approved prices | PILOT; "certified/CE" cla...
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md:326: | Hardware claims | "Designed for the marine environment, subject to verification" | CE/EMC/RED/LVD/GPSR/RoHS/WEEE evidence per SKU (H-06) | "CE certified", "NMEA 2000 Certified", "marine-grade" before testing,...
+   docs\marea\brand\MC-04-EXECUTION-PLAN.md:20: No certification/CE/NMEA/IP-rating marks. No availability, price, performance or safety claim.
+   docs\marea\brand\MC-04-REVIEW.md:131: | C11 | `python docs/.../prohibited-pattern-scan.py` | 128 files; all 26 ®/™ occurrences are prohibitions/honesty statements; every CE/NMEA/IP/waterproof/marine-grade/certified hit is negated or evidence-gated;...
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md:1338: - No certification marks, no standard-body logos, no `®`/`™`, no "CE" until the declaration of
+   docs\marea\brand\PACKAGING-DIRECTION.md:73: | Honesty | No certification/CE/NMEA/IP mark, no "waterproof", no "made in", no performance badge, no competitor comparison | Claims review (G4) |
+   docs\marea\brand\PACKAGING-DIRECTION.md:113: | Front | MAREA wordmark (inlined vector from `assets/logo/marea-wordmark.svg`), family name, edition/serial fields, `PROVISIONAL PACKAGING CONCEPT` label, authored line illustration with the label `ILUSTRACIÓN...
+   docs\marea\brand\PACKAGING-DIRECTION.md:162: - CE, NMEA, NMEA 2000, IP, WEEE, FSC, recyclable, "marine-grade", "waterproof", "made in";
+   docs\marea\brand\PACKAGING-DIRECTION.md:189: - [ ] No `®`/`™`, certification, IP, CE, NMEA or performance claim anywhere in the artwork.
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md:76: | G-7 | Prohibited marks | No `®`/`™`, no CE/UKCA mark, no NMEA or other standard-body mark, no IP-rating badge, no certification shield, no third-party logo, no chart-provider mark, no provider watermark, no s...
+   docs\marea\brand\PRODUCT-NAMING-SYSTEM.md:116: 6. **Family + certification/interoperability word** — no `NMEA 2000`, `CE`, `RED`, `AIS Certified` inside a name; protocol and compliance statements belong to the compatibility/claims copy with evidence (`MC-02...
+   docs\marea\brand\PRODUCT-NAMING-SYSTEM.md:279: | F-09 | MAREA NMEA 2000 Certified; MAREA CE Certified; MAREA AIS Certified; MAREA NAV ECDIS | Certification/compliance word inside a name; no certificate exists (`MC-02-BLOCKERS-AND-DECISIONS.md:83-85`) | Cert...
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:39: | Claims lexicon | `NMEA`, `NMEA 2000`, `AIS`, `Signal K`, `certified`, `certificado`, `CE`, `ECDIS`, `stock`, `disponible`, `in stock`, `en stock`, `precio`, `€`, `buy`, `comprar`, `part of`, `powered by` |
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:123: | 8 | `src/app/core/site.config.ts:24` | `address: ''` | es/en | legal | REQUIRES_LEGAL_APPROVAL | Empty; same blocker; LSSI-CE seller identification is incomplete while it stays empty |
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:285: | 160 | `src/app/features/legal/content/legal.es.ts:14` | `'(LSSI-CE), se informa de los datos del titular de este sitio web:'` | es | legal | KEEP | Correct legal basis citation; the gap is the missing data (r...
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:377: irrelevant to the brand surface (e.g. Spanish words containing the substring "ce").
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:426: - The legal notice explicitly invokes LSSI-CE (`legal.es.ts:13-14`) and then cannot identify the
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:452: The MC-02 evidence base rules out every certification claim: no CE/EMC/RED/LVD conformity
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-en.html:548: certification, CE, NMEA, IP or equivalent marks, and must not be presented as an official
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-es.html:563: impreso. No contiene ni reproduce marcas de certificación, CE, NMEA, IP o equivalentes, y no
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg:31: <text x="189" y="181" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg:31: <text x="254" y="261" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg:31: <text x="244" y="221" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg:31: <text x="254" y="241" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-sense.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-sense.svg:31: <text x="174" y="161" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-watch.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-watch.svg:31: <text x="154" y="151" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-en.html:548: certification, CE, NMEA, IP or equivalent marks, and must not be presented as an official
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-es.html:563: impreso. No contiene ni reproduce marcas de certificación, CE, NMEA, IP o equivalentes, y no
+PATTERN certified-or-certification | files_hit=37 | lines_hit=176
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-es.html: 16 line(s)
+   docs\marea\assets\manifest\MC-04-BRIEFS.yaml: 15 line(s)
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 14 line(s)
+   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md: 13 line(s)
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md: 11 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 9 line(s)
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md: 9 line(s)
+   docs\marea\brand\PRODUCT-NAMING-SYSTEM.md: 7 line(s)
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg: 5 line(s)
+   docs\marea\brand\ILLUSTRATION-STANDARDS.md: 5 line(s)
+   docs\marea\brand\specimens\index.html: 4 line(s)
+   docs\marea\brand\assets\social\og-marea-en-1200x630.html: 4 line(s)
+   docs\marea\brand\assets\social\og-marea-es-1200x630.html: 4 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-sense.svg: 4 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg: 4 line(s)
+   docs\marea\brand\assets\icons\ui\index.html: 4 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-watch.svg: 4 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg: 4 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg: 4 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg: 4 line(s)
+   docs\marea\brand\MC-03-REVIEW.md: 3 line(s)
+   docs\marea\brand\HARDWARE-CMF-DIRECTION.md: 3 line(s)
+   docs\marea\brand\BRAND-ARCHITECTURE.md: 3 line(s)
+   docs\marea\brand\BRAND-VOICE-ES-EN.md: 3 line(s)
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md: 3 line(s)
+   docs\marea\brand\ICONOGRAPHY-SYSTEM.md: 2 line(s)
+   docs\marea\brand\specimens\pilot.html: 2 line(s)
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg: 2 line(s)
+   docs\marea\brand\MC-03-DELIVERY.md: 2 line(s)
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg: 2 line(s)
+PATTERN NMEA | files_hit=27 | lines_hit=88
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md: 21 line(s)
+   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md: 19 line(s)
+   docs\marea\brand\PACKAGING-DIRECTION.md: 4 line(s)
+   docs\marea\brand\MC-03-DELIVERY.md: 4 line(s)
+   docs\marea\brand\HARDWARE-CMF-DIRECTION.md: 4 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 3 line(s)
+   docs\marea\brand\specimens\index.html: 2 line(s)
+   docs\marea\brand\PRODUCT-NAMING-SYSTEM.md: 2 line(s)
+   docs\marea\brand\MC-03-REVIEW.md: 2 line(s)
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md: 2 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg: 2 line(s)
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-es.html: 2 line(s)
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-en.html: 2 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-watch.svg: 2 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-sense.svg: 2 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg: 2 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg: 2 line(s)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg: 2 line(s)
+   docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md: 1 line(s)
+   docs\marea\brand\TRADEMARK-SEARCH-RESULTS.csv: 1 line(s)
+   docs\marea\brand\MC-04-EXECUTION-PLAN.md: 1 line(s)
+   docs\marea\brand\MC-04-REVIEW.md: 1 line(s)
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 1 line(s)
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md: 1 line(s)
+   docs\marea\brand\TRADEMARK-CLEARANCE-RESEARCH.md: 1 line(s)
+   docs\marea\brand\brand-identity.contract.json: 1 line(s)
+   docs\marea\brand\ILLUSTRATION-STANDARDS.md: 1 line(s)
+PATTERN IP-rating | files_hit=2 | lines_hit=4
+   docs\marea\brand\HARDWARE-CMF-DIRECTION.md: 2 line(s)
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 2 line(s)
+PATTERN waterproof | files_hit=9 | lines_hit=15
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md: 3 line(s)
+   docs\marea\assets\manifest\MC-04-BRIEFS.yaml: 2 line(s)
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md: 2 line(s)
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 2 line(s)
+   docs\marea\brand\PACKAGING-DIRECTION.md: 2 line(s)
+   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md: 1 line(s)
+   docs\marea\brand\HARDWARE-CMF-DIRECTION.md: 1 line(s)
+   docs\marea\brand\MC-04-REVIEW.md: 1 line(s)
+   docs\marea\brand\TRADEMARK-CLEARANCE-RESEARCH.md: 1 line(s)
+
+--- SCAN 3: availability / price / performance claim language ---
+PATTERN availability | files_hit=10 | lines_hit=24
+   docs\marea\brand\BRAND-ARCHITECTURE.md:21: `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`. No product is commercially available.
+   docs\marea\brand\BRAND-GOVERNANCE-IMPLEMENTATION.md:72: | `brand.docs.clearanceClaims` | Flags positive assertions that the brand is registered, legally cleared or commercially available | Skips negation and policy context: lines with `forbidden`, `prohibited`, `nev...
+   docs\marea\brand\brand-identity.contract.json:28: "availabilityPolicy": "MAREA products are not commercially available while there is no released product, no validated stock and no authorised sale. Brand copy must not assert availability."
+   docs\marea\brand\brand-identity.contract.json:229: "immediately available"
+   docs\marea\brand\BRAND-VOICE-ES-EN.md:10: | Legal state | `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`; no product commercially available |
+   docs\marea\brand\BRAND-VOICE-ES-EN.md:187: | OPERATIONS READY | «Comprar» / «Añadir al carrito» | "Buy" / "Add to cart" |
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md:57: | "Available to order" / "in stock" / "ships in X days" | OPERATIONS READY lifecycle state, real stock record and fulfilment capacity | X-05, registry prompt 25–26 |
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md:113: | "Immediately available" / "Available for immediate delivery" | **C** | Requires OPERATIONS READY, real stock and fulfilment; currently nothing is orderable. Also forbidden in the softer forms "available now",...
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md:139: | CONCEPT | "In development / under definition" | "Read the concept" / none | Buy, add to cart, price, availability |
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md:143: | OPERATIONS READY | May state availability and lead time for approved SKUs | Buy / add to cart | Price without approved list |
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md:144: | COMMERCIALLY AVAILABLE | Full commercial claims within this policy | Buy | — |
+   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md:9: | Brand truth status | MAREA is a PROPOSED brand: NOT trademark-cleared, NOT commercially available; nine families are design intent (`COMMERCIAL-PORTFOLIO.md`) |
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md:13: | Commercial status | All nine families are `CONCEPT`/`DEFINED`; **none is commercially available**. Prices in the portfolio are hypotheses, not approved for publication (`COMMERCIAL-PORTFOLIO.md:5,123`) |
+   docs\marea\brand\MC-03-REVIEW.md:91: | 8 | Claims policy usability: an operator decision for every mandated example; forbids NMEA 2000 certification, collision avoidance, autonomy, "most accurate", "100% reliable", immediate availability | **VERIF...
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md:77: | G-8 | Prohibited claims in pixels | No "certified", "waterproof", "marine-grade", "made in", "award-winning", no performance badge, no comparison with a named competitor, no "available now" |
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md:563: | 3 | Subject | A marina/boatyard scene at working scale — several vessels, a pontoon, a service van (unbranded), an installer walking with a tool bag; the message is "we work on real boats", not "buy now" |
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md:576: | 16 | Negative constraints | Customer logos/boat names, "available now" signage, price tags, awards, fleet-size claims, stock-business imagery, identifiable people, competitor vans/logos |
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:24: commercially available. Nothing in this audit authorises publication, filing or asset procurement.
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:39: | Claims lexicon | `NMEA`, `NMEA 2000`, `AIS`, `Signal K`, `certified`, `certificado`, `CE`, `ECDIS`, `stock`, `disponible`, `in stock`, `en stock`, `precio`, `€`, `buy`, `comprar`, `part of`, `powered by` |
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:66: git grep -n -i -F -- "in stock" -- src public scripts                        # 1 line
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:67: git grep -n -i -F -- "en stock" -- src public scripts                        # 1 line
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:271: | 146 | `src/app/i18n/es.ts:96` | `'shopDetail.inStock': 'En stock'` | es | public | KEEP | Label bound to a server-authoritative `stock` value (`shop-detail.ts:48,60`); no invented stock |
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:272: | 147 | `src/app/i18n/en.ts:92` | `'shopDetail.inStock': 'In stock'` | en | public | KEEP | Same, EN |
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:279: | 154 | `src/app/i18n/es.ts:97` | `'shopDetail.notify': 'Avísame cuando esté disponible'` | es | public | KEEP | Honest unavailable-state CTA; replaces purchase action when stock is 0 |
+PATTERN price | files_hit=8 | lines_hit=15
+   docs\marea\brand\BRAND-VOICE-ES-EN.md:217: (ES) vs `€1,299` (EN); state "IVA incluido" / "incl. VAT" or "sin IVA" / "excl. VAT".
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md:58: | "Price from €X" | Approved price list and bottom-up costing for the exact included configuration | X-05, prompt 12–13 |
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md:155: - "From €X" is only allowed when the advertised configuration is genuinely obtainable at that number
+   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md:139: | Product hierarchy & naming | Three-part system: **Orca App**, **Orca Core 2** (boat-integration device), **Orca Display 2** (10 in), **Charging Mount**; subscriptions **Orca Plus** €49/year and **Orca Smart N...
+   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md:145: | Price quoted (context only) | Core 2 **€649**, Display 2 **€999**, Charging Mount **€349**, EUR incl. VAT/taxes/shipping per page, retrieved 2026-10-30 `[OBS]` | [configurator](https://getorca.com/product-con...
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md:422: `HYPOTHESIS`: conventional gateways are single-purpose conversion boxes whose dated price references are EUR 240–249 (`MARKET-BENCHMARKS.md:9-10`). The proposed HUB is an onboard coordination appliance — multi-...
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md:450: 2. **START price-hypothesis consistency.** `COMMERCIAL-PORTFOLIO.md:116` hypothesises START at EUR 499, while its stated minimum content (NAV Essential EUR 99 + HUB Standard EUR 349) sums to EUR 448 (`:24-25,:3...
+   docs\marea\brand\MC-03-DELIVERY.md:393: | R-05 | START bundle hypothesis (EUR 499) exceeds the sum of its stated lowest editions (EUR 448) | **Economics issue, out of MC-03 scope** — recorded for prompt 12 (unit economics); no price was published or ...
+   docs\marea\brand\PRODUCT-NAMING-SYSTEM.md:352: - **N-03 — WATCH recurring service.** The monitoring service (from EUR 9.90/month in the portfolio hypothesis, `:78`) has no approved name. Describe it as "monitoring service"; do not create a token in copy.
+   docs\marea\brand\PRODUCT-NAMING-SYSTEM.md:355: - **N-06 — START price hypothesis.** The EUR 499 START hypothesis (`COMMERCIAL-PORTFOLIO.md:116`) is above the sum of its stated lowest editions (EUR 448, `:24-25,:35-36`); this is a pricing-hypothesis reconcil...
+   docs\marea\brand\TRADEMARK-CLEARANCE-RESEARCH.md:216: | 6.7 | **`MAREA NAUTIC SL`** — Spanish limited company, registered address Polígono Industrial Atalaya (Cabra, Córdoba), constituted **22/11/2022**, share capital in the EUR 3,500–10,000 band. **Sources confli...
+   docs\marea\brand\TRADEMARK-CLEARANCE-RESEARCH.md:407: | `https://eu1.www.yachtbuyer.com/en/fleet/marea-128-mangusta` | **M/Y "Marea"** — a 39.2 m (330 GT) **Mangusta Oceano 39** motor yacht, hull built 2026, flag Marshall Islands, 5 cabins/10 guests/5 crew, curren...
+   docs\marea\brand\TRADEMARK-CLEARANCE-RESEARCH.md:408: | `https://www.expansion.com/directorio-empresas/marea-nautic-sl_10707556_L65_14.html` vs `https://cincodias.elpais.com/directorio-empresas/empresa/10114551/marea-nautic` | **MAREA NAUTIC SL** — Spanish SL, Pol...
+   docs\marea\brand\TRADEMARK-SEARCH-RESULTS.csv:21: "MAREA NAUTIC SL company registry entry",Company directory (Axesor via Expansion - direct fetch); Cinco Dias directory (snippet only),2026-10-30,SECONDARY_AGGREGATOR,MAREA NAUTIC SL,,,"Company active; constitut...
+   docs\marea\brand\TRADEMARK-SEARCH-RESULTS.csv:22: "MAREA vessel name - 39.2m Mangusta yacht",Yacht brokerage listing (direct fetch),2026-10-30,SECONDARY_AGGREGATOR,M/Y MAREA,,,"Vessel built 2026; listed for sale at EUR 24,900,000; flag Marshall Islands",NOT VE...
+PATTERN performance-superlative | files_hit=10 | lines_hit=25
+   docs\marea\brand\brand-identity.contract.json: 5 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 5 line(s)
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md: 3 line(s)
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md: 3 line(s)
+   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md: 2 line(s)
+   docs\marea\brand\MC-03-DELIVERY.md: 2 line(s)
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 2 line(s)
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg: 1 line(s)
+   docs\marea\brand\MC-03-REVIEW.md: 1 line(s)
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md: 1 line(s)
+PATTERN collision-avoidance | files_hit=14 | lines_hit=23
+   docs\marea\brand\specimens\index.html: 4 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 3 line(s)
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg: 2 line(s)
+   docs\marea\brand\assets\icons\ui\index.html: 2 line(s)
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 2 line(s)
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md: 2 line(s)
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg: 1 line(s)
+   docs\marea\brand\brand-identity.contract.json: 1 line(s)
+   docs\marea\brand\BRAND-VOICE-ES-EN.md: 1 line(s)
+   docs\marea\brand\ICONOGRAPHY-SYSTEM.md: 1 line(s)
+   docs\marea\brand\ILLUSTRATION-STANDARDS.md: 1 line(s)
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md: 1 line(s)
+   docs\marea\brand\MC-03-DELIVERY.md: 1 line(s)
+   docs\marea\brand\MC-03-REVIEW.md: 1 line(s)
+
+--- SCAN 4: clearance / approval / adoption / originality language ---
+PATTERN cleared-upper [case-sensitive] | files_hit=16 | lines_hit=23
+   docs\marea\brand\BRAND-GOVERNANCE-IMPLEMENTATION.md:52: | `contract.technologyFoundation` | Foundation is OPEN-MARINE; internal engineering role; `publicUse` `INTERNAL_ONLY`; `rightsClearance` `NOT_CLEARED`; `neverPresentedAsPublicProductBrand` true; rule states it ...
+   docs\marea\brand\brand-identity.contract.json:35: "rightsClearance": "NOT_CLEARED",
+   docs\marea\brand\ICONOGRAPHY-SYSTEM.md:491: - This document does not claim `APPROVED_FOR_USE`, `CLEARED` or `CERTIFIED`; those statuses do not exist
+   docs\marea\brand\ILLUSTRATION-STANDARDS.md:276: - No status in this document may be `APPROVED_FOR_USE`, `CLEARED` or `CERTIFIED`; the programme
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md:26: The brand architecture is an **endorsed brand**: EMBARCARTE is the company and seller; MAREA is the endorsed product family; OPEN-MARINE remains an internal engineering identifier and must never appear as the p...
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md:347: | **OPEN-MARINE** | Existing technology foundation; internal/open engineering identifier | **Never** as a public product brand or in attribution | Rights `NOT_CLEARED` (L-01…L-03); internal only |
+   docs\marea\brand\MC-03-DELIVERY.md:228: `INTERNAL_ONLY`/`NOT_CLEARED` with forbidden public contexts; the nine families; six bundles including
+   docs\marea\brand\MC-03-REVIEW.md:84: | 1 | Corporate/brand separation: EMBARCARTE seller/legal, MAREA proposed product brand, OPEN-MARINE internal only; no document presents OPEN-MARINE as the public brand or claims EMBARCARTE owns/cleared all sof...
+   docs\marea\brand\MC-04-EXECUTION-PLAN.md:71: `NOT_APPLICABLE`. Never `APPROVED_FOR_USE`, `CLEARED`, `CERTIFIED`.
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md:1738: | D-16 | Originality / prior-art check record | `docs/marea/brand/ORIGINALITY-AND-PRIOR-ART-CHECK.md` | Mandatory before adoption; status may be `COMMISSIONED`/`PENDING`, never falsely `CLEARED` |
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md:1918: until the record exists (status may be `COMMISSIONED`/`PENDING`, never falsely `CLEARED`).
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md:826: vocabulary. Nothing in this repository may be changed to `CLEARED`, `APPROVED_FOR_USE`, `ORIGINAL` or
+   docs\marea\brand\PRODUCT-NAMING-SYSTEM.md:190: | Repository/workspace identifier | lowercase/hyphenated engineering namespace | `open-marine/*` | Engineering | `OPEN-MARINE` is an internal/open engineering identifier, never the public product brand; its rig...
+   docs\marea\brand\territories\misuse-examples.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+   docs\marea\brand\territories\territory-comparison.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+   docs\marea\brand\territories\proof\territory-a-proof-sheet.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+   docs\marea\brand\territories\proof\territory-b-proof-sheet.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+   docs\marea\brand\territories\proof\territory-c-proof-sheet.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+   docs\marea\brand\territories\misuse-examples.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+   docs\marea\brand\territories\territory-comparison.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+   docs\marea\brand\territories\proof\territory-a-proof-sheet.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+   docs\marea\brand\territories\proof\territory-b-proof-sheet.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+   docs\marea\brand\territories\proof\territory-c-proof-sheet.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+PATTERN approved-for-use [case-sensitive] | files_hit=4 | lines_hit=4
+   docs\marea\brand\ICONOGRAPHY-SYSTEM.md:491: - This document does not claim `APPROVED_FOR_USE`, `CLEARED` or `CERTIFIED`; those statuses do not exist
+   docs\marea\brand\ILLUSTRATION-STANDARDS.md:276: - No status in this document may be `APPROVED_FOR_USE`, `CLEARED` or `CERTIFIED`; the programme
+   docs\marea\brand\MC-04-EXECUTION-PLAN.md:71: `NOT_APPLICABLE`. Never `APPROVED_FOR_USE`, `CLEARED`, `CERTIFIED`.
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md:826: vocabulary. Nothing in this repository may be changed to `CLEARED`, `APPROVED_FOR_USE`, `ORIGINAL` or
+PATTERN approved-for-use-lower | files_hit=1 | lines_hit=4
+   docs\marea\brand\assets\social\og-marea-es-1200x630.html: 4 line(s)
+PATTERN identity-adoption-lower | files_hit=0 | lines_hit=0
+PATTERN adopted-upper [case-sensitive] | files_hit=5 | lines_hit=5
+   docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md:137: | E-11 | Contribution governance for the future (CLA/DCO, `Signed-off-by`, contributor licence) | Prevents repeating the current gap (MC-02 L-08) | Engineering + counsel | NOT ADOPTED |
+   docs\marea\brand\COLOUR-SYSTEM.md:9: | Adoption | `NOT_ADOPTED` |
+   docs\marea\brand\MC-04-ACCESSIBILITY-EVIDENCE.md:7: | Adoption | `NOT_ADOPTED` |
+   docs\marea\brand\TYPOGRAPHY-SYSTEM.md:7: | Adoption | `NOT_ADOPTED` |
+   docs\marea\brand\tokens\marea-instrument-tokens.proposed.json:7: "adoption": "NOT_ADOPTED",
+PATTERN originality-claim | files_hit=0 | lines_hit=0
+
+--- SCAN 5: fabricated-image / provenance integrity ---
+raster_or_video_files_under_docs/marea = 43
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\assets-icons-ui-index.png (714958 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\assets-icons-ui-reduction-proof.png (410859 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\evidence-contrast-cvd-simulation-board.png (432232 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\evidence-contrast-greyscale-board.png (157937 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\specimens-alerts.png (324520 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\specimens-index.png (502899 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\specimens-pilot.png (328792 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-evidence-reading-test.png (57216 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-misuse-examples.png (88070 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-proof-territory-a-proof-sheet.png (355596 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-proof-territory-b-proof-sheet.png (317675 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-proof-territory-c-proof-sheet.png (274129 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-territory-comparison.png (153193 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\favicon.ico (1490 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\marea-app-icon-1024.png (5541 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\marea-apple-touch-180.png (882 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\marea-icon-192.png (915 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\marea-icon-512.png (2263 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-favicon-16-32-proof.png (97475 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-icon-16.png (370 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-icon-32.png (520 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-icon-48.png (546 B)
+   FOUND RASTER: docs\marea\brand\assets\social\og-marea-en-1200x630.jpg (63308 B)
+   FOUND RASTER: docs\marea\brand\assets\social\og-marea-es-1200x630.jpg (66508 B)
+   FOUND RASTER: docs\marea\brand\evidence\review\raw\author-reduction-proof-top.png (303440 B)
+   FOUND RASTER: docs\marea\brand\evidence\review\raw\board-cvd.png (1172270 B)
+   FOUND RASTER: docs\marea\brand\evidence\review\raw\board-greyscale.png (444645 B)
+   FOUND RASTER: docs\marea\brand\evidence\review\raw\icon-harness-16px-dpr4.png (758599 B)
+   FOUND RASTER: docs\marea\brand\evidence\review\raw\icon-pair-compare-16px-dpr8.png (437682 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\reading-test-native.png (56254 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\reading-test-zoom.png (244413 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\case-study.png (70762 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\contact-sheet.png (515605 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\lockup-primary.png (19319 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\mark-compact.png (6991 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\mark-reduced-16.png (7117 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-a-lockup.png (32060 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-a-mark.png (43226 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-b-lockup.png (28636 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-b-mark.png (31342 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-c-lockup.png (19319 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-c-mark.png (5511 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\wordmark.png (27785 B)
+manifest_yaml_files = 2
+   docs\marea\assets\manifest\MC-04-ASSETS.yaml: ai_generated_true_lines=0 file_path_entries=120 real_sha256_values=120
+   docs\marea\assets\manifest\MC-04-BRIEFS.yaml: ai_generated_true_lines=17 file_path_entries=0 real_sha256_values=0
+
+--- SCAN 6: mandatory disclaimer presence (claims policy §9, brief §7.7) ---
+DISCLAIMER NAV-ES ("ayuda a la navegación") | svg_files_hit=3 | html_files_hit=4
+DISCLAIMER NAV-EN ("navigational aid") | svg_files_hit=3 | html_files_hit=4
+DISCLAIMER AIS-ES ("únicamente de escucha") | svg_files_hit=2 | html_files_hit=2
+DISCLAIMER AIS-EN ("receive-only") | svg_files_hit=3 | html_files_hit=3
+DISCLAIMER PILOT-ES ("asistido y supervisado") | svg_files_hit=2 | html_files_hit=3
+DISCLAIMER PILOT-EN ("assisted and supervised") | svg_files_hit=2 | html_files_hit=3
+DISCLAIMER WEATHER-ES ("probabil") | svg_files_hit=1 | html_files_hit=1
+DISCLAIMER WEATHER-EN ("probabilistic") | svg_files_hit=1 | html_files_hit=1
+DIR docs/marea/brand/assets/diagrams = EXISTS (3 files)
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg: AIS-OK / PILOT-ABSENT / NAV-OK
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg: AIS-OK / PILOT-OK / NAV-OK
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg: AIS-ABSENT / PILOT-OK / NAV-OK
+DIR docs/marea/brand/specimens = EXISTS (3 files)
+   docs\marea\brand\specimens\alerts.html: AIS-ABSENT / PILOT-OK / NAV-OK
+   docs\marea\brand\specimens\index.html: AIS-OK / PILOT-OK / NAV-OK
+   docs\marea\brand\specimens\pilot.html: AIS-ABSENT / PILOT-OK / NAV-OK
+POLICY-CLAUSE PRESENT in COMMERCIAL-BRAND-CLAIMS-POLICY.md
+POLICY-CLAUSE PRESENT in COMMERCIAL-BRAND-CLAIMS-POLICY.md
+POLICY-CLAUSE PRESENT in COMMERCIAL-BRAND-CLAIMS-POLICY.md
+POLICY-CLAUSE PRESENT in COMMERCIAL-BRAND-CLAIMS-POLICY.md
+POLICY-CLAUSE PRESENT in COMMERCIAL-BRAND-CLAIMS-POLICY.md
+POLICY-CLAUSE PRESENT in COMMERCIAL-BRAND-CLAIMS-POLICY.md
+POLICY-CLAUSE PRESENT in COMMERCIAL-BRAND-CLAIMS-POLICY.md
+POLICY-CLAUSE PRESENT in COMMERCIAL-BRAND-CLAIMS-POLICY.md
+
+--- SCAN 7: ECDIS-equivalence / autonomy / safety-instrument implication ---
+PATTERN ECDIS | files_hit=12 | lines_hit=27
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 9 line(s)
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md: 3 line(s)
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md: 3 line(s)
+   docs\marea\brand\COLOUR-SYSTEM.md: 2 line(s)
+   docs\marea\brand\ILLUSTRATION-STANDARDS.md: 2 line(s)
+   docs\marea\brand\MC-04-REVIEW.md: 2 line(s)
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg: 1 line(s)
+   docs\marea\brand\BRAND-VOICE-ES-EN.md: 1 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 1 line(s)
+   docs\marea\brand\ICONOGRAPHY-SYSTEM.md: 1 line(s)
+   docs\marea\brand\MC-03-REVIEW.md: 1 line(s)
+   docs\marea\brand\PRODUCT-NAMING-SYSTEM.md: 1 line(s)
+PATTERN solas-gmdss-distress | files_hit=7 | lines_hit=9
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md: 3 line(s)
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg: 1 line(s)
+   docs\marea\brand\BRAND-VOICE-ES-EN.md: 1 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 1 line(s)
+   docs\marea\brand\ICONOGRAPHY-SYSTEM.md: 1 line(s)
+   docs\marea\brand\ILLUSTRATION-STANDARDS.md: 1 line(s)
+   docs\marea\brand\PRODUCT-NAMING-SYSTEM.md: 1 line(s)
+PATTERN autonomous-steering | files_hit=13 | lines_hit=40
+   docs\marea\brand\specimens\pilot.html: 8 line(s)
+   docs\marea\brand\assets\icons\ui\index.html: 6 line(s)
+   docs\marea\brand\specimens\index.html: 6 line(s)
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg: 4 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 4 line(s)
+   docs\marea\brand\ICONOGRAPHY-SYSTEM.md: 3 line(s)
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg: 2 line(s)
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 2 line(s)
+   docs\marea\brand\brand-identity.contract.json: 1 line(s)
+   docs\marea\brand\ILLUSTRATION-STANDARDS.md: 1 line(s)
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md: 1 line(s)
+   docs\marea\brand\MC-03-DELIVERY.md: 1 line(s)
+   docs\marea\brand\MC-03-REVIEW.md: 1 line(s)
+PATTERN remote-helm | files_hit=5 | lines_hit=9
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md: 3 line(s)
+   docs\marea\brand\assets\icons\ui\index.html: 2 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 2 line(s)
+   docs\marea\assets\manifest\MC-04-BRIEFS.yaml: 1 line(s)
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md: 1 line(s)
+PATTERN safety-guarantee | files_hit=1 | lines_hit=1
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 1 line(s)
+
+--- SCAN 8: trademark symbol ATTACHED to MAREA / family / bundle (decisive rule) ---
+symbol_attached_to_brand_lines = 6  (expected 0 while TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED)
+   ATTACHED-SYMBOL: docs\marea\brand\MC-03-REVIEW.md:85: | 2 | No invented legal clearance; only state is proposed / `NOT_GRANTED` / not legal clearance; no `®`/`™` attached to MAREA | **VERIFIED** | `TRADEMARK-CLEARANCE-RESEARCH.md:16-22,587-593`; contract `:24-28`; delivery `:22-29`. Independent scan of every `docs/marea/brand/*.{md,json,csv}`: the only line where a symbol is attached (`MAREA®`) is `MC-03-DELIVERY.md:240`, inside backticks describing a **rejected negative test case**; every other `®`/`™` occurrence is a prohibition (e.g. `BRAND-ARCHITECTURE.md:137`, `COMMERCIAL-BRAND-CLAIMS-POLICY.md:88`). Independent grep found **no** positive "MAREA is registered/cleared" assertion; the only literal string is a forbidden example inside `brand-identity.contract.json:218` (`forbiddenStatements`). No clearance state other than `NOT_GRANTED` exists anywhere |
+   ATTACHED-SYMBOL: docs\marea\brand\MC-03-REVIEW.md:93: | 10 | Governance consistency (adversarial): validator fails on real violations; does not scan `src/`; cannot fail because of legacy pages | **PARTIAL** | Real tree: 21/21 checks, 11 governed files, 0 skipped; unit tests 11/11. My own `--root` fixtures: wrong casing, `MAREA®`, clearance/availability assertion, `trademarkLegalClearance = GRANTED`, missing `messages.es.trustLine`, eight families → **all exit 1**; violations placed only in `src/` and a non-governed `docs/marea/UNRELATED.md` → **exit 0** (scope proof). But I also demonstrated three false-negative surfaces: a line containing ordinary Spanish "no"/English "not" anywhere is exempt from **all** scan rules (`MAREA® es la marca; no hay otra.` → exit 0), a wrong family name inside any table cell is skipped (`| Marea Nav |` → exit 0), and the validator still returns PASS with **every** governed document absent, including the claims policy → defect **N-6**. The negatives are documented as heuristics in `BRAND-GOVERNANCE-IMPLEMENTATION.md:68-87`, but the delivery's robustness claim does not disclose them |
+   ATTACHED-SYMBOL: docs\marea\brand\MC-03-REVIEW.md:147: fixture exit 0. Real violations exit 1: `MAREA®` attached (`brand.docs.trademarkSymbols`), wrong
+   ATTACHED-SYMBOL: docs\marea\brand\MC-03-REVIEW.md:152: `docs/marea/UNRELATED.md` → exit 0. False negatives: `MAREA® es la marca; no hay otra.` → exit 0;
+   ATTACHED-SYMBOL: docs\marea\brand\MC-03-REVIEW.md:188: | **N-6** | Validator false-negative surface: a line-wide negation exemption plus table/absence tolerance lets real violations pass. | `scripts/check-brand.mjs:64` (`EXEMPT_CONTEXT` contains `no`, `not`, `sin`, …) applied at `:491-497` to **all** rules; table rows skipped for `productNames` at `:631`; absent governed files skipped at `:644-646` and claims-policy absence only reported at `:665`. Real fixtures: `MAREA® es la marca; no hay otra.` → exit 0; `Marea Nav no es el nombre correcto.` → exit 0; `MAREA is a registered trademark, not a proposal.` → exit 0; wrong name in a normal table → exit 0; all governed docs absent → `RESULT: PASS`. Documented as heuristics at `BRAND-GOVERNANCE-IMPLEMENTATION.md:68-87`, but the delivery's "fails on …" claim does not disclose them. | A governance gate that ordinary Spanish "no" can silently defeat is weaker than its summary suggests; a deleted claims policy also produces PASS. | Narrow the negation exemption to the matched rule/clause (or per-rule markers), add regression tests for `MAREA® no …` and non-negative tables, and make the absence of the claims policy (or any governed deliverable) a failure rather than a skip. Update the implementation note accordingly. |
+   ATTACHED-SYMBOL: docs\marea\brand\MC-03-REVIEW.md:191: | **N-9** | The delivery report itself contains the literal string `MAREA®` (as a rejected negative test case). | `MC-03-DELIVERY.md:240`: "…clearance ≠ NOT_GRANTED, \`MAREA®\`, \`Marea Nav\` casing…". | Not a clearance claim and not a violation (it describes a test that must fail), but a naive symbol grep over the brand folder flags it, and it is the only attached symbol in the delivered set. | Optional hygiene: reword as "an attached registered-trademark symbol" and keep the literal only in the validator test fixture. |
+
+--- SCAN 9: SVG/HTML authored-artwork claim context (excerpt level) ---
+ARTWORK-PATTERN certified|certificaci[oó]n|certificado | lines_hit=50
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:8: <text x="40" y="82" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="14" fill="#57708a">AIS receive-only chain — illustrative; not a certified product; engineering review pending</text>
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:10: <text x="52" y="113" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#8a5a00">ILUSTRATIVO / ILLUSTRATIVE · no certificado / not certified · revisión de ingeniería pendiente / engineering review pending</text>
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:142: <text x="640" y="482" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">No es un transpondedor AIS ni un equipo certificado.</text>
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:143: <text x="640" y="494" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">It is not an AIS transponder or a certified device.</text>
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:162: <text x="60" y="802" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Sin sellos de certificación · sin datos en vivo · sin implicación de compatibilidad · revisión de ingeniería pendiente / no certification...
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:10: <text x="52" y="110" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#8a5a00">ILUSTRATIVO / ILLUSTRATIVE · conexiones no verificadas / unverified connections · sin certificación / no certification · productos no ...
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:181: <text x="60" y="984" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">Sin sellos de certificación · sin datos en vivo · sin implicación de compatibilidad · sin promesa de disponibilidad · revisión de ingen...
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg:8: <text x="40" y="82" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="14" fill="#57708a">Supervised assisted steering — illustrative; not certified; engineering and safety review pending</text>
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg:184: <text x="60" y="994" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Sin sellos de certificación · sin prueba de banco ni de mar · sin implicación de autonomía · revisión de ingeniería y seguridad pendiente...
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg:3: <desc>Provisional vector packaging dieline. PROPOSED dimensions, 3 mm bleed, 5 mm safe area, fold and glue lines, language panels ES/PT/EN/FR, QR placeholder with printed URL fallback. Not certified, not produced, not printed.</desc>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg:31: <text x="189" y="181" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg:40: <text x="349" y="149" font-size="2.1" fill="#a33a1f">Sin datos de rendimiento, certificación ni disponibilidad: no verificados.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg:3: <desc>Provisional vector packaging dieline. PROPOSED dimensions, 3 mm bleed, 5 mm safe area, fold and glue lines, language panels ES/PT/EN/FR, QR placeholder with printed URL fallback. Not certified, not produced, not printed.</desc>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg:31: <text x="254" y="261" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg:40: <text x="479" y="149" font-size="2.1" fill="#a33a1f">Sin datos de rendimiento, certificación ni disponibilidad: no verificados.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg:3: <desc>Provisional vector packaging dieline. PROPOSED dimensions, 3 mm bleed, 5 mm safe area, fold and glue lines, language panels ES/PT/EN/FR, QR placeholder with printed URL fallback. Not certified, not produced, not printed.</desc>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg:31: <text x="244" y="221" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg:40: <text x="459" y="149" font-size="2.1" fill="#a33a1f">Sin datos de rendimiento, certificación ni disponibilidad: no verificados.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg:3: <desc>Provisional vector packaging dieline. PROPOSED dimensions, 3 mm bleed, 5 mm safe area, fold and glue lines, language panels ES/PT/EN/FR, QR placeholder with printed URL fallback. Not certified, not produced, not printed.</desc>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg:31: <text x="254" y="241" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg:40: <text x="479" y="149" font-size="2.1" fill="#a33a1f">Sin datos de rendimiento, certificación ni disponibilidad: no verificados.</text>
+ARTWORK-PATTERN \bCE\b | lines_hit=14
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg:31: <text x="189" y="181" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg:31: <text x="254" y="261" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg:31: <text x="244" y="221" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg:31: <text x="254" y="241" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-sense.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-sense.svg:31: <text x="174" y="161" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-watch.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-watch.svg:31: <text x="154" y="151" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-en.html:548: certification, CE, NMEA, IP or equivalent marks, and must not be presented as an official
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-es.html:563: impreso. No contiene ni reproduce marcas de certificación, CE, NMEA, IP o equivalentes, y no
+ARTWORK-PATTERN NMEA | lines_hit=15
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg:31: <text x="189" y="181" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg:31: <text x="254" y="261" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg:31: <text x="244" y="221" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg:31: <text x="254" y="241" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-sense.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-sense.svg:31: <text x="174" y="161" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-watch.svg:10: <text x="16" y="22.4" font-size="2.4" fill="#a33a1f">No contiene marcas CE, NMEA, IP ni símbolos de certificación. No es un envase producido, impreso ni aprobado.</text>
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-watch.svg:31: <text x="154" y="151" font-size="2.2" text-anchor="middle" fill="#44586c">Sin marcas CE / NMEA / IP — sin certificación. Dimensiones PROPUESTAS.</text>
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-en.html:548: certification, CE, NMEA, IP or equivalent marks, and must not be presented as an official
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-es.html:563: impreso. No contiene ni reproduce marcas de certificación, CE, NMEA, IP o equivalentes, y no
+   docs\marea\brand\specimens\index.html:385: <tr><th scope="row">Bus NMEA / NMEA bus</th><td><span class="state state--delayed"><svg aria-hidden="true"><use href="#i-caution"/></svg>DEGRADED</span></td><td>00:04</td><td>HUB</td></tr>
+ARTWORK-PATTERN collision avoidance|evitaci[oó]n de colisiones | lines_hit=6
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:140: <text x="640" y="450" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">No es un sistema de evitación de colisiones.</text>
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:155: <text x="60" y="672" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#17365d">AIS (ES): «La recepción AIS es únicamente de escucha: no todos los buques emiten AIS. No constituye un sistema de evitación de colisio...
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:171: <text x="60" y="836" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">AIS (ES): «La recepción AIS es únicamente de escucha: no todos los buques emiten AIS. No constituye un sistema de evitación de colision...
+   docs\marea\brand\assets\icons\ui\index.html:97: <p lang="es"><b>AIS.</b> «La recepción AIS es únicamente de escucha: no todos los buques emiten AIS. No constituye un sistema de evitación de colisiones ni un transpondedor.»</p>
+   docs\marea\brand\specimens\index.html:328: <p lang="es">La recepción AIS es únicamente de escucha: no todos los buques emiten AIS. No constituye un sistema de evitación de colisiones ni un transpondedor.</p>
+   docs\marea\brand\specimens\index.html:468: <p><b>AIS ·</b> <span lang="es">«La recepción AIS es únicamente de escucha: no todos los buques emiten AIS. No constituye un sistema de evitación de colisiones ni un transpondedor.»</span> <span lang="en">“AIS reception is receive-only: not...
+ARTWORK-PATTERN fully autonomous|autonomous steering|gobierno aut[oó]nomo | lines_hit=16
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:173: <text x="60" y="868" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">PILOT (ES): «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. ...
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:174: <text x="60" y="882" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">PILOT (EN): “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control a...
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg:170: <text x="40" y="782" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="16" font-weight="700" fill="#a32b22">SOLO SUPERVISIÓN HUMANA — SIN GOBIERNO AUTÓNOMO NI REMOTO</text>
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg:171: <text x="40" y="802" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#a32b22">SUPERVISED ONLY — NO AUTONOMOUS STEERING OR UNATTENDED REMOTE CONTROL</text>
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg:177: <text x="60" y="872" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">PILOT (ES): «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. N...
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg:178: <text x="60" y="887" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">PILOT (EN): “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control...
+   docs\marea\brand\assets\icons\ui\index.html:99: <p lang="es"><b>PILOT.</b> «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.»</p>
+   docs\marea\brand\assets\icons\ui\index.html:100: <p lang="en"><b>PILOT.</b> “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.”</p>
+   docs\marea\brand\assets\icons\ui\index.html:295: </svg></div><figcaption><span class="es" lang="es">Mando local de piloto</span><span class="en" lang="en">Pilot control head</span><code>device-control-head.svg</code><p class="note"><span lang="es">Mando local del piloto; no implica gobier...
+   docs\marea\brand\specimens\index.html:450: <p style="margin-top:10px">E-stop físico y toma manual en todo momento. Sin gobierno autónomo ni control remoto sin supervisión. El comercio web no tiene autoridad de gobierno.</p>
+   docs\marea\brand\specimens\index.html:460: <p lang="es"><b>PILOT.</b> «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.»</p>
+   docs\marea\brand\specimens\index.html:461: <p lang="en"><b>PILOT.</b> “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.”</p>
+   docs\marea\brand\specimens\pilot.html:115: <p class="lede">Especimen no funcional de la frontera de seguridad: autoridad humana, E-stop físico, watchdog, toma manual, dependencias de sensores y aislamiento del comercio web. Sin gobierno autónomo ni control remoto sin supervisión.</p...
+   docs\marea\brand\specimens\pilot.html:138: <div class="panel"><div class="rowhead" style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><h3>Gobierno autónomo</h3><span class="illus">ILUSTRATIVO / SIN DATOS REALES · ILLUSTRATIVE / NOT LIVE DATA</span></di...
+   docs\marea\brand\specimens\pilot.html:206: <p lang="es"><b>PILOT.</b> «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.»</p>
+   docs\marea\brand\specimens\pilot.html:207: <p lang="en"><b>PILOT.</b> “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.”</p>
+ARTWORK-PATTERN asistido y supervisado|assisted and supervised | lines_hit=15
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:173: <text x="60" y="868" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">PILOT (ES): «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. ...
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:174: <text x="60" y="882" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">PILOT (EN): “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control a...
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg:2: <title>MAREA PILOT — gobierno asistido y supervisado: fronteras de control / PILOT supervised steering boundaries (ilustrativo / illustrative)</title>
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg:7: <text x="40" y="56" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="22" font-weight="700" fill="#17365d">MAREA PILOT — gobierno asistido y supervisado</text>
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg:177: <text x="60" y="872" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">PILOT (ES): «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. N...
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg:178: <text x="60" y="887" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">PILOT (EN): “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control...
+   docs\marea\brand\assets\icons\ui\index.html:99: <p lang="es"><b>PILOT.</b> «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.»</p>
+   docs\marea\brand\assets\icons\ui\index.html:100: <p lang="en"><b>PILOT.</b> “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.”</p>
+   docs\marea\brand\specimens\index.html:447: <div style="display:flex;gap:10px;align-items:flex-start"><svg class="icon" aria-hidden="true" style="width:30px;height:30px"><use href="#i-pilot"/></svg><div><h3>Gobierno asistido y supervisado / Supervised assisted steering</h3><p class="...
+   docs\marea\brand\specimens\index.html:451: <p class="sr">El sistema de gobierno es asistido y supervisado; exige vigilancia continua y toma de control manual. No es autónomo.</p>
+   docs\marea\brand\specimens\index.html:460: <p lang="es"><b>PILOT.</b> «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.»</p>
+   docs\marea\brand\specimens\index.html:461: <p lang="en"><b>PILOT.</b> “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.”</p>
+   docs\marea\brand\specimens\pilot.html:114: <h1>Frontera de PILOT — gobierno asistido y supervisado</h1>
+   docs\marea\brand\specimens\pilot.html:206: <p lang="es"><b>PILOT.</b> «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.»</p>
+   docs\marea\brand\specimens\pilot.html:207: <p lang="en"><b>PILOT.</b> “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.”</p>
+ARTWORK-PATTERN receive-only|solo escucha | lines_hit=21
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:2: <title>MAREA AIS — recepción únicamente: cadena de escucha / AIS receive-only chain (ilustrativo / illustrative)</title>
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:3: <desc>Diagrama de la cadena AIS de recepción únicamente: antena y splitter, receptor VHF, decodificador, HUB/NAV, análisis AIS y presentación. No existe ruta de transmisión. Ilustrativo, sin revisión de ingeniería. / Receive-only AIS chain:...
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:8: <text x="40" y="82" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="14" fill="#57708a">AIS receive-only chain — illustrative; not a certified product; engineering review pending</text>
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:18: <text x="322" y="148" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#a32b22">sin transpondedor ni DSC · no transponder, no DSC · recepción únicamente / receive-only</text>
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:128: <text x="60" y="462" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Receive-only, permanently: no transmit path exists.</text>
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg:156: <text x="60" y="688" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">AIS (EN): “AIS reception is receive-only: not every vessel transmits AIS. It is not a collision-avoidance system and not a transponder.”...
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:86: <text x="324" y="522" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">solo escucha / receive-only</text>
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:129: <text x="432" y="682" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">AIS receiver — solo escucha / receive-only</text>
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:172: <text x="60" y="850" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">AIS (EN): “AIS reception is receive-only: not every vessel transmits AIS. It is not a collision-avoidance system and not a transponder.”<...
+   docs\marea\brand\assets\icons\ui\ais-receive-only.svg:2: <title>Recepción AIS (solo escucha) / AIS receive-only</title>
+   docs\marea\brand\assets\icons\ui\index.html:98: <p lang="en"><b>AIS.</b> “AIS reception is receive-only: not every vessel transmits AIS. It is not a collision-avoidance system and not a transponder.”</p>
+   docs\marea\brand\assets\icons\ui\index.html:234: <section aria-labelledby="g-ais"><h2 id="g-ais">AIS — solo escucha <span class="en" lang="en">AIS — receive-only</span></h2><ul class="grid">
+   docs\marea\brand\assets\icons\ui\index.html:244: </svg></div><figcaption><span class="es" lang="es">Recepción AIS (solo escucha)</span><span class="en" lang="en">AIS receive-only</span><code>ais-receive-only.svg</code><p class="note"><span lang="es">Antena y receptor de escucha; no existe...
+   docs\marea\brand\assets\icons\ui\reduction-proof.html:441: <tbody><tr class="grp"><th colspan="5">AIS — solo escucha <span lang="en">/ AIS — receive-only</span></th></tr>
+   docs\marea\brand\assets\icons\ui\reduction-proof.html:442: <tr><th scope="row"><code>ais-receive-only.svg</code><span class="es">Recepción AIS (solo escucha)</span><span class="en">AIS receive-only</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="t...
+   docs\marea\brand\assets\icons\ui\reduction-proof.html:1931: </svg><small>ais-receive-only</small></div>
+   docs\marea\brand\specimens\index.html:315: <h2 id="ais-h">2. Contactos AIS — solo escucha / AIS contacts — receive-only</h2>
+   docs\marea\brand\specimens\index.html:320: <div><h3>Recepción AIS / AIS reception</h3><p class="kicker" style="margin:2px 0 0">escucha · sin transmisión / receive-only · no transmit</p></div>
+   docs\marea\brand\specimens\index.html:327: <h3>Recepción única de escucha / Receive-only</h3>
+   docs\marea\brand\specimens\index.html:329: <p lang="en">AIS reception is receive-only: not every vessel transmits AIS. It is not a collision-avoidance system and not a transponder.</p>
+   docs\marea\brand\specimens\index.html:468: <p><b>AIS ·</b> <span lang="es">«La recepción AIS es únicamente de escucha: no todos los buques emiten AIS. No constituye un sistema de evitación de colisiones ni un transpondedor.»</span> <span lang="en">“AIS reception is receive-only: not...
+ARTWORK-PATTERN probabil | lines_hit=4
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:179: <text x="60" y="957" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">Meteorología (ES): «Las previsiones son probabilísticas y pueden desviarse de las condiciones locales reales. Se muestra la fuente y la...
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:180: <text x="60" y="971" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Weather (EN): “Forecasts are probabilistic and may differ from actual local conditions. Source and timestamp are displayed for every data...
+   docs\marea\brand\assets\icons\ui\index.html:103: <p lang="es"><b>Meteorología / Weather.</b> «Las previsiones son probabilísticas y pueden desviarse de las condiciones locales reales. Se muestra la fuente y la hora de cada dato.»</p>
+   docs\marea\brand\assets\icons\ui\index.html:104: <p lang="en"><b>Weather.</b> “Forecasts are probabilistic and may differ from actual local conditions. Source and timestamp are displayed for every data point.”</p>
+ARTWORK-PATTERN \bECDIS\b|\bSOLAS\b|\bGMDSS\b|\bdistress\b | lines_hit=2
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:29: <text x="428" y="257" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#8a5a00">no es servicio de socorro / not a distress service</text>
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg:80: <text x="68" y="536" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#8a5a00">no ECDIS</text>
+ARTWORK-PATTERN waterproof|impermeable|marine-grade | lines_hit=0
+
+--- SCAN 10: SVG hygiene / accessibility of authored icon SVGs ---
+svg_files_with_hygiene_issue = 0 of 104
+
+--- SCAN 11: per-file inventory of scanned files ---
+   docs\marea\assets\manifest\MC-04-ASSETS.yaml (50613 B)
+   docs\marea\assets\manifest\MC-04-BRIEFS.yaml (87917 B)
+   docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg (16994 B)
+   docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg (22114 B)
+   docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg (21185 B)
+   docs\marea\brand\assets\icons\app\marea-app-icon-construction.svg (1688 B)
+   docs\marea\brand\assets\icons\app\marea-app-icon-maskable-background.svg (342 B)
+   docs\marea\brand\assets\icons\app\marea-app-icon-maskable-foreground.svg (766 B)
+   docs\marea\brand\assets\icons\app\marea-app-icon-master.svg (845 B)
+   docs\marea\brand\assets\icons\app\marea-favicon-source.svg (730 B)
+   docs\marea\brand\assets\icons\favicon.svg (730 B)
+   docs\marea\brand\assets\icons\ui\acknowledge.svg (404 B)
+   docs\marea\brand\assets\icons\ui\ais-receive-only.svg (519 B)
+   docs\marea\brand\assets\icons\ui\ais-target-lost.svg (312 B)
+   docs\marea\brand\assets\icons\ui\ais-target-selected.svg (428 B)
+   docs\marea\brand\assets\icons\ui\ais-target.svg (274 B)
+   docs\marea\brand\assets\icons\ui\alert-alarm.svg (413 B)
+   docs\marea\brand\assets\icons\ui\alert-caution.svg (385 B)
+   docs\marea\brand\assets\icons\ui\alert-warning.svg (442 B)
+   docs\marea\brand\assets\icons\ui\battery.svg (382 B)
+   docs\marea\brand\assets\icons\ui\bilge.svg (343 B)
+   docs\marea\brand\assets\icons\ui\brightness.svg (634 B)
+   docs\marea\brand\assets\icons\ui\calibration.svg (568 B)
+   docs\marea\brand\assets\icons\ui\cellular.svg (431 B)
+   docs\marea\brand\assets\icons\ui\charger.svg (336 B)
+   docs\marea\brand\assets\icons\ui\connection.svg (379 B)
+   docs\marea\brand\assets\icons\ui\depth.svg (447 B)
+   docs\marea\brand\assets\icons\ui\device-control-head.svg (485 B)
+   docs\marea\brand\assets\icons\ui\device-display.svg (408 B)
+   docs\marea\brand\assets\icons\ui\device-hub.svg (428 B)
+   docs\marea\brand\assets\icons\ui\fleet.svg (331 B)
+   docs\marea\brand\assets\icons\ui\fuse-breaker.svg (421 B)
+   docs\marea\brand\assets\icons\ui\gps-fix.svg (431 B)
+   docs\marea\brand\assets\icons\ui\gps-no-fix.svg (340 B)
+   docs\marea\brand\assets\icons\ui\ground.svg (405 B)
+   docs\marea\brand\assets\icons\ui\index.html (61342 B)
+   docs\marea\brand\assets\icons\ui\installation.svg (681 B)
+   docs\marea\brand\assets\icons\ui\nav-bearing.svg (358 B)
+   docs\marea\brand\assets\icons\ui\nav-heading.svg (394 B)
+   docs\marea\brand\assets\icons\ui\nav-north.svg (353 B)
+   docs\marea\brand\assets\icons\ui\nav-waypoint.svg (315 B)
+   docs\marea\brand\assets\icons\ui\network-bus.svg (613 B)
+   docs\marea\brand\assets\icons\ui\no-data.svg (323 B)
+   docs\marea\brand\assets\icons\ui\offline.svg (446 B)
+   docs\marea\brand\assets\icons\ui\position-marker.svg (369 B)
+   docs\marea\brand\assets\icons\ui\power.svg (316 B)
+   docs\marea\brand\assets\icons\ui\pressure.svg (545 B)
+   docs\marea\brand\assets\icons\ui\reduction-proof.html (120603 B)
+   docs\marea\brand\assets\icons\ui\scale.svg (394 B)
+   docs\marea\brand\assets\icons\ui\sensor.svg (650 B)
+   docs\marea\brand\assets\icons\ui\service.svg (365 B)
+   docs\marea\brand\assets\icons\ui\settings.svg (845 B)
+   docs\marea\brand\assets\icons\ui\shore-power.svg (587 B)
+   docs\marea\brand\assets\icons\ui\signal-strength.svg (611 B)
+   docs\marea\brand\assets\icons\ui\solar.svg (567 B)
+   docs\marea\brand\assets\icons\ui\speed.svg (407 B)
+   docs\marea\brand\assets\icons\ui\stale.svg (402 B)
+   docs\marea\brand\assets\icons\ui\status-info.svg (388 B)
+   docs\marea\brand\assets\icons\ui\support.svg (382 B)
+   docs\marea\brand\assets\icons\ui\tank-level.svg (339 B)
+   docs\marea\brand\assets\icons\ui\temperature.svg (324 B)
+   docs\marea\brand\assets\icons\ui\unknown.svg (449 B)
+   docs\marea\brand\assets\icons\ui\update.svg (353 B)
+   docs\marea\brand\assets\icons\ui\watch-monitoring.svg (338 B)
+   docs\marea\brand\assets\icons\ui\weather-forecast.svg (561 B)
+   docs\marea\brand\assets\icons\ui\wifi.svg (394 B)
+   docs\marea\brand\assets\icons\ui\wind-angle.svg (412 B)
+   docs\marea\brand\assets\icons\ui\wind-apparent.svg (429 B)
+   docs\marea\brand\assets\icons\ui\wind-sensor.svg (414 B)
+   docs\marea\brand\assets\icons\ui\wind-true.svg (378 B)
+   docs\marea\brand\assets\logo\family\marea-family-ais-lockup.svg (2515 B)
+   docs\marea\brand\assets\logo\family\marea-family-display-lockup.svg (3085 B)
+   docs\marea\brand\assets\logo\family\marea-family-fleet-lockup.svg (2704 B)
+   docs\marea\brand\assets\logo\family\marea-family-hub-lockup.svg (2588 B)
+   docs\marea\brand\assets\logo\family\marea-family-nav-lockup.svg (2494 B)
+   docs\marea\brand\assets\logo\family\marea-family-pilot-lockup.svg (2610 B)
+   docs\marea\brand\assets\logo\family\marea-family-sense-lockup.svg (2983 B)
+   docs\marea\brand\assets\logo\family\marea-family-watch-lockup.svg (2753 B)
+   docs\marea\brand\assets\logo\family\marea-family-weather-lockup.svg (3208 B)
+   docs\marea\brand\assets\logo\marea-construction-grid.svg (2657 B)
+   docs\marea\brand\assets\logo\marea-lockup-mono.svg (1982 B)
+   docs\marea\brand\assets\logo\marea-lockup-primary.svg (1982 B)
+   docs\marea\brand\assets\logo\marea-lockup-reversed.svg (1982 B)
+   docs\marea\brand\assets\logo\marea-mark-compact.svg (935 B)
+   docs\marea\brand\assets\logo\marea-mark-reduced-16.svg (894 B)
+   docs\marea\brand\assets\logo\marea-wordmark.svg (1425 B)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg (11984 B)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg (12024 B)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-hub.svg (11996 B)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-pilot.svg (12010 B)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-sense.svg (12015 B)
+   docs\marea\brand\assets\packaging\marea-packaging-dieline-watch.svg (11993 B)
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-en.html (20171 B)
+   docs\marea\brand\assets\print\marea-installer-commissioning-record-es.html (20999 B)
+   docs\marea\brand\assets\social\og-marea-en-1200x630.html (5221 B)
+   docs\marea\brand\assets\social\og-marea-es-1200x630.html (5264 B)
+   docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md (21916 B)
+   docs\marea\brand\BRAND-ARCHITECTURE.md (16736 B)
+   docs\marea\brand\BRAND-GOVERNANCE-IMPLEMENTATION.md (18345 B)
+   docs\marea\brand\brand-identity.contract.json (14276 B)
+   docs\marea\brand\BRAND-VOICE-ES-EN.md (20163 B)
+   docs\marea\brand\COLOUR-SYSTEM.md (28381 B)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md (16739 B)
+   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md (51863 B)
+   docs\marea\brand\HARDWARE-CMF-DIRECTION.md (17361 B)
+   docs\marea\brand\ICONOGRAPHY-SYSTEM.md (31043 B)
+   docs\marea\brand\IDENTITY-SYSTEM.md (21957 B)
+   docs\marea\brand\ILLUSTRATION-STANDARDS.md (19399 B)
+   docs\marea\brand\MAREA-BRAND-STRATEGY.md (63806 B)
+   docs\marea\brand\MC-03-DELIVERY.md (33088 B)
+   docs\marea\brand\MC-03-REVIEW.md (44181 B)
+   docs\marea\brand\MC-04-ACCESSIBILITY-EVIDENCE.md (21809 B)
+   docs\marea\brand\MC-04-EXECUTION-PLAN.md (9234 B)
+   docs\marea\brand\MC-04-REVIEW.md (24715 B)
+   docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md (180186 B)
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md (77442 B)
+   docs\marea\brand\PACKAGING-DIRECTION.md (10649 B)
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md (58678 B)
+   docs\marea\brand\PRODUCT-NAMING-SYSTEM.md (43976 B)
+   docs\marea\brand\specimens\alerts.html (27820 B)
+   docs\marea\brand\specimens\index.html (49246 B)
+   docs\marea\brand\specimens\pilot.html (24902 B)
+   docs\marea\brand\territories\evidence\reading-test.html (23785 B)
+   docs\marea\brand\territories\evidence\svg-geometry-report.json (79799 B)
+   docs\marea\brand\territories\evidence\svg-geometry-report.md (5734 B)
+   docs\marea\brand\territories\misuse-examples.html (21862 B)
+   docs\marea\brand\territories\proof\territory-a-proof-sheet.html (41952 B)
+   docs\marea\brand\territories\proof\territory-b-proof-sheet.html (38555 B)
+   docs\marea\brand\territories\proof\territory-c-proof-sheet.html (39085 B)
+   docs\marea\brand\territories\territory-a-construction.svg (3869 B)
+   docs\marea\brand\territories\territory-a-lockup-primary.svg (2212 B)
+   docs\marea\brand\territories\territory-a-mark-compact.svg (757 B)
+   docs\marea\brand\territories\territory-a-mark-mono.svg (944 B)
+   docs\marea\brand\territories\territory-a-mark-reversed.svg (948 B)
+   docs\marea\brand\territories\territory-b-construction.svg (3677 B)
+   docs\marea\brand\territories\territory-b-lockup-primary.svg (2036 B)
+   docs\marea\brand\territories\territory-b-mark-compact.svg (672 B)
+   docs\marea\brand\territories\territory-b-mark-mono.svg (773 B)
+   docs\marea\brand\territories\territory-b-mark-reversed.svg (777 B)
+   docs\marea\brand\territories\territory-c-construction.svg (3638 B)
+   docs\marea\brand\territories\territory-c-lockup-primary.svg (1986 B)
+   docs\marea\brand\territories\territory-c-mark-compact.svg (784 B)
+   docs\marea\brand\territories\territory-c-mark-mono.svg (774 B)
+   docs\marea\brand\territories\territory-c-mark-reversed.svg (778 B)
+   docs\marea\brand\territories\territory-comparison.html (21481 B)
+   docs\marea\brand\territories\wordmark-case-study.svg (3770 B)
+   docs\marea\brand\TERRITORY-COMPARISON.md (18233 B)
+   docs\marea\brand\tokens\marea-instrument-tokens.proposed.json (17731 B)
+   docs\marea\brand\TRADEMARK-CLEARANCE-RESEARCH.md (64410 B)
+   docs\marea\brand\TRADEMARK-SEARCH-RESULTS.csv (21274 B)
+   docs\marea\brand\TYPOGRAPHY-SYSTEM.md (34242 B)
+   docs\marea\brand\WEBSITE-BRAND-MIGRATION.md (89292 B)
+
+============================================================
+SCAN COMPLETE
+============================================================

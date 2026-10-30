@@ -1,0 +1,589 @@
+============================================================
+MC-04 D-16 REV.2 — FROZEN BINDING RUN
+Binding performed at : 2026-10-30T18:48:48+01:00
+FROZEN signal          : Lead, 2026-10-30 — "IdentityVector declares the logo/mark geometry final"
+                        (12 SVGs in docs/marea/brand/assets/logo/; measured report
+                        territories/evidence/svg-geometry-report.{md,json})
+Binding happened after : the Lead FROZEN signal. No value below was typed by hand:
+                        every hash/bytes/viewBox line is copied from rev2-bind-helper.ps1 output.
+Helper                 : docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 (SHA-256 via Get-FileHash; refuses paths outside docs/marea/brand/)
+Files targeted         : 21
+============================================================
+
+
+--- BOUND FILE TABLE (paste-ready; every value helper-printed) ---
+
+| Role | Path | Bytes | SHA-256 | viewBox | Hygiene |
+| --- | --- | ---: | --- | --- | --- |
+| C1 Territory B - construction drawing | `docs/marea/brand/territories/territory-b-construction.svg` | 3677 B | `1fbc4336f5e3e4a1c5fdd05252f98a5eaad048644583f597566d1ec1e7ed8149` | `0 0 41 42.5` | script=False external=False raster=False |
+| C1 Territory B - lockup (primary) | `docs/marea/brand/territories/territory-b-lockup-primary.svg` | 2036 B | `ce9acde228f835674166cb3d9b60ad9e3c3bc5149a51f27d4ece4bd583eb2922` | `0 0 704.15 200` | script=False external=False raster=False |
+| C1 Territory B - mark compact | `docs/marea/brand/territories/territory-b-mark-compact.svg` | 672 B | `eb11a10ae2df915f85314e57e6f7671c7827e8c9d1a79e0e27f7aa2064543ad9` | `0 0 16 16` | script=False external=False raster=False |
+| C1 Territory B - mark mono | `docs/marea/brand/territories/territory-b-mark-mono.svg` | 773 B | `055b1ebcc447bac485ddcf7b19987145725af8625a3994b834d31deda900e2c3` | `0 0 32 32` | script=False external=False raster=False |
+| C1 Territory B - mark reversed | `docs/marea/brand/territories/territory-b-mark-reversed.svg` | 777 B | `352150063e3940b5d1842160a0804c0eddb21e2c022ccc43a185b763401848d0` | `0 0 32 32` | script=False external=False raster=False |
+| C2 Territory C - construction drawing | `docs/marea/brand/territories/territory-c-construction.svg` | 3638 B | `fa7ee3f11fe96895951de727e6a1182b865c77507c24122666a009a114586972` | `0 0 33 34.5` | script=False external=False raster=False |
+| C2 Territory C - lockup (primary) | `docs/marea/brand/territories/territory-c-lockup-primary.svg` | 1986 B | `3aa4668353c348a4e8ef2300a3d6c46704fcfb9fb66afa66c7d73c251449fa7a` | `0 0 760.96 200` | script=False external=False raster=False |
+| C2 Territory C - mark compact | `docs/marea/brand/territories/territory-c-mark-compact.svg` | 784 B | `4499fc6908eb2d80eb9ac8f436c29a1525490375b9fcdf26178cb95b90acc1a6` | `0 0 16 16` | script=False external=False raster=False |
+| C2 Territory C - mark mono | `docs/marea/brand/territories/territory-c-mark-mono.svg` | 774 B | `bb4e43a94c0e14d532b45f44c31bde193b014fac7b0eed1b14206576106686f3` | `0 0 24 24` | script=False external=False raster=False |
+| C2 Territory C - mark reversed | `docs/marea/brand/territories/territory-c-mark-reversed.svg` | 778 B | `ef167fb5eea12d9665c5b431ff477ca203b3b1653363c68dde645c10e4d10117` | `0 0 24 24` | script=False external=False raster=False |
+| MASTER wordmark (symbol-free) | `docs/marea/brand/assets/logo/marea-wordmark.svg` | 1425 B | `93654045374eb303ef55204cf628f8963a9e86efad2b1e5a0cacb8430eb1cf79` | `0 0 430.96 100` | script=False external=False raster=False |
+| MASTER lockup primary (built on C symbol) | `docs/marea/brand/assets/logo/marea-lockup-primary.svg` | 1982 B | `2cb7af0e6e5fb9b84e142832bf7244574813190c91246df547b3cc2850196fd6` | `0 0 760.96 200` | script=False external=False raster=False |
+| MASTER lockup mono (built on C symbol) | `docs/marea/brand/assets/logo/marea-lockup-mono.svg` | 1982 B | `cb1afd8b79d8778f13e188abadad431cb76b952c0509291ef461be2352701065` | `0 0 760.96 200` | script=False external=False raster=False |
+| MASTER lockup reversed (built on C symbol) | `docs/marea/brand/assets/logo/marea-lockup-reversed.svg` | 1982 B | `8db0ee69798c67d00aa176634bd75f7bd610bead88438a303f59190c2abf7576` | `0 0 760.96 200` | script=False external=False raster=False |
+| MASTER mark compact (built on C symbol) | `docs/marea/brand/assets/logo/marea-mark-compact.svg` | 935 B | `8b1f0dcd21872e2c619424aa1fc19fb9fd58d565f078235f924e8cb32c5f5cec` | `0 0 24 24` | script=False external=False raster=False |
+| D1 AIS receive-only diagram | `docs/marea/brand/assets/diagrams/marea-ais-receive-only.svg` | 16994 B | `1f244922802ccea146deafe417bcb1854cd7458a2bd4aa0f58ed0866bdf91904` | `0 0 1200 880` | script=False external=False raster=False |
+| D2 ecosystem overview diagram | `docs/marea/brand/assets/diagrams/marea-ecosystem-overview.svg` | 22114 B | `c4c5af483617905c14a1880c6d230e466c230f7d9e17d4ceaeb54d9b4019d781` | `0 0 1200 1000` | script=False external=False raster=False |
+| D3 PILOT supervised boundary diagram | `docs/marea/brand/assets/diagrams/marea-pilot-supervised-boundary.svg` | 21185 B | `54e9e63b41b720bf612d6ae98e61290ff4841e7ba94f67f524a172d8fcf3f649` | `0 0 1200 1020` | script=False external=False raster=False |
+| S1 icon/instrument specimen index | `docs/marea/brand/specimens/index.html` | 49246 B | `68e1a8efde61e2dafed07ddd0accece626d783a40cbee7706439605d84b09b58` | `N/A (HTML document)` | N/A (HTML document) |
+| S2 alerts specimen | `docs/marea/brand/specimens/alerts.html` | 27820 B | `cfec16547744d50708e5720a2dd00a43e7617bdeaa45b823d2a0e0ec655e3caf` | `N/A (HTML document)` | N/A (HTML document) |
+| S3 pilot specimen | `docs/marea/brand/specimens/pilot.html` | 24902 B | `9b0be08181cf9cf5c76eb7f72cc0860f61fff77637a3a5452e2bfad0d8bb623d` | `N/A (HTML document)` | N/A (HTML document) |
+
+Bound files: 21 of 21 | helper failures: 0
+
+--- RAW HELPER OUTPUT (one block per file) ---
+
+################################################################
+ROLE: C1 Territory B - construction drawing
+FILE: docs/marea/brand/territories/territory-b-construction.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:49+01:00
+Role label   : C1 Territory B - construction drawing
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/territories/territory-b-construction.svg -Role "C1 Territory B - construction drawing"
+============================================================
+path        : docs/marea/brand/territories/territory-b-construction.svg
+bytes       : 3677
+sha256      : 1fbc4336f5e3e4a1c5fdd05252f98a5eaad048644583f597566d1ec1e7ed8149
+viewBox     : 0 0 41 42.5
+width/height: 41 / 42.5
+role        : img
+title       : Territory BEARING INDEX — construction drawing (PROPOSED, internal)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=0 path=8 line=0 rect=2 circle=3 text=7
+stroke-w    : 0.06, 0.1, 0.12, 0.14, 0.18
+fill tokens : #54636f, #f7f4ec, currentColor, none
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| C1 Territory B - construction drawing | `docs/marea/brand/territories/territory-b-construction.svg` | 3677 B | `1fbc4336f5e3e4a1c5fdd05252f98a5eaad048644583f597566d1ec1e7ed8149` | `0 0 41 42.5` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: C1 Territory B - lockup (primary)
+FILE: docs/marea/brand/territories/territory-b-lockup-primary.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:49+01:00
+Role label   : C1 Territory B - lockup (primary)
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/territories/territory-b-lockup-primary.svg -Role "C1 Territory B - lockup (primary)"
+============================================================
+path        : docs/marea/brand/territories/territory-b-lockup-primary.svg
+bytes       : 2036
+sha256      : ce9acde228f835674166cb3d9b60ad9e3c3bc5149a51f27d4ece4bd583eb2922
+viewBox     : 0 0 704.15 200
+width/height: 704.15 / 200
+role        : img
+title       : MAREA — proposed identifier (internal, not cleared)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=2 path=6 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| C1 Territory B - lockup (primary) | `docs/marea/brand/territories/territory-b-lockup-primary.svg` | 2036 B | `ce9acde228f835674166cb3d9b60ad9e3c3bc5149a51f27d4ece4bd583eb2922` | `0 0 704.15 200` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: C1 Territory B - mark compact
+FILE: docs/marea/brand/territories/territory-b-mark-compact.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:50+01:00
+Role label   : C1 Territory B - mark compact
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/territories/territory-b-mark-compact.svg -Role "C1 Territory B - mark compact"
+============================================================
+path        : docs/marea/brand/territories/territory-b-mark-compact.svg
+bytes       : 672
+sha256      : eb11a10ae2df915f85314e57e6f7671c7827e8c9d1a79e0e27f7aa2064543ad9
+viewBox     : 0 0 16 16
+width/height: 16 / 16
+role        : img
+title       : Territory B BEARING INDEX — reduced prototype symbol
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=0 path=4 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| C1 Territory B - mark compact | `docs/marea/brand/territories/territory-b-mark-compact.svg` | 672 B | `eb11a10ae2df915f85314e57e6f7671c7827e8c9d1a79e0e27f7aa2064543ad9` | `0 0 16 16` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: C1 Territory B - mark mono
+FILE: docs/marea/brand/territories/territory-b-mark-mono.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:51+01:00
+Role label   : C1 Territory B - mark mono
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/territories/territory-b-mark-mono.svg -Role "C1 Territory B - mark mono"
+============================================================
+path        : docs/marea/brand/territories/territory-b-mark-mono.svg
+bytes       : 773
+sha256      : 055b1ebcc447bac485ddcf7b19987145725af8625a3994b834d31deda900e2c3
+viewBox     : 0 0 32 32
+width/height: 32 / 32
+role        : img
+title       : Territory B BEARING INDEX — monochrome prototype symbol
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=0 path=5 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| C1 Territory B - mark mono | `docs/marea/brand/territories/territory-b-mark-mono.svg` | 773 B | `055b1ebcc447bac485ddcf7b19987145725af8625a3994b834d31deda900e2c3` | `0 0 32 32` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: C1 Territory B - mark reversed
+FILE: docs/marea/brand/territories/territory-b-mark-reversed.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:51+01:00
+Role label   : C1 Territory B - mark reversed
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/territories/territory-b-mark-reversed.svg -Role "C1 Territory B - mark reversed"
+============================================================
+path        : docs/marea/brand/territories/territory-b-mark-reversed.svg
+bytes       : 777
+sha256      : 352150063e3940b5d1842160a0804c0eddb21e2c022ccc43a185b763401848d0
+viewBox     : 0 0 32 32
+width/height: 32 / 32
+role        : img
+title       : Territory B BEARING INDEX — reversed prototype symbol
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=0 path=5 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| C1 Territory B - mark reversed | `docs/marea/brand/territories/territory-b-mark-reversed.svg` | 777 B | `352150063e3940b5d1842160a0804c0eddb21e2c022ccc43a185b763401848d0` | `0 0 32 32` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: C2 Territory C - construction drawing
+FILE: docs/marea/brand/territories/territory-c-construction.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:52+01:00
+Role label   : C2 Territory C - construction drawing
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/territories/territory-c-construction.svg -Role "C2 Territory C - construction drawing"
+============================================================
+path        : docs/marea/brand/territories/territory-c-construction.svg
+bytes       : 3638
+sha256      : fa7ee3f11fe96895951de727e6a1182b865c77507c24122666a009a114586972
+viewBox     : 0 0 33 34.5
+width/height: 33 / 34.5
+role        : img
+title       : Territory SIGNAL TRUNK — construction drawing (PROPOSED, internal)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=1 path=10 line=0 rect=5 circle=0 text=7
+stroke-w    : 0.06, 0.1, 0.14, 0.18
+fill tokens : #54636f, #f7f4ec, currentColor, none
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| C2 Territory C - construction drawing | `docs/marea/brand/territories/territory-c-construction.svg` | 3638 B | `fa7ee3f11fe96895951de727e6a1182b865c77507c24122666a009a114586972` | `0 0 33 34.5` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: C2 Territory C - lockup (primary)
+FILE: docs/marea/brand/territories/territory-c-lockup-primary.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:53+01:00
+Role label   : C2 Territory C - lockup (primary)
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/territories/territory-c-lockup-primary.svg -Role "C2 Territory C - lockup (primary)"
+============================================================
+path        : docs/marea/brand/territories/territory-c-lockup-primary.svg
+bytes       : 1986
+sha256      : 3aa4668353c348a4e8ef2300a3d6c46704fcfb9fb66afa66c7d73c251449fa7a
+viewBox     : 0 0 760.96 200
+width/height: 760.96 / 200
+role        : img
+title       : MAREA — proposed identifier (internal, not cleared)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=2 path=7 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| C2 Territory C - lockup (primary) | `docs/marea/brand/territories/territory-c-lockup-primary.svg` | 1986 B | `3aa4668353c348a4e8ef2300a3d6c46704fcfb9fb66afa66c7d73c251449fa7a` | `0 0 760.96 200` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: C2 Territory C - mark compact
+FILE: docs/marea/brand/territories/territory-c-mark-compact.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:53+01:00
+Role label   : C2 Territory C - mark compact
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/territories/territory-c-mark-compact.svg -Role "C2 Territory C - mark compact"
+============================================================
+path        : docs/marea/brand/territories/territory-c-mark-compact.svg
+bytes       : 784
+sha256      : 4499fc6908eb2d80eb9ac8f436c29a1525490375b9fcdf26178cb95b90acc1a6
+viewBox     : 0 0 16 16
+width/height: 16 / 16
+role        : img
+title       : Territory C SIGNAL TRUNK — reduced prototype symbol
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=1 path=6 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| C2 Territory C - mark compact | `docs/marea/brand/territories/territory-c-mark-compact.svg` | 784 B | `4499fc6908eb2d80eb9ac8f436c29a1525490375b9fcdf26178cb95b90acc1a6` | `0 0 16 16` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: C2 Territory C - mark mono
+FILE: docs/marea/brand/territories/territory-c-mark-mono.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:54+01:00
+Role label   : C2 Territory C - mark mono
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/territories/territory-c-mark-mono.svg -Role "C2 Territory C - mark mono"
+============================================================
+path        : docs/marea/brand/territories/territory-c-mark-mono.svg
+bytes       : 774
+sha256      : bb4e43a94c0e14d532b45f44c31bde193b014fac7b0eed1b14206576106686f3
+viewBox     : 0 0 24 24
+width/height: 24 / 24
+role        : img
+title       : Territory C SIGNAL TRUNK — monochrome prototype symbol
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=1 path=6 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| C2 Territory C - mark mono | `docs/marea/brand/territories/territory-c-mark-mono.svg` | 774 B | `bb4e43a94c0e14d532b45f44c31bde193b014fac7b0eed1b14206576106686f3` | `0 0 24 24` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: C2 Territory C - mark reversed
+FILE: docs/marea/brand/territories/territory-c-mark-reversed.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:55+01:00
+Role label   : C2 Territory C - mark reversed
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/territories/territory-c-mark-reversed.svg -Role "C2 Territory C - mark reversed"
+============================================================
+path        : docs/marea/brand/territories/territory-c-mark-reversed.svg
+bytes       : 778
+sha256      : ef167fb5eea12d9665c5b431ff477ca203b3b1653363c68dde645c10e4d10117
+viewBox     : 0 0 24 24
+width/height: 24 / 24
+role        : img
+title       : Territory C SIGNAL TRUNK — reversed prototype symbol
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=1 path=6 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| C2 Territory C - mark reversed | `docs/marea/brand/territories/territory-c-mark-reversed.svg` | 778 B | `ef167fb5eea12d9665c5b431ff477ca203b3b1653363c68dde645c10e4d10117` | `0 0 24 24` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: MASTER wordmark (symbol-free)
+FILE: docs/marea/brand/assets/logo/marea-wordmark.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:55+01:00
+Role label   : MASTER wordmark (symbol-free)
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/assets/logo/marea-wordmark.svg -Role "MASTER wordmark (symbol-free)"
+============================================================
+path        : docs/marea/brand/assets/logo/marea-wordmark.svg
+bytes       : 1425
+sha256      : 93654045374eb303ef55204cf628f8963a9e86efad2b1e5a0cacb8430eb1cf79
+viewBox     : 0 0 430.96 100
+width/height: 430.96 / 100
+role        : img
+title       : MAREA — proposed master wordmark (internal, not cleared)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=0 path=1 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| MASTER wordmark (symbol-free) | `docs/marea/brand/assets/logo/marea-wordmark.svg` | 1425 B | `93654045374eb303ef55204cf628f8963a9e86efad2b1e5a0cacb8430eb1cf79` | `0 0 430.96 100` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: MASTER lockup primary (built on C symbol)
+FILE: docs/marea/brand/assets/logo/marea-lockup-primary.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:56+01:00
+Role label   : MASTER lockup primary (built on C symbol)
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/assets/logo/marea-lockup-primary.svg -Role "MASTER lockup primary (built on C symbol)"
+============================================================
+path        : docs/marea/brand/assets/logo/marea-lockup-primary.svg
+bytes       : 1982
+sha256      : 2cb7af0e6e5fb9b84e142832bf7244574813190c91246df547b3cc2850196fd6
+viewBox     : 0 0 760.96 200
+width/height: 760.96 / 200
+role        : img
+title       : MAREA — proposed identifier (internal, not cleared)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=2 path=7 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| MASTER lockup primary (built on C symbol) | `docs/marea/brand/assets/logo/marea-lockup-primary.svg` | 1982 B | `2cb7af0e6e5fb9b84e142832bf7244574813190c91246df547b3cc2850196fd6` | `0 0 760.96 200` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: MASTER lockup mono (built on C symbol)
+FILE: docs/marea/brand/assets/logo/marea-lockup-mono.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:57+01:00
+Role label   : MASTER lockup mono (built on C symbol)
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/assets/logo/marea-lockup-mono.svg -Role "MASTER lockup mono (built on C symbol)"
+============================================================
+path        : docs/marea/brand/assets/logo/marea-lockup-mono.svg
+bytes       : 1982
+sha256      : cb1afd8b79d8778f13e188abadad431cb76b952c0509291ef461be2352701065
+viewBox     : 0 0 760.96 200
+width/height: 760.96 / 200
+role        : img
+title       : MAREA — proposed identifier (internal, not cleared)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=2 path=7 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| MASTER lockup mono (built on C symbol) | `docs/marea/brand/assets/logo/marea-lockup-mono.svg` | 1982 B | `cb1afd8b79d8778f13e188abadad431cb76b952c0509291ef461be2352701065` | `0 0 760.96 200` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: MASTER lockup reversed (built on C symbol)
+FILE: docs/marea/brand/assets/logo/marea-lockup-reversed.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:57+01:00
+Role label   : MASTER lockup reversed (built on C symbol)
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/assets/logo/marea-lockup-reversed.svg -Role "MASTER lockup reversed (built on C symbol)"
+============================================================
+path        : docs/marea/brand/assets/logo/marea-lockup-reversed.svg
+bytes       : 1982
+sha256      : 8db0ee69798c67d00aa176634bd75f7bd610bead88438a303f59190c2abf7576
+viewBox     : 0 0 760.96 200
+width/height: 760.96 / 200
+role        : img
+title       : MAREA — proposed identifier (internal, not cleared)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=2 path=7 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| MASTER lockup reversed (built on C symbol) | `docs/marea/brand/assets/logo/marea-lockup-reversed.svg` | 1982 B | `8db0ee69798c67d00aa176634bd75f7bd610bead88438a303f59190c2abf7576` | `0 0 760.96 200` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: MASTER mark compact (built on C symbol)
+FILE: docs/marea/brand/assets/logo/marea-mark-compact.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:58+01:00
+Role label   : MASTER mark compact (built on C symbol)
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/assets/logo/marea-mark-compact.svg -Role "MASTER mark compact (built on C symbol)"
+============================================================
+path        : docs/marea/brand/assets/logo/marea-mark-compact.svg
+bytes       : 935
+sha256      : 8b1f0dcd21872e2c619424aa1fc19fb9fd58d565f078235f924e8cb32c5f5cec
+viewBox     : 0 0 24 24
+width/height: 24 / 24
+role        : img
+title       : MAREA compact symbol — proposed app mark (internal, not cleared)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=1 path=6 line=0 rect=0 circle=0 text=0
+stroke-w    : none declared
+fill tokens : currentColor
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| MASTER mark compact (built on C symbol) | `docs/marea/brand/assets/logo/marea-mark-compact.svg` | 935 B | `8b1f0dcd21872e2c619424aa1fc19fb9fd58d565f078235f924e8cb32c5f5cec` | `0 0 24 24` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: D1 AIS receive-only diagram
+FILE: docs/marea/brand/assets/diagrams/marea-ais-receive-only.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:58+01:00
+Role label   : D1 AIS receive-only diagram
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/assets/diagrams/marea-ais-receive-only.svg -Role "D1 AIS receive-only diagram"
+============================================================
+path        : docs/marea/brand/assets/diagrams/marea-ais-receive-only.svg
+bytes       : 16994
+sha256      : 1f244922802ccea146deafe417bcb1854cd7458a2bd4aa0f58ed0866bdf91904
+viewBox     : 0 0 1200 880
+width/height: not set (viewBox-only file)
+role        : img
+title       : MAREA AIS — recepción únicamente: cadena de escucha / AIS receive-only chain (ilustrativo / illustrative)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=7 path=8 line=21 rect=17 circle=6 text=65
+stroke-w    : 1.5, 2, 2.5
+fill tokens : #17365d, #57708a, #5f6f7d, #8a5a00, #a32b22, #f2f9fd, #fff8ec, #ffffff, none
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| D1 AIS receive-only diagram | `docs/marea/brand/assets/diagrams/marea-ais-receive-only.svg` | 16994 B | `1f244922802ccea146deafe417bcb1854cd7458a2bd4aa0f58ed0866bdf91904` | `0 0 1200 880` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: D2 ecosystem overview diagram
+FILE: docs/marea/brand/assets/diagrams/marea-ecosystem-overview.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:48:59+01:00
+Role label   : D2 ecosystem overview diagram
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/assets/diagrams/marea-ecosystem-overview.svg -Role "D2 ecosystem overview diagram"
+============================================================
+path        : docs/marea/brand/assets/diagrams/marea-ecosystem-overview.svg
+bytes       : 22114
+sha256      : c4c5af483617905c14a1880c6d230e466c230f7d9e17d4ceaeb54d9b4019d781
+viewBox     : 0 0 1200 1000
+width/height: not set (viewBox-only file)
+role        : img
+title       : MAREA — ecosistema: plataforma comercial, software y tiempo de ejecución a bordo / MAREA ecosystem overview (ilustrativo / illustrative)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=3 path=10 line=14 rect=24 circle=3 text=95
+stroke-w    : 1.5, 2, 2.5
+fill tokens : #17365d, #57708a, #5f6f7d, #8a5a00, #a32b22, #f2f9fd, #f7f9fb, #fff7f6, #fff8ec, #ffffff
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| D2 ecosystem overview diagram | `docs/marea/brand/assets/diagrams/marea-ecosystem-overview.svg` | 22114 B | `c4c5af483617905c14a1880c6d230e466c230f7d9e17d4ceaeb54d9b4019d781` | `0 0 1200 1000` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: D3 PILOT supervised boundary diagram
+FILE: docs/marea/brand/assets/diagrams/marea-pilot-supervised-boundary.svg
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:49:00+01:00
+Role label   : D3 PILOT supervised boundary diagram
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/assets/diagrams/marea-pilot-supervised-boundary.svg -Role "D3 PILOT supervised boundary diagram"
+============================================================
+path        : docs/marea/brand/assets/diagrams/marea-pilot-supervised-boundary.svg
+bytes       : 21185
+sha256      : 54e9e63b41b720bf612d6ae98e61290ff4841e7ba94f67f524a172d8fcf3f649
+viewBox     : 0 0 1200 1020
+width/height: not set (viewBox-only file)
+role        : img
+title       : MAREA PILOT — gobierno asistido y supervisado: fronteras de control / PILOT supervised steering boundaries (ilustrativo / illustrative)
+hygiene     : script=False externalRefs=False embeddedRaster=False
+elements    : g=5 path=11 line=15 rect=20 circle=12 text=82
+stroke-w    : 1.5, 2, 2.5
+fill tokens : #17365d, #57708a, #5f6f7d, #8a5a00, #a32b22, #cfe0ee, #f2f9fd, #f7f9fb, #fff7f6, #fff8ec, #ffffff, none
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| D3 PILOT supervised boundary diagram | `docs/marea/brand/assets/diagrams/marea-pilot-supervised-boundary.svg` | 21185 B | `54e9e63b41b720bf612d6ae98e61290ff4841e7ba94f67f524a172d8fcf3f649` | `0 0 1200 1020` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: S1 icon/instrument specimen index
+FILE: docs/marea/brand/specimens/index.html
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:49:00+01:00
+Role label   : S1 icon/instrument specimen index
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/specimens/index.html -Role "S1 icon/instrument specimen index"
+============================================================
+path        : docs/marea/brand/specimens/index.html
+bytes       : 49246
+sha256      : 68e1a8efde61e2dafed07ddd0accece626d783a40cbee7706439605d84b09b58
+viewBox     : 0 0 24 24
+width/height: 0 / 0
+role        : img
+title       : MAREA · Especímenes de instrumentación / Instrument specimens (ILUSTRATIVO · NO DATOS REALES)
+hygiene     : script=True externalRefs=False embeddedRaster=False
+elements    : g=20 path=18 line=31 rect=5 circle=15 text=0
+stroke-w    : 1.25, 2
+fill tokens : currentColor, none
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| S1 icon/instrument specimen index | `docs/marea/brand/specimens/index.html` | 49246 B | `68e1a8efde61e2dafed07ddd0accece626d783a40cbee7706439605d84b09b58` | `0 0 24 24` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: S2 alerts specimen
+FILE: docs/marea/brand/specimens/alerts.html
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:49:01+01:00
+Role label   : S2 alerts specimen
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/specimens/alerts.html -Role "S2 alerts specimen"
+============================================================
+path        : docs/marea/brand/specimens/alerts.html
+bytes       : 27820
+sha256      : cfec16547744d50708e5720a2dd00a43e7617bdeaa45b823d2a0e0ec655e3caf
+viewBox     : 0 0 24 24
+width/height: 0 / 0
+role        : not set
+title       : MAREA · Alertas, escala de alarma y estados de dato / Alerts, alarm ladder and data states (ILUSTRATIVO)
+hygiene     : script=True externalRefs=False embeddedRaster=False
+elements    : g=11 path=12 line=13 rect=2 circle=10 text=0
+stroke-w    : 1.25, 2
+fill tokens : #ffffff, currentColor, none
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| S2 alerts specimen | `docs/marea/brand/specimens/alerts.html` | 27820 B | `cfec16547744d50708e5720a2dd00a43e7617bdeaa45b823d2a0e0ec655e3caf` | `0 0 24 24` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
+################################################################
+ROLE: S3 pilot specimen
+FILE: docs/marea/brand/specimens/pilot.html
+============================================================
+MC-04 D-16 REV.2 BINDING RECORD — generated from the real file
+Generated at : 2026-10-30T18:49:02+01:00
+Role label   : S3 pilot specimen
+Command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/rev2-bind-helper.ps1 -File docs/marea/brand/specimens/pilot.html -Role "S3 pilot specimen"
+============================================================
+path        : docs/marea/brand/specimens/pilot.html
+bytes       : 24902
+sha256      : 9b0be08181cf9cf5c76eb7f72cc0860f61fff77637a3a5452e2bfad0d8bb623d
+viewBox     : 0 0 24 24
+width/height: 0 / 0
+role        : not set
+title       : MAREA · Frontera de PILOT supervisado / PILOT supervised boundary specimen (ILUSTRATIVO)
+hygiene     : script=True externalRefs=False embeddedRaster=False
+elements    : g=9 path=9 line=15 rect=2 circle=10 text=0
+stroke-w    : 2
+fill tokens : currentColor, none
+
+--- paste-ready row for D-16 §5 (replace TBD after human verification of geometry) ---
+| S3 pilot specimen | `docs/marea/brand/specimens/pilot.html` | 24902 B | `9b0be08181cf9cf5c76eb7f72cc0860f61fff77637a3a5452e2bfad0d8bb623d` | `0 0 24 24` | TBD: verify geometry against this file before writing the description |
+
+NOTE: the hash above is valid for THIS file content at THIS moment. If the artwork is
+revised again, the dossier must be rebound and the old hash deleted, not "updated silently".
