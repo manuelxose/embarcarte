@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es" data-mode="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAREA · Frontera de PILOT supervisado / PILOT supervised boundary specimen (ILUSTRATIVO)</title>
+<style>
+  :root{
+    --inst-canvas:#f2f9fd; --inst-surface:#ffffff; --inst-surface-raised:#eaf7ff;
+    --inst-text-primary:#17365d; --inst-text-secondary:#4a6579; --inst-text-meta:#52697f; --inst-text-on-accent:#ffffff;
+    --inst-chart-grid:#748d9f;
+    --inst-state-critical:#a32b22; --inst-state-warning:#8a5a00; --inst-state-safe:#1f5f49; --inst-state-stale:#55646f;
+    --inst-action:#176ca6; --inst-focus:#0f5f8c; --inst-disabled:#7a8d9b;
+    --inst-radius-control:3px; --inst-radius-surface:6px;
+    --inst-font-numeric:"Manrope Variable","Manrope","Segoe UI",Arial,sans-serif;
+    --inst-font-body:"DM Sans Variable","DM Sans","Segoe UI",Arial,sans-serif;
+  }
+  html[data-mode="night"]{
+    --inst-canvas:#0d1b26; --inst-surface:#132733; --inst-surface-raised:#1a3343;
+    --inst-text-primary:#8fd3f5; --inst-text-secondary:#93a6b5; --inst-text-meta:#a9b7c4; --inst-text-on-accent:#0d1b26;
+    --inst-chart-grid:#6a7f8d;
+    --inst-state-critical:#ff9b8f; --inst-state-warning:#ffc46b; --inst-state-safe:#7bd8b0; --inst-state-stale:#a9b7c4;
+    --inst-action:#8fd3f5; --inst-focus:#8fd3f5; --inst-disabled:#7d8f9d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--inst-canvas);color:var(--inst-text-primary);font:15px/1.5 var(--inst-font-body)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  a{color:var(--inst-action)}
+  a:focus-visible,button:focus-visible,label:focus-visible{outline:3px solid var(--inst-focus);outline-offset:2px}
+  .skip{position:absolute;left:-999px;top:0;background:var(--inst-surface);padding:10px}
+  .skip:focus{left:8px;top:8px}
+  header.site{background:var(--inst-surface);border-bottom:1px solid var(--inst-chart-grid);padding:16px 0}
+  .brandline{font-size:12.5px;color:var(--inst-text-secondary);margin:0 0 6px}
+  .brandline b{color:var(--inst-text-primary);letter-spacing:.06em}
+  h1{font-size:26px;line-height:1.15;margin:0 0 6px}
+  h2{font-size:19px;margin:32px 0 4px}
+  h3{font-size:15px;margin:0}
+  p{margin:0 0 8px}
+  .lede{color:var(--inst-text-secondary);max-width:78ch}
+  .chip{display:inline-block;font:700 10.5px/1 var(--inst-font-body);letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:5px 7px;margin:0 6px 6px 0;color:var(--inst-state-warning)}
+  .chip--critical{color:var(--inst-state-critical)} .chip--muted{color:var(--inst-text-meta)}
+  .modebox{float:right;background:var(--inst-surface-raised);border:1px solid var(--inst-chart-grid);border-radius:var(--inst-radius-surface);padding:8px 10px;margin-left:12px}
+  .modebox p{margin:0 0 4px;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--inst-text-meta)}
+  .mode-switch{display:flex;gap:6px}
+  .mode-switch input{position:absolute;width:1px;height:1px;opacity:0}
+  .mode-switch label{display:inline-flex;align-items:center;min-height:40px;padding:6px 12px;border:1px solid var(--inst-chart-grid);border-radius:var(--inst-radius-control);background:var(--inst-surface);cursor:pointer;font-size:13px}
+  .mode-switch input:checked+label{background:var(--inst-action);border-color:var(--inst-action);color:var(--inst-text-on-accent)}
+  .mode-switch input:focus-visible+label{outline:3px solid var(--inst-focus);outline-offset:2px}
+  .notice{background:var(--inst-surface);border:1px solid var(--inst-state-warning);border-left:4px solid var(--inst-state-warning);border-radius:var(--inst-radius-surface);padding:12px 14px;margin:16px 0;font-size:13px}
+  .notice--critical{border-color:var(--inst-state-critical);border-left-color:var(--inst-state-critical)}
+  nav.pages{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;margin-top:8px}
+  .panel{background:var(--inst-surface);border:1px solid var(--inst-chart-grid);border-radius:var(--inst-radius-surface);padding:16px}
+  .panel--req{border:2px dashed var(--inst-state-warning);background:var(--inst-surface)}
+  .grid{display:grid;gap:14px}
+  .grid--2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .grid--3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .icon{width:30px;height:30px;flex:none}
+  .icon-s{width:18px;height:18px;flex:none}
+  .state{display:inline-flex;gap:6px;align-items:center;font-weight:700;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
+  .state svg{width:17px;height:17px;flex:none}
+  .s-crit{color:var(--inst-state-critical)} .s-warn{color:var(--inst-state-warning)} .s-safe{color:var(--inst-state-safe)} .s-stale{color:var(--inst-state-stale)}
+  .kicker{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--inst-text-meta);margin:0}
+  .illus{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--inst-state-warning);border:1px dashed var(--inst-state-warning);padding:3px 6px;border-radius:3px;white-space:normal}
+  .reqtag{display:inline-flex;gap:6px;align-items:center;font:700 10.5px/1 var(--inst-font-body);letter-spacing:.07em;text-transform:uppercase;color:var(--inst-state-warning);border:2px dashed var(--inst-state-warning);padding:5px 7px;border-radius:3px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  caption{text-align:left;font-size:12px;color:var(--inst-text-secondary);padding:0 0 8px}
+  th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--inst-chart-grid);vertical-align:top}
+  thead th{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--inst-text-meta)}
+  tbody th{font-weight:600}
+  .boundary{display:flex;gap:12px;align-items:flex-start;border:2px dashed var(--inst-state-critical);border-radius:var(--inst-radius-surface);padding:13px 15px;background:var(--inst-surface)}
+  .boundary .icon{color:var(--inst-state-critical)}
+  .boundary h3{color:var(--inst-state-critical)}
+  .control{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px}
+  .control button,.control .fake-control{min-height:44px;min-width:44px;padding:10px 14px;border:1px solid var(--inst-chart-grid);border-radius:var(--inst-radius-control);background:var(--inst-surface-raised);color:var(--inst-text-primary);font:inherit;display:inline-flex;align-items:center;gap:8px}
+  .control button[disabled],.control .fake-control[aria-disabled="true"]{color:var(--inst-disabled);border-style:dashed;cursor:not-allowed;background:var(--inst-surface)}
+  .control .note{font-size:11.5px;color:var(--inst-text-meta)}
+  .disclaimer{background:var(--inst-surface);border:1px solid var(--inst-state-stale);border-left:4px solid var(--inst-state-stale);border-radius:var(--inst-radius-surface);padding:14px 16px;margin-top:18px;font-size:12.5px}
+  .disclaimer p{margin:0 0 8px}
+  .disclaimer p:last-child{margin:0}
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:normal;border:0}
+  footer{border-top:1px solid var(--inst-chart-grid);background:var(--inst-surface);margin-top:34px;padding:18px 0 32px;font-size:12px;color:var(--inst-text-secondary)}
+  footer h2{font-size:14px;margin:0 0 6px;color:var(--inst-text-primary)}
+  footer ul{margin:6px 0 0;padding-left:18px}
+  @media (max-width:560px){h1{font-size:23px}.modebox{float:none;margin:0 0 10px}.wrap{padding:0 14px}}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  @media (max-width:560px){.grid--2,.grid--3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido / Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-pilot" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="9" rx="2"/><circle cx="12" cy="10.5" r="2.5"/><circle cx="7" cy="10.5" r="1" fill="currentColor" stroke="none"/><circle cx="17" cy="10.5" r="1" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-caution" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L21 19.5 H3 Z"/><line x1="12" y1="8.5" x2="12" y2="13.5"/><circle cx="12" cy="16.5" r="1.3" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-alarm" viewBox="0 0 24 24"><path fill-rule="evenodd" fill="currentColor" stroke="none" d="M8 2 H16 L22 8 V16 L16 22 H8 L2 16 V8 Z M11.3 6.5 h1.4 v6.8 h-1.4 z M12 15.2 a1.4 1.4 0 1 1 0 2.8 a1.4 1.4 0 1 1 0 -2.8 z"/></symbol>
+  <symbol id="i-ack" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 15.5 H17.5 L16 13.5 V9.5 A4 4 0 0 0 8 9.5 V13.5 Z"/><path d="M10.5 18 A1.5 1.5 0 0 0 13.5 18"/><polyline points="13.5 19 15.5 21 20 15.5"/></g></symbol>
+  <symbol id="i-stale" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><line x1="12" y1="12" x2="12" y2="6.5"/><line x1="12" y1="12" x2="16" y2="14"/><line x1="4" y1="4" x2="20" y2="20"/></g></symbol>
+  <symbol id="i-offline" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/><path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/><path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/><line x1="4" y1="4" x2="20" y2="20"/></g></symbol>
+  <symbol id="i-sensor" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><circle cx="12" cy="12" r="2"/><line x1="9" y1="3" x2="9" y2="6"/><line x1="15" y1="3" x2="15" y2="6"/><line x1="9" y1="18" x2="9" y2="21"/><line x1="15" y1="18" x2="15" y2="21"/><line x1="3" y1="9" x2="6" y2="9"/><line x1="3" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="21" y2="9"/><line x1="18" y1="15" x2="21" y2="15"/></g></symbol>
+  <symbol id="i-connection" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 8 H6.5 A4 4 0 0 0 6.5 16 H9.5"/><path d="M14.5 8 H17.5 A4 4 0 0 1 17.5 16 H14.5"/><line x1="10" y1="12" x2="14" y2="12"/></g></symbol>
+  <symbol id="i-person" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21 C5 16,19 16,19 21"/></g></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="8" r="1.2" fill="currentColor" stroke="none"/><line x1="12" y1="11" x2="12" y2="16"/></g></symbol>
+</defs></svg>
+
+<header class="site"><div class="wrap">
+  <div class="modebox">
+    <p id="mode-label">Modo (demo) · Display mode</p>
+    <div class="mode-switch" role="group" aria-labelledby="mode-label">
+      <input type="radio" name="mode" id="m-day" value="day" checked><label for="m-day">Día</label>
+      <input type="radio" name="mode" id="m-night" value="night"><label for="m-night">Noche</label>
+    </div>
+  </div>
+  <p class="brandline"><b>MAREA</b> · EMBARCARTE · MC-04 · D-11 PILOT / supervised boundary</p>
+  <h1>Frontera de PILOT — gobierno asistido y supervisado</h1>
+  <p class="lede">Especimen no funcional de la frontera de seguridad: autoridad humana, E-stop físico, watchdog, toma manual, dependencias de sensores y aislamiento del comercio web. Sin gobierno autónomo ni control remoto sin supervisión.</p>
+  <p><span class="chip">ILUSTRATIVO · SIN DATOS REALES</span><span class="chip chip--critical">SIN EVIDENCIA DE BANCO NI DE MAR</span><span class="chip chip--muted">PRODUCED</span><span class="chip chip--muted">ENGINEERING/SAFETY REVIEW PENDING</span></p>
+  <nav class="pages" aria-label="Navegación / Navigation"><a href="./index.html">Instrumentos / Instruments</a><a href="./alerts.html">Alertas y estados / Alerts and states</a><a href="../assets/diagrams/marea-pilot-supervised-boundary.svg">Diagrama de frontera / Boundary diagram (SVG)</a></nav>
+</div></header>
+
+<main id="main" class="wrap">
+  <div class="notice notice--critical">
+    <p><b>ILLUSTRATIVE / NOT LIVE DATA · ILUSTRATIVO / SIN DATOS REALES.</b> Esta página no controla nada: no hay motor, timón, barco ni API conectada. Los estados, modos y valores son inventados para revisar el diseño. La compuerta de comercialización de PILOT está <b>BLOCKED</b> en el programa.</p>
+  </div>
+
+  <section aria-labelledby="mode-h">
+    <h2 id="mode-h">1. Estado del modo — solo supervisado / Mode state — supervised only</h2>
+    <div class="boundary" role="group" aria-labelledby="mode-title">
+      <svg class="icon" aria-hidden="true"><use href="#i-pilot"/></svg>
+      <div>
+        <h3 id="mode-title">SUPERVISED · HEADING HOLD — especimen / specimen</h3>
+        <p>El operador mantiene vigilancia continua y puede tomar el control manual en todo momento. El modo no es autónomo y no se activa de forma remota.</p>
+        <p class="kicker" style="margin-top:6px">Modo ilustrativo · sin motor real · sin timón real · sin sensores reales</p>
+        <p class="kicker">Fuente del estado: <b>ESPECIMEN</b> · Edad: <b>—</b> · Estado: <b>ILUSTRATIVO / SIN DATOS REALES · ILLUSTRATIVE / NOT LIVE DATA</b></p>
+      </div>
+    </div>
+    <div class="grid grid--3" style="margin-top:14px">
+      <div class="panel"><div class="rowhead" style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><h3>Autoridad final</h3><span class="illus">ILUSTRATIVO / SIN DATOS REALES · ILLUSTRATIVE / NOT LIVE DATA</span></div><p style="margin-top:8px"><span class="state s-safe"><svg aria-hidden="true"><use href="#i-person"/></svg>HUMANA / HUMAN</span></p><p class="kicker">E-stop físico + toma manual en todo momento. / Physical E-stop + manual takeover at all times.</p></div>
+      <div class="panel"><div class="rowhead" style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><h3>Gobierno autónomo</h3><span class="illus">ILUSTRATIVO / SIN DATOS REALES · ILLUSTRATIVE / NOT LIVE DATA</span></div><p style="margin-top:8px"><span class="state s-crit"><svg aria-hidden="true"><use href="#i-alarm"/></svg>NO PERMITIDO / NOT PROVIDED</span></p><p class="kicker">Sin gobierno autónomo; sin control remoto sin supervisión. / No autonomous steering; no unattended remote control.</p></div>
+      <div class="panel"><div class="rowhead" style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><h3>Comercio web</h3><span class="illus">ILUSTRATIVO / SIN DATOS REALES · ILLUSTRATIVE / NOT LIVE DATA</span></div><p style="margin-top:8px"><span class="state s-stale"><svg aria-hidden="true"><use href="#i-offline"/></svg>SIN AUTORIDAD / NO AUTHORITY</span></p><p class="kicker">La plataforma comercial no puede gobernar la embarcación. / The commercial platform cannot steer the vessel.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="hw-h">
+    <h2 id="hw-h">2. Frontera de seguridad y estado de hardware / Safety boundary and hardware status</h2>
+    <p class="lede">El hardware ausente se marca <b>REQUISITO DE DISEÑO</b>; no se presenta como implementado. Fuentes: <span style="font-variant-numeric:tabular-nums">HARDWARE-COMPLIANCE-MATRIX F-A20, F-A21, F-A23, F-A24, F-A25</span>.</p>
+    <div class="table-wrap"><table>
+      <caption>Estado de frontera inventariado · ILUSTRATIVO, sin verificación física / Inventoried boundary · ILLUSTRATIVE, no physical verification</caption>
+      <thead><tr><th scope="col">Elemento / Element</th><th scope="col">Estado / State</th><th scope="col">Fuente / Source</th><th scope="col">Qué falta / What is missing</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">E-stop físico / Physical E-stop</th><td><span class="state s-warn"><svg aria-hidden="true"><use href="#i-caution"/></svg>NO VERIFICADO</span></td><td>HW-13 · F-A05/F-A06</td><td>Pieza, arquitectura de canales y contactor de potencia no registrados; el firmware solo monitoriza GP13.</td></tr>
+        <tr><th scope="row">Watchdog de hardware / Hardware watchdog</th><td><span class="reqtag"><svg class="icon-s" aria-hidden="true"><use href="#i-caution"/></svg>REQUISITO DE DISEÑO</span></td><td>F-A23</td><td>No existe <code>machine.WDT</code> ni supervisor independiente en el MCU.</td></tr>
+        <tr><th scope="row">Relé / contactor de potencia / Power relay</th><td><span class="reqtag"><svg class="icon-s" aria-hidden="true"><use href="#i-caution"/></svg>REQUISITO DE DISEÑO</span></td><td>F-A24 · D-01</td><td>El motor solo recibe PWM/DIR; no hay línea de relé implementada.</td></tr>
+        <tr><th scope="row">Realimentación de timón / Rudder feedback</th><td><span class="reqtag"><svg class="icon-s" aria-hidden="true"><use href="#i-caution"/></svg>REQUISITO DE DISEÑO</span></td><td>F-A20</td><td>Sin sensor, encoder ni límite de fin de carrera implementados.</td></tr>
+        <tr><th scope="row">Detección de toma manual / Manual takeover detection</th><td><span class="reqtag"><svg class="icon-s" aria-hidden="true"><use href="#i-caution"/></svg>REQUISITO DE DISEÑO</span></td><td>F-A21</td><td>El «clutch» es una copia del flag de habilitación; no hay sensor de timón/embrague.</td></tr>
+        <tr><th scope="row">Autenticación del plano de control / Control-plane auth</th><td><span class="reqtag"><svg class="icon-s" aria-hidden="true"><use href="#i-caution"/></svg>REQUISITO DE DISEÑO</span></td><td>F-A25 · F-01</td><td>API sin autenticación, sin TLS y con CORS abierto; pendiente antes de exponer en red.</td></tr>
+        <tr><th scope="row">Dependencias de sensores / Sensor dependencies</th><td><span class="state s-warn"><svg aria-hidden="true"><use href="#i-caution"/></svg>LIMITACIÓN DECLARADA</span></td><td>F-A26</td><td>Rumbo por brújula sin calibración ni tabla de desviación; viento y GNSS sin calibrar.</td></tr>
+        <tr><th scope="row">Separación del comercio / Commerce separation</th><td><span class="state s-safe"><svg aria-hidden="true"><use href="#i-info"/></svg>AISLADA POR ARQUITECTURA</span></td><td>ARQ §7/§11</td><td>Sin ruta de escritura al barco; no es una certificación, es una regla de arquitectura.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="kicker" style="margin-top:8px">Regla: si falta hardware, se escribe «requisito de diseño». No se dibuja un E-stop, watchdog o relé como si existieran.</p>
+  </section>
+
+  <section aria-labelledby="controls-h">
+    <h2 id="controls-h">3. Controles de especimen — no operables / Specimen controls — not operable</h2>
+    <p class="lede">Estos elementos existen solo para revisar tamaño táctil, foco y etiquetado. Están deshabilitados y no accionan nada. Ningún control de esta página puede gobernar un equipo.</p>
+    <div class="grid grid--2">
+      <div class="panel">
+        <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><h3>Selector de modo / Mode selector</h3><span class="illus">NO OPERABLE</span></div>
+        <div class="control" role="group" aria-label="Selector de modo de especimen, no operable / Specimen mode selector, not operable">
+          <button type="button" disabled aria-disabled="true">STANDBY</button>
+          <button type="button" disabled aria-disabled="true">HEADING HOLD</button>
+          <button type="button" disabled aria-disabled="true">WIND HOLD</button>
+        </div>
+        <p class="note" style="margin-top:8px">Objetivo táctil interno ≥ 44×44 CSS px; borde discontinuo + etiqueta «no operable» (el estado no depende solo del color). / Internal 44×44 target; dashed border + “not operable” label (no colour-only state).</p>
+      </div>
+      <div class="panel">
+        <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start"><h3>Parada de emergencia / E-stop</h3><span class="illus">NO OPERABLE</span></div>
+        <div class="control">
+          <button type="button" disabled aria-disabled="true" style="border-color:var(--inst-state-critical);color:var(--inst-state-critical)"><svg class="icon-s" aria-hidden="true"><use href="#i-alarm"/></svg>E-STOP</button>
+        </div>
+        <p class="note" style="margin-top:8px">El E-stop físico es un control de hardware, no un botón de interfaz. Este botón es solo un especimen de etiqueta y tamaño; no representa el circuito de potencia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="gate-h">
+    <h2 id="gate-h">4. Qué faltaría antes de afirmar capacidad / What would be needed before any capability claim</h2>
+    <div class="panel panel--req">
+      <p><b>Compuerta de comercialización PILOT: BLOCKED.</b> No existe evidencia de banco ni de mar, ni caso de seguridad, ni hardware fail-safe verificado. Antes de cualquier afirmación de capacidad se requiere, como mínimo:</p>
+      <ul style="margin:8px 0 0;padding-left:20px;font-size:13px">
+        <li>Diseño de hardware congelado: BOM, esquemáticos, mazo, envolvente, arquitectura de potencia y selección de E-stop/contactor (G1).</li>
+        <li>Evidencia fail-safe independiente: corte de potencia verificado, watchdog de hardware, E-stop con canal monitorizado, release manual (G2).</li>
+        <li>Caso de seguridad de software, toma manual y plano de control autenticado (G5).</li>
+        <li>Registros firmados de banco y comisionado: tiempos de corte, disparo de sobrecorriente, E-stop bajo carga (G6).</li>
+        <li>Pruebas de mar por modo con inyección de fallos (G7).</li>
+      </ul>
+      <p class="kicker" style="margin-top:8px">Sin estos artefactos no se puede marcar PILOT como listo para venta, «turnkey» o con afirmaciones de prestaciones. / Without these artefacts PILOT cannot be marked sale-ready or marketed with steering-performance claims.</p>
+    </div>
+  </section>
+
+  <div class="notice notice--critical" style="margin-top:18px">
+    <p><b>Autoridad humana:</b> el sistema exige vigilancia continua y capacidad de toma de control manual en todo momento. El acuse de una alarma no sustituye la supervisión. <span lang="en">The system requires continuous watchkeeping and manual takeover at all times; acknowledging an alarm does not replace supervision.</span></p>
+  </div>
+
+  <div class="disclaimer">
+    <p lang="es"><b>PILOT.</b> «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.»</p>
+    <p lang="en"><b>PILOT.</b> “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.”</p>
+    <p lang="es"><b>Aviso de navegación.</b> «Este producto es una ayuda a la navegación y no sustituye a la carta náutica oficial, al equipo reglamentario de la embarcación, a la vigilancia continuada ni al buen hacer marinero. La responsabilidad de la navegación corresponde siempre al patrón.»</p>
+    <p lang="en"><b>Navigation notice.</b> “This product is a navigational aid. It does not replace official nautical charts, the vessel’s required equipment, continuous watchkeeping or good seamanship. Responsibility for navigation always rests with the skipper.”</p>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <h2>Límites / Limits</h2>
+  <ul>
+    <li>Especimen no funcional: no hay motor, timón, barco, API ni sensores. Ningún control acciona equipos.</li>
+    <li>Sin prueba de banco ni de mar; sin caso de seguridad; sin hardware fail-safe verificado. La compuerta de comercialización PILOT es BLOCKED.</li>
+    <li>Sin prueba de hardware (pantalla, sol, sal, guantes, halación) ni impresión 1:1.</li>
+    <li>Contraste: valores de rol del token propuesto; esta página no mide el render. No se afirma conformidad WCAG de producto.</li>
+    <li>ES/EN primera clase; los controles de especimen están deshabilitados y etiquetados como no operables.</li>
+  </ul>
+  <p style="margin-top:10px"><a href="./index.html">Instrumentos / Instruments</a> · <a href="./alerts.html">Alertas y estados / Alerts and states</a></p>
+</div></footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    document.querySelectorAll('input[name="mode"]').forEach(function (input) {
+      input.addEventListener('change', function () { if (input.checked) root.setAttribute('data-mode', input.value); });
+    });
+  })();
+</script>
+</body>
+</html>

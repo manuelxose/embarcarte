@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAREA · D-09 Sistema de iconografía / Icon system (INTERNO · PROPUESTO)</title><style>:root{--ink:#17365d;--muted:#57708a;--canvas:#f2f9fd;--surface:#fff;--line:#e1edf5;--accent:#176ca6;--critical:#a32b22;--warning:#8a5a00;--safe:#1f5f49;--stale:#5f6f7d;--night:#0d1b26;--night-surface:#132733;--night-ink:#8fd3f5;--night-muted:#93a6b5}
+*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.55 "Segoe UI",system-ui,sans-serif}header.top{background:var(--surface);border-bottom:1px solid var(--line);padding:26px 0 20px}.wrap{max-width:1180px;margin:0 auto;padding:0 24px}.flag{display:inline-block;font:700 11px/1 "Segoe UI",sans-serif;letter-spacing:.08em;color:var(--critical);border:1.5px solid var(--critical);border-radius:3px;padding:6px 8px;margin:0 6px 10px 0;text-transform:uppercase}h1{font-size:29px;line-height:1.15;margin:6px 0 8px}h2{font-size:20px;margin:36px 0 6px}h2 .en{color:var(--muted);font-weight:400}p{max-width:82ch}.lede{color:var(--muted);font-size:16px;max-width:80ch}.meta{font-size:12.5px;color:var(--muted)}.meta code{background:var(--canvas);border:1px solid var(--line);border-radius:3px;padding:1px 5px;font-size:12px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(212px,1fr));gap:14px;margin:14px 0 4px;padding:0;list-style:none}figure{margin:0}.icon-card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 14px 13px;display:flex;flex-direction:column;gap:10px}.icon-card .glyph{width:56px;height:56px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:4px;background:var(--canvas);color:var(--ink)}.icon-card .glyph svg{width:40px;height:40px;display:block}.icon-card figcaption{display:flex;flex-direction:column;gap:2px}.icon-card .es{font-weight:600;font-size:13.5px}.icon-card .en{color:var(--muted);font-size:12.5px}.icon-card code{font-size:11px;color:var(--accent);background:var(--canvas);border-radius:3px;padding:2px 5px;align-self:flex-start;margin-top:3px;word-break:break-all}.icon-card .note{font-size:11.5px;color:var(--muted);margin:6px 0 0;line-height:1.45}.rule{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;padding:0;list-style:none;margin:16px 0}.rule li{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:4px;padding:12px 14px;font-size:13.5px}.rule b{display:block;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}.disclaimer{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--stale);border-radius:4px;padding:14px 16px;margin:14px 0;font-size:13.5px}.disclaimer p{margin:0 0 8px}.disclaimer p:last-child{margin:0}.state-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;list-style:none;padding:0;margin:16px 0}.state-strip li{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:14px;display:flex;gap:12px;align-items:flex-start}.state-strip svg{width:32px;height:32px;flex:0 0 32px}.state-strip b{display:block;font-size:13px}.state-strip span{font-size:12px;color:var(--muted)}.check-pass{color:var(--safe);font-weight:700}footer{border-top:1px solid var(--line);margin-top:40px;padding:22px 0 40px;background:var(--surface)}footer .wrap{font-size:12.5px;color:var(--muted)}a{color:var(--accent)}@media (max-width:520px){h1{font-size:24px}.wrap{padding:0 16px}}</style></head>
+<body><header class="top"><div class="wrap">
+<p><span class="flag">INTERNO · PROPUESTO</span><span class="flag">PRODUCED</span><span class="flag">LEGAL_REVIEW_PENDING</span></p>
+<h1>MAREA · Sistema de iconografía <span style="color:var(--muted);font-weight:400" lang="en">/ Iconography system</span></h1>
+<p class="lede"><span lang="es">D-09. Conjunto propio de 57 iconos vectoriales (autoría EMBARCARTE), rejilla 24×24, trazo 2 px equivalente. Demuestra el vocabulario visual de instrumentación marina de MAREA. No es una biblioteca aprobada ni una marca registrada.</span> <span lang="en">D-09. Set of 57 vector icons on a 24×24 grid, 2 px-equivalent stroke, authored by us (EMBARCARTE authorship). It demonstrates MAREA's marine-instrumentation visual vocabulary. It is not an approved library or a registered trade mark.</span></p>
+<p class="meta">Documento de trabajo interno · Internal working document · Generado 2026-10-30 de los 57 SVG maestros de <code>docs/marea/brand/assets/icons/ui/</code> · 24648 B en total (máx. 845 B/icono).</p>
+</div></header><main class="wrap">
+<section aria-labelledby="rules"><h2 id="rules">Reglas del sistema <span class="en" lang="en">/ System rules</span></h2><ul class="rule">
+<li><b>Rejilla / Grid</b>24×24, área de contenido nominal 20×20 (padding óptico 2 unidades; 11/57 excepciones declaradas en D-09 §6.1). Prueba de reducción 16/24/32 escalando el maestro de 24, sin variantes de 16 rediseñadas y sin 48 px (ver tablero). <span lang="en">Nominal 20×20 content area (2-unit optical padding; 11/57 declared exceptions in D-09 §6.1). 16/24/32 reduction proof scales the 24 px master; no redesigned 16 px variants and no 48 px.</span></li>
+<li><b>Trazo / Stroke</b>2 px en la rejilla de 24 (2 px equivalente). Extremos y uniones redondos en UI; extremos rectos en diagramas técnicos. <span lang="en">Round caps and joins in UI; butt caps in technical diagrams.</span></li>
+<li><b>Esquinas / Corners</b>Radio lógico 1,5 px; rectángulos con <code>rx</code> 1,5–2. Geometría corregida ópticamente, no matemáticamente. <span lang="en">Optical centring, consistent counters.</span></li>
+<li><b>Relleno / Fill</b>Contorno por defecto. Relleno solo para estado seleccionado/activo, forma de alarma sólida o marcas de nivel (barras de señal, puntos). <span lang="en">Outline by default; fill only for selected/active state, solid alert shape or level marks.</span></li>
+<li><b>Color / Colour</b>Los iconos heredan <code>currentColor</code>; nunca multicolor. El estado se refuerza con forma + etiqueta + icono, nunca solo color. <span lang="en">Icons inherit currentColor; never multicolour. State is reinforced by shape + label + icon, never colour alone.</span></li>
+<li><b>Etiquetas / Labels</b>Controles críticos siempre icono + texto; sin alarma ni acción de seguridad solo-icono. Siluetas con IoU > 0,80 se emparejan siempre con texto. <span lang="en">Critical controls always icon + text; no icon-only alarm or safety action. Silhouettes with IoU > 0.80 always pair with text.</span></li>
+</ul></section>
+<section aria-labelledby="states"><h2 id="states">Uso semántico de color y forma <span class="en" lang="en">/ Semantic colour and shape use</span></h2>
+<p class="meta"><span lang="es">El color es un rol, no decoración. Cada estado conserva icono, forma y etiqueta: en escala de grises debe seguir siendo identificable.</span> <span lang="en">Colour is a role, not decoration. Every state keeps icon, shape and label: it must remain identifiable in greyscale.</span></p>
+<ul class="state-strip">
+    <li style="color:var(--ink)"><div><svg style="width:32px;height:32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <circle cx="12" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="11" x2="12" y2="16"/>
+  </g>
+</svg></div><div><b><span lang="es">Información</span> / <span lang="en">Info (advisory)</span></b><span>Información / aviso; sin carga de seguridad. / Info / advisory; no safety implication.</span></div></li>
+    <li style="color:var(--warning)"><div><svg style="width:32px;height:32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L21 19.5 H3 Z"/>
+    <line x1="12" y1="8.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="16.5" r="1.3" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><div><b><span lang="es">Precaución</span> / <span lang="en">Caution</span></b><span>Triángulo + «!». Nivel 2; nunca solo color. / Triangle + “!”. Level 2; never colour-only.</span></div></li>
+    <li style="color:var(--warning)"><div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4 L20.5 20 H3.5 Z"/>
+    <path d="M12 7.5 L18 17 H6 Z" stroke-width="1.25"/>
+    <line x1="12" y1="10" x2="12" y2="13.5"/>
+    <circle cx="12" cy="15.8" r="1.1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><div><b><span lang="es">Advertencia</span> / <span lang="en">Warning</span></b><span>Triángulo con segundo borde + «!». Nivel 3; causa y acción obligatorias. / Double-bordered triangle + “!”. Level 3; cause and action required.</span></div></li>
+    <li style="color:var(--critical)"><div><svg style="width:32px;height:32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path fill-rule="evenodd" fill="currentColor" stroke="none" d="M8 2 H16 L22 8 V16 L16 22 H8 L2 16 V8 Z M11.3 6.5 h1.4 v6.8 h-1.4 z M12 15.2 a1.4 1.4 0 1 1 0 2.8 a1.4 1.4 0 1 1 0 -2.8 z"/>
+  </g>
+</svg></div><div><b><span lang="es">Alarma</span> / <span lang="en">Alarm</span></b><span>Octágono sólido + «!» recortado. Nivel 4; nunca se autodescarta. / Solid octagon + cut-out “!”. Level 4; never auto-dismissed.</span></div></li>
+    <li style="color:var(--ink)"><div><svg style="width:32px;height:32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.5 15.5 H17.5 L16 13.5 V9.5 A4 4 0 0 0 8 9.5 V13.5 Z"/>
+    <path d="M10.5 18 A1.5 1.5 0 0 0 13.5 18"/>
+    <polyline points="13.5 19 15.5 21 20 15.5"/>
+  </g>
+</svg></div><div><b><span lang="es">Acuse de recibo</span> / <span lang="en">Acknowledge</span></b><span>Acuse ≠ resolución: la condición sigue visible hasta que cesa. / Acknowledge ≠ resolution: the condition stays visible until it clears.</span></div></li>
+    <li style="color:var(--stale)"><div><svg style="width:32px;height:32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <line x1="12" y1="12" x2="12" y2="6.5"/>
+    <line x1="12" y1="12" x2="16" y2="14"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></div><div><b><span lang="es">Dato obsoleto</span> / <span lang="en">Stale data</span></b><span>Obsoleto: valor atenuado, contorno discontinuo y edad visible. / Stale: attenuated value, dashed outline and visible age.</span></div></li>
+    <li style="color:var(--stale)"><div><svg style="width:32px;height:32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></div><div><b><span lang="es">Sin conexión</span> / <span lang="en">Offline</span></b><span>Sin conexión: banner persistente y «último conocido» con edad. / Offline: persistent banner and “last known” with age.</span></div></li>
+    <li style="color:var(--stale)"><div><svg style="width:32px;height:32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2"/>
+    <line x1="8" y1="12" x2="16" y2="12"/>
+  </g>
+</svg></div><div><b><span lang="es">Sin datos</span> / <span lang="en">No data</span></b><span>Sin datos: guion y etiqueta; nunca un cero. / No data: em dash and label; never a zero.</span></div></li>
+    <li style="color:var(--muted)"><div><svg style="width:32px;height:32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="2 2"/>
+    <path d="M9.5 9.5 A2.5 2.5 0 1 1 14.5 9.5 C14.5 11.5 12 12 12 14"/>
+    <circle cx="12" cy="17" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><div><b><span lang="es">Desconocido</span> / <span lang="en">Unknown</span></b><span>Desconocido: estado distinto de obsoleto y de sin datos. / Unknown: a state distinct from stale and no-data.</span></div></li>
+</ul></section>
+<section aria-labelledby="disclaimers"><h2 id="disclaimers">Avisos obligatorios <span class="en" lang="en">/ Mandatory disclaimers</span></h2>
+<div class="disclaimer">
+<p lang="es"><b>AIS.</b> «La recepción AIS es únicamente de escucha: no todos los buques emiten AIS. No constituye un sistema de evitación de colisiones ni un transpondedor.»</p>
+<p lang="en"><b>AIS.</b> “AIS reception is receive-only: not every vessel transmits AIS. It is not a collision-avoidance system and not a transponder.”</p>
+<p lang="es"><b>PILOT.</b> «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.»</p>
+<p lang="en"><b>PILOT.</b> “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.”</p>
+<p lang="es"><b>Navegación / Navigation.</b> «Este producto es una ayuda a la navegación y no sustituye a la carta náutica oficial, al equipo reglamentario de la embarcación, a la vigilancia continuada ni al buen hacer marinero. La responsabilidad de la navegación corresponde siempre al patrón.»</p>
+<p lang="en"><b>Navigation.</b> “This product is a navigational aid. It does not replace official nautical charts, the vessel’s required equipment, continuous watchkeeping or good seamanship. Responsibility for navigation always rests with the skipper.”</p>
+<p lang="es"><b>Meteorología / Weather.</b> «Las previsiones son probabilísticas y pueden desviarse de las condiciones locales reales. Se muestra la fuente y la hora de cada dato.»</p>
+<p lang="en"><b>Weather.</b> “Forecasts are probabilistic and may differ from actual local conditions. Source and timestamp are displayed for every data point.”</p>
+</div></section>
+<section aria-labelledby="catalogue"><h2 id="catalogue">Catálogo <span class="en" lang="en">/ Catalogue</span></h2>
+<p class="meta"><span lang="es">Cada tarjeta muestra el SVG maestro insertado en línea, su nombre de archivo y su significado ES/EN. Los nombres son estables y en kebab-case.</span> <span lang="en">Each card shows the master SVG inlined, its file name and its ES/EN meaning. Names are stable and kebab-case.</span></p>
+  <section aria-labelledby="g-nav"><h2 id="g-nav">Navegación y rumbo <span class="en" lang="en">Navigation &amp; course</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="3" x2="12" y2="4.5"/>
+    <line x1="12" y1="17" x2="12" y2="9"/>
+    <polyline points="9.5 11.5 12 9 14.5 11.5"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Rumbo</span><span class="en" lang="en">Heading</span><code>nav-heading.svg</code><p class="note"><span lang="es">Índice de rumbo; el norte no se dibuja como rosa de los vientos.</span> <span lang="en">Heading index; north is not drawn as a compass rose.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="12" x2="17.5" y2="6.5"/>
+    <polyline points="14.7 7.2 17.5 6.5 16.6 9.2"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Demora</span><span class="en" lang="en">Bearing</span><code>nav-bearing.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="8" y1="21" x2="8" y2="5"/>
+    <path d="M8 5 H18 L14.5 9 L18 13 H8"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Punto de ruta</span><span class="en" lang="en">Waypoint</span><code>nav-waypoint.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="21" x2="12" y2="4"/>
+    <polyline points="7.5 8.5 12 4 16.5 8.5"/>
+    <line x1="8" y1="21" x2="16" y2="21"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Norte</span><span class="en" lang="en">North</span><code>nav-north.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="15" x2="21" y2="15"/>
+    <line x1="3" y1="11" x2="3" y2="19"/>
+    <line x1="12" y1="13" x2="12" y2="19"/>
+    <line x1="21" y1="11" x2="21" y2="19"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Escala</span><span class="en" lang="en">Scale</span><code>scale.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="19" y2="12"/>
+    <polyline points="15.5 8.5 19 12 15.5 15.5"/>
+    <line x1="3" y1="7.5" x2="8" y2="7.5"/>
+    <line x1="3" y1="16.5" x2="8" y2="16.5"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Velocidad</span><span class="en" lang="en">Speed</span><code>speed.svg</code><p class="note"><span lang="es">Velocidad; sin aguja, dial ni escala de instrumento.</span> <span lang="en">Speed; no needle, dial or instrument scale.</span></p></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-position"><h2 id="g-position">Posición y GPS <span class="en" lang="en">Position &amp; GPS</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7"/>
+    <line x1="12" y1="3" x2="12" y2="21"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Posición GPS fijada</span><span class="en" lang="en">GPS fix</span><code>gps-fix.svg</code><p class="note"><span lang="es">Fijación de posición; no implica precisión ni certificación.</span> <span lang="en">Position fix; does not imply accuracy or certification.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7" stroke-dasharray="2 2.5"/>
+    <line x1="3" y1="3" x2="21" y2="21"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Sin posición GPS</span><span class="en" lang="en">No GPS fix</span><code>gps-no-fix.svg</code><p class="note"><span lang="es">Sin fijación: nunca se sustituye por un cero.</span> <span lang="en">No fix: never substituted with a zero.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <path d="M12 5.5 L16.5 15.5 L12 13 L7.5 15.5 Z" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Posición propia</span><span class="en" lang="en">Own position marker</span><code>position-marker.svg</code></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-wind"><h2 id="g-wind">Viento <span class="en" lang="en">Wind</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="4" y1="19" x2="20" y2="19"/>
+    <line x1="5" y1="19" x2="17" y2="7"/>
+    <polyline points="13.8 8 17 7 16 10.2"/>
+    <path d="M11 19 A6 6 0 0 0 9.24 14.76"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Ángulo de viento</span><span class="en" lang="en">Wind angle</span><code>wind-angle.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="7" y2="9"/>
+    <polyline points="9.8 9.8 7 9 7.8 11.8"/>
+    <line x1="12.5" y1="19.5" x2="17.5" y2="14.5"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Viento real (T)</span><span class="en" lang="en">True wind (T)</span><code>wind-true.svg</code><p class="note"><span lang="es">Viento real (T): una pluma. Se distingue por forma + etiqueta, no por color.</span> <span lang="en">True wind (T): one feather. Distinguished by shape + label, not colour.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="7" y2="9"/>
+    <polyline points="9.8 9.8 7 9 7.8 11.8"/>
+    <line x1="12.5" y1="19.5" x2="17.5" y2="14.5"/>
+    <line x1="9" y1="16" x2="14" y2="11"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Viento aparente (A)</span><span class="en" lang="en">Apparent wind (A)</span><code>wind-apparent.svg</code><p class="note"><span lang="es">Viento aparente (A): dos plumas. Misma regla: forma + etiqueta.</span> <span lang="en">Apparent wind (A): two feathers. Same rule: shape + label.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="21" x2="12" y2="6"/>
+    <line x1="9" y1="6" x2="18" y2="6"/>
+    <polyline points="15.5 3.5 18 6 15.5 8.5"/>
+    <line x1="8" y1="21" x2="16" y2="21"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Sensor de palo</span><span class="en" lang="en">Masthead sensor</span><code>wind-sensor.svg</code></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-depth"><h2 id="g-depth">Sonda <span class="en" lang="en">Depth</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 6.5 Q5 4.5 7 6.5 T11 6.5"/>
+    <path d="M13 6.5 Q15 4.5 17 6.5 T21 6.5"/>
+    <line x1="12" y1="9" x2="12" y2="16.5"/>
+    <polyline points="9.5 14 12 16.5 14.5 14"/>
+    <line x1="3" y1="19" x2="21" y2="19"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Sonda</span><span class="en" lang="en">Depth</span><code>depth.svg</code></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-ais"><h2 id="g-ais">AIS — solo escucha <span class="en" lang="en">AIS — receive-only</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="15" width="6" height="6" rx="1.5"/>
+    <line x1="6" y1="15" x2="6" y2="8"/>
+    <circle cx="6" cy="8" r="1" fill="currentColor" stroke="none"/>
+    <path d="M9.54 4.46 A5 5 0 0 1 9.54 11.54"/>
+    <path d="M11.66 2.34 A8 8 0 0 1 11.66 13.66"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Recepción AIS (solo escucha)</span><span class="en" lang="en">AIS receive-only</span><code>ais-receive-only.svg</code><p class="note"><span lang="es">Antena y receptor de escucha; no existe icono de transmisión ni de transpondedor.</span> <span lang="en">Receive antenna and receiver; no transmit or transponder icon exists.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Objetivo AIS</span><span class="en" lang="en">AIS target</span><code>ais-target.svg</code><p class="note"><span lang="es">Marcador de objetivo propio; no es simbología náutica oficial.</span> <span lang="en">Own target marker; not official nautical symbology.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z"/>
+    <path d="M3 7.5 V3 H7.5"/>
+    <path d="M16.5 3 H21 V7.5"/>
+    <path d="M21 16.5 V21 H16.5"/>
+    <path d="M7.5 21 H3 V16.5"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Objetivo AIS seleccionado</span><span class="en" lang="en">Selected AIS target</span><code>ais-target-selected.svg</code><p class="note"><span lang="es">Selección por corchetes de contorno; el color nunca es la única señal.</span> <span lang="en">Selection by outline brackets; colour is never the only signal.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z" stroke-dasharray="2.5 2"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Objetivo AIS perdido</span><span class="en" lang="en">Lost AIS target</span><code>ais-target-lost.svg</code><p class="note"><span lang="es">Perdido: contorno discontinuo + etiqueta de estado.</span> <span lang="en">Lost: dashed outline + state label.</span></p></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-devices"><h2 id="g-devices">Dispositivos <span class="en" lang="en">Devices</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="8" y1="17" x2="8" y2="20"/>
+    <line x1="12" y1="17" x2="12" y2="20"/>
+    <line x1="16" y1="17" x2="16" y2="20"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Concentrador (HUB)</span><span class="en" lang="en">Device hub (HUB)</span><code>device-hub.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="9" y1="17" x2="9" y2="20"/>
+    <line x1="15" y1="17" x2="15" y2="20"/>
+    <line x1="7" y1="20" x2="17" y2="20"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Pantalla</span><span class="en" lang="en">Display</span><code>device-display.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="6" width="18" height="9" rx="2"/>
+    <circle cx="12" cy="10.5" r="2.5"/>
+    <circle cx="7" cy="10.5" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="17" cy="10.5" r="1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Mando local de piloto</span><span class="en" lang="en">Pilot control head</span><code>device-control-head.svg</code><p class="note"><span lang="es">Mando local del piloto; no implica gobierno autónomo.</span> <span lang="en">Pilot local control head; does not imply autonomous steering.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="1.5"/>
+    <circle cx="12" cy="12" r="2"/>
+    <line x1="9" y1="3" x2="9" y2="6"/>
+    <line x1="15" y1="3" x2="15" y2="6"/>
+    <line x1="9" y1="18" x2="9" y2="21"/>
+    <line x1="15" y1="18" x2="15" y2="21"/>
+    <line x1="3" y1="9" x2="6" y2="9"/>
+    <line x1="3" y1="15" x2="6" y2="15"/>
+    <line x1="18" y1="9" x2="21" y2="9"/>
+    <line x1="18" y1="15" x2="21" y2="15"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Sensor</span><span class="en" lang="en">Sensor</span><code>sensor.svg</code></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-fleet"><h2 id="g-fleet">Flota y vigilancia <span class="en" lang="en">Fleet &amp; monitoring</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L15.5 11 H8.5 Z"/>
+    <path d="M6 12 L9 19.5 H3 Z"/>
+    <path d="M18 12 L21 19.5 H15 Z"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Flota</span><span class="en" lang="en">Fleet</span><code>fleet.svg</code><p class="note"><span lang="es">Flota: varias embarcaciones; no implica gestión remota del gobierno.</span> <span lang="en">Fleet: multiple vessels; does not imply remote helm control.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 12 Q12 4 21.5 12 Q12 20 2.5 12 Z"/>
+    <circle cx="12" cy="12" r="2.5"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Vigilancia (WATCH)</span><span class="en" lang="en">Monitoring (WATCH)</span><code>watch-monitoring.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="7" cy="7" r="2.5"/>
+    <line x1="7" y1="4" x2="7" y2="3"/>
+    <line x1="4" y1="7" x2="3" y2="7"/>
+    <line x1="4.88" y1="4.88" x2="4.17" y2="4.17"/>
+    <line x1="9.12" y1="4.88" x2="9.83" y2="4.17"/>
+    <path d="M6 18 h11 a3.5 3.5 0 0 0 .3 -7 a5 5 0 0 0 -9.6 -1.6 A3.5 3.5 0 0 0 6 18 z"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Previsión meteorológica</span><span class="en" lang="en">Weather forecast</span><code>weather-forecast.svg</code></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-connectivity"><h2 id="g-connectivity">Conectividad <span class="en" lang="en">Connectivity</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9.5 8 H6.5 A4 4 0 0 0 6.5 16 H9.5"/>
+    <path d="M14.5 8 H17.5 A4 4 0 0 1 17.5 16 H14.5"/>
+    <line x1="10" y1="12" x2="14" y2="12"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Conexión</span><span class="en" lang="en">Connection</span><code>connection.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="13" x2="21" y2="13"/>
+    <line x1="6" y1="13" x2="6" y2="6"/>
+    <line x1="12" y1="13" x2="12" y2="6"/>
+    <line x1="18" y1="13" x2="18" y2="6"/>
+    <circle cx="6" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Bus de red</span><span class="en" lang="en">Network bus</span><code>network-bus.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="16" width="3" height="4" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="7.5" y="12" width="3" height="8" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="12" y="8" width="3" height="12" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="16.5" y="4" width="3" height="16" rx="0.75" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Intensidad de señal</span><span class="en" lang="en">Signal strength</span><code>signal-strength.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Wi-Fi</span><span class="en" lang="en">Wi-Fi</span><code>wifi.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="4" x2="7" y2="20"/>
+    <line x1="12" y1="4" x2="17" y2="20"/>
+    <line x1="9.5" y1="13" x2="14.5" y2="13"/>
+    <circle cx="12" cy="4" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Red móvil</span><span class="en" lang="en">Cellular</span><code>cellular.svg</code></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-alerts"><h2 id="g-alerts">Alertas <span class="en" lang="en">Alerts</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <circle cx="12" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="11" x2="12" y2="16"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Información</span><span class="en" lang="en">Info (advisory)</span><code>status-info.svg</code><p class="note"><span lang="es">Información / aviso; sin carga de seguridad.</span> <span lang="en">Info / advisory; no safety implication.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L21 19.5 H3 Z"/>
+    <line x1="12" y1="8.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="16.5" r="1.3" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Precaución</span><span class="en" lang="en">Caution</span><code>alert-caution.svg</code><p class="note"><span lang="es">Triángulo + «!». Nivel 2; nunca solo color.</span> <span lang="en">Triangle + “!”. Level 2; never colour-only.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2.5 L22 20.5 H2 Z"/>
+    <path d="M12 6.5 L18.5 17 H5.5 Z" stroke-width="1.25"/>
+    <line x1="12" y1="9.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="15.8" r="1.1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Advertencia</span><span class="en" lang="en">Warning</span><code>alert-warning.svg</code><p class="note"><span lang="es">Triángulo con segundo borde + «!». Nivel 3; causa y acción obligatorias.</span> <span lang="en">Double-bordered triangle + “!”. Level 3; cause and action required.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path fill-rule="evenodd" fill="currentColor" stroke="none" d="M8 2 H16 L22 8 V16 L16 22 H8 L2 16 V8 Z M11.3 6.5 h1.4 v6.8 h-1.4 z M12 15.2 a1.4 1.4 0 1 1 0 2.8 a1.4 1.4 0 1 1 0 -2.8 z"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Alarma</span><span class="en" lang="en">Alarm</span><code>alert-alarm.svg</code><p class="note"><span lang="es">Octágono sólido + «!» recortado. Nivel 4; nunca se autodescarta.</span> <span lang="en">Solid octagon + cut-out “!”. Level 4; never auto-dismissed.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.5 15.5 H17.5 L16 13.5 V9.5 A4 4 0 0 0 8 9.5 V13.5 Z"/>
+    <path d="M10.5 18 A1.5 1.5 0 0 0 13.5 18"/>
+    <polyline points="13.5 19 15.5 21 20 15.5"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Acuse de recibo</span><span class="en" lang="en">Acknowledge</span><code>acknowledge.svg</code><p class="note"><span lang="es">Acuse ≠ resolución: la condición sigue visible hasta que cesa.</span> <span lang="en">Acknowledge ≠ resolution: the condition stays visible until it clears.</span></p></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-data"><h2 id="g-data">Estados de dato <span class="en" lang="en">Data states</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <line x1="12" y1="12" x2="12" y2="6.5"/>
+    <line x1="12" y1="12" x2="16" y2="14"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Dato obsoleto</span><span class="en" lang="en">Stale data</span><code>stale.svg</code><p class="note"><span lang="es">Obsoleto: valor atenuado, contorno discontinuo y edad visible.</span> <span lang="en">Stale: attenuated value, dashed outline and visible age.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Sin conexión</span><span class="en" lang="en">Offline</span><code>offline.svg</code><p class="note"><span lang="es">Sin conexión: banner persistente y «último conocido» con edad.</span> <span lang="en">Offline: persistent banner and “last known” with age.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2"/>
+    <line x1="8" y1="12" x2="16" y2="12"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Sin datos</span><span class="en" lang="en">No data</span><code>no-data.svg</code><p class="note"><span lang="es">Sin datos: guion y etiqueta; nunca un cero.</span> <span lang="en">No data: em dash and label; never a zero.</span></p></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="2 2"/>
+    <path d="M9.5 9.5 A2.5 2.5 0 1 1 14.5 9.5 C14.5 11.5 12 12 12 14"/>
+    <circle cx="12" cy="17" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Desconocido</span><span class="en" lang="en">Unknown</span><code>unknown.svg</code><p class="note"><span lang="es">Desconocido: estado distinto de obsoleto y de sin datos.</span> <span lang="en">Unknown: a state distinct from stale and no-data.</span></p></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-system"><h2 id="g-system">Sistema <span class="en" lang="en">System UI</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5.5"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <line x1="12" y1="2" x2="12" y2="6"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(45 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(90 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(135 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(180 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(225 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(270 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(315 12 12)"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Ajustes</span><span class="en" lang="en">Settings</span><code>settings.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="12"/>
+    <path d="M7.05 7.05 A7 7 0 1 0 16.95 7.05"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Encendido</span><span class="en" lang="en">Power</span><code>power.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <line x1="18.5" y1="12" x2="20.5" y2="12"/>
+    <line x1="16.6" y1="7.4" x2="18" y2="6"/>
+    <line x1="12" y1="5.5" x2="12" y2="3.5"/>
+    <line x1="7.4" y1="7.4" x2="6" y2="6"/>
+    <line x1="5.5" y1="12" x2="3.5" y2="12"/>
+    <line x1="7.4" y1="16.6" x2="6" y2="18"/>
+    <line x1="12" y1="18.5" x2="12" y2="20.5"/>
+    <line x1="16.6" y1="16.6" x2="18" y2="18"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Brillo</span><span class="en" lang="en">Brightness</span><code>brightness.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="14"/>
+    <polyline points="8.5 10.5 12 14 15.5 10.5"/>
+    <path d="M4 17 V20 H20 V17"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Actualizar</span><span class="en" lang="en">Update</span><code>update.svg</code></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-electrical"><h2 id="g-electrical">Eléctrico <span class="en" lang="en">Electrical</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="7" width="16" height="10" rx="2"/>
+    <rect x="18.5" y="10" width="2" height="4" rx="0.5"/>
+    <line x1="6" y1="12" x2="13" y2="12"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Batería</span><span class="en" lang="en">Battery</span><code>battery.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <path d="M7 12 C8.5 8.5 10.5 8.5 12 12 C13.5 15.5 15.5 15.5 17 12"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Cargador</span><span class="en" lang="en">Charger</span><code>charger.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="7" cy="7" r="2.2"/>
+    <line x1="7" y1="4" x2="7" y2="3"/>
+    <line x1="4" y1="7" x2="3" y2="7"/>
+    <line x1="4.88" y1="4.88" x2="4.17" y2="4.17"/>
+    <line x1="9.12" y1="4.88" x2="9.83" y2="4.17"/>
+    <path d="M7 14 H17 L21 21 H11 Z"/>
+    <line x1="10" y1="14" x2="14" y2="21"/>
+    <line x1="14" y1="14" x2="18" y2="21"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Solar</span><span class="en" lang="en">Solar</span><code>solar.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="9" width="19" height="6" rx="3"/>
+    <line x1="7" y1="12" x2="17" y2="12"/>
+    <line x1="4.5" y1="10.5" x2="4.5" y2="13.5"/>
+    <line x1="19.5" y1="10.5" x2="19.5" y2="13.5"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Fusible</span><span class="en" lang="en">Fuse</span><code>fuse-breaker.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="8" width="7" height="8" rx="1.5"/>
+    <line x1="9.5" y1="10" x2="13" y2="10"/>
+    <line x1="9.5" y1="14" x2="13" y2="14"/>
+    <rect x="14.5" y="7" width="7" height="10" rx="1.5"/>
+    <circle cx="18" cy="10.5" r="0.9" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="13.5" r="0.9" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Toma de puerto</span><span class="en" lang="en">Shore power</span><code>shore-power.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="14"/>
+    <line x1="6" y1="14" x2="18" y2="14"/>
+    <line x1="8.5" y1="17.5" x2="15.5" y2="17.5"/>
+    <line x1="10.5" y1="21" x2="13.5" y2="21"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Masa</span><span class="en" lang="en">Ground</span><code>ground.svg</code></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-monitoring"><h2 id="g-monitoring">Monitorización <span class="en" lang="en">Monitoring</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 8 V16 A5 5 0 0 0 8 21 H16 A5 5 0 0 0 21 16 V8"/>
+    <path d="M5 16 Q7 14.5 9 16 T13 16 T17 16 T19 16"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Sentina</span><span class="en" lang="en">Bilge</span><code>bilge.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="3" width="14" height="18" rx="2"/>
+    <path d="M7 14 Q9 12.5 11 14 T15 14 T17 14"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Nivel de tanque</span><span class="en" lang="en">Tank level</span><code>tank-level.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="3" width="4" height="12" rx="2"/>
+    <circle cx="12" cy="17" r="3.5"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Temperatura</span><span class="en" lang="en">Temperature</span><code>temperature.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="18" x2="21" y2="18"/>
+    <line x1="12" y1="5" x2="12" y2="13"/>
+    <polyline points="9.5 10.5 12 13 14.5 10.5"/>
+    <line x1="6" y1="8" x2="6" y2="13"/>
+    <polyline points="4.5 11.5 6 13 7.5 11.5"/>
+    <line x1="18" y1="8" x2="18" y2="13"/>
+    <polyline points="16.5 11.5 18 13 19.5 11.5"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Presión</span><span class="en" lang="en">Pressure</span><code>pressure.svg</code></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-maintenance"><h2 id="g-maintenance">Mantenimiento <span class="en" lang="en">Maintenance</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="9" width="18" height="10" rx="2"/>
+    <path d="M8 9 V7 A4 4 0 0 1 16 7 V9"/>
+    <line x1="3" y1="14" x2="21" y2="14"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Servicio</span><span class="en" lang="en">Service</span><code>service.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="7" x2="21" y2="7"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="17" x2="21" y2="17"/>
+    <circle cx="8" cy="7" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="10" cy="17" r="2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Calibración</span><span class="en" lang="en">Calibration</span><code>calibration.svg</code></figcaption></figure></li>
+    </ul></section>
+  <section aria-labelledby="g-support"><h2 id="g-support">Instalación y soporte <span class="en" lang="en">Installation &amp; support</span></h2><ul class="grid">
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="12" rx="2"/>
+    <circle cx="5.8" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="5.8" cy="13.2" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18.2" cy="13.2" r="1" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="16" x2="12" y2="20"/>
+    <rect x="9.5" y="19" width="5" height="2.5" rx="1"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Instalación</span><span class="en" lang="en">Installation</span><code>installation.svg</code></figcaption></figure></li>
+      <li><figure class="icon-card"><div class="glyph"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 15 V12 A8 8 0 0 1 20 12 V15"/>
+    <rect x="3" y="14" width="3" height="5" rx="1.5"/>
+    <rect x="18" y="14" width="3" height="5" rx="1.5"/>
+  </g>
+</svg></div><figcaption><span class="es" lang="es">Soporte</span><span class="en" lang="en">Support</span><code>support.svg</code></figcaption></figure></li>
+    </ul></section>
+</section>
+<section aria-labelledby="checks"><h2 id="checks">Comprobaciones estructurales <span class="en" lang="en">/ Structural checks</span></h2>
+<p><span class="check-pass">57/57</span> <span lang="es">SVG cumplen las comprobaciones locales: <code>viewBox</code> 24×24, sin <code>&lt;script&gt;</code>, sin referencias externas, sin ráster, sin filtros, sin <code>@import</code>, trazo base 2, con <code>&lt;title&gt;</code>.</span> <span lang="en">SVGs pass the local checks: 24×24 viewBox, no script, no external references, no raster, no filters, no @import, base stroke 2, with title.</span></p>
+<p class="meta"><span lang="es">Tamaño total: 24648 B para 57 archivos. Presupuesto de icono del brief: ≤ 8 kB por SVG; el máximo real es 845 B.</span> <span lang="en">Total size: 24648 B for 57 files. Brief icon budget: ≤ 8 kB per SVG; actual maximum is 845 B.</span></p></section>
+<section aria-labelledby="limits"><h2 id="limits">Límites y estado <span class="en" lang="en">/ Limits and status</span></h2><ul>
+<li><span lang="es"><b>Revisión de originalidad / Originality review:</b> obra de autoría EMBARCARTE; <b>no</b> existe revisión profesional de originalidad/registro. Estado del programa: <code>ORIGINALITY_PROFESSIONAL_CHECK = PENDING</code>.</span> <span lang="en"><b>Originality:</b> authored by us; there is <b>no</b> professional originality/clearance review. Programme state: <code>ORIGINALITY_PROFESSIONAL_CHECK = PENDING</code>.</span></li>
+<li><span lang="es"><b>Sin iconos de terceros</b> ni generación de imagen; sin simbología náutica oficial, sin sellos de certificación, sin emoji.</span> <span lang="en"><b>No third-party icons</b> and no image generation; no official nautical symbology, no certification seals, no emoji.</span></li>
+<li><span lang="es"><b>No probado en hardware</b>: legibilidad en pantallas marinas, pulverización salina y guantes no verificadas. El tablero de reducción es una prueba de render en navegador, no una prueba física.</span> <span lang="en"><b>Not tested on hardware</b>: marine-display legibility, salt spray and glove use are unverified. The reduction board is a browser render proof, not a physical test.</span></li>
+<li><span lang="es">Comparación con el símbolo definitivo de MAREA pendiente hasta que exista el activo de identidad.</span> <span lang="en">Comparison with the final MAREA brand symbol is pending until the identity asset exists.</span></li>
+</ul></section>
+</main><footer><div class="wrap">
+<p lang="es">MAREA es una marca <b>propuesta</b>: <code>TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED</code>, <code>PUBLICATION = BLOCKED</code>. Documento interno de MC-04 (D-09).</p>
+<p lang="en">MAREA is a <b>proposed</b> brand: <code>TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED</code>, <code>PUBLICATION = BLOCKED</code>. MC-04 internal document (D-09).</p>
+<p><a href="./reduction-proof.html">Tablero de reducción 16/24/32 · 16/24/32 reduction proof board</a></p></div></footer></body></html>

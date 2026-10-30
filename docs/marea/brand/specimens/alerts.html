@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="es" data-mode="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAREA · Alertas, escala de alarma y estados de dato / Alerts, alarm ladder and data states (ILUSTRATIVO)</title>
+<style>
+  :root{
+    --inst-canvas:#f2f9fd; --inst-surface:#ffffff; --inst-surface-raised:#eaf7ff;
+    --inst-text-primary:#17365d; --inst-text-secondary:#4a6579; --inst-text-meta:#52697f; --inst-text-on-accent:#ffffff;
+    --inst-data-primary:#17365d; --inst-chart-grid:#748d9f;
+    --inst-state-critical:#a32b22; --inst-state-warning:#8a5a00; --inst-state-safe:#1f5f49; --inst-state-stale:#55646f; --inst-state-info:#17365d;
+    --inst-action:#176ca6; --inst-focus:#0f5f8c; --inst-disabled:#7a8d9b;
+    --inst-radius-control:3px; --inst-radius-surface:6px;
+    --inst-font-numeric:"Manrope Variable","Manrope","Segoe UI",Arial,sans-serif;
+    --inst-font-body:"DM Sans Variable","DM Sans","Segoe UI",Arial,sans-serif;
+  }
+  html[data-mode="night"]{
+    --inst-canvas:#0d1b26; --inst-surface:#132733; --inst-surface-raised:#1a3343;
+    --inst-text-primary:#8fd3f5; --inst-text-secondary:#93a6b5; --inst-text-meta:#a9b7c4; --inst-text-on-accent:#0d1b26;
+    --inst-data-primary:#8fd3f5; --inst-chart-grid:#6a7f8d;
+    --inst-state-critical:#ff9b8f; --inst-state-warning:#ffc46b; --inst-state-safe:#7bd8b0; --inst-state-stale:#a9b7c4; --inst-state-info:#93a6b5;
+    --inst-action:#8fd3f5; --inst-focus:#8fd3f5; --inst-disabled:#7d8f9d;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--inst-canvas);color:var(--inst-text-primary);font:15px/1.5 var(--inst-font-body)}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  a{color:var(--inst-action)}
+  a:focus-visible,button:focus-visible,label:focus-visible{outline:3px solid var(--inst-focus);outline-offset:2px}
+  .skip{position:absolute;left:-999px;top:0;background:var(--inst-surface);padding:10px}
+  .skip:focus{left:8px;top:8px}
+  header.site{background:var(--inst-surface);border-bottom:1px solid var(--inst-chart-grid);padding:16px 0}
+  .brandline{font-size:12.5px;color:var(--inst-text-secondary);margin:0 0 6px}
+  .brandline b{color:var(--inst-text-primary);letter-spacing:.06em}
+  h1{font-size:26px;line-height:1.15;margin:0 0 6px}
+  h2{font-size:19px;margin:32px 0 4px}
+  h3{font-size:15px;margin:0}
+  p{margin:0 0 8px}
+  .lede{color:var(--inst-text-secondary);max-width:78ch}
+  .chip{display:inline-block;font:700 10.5px/1 var(--inst-font-body);letter-spacing:.08em;text-transform:uppercase;border:1px solid currentColor;border-radius:3px;padding:5px 7px;margin:0 6px 6px 0;color:var(--inst-state-warning)}
+  .chip--critical{color:var(--inst-state-critical)} .chip--muted{color:var(--inst-text-meta)}
+  .modebox{float:right;background:var(--inst-surface-raised);border:1px solid var(--inst-chart-grid);border-radius:var(--inst-radius-surface);padding:8px 10px;margin-left:12px}
+  .modebox p{margin:0 0 4px;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--inst-text-meta)}
+  .mode-switch{display:flex;gap:6px}
+  .mode-switch input{position:absolute;width:1px;height:1px;opacity:0}
+  .mode-switch label{display:inline-flex;align-items:center;min-height:40px;padding:6px 12px;border:1px solid var(--inst-chart-grid);border-radius:var(--inst-radius-control);background:var(--inst-surface);cursor:pointer;font-size:13px}
+  .mode-switch input:checked+label{background:var(--inst-action);border-color:var(--inst-action);color:var(--inst-text-on-accent)}
+  .mode-switch input:focus-visible+label{outline:3px solid var(--inst-focus);outline-offset:2px}
+  .notice{background:var(--inst-surface);border:1px solid var(--inst-state-warning);border-left:4px solid var(--inst-state-warning);border-radius:var(--inst-radius-surface);padding:12px 14px;margin:16px 0;font-size:13px}
+  nav.pages{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;margin-top:8px}
+  .panel{background:var(--inst-surface);border:1px solid var(--inst-chart-grid);border-radius:var(--inst-radius-surface);padding:16px}
+  .grid{display:grid;gap:14px}
+  .grid--2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+  .stack{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+  .icon{width:30px;height:30px;flex:none}
+  .icon-s{width:18px;height:18px;flex:none}
+  .banner{display:flex;gap:14px;align-items:flex-start;border-radius:var(--inst-radius-surface);padding:13px 15px;border:1px solid}
+  .banner h3{font-size:14.5px;margin:0 0 4px}
+  .banner p{font-size:13px;margin:0 0 4px}
+  .banner .meta{font-size:11.5px;color:var(--inst-text-meta)}
+  .lvl{font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--inst-text-meta);margin:0 0 3px}
+  .a-info{background:var(--inst-surface);border-color:var(--inst-chart-grid);border-left:4px solid var(--inst-text-primary)}
+  .a-info .bicon{color:var(--inst-text-primary)}
+  .a-caution{background:var(--inst-surface);border-color:var(--inst-state-warning)}
+  .a-caution .bicon{color:var(--inst-state-warning)}
+  .a-warning{background:var(--inst-surface);border:2px solid var(--inst-state-warning)}
+  .a-warning .bicon{color:var(--inst-state-warning)}
+  .a-alarm{background:var(--inst-surface);border:2px solid var(--inst-state-critical)}
+  .a-alarm .bicon{color:var(--inst-state-critical)}
+  .ackline{display:inline-flex;gap:6px;align-items:center;font:700 11px/1 var(--inst-font-body);letter-spacing:.06em;text-transform:uppercase;border:1px dashed currentColor;padding:4px 6px;border-radius:3px;margin-top:6px}
+  .ackline--ack{color:var(--inst-state-warning)}
+  .ackline--resolved{color:var(--inst-state-safe)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  caption{text-align:left;font-size:12px;color:var(--inst-text-secondary);padding:0 0 8px}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--inst-chart-grid);vertical-align:top}
+  thead th{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--inst-text-meta)}
+  tbody th{font-weight:600}
+  .state{display:inline-flex;gap:6px;align-items:center;font-weight:700;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase}
+  .state svg{width:17px;height:17px;flex:none}
+  .s-live{color:var(--inst-state-safe)} .s-delayed{color:var(--inst-state-warning)}
+  .s-stale,.s-offline,.s-nodata,.s-unknown{color:var(--inst-state-stale)}
+  .s-error{color:var(--inst-state-critical)}
+  .value{font-family:var(--inst-font-numeric);font-weight:700;font-size:34px;line-height:1;font-variant-numeric:tabular-nums;margin:2px 0 6px}
+  .unit{font-size:.42em;letter-spacing:.08em;text-transform:uppercase;color:var(--inst-text-secondary)}
+  .value--stale{color:var(--inst-state-stale);opacity:.72}
+  .stale-tag{display:inline-flex;align-items:center;gap:6px;font:700 10.5px/1 var(--inst-font-body);letter-spacing:.07em;text-transform:uppercase;color:var(--inst-state-stale);border:2px dashed var(--inst-state-stale);padding:4px 6px;border-radius:3px}
+  .meta-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:8px;border-top:1px solid var(--inst-chart-grid);padding-top:8px;margin:0}
+  .meta-row dt{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--inst-text-meta);margin:0 0 2px}
+  .meta-row dd{margin:0;font-size:12.5px;font-variant-numeric:tabular-nums}
+  .illus{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--inst-state-warning);border:1px dashed var(--inst-state-warning);padding:3px 6px;border-radius:3px;white-space:normal}
+  .rowhead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px}
+  .kicker{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--inst-text-meta);margin:0}
+  .graybox{filter:grayscale(1)}
+  .nightscope{background:#0d1b26;color:#8fd3f5;border:1px solid #6a7f8d;border-radius:var(--inst-radius-surface);padding:14px}
+  .nightscope .banner{background:#132733;border-color:#ffc46b}
+  .nightscope .banner p{color:#a9b7c4}
+  .nightscope .lvl{color:#a9b7c4}
+  .nightscope h3{color:#ffc46b}
+  .disclaimer{background:var(--inst-surface);border:1px solid var(--inst-state-stale);border-left:4px solid var(--inst-state-stale);border-radius:var(--inst-radius-surface);padding:14px 16px;margin-top:18px;font-size:12.5px}
+  .disclaimer p{margin:0 0 8px}
+  .disclaimer p:last-child{margin:0}
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:normal;border:0}
+  footer{border-top:1px solid var(--inst-chart-grid);background:var(--inst-surface);margin-top:34px;padding:18px 0 32px;font-size:12px;color:var(--inst-text-secondary)}
+  footer h2{font-size:14px;margin:0 0 6px;color:var(--inst-text-primary)}
+  footer ul{margin:6px 0 0;padding-left:18px}
+  @media (max-width:560px){h1{font-size:23px}.modebox{float:none;margin:0 0 10px}.wrap{padding:0 14px}}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  @media (max-width:560px){.grid--2,.grid--3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Saltar al contenido / Skip to content</a>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+  <symbol id="i-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="8" r="1.2" fill="currentColor" stroke="none"/><line x1="12" y1="11" x2="12" y2="16"/></g></symbol>
+  <symbol id="i-caution" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L21 19.5 H3 Z"/><line x1="12" y1="8.5" x2="12" y2="13.5"/><circle cx="12" cy="16.5" r="1.3" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-warning" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 L20.5 20 H3.5 Z"/><path d="M12 7.5 L18 17 H6 Z" stroke-width="1.25"/><line x1="12" y1="10" x2="12" y2="13.5"/><circle cx="12" cy="15.8" r="1.1" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-alarm" viewBox="0 0 24 24"><path fill-rule="evenodd" fill="currentColor" stroke="none" d="M8 2 H16 L22 8 V16 L16 22 H8 L2 16 V8 Z M11.3 6.5 h1.4 v6.8 h-1.4 z M12 15.2 a1.4 1.4 0 1 1 0 2.8 a1.4 1.4 0 1 1 0 -2.8 z"/></symbol>
+  <symbol id="i-ack" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 15.5 H17.5 L16 13.5 V9.5 A4 4 0 0 0 8 9.5 V13.5 Z"/><path d="M10.5 18 A1.5 1.5 0 0 0 13.5 18"/><polyline points="13.5 19 15.5 21 20 15.5"/></g></symbol>
+  <symbol id="i-stale" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><line x1="12" y1="12" x2="12" y2="6.5"/><line x1="12" y1="12" x2="16" y2="14"/><line x1="4" y1="4" x2="20" y2="20"/></g></symbol>
+  <symbol id="i-offline" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/><path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/><path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/><line x1="4" y1="4" x2="20" y2="20"/></g></symbol>
+  <symbol id="i-nodata" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><line x1="8" y1="12" x2="16" y2="12"/></g></symbol>
+  <symbol id="i-unknown" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="2 2"/><path d="M9.5 9.5 A2.5 2.5 0 1 1 14.5 9.5 C14.5 11.5 12 12 12 14"/><circle cx="12" cy="17" r="1.2" fill="currentColor" stroke="none"/></g></symbol>
+  <symbol id="i-error" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"/><line x1="15.5" y1="8.5" x2="8.5" y2="15.5"/></g></symbol>
+  <symbol id="i-depth" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.5 Q5 4.5 7 6.5 T11 6.5"/><path d="M13 6.5 Q15 4.5 17 6.5 T21 6.5"/><line x1="12" y1="9" x2="12" y2="16.5"/><polyline points="9.5 14 12 16.5 14.5 14"/><line x1="3" y1="19" x2="21" y2="19"/></g></symbol>
+  <symbol id="i-caution-solid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L21 19.5 H3 Z" fill="currentColor"/><line x1="12" y1="8.5" x2="12" y2="13.5" stroke="#ffffff"/><circle cx="12" cy="16.5" r="1.3" fill="#ffffff" stroke="none"/></g></symbol>
+</defs></svg>
+
+<header class="site"><div class="wrap">
+  <div class="modebox">
+    <p id="mode-label">Modo (demo) · Display mode</p>
+    <div class="mode-switch" role="group" aria-labelledby="mode-label">
+      <input type="radio" name="mode" id="m-day" value="day" checked><label for="m-day">Día</label>
+      <input type="radio" name="mode" id="m-night" value="night"><label for="m-night">Noche</label>
+    </div>
+  </div>
+  <p class="brandline"><b>MAREA</b> · EMBARCARTE · MC-04 · D-11 alertas y estados / alerts and states</p>
+  <h1>Escala de alarma, acuse y estados de dato</h1>
+  <p class="lede">Cuatro niveles de severidad y seis estados de calidad de dato. Cada estado conserva forma, icono y etiqueta: quitar el color no lo hace ambiguo. Página no funcional: los valores son inventados.</p>
+  <p><span class="chip">ILUSTRATIVO · SIN DATOS REALES</span><span class="chip chip--critical">ACUSE ≠ RESOLUCIÓN</span><span class="chip chip--muted">PRODUCED</span><span class="chip chip--muted">LEGAL_REVIEW_PENDING</span></p>
+  <nav class="pages" aria-label="Navegación / Navigation"><a href="./index.html">Instrumentos / Instruments</a><a href="./pilot.html">PILOT supervisado / Supervised</a></nav>
+</div></header>
+
+<main id="main" class="wrap">
+  <div class="notice">
+    <p><b>ILLUSTRATIVE / NOT LIVE DATA · ILUSTRATIVO / SIN DATOS REALES.</b> Causas, acciones, fuentes, edades y niveles son inventados para revisar diseño. No son alarmas reales, no hay barco ni sensores conectados. Los umbrales son marcadores de diseño, no límites de seguridad.</p>
+  </div>
+
+  <section aria-labelledby="ladder-h">
+    <h2 id="ladder-h">1. Escala de severidad — cuatro niveles / Severity ladder — four levels</h2>
+    <p class="lede">El nivel nunca se comunica solo por color: forma + icono + etiqueta + texto. Toda alerta lleva causa, acción requerida y fuente/edad.</p>
+    <div class="stack">
+      <div class="banner a-info" role="status" aria-labelledby="l1-h">
+        <svg class="icon bicon" aria-hidden="true"><use href="#i-info"/></svg>
+        <div>
+          <p class="lvl">Nivel 1 · Aviso / Advisory · descartable, caduca si cesa · sin acuse</p>
+          <h3 id="l1-h">Registro de eventos completado / Event log completed</h3>
+          <p><b>Causa / Cause:</b> la sonda guardó el registro diario (ilustrativo). <b>Acción / Action:</b> ninguna.</p>
+          <p class="meta">Fuente / Source: <b>SONDA</b> · Edad / Age: <b>00:02</b> · Nivel / Level: <b>1</b></p>
+        </div>
+      </div>
+      <div class="banner a-caution" role="status" aria-labelledby="l2-h">
+        <svg class="icon bicon" aria-hidden="true"><use href="#i-caution"/></svg>
+        <div>
+          <p class="lvl">Nivel 2 · Precaución / Caution · persistente; acuse recomendado; pulso ≤ 1 Hz solo si reduced-motion lo permite</p>
+          <h3 id="l2-h">Viento en aumento / Wind increasing</h3>
+          <p><b>Causa / Cause:</b> racha de 24 kn sobre el umbral configurado de 20 kn (ajuste ilustrativo).</p>
+          <p><b>Acción requerida / Required action:</b> revisar el aparejo y reducir la exposición al viento.</p>
+          <p class="meta">Fuente / Source: <b>MASTHEAD</b> · Edad / Age: <b>00:04</b> · Nivel / Level: <b>2</b> · Acuse / Ack: <b>recomendado / recommended</b></p>
+        </div>
+      </div>
+      <div class="banner a-warning" role="alert" aria-labelledby="l3-h">
+        <svg class="icon bicon" aria-hidden="true"><use href="#i-warning"/></svg>
+        <div>
+          <p class="lvl">Nivel 3 · Advertencia / Warning · banner persistente; acuse no oculta la condición</p>
+          <h3 id="l3-h">Sonda somera / Shallow depth</h3>
+          <p><b>Causa / Cause:</b> 4,1 m bajo el umbral configurado de 5,0 m (ajuste de usuario, ilustrativo).</p>
+          <p><b>Acción requerida / Required action:</b> reducir velocidad y comprobar la sonda.</p>
+          <p class="meta">Fuente / Source: <b>SONDA</b> · Edad / Age: <b>00:03</b> · Nivel / Level: <b>3</b> · Acuse / Ack: <b>requerido / required</b></p>
+        </div>
+      </div>
+      <div class="banner a-alarm" role="alert" aria-labelledby="l4-h">
+        <svg class="icon bicon" aria-hidden="true"><use href="#i-alarm"/></svg>
+        <div>
+          <p class="lvl">Nivel 4 · Alarma / Alarm · nunca se autodescarta; acuse solo silencia el audio</p>
+          <h3 id="l4-h">Entrada de agua en sentina / Water in bilge</h3>
+          <p><b>Causa / Cause:</b> sensor de sentina activo por encima del umbral configurado (ilustrativo).</p>
+          <p><b>Acción requerida / Required action:</b> comprobar la sentina y la bomba de achique; mantener vigilancia manual.</p>
+          <p class="meta">Fuente / Source: <b>SENTINA</b> · Edad / Age: <b>00:01</b> · Nivel / Level: <b>4</b> · Acuse / Ack: <b>requerido y registrado / required and logged</b></p>
+          <span class="ackline ackline--ack"><svg class="icon-s" aria-hidden="true"><use href="#i-ack"/></svg>ACUSADA 14:21:30 · SIGUE ACTIVA / ACKNOWLEDGED · STILL ACTIVE</span>
+        </div>
+      </div>
+    </div>
+    <p class="kicker" style="margin-top:10px">Acuse ≠ resolución: la alarma nivel 4 sigue visible después del acuse; el banner y el estado solo desaparecen cuando la condición cesa.</p>
+  </section>
+
+  <section aria-labelledby="ack-h">
+    <h2 id="ack-h">2. Acuse frente a resolución / Acknowledgement vs resolution</h2>
+    <div class="grid grid--2">
+      <div class="panel">
+        <div class="rowhead"><h3>Acusada, sigue activa / Acknowledged, still active</h3><span class="illus">ILUSTRATIVO / SIN DATOS REALES · ILLUSTRATIVE / NOT LIVE DATA</span></div>
+        <p>La condición persiste. El audio se silencia; el banner y el estado permanecen. Es un estado distinto de «resuelta».</p>
+        <div class="banner a-alarm" style="margin-top:8px" role="alert">
+          <svg class="icon bicon" aria-hidden="true"><use href="#i-alarm"/></svg>
+          <div><h3>Entrada de agua en sentina</h3><p class="meta">ACK 14:21:30 · activa desde 14:21:29 · fuente SENTINA · edad 00:01</p><span class="ackline ackline--ack">SIGUE ACTIVA / STILL ACTIVE</span></div>
+        </div>
+        <p class="kicker" style="margin-top:8px">Estado: ACUSE REGISTRADO · CONDICIÓN ACTIVA</p>
+      </div>
+      <div class="panel">
+        <div class="rowhead"><h3>Resuelta / Resolved</h3><span class="illus">ILUSTRATIVO / SIN DATOS REALES · ILLUSTRATIVE / NOT LIVE DATA</span></div>
+        <p>La condición ha cesado y la alarma se retira del banner. Se conserva el registro con hora y fuente; no se borra el histórico.</p>
+        <div class="banner a-info" style="margin-top:8px">
+          <svg class="icon bicon" aria-hidden="true"><use href="#i-info"/></svg>
+          <div><h3>Sin alarma activa / No active alarm</h3><p class="meta">Última alarma: 14:21:29 → resuelta 14:23:04 · fuente SENTINA · registro conservado / log retained</p><span class="ackline ackline--resolved">RESUELTA / RESOLVED</span></div>
+        </div>
+        <p class="kicker" style="margin-top:8px">Estado: RESUELTA · REGISTRO CONSERVADO</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="states-h">
+    <h2 id="states-h">3. Estados de dato — mismo valor, siete estados / Data states — same value, seven states</h2>
+    <p class="lede">La profundidad inventada de ejemplo es 12,4 m. Cada estado cambia el tratamiento visible; nunca se presenta un valor obsoleto como actual y nunca se sustituye «sin datos» por un cero.</p>
+    <div class="table-wrap"><table>
+      <caption>Demostración de estados · value + unit + age + source + state · ILUSTRATIVA / ILLUSTRATIVE</caption>
+      <thead><tr><th scope="col">Estado / State</th><th scope="col">Valor / Value</th><th scope="col">Edad / Age</th><th scope="col">Fuente / Source</th><th scope="col">Tratamiento obligatorio / Required treatment</th></tr></thead>
+      <tbody>
+        <tr><th scope="row"><span class="state s-live"><svg aria-hidden="true"><use href="#i-dot"/></svg>LIVE</span></th><td><span class="value" style="font-size:26px">12,4 <span class="unit">m</span></span></td><td>00:02</td><td>SONDA</td><td>Valor a plena intensidad, edad visible, sin animación.</td></tr>
+        <tr><th scope="row"><span class="state s-delayed"><svg aria-hidden="true"><use href="#i-caution"/></svg>DELAYED</span></th><td><span class="value" style="font-size:26px">12,4 <span class="unit">m</span></span></td><td>00:06</td><td>SONDA</td><td>Se muestra con etiqueta «tarde»; sin alarma salvo umbral de producto.</td></tr>
+        <tr><th scope="row"><span class="state s-stale"><svg aria-hidden="true"><use href="#i-stale"/></svg>STALE</span></th><td><span class="value value--stale" style="font-size:26px">12,4 <span class="unit">m</span></span> <span class="stale-tag"><svg aria-hidden="true" style="width:14px;height:14px"><use href="#i-stale"/></svg>STALE 00:12</span></td><td>00:12</td><td>SONDA</td><td>Valor atenuado, contorno discontinuo, edad en dígitos tabulares; nunca estilo «live».</td></tr>
+        <tr><th scope="row"><span class="state s-offline"><svg aria-hidden="true"><use href="#i-offline"/></svg>OFFLINE</span></th><td><span class="value value--stale" style="font-size:26px">12,1 <span class="unit">m</span></span><br><span class="kicker">ÚLTIMO CONOCIDO / LAST KNOWN</span></td><td>00:47</td><td>HUB</td><td>Banner persistente; último valor etiquetado y con edad; sin cero silencioso.</td></tr>
+        <tr><th scope="row"><span class="state s-nodata"><svg aria-hidden="true"><use href="#i-nodata"/></svg>NO DATA</span></th><td><span class="value" style="font-size:26px">— <span class="unit">m</span></span><br><span class="kicker">NO DATA</span></td><td>—</td><td>—</td><td>Guion y etiqueta; nunca 0 ni valor congelado.</td></tr>
+        <tr><th scope="row"><span class="state s-error"><svg aria-hidden="true"><use href="#i-error"/></svg>ERROR</span></th><td><span class="value" style="font-size:26px">— <span class="unit">m</span></span></td><td>00:00</td><td>SONDA</td><td>Icono de fallo + causa + fuente + edad; distinguible de obsoleto y sin conexión.</td></tr>
+        <tr><th scope="row"><span class="state s-unknown"><svg aria-hidden="true"><use href="#i-unknown"/></svg>UNKNOWN</span></th><td><span class="value" style="font-size:26px">— <span class="unit">m</span></span></td><td>—</td><td>—</td><td>Estado desconocido, cuadrado discontinuo; distinto de obsoleto y de sin datos.</td></tr>
+      </tbody>
+    </table></div>
+    <p class="kicker" style="margin-top:8px">Regla de producto: la edad se muestra siempre; la reconexión muestra el nuevo sello de tiempo; un valor obsoleto nunca puede producir una conclusión «segura» silenciosa.</p>
+  </section>
+
+  <section aria-labelledby="gray-h">
+    <h2 id="gray-h">4. Comprobación en escala de grises / Greyscale check</h2>
+    <p class="lede">La siguiente copia aplica <code>filter: grayscale(1)</code>. Es una comprobación estática en navegador; la simulación CVD completa (protan/deutan/tritan) es <b>NOT_TESTED</b> y corresponde a la evidencia de revisión.</p>
+    <div class="graybox">
+      <div class="stack">
+        <div class="banner a-caution"><svg class="icon bicon" aria-hidden="true"><use href="#i-caution"/></svg><div><h3>Nivel 2 · Precaución / Caution</h3><p class="meta">triángulo + ! + etiqueta · 00:04 · MASTHEAD</p></div></div>
+        <div class="banner a-warning"><svg class="icon bicon" aria-hidden="true"><use href="#i-warning"/></svg><div><h3>Nivel 3 · Advertencia / Warning</h3><p class="meta">triángulo con doble borde + ! + etiqueta · 00:03 · SONDA</p></div></div>
+        <div class="banner a-alarm"><svg class="icon bicon" aria-hidden="true"><use href="#i-alarm"/></svg><div><h3>Nivel 4 · Alarma / Alarm</h3><p class="meta">octágono sólido + ! recortado + etiqueta · 00:01 · SENTINA</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="night-h">
+    <h2 id="night-h">5. Ejemplo nocturno / Night example</h2>
+    <p class="lede">Superficie nocturna propuesta (<code>#0d1b26</code>); sin negro puro ni blanco puro; la alerta conserva forma y etiqueta. El pulso se reduce o se desactiva de noche.</p>
+    <div class="nightscope">
+      <div class="banner" role="alert">
+        <svg class="icon bicon" aria-hidden="true" style="color:#ffc46b"><use href="#i-warning"/></svg>
+        <div><p class="lvl">Nivel 3 · Advertencia / Warning</p><h3 style="color:#ffc46b">Sonda somera / Shallow depth</h3><p><b>Causa:</b> 4,1 m bajo el umbral configurado de 5,0 m. <b>Acción:</b> reducir velocidad y comprobar la sonda.</p><p class="meta">Fuente: SONDA · Edad: 00:03 · Nivel 3 · sin pulso nocturno / no night pulse</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="disclaimer">
+    <p lang="es"><b>Aviso de navegación.</b> «Este producto es una ayuda a la navegación y no sustituye a la carta náutica oficial, al equipo reglamentario de la embarcación, a la vigilancia continuada ni al buen hacer marinero. La responsabilidad de la navegación corresponde siempre al patrón.»</p>
+    <p lang="en"><b>Navigation notice.</b> “This product is a navigational aid. It does not replace official nautical charts, the vessel’s required equipment, continuous watchkeeping or good seamanship. Responsibility for navigation always rests with the skipper.”</p>
+    <p><b>Alcance / Scope:</b> esta página no muestra datos AIS ni PILOT; sus avisos están en sus propias superficies. <span lang="en">This page shows no AIS or PILOT data; their notices live on their own surfaces.</span></p>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  <h2>Límites / Limits</h2>
+  <ul>
+    <li>Página ilustrativa y no funcional: niveles, causas, acciones, edades y fuentes son inventados; no hay sensores ni barco.</li>
+    <li>Sin prueba de hardware (pantalla marina, sol, sal, guantes, halación nocturna) y sin prueba de impresión 1:1.</li>
+    <li>Contraste: valores de rol del token file propuesto; esta página no mide el render. No se afirma conformidad WCAG de producto.</li>
+    <li>Contenido ES/EN; las alertas de nivel 3–4 usan <code>role="alert"</code>, las de nivel 1–2 <code>role="status"</code>. El acuse no oculta la condición.</li>
+  </ul>
+  <p style="margin-top:10px"><a href="./index.html">Instrumentos / Instruments</a> · <a href="./pilot.html">PILOT supervisado / Supervised</a></p>
+</div></footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    document.querySelectorAll('input[name="mode"]').forEach(function (input) {
+      input.addEventListener('change', function () { if (input.checked) root.setAttribute('data-mode', input.value); });
+    });
+  })();
+</script>
+</body>
+</html>
