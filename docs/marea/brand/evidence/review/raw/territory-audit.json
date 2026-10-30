@@ -205,16 +205,16 @@
   "rankingMatchesDoc": true,
   "htmlVsMd": {
     "weightedFound": [
-      "3.55",
+      "3.48",
       "3.68",
-      "3.85"
+      "3.58"
     ],
     "mdWeighted": {
       "A": 3.475,
       "B": 3.675,
       "C": 3.575
     },
-    "consistent": false
+    "consistent": true
   },
   "decisionChecks": {
     "shortlistExactlyTwo": true,
@@ -228,10 +228,10 @@
     "physical_samples_not_tested": true,
     "no_clearance_claim": true,
     "has_registered_symbols": true,
-    "identity_system_discloses_C_construction": true,
+    "identity_system_discloses_C_construction": false,
     "identity_system_states_not_adopted": true,
     "identity_system_LayerA_LayerB": true,
-    "identity_system_preference_B": true
+    "identity_system_preference_B": false
   },
   "originality": {
     "statusFieldsFound": {
@@ -242,10 +242,10 @@
     },
     "allFourExact": true,
     "preferenceIsB": false,
-    "mentionsPreferenceB": true,
+    "mentionsPreferenceB": false,
     "sha256HexPresent": true,
     "registeredSymbols": 2,
-    "revisionLine": "Rev. 3 — FROZEN binding executed. Shortlist recorded (B + C, A dropped); internal preference "
+    "revisionLine": "Rev. 4 — FROZEN v2 delete-and-rebind after the master set was reissued from construction B. Shortlist recorded (B + C, A dropped); internal preference "
   },
   "issues": []
 }

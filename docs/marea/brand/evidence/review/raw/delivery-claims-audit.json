@@ -1,13 +1,12 @@
 {
   "generatedBy": "docs/marea/brand/evidence/review/tools/delivery-claims-audit.py",
-  "missingSections": [
-    "5"
-  ],
+  "missingSections": [],
   "headingsFound": [
     "1",
     "2",
     "3",
     "4",
+    "5",
     "6",
     "7",
     "8",
@@ -24,7 +23,6 @@
     "MC-04-ASSETS.yaml",
     "MC-04-BRIEFS.yaml",
     "assets/diagrams/marea-{ais-receive-only,pilot-supervised-boundary,ecosystem-overview}.svg",
-    "assets/logo/marea-lockup-{primary,mono,reversed}.svg",
     "assets/packaging/marea-packaging-dieline-{display,hub,ais,sense,watch,pilot}.svg",
     "assets/print/marea-installer-commissioning-record-{es,en}.html",
     "assets/social/og-marea-{es,en}-1200x630.jpg",
@@ -36,7 +34,7 @@
   "countsRecomputed": {
     "entries": 15,
     "fileRecords": 120,
-    "sumBytes": 5275487,
+    "sumBytes": 5391691,
     "ext": {
       ".svg": 88,
       ".png": 21,
@@ -48,7 +46,7 @@
   },
   "countClaimsOk": {
     "120 records": true,
-    "5 275 487 B": true,
+    "5 275 487 B": false,
     "88 SVG": true,
     "21 PNG": true,
     "2 JPEG": true,
@@ -122,7 +120,7 @@
   ],
   "photographyBriefCount": 17,
   "identitySystemTextClaim": {
-    "sentencePresent": true,
+    "sentencePresent": false,
     "geometryFileCount": 32,
     "geometryFailed": [],
     "filesWithText": [
@@ -135,27 +133,20 @@
   },
   "issues": [
     {
-      "issue": "missing numbered sections",
-      "sections": [
-        "5"
-      ],
-      "found": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16"
-      ]
+      "issue": "count claim mismatch: 5 275 487 B",
+      "counts": {
+        "entries": 15,
+        "fileRecords": 120,
+        "sumBytes": 5391691,
+        "ext": {
+          ".svg": 88,
+          ".png": 21,
+          ".ico": 1,
+          ".jpg": 2,
+          ".html": 6,
+          ".pdf": 2
+        }
+      }
     }
   ]
 }

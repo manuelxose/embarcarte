@@ -3,36 +3,48 @@
 | Field | Value |
 | --- | --- |
 | Document ID | `MC-04 / D-19 / MC-04-REVIEW` |
-| Status | **DRAFT — PHASE 2 PENDING.** Phase-1 findings and evidence are final for the snapshot cited; the G1–G7 dispositions, verdict and Phase-2 sections are completed only against the frozen tree after the Lead's `FREEZE` signal. |
+| Status | **FINAL** — independent review of the frozen tree at commit `66b38dc` (branch `feature/marea-mc04-visual-identity`, base `b0b010dd0b45eec455951393e0dabf1f3df53eca`) |
 | Reviewer | IndependentReviewer (AI agent) — did not author any MC-04 artifact |
-| Author ≠ reviewer | Yes for every reviewed artifact: authors are IdentityVector, TypeColour, InstrumentIcons, AssetProduction, Governance, Lead (see QA-28 record §1.3) |
-| Milestone | MC-04 — MAREA visual identity system (internal, provisional) |
-| Branch / base | `feature/marea-mc04-visual-identity` / `b0b010dd0b45eec455951393e0dabf1f3df53eca` (MC-03 HEAD) |
-| Date | 2026-10-30 |
+| Author ≠ reviewer | Yes, for every reviewed artifact (QA-28 record in §1.3) |
+| Verdict input | **PASS — INTERNAL DESIGN SCOPE.** The single documentation condition raised during the recheck (IR-19) has been corrected in `MC-04-DELIVERY.md` and verified; the external gates that remain BLOCKED (G3 legal/originality, G5 engineering, hardware, print, human research) are recorded in §7–§8. This is **not** a trademark clearance, originality opinion, accessibility certification, cockpit validation, hardware conformity or publication approval. |
+| Method | Real files + real commands executed in this session; every quoted number re-derived from the artefact or re-measured independently. No author summary was trusted. |
 | Write scope | `docs/marea/brand/MC-04-REVIEW.md`, `docs/marea/brand/evidence/review/**` only. No author file, no `src/`, no `public/`, no Git write command was executed. |
-| Authority | `MC-04-VISUAL-IDENTITY-BRIEF.md` §11–§12 (gates G1–G7, QA-01…QA-28, §12.4–§12.6); `MC-04-EXECUTION-PLAN.md`; `marea-quality-gate` skill method |
-| Review method | Real files + real commands executed in this session; never the authors' summaries. Every quoted number was re-derived from the artefact or re-measured independently. |
+| Evidence | `docs/marea/brand/evidence/review/` (tooling + raw JSON/PNG/text outputs) — index in §9 |
 
 > **THIS IS AN AI-AGENT REVIEW. IT IS NOT HUMAN USER RESEARCH, NOT A PROFESSIONAL
 > CERTIFICATION, NOT LEGAL CLEARANCE, NOT A TRADEMARK/ORIGINALITY OPINION AND NOT A
 > COLOUR-VISION-DEFICIENCY USABILITY TEST.** It cannot substitute for any of them. Gate G3
-> (professional originality/prior-art/freedom-to-use) stays **BLOCKED/PENDING** and no agent
-> may close it. Where an external fact could not be verified from this machine (URL resolution,
-> live register status, icon-library visual similarity) it is recorded **NOT VERIFIED**, never
-> PASS.
+> (professional originality/prior-art/freedom-to-use) stays **BLOCKED/PENDING**; no agent can
+> close it. Where an external fact could not be verified from this machine (URL resolution, live
+> register status, external visual-similarity screening) it is recorded **NOT VERIFIED**, never PASS.
 
 ---
 
-## 0. Verdict input (completed against the frozen tree)
+## 0. Verdict
 
-<!-- PHASE2:VERDICT -->
+**PASS — INTERNAL DESIGN SCOPE.** After the freeze-time corrections were verified, the MC-04
+producible identity-system work is coherent, honestly labelled, reproducible and free of fabricated
+files, hashes, measurements or claims. Nothing found in this review is a §12.5 failure condition.
 
-| Item | Value |
-| --- | --- |
-| Independent verdict input (G7) | `PENDING FREEZE` |
-| Scope of that verdict | Internal design/QA scope of MC-04 only |
-| Conditions attached | see §8 |
-| Milestone truth preserved | `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`; `PUBLIC_MAREA_BRAND_USE = NO_GO`; `ORIGINALITY_PROFESSIONAL_CHECK = PENDING`; `FINAL_IDENTITY_ADOPTION = BLOCKED`; `PUBLICATION = BLOCKED`; `IMAGE_GENERATION = BLOCKED`; hardware certifications `NOT_EVIDENCED`; products `NOT_FOR_SALE` |
+What this verdict **does** cover: the identity construction rules, the nine family lockups, the
+reissued master set built on the preferred **B** construction, the D-01…D-19 document set, the 57-icon
+vocabulary and proof sheets, the three illustrative diagrams and specimens, typography/licence/feature
+evidence, the measured colour/token system, packaging/print vectors and PDFs, the brief/manifest
+honesty, the deterministic render pipeline and the produced-asset manifest, and the internal review
+process itself (author ≠ reviewer).
+
+What it **does not** cover, and cannot: trademark clearance; professional originality/prior-art search;
+engineering sign-off of the diagrams; hardware, sunlight, night, salt-spray/IP/material performance;
+physical print proofs; human five-second sort; human colour-vision testing; WCAG conformance of any
+implemented surface; availability, price, certification or safety claims. All remain
+`NOT_TESTED` / `BLOCKED` / `LEGAL_REVIEW_PENDING` exactly as the authors record them.
+
+Milestone truth preserved throughout: `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`,
+`PUBLIC_MAREA_BRAND_USE = NO_GO`, `ORIGINALITY_PROFESSIONAL_CHECK = PENDING`,
+`FINAL_IDENTITY_ADOPTION = BLOCKED`, `PUBLICATION = BLOCKED`, `IMAGE_GENERATION = BLOCKED`,
+hardware certifications `NOT_EVIDENCED`, products `NOT_FOR_SALE`.
+
+Conditions and residual exceptions: **§8**.
 
 ---
 
@@ -40,219 +52,282 @@
 
 ### 1.1 Method
 
-1. Read the authoritative brief in full for the sections that gate this milestone (§2.2, §2.4,
-   §5.5–§5.7, §7.4–§7.7, §9.2–§9.4, §10.5, §11, §12, §13.2) and the execution plan.
-2. Inspected the actual working tree (`git status`, file reads, byte-level inspection) — never a
-   delivery summary.
-3. Re-ran every repository gate that applies, captured the real exit code and output tail.
+1. Read the authoritative brief for every gating section (§2.2, §2.4, §5.5–§5.7, §7.4–§7.7,
+   §9.2–§9.4, §10.5, §11, §12, §13.2) and `MC-04-EXECUTION-PLAN.md`.
+2. Inspected the actual working tree (`git status`, `git log`, file reads, byte-level inspection) —
+   never the delivery summary.
+3. Re-ran every repository gate that applies and captured exit codes and output.
 4. Re-derived every arithmetic/measurement claim independently with reviewer-written tooling
-   (different code path from the author scripts): WCAG ratios, font digit advances and glyph
-   coverage, raster/ICO/PDF headers and SHA-256, SVG strict XML parsing, icon ink bounds and
-   distinctness, manifest↔file reconciliation, diagram disclaimer text.
-5. Classified every claim `VERIFIED` / `PARTIAL` / `NOT VERIFIED` / `BLOCKED` with the evidence.
-6. Reported defects with ID, severity, `file:line` and the exact command/reproduction.
+   (different code path from the author scripts): WCAG ratios, font advances and glyph coverage,
+   raster/ICO/PDF headers and SHA-256, strict SVG XML parsing, icon ink bounds/distinctness,
+   identity `getBBox()` geometry and spacing, manifest↔disk reconciliation, decision arithmetic,
+   diagram disclaimer text, package/binding hashes.
+5. Verified the deterministic render pipeline by snapshotting 122 files, re-running
+   `scripts/render-assets.mjs --all`, and comparing byte-for-byte.
+6. Classified every claim `VERIFIED` / `PARTIAL` / `NOT VERIFIED` / `BLOCKED` and recorded the
+   evidence; every defect was reported to the Lead with ID, severity, `file:line` and reproduction.
 
-Severity definitions used: **BLOCKING** = a §12.5 failure condition or a fabrication/scope
-violation that makes the milestone un-salvageable; **MAJOR** = a required deliverable or gate is
-wrong/incomplete in a way that must be fixed before acceptance; **MINOR** = a real defect that
-does not by itself block acceptance but must be corrected or explicitly accepted; **NIT** =
-wording/consistency.
+Severity definitions: **BLOCKING** = a §12.5 failure or a fabrication/scope violation; **MAJOR** = a
+required deliverable/gate wrong or incomplete in a way that must be fixed before acceptance;
+**MINOR** = a real defect that does not by itself block acceptance; **NIT** = wording/consistency.
 
 ### 1.2 Reviewer tooling (all under `docs/marea/brand/evidence/review/tools/`)
 
 | Tool | Purpose |
 | --- | --- |
-| `icon-audit.mjs` | strict Chromium `DOMParser` (image/svg+xml) parse + hygiene + semantics of all 57 UI icons |
-| `icon-html-audit.mjs` | index.html vs master geometry, ES/EN captions, byte claims, prohibited wording |
-| `icon-bounds.mjs` | real ink bounding box via `SVGGraphicsElement.getBBox()` + stroke/2, padding claims |
-| `icon-iou.mjs` | native 16/24/32 px rasterisation → pairwise ink-mask IoU (small-size distinctness) |
-| `icon-screenshot.mjs`, `icon-pair-compare.mjs` | reviewer visual evidence at native sizes (DPR 4/8) |
-| `typography-independent.mjs` | own `@font-face` probe from shipped woff2 + shipped unicode-ranges; notdef-mask glyph coverage; tnum measurement |
-| `dist-font-audit.mjs` | built CSS `@font-face` origins / emitted woff2 byte count |
-| `contrast-independent.mjs` | independent WCAG recomputation of all 190 pairs from raw colours |
-| `board-audit.mjs` | renders the CVD/greyscale evidence boards, console errors, specimen counts, honesty labels |
+| `icon-audit.mjs` / `icon-html-audit.mjs` | strict Chromium XML parse, hygiene, semantics of the 57 icons; index↔master geometry and byte claims |
+| `icon-bounds.mjs` / `icon-iou.mjs` / `icon-pair-compare.mjs` | real ink bounding box; native-size distinctness via ink-mask IoU; reviewer visual proofs |
+| `typography-independent.mjs` | own `@font-face` probe from the shipped woff2, notdef-mask glyph coverage, tnum measurement |
+| `dist-font-audit.mjs` | built CSS font origins and emitted woff2 bytes |
+| `contrast-independent.mjs` | independent WCAG recomputation of all 190 colour pairs |
+| `board-audit.mjs` | renders the CVD/greyscale boards, console errors, honesty labels |
 | `claims-audit.py` | recomputes 45 quoted numeric/arithmetic claims in D-06/D-07/D-17 |
 | `reference-check.py` | QA-27 cross-document broken-reference check |
-| `prohibited-pattern-scan.py` | independent claims-policy screening (128 files) |
-| `briefs-audit.py` | PyYAML parse of `MC-04-BRIEFS.yaml` (20-field completeness, blocked honesty) |
-| `manifest-audit.py` | `MC-04-ASSETS.yaml`↔disk reconciliation (bytes, SHA-256, dimensions, coverage) |
-| `raster-audit.mjs` | independent PNG/JPEG/ICO/PDF/WebP header measurement + SHA-256 |
-| `svg-all-audit.mjs` | strict XML parse + hygiene of every authored SVG in the asset tree |
-| `diagram-audit.py` | §7.7 verbatim disclaimers, AIS receive-only, PILOT E-stop/takeover/watchdog, ecosystem boundaries |
-
-No tool writes to an author path; all outputs go to `docs/marea/brand/evidence/review/raw/`.
+| `prohibited-pattern-scan.py` | independent claims-policy screening (130 files) |
+| `briefs-audit.py` | PyYAML audit of `MC-04-BRIEFS.yaml` (20-field completeness, blocked honesty) |
+| `manifest-audit.py` | `MC-04-ASSETS.yaml`↔disk reconciliation (bytes/SHA/dimensions/coverage) |
+| `raster-audit.mjs` / `svg-all-audit.mjs` | independent container measurement (PNG/JPEG/ICO/PDF) and all-SVG hygiene |
+| `diagram-audit.py` | §7.7 verbatim disclaimers, AIS receive-only, PILOT boundaries, ecosystem honesty |
+| `identity-audit.mjs` | Chromium `getBBox()` geometry of lockups/marks; the nine-family one-rule proof |
+| `territory-audit.py` | term-by-term weighted arithmetic, kill-criteria and decision-record checks |
+| `originality-binding-audit.py` / `recheck-binding-and-evidence.py` | all 35 bound-file hashes/bytes/viewBoxes; regenerated decision evidence |
+| `delivery-claims-audit.py` | D-18 counts, section structure and deliverable register |
+| `render-snapshot.mjs` | before/after SHA-256 snapshot for the determinism test |
 
 ### 1.3 QA-28 independence record (author ≠ reviewer)
 
-| Artifact group | Author (per execution plan) | Independent review performed by |
+| Artifact group | Author (per execution plan) | Independent review |
 | --- | --- | --- |
-| D-01/D-02/D-03 identity, territories, lockups | IdentityVector | IndependentReviewer (this file) — nothing in it was authored here |
+| D-01/D-02/D-03 identity, territories, lockups | IdentityVector | IndependentReviewer — nothing here authored by me |
 | D-06/D-07/D-08/D-17 typography, colour, tokens, accessibility evidence | TypeColour | IndependentReviewer |
 | D-09/D-10/D-11 icons, illustration standards, diagrams | InstrumentIcons | IndependentReviewer |
 | D-04/D-05/D-12/D-13/D-14/D-15 app icons, OG, renders, CMF, packaging, print | AssetProduction | IndependentReviewer |
 | D-12 briefs, D-16 originality, compliance evidence | Governance | IndependentReviewer |
 | D-18 delivery record, execution plan, integration | Lead | IndependentReviewer |
-| D-19 review record | IndependentReviewer (this file) | n/a — reviewer-owned; signed below |
+| D-19 this record | IndependentReviewer | reviewer-owned; signed in §10 |
 
-**Author ≠ reviewer is satisfied for every artifact reviewed.** The author of D-19 is the
-reviewer, which is the intended property of D-19 itself.
+**QA-28 sign-off for the internal design/QA review:** signed by the independent reviewer for the
+items actually verifiable from this machine (design geometry, evidence honesty, claims, manifests,
+reproducibility, source cleanliness). **Not signed:** human accessibility review, human five-second
+sort, colour-vision participant testing, physical print/hardware tests, professional legal/originality
+review. An AI agent cannot give those sign-offs and does not claim to.
 
-<!-- PHASE2:QA28SIGNOFF -->
+### 1.4 What this review cannot do
 
-### 1.4 What this review cannot do (stated up front)
-
-- It cannot establish WCAG 2.2 AA conformance, colour-blind safety, sunlight/night legibility,
-  print legibility, salt-spray/IP/material performance, or that any product exists.
-- It cannot perform a professional originality / prior-art / freedom-to-use search (G3) and does not
-  claim the identity or the icon system is original, distinctive or clear of third-party rights.
-- It cannot verify external URLs, registries or web sources from this session (the web-fetch
-  endpoint returned HTTP 404 throughout), so every externally-sourced fact is `NOT VERIFIED` by me.
-- It cannot replace a human visual/accessibility review; QA-03/QA-04/QA-28 human sign-off remains
-  open even where an AI visual inspection was performed.
+- It cannot establish WCAG 2.2 AA conformance, colour-blind safety, sunlight/night legibility, print
+  legibility, salt-spray/IP/material performance, or that any product exists.
+- It cannot perform the G3 professional originality/prior-art/freedom-to-use search.
+- It cannot verify external URLs/registries or run an external visual-similarity screen (the web-fetch
+  endpoint failed throughout this session). All externally sourced facts are `NOT VERIFIED` by me.
+- It cannot replace a human visual/accessibility review. QA-03/QA-04 human sign-off and the I-1
+  five-reviewer sort remain `NOT_TESTED (human)`.
 
 ---
 
-## 2. Commands executed by the reviewer and their real results
+## 2. Commands executed and real results (final frozen tree)
 
-<!-- PHASE2:COMMANDS -->
-
-| # | Command | Real result (reviewer run) |
+| # | Command | Real result |
 | --- | --- | --- |
-| C1 | `git status --short` / `git branch --show-current` / `git log -1 --oneline` | branch `feature/marea-mc04-visual-identity`, HEAD `b0b010d`; no `src/` or `public/` change; only `docs/**` and `scripts/*.mjs` entries (Phase-1 snapshot) |
-| C2 | `npm run test:brand` | PASS — 21 checks run, 21 passed, 0 failed; governed-file scan count changes as the Lead extends `governedPaths` (11 at first snapshot, 20 at the latest pre-freeze run) |
-| C3 | `npm run test:brand:unit` | PASS — 13 tests, 13 pass, 0 fail |
-| C4 | `node scripts/check-typography.mjs --json` (twice: 18:31 and after the author's 18:31:40 fix) | PASS exit 0; the current run reproduces TYPOGRAPHY-SYSTEM.md §9 exactly. Independent re-measurement: DM Sans digit spread 34.0 px @100 px unchanged by `tabular-nums`/`tnum`; Manrope 0.1563 px spread and 0.0000 px column delta; 67/67 chars served in the notdef-mask test |
-| C5 | `node scripts/check-contrast.mjs` | PASS exit 0; 190 pairs / 4 modes; 3 AA misses and 12 internal misses are the declared pre-existing findings F-1…F-7. Independent recomputation of all 190 pairs: max delta 0.0000, identical classification/summary |
-| C6 | `node docs/.../icon-audit.mjs` | 57 icons, 0 XML parse errors, 0 semantics failures, 0 out-of-canvas ink, no scripts/external refs/embedded raster/filters/text/ids |
-| C7 | `node docs/.../icon-html-audit.mjs` | index.html 57/57 cards, 0 geometry mismatches, ES+EN present, declared 24,617 B = actual and max 845 B = actual |
-| C8 | `node docs/.../icon-bounds.mjs` | 57/57 within the 24×24 canvas; 13/57 exceed the declared 2 px optical padding (IR-01) |
-| C9 | `node docs/.../icon-iou.mjs` | 16 px ink-mask IoU ≥ 0.875 for the device-hub/device-display and ais-target/ais-target-lost pairs (IR-02) |
-| C10 | `python docs/.../briefs-audit.py` | 17 assets × 20 brief fields complete; provider `NONE_YET`, `files: []`, `generated_at: null` for every blocked entry; no invented path/URL/SHA/provider |
-| C11 | `python docs/.../prohibited-pattern-scan.py` | 128 files; all 26 ®/™ occurrences are prohibitions/honesty statements; every CE/NMEA/IP/waterproof/marine-grade/certified hit is negated or evidence-gated; no availability/price/performance/ECDIS/collision-avoidance/safety claim |
-| C12 | `python docs/.../claims-audit.py` | 45 quoted claims recomputed; 2 mismatches, both the D-17 disposition-count line (IR-11) |
-| C13 | `python docs/.../reference-check.py` | 47 references across 10 docs; only 2 unmatched, both deliberate globs; 0 real broken references |
-| C14 | `node docs/.../board-audit.mjs` | both colour-evidence boards render with 0 console/page errors; 4 CVD `feColorMatrix` filters + WCAG luminance matrix; honesty labels present |
-| C15 | `node docs/.../dist-font-audit.mjs` | built CSS: 8 `@font-face`, all relative `./media/*.woff2`, 0 external/data URLs, `font-display: swap`; 8 woff2 = 130,132 B |
-| C16 | `node scripts/check-assets.mjs` | PASS at the latest pre-freeze run: 15 manifest entries, 119 asset files, 1:1 coverage, 119 SHA-256/bytes verified, 2 warnings (construction-grid clipped working file; index.html registration wording is a prohibition) |
-| C17 | `python docs/.../manifest-audit.py` | 15 entries, 0 unregistered files, 0 hash/byte/dimension mismatches at the latest pre-freeze run (a mid-flight run had 2 stale hashes; the manifest was regenerated) |
-| C18 | `node docs/.../raster-audit.mjs` | all raster/ICO/PDF containers valid; OG cards exactly 1200×630 and ≤ 67,585 B; ICO valid with 16/32/48 entries; PDFs `%PDF-1.4`, 2 pages, Skia/Chromium, no encryption/JS/embedded files |
-| C19 | `node docs/.../svg-all-audit.mjs` | 104 authored SVGs, 0 XML parse errors, 0 script/image/filter/gradient/external-ref findings |
-| C20 | `python docs/.../diagram-audit.py` | 3 diagrams: 0 flags — verbatim §7.7 disclaimers present (AIS: nav+AIS; PILOT: nav+PILOT; ecosystem: all 8), PILOT E-stop/takeover/watchdog/supervised present, AIS receive-only present, no positive collision-avoidance/transponder/ECDIS/certification claim |
-| C21 | `node scripts/render-assets.mjs --list` / `--all` / re-hash | <!-- PHASE2:RENDER --> |
+| C1 | `git status --short`; `git log -1 --oneline`; `git diff --name-status b0b010d..HEAD` | branch `feature/marea-mc04-visual-identity`, HEAD `66b38dc`; working tree clean; only 3 pre-existing MC-03/execution files modified vs base (`brand-identity.contract.json` +9 governedPaths, `DECISION-LOG.md`, `MASTER-PROMPT-REGISTRY.md`); **no `src/`, `public/`, `package.json`/lockfile or `angular.json` change** |
+| C2 | `npm run test:brand` | **PASS** — 21 checks run, 21 passed, 0 failed; **24 governed files scanned** |
+| C3 | `npm run test:brand:unit` | **PASS** — 13 tests, 13 pass |
+| C4 | `node scripts/check-assets.mjs` | **PASS** — 12 passed / 0 failed / 2 warnings; 15 manifest entries ↔ 120 asset file records; SHA-256, bytes, dimensions, format, budgets, hygiene and ink bounds verified |
+| C5 | `node scripts/check-contrast.mjs` | **PASS** — 190 pairs, 4 modes; proposed modes 54/54 each; 0 failures; F-1 remains OPEN on the live-site baseline |
+| C6 | `node scripts/check-typography.mjs` | **PASS** — 68/68 glyphs per family; tnum proven for Manrope; `TYPO-DEVIATION-01` |
+| C7 | `node scripts/render-assets.mjs --all` + before/after SHA snapshot | **PASS** — 7 jobs, exit 0; **122/122 files byte-identical** (0 added, 0 removed, 0 changed); PDF dates pinned |
+| C8 | `npm run build` | **PASS** — exit 0 (Angular SSR/prerender) |
+| C9 | `npm run test:e2e` | **PASS** — 15/15 Chromium tests |
+| C10 | `npm run test:i18n` / `test:commerce` / `test:seo` / `test:backup` | **PASS** each (seo: 101 sitemap URLs) |
+| C11 | `npx prettier --check` on the 4 new/changed scripts | **PASS** |
+| C12 | `npm audit --omit=dev --audit-level=high` | **PASS** — 0 vulnerabilities |
+| C13 | `git diff --check` | **PASS** — no whitespace errors |
+| C14 | independent contrast recomputation | 190/190 ratios and classifications identical, max delta **0.0000** |
+| C15 | independent typography measurement | DM Sans digit spread **34.0 px @100 px**, unchanged by `tabular-nums`/`tnum`; Manrope **0.1563 px** spread and **0.0000 px** column delta; 67/67 chars served in the notdef-mask test |
+| C16 | independent identity geometry | lockups 704.83×200, ink 50,50 604.83×100, clear 50 all sides, symbol 98.86×99.99 top 50/bottom 149.99, wordmark 430.96×100, gap 75.01, no clipping; compact 32×32 ink 29.66×30.0; reduced-16 ink 15.47×15.3; 1 symbol + 1 wordmark + 9 distinct tokens, token 70.00, gap 26.00 |
+| C17 | independent territory arithmetic | A 3.475→3.48, B 3.675→3.68, C 3.575→3.58; weights 1.00; ranking B>C>A; regenerated HTML now consistent with the Markdown |
+| C18 | independent manifest↔disk audit | 15 entries, 120 records, 0 unregistered files, 0 byte/SHA/dimension mismatches; manifest 50,619 B SHA-256 `47814e62…` |
+| C19 | independent raster/ICO/PDF measurement | OG exactly 1200×630 (65,244 B / 61,955 B ≤120 kB); ICO valid ICONDIR 16/32/48; app icon 1024×1024 (22,147 B ≤45 kB); PDFs `%PDF-1.4`, 2 pages, 595×842 pt, deterministic dates, no encryption/JS/embedded files |
+| C20 | D-16 binding verification | 35/35 bound files exist; all 35 SHA-256/bytes and the SVG/HTML viewBoxes match the dossier; v1 C-based finding closed with history preserved; `ORIGINALITY_PROFESSIONAL_CHECK = PENDING` |
+| C21 | diagram/specimen/claims/reference/prohibited audits | diagrams 0 flags; boards render with 0 console/page errors; 82 references with only 2 deliberate glob patterns unmatched; all ®/™ occurrences are prohibitions/honesty statements; no positive certification/availability/performance/ECDIS/collision-avoidance/autonomy claim |
+
+Outputs are saved verbatim under `docs/marea/brand/evidence/review/raw/`.
 
 ---
 
 ## 3. G1–G7 disposition
 
-<!-- PHASE2:GATES -->
-
-| Gate | Reviewer (per brief §12.3) | Disposition at this draft | Basis |
+| Gate | Reviewer (brief §12.3) | Disposition | Basis |
 | --- | --- | --- | --- |
-| **G1** Identity/design review | Independent design reviewer ≠ author | **PENDING FREEZE** (Phase-1 inputs: territory constructions exist, 9 family lockups exist, small-size/engraving evidence needs the independent judgement; IR-01/IR-02/IR-03 open) | §4–§6 below |
-| **G2** Accessibility review | Independent accessibility reviewer ≠ author | **PARTIAL** — measured contrast/typography evidence independently verified; boards render; hardware/sunlight/night/human-CVD/print remain NOT_TESTED/BLOCKED; human sign-off cannot be given by an AI agent | C4, C5, C14; §4 |
-| **G3** Legal/originality gate | Company + professional counsel/trademark agent | **BLOCKED / PENDING — cannot be closed by any agent** (B9; `ORIGINALITY_PROFESSIONAL_CHECK = PENDING`). The D-16 dossier makes no clearance claim. External resemblance/URL checks were NOT VERIFIED here. | §7 |
-| **G4** Claims/honesty review | Independent reviewer | **PASS so far** for the Phase-1 artifact set, with IR-05 (disclaimer coverage), IR-09 (ES diacritics) and the Phase-2 packaging/print/delivery checks pending; no certification/registration/availability/performance implication found | C11 |
-| **G5** Data/technical review | Engineering (product owner) | **BLOCKED on engineering** — `ENGINEERING_REVIEW = PENDING` for the diagrams and `NOT_EVIDENCED` for hardware; an AI reviewer cannot substitute for engineering sign-off | C20; ILLUSTRATION-STANDARDS.md |
-| **G6** Integration review | Lead | **PENDING FREEZE** — write scopes, `src/`/`public/` cleanliness, manifest, reproducibility, no fabricated files; reviewer input §5–§6 | C1, C16, C17 |
-| **G7** Independent milestone verdict | Reviewer ≠ author | **PENDING FREEZE** — final input in §0/§8 | all |
+| **G1** Identity/design review | Independent design reviewer ≠ author | **PASS for the independent design-review scope** — construction rules, reissued B master geometry/spacing/clear-space, nine-family one-rule, 16 px/monochrome/reversed simulations and the three territories verified by measurement. The brief's **5-second five-reviewer human sort (I-1) and physical engraving/silkscreen samples remain `NOT_TESTED (human/physical)`** and are not claimed as passed. | §6.1, C16, C17 |
+| **G2** Accessibility review | Independent accessibility reviewer ≠ author | **PASS for the evidence-and-honesty scope** — contrast/typographic evidence independently reproduced; boards render; QA-01…QA-28 dispositions are honest and conservatively classified (PASS 4 / PARTIAL 16 / NOT_TESTED 5 / BLOCKED 3 = 28). **Not a WCAG conformance claim**: hardware sunlight/night, print proof, human CVD testing, screen-reader walkthrough and an external audit remain `NOT_TESTED`/`BLOCKED`. | C5, C14, C15, board audit |
+| **G3** Legal/originality gate | Company + professional counsel/trademark agent | **BLOCKED / PENDING — cannot be closed by any agent.** `ORIGINALITY_PROFESSIONAL_CHECK = PENDING`, `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`. The D-16 dossier is a preparation record; no clearance/originality assertion exists anywhere. External URL/registry/icon-library screening is `NOT VERIFIED` from this machine. | §7 |
+| **G4** Claims/honesty review | Independent reviewer against the claims policy | **PASS** — no `®`/`™` attached to MAREA or any family/bundle; no certification, approval, availability, price, performance, ECDIS-equivalence, collision-avoidance, autonomous-steering or safety-guarantee claim; §7.7 disclaimers present verbatim (ES/EN) in diagrams, specimens, OG cards and installer records; packaging/print are PROPOSED and mark-free. | C21, §6.3 |
+| **G5** Data/technical review | Engineering (product owner) | **BLOCKED on engineering** — diagrams are correctly labelled illustrative; engineering/safety sign-off of ports, protocols and PILOT boundaries is `PENDING` (B15). An AI reviewer cannot substitute for engineering sign-off. | C21, ILLUSTRATION-STANDARDS §10 |
+| **G6** Integration review | Lead | **PASS** — write scopes respected; no `src/`/`public/` change; manifest 1:1 with disk; render determinism verified; contract extension additive and disclosed; no fabricated file/hash; counts and byte claims match reality. | C1, C4, C7, C18 |
+| **G7** Independent milestone verdict | Reviewer ≠ author | **PASS — INTERNAL DESIGN SCOPE** with the external gates above recorded as BLOCKED and the residual exceptions in §8. | this document |
 
 ---
 
 ## 4. Findings
 
-<!-- PHASE2:FINDINGS -->
+### 4.1 Phase-1 findings — final disposition
 
-### 4.1 Phase-1 findings (final against the cited snapshot)
-
-| ID | Severity | Finding | File:line | Evidence | Disposition |
-| --- | --- | --- | --- | --- | --- |
-| IR-01 | MINOR | 13/57 icons exceed the declared «2 px optical padding» by up to 1.5 units | `ICONOGRAPHY-SYSTEM.md:194`, `assets/icons/ui/index.html` | `raw/icon-bounds.json` (Chromium `getBBox()`): alert-warning x[1,23], gps-fix x/y[1,23], nav-heading y[0.5,21], solar 0.9, weather-forecast 0.8, … | **OPEN** → InstrumentIcons (Lead-routed). Fix geometry or document the optical overshoot as an explicit exception. |
-| IR-02 | MINOR | Small-size distinctness is weak for different-meaning pairs and the documented 16 px text-pairing list is incomplete | `ICONOGRAPHY-SYSTEM.md:312-315` | `raw/icon-iou-strict.json`: 16 px ink-mask IoU ais-target/ais-target-lost 0.909, device-hub/device-display 0.875, wind T/A 0.813, nav-heading/position-marker 0.788; `raw/icon-pair-compare-16px-dpr8.png` shows the cues are present but subtle | **OPEN** → InstrumentIcons. Add the pairs to the documented list or strengthen the cue before G1. Not duplicated art. |
-| IR-03 | MINOR | index.html says «variantes de reducción 16/24/32» but the proof only scales the one 24 px master; no 48 px variant | `assets/icons/ui/index.html`, `reduction-proof.html:8`, `ICONOGRAPHY-SYSTEM.md:227-239` | `raw/icon-html-audit.json`: 57 distinct geometries, 57 identical to master, 0 simplified; ICONOGRAPHY §4/§8 disclose the limitation honestly | **OPEN** → InstrumentIcons. Fix index wording, record the missing variants as NOT_PRODUCED. |
-| IR-05 | MINOR | Mandatory disclaimer coverage incomplete on icon-adjacent surfaces | `ICONOGRAPHY-SYSTEM.md:169-188`, `assets/icons/ui/index.html` | brief §7.7 mandates navigation/AIS/PILOT/weather; icon docs cover nav+AIS+PILOT but not weather; index.html carries AIS+PILOT only | **OPEN** → InstrumentIcons. Add weather (and nav) disclaimer or state non-applicability. |
-| IR-06 | NIT | `reduction-proof.html` carries fewer honesty flags than `index.html` (no LEGAL_REVIEW_PENDING) | `assets/icons/ui/reduction-proof.html` | `raw/icon-html-audit.json` flag lists | **OPEN** → InstrumentIcons. |
-| IR-07 | NIT (downgraded) | Token JSON claims role-only names but its web-light baseline block uses legacy colour names | `tokens/marea-instrument-tokens.proposed.json` | `document.roleNamesOnly` vs `modes.web-light.tokens` (navy2, sea*, badge*Bg); COLOUR-SYSTEM §1/§3/§12 clarifies the distinction | **PARTIALLY ADDRESSED** → TypeColour. Scope the statement to instrument roles. |
-| IR-08 | NIT (downgraded) | Token JSON says the proposed focus ring “resolves F-1”; F-1 is only proposed | same file, `webTokenMapping.focusRing` | `raw/contrast-independent.json` §f1: web-light still #8fd2f5 at 1.6529:1/1.5540:1/1.5149:1; COLOUR-SYSTEM §7/§14 correctly says “resolved by proposal … MC-06 implements” | **PARTIALLY ADDRESSED** → TypeColour. Reword the JSON string. |
-| IR-09 | MINOR | `MC-04-BRIEFS.yaml` ES captions/alt text are stripped of diacritics | `docs/marea/assets/manifest/MC-04-BRIEFS.yaml` | `raw/briefs-audit.json` + byte check: “fotografia”, “instalacion”, “Rias Baixas”; 16 non-ASCII bytes in 87 KB; PHOTOGRAPHY doc has correct accents | **OPEN** → Governance. Restore accents before any brief is consumed. |
-| IR-11 | MINOR | `MC-04-ACCESSIBILITY-EVIDENCE.md` disposition-count arithmetic is wrong | `MC-04-ACCESSIBILITY-EVIDENCE.md` (Disposition count line) | `raw/claims-audit.json`: parsed 28 rows → PASS 4 / PARTIAL 16 / NOT_TESTED 5 / BLOCKED 3; the doc states 4/13/6/3 “(28 total)”, whose parts sum to 26 | **OPEN** → TypeColour. Correct to 4/16/5/3. |
-| IR-12 | MINOR | D-06 says the numeric role is the only role that moves family, but units and timestamps also move to Manrope | `TYPOGRAPHY-SYSTEM.md:244-246` + §5 table | §4.4 of the brief assigns Unit/suffix and metadata/timestamps to DM Sans; the doc's own §5 assigns both to Manrope | **OPEN** → TypeColour. Reword the deviation scope. |
-
-Closed findings (kept for the audit trail):
-
-| ID | Was | Now | Reason |
+| ID | Initial severity | Finding (short) | Final status |
 | --- | --- | --- | --- |
-| IR-04 | MINOR — typography script reported `oflDocumentExemption=false` despite the OFL-1.1 document clause | **RESOLVED (withdrawn)** | My first run predated the author's 18:31:40 fix; the current script reproduces the doc's §9 exactly (`document-exemption=true`, `bundling=true`). The clause is present verbatim in both shipped LICENSE files. |
-| IR-10 | MINOR — `scripts/check-typography.mjs` outside every declared write scope | **RESOLVED by Lead** | `MC-04-EXECUTION-PLAN.md:45` now authorizes it and cites IR-10. |
+| IR-01 | MINOR | 13/57 icons exceeded the declared 2 px optical padding | **FIXED & verified** — nominal padding declared, exceptions documented (see IR-14 for a correction to that fix) |
+| IR-02 | MINOR | Weak 16 px distinctness pairs not on the documented text-pairing list | **FIXED & verified** — ICONOGRAPHY §8 now lists the measured IoU pairs (0.909 / 0.875 / 0.813 / 0.788) with mandatory text pairing at 16 px |
+| IR-03 | MINOR | index.html overstated "reduction variants" | **FIXED & verified** — index wording corrected; reduction-proof states it is not a 16 px redesign nor a 48 px proof |
+| IR-04 | MINOR | typography script licence assertion was a false negative | **WITHDRAWN** — my first run predated the author's 18:31:40 fix; current script and D-06 state the correct OFL-1.1 facts (`document-exemption=true`, `bundling=true`) |
+| IR-05 | MINOR | missing navigation/weather disclaimers on icon surfaces | **FIXED & verified** — index.html now carries both, ES/EN |
+| IR-06 | NIT | reduction-proof missing LEGAL_REVIEW_PENDING flag | **FIXED & verified** |
+| IR-07 | NIT | token role-naming statement broader than its content | **FIXED & verified** |
+| IR-08 | NIT | token JSON said F-1 "resolves" | **FIXED & verified** — now "proposes … does NOT resolve F-1; F-1 remains open" |
+| IR-09 | MINOR | ES diacritics stripped in BRIEFS.yaml | **FIXED & verified** — accents restored |
+| IR-10 | MINOR | check-typography outside declared write scope | **FIXED by Lead** — execution plan §1 authorises it and cites IR-10 |
+| IR-11 | MINOR | accessibility disposition counts wrong | **FIXED & verified** — 4 / 16 / 5 / 3 = 28 |
+| IR-12 | MINOR | "only the numeric role moves family" inaccurate | **FIXED & verified** — scope now covers value + unit/suffix + timestamp/age |
 
-### 4.2 Phase-2 findings
+### 4.2 Phase-2 findings — final disposition
 
-<!-- PHASE2:FINDINGS2 -->
+| ID | Severity | Finding | Status |
+| --- | --- | --- | --- |
+| **IR-13** | **MAJOR** | Generated territory evidence was stale and contradicted the decision record: `territories/territory-comparison.html` said "C — SIGNAL TRUNK (PREFERRED_PROVISIONAL)" with obsolete totals 3.55/3.68/3.85; `territories/evidence/reading-test.html` still said C preferred; the rendered PNGs derived from them were stale too. | **FIXED & verified** — regenerated from the corrected generators: comparison now B preferred with 3.48/3.68/3.58, reading test "MASTER — Territory B", no obsolete score or C-preference string anywhere in the delivered evidence; PNGs re-rendered (comparison 1200×1842 168,902 B SHA `99c169f5…`; reading test 1200×1140 89,342 B SHA `f7d20c65…`) and manifest-rebound |
+| IR-14 | MINOR | §6.1 exception table misclassified `alert-alarm` (padding 2.0) and `cellular` (2.8) as exceptions and stated the wrong count/range | **FIXED & verified** — now 48/57 meet nominal, nine exceptions with the exact measured values (1.34 / 1.50 ×6 / 1.00 / 1.47), and the two icons are explicitly noted as *not* exceptions |
+| IR-15 | MINOR | D-18 had no "§5" heading (sections jumped 4→6) | **FIXED & verified** — all 16 sections present |
+| IR-16 | MINOR | IDENTITY-SYSTEM claimed "all 32 SVGs … no `<text>`" | **FIXED & verified** — now 27 artwork files without `<text>`, the 5 working/construction files explicitly exempt |
+| IR-17 | MINOR | "transform scale factors ≤ 3 decimals" contradicted by `scale(4.3048)`/`scale(3.4188)` | **FIXED & verified** — the three frozen scale factors are documented (`3.333`, `4.305`, `10`) with the ≤ 0.01-unit band accuracy rationale |
+| IR-18 | NIT | D-18 "additive … only" while the contract gains governedPaths | **FIXED & verified** — §3 now states "additive … plus an extension of `governedPaths`" |
+| IR-19 | MINOR | D-18 §13 said "22 governed files scanned"; the current validator scans **24** (`brand-identity.contract.json` has 24 governedPaths) | **FIXED & verified** — D-18 §13 now reads "24 governed files scanned" (equals my run and the Lead run); §14 was replaced with the real final findings/gate record |
 
-*(To be completed against the frozen tree.)*
+**Totals: 19 finding IDs — 1 MAJOR (IR-13, fixed before delivery), 14 MINOR, 4 NIT. All 19 are CLOSED
+and independently re-verified, including the document-only IR-19 after its correction in D-18.
+No BLOCKING finding and no fabrication or scope violation was found at any stage.**
 
 ---
 
-## 5. Claim-verification matrix (Phase 1, independent)
-
-<!-- PHASE2:CLAIMS -->
+## 5. Claim-verification matrix
 
 | Claim | Status | Evidence |
 | --- | --- | --- |
-| 57 UI icons are well-formed, self-contained and accessible-semantic | **VERIFIED** | `raw/icon-audit.json`: 0 parse errors; 57/57 `viewBox="0 0 24 24"`, xmlns, `role="img"`, one bilingual `<title>`; no script/image/filter/text/external href/data URI/ids; no fixed width/height |
-| index.html catalogue matches the masters and its byte claim | **VERIFIED** | `raw/icon-html-audit.json`: 57 cards, 0 geometry mismatches, ES+EN captions, 57 aria-hidden glyphs, total 24,617 B and max 845 B exactly as declared |
-| Contrast matrix arithmetic and the F-1…F-7 findings | **VERIFIED** | `raw/contrast-independent.json`: 190/190 ratios identical (delta 0.0000), AA/internal classification identical; F-1 1.6529/1.5540/1.5149 and proposal 6.9173/6.5036/6.34 recomputed |
-| Day/sunlight/night role parity; no pure black/white at night | **VERIFIED** | token JSON: identical 22-role sets in the three instrument modes; night canvas #0d1b26, no #000/#fff |
-| DM Sans is proportional; Manrope has working tabular figures | **VERIFIED independently** | `raw/typography-independent.json`: DM Sans spread 34.0 px @100 px unchanged by CSS; Manrope 0.156 px spread, 0.0000 px column delta, both loaded from the shipped woff2 |
-| Glyph coverage ES/PT/FR/EN | **VERIFIED** | 67/67 characters served per family via the notdef-mask test; 31 locale strings with no gaps |
-| Fonts are OFL-1.1, no Reserved Font Name, document embedding permitted, self-hosted | **VERIFIED** | shipped LICENSE files read directly; `document-exemption` clause present verbatim; built CSS 8 relative `./media` `@font-face`, 0 external origins; `font-display: swap`; 130,132 B of woff2 in `dist/` |
-| Colour evidence boards are real and render | **VERIFIED** | `raw/board-audit.json`: 0 console/page errors; 4 CVD matrices + luminance matrix; screenshots saved; labelled INTERNAL/PROPOSED/ILLUSTRATIVE/NOT LIVE DATA |
-| D-16 originality dossier makes no clearance claim | **VERIFIED** | §0 status block PENDING/NOT_GRANTED/BLOCKED; no positive originality assertion; EUTM 018135609 / BRANDS 2020 S.L. matches MC-03 `TRADEMARK-CLEARANCE-RESEARCH.md` §2 verbatim (inherited, not invented) |
-| D-12 briefs are honest: 20 fields, provider NONE_YET, files [] | **VERIFIED** | `raw/briefs-audit.json` (PyYAML): 17 entries, 0 missing fields, 0 invented path/SHA/URL/date |
-| No prohibited claims across the Phase-1 artifacts | **VERIFIED** | `raw/prohibited-pattern-scan.json`: 128 files, all hits are negations/prohibitions/evidence-gated targets |
-| No `src/` or `public/` change | **VERIFIED** | `git status --short`: none at the Phase-1 snapshot; re-checked for the frozen tree in §6 |
-| External sources / registries | **NOT VERIFIED** | web-fetch endpoint returned HTTP 404 in this session; the dossier's URLs, classes and retrieval dates are recorded, not resolved |
-| Human CVD / sunlight / night / print / hardware validation | **NOT_TESTED / BLOCKED** | no hardware, no print authorization, no authorized user research; the authors' own D-17 marks these NOT_TESTED/BLOCKED |
+| Master set is built on the preferred **B** construction | **VERIFIED** | `<desc>` of every lockup/mark says territory B; B arc/index geometry measured; app icon/favicon/OG rebuilt from the B compact mark (arc commands present); IDENTITY-SYSTEM §0/§4/§5/§6/§9 and TERRITORY-COMPARISON §8 updated |
+| Lockup geometry/spacing/clear space | **VERIFIED** | 704.83×200 viewBox; ink 50,50 604.83×100; clear 50 all sides; symbol 98.86×99.99 on cap band (bottom 149.99 vs baseline 150); wordmark 430.96×100; ink gap 75.01 (0.75 cap ±0.01); no clipping |
+| Nine family lockups are one rule, not nine logos | **VERIFIED** | identical symbol path hash (1 variant), identical wordmark hash (1), nine distinct family tokens, one token height 70.00, one word gap 26.00, 50 clear space and no clipping on all nine |
+| Territory weighted arithmetic and kill criteria | **VERIFIED** | A 3.475, B 3.675, C 3.575, weights sum 1.00, ranking B>C>A; A dropped on the §3.3 wave/signal reading; C recorded as failing the bar-chart/equaliser reading; B preferred with the letter-C/seal risk recorded; human sort `NOT_TESTED` |
+| Deterministic render/reproducibility | **VERIFIED** | snapshot of 122 files, `render-assets --all` (7 jobs, exit 0), re-snapshot → 0 changed/added/removed; PDF dates pinned |
+| Manifest completeness and hashes | **VERIFIED** | 15 entries / 120 records / 5,391,691 B / SHA-256 `47814e62…`; every file has an entry and vice versa; every byte/SHA/dimension matches disk |
+| Raster/ICO/PDF/OG claims | **VERIFIED** | OG exactly 1200×630 and ≤120 kB; ICO valid with 16/32/48; app icon 1024² and budget-compliant; PDFs 2 A4 pages, no encryption/JS/embedded files |
+| Typography licence/feature claims | **VERIFIED** | OFL-1.1 both families, no Reserved Font Name, document-embedding clause present; DM Sans proportional (34.0 px spread @100 px, no tnum) and Manrope tabular (0.1563 px spread, 0.0000 px column delta); 68/68 glyphs per family; dist self-hosting verified (8 relative woff2 `@font-face`, 0 external origins, font-display swap) |
+| Colour/token claims | **VERIFIED** | 190/190 ratios recomputed exactly; day/sunlight/night same 22-role sets; no #000/#fff at night; F-1 correctly recorded open (proposal only) |
+| Diagrams/specimens honesty | **VERIFIED** | verbatim §7.7 disclaimers present (AIS: nav+AIS; PILOT: nav+PILOT; ecosystem: all eight ES/EN); PILOT E-stop/manual takeover/watchdog/supervised; AIS receive-only; no positive collision-avoidance/transponder/ECDIS/autonomy/certification claim; specimens labelled ILUSTRATIVO / NO DATOS REALES with non-operable controls and mode-toggle-only script |
+| Packaging/print honesty | **VERIFIED** | six dielines PROPOSED, no CE/NMEA/IP/certification marks, bleed/safe language; installer records blank fields, "PROPUESTO, no certifica", no invented signatories/data; PDFs are real Chromium A4 output |
+| D-16 originality dossier makes no clearance claim | **VERIFIED** | four status fields exact; preference B; v1 C-based finding closed with history preserved; 35/35 bound files' SHA-256/bytes/viewBox match disk (no invented hashes); the material earlier-right EUTM record is inherited from MC-03 |
+| Briefs manifest honesty | **VERIFIED** | 16 blocked + 1 producible entry; 20 fields each; provider `NONE_YET`; `files: []`; `generated_at: null`; no invented path/URL/SHA; ES accents correct |
+| Source/integration cleanliness | **VERIFIED** | no `src/`/`public/`/`package.json`/lockfile/`angular.json` change; contract extension additive and disclosed; branch/worktree clean at `66b38dc` |
+| External sources / live registers | **NOT VERIFIED** | web-fetch endpoint failed in this session; the dossier's 20 public URLs and their classes/dates are recorded, not resolved by me |
+| Human five-second sort, human CVD, hardware, sunlight/night, print proof, engineering sign-off, professional legal/originality | **NOT_TESTED / BLOCKED** | exactly as recorded by the authors; no agent can close them |
 
 ---
 
-## 6. Phase 2 — frozen-tree verification
+## 6. Frozen-tree verification detail
 
-<!-- PHASE2:BODY -->
+### 6.1 Identity (D-01/D-02/D-03)
 
-*(To be completed after the Lead's FREEZE signal: identity lockups and spacing table, scored
-shortlist arithmetic and kill-criteria application, diagrams, render determinism, app icons / ICO /
-OG / PDFs, packaging and print honesty, `MC-04-ASSETS.yaml` completeness, `MC-04-DELIVERY.md`
-claims vs reality, contract change, git cleanliness, and the final re-run of every gate.)*
+- Reissued masters use the preferred B construction (arc + bearing index + square datum), not C.
+- Primary/mono/reversed have **identical** symbol and wordmark path hashes; only the ink value differs
+  (`#17365d` / `#101820` / `#f2f9fd`). All are 2,016 B (≤20 kB).
+- Compact mark: 32×32 viewBox, ink 29.66×30.0, centred (1.17 / 1.0 margins); reduced-16: its own
+  16-unit drawing, ink 15.47×15.3 (0.26/0.35 margins). No clipping.
+- Nine family lockups: viewBox 853.66–1165.32 × 200, one symbol, one wordmark, nine distinct tokens,
+  token cap 70.00, word space 26.00, clear space 50, baseline alignment error ≤0.01 — one rule.
+- Symbol stroke weight was decided with evidence (3.2 u = 10.4 % of ink height; 8.6 % and 14.3 %
+  rejected with rationale in IDENTITY-SYSTEM §2.2/§4.1). The C construction remains fully documented
+  as the shortlisted strategic alternative that failed the small-size reading test.
+- Misuse sheet, construction grid, wordmark-only master and case study are present and labelled;
+  construction/working files are the only ones containing `<text>` and their status is stated.
+
+### 6.2 Territories and shortlist
+
+- All three constructions exist as construction-level SVGs with geometry reports (32 files, 0 failed)
+  and native-pixel reading-test evidence.
+- Weighted arithmetic recomputed term-by-term and matches the document exactly (3.475→3.48,
+  3.675→3.68, 3.575→3.58; weights 1.00; B>C>A).
+- Kill criteria genuinely applied: A dropped (signal/Wi-Fi/wave reading), C recorded as **failing**
+  (bar chart/equaliser at 16–48 px), B preferred with the letter-C/compass-app/seal risk recorded.
+- Shortlist is exactly two (B + C); C is the documented alternative, not the preference.
+- Regenerated comparison and reading-test evidence now state B preferred and the corrected scores,
+  with no obsolete score or C-preference strings; the two evidence PNGs re-rendered and rebound.
+- Human five-second sort (`NOT_TESTED (human)`) and physical samples (`NOT_TESTED (physical)`) are
+  recorded, not claimed.
+
+### 6.3 Diagrams, specimens, packaging, print
+
+- Three diagrams: verbatim §7.7 ES/EN disclaimers in every diagram where they apply (ecosystem has all
+  eight), AIS receive-only with no transmit path, PILOT supervised boundary with physical E-stop,
+  manual takeover and hardware watchdog shown as boundaries + non-operable specimen controls, missing
+  hardware labelled "requisito de diseño", ecosystem boundaries and unverified connections labelled.
+- Three specimens: ILUSTRATIVO / NO DATOS REALES; scripts only switch display mode; no forms, no
+  `onclick`, no fabricated live values, no operable actuation; PILOT page shows the BLOCKED commercial
+  gate and the mandatory human-authority and navigation disclaimers.
+- Six packaging dielines: PROPOSED dimensions, bleed/safe language, explicit "sin marcas CE/NMEA/IP"
+  and no ®/™; print/procurement BLOCKED.
+- Installer records ES/EN: blank field-record, "PROPUESTO, no certifica", no certification/CE/NMEA/IP
+  marks, no invented signatories or data; Chromium A4 PDFs (2 pages, 595×842 pt) with pinned dates.
+
+### 6.4 Reproducibility, manifest and integration
+
+- Full pipeline re-run reproduces **all 122 asset+manifest files byte-identically** (39 outputs per
+  run, PDF dates pinned). This is stronger than the delivery's "39/39 byte-identical" claim.
+- `MC-04-ASSETS.yaml`: 15 entries, 120 file records, 5,391,691 B, SHA-256 `47814e62…`; 1:1 coverage;
+  every hash/byte/dimension/format matches; no unregistered file; no registered symbols.
+- `check-assets.mjs` PASS 12/0/2 (the two warnings are a documented working-construction file and a
+  prohibition statement in the icon catalogue).
+- 24 governed brand files pass `test:brand` (21/21); unit tests 13/13; contract has 9 families and
+  `trademarkLegalClearance = NOT_GRANTED`.
+- Build, e2e (15/15), i18n, commerce, SEO, backup, prettier, `git diff --check` and `npm audit` all
+  pass on this tree; the three modified-vs-base files are additive governance records
+  (`governedPaths` extension, decision log, master registry).
 
 ---
 
 ## 7. External gates and agent limits
 
-- **G3 (professional originality/prior-art/freedom-to-use): BLOCKED/PENDING.** No agent can close it.
-  The D-16 dossier is a preparation record; the professional act has not happened. This review
-  cannot and does not declare MAREA, its marks, its icon system or its lockups original,
+- **G3 is BLOCKED/PENDING.** The D-16 dossier is a preparation record; the professional act has not
+  happened. This review cannot and does not declare MAREA, its marks, icon system or lockups original,
   distinctive, registrable, available or free of third-party rights.
 - **External resemblance/URL checks: NOT VERIFIED.** No icon library is installed locally and the
-  web-fetch endpoint failed; therefore “no copied icon” and the cited public sources are not
-  independently confirmed from this machine. The author statement that the artwork is authored is
-  recorded as an author attestation, not a verified clearance.
-- **Hardware/sunlight/night/print/glove/human-CVD:** no device, proof or authorized study exists;
-  these remain BLOCKED/NOT_TESTED, exactly as the authors record.
-- **AI-agent review limits:** this record is not human research, not professional certification and
-  not legal advice.
-- **Milestone truth:** `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`, `PUBLIC_MAREA_BRAND_USE = NO_GO`,
+  web-fetch endpoint failed; “no copied icon” and the cited public sources are not independently
+  confirmed from this machine. The author statement that the artwork is authored remains an author
+  attestation, not a clearance.
+- **G5 engineering review of the diagrams is PENDING** (B15); the diagrams stay illustrative.
+- **Hardware/sunlight/night/print/glove/human-CVD/human five-second sort:** no device, proof or
+  authorised study exists; these remain BLOCKED/NOT_TESTED exactly as recorded.
+- **This is an AI-agent review**, not human research, professional certification or legal advice.
+- Milestone truth: `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`, `PUBLIC_MAREA_BRAND_USE = NO_GO`,
   `ORIGINALITY_PROFESSIONAL_CHECK = PENDING`, `FINAL_IDENTITY_ADOPTION = BLOCKED`,
   `PUBLICATION = BLOCKED`, `IMAGE_GENERATION = BLOCKED`, hardware `NOT_EVIDENCED`, products
   `NOT_FOR_SALE`.
 
 ---
 
-## 8. Conditions
+## 8. Conditions and residual exceptions
 
-<!-- PHASE2:CONDITIONS -->
+1. **IR-19 (documentation only) — SATISFIED.** `MC-04-DELIVERY.md` §13 now reads **"24 governed files
+   scanned"**, matching the validator run and the contract's 24 `governedPaths`; D-18 §14 was also
+   replaced with the real final findings/gate record. Re-verified after the correction. No artifact,
+   gate or claim was affected.
+2. **G3 remains BLOCKED/PENDING** — external professional originality/prior-art/freedom-to-use act;
+   no adoption or publication before it.
+3. **External blocks recorded, not waived:** engineering sign-off of diagrams (G5/B15), hardware and
+   sunlight/night validation, print/proofing, human five-second sort, human colour-vision testing,
+   external accessibility audit, imagery generation. None is claimed as passed.
+4. **Identity adoption/publication remain blocked** even though the internal design scope passes:
+   `FINAL_IDENTITY_ADOPTION = BLOCKED`, `PUBLICATION = BLOCKED`, `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`.
+5. The B masters and generated evidence are frozen at `66b38dc`; any future reissue invalidates the
+   D-16 binding and requires another logged delete-and-rebind (D-16 §9.8 rule).
 
-*(Final conditions to be listed at FREEZE: each open finding, its owner, and whether it blocks the
-internal PASS, permits PARTIAL, or is an external BLOCKED item.)*
+With condition 1 satisfied, nothing found in this review prevents accepting MC-04 for its **internal
+design/QA scope**. The remaining items in this section are external gates that the programme cannot close
+by itself; they are recorded, not waived.
 
 ---
 
@@ -260,11 +335,25 @@ internal PASS, permits PARTIAL, or is an external BLOCKED item.)*
 
 | Path | Content |
 | --- | --- |
-| `evidence/review/PHASE1-INTERIM-FINDINGS.json` | full Phase-1 finding records (as reported to the Lead) |
-| `evidence/review/PHASE1-ADDENDUM.json` | D-06/D-07/D-17 addendum: closures, new findings, newly verified claims |
-| `evidence/review/raw/*.json` | every reviewer measurement (icons, contrast, typography, manifest, raster, diagrams, references, claims) |
-| `evidence/review/raw/*.png` | reviewer-rendered visual evidence (native-size icon harness, pair comparison, boards) |
-| `evidence/review/tools/*` | the reviewer's independent audit tooling (re-runnable) |
-| `evidence/review/raw/typography-run2-full.txt` | full output of the typography script after the author fix |
+| `evidence/review/PHASE1-INTERIM-FINDINGS.json` | Phase-1 finding records as reported to the Lead |
+| `evidence/review/PHASE1-ADDENDUM.json` | D-06/D-07/D-17 addendum: closures, new findings, verified claims |
+| `evidence/review/raw/*.json` | every reviewer measurement (icons, contrast, typography, identity, territory, manifest, raster, diagrams, references, claims, binding, boards) |
+| `evidence/review/raw/*.png` | reviewer-rendered visual evidence (native-size icon harness, pair comparison, colour boards) |
+| `evidence/review/raw/*-frozen.txt`, `raw/render-*.txt` | captured gate outputs and pipeline runs |
+| `evidence/review/tools/*` | the independent, re-runnable audit tooling |
 
-<!-- PHASE2:SIGNATURE -->
+---
+
+## 10. Signature
+
+| Role | Name | Status | Date |
+| --- | --- | --- | --- |
+| Independent reviewer (author ≠ reviewer) | IndependentReviewer (AI agent) | **SIGNED** for internal design/QA scope, findings list and verdict input | 2026-10-30 |
+| Human accessibility review (QA-03/QA-04) | — | `NOT_TESTED (human)` — not signed, cannot be signed by this agent | — |
+| Professional originality/prior-art/legal (G3) | — | `BLOCKED/PENDING` — external, not signed | — |
+| Engineering review of diagrams (G5) | — | `PENDING` — engineering-owned, not signed | — |
+| Lead integration review (G6) / final verdict (G7) | Lead | Lead records the milestone decision using this verdict input | 2026-10-30 |
+
+*This document records an AI-agent independent review. It is not human user research, not a
+professional certification, not legal clearance and not a trademark/originality opinion, and it cannot
+substitute for any of them.*

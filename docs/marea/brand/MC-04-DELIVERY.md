@@ -45,7 +45,8 @@ delivery is not merged, not deployed and not published.
 | --- | --- |
 | Base | `b0b010d` — MC-03 HEAD, verified before branching; PRs #7/#8/#9 DRAFT/unmerged, so the branch is **stacked** on `feature/marea-mc03-brand-governance` and the PR targets it, not `main` |
 | Branch | `feature/marea-mc04-visual-identity` (created from the verified MC-03 HEAD; no force-push, no reset, no reuse of a predecessor branch) |
-| Commits | `a1401ed` territories + wordmark + nine family lockups + identity system; `b513d50` typography licence verification + colour system + tokens + accessibility evidence; `14cc868` icon vocabulary + three diagrams + specimens; `e298535` deterministic asset pipeline + app icons/OG/packaging/print + produced-asset manifest; `1e10bf8` originality/prior-art dossier + photography/CGI briefs + governance evidence; final delivery/review commit recorded in the PR |
+| Commits | `a1401ed` territories + wordmark + nine family lockups + identity system; `b513d50` typography licence verification + colour system + tokens + accessibility evidence; `14cc868` icon vocabulary + three diagrams + specimens; `e298535` deterministic asset pipeline + app icons/OG/packaging/print + produced-asset manifest; `1e10bf8` originality/prior-art dossier + photography/CGI briefs + governance evidence; `66b38dc` reissued B masters + corrected generated evidence + binding v2; final delivery/review commit recorded in the PR |
+| Pull request | **Draft PR [#10](https://github.com/manuelxose/embarcarte/pull/10)**, base `feature/marea-mc03-brand-governance` (stacked on PR #9), head `feature/marea-mc04-visual-identity`; no merge, no deploy |
 | Diff shape | additive documentation/design assets only, plus an extension of `governedPaths` in `brand-identity.contract.json` (the validator and its unit tests are unchanged): no `src/`, no `public/`, no `package.json`/lockfile, no `angular.json`, no `docs/marea/compliance/**`, no MC-03 document rewritten; MC-01/MC-02/MC-03 histories preserved |
 | Merge / deploy | **None.** PR is a draft; no merge, no deploy, no production configuration change, no trademark filing, no spend |
 
@@ -227,7 +228,7 @@ surfaces. No new product, edition, SKU, price or availability statement is intro
 
 | Gate | Command | Result |
 | --- | --- | --- |
-| Brand documents | `npm run test:brand` | **PASS** — 21 checks, 21 passed, 0 failed; 22 governed files scanned (MC-04 documents added to `governedPaths`; validator and unit tests unchanged) |
+| Brand documents | `npm run test:brand` | **PASS** — 21 checks, 21 passed, 0 failed; 24 governed files scanned (MC-04 documents added to `governedPaths`; validator and unit tests unchanged) |
 | Brand unit tests | `npm run test:brand:unit` | **PASS** — 13/13 |
 | Build | `npm run build` | **PASS** — Angular SSR/prerender build (exit 0) |
 | E2E + axe | `npm run test:e2e` | **PASS** — 15/15 Chromium tests |
@@ -255,14 +256,28 @@ evidence of identity, contrast, accessibility-correctness or originality.
 ## 14. Independent review
 
 `MC-04-REVIEW.md` (D-19) is authored by the independent reviewer, who did not author any MC-04 material;
-the author ≠ reviewer rule is recorded (QA-28). Phase 1 of that review independently reproduced the
-contrast matrix (all 190 pairs, max delta 0.0000), the typography measurements and licence facts, parsed
-all 57 icons and both HTML boards, audited the briefs manifest, and found **no BLOCKING and no MAJOR
-defects** in the Phase-1 set; its minor findings (icon padding documentation, 16 px distinctness pairs,
-reduction-proof wording, disclaimers, token wording, manifest accents, execution-plan scope, accessibility
-count line) were routed to owners and corrected. Phase 2 re-runs the full set on the frozen tree and issues
-the G1–G7 dispositions and the milestone verdict input. **G3 (legal/originality) is BLOCKED**: no agent can
-close it, and no agent claims the marks are clear.
+the author ≠ reviewer rule is recorded (QA-28). The reviewer re-ran the gates on the frozen tree and
+independently reproduced the contrast matrix (190/190 ratios, max delta 0.0000; F-1 correctly OPEN), the
+typography measurements and licence facts, the identity geometry of the reissued B masters through its own
+`getBBox` (lockups 704.83×200, symbol 98.87×100 on the cap band, gap 75.01, clear space 50; compact
+29.66×30.0; nine family lockups from one rule), the manifest (120/120 files, 0 hash/byte/dimension
+mismatches), render determinism (0 changed / 0 added / 0 removed across 122 files after a full re-run),
+the scoring arithmetic (A 3.475, B 3.675, C 3.575, weights 1.00), and every diagram/specimen/packaging/
+print honesty check.
+
+Findings: 19 IDs — 1 MAJOR, 14 MINOR, 4 NIT. The MAJOR (**IR-13**, generated territory evidence still
+showing C preferred with obsolete scores) and the C/B master inconsistency found during binding were both
+fixed before delivery and re-verified; 18 findings are CLOSED. The only document-only item (IR-19, the
+governed-file count in §13) is corrected in this record. **No BLOCKING finding, no fabrication and no
+scope violation were found at any point.**
+
+Gate dispositions: **G1 PASS** for independent design-review scope (I-1 human sort and physical
+engraving/silkscreen samples NOT_TESTED, not claimed); **G2 PASS** for evidence-and-honesty scope (no
+WCAG conformance claim; hardware/human/print items NOT_TESTED/BLOCKED); **G3 BLOCKED/PENDING** —
+professional originality/prior-art/freedom-to-use review, which no agent can close; **G4 PASS** (claims/
+honesty); **G5 BLOCKED on engineering** sign-off of the illustrative diagrams; **G6 PASS** (integration,
+write scopes, no `src/`/`public/` side effects); **G7 PASS — INTERNAL DESIGN SCOPE** with the conditions
+above. This is an AI-agent review, not human user research, professional certification or legal clearance.
 
 ## 15. Blockers inherited and updated
 
