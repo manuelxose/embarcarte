@@ -104,7 +104,7 @@ forgetting a translation is a **compile error**, not an empty paragraph.
 | Public path literals in `app.routes.ts` | 46 | 12 (admin + legacy redirects only) |
 | Prerender path literals in `app.routes.server.ts` | 24 + 4 param routes | 12 ids + 2 detail ids, expanded per locale |
 | Hand-written SEO path/alternate pairs | 26 | `pageSeo()` derives them (10 call sites) |
-| Files added / deleted | — | 30 added, 19 deleted, 12 moved |
+| Files (vs `714f9fe`) | 31 added, 17 deleted, 4 renamed, 10 modified | 62 files in the milestone diff |
 
 Full inventory: [M02-DUPLICATION-INVENTORY.md](../architecture/M02-DUPLICATION-INVENTORY.md).
 
@@ -223,9 +223,10 @@ afterwards (see §F).
 | --- | --- |
 | Branch | `feature/i18n-multilingual-ui` |
 | Base branch | `feature/i18n-architecture-foundation` (M01, PR #1 still open) |
-| Commit | see the branch head |
-| PR | see the milestone pull request (stacked, base = M01 branch) |
+| Commits | `78a8516` UI consolidation, `fdd7a0b` regression checks, `bffe8d8` documentation |
+| PR | https://github.com/manuelxose/embarcarte/pull/2 (stacked, `MERGEABLE`) |
 | CI | no CI pipeline exists in the repository; the three commands in §F are the gate |
+| Merged / deployed | no — M01 was not merged silently and nothing was deployed |
 
 ## I. Remaining work for M03
 
