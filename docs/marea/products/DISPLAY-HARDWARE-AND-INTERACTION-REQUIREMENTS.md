@@ -105,7 +105,7 @@ No third hardware family, generation label, variant suffix or "Pro/Max" naming m
 | Compute module and memory | Enough compute to boot the dedicated environment and render the instrument layouts at the target responsiveness | HARDWARE_NOT_SELECTED |
 | Storage | Durable local storage for configuration, logs and update staging, with a defined wear and replacement position | HARDWARE_NOT_SELECTED |
 | Enclosure and bezel | A sealed enclosure and bezel intended for a wet marine environment, with a defined service opening strategy | HARDWARE_NOT_SELECTED |
-| Mounting system | One approved mount family with a documented surface, orientation and fastening envelope | HARDWARE_NOT_SELECTED |
+| Mounting system | One specified mount family (subject to the installation assessment) with a documented surface, orientation and fastening envelope; no mount is approved or certified | HARDWARE_NOT_SELECTED |
 | Power conversion and protection | Conversion and protection from a vessel supply, with documented fusing, grounding and transient behaviour | HARDWARE_NOT_SELECTED |
 | Connectors and harness | Marine connectors and a documented harness for the supported data inputs | HARDWARE_NOT_SELECTED |
 | Dedicated operating environment | A controlled runtime that boots into the instrument interface and is locked to the approved application set | DISPLAY_EMBEDDED_RUNTIME = NOT_FOUND |
@@ -142,7 +142,7 @@ All requirements below are REQUIRED_TARGET unless explicitly NOT_ESTABLISHED. No
 | 5.7 | Text legibility | Text at the intended helm viewing distance meets a minimum angular size to be fixed at design review; **no type size is published** | NOT_ESTABLISHED |
 | 5.8 | Surface | A front surface compatible with wet use and cleaning, with a defined cleaning requirement | NOT_ESTABLISHED |
 | 5.9 | Bezel and serviceability | A bezel and enclosure with a defined service opening strategy for panel or module service | NOT_ESTABLISHED |
-| 5.10 | Weight and centre of gravity | Must suit the approved mount and the documented surface load case | NOT_ESTABLISHED |
+| 5.10 | Weight and centre of gravity | Must suit the specified mount family and the documented surface load case | NOT_ESTABLISHED |
 | 5.11 | Marking | Serial, model, input rating and required markings, with traceability to the BOM | NOT_ESTABLISHED |
 
 ---
@@ -151,8 +151,8 @@ All requirements below are REQUIRED_TARGET unless explicitly NOT_ESTABLISHED. No
 
 | # | Requirement | Detail | Evidence status |
 | --- | --- | --- | --- |
-| 6.1 | Approved mount family | One approved mount family with a documented surface, orientation, fastening and load case | NOT_ESTABLISHED |
-| 6.2 | Surface preparation | A documented surface preparation and fastening method for the approved surfaces | NOT_ESTABLISHED |
+| 6.1 | Specified mount family | One specified mount family (no approval or certification exists) with a documented surface, orientation, fastening and load case | NOT_ESTABLISHED |
+| 6.2 | Surface preparation | A documented surface preparation and fastening method for the specified surfaces | NOT_ESTABLISHED |
 | 6.3 | Viewing position | The mount must allow the documented viewing position at the helm and the documented cable routing | NOT_ESTABLISHED |
 | 6.4 | Removal and service | The display must be removable for service without damaging the vessel surface | REQUIRED_TARGET |
 | 6.5 | Tamper and retention | A retention or locking position suitable for a helm, with a defined service access | REQUIRED_TARGET |
