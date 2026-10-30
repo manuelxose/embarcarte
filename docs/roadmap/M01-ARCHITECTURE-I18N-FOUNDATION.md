@@ -196,13 +196,13 @@ No critical or high findings remain. Unresolved: none.
 | --- | --- |
 | `b27906c` | `feat(i18n): add typed locale and translation foundation` |
 | `ad9534a` | `docs(i18n): record the repository audit and target architecture` |
-| `__M01_DOC_COMMIT__` | `docs(i18n): add the M01 milestone report` |
+| `c8251a6` | `docs(i18n): add the M01 milestone report` |
 
 Branch: `feature/i18n-architecture-foundation` (not merged into `main`, not deployed).
 
 ## 13. Pull request
 
-`__M01_PR_URL__`
+<https://github.com/manuelxose/embarcarte/pull/1>
 
 ## 14. Final milestone status
 
@@ -224,10 +224,9 @@ Branch: `feature/i18n-architecture-foundation` (not merged into `main`, not depl
 | New i18n tests pass | §7 |
 | No unresolved critical/high review findings | §10 |
 | Committed to the feature branch | §12 |
-| PR opened with evidence | §13 |
+| PR opened with evidence | <https://github.com/manuelxose/embarcarte/pull/1> |
 
-One criterion is only partially evidenced: **PR opened** — see §13 for the actual state if
-the GitHub connector could not complete the operation.
+No criterion is left unverified.
 
 ## 15. Prerequisites for Prompt 2
 
