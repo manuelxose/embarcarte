@@ -199,6 +199,12 @@ No BOM, supplier quotation, certification cost, channel agreement, chart-licence
 price or connectivity quote exists. Any contribution-margin work must therefore be a **framework with named
 inputs**, never a computed margin presented as fact.
 
+Bundle prices are **not decided in this milestone** (bundle governance is MC-08). A dossier may quote a bundle
+minimum-price hypothesis from `COMMERCIAL-PORTFOLIO.md` (`MAREA START` EUR 499, `MAREA CRUISE` EUR 1,399) only
+as ecosystem context, always labelled `HYPOTHESIS_UNAPPROVED`, never as a bundle offer, never as an explicit
+sum of the edition hypotheses, and never in the customer copy files. The six edition figures above remain the
+only product prices this milestone may state.
+
 ## 9. MC-02 blocker traceability (minimum set per dossier)
 
 Every dossier references the applicable ids from

@@ -349,7 +349,8 @@
             ]
           },
           "editionVerdict": {
-            "status": "CONDITIONAL",
+            "status": "DEFINED",
+            "publicationConditional": true,
             "rationale": "D4 §1.3 records the edition split as retained and still DEFINED; no MAREA edition is approved at MC-05 and publication remains conditional on the pricing and compatibility gates (X-05, D-01, P-01).",
             "evidenceRefs": [
               "MAREA-NAV-COMMERCIAL-SPEC.md#F06",
@@ -375,7 +376,8 @@
             ]
           },
           "editionVerdict": {
-            "status": "CONDITIONAL",
+            "status": "DEFINED",
+            "publicationConditional": true,
             "rationale": "D4 §1.3 keeps the Pro split only if at least one verified live-data path exists before market; the connected capabilities are BLOCKED by D-01 and P-01 and no edition is approved at MC-05.",
             "evidenceRefs": [
               "MAREA-NAV-COMMERCIAL-SPEC.md#F06",
@@ -969,7 +971,8 @@
             ]
           },
           "editionVerdict": {
-            "status": "CONDITIONAL",
+            "status": "DEFINED",
+            "publicationConditional": true,
             "rationale": "D4 §1.3 retains the Standard split conditioned on a frozen, tested connectivity envelope (H-04, H-05); no hardware exists and no edition is approved at MC-05.",
             "evidenceRefs": [
               "MAREA-HUB-COMMERCIAL-SPEC.md#F06",
@@ -997,7 +1000,8 @@
             ]
           },
           "editionVerdict": {
-            "status": "CONDITIONAL",
+            "status": "DEFINED",
+            "publicationConditional": true,
             "rationale": "D4 §1.3 retains the Pro split only if the additional validated connection families are tested (H-04, H-07); the additional envelope is TARGET evidence and no edition is approved at MC-05.",
             "evidenceRefs": [
               "MAREA-HUB-COMMERCIAL-SPEC.md#F06",
@@ -1539,7 +1543,8 @@
             ]
           },
           "editionVerdict": {
-            "status": "CONDITIONAL",
+            "status": "DEFINED",
+            "publicationConditional": true,
             "rationale": "D4 §1.3 records the Receiver as the base receive-only package, conditioned on receiver hardware selection and RF conformity evidence (H-08, H-05); no edition is approved at MC-05.",
             "evidenceRefs": [
               "MAREA-AIS-COMMERCIAL-SPEC.md#F06",
@@ -1569,6 +1574,7 @@
           },
           "editionVerdict": {
             "status": "CONDITIONAL",
+            "publicationConditional": true,
             "verdict": "NOT_YET_JUSTIFIED",
             "rationale": "MAREA-AIS-COMMERCIAL-SPEC.md §3 records the Receiver vs Connected customer-value verdict as CONDITIONAL / not yet justified: Connected may only ship as a separate edition if the frozen hardware design evidences richer local networking and diagnostics; otherwise the product collapses to one SKU plus an optional accessory. No edition is approved at MC-05.",
             "evidenceRefs": [

@@ -92,14 +92,30 @@ const REQUIRED_READINESS_VALUES = {
 };
 
 const PRODUCT_READINESS_VALUES = {
-  NAV: { engineering: 'PARTIALLY_VERIFIED', hardware: 'NOT_APPLICABLE_SOFTWARE_PRODUCT', compliance: 'NOT_STARTED' },
+  NAV: {
+    engineering: 'PARTIALLY_VERIFIED',
+    hardware: 'NOT_APPLICABLE_SOFTWARE_PRODUCT',
+    compliance: 'NOT_STARTED',
+  },
   HUB: { engineering: 'PARTIALLY_VERIFIED', hardware: 'NOT_SELECTED', compliance: 'NOT_STARTED' },
   AIS: { engineering: 'NOT_VERIFIED', hardware: 'NOT_SELECTED', compliance: 'NOT_STARTED' },
 };
 
-const HARDWARE_SPECIFIC_DIMENSION_VALUES = ['NOT_SELECTED', 'DESIGN_IN_PROGRESS', 'PROTOTYPED', 'CERTIFIED'];
+const HARDWARE_SPECIFIC_DIMENSION_VALUES = [
+  'NOT_SELECTED',
+  'DESIGN_IN_PROGRESS',
+  'PROTOTYPED',
+  'CERTIFIED',
+];
 
-const EVIDENCE_CLASSES = ['VERIFIED_REPO', 'VERIFIED_EXTERNAL', 'ASSUMPTION', 'HYPOTHESIS', 'OPEN', 'BLOCKED'];
+const EVIDENCE_CLASSES = [
+  'VERIFIED_REPO',
+  'VERIFIED_EXTERNAL',
+  'ASSUMPTION',
+  'HYPOTHESIS',
+  'OPEN',
+  'BLOCKED',
+];
 
 const GLOBAL_RESTRICTIONS = {
   trademarkLegalClearance: 'NOT_GRANTED',
@@ -147,7 +163,23 @@ const PRICE_HYPOTHESIS_RULES = {
 
 // Binding MC-02 blocker ids per dossier (docs/marea/products/README.md §9).
 const MC02_MINIMUM_BLOCKERS = {
-  NAV: ['D-01', 'D-02', 'D-03', 'D-04', 'D-05', 'D-06', 'D-08', 'D-10', 'P-01', 'P-10', 'L-01', 'L-02', 'L-03', 'X-01', 'X-05'],
+  NAV: [
+    'D-01',
+    'D-02',
+    'D-03',
+    'D-04',
+    'D-05',
+    'D-06',
+    'D-08',
+    'D-10',
+    'P-01',
+    'P-10',
+    'L-01',
+    'L-02',
+    'L-03',
+    'X-01',
+    'X-05',
+  ],
   HUB: ['H-02', 'H-04', 'H-05', 'H-06', 'H-07', 'H-13', 'P-02', 'P-10', 'S-06', 'X-01', 'X-05'],
   AIS: ['D-09', 'H-05', 'H-06', 'H-08', 'P-03', 'P-10', 'S-01', 'X-01', 'X-05'],
 };
@@ -198,7 +230,7 @@ const FORBIDDEN_FAMILY_NAMES = ['MAREA ONE', 'MAREA CORE', 'MAREA LINK'];
 // after normalisation (markdown emphasis, quotes and whitespace removed).
 const APPROVED_DISCLAIMERS = {
   navigation: {
-    en: 'This product is a navigational aid. It does not replace official nautical charts, the vessel\'s required equipment, continuous watchkeeping or good seamanship. Responsibility for navigation always rests with the skipper.',
+    en: "This product is a navigational aid. It does not replace official nautical charts, the vessel's required equipment, continuous watchkeeping or good seamanship. Responsibility for navigation always rests with the skipper.",
     es: 'Este producto es una ayuda a la navegación y no sustituye a la carta náutica oficial, al equipo reglamentario de la embarcación, a la vigilancia continuada ni al buen hacer marinero. La responsabilidad de la navegación corresponde siempre al patrón.',
   },
   aisReceiveOnly: {
@@ -244,16 +276,31 @@ const PURCHASE_RULES = [
   [/\bcomprar\s+ahora\b/i, 'CTA "comprar ahora" está prohibida'],
   [/\bañadir\s+al\s+(?:carrito|cesta)\b/i, 'CTA "añadir al carrito" está prohibida'],
   [/\bdisponible\s+ahora\b/i, 'claim "disponible ahora" está prohibido'],
-  [/\b(?:buy|purchase|order)\s+(?:it|this|the\s+product|now|today|here)\b/i, 'sale-enabling call to action is prohibited'],
-  [/\b(?:comprar|pedir|reservar)\s+(?:ya|ahora|este\s+producto)\b/i, 'llamada a la acción de compra prohibida'],
+  [
+    /\b(?:buy|purchase|order)\s+(?:it|this|the\s+product|now|today|here)\b/i,
+    'sale-enabling call to action is prohibited',
+  ],
+  [
+    /\b(?:comprar|pedir|reservar)\s+(?:ya|ahora|este\s+producto)\b/i,
+    'llamada a la acción de compra prohibida',
+  ],
 ];
 
 const PRICE_RULES = [
-  [/\b(?:PVP|precio)\s+confirmad[oa]\b/i, 'a confirmed retail price is prohibited; price hypotheses are HYPOTHESIS_UNAPPROVED'],
-  [/\bprice\s+is\s+final\b/i, 'a final price is prohibited; price hypotheses are HYPOTHESIS_UNAPPROVED'],
+  [
+    /\b(?:PVP|precio)\s+confirmad[oa]\b/i,
+    'a confirmed retail price is prohibited; price hypotheses are HYPOTHESIS_UNAPPROVED',
+  ],
+  [
+    /\bprice\s+is\s+final\b/i,
+    'a final price is prohibited; price hypotheses are HYPOTHESIS_UNAPPROVED',
+  ],
   [/\bfinal\s+price\b/i, 'a final price is prohibited; price hypotheses are HYPOTHESIS_UNAPPROVED'],
   [/\bfrom\s+(?:EUR|€)\s*\d/i, 'a "from EUR" price is prohibited while no price is approved'],
-  [/\bdesde\s+(?:EUR|€)?\s*\d/i, 'un precio "desde" está prohibido mientras no haya precio aprobado'],
+  [
+    /\bdesde\s+(?:EUR|€)?\s*\d/i,
+    'un precio "desde" está prohibido mientras no haya precio aprobado',
+  ],
   [/\bAPPROVED\b/, 'a price must not be represented as APPROVED; it is HYPOTHESIS_UNAPPROVED'],
 ];
 
@@ -267,10 +314,19 @@ const PRICE_TEXT_RULES = PRICE_RULES.slice(0, 5);
 // itself: a truthful "prices are hypotheses, not approved" statement must be
 // allowed. Only an affirmative approval claim fails.
 const PRICE_APPROVAL_CLAIM_RULES = [
-  [/\bapproved\s+(?:price|pricing|retail\s+price)s?\b/i, 'a price is presented as approved; prices are HYPOTHESIS_UNAPPROVED'],
-  [/\bprice\s+(?:is|has\s+been|was)\s+approved\b/i, 'a price is presented as approved; prices are HYPOTHESIS_UNAPPROVED'],
+  [
+    /\bapproved\s+(?:price|pricing|retail\s+price)s?\b/i,
+    'a price is presented as approved; prices are HYPOTHESIS_UNAPPROVED',
+  ],
+  [
+    /\bprice\s+(?:is|has\s+been|was)\s+approved\b/i,
+    'a price is presented as approved; prices are HYPOTHESIS_UNAPPROVED',
+  ],
   [/\bPVP\s+aprobado\b/i, 'un PVP aprobado está prohibido; los precios son HYPOTHESIS_UNAPPROVED'],
-  [/\bprecios?\s+aprobad[oa]s?\b/i, 'un precio aprobado está prohibido; los precios son HYPOTHESIS_UNAPPROVED'],
+  [
+    /\bprecios?\s+aprobad[oa]s?\b/i,
+    'un precio aprobado está prohibido; los precios son HYPOTHESIS_UNAPPROVED',
+  ],
 ];
 const PRICE_COPY_RULES = [...PRICE_TEXT_RULES, ...PRICE_APPROVAL_CLAIM_RULES];
 
@@ -287,55 +343,136 @@ const CLEARANCE_RULES = [
     /\bMAREA\b[^.\n]{0,40}\btrademark\b[^.\n]{0,30}\b(?:has\s+been\s+|is\s+|was\s+)?(?:granted|registered|approved|cleared)\b/i,
     'the MAREA trademark is presented as granted, registered, approved or cleared while clearance is NOT_GRANTED',
   ],
-  [/\bMAREA(?:\s+(?:NAV|HUB|AIS))?\s*[®™]/, 'a trademark symbol is attached to MAREA while clearance is NOT_GRANTED'],
+  [
+    /\bMAREA(?:\s+(?:NAV|HUB|AIS))?\s*[®™]/,
+    'a trademark symbol is attached to MAREA while clearance is NOT_GRANTED',
+  ],
 ];
 
 const AIS_RULES = [
-  [/\btransmits?\s+(?:your|its|the\s+vessel'?s?)\s+(?:position|location)/i, 'an AIS transmission claim is prohibited: MAREA AIS is receive-only'],
-  [/\btransmit\w*\s+(?:tu|su|la)\s+(?:posición|posición)/i, 'an AIS transmission claim is prohibited: MAREA AIS is receive-only'],
-  [/\b(?:is|es)\s+(?:an?\s+)?(?:AIS\s+)?transpondedor?\b/i, 'a transponder claim is prohibited: MAREA AIS is receive-only and is not a transponder'],
+  [
+    /\btransmits?\s+(?:your|its|the\s+vessel'?s?)\s+(?:position|location)/i,
+    'an AIS transmission claim is prohibited: MAREA AIS is receive-only',
+  ],
+  [
+    /\btransmit\w*\s+(?:tu|su|la)\s+(?:posición|posición)/i,
+    'an AIS transmission claim is prohibited: MAREA AIS is receive-only',
+  ],
+  [
+    /\b(?:is|es)\s+(?:an?\s+)?(?:AIS\s+)?transpondedor?\b/i,
+    'a transponder claim is prohibited: MAREA AIS is receive-only and is not a transponder',
+  ],
   [/\bDSC\b/, 'a DSC capability claim is prohibited: MAREA AIS is receive-only'],
-  [/\bguaranteed\s+detection\b/i, 'a guaranteed-detection claim is prohibited: AIS reception is incomplete by nature'],
-  [/\bdetección\s+garantizada\b/i, 'a guaranteed-detection claim is prohibited: AIS reception is incomplete by nature'],
+  [
+    /\bguaranteed\s+detection\b/i,
+    'a guaranteed-detection claim is prohibited: AIS reception is incomplete by nature',
+  ],
+  [
+    /\bdetección\s+garantizada\b/i,
+    'a guaranteed-detection claim is prohibited: AIS reception is incomplete by nature',
+  ],
   [/\bguaranteed\s+(?:reception|range)\b/i, 'a guaranteed reception/range claim is prohibited'],
 ];
 
 const NMEA_RULES = [
-  [/\bNMEA\s*2000\s+certified\b/i, 'an unapproved NMEA 2000 certification claim is prohibited (H-04)'],
-  [/\bcertificad[oa]\s+NMEA\s*2000\b/i, 'an unapproved NMEA 2000 certification claim is prohibited (H-04)'],
-  [/\bNMEA\s*2000\s+(?:certification|licen[cs]e)\s+(?:granted|approved|obtained)\b/i, 'an unapproved NMEA 2000 certification/licence claim is prohibited (H-04)'],
-  [/\bcompatible\s+(?:con\s+todos|with\s+all|with\s+any|with\s+every)\b/i, 'blanket NMEA 2000 compatibility claim is prohibited (H-04)'],
-  [/\bcompatible\s+con\s+(?:cualquier|cualesquiera)\b/i, 'blanket compatibility claim is prohibited (H-04)'],
+  [
+    /\bNMEA\s*2000\s+certified\b/i,
+    'an unapproved NMEA 2000 certification claim is prohibited (H-04)',
+  ],
+  [
+    /\bcertificad[oa]\s+NMEA\s*2000\b/i,
+    'an unapproved NMEA 2000 certification claim is prohibited (H-04)',
+  ],
+  [
+    /\bNMEA\s*2000\s+(?:certification|licen[cs]e)\s+(?:granted|approved|obtained)\b/i,
+    'an unapproved NMEA 2000 certification/licence claim is prohibited (H-04)',
+  ],
+  [
+    /\bcompatible\s+(?:con\s+todos|with\s+all|with\s+any|with\s+every)\b/i,
+    'blanket NMEA 2000 compatibility claim is prohibited (H-04)',
+  ],
+  [
+    /\bcompatible\s+con\s+(?:cualquier|cualesquiera)\b/i,
+    'blanket compatibility claim is prohibited (H-04)',
+  ],
   [/\buniversal(?:ly)?\s+compatible\b/i, 'blanket compatibility claim is prohibited (H-04)'],
   [/\bplug\s*(?:and|-|\s)\s*play\b/i, 'a plug-and-play compatibility claim is prohibited (H-04)'],
 ];
 
 const CHARTS_RULES = [
-  [/\bofficial\s+(?:nautical\s+)?charts?\s+(?:are\s+)?included\b/i, 'official charts presented as included is prohibited (D-01)'],
-  [/\bcartas\s+oficiales\s+incluidas\b/i, 'cartas oficiales presentadas como incluidas: prohibido (D-01)'],
-  [/\b(?:is|are)\s+(?:an?\s+)?(?:certified\s+)?ECDIS\b/i, 'an ECDIS claim is prohibited: NAV is a navigational aid (D-01)'],
-  [/\bECDIS[-\s](?:certified|compliant|approved|class|equivalent)\b/i, 'an ECDIS-class/compliant claim is prohibited (D-01)'],
+  [
+    /\bofficial\s+(?:nautical\s+)?charts?\s+(?:are\s+)?included\b/i,
+    'official charts presented as included is prohibited (D-01)',
+  ],
+  [
+    /\bcartas\s+oficiales\s+incluidas\b/i,
+    'cartas oficiales presentadas como incluidas: prohibido (D-01)',
+  ],
+  [
+    /\b(?:is|are)\s+(?:an?\s+)?(?:certified\s+)?ECDIS\b/i,
+    'an ECDIS claim is prohibited: NAV is a navigational aid (D-01)',
+  ],
+  [
+    /\bECDIS[-\s](?:certified|compliant|approved|class|equivalent)\b/i,
+    'an ECDIS-class/compliant claim is prohibited (D-01)',
+  ],
   [/\b(?:includes?|provides?)\s+(?:the\s+)?ECDIS\b/i, 'an ECDIS claim is prohibited (D-01)'],
-  [/\bofficial\s+ENC\s+(?:charts?\s+)?(?:are\s+)?included\b/i, 'official ENC presented as included is prohibited (D-01)'],
-  [/\bglobal\s+chart\s+coverage\b/i, 'global chart coverage is prohibited; every chart area is a licensed entitlement (D-01)'],
-  [/\bunlimited\s+(?:official\s+)?charts?\b/i, 'unlimited charts are prohibited; chart coverage is licensed per territory (D-01)'],
-  [/\bcobertura\s+global\b/i, 'cobertura global de cartas prohibida; es una licencia por territorio (D-01)'],
-  [/\bcartas\s+ilimitadas\b/i, 'cartas ilimitadas prohibidas; la cobertura es una licencia por territorio (D-01)'],
+  [
+    /\bofficial\s+ENC\s+(?:charts?\s+)?(?:are\s+)?included\b/i,
+    'official ENC presented as included is prohibited (D-01)',
+  ],
+  [
+    /\bglobal\s+chart\s+coverage\b/i,
+    'global chart coverage is prohibited; every chart area is a licensed entitlement (D-01)',
+  ],
+  [
+    /\bunlimited\s+(?:official\s+)?charts?\b/i,
+    'unlimited charts are prohibited; chart coverage is licensed per territory (D-01)',
+  ],
+  [
+    /\bcobertura\s+global\b/i,
+    'cobertura global de cartas prohibida; es una licencia por territorio (D-01)',
+  ],
+  [
+    /\bcartas\s+ilimitadas\b/i,
+    'cartas ilimitadas prohibidas; la cobertura es una licencia por territorio (D-01)',
+  ],
 ];
 
 const COMPATIBILITY_RULES = [
-  [/\bworks?\s+with\s+any\s+boat\b/i, 'blanket compatibility claim is prohibited; compatibility is per device, firmware and direction'],
-  [/\bcompatible\s+with\s+any\s+(?:boat|vessel|equipment)\b/i, 'blanket compatibility claim is prohibited'],
-  [/\bcompatible\s+con\s+cualquier\s+(?:barco|embarcación|equipo)\b/i, 'blanket compatibility claim is prohibited'],
+  [
+    /\bworks?\s+with\s+any\s+boat\b/i,
+    'blanket compatibility claim is prohibited; compatibility is per device, firmware and direction',
+  ],
+  [
+    /\bcompatible\s+with\s+any\s+(?:boat|vessel|equipment)\b/i,
+    'blanket compatibility claim is prohibited',
+  ],
+  [
+    /\bcompatible\s+con\s+cualquier\s+(?:barco|embarcación|equipo)\b/i,
+    'blanket compatibility claim is prohibited',
+  ],
   [/\buniversal\s+compatibility\b/i, 'blanket compatibility claim is prohibited'],
-  [/\bfully\s+compatible\b/i, 'blanket compatibility claim is prohibited; compatibility is evidence per device and firmware'],
+  [
+    /\bfully\s+compatible\b/i,
+    'blanket compatibility claim is prohibited; compatibility is evidence per device and firmware',
+  ],
   [/\b100%\s+compatible\b/i, 'a 100% compatibility claim is prohibited'],
 ];
 
 const NAMING_RULES = [
-  [/\bMAREA-(?:NAV|HUB|AIS)\b/, 'hyphenated family name is prohibited; the canonical form is "MAREA <FAMILY>"'],
-  [/\bMarea\s+(?:Nav|Hub|Ais)\b/, 'title-case family name is prohibited; the canonical form is "MAREA <FAMILY>"'],
-  [/\bMAREA(?:NAV|HUB|AIS)\b/, 'concatenated family name is prohibited; the canonical form is "MAREA <FAMILY>"'],
+  [
+    /\bMAREA-(?:NAV|HUB|AIS)\b/,
+    'hyphenated family name is prohibited; the canonical form is "MAREA <FAMILY>"',
+  ],
+  [
+    /\bMarea\s+(?:Nav|Hub|Ais)\b/,
+    'title-case family name is prohibited; the canonical form is "MAREA <FAMILY>"',
+  ],
+  [
+    /\bMAREA(?:NAV|HUB|AIS)\b/,
+    'concatenated family name is prohibited; the canonical form is "MAREA <FAMILY>"',
+  ],
   ...FORBIDDEN_FAMILY_NAMES.map((familyName) => [
     new RegExp(`\\b${familyName.replace(/\s+/g, '\\s+')}\\b`),
     `invented family name ${JSON.stringify(familyName)} is prohibited by the brand contract`,
@@ -386,7 +523,8 @@ for (const relativePath of SCOPED_FILES) {
   try {
     texts.set(relativePath, readFileSync(resolve(root, relativePath), 'utf8'));
   } catch (error) {
-    if (error.code !== 'ENOENT') unreadable.push(`${relativePath}: cannot be read (${error.message})`);
+    if (error.code !== 'ENOENT')
+      unreadable.push(`${relativePath}: cannot be read (${error.message})`);
   }
 }
 
@@ -428,7 +566,9 @@ function requireContract(record) {
     return null;
   }
   if (!contract) {
-    record.failures.push(`${JSON_CONTRACT} is missing; the product-definition contract is required`);
+    record.failures.push(
+      `${JSON_CONTRACT} is missing; the product-definition contract is required`,
+    );
     return null;
   }
   return contract;
@@ -459,7 +599,10 @@ function listItemIsNegative(lines, index) {
     if (/^\s*(?:[-*+]|\d+\.)\s+/.test(line)) continue;
     // The lead-in of a bullet list ("It does not include:", "No incluye:")
     // governs every following item until the next non-bullet line.
-    return /:\s*$/.test(line) && (EXEMPT_CONTEXT.test(line) || BAD_MARKERS.test(line) || TABLE_OR_SECTION_MARKER.test(line));
+    return (
+      /:\s*$/.test(line) &&
+      (EXEMPT_CONTEXT.test(line) || BAD_MARKERS.test(line) || TABLE_OR_SECTION_MARKER.test(line))
+    );
   }
   return false;
 }
@@ -506,7 +649,13 @@ function detectLineViolations(line, rules) {
   return violations;
 }
 
-function collectFileViolations(record, relativePath, text, rules, { tolerant, wideContext = false, skipQuestions = false }) {
+function collectFileViolations(
+  record,
+  relativePath,
+  text,
+  rules,
+  { tolerant, wideContext = false, skipQuestions = false },
+) {
   const lines = text.split(/\r?\n/);
   let inFence = false;
   lines.forEach((line, index) => {
@@ -582,13 +731,21 @@ function collectScopedViolations(record, rules, { docTolerant = true, copyTolera
   for (const file of SCOPED_DOC_FILES) {
     const text = textOf(file);
     if (text !== null) {
-      collectFileViolations(record, file, text, rules, { tolerant: docTolerant, wideContext: true, skipQuestions: true });
+      collectFileViolations(record, file, text, rules, {
+        tolerant: docTolerant,
+        wideContext: true,
+        skipQuestions: true,
+      });
     }
   }
   for (const file of SCOPED_COPY_FILES) {
     const text = textOf(file);
     if (text !== null) {
-      collectFileViolations(record, file, text, rules, { tolerant: copyTolerant, wideContext: false, skipQuestions: true });
+      collectFileViolations(record, file, text, rules, {
+        tolerant: copyTolerant,
+        wideContext: false,
+        skipQuestions: true,
+      });
     }
   }
 }
@@ -619,7 +776,9 @@ check('files.required', (record) => {
 check('files.scope', (record) => {
   for (const relativePath of SCOPED_FILES) {
     if (!relativePath.startsWith(PRODUCTS_DIR)) {
-      record.failures.push(`${relativePath} is outside ${PRODUCTS_DIR}; the validator must not scan the rest of the repository`);
+      record.failures.push(
+        `${relativePath} is outside ${PRODUCTS_DIR}; the validator must not scan the rest of the repository`,
+      );
     }
   }
 });
@@ -632,7 +791,9 @@ check('json.contract', (record) => {
     if (!isFilled(contract[key])) record.failures.push(`contract.${key} is missing or empty`);
   }
   if (contract.status !== 'INTERNAL_PRODUCT_DEFINITION_CONTRACT') {
-    record.failures.push(`status must be "INTERNAL_PRODUCT_DEFINITION_CONTRACT", found ${JSON.stringify(contract.status)}`);
+    record.failures.push(
+      `status must be "INTERNAL_PRODUCT_DEFINITION_CONTRACT", found ${JSON.stringify(contract.status)}`,
+    );
   }
   if (contract.milestone !== 'MC-05') {
     record.failures.push(`milestone must be "MC-05", found ${JSON.stringify(contract.milestone)}`);
@@ -640,21 +801,36 @@ check('json.contract', (record) => {
   if (contract.notACommerceCatalog !== true)
     record.failures.push('notACommerceCatalog must be true: this contract is not a shop catalogue');
   if (contract.notTheFutureCommerceDataModel !== true)
-    record.failures.push('notTheFutureCommerceDataModel must be true: the MC-16 commerce data model is out of scope');
+    record.failures.push(
+      'notTheFutureCommerceDataModel must be true: the MC-16 commerce data model is out of scope',
+    );
   if (contract.publicationState !== 'INTERNAL_ONLY')
-    record.failures.push(`publicationState must be "INTERNAL_ONLY", found ${JSON.stringify(contract.publicationState)}`);
+    record.failures.push(
+      `publicationState must be "INTERNAL_ONLY", found ${JSON.stringify(contract.publicationState)}`,
+    );
   if (contract.lifecycleDecision !== 'D-007') {
-    record.failures.push(`lifecycleDecision must be "D-007" (the lifecycle reconciliation decision in docs/marea/execution/DECISION-LOG.md), found ${JSON.stringify(contract.lifecycleDecision)}`);
+    record.failures.push(
+      `lifecycleDecision must be "D-007" (the lifecycle reconciliation decision in docs/marea/execution/DECISION-LOG.md), found ${JSON.stringify(contract.lifecycleDecision)}`,
+    );
   }
 
   const vocabulary = contract.lifecycleVocabulary;
-  if (!Array.isArray(vocabulary) || vocabulary.length !== LIFECYCLE_VOCABULARY.length || !LIFECYCLE_VOCABULARY.every((state) => vocabulary.includes(state)) || new Set(vocabulary).size !== vocabulary.length) {
-    record.failures.push(`lifecycleVocabulary must be exactly the seven binding states: ${LIFECYCLE_VOCABULARY.join(', ')}`);
+  if (
+    !Array.isArray(vocabulary) ||
+    vocabulary.length !== LIFECYCLE_VOCABULARY.length ||
+    !LIFECYCLE_VOCABULARY.every((state) => vocabulary.includes(state)) ||
+    new Set(vocabulary).size !== vocabulary.length
+  ) {
+    record.failures.push(
+      `lifecycleVocabulary must be exactly the seven binding states: ${LIFECYCLE_VOCABULARY.join(', ')}`,
+    );
   }
 
   const mapping = contract.lifecycleMapping;
   if (!Array.isArray(mapping) || mapping.length === 0) {
-    record.failures.push('lifecycleMapping must be a non-empty array of {proposed, binding} entries');
+    record.failures.push(
+      'lifecycleMapping must be a non-empty array of {proposed, binding} entries',
+    );
   } else {
     const covered = [];
     for (const entry of mapping) {
@@ -664,16 +840,21 @@ check('json.contract', (record) => {
       }
       covered.push(entry.proposed);
       if (!LIFECYCLE_VOCABULARY.includes(entry.binding)) {
-        record.failures.push(`lifecycleMapping maps ${entry.proposed} to ${entry.binding}, which is not in the binding vocabulary`);
+        record.failures.push(
+          `lifecycleMapping maps ${entry.proposed} to ${entry.binding}, which is not in the binding vocabulary`,
+        );
       }
     }
     for (const state of MASTER_PROMPT_STATES) {
-      if (!covered.includes(state)) record.failures.push(`lifecycleMapping does not cover the Master-Prompt state ${state}`);
+      if (!covered.includes(state))
+        record.failures.push(`lifecycleMapping does not cover the Master-Prompt state ${state}`);
     }
   }
 
   if (!isRecord(contract.readinessDimensions)) {
-    record.failures.push('readinessDimensions must be an object mapping each dimension to its allowed values');
+    record.failures.push(
+      'readinessDimensions must be an object mapping each dimension to its allowed values',
+    );
   } else {
     const actualKeys = Object.keys(contract.readinessDimensions).sort();
     const expectedKeys = Object.keys(READINESS_DIMENSIONS).sort();
@@ -699,7 +880,9 @@ check('json.contract', (record) => {
     for (const [key, expected] of Object.entries(GLOBAL_RESTRICTIONS)) {
       const actual = contract.globalRestrictions[key];
       if (actual !== expected) {
-        record.failures.push(`globalRestrictions.${key} must be ${JSON.stringify(expected)}, found ${JSON.stringify(actual)}`);
+        record.failures.push(
+          `globalRestrictions.${key} must be ${JSON.stringify(expected)}, found ${JSON.stringify(actual)}`,
+        );
       }
     }
   }
@@ -713,7 +896,9 @@ check('json.products', (record) => {
   const products = contract.products;
   if (!Array.isArray(products)) return record.failures.push('products must be an array');
   if (products.length !== PRODUCTS.length) {
-    record.failures.push(`products has ${products.length} entries; expected exactly ${PRODUCTS.length} (NAV, HUB, AIS)`);
+    record.failures.push(
+      `products has ${products.length} entries; expected exactly ${PRODUCTS.length} (NAV, HUB, AIS)`,
+    );
   }
   const ids = products.map((product) => product?.id);
   if (new Set(ids).size !== ids.length) record.failures.push('product ids are not unique');
@@ -724,13 +909,19 @@ check('json.products', (record) => {
       continue;
     }
     if (product.displayName !== expected.displayName) {
-      record.failures.push(`product ${expected.id}: displayName must be exactly ${JSON.stringify(expected.displayName)}, found ${JSON.stringify(product.displayName)}`);
+      record.failures.push(
+        `product ${expected.id}: displayName must be exactly ${JSON.stringify(expected.displayName)}, found ${JSON.stringify(product.displayName)}`,
+      );
     }
     if (product.type !== expected.type) {
-      record.failures.push(`product ${expected.id}: type must be ${JSON.stringify(expected.type)}, found ${JSON.stringify(product.type)}`);
+      record.failures.push(
+        `product ${expected.id}: type must be ${JSON.stringify(expected.type)}, found ${JSON.stringify(product.type)}`,
+      );
     }
     if (product.lifecycleState !== 'DEFINED') {
-      record.failures.push(`product ${expected.id}: lifecycleState must be "DEFINED" at MC-05, found ${JSON.stringify(product.lifecycleState)}`);
+      record.failures.push(
+        `product ${expected.id}: lifecycleState must be "DEFINED" at MC-05, found ${JSON.stringify(product.lifecycleState)}`,
+      );
     }
     if (!isRecord(product.readiness)) {
       record.failures.push(`product ${expected.id}: readiness is missing`);
@@ -740,35 +931,59 @@ check('json.products', (record) => {
         if (!isFilled(value)) {
           record.failures.push(`product ${expected.id}: readiness.${dimension} is missing`);
         } else if (!allowed.includes(value)) {
-          record.failures.push(`product ${expected.id}: readiness.${dimension} must be one of [${allowed.join(', ')}], found ${JSON.stringify(value)}`);
+          record.failures.push(
+            `product ${expected.id}: readiness.${dimension} must be one of [${allowed.join(', ')}], found ${JSON.stringify(value)}`,
+          );
         }
       }
       for (const [dimension, required] of Object.entries(REQUIRED_READINESS_VALUES)) {
         if (product.readiness[dimension] !== required) {
-          record.failures.push(`product ${expected.id}: readiness.${dimension} must be ${required} at MC-05, found ${JSON.stringify(product.readiness[dimension])}`);
+          record.failures.push(
+            `product ${expected.id}: readiness.${dimension} must be ${required} at MC-05, found ${JSON.stringify(product.readiness[dimension])}`,
+          );
         }
       }
       const productValues = PRODUCT_READINESS_VALUES[expected.id] ?? {};
       for (const [dimension, required] of Object.entries(productValues)) {
         if (product.readiness[dimension] !== required) {
-          record.failures.push(`product ${expected.id}: readiness.${dimension} must be ${required} per the dossier readiness table, found ${JSON.stringify(product.readiness[dimension])}`);
+          record.failures.push(
+            `product ${expected.id}: readiness.${dimension} must be ${required} per the dossier readiness table, found ${JSON.stringify(product.readiness[dimension])}`,
+          );
         }
       }
-      if (expected.type === 'HARDWARE' && !HARDWARE_SPECIFIC_DIMENSION_VALUES.includes(product.readiness.hardware)) {
-        record.failures.push(`product ${expected.id}: a hardware product must carry a hardware-specific readiness value, found ${JSON.stringify(product.readiness.hardware)}`);
+      if (
+        expected.type === 'HARDWARE' &&
+        !HARDWARE_SPECIFIC_DIMENSION_VALUES.includes(product.readiness.hardware)
+      ) {
+        record.failures.push(
+          `product ${expected.id}: a hardware product must carry a hardware-specific readiness value, found ${JSON.stringify(product.readiness.hardware)}`,
+        );
       }
     }
-    if (!isRecord(product.copy) || product.copy.es !== expected.copy.es || product.copy.en !== expected.copy.en) {
-      record.failures.push(`product ${expected.id}: copy.es/copy.en must reference ${expected.copy.es} and ${expected.copy.en}`);
+    if (
+      !isRecord(product.copy) ||
+      product.copy.es !== expected.copy.es ||
+      product.copy.en !== expected.copy.en
+    ) {
+      record.failures.push(
+        `product ${expected.id}: copy.es/copy.en must reference ${expected.copy.es} and ${expected.copy.en}`,
+      );
     }
     if (!Array.isArray(product.mc02Blockers) || product.mc02Blockers.length === 0) {
       record.failures.push(`product ${expected.id}: mc02Blockers must be a non-empty array`);
     } else {
-      const invalid = product.mc02Blockers.filter((entry) => typeof entry !== 'string' || !/^[A-Z]-\d{2}$/.test(entry));
-      if (invalid.length) record.failures.push(`product ${expected.id}: mc02Blockers contains invalid ids: ${invalid.map((entry) => JSON.stringify(entry)).join(', ')}`);
+      const invalid = product.mc02Blockers.filter(
+        (entry) => typeof entry !== 'string' || !/^[A-Z]-\d{2}$/.test(entry),
+      );
+      if (invalid.length)
+        record.failures.push(
+          `product ${expected.id}: mc02Blockers contains invalid ids: ${invalid.map((entry) => JSON.stringify(entry)).join(', ')}`,
+        );
       for (const blocker of MC02_MINIMUM_BLOCKERS[expected.id] ?? []) {
         if (!product.mc02Blockers.includes(blocker)) {
-          record.failures.push(`product ${expected.id}: mc02Blockers is missing the mandatory blocker ${blocker}`);
+          record.failures.push(
+            `product ${expected.id}: mc02Blockers is missing the mandatory blocker ${blocker}`,
+          );
         }
       }
     }
@@ -788,10 +1003,13 @@ check('json.editions', (record) => {
       continue;
     }
     if (editions.length !== expected.editions.length) {
-      record.failures.push(`product ${expected.id}: ${editions.length} editions declared; expected exactly ${expected.editions.length}`);
+      record.failures.push(
+        `product ${expected.id}: ${editions.length} editions declared; expected exactly ${expected.editions.length}`,
+      );
     }
     const editionIds = editions.map((edition) => edition?.id);
-    if (new Set(editionIds).size !== editionIds.length) record.failures.push(`product ${expected.id}: edition ids are not unique`);
+    if (new Set(editionIds).size !== editionIds.length)
+      record.failures.push(`product ${expected.id}: edition ids are not unique`);
     for (const wanted of expected.editions) {
       const edition = editions.find((entry) => entry?.id === wanted.id);
       if (!edition) {
@@ -799,50 +1017,90 @@ check('json.editions', (record) => {
         continue;
       }
       if (edition.displayName !== wanted.displayName) {
-        record.failures.push(`product ${expected.id}: edition ${wanted.id} displayName must be exactly ${JSON.stringify(wanted.displayName)}, found ${JSON.stringify(edition.displayName)}`);
+        record.failures.push(
+          `product ${expected.id}: edition ${wanted.id} displayName must be exactly ${JSON.stringify(wanted.displayName)}, found ${JSON.stringify(edition.displayName)}`,
+        );
       }
       const price = edition.priceHypothesis;
       if (!isRecord(price)) {
-        record.failures.push(`product ${expected.id}: edition ${wanted.id} priceHypothesis is missing`);
+        record.failures.push(
+          `product ${expected.id}: edition ${wanted.id} priceHypothesis is missing`,
+        );
         continue;
       }
       if (price.status !== PRICE_HYPOTHESIS_RULES.status) {
-        record.failures.push(`product ${expected.id}: edition ${wanted.id} priceHypothesis.status must be "${PRICE_HYPOTHESIS_RULES.status}", found ${JSON.stringify(price.status)}`);
+        record.failures.push(
+          `product ${expected.id}: edition ${wanted.id} priceHypothesis.status must be "${PRICE_HYPOTHESIS_RULES.status}", found ${JSON.stringify(price.status)}`,
+        );
       }
       if (price.amount !== wanted.amount) {
-        record.failures.push(`product ${expected.id}: edition ${wanted.id} price hypothesis must be ${wanted.amount} EUR, found ${JSON.stringify(price.amount)}`);
+        record.failures.push(
+          `product ${expected.id}: edition ${wanted.id} price hypothesis must be ${wanted.amount} EUR, found ${JSON.stringify(price.amount)}`,
+        );
       }
       if (price.currency !== PRICE_HYPOTHESIS_RULES.currency) {
-        record.failures.push(`product ${expected.id}: edition ${wanted.id} priceHypothesis.currency must be "EUR", found ${JSON.stringify(price.currency)}`);
+        record.failures.push(
+          `product ${expected.id}: edition ${wanted.id} priceHypothesis.currency must be "EUR", found ${JSON.stringify(price.currency)}`,
+        );
       }
       if (price.period !== wanted.period) {
-        record.failures.push(`product ${expected.id}: edition ${wanted.id} priceHypothesis.period must be "${wanted.period}", found ${JSON.stringify(price.period)}`);
+        record.failures.push(
+          `product ${expected.id}: edition ${wanted.id} priceHypothesis.period must be "${wanted.period}", found ${JSON.stringify(price.period)}`,
+        );
       }
-      if (!isFilled(price.vatBasis)) record.failures.push(`product ${expected.id}: edition ${wanted.id} priceHypothesis.vatBasis is missing`);
-      if (price.validationRequired !== true) record.failures.push(`product ${expected.id}: edition ${wanted.id} priceHypothesis.validationRequired must be true`);
-      if (!Array.isArray(price.blockers)) record.failures.push(`product ${expected.id}: edition ${wanted.id} priceHypothesis.blockers must be an array`);
+      if (!isFilled(price.vatBasis))
+        record.failures.push(
+          `product ${expected.id}: edition ${wanted.id} priceHypothesis.vatBasis is missing`,
+        );
+      if (price.validationRequired !== true)
+        record.failures.push(
+          `product ${expected.id}: edition ${wanted.id} priceHypothesis.validationRequired must be true`,
+        );
+      if (!Array.isArray(price.blockers))
+        record.failures.push(
+          `product ${expected.id}: edition ${wanted.id} priceHypothesis.blockers must be an array`,
+        );
       // An edition is never approved at MC-05. The AIS Connected verdict is
       // CONDITIONAL / NOT_YET_JUSTIFIED in the AIS dossier §3 and must not be
       // flattened into an approved edition in the machine-readable contract.
       const verdict = edition.editionVerdict;
       if (!isRecord(verdict)) {
-        record.failures.push(`product ${expected.id}: edition ${wanted.id} editionVerdict is missing; no edition may be flattened to "approved"`);
+        record.failures.push(
+          `product ${expected.id}: edition ${wanted.id} editionVerdict is missing; no edition may be flattened to "approved"`,
+        );
       } else {
-        if (verdict.status !== 'CONDITIONAL') {
-          record.failures.push(`product ${expected.id}: edition ${wanted.id} editionVerdict.status must be "CONDITIONAL" at MC-05, found ${JSON.stringify(verdict.status)}`);
+        const allowedVerdictStatuses =
+          wanted.id === 'AIS-CONNECTED' ? ['CONDITIONAL'] : ['DEFINED'];
+        if (!allowedVerdictStatuses.includes(verdict.status)) {
+          record.failures.push(
+            `product ${expected.id}: edition ${wanted.id} editionVerdict.status must be ${allowedVerdictStatuses.map((value) => JSON.stringify(value)).join(' or ')} at MC-05, found ${JSON.stringify(verdict.status)}`,
+          );
+        }
+        if (verdict.publicationConditional !== true) {
+          record.failures.push(
+            `product ${expected.id}: edition ${wanted.id} editionVerdict.publicationConditional must be true; no edition is publishable at MC-05`,
+          );
         }
         if (['APPROVED', 'JUSTIFIED'].includes(verdict.verdict)) {
-          record.failures.push(`product ${expected.id}: edition ${wanted.id} must not be presented as ${verdict.verdict}`);
+          record.failures.push(
+            `product ${expected.id}: edition ${wanted.id} must not be presented as ${verdict.verdict}`,
+          );
         }
         if (!isFilled(verdict.rationale)) {
-          record.failures.push(`product ${expected.id}: edition ${wanted.id} editionVerdict.rationale is missing or empty`);
+          record.failures.push(
+            `product ${expected.id}: edition ${wanted.id} editionVerdict.rationale is missing or empty`,
+          );
         }
         if (!Array.isArray(verdict.evidenceRefs) || verdict.evidenceRefs.length === 0) {
-          record.failures.push(`product ${expected.id}: edition ${wanted.id} editionVerdict.evidenceRefs must be a non-empty array`);
+          record.failures.push(
+            `product ${expected.id}: edition ${wanted.id} editionVerdict.evidenceRefs must be a non-empty array`,
+          );
         } else {
           for (const reference of verdict.evidenceRefs) {
             if (!evidenceRefExists(reference)) {
-              record.failures.push(`product ${expected.id}: edition ${wanted.id} editionVerdict.evidenceRefs references ${JSON.stringify(reference)}, which does not resolve to a scoped document`);
+              record.failures.push(
+                `product ${expected.id}: edition ${wanted.id} editionVerdict.evidenceRefs references ${JSON.stringify(reference)}, which does not resolve to a scoped document`,
+              );
             }
           }
         }
@@ -854,14 +1112,22 @@ check('json.editions', (record) => {
     ? aisProduct.editions.find((edition) => edition?.id === 'AIS-CONNECTED')
     : null;
   const aisVerdict = aisConnected?.editionVerdict;
-  if (!isRecord(aisVerdict) || aisVerdict.status !== 'CONDITIONAL' || aisVerdict.verdict !== 'NOT_YET_JUSTIFIED') {
-    record.failures.push(`${JSON_CONTRACT}: AIS-CONNECTED editionVerdict must be CONDITIONAL / NOT_YET_JUSTIFIED, per MAREA-AIS-COMMERCIAL-SPEC.md §3`);
+  if (
+    !isRecord(aisVerdict) ||
+    aisVerdict.status !== 'CONDITIONAL' ||
+    aisVerdict.verdict !== 'NOT_YET_JUSTIFIED'
+  ) {
+    record.failures.push(
+      `${JSON_CONTRACT}: AIS-CONNECTED editionVerdict must be CONDITIONAL / NOT_YET_JUSTIFIED, per MAREA-AIS-COMMERCIAL-SPEC.md §3`,
+    );
   }
   const aisDossier = textOf(PRODUCTS[2].dossier);
   if (aisDossier !== null) {
     const normalized = normalizeForCheck(aisDossier);
     if (!normalized.includes('conditional') || !normalized.includes('not yet justified')) {
-      record.failures.push(`${PRODUCTS[2].dossier}: no longer records the Connected edition verdict as CONDITIONAL / not yet justified`);
+      record.failures.push(
+        `${PRODUCTS[2].dossier}: no longer records the Connected edition verdict as CONDITIONAL / not yet justified`,
+      );
     }
   }
 });
@@ -877,28 +1143,42 @@ function checkFieldEntry(record, productId, key, entry) {
   const prefix = `product ${productId}: fields.${key}`;
   if (!isRecord(entry)) return record.failures.push(`${prefix} is missing or not an object`);
   if (!['COMPLETE', 'OPEN', 'BLOCKED'].includes(entry.status)) {
-    record.failures.push(`${prefix}.status must be COMPLETE, OPEN or BLOCKED, found ${JSON.stringify(entry.status)}`);
+    record.failures.push(
+      `${prefix}.status must be COMPLETE, OPEN or BLOCKED, found ${JSON.stringify(entry.status)}`,
+    );
   }
   if (!EVIDENCE_CLASSES.includes(entry.evidenceClass)) {
-    record.failures.push(`${prefix}.evidenceClass must be one of [${EVIDENCE_CLASSES.join(', ')}], found ${JSON.stringify(entry.evidenceClass)}`);
+    record.failures.push(
+      `${prefix}.evidenceClass must be one of [${EVIDENCE_CLASSES.join(', ')}], found ${JSON.stringify(entry.evidenceClass)}`,
+    );
   }
   if (!isFilled(entry.summary)) {
     record.failures.push(`${prefix}.summary is missing or empty`);
   } else {
     const sentences = countSentences(entry.summary);
-    if (entry.summary.trim().length < 25) record.failures.push(`${prefix}.summary is too short to be a substantive answer`);
+    if (entry.summary.trim().length < 25)
+      record.failures.push(`${prefix}.summary is too short to be a substantive answer`);
     if (sentences < 1) record.failures.push(`${prefix}.summary must contain at least one sentence`);
-    if (sentences > 4) record.failures.push(`${prefix}.summary must contain at most 4 sentences, found ${sentences}`);
+    if (sentences > 4)
+      record.failures.push(
+        `${prefix}.summary must contain at most 4 sentences, found ${sentences}`,
+      );
   }
   if (!Array.isArray(entry.evidenceRefs) || entry.evidenceRefs.length === 0) {
     record.failures.push(`${prefix}.evidenceRefs must be a non-empty array`);
   } else if (!entry.evidenceRefs.every(isFilled)) {
     record.failures.push(`${prefix}.evidenceRefs contains an empty entry`);
   }
-  if (!isFilled(entry.ownerFunction)) record.failures.push(`${prefix}.ownerFunction is missing or empty`);
+  if (!isFilled(entry.ownerFunction))
+    record.failures.push(`${prefix}.ownerFunction is missing or empty`);
   if (!Array.isArray(entry.blockers)) record.failures.push(`${prefix}.blockers must be an array`);
-  if (!isFilled(entry.readinessDimension) || !Object.hasOwn(READINESS_DIMENSIONS, entry.readinessDimension)) {
-    record.failures.push(`${prefix}.readinessDimension must name one of [${Object.keys(READINESS_DIMENSIONS).join(', ')}], found ${JSON.stringify(entry.readinessDimension)}`);
+  if (
+    !isFilled(entry.readinessDimension) ||
+    !Object.hasOwn(READINESS_DIMENSIONS, entry.readinessDimension)
+  ) {
+    record.failures.push(
+      `${prefix}.readinessDimension must name one of [${Object.keys(READINESS_DIMENSIONS).join(', ')}], found ${JSON.stringify(entry.readinessDimension)}`,
+    );
   }
   if (entry.status === 'BLOCKED' && entry.evidenceClass !== 'BLOCKED') {
     record.failures.push(`${prefix}: a BLOCKED field must carry evidenceClass BLOCKED`);
@@ -906,7 +1186,11 @@ function checkFieldEntry(record, productId, key, entry) {
   if (entry.status === 'OPEN' && entry.evidenceClass !== 'OPEN') {
     record.failures.push(`${prefix}: an OPEN field must carry evidenceClass OPEN`);
   }
-  if (isFilled(entry.summary) && /compatib/i.test(entry.summary) && (!Array.isArray(entry.evidenceRefs) || entry.evidenceRefs.length === 0)) {
+  if (
+    isFilled(entry.summary) &&
+    /compatib/i.test(entry.summary) &&
+    (!Array.isArray(entry.evidenceRefs) || entry.evidenceRefs.length === 0)
+  ) {
     record.failures.push(`${prefix}: a compatibility assertion must carry an evidence reference`);
   }
 }
@@ -924,13 +1208,18 @@ check('json.fields', (record) => {
     const actualKeys = Object.keys(product.fields);
     for (const key of FIELD_KEYS) {
       if (!Object.hasOwn(product.fields, key)) {
-        record.failures.push(`product ${expected.id}: the 24-field contract is missing field "${key}"`);
+        record.failures.push(
+          `product ${expected.id}: the 24-field contract is missing field "${key}"`,
+        );
         continue;
       }
       checkFieldEntry(record, expected.id, key, product.fields[key]);
     }
     const unexpected = actualKeys.filter((key) => !FIELD_KEYS.includes(key));
-    if (unexpected.length) record.failures.push(`product ${expected.id}: fields contains non-canonical keys: ${unexpected.join(', ')}`);
+    if (unexpected.length)
+      record.failures.push(
+        `product ${expected.id}: fields contains non-canonical keys: ${unexpected.join(', ')}`,
+      );
   }
 });
 
@@ -947,7 +1236,9 @@ check('json.traceability', (record) => {
       for (const reference of entry.evidenceRefs) {
         references += 1;
         if (!evidenceRefExists(reference)) {
-          record.failures.push(`product ${product.id}: fields.${key}.evidenceRefs references ${JSON.stringify(reference)}, which does not resolve to a scoped document`);
+          record.failures.push(
+            `product ${product.id}: fields.${key}.evidenceRefs references ${JSON.stringify(reference)}, which does not resolve to a scoped document`,
+          );
         }
       }
     }
@@ -959,12 +1250,16 @@ check('placeholders', (record) => {
   const placeholder = /(?<![A-Za-z])TBD(?![A-Za-z])/i;
   for (const [relativePath, text] of texts) {
     if (relativePath === JSON_CONTRACT) {
-      if (placeholder.test(text)) record.failures.push(`${relativePath}: contains the prohibited placeholder "TBD"`);
+      if (placeholder.test(text))
+        record.failures.push(`${relativePath}: contains the prohibited placeholder "TBD"`);
       continue;
     }
     // "TBD" is prohibited everywhere (README §5); customer-facing copy included.
     text.split(/\r?\n/).forEach((line, index) => {
-      if (placeholder.test(line)) record.failures.push(`${relativePath}:${index + 1}: contains the prohibited placeholder "TBD"`);
+      if (placeholder.test(line))
+        record.failures.push(
+          `${relativePath}:${index + 1}: contains the prohibited placeholder "TBD"`,
+        );
     });
   }
 });
@@ -980,9 +1275,13 @@ check('dossiers.fields', (record) => {
       const match = /^\s{0,3}#{1,6}\s*F(\d{2})\b/.exec(line);
       if (match) present.add(Number(match[1]));
     }
-    const missing = FIELD_KEYS.map((_key, index) => index + 1).filter((number) => !present.has(number));
+    const missing = FIELD_KEYS.map((_key, index) => index + 1).filter(
+      (number) => !present.has(number),
+    );
     if (missing.length) {
-      record.failures.push(`${product.dossier} is missing the F-heading(s): ${missing.map((number) => `F${String(number).padStart(2, '0')}`).join(', ')}`);
+      record.failures.push(
+        `${product.dossier} is missing the F-heading(s): ${missing.map((number) => `F${String(number).padStart(2, '0')}`).join(', ')}`,
+      );
     }
   }
 });
@@ -991,35 +1290,48 @@ check('dossiers.fields', (record) => {
 
 check('editions.comparison', (record) => {
   const text = textOf(EDITIONS_DOC);
-  if (text === null) return record.failures.push(`${EDITIONS_DOC} is missing; the edition comparison is required`);
+  if (text === null)
+    return record.failures.push(`${EDITIONS_DOC} is missing; the edition comparison is required`);
   const normalized = text.toLowerCase().replace(/\s+/g, ' ');
   for (const product of PRODUCTS) {
     if (!containsToken(normalized, product.displayName.toLowerCase())) {
-      record.failures.push(`${EDITIONS_DOC}: product ${product.displayName} is not present in the edition comparison`);
+      record.failures.push(
+        `${EDITIONS_DOC}: product ${product.displayName} is not present in the edition comparison`,
+      );
     }
     for (const edition of product.editions) {
       if (!containsToken(normalized, edition.displayName.toLowerCase())) {
-        record.failures.push(`${EDITIONS_DOC}: edition ${edition.displayName} is missing from the edition comparison`);
+        record.failures.push(
+          `${EDITIONS_DOC}: edition ${edition.displayName} is missing from the edition comparison`,
+        );
       }
       if (!containsToken(normalized, edition.id.toLowerCase())) {
-        record.failures.push(`${EDITIONS_DOC}: edition id ${edition.id} does not appear in the edition comparison; D4 is the edition authority and must name every edition id`);
+        record.failures.push(
+          `${EDITIONS_DOC}: edition id ${edition.id} does not appear in the edition comparison; D4 is the edition authority and must name every edition id`,
+        );
       }
     }
   }
   // D4 §1.3 is the edition-id authority: no seventh edition id may appear.
-  const knownEditionIds = PRODUCTS.flatMap((product) => product.editions.map((edition) => edition.id));
+  const knownEditionIds = PRODUCTS.flatMap((product) =>
+    product.editions.map((edition) => edition.id),
+  );
   // Filenames such as MAREA-NAV-COMMERCIAL-SPEC.md are not edition ids: a
   // candidate id must not be followed by another name segment or a file suffix.
   for (const match of text.matchAll(/\b(?:NAV|HUB|AIS)-[A-Z][A-Z0-9]+\b(?![.\-])/g)) {
     if (!knownEditionIds.includes(match[0])) {
-      record.failures.push(`${EDITIONS_DOC}: unknown edition id ${match[0]} appears in the edition authority; only the six MC-05 edition ids may exist`);
+      record.failures.push(
+        `${EDITIONS_DOC}: unknown edition id ${match[0]} appears in the edition authority; only the six MC-05 edition ids may exist`,
+      );
     }
   }
   // The AIS Connected verdict must be recorded, not flattened.
   const normalizedAuthority = normalizeForCheck(text);
   for (const phrase of ['conditional', 'not yet justified']) {
     if (!normalizedAuthority.includes(phrase)) {
-      record.failures.push(`${EDITIONS_DOC}: does not record the AIS-CONNECTED verdict as CONDITIONAL / not yet justified (missing ${JSON.stringify(phrase)})`);
+      record.failures.push(
+        `${EDITIONS_DOC}: does not record the AIS-CONNECTED verdict as CONDITIONAL / not yet justified (missing ${JSON.stringify(phrase)})`,
+      );
     }
   }
 });
@@ -1062,7 +1374,10 @@ check('copy.pairs', (record) => {
       }
       const labels = headingLabels(text);
       sections[side.language] = labels;
-      if (labels.length === 0) record.failures.push(`${side.file} has no section headings; the copy structure cannot be compared`);
+      if (labels.length === 0)
+        record.failures.push(
+          `${side.file} has no section headings; the copy structure cannot be compared`,
+        );
     }
     if (!sections.es || !sections.en) continue;
     if (sections.es.length !== sections.en.length) {
@@ -1074,7 +1389,9 @@ check('copy.pairs', (record) => {
     const esNumbers = numberedLabels(sections.es);
     const enNumbers = numberedLabels(sections.en);
     if (esNumbers && enNumbers && esNumbers.join('|') !== enNumbers.join('|')) {
-      record.failures.push(`${product.copy.es} and ${product.copy.en} use different numbered section sequences: ES ${esNumbers.join(', ')} / EN ${enNumbers.join(', ')}`);
+      record.failures.push(
+        `${product.copy.es} and ${product.copy.en} use different numbered section sequences: ES ${esNumbers.join(', ')} / EN ${enNumbers.join(', ')}`,
+      );
     }
   }
 });
@@ -1088,13 +1405,19 @@ check('names', (record) => {
       const product = products.find((entry) => entry?.id === expected.id);
       if (!product) continue;
       if (product.displayName !== `MAREA ${expected.id}`) {
-        record.failures.push(`${JSON_CONTRACT}: product ${expected.id}: displayName must be exactly "MAREA ${expected.id}"`);
+        record.failures.push(
+          `${JSON_CONTRACT}: product ${expected.id}: displayName must be exactly "MAREA ${expected.id}"`,
+        );
       }
     }
   }
   for (const file of SCOPED_DOC_FILES) {
     const text = textOf(file);
-    if (text !== null) collectFileViolations(record, file, text, NAMING_RULES, { tolerant: true, wideContext: true });
+    if (text !== null)
+      collectFileViolations(record, file, text, NAMING_RULES, {
+        tolerant: true,
+        wideContext: true,
+      });
   }
   for (const file of SCOPED_COPY_FILES) {
     const text = textOf(file);
@@ -1112,7 +1435,9 @@ check('lifecycle', (record) => {
     const products = Array.isArray(contract.products) ? contract.products : [];
     for (const product of products) {
       if (product?.lifecycleState !== 'DEFINED') {
-        record.failures.push(`product ${product?.id}: lifecycleState must be "DEFINED" at MC-05, found ${JSON.stringify(product?.lifecycleState)}`);
+        record.failures.push(
+          `product ${product?.id}: lifecycleState must be "DEFINED" at MC-05, found ${JSON.stringify(product?.lifecycleState)}`,
+        );
       }
     }
   }
@@ -1124,7 +1449,9 @@ check('lifecycle', (record) => {
       const match = FORBIDDEN_LIFECYCLE_ASSERTIONS.exec(line);
       if (match && !LIFECYCLE_VOCABULARY.includes(match[1].toUpperCase())) {
         if (isNegativeContext(lines, index)) return;
-        record.failures.push(`${file}:${index + 1}: lifecycle state ${JSON.stringify(match[1])} is not in the seven-state vocabulary`);
+        record.failures.push(
+          `${file}:${index + 1}: lifecycle state ${JSON.stringify(match[1])} is not in the seven-state vocabulary`,
+        );
       }
     });
   }
@@ -1136,7 +1463,9 @@ check('lifecycle', (record) => {
     lines.forEach((line, index) => {
       if (!readyBoolean.test(line)) return;
       if (file !== JSON_CONTRACT && isNegativeContext(lines, index)) return;
-      record.failures.push(`${file}:${index + 1}: a READY-style boolean is prohibited; readiness is nine separate dimensions`);
+      record.failures.push(
+        `${file}:${index + 1}: a READY-style boolean is prohibited; readiness is nine separate dimensions`,
+      );
     });
   }
 });
@@ -1147,18 +1476,25 @@ check('availability', (record) => {
   if (contract) {
     walkJsonEntries(contract, (key, value, path) => {
       if (/availability$/i.test(key) && typeof value === 'string' && value !== 'NOT_FOR_SALE') {
-        record.failures.push(`${JSON_CONTRACT}: ${path} must be "NOT_FOR_SALE", found ${JSON.stringify(value)}`);
+        record.failures.push(
+          `${JSON_CONTRACT}: ${path} must be "NOT_FOR_SALE", found ${JSON.stringify(value)}`,
+        );
       }
     });
     collectJsonTextViolations(record, PURCHASE_RULES);
   }
   for (const file of SCOPED_DOC_FILES) {
     const text = textOf(file);
-    if (text !== null) collectFileViolations(record, file, text, PURCHASE_RULES, { tolerant: true, wideContext: true });
+    if (text !== null)
+      collectFileViolations(record, file, text, PURCHASE_RULES, {
+        tolerant: true,
+        wideContext: true,
+      });
   }
   for (const file of SCOPED_COPY_FILES) {
     const text = textOf(file);
-    if (text !== null) collectFileViolations(record, file, text, PURCHASE_RULES, { tolerant: false });
+    if (text !== null)
+      collectFileViolations(record, file, text, PURCHASE_RULES, { tolerant: false });
   }
 });
 
@@ -1169,27 +1505,45 @@ const PRICE_IN_COPY = [/[€$]\s*\d/, /\b\d+(?:[.,]\d+)?\s*(?:€|EUR\b|euros?\b
 check('pricing', (record) => {
   if (contract) {
     walkJsonEntries(contract, (key, value, path) => {
-      if (path.includes('priceHypothesis') && key === 'status' && value !== PRICE_HYPOTHESIS_RULES.status) {
-        record.failures.push(`${JSON_CONTRACT}: ${path} must be "${PRICE_HYPOTHESIS_RULES.status}", found ${JSON.stringify(value)}`);
+      if (
+        path.includes('priceHypothesis') &&
+        key === 'status' &&
+        value !== PRICE_HYPOTHESIS_RULES.status
+      ) {
+        record.failures.push(
+          `${JSON_CONTRACT}: ${path} must be "${PRICE_HYPOTHESIS_RULES.status}", found ${JSON.stringify(value)}`,
+        );
       }
       if (/^(?:priceStatus|pricingStatus)$/i.test(key) && value !== PRICE_HYPOTHESIS_RULES.status) {
-        record.failures.push(`${JSON_CONTRACT}: ${path} must be "${PRICE_HYPOTHESIS_RULES.status}", found ${JSON.stringify(value)}`);
+        record.failures.push(
+          `${JSON_CONTRACT}: ${path} must be "${PRICE_HYPOTHESIS_RULES.status}", found ${JSON.stringify(value)}`,
+        );
       }
     });
     collectJsonTextViolations(record, PRICE_TEXT_RULES);
   }
   for (const file of [...SCOPED_DOC_FILES]) {
     const text = textOf(file);
-    if (text !== null) collectFileViolations(record, file, text, PRICE_RULES, { tolerant: true, wideContext: true, skipQuestions: true });
+    if (text !== null)
+      collectFileViolations(record, file, text, PRICE_RULES, {
+        tolerant: true,
+        wideContext: true,
+        skipQuestions: true,
+      });
   }
   for (const file of SCOPED_COPY_FILES) {
     const text = textOf(file);
     if (text === null) continue;
-    collectFileViolations(record, file, text, PRICE_COPY_RULES, { tolerant: false, skipQuestions: true });
+    collectFileViolations(record, file, text, PRICE_COPY_RULES, {
+      tolerant: false,
+      skipQuestions: true,
+    });
     text.split(/\r?\n/).forEach((line, index) => {
       for (const pattern of PRICE_IN_COPY) {
         if (pattern.test(line)) {
-          record.failures.push(`${file}:${index + 1}: a price does not belong in customer-facing copy while prices are HYPOTHESIS_UNAPPROVED`);
+          record.failures.push(
+            `${file}:${index + 1}: a price does not belong in customer-facing copy while prices are HYPOTHESIS_UNAPPROVED`,
+          );
           break;
         }
       }
@@ -1199,7 +1553,9 @@ check('pricing', (record) => {
   for (const file of [PRODUCTS[0].dossier, PRODUCTS[1].dossier, PRODUCTS[2].dossier, PRICING_DOC]) {
     const text = textOf(file);
     if (text !== null && !text.includes(PRICE_HYPOTHESIS_RULES.status)) {
-      record.failures.push(`${file} does not label its price figures ${PRICE_HYPOTHESIS_RULES.status}`);
+      record.failures.push(
+        `${file} does not label its price figures ${PRICE_HYPOTHESIS_RULES.status}`,
+      );
     }
   }
 });
@@ -1210,14 +1566,20 @@ check('clearance', (record) => {
   if (contract) {
     walkJsonEntries(contract, (key, value, path) => {
       if (/trademark.*clearance/i.test(key) && value !== 'NOT_GRANTED') {
-        record.failures.push(`${JSON_CONTRACT}: ${path} must be "NOT_GRANTED", found ${JSON.stringify(value)}`);
+        record.failures.push(
+          `${JSON_CONTRACT}: ${path} must be "NOT_GRANTED", found ${JSON.stringify(value)}`,
+        );
       }
     });
     collectJsonTextViolations(record, CLEARANCE_RULES);
   }
   for (const file of [...SCOPED_DOC_FILES, ...SCOPED_COPY_FILES]) {
     const text = textOf(file);
-    if (text !== null) collectFileViolations(record, file, text, CLEARANCE_RULES, { tolerant: true, skipQuestions: true });
+    if (text !== null)
+      collectFileViolations(record, file, text, CLEARANCE_RULES, {
+        tolerant: true,
+        skipQuestions: true,
+      });
   }
 });
 
@@ -1261,21 +1623,28 @@ check('assets', (record) => {
   if (contract) {
     const assets = contract.assets;
     if (!Array.isArray(assets) || assets.length === 0) {
-      record.failures.push(`${JSON_CONTRACT}: assets must be a non-empty array of internal asset records`);
+      record.failures.push(
+        `${JSON_CONTRACT}: assets must be a non-empty array of internal asset records`,
+      );
     } else {
       for (const asset of assets) {
         if (!isRecord(asset) || !isFilled(asset.assetId)) {
           record.failures.push(`${JSON_CONTRACT}: assets contains an entry without assetId`);
           continue;
         }
-        if (registered.has(asset.assetId)) record.failures.push(`${JSON_CONTRACT}: duplicate assetId ${asset.assetId}`);
+        if (registered.has(asset.assetId))
+          record.failures.push(`${JSON_CONTRACT}: duplicate assetId ${asset.assetId}`);
         if (!allowedStatuses.includes(asset.status)) {
-          record.failures.push(`${JSON_CONTRACT}: asset ${asset.assetId} status must be CONCEPT or BLOCKED_ON_IMAGE_GENERATION, found ${JSON.stringify(asset.status)}`);
+          record.failures.push(
+            `${JSON_CONTRACT}: asset ${asset.assetId} status must be CONCEPT or BLOCKED_ON_IMAGE_GENERATION, found ${JSON.stringify(asset.status)}`,
+          );
         }
         if (!isFilled(asset.source)) {
           record.failures.push(`${JSON_CONTRACT}: asset ${asset.assetId} source is missing`);
         } else if (!evidenceRefExists(asset.source)) {
-          record.failures.push(`${JSON_CONTRACT}: asset ${asset.assetId} references ${JSON.stringify(asset.source)}, which does not exist`);
+          record.failures.push(
+            `${JSON_CONTRACT}: asset ${asset.assetId} references ${JSON.stringify(asset.source)}, which does not exist`,
+          );
         }
         registered.set(asset.assetId, asset);
       }
@@ -1293,7 +1662,9 @@ check('assets', (record) => {
           continue;
         }
         if (!registered.has(assetId)) {
-          record.failures.push(`product ${product.id}: assetId ${assetId} is not declared in the contract assets list`);
+          record.failures.push(
+            `product ${product.id}: assetId ${assetId} is not declared in the contract assets list`,
+          );
         }
       }
     }
@@ -1332,7 +1703,9 @@ check('disclaimers', (record) => {
 const failed = checks.filter((entry) => entry.failures.length > 0);
 const passed = checks.length - failed.length;
 const result = {
-  contract: contract ? { id: contract.contractId, version: contract.contractVersion, status: contract.status } : null,
+  contract: contract
+    ? { id: contract.contractId, version: contract.contractVersion, status: contract.status }
+    : null,
   root: displayPath(root),
   checks: checks.map(({ id, failures, detail }) => ({
     id,
@@ -1353,7 +1726,9 @@ const result = {
 if (jsonMode) {
   console.log(JSON.stringify(result, null, 2));
 } else {
-  console.log(`MAREA product-governance validator — MC-05 batch (contract ${contract?.contractVersion ?? 'missing'})`);
+  console.log(
+    `MAREA product-governance validator — MC-05 batch (contract ${contract?.contractVersion ?? 'missing'})`,
+  );
   console.log(`Contract: ${JSON_CONTRACT}`);
   console.log(`Root: ${displayPath(root)}`);
   console.log('');
@@ -1362,13 +1737,17 @@ if (jsonMode) {
       console.log(`PASS  ${id}${detail ? ` — ${detail}` : ''}`);
       continue;
     }
-    console.log(`FAIL  ${id} (${failures.length} ${failures.length === 1 ? 'failure' : 'failures'})`);
+    console.log(
+      `FAIL  ${id} (${failures.length} ${failures.length === 1 ? 'failure' : 'failures'})`,
+    );
     for (const failure of failures) console.log(`        - ${failure}`);
   }
   console.log('');
   console.log('Scoped files (only these are read; everything else is out of scope):');
   for (const file of SCOPED_FILES) {
-    console.log(`  ${texts.has(file) ? 'scanned  ' : 'missing  '} ${file}${texts.has(file) ? ` — ${texts.get(file).split(/\r?\n/).length} lines` : ''}`);
+    console.log(
+      `  ${texts.has(file) ? 'scanned  ' : 'missing  '} ${file}${texts.has(file) ? ` — ${texts.get(file).split(/\r?\n/).length} lines` : ''}`,
+    );
   }
   console.log('');
   console.log(

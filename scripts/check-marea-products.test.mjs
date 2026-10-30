@@ -1,6 +1,14 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import test from 'node:test';
@@ -53,7 +61,8 @@ const REQUIRED_FILES = [
   ...Object.values(COPY_REL),
 ];
 
-const ASSET_REFERENCE = /docs\/marea\/[A-Za-z0-9_][A-Za-z0-9_./-]*\.(?:png|jpe?g|gif|svg|webp|avif)/g;
+const ASSET_REFERENCE =
+  /docs\/marea\/[A-Za-z0-9_][A-Za-z0-9_./-]*\.(?:png|jpe?g|gif|svg|webp|avif)/g;
 
 /**
  * The validator resolves referenced docs/marea asset files against the
@@ -136,7 +145,11 @@ function findProduct(contract, id) {
 
 function assertFails(result, checkId, pattern) {
   assert.equal(result.code, 1, `the validator exits 1\n${result.stdout}`);
-  assert.match(result.stdout, new RegExp(`FAIL\\s+${checkId.replace(/\./g, '\\.')}`), result.stdout);
+  assert.match(
+    result.stdout,
+    new RegExp(`FAIL\\s+${checkId.replace(/\./g, '\\.')}`),
+    result.stdout,
+  );
   assert.match(result.stdout, pattern, result.stdout);
 }
 
@@ -192,11 +205,16 @@ test('category 2 — a dossier without an F-heading is rejected', async () => {
   await withFixture(
     {
       edit: {
-        [NAV_REL]: (text) => text.replace(/^#### F17 .*$/m, '#### Sales arguments (heading removed by fixture)'),
+        [NAV_REL]: (text) =>
+          text.replace(/^#### F17 .*$/m, '#### Sales arguments (heading removed by fixture)'),
       },
     },
     (result) => {
-      assertFails(result, 'dossiers.fields', /MAREA-NAV-COMMERCIAL-SPEC\.md is missing the F-heading\(s\): F17/);
+      assertFails(
+        result,
+        'dossiers.fields',
+        /MAREA-NAV-COMMERCIAL-SPEC\.md is missing the F-heading\(s\): F17/,
+      );
     },
   );
 });
@@ -237,7 +255,11 @@ test('category 3 — an unknown seventh edition id in D4 is rejected', async () 
       },
     },
     (result) => {
-      assertFails(result, 'editions.comparison', /unknown edition id NAV-ESSENTIAL-EXTRA|edition id NAV-ESSENTIAL does not appear/);
+      assertFails(
+        result,
+        'editions.comparison',
+        /unknown edition id NAV-ESSENTIAL-EXTRA|edition id NAV-ESSENTIAL does not appear/,
+      );
     },
   );
 });
@@ -258,7 +280,11 @@ test('category 4 — an ES/EN pair with different section counts is rejected', a
       },
     },
     (result) => {
-      assertFails(result, 'copy.pairs', /not structurally parallel: \d+ ES sections vs \d+ EN sections/);
+      assertFails(
+        result,
+        'copy.pairs',
+        /not structurally parallel: \d+ ES sections vs \d+ EN sections/,
+      );
     },
   );
 });
@@ -422,7 +448,8 @@ test('category 10 — an AIS transmission claim in AIS copy is rejected', async 
   await withFixture(
     {
       edit: {
-        [COPY_REL.aisEn]: (text) => `${text}\n\nMAREA AIS transmits your position to nearby vessels.\n`,
+        [COPY_REL.aisEn]: (text) =>
+          `${text}\n\nMAREA AIS transmits your position to nearby vessels.\n`,
       },
     },
     (result) => {
@@ -437,7 +464,8 @@ test('category 11 — an NMEA 2000 certification claim in a dossier is rejected'
   await withFixture(
     {
       edit: {
-        [HUB_REL]: (text) => `${text}\n\n## Claim\n\nThe gateway is NMEA 2000 certified and compatible con todos los equipos.\n`,
+        [HUB_REL]: (text) =>
+          `${text}\n\n## Claim\n\nThe gateway is NMEA 2000 certified and compatible con todos los equipos.\n`,
       },
     },
     (result) => {
@@ -484,7 +512,11 @@ test('category 13 — a product referencing an undeclared asset is rejected', as
       },
     },
     (result) => {
-      assertFails(result, 'assets', /assetId AST-NOT-DECLARED is not declared in the contract assets list/);
+      assertFails(
+        result,
+        'assets',
+        /assetId AST-NOT-DECLARED is not declared in the contract assets list/,
+      );
     },
   );
 });
@@ -531,7 +563,11 @@ test('category 15 — a copy file without the approved navigation disclaimer is 
       },
     },
     (result) => {
-      assertFails(result, 'disclaimers', /does not carry the approved navigation disclaimer \(ES\)/);
+      assertFails(
+        result,
+        'disclaimers',
+        /does not carry the approved navigation disclaimer \(ES\)/,
+      );
     },
   );
 });
@@ -545,7 +581,11 @@ test('category 15 — an AIS copy without the approved receive-only disclaimer i
       },
     },
     (result) => {
-      assertFails(result, 'disclaimers', /does not carry the approved aisReceiveOnly disclaimer \(EN\)/);
+      assertFails(
+        result,
+        'disclaimers',
+        /does not carry the approved aisReceiveOnly disclaimer \(EN\)/,
+      );
     },
   );
 });
@@ -620,6 +660,26 @@ test('the AIS-CONNECTED verdict cannot be flattened to approved', async () => {
   );
 });
 
+test('a retained edition cannot be marked conditional or made publishable', async () => {
+  await withFixture(
+    {
+      mutateJson: (contract) => {
+        const essential = findProduct(contract, 'NAV').editions.find(
+          (edition) => edition.id === 'NAV-ESSENTIAL',
+        );
+        essential.editionVerdict.status = 'CONDITIONAL';
+        essential.editionVerdict.publicationConditional = false;
+      },
+    },
+    (result) => {
+      assert.equal(result.code, 1, result.stdout);
+      assert.match(result.stdout, /FAIL\s+json\.editions/);
+      assert.match(result.stdout, /editionVerdict\.status must be "DEFINED"/);
+      assert.match(result.stdout, /publicationConditional must be true/);
+    },
+  );
+});
+
 test('the NAV software-only hardware readiness value is accepted, HUB is not', async () => {
   await withFixture(
     {
@@ -628,7 +688,11 @@ test('the NAV software-only hardware readiness value is accepted, HUB is not', a
       },
     },
     (result) => {
-      assertFails(result, 'json.products', /a hardware product must carry a hardware-specific readiness value/);
+      assertFails(
+        result,
+        'json.products',
+        /a hardware product must carry a hardware-specific readiness value/,
+      );
     },
   );
 });

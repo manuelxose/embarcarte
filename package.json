@@ -15,8 +15,8 @@
     "test:brand:unit": "node --test scripts/check-brand.test.mjs",
     "test:products": "node scripts/check-marea-products.mjs",
     "test:products:unit": "node --test scripts/check-marea-products.test.mjs",
-    "format": "prettier --write e2e playwright.config.ts scripts/e2e-server.mjs scripts/backup.mjs scripts/restore.mjs scripts/check-backup.mjs scripts/check-performance.mjs scripts/check-seo.mjs",
-    "format:check": "prettier --check e2e playwright.config.ts scripts/e2e-server.mjs scripts/backup.mjs scripts/restore.mjs scripts/check-backup.mjs scripts/check-performance.mjs scripts/check-seo.mjs",
+    "format": "prettier --write e2e playwright.config.ts scripts/e2e-server.mjs scripts/backup.mjs scripts/restore.mjs scripts/check-backup.mjs scripts/check-performance.mjs scripts/check-seo.mjs scripts/check-marea-products.mjs scripts/check-marea-products.test.mjs",
+    "format:check": "prettier --check e2e playwright.config.ts scripts/e2e-server.mjs scripts/backup.mjs scripts/restore.mjs scripts/check-backup.mjs scripts/check-performance.mjs scripts/check-seo.mjs scripts/check-marea-products.mjs scripts/check-marea-products.test.mjs",
     "watch": "ng build --watch --configuration development",
     "serve:ssr": "node dist/embarcarte/server/server.mjs",
     "serve:ssr:watch": "node --watch-path=dist/embarcarte/server dist/embarcarte/server/server.mjs"
