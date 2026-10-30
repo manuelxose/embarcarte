@@ -1,0 +1,153 @@
+{
+  "documentId": "MC-04 / D-08 — MR-BRD-013",
+  "status": "INTERNAL_PROPOSED",
+  "environment": {
+    "node": "v24.18.0",
+    "platform": "win32",
+    "checkedAt": "2026-10-30T17:41:08.736Z"
+  },
+  "tokenFile": {
+    "path": "docs/marea/brand/tokens/marea-instrument-tokens.proposed.json",
+    "sha256": "0ff5cd48a4c773129e6a19512af2488ade9b2a79be4b023e7bc8ff9ccca5e2b0",
+    "bytes": 17731
+  },
+  "method": {
+    "standard": "WCAG 2.x relative luminance and contrast ratio (the formula axe/contrast checkers use)",
+    "formula": "L = 0.2126R+0.7152G+0.0722B (sRGB linearised, 0.03928 knee); ratio = (L1+0.05)/(L2+0.05)",
+    "alpha": "source-over compositing before measurement",
+    "rounding": "4 decimal places"
+  },
+  "result": "PASS",
+  "failures": [],
+  "knownFindings": [
+    {
+      "finding": "F-6",
+      "pair": "textSecondary on surface",
+      "ratio": 4.8275,
+      "threshold": 5,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-6",
+      "pair": "textSecondary on surfaceRaised",
+      "ratio": 4.7059,
+      "threshold": 5,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-6",
+      "pair": "textMeta on surface",
+      "ratio": 4.8275,
+      "threshold": 5,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-5",
+      "pair": "sea on canvas",
+      "ratio": 4.9631,
+      "threshold": 5,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-5",
+      "pair": "sea on surface",
+      "ratio": 4.6663,
+      "threshold": 5,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-7",
+      "pair": "stateSafe on badgeSafeBg",
+      "ratio": 4.7762,
+      "threshold": 5,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-7",
+      "pair": "stateCritical on badgeCriticalBg",
+      "ratio": 4.7371,
+      "threshold": 5,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-4",
+      "pair": "stateCritical on canvas",
+      "ratio": 5.554,
+      "threshold": 7,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-4",
+      "pair": "stateSafe on canvas",
+      "ratio": 5.413,
+      "threshold": 7,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-1",
+      "pair": "focusRing on canvas",
+      "ratio": 1.6529,
+      "threshold": 3,
+      "standard": "wcag-aa",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-1",
+      "pair": "focusRing on canvas",
+      "ratio": 1.6529,
+      "threshold": 4.5,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-1",
+      "pair": "focusRing on surface",
+      "ratio": 1.554,
+      "threshold": 3,
+      "standard": "wcag-aa",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-1",
+      "pair": "focusRing on surface",
+      "ratio": 1.554,
+      "threshold": 4.5,
+      "standard": "internal",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-1",
+      "pair": "focusRing on surfaceRaised",
+      "ratio": 1.5149,
+      "threshold": 3,
+      "standard": "wcag-aa",
+      "mode": "web-light"
+    },
+    {
+      "finding": "F-1",
+      "pair": "focusRing on surfaceRaised",
+      "ratio": 1.5149,
+      "threshold": 4.5,
+      "standard": "internal",
+      "mode": "web-light"
+    }
+  ],
+  "warnings": [],
+  "summary": {
+    "modes": 4,
+    "pairs": 190,
+    "aaMisses": 3,
+    "internalMisses": 12,
+    "knownFindings": 15,
+    "failures": 0
+  }
+}

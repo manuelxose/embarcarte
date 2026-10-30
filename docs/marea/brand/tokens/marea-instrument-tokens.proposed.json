@@ -1,0 +1,392 @@
+{
+  "schemaVersion": 1,
+  "document": {
+    "id": "MC-04 / D-08 — MR-BRD-013",
+    "title": "MAREA instrument and dashboard token specification (day / sunlight / night)",
+    "status": "INTERNAL_PROPOSED",
+    "adoption": "NOT_ADOPTED",
+    "implementation": {
+      "appliedInRepository": false,
+      "appliedInSrcOrPublic": false,
+      "statement": "PROPOSED ONLY. No value in this file is applied to src/, public/ or the live website. Implementation belongs to MC-06+ after review.",
+      "implementationTarget": "MC-06 design-system implementation"
+    },
+    "authority": [
+      "docs/marea/brand/MC-04-VISUAL-IDENTITY-BRIEF.md §5 (colour), §7.8 (instrument skin tokens)"
+    ],
+    "instrumentRoleNaming": "The instrument role sets (instrument-day / instrument-sunlight / instrument-night) use role-based names only, never colour names (no --blue-500). The web-light block below is a read-only compatibility mapping of the existing src/styles.scss token names and is the only place where legacy colour-named keys appear; renaming live site tokens is out of MC-04 scope and would be an MC-06 migration decision.",
+    "measurement": {
+      "script": "scripts/check-contrast.mjs",
+      "evidence": "docs/marea/brand/evidence/contrast/contrast-matrix.json",
+      "failures": "docs/marea/brand/evidence/contrast/contrast-failures.json",
+      "thresholds": {
+        "text-normal": { "wcagAa": 4.5, "internal": 5.0 },
+        "text-large": { "wcagAa": 3.0, "internal": 4.5 },
+        "ui": { "wcagAa": 3.0, "internal": 3.0 },
+        "ui-graphic": { "wcagAa": 3.0, "internal": 4.5 },
+        "focus": { "wcagAa": 3.0, "internal": 4.5 },
+        "cockpit": { "wcagAa": 4.5, "internal": 7.0 },
+        "disabled": { "wcagAa": null, "internal": 3.0 },
+        "decorative": { "wcagAa": null, "internal": null }
+      }
+    },
+    "notes": [
+      "Values marked as refined in COLOUR-SYSTEM.md were tightened from the brief's §5.3 starting values so the proposed instrument palettes meet the brief's own stricter internal targets on every surface they are actually used on.",
+      "Every fg/bg pair used by the roles is measured; no ratio in this file is claimed without the evidence JSON.",
+      "Night mode contains no #000000 canvas and no #ffffff text (halation rule §5.8)."
+    ]
+  },
+  "roles": {
+    "canvas": "Application background / page surface of the instrument view.",
+    "surface": "Panel that holds data; never a decorative card.",
+    "surfaceRaised": "Tinted panel or grouped sub-surface; boundary needs an explicit label, not colour alone.",
+    "overlayScrim": "Dimming layer behind overlays. No data is ever placed on the scrim; overlay content sits on an opaque surface.",
+    "textPrimary": "Primary text, headings, primary numeric readouts when read as text.",
+    "textSecondary": "Secondary labels and context values.",
+    "textMeta": "Provenance, age, units of the metadata strip.",
+    "textOnAccent": "Text/icons placed on a filled action or state surface.",
+    "dataPrimary": "Primary instrument numeric values (cockpit-critical).",
+    "dataSecondary": "Secondary numeric context.",
+    "chartLine": "Trend/scales/trend lines: required to understand content.",
+    "chartGrid": "Grid, ticks and axis rules; supporting cue, never the only encoding.",
+    "stateCritical": "Alarm level 4 text/icon; always paired with shape + cause + action.",
+    "stateWarning": "Caution/warning levels 2–3 text/icon; always paired with triangle + label.",
+    "stateSafe": "Normal/safe state text/icon; describes a signal, never a guarantee about the vessel.",
+    "stateStale": "Stale/offline/no-data text/icon; always paired with age counter and pattern.",
+    "stateInfo": "Advisory/info text/icon; neutral ink, not a hue accent.",
+    "action": "Interactive text, links and filled action surfaces.",
+    "actionHover": "Hover/active partner of action.",
+    "focusRing": "Keyboard focus indicator drawn on canvas/surface/raised.",
+    "focusRingOnFill": "Focus indicator drawn inside a filled action/state control (inverse of focusRing).",
+    "disabled": "Disabled control text/icon; remains perceivable, never invisible."
+  },
+  "modes": {
+    "web-light": {
+      "appliesTo": "Corporate website, docs, product pages (existing light theme; stays light — brief §5.4).",
+      "status": "EXISTING_MEASURED_BASELINE",
+      "appliedInRepository": true,
+      "legacyCompatibilityMapping": true,
+      "roleNaming": "Legacy src/styles.scss token names retained verbatim for compatibility mapping only (navy2, sea, seaStrong, seaButton, badge*Bg, themeColor, line). This block is NOT part of the proposed instrument vocabulary and is not an approval of those names.",
+      "sourceOfValues": "src/styles.scss (read-only reference, values not changed by MC-04)",
+      "tokens": {
+        "canvas": "#ffffff",
+        "surface": "#f2f9fd",
+        "surfaceRaised": "#eaf7ff",
+        "textPrimary": "#17365d",
+        "textSecondary": "#57708a",
+        "textMeta": "#57708a",
+        "textOnAccent": "#ffffff",
+        "dataPrimary": "#17365d",
+        "dataSecondary": "#57708a",
+        "stateCritical": "#b4423a",
+        "stateWarning": "#8a5a00",
+        "stateSafe": "#27775c",
+        "stateStale": "#555555",
+        "stateInfo": "#176ca6",
+        "action": "#176ca6",
+        "focusRing": "#8fd2f5",
+        "focusRingOnFill": "#ffffff",
+        "disabled": null,
+        "line": "#e1edf5",
+        "themeColor": "#0b2540",
+        "navy2": "#24517c",
+        "sea": "#1776ad",
+        "seaStrong": "#176ca6",
+        "seaButton": "#1b6f9f",
+        "badgeWarningBg": "#fff4dc",
+        "badgeSafeBg": "#e2f5ee",
+        "badgeCriticalBg": "#fbe9e7",
+        "badgeOffBg": "#f1f1f1"
+      },
+      "mappingToTokenVocabulary": {
+        "canvas": "--paper",
+        "surface": "--mist",
+        "surfaceRaised": "--sky",
+        "textPrimary": "--ink / --navy",
+        "textSecondary": "--muted",
+        "textMeta": "--muted",
+        "stateCritical": "--danger",
+        "stateSafe": "--ok",
+        "action": "--sea-strong",
+        "focusRing": "hard-coded :focus-visible outline (not a token today)",
+        "line": "--line",
+        "themeColor": "index.html theme-color (not a token today — finding F-3)"
+      },
+      "knownFindings": ["F-1", "F-2", "F-3", "F-4", "F-5", "F-6"],
+      "notes": [
+        "Measured only; no CSS is changed by MC-04.",
+        "Existing site values stay AA-gated. The stricter internal targets are recorded, not enforced, for this baseline because they describe the future instrument palette; the misses are the documented findings F-1…F-6."
+      ]
+    },
+    "instrument-day": {
+      "appliesTo": "App/NAV/DISPLAY daytime, bridge daylight (software only; not the corporate website).",
+      "status": "PROPOSED",
+      "appliedInRepository": false,
+      "tokens": {
+        "canvas": "#f2f9fd",
+        "surface": "#ffffff",
+        "surfaceRaised": "#eaf7ff",
+        "overlayScrim": "rgba(8, 26, 40, 0.76)",
+        "textPrimary": "#17365d",
+        "textSecondary": "#4a6579",
+        "textMeta": "#52697f",
+        "textOnAccent": "#ffffff",
+        "dataPrimary": "#17365d",
+        "dataSecondary": "#4a6579",
+        "chartLine": "#17365d",
+        "chartGrid": "#748d9f",
+        "stateCritical": "#a32b22",
+        "stateWarning": "#8a5a00",
+        "stateSafe": "#1f5f49",
+        "stateStale": "#55646f",
+        "stateInfo": "#17365d",
+        "action": "#176ca6",
+        "actionHover": "#12568a",
+        "focusRing": "#0f5f8c",
+        "focusRingOnFill": "#ffffff",
+        "disabled": "#7a8d9b"
+      },
+      "refinementsFromBrief": [
+        {
+          "token": "textSecondary",
+          "briefValue": "#57708a (--muted)",
+          "proposedValue": "#4a6579",
+          "reason": "brief §5.5 internal target for normal text is ≥5:1; --muted measures 4.83:1 on the day canvas --mist and 4.71:1 on --sky, so a deeper secondary ink is required on instrument surfaces"
+        },
+        {
+          "token": "textMeta",
+          "briefValue": "#57708a (--muted)",
+          "proposedValue": "#52697f",
+          "reason": "meta/provenance is normal-size text; must meet ≥5:1 on canvas, surface and raised surface"
+        },
+        {
+          "token": "stateStale",
+          "briefValue": "#5f6f7d",
+          "proposedValue": "#55646f",
+          "reason": "stale values must stay readable; brief value measures 4.87:1 on --mist and 4.74:1 on --sky, below the ≥5:1 internal target"
+        },
+        {
+          "token": "focusRing",
+          "briefValue": "candidate #0f5f8c (proposal only)",
+          "proposedValue": "#0f5f8c",
+          "reason": "proposes a compliant focus indicator (6.92:1 / 6.50:1 / 6.34:1 on the day surfaces, ≥4.5:1 internal focus target). This does NOT resolve F-1: the live site still uses #8fd2f5 at 1.65:1 and nothing is applied; F-1 remains OPEN until MC-06 implements and verifies the change."
+        },
+        {
+          "token": "focusRingOnFill",
+          "briefValue": "not specified",
+          "proposedValue": "#ffffff",
+          "reason": "a focus indicator must be distinguishable against the filled control too; white measures 5.63:1 on the action fill and 7.18:1 on the critical fill"
+        }
+      ]
+    },
+    "instrument-sunlight": {
+      "appliesTo": "Same surfaces under high ambient light and glare (hardware validation BLOCKED — no display exists).",
+      "status": "PROPOSED",
+      "appliedInRepository": false,
+      "tokens": {
+        "canvas": "#ffffff",
+        "surface": "#f7fbfe",
+        "surfaceRaised": "#eaf7ff",
+        "overlayScrim": "rgba(2, 12, 22, 0.80)",
+        "textPrimary": "#0b2440",
+        "textSecondary": "#3f5468",
+        "textMeta": "#4a5f73",
+        "textOnAccent": "#ffffff",
+        "dataPrimary": "#0b2440",
+        "dataSecondary": "#3f5468",
+        "chartLine": "#0b2440",
+        "chartGrid": "#5f7a8e",
+        "stateCritical": "#8f1a12",
+        "stateWarning": "#6b4300",
+        "stateSafe": "#10513c",
+        "stateStale": "#46586a",
+        "stateInfo": "#17365d",
+        "action": "#0b4f78",
+        "actionHover": "#083f61",
+        "focusRing": "#0a4568",
+        "focusRingOnFill": "#ffffff",
+        "disabled": "#6a7f92"
+      },
+      "notes": [
+        "Higher luminance canvas and deeper ink than day; chroma reliance reduced.",
+        "No WCAG equivalent for glare; hardware validation BLOCKED and not claimed."
+      ]
+    },
+    "instrument-night": {
+      "appliesTo": "App/NAV/DISPLAY at night, watchkeeping (software only).",
+      "status": "PROPOSED",
+      "appliedInRepository": false,
+      "tokens": {
+        "canvas": "#0d1b26",
+        "surface": "#132733",
+        "surfaceRaised": "#1a3343",
+        "overlayScrim": "rgba(2, 8, 13, 0.82)",
+        "textPrimary": "#8fd3f5",
+        "textSecondary": "#93a6b5",
+        "textMeta": "#a9b7c4",
+        "textOnAccent": "#0d1b26",
+        "dataPrimary": "#8fd3f5",
+        "dataSecondary": "#93a6b5",
+        "chartLine": "#8fd3f5",
+        "chartGrid": "#6a7f8d",
+        "stateCritical": "#ff9b8f",
+        "stateWarning": "#ffc46b",
+        "stateSafe": "#7bd8b0",
+        "stateStale": "#a9b7c4",
+        "stateInfo": "#93a6b5",
+        "action": "#8fd3f5",
+        "actionHover": "#b6e2fa",
+        "focusRing": "#8fd3f5",
+        "focusRingOnFill": "#0d1b26",
+        "disabled": "#7d8f9d"
+      },
+      "forbidden": ["#000000", "#ffffff"],
+      "notes": [
+        "No pure black canvas and no pure white text (halation rule §5.8).",
+        "Alert colours keep a perceivable floor; no hue shift that turns a warning into a calm colour.",
+        "Dimming must have a floor: night values are not derived by inverting the day palette."
+      ]
+    }
+  },
+  "stateEncoding": {
+    "rule": "Colour never carries meaning alone (WCAG 2.2 SC 1.4.1). Remove colour and every state must remain unambiguous (greyscale test).",
+    "states": [
+      {
+        "state": "normal-safe",
+        "colourRole": "stateSafe",
+        "shape": "filled circle / dot",
+        "textLabel": "OK / Normal (localised)",
+        "extraCue": "steady; no animation"
+      },
+      {
+        "state": "advisory-info",
+        "colourRole": "stateInfo",
+        "shape": "outlined square with i",
+        "textLabel": "short sentence",
+        "extraCue": "steady; dismissible"
+      },
+      {
+        "state": "caution",
+        "colourRole": "stateWarning",
+        "shape": "triangle with !",
+        "textLabel": "Caution + cause",
+        "extraCue": "steady; optional ≤1 Hz pulse only if reduced-motion allows"
+      },
+      {
+        "state": "warning",
+        "colourRole": "stateWarning",
+        "shape": "triangle with ! and heavier border",
+        "textLabel": "Warning + cause + required action",
+        "extraCue": "persistent banner; audible optional, never sole"
+      },
+      {
+        "state": "alarm-critical",
+        "colourRole": "stateCritical",
+        "shape": "octagon or solid triangle",
+        "textLabel": "Alarm + cause + required action",
+        "extraCue": "persistent until acknowledged; acknowledgement never removes the condition"
+      },
+      {
+        "state": "stale-offline",
+        "colourRole": "stateStale",
+        "shape": "dashed outline / clock-and-slash",
+        "textLabel": "STALE mm:ss / OFFLINE",
+        "extraCue": "age counter in tabular digits; value attenuated but readable"
+      },
+      {
+        "state": "no-data",
+        "colourRole": "stateStale",
+        "shape": "hollow square / em dash",
+        "textLabel": "— NO DATA",
+        "extraCue": "never a zero, never a frozen last value"
+      },
+      {
+        "state": "disabled",
+        "colourRole": "disabled",
+        "shape": "reduced but visible control",
+        "textLabel": "label remains",
+        "extraCue": "never colour-only, never invisible"
+      }
+    ]
+  },
+  "typography": {
+    "families": {
+      "body": {
+        "family": "DM Sans Variable",
+        "package": "@fontsource-variable/dm-sans@5.3.0",
+        "roles": ["body", "labels", "long copy", "metadata"],
+        "numericCapable": false
+      },
+      "displayNumeric": {
+        "family": "Manrope Variable",
+        "package": "@fontsource-variable/manrope@5.3.0",
+        "roles": ["display", "headings", "product-family lockup", "instrument numerics", "units"],
+        "numericCapable": true,
+        "evidence": "docs/marea/brand/TYPOGRAPHY-SYSTEM.md — measured tabular figures (tnum)"
+      }
+    },
+    "numeric": {
+      "fontFamily": "var(--inst-font-numeric)",
+      "fontWeight": 700,
+      "fontVariantNumeric": "tabular-nums",
+      "fontFeatureSettings": "'tnum' 1",
+      "letterSpacing": "0",
+      "unitRatio": 0.6,
+      "unitLetterSpacing": "0.08em",
+      "unitTransform": "uppercase",
+      "minusGlyph": "U+2212",
+      "evidence": "scripts/check-typography.mjs"
+    },
+    "sizes": {
+      "numericPrimary": "48–72 px equivalent (≈18–24 mm at 0.6–0.9 m, PROPOSED, hardware BLOCKED)",
+      "numericSecondary": "28–40 px equivalent (≈8–14 mm)",
+      "label": "12–14 px equivalent",
+      "unit": "0.6 × value size",
+      "meta": "10–12 px equivalent",
+      "touchTarget": "≥24×24 CSS px (AA floor), 44×44 internal wet/glove target"
+    }
+  },
+  "density": {
+    "space": {
+      "--inst-space-1": "4px",
+      "--inst-space-2": "8px",
+      "--inst-space-3": "12px",
+      "--inst-space-4": "16px",
+      "--inst-space-5": "24px",
+      "--inst-space-6": "32px"
+    },
+    "gapAlert": "12px",
+    "gapProvenance": "8px"
+  },
+  "shape": {
+    "--inst-radius-control": "3px",
+    "--inst-radius-surface": "6px",
+    "--inst-stroke-icon": "2px",
+    "--inst-stroke-chart": "2px",
+    "notes": [
+      "Brief §7.8 constraints: control radii 2–4 px, surfaces 4–8 px, pills only for status chips with text, one elevation for overlays only, no gradients in any token."
+    ]
+  },
+  "motion": {
+    "--inst-motion-state": "120ms ease-out",
+    "--inst-motion-alert-max-hz": "1",
+    "notes": [
+      "No flashing above 3 Hz (WCAG 2.3.1). Alert pulse ≤1 Hz only when prefers-reduced-motion does not ask to reduce. Night mode reduces or disables pulsing."
+    ]
+  },
+  "webTokenMapping": {
+    "statement": "Instrument roles map onto existing web token vocabulary where the roles coincide; the browser website remains light and unchanged.",
+    "pairs": [
+      { "instrument": "canvas", "web": "--paper (#ffffff)", "relationship": "instrument day canvas is --mist, not --paper: the instrument is a surface, not a page" },
+      { "instrument": "surface", "web": "--paper (#ffffff)", "relationship": "same value" },
+      { "instrument": "surfaceRaised", "web": "--sky (#eaf7ff)", "relationship": "same value" },
+      { "instrument": "textPrimary", "web": "--navy / --ink (#17365d)", "relationship": "same value" },
+      { "instrument": "textSecondary", "web": "--muted (#57708a)", "relationship": "tightened for instrument surfaces (see refinements)" },
+      { "instrument": "stateCritical", "web": "--danger (#b4423a)", "relationship": "tightened for cockpit reading" },
+      { "instrument": "stateSafe", "web": "--ok (#27775c)", "relationship": "tightened for cockpit reading" },
+      { "instrument": "action", "web": "--sea-strong (#176ca6)", "relationship": "same value" },
+      { "instrument": "focusRing", "web": "hard-coded #8fd2f5 (no token)", "relationship": "proposes a compliant replacement focus indicator; F-1 remains OPEN for the live site until MC-06 implements and verifies it (MC-04 applies nothing)" },
+      { "instrument": "themeColor", "web": "#0b2540 (index.html, no token)", "relationship": "must become an explicit token (F-3)" }
+    ]
+  }
+}
