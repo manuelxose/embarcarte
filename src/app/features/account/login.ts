@@ -21,6 +21,7 @@ const AUTH_ERRORS: Record<number, TranslationKey> = {
   template: `
     <section class="page-hero" style="min-height: calc(100svh - 76px)">
       <div class="wrap">
+        <h1 class="sr-only">{{ i18n.t('auth.seoTitle') }}</h1>
         <div class="panel auth-card">
           <div class="tabs" role="tablist">
             <button type="button" role="tab" [class.on]="mode() === 'login'" [attr.aria-selected]="mode() === 'login'" (click)="mode.set('login')">{{ i18n.t('auth.signIn') }}</button>

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { isPlatformServer } from '@angular/common';
 import {
   Component,
+  DestroyRef,
   PLATFORM_ID,
   RESPONSE_INIT,
   TransferState,
@@ -11,6 +12,7 @@ import {
   makeStateKey,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CartService } from '../../core/cart.service';
 import { LocaleService } from '../../core/i18n/locale.service';
@@ -80,19 +82,22 @@ const summarize = (text: string, max = 158): string =>
 })
 export class ShopDetail {
   private readonly route = inject(ActivatedRoute);
-  private readonly slug = this.route.snapshot.paramMap.get('slug') ?? '';
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly initialSlug = this.route.snapshot.paramMap.get('slug') ?? '';
+  private loadedSlug = this.initialSlug;
 
   private readonly http = inject(HttpClient);
   private readonly platformId = inject(PLATFORM_ID);
   private readonly transferState = inject(TransferState);
-  /** The SSR response is transferred so hydration starts with the same product. */
-  private readonly stateKey = makeStateKey<ShopProduct>(`shop-product:${this.slug}`);
   private readonly seo = inject(SeoService);
   private readonly response = inject(RESPONSE_INIT, { optional: true });
   protected readonly locale = inject(LocaleService);
   protected readonly i18n = inject(TranslationService);
   protected readonly cart = inject(CartService);
-  protected readonly product = signal<ShopProduct | null>(this.transferState.get(this.stateKey, null));
+  /** The SSR response is transferred so hydration starts with the same product. */
+  protected readonly product = signal<ShopProduct | null>(
+    this.transferState.get(this.stateKeyFor(this.initialSlug), null),
+  );
   protected readonly notFound = signal(false);
   protected readonly qty = signal(1);
   protected readonly added = signal(false);
@@ -171,14 +176,34 @@ export class ShopDetail {
 
   }
 
+  private stateKeyFor(slug: string) {
+    return makeStateKey<ShopProduct>(`shop-product:${slug}`);
+  }
+
   ngOnInit(): void {
-    // Hydration already had the server product: no duplicate request and no
-    // empty first render (which caused a large layout shift on mobile).
-    if (this.product()) return;
-    this.http.get<ShopProduct>(`/api/shop/products/${encodeURIComponent(this.slug)}`).subscribe({
+    this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
+      const slug = params.get('slug') ?? '';
+      if (slug === this.loadedSlug) {
+        // Hydration already had the server product: no duplicate request and
+        // no empty first render (which caused a large layout shift on mobile).
+        if (!this.product()) this.load(slug);
+        return;
+      }
+      // The router can reuse this component between two product URLs.
+      this.loadedSlug = slug;
+      this.product.set(null);
+      this.notFound.set(false);
+      this.qty.set(1);
+      this.added.set(false);
+      this.load(slug);
+    });
+  }
+
+  private load(slug: string): void {
+    this.http.get<ShopProduct>(`/api/shop/products/${encodeURIComponent(slug)}`).subscribe({
       next: (product) => {
         this.product.set(product);
-        if (isPlatformServer(this.platformId)) this.transferState.set(this.stateKey, product);
+        if (isPlatformServer(this.platformId)) this.transferState.set(this.stateKeyFor(slug), product);
       },
       error: () => {
         this.notFound.set(true);
