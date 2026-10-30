@@ -14,9 +14,9 @@
 ## 1. Executive verdict
 
 OPEN-MARINE contains a **real, coherent engineering foundation** — a Signal K-derived data contract,
-a working Angular marine UI and chart rendering stack, a chart import/tile service, sensor-gateway
-parsers with the only executed unit tests in the programme, a simulation bench, and an autopilot
-safety architecture expressed in code and firmware. It is **not** a commercial product, and it is
+an implemented Angular marine UI and chart rendering stack (static evidence; not executed in this
+audit), a chart import/tile service, sensor-gateway parsers with the only executed unit tests in the
+programme, a simulation bench, and an autopilot safety architecture expressed in code and firmware. It is **not** a commercial product, and it is
 **not licensed for reuse**: the public repository has no licence, no contributor assignments, and
 nearly half of the current tree was last modified by an author whose contractual position is
 undocumented. The audit therefore separates three conclusions: (a) **engineering reuse is real but

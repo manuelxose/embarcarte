@@ -117,7 +117,7 @@ Aggregation was performed by a temporary Node.js script in `%TEMP%` (not committ
 Notes:
 
 - `manuelxgon@gmail.com` has only merge commits (GitHub web-merge committer `noreply@github.com`); its 9 commits are pull-request merges #2, #4, #5, #6, #7, #8, #9, #10, #11.
-- The 4,613 ever-touched files of the tecnoria identity include **3,846 chart-cache PNG tiles** that were tracked and later deleted; current-tree impact is 534 files.
+- The 4,613 ever-touched files of the tecnoria identity include **3,843 chart-cache PNG tiles** (of 3,846 PNG additions ever) that were tracked and later deleted; current-tree impact is 534 files.
 - The 7,691 "binary touches" of the tecnoria identity are dominated by those PNG tiles; mgonzalezv's 7 binary touches include the audio and icon assets discussed in section 4.4.
 - The display name `manuelxose` is shared by two e-mail addresses. Whether they are the same natural person is an assumption supported by the identical display name and the merge-commit pattern, **not** a verified identity assertion.
 
@@ -260,7 +260,7 @@ The repository itself ships **no chart, bathymetry, weather or geospatial datase
 | IHM RasterENC WMTS | "IHM Terms of Use"; not valid for navigation | online-only; caching restricted | `LEGAL_REVIEW_REQUIRED` |
 | IHM S-63 ENC | "Licensed through IC-ENC / authorized distributors" | OEM/USERPERMIT supplier agreement required; bypass not implemented (good) | `BLOCKED` (no supplier agreement in evidence) |
 | IHM/INSPIRE coastline (WFS) | `CC BY 4.0` (catalog) | attribution | `LEGAL_REVIEW_REQUIRED` (terms confirmation) |
-| CNIG / IHM bathymetry (MBAR) | `CC BY 4.0` (catalog) | attribution | `LEGAL_REVIEW_REQUIRED` |
+| CNIG / IHM bathymetry (MBAR) | `CC BY 4.0` repository label — **the label is incorrect**: actual licence CC-BY-NC 4.0 and not for navigation (see D-02, data-rights MD-11) | attribution; non-commercial only; not for navigation | `LEGAL_REVIEW_REQUIRED` |
 | EMODnet Bathymetry (WMS/WCS) | "EMODnet Data Policy"; docs require EU CC BY 4.0 attribution | attribution; no restriction found on derived products in repository evidence | `PASS with attribution` |
 | GEBCO grid | "GEBCO Terms of Use" | attribution; terms not reproduced in repository | `LEGAL_REVIEW_REQUIRED` |
 | NOAA ENC / NOAA WMS | `Public Domain` | no-endorsement notice | `PASS with notice` |
@@ -337,7 +337,7 @@ Consequence: even though `HEAD` is cleaner, the public repository history distri
 | D-03 | Ownership confirmation and assignment/licence from the `oficina@tecnoriasl.com` identity and the entity behind that domain | 51.7% of current files; company-style author domain | EMBARCARTE + author/company | Critical |
 | D-04 | Employment/consulting contracts review | Corporate author domains imply possible employer ownership | EMBARCARTE + counsel | Critical |
 | D-05 | AI-tool usage record and AI policy (Anthropic/Claude, OpenAI/Codex, Copilot) covering commits and assets | 5 AI-authored commits + agent branches + unprovenanced audio; tool terms unrecorded | Engineering + counsel | High |
-| D-06 | `NOTICE` / third-party notices bundle for releases | 1,034-row inventory; Apache-2.0 (35 rows) and CC-BY obligations unmet | Engineering | High |
+| D-06 | `NOTICE` / third-party notices bundle for releases | 1,034-row inventory; 38 rows in the Apache-2.0 notice family (35 raw Apache-2.0 declarations + 3 dual-licensed) and CC-BY obligations unmet | Engineering | High |
 | D-07 | Asset provenance records (WAV, sprite, logo, favicon, webmanifest) | Authorship/licence cannot be established | Engineering + design | High |
 | D-08 | Data-provider permissions: IHM/IC-ENC (S-63), EMODnet attribution, GEBCO terms, Copernicus terms, Open-Meteo/OWM plans, Puertos authorisation, MeteoGalicia/AEMET terms, CartoCiudad, Esri basemap, OSM tile usage | Runtime and cached data are central to the product; some terms restrict redistribution | Product + counsel + data owners | High |
 | D-09 | Trademark/name evidence for "Open Marine Instrumentation"/"OMI" and clearance for MAREA | Brand and marketing claims need rights; repo is under a personal account | EMBARCARTE + counsel | High |

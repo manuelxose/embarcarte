@@ -37,7 +37,9 @@ activities stay restricted.
 | MC-02 base | `4317865` (MC-01 head, as required by the stacked-branch rule) |
 | MC-02 branch | `feature/marea-mc02-technology-audit` |
 | Audit-deliverables commit | `cdbb7e76dbadefbd80317c167d562df4d573f78d` — 12 files, +5,207/−38 |
-| Delivery commit | the commit that adds this report, the independent review and the registry status update |
+| Delivery-report commit | `fc4e03cca1bba987de066e2ebedacdb8ed85e1015` — delivery report and registry status |
+| Independent-review commit | the commit that adds `MC-02-REVIEW.md`, the deterministic validator and the review corrections B-1/N-1..N-9 |
+| Final branch head | the metadata commit that records the independent-review commit hash (see PR #8) |
 | Draft PR | [#8](https://github.com/manuelxose/embarcarte/pull/8) — `feature/marea-mc02-technology-audit` → `feature/marea-mc01-agent-foundation` (stacked; retarget to `main` only after PR #7 is merged and the diff reverified) |
 | Merge/deploy | **None.** No tag, no merge, no production deployment |
 
@@ -64,17 +66,18 @@ New (`docs/marea/compliance/`):
 | File | Size | Content |
 |---|---:|---|
 | `MC-02-EXECUTIVE-VERDICT.md` | 14 KB | Decision-oriented verdict, useful technology, risks, product opportunities, decisions |
-| `OPEN-MARINE-CAPABILITY-INVENTORY.md` | 82 KB | 7 workspaces + runtime dirs, 18 capability rows, test evidence, gaps G1–G11, documentation ledger |
+| `OPEN-MARINE-CAPABILITY-INVENTORY.md` | 82 KB | 7 workspaces + runtime dirs, 18 capability rows, test evidence, gaps G1–G14, documentation ledger |
 | `INTELLECTUAL-PROPERTY-CHAIN.md` | 58 KB | Custody, deterministic authorship, rights A–J, missing assignments D-01–D-13, 12-row risk register, licence options |
 | `SOFTWARE-LICENSE-INVENTORY.csv` | 733 KB | 1,034 rows × 21 columns |
 | `LICENSE-NOTICE-AND-DISTRIBUTION-POLICY.md` | 36 KB | Intake gates, notice bundle, source disclosure, container/firmware policy, 20-item release gate, LR-01–LR-18 |
 | `MARINE-DATA-RIGHTS-MATRIX.csv` | 32 KB | 28 provider/dataset rows × 28 columns, official URLs, retrieval dates |
-| `HARDWARE-COMPLIANCE-MATRIX.md` | 91 KB | 13 components + 3 absent, PILOT gate, protocol rights, 81-cell EU/ES/PT matrix |
+| `HARDWARE-COMPLIANCE-MATRIX.md` | 91 KB | 13 components + 3 absent, PILOT gate, protocol rights, 81-cell EU compliance matrix (ES discussed; PT `NOT_YET_ASSESSABLE`) |
 | `MAREA-PRODUCT-REUSE-MAP.md` | 70 KB | Nine products, 83 reuse decision rows, four-axis readiness, mandatory non-assertions |
 | `MAREA-COMMERCIAL-ARCHITECTURE.md` | 49 KB | Four layers, Mermaid diagram, data/authority boundaries, Signal K decision, weather/chart/AIS boundaries |
 | `MC-02-BLOCKERS-AND-DECISIONS.md` | 33 KB | 58 blockers (10 CRITICAL / 37 HIGH / 11 MEDIUM), 8 decisions required |
 | `MC-02-DELIVERY.md` | this file | Delivery evidence |
-| `MC-02-REVIEW.md` | independent review | Reviewer verdict and defects |
+| `MC-02-REVIEW.md` | independent review | Reviewer verdict, 36 verified criteria, defect register |
+| `validation/validate-mc02.py` | validator | Reproducible structural checks (registry, CSVs, blockers, deliverables, references) |
 
 New (`docs/marea/execution/`):
 
@@ -104,7 +107,7 @@ application behaviour, CI/deployment triggers, OPEN-MARINE.
 | Data providers/datasets assessed | 28 |
 | Data rows requiring legal review | 11 |
 | Hardware components identified / absent | 13 / 3 |
-| EU/ES/PT compliance cells | 81 (33 clearly applicable, 10 potentially, 37 N/A with explanation, 1 not yet assessable) |
+| EU compliance regimes × product families (ES transposition discussed; PT `NOT_YET_ASSESSABLE`) | 81 cells (33 clearly applicable, 10 potentially, 37 N/A with explanation, 1 not yet assessable) |
 | Product reuse decision rows | 83 |
 | Blockers recorded | 58 (10 CRITICAL, 37 HIGH, 11 MEDIUM) |
 | Real tests executed in the audit | 23 Python unit tests passed (15 Pico policy, 5 wind NMEA, 3 IMU fusion) |
@@ -142,7 +145,7 @@ Run by the Lead on branch `feature/marea-mc02-technology-audit`:
 
 | Gate | Command | Result |
 |---|---|---|
-| Formatting | `npm run format:check` | PASS (exit 0) |
+| Formatting | `npm run format:check` | PASS (exit 0) — **scope note:** the script covers only `e2e/`, `playwright.config.ts` and selected `scripts/*.mjs`; it does not exercise the delivered Markdown/CSV |
 | Build | `npm run build` | PASS — prerendered 96 static routes |
 | i18n | `npm run test:i18n` | PASS — locale, route and translation checks |
 | Commerce | `npm run test:commerce` | PASS — catalogue, stock, authorization, webhook, security regressions |
@@ -150,9 +153,9 @@ Run by the Lead on branch `feature/marea-mc02-technology-audit`:
 | Backup/restore | `npm run test:backup` | PASS — checksums, integrity, FK, corrupt-copy rejection |
 | E2E | `npm run test:e2e` | PASS — 15/15 Playwright tests (Chromium) |
 | Dependency audit | `npm audit --omit=dev --audit-level=high` | PASS — 0 vulnerabilities |
-| Diff hygiene | `git diff --cached --check` | PASS (exit 0) |
+| Diff hygiene | `git diff --check 4317865..HEAD` | PASS (exit 0) — committed range checked, not only the index |
 
-Deterministic artifact validation (Lead, script outside the repository):
+Deterministic artifact validation (reproducible: `docs/marea/compliance/validation/validate-mc02.py`):
 
 - Master prompt registry: 36 unique prompt IDs, no duplicate row.
 - `SOFTWARE-LICENSE-INVENTORY.csv`: required 12-column header order exact; 1,034 data rows; 21 columns;
@@ -161,10 +164,11 @@ Deterministic artifact validation (Lead, script outside the repository):
 - `MC-02-BLOCKERS-AND-DECISIONS.md`: 58 records; category counts L9/S9/D10/H13/P10/X7; severity counts
   10/37/11; status counts 28 BLOCKED, 22 OPEN, 4 LEGAL_REVIEW_REQUIRED, 1 NOT_YET_ASSESSABLE,
   1 REUSE-CONDITIONAL, 2 BUILD.
-- Required deliverables present: 10/10 at the time of the audit commit.
-- Internal reference check: 125 embarcarte-relative references examined; the only unresolved targets
-  are the two files created after the audit commit (`MC-02-DELIVERY.md`, `MC-02-REVIEW.md`) and
-  OPEN-MARINE-relative citations in evidence tables.
+- Required deliverables present: 10/10 audit deliverables, plus this delivery report and `MC-02-REVIEW.md`.
+- Internal reference check: every `docs/marea/...` reference in the compliance set resolves to an
+  existing EMBARCARTE file; the only targets added after the audit commit were this report and
+  `MC-02-REVIEW.md`. Workspace-relative OPEN-MARINE citations use `OM:`/`EB:` prefixes or workspace
+  paths and were resolved against the audited revision rather than the EMBARCARTE root.
 - OPEN-MARINE integrity: `git status --porcelain` empty, `rev-parse HEAD` still `403941b886...`.
 - No licence file added in either repository; no `LICENSE`/`COPYING`/`NOTICE` created.
 
@@ -184,7 +188,7 @@ Deterministic artifact validation (Lead, script outside the repository):
 | G8 Product reuse | PASS | Nine products mapped, 83 decision rows |
 | G9 Architecture | PASS | Four layers + Mermaid + authority boundaries |
 | G10 Documentation | PASS | All required deliverables with provenance |
-| G11 Independent review | PENDING at audit commit | `MC-02-REVIEW.md` (Agent F) |
+| G11 Independent review | PASS — 36/36 criteria VERIFIED, 0 partial, 0 not verified, 1 blocking delivery-ordering defect closed by the review commit, 9 non-blocking corrections applied | `MC-02-REVIEW.md` (Agent F) |
 | G12 Repository safety | PASS | OPEN-MARINE clean; no merge/deploy/licence/copy |
 | G13 Existing gates | PASS | §7 above |
 | G14 Roadmap | PASS | Registry reconciled (D-001); 36 prompts preserved |
@@ -206,8 +210,16 @@ inspect the actual branch/diff and PR, re-run the gates, verify representative c
 check the registry reconciliation and produce `MC-02-REVIEW.md` with a PASS/PARTIAL/BLOCKED/FAIL
 verdict and blocking/non-blocking defects.
 
-**Review verdict: recorded in `MC-02-REVIEW.md`.** Findings and any corrections are applied before the
-final delivery commit.
+**Review verdict: PASS (audit scope) — 36 criteria verified, 0 partial, 0 not verified, 0 blocked.**
+
+The reviewer inspected the real branch, diff and PR, re-ran all repository gates and the 23 Python
+tests, re-derived every headline count, re-fetched six official sources and sampled 14 OPEN-MARINE
+`file:line` citations. It raised one blocking delivery-ordering defect (B-1: prompt 02 was marked
+`PASS` while `MC-02-REVIEW.md` was not yet in the committed tree) and nine non-blocking precision
+items (N-1..N-9). B-1 is closed by the independent-review commit that adds this file, and N-1..N-9
+are addressed in the same commit. The review confirms the audit evidence re-derives and that **no
+product, licence, data source or hardware is cleared**; it authorises no merge, deployment or
+commercial claim. Residual risks are listed in `MC-02-REVIEW.md` §10 and remain open.
 
 ## 11. Limitations
 
