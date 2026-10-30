@@ -6,6 +6,7 @@
 | Milestone | MC-05 (Master Prompt 05/36) — product-definition batch 1 |
 | Reviewer | `qa-reviewer` — Independent Product Reviewer (not an author of any MC-05 deliverable) |
 | Commit under review | `88c4300` on `feature/marea-mc05-nav-hub-ais-products`; base `8ac6d69` (MC-04 HEAD) |
+| Post-verdict addendum | `71a0a41` (corrective commit for DEF-01..DEF-05) — see §11; original verdict and findings unchanged |
 | Review date | 2026-10-30 |
 | Review scope | 13 product-definition deliverables + validator/contract + decision D-007 + real diff vs `8ac6d69` |
 | Verdict | **PASS** for the MC-05 product-definition scope (with 5 MINOR corrective actions, no BLOCKING defect) |
@@ -323,3 +324,70 @@ executed, not from any author's summary.
 **MC-05 product-definition scope: PASS (with MINOR corrective actions).** **Commercial release: BLOCKED —
 `NOT_FOR_SALE`; brand/IP clearance `NOT_GRANTED`/`NOT_CLEARED`.** No MAREA product is released, certified,
 stocked or commercially available, and nothing in this report may be read as such.
+
+---
+
+## 11. Post-verdict corrective-action verification (addendum at `71a0a41`)
+
+**Context.** After the PASS above, the Lead fixed all five MINOR findings in commit `71a0a41` ("fix(mc05): close
+independent-review findings DEF-01 to DEF-05"), on top of the reviewed `88c4300`. This addendum re-verifies the
+fixes and records residuals. The original verdict and findings in §§1–10 stand unchanged: **PASS** for the
+MC-05 product-definition scope, **commercial release BLOCKED — `NOT_FOR_SALE`**.
+
+**Reviewed commit:** `71a0a41` on `feature/marea-mc05-nav-hub-ais-products`, parent `88c4300`, base `8ac6d69`.
+Working tree clean before this addendum; the only file I wrote is this report.
+
+### 11.1 Fix-by-fix verification
+
+| Id | Fix claimed | Evidence inspected | Re-verification | Status |
+| --- | --- | --- | --- | --- |
+| DEF-01 | New scripts are Prettier-formatted and in the `format`/`format:check` lists | `package.json:18–19` now list `scripts/check-marea-products.mjs` and `scripts/check-marea-products.test.mjs`; `format:check` prints them in its command line | `npx prettier --check` on both files → exit 0 ("All matched files use Prettier code style!"); `npm run format:check` → exit 0 with the files actually in scope | **FIXED** |
+| DEF-02 | README §8 now governs bundle-context hypotheses (START EUR 499, CRUISE EUR 1,399: context only, always `HYPOTHESIS_UNAPPROVED`, never in copy, never a sum of edition prices) | `README.md:202–207` new paragraph; D3 `:266`/`:533` remain labelled "hypothesis EUR 1,399" and "ecosystem context only" | Copy scan for `1,399` / bundle price → no price in any of the six copy files (only unpriced "CRUISE ... not presented as purchasable" sentences); contract and validator still PASS | **FIXED** |
+| DEF-03 | Five retained editions `DEFINED` + `publicationConditional: true`; AIS-CONNECTED `CONDITIONAL` + `NOT_YET_JUSTIFIED`; validator enforces both | JSON `:352–353, :379–380, :974–975, :1003–1004, :1546–1547` (`DEFINED`/true) and `:1576–1578` (`CONDITIONAL`, true, `NOT_YET_JUSTIFIED`); validator rule `:1072–1121`; new test `check-marea-products.test.mjs:663` | Unit tests 38/38; **independent mutations**: retained `NAV-ESSENTIAL` set to `CONDITIONAL` → `FAIL json.editions` exit 1 ("must be \"DEFINED\" at MC-05"); AIS-CONNECTED set to `DEFINED` → `FAIL json.editions` (2 failures); `publicationConditional=false` → `FAIL json.editions` exit 1 | **FIXED** |
+| DEF-04 | D7 §1.2 CTA pair aligned to the claims policy | `CUSTOMER-JOURNEYS-NAV-HUB-AIS.md:53` now quotes **"See the specification"** / «Ver la especificación» + **"Request a compatibility review"** / «Solicitar estudio de compatibilidad»; D1 F20 `:285` and D8 copy `nav.en.md:202` already matched | Text verified in place; no purchase CTA introduced anywhere; no other CTA wording changed in the diff | **FIXED within MC-05 scope** — see residual note 11.3 |
+| DEF-05 | D2 F04 no longer implies universal professional installation | `MAREA-HUB-COMMERCIAL-SPEC.md:110` now says delivered "either as a documented self-install configuration or through the EMBARCARTE professional installation service ... according to the assessed configuration (professional installation is offered and, for configurations outside the documented low-risk set, required — it is never universally imposed or universally assumed)" | Wording now consistent with F07 `:131`, F10 `:152` and D4 H21 `:170`; no inclusion/price claim added | **FIXED** |
+
+### 11.2 Commands re-run at `71a0a41` (targeted re-verification)
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `node scripts/check-marea-products.mjs` | 0 | `Summary: 22 checks run, 22 passed, 0 failed; 15 of 15 scoped files read.` / `RESULT: PASS` |
+| `node --test scripts/check-marea-products.test.mjs` | 0 | `tests 38`, `pass 38`, `fail 0` (was 37; the new retained-edition test is the 38th) |
+| `npm run test:products` | 0 | 22/22 PASS, `RESULT: PASS` |
+| `npm run test:products:unit` | 0 | 38/38 pass |
+| `npm run format:check` | 0 | "All matched files use Prettier code style!"; both MC-05 scripts now printed in the checked set (DEF-01 coverage closed) |
+| `npx prettier --check scripts/check-marea-products.mjs scripts/check-marea-products.test.mjs` | 0 | both files clean |
+| `git diff --check` | 0 | no whitespace errors |
+| `git diff 8ac6d69..HEAD -- src public e2e .github` | 0 | empty — scope unchanged |
+
+Branch diff scope at `71a0a41`: `git diff --stat 8ac6d69..HEAD` = **21 files** (the 20 authorised files from
+`88c4300` plus this review report, which the Lead committed in `71a0a41`; it is inside
+`docs/marea/products/**`). No dependency change (`package.json` diff is still only the script/format lines), no
+`src/`, `public/`, `e2e/`, `.github/` or commerce change. The commit additionally Prettier-reformats the
+validator/test (formatting-only in the parts not covered by DEF-03) and adds extra affirmative price-approval
+prohibition patterns (e.g. "PVP confirmado", "price is final"); the full 22-check/38-test suite passes, so no
+behavioural regression was found.
+
+I did **not** re-run `build`, `test:e2e`, `test:brand`, `test:i18n`, `test:commerce`, `test:seo` or `test:backup`
+for this addendum: the diff touches only `docs/marea/products/**`, `scripts/check-marea-products*` and the
+`format` lists in `package.json` — no input of those gates — and `git diff 8ac6d69..HEAD -- src public e2e
+.github` is empty, so their PASS results recorded at `88c4300` remain valid and untouched. `npm audit` is
+unaffected (no dependency change). This is a targeted re-verification, not a second full gate run.
+
+### 11.3 Residual note on DEF-04 (not a new finding, not an MC-05 defect)
+
+`docs/marea/brand/BRAND-VOICE-ES-EN.md:184` still prescribes «Ver la definición del producto» / "View the product
+definition" for `CONCEPT / DEFINED`, while `docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md:140` (the
+enforcement document) allows "See the specification". This is an MC-03-era governance inconsistency in a file
+outside MC-05's authorised write scope (the MC-05 diff correctly does not touch `docs/marea/brand/**`). DEF-04 is
+therefore fixed for the MC-05 deliverables (D7, D1, D8), and the remaining brand-doc alignment is a
+recommendation for a later brand-governance pass — not a reason to reopen this milestone.
+
+### 11.4 Addendum conclusion
+
+All five MINOR findings are verified fixed in `71a0a41` and no new defect or gate regression was introduced by
+the corrective commit. The original verdict stands: **PASS (MC-05 product-definition scope)** with the residual
+brand-doc wording note above; **commercial release remains BLOCKED — `NOT_FOR_SALE`, brand/IP
+`NOT_GRANTED`/`NOT_CLEARED`**. Nothing here releases, certifies, stocks or offers any MAREA product for sale.
+D12 (`MC-05-DELIVERY.md`) and the `MASTER-PROMPT-REGISTRY.md` row 05 update remain expected post-verdict
+deliverables (OBS-03 unchanged).
