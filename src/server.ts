@@ -15,7 +15,7 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 const SITE_URL = process.env['SITE_URL'] ?? 'https://embarcarte.com';
 
 const app = express();
-const angularApp = new AngularNodeAppEngine();
+const angularApp = new AngularNodeAppEngine({ trustProxyHeaders: ['x-forwarded-for'] });
 
 // Detrás de Caddy: confiar en X-Forwarded-For para la IP real del cliente.
 app.set('trust proxy', 1);
