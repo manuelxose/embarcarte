@@ -486,3 +486,161 @@ safety capability as a defect. (d) Nothing here is available; all prices remain 
 `docs/marea/products/CUSTOMER-JOURNEYS-PILOT-SENSE-WATCH.md`.
 
 **Status effect.** No lifecycle change, no blocker cleared, no price approved.
+
+## D-012 — 2026-10-30 — Batch-03 edition set frozen at seven objects; DISPLAY size stays conditional
+
+**Context.** `PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md` fixes the last family structure of the programme. Two
+batch-03 objects are unusually easy to mistranslate into a retail promise: the DISPLAY size designation (a
+7-inch working class) and the conditional large display. Neither has a selected panel, enclosure or BOM, and both
+were proposed in the portfolio as "DISPLAY 7" and "DISPLAY 10/12".
+
+**Decision.** The batch-03 edition set is frozen at exactly seven objects: `DISPLAY-7`,
+`DISPLAY-LARGE-CONDITIONAL`, `WEATHER-STANDARD`, `WEATHER-PRO`, `FLEET-START`, `FLEET-BUSINESS`,
+`FLEET-ENTERPRISE`. No eighth object and no generation label, measured size or version suffix may be added.
+`DISPLAY-7` is a conditional starting hypothesis (`SIZE_NOT_FROZEN`, `HARDWARE_NOT_SELECTED`); the 7-inch-class
+designation is a commercial working label, never a measured specification. The EUR 699 hypothesis describes the
+minimum display package only; installation, NAV, charts, WEATHER, HUB, AIS and extra mounts are never included.
+`DISPLAY-LARGE-CONDITIONAL` carries no price and no measured size, and may be withdrawn without commercial
+consequence if hardware selection does not support a second size class.
+
+**Rationale.** The portfolio text "DISPLAY 10/12" was a range for a future decision, not a product. If the
+programme carried that range into pages, editions and bundles, a later hardware decision would have to contradict
+published material. Making the conditional object explicit — with an exit — lets engineering and procurement
+decide the second size on cost evidence instead of on a mock-up.
+
+**Consequences.** (a) MC-08 bundles may reference these objects but cannot add or rename one; no bundle may
+present `DISPLAY-LARGE-CONDITIONAL` as included hardware. (b) MC-20–MC-24 catalogue and page work reuse this
+object set verbatim. (c) The validator and reviewer treat an added edition object, a published size or a price on
+the conditional object as a defect. (d) Nothing is available; prices stay `HYPOTHESIS_UNAPPROVED` or
+`NOT_ESTABLISHED`.
+
+**Evidence.** `docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md` §2, §6 and §8 (CD-01, CD-02, CD-03);
+`docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md`; `docs/marea/products/README.md` §26–§27;
+`docs/marea/products/product-definitions.batch-03.json`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved, no size frozen.
+
+## D-013 — 2026-10-30 — WEATHER uses one entitlement ledger; NAV and WEATHER never bill the same entitlement twice
+
+**Context.** The portfolio states that WEATHER is separately useful and that NAV Pro may include WEATHER rights.
+Without a recorded rule, the most likely commercial defect in the programme is a customer paying twice for one
+forecast entitlement — once through NAV Pro and again through a WEATHER subscription — or losing user-owned
+saved locations when NAV is cancelled.
+
+**Decision.** WEATHER is one product with one entitlement ledger and two consumer editions. A customer may buy
+WEATHER standalone. NAV Pro may include WEATHER Standard-equivalent read access only where provider rights allow
+(`CONDITIONAL`). An upgrade from Standard to Pro applies a prorated credit. The same entitlement is never billed
+twice across NAV and WEATHER, and no NAV or WEATHER surface may present a second charge for an entitlement
+already active. Cancelling NAV never deletes user-owned WEATHER records (saved locations, preferences); a
+read-only export window applies (hypothesis 30 days, subject to legal review). Provider-licence loss produces an
+honest unavailable-data state with attribution retained; an expired entitlement never renders a fabricated or
+frozen forecast as current.
+
+**Rationale.** This is the pricing rule most likely to be lost between a portfolio table and a billing engine, and
+the one most likely to become a customer complaint or a consumer-law problem. Recording it now makes MC-16 and the
+later commerce milestones implement a stated contract rather than invent one.
+
+**Consequences.** (a) Any billing design that creates two independent WEATHER entitlements for one customer is a
+defect. (b) MC-16 must consume this rule; MC-07 implements no billing. (c) The validator rejects a batch-03
+contract that permits double billing. (d) Provider rights remain `NOT_GRANTED`; the rule does not create a right.
+
+**Evidence.** `docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md` §8 (CD-04);
+`docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md` F12; `docs/marea/products/README.md` §25 rule 6 and §27;
+`docs/marea/products/product-definitions.batch-03.json` (`navDoubleBillingAllowed: false`).
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved.
+
+## D-014 — 2026-10-30 — FLEET is priced per vessel per month, VAT excluded; Enterprise is a contracted tier with no invented SLA
+
+**Context.** The portfolio hypothesis is "from EUR 49 per vessel per month, excluding VAT". FLEET is the only
+B2B SaaS family in the programme, and B2B pages routinely acquire "unlimited" language, a fabricated uptime
+figure and a standard-checkout Enterprise SKU. None of those has evidence.
+
+**Decision.** FLEET pricing is per vessel per month, VAT excluded. `FLEET-START` (from EUR 49) and
+`FLEET-BUSINESS` (EUR 79) are `HYPOTHESIS_UNAPPROVED`; no organisation fee is approved; seats are included in
+those tiers as a hypothesis, not a committed entitlement; onboarding, installation, connectivity and hardware are
+separately quoted. `FLEET-ENTERPRISE` is a `CONTRACTED_TIER`, not a checkout SKU, with `NOT_ESTABLISHED` price and
+no invented SLA. Any service level exists only as a contracted commitment with measurement evidence; otherwise
+the statement is `NO_SLA_ESTABLISHED`. No "unlimited" vessels, users, storage or API allowance may be promised in
+any edition, and telemetry, storage and API limits are stated explicitly.
+
+**Rationale.** A per-vessel price is the established shape in professional maritime software, but the evidence is
+comparator-only and the unit economics are unproven. Freezing the pricing *shape* and the Enterprise *status*
+separately from the amount allows MC-08 packaging and MC-16 billing to proceed without converting a hypothesis
+into a promise.
+
+**Consequences.** (a) MC-08 may build the MAREA FLEET package as a separate integrated offer; the package is not a
+FLEET subscription and its content and price are not decided here. (b) No FLEET document may state an uptime
+figure or a security certification. (c) The validator rejects a batch-03 contract with an established SLA,
+unlimited entitlement or remote control. (d) No customer production data may be used to test FLEET.
+
+**Evidence.** `docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md` §8 (CD-05, CD-06);
+`docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md` F13/F14/F15; `docs/marea/products/PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-03.md` §9;
+`docs/marea/products/FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md`; `docs/marea/products/README.md` §26–§27.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved, no SLA established.
+
+## D-015 — 2026-10-30 — Safety, security and data portability are never edition features; the nine market distinctions are engineering requirements
+
+**Context.** MC-06 recorded that safety and honesty are never edition features (D-011). Batch 03 introduces a
+physical display that must never gain steering authority, a data service that must never fabricate certainty and a
+multi-tenant SaaS whose isolation cannot be sold as a premium tier. The programme also relies on nine distinctions
+that customers routinely get wrong (NAV≠DISPLAY, WEATHER≠NAV, FLEET SaaS≠package, WATCH≠FLEET, DISPLAY≠tablet,
+SENSE≠WATCH, HUB≠sensor, AIS=receive-only, PILOT=supervised local steering).
+
+**Decision.** The following are in every edition of every batch-03 product and are never paid upgrades or hidden
+add-ons: tenant isolation and server-side authorization; role scoping, revocation and audit; customer data export
+and deletion; stale/lost/missing-state honesty; subscription isolation (local safety-relevant function survives an
+expired entitlement); device/organisation ownership transfer; provider attribution; and the read-only telemetry
+boundary. The nine distinctions are engineering requirements, pre-empted at the point of price, edition choice and
+quotation: no DISPLAY steering authority; no NAV or WEATHER double billing; no FLEET package silently included in
+the SaaS subscription; no FLEET vessel control; no tablet-equals-DISPLAY claim; no SENSE remote alerting; no HUB
+sensing claim; AIS receive-only; PILOT supervised and local.
+
+**Rationale.** Edition-gated safety and edition-gated privacy are the classic path to a product where the cheap
+tier is unsafe or non-compliant. Making the boundary explicit also gives the reviewer a checklist that does not
+depend on reading the whole dossier.
+
+**Consequences.** (a) Any batch-03 marketing, pricing or contract text that presents isolation, export, audit,
+stale-state honesty or the no-control boundary as an upgrade is a defect. (b) MC-08 bundles may not re-gate them.
+(c) The validator and the independent review enforce both lists.
+
+**Evidence.** `docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md` §6 and §8 (CD-07, CD-08);
+`docs/marea/products/README.md` §25 rule 10 and §31; `docs/marea/products/MAREA-NINE-PRODUCT-ECOSYSTEM.md` §4 and §7.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved.
+
+## D-016 — 2026-10-30 — One product-governance system across three batches; batch-03 claim, price and validation rules
+
+**Context.** MC-07 closes the definition phase with three new families, but the programme now has three machine
+contracts, nine dossiers, nine copy pairs and one validator. The risk at this point is architectural drift: a
+second lifecycle, a fourth evidence vocabulary, a batch-03-only validator or a price rule invented for the new
+products.
+
+**Decision.** MC-07 extends the existing system and creates no parallel one. It follows the MC-05 contract and the
+MC-06 addendum exactly: the same 24 fields, the same six evidence classes, the same seven-state lifecycle (D-007),
+the same nine readiness dimensions, the same claim rules and the same validator, extended with a `BATCH_03`
+configuration inside the existing `BATCHES` array. The batch-03 claim rules of `README` §25 apply (DISPLAY physical
+claims are targets not measurements; WEATHER never fabricates certainty and tracks provider rights per variable;
+FLEET claims no deployment, certification, SLA or control path). The only permitted batch-03 price figures are
+`DISPLAY-7` from EUR 699, `WEATHER-STANDARD` from EUR 49/year, `WEATHER-PRO` EUR 89/year, `FLEET-START` from EUR 49
+per vessel/month and `FLEET-BUSINESS` EUR 79 per vessel/month, all `HYPOTHESIS_UNAPPROVED`; `DISPLAY-LARGE-CONDITIONAL`
+and `FLEET-ENTERPRISE` have no price. The edition-level register codes `DSP`, `WX` and `FL` are the editions
+document's authority and map to — never replace — the dossier capability codes. Batch-01 and batch-02 promises are
+not weakened: the nine-product validator continues to enforce both earlier batches.
+
+**Rationale.** Documentation milestones are cheap to fork and expensive to reconcile. The only reason nine
+families can be reviewed as one portfolio is that they share vocabulary; the only reason a future milestone can
+consume them is that they share a contract family. A batch-03-only validator would immediately become a second
+source of truth.
+
+**Consequences.** (a) Any new lifecycle state, evidence class or readiness value introduced by a later milestone is
+a programme-level decision, not a local one. (b) MC-08 bundles, MC-20–MC-24 pages and MC-32–MC-36 verification
+consume the three contracts together. (c) The reviewer's audit target is the single MC-07 commit plus its diff
+from MC-06 HEAD. (d) Nothing here is available; the programme remains a definition phase.
+
+**Evidence.** `docs/marea/products/README.md` §24–§32; `docs/marea/products/product-definitions.batch-03.json`;
+`scripts/check-marea-products.mjs`; `docs/marea/products/MC-07-DELIVERY.md`;
+`docs/marea/products/MC-07-REVIEW.md`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved, no publication authorised.

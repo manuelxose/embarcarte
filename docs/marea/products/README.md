@@ -1,25 +1,26 @@
-# MAREA — Product definitions: conventions and canonical contract (MC-05 / MC-06)
+# MAREA — Product definitions: conventions and canonical contract (MC-05 / MC-06 / MC-07)
 
 | Field | Value |
 | --- | --- |
-| Document ID | MC-05 / MC-06 PRODUCT-DEFINITION-CONVENTIONS |
-| Milestone | MC-05 (Master Prompt 05/36) + MC-06 addendum (Master Prompt 06/36) |
+| Document ID | MC-05 / MC-06 / MC-07 PRODUCT-DEFINITION-CONVENTIONS |
+| Milestone | MC-05 (05/36) + MC-06 addendum (06/36) + MC-07 addendum (07/36) |
 | Date | 2026-10-30 |
 | Owner | Lead (Chief Product Officer) |
 | Status | INTERNAL. Not a shop catalogue, not a published product page, not a commercial offer |
-| Scope | MC-05: NAV, HUB, AIS. MC-06: PILOT, SENSE, WATCH — six complete final-product commercial definitions, nine families governed |
-| Binds | every file under `docs/marea/products/`, `scripts/check-marea-products.mjs`, `product-definitions.batch-01.json`, `product-definitions.batch-02.json` |
+| Scope | MC-05: NAV, HUB, AIS. MC-06: PILOT, SENSE, WATCH. MC-07: DISPLAY, WEATHER, FLEET — nine complete final-product commercial definitions across three batches |
+| Binds | every file under `docs/marea/products/`, `scripts/check-marea-products.mjs`, `product-definitions.batch-01.json`, `product-definitions.batch-02.json`, `product-definitions.batch-03.json` |
 
-This document is the shared contract for the six product dossiers. Every specialist, the machine-readable
+This document is the shared contract for the nine product dossiers. Every specialist, the machine-readable
 contract and the validator follow it. It does not replace the source documents; it fixes the vocabulary so
 that independent writers cannot contradict each other. Sections 1–11 are the MC-05 contract and remain in
 force unchanged for NAV, HUB and AIS. Sections 12–22 are the MC-06 addendum and bind PILOT, SENSE and WATCH.
-Where the addendum and sections 1–11 differ, the addendum states the difference explicitly and the
-difference is recorded as a decision in `docs/marea/execution/DECISION-LOG.md`.
+Sections 24–32 are the MC-07 addendum and bind DISPLAY, WEATHER and FLEET; they add no competing lifecycle,
+readiness, evidence or field model. Where an addendum and sections 1–11 differ, the addendum states the
+difference explicitly and the difference is recorded as a decision in `docs/marea/execution/DECISION-LOG.md`.
 
 ## 1. Product status — the one thing that must never be misread
 
-These products are **completely specified and not for sale**. All of the following are true at MC-06:
+These nine products are **completely specified and not for sale**. All of the following are true at MC-07:
 
 | Dimension | Value |
 | --- | --- |
@@ -48,6 +49,9 @@ Only these identifiers may appear in this milestone. They are already fixed by
 | `PILOT` | MAREA PILOT | HARDWARE_SOFTWARE | `PILOT-COASTAL`; `PILOT-SAIL`; `PILOT-PRO` (installation package, §18) |
 | `SENSE` | MAREA SENSE | HARDWARE | `SENSE-WIND`, `SENSE-POWER`, `SENSE-BILGE`, `SENSE-TANKS`, `SENSE-ENV`; kits `SENSE-ESSENTIALS`, `SENSE-SAIL`, `SENSE-SYSTEMS` |
 | `WATCH` | MAREA WATCH | HARDWARE_SERVICE | `WATCH-CORE` MAREA WATCH Core; `WATCH-PLUS` MAREA WATCH Plus |
+| `DISPLAY` | MAREA DISPLAY | HARDWARE_SOFTWARE | `DISPLAY-7` MAREA DISPLAY 7; `DISPLAY-LARGE-CONDITIONAL` MAREA DISPLAY Large (conditional, §27) |
+| `WEATHER` | MAREA WEATHER | SOFTWARE | `WEATHER-STANDARD` MAREA WEATHER Standard; `WEATHER-PRO` MAREA WEATHER Pro |
+| `FLEET` | MAREA FLEET | SOFTWARE | `FLEET-START` MAREA FLEET Start; `FLEET-BUSINESS` MAREA FLEET Business; `FLEET-ENTERPRISE` MAREA FLEET Enterprise (contracted tier, §27) |
 
 Rules: exactly one space between the master brand and the family (`MAREA PILOT`, never `MAREA-PILOT` or
 `Marea Pilot`); edition names follow the family; no new family, bundle or edition may be invented; MAREA is a
@@ -74,7 +78,7 @@ six plus a terminal retirement state, and the mapping is recorded as decision D-
 | `COMMERCIALLY_AVAILABLE` | explicitly approved release | RELEASED |
 | `RETIRED` | withdrawn from sale, support defined | RETIRED |
 
-At MC-06 all six products are `DEFINED`. Any document that states another lifecycle state for a product is
+At MC-07 all nine products are `DEFINED`. Any document that states another lifecycle state for a product is
 wrong and fails the validator.
 
 ## 4. Readiness dimensions — never collapse into one flag
@@ -101,9 +105,18 @@ The honest values at MC-06:
 | SENSE | `PARTIALLY_VERIFIED` (parser-level unit tests only, see §15) | `NOT_SELECTED` | `NOT_STARTED` | `NOT_GRANTED` |
 | WATCH | `NOT_VERIFIED` | `NOT_SELECTED` | `NOT_STARTED` | `NOT_GRANTED` |
 
-`definition`, `licensing`, `pricing`, `brandPublication` and `availability` are the same for all six
+The honest values for the batch-03 families at MC-07:
+
+| Product | engineering | hardware | compliance | dataRights |
+| --- | --- | --- | --- | --- |
+| DISPLAY | `NOT_VERIFIED` | `NOT_SELECTED` | `NOT_STARTED` | `NOT_GRANTED` |
+| WEATHER | `NOT_VERIFIED` | `NOT_APPLICABLE_SOFTWARE_PRODUCT` | `NOT_STARTED` | `NOT_GRANTED` |
+| FLEET | `NOT_VERIFIED` | `NOT_APPLICABLE_SOFTWARE_PRODUCT` | `NOT_STARTED` | `NOT_GRANTED` |
+
+`definition`, `licensing`, `pricing`, `brandPublication` and `availability` are the same for all nine
 products: `COMPLETE_TARGET_SPECIFICATION`, `NOT_CLEARED`, `HYPOTHESIS_UNAPPROVED`, `NOT_GRANTED`,
-`NOT_FOR_SALE`.
+`NOT_FOR_SALE`. `NOT_APPLICABLE_SOFTWARE_PRODUCT` means the product has no hardware of its own to select;
+it still depends on customer devices, connected equipment and licensed data.
 
 ## 5. Evidence classes — every claim is labelled
 
@@ -123,7 +136,7 @@ rejects it).
 
 ## 6. Canonical 24 fields
 
-Identical numbering and keys in all six dossiers, in the JSON contracts and in the validator.
+Identical numbering and keys in all nine dossiers, in the three JSON contracts and in the validator.
 
 | # | Key | Field |
 | --- | --- | --- |
@@ -218,8 +231,9 @@ Bundle prices are **not decided in this milestone** (bundle governance is MC-08)
 minimum-price hypothesis from `COMMERCIAL-PORTFOLIO.md` (`MAREA START` EUR 499, `MAREA CRUISE` EUR 1,399,
 `MAREA SAIL` EUR 1,990, `MAREA PROTECT` EUR 399 plus subscription, `MAREA COMPLETE` EUR 3,490) only as
 ecosystem context, always labelled `HYPOTHESIS_UNAPPROVED`, never as a bundle offer, never as an explicit sum
-of the edition hypotheses, and never in the customer copy files. The six batch-01 edition figures and the
-batch-02 figures of §17 remain the only product prices any dossier may state.
+of the edition hypotheses, and never in the customer copy files. The six batch-01 edition figures, the
+batch-02 figures of §17 and the batch-03 hypotheses of §26 remain the only product prices any dossier may
+state.
 
 ## 9. MC-02 blocker traceability (batch 01)
 
@@ -472,3 +486,221 @@ No change to `src/`, `public/`, checkout, prices, stock, payment configuration, 
 no purchase flow, no image generation, no chargeable API call, no hardware, radio or steering test. Documents
 here do not make any SKU orderable. Batch-02 machine-readable product data lives only in
 `product-definitions.batch-02.json` and is never a commerce data model.
+
+---
+
+# MC-07 ADDENDUM — DISPLAY, WEATHER and FLEET (binding)
+
+MC-07 closes the product-definition programme: after this batch all nine families have a complete commercial
+definition, one lifecycle, one readiness model, one evidence vocabulary and one machine-contract family. The
+addendum **adds no competing governance system**; it extends the MC-05 contract and the MC-06 addendum to the
+last three families and records the batch-03 claim, price, edition and validation rules that the validator and
+the independent reviewer enforce.
+
+## 24. Batch-03 scope and deliverables
+
+| ID | Deliverable | Owner function |
+| --- | --- | --- |
+| D1 | `MAREA-DISPLAY-COMMERCIAL-SPEC.md` — 24-field dossier | DISPLAY Product Director |
+| D2 | `MAREA-WEATHER-COMMERCIAL-SPEC.md` — 24-field dossier | WEATHER Product Director / Marine Data Licensing |
+| D3 | `MAREA-FLEET-COMMERCIAL-SPEC.md` — 24-field dossier | FLEET Product Director |
+| D4 | `PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md` | Commercial, UX and Localization Specialist |
+| D5 | `PRODUCT-COMPATIBILITY-DISPLAY-WEATHER-FLEET.md` | Security and Multi-Tenant Architect |
+| D6 | `PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-03.md` | FLEET Product Director / B2B strategist |
+| D7 | `CUSTOMER-JOURNEYS-DISPLAY-WEATHER-FLEET.md` | Commercial, UX and Localization Specialist |
+| D8 | `copy/{display,weather,fleet}.{es,en}.md` — six files, 24 sections each | Product Directors + copywriter |
+| D9 | `PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md` — 30 requirements | Chief Product Officer |
+| D10 | `DISPLAY-HARDWARE-AND-INTERACTION-REQUIREMENTS.md`, `WEATHER-DATA-RIGHTS-AND-FORECAST-CONTRACT.md`, `FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md` | DISPLAY Director; WEATHER/Data Director; Security Architect |
+| D11 | `product-definitions.batch-03.json` | Product Contract and Validation Engineer |
+| D12 | `MAREA-NINE-PRODUCT-ECOSYSTEM.md` | Chief Product Officer |
+| D13 | `scripts/check-marea-products.mjs` + `.test.mjs` extended to nine products | Product Contract and Validation Engineer |
+| D14 | `MC-07-DELIVERY.md` | Lead |
+| D15 | `MC-07-REVIEW.md` | Independent Reviewer |
+| D16 | This README, `MASTER-PROMPT-REGISTRY.md` and `DECISION-LOG.md` updates | Lead |
+
+## 25. Claim rules for batch 03
+
+Rules 1–10 of §7 and rules 1–10 of §16 continue to apply to every file of every batch. For DISPLAY, WEATHER and
+FLEET the following additional rules are binding:
+
+1. **DISPLAY is a physical device, not a software feature.** No document may state a measured screen size, a
+   resolution, a brightness figure, a contrast ratio, an ingress-protection rating, a temperature range, a
+   sunlight-readability result or a glove/wet-touch result. Every physical value is a `REQUIRED_TARGET`,
+   `NOT_ESTABLISHED` or `SIZE_NOT_FROZEN`; MC-04's browser contrast evidence is design evidence only and is
+   never proof of cockpit performance.
+2. **DISPLAY has no PILOT authority.** It may display read-only PILOT status and alarms at most. No engagement,
+   no course change, no motor command and no remote or web-mediated pilot path may be described, planned or
+   implied.
+3. **DISPLAY base software is bounded.** The device's included software never includes unlimited charts, a
+   perpetual NAV Pro entitlement, AIS receiver hardware, a HUB, a steering actuator, every WEATHER dataset or
+   every third-party adapter. Charts (D-01), WEATHER (D-04/D-07), HUB, AIS hardware, adapters and installation are
+   separate or explicitly excluded.
+4. **WEATHER never fabricates certainty.** Forecast, observation, historical dataset, derived calculation,
+   user-entered value and unknown/unavailable data are always distinguished. Every displayed variable carries
+   source, units, valid timestamp, data type, age, method where applicable, licence and limitations. No accuracy
+   percentage, no "official warning authority", no exclusivity and no meteorological guarantee may be claimed.
+   A stale or expired forecast is never rendered as current, and an expired entitlement never produces a
+   fabricated forecast.
+5. **WEATHER rights are provider-specific and independently tracked.** No free tier is used commercially; no
+   redistribution, caching or offline right is assumed from API access; where providers disagree no fictional
+   consensus forecast is presented. The rights annex is the authority for each variable.
+6. **NAV/WEATHER never bill twice.** One account, one entitlement ledger, prorated upgrade credit (D-013).
+7. **FLEET is a professional multi-tenant SaaS.** No document may claim a deployed service, a security
+   certification, a measured uptime, a guaranteed SLA, unlimited vessels/users/storage/API or a customer
+   reference. Tenant isolation, role scoping, audit, export and deletion are design requirements, not verified
+   behaviour; `NO_SLA_ESTABLISHED` remains the SLA statement.
+8. **FLEET has no vessel-control path.** It consumes authorised read-only telemetry at most: no steering, no
+   throttle, no motor, no bus command and no remote helm. A disconnected vessel is never shown as online, and a
+   notification accepted by a provider is never presented as delivered to, or read by, a person.
+9. **FLEET customer data is governed.** No customer production data may be used; controller/processor roles are
+   assessed per data flow; external-installer and support access are scoped, time-bound and audited.
+10. **The nine market distinctions are engineering requirements** (D-015): NAV≠DISPLAY, WEATHER≠NAV,
+    FLEET SaaS≠FLEET package, WATCH≠FLEET, DISPLAY≠tablet, SENSE≠WATCH, HUB≠sensor, AIS=receive-only and
+    PILOT=supervised local steering.
+
+## 26. Price hypotheses allowed in batch 03
+
+Only these figures may appear, only as `HYPOTHESIS_UNAPPROVED` (or `NOT_ESTABLISHED` where stated), and only in
+internal dossiers, the pricing document and the machine contract — never in customer copy, a checkout, a
+catalogue or a public page:
+
+| Product | Edition / unit | Hypothesis | Binding qualification |
+| --- | --- | --- | ---: |
+| DISPLAY | `DISPLAY-7` | from EUR 699 (one-off, VAT-inclusive consumer retail hypothesis) | Starting price for the minimum display package only; `SIZE_NOT_FROZEN`; installation separately quoted; charts, NAV, WEATHER, HUB, AIS and extra mounts never included |
+| DISPLAY | `DISPLAY-LARGE-CONDITIONAL` | none — `NOT_ESTABLISHED` | No price, no measured size and no publication until hardware selection and cost evidence exist |
+| WEATHER | `WEATHER-STANDARD` | from EUR 49 / year | Consumer subscription hypothesis; coverage, horizon and variables limited to licensed providers; VAT basis `OPEN` |
+| WEATHER | `WEATHER-PRO` | EUR 89 / year | Hypothesis only; premium features are conditional on provider entitlements; no dataset promised |
+| FLEET | `FLEET-START` | from EUR 49 / vessel / month, VAT excluded | Starting hypothesis; organisation fee, seats, onboarding, limits and telemetry are stated explicitly; no "unlimited" |
+| FLEET | `FLEET-BUSINESS` | EUR 79 / vessel / month, VAT excluded | Hypothesis only; richer permissions/workflows/reporting/integrations; volume terms quoted |
+| FLEET | `FLEET-ENTERPRISE` | none — `NOT_ESTABLISHED`, `CONTRACTED_TIER` | Negotiated contract, not a checkout SKU; no invented SLA; no unlimited scope |
+
+Prohibited for batch 03: any price for `DISPLAY-LARGE-CONDITIONAL` or `FLEET-ENTERPRISE`; any price presented as
+approved, final, launch or purchasable; any bundle sum presented as a product price; any competitor figure shown
+without brand, product, currency, tax basis, official URL and retrieval date; any BOM, margin or channel
+percentage presented as fact.
+
+## 27. Edition authority decisions (batch 03)
+
+The full edition structure and customer-outcome differentiation live in `PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md`.
+The binding rules recorded as decisions D-012 to D-016 are:
+
+- **D-012 — the batch-03 edition set is frozen at seven objects:** `DISPLAY-7`, `DISPLAY-LARGE-CONDITIONAL`,
+  `WEATHER-STANDARD`, `WEATHER-PRO`, `FLEET-START`, `FLEET-BUSINESS`, `FLEET-ENTERPRISE`. No eighth object and
+  no generation label, measured size or version suffix may be added. `DISPLAY-7` is a conditional starting
+  hypothesis (`SIZE_NOT_FROZEN`); `DISPLAY-LARGE-CONDITIONAL` may be withdrawn without commercial consequence if
+  hardware selection does not support a second size class, and is never published with a measured size or a price.
+- **D-013 — WEATHER is one product, one entitlement ledger and two consumer editions.** NAV Pro may include
+  WEATHER Standard-equivalent read access only where provider rights allow; upgrading applies a prorated credit;
+  the same entitlement is never billed twice; user-owned saved locations and preferences survive cancellation
+  with a defined read-only export window (hypothesis 30 days, legal review).
+- **D-014 — FLEET pricing is per vessel per month, VAT excluded,** and `FLEET-ENTERPRISE` is a `CONTRACTED_TIER`
+  with no standard price, no invented SLA and no unlimited terms; any SLA exists only as a contracted commitment
+  with measurement evidence, otherwise `NO_SLA_ESTABLISHED`.
+- **D-015 — safety, security and data portability are never edition features.** Tenant isolation, role scoping,
+  audit, revocation, export/deletion, stale/lost-state honesty, subscription isolation and device-ownership
+  transfer are in every edition of every batch-03 product. The nine market distinctions of §25 rule 10 are
+  engineering requirements, pre-empted at the point of price, edition choice and quotation.
+- **D-016 — one governance system across three batches.** The edition-level register codes (`DSP`, `WX`, `FL`)
+  are the editions document's authority and map to — never replace — the dossiers' capability codes; the batch-03
+  machine contract, validator, journeys, asset register and copy conventions follow the MC-05/MC-06 patterns
+  without a second vocabulary.
+
+## 28. Additional batch-03 limitation statements (draft wording)
+
+These are INTERNAL DRAFT wording, pending claims-register approval. They must appear in the product's language
+in the dossier disclaimers section and in both copy files of that product. They do not replace the approved
+disclaimers of `COMMERCIAL-BRAND-CLAIMS-POLICY.md` §9, which are quoted verbatim separately.
+
+- **DISPLAY** — ES: «La pantalla es un concepto interno: no existe una unidad fabricada ni se han verificado
+  tamaño, brillo, legibilidad solar ni resistencia ambiental. Las cartas y los servicios de datos se licencian
+  por separado.» EN: "The display is an internal concept: no manufactured unit exists and its size, brightness,
+  sunlight legibility and environmental resistance have not been verified. Charts and data services are licensed
+  separately."
+- **WEATHER** — ES: «La cobertura depende de proveedores con licencia y no se garantiza la exactitud de la
+  previsión. Una previsión caducada o no disponible nunca se presenta como actual.» EN: "Coverage depends on
+  licensed providers and forecast accuracy is not guaranteed. A stale or unavailable forecast is never presented
+  as current."
+- **FLEET** — ES: «MAREA FLEET es un diseño interno: no existe un servicio multiempresa desplegado ni una
+  certificación de seguridad, y no se garantiza ningún nivel de servicio. La telemetría es de solo lectura y nunca
+  permite gobernar la embarcación.» EN: "MAREA FLEET is an internal design: no deployed multi-tenant service and
+  no security certification exist, and no service level is guaranteed. Telemetry is read-only and never allows
+  steering the vessel."
+
+## 29. Journey, asset and copy conventions for batch 03
+
+- **Journeys** use the same 17 stages, in the same order and wording, as §22, and the same ten column labels:
+  Stage; User action; Touchpoint; Expected result; Required information; Failure mode; Recovery; Commercial
+  opportunity; Trust / safety requirement; Acceptance evidence. The mandatory product-specific journeys are
+  DISPLAY (refit installation, without HUB, with HUB/NAV, loss of instrument data, power interruption, device
+  replacement, entitlement expiration), WEATHER (standalone, NAV subscriber, model comparison, stale forecast,
+  provider outage, licensed dataset removed, entitlement upgrade, renewal/cancellation, weather-window decision)
+  and FLEET (organisation onboarding, vessel addition, ownership change, work order, external technician access,
+  admin role change, user revocation, monitoring outage, cross-organisation access attempt, subscription upgrade,
+  export/deletion request, contract termination).
+- **Assets** use the ten-per-product model and the fixed ids `<FAMILY>-HERO-01`, `-USE-02`, `-OVR-03`, `-EDN-04`,
+  `-ECO-05`, `-INS-06`, `-MOB-07`, `-TMB-08`, `-OG-09`, `-TEC-10` for `DISPLAY`, `WEATHER`, `FLEET` (30 total).
+  Every asset records the MC-05 field list and is `CONCEPT`. The D9 coverage matrix is the authority for status:
+  per family, four scene requirements (`HERO-01`, `USE-02`, `INS-06`, `TMB-08`) stay
+  `BLOCKED_ON_IMAGE_GENERATION` while `X-03` is open, five requirements reuse MC-04 vectors/briefs as internal
+  design input, and `MOB-07` is an authored specification with no rendered file. Reconciliation: 30 planned =
+  12 blocked + 15 reused + 3 authored; 0 missing; 0 publicly approved; 0 verified real-product assets.
+- **Copy** files use the exact 24 numbered headings of `copy/nav.es.md` and `copy/nav.en.md`, no `###`
+  subheadings, a final unnumbered approved-disclaimer section, the internal status line, the approved
+  navigation/instruments disclaimer (and the approved weather disclaimer in WEATHER), the batch-03 limitation
+  statement of §28, and **no currency amount, purchase CTA, stock, review, certification or availability claim**.
+  ES is Spain Spanish; EN is natural international English; product names never translate.
+
+## 30. Batch-03 machine contract and validation
+
+- **Contract.** `product-definitions.batch-03.json` reuses the batch-02 schema: the same meta keys plus
+  `batch02Contract`; `publicationControls` with `published: false`, `forSale: false`, `purchaseCtaAllowed: false`,
+  `pricesInCopyAllowed: false`, `pricesLabelled: "HYPOTHESIS_UNAPPROVED"`, `remoteSteeringAllowed: false`,
+  `certificationClaimAllowed: false`; `lifecycleVocabulary`; `readinessDimensions`; `evidenceClasses`;
+  `globalRestrictions`; `sourceDocuments`; `assets`; and `products[]` with the exact product-level keys of
+  batch 02 plus product-specific invariant flags (DISPLAY `screenSizesFrozen`, `hardwareSelected`,
+  `chartRightsGranted`, `pilotControlAuthority`; WEATHER `providerRightsGranted`, `forecastAccuracyClaimed`,
+  `redistributionAllowed`, `offlineAllowed`, `navDoubleBillingAllowed`; FLEET `multiTenantProductionService`,
+  `crossTenantAccessAllowed`, `remoteSteeringAllowed`, `slaEstablished`, `customerProductionDataUsed`,
+  `securityCertificationClaimed`).
+- **Validator.** `scripts/check-marea-products.mjs` is extended — never replaced — with a `BATCH_03` configuration
+  inside the existing `BATCHES` array, so one validator covers nine products across three contracts. It validates
+  the nine canonical family ids, exactly 24 fields per product, unique product and edition ids, lifecycle and
+  readiness vocabularies, evidence classes, required blockers, ES/EN copy existence and 24-section parity,
+  claim restrictions, asset-id integrity and the 30 = 12 + 15 + 3 reconciliation, edition completeness, pricing
+  hypothesis status (including the allowed-amount set of §26), compatibility conditions, product dependencies,
+  prohibition of any sale/approval/certification/publication claim, and consistent product-type definitions.
+- **Negative tests.** `scripts/check-marea-products.test.mjs` retains every MC-05 and MC-06 mutation test and adds
+  batch-03 adversarial mutations: DISPLAY (certified sunlight performance; invented IP rating; unrestricted chart
+  licences; PILOT control authority; frozen screen size without evidence), WEATHER (free non-commercial API marked
+  approved for a paid service; data rights `GRANTED` without evidence; redistribution/offline entitlement without
+  matching permission; forecast-accuracy guarantee; double-billed NAV/WEATHER entitlement) and FLEET (cross-tenant
+  access accepted without authorization; missing server-side tenant authorization requirement; permissive default
+  role; remote steering; guaranteed SLA without evidence; unsupported security certification; missing
+  privacy/data-export policy).
+- **Honest limit.** The JSON validator proves that the specification **states** these requirements; it cannot prove
+  that a future multi-tenant SaaS isolates organisations, that a display is readable in sunlight or that a forecast
+  is accurate. Those require the future executable integration, security, hardware and forecast-evaluation evidence
+  named in the D10 annexes.
+
+## 31. Cross-product authority additions (batch 03)
+
+| Relationship | Permitted | Prohibited |
+| --- | --- | --- |
+| DISPLAY ↔ PILOT | DISPLAY may show authorised read-only PILOT status and alarms | No engagement, no course change, no motor command, no remote or web-mediated pilot path |
+| DISPLAY ↔ NAV | NAV software may be presented on the device once distribution rights and a validated integration exist | DISPLAY base software is not a NAV licence; charts are not included |
+| DISPLAY ↔ WEATHER | Licensed forecast overlays may be presented with source and validity | No unlicensed dataset; no implied coverage |
+| WEATHER ↔ NAV | Shared entitlement and authorised data consumption | No double billing; no meteorological guarantee; no redistribution |
+| FLEET ↔ WATCH | Read-only telemetry, alerts and history within the customer's own organisation | No control; no stale vessel shown online; provider acceptance is not human delivery |
+| FLEET ↔ HUB | Read-only installation/telemetry health where authorised | No bus command; no unreviewed control path |
+| FLEET ↔ PILOT | At most read-only status after engineering and privacy review | No remote engagement, no heading change, no motor command from FLEET |
+| FLEET ↔ NAV | Planned voyage information shared only with explicit customer permission | No automatic sharing of private route histories |
+| Any batch-03 product ↔ Subscription | Local safety-relevant functions keep working without an active subscription | No entitlement gates local alarms, local sensing or local steering |
+
+## 32. What MC-07 must not do
+
+No change to `src/`, `public/`, checkout, prices, stock, payment configuration, deployment workflow,
+`OPEN-MARINE`, the brand identity adoption state or the trademark position. No merge, no deploy, no publication,
+no purchase flow, no image generation, no chargeable API call, no provider subscription, no hardware, radio or
+steering test, no customer data. Documents here do not make any SKU orderable. Batch-03 machine-readable product
+data lives only in `product-definitions.batch-03.json` and is never a commerce data model. MC-08 is not started
+by this milestone.

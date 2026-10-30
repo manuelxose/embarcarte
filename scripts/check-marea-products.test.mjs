@@ -77,6 +77,28 @@ const COPY2_REL = {
   watchEn: join(COPY_DIR, 'watch.en.md'),
 };
 
+// --- Batch 03 (MC-07): DISPLAY, WEATHER, FLEET -----------------------------
+
+const JSON3_REL = join(PRODUCTS_DIR, 'product-definitions.batch-03.json');
+const DISPLAY_REL = join(PRODUCTS_DIR, 'MAREA-DISPLAY-COMMERCIAL-SPEC.md');
+const WEATHER_REL = join(PRODUCTS_DIR, 'MAREA-WEATHER-COMMERCIAL-SPEC.md');
+const FLEET_REL = join(PRODUCTS_DIR, 'MAREA-FLEET-COMMERCIAL-SPEC.md');
+const DISPLAY_ANNEX_REL = join(PRODUCTS_DIR, 'DISPLAY-HARDWARE-AND-INTERACTION-REQUIREMENTS.md');
+const WEATHER_ANNEX_REL = join(PRODUCTS_DIR, 'WEATHER-DATA-RIGHTS-AND-FORECAST-CONTRACT.md');
+const FLEET_ANNEX_REL = join(PRODUCTS_DIR, 'FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md');
+const EDITIONS3_REL = join(PRODUCTS_DIR, 'PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md');
+const COMPATIBILITY3_REL = join(PRODUCTS_DIR, 'PRODUCT-COMPATIBILITY-DISPLAY-WEATHER-FLEET.md');
+const PRICING3_REL = join(PRODUCTS_DIR, 'PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-03.md');
+const JOURNEYS3_REL = join(PRODUCTS_DIR, 'CUSTOMER-JOURNEYS-DISPLAY-WEATHER-FLEET.md');
+const ASSETS3_REL = join(PRODUCTS_DIR, 'PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md');
+const COPY3_REL = {
+  displayEs: join(COPY_DIR, 'display.es.md'),
+  displayEn: join(COPY_DIR, 'display.en.md'),
+  weatherEs: join(COPY_DIR, 'weather.es.md'),
+  weatherEn: join(COPY_DIR, 'weather.en.md'),
+  fleetEs: join(COPY_DIR, 'fleet.es.md'),
+  fleetEn: join(COPY_DIR, 'fleet.en.md'),
+};
 const REQUIRED_FILES = [
   JSON_REL,
   NAV_REL,
@@ -101,6 +123,19 @@ const REQUIRED_FILES = [
   JOURNEYS2_REL,
   ASSETS2_REL,
   ...Object.values(COPY2_REL),
+  JSON3_REL,
+  DISPLAY_REL,
+  WEATHER_REL,
+  FLEET_REL,
+  DISPLAY_ANNEX_REL,
+  WEATHER_ANNEX_REL,
+  FLEET_ANNEX_REL,
+  EDITIONS3_REL,
+  COMPATIBILITY3_REL,
+  PRICING3_REL,
+  JOURNEYS3_REL,
+  ASSETS3_REL,
+  ...Object.values(COPY3_REL),
 ];
 
 const ASSET_REFERENCE =
@@ -133,7 +168,7 @@ function realJson(relativePath = JSON_REL) {
  * Copies the real scoped MC-05/MC-06 files into a temporary root, then applies one
  * mutation so a single rule fails.
  */
-function makeFixture({ mutateJson, mutateJson2, edit = {}, remove = [] } = {}) {
+function makeFixture({ mutateJson, mutateJson2, mutateJson3, edit = {}, remove = [] } = {}) {
   const root = mkdtempSync(join(tmpdir(), 'embarcarte-products-'));
   for (const relativePath of REQUIRED_FILES) {
     const source = join(REPO_ROOT, relativePath);
@@ -157,6 +192,11 @@ function makeFixture({ mutateJson, mutateJson2, edit = {}, remove = [] } = {}) {
     const contract = realJson(JSON2_REL);
     mutateJson2(contract);
     writeFileSync(join(root, JSON2_REL), `${JSON.stringify(contract, null, 2)}\n`);
+  }
+  if (typeof mutateJson3 === 'function') {
+    const contract = realJson(JSON3_REL);
+    mutateJson3(contract);
+    writeFileSync(join(root, JSON3_REL), `${JSON.stringify(contract, null, 2)}\n`);
   }
   for (const [relativePath, transform] of Object.entries(edit)) {
     const target = join(root, relativePath);
@@ -1375,6 +1415,282 @@ test('MIN-07 — an imperative buy-the-device CTA in copy is rejected', async ()
     },
     (result) => {
       assertFails(result, 'availability', /imperative purchase CTA is prohibited/);
+    },
+  );
+});
+// --- Batch 03 (MC-07): DISPLAY, WEATHER, FLEET negative cases --------------
+
+test('batch 03 — a certified sunlight-performance claim without evidence is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [DISPLAY_REL]: (text) =>
+          `${text}\n\nThe display is certified sunlight readable and verified for direct sunlight.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /certified or measured sunlight-performance/);
+    },
+  );
+});
+
+test('batch 03 — an IP rating invented for the DISPLAY is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [DISPLAY_REL]: (text) => `${text}\n\nIngress protection is IP67 on every unit.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /IP rating is prohibited/);
+    },
+  );
+});
+
+test('batch 03 — unrestricted chart licences in DISPLAY copy are rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [COPY3_REL.displayEn]: (text) =>
+          `${text}\n\nThe display includes unlimited charts for every region.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'charts', /unlimited charts are prohibited/);
+    },
+  );
+});
+
+test('batch 03 — an approved PILOT control authority on the DISPLAY is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        findProduct(contract, 'DISPLAY').pilotControlAuthority = true;
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.invariants', /pilotControlAuthority must be false/);
+    },
+  );
+});
+
+test('batch 03 — a frozen final screen size without hardware evidence is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        findProduct(contract, 'DISPLAY').screenSizesFrozen = true;
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.invariants', /screenSizesFrozen must be false/);
+    },
+  );
+});
+
+test('batch 03 — a free non-commercial API approved for a paid weather service is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [WEATHER_ANNEX_REL]: (text) =>
+          `${text}\n\nThe free non-commercial API tier is approved for our paid service.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /free non-commercial data tier/);
+    },
+  );
+});
+
+test('batch 03 — GRANTED weather data rights without provider evidence are rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        findProduct(contract, 'WEATHER').readiness.dataRights = 'GRANTED_PER_TERRITORY';
+      },
+    },
+    (result) => {
+      assertFails(result, 'json.products', /readiness\.dataRights must be NOT_GRANTED/);
+    },
+  );
+});
+
+test('batch 03 — an offline entitlement without matching source permission is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        findProduct(contract, 'WEATHER').offlineAllowed = true;
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.invariants', /offlineAllowed must be false/);
+    },
+  );
+});
+
+test('batch 03 — a guaranteed forecast accuracy is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [WEATHER_REL]: (text) =>
+          `${text}\n\nForecasts are guaranteed and reach 95% accuracy on every route.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /forecast guarantee|forecast accuracy percentage/);
+    },
+  );
+});
+
+test('batch 03 — double billing the same NAV and WEATHER entitlement is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        findProduct(contract, 'WEATHER').navDoubleBillingAllowed = true;
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.invariants', /navDoubleBillingAllowed must be false/);
+    },
+  );
+});
+
+test('batch 03 — accepted cross-tenant access is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        findProduct(contract, 'FLEET').crossTenantAccessAllowed = true;
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.invariants', /crossTenantAccessAllowed must be false/);
+    },
+  );
+});
+
+test('batch 03 — a missing tenant authorization requirement is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        findProduct(contract, 'FLEET').tenancy.authorizationRequired = false;
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.invariants', /tenancy\.authorizationRequired must be true/);
+    },
+  );
+});
+
+test('batch 03 — a permissive default role granting all vessel positions is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        findProduct(contract, 'FLEET').tenancy.defaultRole = 'ORGANIZATION_OWNER';
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.invariants', /tenancy\.defaultRole must be "NO_ACCESS"/);
+    },
+  );
+});
+
+test('batch 03 — remote vessel steering offered by FLEET is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        findProduct(contract, 'FLEET').remoteSteeringAllowed = true;
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.invariants', /remoteSteeringAllowed must be false/);
+    },
+  );
+});
+
+test('batch 03 — a guaranteed SLA without measurement evidence is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [FLEET_REL]: (text) => `${text}\n\nWe guarantee 99.9% uptime under the MAREA FLEET SLA.\n`,
+      },
+    },
+    (result) => {
+      assertFails(
+        result,
+        'batch03.claims',
+        /guaranteed SLA or uptime|guaranteed uptime percentage/,
+      );
+    },
+  );
+});
+
+test('batch 03 — an unsupported security certification is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [FLEET_REL]: (text) => `${text}\n\nMAREA FLEET is certified to ISO 27001.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /unsupported security certification/);
+    },
+  );
+});
+
+test('batch 03 — a missing privacy and data-export policy is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        delete findProduct(contract, 'FLEET').tenancy.privacyPolicyRequired;
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.invariants', /tenancy\.privacyPolicyRequired must be true/);
+    },
+  );
+});
+
+test('batch 03 — a missing copy file is rejected', async () => {
+  await withFixture({ remove: [COPY3_REL.fleetEn] }, (result) => {
+    assertFails(result, 'files.required', /copy[\\/]fleet\.en\.md is missing/);
+  });
+});
+
+test('batch 03 — an asset status contradicting the D9 partition is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        contract.assets[0].status = 'CONCEPT';
+      },
+    },
+    (result) => {
+      assertFails(result, 'assets', /status must be BLOCKED_ON_IMAGE_GENERATION/);
+    },
+  );
+});
+
+test('batch 03 — a drifted D9 reconciliation total is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [ASSETS3_REL]: (text) =>
+          text.replace('| **Total** | **30** | **12** |', '| **Total** | **30** | **11** |'),
+      },
+    },
+    (result) => {
+      assertFails(result, 'assets', /coverage matrix total blocked must be 12/);
+    },
+  );
+});
+
+test('batch 03 — a contract without the batch-02 link is rejected', async () => {
+  await withFixture(
+    {
+      mutateJson3: (contract) => {
+        contract.batch02Contract = 'docs/marea/products/product-definitions.batch-02.json.bak';
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.contract', /batch02Contract must reference/);
     },
   );
 });
