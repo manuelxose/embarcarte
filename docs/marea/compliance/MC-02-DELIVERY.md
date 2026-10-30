@@ -38,8 +38,8 @@ activities stay restricted.
 | MC-02 branch | `feature/marea-mc02-technology-audit` |
 | Audit-deliverables commit | `cdbb7e76dbadefbd80317c167d562df4d573f78d` — 12 files, +5,207/−38 |
 | Delivery-report commit | `fc4e03cca1bba987de066e2ebedacdb8ed85e1015` — delivery report and registry status |
-| Independent-review commit | the commit that adds `MC-02-REVIEW.md`, the deterministic validator and the review corrections B-1/N-1..N-9 |
-| Final branch head | the metadata commit that records the independent-review commit hash (see PR #8) |
+| Independent-review commit | `c37b0af4d309947cbd3aa9230db1a0ad2fe870cf` — adds `MC-02-REVIEW.md`, the validator and corrections B-1/N-1..N-9 |
+| Final branch head | the metadata commit that records this row (PR #8 head) |
 | Draft PR | [#8](https://github.com/manuelxose/embarcarte/pull/8) — `feature/marea-mc02-technology-audit` → `feature/marea-mc01-agent-foundation` (stacked; retarget to `main` only after PR #7 is merged and the diff reverified) |
 | Merge/deploy | **None.** No tag, no merge, no production deployment |
 
