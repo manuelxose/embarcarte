@@ -29,7 +29,7 @@ Repository: `manuelxose/embarcarte` (branch `feature/marea-mc01-agent-foundation
 | Implementation commit | `26623560367a5c4ac4b1cced7b9fc99ea36b3071` — 20 files, +2570/−1 |
 | Delivery commit | the commit that adds this report, `MC-01-REVIEW.md` and the registry status update |
 | Remote | `https://github.com/manuelxose/embarcarte.git` |
-| Merge/deploy | **None.** The branch is reviewable; a draft PR is opened after this commit (URL recorded in the registry row 01) |
+| Merge/deploy | **None.** Draft PR: [#7](https://github.com/manuelxose/embarcarte/pull/7) (`feature/marea-mc01-agent-foundation` → `main`). Not merged, not deployed |
 
 Working tree at delivery: clean (scratch directory `.tmp-mc01/` deleted before commit; `/.tmp-mc*/`
 now ignored). No force-push, reset, unrelated file deletion or production secret change occurred.
