@@ -146,3 +146,69 @@ steps. Existing application tests remain green (build, i18n, commerce, SEO, back
 **Evidence.** `docs/marea/brand/BRAND-GOVERNANCE-IMPLEMENTATION.md`,
 `docs/marea/brand/WEBSITE-BRAND-MIGRATION.md`, `docs/marea/brand/brand-identity.contract.json`,
 `docs/marea/brand/MC-03-DELIVERY.md`.
+
+## D-005 — 2026-10-30 — MC-04 identity: three territories prototyped, two shortlisted, one internal preference; adoption remains BLOCKED
+
+**Context.** MC-04 (prompt 04/36) required the visual identity system to be executed under the MC-03 gates:
+`TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`, `PUBLIC_MAREA_BRAND_USE = NO_GO`, image generation BLOCKED, no
+publication. The MC-04 brief prescribes exactly three territories (Isobath, Bearing Index, Signal Trunk),
+a weighted evaluation (§3.2), and a mandatory shortlist of two followed by an external professional
+originality/prior-art check (B9/TM-01/TM-02) before any adoption.
+
+**Decision.** (1) All three territories are prototyped as original authored SVG constructions with
+monochrome, reversed, compact, lockup and small-size evidence; nothing was traced or downloaded.
+(2) **SHORTLIST — Bearing Index (B) and Signal Trunk (C)**, for the professional review. (3) **Isobath (A)
+is dropped** on the brief §3.3 kill criterion — its prototype reads as a Wi-Fi/signal/sound-wave device at
+small size, the most crowded motif in the category — and it carries the lowest weighted hypothesis score
+(3.35 against 3.95/3.95). (4) **Internal preference: B — Bearing Index**, recorded strictly as
+`PREFERRED_PROVISIONAL`: C is the strongest system-extensibility concept but its frozen silhouette reads
+as a three-step bar chart/equaliser at 16–48 px, which is the brief §3.5 kill criterion; B reads as a
+heading-instrument fragment, with a residual letter-"C"/compass-app/seal reading risk to be resolved in a
+future construction round. (5) Adoption, publication, packaging procurement, trademark filing and any
+`®`/`™` use remain **BLOCKED**; the preference is an internal design recommendation only.
+
+**Rationale.** The decision is taken on recorded prototype evidence and the brief's own weights and kill
+criteria, not on taste; both the shortlist and the preference are reversible by evidence or by the external
+professional check. Keeping exactly two directions shortlisted satisfies the brief while making the
+professional search scoped and affordable. C remains on the shortlist because its extensibility rationale
+is strategically the closest to MAREA's actual differentiation, even though its current construction fails
+the small-size reading test.
+
+**Consequences for the programme.** (a) The identity is documented as PROPOSED/INTERNAL in every artefact;
+no public surface, route, page or deployment is changed by MC-04. (b) The reusable Layer A foundations
+(type roles, colour roles, instrumentation grammar, icon grid, diagram conventions) are separated from the
+provisional Layer B MAREA identity so a future rename does not discard the system. (c) The professional
+originality/prior-art review (B9/TM-01/TM-02) remains `PENDING`; until it exists,
+`FINAL_IDENTITY_ADOPTION = BLOCKED` and `PUBLICATION = BLOCKED`. (d) MC-04 adds its brand documents to
+`brand-identity.contract.json` `governedPaths` so `npm run test:brand` covers them; the validator and its
+unit tests are unchanged. (e) No `src/`, `public/`, deployment or dependency change is made.
+
+**Evidence.** `docs/marea/brand/TERRITORY-COMPARISON.md`, `docs/marea/brand/IDENTITY-SYSTEM.md`,
+`docs/marea/brand/assets/logo/**`, `docs/marea/brand/territories/**`,
+`docs/marea/brand/ORIGINALITY-AND-PRIOR-ART-CHECK.md`, `docs/marea/brand/assets/evidence/renders/**`,
+`docs/marea/brand/MC-04-DELIVERY.md`.
+
+## D-006 — 2026-10-30 — Instrument numerics move to Manrope tabular; design tokens stay PROPOSED and out of `src/`
+
+**Context.** MC-04 had to verify, not assume, the installed typefaces (DM Sans, Manrope via
+`@fontsource-variable`) before defining the numeric system. The brief's §4.4 role proposal assumed DM Sans
+for instrument numerics.
+
+**Decision.** (1) DM Sans 5.3.0 exposes **no** `tnum` feature in any of its 12 shipped woff2 builds and
+renders proportional digits (measured digit-advance spread 34.0 px at 100 px; "00:00" vs "23:59" column
+delta 40.47 px); Manrope's latin build exposes `tnum` and measures 0.1563 px spread at 100 px with 0.00 px
+column delta. The numeric treatment (instrument value, unit/suffix, timestamp/age spans) therefore moves to
+**Manrope 700 with `font-variant-numeric: tabular-nums`**, recorded as deviation `TYPO-DEVIATION-01`; body,
+labels, headings and documentation stay DM Sans. No typeface is purchased or added. (2) The design tokens
+remain **PROPOSED** in `docs/marea/brand/tokens/`; **no value is applied to `src/styles.scss`** and the live
+site is unchanged. (3) The pre-existing focus-ring contrast defect (F-1, 1.65:1 on white) is recorded as
+**OPEN**; MC-04 proposes a compliant instrument-mode indicator and MC-06 must implement and re-verify it.
+
+**Rationale.** Tabular figures are a safety-of-reading requirement for live values; using a proportional
+face on a mutable readout would make digits jitter and columns shift. Keeping tokens out of `src/` respects
+the MC-04 scope and the MC-03 migration constraint.
+
+**Evidence.** `docs/marea/brand/TYPOGRAPHY-SYSTEM.md`, `docs/marea/brand/COLOUR-SYSTEM.md`,
+`docs/marea/brand/tokens/marea-instrument-tokens.proposed.json`,
+`docs/marea/brand/evidence/contrast/contrast-matrix.json`, `scripts/check-typography.mjs`,
+`scripts/check-contrast.mjs`, `docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md`.

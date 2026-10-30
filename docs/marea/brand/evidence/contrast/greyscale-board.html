@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAREA — INTERNAL/PROPOSED — MC-04 greyscale state-evidence board</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        background: #f4f6f8;
+        color: #101820;
+      }
+      body {
+        margin: 0;
+        padding: 28px 32px 48px;
+      }
+      header,
+      main,
+      footer {
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      header {
+        border-left: 6px solid #101820;
+        padding: 10px 16px;
+        background: #fff;
+        margin-bottom: 18px;
+      }
+      header h1 {
+        font-size: 20px;
+        margin: 0 0 6px;
+      }
+      header p {
+        margin: 3px 0;
+        font-size: 12.5px;
+        line-height: 1.5;
+        max-width: 96ch;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: #101820;
+        color: #fff;
+        padding: 3px 8px;
+        margin-right: 6px;
+      }
+      .tag.proposed {
+        background: #a32b22;
+      }
+      section.mode {
+        margin: 20px 0;
+        background: #fff;
+        border: 1px solid #cfd8e0;
+      }
+      section.mode > h2 {
+        margin: 0;
+        padding: 9px 14px;
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        background: #263645;
+        color: #fff;
+      }
+      section.mode > h2 span {
+        font-weight: 400;
+        text-transform: none;
+        letter-spacing: 0;
+        font-size: 11.5px;
+        opacity: 0.85;
+        margin-left: 10px;
+      }
+      .ladder {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 10px;
+        padding: 14px;
+      }
+      .step {
+        background: var(--canvas);
+        color: var(--text);
+        border: 1px solid rgba(0, 0, 0, 0.18);
+        border-radius: 4px;
+        padding: 10px 12px;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .step-top {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-weight: 700;
+        font-size: 12.5px;
+        margin-bottom: 4px;
+      }
+      .step-top svg {
+        flex: none;
+      }
+      .step small {
+        display: block;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      .pattern {
+        margin-top: 7px;
+        padding-top: 6px;
+        border-top: 1px dashed var(--muted);
+        font-size: 10.5px;
+        color: var(--muted);
+        letter-spacing: 0.02em;
+      }
+      .palette {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 0 14px 14px;
+      }
+      .chip {
+        width: 92px;
+        font-size: 9.5px;
+        line-height: 1.25;
+        color: #263645;
+      }
+      .chip span {
+        display: block;
+        height: 20px;
+        border-radius: 3px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        margin-bottom: 3px;
+      }
+      footer {
+        margin-top: 26px;
+        font-size: 11.5px;
+        color: #3b4a58;
+        line-height: 1.55;
+        border-top: 1px solid #cfd8e0;
+        padding-top: 12px;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        section.mode {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span class="tag">INTERNAL</span><span class="tag proposed">PROPOSED</span
+        ><span class="tag">NOT A CERTIFICATION</span>
+      </div>
+      <h1>MAREA — greyscale state evidence (colour removed, meaning must remain)</h1>
+      <p>
+        MC-04 colour evidence (D-07/D-08, QA-03). Every specimen below is rendered through an inline
+        <code>feColorMatrix</code> that keeps only WCAG relative luminance (0.2126 / 0.7152 / 0.0722).
+        The test is visual and subjective on purpose: a reviewer must confirm that the state is still
+        unambiguous by shape, text label, pattern and age — never by hue.
+      </p>
+      <p>
+        Values mirror <code>docs/marea/brand/tokens/marea-instrument-tokens.proposed.json</code>.
+        Measured contrast is in <code>docs/marea/brand/evidence/contrast/contrast-matrix.json</code>.
+        All readout content is <strong>ILLUSTRATIVE / NOT LIVE DATA</strong>.
+      </p>
+    </header>
+    <main id="board"></main>
+    <footer>
+      <p>
+        <strong>Status:</strong> INTERNAL_PROPOSED · <strong>Adoption:</strong> NOT_ADOPTED ·
+        <strong>Applied to src/:</strong> NO. Hardware sunlight/glare validation,
+        human-participant CVD testing and cockpit validation are
+        <strong>NOT_TESTED / BLOCKED</strong>; no conformance claim is made. An independent reviewer
+        (author ≠ reviewer) signs QA-03/QA-04 from screenshots of this file.
+      </p>
+    </footer>
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position: absolute">
+      <filter id="luminance-greyscale" color-interpolation-filters="sRGB">
+        <feColorMatrix
+          type="matrix"
+          values="0.2126 0.7152 0.0722 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0 0 0 1 0"
+        />
+      </filter>
+    </svg>
+    <script>
+      const SHAPES = {
+        safe: '<svg width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><circle cx="7.5" cy="7.5" r="5" fill="currentColor"/></svg>',
+        info: '<svg width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><rect x="2" y="2" width="11" height="11" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 6.4v4.2M7.5 4.2v1.1" stroke="currentColor" stroke-width="1.6"/></svg>',
+        caution: '<svg width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><path d="M7.5 1.6 13.8 13.2H1.2Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 5.2v3.6M7.5 10.6v1" stroke="currentColor" stroke-width="1.5"/></svg>',
+        warning: '<svg width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><path d="M7.5 1.2 14.2 13.6H0.8Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7.5 4.8v3.8M7.5 10.4v1.1" stroke="currentColor" stroke-width="2"/></svg>',
+        alarm: '<svg width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><path d="M4.7 1h5.6L14 4.7v5.6L10.3 14H4.7L1 10.3V4.7Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7.5 3.6v4.2M7.5 9.7v1.3" stroke="currentColor" stroke-width="1.5"/></svg>',
+        stale: '<svg width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><rect x="2" y="2" width="11" height="11" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2.6 2"/><path d="M7.5 4.2v3.6l2.1 1.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>',
+        nodata: '<svg width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><rect x="2" y="2" width="11" height="11" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4.8 7.5h5.4" stroke="currentColor" stroke-width="1.7"/></svg>',
+        disabled: '<svg width="15" height="15" viewBox="0 0 15 15" aria-hidden="true"><rect x="2" y="5.4" width="11" height="6.4" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4.4 5.4V4.2a3.1 3.1 0 0 1 6.2 0v1.2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>',
+      };
+      const MODES = [
+        {
+          label: 'Instrument day',
+          tokens: {
+            canvas: '#f2f9fd',
+            text: '#17365d',
+            muted: '#52697f',
+            safe: '#1f5f49',
+            info: '#17365d',
+            warning: '#8a5a00',
+            critical: '#a32b22',
+            stale: '#55646f',
+            disabled: '#7a8d9b',
+          },
+          steps: [
+            ['safe', 'NORMAL / OK', 'steady; filled circle; no animation'],
+            ['info', 'ADVISORY', 'outlined square + i; short sentence; dismissible'],
+            ['caution', 'CAUTION', 'triangle + !; cause; steady (≤1 Hz only if reduced motion allows)'],
+            ['warning', 'WARNING', 'heavier triangle + !; cause + required action; persistent'],
+            ['alarm', 'ALARM', 'octagon; cause + action + source/age; never auto-dismiss'],
+            ['stale', 'STALE 00:12', 'dashed outline + clock; age counter in tabular digits'],
+            ['nodata', '— NO DATA', 'hollow square; never a zero, never last value'],
+            ['disabled', 'DISABLED', 'reduced but visible; label remains'],
+          ],
+        },
+        {
+          label: 'Sunlight (simulated)',
+          tokens: {
+            canvas: '#ffffff',
+            text: '#0b2440',
+            muted: '#4a5f73',
+            safe: '#10513c',
+            info: '#17365d',
+            warning: '#6b4300',
+            critical: '#8f1a12',
+            stale: '#46586a',
+            disabled: '#6a7f92',
+          },
+          steps: [
+            ['safe', 'NORMAL / OK', 'steady; filled circle; no animation'],
+            ['info', 'ADVISORY', 'outlined square + i; short sentence'],
+            ['caution', 'CAUTION', 'triangle + !; cause; steady'],
+            ['warning', 'WARNING', 'heavier triangle + !; persistent banner'],
+            ['alarm', 'ALARM', 'octagon; cause + action + source/age; never auto-dismiss'],
+            ['stale', 'STALE 00:12', 'dashed outline + clock; age counter'],
+            ['nodata', '— NO DATA', 'hollow square; never a zero'],
+            ['disabled', 'DISABLED', 'reduced but visible'],
+          ],
+        },
+        {
+          label: 'Instrument night',
+          tokens: {
+            canvas: '#0d1b26',
+            text: '#8fd3f5',
+            muted: '#a9b7c4',
+            safe: '#7bd8b0',
+            info: '#93a6b5',
+            warning: '#ffc46b',
+            critical: '#ff9b8f',
+            stale: '#a9b7c4',
+            disabled: '#7d8f9d',
+          },
+          steps: [
+            ['safe', 'NORMAL / OK', 'steady; filled circle; no pulse at night'],
+            ['info', 'ADVISORY', 'outlined square + i; short sentence'],
+            ['caution', 'CAUTION', 'triangle + !; cause; pulsing reduced/off at night'],
+            ['warning', 'WARNING', 'heavier triangle + !; persistent banner'],
+            ['alarm', 'ALARM', 'octagon; cause + action + source/age; never auto-dismiss'],
+            ['stale', 'STALE 00:12', 'dashed outline + clock; age counter'],
+            ['nodata', '— NO DATA', 'hollow square; never a zero'],
+            ['disabled', 'DISABLED', 'reduced but visible'],
+          ],
+        },
+      ];
+      const style = (tokens) =>
+        Object.entries(tokens)
+          .map(([key, value]) => `--${key}:${value};`)
+          .join('');
+      const STATE_KEY = {
+        safe: 'safe',
+        info: 'info',
+        caution: 'warning',
+        warning: 'warning',
+        alarm: 'critical',
+        stale: 'stale',
+        nodata: 'stale',
+        disabled: 'disabled',
+      };
+      document.getElementById('board').innerHTML = MODES.map(
+        (mode) => `
+        <section class="mode">
+          <h2>${mode.label} — achromatopsia (luminance only) <span>state still identifiable by shape + label + pattern?</span></h2>
+          <div style="filter: url(#luminance-greyscale)">
+            <div class="ladder">
+              ${mode.steps
+                .map(
+                  ([shape, label, detail]) => `
+                <div class="step" style="${style(mode.tokens)}">
+                  <div class="step-top" style="color: var(--${STATE_KEY[shape] ?? 'info'})">${SHAPES[shape] ?? SHAPES.info}${label}</div>
+                  <small>${detail}</small>
+                  <div class="pattern">pattern/position cue: ${shape === 'stale' ? 'dashed outline + age digits' : shape === 'nodata' ? 'hollow square + em dash' : shape === 'disabled' ? 'reduced control, label retained' : shape === 'alarm' ? 'solid octagon, persistent banner' : shape === 'warning' || shape === 'caution' ? 'triangle with !, cause text' : 'steady shape, no animation'}</div>
+                </div>`,
+                )
+                .join('')}
+            </div>
+            <div class="palette">
+              ${Object.entries(mode.tokens)
+                .map(
+                  ([name, value]) =>
+                    `<div class="chip"><span style="background:${value}"></span>${name}<br />${value}</div>`,
+                )
+                .join('')}
+            </div>
+          </div>
+        </section>`,
+      ).join('');
+    </script>
+  </body>
+</html>

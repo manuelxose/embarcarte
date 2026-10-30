@@ -1,0 +1,10 @@
+npm notice run embarcarte@1.0.0 test:commerce
+npm notice run node scripts/check-commerce.mjs
+[mail] SMTP no configurado; email omitido (i***@embarcarte.com): [embarcarte.com] Nuevo pedido #1
+[mail] SMTP no configurado; email omitido (c***@example.test): Hemos recibido tu pedido #1
+[mail] SMTP no configurado; email omitido (i***@embarcarte.com): [embarcarte.com] Nuevo pedido #2
+[mail] SMTP no configurado; email omitido (c***@example.test): We received your order #2
+[mail] SMTP no configurado; email omitido (i***@embarcarte.com): [embarcarte.com] Nuevo pedido #3
+[mail] SMTP no configurado; email omitido (c***@example.test): Hemos recibido tu pedido #3
+Commerce integration checks passed: bilingual catalogue, localized SEO, stock, cart payload integrity, accounts, authorization, sitemap alternates, webhook verification and security regressions.
+EXIT=0

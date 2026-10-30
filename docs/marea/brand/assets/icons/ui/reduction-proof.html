@@ -1,0 +1,1991 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MAREA · D-09 prueba de reducción 16/24/32 · reduction proof</title><style>:root{--ink:#17365d;--muted:#57708a;--canvas:#f2f9fd;--surface:#fff;--line:#e1edf5;--accent:#176ca6;--critical:#a32b22;--stale:#5f6f7d;--night:#0d1b26;--night-ink:#8fd3f5;--night-muted:#93a6b5}
+*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:14px/1.5 "Segoe UI",system-ui,sans-serif}header{padding:24px 0 16px;background:var(--surface);border-bottom:1px solid var(--line)}.wrap{max-width:1240px;margin:0 auto;padding:0 24px}h1{font-size:26px;margin:4px 0 6px}.flag{display:inline-block;font:700 10.5px/1 "Segoe UI",sans-serif;letter-spacing:.08em;color:#a32b22;border:1.5px solid #a32b22;border-radius:3px;padding:5px 7px;margin:0 6px 8px 0;text-transform:uppercase}p{max-width:88ch}.meta{color:var(--muted);font-size:12.5px}.board{padding:18px 0 26px;overflow-x:auto}table{border-collapse:collapse;background:var(--surface);border:1px solid var(--line);margin-top:12px;min-width:900px}caption{text-align:left;font-weight:600;padding:8px 0;font-size:13px}th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:middle}thead th{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--canvas)}tbody tr.grp th{background:var(--canvas);font-size:12px;letter-spacing:.03em;text-transform:uppercase;color:var(--accent);padding:9px 10px}tbody th{font-weight:400;width:290px}tbody th code{display:block;font-size:11px;color:var(--accent)}tbody th .es{display:block;font-weight:600;font-size:12.5px}tbody th .en{display:block;color:var(--muted);font-size:11.5px}td{text-align:center}td svg{display:block;margin:0 auto}.c16 svg{width:16px;height:16px}.c24 svg{width:24px;height:24px}.c32 svg{width:32px;height:32px}.gs svg{filter:grayscale(1)}.night{background:var(--night);border:1px solid var(--line);border-radius:6px;padding:16px;margin:18px 0;color:var(--night-ink)}.night h2{font-size:16px;margin:0 0 4px;color:var(--night-ink)}.night p{color:var(--night-muted);font-size:12.5px;margin:0 0 12px}.nightrow{display:flex;gap:14px;flex-wrap:wrap}.nightrow .ng{width:64px;height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;border:1px solid #22384a;border-radius:4px;color:var(--night-ink)}.nightrow .ng svg{width:24px;height:24px}.nightrow .ng small{font-size:9px;color:var(--night-muted);font-family:Consolas,monospace}.note{background:var(--surface);border-left:4px solid var(--stale);padding:12px 14px;border-radius:4px;font-size:12.5px;color:var(--muted);margin:16px 0}footer{border-top:1px solid var(--line);background:var(--surface);padding:18px 0 34px;margin-top:10px;font-size:12px;color:var(--muted)}a{color:var(--accent)}</style></head><body>
+<header><div class="wrap"><p><span class="flag">INTERNO · PROPUESTO</span><span class="flag">PRODUCED</span><span class="flag">LEGAL_REVIEW_PENDING</span></p><h1>Prueba de reducción 16/24/32 px <span style="color:var(--muted);font-weight:400" lang="en">/ Reduction proof</span></h1>
+<p class="meta"><span lang="es">Prueba de render en navegador de los 57 iconos maestros. No es una prueba en pantalla marina ni en impresión. La columna gris aplica <code>filter: grayscale(1)</code>. Escala el maestro de 24 px: no incluye variantes de 16 px rediseñadas ni prueba de 48 px.</span> <span lang="en">Browser render proof of the 57 master icons. It is not a marine-display or print test. The grey column applies <code>filter: grayscale(1)</code>. It scales the 24 px master: no redesigned 16 px variants and no 48 px proof.</span></p></div></header>
+<main class="wrap"><div class="board"><table><caption><span lang="es">Icono, nombre y significado · tamaños 16, 24, 32 px · 32 px en escala de grises</span> <span lang="en">/ Icon, name and meaning · 16, 24, 32 px sizes · 32 px greyscale</span></caption>
+<thead><tr><th scope="col">Icono / Icon</th><th scope="col">16 px</th><th scope="col">24 px</th><th scope="col">32 px</th><th scope="col">32 px gris / grey</th></tr></thead>
+  <tbody><tr class="grp"><th colspan="5">Navegación y rumbo <span lang="en">/ Navigation &amp; course</span></th></tr>
+    <tr><th scope="row"><code>nav-heading.svg</code><span class="es">Rumbo</span><span class="en">Heading</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="3" x2="12" y2="4.5"/>
+    <line x1="12" y1="17" x2="12" y2="9"/>
+    <polyline points="9.5 11.5 12 9 14.5 11.5"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="1.5" x2="12" y2="4"/>
+    <line x1="12" y1="17" x2="12" y2="9"/>
+    <polyline points="9.5 11.5 12 9 14.5 11.5"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="1.5" x2="12" y2="4"/>
+    <line x1="12" y1="17" x2="12" y2="9"/>
+    <polyline points="9.5 11.5 12 9 14.5 11.5"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="1.5" x2="12" y2="4"/>
+    <line x1="12" y1="17" x2="12" y2="9"/>
+    <polyline points="9.5 11.5 12 9 14.5 11.5"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>nav-bearing.svg</code><span class="es">Demora</span><span class="en">Bearing</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="12" x2="17.5" y2="6.5"/>
+    <polyline points="14.7 7.2 17.5 6.5 16.6 9.2"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="12" x2="17.5" y2="6.5"/>
+    <polyline points="14.7 7.2 17.5 6.5 16.6 9.2"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="12" x2="17.5" y2="6.5"/>
+    <polyline points="14.7 7.2 17.5 6.5 16.6 9.2"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="12" x2="17.5" y2="6.5"/>
+    <polyline points="14.7 7.2 17.5 6.5 16.6 9.2"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>nav-waypoint.svg</code><span class="es">Punto de ruta</span><span class="en">Waypoint</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="8" y1="21" x2="8" y2="5"/>
+    <path d="M8 5 H18 L14.5 9 L18 13 H8"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="8" y1="21" x2="8" y2="5"/>
+    <path d="M8 5 H18 L14.5 9 L18 13 H8"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="8" y1="21" x2="8" y2="5"/>
+    <path d="M8 5 H18 L14.5 9 L18 13 H8"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="8" y1="21" x2="8" y2="5"/>
+    <path d="M8 5 H18 L14.5 9 L18 13 H8"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>nav-north.svg</code><span class="es">Norte</span><span class="en">North</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="21" x2="12" y2="4"/>
+    <polyline points="7.5 8.5 12 4 16.5 8.5"/>
+    <line x1="8" y1="21" x2="16" y2="21"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="21" x2="12" y2="4"/>
+    <polyline points="7.5 8.5 12 4 16.5 8.5"/>
+    <line x1="8" y1="21" x2="16" y2="21"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="21" x2="12" y2="4"/>
+    <polyline points="7.5 8.5 12 4 16.5 8.5"/>
+    <line x1="8" y1="21" x2="16" y2="21"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="21" x2="12" y2="4"/>
+    <polyline points="7.5 8.5 12 4 16.5 8.5"/>
+    <line x1="8" y1="21" x2="16" y2="21"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>scale.svg</code><span class="es">Escala</span><span class="en">Scale</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="15" x2="21" y2="15"/>
+    <line x1="3" y1="11" x2="3" y2="19"/>
+    <line x1="12" y1="13" x2="12" y2="19"/>
+    <line x1="21" y1="11" x2="21" y2="19"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="15" x2="21" y2="15"/>
+    <line x1="3" y1="11" x2="3" y2="19"/>
+    <line x1="12" y1="13" x2="12" y2="19"/>
+    <line x1="21" y1="11" x2="21" y2="19"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="15" x2="21" y2="15"/>
+    <line x1="3" y1="11" x2="3" y2="19"/>
+    <line x1="12" y1="13" x2="12" y2="19"/>
+    <line x1="21" y1="11" x2="21" y2="19"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="15" x2="21" y2="15"/>
+    <line x1="3" y1="11" x2="3" y2="19"/>
+    <line x1="12" y1="13" x2="12" y2="19"/>
+    <line x1="21" y1="11" x2="21" y2="19"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>speed.svg</code><span class="es">Velocidad</span><span class="en">Speed</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="19" y2="12"/>
+    <polyline points="15.5 8.5 19 12 15.5 15.5"/>
+    <line x1="3" y1="7.5" x2="8" y2="7.5"/>
+    <line x1="3" y1="16.5" x2="8" y2="16.5"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="19" y2="12"/>
+    <polyline points="15.5 8.5 19 12 15.5 15.5"/>
+    <line x1="3" y1="7.5" x2="8" y2="7.5"/>
+    <line x1="3" y1="16.5" x2="8" y2="16.5"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="19" y2="12"/>
+    <polyline points="15.5 8.5 19 12 15.5 15.5"/>
+    <line x1="3" y1="7.5" x2="8" y2="7.5"/>
+    <line x1="3" y1="16.5" x2="8" y2="16.5"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="19" y2="12"/>
+    <polyline points="15.5 8.5 19 12 15.5 15.5"/>
+    <line x1="3" y1="7.5" x2="8" y2="7.5"/>
+    <line x1="3" y1="16.5" x2="8" y2="16.5"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Posición y GPS <span lang="en">/ Position &amp; GPS</span></th></tr>
+    <tr><th scope="row"><code>gps-fix.svg</code><span class="es">Posición GPS fijada</span><span class="en">GPS fix</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7"/>
+    <line x1="12" y1="3" x2="12" y2="21"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7"/>
+    <line x1="12" y1="3" x2="12" y2="21"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7"/>
+    <line x1="12" y1="3" x2="12" y2="21"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7"/>
+    <line x1="12" y1="3" x2="12" y2="21"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>gps-no-fix.svg</code><span class="es">Sin posición GPS</span><span class="en">No GPS fix</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7" stroke-dasharray="2 2.5"/>
+    <line x1="3" y1="3" x2="21" y2="21"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7" stroke-dasharray="2 2.5"/>
+    <line x1="3" y1="3" x2="21" y2="21"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7" stroke-dasharray="2 2.5"/>
+    <line x1="3" y1="3" x2="21" y2="21"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7" stroke-dasharray="2 2.5"/>
+    <line x1="3" y1="3" x2="21" y2="21"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>position-marker.svg</code><span class="es">Posición propia</span><span class="en">Own position marker</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <path d="M12 5.5 L16.5 15.5 L12 13 L7.5 15.5 Z" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <path d="M12 5.5 L16.5 15.5 L12 13 L7.5 15.5 Z" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <path d="M12 5.5 L16.5 15.5 L12 13 L7.5 15.5 Z" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <path d="M12 5.5 L16.5 15.5 L12 13 L7.5 15.5 Z" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Viento <span lang="en">/ Wind</span></th></tr>
+    <tr><th scope="row"><code>wind-angle.svg</code><span class="es">Ángulo de viento</span><span class="en">Wind angle</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="4" y1="19" x2="20" y2="19"/>
+    <line x1="5" y1="19" x2="17" y2="7"/>
+    <polyline points="13.8 8 17 7 16 10.2"/>
+    <path d="M11 19 A6 6 0 0 0 9.24 14.76"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="4" y1="19" x2="20" y2="19"/>
+    <line x1="5" y1="19" x2="17" y2="7"/>
+    <polyline points="13.8 8 17 7 16 10.2"/>
+    <path d="M11 19 A6 6 0 0 0 9.24 14.76"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="4" y1="19" x2="20" y2="19"/>
+    <line x1="5" y1="19" x2="17" y2="7"/>
+    <polyline points="13.8 8 17 7 16 10.2"/>
+    <path d="M11 19 A6 6 0 0 0 9.24 14.76"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="4" y1="19" x2="20" y2="19"/>
+    <line x1="5" y1="19" x2="17" y2="7"/>
+    <polyline points="13.8 8 17 7 16 10.2"/>
+    <path d="M11 19 A6 6 0 0 0 9.24 14.76"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>wind-true.svg</code><span class="es">Viento real (T)</span><span class="en">True wind (T)</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="7" y2="9"/>
+    <polyline points="9.8 9.8 7 9 7.8 11.8"/>
+    <line x1="12.5" y1="19.5" x2="17.5" y2="14.5"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="7" y2="9"/>
+    <polyline points="9.8 9.8 7 9 7.8 11.8"/>
+    <line x1="12.5" y1="19.5" x2="17.5" y2="14.5"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="7" y2="9"/>
+    <polyline points="9.8 9.8 7 9 7.8 11.8"/>
+    <line x1="12.5" y1="19.5" x2="17.5" y2="14.5"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="7" y2="9"/>
+    <polyline points="9.8 9.8 7 9 7.8 11.8"/>
+    <line x1="12.5" y1="19.5" x2="17.5" y2="14.5"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>wind-apparent.svg</code><span class="es">Viento aparente (A)</span><span class="en">Apparent wind (A)</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="7" y2="9"/>
+    <polyline points="9.8 9.8 7 9 7.8 11.8"/>
+    <line x1="12.5" y1="19.5" x2="17.5" y2="14.5"/>
+    <line x1="9" y1="16" x2="14" y2="11"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="7" y2="9"/>
+    <polyline points="9.8 9.8 7 9 7.8 11.8"/>
+    <line x1="12.5" y1="19.5" x2="17.5" y2="14.5"/>
+    <line x1="9" y1="16" x2="14" y2="11"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="7" y2="9"/>
+    <polyline points="9.8 9.8 7 9 7.8 11.8"/>
+    <line x1="12.5" y1="19.5" x2="17.5" y2="14.5"/>
+    <line x1="9" y1="16" x2="14" y2="11"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="18" y1="20" x2="7" y2="9"/>
+    <polyline points="9.8 9.8 7 9 7.8 11.8"/>
+    <line x1="12.5" y1="19.5" x2="17.5" y2="14.5"/>
+    <line x1="9" y1="16" x2="14" y2="11"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>wind-sensor.svg</code><span class="es">Sensor de palo</span><span class="en">Masthead sensor</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="21" x2="12" y2="6"/>
+    <line x1="9" y1="6" x2="18" y2="6"/>
+    <polyline points="15.5 3.5 18 6 15.5 8.5"/>
+    <line x1="8" y1="21" x2="16" y2="21"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="21" x2="12" y2="6"/>
+    <line x1="9" y1="6" x2="18" y2="6"/>
+    <polyline points="15.5 3.5 18 6 15.5 8.5"/>
+    <line x1="8" y1="21" x2="16" y2="21"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="21" x2="12" y2="6"/>
+    <line x1="9" y1="6" x2="18" y2="6"/>
+    <polyline points="15.5 3.5 18 6 15.5 8.5"/>
+    <line x1="8" y1="21" x2="16" y2="21"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="21" x2="12" y2="6"/>
+    <line x1="9" y1="6" x2="18" y2="6"/>
+    <polyline points="15.5 3.5 18 6 15.5 8.5"/>
+    <line x1="8" y1="21" x2="16" y2="21"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Sonda <span lang="en">/ Depth</span></th></tr>
+    <tr><th scope="row"><code>depth.svg</code><span class="es">Sonda</span><span class="en">Depth</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 6.5 Q5 4.5 7 6.5 T11 6.5"/>
+    <path d="M13 6.5 Q15 4.5 17 6.5 T21 6.5"/>
+    <line x1="12" y1="9" x2="12" y2="16.5"/>
+    <polyline points="9.5 14 12 16.5 14.5 14"/>
+    <line x1="3" y1="19" x2="21" y2="19"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 6.5 Q5 4.5 7 6.5 T11 6.5"/>
+    <path d="M13 6.5 Q15 4.5 17 6.5 T21 6.5"/>
+    <line x1="12" y1="9" x2="12" y2="16.5"/>
+    <polyline points="9.5 14 12 16.5 14.5 14"/>
+    <line x1="3" y1="19" x2="21" y2="19"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 6.5 Q5 4.5 7 6.5 T11 6.5"/>
+    <path d="M13 6.5 Q15 4.5 17 6.5 T21 6.5"/>
+    <line x1="12" y1="9" x2="12" y2="16.5"/>
+    <polyline points="9.5 14 12 16.5 14.5 14"/>
+    <line x1="3" y1="19" x2="21" y2="19"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 6.5 Q5 4.5 7 6.5 T11 6.5"/>
+    <path d="M13 6.5 Q15 4.5 17 6.5 T21 6.5"/>
+    <line x1="12" y1="9" x2="12" y2="16.5"/>
+    <polyline points="9.5 14 12 16.5 14.5 14"/>
+    <line x1="3" y1="19" x2="21" y2="19"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">AIS — solo escucha <span lang="en">/ AIS — receive-only</span></th></tr>
+    <tr><th scope="row"><code>ais-receive-only.svg</code><span class="es">Recepción AIS (solo escucha)</span><span class="en">AIS receive-only</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="15" width="6" height="6" rx="1.5"/>
+    <line x1="6" y1="15" x2="6" y2="8"/>
+    <circle cx="6" cy="8" r="1" fill="currentColor" stroke="none"/>
+    <path d="M9.54 4.46 A5 5 0 0 1 9.54 11.54"/>
+    <path d="M11.66 2.34 A8 8 0 0 1 11.66 13.66"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="15" width="6" height="6" rx="1.5"/>
+    <line x1="6" y1="15" x2="6" y2="8"/>
+    <circle cx="6" cy="8" r="1" fill="currentColor" stroke="none"/>
+    <path d="M9.54 4.46 A5 5 0 0 1 9.54 11.54"/>
+    <path d="M11.66 2.34 A8 8 0 0 1 11.66 13.66"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="15" width="6" height="6" rx="1.5"/>
+    <line x1="6" y1="15" x2="6" y2="8"/>
+    <circle cx="6" cy="8" r="1" fill="currentColor" stroke="none"/>
+    <path d="M9.54 4.46 A5 5 0 0 1 9.54 11.54"/>
+    <path d="M11.66 2.34 A8 8 0 0 1 11.66 13.66"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="15" width="6" height="6" rx="1.5"/>
+    <line x1="6" y1="15" x2="6" y2="8"/>
+    <circle cx="6" cy="8" r="1" fill="currentColor" stroke="none"/>
+    <path d="M9.54 4.46 A5 5 0 0 1 9.54 11.54"/>
+    <path d="M11.66 2.34 A8 8 0 0 1 11.66 13.66"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>ais-target.svg</code><span class="es">Objetivo AIS</span><span class="en">AIS target</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>ais-target-selected.svg</code><span class="es">Objetivo AIS seleccionado</span><span class="en">Selected AIS target</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z"/>
+    <path d="M3 7.5 V3 H7.5"/>
+    <path d="M16.5 3 H21 V7.5"/>
+    <path d="M21 16.5 V21 H16.5"/>
+    <path d="M7.5 21 H3 V16.5"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z"/>
+    <path d="M3 7.5 V3 H7.5"/>
+    <path d="M16.5 3 H21 V7.5"/>
+    <path d="M21 16.5 V21 H16.5"/>
+    <path d="M7.5 21 H3 V16.5"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z"/>
+    <path d="M3 7.5 V3 H7.5"/>
+    <path d="M16.5 3 H21 V7.5"/>
+    <path d="M21 16.5 V21 H16.5"/>
+    <path d="M7.5 21 H3 V16.5"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z"/>
+    <path d="M3 7.5 V3 H7.5"/>
+    <path d="M16.5 3 H21 V7.5"/>
+    <path d="M21 16.5 V21 H16.5"/>
+    <path d="M7.5 21 H3 V16.5"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>ais-target-lost.svg</code><span class="es">Objetivo AIS perdido</span><span class="en">Lost AIS target</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z" stroke-dasharray="2.5 2"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z" stroke-dasharray="2.5 2"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z" stroke-dasharray="2.5 2"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5 L18.5 19.5 H5.5 Z" stroke-dasharray="2.5 2"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Dispositivos <span lang="en">/ Devices</span></th></tr>
+    <tr><th scope="row"><code>device-hub.svg</code><span class="es">Concentrador (HUB)</span><span class="en">Device hub (HUB)</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="8" y1="17" x2="8" y2="20"/>
+    <line x1="12" y1="17" x2="12" y2="20"/>
+    <line x1="16" y1="17" x2="16" y2="20"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="8" y1="17" x2="8" y2="20"/>
+    <line x1="12" y1="17" x2="12" y2="20"/>
+    <line x1="16" y1="17" x2="16" y2="20"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="8" y1="17" x2="8" y2="20"/>
+    <line x1="12" y1="17" x2="12" y2="20"/>
+    <line x1="16" y1="17" x2="16" y2="20"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="8" y1="17" x2="8" y2="20"/>
+    <line x1="12" y1="17" x2="12" y2="20"/>
+    <line x1="16" y1="17" x2="16" y2="20"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>device-display.svg</code><span class="es">Pantalla</span><span class="en">Display</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="9" y1="17" x2="9" y2="20"/>
+    <line x1="15" y1="17" x2="15" y2="20"/>
+    <line x1="7" y1="20" x2="17" y2="20"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="9" y1="17" x2="9" y2="20"/>
+    <line x1="15" y1="17" x2="15" y2="20"/>
+    <line x1="7" y1="20" x2="17" y2="20"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="9" y1="17" x2="9" y2="20"/>
+    <line x1="15" y1="17" x2="15" y2="20"/>
+    <line x1="7" y1="20" x2="17" y2="20"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="9" y1="17" x2="9" y2="20"/>
+    <line x1="15" y1="17" x2="15" y2="20"/>
+    <line x1="7" y1="20" x2="17" y2="20"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>device-control-head.svg</code><span class="es">Mando local de piloto</span><span class="en">Pilot control head</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="6" width="18" height="9" rx="2"/>
+    <circle cx="12" cy="10.5" r="2.5"/>
+    <circle cx="7" cy="10.5" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="17" cy="10.5" r="1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="6" width="18" height="9" rx="2"/>
+    <circle cx="12" cy="10.5" r="2.5"/>
+    <circle cx="7" cy="10.5" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="17" cy="10.5" r="1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="6" width="18" height="9" rx="2"/>
+    <circle cx="12" cy="10.5" r="2.5"/>
+    <circle cx="7" cy="10.5" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="17" cy="10.5" r="1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="6" width="18" height="9" rx="2"/>
+    <circle cx="12" cy="10.5" r="2.5"/>
+    <circle cx="7" cy="10.5" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="17" cy="10.5" r="1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>sensor.svg</code><span class="es">Sensor</span><span class="en">Sensor</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="1.5"/>
+    <circle cx="12" cy="12" r="2"/>
+    <line x1="9" y1="3" x2="9" y2="6"/>
+    <line x1="15" y1="3" x2="15" y2="6"/>
+    <line x1="9" y1="18" x2="9" y2="21"/>
+    <line x1="15" y1="18" x2="15" y2="21"/>
+    <line x1="3" y1="9" x2="6" y2="9"/>
+    <line x1="3" y1="15" x2="6" y2="15"/>
+    <line x1="18" y1="9" x2="21" y2="9"/>
+    <line x1="18" y1="15" x2="21" y2="15"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="1.5"/>
+    <circle cx="12" cy="12" r="2"/>
+    <line x1="9" y1="3" x2="9" y2="6"/>
+    <line x1="15" y1="3" x2="15" y2="6"/>
+    <line x1="9" y1="18" x2="9" y2="21"/>
+    <line x1="15" y1="18" x2="15" y2="21"/>
+    <line x1="3" y1="9" x2="6" y2="9"/>
+    <line x1="3" y1="15" x2="6" y2="15"/>
+    <line x1="18" y1="9" x2="21" y2="9"/>
+    <line x1="18" y1="15" x2="21" y2="15"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="1.5"/>
+    <circle cx="12" cy="12" r="2"/>
+    <line x1="9" y1="3" x2="9" y2="6"/>
+    <line x1="15" y1="3" x2="15" y2="6"/>
+    <line x1="9" y1="18" x2="9" y2="21"/>
+    <line x1="15" y1="18" x2="15" y2="21"/>
+    <line x1="3" y1="9" x2="6" y2="9"/>
+    <line x1="3" y1="15" x2="6" y2="15"/>
+    <line x1="18" y1="9" x2="21" y2="9"/>
+    <line x1="18" y1="15" x2="21" y2="15"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="12" height="12" rx="1.5"/>
+    <circle cx="12" cy="12" r="2"/>
+    <line x1="9" y1="3" x2="9" y2="6"/>
+    <line x1="15" y1="3" x2="15" y2="6"/>
+    <line x1="9" y1="18" x2="9" y2="21"/>
+    <line x1="15" y1="18" x2="15" y2="21"/>
+    <line x1="3" y1="9" x2="6" y2="9"/>
+    <line x1="3" y1="15" x2="6" y2="15"/>
+    <line x1="18" y1="9" x2="21" y2="9"/>
+    <line x1="18" y1="15" x2="21" y2="15"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Flota y vigilancia <span lang="en">/ Fleet &amp; monitoring</span></th></tr>
+    <tr><th scope="row"><code>fleet.svg</code><span class="es">Flota</span><span class="en">Fleet</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L15.5 11 H8.5 Z"/>
+    <path d="M6 12 L9 19.5 H3 Z"/>
+    <path d="M18 12 L21 19.5 H15 Z"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L15.5 11 H8.5 Z"/>
+    <path d="M6 12 L9 19.5 H3 Z"/>
+    <path d="M18 12 L21 19.5 H15 Z"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L15.5 11 H8.5 Z"/>
+    <path d="M6 12 L9 19.5 H3 Z"/>
+    <path d="M18 12 L21 19.5 H15 Z"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L15.5 11 H8.5 Z"/>
+    <path d="M6 12 L9 19.5 H3 Z"/>
+    <path d="M18 12 L21 19.5 H15 Z"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>watch-monitoring.svg</code><span class="es">Vigilancia (WATCH)</span><span class="en">Monitoring (WATCH)</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 12 Q12 4 21.5 12 Q12 20 2.5 12 Z"/>
+    <circle cx="12" cy="12" r="2.5"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 12 Q12 4 21.5 12 Q12 20 2.5 12 Z"/>
+    <circle cx="12" cy="12" r="2.5"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 12 Q12 4 21.5 12 Q12 20 2.5 12 Z"/>
+    <circle cx="12" cy="12" r="2.5"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2.5 12 Q12 4 21.5 12 Q12 20 2.5 12 Z"/>
+    <circle cx="12" cy="12" r="2.5"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>weather-forecast.svg</code><span class="es">Previsión meteorológica</span><span class="en">Weather forecast</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="7" cy="7" r="2.5"/>
+    <line x1="7" y1="4" x2="7" y2="3"/>
+    <line x1="4" y1="7" x2="3" y2="7"/>
+    <line x1="4.88" y1="4.88" x2="4.17" y2="4.17"/>
+    <line x1="9.12" y1="4.88" x2="9.83" y2="4.17"/>
+    <path d="M6 18 h11 a3.5 3.5 0 0 0 .3 -7 a5 5 0 0 0 -9.6 -1.6 A3.5 3.5 0 0 0 6 18 z"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="7" cy="6" r="2.5"/>
+    <line x1="7" y1="1.8" x2="7" y2="2.8"/>
+    <line x1="2.2" y1="6" x2="3.2" y2="6"/>
+    <line x1="3.6" y1="2.6" x2="4.3" y2="3.3"/>
+    <path d="M6 18 h11 a3.5 3.5 0 0 0 .3 -7 a5 5 0 0 0 -9.6 -1.6 A3.5 3.5 0 0 0 6 18 z"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="7" cy="6" r="2.5"/>
+    <line x1="7" y1="1.8" x2="7" y2="2.8"/>
+    <line x1="2.2" y1="6" x2="3.2" y2="6"/>
+    <line x1="3.6" y1="2.6" x2="4.3" y2="3.3"/>
+    <path d="M6 18 h11 a3.5 3.5 0 0 0 .3 -7 a5 5 0 0 0 -9.6 -1.6 A3.5 3.5 0 0 0 6 18 z"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="7" cy="6" r="2.5"/>
+    <line x1="7" y1="1.8" x2="7" y2="2.8"/>
+    <line x1="2.2" y1="6" x2="3.2" y2="6"/>
+    <line x1="3.6" y1="2.6" x2="4.3" y2="3.3"/>
+    <path d="M6 18 h11 a3.5 3.5 0 0 0 .3 -7 a5 5 0 0 0 -9.6 -1.6 A3.5 3.5 0 0 0 6 18 z"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Conectividad <span lang="en">/ Connectivity</span></th></tr>
+    <tr><th scope="row"><code>connection.svg</code><span class="es">Conexión</span><span class="en">Connection</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9.5 8 H6.5 A4 4 0 0 0 6.5 16 H9.5"/>
+    <path d="M14.5 8 H17.5 A4 4 0 0 1 17.5 16 H14.5"/>
+    <line x1="10" y1="12" x2="14" y2="12"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9.5 8 H6.5 A4 4 0 0 0 6.5 16 H9.5"/>
+    <path d="M14.5 8 H17.5 A4 4 0 0 1 17.5 16 H14.5"/>
+    <line x1="10" y1="12" x2="14" y2="12"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9.5 8 H6.5 A4 4 0 0 0 6.5 16 H9.5"/>
+    <path d="M14.5 8 H17.5 A4 4 0 0 1 17.5 16 H14.5"/>
+    <line x1="10" y1="12" x2="14" y2="12"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9.5 8 H6.5 A4 4 0 0 0 6.5 16 H9.5"/>
+    <path d="M14.5 8 H17.5 A4 4 0 0 1 17.5 16 H14.5"/>
+    <line x1="10" y1="12" x2="14" y2="12"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>network-bus.svg</code><span class="es">Bus de red</span><span class="en">Network bus</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="13" x2="21" y2="13"/>
+    <line x1="6" y1="13" x2="6" y2="6"/>
+    <line x1="12" y1="13" x2="12" y2="6"/>
+    <line x1="18" y1="13" x2="18" y2="6"/>
+    <circle cx="6" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="13" x2="21" y2="13"/>
+    <line x1="6" y1="13" x2="6" y2="6"/>
+    <line x1="12" y1="13" x2="12" y2="6"/>
+    <line x1="18" y1="13" x2="18" y2="6"/>
+    <circle cx="6" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="13" x2="21" y2="13"/>
+    <line x1="6" y1="13" x2="6" y2="6"/>
+    <line x1="12" y1="13" x2="12" y2="6"/>
+    <line x1="18" y1="13" x2="18" y2="6"/>
+    <circle cx="6" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="13" x2="21" y2="13"/>
+    <line x1="6" y1="13" x2="6" y2="6"/>
+    <line x1="12" y1="13" x2="12" y2="6"/>
+    <line x1="18" y1="13" x2="18" y2="6"/>
+    <circle cx="6" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="12" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>signal-strength.svg</code><span class="es">Intensidad de señal</span><span class="en">Signal strength</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="16" width="3" height="4" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="7.5" y="12" width="3" height="8" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="12" y="8" width="3" height="12" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="16.5" y="4" width="3" height="16" rx="0.75" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="16" width="3" height="4" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="7.5" y="12" width="3" height="8" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="12" y="8" width="3" height="12" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="16.5" y="4" width="3" height="16" rx="0.75" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="16" width="3" height="4" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="7.5" y="12" width="3" height="8" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="12" y="8" width="3" height="12" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="16.5" y="4" width="3" height="16" rx="0.75" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="16" width="3" height="4" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="7.5" y="12" width="3" height="8" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="12" y="8" width="3" height="12" rx="0.75" fill="currentColor" stroke="none"/>
+    <rect x="16.5" y="4" width="3" height="16" rx="0.75" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>wifi.svg</code><span class="es">Wi-Fi</span><span class="en">Wi-Fi</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>cellular.svg</code><span class="es">Red móvil</span><span class="en">Cellular</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="4" x2="7" y2="20"/>
+    <line x1="12" y1="4" x2="17" y2="20"/>
+    <line x1="9.5" y1="13" x2="14.5" y2="13"/>
+    <circle cx="12" cy="4" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="4" x2="7" y2="20"/>
+    <line x1="12" y1="4" x2="17" y2="20"/>
+    <line x1="9.5" y1="13" x2="14.5" y2="13"/>
+    <circle cx="12" cy="4" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="4" x2="7" y2="20"/>
+    <line x1="12" y1="4" x2="17" y2="20"/>
+    <line x1="9.5" y1="13" x2="14.5" y2="13"/>
+    <circle cx="12" cy="4" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="4" x2="7" y2="20"/>
+    <line x1="12" y1="4" x2="17" y2="20"/>
+    <line x1="9.5" y1="13" x2="14.5" y2="13"/>
+    <circle cx="12" cy="4" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Alertas <span lang="en">/ Alerts</span></th></tr>
+    <tr><th scope="row"><code>status-info.svg</code><span class="es">Información</span><span class="en">Info (advisory)</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <circle cx="12" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="11" x2="12" y2="16"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <circle cx="12" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="11" x2="12" y2="16"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <circle cx="12" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="11" x2="12" y2="16"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <circle cx="12" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="11" x2="12" y2="16"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>alert-caution.svg</code><span class="es">Precaución</span><span class="en">Caution</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L21 19.5 H3 Z"/>
+    <line x1="12" y1="8.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="16.5" r="1.3" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L21 19.5 H3 Z"/>
+    <line x1="12" y1="8.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="16.5" r="1.3" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L21 19.5 H3 Z"/>
+    <line x1="12" y1="8.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="16.5" r="1.3" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L21 19.5 H3 Z"/>
+    <line x1="12" y1="8.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="16.5" r="1.3" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>alert-warning.svg</code><span class="es">Advertencia</span><span class="en">Warning</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4 L20.5 20 H3.5 Z"/>
+    <path d="M12 7.5 L18 17 H6 Z" stroke-width="1.25"/>
+    <line x1="12" y1="10" x2="12" y2="13.5"/>
+    <circle cx="12" cy="15.8" r="1.1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2.5 L22 20.5 H2 Z"/>
+    <path d="M12 6.5 L18.5 17 H5.5 Z" stroke-width="1.25"/>
+    <line x1="12" y1="9.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="15.8" r="1.1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2.5 L22 20.5 H2 Z"/>
+    <path d="M12 6.5 L18.5 17 H5.5 Z" stroke-width="1.25"/>
+    <line x1="12" y1="9.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="15.8" r="1.1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 2.5 L22 20.5 H2 Z"/>
+    <path d="M12 6.5 L18.5 17 H5.5 Z" stroke-width="1.25"/>
+    <line x1="12" y1="9.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="15.8" r="1.1" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>alert-alarm.svg</code><span class="es">Alarma</span><span class="en">Alarm</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path fill-rule="evenodd" fill="currentColor" stroke="none" d="M8 2 H16 L22 8 V16 L16 22 H8 L2 16 V8 Z M11.3 6.5 h1.4 v6.8 h-1.4 z M12 15.2 a1.4 1.4 0 1 1 0 2.8 a1.4 1.4 0 1 1 0 -2.8 z"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path fill-rule="evenodd" fill="currentColor" stroke="none" d="M8 2 H16 L22 8 V16 L16 22 H8 L2 16 V8 Z M11.3 6.5 h1.4 v6.8 h-1.4 z M12 15.2 a1.4 1.4 0 1 1 0 2.8 a1.4 1.4 0 1 1 0 -2.8 z"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path fill-rule="evenodd" fill="currentColor" stroke="none" d="M8 2 H16 L22 8 V16 L16 22 H8 L2 16 V8 Z M11.3 6.5 h1.4 v6.8 h-1.4 z M12 15.2 a1.4 1.4 0 1 1 0 2.8 a1.4 1.4 0 1 1 0 -2.8 z"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path fill-rule="evenodd" fill="currentColor" stroke="none" d="M8 2 H16 L22 8 V16 L16 22 H8 L2 16 V8 Z M11.3 6.5 h1.4 v6.8 h-1.4 z M12 15.2 a1.4 1.4 0 1 1 0 2.8 a1.4 1.4 0 1 1 0 -2.8 z"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>acknowledge.svg</code><span class="es">Acuse de recibo</span><span class="en">Acknowledge</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.5 15.5 H17.5 L16 13.5 V9.5 A4 4 0 0 0 8 9.5 V13.5 Z"/>
+    <path d="M10.5 18 A1.5 1.5 0 0 0 13.5 18"/>
+    <polyline points="13.5 19 15.5 21 20 15.5"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.5 15.5 H17.5 L16 13.5 V9.5 A4 4 0 0 0 8 9.5 V13.5 Z"/>
+    <path d="M10.5 18 A1.5 1.5 0 0 0 13.5 18"/>
+    <polyline points="13.5 19 15.5 21 20 15.5"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.5 15.5 H17.5 L16 13.5 V9.5 A4 4 0 0 0 8 9.5 V13.5 Z"/>
+    <path d="M10.5 18 A1.5 1.5 0 0 0 13.5 18"/>
+    <polyline points="13.5 19 15.5 21 20 15.5"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.5 15.5 H17.5 L16 13.5 V9.5 A4 4 0 0 0 8 9.5 V13.5 Z"/>
+    <path d="M10.5 18 A1.5 1.5 0 0 0 13.5 18"/>
+    <polyline points="13.5 19 15.5 21 20 15.5"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Estados de dato <span lang="en">/ Data states</span></th></tr>
+    <tr><th scope="row"><code>stale.svg</code><span class="es">Dato obsoleto</span><span class="en">Stale data</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <line x1="12" y1="12" x2="12" y2="6.5"/>
+    <line x1="12" y1="12" x2="16" y2="14"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <line x1="12" y1="12" x2="12" y2="6.5"/>
+    <line x1="12" y1="12" x2="16" y2="14"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <line x1="12" y1="12" x2="12" y2="6.5"/>
+    <line x1="12" y1="12" x2="16" y2="14"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <line x1="12" y1="12" x2="12" y2="6.5"/>
+    <line x1="12" y1="12" x2="16" y2="14"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>offline.svg</code><span class="es">Sin conexión</span><span class="en">Offline</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>no-data.svg</code><span class="es">Sin datos</span><span class="en">No data</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2"/>
+    <line x1="8" y1="12" x2="16" y2="12"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2"/>
+    <line x1="8" y1="12" x2="16" y2="12"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2"/>
+    <line x1="8" y1="12" x2="16" y2="12"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2"/>
+    <line x1="8" y1="12" x2="16" y2="12"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>unknown.svg</code><span class="es">Desconocido</span><span class="en">Unknown</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="2 2"/>
+    <path d="M9.5 9.5 A2.5 2.5 0 1 1 14.5 9.5 C14.5 11.5 12 12 12 14"/>
+    <circle cx="12" cy="17" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="2 2"/>
+    <path d="M9.5 9.5 A2.5 2.5 0 1 1 14.5 9.5 C14.5 11.5 12 12 12 14"/>
+    <circle cx="12" cy="17" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="2 2"/>
+    <path d="M9.5 9.5 A2.5 2.5 0 1 1 14.5 9.5 C14.5 11.5 12 12 12 14"/>
+    <circle cx="12" cy="17" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2" stroke-dasharray="2 2"/>
+    <path d="M9.5 9.5 A2.5 2.5 0 1 1 14.5 9.5 C14.5 11.5 12 12 12 14"/>
+    <circle cx="12" cy="17" r="1.2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Sistema <span lang="en">/ System UI</span></th></tr>
+    <tr><th scope="row"><code>settings.svg</code><span class="es">Ajustes</span><span class="en">Settings</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5.5"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <line x1="12" y1="2" x2="12" y2="6"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(45 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(90 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(135 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(180 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(225 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(270 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(315 12 12)"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5.5"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <line x1="12" y1="2" x2="12" y2="6"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(45 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(90 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(135 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(180 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(225 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(270 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(315 12 12)"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5.5"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <line x1="12" y1="2" x2="12" y2="6"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(45 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(90 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(135 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(180 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(225 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(270 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(315 12 12)"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="5.5"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <line x1="12" y1="2" x2="12" y2="6"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(45 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(90 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(135 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(180 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(225 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(270 12 12)"/>
+    <line x1="12" y1="2" x2="12" y2="6" transform="rotate(315 12 12)"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>power.svg</code><span class="es">Encendido</span><span class="en">Power</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="12"/>
+    <path d="M7.05 7.05 A7 7 0 1 0 16.95 7.05"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="12"/>
+    <path d="M7.05 7.05 A7 7 0 1 0 16.95 7.05"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="12"/>
+    <path d="M7.05 7.05 A7 7 0 1 0 16.95 7.05"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="12"/>
+    <path d="M7.05 7.05 A7 7 0 1 0 16.95 7.05"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>brightness.svg</code><span class="es">Brillo</span><span class="en">Brightness</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <line x1="18.5" y1="12" x2="20.5" y2="12"/>
+    <line x1="16.6" y1="7.4" x2="18" y2="6"/>
+    <line x1="12" y1="5.5" x2="12" y2="3.5"/>
+    <line x1="7.4" y1="7.4" x2="6" y2="6"/>
+    <line x1="5.5" y1="12" x2="3.5" y2="12"/>
+    <line x1="7.4" y1="16.6" x2="6" y2="18"/>
+    <line x1="12" y1="18.5" x2="12" y2="20.5"/>
+    <line x1="16.6" y1="16.6" x2="18" y2="18"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <line x1="18.5" y1="12" x2="20.5" y2="12"/>
+    <line x1="16.6" y1="7.4" x2="18" y2="6"/>
+    <line x1="12" y1="5.5" x2="12" y2="3.5"/>
+    <line x1="7.4" y1="7.4" x2="6" y2="6"/>
+    <line x1="5.5" y1="12" x2="3.5" y2="12"/>
+    <line x1="7.4" y1="16.6" x2="6" y2="18"/>
+    <line x1="12" y1="18.5" x2="12" y2="20.5"/>
+    <line x1="16.6" y1="16.6" x2="18" y2="18"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <line x1="18.5" y1="12" x2="20.5" y2="12"/>
+    <line x1="16.6" y1="7.4" x2="18" y2="6"/>
+    <line x1="12" y1="5.5" x2="12" y2="3.5"/>
+    <line x1="7.4" y1="7.4" x2="6" y2="6"/>
+    <line x1="5.5" y1="12" x2="3.5" y2="12"/>
+    <line x1="7.4" y1="16.6" x2="6" y2="18"/>
+    <line x1="12" y1="18.5" x2="12" y2="20.5"/>
+    <line x1="16.6" y1="16.6" x2="18" y2="18"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"/>
+    <line x1="18.5" y1="12" x2="20.5" y2="12"/>
+    <line x1="16.6" y1="7.4" x2="18" y2="6"/>
+    <line x1="12" y1="5.5" x2="12" y2="3.5"/>
+    <line x1="7.4" y1="7.4" x2="6" y2="6"/>
+    <line x1="5.5" y1="12" x2="3.5" y2="12"/>
+    <line x1="7.4" y1="16.6" x2="6" y2="18"/>
+    <line x1="12" y1="18.5" x2="12" y2="20.5"/>
+    <line x1="16.6" y1="16.6" x2="18" y2="18"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>update.svg</code><span class="es">Actualizar</span><span class="en">Update</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="14"/>
+    <polyline points="8.5 10.5 12 14 15.5 10.5"/>
+    <path d="M4 17 V20 H20 V17"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="14"/>
+    <polyline points="8.5 10.5 12 14 15.5 10.5"/>
+    <path d="M4 17 V20 H20 V17"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="14"/>
+    <polyline points="8.5 10.5 12 14 15.5 10.5"/>
+    <path d="M4 17 V20 H20 V17"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="14"/>
+    <polyline points="8.5 10.5 12 14 15.5 10.5"/>
+    <path d="M4 17 V20 H20 V17"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Eléctrico <span lang="en">/ Electrical</span></th></tr>
+    <tr><th scope="row"><code>battery.svg</code><span class="es">Batería</span><span class="en">Battery</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="7" width="16" height="10" rx="2"/>
+    <rect x="18.5" y="10" width="2" height="4" rx="0.5"/>
+    <line x1="6" y1="12" x2="13" y2="12"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="7" width="16" height="10" rx="2"/>
+    <rect x="18.5" y="10" width="2" height="4" rx="0.5"/>
+    <line x1="6" y1="12" x2="13" y2="12"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="7" width="16" height="10" rx="2"/>
+    <rect x="18.5" y="10" width="2" height="4" rx="0.5"/>
+    <line x1="6" y1="12" x2="13" y2="12"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="7" width="16" height="10" rx="2"/>
+    <rect x="18.5" y="10" width="2" height="4" rx="0.5"/>
+    <line x1="6" y1="12" x2="13" y2="12"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>charger.svg</code><span class="es">Cargador</span><span class="en">Charger</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <path d="M7 12 C8.5 8.5 10.5 8.5 12 12 C13.5 15.5 15.5 15.5 17 12"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <path d="M7 12 C8.5 8.5 10.5 8.5 12 12 C13.5 15.5 15.5 15.5 17 12"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <path d="M7 12 C8.5 8.5 10.5 8.5 12 12 C13.5 15.5 15.5 15.5 17 12"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <path d="M7 12 C8.5 8.5 10.5 8.5 12 12 C13.5 15.5 15.5 15.5 17 12"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>solar.svg</code><span class="es">Solar</span><span class="en">Solar</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="7" cy="7" r="2.2"/>
+    <line x1="7" y1="4" x2="7" y2="3"/>
+    <line x1="4" y1="7" x2="3" y2="7"/>
+    <line x1="4.88" y1="4.88" x2="4.17" y2="4.17"/>
+    <line x1="9.12" y1="4.88" x2="9.83" y2="4.17"/>
+    <path d="M7 14 H17 L21 21 H11 Z"/>
+    <line x1="10" y1="14" x2="14" y2="21"/>
+    <line x1="14" y1="14" x2="18" y2="21"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="6.5" cy="6.5" r="2.2"/>
+    <line x1="6.5" y1="3.3" x2="6.5" y2="1.9"/>
+    <line x1="3.3" y1="6.5" x2="1.9" y2="6.5"/>
+    <line x1="4.2" y1="4.2" x2="3.2" y2="3.2"/>
+    <line x1="8.8" y1="4.2" x2="9.8" y2="3.2"/>
+    <path d="M7 14 H17 L21 21 H11 Z"/>
+    <line x1="10" y1="14" x2="14" y2="21"/>
+    <line x1="14" y1="14" x2="18" y2="21"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="6.5" cy="6.5" r="2.2"/>
+    <line x1="6.5" y1="3.3" x2="6.5" y2="1.9"/>
+    <line x1="3.3" y1="6.5" x2="1.9" y2="6.5"/>
+    <line x1="4.2" y1="4.2" x2="3.2" y2="3.2"/>
+    <line x1="8.8" y1="4.2" x2="9.8" y2="3.2"/>
+    <path d="M7 14 H17 L21 21 H11 Z"/>
+    <line x1="10" y1="14" x2="14" y2="21"/>
+    <line x1="14" y1="14" x2="18" y2="21"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="6.5" cy="6.5" r="2.2"/>
+    <line x1="6.5" y1="3.3" x2="6.5" y2="1.9"/>
+    <line x1="3.3" y1="6.5" x2="1.9" y2="6.5"/>
+    <line x1="4.2" y1="4.2" x2="3.2" y2="3.2"/>
+    <line x1="8.8" y1="4.2" x2="9.8" y2="3.2"/>
+    <path d="M7 14 H17 L21 21 H11 Z"/>
+    <line x1="10" y1="14" x2="14" y2="21"/>
+    <line x1="14" y1="14" x2="18" y2="21"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>fuse-breaker.svg</code><span class="es">Fusible</span><span class="en">Fuse</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="9" width="19" height="6" rx="3"/>
+    <line x1="7" y1="12" x2="17" y2="12"/>
+    <line x1="4.5" y1="10.5" x2="4.5" y2="13.5"/>
+    <line x1="19.5" y1="10.5" x2="19.5" y2="13.5"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="9" width="19" height="6" rx="3"/>
+    <line x1="7" y1="12" x2="17" y2="12"/>
+    <line x1="4.5" y1="10.5" x2="4.5" y2="13.5"/>
+    <line x1="19.5" y1="10.5" x2="19.5" y2="13.5"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="9" width="19" height="6" rx="3"/>
+    <line x1="7" y1="12" x2="17" y2="12"/>
+    <line x1="4.5" y1="10.5" x2="4.5" y2="13.5"/>
+    <line x1="19.5" y1="10.5" x2="19.5" y2="13.5"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="9" width="19" height="6" rx="3"/>
+    <line x1="7" y1="12" x2="17" y2="12"/>
+    <line x1="4.5" y1="10.5" x2="4.5" y2="13.5"/>
+    <line x1="19.5" y1="10.5" x2="19.5" y2="13.5"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>shore-power.svg</code><span class="es">Toma de puerto</span><span class="en">Shore power</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="8" width="7" height="8" rx="1.5"/>
+    <line x1="9.5" y1="10" x2="13" y2="10"/>
+    <line x1="9.5" y1="14" x2="13" y2="14"/>
+    <rect x="14.5" y="7" width="7" height="10" rx="1.5"/>
+    <circle cx="18" cy="10.5" r="0.9" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="13.5" r="0.9" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="8" width="7" height="8" rx="1.5"/>
+    <line x1="9.5" y1="10" x2="13" y2="10"/>
+    <line x1="9.5" y1="14" x2="13" y2="14"/>
+    <rect x="14.5" y="7" width="7" height="10" rx="1.5"/>
+    <circle cx="18" cy="10.5" r="0.9" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="13.5" r="0.9" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="8" width="7" height="8" rx="1.5"/>
+    <line x1="9.5" y1="10" x2="13" y2="10"/>
+    <line x1="9.5" y1="14" x2="13" y2="14"/>
+    <rect x="14.5" y="7" width="7" height="10" rx="1.5"/>
+    <circle cx="18" cy="10.5" r="0.9" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="13.5" r="0.9" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2.5" y="8" width="7" height="8" rx="1.5"/>
+    <line x1="9.5" y1="10" x2="13" y2="10"/>
+    <line x1="9.5" y1="14" x2="13" y2="14"/>
+    <rect x="14.5" y="7" width="7" height="10" rx="1.5"/>
+    <circle cx="18" cy="10.5" r="0.9" fill="currentColor" stroke="none"/>
+    <circle cx="18" cy="13.5" r="0.9" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>ground.svg</code><span class="es">Masa</span><span class="en">Ground</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="14"/>
+    <line x1="6" y1="14" x2="18" y2="14"/>
+    <line x1="8.5" y1="17.5" x2="15.5" y2="17.5"/>
+    <line x1="10.5" y1="21" x2="13.5" y2="21"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="14"/>
+    <line x1="6" y1="14" x2="18" y2="14"/>
+    <line x1="8.5" y1="17.5" x2="15.5" y2="17.5"/>
+    <line x1="10.5" y1="21" x2="13.5" y2="21"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="14"/>
+    <line x1="6" y1="14" x2="18" y2="14"/>
+    <line x1="8.5" y1="17.5" x2="15.5" y2="17.5"/>
+    <line x1="10.5" y1="21" x2="13.5" y2="21"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="3" x2="12" y2="14"/>
+    <line x1="6" y1="14" x2="18" y2="14"/>
+    <line x1="8.5" y1="17.5" x2="15.5" y2="17.5"/>
+    <line x1="10.5" y1="21" x2="13.5" y2="21"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Monitorización <span lang="en">/ Monitoring</span></th></tr>
+    <tr><th scope="row"><code>bilge.svg</code><span class="es">Sentina</span><span class="en">Bilge</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 8 V16 A5 5 0 0 0 8 21 H16 A5 5 0 0 0 21 16 V8"/>
+    <path d="M5 16 Q7 14.5 9 16 T13 16 T17 16 T19 16"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 8 V16 A5 5 0 0 0 8 21 H16 A5 5 0 0 0 21 16 V8"/>
+    <path d="M5 16 Q7 14.5 9 16 T13 16 T17 16 T19 16"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 8 V16 A5 5 0 0 0 8 21 H16 A5 5 0 0 0 21 16 V8"/>
+    <path d="M5 16 Q7 14.5 9 16 T13 16 T17 16 T19 16"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 8 V16 A5 5 0 0 0 8 21 H16 A5 5 0 0 0 21 16 V8"/>
+    <path d="M5 16 Q7 14.5 9 16 T13 16 T17 16 T19 16"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>tank-level.svg</code><span class="es">Nivel de tanque</span><span class="en">Tank level</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="3" width="14" height="18" rx="2"/>
+    <path d="M7 14 Q9 12.5 11 14 T15 14 T17 14"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="3" width="14" height="18" rx="2"/>
+    <path d="M7 14 Q9 12.5 11 14 T15 14 T17 14"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="3" width="14" height="18" rx="2"/>
+    <path d="M7 14 Q9 12.5 11 14 T15 14 T17 14"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="3" width="14" height="18" rx="2"/>
+    <path d="M7 14 Q9 12.5 11 14 T15 14 T17 14"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>temperature.svg</code><span class="es">Temperatura</span><span class="en">Temperature</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="3" width="4" height="12" rx="2"/>
+    <circle cx="12" cy="17" r="3.5"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="3" width="4" height="12" rx="2"/>
+    <circle cx="12" cy="17" r="3.5"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="3" width="4" height="12" rx="2"/>
+    <circle cx="12" cy="17" r="3.5"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="10" y="3" width="4" height="12" rx="2"/>
+    <circle cx="12" cy="17" r="3.5"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>pressure.svg</code><span class="es">Presión</span><span class="en">Pressure</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="18" x2="21" y2="18"/>
+    <line x1="12" y1="5" x2="12" y2="13"/>
+    <polyline points="9.5 10.5 12 13 14.5 10.5"/>
+    <line x1="6" y1="8" x2="6" y2="13"/>
+    <polyline points="4.5 11.5 6 13 7.5 11.5"/>
+    <line x1="18" y1="8" x2="18" y2="13"/>
+    <polyline points="16.5 11.5 18 13 19.5 11.5"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="18" x2="21" y2="18"/>
+    <line x1="12" y1="5" x2="12" y2="13"/>
+    <polyline points="9.5 10.5 12 13 14.5 10.5"/>
+    <line x1="6" y1="8" x2="6" y2="13"/>
+    <polyline points="4.5 11.5 6 13 7.5 11.5"/>
+    <line x1="18" y1="8" x2="18" y2="13"/>
+    <polyline points="16.5 11.5 18 13 19.5 11.5"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="18" x2="21" y2="18"/>
+    <line x1="12" y1="5" x2="12" y2="13"/>
+    <polyline points="9.5 10.5 12 13 14.5 10.5"/>
+    <line x1="6" y1="8" x2="6" y2="13"/>
+    <polyline points="4.5 11.5 6 13 7.5 11.5"/>
+    <line x1="18" y1="8" x2="18" y2="13"/>
+    <polyline points="16.5 11.5 18 13 19.5 11.5"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="18" x2="21" y2="18"/>
+    <line x1="12" y1="5" x2="12" y2="13"/>
+    <polyline points="9.5 10.5 12 13 14.5 10.5"/>
+    <line x1="6" y1="8" x2="6" y2="13"/>
+    <polyline points="4.5 11.5 6 13 7.5 11.5"/>
+    <line x1="18" y1="8" x2="18" y2="13"/>
+    <polyline points="16.5 11.5 18 13 19.5 11.5"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Mantenimiento <span lang="en">/ Maintenance</span></th></tr>
+    <tr><th scope="row"><code>service.svg</code><span class="es">Servicio</span><span class="en">Service</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="9" width="18" height="10" rx="2"/>
+    <path d="M8 9 V7 A4 4 0 0 1 16 7 V9"/>
+    <line x1="3" y1="14" x2="21" y2="14"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="9" width="18" height="10" rx="2"/>
+    <path d="M8 9 V7 A4 4 0 0 1 16 7 V9"/>
+    <line x1="3" y1="14" x2="21" y2="14"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="9" width="18" height="10" rx="2"/>
+    <path d="M8 9 V7 A4 4 0 0 1 16 7 V9"/>
+    <line x1="3" y1="14" x2="21" y2="14"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="9" width="18" height="10" rx="2"/>
+    <path d="M8 9 V7 A4 4 0 0 1 16 7 V9"/>
+    <line x1="3" y1="14" x2="21" y2="14"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>calibration.svg</code><span class="es">Calibración</span><span class="en">Calibration</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="7" x2="21" y2="7"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="17" x2="21" y2="17"/>
+    <circle cx="8" cy="7" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="10" cy="17" r="2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="7" x2="21" y2="7"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="17" x2="21" y2="17"/>
+    <circle cx="8" cy="7" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="10" cy="17" r="2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="7" x2="21" y2="7"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="17" x2="21" y2="17"/>
+    <circle cx="8" cy="7" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="10" cy="17" r="2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="7" x2="21" y2="7"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <line x1="3" y1="17" x2="21" y2="17"/>
+    <circle cx="8" cy="7" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="16" cy="12" r="2" fill="currentColor" stroke="none"/>
+    <circle cx="10" cy="17" r="2" fill="currentColor" stroke="none"/>
+  </g>
+</svg></td></tr></tbody>
+  <tbody><tr class="grp"><th colspan="5">Instalación y soporte <span lang="en">/ Installation &amp; support</span></th></tr>
+    <tr><th scope="row"><code>installation.svg</code><span class="es">Instalación</span><span class="en">Installation</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="12" rx="2"/>
+    <circle cx="5.8" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="5.8" cy="13.2" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18.2" cy="13.2" r="1" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="16" x2="12" y2="20"/>
+    <rect x="9.5" y="19" width="5" height="2.5" rx="1"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="12" rx="2"/>
+    <circle cx="5.8" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="5.8" cy="13.2" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18.2" cy="13.2" r="1" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="16" x2="12" y2="20"/>
+    <rect x="9.5" y="19" width="5" height="2.5" rx="1"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="12" rx="2"/>
+    <circle cx="5.8" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="5.8" cy="13.2" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18.2" cy="13.2" r="1" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="16" x2="12" y2="20"/>
+    <rect x="9.5" y="19" width="5" height="2.5" rx="1"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="12" rx="2"/>
+    <circle cx="5.8" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="5.8" cy="13.2" r="1" fill="currentColor" stroke="none"/>
+    <circle cx="18.2" cy="13.2" r="1" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="16" x2="12" y2="20"/>
+    <rect x="9.5" y="19" width="5" height="2.5" rx="1"/>
+  </g>
+</svg></td></tr>
+    <tr><th scope="row"><code>support.svg</code><span class="es">Soporte</span><span class="en">Support</span></th><td class="c16"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 15 V12 A8 8 0 0 1 20 12 V15"/>
+    <rect x="3" y="14" width="3" height="5" rx="1.5"/>
+    <rect x="18" y="14" width="3" height="5" rx="1.5"/>
+  </g>
+</svg></td><td class="c24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 15 V12 A8 8 0 0 1 20 12 V15"/>
+    <rect x="3" y="14" width="3" height="5" rx="1.5"/>
+    <rect x="18" y="14" width="3" height="5" rx="1.5"/>
+  </g>
+</svg></td><td class="c32"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 15 V12 A8 8 0 0 1 20 12 V15"/>
+    <rect x="3" y="14" width="3" height="5" rx="1.5"/>
+    <rect x="18" y="14" width="3" height="5" rx="1.5"/>
+  </g>
+</svg></td><td class="c32 gs"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 15 V12 A8 8 0 0 1 20 12 V15"/>
+    <rect x="3" y="14" width="3" height="5" rx="1.5"/>
+    <rect x="18" y="14" width="3" height="5" rx="1.5"/>
+  </g>
+</svg></td></tr></tbody></table></div>
+<section class="night"><h2>Noche / Night — superficie #0d1b26 <span lang="en">(ejemplo de color de rol, no modo de producto)</span></h2><p><span lang="es">Comprobación de contraste del trazo sobre la superficie nocturna propuesta en el brief §5.3. No es una prueba de hardware ni de halación real.</span> <span lang="en">Stroke contrast check on the night surface proposed in brief §5.3. Not a hardware or real halation test.</span></p><div class="nightrow">
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8"/>
+    <line x1="12" y1="1.5" x2="12" y2="4"/>
+    <line x1="12" y1="17" x2="12" y2="9"/>
+    <polyline points="9.5 11.5 12 9 14.5 11.5"/>
+  </g>
+</svg><small>nav-heading</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="3" y1="12" x2="19" y2="12"/>
+    <polyline points="15.5 8.5 19 12 15.5 15.5"/>
+    <line x1="3" y1="7.5" x2="8" y2="7.5"/>
+    <line x1="3" y1="16.5" x2="8" y2="16.5"/>
+  </g>
+</svg><small>speed</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 6.5 Q5 4.5 7 6.5 T11 6.5"/>
+    <path d="M13 6.5 Q15 4.5 17 6.5 T21 6.5"/>
+    <line x1="12" y1="9" x2="12" y2="16.5"/>
+    <polyline points="9.5 14 12 16.5 14.5 14"/>
+    <line x1="3" y1="19" x2="21" y2="19"/>
+  </g>
+</svg><small>depth</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="4" y1="19" x2="20" y2="19"/>
+    <line x1="5" y1="19" x2="17" y2="7"/>
+    <polyline points="13.8 8 17 7 16 10.2"/>
+    <path d="M11 19 A6 6 0 0 0 9.24 14.76"/>
+  </g>
+</svg><small>wind-angle</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="15" width="6" height="6" rx="1.5"/>
+    <line x1="6" y1="15" x2="6" y2="8"/>
+    <circle cx="6" cy="8" r="1" fill="currentColor" stroke="none"/>
+    <path d="M9.54 4.46 A5 5 0 0 1 9.54 11.54"/>
+    <path d="M11.66 2.34 A8 8 0 0 1 11.66 13.66"/>
+  </g>
+</svg><small>ais-receive-only</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="7"/>
+    <line x1="12" y1="3" x2="12" y2="21"/>
+    <line x1="3" y1="12" x2="21" y2="12"/>
+    <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+  </g>
+</svg><small>gps-fix</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 3 L21 19.5 H3 Z"/>
+    <line x1="12" y1="8.5" x2="12" y2="13.5"/>
+    <circle cx="12" cy="16.5" r="1.3" fill="currentColor" stroke="none"/>
+  </g>
+</svg><small>alert-caution</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8.5"/>
+    <line x1="12" y1="12" x2="12" y2="6.5"/>
+    <line x1="12" y1="12" x2="16" y2="14"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg><small>stale</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/>
+    <path d="M8.46 15.46 A5 5 0 0 1 15.54 15.46"/>
+    <path d="M6.34 13.34 A8 8 0 0 1 17.66 13.34"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </g>
+</svg><small>offline</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="4" y="4" width="16" height="16" rx="2"/>
+    <line x1="8" y1="12" x2="16" y2="12"/>
+  </g>
+</svg><small>no-data</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="9"/>
+    <circle cx="12" cy="8" r="1.2" fill="currentColor" stroke="none"/>
+    <line x1="12" y1="11" x2="12" y2="16"/>
+  </g>
+</svg><small>status-info</small></div>
+    <div class="ng"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+  
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.5 15.5 H17.5 L16 13.5 V9.5 A4 4 0 0 0 8 9.5 V13.5 Z"/>
+    <path d="M10.5 18 A1.5 1.5 0 0 0 13.5 18"/>
+    <polyline points="13.5 19 15.5 21 20 15.5"/>
+  </g>
+</svg><small>acknowledge</small></div></div></section>
+<p class="note"><span lang="es"><b>Límites:</b> prueba de render determinista en Chromium; sin revisión profesional de originalidad; sin prueba de hardware; sin impresión 1:1 (BLOQUEADA). No hay variantes de 16 rediseñadas ni prueba de 48 px: el tablero escala el maestro de 24. Los iconos heredan <code>currentColor</code> y no codifican significado solo por color.</span> <span lang="en"><b>Limits:</b> deterministic Chromium render proof; no professional originality review; no hardware test; no 1:1 print proof (BLOCKED). No redesigned 16 px variants and no 48 px proof: the board scales the 24 px master. Icons inherit <code>currentColor</code> and never encode meaning by colour alone.</span></p></main>
+<footer><div class="wrap"><p>MAREA — marca propuesta / proposed brand. <code>PUBLICATION = BLOCKED</code>. <a href="./index.html">Volver al catálogo / Back to catalogue</a></p></div></footer></body></html>

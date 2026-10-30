@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000" role="img">
+  <title>MAREA — ecosistema: plataforma comercial, software y tiempo de ejecución a bordo / MAREA ecosystem overview (ilustrativo / illustrative)</title>
+  <desc>Vista de ecosistema: plataforma comercial EMBARCARTE, servicios WATCH/FLEET, conectividad opcional, software MAREA, runtime a bordo (HUB), dispositivos y sensores, y el dominio de seguridad separado de PILOT. Sin compatibilidad implicada; conexiones no verificadas. Ilustrativo. / Ecosystem view: EMBARCARTE commercial platform, WATCH/FLEET services, optional connectivity, MAREA software, onboard runtime (HUB), devices and sensors, and the separate PILOT safety domain. No implied compatibility; unverified connections. Illustrative.</desc>
+  <rect width="1200" height="1000" fill="#ffffff"/>
+
+  <!-- Header -->
+  <text x="40" y="54" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="21" font-weight="700" fill="#17365d">MAREA — ecosistema: comercio, software y tiempo de ejecución a bordo</text>
+  <text x="40" y="80" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13.5" fill="#57708a">Ecosystem overview — illustrative; no implied compatibility; engineering review pending</text>
+  <rect x="40" y="94" width="880" height="24" rx="4" fill="#fff8ec" stroke="#8a5a00" stroke-width="1.5"/>
+  <text x="52" y="110" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#8a5a00">ILUSTRATIVO / ILLUSTRATIVE · conexiones no verificadas / unverified connections · sin certificación / no certification · productos no a la venta / products not for sale</text>
+  <text x="1160" y="34" text-anchor="end" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">D-11 · MR-DIA-003 · v1</text>
+
+  <!-- Shore / optional services -->
+  <text x="40" y="146" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="#57708a">TIERRA / NUBE — SERVICIOS OPCIONALES · SHORE / CLOUD — OPTIONAL SERVICES</text>
+  <rect x="40" y="155" width="340" height="150" rx="6" fill="#ffffff" stroke="#57708a" stroke-width="2"/>
+  <text x="58" y="181" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#17365d">CONECTIVIDAD OPCIONAL</text>
+  <text x="58" y="197" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">OPTIONAL CONNECTIVITY</text>
+  <text x="58" y="221" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">móvil / Wi-Fi — salida únicamente</text>
+  <text x="58" y="235" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">cellular / Wi-Fi — outbound only</text>
+  <text x="58" y="257" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">intermitente; cobertura no garantizada</text>
+  <text x="58" y="271" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">intermittent; coverage not guaranteed</text>
+  <text x="58" y="293" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#8a5a00">sin sesión entrante al barco / no inbound session</text>
+
+  <rect x="410" y="155" width="350" height="150" rx="6" fill="#ffffff" stroke="#57708a" stroke-width="2"/>
+  <text x="428" y="181" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#17365d">SERVICIOS WATCH / FLEET</text>
+  <text x="428" y="197" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">WATCH / FLEET SERVICES</text>
+  <text x="428" y="221" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">WATCH: vigilancia y notificaciones</text>
+  <text x="428" y="235" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">monitoring and notifications</text>
+  <text x="428" y="257" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#8a5a00">no es servicio de socorro / not a distress service</text>
+  <text x="428" y="279" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">FLEET: telemetría de solo lectura</text>
+  <text x="428" y="293" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">read-only telemetry; no write path to the vessel</text>
+
+  <rect x="790" y="155" width="370" height="150" rx="6" fill="#ffffff" stroke="#57708a" stroke-width="2"/>
+  <text x="808" y="181" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#17365d">PLATAFORMA COMERCIAL EMBARCARTE</text>
+  <text x="808" y="197" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">EMBARCARTE COMMERCIAL PLATFORM</text>
+  <text x="808" y="221" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">web, catálogo, pedidos, cuenta, soporte</text>
+  <text x="808" y="235" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">website, catalogue, orders, account, support</text>
+  <text x="808" y="257" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#a32b22">productos CONCEPT/DEFINED — no a la venta</text>
+  <text x="808" y="271" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">CONCEPT/DEFINED products — not for sale</text>
+  <text x="808" y="293" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#8a5a00">sin promesas de disponibilidad / no availability claims</text>
+
+  <!-- Top row links -->
+  <g stroke-linecap="round">
+    <line x1="382" y1="230" x2="404" y2="230" stroke="#57708a" stroke-width="2"/>
+    <path d="M396 225 L404 230 L396 235 Z" fill="#57708a"/>
+    <line x1="762" y1="230" x2="784" y2="230" stroke="#57708a" stroke-width="2"/>
+    <path d="M776 225 L784 230 L776 235 Z" fill="#57708a"/>
+  </g>
+
+  <!-- Isolation gate -->
+  <rect x="40" y="318" width="1120" height="88" rx="6" fill="#f7f9fb" stroke="#5f6f7d" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="56" y="342" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="#5f6f7d">COMPUERTA DE AISLAMIENTO / ISOLATION GATE</text>
+  <text x="56" y="360" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">salida únicamente / outbound only · sin sesión entrante / no inbound session · sin autoridad de gobierno / no steering authority · conexiones no verificadas / unverified</text>
+  <g stroke-linecap="round">
+    <line x1="200" y1="398" x2="200" y2="376" stroke="#57708a" stroke-width="2"/>
+    <path d="M195 384 L200 376 L205 384 Z" fill="#57708a"/>
+    <text x="212" y="390" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">telemetría / telemetry</text>
+    <line x1="620" y1="376" x2="620" y2="396" stroke="#5f6f7d" stroke-width="2"/>
+    <path d="M615 388 L620 396 L625 388 Z" fill="#5f6f7d"/>
+    <circle cx="620" cy="386" r="7" fill="#ffffff" stroke="#a32b22" stroke-width="2"/>
+    <line x1="615.5" y1="381.5" x2="624.5" y2="390.5" stroke="#a32b22" stroke-width="2"/>
+    <text x="634" y="390" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">sin entrada / no inbound</text>
+    <line x1="960" y1="376" x2="960" y2="396" stroke="#5f6f7d" stroke-width="2"/>
+    <path d="M955 388 L960 396 L965 388 Z" fill="#5f6f7d"/>
+    <circle cx="960" cy="386" r="7" fill="#ffffff" stroke="#a32b22" stroke-width="2"/>
+    <line x1="955.5" y1="381.5" x2="964.5" y2="390.5" stroke="#a32b22" stroke-width="2"/>
+    <text x="974" y="390" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">sin gobierno / no steering</text>
+  </g>
+
+  <!-- Onboard label -->
+  <text x="40" y="426" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="#17365d">A BORDO / ONBOARD — el barco no depende de la nube / the vessel does not depend on the cloud</text>
+
+  <!-- MAREA software -->
+  <rect x="40" y="438" width="580" height="145" rx="6" fill="#ffffff" stroke="#17365d" stroke-width="2"/>
+  <text x="58" y="462" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#17365d">MAREA — SOFTWARE</text>
+  <text x="58" y="478" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">presentation and analysis layer</text>
+  <rect x="58" y="488" width="120" height="77" rx="4" fill="#f2f9fd" stroke="#57708a" stroke-width="1.5"/>
+  <text x="68" y="506" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">NAV</text>
+  <text x="68" y="522" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">carta / charts</text>
+  <text x="68" y="536" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#8a5a00">no ECDIS</text>
+  <rect x="186" y="488" width="120" height="77" rx="4" fill="#f2f9fd" stroke="#57708a" stroke-width="1.5"/>
+  <text x="196" y="506" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">DISPLAY</text>
+  <text x="196" y="522" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">instrumentos / instruments</text>
+  <rect x="314" y="488" width="140" height="77" rx="4" fill="#f2f9fd" stroke="#57708a" stroke-width="1.5"/>
+  <text x="324" y="506" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">Análisis AIS</text>
+  <text x="324" y="522" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">solo escucha / receive-only</text>
+  <text x="324" y="536" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">CPA/TCPA: apoyo / support</text>
+  <rect x="462" y="488" width="140" height="77" rx="4" fill="#f2f9fd" stroke="#57708a" stroke-width="1.5"/>
+  <text x="472" y="506" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">WEATHER</text>
+  <text x="472" y="522" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">previsión / forecast</text>
+  <text x="472" y="536" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#8a5a00">fuente + validez / source + validity</text>
+
+  <!-- Onboard runtime -->
+  <rect x="640" y="438" width="520" height="145" rx="6" fill="#f2f9fd" stroke="#17365d" stroke-width="2"/>
+  <text x="658" y="462" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#17365d">RUNTIME A BORDO — HUB</text>
+  <text x="658" y="478" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">ONBOARD RUNTIME — HUB</text>
+  <rect x="658" y="488" width="150" height="77" rx="4" fill="#ffffff" stroke="#57708a" stroke-width="1.5"/>
+  <text x="668" y="506" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">Bus de datos</text>
+  <text x="668" y="522" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">Signal K (candidato)</text>
+  <text x="668" y="536" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">contrato de datos / data contract</text>
+  <rect x="816" y="488" width="150" height="77" rx="4" fill="#ffffff" stroke="#57708a" stroke-width="1.5"/>
+  <text x="826" y="506" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">Ingesta de sensores</text>
+  <text x="826" y="522" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">sensor ingestion</text>
+  <text x="826" y="536" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">viento · GPS · IMU</text>
+  <rect x="974" y="488" width="168" height="77" rx="4" fill="#ffffff" stroke="#57708a" stroke-width="1.5"/>
+  <text x="984" y="506" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">Cartas + local</text>
+  <text x="984" y="522" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">licencias por decidir / licences TBD</text>
+  <text x="984" y="536" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">historial local / local history</text>
+
+  <!-- Devices and sensors -->
+  <rect x="40" y="600" width="690" height="140" rx="6" fill="#ffffff" stroke="#17365d" stroke-width="2"/>
+  <text x="58" y="624" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#17365d">DISPOSITIVOS Y SENSORES</text>
+  <text x="58" y="640" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">DEVICES AND SENSORS — bus local / local bus</text>
+  <rect x="58" y="650" width="120" height="78" rx="4" fill="#f2f9fd" stroke="#57708a" stroke-width="1.5"/>
+  <text x="68" y="668" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">Viento</text>
+  <text x="68" y="682" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">Wind</text>
+  <text x="68" y="700" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#8a5a00">sensor de palo</text>
+  <text x="68" y="714" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">masthead</text>
+  <rect x="186" y="650" width="110" height="78" rx="4" fill="#f2f9fd" stroke="#57708a" stroke-width="1.5"/>
+  <text x="196" y="668" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">GNSS</text>
+  <text x="196" y="682" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">posición / position</text>
+  <text x="196" y="700" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">sin calibración</text>
+  <text x="196" y="714" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">uncalibrated</text>
+  <rect x="304" y="650" width="110" height="78" rx="4" fill="#f2f9fd" stroke="#57708a" stroke-width="1.5"/>
+  <text x="314" y="668" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">IMU</text>
+  <text x="314" y="682" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">actitud / attitude</text>
+  <rect x="422" y="650" width="190" height="78" rx="4" fill="#f2f9fd" stroke="#57708a" stroke-width="1.5"/>
+  <text x="432" y="668" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">Receptor AIS</text>
+  <text x="432" y="682" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">AIS receiver — solo escucha / receive-only</text>
+  <text x="432" y="700" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a32b22">sin TX · sin transpondedor</text>
+  <text x="432" y="714" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a32b22">no TX · no transponder</text>
+  <rect x="620" y="650" width="92" height="78" rx="4" fill="#f2f9fd" stroke="#57708a" stroke-width="1.5"/>
+  <text x="630" y="668" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#17365d">SENSE</text>
+  <text x="630" y="682" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">sensores / sensors</text>
+
+  <!-- PILOT safety domain -->
+  <rect x="748" y="600" width="412" height="140" rx="6" fill="#fff7f6" stroke="#a32b22" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <text x="766" y="624" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#a32b22">PILOT — DOMINIO DE SEGURIDAD SEPARADO</text>
+  <text x="766" y="640" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#a32b22">SAFETY-CRITICAL DOMAIN — SEPARATE</text>
+  <text x="766" y="664" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">gobierno local, cableado, supervisado</text>
+  <text x="766" y="678" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">local, wired, supervised steering</text>
+  <text x="766" y="700" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">E-stop físico + toma manual obligatorios</text>
+  <text x="766" y="714" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">physical E-stop + manual takeover required</text>
+  <text x="766" y="732" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#8a5a00">dependencias de sensores / sensor dependencies (REQ)</text>
+
+  <!-- Internal links -->
+  <g stroke-linecap="round">
+    <line x1="200" y1="598" x2="200" y2="586" stroke="#57708a" stroke-width="2" stroke-dasharray="4 3"/>
+    <path d="M195 592 L200 584 L205 592 Z" fill="#57708a"/>
+    <line x1="400" y1="598" x2="400" y2="586" stroke="#57708a" stroke-width="2" stroke-dasharray="4 3"/>
+    <path d="M395 592 L400 584 L405 592 Z" fill="#57708a"/>
+    <line x1="700" y1="598" x2="700" y2="586" stroke="#57708a" stroke-width="2" stroke-dasharray="4 3"/>
+    <path d="M695 592 L700 584 L705 592 Z" fill="#57708a"/>
+    <line x1="622" y1="510" x2="638" y2="510" stroke="#57708a" stroke-width="2"/>
+    <path d="M630 505 L638 510 L630 515 Z" fill="#57708a"/>
+    <line x1="730" y1="690" x2="744" y2="690" stroke="#8a5a00" stroke-width="2" stroke-dasharray="4 3"/>
+    <path d="M738 685 L746 690 L738 695 Z" fill="#8a5a00"/>
+    <line x1="954" y1="596" x2="954" y2="588" stroke="#a32b22" stroke-width="2" stroke-dasharray="4 3"/>
+    <circle cx="954" cy="586" r="6" fill="#ffffff" stroke="#a32b22" stroke-width="2"/>
+    <line x1="950" y1="582" x2="958" y2="590" stroke="#a32b22" stroke-width="2"/>
+  </g>
+
+  <!-- Legend + separation caption -->
+  <text x="40" y="760" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">sólido = local / local · discontinuo = red o pendiente / network or pending · rojo discontinuo = frontera de seguridad / safety boundary · flecha cruzada = ruta prohibida / prohibited path</text>
+  <text x="748" y="776" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" font-weight="700" fill="#a32b22">COMERCIO Y NUBE: SIN AUTORIDAD DE GOBIERNO / NO STEERING AUTHORITY</text>
+
+  <!-- Mandatory disclaimers -->
+  <rect x="40" y="788" width="1120" height="200" rx="6" fill="#ffffff" stroke="#57708a" stroke-width="1.5"/>
+  <rect x="40" y="788" width="5" height="200" rx="2" fill="#5f6f7d"/>
+  <text x="60" y="814" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#17365d">Avisos obligatorios / Mandatory disclaimers</text>
+  <text x="60" y="836" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">AIS (ES): «La recepción AIS es únicamente de escucha: no todos los buques emiten AIS. No constituye un sistema de evitación de colisiones ni un transpondedor.»</text>
+  <text x="60" y="850" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">AIS (EN): “AIS reception is receive-only: not every vessel transmits AIS. It is not a collision-avoidance system and not a transponder.”</text>
+  <text x="60" y="868" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">PILOT (ES): «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.»</text>
+  <text x="60" y="882" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">PILOT (EN): “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.”</text>
+  <text x="60" y="900" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">Navegación (ES): «Este producto es una ayuda a la navegación y no sustituye a la carta náutica oficial, al equipo reglamentario de la embarcación, a la vigilancia</text>
+  <text x="60" y="913" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">continuada ni al buen hacer marinero. La responsabilidad de la navegación corresponde siempre al patrón.»</text>
+  <text x="60" y="926" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Navigation (EN): “This product is a navigational aid. It does not replace official nautical charts, the vessel’s required equipment, continuous watchkeeping</text>
+  <text x="60" y="939" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">or good seamanship. Responsibility for navigation always rests with the skipper.”</text>
+  <text x="60" y="957" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">Meteorología (ES): «Las previsiones son probabilísticas y pueden desviarse de las condiciones locales reales. Se muestra la fuente y la hora de cada dato.»</text>
+  <text x="60" y="971" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Weather (EN): “Forecasts are probabilistic and may differ from actual local conditions. Source and timestamp are displayed for every data point.”</text>
+  <text x="60" y="984" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#57708a">Sin sellos de certificación · sin datos en vivo · sin implicación de compatibilidad · sin promesa de disponibilidad · revisión de ingeniería pendiente / no certification marks · no live data · no implied compatibility · no availability claim · engineering review pending.</text>
+</svg>
