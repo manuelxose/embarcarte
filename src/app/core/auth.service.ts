@@ -38,6 +38,13 @@ export class AuthService {
     return user;
   }
 
+  /** Intercambia el ID token de Google por la sesión de Embarcarte. */
+  async loginWithGoogle(credential: string): Promise<User> {
+    const user = await firstValueFrom(this.http.post<User>('/api/auth/google', { credential }));
+    this.setUser(user);
+    return user;
+  }
+
   async logout(): Promise<void> {
     await firstValueFrom(this.http.post('/api/auth/logout', {}));
     this.setUser(null);

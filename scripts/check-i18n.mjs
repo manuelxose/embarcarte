@@ -579,6 +579,11 @@ try {
       const response = await fetch(base + path);
       assert.equal(response.headers.get('x-content-type-options'), 'nosniff', `${path} sets nosniff`);
       assert.match(response.headers.get('content-security-policy') ?? '', /frame-ancestors 'none'/, `${path} sets a CSP`);
+      assert.match(
+        response.headers.get('content-security-policy') ?? '',
+        /accounts\.google\.com/,
+        `${path} allows Google Identity Services`,
+      );
       assert.equal(response.headers.get('x-frame-options'), 'DENY', `${path} sets frame denial`);
       assert.equal(response.headers.get('referrer-policy'), 'strict-origin-when-cross-origin', `${path} sets referrer policy`);
       assert.ok(/^[0-9a-f-]{36}$/.test(response.headers.get('x-request-id') ?? ''), `${path} has a request id`);

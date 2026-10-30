@@ -61,8 +61,10 @@ const csrShells = (() => {
  *
  * `script-src` conserva `'unsafe-inline'`: Angular SSR inserta scripts de
  * arranque/event-replay en el HTML y el shell CSR los necesita para hidratar.
- * El resto de directivas sí son restrictivas. Se documenta como riesgo residual
- * en `docs/security/M04-SECURITY-REVIEW.md`.
+ * Las únicas excepciones de origen son las de Google Identity Services
+ * (`accounts.google.com`, script/estilo/conexión/frame). El resto de directivas
+ * son restrictivas. Se documenta como riesgo residual en
+ * `docs/security/M04-SECURITY-REVIEW.md`.
  */
 const CSP = [
   "default-src 'self'",
@@ -72,9 +74,10 @@ const CSP = [
   "form-action 'self' https://checkout.stripe.com",
   "img-src 'self' data: https:",
   "font-src 'self'",
-  "style-src 'self' 'unsafe-inline'",
-  "script-src 'self' 'unsafe-inline'",
-  "connect-src 'self'",
+  "style-src 'self' 'unsafe-inline' https://accounts.google.com",
+  "script-src 'self' 'unsafe-inline' https://accounts.google.com",
+  "connect-src 'self' https://accounts.google.com",
+  "frame-src https://accounts.google.com",
   "manifest-src 'self'",
   ...(process.env['NODE_ENV'] === 'production' ? ["upgrade-insecure-requests"] : []),
 ].join('; ');

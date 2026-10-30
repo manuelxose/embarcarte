@@ -74,6 +74,13 @@ test('language switcher preserves identity, query and fragment', async ({ page }
   await expect(page.locator('html')).toHaveAttribute('lang', 'es');
 });
 
+test('login exposes the Google sign-in entry point', async ({ page }) => {
+  await page.goto('/en/login');
+  await waitForHydration(page);
+  await expect(page.locator('.google-divider')).toContainText('or');
+  await expect(page.locator('.google-button')).toBeVisible();
+});
+
 test('mobile navigation opens, navigates and closes', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/en');
