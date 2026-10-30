@@ -26,22 +26,22 @@ the 98th percentile of interactions in the field and cannot be claimed from this
 
 | Page | Metric | Before | After | Change |
 | --- | --- | ---: | ---: | ---: |
-| `/` | LCP | 1,700 ms | 1,532 ms | −168 ms |
+| `/` | LCP | 1,700 ms | 1,424 ms | −276 ms |
 | `/` | CLS | 0.00009 | 0.00009 | unchanged |
-| `/en/shop` | LCP | 400 ms | 416 ms | +16 ms (noise) |
+| `/en/shop` | LCP | 400 ms | 392 ms | −8 ms |
 | `/en/shop` | CLS | 0.0039 | 0.00020 | improved |
-| `/en/shop/e2e-hub` | LCP | **3,620 ms** | **496 ms** | **−3,124 ms** |
-| `/en/shop/e2e-hub` | CLS | **1.3181** | **0.00025** | **−1.3178** |
-| Product observed interaction | duration | 24 ms | 24 ms | unchanged |
-| Language switch | wall time | 170 ms | 165 ms | −5 ms |
+| `/en/shop/e2e-hub` | LCP | **3,620 ms** | **408 ms** | **−3,212 ms** |
+| `/en/shop/e2e-hub` | CLS | **1.3181** | **0.00072** | **−1.3174** |
+| Product observed interaction | duration | 24 ms | 32 ms | within noise |
+| Language switch | wall time | 170 ms | 171 ms | +1 ms |
 
 ### Desktop 1440×900, unthrottled
 
 | Page | Metric | Before | After |
 | --- | --- | ---: | ---: |
-| `/` | LCP | 536 ms | 248 ms |
-| `/en/shop` | LCP | 216 ms | 308 ms |
-| `/en/shop/e2e-hub` | LCP | 196 ms | 140 ms |
+| `/` | LCP | 536 ms | 224 ms |
+| `/en/shop` | LCP | 216 ms | 208 ms |
+| `/en/shop/e2e-hub` | LCP | 196 ms | 124 ms |
 | `/` | CLS | 0.0018 | 0.0018 |
 | `/en/shop` | CLS | 0.00068 | 0.00068 |
 | `/en/shop/e2e-hub` | CLS | 0.00073 | 0.00073 |
@@ -59,15 +59,16 @@ it.
 
 The fix transfers the SSR product through `TransferState` and initializes the client signal
 from it synchronously before hydration. The browser then skips the duplicate request. The
-measured product page now paints in 496 ms with CLS 0.00025.
+final measured product page paints in 408 ms with CLS 0.00072 (the first post-fix run was
+496 ms / 0.00025; the difference is lab noise).
 
 ## 4. Budget status
 
 | Objective | Target | Mobile result | Status |
 | --- | ---: | ---: | --- |
-| LCP | ≤ 2,500 ms | 1,532 ms (home), 416 ms (shop), 496 ms (product) | **Met in lab** |
-| INP | ≤ 200 ms | not measured; observed interaction 24–32 ms | **Not claimed** |
-| CLS | ≤ 0.1 | 0.00009–0.00025 | **Met in lab** |
+| LCP | ≤ 2,500 ms | 1,424 ms (home), 392 ms (shop), 408 ms (product) | **Met in lab** |
+| INP | ≤ 200 ms | not measured; observed interaction 16–32 ms | **Not claimed** |
+| CLS | ≤ 0.1 | 0.00009–0.00072 | **Met in lab** |
 
 The initial JS transfer is ~465 kB across the measured pages (including framework and
 fonts); CSS is ~25 kB and fonts ~62 kB. No material regression was introduced by the

@@ -92,9 +92,12 @@ app.use((req, res, next) => {
   }
 
   const started = process.hrtime.bigint();
+  // `req.path` cambia al entrar en un router montado; se captura la ruta completa
+  // y sin query antes de que Express la reescriba.
+  const requestPath = req.originalUrl.split('?')[0];
   res.once('finish', () => {
     // Los assets con hash no aportan señal operativa; sí se registran páginas y API.
-    if (/\.(?:js|css|woff2?|png|jpe?g|webp|svg|ico|map)$/i.test(req.path) && res.statusCode < 400) return;
+    if (/\.(?:js|css|woff2?|png|jpe?g|webp|svg|ico|map)$/i.test(requestPath) && res.statusCode < 400) return;
     // Solo método, ruta y estado: nunca cookies, cuerpos ni datos de cliente.
     const level = res.statusCode >= 500 ? 'error' : res.statusCode >= 400 ? 'warn' : 'info';
     console.log(
@@ -103,7 +106,7 @@ app.use((req, res, next) => {
         event: 'http_request',
         request_id: requestId,
         method: req.method,
-        path: req.path,
+        path: requestPath,
         status: res.statusCode,
         duration_ms: Number(process.hrtime.bigint() - started) / 1_000_000,
       }),

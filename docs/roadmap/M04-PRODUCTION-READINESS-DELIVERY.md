@@ -15,8 +15,8 @@ The material outcomes:
   server serves a localized CSR shell for `/en/cart`, `/en/login`, `/en/account` and
   `/en/account/orders/:id`, with `noindex` at HTTP level, no session data and no cache.
 - **The product page hydration defect is fixed.** M03's product detail looked correct but
-  replaced its SSR subtree on hydration: mobile CLS **1.318 → 0.00025** and LCP
-  **3,620 ms → 496 ms** in the same lab profile.
+  replaced its SSR subtree on hydration: mobile CLS **1.318 → 0.00072** and LCP
+  **3,620 ms → 408 ms** in the same lab profile.
 - **Security hardening:** application security headers/CSP/HSTS, session revocation on
   password change, upload magic-byte validation, checkout-expiry stock recovery, timing-safe
   unknown-email login, bounded rate-limit memory, structured logs without PII, and masked
@@ -127,13 +127,13 @@ Laboratory Chromium, mobile 390×844 at 4× CPU + 150 ms / 1.6 Mbps, cold cache:
 
 | Page | LCP before | LCP after | CLS before | CLS after |
 | --- | ---: | ---: | ---: | ---: |
-| `/` | 1,700 ms | 1,532 ms | 0.00009 | 0.00009 |
-| `/en/shop` | 400 ms | 416 ms | 0.0039 | 0.00020 |
-| `/en/shop/e2e-hub` | **3,620 ms** | **496 ms** | **1.3181** | **0.00025** |
+| `/` | 1,700 ms | 1,424 ms | 0.00009 | 0.00009 |
+| `/en/shop` | 400 ms | 392 ms | 0.0039 | 0.00020 |
+| `/en/shop/e2e-hub` | **3,620 ms** | **408 ms** | **1.3181** | **0.00072** |
 
-Desktop LCP is 140–308 ms in the same run. JS transfer is ~465 kB, CSS ~25 kB, fonts ~62 kB.
+Desktop LCP is 124–224 ms in the same run. JS transfer is ~465 kB, CSS ~25 kB, fonts ~62 kB.
 These are lab measurements, not field CrUX data; INP was **not** measured, only a one-click
-lab proxy (24–32 ms). No performance claim is made for production users.
+lab proxy (16–32 ms). No performance claim is made for production users.
 
 The fix is the `TransferState` initialization in `ShopDetail`; no visual redesign and no
 functionality was removed.
@@ -224,8 +224,9 @@ was asked to prioritize financial, auth/authz, SSR, indexing, CI and backup clai
 | --- | --- |
 | Base | `feature/i18n-commerce-seo` at `6e13d75` (M03 open, stacked) |
 | Branch | `feature/m04-production-hardening` |
-| Commits | recorded below |
-| Pull request | recorded below |
+| Commits | `085447d` (implementation), `787ed44` (route reuse + login heading), plus this documentation commit |
+| Pull request | https://github.com/manuelxose/embarcarte/pull/4 |
+| CI | `CI / Build, test and verify` green on `085447d`; rerun on the final commit |
 | Merge | **not performed** |
 | Deploy | **not performed** |
 
