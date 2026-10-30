@@ -6,7 +6,7 @@
 | Milestone | MC-05 (Master Prompt 05/36) — product-definition batch 1 |
 | Reviewer | `qa-reviewer` — Independent Product Reviewer (not an author of any MC-05 deliverable) |
 | Commit under review | `88c4300` on `feature/marea-mc05-nav-hub-ais-products`; base `8ac6d69` (MC-04 HEAD) |
-| Post-verdict addendum | `71a0a41` (corrective commit for DEF-01..DEF-05) — see §11; original verdict and findings unchanged |
+| Post-verdict addendum | `71a0a41` (DEF-01..DEF-05 fixes) + `02d8275` (whitespace-only) + `ea38dd8` (D12 + registry closing docs) — see §11; original verdict and findings unchanged |
 | Review date | 2026-10-30 |
 | Review scope | 13 product-definition deliverables + validator/contract + decision D-007 + real diff vs `8ac6d69` |
 | Verdict | **PASS** for the MC-05 product-definition scope (with 5 MINOR corrective actions, no BLOCKING defect) |
@@ -327,15 +327,21 @@ stocked or commercially available, and nothing in this report may be read as suc
 
 ---
 
-## 11. Post-verdict corrective-action verification (addendum at `71a0a41`)
+## 11. Post-verdict corrective-action verification (addendum at `ea38dd8`)
 
 **Context.** After the PASS above, the Lead fixed all five MINOR findings in commit `71a0a41` ("fix(mc05): close
-independent-review findings DEF-01 to DEF-05"), on top of the reviewed `88c4300`. This addendum re-verifies the
-fixes and records residuals. The original verdict and findings in §§1–10 stand unchanged: **PASS** for the
-MC-05 product-definition scope, **commercial release BLOCKED — `NOT_FOR_SALE`**.
+independent-review findings DEF-01 to DEF-05"), on top of the reviewed `88c4300`, then added `02d8275`
+("style(mc05): trim trailing blank line at end of journey document") to clear a `git diff --check` failure, and
+finally `ea38dd8` ("delivery record, review re-verification addendum and registry PASS row"), which adds the
+post-verdict governance records D12 `MC-05-DELIVERY.md` and the `MASTER-PROMPT-REGISTRY.md` row 05 PASS. This
+addendum re-verifies the fixes and records residuals. The original verdict and findings in §§1–10 stand
+unchanged: **PASS** for the MC-05 product-definition scope, **commercial release BLOCKED — `NOT_FOR_SALE`**.
 
-**Reviewed commit:** `71a0a41` on `feature/marea-mc05-nav-hub-ais-products`, parent `88c4300`, base `8ac6d69`.
-Working tree clean before this addendum; the only file I wrote is this report.
+**Reviewed state.** Implementation content reviewed at `71a0a41` (fix content); `02d8275` is verified
+whitespace-only: `git diff 71a0a41..02d8275 --stat` = 1 file changed, 1 deletion
+(`CUSTOMER-JOURNEYS-NAV-HUB-AIS.md`, the trailing blank line at EOF only). `ea38dd8` adds only docs: D12, the
+registry row and this addendum (see §11.5). Base `8ac6d69`; branch `feature/marea-mc05-nav-hub-ais-products`.
+The only file I wrote is this report.
 
 ### 11.1 Fix-by-fix verification
 
@@ -347,31 +353,34 @@ Working tree clean before this addendum; the only file I wrote is this report.
 | DEF-04 | D7 §1.2 CTA pair aligned to the claims policy | `CUSTOMER-JOURNEYS-NAV-HUB-AIS.md:53` now quotes **"See the specification"** / «Ver la especificación» + **"Request a compatibility review"** / «Solicitar estudio de compatibilidad»; D1 F20 `:285` and D8 copy `nav.en.md:202` already matched | Text verified in place; no purchase CTA introduced anywhere; no other CTA wording changed in the diff | **FIXED within MC-05 scope** — see residual note 11.3 |
 | DEF-05 | D2 F04 no longer implies universal professional installation | `MAREA-HUB-COMMERCIAL-SPEC.md:110` now says delivered "either as a documented self-install configuration or through the EMBARCARTE professional installation service ... according to the assessed configuration (professional installation is offered and, for configurations outside the documented low-risk set, required — it is never universally imposed or universally assumed)" | Wording now consistent with F07 `:131`, F10 `:152` and D4 H21 `:170`; no inclusion/price claim added | **FIXED** |
 
-### 11.2 Commands re-run at `71a0a41` (targeted re-verification)
+### 11.2 Commands re-run (targeted re-verification; final state `ea38dd8`)
 
 | Command | Exit | Result |
 | --- | --- | --- |
+| `git diff 71a0a41..02d8275 --stat` | 0 | 1 file changed, 1 deletion — whitespace-only follow-up (EOF blank line in D7); no content change |
+| `git diff 02d8275..ea38dd8 --stat` | 0 | 3 files, docs-only (+355/−2): D12 `MC-05-DELIVERY.md` (new), `MASTER-PROMPT-REGISTRY.md` row 05, this addendum; no product-definition file touched |
+| `git diff --check 8ac6d69..ea38dd8` | 0 | no whitespace errors (the failure recorded in the original review is closed) |
 | `node scripts/check-marea-products.mjs` | 0 | `Summary: 22 checks run, 22 passed, 0 failed; 15 of 15 scoped files read.` / `RESULT: PASS` |
 | `node --test scripts/check-marea-products.test.mjs` | 0 | `tests 38`, `pass 38`, `fail 0` (was 37; the new retained-edition test is the 38th) |
 | `npm run test:products` | 0 | 22/22 PASS, `RESULT: PASS` |
 | `npm run test:products:unit` | 0 | 38/38 pass |
 | `npm run format:check` | 0 | "All matched files use Prettier code style!"; both MC-05 scripts now printed in the checked set (DEF-01 coverage closed) |
 | `npx prettier --check scripts/check-marea-products.mjs scripts/check-marea-products.test.mjs` | 0 | both files clean |
-| `git diff --check` | 0 | no whitespace errors |
-| `git diff 8ac6d69..HEAD -- src public e2e .github` | 0 | empty — scope unchanged |
+| `git diff 8ac6d69..ea38dd8 -- src public e2e .github` | 0 | empty — scope unchanged |
 
-Branch diff scope at `71a0a41`: `git diff --stat 8ac6d69..HEAD` = **21 files** (the 20 authorised files from
-`88c4300` plus this review report, which the Lead committed in `71a0a41`; it is inside
-`docs/marea/products/**`). No dependency change (`package.json` diff is still only the script/format lines), no
-`src/`, `public/`, `e2e/`, `.github/` or commerce change. The commit additionally Prettier-reformats the
-validator/test (formatting-only in the parts not covered by DEF-03) and adds extra affirmative price-approval
-prohibition patterns (e.g. "PVP confirmado", "price is final"); the full 22-check/38-test suite passes, so no
-behavioural regression was found.
+Branch diff scope at `ea38dd8`: `git diff --stat 8ac6d69..HEAD` = **23 files** (the 20 authorised files from
+`88c4300`, plus this review report committed in `71a0a41`, plus D12 `MC-05-DELIVERY.md` and the
+`MASTER-PROMPT-REGISTRY.md` row 05 in `ea38dd8`; all inside the authorised MC-05 scope). No dependency change
+(`package.json` diff is still only the script/format lines), no `src/`, `public/`, `e2e/`, `.github/` or commerce
+change. `71a0a41` additionally Prettier-reformats the validator/test (formatting-only in the parts not covered by
+DEF-03) and adds extra affirmative price-approval prohibition patterns (e.g. "PVP confirmado", "price is final");
+the full 22-check/38-test suite passes, so no behavioural regression was found. `02d8275` changes nothing but the
+EOF blank line; `ea38dd8` adds only docs.
 
 I did **not** re-run `build`, `test:e2e`, `test:brand`, `test:i18n`, `test:commerce`, `test:seo` or `test:backup`
-for this addendum: the diff touches only `docs/marea/products/**`, `scripts/check-marea-products*` and the
-`format` lists in `package.json` — no input of those gates — and `git diff 8ac6d69..HEAD -- src public e2e
-.github` is empty, so their PASS results recorded at `88c4300` remain valid and untouched. `npm audit` is
+for this addendum: the post-verdict diff touches only `docs/marea/products/**`, `scripts/check-marea-products*`
+and the `format` lists in `package.json` — no input of those gates — and `git diff 8ac6d69..HEAD -- src public
+e2e .github` is empty, so their PASS results recorded at `88c4300` remain valid and untouched. `npm audit` is
 unaffected (no dependency change). This is a targeted re-verification, not a second full gate run.
 
 ### 11.3 Residual note on DEF-04 (not a new finding, not an MC-05 defect)
@@ -385,9 +394,22 @@ recommendation for a later brand-governance pass — not a reason to reopen this
 
 ### 11.4 Addendum conclusion
 
-All five MINOR findings are verified fixed in `71a0a41` and no new defect or gate regression was introduced by
-the corrective commit. The original verdict stands: **PASS (MC-05 product-definition scope)** with the residual
-brand-doc wording note above; **commercial release remains BLOCKED — `NOT_FOR_SALE`, brand/IP
-`NOT_GRANTED`/`NOT_CLEARED`**. Nothing here releases, certifies, stocks or offers any MAREA product for sale.
-D12 (`MC-05-DELIVERY.md`) and the `MASTER-PROMPT-REGISTRY.md` row 05 update remain expected post-verdict
-deliverables (OBS-03 unchanged).
+All five MINOR findings are verified fixed in `71a0a41`, the `02d8275` whitespace follow-up is verified
+whitespace-only, and `ea38dd8` adds only docs; no new defect or gate regression was introduced by any of them.
+The original verdict stands: **PASS (MC-05 product-definition scope)** with the residual brand-doc wording note
+above; **commercial release remains BLOCKED — `NOT_FOR_SALE`, brand/IP `NOT_GRANTED`/`NOT_CLEARED`**. Nothing
+here releases, certifies, stocks or offers any MAREA product for sale.
+
+### 11.5 Final-state note at `ea38dd8` (post-verdict records, not reviewed in depth)
+
+At `ea38dd8` the two expected post-verdict artefacts are present: D12 `docs/marea/products/MC-05-DELIVERY.md`
+(285 lines) and the `MASTER-PROMPT-REGISTRY.md` row 05 now carries `PASS (product-definition scope; commercial
+availability BLOCKED / NOT_FOR_SALE, brand NOT_GRANTED, source IP NOT_CLEARED, hardware NOT_VERIFIED)` with the
+22/22 and 38/38 gate evidence and the independent-review reference. **I did not review D12 or the registry-row
+content in depth**: they are post-verdict governance/delivery records, not product-definition deliverables, and
+they were added after my review. I only spot-checked that they do not contradict this report: D12 states the
+PASS is "specification completeness only", "not a release", keeps `COMMERCIAL_AVAILABILITY = NOT_FOR_SALE`, and
+the registry row records the same commercial/BLOCKED restrictions as §2 and §10. This note closes OBS-03 at the
+level of presence and consistency; it is not an endorsement of D12's or the registry's detailed content. The
+working-tree revision of this addendum is docs-only and uncommitted for the Lead to commit; I touched no other
+file and ran no Git write command.
