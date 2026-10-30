@@ -192,11 +192,15 @@ Created (new brand layer, 11 documents + 3 code files):
 | `docs/marea/brand/WEBSITE-BRAND-MIGRATION.md` | 717 | Agent F (web brand auditor) |
 | `docs/marea/brand/BRAND-AND-IP-DECISION-PACKAGE.md` | 279 | Lead |
 | `docs/marea/brand/BRAND-GOVERNANCE-IMPLEMENTATION.md` | — | Agent E (governance engineer) |
-| `docs/marea/brand/brand-identity.contract.json` | 288 | Agent E (Lead reconciled values) |
-| `scripts/check-brand.mjs` | — | Agent E |
-| `scripts/check-brand.test.mjs` | — | Agent E |
+| `docs/marea/brand/brand-identity.contract.json` | 289 | Agent E (Lead reconciled values) |
+| `scripts/check-brand.mjs` | — (deterministic validator, 21 checks) | Agent E (hardened by Lead after review finding N-6) |
+| `scripts/check-brand.test.mjs` | — (13 `node:test` cases) | Agent E (two review-regression cases added by Lead) |
 | `docs/marea/brand/MC-03-DELIVERY.md` | this file | Lead |
-| `docs/marea/brand/MC-03-REVIEW.md` | see §12 | independent reviewer |
+| `docs/marea/brand/MC-03-REVIEW.md` | 312 | independent reviewer |
+
+Commit range `9631c6f..a718672` contents: **16 new files** (12 Markdown + 1 CSV + 1 JSON + 2 `.mjs`) and
+4 modified files (`package.json`, `.github/workflows/ci.yml`, `MASTER-PROMPT-REGISTRY.md`,
+`DECISION-LOG.md`). The review-corrections commit adds `MC-03-REVIEW.md` and the fixes recorded in §21.
 
 Modified (minimal, additive):
 
@@ -237,12 +241,22 @@ $ npm run test:brand:unit
 tests 11 | pass 11 | fail 0
 ```
 
-The unit tests prove genuine negative cases: 8 product families, clearance ≠ NOT_GRANTED, `MAREA®`,
-`Marea Nav` casing, malformed attribution, clearance contradiction, a missing claims-policy pattern, and
-a prohibited claim inside a listed publication copy — each rejected with a non-zero exit; and tolerance
-cases (negations, marked examples, tables, code fences, out-of-scope files) pass. Scope proof: files
-outside `governedPaths` are never scanned, so legacy EMBARCARTE pages and legitimate OPEN-MARINE technical
-references do not fail the gate.
+The unit tests (13 after review corrections) prove genuine negative cases: 8 product families, clearance
+≠ NOT_GRANTED, an attached registered-trademark symbol (including on a line that also contains a
+negation), `Marea Nav` casing, malformed attribution, clearance contradiction, a missing claims-policy
+pattern, a missing claims-policy document, and a prohibited claim inside a listed publication copy —
+each rejected with a non-zero exit; and tolerance cases (negations, marked examples, tables, code fences,
+out-of-scope files) pass. Scope proof: files outside `governedPaths` are never scanned, so legacy
+EMBARCARTE pages and legitimate OPEN-MARINE technical references do not fail the gate.
+
+**Known limits of the validator (disclosed, not implied away).** It is a heuristic document gate, not a
+legal control: (a) naming occurrences inside table rows are treated as illustrative and skipped — the
+docs legitimately tabulate forbidden variants; (b) for the naming/attribution/clearance rules, a line
+carrying a negation or policy marker is treated as negative context, which is what lets the documents
+quote what they prohibit; (c) attached trademark symbols are **not** subject to (b) — they fail even on
+a negated line; (d) a missing claims policy now fails instead of skipping. Enforcement of published copy
+therefore relies on `brand.publicationCopies` plus human review; see
+`BRAND-GOVERNANCE-IMPLEMENTATION.md` §4.
 
 **Deliberately deferred integration:** no `src/` change. `SITE` still carries a single seller identity;
 separating seller / product-brand / internal-technology fields would alter rendered output, so the
@@ -251,9 +265,25 @@ boundary and the future design are documented in `BRAND-GOVERNANCE-IMPLEMENTATIO
 
 ## 12. Independent review
 
-`docs/marea/brand/MC-03-REVIEW.md` — produced by a separate reviewer agent (never the author), against
-the real diff, the registry evidence and re-run gates. Verdict and findings: see that document. Summary
-of the verdict is repeated in §14 after review.
+`docs/marea/brand/MC-03-REVIEW.md` (312 lines) was produced by a separate reviewer agent that authored
+none of the delivery, against the real diff, the registry evidence and re-run gates.
+
+**Independent verdict: PASS (brand-governance scope)**, conditional on closing two blocking
+delivery-accuracy defects, both closed in the review-corrections commit recorded in §21:
+
+| Review outcome | Detail |
+| --- | --- |
+| Criteria | 10 VERIFIED · 3 PARTIAL · 1 FAILED (the FAILED one was only the mis-recorded whitespace gate, B-2) |
+| Blocking defects | **2** — B-1 (review file not committed when cited as acceptance evidence; registry status wording) and B-2 (recorded `git diff --check` PASS that fails over the committed range) |
+| Non-blocking defects | **10** (N-1..N-10), all dispositioned in §21 |
+| Trademark provenance | Reviewer independently re-fetched **all six** official records (4 EUIPO + 2 WIPO): number, mark, proprietor, Nice classes, status and dates all match; no fabricated record; only a diacritic transcription defect (N-3, fixed) |
+| CI on the reviewed head | `gh run 41094579574` on `a718672…` — success, including both brand commands, E2E and the dependency audit |
+| Permitted use stated by the reviewer | internal strategy/governance and MC-04 private concept work only; **no public MAREA use**, no filing, no sale, no merge/deploy |
+
+Critique accepted verbatim: the reviewer identifies internal documentation consistency and the
+validator's heuristic tolerance as the two weakest points of the delivery. Both were addressed (§21);
+the residual tolerances are now disclosed in `BRAND-GOVERNANCE-IMPLEMENTATION.md` instead of being
+implied away.
 
 ## 13. Registry, decision log and programme state
 
@@ -274,10 +304,10 @@ of the verdict is repeated in §14 after review.
 | SEO | `npm run test:seo` | PASS — 101 sitemap URLs, canonical, reciprocal hreflang, JSON-LD, private noindex |
 | Backup | `npm run test:backup` | PASS — consistent snapshot, checksums, integrity, FK, counts, corrupt-copy rejection |
 | Brand | `npm run test:brand` | PASS — 21/21 checks, 11 files scanned |
-| Brand unit | `npm run test:brand:unit` | PASS — 11/11 tests |
+| Brand unit | `npm run test:brand:unit` | PASS — 13/13 tests (11 original + 2 review-regression cases) |
 | Dependency audit | `npm audit --omit=dev --audit-level=high` | PASS — 0 vulnerabilities |
-| Whitespace | `git diff --check` | PASS — no whitespace errors |
-| E2E | `npm run test:e2e` | see note below |
+| Whitespace | `git diff --check <base>..<head>` (range, not the clean worktree) | PASS after B-2 fix — the first review run found `new blank line at EOF` in the MC-04 brief; fixed, range now clean |
+| E2E | `npm run test:e2e` | PASS — 15 passed |
 
 E2E and `format:check` scope notes:
 - `npm run test:e2e` result is recorded in §14.1 (environmental outcome preserved verbatim; the E2E suite
@@ -342,7 +372,7 @@ npm run test:backup   → Backup/restore checks passed: consistent snapshot, che
 npm run test:brand    → Summary: 21 checks run, 21 passed, 0 failed; 11 files scanned, 0 skipped. RESULT: PASS
 npm run test:brand:unit → tests 11, pass 11, fail 0
 npm audit --omit=dev --audit-level=high → found 0 vulnerabilities
-git diff --check      → (no output; no whitespace errors)
+git diff --check 9631c6f..HEAD → (no output; no whitespace errors over the committed range)
 ```
 
 E2E:
@@ -387,3 +417,27 @@ gates G1–G7), the existing site's current identity constraints, and the blocke
 MC-04 must first: verify font licence/feature coverage; prototype the three territories and shortlist two;
 commission a professional originality/prior-art check before adoption; keep image-dependent assets as
 briefs until X-03 is authorised. MC-04 is **not** started automatically by this milestone.
+
+## 21. Review findings and disposition
+
+The independent review (`MC-03-REVIEW.md`, commit range `9631c6f..a718672`) raised 2 blocking and 10
+non-blocking defects. All were dispositioned in the review-corrections commit; none was dismissed.
+
+| ID | Class | Finding | Disposition |
+| --- | --- | --- | --- |
+| B-1 | BLOCKING | Delivery claimed PASS and cited `MC-03-REVIEW.md` before the review was committed; registry status read as "pending" | **CLOSED** — the review is committed in this same commit; registry status/evidence rewritten to name the review and this corrections commit; §12 rewritten |
+| B-2 | BLOCKING | Recorded `git diff --check` PASS, but the range check failed on a trailing blank line in the MC-04 brief | **CLOSED** — trailing blank line removed; `git diff --check 9631c6f..HEAD` now exits 0 (recorded as a range check, not a worktree check) |
+| N-1 | non-blocking | Stale reconciliation notes in the strategy and naming documents described the pre-fix contract | **CLOSED** — both documents now state the reconciled contract v1.0.0 behaviour |
+| N-2 | non-blocking | Research header said the CSV had 25 rows (it has 29) | **CLOSED** — corrected |
+| N-3 | non-blocking | CSV printed `VINA` for the official proprietor `VIÑA` | **CLOSED** — corrected to the official spelling |
+| N-4 | non-blocking | `mareaExtendedDescription` differed between contract and voice document; the long variant asserted an unbuilt shared-entitlement capability | **CLOSED** — canonical string aligned to the contract (short form); the long variant is retained only as an explicitly CONDITIONAL, non-canonical variant |
+| N-5 | non-blocking | `trustLine` read as a calque in both languages | **CLOSED** — ES «Publicamos qué hace el producto, qué no hace y con qué versión funciona.» / EN "We publish what a product does, what it does not do, and which version supports it." (contract, voice document and trust table aligned) |
+| N-6 | non-blocking | Validator false negatives: line-wide negation tolerance, table-cell skip, deleted claims policy still PASS | **MITIGATED** — attached trademark symbols now fail regardless of negation; a missing claims policy now fails; 2 regression tests added (13/13). Residual tolerances (tables, negation for naming/attribution/clearance) are documented in `BRAND-GOVERNANCE-IMPLEMENTATION.md` §4 and in §11 above instead of being claimed away. Full hardening stays a scheduled task before the gate is relied on for published copy |
+| N-7 | non-blocking | Contract permitted an authorship-adjacent statement ("diseña y comercializa") that the architecture makes conditional | **CLOSED** — both contract attribution lists now use "comercializa, instala y da soporte" |
+| N-8 | non-blocking | Delivery/registry metadata slips (file counts, naming-layer count, registry header date) | **CLOSED** — counts corrected (16 new files; ten naming layers), registry header updated to MC-03 |
+| N-9 | non-blocking | Delivery quoted the literal attached-symbol string as a rejected test case | **CLOSED** — reworded to "an attached registered-trademark symbol"; the literal now lives only in the validator test fixture |
+| N-10 | non-blocking | WIPO translation was quoted tidily rather than verbatim | **CLOSED** — corrected to the record text as served (`MAREA-TIDE` in IR 1847368; `Marea: tade.` in IR 1632684) with the point restated on the verbatim record |
+
+The reviewer's two weakest-point findings (documentation consistency, validator heuristics) are therefore
+closed as stated, with the residual risk disclosed. The review's verdict is reproduced unaltered in
+`MC-03-REVIEW.md`.

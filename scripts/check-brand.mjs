@@ -626,18 +626,29 @@ for (const entry of governed) {
       return;
     }
     if (inFence || !line.trim()) return;
+    const emitted = new Set();
+    const emit = (violations) => {
+      for (const violation of violations) {
+        const key = `${violation.rule}|${violation.message}`;
+        if (emitted.has(key)) continue;
+        emitted.add(key);
+        scanHits.get(violation.rule).push(`${entry}:${index + 1}: ${violation.message}`);
+      }
+    };
+    // An attached trademark symbol is never a false positive: it is a violation
+    // regardless of the policy wording on the same line (an attached symbol is
+    // prohibited while clearance is NOT_GRANTED), so it is evaluated before the
+    // negative-context tolerance below can excuse the line. Discussing the
+    // symbols elsewhere is still legitimate governance copy (the rule only
+    // matches a symbol attached to MAREA or a family/bundle name).
+    if (enabledRules.has('trademarkSymbols'))
+      emit(scanLine(line, new Set(['trademarkSymbols']), contract));
     // Naming occurrences in tables are illustrative (forbidden/allowed columns)
     // and are governed by the table itself, so only prose is checked for naming.
     if (enabledRules.has('productNames') && /^\s*\|/.test(line)) return;
     if (isNegativeContext(lines, index, { tableTolerant: enabledRules.has('productNames') }))
       return;
-    const emitted = new Set();
-    for (const violation of scanLine(line, enabledRules, contract)) {
-      const key = `${violation.rule}|${violation.message}`;
-      if (emitted.has(key)) continue;
-      emitted.add(key);
-      scanHits.get(violation.rule).push(`${entry}:${index + 1}: ${violation.message}`);
-    }
+    emit(scanLine(line, enabledRules, contract));
   });
 }
 
@@ -662,7 +673,11 @@ for (const rule of SCAN_RULES) {
 check('brand.policyCoverage', (record) => {
   const patterns = contract.claimsPolicy?.prohibitedClaimPatterns ?? [];
   if (claimsPolicyText === null) {
-    record.detail = 'skipped: claims policy document is absent (reported as skipped above)';
+    // The claims policy is a required governed deliverable: a deleted or renamed
+    // policy must fail the gate instead of silently skipping the coverage check.
+    record.failures.push(
+      `${CLAIMS_POLICY_RELATIVE} is missing; the claims policy is a required governed document`,
+    );
     return;
   }
   const policyText = normalizeWhitespace(claimsPolicyText);

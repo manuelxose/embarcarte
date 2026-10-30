@@ -85,6 +85,12 @@ The run reports 21 checks: 14 contract checks, 5 document checks, 1 claims-polic
 - `TRADEMARK-SEARCH-RESULTS.csv` is not a governed path: a structured registry dataset legitimately records third-party marks and their statuses, and scanning it for clearance assertions would create false positives. It is covered by human/legal review, not by this text gate.
 - The prohibited claim patterns are not flagged inside the claims policy; the policy must name them. The coverage check proves the list is complete, and `publicationCopies` is the enforcement point for real published copy.
 - Negative-context detection is a documented heuristic (inline markers, table headers, code fences, inline code, section headings). Consequence: a third-party product name that happens to collide with a family name can be flagged. The resolution is to rephrase the sentence or widen a rule together with a regression test — never to bypass the validator.
+- **Known tolerance limits (disclosed after independent review, N-6).** The gate is a heuristic document check, not a legal control:
+  - naming occurrences inside a table row are treated as illustrative and skipped, because the governed documents legitimately tabulate forbidden variants (removing this tolerance would flag the very tables that define the rule);
+  - for the naming, attribution and clearance rules, a line carrying a negation or policy marker counts as negative context — this is what lets the documents quote what they prohibit, and it also means a genuinely bad sentence phrased with "no"/"not" on the same line can pass;
+  - **attached trademark symbols are exempt from that tolerance since the review corrections**: a symbol attached to MAREA or a family/bundle name fails even on a negated line (regression test `an attached trademark symbol is rejected even when the line also negates it`);
+  - a **missing claims policy now fails** (`brand.policyCoverage`) instead of being skipped; a missing optional governed document is still reported as skipped rather than failed, because MC-04 and later milestones may add governed documents progressively.
+  - Therefore published copy must be enforced through `publicationCopies` (which has **no** negative-context tolerance) plus human review. Do not describe this validator as proving that no bad claim exists in a document.
 - The run is deterministic and offline: same tree gives the same output, with no timestamps, build step, dependency install or rendering.
 
 ## 5. Evidence — real command output
@@ -140,28 +146,37 @@ RESULT: PASS
 ### 5.2 Test suite
 
 ```text
-✔ the real contract passes and absent governed files are reported as skipped (62.6705ms)
-✔ a contract with eight product families is rejected (62.9763ms)
-✔ a contract whose trademarkLegalClearance is not NOT_GRANTED is rejected (60.464ms)
-✔ a governed document using a registered-trademark glyph with MAREA is rejected (62.3106ms)
-✔ a governed document with a wrong product-name casing is rejected (61.9181ms)
-✔ malformed attribution in a governed document is rejected (59.4248ms)
-✔ a clearance contradiction in a governed document is rejected (62.7129ms)
-✔ negated clearance, symbol discussions and marked negative examples pass (61.9955ms)
-✔ the claims policy must restate every prohibited claim pattern (62.0463ms)
-✔ prohibited claims and clearance assertions in a listed publication copy are rejected (66.6993ms)
-✔ files outside governedPaths are never scanned (62.5632ms)
-ℹ tests 11
+✔ the real contract passes and absent governed files are reported as skipped (66.0201ms)
+✔ a contract with eight product families is rejected (60.2756ms)
+✔ a contract whose trademarkLegalClearance is not NOT_GRANTED is rejected (62.0696ms)
+✔ a governed document using a registered-trademark glyph with MAREA is rejected (61.6743ms)
+✔ a governed document with a wrong product-name casing is rejected (63.8731ms)
+✔ malformed attribution in a governed document is rejected (62.0986ms)
+✔ a clearance contradiction in a governed document is rejected (62.2345ms)
+✔ negated clearance, symbol discussions and marked negative examples pass (61.5683ms)
+✔ an attached trademark symbol is rejected even when the line also negates it (60.5107ms)
+✔ a missing claims policy document is rejected instead of silently skipped (58.8655ms)
+✔ the claims policy must restate every prohibited claim pattern (56.6176ms)
+✔ prohibited claims and clearance assertions in a listed publication copy are rejected (59.8676ms)
+✔ files outside governedPaths are never scanned (64.3467ms)
+ℹ tests 13
 ℹ suites 0
-ℹ pass 11
+ℹ pass 13
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 759.8648
+ℹ duration_ms 869.1681
 ```
 
-The 11 tests prove, through the real CLI and `--root` fixture trees, that the validator fails on: eight product families; a clearance value other than `NOT_GRANTED`; a registered-trademark glyph attached to the brand; wrong product-name casing; malformed attribution; a clearance contradiction; a claims policy that drops a prohibited pattern; a prohibited claim in a listed publication copy. They also prove that absent governed files are reported as skipped, that files outside `governedPaths` are never scanned, and that negated clearance, symbol discussions, marked negative examples, tables and code fences are tolerated.
+The 13 tests prove, through the real CLI and `--root` fixture trees, that the validator fails on: eight
+product families; a clearance value other than `NOT_GRANTED`; a registered-trademark glyph attached to
+the brand (**including on a line that also contains a negation** — review finding N-6); wrong product-name
+casing; malformed attribution; a clearance contradiction; a missing claims-policy document (N-6); a
+claims policy that drops a prohibited pattern; a prohibited claim in a listed publication copy. They also
+prove that absent optional governed files are reported as skipped, that files outside `governedPaths` are
+never scanned, and that negated clearance, symbol discussions, marked negative examples, tables and code
+fences are tolerated. The two cases marked N-6 were added in the review-corrections commit.
 
 ## 6. Deferred `src/` integration boundary — why no production rendering risk
 

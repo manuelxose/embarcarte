@@ -220,6 +220,35 @@ test('negated clearance, symbol discussions and marked negative examples pass', 
   );
 });
 
+test('an attached trademark symbol is rejected even when the line also negates it', async () => {
+  await withFixture(
+    {
+      docs: {
+        [join(BRAND_DIR, 'MAREA-BRAND-STRATEGY.md')]:
+          '# Strategy\n\nMAREA® es la marca; no hay otra.\n',
+      },
+    },
+    (result) => {
+      assert.equal(result.code, 1, result.stdout);
+      assert.match(result.stdout, /FAIL\s+brand\.docs\.trademarkSymbols/);
+      assert.match(result.stdout, /MAREA-BRAND-STRATEGY\.md:3:/);
+    },
+  );
+});
+
+test('a missing claims policy document is rejected instead of silently skipped', async () => {
+  const root = makeFixture();
+  rmSync(join(root, POLICY_FILE));
+  try {
+    const result = await runValidator(root);
+    assert.equal(result.code, 1, result.stdout);
+    assert.match(result.stdout, /FAIL\s+brand\.policyCoverage/);
+    assert.match(result.stdout, /claims policy is a required governed document/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test('the claims policy must restate every prohibited claim pattern', async () => {
   await withFixture(
     {

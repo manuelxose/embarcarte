@@ -9,7 +9,7 @@
 | Author role | Trademark and intellectual-property researcher (AI agent, no filing authority) |
 | Owner of the decision | Company owner + qualified trademark counsel (see §15) |
 | Nature | **Research screening, not a legal opinion, not a clearance certificate, not an availability opinion.** See §3. |
-| Evidence base | This document + `TRADEMARK-SEARCH-RESULTS.csv` (25 rows) |
+| Evidence base | This document + `TRADEMARK-SEARCH-RESULTS.csv` (29 data rows) |
 | Related records | `../COMMERCIAL-PORTFOLIO.md`; `../compliance/MC-02-BLOCKERS-AND-DECISIONS.md` (blocker **X-01**) |
 | Machine-readable status | `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED` |
 
@@ -246,9 +246,11 @@ product is defined); 44 (medical/psychotherapy — irrelevant); 28 (games/sports
 ## 8. Distinctiveness analysis of `MAREA`
 
 **Meaning.** `MAREA` is an ordinary word of the Spanish, Italian, Portuguese and Catalan lexicon meaning
-**"tide"** (Spanish/Italian *marea*; Portuguese *maré*; Catalan *marea*). The WIPO record itself carries the
-voluntary translation "*MAREA — tide*", which is useful evidence of how the office and the applicant
-themselves characterised the word.
+**"tide"** (Spanish/Italian *marea*; Portuguese *maré*; Catalan *marea*). The two WIPO international
+registrations read here render it with a translation field: IR 1847368 prints "*MAREA-TIDE*" and IR
+1632684 prints "*Marea: tade.*" (a literal transcription of the record as served, including the apparent
+typo). The tidied rendering "*MAREA — tide*" must not be quoted as verbatim registry text; the point it
+supports — that the word was understood and recorded as "tide" — stands on IR 1847368.
 
 **Linguistic context for the relevant public.**
 

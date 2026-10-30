@@ -41,17 +41,24 @@ These are the authoritative strings. Any channel may shorten them, never strengt
 | --- | --- | --- |
 | `companyDescription` | EMBARCARTE comercializa, instala y da soporte a tecnología marina para embarcaciones de recreo y profesionales. | EMBARCARTE sells, installs and supports marine technology for recreational and professional vessels. |
 | `mareaShortDescription` | MAREA es la familia de productos de navegación, conectividad e instrumentación de EMBARCARTE: un solo barco, un solo conjunto de datos. | MAREA is EMBARCARTE's family of navigation, connectivity and instrumentation products: one vessel, one set of data. |
-| `mareaExtendedDescription` | MAREA reúne navegación, pasarela de datos a bordo, recepción AIS, sensores, pantallas, previsión y gestión de flota bajo una misma identidad de producto. Cada familia se puede adoptar por separado y combinarse sin duplicar suscripciones ni cuentas. La gama está diseñada para modernizar embarcaciones existentes y para integrarse con el equipamiento que el barco ya lleva, con instalación y soporte de EMBARCARTE. Las funciones, compatibilidades y disponibilidad se publican por producto y por versión. | MAREA brings navigation, an onboard data gateway, AIS reception, sensors, displays, forecasting and fleet management under one product identity. Each family can be adopted separately and combined without duplicating subscriptions or accounts. The range is designed to modernise existing vessels and to integrate with the equipment a boat already carries, with installation and support from EMBARCARTE. Features, compatibility and availability are published per product and per version. |
+| `mareaExtendedDescription` | MAREA reúne navegación, datos a bordo, control, sensores y monitorización en un ecosistema modular. Es una marca propuesta: no está registrada y no se presenta como marca registrada. | MAREA brings navigation, onboard data, control, sensors and monitoring together in one modular ecosystem. It is a proposed brand: it is not registered and it is not presented as a registered trademark. |
 | `headlinePrimary` | Instrumentación marina para el barco que ya tienes. | Marine instrumentation for the boat you already own. |
 | `headlineSecondaryOne` | Todos los datos de tu barco, en un mismo sitio. | All your boat's data in one place. |
 | `headlineSecondaryTwo` | Empieza por lo que ya llevas a bordo. | Start with what is already aboard. |
-| `trustLine` | Publicamos lo que el producto hace, lo que no hace y qué versión lo hace. | We publish what a product does, what it does not do, and which version does it. |
+| `trustLine` | Publicamos qué hace el producto, qué no hace y con qué versión funciona. | We publish what a product does, what it does not do, and which version supports it. |
 | `ctaPrimary` | Solicitar estudio de compatibilidad | Request a compatibility review |
 | `b2bLine` | Para instaladores, marinas, escuelas y flotas: propuesta técnica con matriz de compatibilidad y plan de servicio. | For installers, marinas, sailing schools and fleets: a technical proposal with a compatibility matrix and a service plan. |
 | `attributionLine` | MAREA es una marca de producto de EMBARCARTE. | MAREA is a product brand of EMBARCARTE. |
 
 Non-canonical secondary CTA language (allowed, not part of the contract's required key set):
 «Ver especificaciones» / "View specifications", «Solicitar propuesta» / "Request a proposal".
+
+**Longer variant of the extended description — CONDITIONAL, not canonical.** A longer paragraph that
+names each family and states "cada familia se puede adoptar por separado y combinarse sin duplicar
+suscripciones ni cuentas" / "without duplicating subscriptions or accounts" may be used only when the
+shared-entitlement model actually exists (the strategy labels that same claim `HYPOTHESIS` while the
+commerce/entitlement model is unbuilt: MC-02 P-09/P-10). Until then the canonical, shorter
+`mareaExtendedDescription` above is the only publishable form.
 
 `companyDescription`, the `b2bLine` and every attribution string are CONDITIONAL on the seller being
 able to deliver the named service (see `COMMERCIAL-BRAND-CLAIMS-POLICY.md` §2). The strings deliberately
@@ -161,7 +168,7 @@ One proposition per segment. The differentiator changes with the buying decision
 
 | ES | EN | Why it is true now |
 | --- | --- | --- |
-| «Publicamos lo que el producto hace y lo que no hace.» | "We publish what a product does and what it does not do." | It is a commitment about documentation practice, not a performance claim |
+| «Publicamos qué hace el producto, qué no hace y con qué versión funciona.» | "We publish what a product does, what it does not do, and which version supports it." | It is a commitment about documentation practice, not a performance claim |
 | «Compatibilidad publicada por equipo y versión.» | "Compatibility published per device and version." | Policy commitment; must be honoured on every page |
 | «Instalación y soporte por EMBARCARTE.» | "Installed and supported by EMBARCARTE." | CONDITIONAL on deliverable service capability |
 | «Sin duplicar suscripciones: una cuenta, una titularidad.» | "No duplicate subscriptions: one account, one entitlement." | Product architecture intent; verify before publishing per product |

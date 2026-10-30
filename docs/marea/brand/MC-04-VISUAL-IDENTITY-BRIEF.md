@@ -2010,4 +2010,3 @@ New or refined blockers for the identity work:
 - **Closing statement:** a design milestone that cannot show imagery is not a failed milestone; a
   design milestone that fakes imagery is. The identity system can be built, tested and reviewed
   honestly today. The photographs cannot.
-
