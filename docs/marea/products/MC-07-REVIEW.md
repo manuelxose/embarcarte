@@ -5,7 +5,8 @@
 | Document ID | MC-07 / D15 — INDEPENDENT-REVIEW |
 | Milestone | MC-07 (Master Prompt 07/36) — product-definition batch 3 |
 | Reviewer | `product-reviewer` (AGENT G) — Independent Product Quality Auditor; author of no MC-07 deliverable |
-| Review state | **PASS — product-definition scope** (closing-commit re-verification pending, §11) |
+| Review state | **PASS — product-definition scope** (closing commit `66510ac` re-verified; §13) |
+| Post-verdict addendum | `4d2d1fa` (MIN-10 closure) + `66510ac` (closing commit) — see §13 |
 | Reviewed commit | `355cf00877f6be07cab26afd9e9ca30bf7964ca3` on `feature/marea-mc07-display-weather-fleet-products` |
 | Previous audited commit | `64330faf6513de22dcced6ef70c1a6e8366490f0` (verdict FAIL; findings fixed in `355cf00` and re-verified here) |
 | Base / MC-06 HEAD | `7867409066e83e4b432476903e61f5ebdcc1b554` |
@@ -100,10 +101,11 @@ PILOT authority and no measured hardware claim; WEATHER is provenance-first with
 deployed service, no SLA and no vessel-control path; the contract and validator prevent accidental sale; and the
 diff is limited to the authorised internal documentation/tooling scope.
 
-Two non-blocking residuals remain and are recorded, not hidden: the validator's text-claim rules still miss some
-paraphrases (OBS-13), and one internal annex table still labels a mount family "approved" (MIN-10). Neither
-affects a shipped customer-facing fact, a price, a sale state or the current copy, and both are routed for a
-small follow-up.
+The previously recorded wording residual MIN-10 (an internal annex label) was closed in `4d2d1fa` and verified in
+§13. The recorded residuals after the closing commit are OBS-13 (the validator's text-claim rules still miss some
+paraphrases; no shipped document contains such a claim) and OBS-14 (external comparator prices were not re-fetched
+and remain dated observations). Neither affects a shipped customer-facing fact, a price, a sale state or the
+current copy.
 
 **Commercial release: BLOCKED — `NOT_FOR_SALE`.** All nine products are `DEFINED` / `NOT_FOR_SALE` /
 `INTERNAL_ONLY`; publication is `BLOCKED`; MAREA remains a proposed, uncleared brand; source IP is
@@ -227,14 +229,15 @@ reviewer re-ran the exact probes, the structural checks (WEATHER TOC/body, absol
 README/D-017, mount wording, ecosystem count, AIS disclaimer, status line) and all gates; no regression was
 found. No fixing was done by the reviewer.
 
-### 8.2 Open, non-blocking (routed to the Lead; do not affect the PASS)
+### 8.2 Non-blocking items (residual and closing-commit; do not affect the PASS)
 
 | Id | Severity | Finding / evidence | Required correction | Disposition |
 | --- | --- | --- | --- | --- |
-| MIN-10 | MINOR | `DISPLAY-HARDWARE-AND-INTERACTION-REQUIREMENTS.md:108`, `:145`, `:154` still label requirements "approved mount family"/"approved mount", while `:162` of the same annex says "no mount is approved" and hardware is `NOT_SELECTED`. Dossier and ES/EN copy were correctly reworded; the annex labels were not | Rename to "specified mount family" / "mount family under installation assessment"; keep the "no mount is approved" statement | ROUTED TO LEAD — closing-commit fix recommended; internal-only terminology, no customer-facing claim |
+| MIN-10 | MINOR | `DISPLAY-HARDWARE-AND-INTERACTION-REQUIREMENTS.md` previously labelled three requirement rows "approved mount family"/"approved mount" while stating no mount is approved and hardware is `NOT_SELECTED`. Dossier and ES/EN copy were correctly reworded before the fix | Rename to "specified mount family" / "mount family under installation assessment"; keep the "no mount is approved" statement | **CLOSED** — fixed in `4d2d1fa`; verified in §13 (no claim added) |
 | OBS-13 | OBSERVATION | The text-claim rules are phrase-specific: 11 natural paraphrases of the frozen remote-control/PILOT, forecast-accuracy and cross-tenant prohibitions still pass the validator (list in §7). The six reported BLK-01 strings, the accuracy string and the cross-tenant string are rejected and tested; shipped copy/dossiers contain none of the evading phrases | Broaden the control/accuracy/cross-tenant patterns (allow/enable/offer/support + control/steering/engagement; "<n>% ... accurate" with intervening words; "other organis[s]ation" and "A ... B" paraphrase) and add regression tests before MC-20–MC-24 copy work begins | ACCEPTED WITH RATIONALE — residual heuristic limitation; no false shipped claim; follow-up before the page/copy milestone |
 | OBS-14 | OBSERVATION | External comparator prices/terms in the dossiers and pricing model were not independently re-fetched by this reviewer; they are labelled `VERIFIED_EXTERNAL (checked 2026-10-30)` with official URLs and "vendor claim, not verified" qualifiers, and are not MAREA evidence | Re-check before reuse in any public page, as the documents themselves require | ACCEPTED WITH RATIONALE — dated external evidence, outside the definition-scope gate |
-| OBS-15 | OBSERVATION | The withheld `MC-07-DELIVERY.md` still cites `64330fa` for its gate evidence and contains one unresolved review-verdict marker; the closing commit must update it to `355cf00` and this verdict, and add the MASTER-PROMPT-REGISTRY MC-07 row | Update delivery record, registry row and this review's closing addendum; commit only the declared closing files | ROUTED TO LEAD — process item for the closing commit |
+| OBS-15 | OBSERVATION | The withheld `MC-07-DELIVERY.md` previously cited `64330fa` for gate evidence and contained an unresolved review-verdict marker; the closing commit needed to update it to `355cf00` and this verdict, and add the MASTER-PROMPT-REGISTRY MC-07 row | Update delivery record, registry row and this review's closing addendum; commit only the declared closing files | **CLOSED** — committed in `66510ac`; two textual inaccuracies remain, MIN-11 |
+| MIN-11 | MINOR | In the committed `MC-07-DELIVERY.md`: §5 says the gate commands ran on "the reviewed tree (commit `64330fa`)", but the audited/reviewed commit is `355cf00` (the 52/52 and 106/106 results exist only there); §1's initial-audit summary says "seven minor findings" while the FAIL audit recorded eight non-blocking items (MIN-05–MIN-09 and OBS-10–OBS-12) | Correct the gate-commit reference to `355cf00` and the count to eight; textual only, no verdict change | ROUTED TO LEAD — recommended in the addendum commit or a follow-up |
 
 ---
 
@@ -292,10 +295,9 @@ cite `355cf00` and this verdict, replacing its remaining placeholder), and the `
 row (plus any trivial whitespace normalisation). Any other path in the closing diff is outside this verdict and
 requires re-verification.
 
-After the Lead sends the closing-commit SHA, the reviewer will verify that diff is limited as above, re-run the
-reviewed-state check, and append a short re-verification statement (with the closing SHA and any residual items)
-to this section. Repository evidence shows no hardware, production, external-service, paid-API or
-image-generation artifact was produced; the absence of physical hardware/vessel activity is attested by the
+The Lead supplied closing commit `66510ac`; §13 records the completed re-verification, the confirmed closing
+diff scope and the residual items. Repository evidence shows no hardware, production, external-service, paid-API
+or image-generation artifact was produced; the absence of physical hardware/vessel activity is attested by the
 Lead, and that attestation — not a repository artefact — is the basis for that specific statement.
 
 ---
@@ -309,3 +311,40 @@ Lead, and that attestation — not a repository artefact — is the basis for th
 - Related evidence: `docs/marea/products/README.md` §24–§32, `docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md`
   §9, `docs/marea/compliance/MC-02-BLOCKERS-AND-DECISIONS.md`, `docs/marea/execution/DECISION-LOG.md`
   D-012–D-017.
+
+
+---
+
+## 13. Post-verdict re-verification — closing commits `4d2d1fa` + `66510ac`
+
+Verified `66510ac5d162bd08719cfda53f2dbb5a14ef6b42` (HEAD, branch
+`feature/marea-mc07-display-weather-fleet-products`, working tree clean). The closing sequence is two commits:
+`4d2d1fa` (MIN-10 wording only) and `66510ac` (review text, delivery record, registry). `git diff --stat
+355cf00..66510ac` = 4 files, 483 insertions, 597 deletions: the DISPLAY hardware annex (4/4 in `4d2d1fa`),
+`MC-07-REVIEW.md`, the new `MC-07-DELIVERY.md` (231 inserted lines) and `MASTER-PROMPT-REGISTRY.md` (4/4); `git diff
+--check` is clean; there is no `src/`, `public/`, `.github/`, OPEN-MARINE, dependency, image or secret change,
+and PR #13 remains a draft, stacked and unmerged.
+
+| Check | Result |
+| --- | --- |
+| (a) Closing diff matches the declared scope exactly | **PASS** — `4d2d1fa` touches only `DISPLAY-HARDWARE-AND-INTERACTION-REQUIREMENTS.md` (+4/−4); `66510ac` touches only `MC-07-REVIEW.md`, `MC-07-DELIVERY.md` and `MASTER-PROMPT-REGISTRY.md`; no other path appears in the range |
+| (b) MIN-10 fix introduces no claim | **PASS** — the annex now reads "one specified mount family (subject to the installation assessment) … no mount is approved or certified" in §4, and "specified mount family (no approval or certification exists)" in §6.1, with §5.10 and §6.2 aligned; the requirement status remains `NOT_ESTABLISHED`/`HARDWARE_NOT_SELECTED` and no measured, approved or certified claim was added. The §8.2 MIN-10 row is closed |
+| (c) Delivery record verdict/gate/commit references accurate and no overstatement | **PASS in substance** — it cites `355cf00` as the reviewed commit, preserves the initial FAIL history, quotes the PASS verdict for the definition scope only, and its gate table (52/52 checks, 106/106 tests, 789 references, 9 products/26 editions/3 contracts, 0 vulnerabilities) matches my re-runs; the e2e contention-flake disclosure is honest (my isolated run was 15/15 in 41 s); remaining blockers and "MC-08 not started" are accurate; nothing claims working hardware, data rights, security certification or availability. **Two MINOR textual inaccuracies**: §5 still says the gates ran on "the reviewed tree (commit `64330fa`)" instead of `355cf00`, and §1 says "seven minor findings" where the FAIL audit recorded eight non-blocking items (MIN-05–MIN-09, OBS-10–OBS-12). Routed as **MIN-11**; correction is textual and does not change the verdict |
+| (d) Registry row supported | **PASS** — the MC-07 row moves `PLANNED`→`PASS` for the product-definition scope with the branch, `64330fa`/`355cf00` commit references, D1–D16 deliverable list, the 52/52 and 106/106 gate evidence, the initial-FAIL/re-verified-PASS history and the two residuals; the header is updated to MC-07; the row does not assert hardware, data rights, security, sale or publication, and it states that a definition PASS is not a release |
+
+OBS-15 (delivery record/registry update) is closed by `66510ac`; MIN-10 is closed by `4d2d1fa`. Residual after the
+closing commits: **OBS-13** (11 paraphrase variants of the prohibited text claims still bypass the heuristic rules;
+no shipped document contains them; rule broadening and regression tests are recommended before MC-20–MC-24) and
+**OBS-14** (external comparator prices/terms were not re-fetched by this reviewer and remain dated
+`VERIFIED_EXTERNAL` observations, not MAREA evidence), plus **MIN-11** (two textual corrections in the delivery
+record, routed).
+
+**The verdict stands: PASS — product-definition scope only at `355cf00`.** The closing commits do not modify the
+reviewed product definitions other than the MIN-10 wording correction in the internal DISPLAY hardware annex, which
+strictly narrows the wording and adds no claim; therefore the PASS recorded in §§3–4 remains valid for the closing
+state. All nine products remain `DEFINED` / `NOT_FOR_SALE` / `INTERNAL_ONLY`; publication `BLOCKED`; trademark
+`NOT_GRANTED`; OPEN-MARINE rights `NOT_CLEARED`; image generation `BLOCKED`; prices are `HYPOTHESIS_UNAPPROVED`.
+A definition PASS is not a release.
+
+The reviewer edited no deliverable for this addendum other than this `MC-07-REVIEW.md`; no Git write command was
+executed (read-only Git and file reads only).
