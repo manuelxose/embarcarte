@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { StatusBadge } from '../account/status-badge';
-import { ORDER_STATUSES, OrderStatus, OrderSummary, formatDate, formatPrice } from '../core/models';
+import { StatusBadge } from '../../shared/ui/status-badge';
+import { ORDER_STATUSES, OrderStatus, OrderSummary, formatDate, formatPrice } from '../../core/models';
 
 @Component({
   selector: 'app-admin-orders',

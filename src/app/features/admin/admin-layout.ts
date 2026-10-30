@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { AuthService } from '../core/auth.service';
-import { SeoService } from '../core/seo.service';
+import { AuthService } from '../../core/auth.service';
+import { SeoService } from '../../core/seo.service';
 
 @Component({
   selector: 'app-admin-layout',

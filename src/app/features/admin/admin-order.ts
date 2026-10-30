@@ -3,8 +3,8 @@ import { Component, inject, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
-import { StatusBadge } from '../account/status-badge';
-import { ORDER_STATUSES, Order, OrderStatus, formatDate, formatPrice } from '../core/models';
+import { StatusBadge } from '../../shared/ui/status-badge';
+import { ORDER_STATUSES, Order, OrderStatus, formatDate, formatPrice } from '../../core/models';
 
 type AdminOrderDetail = Order & { customer: { id: number; name: string; email: string; phone: string } };
 

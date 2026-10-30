@@ -11,12 +11,19 @@ import { SITE, absoluteUrl } from './site.config';
 export interface SeoData {
   title: string;
   description: string;
-  path: string;
+  /**
+   * Public URL of the page. Omitted only when the document has no address of its
+   * own (the 404 page is served from an arbitrary unknown URL), which drops the
+   * canonical and `og:url` instead of pointing them at a page that does not exist.
+   */
+  path?: string;
   image?: string;
   type?: 'website' | 'article' | 'product';
   noindex?: boolean;
   language?: Locale;
   alternates?: { language: Locale; path: string }[];
+  /** Language-neutral entry point, emitted as `hreflang="x-default"`. */
+  xDefault?: string;
   jsonLd?: Record<string, unknown>[];
 }
 
@@ -27,7 +34,7 @@ export class SeoService {
   private readonly document = inject(DOCUMENT);
 
   set(data: SeoData): void {
-    const url = absoluteUrl(data.path);
+    const url = data.path === undefined ? undefined : absoluteUrl(data.path);
     const image = SITE.url + (data.image ?? '/og-image.png');
     const fullTitle = data.path === '/' ? data.title : `${data.title} | ${SITE.name}`;
     const locale = LOCALE_INFO[data.language ?? DEFAULT_LOCALE];
@@ -41,7 +48,8 @@ export class SeoService {
     this.tag('property', 'og:locale', locale.ogLocale);
     this.tag('property', 'og:title', fullTitle);
     this.tag('property', 'og:description', data.description);
-    this.tag('property', 'og:url', url);
+    if (url) this.tag('property', 'og:url', url);
+    else this.meta.removeTag('property="og:url"');
     this.tag('property', 'og:image', image);
     this.tag('property', 'og:image:width', '1200');
     this.tag('property', 'og:image:height', '630');
@@ -51,7 +59,7 @@ export class SeoService {
     this.tag('name', 'twitter:image', image);
 
     this.setCanonical(url);
-    this.setAlternates(data.alternates ?? []);
+    this.setAlternates(data.alternates ?? [], data.xDefault);
     this.setJsonLd(data.jsonLd ?? []);
   }
 
@@ -59,8 +67,12 @@ export class SeoService {
     this.meta.updateTag({ [attr]: key, content }, `${attr}="${key}"`);
   }
 
-  private setCanonical(url: string): void {
+  private setCanonical(url: string | undefined): void {
     let link = this.document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+    if (!url) {
+      link?.remove();
+      return;
+    }
     if (!link) {
       link = this.document.createElement('link');
       link.setAttribute('rel', 'canonical');
@@ -69,16 +81,18 @@ export class SeoService {
     link.setAttribute('href', url);
   }
 
-  private setAlternates(alternates: NonNullable<SeoData['alternates']>): void {
+  private setAlternates(alternates: NonNullable<SeoData['alternates']>, xDefault?: string): void {
     this.document.head.querySelectorAll('link[data-seo="alternate"]').forEach((el) => el.remove());
-    for (const alternate of alternates) {
+    const emit = (hreflang: string, path: string) => {
       const link = this.document.createElement('link');
       link.setAttribute('rel', 'alternate');
-      link.setAttribute('hreflang', LOCALE_INFO[alternate.language].htmlLang);
-      link.setAttribute('href', absoluteUrl(alternate.path));
+      link.setAttribute('hreflang', hreflang);
+      link.setAttribute('href', absoluteUrl(path));
       link.setAttribute('data-seo', 'alternate');
       this.document.head.appendChild(link);
-    }
+    };
+    for (const alternate of alternates) emit(LOCALE_INFO[alternate.language].htmlLang, alternate.path);
+    if (xDefault) emit('x-default', xDefault);
   }
 
   private setJsonLd(items: Record<string, unknown>[]): void {
@@ -103,15 +117,19 @@ export const breadcrumb = (items: { name: string; path: string }[], locale: Loca
   })),
 });
 
-export type PageSeoData = Omit<SeoData, 'path' | 'language' | 'alternates'> & { params?: RouteParams };
+export type PageSeoData = Omit<SeoData, 'path' | 'language' | 'alternates' | 'xDefault'> & { params?: RouteParams };
 
 /**
  * Canonical path, locale and `hreflang` alternates derived from the localized
  * route registry, so a page cannot disagree with its own URL.
+ *
+ * Only the home page is a language-neutral entry point, so it is the only page
+ * that declares `x-default`; it points at the default locale.
  */
 export const pageSeo = (id: RouteId, locale: Locale, { params = {}, ...data }: PageSeoData): SeoData => ({
   ...data,
   path: localizedUrl(id, locale, params),
   language: locale,
   alternates: LOCALES.map((alternate) => ({ language: alternate, path: localizedUrl(id, alternate, params) })),
+  ...(id === 'home' ? { xDefault: localizedUrl('home', DEFAULT_LOCALE) } : {}),
 });

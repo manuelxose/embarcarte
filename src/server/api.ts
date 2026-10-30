@@ -53,7 +53,8 @@ const hostOf = (url: string): string | null => {
   }
 };
 
-const euros = (cents: number) => (cents / 100).toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
+const euros = (cents: number, language: 'es' | 'en' = 'es') =>
+  (cents / 100).toLocaleString(language === 'en' ? 'en-GB' : 'es-ES', { style: 'currency', currency: 'EUR' });
 
 // Webhook de Stripe: necesita el cuerpo sin parsear, así que va antes de express.json().
 api.post('/stripe/webhook', express.raw({ type: 'application/json', limit: '1mb' }), (req, res) => {
@@ -250,18 +251,18 @@ api.post('/orders', requireUser, rateLimit('orders', 20), async (req, res) => {
   }
 
   const total = lines.reduce((sum, l) => sum + l.unit_cents * l.qty, 0);
-  const summary = lines.map((l) => `${l.qty} × ${l.name} (${euros(l.unit_cents)})`).join('\n');
+  const summary = lines.map((l) => `${l.qty} × ${l.name} (${euros(l.unit_cents, language)})`).join('\n');
   void sendMail(
     adminInbox(),
     `[embarcarte.com] Nuevo pedido #${orderId}`,
-    `Cliente: ${req.user!.name} <${req.user!.email}>\nPago: ${payment}\n\n${summary}\n\nTotal: ${euros(total)}`,
+    `Cliente: ${req.user!.name} <${req.user!.email}>\nPago: ${payment}\n\n${summary}\n\nTotal: ${euros(total, language)}`,
   );
   void sendMail(
     req.user!.email,
     language === 'en' ? `We received your order #${orderId}` : `Hemos recibido tu pedido #${orderId}`,
     language === 'en'
-      ? `Hello ${req.user!.name},\n\nThank you for your order with Embarcarte.\n\n${summary}\n\nTotal: ${euros(total)}\n\n${payment === 'transferencia' ? 'We will send the bank transfer details and confirm delivery timing.\n' : ''}Track your order at ${SITE_URL}/en/account/orders/${orderId}\n`
-      : `Hola ${req.user!.name},\n\nGracias por tu pedido en Embarcarte.\n\n${summary}\n\nTotal: ${euros(total)}\n\n${payment === 'transferencia' ? 'Te enviaremos los datos para la transferencia y confirmaremos el plazo de entrega.\n' : ''}Puedes seguirlo en ${SITE_URL}/cuenta/pedidos/${orderId}\n`,
+      ? `Hello ${req.user!.name},\n\nThank you for your order with Embarcarte.\n\n${summary}\n\nTotal: ${euros(total, language)}\n\n${payment === 'transferencia' ? 'We will send the bank transfer details and confirm delivery timing.\n' : ''}Track your order at ${SITE_URL}/en/account/orders/${orderId}\n`
+      : `Hola ${req.user!.name},\n\nGracias por tu pedido en Embarcarte.\n\n${summary}\n\nTotal: ${euros(total, language)}\n\n${payment === 'transferencia' ? 'Te enviaremos los datos para la transferencia y confirmaremos el plazo de entrega.\n' : ''}Puedes seguirlo en ${SITE_URL}/cuenta/pedidos/${orderId}\n`,
   );
 
   if (payment === 'tarjeta') {

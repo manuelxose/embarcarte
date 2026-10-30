@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AdminProduct, formatPrice } from '../core/models';
-import { ProductImage } from '../shop/product-image';
+import { AdminProduct, formatPrice } from '../../core/models';
+import { ProductImage } from '../../shared/ui/product-image';
 
 @Component({
   selector: 'app-admin-products',

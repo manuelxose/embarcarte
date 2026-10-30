@@ -7,6 +7,9 @@ import {
 import express from 'express';
 import { readdirSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
+import { LOCALE_INFO } from './app/core/i18n/locale.config';
+import { localizedUrl, matchRoute } from './app/core/i18n/locale-routes';
+import { LOCALES } from './app/core/i18n/locale.types';
 import { api } from './server/api';
 import { ensureAdmin, purgeExpiredSessions } from './server/auth';
 import { UPLOADS_DIR, db } from './server/db';
@@ -46,6 +49,32 @@ const prerenderedPaths = (() => {
   return paths.map((p) => (p === '/' ? '/' : p.replace(/\/$/, '')));
 })();
 
+const xmlUrl = (path: string) =>
+  (SITE_URL.replace(/\/$/, '') + path).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+/**
+ * `xhtml:link` alternates for a published URL, taken from the same route
+ * registry the pages use. A pair is emitted only when both locales are actually
+ * in the sitemap, so an alternate can never point at a page that is not served.
+ */
+const sitemapAlternates = (path: string, published: ReadonlySet<string>): string => {
+  const match = matchRoute(path);
+  if (!match) return '';
+  const counterparts = LOCALES.map((locale) => ({
+    lang: LOCALE_INFO[locale].htmlLang,
+    path: localizedUrl(match.id, locale, match.params),
+  }));
+  if (!counterparts.every((counterpart) => published.has(counterpart.path))) return '';
+  const links = counterparts.map(
+    (counterpart) => `<xhtml:link rel="alternate" hreflang="${counterpart.lang}" href="${xmlUrl(counterpart.path)}"/>`,
+  );
+  // Only the home page is a language-neutral entry point; it points at the default locale.
+  if (match.id === 'home') {
+    links.push(`<xhtml:link rel="alternate" hreflang="x-default" href="${xmlUrl(localizedUrl('home', 'es'))}"/>`);
+  }
+  return links.join('');
+};
+
 app.get('/sitemap.xml', (_req, res) => {
   const products = db.prepare('SELECT slug, updated_at, name_en, summary_en, description_en FROM products WHERE active = 1').all() as {
     slug: string;
@@ -54,19 +83,26 @@ app.get('/sitemap.xml', (_req, res) => {
     summary_en: string;
     description_en: string;
   }[];
-  const urls = [
+  const translated = products
+    .filter((p) => p.name_en && p.summary_en && p.description_en)
+    .map((p) => ({ path: `/en/shop/${p.slug}`, lastmod: p.updated_at.slice(0, 10) }));
+  const entries = [
     ...prerenderedPaths.map((path) => ({ path, lastmod: '' })),
     { path: '/tienda', lastmod: '' },
     { path: '/en/shop', lastmod: '' },
     ...products.map((p) => ({ path: `/tienda/${p.slug}`, lastmod: p.updated_at.slice(0, 10) })),
-    ...products.filter((p) => p.name_en && p.summary_en && p.description_en).map((p) => ({ path: `/en/shop/${p.slug}`, lastmod: p.updated_at.slice(0, 10) })),
+    ...translated,
   ];
+  const published = new Set(entries.map((entry) => entry.path));
   res.type('application/xml').setHeader('Cache-Control', 'public, max-age=3600');
   res.send(
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-      urls
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n` +
+      entries
         .sort((a, b) => a.path.localeCompare(b.path))
-        .map((u) => `  <url><loc>${(SITE_URL.replace(/\/$/, '') + u.path).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`)
+        .map(
+          (u) =>
+            `  <url><loc>${xmlUrl(u.path)}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}${sitemapAlternates(u.path, published)}</url>`,
+        )
         .join('\n') +
       '\n</urlset>\n',
   );

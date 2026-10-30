@@ -1,3 +1,6 @@
+import type { Locale } from './i18n/locale.types';
+import { DEFAULT_LOCALE } from './i18n/locale.types';
+
 export interface SampleProduct {
   slug: string;
   category: string;
@@ -23,8 +26,22 @@ export const SAMPLE_PRODUCTS: SampleProduct[] = [
   { slug: 'hub', category: 'Open Marine', categoryEn: 'Open Marine', name: 'Open Marine Hub', nameEn: 'Open Marine Hub', summary: 'Ordenador de navegación para integrar datos y servicios a bordo.', summaryEn: 'Navigation computer for onboard data and services.', image: '' },
 ];
 
-export function searchSamples(query: string, english = false): SampleProduct[] {
+export interface SampleText {
+  readonly name: string;
+  readonly category: string;
+  readonly summary: string;
+}
+
+export const sampleText = (product: SampleProduct, locale: Locale): SampleText =>
+  locale === 'en'
+    ? { name: product.nameEn, category: product.categoryEn, summary: product.summaryEn }
+    : { name: product.name, category: product.category, summary: product.summary };
+
+export function searchSamples(query: string, locale: Locale = DEFAULT_LOCALE): SampleProduct[] {
   const normalize = (value: string) => value.toLowerCase().normalize('NFD').replace(/\p{Diacritic}/gu, '');
   const term = normalize(query.trim());
-  return SAMPLE_PRODUCTS.filter((p) => normalize(english ? `${p.nameEn} ${p.categoryEn} ${p.summaryEn}` : `${p.name} ${p.category} ${p.summary}`).includes(term));
+  return SAMPLE_PRODUCTS.filter((p) => {
+    const text = sampleText(p, locale);
+    return normalize(`${text.name} ${text.category} ${text.summary}`).includes(term);
+  });
 }

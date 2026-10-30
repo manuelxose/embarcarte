@@ -6,10 +6,9 @@ export interface ServiceItem {
 }
 
 /**
- * The English page has always published three of the four blocks: the
- * "electronic integration" block exists only in Spanish, so it was not
- * translated here. Closing that content gap is a copy decision, not a
- * refactoring one.
+ * Service blocks, in the published order: both locales cover the same four
+ * services. The English list used to publish three, so the page showed one
+ * block fewer than the Spanish one.
  */
 export const SERVICES: LocalizedContent<readonly ServiceItem[]> = {
   es: [
@@ -31,6 +30,10 @@ export const SERVICES: LocalizedContent<readonly ServiceItem[]> = {
     },
   ],
   en: [
+    {
+      title: 'Electronic integration',
+      text: 'We unify instruments, GPS, AIS and sensors from different brands into a single open system.',
+    },
     {
       title: 'Onboard installation',
       text: 'Mounting, wiring, protected power and commissioning adapted to your boat.',
