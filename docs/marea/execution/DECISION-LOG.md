@@ -290,3 +290,199 @@ price or a single READY flag is defective.
 
 **Status effect.** MC-05 status is set in `MASTER-PROMPT-REGISTRY.md` from the delivered evidence. This decision
 changes no product lifecycle state, clears no blocker and approves no price.
+
+## D-008 — 2026-10-30 — MC-06 edition structure: installation packages, module SKUs and conditional editions
+
+**Context.** MC-06 (prompt 06/36) must define editions for MAREA PILOT, MAREA SENSE and MAREA WATCH. The
+portfolio proposes PILOT Coastal/Sail/Pro, SENSE individual modules plus Essentials/Sail/Systems kits, and WATCH
+Core/Plus. Applying the D-007 test (an edition must carry a functional customer difference) three structural
+problems appeared:
+
+1. **PILOT Pro is not an edition.** A steering installation whose content can only be determined after a vessel
+   survey has no fixed content, no fixed price and no reproducible configuration. Modelling it as a
+   fixed-price edition would create a purchasable-looking SKU that cannot be quoted honestly, exactly the
+   failure mode the programme prohibits.
+2. **SENSE is a family of measurement devices, not one box with tiers.** The commercial unit is a module; a kit
+   is a preselected group of modules and must never invent a capability its modules do not have.
+3. **WATCH Plus was proposed as "more features".** Without a measurable customer benefit it is a price label,
+   and it cannot be sold before the service it expands exists.
+
+**Decision.**
+
+1. **Edition verdict vocabulary extended, lifecycle untouched.** Batch-02 editions carry one of `DEFINED`,
+   `CONDITIONAL` or `INSTALLATION_PACKAGE`. The lifecycle enum of D-007 is unchanged. `RELEASED`, `FOR_SALE`,
+   `APPROVED` and `PUBLISHABLE` are invalid verdicts for any edition.
+2. **`PILOT-PRO` is an installation package, not a retail SKU.** It is `INSTALLATION_PACKAGE`: quoted after a
+   documented survey, with no price hypothesis and no catalogue entry. `PILOT-COASTAL` is `DEFINED`.
+   `PILOT-SAIL` is `CONDITIONAL` on verified wind-angle steering (H-01); the condition is written in the edition
+   record rather than deleted.
+3. **SENSE is five module SKUs plus three kits.** `SENSE-WIND`, `SENSE-POWER`, `SENSE-BILGE`, `SENSE-TANKS` and
+   `SENSE-ENV` are the commercial units. `SENSE-ESSENTIALS` (battery + bilge starter) is `DEFINED`;
+   `SENSE-SAIL` and `SENSE-SYSTEMS` are `CONDITIONAL` until their measurement performance is validated. A kit
+   may only contain declared modules and may not add a capability, a measurement accuracy or a connectivity
+   claim.
+4. **WATCH Core is the product; Plus is a conditional expansion.** `WATCH-CORE` is `DEFINED` as a complete
+   essential-monitoring package including a subscription entitlement. `WATCH-PLUS` is `CONDITIONAL` and may only
+   ship once its additional inputs, rule depth, retention and sharing benefits are separately validated and
+   costed; "more features" is not a justification.
+5. **Safety and honesty capabilities are never edition-gated.** Manual takeover, physical E-stop status
+   display, degraded-state and stale-data honesty, local operation without a subscription, data export and
+   ownership transfer belong to every PILOT/SENSE/WATCH configuration, including the entry one.
+
+**Rationale.** The programme cannot pass a product-definition milestone by inventing a turnkey steering SKU or a
+"plus" tier with no evidenced benefit. Recording PILOT Pro as a quoted installation package keeps the commercial
+model honest (see D-009), keeps the catalogue free of a SKU that cannot be priced, and lets the installer
+channel be modelled without pretending that a survey is an order option. The module-plus-kit structure for SENSE
+matches how the customer actually buys sensors and how the channel actually installs them.
+
+**Consequences for the programme.** (a) MC-06 may PASS its definition scope while all three products stay
+`DEFINED` and `NOT_FOR_SALE`. (b) The edition matrix is an input to MC-08 (bundles: no bundle may contain
+`PILOT-PRO` as a priced item), MC-11 (BOM/conformity per module) and MC-25 (SKU readiness). (c) The validator
+must reject any batch-02 edition carrying `RELEASED`/`FOR_SALE`/`APPROVED` and any kit that lists an undeclared
+module. (d) No `src/`, `public/`, checkout, catalogue, price, stock, payment, deployment, brand-adoption or
+trademark state changes.
+
+**Evidence.** `docs/marea/products/README.md` §14 and §18, `docs/marea/products/PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md`,
+`docs/marea/products/MAREA-PILOT-COMMERCIAL-SPEC.md`, `docs/marea/products/MAREA-SENSE-COMMERCIAL-SPEC.md`,
+`docs/marea/products/MAREA-WATCH-COMMERCIAL-SPEC.md`, `docs/marea/products/product-definitions.batch-02.json`.
+
+**Status effect.** Changes no lifecycle state, clears no blocker and approves no price.
+
+## D-009 — 2026-10-30 — PILOT commercial model is quotation-based; "from EUR 1,290" is not a price
+
+**Context.** The portfolio carries the hypothesis "PILOT from EUR 1,290" and MC-05 repeats that no turnkey
+installation may be implied. A supervised steering installation contains: control electronics, an independent
+motor driver, a compatible drive/actuator, heading and rudder feedback, a physical control head, cabling, power
+protection, an emergency-stop assembly, mechanical interfaces, installation labour, commissioning, supervised
+physical testing, conformity work, warranty reserve and installer margin. The first four items alone vary by an
+order of magnitude between a tiller pilot on a 7 m sailboat and a hydraulic drive on a 12 m motor cruiser. No BOM,
+supplier quotation, labour rate or certification cost exists (MC-02 X-05, H-05, H-07).
+
+**Decision.**
+
+1. **The PILOT commercial model is vessel-specific quotation.** No fixed all-inclusive PILOT price may be
+   published, summed, bundled as a priced line or used as a checkout value.
+2. **"from EUR 1,290" may only appear as a `HYPOTHESIS_UNAPPROVED` starting-price reference** for the minimum
+   usable Coastal configuration, and only in internal documents that state simultaneously that it is not an
+   all-inclusive quotation and that an inclusive quotation is required. Customer copy files carry no figures.
+3. **Every quotation must enumerate inclusions and exclusions** (equipment, cabling, labour, commissioning, sea
+   trial, training, conformity, warranty) and must be issued only after a documented vessel and steering survey
+   (H-01; PILOT_SAFETY_GATE = BLOCKED).
+4. **MC-06 approves no PILOT price, margin or bundle sum.** MC-12/MC-13 must produce bottom-up costs from real
+   supplier and installer quotes before any number can be approved.
+
+**Rationale.** A headline price that cannot be delivered for the minimum usable configuration is a commercial
+misstatement, not an optimistic placeholder. A quotation model is also the only model compatible with a
+BLOCKED safety gate: it makes the survey (and the refusal to quote an incompatible vessel) the first commercial
+step rather than an afterthought.
+
+**Consequences.** (a) The stack `MAREA SAIL` and `MAREA COMPLETE` bundle hypotheses cannot contain PILOT as a
+priced inclusion; MC-08 must model them as "quotation required". (b) The validator must reject a PILOT edition
+whose price hypothesis claims an inclusive quotation, and any `APPROVED` price. (c) Any future price approval
+requires the evidence listed in `PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-02.md`.
+
+**Evidence.** `docs/marea/products/README.md` §17–§18, `docs/marea/products/MAREA-PILOT-COMMERCIAL-SPEC.md`
+F13–F15, `docs/marea/products/PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-02.md`, `docs/marea/COMMERCIAL-PORTFOLIO.md`
+§04 and its price/channel decision rule.
+
+**Status effect.** No price approved; PILOT remains `NOT_FOR_SALE` with a BLOCKED safety gate.
+
+## D-010 — 2026-10-30 — One product-governance system across two batches; batch-02 claim and alert semantics
+
+**Context.** MC-06 adds three products and three new claim domains (supervised steering, measurement validity,
+notification delivery). Three risks had to be closed before writing: (1) a second validator with a second
+vocabulary would make the nine-family governance unauditable; (2) the claims policy contains an approved PILOT
+supervised-steering disclaimer but no approved measurement or alert-delivery wording, so inventing "approved"
+text would breach MC-03 governance; (3) WATCH mixes event, alert and delivery meanings that are easy to conflate.
+
+**Decision.**
+
+1. **One validator, two contracts.** `scripts/check-marea-products.mjs` is extended, not duplicated, to validate
+   `product-definitions.batch-01.json` and `product-definitions.batch-02.json` with the same 24-field, evidence,
+   lifecycle and publication vocabulary. Batch-01 behaviour and its unit tests remain valid; new checks are
+   additive and parameterised per batch.
+2. **No claims-policy amendment in MC-06.** The approved PILOT disclaimer and the navigation disclaimer are used
+   verbatim from `COMMERCIAL-BRAND-CLAIMS-POLICY.md` §9. The SENSE measurement-validity statement and the WATCH
+   alert-delivery statement are recorded as **INTERNAL DRAFT limitation statements pending claims-register
+   approval**: required in the drafts, never described as approved policy, and never published until the claims
+   register in §8 carries them with an evidence artefact and an owner approval.
+3. **Canonical WATCH notification semantics.** A single state machine is adopted (`EVENT_OBSERVED`,
+   `RULE_MATCHED`, `ALERT_CREATED`, `QUEUED`, `PROVIDER_ACCEPTED`, `DELIVERED_WHEN_CONFIRMED`, `ACKNOWLEDGED`,
+   `EXPIRED`, `FAILED`, `DELIVERY_UNKNOWN`) with eight distinct timestamps. Provider acceptance never implies
+   delivery; delivery confirmation never implies that a human saw the alert; a device-offline event is only
+   received after reconnection. No document may promise immediate delivery before measurement.
+4. **Subscription isolation is a design requirement.** No commercial entitlement, price, renewal, payment failure
+   or cancellation may disable local steering behaviour, valid local sensing, local alarms or other
+   safety-relevant independent functions. Because WATCH/SENSE/WATCH-side services do not exist yet, this is
+   recorded as a required behaviour, not as a tested one.
+5. **Canonical absence stays absence.** MC-02 findings are carried with their own terminology: `WATCH_INGESTION`
+   `NOT_VERIFIED`; `WATCH_NOTIFICATION_PIPELINE`, `WATCH_DEVICE_IDENTITY`, `WATCH_SUBSCRIPTION_SERVICE` and
+   `WATCH_CONNECTIVITY_CONTRACT` `NOT_FOUND`; PILOT physical E-stop, motor isolation and rudder feedback
+   `NOT_FOUND`; `PILOT_SAFETY_GATE` `BLOCKED`; `SENSE_MEASUREMENT_ACCURACY` `NOT_MEASURED`;
+   `SENSE_NMEA2000` `NOT_IMPLEMENTED`. A specification does not convert an absence into a partial
+   implementation.
+
+**Rationale.** One governance system is what lets a later reviewer trust that nine products obey one vocabulary;
+a parallel validator or a parallel disclaimer set would silently fork the programme's truth. Distinguishing
+approved policy text from pending internal draft wording is the difference between drafting carefully and
+inventing an approval. The WATCH state model exists because "we alerted the customer" is otherwise unverifiable.
+
+**Consequences.** (a) The claims register must be populated before any PILOT/SENSE/WATCH copy is published; the
+draft limitation statements are inputs to that register, not approvals. (b) MC-14 (legal/commercial risk) and
+MC-27 (customer portal) inherit the notification and privacy semantics. (c) MC-34 verification must measure
+delivery, accuracy and safety behaviour physically before any claim upgrades in class. (d) The nine-family
+master brand contract remains the only authority for names and prohibited claim patterns.
+
+**Evidence.** `docs/marea/products/README.md` §§12–22, `scripts/check-marea-products.mjs`,
+`scripts/check-marea-products.test.mjs`, `docs/marea/products/product-definitions.batch-02.json`,
+`docs/marea/products/WATCH-ALERT-DELIVERY-AND-PRIVACY-CONTRACT.md`,
+`docs/marea/products/PILOT-SAFETY-CASE-OUTLINE.md`, `docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md` §§4–9.
+
+**Status effect.** No approval granted; all three products remain `DEFINED`, `NOT_FOR_SALE`, with
+`BRAND_CLEARANCE = NOT_GRANTED`.
+
+## D-011 — 2026-10-30 — Batch-02 edition set frozen; safety and honesty are never edition features
+
+**Context.** `PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md` §7 records six edition-level rules that the pricing,
+compatibility, journey and copy deliverables must obey. They are not a new product structure — D-008 already
+fixed it — but they are the regression rules that stop a later deliverable from adding a fourth PILOT edition, a
+sixth SENSE module, a third WATCH edition, an edition-gated safety behaviour or a "Plus by uplift" price. Two of
+them are the most likely customer misreadings in the whole portfolio: that remote alerting is a SENSE feature and
+that WATCH can influence steering.
+
+**Decision.** The following are binding for every batch-02 document, the JSON contract and the validator:
+
+1. **Thirteen edition-level objects and no more:** three PILOT objects, eight SENSE objects (five modules, three
+   kits), two WATCH objects. No fourth PILOT edition, no sixth SENSE module, no third WATCH edition.
+2. **Verdicts are exactly those of README §14/§18:** `PILOT-COASTAL` `DEFINED`; `PILOT-SAIL` `CONDITIONAL`;
+   `PILOT-PRO` `INSTALLATION_PACKAGE`; every SENSE module and `SENSE-ESSENTIALS` `DEFINED`; `SENSE-SAIL` and
+   `SENSE-SYSTEMS` `CONDITIONAL`; `WATCH-CORE` `DEFINED`; `WATCH-PLUS` `CONDITIONAL`.
+3. **Safety and honesty are never edition features.** E-stop, motor-power isolation, manual takeover, calibration,
+   stale/invalid display, local function without a subscription, device identity, data export and ownership
+   transfer are included in the base configuration of every edition, including the entry one.
+4. **Remote alerting is never a SENSE feature; WATCH never steers.** A SENSE module has no connectivity and no
+   push capability of its own; remote delivery requires WATCH plus connectivity plus an active subscription. No
+   WATCH configuration, rule, sharing role or alert may engage, disengage or adjust the steering system.
+5. **`WATCH-PLUS` is never priced by uplift** from Core; its additional benefits must be validated and costed
+   separately before any price exists (see D-008 §4).
+6. **PILOT Pro is a quoted service scope, not a retail SKU**, and the PILOT starting price is a hypothesis about
+   a configuration, not a product price (D-008, D-009).
+
+**Rationale.** An edition matrix is only useful if it is closed. Left open, each downstream deliverable would add
+the one thing that seemed to fit its own page — a fourth tier, a bundled module, a "safety pack" — and the
+customer would end up comparing configurations that no engineering plan supports. Recording the rules separately
+from the structure also gives the reviewer a concrete checklist: thirteen objects, eight fixed verdicts, no
+edition-gated safety, no SENSE connectivity, no WATCH steering, no Plus uplift.
+
+**Consequences.** (a) MC-08 bundles may reference these editions but cannot add or rename one, and no bundle may
+contain `PILOT-PRO` as a priced item. (b) MC-20/MC-24 catalogue and configurator work must reuse this object set
+verbatim. (c) The validator and reviewer treat an added edition object, a renamed verdict or an edition-gated
+safety capability as a defect. (d) Nothing here is available; all prices remain `HYPOTHESIS_UNAPPROVED` or
+`NOT ESTABLISHED`.
+
+**Evidence.** `docs/marea/products/PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md` §7-§8,
+`docs/marea/products/README.md` §14/§18, `docs/marea/products/product-definitions.batch-02.json`,
+`docs/marea/products/PRODUCT-COMPATIBILITY-PILOT-SENSE-WATCH.md`,
+`docs/marea/products/CUSTOMER-JOURNEYS-PILOT-SENSE-WATCH.md`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved.
