@@ -398,4 +398,3 @@ This document does not assert that any journey step is implemented, available, p
 | 17. End of life and data export | F12, F22 | CD-20, CD-24 | F08, F17 | `D-09`, `H-06` |
 
 **Document status.** `INTERNAL` / `COMPLETE_TARGET_SPECIFICATION` / `NOT_FOR_SALE`. This journey model prepares MC-14, MC-15, MC-18/20, MC-23, MC-24, MC-26, MC-27, MC-28 and the MC-13 verification gates; it does not replace any of them.
-
