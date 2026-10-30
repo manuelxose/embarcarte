@@ -110,6 +110,24 @@ const BATCH02_GLOBAL_RESTRICTIONS = {
   ipRatingClaimed: false,
 };
 
+// Batch-03 additions (MC-07 brief §0, §10, §11, §12, §14). Every entry states a
+// restriction that must remain truthfully open; none is a granted right.
+const BATCH03_GLOBAL_RESTRICTIONS = {
+  ...GLOBAL_RESTRICTIONS,
+  remoteHelmControl: 'PROHIBITED',
+  remoteSteeringOffered: false,
+  dataProviderRightsGranted: false,
+  forecastAccuracyClaimed: false,
+  redistributionAllowed: false,
+  offlineDataAllowed: false,
+  navDoubleBillingAllowed: false,
+  crossTenantAccessAllowed: false,
+  securityCertificationClaimed: false,
+  slaEstablished: false,
+  hardwareMeasured: false,
+  customerProductionDataUsed: false,
+};
+
 // Canonical 24 fields, docs/marea/products/README.md §6.
 const FIELD_KEYS = [
   'identity',
@@ -172,6 +190,10 @@ const APPROVED_DISCLAIMERS = {
     en: 'The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.',
     es: 'El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.',
   },
+  weatherForecast: {
+    en: 'Forecasts are probabilistic and may differ from actual local conditions. Source and timestamp are displayed for every data point.',
+    es: 'Las previsiones son probabilísticas y pueden desviarse de las condiciones locales reales. Se muestra la fuente y la hora de cada dato.',
+  },
 };
 
 // Batch-02 limitation statements, README §16 rule 8 (verbatim, ES and EN).
@@ -183,6 +205,23 @@ const BATCH02_LIMITATION_STATEMENTS = {
   watchLimitation: {
     en: 'Remote alerts depend on power, network coverage and delivery by the notification provider. Immediate receipt is not guaranteed and they are not a certified distress service.',
     es: 'Los avisos remotos dependen de la alimentación, de la cobertura de red y de la entrega por parte del proveedor de notificaciones. No se garantiza la recepción inmediata y no constituyen un servicio de socorro certificado.',
+  },
+};
+
+// Batch-03 additional limitation statements, MC-07 brief §17.2 (internal draft
+// wording, verbatim in the dossier disclaimers section and both product copy files).
+const BATCH03_LIMITATION_STATEMENTS = {
+  displayLimitation: {
+    en: 'The display is an internal concept: no manufactured unit exists and its size, brightness, sunlight legibility and environmental resistance have not been verified. Charts and data services are licensed separately.',
+    es: 'La pantalla es un concepto interno: no existe una unidad fabricada ni se han verificado tamaño, brillo, legibilidad solar ni resistencia ambiental. Las cartas y los servicios de datos se licencian por separado.',
+  },
+  weatherLimitation: {
+    en: 'Coverage depends on licensed providers and forecast accuracy is not guaranteed. A stale or unavailable forecast is never presented as current.',
+    es: 'La cobertura depende de proveedores con licencia y no se garantiza la exactitud de la previsión. Una previsión caducada o no disponible nunca se presenta como actual.',
+  },
+  fleetLimitation: {
+    en: 'MAREA FLEET is an internal design: no deployed multi-tenant service and no security certification exist, and no service level is guaranteed. Telemetry is read-only and never allows steering the vessel.',
+    es: 'MAREA FLEET es un diseño interno: no existe un servicio multiempresa desplegado ni una certificación de seguridad, y no se garantiza ningún nivel de servicio. La telemetría es de solo lectura y nunca permite gobernar la embarcación.',
   },
 };
 
@@ -272,6 +311,17 @@ const BATCH02_BUNDLE_AMOUNTS = new Map([
   [399, 'MAREA PROTECT'],
   [3490, 'MAREA COMPLETE'],
 ]);
+
+// Batch-03 frozen price hypotheses, brief §4. Amounts only; every figure is
+// HYPOTHESIS_UNAPPROVED and must never be presented as a sale price.
+const BATCH03_ALLOWED_AMOUNTS = new Map([
+  [699, 'DISPLAY-7 starting price'],
+  [49, 'WEATHER-STANDARD / FLEET-START starting price'],
+  [89, 'WEATHER-PRO'],
+  [79, 'FLEET-BUSINESS'],
+]);
+// Editions whose price is NOT_ESTABLISHED must never carry a figure (brief §4).
+const BATCH03_UNPRICED_EDITIONS = ['DISPLAY-LARGE-CONDITIONAL', 'FLEET-ENTERPRISE'];
 
 // --- Per-batch configuration -------------------------------------------------
 
@@ -695,7 +745,240 @@ const BATCH_02 = {
   ],
 };
 
-const BATCHES = [BATCH_01, BATCH_02];
+// Batch 03 (MC-07): DISPLAY, WEATHER, FLEET. Canonical identities and readiness:
+// MC-07 shared brief §3 and §5; editions and price hypotheses: §4; blockers: §6;
+// copy paths: §8; asset ids: §13. The configuration is data only.
+const BATCH_03 = {
+  id: 3,
+  milestone: 'MC-07',
+  contractId: 'MC-07-PRODUCT-DEFINITIONS-BATCH-03',
+  contractPath: `${PRODUCTS_DIR}product-definitions.batch-03.json`,
+  batch01Contract: `${PRODUCTS_DIR}product-definitions.batch-01.json`,
+  batch02Contract: `${PRODUCTS_DIR}product-definitions.batch-02.json`,
+  label: 'MC-07 batch',
+  docs: {
+    dossiers: {
+      DISPLAY: `${PRODUCTS_DIR}MAREA-DISPLAY-COMMERCIAL-SPEC.md`,
+      WEATHER: `${PRODUCTS_DIR}MAREA-WEATHER-COMMERCIAL-SPEC.md`,
+      FLEET: `${PRODUCTS_DIR}MAREA-FLEET-COMMERCIAL-SPEC.md`,
+    },
+    editions: `${PRODUCTS_DIR}PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md`,
+    compatibility: `${PRODUCTS_DIR}PRODUCT-COMPATIBILITY-DISPLAY-WEATHER-FLEET.md`,
+    pricing: `${PRODUCTS_DIR}PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-03.md`,
+    journeys: `${PRODUCTS_DIR}CUSTOMER-JOURNEYS-DISPLAY-WEATHER-FLEET.md`,
+    assets: `${PRODUCTS_DIR}PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md`,
+    annexes: {
+      displayHardware: `${PRODUCTS_DIR}DISPLAY-HARDWARE-AND-INTERACTION-REQUIREMENTS.md`,
+      weatherDataRights: `${PRODUCTS_DIR}WEATHER-DATA-RIGHTS-AND-FORECAST-CONTRACT.md`,
+      fleetTenancy: `${PRODUCTS_DIR}FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md`,
+    },
+  },
+  products: [
+    {
+      id: 'DISPLAY',
+      displayName: 'MAREA DISPLAY',
+      type: 'HARDWARE_SOFTWARE',
+      dossier: `${PRODUCTS_DIR}MAREA-DISPLAY-COMMERCIAL-SPEC.md`,
+      copy: { es: `${PRODUCTS_DIR}copy/display.es.md`, en: `${PRODUCTS_DIR}copy/display.en.md` },
+      requiredReadiness: {
+        definition: 'COMPLETE_TARGET_SPECIFICATION',
+        engineering: 'NOT_VERIFIED',
+        licensing: 'NOT_CLEARED',
+        hardware: 'NOT_SELECTED',
+        dataRights: 'NOT_GRANTED',
+        compliance: 'NOT_STARTED',
+        pricing: 'HYPOTHESIS_UNAPPROVED',
+        brandPublication: 'NOT_GRANTED',
+        availability: 'NOT_FOR_SALE',
+      },
+      editions: [
+        {
+          id: 'DISPLAY-7',
+          displayName: 'MAREA DISPLAY 7',
+          priceState: 'HYPOTHESIS_UNAPPROVED',
+          amount: 699,
+          period: 'ONE_OFF',
+          startingPrice: true,
+          notAnInclusiveQuotation: true,
+          subscription: null,
+          verdictStatus: 'DEFINED',
+        },
+        {
+          id: 'DISPLAY-LARGE-CONDITIONAL',
+          displayName: 'MAREA DISPLAY Large (conditional)',
+          priceState: 'NOT_ESTABLISHED',
+          subscription: null,
+          verdictStatus: 'CONDITIONAL',
+        },
+      ],
+      minimumBlockers: [
+        'H-04',
+        'H-05',
+        'H-06',
+        'H-11',
+        'H-13',
+        'D-01',
+        'D-05',
+        'D-06',
+        'D-10',
+        'P-07',
+        'P-10',
+        'X-01',
+        'X-03',
+        'X-05',
+        'X-06',
+        'X-07',
+      ],
+    },
+    {
+      id: 'WEATHER',
+      displayName: 'MAREA WEATHER',
+      type: 'SOFTWARE',
+      dossier: `${PRODUCTS_DIR}MAREA-WEATHER-COMMERCIAL-SPEC.md`,
+      copy: { es: `${PRODUCTS_DIR}copy/weather.es.md`, en: `${PRODUCTS_DIR}copy/weather.en.md` },
+      requiredReadiness: {
+        definition: 'COMPLETE_TARGET_SPECIFICATION',
+        engineering: 'NOT_VERIFIED',
+        licensing: 'NOT_CLEARED',
+        hardware: 'NOT_APPLICABLE_SOFTWARE_PRODUCT',
+        dataRights: 'NOT_GRANTED',
+        compliance: 'NOT_STARTED',
+        pricing: 'HYPOTHESIS_UNAPPROVED',
+        brandPublication: 'NOT_GRANTED',
+        availability: 'NOT_FOR_SALE',
+      },
+      editions: [
+        {
+          id: 'WEATHER-STANDARD',
+          displayName: 'MAREA WEATHER Standard',
+          priceState: 'HYPOTHESIS_UNAPPROVED',
+          amount: 49,
+          period: 'YEAR',
+          startingPrice: true,
+          subscription: null,
+          verdictStatus: 'DEFINED',
+        },
+        {
+          id: 'WEATHER-PRO',
+          displayName: 'MAREA WEATHER Pro',
+          priceState: 'HYPOTHESIS_UNAPPROVED',
+          amount: 89,
+          period: 'YEAR',
+          subscription: null,
+          verdictStatus: 'CONDITIONAL',
+        },
+      ],
+      minimumBlockers: [
+        'D-04',
+        'D-05',
+        'D-07',
+        'D-09',
+        'D-10',
+        'P-08',
+        'P-10',
+        'X-01',
+        'X-03',
+        'X-05',
+        'X-06',
+      ],
+    },
+    {
+      id: 'FLEET',
+      displayName: 'MAREA FLEET',
+      type: 'SOFTWARE',
+      dossier: `${PRODUCTS_DIR}MAREA-FLEET-COMMERCIAL-SPEC.md`,
+      copy: { es: `${PRODUCTS_DIR}copy/fleet.es.md`, en: `${PRODUCTS_DIR}copy/fleet.en.md` },
+      requiredReadiness: {
+        definition: 'COMPLETE_TARGET_SPECIFICATION',
+        engineering: 'NOT_VERIFIED',
+        licensing: 'NOT_CLEARED',
+        hardware: 'NOT_APPLICABLE_SOFTWARE_PRODUCT',
+        dataRights: 'NOT_GRANTED',
+        compliance: 'NOT_STARTED',
+        pricing: 'HYPOTHESIS_UNAPPROVED',
+        brandPublication: 'NOT_GRANTED',
+        availability: 'NOT_FOR_SALE',
+      },
+      editions: [
+        {
+          id: 'FLEET-START',
+          displayName: 'MAREA FLEET Start',
+          priceState: 'HYPOTHESIS_UNAPPROVED',
+          amount: 49,
+          period: 'MONTH',
+          startingPrice: true,
+          subscription: null,
+          verdictStatus: 'DEFINED',
+        },
+        {
+          id: 'FLEET-BUSINESS',
+          displayName: 'MAREA FLEET Business',
+          priceState: 'HYPOTHESIS_UNAPPROVED',
+          amount: 79,
+          period: 'MONTH',
+          subscription: null,
+          verdictStatus: 'DEFINED',
+        },
+        {
+          id: 'FLEET-ENTERPRISE',
+          displayName: 'MAREA FLEET Enterprise',
+          priceState: 'NOT_ESTABLISHED',
+          subscription: null,
+          verdictStatus: 'CONDITIONAL',
+        },
+      ],
+      minimumBlockers: [
+        'D-09',
+        'D-10',
+        'H-12',
+        'H-13',
+        'P-09',
+        'P-10',
+        'X-01',
+        'X-03',
+        'X-05',
+        'X-06',
+        'X-07',
+      ],
+    },
+  ],
+  requiredGlobalRestrictions: BATCH03_GLOBAL_RESTRICTIONS,
+  disclaimers: [
+    // Brief §17.1: navigation/instruments disclaimer in the DISPLAY and FLEET
+    // dossiers and all three copy pairs; in the WEATHER dossier only where a
+    // position or route context appears.
+    { product: 'DISPLAY', file: 'dossier', kind: 'navigation', language: 'en' },
+    { product: 'DISPLAY', file: 'copy.es', kind: 'navigation', language: 'es' },
+    { product: 'DISPLAY', file: 'copy.en', kind: 'navigation', language: 'en' },
+    {
+      product: 'WEATHER',
+      file: 'dossier',
+      kind: 'navigation',
+      language: 'en',
+      when: 'position|route|ruta|posición|posicion',
+    },
+    { product: 'WEATHER', file: 'dossier', kind: 'weatherForecast', language: 'en' },
+    { product: 'WEATHER', file: 'copy.es', kind: 'navigation', language: 'es' },
+    { product: 'WEATHER', file: 'copy.en', kind: 'navigation', language: 'en' },
+    { product: 'WEATHER', file: 'copy.es', kind: 'weatherForecast', language: 'es' },
+    { product: 'WEATHER', file: 'copy.en', kind: 'weatherForecast', language: 'en' },
+    { product: 'FLEET', file: 'dossier', kind: 'navigation', language: 'en' },
+    { product: 'FLEET', file: 'copy.es', kind: 'navigation', language: 'es' },
+    { product: 'FLEET', file: 'copy.en', kind: 'navigation', language: 'en' },
+    // Brief §17.2: additional internal-draft limitation statements.
+    { product: 'DISPLAY', file: 'dossier', kind: 'displayLimitation', language: 'en' },
+    { product: 'DISPLAY', file: 'copy.es', kind: 'displayLimitation', language: 'es' },
+    { product: 'DISPLAY', file: 'copy.en', kind: 'displayLimitation', language: 'en' },
+    { product: 'WEATHER', file: 'dossier', kind: 'weatherLimitation', language: 'en' },
+    { product: 'WEATHER', file: 'copy.es', kind: 'weatherLimitation', language: 'es' },
+    { product: 'WEATHER', file: 'copy.en', kind: 'weatherLimitation', language: 'en' },
+    { product: 'FLEET', file: 'dossier', kind: 'fleetLimitation', language: 'en' },
+    { product: 'FLEET', file: 'copy.es', kind: 'fleetLimitation', language: 'es' },
+    { product: 'FLEET', file: 'copy.en', kind: 'fleetLimitation', language: 'en' },
+  ],
+};
+
+const BATCHES = [BATCH_01, BATCH_02, BATCH_03];
 
 // --- Batch-02 invariant configuration (README §14, §15, §18, §19, §20) -------
 
@@ -885,6 +1168,219 @@ const BATCH02_REQUIRED_ISOLATION_RULES = [
   'LOCAL_ALARMS_NOT_GATED',
   'PAYMENT_FAILURE_NEVER_DISABLES_LOCAL_FUNCTIONS',
 ];
+
+// --- Batch-03 invariant configuration (MC-07 brief §10, §11, §12, §14) -----
+
+const PRODUCT_TYPE_VOCABULARY = ['SOFTWARE', 'HARDWARE', 'HARDWARE_SOFTWARE', 'HARDWARE_SERVICE'];
+
+const CANONICAL_FAMILY_IDS = [
+  'NAV',
+  'HUB',
+  'AIS',
+  'PILOT',
+  'SENSE',
+  'WATCH',
+  'DISPLAY',
+  'WEATHER',
+  'FLEET',
+];
+
+const BATCH03_INVARIANTS = {
+  DISPLAY: {
+    equalities: {
+      screenSizesFrozen: false,
+      hardwareSelected: false,
+      chartRightsGranted: false,
+      pilotControlAuthority: false,
+    },
+    hardwareBoundary: {
+      sizeState: 'SIZE_NOT_FROZEN',
+      hardwareState: 'HARDWARE_NOT_SELECTED',
+      bomState: 'BOM_NOT_ESTABLISHED',
+      targetsAreRequiredTarget: true,
+      measuredPerformance: false,
+    },
+  },
+  WEATHER: {
+    equalities: {
+      providerRightsGranted: false,
+      forecastAccuracyClaimed: false,
+      redistributionAllowed: false,
+      offlineAllowed: false,
+      navDoubleBillingAllowed: false,
+    },
+    entitlementModel: {
+      oneAccount: true,
+      oneEntitlementLedger: true,
+      standalonePurchaseAllowed: true,
+      navProIncludesWeatherStandardRead: 'CONDITIONAL',
+      upgradesProrated: true,
+      cancellationPreservesUserRecords: true,
+      doubleBillingAllowed: false,
+      licenceLossUnavailableState: true,
+      billingImplemented: false,
+    },
+  },
+  FLEET: {
+    equalities: {
+      multiTenantProductionService: false,
+      crossTenantAccessAllowed: false,
+      remoteSteeringAllowed: false,
+      slaEstablished: false,
+      customerProductionDataUsed: false,
+      securityCertificationClaimed: false,
+    },
+    tenancy: {
+      authorizationRequired: true,
+      serverSideAuthorization: true,
+      trustClientSuppliedTenant: false,
+      defaultRole: 'NO_ACCESS',
+      defaultRoleListsAllVessels: false,
+      auditLogRequired: true,
+      privacyPolicyRequired: true,
+      dataExportPolicyRequired: true,
+      telemetryReadOnly: true,
+      slaState: 'NO_SLA_ESTABLISHED',
+    },
+  },
+};
+
+// Frozen integration baseline for the three new families (brief §9). Statuses
+// use only SUPPORTED / CONDITIONAL / PLANNED / UNKNOWN / BLOCKED.
+const BATCH03_INTEGRATION_BASELINE = [
+  ['DISPLAY', 'HUB', 'CONDITIONAL'],
+  ['DISPLAY', 'NAV', 'PLANNED'],
+  ['DISPLAY', 'AIS', 'CONDITIONAL'],
+  ['DISPLAY', 'WEATHER', 'CONDITIONAL'],
+  ['DISPLAY', 'SENSE', 'CONDITIONAL'],
+  ['DISPLAY', 'PILOT', 'UNKNOWN'],
+  ['DISPLAY', 'WATCH', 'UNKNOWN'],
+  ['WEATHER', 'NAV', 'PLANNED'],
+  ['WEATHER', 'FLEET', 'CONDITIONAL'],
+  ['WEATHER', 'DISPLAY', 'CONDITIONAL'],
+  ['WEATHER', 'HUB', 'CONDITIONAL'],
+  ['FLEET', 'WATCH', 'CONDITIONAL'],
+  ['FLEET', 'HUB', 'CONDITIONAL'],
+  ['FLEET', 'SENSE', 'UNKNOWN'],
+  ['FLEET', 'PILOT', 'BLOCKED'],
+  ['FLEET', 'NAV', 'PLANNED'],
+  ['FLEET', 'WEATHER', 'CONDITIONAL'],
+  ['FLEET', 'DISPLAY', 'UNKNOWN'],
+  ['FLEET', 'AIS', 'CONDITIONAL'],
+];
+
+const INTEGRATION_STATUS_VOCABULARY = ['SUPPORTED', 'CONDITIONAL', 'PLANNED', 'UNKNOWN', 'BLOCKED'];
+
+// D9 asset plan, brief §13: 30 ids, 10 per family, 12 blocked + 15 reused + 3 authored.
+const BATCH03_ASSET_SUFFIXES = [
+  'HERO',
+  'USE',
+  'OVR',
+  'EDN',
+  'ECO',
+  'INS',
+  'MOB',
+  'TMB',
+  'OG',
+  'TEC',
+];
+const BATCH03_BLOCKED_ASSET_SUFFIXES = ['HERO', 'USE', 'INS', 'TMB'];
+const BATCH03_REUSED_ASSET_SUFFIXES = ['OVR', 'EDN', 'ECO', 'OG', 'TEC'];
+const BATCH03_AUTHORED_ASSET_SUFFIXES = ['MOB'];
+const BATCH03_ASSET_COVERAGE = {
+  requirementsPerFamily: 10,
+  blockedPerFamily: 4,
+  reusedPerFamily: 5,
+  authoredPerFamily: 1,
+  blockedTotal: 12,
+  reusedTotal: 15,
+  authoredTotal: 3,
+};
+
+function parseBatch03AssetCoverage(text) {
+  if (!text) return null;
+  const cleanCell = (cell) => cell.replace(/\*\*/g, '').replace(/`/g, '').trim();
+  const parseCell = (cell) => {
+    const trimmed = cleanCell(cell);
+    const countMatch = /^(\d+)/.exec(trimmed);
+    const suffixes = [...trimmed.matchAll(/\b([A-Z]{2,4})\b/g)]
+      .map((match) => match[1])
+      .filter((token) => BATCH03_ASSET_SUFFIXES.includes(token));
+    return { count: countMatch ? Number(countMatch[1]) : null, suffixes };
+  };
+  let headerFound = false;
+  const families = new Map();
+  let total = null;
+  for (const line of text.split(/\r?\n/)) {
+    if (/^\s*\|\s*Product\s*\|\s*Requirements\s*\|/.test(line)) {
+      headerFound = true;
+      continue;
+    }
+    if (!headerFound || !/^\s*\|/.test(line)) continue;
+    const cells = line.split('|').slice(1, -1);
+    if (cells.length < 6) continue;
+    const label = cleanCell(cells[0]);
+    if (/^MAREA (?:DISPLAY|WEATHER|FLEET)$/.test(label)) {
+      families.set(label, {
+        requirements: parseCell(cells[1]),
+        blocked: parseCell(cells[2]),
+        reused: parseCell(cells[3]),
+        authored: parseCell(cells[4]),
+        verified: parseCell(cells[5]),
+      });
+    } else if (label === 'Total') {
+      total = {
+        requirements: parseCell(cells[1]),
+        blocked: parseCell(cells[2]),
+        reused: parseCell(cells[3]),
+        authored: parseCell(cells[4]),
+        verified: parseCell(cells[5]),
+      };
+    }
+  }
+  return headerFound ? { families, total } : null;
+}
+
+const BATCH03_REQUIRED_PUBLICATION_GATES = [
+  'brandTrademarkClearance',
+  'openMarineSourceRights',
+  'imageGeneration',
+  'priceApproval',
+  'hardwareEvidence',
+  'dataProviderRights',
+  'securityAndPrivacyReview',
+  'commercePublication',
+];
+
+// Frozen FLEET roles and tenancy defaults, brief §11.
+const FLEET_ROLE_VOCABULARY = [
+  'ORGANIZATION_OWNER',
+  'ORGANIZATION_ADMIN',
+  'FLEET_MANAGER',
+  'MAINTENANCE_MANAGER',
+  'CREW_MEMBER',
+  'READ_ONLY_VIEWER',
+  'EXTERNAL_INSTALLER',
+  'EMBARCARTE_SUPPORT',
+];
+
+const BATCH03_DISPLAY_HARDWARE_STATES = [
+  'SIZE_NOT_FROZEN',
+  'HARDWARE_NOT_SELECTED',
+  'BOM_NOT_ESTABLISHED',
+];
+
+const BATCH03_ENTITLEMENT_MODEL = {
+  oneAccount: true,
+  oneEntitlementLedger: true,
+  standalonePurchaseAllowed: true,
+  navProIncludesWeatherStandardRead: 'CONDITIONAL',
+  upgradesProrated: true,
+  cancellationPreservesUserRecords: true,
+  doubleBillingAllowed: false,
+  licenceLossUnavailableState: true,
+  billingImplemented: false,
+};
 
 // --- Text rules -------------------------------------------------------------
 
@@ -1148,6 +1644,22 @@ const STEERING_CLAIM_RULES = [
     /\bgobernar\s+desde\s+(?:la\s+)?(?:app|nube|aplicación|reloj|web)\b/i,
     'un camino de control remoto del gobierno está prohibido (README §16)',
   ],
+  [
+    /\b(?:can|may|could|lets?|allows?)\b[^.\n]{0,40}\b(?:control|steer|command|engage|disengage)\b[^.\n]{0,30}\b(?:remotely|from\s+(?:the\s+|your\s+|a\s+|an\s+)?(?:app|phone|cloud|website|web|watch|display|tablet))\b/i,
+    'a remote or display-based steering-control path is prohibited: no app, cloud, phone or display may command the vessel (README §16)',
+  ],
+  [
+    /\b(?:control|steer|command|engage|disengage)\b[^.\n]{0,30}\b(?:remotely|from\s+(?:the\s+|your\s+|a\s+|an\s+)?(?:app|phone|cloud|website|web|watch|display|tablet))\b/i,
+    'a remote or display-based steering-control path is prohibited: no app, cloud, phone or display may command the vessel (README §16)',
+  ],
+  [
+    /\b(?:the\s+)?(?:display|screen|app|phone|cloud|website|web|watch)\b[^.\n]{0,30}\b(?:can|may|could)\s+(?:steer|control|command)\b[^.\n]{0,20}\b(?:vessel|boat|helm|autopilot|steering|throttle|motor)\b/i,
+    'a display- or app-based steering-control claim is prohibited: the display never commands the helm',
+  ],
+  [
+    /\bPILOT\b[^.\n]{0,40}\b(?:can|may|could)\s+be\s+(?:controlled|steered|engaged|disengaged|commanded)\b/i,
+    'PILOT control is prohibited: status is read-only at most and never a control path',
+  ],
 ];
 
 const ACCURACY_CLAIM_RULES = [
@@ -1295,6 +1807,192 @@ const BATCH02_CLAIM_RULES = [
   ...CALIBRATION_CLAIM_RULES,
   ...SEA_TRIAL_CLAIM_RULES,
   ...PHYSICAL_EVIDENCE_CLAIM_RULES,
+];
+
+// --- Batch-03 claim rules (MC-07 brief §12, §14, §17) ----------------------
+
+// DISPLAY: hardware, optics, chart-rights and PILOT-authority claims may only
+// exist as unverified targets; none is measured, certified or granted.
+const DISPLAY_CLAIM_RULES = [
+  [
+    /\b(?:certified|verified|measured|proven|certificad[oa]|verificad[oa]|medid[oa])\b[^.\n]{0,40}\b(?:sunlight|sun\s+legibility|legibilidad\s+solar|daylight\s+legibility)\b/i,
+    'a certified or measured sunlight-performance claim is prohibited: no optical performance has been measured (H-11)',
+  ],
+  [
+    /\b(?:sunlight[- ]readable|readable\s+in\s+(?:direct\s+)?sunlight|legible\s+in\s+(?:direct\s+)?sunlight|legible\s+a\s+pleno\s+sol)\b/i,
+    'a sunlight-readability claim is prohibited: no panel, brightness or legibility test exists (H-11)',
+  ],
+  [
+    /\b(?:brightness|brillo|nits?)\b[^.\n]{0,20}\b\d{2,4}\s*(?:nits?|cd\/m)/i,
+    'a numerical brightness figure is prohibited: SIZE_NOT_FROZEN and HARDWARE_NOT_SELECTED (H-05, H-11)',
+  ],
+  [
+    /\b\d{2,4}\s*(?:nits?|cd\/m2|cd\/m²)\b/i,
+    'a numerical brightness figure is prohibited: no panel has been measured (H-11)',
+  ],
+  [
+    /\b(?:screen|display|panel|pantalla)\s+(?:size|diagonal|tamaño|diagonal)\s+(?:is|measures|of|es|mide)\s+\d/i,
+    'a measured screen size is prohibited: SIZE_NOT_FROZEN and hardware is NOT_SELECTED (H-05, H-11)',
+  ],
+  [
+    /\b(?:the\s+)?(?:final\s+)?screen\s+size\s+is\s+\d/i,
+    'a final screen size is prohibited: SIZE_NOT_FROZEN (brief §12)',
+  ],
+  [
+    /\b\d{1,2}(?:[.,]\d+)?[- ]?(?:inch|pulgadas)\b[^.\n]{0,20}\b(?:display|screen|panel|pantalla)\b/i,
+    'a purchased or measured screen size is prohibited; the 7-inch class is a working designation, not a frozen size (brief §12)',
+  ],
+  [
+    /\b(?:resolution|resolución)\b[^.\n]{0,20}\b\d{3,4}\s*[x×]\s*\d{3,4}\b/i,
+    'a resolution stated as fact is prohibited: no panel is selected (H-05)',
+  ],
+  [
+    /\b(?:operating\s+temperature|temperature\s+range|rango\s+de\s+temperatura)\b[^.\n]{0,30}-?\d{1,3}\s*(?:°|º|deg)?\s*C\b/i,
+    'a temperature range stated as fact is prohibited: thermal behaviour is a REQUIRED_TARGET (H-11)',
+  ],
+  [
+    /\b(?:display|screen|pantalla)\b[^.\n]{0,60}\b(?:controls?|steers?|engages?|disengages?|commands?|controla|gobierna)\b[^.\n]{0,30}\b(?:PILOT|helm|autopilot|piloto\s+automático|timón)\b/i,
+    'PILOT control authority from the DISPLAY is prohibited: read-only status at most (brief §12)',
+  ],
+  [
+    /\bPILOT\s+(?:control|steering|authority)\b[^.\n]{0,25}\b(?:is|are|está|es)\s+(?:available|included|supported|enabled|disponible|incluid[oa])\b/i,
+    'PILOT control authority is not approved on the DISPLAY; status/monitoring only (brief §12)',
+  ],
+  [
+    /\b(?:safety[- ]critical|safety\s+system|sistema\s+de\s+seguridad)\b[^.\n]{0,30}\b(?:certified|approved|compliant|certificad[oa]|aprobad[oa])\b/i,
+    'a safety-system framing or certification claim is prohibited for a display (brief §14)',
+  ],
+];
+
+// WEATHER: forecasts are probabilistic; no provider right, redistribution or
+// offline permission may be asserted without matching source evidence.
+const WEATHER_CLAIM_RULES = [
+  [
+    /\b(?:free|no[- ]cost|gratis)\b[^.\n]{0,30}\b(?:tier|plan|api|data|service|nivel)\b[^.\n]{0,60}\b(?<!non-)(?:commercial|paid|resale|redistribut|comercial|de\s+pago|reventa)\b/i,
+    'a free non-commercial data tier is presented as usable for a paid service; no commercial right is granted (D-04, D-07)',
+  ],
+  [
+    /\b(?:provider|data|source)\s+(?:rights?|licen[cs]e|agreement|terms)\b[^.\n]{0,40}\b(?:granted|cleared|approved|signed|obtained|concedid[oa]s?|aprobad[oa]s?)\b/i,
+    'provider data rights presented as granted; dataRights is NOT_GRANTED (D-04, D-07, D-10)',
+  ],
+  [
+    /\bdata\s+rights\s+(?:are|is)\s+(?:GRANTED|CLEARED|APPROVED)\b/i,
+    'provider data rights presented as granted; dataRights is NOT_GRANTED (D-04, D-07, D-10)',
+  ],
+  [
+    /\b(?:redistribut\w+|resell\w+|reventa)\b[^.\n]{0,40}\b(?:is|are|está|están)\s+(?:allowed|permitted|included|granted|permitid[oa]|incluid[oa])\b/i,
+    'redistribution rights presented as permitted; no redistribution right exists (D-04)',
+  ],
+  [
+    /\boffline(?:\s+(?:access|data|presentation|rights?))?\s+(?:is|are|está|están)\s+\**(?:included|available|granted|permitted|supported|incluid[oa]|disponible|permitid[oa])\b/i,
+    'offline entitlement presented as included; offline use needs matching source permission (D-04, D-07)',
+  ],
+  [
+    /\b(?:guarantee[sd]?|guaranteed|garantiz\w+)\b[^.\n]{0,40}\b(?:forecast|previsi[oó]n|accuracy|exactitud)\b/i,
+    'a forecast guarantee is prohibited: forecasts are probabilistic (D-04)',
+  ],
+  [
+    /\b(?:forecast|previsi[oó]n)\w*\b[^.\n]{0,20}\b(?:100\s*%|guarantee|guaranteed|accuracy\s+of\s+\d|exactitud\s+(?:del?\s+)?\d)/i,
+    'a forecast accuracy or guarantee claim is prohibited; accuracy is not measured (D-04)',
+  ],
+  [
+    /\b(?:accuracy|exactitud|precisi[oó]n)\b[^.\n]{0,25}\b\d{1,3}(?:[.,]\d+)?\s*%/i,
+    'a forecast accuracy percentage is prohibited: no accuracy evidence exists (D-04, §14)',
+  ],
+  [
+    /\b\d{1,3}(?:[.,]\d+)?\s*%\s*(?:accurate|accuracy|precis[aeo]s?|exact[ao]s?|de\s+exactitud|de\s+precisi[oó]n)\b/i,
+    'a forecast accuracy percentage is prohibited: no accuracy evidence exists (D-04, §14)',
+  ],
+  [
+    /\b(?:official|exclusive|oficial|exclusiv[oa])\s+(?:weather\s+)?(?:warning|alerta|aviso)\s+service\b/i,
+    'an official warning service or exclusive data claim is prohibited (D-04, §14)',
+  ],
+  [
+    /\b(?:forecast|previsi[oó]n)\b[^.\n]{0,30}\b(?:is|are|es|son)\s+(?:an?\s+)?observations?\b/i,
+    'a forecast must never be presented as an observation (D-04, §14)',
+  ],
+  [
+    /\b(?:double[- ]?bill\w*|billed\s+twice|charged\s+twice|cobrad[oa]\s+dos\s+veces)\b/i,
+    'the same entitlement must never be billed twice across NAV and WEATHER (brief §10)',
+  ],
+];
+
+// FLEET: B2B/SaaS claims. No SLA, certification, unlimited plan, instant alert
+// guarantee or cross-tenant access may be asserted.
+const FLEET_CLAIM_RULES = [
+  [
+    /\b(?:SLA|uptime|service\s+level|nivel\s+de\s+servicio)\b[^.\n]{0,30}\b(?:guaranteed|committed|99[.,]\d+\s*%|garantizad[oa])\b/i,
+    'a guaranteed SLA or uptime figure is prohibited: NO_SLA_ESTABLISHED (P-09, X-06)',
+  ],
+  [
+    /\b99[.,]\d+\s*%\s*(?:uptime|availability|disponibilidad)\b/i,
+    'a guaranteed uptime percentage is prohibited: no measurement evidence exists (P-09)',
+  ],
+  [
+    /\b(?:ISO\s*27001|SOC\s*2|PCI[- ]DSS|Cyber\s*Essentials)\b[^.\n]{0,30}\b(?:certified|compliant|accredited)\b/i,
+    'an unsupported security certification claim is prohibited (X-07)',
+  ],
+  [
+    /\b(?:certified|accredited)\b[^.\n]{0,30}\b(?:ISO\s*27001|SOC\s*2|PCI[- ]DSS|Cyber\s*Essentials)\b/i,
+    'an unsupported security certification claim is prohibited (X-07)',
+  ],
+  [
+    /\bcertified\s+(?:multi[- ]tenant\s+)?security\b/i,
+    'a certified multi-tenant security claim is prohibited; no certification exists (X-07, §14)',
+  ],
+  [
+    /\b(?:remote|remotely|remot[oa])\s+(?:vessel\s+)?(?:steering|helm|motor|throttle|engine|control)\b[^.\n]{0,40}\b(?:available|included|supported|enabled|disponible|incluid[oa]|habilitad[oa])\b/i,
+    'remote vessel control is prohibited: FLEET telemetry is read-only (brief §11)',
+  ],
+  [
+    /\bunlimited\s+(?:vessels?|users?|seats?|storage|api\s+calls?|embarcaciones|usuarios)\b/i,
+    'unlimited vessels, users, storage or API is prohibited; limits must be explicit (brief §4)',
+  ],
+  [
+    /\bcross[- ]tenant\b[^.\n]{0,40}\b(?:allowed|permitted|supported|possible|enabled|permitid[oa])\b/i,
+    'cross-tenant access is prohibited: organization A can never read or modify B (brief §11)',
+  ],
+  [
+    /\b(?:can|could|may|might|is\s+able\s+to|are\s+able\s+to|allowed\s+to|permitted\s+to)\s+(?:access|read|modify|query|see|view|export|search)\b[^.\n]{0,30}\bcross[- ]tenant\b/i,
+    'cross-tenant access is prohibited: organization A can never read or modify B (brief §11)',
+  ],
+  [
+    /\bcross[- ]tenant\b[^.\n]{0,25}\b(?:data|access|records?|vessels?|reports?|exports?)\b[^.\n]{0,25}\b(?:is|are)\s+(?:allowed|permitted|granted|possible|enabled|visible|accessible|shared)\b/i,
+    'cross-tenant access is prohibited: organization A can never read or modify B (brief §11)',
+  ],
+  [
+    /\b(?:organization|organisation)\s+(?:administrators?|admins?|owners?|managers?|members?)\b[^.\n]{0,60}\bcross[- ]tenant\b/i,
+    'cross-tenant access is prohibited: organization A can never read or modify B (brief §11)',
+  ],
+  [
+    /\b(?:customer|production)\s+data\b[^.\n]{0,30}\b(?:is|are|has\s+been|have\s+been)\s+(?:used|included|utilizad[oa])\b/i,
+    'no customer production data may be used or presented (X-06)',
+  ],
+];
+
+// Trademark, source-IP and certification clearance must remain NOT_GRANTED/NOT_CLEARED.
+const BATCH03_CLEARANCE_RULES = [
+  [
+    /\b(?:trademark|brand|marca)\b[^.\n]{0,40}\b(?:clearance|registration|approval|registro|aprobación)\b[^.\n]{0,30}\b(?:granted|obtained|approved|cleared|registered|concedid[oa]|obtenid[oa]|registrad[oa])\b/i,
+    'MAREA trademark clearance is presented as granted; it is NOT_GRANTED (X-01)',
+  ],
+  [
+    /\b(?:source[- ]IP|open[- ]marine|source\s+code)\b[^.\n]{0,40}\b(?:cleared|approved|granted|licensed|authori[sz]ed|liberad[oa]|aprobad[oa])\b/i,
+    'OPEN-MARINE source rights are presented as cleared; they are NOT_CLEARED (X-01)',
+  ],
+  [
+    /\b(?:certification|certificado|homologación)\b[^.\n]{0,30}\b(?:granted|obtained|issued|concedid[oa]|obtenid[oa])\b/i,
+    'a certification is presented as granted; no MAREA product is certified (H-06, H-11, X-02)',
+  ],
+];
+
+const BATCH03_CLAIM_RULES = [
+  ...DISPLAY_CLAIM_RULES,
+  ...WEATHER_CLAIM_RULES,
+  ...FLEET_CLAIM_RULES,
+  ...INGRESS_CLAIM_RULES,
+  ...DELIVERY_GUARANTEE_RULES,
+  ...STEERING_CLAIM_RULES,
 ];
 
 // A line is negative context (a policy statement or a forbidden example) when it
@@ -1543,7 +2241,7 @@ function collectFileViolations(
     if (allowProposedTargets) {
       const window = `${line} ${sentenceWindow(lines, index)}`;
       if (
-        /\bPROPOSED\b|acceptance target|validation criteria|target only|future validation/i.test(
+        /\bPROPOSED\b|acceptance target|validation criteria|target only|future validation|criteri(?:a|on)|evidence (?:required|against)|required target|before launch|closing evidence/i.test(
           window,
         )
       )
@@ -2091,7 +2789,7 @@ check('json.editions', (record) => {
             const subscription = edition.subscriptionHypothesis;
             if (!isRecord(subscription)) {
               record.failures.push(
-                `${batch.contractPath}: product ${expectedProduct.id}: edition ${wanted.id} subscriptionHypothesis is missing; every WATCH edition carries a subscription entitlement`,
+                `${batch.contractPath}: product ${expectedProduct.id}: edition ${wanted.id} subscriptionHypothesis is missing; every edition that declares a subscription entitlement must state it`,
               );
             } else {
               if (subscription.status !== PRICE_HYPOTHESIS_RULES.status) {
@@ -2134,7 +2832,7 @@ check('json.editions', (record) => {
             }
           } else if (edition.subscriptionHypothesis !== null) {
             record.failures.push(
-              `${batch.contractPath}: product ${expectedProduct.id}: edition ${wanted.id} subscriptionHypothesis must be null; only WATCH editions carry a subscription entitlement`,
+              `${batch.contractPath}: product ${expectedProduct.id}: edition ${wanted.id} subscriptionHypothesis must be null; this edition declares no subscription entitlement`,
             );
           }
         }
@@ -2297,7 +2995,7 @@ function checkFieldEntry(record, batch, productId, key, entry) {
       `${prefix}.readinessValue must be one of [${READINESS_DIMENSIONS[entry.readinessDimension].join(', ')}] for readinessDimension ${entry.readinessDimension}, found ${JSON.stringify(entry.readinessValue)}`,
     );
   } else if (
-    batch.id === 2 &&
+    batch.id >= 2 &&
     isRecord(contractOf(batch)?.products?.find((product) => product.id === productId)?.readiness)
   ) {
     // Batch 02 keeps every field's stated readiness inside the product's honest
@@ -2478,11 +3176,18 @@ check('editions.comparison', (record) => {
     for (const match of text.matchAll(
       new RegExp(`\\b(?:${families})-[A-Z][A-Z0-9]+\\b(?![.\\-])`, 'g'),
     )) {
-      if (!knownEditionIds.includes(match[0])) {
-        record.failures.push(
-          `${batch.docs.editions}: unknown edition id ${match[0]} appears in the edition authority; only the canonical ${batch.milestone} edition ids may exist`,
-        );
-      }
+      if (knownEditionIds.includes(match[0])) continue;
+      // Cross-product relationship labels (FLEET-HUB) and asset suffixes are not
+      // edition ids; any other family-prefixed identifier is.
+      const segments = match[0].split('-');
+      if (
+        segments.length === 2 &&
+        (CANONICAL_FAMILY_IDS.includes(segments[1]) || BATCH03_ASSET_SUFFIXES.includes(segments[1]))
+      )
+        continue;
+      record.failures.push(
+        `${batch.docs.editions}: unknown edition id ${match[0]} appears in the edition authority; only the canonical ${batch.milestone} edition ids may exist`,
+      );
     }
     const normalizedAuthority = normalizeForCheck(text);
     if (batch.id === 1) {
@@ -2498,9 +3203,9 @@ check('editions.comparison', (record) => {
       // Batch-02 verdict vocabulary (README §14, §18): DEFINED, CONDITIONAL and
       // INSTALLATION_PACKAGE are the only verdicts; every expected verdict appears.
       const requiredVerdicts = new Set([
-        'DEFINED',
-        'CONDITIONAL',
-        'INSTALLATION_PACKAGE',
+        ...(batch.id === 2
+          ? ['DEFINED', 'CONDITIONAL', 'INSTALLATION_PACKAGE']
+          : ['DEFINED', 'CONDITIONAL']),
         ...batch.products.flatMap((product) =>
           product.editions.map((edition) => edition.verdictStatus),
         ),
@@ -2747,7 +3452,10 @@ check('availability', (record) => {
   for (const file of SCOPED_COPY_FILES) {
     const text = textOf(file);
     if (text !== null)
-      collectFileViolations(record, file, text, PURCHASE_RULES, { tolerant: false });
+      collectFileViolations(record, file, text, PURCHASE_RULES, {
+        tolerant: false,
+        skipQuestions: true,
+      });
   }
 });
 
@@ -2777,7 +3485,7 @@ check('pricing', (record) => {
             `${batch.contractPath}: ${path} must be "${PRICE_HYPOTHESIS_RULES.status}", found ${JSON.stringify(value)}`,
           );
         }
-        if (batch.id === 2 && key === 'priceState') {
+        if (batch.id >= 2 && key === 'priceState') {
           const allowed = ['HYPOTHESIS_UNAPPROVED', 'NOT_ESTABLISHED'];
           if (!allowed.includes(value)) {
             record.failures.push(
@@ -2789,17 +3497,17 @@ check('pricing', (record) => {
       collectContractTextViolations(
         record,
         batch,
-        batch.id === 2 ? PRICE_TEXT_RULES_BATCH02 : PRICE_TEXT_RULES,
+        batch.id >= 2 ? PRICE_TEXT_RULES_BATCH02 : PRICE_TEXT_RULES,
       );
     }
-    for (const file of batch.id === 2 ? scopedDocFiles(BATCH_02) : scopedDocFiles(batch)) {
+    for (const file of scopedDocFiles(batch)) {
       const text = textOf(file);
       if (text === null) continue;
       collectFileViolations(
         record,
         file,
         text,
-        batch.id === 2 ? PRICE_TEXT_RULES_BATCH02 : PRICE_RULES,
+        batch.id >= 2 ? PRICE_TEXT_RULES_BATCH02 : PRICE_RULES,
         {
           tolerant: true,
           wideContext: true,
@@ -2807,7 +3515,7 @@ check('pricing', (record) => {
         },
       );
     }
-    for (const file of batch.id === 2 ? scopedCopyFiles(BATCH_02) : scopedCopyFiles(batch)) {
+    for (const file of scopedCopyFiles(batch)) {
       const text = textOf(file);
       if (text === null) continue;
       if (batch.id === 1) {
@@ -3142,6 +3850,166 @@ check('assets', (record) => {
           }
         }
       }
+    } else if (batch.id === 3) {
+      // MC-07 brief §13: thirty fixed ids, ten per product, status partition
+      // 12 BLOCKED_ON_IMAGE_GENERATION + 15 reused CONCEPT + 3 authored CONCEPT.
+      if (Array.isArray(assets) && assets.length !== 30) {
+        record.failures.push(
+          `${batch.contractPath}: assets must declare exactly 30 batch-03 asset ids, found ${assets.length}`,
+        );
+      }
+      const expectedAssetIds = batch.products.flatMap((product) =>
+        BATCH03_ASSET_SUFFIXES.map(
+          (suffix, index) => `${product.id}-${suffix}-${String(index + 1).padStart(2, '0')}`,
+        ),
+      );
+      if (Array.isArray(assets)) {
+        const declared = assets.map((asset) => asset?.assetId);
+        for (const assetId of expectedAssetIds) {
+          if (!declared.includes(assetId)) {
+            record.failures.push(
+              `${batch.contractPath}: the fixed batch-03 asset id ${assetId} is missing from assets`,
+            );
+          }
+        }
+      }
+      for (const product of batch.products) {
+        const productDefinition = products.find((entry) => entry?.id === product.id);
+        const expectedForProduct = expectedAssetIds.filter((assetId) =>
+          assetId.startsWith(`${product.id}-`),
+        );
+        const actual = Array.isArray(productDefinition?.assets)
+          ? productDefinition.assets.map((reference) =>
+              isRecord(reference) ? reference.assetId : reference,
+            )
+          : [];
+        if (actual.length !== 10) {
+          record.failures.push(
+            `${batch.contractPath}: product ${product.id}: assets must declare exactly 10 asset ids, found ${actual.length}`,
+          );
+        }
+        for (const assetId of expectedForProduct) {
+          if (!actual.includes(assetId)) {
+            record.failures.push(
+              `${batch.contractPath}: product ${product.id}: asset ${assetId} is not referenced by the product`,
+            );
+          }
+        }
+      }
+      const assetDoc = textOf(batch.docs.assets);
+      for (const asset of Array.isArray(assets) ? assets : []) {
+        if (!isRecord(asset) || !isFilled(asset.assetId)) continue;
+        const suffix = asset.assetId.split('-')[1];
+        const blocked = BATCH03_BLOCKED_ASSET_SUFFIXES.includes(suffix);
+        const authored = BATCH03_AUTHORED_ASSET_SUFFIXES.includes(suffix);
+        const expectedStatus = blocked ? 'BLOCKED_ON_IMAGE_GENERATION' : 'CONCEPT';
+        const expectedClassification = blocked
+          ? 'REQUIRES_GENERATION'
+          : authored
+            ? 'AUTHORED_NEW_SPECIFICATION'
+            : 'REUSED_MC04_VECTOR_OR_BRIEF';
+        if (asset.status !== expectedStatus) {
+          record.failures.push(
+            `${batch.contractPath}: asset ${asset.assetId} status must be ${expectedStatus} per the D9 §6 coverage matrix, found ${JSON.stringify(asset.status)}`,
+          );
+        }
+        if (asset.classification !== expectedClassification) {
+          record.failures.push(
+            `${batch.contractPath}: asset ${asset.assetId} classification must be ${expectedClassification} per the D9 §6 coverage matrix, found ${JSON.stringify(asset.classification)}`,
+          );
+        }
+        if (!isFilled(asset.provenance)) {
+          record.failures.push(
+            `${batch.contractPath}: asset ${asset.assetId} provenance is missing; reused MC-04 inputs and authored-new specifications must be distinguishable`,
+          );
+        }
+        if (asset.source !== `${batch.docs.assets}#${asset.assetId}`) {
+          record.failures.push(
+            `${batch.contractPath}: asset ${asset.assetId} source must be ${batch.docs.assets}#${asset.assetId}, found ${JSON.stringify(asset.source)}`,
+          );
+        }
+      }
+      if (assetDoc !== null) {
+        for (const assetId of expectedAssetIds) {
+          if (!assetDoc.includes(assetId)) {
+            record.failures.push(
+              `${batch.docs.assets}: does not declare the batch-03 asset id ${assetId}`,
+            );
+          }
+        }
+        if (!assetDoc.includes('BLOCKED_ON_IMAGE_GENERATION')) {
+          record.failures.push(
+            `${batch.docs.assets}: the four per-family blocked assets must remain BLOCKED_ON_IMAGE_GENERATION (X-03)`,
+          );
+        }
+        if (!assetDoc.includes('CONCEPT')) {
+          record.failures.push(
+            `${batch.docs.assets}: the reused/authored assets must remain CONCEPT, not REAL_PRODUCT`,
+          );
+        }
+        const coverage = parseBatch03AssetCoverage(assetDoc);
+        if (!coverage || coverage.families.size === 0 || !coverage.total) {
+          record.failures.push(
+            `${batch.docs.assets}: cannot find the §6 coverage matrix with per-family counts and totals`,
+          );
+        } else {
+          const expectFamily = {
+            requirements: BATCH03_ASSET_COVERAGE.requirementsPerFamily,
+            blocked: BATCH03_ASSET_COVERAGE.blockedPerFamily,
+            reused: BATCH03_ASSET_COVERAGE.reusedPerFamily,
+            authored: BATCH03_ASSET_COVERAGE.authoredPerFamily,
+          };
+          for (const [family, row] of coverage.families) {
+            for (const [key, wanted] of Object.entries(expectFamily)) {
+              if (row[key]?.count !== wanted) {
+                record.failures.push(
+                  `${batch.docs.assets}: coverage matrix row ${family} ${key} count must be ${wanted}, found ${JSON.stringify(row[key]?.count)}`,
+                );
+              }
+            }
+          }
+          const totalChecks = {
+            requirements: 30,
+            blocked: BATCH03_ASSET_COVERAGE.blockedTotal,
+            reused: BATCH03_ASSET_COVERAGE.reusedTotal,
+            authored: BATCH03_ASSET_COVERAGE.authoredTotal,
+          };
+          for (const [key, wanted] of Object.entries(totalChecks)) {
+            if (coverage.total[key]?.count !== wanted) {
+              record.failures.push(
+                `${batch.docs.assets}: coverage matrix total ${key} must be ${wanted}, found ${JSON.stringify(coverage.total[key]?.count)}`,
+              );
+            }
+          }
+          if (Array.isArray(assets)) {
+            const blockedInJson = assets.filter(
+              (asset) => asset?.status === 'BLOCKED_ON_IMAGE_GENERATION',
+            ).length;
+            const conceptInJson = assets.filter((asset) => asset?.status === 'CONCEPT').length;
+            if (blockedInJson !== coverage.total.blocked.count) {
+              record.failures.push(
+                `${batch.contractPath}: ${blockedInJson} assets are BLOCKED_ON_IMAGE_GENERATION but ${batch.docs.assets} records ${coverage.total.blocked.count}`,
+              );
+            }
+            if (conceptInJson !== coverage.total.reused.count + coverage.total.authored.count) {
+              record.failures.push(
+                `${batch.contractPath}: ${conceptInJson} assets are CONCEPT but ${batch.docs.assets} records ${coverage.total.reused.count + coverage.total.authored.count} reused/authored assets`,
+              );
+            }
+          }
+        }
+        const assetLines = assetDoc.split(/\r?\n/);
+        assetLines.forEach((line, index) => {
+          for (const prohibited of ['REAL_PRODUCT', 'PHOTOGRAPHED', 'PUBLISHED']) {
+            if (!line.includes(prohibited)) continue;
+            if (prohibited === 'REAL_PRODUCT' && line.includes('CONCEPT')) continue;
+            if (isNegativeContext(assetLines, index, { wideContext: true })) continue;
+            record.failures.push(
+              `${batch.docs.assets}:${index + 1}: an asset is presented as ${prohibited}; all batch-03 assets are CONCEPT and BLOCKED_ON_IMAGE_GENERATION`,
+            );
+          }
+        });
+      }
     }
   }
   for (const [file, text] of texts) {
@@ -3175,9 +4043,11 @@ check('disclaimers', (record) => {
     if (!file) continue;
     const text = textOf(file);
     if (text === null) continue;
+    if (requirement.when && !new RegExp(requirement.when, 'i').test(text)) continue;
     const approved =
       APPROVED_DISCLAIMERS[requirement.kind]?.[requirement.language] ??
-      BATCH02_LIMITATION_STATEMENTS[requirement.kind]?.[requirement.language];
+      BATCH02_LIMITATION_STATEMENTS[requirement.kind]?.[requirement.language] ??
+      BATCH03_LIMITATION_STATEMENTS[requirement.kind]?.[requirement.language];
     if (!approved) {
       record.failures.push(`internal error: no approved wording for ${requirement.kind}`);
       continue;
@@ -4406,6 +5276,1028 @@ check('batch02.prohibitions', (record) => {
   }
 });
 
+// --- 34. Nine families across three contracts (MC-05, MC-06, MC-07) --------
+
+check('all.families', (record) => {
+  const productIds = [];
+  const editionIds = [];
+  for (const batch of BATCHES) {
+    const contract = contractOf(batch);
+    if (!contract || !Array.isArray(contract.products)) continue;
+    for (const product of contract.products) {
+      productIds.push(product?.id);
+      if (!PRODUCT_TYPE_VOCABULARY.includes(product?.type)) {
+        record.failures.push(
+          `${batch.contractPath}: product ${product?.id}: type must be one of [${PRODUCT_TYPE_VOCABULARY.join(', ')}], found ${JSON.stringify(product?.type)}`,
+        );
+      }
+      const fields = isRecord(product?.fields) ? Object.keys(product.fields) : [];
+      if (fields.length !== 24) {
+        record.failures.push(
+          `${batch.contractPath}: product ${product?.id}: fields must contain exactly 24 entries, found ${fields.length}`,
+        );
+      }
+      for (const edition of Array.isArray(product?.editions) ? product.editions : []) {
+        editionIds.push(edition?.id);
+      }
+    }
+  }
+  if (productIds.length !== 9) {
+    record.failures.push(
+      `the three contracts must define exactly nine products, found ${productIds.length}`,
+    );
+  }
+  const missingFamilies = CANONICAL_FAMILY_IDS.filter((id) => !productIds.includes(id));
+  for (const id of missingFamilies) {
+    record.failures.push(`the canonical family ${id} is not defined by any batch contract`);
+  }
+  if (new Set(productIds).size !== productIds.length) {
+    record.failures.push('product ids are not unique across the three contracts');
+  }
+  if (new Set(editionIds).size !== editionIds.length) {
+    record.failures.push('edition ids are not unique across the three contracts');
+  }
+  record.detail = `${productIds.length} products / ${editionIds.length} editions across ${BATCHES.length} contracts`;
+});
+
+// --- 35. Batch-03 contract additions (MC-07 brief §10, §11, §15) -----------
+
+check('batch03.contract', (record) => {
+  const contract = contractOf(BATCH_03);
+  if (!contract) {
+    record.failures.push(
+      `${BATCH_03.contractPath} is missing; the batch-03 product-definition contract is required`,
+    );
+    return;
+  }
+  if (contract.batch !== 3) {
+    record.failures.push(
+      `${BATCH_03.contractPath}: batch must be 3, found ${JSON.stringify(contract.batch)}`,
+    );
+  }
+  if (contract.batch01Contract !== BATCH_03.batch01Contract) {
+    record.failures.push(
+      `${BATCH_03.contractPath}: batch01Contract must reference ${BATCH_03.batch01Contract}, found ${JSON.stringify(contract.batch01Contract)}`,
+    );
+  }
+  if (contract.batch02Contract !== BATCH_03.batch02Contract) {
+    record.failures.push(
+      `${BATCH_03.contractPath}: batch02Contract must reference ${BATCH_03.batch02Contract}, found ${JSON.stringify(contract.batch02Contract)}`,
+    );
+  }
+  const controls = contract.publicationControls;
+  if (!isRecord(controls)) {
+    record.failures.push(`${BATCH_03.contractPath}: publicationControls is missing`);
+  } else {
+    const expectedControls = {
+      publicationState: 'INTERNAL_ONLY',
+      published: false,
+      forSale: false,
+      purchaseCtaAllowed: false,
+      pricesInCopyAllowed: false,
+      pricesLabelled: 'HYPOTHESIS_UNAPPROVED',
+      remoteSteeringAllowed: false,
+      certificationClaimAllowed: false,
+    };
+    for (const [key, expected] of Object.entries(expectedControls)) {
+      if (controls[key] !== expected) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: publicationControls.${key} must be ${JSON.stringify(expected)}, found ${JSON.stringify(controls[key])}`,
+        );
+      }
+    }
+  }
+  if (!isRecord(contract.globalRestrictions)) {
+    record.failures.push(`${BATCH_03.contractPath}: globalRestrictions is missing`);
+  } else {
+    for (const [key, expected] of Object.entries(BATCH03_GLOBAL_RESTRICTIONS)) {
+      if (contract.globalRestrictions[key] !== expected) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: globalRestrictions.${key} must be ${JSON.stringify(expected)}, found ${JSON.stringify(contract.globalRestrictions[key])}`,
+        );
+      }
+    }
+  }
+  const gates = contract.publicationGates;
+  if (!Array.isArray(gates) || gates.length === 0) {
+    record.failures.push(
+      `${BATCH_03.contractPath}: publicationGates must be a non-empty array of {gate, state, reason}`,
+    );
+  } else {
+    for (const gateId of BATCH03_REQUIRED_PUBLICATION_GATES) {
+      const gate = gates.find((entry) => entry?.gate === gateId);
+      if (!gate) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: publicationGates is missing the gate ${gateId}`,
+        );
+        continue;
+      }
+      if (gate.state !== 'BLOCKED') {
+        record.failures.push(
+          `${BATCH_03.contractPath}: publication gate ${gateId} must be BLOCKED at MC-07, found ${JSON.stringify(gate.state)}`,
+        );
+      }
+      if (!isFilled(gate.reason)) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: publication gate ${gateId} must state its blocking reason`,
+        );
+      }
+    }
+  }
+  if (contract.integrationStatusVocabulary?.join('|') !== INTEGRATION_STATUS_VOCABULARY.join('|')) {
+    record.failures.push(
+      `${BATCH_03.contractPath}: integrationStatusVocabulary must be exactly [${INTEGRATION_STATUS_VOCABULARY.join(', ')}]`,
+    );
+  }
+  const authority = contract.crossProductAuthority;
+  if (!Array.isArray(authority) || authority.length < BATCH03_INTEGRATION_BASELINE.length) {
+    record.failures.push(
+      `${BATCH_03.contractPath}: crossProductAuthority must contain the ${BATCH03_INTEGRATION_BASELINE.length} frozen product-to-product dependencies of brief §9`,
+    );
+  } else {
+    for (const [from, to, status] of BATCH03_INTEGRATION_BASELINE) {
+      const relationship = `${from} ↔ ${to}`;
+      const row = authority.find((entry) => entry?.relationship === relationship);
+      if (!row) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: crossProductAuthority is missing the frozen relationship ${relationship}`,
+        );
+        continue;
+      }
+      if (row.status !== status) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: crossProductAuthority ${relationship} status must be ${status}, found ${JSON.stringify(row.status)}`,
+        );
+      }
+      if (!isFilled(row.permitted) || !isFilled(row.prohibited)) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: crossProductAuthority ${relationship} must record both permitted and prohibited behaviour`,
+        );
+      }
+      if (
+        row.status === 'SUPPORTED' &&
+        (!Array.isArray(row.evidence) || row.evidence.length === 0)
+      ) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: crossProductAuthority ${relationship} is SUPPORTED without an evidence reference`,
+        );
+      }
+    }
+  }
+  const tenancy = contract.tenancyModel;
+  if (!isRecord(tenancy)) {
+    record.failures.push(`${BATCH_03.contractPath}: tenancyModel is missing`);
+  } else {
+    const expectedTenancy = {
+      organizationScopedTenancy: true,
+      serverSideAuthorizationRequired: true,
+      trustClientSuppliedTenant: false,
+      crossTenantAccessAllowed: false,
+      defaultRole: 'NO_ACCESS',
+      removedMemberAccessRevokedImmediately: true,
+      auditLogRequired: true,
+      privacyPolicyRequired: true,
+      dataExportPolicyRequired: true,
+      telemetryReadOnly: true,
+      remoteSteeringAllowed: false,
+      productionService: false,
+      slaState: 'NO_SLA_ESTABLISHED',
+    };
+    for (const [key, expected] of Object.entries(expectedTenancy)) {
+      if (tenancy[key] !== expected) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: tenancyModel.${key} must be ${JSON.stringify(expected)}, found ${JSON.stringify(tenancy[key])}`,
+        );
+      }
+    }
+    if (
+      !Array.isArray(tenancy.roles) ||
+      tenancy.roles.join('|') !== FLEET_ROLE_VOCABULARY.join('|')
+    ) {
+      record.failures.push(
+        `${BATCH_03.contractPath}: tenancyModel.roles must be exactly [${FLEET_ROLE_VOCABULARY.join(', ')}]`,
+      );
+    }
+  }
+  const entitlement = contract.entitlementModel;
+  if (!isRecord(entitlement)) {
+    record.failures.push(`${BATCH_03.contractPath}: entitlementModel is missing`);
+  } else {
+    for (const [key, expected] of Object.entries(BATCH03_ENTITLEMENT_MODEL)) {
+      if (entitlement[key] !== expected) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: entitlementModel.${key} must be ${JSON.stringify(expected)}, found ${JSON.stringify(entitlement[key])}`,
+        );
+      }
+    }
+  }
+  if (!isRecord(contract.sourceDocuments)) {
+    record.failures.push(`${BATCH_03.contractPath}: sourceDocuments is missing`);
+  } else {
+    const requiredDocuments = {
+      conventions: `${PRODUCTS_DIR}README.md`,
+      editions: BATCH_03.docs.editions,
+      compatibility: BATCH_03.docs.compatibility,
+      pricing: BATCH_03.docs.pricing,
+      journeys: BATCH_03.docs.journeys,
+      assets: BATCH_03.docs.assets,
+      claimsPolicy: 'docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md',
+      blockers: MC02_REGISTER,
+    };
+    for (const [key, expected] of Object.entries(requiredDocuments)) {
+      if (contract.sourceDocuments[key] !== expected) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: sourceDocuments.${key} must reference ${expected}, found ${JSON.stringify(contract.sourceDocuments[key])}`,
+        );
+      }
+    }
+    for (const product of BATCH_03.products) {
+      if (contract.sourceDocuments.dossiers?.[product.id] !== product.dossier) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: sourceDocuments.dossiers.${product.id} must reference ${product.dossier}`,
+        );
+      }
+    }
+    for (const [key, expected] of Object.entries(BATCH_03.docs.annexes)) {
+      if (contract.sourceDocuments.annexes?.[key] !== expected) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: sourceDocuments.annexes.${key} must reference ${expected}`,
+        );
+      }
+    }
+    for (const value of Object.values(contract.sourceDocuments)) {
+      if (typeof value !== 'string') continue;
+      if (!existsSync(resolve(root, value))) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: sourceDocuments references the missing file ${value}`,
+        );
+      }
+    }
+  }
+});
+
+// --- 36. Batch-03 product invariants (brief §10, §11, §12, §15) -----------
+
+check('batch03.invariants', (record) => {
+  const contract = contractOf(BATCH_03);
+  if (!contract) return;
+  const products = Array.isArray(contract.products) ? contract.products : [];
+  for (const [productId, invariants] of Object.entries(BATCH03_INVARIANTS)) {
+    const product = products.find((entry) => entry?.id === productId);
+    if (!product) {
+      record.failures.push(
+        `${BATCH_03.contractPath}: product ${productId} is missing; the invariant block cannot be validated`,
+      );
+      continue;
+    }
+    for (const [key, expected] of Object.entries(invariants.equalities)) {
+      if (product[key] !== expected) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: product ${productId}.${key} must be ${JSON.stringify(expected)}, found ${JSON.stringify(product[key])}`,
+        );
+      }
+    }
+    if (invariants.hardwareBoundary) {
+      const boundary = product.hardwareBoundary;
+      if (!isRecord(boundary)) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: product ${productId}.hardwareBoundary is missing`,
+        );
+      } else {
+        for (const [key, expected] of Object.entries(invariants.hardwareBoundary)) {
+          if (boundary[key] !== expected) {
+            record.failures.push(
+              `${BATCH_03.contractPath}: product ${productId}.hardwareBoundary.${key} must be ${JSON.stringify(expected)}, found ${JSON.stringify(boundary[key])}`,
+            );
+          }
+        }
+      }
+    }
+    if (invariants.entitlementModel) {
+      const entitlement = product.entitlementModel;
+      if (!isRecord(entitlement)) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: product ${productId}.entitlementModel is missing`,
+        );
+      } else {
+        for (const [key, expected] of Object.entries(invariants.entitlementModel)) {
+          if (entitlement[key] !== expected) {
+            record.failures.push(
+              `${BATCH_03.contractPath}: product ${productId}.entitlementModel.${key} must be ${JSON.stringify(expected)}, found ${JSON.stringify(entitlement[key])}`,
+            );
+          }
+        }
+      }
+    }
+    if (invariants.tenancy) {
+      const tenancy = product.tenancy;
+      if (!isRecord(tenancy)) {
+        record.failures.push(`${BATCH_03.contractPath}: product ${productId}.tenancy is missing`);
+      } else {
+        for (const [key, expected] of Object.entries(invariants.tenancy)) {
+          if (tenancy[key] !== expected) {
+            record.failures.push(
+              `${BATCH_03.contractPath}: product ${productId}.tenancy.${key} must be ${JSON.stringify(expected)}, found ${JSON.stringify(tenancy[key])}`,
+            );
+          }
+        }
+        if (tenancy.telemetryReadOnly !== true || tenancy.remoteControlPath !== false) {
+          record.failures.push(
+            `${BATCH_03.contractPath}: product ${productId}.tenancy must state telemetryReadOnly=true and remoteControlPath=false`,
+          );
+        }
+      }
+    }
+    // Every one of the nine readiness dimensions must drive at least one field.
+    const fields = isRecord(product.fields) ? Object.values(product.fields) : [];
+    for (const dimension of Object.keys(READINESS_DIMENSIONS)) {
+      if (!fields.some((field) => field?.readinessDimension === dimension)) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: product ${productId}: no field is anchored to the readiness dimension ${dimension}`,
+        );
+      }
+    }
+  }
+});
+
+// Tenancy must also declare no remote-control path at product level.
+check('batch03.tenancyRemoteControl', (record) => {
+  const contract = contractOf(BATCH_03);
+  const fleet = contract?.products?.find((product) => product?.id === 'FLEET');
+  if (!fleet) return;
+  walkJsonEntries(fleet, (key, value, path) => {
+    if (/remoteControl|remoteSteering|controlAuthority/i.test(key) && value === true) {
+      record.failures.push(
+        `${BATCH_03.contractPath}: ${path} must not grant remote vessel control; FLEET telemetry is read-only`,
+      );
+    }
+  });
+});
+// --- 37. Batch-03 dossiers: 24 h4 fields, field bullets, annex tokens -----
+
+const DOSSIER_FIELD_BULLETS = [
+  'Definition',
+  'Evidence',
+  'Owner',
+  'Blockers / dependencies',
+  'Commercial readiness',
+];
+
+check('batch03.dossiers', (record) => {
+  for (const product of BATCH_03.products) {
+    const text = textOf(product.dossier);
+    if (text === null) continue;
+    const lines = text.split(/\r?\n/);
+    const h4Fields = new Set();
+    for (const line of lines) {
+      const match = /^\s{0,3}####\s*F(\d{2})\b/.exec(line);
+      if (match) h4Fields.add(Number(match[1]));
+    }
+    for (let number = 1; number <= 24; number++) {
+      if (!h4Fields.has(number)) {
+        record.failures.push(
+          `${product.dossier}: is missing the h4 field heading #### F${String(number).padStart(2, '0')} (brief §17.6)`,
+        );
+      }
+    }
+    for (const bullet of DOSSIER_FIELD_BULLETS) {
+      const pattern = new RegExp(`^- \\*\\*${escapeRegExp(bullet)}\\.\\*\\*`, 'm');
+      const count = lines.filter((line) => pattern.test(line)).length;
+      if (count < 24) {
+        record.failures.push(
+          `${product.dossier}: only ${count} "${bullet}" field bullet(s); every one of the 24 fields needs the batch-02 field block (brief §17.6)`,
+        );
+      }
+    }
+  }
+  const annexRequirements = [
+    [
+      BATCH_03.docs.annexes.displayHardware,
+      ['SIZE_NOT_FROZEN', 'HARDWARE_NOT_SELECTED', 'BOM_NOT_ESTABLISHED', 'REQUIRED_TARGET'],
+    ],
+    [
+      BATCH_03.docs.annexes.weatherDataRights,
+      ['NOT_GRANTED', 'redistribution', 'offline', 'entitlement'],
+    ],
+    [
+      BATCH_03.docs.annexes.fleetTenancy,
+      [
+        'authorization',
+        'cross-tenant',
+        'ORGANIZATION_OWNER',
+        'EXTERNAL_INSTALLER',
+        'audit',
+        'privacy',
+        'export',
+        'NO_SLA_ESTABLISHED',
+      ],
+    ],
+  ];
+  for (const [file, tokens] of annexRequirements) {
+    const text = textOf(file);
+    if (text === null) continue;
+    const normalized = text.toLowerCase();
+    for (const token of tokens) {
+      if (!normalized.includes(token.toLowerCase())) {
+        record.failures.push(
+          `${file}: does not state the mandatory ${token} requirement (brief §11, §12, §17)`,
+        );
+      }
+    }
+  }
+});
+
+// --- 38. Batch-03 customer copy: 24 exact sections and status line ---------
+
+check('batch03.copy', (record) => {
+  const navEs = textOf(BATCH_01.products[0].copy.es);
+  const navEn = textOf(BATCH_01.products[0].copy.en);
+  const reference = {
+    es: navEs === null ? null : numberedHeadings(navEs),
+    en: navEn === null ? null : numberedHeadings(navEn),
+  };
+  for (const expected of BATCH_03.products) {
+    for (const language of ['es', 'en']) {
+      const file = expected.copy[language];
+      const text = textOf(file);
+      if (text === null) continue;
+      const headings = numberedHeadings(text);
+      if (headings.length !== 24) {
+        record.failures.push(
+          `${file}: has ${headings.length} numbered customer-copy sections; the batch-03 copy uses the exact 24 numbered sections of copy/nav.${language}.md`,
+        );
+      }
+      const numbers = headings.map((heading) => heading.number);
+      const expectedNumbers = Array.from({ length: 24 }, (_value, index) => index + 1);
+      if (numbers.join('|') !== expectedNumbers.join('|')) {
+        record.failures.push(
+          `${file}: numbered copy sections must be exactly 1..24 in order, found [${numbers.join(', ')}]`,
+        );
+      }
+      const referenceHeadings = reference[language];
+      if (referenceHeadings !== null && referenceHeadings.length === 24) {
+        for (const heading of headings) {
+          const wanted = referenceHeadings.find((entry) => entry.number === heading.number);
+          if (wanted && wanted.label !== heading.label) {
+            record.failures.push(
+              `${file}: section ${heading.number} heading must use the exact wording of copy/nav.${language}.md (${JSON.stringify(wanted.label)}), found ${JSON.stringify(heading.label)}`,
+            );
+          }
+        }
+      }
+      if (/^\s{0,3}###\s+\S/m.test(text)) {
+        record.failures.push(
+          `${file}: must not use ### subheadings; ES and EN heading counts must stay identical`,
+        );
+      }
+      if (!/(?:avisos\s+aprobados|approved\s+disclaimers|texto\s+literal|verbatim)/i.test(text)) {
+        record.failures.push(`${file}: must end with the approved-disclaimer section (brief §8)`);
+      }
+      if (!/DRAFT\s*[-–—]\s*INTERNAL ONLY\s*[-–—]\s*NOT PUBLISHED/i.test(text)) {
+        record.failures.push(
+          `${file}: must carry the internal DRAFT / INTERNAL ONLY / NOT PUBLISHED status line`,
+        );
+      }
+      if (!/PRICES ARE HYPOTHESES,\s*NOT APPROVED/i.test(text)) {
+        record.failures.push(
+          `${file}: the status line must state that prices are hypotheses, not approved`,
+        );
+      }
+      text.split(/\r?\n/).forEach((line, index) => {
+        for (const pattern of PRICE_IN_COPY) {
+          if (pattern.test(line)) {
+            record.failures.push(
+              `${file}:${index + 1}: a price does not belong in customer-facing copy; copy must contain no currency amounts at all`,
+            );
+            break;
+          }
+        }
+      });
+    }
+  }
+});
+
+// --- 39. Batch-03 edition authority (brief §4) ----------------------------
+
+check('batch03.editions', (record) => {
+  const contract = contractOf(BATCH_03);
+  const text = textOf(BATCH_03.docs.editions);
+  if (text !== null) {
+    const normalized = normalizeForCheck(text);
+    if (!text.includes('HYPOTHESIS_UNAPPROVED')) {
+      record.failures.push(
+        `${BATCH_03.docs.editions}: does not label the price hypotheses HYPOTHESIS_UNAPPROVED`,
+      );
+    }
+    if (!normalized.includes('not established')) {
+      record.failures.push(
+        `${BATCH_03.docs.editions}: does not record that DISPLAY Large and FLEET Enterprise have no established price`,
+      );
+    }
+    for (const editionId of BATCH03_UNPRICED_EDITIONS) {
+      const lines = text.split(/\r?\n/);
+      lines.forEach((line, index) => {
+        if (!containsToken(line, editionId)) return;
+        const amounts = euroAmountsInLine(line);
+        if (amounts.length === 0) return;
+        if (isProhibitedExampleContext(lines, index)) return;
+        record.failures.push(
+          `${BATCH_03.docs.editions}:${index + 1}: ${editionId} must not be presented with a price; its price is NOT_ESTABLISHED`,
+        );
+      });
+    }
+  }
+  if (contract) {
+    for (const product of contract.products ?? []) {
+      for (const edition of product.editions ?? []) {
+        if (BATCH03_UNPRICED_EDITIONS.includes(edition.id) && edition.priceHypothesis !== null) {
+          record.failures.push(
+            `${BATCH_03.contractPath}: edition ${edition.id} must not carry a price hypothesis; its price is NOT_ESTABLISHED (brief §4)`,
+          );
+        }
+        if (edition.priceHypothesis) {
+          const allowedAmount = BATCH03_ALLOWED_AMOUNTS.has(edition.priceHypothesis.amount);
+          if (!allowedAmount) {
+            record.failures.push(
+              `${BATCH_03.contractPath}: edition ${edition.id} carries the amount ${JSON.stringify(edition.priceHypothesis.amount)}, which is not in the frozen batch-03 hypothesis table (brief §4)`,
+            );
+          }
+        }
+      }
+    }
+  }
+});
+// --- 40. Batch-03 claim prohibitions (brief §12, §14, §17) ----------------
+
+check('batch03.claims', (record) => {
+  for (const file of scopedDocFiles(BATCH_03)) {
+    const text = textOf(file);
+    if (text === null) continue;
+    collectFileViolations(record, file, text, BATCH03_CLAIM_RULES, {
+      tolerant: true,
+      wideContext: true,
+      skipQuestions: true,
+      allowProposedTargets: true,
+    });
+    collectFileViolations(record, file, text, BATCH03_CLEARANCE_RULES, {
+      tolerant: true,
+      wideContext: true,
+      skipQuestions: true,
+    });
+  }
+  for (const file of scopedCopyFiles(BATCH_03)) {
+    const text = textOf(file);
+    if (text === null) continue;
+    collectFileViolations(record, file, text, BATCH03_CLAIM_RULES, {
+      tolerant: true,
+      wideContext: false,
+      skipQuestions: true,
+    });
+    collectFileViolations(record, file, text, BATCH03_CLEARANCE_RULES, {
+      tolerant: true,
+      skipQuestions: true,
+    });
+    collectFileViolations(
+      record,
+      file,
+      text,
+      [
+        [
+          /\b(?:is|are|has\s+been|have\s+been|está|están|ha\s+sido|han\s+sido)\s+(?:fully\s+)?(?:certified|homologad[oa]s?|certificad[oa]s?)\b/i,
+          'a certification claim is prohibited in customer-facing copy; MAREA is a proposed, uncertified brand',
+        ],
+      ],
+      { tolerant: true, skipQuestions: true },
+    );
+  }
+  const contract = contractOf(BATCH_03);
+  if (contract) {
+    walkJsonEntries(contract, (_key, value, path) => {
+      if (typeof value !== 'string' || !value.trim()) return;
+      for (const [pattern, message] of [...BATCH03_CLAIM_RULES, ...BATCH03_CLEARANCE_RULES]) {
+        if (!pattern.test(value)) continue;
+        if (EXEMPT_CONTEXT.test(value)) continue;
+        record.failures.push(`${BATCH_03.contractPath}: ${path}: ${message}`);
+      }
+    });
+  }
+});
+
+// --- 41. Batch-03 DISPLAY hardware boundary (brief §12) -------------------
+
+check('batch03.display', (record) => {
+  const dossier = textOf(BATCH_03.docs.dossiers.DISPLAY);
+  if (dossier !== null) {
+    for (const token of [
+      'SIZE_NOT_FROZEN',
+      'HARDWARE_NOT_SELECTED',
+      'BOM_NOT_ESTABLISHED',
+      'REQUIRED_TARGET',
+      'PILOT',
+    ]) {
+      if (!dossier.includes(token)) {
+        record.failures.push(
+          `${BATCH_03.docs.dossiers.DISPLAY}: does not state the mandatory hardware-boundary token ${token} (brief §12)`,
+        );
+      }
+    }
+    if (!/read[- ]only/i.test(dossier)) {
+      record.failures.push(
+        `${BATCH_03.docs.dossiers.DISPLAY}: does not state that PILOT on the display is read-only status/monitoring at most`,
+      );
+    }
+    if (!/chart/i.test(dossier)) {
+      record.failures.push(
+        `${BATCH_03.docs.dossiers.DISPLAY}: does not state that charts are a separately licensed entitlement (D-01)`,
+      );
+    }
+  }
+  const contract = contractOf(BATCH_03);
+  const display = contract?.products?.find((product) => product?.id === 'DISPLAY');
+  if (display) {
+    for (const blocker of ['H-05', 'H-11', 'P-07']) {
+      if (!display.mc02Blockers?.includes(blocker)) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: DISPLAY.mc02Blockers must include ${blocker} (hardware and chart gates)`,
+        );
+      }
+    }
+  }
+});
+
+// --- 42. Batch-03 WEATHER entitlement and forecast honesty (brief §10) ----
+
+check('batch03.weather', (record) => {
+  const dossier = textOf(BATCH_03.docs.dossiers.WEATHER);
+  if (dossier !== null) {
+    for (const token of ['NOT_GRANTED']) {
+      if (!dossier.includes(token)) {
+        record.failures.push(
+          `${BATCH_03.docs.dossiers.WEATHER}: does not state the canonical state ${token} for provider data rights`,
+        );
+      }
+    }
+    if (
+      !/(?:never|not)[^.\n]{0,40}billed twice/i.test(dossier) &&
+      !/double[- ]billing/i.test(dossier)
+    ) {
+      record.failures.push(
+        `${BATCH_03.docs.dossiers.WEATHER}: does not state that the same entitlement is never billed twice across NAV and WEATHER (brief §10)`,
+      );
+    }
+    if (!/redistribut/i.test(dossier)) {
+      record.failures.push(
+        `${BATCH_03.docs.dossiers.WEATHER}: does not address redistribution rights (D-04)`,
+      );
+    }
+    if (!/offline/i.test(dossier)) {
+      record.failures.push(
+        `${BATCH_03.docs.dossiers.WEATHER}: does not address offline data rights (D-04, D-07)`,
+      );
+    }
+    if (!/stale/i.test(dossier)) {
+      record.failures.push(
+        `${BATCH_03.docs.dossiers.WEATHER}: does not state that a stale or unavailable forecast is never shown as current`,
+      );
+    }
+  }
+  const contract = contractOf(BATCH_03);
+  const weather = contract?.products?.find((product) => product?.id === 'WEATHER');
+  if (weather) {
+    for (const blocker of ['D-04', 'D-07', 'P-08']) {
+      if (!weather.mc02Blockers?.includes(blocker)) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: WEATHER.mc02Blockers must include ${blocker} (data-rights gates)`,
+        );
+      }
+    }
+  }
+});
+
+// --- 43. Batch-03 FLEET tenancy, privacy and read-only telemetry (brief §11)
+
+check('batch03.fleet', (record) => {
+  const dossier = textOf(BATCH_03.docs.dossiers.FLEET);
+  if (dossier !== null) {
+    if (!/cross[- ]tenant/i.test(dossier) && !/between organizations/i.test(dossier)) {
+      record.failures.push(
+        `${BATCH_03.docs.dossiers.FLEET}: does not state the cross-tenant isolation rule (brief §11)`,
+      );
+    }
+    for (const token of ['NO_SLA_ESTABLISHED', 'authorization']) {
+      if (!dossier.toLowerCase().includes(token.toLowerCase())) {
+        record.failures.push(
+          `${BATCH_03.docs.dossiers.FLEET}: does not state the mandatory tenancy token ${token} (brief §11)`,
+        );
+      }
+    }
+    for (const pattern of [/read[- ]only/i, /audit/i, /privacy/i, /export/i, /tenant/i]) {
+      if (!pattern.test(dossier)) {
+        record.failures.push(
+          `${BATCH_03.docs.dossiers.FLEET}: does not cover the tenancy requirement ${pattern} (brief §11)`,
+        );
+      }
+    }
+    if (!/steer|helm|gobernar|gobierno/i.test(dossier)) {
+      record.failures.push(
+        `${BATCH_03.docs.dossiers.FLEET}: does not exclude remote steering or vessel control (brief §11)`,
+      );
+    }
+  }
+  const contract = contractOf(BATCH_03);
+  const fleet = contract?.products?.find((product) => product?.id === 'FLEET');
+  if (fleet) {
+    for (const blocker of ['D-09', 'H-12', 'P-09', 'X-07']) {
+      if (!fleet.mc02Blockers?.includes(blocker)) {
+        record.failures.push(
+          `${BATCH_03.contractPath}: FLEET.mc02Blockers must include ${blocker} (connectivity, data and security gates)`,
+        );
+      }
+    }
+  }
+});
+
+// --- 44. Batch-03 pricing discipline (brief §4, §17.3) --------------------
+
+check('batch03.pricing', (record) => {
+  const pricingText = textOf(BATCH_03.docs.pricing);
+  if (pricingText !== null) {
+    if (!pricingText.includes('HYPOTHESIS_UNAPPROVED')) {
+      record.failures.push(
+        `${BATCH_03.docs.pricing}: does not label its figures HYPOTHESIS_UNAPPROVED`,
+      );
+    }
+    const fleetModelRequirements = [
+      ['organisation fee', /\b(?:organisation|organization)\s+fee\b/i],
+      ['user seats', /\bseats?\b/i],
+      ['onboarding', /\bonboarding\b/i],
+      ['telemetry limits', /\btelemetry\b/i],
+      ['storage limits', /\bstorage\b/i],
+      ['API limits', /\bAPI\b/],
+      ['VAT basis', /VAT\s+excluded|plus\s+VAT|IVA\s+no\s+incluido/i],
+      ['no unlimited promise', /(?:no|not|never)[^.\n]{0,20}["'`]?unlimited/i],
+    ];
+    for (const [label, pattern] of fleetModelRequirements) {
+      if (!pattern.test(pricingText)) {
+        record.failures.push(
+          `${BATCH_03.docs.pricing}: the FLEET pricing model must state ${label} explicitly (brief §4)`,
+        );
+      }
+    }
+  }
+  for (const file of scopedDocFiles(BATCH_03)) {
+    const text = textOf(file);
+    if (text === null) continue;
+    const lines = text.split(/\r?\n/);
+    lines.forEach((line, index) => {
+      const amounts = euroAmountMatches(line);
+      if (amounts.length === 0) return;
+      const context = `${line} ${sentenceWindow(lines, index)}`;
+      for (const { amount } of amounts) {
+        if (BATCH03_ALLOWED_AMOUNTS.has(amount)) continue;
+        if (EVIDENCE_PRICE_CONTEXT.test(context)) continue;
+        if (isProhibitedExampleContext(lines, index)) continue;
+        record.failures.push(
+          `${file}:${index + 1}: the price ${formatAmount(amount)} EUR is not one of the frozen batch-03 hypotheses and is not attributed competitor evidence (brief §4, §17.3)`,
+        );
+      }
+      for (const editionId of BATCH03_UNPRICED_EDITIONS) {
+        if (!containsToken(line, editionId)) continue;
+        if (isProhibitedExampleContext(lines, index)) continue;
+        if (EVIDENCE_PRICE_CONTEXT.test(context)) continue;
+        record.failures.push(
+          `${file}:${index + 1}: ${editionId} must not carry a EUR price; its price is NOT_ESTABLISHED (brief §4)`,
+        );
+      }
+    });
+    collectFileViolations(
+      record,
+      file,
+      text,
+      [
+        [
+          /\bAPPROVED\b/,
+          'APPROVED pricing is prohibited; every batch-03 figure is HYPOTHESIS_UNAPPROVED',
+        ],
+      ],
+      { tolerant: true, wideContext: true },
+    );
+  }
+  const requiredFigures = [
+    { amount: 699, dossier: BATCH_03.docs.dossiers.DISPLAY },
+    { amount: 49, dossier: BATCH_03.docs.dossiers.WEATHER },
+    { amount: 89, dossier: BATCH_03.docs.dossiers.WEATHER },
+    { amount: 49, dossier: BATCH_03.docs.dossiers.FLEET },
+    { amount: 79, dossier: BATCH_03.docs.dossiers.FLEET },
+  ];
+  for (const { amount, dossier } of requiredFigures) {
+    let found = false;
+    for (const candidate of [dossier, BATCH_03.docs.pricing]) {
+      const text = textOf(candidate);
+      if (text === null) continue;
+      if (text.split(/\r?\n/).some((line) => euroAmountsInLine(line).includes(amount))) {
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      record.failures.push(
+        `${BATCH_03.docs.pricing}: the frozen batch-03 price hypothesis ${formatAmount(amount)} EUR is not stated in the dossier or the pricing document (brief §4)`,
+      );
+    }
+  }
+});
+// --- 45. Batch-03 compatibility matrix (brief §9, §17.4) ------------------
+
+check('batch03.compatibility', (record) => {
+  const text = textOf(BATCH_03.docs.compatibility);
+  if (text === null) return;
+  const lines = text.split(/\r?\n/);
+  const expectedColumns = COMPATIBILITY_COLUMNS.map((column) => column.toLowerCase());
+  let headerIndex = -1;
+  let headerCells = [];
+  let bestMatches = 0;
+  lines.forEach((line, index) => {
+    if (!/^\s*\|/.test(line)) return;
+    const cells = line
+      .split('|')
+      .slice(1, -1)
+      .map((cell) => cell.trim().toLowerCase());
+    const matches = expectedColumns.filter((column) => cells.includes(column)).length;
+    if (matches > bestMatches) {
+      bestMatches = matches;
+      headerIndex = index;
+      headerCells = cells;
+    }
+  });
+  if (headerIndex === -1) {
+    record.failures.push(
+      `${BATCH_03.docs.compatibility}: no compatibility table header with the ${COMPATIBILITY_COLUMNS.length} canonical columns of brief §17.4`,
+    );
+    return;
+  }
+  if (headerCells.join('|') !== expectedColumns.join('|')) {
+    record.failures.push(
+      `${BATCH_03.docs.compatibility}: compatibility table must have exactly the columns [${COMPATIBILITY_COLUMNS.join(' | ')}] in this order, found [${headerCells.join(' | ')}]`,
+    );
+  }
+  for (const status of INTEGRATION_STATUS_VOCABULARY) {
+    if (!text.includes(status)) {
+      record.failures.push(
+        `${BATCH_03.docs.compatibility}: does not use the compatibility evidence status ${status} (brief §9, §17.4)`,
+      );
+    }
+  }
+  for (const token of ['permitted', 'prohibited']) {
+    if (!new RegExp(`\\b${token}\\b`, 'i').test(text)) {
+      record.failures.push(
+        `${BATCH_03.docs.compatibility}: does not state the ${token.toUpperCase()} authority behaviour (brief §9)`,
+      );
+    }
+  }
+  // Rows of the canonical matrix only: everything after its header until the
+  // next level-2 heading.
+  const rows = [];
+  for (let index = headerIndex + 1; index < lines.length; index++) {
+    const line = lines[index];
+    if (/^\s{0,3}##\s/.test(line)) break;
+    if (!/^\s*\|/.test(line)) continue;
+    const cells = line
+      .split('|')
+      .slice(1, -1)
+      .map((cell) => cell.replace(/`/g, '').trim());
+    if (cells.length < 10) continue;
+    if (cells.every((cell) => /^:?-{2,}:?$/.test(cell) || cell === '')) continue;
+    rows.push({ cells, text: cells.join(' | ') });
+  }
+  if (rows.length < BATCH03_INTEGRATION_BASELINE.length) {
+    record.failures.push(
+      `${BATCH_03.docs.compatibility}: the matrix has ${rows.length} integration rows; the frozen batch-03 baseline needs ${BATCH03_INTEGRATION_BASELINE.length}`,
+    );
+  }
+  for (const [from, to, status] of BATCH03_INTEGRATION_BASELINE) {
+    const candidates = rows.filter(
+      (row) => containsToken(row.text, from) && containsToken(row.text, to),
+    );
+    if (candidates.length === 0) {
+      record.failures.push(
+        `${BATCH_03.docs.compatibility}: no integration row pairs ${from} with ${to}; the frozen baseline of brief §9 must be recorded`,
+      );
+      continue;
+    }
+    if (!candidates.some((row) => new RegExp(`(^|[^A-Z_])${status}([^A-Z_]|$)`).test(row.text))) {
+      record.failures.push(
+        `${BATCH_03.docs.compatibility}: the ${from}–${to} integration must be recorded as ${status} (brief §9)`,
+      );
+    }
+  }
+  for (const row of rows) {
+    if (!/\bSUPPORTED\b/.test(row.text)) continue;
+    if (!/\bVERIFIED|\bTESTED|\bEVIDENCE|\brecord/i.test(row.text)) {
+      record.failures.push(
+        `${BATCH_03.docs.compatibility}: an integration is labelled SUPPORTED without a named evidence record`,
+      );
+    }
+  }
+  if (!/read[- ]only/i.test(text) || !/steer|helm|control/i.test(text)) {
+    record.failures.push(
+      `${BATCH_03.docs.compatibility}: does not record that FLEET/DISPLAY PILOT integrations are read-only and never a control path`,
+    );
+  }
+});
+
+// --- 46. Batch-03 customer journeys (brief §17.5) -------------------------
+
+const JOURNEY_COLUMN_LABELS = [
+  'Stage',
+  'User action',
+  'Touchpoint',
+  'Expected result',
+  'Required information',
+  'Failure mode',
+  'Recovery',
+  'Commercial opportunity',
+  'Trust / safety requirement',
+  'Acceptance evidence',
+];
+
+// The B2B journey renames three buyer-centric stages; the seventeen-stage order is
+// fixed, the wording of these three is allowed to be organisation-specific.
+const JOURNEY_STAGE_ALTERNATIVES = {
+  Compatibility: ['Compatibility', 'Organisational assessment', 'Organizational assessment'],
+  'Purchase or quote': ['Purchase or quote', 'Purchase or contract'],
+  Fulfilment: ['Fulfilment', 'Fulfilment and provisioning'],
+  Installation: ['Installation', 'Installation and setup'],
+};
+
+check('batch03.journeys', (record) => {
+  const text = textOf(BATCH_03.docs.journeys);
+  if (text === null) return;
+  const lines = text.split(/\r?\n/);
+  for (const label of JOURNEY_COLUMN_LABELS) {
+    const present = lines.some((line) => {
+      if (!/^\s*\|/.test(line)) return false;
+      const cells = line
+        .split('|')
+        .slice(1, -1)
+        .map((cell) => cell.trim().toLowerCase());
+      return cells.includes(label.toLowerCase());
+    });
+    if (!present) {
+      record.failures.push(
+        `${BATCH_03.docs.journeys}: no journey table uses the canonical column label ${label} (brief §17.5)`,
+      );
+    }
+  }
+  for (const product of BATCH_03.products) {
+    const display = product.displayName.toLowerCase();
+    const start = lines.findIndex(
+      (line) => /^\s{0,3}#{2,4}\s/.test(line) && line.toLowerCase().includes(display),
+    );
+    if (start === -1) {
+      record.failures.push(
+        `${BATCH_03.docs.journeys}: product ${product.displayName} has no journey section`,
+      );
+      continue;
+    }
+    let end = lines.length;
+    for (let index = start + 1; index < lines.length; index++) {
+      if (!/^\s{0,3}#{2,4}\s/.test(lines[index])) continue;
+      if (
+        BATCH_03.products.some(
+          (other) =>
+            other.id !== product.id &&
+            lines[index].toLowerCase().includes(other.displayName.toLowerCase()),
+        )
+      ) {
+        end = index;
+        break;
+      }
+    }
+    const section = lines.slice(start, end).join('\n');
+    for (const stage of JOURNEY_STAGES) {
+      const alternatives = JOURNEY_STAGE_ALTERNATIVES[stage] ?? [stage];
+      if (!alternatives.some((alternative) => containsToken(section, alternative))) {
+        record.failures.push(
+          `${BATCH_03.docs.journeys}: the ${product.displayName} journey is missing the stage ${stage}`,
+        );
+      }
+    }
+    const sectionLines = lines.slice(start, end);
+    const stageRows = new Set();
+    for (const line of sectionLines) {
+      const match = /^\|\s*(\d{1,2})\.\s+/.exec(line);
+      if (match) stageRows.add(Number(match[1]));
+    }
+    for (let number = 1; number <= 17; number++) {
+      if (!stageRows.has(number)) {
+        record.failures.push(
+          `${BATCH_03.docs.journeys}: the ${product.displayName} journey table has no stage row ${number}`,
+        );
+      }
+    }
+  }
+});
 // --- Report ----------------------------------------------------------------
 
 const failed = checks.filter((entry) => entry.failures.length > 0);
@@ -4445,7 +6337,7 @@ if (jsonMode) {
   console.log(JSON.stringify(result, null, 2));
 } else {
   console.log(
-    `MAREA product-governance validator — MC-05/MC-06 batches (contracts ${BATCHES.map((batch) => contractOf(batch)?.contractVersion ?? 'missing').join(' / ')})`,
+    `MAREA product-governance validator — MC-05/MC-06/MC-07 batches (contracts ${BATCHES.map((batch) => contractOf(batch)?.contractVersion ?? 'missing').join(' / ')})`,
   );
   for (const batch of BATCHES) console.log(`Contract: ${batch.contractPath}`);
   console.log(`Root: ${displayPath(root)}`);

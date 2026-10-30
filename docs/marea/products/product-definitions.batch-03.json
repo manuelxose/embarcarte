@@ -1,0 +1,2407 @@
+{
+  "contractId": "MC-07-PRODUCT-DEFINITIONS-BATCH-03",
+  "contractVersion": "1.0.0",
+  "status": "INTERNAL_PRODUCT_DEFINITION_CONTRACT",
+  "milestone": "MC-07",
+  "batch": 3,
+  "batch01Contract": "docs/marea/products/product-definitions.batch-01.json",
+  "batch02Contract": "docs/marea/products/product-definitions.batch-02.json",
+  "date": "2026-10-30",
+  "owner": "Product Contract and Validation Engineer",
+  "notACommerceCatalog": true,
+  "notTheFutureCommerceDataModel": true,
+  "publicationState": "INTERNAL_ONLY",
+  "publicationControls": {
+    "publicationState": "INTERNAL_ONLY",
+    "published": false,
+    "forSale": false,
+    "purchaseCtaAllowed": false,
+    "pricesInCopyAllowed": false,
+    "pricesLabelled": "HYPOTHESIS_UNAPPROVED",
+    "remoteSteeringAllowed": false,
+    "certificationClaimAllowed": false
+  },
+  "fieldEntryStatusMeaning": "COMPLETE means the field is fully specified in the source dossier and traceable to it. It does not mean that the capability is verified, certified, approved or available; evidence openness is carried separately by evidenceClass and readinessValue.",
+  "lifecycleDecision": "D-007",
+  "lifecycleAuthority": "docs/marea/execution/DECISION-LOG.md (D-007, D-008, D-009); docs/marea/COMMERCIAL-PORTFOLIO.md; docs/marea/products/README.md section 3",
+  "lifecycleVocabulary": [
+    "CONCEPT",
+    "DEFINED",
+    "ENGINEERING_VERIFIED",
+    "REGULATORY_READY",
+    "OPERATIONS_READY",
+    "COMMERCIALLY_AVAILABLE",
+    "RETIRED"
+  ],
+  "lifecycleMapping": [
+    {
+      "proposed": "CONCEPT",
+      "binding": "CONCEPT"
+    },
+    {
+      "proposed": "DEFINED",
+      "binding": "DEFINED"
+    },
+    {
+      "proposed": "ENGINEERING",
+      "binding": "ENGINEERING_VERIFIED"
+    },
+    {
+      "proposed": "VALIDATION",
+      "binding": "ENGINEERING_VERIFIED"
+    },
+    {
+      "proposed": "COMPLIANCE_REVIEW",
+      "binding": "REGULATORY_READY"
+    },
+    {
+      "proposed": "SALES_APPROVED",
+      "binding": "OPERATIONS_READY"
+    },
+    {
+      "proposed": "RELEASED",
+      "binding": "COMMERCIALLY_AVAILABLE"
+    },
+    {
+      "proposed": "RETIRED",
+      "binding": "RETIRED"
+    }
+  ],
+  "readinessDimensions": {
+    "definition": [
+      "COMPLETE_TARGET_SPECIFICATION"
+    ],
+    "engineering": [
+      "NOT_VERIFIED",
+      "PARTIALLY_VERIFIED",
+      "ENGINEERING_VERIFIED"
+    ],
+    "licensing": [
+      "NOT_CLEARED",
+      "CONDITIONAL",
+      "CLEARED"
+    ],
+    "hardware": [
+      "NOT_SELECTED",
+      "DESIGN_IN_PROGRESS",
+      "PROTOTYPED",
+      "CERTIFIED",
+      "NOT_APPLICABLE_SOFTWARE_PRODUCT"
+    ],
+    "dataRights": [
+      "NOT_GRANTED",
+      "PARTIAL",
+      "GRANTED_PER_TERRITORY"
+    ],
+    "compliance": [
+      "NOT_STARTED",
+      "ASSESSMENT_PENDING",
+      "CONFORMITY_EVIDENCE_ON_FILE"
+    ],
+    "pricing": [
+      "HYPOTHESIS_UNAPPROVED",
+      "COSTED_UNAPPROVED",
+      "APPROVED"
+    ],
+    "brandPublication": [
+      "NOT_GRANTED",
+      "INTERNAL_ONLY_APPROVED",
+      "PUBLICATION_APPROVED"
+    ],
+    "availability": [
+      "NOT_FOR_SALE",
+      "PREORDER_NOT_AUTHORISED",
+      "FOR_SALE"
+    ]
+  },
+  "evidenceClasses": [
+    "VERIFIED_REPO",
+    "VERIFIED_EXTERNAL",
+    "ASSUMPTION",
+    "HYPOTHESIS",
+    "OPEN",
+    "BLOCKED"
+  ],
+  "globalRestrictions": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "sourceIpClearance": "NOT_CLEARED",
+    "commercialAvailability": "NOT_FOR_SALE",
+    "aisTransmissionOffered": false,
+    "nmea2000Certified": false,
+    "ecdiscClaimed": false,
+    "chartRightsGranted": false,
+    "imageGeneration": "BLOCKED",
+    "remoteHelmControl": "PROHIBITED",
+    "remoteSteeringOffered": false,
+    "dataProviderRightsGranted": false,
+    "forecastAccuracyClaimed": false,
+    "redistributionAllowed": false,
+    "offlineDataAllowed": false,
+    "navDoubleBillingAllowed": false,
+    "crossTenantAccessAllowed": false,
+    "securityCertificationClaimed": false,
+    "slaEstablished": false,
+    "hardwareMeasured": false,
+    "customerProductionDataUsed": false
+  },
+  "publicationGates": [
+    {
+      "gate": "brandTrademarkClearance",
+      "state": "BLOCKED",
+      "reason": "Publication remains BLOCKED at MC-07; blocker X-01 is open.",
+      "blockedBy": [
+        "X-01"
+      ]
+    },
+    {
+      "gate": "openMarineSourceRights",
+      "state": "BLOCKED",
+      "reason": "Publication remains BLOCKED at MC-07; OPEN-MARINE source rights L-01, L-02 and L-03 are open.",
+      "blockedBy": [
+        "L-01",
+        "L-02",
+        "L-03"
+      ]
+    },
+    {
+      "gate": "imageGeneration",
+      "state": "BLOCKED",
+      "reason": "Publication remains BLOCKED at MC-07; blocker X-03 is open.",
+      "blockedBy": [
+        "X-03"
+      ]
+    },
+    {
+      "gate": "priceApproval",
+      "state": "BLOCKED",
+      "reason": "Publication remains BLOCKED at MC-07; blocker X-05 is open.",
+      "blockedBy": [
+        "X-05"
+      ]
+    },
+    {
+      "gate": "hardwareEvidence",
+      "state": "BLOCKED",
+      "reason": "Publication remains BLOCKED at MC-07; blocker H-05 is open.",
+      "blockedBy": [
+        "H-05"
+      ]
+    },
+    {
+      "gate": "dataProviderRights",
+      "state": "BLOCKED",
+      "reason": "Publication remains BLOCKED at MC-07; blocker D-04 is open.",
+      "blockedBy": [
+        "D-04"
+      ]
+    },
+    {
+      "gate": "securityAndPrivacyReview",
+      "state": "BLOCKED",
+      "reason": "Publication remains BLOCKED at MC-07; blocker X-07 is open.",
+      "blockedBy": [
+        "X-07"
+      ]
+    },
+    {
+      "gate": "commercePublication",
+      "state": "BLOCKED",
+      "reason": "Publication remains BLOCKED at MC-07; blocker P-10 is open.",
+      "blockedBy": [
+        "P-10"
+      ]
+    }
+  ],
+  "integrationStatusVocabulary": [
+    "SUPPORTED",
+    "CONDITIONAL",
+    "PLANNED",
+    "UNKNOWN",
+    "BLOCKED"
+  ],
+  "crossProductAuthority": [
+    {
+      "relationship": "DISPLAY ↔ HUB",
+      "status": "CONDITIONAL",
+      "permitted": "DISPLAY may present bounded at-sea data supplied by a future authorised HUB integration once validated.",
+      "prohibited": "DISPLAY may never obtain data through an unvalidated path; no DISPLAY hardware exists to test.",
+      "evidence": []
+    },
+    {
+      "relationship": "DISPLAY ↔ NAV",
+      "status": "PLANNED",
+      "permitted": "DISPLAY may present NAV software output through a future validated local path.",
+      "prohibited": "NAV is software and DISPLAY is a device; no pairing has been validated and no support claim may be made.",
+      "evidence": []
+    },
+    {
+      "relationship": "DISPLAY ↔ AIS",
+      "status": "CONDITIONAL",
+      "permitted": "DISPLAY may present received AIS traffic from the separate receive-only receiver.",
+      "prohibited": "DISPLAY must never transmit AIS or present itself as collision avoidance.",
+      "evidence": []
+    },
+    {
+      "relationship": "DISPLAY ↔ WEATHER",
+      "status": "CONDITIONAL",
+      "permitted": "DISPLAY may present licensed WEATHER layers inside the WEATHER entitlement.",
+      "prohibited": "No forecast right is granted and no WEATHER entitlement is included with the device.",
+      "evidence": []
+    },
+    {
+      "relationship": "DISPLAY ↔ SENSE",
+      "status": "CONDITIONAL",
+      "permitted": "DISPLAY may present SENSE measurements locally with source and freshness.",
+      "prohibited": "No validated SENSE data contract exists on the device and measurements are not accuracy-verified.",
+      "evidence": []
+    },
+    {
+      "relationship": "DISPLAY ↔ PILOT",
+      "status": "UNKNOWN",
+      "permitted": "At most read-only PILOT status and alarms may be shown after engineering and safety review.",
+      "prohibited": "No PILOT control, engagement, heading change or steering authority is permitted from the DISPLAY.",
+      "evidence": []
+    },
+    {
+      "relationship": "DISPLAY ↔ WATCH",
+      "status": "UNKNOWN",
+      "permitted": "No remote WATCH view is defined for the device.",
+      "prohibited": "No alert delivery or remote monitoring claim may be made for the DISPLAY.",
+      "evidence": []
+    },
+    {
+      "relationship": "WEATHER ↔ NAV",
+      "status": "PLANNED",
+      "permitted": "NAV Pro may include WEATHER Standard-equivalent read access where provider rights allow.",
+      "prohibited": "The same entitlement must never be billed twice across NAV and WEATHER.",
+      "evidence": []
+    },
+    {
+      "relationship": "WEATHER ↔ FLEET",
+      "status": "CONDITIONAL",
+      "permitted": "WEATHER may serve FLEET operations only if the provider agreement permits B2B operational use.",
+      "prohibited": "No B2B operational use, redistribution or bulk export is permitted without a matching provider right.",
+      "evidence": []
+    },
+    {
+      "relationship": "WEATHER ↔ DISPLAY",
+      "status": "CONDITIONAL",
+      "permitted": "WEATHER layers may be presented on the DISPLAY inside the customer entitlement.",
+      "prohibited": "No forecast may be presented as current after entitlement loss or staleness.",
+      "evidence": []
+    },
+    {
+      "relationship": "WEATHER ↔ HUB",
+      "status": "CONDITIONAL",
+      "permitted": "A HUB may deliver licensed weather data to local consumers once validated.",
+      "prohibited": "No delivery path or offline storage right exists today.",
+      "evidence": []
+    },
+    {
+      "relationship": "FLEET ↔ WATCH",
+      "status": "CONDITIONAL",
+      "permitted": "FLEET may receive read-only WATCH telemetry and alerts for its authorised vessels.",
+      "prohibited": "FLEET may never send steering, motor or remote-control commands through WATCH.",
+      "evidence": []
+    },
+    {
+      "relationship": "FLEET ↔ HUB",
+      "status": "CONDITIONAL",
+      "permitted": "FLEET may read HUB installation and telemetry health for its authorised vessels.",
+      "prohibited": "Read-only health data only; no configuration or control authority.",
+      "evidence": []
+    },
+    {
+      "relationship": "FLEET ↔ SENSE",
+      "status": "UNKNOWN",
+      "permitted": "No verified SENSE integration exists for FLEET.",
+      "prohibited": "No measurement, alert or control claim may be made.",
+      "evidence": []
+    },
+    {
+      "relationship": "FLEET ↔ PILOT",
+      "status": "BLOCKED",
+      "permitted": "At most read-only PILOT status may be shown after engineering and privacy review.",
+      "prohibited": "Any control, engagement or steering command is BLOCKED and must not exist.",
+      "evidence": []
+    },
+    {
+      "relationship": "FLEET ↔ NAV",
+      "status": "PLANNED",
+      "permitted": "FLEET may share routes with NAV only with explicit customer permission.",
+      "prohibited": "No silent route sharing and no control over NAV.",
+      "evidence": []
+    },
+    {
+      "relationship": "FLEET ↔ WEATHER",
+      "status": "CONDITIONAL",
+      "permitted": "FLEET may show WEATHER data per the provider terms.",
+      "prohibited": "No redistribution, offline or B2B operational right is granted.",
+      "evidence": []
+    },
+    {
+      "relationship": "FLEET ↔ DISPLAY",
+      "status": "UNKNOWN",
+      "permitted": "No DISPLAY integration is defined for FLEET.",
+      "prohibited": "No presentation or device-control claim may be made.",
+      "evidence": []
+    },
+    {
+      "relationship": "FLEET ↔ AIS",
+      "status": "CONDITIONAL",
+      "permitted": "FLEET may show read-only received AIS traffic for its authorised vessels.",
+      "prohibited": "AIS remains receive-only and is never a collision-avoidance or control system.",
+      "evidence": []
+    }
+  ],
+  "tenancyModel": {
+    "organizationScopedTenancy": true,
+    "serverSideAuthorizationRequired": true,
+    "trustClientSuppliedTenant": false,
+    "crossTenantAccessAllowed": false,
+    "defaultRole": "NO_ACCESS",
+    "roles": [
+      "ORGANIZATION_OWNER",
+      "ORGANIZATION_ADMIN",
+      "FLEET_MANAGER",
+      "MAINTENANCE_MANAGER",
+      "CREW_MEMBER",
+      "READ_ONLY_VIEWER",
+      "EXTERNAL_INSTALLER",
+      "EMBARCARTE_SUPPORT"
+    ],
+    "removedMemberAccessRevokedImmediately": true,
+    "auditLogRequired": true,
+    "privacyPolicyRequired": true,
+    "dataExportPolicyRequired": true,
+    "telemetryReadOnly": true,
+    "remoteSteeringAllowed": false,
+    "productionService": false,
+    "slaState": "NO_SLA_ESTABLISHED"
+  },
+  "entitlementModel": {
+    "oneAccount": true,
+    "oneEntitlementLedger": true,
+    "standalonePurchaseAllowed": true,
+    "navProIncludesWeatherStandardRead": "CONDITIONAL",
+    "upgradesProrated": true,
+    "cancellationPreservesUserRecords": true,
+    "doubleBillingAllowed": false,
+    "licenceLossUnavailableState": true,
+    "billingImplemented": false
+  },
+  "sourceDocuments": {
+    "conventions": "docs/marea/products/README.md",
+    "dossiers": {
+      "DISPLAY": "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md",
+      "WEATHER": "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md",
+      "FLEET": "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md"
+    },
+    "annexes": {
+      "displayHardware": "docs/marea/products/DISPLAY-HARDWARE-AND-INTERACTION-REQUIREMENTS.md",
+      "weatherDataRights": "docs/marea/products/WEATHER-DATA-RIGHTS-AND-FORECAST-CONTRACT.md",
+      "fleetTenancy": "docs/marea/products/FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md"
+    },
+    "editions": "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md",
+    "compatibility": "docs/marea/products/PRODUCT-COMPATIBILITY-DISPLAY-WEATHER-FLEET.md",
+    "pricing": "docs/marea/products/PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-03.md",
+    "journeys": "docs/marea/products/CUSTOMER-JOURNEYS-DISPLAY-WEATHER-FLEET.md",
+    "assets": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md",
+    "claimsPolicy": "docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md",
+    "blockers": "docs/marea/compliance/MC-02-BLOCKERS-AND-DECISIONS.md"
+  },
+  "assets": [
+    {
+      "assetId": "DISPLAY-HERO-01",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#DISPLAY-HERO-01",
+      "note": "MC-07 planning identifier 1 for a future DISPLAY visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "DISPLAY-USE-02",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#DISPLAY-USE-02",
+      "note": "MC-07 planning identifier 2 for a future DISPLAY visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "DISPLAY-OVR-03",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#DISPLAY-OVR-03",
+      "note": "MC-07 planning identifier 3 for a future DISPLAY visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "DISPLAY-EDN-04",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#DISPLAY-EDN-04",
+      "note": "MC-07 planning identifier 4 for a future DISPLAY visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "DISPLAY-ECO-05",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#DISPLAY-ECO-05",
+      "note": "MC-07 planning identifier 5 for a future DISPLAY visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "DISPLAY-INS-06",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#DISPLAY-INS-06",
+      "note": "MC-07 planning identifier 6 for a future DISPLAY visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "DISPLAY-MOB-07",
+      "status": "CONCEPT",
+      "classification": "AUTHORED_NEW_SPECIFICATION",
+      "provenance": "Authored new asset specification; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#DISPLAY-MOB-07",
+      "note": "MC-07 planning identifier 7 for a future DISPLAY visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "DISPLAY-TMB-08",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#DISPLAY-TMB-08",
+      "note": "MC-07 planning identifier 8 for a future DISPLAY visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "DISPLAY-OG-09",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#DISPLAY-OG-09",
+      "note": "MC-07 planning identifier 9 for a future DISPLAY visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "DISPLAY-TEC-10",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#DISPLAY-TEC-10",
+      "note": "MC-07 planning identifier 10 for a future DISPLAY visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WEATHER-HERO-01",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#WEATHER-HERO-01",
+      "note": "MC-07 planning identifier 1 for a future WEATHER visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WEATHER-USE-02",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#WEATHER-USE-02",
+      "note": "MC-07 planning identifier 2 for a future WEATHER visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WEATHER-OVR-03",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#WEATHER-OVR-03",
+      "note": "MC-07 planning identifier 3 for a future WEATHER visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WEATHER-EDN-04",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#WEATHER-EDN-04",
+      "note": "MC-07 planning identifier 4 for a future WEATHER visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WEATHER-ECO-05",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#WEATHER-ECO-05",
+      "note": "MC-07 planning identifier 5 for a future WEATHER visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WEATHER-INS-06",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#WEATHER-INS-06",
+      "note": "MC-07 planning identifier 6 for a future WEATHER visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WEATHER-MOB-07",
+      "status": "CONCEPT",
+      "classification": "AUTHORED_NEW_SPECIFICATION",
+      "provenance": "Authored new asset specification; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#WEATHER-MOB-07",
+      "note": "MC-07 planning identifier 7 for a future WEATHER visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WEATHER-TMB-08",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#WEATHER-TMB-08",
+      "note": "MC-07 planning identifier 8 for a future WEATHER visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WEATHER-OG-09",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#WEATHER-OG-09",
+      "note": "MC-07 planning identifier 9 for a future WEATHER visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WEATHER-TEC-10",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#WEATHER-TEC-10",
+      "note": "MC-07 planning identifier 10 for a future WEATHER visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "FLEET-HERO-01",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#FLEET-HERO-01",
+      "note": "MC-07 planning identifier 1 for a future FLEET visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "FLEET-USE-02",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#FLEET-USE-02",
+      "note": "MC-07 planning identifier 2 for a future FLEET visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "FLEET-OVR-03",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#FLEET-OVR-03",
+      "note": "MC-07 planning identifier 3 for a future FLEET visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "FLEET-EDN-04",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#FLEET-EDN-04",
+      "note": "MC-07 planning identifier 4 for a future FLEET visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "FLEET-ECO-05",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#FLEET-ECO-05",
+      "note": "MC-07 planning identifier 5 for a future FLEET visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "FLEET-INS-06",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#FLEET-INS-06",
+      "note": "MC-07 planning identifier 6 for a future FLEET visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "FLEET-MOB-07",
+      "status": "CONCEPT",
+      "classification": "AUTHORED_NEW_SPECIFICATION",
+      "provenance": "Authored new asset specification; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#FLEET-MOB-07",
+      "note": "MC-07 planning identifier 7 for a future FLEET visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "FLEET-TMB-08",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#FLEET-TMB-08",
+      "note": "MC-07 planning identifier 8 for a future FLEET visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "FLEET-OG-09",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#FLEET-OG-09",
+      "note": "MC-07 planning identifier 9 for a future FLEET visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "FLEET-TEC-10",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-03.md#FLEET-TEC-10",
+      "note": "MC-07 planning identifier 10 for a future FLEET visual; CONCEPT, not REAL_PRODUCT."
+    }
+  ],
+  "products": [
+    {
+      "id": "DISPLAY",
+      "displayName": "MAREA DISPLAY",
+      "type": "HARDWARE_SOFTWARE",
+      "lifecycleState": "DEFINED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "availability": "NOT_FOR_SALE",
+      "screenSizesFrozen": false,
+      "hardwareSelected": false,
+      "chartRightsGranted": false,
+      "pilotControlAuthority": false,
+      "hardwareBoundary": {
+        "sizeState": "SIZE_NOT_FROZEN",
+        "hardwareState": "HARDWARE_NOT_SELECTED",
+        "bomState": "BOM_NOT_ESTABLISHED",
+        "targetsAreRequiredTarget": true,
+        "measuredPerformance": false
+      },
+      "editions": [
+        {
+          "id": "DISPLAY-7",
+          "displayName": "MAREA DISPLAY 7",
+          "priceState": "HYPOTHESIS_UNAPPROVED",
+          "priceHypothesis": {
+            "amount": 699,
+            "currency": "EUR",
+            "vatBasis": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+            "period": "ONE_OFF",
+            "startingPrice": true,
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05"
+            ],
+            "notAnInclusiveQuotation": true,
+            "quotationRequired": true
+          },
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "DISPLAY 7 is the named working edition with a from EUR 699 starting hypothesis, not an inclusive quotation: installation is quoted separately and publication stays conditional on hardware, chart and brand gates.",
+            "evidenceRefs": [
+              "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md#DISPLAY-7",
+              "MC-02:X-05",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "DISPLAY-LARGE-CONDITIONAL",
+          "displayName": "MAREA DISPLAY Large (conditional)",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "CONDITIONAL",
+            "publicationConditional": true,
+            "rationale": "The future 10/12-inch family is CONDITIONAL: SIZE_NOT_FROZEN and HARDWARE_NOT_SELECTED, so no measured size and no price may be published.",
+            "evidenceRefs": [
+              "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md#DISPLAY-LARGE-CONDITIONAL",
+              "MC-02:H-05",
+              "MC-02:X-05"
+            ]
+          }
+        }
+      ],
+      "fields": {
+        "identity": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "MAREA DISPLAY is a fixed marine multifunction display for the helm: panel, compute module, storage, enclosure, mounting, power conversion and base software. No manufactured unit exists, the screen size is not frozen and the hardware is not selected.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F01",
+            "MC-02:H-04",
+            "MC-02:H-11"
+          ],
+          "ownerFunction": "Product Management (DISPLAY Product Director)",
+          "blockers": [
+            "H-04",
+            "H-13",
+            "X-05"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "customerSegments": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Target customers are coastal and inland recreational skippers who want one fixed, installed screen at the helm and a shared MAREA presentation layer. Fleet and charter operators are a later, conditional segment.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F02",
+            "MC-02:H-05",
+            "MC-02:H-13"
+          ],
+          "ownerFunction": "Hardware Engineering",
+          "blockers": [
+            "H-05",
+            "D-01",
+            "X-05"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "customerProblems": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The core problems are scattered single-purpose instruments, tablets that are not fixed or power-protected, and no honest common view of instruments, received AIS traffic and alarms at the helm. Sunlight and wet-hand usability are specified as targets, not measured.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F03",
+            "MC-02:H-06",
+            "MC-02:D-01"
+          ],
+          "ownerFunction": "Commercial and Pricing",
+          "blockers": [
+            "H-06",
+            "D-05",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "finalFunctionality": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Intended final functionality is a dedicated helm display with base software for instruments, received AIS traffic, NAV and WEATHER presentation, configuration, backup and warranty updates. Charts and licensed data services are separate entitlements.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F04",
+            "MC-02:H-11",
+            "MC-02:D-05",
+            "docs/marea/products/DISPLAY-HARDWARE-AND-INTERACTION-REQUIREMENTS.md"
+          ],
+          "ownerFunction": "Legal and Licensing",
+          "blockers": [
+            "H-11",
+            "D-06",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_SELECTED"
+        },
+        "differentiation": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Differentiation is a fixed, marine-mounted device with an honest boundary between base software and separately licensed data, not a general-purpose tablet. No optical, thermal or ingress performance has been verified.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F05",
+            "MC-02:H-13",
+            "MC-02:D-06"
+          ],
+          "ownerFunction": "Safety and Compliance",
+          "blockers": [
+            "H-13",
+            "D-10",
+            "X-05"
+          ],
+          "readinessDimension": "dataRights",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "editions": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Two editions are defined: DISPLAY 7 with a frozen working designation and a starting price hypothesis, and the conditional DISPLAY Large with no frozen size. Neither edition is purchasable or publishable.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F06",
+            "MC-02:D-01",
+            "MC-02:D-10",
+            "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md"
+          ],
+          "ownerFunction": "Customer Operations",
+          "blockers": [
+            "D-01",
+            "P-07",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        },
+        "includedItems": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Included items are the display unit with panel and compute module, enclosure, mounting hardware, power conversion and protection, connectors and harness, the dedicated operating environment and base software. No charts, HUB, AIS receiver or subscription is included.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F07",
+            "MC-02:D-05",
+            "MC-02:P-07"
+          ],
+          "ownerFunction": "Software Engineering",
+          "blockers": [
+            "D-05",
+            "P-10",
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "optionalAccessories": {
+          "status": "OPEN",
+          "evidenceClass": "OPEN",
+          "summary": "Optional accessories are extra mounts, adapters, a separate AIS receiver, a HUB and installation labour. Classes and part numbers are open until the hardware is selected.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F08",
+            "MC-02:D-06",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Brand and Communications",
+          "blockers": [
+            "D-06",
+            "X-01",
+            "X-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "integration": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Integration status is CONDITIONAL with HUB, AIS, WEATHER and SENSE, PLANNED with NAV, and UNKNOWN with PILOT and WATCH. PILOT on the display is read-only status at most and never steering authority.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F09",
+            "MC-02:D-10",
+            "MC-02:X-01",
+            "docs/marea/products/PRODUCT-COMPATIBILITY-DISPLAY-WEATHER-FLEET.md"
+          ],
+          "ownerFunction": "Product Management (DISPLAY Product Director)",
+          "blockers": [
+            "D-10",
+            "X-03",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "professionalInstallation": {
+          "status": "OPEN",
+          "evidenceClass": "OPEN",
+          "summary": "Professional installation is required because the device is fixed, powered and wired to the vessel. Installer qualification and a commissioning record are defined as requirements and are not certified.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F10",
+            "MC-02:P-07",
+            "MC-02:X-03"
+          ],
+          "ownerFunction": "Hardware Engineering",
+          "blockers": [
+            "P-07",
+            "X-05"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "onboarding": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Onboarding covers installation handover, configuration of vessel and data sources, and a first-run checklist. The configuration service is specified, not implemented.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F11",
+            "MC-02:P-10",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Commercial and Pricing",
+          "blockers": [
+            "P-10",
+            "X-06",
+            "X-05"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "licensingSubscriptions": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Licensing subscriptions are separate: charts, WEATHER and NAV are entitled per account and per territory. No chart or data right is granted and no subscription can be sold yet.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F12",
+            "MC-02:X-01",
+            "MC-02:X-06",
+            "docs/marea/products/DISPLAY-HARDWARE-AND-INTERACTION-REQUIREMENTS.md"
+          ],
+          "ownerFunction": "Legal and Licensing",
+          "blockers": [
+            "X-01",
+            "X-07",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retailAndPartnerPricing": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Retail and partner pricing keeps DISPLAY 7 at a from EUR 699 starting hypothesis, VAT included for consumers, not an inclusive quotation. Installation and data services are quoted separately and no price is approved.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F13",
+            "MC-02:X-03",
+            "MC-02:X-07"
+          ],
+          "ownerFunction": "Safety and Compliance",
+          "blockers": [
+            "X-03",
+            "H-04",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_SELECTED"
+        },
+        "directAndOngoingCosts": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Direct costs include BOM, panel, compute, enclosure, power conversion, mounting, harness, warranty reserve, installation support and data licensing. The BOM is not established and no cost is approved.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F14",
+            "MC-02:X-05",
+            "MC-02:H-04",
+            "docs/marea/products/PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-03.md"
+          ],
+          "ownerFunction": "Customer Operations",
+          "blockers": [
+            "X-05",
+            "H-05"
+          ],
+          "readinessDimension": "dataRights",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "channelEconomics": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Channel economics assume an installer-led sale with a separate installation quote and a MAREA data entitlement path. Margins, partner terms and channel discounts are hypotheses only.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F15",
+            "MC-02:X-06",
+            "MC-02:H-05"
+          ],
+          "ownerFunction": "Software Engineering",
+          "blockers": [
+            "X-06",
+            "H-06",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        },
+        "competitorComparison": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Competitor comparison positions the device against marine multifunction displays from established brands. Competitor evidence is attributed per product, currency, tax basis and retrieval date and is never a MAREA price or a compatibility claim.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F16",
+            "MC-02:X-07",
+            "MC-02:H-06"
+          ],
+          "ownerFunction": "Brand and Communications",
+          "blockers": [
+            "X-07",
+            "H-11",
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "salesArguments": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Sales arguments must stay with defined capabilities: one fixed screen, honest base-software boundary, shared MAREA account and installer-led installation. No brightness, size, chart or certification claim is made.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F17",
+            "MC-02:H-04",
+            "MC-02:H-11"
+          ],
+          "ownerFunction": "Product Management (DISPLAY Product Director)",
+          "blockers": [
+            "H-04",
+            "H-13",
+            "X-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "faq": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The FAQ must answer availability, size, charts, integration and PILOT authority truthfully: defined, not for sale, sizes not frozen, charts licensed separately, no PILOT control.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F18",
+            "MC-02:H-05",
+            "MC-02:H-13"
+          ],
+          "ownerFunction": "Hardware Engineering",
+          "blockers": [
+            "H-05",
+            "D-01",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "warrantyAndSupport": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Warranty and support terms are defined as intentions only: a warranty period and update support during warranty are specified, but no written warranty or service contract exists.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F19",
+            "MC-02:H-06",
+            "MC-02:D-01"
+          ],
+          "ownerFunction": "Commercial and Pricing",
+          "blockers": [
+            "H-06",
+            "D-05",
+            "X-05"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "bilingualProductPageCopy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Bilingual product page copy is defined in ES and EN with the exact 24 numbered sections and the approved disclaimers. Copy carries no price and no purchase call to action.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F20",
+            "MC-02:H-11",
+            "MC-02:D-05"
+          ],
+          "ownerFunction": "Legal and Licensing",
+          "blockers": [
+            "H-11",
+            "D-06",
+            "X-05"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "crossSells": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Cross-sells are conditional or planned: AIS receiver, HUB, SENSE, WEATHER and NAV are ecosystem options that require separate entitlements and validations.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F21",
+            "MC-02:H-13",
+            "MC-02:D-06"
+          ],
+          "ownerFunction": "Safety and Compliance",
+          "blockers": [
+            "H-13",
+            "D-10",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retentionStrategy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Retention is built on a long-life fixed device, configuration backup, warranty updates and a shared MAREA account, not on mandatory subscriptions. No subscription lock-in is designed.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F22",
+            "MC-02:D-01",
+            "MC-02:D-10"
+          ],
+          "ownerFunction": "Customer Operations",
+          "blockers": [
+            "D-01",
+            "P-07",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_SELECTED"
+        },
+        "successMetrics": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Success metrics are definition-level targets: installed-base satisfaction, configuration success, support contact rate and entitlement attach rate. No metric has been measured and no baseline exists.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F23",
+            "MC-02:D-05",
+            "MC-02:P-07"
+          ],
+          "ownerFunction": "Software Engineering",
+          "blockers": [
+            "D-05",
+            "P-10",
+            "X-05"
+          ],
+          "readinessDimension": "dataRights",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "endToEndAcceptance": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "End-to-end acceptance requires a selected panel and BOM, measured optical, thermal, ingress and vibration evidence against stated targets, a secure update path and a validated compatibility matrix. None of this evidence exists yet.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md#F24",
+            "MC-02:D-06",
+            "MC-02:P-10",
+            "docs/marea/products/DISPLAY-HARDWARE-AND-INTERACTION-REQUIREMENTS.md"
+          ],
+          "ownerFunction": "Brand and Communications",
+          "blockers": [
+            "D-06",
+            "X-01",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        }
+      },
+      "copy": {
+        "es": "docs/marea/products/copy/display.es.md",
+        "en": "docs/marea/products/copy/display.en.md"
+      },
+      "assets": [
+        {
+          "assetId": "DISPLAY-HERO-01"
+        },
+        {
+          "assetId": "DISPLAY-USE-02"
+        },
+        {
+          "assetId": "DISPLAY-OVR-03"
+        },
+        {
+          "assetId": "DISPLAY-EDN-04"
+        },
+        {
+          "assetId": "DISPLAY-ECO-05"
+        },
+        {
+          "assetId": "DISPLAY-INS-06"
+        },
+        {
+          "assetId": "DISPLAY-MOB-07"
+        },
+        {
+          "assetId": "DISPLAY-TMB-08"
+        },
+        {
+          "assetId": "DISPLAY-OG-09"
+        },
+        {
+          "assetId": "DISPLAY-TEC-10"
+        }
+      ],
+      "mc02Blockers": [
+        "H-04",
+        "H-05",
+        "H-06",
+        "H-11",
+        "H-13",
+        "D-01",
+        "D-05",
+        "D-06",
+        "D-10",
+        "P-07",
+        "P-10",
+        "X-01",
+        "X-03",
+        "X-05",
+        "X-06",
+        "X-07"
+      ]
+    },
+    {
+      "id": "WEATHER",
+      "displayName": "MAREA WEATHER",
+      "type": "SOFTWARE",
+      "lifecycleState": "DEFINED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "availability": "NOT_FOR_SALE",
+      "providerRightsGranted": false,
+      "forecastAccuracyClaimed": false,
+      "redistributionAllowed": false,
+      "offlineAllowed": false,
+      "navDoubleBillingAllowed": false,
+      "entitlementModel": {
+        "oneAccount": true,
+        "oneEntitlementLedger": true,
+        "standalonePurchaseAllowed": true,
+        "navProIncludesWeatherStandardRead": "CONDITIONAL",
+        "upgradesProrated": true,
+        "cancellationPreservesUserRecords": true,
+        "doubleBillingAllowed": false,
+        "licenceLossUnavailableState": true,
+        "billingImplemented": false
+      },
+      "editions": [
+        {
+          "id": "WEATHER-STANDARD",
+          "displayName": "MAREA WEATHER Standard",
+          "priceState": "HYPOTHESIS_UNAPPROVED",
+          "priceHypothesis": {
+            "amount": 49,
+            "currency": "EUR",
+            "vatBasis": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+            "period": "YEAR",
+            "startingPrice": true,
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "D-04",
+              "D-07"
+            ]
+          },
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "WEATHER Standard is a standalone yearly subscription with a from EUR 49 starting hypothesis, limited to licensed sources and the declared area and horizon.",
+            "evidenceRefs": [
+              "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md#WEATHER-STANDARD",
+              "MC-02:X-05",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "WEATHER-PRO",
+          "displayName": "MAREA WEATHER Pro",
+          "priceState": "HYPOTHESIS_UNAPPROVED",
+          "priceHypothesis": {
+            "amount": 89,
+            "currency": "EUR",
+            "vatBasis": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+            "period": "YEAR",
+            "startingPrice": false,
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "D-04",
+              "D-07"
+            ]
+          },
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "CONDITIONAL",
+            "publicationConditional": true,
+            "rationale": "WEATHER Pro adds model comparison, advanced layers, route context and alerts with an EUR 89 hypothesis, conditional on provider entitlements and legal review.",
+            "evidenceRefs": [
+              "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md#WEATHER-PRO",
+              "MC-02:X-05",
+              "MC-02:X-05"
+            ]
+          }
+        }
+      ],
+      "fields": {
+        "identity": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "MAREA WEATHER is a marine weather service inside the MAREA account: licensed forecast data, model comparison, overlays and alerts shown with source and timestamp. Coverage is limited to licensed sources and the declared area and horizon.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F01",
+            "MC-02:D-04",
+            "MC-02:D-09"
+          ],
+          "ownerFunction": "Product Management (WEATHER Product Director)",
+          "blockers": [
+            "D-04",
+            "D-10",
+            "X-05"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "customerSegments": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Target customers are coastal and inland recreational skippers and, conditionally, small fleet operators. Both need a clear view of forecast source, time and uncertainty rather than a single authoritative-looking number.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F02",
+            "MC-02:D-05",
+            "MC-02:D-10"
+          ],
+          "ownerFunction": "Data Partnerships",
+          "blockers": [
+            "D-05",
+            "P-08",
+            "X-05"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "customerProblems": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The problems are fragmented free forecast apps, unclear data provenance, stale tiles presented as current and no honest boundary between observation and forecast. No accuracy claim is made.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F03",
+            "MC-02:D-07",
+            "MC-02:P-08"
+          ],
+          "ownerFunction": "Commercial and Pricing",
+          "blockers": [
+            "D-07",
+            "P-10",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "finalFunctionality": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Intended functionality is forecast layers from licensed providers, model comparison, route context and alerts, with an explicit stale and unavailable state. No provider agreement exists and no service is implemented.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F04",
+            "MC-02:D-09",
+            "MC-02:P-10",
+            "docs/marea/products/WEATHER-DATA-RIGHTS-AND-FORECAST-CONTRACT.md"
+          ],
+          "ownerFunction": "Legal and Licensing",
+          "blockers": [
+            "D-09",
+            "X-01",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_APPLICABLE_SOFTWARE_PRODUCT"
+        },
+        "differentiation": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Differentiation is provenance-first presentation: every data point shows source and timestamp, and an expired entitlement shows an honest unavailable state instead of a frozen forecast.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F05",
+            "MC-02:D-10",
+            "MC-02:X-01"
+          ],
+          "ownerFunction": "Meteorological Data",
+          "blockers": [
+            "D-10",
+            "X-03",
+            "X-05"
+          ],
+          "readinessDimension": "dataRights",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "editions": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Two editions are defined: a standalone Standard yearly subscription and a Pro tier with model comparison and route context. Both prices are hypotheses and both editions are conditional on provider rights.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F06",
+            "MC-02:P-08",
+            "MC-02:X-03",
+            "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md"
+          ],
+          "ownerFunction": "Customer Operations",
+          "blockers": [
+            "P-08",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        },
+        "includedItems": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Included items are the account entitlement, licensed forecast presentation, provenance and timestamp display and the standard alert features. No hardware, connectivity or navigation device is included.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F07",
+            "MC-02:P-10",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Software Engineering",
+          "blockers": [
+            "P-10",
+            "X-06",
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "optionalAccessories": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Optional accessories are data entitlements and ecosystem products such as a DISPLAY or HUB; no accessory changes the provider-rights boundary.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F08",
+            "MC-02:X-01",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Brand and Communications",
+          "blockers": [
+            "X-01",
+            "D-04",
+            "X-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "integration": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Integration status is PLANNED with NAV, CONDITIONAL with FLEET, DISPLAY and HUB, and the entitlement is shared through one ledger. No integration is SUPPORTED and none has been validated.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F09",
+            "MC-02:X-03",
+            "MC-02:D-04",
+            "docs/marea/products/PRODUCT-COMPATIBILITY-DISPLAY-WEATHER-FLEET.md"
+          ],
+          "ownerFunction": "Product Management (WEATHER Product Director)",
+          "blockers": [
+            "X-03",
+            "D-05",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "professionalInstallation": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Professional installation does not apply to a software service; onboarding and account setup are remote and self-service, with support for provider attribution questions.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F10",
+            "MC-02:X-05",
+            "MC-02:D-05"
+          ],
+          "ownerFunction": "Data Partnerships",
+          "blockers": [
+            "X-05",
+            "D-07"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "onboarding": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Onboarding covers account creation, coverage area and horizon selection, source and timestamp reading, and alert configuration. Billing and entitlement services are not implemented in MC-07.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F11",
+            "MC-02:X-06",
+            "MC-02:D-07"
+          ],
+          "ownerFunction": "Commercial and Pricing",
+          "blockers": [
+            "X-06",
+            "D-09",
+            "X-05"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "licensingSubscriptions": {
+          "status": "OPEN",
+          "evidenceClass": "OPEN",
+          "summary": "Licensing is not cleared: every forecast layer depends on a provider agreement and on redistribution and offline rights that are not granted. The free non-commercial tier may never be used for a paid service.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F12",
+            "MC-02:D-04",
+            "MC-02:D-09",
+            "docs/marea/products/WEATHER-DATA-RIGHTS-AND-FORECAST-CONTRACT.md"
+          ],
+          "ownerFunction": "Legal and Licensing",
+          "blockers": [
+            "D-04",
+            "D-10",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retailAndPartnerPricing": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Retail pricing keeps Standard at a from EUR 49 yearly hypothesis and Pro at an EUR 89 yearly hypothesis, both HYPOTHESIS_UNAPPROVED and subject to provider rights and validation. No price is approved.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F13",
+            "MC-02:D-05",
+            "MC-02:D-10"
+          ],
+          "ownerFunction": "Meteorological Data",
+          "blockers": [
+            "D-05",
+            "P-08",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_APPLICABLE_SOFTWARE_PRODUCT"
+        },
+        "directAndOngoingCosts": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Direct and ongoing costs are provider data fees, per-call or per-layer licences, hosting and support. No provider cost is quoted and no margin is approved.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F14",
+            "MC-02:D-07",
+            "MC-02:P-08",
+            "docs/marea/products/PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-03.md"
+          ],
+          "ownerFunction": "Customer Operations",
+          "blockers": [
+            "D-07",
+            "P-10",
+            "X-05"
+          ],
+          "readinessDimension": "dataRights",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "channelEconomics": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Channel economics assume a direct consumer subscription and a conditional B2B path through FLEET. Partner revenue shares and provider minimums are open.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F15",
+            "MC-02:D-09",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Software Engineering",
+          "blockers": [
+            "D-09",
+            "X-01",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        },
+        "competitorComparison": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Competitor comparison benchmarks consumer and professional weather apps and their subscription models. Third-party prices may appear only attributed with brand, product, currency, tax basis, official URL and retrieval date.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F16",
+            "MC-02:D-10",
+            "MC-02:X-01"
+          ],
+          "ownerFunction": "Brand and Communications",
+          "blockers": [
+            "D-10",
+            "X-03",
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "salesArguments": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Sales arguments are provenance, source and timestamp display, model comparison and a shared MAREA account. No accuracy percentage, exclusive data or official warning service is claimed.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F17",
+            "MC-02:P-08",
+            "MC-02:X-03"
+          ],
+          "ownerFunction": "Product Management (WEATHER Product Director)",
+          "blockers": [
+            "P-08",
+            "X-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "faq": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The FAQ must answer coverage, provider rights, offline use, accuracy and billing honestly: limited to licensed sources, no guarantee, no offline right without permission, never billed twice with NAV.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F18",
+            "MC-02:P-10",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Data Partnerships",
+          "blockers": [
+            "P-10",
+            "X-06",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "warrantyAndSupport": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Warranty and support are defined as a service-level intention only: support covers account and attribution questions. No SLA and no guarantee of forecast accuracy exists.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F19",
+            "MC-02:X-01",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial and Pricing",
+          "blockers": [
+            "X-01",
+            "D-04",
+            "X-05"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "bilingualProductPageCopy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Bilingual product page copy is defined in ES and EN with the exact 24 numbered sections, the navigation disclaimer where position or route context appears and the weather disclaimer. Copy carries no price.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F20",
+            "MC-02:X-03",
+            "MC-02:D-04"
+          ],
+          "ownerFunction": "Legal and Licensing",
+          "blockers": [
+            "X-03",
+            "D-05",
+            "X-05"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "crossSells": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Cross-sells are NAV route context, DISPLAY presentation, FLEET weather and HUB delivery. Each is CONDITIONAL or PLANNED and never a bundled entitlement claim.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F21",
+            "MC-02:X-05",
+            "MC-02:D-05"
+          ],
+          "ownerFunction": "Meteorological Data",
+          "blockers": [
+            "X-05",
+            "D-07"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retentionStrategy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Retention is based on a stable account, saved locations, exported records and a prorated upgrade path. Cancelling NAV never deletes user-owned WEATHER records.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F22",
+            "MC-02:X-06",
+            "MC-02:D-07"
+          ],
+          "ownerFunction": "Customer Operations",
+          "blockers": [
+            "X-06",
+            "D-09",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_APPLICABLE_SOFTWARE_PRODUCT"
+        },
+        "successMetrics": {
+          "status": "OPEN",
+          "evidenceClass": "OPEN",
+          "summary": "Success metrics are definition-level: forecast freshness, provenance completeness, alert delivery honesty and retention. No accuracy metric has been measured and no target is an approved promise.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F23",
+            "MC-02:D-04",
+            "MC-02:D-09"
+          ],
+          "ownerFunction": "Software Engineering",
+          "blockers": [
+            "D-04",
+            "D-10",
+            "X-05"
+          ],
+          "readinessDimension": "dataRights",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "endToEndAcceptance": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "End-to-end acceptance requires signed provider terms, a validated forecast evaluation, a working entitlement ledger with prorated upgrade and an honest unavailable state. None of this evidence exists yet.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md#F24",
+            "MC-02:D-05",
+            "MC-02:D-10",
+            "docs/marea/products/WEATHER-DATA-RIGHTS-AND-FORECAST-CONTRACT.md"
+          ],
+          "ownerFunction": "Brand and Communications",
+          "blockers": [
+            "D-05",
+            "P-08",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        }
+      },
+      "copy": {
+        "es": "docs/marea/products/copy/weather.es.md",
+        "en": "docs/marea/products/copy/weather.en.md"
+      },
+      "assets": [
+        {
+          "assetId": "WEATHER-HERO-01"
+        },
+        {
+          "assetId": "WEATHER-USE-02"
+        },
+        {
+          "assetId": "WEATHER-OVR-03"
+        },
+        {
+          "assetId": "WEATHER-EDN-04"
+        },
+        {
+          "assetId": "WEATHER-ECO-05"
+        },
+        {
+          "assetId": "WEATHER-INS-06"
+        },
+        {
+          "assetId": "WEATHER-MOB-07"
+        },
+        {
+          "assetId": "WEATHER-TMB-08"
+        },
+        {
+          "assetId": "WEATHER-OG-09"
+        },
+        {
+          "assetId": "WEATHER-TEC-10"
+        }
+      ],
+      "mc02Blockers": [
+        "D-04",
+        "D-05",
+        "D-07",
+        "D-09",
+        "D-10",
+        "P-08",
+        "P-10",
+        "X-01",
+        "X-03",
+        "X-05",
+        "X-06"
+      ]
+    },
+    {
+      "id": "FLEET",
+      "displayName": "MAREA FLEET",
+      "type": "SOFTWARE",
+      "lifecycleState": "DEFINED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "availability": "NOT_FOR_SALE",
+      "multiTenantProductionService": false,
+      "crossTenantAccessAllowed": false,
+      "remoteSteeringAllowed": false,
+      "slaEstablished": false,
+      "customerProductionDataUsed": false,
+      "securityCertificationClaimed": false,
+      "tenancy": {
+        "authorizationRequired": true,
+        "serverSideAuthorization": true,
+        "trustClientSuppliedTenant": false,
+        "defaultRole": "NO_ACCESS",
+        "defaultRoleListsAllVessels": false,
+        "auditLogRequired": true,
+        "privacyPolicyRequired": true,
+        "dataExportPolicyRequired": true,
+        "telemetryReadOnly": true,
+        "remoteControlPath": false,
+        "slaState": "NO_SLA_ESTABLISHED"
+      },
+      "editions": [
+        {
+          "id": "FLEET-START",
+          "displayName": "MAREA FLEET Start",
+          "priceState": "HYPOTHESIS_UNAPPROVED",
+          "priceHypothesis": {
+            "amount": 49,
+            "currency": "EUR",
+            "vatBasis": "VAT_EXCLUDED_B2B_HYPOTHESIS",
+            "period": "MONTH",
+            "startingPrice": true,
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "D-09"
+            ]
+          },
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "FLEET Start is the small-operator tier with a from EUR 49 per vessel per month hypothesis, VAT excluded, suggested for one to ten vessels.",
+            "evidenceRefs": [
+              "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md#FLEET-START",
+              "MC-02:X-05",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "FLEET-BUSINESS",
+          "displayName": "MAREA FLEET Business",
+          "priceState": "HYPOTHESIS_UNAPPROVED",
+          "priceHypothesis": {
+            "amount": 79,
+            "currency": "EUR",
+            "vatBasis": "VAT_EXCLUDED_B2B_HYPOTHESIS",
+            "period": "MONTH",
+            "startingPrice": false,
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "D-09"
+            ]
+          },
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "FLEET Business adds richer permissions, workflows, reporting and integrations at an EUR 79 per vessel per month hypothesis, suggested for eleven to fifty vessels.",
+            "evidenceRefs": [
+              "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md#FLEET-BUSINESS",
+              "MC-02:X-05",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "FLEET-ENTERPRISE",
+          "displayName": "MAREA FLEET Enterprise",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "CONDITIONAL",
+            "publicationConditional": true,
+            "rationale": "FLEET Enterprise is a contracted tier, not a standard checkout SKU: no price, no SLA and no unlimited promise may be stated.",
+            "evidenceRefs": [
+              "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md#FLEET-ENTERPRISE",
+              "MC-02:X-05",
+              "MC-02:X-05"
+            ]
+          }
+        }
+      ],
+      "fields": {
+        "identity": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "MAREA FLEET is a multi-tenant fleet-management service for small operators: organisation, vessels, memberships, roles, read-only telemetry and maintenance workflows. No production service is deployed and no security certification exists.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F01",
+            "MC-02:D-09",
+            "MC-02:H-13"
+          ],
+          "ownerFunction": "Product Management (FLEET Product Director)",
+          "blockers": [
+            "D-09",
+            "P-09",
+            "X-05"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "customerSegments": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Target customers are small commercial and charter operators managing roughly one to fifty vessels, plus maintenance and external installer roles inside each organisation.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F02",
+            "MC-02:D-10",
+            "MC-02:P-09"
+          ],
+          "ownerFunction": "Security and Platform Engineering",
+          "blockers": [
+            "D-10",
+            "P-10",
+            "X-05"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "customerProblems": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The problems are spreadsheets and chat for maintenance, unclear who may see which vessel, and no auditable record of work. Fleet data is sensitive, so tenant isolation and least privilege are design requirements.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F03",
+            "MC-02:H-12",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Commercial and Pricing",
+          "blockers": [
+            "H-12",
+            "X-01",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "finalFunctionality": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Intended functionality is organisation and vessel management, eight roles, read-only telemetry and alerts, maintenance workflows, reporting, export and an audited support path. No remote control path exists by design.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F04",
+            "MC-02:H-13",
+            "MC-02:X-01",
+            "docs/marea/products/FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md"
+          ],
+          "ownerFunction": "Legal and Privacy",
+          "blockers": [
+            "H-13",
+            "X-03",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_APPLICABLE_SOFTWARE_PRODUCT"
+        },
+        "differentiation": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Differentiation is server-side tenant authorization on every sensitive operation, explicit role scoping for external installers, and honest read-only telemetry with source and freshness.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F05",
+            "MC-02:P-09",
+            "MC-02:X-03"
+          ],
+          "ownerFunction": "Fleet Operations",
+          "blockers": [
+            "P-09",
+            "X-05"
+          ],
+          "readinessDimension": "dataRights",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "editions": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Three editions are defined: Start and Business per-vessel monthly hypotheses and a contracted Enterprise tier with no established price. No edition is purchasable and no SLA is offered.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F06",
+            "MC-02:P-10",
+            "MC-02:X-05",
+            "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md"
+          ],
+          "ownerFunction": "Customer Support",
+          "blockers": [
+            "P-10",
+            "X-06",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        },
+        "includedItems": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Included items are the organisation account, vessel records, memberships and roles, read-only telemetry presentation, maintenance workflows and standard reports. Connectivity and telemetry sources are separate.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F07",
+            "MC-02:X-01",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Software Engineering",
+          "blockers": [
+            "X-01",
+            "X-07",
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "optionalAccessories": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Optional accessories are telemetry gateways, sensors and DISPLAY presentation, each conditional and separately validated. No accessory is required for the definition to hold.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F08",
+            "MC-02:X-03",
+            "MC-02:X-07"
+          ],
+          "ownerFunction": "Brand and Communications",
+          "blockers": [
+            "X-03",
+            "D-09",
+            "X-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "integration": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Integration status is CONDITIONAL with WATCH, HUB and AIS, PLANNED with NAV, UNKNOWN with SENSE and DISPLAY, and BLOCKED with PILOT for any control. Every path is read-only.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F09",
+            "MC-02:X-05",
+            "MC-02:D-09",
+            "docs/marea/products/PRODUCT-COMPATIBILITY-DISPLAY-WEATHER-FLEET.md"
+          ],
+          "ownerFunction": "Product Management (FLEET Product Director)",
+          "blockers": [
+            "X-05",
+            "D-10"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "professionalInstallation": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Professional installation applies only to telemetry sources and devices; the service itself is provisioned remotely. Installer scoping is vessel-level, time-bound and audited.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F10",
+            "MC-02:X-06",
+            "MC-02:D-10"
+          ],
+          "ownerFunction": "Security and Platform Engineering",
+          "blockers": [
+            "X-06",
+            "H-12",
+            "X-05"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "onboarding": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Onboarding covers organisation creation, vessel import, role assignment, telemetry source mapping and a first report. Billing and provisioning are not implemented in MC-07.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F11",
+            "MC-02:X-07",
+            "MC-02:H-12"
+          ],
+          "ownerFunction": "Commercial and Pricing",
+          "blockers": [
+            "X-07",
+            "H-13",
+            "X-05"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "licensingSubscriptions": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Licensing and subscriptions are per vessel per month with VAT excluded for business customers. Organisation fee, seats, onboarding and telemetry, storage and API limits are explicit hypotheses, never unlimited.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F12",
+            "MC-02:D-09",
+            "MC-02:H-13",
+            "docs/marea/products/FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md"
+          ],
+          "ownerFunction": "Legal and Privacy",
+          "blockers": [
+            "D-09",
+            "P-09",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retailAndPartnerPricing": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Retail and partner pricing keeps Start at a from EUR 49 and Business at an EUR 79 per vessel per month hypothesis, both HYPOTHESIS_UNAPPROVED. Enterprise is negotiated and has no established price.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F13",
+            "MC-02:D-10",
+            "MC-02:P-09"
+          ],
+          "ownerFunction": "Fleet Operations",
+          "blockers": [
+            "D-10",
+            "P-10",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_APPLICABLE_SOFTWARE_PRODUCT"
+        },
+        "directAndOngoingCosts": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Direct costs are hosting, telemetry ingestion and storage, support, security review and integration engineering. Limits are explicit and no unlimited storage or API promise is made.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F14",
+            "MC-02:H-12",
+            "MC-02:P-10",
+            "docs/marea/products/PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-03.md"
+          ],
+          "ownerFunction": "Customer Support",
+          "blockers": [
+            "H-12",
+            "X-01",
+            "X-05"
+          ],
+          "readinessDimension": "dataRights",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "channelEconomics": {
+          "status": "OPEN",
+          "evidenceClass": "OPEN",
+          "summary": "Channel economics assume a direct B2B sale with installers as a scoped channel. Partner margins, reseller terms and organisation fees are hypotheses only.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F15",
+            "MC-02:H-13",
+            "MC-02:X-01"
+          ],
+          "ownerFunction": "Software Engineering",
+          "blockers": [
+            "H-13",
+            "X-03",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        },
+        "competitorComparison": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Competitor comparison benchmarks fleet-management platforms used by small operators. Third-party prices are attributed evidence and are never a MAREA price or a guaranteed SLA comparison.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F16",
+            "MC-02:P-09",
+            "MC-02:X-03"
+          ],
+          "ownerFunction": "Brand and Communications",
+          "blockers": [
+            "P-09",
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "salesArguments": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Sales arguments are tenant isolation, auditable roles, read-only telemetry and maintenance workflows. No SLA, security certification, remote control or unlimited plan is claimed.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F17",
+            "MC-02:P-10",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product Management (FLEET Product Director)",
+          "blockers": [
+            "P-10",
+            "X-06",
+            "X-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "faq": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The FAQ must answer tenancy, roles, data export, SLA, remote control and pricing honestly: isolated tenants, least privilege, export available, no SLA, no steering, hypotheses only.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F18",
+            "MC-02:X-01",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Security and Platform Engineering",
+          "blockers": [
+            "X-01",
+            "X-07",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "warrantyAndSupport": {
+          "status": "OPEN",
+          "evidenceClass": "OPEN",
+          "summary": "Warranty and support are defined as intentions: an audited support access path and a documented escalation model. No uptime guarantee and no service level is established.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F19",
+            "MC-02:X-03",
+            "MC-02:X-07"
+          ],
+          "ownerFunction": "Commercial and Pricing",
+          "blockers": [
+            "X-03",
+            "D-09",
+            "X-05"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "bilingualProductPageCopy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Bilingual product page copy is defined in ES and EN with the exact 24 numbered sections, the navigation disclaimer and the FLEET limitation statement. Copy carries no price.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F20",
+            "MC-02:X-05",
+            "MC-02:D-09"
+          ],
+          "ownerFunction": "Legal and Privacy",
+          "blockers": [
+            "X-05",
+            "D-10"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "crossSells": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Cross-sells are WATCH alerts, HUB telemetry health, SENSE instrumentation, NAV shared routes with explicit permission and DISPLAY presentation. All are conditional and read-only where applicable.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F21",
+            "MC-02:X-06",
+            "MC-02:D-10"
+          ],
+          "ownerFunction": "Fleet Operations",
+          "blockers": [
+            "X-06",
+            "H-12",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retentionStrategy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Retention is based on operational records, audit history and data export, not lock-in. Cancellation and termination provide a documented export window before deletion.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F22",
+            "MC-02:X-07",
+            "MC-02:H-12"
+          ],
+          "ownerFunction": "Customer Support",
+          "blockers": [
+            "X-07",
+            "H-13",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_APPLICABLE_SOFTWARE_PRODUCT"
+        },
+        "successMetrics": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Success metrics are definition-level: active vessels, role-assignment accuracy, maintenance closure time and export completeness. No SLA metric has been measured and no baseline exists.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F23",
+            "MC-02:D-09",
+            "MC-02:H-13"
+          ],
+          "ownerFunction": "Software Engineering",
+          "blockers": [
+            "D-09",
+            "P-09",
+            "X-05"
+          ],
+          "readinessDimension": "dataRights",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "endToEndAcceptance": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "End-to-end acceptance requires a deployed multi-tenant service, a security and privacy review, tenant-isolation tests, role tests and an export and deletion proof. None of this exists yet.",
+          "evidenceRefs": [
+            "docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md#F24",
+            "MC-02:D-10",
+            "MC-02:P-09",
+            "docs/marea/products/FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md"
+          ],
+          "ownerFunction": "Brand and Communications",
+          "blockers": [
+            "D-10",
+            "P-10",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        }
+      },
+      "copy": {
+        "es": "docs/marea/products/copy/fleet.es.md",
+        "en": "docs/marea/products/copy/fleet.en.md"
+      },
+      "assets": [
+        {
+          "assetId": "FLEET-HERO-01"
+        },
+        {
+          "assetId": "FLEET-USE-02"
+        },
+        {
+          "assetId": "FLEET-OVR-03"
+        },
+        {
+          "assetId": "FLEET-EDN-04"
+        },
+        {
+          "assetId": "FLEET-ECO-05"
+        },
+        {
+          "assetId": "FLEET-INS-06"
+        },
+        {
+          "assetId": "FLEET-MOB-07"
+        },
+        {
+          "assetId": "FLEET-TMB-08"
+        },
+        {
+          "assetId": "FLEET-OG-09"
+        },
+        {
+          "assetId": "FLEET-TEC-10"
+        }
+      ],
+      "mc02Blockers": [
+        "D-09",
+        "D-10",
+        "H-12",
+        "H-13",
+        "P-09",
+        "P-10",
+        "X-01",
+        "X-03",
+        "X-05",
+        "X-06",
+        "X-07"
+      ]
+    }
+  ]
+}
