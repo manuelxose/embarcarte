@@ -220,8 +220,8 @@ Artifacts (`artifacts/`) are gitignored; no customer data is stored there.
 ## 12. Independent review
 
 Two independent read-only reviewers inspected the actual diff and code, not the summary.
-They found no Critical issue and six High/Medium defects that the implementation pass had
-missed; all were fixed and the gates were rerun.
+They found no Critical issue and eight High/Medium plus one Low defect that the
+implementation pass had missed; all were fixed and the gates were rerun.
 
 | # | Severity | Finding | Resolution |
 | --- | --- | --- | --- |
@@ -246,9 +246,9 @@ permission/pinning model.
 | --- | --- |
 | Base | `feature/i18n-commerce-seo` at `6e13d75` (M03 open, stacked) |
 | Branch | `feature/m04-production-hardening` |
-| Commits | `085447d` (implementation), `787ed44` (route reuse + login heading), plus this documentation commit |
+| Commits | `085447d` (implementation), `787ed44` (route reuse + login heading), `3ca11f3` (measurements/logs), `1830211` (independent-review fixes), plus this final documentation commit |
 | Pull request | https://github.com/manuelxose/embarcarte/pull/4 |
-| CI | `CI / Build, test and verify` green on `085447d`; rerun on the final commit |
+| CI | `CI / Build, test and verify` green on `085447d` and `3ca11f3`; rerun on the final commit |
 | Merge | **not performed** |
 | Deploy | **not performed** |
 
