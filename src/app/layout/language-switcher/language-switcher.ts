@@ -6,9 +6,9 @@ import { TranslationService } from '../../core/i18n/translation.service';
 
 /**
  * One link that takes the visitor to the same page in the other language.
- * `LocaleService.switchUrl()` keeps the slug, query string and fragment, and
- * falls back to the other language's home only when the page has no
- * counterpart (admin, account, legacy redirects).
+ * `LocaleService.switchUrl()` keeps the slug; the query string and the fragment
+ * are carried over by the router, which is why they are not part of the URL
+ * string itself.
  */
 @Component({
   selector: 'app-language-switcher',
@@ -17,6 +17,8 @@ import { TranslationService } from '../../core/i18n/translation.service';
     <a
       [class]="linkClass()"
       [routerLink]="url()"
+      queryParamsHandling="preserve"
+      preserveFragment
       [attr.lang]="target()"
       [attr.hreflang]="target()"
       [attr.aria-label]="label()"

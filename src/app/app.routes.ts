@@ -58,50 +58,61 @@ export const routes: Routes = [
     { path: path(id, 'en'), data: { page: id }, loadComponent: () => import('./features/legal/legal').then((m) => m.Legal) },
   ]),
 
-  // Tienda: la traducción completa de la compra sigue siendo de M03.
-  { path: path('shop', 'es'), loadComponent: () => import('./shop/shop-list').then((m) => m.ShopList) },
-  { path: path('shopSample', 'es'), canMatch: [sampleExists], loadComponent: () => import('./shop/sample-detail').then((m) => m.SampleDetail) },
-  { path: path('shopDetail', 'es'), loadComponent: () => import('./shop/shop-detail').then((m) => m.ShopDetail) },
-  { path: path('shop', 'en'), loadComponent: () => import('./shop/shop-en').then((m) => m.ShopEn) },
+  // Tienda: una presentación por página, localizada desde el registro de rutas.
+  { path: path('shop', 'es'), loadComponent: () => import('./features/shop/shop-list').then((m) => m.ShopList) },
+  { path: path('shop', 'en'), loadComponent: () => import('./features/shop/shop-list').then((m) => m.ShopList) },
+  {
+    path: path('shopSample', 'es'),
+    canMatch: [sampleExists],
+    loadComponent: () => import('./features/shop/sample-detail').then((m) => m.SampleDetail),
+  },
   {
     path: path('shopSample', 'en'),
-    data: { language: 'en' },
     canMatch: [sampleExists],
-    loadComponent: () => import('./shop/sample-detail').then((m) => m.SampleDetail),
+    loadComponent: () => import('./features/shop/sample-detail').then((m) => m.SampleDetail),
   },
-  { path: path('shopDetail', 'en'), loadComponent: () => import('./shop/commerce-en').then((m) => m.ShopDetailEn) },
-  { path: path('cart', 'es'), loadComponent: () => import('./shop/cart').then((m) => m.Cart) },
-  { path: path('cart', 'en'), loadComponent: () => import('./shop/commerce-en').then((m) => m.CartEn) },
+  { path: path('shopDetail', 'es'), loadComponent: () => import('./features/shop/shop-detail').then((m) => m.ShopDetail) },
+  { path: path('shopDetail', 'en'), loadComponent: () => import('./features/shop/shop-detail').then((m) => m.ShopDetail) },
+  { path: path('cart', 'es'), loadComponent: () => import('./features/shop/cart').then((m) => m.Cart) },
+  { path: path('cart', 'en'), loadComponent: () => import('./features/shop/cart').then((m) => m.Cart) },
 
   // Área de cliente
-  { path: path('login', 'es'), loadComponent: () => import('./account/login').then((m) => m.Login) },
-  { path: path('login', 'en'), loadComponent: () => import('./shop/commerce-en').then((m) => m.LoginEn) },
-  { path: path('account', 'es'), canActivate: [authGuard], loadComponent: () => import('./account/account').then((m) => m.Account) },
-  { path: path('account', 'en'), canActivate: [authGuard], loadComponent: () => import('./shop/commerce-en').then((m) => m.AccountEn) },
+  { path: path('login', 'es'), loadComponent: () => import('./features/account/login').then((m) => m.Login) },
+  { path: path('login', 'en'), loadComponent: () => import('./features/account/login').then((m) => m.Login) },
   {
-    path: `${path('account', 'es')}/pedidos/:id`,
+    path: path('account', 'es'),
     canActivate: [authGuard],
-    loadComponent: () => import('./account/order-detail').then((m) => m.OrderDetail),
+    loadComponent: () => import('./features/account/account').then((m) => m.Account),
   },
   {
-    path: `${path('account', 'en')}/orders/:id`,
+    path: path('account', 'en'),
     canActivate: [authGuard],
-    loadComponent: () => import('./shop/commerce-en').then((m) => m.OrderEn),
+    loadComponent: () => import('./features/account/account').then((m) => m.Account),
+  },
+  {
+    path: path('orderDetail', 'es'),
+    canActivate: [authGuard],
+    loadComponent: () => import('./features/account/order-detail').then((m) => m.OrderDetail),
+  },
+  {
+    path: path('orderDetail', 'en'),
+    canActivate: [authGuard],
+    loadComponent: () => import('./features/account/order-detail').then((m) => m.OrderDetail),
   },
 
-  // Administración
+  // Administración: solo en español, decisión documentada en M03-COMMERCE-SEO-DELIVERY.md.
   {
     path: 'admin',
     canActivate: [adminGuard],
-    loadComponent: () => import('./admin/admin-layout').then((m) => m.AdminLayout),
+    loadComponent: () => import('./features/admin/admin-layout').then((m) => m.AdminLayout),
     children: [
-      { path: '', loadComponent: () => import('./admin/admin-dashboard').then((m) => m.AdminDashboard) },
-      { path: 'pedidos', loadComponent: () => import('./admin/admin-orders').then((m) => m.AdminOrders) },
-      { path: 'pedidos/:id', loadComponent: () => import('./admin/admin-order').then((m) => m.AdminOrder) },
-      { path: 'productos', loadComponent: () => import('./admin/admin-products').then((m) => m.AdminProducts) },
-      { path: 'productos/:id', loadComponent: () => import('./admin/admin-product-edit').then((m) => m.AdminProductEdit) },
-      { path: 'clientes', loadComponent: () => import('./admin/admin-customers').then((m) => m.AdminCustomers) },
-      { path: 'mensajes', loadComponent: () => import('./admin/admin-messages').then((m) => m.AdminMessages) },
+      { path: '', loadComponent: () => import('./features/admin/admin-dashboard').then((m) => m.AdminDashboard) },
+      { path: 'pedidos', loadComponent: () => import('./features/admin/admin-orders').then((m) => m.AdminOrders) },
+      { path: 'pedidos/:id', loadComponent: () => import('./features/admin/admin-order').then((m) => m.AdminOrder) },
+      { path: 'productos', loadComponent: () => import('./features/admin/admin-products').then((m) => m.AdminProducts) },
+      { path: 'productos/:id', loadComponent: () => import('./features/admin/admin-product-edit').then((m) => m.AdminProductEdit) },
+      { path: 'clientes', loadComponent: () => import('./features/admin/admin-customers').then((m) => m.AdminCustomers) },
+      { path: 'mensajes', loadComponent: () => import('./features/admin/admin-messages').then((m) => m.AdminMessages) },
     ],
   },
 
@@ -110,5 +121,5 @@ export const routes: Routes = [
   { path: 'productos', redirectTo: '/tecnologia', pathMatch: 'full' },
   { path: 'productos/:slug', redirectTo: ({ params }) => `/tecnologia/${params['slug']}` },
 
-  { path: '**', loadComponent: () => import('./pages/not-found').then((m) => m.NotFound) },
+  { path: '**', loadComponent: () => import('./features/not-found/not-found').then((m) => m.NotFound) },
 ];

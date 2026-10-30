@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { StatusBadge } from '../account/status-badge';
-import { OrderSummary, formatDate, formatPrice } from '../core/models';
+import { StatusBadge } from '../../shared/ui/status-badge';
+import { OrderSummary, formatDate, formatPrice } from '../../core/models';
 
 interface Stats {
   revenueCents: number;

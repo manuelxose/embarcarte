@@ -1,9 +1,19 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, inject, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
-import { AuthService } from '../core/auth.service';
-import { SeoService } from '../core/seo.service';
+import { AuthService } from '../../core/auth.service';
+import { LocaleService } from '../../core/i18n/locale.service';
+import { TranslationService } from '../../core/i18n/translation.service';
+import { SeoService } from '../../core/seo.service';
+import { SITE } from '../../core/site.config';
+import type { TranslationKey } from '../../i18n/dictionary';
+
+const AUTH_ERRORS: Record<number, TranslationKey> = {
+  401: 'auth.badCredentials',
+  409: 'auth.emailTaken',
+  429: 'auth.tooManyAttempts',
+};
 
 @Component({
   selector: 'app-login',
@@ -13,34 +23,34 @@ import { SeoService } from '../core/seo.service';
       <div class="wrap">
         <div class="panel auth-card">
           <div class="tabs" role="tablist">
-            <button type="button" role="tab" [class.on]="mode() === 'login'" [attr.aria-selected]="mode() === 'login'" (click)="mode.set('login')">Acceder</button>
-            <button type="button" role="tab" [class.on]="mode() === 'register'" [attr.aria-selected]="mode() === 'register'" (click)="mode.set('register')">Crear cuenta</button>
+            <button type="button" role="tab" [class.on]="mode() === 'login'" [attr.aria-selected]="mode() === 'login'" (click)="mode.set('login')">{{ i18n.t('auth.signIn') }}</button>
+            <button type="button" role="tab" [class.on]="mode() === 'register'" [attr.aria-selected]="mode() === 'register'" (click)="mode.set('register')">{{ i18n.t('auth.register') }}</button>
           </div>
           <form class="form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
             @if (mode() === 'register') {
-              <label for="name">Nombre</label>
+              <label for="name">{{ i18n.t('auth.name') }}</label>
               <input id="name" formControlName="name" autocomplete="name" />
             }
-            <label for="email">Correo electrónico</label>
+            <label for="email">{{ i18n.t('auth.email') }}</label>
             <input id="email" type="email" formControlName="email" autocomplete="email" />
-            <label for="password">Contraseña</label>
+            <label for="password">{{ i18n.t('auth.password') }}</label>
             <input id="password" type="password" formControlName="password"
                    [attr.autocomplete]="mode() === 'login' ? 'current-password' : 'new-password'" />
             @if (mode() === 'register') {
-              <p class="form-hint" style="margin: -10px 0 16px">Mínimo 8 caracteres.</p>
+              <p class="form-hint" style="margin: -10px 0 16px">{{ i18n.t('auth.passwordHint') }}</p>
               <label class="check">
                 <input type="checkbox" formControlName="consent" />
-                <span>Acepto la <a routerLink="/privacidad">política de privacidad</a>.</span>
+                <span>{{ i18n.t('auth.consent') }} <a [routerLink]="locale.url('privacy')">{{ i18n.t('common.privacyPolicy') }}</a>.</span>
               </label>
             }
             @if (error()) {
               <p class="error" role="alert">{{ error() }}</p>
             }
             <button class="button button-dark button-block" type="submit" [disabled]="sending()">
-              {{ mode() === 'login' ? 'Acceder' : 'Crear cuenta' }} <span>↗</span>
+              {{ i18n.t(mode() === 'login' ? 'auth.signIn' : 'auth.register') }} <span aria-hidden="true">↗</span>
             </button>
           </form>
-          <p class="form-hint">¿Has olvidado tu contraseña? Escríbenos desde el email de tu cuenta a info&#64;embarcarte.com.</p>
+          <p class="form-hint">{{ i18n.t('auth.forgot', { email: site.email }) }}</p>
         </div>
       </div>
     </section>
@@ -50,6 +60,9 @@ export class Login {
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
   private readonly returnUrl = inject(ActivatedRoute).snapshot.queryParamMap.get('volver');
+  protected readonly locale = inject(LocaleService);
+  protected readonly i18n = inject(TranslationService);
+  protected readonly site = SITE;
   protected readonly mode = signal<'login' | 'register'>('login');
   protected readonly sending = signal(false);
   protected readonly error = signal('');
@@ -62,7 +75,16 @@ export class Login {
   });
 
   constructor() {
-    inject(SeoService).set({ title: 'Acceso clientes', description: 'Accede a tu área de cliente.', path: '/acceso', noindex: true });
+    const seo = inject(SeoService);
+    effect(() => {
+      seo.set({
+        title: this.i18n.t('auth.seoTitle'),
+        description: this.i18n.t('auth.seoDescription'),
+        path: this.locale.url('login'),
+        language: this.locale.locale(),
+        noindex: true,
+      });
+    });
     void this.auth.load().then((user) => user && this.redirect(user.role));
   }
 
@@ -70,11 +92,7 @@ export class Login {
     const { name, email, password, consent } = this.form.getRawValue();
     const register = this.mode() === 'register';
     if (this.form.invalid || (register && (!name.trim() || password.length < 8 || !consent))) {
-      this.error.set(
-        register
-          ? 'Indica tu nombre, un email válido, una contraseña de al menos 8 caracteres y acepta la privacidad.'
-          : 'Introduce tu email y contraseña.',
-      );
+      this.error.set(this.i18n.t(register ? 'auth.invalidRegister' : 'auth.invalidLogin'));
       return;
     }
     this.sending.set(true);
@@ -84,15 +102,7 @@ export class Login {
       this.redirect(user.role);
     } catch (err) {
       const status = err instanceof HttpErrorResponse ? err.status : 0;
-      this.error.set(
-        status === 401
-          ? 'Email o contraseña incorrectos.'
-          : status === 409
-            ? 'Ya existe una cuenta con ese email. Accede con tu contraseña.'
-            : status === 429
-              ? 'Demasiados intentos. Espera unos minutos.'
-              : 'No hemos podido completar la operación. Inténtalo de nuevo.',
-      );
+      this.error.set(this.i18n.t(AUTH_ERRORS[status] ?? 'error.generic'));
     } finally {
       this.sending.set(false);
     }
@@ -100,6 +110,6 @@ export class Login {
 
   private redirect(role: string): void {
     const safe = this.returnUrl?.startsWith('/') && !this.returnUrl.startsWith('//') ? this.returnUrl : null;
-    void this.router.navigateByUrl(safe ?? (role === 'admin' ? '/admin' : '/cuenta'));
+    void this.router.navigateByUrl(safe ?? (role === 'admin' ? '/admin' : this.locale.url('account')));
   }
 }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, signal } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { formatDate } from '../core/models';
+import { formatDate } from '../../core/models';
 
 interface Message {
   id: number;

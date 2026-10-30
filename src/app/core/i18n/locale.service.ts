@@ -42,10 +42,13 @@ export class LocaleService {
 
   /**
    * The current page in the other language, used by the language switcher.
-   * Pages without a localized counterpart (admin, account, legacy redirects)
-   * fall back to that language's home, which is the previous behaviour.
+   * Only the path is returned: `RouterLink` cannot take a query string inside a
+   * string command (it would percent-encode it into the path), so the switcher
+   * preserves the live query string and fragment instead. Pages without a
+   * localized counterpart (admin, legacy redirects) fall back to that
+   * language's home, which is the previous behaviour.
    */
   switchUrl(): string {
-    return alternateUrl(this.currentUrl(), this.otherLocale()) ?? this.url('home', undefined, this.otherLocale());
+    return (alternateUrl(this.currentUrl(), this.otherLocale()) ?? this.url('home', undefined, this.otherLocale())).split(/[?#]/)[0];
   }
 }

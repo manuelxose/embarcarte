@@ -1,3 +1,7 @@
+import { LOCALE_INFO } from './i18n/locale.config';
+import { DEFAULT_LOCALE } from './i18n/locale.types';
+import type { Locale } from './i18n/locale.types';
+
 export interface User {
   id: number;
   email: string;
@@ -32,6 +36,21 @@ export interface AdminProduct extends ShopProduct {
 
 export type OrderStatus = 'pendiente' | 'pagado' | 'enviado' | 'completado' | 'cancelado';
 
+/** What the basket stores. Identity and money are language-independent. */
+export interface CartItem {
+  slug: string;
+  name: string;
+  /** English name when the product has one; baskets saved before M03 simply lack it. */
+  name_en?: string;
+  price_cents: number;
+  image: string;
+  qty: number;
+}
+
+/** Name for the active locale. Switching language never rewrites the basket. */
+export const cartItemName = (item: CartItem, locale: Locale): string =>
+  locale === 'en' ? item.name_en || item.name : item.name;
+
 export interface OrderSummary {
   id: number;
   status: OrderStatus;
@@ -53,12 +72,12 @@ export interface Order extends OrderSummary {
 
 export const ORDER_STATUSES: OrderStatus[] = ['pendiente', 'pagado', 'enviado', 'completado', 'cancelado'];
 
-export const formatPrice = (cents: number): string =>
-  (cents / 100).toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
+export const formatPrice = (cents: number, locale: Locale = DEFAULT_LOCALE): string =>
+  (cents / 100).toLocaleString(LOCALE_INFO[locale].intlLocale, { style: 'currency', currency: 'EUR' });
 
 /** Fecha 'YYYY-MM-DD HH:MM:SS' de SQLite (UTC) en formato local. */
-export const formatDate = (sqlDate: string): string =>
-  new Date(sqlDate.replace(' ', 'T') + 'Z').toLocaleDateString('es-ES', {
+export const formatDate = (sqlDate: string, locale: Locale = DEFAULT_LOCALE): string =>
+  new Date(sqlDate.replace(' ', 'T') + 'Z').toLocaleDateString(LOCALE_INFO[locale].intlLocale, {
     day: 'numeric',
     month: 'short',
     year: 'numeric',

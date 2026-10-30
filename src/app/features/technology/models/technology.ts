@@ -25,7 +25,7 @@ export interface TechnologySpec {
   readonly value: string;
 }
 
-/** Text that changes with the language. English omits what has no published translation yet. */
+/** Text that changes with the language. Every module is published in both locales. */
 export interface TechnologyContent {
   readonly name: string;
   readonly description: string;

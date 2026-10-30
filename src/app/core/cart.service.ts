@@ -1,14 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Injectable, PLATFORM_ID, computed, effect, inject, signal } from '@angular/core';
-import { ShopProduct } from './models';
-
-export interface CartItem {
-  slug: string;
-  name: string;
-  price_cents: number;
-  image: string;
-  qty: number;
-}
+import { CartItem, ShopProduct } from './models';
 
 const STORAGE_KEY = 'emb_cart';
 
@@ -38,8 +30,8 @@ export class CartService {
       if (existing) {
         return items.map((i) => (i.slug === product.slug ? { ...i, qty: Math.min(i.qty + qty, 99) } : i));
       }
-      const { slug, name, price_cents, image } = product;
-      return [...items, { slug, name, price_cents, image, qty }];
+      const { slug, name, name_en, price_cents, image } = product;
+      return [...items, { slug, name, name_en: name_en || '', price_cents, image, qty }];
     });
   }
 

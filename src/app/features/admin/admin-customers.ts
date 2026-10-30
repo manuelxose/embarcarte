@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, computed, inject, signal } from '@angular/core';
-import { formatDate, formatPrice } from '../core/models';
+import { formatDate, formatPrice } from '../../core/models';
 
 interface Customer {
   id: number;

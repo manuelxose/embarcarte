@@ -17,6 +17,7 @@ export type RouteId =
   | 'cart'
   | 'login'
   | 'account'
+  | 'orderDetail'
   | 'legalNotice'
   | 'privacy'
   | 'cookies'
@@ -52,6 +53,9 @@ export const LOCALIZED_ROUTES = {
   cart: { es: 'carrito', en: 'en/cart' },
   login: { es: 'acceso', en: 'en/login' },
   account: { es: 'cuenta', en: 'en/account' },
+  // Private page, but the two URLs are still translations of each other: the language
+  // switcher must keep the order id instead of dropping the customer on the other home.
+  orderDetail: { es: 'cuenta/pedidos/:id', en: 'en/account/orders/:id' },
   legalNotice: { es: 'aviso-legal', en: 'en/legal-notice' },
   privacy: { es: 'privacidad', en: 'en/privacy' },
   cookies: { es: 'cookies', en: 'en/cookies' },
