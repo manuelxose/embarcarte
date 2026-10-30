@@ -27,10 +27,10 @@ const summarize = (text: string, max = 158): string =>
           </nav>
           <div class="detail-grid">
             <div class="product-photo"><app-product-image [src]="p.image" [alt]="textOf(p).name" /></div>
-            <div [attr.lang]="contentLang()">
-              <p class="eyebrow">{{ textOf(p).category }}</p>
-              <h1 class="display h-md">{{ textOf(p).name }}</h1>
-              <p class="lead muted" style="margin: 18px 0 24px">{{ textOf(p).summary }}</p>
+            <div>
+              <p class="eyebrow" [attr.lang]="contentLang()">{{ textOf(p).category }}</p>
+              <h1 class="display h-md" [attr.lang]="contentLang()">{{ textOf(p).name }}</h1>
+              <p class="lead muted" [attr.lang]="contentLang()" style="margin: 18px 0 24px">{{ textOf(p).summary }}</p>
               <p class="price" style="font-size: 30px">{{ price(p.price_cents) }} <span class="small muted">{{ i18n.t('shopDetail.vat') }}</span></p>
               @if (p.stock > 0) {
                 <div class="hero-actions" style="margin: 24px 0">
@@ -49,7 +49,7 @@ const summarize = (text: string, max = 158): string =>
                 <p><span class="badge off">{{ i18n.t('shop.soldOut') }}</span></p>
                 <a class="text-link" [routerLink]="locale.url('contact')" [queryParams]="{ tema: 'tienda' }">{{ i18n.t('shopDetail.notify') }} →</a>
               }
-              <div class="prose" style="margin-top: 32px; white-space: pre-line">{{ textOf(p).description }}</div>
+              <div class="prose" [attr.lang]="contentLang()" style="margin-top: 32px; white-space: pre-line">{{ textOf(p).description }}</div>
             </div>
           </div>
         </div>
@@ -85,7 +85,7 @@ export class ShopDetail {
   protected textOf = (product: ShopProduct) => productText(product, this.locale.locale());
   protected price = (cents: number) => formatPrice(cents, this.locale.locale());
 
-  /** The Spanish product copy shown on an English page is declared as Spanish for screen readers. */
+  /** Marks product copy that falls back to Spanish while the page itself is English. */
   protected readonly contentLang = computed(() => {
     const product = this.product();
     return product && this.locale.locale() === 'en' && !productText(product, 'en').translated ? 'es' : null;

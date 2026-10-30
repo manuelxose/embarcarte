@@ -17,7 +17,7 @@ export interface ProductText {
  * on the locale.
  */
 export const productText = (product: ShopProduct, locale: Locale): ProductText => {
-  const translated = Boolean(product.name_en && product.summary_en && product.description_en);
+  const translated = Boolean(product.name_en && product.category_en && product.summary_en && product.description_en);
   if (locale === 'es') {
     return { name: product.name, category: product.category, summary: product.summary, description: product.description, translated };
   }

@@ -68,6 +68,11 @@ try {
   const untranslated = await request('/api/admin/products', { cookie: admin.cookie, body: { slug: 'zeta-sin-traducir', name: 'Zeta sin traducir', category: 'Prueba', summary: 'Solo español', description: 'Descripción solo en español', name_en: '', category_en: '', summary_en: '', description_en: '', price_cents: 3000, stock: 5, image: '', active: true } });
   assert.equal(untranslated.response.status, 201);
 
+  // A product missing only the English category is not a translated page either:
+  // the category is published copy, so the same gate must cover it.
+  const partialTranslation = await request('/api/admin/products', { cookie: admin.cookie, body: { slug: 'sin-categoria-en', name: 'Producto parcial', category: 'Prueba', summary: 'Resumen', description: 'Descripción', name_en: 'Partial product', category_en: '', summary_en: 'Summary', description_en: 'Description', price_cents: 4000, stock: 1, image: '', active: true } });
+  assert.equal(partialTranslation.response.status, 201);
+
   // --- bilingual catalogue --------------------------------------------------
   const spanishList = await page('/tienda');
   const englishList = await page('/en/shop');
@@ -131,8 +136,21 @@ try {
   assert.match(robotsOf(enUntranslated), /^noindex/, 'the English page of an untranslated product is not indexable');
   assert.deepEqual(alternatesOf(enUntranslated), [], 'the unindexed English page publishes no alternate');
   assert.ok(enUntranslated.includes('Zeta sin traducir'), 'the English URL still renders, with the Spanish content');
-  assert.match(visible(enUntranslated), /<div lang="es"/, 'the Spanish content is declared as Spanish');
+  // Only the product-derived nodes are declared as Spanish: the surrounding
+  // interface (stock label, buttons, price) stays in the page language.
+  assert.match(visible(enUntranslated), /lang="es"[^>]*>Zeta sin traducir/, 'the Spanish product name is declared as Spanish');
+  assert.match(visible(enUntranslated), /lang="es"[^>]*>Descripción solo en español/, 'the Spanish description is declared as Spanish');
+  assert.doesNotMatch(visible(enUntranslated), /<div lang="es"/, 'the interface around the product is not declared as Spanish');
+  assert.match(visible(enUntranslated), /Add to basket|Out of stock/, 'the interface stays in English');
   assert.equal(canonicalOf(enUntranslated), 'https://embarcarte.com/en/shop/zeta-sin-traducir', 'it canonicalizes to itself, never to the Spanish page');
+
+  // The same rule in the catalogue: fallback Spanish copy is marked, the rest is not.
+  assert.match(visible(enMarkup), /lang="es"[^>]*>Zeta sin traducir/, 'the English catalogue marks the Spanish name of an untranslated product');
+
+  // A product missing only the English category follows the same rule.
+  const partialEn = (await page('/en/shop/sin-categoria-en')).markup;
+  assert.match(robotsOf(partialEn), /^noindex/, 'a product with no English category is not indexed');
+  assert.deepEqual(alternatesOf(partialEn), [], 'it publishes no alternate');
 
   // The switcher never percent-encodes a query string into the path, which is what
   // a string `routerLink` does when the string carries `?...`.
@@ -155,6 +173,8 @@ try {
   assert.match(sitemap, /<loc>https:\/\/embarcarte\.com\/tienda\/zeta-sin-traducir<\/loc>/, 'an untranslated product is listed in Spanish');
   assert.doesNotMatch(sitemap, /\/en\/shop\/zeta-sin-traducir/, 'its English URL is not listed');
   assert.doesNotMatch(sitemap, /\/shop\/sample\//, 'sample pages are not listed');
+  assert.doesNotMatch(sitemap, /\/en\/shop\/sin-categoria-en/, 'a product without an English category is not listed in English');
+  assert.match(sitemap, /<loc>https:\/\/embarcarte\.com\/tienda\/sin-categoria-en<\/loc>/, 'but it is listed in Spanish');
   for (const privatePath of ['/carrito', '/en/cart', '/acceso', '/en/login', '/cuenta', '/en/account', '/admin', '/no-existe'])
     assert.doesNotMatch(sitemap, new RegExp(`<loc>[^<]*${privatePath}</loc>`), `${privatePath} is not listed`);
   // Alternates are reciprocal: every hreflang target is itself a <loc>.

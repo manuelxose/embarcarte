@@ -321,6 +321,11 @@ try {
   assert.equal(productText(halfTranslated, 'en').description, 'Descripción', 'a missing field falls back to Spanish');
   assert.equal(productText(halfTranslated, 'en').translated, false, 'a product is translated only when all four fields exist');
   assert.equal(productText(halfTranslated, 'en').name, 'Anemometer', 'the fallback is per field, not all-or-nothing');
+  assert.equal(
+    productText({ ...product, category_en: '' }, 'en').translated,
+    false,
+    'the category counts towards the translation, because it is published',
+  );
 
   // Money and dates: the amount is identical, only the formatting is localized.
   // (Spanish CLDR only groups numbers from five digits, so 1234,56 € is correct.)

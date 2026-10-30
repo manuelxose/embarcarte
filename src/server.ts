@@ -76,15 +76,16 @@ const sitemapAlternates = (path: string, published: ReadonlySet<string>): string
 };
 
 app.get('/sitemap.xml', (_req, res) => {
-  const products = db.prepare('SELECT slug, updated_at, name_en, summary_en, description_en FROM products WHERE active = 1').all() as {
+  const products = db.prepare('SELECT slug, updated_at, name_en, category_en, summary_en, description_en FROM products WHERE active = 1').all() as {
     slug: string;
     updated_at: string;
     name_en: string;
+    category_en: string;
     summary_en: string;
     description_en: string;
   }[];
   const translated = products
-    .filter((p) => p.name_en && p.summary_en && p.description_en)
+    .filter((p) => p.name_en && p.category_en && p.summary_en && p.description_en)
     .map((p) => ({ path: `/en/shop/${p.slug}`, lastmod: p.updated_at.slice(0, 10) }));
   const entries = [
     ...prerenderedPaths.map((path) => ({ path, lastmod: '' })),

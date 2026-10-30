@@ -53,9 +53,9 @@ import { productText } from './product-text';
               <article class="service-card">
                 <div class="card-image"><app-product-image [src]="p.image" [alt]="textOf(p).name" /></div>
                 <div class="card-content">
-                  <span class="card-number">{{ textOf(p).category }}</span>
-                  <h3><a class="stretched" [routerLink]="locale.url('shopDetail', { slug: p.slug })">{{ textOf(p).name }}</a></h3>
-                  <p>{{ textOf(p).summary }}</p>
+                  <span class="card-number" [attr.lang]="contentLangOf(p)">{{ textOf(p).category }}</span>
+                  <h3><a class="stretched" [attr.lang]="contentLangOf(p)" [routerLink]="locale.url('shopDetail', { slug: p.slug })">{{ textOf(p).name }}</a></h3>
+                  <p [attr.lang]="contentLangOf(p)">{{ textOf(p).summary }}</p>
                   <div class="arrow-link">
                     <span class="price">{{ price(p.price_cents) }}</span>
                     @if (p.stock > 0) {
@@ -88,6 +88,9 @@ export class ShopList {
   protected sampleOf = (sample: SampleProduct) => sampleText(sample, this.locale.locale());
   protected textOf = (product: ShopProduct) => productText(product, this.locale.locale());
   protected price = (cents: number) => formatPrice(cents, this.locale.locale());
+  /** Marks product copy that falls back to Spanish while the page itself is English. */
+  protected contentLangOf = (product: ShopProduct) =>
+    this.locale.locale() === 'en' && !productText(product, 'en').translated ? 'es' : null;
 
   constructor() {
     const seo = inject(SeoService);

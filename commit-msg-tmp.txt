@@ -1,0 +1,12 @@
+fix(m03): close the three review findings on translated product pages
+
+- The translation gate ignored category_en, so a product with only that field
+  missing was indexed, hreflang-paired and sitemapped in English while showing
+  a Spanish category. The gate and the sitemap filter now agree.
+- The lang="es" marker covered the whole product column, so English interface
+  labels were announced as Spanish. It now marks only the product-derived
+  nodes, in the detail page and in the catalogue cards.
+
+Each rule is locked by an assertion in test:i18n and test:commerce.
+
+Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>
