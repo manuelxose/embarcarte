@@ -79,51 +79,65 @@ export const markACompact = () => {
  * Construction: a 270° calibrated arc open at the lower right (so it cannot close into a
  * seal/badge), one heavy radial bearing index at 0°, one square position datum at the
  * centre, two asymmetric radial ticks. No rose, no cardinal letters, no circle-dot dial.
+ *
+ * WEIGHT (revision 2, master set): a curved stroke of the same measured width reads visually
+ * heavier than a straight stem, so optical parity with the 16 % wordmark stem is reached below
+ * 16 %. Two prototypes established the range: 2.5 units (8.6 % of ink height) read thin beside
+ * the letters, and 4.4 units (14.3 %) read letter-heavy (the arc started to read as a "G").
+ * The adopted value, 3.2 units (10.4 %), is the midpoint that measured visually level with the
+ * wordmark on the 1:1 lockup proof. The index stays heavier than the ticks (3.4 vs 2.0, per
+ * brief §3.4), the datum is 3.4 square (never a circle-dot), and the ticks are asymmetric
+ * (4.6 and 2.4 long).
  */
 const B_CX = 16,
   B_CY = 16,
   B_R = 13,
-  B_W = 2.5;
+  B_W = 3.2;
 
 export const markB = () => {
   const parts = [arcBandPath(B_CX, B_CY, B_R, B_W, 90, 360)];
-  parts.push(pathData([R(B_CX - 1.75, 1, 3.5, B_CY - 1)])); // bearing index, heavier
-  parts.push(pathData([R(B_CX - 1.5, B_CY - 1.5, 3, 3)])); // square position datum
-  parts.push(pathData([radialTick(B_CX, B_CY, 2, 11, 15.5, 205)]));
-  parts.push(pathData([radialTick(B_CX, B_CY, 2, 12, 14, 315)]));
+  parts.push(pathData([R(B_CX - 1.7, 0.6, 3.4, B_CY - 0.6)])); // bearing index, heavier
+  parts.push(pathData([R(B_CX - 1.7, B_CY - 1.7, 3.4, 3.4)])); // square position datum
+  parts.push(pathData([radialTick(B_CX, B_CY, 1.8, 14.4, 16.2, 205)]));
+  parts.push(pathData([radialTick(B_CX, B_CY, 1.8, 14.4, 15.7, 315)]));
   const ro = B_R + B_W / 2;
   return {
     id: 'B',
     name: 'BEARING INDEX',
     viewBox: [32, 32],
     parts,
-    ink: { x0: 1.53, y0: 1, x1: B_CX + ro, y1: B_CY + ro },
-    baseline: B_CY + ro,
+    ink: { x0: 0.94, y0: 0.6, x1: 30.6, y1: 30.6 },
+    baseline: 30.6,
     grid: 32,
     strokeOf32: B_W,
-    notes: '270° arc 2.5 thick r=13, index 3.5 wide, datum 3×3, ticks 4.5 and 2 long.',
+    notes:
+      '270° arc 3.2 thick (10.4 % of the 30.0-unit ink height; optically level with the 16 % wordmark stem because curved strokes read heavier) r=13, index 3.4 wide, datum 3.4×3.4, ticks 2.0 wide and 4.6 / 2.4 long.',
+    translate: [0.23, 0.4],
   };
 };
 
 export const markBCompact = () => {
   const cx = 8,
     cy = 8,
-    r = 6.6,
-    w = 2;
+    r = 6.5,
+    w = 2.2;
   const parts = [arcBandPath(cx, cy, r, w, 90, 360)];
-  parts.push(pathData([R(cx - 1.5, 0.8, 3, cy - 0.8)]));
-  parts.push(pathData([R(cx - 1.25, cy - 1.25, 2.5, 2.5)]));
-  parts.push(pathData([radialTick(cx, cy, 1.6, 5.4, 7.8, 210)]));
+  parts.push(pathData([R(cx - 1.1, 0.3, 2.2, cy - 0.3)]));
+  parts.push(pathData([R(cx - 1, cy - 1, 2, 2)]));
+  parts.push(pathData([radialTick(cx, cy, 1.2, 7.4, 8.4, 205)]));
+  parts.push(pathData([radialTick(cx, cy, 1.2, 7.4, 8, 315)]));
   const ro = r + w / 2;
   return {
     id: 'B16',
     name: 'BEARING INDEX reduced',
     viewBox: [16, 16],
     parts,
-    ink: { x0: cx - ro, y0: 0.8, x1: cx + ro, y1: cy + ro },
-    baseline: cy + ro,
+    ink: { x0: 0.2, y0: 0.3, x1: 15.6, y1: 15.6 },
+    baseline: 15.6,
     grid: 16,
-    notes: 'arc 2 on the 16 grid, index + datum + one tick retained, second tick dropped.',
+    translate: [0.135, 0.05],
+    notes:
+      'own 16-unit coordinates (not a scaled copy): arc 2.2 thick r=6.5, index 2.2 wide, datum 2×2, one tick 2.3 long retained.',
   };
 };
 

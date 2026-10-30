@@ -11,7 +11,7 @@
 | Author role | IP/brand governance reviewer (AI agent; no legal qualification, no filing authority, no search-agent role) |
 | Owner of the decision | Company owner + qualified trademark counsel / professional search agent (TM-01, TM-02) |
 | Date of this revision | 2026-10-30 |
-| Revision | **Rev. 3 — FROZEN binding executed. Shortlist recorded (B + C, A dropped); internal preference **B — Bearing index** (`PREFERRED_PROVISIONAL` only); 21 files bound with helper-printed SHA-256/bytes/viewBox (§9.7); material finding: the frozen MASTER lockups/mark are built on the **C** symbol, not B — flagged for the Lead, unresolved (§9.7.2). Only the professional check remains open.** |
+| Revision | **Rev. 4 — FROZEN v2 delete-and-rebind after the master set was reissued from construction B. Shortlist recorded (B + C, A dropped); internal preference **B — Bearing index** (`PREFERRED_PROVISIONAL` only); **35 files bound** with helper-printed SHA-256/bytes/viewBox (§9.7); the v1 C-based master finding is **CLOSED with evidence** and its history preserved (§9.7.2/§9.7.3). Only the professional check remains open.** |
 | Evidence base | This document + `MC-04-VISUAL-IDENTITY-BRIEF.md` §3, §9, §10 + `TRADEMARK-CLEARANCE-RESEARCH.md` + `brand-identity.contract.json` + the public sources listed in §7.3 |
 | Machine-readable status | see §0 |
 
@@ -187,9 +187,9 @@ can verify against the SVG source files:
 | Candidate | Source location | State at Rev. 2 (verified 2026-10-30, after the shortlist decision) |
 | --- | --- | --- |
 | Territory A — Isobath (**dropped**) | `docs/marea/brand/territories/` | construction prototype exists (`territory-a-construction.svg`, proof sheet, comparison sheet); **not bound** — dropped at the shortlist, retained only as the record of what was rejected |
-| Territory B — Bearing index (**shortlisted; internal preference `PREFERRED_PROVISIONAL` only**) | same | construction prototype exists (`territory-b-construction.svg`); **BOUND after FROZEN** — five B files in §9.7 |
-| Territory C — Signal trunk (**shortlisted strategic alternative; not preferred**) | same | construction prototype exists (`territory-c-construction.svg`); **BOUND after FROZEN** — five C files in §9.7; carries the documented bar-chart/equaliser reading failure at app-icon scale (§9.4a) |
-| Master wordmark / lockups | `docs/marea/brand/assets/logo/` | **exist**: `marea-lockup-primary.svg`, `marea-lockup-mono.svg`, `marea-lockup-reversed.svg`, `marea-wordmark.svg`, `marea-mark-compact.svg`, `marea-mark-reduced-16.svg`, `marea-construction-grid.svg`, six family lockups. Not bound: the lockup alignment fix is part of the C preference conditions (§9) |
+| Territory B — Bearing index (**shortlisted; internal preference `PREFERRED_PROVISIONAL` only**) | same | construction prototype exists (`territory-b-construction.svg`); **BOUND v2 after FROZEN** — five B files in §9.7, and the master set is now reissued from B |
+| Territory C — Signal trunk (**shortlisted strategic alternative; not preferred**) | same | construction prototype exists (`territory-c-construction.svg`); **BOUND v2** — five C files in §9.7 (hashes byte-identical to v1); carries the documented bar-chart/equaliser reading failure at app-icon scale (§9.4a) |
+| Master wordmark / lockups | `docs/marea/brand/assets/logo/` | **reissued from construction B and bound v2**: `marea-wordmark.svg`, `marea-lockup-primary/mono/reversed.svg`, `marea-mark-compact.svg`, `marea-mark-reduced-16.svg`, `marea-construction-grid.svg`, and the nine `family/marea-family-*-lockup.svg` — see §9.7 |
 | Evidence renders | `docs/marea/brand/territories/evidence/visual-check/` | **exist** (deterministic renders of our own SVG/HTML; see D-16 evidence note in `evidence/governance/MC-04-PROHIBITED-PATTERN-SCAN.md`) |
 
 > **Binding rule (unchanged, now gated on FROZEN).** When the Lead sends the FROZEN signal, §5/§9 gain the
@@ -542,7 +542,7 @@ review. This is an **internal, provisional** selection: it is **not** adoption, 
 | Strategic alternative (still shortlisted) | **Territory C**, kept in the shortlist for professional review as the **strategic alternative** with the best system extensibility — but it carries a **documented reading failure at app-icon scale**: rendered at 512 px and 1024 app-icon scale it reads as a **bar chart / histogram / equaliser** (rail as plinth, three stepped keys), which meets the brief §3.5 kill criterion. The review should consider whether a future construction can fix that failure |
 | Reading evidence on which the preference rests | The Lead rendered all three symbols at app-icon / lockup scale and applied the brief's kill criteria: A reads as a Wi-Fi / signal / sound-wave icon (§3.3 kill criterion, dropped); C reads as bar chart/histogram/equaliser (§3.5 kill criterion, condition not satisfied → not preferred); B reads as a heading-instrument fragment (calibrated arc + radial index + square datum) with its own residual letter-"C"/seal/compass-app risk |
 | Geometry descriptions | §5.2 (B) and §5.3 (C), transcribed from the authoritative construction hypotheses (brief §3.4/§3.5). The written geometry is the dossier's, and it is **not yet verified against the frozen files** |
-| Bound source files (path / bytes / SHA-256 / viewBox) | **BOUND — §9.7** (21 files, helper-printed, bound 2026-10-30T18:48:48+01:00 after the FROZEN signal) |
+| Bound source files (path / bytes / SHA-256 / viewBox) | **BOUND v2 — §9.7** (35 files, helper-printed, rebound 2026-10-30T19:11:46+01:00 after the B reissue; the v1 table is archived, not edited) |
 | Counsel package (TM-01/TM-02) | §9.3 inputs I-1…I-9; still PENDING because the frozen artwork is the input |
 
 **State of the four status fields:** unchanged — `ORIGINALITY_PROFESSIONAL_CHECK = PENDING`,
@@ -692,126 +692,162 @@ This caveat must travel with the shortlist into the decision record and into the
 5. Nothing about choosing or re-drawing B or C, and nothing about a contour/arc device in B, reduces the
    earlier-right concern. The gate is `PENDING` for both shortlisted candidates (§6.5).
 
-### 9.7 BOUND FILES — FROZEN binding executed (2026-10-30T18:48:48+01:00)
+### 9.7 BOUND FILES — FROZEN **v2** binding (delete-and-rebind, 2026-10-30T19:11:46+01:00)
 
-**Binding status:** `BOUND`. Binding was performed **after** the Lead's FROZEN signal of 2026-10-30
-(“IdentityVector declares the logo/mark geometry final”; 12 SVGs in `assets/logo/`, measured report
-`territories/evidence/svg-geometry-report.{md,json}`). **No value below was typed by hand**: every path,
-byte count, SHA-256 and `viewBox` is copied from `rev2-bind-helper.ps1` output (SHA-256 via
-`Get-FileHash`), captured in `docs/marea/brand/evidence/governance/MC-04-D16-BINDING-EVIDENCE.txt`
-(42 kB, 21 files, helper failures 0). No prior binding existed, so there was nothing to delete; **no value
-was silently rebound**. If a frozen file is later reopened, the old hash is deleted and the file rebound,
-logged in §11.
+**Binding status:** `BOUND v2`. This binding **supersedes and replaces wholesale** the v1 binding of
+2026-10-30T18:48:48+01:00 (21 files), which was performed on the OLD master set. The v1 values were **not
+edited in place**: they remain intact in the archived evidence file
+`evidence/governance/MC-04-D16-BINDING-EVIDENCE-v1-2026-10-30T184848.txt` and in the §11 change log. This is
+a **delete-and-rebind**: the live table below is entirely new.
+
+**Why v2 exists (history preserved):** in v1, the master lockups and compact mark were found to be built on
+the **C** construction while the recorded internal preference was **B**. That was flagged as a material
+finding (§9.7.2 v1 wording, retained in the archive). IdentityVector then reissued the whole master set from
+**construction B** with a corrected symbol weight (arc 3.2 units = 10.4 % of ink height, after rejecting
+8.6 % and 14.3 %) and rewritten `<desc>` text, and AssetProduction re-rendered everything with `--all`.
+The output files were regenerated at 19:10 (after the v1 binding), so v2 re-binds them.
+
+**Nothing in this table was typed by hand.** Every path, byte count, SHA-256 and `viewBox` is copied from
+`rev2-bind-helper.ps1` output (SHA-256 via `Get-FileHash`), captured in
+`evidence/governance/MC-04-D16-BINDING-EVIDENCE.txt` (**35 files, helper failures 0**). A reissuance of any
+of these files invalidates its row and requires another logged delete-and-rebind (§9.8).
 
 | Role | Path | Bytes | SHA-256 | viewBox |
 | --- | --- | ---: | --- | --- |
-| C1 Territory B — construction drawing | `docs/marea/brand/territories/territory-b-construction.svg` | 3,677 | `1fbc4336f5e3e4a1c5fdd05252f98a5eaad048644583f597566d1ec1e7ed8149` | `0 0 41 42.5` |
-| C1 Territory B — lockup (primary) | `docs/marea/brand/territories/territory-b-lockup-primary.svg` | 2,036 | `ce9acde228f835674166cb3d9b60ad9e3c3bc5149a51f27d4ece4bd583eb2922` | `0 0 704.15 200` |
-| C1 Territory B — mark compact | `docs/marea/brand/territories/territory-b-mark-compact.svg` | 672 | `eb11a10ae2df915f85314e57e6f7671c7827e8c9d1a79e0e27f7aa2064543ad9` | `0 0 16 16` |
-| C1 Territory B — mark mono | `docs/marea/brand/territories/territory-b-mark-mono.svg` | 773 | `055b1ebcc447bac485ddcf7b19987145725af8625a3994b834d31deda900e2c3` | `0 0 32 32` |
-| C1 Territory B — mark reversed | `docs/marea/brand/territories/territory-b-mark-reversed.svg` | 777 | `352150063e3940b5d1842160a0804c0eddb21e2c022ccc43a185b763401848d0` | `0 0 32 32` |
-| C2 Territory C — construction drawing | `docs/marea/brand/territories/territory-c-construction.svg` | 3,638 | `fa7ee3f11fe96895951de727e6a1182b865c77507c24122666a009a114586972` | `0 0 33 34.5` |
-| C2 Territory C — lockup (primary) | `docs/marea/brand/territories/territory-c-lockup-primary.svg` | 1,986 | `3aa4668353c348a4e8ef2300a3d6c46704fcfb9fb66afa66c7d73c251449fa7a` | `0 0 760.96 200` |
-| C2 Territory C — mark compact | `docs/marea/brand/territories/territory-c-mark-compact.svg` | 784 | `4499fc6908eb2d80eb9ac8f436c29a1525490375b9fcdf26178cb95b90acc1a6` | `0 0 16 16` |
-| C2 Territory C — mark mono | `docs/marea/brand/territories/territory-c-mark-mono.svg` | 774 | `bb4e43a94c0e14d532b45f44c31bde193b014fac7b0eed1b14206576106686f3` | `0 0 24 24` |
-| C2 Territory C — mark reversed | `docs/marea/brand/territories/territory-c-mark-reversed.svg` | 778 | `ef167fb5eea12d9665c5b431ff477ca203b3b1653363c68dde645c10e4d10117` | `0 0 24 24` |
-| MASTER wordmark (symbol-free) | `docs/marea/brand/assets/logo/marea-wordmark.svg` | 1,425 | `93654045374eb303ef55204cf628f8963a9e86efad2b1e5a0cacb8430eb1cf79` | `0 0 430.96 100` |
-| MASTER lockup primary — **built on C symbol** | `docs/marea/brand/assets/logo/marea-lockup-primary.svg` | 1,982 | `2cb7af0e6e5fb9b84e142832bf7244574813190c91246df547b3cc2850196fd6` | `0 0 760.96 200` |
-| MASTER lockup mono — **built on C symbol** | `docs/marea/brand/assets/logo/marea-lockup-mono.svg` | 1,982 | `cb1afd8b79d8778f13e188abadad431cb76b952c0509291ef461be2352701065` | `0 0 760.96 200` |
-| MASTER lockup reversed — **built on C symbol** | `docs/marea/brand/assets/logo/marea-lockup-reversed.svg` | 1,982 | `8db0ee69798c67d00aa176634bd75f7bd610bead88438a303f59190c2abf7576` | `0 0 760.96 200` |
-| MASTER mark compact — **built on C symbol** | `docs/marea/brand/assets/logo/marea-mark-compact.svg` | 935 | `8b1f0dcd21872e2c619424aa1fc19fb9fd58d565f078235f924e8cb32c5f5cec` | `0 0 24 24` |
+| B construction drawing | `docs/marea/brand/territories/territory-b-construction.svg` | 3,704 | `06baac8b3e807886e80e63e320f53387e8fed1540b22a248eecabde466385c3b` | `0 0 41 42.5` |
+| B lockup (primary) | `docs/marea/brand/territories/territory-b-lockup-primary.svg` | 2,020 | `25fd318e23f04046dd410d475276344a86a752365f31499a9eca7378664a5e62` | `0 0 704.83 200` |
+| B mark compact | `docs/marea/brand/territories/territory-b-mark-compact.svg` | 771 | `2c7e0b09d63f5b27b2f7500dc3ba9f7486ccfcd044921d5e6628149538ce5292` | `0 0 16 16` |
+| B mark mono | `docs/marea/brand/territories/territory-b-mark-mono.svg` | 802 | `1def3d1cb0b612b4dc2ca0e2efd4fc1f3f56548450d47630e1a5594cb4463b85` | `0 0 32 32` |
+| B mark reversed | `docs/marea/brand/territories/territory-b-mark-reversed.svg` | 806 | `0265a3c77334b5e4da071e9eab1a23d155353a8104254f94058cb181887c3273` | `0 0 32 32` |
+| C construction drawing | `docs/marea/brand/territories/territory-c-construction.svg` | 3,638 | `fa7ee3f11fe96895951de727e6a1182b865c77507c24122666a009a114586972` | `0 0 33 34.5` |
+| C lockup (primary) | `docs/marea/brand/territories/territory-c-lockup-primary.svg` | 1,986 | `3aa4668353c348a4e8ef2300a3d6c46704fcfb9fb66afa66c7d73c251449fa7a` | `0 0 760.96 200` |
+| C mark compact | `docs/marea/brand/territories/territory-c-mark-compact.svg` | 784 | `4499fc6908eb2d80eb9ac8f436c29a1525490375b9fcdf26178cb95b90acc1a6` | `0 0 16 16` |
+| C mark mono | `docs/marea/brand/territories/territory-c-mark-mono.svg` | 774 | `bb4e43a94c0e14d532b45f44c31bde193b014fac7b0eed1b14206576106686f3` | `0 0 24 24` |
+| C mark reversed | `docs/marea/brand/territories/territory-c-mark-reversed.svg` | 778 | `ef167fb5eea12d9665c5b431ff477ca203b3b1653363c68dde645c10e4d10117` | `0 0 24 24` |
+| MASTER wordmark | `docs/marea/brand/assets/logo/marea-wordmark.svg` | 1,425 | `93654045374eb303ef55204cf628f8963a9e86efad2b1e5a0cacb8430eb1cf79` | `0 0 430.96 100` |
+| MASTER lockup primary (B) | `docs/marea/brand/assets/logo/marea-lockup-primary.svg` | 2,016 | `e71773a2050046492aad09c38273ef498a295bff22b7b82b05def8612f56482e` | `0 0 704.83 200` |
+| MASTER lockup mono (B) | `docs/marea/brand/assets/logo/marea-lockup-mono.svg` | 2,016 | `85364871d92893af0adccfcefa5dfabea181edc9e5967d6e00b186ff6a52c621` | `0 0 704.83 200` |
+| MASTER lockup reversed (B) | `docs/marea/brand/assets/logo/marea-lockup-reversed.svg` | 2,016 | `4c02043b18e320febc16060fee6852541468cf2f0c99f405d9cbc85a3affdd5c` | `0 0 704.83 200` |
+| MASTER mark compact (B) | `docs/marea/brand/assets/logo/marea-mark-compact.svg` | 993 | `07e446790f2be90de5b892a926569ff9eddea1cda4ea5b0f153c549ce32f3f67` | `0 0 32 32` |
+| MASTER mark reduced-16 (B) | `docs/marea/brand/assets/logo/marea-mark-reduced-16.svg` | 865 | `5a2cd457b5f6ab4d87f28148f64ee1498cabe6df14c9aa1e0662dd142a4d0a61` | `0 0 16 16` |
+| MASTER construction grid (B) | `docs/marea/brand/assets/logo/marea-construction-grid.svg` | 3,218 | `acfe49ca81a18a2a24b03662a86bf4f2d28e1584fc877b1bf2bcaf9ac2d532d2` | `0 0 44 44` |
+| FAMILY NAV lockup | `docs/marea/brand/assets/logo/family/marea-family-nav-lockup.svg` | 2,526 | `8133a9a543ef13c80164731aa9fd7ee8a98b99cc52c817085bab6c9b2ff7d796` | `0 0 908.6 200` |
+| FAMILY HUB lockup | `docs/marea/brand/assets/logo/family/marea-family-hub-lockup.svg` | 2,622 | `c15fc899f1da09275ba1e3ffd3c342a2defbab9aaeda28aa77e4ca8083ec66e5` | `0 0 900.23 200` |
+| FAMILY AIS lockup | `docs/marea/brand/assets/logo/family/marea-family-ais-lockup.svg` | 2,551 | `6a28e6c2029283f133330f2e486d872b091566ed97f45b8383499e6a3bd3cbde` | `0 0 853.66 200` |
+| FAMILY PILOT lockup | `docs/marea/brand/assets/logo/family/marea-family-pilot-lockup.svg` | 2,642 | `3193dd4998626e562f0707a31e2e1f0cf00552fd64c39a5e68c8ff9ff0883936` | `0 0 946.43 200` |
+| FAMILY SENSE lockup | `docs/marea/brand/assets/logo/family/marea-family-sense-lockup.svg` | 3,017 | `0240daf9777c0ff6e2a5851ed712ba7de4195875d6e17ef75a08a335fd9e8ba0` | `0 0 1008.73 200` |
+| FAMILY WATCH lockup | `docs/marea/brand/assets/logo/family/marea-family-watch-lockup.svg` | 2,787 | `cb0e123dfbb7740c985fb8e3f347a8e8deeab76303a61194f745bd5dd157cf7e` | `0 0 1039.32 200` |
+| FAMILY DISPLAY lockup | `docs/marea/brand/assets/logo/family/marea-family-display-lockup.svg` | 3,121 | `3c3ff63be098a34d6b87f262d7b7e553d7ce4c87875646823fc94cde5a080e4c` | `0 0 1068.46 200` |
+| FAMILY WEATHER lockup | `docs/marea/brand/assets/logo/family/marea-family-weather-lockup.svg` | 3,242 | `016eda57bf74f48d8f4a78d8117d574e41b696f6adea6834797be736dac68915` | `0 0 1165.32 200` |
+| FAMILY FLEET lockup | `docs/marea/brand/assets/logo/family/marea-family-fleet-lockup.svg` | 2,736 | `348358dee3d9dd423f5d347df048a047ed411113ca17f6741097daed0847a026` | `0 0 992.63 200` |
 | D1 AIS receive-only diagram | `docs/marea/brand/assets/diagrams/marea-ais-receive-only.svg` | 16,994 | `1f244922802ccea146deafe417bcb1854cd7458a2bd4aa0f58ed0866bdf91904` | `0 0 1200 880` |
 | D2 ecosystem overview diagram | `docs/marea/brand/assets/diagrams/marea-ecosystem-overview.svg` | 22,114 | `c4c5af483617905c14a1880c6d230e466c230f7d9e17d4ceaeb54d9b4019d781` | `0 0 1200 1000` |
 | D3 PILOT supervised boundary diagram | `docs/marea/brand/assets/diagrams/marea-pilot-supervised-boundary.svg` | 21,185 | `54e9e63b41b720bf612d6ae98e61290ff4841e7ba94f67f524a172d8fcf3f649` | `0 0 1200 1020` |
 | S1 icon/instrument specimen index | `docs/marea/brand/specimens/index.html` | 49,246 | `68e1a8efde61e2dafed07ddd0accece626d783a40cbee7706439605d84b09b58` | N/A (HTML document) |
 | S2 alerts specimen | `docs/marea/brand/specimens/alerts.html` | 27,820 | `cfec16547744d50708e5720a2dd00a43e7617bdeaa45b823d2a0e0ec655e3caf` | N/A (HTML document) |
 | S3 pilot specimen | `docs/marea/brand/specimens/pilot.html` | 24,902 | `9b0be08181cf9cf5c76eb7f72cc0860f61fff77637a3a5452e2bfad0d8bb623d` | N/A (HTML document) |
+| E1 measured geometry report (markdown) | `docs/marea/brand/territories/evidence/svg-geometry-report.md` | 5,824 | `709950ebe97e98a4bddd407b162ae67c02d1dc85f1d31517b69bcd4439ffaeba` | N/A (non-SVG document) |
+| E2 measured geometry report (json) | `docs/marea/brand/territories/evidence/svg-geometry-report.json` | 83,159 | `9f0c604a448615b48ec3d526fd1db69bbbe0c17a60305ddd2d951c838e5042d7` | N/A (non-SVG document) |
+| E3 reading-test evidence page | `docs/marea/brand/territories/evidence/reading-test.html` | 27,796 | `28e1536394645e80f61bdc7eb23c793b2bb09774569d6bdc14c0002da2d45371` | N/A (HTML document) |
 
-All 21 files: `role="img"` present, no `<script>`, no external references, no embedded raster
-(SVG files); the HTML specimens are documents, so SVG hygiene fields are `N/A`.
+All SVGs: `role="img"` present, no `<script>`, no external references, no embedded raster. Specimens and the
+E1/E2 reports are documents, so SVG `viewBox`/hygiene fields are `N/A`; the helper prints `MISSING` for
+`viewBox` on non-SVG files by design (the value is not applicable, not missing artwork data).
 
-#### 9.7.1 Geometry corroboration at freeze (measured, not prose)
+#### 9.7.1 Geometry corroboration at freeze (v2, measured — not prose)
 
-The Lead's measured report `territories/evidence/svg-geometry-report.md` (generated by
-`territories/tools/check.mjs`, real `getBBox()` values from Playwright Chromium) corroborates the §9.4
-descriptions and matches the helper's `viewBox` values above:
+The refreshed measured report `territories/evidence/svg-geometry-report.md` (generated by
+`territories/tools/check.mjs`, real `getBBox()` values from Playwright Chromium) corroborates §9.4 and matches
+the helper's `viewBox` values above:
 
-- **Lockup rules (measured):** symbol ink band `y 50..150` = the wordmark cap band; rail on the baseline
-  `y 150`; ink gap `75`; `0.5 × cap height` clear space included in the viewBox; family ink height `70`
+- **Lockup rules (measured, master set):** symbol ink band `y 50..149.99` on the wordmark cap band
+  `y 50..150`; ink gap `75.01`; `0.5 × cap height` clear space in the viewBox; family ink height `70`
   (`0.70 × cap`); MAREA→family word space `26` (`0.26 × cap`).
-- **Territory B:** construction drawing `41 × 42.5`; lockup `704.15 × 200`; marks `16 × 16`, `32 × 32`,
-  `32 × 32` — the B lockup is ~56.8 units **narrower** than the C/master lockup, consistent with the arc
-  construction.
-- **Territory C:** construction drawing `33 × 34.5`; lockup `760.96 × 200`; marks `16 × 16`, `24 × 24`,
-  `24 × 24`.
-- **Master:** wordmark `430.96 × 100`; the three master lockups `760.96 × 200` — the **same viewBox as
-  `territory-c-lockup-primary.svg`** — and the master compact mark `24 × 24` with the measured C-style ink
-  band. The measured report's own Result: "All checks passed" (a geometry check, not a design or legal
-  review).
+- **Master set (now B):** lockups `704.83 × 200` (`marea-lockup-primary/mono/reversed.svg`), symbol ink
+  `98.87 × 100`; compact mark `32 × 32` with ink `29.66 × 30.0`; reduced-16 mark ink `15.47 × 15.3`;
+  construction grid `44 × 44`; wordmark `430.96 × 100`.
+- **Family lockups:** viewBoxes from `853.66 × 200` (AIS) to `1165.32 × 200` (WEATHER); all family ink
+  height `70`, word gap `26`.
+- **Symbol weight:** arc `3.2 units = 10.4 %` of ink height (the 8.6 % and 14.3 % variants were rejected
+  and are not in the bound set).
+- **Territory B files:** construction `41 × 42.5`; B lockup `704.83 × 200` — **identical to the master
+  lockup viewBox**, as expected now that the master set is built on B; marks `16 × 16`, `32 × 32`, `32 × 32`.
+- **Territory C files (unchanged in this reissue):** construction `33 × 34.5`; lockup `760.96 × 200`; marks
+  `16 × 16`, `24 × 24`, `24 × 24`. Their hashes are byte-identical to the v1 binding, which is why the C
+  reading failure of §9.4a still stands.
 
-#### 9.7.2 MATERIAL FINDING — the frozen MASTER artwork is built on the **C** symbol, while the recorded preference is **B**
+The measured report's own Result: "All checks passed" — a geometry check, not a design or legal review.
 
-This is recorded honestly rather than smoothed over, and it is **not resolved by this dossier**:
+#### 9.7.2 MATERIAL FINDING — v1 master artwork was C-based; **CLOSED with evidence** (history preserved)
 
-1. `marea-lockup-primary/mono/reversed.svg` each state in their own `<desc>`: *"Proposed MAREA lockup built
-   from one construction system: **territory C symbol** + outlined MAREA wordmark."*
-   `marea-mark-compact.svg` states: *"Proposed MAREA signal-trunk symbol alone on the 24-unit grid…"*.
-2. Their `viewBox` (`760.96 × 200`) and the measured ink band match `territory-c-lockup-primary.svg`
-   exactly; the B lockup is `704.15 × 200`. The master files therefore **do not contain the B symbol**.
-3. The binding above is honest: those files are bound **as they exist**, labelled "built on C symbol".
-   They are **not** described anywhere in this dossier as "the B lockup".
-4. **Consequence for the Lead / decision record:** if the recorded `PREFERRED_PROVISIONAL` direction is B,
-   the master lockups and the compact mark must be **reissued from the B construction**, re-measured and
-   then **rebound** (delete-and-rebind, logged). Until that happens the organisation has (a) a B
-   preference on record and (b) master files built on C — a mismatch that must not reach any external
-   surface.
-5. Nothing in this dossier says which symbol the master *should* use, and nothing here is a finding about
-   rights; it is a factual mismatch between the recorded decision and the frozen artefact set.
+**Found in v1 (2026-10-30T18:48 binding):** the master lockups and compact mark were built on the **C**
+construction, although the recorded internal preference was **B**. Evidence at the time: their own `<desc>`
+said "territory C symbol"; their viewBox matched `territory-c-lockup-primary.svg` (`760.96 × 200`) while the
+B lockup was `704.15 × 200`. That mismatch was flagged to the Lead and recorded here rather than smoothed
+over.
 
-**Not bound here (present in the tree, outside the Lead's binding list, flagged for completeness):**
-`assets/logo/marea-mark-reduced-16.svg` (16×16), `assets/logo/marea-construction-grid.svg` (35×35),
-`assets/logo/family/marea-family-*-lockup.svg` (nine family lockups), and the territory-A and wordmark
-case-study files. They are measured in the geometry report; they were not part of this binding scope.
+**Resolved after the finding:** the Lead directed a reissue; IdentityVector rebuilt the whole master set
+from **construction B** (corrected symbol weight, new measured geometry, rewritten `<desc>` claims) and
+AssetProduction re-rendered everything. The v2 helper binding confirms the resolution **with evidence**:
+
+- master lockups are now `704.83 × 200` — the same viewBox family as `territory-b-lockup-primary.svg`, and no
+  longer the C dimensions;
+- master compact mark is now `32 × 32` with ink `29.66 × 30.0`, and reduced-16 ink `15.47 × 15.3`, matching
+  the new measured report for the B-based set;
+- the v2 SHA-256 values differ from v1 for every master file (`marea-lockup-*`, `marea-mark-compact`,
+  `marea-mark-reduced-16`, `marea-construction-grid`) — proof the files were genuinely reissued, not
+  relabelled;
+- all nine family lockups are new files with B-derived viewBoxes (`853.66`–`1165.32 × 200`).
+
+**Status of the finding: CLOSED.** It was found, fixed and rebound, and the history is preserved — the v1
+table and its C/B observation remain in
+`evidence/governance/MC-04-D16-BINDING-EVIDENCE-v1-2026-10-30T184848.txt`, and the §11 change log records
+both states. Nothing here is a conclusion about rights: the closing of an *artwork mismatch* does not
+change `ORIGINALITY_PROFESSIONAL_CHECK = PENDING` or any other gate, and the bound B files still carry the
+same unassessed device-overlap risk recorded in §9.5.
+
+**Not asserted:** that the B master is distinctive, original, clear or non-infringing. The master set is
+simply now internally consistent with the recorded preference and measurable evidence.
+
+#### 9.7.3 Rebind log (delete-and-rebind, no in-place edit)
+
+| When | Event |
+| --- | --- |
+| 2026-10-30T18:48:48+01:00 | **v1 binding** — 21 files. Found: master set built on C while preference was B (§9.7.2). Evidence archived. |
+| 2026-10-30 ~19:10 | IdentityVector reissued the master set from B; AssetProduction re-rendered with `--all`; all target files rewritten (new mtimes 19:10). |
+| 2026-10-30T19:11:46+01:00 | **v2 binding (this section)** — 35 files rebound through the helper, `helper failures 0`. v1 values **not edited in place**; live table replaced wholesale. Evidence: `MC-04-D16-BINDING-EVIDENCE.txt`; v1 archive: `MC-04-D16-BINDING-EVIDENCE-v1-2026-10-30T184848.txt`. |
+| (future) | Any further reissue → another logged delete-and-rebind; the superseded table is archived, never edited. |
 
 ### 9.8 Binding state after FROZEN — what was done, what it means
 
-**Done.** The 21 files in §9.7 were bound at **2026-10-30T18:48:48+01:00**, after the Lead's FROZEN signal,
-through the read-only helper; the run captured every helper output in
-`evidence/governance/MC-04-D16-BINDING-EVIDENCE.txt` and reports `helper failures: 0`. No hash was typed by
-hand, no file was bound by name before it was confirmed final, and no earlier value had to be deleted.
+**Done.** The **v2** binding of the 35 files in §9.7 was performed at **2026-10-30T19:11:46+01:00**, after the
+Lead's FROZEN signal and after the master set was reissued from construction B. It replaces the v1 binding
+(2026-10-30T18:48:48+01:00, archived) wholesale by **delete-and-rebind**: the old values were not edited in
+place, they remain in `MC-04-D16-BINDING-EVIDENCE-v1-2026-10-30T184848.txt`. The v2 run captured every helper
+output in `MC-04-D16-BINDING-EVIDENCE.txt` and reports `helper failures: 0`. No hash was typed by hand and no
+file was bound by name before it was confirmed final.
 
-**What the binding does *not* do.** It does not adopt, clear or approve anything; it does not resolve the
-material finding in §9.7.2 (master artwork built on C vs recorded preference B); and it does not close the
-professional check. The four status fields in §0 are unchanged.
+**What the binding does *not* do.** It does not adopt, clear or approve anything; it does not change the
+professional-check gate; and it does not assert anything about originality, distinctiveness, registrability
+or freedom to use. The material finding of v1 — master artwork built on C while the preference was B — is
+**closed with evidence** (§9.7.2) because the master set was reissued from B and rebound here; closing an
+artwork mismatch is not a rights finding. The four status fields in §0 are unchanged.
 
-**Re-binding rule.** If a frozen file is reopened for any reason (including reissuing the master lockups from
-the B construction), the old hash is **deleted and the file rebound** — never silently replaced — and the
-change is logged in §11. The binding table in §9.7 is the only authoritative hash set for this dossier.
+**Re-binding rule.** If a frozen file is reopened for any reason, the old hash is **deleted and the file
+rebound** — never silently replaced — the superseded table is archived (as the v1 table was), and the change
+is logged in §11. The binding table in §9.7 is the only authoritative hash set for this dossier.
 
-**Scope note (unchanged).** Binding did not extend to the nine family lockups, the reduced-16 mark, the
-construction-grid sheet or the territory-A / wordmark case-study files; they are recorded as "not bound" in
-§9.7.2 and can be bound later if counsel or the reviewer asks for the full set.
+**Scope note (v2).** Binding covers the two shortlisted territories, the master wordmark/lockups/marks, the
+nine family lockups, the three diagrams, the three specimens and the regenerated territory evidence files
+(§9.7). It does **not** cover the territory-A files, `wordmark-case-study.svg`, the misuse/comparison HTML
+sheets or the proof-sheet renders; those are outside the shortlisted package and can be bound later if
+counsel or the reviewer asks for them.
 
-**FROZEN binding scope (as instructed by the Lead).** When the FROZEN signal arrives, the bound-file table
-covers:
-
-1. the **final files of both shortlisted territories** — every `territory-b-*` and `territory-c-*`
-   construction / mark / lockup SVG that exists at freeze (resolved from the real tree at that moment; this
-   dossier never guesses a filename);
-2. the **master wordmark and lockup SVGs actually used in the B lockup** (so the composite that counsel
-   assesses is the composite that was bound);
-3. the **SHA-256 of the dossier-safe evidence** artefacts that support the reading tests (proof sheets /
-   renders), as listed at freeze;
-4. for each bound file: path, bytes, SHA-256, `viewBox`, author, date, and the geometry primitives read from
-   the file.
-
-**Hard rule:** no hash may be bound from a file that is still changing, and no file may be bound by name
-alone before it is confirmed final. If a frozen file is later reopened, the old hash is **deleted and the
-file rebound** — never silently replaced — and the change is logged in §11.
-
-**Consequences for the dossier status:** §9.1 item 2, the per-candidate bound-file table, and the final
-similarity tables (item 3) are the only substantive items still open in this document. They are gated on
-the FROZEN signal, not on further research. All four gate statuses (§0) stay as they are.
+**Standing rule for any future reissue.** No hash may be bound from a file that is still changing, and no
+file may be bound by name alone before it is confirmed final. Every future reissue repeats the logged
+delete-and-rebind: new helper run, superseded table archived, change logged. §9.1 items 1–3 are now
+satisfied; item 6 (independent reviewer sign-off on the frozen package) remains open, and the professional
+check remains `PENDING`.
 
 ## 10. Gate mapping and status discipline
 
@@ -833,10 +869,12 @@ vocabulary. Nothing in this repository may be changed to `CLEARED`, `APPROVED_FO
 | 2026-10-30 | Created (Rev. 1). Construction-and-provenance framework for all three territories; earlier-rights landscape re-read from EUIPO official record (EUTM 018135609, 2026-10-30); preliminary public-source motif screening with 18 recorded sources and retrieval dates; residual-risk register R-01…R-12; counsel brief TM-01/TM-02. Shortlist section §9 PENDING. No clearance, originality, registrability or non-infringement finding made or implied. |
 | 2026-10-30 (late) | Rev. 1a — added §6.5 binding risk statement (composite comparison; A/B devices do not reduce the concern; gate PENDING for every candidate; C escalated to counsel), §4.3 updated to the now-existing source files, §9.4/§9.5 record that the Lead deliberately deferred the shortlist and set the Rev. 2 binding rule. Status fields unchanged; no finding changed. |
 | 2026-10-30 (late) | Rev. 1b — §9.5 now specifies the mandatory Rev. 2 binding procedure and the tested read-only helper `rev2-bind-helper.ps1` (SHA-256 via `Get-FileHash` from the real file; refuses paths outside `docs/marea/brand/`); §9 table records that binding is deferred because the artwork is under revision. **No hash, byte size or viewBox has been recorded yet.** Status fields and findings unchanged. |
-| 2026-10-30 (late) | **Rev. 2 — shortlist recorded (Lead D-005):** shortlisted **Territory B — Bearing index** and **Territory C — Signal trunk**; **dropped Territory A — Isobath** on the §3.3 kill criterion and the lowest weighted hypothesis score (3.35 vs 3.95/3.95); internal preference **C**, `PREFERRED_PROVISIONAL` only, conditional on (i) documented 16 px reading test (not bar chart/equaliser), (ii) lockup alignment fix, (iii) professional originality review, falling back to B if C fails. Added §9.4 geometry of B and C as briefed to counsel, §9.5 decision caveat on C's implied `M` (including the instruction to record honestly if the frozen silhouette no longer forms an M, with no conclusion), §9.6 binding deferred to the Lead's FROZEN signal with no silent rebind. Geometry still hypothesis-level; **no hash/bytes/viewBox recorded**. Nine findings unchanged. |
+| 2026-10-30 (late) | **Rev. 2 — shortlist recorded (Lead D-005):** shortlisted **Territory B — Bearing index** and **Territory C — Signal trunk**; **dropped Territory A — Isobath** on the §3.3 kill criterion and the lowest weighted hypothesis score (3.35 vs 3.95/3.95); internal preference **C**, `PREFERRED_PROVISIONAL` only, conditional on (i) documented 16 px reading test (not bar chart/equaliser), (ii) lockup alignment fix, (iii) professional originality review, falling back to B if C fails. Added §9.4 geometry of B and C as briefed to counsel, §9.5 decision caveat on C's implied `M` (including the instruction to record honestly if the frozen silhouette no longer forms an M, with no conclusion), §9.6 binding deferred to the Lead's FROZEN signal with no silent rebind *(historical note: that section was superseded by the §9.7 binding and §9.8 state at Rev. 3)*. Geometry still hypothesis-level; **no hash/bytes/viewBox recorded**. Nine findings unchanged. |
 | 2026-10-30 (late) | Rev. 2 (evidence linkage) — F-3 disclaimer verification now closed against the three diagrams and three specimens; see `evidence/governance/MC-04-PROHIBITED-PATTERN-SCAN.md` §12. |
 | 2026-10-30 (late) | Rev. 2a — Lead amended the internal preference **C → B** after rendering the final symbols at app-icon scale (C reads as bar chart/histogram/equaliser at 512 px and 1024 app-icon, meeting the §3.5 kill criterion; A reads as Wi-Fi/signal, §3.3; B reads as heading-instrument fragment with its own letter-"C"/seal risk). §9 table + §9.4a amended; C retained as shortlisted strategic alternative; implied-M caveat kept; B's device overlap recorded as equally PENDING. |
 | 2026-10-30 (late) | **Rev. 3 — FROZEN binding.** Lead sent FROZEN (IdentityVector declares geometry final; measured report `territories/evidence/svg-geometry-report.{md,json}`). Bound **21 files** at 2026-10-30T18:48:48+01:00 with `rev2-bind-helper.ps1`: B ×5, C ×5, master wordmark + 4 master lockup/mark files, 3 diagrams, 3 specimens; every path/bytes/SHA-256/viewBox helper-printed, `helper failures: 0`, nothing hand-typed, nothing silently rebound (no prior binding existed). Added §9.7 bound table + §9.7.1 measured-geometry corroboration + §9.8 binding state. **§9.7.2 material finding: the frozen master lockups and compact mark are built on the C symbol (their own `<desc>` says so; viewBox matches the C lockup), while the preference on record is B — flagged, not resolved; masters must be reissued from B and rebound before any external surface.** Status fields unchanged; professional check still PENDING. |
+
+| 2026-10-30 19:11 | **Rev. 4 — FROZEN v2 delete-and-rebind.** After the Lead recorded preference B, IdentityVector reissued the whole master set from construction B (arc weight 3.2 units = 10.4 % of ink height, new measured geometry, rewritten `<desc>`) and AssetProduction re-rendered with `--all`; all target files changed at ~19:10, after the v1 binding. Governance rebound **35 files** at 2026-10-30T19:11:46+01:00 through the helper (`helper failures: 0`): B ×5, C ×5 (hashes unchanged), master wordmark + 3 lockups + compact mark + reduced-16 + construction grid, the nine family lockups, 3 diagrams, 3 specimens, and 3 regenerated territory evidence files. v1 values were **not edited in place** — archived as `MC-04-D16-BINDING-EVIDENCE-v1-2026-10-30T184848.txt`; the live table was replaced wholesale. **§9.7.2 finding CLOSED with evidence**: the master set is now B-based (lockups 704.83×200, compact 32×32 ink 29.66×30.0, reduced-16 ink 15.47×15.3, family viewBoxes 853.66–1165.32×200; master hashes all differ from v1). Shortlist (B + C), drop (A), preference B, reading-test outcomes and all four status fields unchanged. Final frozen-tree scan re-run: no failure-level prohibited pattern; F-2 remains open/out-of-scope. |
 
 ## Annex A — source retrieval log
 
@@ -848,8 +886,6 @@ vocabulary. Nothing in this repository may be changed to `CLEARED`, `APPROVED_FO
 | 2026-10-30 | UK IPO case UK00002018820 | proxy **404** — snippet only |
 | 2026-10-30 | Public design showcases and editorial pages S-08…S-18 | read as listed in §7.3; classes recorded |
 
-*End of Rev. 3. The shortlist, the internal preference and the FROZEN file binding are recorded in §9.
-Two things remain outside this dossier's power: the professional originality/prior-art check (PENDING) and
-the reissue of the master lockups from the preferred B construction (§9.7.2). This document remains
-PENDING until a professional check is commissioned, received and recorded by the company. No agent of this
-programme can close it.*
+*End of Rev. 4. The shortlist, the internal preference, the FROZEN v2 binding and the closed master-artwork
+finding are recorded in §9. This document remains PENDING until a professional originality/prior-art check
+is commissioned, received and recorded by the company. No agent of this programme can close it.*

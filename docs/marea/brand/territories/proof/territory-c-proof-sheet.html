@@ -1,1127 +1,327 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>MC-04 Territory C — SIGNAL TRUNK (PROPOSED, internal)</title>
-    <style>
-      :root {
-        --ink: #12232e;
-        --paper: #f7f4ec;
-        --navy: #17365d;
-        --sea: #1776ad;
-        --line: #d7dcd8;
-        --dark: #0d1b26;
-        --mist: #f2f9fd;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        background: #eceae3;
-        color: var(--ink);
-        font:
-          15px/1.5 'Segoe UI',
-          system-ui,
-          sans-serif;
-      }
-      .wrap {
-        max-width: 1180px;
-        margin: 0 auto;
-        padding: 28px 24px 64px;
-      }
-      header {
-        border-bottom: 2px solid var(--navy);
-        padding-bottom: 14px;
-        margin-bottom: 24px;
-      }
-      h1 {
-        font-size: 22px;
-        line-height: 1.2;
-        margin: 0 0 6px;
-      }
-      h2 {
-        font-size: 16px;
-        margin: 34px 0 10px;
-        padding-bottom: 6px;
-        border-bottom: 1px solid var(--line);
-      }
-      h3 {
-        font-size: 13px;
-        margin: 18px 0 6px;
-        text-transform: none;
-        letter-spacing: 0.01em;
-        color: #3d4d59;
-      }
-      p,
-      li {
-        max-width: 88ch;
-      }
-      .meta {
-        font:
-          12px/1.5 ui-monospace,
-          Consolas,
-          monospace;
-        color: #54636f;
-      }
-      .tag {
-        display: inline-block;
-        border: 1px solid var(--navy);
-        color: var(--navy);
-        font:
-          600 11px/1 ui-monospace,
-          monospace;
-        padding: 5px 7px;
-        margin-right: 6px;
-        border-radius: 2px;
-      }
-      .tag.warn {
-        border-color: #a3471f;
-        color: #a3471f;
-      }
-      .panel {
-        background: var(--paper);
-        border: 1px solid var(--line);
-        padding: 18px;
-      }
-      .row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 18px;
-        align-items: flex-end;
-      }
-      .cell {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-        align-items: flex-start;
-      }
-      .cell .cap {
-        font:
-          11px/1.4 ui-monospace,
-          monospace;
-        color: #54636f;
-      }
-      .sizes {
-        display: flex;
-        gap: 26px;
-        align-items: flex-end;
-        flex-wrap: wrap;
-      }
-      .darksurface {
-        background: var(--dark);
-        padding: 20px;
-        border: 1px solid #24333d;
-      }
-      table {
-        border-collapse: collapse;
-        width: 100%;
-        font-size: 13px;
-      }
-      th,
-      td {
-        border: 1px solid var(--line);
-        padding: 7px 9px;
-        text-align: left;
-        vertical-align: top;
-      }
-      th {
-        background: #e7e9e4;
-        font-weight: 600;
-      }
-      td.num {
-        text-align: right;
-        font-variant-numeric: tabular-nums;
-      }
-      .misuse {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-        gap: 14px;
-      }
-      .tile {
-        background: #fff;
-        border: 1px solid var(--line);
-        padding: 12px;
-      }
-      .tile .demo {
-        height: 64px;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        overflow: hidden;
-      }
-      .tile .why {
-        font:
-          11px/1.35 ui-monospace,
-          monospace;
-        color: #8a3a1c;
-        margin-top: 8px;
-      }
-      .note {
-        background: #fff;
-        border-left: 3px solid var(--sea);
-        padding: 10px 14px;
-        font-size: 13px;
-      }
-      footer {
-        margin-top: 40px;
-        border-top: 1px solid var(--line);
-        padding-top: 12px;
-        font-size: 12px;
-        color: #54636f;
-      }
-      .gray {
-        filter: grayscale(1);
-      }
-      .engrave {
-        filter: grayscale(1) contrast(1.15);
-        background: #b9bdb6;
-        padding: 16px;
-        border: 1px solid #9aa09a;
-      }
-      @media print {
-        body {
-          background: #fff;
-        }
-        .wrap {
-          max-width: none;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrap">
-      <header>
-        <div>
-          <span class="tag">PROPOSED</span><span class="tag">INTERNAL</span
-          ><span class="tag warn">NOT CLEARED</span>
-        </div>
-        <p class="meta">MC-04 · Visual identity · territory prototype · D-01/D-02 evidence</p>
-        <h1>Territory C — SIGNAL TRUNK</h1>
-        <p class="meta">
-          Prototype proof sheet: construction, variants, 16/24/48/512 px optical comparison, 8 mm
-          simulated reduction, greyscale/engraving simulation and misuse. All artwork PROPOSED /
-          INTERNAL.
-        </p>
-      </header>
-      <h2>1. Construction drawing</h2>
-      <div class="panel">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 33 34.5"
-          width="640"
-          height="669.09"
-          role="img"
-          aria-labelledby="cgC-t cgC-d"
-          color="#12232e"
-        >
-          <title id="cgC-t">
-            Territory SIGNAL TRUNK — construction drawing (PROPOSED, internal)
-          </title>
-          <desc id="cgC-d">
-            Construction grid, auxiliary geometry and geometry rules for the proposed SIGNAL TRUNK
-            symbol. Internal prototype, not cleared, not adopted.
-          </desc>
-          <rect x="-4.5" y="-4.5" width="33" height="33" fill="#f7f4ec" />
-          <path
-            d="M0 0V24 M0 0H24 M1 0V24 M0 1H24 M2 0V24 M0 2H24 M3 0V24 M0 3H24 M4 0V24 M0 4H24 M5 0V24 M0 5H24 M6 0V24 M0 6H24 M7 0V24 M0 7H24 M8 0V24 M0 8H24 M9 0V24 M0 9H24 M10 0V24 M0 10H24 M11 0V24 M0 11H24 M12 0V24 M0 12H24 M13 0V24 M0 13H24 M14 0V24 M0 14H24 M15 0V24 M0 15H24 M16 0V24 M0 16H24 M17 0V24 M0 17H24 M18 0V24 M0 18H24 M19 0V24 M0 19H24 M20 0V24 M0 20H24 M21 0V24 M0 21H24 M22 0V24 M0 22H24 M23 0V24 M0 23H24 M24 0V24 M0 24H24"
-            stroke="#e2e6e3"
-            stroke-width="0.06"
-            fill="none"
-          />
-          <path
-            d="M0 0V24 M0 0H24 M4 0V24 M0 4H24 M8 0V24 M0 8H24 M12 0V24 M0 12H24 M16 0V24 M0 16H24 M20 0V24 M0 20H24 M24 0V24 M0 24H24"
-            stroke="#cdd4d0"
-            stroke-width="0.14"
-            fill="none"
-          />
-          <rect
-            x="0"
-            y="0"
-            width="24"
-            height="24"
-            fill="none"
-            stroke="#8a9aa3"
-            stroke-width="0.18"
-          />
-          <path
-            d="M4.25 15H19.75M4.25 17H19.75"
-            stroke="#1776ad"
-            stroke-width="0.1"
-            stroke-dasharray="0.4 0.4"
-            fill="none"
-          />
-          <rect
-            x="5.75"
-            y="13"
-            width="2.5"
-            height="2"
-            fill="none"
-            stroke="#1776ad"
-            stroke-width="0.1"
-            stroke-dasharray="0.3 0.3"
-          />
-          <rect
-            x="10.75"
-            y="7"
-            width="4"
-            height="8"
-            fill="none"
-            stroke="#1776ad"
-            stroke-width="0.1"
-            stroke-dasharray="0.3 0.3"
-          />
-          <rect
-            x="16.25"
-            y="9"
-            width="3"
-            height="6"
-            fill="none"
-            stroke="#1776ad"
-            stroke-width="0.1"
-            stroke-dasharray="0.3 0.3"
-          />
-          <path
-            d="M12.15 7V8.8M13.35 7V8.8"
-            stroke="#1776ad"
-            stroke-width="0.1"
-            stroke-dasharray="0.3 0.3"
-            fill="none"
-          />
-          <g transform="translate(4.25 3)">
-            <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-            <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-            <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-            <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-            <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-            <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-          </g>
-          <text
-            x="-3.9"
-            y="-3"
-            font-family="ui-monospace, Consolas, monospace"
-            font-size="1.15"
-            fill="#54636f"
-            text-anchor="start"
-            font-weight="600"
-          >
-            PROPOSED / INTERNAL — MC-04 construction
-          </text>
-          <text
-            x="-3.9"
-            y="-1.6"
-            font-family="ui-monospace, Consolas, monospace"
-            font-size="1.05"
-            fill="#54636f"
-            text-anchor="start"
-            font-weight="400"
-          >
-            SIGNAL TRUNK — territory C — 24 × 24 construction grid
-          </text>
-          <text
-            x="-3.9"
-            y="25.4"
-            font-family="ui-monospace, Consolas, monospace"
-            font-size="1"
-            fill="#54636f"
-            text-anchor="start"
-            font-weight="400"
-          >
-            · rail 15.5 × 2 on the baseline
-          </text>
-          <text
-            x="-3.9"
-            y="26.65"
-            font-family="ui-monospace, Consolas, monospace"
-            font-size="1"
-            fill="#54636f"
-            text-anchor="start"
-            font-weight="400"
-          >
-            · keys 2.5 / 4 / 3 wide at unequal gaps
-          </text>
-          <text
-            x="-3.9"
-            y="27.9"
-            font-family="ui-monospace, Consolas, monospace"
-            font-size="1"
-            fill="#54636f"
-            text-anchor="start"
-            font-weight="400"
-          >
-            · heights 2 / 8 (raised to cap line) / 6
-          </text>
-          <text
-            x="-3.9"
-            y="29.15"
-            font-family="ui-monospace, Consolas, monospace"
-            font-size="1"
-            fill="#54636f"
-            text-anchor="start"
-            font-weight="400"
-          >
-            · centre-key screw slot 1.2 × 1.8
-          </text>
-          <text
-            x="-3.9"
-            y="30.8"
-            font-family="ui-monospace, Consolas, monospace"
-            font-size="0.95"
-            fill="#54636f"
-            text-anchor="start"
-            font-weight="400"
-          >
-            1 grid unit = 1/24 of the mark height. No letters in the symbol.
-          </text>
-        </svg>
-      </div>
-      <p class="meta">
-        Grid lines every 1 unit (light), every 4 units (heavy); blue dashed = auxiliary construction
-        geometry; the mark is drawn from the rules in the table below, not traced.
-      </p>
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MC-04 Territory C — SIGNAL TRUNK (PROPOSED, internal)</title><style>
+:root{--ink:#12232e;--paper:#f7f4ec;--navy:#17365d;--sea:#1776ad;--line:#d7dcd8;--dark:#0d1b26;--mist:#f2f9fd}
+*{box-sizing:border-box}
+body{margin:0;background:#eceae3;color:var(--ink);font:15px/1.5 "Segoe UI",system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 64px}
+header{border-bottom:2px solid var(--navy);padding-bottom:14px;margin-bottom:24px}
+h1{font-size:22px;line-height:1.2;margin:0 0 6px}
+h2{font-size:16px;margin:34px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+h3{font-size:13px;margin:18px 0 6px;text-transform:none;letter-spacing:.01em;color:#3d4d59}
+p,li{max-width:88ch}
+.meta{font:12px/1.5 ui-monospace,Consolas,monospace;color:#54636f}
+.tag{display:inline-block;border:1px solid var(--navy);color:var(--navy);font:600 11px/1 ui-monospace,monospace;padding:5px 7px;margin-right:6px;border-radius:2px}
+.tag.warn{border-color:#a3471f;color:#a3471f}
+.panel{background:var(--paper);border:1px solid var(--line);padding:18px}
+.row{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end}
+.cell{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
+.cell .cap{font:11px/1.4 ui-monospace,monospace;color:#54636f}
+.sizes{display:flex;gap:26px;align-items:flex-end;flex-wrap:wrap}
+.darksurface{background:var(--dark);padding:20px;border:1px solid #24333d}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{background:#e7e9e4;font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.misuse{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px}
+.tile{background:#fff;border:1px solid var(--line);padding:12px}
+.tile .demo{height:64px;display:flex;align-items:center;justify-content:flex-start;overflow:hidden}
+.tile .why{font:11px/1.35 ui-monospace,monospace;color:#8a3a1c;margin-top:8px}
+.note{background:#fff;border-left:3px solid var(--sea);padding:10px 14px;font-size:13px}
+footer{margin-top:40px;border-top:1px solid var(--line);padding-top:12px;font-size:12px;color:#54636f}
+.gray{filter:grayscale(1)}
+.engrave{filter:grayscale(1) contrast(1.15);background:#b9bdb6;padding:16px;border:1px solid #9aa09a}
+@media print{body{background:#fff}.wrap{max-width:none}}
+</style></head>
+<body><div class="wrap"><header>
+<div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
+<p class="meta">MC-04 · Visual identity · territory prototype · D-01/D-02 evidence</p>
+<h1>Territory C — SIGNAL TRUNK</h1>
+<p class="meta">Prototype proof sheet: construction, variants, 16/24/48/512 px optical comparison, 8 mm simulated reduction, greyscale/engraving simulation and misuse. All artwork PROPOSED / INTERNAL.</p>
+</header>
+<h2>1. Construction drawing</h2>
+<div class="panel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 34.5" width="640" height="669.09" role="img" aria-labelledby="cgC-t cgC-d" color="#12232e">
+<title id="cgC-t">Territory SIGNAL TRUNK — construction drawing (PROPOSED, internal)</title>
+<desc id="cgC-d">Construction grid, auxiliary geometry and geometry rules for the proposed SIGNAL TRUNK symbol. Internal prototype, not cleared, not adopted.</desc>
+<rect x="-4.5" y="-4.5" width="33" height="33" fill="#f7f4ec"/>
+<path d="M0 0V24 M0 0H24 M1 0V24 M0 1H24 M2 0V24 M0 2H24 M3 0V24 M0 3H24 M4 0V24 M0 4H24 M5 0V24 M0 5H24 M6 0V24 M0 6H24 M7 0V24 M0 7H24 M8 0V24 M0 8H24 M9 0V24 M0 9H24 M10 0V24 M0 10H24 M11 0V24 M0 11H24 M12 0V24 M0 12H24 M13 0V24 M0 13H24 M14 0V24 M0 14H24 M15 0V24 M0 15H24 M16 0V24 M0 16H24 M17 0V24 M0 17H24 M18 0V24 M0 18H24 M19 0V24 M0 19H24 M20 0V24 M0 20H24 M21 0V24 M0 21H24 M22 0V24 M0 22H24 M23 0V24 M0 23H24 M24 0V24 M0 24H24" stroke="#e2e6e3" stroke-width="0.06" fill="none"/>
+<path d="M0 0V24 M0 0H24 M4 0V24 M0 4H24 M8 0V24 M0 8H24 M12 0V24 M0 12H24 M16 0V24 M0 16H24 M20 0V24 M0 20H24 M24 0V24 M0 24H24" stroke="#cdd4d0" stroke-width="0.14" fill="none"/>
+<rect x="0" y="0" width="24" height="24" fill="none" stroke="#8a9aa3" stroke-width="0.18"/>
+<path d="M4.25 15H19.75M4.25 17H19.75" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.4 0.4" fill="none"/>
+<rect x="5.75" y="13" width="2.5" height="2" fill="none" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.3 0.3"/>
+<rect x="10.75" y="7" width="4" height="8" fill="none" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.3 0.3"/>
+<rect x="16.25" y="9" width="3" height="6" fill="none" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.3 0.3"/>
+<path d="M12.15 7V8.8M13.35 7V8.8" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.3 0.3" fill="none"/>
+<g transform="translate(4.25 3)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<text x="-3.9" y="-3" font-family="ui-monospace, Consolas, monospace" font-size="1.15" fill="#54636f" text-anchor="start" font-weight="600">PROPOSED / INTERNAL — MC-04 construction</text>
+<text x="-3.9" y="-1.6" font-family="ui-monospace, Consolas, monospace" font-size="1.05" fill="#54636f" text-anchor="start" font-weight="400">SIGNAL TRUNK — territory C — 24 × 24 construction grid</text>
+<text x="-3.9" y="25.4" font-family="ui-monospace, Consolas, monospace" font-size="1" fill="#54636f" text-anchor="start" font-weight="400">· rail 15.5 × 2 on the baseline</text>
+<text x="-3.9" y="26.65" font-family="ui-monospace, Consolas, monospace" font-size="1" fill="#54636f" text-anchor="start" font-weight="400">· keys 2.5 / 4 / 3 wide at unequal gaps</text>
+<text x="-3.9" y="27.9" font-family="ui-monospace, Consolas, monospace" font-size="1" fill="#54636f" text-anchor="start" font-weight="400">· heights 2 / 8 (raised to cap line) / 6</text>
+<text x="-3.9" y="29.15" font-family="ui-monospace, Consolas, monospace" font-size="1" fill="#54636f" text-anchor="start" font-weight="400">· centre-key screw slot 1.2 × 1.8</text>
+<text x="-3.9" y="30.8" font-family="ui-monospace, Consolas, monospace" font-size="0.95" fill="#54636f" text-anchor="start" font-weight="400">1 grid unit = 1/24 of the mark height. No letters in the symbol.</text>
+</svg></div>
+<p class="meta">Grid lines every 1 unit (light), every 4 units (heavy); blue dashed = auxiliary construction geometry; the mark is drawn from the rules in the table below, not traced.</p>
 
-      <h2>2. Geometry specification</h2>
-      <table>
-        <tbody>
-          <tr>
-            <th style="width: 28%">Grid</th>
-            <td>
-              24 × 24 units; 1 unit = 1/24 of the framing grid, symbol ink band = 10 units (y 4..14)
-            </td>
-          </tr>
-          <tr>
-            <th style="width: 28%">Primary structure</th>
-            <td>
-              one bus rail on the baseline + three terminal keys with squared caps; the centre key
-              is raised to the cap line
-            </td>
-          </tr>
-          <tr>
-            <th style="width: 28%">Weights</th>
-            <td>rail 2 units thick; keys 2.5 / 4 / 3 wide</td>
-          </tr>
-          <tr>
-            <th style="width: 28%">Unequal keys</th>
-            <td>
-              widths 2.5 / 4 / 3 and heights 2 / 8 / 6 — deliberately unequal, the proportions of a
-              terminal block (a histogram uses equal widths)
-            </td>
-          </tr>
-          <tr>
-            <th style="width: 28%">Key spacing</th>
-            <td>2.5 and 1.5 units — unequal</td>
-          </tr>
-          <tr>
-            <th style="width: 28%">Centre-key slot</th>
-            <td>
-              one 1.2 × 1.8 screw slot cut from the top of the centre key, splitting its head into
-              two stubs (a visible screw/terminal detail, not a letterform)
-            </td>
-          </tr>
-          <tr>
-            <th style="width: 28%">Baseline</th>
-            <td>
-              rail bottom = wordmark baseline; symbol ink band = 100-unit cap band exactly (scale
-              ×10 in every lockup); centre key top = cap line
-            </td>
-          </tr>
-          <tr>
-            <th style="width: 28%">16 px build</th>
-            <td>
-              own 16-unit coordinates: rail 1.8, keys 1.7 / 2.8 / 2, screw slot 0.8 × 1.4 retained
-            </td>
-          </tr>
-          <tr>
-            <th style="width: 28%">Optical corrections</th>
-            <td>
-              the key widths/heights are screw-terminal proportions, not data magnitudes; the centre
-              key is the only element to reach the cap line, so the group is not a uniform step
-              sequence
-            </td>
-          </tr>
-          <tr>
-            <th style="width: 28%">Rejected variants</th>
-            <td>
-              v1 three plain rectangles on a rail with a key 3 units below it → bar chart / audio
-              equaliser. v2 blocks on a flush rail → histogram. v3 blocks with a keyway → still
-              histogram. v4 added a diagonal cable: rejected by the Lead as a new motif that worsens
-              the 16 px silhouette. v5 (freeze) removes every addition.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+<h2>2. Geometry specification</h2>
+<table><tbody><tr><th style="width:28%">Grid</th><td>24 × 24 units; 1 unit = 1/24 of the framing grid, symbol ink band = 10 units (y 4..14)</td></tr><tr><th style="width:28%">Primary structure</th><td>one bus rail on the baseline + three terminal keys with squared caps; the centre key is raised to the cap line</td></tr><tr><th style="width:28%">Weights</th><td>rail 2 units thick; keys 2.5 / 4 / 3 wide</td></tr><tr><th style="width:28%">Unequal keys</th><td>widths 2.5 / 4 / 3 and heights 2 / 8 / 6 — deliberately unequal, the proportions of a terminal block (a histogram uses equal widths)</td></tr><tr><th style="width:28%">Key spacing</th><td>2.5 and 1.5 units — unequal</td></tr><tr><th style="width:28%">Centre-key slot</th><td>one 1.2 × 1.8 screw slot cut from the top of the centre key, splitting its head into two stubs (a visible screw/terminal detail, not a letterform)</td></tr><tr><th style="width:28%">Baseline</th><td>rail bottom = wordmark baseline; symbol ink band = 100-unit cap band exactly (scale ×10 in every lockup); centre key top = cap line</td></tr><tr><th style="width:28%">16 px build</th><td>own 16-unit coordinates: rail 1.8, keys 1.7 / 2.8 / 2, screw slot 0.8 × 1.4 retained</td></tr><tr><th style="width:28%">Optical corrections</th><td>the key widths/heights are screw-terminal proportions, not data magnitudes; the centre key is the only element to reach the cap line, so the group is not a uniform step sequence</td></tr><tr><th style="width:28%">Rejected variants</th><td>v1 three plain rectangles on a rail with a key 3 units below it → bar chart / audio equaliser. v2 blocks on a flush rail → histogram. v3 blocks with a keyway → still histogram. v4 added a diagonal cable: rejected by the Lead as a new motif that worsens the 16 px silhouette. v5 (freeze) removes every addition.</td></tr></tbody></table>
 
-      <h2>3. Variants</h2>
-      <div class="row">
-        <div class="cell">
-          <div class="panel">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="256"
-              height="256"
-              role="img"
-              aria-labelledby="vCmono-t vCmono-d"
-              color="#17365d"
-            >
-              <title id="vCmono-t">SIGNAL TRUNK at 256px</title>
-              <desc id="vCmono-d">Prototype symbol proof (PROPOSED, internal).</desc>
-              <g transform="translate(4.25 3)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-            </svg>
-          </div>
-          <span class="cap">monochrome, single ink (navy token)</span>
-        </div>
-        <div class="cell">
-          <div class="darksurface">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="256"
-              height="256"
-              role="img"
-              aria-labelledby="vCrev-t vCrev-d"
-              color="#f2f9fd"
-            >
-              <title id="vCrev-t">SIGNAL TRUNK at 256px</title>
-              <desc id="vCrev-d">Prototype symbol proof (PROPOSED, internal).</desc>
-              <g transform="translate(4.25 3)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-            </svg>
-          </div>
-          <span class="cap">reversed, light ink on dark substrate</span>
-        </div>
-        <div class="cell">
-          <div class="panel">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              width="256"
-              height="256"
-              role="img"
-              aria-labelledby="vCc-t vCc-d"
-              color="#17365d"
-            >
-              <title id="vCc-t">SIGNAL TRUNK reduced at 256px</title>
-              <desc id="vCc-d">Prototype symbol proof (PROPOSED, internal).</desc>
-              <g transform="translate(3 2.1)">
-                <path fill="currentColor" d="M0 8 L10 8 L10 9.8 L0 9.8Z" />
-                <path fill="currentColor" d="M1 6.4 L2.7 6.4 L2.7 8 L1 8Z" />
-                <path fill="currentColor" d="M4.1 2 L5.1 2 L5.1 7.6 L4.1 7.6Z" />
-                <path fill="currentColor" d="M5.9 2 L6.9 2 L6.9 7.6 L5.9 7.6Z" />
-                <path fill="currentColor" d="M5.1 3.4 L5.9 3.4 L5.9 7.6 L5.1 7.6Z" />
-                <path fill="currentColor" d="M7.8 3.9 L9.8 3.9 L9.8 8 L7.8 8Z" />
-              </g>
-            </svg>
-          </div>
-          <span class="cap">compact (reduced) symbol</span>
-        </div>
-      </div>
-      <div class="row" style="margin-top: 14px">
-        <div class="cell">
-          <div class="panel">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 760.96 200"
-              width="420"
-              height="110.39"
-              role="img"
-              aria-labelledby="vClk-t vClk-d"
-              color="#17365d"
-            >
-              <title id="vClk-t">MAREA — proposed identifier (internal, not cleared)</title>
-              <desc id="vClk-d">
-                Proposed MAREA lockup built from one construction system: territory C symbol +
-                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
-                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
-                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
-              </desc>
-              <g transform="translate(50 10) scale(10)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-              <g transform="translate(280 50)">
-                <path
-                  fill="currentColor"
-                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
-                />
-              </g>
-            </svg>
-          </div>
-          <span class="cap">primary wordmark combination — symbol + outlined MAREA</span>
-        </div>
-        <div class="cell">
-          <div class="darksurface">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 760.96 200"
-              width="420"
-              height="110.39"
-              role="img"
-              aria-labelledby="vClkr-t vClkr-d"
-              color="#f2f9fd"
-            >
-              <title id="vClkr-t">MAREA — proposed identifier (internal, not cleared)</title>
-              <desc id="vClkr-d">
-                Proposed MAREA lockup built from one construction system: territory C symbol +
-                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
-                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
-                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
-              </desc>
-              <g transform="translate(50 10) scale(10)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-              <g transform="translate(280 50)">
-                <path
-                  fill="currentColor"
-                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
-                />
-              </g>
-            </svg>
-          </div>
-          <span class="cap">reversed lockup</span>
-        </div>
-      </div>
+<h2>3. Variants</h2>
+<div class="row">
+  <div class="cell"><div class="panel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="256" height="256" role="img" aria-labelledby="vCmono-t vCmono-d" color="#17365d">
+<title id="vCmono-t">SIGNAL TRUNK at 256px</title>
+<desc id="vCmono-d">Prototype symbol proof (PROPOSED, internal).</desc>
+<g transform="translate(4.25 3)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+</svg></div><span class="cap">monochrome, single ink (navy token)</span></div>
+  <div class="cell"><div class="darksurface"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="256" height="256" role="img" aria-labelledby="vCrev-t vCrev-d" color="#f2f9fd">
+<title id="vCrev-t">SIGNAL TRUNK at 256px</title>
+<desc id="vCrev-d">Prototype symbol proof (PROPOSED, internal).</desc>
+<g transform="translate(4.25 3)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+</svg></div><span class="cap">reversed, light ink on dark substrate</span></div>
+  <div class="cell"><div class="panel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="256" height="256" role="img" aria-labelledby="vCc-t vCc-d" color="#17365d">
+<title id="vCc-t">SIGNAL TRUNK reduced at 256px</title>
+<desc id="vCc-d">Prototype symbol proof (PROPOSED, internal).</desc>
+<g transform="translate(3 2.1)">
+<path fill="currentColor" d="M0 8 L10 8 L10 9.8 L0 9.8Z"/>
+<path fill="currentColor" d="M1 6.4 L2.7 6.4 L2.7 8 L1 8Z"/>
+<path fill="currentColor" d="M4.1 2 L5.1 2 L5.1 7.6 L4.1 7.6Z"/>
+<path fill="currentColor" d="M5.9 2 L6.9 2 L6.9 7.6 L5.9 7.6Z"/>
+<path fill="currentColor" d="M5.1 3.4 L5.9 3.4 L5.9 7.6 L5.1 7.6Z"/>
+<path fill="currentColor" d="M7.8 3.9 L9.8 3.9 L9.8 8 L7.8 8Z"/>
+</g>
+</svg></div><span class="cap">compact (reduced) symbol</span></div>
+</div>
+<div class="row" style="margin-top:14px">
+  <div class="cell"><div class="panel"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760.96 200" width="420" height="110.39" role="img" aria-labelledby="vClk-t vClk-d" color="#17365d">
+<title id="vClk-t">MAREA — proposed identifier (internal, not cleared)</title>
+<desc id="vClk-d">Proposed MAREA lockup built from one construction system: territory C symbol + outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.</desc>
+<g transform="translate(50 10) scale(10)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<g transform="translate(280 50)"><path fill="currentColor" d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"/></g>
+</svg></div><span class="cap">primary wordmark combination — symbol + outlined MAREA</span></div>
+  <div class="cell"><div class="darksurface"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760.96 200" width="420" height="110.39" role="img" aria-labelledby="vClkr-t vClkr-d" color="#f2f9fd">
+<title id="vClkr-t">MAREA — proposed identifier (internal, not cleared)</title>
+<desc id="vClkr-d">Proposed MAREA lockup built from one construction system: territory C symbol + outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.</desc>
+<g transform="translate(50 10) scale(10)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<g transform="translate(280 50)"><path fill="currentColor" d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"/></g>
+</svg></div><span class="cap">reversed lockup</span></div>
+</div>
 
-      <h2>4. Small-size ladder (optical comparison)</h2>
-      <div class="panel">
-        <div class="sizes">
-          <div class="cell">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="512"
-              height="512"
-              role="img"
-              aria-labelledby="sC512-t sC512-d"
-              color="#17365d"
-            >
-              <title id="sC512-t">SIGNAL TRUNK at 512px</title>
-              <desc id="sC512-d">Prototype symbol proof (PROPOSED, internal).</desc>
-              <g transform="translate(4.25 3)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g></svg
-            ><span class="cap">512 px</span>
-          </div>
-          <div class="cell">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="48"
-              height="48"
-              role="img"
-              aria-labelledby="sC48-t sC48-d"
-              color="#17365d"
-            >
-              <title id="sC48-t">SIGNAL TRUNK at 48px</title>
-              <desc id="sC48-d">Prototype symbol proof (PROPOSED, internal).</desc>
-              <g transform="translate(4.25 3)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g></svg
-            ><span class="cap">48 px</span>
-          </div>
-          <div class="cell">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="24"
-              height="24"
-              role="img"
-              aria-labelledby="sC24-t sC24-d"
-              color="#17365d"
-            >
-              <title id="sC24-t">SIGNAL TRUNK at 24px</title>
-              <desc id="sC24-d">Prototype symbol proof (PROPOSED, internal).</desc>
-              <g transform="translate(4.25 3)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g></svg
-            ><span class="cap">24 px</span>
-          </div>
-          <div class="cell">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              width="16"
-              height="16"
-              role="img"
-              aria-labelledby="sC16-t sC16-d"
-              color="#17365d"
-            >
-              <title id="sC16-t">SIGNAL TRUNK at 16px</title>
-              <desc id="sC16-d">Prototype symbol proof (PROPOSED, internal).</desc>
-              <g transform="translate(4.25 3)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g></svg
-            ><span class="cap">16 px</span>
-          </div>
-          <div class="cell">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 16 16"
-              width="30"
-              height="30"
-              role="img"
-              aria-labelledby="sCmm-t sCmm-d"
-              color="#17365d"
-            >
-              <title id="sCmm-t">SIGNAL TRUNK reduced at 30px</title>
-              <desc id="sCmm-d">Prototype symbol proof (PROPOSED, internal).</desc>
-              <g transform="translate(3 2.1)">
-                <path fill="currentColor" d="M0 8 L10 8 L10 9.8 L0 9.8Z" />
-                <path fill="currentColor" d="M1 6.4 L2.7 6.4 L2.7 8 L1 8Z" />
-                <path fill="currentColor" d="M4.1 2 L5.1 2 L5.1 7.6 L4.1 7.6Z" />
-                <path fill="currentColor" d="M5.9 2 L6.9 2 L6.9 7.6 L5.9 7.6Z" />
-                <path fill="currentColor" d="M5.1 3.4 L5.9 3.4 L5.9 7.6 L5.1 7.6Z" />
-                <path fill="currentColor" d="M7.8 3.9 L9.8 3.9 L9.8 8 L7.8 8Z" />
-              </g></svg
-            ><span class="cap">8 mm @96 dpi ≈30 px<br />(simulated reduction)</span>
-          </div>
-        </div>
-      </div>
-      <p class="meta">
-        Rendered at native size by the browser; inspect the 16 px and 24 px cells at 100% zoom. The
-        8 mm cell is a simulated pixel reduction of the same geometry (print simulation, not a
-        physical sample).
-      </p>
+<h2>4. Small-size ladder (optical comparison)</h2>
+<div class="panel"><div class="sizes"><div class="cell"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="512" height="512" role="img" aria-labelledby="sC512-t sC512-d" color="#17365d">
+<title id="sC512-t">SIGNAL TRUNK at 512px</title>
+<desc id="sC512-d">Prototype symbol proof (PROPOSED, internal).</desc>
+<g transform="translate(4.25 3)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+</svg><span class="cap">512 px</span></div>
+<div class="cell"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48" role="img" aria-labelledby="sC48-t sC48-d" color="#17365d">
+<title id="sC48-t">SIGNAL TRUNK at 48px</title>
+<desc id="sC48-d">Prototype symbol proof (PROPOSED, internal).</desc>
+<g transform="translate(4.25 3)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+</svg><span class="cap">48 px</span></div>
+<div class="cell"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" role="img" aria-labelledby="sC24-t sC24-d" color="#17365d">
+<title id="sC24-t">SIGNAL TRUNK at 24px</title>
+<desc id="sC24-d">Prototype symbol proof (PROPOSED, internal).</desc>
+<g transform="translate(4.25 3)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+</svg><span class="cap">24 px</span></div>
+<div class="cell"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" role="img" aria-labelledby="sC16-t sC16-d" color="#17365d">
+<title id="sC16-t">SIGNAL TRUNK at 16px</title>
+<desc id="sC16-d">Prototype symbol proof (PROPOSED, internal).</desc>
+<g transform="translate(4.25 3)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+</svg><span class="cap">16 px</span></div>
+  <div class="cell"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="30" height="30" role="img" aria-labelledby="sCmm-t sCmm-d" color="#17365d">
+<title id="sCmm-t">SIGNAL TRUNK reduced at 30px</title>
+<desc id="sCmm-d">Prototype symbol proof (PROPOSED, internal).</desc>
+<g transform="translate(3 2.1)">
+<path fill="currentColor" d="M0 8 L10 8 L10 9.8 L0 9.8Z"/>
+<path fill="currentColor" d="M1 6.4 L2.7 6.4 L2.7 8 L1 8Z"/>
+<path fill="currentColor" d="M4.1 2 L5.1 2 L5.1 7.6 L4.1 7.6Z"/>
+<path fill="currentColor" d="M5.9 2 L6.9 2 L6.9 7.6 L5.9 7.6Z"/>
+<path fill="currentColor" d="M5.1 3.4 L5.9 3.4 L5.9 7.6 L5.1 7.6Z"/>
+<path fill="currentColor" d="M7.8 3.9 L9.8 3.9 L9.8 8 L7.8 8Z"/>
+</g>
+</svg><span class="cap">8 mm @96 dpi ≈30 px<br>(simulated reduction)</span></div></div></div>
+<p class="meta">Rendered at native size by the browser; inspect the 16 px and 24 px cells at 100% zoom. The 8 mm cell is a simulated pixel reduction of the same geometry (print simulation, not a physical sample).</p>
 
-      <h2>5. Greyscale and engraving simulation</h2>
-      <div class="row">
-        <div class="cell">
-          <div class="panel gray">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 760.96 200"
-              width="380"
-              height="99.87"
-              role="img"
-              aria-labelledby="gC-t gC-d"
-              color="#17365d"
-            >
-              <title id="gC-t">MAREA — proposed identifier (internal, not cleared)</title>
-              <desc id="gC-d">
-                Proposed MAREA lockup built from one construction system: territory C symbol +
-                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
-                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
-                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
-              </desc>
-              <g transform="translate(50 10) scale(10)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-              <g transform="translate(280 50)">
-                <path
-                  fill="currentColor"
-                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
-                />
-              </g>
-            </svg>
-          </div>
-          <span class="cap">greyscale conversion (no colour information)</span>
-        </div>
-        <div class="cell">
-          <div class="engrave">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 760.96 200"
-              width="380"
-              height="99.87"
-              role="img"
-              aria-labelledby="eC-t eC-d"
-              color="#1a1a1a"
-            >
-              <title id="eC-t">MAREA — proposed identifier (internal, not cleared)</title>
-              <desc id="eC-d">
-                Proposed MAREA lockup built from one construction system: territory C symbol +
-                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
-                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
-                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
-              </desc>
-              <g transform="translate(50 10) scale(10)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-              <g transform="translate(280 50)">
-                <path
-                  fill="currentColor"
-                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
-                />
-              </g>
-            </svg>
-          </div>
-          <span class="cap"
-            >SIMULATION — engraved/silkscreen appearance on matte grey, not a physical sample</span
-          >
-        </div>
-      </div>
+<h2>5. Greyscale and engraving simulation</h2>
+<div class="row">
+  <div class="cell"><div class="panel gray"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760.96 200" width="380" height="99.87" role="img" aria-labelledby="gC-t gC-d" color="#17365d">
+<title id="gC-t">MAREA — proposed identifier (internal, not cleared)</title>
+<desc id="gC-d">Proposed MAREA lockup built from one construction system: territory C symbol + outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.</desc>
+<g transform="translate(50 10) scale(10)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<g transform="translate(280 50)"><path fill="currentColor" d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"/></g>
+</svg></div><span class="cap">greyscale conversion (no colour information)</span></div>
+  <div class="cell"><div class="engrave"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760.96 200" width="380" height="99.87" role="img" aria-labelledby="eC-t eC-d" color="#1a1a1a">
+<title id="eC-t">MAREA — proposed identifier (internal, not cleared)</title>
+<desc id="eC-d">Proposed MAREA lockup built from one construction system: territory C symbol + outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.</desc>
+<g transform="translate(50 10) scale(10)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<g transform="translate(280 50)"><path fill="currentColor" d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"/></g>
+</svg></div><span class="cap">SIMULATION — engraved/silkscreen appearance on matte grey, not a physical sample</span></div>
+</div>
 
-      <h2>6. Misuse examples (do not reproduce)</h2>
-      <div class="misuse">
-        <div class="tile">
-          <div class="demo" style="transform: scaleX(1.55); transform-origin: left center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 760.96 200"
-              width="132"
-              height="34.69"
-              role="img"
-              aria-labelledby="muC0-t muC0-d"
-              color="#17365d"
-            >
-              <title id="muC0-t">MAREA — proposed identifier (internal, not cleared)</title>
-              <desc id="muC0-d">
-                Proposed MAREA lockup built from one construction system: territory C symbol +
-                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
-                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
-                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
-              </desc>
-              <g transform="translate(50 10) scale(10)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-              <g transform="translate(280 50)">
-                <path
-                  fill="currentColor"
-                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div class="why">
-            ✕ Stretched horizontally (1.55×) — distorts stroke weight and rhythm
-          </div>
-          <div class="meta">transform:scaleX(1.55)</div>
-        </div>
-        <div class="tile">
-          <div class="demo" style="transform: rotate(12deg)">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 760.96 200"
-              width="132"
-              height="34.69"
-              role="img"
-              aria-labelledby="muC1-t muC1-d"
-              color="#17365d"
-            >
-              <title id="muC1-t">MAREA — proposed identifier (internal, not cleared)</title>
-              <desc id="muC1-d">
-                Proposed MAREA lockup built from one construction system: territory C symbol +
-                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
-                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
-                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
-              </desc>
-              <g transform="translate(50 10) scale(10)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-              <g transform="translate(280 50)">
-                <path
-                  fill="currentColor"
-                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div class="why">
-            ✕ Rotated 12° — the symbol is axis-built; rotation breaks the baseline logic
-          </div>
-          <div class="meta">transform:rotate(12deg)</div>
-        </div>
-        <div class="tile">
-          <div class="demo" style="filter: invert(1)">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 760.96 200"
-              width="132"
-              height="34.69"
-              role="img"
-              aria-labelledby="muC2-t muC2-d"
-              color="#17365d"
-            >
-              <title id="muC2-t">MAREA — proposed identifier (internal, not cleared)</title>
-              <desc id="muC2-d">
-                Proposed MAREA lockup built from one construction system: territory C symbol +
-                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
-                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
-                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
-              </desc>
-              <g transform="translate(50 10) scale(10)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-              <g transform="translate(280 50)">
-                <path
-                  fill="currentColor"
-                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div class="why">✕ Outlined / hollowed — not authored; destroys the single-ink mass</div>
-          <div class="meta">stroke only</div>
-        </div>
-        <div class="tile">
-          <div class="demo" style="color: #c0392b">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 760.96 200"
-              width="132"
-              height="34.69"
-              role="img"
-              aria-labelledby="muC3-t muC3-d"
-              color="#17365d"
-            >
-              <title id="muC3-t">MAREA — proposed identifier (internal, not cleared)</title>
-              <desc id="muC3-d">
-                Proposed MAREA lockup built from one construction system: territory C symbol +
-                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
-                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
-                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
-              </desc>
-              <g transform="translate(50 10) scale(10)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-              <g transform="translate(280 50)">
-                <path
-                  fill="currentColor"
-                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div class="why">
-            ✕ Two-colour split — colour never carries identity; breaks monochrome/engraving
-          </div>
-          <div class="meta">two inks</div>
-        </div>
-        <div class="tile">
-          <div class="demo" style="opacity: 0.35">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 760.96 200"
-              width="132"
-              height="34.69"
-              role="img"
-              aria-labelledby="muC4-t muC4-d"
-              color="#17365d"
-            >
-              <title id="muC4-t">MAREA — proposed identifier (internal, not cleared)</title>
-              <desc id="muC4-d">
-                Proposed MAREA lockup built from one construction system: territory C symbol +
-                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
-                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
-                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
-              </desc>
-              <g transform="translate(50 10) scale(10)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-              <g transform="translate(280 50)">
-                <path
-                  fill="currentColor"
-                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div class="why">
-            ✕ Low opacity on paper — falls below contrast and vanishes in sunlight
-          </div>
-          <div class="meta">opacity:.35</div>
-        </div>
-        <div class="tile">
-          <div class="demo" style="">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 760.96 200"
-              width="132"
-              height="34.69"
-              role="img"
-              aria-labelledby="muC5-t muC5-d"
-              color="#17365d"
-            >
-              <title id="muC5-t">MAREA — proposed identifier (internal, not cleared)</title>
-              <desc id="muC5-d">
-                Proposed MAREA lockup built from one construction system: territory C symbol +
-                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
-                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
-                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
-              </desc>
-              <g transform="translate(50 10) scale(10)">
-                <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
-                <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
-                <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
-                <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
-                <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
-                <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
-              </g>
-              <g transform="translate(280 50)">
-                <path
-                  fill="currentColor"
-                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
-                />
-              </g>
-            </svg>
-          </div>
-          <div class="why">✕ Crowded clear space — no breathing room; reads as a UI icon</div>
-          <div class="meta">0 gap</div>
-        </div>
-      </div>
-      <p class="note">
-        Misuse rules are enforced by the system rules in
-        <code>docs/marea/brand/IDENTITY-SYSTEM.md</code>: no stretching, rotation, outline,
-        multi-colour, transparency, effects, added letters inside the symbol, or reduced clear
-        space.
-      </p>
+<h2>6. Misuse examples (do not reproduce)</h2>
+<div class="misuse"><div class="tile"><div class="demo" style="transform:scaleX(1.55);transform-origin:left center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760.96 200" width="132" height="34.69" role="img" aria-labelledby="muC0-t muC0-d" color="#17365d">
+<title id="muC0-t">MAREA — proposed identifier (internal, not cleared)</title>
+<desc id="muC0-d">Proposed MAREA lockup built from one construction system: territory C symbol + outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.</desc>
+<g transform="translate(50 10) scale(10)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<g transform="translate(280 50)"><path fill="currentColor" d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"/></g>
+</svg></div><div class="why">✕ Stretched horizontally (1.55×) — distorts stroke weight and rhythm</div><div class="meta">transform:scaleX(1.55)</div></div><div class="tile"><div class="demo" style="transform:rotate(12deg)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760.96 200" width="132" height="34.69" role="img" aria-labelledby="muC1-t muC1-d" color="#17365d">
+<title id="muC1-t">MAREA — proposed identifier (internal, not cleared)</title>
+<desc id="muC1-d">Proposed MAREA lockup built from one construction system: territory C symbol + outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.</desc>
+<g transform="translate(50 10) scale(10)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<g transform="translate(280 50)"><path fill="currentColor" d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"/></g>
+</svg></div><div class="why">✕ Rotated 12° — the symbol is axis-built; rotation breaks the baseline logic</div><div class="meta">transform:rotate(12deg)</div></div><div class="tile"><div class="demo" style="filter:invert(1)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760.96 200" width="132" height="34.69" role="img" aria-labelledby="muC2-t muC2-d" color="#17365d">
+<title id="muC2-t">MAREA — proposed identifier (internal, not cleared)</title>
+<desc id="muC2-d">Proposed MAREA lockup built from one construction system: territory C symbol + outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.</desc>
+<g transform="translate(50 10) scale(10)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<g transform="translate(280 50)"><path fill="currentColor" d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"/></g>
+</svg></div><div class="why">✕ Outlined / hollowed — not authored; destroys the single-ink mass</div><div class="meta">stroke only</div></div><div class="tile"><div class="demo" style="color:#c0392b"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760.96 200" width="132" height="34.69" role="img" aria-labelledby="muC3-t muC3-d" color="#17365d">
+<title id="muC3-t">MAREA — proposed identifier (internal, not cleared)</title>
+<desc id="muC3-d">Proposed MAREA lockup built from one construction system: territory C symbol + outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.</desc>
+<g transform="translate(50 10) scale(10)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<g transform="translate(280 50)"><path fill="currentColor" d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"/></g>
+</svg></div><div class="why">✕ Two-colour split — colour never carries identity; breaks monochrome/engraving</div><div class="meta">two inks</div></div><div class="tile"><div class="demo" style="opacity:.35"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760.96 200" width="132" height="34.69" role="img" aria-labelledby="muC4-t muC4-d" color="#17365d">
+<title id="muC4-t">MAREA — proposed identifier (internal, not cleared)</title>
+<desc id="muC4-d">Proposed MAREA lockup built from one construction system: territory C symbol + outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.</desc>
+<g transform="translate(50 10) scale(10)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<g transform="translate(280 50)"><path fill="currentColor" d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"/></g>
+</svg></div><div class="why">✕ Low opacity on paper — falls below contrast and vanishes in sunlight</div><div class="meta">opacity:.35</div></div><div class="tile"><div class="demo" style=""><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760.96 200" width="132" height="34.69" role="img" aria-labelledby="muC5-t muC5-d" color="#17365d">
+<title id="muC5-t">MAREA — proposed identifier (internal, not cleared)</title>
+<desc id="muC5-d">Proposed MAREA lockup built from one construction system: territory C symbol + outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.</desc>
+<g transform="translate(50 10) scale(10)">
+<path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z"/>
+<path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z"/>
+<path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z"/>
+<path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z"/>
+<path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z"/>
+<path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z"/>
+</g>
+<g transform="translate(280 50)"><path fill="currentColor" d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"/></g>
+</svg></div><div class="why">✕ Crowded clear space — no breathing room; reads as a UI icon</div><div class="meta">0 gap</div></div></div>
+<p class="note">Misuse rules are enforced by the system rules in <code>docs/marea/brand/IDENTITY-SYSTEM.md</code>: no stretching, rotation, outline, multi-colour, transparency, effects, added letters inside the symbol, or reduced clear space.</p>
 
-      <h2>7. Test log (self-assessed, recorded honestly)</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Test</th>
-            <th>Result for this territory</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>SVG parse + hygiene</td>
-            <td>
-              XML parse, no script/external ref/raster/@import/filter, viewBox present, byte budget
-              checked by <code>check.mjs</code>
-            </td>
-            <td>TESTED</td>
-          </tr>
-          <tr>
-            <td>16 px / 24 px optical</td>
-            <td>
-              rail, terminal and keyed connector remain separable at 16 px; the 1.4-unit keyway is
-              at the limit of legibility but is not required for recognition. STRUCTURED INTERNAL
-              JUDGEMENT: reads as a rail with two seated blocks, not as bars / menu / equaliser.
-            </td>
-            <td>TESTED (visual)</td>
-          </tr>
-          <tr>
-            <td>8 mm simulated reduction</td>
-            <td>
-              passes: the 3/24 rail and the 7 × 11 connector hold a clear silhouette; the keyway
-              reads at 8 mm as a small notch. Simulation only — no physical engraving/silkscreen
-              sample exists.
-            </td>
-            <td>TESTED (simulation only)</td>
-          </tr>
-          <tr>
-            <td>Monochrome / reversed</td>
-            <td>single ink, no opacity, no gradient; reversed ink is the existing --mist token</td>
-            <td>TESTED</td>
-          </tr>
-          <tr>
-            <td>Greyscale</td>
-            <td>no colour-only information in the mark itself</td>
-            <td>TESTED</td>
-          </tr>
-          <tr>
-            <td>Installed-equipment test (5-second sort)</td>
-            <td>
-              self-classification: “installed system/terminal block” — marine only with wordmark
-              context. Independent reviewer sort NOT TESTED (G1 pending).
-            </td>
-            <td>NOT TESTED (independent)</td>
-          </tr>
-          <tr>
-            <td>Family extensibility</td>
-            <td>
-              connector/rail grammar transfers to icons, diagrams, bezels and packaging labels; no
-              per-family symbol needed
-            </td>
-            <td>ASSESSED (design judgement, not measured)</td>
-          </tr>
-          <tr>
-            <td>Originality / prior art</td>
-            <td>
-              No claim. A professional originality/prior-art check is PENDING (G3/B9); this
-              prototype is not cleared.
-            </td>
-            <td>BLOCKED</td>
-          </tr>
-        </tbody>
-      </table>
+<h2>7. Test log (self-assessed, recorded honestly)</h2>
+<table>
+<thead><tr><th>Test</th><th>Result for this territory</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>SVG parse + hygiene</td><td>XML parse, no script/external ref/raster/@import/filter, viewBox present, byte budget checked by <code>check.mjs</code></td><td>TESTED</td></tr>
+<tr><td>16 px / 24 px optical</td><td>rail, terminal and keyed connector remain separable at 16 px; the 1.4-unit keyway is at the limit of legibility but is not required for recognition. STRUCTURED INTERNAL JUDGEMENT: reads as a rail with two seated blocks, not as bars / menu / equaliser.</td><td>TESTED (visual)</td></tr>
+<tr><td>8 mm simulated reduction</td><td>passes: the 3/24 rail and the 7 × 11 connector hold a clear silhouette; the keyway reads at 8 mm as a small notch. Simulation only — no physical engraving/silkscreen sample exists.</td><td>TESTED (simulation only)</td></tr>
+<tr><td>Monochrome / reversed</td><td>single ink, no opacity, no gradient; reversed ink is the existing --mist token</td><td>TESTED</td></tr>
+<tr><td>Greyscale</td><td>no colour-only information in the mark itself</td><td>TESTED</td></tr>
+<tr><td>Installed-equipment test (5-second sort)</td><td>self-classification: “installed system/terminal block” — marine only with wordmark context. Independent reviewer sort NOT TESTED (G1 pending).</td><td>NOT TESTED (independent)</td></tr>
+<tr><td>Family extensibility</td><td>connector/rail grammar transfers to icons, diagrams, bezels and packaging labels; no per-family symbol needed</td><td>ASSESSED (design judgement, not measured)</td></tr>
+<tr><td>Originality / prior art</td><td>No claim. A professional originality/prior-art check is PENDING (G3/B9); this prototype is not cleared.</td><td>BLOCKED</td></tr>
+</tbody></table>
 
-      <footer>
-        MC-04 · IdentityVector · generated by <code>territories/tools/build.mjs</code> from authored
-        geometry. PROPOSED internal artwork; MAREA is not cleared, not registered and not adopted.
-        No ® / ™ symbols; no certification or availability claim.
-      </footer>
-    </div>
-  </body>
-</html>
+<footer>MC-04 · IdentityVector · generated by <code>territories/tools/build.mjs</code> from authored geometry. PROPOSED internal artwork; MAREA is not cleared, not registered and not adopted. No ® / ™ symbols; no certification or availability claim.</footer></div></body></html>

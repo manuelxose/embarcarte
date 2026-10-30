@@ -184,7 +184,7 @@ seal / wifi / generic wave.
 | B greyscale | unchanged reading (one ink)                                                                              | —                           | no colour dependency                                                                                                                                  |
 | C greyscale | unchanged (still a histogram)                                                                            | —                           | no colour dependency                                                                                                                                  |
 
-The Lead's own renders of the frozen set reached the same classification. This file records it
+The Lead's own renders reached the same classification. This file records it
 **as a failure for C**, not as an acceptable abstraction.
 
 ## 7. Kill-criteria outcomes
@@ -220,6 +220,16 @@ conditional on:
 
 C is **not** adopted and does not pass the reading test. If the professional check rejects B,
 the next action is a new construction, not a silent fallback.
+
+**Master set reissue (recorded):** the D-02/D-03 files in `docs/marea/brand/assets/logo/` are
+regenerated from the shortlisted-preferred **B** construction (32 × 32 grid; arc 3.2 units =
+10.4 % of the symbol ink height — curved strokes read heavier than straight stems, so optical
+parity with the 16 % wordmark stem is reached below 16 %; the two rejected weights were 2.5 units
+(8.6 %, read thin) and 4.4 units (14.3 %, read letter-heavy). Index 3.4 wide; datum 3.4 square;
+ticks 1.8 wide, attached to the arc outer edge and asymmetric). Measured master set: lockup viewBox
+704.83 × 200, symbol ink 98.87 × 100 on the cap band 50…150, wordmark 430.96 × 100 at x 223.87…654.83, ink gap 75.00,
+clear space 50, family token 0.70 × cap with a 26-unit word space. C remains only as the
+rejected-for-preference prototype in `territories/`.
 
 ## 9. What this comparison does not prove (limitations)
 

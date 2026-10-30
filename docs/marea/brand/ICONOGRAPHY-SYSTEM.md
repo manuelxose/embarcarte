@@ -194,7 +194,7 @@ mandatory disclaimers **verbatim** (localised, not paraphrased; brief §7.7). Ic
 
 | Rule | Specification |
 | --- | --- |
-| Base grid | **24 × 24** units; nominal content area **20 × 20** (2-unit optical padding). Measured effective stroke padding is ≥ 2 units for 46/57 icons; 11 icons have a declared optical exception of 1.0–1.8 units, listed in §6.1. Padding is an optical target, not a claim that every file has exactly 2 units. |
+| Base grid | **24 × 24** units; nominal content area **20 × 20** (2-unit optical padding). Measured effective ink padding (stroke included) is ≥ 2 units for 48/57 icons; 9 icons have a declared optical exception of 1.0–1.5 units, listed in §6.1. Padding is an optical target, not a claim that every file has exactly 2 units. |
 | Reference sizes | 16 / 20 / 24 / 32 / 48 px; masters are resolution-independent SVG |
 | Coordinate precision | integers or short decimals (≤ 2 dp). No long floating-point paths |
 | Optical centring | Shapes are centred by eye within the 20×20 live area, not by bounding-box math |
@@ -276,29 +276,29 @@ Rules:
 
 ### 6.1 Measured optical-padding exceptions (declared)
 
-A Playwright `getBBox` measurement of all 57 masters (stroke half-width included) gives the effective
-padding below. **46/57 icons meet the nominal 2-unit padding.** The 11 exceptions intentionally use more
-of the live area; they are recorded here so the specification matches the real files instead of
-overstating it. No statement in this document may be read as "all icons have exactly 2 px padding".
+A Chromium `getBBox` measurement of all 57 masters — union of each element's geometry expanded by half
+its stroke width (fill-only elements unexpanded) — gives the effective **ink** padding below.
+**48/57 icons meet the nominal 2-unit padding.** Nine exceptions intentionally use more of the live area;
+they are recorded here so the specification matches the real files instead of overstating it. No
+statement in this document may be read as "all icons have exactly 2 px padding".
 
-| Icon | Measured geometry bounds (x, y → maxX, maxY) | Effective padding |
+| Icon | Measured ink bounds (x, y → maxX, maxY) | Effective padding |
 | --- | --- | ---: |
-| `ais-receive-only` | 3, 2.34 → 14.01, 21 | 1.34 |
-| `alert-alarm` | 2, 2 → 22, 22 | 1.00 |
-| `battery` | 2.5, 7 → 20.5, 17 | 1.50 |
-| `cellular` | 7, 2.8 → 17, 20 | 1.80 |
-| `connection` | 2.5, 8 → 21.5, 16 | 1.50 |
-| `fuse-breaker` | 2.5, 9 → 21.5, 15 | 1.50 |
-| `installation` | 3, 4 → 21, 21.5 | 1.50 |
-| `settings` | 2, 2 → 22, 22 | 1.00 |
-| `shore-power` | 2.5, 7 → 21.5, 17 | 1.50 |
-| `watch-monitoring` | 2.5, 8 → 21.5, 16 | 1.50 |
-| `weather-forecast` | 2.47, 3 → 20.65, 18 | 1.47 |
+| `ais-receive-only` | 2, 1.34 → 15.01, 22 | 1.34 |
+| `battery` | 1.5, 6 → 21.5, 18 | 1.50 |
+| `connection` | 1.5, 7 → 22.5, 17 | 1.50 |
+| `fuse-breaker` | 1.5, 8 → 22.5, 16 | 1.50 |
+| `installation` | 2, 3 → 22, 22.5 | 1.50 |
+| `settings` | 5.5, 1 → 18.5, 18.5 | 1.00 |
+| `shore-power` | 1.5, 6 → 22.5, 18 | 1.50 |
+| `watch-monitoring` | 1.5, 7 → 22.5, 17 | 1.50 |
+| `weather-forecast` | 1.47, 2 → 21.65, 19 | 1.47 |
 
-Notes: `alert-alarm` and `settings` are full-bleed by design (solid critical shape; gear teeth), the
-horizontal device/connection icons use the full width because their silhouette is a wide bar, and
-`ais-receive-only` is asymmetric (antenna + receiver). These are optical decisions, not oversights;
-the safe area for *consuming* surfaces still follows §12 (clear space).
+Notes: `settings` is full-bleed vertically by design (gear teeth), the horizontal device/connection
+icons use the full width because their silhouette is a wide bar, and `ais-receive-only` is asymmetric
+(antenna + receiver). These are optical decisions, not oversights; the safe area for *consuming*
+surfaces still follows §12 (clear space). `alert-alarm` (solid octagon, fill 2→22) and `cellular`
+(ink y2.8 → 21) meet the nominal padding and are **not** exceptions.
 
 ## 7. Colour role use
 

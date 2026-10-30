@@ -22,7 +22,9 @@ const PAPER = '#f7f4ec';
 const DARK = '#0d1b26';
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const fmt4 = (n) => String(Math.round(n * 10000) / 10000);
+// Transform scale factors may carry 3 decimals (coordinates stay ≤ 2): 3 decimals are enough
+// to land the symbol ink band on the cap band within 0.01 units, and they keep §10.5 verifiable.
+const fmt4 = (n) => String(Math.round(n * 1000) / 1000);
 
 /** SVG markup (no XML declaration); ids are prefixed so inline HTML copies stay unique. */
 const markup = ({ w, h, title, desc, body, color = INK, uid = 'a', cls = '' }) =>
@@ -156,8 +158,8 @@ function constructionMarkup(dir) {
   } else if (dir === 'B') {
     aux.push(
       `<circle cx="16" cy="16" r="13" fill="none" stroke="#1776ad" stroke-width="0.12" stroke-dasharray="0.6 0.5"/>`,
-      `<circle cx="16" cy="16" r="14.25" fill="none" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.4 0.5"/>`,
-      `<circle cx="16" cy="16" r="11.75" fill="none" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.4 0.5"/>`,
+      `<circle cx="16" cy="16" r="14.6" fill="none" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.4 0.5"/>`,
+      `<circle cx="16" cy="16" r="11.4" fill="none" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.4 0.5"/>`,
       `<path d="M16 1V31M1 16H31" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.5 0.5" fill="none"/>`,
     );
   } else {
@@ -329,17 +331,36 @@ const proofSheet = (dir) => {
         ]
       : dir === 'B'
         ? [
-            ['Grid', '32 × 32 units; 1 unit = 1/32 mark height'],
-            ['Primary structure', '270° calibrated arc, open 90° at the lower right'],
-            ['Stroke', '2.5 units (arc band), constant'],
-            ['Arc', 'r = 13, centre (16,16), from 90° to 360°'],
-            ['Bearing index', '3.5 wide × 15 long, at 0° (vertical), heavier than ticks'],
-            ['Datum', '3 × 3 filled square at the optical centre — square, never a circle-dot'],
-            ['Ticks', 'radial, asymmetric: 4.5 long at 205°, 2 long at 315°'],
-            ['16 px build', 'arc 2/16, index + datum + one tick retained'],
+            ['Grid', '32 × 32 units; 1 unit = 1/32 mark height; ink 29.75 × 30.0 units'],
+            [
+              'Primary structure',
+              '270° calibrated arc, open 90° at the lower right (never a closed ring or seal)',
+            ],
+            [
+              'Stroke weight (corrected)',
+              'arc 3.2 units = 10.4 % of the 30.0-unit ink height. Curved strokes read visually heavier than straight stems, so optical parity with the 16 % wordmark stem is reached below 16 %. Two prototypes set the range: 2.5 units (8.6 %) read thin beside the letters; 4.4 units (14.3 %) read letter-heavy (the arc began to read as a "G"). 3.2 measured level with the wordmark on the 1:1 lockup proof',
+            ],
+            ['Arc', 'r = 13, centre (16,16), from 90° to 360°, butt ends'],
+            [
+              'Bearing index',
+              '3.4 wide × 15.4 long at 0° (vertical), heavier than the ticks and crossing the arc as a lubber line',
+            ],
+            ['Datum', '3.4 × 3.4 filled square at the optical centre — square, never a circle-dot'],
+            [
+              'Ticks',
+              'two outer calibration ticks, 1.8 wide, asymmetric: 1.8 long at 205°, 1.3 long at 315° — attached to the arc outer edge as graduation marks',
+            ],
+            [
+              '16 px build',
+              'own 16-unit coordinates: arc 2.2 r=6.5, index 2.2 wide, datum 2, two outer ticks 1.2 wide',
+            ],
             [
               'Optical corrections',
-              'index is 40% heavier than ticks; the 90° opening is kept ≥ 90° so the arc never closes into a seal; ticks cross the arc rather than terminating on it',
+              'the index is 89 % wider than the calibration ticks, so the heading reads before the graduations; the 90° opening prevents a seal/badge reading; no letter, numeral or cardinal point is drawn',
+            ],
+            [
+              'Reading test',
+              '24–48 px: instrument arc fragment (preferred). 16 px: residual "letter C"/gauge-app reading recorded in TERRITORY-COMPARISON.md §6 — a real residual risk, not hidden',
             ],
           ]
         : [
@@ -462,14 +483,14 @@ const proofSheet = (dir) => {
     dir === 'A'
       ? 'the contour intervals survive, but the sounding square and the innermost contour merge at 16 px; the unequal-interval idea is no longer readable. STRUCTURED INTERNAL JUDGEMENT: the non-concentric set still tends to read as radiating signal/wave arcs — recorded as a failure mode against the §3.3 kill criteria.'
       : dir === 'B'
-        ? 'index + datum + arc survive; the short tick closes up at 16 px and is dropped in the compact build. STRUCTURED INTERNAL JUDGEMENT: at 16 px the arc can read as a "C" and the hub as a centre dot — recorded as a risk against the §3.4 accidental-letter criterion.'
+        ? 'index + datum + arc survive; the short calibration tick closes up at 16 px and is dropped in the compact build. STRUCTURED INTERNAL JUDGEMENT: at 16 px the arc can read as a "C" and the hub as a centre dot — recorded as a risk against the §3.4 accidental-letter criterion.'
         : 'rail, terminal and keyed connector remain separable at 16 px; the 1.4-unit keyway is at the limit of legibility but is not required for recognition. STRUCTURED INTERNAL JUDGEMENT: reads as a rail with two seated blocks, not as bars / menu / equaliser.'
   }</td><td>TESTED (visual)</td></tr>
 <tr><td>8 mm simulated reduction</td><td>${
     dir === 'A'
       ? 'marginal: four 1.6/24 strokes reduce to ≈0.5 mm and the unequal intervals collapse into a set of parallel lines'
       : dir === 'B'
-        ? 'passes: the arc and index stay readable; the second tick is lost'
+        ? 'passes: the arc and index stay readable; the short calibration tick is lost'
         : 'passes: the 3/24 rail and the 7 × 11 connector hold a clear silhouette; the keyway reads at 8 mm as a small notch'
   }. Simulation only — no physical engraving/silkscreen sample exists.</td><td>TESTED (simulation only)</td></tr>
 <tr><td>Monochrome / reversed</td><td>single ink, no opacity, no gradient; reversed ink is the existing --mist token</td><td>TESTED</td></tr>
@@ -511,6 +532,9 @@ function wordmarkFile(color, uid) {
 }
 
 /* -------------------------------------------------------------------------------- assets */
+// The frozen master set is reissued from the shortlisted-preferred Territory B construction.
+const MASTER_DIR = 'B';
+
 function buildCore() {
   const files = [];
   files.push(write(path.join(LOGO, 'marea-wordmark.svg'), fileSvg0(wordmarkFile(INK, 'wm'))));
@@ -523,19 +547,19 @@ function buildCore() {
   files.push(
     write(
       path.join(LOGO, 'marea-lockup-primary.svg'),
-      fileSvg0(lockupFile({ dir: 'C', color: INK, uid: 'lp' })),
+      fileSvg0(lockupFile({ color: INK, uid: 'lp' })),
     ),
   );
   files.push(
     write(
       path.join(LOGO, 'marea-lockup-mono.svg'),
-      fileSvg0(lockupFile({ dir: 'C', color: MONO, uid: 'lm' })),
+      fileSvg0(lockupFile({ color: MONO, uid: 'lm' })),
     ),
   );
   files.push(
     write(
       path.join(LOGO, 'marea-lockup-reversed.svg'),
-      fileSvg0(lockupFile({ dir: 'C', color: REV, uid: 'lr' })),
+      fileSvg0(lockupFile({ color: REV, uid: 'lr' })),
     ),
   );
   files.push(write(path.join(LOGO, 'marea-construction-grid.svg'), fileSvg0(constructionFile())));
@@ -549,30 +573,30 @@ function buildCore() {
 const fileSvg0 = (s) => '<?xml version="1.0" encoding="UTF-8"?>\n' + s + '\n';
 
 function compactMarkFile(color, uid) {
-  const mk = MARKS.C();
+  const mk = MARKS[MASTER_DIR]();
   return markup({
-    w: 24,
-    h: 24,
+    w: 32,
+    h: 32,
     title: 'MAREA compact symbol — proposed app mark (internal, not cleared)',
-    desc: 'Proposed MAREA signal-trunk symbol alone on the 24-unit grid: bus rail on the baseline, three unequal terminal keys and the centre-key screw slot. Single ink, squared caps. PROPOSED / INTERNAL; no trademark clearance.',
+    desc: 'Proposed MAREA bearing-index symbol alone on its 32-unit construction grid: 270° calibrated arc open at the lower right, bearing index at 0°, square position datum and two asymmetric ticks. Single ink. PROPOSED / INTERNAL; no trademark clearance.',
     body: markBody(mk),
     color,
     uid,
   });
 }
 function compactReducedFile(color) {
-  const mk = COMPACTS.C();
+  const mk = COMPACTS[MASTER_DIR]();
   return markup({
     w: 16,
     h: 16,
     title: 'MAREA reduced symbol for 16 px (internal, not cleared)',
-    desc: 'Reduced 16-unit build of the proposed MAREA symbol on its own grid: rail, three unequal terminal keys and the centre-key screw slot, traced heavier for 16 px. PROPOSED / INTERNAL.',
+    desc: 'Reduced 16-unit build of the proposed MAREA bearing-index symbol on its own coordinates: heavier arc, shorter index, square datum and one tick. PROPOSED / INTERNAL.',
     body: markBody(mk),
     color,
     uid: 'm16',
   });
 }
-function lockupFile({ dir = 'C', family = null, color = INK, uid }) {
+function lockupFile({ dir = MASTER_DIR, family = null, color = INK, uid }) {
   return lockupMarkup({ dir, family, color, uid });
 }
 const FAMILY_NAMES = {
@@ -588,53 +612,58 @@ const FAMILY_NAMES = {
 };
 function familyFile(fam) {
   return lockupMarkup({
-    dir: 'C',
+    dir: MASTER_DIR,
     family: FAMILY_NAMES[fam],
     color: INK,
     uid: `f${fam}`,
   });
 }
 function constructionFile() {
-  const mk = MARKS.C();
-  const n = 24,
-    pad = 5.5,
+  const mk = MARKS[MASTER_DIR]();
+  const n = 32,
+    pad = 6,
     size = n + pad * 2;
   const t = (x, y, s, size2 = 1.1, anchor = 'start', weight = 400, fill = '#54636f') =>
     `<text x="${f(x)}" y="${f(y)}" font-family="ui-monospace, Consolas, monospace" font-size="${f(size2)}" fill="${fill}" text-anchor="${anchor}" font-weight="${weight}">${esc(s)}</text>`;
+  const aux =
+    `<circle cx="16" cy="16" r="13" fill="none" stroke="#1776ad" stroke-width="0.12" stroke-dasharray="0.6 0.5"/>` +
+    `<circle cx="16" cy="16" r="14.6" fill="none" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.4 0.5"/>` +
+    `<circle cx="16" cy="16" r="11.4" fill="none" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.4 0.5"/>` +
+    `<path d="M16 0V32M0 16H32" stroke="#1776ad" stroke-width="0.1" stroke-dasharray="0.5 0.5" fill="none"/>`;
   const body =
     `<rect x="0" y="0" width="${size}" height="${size}" fill="${PAPER}"/>` +
-    `<path d="${gridLinesDim(n, size).join(' ')}" stroke="#e2e6e3" stroke-width="0.06" fill="none"/>` +
+    `<path d="${gridLinesDim(n, size, pad).join(' ')}" stroke="#e2e6e3" stroke-width="0.06" fill="none"/>` +
     `<rect x="${pad}" y="${pad}" width="${n}" height="${n}" fill="none" stroke="#8a9aa3" stroke-width="0.18"/>` +
-    `<g transform="translate(${pad} ${pad})">${markBody(mk)}</g>` +
+    `<g transform="translate(${pad} ${pad})">${aux}${markBody(mk)}</g>` +
     t(pad, pad - 1.6, 'PROPOSED / INTERNAL — MAREA symbol construction', 1.15, 'start', 600) +
-    t(pad, pad - 0.5, 'Signal trunk · 24 × 24 grid · 1 unit = 1/24 mark height', 1.0) +
-    t(pad, pad + n + 2.0, 'rail 15.5 × 2 on the baseline; keys 2.5 / 4 / 3 wide', 0.95) +
+    t(pad, pad - 0.5, 'Bearing index · 32 × 32 grid · 1 unit = 1/32 mark height', 1.0) +
+    t(pad, pad + n + 2.0, 'calibrated arc r = 13, stroke 3.2, 270° open at the lower right', 0.95) +
     t(
       pad,
       pad + n + 3.2,
-      'unequal gaps 2.5 / 1.5 · heights 2 / 8 / 6 · centre-key screw slot',
+      'bearing index 3.4 × 15.4 at 0° · square datum 3.4 × 3.4 · two calibration ticks attached to the arc 1.8 wide (1.8 / 1.3)',
       0.95,
     ) +
     t(
       pad,
       pad + n + 4.4,
-      'squared caps, no radius, no letters implied · ink band 10 units tall',
+      'one ink, squared cuts, no rose, no cardinal letters · ink height 30.0 units',
       0.95,
     );
   return markup({
     w: size,
     h: size,
     title: 'MAREA symbol construction grid (PROPOSED, internal)',
-    desc: 'Construction drawing for the proposed MAREA signal-trunk symbol on the 24-unit grid. Internal prototype; not cleared, not adopted.',
+    desc: 'Construction drawing for the proposed MAREA bearing-index symbol on the 32-unit grid. Internal prototype; not cleared, not adopted.',
     body,
     color: '#12232e',
-    uid: 'cgC',
+    uid: 'cgB',
   });
 }
-const gridLinesDim = (n, size) => {
+const gridLinesDim = (n, size, pad = 5.5) => {
   const parts = [];
   for (let i = 0; i <= n; i++) {
-    parts.push(`M${f(5.5 + i)} 0V${f(size)}`, `M0 ${f(5.5 + i)}H${f(size)}`);
+    parts.push(`M${f(pad + i)} 0V${f(size)}`, `M0 ${f(pad + i)}H${f(size)}`);
   }
   return parts;
 };
@@ -731,19 +760,20 @@ function buildComparison() {
 <td class="num">${thumbLockup(d, 300, `cmp${d}lk`)}</td></tr>`;
     })
     .join('');
-  const summary = `| Criterion | Weight | A | B | C |\n|---|---:|---:|---:|---:|\n| C1 Marine-instrument credibility | 20% | 4.0 | 4.5 | 2.5 |\n| C2 Distinctiveness potential (subject to professional check) | 20% | 2.0 | 2.5 | 3.5 |\n| C3 Small-size legibility | 15% | 2.5 | 3.5 | 4.0 |\n| C4 System extensibility | 15% | 4.0 | 3.0 | 5.0 |\n| C5 Colour/monochrome independence | 10% | 5.0 | 5.0 | 5.0 |\n| C6 Cultural and language fit | 10% | 5.0 | 4.0 | 3.0 |\n| C7 Manufacturing feasibility | 10% | 3.0 | 4.0 | 5.0 |\n| **Weighted (of 5)** | 100% | **3.55** | **3.68** | **3.85** |`;
+  const summary = `| Criterion | Weight | A | B | C |\n|---|---:|---:|---:|---:|\n| C1 Marine-instrument credibility | 20% | 4.0 | 4.5 | 2.5 |\n| C2 Distinctiveness potential (subject to professional check) | 20% | 2.0 | 2.5 | 2.5 |\n| C3 Small-size legibility | 15% | 2.5 | 3.5 | 3.5 |\n| C4 System extensibility | 15% | 4.0 | 3.0 | 5.0 |\n| C5 Colour/monochrome independence | 10% | 5.0 | 5.0 | 5.0 |\n| C6 Cultural and language fit | 10% | 5.0 | 4.0 | 3.0 |\n| C7 Manufacturing feasibility | 10% | 3.0 | 4.0 | 5.0 |\n| **Weighted (of 5)** | 100% | **3.48** | **3.68** | **3.58** |`;
   const inner = `${head2}
 <h2>1. Optical comparison at native size</h2>
 <div class="panel"><table><thead><tr><th>Territory</th><th>96 px</th><th>48 px</th><th>24 px</th><th>16 px</th><th>Lockup (symbol + wordmark)</th></tr></thead><tbody>${rows}</tbody></table></div>
-<p class="meta">The 16 px column is the deciding column: at 16 px the A construction loses its unequal contour intervals and tends to read as radiating wave/signal arcs; B keeps a legible arc + index but risks a "C" reading; C keeps a rail with two separable seated blocks.</p>
+<p class="meta">The 16 px column is the deciding column: A loses its unequal contour intervals and reads as radiating wave/signal arcs (dropped); B keeps a legible arc + index but risks a "C" reading (shortlisted, preferred); C stays mechanically legible but reads as a bar chart/equaliser at 16–48 px (shortlisted, fails the small-size reading test, not preferred).</p>
 
 <h2>2. Weighted score used for the shortlist</h2>
 <pre class="meta">${esc(summary)}</pre>
 <p class="meta">Arithmetic is shown term by term in <code>docs/marea/brand/TERRITORY-COMPARISON.md</code> §4. Scores are internal design assessments, not measurements and not any statement about legal distinctiveness. C8 (legal/search effort) is not scored; it is a gate (G3/B9 PENDING).</p>
 
-<h2>3. Shortlist</h2>
-<p><strong>C — SIGNAL TRUNK</strong> (PREFERRED_PROVISIONAL) and <strong>B — BEARING INDEX</strong> are shortlisted as the two constructions to send to a professional originality/prior-art check. <strong>A — ISOBATH</strong> is retained as the documented rejected alternative: it is the most literally marine reading but it collapses at 16 px / 8 mm and reinforces the descriptiveness of the name.</p>
-<p class="note">Status: INTERNAL_PROPOSED. No adoption, no clearance, no publication. The recommendation is subject to Lead acceptance and to G3/B9, which only a professional check can close.</p>
+<h2>3. Shortlist and internal preference</h2>
+<p><strong>B — BEARING INDEX</strong> (shortlisted, <strong>PREFERRED_PROVISIONAL</strong>) and <strong>C — SIGNAL TRUNK</strong> (shortlisted, but fails the small-size reading test: bar chart/equaliser at 16–48 px) are the two constructions sent to a professional originality/prior-art check. <strong>A — ISOBATH</strong> is dropped on the §3.3 kill criterion (generic wave / signal-arc reading) and the lowest weighted score (3.48); it is retained only as documented rejected evidence.</p>
+<p class="meta">The frozen master set in <code>assets/logo/</code> is reissued from the B construction (symbol ink on the cap band, 0.75 × cap ink gap, 0.5 × cap clear space, family token 0.70 × cap). C remains a documented rejected-for-preference alternative; it is not the master.</p>
+<p class="note">Status: INTERNAL_PROPOSED. No adoption, no clearance, no publication. The preference is the Lead's decision and is conditional on G3/B9, which only a professional check can close.</p>
 
 <h2>4. What this comparison does not prove</h2>
 <ul>

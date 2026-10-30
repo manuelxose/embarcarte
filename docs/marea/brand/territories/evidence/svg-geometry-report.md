@@ -6,32 +6,32 @@ PROPOSED / INTERNAL; this report measures our own artwork, it is not a design or
 
 | File | Bytes | Budget | viewBox | Ink bbox (x, y, w, h) | Checks |
 | --- | ---: | ---: | --- | --- | --- |
-| `docs/marea/brand/assets/logo/marea-construction-grid.svg` | 2657 | 24576 | 35×35 | 0, 0, 41.49, 35 | 6/6 |
-| `docs/marea/brand/assets/logo/marea-lockup-mono.svg` | 1982 | 20480 | 760.9600219726562×200 | 50, 50, 660.96, 100 | 12/12 |
-| `docs/marea/brand/assets/logo/marea-lockup-primary.svg` | 1982 | 20480 | 760.9600219726562×200 | 50, 50, 660.96, 100 | 12/12 |
-| `docs/marea/brand/assets/logo/marea-lockup-reversed.svg` | 1982 | 20480 | 760.9600219726562×200 | 50, 50, 660.96, 100 | 12/12 |
-| `docs/marea/brand/assets/logo/marea-mark-compact.svg` | 935 | 8192 | 24×24 | 4.25, 7, 15.5, 10 | 9/9 |
-| `docs/marea/brand/assets/logo/marea-mark-reduced-16.svg` | 894 | 8192 | 16×16 | 3, 4.1, 10, 7.8 | 9/9 |
+| `docs/marea/brand/assets/logo/marea-construction-grid.svg` | 3218 | 24576 | 44×44 | 0, 0, 69.15, 44 | 6/6 |
+| `docs/marea/brand/assets/logo/marea-lockup-mono.svg` | 2016 | 20480 | 704.8300170898438×200 | 50, 50, 604.83, 100 | 12/12 |
+| `docs/marea/brand/assets/logo/marea-lockup-primary.svg` | 2016 | 20480 | 704.8300170898438×200 | 50, 50, 604.83, 100 | 12/12 |
+| `docs/marea/brand/assets/logo/marea-lockup-reversed.svg` | 2016 | 20480 | 704.8300170898438×200 | 50, 50, 604.83, 100 | 12/12 |
+| `docs/marea/brand/assets/logo/marea-mark-compact.svg` | 993 | 8192 | 32×32 | 1.17, 1, 29.66, 30 | 9/9 |
+| `docs/marea/brand/assets/logo/marea-mark-reduced-16.svg` | 865 | 8192 | 16×16 | 0.27, 0.35, 15.47, 15.3 | 9/9 |
 | `docs/marea/brand/assets/logo/marea-wordmark.svg` | 1425 | 20480 | 430.9599914550781×100 | 0, 0, 430.96, 100 | 8/8 |
-| `docs/marea/brand/assets/logo/family/marea-family-ais-lockup.svg` | 2515 | 20480 | 909.7999877929688×200 | 50, 50, 809.8, 100 | 15/15 |
-| `docs/marea/brand/assets/logo/family/marea-family-display-lockup.svg` | 3085 | 20480 | 1124.5999755859375×200 | 50, 50, 1024.6, 100 | 15/15 |
-| `docs/marea/brand/assets/logo/family/marea-family-fleet-lockup.svg` | 2704 | 20480 | 1048.760009765625×200 | 50, 50, 948.76, 100 | 15/15 |
-| `docs/marea/brand/assets/logo/family/marea-family-hub-lockup.svg` | 2588 | 20480 | 956.3599853515625×200 | 50, 50, 856.36, 100 | 15/15 |
-| `docs/marea/brand/assets/logo/family/marea-family-nav-lockup.svg` | 2494 | 20480 | 964.72998046875×200 | 50, 50, 864.73, 100 | 15/15 |
-| `docs/marea/brand/assets/logo/family/marea-family-pilot-lockup.svg` | 2610 | 20480 | 1002.5599975585938×200 | 50, 50, 902.56, 100 | 15/15 |
-| `docs/marea/brand/assets/logo/family/marea-family-sense-lockup.svg` | 2983 | 20480 | 1064.8599853515625×200 | 50, 50, 964.86, 100 | 15/15 |
-| `docs/marea/brand/assets/logo/family/marea-family-watch-lockup.svg` | 2753 | 20480 | 1095.4599609375×200 | 50, 50, 995.46, 100 | 15/15 |
-| `docs/marea/brand/assets/logo/family/marea-family-weather-lockup.svg` | 3208 | 20480 | 1221.4599609375×200 | 50, 50, 1121.46, 100 | 15/15 |
+| `docs/marea/brand/assets/logo/family/marea-family-ais-lockup.svg` | 2551 | 20480 | 853.6599731445312×200 | 50, 50, 753.67, 100 | 15/15 |
+| `docs/marea/brand/assets/logo/family/marea-family-display-lockup.svg` | 3121 | 20480 | 1068.4599609375×200 | 50, 50, 968.47, 100 | 15/15 |
+| `docs/marea/brand/assets/logo/family/marea-family-fleet-lockup.svg` | 2736 | 20480 | 992.6300048828125×200 | 50, 50, 892.63, 100 | 15/15 |
+| `docs/marea/brand/assets/logo/family/marea-family-hub-lockup.svg` | 2622 | 20480 | 900.22998046875×200 | 50, 50, 800.23, 100 | 15/15 |
+| `docs/marea/brand/assets/logo/family/marea-family-nav-lockup.svg` | 2526 | 20480 | 908.5999755859375×200 | 50, 50, 808.6, 100 | 15/15 |
+| `docs/marea/brand/assets/logo/family/marea-family-pilot-lockup.svg` | 2642 | 20480 | 946.4299926757812×200 | 50, 50, 846.43, 100 | 15/15 |
+| `docs/marea/brand/assets/logo/family/marea-family-sense-lockup.svg` | 3017 | 20480 | 1008.72998046875×200 | 50, 50, 908.73, 100 | 15/15 |
+| `docs/marea/brand/assets/logo/family/marea-family-watch-lockup.svg` | 2787 | 20480 | 1039.3199462890625×200 | 50, 50, 939.33, 100 | 15/15 |
+| `docs/marea/brand/assets/logo/family/marea-family-weather-lockup.svg` | 3242 | 20480 | 1165.3199462890625×200 | 50, 50, 1065.33, 100 | 15/15 |
 | `docs/marea/brand/territories/territory-a-construction.svg` | 3869 | 24576 | 33×34.5 | -18.5, -4.5, 48.51, 45 | 6/6 |
-| `docs/marea/brand/territories/territory-a-lockup-primary.svg` | 2212 | 20480 | 698.72998046875×200 | 50, 50, 598.73, 100 | 12/12 |
+| `docs/marea/brand/territories/territory-a-lockup-primary.svg` | 2211 | 20480 | 698.72998046875×200 | 50, 50, 598.73, 100.01 | 12/12 |
 | `docs/marea/brand/territories/territory-a-mark-compact.svg` | 757 | 8192 | 16×16 | 1.4, 0.31, 14, 15.02 | 8/8 |
 | `docs/marea/brand/territories/territory-a-mark-mono.svg` | 944 | 8192 | 24×24 | 1.65, 0.71, 21.55, 23.23 | 8/8 |
 | `docs/marea/brand/territories/territory-a-mark-reversed.svg` | 948 | 8192 | 24×24 | 1.65, 0.71, 21.55, 23.23 | 8/8 |
-| `docs/marea/brand/territories/territory-b-construction.svg` | 3677 | 24576 | 41×42.5 | -4.9, -4.5, 41.4, 44.3 | 6/6 |
-| `docs/marea/brand/territories/territory-b-lockup-primary.svg` | 2036 | 20480 | 704.1500244140625×200 | 50, 50, 604.15, 100 | 12/12 |
-| `docs/marea/brand/territories/territory-b-mark-compact.svg` | 672 | 8192 | 16×16 | 0.4, 0.4, 15.2, 15.2 | 8/8 |
-| `docs/marea/brand/territories/territory-b-mark-mono.svg` | 773 | 8192 | 32×32 | 1.53, 1, 28.72, 29.25 | 8/8 |
-| `docs/marea/brand/territories/territory-b-mark-reversed.svg` | 777 | 8192 | 32×32 | 1.53, 1, 28.72, 29.25 | 8/8 |
+| `docs/marea/brand/territories/territory-b-construction.svg` | 3704 | 24576 | 41×42.5 | -4.9, -4.5, 41.4, 44.3 | 6/6 |
+| `docs/marea/brand/territories/territory-b-lockup-primary.svg` | 2020 | 20480 | 704.8300170898438×200 | 50, 50, 604.83, 100 | 12/12 |
+| `docs/marea/brand/territories/territory-b-mark-compact.svg` | 771 | 8192 | 16×16 | 0.27, 0.35, 15.47, 15.3 | 8/8 |
+| `docs/marea/brand/territories/territory-b-mark-mono.svg` | 802 | 8192 | 32×32 | 1.17, 1, 29.66, 30 | 8/8 |
+| `docs/marea/brand/territories/territory-b-mark-reversed.svg` | 806 | 8192 | 32×32 | 1.17, 1, 29.66, 30 | 8/8 |
 | `docs/marea/brand/territories/territory-c-construction.svg` | 3638 | 24576 | 33×34.5 | -4.9, -4.5, 34.91, 36.3 | 6/6 |
 | `docs/marea/brand/territories/territory-c-lockup-primary.svg` | 1986 | 20480 | 760.9600219726562×200 | 50, 50, 660.96, 100 | 12/12 |
 | `docs/marea/brand/territories/territory-c-mark-compact.svg` | 784 | 8192 | 16×16 | 3, 4.1, 10, 7.8 | 8/8 |
@@ -43,20 +43,20 @@ PROPOSED / INTERNAL; this report measures our own artwork, it is not a design or
 
 | Lockup | Symbol ink band y | Cap band y | Ink gap | Family ink height | MAREA→family gap |
 | --- | --- | --- | ---: | ---: | ---: |
-| `marea-lockup-mono.svg` | 50..150 | 50..150 | 75 | — | — |
-| `marea-lockup-primary.svg` | 50..150 | 50..150 | 75 | — | — |
-| `marea-lockup-reversed.svg` | 50..150 | 50..150 | 75 | — | — |
-| `marea-family-ais-lockup.svg` | 50..150 | 50..150 | 75 | 70 | 26 |
-| `marea-family-display-lockup.svg` | 50..150 | 50..150 | 75 | 70 | 26 |
-| `marea-family-fleet-lockup.svg` | 50..150 | 50..150 | 75 | 70 | 26 |
-| `marea-family-hub-lockup.svg` | 50..150 | 50..150 | 75 | 70 | 26 |
-| `marea-family-nav-lockup.svg` | 50..150 | 50..150 | 75 | 70 | 26 |
-| `marea-family-pilot-lockup.svg` | 50..150 | 50..150 | 75 | 70 | 26 |
-| `marea-family-sense-lockup.svg` | 50..150 | 50..150 | 75 | 70 | 26 |
-| `marea-family-watch-lockup.svg` | 50..150 | 50..150 | 75 | 70 | 26 |
-| `marea-family-weather-lockup.svg` | 50..150 | 50..150 | 75 | 70 | 26 |
-| `territory-a-lockup-primary.svg` | 50..150 | 50..150 | 75 | — | — |
-| `territory-b-lockup-primary.svg` | 50..150 | 50..150 | 75 | — | — |
+| `marea-lockup-mono.svg` | 50..149.99 | 50..150 | 75.01 | — | — |
+| `marea-lockup-primary.svg` | 50..149.99 | 50..150 | 75.01 | — | — |
+| `marea-lockup-reversed.svg` | 50..149.99 | 50..150 | 75.01 | — | — |
+| `marea-family-ais-lockup.svg` | 50..149.99 | 50..150 | 75.01 | 70 | 26 |
+| `marea-family-display-lockup.svg` | 50..149.99 | 50..150 | 75.01 | 70 | 26 |
+| `marea-family-fleet-lockup.svg` | 50..149.99 | 50..150 | 75.01 | 70 | 26 |
+| `marea-family-hub-lockup.svg` | 50..149.99 | 50..150 | 75.01 | 70 | 26 |
+| `marea-family-nav-lockup.svg` | 50..149.99 | 50..150 | 75.01 | 70 | 26 |
+| `marea-family-pilot-lockup.svg` | 50..149.99 | 50..150 | 75.01 | 70 | 26 |
+| `marea-family-sense-lockup.svg` | 50..149.99 | 50..150 | 75.01 | 70 | 26 |
+| `marea-family-watch-lockup.svg` | 50..149.99 | 50..150 | 75.01 | 70 | 26 |
+| `marea-family-weather-lockup.svg` | 50..149.99 | 50..150 | 75.01 | 70 | 26 |
+| `territory-a-lockup-primary.svg` | 50..150 | 50..150 | 74.99 | — | — |
+| `territory-b-lockup-primary.svg` | 50..149.99 | 50..150 | 75.01 | — | — |
 | `territory-c-lockup-primary.svg` | 50..150 | 50..150 | 75 | — | — |
 
 ## Result

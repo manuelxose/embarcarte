@@ -1,39 +1,40 @@
 ============================================================
 MC-04 PROHIBITED-PATTERN / INTEGRITY SCAN
 Exact command      : pwsh -NoProfile -File docs/marea/brand/evidence/governance/run-compliance-scan.ps1
-Run at             : 2026-10-30T18:50:02+01:00
+Run at             : 2026-10-30T19:13:30+01:00
 Host / shell       : MSI-MANUEL / PowerShell 7.6.9
 Working directory  : C:\Users\Admin\Documents\workspace\embarcarte
-Text files in scope: 48
+Text files in scope: 49
 SVG files in scope : 104
 HTML files in scope: 15
 Excluded from scope: docs/marea/brand/evidence/** (this report quotes prohibited strings)
 ============================================================
 
 --- SCAN 1: trademark symbols and registration words ---
-PATTERN registered-symbol-R | files_hit=21 | lines_hit=78
+PATTERN registered-symbol-R | files_hit=22 | lines_hit=79
    docs\marea\brand\territories\evidence\svg-geometry-report.json: 32 line(s)
    docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 9 line(s)
    docs\marea\brand\MC-03-REVIEW.md: 8 line(s)
+   docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md: 2 line(s)
+   docs\marea\brand\BRAND-ARCHITECTURE.md: 2 line(s)
+   docs\marea\brand\BRAND-VOICE-ES-EN.md: 2 line(s)
+   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 2 line(s)
    docs\marea\brand\territories\territory-comparison.html: 2 line(s)
+   docs\marea\brand\HARDWARE-CMF-DIRECTION.md: 2 line(s)
    docs\marea\brand\territories\proof\territory-c-proof-sheet.html: 2 line(s)
    docs\marea\brand\territories\proof\territory-b-proof-sheet.html: 2 line(s)
    docs\marea\brand\territories\proof\territory-a-proof-sheet.html: 2 line(s)
-   docs\marea\brand\PACKAGING-DIRECTION.md: 2 line(s)
    docs\marea\brand\TERRITORY-COMPARISON.md: 2 line(s)
-   docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md: 2 line(s)
-   docs\marea\brand\HARDWARE-CMF-DIRECTION.md: 2 line(s)
-   docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 2 line(s)
-   docs\marea\brand\BRAND-VOICE-ES-EN.md: 2 line(s)
-   docs\marea\brand\BRAND-ARCHITECTURE.md: 2 line(s)
-   docs\marea\brand\MC-04-EXECUTION-PLAN.md: 1 line(s)
-   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md: 1 line(s)
-   docs\marea\brand\MC-04-ACCESSIBILITY-EVIDENCE.md: 1 line(s)
-   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md: 1 line(s)
-   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md: 1 line(s)
+   docs\marea\brand\PACKAGING-DIRECTION.md: 2 line(s)
    docs\marea\brand\MC-04-REVIEW.md: 1 line(s)
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md: 1 line(s)
+   docs\marea\brand\MC-04-EXECUTION-PLAN.md: 1 line(s)
+   docs\marea\brand\MC-04-DELIVERY.md: 1 line(s)
+   docs\marea\brand\MC-04-ACCESSIBILITY-EVIDENCE.md: 1 line(s)
+   docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md: 1 line(s)
+   docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md: 1 line(s)
    docs\marea\brand\TYPOGRAPHY-SYSTEM.md: 1 line(s)
-PATTERN unregistered-symbol-TM | files_hit=20 | lines_hit=72
+PATTERN unregistered-symbol-TM | files_hit=21 | lines_hit=73
    docs\marea\brand\territories\evidence\svg-geometry-report.json: 32 line(s)
    docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 9 line(s)
    docs\marea\brand\MC-03-REVIEW.md: 3 line(s)
@@ -48,13 +49,14 @@ PATTERN unregistered-symbol-TM | files_hit=20 | lines_hit=72
    docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 2 line(s)
    docs\marea\brand\BRAND-VOICE-ES-EN.md: 2 line(s)
    docs\marea\brand\BRAND-ARCHITECTURE.md: 2 line(s)
-   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md: 1 line(s)
    docs\marea\brand\MC-04-EXECUTION-PLAN.md: 1 line(s)
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md: 1 line(s)
+   docs\marea\brand\MC-04-DELIVERY.md: 1 line(s)
    docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md: 1 line(s)
    docs\marea\brand\MC-04-ACCESSIBILITY-EVIDENCE.md: 1 line(s)
    docs\marea\brand\MC-04-REVIEW.md: 1 line(s)
    docs\marea\brand\TYPOGRAPHY-SYSTEM.md: 1 line(s)
-PATTERN registered-trademark-words | files_hit=17 | lines_hit=25
+PATTERN registered-trademark-words | files_hit=17 | lines_hit=24
    docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md:98: - No `®` or `™`; no "registered", "registrada", "marca registrada", "trade mark" beside MAREA.
    docs\marea\brand\BRAND-GOVERNANCE-IMPLEMENTATION.md:69: | `brand.docs.trademarkSymbols` | A registered/unregistered trademark glyph is a failure **only when attached to the brand, a family name or a bundle name** | Does not flag governance prose that discusses the s...
    docs\marea\brand\brand-identity.contract.json:27: "registrationPolicy": "No registered-trademark or unregistered-trademark symbol may be attached to MAREA, and no text may present MAREA as a registered trademark, until written legal clearance exists.",
@@ -63,8 +65,7 @@ PATTERN registered-trademark-words | files_hit=17 | lines_hit=25
    docs\marea\brand\brand-identity.contract.json:256: "mareaExtendedDescription": "MAREA brings navigation, onboard data, control, sensors and monitoring together in one modular ecosystem. It is a proposed brand: it is not registered and it is not presented as a r...
    docs\marea\brand\BRAND-VOICE-ES-EN.md:44: | `mareaExtendedDescription` | MAREA reúne navegación, datos a bordo, control, sensores y monitorización en un ecosistema modular. Es una marca propuesta: no está registrada y no se presenta como marca registra...
    docs\marea\brand\ICONOGRAPHY-SYSTEM.md:20: It is **not** an approved icon library, **not** a registered trade mark, **not** a certification, and
-   docs\marea\brand\IDENTITY-SYSTEM.md:23: > of third-party rights. No registered or unregistered trademark symbol may be used with MAREA,
-   docs\marea\brand\IDENTITY-SYSTEM.md:297: unregistered trademark symbol. A visual misuse sheet is delivered at
+   docs\marea\brand\IDENTITY-SYSTEM.md:311: unregistered trademark symbol. A visual misuse sheet is delivered at
    docs\marea\brand\MC-03-REVIEW.md:148: `Marea Nav` casing (`brand.docs.productNames`), "registered trademark / available for purchase now"
    docs\marea\brand\MC-03-REVIEW.md:153: `Marea Nav no es el nombre correcto.` → exit 0; `MAREA is a registered trademark, not a proposal.` →
    docs\marea\brand\MC-03-REVIEW.md:188: | **N-6** | Validator false-negative surface: a line-wide negation exemption plus table/absence tolerance lets real violations pass. | `scripts/check-brand.mjs:64` (`EXEMPT_CONTEXT` contains `no`, `not`, `sin`,...
@@ -72,7 +73,7 @@ PATTERN registered-trademark-words | files_hit=17 | lines_hit=25
    docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md:1803: 3. `®`/`™`, "registered", "registrada", "marca registrada" or any registration claim appears with
    docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md:378: | `MAREA NAUTIC SL` (Spanish company name, nautical-adjacent per one directory, real-estate per another) | Corporate-name signal; rights unverified | Company-name/registry signal only; not an earlier registered...
    docs\marea\brand\PACKAGING-DIRECTION.md:161: - `®` or `™`, "registered", "registrada", "marca registrada";
-   docs\marea\brand\TERRITORY-COMPARISON.md:255: No `®` or registered/unregistered trademark symbol may be used with MAREA, any family name or
+   docs\marea\brand\TERRITORY-COMPARISON.md:265: No `®` or registered/unregistered trademark symbol may be used with MAREA, any family name or
    docs\marea\brand\TRADEMARK-CLEARANCE-RESEARCH.md:216: | 6.7 | **`MAREA NAUTIC SL`** — Spanish limited company, registered address Polígono Industrial Atalaya (Cabra, Córdoba), constituted **22/11/2022**, share capital in the EUR 3,500–10,000 band. **Sources confli...
    docs\marea\brand\TRADEMARK-SEARCH-RESULTS.csv:21: "MAREA NAUTIC SL company registry entry",Company directory (Axesor via Expansion - direct fetch); Cinco Dias directory (snippet only),2026-10-30,SECONDARY_AGGREGATOR,MAREA NAUTIC SL,,,"Company active; constitut...
    docs\marea\brand\WEBSITE-BRAND-MIGRATION.md:460: | R1 | `technology.es.ts:59` / `technology.en.ts:60`: "Entradas NMEA 0183 y NMEA 2000 (mediante adaptador)" / "NMEA 0183 and NMEA 2000 inputs (via adapter)"; repeated at `technology.es.ts:69` / `technology.en.t...
@@ -275,7 +276,7 @@ PATTERN collision-avoidance | files_hit=14 | lines_hit=23
    docs\marea\brand\MC-03-REVIEW.md: 1 line(s)
 
 --- SCAN 4: clearance / approval / adoption / originality language ---
-PATTERN cleared-upper [case-sensitive] | files_hit=16 | lines_hit=23
+PATTERN cleared-upper [case-sensitive] | files_hit=17 | lines_hit=24
    docs\marea\brand\BRAND-GOVERNANCE-IMPLEMENTATION.md:52: | `contract.technologyFoundation` | Foundation is OPEN-MARINE; internal engineering role; `publicUse` `INTERNAL_ONLY`; `rightsClearance` `NOT_CLEARED`; `neverPresentedAsPublicProductBrand` true; rule states it ...
    docs\marea\brand\brand-identity.contract.json:35: "rightsClearance": "NOT_CLEARED",
    docs\marea\brand\ICONOGRAPHY-SYSTEM.md:491: - This document does not claim `APPROVED_FOR_USE`, `CLEARED` or `CERTIFIED`; those statuses do not exist
@@ -284,10 +285,11 @@ PATTERN cleared-upper [case-sensitive] | files_hit=16 | lines_hit=23
    docs\marea\brand\MAREA-BRAND-STRATEGY.md:347: | **OPEN-MARINE** | Existing technology foundation; internal/open engineering identifier | **Never** as a public product brand or in attribution | Rights `NOT_CLEARED` (L-01…L-03); internal only |
    docs\marea\brand\MC-03-DELIVERY.md:228: `INTERNAL_ONLY`/`NOT_CLEARED` with forbidden public contexts; the nine families; six bundles including
    docs\marea\brand\MC-03-REVIEW.md:84: | 1 | Corporate/brand separation: EMBARCARTE seller/legal, MAREA proposed product brand, OPEN-MARINE internal only; no document presents OPEN-MARINE as the public brand or claims EMBARCARTE owns/cleared all sof...
+   docs\marea\brand\MC-04-DELIVERY.md:129: | D-16 | Originality / prior-art record | `docs/marea/brand/ORIGINALITY-AND-PRIOR-ART-CHECK.md` | PRODUCED — `PENDING`, never `CLEARED`; G3 BLOCKED |
    docs\marea\brand\MC-04-EXECUTION-PLAN.md:71: `NOT_APPLICABLE`. Never `APPROVED_FOR_USE`, `CLEARED`, `CERTIFIED`.
    docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md:1738: | D-16 | Originality / prior-art check record | `docs/marea/brand/ORIGINALITY-AND-PRIOR-ART-CHECK.md` | Mandatory before adoption; status may be `COMMISSIONED`/`PENDING`, never falsely `CLEARED` |
    docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md:1918: until the record exists (status may be `COMMISSIONED`/`PENDING`, never falsely `CLEARED`).
-   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md:826: vocabulary. Nothing in this repository may be changed to `CLEARED`, `APPROVED_FOR_USE`, `ORIGINAL` or
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md:862: vocabulary. Nothing in this repository may be changed to `CLEARED`, `APPROVED_FOR_USE`, `ORIGINAL` or
    docs\marea\brand\PRODUCT-NAMING-SYSTEM.md:190: | Repository/workspace identifier | lowercase/hyphenated engineering namespace | `open-marine/*` | Engineering | `OPEN-MARINE` is an internal/open engineering identifier, never the public product brand; its rig...
    docs\marea\brand\territories\misuse-examples.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
    docs\marea\brand\territories\territory-comparison.html:37: <div><span class="tag">PROPOSED</span><span class="tag">INTERNAL</span><span class="tag warn">NOT CLEARED</span></div>
@@ -303,7 +305,7 @@ PATTERN approved-for-use [case-sensitive] | files_hit=4 | lines_hit=4
    docs\marea\brand\ICONOGRAPHY-SYSTEM.md:491: - This document does not claim `APPROVED_FOR_USE`, `CLEARED` or `CERTIFIED`; those statuses do not exist
    docs\marea\brand\ILLUSTRATION-STANDARDS.md:276: - No status in this document may be `APPROVED_FOR_USE`, `CLEARED` or `CERTIFIED`; the programme
    docs\marea\brand\MC-04-EXECUTION-PLAN.md:71: `NOT_APPLICABLE`. Never `APPROVED_FOR_USE`, `CLEARED`, `CERTIFIED`.
-   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md:826: vocabulary. Nothing in this repository may be changed to `CLEARED`, `APPROVED_FOR_USE`, `ORIGINAL` or
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md:862: vocabulary. Nothing in this repository may be changed to `CLEARED`, `APPROVED_FOR_USE`, `ORIGINAL` or
 PATTERN approved-for-use-lower | files_hit=1 | lines_hit=4
    docs\marea\brand\assets\social\og-marea-es-1200x630.html: 4 line(s)
 PATTERN identity-adoption-lower | files_hit=0 | lines_hit=0
@@ -317,46 +319,46 @@ PATTERN originality-claim | files_hit=0 | lines_hit=0
 
 --- SCAN 5: fabricated-image / provenance integrity ---
 raster_or_video_files_under_docs/marea = 43
-   FOUND RASTER: docs\marea\brand\assets\evidence\renders\assets-icons-ui-index.png (714958 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\assets-icons-ui-index.png (714943 B)
    FOUND RASTER: docs\marea\brand\assets\evidence\renders\assets-icons-ui-reduction-proof.png (410859 B)
    FOUND RASTER: docs\marea\brand\assets\evidence\renders\evidence-contrast-cvd-simulation-board.png (432232 B)
    FOUND RASTER: docs\marea\brand\assets\evidence\renders\evidence-contrast-greyscale-board.png (157937 B)
    FOUND RASTER: docs\marea\brand\assets\evidence\renders\specimens-alerts.png (324520 B)
    FOUND RASTER: docs\marea\brand\assets\evidence\renders\specimens-index.png (502899 B)
    FOUND RASTER: docs\marea\brand\assets\evidence\renders\specimens-pilot.png (328792 B)
-   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-evidence-reading-test.png (57216 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-evidence-reading-test.png (89342 B)
    FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-misuse-examples.png (88070 B)
-   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-proof-territory-a-proof-sheet.png (355596 B)
-   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-proof-territory-b-proof-sheet.png (317675 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-proof-territory-a-proof-sheet.png (355638 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-proof-territory-b-proof-sheet.png (349151 B)
    FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-proof-territory-c-proof-sheet.png (274129 B)
-   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-territory-comparison.png (153193 B)
-   FOUND RASTER: docs\marea\brand\assets\icons\favicon.ico (1490 B)
-   FOUND RASTER: docs\marea\brand\assets\icons\marea-app-icon-1024.png (5541 B)
-   FOUND RASTER: docs\marea\brand\assets\icons\marea-apple-touch-180.png (882 B)
-   FOUND RASTER: docs\marea\brand\assets\icons\marea-icon-192.png (915 B)
-   FOUND RASTER: docs\marea\brand\assets\icons\marea-icon-512.png (2263 B)
-   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-favicon-16-32-proof.png (97475 B)
-   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-icon-16.png (370 B)
-   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-icon-32.png (520 B)
-   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-icon-48.png (546 B)
-   FOUND RASTER: docs\marea\brand\assets\social\og-marea-en-1200x630.jpg (63308 B)
-   FOUND RASTER: docs\marea\brand\assets\social\og-marea-es-1200x630.jpg (66508 B)
+   FOUND RASTER: docs\marea\brand\assets\evidence\renders\territories-territory-comparison.png (168902 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\favicon.ico (2785 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\marea-app-icon-1024.png (22147 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\marea-apple-touch-180.png (3552 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\marea-icon-192.png (3856 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\marea-icon-512.png (10129 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-favicon-16-32-proof.png (103204 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-icon-16.png (500 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-icon-32.png (945 B)
+   FOUND RASTER: docs\marea\brand\assets\icons\app\marea-icon-48.png (1286 B)
+   FOUND RASTER: docs\marea\brand\assets\social\og-marea-en-1200x630.jpg (61955 B)
+   FOUND RASTER: docs\marea\brand\assets\social\og-marea-es-1200x630.jpg (65244 B)
    FOUND RASTER: docs\marea\brand\evidence\review\raw\author-reduction-proof-top.png (303440 B)
    FOUND RASTER: docs\marea\brand\evidence\review\raw\board-cvd.png (1172270 B)
    FOUND RASTER: docs\marea\brand\evidence\review\raw\board-greyscale.png (444645 B)
    FOUND RASTER: docs\marea\brand\evidence\review\raw\icon-harness-16px-dpr4.png (758599 B)
    FOUND RASTER: docs\marea\brand\evidence\review\raw\icon-pair-compare-16px-dpr8.png (437682 B)
-   FOUND RASTER: docs\marea\brand\territories\evidence\reading-test-native.png (56254 B)
-   FOUND RASTER: docs\marea\brand\territories\evidence\reading-test-zoom.png (244413 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\reading-test-native.png (86377 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\reading-test-zoom.png (324706 B)
    FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\case-study.png (70762 B)
-   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\contact-sheet.png (515605 B)
-   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\lockup-primary.png (19319 B)
-   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\mark-compact.png (6991 B)
-   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\mark-reduced-16.png (7117 B)
-   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-a-lockup.png (32060 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\contact-sheet.png (576871 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\lockup-primary.png (27758 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\mark-compact.png (38300 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\mark-reduced-16.png (36683 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-a-lockup.png (32019 B)
    FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-a-mark.png (43226 B)
-   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-b-lockup.png (28636 B)
-   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-b-mark.png (31342 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-b-lockup.png (27758 B)
+   FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-b-mark.png (30798 B)
    FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-c-lockup.png (19319 B)
    FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\territory-c-mark.png (5511 B)
    FOUND RASTER: docs\marea\brand\territories\evidence\visual-check\wordmark.png (27785 B)
@@ -391,7 +393,7 @@ POLICY-CLAUSE PRESENT in COMMERCIAL-BRAND-CLAIMS-POLICY.md
 POLICY-CLAUSE PRESENT in COMMERCIAL-BRAND-CLAIMS-POLICY.md
 
 --- SCAN 7: ECDIS-equivalence / autonomy / safety-instrument implication ---
-PATTERN ECDIS | files_hit=12 | lines_hit=27
+PATTERN ECDIS | files_hit=13 | lines_hit=28
    docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md: 9 line(s)
    docs\marea\brand\MAREA-BRAND-STRATEGY.md: 3 line(s)
    docs\marea\brand\WEBSITE-BRAND-MIGRATION.md: 3 line(s)
@@ -403,6 +405,7 @@ PATTERN ECDIS | files_hit=12 | lines_hit=27
    docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md: 1 line(s)
    docs\marea\brand\ICONOGRAPHY-SYSTEM.md: 1 line(s)
    docs\marea\brand\MC-03-REVIEW.md: 1 line(s)
+   docs\marea\brand\MC-04-DELIVERY.md: 1 line(s)
    docs\marea\brand\PRODUCT-NAMING-SYSTEM.md: 1 line(s)
 PATTERN solas-gmdss-distress | files_hit=7 | lines_hit=9
    docs\marea\brand\MAREA-BRAND-STRATEGY.md: 3 line(s)
@@ -578,17 +581,17 @@ ARTWORK-PATTERN waterproof|impermeable|marine-grade | lines_hit=0
 svg_files_with_hygiene_issue = 0 of 104
 
 --- SCAN 11: per-file inventory of scanned files ---
-   docs\marea\assets\manifest\MC-04-ASSETS.yaml (50613 B)
+   docs\marea\assets\manifest\MC-04-ASSETS.yaml (50619 B)
    docs\marea\assets\manifest\MC-04-BRIEFS.yaml (87917 B)
    docs\marea\brand\assets\diagrams\marea-ais-receive-only.svg (16994 B)
    docs\marea\brand\assets\diagrams\marea-ecosystem-overview.svg (22114 B)
    docs\marea\brand\assets\diagrams\marea-pilot-supervised-boundary.svg (21185 B)
-   docs\marea\brand\assets\icons\app\marea-app-icon-construction.svg (1688 B)
+   docs\marea\brand\assets\icons\app\marea-app-icon-construction.svg (1722 B)
    docs\marea\brand\assets\icons\app\marea-app-icon-maskable-background.svg (342 B)
-   docs\marea\brand\assets\icons\app\marea-app-icon-maskable-foreground.svg (766 B)
-   docs\marea\brand\assets\icons\app\marea-app-icon-master.svg (845 B)
-   docs\marea\brand\assets\icons\app\marea-favicon-source.svg (730 B)
-   docs\marea\brand\assets\icons\favicon.svg (730 B)
+   docs\marea\brand\assets\icons\app\marea-app-icon-maskable-foreground.svg (798 B)
+   docs\marea\brand\assets\icons\app\marea-app-icon-master.svg (879 B)
+   docs\marea\brand\assets\icons\app\marea-favicon-source.svg (723 B)
+   docs\marea\brand\assets\icons\favicon.svg (723 B)
    docs\marea\brand\assets\icons\ui\acknowledge.svg (404 B)
    docs\marea\brand\assets\icons\ui\ais-receive-only.svg (519 B)
    docs\marea\brand\assets\icons\ui\ais-target-lost.svg (312 B)
@@ -613,7 +616,7 @@ svg_files_with_hygiene_issue = 0 of 104
    docs\marea\brand\assets\icons\ui\gps-fix.svg (431 B)
    docs\marea\brand\assets\icons\ui\gps-no-fix.svg (340 B)
    docs\marea\brand\assets\icons\ui\ground.svg (405 B)
-   docs\marea\brand\assets\icons\ui\index.html (61342 B)
+   docs\marea\brand\assets\icons\ui\index.html (61341 B)
    docs\marea\brand\assets\icons\ui\installation.svg (681 B)
    docs\marea\brand\assets\icons\ui\nav-bearing.svg (358 B)
    docs\marea\brand\assets\icons\ui\nav-heading.svg (394 B)
@@ -648,21 +651,21 @@ svg_files_with_hygiene_issue = 0 of 104
    docs\marea\brand\assets\icons\ui\wind-apparent.svg (429 B)
    docs\marea\brand\assets\icons\ui\wind-sensor.svg (414 B)
    docs\marea\brand\assets\icons\ui\wind-true.svg (378 B)
-   docs\marea\brand\assets\logo\family\marea-family-ais-lockup.svg (2515 B)
-   docs\marea\brand\assets\logo\family\marea-family-display-lockup.svg (3085 B)
-   docs\marea\brand\assets\logo\family\marea-family-fleet-lockup.svg (2704 B)
-   docs\marea\brand\assets\logo\family\marea-family-hub-lockup.svg (2588 B)
-   docs\marea\brand\assets\logo\family\marea-family-nav-lockup.svg (2494 B)
-   docs\marea\brand\assets\logo\family\marea-family-pilot-lockup.svg (2610 B)
-   docs\marea\brand\assets\logo\family\marea-family-sense-lockup.svg (2983 B)
-   docs\marea\brand\assets\logo\family\marea-family-watch-lockup.svg (2753 B)
-   docs\marea\brand\assets\logo\family\marea-family-weather-lockup.svg (3208 B)
-   docs\marea\brand\assets\logo\marea-construction-grid.svg (2657 B)
-   docs\marea\brand\assets\logo\marea-lockup-mono.svg (1982 B)
-   docs\marea\brand\assets\logo\marea-lockup-primary.svg (1982 B)
-   docs\marea\brand\assets\logo\marea-lockup-reversed.svg (1982 B)
-   docs\marea\brand\assets\logo\marea-mark-compact.svg (935 B)
-   docs\marea\brand\assets\logo\marea-mark-reduced-16.svg (894 B)
+   docs\marea\brand\assets\logo\family\marea-family-ais-lockup.svg (2551 B)
+   docs\marea\brand\assets\logo\family\marea-family-display-lockup.svg (3121 B)
+   docs\marea\brand\assets\logo\family\marea-family-fleet-lockup.svg (2736 B)
+   docs\marea\brand\assets\logo\family\marea-family-hub-lockup.svg (2622 B)
+   docs\marea\brand\assets\logo\family\marea-family-nav-lockup.svg (2526 B)
+   docs\marea\brand\assets\logo\family\marea-family-pilot-lockup.svg (2642 B)
+   docs\marea\brand\assets\logo\family\marea-family-sense-lockup.svg (3017 B)
+   docs\marea\brand\assets\logo\family\marea-family-watch-lockup.svg (2787 B)
+   docs\marea\brand\assets\logo\family\marea-family-weather-lockup.svg (3242 B)
+   docs\marea\brand\assets\logo\marea-construction-grid.svg (3218 B)
+   docs\marea\brand\assets\logo\marea-lockup-mono.svg (2016 B)
+   docs\marea\brand\assets\logo\marea-lockup-primary.svg (2016 B)
+   docs\marea\brand\assets\logo\marea-lockup-reversed.svg (2016 B)
+   docs\marea\brand\assets\logo\marea-mark-compact.svg (993 B)
+   docs\marea\brand\assets\logo\marea-mark-reduced-16.svg (865 B)
    docs\marea\brand\assets\logo\marea-wordmark.svg (1425 B)
    docs\marea\brand\assets\packaging\marea-packaging-dieline-ais.svg (11984 B)
    docs\marea\brand\assets\packaging\marea-packaging-dieline-display.svg (12024 B)
@@ -677,54 +680,55 @@ svg_files_with_hygiene_issue = 0 of 104
    docs\marea\brand\BRAND-AND-IP-DECISION-PACKAGE.md (21916 B)
    docs\marea\brand\BRAND-ARCHITECTURE.md (16736 B)
    docs\marea\brand\BRAND-GOVERNANCE-IMPLEMENTATION.md (18345 B)
-   docs\marea\brand\brand-identity.contract.json (14276 B)
+   docs\marea\brand\brand-identity.contract.json (14457 B)
    docs\marea\brand\BRAND-VOICE-ES-EN.md (20163 B)
    docs\marea\brand\COLOUR-SYSTEM.md (28381 B)
    docs\marea\brand\COMMERCIAL-BRAND-CLAIMS-POLICY.md (16739 B)
    docs\marea\brand\COMPETITIVE-POSITIONING-EVIDENCE.md (51863 B)
    docs\marea\brand\HARDWARE-CMF-DIRECTION.md (17361 B)
-   docs\marea\brand\ICONOGRAPHY-SYSTEM.md (31043 B)
-   docs\marea\brand\IDENTITY-SYSTEM.md (21957 B)
+   docs\marea\brand\ICONOGRAPHY-SYSTEM.md (31154 B)
+   docs\marea\brand\IDENTITY-SYSTEM.md (41784 B)
    docs\marea\brand\ILLUSTRATION-STANDARDS.md (19399 B)
    docs\marea\brand\MAREA-BRAND-STRATEGY.md (63806 B)
    docs\marea\brand\MC-03-DELIVERY.md (33088 B)
    docs\marea\brand\MC-03-REVIEW.md (44181 B)
    docs\marea\brand\MC-04-ACCESSIBILITY-EVIDENCE.md (21809 B)
+   docs\marea\brand\MC-04-DELIVERY.md (26449 B)
    docs\marea\brand\MC-04-EXECUTION-PLAN.md (9234 B)
    docs\marea\brand\MC-04-REVIEW.md (24715 B)
    docs\marea\brand\MC-04-VISUAL-IDENTITY-BRIEF.md (180186 B)
-   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md (77442 B)
+   docs\marea\brand\ORIGINALITY-AND-PRIOR-ART-CHECK.md (83261 B)
    docs\marea\brand\PACKAGING-DIRECTION.md (10649 B)
    docs\marea\brand\PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md (58678 B)
    docs\marea\brand\PRODUCT-NAMING-SYSTEM.md (43976 B)
    docs\marea\brand\specimens\alerts.html (27820 B)
    docs\marea\brand\specimens\index.html (49246 B)
    docs\marea\brand\specimens\pilot.html (24902 B)
-   docs\marea\brand\territories\evidence\reading-test.html (23785 B)
-   docs\marea\brand\territories\evidence\svg-geometry-report.json (79799 B)
-   docs\marea\brand\territories\evidence\svg-geometry-report.md (5734 B)
+   docs\marea\brand\territories\evidence\reading-test.html (27796 B)
+   docs\marea\brand\territories\evidence\svg-geometry-report.json (83159 B)
+   docs\marea\brand\territories\evidence\svg-geometry-report.md (5824 B)
    docs\marea\brand\territories\misuse-examples.html (21862 B)
-   docs\marea\brand\territories\proof\territory-a-proof-sheet.html (41952 B)
-   docs\marea\brand\territories\proof\territory-b-proof-sheet.html (38555 B)
+   docs\marea\brand\territories\proof\territory-a-proof-sheet.html (41942 B)
+   docs\marea\brand\territories\proof\territory-b-proof-sheet.html (39705 B)
    docs\marea\brand\territories\proof\territory-c-proof-sheet.html (39085 B)
    docs\marea\brand\territories\territory-a-construction.svg (3869 B)
-   docs\marea\brand\territories\territory-a-lockup-primary.svg (2212 B)
+   docs\marea\brand\territories\territory-a-lockup-primary.svg (2211 B)
    docs\marea\brand\territories\territory-a-mark-compact.svg (757 B)
    docs\marea\brand\territories\territory-a-mark-mono.svg (944 B)
    docs\marea\brand\territories\territory-a-mark-reversed.svg (948 B)
-   docs\marea\brand\territories\territory-b-construction.svg (3677 B)
-   docs\marea\brand\territories\territory-b-lockup-primary.svg (2036 B)
-   docs\marea\brand\territories\territory-b-mark-compact.svg (672 B)
-   docs\marea\brand\territories\territory-b-mark-mono.svg (773 B)
-   docs\marea\brand\territories\territory-b-mark-reversed.svg (777 B)
+   docs\marea\brand\territories\territory-b-construction.svg (3704 B)
+   docs\marea\brand\territories\territory-b-lockup-primary.svg (2020 B)
+   docs\marea\brand\territories\territory-b-mark-compact.svg (771 B)
+   docs\marea\brand\territories\territory-b-mark-mono.svg (802 B)
+   docs\marea\brand\territories\territory-b-mark-reversed.svg (806 B)
    docs\marea\brand\territories\territory-c-construction.svg (3638 B)
    docs\marea\brand\territories\territory-c-lockup-primary.svg (1986 B)
    docs\marea\brand\territories\territory-c-mark-compact.svg (784 B)
    docs\marea\brand\territories\territory-c-mark-mono.svg (774 B)
    docs\marea\brand\territories\territory-c-mark-reversed.svg (778 B)
-   docs\marea\brand\territories\territory-comparison.html (21481 B)
+   docs\marea\brand\territories\territory-comparison.html (22086 B)
    docs\marea\brand\territories\wordmark-case-study.svg (3770 B)
-   docs\marea\brand\TERRITORY-COMPARISON.md (18233 B)
+   docs\marea\brand\TERRITORY-COMPARISON.md (31436 B)
    docs\marea\brand\tokens\marea-instrument-tokens.proposed.json (17731 B)
    docs\marea\brand\TRADEMARK-CLEARANCE-RESEARCH.md (64410 B)
    docs\marea\brand\TRADEMARK-SEARCH-RESULTS.csv (21274 B)

@@ -336,3 +336,35 @@ ES 1 / 1; WEATHER EN 1 / 1. **F-3 CLOSED at freeze.**
 **Final disposition:** no MC-04 failure-level prohibited pattern in the frozen tree. Open items for other
 owners: **F-2** only (pre-existing MC-03 quoted fixture, explicitly out of MC-04 scope). The evidence
 record can be frozen with this run; any later file change reopens the scan.
+
+## 14. Addendum — post-rebind (v2) frozen-tree run (2026-10-30 19:13:30)
+
+Context: after this record's §13 run, the Lead ordered a **delete-and-rebind** because the master artwork was
+reissued from construction B and AssetProduction re-rendered with `--all`. D-16 §9.7 was rebound (35 files,
+2026-10-30T19:11:46+01:00; v1 archived) and this scan was re-run on the reissued tree.
+
+Command (exact): `pwsh -NoProfile -File docs/marea/brand/evidence/governance/run-compliance-scan.ps1`
+Raw output: `MC-04-COMPLIANCE-SCAN-OUTPUT.txt` (**740 lines**).
+Cross-check: `npm run test:brand` → `Summary: 21 checks run, 21 passed, 0 failed; 24 files scanned, 0 skipped. RESULT: PASS`
+(the governed list grew again; D-16 at 892 lines is scanned clean).
+
+### 14.1 Scope and results
+
+| Item | Result |
+| --- | --- |
+| Scope | **49 text files, 104 SVG, 15 HTML**, **43 raster**, 2 manifests |
+| F-3 disclaimer flags (unchanged, re-verified) | diagrams: AIS→AIS-OK/PILOT-ABSENT/NAV-OK · ecosystem→AIS-OK/PILOT-OK/NAV-OK · PILOT→AIS-ABSENT/PILOT-OK/NAV-OK; specimens: alerts→AIS-ABSENT(correct by design)/PILOT-OK/NAV-OK · index→AIS-OK/PILOT-OK/NAV-OK · pilot→AIS-ABSENT(correct)/PILOT-OK/NAV-OK |
+| Symbol attached to MAREA / family / bundle | **6 lines, all in `MC-03-REVIEW.md`** quoted fixtures → **F-2 stays OPEN / out of scope** |
+| SVG hygiene | **0 issues in 104 SVGs** |
+| Raster/video files | **43**, all deterministic renders/screenshots; none photographic |
+| Manifests | `MC-04-ASSETS.yaml` present with real SHA-256 / 0 `ai_generated: true`; `MC-04-BRIEFS.yaml` still 0 file paths / 0 SHA-256 / 0 `generated_at` |
+| Fabricated image / invented provenance | **none found** |
+| ECDIS / certification / collision-avoidance / autonomy claim | **none** |
+
+**Note on the rebind:** the three diagrams and three specimens kept **byte-identical SHA-256** across v1→v2
+(they were not re-rendered), so their F-3 verification did not need redoing — but they were rebound anyway,
+so the bound hashes and the verified content still refer to the same bytes. The master/logo files are the
+ones that changed and were rebound.
+
+**Disposition:** the post-rebind frozen tree shows no MC-04 failure-level prohibited pattern; the only open
+warning remains **F-2** (out of MC-04 scope). Re-run this script if any file changes again.

@@ -20,17 +20,26 @@
 > The artwork in this milestone is **authored vector artwork** (all paths constructed by this
 > programme from the rules below; no font outlines, no traced or downloaded artwork, no
 > generated imagery). Nothing here is declared original, distinctive in law, registrable or free
-> of third-party rights. No registered or unregistered trademark symbol may be used with MAREA,
-> a family name or a bundle name. No certification, availability, performance or safety claim is
-> made or implied.
+> of third-party rights. **No trademark symbol of any kind may be used with MAREA, a family name
+> or a bundle name**: no registered-trademark symbol (the R-in-a-circle glyph), no
+> unregistered-trademark symbol (the "TM" glyph) and no "registered"/"registrada" wording, until a
+> clearance decision exists. No certification, availability, performance or safety claim is made
+> or implied. This document is **INTERNAL / PROPOSED**: it is not clearance, not a legal opinion,
+> not an originality finding and not an authorisation to publish.
 >
-> **The frozen D-02/D-03 files in this milestone are built on the Territory C (SIGNAL TRUNK)
-> construction.** The Lead's internal preference is `PREFERRED_PROVISIONAL = B (BEARING INDEX)`,
-> and the C construction failed the small-size reading test recorded in
-> `TERRITORY-COMPARISON.md` §6 (it reads as a bar chart/equaliser at 16–48 px). Therefore the
-> frozen files are a **prototype of the system**, not an adopted identifier. The rules in §2, §3
-> and §4 (Layer A) are symbol-agnostic and remain valid if the ratified symbol differs; the
-> specific symbol, wordmark outline and lockup files (Layer B) are provisional and replaceable.
+> **The frozen D-02/D-03 master set in this milestone is built on the shortlisted-preferred
+> Territory B (BEARING INDEX) construction** — symbol ink on the cap band, 0.75 × cap ink gap,
+> 0.5 × cap clear space, family token 0.70 × cap. The Lead's internal decision is
+> `PREFERRED_PROVISIONAL = B`. Territory C (SIGNAL TRUNK) remains the **documented
+> rejected-for-preference alternative**: it is shortlisted for the professional originality check
+> but failed the small-size reading test in `TERRITORY-COMPARISON.md` §6 (it reads as a bar
+> chart/equaliser at 16–48 px) and is not the master. Territory A (ISOBATH) is dropped on the
+> §3.3 kill criterion (generic wave / signal-arc reading).
+>
+> The master set is still a **provisional prototype of the system**, not an adopted identifier:
+> no clearance, no publication. The rules in §2, §3 and §4 (Layer A) are symbol-agnostic and
+> remain valid if the ratified symbol differs; the specific symbol, wordmark outline and lockup
+> files (Layer B) are provisional and replaceable.
 
 ## 1. Scope, layers and what this document governs
 
@@ -40,7 +49,7 @@ whole system:
 | Layer                                    | Content                                                                                                                                                                                                                                                                                                                                                                                                                  | Stability                                                                                                                   |
 | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | **Layer A — reusable foundations**       | construction-grid convention; monoline terminal logic (square cuts, flat acute junctions); optical spacing model (`gap(a,b) = 20 + r(a) + l(b)` at cap 100); clear-space rule 0.5 × cap height; family ratio 0.700 and word space 0.260 × cap; family rule "one construction, no per-family symbol"; SVG hygiene and byte budgets; measurement harness (`territories/tools/check.mjs`); naming conventions; misuse rules | **Reusable.** Survives a change of figurative symbol                                                                        |
-| **Layer B — provisional MAREA identity** | the specific symbol construction (C frozen files; B preferred candidate); the specific `MAREA` outline; the lockup files (`marea-lockup-*.svg`, `marea-mark-*.svg`, `family/*.svg`); the geometry values instantiated from Layer A                                                                                                                                                                                       | **Provisional.** Replaceable on Lead decision, legal advice or the professional originality check. Not adopted, not cleared |
+| **Layer B — provisional MAREA identity** | the specific symbol construction (master set reissued from the shortlisted-preferred B construction; C retained only as rejected-for-preference evidence); the specific `MAREA` outline; the lockup files (`marea-lockup-*.svg`, `marea-mark-*.svg`, `family/*.svg`); the geometry values instantiated from Layer A                                                                                                      | **Provisional.** Replaceable on Lead decision, legal advice or the professional originality check. Not adopted, not cleared |
 
 Everything in Layer B is `PROPOSED`. No part of this document authorises public use.
 
@@ -59,14 +68,14 @@ Everything in Layer B is `PROPOSED`. No part of this document authorises public 
 
 ### 2.2 Stroke and ink logic
 
-| Element                      | Value                                                             | Derivation                                                                                                                                                                                                                             |
-| ---------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Wordmark stem                | 16 units at cap 100 (**16 % of cap**)                             | monoline by design: one weight for all letters, flat square terminals, so engraving and 16 px reproduction are predictable                                                                                                             |
-| Wordmark horizontal arms     | 16 units                                                          | monoline: no optical thinning is applied, because a second weight would break the one-rule construction and add a maintenance surface (recorded as a deliberate choice, not an oversight)                                              |
-| C symbol rail                | 2 units of a 10-unit ink height (**20 % of the symbol height**)   | at lockup scale ×10 this is 20 units of the 100-unit cap: heavier than the wordmark stem so the symbol reads as an object, not as another letter                                                                                       |
-| C key widths                 | 2.5 / 4 / 3 units                                                 | unequal by design; a histogram uses equal widths, a terminal block does not                                                                                                                                                            |
-| B arc stroke                 | 2.5 units at r = 13 on the 32 grid (**8.6 % of the mark height**) | instrument-grammar weight; **open item**: this is lighter than the wordmark's 16 %, so a ratified B lockup requires an optical weight correction (or a documented decision that the symbol is intentionally lighter) before production |
-| Minimum stroke in the master | 1.2 units (C screw slot)                                          | the smallest authored feature; at 16 px this is ≈1.9 px and is retained only as a texture, not as a recognition cue                                                                                                                    |
+| Element                  | Value                                                                       | Derivation                                                                                                                                                                                                                                               |
+| ------------------------ | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Wordmark stem            | 16 units at cap 100 (**16 % of cap**)                                       | monoline by design: one weight for all letters, flat square terminals, so engraving and 16 px reproduction are predictable                                                                                                                               |
+| Wordmark horizontal arms | 16 units                                                                    | monoline: no optical thinning is applied, because a second weight would break the one-rule construction and add a maintenance surface (recorded as a deliberate choice, not an oversight)                                                                |
+| C symbol rail            | 2 units of a 10-unit ink height (**20 % of the symbol height**)             | at lockup scale ×10 this is 20 units of the 100-unit cap: heavier than the wordmark stem so the symbol reads as an object, not as another letter                                                                                                         |
+| C key widths             | 2.5 / 4 / 3 units                                                           | unequal by design; a histogram uses equal widths, a terminal block does not                                                                                                                                                                              |
+| B arc stroke             | 3.2 units at r = 13 on the 32 grid (**10.4 % of the 30.0-unit ink height**) | curved strokes read visually heavier than straight stems, so optical parity with the 16 % wordmark stem is reached below 16 %. Measured range: 2.5 units (8.6 %) read thin; 4.4 units (14.3 %) read letter-heavy; 3.2 read level on the 1:1 lockup proof |
+| B smallest feature       | 1.8 units (outer calibration tick) / 1.2 in the 16 px build                 | the smallest authored feature in the master; it sets the engraving minimum (§6.2)                                                                                                                                                                        |
 
 ### 2.3 Corner logic (one rule for all acute junctions)
 
@@ -167,33 +176,37 @@ No per-page or per-surface case choice is permitted. Uppercase is the master for
 
 ## 4. Symbols (Layer B, provisional)
 
-### 4.1 Frozen files (Territory C construction, prototype only)
+### 4.1 Master construction — Territory B, BEARING INDEX (shortlisted, preferred)
 
-| Property       | Value                                                                                                                                                                                                                  |
-| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Symbols        | `marea-mark-compact.svg` (24 × 24 viewBox; ink 15.5 × 10, centred: margins L/R 4.25, T/B 7) · `marea-mark-reduced-16.svg` (16 × 16; ink 10 × 7.8, centred: margins L/R 3, T/B 4.1)                                     |
-| Construction   | one bus rail on the baseline (15.5 × 2), three terminal keys with squared caps (widths 2.5 / 4 / 3; heights 2 / 8 / 6; gaps 2.5 / 1.5), centre key raised to the cap line, one 1.2 × 1.8 screw slot splitting its head |
-| Ink band       | exactly 10 units tall (y 4…14) → lockup scale is a flat ×10; rail bottom lands on the baseline; centre key top lands on the cap line                                                                                   |
-| Reading result | **fails the small-size reading test** (reads as a bar chart/equaliser). Recorded in `TERRITORY-COMPARISON.md` §6; not rationalised                                                                                     |
+| Property         | Value                                                                                                                                                                                                                                                                                                                                                                                        |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Grid             | 32 × 32; ink 29.66 × 30.0 units (x 0.94…30.6, y 0.6…30.6)                                                                                                                                                                                                                                                                                                                                    |
+| Structure        | 270° calibrated arc (r = 13) open 90° at the lower right — never a closed ring or seal; bearing index at 0°; square position datum at the optical centre; two asymmetric outer calibration ticks                                                                                                                                                                                             |
+| Arc stroke       | **3.2 units = 10.4 % of the 30.0-unit ink height**                                                                                                                                                                                                                                                                                                                                           |
+| Weight rationale | a curved stroke of equal measured width reads visually heavier than a straight stem, so optical parity with the 16 % wordmark stem is reached below 16 %. Two prototypes set the range: 2.5 units (8.6 %) read thin beside the letters; 4.4 units (14.3 %) read letter-heavy (the arc started to read as a "G"). 3.2 units measured visually level with the wordmark on the 1:1 lockup proof |
+| Bearing index    | 3.4 wide × 15.4 long, at 0° (vertical), heavier than the ticks and crossing the arc as a lubber line                                                                                                                                                                                                                                                                                         |
+| Datum            | 3.4 × 3.4 filled square — square, never a circle-dot                                                                                                                                                                                                                                                                                                                                         |
+| Ticks            | two outer calibration ticks, 1.8 wide, asymmetric: 1.8 long at 205°, 1.3 long at 315° — attached to the arc outer edge as graduation marks                                                                                                                                                                                                                                                   |
+| Lockup rule      | symbol ink band = 100-unit cap band; scale = 100 / 30.0 = 3.333; ink gap 75; clear space 50                                                                                                                                                                                                                                                                                                  |
+| Optical centre   | 15.2 / 30.0 = 50.7 % of the mark height above the baseline (brief: the arc's optical centre aligns to mid-cap)                                                                                                                                                                                                                                                                               |
+| Compact asset    | `marea-mark-compact.svg`, 32 × 32 viewBox, ink 29.66 × 30.0 centred (margins 1.17 × 1.17, 1.0 × 1.0)                                                                                                                                                                                                                                                                                         |
+| Reduced 16 asset | `marea-mark-reduced-16.svg`, own 16-unit coordinates (arc 2.2 r = 6.5, index 2.2, datum 2, two outer ticks 1.2 wide), ink 15.47 × 15.3 centred                                                                                                                                                                                                                                               |
+| Reading result   | 24–48 px: instrument-arc fragment (preferred). 16 px: residual letter-"C"/compass-app reading recorded (not hidden) in `TERRITORY-COMPARISON.md` §6                                                                                                                                                                                                                                          |
+| Originality      | `LEGAL_REVIEW_PENDING` (G3/B9). No originality, registrability or clearance claim is made                                                                                                                                                                                                                                                                                                    |
 
-### 4.2 Preferred candidate geometry (Territory B — not delivered as final files)
+### 4.2 Shortlisted but rejected for preference — Territory C, SIGNAL TRUNK
 
-| Property                  | Value                                                                                                                                                                                                        |
-| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Grid                      | 32 × 32                                                                                                                                                                                                      |
-| Structure                 | 270° calibrated arc (r = 13, stroke 2.5) open 90° at the lower right; 3.5 × 15 bearing index at 0°; 3 × 3 square datum at the optical centre; two asymmetric radial ticks (4.5 and 2 units) crossing the arc |
-| Ink                       | 28.72 × 29.25 units; optical centre 48.6 % of the mark height (brief: arc centre aligns to mid-cap)                                                                                                          |
-| Lockup rule (if ratified) | symbol ink band = 100-unit cap band; scale = 100 / 29.25 = 3.4188; ink gap 75; clear space 50                                                                                                                |
-| Open item                 | symbol stroke is 8.6 % of its height vs 16 % for the wordmark stem; a ratified B lockup needs an optical weight correction or a documented lighter-symbol decision                                           |
-| Reading result            | passes as an instrument-arc fragment at 24–48 px; residual letter-"C"/compass-app risk at 16 px recorded                                                                                                     |
+| Property     | Value                                                                                                                                                                                                                                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Grid         | 24 × 24; ink 15.5 × 10 units                                                                                                                                                                                                                                  |
+| Construction | bus rail on the baseline (15.5 × 2), three terminal keys with squared caps (widths 2.5 / 4 / 3; heights 2 / 8 / 6; gaps 2.5 / 1.5), centre key raised to the cap line, one 1.2 × 1.8 screw slot splitting its head                                            |
+| Status       | shortlisted for the professional originality check, but **not the master**: it failed the small-size reading test (reads as a bar chart/equaliser at 16–48 px). Retained as the documented rejected-for-preference alternative in `territories/territory-c-*` |
+| Layer note   | its construction rules are still valid Layer A examples; the symbol itself is not adopted                                                                                                                                                                     |
 
-The B construction is delivered only as a territory prototype
-(`territories/territory-b-*`); no D-02/D-03 file is built from it.
+### 4.3 Dropped candidate — Territory A, ISOBATH
 
-### 4.3 Dropped candidate
-
-Territory A (ISOBATH) is dropped on the brief §3.3 kill criterion (generic wave / radiating
-signal-arc reading) and is retained only as documented rejected evidence
+Territory A is dropped on the brief §3.3 kill criterion (generic wave / radiating signal-arc
+reading) and the lowest weighted score (3.48); retained only as documented rejected evidence
 (`territories/territory-a-*`).
 
 ## 5. Lockups (Layer A rules applied to Layer B files)
@@ -202,14 +215,14 @@ signal-arc reading) and is retained only as documented rejected evidence
 
 Structure, left to right: **symbol · 75-unit ink gap (0.75 × cap) · `MAREA` (cap 100)**.
 
-| Asset      | File                        | Colour role                                                       | Measured geometry                                                                                                                         |
-| ---------- | --------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Primary    | `marea-lockup-primary.svg`  | ink `#17365d` (existing corporate navy token)                     | viewBox 760.96 × 200; symbol ink 155 × 100 at x 50…205; wordmark 430.96 × 100 at x 280…710.96; ink gap 75.00; clear space 50 on all sides |
-| Monochrome | `marea-lockup-mono.svg`     | single ink `#101820`                                              | same geometry (only `color` differs)                                                                                                      |
-| Reversed   | `marea-lockup-reversed.svg` | single ink `#f2f9fd` (existing `--mist` token) on dark substrates | same geometry                                                                                                                             |
+| Asset      | File                        | Colour role                                                       | Measured geometry                                                                                                                                 |
+| ---------- | --------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Primary    | `marea-lockup-primary.svg`  | ink `#17365d` (existing corporate navy token)                     | viewBox 704.83 × 200; symbol ink 98.87 × 100 at x 50…148.87; wordmark 430.96 × 100 at x 223.87…654.83; ink gap 75.00; clear space 50 on all sides |
+| Monochrome | `marea-lockup-mono.svg`     | single ink `#101820`                                              | same geometry (only `color` differs)                                                                                                              |
+| Reversed   | `marea-lockup-reversed.svg` | single ink `#f2f9fd` (existing `--mist` token) on dark substrates | same geometry                                                                                                                                     |
 
 All three are the same outline; only the ink value changes. No opacity, no second colour, no
-effects. Files are 1,982 B each (budget ≤ 20 kB).
+effects. Files are 2,016 B each (budget ≤ 20 kB).
 
 ### 5.2 Family lockup rule (one rule, nine families)
 
@@ -227,19 +240,19 @@ effects. Files are 1,982 B each (budget ≤ 20 kB).
 - **No per-family symbol.** All nine files share the identical symbol, wordmark, gap and word
   space; only the family token changes.
 - Measured family lockups: family ink height 70.00 (0.700 × cap), word space 26.00 (0.260 × cap),
-  baseline aligned with the wordmark to ≤ 0.05 units; byte range 2,494–3,208 B (≤ 20 kB).
+  baseline aligned with the wordmark to ≤ 0.05 units; byte range 2,526–3,242 B (≤ 20 kB).
 
 | Family lockup | File                                     | viewBox       | Family ink  |
 | ------------- | ---------------------------------------- | ------------- | ----------- |
-| MAREA NAV     | `family/marea-family-nav-lockup.svg`     | 964.73 × 200  | 177.77 × 70 |
-| MAREA HUB     | `family/marea-family-hub-lockup.svg`     | 956.36 × 200  | 169.40 × 70 |
-| MAREA AIS     | `family/marea-family-ais-lockup.svg`     | 909.80 × 200  | 122.84 × 70 |
-| MAREA PILOT   | `family/marea-family-pilot-lockup.svg`   | 1002.56 × 200 | 215.60 × 70 |
-| MAREA SENSE   | `family/marea-family-sense-lockup.svg`   | 1064.86 × 200 | 277.90 × 70 |
-| MAREA WATCH   | `family/marea-family-watch-lockup.svg`   | 1095.46 × 200 | 308.50 × 70 |
-| MAREA DISPLAY | `family/marea-family-display-lockup.svg` | 1124.60 × 200 | 337.64 × 70 |
-| MAREA WEATHER | `family/marea-family-weather-lockup.svg` | 1221.46 × 200 | 434.50 × 70 |
-| MAREA FLEET   | `family/marea-family-fleet-lockup.svg`   | 1048.76 × 200 | 261.80 × 70 |
+| MAREA NAV     | `family/marea-family-nav-lockup.svg`     | 908.60 × 200  | 177.77 × 70 |
+| MAREA HUB     | `family/marea-family-hub-lockup.svg`     | 900.23 × 200  | 169.40 × 70 |
+| MAREA AIS     | `family/marea-family-ais-lockup.svg`     | 853.66 × 200  | 122.84 × 70 |
+| MAREA PILOT   | `family/marea-family-pilot-lockup.svg`   | 946.43 × 200  | 215.60 × 70 |
+| MAREA SENSE   | `family/marea-family-sense-lockup.svg`   | 1008.73 × 200 | 277.90 × 70 |
+| MAREA WATCH   | `family/marea-family-watch-lockup.svg`   | 1039.32 × 200 | 308.50 × 70 |
+| MAREA DISPLAY | `family/marea-family-display-lockup.svg` | 1068.46 × 200 | 337.64 × 70 |
+| MAREA WEATHER | `family/marea-family-weather-lockup.svg` | 1165.32 × 200 | 434.50 × 70 |
+| MAREA FLEET   | `family/marea-family-fleet-lockup.svg`   | 992.63 × 200  | 261.80 × 70 |
 
 New families require the brand contract and `npm run test:brand`; they are not added by drawing.
 
@@ -250,24 +263,25 @@ New families require the brand contract and `npm run test:brand`; they are not a
 - **Rule: ≥ 0.5 × cap height on all four sides**, measured from the outer ink edge.
 - The rule is **baked into every lockup asset** as transparent margin: 50 units on each side of a
   100-unit cap band (viewBox 200 units tall for a 100-unit cap plus two 50-unit margins).
-- For the symbol-only files the viewBox margin is 24-grid padding (compact: 4.25 / 7 units;
-  reduced: 3 / 4.1 units); consumers must still apply 0.5 × symbol height clear space.
+- For the symbol-only files the viewBox margin is construction padding (compact: 1.17 units on every side of the 32 grid; reduced: 0.26 / 0.35 on the 16 grid). These are asset-crop margins, **not** the clear-space rule; consumers must still apply 0.5 × symbol height clear space.
 - Nothing enters the clear-space band: no rule, no tagline, no badge, no second logo, no image
   edge.
 
 ### 6.2 Minimum sizes (proposed, based on measured stroke widths)
 
-| Surface                        | Minimum                                                                       | Derived minimum feature                                         | Evidence basis                                                               |
-| ------------------------------ | ----------------------------------------------------------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| Digital UI                     | symbol **16 px**; lockup **cap 16 px** (lockup height 32 px)                  | wordmark stem 2.56 px; symbol rail 3.2 px; C screw slot ≈1.9 px | native-pixel reading test + measured geometry; human legibility `NOT_TESTED` |
-| Web favicon / app              | reduced 16 px build for favicons; compact mark for app icons (1024 px master) | 16 px build is its own drawing (not a scaled copy)              | authoring rule; raster pipeline owned by AssetProduction                     |
-| Print (offset/digital)         | symbol **8 mm**; wordmark cap **8 mm**                                        | stem 1.28 mm; symbol rail 1.6 mm                                | computed from the construction; physical print proof `NOT_TESTED`            |
-| Engraving / laser / silkscreen | symbol **8 mm**; wordmark cap **8 mm**; no feature below **0.8 mm**           | stem 1.28 mm; screw slot 0.96 mm at 8 mm cap                    | computed only; **no physical sample exists** (`NOT_TESTED (physical)`)       |
-| Embroidery                     | not specified in MC-04                                                        | —                                                               | `NOT_TESTED`; the 16 px reduced geometry is the starting point               |
+| Surface                        | Minimum                                                                                                                                                 | Derived minimum feature                                                      | Evidence basis                                                               |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Digital UI                     | symbol **16 px**; lockup **cap 16 px** (lockup height 32 px)                                                                                            | wordmark stem 2.56 px; symbol arc 1.71 px; index 1.81 px; small tick 0.96 px | native-pixel reading test + measured geometry; human legibility `NOT_TESTED` |
+| Web favicon / app              | reduced 16 px build for favicons; compact mark (32-unit) for app icons                                                                                  | 16 px build is its own drawing (not a scaled copy)                           | authoring rule; raster pipeline owned by AssetProduction                     |
+| Print (offset/digital)         | symbol **8 mm**; wordmark cap **8 mm**                                                                                                                  | stem 1.28 mm; symbol arc 0.85 mm; small tick 0.48 mm                         | computed from the construction; physical print proof `NOT_TESTED`            |
+| Engraving / laser / silkscreen | symbol **13.3 mm** (master construction; the 1.8-unit calibration tick reaches the 0.8 mm feature floor at 13.3 mm); **10.2 mm** with the reduced build | at 13.3 mm cap: stem 2.13 mm; arc 1.42 mm; tick 0.80 mm                      | computed only; **no physical sample exists** (`NOT_TESTED (physical)`)       |
+| Embroidery                     | not specified in MC-04                                                                                                                                  | —                                                                            | `NOT_TESTED`; the 16 px reduced geometry is the starting point               |
 
-These are **proposed operational minimums**, not tested manufacturing limits. The 8 mm values are
-simulations and computations; no engraved, silkscreened, moulded or embroidered sample was
-produced in MC-04.
+These are **proposed operational minimums**, not tested manufacturing limits. The 8 mm print value
+and the engraving values are simulations and computations; no engraved, silkscreened, moulded or
+embroidered sample was produced in MC-04. The engraving minimum is driven by the smallest authored
+feature (the 1.8-unit calibration tick), not by the arc; dropping the small tick in a production build would
+lower it to roughly 8 mm and would need its own documented variant.
 
 ## 7. Monochrome, reversed and engraving rules
 
@@ -301,18 +315,33 @@ unregistered trademark symbol. A visual misuse sheet is delivered at
 
 | Deliverable                                          | Files                                                                                                                        | Status                | Measured                                              |
 | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | --------------------- | ----------------------------------------------------- |
-| D-02 primary / mono / reversed lockups, compact mark | 4 SVG                                                                                                                        | `PRODUCED` (frozen)   | 1,982 B each; marks 935 / 894 B                       |
-| D-02 supporting masters                              | `marea-wordmark.svg`, `marea-mark-reduced-16.svg`, `marea-construction-grid.svg`                                             | `PRODUCED`            | 1,425 / 894 / 2,657 B                                 |
-| D-03 nine family lockups                             | 9 SVG                                                                                                                        | `PRODUCED` (frozen)   | 2,494–3,208 B; family ink 70.00 high                  |
+| D-02 primary / mono / reversed lockups, compact mark | 4 SVG                                                                                                                        | `PRODUCED` (frozen)   | 2,016 B each; marks 993 / 865 B                       |
+| D-02 supporting masters                              | `marea-wordmark.svg`, `marea-mark-reduced-16.svg`, `marea-construction-grid.svg`                                             | `PRODUCED`            | 1,425 / 865 / 3,218 B                                 |
+| D-03 nine family lockups                             | 9 SVG                                                                                                                        | `PRODUCED` (frozen)   | 2,526–3,242 B; family ink 70.00 high                  |
 | Measured geometry report                             | `territories/evidence/svg-geometry-report.{md,json}`                                                                         | `INTERNALLY_REVIEWED` | 32 files, 0 failed checks                             |
 | Reading test (native pixels)                         | `territories/evidence/reading-test.html` + PNGs                                                                              | `PRODUCED`            | 16 / 24 / 48 px, 8 mm-equivalent, greyscale, reversed |
 | Construction / proof / misuse sheets                 | `territories/*.svg`, `territories/proof/*.html`, `territories/misuse-examples.html`, `territories/territory-comparison.html` | `PRODUCED`            | HTML proof sheets; inline SVG; self-contained         |
 
-All 32 SVG files pass: XML parse, viewBox present, `role="img"` + `title` + `desc`, no `<text>`,
-no script / external reference / embedded raster / `@import` / filter / foreignObject, no
-registered-symbol characters, coordinate precision ≤ 2 decimals (transform scale factors ≤ 3
-decimals, documented), lockup ≤ 20 kB, mark ≤ 8 kB. Full numbers:
-`territories/evidence/svg-geometry-report.md`.
+**Measured compliance, stated precisely.** 32 SVG files are validated by
+`territories/tools/check.mjs`:
+
+- **27 artwork files** (15 master artwork files + 12 territory artwork variants: A/B/C mono,
+  reversed, compact and lockup) contain **no `<text>` element**. The remaining **5 files
+  are working/construction documents** and intentionally contain `<text>` labels as drawing
+  annotation: `marea-construction-grid.svg`, `territory-a-construction.svg`,
+  `territory-b-construction.svg`, `territory-c-construction.svg` and `wordmark-case-study.svg`.
+  They are exempt by documented purpose, not by silence.
+- All 32 pass XML parse, viewBox presence, `role="img"` + `title` + `desc`, absence of script /
+  external reference / embedded raster / `@import` / filter / foreignObject, and absence of
+  registered-trademark characters.
+- **Coordinate precision** is ≤ 2 decimals in all path and shape data. **Transform scale factors
+  are a documented exception with ≤ 3 decimals**: the measured values in the frozen set are
+  `scale(3.333)` (B master lockups), `scale(4.305)` (territory A prototype lockup) and
+  `scale(10)` (territory C prototype lockup). Three decimals are required to land the symbol ink
+  band on the cap band within 0.01 units; the geometry report proves the result (symbol ink 100.00
+  high on the cap band, measured error ≤ 0.01).
+- Byte budgets: lockups 2,016 B (≤ 20 kB), family 2,526–3,242 B (≤ 20 kB), marks 864–993 B
+  (≤ 8 kB). Full numbers: `territories/evidence/svg-geometry-report.md`.
 
 ## 10. Gates and honest limitations
 

@@ -1,0 +1,197 @@
+{
+  "document": "MC-04 independent review — Phase 1 interim findings",
+  "reviewer": "independent-reviewer (AI agent; author != reviewer)",
+  "reviewerScope": "docs/marea/brand/MC-04-REVIEW.md + docs/marea/brand/evidence/review/** only",
+  "milestone": "MC-04",
+  "branch": "feature/marea-mc04-visual-identity",
+  "head": "b0b010dd0b45eec455951393e0dabf1f3df53eca",
+  "phase": 1,
+  "snapshotAt": "2026-10-30T18:55Z",
+  "note": "Author artifacts are still landing while this snapshot was taken; items marked PENDING could not be reviewed because the deliverable did not exist yet. Every finding below is based on a real file or a command run in this session.",
+  "findings": [
+    {
+      "id": "IR-01",
+      "severity": "MINOR",
+      "title": "13/57 icons exceed the documented 2 px optical padding claim",
+      "files": [
+        "docs/marea/brand/ICONOGRAPHY-SYSTEM.md:194",
+        "docs/marea/brand/assets/icons/ui/index.html (icon-system rule block)"
+      ],
+      "evidence": "docs/marea/brand/evidence/review/raw/icon-bounds.json — Chromium getBBox() union + stroke/2 on the 24x24 grid. Declared padding: ink inside [2,22]. Violations by up to 1.5 units: alert-warning x[1,23], gps-fix x[1,23] y[1,23], nav-heading y[0.5,21], solar x/y[0.9,22], weather-forecast x[1.2,21.65] y[0.8,19], ais-receive-only y[1.34,22], battery/connection/fuse-breaker/installation/settings/shore-power/watch-monitoring by 0.5-1 unit.",
+      "impact": "Design rule vs actual geometry is inconsistent. The brief allows optical corrections (§9.2 'optical centring, not mathematical'), so the fix can be documentation (declare the nominal 2 px padding and the deliberate overshoots) or geometry. Not truthfulness-critical.",
+      "disposition": "OPEN — author correction or explicit exception record required before D-09 is final."
+    },
+    {
+      "id": "IR-02",
+      "severity": "MINOR",
+      "title": "Small-size distinctness is weak for several different-meaning icon pairs; the documented text-pairing list is incomplete",
+      "files": [
+        "docs/marea/brand/ICONOGRAPHY-SYSTEM.md:312-315"
+      ],
+      "evidence": "docs/marea/brand/evidence/review/raw/icon-iou-strict.json (native raster at 16/24/32 px, strict ink mask, DPR-independent) and raw/icon-pair-compare-16px-dpr8.png. Ink-mask IoU at 16 px: ais-target <> ais-target-lost 0.909; device-display <> device-hub 0.875; wind-apparent <> wind-true 0.813; nav-heading <> position-marker 0.788; nav-north <> wind-sensor 0.765. ICONOGRAPHY-SYSTEM.md §8 lists only 6 icons as needing text pairing at 16 px and does not include device-hub/device-display or nav-heading/position-marker. The shapes are distinguishable on close inspection (da<shed vs solid triangle; three feet vs two + base), so this is a legibility/labelling gap, not a duplicated icon.",
+      "impact": "G1 small-size integrity evidence is weaker than the document implies; the icon system's own 'one metaphor per meaning' rule is satisfied in geometry but the 16 px cue for at least two pairs is marginal.",
+      "disposition": "OPEN — add the measured pairs to the documented 16 px text-pairing list (or strengthen the distinguishing cue), and let the independent design gate decide whether 16 px use is restricted."
+    },
+    {
+      "id": "IR-03",
+      "severity": "MINOR",
+      "title": "index.html says 'reduction variants 16/24/32' but the proof only scales the single 24 px master (no 16/20/48 variants)",
+      "files": [
+        "docs/marea/brand/assets/icons/ui/index.html",
+        "docs/marea/brand/assets/icons/ui/reduction-proof.html:8",
+        "docs/marea/brand/ICONOGRAPHY-SYSTEM.md:227-239"
+      ],
+      "evidence": "docs/marea/brand/evidence/review/raw/icon-html-audit.json: 240 inline SVGs, 57 distinct geometries, 57 identical to master geometry, 0 simplified variants; only stroke-width 2 and 1.25 present; no 48 px board. The reduction-proof prose itself is honest ('browser render proof of the 57 master icons ... not a marine-display or print test'); ICONOGRAPHY-SYSTEM.md §4/§8 disclose that 16 px is proof-only and a dedicated variant must be authored. The index wording 'Variantes de reducción 16/24/32' overstates what the board contains; brief §9.2 asks for 16/20/24/32/48 variants and 2 px at 16 px, which simple scaling does not deliver (2*16/24 = 1.33 px).",
+      "impact": "Documentation precision only; the substantive limitation is disclosed in ICONOGRAPHY-SYSTEM.md.",
+      "disposition": "OPEN — fix index wording and record the missing 16/20/48 variants as PENDING/NOT_PRODUCED."
+    },
+    {
+      "id": "IR-04",
+      "severity": "MINOR",
+      "title": "check-typography.mjs licence assertion 'oflDocumentExemption' is a false negative",
+      "files": [
+        "scripts/check-typography.mjs:549-552",
+        "node_modules/@fontsource-variable/dm-sans/LICENSE:74-78",
+        "node_modules/@fontsource-variable/manrope/LICENSE:74-78"
+      ],
+      "evidence": "The script's regex requires '...does not apply to any document created using the fonts'; the shipped OFL-1.1 text reads '...does not apply to any document created using the Font Software.' so the check reports false. Independent evidence: docs/marea/brand/evidence/review/raw/typography-independent.json — both packages are OFL-1.1, no Reserved Font Name declared, and the document-creation clause IS present verbatim. Consequence: PDF/print embedding (T-8) is permitted under the shipped licence; MC-04 must not record 'document exemption not verified/denied'.",
+      "impact": "If D-06 or the delivery repeats the false value, the licence record misstates a permission (conservative direction, but still inaccurate). The substantive licence conclusion (OFL-1.1, keep both families) is unaffected.",
+      "disposition": "OPEN — correct the regex and make sure D-06/T-8 records the clause as verified-present."
+    },
+    {
+      "id": "IR-05",
+      "severity": "MINOR",
+      "title": "Mandatory disclaimer set incomplete on icon-adjacent surfaces",
+      "files": [
+        "docs/marea/brand/ICONOGRAPHY-SYSTEM.md:169-188",
+        "docs/marea/brand/assets/icons/ui/index.html (disclaimer block)"
+      ],
+      "evidence": "Brief §7.7 mandates four disclaimer families (navigation, AIS, PILOT, weather). ICONOGRAPHY-SYSTEM.md §2.12 lists navigation, AIS and PILOT only; index.html carries AIS and PILOT verbatim but neither navigation nor weather, although the catalogue depicts navigation and weather icons. Scan: docs/marea/brand/evidence/review/raw/icon-html-audit.json disclaimersPresent (navigationES/EN false, weatherES/EN false, ais/pilot true).",
+      "impact": "Completeness of the §7.7 allocation; the icon catalogue is an internal proof sheet, not a product surface, which limits severity.",
+      "disposition": "OPEN — add the weather (and navigation where applicable) disclaimer text to the icon docs/proof sheet, or state why they do not apply."
+    },
+    {
+      "id": "IR-06",
+      "severity": "NIT",
+      "title": "reduction-proof.html carries fewer honesty flags than index.html",
+      "files": ["docs/marea/brand/assets/icons/ui/reduction-proof.html"],
+      "evidence": "index.html flags INTERNO · PROPUESTO / PRODUCED / LEGAL_REVIEW_PENDING; reduction-proof.html flags INTERNO · PROPUESTO / PRODUCED only (raw/icon-html-audit.json). Both files also lack a visible 'professional originality check PENDING' statement, which ICONOGRAPHY-SYSTEM.md §0 does carry.",
+      "impact": "Consistency of PROPOSED/PENDING labelling across internal art surfaces.",
+      "disposition": "OPEN — align flags."
+    },
+    {
+      "id": "IR-07",
+      "severity": "MINOR",
+      "title": "Instrument token JSON claims role-only names but the web-light baseline block uses legacy colour names",
+      "files": ["docs/marea/brand/tokens/marea-instrument-tokens.proposed.json (document.roleNamesOnly and modes.web-light.tokens)"],
+      "evidence": "document.roleNamesOnly says 'Token names are role-based, never colour-named (no --blue-500)', but modes.web-light.tokens contains navy2, sea, seaStrong, seaButton, badgeWarningBg, badgeSafeBg, badgeCriticalBg, badgeOffBg, themeColor. These mirror src/styles.scss and are a measured baseline, not the new instrument vocabulary.",
+      "impact": "Internal inconsistency in D-08 wording; no src/ change was made.",
+      "disposition": "OPEN — scope the role-naming rule to the instrument role sets and label the web-light block as a legacy baseline reference."
+    },
+    {
+      "id": "IR-08",
+      "severity": "MINOR",
+      "title": "Token JSON says the proposed focus ring 'resolves F-1', but the finding is only proposed, not resolved",
+      "files": ["docs/marea/brand/tokens/marea-instrument-tokens.proposed.json (webTokenMapping focusRing)"],
+      "evidence": "webTokenMapping.focusRing.relationship: 'replaces the failing focus colour; resolves F-1'. Independent recomputation (raw/contrast-independent.json): web-light focusRing is still #8fd2f5 at 1.6529:1 on #ffffff and 1.554:1 on #f2f9fd (AA 3:1 fail); only the PROPOSED instrument modes use #0f5f8c (6.92:1 / 6.50:1). Nothing is applied; brief §5.2/§12.4 requires MC-04 to *propose* a compliant value and MC-06 to implement it.",
+      "impact": "Wording overclaims a closed finding; the actual proposal exists and is compliant in the instrument modes.",
+      "disposition": "OPEN — change to 'proposes a compliant replacement; MC-06 implements; F-1 remains open for the live site'."
+    },
+    {
+      "id": "IR-09",
+      "severity": "MINOR",
+      "title": "MC-04-BRIEFS.yaml Spanish captions/alt text are stripped of diacritics",
+      "files": ["docs/marea/assets/manifest/MC-04-BRIEFS.yaml (caption_alt_es_en fields)"],
+      "evidence": "raw/briefs-audit.json + direct byte check: the file contains 'fotografia' not 'fotografía', 'instalacion' not 'instalación', 'Rias Baixas' not 'Rías Baixas'. Only 16 non-ASCII characters in 87,498 B, all punctuation. Brief §1.4 rule 7 (ES first class) and §4.6 (accents designed, not patched); QA-11 alt text must be localised and correct.",
+      "impact": "Systemic localisation quality defect in the brief manifest; affects every ES alt/caption a future generated asset would inherit.",
+      "disposition": "OPEN — restore accents before any brief is consumed; the same captions in PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md do carry accents, so the YAML is the outlier."
+    },
+    {
+      "id": "IR-10",
+      "severity": "MINOR",
+      "title": "scripts/check-typography.mjs was created outside any declared write scope",
+      "files": [
+        "scripts/check-typography.mjs",
+        "docs/marea/brand/MC-04-EXECUTION-PLAN.md:41-49"
+      ],
+      "evidence": "The execution plan assigns scripts/check-contrast.mjs to TypeColour and scripts/render-assets.mjs / scripts/check-assets.mjs to AssetProduction; no member owns scripts/check-typography.mjs, yet the file exists and is cited by the token JSON. No src/ or public/ write occurred (git status clean for those paths).",
+      "impact": "Process/scope hygiene; the artifact itself is useful and read-only.",
+      "disposition": "OPEN — Lead records the authorization or updates the execution-plan write-scope table (Lead owns that file)."
+    }
+  ],
+  "verifiedInPhase1": [
+    {
+      "claim": "57 UI icon SVGs exist, parse strictly and are self-contained",
+      "status": "VERIFIED",
+      "evidence": "raw/icon-audit.json: 57 files, Chromium DOMParser image/svg+xml parse errors = 0; no <script>/<image>/<filter>/<foreignObject>/<text>/external href/data: URI/event handler; viewBox 0 0 24 24 and xmlns on 57/57; role=img + exactly one bilingual ES/EN <title> on 57/57; no ids, no XML declaration, no DOCTYPE, no comments, no fixed width/height (independent greps)."
+    },
+    {
+      "claim": "index.html byte/geometry claims",
+      "status": "VERIFIED",
+      "evidence": "raw/icon-html-audit.json: 57 cards, 0 missing masters, 0 masters without card, 0 geometry mismatches between inline and master SVG, 57/57 ES and EN captions, 57/57 aria-hidden glyphs; declared total 24617 B = actual 24617 B; declared max 845 B = actual 845 B."
+    },
+    {
+      "claim": "Contrast matrix arithmetic and classification",
+      "status": "VERIFIED",
+      "evidence": "raw/contrast-independent.json: 190/190 pairs recomputed from the raw fg/bg values with an independently written WCAG formula; max absolute delta 0.0000 vs matrix; AA misses 3 and internal-target misses 12 match the embedded summary; no classification mismatches. scripts/check-contrast.mjs run: RESULT PASS."
+    },
+    {
+      "claim": "Day/sunlight/night role parity and night halation rule",
+      "status": "VERIFIED",
+      "evidence": "instrument-day/sunlight/night have identical 22-token role sets; night canvas #0d1b26 / surfaces #132733/#1a3343 and no #000000/#ffffff values; sunlight is uniformly higher-contrast (white canvas, deeper inks)."
+    },
+    {
+      "claim": "Tabular-numbers measurement (DM Sans lacks tnum; Manrope has it)",
+      "status": "VERIFIED",
+      "evidence": "scripts/check-typography.mjs --json: RESULT PASS, TYPO-DEVIATION-01 recorded. Independent re-measurement (raw/typography-independent.json): DM Sans digit spread 34.0 px at 100 px and unchanged by tabular-nums/'tnum' 1; Manrope tabular spread 0.156 px and 0.000 px column delta; both families loaded from the shipped woff2."
+    },
+    {
+      "claim": "Glyph coverage for ES/PT/FR/EN",
+      "status": "VERIFIED",
+      "evidence": "raw/typography-independent.json: 67/67 required characters served for each family using a notdef-mask test (U+E000) against the shipped @font-face unicode-ranges; 31 locale strings with no gaps; prime/double-prime absent (recorded as optional, not required)."
+    },
+    {
+      "claim": "Typeface licence",
+      "status": "VERIFIED",
+      "evidence": "Both packages: package.json license OFL-1.1, shipped LICENSE is SIL OFL 1.1, no Reserved Font Name declared, document-creation clause present verbatim; versions 5.3.0 matching package-lock-installed packages. Caveat: the author script's own oflDocumentExemption boolean is wrong (IR-04)."
+    },
+    {
+      "claim": "Brand validator and its unit tests",
+      "status": "VERIFIED",
+      "evidence": "npm run test:brand -> PASS, 21 checks, 21 passed, 11 governed files scanned; npm run test:brand:unit -> 13/13 tests pass."
+    },
+    {
+      "claim": "D-16 originality record makes no clearance/originality claim",
+      "status": "VERIFIED",
+      "evidence": "ORIGINALITY-AND-PRIOR-ART-CHECK.md §0: ORIGINALITY_PROFESSIONAL_CHECK PENDING, TRADEMARK_LEGAL_CLEARANCE NOT_GRANTED, FINAL_IDENTITY_ADOPTION BLOCKED, PUBLICATION BLOCKED; explicit 'no statement asserts or implies original/registrable/clear'; the cited EUTM 018135609 / BRANDS 2020, S.L. record is inherited verbatim from MC-03 TRADEMARK-CLEARANCE-RESEARCH.md §2 (no invented registry number)."
+    },
+    {
+      "claim": "D-12 brief manifest is honest (blocked, no invented files/hashes)",
+      "status": "VERIFIED",
+      "evidence": "raw/briefs-audit.json (PyYAML parse): 17 entries; every entry has all 20 brief fields, provider.name NONE_YET, files [], generated_at null, no sha256 hex, no file path, no URL; MR-PRD-003 correctly flagged not_a_generation_asset; no invented provider/model/date. Issue: ES diacritics (IR-09)."
+    },
+    {
+      "claim": "No prohibited claims in the Phase-1 artifacts",
+      "status": "VERIFIED",
+      "evidence": "raw/prohibited-pattern-scan.json (128 files, independent scan): all 26 ®/™ occurrences are in prohibitions or honesty statements, none attached to MAREA; CE/NMEA/IP/waterproof/marine-grade/made-in/certified hits are all negated prohibitions or future-evidence rules; no availability, price, performance, ECDIS, collision-avoidance or safety-guarantee claim; the two 'user research' and two 'sea trial' hits are explicit statements that none exists."
+    },
+    {
+      "claim": "No src/ or public/ changes",
+      "status": "VERIFIED",
+      "evidence": "git status --short at snapshot: only docs/** and scripts/*.mjs (new); no src/ or public/ entry; HEAD b0b010d."
+    }
+  ],
+  "pendingDependencies": [
+    "docs/marea/brand/TYPOGRAPHY-SYSTEM.md (D-06) — absent at snapshot; IR-04 applies to it when it lands",
+    "docs/marea/brand/COLOUR-SYSTEM.md (D-07) — absent at snapshot; IR-07/IR-08 apply",
+    "docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md (D-17) — absent at snapshot",
+    "docs/marea/brand/IDENTITY-SYSTEM.md (D-01) / TERRITORY-COMPARISON.md / ILLUSTRATION-STANDARDS.md (D-10) — absent at snapshot",
+    "docs/marea/assets/manifest/MC-04-ASSETS.yaml — absent at snapshot (Phase 2 manifest verification blocked)",
+    "docs/marea/brand/MC-04-DELIVERY.md (D-18) — absent at snapshot"
+  ],
+  "agentLimits": [
+    "This is an AI-agent review. It is not human user research, not professional certification, not legal clearance and not a trademark/originality opinion, and cannot substitute for them.",
+    "External icon-library resemblance could not be checked: no icon library is installed locally and the web fetch endpoint failed in this session. G3 remains PENDING and is not closed by this review.",
+    "Hardware, sunlight, night-halation, print-proof and glove tests have no physical device/proof in this programme and remain BLOCKED/NOT_TESTED by definition."
+  ]
+}

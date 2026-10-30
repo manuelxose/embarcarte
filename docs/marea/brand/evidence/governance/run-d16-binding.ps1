@@ -1,15 +1,21 @@
 # =============================================================================
-# MC-04 D-16 Rev.2 FROZEN binding run (READ-ONLY w.r.t. artwork)
+# MC-04 D-16 Rev.4 FROZEN REBIND run (READ-ONLY w.r.t. artwork)
 # Owner: Governance. Writes ONLY its own evidence report under
 # docs/marea/brand/evidence/governance/**.
 #
-# Trigger: the Lead's FROZEN signal of 2026-10-30 ("IdentityVector declares the
-# logo/mark geometry final", 12 SVGs in assets/logo/ + measured report
-# territories/evidence/svg-geometry-report.{md,json}).
+# WHY THIS RUN EXISTS (delete-and-rebind, logged):
+#   The v1 binding (2026-10-30T18:48:48+01:00, evidence archived as
+#   MC-04-D16-BINDING-EVIDENCE-v1-2026-10-30T184848.txt) bound the OLD master set
+#   which was built on the C construction, while the recorded preference was B.
+#   IdentityVector then reissued the whole master set from construction B (corrected
+#   arc weight 3.2 units = 10.4% of ink height) and AssetProduction re-rendered
+#   everything with `--all`. The Lead instructed a delete-and-rebind.
+#   Old hashes are NOT edited in place: they stay in the v1 evidence file and in the
+#   D-16 change log; the live table is replaced wholesale by this run's output.
 #
-# Method: for every file below it invokes rev2-bind-helper.ps1 and copies the
-# helper-printed path / bytes / SHA-256 / viewBox / hygiene data. Nothing is
-# hand-typed: a value that the helper did not print does not enter the dossier.
+# Method: rev2-bind-helper.ps1 per file (SHA-256 via Get-FileHash; refuses paths
+# outside docs/marea/brand/). Nothing is typed by hand: a value that the helper did
+# not print does not enter the dossier.
 #
 # Run: pwsh -NoProfile -File docs/marea/brand/evidence/governance/run-d16-binding.ps1
 # =============================================================================
@@ -23,46 +29,65 @@ $OutputEncoding = [System.Text.Encoding]::UTF8
 $helper = 'docs/marea/brand/evidence/governance/rev2-bind-helper.ps1'
 $reportPath = 'docs/marea/brand/evidence/governance/MC-04-D16-BINDING-EVIDENCE.txt'
 
-# role -> repo-relative path. Roles are honest: the master lockups are labelled
-# as "built on the C symbol" because their own <desc> says so; do not relabel
-# them as the B lockup.
 $targets = [ordered]@{
-  'C1 Territory B - construction drawing'        = 'docs/marea/brand/territories/territory-b-construction.svg'
-  'C1 Territory B - lockup (primary)'            = 'docs/marea/brand/territories/territory-b-lockup-primary.svg'
-  'C1 Territory B - mark compact'                = 'docs/marea/brand/territories/territory-b-mark-compact.svg'
-  'C1 Territory B - mark mono'                   = 'docs/marea/brand/territories/territory-b-mark-mono.svg'
-  'C1 Territory B - mark reversed'               = 'docs/marea/brand/territories/territory-b-mark-reversed.svg'
-  'C2 Territory C - construction drawing'        = 'docs/marea/brand/territories/territory-c-construction.svg'
-  'C2 Territory C - lockup (primary)'            = 'docs/marea/brand/territories/territory-c-lockup-primary.svg'
-  'C2 Territory C - mark compact'                = 'docs/marea/brand/territories/territory-c-mark-compact.svg'
-  'C2 Territory C - mark mono'                   = 'docs/marea/brand/territories/territory-c-mark-mono.svg'
-  'C2 Territory C - mark reversed'               = 'docs/marea/brand/territories/territory-c-mark-reversed.svg'
-  'MASTER wordmark (symbol-free)'                = 'docs/marea/brand/assets/logo/marea-wordmark.svg'
-  'MASTER lockup primary (built on C symbol)'    = 'docs/marea/brand/assets/logo/marea-lockup-primary.svg'
-  'MASTER lockup mono (built on C symbol)'       = 'docs/marea/brand/assets/logo/marea-lockup-mono.svg'
-  'MASTER lockup reversed (built on C symbol)'   = 'docs/marea/brand/assets/logo/marea-lockup-reversed.svg'
-  'MASTER mark compact (built on C symbol)'      = 'docs/marea/brand/assets/logo/marea-mark-compact.svg'
-  'D1 AIS receive-only diagram'                  = 'docs/marea/brand/assets/diagrams/marea-ais-receive-only.svg'
-  'D2 ecosystem overview diagram'                = 'docs/marea/brand/assets/diagrams/marea-ecosystem-overview.svg'
-  'D3 PILOT supervised boundary diagram'         = 'docs/marea/brand/assets/diagrams/marea-pilot-supervised-boundary.svg'
-  'S1 icon/instrument specimen index'            = 'docs/marea/brand/specimens/index.html'
-  'S2 alerts specimen'                           = 'docs/marea/brand/specimens/alerts.html'
-  'S3 pilot specimen'                            = 'docs/marea/brand/specimens/pilot.html'
+  # --- shortlisted territory B: reissued from construction B -----------------
+  'B construction drawing'                         = 'docs/marea/brand/territories/territory-b-construction.svg'
+  'B lockup (primary)'                             = 'docs/marea/brand/territories/territory-b-lockup-primary.svg'
+  'B mark compact'                                 = 'docs/marea/brand/territories/territory-b-mark-compact.svg'
+  'B mark mono'                                    = 'docs/marea/brand/territories/territory-b-mark-mono.svg'
+  'B mark reversed'                                = 'docs/marea/brand/territories/territory-b-mark-reversed.svg'
+  # --- shortlisted strategic alternative C (rebound for table consistency) --
+  'C construction drawing'                         = 'docs/marea/brand/territories/territory-c-construction.svg'
+  'C lockup (primary)'                             = 'docs/marea/brand/territories/territory-c-lockup-primary.svg'
+  'C mark compact'                                 = 'docs/marea/brand/territories/territory-c-mark-compact.svg'
+  'C mark mono'                                    = 'docs/marea/brand/territories/territory-c-mark-mono.svg'
+  'C mark reversed'                                = 'docs/marea/brand/territories/territory-c-mark-reversed.svg'
+  # --- MASTER set: reissued from construction B ------------------------------
+  'MASTER wordmark'                                = 'docs/marea/brand/assets/logo/marea-wordmark.svg'
+  'MASTER lockup primary (B)'                      = 'docs/marea/brand/assets/logo/marea-lockup-primary.svg'
+  'MASTER lockup mono (B)'                         = 'docs/marea/brand/assets/logo/marea-lockup-mono.svg'
+  'MASTER lockup reversed (B)'                     = 'docs/marea/brand/assets/logo/marea-lockup-reversed.svg'
+  'MASTER mark compact (B)'                        = 'docs/marea/brand/assets/logo/marea-mark-compact.svg'
+  'MASTER mark reduced-16 (B)'                     = 'docs/marea/brand/assets/logo/marea-mark-reduced-16.svg'
+  'MASTER construction grid (B)'                   = 'docs/marea/brand/assets/logo/marea-construction-grid.svg'
+  # --- nine family lockups (reissued from B) --------------------------------
+  'FAMILY NAV lockup'                              = 'docs/marea/brand/assets/logo/family/marea-family-nav-lockup.svg'
+  'FAMILY HUB lockup'                              = 'docs/marea/brand/assets/logo/family/marea-family-hub-lockup.svg'
+  'FAMILY AIS lockup'                              = 'docs/marea/brand/assets/logo/family/marea-family-ais-lockup.svg'
+  'FAMILY PILOT lockup'                            = 'docs/marea/brand/assets/logo/family/marea-family-pilot-lockup.svg'
+  'FAMILY SENSE lockup'                            = 'docs/marea/brand/assets/logo/family/marea-family-sense-lockup.svg'
+  'FAMILY WATCH lockup'                            = 'docs/marea/brand/assets/logo/family/marea-family-watch-lockup.svg'
+  'FAMILY DISPLAY lockup'                          = 'docs/marea/brand/assets/logo/family/marea-family-display-lockup.svg'
+  'FAMILY WEATHER lockup'                          = 'docs/marea/brand/assets/logo/family/marea-family-weather-lockup.svg'
+  'FAMILY FLEET lockup'                            = 'docs/marea/brand/assets/logo/family/marea-family-fleet-lockup.svg'
+  # --- diagrams + specimens (content may be unchanged; rebound anyway) ------
+  'D1 AIS receive-only diagram'                    = 'docs/marea/brand/assets/diagrams/marea-ais-receive-only.svg'
+  'D2 ecosystem overview diagram'                  = 'docs/marea/brand/assets/diagrams/marea-ecosystem-overview.svg'
+  'D3 PILOT supervised boundary diagram'           = 'docs/marea/brand/assets/diagrams/marea-pilot-supervised-boundary.svg'
+  'S1 icon/instrument specimen index'              = 'docs/marea/brand/specimens/index.html'
+  'S2 alerts specimen'                             = 'docs/marea/brand/specimens/alerts.html'
+  'S3 pilot specimen'                              = 'docs/marea/brand/specimens/pilot.html'
+  # --- regenerated territory evidence this dossier relies on ----------------
+  'E1 measured geometry report (markdown)'         = 'docs/marea/brand/territories/evidence/svg-geometry-report.md'
+  'E2 measured geometry report (json)'             = 'docs/marea/brand/territories/evidence/svg-geometry-report.json'
+  'E3 reading-test evidence page'                  = 'docs/marea/brand/territories/evidence/reading-test.html'
 }
 
 $log = New-Object System.Collections.Generic.List[string]
 function Add-Line([string]$s) { $script:log.Add($s) }
 
 Add-Line '============================================================'
-Add-Line 'MC-04 D-16 REV.2 — FROZEN BINDING RUN'
-Add-Line ('Binding performed at : ' + (Get-Date -Format 'yyyy-MM-ddTHH:mm:sszzz'))
-Add-Line 'FROZEN signal          : Lead, 2026-10-30 — "IdentityVector declares the logo/mark geometry final"'
-Add-Line '                        (12 SVGs in docs/marea/brand/assets/logo/; measured report'
-Add-Line '                        territories/evidence/svg-geometry-report.{md,json})'
-Add-Line 'Binding happened after : the Lead FROZEN signal. No value below was typed by hand:'
-Add-Line '                        every hash/bytes/viewBox line is copied from rev2-bind-helper.ps1 output.'
-Add-Line ('Helper                 : ' + $helper + ' (SHA-256 via Get-FileHash; refuses paths outside docs/marea/brand/)')
-Add-Line ('Files targeted         : ' + $targets.Count)
+Add-Line 'MC-04 D-16 REV.4 — FROZEN DELETE-AND-REBIND RUN'
+Add-Line ('Rebind performed at  : ' + (Get-Date -Format 'yyyy-MM-ddTHH:mm:sszzz'))
+Add-Line 'Supersedes           : v1 binding 2026-10-30T18:48:48+01:00 (21 files, OLD C-based master set),'
+Add-Line '                       archived as MC-04-D16-BINDING-EVIDENCE-v1-2026-10-30T184848.txt'
+Add-Line 'Reason               : IdentityVector reissued the whole master set from construction B after the'
+Add-Line '                       Lead recorded preference B; AssetProduction re-rendered everything (--all).'
+Add-Line '                       The v1 live table is stale; this run replaces it wholesale.'
+Add-Line 'Delete-and-rebind     : YES — old values are NOT edited in place; they remain in the v1 evidence'
+Add-Line '                       file and in the D-16 change log. Every value below is helper-printed.'
+Add-Line 'Helper               : ' + $helper + ' (SHA-256 via Get-FileHash; refuses paths outside docs/marea/brand/)'
+Add-Line ('Files targeted       : ' + $targets.Count)
 Add-Line '============================================================'
 Add-Line ''
 
@@ -102,7 +127,7 @@ foreach ($role in $targets.Keys) {
 }
 
 Add-Line ''
-Add-Line '--- BOUND FILE TABLE (paste-ready; every value helper-printed) ---'
+Add-Line '--- BOUND FILE TABLE v2 (paste-ready; every value helper-printed) ---'
 Add-Line ''
 Add-Line '| Role | Path | Bytes | SHA-256 | viewBox | Hygiene |'
 Add-Line '| --- | --- | ---: | --- | --- | --- |'
