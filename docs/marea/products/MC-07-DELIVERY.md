@@ -10,7 +10,7 @@
 | Branch | `feature/marea-mc07-display-weather-fleet-products` |
 | Base | MC-06 HEAD `7867409066e83e4b432476903e61f5ebdcc1b554` (draft PR [#12](https://github.com/manuelxose/embarcarte/pull/12) still open, so the MC-07 branch stacks on it) |
 | Reviewed commit | `355cf00877f6be07cab26afd9e9ca30bf7964ca3` — "docs(mc07): close independent-review findings — validator gate hardening and dossier corrections" (15 files, +388/−64) |
-| Initial audited commit | `64330faf6513de22dcced6ef70c1a6e8366490f0` — first audit returned **FAIL** (BLK-01/02/03, MAJ-04 and seven minor findings); all were closed in `355cf00` and re-verified **PASS** |
+| Initial audited commit | `64330faf6513de22dcced6ef70c1a6e8366490f0` — first audit returned **FAIL** (BLK-01/02/03, MAJ-04 and eight non-blocking findings: MIN-05–MIN-09 and OBS-10–OBS-12); all were closed in `355cf00` and re-verified **PASS** |
 | Draft PR | [#13](https://github.com/manuelxose/embarcarte/pull/13) — draft, stacked on `feature/marea-mc06-pilot-sense-watch-products`, not merged |
 | Independent review | `docs/marea/products/MC-07-REVIEW.md` — **PASS, product-definition scope only** (reviewed commit `355cf00`) |
 | Publication | NOT AUTHORISED |
@@ -119,7 +119,7 @@ uniform publication/sale gates. No earlier batch promise was silently changed.
 
 ## 5. Validation and quality gates
 
-All commands were executed on the reviewed tree (commit `64330fa`) unless stated otherwise.
+All commands were executed on the reviewed tree (commit `355cf00`) unless stated otherwise; the initial audit of commit `64330fa` is recorded separately in §8.
 
 | Command | Result |
 | --- | --- |
