@@ -1,6 +1,19 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, RESPONSE_INIT, computed, effect, inject, input, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { isPlatformServer } from '@angular/common';
+import {
+  Component,
+  DestroyRef,
+  PLATFORM_ID,
+  RESPONSE_INIT,
+  TransferState,
+  computed,
+  effect,
+  inject,
+  makeStateKey,
+  signal,
+} from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { CartService } from '../../core/cart.service';
 import { LocaleService } from '../../core/i18n/locale.service';
 import { TranslationService } from '../../core/i18n/translation.service';
@@ -62,22 +75,33 @@ const summarize = (text: string, max = 158): string =>
           <p class="lead"><a class="text-link" [routerLink]="locale.url('shop')">{{ i18n.t('shopDetail.backToShop') }} →</a></p>
         </div>
       </section>
+    } @else if (error()) {
+      <p class="empty">{{ i18n.t('error.generic') }}</p>
     } @else {
       <p class="empty">{{ i18n.t('common.loading') }}</p>
     }
   `,
 })
 export class ShopDetail {
-  readonly slug = input.required<string>();
+  private readonly route = inject(ActivatedRoute);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly initialSlug = this.route.snapshot.paramMap.get('slug') ?? '';
+  private loadedSlug = this.initialSlug;
 
   private readonly http = inject(HttpClient);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly transferState = inject(TransferState);
   private readonly seo = inject(SeoService);
   private readonly response = inject(RESPONSE_INIT, { optional: true });
   protected readonly locale = inject(LocaleService);
   protected readonly i18n = inject(TranslationService);
   protected readonly cart = inject(CartService);
-  protected readonly product = signal<ShopProduct | null>(null);
+  /** The SSR response is transferred so hydration starts with the same product. */
+  protected readonly product = signal<ShopProduct | null>(
+    this.transferState.get(this.stateKeyFor(this.initialSlug), null),
+  );
   protected readonly notFound = signal(false);
+  protected readonly error = signal(false);
   protected readonly qty = signal(1);
   protected readonly added = signal(false);
   protected readonly Math = Math;
@@ -112,7 +136,7 @@ export class ShopDetail {
         params: { slug: product.slug },
         title: `${text.name} — ${this.i18n.t('shop.eyebrow')}`,
         description: summarize(text.summary || text.description),
-        image: product.image.startsWith('/') ? product.image : undefined,
+        image: product.image?.startsWith('/') ? product.image : undefined,
         jsonLd: [
           breadcrumb(
             [
@@ -155,12 +179,47 @@ export class ShopDetail {
 
   }
 
+  private stateKeyFor(slug: string) {
+    return makeStateKey<ShopProduct>(`shop-product:${slug}`);
+  }
+
   ngOnInit(): void {
-    this.http.get<ShopProduct>(`/api/shop/products/${encodeURIComponent(this.slug())}`).subscribe({
-      next: (product) => this.product.set(product),
-      error: () => {
-        this.notFound.set(true);
-        if (this.response) this.response.status = 404;
+    this.route.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
+      const slug = params.get('slug') ?? '';
+      if (slug === this.loadedSlug) {
+        // Hydration already had the server product: no duplicate request and
+        // no empty first render (which caused a large layout shift on mobile).
+        if (!this.product()) this.load(slug);
+        return;
+      }
+      // The router can reuse this component between two product URLs.
+      this.loadedSlug = slug;
+      this.product.set(null);
+      this.notFound.set(false);
+      this.error.set(false);
+      this.qty.set(1);
+      this.added.set(false);
+      this.load(slug);
+    });
+  }
+
+  private load(slug: string): void {
+    this.http.get<ShopProduct>(`/api/shop/products/${encodeURIComponent(slug)}`).subscribe({
+      next: (product) => {
+        // Ignore a response that belongs to a slug the user has already left.
+        if (slug !== this.loadedSlug) return;
+        this.product.set(product);
+        if (isPlatformServer(this.platformId)) this.transferState.set(this.stateKeyFor(slug), product);
+      },
+      error: (err: HttpErrorResponse) => {
+        if (slug !== this.loadedSlug) return;
+        if (err.status === 404) {
+          this.notFound.set(true);
+          if (this.response) this.response.status = 404;
+          return;
+        }
+        // A 5xx/network error is not a missing product and must not de-index it.
+        this.error.set(true);
       },
     });
   }

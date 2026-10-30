@@ -56,6 +56,19 @@ export const destroySession = (req: Request, res: Response): void => {
   res.clearCookie(COOKIE, { path: '/' });
 };
 
+/**
+ * Tras cambiar la contraseña se invalidan las demás sesiones de la cuenta,
+ * conservando la actual (el usuario que acaba de cambiarla no debe ser expulsado).
+ */
+export const revokeOtherSessions = (req: Request, userId: number): void => {
+  const token = readCookie(req, COOKIE);
+  if (token) {
+    db.prepare('DELETE FROM sessions WHERE user_id = ? AND token_hash != ?').run(userId, sha256(token));
+  } else {
+    db.prepare('DELETE FROM sessions WHERE user_id = ?').run(userId);
+  }
+};
+
 const readCookie = (req: Request, name: string): string | undefined => {
   for (const part of (req.headers.cookie ?? '').split(';')) {
     const [key, ...rest] = part.trim().split('=');
@@ -103,20 +116,29 @@ export const requireAdmin = (req: Request, res: Response, next: NextFunction): v
   next();
 };
 
-/** Crea o actualiza el administrador definido en ADMIN_EMAIL / ADMIN_PASSWORD. */
+/**
+ * Crea el administrador definido en ADMIN_EMAIL / ADMIN_PASSWORD.
+ *
+ * En un arranque normal no reescribe la contraseña: un cambio hecho desde la
+ * cuenta no puede revertirse sola al reiniciar. Para rotarla de forma explícita,
+ * `ADMIN_PASSWORD_RESET=true` actualiza el hash y revoca las sesiones del admin.
+ */
 export const ensureAdmin = async (): Promise<void> => {
   const email = process.env['ADMIN_EMAIL'];
   const password = process.env['ADMIN_PASSWORD'];
   if (!email || !password) return;
   const existing = db.prepare('SELECT id FROM users WHERE email = ?').get(email) as { id: number } | undefined;
-  const hash = await hashPassword(password);
-  if (existing) {
-    db.prepare("UPDATE users SET role = 'admin', password_hash = ? WHERE id = ?").run(hash, existing.id);
-  } else {
+  if (!existing) {
     db.prepare("INSERT INTO users (email, name, password_hash, role) VALUES (?, 'Administrador', ?, 'admin')").run(
       email,
-      hash,
+      await hashPassword(password),
     );
+    return;
+  }
+  db.prepare("UPDATE users SET role = 'admin' WHERE id = ?").run(existing.id);
+  if (process.env['ADMIN_PASSWORD_RESET'] === 'true') {
+    db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(await hashPassword(password), existing.id);
+    db.prepare('DELETE FROM sessions WHERE user_id = ?').run(existing.id);
   }
 };
 

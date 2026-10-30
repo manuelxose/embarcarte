@@ -9,6 +9,7 @@ import {
   hashPassword,
   requireAdmin,
   requireUser,
+  revokeOtherSessions,
   verifyPassword,
 } from './auth';
 import { UPLOADS_DIR, db, transaction } from './db';
@@ -21,6 +22,12 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 export const api = Router();
+
+// Sesiones, pedidos y administración no se cachean nunca.
+api.use((req, res, next) => {
+  if (/^\/(?:auth|account|orders|admin)\b/.test(req.path)) res.setHeader('Cache-Control', 'no-store');
+  next();
+});
 
 // --- utilidades -------------------------------------------------------------
 
@@ -44,6 +51,18 @@ const rateLimit = (key: string, max: number) => (req: Request, res: Response, ne
   }
   next();
 };
+// Las IPs que dejan de enviar peticiones no deben quedar en memoria indefinidamente.
+setInterval(() => {
+  const now = Date.now();
+  for (const [id, times] of hits) {
+    const recent = times.filter((t) => now - t < 600_000);
+    if (recent.length) hits.set(id, recent);
+    else hits.delete(id);
+  }
+}, 600_000).unref();
+
+/** Hash scrypt válido con el que se gasta el mismo tiempo cuando el email no existe. */
+const DUMMY_PASSWORD_HASH = `scrypt$${'0'.repeat(32)}$${'0'.repeat(128)}`;
 
 const hostOf = (url: string): string | null => {
   try {
@@ -56,19 +75,58 @@ const hostOf = (url: string): string | null => {
 const euros = (cents: number, language: 'es' | 'en' = 'es') =>
   (cents / 100).toLocaleString(language === 'en' ? 'en-GB' : 'es-ES', { style: 'currency', currency: 'EUR' });
 
+/** Repone el stock de un pedido que deja de estar activo. */
+const restoreOrderStock = (orderId: number): void => {
+  const items = db.prepare('SELECT product_id, qty FROM order_items WHERE order_id = ?').all(orderId) as {
+    product_id: number | null;
+    qty: number;
+  }[];
+  for (const item of items) {
+    if (item.product_id) db.prepare('UPDATE products SET stock = stock + ? WHERE id = ?').run(item.qty, item.product_id);
+  }
+};
+
+/** Cancela un pedido pendiente y repone su stock; idempotente. */
+const cancelPendingOrder = (orderId: number, stripeSessionId?: string): boolean =>
+  transaction(() => {
+    const order = db
+      .prepare(
+        `SELECT status FROM orders WHERE id = ?${stripeSessionId ? ' AND stripe_session_id = ?' : ''}`,
+      )
+      .get(...(stripeSessionId ? [orderId, stripeSessionId] : [orderId])) as { status: string } | undefined;
+    if (!order || order.status !== 'pendiente') return false;
+    db.prepare("UPDATE orders SET status = 'cancelado', updated_at = datetime('now') WHERE id = ?").run(orderId);
+    restoreOrderStock(orderId);
+    return true;
+  });
+
 // Webhook de Stripe: necesita el cuerpo sin parsear, así que va antes de express.json().
 api.post('/stripe/webhook', express.raw({ type: 'application/json', limit: '1mb' }), (req, res) => {
   if (!verifyWebhook(req.body as Buffer, req.header('stripe-signature'))) {
     res.status(400).end();
     return;
   }
-  const event = JSON.parse((req.body as Buffer).toString('utf8'));
-  if (event.type === 'checkout.session.completed' && event.data?.object?.payment_status === 'paid') {
-    const session = event.data.object;
+  let event: { type?: string; data?: { object?: { payment_status?: string; id?: string; metadata?: { order_id?: string } } } };
+  try {
+    event = JSON.parse((req.body as Buffer).toString('utf8'));
+  } catch {
+    // Un cuerpo firmado pero no JSON es inválido; no se registra su contenido.
+    res.status(400).end();
+    return;
+  }
+  const session = event.data?.object;
+  if (event.type === 'checkout.session.completed' && session?.payment_status === 'paid' && session.id) {
     db.prepare(
       `UPDATE orders SET status = 'pagado', updated_at = datetime('now')
        WHERE id = ? AND stripe_session_id = ? AND status = 'pendiente'`,
     ).run(Number(session.metadata?.order_id), session.id);
+  }
+  // Una sesión de Checkout caducada libera el stock que el pedido había reservado.
+  if (event.type === 'checkout.session.expired' && session?.id) {
+    const order = db
+      .prepare("SELECT id FROM orders WHERE stripe_session_id = ? AND status = 'pendiente'")
+      .get(session.id) as { id: number } | undefined;
+    if (order) cancelPendingOrder(order.id, session.id);
   }
   res.json({ received: true });
 });
@@ -113,7 +171,9 @@ api.post('/auth/login', rateLimit('login', 10), async (req, res) => {
   const row = db.prepare('SELECT id, password_hash FROM users WHERE email = ?').get(email) as
     | { id: number; password_hash: string }
     | undefined;
-  if (!row || !(await verifyPassword(password, row.password_hash))) {
+  // Se verifica siempre, incluso sin usuario, para no revelar por tiempo si el email existe.
+  const valid = await verifyPassword(password, row?.password_hash ?? DUMMY_PASSWORD_HASH);
+  if (!row || !valid) {
     res.status(401).json({ error: 'invalid_credentials' });
     return;
   }
@@ -163,6 +223,9 @@ api.put('/account/password', requireUser, rateLimit('password', 10), async (req,
     return;
   }
   db.prepare('UPDATE users SET password_hash = ? WHERE id = ?').run(await hashPassword(next), req.user!.id);
+  // Si la contraseña se cambió porque la cuenta estaba comprometida, las demás
+  // sesiones dejan de ser válidas inmediatamente.
+  revokeOtherSessions(req, req.user!.id);
   res.status(204).end();
 });
 
@@ -272,8 +335,16 @@ api.post('/orders', requireUser, rateLimit('orders', 20), async (req, res) => {
       res.status(201).json({ id: orderId, checkoutUrl: session.url });
       return;
     } catch (err) {
-      console.error('[orders] error creando la sesión de Stripe', err);
-      res.status(201).json({ id: orderId, paymentError: true });
+      const message = err instanceof Error ? err.message : 'unknown error';
+      console.error(JSON.stringify({ level: 'error', event: 'stripe_checkout_error', message }));
+      // Sin sesión de Stripe no hay webhook de expiración: se libera la reserva
+      // de stock y se pide al cliente que lo intente de nuevo.
+      try {
+        cancelPendingOrder(orderId);
+      } catch {
+        console.error(JSON.stringify({ level: 'error', event: 'order_cancel_after_payment_error', order_id: orderId }));
+      }
+      res.status(502).json({ error: 'payment_unavailable' });
       return;
     }
   }
@@ -446,11 +517,20 @@ admin.delete('/products/:id', (req, res) => {
 
 const IMAGE_TYPES: Record<string, string> = { 'image/jpeg': 'jpg', 'image/png': 'png', 'image/webp': 'webp' };
 
+/** Comprueba la firma real del fichero: el `Content-Type` del cliente no es suficiente. */
+const hasImageSignature = (body: Buffer, ext: string): boolean => {
+  if (ext === 'jpg') return body.length > 3 && body[0] === 0xff && body[1] === 0xd8 && body[2] === 0xff;
+  if (ext === 'png') {
+    return body.length > 8 && body.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]));
+  }
+  return body.length > 12 && body.subarray(0, 4).toString('ascii') === 'RIFF' && body.subarray(8, 12).toString('ascii') === 'WEBP';
+};
+
 // Subida de imágenes de producto: se guardan en DATA_DIR/uploads y se sirven en /uploads.
 admin.post('/uploads', express.raw({ type: Object.keys(IMAGE_TYPES), limit: '8mb' }), (req, res) => {
   const ext = IMAGE_TYPES[req.header('content-type') ?? ''];
   const body = req.body as Buffer;
-  if (!ext || !Buffer.isBuffer(body) || !body.length) {
+  if (!ext || !Buffer.isBuffer(body) || !body.length || !hasImageSignature(body, ext)) {
     res.status(400).json({ error: 'invalid' });
     return;
   }
@@ -488,28 +568,44 @@ admin.put('/orders/:id', (req, res) => {
     res.status(400).json({ error: 'invalid' });
     return;
   }
-  const current = db.prepare('SELECT status FROM orders WHERE id = ?').get(id) as { status: string } | undefined;
-  if (!current) {
-    res.status(404).json({ error: 'not_found' });
-    return;
-  }
-  try { transaction(() => {
-    // Al cancelar se repone el stock; al reactivar un pedido cancelado se vuelve a descontar.
-    const delta = status === 'cancelado' && current.status !== 'cancelado' ? 1 : current.status === 'cancelado' && status !== 'cancelado' ? -1 : 0;
-    if (delta) {
-      for (const item of db.prepare('SELECT product_id, qty FROM order_items WHERE order_id = ?').all(id) as {
-        product_id: number | null;
-        qty: number;
-      }[]) {
-        if (item.product_id) {
-          const change = db.prepare('UPDATE products SET stock = stock + ? WHERE id = ? AND stock + ? >= 0').run(delta * item.qty, item.product_id, delta * item.qty);
-          if (delta < 0 && !change.changes) throw new OrderError('out_of_stock');
+  try {
+    const found = transaction(() => {
+      // La lectura debe estar dentro de la transacción: dos cancelaciones
+      // concurrentes no pueden ver ambas el estado anterior y reponer dos veces.
+      const current = db.prepare('SELECT status FROM orders WHERE id = ?').get(id) as { status: string } | undefined;
+      if (!current) return false;
+      // Al cancelar se repone el stock; al reactivar un pedido cancelado se vuelve a descontar.
+      const delta =
+        status === 'cancelado' && current.status !== 'cancelado'
+          ? 1
+          : current.status === 'cancelado' && status !== 'cancelado'
+            ? -1
+            : 0;
+      if (delta) {
+        for (const item of db.prepare('SELECT product_id, qty FROM order_items WHERE order_id = ?').all(id) as {
+          product_id: number | null;
+          qty: number;
+        }[]) {
+          if (item.product_id) {
+            const change = db
+              .prepare('UPDATE products SET stock = stock + ? WHERE id = ? AND stock + ? >= 0')
+              .run(delta * item.qty, item.product_id, delta * item.qty);
+            if (delta < 0 && !change.changes) throw new OrderError('out_of_stock');
+          }
         }
       }
+      db.prepare("UPDATE orders SET status = ?, updated_at = datetime('now') WHERE id = ?").run(status, id);
+      return true;
+    });
+    if (!found) {
+      res.status(404).json({ error: 'not_found' });
+      return;
     }
-    db.prepare("UPDATE orders SET status = ?, updated_at = datetime('now') WHERE id = ?").run(status, id);
-  }); } catch (err) {
-    if (err instanceof OrderError) { res.status(409).json({ error: err.message }); return; }
+  } catch (err) {
+    if (err instanceof OrderError) {
+      res.status(409).json({ error: err.message });
+      return;
+    }
     throw err;
   }
   res.json(orderWithItems(id));
@@ -547,6 +643,7 @@ api.use((_req, res) => {
 });
 
 api.use((err: unknown, _req: Request, res: Response, _next: NextFunction) => {
-  console.error('[api]', err);
+  const message = err instanceof Error ? err.message : 'unknown error';
+  console.error(JSON.stringify({ level: 'error', event: 'api_error', message }));
   res.status(500).json({ error: 'server_error' });
 });

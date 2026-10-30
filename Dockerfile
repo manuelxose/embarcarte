@@ -13,6 +13,7 @@ ENV NODE_ENV=production PORT=4000 DATA_DIR=/app/data \
 COPY package.json package-lock.json ./
 RUN npm ci --omit=dev --no-audit --no-fund && npm cache clean --force
 COPY --from=build /app/dist ./dist
+COPY scripts/backup.mjs scripts/restore.mjs ./scripts/
 RUN mkdir -p /app/data && chown node:node /app/data
 VOLUME /app/data
 USER node

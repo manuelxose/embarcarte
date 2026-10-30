@@ -21,6 +21,7 @@ const AUTH_ERRORS: Record<number, TranslationKey> = {
   template: `
     <section class="page-hero" style="min-height: calc(100svh - 76px)">
       <div class="wrap">
+        <h1 class="sr-only">{{ i18n.t('auth.seoTitle') }}</h1>
         <div class="panel auth-card">
           <div class="tabs" role="tablist">
             <button type="button" role="tab" [class.on]="mode() === 'login'" [attr.aria-selected]="mode() === 'login'" (click)="mode.set('login')">{{ i18n.t('auth.signIn') }}</button>
@@ -102,7 +103,13 @@ export class Login {
       this.redirect(user.role);
     } catch (err) {
       const status = err instanceof HttpErrorResponse ? err.status : 0;
-      this.error.set(this.i18n.t(AUTH_ERRORS[status] ?? 'error.generic'));
+      const key =
+        status === 400
+          ? register
+            ? 'auth.invalidRegister'
+            : 'auth.invalidLogin'
+          : (AUTH_ERRORS[status] ?? 'error.generic');
+      this.error.set(this.i18n.t(key));
     } finally {
       this.sending.set(false);
     }
