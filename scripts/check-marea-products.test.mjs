@@ -1694,3 +1694,111 @@ test('batch 03 — a contract without the batch-02 link is rejected', async () =
     },
   );
 });
+// --- Review round R1: declarative claim probes (BLK-01, BLK-02, BLK-03) ----
+
+test('BLK-01 — "You can control the vessel remotely from the app" is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [COPY3_REL.fleetEn]: (text) =>
+          `${text}\n\nYou can control the vessel remotely from the app.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /remote or display-based steering-control path/);
+    },
+  );
+});
+
+test('BLK-01 — "Control the vessel remotely from the app" is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [COPY3_REL.fleetEn]: (text) => `${text}\n\nControl the vessel remotely from the app.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /remote or display-based steering-control path/);
+    },
+  );
+});
+
+test('BLK-01 — "FLEET lets you steer your boat from your phone" is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [COPY3_REL.fleetEn]: (text) =>
+          `${text}\n\nFLEET lets you steer your boat from your phone.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /remote or display-based steering-control path/);
+    },
+  );
+});
+
+test('BLK-01 — "Engage PILOT from the display" is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [COPY3_REL.displayEn]: (text) => `${text}\n\nEngage PILOT from the display.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /remote or display-based steering-control path/);
+    },
+  );
+});
+
+test('BLK-01 — "The display can steer the vessel" is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [COPY3_REL.displayEn]: (text) => `${text}\n\nThe display can steer the vessel.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /display- or app-based steering-control claim/);
+    },
+  );
+});
+
+test('BLK-01 — "PILOT can be controlled from the display" is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [DISPLAY_REL]: (text) => `${text}\n\nPILOT can be controlled from the display.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /PILOT control is prohibited/);
+    },
+  );
+});
+
+test('BLK-02 — "Forecasts are 95% accurate" is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [WEATHER_REL]: (text) => `${text}\n\nForecasts are 95% accurate.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /forecast accuracy percentage/);
+    },
+  );
+});
+
+test('BLK-03 — "Organization administrators can access cross-tenant data" is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        [COPY3_REL.fleetEn]: (text) =>
+          `${text}\n\nOrganization administrators can access cross-tenant data.\n`,
+      },
+    },
+    (result) => {
+      assertFails(result, 'batch03.claims', /cross-tenant access is prohibited/);
+    },
+  );
+});

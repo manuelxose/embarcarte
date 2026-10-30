@@ -23,6 +23,9 @@ Customer copy: docs/marea/products/copy/weather.es.md and docs/marea/products/co
   - 4.3 Coverage check
   - 4.4 Per-variable display metadata
 - §5 Pilot geography, declared coverage and the honest expansion statement
+  - 5.1 The pilot geography
+  - 5.2 Declared coverage per variable and per source
+  - 5.3 Expansion limits and the honest expansion statement
 - §6 Edition architecture — MAREA WEATHER Standard and MAREA WEATHER Pro
   - 6.1 Verdicts
   - 6.2 Outcome-based differentiation and the provider-rights gate
@@ -58,6 +61,8 @@ Customer copy: docs/marea/products/copy/weather.es.md and docs/marea/products/co
 | brandPublication | NOT_GRANTED |
 | availability | NOT_FOR_SALE |
 | publication | INTERNAL_ONLY |
+| PUBLICATION | BLOCKED |
+| SOURCE_IP_CLEARANCE | NOT_CLEARED — no reuse right from the source project and no WEATHER-specific licence |
 | providerRightsGranted | false |
 | forecastAccuracyClaimed | false |
 | redistributionAllowed | false |
@@ -148,7 +153,7 @@ Every field F01–F24 uses the binding five-line block of docs/marea/products/RE
 
 #### F06 - Editions
 - **Definition.** Exactly two editions, both subscriptions against the same single entitlement ledger. MAREA WEATHER Standard (WEATHER-STANDARD, verdict DEFINED) is the complete single-view weather product: the pilot geography and any additional declared area the licensed sources cover, home screen, saved locations within a defined allowance, wind, gusts, waves, swell/currents/tides/SST only where licensed, atmospheric conditions, timeline, source/model-run/valid/receipt time, freshness and missing-data states, attribution, and the legal caching that the rights allow. MAREA WEATHER Pro (WEATHER-PRO, verdict CONDITIONAL) adds only outcomes that require additional provider rights or additional processing: multi-model comparison, additional map layers where layer rights exist, route weather context, passage planning and weather windows, configurable notifications, historical comparison where licensed, a longer timeline/horizon where licensed, a larger saved-location and device allowance, and priority support. The Pro verdict is conditional on provider entitlements: any Pro capability whose right is not granted is shown as unavailable with a stated reason and is never sold silently. Standard must contain every provenance, freshness, attribution and limitation element; those are never edition-gated. No third tier exists.
-- **Evidence.** VERIFIED_REPO docs/marea/COMMERCIAL-PORTFOLIO.md §08 (editions); VERIFIED_REPO C:\Users\Admin\Documents\workspace\mc07-brief.md §4 (frozen ids and amounts); HYPOTHESIS edition value split; OPEN — no cost or validation evidence exists (X-05, X-06).
+- **Evidence.** VERIFIED_REPO docs/marea/COMMERCIAL-PORTFOLIO.md §08 (editions); the frozen edition ids and amounts are governed by the programme brief (external to this repository; the brief is a programme document, not a repository file, and is therefore not cited as VERIFIED_REPO); HYPOTHESIS edition value split; OPEN — no cost or validation evidence exists (X-05, X-06).
 - **Owner.** Product management (WEATHER) with commercial strategy.
 - **Blockers / dependencies.** D-04, D-05, D-07, X-05.
 - **Commercial readiness.** pricing = HYPOTHESIS_UNAPPROVED.
@@ -319,6 +324,136 @@ Every displayed value carries exactly one data type. It is the central rule that
 | 12 | Sea surface temperature where licensed | SST with source, product and time; an observation is labelled as observation and a model value as forecast. | FORECAST / OBSERVATION | SST right; Copernicus IBI, Open-Meteo marine (paid). | NOT_GRANTED; D-04, D-10 |
 | 13 | Atmospheric conditions | Air temperature, pressure at mean sea level, cloud cover and precipitation, each with unit, source and timestamp. | FORECAST / OBSERVATION | Atmospheric data right; Open-Meteo paid, AEMET OpenData, MeteoGalicia. | NOT_GRANTED; D-04, D-07 |
 | 14 | Map layers | Raster or vector layers only where a tile/layer licence exists; an unlicensed layer is absent with a stated reason and is never proxied from an unlicensed endpoint. | DERIVED (rendered) | Layer/tile licence; OpenWeather Weather Maps 2.0. | BLOCKED D-05 |
+| 15 | Timelines | A time axis per variable aligned on validTime, with model run and receipt time available for every step, and with horizon boundaries marked. | FORECAST | Licensed horizon per source. | OPEN; BLOCKED D-10 |
+| 16 | Multi-model comparison | Side-by-side per-model values with individual attribution and a labelled spread; no consensus, no average presented as a forecast, no "best model" claim. | FORECAST + DERIVED (spread) | Display right for each compared model. | NOT_GRANTED; D-04, D-07 |
+| 17 | Source identification | Provider, product, model and dataset version shown for every value, and a provenance page listing every source and licence. | metadata | Every provider naming and credit rules. | OPEN; BLOCKED D-10 |
+| 18 | Model run time | The model cycle shown and never substituted by receipt time; an old run relative to validTime is flagged. | metadata | Provider metadata per variable. | OPEN; BLOCKED D-10 |
+| 19 | Valid time | The instant or interval the value describes, shown always; a value without validTime is not rendered. | metadata | Provider metadata. | OPEN; BLOCKED D-10 |
+| 20 | Receipt time | When MAREA received the response, shown separately and never used to imply freshness of the model. | metadata | Server clock and ingestion record. | OPEN; BLOCKED D-10 |
+| 21 | Horizon | The declared forecast horizon per source and variable, shown as a boundary; nothing beyond it is presented as forecast. | metadata + FORECAST | Provider-declared horizon. | OPEN; BLOCKED D-10 |
+| 22 | Geographic coverage | A declared coverage statement and map per source; a coordinate outside it returns OUT_OF_COVERAGE, never a neighbour substitution without notice. | metadata | Provider geographic scope. | OPEN; BLOCKED D-07, D-10 |
+| 23 | Spatial resolution | The declared model grid or product resolution per source, labelled as the source resolution and never presented as point precision. | metadata | Provider documentation. | OPEN; BLOCKED D-10 |
+| 24 | Temporal resolution | The declared time step per source and variable. | metadata | Provider documentation. | OPEN; BLOCKED D-10 |
+| 25 | Attribution | The provider required credit and DOI/citation rendered on the surface where the data appears and on the provenance page, verbatim. | metadata | Credit strings per provider; see annex §11. | OPEN; BLOCKED D-10 |
+| 26 | Data quality / status | A status model (current, aging, stale, expired, unavailable, out of coverage) plus provider quality flags where published, never invented. | DERIVED (status) | Defined freshness rules and provider status metadata. | OPEN |
+| 27 | Missing data | Missing values render as NO_DATA, never zero-filled; partial variable sets are shown partially with the reason. | metadata | Defined missing-data rules. | OPEN |
+| 28 | Stale forecast | Staleness is computed from the declared cycle and shown; a stale or expired forecast is never styled or described as current. | DERIVED (status) | Freshness rules and source registry. | OPEN |
+| 29 | Confidence / uncertainty where supported | Confidence or dispersion is shown only where a provider publishes an ensemble or uncertainty product, with the provider meaning; otherwise the field reads NOT_PROVIDED. | FORECAST (provider ensemble) | Ensemble/uncertainty provider product. | UNRESOLVED; D-10 |
+| 30 | Historical comparison where licensed | Past forecasts or reanalysis shown for comparison only where an archive right exists, with the archive provider, period and method stated. | HISTORICAL | Historical/archive right. | NOT_GRANTED; D-04, D-10 |
+| 31 | Route weather context | Forecast values sampled along a customer route, labelled DERIVED and advisory, with the sampling method and each contributing model stated; context only, never a guarantee and never an automatic routing decision. | DERIVED | Derived-output right for each contributing model. | NOT_GRANTED; D-04, D-07 |
+| 32 | Passage planning | A planning workspace that organises departure window, route context and weather windows against the customer own thresholds, all labelled advisory. | DERIVED + USER_ENTERED | Derived-output right; account service. | NOT_GRANTED; D-10 |
+| 33 | Weather windows | A computed window where the forecast stays inside customer-declared limits, with the contributing models, threshold, period and uncertainty limits stated; explicitly advisory auxiliary computation, never a guarantee. | DERIVED | Derived-output right; threshold inputs from the customer. | NOT_GRANTED; D-04, D-07 |
+| 34 | Configurable notifications | Customer rules on saved locations and windows, delivered through a notification service, with delivery limits and provider dependence stated; never an official warning and never a guaranteed immediate alert. | DERIVED (rule) | Notification service, provider terms, consumer consent. | NOT_GRANTED; D-05, X-05 |
+| 35 | Account and saved locations | One account with the entitlement ledger, saved areas and locations, language preference, provenance record and export/delete controls. | USER_ENTERED | Account service and retention policy. | OPEN; BLOCKED X-05 |
+| 36 | NAV integration | Read-only weather context supplied to MAREA NAV; status PLANNED. No charts, no logbook and no navigation execution inside WEATHER. | FORECAST (consumed) | NAV integration contract and provider display right. | PLANNED; D-10 |
+| 37 | Entitlement sharing | One ledger; NAV Pro may include Standard-equivalent read access only where provider rights allow; prorated upgrade; never billed twice. | metadata | Billing/entitlement service and provider subscription compatibility. | NOT_GRANTED; D-10, X-05 |
+| 38 | Legally authorized caching | Server-side caching only where the provider terms permit it, with bounded TTL, attribution and purge on licence loss. | metadata | Caching right per provider. | NOT_GRANTED; D-04, D-07, D-10 |
+| 39 | Offline presentation where rights allow | Offline only where a written right exists; an offline surface states the last receipt time and that the value is not current. No right exists today. | FORECAST (cached) | Offline right per provider. | NOT_GRANTED; D-10 |
+| 40 | Usage limits | The customer plan limits and the MAREA provider-call budget are stated; rate-limit exhaustion shows a budget state and serves only aged cached values. | metadata | Plan definitions and provider quotas. | OPEN; BLOCKED D-04, D-05 |
+| 41 | Provider outage handling | An outage is shown as unavailable with the last successful receipt time, the provider named and attribution retained; no silent substitution of another source. | metadata | Availability monitoring and fallback policy. | OPEN |
+| 42 | Support | Provenance and freshness questions, coverage questions, entitlement and billing questions, and a provenance-record export for a decision already taken; never a meteorological interpretation guarantee and never an emergency channel. | metadata | Support process and legal identity. | OPEN; BLOCKED X-02 |
+| 43 | Renewal and cancellation | Explicit renewal date and amount before charge, cancellation in-product, prorated upgrade, export and retention rules stated, expired entitlement produces unavailable rather than frozen forecasts. | metadata | Billing service and consumer terms. | OPEN; BLOCKED X-02, X-05 |
+| 44 | Bilingual marine terminology | The same facts in Spanish (Spain) and natural international English: marine terms such as swell, gust, significant wave height, tide datum and current are defined and used consistently on both sides. | metadata | Terminology glossary and localisation review. | OPEN |
+
+### 4.3 Coverage check
+
+The register is complete only if each of the 44 domains resolves to a **declared coverage state** for the customer's area, rather than to an implied global availability. The rule is: no domain is shown as available merely because a source exists somewhere; it is shown as available only where the licensed source's declared box, declared resolution and declared horizon cover that coordinate and that variable.
+
+**Declared coverage per variable class.** The product must state, per variable and per source, the coverage it can actually deliver in the pilot geography, and the limitation the customer sees. Where a source does not publish a variable, the domain resolves to NOT_AVAILABLE rather than being inferred from a neighbouring variable.
+
+| Variable class | Declared coverage the product must show | Declared limitation shown with the value | Outside coverage behaviour |
+| --- | --- | --- | --- |
+| Wind and gusts | Source box within the pilot geography, declared grid resolution, declared time step, declared horizon | Model grid, not a local measurement; no point precision; upstream model named | OUT_OF_COVERAGE with the source box stated |
+| Wave height, direction and period | Regional wave product box and declared resolution | Significant wave height is a statistical parameter, not a measured sea state; period definition stated | OUT_OF_COVERAGE; no substitution from a global model without a visible label |
+| Swell partition | Only where the source documents a partition, with the same box and resolution | Partition definition and availability vary by product | NOT_AVAILABLE_FROM_SOURCE when the licence or product does not publish it |
+| Currents | Model box or HF-radar footprint, declared coverage and representative depth | Model current is not a local measurement; HF radar has its own footprint and quality flags | OUT_OF_COVERAGE outside the footprint |
+| Tides | Declared station or model, datum and prediction basis | Prediction basis and datum; not an official tide table | NOT_AVAILABLE for an unregistered station; never interpolated from a distant port |
+| Sea surface temperature | Declared product box and resolution | Modelled or observed, labelled; not a local thermometer | OUT_OF_COVERAGE |
+| Atmospheric conditions | Declared model box, resolution and horizon | Model value, not a station observation unless labelled OBSERVATION | OUT_OF_COVERAGE |
+| Map layers | Layer licence scope and tile coverage | Rendered from a licensed layer, not a nautical chart | Layer absent with a stated reason |
+| Contextual bathymetry | EMODnet coverage for the area | Context only, never a chart, never navigation-grade | Layer absent, stated |
+| History and notifications | Declared archive period or rule scope | Archive period and method; delivery limits | Feature unavailable with reason |
+
+**Coverage limitations that must be stated to the customer.** Per-source resolution and horizon; regional rather than global scope; the difference between a model grid value and a local measurement; the fact that a product may publish one variable and not another; temporal gaps in a provider's update cycle; and the fact that provider coverage, resolution and horizon may change with a new product version and must then be re-declared.
+
+**What happens outside coverage.** A coordinate outside a source's declared box returns OUT_OF_COVERAGE with the box and the source named. A variable outside the declared product returns NOT_AVAILABLE_FROM_SOURCE with the source named. A time beyond the declared horizon returns EXPIRED. The product never substitutes a nearer grid point, a different model, a coarser fallback or a climatological average without a visible statement of exactly what was substituted; where no honest substitute exists, the surface stays empty with a reason instead of showing a plausible-looking value.
+
+**Coverage check of this register.** All 44 domains of the master requirement set are present: home screen (01), user-selected sailing areas (02), saved marine locations (03), wind (04), gusts (05), wave height (06), wave direction (07), wave period (08), swell (09), currents (10), tides (11), sea surface temperature (12), atmospheric conditions (13), map layers (14), timelines (15), multi-model comparison (16), source identification (17), model run time (18), valid time (19), receipt time (20), horizon (21), geographic coverage (22), spatial resolution (23), temporal resolution (24), attribution (25), data quality/status (26), missing data (27), stale forecast (28), confidence/uncertainty (29), historical comparison (30), route weather context (31), passage planning (32), weather windows (33), configurable notifications (34), account and saved locations (35), NAV integration (36), entitlement sharing (37), legally authorized caching (38), offline presentation (39), usage limits (40), provider outage handling (41), support (42), renewal/cancellation (43), bilingual marine terminology (44). The "wave height / direction / period" requirement is enumerated as three domains (06–08) because each has its own definition, unit and limitation; that is the counting basis for 44. Domains whose data type is FORECAST or OBSERVATION and that depend on a provider right are all NOT_GRANTED, UNRESOLVED or BLOCKED; no domain is marked as working. Domains that depend on MAREA-built services are OPEN; none is implemented.
+
+### 4.4 Per-variable display metadata
+
+Any variable shown to a customer must carry this block. It is the operational form of §4.1 and of the annex §5, and it is the same block in Standard and in Pro: provenance is never an edition feature.
+
+| Metadata field | Content | Rule |
+| --- | --- | --- |
+| source | Provider, product and dataset version | Required; an unknown source means UNKNOWN, not a guess |
+| model | Model name and, in a comparison view, the individual model | Required for FORECAST |
+| units | Canonical unit with the display unit | Required; knots for wind, metres for waves, degrees for direction, degrees Celsius for temperature, hectopascals for pressure, metres for tide |
+| validTime | The instant or interval the value describes | Required; no validTime, no render |
+| dataType | FORECAST / OBSERVATION / HISTORICAL / DERIVED / USER_ENTERED / UNKNOWN | Required |
+| age | now minus validTime or now minus observationTime, labelled which | Required; no age, no render as a forecast |
+| method | Model, ensemble, observation, interpolation or derivation method | Required; interpolation declared if used |
+| license | The rights classification and the attribution string for that provider | Required |
+| limitations | The declaration of that variable's limits (resolution, horizon, not a local measurement, not navigation-grade, prediction basis for tides) | Required |
+| freshnessState | CURRENT / AGING / STALE / EXPIRED / UNAVAILABLE / OUT_OF_COVERAGE | Required |
+
+**Rendering rule.** A value that cannot fill all ten fields is not rendered as a forecast. It is either withheld or shown in an explicitly incomplete state (for example UNKNOWN with the missing field named). The metadata travels with the value into every consumer surface, including the NAV context view and the DISPLAY presentation, so a downstream screen cannot strip the provenance and leave a bare number.
+
+---
+
+## 5. Pilot geography, declared coverage and the honest expansion statement
+
+### 5.1 The pilot geography
+
+The intended pilot geography is **Galicia (including the Rías Baixas), the adjacent Atlantic waters of the Iberian northwest, and Atlantic Portugal**. It is chosen because it is a coherent cruising area with meaningful local variability, because several candidate sources cover it regionally, and because it is the programme's declared first market. It is a planning scope, not a granted coverage: WEATHER_PROVIDER_RIGHTS = NOT_GRANTED and no source is licensed for the product yet. The pilot area is a deliberate boundary: the product must not imply that the same experience extends automatically to the Mediterranean, the Bay of Biscay outside the declared box, the Atlantic islands or any other coast.
+
+### 5.2 Declared coverage per variable and per source
+
+For each sailing area in the pilot geography the product must publish, and the customer must be able to inspect, a coverage statement per variable: which source covers it, at what declared spatial resolution, at what declared temporal resolution, out to what declared horizon, and with what declared update cycle. The statement is data, not marketing: it is stored in the source registry and rendered next to the value. Where several sources cover the same variable, the coverage statement is per source, because a comparison between a coarse and a fine source is only honest if both resolutions are visible.
+
+The declaration must also cover the negative case explicitly: variables that the licensed set does not provide in that area, areas inside the pilot region but outside a source's box, and periods beyond a source's horizon. If a variable is not available, the customer sees which variable, which source was expected and why it is not available; the surface does not silently omit it.
+
+### 5.3 Expansion limits and the honest expansion statement
+
+The intended expansion is to additional declared coastal regions, each added only when three things exist together: a provider right for that region, a validated source registry entry with declared resolution, cycle and horizon, and a coverage statement reviewed against the product's own variable list. Expansion is therefore a rights-and-evidence process, not a marketing decision.
+
+This dossier makes **no** claim of exclusive data, proprietary model, official status, measured local accuracy, superior resolution, guaranteed availability, continuous coverage, global coverage or market exclusivity anywhere, in the pilot area or elsewhere. Regional high-resolution sources such as MeteoGalicia and Puertos del Estado are recorded as UNRESOLVED and are not presented as an advantage until their terms are obtained. No expansion date, no target market share and no coverage percentage is stated, because none is evidenced.
+
+---
+
+## 6. Edition architecture — MAREA WEATHER Standard and MAREA WEATHER Pro
+
+### 6.1 Verdicts
+
+| Edition id | Display name | Verdict | Hypothesis | Amount | Period / basis | State |
+| --- | --- | --- | --- | ---: | --- | --- |
+| WEATHER-STANDARD | MAREA WEATHER Standard | DEFINED | starting price | 49 | YEAR, consumer subscription, VAT-inclusive consumer retail where stated | HYPOTHESIS_UNAPPROVED |
+| WEATHER-PRO | MAREA WEATHER Pro | CONDITIONAL | multi-model comparison, advanced layers, route context, alerts; conditional on provider entitlements | 89 | YEAR, consumer subscription | HYPOTHESIS_UNAPPROVED |
+
+Both editions sit on the same single entitlement ledger. No third edition exists and no bundle price is stated here. The Pro verdict is CONDITIONAL because several of its outcomes are impossible without provider grants that do not exist; the edition is nevertheless fully defined so that the commercial conversation, the cost framework and the acceptance scenarios can be completed.
+
+### 6.2 Outcome-based differentiation and the provider-rights gate
+
+The difference between editions is a **customer outcome**, and every Pro outcome has an explicit gate. Differentiation is never a longer feature list for its own sake; if an outcome cannot be delivered lawfully, it is not sold.
+
+| Pro outcome | What the customer can do that Standard cannot | Gate |
+| --- | --- | --- |
+| Multi-model comparison | See two or more licensed models side by side with their spread, instead of a single view | Display right for each compared model (D-04, D-07) |
+| Additional map layers | See weather layers on the map where a layer licence exists | Layer/tile licence (D-05) |
+| Route weather context | Sample forecast along a route and read it as advisory context | Derived-output right (D-04, D-07, D-10) |
+| Passage planning and weather windows | Organise a departure around customer-declared limits and a computed window | Derived-output right; account service |
+| Configurable notifications | Be told when a saved location or window meets a rule | Notification service plus provider and consumer terms |
+| Historical comparison | Compare today's forecast with a licensed past forecast or archive | Archive right (D-10) |
+| Longer timeline or horizon | Look further out where the licensed source declares a longer horizon | Provider-declared horizon |
+| Larger allowances | More saved locations and more active devices | Defined limits (OPEN) |
+| Priority support | A defined support route with stated response expectations | Support policy (OPEN) |
+
+**Provider-rights gate (binding).** If a Pro outcome's right is not granted, the outcome is **not sold and not shown as a teaser**. The product shows the capability as unavailable with a plain reason, and the customer pays only for what the licence supports. Selling Pro while relying on an ungranted dataset would be a false commercial promise; it is prohibited regardless of the price label. The same gate applies to a Standard capability whose right lapses: the entitlement remains, the honest unavailable state appears, and attribution is retained rather than the feature being quietly replaced.
+
+### 6.3 What Standard must always include and is never edition-gated
+
+Never edition-gated, and never withheld to create an upsell: source identification; model run time, valid time and receipt time; per-variable age; the six data-type labels; the freshness state model; missing-data and out-of-coverage behaviour; attribution and licence text; the disclaimer set and the limitation statement; the honest unavailable state during a provider outage; the ability to export the customer's own saved locations and preferences; and the statement that forecasts are not guarantees. These are safety-relevant to a decision about going to sea, so they belong to the cheapest edition and to every future edition: an edition that removed them would be selling a misleading product rather than a cheaper one.
+
 ---
 
 ## 7. Pricing and cost framework for the frozen hypotheses

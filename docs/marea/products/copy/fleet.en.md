@@ -212,6 +212,7 @@ Lets an organisation describe its vessel count, operation type, roles and availa
 - **Internal design, no deployed service:** no multi-tenant production service and no security certification exist, and no service level is guaranteed.
 - **No vessel control:** no command, steering, rudder, heading, motor or bus path exists from MAREA FLEET.
 - **Read-only, conditional telemetry:** it depends on a compatible source, an organisation authorisation and connectivity that is not contracted yet. A vessel without data is shown as offline and never as online.
+- **AIS receive-only:** where AIS-derived context is shown, reception is receive-only; not every vessel transmits AIS and it is not a collision-avoidance system or a transponder.
 - **Conditional notifications:** they depend on power, coverage and the notification provider; immediate receipt is not guaranteed.
 - **No certification and no SLA:** no security certification, compliance certification or classification approval exists, and no service-level commitment exists.
 - **Explicit limits:** no unlimited number of vessels, users, storage, history, API calls, integrations, support or availability is promised.
@@ -231,7 +232,10 @@ MAREA FLEET is built for the daily work of a small or mid-sized fleet: knowing w
 **MAREA FLEET limitation statement (EN, internal draft pending claims-register approval):**
 "MAREA FLEET is an internal design: no deployed multi-tenant service and no security certification exist, and no service level is guaranteed. Telemetry is read-only and never allows steering the vessel."
 
+**AIS receive-only disclaimer (EN, applies wherever AIS-derived context is shown):**
+"AIS reception is receive-only: not every vessel transmits AIS. It is not a collision-avoidance system and not a transponder."
+
 **Brand attribution (EN):**
 "MAREA is a product brand of EMBARCARTE."
 
-**Document status:** DRAFT — INTERNAL ONLY — NOT PUBLISHED — PRODUCT DEFINITION COMPLETE, NOT FOR SALE — PRICES ARE HYPOTHESES, NOT APPROVED.
+**Document status:** DRAFT - INTERNAL ONLY - NOT PUBLISHED - PRODUCT DEFINITION COMPLETE, NOT FOR SALE - PRICES ARE HYPOTHESES, NOT APPROVED.

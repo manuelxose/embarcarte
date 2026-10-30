@@ -1644,6 +1644,22 @@ const STEERING_CLAIM_RULES = [
     /\bgobernar\s+desde\s+(?:la\s+)?(?:app|nube|aplicación|reloj|web)\b/i,
     'un camino de control remoto del gobierno está prohibido (README §16)',
   ],
+  [
+    /\b(?:can|may|could|lets?|allows?)\b[^.\n]{0,40}\b(?:control|steer|command|engage|disengage)\b[^.\n]{0,30}\b(?:remotely|from\s+(?:the\s+|your\s+|a\s+|an\s+)?(?:app|phone|cloud|website|web|watch|display|tablet))\b/i,
+    'a remote or display-based steering-control path is prohibited: no app, cloud, phone or display may command the vessel (README §16)',
+  ],
+  [
+    /\b(?:control|steer|command|engage|disengage)\b[^.\n]{0,30}\b(?:remotely|from\s+(?:the\s+|your\s+|a\s+|an\s+)?(?:app|phone|cloud|website|web|watch|display|tablet))\b/i,
+    'a remote or display-based steering-control path is prohibited: no app, cloud, phone or display may command the vessel (README §16)',
+  ],
+  [
+    /\b(?:the\s+)?(?:display|screen|app|phone|cloud|website|web|watch)\b[^.\n]{0,30}\b(?:can|may|could)\s+(?:steer|control|command)\b[^.\n]{0,20}\b(?:vessel|boat|helm|autopilot|steering|throttle|motor)\b/i,
+    'a display- or app-based steering-control claim is prohibited: the display never commands the helm',
+  ],
+  [
+    /\bPILOT\b[^.\n]{0,40}\b(?:can|may|could)\s+be\s+(?:controlled|steered|engaged|disengaged|commanded)\b/i,
+    'PILOT control is prohibited: status is read-only at most and never a control path',
+  ],
 ];
 
 const ACCURACY_CLAIM_RULES = [
@@ -1880,7 +1896,11 @@ const WEATHER_CLAIM_RULES = [
     'a forecast accuracy or guarantee claim is prohibited; accuracy is not measured (D-04)',
   ],
   [
-    /\b(?:accuracy|exactitud)\b[^.\n]{0,25}\b\d{1,3}\s*%/i,
+    /\b(?:accuracy|exactitud|precisi[oó]n)\b[^.\n]{0,25}\b\d{1,3}(?:[.,]\d+)?\s*%/i,
+    'a forecast accuracy percentage is prohibited: no accuracy evidence exists (D-04, §14)',
+  ],
+  [
+    /\b\d{1,3}(?:[.,]\d+)?\s*%\s*(?:accurate|accuracy|precis[aeo]s?|exact[ao]s?|de\s+exactitud|de\s+precisi[oó]n)\b/i,
     'a forecast accuracy percentage is prohibited: no accuracy evidence exists (D-04, §14)',
   ],
   [
@@ -1930,6 +1950,18 @@ const FLEET_CLAIM_RULES = [
   ],
   [
     /\bcross[- ]tenant\b[^.\n]{0,40}\b(?:allowed|permitted|supported|possible|enabled|permitid[oa])\b/i,
+    'cross-tenant access is prohibited: organization A can never read or modify B (brief §11)',
+  ],
+  [
+    /\b(?:can|could|may|might|is\s+able\s+to|are\s+able\s+to|allowed\s+to|permitted\s+to)\s+(?:access|read|modify|query|see|view|export|search)\b[^.\n]{0,30}\bcross[- ]tenant\b/i,
+    'cross-tenant access is prohibited: organization A can never read or modify B (brief §11)',
+  ],
+  [
+    /\bcross[- ]tenant\b[^.\n]{0,25}\b(?:data|access|records?|vessels?|reports?|exports?)\b[^.\n]{0,25}\b(?:is|are)\s+(?:allowed|permitted|granted|possible|enabled|visible|accessible|shared)\b/i,
+    'cross-tenant access is prohibited: organization A can never read or modify B (brief §11)',
+  ],
+  [
+    /\b(?:organization|organisation)\s+(?:administrators?|admins?|owners?|managers?|members?)\b[^.\n]{0,60}\bcross[- ]tenant\b/i,
     'cross-tenant access is prohibited: organization A can never read or modify B (brief §11)',
   ],
   [

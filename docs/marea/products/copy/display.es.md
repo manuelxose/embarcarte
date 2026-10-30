@@ -16,7 +16,7 @@ MAREA DISPLAY se define como una pantalla marina dedicada que reúne navegación
 Un puesto de gobierno con una pantalla propia en lugar de una tableta en una funda. MAREA DISPLAY se define para mostrar información ordenada, con la fuente y la antigüedad de cada dato visibles, con modos separados de día, sol y noche, y con una jerarquía de alarmas que no depende del color. La pantalla presenta; no gobierna, no controla el piloto y no sustituye al equipo reglamentario ni a la carta náutica oficial.
 
 ## 6. Beneficios principales
-- **Una pantalla dedicada en el puesto de gobierno.** El producto se define como un artículo marino fijo, con montaje aprobado, alimentación del barco y un entorno de funcionamiento propio, no como un dispositivo de consumo en un soporte.
+- **Una pantalla dedicada en el puesto de gobierno.** El producto se define como un artículo marino fijo, con una familia de montaje especificada, sujeta a la evaluación de instalación, alimentación del barco y un entorno de funcionamiento propio, no como un dispositivo de consumo en un soporte.
 - **Día, sol y noche como experiencias distintas.** No es un único regulador de brillo: cada modo se define para una condición de luz concreta y conserva la jerarquía de alarmas.
 - **Cada dato con su fuente y su antigüedad.** Un valor obsoleto o desconocido se muestra como tal; nunca se presenta como actual.
 - **Software base incluido.** Los cuadros de mando locales, la presentación de instrumentos y tráfico recibido, la configuración, la copia de seguridad y las actualizaciones durante la garantía forman parte del producto, no de una suscripción.
@@ -24,14 +24,14 @@ Un puesto de gobierno con una pantalla propia en lugar de una tableta en una fun
 - **Bilingüe.** Interfaz en español (España) e inglés con las mismas capacidades y los mismos textos de seguridad.
 
 ## 7. Visión general del producto
-MAREA DISPLAY es la pantalla marina dedicada de la familia MAREA. Se define como un artículo completo: panel, módulo de cálculo, almacenamiento, carcasa, montaje aprobado, conversión y protección de alimentación, conectores y mazo, un entorno de funcionamiento dedicado y el software base que presenta navegación, instrumentos, tráfico AIS recibido, capas de datos con licencia y las superficies de estado aprobadas.
+MAREA DISPLAY es la pantalla marina dedicada de la familia MAREA. Se define como un artículo completo: panel, módulo de cálculo, almacenamiento, carcasa, familia de montaje especificada sujeta a la evaluación de instalación, conversión y protección de alimentación, conectores y mazo, un entorno de funcionamiento dedicado y el software base que presenta navegación, instrumentos, tráfico AIS recibido, capas de datos con licencia y las superficies de estado aprobadas.
 
 Es la pantalla; MAREA NAV es el software de navegación y se contrata por separado. Comprar MAREA DISPLAY no incluye MAREA NAV, ni cartas, ni MAREA WEATHER, ni MAREA HUB, ni un receptor AIS. La pantalla presenta los datos de las fuentes compatibles que existan y que hayan pasado la revisión de compatibilidad; no los inventa.
 
 **Estado del producto:** definición completa (DEFINED), no disponible para compra. El tamaño y el hardware no están congelados, no existe una unidad fabricada y no se anuncia ninguna certificación. Esta página describe el producto previsto; no es una oferta comercial ni una promesa de disponibilidad.
 
 ## 8. Funciones y capacidades
-**Producto físico y entorno dedicado.** La pantalla se define con panel, módulo de cálculo, almacenamiento, carcasa, montaje aprobado, protección de alimentación y conectores marinos. El entorno de funcionamiento arranca en la interfaz de instrumentos, no en un escritorio de uso general. Ningún componente está seleccionado todavía y no se publica ninguna medida.
+**Producto físico y entorno dedicado.** La pantalla se define con panel, módulo de cálculo, almacenamiento, carcasa, familia de montaje especificada sujeta a la evaluación de instalación, protección de alimentación y conectores marinos. El entorno de funcionamiento arranca en la interfaz de instrumentos, no en un escritorio de uso general. Ningún componente está seleccionado todavía y no se publica ninguna medida.
 
 **Modos de luz.** Modo diurno para el puesto de gobierno, modo solar para luz directa y modo nocturno de baja luminosidad que reduce el deslumbramiento y desactiva el parpadeo. Los tres conservan la jerarquía de alarmas. No se anuncia ninguna cifra de brillo, contraste o legibilidad solar: no se ha medido.
 
@@ -74,7 +74,7 @@ Ninguna edición incluye cartas, MAREA NAV, MAREA WEATHER, MAREA HUB, receptor A
 ## 11. Elementos incluidos
 El producto previsto incluye:
 - La pantalla con su panel, módulo de cálculo, almacenamiento, carcasa y bisel según el diseño final.
-- El montaje aprobado para la instalación documentada.
+- Los elementos de montaje especificados para la instalación documentada (familia de montaje sujeta a la evaluación de instalación; no existe aprobación ni certificación del montaje).
 - El cable de alimentación y el elemento de conversión y protección que exija la instalación documentada.
 - Los conectores marinos y el mazo necesario para las entradas de datos documentadas.
 - El entorno de funcionamiento dedicado y el software base: cuadros de mando locales, presentación de instrumentos y tráfico recibido, presentación de navegación, configuración, copia de seguridad, diagnóstico y actualizaciones durante la garantía.
@@ -92,7 +92,7 @@ No incluye:
 La lista definitiva de elementos depende de la congelación del listado de materiales, que todavía no existe.
 
 ## 12. Accesorios y complementos opcionales
-- **Montajes adicionales aprobados** para una segunda posición o una superficie distinta, solo dentro de la matriz probada.
+- **Montajes adicionales especificados** para una segunda posición o una superficie distinta, sujetos a la evaluación de instalación y solo dentro de la matriz probada.
 - **Funda o cubierta de protección** para el transporte y el amarre.
 - **Extensión de alimentación o de datos** cuando la instalación documentada la requiera.
 - **MAREA HUB** para reunir equipos existentes en una interfaz local del barco, cuando la configuración sea compatible.
@@ -118,7 +118,7 @@ Antes de cualquier compra prevista, la revisión de instalación y compatibilida
 
 ## 14. Cómo funciona
 1. **Revisas el puesto de gobierno** y confirmas con un instalador el espacio, la superficie de montaje, la alimentación y las fuentes de datos disponibles.
-2. **Se instala la pantalla** con el montaje aprobado y la protección de alimentación documentada.
+2. **Se instala la pantalla** con la familia de montaje especificada, sujeta a la evaluación de instalación, y la protección de alimentación documentada.
 3. **Se conectan solo las fuentes documentadas** y se ejecuta la comprobación de instalación.
 4. **Arrancas la pantalla**: un arranque corto muestra la versión de software, el perfil del barco y las fuentes encontradas.
 5. **Creas o seleccionas el perfil del barco** y eliges el idioma y el modo de luz.
@@ -156,7 +156,7 @@ El soporte cubrirá el producto, la instalación y la puesta en marcha, la inter
 
 ## 19. Preguntas frecuentes
 **¿Qué incluye exactamente MAREA DISPLAY.**
-La pantalla, su montaje aprobado y los elementos de alimentación y datos documentados, el software base, el diagnóstico y la documentación. No incluye cartas, MAREA NAV, MAREA WEATHER, MAREA HUB, receptor AIS, sensores ni instalación.
+La pantalla, sus elementos de montaje especificados (familia de montaje sujeta a la evaluación de instalación; no existe aprobación ni certificación del montaje) y los elementos de alimentación y datos documentados, el software base, el diagnóstico y la documentación. No incluye cartas, MAREA NAV, MAREA WEATHER, MAREA HUB, receptor AIS, sensores ni instalación.
 
 **¿Qué tamaño tiene la pantalla.**
 No se publica ninguna medida. El tamaño no está congelado y el nombre comercial de la edición no es una especificación de pantalla. Cualquier medida se publicará solo cuando el hardware esté seleccionado y medido.

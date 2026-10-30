@@ -16,7 +16,7 @@ MAREA DISPLAY is defined as a dedicated marine display that brings navigation, o
 A helm with its own screen instead of a tablet in a case. MAREA DISPLAY is defined to present ordered information with the source and age of every value visible, with separate day, sunlight and night modes, and with an alarm hierarchy that does not depend on colour. The display presents; it does not steer, does not control the pilot and does not replace required equipment or official nautical charts.
 
 ## 6. Principal customer benefits
-- **A dedicated screen at the helm.** The product is defined as a fixed marine article with an approved mount, vessel power and its own operating environment, not as a consumer device in a cradle.
+- **A dedicated screen at the helm.** The product is defined as a fixed marine article with a specified mount family subject to the installation assessment, vessel power and its own operating environment, not as a consumer device in a cradle.
 - **Day, sunlight and night as separate experiences.** It is not one dimmer: each mode is defined for a specific light condition and keeps the alarm hierarchy intact.
 - **Every value with its source and age.** A stale or unknown value is shown as such; it is never presented as current.
 - **Base software included.** Local dashboards, instrument and received-traffic presentation, configuration, backup and updates during the warranty are part of the product, not of a subscription.
@@ -24,14 +24,14 @@ A helm with its own screen instead of a tablet in a case. MAREA DISPLAY is defin
 - **Bilingual.** Spanish (Spain) and English interfaces with identical capabilities and identical safety strings.
 
 ## 7. Product overview
-MAREA DISPLAY is the dedicated marine display of the MAREA family. It is defined as a complete article: panel, compute module, storage, enclosure, approved mounting, power conversion and protection, marine connectors and harness, a dedicated operating environment and the base software that presents navigation, instruments, received AIS traffic, licensed data layers and the approved status surfaces.
+MAREA DISPLAY is the dedicated marine display of the MAREA family. It is defined as a complete article: panel, compute module, storage, enclosure, specified mounting subject to the installation assessment, power conversion and protection, marine connectors and harness, a dedicated operating environment and the base software that presents navigation, instruments, received AIS traffic, licensed data layers and the approved status surfaces.
 
 It is the display; MAREA NAV is the navigation software and is contracted separately. Buying MAREA DISPLAY does not include MAREA NAV, charts, MAREA WEATHER, MAREA HUB or an AIS receiver. The display presents data from the compatible sources that exist and that have passed the compatibility review; it does not invent them.
 
 **Product status:** product definition complete (DEFINED), not available for purchase. The size and hardware are not frozen, no manufactured unit exists and no certification is claimed. This page describes the intended product; it is not a commercial offer and not a promise of availability.
 
 ## 8. Features and capabilities
-**A physical product with a dedicated environment.** The display is defined with a panel, a compute module, storage, an enclosure, an approved mount, power protection and marine connectors. The operating environment boots into the instrument interface, not into a general-purpose desktop. No component is selected yet and no measurement is published.
+**A physical product with a dedicated environment.** The display is defined with a panel, a compute module, storage, an enclosure, a specified mount family subject to the installation assessment, power protection and marine connectors. The operating environment boots into the instrument interface, not into a general-purpose desktop. No component is selected yet and no measurement is published.
 
 **Light modes.** A daylight mode for the helm, a sunlight mode for direct light and a low-luminance night mode that reduces glare and disables pulsing. All three keep the alarm hierarchy intact. No brightness, contrast or sunlight-legibility figure is claimed: none has been measured.
 
@@ -74,7 +74,7 @@ Neither edition includes charts, MAREA NAV, MAREA WEATHER, MAREA HUB, an AIS rec
 ## 11. Included items
 The intended product includes:
 - The display with its panel, compute module, storage, enclosure and bezel according to the final design.
-- The approved mount for the documented installation.
+- The specified mounting items for the documented installation (mount family subject to the installation assessment; no mount approval or certification exists).
 - The power cable and the conversion and protection item required by the documented installation.
 - The marine connectors and the harness required for the documented data inputs.
 - The dedicated operating environment and the base software: local dashboards, instrument and received-traffic presentation, navigation presentation, configuration, backup, diagnostics and updates during the warranty.
@@ -92,7 +92,7 @@ It does not include:
 The final item list depends on the bill of materials being frozen, which does not exist yet.
 
 ## 12. Optional accessories and add-ons
-- **Additional approved mounts** for a second position or a different surface, only within the tested matrix.
+- **Additional specified mounting items** for a second position or a different surface, only within the tested matrix.
 - **A protective cover** for transport and mooring.
 - **A power or data extension** where the documented installation requires one.
 - **MAREA HUB** to bring existing equipment into a local onboard interface, where the configuration is compatible.
@@ -118,7 +118,7 @@ Before any intended purchase, the installation and compatibility review of your 
 
 ## 14. How it works
 1. **You review the helm** and confirm with an installer the space, mounting surface, power and available data sources.
-2. **The display is installed** with the approved mount and the documented power protection.
+2. **The display is installed** with the specified mount family, subject to the installation assessment, and the documented power protection.
 3. **Only documented sources are connected** and the installation check is run.
 4. **You start the display:** a short boot shows the software version, the vessel profile and the sources found.
 5. **You create or select the vessel profile** and choose the language and light mode.
@@ -156,7 +156,7 @@ Support will cover the product, installation and commissioning, source and fresh
 
 ## 19. FAQ
 **What exactly does MAREA DISPLAY include.**
-The display, its approved mount and the documented power and data items, the base software, diagnostics and documentation. It does not include charts, MAREA NAV, MAREA WEATHER, MAREA HUB, an AIS receiver, sensors or installation.
+The display, its specified mounting items (mount family subject to the installation assessment; no mount approval or certification exists) and the documented power and data items, the base software, diagnostics and documentation. It does not include charts, MAREA NAV, MAREA WEATHER, MAREA HUB, an AIS receiver, sensors or installation.
 
 **What size is the screen.**
 No measurement is published. The size is not frozen and the edition's commercial name is not a screen specification. Any measurement will be published only once the hardware is selected and measured.

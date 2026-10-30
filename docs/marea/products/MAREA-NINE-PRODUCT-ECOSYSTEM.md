@@ -50,23 +50,23 @@ not a new governance layer.
 8. **WEATHER** — understandable, provenance-first marine forecasts with source, timestamps, coverage and limitations, usable standalone and shareable with NAV without paying twice.
 9. **FLEET** — one auditable organisation view of vessels, people, maintenance, documents, reporting and **read-only** telemetry. It is not a consumer monitoring clone, not a remote helm and not identical to the MAREA FLEET package.
 
-## 4. The ten mandatory distinctions
+## 4. The nine mandatory distinctions
 
 These are the most common customer misunderstandings and the most dangerous commercial shortcuts. Each is a design constraint, not a
-marketing nuance.
+marketing nuance. The entitlement-sharing rule (one ledger, never billed twice) is a commercial rule, not a market distinction; it is
+recorded in §6 and in decision D-013.
 
 | # | Distinction | What is true | What is never true |
 | ---: | --- | --- | --- |
 | 1 | **NAV is software; DISPLAY is hardware** | DISPLAY is a physical device with an operating environment and its own base software | Buying DISPLAY is not buying NAV Pro, not buying charts and not buying unlimited chart access |
 | 2 | **WEATHER is a separate data service** | WEATHER is valuable standalone; NAV can consume authorized WEATHER data | WEATHER does not become free with NAV, and NAV does not become a meteorological authority |
-| 3 | **NAV and WEATHER may share entitlements** | One account, one entitlement ledger, prorated upgrades, no double billing | The same entitlement is never billed twice; cancelling NAV never deletes user-owned WEATHER records |
-| 4 | **HUB is the integration layer** | HUB connects supported equipment and publishes a local interface | HUB is not a sensor and not a steering controller; a HUB alone measures nothing |
-| 5 | **AIS is receive-only hardware** | Reception of other vessels' transmissions, with stale-target states | AIS is not a transponder, not a collision-avoidance system and not a guarantee that every vessel is seen |
-| 6 | **SENSE measures; WATCH monitors remotely** | SENSE produces values; WATCH delivers remote alerts with connectivity and subscription | SENSE alone produces no remote alert; WATCH is not a substitute for a measurement |
-| 7 | **PILOT is separately validated supervised steering** | Local engagement, physical safety path, installer commissioning and training | No other product may command steering; there is no remote or cloud-to-actuator path anywhere |
-| 8 | **FLEET is an organisational SaaS** | Multi-tenant, role-scoped operations and audit for a business | FLEET is not "WATCH with more boats" and never controls a vessel |
-| 9 | **FLEET package ≠ FLEET SaaS product** | The package (MC-08) may combine SaaS, onboarding, devices, installation, WATCH, HUB, connectivity and support | A FLEET subscription never silently includes hardware, installation, connectivity or unlimited anything |
-| 10 | **DISPLAY ≠ NAV on a tablet** | Fixed installation, vessel power, mounting, dedicated operating environment, local dashboards | A tablet running NAV is not a DISPLAY, and a DISPLAY does not become NAV because it shows a chart when licensed |
+| 3 | **HUB is the integration layer** | HUB connects supported equipment and publishes a local interface | HUB is not a sensor and not a steering controller; a HUB alone measures nothing |
+| 4 | **AIS is receive-only hardware** | Reception of other vessels' transmissions, with stale-target states | AIS is not a transponder, not a collision-avoidance system and not a guarantee that every vessel is seen |
+| 5 | **SENSE measures; WATCH monitors remotely** | SENSE produces values; WATCH delivers remote alerts with connectivity and subscription | SENSE alone produces no remote alert; WATCH is not a substitute for a measurement |
+| 6 | **PILOT is separately validated supervised steering** | Local engagement, physical safety path, installer commissioning and training | No other product may command steering; there is no remote or cloud-to-actuator path anywhere |
+| 7 | **FLEET is an organisational SaaS** | Multi-tenant, role-scoped operations and audit for a business | FLEET is not "WATCH with more boats" and never controls a vessel |
+| 8 | **FLEET package ≠ FLEET SaaS product** | The package (MC-08) may combine SaaS, onboarding, devices, installation, WATCH, HUB, connectivity and support | A FLEET subscription never silently includes hardware, installation, connectivity or unlimited anything |
+| 9 | **DISPLAY ≠ NAV on a tablet** | Fixed installation, vessel power, mounting, dedicated operating environment, local dashboards | A tablet running NAV is not a DISPLAY, and a DISPLAY does not become NAV because it shows a chart when licensed |
 
 ## 5. Headline relationships of the three new families
 

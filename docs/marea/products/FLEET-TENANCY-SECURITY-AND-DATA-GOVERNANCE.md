@@ -9,7 +9,7 @@
 | Status | `INTERNAL_ONLY` / `TARGET_CONTRACT` / `NOT_IMPLEMENTED` / `NOT_FOR_SALE` / `NOT_PUBLISHED` |
 | Lifecycle state | `DEFINED` as a specification; the multi-tenant service it describes does not exist |
 | Date | 2026-10-30 |
-| Authority | `C:\Users\Admin\Documents\workspace\mc07-brief.md` §11 (frozen FLEET tenancy and role model) and `docs/marea/products/README.md` §3–§6, §16, §19; this contract may not introduce a role, state, tenant model or authority path that they do not define |
+| Authority | Programme brief (external to this repository, binding input; not a repository artefact) §11 — frozen FLEET tenancy and role model — and `docs/marea/products/README.md` §3–§6, §16, §19; this contract may not introduce a role, state, tenant model or authority path that they do not define |
 | Companion dossier | `docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md` (D3, FLEET product director) — authoritative on capability, editions, segments and commercial detail; this contract is authoritative on tenancy, authorization, audit and data governance |
 | Governing architecture | `docs/marea/compliance/MAREA-COMMERCIAL-ARCHITECTURE.md` §3 R-A1/R-A3/R-A7, §5.2 X-1/X-3/X-4/X-7, §6 C-1..C-17, §11 W-1..W-8, §13 MC-11A/MC-13-FLEET |
 | Governing claims policy | `docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md` §2, §4, §5 |

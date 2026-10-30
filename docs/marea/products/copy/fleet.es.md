@@ -212,6 +212,7 @@ Permite describir el número de barcos, el tipo de operación, los roles y las f
 - **Diseño interno, sin servicio desplegado:** no existe un servicio multiempresa en producción ni una certificación de seguridad, y no se garantiza ningún nivel de servicio.
 - **Sin control de la embarcación:** no existe ninguna ruta de mando, gobierno, timón, rumbo, motor o bus desde MAREA FLEET.
 - **Telemetría de solo lectura y condicional:** depende de una fuente compatible, de una autorización de la organización y de una conectividad que aún no está contratada. Un barco sin datos se muestra sin conexión y nunca como conectado.
+- **AIS de solo escucha:** cuando se muestra contexto AIS, la recepción es únicamente de escucha; no todos los buques emiten AIS y no constituye un sistema de evitación de colisiones ni un transpondedor.
 - **Avisos condicionales:** dependen de la alimentación, de la cobertura y del proveedor de notificaciones; no se garantiza la recepción inmediata.
 - **Sin certificación ni SLA:** no hay certificación de seguridad, ni de cumplimiento, ni aprobación de clasificación, ni compromiso de nivel de servicio.
 - **Límites explícitos:** no se promete un número ilimitado de embarcaciones, usuarios, almacenamiento, historial, llamadas de API, integraciones, soporte ni disponibilidad.
@@ -231,7 +232,10 @@ MAREA FLEET está pensado para el trabajo diario de una flota pequeña o mediana
 **Aviso de limitación de MAREA FLEET (ES, borrador interno pendiente de aprobación del registro de afirmaciones):**
 «MAREA FLEET es un diseño interno: no existe un servicio multiempresa desplegado ni una certificación de seguridad, y no se garantiza ningún nivel de servicio. La telemetría es de solo lectura y nunca permite gobernar la embarcación.»
 
+**Aviso de recepción AIS de solo escucha (ES, aplicable donde se muestre contexto AIS):**
+«La recepción AIS es únicamente de escucha: no todos los buques emiten AIS. No constituye un sistema de evitación de colisiones ni un transpondedor.»
+
 **Atribución de marca (ES):**
 «MAREA es una marca de producto de EMBARCARTE.»
 
-**Estado del documento:** DRAFT — INTERNAL ONLY — NOT PUBLISHED — PRODUCT DEFINITION COMPLETE, NOT FOR SALE — PRICES ARE HYPOTHESES, NOT APPROVED.
+**Estado del documento:** DRAFT - INTERNAL ONLY - NOT PUBLISHED - PRODUCT DEFINITION COMPLETE, NOT FOR SALE - PRICES ARE HYPOTHESES, NOT APPROVED.

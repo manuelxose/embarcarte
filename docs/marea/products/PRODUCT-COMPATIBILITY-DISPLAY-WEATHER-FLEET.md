@@ -8,7 +8,7 @@
 | Owner function | Security architecture and ecosystem compatibility author (AGENT D), with the DISPLAY, WEATHER and FLEET product owners and the integration owners of each family |
 | Status | `INTERNAL_ONLY` · `NOT_PUBLISHED` · `NOT_FOR_SALE` · products `DEFINED` |
 | Products covered | `DISPLAY` MAREA DISPLAY (DISPLAY-7, DISPLAY-LARGE-CONDITIONAL); `WEATHER` MAREA WEATHER (WEATHER-STANDARD, WEATHER-PRO); `FLEET` MAREA FLEET (FLEET-START, FLEET-BUSINESS, FLEET-ENTERPRISE) |
-| Governing contract | `C:\Users\Admin\Documents\workspace\mc07-brief.md` §9 (frozen integration baseline), §10 (WEATHER entitlement), §11 (FLEET tenancy), §12 (DISPLAY hardware boundary), §14 (claim restrictions), §17 (batch-03 claim rules); `docs/marea/products/README.md` §7, §16, §19, §21 |
+| Governing contract | Programme brief (external to this repository, binding input; not a repository artefact) §9 (frozen integration baseline), §10 (WEATHER entitlement), §11 (FLEET tenancy), §12 (DISPLAY hardware boundary), §14 (claim restrictions), §17 (batch-03 claim rules); `docs/marea/products/README.md` §7, §16, §19, §21 |
 | Binding inputs | `docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md` §6; `docs/marea/products/MAREA-WEATHER-COMMERCIAL-SPEC.md` F09 (governing on weather capability); `docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md` F09; `docs/marea/products/FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md` (tenancy, evidence and data-governance detail); `docs/marea/products/MAREA-PILOT-COMMERCIAL-SPEC.md`, `MAREA-SENSE-COMMERCIAL-SPEC.md`, `MAREA-WATCH-COMMERCIAL-SPEC.md`, `MAREA-NAV-COMMERCIAL-SPEC.md`, `MAREA-HUB-COMMERCIAL-SPEC.md`, `MAREA-AIS-COMMERCIAL-SPEC.md` |
 | Precedents | `docs/marea/products/PRODUCT-COMPATIBILITY-NAV-HUB-AIS.md` (batch-01 D5); `docs/marea/products/PRODUCT-COMPATIBILITY-PILOT-SENSE-WATCH.md` (batch-02 D5). This document extends both and never contradicts them; where a batch-01 or batch-02 row already governs a pair, that row governs and is referenced here, not restated |
 | Blocker register | `docs/marea/compliance/MC-02-BLOCKERS-AND-DECISIONS.md`: `D-01`, `D-04`, `D-05`, `D-06`, `D-07`, `D-09`, `D-10`, `H-01`, `H-04`, `H-05`, `H-08`, `H-11`, `H-12`, `P-02`, `P-03`, `P-06`, `P-07`, `P-08`, `P-09`, `P-10`, `X-01`, `X-05`, `X-07` |
@@ -121,7 +121,7 @@ Plus the device-test state used by the batch-01 register, reused unchanged: `NON
 audit evidence is `VERIFIED_REPO` evidence of *what was built*, never of *what works with a device*.
 
 Evidence for §1: `VERIFIED_REPO docs/marea/products/README.md` §5, §7, §16, §19, §21;
-`VERIFIED_REPO mc07-brief.md` §9.
+programme brief (external to this repository, binding; not a repository artefact) §9.
 
 ---
 
@@ -173,7 +173,7 @@ stays exactly as fixed. No extra column is added; commercial inclusion/exclusion
 `UNKNOWN` rows record that no assessment exists; `BLOCKED` records an external gate. **No row may be quoted to a
 customer as a compatibility statement**; only a `SUPPORTED` row may be, and none exists.
 
-Evidence for §2: `VERIFIED_REPO mc07-brief.md` §9; `VERIFIED_REPO docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md`
+Evidence for §2: programme brief (external to this repository, binding; not a repository artefact) §9; `VERIFIED_REPO docs/marea/products/MAREA-DISPLAY-COMMERCIAL-SPEC.md`
 §6; `VERIFIED_REPO docs/marea/products/MAREA-FLEET-COMMERCIAL-SPEC.md` F09;
 `VERIFIED_REPO docs/marea/products/PRODUCT-COMPATIBILITY-PILOT-SENSE-WATCH.md` rows `I-10`, `I-14`, `I-15`, `I-21`,
 `I-22`, `I-23`, `I-24`; `VERIFIED_REPO docs/marea/products/PRODUCT-COMPATIBILITY-NAV-HUB-AIS.md` registers A–C.
@@ -477,7 +477,7 @@ Related documents:
 - `docs/marea/compliance/MAREA-COMMERCIAL-ARCHITECTURE.md` — layers, prohibited connections, data boundaries.
 - `docs/marea/compliance/MC-02-BLOCKERS-AND-DECISIONS.md` — blocker register.
 - `docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md` — allowed, conditional and prohibited claims, required disclaimers.
-- `mc07-brief.md` — frozen batch-03 identity, editions, prices, readiness, blockers, entitlements, tenancy and integration baseline.
+- Programme brief (external to this repository, binding input) — frozen batch-03 identity, editions, prices, readiness, blockers, entitlements, tenancy and integration baseline.
 
 ---
 

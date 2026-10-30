@@ -644,3 +644,31 @@ from MC-06 HEAD. (d) Nothing here is available; the programme remains a definiti
 `docs/marea/products/MC-07-REVIEW.md`.
 
 **Status effect.** No lifecycle change, no blocker cleared, no price approved, no publication authorised.
+
+
+## D-017 — 2026-10-30 — Batch-03 machine contract: field/product/edition schema unchanged; meta-section delta is explicit
+
+**Context.** The batch-03 contract inherits the batch-02 field, product and edition schema exactly, but the batch-02
+meta sections were written for a hardware/alert batch (`dependencySemantics`, `notificationStates`,
+`notificationTimestamps`, `subscriptionIsolationRules`, `safetyGates`). A device/data/SaaS batch has no PILOT or
+WATCH alert state machine, so those sections do not apply, while publication gates, integration-status vocabulary,
+tenancy and entitlement models do.
+
+**Decision.** The batch-03 contract keeps the frozen field schema (24 keys × 3 products), field-entry schema,
+product-level schema, evidence classes, lifecycle, readiness dimensions, publication controls and the
+`batch01Contract`/`batch02Contract` links. It replaces the five non-applicable batch-02 meta sections with
+`publicationGates`, `integrationStatusVocabulary`, `tenancyModel` and `entitlementModel`. The delta is documented
+in README §30 and is not a new validation vocabulary: no field key, edition object or product identity changes.
+
+**Rationale.** Keeping an alert-state machine for products that do not alert would be a false claim; deleting the
+sections silently would be schema drift. Documenting the delta explicitly keeps the three contracts comparable where
+it matters (fields, products, editions, evidence, readiness) and honest where the product categories differ.
+
+**Consequences.** (a) A future batch that adds an alerting product must restore the alert sections; a batch that does
+not may inherit the batch-03 delta. (b) The validator enforces the field/product/edition schema, not the presence of
+non-applicable meta sections. (c) The reviewer treats any *undocumented* schema delta as a defect.
+
+**Evidence.** `docs/marea/products/product-definitions.batch-03.json`; `docs/marea/products/README.md` §30;
+`scripts/check-marea-products.mjs`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved.

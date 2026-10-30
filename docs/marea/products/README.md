@@ -652,8 +652,13 @@ disclaimers of `COMMERCIAL-BRAND-CLAIMS-POLICY.md` §9, which are quoted verbati
 
 ## 30. Batch-03 machine contract and validation
 
-- **Contract.** `product-definitions.batch-03.json` reuses the batch-02 schema: the same meta keys plus
-  `batch02Contract`; `publicationControls` with `published: false`, `forSale: false`, `purchaseCtaAllowed: false`,
+- **Contract.** `product-definitions.batch-03.json` inherits the batch-02 **field, product and edition schema
+  unchanged** (same 24 field keys, same field-entry keys, same product-level keys, same evidence classes) and adds
+  `batch02Contract`. The batch-02 meta sections written for a hardware/alert batch — `dependencySemantics`,
+  `notificationStates`, `notificationTimestamps`, `subscriptionIsolationRules` and `safetyGates` — do not apply to
+  a device/data/SaaS batch and are replaced by batch-03 sections (`publicationGates`, `integrationStatusVocabulary`,
+  `tenancyModel`, `entitlementModel`); this delta is explicit and recorded as decision D-017, not silent schema
+  drift. The contract keeps `publicationControls` with `published: false`, `forSale: false`, `purchaseCtaAllowed: false`,
   `pricesInCopyAllowed: false`, `pricesLabelled: "HYPOTHESIS_UNAPPROVED"`, `remoteSteeringAllowed: false`,
   `certificationClaimAllowed: false`; `lifecycleVocabulary`; `readinessDimensions`; `evidenceClasses`;
   `globalRestrictions`; `sourceDocuments`; `assets`; and `products[]` with the exact product-level keys of
