@@ -246,9 +246,9 @@ permission/pinning model.
 | --- | --- |
 | Base | `feature/i18n-commerce-seo` at `6e13d75` (M03 open, stacked) |
 | Branch | `feature/m04-production-hardening` |
-| Commits | `085447d` (implementation), `787ed44` (route reuse + login heading), `3ca11f3` (measurements/logs), `1830211` (independent-review fixes), plus this final documentation commit |
+| Commits | `085447d` (implementation), `787ed44` (route reuse + login heading), `3ca11f3` (measurements/logs), `1830211` (independent-review fixes), `aa52a3c` (delivery record), plus documentation-only follow-ups |
 | Pull request | https://github.com/manuelxose/embarcarte/pull/4 |
-| CI | `CI / Build, test and verify` green on `085447d` and `3ca11f3`; rerun on the final commit |
+| CI | `CI / Build, test and verify` **green** on `085447d`, `3ca11f3` and `aa52a3c`; code is unchanged by later documentation commits |
 | Merge | **not performed** |
 | Deploy | **not performed** |
 
