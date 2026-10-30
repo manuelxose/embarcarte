@@ -13,6 +13,8 @@
     "test:performance": "node scripts/check-performance.mjs",
     "test:brand": "node scripts/check-brand.mjs",
     "test:brand:unit": "node --test scripts/check-brand.test.mjs",
+    "test:products": "node scripts/check-marea-products.mjs",
+    "test:products:unit": "node --test scripts/check-marea-products.test.mjs",
     "format": "prettier --write e2e playwright.config.ts scripts/e2e-server.mjs scripts/backup.mjs scripts/restore.mjs scripts/check-backup.mjs scripts/check-performance.mjs scripts/check-seo.mjs",
     "format:check": "prettier --check e2e playwright.config.ts scripts/e2e-server.mjs scripts/backup.mjs scripts/restore.mjs scripts/check-backup.mjs scripts/check-performance.mjs scripts/check-seo.mjs",
     "watch": "ng build --watch --configuration development",
