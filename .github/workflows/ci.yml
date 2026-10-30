@@ -31,6 +31,8 @@ jobs:
       - run: npm run test:commerce
       - run: npm run test:seo
       - run: npm run test:backup
+      - run: npm run test:brand
+      - run: npm run test:brand:unit
       - name: Install Chromium for E2E
         run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
