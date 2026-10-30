@@ -1,0 +1,1109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MC-04 Territory B — BEARING INDEX (PROPOSED, internal)</title>
+    <style>
+      :root {
+        --ink: #12232e;
+        --paper: #f7f4ec;
+        --navy: #17365d;
+        --sea: #1776ad;
+        --line: #d7dcd8;
+        --dark: #0d1b26;
+        --mist: #f2f9fd;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #eceae3;
+        color: var(--ink);
+        font:
+          15px/1.5 'Segoe UI',
+          system-ui,
+          sans-serif;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 28px 24px 64px;
+      }
+      header {
+        border-bottom: 2px solid var(--navy);
+        padding-bottom: 14px;
+        margin-bottom: 24px;
+      }
+      h1 {
+        font-size: 22px;
+        line-height: 1.2;
+        margin: 0 0 6px;
+      }
+      h2 {
+        font-size: 16px;
+        margin: 34px 0 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--line);
+      }
+      h3 {
+        font-size: 13px;
+        margin: 18px 0 6px;
+        text-transform: none;
+        letter-spacing: 0.01em;
+        color: #3d4d59;
+      }
+      p,
+      li {
+        max-width: 88ch;
+      }
+      .meta {
+        font:
+          12px/1.5 ui-monospace,
+          Consolas,
+          monospace;
+        color: #54636f;
+      }
+      .tag {
+        display: inline-block;
+        border: 1px solid var(--navy);
+        color: var(--navy);
+        font:
+          600 11px/1 ui-monospace,
+          monospace;
+        padding: 5px 7px;
+        margin-right: 6px;
+        border-radius: 2px;
+      }
+      .tag.warn {
+        border-color: #a3471f;
+        color: #a3471f;
+      }
+      .panel {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        padding: 18px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        align-items: flex-end;
+      }
+      .cell {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+      }
+      .cell .cap {
+        font:
+          11px/1.4 ui-monospace,
+          monospace;
+        color: #54636f;
+      }
+      .sizes {
+        display: flex;
+        gap: 26px;
+        align-items: flex-end;
+        flex-wrap: wrap;
+      }
+      .darksurface {
+        background: var(--dark);
+        padding: 20px;
+        border: 1px solid #24333d;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 13px;
+      }
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 7px 9px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #e7e9e4;
+        font-weight: 600;
+      }
+      td.num {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      .misuse {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 14px;
+      }
+      .tile {
+        background: #fff;
+        border: 1px solid var(--line);
+        padding: 12px;
+      }
+      .tile .demo {
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: hidden;
+      }
+      .tile .why {
+        font:
+          11px/1.35 ui-monospace,
+          monospace;
+        color: #8a3a1c;
+        margin-top: 8px;
+      }
+      .note {
+        background: #fff;
+        border-left: 3px solid var(--sea);
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+      footer {
+        margin-top: 40px;
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+        font-size: 12px;
+        color: #54636f;
+      }
+      .gray {
+        filter: grayscale(1);
+      }
+      .engrave {
+        filter: grayscale(1) contrast(1.15);
+        background: #b9bdb6;
+        padding: 16px;
+        border: 1px solid #9aa09a;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        .wrap {
+          max-width: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div>
+          <span class="tag">PROPOSED</span><span class="tag">INTERNAL</span
+          ><span class="tag warn">NOT CLEARED</span>
+        </div>
+        <p class="meta">MC-04 · Visual identity · territory prototype · D-01/D-02 evidence</p>
+        <h1>Territory B — BEARING INDEX</h1>
+        <p class="meta">
+          Prototype proof sheet: construction, variants, 16/24/48/512 px optical comparison, 8 mm
+          simulated reduction, greyscale/engraving simulation and misuse. All artwork PROPOSED /
+          INTERNAL.
+        </p>
+      </header>
+      <h2>1. Construction drawing</h2>
+      <div class="panel">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 41 42.5"
+          width="640"
+          height="663.41"
+          role="img"
+          aria-labelledby="cgB-t cgB-d"
+          color="#12232e"
+        >
+          <title id="cgB-t">
+            Territory BEARING INDEX — construction drawing (PROPOSED, internal)
+          </title>
+          <desc id="cgB-d">
+            Construction grid, auxiliary geometry and geometry rules for the proposed BEARING INDEX
+            symbol. Internal prototype, not cleared, not adopted.
+          </desc>
+          <rect x="-4.5" y="-4.5" width="41" height="41" fill="#f7f4ec" />
+          <path
+            d="M0 0V32 M0 0H32 M1 0V32 M0 1H32 M2 0V32 M0 2H32 M3 0V32 M0 3H32 M4 0V32 M0 4H32 M5 0V32 M0 5H32 M6 0V32 M0 6H32 M7 0V32 M0 7H32 M8 0V32 M0 8H32 M9 0V32 M0 9H32 M10 0V32 M0 10H32 M11 0V32 M0 11H32 M12 0V32 M0 12H32 M13 0V32 M0 13H32 M14 0V32 M0 14H32 M15 0V32 M0 15H32 M16 0V32 M0 16H32 M17 0V32 M0 17H32 M18 0V32 M0 18H32 M19 0V32 M0 19H32 M20 0V32 M0 20H32 M21 0V32 M0 21H32 M22 0V32 M0 22H32 M23 0V32 M0 23H32 M24 0V32 M0 24H32 M25 0V32 M0 25H32 M26 0V32 M0 26H32 M27 0V32 M0 27H32 M28 0V32 M0 28H32 M29 0V32 M0 29H32 M30 0V32 M0 30H32 M31 0V32 M0 31H32 M32 0V32 M0 32H32"
+            stroke="#e2e6e3"
+            stroke-width="0.06"
+            fill="none"
+          />
+          <path
+            d="M0 0V32 M0 0H32 M4 0V32 M0 4H32 M8 0V32 M0 8H32 M12 0V32 M0 12H32 M16 0V32 M0 16H32 M20 0V32 M0 20H32 M24 0V32 M0 24H32 M28 0V32 M0 28H32 M32 0V32 M0 32H32"
+            stroke="#cdd4d0"
+            stroke-width="0.14"
+            fill="none"
+          />
+          <rect
+            x="0"
+            y="0"
+            width="32"
+            height="32"
+            fill="none"
+            stroke="#8a9aa3"
+            stroke-width="0.18"
+          />
+          <circle
+            cx="16"
+            cy="16"
+            r="13"
+            fill="none"
+            stroke="#1776ad"
+            stroke-width="0.12"
+            stroke-dasharray="0.6 0.5"
+          />
+          <circle
+            cx="16"
+            cy="16"
+            r="14.25"
+            fill="none"
+            stroke="#1776ad"
+            stroke-width="0.1"
+            stroke-dasharray="0.4 0.5"
+          />
+          <circle
+            cx="16"
+            cy="16"
+            r="11.75"
+            fill="none"
+            stroke="#1776ad"
+            stroke-width="0.1"
+            stroke-dasharray="0.4 0.5"
+          />
+          <path
+            d="M16 1V31M1 16H31"
+            stroke="#1776ad"
+            stroke-width="0.1"
+            stroke-dasharray="0.5 0.5"
+            fill="none"
+          />
+          <path
+            fill="currentColor"
+            d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+          />
+          <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+          <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+          <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+          <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+          <text
+            x="-3.9"
+            y="-3"
+            font-family="ui-monospace, Consolas, monospace"
+            font-size="1.15"
+            fill="#54636f"
+            text-anchor="start"
+            font-weight="600"
+          >
+            PROPOSED / INTERNAL — MC-04 construction
+          </text>
+          <text
+            x="-3.9"
+            y="-1.6"
+            font-family="ui-monospace, Consolas, monospace"
+            font-size="1.05"
+            fill="#54636f"
+            text-anchor="start"
+            font-weight="400"
+          >
+            BEARING INDEX — territory B — 32 × 32 construction grid
+          </text>
+          <text
+            x="-3.9"
+            y="33.4"
+            font-family="ui-monospace, Consolas, monospace"
+            font-size="1"
+            fill="#54636f"
+            text-anchor="start"
+            font-weight="400"
+          >
+            · 270° calibrated arc, stroke 2.5/32, r=13
+          </text>
+          <text
+            x="-3.9"
+            y="34.65"
+            font-family="ui-monospace, Consolas, monospace"
+            font-size="1"
+            fill="#54636f"
+            text-anchor="start"
+            font-weight="400"
+          >
+            · bearing index 3.5 wide, datum 3×3
+          </text>
+          <text
+            x="-3.9"
+            y="35.9"
+            font-family="ui-monospace, Consolas, monospace"
+            font-size="1"
+            fill="#54636f"
+            text-anchor="start"
+            font-weight="400"
+          >
+            · ticks 4.5 and 2 long (asymmetric)
+          </text>
+          <text
+            x="-3.9"
+            y="37.15"
+            font-family="ui-monospace, Consolas, monospace"
+            font-size="1"
+            fill="#54636f"
+            text-anchor="start"
+            font-weight="400"
+          >
+            · gap 90° at lower right — no closed ring
+          </text>
+          <text
+            x="-3.9"
+            y="38.8"
+            font-family="ui-monospace, Consolas, monospace"
+            font-size="0.95"
+            fill="#54636f"
+            text-anchor="start"
+            font-weight="400"
+          >
+            1 grid unit = 1/32 of the mark height. No letters in the symbol.
+          </text>
+        </svg>
+      </div>
+      <p class="meta">
+        Grid lines every 1 unit (light), every 4 units (heavy); blue dashed = auxiliary construction
+        geometry; the mark is drawn from the rules in the table below, not traced.
+      </p>
+
+      <h2>2. Geometry specification</h2>
+      <table>
+        <tbody>
+          <tr>
+            <th style="width: 28%">Grid</th>
+            <td>32 × 32 units; 1 unit = 1/32 mark height</td>
+          </tr>
+          <tr>
+            <th style="width: 28%">Primary structure</th>
+            <td>270° calibrated arc, open 90° at the lower right</td>
+          </tr>
+          <tr>
+            <th style="width: 28%">Stroke</th>
+            <td>2.5 units (arc band), constant</td>
+          </tr>
+          <tr>
+            <th style="width: 28%">Arc</th>
+            <td>r = 13, centre (16,16), from 90° to 360°</td>
+          </tr>
+          <tr>
+            <th style="width: 28%">Bearing index</th>
+            <td>3.5 wide × 15 long, at 0° (vertical), heavier than ticks</td>
+          </tr>
+          <tr>
+            <th style="width: 28%">Datum</th>
+            <td>3 × 3 filled square at the optical centre — square, never a circle-dot</td>
+          </tr>
+          <tr>
+            <th style="width: 28%">Ticks</th>
+            <td>radial, asymmetric: 4.5 long at 205°, 2 long at 315°</td>
+          </tr>
+          <tr>
+            <th style="width: 28%">16 px build</th>
+            <td>arc 2/16, index + datum + one tick retained</td>
+          </tr>
+          <tr>
+            <th style="width: 28%">Optical corrections</th>
+            <td>
+              index is 40% heavier than ticks; the 90° opening is kept ≥ 90° so the arc never closes
+              into a seal; ticks cross the arc rather than terminating on it
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>3. Variants</h2>
+      <div class="row">
+        <div class="cell">
+          <div class="panel">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              width="256"
+              height="256"
+              role="img"
+              aria-labelledby="vBmono-t vBmono-d"
+              color="#17365d"
+            >
+              <title id="vBmono-t">BEARING INDEX at 256px</title>
+              <desc id="vBmono-d">Prototype symbol proof (PROPOSED, internal).</desc>
+              <path
+                fill="currentColor"
+                d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+              />
+              <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+              <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+              <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+              <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+            </svg>
+          </div>
+          <span class="cap">monochrome, single ink (navy token)</span>
+        </div>
+        <div class="cell">
+          <div class="darksurface">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              width="256"
+              height="256"
+              role="img"
+              aria-labelledby="vBrev-t vBrev-d"
+              color="#f2f9fd"
+            >
+              <title id="vBrev-t">BEARING INDEX at 256px</title>
+              <desc id="vBrev-d">Prototype symbol proof (PROPOSED, internal).</desc>
+              <path
+                fill="currentColor"
+                d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+              />
+              <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+              <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+              <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+              <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+            </svg>
+          </div>
+          <span class="cap">reversed, light ink on dark substrate</span>
+        </div>
+        <div class="cell">
+          <div class="panel">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              width="256"
+              height="256"
+              role="img"
+              aria-labelledby="vBc-t vBc-d"
+              color="#17365d"
+            >
+              <title id="vBc-t">BEARING INDEX reduced at 256px</title>
+              <desc id="vBc-d">Prototype symbol proof (PROPOSED, internal).</desc>
+              <path
+                fill="currentColor"
+                d="M8 15.6A7.6 7.6 0 1 1 15.6 8L13.6 8A5.6 5.6 0 1 0 8 13.6Z"
+              />
+              <path fill="currentColor" d="M6.5 0.8 L9.5 0.8 L9.5 8 L6.5 8Z" />
+              <path fill="currentColor" d="M6.75 6.75 L9.25 6.75 L9.25 9.25 L6.75 9.25Z" />
+              <path fill="currentColor" d="M2.92 5.99 L0.85 4.79 L1.65 3.41 L3.72 4.61Z" />
+            </svg>
+          </div>
+          <span class="cap">compact (reduced) symbol</span>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 14px">
+        <div class="cell">
+          <div class="panel">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 704.15 200"
+              width="420"
+              height="119.29"
+              role="img"
+              aria-labelledby="vBlk-t vBlk-d"
+              color="#17365d"
+            >
+              <title id="vBlk-t">MAREA — proposed identifier (internal, not cleared)</title>
+              <desc id="vBlk-d">
+                Proposed MAREA lockup built from one construction system: territory B symbol +
+                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
+                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
+                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
+              </desc>
+              <g transform="translate(44.77 46.58) scale(3.4188)">
+                <path
+                  fill="currentColor"
+                  d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                />
+                <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+              </g>
+              <g transform="translate(223.19 50)">
+                <path
+                  fill="currentColor"
+                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <span class="cap">primary wordmark combination — symbol + outlined MAREA</span>
+        </div>
+        <div class="cell">
+          <div class="darksurface">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 704.15 200"
+              width="420"
+              height="119.29"
+              role="img"
+              aria-labelledby="vBlkr-t vBlkr-d"
+              color="#f2f9fd"
+            >
+              <title id="vBlkr-t">MAREA — proposed identifier (internal, not cleared)</title>
+              <desc id="vBlkr-d">
+                Proposed MAREA lockup built from one construction system: territory B symbol +
+                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
+                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
+                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
+              </desc>
+              <g transform="translate(44.77 46.58) scale(3.4188)">
+                <path
+                  fill="currentColor"
+                  d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                />
+                <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+              </g>
+              <g transform="translate(223.19 50)">
+                <path
+                  fill="currentColor"
+                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <span class="cap">reversed lockup</span>
+        </div>
+      </div>
+
+      <h2>4. Small-size ladder (optical comparison)</h2>
+      <div class="panel">
+        <div class="sizes">
+          <div class="cell">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              width="512"
+              height="512"
+              role="img"
+              aria-labelledby="sB512-t sB512-d"
+              color="#17365d"
+            >
+              <title id="sB512-t">BEARING INDEX at 512px</title>
+              <desc id="sB512-d">Prototype symbol proof (PROPOSED, internal).</desc>
+              <path
+                fill="currentColor"
+                d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+              />
+              <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+              <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+              <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+              <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" /></svg
+            ><span class="cap">512 px</span>
+          </div>
+          <div class="cell">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              width="48"
+              height="48"
+              role="img"
+              aria-labelledby="sB48-t sB48-d"
+              color="#17365d"
+            >
+              <title id="sB48-t">BEARING INDEX at 48px</title>
+              <desc id="sB48-d">Prototype symbol proof (PROPOSED, internal).</desc>
+              <path
+                fill="currentColor"
+                d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+              />
+              <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+              <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+              <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+              <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" /></svg
+            ><span class="cap">48 px</span>
+          </div>
+          <div class="cell">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              width="24"
+              height="24"
+              role="img"
+              aria-labelledby="sB24-t sB24-d"
+              color="#17365d"
+            >
+              <title id="sB24-t">BEARING INDEX at 24px</title>
+              <desc id="sB24-d">Prototype symbol proof (PROPOSED, internal).</desc>
+              <path
+                fill="currentColor"
+                d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+              />
+              <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+              <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+              <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+              <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" /></svg
+            ><span class="cap">24 px</span>
+          </div>
+          <div class="cell">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              width="16"
+              height="16"
+              role="img"
+              aria-labelledby="sB16-t sB16-d"
+              color="#17365d"
+            >
+              <title id="sB16-t">BEARING INDEX at 16px</title>
+              <desc id="sB16-d">Prototype symbol proof (PROPOSED, internal).</desc>
+              <path
+                fill="currentColor"
+                d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+              />
+              <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+              <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+              <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+              <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" /></svg
+            ><span class="cap">16 px</span>
+          </div>
+          <div class="cell">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 16 16"
+              width="30"
+              height="30"
+              role="img"
+              aria-labelledby="sBmm-t sBmm-d"
+              color="#17365d"
+            >
+              <title id="sBmm-t">BEARING INDEX reduced at 30px</title>
+              <desc id="sBmm-d">Prototype symbol proof (PROPOSED, internal).</desc>
+              <path
+                fill="currentColor"
+                d="M8 15.6A7.6 7.6 0 1 1 15.6 8L13.6 8A5.6 5.6 0 1 0 8 13.6Z"
+              />
+              <path fill="currentColor" d="M6.5 0.8 L9.5 0.8 L9.5 8 L6.5 8Z" />
+              <path fill="currentColor" d="M6.75 6.75 L9.25 6.75 L9.25 9.25 L6.75 9.25Z" />
+              <path fill="currentColor" d="M2.92 5.99 L0.85 4.79 L1.65 3.41 L3.72 4.61Z" /></svg
+            ><span class="cap">8 mm @96 dpi ≈30 px<br />(simulated reduction)</span>
+          </div>
+        </div>
+      </div>
+      <p class="meta">
+        Rendered at native size by the browser; inspect the 16 px and 24 px cells at 100% zoom. The
+        8 mm cell is a simulated pixel reduction of the same geometry (print simulation, not a
+        physical sample).
+      </p>
+
+      <h2>5. Greyscale and engraving simulation</h2>
+      <div class="row">
+        <div class="cell">
+          <div class="panel gray">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 704.15 200"
+              width="380"
+              height="107.93"
+              role="img"
+              aria-labelledby="gB-t gB-d"
+              color="#17365d"
+            >
+              <title id="gB-t">MAREA — proposed identifier (internal, not cleared)</title>
+              <desc id="gB-d">
+                Proposed MAREA lockup built from one construction system: territory B symbol +
+                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
+                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
+                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
+              </desc>
+              <g transform="translate(44.77 46.58) scale(3.4188)">
+                <path
+                  fill="currentColor"
+                  d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                />
+                <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+              </g>
+              <g transform="translate(223.19 50)">
+                <path
+                  fill="currentColor"
+                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <span class="cap">greyscale conversion (no colour information)</span>
+        </div>
+        <div class="cell">
+          <div class="engrave">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 704.15 200"
+              width="380"
+              height="107.93"
+              role="img"
+              aria-labelledby="eB-t eB-d"
+              color="#1a1a1a"
+            >
+              <title id="eB-t">MAREA — proposed identifier (internal, not cleared)</title>
+              <desc id="eB-d">
+                Proposed MAREA lockup built from one construction system: territory B symbol +
+                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
+                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
+                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
+              </desc>
+              <g transform="translate(44.77 46.58) scale(3.4188)">
+                <path
+                  fill="currentColor"
+                  d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                />
+                <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+              </g>
+              <g transform="translate(223.19 50)">
+                <path
+                  fill="currentColor"
+                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <span class="cap"
+            >SIMULATION — engraved/silkscreen appearance on matte grey, not a physical sample</span
+          >
+        </div>
+      </div>
+
+      <h2>6. Misuse examples (do not reproduce)</h2>
+      <div class="misuse">
+        <div class="tile">
+          <div class="demo" style="transform: scaleX(1.55); transform-origin: left center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 704.15 200"
+              width="132"
+              height="37.49"
+              role="img"
+              aria-labelledby="muB0-t muB0-d"
+              color="#17365d"
+            >
+              <title id="muB0-t">MAREA — proposed identifier (internal, not cleared)</title>
+              <desc id="muB0-d">
+                Proposed MAREA lockup built from one construction system: territory B symbol +
+                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
+                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
+                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
+              </desc>
+              <g transform="translate(44.77 46.58) scale(3.4188)">
+                <path
+                  fill="currentColor"
+                  d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                />
+                <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+              </g>
+              <g transform="translate(223.19 50)">
+                <path
+                  fill="currentColor"
+                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="why">
+            ✕ Stretched horizontally (1.55×) — distorts stroke weight and rhythm
+          </div>
+          <div class="meta">transform:scaleX(1.55)</div>
+        </div>
+        <div class="tile">
+          <div class="demo" style="transform: rotate(12deg)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 704.15 200"
+              width="132"
+              height="37.49"
+              role="img"
+              aria-labelledby="muB1-t muB1-d"
+              color="#17365d"
+            >
+              <title id="muB1-t">MAREA — proposed identifier (internal, not cleared)</title>
+              <desc id="muB1-d">
+                Proposed MAREA lockup built from one construction system: territory B symbol +
+                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
+                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
+                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
+              </desc>
+              <g transform="translate(44.77 46.58) scale(3.4188)">
+                <path
+                  fill="currentColor"
+                  d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                />
+                <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+              </g>
+              <g transform="translate(223.19 50)">
+                <path
+                  fill="currentColor"
+                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="why">
+            ✕ Rotated 12° — the symbol is axis-built; rotation breaks the baseline logic
+          </div>
+          <div class="meta">transform:rotate(12deg)</div>
+        </div>
+        <div class="tile">
+          <div class="demo" style="filter: invert(1)">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 704.15 200"
+              width="132"
+              height="37.49"
+              role="img"
+              aria-labelledby="muB2-t muB2-d"
+              color="#17365d"
+            >
+              <title id="muB2-t">MAREA — proposed identifier (internal, not cleared)</title>
+              <desc id="muB2-d">
+                Proposed MAREA lockup built from one construction system: territory B symbol +
+                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
+                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
+                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
+              </desc>
+              <g transform="translate(44.77 46.58) scale(3.4188)">
+                <path
+                  fill="currentColor"
+                  d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                />
+                <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+              </g>
+              <g transform="translate(223.19 50)">
+                <path
+                  fill="currentColor"
+                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="why">✕ Outlined / hollowed — not authored; destroys the single-ink mass</div>
+          <div class="meta">stroke only</div>
+        </div>
+        <div class="tile">
+          <div class="demo" style="color: #c0392b">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 704.15 200"
+              width="132"
+              height="37.49"
+              role="img"
+              aria-labelledby="muB3-t muB3-d"
+              color="#17365d"
+            >
+              <title id="muB3-t">MAREA — proposed identifier (internal, not cleared)</title>
+              <desc id="muB3-d">
+                Proposed MAREA lockup built from one construction system: territory B symbol +
+                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
+                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
+                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
+              </desc>
+              <g transform="translate(44.77 46.58) scale(3.4188)">
+                <path
+                  fill="currentColor"
+                  d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                />
+                <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+              </g>
+              <g transform="translate(223.19 50)">
+                <path
+                  fill="currentColor"
+                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="why">
+            ✕ Two-colour split — colour never carries identity; breaks monochrome/engraving
+          </div>
+          <div class="meta">two inks</div>
+        </div>
+        <div class="tile">
+          <div class="demo" style="opacity: 0.35">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 704.15 200"
+              width="132"
+              height="37.49"
+              role="img"
+              aria-labelledby="muB4-t muB4-d"
+              color="#17365d"
+            >
+              <title id="muB4-t">MAREA — proposed identifier (internal, not cleared)</title>
+              <desc id="muB4-d">
+                Proposed MAREA lockup built from one construction system: territory B symbol +
+                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
+                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
+                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
+              </desc>
+              <g transform="translate(44.77 46.58) scale(3.4188)">
+                <path
+                  fill="currentColor"
+                  d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                />
+                <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+              </g>
+              <g transform="translate(223.19 50)">
+                <path
+                  fill="currentColor"
+                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="why">
+            ✕ Low opacity on paper — falls below contrast and vanishes in sunlight
+          </div>
+          <div class="meta">opacity:.35</div>
+        </div>
+        <div class="tile">
+          <div class="demo" style="">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 704.15 200"
+              width="132"
+              height="37.49"
+              role="img"
+              aria-labelledby="muB5-t muB5-d"
+              color="#17365d"
+            >
+              <title id="muB5-t">MAREA — proposed identifier (internal, not cleared)</title>
+              <desc id="muB5-d">
+                Proposed MAREA lockup built from one construction system: territory B symbol +
+                outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit wordmark
+                cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap height clear space
+                is included in the viewBox. PROPOSED / INTERNAL artwork; no trademark clearance.
+              </desc>
+              <g transform="translate(44.77 46.58) scale(3.4188)">
+                <path
+                  fill="currentColor"
+                  d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                />
+                <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+              </g>
+              <g transform="translate(223.19 50)">
+                <path
+                  fill="currentColor"
+                  d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="why">✕ Crowded clear space — no breathing room; reads as a UI icon</div>
+          <div class="meta">0 gap</div>
+        </div>
+      </div>
+      <p class="note">
+        Misuse rules are enforced by the system rules in
+        <code>docs/marea/brand/IDENTITY-SYSTEM.md</code>: no stretching, rotation, outline,
+        multi-colour, transparency, effects, added letters inside the symbol, or reduced clear
+        space.
+      </p>
+
+      <h2>7. Test log (self-assessed, recorded honestly)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Test</th>
+            <th>Result for this territory</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>SVG parse + hygiene</td>
+            <td>
+              XML parse, no script/external ref/raster/@import/filter, viewBox present, byte budget
+              checked by <code>check.mjs</code>
+            </td>
+            <td>TESTED</td>
+          </tr>
+          <tr>
+            <td>16 px / 24 px optical</td>
+            <td>
+              index + datum + arc survive; the short tick closes up at 16 px and is dropped in the
+              compact build. STRUCTURED INTERNAL JUDGEMENT: at 16 px the arc can read as a "C" and
+              the hub as a centre dot — recorded as a risk against the §3.4 accidental-letter
+              criterion.
+            </td>
+            <td>TESTED (visual)</td>
+          </tr>
+          <tr>
+            <td>8 mm simulated reduction</td>
+            <td>
+              passes: the arc and index stay readable; the second tick is lost. Simulation only — no
+              physical engraving/silkscreen sample exists.
+            </td>
+            <td>TESTED (simulation only)</td>
+          </tr>
+          <tr>
+            <td>Monochrome / reversed</td>
+            <td>single ink, no opacity, no gradient; reversed ink is the existing --mist token</td>
+            <td>TESTED</td>
+          </tr>
+          <tr>
+            <td>Greyscale</td>
+            <td>no colour-only information in the mark itself</td>
+            <td>TESTED</td>
+          </tr>
+          <tr>
+            <td>Installed-equipment test (5-second sort)</td>
+            <td>
+              self-classification: “instrument dial” — strong, but seal/badge confusion is a real
+              risk. Independent reviewer sort NOT TESTED (G1 pending).
+            </td>
+            <td>NOT TESTED (independent)</td>
+          </tr>
+          <tr>
+            <td>Family extensibility</td>
+            <td>
+              gauge/tick vocabulary transfers to DISPLAY/PILOT; weak where no bearing semantics
+              exist (HUB/AIS/SENSE)
+            </td>
+            <td>ASSESSED (design judgement, not measured)</td>
+          </tr>
+          <tr>
+            <td>Originality / prior art</td>
+            <td>
+              No claim. A professional originality/prior-art check is PENDING (G3/B9); this
+              prototype is not cleared.
+            </td>
+            <td>BLOCKED</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer>
+        MC-04 · IdentityVector · generated by <code>territories/tools/build.mjs</code> from authored
+        geometry. PROPOSED internal artwork; MAREA is not cleared, not registered and not adopted.
+        No ® / ™ symbols; no certification or availability claim.
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MC-04 — territory comparison (PROPOSED, internal)</title>
+    <style>
+      :root {
+        --ink: #12232e;
+        --paper: #f7f4ec;
+        --navy: #17365d;
+        --sea: #1776ad;
+        --line: #d7dcd8;
+        --dark: #0d1b26;
+        --mist: #f2f9fd;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #eceae3;
+        color: var(--ink);
+        font:
+          15px/1.5 'Segoe UI',
+          system-ui,
+          sans-serif;
+      }
+      .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 28px 24px 64px;
+      }
+      header {
+        border-bottom: 2px solid var(--navy);
+        padding-bottom: 14px;
+        margin-bottom: 24px;
+      }
+      h1 {
+        font-size: 22px;
+        line-height: 1.2;
+        margin: 0 0 6px;
+      }
+      h2 {
+        font-size: 16px;
+        margin: 34px 0 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--line);
+      }
+      h3 {
+        font-size: 13px;
+        margin: 18px 0 6px;
+        text-transform: none;
+        letter-spacing: 0.01em;
+        color: #3d4d59;
+      }
+      p,
+      li {
+        max-width: 88ch;
+      }
+      .meta {
+        font:
+          12px/1.5 ui-monospace,
+          Consolas,
+          monospace;
+        color: #54636f;
+      }
+      .tag {
+        display: inline-block;
+        border: 1px solid var(--navy);
+        color: var(--navy);
+        font:
+          600 11px/1 ui-monospace,
+          monospace;
+        padding: 5px 7px;
+        margin-right: 6px;
+        border-radius: 2px;
+      }
+      .tag.warn {
+        border-color: #a3471f;
+        color: #a3471f;
+      }
+      .panel {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        padding: 18px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+        align-items: flex-end;
+      }
+      .cell {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+      }
+      .cell .cap {
+        font:
+          11px/1.4 ui-monospace,
+          monospace;
+        color: #54636f;
+      }
+      .sizes {
+        display: flex;
+        gap: 26px;
+        align-items: flex-end;
+        flex-wrap: wrap;
+      }
+      .darksurface {
+        background: var(--dark);
+        padding: 20px;
+        border: 1px solid #24333d;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        font-size: 13px;
+      }
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 7px 9px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #e7e9e4;
+        font-weight: 600;
+      }
+      td.num {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      .misuse {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 14px;
+      }
+      .tile {
+        background: #fff;
+        border: 1px solid var(--line);
+        padding: 12px;
+      }
+      .tile .demo {
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: hidden;
+      }
+      .tile .why {
+        font:
+          11px/1.35 ui-monospace,
+          monospace;
+        color: #8a3a1c;
+        margin-top: 8px;
+      }
+      .note {
+        background: #fff;
+        border-left: 3px solid var(--sea);
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+      footer {
+        margin-top: 40px;
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+        font-size: 12px;
+        color: #54636f;
+      }
+      .gray {
+        filter: grayscale(1);
+      }
+      .engrave {
+        filter: grayscale(1) contrast(1.15);
+        background: #b9bdb6;
+        padding: 16px;
+        border: 1px solid #9aa09a;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        .wrap {
+          max-width: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div>
+          <span class="tag">PROPOSED</span><span class="tag">INTERNAL</span
+          ><span class="tag warn">NOT CLEARED</span>
+        </div>
+        <p class="meta">MC-04 · Visual identity · territory evaluation · D-01 evidence</p>
+        <h1>Territory comparison — three construction-level prototypes</h1>
+        <p class="meta">
+          Side-by-side optical comparison used for the internal provisional shortlist. Weights and
+          scores are in TERRITORY-COMPARISON.md; the recommendation is subject to Lead acceptance
+          and a professional originality check (G3/B9 PENDING).
+        </p>
+      </header>
+      <h2>1. Optical comparison at native size</h2>
+      <div class="panel">
+        <table>
+          <thead>
+            <tr>
+              <th>Territory</th>
+              <th>96 px</th>
+              <th>48 px</th>
+              <th>24 px</th>
+              <th>16 px</th>
+              <th>Lockup (symbol + wordmark)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>A — ISOBATH</strong></td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="96"
+                  height="96"
+                  role="img"
+                  aria-labelledby="cmpA96-t cmpA96-d"
+                  color="#17365d"
+                >
+                  <title id="cmpA96-t">ISOBATH at 96px</title>
+                  <desc id="cmpA96-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <path
+                    fill="currentColor"
+                    d="M1.71 0.71A20.3 20.3 0 0 1 19.54 12.74L18.08 13.39A18.7 18.7 0 0 0 1.65 2.31Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M4.07 6.71A16.3 16.3 0 0 1 18.39 16.37L16.93 17.02A14.7 14.7 0 0 0 4.01 8.31Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M6.45 12.21A12.8 12.8 0 0 1 17.69 19.79L16.23 20.44A11.2 11.2 0 0 0 6.39 13.81Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M8.82 17.71A9.3 9.3 0 0 1 17 23.22L15.53 23.87A7.7 7.7 0 0 0 8.77 19.3Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M15.87 22.34 L23.2 22.34 L23.2 23.94 L15.87 23.94Z"
+                  />
+                  <path fill="currentColor" d="M13.6 15.2 L15 15.2 L15 16.6 L13.6 16.6Z" />
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="48"
+                  height="48"
+                  role="img"
+                  aria-labelledby="cmpA48-t cmpA48-d"
+                  color="#17365d"
+                >
+                  <title id="cmpA48-t">ISOBATH at 48px</title>
+                  <desc id="cmpA48-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <path
+                    fill="currentColor"
+                    d="M1.71 0.71A20.3 20.3 0 0 1 19.54 12.74L18.08 13.39A18.7 18.7 0 0 0 1.65 2.31Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M4.07 6.71A16.3 16.3 0 0 1 18.39 16.37L16.93 17.02A14.7 14.7 0 0 0 4.01 8.31Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M6.45 12.21A12.8 12.8 0 0 1 17.69 19.79L16.23 20.44A11.2 11.2 0 0 0 6.39 13.81Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M8.82 17.71A9.3 9.3 0 0 1 17 23.22L15.53 23.87A7.7 7.7 0 0 0 8.77 19.3Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M15.87 22.34 L23.2 22.34 L23.2 23.94 L15.87 23.94Z"
+                  />
+                  <path fill="currentColor" d="M13.6 15.2 L15 15.2 L15 16.6 L13.6 16.6Z" />
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  role="img"
+                  aria-labelledby="cmpA24-t cmpA24-d"
+                  color="#17365d"
+                >
+                  <title id="cmpA24-t">ISOBATH at 24px</title>
+                  <desc id="cmpA24-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <path
+                    fill="currentColor"
+                    d="M1.71 0.71A20.3 20.3 0 0 1 19.54 12.74L18.08 13.39A18.7 18.7 0 0 0 1.65 2.31Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M4.07 6.71A16.3 16.3 0 0 1 18.39 16.37L16.93 17.02A14.7 14.7 0 0 0 4.01 8.31Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M6.45 12.21A12.8 12.8 0 0 1 17.69 19.79L16.23 20.44A11.2 11.2 0 0 0 6.39 13.81Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M8.82 17.71A9.3 9.3 0 0 1 17 23.22L15.53 23.87A7.7 7.7 0 0 0 8.77 19.3Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M15.87 22.34 L23.2 22.34 L23.2 23.94 L15.87 23.94Z"
+                  />
+                  <path fill="currentColor" d="M13.6 15.2 L15 15.2 L15 16.6 L13.6 16.6Z" />
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  role="img"
+                  aria-labelledby="cmpA16-t cmpA16-d"
+                  color="#17365d"
+                >
+                  <title id="cmpA16-t">ISOBATH at 16px</title>
+                  <desc id="cmpA16-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <path
+                    fill="currentColor"
+                    d="M1.71 0.71A20.3 20.3 0 0 1 19.54 12.74L18.08 13.39A18.7 18.7 0 0 0 1.65 2.31Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M4.07 6.71A16.3 16.3 0 0 1 18.39 16.37L16.93 17.02A14.7 14.7 0 0 0 4.01 8.31Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M6.45 12.21A12.8 12.8 0 0 1 17.69 19.79L16.23 20.44A11.2 11.2 0 0 0 6.39 13.81Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M8.82 17.71A9.3 9.3 0 0 1 17 23.22L15.53 23.87A7.7 7.7 0 0 0 8.77 19.3Z"
+                  />
+                  <path
+                    fill="currentColor"
+                    d="M15.87 22.34 L23.2 22.34 L23.2 23.94 L15.87 23.94Z"
+                  />
+                  <path fill="currentColor" d="M13.6 15.2 L15 15.2 L15 16.6 L13.6 16.6Z" />
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 698.73 200"
+                  width="300"
+                  height="85.87"
+                  role="img"
+                  aria-labelledby="cmpAlk-t cmpAlk-d"
+                  color="#17365d"
+                >
+                  <title id="cmpAlk-t">MAREA — proposed identifier (internal, not cleared)</title>
+                  <desc id="cmpAlk-d">
+                    Proposed MAREA lockup built from one construction system: territory A symbol +
+                    outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit
+                    wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap
+                    height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no
+                    trademark clearance.
+                  </desc>
+                  <g transform="translate(42.9 46.94) scale(4.3048)">
+                    <path
+                      fill="currentColor"
+                      d="M1.71 0.71A20.3 20.3 0 0 1 19.54 12.74L18.08 13.39A18.7 18.7 0 0 0 1.65 2.31Z"
+                    />
+                    <path
+                      fill="currentColor"
+                      d="M4.07 6.71A16.3 16.3 0 0 1 18.39 16.37L16.93 17.02A14.7 14.7 0 0 0 4.01 8.31Z"
+                    />
+                    <path
+                      fill="currentColor"
+                      d="M6.45 12.21A12.8 12.8 0 0 1 17.69 19.79L16.23 20.44A11.2 11.2 0 0 0 6.39 13.81Z"
+                    />
+                    <path
+                      fill="currentColor"
+                      d="M8.82 17.71A9.3 9.3 0 0 1 17 23.22L15.53 23.87A7.7 7.7 0 0 0 8.77 19.3Z"
+                    />
+                    <path
+                      fill="currentColor"
+                      d="M15.87 22.34 L23.2 22.34 L23.2 23.94 L15.87 23.94Z"
+                    />
+                    <path fill="currentColor" d="M13.6 15.2 L15 15.2 L15 16.6 L13.6 16.6Z" />
+                  </g>
+                  <g transform="translate(217.77 50)">
+                    <path
+                      fill="currentColor"
+                      d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                    />
+                  </g>
+                </svg>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>B — BEARING INDEX</strong></td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  width="96"
+                  height="96"
+                  role="img"
+                  aria-labelledby="cmpB96-t cmpB96-d"
+                  color="#17365d"
+                >
+                  <title id="cmpB96-t">BEARING INDEX at 96px</title>
+                  <desc id="cmpB96-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <path
+                    fill="currentColor"
+                    d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                  />
+                  <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                  <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                  <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                  <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  width="48"
+                  height="48"
+                  role="img"
+                  aria-labelledby="cmpB48-t cmpB48-d"
+                  color="#17365d"
+                >
+                  <title id="cmpB48-t">BEARING INDEX at 48px</title>
+                  <desc id="cmpB48-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <path
+                    fill="currentColor"
+                    d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                  />
+                  <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                  <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                  <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                  <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  width="24"
+                  height="24"
+                  role="img"
+                  aria-labelledby="cmpB24-t cmpB24-d"
+                  color="#17365d"
+                >
+                  <title id="cmpB24-t">BEARING INDEX at 24px</title>
+                  <desc id="cmpB24-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <path
+                    fill="currentColor"
+                    d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                  />
+                  <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                  <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                  <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                  <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 32 32"
+                  width="16"
+                  height="16"
+                  role="img"
+                  aria-labelledby="cmpB16-t cmpB16-d"
+                  color="#17365d"
+                >
+                  <title id="cmpB16-t">BEARING INDEX at 16px</title>
+                  <desc id="cmpB16-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <path
+                    fill="currentColor"
+                    d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                  />
+                  <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                  <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                  <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                  <path fill="currentColor" d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z" />
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 704.15 200"
+                  width="300"
+                  height="85.21"
+                  role="img"
+                  aria-labelledby="cmpBlk-t cmpBlk-d"
+                  color="#17365d"
+                >
+                  <title id="cmpBlk-t">MAREA — proposed identifier (internal, not cleared)</title>
+                  <desc id="cmpBlk-d">
+                    Proposed MAREA lockup built from one construction system: territory B symbol +
+                    outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit
+                    wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap
+                    height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no
+                    trademark clearance.
+                  </desc>
+                  <g transform="translate(44.77 46.58) scale(3.4188)">
+                    <path
+                      fill="currentColor"
+                      d="M16 30.25A14.25 14.25 0 1 1 30.25 16L27.75 16A11.75 11.75 0 1 0 16 27.75Z"
+                    />
+                    <path fill="currentColor" d="M14.25 1 L17.75 1 L17.75 16 L14.25 16Z" />
+                    <path fill="currentColor" d="M14.5 14.5 L17.5 14.5 L17.5 17.5 L14.5 17.5Z" />
+                    <path fill="currentColor" d="M5.61 12.26 L1.53 10.36 L2.37 8.54 L6.45 10.44Z" />
+                    <path
+                      fill="currentColor"
+                      d="M23.78 6.81 L25.19 5.39 L26.61 6.81 L25.19 8.22Z"
+                    />
+                  </g>
+                  <g transform="translate(223.19 50)">
+                    <path
+                      fill="currentColor"
+                      d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                    />
+                  </g>
+                </svg>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>C — SIGNAL TRUNK</strong></td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="96"
+                  height="96"
+                  role="img"
+                  aria-labelledby="cmpC96-t cmpC96-d"
+                  color="#17365d"
+                >
+                  <title id="cmpC96-t">SIGNAL TRUNK at 96px</title>
+                  <desc id="cmpC96-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <g transform="translate(4.25 3)">
+                    <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
+                    <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
+                    <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
+                    <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
+                    <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
+                    <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
+                  </g>
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="48"
+                  height="48"
+                  role="img"
+                  aria-labelledby="cmpC48-t cmpC48-d"
+                  color="#17365d"
+                >
+                  <title id="cmpC48-t">SIGNAL TRUNK at 48px</title>
+                  <desc id="cmpC48-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <g transform="translate(4.25 3)">
+                    <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
+                    <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
+                    <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
+                    <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
+                    <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
+                    <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
+                  </g>
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="24"
+                  height="24"
+                  role="img"
+                  aria-labelledby="cmpC24-t cmpC24-d"
+                  color="#17365d"
+                >
+                  <title id="cmpC24-t">SIGNAL TRUNK at 24px</title>
+                  <desc id="cmpC24-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <g transform="translate(4.25 3)">
+                    <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
+                    <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
+                    <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
+                    <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
+                    <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
+                    <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
+                  </g>
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  height="16"
+                  role="img"
+                  aria-labelledby="cmpC16-t cmpC16-d"
+                  color="#17365d"
+                >
+                  <title id="cmpC16-t">SIGNAL TRUNK at 16px</title>
+                  <desc id="cmpC16-d">Prototype symbol proof (PROPOSED, internal).</desc>
+                  <g transform="translate(4.25 3)">
+                    <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
+                    <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
+                    <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
+                    <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
+                    <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
+                    <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
+                  </g>
+                </svg>
+              </td>
+              <td class="num">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 760.96 200"
+                  width="300"
+                  height="78.85"
+                  role="img"
+                  aria-labelledby="cmpClk-t cmpClk-d"
+                  color="#17365d"
+                >
+                  <title id="cmpClk-t">MAREA — proposed identifier (internal, not cleared)</title>
+                  <desc id="cmpClk-d">
+                    Proposed MAREA lockup built from one construction system: territory C symbol +
+                    outlined MAREA wordmark. Symbol ink above the baseline equals the 100-unit
+                    wordmark cap height; ink-to-ink symbol gap is 0.75 × cap height; 0.5 × cap
+                    height clear space is included in the viewBox. PROPOSED / INTERNAL artwork; no
+                    trademark clearance.
+                  </desc>
+                  <g transform="translate(50 10) scale(10)">
+                    <path fill="currentColor" d="M0 12 L15.5 12 L15.5 14 L0 14Z" />
+                    <path fill="currentColor" d="M1.5 10 L4 10 L4 12 L1.5 12Z" />
+                    <path fill="currentColor" d="M6.5 4 L7.9 4 L7.9 12 L6.5 12Z" />
+                    <path fill="currentColor" d="M9.1 4 L10.5 4 L10.5 12 L9.1 12Z" />
+                    <path fill="currentColor" d="M7.9 5.8 L9.1 5.8 L9.1 12 L7.9 12Z" />
+                    <path fill="currentColor" d="M12 6 L15 6 L15 12 L12 12Z" />
+                  </g>
+                  <g transform="translate(280 50)">
+                    <path
+                      fill="currentColor"
+                      d="M0 0 L16 0 L16 100 L0 100ZM66 0 L82 0 L82 100 L66 100ZM16.37 0 L42.9 86 L39.1 86 L65.63 0 L74 0 L81.64 2.36 L51.52 100 L30.48 100 L0.36 2.36 L8 0ZM98 97.77 L126.35 0 L150.89 0 L173.48 98.21 L165.68 100 L157.47 100 L136.31 8 L140.69 8 L114.01 100 L105.68 100ZM111.68 58 L159.68 58 L159.68 74 L111.68 74ZM189.48 0 L205.48 0 L205.48 100 L189.48 100ZM189.48 0 L249.48 0 L249.48 16 L189.48 16ZM233.48 16 L249.48 16 L249.48 52 L233.48 52ZM189.48 52 L249.48 52 L249.48 68 L189.48 68ZM233.48 68 L249.48 68 L257.48 100 L241.48 100ZM275.48 0 L291.48 0 L291.48 100 L275.48 100ZM275.48 0 L339.48 0 L339.48 16 L275.48 16ZM275.48 42 L325.48 42 L325.48 58 L275.48 58ZM275.48 84 L339.48 84 L339.48 100 L275.48 100ZM355.48 97.77 L383.83 0 L408.37 0 L430.96 98.21 L423.16 100 L414.95 100 L393.79 8 L398.17 8 L371.49 100 L363.16 100ZM369.16 58 L417.16 58 L417.16 74 L369.16 74Z"
+                    />
+                  </g>
+                </svg>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="meta">
+        The 16 px column is the deciding column: at 16 px the A construction loses its unequal
+        contour intervals and tends to read as radiating wave/signal arcs; B keeps a legible arc +
+        index but risks a "C" reading; C keeps a rail with two separable seated blocks.
+      </p>
+
+      <h2>2. Weighted score used for the shortlist</h2>
+      <pre class="meta">
+| Criterion | Weight | A | B | C |
+|---|---:|---:|---:|---:|
+| C1 Marine-instrument credibility | 20% | 4.0 | 4.5 | 2.5 |
+| C2 Distinctiveness potential (subject to professional check) | 20% | 2.0 | 2.5 | 3.5 |
+| C3 Small-size legibility | 15% | 2.5 | 3.5 | 4.0 |
+| C4 System extensibility | 15% | 4.0 | 3.0 | 5.0 |
+| C5 Colour/monochrome independence | 10% | 5.0 | 5.0 | 5.0 |
+| C6 Cultural and language fit | 10% | 5.0 | 4.0 | 3.0 |
+| C7 Manufacturing feasibility | 10% | 3.0 | 4.0 | 5.0 |
+| **Weighted (of 5)** | 100% | **3.55** | **3.68** | **3.85** |</pre>
+      <p class="meta">
+        Arithmetic is shown term by term in
+        <code>docs/marea/brand/TERRITORY-COMPARISON.md</code> §4. Scores are internal design
+        assessments, not measurements and not any statement about legal distinctiveness. C8
+        (legal/search effort) is not scored; it is a gate (G3/B9 PENDING).
+      </p>
+
+      <h2>3. Shortlist</h2>
+      <p>
+        <strong>C — SIGNAL TRUNK</strong> (PREFERRED_PROVISIONAL) and
+        <strong>B — BEARING INDEX</strong> are shortlisted as the two constructions to send to a
+        professional originality/prior-art check. <strong>A — ISOBATH</strong> is retained as the
+        documented rejected alternative: it is the most literally marine reading but it collapses at
+        16 px / 8 mm and reinforces the descriptiveness of the name.
+      </p>
+      <p class="note">
+        Status: INTERNAL_PROPOSED. No adoption, no clearance, no publication. The recommendation is
+        subject to Lead acceptance and to G3/B9, which only a professional check can close.
+      </p>
+
+      <h2>4. What this comparison does not prove</h2>
+      <ul>
+        <li>
+          No physical engraving, silkscreen or moulding sample was produced; the 8 mm result is a
+          simulated pixel reduction.
+        </li>
+        <li>
+          The 5-second sort classification is the designer's self-assessment; the independent
+          reviewer sort (G1) has not been run.
+        </li>
+        <li>
+          Scores do not measure legal distinctiveness; prior-art clearance is PENDING and cannot be
+          closed by an agent.
+        </li>
+        <li>No user research, cockpit test or salt-spray test exists for any territory.</li>
+      </ul>
+
+      <footer>
+        MC-04 · IdentityVector · generated by <code>territories/tools/build.mjs</code>. PROPOSED /
+        INTERNAL. MAREA is a proposed brand: no ®, no ™, no registration or availability claim.
+      </footer>
+    </div>
+  </body>
+</html>
