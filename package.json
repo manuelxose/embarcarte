@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test:commerce": "node scripts/check-commerce.mjs",
+    "test:i18n": "node scripts/check-i18n.mjs",
     "watch": "ng build --watch --configuration development",
     "serve:ssr": "node dist/embarcarte/server/server.mjs",
     "serve:ssr:watch": "node --watch-path=dist/embarcarte/server dist/embarcarte/server/server.mjs"

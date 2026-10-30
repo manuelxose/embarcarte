@@ -1,7 +1,10 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../core/auth.service';
 import { CartService } from '../core/cart.service';
+import { LOCALE_INFO } from '../core/i18n/locale.config';
+import { LocaleService } from '../core/i18n/locale.service';
+import { TranslationService } from '../core/i18n/translation.service';
 import { Brand } from './brand';
 
 @Component({
@@ -20,7 +23,7 @@ import { Brand } from './brand';
           <a class="nav-cta" [routerLink]="english() ? '/en/contact' : '/contacto'" (click)="open.set(false)">{{ english() ? 'Contact' : 'Hablemos' }} <span aria-hidden="true">↗</span></a>
         </nav>
         <div class="nav-icons">
-          <a class="icon-link" [routerLink]="english() ? '/' : '/en'" [attr.lang]="english() ? 'es' : 'en'" [attr.aria-label]="english() ? 'Español' : 'English'">{{ english() ? 'ES' : 'EN' }}</a>
+          <a class="icon-link" [routerLink]="languageSwitch().url" [attr.lang]="languageSwitch().lang" [attr.aria-label]="languageSwitch().label" [attr.title]="languageSwitch().label">{{ languageSwitch().text }}</a>
           <a class="icon-link" [routerLink]="auth.isAdmin() ? '/admin' : english() ? '/en/account' : '/cuenta'"
              [attr.aria-label]="english() ? (auth.user() ? 'My account' : 'Sign in') : (auth.user() ? 'Mi cuenta' : 'Acceder')" [title]="english() ? (auth.user() ? 'My account' : 'Sign in') : (auth.user() ? 'Mi cuenta' : 'Acceder')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
@@ -46,10 +49,21 @@ import { Brand } from './brand';
   `,
 })
 export class Header {
-  readonly english = input(false);
   protected readonly auth = inject(AuthService);
   protected readonly cart = inject(CartService);
   protected readonly open = signal(false);
+  private readonly locale = inject(LocaleService);
+  private readonly i18n = inject(TranslationService);
+  protected readonly english = computed(() => this.locale.locale() === 'en');
+  protected readonly languageSwitch = computed(() => {
+    const lang = this.locale.otherLocale();
+    return {
+      url: this.locale.switchUrl(),
+      lang,
+      label: this.i18n.t('a11y.switchLanguage', { language: LOCALE_INFO[lang].switchLabel }),
+      text: lang === 'es' ? 'ES' : 'EN',
+    };
+  });
   protected readonly links = [
     { path: '/tecnologia', label: 'Tecnología' },
     { path: '/tienda', label: 'Tienda' },

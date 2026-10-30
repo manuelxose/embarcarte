@@ -1,5 +1,8 @@
 import { DOCUMENT, Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { LOCALE_INFO } from './i18n/locale.config';
+import { DEFAULT_LOCALE } from './i18n/locale.types';
+import type { Locale } from './i18n/locale.types';
 import { SITE, absoluteUrl } from './site.config';
 
 export interface SeoData {
@@ -9,8 +12,8 @@ export interface SeoData {
   image?: string;
   type?: 'website' | 'article' | 'product';
   noindex?: boolean;
-  language?: 'es' | 'en';
-  alternates?: { language: 'es' | 'en'; path: string }[];
+  language?: Locale;
+  alternates?: { language: Locale; path: string }[];
   jsonLd?: Record<string, unknown>[];
 }
 
@@ -24,14 +27,15 @@ export class SeoService {
     const url = absoluteUrl(data.path);
     const image = SITE.url + (data.image ?? '/og-image.png');
     const fullTitle = data.path === '/' ? data.title : `${data.title} | ${SITE.name}`;
-    this.document.documentElement.lang = data.language ?? 'es';
+    const locale = LOCALE_INFO[data.language ?? DEFAULT_LOCALE];
+    this.document.documentElement.lang = locale.htmlLang;
 
     this.title.setTitle(fullTitle);
     this.tag('name', 'description', data.description);
     this.tag('name', 'robots', data.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large');
     this.tag('property', 'og:type', data.type === 'article' ? 'article' : 'website');
     this.tag('property', 'og:site_name', SITE.name);
-    this.tag('property', 'og:locale', data.language === 'en' ? 'en_GB' : SITE.locale);
+    this.tag('property', 'og:locale', locale.ogLocale);
     this.tag('property', 'og:title', fullTitle);
     this.tag('property', 'og:description', data.description);
     this.tag('property', 'og:url', url);
@@ -67,7 +71,7 @@ export class SeoService {
     for (const alternate of alternates) {
       const link = this.document.createElement('link');
       link.setAttribute('rel', 'alternate');
-      link.setAttribute('hreflang', alternate.language);
+      link.setAttribute('hreflang', LOCALE_INFO[alternate.language].htmlLang);
       link.setAttribute('href', absoluteUrl(alternate.path));
       link.setAttribute('data-seo', 'alternate');
       this.document.head.appendChild(link);
