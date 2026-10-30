@@ -103,7 +103,13 @@ export class Login {
       this.redirect(user.role);
     } catch (err) {
       const status = err instanceof HttpErrorResponse ? err.status : 0;
-      this.error.set(this.i18n.t(AUTH_ERRORS[status] ?? 'error.generic'));
+      const key =
+        status === 400
+          ? register
+            ? 'auth.invalidRegister'
+            : 'auth.invalidLogin'
+          : (AUTH_ERRORS[status] ?? 'error.generic');
+      this.error.set(this.i18n.t(key));
     } finally {
       this.sending.set(false);
     }

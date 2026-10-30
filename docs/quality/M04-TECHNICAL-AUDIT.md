@@ -14,7 +14,7 @@ only statically.
 | Angular/TypeScript source files | 85 (`src/**/*.ts,scss`) |
 | TypeScript lines | 7,243 |
 | Prerendered routes | 96 |
-| Build result | PASS, initial 474.07 kB raw / 132.80 kB transfer |
+| Build result | PASS, initial 474.33 kB raw / 132.83 kB transfer |
 | `tsc --noEmit --noUnusedLocals --noUnusedParameters` | PASS, no unused symbols |
 | Existing suites before M04 | `test:i18n` PASS, `test:commerce` PASS |
 | Runtime stack | Angular 21 standalone, SSR, Express 5, SQLite (`node:sqlite`) |
@@ -30,7 +30,7 @@ financial or user-visible correctness, Medium = operational/quality risk, Low = 
 
 | # | Severity | Finding | Evidence | Disposition |
 | --- | --- | --- | --- | --- |
-| 1 | High | Product detail hydration replaced the SSR subtree because the client signal started `null`; mobile CLS reached **1.318** and LCP **3.62 s** | Playwright layout-shift sources, `APP-SHOP-DETAIL` child replacement at 3.43 s / 3.66 s | **Fixed**: SSR product is transferred through `TransferState` and read synchronously in the component; final mobile CLS **0.00025**, LCP **0.496 s** |
+| 1 | High | Product detail hydration replaced the SSR subtree because the client signal started `null`; mobile CLS reached **1.318** and LCP **3.62 s** | Playwright layout-shift sources, `APP-SHOP-DETAIL` child replacement at 3.43 s / 3.66 s | **Fixed**: SSR product is transferred through `TransferState` and read synchronously in the component; final mobile CLS **0.00072**, LCP **0.408 s** |
 | 2 | High | Private `RenderMode.Client` routes returned the Spanish `index.csr.html` shell under `/en/...`, with no `noindex` on the initial response | Direct `GET /en/cart`, `/en/login`, `/en/account`, `/en/account/orders/1` | **Fixed**: server serves a localized CSR shell with `lang`, `X-Robots-Tag: noindex, nofollow`, `Cache-Control: no-store` |
 | 3 | High | No application-level CSP, HSTS, `X-Content-Type-Options`, `Referrer-Policy`, framing or permissions headers; only the reverse proxy set some of them | Response headers before M04 | **Fixed** in `src/server.ts`; reverse-proxy headers remain as defense in depth |
 | 4 | High | Changing a password did not invalidate other sessions of the account | Two live cookies remained valid after `PUT /api/account/password` | **Fixed**: `revokeOtherSessions()` removes all sessions except the current one; asserted |
@@ -45,6 +45,13 @@ financial or user-visible correctness, Medium = operational/quality risk, Low = 
 | 13 | Low | At 360 px the header overflowed by 8–9 px | `documentElement.scrollWidth = 369` at `innerWidth = 360` | **Fixed**: compact header rules at ≤480 px; all tested pages now equal the viewport width |
 | 14 | Low | Mobile menu could not be closed with `Escape` | Keyboard test | **Fixed**: `keydown.escape` closes the disclosure; focus stays on the toggle |
 | 15 | Low | M03 had no validation workflow, SEO crawl gate, browser regression suite or backup test | Only `Build & deploy` existed | **Fixed**: `ci.yml`; `test:seo`, `test:e2e`, `test:backup`; deploy workflow now runs the same gates |
+| 16 | High | Two concurrent admin cancellations could both read `pendiente` and restore stock twice | Status read was outside `transaction()` | **Fixed**: read, stock change and update inside one `BEGIN IMMEDIATE`; concurrent-cancel regression added |
+| 17 | High | A Stripe Checkout creation failure left the order pending with stock reserved and no session to expire | `createCheckoutSession` catch returned 201 | **Fixed**: cancel and restore stock, then 502; the browser keeps the basket and can retry |
+| 18 | Medium | `ensureAdmin` overwrote the admin password on every boot, reverting a password change and not revoking old sessions | `ensureAdmin` hashed and updated unconditionally | **Fixed**: password only on creation; `ADMIN_PASSWORD_RESET=true` explicitly rotates and clears sessions |
+| 19 | Medium | A stale product response could render product A under URL B; any 5xx became a 404 and de-indexed a valid product | No response guard; all errors set `notFound`/404 | **Fixed**: response slug guard; only HTTP 404 sets `notFound`, other errors show a retryable error |
+| 20 | Medium | Deploy build omitted the format and dependency-audit gates, and the workflow could overwrite Caddy/nginx without testing the proxy | `deploy.yml` | **Fixed**: both gates added; public proxy smoke test and failure rollback step added |
+| 21 | Medium | Backup gate used a fixed port and verified only that an `uploads` directory existed | `check-backup.mjs` | **Fixed**: dynamic free port, child error/exit checks, per-file sha256/size verification |
+| 22 | High | Deploy SSH steps did not pin the host fingerprint and the token was interpolated into the remote script | `deploy.yml` | **Fixed**: `CONTABO_HOST_FINGERPRINT` required on all SSH/SCP steps; token passed via `envs` |
 
 No Circular imports were introduced. The build's import graph remains
 `core → {core,i18n}`, `features/layout → core/shared`, and `i18n → core/i18n` only.

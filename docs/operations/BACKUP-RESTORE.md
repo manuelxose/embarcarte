@@ -104,6 +104,7 @@ restore can be completed inside the production maintenance window.
 | Metric | Assumption | Status |
 | --- | --- | --- |
 | RPO | 24 hours if the operator runs one backup per day; 0 since last manual backup otherwise | **Not enforced**; no timer configured |
+| Backup gate | `npm run test:backup` uses a temporary DB, a dynamic port and verifies every restored upload by size and SHA-256 | **PASS** in isolation |
 | RTO (application) | 30–60 minutes: rebuild/pull the pinned image, restore the volume, smoke test | **Estimated**, not exercised on production |
 | RTO (full host) | Several hours: provision host, DNS/TLS, secrets, volume restore | **Unverified**; depends on the provider |
 | Backup retention | Operator decision; keep at least 7 daily and 4 weekly | **Not configured** |

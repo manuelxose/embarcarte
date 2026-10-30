@@ -22,8 +22,10 @@ has been penetration-tested or that production infrastructure is secure.
 | S6 | Medium (open) | Rate limiting is per-process memory | `Map` in `src/server/api.ts` | Pruned every 10 minutes; sufficient for one container | Code review; no multi-replica claim |
 | S7 | Low (accepted) | Registration reveals whether an email exists (`409 email_taken`) | `/api/auth/register` | Rate-limited; explicit UX trade-off. Login timing no longer reveals existence | Dummy scrypt hash makes the unknown-email path do the same work |
 | S8 | Low (accepted) | CSRF relies on `Origin` (when present) plus `SameSite=Lax` | API middleware | No token store; cross-site form posts are blocked by SameSite; JSON APIs are not simple requests | Code review; no token claim |
-| S9 | Low (open) | A Stripe session-creation failure leaves a pending order with reserved stock | `createCheckoutSession` catch returns `paymentError` | Admin cancellation restores stock; no automatic reconciliation job | Documented in operations; not tested against a live Stripe outage |
+| S9 | Low (fixed) | A Stripe session-creation failure left a pending order with reserved stock | `createCheckoutSession` catch returned `paymentError` with status 201 | The order is cancelled and stock restored in the same transaction before returning 502; the customer can retry | Code review; live Stripe outage not simulated |
 | S10 | Low (fixed) | Mail fallback logged full customer/order bodies without SMTP | `sendMail` console output | Masked recipient + subject only | Code review; test output no longer contains order text |
+| S11 | Medium (fixed) | `ensureAdmin` re-hashed and overwrote the admin password on every boot, silently reverting a password change and not revoking sessions | `auth.ts` old `ensureAdmin` | Password is set on first creation only; `ADMIN_PASSWORD_RESET=true` explicitly rotates it and deletes the admin's sessions | Code review; env example/runbook updated |
+| S12 | High (fixed) | Two concurrent admin cancellations could both see `pendiente` and restore stock twice | `SELECT` was outside `transaction()` | The status read, stock change and update are inside one `BEGIN IMMEDIATE` transaction; concurrency regression added | `test:commerce` concurrent cancel asserts stock restored once |
 
 ## 3. Authentication and session review
 
@@ -113,7 +115,7 @@ manual reconciliation step.
 | --- | --- |
 | Strict CSP without inline exceptions | **Open Medium**, requires nonce/hash build work |
 | Distributed rate limiting | **Not applicable to one container**; required before scaling |
-| Stripe outage reconciliation | **Open Low**, manual procedure |
+| Stripe outage reconciliation | **Mitigated**: session-creation failure cancels the order and restores stock; manual reconciliation still needed for a provider outage after order creation |
 | External alerting / paging | **Not configured**; logs and probes only |
 | Branch protection / production approval | **Not configured** on GitHub (verified 404 / no protection rules) |
 | Production backup and restore | **Not verified** against production; only isolated restore tested |

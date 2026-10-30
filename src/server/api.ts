@@ -335,8 +335,16 @@ api.post('/orders', requireUser, rateLimit('orders', 20), async (req, res) => {
       res.status(201).json({ id: orderId, checkoutUrl: session.url });
       return;
     } catch (err) {
-      console.error('[orders] error creando la sesión de Stripe', err);
-      res.status(201).json({ id: orderId, paymentError: true });
+      const message = err instanceof Error ? err.message : 'unknown error';
+      console.error(JSON.stringify({ level: 'error', event: 'stripe_checkout_error', message }));
+      // Sin sesión de Stripe no hay webhook de expiración: se libera la reserva
+      // de stock y se pide al cliente que lo intente de nuevo.
+      try {
+        cancelPendingOrder(orderId);
+      } catch {
+        console.error(JSON.stringify({ level: 'error', event: 'order_cancel_after_payment_error', order_id: orderId }));
+      }
+      res.status(502).json({ error: 'payment_unavailable' });
       return;
     }
   }
@@ -560,28 +568,44 @@ admin.put('/orders/:id', (req, res) => {
     res.status(400).json({ error: 'invalid' });
     return;
   }
-  const current = db.prepare('SELECT status FROM orders WHERE id = ?').get(id) as { status: string } | undefined;
-  if (!current) {
-    res.status(404).json({ error: 'not_found' });
-    return;
-  }
-  try { transaction(() => {
-    // Al cancelar se repone el stock; al reactivar un pedido cancelado se vuelve a descontar.
-    const delta = status === 'cancelado' && current.status !== 'cancelado' ? 1 : current.status === 'cancelado' && status !== 'cancelado' ? -1 : 0;
-    if (delta) {
-      for (const item of db.prepare('SELECT product_id, qty FROM order_items WHERE order_id = ?').all(id) as {
-        product_id: number | null;
-        qty: number;
-      }[]) {
-        if (item.product_id) {
-          const change = db.prepare('UPDATE products SET stock = stock + ? WHERE id = ? AND stock + ? >= 0').run(delta * item.qty, item.product_id, delta * item.qty);
-          if (delta < 0 && !change.changes) throw new OrderError('out_of_stock');
+  try {
+    const found = transaction(() => {
+      // La lectura debe estar dentro de la transacción: dos cancelaciones
+      // concurrentes no pueden ver ambas el estado anterior y reponer dos veces.
+      const current = db.prepare('SELECT status FROM orders WHERE id = ?').get(id) as { status: string } | undefined;
+      if (!current) return false;
+      // Al cancelar se repone el stock; al reactivar un pedido cancelado se vuelve a descontar.
+      const delta =
+        status === 'cancelado' && current.status !== 'cancelado'
+          ? 1
+          : current.status === 'cancelado' && status !== 'cancelado'
+            ? -1
+            : 0;
+      if (delta) {
+        for (const item of db.prepare('SELECT product_id, qty FROM order_items WHERE order_id = ?').all(id) as {
+          product_id: number | null;
+          qty: number;
+        }[]) {
+          if (item.product_id) {
+            const change = db
+              .prepare('UPDATE products SET stock = stock + ? WHERE id = ? AND stock + ? >= 0')
+              .run(delta * item.qty, item.product_id, delta * item.qty);
+            if (delta < 0 && !change.changes) throw new OrderError('out_of_stock');
+          }
         }
       }
+      db.prepare("UPDATE orders SET status = ?, updated_at = datetime('now') WHERE id = ?").run(status, id);
+      return true;
+    });
+    if (!found) {
+      res.status(404).json({ error: 'not_found' });
+      return;
     }
-    db.prepare("UPDATE orders SET status = ?, updated_at = datetime('now') WHERE id = ?").run(status, id);
-  }); } catch (err) {
-    if (err instanceof OrderError) { res.status(409).json({ error: err.message }); return; }
+  } catch (err) {
+    if (err instanceof OrderError) {
+      res.status(409).json({ error: err.message });
+      return;
+    }
     throw err;
   }
   res.json(orderWithItems(id));

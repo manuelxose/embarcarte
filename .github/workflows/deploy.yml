@@ -28,6 +28,7 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - run: npm run format:check
       - run: npm run build
       - run: npm run test:i18n
       - run: npm run test:commerce
@@ -36,6 +37,8 @@ jobs:
       - name: Install Chromium for E2E
         run: npx playwright install --with-deps chromium
       - run: npm run test:e2e
+      - name: Dependency audit (production dependencies)
+        run: npm audit --omit=dev --audit-level=high
 
       - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3
       - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
@@ -70,34 +73,43 @@ jobs:
           host: ${{ secrets.CONTABO_HOST }}
           username: deploy
           key: ${{ secrets.CONTABO_SSH_KEY }}
+          fingerprint: ${{ secrets.CONTABO_HOST_FINGERPRINT }}
           script: |
             set -e
+            cd /opt/embarcarte
             stamp=$(date +%Y%m%d%H%M%S)
-            for file in /opt/embarcarte/docker-compose.yml /opt/embarcarte/Caddyfile /opt/embarcarte/nginx/*.conf; do
+            for file in docker-compose.yml Caddyfile nginx/*.conf; do
               [ ! -f "$file" ] || cp -p "$file" "$file.bak-$stamp"
             done
+            container=$(docker compose ps -q web 2>/dev/null || true)
+            [ -z "$container" ] || docker inspect --format '{{.Config.Image}}' "$container" > .previous-web-image
       - name: Copiar configuración al servidor
         uses: appleboy/scp-action@917f8b81dfc1ccd331fef9e2d61bdc6c8be94634 # v0.1.7
         with:
           host: ${{ secrets.CONTABO_HOST }}
           username: deploy
           key: ${{ secrets.CONTABO_SSH_KEY }}
+          fingerprint: ${{ secrets.CONTABO_HOST_FINGERPRINT }}
           source: deploy/docker-compose.yml,deploy/Caddyfile,deploy/nginx
           target: /opt/embarcarte
           strip_components: 1
       - name: Desplegar
         uses: appleboy/ssh-action@7eaf76671a0d7eec5d98ee897acda4f968735a17 # v1.2.0
+        env:
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           host: ${{ secrets.CONTABO_HOST }}
           username: deploy
           key: ${{ secrets.CONTABO_SSH_KEY }}
+          fingerprint: ${{ secrets.CONTABO_HOST_FINGERPRINT }}
+          envs: GHCR_TOKEN
           script: |
             set -e
             cd /opt/embarcarte
             test -f .env
             export DOCKER_CONFIG=$(mktemp -d)
             trap 'rm -rf "$DOCKER_CONFIG"' EXIT
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+            echo "$GHCR_TOKEN" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             export WEB_IMAGE=${{ env.IMAGE }}:${{ github.sha }}
             docker compose pull
             docker compose up -d --remove-orphans
@@ -108,3 +120,32 @@ jobs:
             docker compose exec -T web wget -qO /dev/null http://127.0.0.1:4000/en/shop
             docker compose exec -T web wget -qO /dev/null http://127.0.0.1:4000/sitemap.xml
             docker compose ps
+      - name: Smoke test público a través de Caddy/nginx
+        run: |
+          set -e
+          for path in healthz readyz en/shop sitemap.xml; do
+            curl -fsS --retry 3 --retry-delay 2 "https://embarcarte.com/$path" > /dev/null
+          done
+      - name: Restaurar configuración e imagen anterior si falla el smoke
+        if: failure()
+        uses: appleboy/ssh-action@7eaf76671a0d7eec5d98ee897acda4f968735a17 # v1.2.0
+        with:
+          host: ${{ secrets.CONTABO_HOST }}
+          username: deploy
+          key: ${{ secrets.CONTABO_SSH_KEY }}
+          fingerprint: ${{ secrets.CONTABO_HOST_FINGERPRINT }}
+          script: |
+            set -e
+            cd /opt/embarcarte
+            for file in docker-compose.yml Caddyfile nginx/*.conf; do
+              [ ! -f "$file" ] && continue
+              latest=$(ls -t "$file".bak-* 2>/dev/null | head -n 1 || true)
+              [ -z "$latest" ] || cp -p "$latest" "$file"
+            done
+            if [ -f .previous-web-image ]; then
+              export WEB_IMAGE=$(cat .previous-web-image)
+              docker compose pull || true
+            fi
+            docker compose up -d --remove-orphans
+            sleep 8
+            docker compose exec -T web wget -qO- http://127.0.0.1:4000/readyz

@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { cp, mkdtemp, readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { createServer } from 'node:net';
 import { tmpdir } from 'node:os';
 import { join, resolve, sep } from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
@@ -18,8 +20,18 @@ const backup = join(temp, 'backup');
 const restored = join(temp, 'restored');
 const tampered = join(temp, 'tampered');
 const badTarget = join(temp, 'bad-target');
-const port = 4322;
+const freePort = () =>
+  new Promise((resolvePort, reject) => {
+    const probe = createServer();
+    probe.once('error', reject);
+    probe.listen(0, '127.0.0.1', () => {
+      const assigned = probe.address().port;
+      probe.close(() => resolvePort(assigned));
+    });
+  });
+const port = await freePort();
 const base = `http://127.0.0.1:${port}`;
+let serverError;
 
 const server = spawn(process.execPath, [join(root, 'dist/embarcarte/server/server.mjs')], {
   env: {
@@ -33,6 +45,9 @@ const server = spawn(process.execPath, [join(root, 'dist/embarcarte/server/serve
     SMTP_HOST: '',
   },
   stdio: ['ignore', 'ignore', 'inherit'],
+});
+server.once('error', (error) => {
+  serverError = error;
 });
 
 const run = (command, args, { expectZero = true } = {}) =>
@@ -65,6 +80,8 @@ const request = async (path, { cookie, body, method = body ? 'POST' : 'GET' } = 
 try {
   let ready = false;
   for (let i = 0; i < 100; i++) {
+    if (serverError) throw serverError;
+    if (server.exitCode !== null) throw new Error(`server exited with ${server.exitCode}`);
     try {
       if ((await fetch(base + '/healthz')).ok) {
         ready = true;
@@ -152,6 +169,16 @@ try {
   assert.equal(verification.foreign_key_violations, 0);
   assert.deepEqual(verification.counts, manifest.database.counts);
   assert.ok((await stat(join(restored, 'uploads'))).isDirectory());
+  for (const file of manifest.uploads) {
+    const restoredFile = join(restored, file.path);
+    const bytes = await readFile(restoredFile);
+    assert.equal((await stat(restoredFile)).size, file.bytes, `${file.path} size`);
+    assert.equal(
+      createHash('sha256').update(bytes).digest('hex'),
+      file.sha256,
+      `${file.path} checksum`,
+    );
+  }
 
   const restoredDb = new DatabaseSync(join(restored, 'embarcarte.sqlite'), { readOnly: true });
   assert.equal(restoredDb.prepare('PRAGMA integrity_check').get().integrity_check, 'ok');

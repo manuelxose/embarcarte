@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { isPlatformServer } from '@angular/common';
 import {
   Component,
@@ -75,6 +75,8 @@ const summarize = (text: string, max = 158): string =>
           <p class="lead"><a class="text-link" [routerLink]="locale.url('shop')">{{ i18n.t('shopDetail.backToShop') }} →</a></p>
         </div>
       </section>
+    } @else if (error()) {
+      <p class="empty">{{ i18n.t('error.generic') }}</p>
     } @else {
       <p class="empty">{{ i18n.t('common.loading') }}</p>
     }
@@ -99,6 +101,7 @@ export class ShopDetail {
     this.transferState.get(this.stateKeyFor(this.initialSlug), null),
   );
   protected readonly notFound = signal(false);
+  protected readonly error = signal(false);
   protected readonly qty = signal(1);
   protected readonly added = signal(false);
   protected readonly Math = Math;
@@ -133,7 +136,7 @@ export class ShopDetail {
         params: { slug: product.slug },
         title: `${text.name} — ${this.i18n.t('shop.eyebrow')}`,
         description: summarize(text.summary || text.description),
-        image: product.image.startsWith('/') ? product.image : undefined,
+        image: product.image?.startsWith('/') ? product.image : undefined,
         jsonLd: [
           breadcrumb(
             [
@@ -193,6 +196,7 @@ export class ShopDetail {
       this.loadedSlug = slug;
       this.product.set(null);
       this.notFound.set(false);
+      this.error.set(false);
       this.qty.set(1);
       this.added.set(false);
       this.load(slug);
@@ -202,12 +206,20 @@ export class ShopDetail {
   private load(slug: string): void {
     this.http.get<ShopProduct>(`/api/shop/products/${encodeURIComponent(slug)}`).subscribe({
       next: (product) => {
+        // Ignore a response that belongs to a slug the user has already left.
+        if (slug !== this.loadedSlug) return;
         this.product.set(product);
         if (isPlatformServer(this.platformId)) this.transferState.set(this.stateKeyFor(slug), product);
       },
-      error: () => {
-        this.notFound.set(true);
-        if (this.response) this.response.status = 404;
+      error: (err: HttpErrorResponse) => {
+        if (slug !== this.loadedSlug) return;
+        if (err.status === 404) {
+          this.notFound.set(true);
+          if (this.response) this.response.status = 404;
+          return;
+        }
+        // A 5xx/network error is not a missing product and must not de-index it.
+        this.error.set(true);
       },
     });
   }

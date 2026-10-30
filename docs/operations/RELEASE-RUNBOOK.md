@@ -24,6 +24,10 @@ mutable local build.
 - [ ] A verified backup exists outside the production host (see BACKUP-RESTORE.md).
 - [ ] The previous image digest is recorded for rollback.
 - [ ] `.env` is present on the host and was not modified by the release.
+- [ ] `CONTABO_HOST_FINGERPRINT` is configured as a repository secret; the deploy fails
+      closed if it is missing.
+- [ ] `ADMIN_PASSWORD` is the first-boot value; a routine restart no longer overwrites the
+      admin password. Use `ADMIN_PASSWORD_RESET=true` only for an intentional rotation.
 - [ ] Maintenance window and customer communication (if any) are agreed.
 - [ ] Production approval rules exist for the `production` environment. **Currently they do
       not** (verified: no protection rules), so this item is a blocker.
@@ -116,6 +120,7 @@ a last resort with data loss.
 | Gate | Status | Evidence |
 | --- | --- | --- |
 | Branch protection on `main` | **BLOCKED** | GitHub API returns `Branch not protected` (404) |
+| `CONTABO_HOST_FINGERPRINT` secret | **UNVERIFIED** | Required by the workflow; presence not checked without repository secret access |
 | Production environment approval | **BLOCKED** | `production` environment has no protection rules |
 | Production backup verified | **BLOCKED** | Only isolated backup/restore tested |
 | Production restore rehearsed | **BLOCKED** | No production access used |

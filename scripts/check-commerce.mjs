@@ -272,6 +272,18 @@ try {
   assert.equal((await request(`/api/orders/${second.data.id}`, { cookie: customer.cookie })).data.status, 'cancelado');
   assert.equal((await request('/api/shop/products/integration-product')).data.stock, 2, 'expired checkout restores stock');
 
+  // Two concurrent cancellations must not restore stock twice.
+  const third = await request('/api/orders', { cookie: customer.cookie, body: { ...details, items: [{ slug: 'integration-product', qty: 1, price_cents: 2000 }] } });
+  assert.equal(third.response.status, 201);
+  assert.equal((await request('/api/shop/products/integration-product')).data.stock, 1);
+  const [cancelA, cancelB] = await Promise.all([
+    request(`/api/admin/orders/${third.data.id}`, { method: 'PUT', cookie: admin.cookie, body: { status: 'cancelado' } }),
+    request(`/api/admin/orders/${third.data.id}`, { method: 'PUT', cookie: admin.cookie, body: { status: 'cancelado' } }),
+  ]);
+  assert.equal(cancelA.response.status, 200);
+  assert.equal(cancelB.response.status, 200);
+  assert.equal((await request('/api/shop/products/integration-product')).data.stock, 2, 'concurrent cancels restore stock exactly once');
+
   // --- security regressions -------------------------------------------------
   // Password changes invalidate every other session but keep the current one.
   const sessionUser = await request('/api/auth/register', { body: { name: 'Sessions', email: 'sessions@example.test', password: 'test-password-123' } });

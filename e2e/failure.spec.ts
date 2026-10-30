@@ -1,5 +1,12 @@
 import { expect, test } from '@playwright/test';
-import { addProduct, fillCheckout, login, register, uniqueEmail } from './helpers';
+import {
+  addProduct,
+  fillCheckout,
+  login,
+  register,
+  uniqueEmail,
+  waitForHydration,
+} from './helpers';
 
 test('empty catalogue and catalogue network failures stay usable', async ({ page }) => {
   await page.goto('/en');
@@ -19,6 +26,21 @@ test('empty catalogue and catalogue network failures stay usable', async ({ page
   await expect(
     page.getByText('We could not load the catalogue. Please try again in a few minutes.'),
   ).toBeVisible();
+});
+
+test('a product API error is not turned into a 404', async ({ page }) => {
+  await page.goto('/en/shop');
+  await waitForHydration(page);
+  await page.route('**/api/shop/products/e2e-hub', (route) =>
+    route.fulfill({
+      status: 500,
+      contentType: 'application/json',
+      body: JSON.stringify({ error: 'server_error' }),
+    }),
+  );
+  await page.getByRole('link', { name: 'Test Hub' }).click();
+  await expect(page.getByText('We could not complete the request.')).toBeVisible();
+  await expect(page.getByText('is not available.')).not.toBeVisible();
 });
 
 test('unavailable product, unknown URL and session expiry', async ({ page }) => {

@@ -22,7 +22,7 @@ The material outcomes:
   unknown-email login, bounded rate-limit memory, structured logs without PII, and masked
   mail fallback.
 - **Release gates exist:** a PR CI workflow now runs formatting, build, i18n, commerce, SEO,
-  backup/restore and 13 Playwright browser tests; the deploy workflow runs the same gates
+  backup/restore and 14 Playwright browser tests; the deploy workflow runs the same gates
   before building an immutable image and no longer triggers on pull requests.
 - **Operations are documented and partly proven:** an isolated backup/restore was executed
   and verified; the release image built and ran; the production backup, approval and
@@ -159,13 +159,17 @@ rules; this is recorded as a low residual UX item.
 
 | Workflow | Trigger | What it does |
 | --- | --- | --- |
-| `CI` (`ci.yml`) | PR, push `main`, dispatch | `npm ci`, format check, build, i18n, commerce, SEO, backup, Playwright install + 13 E2E tests, `npm audit --omit=dev`, artifact on failure |
-| `Build & deploy` (`deploy.yml`) | push `main`, dispatch only | repeats build + all gates, builds/pushes sha-tagged image, deploys, checks `/healthz`, `/readyz`, `/`, `/en/shop`, `/sitemap.xml` |
+| `CI` (`ci.yml`) | PR, push `main`, dispatch | `npm ci`, format check, build, i18n, commerce, SEO, backup, Playwright install + 14 E2E tests, `npm audit --omit=dev`, artifact on failure |
+| `Build & deploy` (`deploy.yml`) | push `main`, dispatch only | repeats build + all gates incl. format/audit, builds/pushes sha-tagged image, deploys, checks container + public HTTPS `/healthz`, `/readyz`, `/en/shop`, `/sitemap.xml`; failure restores previous config/image |
 
 - Pull requests **cannot** trigger the deploy workflow; the PR trigger was removed.
 - Actions are pinned to commit SHAs (resolved 2026-10-30).
 - Workflow permissions: `contents: read`; build gets `packages: write`; deploy gets
   `packages: read`.
+- SSH/SCP steps require `CONTABO_HOST_FINGERPRINT`; the registry token is passed with
+  `envs`, not interpolated into the remote script.
+- After deploy the workflow tests the public HTTPS path through Caddy/nginx; on failure it
+  restores the previous config and image and rechecks `/readyz`.
 - `npm audit --omit=dev --audit-level=high`: 0 vulnerabilities.
 - Docker build from the lockfile: **PASS**; image smoke test: `/readyz` 200, `/en/cart`
   `lang="en"` + `noindex`, sitemap 200, CSP present.
@@ -199,7 +203,7 @@ npm run test:commerce       PASS — catalogue, SEO, stock, cart, auth, ownershi
                                      password revocation, upload signatures, expired checkout
 npm run test:seo            PASS — 101 sitemap URLs, canonical, hreflang, JSON-LD, noindex
 npm run test:backup         PASS — isolated restore + corrupted-copy rejection
-npx playwright test         PASS — 13/13 browser tests
+npx playwright test         PASS — 14/14 browser tests
 npm audit --omit=dev --audit-level=high   PASS — 0 vulnerabilities
 docker build                PASS — local image embarcarte:m04-local
 docker run smoke            PASS — readiness, private lang/noindex, CSP, sitemap
@@ -208,15 +212,33 @@ docker run smoke            PASS — readiness, private lang/noindex, CSP, sitem
 Playwright coverage: bilingual public surface, language switch with query/fragment, mobile
 menu, cart add/increase/remove/totals, checkout and order confirmation, account/history,
 order identity, foreign-order denial, session expiry, empty catalogue, network/API failure,
-price tampering, checkout failure, responsive widths, touch targets, skip link, and axe scans.
+a product 5xx that must not become a 404, price tampering, checkout failure, responsive
+widths, touch targets, skip link, and axe scans.
 
 Artifacts (`artifacts/`) are gitignored; no customer data is stored there.
 
 ## 12. Independent review
 
-An independent read-only reviewer inspected the actual diff and code, not the summary. The
-findings and resolutions are recorded here after the review (see final section). The reviewer
-was asked to prioritize financial, auth/authz, SSR, indexing, CI and backup claims.
+Two independent read-only reviewers inspected the actual diff and code, not the summary.
+They found no Critical issue and six High/Medium defects that the implementation pass had
+missed; all were fixed and the gates were rerun.
+
+| # | Severity | Finding | Resolution |
+| --- | --- | --- | --- |
+| R1 | High | Admin order cancellation read `status` outside the transaction; two concurrent cancels could restore stock twice | Read + stock change + update moved inside `BEGIN IMMEDIATE`; concurrent-cancel regression added |
+| R2 | High | Stripe Checkout creation failure left a pending order with stock reserved and no session that could expire | Cancel + restore stock, return 502; browser keeps the basket |
+| R3 | High | Deploy SSH/SCP steps did not pin the host key, and the GHCR token was interpolated into the remote script | `CONTABO_HOST_FINGERPRINT` required on every step; token passed through `envs` |
+| R4 | High | Deploy overwrote Caddy/nginx but smoke-tested only inside the web container; no automatic recovery | Public HTTPS smoke step added; failure step restores config and the previous image |
+| R5 | Medium | `ensureAdmin` overwrote the admin password every boot and did not revoke sessions | Password only on creation; explicit `ADMIN_PASSWORD_RESET=true` rotates and clears sessions |
+| R6 | Medium | A stale product response could render under the wrong URL; any 5xx was treated as a 404 | Response slug guard; only 404 sets `notFound`, other errors show a retryable message |
+| R7 | Medium | Deploy omitted `format:check` and the production dependency audit | Both gates added to the deploy build |
+| R8 | Medium | Backup test used a fixed port and only checked that an `uploads` directory existed | Dynamic free port, child error/exit checks, per-file size + SHA-256 verification |
+| R9 | Low | Login did not map a 400 response to a specific message | 400 now maps to the correct invalid-login/register copy |
+
+Verified clean by the reviewers: webhook signature/raw-body ordering, idempotent completion
+and expiry, upload magic bytes and admin gate, session revocation, private CSR shell and
+security headers, sitemap `hreflang` gating, TransferState hydration, and the CI
+permission/pinning model.
 
 ## 13. Git delivery
 
@@ -249,11 +271,13 @@ real-world evidence and controls:
 1. `main` branch protection is **not configured** (verified 404).
 2. The `production` GitHub environment has **no approval rules**; a main push deploys
    automatically after CI.
-3. No production backup or restore has been verified; only an isolated restore was tested.
-4. No external alerting/paging exists; an operator would not be notified of an outage.
-5. No production deployment, smoke test or rollback has been executed.
-6. CSP still allows inline scripts; this is a documented Medium residual risk.
-7. No DAST/penetration test, no field Core Web Vitals, no Search Console crawl, no legal/
+3. `CONTABO_HOST_FINGERPRINT` is now required by the workflow but its presence was not
+   verified without repository secret access.
+4. No production backup or restore has been verified; only an isolated restore was tested.
+5. No external alerting/paging exists; an operator would not be notified of an outage.
+6. No production deployment, smoke test or rollback has been executed.
+7. CSP still allows inline scripts; this is a documented Medium residual risk.
+8. No DAST/penetration test, no field Core Web Vitals, no Search Console crawl, no legal/
    analytics consent sign-off.
 
 A separate, explicit **GO** is required after those controls and evidence exist. Engineering
@@ -269,8 +293,8 @@ PASS is not proof that production recovery has been tested.
 | Authentication/authorization tests | ✅ |
 | Payment integration tests | ✅ no live Stripe |
 | Cart/order consistency | ✅ |
-| Full bilingual navigation | ✅ 13 E2E |
-| Browser E2E | ✅ 13/13 |
+| Full bilingual navigation | ✅ 14 E2E |
+| Browser E2E | ✅ 14/14 |
 | Public URLs valid | ✅ 96 + shop |
 | SEO canonical/hreflang | ✅ |
 | Sitemap integrity | ✅ 101 fixture URLs |
@@ -287,4 +311,4 @@ PASS is not proof that production recovery has been tested.
 | Independent review | ✅ (see §12) |
 | Full regression suite | ✅ |
 | No production deployment | ✅ |
-| M04 PR opened | ⏳ recorded in §13 after creation |
+| M04 PR opened | ✅ PR #4 open |
