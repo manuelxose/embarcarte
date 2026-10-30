@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAREA — Registro de instalación y puesta en marcha (ES) — PROPUESTO, no certifica</title>
+    <meta
+      name="description"
+      content="Plantilla interna propuesta (MR-BRD-012) para registrar hechos de instalación MAREA. No es un certificado ni acredita conformidad."
+    />
+    <!--
+      MAREA MC-04 · D-15 · MR-BRD-012 · installer commissioning record (ES)
+      PROPOSED / INTERNAL. This is a blank field-record template, not a certificate.
+      Rendered to PDF evidence by scripts/render-assets.mjs (Chromium page.pdf, A4).
+      Fonts: Manrope + DM Sans are injected at render time from node_modules/@fontsource-variable.
+      Language: Spanish (ES). English twin: marea-installer-commissioning-record-en.html
+    -->
+    <style>
+      @page {
+        size: A4;
+        margin: 12mm 12mm 14mm;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        color: #17365d;
+        font-family: 'DM Sans Variable', 'DM Sans', system-ui, sans-serif;
+        font-size: 8.2pt;
+        line-height: 1.38;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .sheet {
+        height: 271mm;
+        overflow: hidden;
+        page-break-after: always;
+        break-after: page;
+      }
+      .sheet:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+      .masthead {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12mm;
+        border-bottom: 1.4pt solid #17365d;
+        padding-bottom: 2.4mm;
+      }
+      .brand {
+        font-family: 'Manrope Variable', 'Manrope', system-ui, sans-serif;
+        font-weight: 800;
+        font-size: 20pt;
+        letter-spacing: -0.4pt;
+        line-height: 1;
+        margin: 0;
+      }
+      .brand-sub {
+        margin: 1.4mm 0 0;
+        font-size: 8pt;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #44586c;
+      }
+      .docmeta {
+        text-align: right;
+        font-size: 7.4pt;
+        line-height: 1.5;
+        color: #44586c;
+      }
+      .docmeta strong {
+        color: #17365d;
+      }
+      .tag {
+        display: inline-block;
+        border: 0.9pt solid #a33a1f;
+        color: #a33a1f;
+        font-weight: 700;
+        font-size: 7.4pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 1mm 2mm;
+        margin-top: 1.6mm;
+      }
+      h2 {
+        font-family: 'Manrope Variable', 'Manrope', system-ui, sans-serif;
+        font-size: 10.2pt;
+        font-weight: 700;
+        letter-spacing: -0.1pt;
+        margin: 2.8mm 0 1.2mm;
+        padding-bottom: 0.8mm;
+        border-bottom: 0.6pt solid #d8e6ef;
+      }
+      h3 {
+        font-size: 8.2pt;
+        margin: 2.4mm 0 1mm;
+      }
+      .lede {
+        border-left: 1.6pt solid #1776ad;
+        background: #f2f9fd;
+        padding: 2.2mm 3mm;
+        margin: 3mm 0 0;
+        font-size: 7.9pt;
+        line-height: 1.45;
+      }
+      .lede strong {
+        font-weight: 700;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 6mm;
+        row-gap: 0.8mm;
+      }
+      .grid.three {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .field {
+        display: flex;
+        align-items: baseline;
+        gap: 1.6mm;
+        min-height: 4.4mm;
+      }
+      .field > label {
+        flex: 0 0 auto;
+        font-weight: 500;
+        font-size: 7.6pt;
+        color: #44586c;
+        white-space: nowrap;
+      }
+      .line {
+        flex: 1 1 auto;
+        border-bottom: 0.6pt dotted #57708a;
+        height: 4mm;
+      }
+      .stack {
+        margin-top: 1mm;
+      }
+      .stack .line {
+        display: block;
+        height: 4.4mm;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 7.6pt;
+      }
+      th,
+      td {
+        border: 0.6pt solid #b9cddd;
+        padding: 1.0mm 1.6mm;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: #eaf7ff;
+        font-family: 'Manrope Variable', 'Manrope', system-ui, sans-serif;
+        font-weight: 700;
+        font-size: 7.2pt;
+        letter-spacing: 0.02em;
+      }
+      tbody tr {
+        height: 6.2mm;
+      }
+      .check-table td {
+        padding: 1.0mm 1.6mm;
+      }
+      .check-table tbody tr {
+        height: 6mm;
+      }
+      .boxes {
+        white-space: nowrap;
+        font-size: 6.9pt;
+        color: #44586c;
+      }
+      .box {
+        display: inline-block;
+        width: 2.9mm;
+        height: 2.9mm;
+        border: 0.6pt solid #44586c;
+        vertical-align: -0.4mm;
+        margin-right: 1.2mm;
+      }
+      .note {
+        margin: 1.6mm 0 0;
+        font-size: 7.2pt;
+        color: #44586c;
+      }
+      .note.warn {
+        color: #a33a1f;
+      }
+      .statement {
+        border: 1.2pt solid #a33a1f;
+        padding: 2.6mm 3mm;
+        margin-top: 3mm;
+        background: #fdf4f2;
+      }
+      .statement h3 {
+        margin: 0 0 1mm;
+        color: #a33a1f;
+        font-family: 'Manrope Variable', 'Manrope', system-ui, sans-serif;
+        font-size: 9pt;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+      .statement p {
+        margin: 0;
+        font-size: 7.7pt;
+        line-height: 1.45;
+      }
+      .signatures {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8mm;
+        margin-top: 2.6mm;
+      }
+      .sign {
+        border-top: 0.8pt solid #17365d;
+        padding-top: 1.2mm;
+        min-height: 11mm;
+        font-size: 7.3pt;
+        color: #44586c;
+      }
+      .sign strong {
+        display: block;
+        color: #17365d;
+        font-size: 7.8pt;
+        margin-bottom: 0.4mm;
+      }
+      .footer {
+        margin-top: 2mm;
+        border-top: 0.6pt solid #d8e6ef;
+        padding-top: 1.4mm;
+        font-size: 6.7pt;
+        color: #57708a;
+        display: flex;
+        justify-content: space-between;
+        gap: 6mm;
+      }
+      .checklist {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 6mm;
+        row-gap: 1.1mm;
+        font-size: 7.6pt;
+      }
+      .checklist .item {
+        display: flex;
+        gap: 1.6mm;
+        align-items: baseline;
+      }
+      .checklist .item .box {
+        margin-right: 0.6mm;
+      }
+      .lines {
+        margin-top: 1mm;
+      }
+      .lines .line {
+        height: 6.2mm;
+        border-bottom: 0.6pt solid #c6d8e5;
+      }
+      .safety {
+        font-size: 7.6pt;
+        line-height: 1.45;
+        margin: 0;
+        padding-left: 4.4mm;
+      }
+      .safety li {
+        margin-bottom: 0.4mm;
+      }
+      .muted {
+        color: #57708a;
+      }
+      .kicker {
+        font-size: 7pt;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #57708a;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ===================== HOJA 1 ===================== -->
+    <section class="sheet" aria-labelledby="p1-title">
+      <header class="masthead">
+        <div>
+          <p class="brand">MAREA</p>
+          <p class="brand-sub">EMBARCARTE · instalación y puesta en marcha</p>
+          <span class="tag">No es un certificado</span>
+        </div>
+        <div class="docmeta">
+          <div><strong>MR-BRD-012</strong> · Registro de instalación y puesta en marcha</div>
+          <div>Versión 1.0-PROPUESTO · 2026-10-30</div>
+          <div>Idioma: ES · Hoja 1 de 2</div>
+          <div>INTERNO / PROPUESTO — no emitido</div>
+        </div>
+      </header>
+
+      <div class="lede">
+        <strong>Qué es este documento.</strong> Es un registro de campo para anotar únicamente hechos de
+        instalación <strong>realmente observados</strong> en la fecha indicada. No acredita la competencia
+        del técnico, la conformidad del producto, la resistencia al agua ni la idoneidad para la
+        navegación, y no sustituye inspecciones, pruebas ni certificaciones exigibles. Rellene solo lo
+        que haya verificado; deje en blanco lo que no corresponda.
+      </div>
+
+      <h2 id="p1-title">1. Identificación</h2>
+      <div class="grid">
+        <div>
+          <div class="field"><label>Cliente / armador</label><span class="line"></span></div>
+          <div class="field"><label>Teléfono / correo</label><span class="line"></span></div>
+        </div>
+        <div>
+          <div class="field"><label>Embarcación (nombre)</label><span class="line"></span></div>
+          <div class="field"><label>Matrícula / ID</label><span class="line"></span></div>
+        </div>
+        <div>
+          <div class="field"><label>Eslora (m)</label><span class="line"></span></div>
+          <div class="field"><label>Tipo</label><span class="line"></span></div>
+        </div>
+        <div>
+          <div class="field"><label>Puerto base</label><span class="line"></span></div>
+          <div class="field"><label>Lugar de la intervención</label><span class="line"></span></div>
+        </div>
+        <div>
+          <div class="field"><label>Fecha (dd/mm/aaaa)</label><span class="line"></span></div>
+          <div class="field"><label>Orden de trabajo / referencia</label><span class="line"></span></div>
+        </div>
+        <div>
+          <div class="field"><label>Tipo de intervención</label><span class="line"></span></div>
+          <div class="field"><label>Técnico instalador</label><span class="line"></span></div>
+        </div>
+        <div>
+          <div class="field"><label>Empresa</label><span class="line"></span></div>
+          <div class="field"><label>Identificación profesional (si procede)</label><span class="line"></span></div>
+        </div>
+        <div>
+          <div class="field"><label>Teléfono del técnico</label><span class="line"></span></div>
+          <div class="field"><label>Firma del técnico (al final)</label><span class="line"></span></div>
+        </div>
+      </div>
+      <p class="note">
+        No anote datos personales que no sean necesarios para el servicio. Este impreso no requiere
+        identificación de terceros ni firmas de conformidad.
+      </p>
+
+      <h2>2. Componentes instalados</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 15%">Familia</th>
+            <th style="width: 18%">Modelo / edición</th>
+            <th style="width: 17%">N.º de serie</th>
+            <th style="width: 20%">Ubicación a bordo</th>
+            <th style="width: 14%">Fecha</th>
+            <th style="width: 16%">Firmware / versión anotada</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <p class="note">
+        Registre solo componentes realmente instalados y verificados. No anote componentes previstos,
+        suministrados por terceros sin verificar, ni números de serie que no haya leído en la unidad.
+      </p>
+
+      <h2>3. Comprobaciones realizadas</h2>
+      <table class="check-table">
+        <thead>
+          <tr>
+            <th style="width: 44%">Comprobación</th>
+            <th style="width: 20%">Resultado observado</th>
+            <th>Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Montaje físico y fijación, sin holguras</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Trayectoria de cables y alivio de tensión</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Conectores asentados y enclavados</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Polaridad, fusible y protección de alimentación</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Separación y orden del cableado de datos y alimentación</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Puesta en marcha y prueba funcional tras la instalación</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Legibilidad de pantalla en la posición de uso</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Controles accesibles y operables en la posición de uso</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Versión de firmware anotada</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Copia o registro de configuración realizado</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Documentación entregada al cliente</td>
+            <td class="boxes"><span class="box"></span>Sí <span class="box"></span>No <span class="box"></span>N/A</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="note warn">
+        Estas casillas registran únicamente lo que el técnico observó. No son un certificado de
+        conformidad ni una prueba de resistencia al agua, compatibilidad o rendimiento.
+      </p>
+
+      <div class="footer">
+        <span>MR-BRD-012 · Registro de instalación y puesta en marcha · ES</span>
+        <span>PROPUESTO / INTERNO — no certifica · MAREA es una marca propuesta</span>
+      </div>
+    </section>
+
+    <!-- ===================== HOJA 2 ===================== -->
+    <section class="sheet" aria-labelledby="p2-title">
+      <header class="masthead">
+        <div>
+          <p class="brand">MAREA</p>
+          <p class="brand-sub">EMBARCARTE · instalación y puesta en marcha</p>
+          <span class="tag">No es un certificado</span>
+        </div>
+        <div class="docmeta">
+          <div><strong>MR-BRD-012</strong> · Registro de instalación y puesta en marcha</div>
+          <div>Versión 1.0-PROPUESTO · 2026-10-30</div>
+          <div>Idioma: ES · Hoja 2 de 2</div>
+          <div>INTERNO / PROPUESTO — no emitido</div>
+        </div>
+      </header>
+
+      <h2 id="p2-title">4. Observaciones del técnico</h2>
+      <p class="note muted">
+        Describa lo observado, no interpretaciones no verificadas ni promesas de rendimiento. Indique
+        la unidad o zona afectada cuando corresponda.
+      </p>
+      <div class="lines" aria-label="Líneas para observaciones">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+
+      <h2>5. Incidencias abiertas</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 8%">Ref.</th>
+            <th style="width: 40%">Descripción de lo observado</th>
+            <th style="width: 18%">Estado</th>
+            <th style="width: 18%">Responsable</th>
+            <th style="width: 16%">Fecha objetivo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+      <p class="note">
+        Una incidencia abierta no se convierte en resuelta por la firma de este documento. Anote la
+        fecha de cierre solo cuando exista evidencia de la resolución.
+      </p>
+
+      <h2>6. Notas de entrega y traspaso</h2>
+      <div class="checklist">
+        <div class="item"><span class="box"></span>Documentación y manual entregados</div>
+        <div class="item"><span class="box"></span>Uso básico explicado al cliente</div>
+        <div class="item"><span class="box"></span>Ubicación de fusibles y conectores indicada</div>
+        <div class="item"><span class="box"></span>Datos de contacto de soporte facilitados</div>
+        <div class="item"><span class="box"></span>Limitaciones y avisos explicados</div>
+        <div class="item"><span class="box"></span>Accesorios entregados (anotar cuáles)</div>
+        <div class="item"><span class="box"></span>Condiciones de garantía entregadas (si existen)</div>
+        <div class="item"><span class="box"></span>Pendiente de cierre de incidencias</div>
+      </div>
+      <div class="stack" aria-label="Accesorios y notas de entrega">
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <p class="note">
+        No anote la conformidad del cliente en su nombre ni firme por él. Si no hay firma de recepción,
+        indíquelo y déjela en blanco.
+      </p>
+
+      <h2>7. Consideraciones de seguridad</h2>
+      <ul class="safety">
+        <li>Aisle la alimentación y verifique la ausencia de tensión antes de intervenir.</li>
+        <li>
+          Siga la documentación del fabricante para montaje, cableado, fusibles y puesta en marcha. No
+          modifique conectores ni cableado fuera de esas instrucciones.
+        </li>
+        <li>
+          Los sistemas de gobierno asistido requieren supervisión humana permanente y autoridad manual
+          inmediata. No se registra aquí ninguna capacidad autónoma.
+        </li>
+        <li>
+          La parada de emergencia (E-stop) solo existe donde el producto la define y no debe
+          compartirse con otras funciones. No instale ni sustituya E-stop sin instrucciones verificadas.
+        </li>
+        <li>
+          Este impreso no verifica compatibilidad con equipos de terceros, comportamiento en entorno
+          marino, resistencia al agua ni conformidad reglamentaria.
+        </li>
+        <li>
+          Deje constancia de cualquier observación de seguridad, aunque no se haya podido resolver en
+          la visita.
+        </li>
+      </ul>
+
+      <div class="statement">
+        <h3>Este documento no es un certificado</h3>
+        <p>
+          No certifica la competencia del técnico, la conformidad del producto, la resistencia al agua
+          ni la aprobación reglamentaria o de un organismo de certificación. Cualquier afirmación de
+          «instalación verificada» requiere evidencia independiente y no está cubierta por este
+          impreso. No contiene ni reproduce marcas de certificación, CE, NMEA, IP o equivalentes, y no
+          debe presentarse como documento oficial.
+        </p>
+      </div>
+
+      <div class="signatures">
+        <div class="sign">
+          <strong>Firma del técnico instalador</strong>
+          Nombre: __________________________________<br />
+          Fecha: ____ / ____ / __________
+        </div>
+        <div class="sign">
+          <strong>Firma de recepción del cliente / armador (si procede)</strong>
+          Nombre: __________________________________<br />
+          Fecha: ____ / ____ / __________
+        </div>
+      </div>
+      <p class="note">
+        Las firmas solo acreditan la entrega de la documentación y la realización de la visita. No
+        acreditan conformidad técnica, homologación ni aptitud para la navegación.
+      </p>
+
+      <div class="footer">
+        <span>MR-BRD-012 · Registro de instalación y puesta en marcha · ES</span>
+        <span>PROPUESTO / INTERNO — no certifica · MAREA es una marca propuesta</span>
+      </div>
+    </section>
+  </body>
+</html>
