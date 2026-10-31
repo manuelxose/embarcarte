@@ -96,9 +96,11 @@ observado (moneda, IVA y fecha en el registro de precios):
 
 Hallazgos estructurales:
 
-- **Ningún competidor vende una solución completa instalada y puesta en servicio**
+- **Ninguno de los competidores observados en esta muestra** (48 observaciones
+  sobre 27 fuentes) vende una solución completa instalada y puesta en servicio
   equivalente a los bundles de MAREA. Todos los totales comparables son
-  composiciones de partes; la instalación se factura aparte.
+  composiciones de partes; la instalación se factura aparte. La muestra no
+  permite afirmar nada sobre el resto del mercado.
 - **La mano de obra sí es observable en España:** Marina Coruña publica 59/76/47/65
   €/h por tarea y una línea específica de electrónica a **61 €/h** (IVA excluido);
   Getxo publica 32,02 €/h. Los márgenes de distribuidor español o portugués, en
@@ -151,8 +153,9 @@ Razonamiento comercial, separado de la disponibilidad:
   composición: WATCH 299 € más dos módulos SENSE de 99 € suman 497 € antes de
   instalar.
 - **START** es la solución completa más sencilla; su referencia de 499 € queda por
-  debajo de una composición observada de 698 € (Orca Core 2 + Orca Plus) y no
-  incluye instalación.
+  debajo de una composición observada de 649 € en el primer año (Orca Core 2, que
+  incluye un año de Smart Navigation; 698 € desde el segundo año) y no incluye
+  instalación.
 - **FLEET package** es el único modelo realmente escalable, pero no hay plataforma
   implementada, ni SLA, ni precio.
 - **CRUISE** compite con composiciones ya comprables (1.319-1.997 €).
@@ -175,7 +178,7 @@ Ningún precio queda aprobado. Las cifras históricas son hipótesis
 | WATCH | 299 € + desde 9,90 €/mes | Siren 300 USD + 225 USD/año; YS Pro 1.590 € + IVA | conectividad, nube, soporte, garantía | BAJA |
 | DISPLAY | desde 699 € | 659-1.506 € IVA incl. | BOM, certificación, instalación | BAJA |
 | FLEET | desde 49 / 79 €/buque/mes | 24,83-360 €/buque/mes | onboarding, soporte, infraestructura | BAJA |
-| START | 499 € | composición 698 € | instalación, BOM, margen | BAJA |
+| START | 499 € | composición 649 € el primer año; 698 € desde el segundo | instalación, BOM, margen | BAJA |
 | CRUISE | 1.399 € | composición 1.319-1.997 € | instalación, accesorios | BAJA |
 | SAIL | 1.990 € (solo trazabilidad) | composición 3.499 € | instalación, BOM, PILOT | BAJA |
 | PROTECT | 399 € + suscripción | hardware UE 1.830 € + IVA; Siren 300 USD + 225 USD/año | instalación, conectividad | BAJA |
@@ -268,9 +271,10 @@ desplegar.
 
 ## 11. Evidencia y QA (control de calidad)
 
-- **Entregables:** 26 documentos y 22 ficheros de datos; índice completo en
+- **Entregables:** 26 entregables (D1-D26): 24 documentos Markdown de contenido,
+  23 ficheros de datos JSON y 2 scripts de validación; índice completo en
   `MC-09-DELIVERY.md`.
-- **Fuentes:** 115 registradas (20 mercado, 27 competencia, 20 compradores, 6
+- **Fuentes:** 115 registradas (20 mercado, 27 competencia, 20 compradores, 5
   economía, 38 canales, 5 metodología MC-10), con clase de evidencia, fecha de
   consulta y limitaciones. **136 afirmaciones** trazables.
 - **Lagunas de evidencia:** flota registrada española sin tabla verificable;

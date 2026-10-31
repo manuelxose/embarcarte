@@ -33,13 +33,14 @@ MAREA bundle compositions are taken from `docs/marea/bundles/BUNDLE-ARCHITECTURE
 
 | Alternative solution | Components and observed prices | Year-one total | Basis |
 | --- | --- | --- | --- |
-| Orca Core 2 + Orca Plus | Core 2 EUR 649 (secondary, VAT incl.) + Plus EUR 49/yr (tax unstated) | **EUR 698** | `MODEL_DERIVED` (PRC-CMP-049) |
+| Orca Core 2 + Orca Plus | Core 2 EUR 649 (secondary, VAT incl.; includes one year of Smart Navigation, SRC-CMP-001) + Plus EUR 49/yr from year two (tax unstated) | **EUR 649 year one; EUR 698 from year two** | `MODEL_DERIVED` (PRC-CMP-049) |
 | Orca app only (no onboard data) | Plus EUR 49/yr | EUR 49 | observed, OBS-CMP-001 |
 | Garmin Navionics app | reported EUR 49.99-149.99 per item | range, not a single price | secondary, OBS-CMP-003 |
 
 **Reading.** The closest complete START-equivalent (existing instruments made visible in
-modern navigation, locally) is roughly EUR 698 in year one at observed prices — about
-EUR 200 above the MAREA START hypothesis of EUR 499. The margin is plausible only if the
+modern navigation, locally) is roughly EUR 649 in year one at observed prices (a year of
+Smart Navigation is included with the Core 2; EUR 698 from year two) — about EUR 150 above
+the MAREA START hypothesis of EUR 499. The margin is plausible only if the
 HUB hardware and installer-assisted configuration are genuinely included and supported;
 if START is software-only with a cheap gateway, EUR 499 is credible.
 
@@ -93,7 +94,7 @@ open, and no comparison here substitutes for safety evidence.
 | Yacht Sentinel YS Pro | EUR 1,590 ex-VAT hardware + EUR 240/yr service | **EUR 1,830 ex-VAT** | `MODEL_DERIVED` (PRC-CMP-054); availability unconfirmed |
 | Siren 3 + one high-water sensor | USD 299.99 + USD 225/yr + USD 139.09 sensor | **USD 664.08** | `MODEL_DERIVED` (PRC-CMP-053) |
 | ArmIt BilgeMAX One | USD 229.99 kit + USD 100/yr | USD 329.99 year one (arithmetic) | secondary reported components |
-| Orca guard mode | EUR 649 Core 2 + EUR 149/yr Smart Navigation | EUR 798 year one (arithmetic) | secondary reported hardware; partial capability |
+| Orca guard mode | EUR 649 Core 2 (one year of Smart Navigation included) + EUR 149/yr Smart Navigation from year two | EUR 649 year one; EUR 798 from year two (arithmetic) | secondary reported hardware; partial capability |
 
 **Reading.** A genuine bilge-and-power monitoring solution costs USD 330-664 in year one
 (US) or EUR 1,830 excluding VAT (European, availability unconfirmed). The MAREA PROTECT
@@ -149,7 +150,8 @@ from desk research.
 
 ## Bundle-level conclusions
 
-1. Complete-solution parts floors at observed prices are roughly: START EUR 698,
+1. Complete-solution parts floors at observed prices are roughly: START EUR 649 year one
+   (EUR 698 from year two),
    CRUISE EUR 1,319-1,997, SAIL EUR 3,499, PROTECT EUR 1,830 ex-VAT (EU) or
    USD 330-664 (US), COMPLETE EUR 3,799, FLEET EUR 1,490-4,900 per year.
 2. Installation, commissioning, survey, antenna work and support are absent from almost

@@ -116,7 +116,7 @@ offers and must never be quoted as one.
 
 | ID | Subject | Amount | Currency | Composition | Basis |
 | --- | --- | --- | --- | --- | --- |
-| PRC-CMP-049 | START-equivalent (Orca Core 2 + Plus) | 698.00 | EUR | 649.00 + 49.00 | `MODEL_DERIVED` |
+| PRC-CMP-049 | START-equivalent (Orca Core 2 year one, Smart Navigation included) | 649.00 | EUR | 649.00 year one; +49.00 from year two | `MODEL_DERIVED` |
 | PRC-CMP-050 | CRUISE-equivalent (Raymarine + Digital Yacht parts) | 1,319.45 | EUR | 659.45 + 360.00 + 300.00 | `MODEL_DERIVED` |
 | PRC-CMP-051 | SAIL-equivalent (EV-100 + display + wind + gateway) | 3,499.40 | EUR | 2,050.00 + 659.45 + 489.95 + 300.00 | `MODEL_DERIVED` |
 | PRC-CMP-052 | COMPLETE-equivalent (five components, four brands) | 3,799.49 | EUR | 659.45 + 2,050.00 + 489.95 + 360.00 + 240.09 | `MODEL_DERIVED` |

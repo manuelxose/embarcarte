@@ -234,7 +234,7 @@ approved product claim.
 
 ### START
 - Customer solution: local gateway plus a NAV subscription for a modernised small boat.
-- Observed benchmark: Orca Core 2 EUR 649 plus Orca Plus EUR 49/year = EUR 698 composition (`CLM-CMP-027`).
+- Observed benchmark: Orca Core 2 EUR 649 in year one (a year of Smart Navigation is included) and EUR 698 from year two (`CLM-CMP-027`).
 - MAREA hypothesis: EUR 499 product-only first-year reference (`HYPOTHESIS_UNAPPROVED`).
 - Assessment: the hypothesis sits *below* the observed composition and excludes installation; plausible as a discount thesis, unproven as margin. `PROPOSED_DIFFERENTIATION`: consolidation. `EVIDENCE_SUPPORTED_DIFFERENTIATION`: none yet. Decision: validate concept (`DEC-MC09-04`).
 
