@@ -4,15 +4,15 @@
 | --- | --- |
 | Document ID | MC-09 / D24 — INDEPENDENT-REVIEW |
 | Reviewer | `agent-f-auditor` (independent evidence auditor; author of **no** MC-09 research deliverable) |
-| Review state | Round 1 of 2 — initial audit of `566343e`; verdict **PARTIAL (conditional)**, one MAJOR and three MINOR corrections plus one integration step outstanding |
-| Reviewed commit | `566343e493e392058bd1a662a6465e02ee4bccd0` ("docs(mc09): source-backed market, competitor, buyer, pricing and channel intelligence with MC-10 preparation") |
+| Review state | Complete — round 1 (audit of `566343e`: verdict PARTIAL, 1 MAJOR + 3 MINOR + integration step); round 2 (re-verification of `d85733e`) closed all findings — **final verdict PASS** |
+| Reviewed commits | round 2: `d85733e49c7e78fa8cfa045ff440579c57ff6bb5` ("fix(mc09): close round-1 audit findings F-01..F-04 and integrate review data"); round 1: `566343e493e392058bd1a662a6465e02ee4bccd0` |
 | Base | `65417bfa681d31cc655e2bc91cfcedcccc368675` (verified MC-08 HEAD) |
 | Branch | `feature/marea-mc09-market-competitive-intelligence` |
 | Review date | 2026-10-31 (Europe/Madrid), same day as the research retrieval session |
-| Diff under review | `git diff 65417bf..566343e` — 51 files changed, 19,019 insertions(+), 3 deletions(-) |
+| Diff under review | round-2 delta `git diff 566343e..d85733e` — 10 files, 893 insertions(+), 120 deletions(-); round-1 delta `git diff 65417bf..566343e` — 51 files, 19,019 insertions(+), 3 deletions(-) |
 | Audit target | The committed tree at `566343e` and that diff only. The Lead's summary and the delivery record were used only to locate artefacts, never as evidence. |
 | Scope | D1–D26: 24 research documents, 22 JSON data files under `docs/marea/market-validation/data/`, the `check-marea-market` validator and its 43 negative-mutation tests, DECISION-LOG D-026/D-027, the registry row, and the `package.json` script wiring. Audits A–H of the brief. |
-| Verdict | **PARTIAL — conditional**. All eight audit dimensions are substantively verified and no BLOCKING finding exists; PASS is withheld until F-01 (MAJOR scope overstatement), F-02/F-03/F-04 (MINOR consistency defects) and the manifest integration F-06 are closed and re-verified in round 2. |
+| Verdict | **PASS — INTERNAL DESK-RESEARCH AND MARKET-INTELLIGENCE SCOPE**, final after round 2 on `d85733e`. All eight audit dimensions and all eight findings are independently verified and closed; no BLOCKING or MAJOR finding remains. This PASS covers the desk-research scope only — it is **not** demand validation, price approval, compatibility, certification, publication or sale. |
 | Commercial release status | **BLOCKED / NOT_FOR_SALE** — no price approved, 0 products for sale, 0 compatibility rows `TESTED`/`SUPPORTED`, brand `NOT_GRANTED`, source IP `NOT_CLEARED`, PILOT safety gate `BLOCKED`, profitability `NOT ESTABLISHED`, no publication, sale, deploy or outreach |
 | Files written by this reviewer | `docs/marea/market-validation/review/MC-09-REVIEW.md` (this file) and `docs/marea/market-validation/data/review-findings.json` — **only** |
 
@@ -79,8 +79,9 @@ Run from the repository root on 2026-10-31 with Node v24.18.0 / npm 12.0.1.
 | Whitespace | `git diff --check` (working tree) and `git diff --check 65417bf..566343e` | **clean, exit 0** | clean apart from the two untracked audit files (no whitespace errors) |
 
 The brief predicted only the `test:market` MK-03 consequence; the same root cause also trips the
-"real tree passes" case in the unit suite. Both disappear with the one manifest entry described
-in F-06, and neither is allowed to drive the verdict.
+"real tree passes" case in the unit suite. Both disappeared at `d85733e` when the manifest entry was
+added: `test:market` 40/40 and `test:market:unit` 43/43 (see §13). The transient red state was never
+allowed to drive the verdict.
 
 Static inspection of the new scripts: `check-marea-market.mjs` is plain Node (no dependency added),
 imports only `node:fs`/`node:path`/`node:url`, makes **no network request**, reads **no** environment
@@ -301,16 +302,16 @@ bundle frameworks, sum exactly 1.0, and were applied before scoring. Every score
 
 | ID | Severity | File:line | Required correction | Status |
 | --- | --- | --- | --- | --- |
-| F-01 | **MAJOR** | `MC09-EXECUTIVE-REPORT.md:99` | Reword the absolute "Ningún competidor…" claim to the observed sample ("ningún competidor observado…", as `MC09-BUNDLE-BENCHMARKS.md:13` already does) and state that installation is sold as a separate channel service | OPEN |
-| F-02 | MINOR | `MC09-BUNDLE-BENCHMARKS.md:36,96` | Use EUR 649 as the Orca year-one equivalent for START and guard mode (the first Smart Navigation year is included with Core/Display per SRC-CMP-001); keep 698/798 only as labelled year-two totals | OPEN |
-| F-03 | MINOR | `MC09-EXECUTIVE-REPORT.md:273-275` | Change the economics source count from 6 to 5 (evidence-economics.json has SRC-ECO-001/002/003/005/006; breakdown currently sums to 116 vs the 115 total) | OPEN |
-| F-04 | MINOR | `data/manifest.json:15` | Reword "Eight evidence-based buyer segments" to "Eight hypothetical buyer archetypes (HYPOTHETICAL_ARCHETYPE)" to match `buyer-segments.json` and `MC09-BUYER-SEGMENTS.md:14` | OPEN |
-| F-05 | INFORMATIONAL | `MC09-EXECUTIVE-REPORT.md:271` | "26 documentos y 22 ficheros de datos" mixes deliverables with documents: 26 deliverables D1–D26, 25 Markdown documents after this review, 22 JSON data files | OPEN (non-blocking) |
-| F-06 | INFORMATIONAL (integration) | `data/manifest.json` | Add `data/review-findings.json` with owner `agent-f-auditor`; re-run `test:market` (expect 40/40) and `test:market:unit` (expect 43/43) | OPEN — expected Lead step |
-| F-07 | INFORMATIONAL | sources | Residual audit limits: Getxo PDF timed out twice (32.02 EUR/h not re-verified), one buyer-forum fetch failed, 62/115 sources lack `publishedAt`. No mandatory correction; may be accepted as residual risk | OPEN — residual |
-| F-08 | INFORMATIONAL | `MC-09-DELIVERY.md:3-6`; exec report | Final status/wording must be set in the delivery-update commit after the review, and §6/§8 populated with exact gate results and the final SHA/PR URL | OPEN — delivery step |
+| F-01 | **MAJOR** | `MC09-EXECUTIVE-REPORT.md:99` | Reword the absolute "Ningún competidor…" claim to the observed sample ("ningún competidor observado…", as `MC09-BUNDLE-BENCHMARKS.md:13` already does) and state that installation is sold as a separate channel service | CLOSED — verified in round 2 (§13) |
+| F-02 | MINOR | `MC09-BUNDLE-BENCHMARKS.md:36,96` | Use EUR 649 as the Orca year-one equivalent for START and guard mode (the first Smart Navigation year is included with Core/Display per SRC-CMP-001); keep 698/798 only as labelled year-two totals | CLOSED — verified in round 2 (§13) |
+| F-03 | MINOR | `MC09-EXECUTIVE-REPORT.md:273-275` | Change the economics source count from 6 to 5 (evidence-economics.json has SRC-ECO-001/002/003/005/006; breakdown currently sums to 116 vs the 115 total) | CLOSED — verified in round 2 (§13) |
+| F-04 | MINOR | `data/manifest.json:15` | Reword "Eight evidence-based buyer segments" to "Eight hypothetical buyer archetypes (HYPOTHETICAL_ARCHETYPE)" to match `buyer-segments.json` and `MC09-BUYER-SEGMENTS.md:14` | CLOSED — verified in round 2 (§13) |
+| F-05 | INFORMATIONAL | `MC09-EXECUTIVE-REPORT.md:271` | "26 documentos y 22 ficheros de datos" mixes deliverables with documents: 26 deliverables D1–D26, 25 Markdown documents after this review, 22 JSON data files | CLOSED — verified in round 2 (§13) (non-blocking) |
+| F-06 | INFORMATIONAL (integration) | `data/manifest.json` | Add `data/review-findings.json` with owner `agent-f-auditor`; re-run `test:market` (expect 40/40) and `test:market:unit` (expect 43/43) | CLOSED — verified in round 2 (§13): expected Lead step done |
+| F-07 | INFORMATIONAL | sources | Residual audit limits: Getxo PDF timed out twice (32.02 EUR/h not re-verified), one buyer-forum fetch failed, 62/115 sources lack `publishedAt`. No mandatory correction; may be accepted as residual risk | CLOSED as accepted residual risk (round 2): no fill-in fabricated; limitations remain recorded |
+| F-08 | INFORMATIONAL | `MC-09-DELIVERY.md:3-6`; exec report | Final status/wording must be set in the delivery-update commit after the review, and §6/§8 populated with exact gate results and the final SHA/PR URL | CLOSED for this round — delivery-update fields explicitly deferred to the post-verdict commit (Lead instruction); verified as pending, not a defect |
 
-### F-01 detail (MAJOR)
+### F-01 detail (MAJOR — round-1 finding, closed in round 2)
 
 `MC09-EXECUTIVE-REPORT.md:99-101` states as fact that no competitor sells a complete installed and
 commissioned solution, while the underlying benchmark document (`MC09-BUNDLE-BENCHMARKS.md:13`)
@@ -323,7 +324,7 @@ established by the evidence and overstates a market gap in the decision document
 wording alone; no new evidence is needed. It is MAJOR because it is the summary's central competitive
 conclusion, not a detail.
 
-### F-02 detail (MINOR)
+### F-02 detail (MINOR — round-1 finding, closed in round 2)
 
 `help.getorca.com` (SRC-CMP-001) states: "A year of Smart Navigation is included in the purchase of an
 Orca Core or an Orca Display." `MC09-BUNDLE-BENCHMARKS.md:36` nevertheless computes START-equivalent
@@ -346,31 +347,61 @@ conclusion, but the comparison is not reproducible from the cited source as writ
 
 ---
 
-## 13. Round-2 re-verification list
+## 13. Round-2 re-verification of the corrections (`d85733e`)
 
-1. F-01: confirm the executive report now scopes the competitor negative to observed evidence and
-   does not imply the installation service is absent from the market.
-2. F-02: confirm the Orca year-one totals in `MC09-BUNDLE-BENCHMARKS.md` are corrected or explicitly
-   justified, and that CRUISE/START/PROTECT now treat the included Smart Navigation year consistently.
-3. F-03: confirm the executive report says 5 economics sources and the breakdown sums to 115.
-4. F-04: confirm `manifest.json` no longer calls the buyer segments "evidence-based".
-5. F-05/F-08: confirm the delivery-update wording, exact gate results, final SHA and PR URL.
-6. F-06: confirm `data/review-findings.json` is listed in the manifest and re-run
-   `npm run test:market` (expect 40/40) and `npm run test:market:unit` (expect 43/43).
-7. Re-run `test:products`, `test:bundles`, `test:brand` and `git diff --check`; confirm the diff scope
-   of the correction commit contains only the intended documentation/data edits.
+Round-2 commit: `d85733e49c7e78fa8cfa045ff440579c57ff6bb5` ("fix(mc09): close round-1 audit findings
+F-01..F-04 and integrate review data"), parent `566343e`, single non-merge commit, working tree clean.
+Delta: 10 files, 893 insertions(+), 120 deletions(-) — 8 correction files plus this review and the
+findings register committed from round 1.
+
+| Gate at `d85733e` | Command | Result |
+| --- | --- | --- |
+| Market validator | `npm run test:market` | **PASS — 40/40 checks, exit 0** (MK-03 closed by the manifest entry) |
+| Negative-mutation suite | `npm run test:market:unit` | **PASS — exit 0, 43/43** (the round-1 "real tree fails: MK-03" case is gone) |
+| Product contract gate | `npm run test:products` | **PASS — 52/52; 51/51 files** |
+| Bundle contract gate | `npm run test:bundles` | **PASS — 35/35; 43/43 files; 60 assets; 6 bundles** |
+| Brand gate | `npm run test:brand` | **PASS — 21/21; 24 files** |
+| Whitespace/scope | `git diff --check 566343e..d85733e` | **clean, exit 0** |
+
+Closure evidence inspected in the real diff and files (never the Lead's summary):
+
+| Finding | Verified correction at `d85733e` |
+| --- | --- |
+| F-01 | `MC09-EXECUTIVE-REPORT.md:99-103` now reads "**Ninguno de los competidores observados en esta muestra** (48 observaciones sobre 27 fuentes) … La muestra no permite afirmar nada sobre el resto del mercado." A grep over the market-validation tree finds no remaining absolute "Ningún competidor" claim; the only other occurrence is the review record itself. |
+| F-02 | `MC09-BUNDLE-BENCHMARKS.md:36,41-42,97,153-154` now use EUR 649 year one / EUR 698 from year two for START and EUR 649 / 798 for Orca guard mode; `PRC-CMP-049` amount is 649 with the inclusion explained in notes; `CLM-CMP-027` text and limitations updated; `OBS-CMP-040` product/subscription fields updated; `MC09-COMPETITOR-PRICING.md:119`, `MC09-COMPETITIVE-POSITIONING.md:237` and `MC09-EXECUTIVE-REPORT.md:156,181` aligned. A grep finds no remaining year-one 698 claim. |
+| F-03 | `MC09-EXECUTIVE-REPORT.md:273-275` now reads "5 economía" and the breakdown 20+27+20+5+38+5 = 115. |
+| F-04 | `data/manifest.json:15` now reads "Eight buyer segments, all labelled HYPOTHETICAL_ARCHETYPE". |
+| F-05 | `MC09-EXECUTIVE-REPORT.md:274` now reads "26 entregables (D1-D26): 24 documentos Markdown de contenido, 23 ficheros de datos JSON y 2 scripts de validación"; at `d85733e` the tree has 24 content Markdown + this review, 23 JSON data files and 2 scripts, so the corrected counts are consistent. |
+| F-06 | `data/manifest.json` now has 22 entries including `data/review-findings.json` (owner `agent-f-auditor`); `test:market` 40/40 and `test:market:unit` exit 0. |
+| F-07 | Unchanged residual limits (Getxo PDF not re-verified; 62/115 sources without `publishedAt`); no invented value was added. Accepted as residual risk. |
+| F-08 | Delivery-update fields (status, exact gates, SHA, PR URL) are explicitly deferred to the commit after this verdict, as the Lead declared; recorded as pending, not as a defect at this round. |
+
+Diff-quality observation (no defect): `data/competitor-observations.json` contributes 354 added / 99
+removed lines because inline arrays were re-formatted to multi-line arrays. A semantic comparison of
+the parsed JSON at `566343e` and `d85733e` shows exactly **one** changed observation (`OBS-CMP-040`,
+the Orca year-one correction); the remaining lines are whitespace/array formatting with no value
+change, and the file still parses and validates. No research value, score, governance status,
+canonical contract or price hypothesis was altered by the correction commit beyond the four fixes.
 
 ---
 
 ## 14. Verdict and honest limits
 
-**Round-1 verdict: PARTIAL — conditional.** This is not a judgement that the research is weak; the
-arithmetic, source handling, methodology, economics, governance, ranking and repository work are
-substantially verified, and no BLOCKING finding exists. PASS is withheld only because the decision
-document overstates one central competitive claim (F-01, MAJOR) and three small consistency defects
-(F-02/F-03/F-04) remain open, with one known integration step (F-06) that currently reds the market
-gate for a non-research reason. If the corrections above are made and re-verified in round 2, the
-desk-research scope should be signed off as PASS.
+**Final verdict: PASS — INTERNAL DESK-RESEARCH AND MARKET-INTELLIGENCE SCOPE.** After round 2 on
+`d85733e`, every audit dimension and every finding is closed: F-01 is scoped to the observed sample
+with an explicit statement that the sample cannot speak for the rest of the market; F-02 is corrected
+and consistent across all Orca references; F-03/F-04/F-05 are corrected; F-06 (manifest integration)
+is done and both market gates are green; F-07 is accepted residual risk with no fabricated fill-in;
+F-08 is the declared post-verdict delivery-update step. The deterministic gates at `d85733e` are
+`test:market` 40/40, `test:market:unit` 43/43, `test:products` 52/52, `test:bundles` 35/35,
+`test:brand` 21/21 and a clean `git diff --check`. No research value, score, governance status,
+canonical product/bundle contract, price hypothesis or restriction was changed by the correction
+commit; the delta is documentation, audit data and one corrected Orca observation plus formatting.
+
+This PASS covers the MC-09 desk-research and market-intelligence scope only. It is **not** a demand
+or willingness-to-pay validation, not price approval, not a compatibility or certification claim, and
+not authorisation to publish, sell, deploy, contact customers or start MC-10. The commercial status
+remains **BLOCKED / NOT_FOR_SALE**.
 
 What this audit does **not** establish, and what the research correctly does not claim:
 

@@ -1,9 +1,15 @@
 # MC-09 — Delivery record
 
-Status: `PASS — INTERNAL DESK-RESEARCH AND MARKET-INTELLIGENCE SCOPE` (subject to
-the independent review registered in `review/MC-09-REVIEW.md`; exact commit SHA,
-PR URL and gate results are recorded at the end of this file after the review and
-push, in the delivery-update commit).
+Status: `PASS — INTERNAL DESK-RESEARCH AND MARKET-INTELLIGENCE SCOPE`, confirmed by
+the independent review in `review/MC-09-REVIEW.md` (PASS, round 2, 8/8 findings
+closed). Final evidence: implementation commit `566343e`, audit-correction commit
+`d85733e`, draft PR [#15](https://github.com/manuelxose/embarcarte/pull/15) stacked
+on `feature/marea-mc08-bundles-commercial-architecture`. The final delivery-update
+commit is the branch head recorded on the PR.
+
+This PASS is limited to the desk-research scope. It does not validate customer
+demand, willingness to pay or profitability, and it does not clear any brand, IP,
+data, conformity or safety blocker.
 
 ## 1. Baseline verification (before any change)
 
@@ -73,7 +79,7 @@ shared one checkout (no worktree isolation), so writes were serialised by scope.
 
 ## 4. Data contract summary
 
-- 22 machine-readable files: governance status, manifest, six evidence files,
+- 23 machine-readable files: governance status, manifest, six evidence files,
   market inputs, geo assessments, 48 competitor observations, 56 price records,
   8 buyer segments, 23 public signals, 6 TCO models, 15 WTP hypotheses, 6 channel
   assessments, 29 search signals, 10 validation experiments, product/bundle
@@ -110,29 +116,68 @@ on every run (`MK-34`). No `src/`, `deploy/` or public-page change was made.
 
 ## 6. Commands and results
 
-Gate results are appended in the delivery-update commit after the independent
-review, so that the recorded evidence corresponds to the reviewed commit.
+Executed on the reviewed tree (commit `d85733e`, clean working tree), Windows 11,
+Node v24.18.0:
 
-Expected gates: `test:market`, `test:market:unit`, `test:products`,
-`test:products:unit`, `test:bundles`, `test:bundles:unit`, `test:brand`,
-`test:brand:unit`, `build`, `test:i18n`, `test:commerce`, `test:seo`,
-`test:backup`, `test:e2e`, `format:check`, `npm audit --omit=dev
---audit-level=high`, `git diff --check`.
+| Command | Result |
+|---|---|
+| `npm run test:market` | PASS — 40/40 checks |
+| `npm run test:market:unit` | PASS — 43/43 tests |
+| `npm run test:products` | PASS — 52/52 checks |
+| `npm run test:products:unit` | PASS — 106/106 tests |
+| `npm run test:bundles` | PASS — 35/35 checks |
+| `npm run test:bundles:unit` | PASS — 60/60 tests |
+| `npm run test:brand` | PASS — 21/21 checks, 24 governed files |
+| `npm run test:brand:unit` | PASS — 13/13 tests |
+| `npm run build` | PASS (Angular SSR production build) |
+| `npm run test:i18n` | PASS |
+| `npm run test:commerce` | PASS |
+| `npm run test:seo` | PASS — 101 sitemap URLs |
+| `npm run test:backup` | PASS |
+| `npm run test:e2e` | PASS — 15/15 (a first run while the production build was executing concurrently timed out once at navigation and did not reproduce on an isolated rerun; both runs are recorded, the isolated run is the gate result) |
+| `npm run format:check` | PASS — all matched files use Prettier |
+| `npm audit --omit=dev --audit-level=high` | PASS — 0 vulnerabilities |
+| `git diff --check` | PASS — no whitespace errors |
+
+The independent reviewer re-ran `test:market`, `test:market:unit`,
+`test:products`, `test:bundles`, `test:brand` and `git diff --check` at
+`d85733e` and independently reproduced the rankings, TAM/SAM/SOM arithmetic, TCO
+partial sums and 16 observed prices against their original URLs.
 
 ## 7. Independent review
 
-Findings, corrections and the final verdict are recorded in
-`review/MC-09-REVIEW.md` and `data/review-findings.json`, and summarised in the
-delivery-update commit.
+`review/MC-09-REVIEW.md` — **PASS — INTERNAL DESK-RESEARCH AND MARKET-INTELLIGENCE
+SCOPE**, round 2, no open BLOCKING/MAJOR/MINOR finding.
+
+Round 1 found 1 MAJOR, 3 MINOR and 4 INFORMATIONAL findings. All eight are closed
+with the reviewer's own re-verification:
+
+- F-01 (MAJOR): the executive report's universal "no competitor sells an installed
+  bundle" claim is now scoped to the 48 observed competitors / 27 sources, with a
+  statement that the sample cannot speak for the rest of the market.
+- F-02 (MINOR): Orca year-one totals corrected (one year of Smart Navigation is
+  included with Core, so the START-equivalent is EUR 649 year one and EUR 698
+  from year two; guard mode EUR 649 / EUR 798).
+- F-03 (MINOR): Spanish source breakdown corrected to 5 economics sources (115
+  total).
+- F-04 (MINOR): manifest buyer-segment purpose corrected to HYPOTHETICAL_ARCHETYPE.
+- F-05/F-06 (INFORMATIONAL): deliverable counts and manifest integration of
+  `review-findings.json` completed; validator back to 40/40.
+- F-07 (INFORMATIONAL): accepted residual — the Getxo tariff PDF could not be
+  re-opened and 62/115 sources have no `publishedAt`; recorded, not filled in.
+- F-08 (INFORMATIONAL): delivery-update fields completed in this commit.
 
 ## 8. Git and remote evidence
 
 - Branch: `feature/marea-mc09-market-competitive-intelligence`
 - Base: MC-08 HEAD `65417bfa681d31cc655e2bc91cfcedcccc368675`
-- Implementation commit: recorded in the delivery-update commit
-- Draft PR: stacked on `feature/marea-mc08-bundles-commercial-architecture`,
-  URL recorded in the delivery-update commit
-- No merge, no force-push, no tag, no deployment, no publication, no outreach
+- Implementation commit: `566343e493e392058bd1a662a6465e02ee4bccd0`
+- Audit-correction commit: `d85733e49c7e78fa8cfa045ff440579c57ff6bb5`
+- Draft PR: [#15](https://github.com/manuelxose/embarcarte/pull/15), base
+  `feature/marea-mc08-bundles-commercial-architecture`, draft, `MERGEABLE`
+- Remote head verified after push; no force-push
+- No merge, no force-push, no tag, no deployment, no publication, no checkout, no
+  outreach, no spend
 
 ## 9. Handoff to MC-10
 

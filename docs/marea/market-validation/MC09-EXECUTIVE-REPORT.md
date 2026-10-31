@@ -271,9 +271,9 @@ desplegar.
 
 ## 11. Evidencia y QA (control de calidad)
 
-- **Entregables:** 26 entregables (D1-D26): 24 documentos Markdown de contenido,
-  23 ficheros de datos JSON y 2 scripts de validación; índice completo en
-  `MC-09-DELIVERY.md`.
+- **Entregables:** 26 entregables (D1-D26): 25 documentos Markdown (24 de
+  contenido y el contrato de datos), 23 ficheros de datos JSON y 2 scripts de
+  validación; índice completo en `MC-09-DELIVERY.md`.
 - **Fuentes:** 115 registradas (20 mercado, 27 competencia, 20 compradores, 5
   economía, 38 canales, 5 metodología MC-10), con clase de evidencia, fecha de
   consulta y limitaciones. **136 afirmaciones** trazables.
@@ -287,8 +287,12 @@ desplegar.
 - **Regresión:** build, i18n, commerce, SEO, backup, brand, products, bundles,
   e2e, formato y auditoría de dependencias; resultados exactos en
   `MC-09-DELIVERY.md`.
-- **Revisión independiente:** veredicto y hallazgos en `review/MC-09-REVIEW.md`,
-  con cierre verificado de los hallazgos bloqueantes.
+- **Revisión independiente:** `review/MC-09-REVIEW.md` — **PASS (ámbito de
+  investigación documental)**, ronda 2, con los 8 hallazgos cerrados (1 mayor, 3
+  menores, 4 informativos) y verificación propia de las correcciones.
+- **Commit y PR:** implementación `566343e`, correcciones de auditoría `d85733e`;
+  PR borrador [#15](https://github.com/manuelxose/embarcarte/pull/15) apilado
+  sobre la rama de MC-08; sin fusión.
 - **Confirmación:** no se fusionó ninguna rama, no se desplegó, no se publicó
   contenido comercial, no se activó checkout y no se contactó a ningún cliente.
 

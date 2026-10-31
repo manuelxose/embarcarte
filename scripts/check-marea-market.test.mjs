@@ -393,7 +393,7 @@ test('MK-32 rejects an executive report that is not in Spanish with the mandated
 test('MK-33 rejects a registry row left as PLANNED after MC-09 delivery', () => {
   expectCheckFailure('MK-33', (root) => {
     editText(root, 'docs/marea/execution/MASTER-PROMPT-REGISTRY.md', (text) =>
-      text.replace(/(\|\s*09\s*\|[^\n]*?)\|\s*IN PROGRESS[^\n]*?\|/s, '$1| PLANNED |'),
+      text.replace(/(\|\s*09\s*\|[^\n]*?)\|\s*(?:IN PROGRESS|PASS)[^\n]*?\|/s, '$1| PLANNED |'),
     );
   });
 });
