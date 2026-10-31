@@ -802,7 +802,7 @@ const claimPatterns = [
     // still evaluates it outside negation, exclusion-list and quoted contexts,
     // and skips claim enumerations such as "orderable, purchasable or publishable".
     regex:
-      /(?:\b(?:is|are|was|were|be|remains?|becomes?|became|goes?|went|will\s+be|would\s+be|can\s+be|could\s+be|may\s+be|might\s+be|must\s+be|shall\s+be|has\s+become|have\s+become)\b(?:\s+(?:now|currently|already|officially|finally|still))?\s+(?:for sale|on sale|orderable|purchasable|available for purchase|available to buy|available for sale|offered for sale)|\b(?:est[áa]|est[áa]n|es|son)\b(?:\s+(?:ahora|ya|actualmente))?\s+(?:a la venta|disponible para (?:la |su )?compra)|\b(?:can be purchased|could be purchased|may be purchased|will be purchased|goes on sale|went on sale)\b)/i,
+      /(?:\b(?:is|are|was|were|be|remains?|becomes?|became|goes?|went|will\s+be|would\s+be|can\s+be|could\s+be|may\s+be|might\s+be|must\s+be|shall\s+be|has\s+become|have\s+become)\b(?:\s+(?:now|currently|already|officially|finally|still))?\s+(?:for sale|on sale|orderable|purchasable|available for purchase|available to buy|available for sale|offered for sale)|(?<![\p{L}\p{N}])(?:est[áa]|est[áa]n|es|son)(?![\p{L}\p{N}])(?:\s+(?:ahora|ya|actualmente))?\s+(?:a la venta|disponible para (?:la |su )?compra)|\b(?:can be purchased|could be purchased|may be purchased|will be purchased|goes on sale|went on sale)\b)/iu,
   },
   {
     label: 'a trademark clearance granted claim',
@@ -856,8 +856,8 @@ const GOVERNANCE_QUOTE_OUTRO =
 
 const blankSpan = (span) => span.replace(/[^\n]/g, ' ');
 
-function stripGovernanceQuotes(text) {
-  const withoutCode = text.replace(/`[^`\n]*`/g, blankSpan);
+function stripGovernanceQuotes(text, { stripCode = true } = {}) {
+  const withoutCode = stripCode ? text.replace(/`[^`\n]*`/g, blankSpan) : text;
   return withoutCode.replace(QUOTE_SPAN, (span, _group, offset, whole) => {
     const prefix = whole.slice(Math.max(0, offset - 80), offset);
     const suffix = whole.slice(offset + span.length, offset + span.length + 100);
@@ -2760,19 +2760,27 @@ check('BUNDLE-35', (record) => {
   for (const relativePath of targets) {
     const text = textOf(relativePath);
     if (text === null) continue;
+    // N-05: a governance document may cite the prohibited form inside a quoted
+    // example ("Never write the phrase \"rule \`CR-07\`\""). Suppress findings
+    // inside governance-introduced quoted spans, exactly as the claim scanner
+    // does, while leaving code spans intact so an unquoted stale reference such
+    // as "See rule \`CR-07\`" is still rejected.
+    const scanText = relativePath.endsWith('.json')
+      ? text
+      : stripGovernanceQuotes(text, { stripCode: false });
     for (const pattern of patterns) {
       const scanner = new RegExp(pattern.source, pattern.flags);
-      let match = scanner.exec(text);
+      let match = scanner.exec(scanText);
       while (match) {
         const tokenStart = match.index + match[0].indexOf(match[1]);
-        const prefix = text.slice(Math.max(0, tokenStart - 45), tokenStart);
-        const between = text.slice(match.index, tokenStart);
+        const prefix = scanText.slice(Math.max(0, tokenStart - 45), tokenStart);
+        const between = scanText.slice(match.index, tokenStart);
         const explicitlyALine =
           lineQualifier.test(prefix) || /\b(?:line|l[ií]nea|component|componente)\b/i.test(between);
         const cfgRulesBetween = /CFG-\d{2}/i.test(between);
         if (!explicitlyALine && !cfgRulesBetween) {
           references += 1;
-          const line = text.slice(0, match.index).split(/\r?\n/).length;
+          const line = scanText.slice(0, match.index).split(/\r?\n/).length;
           record.failures.push(
             `${relativePath}:${line} references the configuration rule ${match[1]} with the CR-NN line-id prefix; configuration rules use CFG-NN`,
           );

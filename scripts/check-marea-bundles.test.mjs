@@ -865,3 +865,75 @@ test('N-03 — a name-subject "available for sale" sentence is rejected', async 
     (result) => assertFails(result, 'BUNDLE-32', /subject-agnostic sale/),
   );
 });
+
+// --- MC-08 round-5 corrections (N-04 Unicode Spanish, N-05 governance quote) ---
+
+test('N-04 — accented Spanish sale sentences in a specification are rejected', async () => {
+  const sentences = ['MAREA START está a la venta.', 'MAREA START está disponible para la compra.'];
+  for (const sentence of sentences) {
+    await withFixture(
+      {
+        edit: {
+          'docs/marea/bundles/MAREA-START-COMMERCIAL-SPEC.md': (text) => `${text}\n\n${sentence}\n`,
+        },
+      },
+      (result) => assertFails(result, 'BUNDLE-32', /subject-agnostic sale/),
+    );
+  }
+});
+
+test('N-04 — accented Spanish sale sentences in ES customer copy are rejected', async () => {
+  const sentences = ['MAREA START está a la venta.', 'MAREA START está disponible para la compra.'];
+  for (const sentence of sentences) {
+    await withFixture(
+      {
+        edit: {
+          'docs/marea/bundles/copy/start.es.md': (text) => `${text}\n\n${sentence}\n`,
+        },
+      },
+      (result) => assertFails(result, 'BUNDLE-26', /sale \/ orderable/),
+    );
+  }
+});
+
+test('N-04 — unaccented Spanish sale forms remain rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/MAREA-START-COMMERCIAL-SPEC.md': (text) =>
+          `${text}\n\nMAREA START esta a la venta.\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-32', /subject-agnostic sale/),
+  );
+});
+
+test('N-04 — a negated accented Spanish sale sentence is accepted', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/MAREA-START-COMMERCIAL-SPEC.md': (text) =>
+          `${text}\n\nMAREA START no está a la venta.\n`,
+      },
+    },
+    (result) => {
+      assert.equal(result.code, 0, result.stdout);
+      assert.match(result.stdout, /RESULT: PASS/);
+    },
+  );
+});
+
+test('N-05 — a quoted governance example of the stale rule form is accepted', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/BUNDLE-ARCHITECTURE.md': (text) =>
+          `${text}\n\nNever write the phrase "rule \`CR-07\`"; configuration rules use CFG-NN.\n`,
+      },
+    },
+    (result) => {
+      assert.equal(result.code, 0, result.stdout);
+      assert.match(result.stdout, /RESULT: PASS/);
+    },
+  );
+});
