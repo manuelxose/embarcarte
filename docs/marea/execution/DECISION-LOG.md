@@ -672,3 +672,263 @@ non-applicable meta sections. (c) The reviewer treats any *undocumented* schema 
 `scripts/check-marea-products.mjs`.
 
 **Status effect.** No lifecycle change, no blocker cleared, no price approved.
+
+## D-018 — 2026-10-30 — MC-08 bundle definitions are a distinct contract type; no bundle inherits product approval
+
+**Context.** MC-08 turns the nine defined products into six commercial solutions. The programme has one
+product lifecycle (D-007), one evidence vocabulary and one machine-contract family. A bundle milestone could
+easily fork that system with a bundle lifecycle, a bundle "READY" flag, a bundle SKU or an inherited
+certification. It could also convert a blocked product into a sellable package simply by naming it inside a
+solution.
+
+**Decision.** (1) Bundles are a **distinct document and contract type** (`BUNDLE_DEFINITION_CONTRACT`), not a
+product family and not a commerce catalogue. Exactly six bundles exist: `START`, `CRUISE`, `SAIL`, `PROTECT`,
+`COMPLETE`, `FLEET` (customer-facing `MAREA FLEET package`). (2) Every bundle uses the 24 bundle fields B01–B24
+defined in `BUNDLE-ARCHITECTURE.md` §7 and carries evidence class, owner, references and release readiness
+per field; `TBD` is prohibited. (3) No new lifecycle, readiness or evidence vocabulary is created; the D-007
+lifecycle and the MC-05/MC-06/MC-07 vocabulary apply unchanged. All six bundles are `DEFINED` internally,
+`NOT_FOR_SALE` and `INTERNAL_ONLY`. (4) The only configuration outcomes are
+`CONFIGURATION_DEFINED_INTERNAL`, `COMPATIBILITY_EVIDENCE_REQUIRED`, `SPECIALIST_SURVEY_REQUIRED`,
+`QUOTATION_REQUIRED`, `NOT_ELIGIBLE` and `PUBLICATION_BLOCKED`; `ORDERABLE` does not exist in MC-08. (5) A
+bundle cannot inherit certification, compatibility, pricing, data-rights or publication approval from its
+components, and a bundle containing a blocked product remains blocked. (6) The bundle contract, inclusion
+vocabulary, conflict rules and eligibility questionnaires are reusable by MC-16, MC-23 and MC-24.
+
+**Rationale.** The nine-product governance is only auditable if the bundle layer consumes it rather than
+copies it. A bundle-specific lifecycle or an `ORDERABLE` outcome would let packaging become a second release
+gate - the exact failure the programme is designed to prevent.
+
+**Consequences.** (a) MC-08 may PASS its definition scope with all six bundles `NOT_FOR_SALE`. (b) The bundle
+validator must consume the three product contracts rather than maintain a product-name registry, and must
+reject any sale/approval/ORDERABLE state. (c) MC-16/MC-23/MC-24 must consume the same vocabulary and may not
+invent commercial rules in the configurator.
+
+**Evidence.** `docs/marea/bundles/BUNDLE-ARCHITECTURE.md`; `docs/marea/bundles/bundle-definitions.json`;
+`docs/marea/bundles/BUNDLE-CONFIGURATION-RULES.md`; `docs/marea/products/README.md` §1–§8, §24–§32.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved, no publication authorised.
+
+## D-019 — 2026-10-30 — Bundle reference configurations and edition pairings fixed
+
+**Context.** A bundle is only honest if it names the exact editions that deliver its outcome. Two historical
+bundle hypotheses can be reconciled against the edition hypotheses only if the pairing is explicit: START
+EUR 499 against NAV/HUB editions, and CRUISE EUR 1,399 against NAV/HUB/AIS/DISPLAY editions. Leaving the
+pairing to a later configurator would allow a "bundle" to be assembled from editions that cannot deliver the
+promised outcome.
+
+**Decision.** The canonical internal reference configurations are fixed: (1) `START` = `HUB-STANDARD` +
+`NAV-PRO`, because live instrument overlays are a NAV Pro capability (N10); `NAV-ESSENTIAL` is a documented
+lower-cost variant, not the reference. (2) `CRUISE` = `NAV-ESSENTIAL` + `HUB-STANDARD` + `AIS-RECEIVER` +
+`DISPLAY-7`, because AIS target display is included in NAV Essential (N11) and the fixed display is the
+navigation surface. (3) `SAIL` = `NAV-PRO` + `HUB-STANDARD` + `PILOT-COASTAL` (quotation required) +
+`SENSE-WIND` (conditional steering input). (4) `PROTECT` = `WATCH-CORE` + `SENSE-ESSENTIALS` (D-020).
+(5) `COMPLETE` = `NAV-PRO` + `HUB-PRO` + `DISPLAY-7` + `WATCH-CORE` + `SENSE-POWER`/`BILGE`/`TANKS`/`ENV` +
+`PILOT-COASTAL` (quotation required); AIS and WEATHER are optional. (6) `FLEET` package = `FLEET-START` or
+`FLEET-BUSINESS` subscription + separately quoted onboarding/registration/training/support; hardware,
+connectivity and installation are optional or quoted. `AIS-CONNECTED` is `CONDITIONAL` and not selected;
+`DISPLAY-LARGE-CONDITIONAL` is `INELIGIBLE` and never selectable; `PILOT-SAIL` is conditional and not default;
+`PILOT-PRO` is never a priced retail line.
+
+**Rationale.** Edition choice is a commercial decision with customer-visible consequences. Recording it makes
+the price reconciliation auditable (START 149+349 = 498 first-year hypotheses against EUR 499; CRUISE
+99+349+249+699 = 1,396 against EUR 1,399) and prevents a future configurator from silently substituting a
+cheaper edition that does not deliver the promised outcome.
+
+**Consequences.** (a) A bundle configuration that replaces the reference edition must state the outcome
+difference and cannot be called the same bundle. (b) The validator enforces edition resolution and the
+ineligibility of the conditional display and priced PILOT-Pro. (c) No pair of otherwise valid editions may be
+used to bypass the safety or data-rights gates.
+
+**Evidence.** `BUNDLE-ARCHITECTURE.md` §6; `BUNDLE-COMPOSITION-AND-EXCLUSIONS.md`; `PRODUCT-EDITIONS-NAV-HUB-AIS.md`;
+`PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md`; `PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md`;
+`PRODUCT-PRICING-AND-CHANNEL-MODEL*.md`; `BUNDLE-PRICING-AND-UNIT-ECONOMICS.md`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved.
+
+## D-020 — 2026-10-30 — PROTECT counts sensors once; kits expand to modules and HUB is not required
+
+**Context.** PROTECT is defined as WATCH plus essential sensors. The SENSE family has both loose modules and
+the `SENSE-ESSENTIALS` kit (power + bilge), which makes double counting the most likely composition defect in
+the milestone. The WATCH dossier also does not require a HUB, but batch-01 experience makes "a gateway is
+always needed" an easy assumption.
+
+**Decision.** (1) PROTECT's sensor content is the single `SENSE-ESSENTIALS` kit line, which expands exactly to
+`SENSE-POWER` + `SENSE-BILGE`; adding a loose power or bilge module as well is a duplicate and the
+configuration must be rejected (conflict CF-03). (2) Kit expansion is a declared mapping in
+`bundle-definitions.json` and the validator cross-checks it against the editions authority and the product
+contracts; a kit never invents a capability absent from its modules. (3) HUB is **not** required for the WATCH
+data path: batch-02 row I-11 defines no required HUB relationship for WATCH, and the intended sensor path is
+I-08 (`SENSE → WATCH`, `PLANNED`). `HUB-STANDARD` is an optional local dashboard only. (4) PROTECT is a
+solution bundle, not a SENSE kit and not a WATCH product page: hardware, sensors, connectivity, subscription
+and installation are each explicit.
+
+**Rationale.** A duplicated sensor inflates the value proposition and the price while delivering no extra
+measurement. A required HUB would add an unjustified EUR 349 product and a second installation to a
+monitoring solution that does not need it.
+
+**Consequences.** (a) The bundle validator implements kit expansion and duplicate detection. (b) The PROTECT
+specification and pricing framework exclude the HUB from the reference configuration. (c) MC-24 may not add a
+loose module when the kit already covers it.
+
+**Evidence.** `MAREA-PROTECT-COMMERCIAL-SPEC.md`; `PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md` §3;
+`PRODUCT-COMPATIBILITY-PILOT-SENSE-WATCH.md` rows I-08/I-11; `bundle-definitions.json`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved.
+
+## D-021 — 2026-10-30 — SAIL and COMPLETE remain vessel-specific quotations; PILOT is never a priced bundle line
+
+**Context.** The portfolio carries a SAIL hypothesis of EUR 1,990 and a COMPLETE hypothesis of EUR 3,490. Both
+contain PILOT. D-009 already establishes that PILOT is a vessel-specific quotation and that "from EUR 1,290"
+is not an all-inclusive price. A bundle milestone is exactly where that rule could be quietly reversed by
+summing component hypotheses into a "bundle price".
+
+**Decision.** (1) SAIL and COMPLETE carry
+`COMPLETE_COMMERCIAL_MODEL = VESSEL_SPECIFIC_QUOTATION`, `FIXED_TURNKEY_PRICE = NOT_ESTABLISHED`,
+`fixedTurnkeyPriceApproved = false`, `pilotSurveyRequired = true` and `quoteRequired = true`. (2) PILOT is
+modelled as `QUOTATION_REQUIRED`, never as an `INCLUDED` priced line; `PILOT-PRO` is `INELIGIBLE` as a priced
+retail SKU and may only appear as a quoted service scope. (3) The historical EUR 1,990 and EUR 3,490 are
+recorded for traceability as `HYPOTHESIS_UNAPPROVED` and are never presented as full installed prices or used
+as checkout values. (4) No bundle may provide a fixed-price checkout path for a PILOT installation, and no
+PILOT command path may be introduced through a bundle. (5) The PILOT safety gate remains
+`PILOT_SAFETY_GATE = BLOCKED`; SAIL and COMPLETE release readiness is `BLOCKED`.
+
+**Rationale.** A steering installation's content varies by an order of magnitude between vessels. A bundle
+price that cannot be delivered for the minimum usable configuration is a commercial misstatement, and a
+fixed-price checkout would put a blocked safety-critical product into an orderable state by packaging.
+
+**Consequences.** (a) SAIL/COMPLETE specs, copy, journeys and pricing are quotation-led; the validator rejects
+approved turnkey prices and priced PILOT-Pro. (b) MC-24 quotation triage must produce a survey/quotation
+outcome, never an orderable bundle. (c) The historical figures are not withdrawn from the record, only from
+the offer.
+
+**Evidence.** `MAREA-SAIL-COMMERCIAL-SPEC.md`; `MAREA-COMPLETE-COMMERCIAL-SPEC.md`;
+`BUNDLE-INSTALLATION-AND-QUOTATION-MODEL.md`; `BUNDLE-PRICING-AND-UNIT-ECONOMICS.md`; D-008/D-009;
+`MAREA-PILOT-COMMERCIAL-SPEC.md`; `PILOT-SAFETY-CASE-OUTLINE.md`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved, PILOT safety remains BLOCKED.
+
+## D-022 — 2026-10-30 — The MAREA FLEET package is distinct from the MAREA FLEET SaaS product family
+
+**Context.** "MAREA FLEET" already names a B2B SaaS product family (`FLEET-START`, `FLEET-BUSINESS`,
+`FLEET-ENTERPRISE`). MC-08 adds the "MAREA FLEET package", a wider professional offer that may include
+onboarding, installation, hardware and connectivity. Without a recorded boundary, the package would become a
+tenth family or the per-vessel SaaS fee would silently absorb hardware.
+
+**Decision.** (1) The bundle id is `FLEET`, machine `displayName` stays `MAREA FLEET`, and the customer-facing
+bundle name is always `MAREA FLEET package`. It is not a tenth product family and not a second SaaS.
+(2) The FLEET SaaS subscription remains the only SaaS edition set; the package composes it with separately
+quoted services and optional equipment. (3) Flags are frozen: `contractedSolution = true`,
+`hardwareIncludedByDefault = false`, `onboardingPricingEstablished = false`,
+`fixedPackagePriceEstablished = false`. (4) Hardware (WATCH/HUB/SENSE), connectivity/SIM, installation and
+onboarding are never included by default in the per-vessel fee; any SIL/contracted SLA exists only as a
+written, measurable commitment, otherwise `NO_SLA_ESTABLISHED`. (5) Tenant isolation, roles, audit,
+export/deletion and the read-only telemetry boundary are design requirements in every edition and are never
+sold as a premium tier; a device included in a package confers no tenant access.
+
+**Rationale.** The two senses of "FLEET" are the most likely customer and commercial confusion in the
+portfolio. Separating the product family from the package preserves the SaaS pricing shape (D-014) while
+allowing a legitimate integrated B2B offer.
+
+**Consequences.** (a) No document may merge the two into one price or offer. (b) The validator rejects
+cross-tenant access, automatic hardware inclusion and invented SLAs. (c) MC-23/MC-24 must present the package
+and the product family distinctly.
+
+**Evidence.** `MAREA-FLEET-PACKAGE-COMMERCIAL-SPEC.md`; `docs/marea/brand/brand-identity.contract.json`
+(`fleetDisambiguation`); `PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md` §4; D-014/D-015.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved, no SLA established.
+
+## D-023 — 2026-10-30 — Historical bundle prices remain unapproved; the price challenge verdicts are recorded
+
+**Context.** The portfolio contains five bundle price hypotheses and one bespoke package. MC-08 is the first
+milestone that can reconcile them against edition hypotheses and installation content. The risk is that a
+documentation milestone ratifies a headline figure by repeating it in a specification.
+
+**Decision.** (1) Every historical bundle figure remains `HYPOTHESIS_UNAPPROVED`; no price, discount, margin
+or VAT treatment is approved. (2) Verdicts are recorded: `START` EUR 499 is plausible only as an
+**uninstalled, product-only, first-year** reference against the 149+349 = 498 component hypotheses;
+`CRUISE` EUR 1,399 is plausible only as an uninstalled, product-only, first-year reference against
+99+349+249+699 = 1,396 and is **not** an installed-system price; `SAIL` EUR 1,990 is
+`FULL_BUNDLE_PRICE_NOT_ESTABLISHED`; `PROTECT` EUR 399 plus subscription is
+`HISTORIC_PRICE_NOT_COST_JUSTIFIED` with final price `OPEN`; `COMPLETE` EUR 3,490 is
+`FIXED_TURNKEY_PRICE = NOT_ESTABLISHED`; the `FLEET` package is bespoke. (3) No discount is approved; a
+bundle discount may only be justified by shared packaging, shared installation, reduced acquisition cost,
+reduced support duplication or channel efficiency, and may never hide mandatory accessories or installation.
+(4) No supplier/BOM/labour/connectivity/provider cost exists, so no contribution margin may be asserted.
+
+**Rationale.** A price becomes real through repetition. Recording the challenge, the missing cost categories
+and the exact conditions under which a figure could be legitimate prevents a later catalogue from treating a
+historical number as an approved price. The START/CRUISE sums match the historical figures closely enough to
+show they were product-only hypotheses, not installed-solution prices.
+
+**Consequences.** (a) MC-11/MC-12 must produce BOM, supplier, labour and data costs before any price
+approval. (b) The validator rejects `APPROVED`/`FINAL` prices, approved turnkey prices for SAIL/COMPLETE and
+any price in customer copy. (c) The delivery report must not present a PASS as a price approval.
+
+**Evidence.** `BUNDLE-PRICING-AND-UNIT-ECONOMICS.md`; `BUNDLE-COMPOSITION-AND-EXCLUSIONS.md`;
+`PRODUCT-PRICING-AND-CHANNEL-MODEL*.md`; `docs/marea/compliance/MC-02-BLOCKERS-AND-DECISIONS.md` X-05.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved.
+
+## D-024 — 2026-10-30 — Journey-stage reconciliation and bundle asset identity
+
+**Context.** MC-08 must deliver six 17-stage journeys. The established journey model in
+`docs/marea/products/README.md` §22 uses different stage labels from the MC-08 prompt's list (e.g. "Compatibility"
+vs "Eligibility", "Editions" vs "Configuration", "Fulfilment" vs "Order/contract", "Upgrade" vs "Expansion").
+The milestone also needs 60 bundle asset identifiers without colliding with the existing product asset ids
+(`FLEET-HERO-01` is already a FLEET product asset).
+
+**Decision.** (1) The README §22 17-stage model is canonical for MC-08; the MC-08 prompt labels are recorded as
+an explicit alias mapping in `BUNDLE-CUSTOMER-JOURNEYS.md` §1 (D-024). No second journey model is created.
+(2) Each stage records ten columns: Stage; Customer action; Touchpoint; Expected outcome; Preconditions;
+Failure/recovery; Required commercial data; Technical evidence; Trust/legal status; Future acceptance test.
+(3) Bundle asset ids use bundle prefixes `START-`, `CRUISE-`, `SAIL-`, `PROTECT-`, `COMPLETE-`, `FLEETPKG-`
+with the fixed ten-suffix model (`HERO-01`, `USE-02`, `OVR-03`, `EDN-04`, `ECO-05`, `INS-06`, `MOB-07`,
+`TMB-08`, `OG-09`, `TEC-10`), giving 60 unique ids. `FLEETPKG-` avoids collision with the FLEET product asset
+set. (4) Asset reconciliation is fixed: 60 planned = 24 blocked-on-image-generation + 30 reused MC-04
+vector/brief concepts + 6 authored specifications; 0 real-product assets, 0 publicly approved assets, 0
+generated files.
+
+**Rationale.** Two journey vocabularies would make journey acceptance untestable, and colliding asset ids
+would corrupt the future manifest. An explicit alias map and a distinct bundle prefix keep both systems
+auditable.
+
+**Consequences.** (a) The asset-requirements document and the machine contract use the 60 ids and the
+reconciliation. (b) The validator enforces 24/30/6 reconciliation and ES/EN alt text. (c) No image may be
+generated while X-03 is BLOCKED.
+
+**Evidence.** `BUNDLE-CUSTOMER-JOURNEYS.md`; `BUNDLE-ASSET-REQUIREMENTS.md`; `docs/marea/products/README.md`
+§22, §29; `docs/marea/brand/assets/` existing vector inventory.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved, no image generated, no
+publication authorised.
+
+## D-025 — 2026-10-30 — Historical portfolio wording "certified supervised pilot" is not an approval and is not carried into any bundle
+
+**Context.** The historical bundle table in `docs/marea/COMMERCIAL-PORTFOLIO.md` lists MAREA COMPLETE as
+"NAV, instruments, monitoring, display, certified supervised pilot". No PILOT certification exists (and the
+PILOT safety gate is `BLOCKED`, with no bench evidence, sea trials or conformity assessment), so the word
+"certified" is an unsupported historical assumption. MC-08 must not repeat it, and must not silently rewrite
+the portfolio either.
+
+**Decision.** (1) The word "certified" is not used for PILOT, for COMPLETE or for any bundle in MC-08.
+(2) The nine-product authority (`MAREA-PILOT-COMMERCIAL-SPEC.md`, `PILOT-SAFETY-CASE-OUTLINE.md`,
+`PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md`, D-008/D-009) governs: PILOT is supervised, vessel-specific,
+quotation-only and uncertified. (3) If a certified steering product is ever intended, it requires its own
+regulatory scope, conformity evidence and a separate product/edition decision; it cannot be created by bundle
+wording. (4) The conflict is recorded as an upstream wording issue for the business owner rather than edited
+into the historical portfolio record.
+
+**Rationale.** "Certified" is a regulated, consequential claim. Repeating it in a bundle specification would
+convert an unsupported historical word into an apparent commercial promise, and silently editing the
+historical record would hide the conflict from the reviewer.
+
+**Consequences.** (a) SAIL/COMPLETE copy carries no certification claim. (b) The validator and reviewer must
+reject any certification claim in bundle docs or copy. (c) Any future certification ambition is a separate
+milestone with its own evidence, not a bundle update.
+
+**Evidence.** `docs/marea/COMMERCIAL-PORTFOLIO.md` historical bundle table; `MAREA-PILOT-COMMERCIAL-SPEC.md`;
+`PILOT-SAFETY-CASE-OUTLINE.md`; `BUNDLE-SUBSCRIPTIONS-AND-ENTITLEMENTS.md` §11;
+`MAREA-COMPLETE-COMMERCIAL-SPEC.md`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no certification created, no price approved.
