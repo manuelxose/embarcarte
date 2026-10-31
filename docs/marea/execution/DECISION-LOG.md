@@ -932,3 +932,90 @@ milestone with its own evidence, not a bundle update.
 `MAREA-COMPLETE-COMMERCIAL-SPEC.md`.
 
 **Status effect.** No lifecycle change, no blocker cleared, no certification created, no price approved.
+
+## D-026 - 2026-10-31 - MC-09 authorises real desk research only, and market evidence cannot create a commercial approval
+
+**Context.** Master Prompt 09/36 requires real public market research, competitor benchmarking,
+buyer segmentation, pricing hypotheses and MC-10 preparation, while withholding publication, sales,
+customer outreach and paid research authorisation. The programme already treats documentation as a
+separate evidence class from physical, legal and commercial facts.
+
+**Decision.** (1) MC-09 performs desk research only: no interviews, surveys, advertising, purchases,
+outreach or paid data. (2) Every market or competitor claim carries a source registry entry with URL,
+publisher, retrieval date, evidence class, confidence and limitations, or is recorded as `UNKNOWN`
+with the missing evidence named. (3) A research PASS never changes `TRADEMARK_LEGAL_CLEARANCE =
+NOT_GRANTED`, `SOURCE_IP_CLEARANCE = NOT_CLEARED`, `NOT_FOR_SALE`, the PILOT safety gate, WATCH alert
+honesty or FLEET hardware defaults. (4) Hypotheses stay `HYPOTHESIS_UNAPPROVED`; competitor prices are
+not willingness to pay; missing costs are never zero. (5) `scripts/check-marea-market.mjs` and its
+negative-mutation suite enforce these rules mechanically, and an independent auditor rechecks sources
+and the real diff.
+
+**Rationale.** The programme's commercial risk is not a lack of confident language but the conversion
+of an assumption into an apparent commitment. Machine-checked honesty is the only durable control.
+
+**Consequences.** (a) 115 sources and 136 claims are registered and traceable. (b) Demand, WTP and
+profitability remain explicitly unvalidated and `PROFITABILITY_NOT_ESTABLISHED`. (c) A PASS is limited
+to the desk-research scope. (d) MC-10 remains not started and needs separate authorisation.
+
+**Evidence.** `docs/marea/market-validation/MC09-RESEARCH-SCOPE.md`;
+`docs/marea/market-validation/data/governance-status.json`;
+`scripts/check-marea-market.mjs`; `scripts/check-marea-market.test.mjs`; `MC-09-DELIVERY.md`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved, no publication or sale.
+
+## D-027 - 2026-10-31 - Commercial validation is sequenced software-first, hardware-second
+
+**Context.** MC-09 compared the software/services families (NAV, WEATHER, WATCH subscription) with the
+hardware families (HUB, AIS, SENSE, DISPLAY). Software has direct distribution and no manufacturing,
+conformity or installation dependency; hardware requires BOM, CE/EMC, installation and support that are
+all unestablished, while every hardware category already has mature, price-transparent incumbents.
+
+**Decision.** Commercial validation prioritises NAV (navigation) and WATCH/PROTECT (monitoring) before
+any hardware development commitment. HUB remains the candidate hardware component but only after
+integration value is evidenced. AIS and DISPLAY are reconsidered as integration of established equipment
+rather than manufactured products. FLEET is the post-beachhead recurring expansion. PILOT, SAIL and
+standalone SENSE are deferred (safety gate, dependency chain, commoditisation respectively).
+
+**Rationale.** Being wrong about software costs a learning cycle; being wrong about hardware costs
+tooling, inventory and conformity. The market already pays for navigation and monitoring software, so
+demand can be tested before capital is committed.
+
+**Consequences.** (a) MC-10 recruitment prioritises S3, S1, S5 and S6. (b) No hardware BOM or tooling is
+authorised. (c) Each family/bundle decision is recorded in `data/decision-links.json` with its evidence
+thresholds. (d) No canonical product definition or `NOT_FOR_SALE` status changes.
+
+**Evidence.** `docs/marea/market-validation/MC09-PORTFOLIO-PRIORITIZATION.md`;
+`docs/marea/market-validation/MC09-COMPETITIVE-POSITIONING.md`;
+`docs/marea/market-validation/data/product-assessments.json`;
+`docs/marea/market-validation/data/bundle-assessments.json`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved, no sale.
+
+## D-028 - 2026-10-31 - MC-09 finds no defensible price and leaves profitability unestablished
+
+**Context.** The historical MAREA figures are unapproved hypotheses. MC-09 observed heterogeneous
+competitor prices and no installed complete-solution price anywhere in the market. Installation labour is
+observable in Spain (EUR 59-76/hour, electronics EUR 61/hour at Marina Coruna, VAT excluded) but no
+Spanish marine-electronics installer tariff, BOM, supplier quotation, channel margin, connectivity cost or
+CAC could be verified. The PROTECT historical figure (EUR 399) is below its own composition (WATCH EUR 299
+plus two SENSE modules at EUR 99 = EUR 497 before installation).
+
+**Decision.** (1) No family or bundle price is approved; the historical register stays
+`HYPOTHESIS_UNAPPROVED` / `NOT_ESTABLISHED`. (2) `PROFITABILITY_NOT_ESTABLISHED` applies to all nine
+families and six bundles. (3) MC-09 records the composition contradiction of PROTECT and the below-parts-floor
+historical figures of SAIL and COMPLETE for traceability, without rewriting the historical record.
+(4) Price proposals require MC-10 WTP evidence plus real supplier quotations and a verified Spanish
+installation rate.
+
+**Rationale.** Approving a price without cost or willingness-to-pay evidence would convert a research
+milestone into an unfounded commercial commitment, which the programme prohibits.
+
+**Consequences.** (a) Every TCO model is `INCOMPLETE` with named unknowns and no definitive total. (b) No
+checkout, offer or "from" price is published. (c) MC-11/MC-12 become the pricing-evidence owners.
+
+**Evidence.** `docs/marea/market-validation/economics/MC09-PRICING-AND-WTP.md`;
+`docs/marea/market-validation/economics/MC09-CUSTOMER-TCO.md`;
+`docs/marea/market-validation/economics/MC09-COMMERCIAL-ECONOMICS.md`;
+`docs/marea/market-validation/data/tco-models.json`; `data/governance-status.json`.
+
+**Status effect.** No lifecycle change, no blocker cleared, no price approved, no sale or checkout.

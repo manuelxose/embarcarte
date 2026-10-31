@@ -1,0 +1,233 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "workstream": "channels",
+  "owner": "agent-e-channels",
+  "scopeNote": "Six realistic routes to market assessed against publicly observable channel and installation-labour evidence; no partnership, margin, commission or discount is asserted.",
+  "channels": [
+    {
+      "channelId": "CHN-A",
+      "name": "A — Direct online sales (EMBARCARTE site and checkout)",
+      "mareaFamilies": ["NAV", "WEATHER", "FLEET"],
+      "mareaBundles": [],
+      "buyerSegment": "Software-first leisure sailor or coastal cruiser who already owns a smartphone/tablet and does not require vessel work; small fleet administrator buying a SaaS tenancy with no hardware.",
+      "salesProcess": "Self-service: discover, compare editions, purchase an annual entitlement, onboard digitally, self-configure supported inputs, escalate compatibility questions. Hardware compatibility must be an explicit pre-check, never an implied inclusion.",
+      "commercialDependency": "Own checkout, entitlement/billing platform, payment provider, chart and weather data licences, support staffing. No third party margin is paid, but all acquisition, support, refund and data costs sit on EMBARCARTE.",
+      "implementationComplexity": "MEDIUM for NAV/WEATHER/FLEET tenancy (software, tax and licensing work); HIGH for anything with hardware, because a D2C hardware order without a compatibility or installation step contradicts the installation model of MC-08 (SFR-1 excluded).",
+      "evidenceClaimIds": ["CLM-CHN-009", "CLM-CHN-010", "CLM-CHN-018", "CLM-CHN-019"],
+      "unprovenAssumptions": [
+        "That Spanish and Portuguese buyers will buy an annual navigation/weather subscription at the portfolio hypothesis price levels; no willingness-to-pay measurement exists.",
+        "That chart licensing can be obtained on terms that allow a bundled or inclusive offer; licence rights are BLOCKED under MC-05.",
+        "That organic discovery exists at a scale worth serving; SEARCH_INTEREST is INACCESSIBLE and no traffic data was observed.",
+        "That a self-service funnel can absorb 'why does my device not connect' support load at an acceptable cost."
+      ],
+      "economicStructure": {
+        "observed": "Two European specialist online chandleries are estimated at ~USD 13.3M (svb.de, 2025, 0-5% growth) and ~USD 4.9M (compass24.de, 2025, down 20-50%) annual online sales; specialist online nautical retail clearly exists and is volatile.",
+        "notPubliclyKnown": "Payment fee schedule, refund rate, hosting and data-licence cost, support cost per subscriber, acquisition cost, renewal rate.",
+        "marginStatus": "UNKNOWN — no cost input is sourced; no margin is claimed.",
+        "channelMarginPercent": "UNKNOWN",
+        "sourceIds": ["SRC-CHN-018", "SRC-CHN-019"]
+      },
+      "supportRequirements": [
+        "Tier-0 self-service: edition matrix, compatibility matrix, supported-device list, offline/degraded-state behaviour.",
+        "Tier-1 digital support for account, entitlement, chart region and device connection issues.",
+        "Data-protection and cancellation/withdrawal handling; legal review of consumer terms is OPEN.",
+        "Export of customer route/log data on cancellation or expiry."
+      ],
+      "barriers": [
+        "No approved price exists, so no checkout may be enabled for any SKU.",
+        "Chart and weather data licences are BLOCKED, so a sellable NAV/WEATHER scope cannot be published honestly.",
+        "MAREA is a proposed brand with brandPublication = NOT_GRANTED; D2C selling would require the clearance and legal seller identity first.",
+        "Consumer-law terms (withdrawal, renewal notice, warranty) are OPEN and cannot be improvised at checkout."
+      ],
+      "validationExperiment": "EX-CHN-01: a content-plus-waitlist test on existing site routes measuring (a) qualified 'request a quotation / register interest' submissions by edition, (b) which compatibility questions arrive first, (c) the wording that produces a wrong-price assumption. No page sells or states a price; success threshold fixed in advance by the Lead; instrumenting must remain privacy-reviewed."
+    },
+    {
+      "channelId": "CHN-B",
+      "name": "B — Marine electronics installers (independent and small specialist firms)",
+      "mareaFamilies": ["HUB", "AIS", "DISPLAY", "SENSE", "PILOT", "WATCH", "NAV"],
+      "mareaBundles": ["START", "CRUISE", "SAIL", "PROTECT", "COMPLETE"],
+      "buyerSegment": "Refit and upgrade customer: owner of a 6-15 m sailing or motor cruiser with mixed-age instruments whose boat needs physical integration, commissioning and handover.",
+      "salesProcess": "Installer assesses the vessel, proposes a configuration, quotes hardware plus labour separately, installs and commissions, trains the owner, provides first-line support and handles warranty intake.",
+      "commercialDependency": "Depends entirely on a partner network that does not exist: no agreement, no register, no competence criteria, no rate card (MC-08 §1, §16). The installer's own commercial model depends on labour billing, not on product margin alone.",
+      "implementationComplexity": "HIGH. Requires a compatibility questionnaire, refusal criteria, installation records, warranty allocation and safety escalation before a single job can be accepted.",
+      "evidenceClaimIds": ["CLM-CHN-001", "CLM-CHN-002", "CLM-CHN-003", "CLM-CHN-005", "CLM-CHN-008", "CLM-CHN-011", "CLM-CHN-012", "CLM-CHN-013"],
+      "unprovenAssumptions": [
+        "That Iberian installers will adopt a new unproven brand rather than the ecosystems they already install and support.",
+        "That measured install time for HUB/AIS on representative vessels is small enough to make the labour line acceptable; no install-hour measurement exists.",
+        "That any installer margin is required — and at what level — to compensate their first-line support and warranty exposure.",
+        "That the published marina tariff labour rates are a reasonable proxy for independent installer billing; they are a marina's own work-shop rate, not an independent firm's price."
+      ],
+      "economicStructure": {
+        "observed": "Published marina/yard labour rates in Spain: 59 EUR/h workshop, 76 EUR/h express workshop, 47/65 EUR/h fairing, and an electronics-specific 61 EUR/h at Marina Coruña (2026, VAT excluded); Getxo publishes 32.02 EUR/h; a US marine electrical contractor publishes 180 USD/h standard, 120 USD/h apprentice and 120 USD/h travel with a two-hour minimum.",
+        "labourCostBenchmarks": "Marine installer gross-salary estimates in ES/PT of 9.49-14 EUR/h; Spanish fully-loaded industrial operator hour 16.70-17.90 EUR; port-tender electrician unit prices 18.11 EUR/h (Oficial 1ª) and 15.69 EUR/h (helper).",
+        "notPubliclyKnown": "Installer margin on hardware, trade discount, payment terms, stock rotation, labour hours per installation, travel policy, warranty labour reimbursement.",
+        "marginStatus": "UNKNOWN — no installer margin, discount or commission for MAREA or for any comparable Iberian product was found; only the customer-facing labour rates above are public.",
+        "channelMarginPercent": "UNKNOWN",
+        "sourceIds": ["SRC-CHN-001", "SRC-CHN-004", "SRC-CHN-008", "SRC-CHN-009", "SRC-CHN-010", "SRC-CHN-012", "SRC-CHN-013"]
+      },
+      "supportRequirements": [
+        "Technical bulletins, firmware/software release notes and a documented compatibility matrix the installer can trust.",
+        "Escalation path to EMBARCARTE engineering for defects and safety-relevant incidents.",
+        "Warranty intake process, RMA route and clear allocation of workmanship versus product liability.",
+        "Owner-facing training material the installer can deliver, with what is NOT verified stated explicitly."
+      ],
+      "barriers": [
+        "No installer network, agreement, register, competence scheme or rate card exists (MC-08 X-05, X-06).",
+        "No measured installation time and no validated survey method; PILOT remains gated behind a safety case and sea trials.",
+        "A new brand with no installed base creates a support and reputation risk for the installer.",
+        "The published labour rates are for yard tasks; a mixed-vessel integration job is quoted per vessel and cannot be inferred from an hourly yard rate."
+      ],
+      "validationExperiment": "EX-CHN-02: structured discovery with 5-8 independent installers in Galicia and Portugal (no MAREA demo, no price list) capturing their current brands, hourly billing, travel policy, typical install hours for a gateway and an AIS receiver, what they charge for first-line support, and what they would require in writing to install an unproven brand. Output: a range of quoted labour hours and billing practices, recorded as DISCOVERY_NOT_PRICE."
+    },
+    {
+      "channelId": "CHN-C",
+      "name": "C — Marine equipment distributors (national wholesalers and pan-European B2B groups)",
+      "mareaFamilies": ["NAV", "HUB", "AIS", "DISPLAY", "SENSE", "PILOT", "WATCH"],
+      "mareaBundles": ["START", "CRUISE", "SAIL", "PROTECT", "COMPLETE"],
+      "buyerSegment": "Indirect: the distributor's shipchandler and installer account base. The end customer is the same boat owner as channel B, reached through two layers.",
+      "salesProcess": "Account opening, brand listing, opening order, stocking terms, resale to dealers/installers, logistics and returns through the distributor, with MAREA providing product and technical support.",
+      "commercialDependency": "Depends on a listing decision by a company whose business is logistics and catalogue breadth, not on marketing a new marine brand. It also depends on MAREA being able to supply at a trade price and honour stock, warranty and returns.",
+      "implementationComplexity": "HIGH: product data (multilingual catalogue, EAN, manuals, declarations), packaging/logistics, credit and payment terms, stock commitment, after-sales and RMA process, market-price governance.",
+      "evidenceClaimIds": ["CLM-CHN-007", "CLM-CHN-008", "CLM-CHN-013", "CLM-CHN-014", "CLM-CHN-036"],
+      "unprovenAssumptions": [
+        "That an Iberian wholesaler would list a not-yet-certified brand at all; no approach has been made and no outreach is authorised in MC-09.",
+        "That a distributor's required trade discount can be absorbed; no percentage is public, and the anecdote of about 50% of list is US and unverified.",
+        "That MAREA can meet listing prerequisites (certification, product data, stock, warranty) inside a first year.",
+        "That a distributor would carry the catalogue range rather than a single best-selling SKU."
+      ],
+      "economicStructure": {
+        "observed": "An Iberian wholesale distribution layer for marine electronics and communications exists (Navegar y Pescar CMC, described as a wholesale distributor for Spain and Portugal). Pan-European groups operate national distribution companies exclusively B2B to shipchandlers, with subsidiaries named in France, Germany, Italy, Spain and Sweden. One US manufacturer publishes a dealer installation-rebate programme; one publishes distributor credit and retention-of-title terms; another operates a dealer-application route.",
+        "notPubliclyKnown": "Trade discount, volume tiers, payment days, stock rotation, marketing co-op, rebate levels, exclusivity, RMA cost split.",
+        "marginStatus": "UNKNOWN — no distributor or dealer margin for Spain or Portugal was published in any page reached. The only numeric indication is an unverified US forum anecdote that direct-buying dealers pay about 50% of list.",
+        "channelMarginPercent": "UNKNOWN",
+        "sourceIds": ["SRC-CHN-014", "SRC-CHN-015", "SRC-CHN-020", "SRC-CHN-023", "SRC-CHN-026"]
+      },
+      "supportRequirements": [
+        "Trade product information and training for the distributor's account managers and their dealers.",
+        "Spare parts, warranty administration and defined RMA turnaround.",
+        "Price-position governance so that published consumer hypotheses are never mistaken for trade or approved prices.",
+        "Multilingual manuals and declarations sufficient for catalogue listing."
+      ],
+      "barriers": [
+        "No certification or declaration of conformity exists, which is a precondition for catalogue listing.",
+        "No approved price or trade-price structure exists, so a distributor conversation would be premature and is out of scope for MC-09.",
+        "Two-layer distribution reduces control of the customer relationship and raises support ambiguity.",
+        "Distributor listing decisions depend on proven sell-through; MAREA has sold nothing."
+      ],
+      "validationExperiment": "EX-CHN-03 (MC-10 only, subject to Lead authorisation): desk-only mapping of Iberian and pan-European nautical distributors and the listing prerequisites they publish (trade account forms, required product data, certification), with no contact made. Output: a prerequisite checklist and a named list of what must exist before any approach. Success = a documented, non-solicited prerequisite set; no terms are requested or invented."
+    },
+    {
+      "channelId": "CHN-D",
+      "name": "D — Marinas and shipyards (yard services and refit contractors)",
+      "mareaFamilies": ["HUB", "AIS", "SENSE", "WATCH", "DISPLAY", "PILOT"],
+      "mareaBundles": ["START", "CRUISE", "PROTECT", "SAIL", "COMPLETE"],
+      "buyerSegment": "Berth holder undertaking seasonal maintenance or a refit; the marina is both a services provider (labour) and a captive audience with a physical workshop.",
+      "salesProcess": "Owner books yard time; the yard's own workshop or an external installer performs work; the marina bills infrastructure (crane, ramp, yard days) and labour by task or hour; the sale of electronics may be the yard's own margin line or a referral.",
+      "commercialDependency": "Depends on yard willingness to install a new brand and on the yard's own service pricing, which is published but heterogeneous. The marina may be a competitor (selling existing brands) rather than a channel.",
+      "implementationComplexity": "MEDIUM-HIGH: access to vessels, yard scheduling, seasonal peaks, electrical safety responsibility, subcontractor rules, and the fact that each marina prices labour differently.",
+      "evidenceClaimIds": ["CLM-CHN-001", "CLM-CHN-002", "CLM-CHN-003", "CLM-CHN-020", "CLM-CHN-021"],
+      "unprovenAssumptions": [
+        "That marinas will install third-party-branded electronics rather than products they already distribute.",
+        "That yard labour rates observed in Galicia, the Basque Country and Catalonia generalise to Portugal or to the Mediterranean refit yards.",
+        "That berth capacity implies electronics install demand; no marina-level installation volume data exists.",
+        "That a marina would accept MAREA's limitation and disclaimers as part of its own service liability."
+      ],
+      "economicStructure": {
+        "observed": "Marinas publish full labour and infrastructure tariffs: Marina Coruña 2026 (59/76/47/65 EUR/h by task, electronics 61 EUR/h, VAT excluded); Getxo 32.02 EUR/h; Ports de la Generalitat crane 60.400 EUR/h and ramp 7.090 EUR/m/day; Marina Palamós 2.50 EUR/m/day yard surcharge for repair works. Spain has 289 recreational ports and 134,200 berths (March 2026).",
+        "notPubliclyKnown": "Whether marinas buy electronics at trade, what they mark up, how they allocate workshop vs subcontractor work, and how much of the berth base actually installs electronics each year.",
+        "marginStatus": "UNKNOWN for product margin; the observed public figures are customer-facing labour and infrastructure rates only.",
+        "channelMarginPercent": "UNKNOWN",
+        "sourceIds": ["SRC-CHN-001", "SRC-CHN-004", "SRC-CHN-005", "SRC-CHN-007", "SRC-CHN-031"]
+      },
+      "supportRequirements": [
+        "A clear split between yard workmanship liability and MAREA product liability.",
+        "Installation instructions that a general yard workshop, not only a marine-electronics specialist, can follow safely.",
+        "Safety escalation for anything touching steering, motor power or tank penetration.",
+        "Documented commissioning and handover records."
+      ],
+      "barriers": [
+        "No partner agreement, no competence assessment and no insurance position exists.",
+        "Marinas already earn on brands they stock; a new brand adds training cost without proven demand.",
+        "Yard labour is billed by published tariffs that vary by a factor of more than two across regions, so a single national 'installation price' would be false.",
+        "Steering-related work (PILOT) is out of reach until the safety case and conformity work close."
+      ],
+      "validationExperiment": "EX-CHN-04: a tariff and service-catalogue review of 10-15 Spanish and Portuguese marinas/yards, recording published labour rates, whether electronics installation is offered, and what certification or insurance they state. Desk-only, no contact. Output: a regional labour-rate table and a segmentation of yards by stated service scope."
+    },
+    {
+      "channelId": "CHN-E",
+      "name": "E — Charter and fleet operators (rental fleets, sailing schools, fleet managers)",
+      "mareaFamilies": ["FLEET", "WATCH", "NAV", "AIS", "WEATHER", "SENSE"],
+      "mareaBundles": ["FLEET"],
+      "buyerSegment": "Multi-vessel professional operator: charter company, sailing school, boat club or manager. Buys a contract, not a product; cares about uptime, staff turnover, insurance evidence and per-vessel cost.",
+      "salesProcess": "Discovery, pilot on a subset of vessels, written contract (SFR-5), onboarding per vessel, telemetry installation, role/permission setup, support and reporting. Procurement is usually a director/owner decision with a maintenance manager as influencer.",
+      "commercialDependency": "Depends on a contracted B2B motion and on hardware/connectivity: FLEET's value comes from telemetry, so it depends on HUB/WATCH/SENSE availability, which are BLOCKED. Also depends on data-protection basis for crew and vessel data.",
+      "implementationComplexity": "HIGH: tenancy isolation, SLAs, onboarding scope, connectivity contracts, per-vessel hardware, multi-user permissions, audit and export.",
+      "evidenceClaimIds": ["CLM-CHN-018", "CLM-CHN-021", "CLM-CHN-022", "CLM-CHN-023", "CLM-CHN-024"],
+      "unprovenAssumptions": [
+        "That operators will pay a per-vessel monthly fee on top of hardware and connectivity; no Iberian willingness-to-pay evidence exists.",
+        "That FLEET can be sold before WATCH/HUB telemetry exists; the dependency is structural, not cosmetic.",
+        "That the declining Balearic rental market (about -25% in the 2025 season) leaves budget for software.",
+        "That charter operators want software from a new brand rather than the yacht-management suites already marketed to them."
+      ],
+      "economicStructure": {
+        "observed": "Comparable fleet/yacht SaaS list prices: USD 5.18 per vessel per month in 50-150 vessel blocks with a USD 259 monthly minimum (Rynda); 99-399 EUR plan prices (Scyllastar). Market context: ~3,500 licensed rental boats in the Balearics with day rates 250-15,000 EUR; 1,418 rental registrations nationally in 2025, 321 in the Balearics; 37 marinas and 42 certified nautical stations in Portugal.",
+        "notPubliclyKnown": "Iberian charter-operator software budgets, procurement cycles, per-vessel connectivity cost, hardware retrofit cost, contract length, churn.",
+        "marginStatus": "UNKNOWN — SaaS comparators describe price points, not achievable margin; hardware, SIM, onboarding and support costs are unsourced.",
+        "channelMarginPercent": "UNKNOWN — direct contracted sale assumed; no reseller or agent terms exist.",
+        "sourceIds": ["SRC-CHN-027", "SRC-CHN-028", "SRC-CHN-032", "SRC-CHN-033", "SRC-CHN-034"]
+      },
+      "supportRequirements": [
+        "Named account support during season, with escalation inside operating hours.",
+        "Onboarding per vessel including device registration and consent.",
+        "Data-processing terms, retention and deletion, role-based access and audit logs.",
+        "A written SLA — none exists (NO_SLA_ESTABLISHED) and none may be promised."
+      ],
+      "barriers": [
+        "FLEET Enterprise is NOT_ESTABLISHED; no contracted terms, no tenancy evidence, no onboarding scope.",
+        "No hardware telemetry path exists to make FLEET's core promise real.",
+        "Data-protection basis for crew/vessel data is OPEN (X-07).",
+        "No references, no pilot fleet and no SLA; professional buyers require all three."
+      ],
+      "validationExperiment": "EX-CHN-05: 3-5 discovery interviews with charter/school operators in the Balearics and Galicia about how they currently track vessel status, what they pay for management tools and connectivity, and what evidence they require from a supplier. No product demo, no price quoted, no reference claimed. Output: a problem/priority map and a list of what they would need to see first."
+    },
+    {
+      "channelId": "CHN-F",
+      "name": "F — Nautical e-commerce and specialist retail (multi-brand online stores and chandlers)",
+      "mareaFamilies": ["AIS", "HUB", "DISPLAY", "SENSE", "WATCH", "NAV"],
+      "mareaBundles": ["START", "CRUISE", "PROTECT"],
+      "buyerSegment": "Price-comparing, self-selecting buyer who researches online and either self-installs simple items or buys hardware before hiring an installer.",
+      "salesProcess": "Catalogue listing, comparison content, cart checkout, shipping; the retailer owns the transaction and the return, MAREA supplies product data and warranty.",
+      "commercialDependency": "Depends on listing with specialist retailers that already carry Garmin, Raymarine, Simrad, Lowrance and Digital Yacht, on margin structure, and on the retailer's willingness to explain an unproven brand.",
+      "implementationComplexity": "MEDIUM: catalogue data, logistics, returns, price governance, and the risk that a comparison-driven buyer selects a cheaper incumbents' receiver.",
+      "evidenceClaimIds": ["CLM-CHN-009", "CLM-CHN-010", "CLM-CHN-016", "CLM-CHN-017", "CLM-CHN-030"],
+      "unprovenAssumptions": [
+        "That an unproven brand can win catalogue space against five or more established electronics brands in the same store.",
+        "That online buyers of AIS/gateway hardware will accept an installation requirement disclosed at checkout.",
+        "That MAREA's margins survive retail discounting; the only numeric margin indication is an unverified US anecdote.",
+        "That traffic exists: no search-volume or traffic-opportunity measurement was obtainable."
+      ],
+      "economicStructure": {
+        "observed": "Spanish and European specialist online nautical retail exists at catalogue scale (GPS Náutico distributing Garmin, Lowrance, Simrad, Raymarine, Humminbird; MercaNautic self-describing >30,000 products). Third-party estimates: svb.de ~USD 13.3M and compass24.de ~USD 4.9M online sales in 2025. US trade coverage describes manufacturer-set MRP and authorised-dealer policing of discounts.",
+        "notPubliclyKnown": "Retailer margin, listing fees, returns rate, payment terms, co-op marketing, price-maintenance rules applicable in the EU.",
+        "marginStatus": "UNKNOWN — no retailer margin or discount was published; the 50%-of-list anecdote is unverified and US-specific.",
+        "channelMarginPercent": "UNKNOWN",
+        "sourceIds": ["SRC-CHN-016", "SRC-CHN-017", "SRC-CHN-018", "SRC-CHN-019", "SRC-CHN-025", "SRC-CHN-026"]
+      },
+      "supportRequirements": [
+        "Accurate catalogue data, EAN, manuals, and a compatibility statement the retailer can rely on.",
+        "Retail return handling and warranty intake.",
+        "Content that the retailer can reuse (comparison tables, installation requirements) without misrepresenting certification.",
+        "Rapid response to end-customer questions the retailer cannot answer."
+      ],
+      "barriers": [
+        "No certification, no BOM, no approved price and no packaging — a catalogue cannot list the product.",
+        "Comparison positioning against established brands is unfavourable while prices are unapproved hypotheses.",
+        "EU resale-price-maintenance practice must not be modelled on the US MRP description without competition-law review.",
+        "Returns of installed marine electronics are commercially and practically different from returns of clothing."
+      ],
+      "validationExperiment": "EX-CHN-06: a structured catalogue audit of 8-12 Spanish, Portuguese and pan-European nautical retailers recording which AIS/gateway/monitoring products they list, how they describe installation, and what information they publish about compatibility. Desk-only. Output: a listing-prerequisite checklist and a competitive shelf map; no contact and no listing request."
+    }
+  ]
+}

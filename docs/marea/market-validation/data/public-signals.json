@@ -1,0 +1,218 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "workstream": "buyers",
+  "owner": "agent-c-buyers",
+  "scopeNote": "Publicly observable customer problems relevant to the MAREA product system, classified by evidence type with an honest independence assessment. Desk research only; no interviews or outreach.",
+  "retrievedAt": "2026-10-31",
+  "signals": [
+    {
+      "signalId": "SIG-BUY-001",
+      "topic": "Navigation and electronics fragmentation on older boats",
+      "evidenceType": "REPEATED_OBSERVATION",
+      "sourceIds": ["SRC-BUY-001", "SRC-BUY-003", "SRC-BUY-004"],
+      "summary": "Across three independent owner forums, owners describe refits where retained legacy NMEA 0183 units, newer NMEA 2000 devices and different manufacturer ecosystems must coexist, and the recurring advice is to stay inside one brand to avoid integration risk.",
+      "independence": "INDEPENDENT - three different forums and publishers, different threads and authors; no shared syndication detected.",
+      "limitations": "Self-selected owner communities; no sample definition, incidence or country weighting; the observation establishes that the problem is articulated, not how common it is."
+    },
+    {
+      "signalId": "SIG-BUY-002",
+      "topic": "Mixed-brand autopilot and chartplotter control limits",
+      "evidenceType": "ANECDOTE",
+      "sourceIds": ["SRC-BUY-003", "SRC-BUY-004"],
+      "summary": "Forum contributors state that radar and full autopilot control can require same-brand plotter and autopilot, and that route-following behaviour (route versus waypoint-by-waypoint) differs between brands.",
+      "independence": "PARTIALLY_INDEPENDENT - two forums, but both extracts are short and describe the same class of claim; compatibility rules were not verified with vendor documentation.",
+      "limitations": "Snippet-level evidence; model- and firmware-specific behaviour may differ; not a technical specification and not usable as a compatibility claim."
+    },
+    {
+      "signalId": "SIG-BUY-003",
+      "topic": "Legacy analogue sensor cannot be shared between two devices",
+      "evidenceType": "ANECDOTE",
+      "sourceIds": ["SRC-BUY-002"],
+      "summary": "A forum thread states that two displays cannot share one analogue resistive sensor without interference, which constrains partial modernisation of older instrument systems.",
+      "independence": "SINGLE_SOURCE - one thread, one extract.",
+      "limitations": "Not verified against manufacturer documentation; illustrates a possible technical constraint only."
+    },
+    {
+      "signalId": "SIG-BUY-004",
+      "topic": "Receive-only AIS is retailed as a paid hardware category",
+      "evidenceType": "PURCHASE_DEMAND",
+      "sourceIds": ["SRC-BUY-005"],
+      "summary": "A UK chandlery lists multiple receive-only AIS models from one brand across a roughly GBP 216 to GBP 637 excluding VAT band, showing an actively retailed paid market for receiver hardware.",
+      "independence": "SINGLE_SOURCE - one retailer price listing.",
+      "limitations": "Retail offers indicate supply and price positioning, not unit sales, market size or willingness to pay; no price date is shown."
+    },
+    {
+      "signalId": "SIG-BUY-005",
+      "topic": "Receive-only versus transmitting AIS value debate",
+      "evidenceType": "ANECDOTE",
+      "sourceIds": ["SRC-BUY-001"],
+      "summary": "Within one refit thread, contributors disagree sharply about whether receive-only AIS is worthwhile, with some arguing that being seen (transmission) is the main safety value and others valuing receive-only traffic awareness.",
+      "independence": "SINGLE_SOURCE - one thread.",
+      "limitations": "Opinion, not measured safety outcome; does not establish prevalence of either view."
+    },
+    {
+      "signalId": "SIG-BUY-006",
+      "topic": "Chart and weather subscription price and coverage objections",
+      "evidenceType": "REPEATED_OBSERVATION",
+      "sourceIds": ["SRC-BUY-009", "SRC-BUY-010"],
+      "summary": "Public app-store reviews complain that chart subscription prices rose sharply and coverage boundaries changed, and the developer reply cites higher supplier cartography fees; a separate vendor essay frames recurring nautical fees as partly not service-backed.",
+      "independence": "PARTIALLY_INDEPENDENT - multiple reviewers on one curated platform plus one vendor with a competing product; not an independent survey and not neutral.",
+      "limitations": "Self-selected reviews and a motivated vendor; price levels and coverage differ by region and change over time; no prevalence or elasticity inference possible."
+    },
+    {
+      "signalId": "SIG-BUY-007",
+      "topic": "Recurring-fee fatigue and subscription honesty test",
+      "evidenceType": "ANECDOTE",
+      "sourceIds": ["SRC-BUY-010", "SRC-BUY-009"],
+      "summary": "A vendor article proposes that owners should ask what a manufacturer continuously pays for before renewing, and app-store reviewers say they are reconsidering renewal; both indicate that subscription value justification is an active objection.",
+      "independence": "PARTIALLY_INDEPENDENT - one vendor essay plus individual reviewers; the essay has a direct commercial interest in the conclusion.",
+      "limitations": "Illustrative fee figures only; does not establish how many owners object or what they would pay."
+    },
+    {
+      "signalId": "SIG-BUY-008",
+      "topic": "Installation complexity and cost share",
+      "evidenceType": "SUPPORT_DOC",
+      "sourceIds": ["SRC-BUY-007"],
+      "summary": "An installer guide documents that installation can represent 15 to 50 percent of hardware cost, driven by vessel age, wiring condition, access, multi-manufacturer integration and network configuration; complex helm packages start around USD 5,000 and exceed USD 25,000.",
+      "independence": "SINGLE_SOURCE - one installer's marketing guide, regional to South Florida.",
+      "limitations": "Publisher assertions and local pricing; not an audited survey; cannot be generalised to Spain or to a specific MAREA configuration."
+    },
+    {
+      "signalId": "SIG-BUY-009",
+      "topic": "Installer competence and certification",
+      "evidenceType": "SUPPORT_DOC",
+      "sourceIds": ["SRC-BUY-006", "SRC-BUY-007"],
+      "summary": "NMEA sells installer training and requires scheduled training plus an exam for certification, and an installer guide argues that correct network configuration and certification separate professional installers from basic technicians.",
+      "independence": "PARTIALLY_INDEPENDENT - an association standard-setting page plus a certified installer's guide; both have an interest in emphasising certification.",
+      "limitations": "Establishes that a certification scheme exists and is marketed; does not measure installer quality, availability or coverage in the target region."
+    },
+    {
+      "signalId": "SIG-BUY-010",
+      "topic": "Interoperability uncertainty and certification claims",
+      "evidenceType": "SUPPORT_DOC",
+      "sourceIds": ["SRC-BUY-017", "SRC-BUY-006"],
+      "summary": "NMEA states that NMEA 2000 certification gives assurance that certified products integrate, tested across electrical, visual/mechanical and interoperability areas, which implies that non-certified or mixed configurations carry an explicit uncertainty.",
+      "independence": "SINGLE_SOURCE - the certification body itself.",
+      "limitations": "Voluntary certification; document dates from 2009 and was accessed as a search extract; certification does not guarantee every message or device combination."
+    },
+    {
+      "signalId": "SIG-BUY-011",
+      "topic": "Open-source local integration as a workaround",
+      "evidenceType": "SUPPORT_DOC",
+      "sourceIds": ["SRC-BUY-008"],
+      "summary": "Signal K provides an open-source local hub and data standard that multiplexes NMEA 0183 and NMEA 2000 and supports community plugins and apps, showing that a technical workaround path exists for owners willing to build and maintain it.",
+      "independence": "SINGLE_SOURCE - the project's own website.",
+      "limitations": "Existence and stated capability only; no evidence of adoption, reliability, support burden or suitability for safety-critical decisions."
+    },
+    {
+      "signalId": "SIG-BUY-012",
+      "topic": "Remote monitoring value and DIY alternatives",
+      "evidenceType": "ANECDOTE",
+      "sourceIds": ["SRC-BUY-015", "SRC-BUY-016"],
+      "summary": "Owners discuss remote monitoring of battery, bilge, power and security, and several describe building cheaper substitutes from a SIM router, cameras and standalone alarms rather than paying a monitoring service.",
+      "independence": "PARTIALLY_INDEPENDENT - two threads, but they come from the same Hanse/Cruisers Forum owner ecosystem and may involve overlapping participants.",
+      "limitations": "Self-selected; DIY substitutes are described qualitatively; no reliability, cost or adoption measurement."
+    },
+    {
+      "signalId": "SIG-BUY-013",
+      "topic": "Basic OEM monitoring perceived as limited",
+      "evidenceType": "ANECDOTE",
+      "sourceIds": ["SRC-BUY-016"],
+      "summary": "An owner describes factory-fitted monitoring as basic (battery, bilge, geofence) and reports limited satisfaction, while discussing cameras and extra alarms for longer absences.",
+      "independence": "SINGLE_SOURCE - one post in one thread.",
+      "limitations": "One owner's experience with one product; cannot be generalised to OEM monitoring reliability."
+    },
+    {
+      "signalId": "SIG-BUY-014",
+      "topic": "After-sales and warranty trust friction",
+      "evidenceType": "ANECDOTE",
+      "sourceIds": ["SRC-BUY-018"],
+      "summary": "A public complaint alleges that a warranty return required committing to a replacement purchase before bench testing, which illustrates an after-sales trust barrier for high-value electronics.",
+      "independence": "SINGLE_SOURCE - one complaint thread.",
+      "limitations": "Unadjudicated allegation, no verified company response; useful only as an objection theme."
+    },
+    {
+      "signalId": "SIG-BUY-015",
+      "topic": "Autopilot feedback failure and backup-mode unfamiliarity",
+      "evidenceType": "SUPPORT_DOC",
+      "sourceIds": ["SRC-BUY-011"],
+      "summary": "An official investigation found that a loose linkage arm removed rudder feedback, disabling autopilot and follow-up steering; the crew could not operate the independent backup steering mode, and training, labelling and drills were inadequate.",
+      "independence": "SINGLE_SOURCE - official investigation of one occurrence.",
+      "limitations": "Commercial ship, not a recreational installation; establishes the failure mode and the importance of usable takeover, not recreational failure rates."
+    },
+    {
+      "signalId": "SIG-BUY-016",
+      "topic": "Sailing school and charter operational administration",
+      "evidenceType": "SUPPORT_DOC",
+      "sourceIds": ["SRC-BUY-013"],
+      "summary": "A school-management product page documents the operational load schools carry: multi-boat and multi-instructor scheduling, syllabus sign-off, certificate issue, qualification expiry tracking, fleet maintenance logs and weather/tide planning.",
+      "independence": "SINGLE_SOURCE - vendor marketing page.",
+      "limitations": "Describes features sold, not independently measured operator pain; no customer research or usage data."
+    },
+    {
+      "signalId": "SIG-BUY-017",
+      "topic": "Marina maintenance and work-order administration",
+      "evidenceType": "SUPPORT_DOC",
+      "sourceIds": ["SRC-BUY-014"],
+      "summary": "A marina management product page documents planned and reactive maintenance, compliance inspections, chargeable work, contractor coordination and multi-site reporting as the operational core of marina maintenance.",
+      "independence": "SINGLE_SOURCE - vendor marketing page with testimonials.",
+      "limitations": "Vendor content; testimonials are marketing material, not independent research; no adoption or pricing evidence."
+    },
+    {
+      "signalId": "SIG-BUY-018",
+      "topic": "Multi-vessel administration is served by commercial software",
+      "evidenceType": "SUPPORT_DOC",
+      "sourceIds": ["SRC-BUY-014", "SRC-BUY-013", "SRC-BUY-020"],
+      "summary": "Marina, sailing-school and yacht-management software products show that organisations with multiple vessels are actively served by category-specific administration software, including maintenance, roles and reporting.",
+      "independence": "PARTIALLY_INDEPENDENT - three separate vendors/aggregators, but all supply-side sources.",
+      "limitations": "Supply-side evidence only; does not establish operator willingness to pay, switching costs or whether MAREA FLEET would be preferred to existing tools."
+    },
+    {
+      "signalId": "SIG-BUY-019",
+      "topic": "Spanish recreational market contraction and rental segment",
+      "evidenceType": "SUPPORT_DOC",
+      "sourceIds": ["SRC-BUY-012"],
+      "summary": "ANEN/DGMM data reported by trade press show 5,027 new recreational registrations in Spain in 2024 (-15.9 percent) and 1,742 rental registrations (-15.3 percent), with small craft dominating unit counts.",
+      "independence": "SINGLE_SOURCE - one trade-press summary of association/government data.",
+      "limitations": "Registrations are new-vessel transactions, not active fleet or aftermarket spend; no segment-level equipment or software demand is implied."
+    },
+    {
+      "signalId": "SIG-BUY-020",
+      "topic": "European fleet and marina scale",
+      "evidenceType": "SUPPORT_DOC",
+      "sourceIds": ["SRC-BUY-019"],
+      "summary": "European Boating Industry reports more than 6 million boats, more than 10,000 marinas and 48 million regular water-sports users in the EU, with 97 percent of companies being SMEs.",
+      "independence": "SINGLE_SOURCE - industry association.",
+      "limitations": "Advocacy aggregate accessed as a search extract; no country or segment breakdown, and no direct evidence about buyers of the MAREA system."
+    },
+    {
+      "signalId": "SIG-BUY-021",
+      "topic": "Touchscreen versus physical control ergonomics",
+      "evidenceType": "ANECDOTE",
+      "sourceIds": ["SRC-BUY-001"],
+      "summary": "Owners disagree about touchscreen chartplotters at the helm: some report difficulty with wet or gloved hands and argue physical controls are safer in manoeuvres, while others prefer touch interfaces.",
+      "independence": "SINGLE_SOURCE - one thread.",
+      "limitations": "Subjective debate with no usability testing; cannot be used to claim a design requirement without a test."
+    },
+    {
+      "signalId": "SIG-BUY-022",
+      "topic": "Owners sustain multi-year paid chart subscriptions",
+      "evidenceType": "PURCHASE_DEMAND",
+      "sourceIds": ["SRC-BUY-009"],
+      "summary": "Reviewers describe using a paid chart application for several years and explicitly debate whether to renew after price increases, which is direct public evidence that a paid navigation-subscription market exists.",
+      "independence": "PARTIALLY_INDEPENDENT - multiple individual reviewers on one curated platform.",
+      "limitations": "Self-reported use, not sales data or conversion rates; one app and one storefront page; no pricing or churn measurement."
+    },
+    {
+      "signalId": "SIG-BUY-023",
+      "topic": "Self-installed refit on a stated budget",
+      "evidenceType": "ANECDOTE",
+      "sourceIds": ["SRC-BUY-001"],
+      "summary": "An owner of a 1981 30-foot sailboat plans a self-installed electronics upgrade covering chartplotter, wind, depth, VHF/DSC and AIS receive, states a budget under USD 2,500 and asks which existing units can be reused.",
+      "independence": "SINGLE_SOURCE - one thread.",
+      "limitations": "Stated plan and budget, not an actual purchase; illustrates a decision pattern, not willingness to pay for MAREA."
+    }
+  ]
+}
