@@ -2236,9 +2236,9 @@
       "eligibility": {
         "questionnaireRef": "docs/marea/bundles/BUNDLE-CONFIGURATION-RULES.md#eligibility-questionnaires",
         "rules": [
-          "CR-05",
-          "CR-08",
-          "CR-10"
+          "CFG-05",
+          "CFG-08",
+          "CFG-10"
         ]
       },
       "configurationOutcomes": [
@@ -3484,9 +3484,9 @@
       "eligibility": {
         "questionnaireRef": "docs/marea/bundles/BUNDLE-CONFIGURATION-RULES.md#eligibility-questionnaires",
         "rules": [
-          "CR-05",
-          "CR-08",
-          "CR-10"
+          "CFG-05",
+          "CFG-08",
+          "CFG-10"
         ]
       },
       "configurationOutcomes": [
@@ -4644,11 +4644,11 @@
       "eligibility": {
         "questionnaireRef": "docs/marea/bundles/BUNDLE-CONFIGURATION-RULES.md#eligibility-questionnaires",
         "rules": [
-          "CR-05",
-          "CR-06",
-          "CR-08",
-          "CR-09",
-          "CR-12"
+          "CFG-05",
+          "CFG-06",
+          "CFG-08",
+          "CFG-09",
+          "CFG-12"
         ]
       },
       "configurationOutcomes": [
@@ -5772,9 +5772,9 @@
       "eligibility": {
         "questionnaireRef": "docs/marea/bundles/BUNDLE-CONFIGURATION-RULES.md#eligibility-questionnaires",
         "rules": [
-          "CR-05",
-          "CR-08",
-          "CR-10"
+          "CFG-05",
+          "CFG-08",
+          "CFG-10"
         ]
       },
       "configurationOutcomes": [
@@ -7241,11 +7241,11 @@
       "eligibility": {
         "questionnaireRef": "docs/marea/bundles/BUNDLE-CONFIGURATION-RULES.md#eligibility-questionnaires",
         "rules": [
-          "CR-05",
-          "CR-06",
-          "CR-08",
-          "CR-09",
-          "CR-12"
+          "CFG-05",
+          "CFG-06",
+          "CFG-08",
+          "CFG-09",
+          "CFG-12"
         ]
       },
       "configurationOutcomes": [
@@ -8529,10 +8529,10 @@
       "eligibility": {
         "questionnaireRef": "docs/marea/bundles/BUNDLE-CONFIGURATION-RULES.md#eligibility-questionnaires",
         "rules": [
-          "CR-07",
-          "CR-08",
-          "CR-10",
-          "CR-12"
+          "CFG-07",
+          "CFG-08",
+          "CFG-10",
+          "CFG-12"
         ]
       },
       "configurationOutcomes": [
@@ -9066,7 +9066,7 @@
   },
   "configurationRules": [
     {
-      "id": "CR-01",
+      "id": "CFG-01",
       "name": "Mandatory component presence",
       "scope": "Every bundle",
       "condition": "Any reference mandatory component line is missing, removed or resolved to NOT_INCLUDED",
@@ -9075,7 +9075,7 @@
       "notes": "Structural validator check: mandatory lines must resolve to an existing family and edition with inclusion INCLUDED or QUOTATION_REQUIRED."
     },
     {
-      "id": "CR-02",
+      "id": "CFG-02",
       "name": "Edition resolution",
       "scope": "Every bundle",
       "condition": "An edition id is unknown, does not belong to the declared family, or contradicts the fixed reference edition",
@@ -9084,7 +9084,7 @@
       "notes": "Structural: edition ids must exist in product-definitions.batch-01/02/03.json under the declared family id."
     },
     {
-      "id": "CR-03",
+      "id": "CFG-03",
       "name": "Kit expansion",
       "scope": "SENSE kit lines",
       "condition": "A kit does not expand exactly to its declared modules, or an expansion adds a module, capability or connectivity not declared",
@@ -9093,7 +9093,7 @@
       "notes": "Structural: SENSE-ESSENTIALS=[POWER,BILGE], SENSE-SAIL=[WIND,ENV], SENSE-SYSTEMS=[POWER,BILGE,TANKS,ENV]."
     },
     {
-      "id": "CR-04",
+      "id": "CFG-04",
       "name": "Dependency resolution",
       "scope": "Every bundle",
       "condition": "A declared dependency is unresolved: WATCH without a monitoring entitlement, a promised outcome without a chart/data entitlement, or a quotation before a survey",
@@ -9102,7 +9102,7 @@
       "notes": "The deterministic path is: missing entitlement -> NOT_ELIGIBLE; missing survey before a quoted line -> SPECIALIST_SURVEY_REQUIRED; otherwise QUOTATION_REQUIRED."
     },
     {
-      "id": "CR-05",
+      "id": "CFG-05",
       "name": "General eligibility questionnaire",
       "scope": "Every bundle",
       "condition": "The 13-question general questionnaire is incomplete or answers leave compatibility, device, chart coverage or installation route unknown",
@@ -9111,7 +9111,7 @@
       "notes": "Unknown compatibility is never treated as compatible; it routes to human assessment."
     },
     {
-      "id": "CR-06",
+      "id": "CFG-06",
       "name": "Safety-sensitive questionnaire",
       "scope": "SAIL and COMPLETE",
       "condition": "SQ-01 to SQ-09 is incomplete, or a failed safety prerequisite exists (no physical E-stop, no independent motor isolation, no rudder feedback, no supervised sea trial plan)",
@@ -9120,7 +9120,7 @@
       "notes": "A failed safety prerequisite is NOT_ELIGIBLE; a survey still to be performed is SPECIALIST_SURVEY_REQUIRED."
     },
     {
-      "id": "CR-07",
+      "id": "CFG-07",
       "name": "B2B FLEET questionnaire",
       "scope": "FLEET package",
       "condition": "FQ-01 to FQ-10 is incomplete or the organisation lacks contract, roles, connectivity or data-protection definition",
@@ -9129,7 +9129,7 @@
       "notes": "No self-service or standard-price path exists; every FLEET package is quoted."
     },
     {
-      "id": "CR-08",
+      "id": "CFG-08",
       "name": "Unknown compatibility",
       "scope": "Every bundle",
       "condition": "A required integration row is UNKNOWN, UNKNOWN_NOT_TESTED, PLANNED or CONDITIONAL",
@@ -9138,7 +9138,7 @@
       "notes": "SUPPORTED/TESTED is only permitted when a device test record flag is true; no bundle currently has one."
     },
     {
-      "id": "CR-09",
+      "id": "CFG-09",
       "name": "Failed safety prerequisite",
       "scope": "SAIL and COMPLETE",
       "condition": "PILOT_SAFETY_GATE = BLOCKED or E-stop/motor-isolation/rudder-feedback evidence = NOT_FOUND or sea trials = NOT_PERFORMED",
@@ -9147,7 +9147,7 @@
       "notes": "The safety state must never be upgraded by documentation."
     },
     {
-      "id": "CR-10",
+      "id": "CFG-10",
       "name": "No supported integration for a promised outcome",
       "scope": "Every bundle",
       "condition": "The promised customer outcome requires an integration with no SUPPORTED/TESTED row",
@@ -9156,7 +9156,7 @@
       "notes": "A bundle may be CONFIGURATION_DEFINED_INTERNAL while still not eligible for its promised outcome."
     },
     {
-      "id": "CR-11",
+      "id": "CFG-11",
       "name": "Unverified edition",
       "scope": "Every bundle",
       "condition": "An edition is CONDITIONAL, INSTALLATION_PACKAGE or otherwise not DEFINED, and the configuration tries to use it as a standard sellable line",
@@ -9165,7 +9165,7 @@
       "notes": "CONDITIONAL editions are labelled, never silently selected or priced."
     },
     {
-      "id": "CR-12",
+      "id": "CFG-12",
       "name": "Quotation-required components",
       "scope": "SAIL, COMPLETE and FLEET",
       "condition": "A configuration contains a quotation-required component (PILOT installation, survey, installation scope, bespoke FLEET service) and a fixed bundle price is requested",

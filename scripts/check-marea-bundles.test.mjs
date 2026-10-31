@@ -119,15 +119,15 @@ test('the real MC-08 tree passes (baseline for every mutation case)', async () =
   const result = await runValidator(REPO_ROOT);
   assert.equal(result.code, 0, `${result.stdout}${result.stderr}`);
   assert.match(result.stdout, /RESULT: PASS/);
-  assert.match(result.stdout, /Summary: 32 checks run, 32 passed, 0 failed/);
+  assert.match(result.stdout, /Summary: 34 checks run, 34 passed, 0 failed/);
 });
 
-test('--json reports a machine-readable PASS with at least 20 checks', async () => {
+test('--json reports a machine-readable PASS with the full check set', async () => {
   const result = await runValidator(REPO_ROOT, ['--json']);
   assert.equal(result.code, 0, result.stdout);
   const report = JSON.parse(result.stdout);
   assert.equal(report.result, 'PASS');
-  assert.ok(report.checks.length >= 20, 'the validator must run at least 20 checks');
+  assert.ok(report.checks.length >= 34, 'the validator must run the full hardenend check set');
   assert.ok(report.checks.every((entry) => entry.status === 'PASS'));
   assert.equal(report.summary.bundles, 6);
   assert.equal(report.summary.assets, 60);
@@ -510,5 +510,180 @@ test('extra mutation — a mandatory SAL/COMPLETE survey flag cannot be cleared'
       },
     },
     (result) => assertFails(result, 'BUNDLE-10', /pilotSurveyRequired must be true/),
+  );
+});
+
+// --- MC-08 review corrections (B-01, B-02, M-01, M-02, m-01, m-02, m-03) ---
+
+test('B-01 — a normal "for sale" sentence in a specification is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/MAREA-START-COMMERCIAL-SPEC.md': (text) =>
+          `${text}\n\nThis bundle is now for sale.\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-32', /positive "for sale \/ orderable" assertion/),
+  );
+});
+
+test('B-01 — a normal "for sale" sentence in customer copy is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/copy/start.en.md': (text) =>
+          `${text}\n\nThe package is now purchasable.\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-26', /positive "for sale \/ orderable" assertion/),
+  );
+});
+
+test('B-02 — a guaranteed-immediate-alert claim in customer copy is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/copy/start.en.md': (text) =>
+          `${text}\n\nGuaranteed immediate alerts on every passage.\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-15', /claims guaranteed immediate alert delivery/),
+  );
+});
+
+test('M-01 — promoting a CONDITIONAL reference line to INCLUDED is rejected', async () => {
+  await withFixture(
+    {
+      mutateContract: (contract) => {
+        lineOf(bundleOf(contract, 'CRUISE'), 'CR-06').inclusion = 'INCLUDED';
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-34', /inclusion must be CONDITIONAL/),
+  );
+});
+
+test('M-01 — adding an unpinned INCLUDED component is rejected', async () => {
+  await withFixture(
+    {
+      mutateContract: (contract) => {
+        const start = bundleOf(contract, 'START');
+        start.components.push({
+          lineId: 'ST-99',
+          familyId: 'AIS',
+          editionId: 'AIS-RECEIVER',
+          expandsTo: null,
+          quantity: 1,
+          role: 'Unpinned mandatory addition',
+          inclusion: 'INCLUDED',
+          requiredForOutcome: true,
+          dependencies: [],
+          subscriptionEntitlement: null,
+          compatibility: {
+            integrationId: 'C-02',
+            status: 'UNKNOWN_NOT_TESTED',
+            evidence: 'none',
+            deviceTestRecorded: false,
+            releaseGate: 'none',
+          },
+          evidenceClass: 'VERIFIED_REPO',
+          priceStatus: 'HYPOTHESIS_UNAPPROVED',
+          priceHypothesisRef: 'AIS-RECEIVER',
+          costStatus: 'NOT_ESTABLISHED',
+          installationClassification: 'PROFESSIONAL_REQUIRED',
+          releaseBlockers: [],
+        });
+      },
+    },
+    (result) =>
+      assertFails(
+        result,
+        'BUNDLE-34',
+        /is INCLUDED but not in the fixed reference composition|not pinned in the fixed reference composition/,
+      ),
+  );
+});
+
+test('M-02 — a sale/approval token in component.inclusion is rejected at line level', async () => {
+  await withFixture(
+    {
+      mutateContract: (contract) => {
+        lineOf(bundleOf(contract, 'START'), 'ST-03').inclusion = 'APPROVED';
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-33', /invalid inclusion value APPROVED/),
+  );
+});
+
+test('m-01 — deleting the DISPLAY-LARGE-CONDITIONAL ineligibility line is rejected', async () => {
+  await withFixture(
+    {
+      mutateContract: (contract) => {
+        const cruise = bundleOf(contract, 'CRUISE');
+        cruise.components = cruise.components.filter((component) => component.lineId !== 'CR-07');
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-13', /must retain the DISPLAY-LARGE-CONDITIONAL line/),
+  );
+});
+
+test('m-02 — a configuration-rule id reusing the CRUISE CR-NN namespace is rejected', async () => {
+  await withFixture(
+    {
+      mutateContract: (contract) => {
+        contract.configurationRules[0].id = 'CR-01';
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-25', /must use the CFG-NN namespace/),
+  );
+});
+
+test('m-02 — configuration rules use CFG-NN and never collide with component line ids', async () => {
+  const contract = realContract();
+  const ruleIds = contract.configurationRules.map((rule) => rule.id);
+  assert.equal(
+    ruleIds.join(','),
+    Array.from({ length: 12 }, (_, index) => `CFG-${String(index + 1).padStart(2, '0')}`).join(','),
+  );
+  const lineIds = new Set(
+    contract.bundles
+      .flatMap((bundle) => [...bundle.components, ...bundle.optionalComponents])
+      .map((component) => component.lineId),
+  );
+  for (const ruleId of ruleIds)
+    assert.ok(!lineIds.has(ruleId), `${ruleId} collides with a line id`);
+});
+
+test('m-03 — removing the approved weather disclaimer from a forecast copy surface is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/copy/start.en.md': (text) =>
+          text.replace(
+            'Forecasts are probabilistic and may differ from actual local conditions. Source and timestamp are displayed for every data point.',
+            '',
+          ),
+      },
+    },
+    (result) =>
+      assertFails(
+        result,
+        'BUNDLE-23',
+        /missing the approved weather disclaimer for a forecast surface/,
+      ),
+  );
+});
+
+test('m-03 — removing the approved AIS receive-only disclaimer from FLEET copy is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/copy/fleet-package.en.md': (text) =>
+          text.replace(
+            'AIS reception is receive-only: not every vessel transmits AIS. It is not a collision-avoidance system and not a transponder.',
+            '',
+          ),
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-23', /missing the approved AIS disclaimer/),
   );
 });

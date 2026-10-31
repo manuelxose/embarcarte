@@ -380,6 +380,25 @@ MC-08 may PASS its internal bundle-definition scope while every bundle remains `
 not approve a historical price, establish hardware compatibility, certify a product, approve manufacturing
 readiness or authorise a sale.
 
+### 9.1 Disclaimer surface interpretation (copy and content)
+
+The approved disclaimers of `COMMERCIAL-BRAND-CLAIMS-POLICY.md` §9 are applied by surface, not mechanically to
+every file. This interpretation is binding for the 12 copy drafts and is enforced by the bundle validator:
+
+| Disclaimer | Surfaces where it is required | Rationale |
+| --- | --- | --- |
+| Navigation / instruments | All 12 bundle copy files | Every bundle page presents position, charts, traffic, depth, instruments or weather context, or links to a page that does. |
+| AIS receive-only | CRUISE, COMPLETE and FLEET package copy (and any future surface that presents AIS targets) | These files present received traffic or traffic context; START/SAIL/PROTECT do not present AIS targets. |
+| PILOT supervised steering | SAIL and COMPLETE copy | Only these bundles present supervised steering; no other bundle claims steering. |
+| Weather | START and CRUISE copy (the files that present the licensed forecast service); SAIL/COMPLETE/FLEET package mention WEATHER only as a separate optional or excluded product and carry no forecast presentation | A forecast surface without the approved weather wording must not exist; a product reference without forecast presentation does not create one. |
+| Brand attribution | All 12 copy files | Commercial material attribution rule. |
+
+An author who introduces a new forecast, AIS or steering surface in any bundle copy must add the matching
+§9 wording and the validator's surface check must be extended in the same change. The internal-draft
+limitation statements (SENSE, WATCH, DISPLAY, WEATHER, FLEET) are applied to the files whose bundle discusses
+those products and are never described as approved policy.
+
+
 ---
 
 ## 10. Release blockers at architecture level

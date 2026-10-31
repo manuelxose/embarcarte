@@ -327,6 +327,87 @@ const FIXED_REFERENCE = {
   FLEET: [['FLEET', 'FLEET-START', 'INCLUDED']],
 };
 
+// Every line of the fixed reference composition, with the ONLY inclusion class it
+// may carry (M-01). Conditional, ineligible and required-external lines are pinned
+// too, so a conditional product cannot silently become a bundled mandatory purchase.
+const PINNED_LINES = {
+  START: [
+    ['ST-01', 'HUB', 'HUB-STANDARD', 'INCLUDED'],
+    ['ST-02', 'NAV', 'NAV-PRO', 'INCLUDED'],
+    ['ST-05', null, null, 'REQUIRED_EXTERNAL'],
+    ['ST-06', null, null, 'REQUIRED_EXTERNAL'],
+    ['ST-03', 'HUB', 'HUB-PRO', 'OPTIONAL'],
+    ['ST-04', 'WEATHER', 'WEATHER-STANDARD', 'OPTIONAL'],
+    ['ST-07', null, null, 'OPTIONAL'],
+  ],
+  CRUISE: [
+    ['CR-01', 'NAV', 'NAV-ESSENTIAL', 'INCLUDED'],
+    ['CR-02', 'HUB', 'HUB-STANDARD', 'INCLUDED'],
+    ['CR-03', 'AIS', 'AIS-RECEIVER', 'INCLUDED'],
+    ['CR-04', 'DISPLAY', 'DISPLAY-7', 'INCLUDED'],
+    ['CR-06', 'AIS', 'AIS-CONNECTED', 'CONDITIONAL'],
+    ['CR-07', 'DISPLAY', 'DISPLAY-LARGE-CONDITIONAL', 'INELIGIBLE'],
+    ['CR-09', null, null, 'REQUIRED_EXTERNAL'],
+    ['CR-10', null, null, 'REQUIRED_EXTERNAL'],
+    ['CR-11', null, null, 'REQUIRED_EXTERNAL'],
+    ['CR-05', 'NAV', 'NAV-PRO', 'OPTIONAL'],
+    ['CR-08', 'WEATHER', 'WEATHER-STANDARD', 'OPTIONAL'],
+  ],
+  SAIL: [
+    ['SL-01', 'NAV', 'NAV-PRO', 'INCLUDED'],
+    ['SL-02', 'HUB', 'HUB-STANDARD', 'INCLUDED'],
+    ['SL-03', 'PILOT', 'PILOT-COASTAL', 'QUOTATION_REQUIRED'],
+    ['SL-04', 'SENSE', 'SENSE-WIND', 'CONDITIONAL'],
+    ['SL-05', 'PILOT', 'PILOT-SAIL', 'CONDITIONAL'],
+    ['SL-06', 'PILOT', 'PILOT-PRO', 'INELIGIBLE'],
+    ['SL-08', null, null, 'REQUIRED_EXTERNAL'],
+    ['SL-09', null, null, 'QUOTATION_REQUIRED'],
+    ['SL-10', null, null, 'QUOTATION_REQUIRED'],
+  ],
+  PROTECT: [
+    ['PR-01', 'WATCH', 'WATCH-CORE', 'INCLUDED'],
+    ['PR-02', 'SENSE', 'SENSE-ESSENTIALS', 'INCLUDED'],
+    ['PR-03', 'SENSE', null, 'INELIGIBLE'],
+    ['PR-05', 'WATCH', 'WATCH-PLUS', 'CONDITIONAL'],
+    ['PR-06', null, null, 'REQUIRED_EXTERNAL'],
+    ['PR-07', null, null, 'INCLUDED'],
+    ['PR-08', null, null, 'REQUIRED_EXTERNAL'],
+    ['PR-04', 'HUB', 'HUB-STANDARD', 'OPTIONAL'],
+  ],
+  COMPLETE: [
+    ['CP-01', 'NAV', 'NAV-PRO', 'INCLUDED'],
+    ['CP-02', 'HUB', 'HUB-PRO', 'INCLUDED'],
+    ['CP-03', 'DISPLAY', 'DISPLAY-7', 'INCLUDED'],
+    ['CP-04', 'WATCH', 'WATCH-CORE', 'INCLUDED'],
+    ['CP-05', 'SENSE', 'SENSE-POWER', 'INCLUDED'],
+    ['CP-06', 'SENSE', 'SENSE-BILGE', 'INCLUDED'],
+    ['CP-07', 'SENSE', 'SENSE-TANKS', 'INCLUDED'],
+    ['CP-08', 'SENSE', 'SENSE-ENV', 'INCLUDED'],
+    ['CP-09', 'PILOT', 'PILOT-COASTAL', 'QUOTATION_REQUIRED'],
+    ['CP-13', 'PILOT', 'PILOT-PRO', 'INELIGIBLE'],
+    ['CP-14', 'PILOT', 'PILOT-SAIL', 'CONDITIONAL'],
+    ['CP-15', 'DISPLAY', 'DISPLAY-LARGE-CONDITIONAL', 'INELIGIBLE'],
+    ['CP-16', null, null, 'REQUIRED_EXTERNAL'],
+    ['CP-17', null, null, 'QUOTATION_REQUIRED'],
+    ['CP-10', 'AIS', 'AIS-RECEIVER', 'OPTIONAL'],
+    ['CP-11', 'WEATHER', 'WEATHER-PRO', 'OPTIONAL'],
+  ],
+  FLEET: [
+    ['FP-01', 'FLEET', 'FLEET-START', 'INCLUDED'],
+    ['FP-02', 'FLEET', 'FLEET-ENTERPRISE', 'CONDITIONAL'],
+    ['FP-03', null, null, 'INCLUDED'],
+    ['FP-04', null, null, 'INCLUDED'],
+    ['FP-08', null, null, 'REQUIRED_EXTERNAL'],
+    ['FP-10', null, null, 'CONDITIONAL'],
+    ['FP-11', 'FLEET', null, 'INCLUDED'],
+    ['FP-05', 'WATCH', 'WATCH-CORE', 'OPTIONAL'],
+    ['FP-06', 'HUB', 'HUB-STANDARD', 'OPTIONAL'],
+    ['FP-07', 'SENSE', null, 'OPTIONAL'],
+    ['FP-09', null, null, 'OPTIONAL'],
+    ['FP-12', 'FLEET', 'FLEET-BUSINESS', 'OPTIONAL'],
+  ],
+};
+
 // Each bundle must expose required-external scope for these categories.
 const REQUIRED_EXTERNAL_SCOPE = {
   START: [
@@ -392,6 +473,10 @@ const DISCLAIMERS = {
   pilot: {
     en: 'The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.',
     es: 'El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.',
+  },
+  weather: {
+    en: 'Forecasts are probabilistic and may differ from actual local conditions. Source and timestamp are displayed for every data point.',
+    es: 'Las previsiones son probabilísticas y pueden desviarse de las condiciones locales reales. Se muestra la fuente y la hora de cada dato.',
   },
 };
 
@@ -682,6 +767,19 @@ const copyForbidden = [
   { label: 'a TBD placeholder', regex: /\bTBD\b/ },
 ];
 
+const GUARANTEED_DELIVERY_CLAIM = new RegExp(
+  [
+    /\b(?:guarantee[ds]?|guaranteed)\s+(?:immediate|instant|real-time)\s+(?:alert|alerts|notification|notifications|delivery)\b/,
+    /\b(?:immediate|instant)\s+(?:alert|alerts|notification|notifications)\s+(?:are\s+)?guaranteed\b/,
+    /\b(?:is|are)\s+guaranteed\s+to\s+(?:deliver|send|provide)\s+(?:immediate|instant)\s+(?:alerts?|notifications?)\b/,
+    /\bgarantiz(?:a|amos|an|ado|ada|ados|adas)\s+(?:la\s+)?(?:entrega|recepci[oó]n|notificaci[oó]n|notificaciones|avisos?|alertas?)\s+(?:inmediat[ao]s?|al instante|instant[aá]ne[ao]s?)\b/,
+    /\b(?:alertas?|avisos?|notificaciones?)\s+(?:inmediat[ao]s?|instant[aá]ne[ao]s?)\s+(?:y\s+)?garantiz\w*/,
+  ]
+    .map((pattern) => pattern.source)
+    .join('|'),
+  'i',
+);
+
 const claimPatterns = [
   {
     label: 'a sale/orderable state assignment',
@@ -690,8 +788,11 @@ const claimPatterns = [
   },
   {
     label: 'a positive "for sale / orderable" assertion',
+    // B-01/M-03: compositional subject (determiner + noun, or a pronoun), case
+    // insensitive and line-start safe. The copula may only be followed by an
+    // affirmative adverb, so "is not for sale" is never promoted into a failure.
     regex:
-      /(?:^|[.;|]\s*)(?:this|the|it|bundle|package|solution|product)\s+(?:is|are)\s+(?:now\s+)?(?:for sale|orderable|purchasable|available to buy)\b/i,
+      /(?:^|[\n.;|:]\s*)(?:(?:this|the|these|those|our|that)\b[^.\n]{0,30}\b(?:bundle|bundles|package|packages|solution|solutions|product|products|family|families|offer|offers)\b[^.\n]{0,30}\b(?:is|are|has been|have been|will be)\b(?:\s+(?:now|currently|already|officially|finally))?\s+(?:for sale|orderable|purchasable|available to buy|on sale)\b|\bit\b[^.\n]{0,12}\b(?:is|are)\b(?:\s+(?:now|currently|already|officially|finally))?\s+(?:for sale|orderable|purchasable|available to buy|on sale)\b)/im,
   },
   {
     label: 'a trademark clearance granted claim',
@@ -710,7 +811,7 @@ const claimPatterns = [
   {
     label: 'an approved-price claim',
     regex:
-      /(?:^|[.;|]\s*)(?:the\s+|this\s+|its\s+)?(?:bundle\s+|package\s+|product\s+)?(?:price|pricing)\s+(?:is|are|has been)\s+(?:now\s+)?(?:approved|final)\b/i,
+      /(?:^|[\n.;|:]\s*)(?:(?:the|this|its|our)\b[^.\n]{0,20}\b(?:bundle|package|product|pricing|price)s?\b[^.\n]{0,20}\b(?:is|are|has been|have been)\b(?:\s+(?:now|currently|already|officially))?\s+(?:approved|final|launch-priced)\b|\b(?:price|pricing)\b\s+(?:is|are|has been)\s+(?:now\s+)?(?:approved|final|launch-priced)\b)/im,
   },
   {
     label: 'a positive certified-product assertion',
@@ -724,6 +825,12 @@ const claimPatterns = [
     label: 'a remote steering capability claim',
     regex:
       /\b(?:remote steering|remote helm|steer (?:the |your )?vessel remotely|control remoto del tim[oó]n)\b[^\n.]{0,30}\b(?:available|enabled|offered|supported)\b/i,
+  },
+  {
+    label: 'a guaranteed / immediate alert-delivery claim',
+    // B-02: strict affirmative guarantee detector, shared with BUNDLE-15 so the
+    // twelve customer copy files and the specifications are scanned identically.
+    regex: GUARANTEED_DELIVERY_CLAIM,
   },
 ];
 
@@ -746,6 +853,9 @@ const NEGATION =
   /[^.|;:\n]*\b(no|not|never|none|nobody|nothing|nor|without|ning[uú]n|ninguna|nada|sin|jam[aá]s|tampoco)\b[^.|;:\n]*$/i;
 
 const isNegatedAt = (text, index) => {
+  // A quoted phrase in a governance table is a listed example, not an assertion.
+  const preceding = text.slice(0, index).trimEnd();
+  if (/["'`\u00ab\u201c]$/.test(preceding)) return true;
   const before = text.slice(Math.max(0, index - 90), index);
   const boundary = Math.max(
     before.lastIndexOf('.'),
@@ -760,9 +870,28 @@ const isNegatedAt = (text, index) => {
 function findAffirmative(text, regex) {
   const flags = regex.flags.includes('g') ? regex.flags : `${regex.flags}g`;
   const scanner = new RegExp(regex.source, flags);
+  const claimExclusionContext =
+    /\b(?:expecting|expects|exclud(?:e|es|ed|ing)|not included|never|prohibit(?:ed|s)?|refus(?:e|es|ed|al)|limitation|does not|do not|without|not promised)\b/i;
   let match = scanner.exec(text);
   while (match) {
-    if (!isNegatedAt(text, match.index)) return match;
+    // Only the clause before the assertion may mark it as a listed exclusion; a
+    // status line elsewhere in the file cannot neutralise a later assertion. The
+    // leading sentence/line boundary consumed by the pattern is not part of the
+    // assertion itself, so it must not drag the previous status line into the
+    // negation window.
+    const boundaryPrefix = match[0].match(/^[\n.;|:]\s*/);
+    const claimIndex = match.index + (boundaryPrefix ? boundaryPrefix[0].length : 0);
+    const beforeMatch = text.slice(Math.max(0, claimIndex - 200), claimIndex);
+    const boundary = Math.max(
+      beforeMatch.lastIndexOf('.'),
+      beforeMatch.lastIndexOf('\n'),
+      beforeMatch.lastIndexOf('|'),
+      beforeMatch.lastIndexOf(';'),
+    );
+    const exclusionWindow = beforeMatch.slice(boundary + 1);
+    if (!isNegatedAt(text, claimIndex) && !claimExclusionContext.test(exclusionWindow)) {
+      return match;
+    }
     if (scanner.lastIndex === match.index) scanner.lastIndex += 1;
     match = scanner.exec(text);
   }
@@ -1478,6 +1607,15 @@ check('BUNDLE-13', (record) => {
     if (!display || display.inclusion !== 'INCLUDED') {
       record.failures.push(`${bundleId} must include DISPLAY-7 as INCLUDED`);
     }
+    // m-01: the conditional large display must stay as an auditable INELIGIBLE line.
+    const largeDisplay = allComponents(entry).find(
+      (component) => component.editionId === 'DISPLAY-LARGE-CONDITIONAL',
+    );
+    if (!largeDisplay) {
+      record.failures.push(
+        `${bundleId} must retain the DISPLAY-LARGE-CONDITIONAL line as INELIGIBLE (auditable exclusion)`,
+      );
+    }
   }
   for (const entry of bundles()) {
     for (const component of allComponents(entry)) {
@@ -1583,8 +1721,14 @@ check('BUNDLE-15', (record) => {
       record.failures.push(`${bundleId} must expose a required-external connectivity line`);
     }
   }
-  const guaranteed = /(?:guaranteed|garantizada)\s+(?:immediate|instant|inmediata)\b/i;
-  for (const relativePath of [CONTRACT_PATH, ...Object.values(SPEC_PATHS)]) {
+  const guaranteed = GUARANTEED_DELIVERY_CLAIM;
+  // B-02: specifications AND the twelve customer-facing copy files (the surface a
+  // customer actually reads) are scanned for guaranteed/immediate alert delivery.
+  for (const relativePath of [
+    CONTRACT_PATH,
+    ...Object.values(SPEC_PATHS),
+    ...BUNDLE_IDS.flatMap((bundleId) => [COPY_PATHS[bundleId].es, COPY_PATHS[bundleId].en]),
+  ]) {
     const text = textOf(relativePath);
     if (text && findAffirmative(text, guaranteed)) {
       record.failures.push(`${relativePath} claims guaranteed immediate alert delivery`);
@@ -1959,6 +2103,17 @@ check('BUNDLE-23', (record) => {
       if (!normalizeText(text).includes(normalizeText(navigation[language]))) {
         record.failures.push(`${relativePath} is missing the approved navigation disclaimer`);
       }
+      // m-03: surface-based disclaimer rule. START and CRUISE are the two copy
+      // surfaces that present the WEATHER forecast service, so they must carry the
+      // approved weather disclaimer; SAIL/COMPLETE/FLEET present WEATHER only as a
+      // separate excluded/optional product and do not present forecast data.
+      if (['START', 'CRUISE'].includes(bundleId)) {
+        if (!normalizeText(text).includes(normalizeText(DISCLAIMERS.weather[language]))) {
+          record.failures.push(
+            `${relativePath} is missing the approved weather disclaimer for a forecast surface`,
+          );
+        }
+      }
       for (const pattern of copyForbidden) {
         const match = text.match(pattern.regex);
         if (match) {
@@ -1972,7 +2127,9 @@ check('BUNDLE-23', (record) => {
       if (esSections.join(',') !== enSections.join(',')) {
         record.failures.push(`${bundleId} copy ES/EN section structures do not match`);
       }
-      if (['CRUISE', 'COMPLETE'].includes(bundleId)) {
+      // AIS receive-only wording is required on the copy surfaces that present
+      // received traffic: CRUISE and COMPLETE (and the FLEET package traffic context).
+      if (['CRUISE', 'COMPLETE', 'FLEET'].includes(bundleId)) {
         for (const language of ['es', 'en']) {
           if (
             !normalizeText(copyText[language]).includes(normalizeText(DISCLAIMERS.ais[language]))
@@ -2139,14 +2296,27 @@ check('BUNDLE-25', (record) => {
     );
   }
   for (let index = 1; index <= 12; index += 1) {
-    const id = `CR-${String(index).padStart(2, '0')}`;
+    const id = `CFG-${String(index).padStart(2, '0')}`;
     if (!configurationRules.some((rule) => rule.id === id)) {
       record.failures.push(`configuration rule ${id} is missing`);
     }
   }
+  const componentLineIds = new Set(
+    bundles().flatMap((bundle) => allComponents(bundle).map((component) => component.lineId)),
+  );
   for (const rule of configurationRules) {
     if (!isString(rule.name) || !isString(rule.condition)) {
       record.failures.push(`configuration rule ${rule.id} is missing name/condition`);
+    }
+    // m-02: configuration rules use the CFG-NN namespace; ST-/CR-/SL-/PR-/CP-/FP-
+    // are component line ids and may never be reused by a rule.
+    if (!/^CFG-\d{2}$/.test(rule.id)) {
+      record.failures.push(
+        `configuration rule ${rule.id} must use the CFG-NN namespace (CR-NN is a CRUISE line id)`,
+      );
+    }
+    if (componentLineIds.has(rule.id)) {
+      record.failures.push(`configuration rule ${rule.id} collides with a component line id`);
     }
     if (!CONFIGURATION_OUTCOMES.includes(rule.outcome)) {
       record.failures.push(
@@ -2413,6 +2583,97 @@ check('BUNDLE-30', (record) => {
     }
   }
   record.detail = `${rules.length} cross-sell rules`;
+});
+
+// --- BUNDLE-33: line-level inclusion vocabulary --------------------------
+
+check('BUNDLE-33', (record) => {
+  if (!requireContract(record)) return;
+  // M-02: every component line must carry a declared inclusion value. A sale or
+  // approval token may not live in the line-level field that future configurators
+  // consume, even when the contract-level vocabulary is correct.
+  const saleLikeKey =
+    /(?:^|_)(?:forSale|orderable|purchasable|approved|publishable|saleState|saleEnabled)$/i;
+  for (const entry of bundles()) {
+    for (const component of allComponents(entry)) {
+      if (!INCLUSION_VOCABULARY.includes(component.inclusion)) {
+        record.failures.push(
+          `bundle ${entry.id} line ${component.lineId} has an invalid inclusion value ${component.inclusion}`,
+        );
+      }
+      if (FORBIDDEN_STATES.includes(component.inclusion)) {
+        record.failures.push(
+          `bundle ${entry.id} line ${component.lineId} carries the forbidden inclusion token ${component.inclusion}`,
+        );
+      }
+      for (const [key, value] of Object.entries(component)) {
+        if (saleLikeKey.test(key) && value !== false && value !== null) {
+          record.failures.push(
+            `bundle ${entry.id} line ${component.lineId} declares the sale/approval field ${key}`,
+          );
+        }
+      }
+    }
+  }
+  record.detail = 'every component inclusion validated against the vocabulary';
+});
+
+// --- BUNDLE-34: pinned reference composition ----------------------------
+
+check('BUNDLE-34', (record) => {
+  if (!requireContract(record)) return;
+  let pinned = 0;
+  for (const entry of bundles()) {
+    const expectedLines = PINNED_LINES[entry.id] ?? [];
+    const components = allComponents(entry);
+    const pinnedIds = new Set(expectedLines.map(([lineId]) => lineId));
+    // M-01: every fixed reference line must exist with exactly its pinned
+    // inclusion class, including CONDITIONAL, INELIGIBLE and required-external
+    // lines, so a not-selected product cannot be promoted to INCLUDED.
+    for (const [lineId, familyId, editionId, inclusion] of expectedLines) {
+      pinned += 1;
+      const component = components.find((entryLine) => entryLine.lineId === lineId);
+      if (!component) {
+        record.failures.push(`bundle ${entry.id} is missing pinned reference line ${lineId}`);
+        continue;
+      }
+      if ((component.familyId ?? null) !== familyId) {
+        record.failures.push(
+          `bundle ${entry.id} line ${lineId} family must be ${familyId}, found ${component.familyId}`,
+        );
+      }
+      if ((component.editionId ?? null) !== editionId) {
+        record.failures.push(
+          `bundle ${entry.id} line ${lineId} edition must be ${editionId}, found ${component.editionId}`,
+        );
+      }
+      if (component.inclusion !== inclusion) {
+        record.failures.push(
+          `bundle ${entry.id} line ${lineId} inclusion must be ${inclusion}, found ${component.inclusion}`,
+        );
+      }
+    }
+    // M-01: an extra INCLUDED line is a hidden mandatory purchase; unpinned lines
+    // of any class are not part of the fixed reference composition.
+    for (const component of components) {
+      if (component.inclusion === 'INCLUDED' && !pinnedIds.has(component.lineId)) {
+        record.failures.push(
+          `bundle ${entry.id} line ${component.lineId} is INCLUDED but not in the fixed reference composition`,
+        );
+      }
+      if (!pinnedIds.has(component.lineId)) {
+        record.failures.push(
+          `bundle ${entry.id} line ${component.lineId} is not pinned in the fixed reference composition`,
+        );
+      }
+      if (component.inclusion === 'NOT_INCLUDED') {
+        record.failures.push(
+          `bundle ${entry.id} line ${component.lineId} uses NOT_INCLUDED in components[]; record it in exclusions[]`,
+        );
+      }
+    }
+  }
+  record.detail = `${pinned} pinned reference lines`;
 });
 
 // --- BUNDLE-31: compatibility statuses against canonical registers -------

@@ -41,6 +41,17 @@ established, the matrix says so and does not substitute a figure.
   six specifications may number the same lines locally (`S-01`, `C-01`, `PR-01` or plain row numbers); the
   order and family/edition content are the authority and the machine contract carries its own `lineId`.
   Compatibility rows are never line ids: they are cited as `A-02`, `I-08`, `N-02`, etc. from their registers.
+- **Human matrix vs machine contract mapping.** The machine contract models the includable action set of each
+  bundle. Three kinds of human-matrix rows therefore have no one-to-one contract line, and the mapping is
+  explicit: (1) `NOT_INCLUDED` variants and alternatives (`ST-08` NAV Essential variant, `SL-07` SENSE Sail
+  kit, `CP-12` SENSE Systems kit) are recorded in the contract as exclusions/eligibility rules rather than as
+  components; (2) the grouped SAIL/COMPLETE quotation scope (`SL-08`, `CP-15`) is split in the contract into
+  individually visible lines (`SL-08` survey, `SL-09` drive/feedback/cabling/E-stop, `SL-10` labour,
+  commissioning and sea trial, etc.); (3) `INELIGIBLE` lines (`CR-06` AIS Connected not selected,
+  `CR-07`/`CP-14` conditional display) are represented as excluded lines or eligibility rules so that the
+  contract can reject their inclusion. Configuration-rule identifiers use the separate `CFG-NN` prefix and
+  never reuse a bundle line prefix.
+
 
 ---
 

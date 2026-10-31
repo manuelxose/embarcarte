@@ -38,9 +38,45 @@ this milestone creates a purchasable article.
 12. The honest limit (§15).
 
 The machine-readable contract `bundle-definitions.json` is the single machine authority. Every rule in
-this document references an id that exists in that contract (`CR-*`, `CF-*`, `CS-*`, `DR-*`, `PH-*`,
-`ENT-*`). Where this document and the contract differ, the contract is the tested artefact and the
-difference is a defect to fix, not a second truth.
+this document references an id that exists in that contract (`CFG-*` configuration rules, `CF-*` conflict
+rules, `CS-*` cross-sell rules, `DR-*` dependency rules, `PH-*` price hypotheses, `ENT-*` entitlements).
+Where this document and the contract differ, the contract is the tested artefact and the difference is a
+defect to fix, not a second truth.
+
+### 1.1 Identifier namespaces and the D8/D17 line-id mapping
+
+Identifier prefixes are bundle-scoped and collision-free. `ST-`, `CR-`, `SL-`, `PR-`, `CP-` and `FP-` are
+**component line ids** only (START, CRUISE, SAIL, PROTECT, COMPLETE and FLEET package respectively).
+Configuration rules use the distinct `CFG-NN` prefix (renamed from `CR-NN` precisely so it can never be
+confused with a CRUISE line id), conflict rules use `CF-`, cross-sell rules `CS-`, dependency rules `DR-`
+and price hypotheses `PH-`.
+
+The machine contract models the **includable and assessed lines** of the reference configuration plus the
+explicit `INELIGIBLE` guard lines (PILOT-PRO, DISPLAY-LARGE-CONDITIONAL, loose kit modules). It does not
+reproduce the human composition register D8 line by line: D8 keeps its own `NOT_INCLUDED` exclusion rows
+(e.g. `ST-08` NAV-ESSENTIAL variant, `SL-07` SENSE-SAIL kit, `CP-12` SENSE-SYSTEMS kit) and models the
+SAIL installed scope as one row `SL-08`, whereas the contract records that scope as three auditable lines
+`SL-08` survey, `SL-09` drive/feedback/E-stop/mechanical/cabling and `SL-10` labour/commissioning/sea
+trials/training/conformity. The mapping is: D8 `NOT_INCLUDED` rows → contract `exclusions[]`; D8 `SL-08`
+installed scope → contract `SL-08`+`SL-09`+`SL-10`. No product, edition or inclusion decision differs
+between the two registers.
+
+### 1.2 Validation surfaces and the approved-disclaimer interpretation
+
+`COMMERCIAL-BRAND-CLAIMS-POLICY.md` §9 defines five approved texts. The D18 validator enforces them by
+**surface**, not mechanically on all twelve files, because a disclaimer is required where its subject is
+presented to the customer:
+
+| Approved §9 text | Enforced by D18 on | Reason |
+| --- | --- | --- |
+| Navigation / instruments | all 12 copy files | every bundle surface presents position, charts, depth, traffic or weather context |
+| AIS receive-only | CRUISE and COMPLETE copy | these are the bundles that include an AIS receiver and present AIS targets |
+| PILOT supervised steering | SAIL and COMPLETE copy | these are the bundles that include a quoted PILOT scope |
+| Weather forecast | START and CRUISE copy | these are the two copy surfaces that present the WEATHER forecast service as a licensed option; SAIL/COMPLETE/FLEET mention WEATHER only as a separate excluded/optional product and do not present forecast data |
+| Brand attribution | not duplicated in D18 | the brand gate (`scripts/check-brand.mjs` / `npm run test:brand`) owns brand identity, attribution and clearance enforcement; all 12 copy files nevertheless carry the approved attribution footer |
+
+Adding a forecast surface to a copy file therefore requires the weather disclaimer: the check is not tied
+to which products happen to be optional today.
 
 ## 2. Component record model
 
@@ -103,7 +139,7 @@ measurement claim, accuracy, connectivity or remote-alert capability that its mo
 
 **No-double-count rule.** If a kit is selected, the modules inside it are already counted once. A loose
 module line for a module contained in a selected kit is a duplicate and must be rejected (`CF-03`,
-`CR-03`). The only permitted representation is an explicit `INELIGIBLE` marker line recording why the
+`CFG-03`). The only permitted representation is an explicit `INELIGIBLE` marker line recording why the
 loose module cannot be added (PROTECT line `PR-03`).
 
 Worked PROTECT example: `WATCH-CORE` + `SENSE-ESSENTIALS` resolves to one WATCH unit and exactly two
@@ -130,7 +166,7 @@ configuration and cost sheet.
    | FLEET package | `FLEET-START` or `FLEET-BUSINESS` subscription + onboarding + registration/migration + training + support | `FLEET-ENTERPRISE` conditional contracted tier; `WATCH-CORE`, `HUB-STANDARD`, SENSE, connectivity, installation optional/quoted |
 
 4. A `CONDITIONAL` edition must state its condition and is never selected by default or priced as a
-   standard line (`CR-11`).
+   standard line (`CFG-11`).
 5. `PILOT-PRO` is `INSTALLATION_PACKAGE`, never a retail SKU; `DISPLAY-LARGE-CONDITIONAL` is never
    selectable as an available size. Both are represented explicitly as `INELIGIBLE` lines so the
    validator can reject an inclusion attempt; neither appears in any orderable-looking scope.
@@ -143,17 +179,17 @@ Dependencies are deterministic; the rule id and the outcome are recorded on the 
 
 | Dependency | Trigger | Outcome | What would change it |
 | --- | --- | --- | --- |
-| Mandatory product missing | A fixed reference component is absent | `NOT_ELIGIBLE` (`CF-01`, `CR-01`) | Nothing in MC-08; the composition is fixed (D-019) |
-| Duplicate product / kit module | Same family+edition twice, or kit + loose module | `NOT_ELIGIBLE` (`CF-02`, `CF-03`, `CR-03`) | Nothing; the duplicate is always wrong |
-| WATCH without monitoring entitlement | A WATCH component without a declared monitoring subscription | `NOT_ELIGIBLE` (`CF-10`, `CR-04`) | A defined entitlement and subscription service; none exists today |
+| Mandatory product missing | A fixed reference component is absent | `NOT_ELIGIBLE` (`CF-01`, `CFG-01`) | Nothing in MC-08; the composition is fixed (D-019) |
+| Duplicate product / kit module | Same family+edition twice, or kit + loose module | `NOT_ELIGIBLE` (`CF-02`, `CF-03`, `CFG-03`) | Nothing; the duplicate is always wrong |
+| WATCH without monitoring entitlement | A WATCH component without a declared monitoring subscription | `NOT_ELIGIBLE` (`CF-10`, `CFG-04`) | A defined entitlement and subscription service; none exists today |
 | Remote monitoring without subscription | Cloud monitoring without an active WATCH subscription | `NOT_ELIGIBLE` (`CF-11`) | Never permitted; network/service evidence would not remove this rule |
 | Missing chart/licensed-data entitlement | A navigation outcome without a `REQUIRED_EXTERNAL` chart line | `COMPATIBILITY_EVIDENCE_REQUIRED` (`CF-12`) | A signed per-region distribution right and an entitlement record |
-| Missing survey before quotation | A PILOT/FLEET line without a documented survey | `SPECIALIST_SURVEY_REQUIRED` then `QUOTATION_REQUIRED` (`CR-06`, `CR-12`) | A completed survey and an itemised quotation |
-| Quotation component in a fixed-price configuration | PILOT or FLEET scope inside a fixed turnkey price | `QUOTATION_REQUIRED` (`CF-09`, `CR-12`) | D-009/D-022 remain binding; no evidence removes this |
-| FLEET package without contract | No written contract, roles, data-protection terms | `QUOTATION_REQUIRED` (`CR-07`) | A written contract scope and data-protection assessment |
+| Missing survey before quotation | A PILOT/FLEET line without a documented survey | `SPECIALIST_SURVEY_REQUIRED` then `QUOTATION_REQUIRED` (`CFG-06`, `CFG-12`) | A completed survey and an itemised quotation |
+| Quotation component in a fixed-price configuration | PILOT or FLEET scope inside a fixed turnkey price | `QUOTATION_REQUIRED` (`CF-09`, `CFG-12`) | D-009/D-022 remain binding; no evidence removes this |
+| FLEET package without contract | No written contract, roles, data-protection terms | `QUOTATION_REQUIRED` (`CFG-07`) | A written contract scope and data-protection assessment |
 | Local safety function gated by an entitlement | Any subscription gating steering, sensing or alarms | `NOT_ELIGIBLE` (`CF-18`, subscription isolation) | Never permitted; safety is not an edition feature |
 
-The ordering is important: an unresolved safety prerequisite (`CR-09`) is checked before a quotation
+The ordering is important: an unresolved safety prerequisite (`CFG-09`) is checked before a quotation
 decision, because a vessel that cannot be safely equipped must not receive a quotation as if it could.
 
 ## 7. Compatibility evaluation and evidence promotion
@@ -197,14 +233,14 @@ The six permitted outcomes are exactly:
 
 Decision order (deterministic):
 
-1. Structural integrity (`CR-01`–`CR-03`): missing, duplicate, kit mismatch, contradictory editions →
+1. Structural integrity (`CFG-01`–`CFG-03`): missing, duplicate, kit mismatch, contradictory editions →
    `NOT_ELIGIBLE`.
-2. Safety prerequisites (`CR-06`, `CR-09`): failed E-stop/isolation/feedback/survey prerequisite →
+2. Safety prerequisites (`CFG-06`, `CFG-09`): failed E-stop/isolation/feedback/survey prerequisite →
    `NOT_ELIGIBLE`; survey not yet performed → `SPECIALIST_SURVEY_REQUIRED`.
-3. Compatibility (`CR-08`, `CR-10`): no tested/supported row for a promised outcome → first
+3. Compatibility (`CFG-08`, `CFG-10`): no tested/supported row for a promised outcome → first
    `COMPATIBILITY_EVIDENCE_REQUIRED` for human assessment; if the promised outcome still has no
    supported integration, `NOT_ELIGIBLE` for that promise.
-4. Quotation boundary (`CR-12`): PILOT, FLEET and survey/installation scope → `QUOTATION_REQUIRED`.
+4. Quotation boundary (`CFG-12`): PILOT, FLEET and survey/installation scope → `QUOTATION_REQUIRED`.
 5. Publication (`PUBLICATION_BLOCKED`) applies to every outcome while brand, IP, price, compatibility and
    safety gates are open.
 6. `CONFIGURATION_DEFINED_INTERNAL` is the floor: it says the composition is coherent, nothing more.
@@ -314,22 +350,48 @@ real device, installation or service.
 | CF-19 | Approved price without verified costs | Approved/final/checkout-ready price without costs | `PUBLICATION_BLOCKED` | structural |
 | CF-20 | Blocked product promoted via a bundle | Bundle claims availability/approval/certification inherited from a blocked product | `PUBLICATION_BLOCKED` | structural + behavioural |
 
-## 11. Configuration rules CR-01–CR-12
+## 11. Configuration rules CFG-01–CFG-12
 
 | Id | Rule | Outcome | Notes |
 | --- | --- | --- | --- |
-| `CR-01` | Mandatory component presence | `NOT_ELIGIBLE` | Fixed composition; a missing line is always structural. |
-| `CR-02` | Edition resolution | `NOT_ELIGIBLE` | Only the nine product contracts build the registry. |
-| `CR-03` | Kit expansion | `NOT_ELIGIBLE` | Exact declared modules only; no invented capability. |
-| `CR-04` | Dependency resolution | `QUOTATION_REQUIRED` / `COMPATIBILITY_EVIDENCE_REQUIRED` | Subscriptions, entitlements and surveys resolve deterministically. |
-| `CR-05` | General questionnaire (13 questions) | `COMPATIBILITY_EVIDENCE_REQUIRED` | Unknown compatibility → human assessment, never assumed. |
-| `CR-06` | Safety-sensitive questionnaire (SAIL/COMPLETE) | `SPECIALIST_SURVEY_REQUIRED` / `NOT_ELIGIBLE` | Failed prerequisite → ineligible; pending survey → survey required. |
-| `CR-07` | B2B FLEET questionnaire | `QUOTATION_REQUIRED` | Every FLEET package is quoted and contracted. |
-| `CR-08` | Unknown compatibility | `COMPATIBILITY_EVIDENCE_REQUIRED` | Promotion only with a recorded device test. |
-| `CR-09` | Failed safety prerequisite | `NOT_ELIGIBLE` | E-stop, isolation, feedback, sea trials. |
-| `CR-10` | No supported integration for a promised outcome | `NOT_ELIGIBLE` | The bundle may stay internally defined but the promise is refused. |
-| `CR-11` | Unverified/conditional edition | `NOT_ELIGIBLE` | The edition is labelled conditional; it is never silently selected or priced as a standard line. |
-| `CR-12` | Quotation-required components | `QUOTATION_REQUIRED` | PILOT (D-009) and FLEET (D-022) boundaries. |
+| `CFG-01` | Mandatory component presence | `NOT_ELIGIBLE` | Fixed composition; a missing line is always structural. |
+| `CFG-02` | Edition resolution | `NOT_ELIGIBLE` | Only the nine product contracts build the registry. |
+| `CFG-03` | Kit expansion | `NOT_ELIGIBLE` | Exact declared modules only; no invented capability. |
+| `CFG-04` | Dependency resolution | `QUOTATION_REQUIRED` / `COMPATIBILITY_EVIDENCE_REQUIRED` | Subscriptions, entitlements and surveys resolve deterministically. |
+| `CFG-05` | General questionnaire (13 questions) | `COMPATIBILITY_EVIDENCE_REQUIRED` | Unknown compatibility → human assessment, never assumed. |
+| `CFG-06` | Safety-sensitive questionnaire (SAIL/COMPLETE) | `SPECIALIST_SURVEY_REQUIRED` / `NOT_ELIGIBLE` | Failed prerequisite → ineligible; pending survey → survey required. |
+| `CFG-07` | B2B FLEET questionnaire | `QUOTATION_REQUIRED` | Every FLEET package is quoted and contracted. |
+| `CFG-08` | Unknown compatibility | `COMPATIBILITY_EVIDENCE_REQUIRED` | Promotion only with a recorded device test. |
+| `CFG-09` | Failed safety prerequisite | `NOT_ELIGIBLE` | E-stop, isolation, feedback, sea trials. |
+| `CFG-10` | No supported integration for a promised outcome | `NOT_ELIGIBLE` | The bundle may stay internally defined but the promise is refused. |
+| `CFG-11` | Unverified/conditional edition | `NOT_ELIGIBLE` | The edition is labelled conditional; it is never silently selected or priced as a standard line. |
+| `CFG-12` | Quotation-required components | `QUOTATION_REQUIRED` | PILOT (D-009) and FLEET (D-022) boundaries. |
+
+### 11.1 How the D18 validator enforces these rules
+
+The machine gate is `scripts/check-marea-bundles.mjs` (D18). Its checks map to the rules above as
+follows, and every mapping is covered by a negative fixture test in
+`scripts/check-marea-bundles.test.mjs`:
+
+| Rule area | Validator check |
+| --- | --- |
+| Mandatory base components present | `BUNDLE-09` (fixed reference components and required external scope) |
+| Every reference line pinned to its one permitted inclusion class; no unpinned or hidden `INCLUDED` line | `BUNDLE-34` (conditional, ineligible, optional, required-external and quotation lines are pinned) |
+| Line-level inclusion vocabulary; no sale/approval token in a component record | `BUNDLE-33` |
+| Kit expansion exactly once, no loose duplicate module | `BUNDLE-07` (expansion authorities) and `BUNDLE-08` (duplicate counting) |
+| DISPLAY-7 only; DISPLAY-LARGE-CONDITIONAL retained as an auditable `INELIGIBLE` guard line | `BUNDLE-13` |
+| PILOT quotation boundary; PILOT-PRO never a priced retail line | `BUNDLE-10` |
+| Subscriptions, entitlements and no double billing | `BUNDLE-11`, `BUNDLE-12`, `BUNDLE-28` |
+| FLEET package/SaaS separation, hardware not included by default, tenancy boundary | `BUNDLE-16`, `BUNDLE-17` |
+| No remote steering/helm path | `BUNDLE-18` |
+| Price classification and the six historical hypotheses | `BUNDLE-19` |
+| Prose claims: sale/orderable/purchasable, approval, clearance, certification, guaranteed delivery | `BUNDLE-26`, `BUNDLE-32` (documents and copy) and `BUNDLE-15` (guaranteed/immediate alert delivery on specifications and the twelve copy files) |
+| Approved disclaimers by surface | `BUNDLE-23` (navigation on all twelve, AIS on CRUISE/COMPLETE, PILOT on SAIL/COMPLETE, weather on the START/CRUISE forecast surfaces) |
+| Configuration-rule namespace `CFG-NN` never reused by a component line id | `BUNDLE-25` |
+
+Prose scanning is case-insensitive and line-start safe, and it distinguishes an assertion from a quoted
+example, a negated statement or an explicit exclusion list; the unit fixture suite injects real affirmative
+sentences into a specification and into a customer copy file to prove the gate fails closed.
 
 ## 12. Example internal configurations
 
@@ -422,13 +484,13 @@ why not orderable: FLEET service NOT_IMPLEMENTED; NO_SLA_ESTABLISHED; bespoke qu
 ## 14. Worked failure examples
 
 1. **Duplicate kit module.** PROTECT with `SENSE-ESSENTIALS` + `SENSE-POWER` (INCLUDED) →
-   `CF-03`/`CR-03` → `NOT_ELIGIBLE`. The kit already counts power and bilge once.
+   `CF-03`/`CFG-03` → `NOT_ELIGIBLE`. The kit already counts power and bilge once.
 2. **Missing mandatory product.** SAIL without `PILOT-COASTAL` (or with only `PILOT-PRO`) →
    `CF-01`/`CF-08` → `NOT_ELIGIBLE`; the steering outcome cannot exist as a fixed retail line.
 3. **Compatibility invented.** Any bundle citing `SUPPORTED`/`TESTED` while `deviceTestRecorded=false`
    → `CF-15`/`BUNDLE-31` → `COMPATIBILITY_EVIDENCE_REQUIRED`; the contract must reject the claim.
 4. **Fixed price around PILOT.** SAIL with `fixedTurnkeyPriceApproved=true` or a PILOT line outside
-   `QUOTATION_REQUIRED` → `CF-09`/`CR-12` → `QUOTATION_REQUIRED`; the validator fails the contract.
+   `QUOTATION_REQUIRED` → `CF-09`/`CFG-12` → `QUOTATION_REQUIRED`; the validator fails the contract.
 5. **Subscription-free monitoring.** PROTECT without the WATCH monitoring entitlement →
    `CF-10`/`CF-11` → `NOT_ELIGIBLE`; remote monitoring never exists without its subscription.
 6. **Sale through packaging.** Any bundle whose commercial availability or publication state is set
