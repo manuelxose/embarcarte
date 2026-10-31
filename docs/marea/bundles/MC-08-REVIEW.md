@@ -1125,7 +1125,7 @@ $ git diff --check a977b39..c3c1a44
 ```
 
 The delta is exactly the four declared files: `scripts/check-marea-bundles.mjs` (+1 check: BUNDLE-35;
-subject-agnostic sale pattern; quoted-span handling; negation/enumeration hardening), 
+subject-agnostic sale pattern; quoted-span handling; negation/enumeration hardening),
 `scripts/check-marea-bundles.test.mjs` (8 new tests → 50), `docs/marea/bundles/BUNDLE-CONFIGURATION-RULES.md`
 (R-03 AIS surface rows now name the FLEET package), and
 `docs/marea/bundles/MAREA-FLEET-PACKAGE-COMMERCIAL-SPEC.md` (R-04 `CR-07`→`CFG-07`). Not touched: `src/`,
