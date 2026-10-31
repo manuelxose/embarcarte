@@ -310,6 +310,15 @@ defects (Unicode Spanish copula; governance-quoted stale rule), corrected in `d4
 probes rejected, 4/4 definitional sanity sentences accepted. No reviewer finding was closed by assertion; the
 reviewer performed every re-verification on the real artefacts.
 
+**Closing delta verification (narrow, Lead-run).** The reviewed commit `d496d68` is the last commit that
+changes implementation, scripts, contract, specifications, copy or configuration. The closing delta from
+`d496d68` to the final documentation commit contains only documentation and governance: this delivery record,
+the review record and the registry closure, plus a trailing-whitespace normalisation inside the review record.
+No code, contract, bundle specification, copy draft, asset plan or configuration changed. On the final tree the
+Lead re-ran `node scripts/check-marea-bundles.mjs` (35/35 PASS), `npm run test:bundles:unit` (60/60) and
+`git diff --check 80c66c7..HEAD` (clean). This narrow verification does not replace the reviewer's
+verification of `d496d68`; it confirms that the closing documentation commit changed no reviewed artefact.
+
 ## 9. External blockers (unchanged by MC-08)
 
 - **MAREA trademark legal clearance:** `NOT_GRANTED` (X-01); public brand use remains NO-GO.
