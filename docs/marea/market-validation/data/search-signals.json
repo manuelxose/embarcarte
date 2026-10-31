@@ -1,0 +1,306 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "workstream": "channels",
+  "owner": "agent-e-channels",
+  "scopeNote": "Search-query-language evidence for ES, PT and EN terms relevant to the nine MAREA families. No absolute volume is recorded anywhere: Google Trends was INACCESSIBLE and no accessible source supplied keyword volumes.",
+  "accessibilitySummary": {
+    "googleTrends": "INACCESSIBLE — https://trends.google.com/trends/explore?q=receptor%20AIS&geo=ES returned HTTP 404 on 2026-10-31; the Trends root page loads only a JavaScript shell with no retrievable series. No relative-interest index is recorded.",
+    "googleAutocomplete": "INACCESSIBLE — https://suggestqueries.google.com/complete/search returned HTTP 404 on 2026-10-31.",
+    "bingAutosuggest": "ACCESSIBLE — https://api.bing.com/osjson.aspx returned live suggestion lists for market es-ES, pt-PT and en-GB on 2026-10-31. Used as query-language evidence only.",
+    "keywordVolumeTools": "NOT USED — no paid data, no third-party volume service and no estimated volume was available; therefore zero ESTIMATED_VOLUME records exist by design."
+  },
+  "terms": [
+    {
+      "termId": "TRM-CHN-001",
+      "term": "receptor AIS",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Autosuggest completions observed: 'localizador de barcos por ais'; 'rastreador de buques ais'; 'receptor.ai'. No purchase-oriented completion appeared.",
+      "limitation": "Bing autosuggest for market es-ES on 2026-10-31. Proves the phrasing is typed; no volume, trend or click data. The dominant completions express vessel-tracking intent, not receiver purchase."
+    },
+    {
+      "termId": "TRM-CHN-002",
+      "term": "localizador de barcos por ais",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of the prefix 'receptor ais'.",
+      "limitation": "Suggestion presence only; it may describe a tourist/AIS-website use case rather than an onboard receiver purchase, which is exactly the ambiguity MAREA must not misread."
+    },
+    {
+      "termId": "TRM-CHN-003",
+      "term": "rastreador de buques ais",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of the prefix 'receptor ais'.",
+      "limitation": "Suggestion presence only; tracking intent. No volume."
+    },
+    {
+      "termId": "TRM-CHN-004",
+      "term": "monitoreo de barcos en tiempo real",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of the prefix 'monitorizar barco'.",
+      "limitation": "Suggestion presence only; suggests the noun form 'monitoreo' is the natural Spanish phrasing rather than 'monitorizar'. No volume."
+    },
+    {
+      "termId": "TRM-CHN-005",
+      "term": "posicionamiento de barcos en directo",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of the prefix 'monitorizar barco'.",
+      "limitation": "Suggestion presence only; likely overlaps with tracking/AIS-website intent. No volume."
+    },
+    {
+      "termId": "TRM-CHN-006",
+      "term": "monitorizar barco",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Completions were dominated by the display manufacturer 'Barco' ('what is a barco monitor', 'download barco monitor drivers', 'barco monitor power button'); marine phrasings appeared only as 'monitoreo de barcos en tiempo real' and 'posicionamiento de barcos en directo'.",
+      "limitation": "Direct evidence of a brand-collision naming risk in Spanish; this is a keyword-strategy finding, not a demand measurement."
+    },
+    {
+      "termId": "TRM-CHN-007",
+      "term": "piloto automatico velero",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Completions included 'piloto automatico barco segunda mano' plus aviation and motorcycle pollution ('piloto privado de avion', 'piloto automatico para moto').",
+      "limitation": "Suggestion presence only; a second-hand completion indicates a used-market price anchor that a premium new pilot product competes against. No volume."
+    },
+    {
+      "termId": "TRM-CHN-008",
+      "term": "piloto automatico barco segunda mano",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of 'piloto automatico velero'.",
+      "limitation": "Suggestion presence only; used-equipment demand signal, not first-purchase demand for MAREA PILOT."
+    },
+    {
+      "termId": "TRM-CHN-009",
+      "term": "nmea 2000",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Completions observed: 'nmea 2000 cable', 'nmea 2000 starter kit', 'nmea 2000 kabel', 'nmea 2000 pinout', 'nmea 2000 gps', 'nmea 2000 connector', 'nmea 2000 protocol', 'nmea 2000 network', 'nmea 2000 pgn', 'nmea 2000 backbone', 'nmea 2000 gateway'.",
+      "limitation": "Suggestion presence only; the list is largely English/German technical vocabulary even in the Spanish market, which means an English-language integration answer may serve ES users. No volume."
+    },
+    {
+      "termId": "TRM-CHN-010",
+      "term": "nmea 2000 gateway",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of the prefix 'nmea 2000' in the es-ES market.",
+      "limitation": "Suggestion presence only; evidence that a gateway-specific query exists, not that anyone wants to buy MAREA HUB."
+    },
+    {
+      "termId": "TRM-CHN-011",
+      "term": "plotter nautico",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Completions included definitional questions ('que es un plotter marino', 'que es el plotter') and printing/cutting-plotter pollution ('plotter de corte automático', 'tiendas de cartuchos para plotters').",
+      "limitation": "Suggestion presence only; shows awareness-stage and semantic-collision problems in Spanish, not purchase volume."
+    },
+    {
+      "termId": "TRM-CHN-012",
+      "term": "que es un plotter marino",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of 'plotter nautico'.",
+      "limitation": "Suggestion presence only; definitional query, upper-funnel."
+    },
+    {
+      "termId": "TRM-CHN-013",
+      "term": "receptor ais",
+      "language": "pt",
+      "geography": "PT",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Completions were unrelated senses: 'receptor assay', 'receptor airplay', 'receptor ads-b', 'receptor risk assessment'.",
+      "limitation": "Suggestion presence only; the Portuguese prefix is dominated by biological/laboratory 'receptor' and Apple AirPlay. The correct PT search vocabulary was not observed and is a hypothesis for MC-10."
+    },
+    {
+      "termId": "TRM-CHN-014",
+      "term": "monitorização barco",
+      "language": "pt",
+      "geography": "PT",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Completions were dominated by 'monitorização barragens' (dams), 'barco monitor' (display brand), 'site de monitoramento de navios' and Spanish 'control de embarques y monitoreo'.",
+      "limitation": "Suggestion presence only; no clean Portuguese boat-monitoring phrasing appeared. Content strategy for PT must be tested, not assumed."
+    },
+    {
+      "termId": "TRM-CHN-015",
+      "term": "piloto automático barco",
+      "language": "pt",
+      "geography": "PT",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Completions included 'piloto automático o que é' (definitional), 'carteira de piloto de barco' / 'licença para pilotar barco' (boat-driving licence intent), and Spanish 'piloto automatico barco segunda mano'.",
+      "limitation": "Suggestion presence only; Portuguese 'piloto' collides with skipper-licence intent, so a naive translation of the Spanish strategy would target the wrong user."
+    },
+    {
+      "termId": "TRM-CHN-016",
+      "term": "boat monitoring",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Completions observed: 'boat monitoring system', 'ais boat monitoring', 'diy boat monitoring system', 'best boat monitoring system', 'boat monitoring system reviews', 'remote boat monitoring system', 'boat battery monitoring system', 'marine tank monitoring system', 'marine battery monitoring system'.",
+      "limitation": "Suggestion presence only; strongly purchase-oriented but includes 'diy' and 'best/reviews' comparison intent. No volume."
+    },
+    {
+      "termId": "TRM-CHN-017",
+      "term": "remote boat monitoring system",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of 'boat monitoring'.",
+      "limitation": "Suggestion presence only; the word 'remote' matches the WATCH proposition, but no conversion data exists."
+    },
+    {
+      "termId": "TRM-CHN-018",
+      "term": "boat battery monitoring system",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of 'boat monitoring'.",
+      "limitation": "Suggestion presence only; battery-specific intent maps to SENSE/WATCH battery monitoring scope, but specific sensor compatibility is unvalidated."
+    },
+    {
+      "termId": "TRM-CHN-019",
+      "term": "marine tank monitoring system",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of 'boat monitoring'.",
+      "limitation": "Suggestion presence only; tank monitoring implies sender compatibility and installation work that MAREA SENSE has not validated."
+    },
+    {
+      "termId": "TRM-CHN-020",
+      "term": "ais receiver",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Completions observed: 'ais receiver marine', 'ais receiver device', 'ais receiver with gps', 'ais receiver for boats', 'ais receiver buying guide', 'ais receiver usb', 'ais receiver range', 'ais receiver range in km', 'ais receiver installation guide', 'ais receiver marine traffic', 'ais receiver troubleshooting tips'.",
+      "limitation": "Suggestion presence only; the mix of buying-guide, range, USB and troubleshooting phrasings indicates comparison and installation-stage intent, which is the strongest commercial-intent pattern found in this workstream — still not a volume or a demand measurement."
+    },
+    {
+      "termId": "TRM-CHN-021",
+      "term": "ais receiver buying guide",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of 'ais receiver'.",
+      "limitation": "Suggestion presence only; comparison-stage content demand."
+    },
+    {
+      "termId": "TRM-CHN-022",
+      "term": "ais receiver installation guide",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of 'ais receiver'.",
+      "limitation": "Suggestion presence only; installation-stage intent. It does not show how many users install themselves or pay an installer."
+    },
+    {
+      "termId": "TRM-CHN-023",
+      "term": "weather routing",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Completions were dominated by commercial shipping and a single vendor brand: 'weather routing for ships', 'weather routing chart', 'weather routing company', 'weather routing service', 'weather routing system', 'weather routing inc glens falls new york', 'weather routing inc jobs', 'weather routing sailing'.",
+      "limitation": "Suggestion presence only; leisure demand is one phrasing inside a B2B-dominated space. No volume."
+    },
+    {
+      "termId": "TRM-CHN-024",
+      "term": "weather routing sailing",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Returned as an autosuggest completion of 'weather routing' (the only leisure-specific completion).",
+      "limitation": "Suggestion presence only; one phrasing cannot support a revenue forecast."
+    },
+    {
+      "termId": "TRM-CHN-025",
+      "term": "receptor AIS",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "SEARCH_INTEREST",
+      "sourceId": "SRC-CHN-036",
+      "observedValue": "INACCESSIBLE — no relative-interest value obtained.",
+      "limitation": "Google Trends explore URL returned HTTP 404 on 2026-10-31 and the root page renders only a shell; per the workstream rules the correct record is INACCESSIBLE, never an invented index."
+    },
+    {
+      "termId": "TRM-CHN-026",
+      "term": "boat monitoring",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "SEARCH_INTEREST",
+      "sourceId": "SRC-CHN-036",
+      "observedValue": "INACCESSIBLE — no relative-interest value obtained.",
+      "limitation": "Same Google Trends access failure as TRM-CHN-025 on 2026-10-31."
+    },
+    {
+      "termId": "TRM-CHN-027",
+      "term": "NMEA 2000 gateway",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "SEARCH_INTEREST",
+      "sourceId": "SRC-CHN-036",
+      "observedValue": "INACCESSIBLE — no relative-interest value obtained.",
+      "limitation": "Same Google Trends access failure as TRM-CHN-025 on 2026-10-31."
+    },
+    {
+      "termId": "TRM-CHN-028",
+      "term": "ais receiver",
+      "language": "en",
+      "geography": "GB",
+      "metricType": "SEARCH_INTEREST",
+      "sourceId": "SRC-CHN-036",
+      "observedValue": "INACCESSIBLE — no relative-interest value obtained.",
+      "limitation": "Same Google Trends access failure as TRM-CHN-025 on 2026-10-31."
+    },
+    {
+      "termId": "TRM-CHN-029",
+      "term": "monitoreo de barcos en tiempo real",
+      "language": "es",
+      "geography": "ES",
+      "metricType": "CONTENT_OPPORTUNITY",
+      "sourceId": "SRC-CHN-038",
+      "observedValue": "Observed as a completion under 'monitorizar barco'; recorded here as the family-level Spanish phrasing to test in content.",
+      "limitation": "Duplicate observation of TRM-CHN-004 retained because it is the only Spanish phrase with explicit remote/real-time monitoring intent; no volume."
+    }
+  ]
+}

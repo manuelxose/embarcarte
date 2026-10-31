@@ -1,0 +1,506 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "workstream": "economics",
+  "owner": "agent-d-economics",
+  "scopeNote": "Conditional customer first-year total-cost-of-ownership models for the six canonical bundles. MAREA product lines are HYPOTHESIS_UNAPPROVED scenario inputs recorded with basis ASSUMED, never approved prices and never EMBARCARTE production costs. Every component that could not be evidenced is UNKNOWN with amount null; no UNKNOWN is treated as zero and no model publishes a definitive year1Total.",
+  "models": [
+    {
+      "modelId": "TCO-START",
+      "subject": "START",
+      "subjectLabel": "MAREA START",
+      "periodBasis": "FIRST_YEAR_CUSTOMER_CASH_COST",
+      "components": [
+        {
+          "item": "HUB-STANDARD hardware (retail hypothesis, product-only reference)",
+          "amount": 349,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input from the canonical family register, not an approved price and not an EMBARCARTE cost."
+        },
+        {
+          "item": "NAV-PRO one-year entitlement (retail hypothesis)",
+          "amount": 149,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input; renewal price is a separate, non-established object."
+        },
+        {
+          "item": "NMEA 2000 cabling and mounting kit (observed reference accessory)",
+          "amount": 144,
+          "currency": "EUR",
+          "taxTreatment": "NOT_STATED_ON_SOURCE",
+          "basis": "OBSERVED",
+          "sourceId": "SRC-ECO-002",
+          "note": "Digital Yacht basic three-device NMEA 2000 cabling kit price. Whether START requires or includes it is not established."
+        },
+        {
+          "item": "Professional installation labour (survey, mounting, wiring, function test)",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No measured hours and no installer rate card for the intended territory; a published Croatian rate card exists (SRC-ECO-001) but is not a Spanish rate."
+        },
+        {
+          "item": "Configuration, commissioning and handover",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "Measured configuration/commissioning hours do not exist."
+        },
+        {
+          "item": "Extended warranty or first-year support plan",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No MAREA warranty term, reserve or paid support plan exists."
+        }
+      ],
+      "year1Total": null,
+      "recurringAnnual": null,
+      "completeness": "INCOMPLETE",
+      "unknowns": [
+        "Professional installation labour (hours and Spanish installer rate not measured)",
+        "Configuration, commissioning and handover time",
+        "Extended warranty or paid support terms",
+        "Whether a NMEA 2000 cabling and mounting kit is required and whether it is inside the product-only reference",
+        "Whether the historical EUR 499 reference belongs to this configuration or to a different edition mix"
+      ],
+      "notes": "Partial evidenced/hypothesis sum = 349 + 149 + 144 = 642 EUR. This partial sum is NOT a first-year total: it excludes every UNKNOWN above, which is recorded as null and never as zero. Historical hypothesis PH-01 = 499 EUR (product-only, installation excluded) is not reconciled with this partial sum and does not establish a price."
+    },
+    {
+      "modelId": "TCO-CRUISE",
+      "subject": "CRUISE",
+      "subjectLabel": "MAREA CRUISE",
+      "periodBasis": "FIRST_YEAR_CUSTOMER_CASH_COST",
+      "components": [
+        {
+          "item": "NAV-ESSENTIAL one-year entitlement (retail hypothesis)",
+          "amount": 99,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input."
+        },
+        {
+          "item": "HUB-STANDARD hardware (retail hypothesis)",
+          "amount": 349,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input."
+        },
+        {
+          "item": "AIS-RECEIVER hardware (retail hypothesis, receive-only)",
+          "amount": 249,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input; receive-only scope, no transmission."
+        },
+        {
+          "item": "DISPLAY-7 hardware (from-price hypothesis, size not frozen)",
+          "amount": 699,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED starting hypothesis; the fixed size class and BOM do not exist."
+        },
+        {
+          "item": "NMEA 2000 cabling and mounting kit (observed reference accessory)",
+          "amount": 144,
+          "currency": "EUR",
+          "taxTreatment": "NOT_STATED_ON_SOURCE",
+          "basis": "OBSERVED",
+          "sourceId": "SRC-ECO-002",
+          "note": "Digital Yacht basic three-device NMEA 2000 cabling kit; inclusion in CRUISE is not established."
+        },
+        {
+          "item": "AIS antenna or VHF antenna splitter",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "The AIS100 product page states that a dedicated antenna or an antenna splitter is required and sold as an optional accessory (SRC-ECO-006); no price was displayed and the inclusion decision is OPEN."
+        },
+        {
+          "item": "DISPLAY mount and mounting hardware",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No mount specification or price exists for the unfrozen DISPLAY-7 design."
+        },
+        {
+          "item": "Professional installation, configuration and commissioning",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "Multi-device installation hours have never been measured."
+        }
+      ],
+      "year1Total": null,
+      "recurringAnnual": null,
+      "completeness": "INCOMPLETE",
+      "unknowns": [
+        "AIS antenna or splitter: required inclusion decision and price",
+        "DISPLAY mount and mounting hardware",
+        "Professional installation, configuration and commissioning hours and rate",
+        "DISPLAY-7 frozen size, BOM and included scope",
+        "Chart entitlement scope included in the NAV line"
+      ],
+      "notes": "Partial evidenced/hypothesis sum = 99 + 349 + 249 + 699 + 144 = 1,540 EUR. This partial sum is NOT a total and not a cost. For transparency: it already exceeds the historical PH-02 hypothesis of 1,399 EUR by 1,399 - 1,540 = -141 EUR before any antenna, mount, labour or commissioning is counted, but the comparison mixes unapproved retail hypotheses with one observed retail accessory and therefore establishes no discount, margin or price."
+    },
+    {
+      "modelId": "TCO-SAIL",
+      "subject": "SAIL",
+      "subjectLabel": "MAREA SAIL",
+      "periodBasis": "FIRST_YEAR_CUSTOMER_CASH_COST",
+      "components": [
+        {
+          "item": "NAV-PRO one-year entitlement (retail hypothesis)",
+          "amount": 149,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input."
+        },
+        {
+          "item": "HUB-STANDARD hardware (retail hypothesis)",
+          "amount": 349,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input."
+        },
+        {
+          "item": "PILOT-COASTAL installed-scope starting reference (quotation, not inclusive)",
+          "amount": 1290,
+          "currency": "EUR",
+          "taxTreatment": "QUOTATION_LINE_TAX_TREATMENT_OPEN",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "Starting-price reference only. Per D-009 it excludes the vessel-specific drive/actuator, feedback, cabling, power protection, labour, commissioning, sea trial, conformity and installer margin."
+        },
+        {
+          "item": "SENSE-WIND module and its installation",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No named SENSE module price exists; the 'from EUR 99' entry hypothesis is not attributable to SENSE-WIND and is not used as its price."
+        },
+        {
+          "item": "Vessel survey and steering assessment",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "Survey hours and rate unmeasured."
+        },
+        {
+          "item": "Installation, commissioning, sea trial and owner training",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "Installed-scope labour is inside the PILOT quotation and does not exist as a measured cost; PILOT safety gate is BLOCKED."
+        },
+        {
+          "item": "Extended warranty and installed-system support",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No warranty or support terms exist for an installed steering system."
+        }
+      ],
+      "year1Total": null,
+      "recurringAnnual": null,
+      "completeness": "INCOMPLETE",
+      "unknowns": [
+        "PILOT-COASTAL fully itemised installed scope (drive, feedback, cabling, power protection, E-stop, labour, commissioning, sea trial, conformity, installer margin)",
+        "SENSE-WIND module price and installation",
+        "Vessel-specific survey and steering assessment",
+        "Installation and commissioning labour outside the starting reference",
+        "Extended warranty and installed-system support",
+        "PILOT safety evidence and gate (BLOCKED)"
+      ],
+      "notes": "Partial evidenced/hypothesis sum = 149 + 349 + 1,290 = 1,788 EUR. This is a floor of unapproved hypotheses plus a non-inclusive PILOT starting reference; it is NOT a total. The historical PH-03 figure of 1,990 EUR is traceability-only and cannot be reconciled with this floor because the installed scope and the SENSE-WIND price are absent. SAIL has no fixed-price object; the commercial object is a vessel-specific quotation."
+    },
+    {
+      "modelId": "TCO-PROTECT",
+      "subject": "PROTECT",
+      "subjectLabel": "MAREA PROTECT",
+      "periodBasis": "FIRST_YEAR_CUSTOMER_CASH_COST",
+      "components": [
+        {
+          "item": "WATCH-CORE hardware (retail hypothesis)",
+          "amount": 299,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input; connectivity explicitly excluded from the hardware hypothesis."
+        },
+        {
+          "item": "WATCH-CORE monitoring subscription, 12 months at the 'from EUR 9.90/month' hypothesis",
+          "amount": 118.8,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/market-validation/data/governance-status.json#familyPriceHypotheses.WATCH",
+          "note": "9.90 x 12 = 118.80 EUR. 'From' hypothesis only; included contents (connectivity, retention, devices) are OPEN and connectivity cost is excluded."
+        },
+        {
+          "item": "SENSE-ESSENTIALS kit (SENSE-POWER + SENSE-BILGE)",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "Neither module nor kit price exists. The kit is never the sum of two non-attributable EUR 99 entry hypotheses."
+        },
+        {
+          "item": "Installation of WATCH-CORE and two SENSE modules",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "Installation hours and rate for a two-module monitoring installation are unmeasured."
+        },
+        {
+          "item": "Connectivity/data plan (excluded from the subscription hypothesis)",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "SIM/eSIM and data plan terms do not exist; connectivity is explicitly excluded from the WATCH hypothesis."
+        },
+        {
+          "item": "First-year warranty and support",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No WATCH or SENSE warranty term, reserve or support entitlement exists."
+        }
+      ],
+      "year1Total": null,
+      "recurringAnnual": null,
+      "completeness": "INCOMPLETE",
+      "unknowns": [
+        "SENSE-ESSENTIALS kit price and both module prices",
+        "Installation of WATCH-CORE and two SENSE modules",
+        "Connectivity/data plan terms and price",
+        "WATCH subscription included contents (retention, devices, alerting scope)",
+        "First-year warranty and support terms"
+      ],
+      "notes": "Partial evidenced/hypothesis sum = 299 + 118.80 = 417.80 EUR. This is NOT a total and it omits both required SENSE modules, installation and connectivity. For transparency: the historical PH-04 hardware figure of 399 EUR is below even WATCH-CORE 299 + two non-attributable EUR 99 placeholders (497 EUR), but the placeholders are not module prices, so this arithmetic cannot state a shortfall in cost; MC-08 records the composition as HISTORIC_PRICE_NOT_COST_JUSTIFIED."
+    },
+    {
+      "modelId": "TCO-COMPLETE",
+      "subject": "COMPLETE",
+      "subjectLabel": "MAREA COMPLETE",
+      "periodBasis": "FIRST_YEAR_CUSTOMER_CASH_COST",
+      "components": [
+        {
+          "item": "NAV-PRO one-year entitlement (retail hypothesis)",
+          "amount": 149,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input."
+        },
+        {
+          "item": "HUB-PRO hardware (retail hypothesis)",
+          "amount": 499,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input."
+        },
+        {
+          "item": "DISPLAY-7 hardware (from-price hypothesis, size not frozen)",
+          "amount": 699,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED starting hypothesis."
+        },
+        {
+          "item": "WATCH-CORE hardware (retail hypothesis)",
+          "amount": 299,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "HYPOTHESIS_UNAPPROVED scenario input."
+        },
+        {
+          "item": "WATCH-CORE monitoring subscription, 12 months at the 'from EUR 9.90/month' hypothesis",
+          "amount": 118.8,
+          "currency": "EUR",
+          "taxTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/market-validation/data/governance-status.json#familyPriceHypotheses.WATCH",
+          "note": "9.90 x 12 = 118.80 EUR; subscription is excluded from the historical PH-05 amount and connectivity is excluded from the subscription hypothesis."
+        },
+        {
+          "item": "PILOT-COASTAL installed-scope starting reference (quotation, not inclusive)",
+          "amount": 1290,
+          "currency": "EUR",
+          "taxTreatment": "QUOTATION_LINE_TAX_TREATMENT_OPEN",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "Starting-price reference only; per D-009 it excludes drive/actuator, feedback, cabling, labour, commissioning, sea trial, conformity and installer margin."
+        },
+        {
+          "item": "SENSE-POWER, SENSE-BILGE, SENSE-TANKS and SENSE-ENV modules",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No named SENSE module price exists; the four EU 99 entry hypotheses are not attributable to named modules and are not used as prices."
+        },
+        {
+          "item": "Installation, configuration, commissioning and owner training across the full configuration",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "Multi-device installation hours have never been measured."
+        },
+        {
+          "item": "Extended warranty, installed-system support and multi-year subscription years",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "The historical hypothesis has no stated term; warranty, support and renewal terms do not exist."
+        }
+      ],
+      "year1Total": null,
+      "recurringAnnual": null,
+      "completeness": "INCOMPLETE",
+      "unknowns": [
+        "Four named SENSE module prices and the SENSE system composition",
+        "Installation, configuration, commissioning and training",
+        "PILOT-COASTAL fully itemised installed scope per vessel",
+        "Extended warranty and installed-system support",
+        "Multi-year NAV and WATCH subscription years and renewal prices",
+        "PILOT safety evidence and gate (BLOCKED)"
+      ],
+      "notes": "Partial evidenced/hypothesis sum = 149 + 499 + 699 + 299 + 118.80 + 1,290 = 3,054.80 EUR. This is NOT a total: four SENSE modules, all installation, warranty and subscription years beyond year one are absent. The historical PH-05 figure of 3,490 EUR is traceability-only (no fixed turnkey price is permitted) and is not a reconciliation target."
+    },
+    {
+      "modelId": "TCO-FLEET",
+      "subject": "FLEET",
+      "subjectLabel": "MAREA FLEET package",
+      "periodBasis": "FIRST_YEAR_CUSTOMER_CASH_COST_SCENARIO",
+      "components": [
+        {
+          "item": "FLEET-START per-vessel subscription, scenario assumption of 5 vessels x 12 months x EUR 49",
+          "amount": 2940,
+          "currency": "EUR",
+          "taxTreatment": "VAT_EXCLUDED_B2B_HYPOTHESIS",
+          "basis": "ASSUMED",
+          "sourceId": "docs/marea/bundles/bundle-definitions.json#priceHypothesisRegister",
+          "note": "5 x 12 x 49 = 2,940 EUR, VAT excluded. Both the 'from' rate and the vessel count are hypotheses/assumptions, not established contract values; the package itself has no amount (PH-06)."
+        },
+        {
+          "item": "Onboarding (organisation verification, vessel inventory, roles, configuration, acceptance)",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No onboarding price exists; delivery hours and rate are OPEN/BLOCKED."
+        },
+        {
+          "item": "Registration and data migration",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No migration scope or price exists."
+        },
+        {
+          "item": "Training",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No training scope or price exists."
+        },
+        {
+          "item": "Support beyond the subscription entitlement and any SLA",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "No support model exists; no SLA is established."
+        },
+        {
+          "item": "Optional hardware, connectivity and installation (quoted separately)",
+          "amount": null,
+          "currency": "EUR",
+          "taxTreatment": "UNKNOWN",
+          "basis": "UNKNOWN",
+          "sourceId": null,
+          "note": "Hardware, connectivity and installation are optional and quoted outside the subscription; no amounts exist and none may be embedded in the per-vessel fee."
+        }
+      ],
+      "year1Total": null,
+      "recurringAnnual": null,
+      "completeness": "INCOMPLETE",
+      "unknowns": [
+        "Onboarding scope, hours and price",
+        "Registration and data migration scope and price",
+        "Training scope and price",
+        "Support beyond the subscription entitlement and SLA",
+        "Optional hardware, connectivity and installation (quoted separately)",
+        "Contract term, vessel count and annual prepayment terms",
+        "VAT basis and tax treatment of each B2B service line"
+      ],
+      "notes": "Partial default all-vessel recurring arithmetic = 5 x 12 x 49 = 2,940 EUR, VAT excluded, under an explicit 5-vessel scenario assumption. This is NOT a package total: the package has no established amount, and onboarding, migration, training, support, optional hardware/connectivity/installation are all null. The FLEET package is a bespoke contracted quotation object, not a checkout value."
+    }
+  ]
+}

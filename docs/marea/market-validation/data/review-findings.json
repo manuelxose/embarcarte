@@ -1,0 +1,128 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "milestone": "MC-09",
+  "auditor": "agent-f-auditor",
+  "role": "independent evidence auditor (author of no MC-09 research deliverable)",
+  "round": 2,
+  "reviewedCommit": "d85733e49c7e78fa8cfa045ff440579c57ff6bb5",
+  "round1Commit": "566343e493e392058bd1a662a6465e02ee4bccd0",
+  "baseCommit": "65417bfa681d31cc655e2bc91cfcedcccc368675",
+  "date": "2026-10-31",
+  "verdict": "PASS",
+  "verdictScope": "PASS — INTERNAL DESK-RESEARCH AND MARKET-INTELLIGENCE SCOPE, final after round 2 on d85733e. All eight audit dimensions and all eight findings are independently verified and closed; no BLOCKING or MAJOR finding remains. The PASS is not demand/WTP validation, price approval, compatibility, certification, publication or sale; commercial status remains BLOCKED / NOT_FOR_SALE.",
+  "findings": [
+    {
+      "findingId": "F-01",
+      "severity": "MAJOR",
+      "file": "docs/marea/market-validation/MC09-EXECUTIVE-REPORT.md:99",
+      "evidence": "Round 1: the executive summary stated 'Ningún competidor vende una solución completa instalada y puesta en servicio equivalente a los bundles de MAREA' as an absolute market fact, while MC09-BUNDLE-BENCHMARKS.md:13 correctly says 'No observed competitor sells...' and the sample is 27 sources / 48 observations. A universal negative was not established.",
+      "impact": "Overstated a market gap in the decision document.",
+      "requiredCorrection": "Reword to the observed scope and state that the sample cannot establish anything about the rest of the market.",
+      "owner": "lead",
+      "status": "CLOSED",
+      "verification": "Round 2 at d85733e: MC09-EXECUTIVE-REPORT.md:99-103 now reads 'Ninguno de los competidores observados en esta muestra (48 observaciones sobre 27 fuentes)... La muestra no permite afirmar nada sobre el resto del mercado'. A grep across docs/marea/market-validation finds no remaining absolute 'Ningún competidor' claim. CLOSED."
+    },
+    {
+      "findingId": "F-02",
+      "severity": "MINOR",
+      "file": "docs/marea/market-validation/competitors/MC09-BUNDLE-BENCHMARKS.md:36,96",
+      "evidence": "Round 1: START-equivalent was computed as Orca Core 2 EUR 649 + Orca Plus EUR 49 = EUR 698 'year one', and Orca guard mode as EUR 649 + EUR 149 = EUR 798 'year one', although SRC-CMP-001 states a year of Smart Navigation is included with an Orca Core or Display (the same document acknowledged this for CRUISE at line 55). Year-one competitor cost was overstated by EUR 49 and EUR 149.",
+      "impact": "Not reproducible from the cited source; conservative against MAREA, direction of conclusions unchanged.",
+      "requiredCorrection": "Use EUR 649 as year one and 698/798 only as labelled year-two totals.",
+      "owner": "lead",
+      "status": "CLOSED",
+      "verification": "Round 2 at d85733e: EUR 649 year one / EUR 698 from year two is now consistent in MC09-BUNDLE-BENCHMARKS.md:36,41-42,97,153-154; PRC-CMP-049 amount is 649 with the inclusion explained; CLM-CMP-027 text and limitations updated; OBS-CMP-040 updated; MC09-COMPETITOR-PRICING.md:119, MC09-COMPETITIVE-POSITIONING.md:237 and MC09-EXECUTIVE-REPORT.md:156,181 aligned. A grep finds no remaining year-one 698 claim. CLOSED."
+    },
+    {
+      "findingId": "F-03",
+      "severity": "MINOR",
+      "file": "docs/marea/market-validation/MC09-EXECUTIVE-REPORT.md:273-275",
+      "evidence": "Round 1: the source breakdown said '6 economía', while evidence-economics.json has five sources (SRC-ECO-001, 002, 003, 005, 006; there is no SRC-ECO-004); the printed breakdown summed to 116 against the 115 total.",
+      "impact": "Factual count error in the executive report's evidence section.",
+      "requiredCorrection": "Change 6 to 5 economics sources.",
+      "owner": "lead",
+      "status": "CLOSED",
+      "verification": "Round 2 at d85733e: MC09-EXECUTIVE-REPORT.md:273-275 now reads '5 economía' and 20+27+20+5+38+5 = 115. CLOSED."
+    },
+    {
+      "findingId": "F-04",
+      "severity": "MINOR",
+      "file": "docs/marea/market-validation/data/manifest.json:15",
+      "evidence": "Round 1: the manifest purpose called the buyer segments 'evidence-based', while all eight records in buyer-segments.json have archetypeStatus = HYPOTHETICAL_ARCHETYPE and MC09-BUYER-SEGMENTS.md:14 states every segment is a hypothetical archetype.",
+      "impact": "The machine-readable index overstated the epistemic status of the buyer workstream.",
+      "requiredCorrection": "Reword the manifest purpose to label the segments as hypothetical archetypes.",
+      "owner": "lead",
+      "status": "CLOSED",
+      "verification": "Round 2 at d85733e: manifest.json now reads 'Eight buyer segments, all labelled HYPOTHETICAL_ARCHETYPE'. CLOSED."
+    },
+    {
+      "findingId": "F-05",
+      "severity": "INFORMATIONAL",
+      "file": "docs/marea/market-validation/MC09-EXECUTIVE-REPORT.md:271",
+      "evidence": "Round 1: '26 documentos y 22 ficheros de datos' mixed the deliverable count D1-D26 with the document/data counts.",
+      "impact": "Counting/wording imprecision; no effect on conclusions.",
+      "requiredCorrection": "Reword as 26 deliverables with the actual document/data/script counts.",
+      "owner": "lead",
+      "status": "CLOSED",
+      "verification": "Round 2 at d85733e: the report now reads '26 entregables (D1-D26): 24 documentos Markdown de contenido, 23 ficheros de datos JSON y 2 scripts de validación', consistent with the tree at d85733e (24 content Markdown + this review, 23 JSON data files, 2 scripts). CLOSED."
+    },
+    {
+      "findingId": "F-06",
+      "severity": "INFORMATIONAL",
+      "file": "docs/marea/market-validation/data/manifest.json",
+      "evidence": "Round 1: after the audit wrote data/review-findings.json, test:market failed MK-03 and the unit suite failed its 'real tree passes' case because the manifest did not list the new audit-data file. Expected integration step, not a research defect.",
+      "impact": "Deterministic market gates were red until the manifest entry existed.",
+      "requiredCorrection": "Add a manifest entry for data/review-findings.json and re-run the market gates.",
+      "owner": "lead",
+      "status": "CLOSED",
+      "verification": "Round 2 at d85733e: manifest now has 22 entries including data/review-findings.json (owner agent-f-auditor); npm run test:market 40/40 exit 0 and npm run test:market:unit 43/43 exit 0. CLOSED."
+    },
+    {
+      "findingId": "F-07",
+      "severity": "INFORMATIONAL",
+      "file": "multiple sources",
+      "evidence": "Round 1 residual audit limits: Getxo varadero tariff PDF timed out twice (the 32.02 EUR/h claim was not re-verified), one Cruisers Forum URL failed to fetch, and 62/115 sources lack a publishedAt value.",
+      "impact": "Low residual uncertainty in three source checks; none carries a headline conclusion.",
+      "requiredCorrection": "None mandatory.",
+      "owner": "agent-f-auditor",
+      "status": "CLOSED",
+      "verification": "Round 2: the limitations are honestly recorded in the review and no fabricated fill-in was added to the research. Accepted as residual risk. CLOSED."
+    },
+    {
+      "findingId": "F-08",
+      "severity": "INFORMATIONAL",
+      "file": "docs/marea/market-validation/MC-09-DELIVERY.md:3-6; MC09-EXECUTIVE-REPORT.md:19-21",
+      "evidence": "The delivery record and executive report pre-state the milestone result as PASS subject to the independent review, and the delivery record says gate results are appended in the delivery-update commit after the review.",
+      "impact": "Process-ordering note only; final status must come from the review verdict.",
+      "requiredCorrection": "Set the final status and fill the exact implementation SHA, PR URL and gate results in the delivery-update commit.",
+      "owner": "lead",
+      "status": "CLOSED",
+      "verification": "Round 2: the Lead explicitly deferred these delivery-update fields to the commit after this verdict; verified as a pending, declared step — not a defect at this round. CLOSED for this round."
+    }
+  ],
+  "audits": {
+    "A": "VERIFIED. 115 sources / 136 claims / unique IDs and URLs reproduced. 25 URLs were re-opened on 2026-10-31 across all six workstreams and the sampled claims matched the pages. 9 INACCESSIBLE, 5 STALE and 2 CONTRADICTED sources are recorded as such and not laundered into current facts; the CONTRADICTED Galician 280 figure is explicitly reported as unreconciled. Two re-verification attempts failed (Getxo PDF, one forum thread) and are recorded as residual risk, not defects.",
+    "B": "VERIFIED. 15 price observations were re-opened against the original URLs and matched (Orca, PredictWind, Raymarine Element, Simrad NAC, Victron SmartShunt and Cerbo pack, Raymarine EV-100, Digital Yacht category, Siren/secondary plus Siren primary, Full Ahead, UOC, Seafarers, Windy, Navionics, Marina Coruña). Original currencies and tax bases preserved; manufacturer-list vs retailer vs promotional status declared; comparability caveats documented per comparison. The one year-one subscription double-count (F-02) is corrected and re-verified in round 2.",
+    "C": "VERIFIED. TAM/SAM/SOM reproduced: 218,400 x 0.35/0.50/0.65 x EUR 75/142/209 = 5,733,000 / 15,506,400 / 29,669,640; 11,588 x shares x spend = 304,200 / 822,748 / 1,574,188; 4,600 x shares x spend = 120,750 / 326,600 / 624,910; SOM 24/72/144 and 6,600 / 39,024 / 116,352. No market-share percentage; SOM is capacity-bounded; the mixed ES+PT proxy is explicitly declared and the model is labelled PARTIAL_MODEL_LOW_CONFIDENCE; unknown spend is an ASSUMED band, never zero.",
+    "D": "VERIFIED. No fieldwork exists or is claimed: 0 interviews, 0 surveys, 0 participants, 0 outreach, 0 purchases; the MC-10 plan is PREPARATION_ONLY. All 8 buyer segments are labelled HYPOTHETICAL_ARCHETYPE; 23 public signals are typed with independence and limitations; all 15 WTP hypotheses are NOT_MEASURED; no simulated survey is presented as empirical.",
+    "E": "VERIFIED. The six TCO models carry year1Total = null and completeness = INCOMPLETE; every missing cost is a named null component (never zero) and partial sums reproduce (642 / 1,540 / 1,788 / 417.80 / 3,054.80 / 2,940). Partial sums are not presented as TCO or prices; installation scenario bands are declared non-Spanish and SCENARIO_DERIVED; PROFITABILITY_NOT_ESTABLISHED is stated throughout.",
+    "F": "VERIFIED. Nine canonical families and six canonical bundles unchanged (no docs/marea/products or docs/marea/bundles file in either diff; MK-34 checks the contracts on every run). TRADEMARK_LEGAL_CLEARANCE=NOT_GRANTED, SOURCE_IP_CLEARANCE=NOT_CLEARED, NOT_FOR_SALE, PILOT safety gate BLOCKED, WATCH alert honesty, FLEET hardware-by-default=false, no fixed SAIL/COMPLETE turnkey price, 0 approved prices, 0 compatibility rows TESTED/SUPPORTED and no NMEA 2000 certification claim. test:products 52/52 and test:bundles 35/35.",
+    "G": "VERIFIED. All nine product scores and six bundle scores recompute exactly from the frozen weights (sum 1.0, identical 12-dimension keys); rankings reproduce (NAV>WEATHER>WATCH>HUB>FLEET>AIS>SENSE>PILOT>DISPLAY; PROTECT>START>FLEET>CRUISE>SAIL>COMPLETE). Commercial attractiveness is separate from blocked releaseReadiness; nine geographic scores recompute (Rías Baixas 4.00 rank 1); all 19 decisions resolve to existing claims with evidence thresholds.",
+    "H": "VERIFIED. At d85733e: test:market 40/40, test:market:unit 43/43, test:products 52/52, test:bundles 35/35, test:brand 21/21, git diff --check clean on the working tree and on 566343e..d85733e. Round-2 delta is 10 files / 893+ / 120- and contains only the four corrections, the manifest entry, this audit register/review and a format-only array re-flow of competitor-observations.json (parsed-JSON comparison: exactly one semantically changed observation, OBS-CMP-040). No merge, deploy, publication, outreach, canonical-contract change or application-surface change. The validator and tests remain offline, read-only and temp-dir only."
+  },
+  "round2Gates": {
+    "commit": "d85733e49c7e78fa8cfa045ff440579c57ff6bb5",
+    "testMarket": "40/40 pass, exit 0",
+    "testMarketUnit": "43/43 pass, exit 0",
+    "testProducts": "52/52 pass",
+    "testBundles": "35/35 pass",
+    "testBrand": "21/21 pass",
+    "gitDiffCheck": "clean, exit 0",
+    "workingTree": "clean"
+  },
+  "integrationNotes": [
+    "data/review-findings.json is listed in data/manifest.json (22 entries); MK-03 and the unit-suite real-tree case are green at d85733e.",
+    "F-01..F-08 are CLOSED and independently verified; F-07 is accepted residual risk and F-08 is the declared post-verdict delivery-update step.",
+    "Final milestone status, exact gate results, implementation SHA and PR URL must be recorded by the Lead in the delivery-update commit; the PASS is limited to the internal desk-research and market-intelligence scope."
+  ]
+}

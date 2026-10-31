@@ -1,0 +1,631 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "workstream": "buyers",
+  "owner": "agent-c-buyers",
+  "scopeNote": "Buyer segmentation and publicly observable customer evidence for the eight mandated segments S1-S8; desk research only, no interviews, outreach, quotes, testimonials or willingness-to-pay.",
+  "researchMethod": "DESK_RESEARCH_ONLY",
+  "retrievedAt": "2026-10-31",
+  "sources": [
+    {
+      "sourceId": "SRC-BUY-001",
+      "title": "Electronics..... so many options (owner refit thread)",
+      "publisher": "SailboatOwners.com community forum",
+      "sourceType": "PUBLIC_CUSTOMER_SIGNAL",
+      "url": "https://forums.sailboatowners.com/threads/electronics-so-many-options.1249942418/",
+      "publishedAt": "2025-08-13",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "English-language forum, US/UK-centric participants",
+      "language": "en",
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "limitations": "Single self-selected owner thread read in full; participants are not a representative sample and no prevalence, price or willingness-to-pay inference is possible.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-002",
+      "title": "NMEA2000 chartplotter with analogue gauges secondary",
+      "publisher": "Cruisers & Sailing Forums",
+      "sourceType": "PUBLIC_CUSTOMER_SIGNAL",
+      "url": "https://www.cruisersforum.com/forums/f13/nmea2000-chatplotter-with-analogue-gauges-secondary-286643.html",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "English-language international forum",
+      "language": "en",
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "limitations": "Direct page fetch returned HTTP 404; content was reviewed only through a search-result extract. Thread not read in full; counted once as a single anecdote.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-003",
+      "title": "Recommendations for chartplotter and radar",
+      "publisher": "SailNet community forum",
+      "sourceType": "PUBLIC_CUSTOMER_SIGNAL",
+      "url": "https://www.sailnet.com/threads/recommendations-for-chartplotter-and-radar.354002/",
+      "publishedAt": "2025-04-21",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "English-language forum, US-centric",
+      "language": "en",
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "limitations": "Page serves a JavaScript-only shell; content reviewed through a search-result extract. Single thread, no prevalence inference.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-004",
+      "title": "Electronics Refit (page 3)",
+      "publisher": "Sailing Anarchy forums",
+      "sourceType": "PUBLIC_CUSTOMER_SIGNAL",
+      "url": "https://forums.sailinganarchy.com/threads/electronics-refit.249823/page-3",
+      "publishedAt": "2025-02-08",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "English-language international forum",
+      "language": "en",
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "limitations": "Content reviewed through a search-result extract only; one page of a long thread; counted once.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-005",
+      "title": "AIS Receivers (retail category listing)",
+      "publisher": "Pirates Cave Chandlery",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://www.piratescave.co.uk/electronics/ais/ais-receivers/?pg=1",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "GB",
+      "language": "en",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "limitations": "Retail listing prices in GBP excluding VAT, with no price-capture date and one retailer only; proves a retail offer exists, not unit sales, demand size or margin.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-006",
+      "title": "NMEA Installer On Line Training Material: Not Certification Courses",
+      "publisher": "National Marine Electronics Association (NMEA)",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://www.nmea.org/on-line-training.html",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "US-based association, international reach",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "Establishes training/certification rules and class price; does not establish installer population, certification coverage or demand.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-007",
+      "title": "Marine Electronics Installation Cost Guide 2026",
+      "publisher": "Marine Electronics Inc. (installer)",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://marineelectronicinstallers.com/boat-electronics/marine-electronics-installation-cost-guide-2026/",
+      "publishedAt": "2026-06-02",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "South Florida, US",
+      "language": "en",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "limitations": "Installer marketing guide: cost ranges and the 15-50 percent installation-share statement are publisher assertions, not an audited survey; regional pricing.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-008",
+      "title": "The Open Marine Data Platform",
+      "publisher": "Signal K project",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://signalk.org/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "International open-source project",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "MEDIUM",
+      "limitations": "Project website: establishes that an open-source local integration ecosystem exists; does not establish adoption, reliability in safety-critical use or commercial demand.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-009",
+      "title": "Navionics Boating - ratings and reviews (Czech storefront)",
+      "publisher": "Apple App Store",
+      "sourceType": "PUBLIC_CUSTOMER_SIGNAL",
+      "url": "https://apps.apple.com/cz/app/navionics-boating/id744920098?see-all=reviews&platform=iphone",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "Czech storefront; reviewers from multiple countries",
+      "language": "en",
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "limitations": "Self-selected app-store reviews with no sample definition or dates; includes a developer reply. Useful for objection language, not for prevalence or market size.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-010",
+      "title": "Cuatro suscripciones que un patron debe pagar de verdad",
+      "publisher": "Galvanic Works (marine electronics vendor)",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://galvanicworks.com/es/four-subscriptions-a-sailor-owes-es/",
+      "publishedAt": "2026-05-23",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "LOW",
+      "limitations": "Vendor-authored opinion essay by a company selling a one-off-priced competing product; recurring-fee figures are illustrative examples, not an independent price survey.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-011",
+      "title": "Steering failure involving Matthew Flinders III, Bass Strait, 23 July 2025 (MO-2025-009)",
+      "publisher": "Australian Transport Safety Bureau (ATSB)",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://www.atsb.gov.au/investigations/mo-2025-009",
+      "publishedAt": "2026-07-07",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "AU",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "Official investigation of one commercial roll-on/roll-off ship; does not describe recreational autopilot design, and does not establish failure prevalence.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-012",
+      "title": "El mercado nautico cierra el 2024 con 5.027 matriculaciones de recreo registradas",
+      "publisher": "Interempresas Nautica (reporting ANEN / Direccion General de la Marina Mercante)",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "url": "https://www.interempresas.net/Nautica/588266-El-mercado-nautico-cierra-el-2024-con-5027-matriculaciones-de-recreo-registradas.html",
+      "publishedAt": "2025-02-04",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "MEDIUM",
+      "limitations": "Trade-press summary of ANEN/DGMM registration data; registrations are new-vessel transactions, not active fleet, aftermarket spend or buyer demand.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-013",
+      "title": "Sailing School Booking Software for every shape of school",
+      "publisher": "Broad Reach Bookings",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://www.broadreachbookings.com/sailing-school-booking-software",
+      "publishedAt": "2026-05-13",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "UK/international",
+      "language": "en",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "limitations": "Vendor product page describing the operational needs its software addresses (scheduling, sign-off, certificates, fleet maintenance); not independent demand evidence.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-014",
+      "title": "Marina Maintenance Management",
+      "publisher": "EliteMarinas (Elite Dynamics)",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://www.elite-marinas.com/marina-management-software/maintenance/",
+      "publishedAt": "2025-08-11",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "UK/Europe/international",
+      "language": "en",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "limitations": "Vendor product page with marketing testimonials; describes marina work-order, inspection and invoicing needs; not independent demand evidence.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-015",
+      "title": "445/455/458 - utility of Sentinel? (alternative?)",
+      "publisher": "MyHanse owners' forum",
+      "sourceType": "PUBLIC_CUSTOMER_SIGNAL",
+      "url": "https://www.myhanse.com/topic15358&OB=ASC.html",
+      "publishedAt": "2025-09-11",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "International English-language Hanse owners' community",
+      "language": "en",
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "limitations": "Direct fetch timed out; content reviewed through a search-result extract. Single-owner community; no prevalence inference.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-016",
+      "title": "Remote boat monitoring, sorry, another thread. (print view)",
+      "publisher": "Cruisers & Sailing Forums",
+      "sourceType": "PUBLIC_CUSTOMER_SIGNAL",
+      "url": "https://www.cruisersforum.com/forums/printthread.php?t=286605",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "English-language international forum",
+      "language": "en",
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "limitations": "Search-result extract only; the print view duplicates the live thread and is therefore counted once. Single thread.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-017",
+      "title": "What does NMEA2000 CERTIFIED mean?",
+      "publisher": "National Marine Electronics Association (NMEA)",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "http://www.nmea.org/Assets/what%20does%20nmea2000%20certified%20mean%2020090628.pdf",
+      "publishedAt": "2009-06-28",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "Global",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "MEDIUM",
+      "limitations": "PDF could not be fetched directly; content reviewed through a search-result extract. Document dates from 2009 and certification-programme details may have changed.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-018",
+      "title": "Simrad/Navico Warranty Claim - I can't believe what they are trying to pull",
+      "publisher": "The Hull Truth boating forum",
+      "sourceType": "PUBLIC_CUSTOMER_SIGNAL",
+      "url": "https://www.thehulltruth.com/marine-electronics-forum/1375869-simrad-navico-warranty-claim-i-can-t-believe-what-they-trying-pull.html",
+      "publishedAt": "2025-09-11",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "US",
+      "language": "en",
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "limitations": "Single complaint thread reviewed through a search-result extract; no adjudication of the dispute and no company response available.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-019",
+      "title": "European Boating Industry manifesto 2024",
+      "publisher": "European Boating Industry (EBI)",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "url": "https://europeanboatingindustry.eu/images/Reports/EBI%20manifesto_2024_2.pdf",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "EU",
+      "language": "en",
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "MEDIUM",
+      "limitations": "Industry-association advocacy figures (more than 6 million boats, more than 10,000 marinas, 48 million regular water-sports users); reviewed through a search-result extract; aggregate, no segment breakdown.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-BUY-020",
+      "title": "DeepBlue - company profile (cloud yacht management platform)",
+      "publisher": "CB Insights",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "url": "https://www.cbinsights.com/company/deepblue",
+      "publishedAt": "2026-01-05",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "Monaco/global",
+      "language": "en",
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "LOW",
+      "limitations": "Third-party company-profile extract, largely marketing-derived; shows that multi-vessel yacht-management software is commercially offered, not that operators buy it in any volume.",
+      "status": "OK"
+    }
+  ],
+  "claims": [
+    {
+      "claimId": "CLM-BUY-001",
+      "claimText": "Owners modernising older boats describe uncertainty about which existing electronics will integrate with new equipment and are commonly advised to stay inside one manufacturer ecosystem.",
+      "sourceIds": [
+        "SRC-BUY-001",
+        "SRC-BUY-003",
+        "SRC-BUY-004"
+      ],
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "DISPLAY"
+      ],
+      "geographicScope": "English-language forums (US/UK-centric)",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Three separate forum threads across three publishers; participants are self-selected owners and no sample or incidence is measured."
+    },
+    {
+      "claimId": "CLM-BUY-002",
+      "claimText": "Mixed-brand helms are described as constrained: radar and autopilot control can require same-brand equipment, and route-following behaviour differs between brands.",
+      "sourceIds": [
+        "SRC-BUY-003",
+        "SRC-BUY-004"
+      ],
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "productScope": [
+        "PILOT",
+        "NAV",
+        "HUB"
+      ],
+      "geographicScope": "English-language international forums",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Snippet-level extracts only; compatibility rules change by model and firmware and were not verified against manufacturer documentation."
+    },
+    {
+      "claimId": "CLM-BUY-003",
+      "claimText": "Some legacy analogue (resistive) sensors cannot be shared between two devices, which limits partial upgrades of older instrument systems.",
+      "sourceIds": [
+        "SRC-BUY-002"
+      ],
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "productScope": [
+        "HUB",
+        "SENSE"
+      ],
+      "geographicScope": "English-language international forum",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Single forum extract; technical claim not verified against manufacturer documentation."
+    },
+    {
+      "claimId": "CLM-BUY-004",
+      "claimText": "Receive-only AIS units are retailed by a UK chandlery in a band of roughly GBP 216 to GBP 637 excluding VAT across the listed Digital Yacht models.",
+      "sourceIds": [
+        "SRC-BUY-005"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "AIS"
+      ],
+      "geographicScope": "GB",
+      "observedValue": "GBP 215.99-636.99 excl. VAT",
+      "unit": "retail price band",
+      "limitations": "One retailer; page shows no price date; excludes antenna, splitter, cabling and installation. Offer existence is not sales evidence."
+    },
+    {
+      "claimId": "CLM-BUY-005",
+      "claimText": "An installer guide states that professional installation can add 15 to 50 percent of the hardware price, with complete multi-display helm rebuilds starting around USD 5,000 and exceeding USD 25,000 on complex yachts.",
+      "sourceIds": [
+        "SRC-BUY-007"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "HUB",
+        "AIS",
+        "DISPLAY",
+        "PILOT"
+      ],
+      "geographicScope": "South Florida, US",
+      "observedValue": "15-50 percent of hardware cost; USD 5,000-25,000+ packages",
+      "unit": "publisher cost range",
+      "limitations": "Installer marketing content, regional, illustrative; not an audited quotation survey and not a European price."
+    },
+    {
+      "claimId": "CLM-BUY-006",
+      "claimText": "NMEA offers installer training classes at USD 249 each and states that online training material alone does not award installer certification; certification requires scheduled virtual or in-person training and a 50-question exam.",
+      "sourceIds": [
+        "SRC-BUY-006",
+        "SRC-BUY-017"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "HUB",
+        "AIS",
+        "DISPLAY"
+      ],
+      "geographicScope": "US-based association with international reach",
+      "observedValue": "USD 249 per class",
+      "unit": "training price",
+      "limitations": "US association programme; other certification schemes exist; does not count certified installers or establish demand."
+    },
+    {
+      "claimId": "CLM-BUY-007",
+      "claimText": "NMEA positions NMEA 2000 certification as assurance that certified products interoperate, tested across electrical, visual/mechanical and interoperability areas.",
+      "sourceIds": [
+        "SRC-BUY-017",
+        "SRC-BUY-006"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "HUB",
+        "AIS",
+        "DISPLAY"
+      ],
+      "geographicScope": "Global",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "2009 document reviewed as a search extract; certification is voluntary and does not guarantee every message or device combination."
+    },
+    {
+      "claimId": "CLM-BUY-008",
+      "claimText": "Signal K is an open-source local boat-data server and data standard that multiplexes NMEA 0183 and NMEA 2000 and supports community plugins and web apps.",
+      "sourceIds": [
+        "SRC-BUY-008"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "HUB",
+        "NAV"
+      ],
+      "geographicScope": "International open-source project",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Project website; adoption, reliability in safety-critical use and commercial demand are not established."
+    },
+    {
+      "claimId": "CLM-BUY-009",
+      "claimText": "Navionics users publicly report steep price increases and coverage-boundary changes, and the developer reply attributes price and coverage changes to increased supplier cartography fees.",
+      "sourceIds": [
+        "SRC-BUY-009"
+      ],
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "NAV",
+        "WEATHER"
+      ],
+      "geographicScope": "Multiple countries, Czech App Store front",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Self-selected store reviews; the developer reply is a company statement, not an independent audit; storefront pricing varies by region."
+    },
+    {
+      "claimId": "CLM-BUY-010",
+      "claimText": "A marine vendor essay itemises common recurring nautical fees (for example charts at EUR 89/year, weather at EUR 79/year, AIS overlay at EUR 49/year, remote monitoring at EUR 39/year) and argues that several are not backed by continuing service.",
+      "sourceIds": [
+        "SRC-BUY-010"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "LOW",
+      "productScope": [
+        "NAV",
+        "WEATHER",
+        "AIS",
+        "WATCH"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "EUR 29-179 per year per listed fee (illustrative)",
+      "unit": "recurring fee examples",
+      "limitations": "Vendor with a competing one-off-price product; figures are illustrative, not a price survey; citing them does not establish actual market prices."
+    },
+    {
+      "claimId": "CLM-BUY-011",
+      "claimText": "A certified autopilot system lost rudder-angle feedback, which disabled both autopilot and follow-up manual steering; the crew could not use the backup toggle-steering mode, and the investigation found training, labelling and drill gaps.",
+      "sourceIds": [
+        "SRC-BUY-011"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "PILOT"
+      ],
+      "geographicScope": "AU",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Commercial roll-on/roll-off ship, not a recreational vessel; single occurrence; does not establish recreational failure rates."
+    },
+    {
+      "claimId": "CLM-BUY-012",
+      "claimText": "Spain registered 5,027 new recreational vessels in 2024, 15.9 percent fewer than 2023; rental registrations were 1,742 (-15.3 percent); 70.3 percent of units were 6 m or less and motor boats were 42.5 percent of the market.",
+      "sourceIds": [
+        "SRC-BUY-012"
+      ],
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "MARKET"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "5,027 registrations; 1,742 rental; 70.3 percent <= 6 m; 42.5 percent motor boats",
+      "unit": "new recreational vessel registrations, 2024",
+      "limitations": "Trade-press summary of ANEN/DGMM data; registrations are new-vessel transactions, not active fleet or aftermarket spend."
+    },
+    {
+      "claimId": "CLM-BUY-013",
+      "claimText": "Sailing schools are offered software covering multi-boat and multi-instructor scheduling, syllabus sign-off, certificate issue, instructor qualification expiry and per-boat maintenance logs.",
+      "sourceIds": [
+        "SRC-BUY-013"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "FLEET"
+      ],
+      "geographicScope": "UK/international",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Vendor product page; it describes the operational need its product addresses but is not independent demand measurement."
+    },
+    {
+      "claimId": "CLM-BUY-014",
+      "claimText": "Marina operators are offered maintenance software covering planned and reactive jobs, compliance inspections, chargeable work, contractor coordination and reporting across multiple sites.",
+      "sourceIds": [
+        "SRC-BUY-014"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "FLEET"
+      ],
+      "geographicScope": "UK/Europe/international",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Vendor page with marketing testimonials; not independent and not evidence of adoption volume."
+    },
+    {
+      "claimId": "CLM-BUY-015",
+      "claimText": "Boat owners discuss the value of remote monitoring and cheaper DIY alternatives (SIM router, cameras, bilge and high-water alarms), and some describe limited satisfaction with basic OEM monitoring.",
+      "sourceIds": [
+        "SRC-BUY-015",
+        "SRC-BUY-016"
+      ],
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "productScope": [
+        "WATCH",
+        "SENSE"
+      ],
+      "geographicScope": "English-language owner forums",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Two owner-community threads from the same Hanse/Cruisers Forum ecosystem; self-selected; no failure-rate or prevalence data."
+    },
+    {
+      "claimId": "CLM-BUY-016",
+      "claimText": "A public warranty complaint alleges a retailer required a commitment to buy replacement equipment before bench-testing a potentially faulty unit.",
+      "sourceIds": [
+        "SRC-BUY-018"
+      ],
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "productScope": [
+        "HUB",
+        "AIS",
+        "DISPLAY"
+      ],
+      "geographicScope": "US",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Single complaint, no adjudication and no verified company response; illustrates a trust objection, not an industry practice."
+    },
+    {
+      "claimId": "CLM-BUY-017",
+      "claimText": "European Boating Industry states that the EU recreational boating sector comprises more than 6 million boats, more than 10,000 marinas and 48 million regular water-sports users.",
+      "sourceIds": [
+        "SRC-BUY-019"
+      ],
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "MARKET",
+        "FLEET"
+      ],
+      "geographicScope": "EU",
+      "observedValue": "6,000,000+ boats; 10,000+ marinas; 48,000,000 users",
+      "unit": "EU aggregate (association figure)",
+      "limitations": "Industry-association advocacy figure reviewed as a search extract; aggregate with no segment or country breakdown."
+    },
+    {
+      "claimId": "CLM-BUY-018",
+      "claimText": "Owners debate touchscreen versus physical-control ergonomics for chartplotters, including wet or gloved hands and control during manoeuvres.",
+      "sourceIds": [
+        "SRC-BUY-001"
+      ],
+      "evidenceClass": "PUBLIC_CUSTOMER_SIGNAL",
+      "confidence": "LOW",
+      "productScope": [
+        "DISPLAY",
+        "NAV"
+      ],
+      "geographicScope": "English-language forum, US-centric",
+      "observedValue": null,
+      "unit": null,
+      "limitations": "Single thread; subjective opinions; no usability test or measured error rate."
+    }
+  ]
+}

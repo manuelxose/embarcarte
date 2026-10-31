@@ -1,0 +1,119 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "date": "2026-10-31",
+  "note": "Machine-readable research contract index. Every file is validated by scripts/check-marea-market.mjs; the human contract is data/README.md.",
+  "files": [
+    {
+      "path": "data/bundle-assessments.json",
+      "owner": "lead",
+      "purpose": "Frozen-weight assessment of the six bundles"
+    },
+    {
+      "path": "data/buyer-segments.json",
+      "owner": "agent-c-buyers",
+      "purpose": "Eight buyer segments, all labelled HYPOTHETICAL_ARCHETYPE"
+    },
+    {
+      "path": "data/channel-assessments.json",
+      "owner": "agent-e-channels",
+      "purpose": "Six route-to-market assessments"
+    },
+    {
+      "path": "data/competitor-observations.json",
+      "owner": "agent-b-competitors",
+      "purpose": "Competitor product observations"
+    },
+    {
+      "path": "data/decision-links.json",
+      "owner": "lead",
+      "purpose": "Business decisions traced to evidence claims"
+    },
+    {
+      "path": "data/evidence-buyers.json",
+      "owner": "agent-c-buyers",
+      "purpose": "Buyer research sources and claims"
+    },
+    {
+      "path": "data/evidence-channels.json",
+      "owner": "agent-e-channels",
+      "purpose": "Channel and demand sources and claims"
+    },
+    {
+      "path": "data/evidence-competitors.json",
+      "owner": "agent-b-competitors",
+      "purpose": "Competitor sources and claims"
+    },
+    {
+      "path": "data/evidence-economics.json",
+      "owner": "agent-d-economics",
+      "purpose": "Pricing and economics sources and claims"
+    },
+    {
+      "path": "data/evidence-market.json",
+      "owner": "agent-a-market",
+      "purpose": "Market sources and claims"
+    },
+    {
+      "path": "data/evidence-mc10.json",
+      "owner": "agent-g-mc10",
+      "purpose": "MC-10 methodology sources and claims"
+    },
+    {
+      "path": "data/geo-assessments.json",
+      "owner": "agent-a-market",
+      "purpose": "Geographic prioritization model"
+    },
+    {
+      "path": "data/governance-status.json",
+      "owner": "lead",
+      "purpose": "Status invariant and canonical identifiers for the MC-09 research"
+    },
+    {
+      "path": "data/market-inputs.json",
+      "owner": "agent-a-market",
+      "purpose": "TAM/SAM/SOM inputs with derivation"
+    },
+    {
+      "path": "data/price-observations.json",
+      "owner": "agent-b-competitors",
+      "purpose": "Observed and derived competitor prices"
+    },
+    {
+      "path": "data/product-assessments.json",
+      "owner": "lead",
+      "purpose": "Frozen-weight assessment of the nine product families"
+    },
+    {
+      "path": "data/public-signals.json",
+      "owner": "agent-c-buyers",
+      "purpose": "Public customer-problem signals"
+    },
+    {
+      "path": "data/review-findings.json",
+      "owner": "agent-f-auditor",
+      "purpose": "Independent audit findings and verdict"
+    },
+    {
+      "path": "data/search-signals.json",
+      "owner": "agent-e-channels",
+      "purpose": "Search/demand signals"
+    },
+    {
+      "path": "data/tco-models.json",
+      "owner": "agent-d-economics",
+      "purpose": "Conditional total-cost-of-ownership models"
+    },
+    {
+      "path": "data/validation-experiments.json",
+      "owner": "agent-g-mc10",
+      "purpose": "Pre-registered validation experiments"
+    },
+    {
+      "path": "data/wtp-hypotheses.json",
+      "owner": "agent-d-economics",
+      "purpose": "Unmeasured willingness-to-pay hypotheses"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "workstream": "economics",
+  "owner": "agent-d-economics",
+  "scopeNote": "Willingness-to-pay hypotheses for the six canonical bundles and the nine canonical product families. Every entry is NOT_MEASURED: no survey, interview, price test or experiment was executed in MC-09, and no price may be inferred from competitor prices.",
+  "hypotheses": [
+    {
+      "wtpId": "WTP-BUNDLE-START-01",
+      "subject": "START",
+      "method": "Gabor-Granger price ladder on the product-only first-year configuration (HUB-STANDARD + NAV-PRO one year), administered after a neutral exclusion disclosure (installation, cabling and survey excluded); support module Van Westendorp acceptable-range questions.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-01 and #WTP-INS-02; candidate MC-10 modules mapped to EXP-MC10-04 and EXP-MC10-05",
+      "limitations": "Stated preference only. The configuration is a definition, not a working product, and no installed system exists to demonstrate; stated intent is not demand and cannot approve a price. The EUR 499 historical figure is an unapproved hypothesis and must not be shown to participants as an offer."
+    },
+    {
+      "wtpId": "WTP-BUNDLE-CRUISE-01",
+      "subject": "CRUISE",
+      "method": "Gabor-Granger ladder with a hardware-inclusive and an installation-excluded variant, plus a structured alternative-comparison module against observed single-purpose category prices (7-inch MFD, NMEA gateway, AIS receiver) with scope differences disclosed.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-01 and #WTP-INS-03; candidate MC-10 modules, no registered experiment yet",
+      "limitations": "A four-device installed configuration has never been measured or demonstrated; the alternative comparison tests relative preference between disclosed scopes, not the value of an unavailable product. The EUR 1,399 historical figure is an unapproved hypothesis."
+    },
+    {
+      "wtpId": "WTP-BUNDLE-SAIL-01",
+      "subject": "SAIL",
+      "method": "Vessel-specific quotation interviews combined with current-spend discovery and conditional purchase intent for a quoted installed scope; no fixed bundle price is tested because no fixed price may exist.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-05 and #WTP-INS-06; candidate MC-10 modules, no registered experiment yet",
+      "limitations": "PILOT safety gate is BLOCKED and PILOT is quotation-only (D-009); no steering system may be presented or priced. The EUR 1,990 historical figure is traceability-only and cannot be tested as a price."
+    },
+    {
+      "wtpId": "WTP-BUNDLE-PROTECT-01",
+      "subject": "PROTECT",
+      "method": "Van Westendorp acceptable-range questions separately for monitoring hardware and the monthly subscription, plus feature/subscription trade-off module (alerts, retention window, devices, connectivity inclusion) and current-spend discovery on existing security or checking routines.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-02 and #WTP-INS-04; candidate MC-10 modules mapped to EXP-MC10-09",
+      "limitations": "No deployed monitoring hardware or alerting service exists, so theft/safety expectations cannot be tested. Participants cannot separate hardware from subscription and connectivity value reliably. The EUR 399 hardware figure is an unapproved hypothesis recorded as not cost-justified."
+    },
+    {
+      "wtpId": "WTP-BUNDLE-COMPLETE-01",
+      "subject": "COMPLETE",
+      "method": "Vessel-specific quotation interviews with current-spend discovery and conditional purchase intent for an itemised integrated installation; no fixed turnkey price is tested because no fixed turnkey price is permitted.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-05 and #WTP-INS-06; candidate MC-10 modules, no registered experiment yet",
+      "limitations": "The configuration is a target specification with six un-costed hardware/device families, four unpriced SENSE modules and a safety-gated PILOT quotation. The EUR 3,490 historical figure is traceability-only."
+    },
+    {
+      "wtpId": "WTP-BUNDLE-FLEET-01",
+      "subject": "FLEET",
+      "method": "B2B structured alternative comparison and feature/subscription trade-off interviews with operators, including per-vessel monthly versus flat-fleet pricing shapes and onboarding quoted separately; conditional trial intent recorded only as a categorical outcome.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-03 and #WTP-INS-04; candidate MC-10 modules mapped to EXP-MC10-07",
+      "limitations": "The package is a CONCEPT with no established amount, no DPA/DPIA and no tenant-isolation evidence; interview responses are necessarily hypothetical. Competitor SaaS prices are not WTP evidence. B2B willingness to pay remains unknown."
+    },
+    {
+      "wtpId": "WTP-FAMILY-NAV-01",
+      "subject": "NAV",
+      "method": "Van Westendorp acceptable-range module for an annual navigation entitlement, with current-spend discovery of existing chart and weather app subscriptions and a feature trade-off between basic and professional tiers.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-02, #WTP-INS-04 and #WTP-INS-05; candidate MC-10 modules mapped to EXP-MC10-05",
+      "limitations": "Chart rights are not granted and the NAV entitlement scope is not final; observed app subscriptions are alternatives at different scopes, not a WTP measurement for NAV. EUR 99 and EUR 149 per year remain unapproved hypotheses."
+    },
+    {
+      "wtpId": "WTP-FAMILY-HUB-01",
+      "subject": "HUB",
+      "method": "Structured alternative comparison across disclosed gateway functions and an installation-excluded versus installed-scope choice; Gabor-Granger ladder for the hardware line only, with the EUR 105/hour published service rate shown as an illustrative labour reference rather than as a quote.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-01 and #WTP-INS-03; candidate MC-10 modules, no registered experiment yet",
+      "limitations": "Observed single-purpose gateway prices do not establish what a multi-device hub is worth; no hardware exists to demonstrate. EUR 349 and EUR 499 remain unapproved hypotheses."
+    },
+    {
+      "wtpId": "WTP-FAMILY-AIS-01",
+      "subject": "AIS",
+      "method": "Structured alternative comparison between receive-only and connected variants with antenna/splitter requirements disclosed; feature trade-off between receive-only awareness and transponder capability (not offered by MAREA).",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-03 and #WTP-INS-04; candidate MC-10 modules, no registered experiment yet",
+      "limitations": "MAREA AIS is receive-only and may not claim transmission or collision avoidance; participants may confuse receiver and transponder scopes, which biases any stated value. EUR 249 and EUR 399 remain unapproved hypotheses."
+    },
+    {
+      "wtpId": "WTP-FAMILY-PILOT-01",
+      "subject": "PILOT",
+      "method": "Vessel-specific quotation interviews and current-spend discovery on existing autopilot, service and yard costs; conditional purchase intent for a supervised installed scope after survey.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-05 and #WTP-INS-06; candidate MC-10 modules, no registered experiment yet",
+      "limitations": "Safety gate BLOCKED and quotation model mandatory (D-009); no steering system may be offered, demonstrated or priced. The 'from EUR 1,290' figure is a starting reference, not a WTP anchor or a price."
+    },
+    {
+      "wtpId": "WTP-FAMILY-SENSE-01",
+      "subject": "SENSE",
+      "method": "Feature/subscription trade-off module for individual sensor modules versus kits, with installation exposure stated, plus current-spend discovery on manual checks and existing monitoring hardware.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-04 and #WTP-INS-05; candidate MC-10 modules mapped to EXP-MC10-09",
+      "limitations": "No named module has an established price; the 'from EUR 99' entry hypothesis is not attributable to a module. Module accuracy is unclaimed. Observations of wind sensors and battery monitors are different scopes."
+    },
+    {
+      "wtpId": "WTP-FAMILY-WATCH-01",
+      "subject": "WATCH",
+      "method": "Van Westendorp acceptable-range module for hardware and for the monthly subscription separately, with feature/subscription trade-offs on alert channels, retention and connectivity inclusion; current-spend discovery on insurance or marina security spend.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-02 and #WTP-INS-04; candidate MC-10 modules mapped to EXP-MC10-09",
+      "limitations": "No hardware or alerting service exists to test; insurance-driven interest is not willingness to pay; no alert-delivery guarantee may be stated. EUR 299 plus a 'from EUR 9.90/month' subscription remain unapproved hypotheses."
+    },
+    {
+      "wtpId": "WTP-FAMILY-DISPLAY-01",
+      "subject": "DISPLAY",
+      "method": "Structured alternative comparison against observed 7-inch MFD category prices with included scope disclosed (chart data, transducer, mount), plus Gabor-Granger ladder conditional on a frozen size class and an installation-excluded reference.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-01 and #WTP-INS-03; candidate MC-10 modules, no registered experiment yet",
+      "limitations": "The DISPLAY size is not frozen and the BOM is not established; the 'from EUR 699' hypothesis cannot be tested against a defined product. Retailer inclusion statements are inconsistent, so scope must be controlled in any instrument."
+    },
+    {
+      "wtpId": "WTP-FAMILY-WEATHER-01",
+      "subject": "WEATHER",
+      "method": "Van Westendorp acceptable-range module for an annual forecast entitlement and a feature trade-off between standard and professional tiers, with current-spend discovery of existing forecast subscriptions.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-02 and #WTP-INS-05; candidate MC-10 modules mapped to EXP-MC10-05",
+      "limitations": "Consumer forecast subscriptions with different models, coverage and tax treatment are alternatives, not WTP evidence. Data-provider rights are not granted and forecast accuracy is not claimed. EUR 49 and EUR 89 per year remain unapproved hypotheses."
+    },
+    {
+      "wtpId": "WTP-FAMILY-FLEET-01",
+      "subject": "FLEET",
+      "method": "B2B structured alternative comparison and feature/subscription trade-off interviews across per-vessel, per-account and flat-fleet price shapes, with onboarding and support scope stated as separately quoted.",
+      "status": "NOT_MEASURED",
+      "instrumentRef": "MC09-PRICING-AND-WTP.md#WTP-INS-03 and #WTP-INS-04; candidate MC-10 modules mapped to EXP-MC10-07",
+      "limitations": "Published competitor SaaS prices establish a market shape only; no WTP inference is drawn from them. The package has no established amount and procurement cycles exceed the discovery window."
+    }
+  ]
+}

@@ -1,0 +1,966 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "workstream": "competitors",
+  "owner": "agent-b-competitors",
+  "scopeNote": "Desk research on publicly accessible competitor and substitute listings for the nine MAREA families and six bundles; observed prices keep original currency and stated tax treatment, and every comparison limitation is recorded.",
+  "sources": [
+    {
+      "sourceId": "SRC-CMP-001",
+      "title": "Subscription prices and functionality",
+      "publisher": "Orca Navigation (help centre)",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://help.getorca.com/en/articles/6541858-subscription-prices-and-functionality",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "GLOBAL",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "EUR prices are stated without tax treatment or territory; app-store billing may differ; chart coverage restrictions exist in several countries.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-002",
+      "title": "Navigation: Orca put to the test, clear map display and powerful weather routing",
+      "publisher": "YACHT (Delius Klasing)",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "url": "https://www.yacht.de/en/sailing-knowledge/navigation/navigation-orca-put-to-the-test-clear-map-display-and-powerful-weather-routing/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "DE",
+      "language": "en",
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "MEDIUM",
+      "limitations": "Editorial test, not a price list; hardware prices quoted as incl. VAT from the manufacturer configurator at test time; no independent invoice evidence.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-003",
+      "title": "Pricing and Subscriptions",
+      "publisher": "PredictWind",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://www.predictwind.com/pricing",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "GLOBAL",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "Listed in USD; FAQ states local taxes are added at checkout, so figures are tax-exclusive for most territories; auto-renewal terms stated.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-004",
+      "title": "Choose your DataHub",
+      "publisher": "PredictWind",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://www.predictwind.com/datahub/family",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "GLOBAL",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "USD list prices; no cart or tax display; some capabilities (Over-the-Horizon AIS, AI Polars) require a separate Professional forecast subscription.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-005",
+      "title": "Accesorios para PC marino - Digital Yacht España (sorted by price)",
+      "publisher": "Digital Yacht España",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://digitalyacht.es/categoria-producto/sistemas-de-pc/accesorios-de-pc/?max_price=1380&orderby=price",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "limitations": "Listing page; prices shown in EUR but the page does not state whether VAT is included; several items show 'A partir de' (from) variant prices.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-006",
+      "title": "AIS - Digital Yacht España",
+      "publisher": "Digital Yacht España",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://digitalyacht.es/categoria-producto/ais/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "limitations": "Only AIS packs/transponders listed on this page; no receive-only receiver price shown; VAT treatment not stated.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-007",
+      "title": "AIS100 PRO - receptor AIS",
+      "publisher": "Digital Yacht España",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://digitalyacht.es/producto/receptor-ais/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "Manufacturer technical page; no price displayed on the retrieved page.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-008",
+      "title": "iKonvert - convertidor NMEA 2000 / NMEA 0183",
+      "publisher": "Digital Yacht España",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://digitalyacht.es/producto/ikonvert/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "Technical page; price only appears on the category listing and as a 'from' variant price.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-009",
+      "title": "Ship management software pricing, by fleet size",
+      "publisher": "Full Ahead Maritime",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://fullaheadmaritime.com/pricing",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "EU",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "Published self-serve list prices in EUR; page states 'taxes may apply based on your location'; commercial-shipping technical-management scope, not recreational telematics.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-010",
+      "title": "Vessel-based pricing. Built for real operations.",
+      "publisher": "UOC International",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://uocintl.com/platform/pricing",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "GLOBAL",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "EUR prices per vessel per month; tax treatment not stated; subject to subscription agreement and order form; commercial fleet operations scope.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-011",
+      "title": "Per-vessel pricing that scales with your fleet",
+      "publisher": "Seafarers.pro",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://www.seafarers.pro/pricing",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "GLOBAL",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "EUR per vessel per month; launch offer 40% off first 12 months is promotional; tax treatment not stated; billed via Polar.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-012",
+      "title": "Element HV - chartplotters con sonda CHIRP/GPS",
+      "publisher": "Raymarine (España)",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://www.raymarine.com/es-es/nuestros-productos/chartplotters/element/element-hv",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "limitations": "Manufacturer store list prices stated 'El precio incluye el IVA'; availability per SKU not stated; charts and installation excluded.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-013",
+      "title": "NAC Autopilot Computers - Simrad España",
+      "publisher": "Simrad Yachting (España)",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://www.simrad-yachting.com/es-es/simrad/serie/nac-autopilot-computers/list/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "MEDIUM",
+      "limitations": "Prices stated 'IVA incluido' but several SKUs carry schema.org/OutOfStock and two packs are explicitly labelled DESCATALOGADO (discontinued), so availability cannot be assumed.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-014",
+      "title": "Piloto RAYMARINE EV-100 Wheel",
+      "publisher": "La Tienda del Navegante",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://www.latiendadelnavegante.com/producto_ampliado.asp?c=090800010112",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "limitations": "Retailer shows 'IVA incluido, gastos de envío excluidos' and 'Bajo pedido' (backorder); installation and commissioning excluded; no stock confirmed.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-015",
+      "title": "Monitor de Baterías Victron SmartShunt 500A IP65",
+      "publisher": "CuencaSolar.es",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://cuencasolar.es/producto/monitor-de-baterias-victron-smartshunt-500a-ip65/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "limitations": "Retailer price 'IVA incluido'; this is a solar/off-grid retailer, not a marine specialist; no installation included.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-016",
+      "title": "Pack Victron Cerbo GX MK2 + Pantalla GX Touch 50 Flush",
+      "publisher": "CuencaSolar.es",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://cuencasolar.es/producto/pack-victron-cerbo-gx-mk2-pantalla-gx-touch-50-flush/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "limitations": "The EUR 240.09 Cerbo GX MK2 unit price appears inside a bundle listing; the pack total (EUR 449.65) includes a display; both stated 'IVA incluido'.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-017",
+      "title": "Paquete de paletas Triton2 (B&G)",
+      "publisher": "Comptoir Nautique",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://es.comptoirnautique.com/instrumento-bg/12265-7546-bg-paquete-de-paletas-triton2.html",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "limitations": "Promotional -10% price; page shows 'Impuestos incluidos' and an ex-tax figure; related-item WS310 wind vane price shown as a related product with 'últimos artículos en stock'.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-018",
+      "title": "Siren Marine vs ArmIt vs Yacht Sentinel: head-to-head",
+      "publisher": "SmartBoats.org",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "url": "https://smartboats.org/guides/siren-vs-armit-vs-yacht-sentinel",
+      "publishedAt": "2026-09-30",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "US/EU",
+      "language": "en",
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "LOW",
+      "limitations": "Affiliate-monetised editorial guide; states prices re-verified against vendor sites on 2026-08-20 but the underlying vendor pages could not be retrieved directly; Yacht Sentinel's own domain resolved to a parked/for-sale page, so its current availability is unconfirmed.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-019",
+      "title": "Navionics 2026: precio real y qué incluye",
+      "publisher": "TuAppPara.com",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "url": "https://tuapppara.com/aplicaciones/navionics/",
+      "publishedAt": "2026-08-16",
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "LOW",
+      "limitations": "Reports a Google Play Spain in-app purchase range, not a Garmin price list; the official Garmin Navionics pricing FAQ could not be retrieved (JavaScript help page).",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-020",
+      "title": "Navigazione: Passage Planner - Plugin di instradamento meteo per Windy",
+      "publisher": "YACHT (Delius Klasing), Italian edition",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "url": "https://www.yacht.de/it/conoscenza/navigazione/navigazione-passage-planner-plugin-di-instradamento-meteo-per-windy/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "EU",
+      "language": "it",
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "MEDIUM",
+      "limitations": "Editorial statement of a EUR 19/year Windy Premium price; Windy's own premium page did not return retrievable price text.",
+      "status": "OK"
+    },
+    {
+      "sourceId": "SRC-CMP-021",
+      "title": "Navionics chart subscription FAQ (Garmin support)",
+      "publisher": "Garmin",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://support.garmin.com/en-GB/?faq=JtG5vAJ1Eu5n8dlEqxRKl7",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "EU",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "UNKNOWN",
+      "limitations": "Help-centre page rendered without article content on retrieval; no regional Navionics price could be verified from the manufacturer.",
+      "status": "INACCESSIBLE"
+    },
+    {
+      "sourceId": "SRC-CMP-022",
+      "title": "AIS clase B B100 (em-trak) retailer listing",
+      "publisher": "Náutica Almerimar",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://nautica-almerimar.es/es/ais/20-ais-clase-b-b100ais.html",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "UNKNOWN",
+      "limitations": "Retailer page returned HTTP 404 on retrieval; the earlier search snippet could not be re-verified, so no em-trak price is recorded as observed.",
+      "status": "INACCESSIBLE"
+    },
+    {
+      "sourceId": "SRC-CMP-023",
+      "title": "Garmin gWind Regata wind sensor (GPS Náutico)",
+      "publisher": "GPS Náutico",
+      "sourceType": "PRIMARY_RETAILER",
+      "url": "https://www.gpsnautico.com/es/veletas-viento/2192-garmin-sensor-de-viento-gwind-regata-veleta-cable.html",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "ES",
+      "language": "es",
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "UNKNOWN",
+      "limitations": "Page returned HTTP 404 on retrieval; price seen only in a search snippet and is therefore not recorded as observed.",
+      "status": "INACCESSIBLE"
+    },
+    {
+      "sourceId": "SRC-CMP-024",
+      "title": "Siren Marine storefront",
+      "publisher": "Siren Marine",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://sirenmarine.com/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "US",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "UNKNOWN",
+      "limitations": "JavaScript storefront returned navigation chrome only; no current hardware or subscription price could be read directly from the vendor.",
+      "status": "INACCESSIBLE"
+    },
+    {
+      "sourceId": "SRC-CMP-025",
+      "title": "Yacht Sentinel pricing (yachtsentinel.com)",
+      "publisher": "yachtsentinel.com",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://yachtsentinel.com/pricing/",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "EU",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "UNKNOWN",
+      "limitations": "Domain resolves to a parked domain-for-sale page; the vendor's current site could not be located, so Yacht Sentinel availability is UNCONFIRMED.",
+      "status": "INACCESSIBLE"
+    },
+    {
+      "sourceId": "SRC-CMP-026",
+      "title": "Savvy Navvy pricing",
+      "publisher": "savvynavvy.com",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://www.savvynavvy.com/pricing",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "GLOBAL",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "UNKNOWN",
+      "limitations": "Requested domain served a premium-domain resale page, not the product pricing page; no Savvy Navvy price recorded.",
+      "status": "INACCESSIBLE"
+    },
+    {
+      "sourceId": "SRC-CMP-027",
+      "title": "Windy Premium",
+      "publisher": "Windy.com",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "url": "https://www.windy.com/premium",
+      "publishedAt": null,
+      "retrievedAt": "2026-10-31",
+      "geographicScope": "GLOBAL",
+      "language": "en",
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "UNKNOWN",
+      "limitations": "Page rendered a WebGL error and no retrievable price text; Windy pricing is therefore only evidence from a secondary editorial source.",
+      "status": "INACCESSIBLE"
+    }
+  ],
+  "claims": [
+    {
+      "claimId": "CLM-CMP-001",
+      "claimText": "Orca publishes two consumer tiers: Orca Plus at EUR 49/year and Orca Smart Navigation at EUR 149/year.",
+      "sourceIds": [
+        "SRC-CMP-001"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "NAV",
+        "WEATHER"
+      ],
+      "geographicScope": "GLOBAL",
+      "observedValue": "Plus EUR 49/yr; Smart Navigation EUR 149/yr",
+      "unit": "EUR per year",
+      "limitations": "Tax treatment and territory of the displayed EUR price are not stated on the help page."
+    },
+    {
+      "claimId": "CLM-CMP-002",
+      "claimText": "Orca's current hardware package is priced at EUR 1,997 including VAT as the sum of Display 2 (EUR 999), Core 2 (EUR 649) and charging mount (EUR 349).",
+      "sourceIds": [
+        "SRC-CMP-002"
+      ],
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "DISPLAY"
+      ],
+      "geographicScope": "DE",
+      "observedValue": "1997",
+      "unit": "EUR including VAT, complete hardware package",
+      "limitations": "Editorial quotation of configurator prices at test time; tax basis is the reviewer's, not a manufacturer invoice."
+    },
+    {
+      "claimId": "CLM-CMP-003",
+      "claimText": "Orca includes third-party autopilot control and AIS-over-internet in every tier, including the free tier, but local instrument/autopilot integration requires the Core device.",
+      "sourceIds": [
+        "SRC-CMP-002",
+        "SRC-CMP-001"
+      ],
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "NAV",
+        "PILOT"
+      ],
+      "geographicScope": "EU",
+      "observedValue": "autopilot control included in every tier; Core required for NMEA 2000 integration",
+      "unit": "capability statement",
+      "limitations": "Single editorial test; autopilot control is read/command over an existing third-party pilot, not a MAREA-type supervised steering product."
+    },
+    {
+      "claimId": "CLM-CMP-004",
+      "claimText": "Orca Core 'guard mode' provides a basic remote-monitoring substitute: location visibility and battery-voltage monitoring, with an anchor alarm included in Smart Navigation.",
+      "sourceIds": [
+        "SRC-CMP-002"
+      ],
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "WATCH"
+      ],
+      "geographicScope": "EU",
+      "observedValue": "anchor alarm and basic monitoring require Core and Smart Navigation",
+      "unit": "capability statement",
+      "limitations": "Requires powered/online devices; not a cellular monitoring service and no independent alert-reliability evidence."
+    },
+    {
+      "claimId": "CLM-CMP-005",
+      "claimText": "PredictWind lists three paid forecast tiers at USD 29/year (Basic), USD 249/year (Standard) and USD 499/year (Professional).",
+      "sourceIds": [
+        "SRC-CMP-003"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "WEATHER"
+      ],
+      "geographicScope": "GLOBAL",
+      "observedValue": "29 / 249 / 499",
+      "unit": "USD per year",
+      "limitations": "USD list; auto-renewal; feature depth differs materially between tiers."
+    },
+    {
+      "claimId": "CLM-CMP-006",
+      "claimText": "PredictWind states that local taxes are added at checkout, so its published USD prices are tax-exclusive for most territories.",
+      "sourceIds": [
+        "SRC-CMP-003"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "WEATHER"
+      ],
+      "geographicScope": "GLOBAL",
+      "observedValue": "taxes added at checkout",
+      "unit": "tax statement",
+      "limitations": "Applies to forecast subscriptions; hardware pages do not restate the tax rule."
+    },
+    {
+      "claimId": "CLM-CMP-007",
+      "claimText": "PredictWind DataHub is listed at USD 299 and DataHub Pro at USD 599; GPS tracking requires no subscription, an optional LTE data plan costs USD 10/month, and Over-the-Horizon AIS/AI Polars require a Professional forecast subscription.",
+      "sourceIds": [
+        "SRC-CMP-004"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "HUB",
+        "WATCH"
+      ],
+      "geographicScope": "GLOBAL",
+      "observedValue": "299 / 599 USD hardware; 10 USD/month optional LTE",
+      "unit": "USD",
+      "limitations": "USD list prices without cart tax display; satellite devices and airtime are separate."
+    },
+    {
+      "claimId": "CLM-CMP-008",
+      "claimText": "Digital Yacht's Spanish shop lists NavLink2 at EUR 300, AIS100 at EUR 360, LANLink from EUR 300, GPS160 USB at EUR 270 and iKonvert from EUR 240, without stating VAT treatment on the listing.",
+      "sourceIds": [
+        "SRC-CMP-005"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "HUB",
+        "AIS"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "300 / 360 / 270 / 240 EUR",
+      "unit": "EUR, tax treatment unstated",
+      "limitations": "Listing page only; the iKonvert and LANLink amounts are 'from' variant prices, not firm single-SKU prices."
+    },
+    {
+      "claimId": "CLM-CMP-009",
+      "claimText": "Digital Yacht's AIS category lists three transmit-capable transponder packs at EUR 1,620, EUR 2,046 and EUR 2,100 plus a radar pack at EUR 3,470; none of these is a receive-only receiver.",
+      "sourceIds": [
+        "SRC-CMP-006"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "AIS"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "1620 / 2046 / 2100 / 3470 EUR",
+      "unit": "EUR, tax treatment unstated",
+      "limitations": "Transponders transmit; MAREA AIS is receive-only, so these are substitutes at a different capability and regulatory level."
+    },
+    {
+      "claimId": "CLM-CMP-010",
+      "claimText": "Digital Yacht AIS100 PRO is a receive-only AIS receiver with USB and NMEA 0183 outputs that requires a separate VHF/AIS antenna or certified splitter.",
+      "sourceIds": [
+        "SRC-CMP-007"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "AIS"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "receive-only; separate antenna or splitter required",
+      "unit": "capability statement",
+      "limitations": "Technical page only; price and availability not displayed on the retrieved page."
+    },
+    {
+      "claimId": "CLM-CMP-011",
+      "claimText": "Digital Yacht iKonvert is a bidirectional, galvanically isolated NMEA 2000 to NMEA 0183 converter configured with DIP-switch data modes.",
+      "sourceIds": [
+        "SRC-CMP-008"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "HUB"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "bidirectional NMEA 2000/NMEA 0183 conversion",
+      "unit": "capability statement",
+      "limitations": "No local publishing/diagnostics layer, no cloud or multi-device orchestration in the described scope."
+    },
+    {
+      "claimId": "CLM-CMP-012",
+      "claimText": "Full Ahead Maritime publishes fleet-size tiers in EUR: Vessel up to 5 ships EUR 1,490/yr, Ocean up to 10 EUR 2,990/yr, Fleet up to 25 EUR 4,990/yr, Squadron up to 50 EUR 7,990/yr, with taxes possibly applicable.",
+      "sourceIds": [
+        "SRC-CMP-009"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "FLEET"
+      ],
+      "geographicScope": "EU",
+      "observedValue": "1490 / 2990 / 4990 / 7990",
+      "unit": "EUR per year by fleet size",
+      "limitations": "Commercial-shipping technical-management scope; tax treatment depends on location; no hardware, installation or connectivity included."
+    },
+    {
+      "claimId": "CLM-CMP-013",
+      "claimText": "UOC prices its platform at EUR 259 per vessel per month, with a two-vessel annual plan at EUR 4,900/year and a 30-day free pilot.",
+      "sourceIds": [
+        "SRC-CMP-010"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "FLEET"
+      ],
+      "geographicScope": "GLOBAL",
+      "observedValue": "259 EUR/vessel/month; 4900 EUR/year for 2 vessels",
+      "unit": "EUR",
+      "limitations": "Commercial fleet operations scope; tax treatment not stated; subject to order form."
+    },
+    {
+      "claimId": "CLM-CMP-014",
+      "claimText": "Seafarers.pro lists three per-vessel monthly tiers in EUR: Starter EUR 150, Professional EUR 240 and Enterprise EUR 360, with a 40% first-year launch discount.",
+      "sourceIds": [
+        "SRC-CMP-011"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "FLEET"
+      ],
+      "geographicScope": "GLOBAL",
+      "observedValue": "150 / 240 / 360",
+      "unit": "EUR per vessel per month",
+      "limitations": "Promotional launch pricing; tax treatment not stated; crew/payroll/QHSE scope, not recreational telematics."
+    },
+    {
+      "claimId": "CLM-CMP-015",
+      "claimText": "Raymarine's Spanish store lists Element 7 HV at EUR 659.45, Element 9 HV at EUR 901.45 and Element 12 HV at EUR 1,506.45, each stated to include VAT.",
+      "sourceIds": [
+        "SRC-CMP-012"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "HIGH",
+      "productScope": [
+        "DISPLAY"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "659.45 / 901.45 / 1506.45",
+      "unit": "EUR including VAT",
+      "limitations": "Display hardware list price only; charts, transducer bundles and installation are separate or vary by SKU."
+    },
+    {
+      "claimId": "CLM-CMP-016",
+      "claimText": "Simrad's Spanish store lists NAC-3 basic pack at EUR 3,083.08, NAC-3 processor at EUR 2,136.86, NAC-2 basic pack at EUR 2,100.56 and NAC-2 processor at EUR 1,217.26 including VAT, while marking several listings out of stock and two drive packs discontinued.",
+      "sourceIds": [
+        "SRC-CMP-013"
+      ],
+      "evidenceClass": "PRIMARY_OFFICIAL",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "PILOT"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "3083.08 / 2136.86 / 2100.56 / 1217.26",
+      "unit": "EUR including VAT",
+      "limitations": "Availability flags conflict with a current-offer reading; no installation, drive unit in all packs, or commissioning included."
+    },
+    {
+      "claimId": "CLM-CMP-017",
+      "claimText": "A Spanish retailer lists the complete Raymarine EV-100 Wheel pilot pack at EUR 2,050 including VAT on backorder, with shipping and installation excluded.",
+      "sourceIds": [
+        "SRC-CMP-014"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "PILOT"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "2050",
+      "unit": "EUR including VAT",
+      "limitations": "Backorder status; vessel survey, commissioning and sea trial are not included; single retailer."
+    },
+    {
+      "claimId": "CLM-CMP-018",
+      "claimText": "Victron SmartShunt 500A IP65 is listed by a Spanish retailer at EUR 90.21 including VAT, with Bluetooth and VE.Direct connectivity.",
+      "sourceIds": [
+        "SRC-CMP-015"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "SENSE"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "90.21",
+      "unit": "EUR including VAT",
+      "limitations": "Component price only (battery current/voltage/temperature input), no installation; non-marine specialist retailer."
+    },
+    {
+      "claimId": "CLM-CMP-019",
+      "claimText": "Victron Cerbo GX MK2 is listed at EUR 240.09 including VAT, with VE.Direct/VE.Can/USB/Ethernet/Wi-Fi/Bluetooth and four tank, four temperature and four digital sensor inputs, plus remote access through the VRM portal.",
+      "sourceIds": [
+        "SRC-CMP-016"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "HUB",
+        "WATCH"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "240.09",
+      "unit": "EUR including VAT",
+      "limitations": "Unit price read from a bundle listing; VRM portal availability and terms not priced; sensor inputs need separate sensors."
+    },
+    {
+      "claimId": "CLM-CMP-020",
+      "claimText": "B&G Triton2 paddle-wheel instrument pack is listed at EUR 1,149.40 including tax (EUR 949.92 excluding), with a related B&G WS310 wind vane sensor at EUR 489.95 while stock lasts.",
+      "sourceIds": [
+        "SRC-CMP-017"
+      ],
+      "evidenceClass": "PRIMARY_RETAILER",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "SENSE",
+        "DISPLAY"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "1149.40 incl tax; 489.95 wind vane",
+      "unit": "EUR",
+      "limitations": "Promotional -10% pack; wind-vane stock caveat; these are instrument displays plus transducers, not a measurement-only module family."
+    },
+    {
+      "claimId": "CLM-CMP-021",
+      "claimText": "Secondary editorial evidence reports Siren 3 at USD 299.99 plus USD 225/year, Siren 3 Pro at USD 799.99 plus USD 225/year, ArmIt BilgeMAX One at USD 229.99 kit plus USD 100/year, and Yacht Sentinel YS Pro at EUR 1,590 excluding VAT plus EUR 240/year.",
+      "sourceIds": [
+        "SRC-CMP-018"
+      ],
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "LOW",
+      "productScope": [
+        "WATCH"
+      ],
+      "geographicScope": "US/EU",
+      "observedValue": "299.99 / 799.99 / 229.99 USD; 1590 EUR excl VAT",
+      "unit": "hardware and annual service",
+      "limitations": "Affiliate-monetised aggregator; vendor pages inaccessible; Yacht Sentinel current availability unconfirmed; mixed currencies and tax bases."
+    },
+    {
+      "claimId": "CLM-CMP-022",
+      "claimText": "Navionics Boating is reported at EUR 49.99 to EUR 149.99 per in-app purchase in Google Play Spain, depending on the item.",
+      "sourceIds": [
+        "SRC-CMP-019"
+      ],
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "LOW",
+      "productScope": [
+        "NAV"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "EUR 49.99-149.99 range",
+      "unit": "EUR per in-app purchase",
+      "limitations": "Range, not a single observed price; no manufacturer price list could be retrieved; item scope unclear."
+    },
+    {
+      "claimId": "CLM-CMP-023",
+      "claimText": "An editorial review states that Windy Premium, including the Passage Planner weather-routing plugin, costs EUR 19 per year.",
+      "sourceIds": [
+        "SRC-CMP-020"
+      ],
+      "evidenceClass": "SECONDARY_INDEPENDENT",
+      "confidence": "MEDIUM",
+      "productScope": [
+        "WEATHER"
+      ],
+      "geographicScope": "EU",
+      "observedValue": "19",
+      "unit": "EUR per year",
+      "limitations": "Secondary statement; Windy's own premium page was not retrievable; tax treatment and renewal terms unstated."
+    },
+    {
+      "claimId": "CLM-CMP-024",
+      "claimText": "Seven supplier pages that would have carried primary competitor prices were inaccessible or did not render price content on 2026-10-31: Garmin Navionics FAQ, em-trak B100 retailer page, gWind Regata retailer page, Siren Marine storefront, Yacht Sentinel pricing, Savvy Navvy pricing and Windy Premium.",
+      "sourceIds": [
+        "SRC-CMP-021",
+        "SRC-CMP-022",
+        "SRC-CMP-023",
+        "SRC-CMP-024",
+        "SRC-CMP-025",
+        "SRC-CMP-026",
+        "SRC-CMP-027"
+      ],
+      "evidenceClass": "UNKNOWN",
+      "confidence": "UNKNOWN",
+      "productScope": [
+        "MARKET"
+      ],
+      "geographicScope": "MULTI",
+      "observedValue": "UNKNOWN",
+      "unit": "UNKNOWN",
+      "limitations": "No price is inferred for these products; the gap is recorded instead."
+    },
+    {
+      "claimId": "CLM-CMP-025",
+      "claimText": "No competitor publishes a single installed, commissioned 'bundle' price equivalent to the six MAREA bundles; comparisons must be composed from observed component prices and remain MODEL_DERIVED.",
+      "sourceIds": [
+        "SRC-CMP-002",
+        "SRC-CMP-012",
+        "SRC-CMP-014",
+        "SRC-CMP-016",
+        "SRC-CMP-009"
+      ],
+      "evidenceClass": "MODEL_DERIVED",
+      "confidence": "LOW",
+      "productScope": [
+        "BUNDLES"
+      ],
+      "geographicScope": "EU",
+      "observedValue": "DERIVED: no single competitor bundle price observed",
+      "unit": "qualitative",
+      "limitations": "Absence of evidence from this sample; other vendors or installers may quote turnkey prices privately."
+    },
+    {
+      "claimId": "CLM-CMP-026",
+      "claimText": "Derived fleet SaaS cost per vessel per month ranges from about EUR 24.83 (Full Ahead Vessel, annual, 5 ships) to EUR 259 (UOC Core monthly), a segment breadth that must not be read as one market price.",
+      "sourceIds": [
+        "SRC-CMP-009",
+        "SRC-CMP-010",
+        "SRC-CMP-011"
+      ],
+      "evidenceClass": "MODEL_DERIVED",
+      "confidence": "LOW",
+      "productScope": [
+        "FLEET"
+      ],
+      "geographicScope": "EU",
+      "observedValue": "DERIVED: 24.83 to 259 EUR per vessel-month",
+      "unit": "EUR per vessel per month",
+      "limitations": "Arithmetic from published annual/monthly list prices; excludes onboarding, hardware, connectivity and tax."
+    },
+    {
+      "claimId": "CLM-CMP-027",
+      "claimText": "A START-type alternative composed of Orca Core 2 (EUR 649, including one year of Smart Navigation) totals EUR 649 in year one and EUR 698 from year two at observed component prices.",
+      "sourceIds": [
+        "SRC-CMP-002",
+        "SRC-CMP-001"
+      ],
+      "evidenceClass": "MODEL_DERIVED",
+      "confidence": "LOW",
+      "productScope": [
+        "BUNDLES"
+      ],
+      "geographicScope": "EU",
+      "observedValue": "DERIVED: 649 EUR year one; 698 EUR year two",
+      "unit": "EUR",
+      "limitations": "Sum of a secondary-reported hardware price and a tax-unspecified subscription; no installation; Core 2 price is a test-time configurator figure. Orca states that a year of Smart Navigation is included with Orca Core or Orca Display, so the subscription is not double-counted in year one."
+    },
+    {
+      "claimId": "CLM-CMP-028",
+      "claimText": "A CRUISE-type Raymarine/Digital Yacht composition (Element 7 HV EUR 659.45 + AIS100 EUR 360 + NavLink2 EUR 300) totals EUR 1,319.45, mixing one VAT-inclusive price with two tax-unspecified prices.",
+      "sourceIds": [
+        "SRC-CMP-012",
+        "SRC-CMP-005"
+      ],
+      "evidenceClass": "MODEL_DERIVED",
+      "confidence": "LOW",
+      "productScope": [
+        "BUNDLES"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "DERIVED: 1319.45 EUR",
+      "unit": "EUR",
+      "limitations": "Mixed tax basis; no charts beyond base, no installation, no gateway configuration labour."
+    },
+    {
+      "claimId": "CLM-CMP-029",
+      "claimText": "A SAIL-type composition (EV-100 Wheel EUR 2,050 + Element 7 HV EUR 659.45 + B&G WS310 EUR 489.95 + NavLink2 EUR 300) totals EUR 3,499.40, before installation and without a wind-data display.",
+      "sourceIds": [
+        "SRC-CMP-014",
+        "SRC-CMP-012",
+        "SRC-CMP-017",
+        "SRC-CMP-005"
+      ],
+      "evidenceClass": "MODEL_DERIVED",
+      "confidence": "LOW",
+      "productScope": [
+        "BUNDLES"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "DERIVED: 3499.40 EUR",
+      "unit": "EUR",
+      "limitations": "Mixed brands and tax bases; the wind vane alone has no display surface in this composition; no vessel survey or sea trial."
+    },
+    {
+      "claimId": "CLM-CMP-030",
+      "claimText": "A COMPLETE-type composition (Element 7 HV EUR 659.45 + EV-100 EUR 2,050 + WS310 EUR 489.95 + AIS100 EUR 360 + Cerbo GX EUR 240.09) totals EUR 3,799.49, before installation, sensors and monitoring subscription.",
+      "sourceIds": [
+        "SRC-CMP-012",
+        "SRC-CMP-014",
+        "SRC-CMP-017",
+        "SRC-CMP-005",
+        "SRC-CMP-016"
+      ],
+      "evidenceClass": "MODEL_DERIVED",
+      "confidence": "LOW",
+      "productScope": [
+        "BUNDLES"
+      ],
+      "geographicScope": "ES",
+      "observedValue": "DERIVED: 3799.49 EUR",
+      "unit": "EUR",
+      "limitations": "Mixed brands/tax bases; no bilge/tank/environment sensors beyond Cerbo inputs; no professional installation, commissioning or warranty on integration."
+    },
+    {
+      "claimId": "CLM-CMP-031",
+      "claimText": "Several often-cited 'AIS competitors' are transmit-capable transponders and several 'fleet' comparators are commercial-shipping ERPs, so category match must be justified per observation rather than assumed from industry membership.",
+      "sourceIds": [
+        "SRC-CMP-006",
+        "SRC-CMP-010",
+        "SRC-CMP-011",
+        "SRC-CMP-018"
+      ],
+      "evidenceClass": "MODEL_DERIVED",
+      "confidence": "LOW",
+      "productScope": [
+        "AIS",
+        "FLEET",
+        "WATCH"
+      ],
+      "geographicScope": "MULTI",
+      "observedValue": "DERIVED: category mismatches recorded per observation",
+      "unit": "qualitative",
+      "limitations": "Based on the retrieved pages and their stated product scope only."
+    },
+    {
+      "claimId": "CLM-CMP-032",
+      "claimText": "Observed competitor prices are heterogeneous in currency, tax treatment and inclusion: EUR VAT-inclusive ES retail/store prices, EUR prices with unstated tax, and USD tax-exclusive subscription lists; no direct cross-currency comparison is valid without a separate model.",
+      "sourceIds": [
+        "SRC-CMP-001",
+        "SRC-CMP-003",
+        "SRC-CMP-005",
+        "SRC-CMP-012",
+        "SRC-CMP-018"
+      ],
+      "evidenceClass": "MODEL_DERIVED",
+      "confidence": "LOW",
+      "productScope": [
+        "MARKET"
+      ],
+      "geographicScope": "MULTI",
+      "observedValue": "DERIVED: mixed currency/tax basis",
+      "unit": "qualitative",
+      "limitations": "No FX conversion is performed anywhere in this workstream."
+    }
+  ]
+}
