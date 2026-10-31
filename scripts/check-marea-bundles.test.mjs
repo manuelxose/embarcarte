@@ -797,3 +797,71 @@ test('R-04 — no bundle document keeps a CR-NN configuration-rule reference', (
   assert.match(fleetSpec, /CFG-07/);
   assert.doesNotMatch(fleetSpec, /rule `CR-07`/);
 });
+
+// --- MC-08 round-4 corrections (N-01, N-02, N-03) -----------------------
+
+test('N-01 — a rule-to-line cross-reference is accepted (CFG rule + CRUISE line)', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/BUNDLE-ARCHITECTURE.md': (text) =>
+          `${text}\n\nThe CFG-01 rule requires the CRUISE line CR-01 to be present.\n`,
+      },
+    },
+    (result) => {
+      assert.equal(result.code, 0, result.stdout);
+      assert.match(result.stdout, /RESULT: PASS/);
+    },
+  );
+});
+
+test('N-01 — "This rule applies to CR-01" is accepted', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/BUNDLE-ARCHITECTURE.md': (text) =>
+          `${text}\n\nThis rule applies to CR-01 in every bundle.\n`,
+      },
+    },
+    (result) => {
+      assert.equal(result.code, 0, result.stdout);
+      assert.match(result.stdout, /RESULT: PASS/);
+    },
+  );
+});
+
+test('N-02 — a quoted sale claim in customer copy is still rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/copy/start.en.md': (text) =>
+          `${text}\n\nThe page must state: "This bundle is now for sale."\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-26', /sale \/ orderable/),
+  );
+});
+
+test('N-03 — a name-subject "available to buy" sentence is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/MAREA-START-COMMERCIAL-SPEC.md': (text) =>
+          `${text}\n\nMAREA START is available to buy.\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-32', /subject-agnostic sale/),
+  );
+});
+
+test('N-03 — a name-subject "available for sale" sentence is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/MAREA-START-COMMERCIAL-SPEC.md': (text) =>
+          `${text}\n\nMAREA START is available for sale.\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-32', /subject-agnostic sale/),
+  );
+});

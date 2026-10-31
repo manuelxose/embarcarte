@@ -792,7 +792,7 @@ const claimPatterns = [
     // insensitive and line-start safe. The copula may only be followed by an
     // affirmative adverb, so "is not for sale" is never promoted into a failure.
     regex:
-      /(?:^|[\n.;|:]\s*)(?:(?:this|the|these|those|our|that)\b[^.\n]{0,30}\b(?:bundle|bundles|package|packages|solution|solutions|product|products|family|families|offer|offers)\b[^.\n]{0,30}\b(?:is|are|has been|have been|will be)\b(?:\s+(?:now|currently|already|officially|finally))?\s+(?:for sale|orderable|purchasable|available to buy|on sale)\b|\bit\b[^.\n]{0,12}\b(?:is|are)\b(?:\s+(?:now|currently|already|officially|finally))?\s+(?:for sale|orderable|purchasable|available to buy|on sale)\b)/im,
+      /(?:^|[\n.;|:]\s*)(?:(?:this|the|these|those|our|that)\b[^.\n]{0,30}\b(?:bundle|bundles|package|packages|solution|solutions|product|products|family|families|offer|offers)\b[^.\n]{0,30}\b(?:is|are|has been|have been|will be)\b(?:\s+(?:now|currently|already|officially|finally))?\s+(?:for sale|orderable|purchasable|available to buy|available for sale|on sale)\b|\bit\b[^.\n]{0,12}\b(?:is|are)\b(?:\s+(?:now|currently|already|officially|finally))?\s+(?:for sale|orderable|purchasable|available to buy|available for sale|on sale)\b)/im,
   },
   {
     label: 'a subject-agnostic sale / orderable / purchasable token',
@@ -802,7 +802,7 @@ const claimPatterns = [
     // still evaluates it outside negation, exclusion-list and quoted contexts,
     // and skips claim enumerations such as "orderable, purchasable or publishable".
     regex:
-      /(?:\b(?:is|are|was|were|be|remains?|becomes?|became|goes?|went|will\s+be|would\s+be|can\s+be|could\s+be|may\s+be|might\s+be|must\s+be|shall\s+be|has\s+become|have\s+become)\b(?:\s+(?:now|currently|already|officially|finally|still))?\s+(?:for sale|on sale|orderable|purchasable|available for purchase|offered for sale)|\b(?:can be purchased|could be purchased|may be purchased|will be purchased|goes on sale|went on sale|available for purchase|offered for sale)\b)/i,
+      /(?:\b(?:is|are|was|were|be|remains?|becomes?|became|goes?|went|will\s+be|would\s+be|can\s+be|could\s+be|may\s+be|might\s+be|must\s+be|shall\s+be|has\s+become|have\s+become)\b(?:\s+(?:now|currently|already|officially|finally|still))?\s+(?:for sale|on sale|orderable|purchasable|available for purchase|available to buy|available for sale|offered for sale)|\b(?:est[áa]|est[áa]n|es|son)\b(?:\s+(?:ahora|ya|actualmente))?\s+(?:a la venta|disponible para (?:la |su )?compra)|\b(?:can be purchased|could be purchased|may be purchased|will be purchased|goes on sale|went on sale)\b)/i,
   },
   {
     label: 'a trademark clearance granted claim',
@@ -844,29 +844,37 @@ const claimPatterns = [
   },
 ];
 
-const QUOTED_SPAN_PATTERNS = [
-  /\u201c[^\u201d\n]*\u201d/g,
-  /\u00ab[^\u00bb\n]*\u00bb/g,
-  /"[^"\n]*"/g,
-  /`[^`\n]*`/g,
-];
+const QUOTE_SPAN = /("[^"\n]*"|\u201c[^\u201d\n]*\u201d|\u00ab[^\u00bb\n]*\u00bb)/g;
+// N-02: a quoted span is suppressed only when it is presented as a cited
+// governance example ("the phrase ...", "... is prohibited", "... must never be
+// written"), and only in internal documents. Customer copy is scanned raw so a
+// quoted assertion is still communicated to a customer and is still rejected.
+const GOVERNANCE_QUOTE_INTRO =
+  /\b(?:phrase|phrasing|wording|example|prohibited|forbidden|the words?|word|frase|palabra|ejemplo|prohibid[oa])\b[^.\n]{0,60}$/i;
+const GOVERNANCE_QUOTE_OUTRO =
+  /\b(?:prohibited|forbidden|must never|must not be written|never be written|not permitted|is banned|no debe|nunca debe|prohibid[oa]|no permitid[oa])\b/i;
 
-// R-02: a quoted span is a cited example (typically a prohibition example in a
-// governance document), not an assertion. Blank it while preserving the exact
-// line shape so reported line numbers stay accurate.
-function stripQuotedSpans(text) {
-  let result = text;
-  for (const pattern of QUOTED_SPAN_PATTERNS) {
-    result = result.replace(pattern, (span) => span.replace(/[^\n]/g, ' '));
-  }
-  return result;
+const blankSpan = (span) => span.replace(/[^\n]/g, ' ');
+
+function stripGovernanceQuotes(text) {
+  const withoutCode = text.replace(/`[^`\n]*`/g, blankSpan);
+  return withoutCode.replace(QUOTE_SPAN, (span, _group, offset, whole) => {
+    const prefix = whole.slice(Math.max(0, offset - 80), offset);
+    const suffix = whole.slice(offset + span.length, offset + span.length + 100);
+    return GOVERNANCE_QUOTE_INTRO.test(prefix) || GOVERNANCE_QUOTE_OUTRO.test(suffix)
+      ? blankSpan(span)
+      : span;
+  });
 }
 
 function scanClaims(relativePath, patterns) {
   const failures = [];
   const text = textOf(relativePath);
   if (text === null) return failures;
-  const scanText = relativePath.endsWith('.json') ? text : stripQuotedSpans(text);
+  const scanText =
+    relativePath.endsWith('.json') || relativePath.includes('/copy/')
+      ? text
+      : stripGovernanceQuotes(text);
   for (const pattern of patterns) {
     const match = findAffirmative(scanText, pattern.regex);
     if (!match) continue;
@@ -2739,11 +2747,15 @@ check('BUNDLE-35', (record) => {
     COMPARISON_DOC,
     ...Object.values(SPEC_PATHS),
   ];
+  // N-01: only positions that present the CR-NN token AS a rule id count. A
+  // legitimate cross-reference such as "The CFG-01 rule requires the CRUISE line
+  // CR-01 to be present." must not fail, so the rule word must be immediately
+  // adjacent to the token (optionally quoted/parenthesised).
   const patterns = [
-    /(?:rule|regla)\s*[`"'\u00ab]?\s*(CR-\d{2})\b/gi,
-    /(?:rule|regla)[^.\n]{0,30}(CR-\d{2})\b/gi,
-    /§\s*[\d.]+\s*\([^)\n]{0,40}\b(CR-\d{2})\b/gi,
+    /(?:rules?|reglas?)\s*[`"'\u00ab(]?\s*(CR-\d{2})\b/gi,
+    /§\s*[\d.]+[^\n]{0,20}?\b(?:rules?|reglas?)\s*[`"'\u00ab(]?\s*(CR-\d{2})\b/gi,
   ];
+  const lineQualifier = /\b(?:line|l[ií]nea|component|componente)\b[^\n]{0,15}$/i;
   let references = 0;
   for (const relativePath of targets) {
     const text = textOf(relativePath);
@@ -2752,11 +2764,19 @@ check('BUNDLE-35', (record) => {
       const scanner = new RegExp(pattern.source, pattern.flags);
       let match = scanner.exec(text);
       while (match) {
-        references += 1;
-        const line = text.slice(0, match.index).split(/\r?\n/).length;
-        record.failures.push(
-          `${relativePath}:${line} references the configuration rule ${match[1]} with the CR-NN line-id prefix; configuration rules use CFG-NN`,
-        );
+        const tokenStart = match.index + match[0].indexOf(match[1]);
+        const prefix = text.slice(Math.max(0, tokenStart - 45), tokenStart);
+        const between = text.slice(match.index, tokenStart);
+        const explicitlyALine =
+          lineQualifier.test(prefix) || /\b(?:line|l[ií]nea|component|componente)\b/i.test(between);
+        const cfgRulesBetween = /CFG-\d{2}/i.test(between);
+        if (!explicitlyALine && !cfgRulesBetween) {
+          references += 1;
+          const line = text.slice(0, match.index).split(/\r?\n/).length;
+          record.failures.push(
+            `${relativePath}:${line} references the configuration rule ${match[1]} with the CR-NN line-id prefix; configuration rules use CFG-NN`,
+          );
+        }
         match = scanner.exec(text);
       }
     }
