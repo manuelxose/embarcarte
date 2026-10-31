@@ -70,7 +70,7 @@ presented to the customer:
 | Approved §9 text | Enforced by D18 on | Reason |
 | --- | --- | --- |
 | Navigation / instruments | all 12 copy files | every bundle surface presents position, charts, depth, traffic or weather context |
-| AIS receive-only | CRUISE and COMPLETE copy | these are the bundles that include an AIS receiver and present AIS targets |
+| AIS receive-only | CRUISE, COMPLETE and FLEET package copy | these are the bundle surfaces that include an AIS receiver or present received-traffic context |
 | PILOT supervised steering | SAIL and COMPLETE copy | these are the bundles that include a quoted PILOT scope |
 | Weather forecast | START and CRUISE copy | these are the two copy surfaces that present the WEATHER forecast service as a licensed option; SAIL/COMPLETE/FLEET mention WEATHER only as a separate excluded/optional product and do not present forecast data |
 | Brand attribution | not duplicated in D18 | the brand gate (`scripts/check-brand.mjs` / `npm run test:brand`) owns brand identity, attribution and clearance enforcement; all 12 copy files nevertheless carry the approved attribution footer |
@@ -385,8 +385,9 @@ follows, and every mapping is covered by a negative fixture test in
 | FLEET package/SaaS separation, hardware not included by default, tenancy boundary | `BUNDLE-16`, `BUNDLE-17` |
 | No remote steering/helm path | `BUNDLE-18` |
 | Price classification and the six historical hypotheses | `BUNDLE-19` |
-| Prose claims: sale/orderable/purchasable, approval, clearance, certification, guaranteed delivery | `BUNDLE-26`, `BUNDLE-32` (documents and copy) and `BUNDLE-15` (guaranteed/immediate alert delivery on specifications and the twelve copy files) |
-| Approved disclaimers by surface | `BUNDLE-23` (navigation on all twelve, AIS on CRUISE/COMPLETE, PILOT on SAIL/COMPLETE, weather on the START/CRUISE forecast surfaces) |
+| Prose claims: sale/orderable/purchasable, approval, clearance, certification, guaranteed delivery | `BUNDLE-26`, `BUNDLE-32` (documents and copy, including the subject-agnostic token detector for name/modal sale sentences) and `BUNDLE-15` (guaranteed/immediate alert delivery on specifications and the twelve copy files) |
+| Stale rule references: a rule-reference position must never use the CR-NN line-id prefix | `BUNDLE-35` (configuration rules are `CFG-NN`; legitimate `CR-NN` CRUISE line ids remain valid in line-id positions) |
+| Approved disclaimers by surface | `BUNDLE-23` (navigation on all twelve, AIS on CRUISE/COMPLETE/FLEET package, PILOT on SAIL/COMPLETE, weather on the START/CRUISE forecast surfaces) |
 | Configuration-rule namespace `CFG-NN` never reused by a component line id | `BUNDLE-25` |
 
 Prose scanning is case-insensitive and line-start safe, and it distinguishes an assertion from a quoted

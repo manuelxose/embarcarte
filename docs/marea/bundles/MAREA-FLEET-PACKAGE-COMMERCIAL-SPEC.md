@@ -383,7 +383,7 @@ release (§6). None is orderable.
 The only permitted internal configuration outcomes are `CONFIGURATION_DEFINED_INTERNAL`,
 `COMPATIBILITY_EVIDENCE_REQUIRED`, `SPECIALIST_SURVEY_REQUIRED`, `QUOTATION_REQUIRED`, `NOT_ELIGIBLE`
 and `PUBLICATION_BLOCKED`. There is **no `ORDERABLE`, `FOR_SALE` or `APPROVED` outcome in MC-08**.
-The generic FLEET package resolution fixed by `BUNDLE-CONFIGURATION-RULES.md` §12.6 (rule `CR-07`) is
+The generic FLEET package resolution fixed by `BUNDLE-CONFIGURATION-RULES.md` §12.6 (rule `CFG-07`) is
 `CONFIGURATION_DEFINED_INTERNAL` → `COMPATIBILITY_EVIDENCE_REQUIRED` → `QUOTATION_REQUIRED` →
 `PUBLICATION_BLOCKED`; `SPECIALIST_SURVEY_REQUIRED` is the additional outcome for the marina and
 multi-owner management configurations below, where third-party vessel data and sharing grants must be

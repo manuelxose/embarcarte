@@ -795,6 +795,16 @@ const claimPatterns = [
       /(?:^|[\n.;|:]\s*)(?:(?:this|the|these|those|our|that)\b[^.\n]{0,30}\b(?:bundle|bundles|package|packages|solution|solutions|product|products|family|families|offer|offers)\b[^.\n]{0,30}\b(?:is|are|has been|have been|will be)\b(?:\s+(?:now|currently|already|officially|finally))?\s+(?:for sale|orderable|purchasable|available to buy|on sale)\b|\bit\b[^.\n]{0,12}\b(?:is|are)\b(?:\s+(?:now|currently|already|officially|finally))?\s+(?:for sale|orderable|purchasable|available to buy|on sale)\b)/im,
   },
   {
+    label: 'a subject-agnostic sale / orderable / purchasable token',
+    // R-01 (residue of B-01): a name subject ("MAREA START is now for sale.")
+    // or a modal predicate ("The bundle can be purchased today.") has no
+    // determiner+noun shape, so the token itself is detected. The shared scanner
+    // still evaluates it outside negation, exclusion-list and quoted contexts,
+    // and skips claim enumerations such as "orderable, purchasable or publishable".
+    regex:
+      /(?:\b(?:is|are|was|were|be|remains?|becomes?|became|goes?|went|will\s+be|would\s+be|can\s+be|could\s+be|may\s+be|might\s+be|must\s+be|shall\s+be|has\s+become|have\s+become)\b(?:\s+(?:now|currently|already|officially|finally|still))?\s+(?:for sale|on sale|orderable|purchasable|available for purchase|offered for sale)|\b(?:can be purchased|could be purchased|may be purchased|will be purchased|goes on sale|went on sale|available for purchase|offered for sale)\b)/i,
+  },
+  {
     label: 'a trademark clearance granted claim',
     regex:
       /(?:trademarkLegalClearance|trademark clearance|brand clearance|MAREA clearance)\s*[:=]?\s*`?(GRANTED|CLEARED|APPROVED)\b/i,
@@ -834,14 +844,33 @@ const claimPatterns = [
   },
 ];
 
+const QUOTED_SPAN_PATTERNS = [
+  /\u201c[^\u201d\n]*\u201d/g,
+  /\u00ab[^\u00bb\n]*\u00bb/g,
+  /"[^"\n]*"/g,
+  /`[^`\n]*`/g,
+];
+
+// R-02: a quoted span is a cited example (typically a prohibition example in a
+// governance document), not an assertion. Blank it while preserving the exact
+// line shape so reported line numbers stay accurate.
+function stripQuotedSpans(text) {
+  let result = text;
+  for (const pattern of QUOTED_SPAN_PATTERNS) {
+    result = result.replace(pattern, (span) => span.replace(/[^\n]/g, ' '));
+  }
+  return result;
+}
+
 function scanClaims(relativePath, patterns) {
   const failures = [];
   const text = textOf(relativePath);
   if (text === null) return failures;
+  const scanText = relativePath.endsWith('.json') ? text : stripQuotedSpans(text);
   for (const pattern of patterns) {
-    const match = findAffirmative(text, pattern.regex);
+    const match = findAffirmative(scanText, pattern.regex);
     if (!match) continue;
-    const line = text.slice(0, match.index).split(/\r?\n/).length;
+    const line = scanText.slice(0, match.index).split(/\r?\n/).length;
     failures.push(`${relativePath}:${line} contains ${pattern.label} (${match[0].trim()})`);
   }
   return failures;
@@ -850,7 +879,7 @@ function scanClaims(relativePath, patterns) {
 // --- Negative-context and placeholder helpers ------------------------------
 
 const NEGATION =
-  /[^.|;:\n]*\b(no|not|never|none|nobody|nothing|nor|without|ning[uú]n|ninguna|nada|sin|jam[aá]s|tampoco)\b[^.|;:\n]*$/i;
+  /[^.|;:\n]*\b(no|not|never|none|nobody|nothing|nor|without|cannot|can't|must not|may not|will not|shall not|won't|isn't|aren't|doesn't|don't|ning[uú]n|ninguna|nada|sin|jam[aá]s|tampoco)\b[^.|;:\n]*$/i;
 
 const isNegatedAt = (text, index) => {
   // A quoted phrase in a governance table is a listed example, not an assertion.
@@ -889,7 +918,21 @@ function findAffirmative(text, regex) {
       beforeMatch.lastIndexOf(';'),
     );
     const exclusionWindow = beforeMatch.slice(boundary + 1);
-    if (!isNegatedAt(text, claimIndex) && !claimExclusionContext.test(exclusionWindow)) {
+    // A token inside a list of claim atoms ("orderable, purchasable or
+    // publishable") is a prohibition enumeration, not an affirmation.
+    const afterMatch = text.slice(
+      match.index + match[0].length,
+      match.index + match[0].length + 120,
+    );
+    const claimEnumeration =
+      /^\s*[,\/]?\s*(?:or\s+|and\s+)?(?:available for purchase|can be purchased|offered for sale|goes on sale|for sale|on sale|orderable|purchasable|publishable|certified|available|supported)\b/i.test(
+        afterMatch,
+      );
+    if (
+      !isNegatedAt(text, claimIndex) &&
+      !claimExclusionContext.test(exclusionWindow) &&
+      !claimEnumeration
+    ) {
       return match;
     }
     if (scanner.lastIndex === match.index) scanner.lastIndex += 1;
@@ -2674,6 +2717,51 @@ check('BUNDLE-34', (record) => {
     }
   }
   record.detail = `${pinned} pinned reference lines`;
+});
+
+// --- BUNDLE-35: stale configuration-rule references ----------------------
+
+check('BUNDLE-35', (record) => {
+  // R-04/m-02: configuration rules are CFG-NN; CR-NN is a CRUISE component line
+  // id. A rule-reference position that still points at CR-NN sends a reader to an
+  // unrelated line, so it must fail even though legitimate CR-NN line ids remain
+  // valid elsewhere in the same documents.
+  const targets = [
+    CONTRACT_PATH,
+    CONFIG_RULES_DOC,
+    ARCHITECTURE_DOC,
+    COMPOSITION_DOC,
+    PRICING_DOC,
+    ENTITLEMENTS_DOC,
+    INSTALLATION_DOC,
+    ASSET_DOC,
+    JOURNEYS_DOC,
+    COMPARISON_DOC,
+    ...Object.values(SPEC_PATHS),
+  ];
+  const patterns = [
+    /(?:rule|regla)\s*[`"'\u00ab]?\s*(CR-\d{2})\b/gi,
+    /(?:rule|regla)[^.\n]{0,30}(CR-\d{2})\b/gi,
+    /§\s*[\d.]+\s*\([^)\n]{0,40}\b(CR-\d{2})\b/gi,
+  ];
+  let references = 0;
+  for (const relativePath of targets) {
+    const text = textOf(relativePath);
+    if (text === null) continue;
+    for (const pattern of patterns) {
+      const scanner = new RegExp(pattern.source, pattern.flags);
+      let match = scanner.exec(text);
+      while (match) {
+        references += 1;
+        const line = text.slice(0, match.index).split(/\r?\n/).length;
+        record.failures.push(
+          `${relativePath}:${line} references the configuration rule ${match[1]} with the CR-NN line-id prefix; configuration rules use CFG-NN`,
+        );
+        match = scanner.exec(text);
+      }
+    }
+  }
+  record.detail = `${references} CR-NN rule reference(s) found`;
 });
 
 // --- BUNDLE-31: compatibility statuses against canonical registers -------

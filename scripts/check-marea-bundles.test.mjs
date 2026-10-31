@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
-import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import test from 'node:test';
@@ -119,7 +119,7 @@ test('the real MC-08 tree passes (baseline for every mutation case)', async () =
   const result = await runValidator(REPO_ROOT);
   assert.equal(result.code, 0, `${result.stdout}${result.stderr}`);
   assert.match(result.stdout, /RESULT: PASS/);
-  assert.match(result.stdout, /Summary: 34 checks run, 34 passed, 0 failed/);
+  assert.match(result.stdout, /Summary: 35 checks run, 35 passed, 0 failed/);
 });
 
 test('--json reports a machine-readable PASS with the full check set', async () => {
@@ -127,7 +127,7 @@ test('--json reports a machine-readable PASS with the full check set', async () 
   assert.equal(result.code, 0, result.stdout);
   const report = JSON.parse(result.stdout);
   assert.equal(report.result, 'PASS');
-  assert.ok(report.checks.length >= 34, 'the validator must run the full hardenend check set');
+  assert.ok(report.checks.length >= 35, 'the validator must run the full hardened check set');
   assert.ok(report.checks.every((entry) => entry.status === 'PASS'));
   assert.equal(report.summary.bundles, 6);
   assert.equal(report.summary.assets, 60);
@@ -686,4 +686,114 @@ test('m-03 — removing the approved AIS receive-only disclaimer from FLEET copy
     },
     (result) => assertFails(result, 'BUNDLE-23', /missing the approved AIS disclaimer/),
   );
+});
+
+// --- MC-08 round-3 corrections (R-01, R-02, R-03, R-04 stale rule ids) ----
+
+test('R-01 — a name-subject sale sentence is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/MAREA-START-COMMERCIAL-SPEC.md': (text) =>
+          `${text}\n\nMAREA START is now for sale.\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-32', /subject-agnostic sale/),
+  );
+});
+
+test('R-01 — a modal sale sentence is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/MAREA-START-COMMERCIAL-SPEC.md': (text) =>
+          `${text}\n\nThe bundle can be purchased today.\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-32', /subject-agnostic sale/),
+  );
+});
+
+test('R-02 — a quoted governance example is accepted', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/MAREA-START-COMMERCIAL-SPEC.md': (text) =>
+          `${text}\n\nThe phrase "this bundle is for sale" is prohibited and must never be written.\n`,
+      },
+    },
+    (result) => {
+      assert.equal(result.code, 0, result.stdout);
+      assert.match(result.stdout, /RESULT: PASS/);
+    },
+  );
+});
+
+test('R-02 — the same sentence without quotation marks is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/MAREA-START-COMMERCIAL-SPEC.md': (text) =>
+          `${text}\n\nThe phrase this bundle is for sale is prohibited and must never be written.\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-32', /subject-agnostic sale/),
+  );
+});
+
+test('R-04 — a stale CR-NN configuration-rule reference is rejected', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/BUNDLE-ARCHITECTURE.md': (text) =>
+          `${text}\n\nSee rule \`CR-07\` for the FLEET reporting boundary.\n`,
+      },
+    },
+    (result) => assertFails(result, 'BUNDLE-35', /configuration rules use CFG-NN/),
+  );
+});
+
+test('R-04 — a legitimate CR-NN CRUISE line id is still accepted', async () => {
+  await withFixture(
+    {
+      edit: {
+        'docs/marea/bundles/BUNDLE-ARCHITECTURE.md': (text) =>
+          `${text}\n\nThe CRUISE line \`CR-01\` remains a NAV-ESSENTIAL component line id.\n`,
+      },
+    },
+    (result) => {
+      assert.equal(result.code, 0, result.stdout);
+      assert.match(result.stdout, /RESULT: PASS/);
+    },
+  );
+});
+
+test('R-03 — the configuration-rules document names the FLEET package AIS surface', () => {
+  const rules = readFileSync(
+    join(REPO_ROOT, 'docs/marea/bundles/BUNDLE-CONFIGURATION-RULES.md'),
+    'utf8',
+  );
+  assert.match(rules, /AIS receive-only \| CRUISE, COMPLETE and FLEET package copy/);
+  assert.match(rules, /AIS on CRUISE\/COMPLETE\/FLEET package/);
+});
+
+test('R-04 — no bundle document keeps a CR-NN configuration-rule reference', () => {
+  const bundleDir = join(REPO_ROOT, 'docs/marea/bundles');
+  for (const file of readdirSync(bundleDir).filter((name) => name.endsWith('.md'))) {
+    if (file === 'MC-08-REVIEW.md') continue;
+    const text = readFileSync(join(bundleDir, file), 'utf8');
+    assert.doesNotMatch(
+      text,
+      /(?:rule|regla)\s*[`"']?\s*CR-\d{2}\b/i,
+      `${file} still cites a configuration rule with the CR-NN line-id prefix`,
+    );
+    assert.doesNotMatch(
+      text,
+      /§\s*[\d.]+\s*\([^)\n]{0,40}\bCR-\d{2}\b/,
+      `${file} still cites a rule reference through CR-NN`,
+    );
+  }
+  const fleetSpec = readFileSync(join(bundleDir, 'MAREA-FLEET-PACKAGE-COMMERCIAL-SPEC.md'), 'utf8');
+  assert.match(fleetSpec, /CFG-07/);
+  assert.doesNotMatch(fleetSpec, /rule `CR-07`/);
 });
