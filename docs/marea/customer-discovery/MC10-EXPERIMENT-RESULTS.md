@@ -250,11 +250,12 @@ narrative documents were edited consistently. A legitimate change requires:
 
 None was performed, because no data was collected and no threshold needed to change.
 
-**Registered planning defects preserved.** Independent of the freeze, MC-10 records four plan
+**Registered planning defects preserved.** Independent of the freeze, MC-10 records five plan
 inconsistencies in `data/research-status.json` -> `planningInconsistencies`: the per-segment quotas sum
 to 37-57 against a 40-80 total (PI-01), three conflicting segment minimum/target readings (PI-02), the
-n >= 8 pricing minimum being unreachable for SEG-04/05/06/08 under the preserved quotas (PI-03), and six
-instrument amendments pending (PI-04). MC-10 does not repair these values: it records them, requires a
+n >= 8 pricing minimum being unreachable for SEG-04/05/06/08 under the preserved quotas (PI-03), six
+instrument amendments pending (PI-04), and three owner-side instrument gaps including the missing
+monitoring incident question (PI-05). MC-10 does not repair these values: it records them, requires a
 dated amendment before fielding, and forbids a silent quota reduction or threshold relaxation.
 
 ## 12. Status effect

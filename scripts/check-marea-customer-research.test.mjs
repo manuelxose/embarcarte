@@ -1032,11 +1032,91 @@ test('CR-46 rejects a personal email address in the repository', () => {
   });
 });
 
+test('CR-47 rejects participant content in a neutrally named application file', () => {
+  expectCheckFailure('CR-47', (root) => {
+    writeText(
+      root,
+      'src/app/site-telemetry.json',
+      `${JSON.stringify(
+        {
+          participantId: 'P-MC10-001',
+          segmentId: 'SEG-01',
+          consentRecorded: true,
+          quotationPermission: true,
+        },
+        null,
+        2,
+      )}\n`,
+    );
+  });
+});
+
 test('CR-48 rejects a fixture record in the real data layer', () => {
   expectCheckFailure('CR-48', (root) => {
     editJson(root, `${DATA}/data-quality.json`, (file) => {
       file.testingFixture = true;
     });
+  });
+});
+
+test('CR-62 rejects a blockquoted fabricated quotation attributed to a pseudonymous participant', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) =>
+        `${text}\n> "The marina staff never answer and I would pay for an alert." — P-MC10-001\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a blockquoted fabricated quotation attributed to an owner', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n> "I would sign up tomorrow for a bilge alert." — an owner in Vigo\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a quantifier-less fabricated observation claim', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\nOwners reported they would pay a subscription for monitoring.\n`,
+    );
+  });
+});
+
+test('CR-62 rejects an unresolvable pseudonymous participant reference', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\nParticipant P-MC10-042 confirmed the monitoring need.\n`,
+    );
+  });
+});
+
+test('CR-62 rejects an unresolvable participant reference hidden in inline code', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\nEvidence cited as \`P-MC10-042\` in the narrative.\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a fabricated quotation hidden in a fenced code block', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\`\`\`\n> "I would pay for the alert." — P-MC10-001\n\`\`\`\n`,
+    );
   });
 });
 
@@ -1204,5 +1284,37 @@ test('acceptance: recorded planning inconsistencies keep the honest plan valid',
         },
       ];
     });
+  });
+});
+
+test('acceptance: prepared instrument wording is not narrative fabrication', () => {
+  expectChecksPass(['CR-62'], (root) => {
+    editText(
+      root,
+      `${CD}/owners/MC10-OWNER-DISCOVERY.md`,
+      (text) =>
+        `${text}\n> "As the owner, how much would you pay?" — prepared instrument wording, read aloud by the interviewer; never asked in MC-10.\n`,
+    );
+  });
+});
+
+test('acceptance: a negated observation claim is not fabrication', () => {
+  expectChecksPass(['CR-62'], (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\nNo owner reported a working bilge alert in MC-10.\n`,
+    );
+  });
+});
+
+test('acceptance: an MC-09 desk-research observation is not primary evidence', () => {
+  expectChecksPass(['CR-62'], (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) =>
+        `${text}\nOwners reported the same fragmentation problem in MC-09 desk research, not in MC-10 fieldwork.\n`,
+    );
   });
 });

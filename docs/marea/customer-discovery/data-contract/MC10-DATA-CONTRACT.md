@@ -8,7 +8,7 @@
 | Milestone | MC-10 — primary customer discovery |
 | Status | `BLOCKED — AUTH-MC10-001 NOT_GRANTED`; Wave 0 preparation complete |
 | Data steward | Agent F (research data steward and research-integrity engineer) |
-| Validator | `scripts/check-marea-customer-research.mjs` (D23, checks CR-01…CR-61) |
+| Validator | `scripts/check-marea-customer-research.mjs` (D23, checks CR-01…CR-62) |
 | Negative suite | `scripts/check-marea-customer-research.test.mjs` (D24) |
 | Base commit | `9d206cc251ea63c7edd1cda0ca7a2d028ae7cca3` |
 | Date | 2026-11-01 |
@@ -155,7 +155,38 @@ a pseudonymous participant ID. No finding may exist while
 
 Audio, verbatim transcripts, contact sheets and consent keys are Layer B/A and
 never enter this repository. The validator rejects audio/transcript extensions
-and personal-data patterns and field names (CR-46).
+and personal-data patterns and field names (CR-46). It also scans the content of
+`src/`, `public/` and `deploy/` — not only filenames — for participant,
+interview, consent, price-response and contact field markers (CR-47); a
+neutrally-named application file carrying participant fields is a defect.
+
+### 2.8 Narrative fabrication
+
+A narrative deliverable is not an evidence layer, and it may not imply evidence
+that does not exist. The validator rejects (CR-62):
+
+- a quotation attributed to a participant, an owner, an installer, a retailer,
+  an operator, a manager, a customer or a respondent — including a
+  `P-MC10-###` reference — unless the referenced interview record exists as
+  `COMPLETED`, analysis-eligible, with `quotationPermission: true` and the
+  participant's recorded `QUOTATION` consent. This covers blockquoted
+  quotations (a quote line attributed with a dash, a parenthetical role or a
+  pseudonymous ID), attribution-verb forms and quotation/dash attribution
+  forms.
+- every `P-MC10-###` reference in any document must resolve to a valid
+  interview record with recorded quotation permission; a dangling pseudonymous
+  reference is fabricated evidence.
+- a quantifier-less observational claim ("owners reported…", "installers
+  confirmed…", "customers told us…") unless it is negated, attributed to MC-09
+  desk research, or clearly marked as prepared instrument/template wording.
+  Prepared wording and quoted prohibited phrases are not fabrications; the check
+  distinguishes them from asserted observations.
+
+Honest negation, prepared instrument text, quoted lists of prohibited phrases,
+MC-09 desk-research attributions and methodological conditionals ("recorded only
+as the participant stated it") are accepted and covered by acceptance tests in
+D24. With zero participants and zero interviews in the real tree, no new
+quotation or observation may be introduced without a resolvable record.
 
 ## 3. File-by-file schema reference
 
@@ -424,10 +455,11 @@ zero-dependency. It exits 1 on any failed check and prints
 | CR-37–CR-39 | Commercial truthfulness | an availability/CTA/publication claim, a sale/pilot/distribution/price-approval claim, a fixed offer price |
 | CR-40–CR-42 | Independent review | a missing review, malformed findings, or a review that issues a primary-research PASS |
 | CR-43–CR-45 | Document honesty | a missing blocked banner, a positive participant count, an unreviewed translation-equivalence claim |
-| CR-46–CR-48 | Privacy and fixtures | PII/contact/audio/transcript data, participant data under `src/`, `public/` or `deploy/`, an unmarked fixture |
+| CR-46–CR-48 | Privacy, narrative and fixtures | PII/contact/audio/transcript data, participant content under `src/`, `public/` or `deploy/` (scanned by content, not only by filename), an unmarked fixture |
 | CR-49–CR-52 | Governance and history | a milestone that claims PASS, a decision that approves something, a modified MC-09 registry or weakened canonical contracts |
 | CR-53–CR-56 | Frozen support records | a broken instrument hash, an approved or non-ascending price ladder, a mismatched response reference, an approved/sent outreach template |
 | CR-57–CR-61 | Contract and delivery | a data contract that omits a file or a check family, a non-independent review, a dishonest Spanish report or handoff, a delivery record without real evidence |
+| CR-62 | Narrative fabrication | a blockquoted or attributive participant quotation, an unresolvable `P-MC10-###` reference, or a quantifier-less observation claim that implies an interview which never happened |
 
 Run `node --test scripts/check-marea-customer-research.test.mjs` for the
 negative-mutation suite (D24), which mutates a temporary fixture copy and asserts

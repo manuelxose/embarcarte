@@ -21,8 +21,13 @@ import { fileURLToPath } from 'node:url';
  * - a finding without a traceable valid interview record
  * - prices without currency, VAT treatment, ladder provenance or a known point
  * - a rate with a zero denominator, or a qualitative sample sold as a census
- * - quotations without recorded permission
+ * - quotations without recorded permission, including blockquoted narrative
+ *   quotations and quantifier-less observation claims that would imply an
+ *   interview which never happened (CR-62); every P-MC10-### reference in a
+ *   document must resolve to a valid interview record with recorded permission
  * - personal data, contact data, audio or verbatim transcripts in the repository
+ * - participant or interview content in the application layers (CR-47 scans
+ *   contents, not only filenames)
  * - commercial claims: availability, sale, distribution, pilot, price approval
  * - product/bundle readiness upgrades or a weakened governance invariant
  * - a review that does not exist or that issues a primary-research PASS
@@ -479,6 +484,72 @@ const QUOTE_CLAIM_RULES = [
   },
 ];
 
+/** Attribution subjects used by the narrative-fabrication check CR-62. */
+const NARRATIVE_ATTRIBUTION =
+  '(?:participants?|owners?|installers?|retailers?|charter operators?|operators?|managers?|customers?|respondents?|interviewees?|P-MC10-\\d{3})';
+const NARRATIVE_ATTRIBUTION_RE = new RegExp(`\\b${NARRATIVE_ATTRIBUTION}\\b`, 'i');
+const NARRATIVE_PARTICIPANT_ID_RE = /\bP-MC10-\d{3}\b/g;
+
+/** A quotation attributed to a participant cannot exist without a real record. */
+const NARRATIVE_QUOTE_RULES = [
+  {
+    id: 'blockquoted-attributed-quotation',
+    re: /^[ \t]*>[^\n]*["\u201c][^\n]*$/gm,
+    attributionInMatch: true,
+  },
+  {
+    id: 'attribution-before-quotation',
+    re: new RegExp(
+      `\\b${NARRATIVE_ATTRIBUTION}\\s+(?:said|stated|told|reported|claimed|explained|commented|confirmed)\\b[^.\\n]{0,20}["\u201c]`,
+      'i',
+    ),
+  },
+  {
+    id: 'quotation-attribution-dash',
+    re: new RegExp(`["\u201d]\\s*[\u2014\u2013-]\\s*${NARRATIVE_ATTRIBUTION}\\b`, 'i'),
+  },
+];
+
+/** Quantifier-less observational claims imply an interview that never happened. */
+const NARRATIVE_OBSERVATION_RE =
+  /\b(?:participants?|owners?|installers?|retailers?|charter operators?|operators?|managers?|customers?|respondents?|buyers?)\s+(?:also\s+|consistently\s+|repeatedly\s+|generally\s+|typically\s+|often\s+|frequently\s+)?(?:reported|said|stated|told\s+us|explained|commented|confirmed|mentioned|described|claimed)\b/gi;
+
+/** Honest contexts that make a narrative phrase non-assertive about field data. */
+const PREPARED_CONTEXT_RE =
+  /\b(?:interviewer|instrument|script|template|prepared|prompt|question|read aloud|read the|wording|guide|consent text|NOT_APPROVED|NOT_EXECUTED|SCREEN-01|CONSENT-01|GUIDE-01|PRICE-01|NOTE-01|SCHEMA-01|ANA-01)\b/i;
+const DESK_RESEARCH_RE =
+  /\b(?:MC-09|desk research|secondary research|public source|public evidence|public signal|existing desk|published evidence)\b/i;
+const PROHIBITION_CONTEXT_RE =
+  /\b(?:prohibit|forbidden|not permitted|never permitted|must not|may not|cannot|do not use|never use|not to be used|not allowed)\b/i;
+
+/** Content markers that must never appear in the application layers (CR-47). */
+const APP_LAYER_DIRS = ['src', 'public', 'deploy'];
+const APP_TEXT_EXTENSION = /\.(?:json|md|txt|csv|js|mjs|cjs|ts|html|yml|yaml|xml)$/i;
+const APP_PARTICIPANT_MARKERS = [
+  /"participantId"/,
+  /"participants"\s*:/,
+  /participantRecords/i,
+  /"interviewId"/,
+  /"interviewDate"/,
+  /"interviewRecords"/,
+  /"consentRecorded"/,
+  /"consentDate"/,
+  /"quotationPermission"/,
+  /"withdrawalDate"/,
+  /"acquisitionSource"/,
+  /"priceResponses?"/,
+  /"pricingResponses?"/,
+  /"participantEmail"/,
+  /"participantName"/,
+  /"contactEmail"/,
+  /"contactPhone"/,
+  /"berthNumber"/,
+  /"vesselRegistration"/,
+  /"interviewerId"/,
+  /#+\s*Participant records/i,
+  /#+\s*Interview records/i,
+];
+
 const TRANSLATION_CLAIM_RULES = [
   {
     id: 'translation-equivalence',
@@ -695,6 +766,69 @@ function buildRunner(root) {
       before.lastIndexOf('|'),
     );
     return window.slice(boundary + 1);
+  }
+
+  /** True when an index sits inside a double-quoted span (typographic marks included). */
+  function insideDoubleQuotes(text, index) {
+    const before = text.slice(0, index);
+    const marks = (before.match(/["\u201c\u201d]/g) || []).length;
+    return marks % 2 === 1;
+  }
+
+  /**
+   * A blockquoted line is attributed when it carries a participant ID, a
+   * dash/parenthetical attribution or an attribution verb next to a quotation.
+   */
+  function blockquoteAttribution(line) {
+    if (/\bP-MC10-\d{3}\b/.test(line)) return true;
+    if (
+      /[\u2014\u2013-]\s*(?:the\s+|a\s+|an\s+)?(?:participants?|owners?|installers?|retailers?|operators?|managers?|customers?|respondents?)\b/i.test(
+        line,
+      )
+    )
+      return true;
+    if (
+      /[([]\s*(?:the\s+|a\s+|an\s+)?(?:participants?|owners?|installers?|retailers?|operators?|managers?|customers?|respondents?)[^)\]]{0,30}[)\]]/i.test(
+        line,
+      )
+    )
+      return true;
+    return /\b(?:participants?|owners?|installers?|retailers?|operators?|managers?|customers?|respondents?)\s+(?:said|stated|reported|told\s+us|explained|commented|confirmed)\b/i.test(
+      line,
+    );
+  }
+
+  /** Sentence window around a match; folded lines do not split a sentence. */
+  function sentenceAround(text, index, length) {
+    const boundaries = ['. ', '.\n', '! ', '? ', '\n\n'];
+    let start = 0;
+    for (const boundary of boundaries) {
+      const at = text.lastIndexOf(boundary, index);
+      if (at !== -1 && at + boundary.length <= index) start = Math.max(start, at + boundary.length);
+    }
+    let end = text.length;
+    for (const boundary of boundaries) {
+      const at = text.indexOf(boundary, index + length);
+      if (at !== -1 && at + boundary.length < end) end = at + boundary.length;
+    }
+    return text.slice(start, Math.min(end, text.length));
+  }
+
+  /** A quotation is permitted only with a real completed interview and consent. */
+  function quotationCleared(ids, participants, interviews) {
+    if (ids.length === 0) return false;
+    return ids.every((id) => {
+      const participant = participants.get(id);
+      if (!participant || participant.withdrawalDate !== null) return false;
+      if (!participant.consent || participant.consent.quote !== true) return false;
+      return interviews.some(
+        (interview) =>
+          interview.participantId === id &&
+          interview.completionStatus === 'COMPLETED' &&
+          interview.analysisEligible === true &&
+          interview.quotationPermission === true,
+      );
+    });
   }
 
   function scanDocuments(rules, options = {}) {
@@ -1645,6 +1779,66 @@ function buildRunner(root) {
     ), 'findings schema must document the QUOTATION permission rule');
   });
 
+  check('CR-62', 'Narrative documents contain no fabricated quotation or observation', () => {
+    const participants = new Map(
+      participantList().map((participant) => [participant.participantId, participant]),
+    );
+    const interviews = interviewList();
+    const violations = [];
+    for (const doc of docFiles()) {
+      if (!exists(doc)) continue;
+      const text = read(doc);
+      // (a) a quotation attributed to a participant, a pseudonymous ID or an
+      // owner/installer/retailer/operator cannot exist without a real record.
+      for (const rule of NARRATIVE_QUOTE_RULES) {
+        const flags = rule.re.flags.includes('g') ? rule.re.flags : `${rule.re.flags}g`;
+        for (const match of text.matchAll(new RegExp(rule.re.source, flags))) {
+          if (insideDoubleQuotes(text, match.index)) continue;
+          if (rule.attributionInMatch && !blockquoteAttribution(match[0])) continue;
+          const sentence = rule.attributionInMatch
+            ? match[0]
+            : sentenceAround(text, match.index, match[0].length);
+          if (PREPARED_CONTEXT_RE.test(sentence) && !/P-MC10-\d{3}/.test(sentence)) continue;
+          if (PROHIBITION_CONTEXT_RE.test(sentence)) continue;
+          const ids = [...sentence.matchAll(new RegExp('\\bP-MC10-\\d{3}\\b', 'g'))].map(
+            (entry) => entry[0],
+          );
+          if (quotationCleared(ids, participants, interviews)) continue;
+          violations.push(`${doc}: ${rule.id} -> "${sentence.trim().slice(0, 120)}"`);
+        }
+      }
+      // (b) every pseudonymous participant reference must resolve to a valid
+      // interview record with recorded quotation permission.
+      for (const match of text.matchAll(new RegExp('\\bP-MC10-\\d{3}\\b', 'g'))) {
+        if (!quotationCleared([match[0]], participants, interviews)) {
+          violations.push(`${doc}: unresolvable participant reference ${match[0]}`);
+        }
+      }
+      // (c) quantifier-less observational claims imply an interview that never
+      // happened unless they are negated, desk research or prepared text.
+      for (const match of text.matchAll(new RegExp(NARRATIVE_OBSERVATION_RE.source, 'gi'))) {
+        if (insideDoubleQuotes(text, match.index)) continue;
+        const sentence = sentenceAround(text, match.index, match[0].length);
+        if (NEGATION_TOKENS.test(sentence)) continue;
+        if (DESK_RESEARCH_RE.test(sentence)) continue;
+        if (
+          PREPARED_CONTEXT_RE.test(sentence) &&
+          /\b(?:prepared|instrument|template|script|wording|question|prompt|interviewer)\b/i.test(
+            sentence,
+          )
+        )
+          continue;
+        if (PROHIBITION_CONTEXT_RE.test(sentence)) continue;
+        if (/\b(?:only as|as the|as a|exactly as|according to)\b/i.test(sentence)) continue;
+        violations.push(
+          `${doc}: quantifier-less observation -> "${sentence.trim().slice(0, 120)}"`,
+        );
+      }
+    }
+    require(violations.length ===
+      0, `narrative fabrication: ${violations.slice(0, 5).join(' | ')}`);
+  });
+
   check('CR-29', 'Coding state is honest: nothing is coded and kappa is not computed', () => {
     const coding = readJson(`${DATA}/coding.json`);
     require(coding.doubleCodingRatioTarget === 0.25, 'doubleCodingRatioTarget must be 0.25');
@@ -2139,12 +2333,19 @@ function buildRunner(root) {
   });
 
   check('CR-47', 'No participant data exists under src/, public/ or deploy/', () => {
-    const forbidden =
+    const filenameRule =
       /(?:participant|interview-record|consent-record|pricing-response|research-participant|transcript|audio-recording)/i;
     const offending = [];
-    for (const dir of ['src', 'public', 'deploy']) {
+    for (const dir of APP_LAYER_DIRS) {
       for (const file of walk(dir, () => true)) {
-        if (forbidden.test(file)) offending.push(file);
+        if (filenameRule.test(file)) {
+          offending.push(`${file} (filename)`);
+          continue;
+        }
+        if (!APP_TEXT_EXTENSION.test(file) || !exists(file)) continue;
+        const text = read(file);
+        const marker = APP_PARTICIPANT_MARKERS.find((rule) => rule.test(text));
+        if (marker) offending.push(`${file} (participant field content)`);
       }
     }
     require(offending.length ===
@@ -2465,6 +2666,7 @@ function buildRunner(root) {
       'CR-49',
       'CR-53',
       'CR-57',
+      'CR-62',
     ]) {
       require(doc.includes(family), `data contract must list check family ${family}`);
     }

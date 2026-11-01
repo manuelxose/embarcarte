@@ -35,7 +35,7 @@ precios indicativos, objeciones de instaladores/canal y posicionamiento comercia
 El hito no puede recibir `PASS` de investigación primaria porque las condiciones de aceptación
 exigen trabajo de campo real autorizado, participantes elegibles reales, consentimiento válido y
 registros genuinos. Ninguna de esas condiciones existe. El resultado honesto es **BLOQUEADO**, con
-la preparación entregada y auditada.
+la preparación entregada y sometida a revisión independiente (ver `review/MC-10-REVIEW.md`).
 
 **Por qué se detuvo el hito.** El encargo maestro de MC-10 exige una autorización externa separada,
 fechada y delimitada antes del primer contacto. Esa autorización no se emitió. El propio encargo
