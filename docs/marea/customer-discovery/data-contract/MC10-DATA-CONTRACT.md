@@ -198,6 +198,19 @@ as the participant stated it") are accepted and covered by acceptance tests in
 D24. With zero participants and zero interviews in the real tree, no new
 quotation or observation may be introduced without a resolvable record.
 
+**Lexical scope of CR-62 (accepted residual F-10).** CR-62 is a deterministic
+heuristic, not a semantic classifier. Its documented coverage is limited to the
+English role nouns listed above, the stated reporting verbs, straight double
+quotation marks, and the dash / reverse-order / parenthetical / pre-quotation
+attribution forms. Forms outside that lexicon — a role noun before an uncovered
+reporting verb, single-quote or guillemet quotations, or role nouns outside the
+English list — are not mechanically detected today. The real tree contains zero
+quotations of any form, so there is no live bypass; the scope must be extended
+before any Spanish- or Portuguese-language narrative reporting is committed. This
+limitation is recorded rather than hidden: the gate is broad enough to reject
+every fabricated form observed in independent audit, and a narrower claim would
+be false.
+
 ## 3. File-by-file schema reference
 
 ### `manifest.json`

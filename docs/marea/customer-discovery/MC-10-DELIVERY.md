@@ -4,15 +4,16 @@
 | --- | --- |
 | Milestone | MC-10 of 36 — primary customer discovery, buyer recruitment and commercial positioning validation |
 | Status | `BLOCKED — PRIMARY FIELDWORK NOT EXECUTED (OUTREACH AUTHORIZATION NOT GRANTED)` |
-| Wave 0 preparation | Complete, machine-verified, independently audited |
+| Wave 0 preparation | Complete, machine-verified; independent review `PASS` for the preparation scope only (`MC10-REVIEW-03`, round 3) |
+| Reviewed implementation commit | `f083c782428b82226d9f1a3d50e0fb2ceec7f2d2` |
 | Base | MC-09 HEAD `9d206cc251ea63c7edd1cda0ca7a2d028ae7cca3` |
 | Branch | `feature/marea-mc10-primary-customer-discovery` |
-| PR | draft, stacked on `feature/marea-mc09-market-competitive-intelligence` (see §10) |
+| PR | draft [#16](https://github.com/manuelxose/embarcarte/pull/16), stacked on `feature/marea-mc09-market-competitive-intelligence`, not merged |
 | Date | 2026-11-01 |
 
 This delivery record is written to be falsifiable. It states what exists, what does not exist, which
-commands were actually run and what the independent reviewer verified. The milestone is **BLOCKED**,
-not PASS: no participant, interview, quote, observation or price response exists.
+commands were actually run, and what the independent reviewer verified. The milestone is **BLOCKED**,
+not PASS: no participant, interview, quotation, observation or price response exists.
 
 ## 1. Verdict
 
@@ -25,10 +26,11 @@ not PASS: no participant, interview, quote, observation or price response exists
 | Interviews completed | 0 |
 | Valid analytical cases | 0 |
 | Price responses | 0 |
-| Experiments executed | 0 of 10 (all `BLOCKED`) |
+| Experiments executed | 0 of 10 (all `NOT_EXECUTED` / `BLOCKED`) |
 | Products tested | 0 of 9 (all `NOT_TESTED`) |
 | Bundles tested | 0 of 6 (all `NOT_TESTED`) |
-| Wave 0 preparation | Complete |
+| Wave 0 preparation | Complete (7 of 17 pre-fieldwork items remain incomplete: 6 `BLOCKED`, 5 `NOT_APPROVED`, 1 `PARTIAL`, 1 `NOT_PRODUCED` → 13 incomplete) |
+| Independent review | `PASS` for the Wave-0 preparation scope only; fieldwork `BLOCKED`; no primary-research PASS issued |
 | Commercial restrictions changed | None |
 | Price approved / product orderable | None / zero |
 
@@ -68,23 +70,25 @@ FIELDWORK_STATUS        = BLOCKED
 no date, no permitted participant categories, no permitted geography, no permitted contact method, zero
 volume, no spending, no incentives, no fieldwork lead. `data/fieldwork-authorization.json` is the
 machine-readable record, including the inference guard that the Master Prompt, the PR or a task
-assignment do not constitute authorization.
+assignment do not constitute authorization. The pre-fieldwork checklist shows 13 of 17 items
+incomplete (6 `BLOCKED`, 5 `NOT_APPROVED`, 1 `PARTIAL`, 1 `NOT_PRODUCED`).
 
 No candidate was identified, no invitation was sent, no club/marina/association/installer/retailer was
-contacted. No external contact occurred.
+contacted. No external contact occurred and the runtime exposes no email, telephony or messaging tool
+(the repository's `nodemailer`/SMTP code is commerce notification and is not an approved research channel).
 
 ## 4. Team execution
 
 | Member | Role | Deliverables |
 | --- | --- | --- |
-| `lead` | Research programme director; authorization control; integration; Git; final report | D1, D2, D16–D21, D26–D28, data contract additions, registry/decision log, gates |
+| `lead` | Research programme director; authorization control; integration; Git; final report | D1, D2, D16–D21, D26–D28, Lead-owned data records, registry/decision log, gates |
 | `agent-a-methodologist` | Research methodologist | D3, D4, D5, D11, `instruments.json` |
 | `agent-b-recruitment` | Recruitment operations | D6, D7, outreach templates |
 | `agent-c-owners` | Owner research specialist | D8, D15 |
 | `agent-d-professionals` | Professional channel research | D9, D10 |
 | `agent-e-pricing` | Pricing and behavioural economics | D12, D13, D14, `pricing-ladders.json` |
 | `agent-f-data` | Research data steward / integrity engineer | D22, D23, D24, machine-readable data layer |
-| `agent-g-auditor` | Independent research auditor | D25 (independent of all authors) |
+| `agent-g-auditor` | Independent research auditor | D25 (independent of all authors; 3 rounds) |
 
 Write scopes were exclusive per member; no two agents wrote the same file. The Lead re-inspected
 `git status` and the full diff before committing. All members shared one checkout (no worktree
@@ -124,8 +128,8 @@ isolation), so integration was sequential.
 | D28 | This delivery record | `MC-10-DELIVERY.md` |
 
 Supporting records: `methodology/instruments.json` (instrument freeze), `recruitment/MC10-OUTREACH-TEMPLATES.md`
-(16 unapproved ES/EN templates), `data/pricing-ladders.json` (frozen pre-registered ladders), `data/*.json`
-(17-file machine-readable layer).
+(16 unapproved ES/EN templates), `data/pricing-ladders.json` (frozen pre-registered ladders), and the
+machine-readable data layer: 18 JSON files (`manifest.json` + 17 governed records) plus `data/README.md`.
 
 ## 6. Research data and privacy
 
@@ -134,31 +138,46 @@ Supporting records: `methodology/instruments.json` (instrument freeze), `recruit
 - Repository contains aggregate counts only: `0` everywhere. No participant identity, contact detail,
   email, phone, transcript or audio exists in the repository.
 - The validator scans for PII patterns, forbidden participant fields, and participant data in
-  `src/`, `public/` and `deploy/`.
+  `src/`, `public/` and `deploy/` (content-level, not filename-only).
 - Instruments are frozen at version 1.0.0 with the real SHA-256
   `cbe7f9fe4634c44a7344a4b9817827368a284efdcfb4ec8e80e11252ba1a120d` of the MC-09 discovery plan;
   Portuguese instruments are `NOT_PRODUCED`.
 - Experiment thresholds are frozen by SHA-256 of the canonical MC-09 record; the validator recomputes
   them, so a silent post-hoc change fails the gate.
+- CR-62 rejects attributed narrative quotations and unresolvable `P-MC10-###` references unless a
+  completed, analysis-eligible interview with recorded quotation permission exists.
 
 ## 7. Commands and results
 
-Executed on the working tree at the implementation commit, Windows 11, Node v24.18.0. The final
-command/result table for the reviewed commit is repeated in §9 after the independent re-run.
+Executed on Windows 11, Node v24.18.0, at the reviewed commit `f083c78` (Lead + independent reviewer)
+and re-run on this delivery tree where affected.
 
 | Command | Result |
 | --- | --- |
-| `node scripts/check-marea-customer-research.mjs` | pending independent re-run at the reviewed commit |
-| `node --test scripts/check-marea-customer-research.test.mjs` | pending independent re-run at the reviewed commit |
+| `node scripts/check-marea-customer-research.mjs` | PASS — **62/62** checks |
+| `node --test scripts/check-marea-customer-research.test.mjs` | PASS — **96/96** tests |
 | `npm run test:market` | PASS — 40/40 |
+| `npm run test:market:unit` | PASS — 43/43 |
 | `npm run test:products` | PASS — 52/52 |
+| `npm run test:products:unit` | PASS — 106/106 |
 | `npm run test:bundles` | PASS — 35/35 |
+| `npm run test:bundles:unit` | PASS — 60/60 |
 | `npm run test:brand` | PASS — 21/21 |
+| `npm run test:brand:unit` | PASS — 13/13 |
 | `npm run build` | PASS (Angular SSR production build) |
+| `npm run test:i18n` | PASS |
+| `npm run test:commerce` | PASS |
+| `npm run test:seo` | PASS — 101 sitemap URLs |
+| `npm run test:backup` | PASS |
+| `npm run test:e2e` | PASS — 15/15 |
+| `npm run format:check` | PASS |
+| `npm audit --omit=dev --audit-level=high` | PASS — 0 vulnerabilities |
 | `git diff --check` | PASS — no whitespace errors |
 
-All other gates are re-run by the independent reviewer and recorded in `review/MC-10-REVIEW.md`; this
-table is completed with the reviewer's reproduced outputs and the Lead's final gate run.
+The independent reviewer re-ran the validator, the 96-test suite, market, market:unit, products,
+products:unit, bundles, bundles:unit, brand, brand:unit, i18n, commerce, SEO, format and
+`git diff --check` at `f083c78`, and independently recomputed all 12 freeze hashes (instrument source,
+ten thresholds, ladder self-freeze). `build` and `test:e2e` were Lead-owned and are recorded above.
 
 ## 8. Governance preserved
 
@@ -184,27 +203,47 @@ No canonical product/bundle contract, public page, `src/`, `deploy/` or indexed 
 
 ## 9. Independent review
 
-`review/MC-10-REVIEW.md` — verdict recorded at the reviewed commit, plus machine-readable findings in
-`review/review-findings.json`. The reviewer is independent of every MC-10 author, inspected the real
-diff, re-ran the gates, recomputed the threshold hashes and adversarially probed the validator. The
-review explicitly does not issue a primary-research PASS because no primary research was executed.
+`review/MC-10-REVIEW.md` — **`PASS` for the Wave-0 preparation scope only**, ID `MC10-REVIEW-03`
+(round 3), reviewed commit `f083c78`, base `9d206cc`. Fieldwork remains `BLOCKED` and the review
+explicitly refuses a primary-research PASS. Machine-readable findings: `review/review-findings.json`
+(10 findings).
 
-Final reviewer verdict and reproduced command output: see `review/MC-10-REVIEW.md`. Findings and their
-closure are listed there and in `review/review-findings.json`.
+Correction cycle:
+
+- Round 1 (`cdfe678`) found F-01 BLOCKING: the integrity validator accepted a fabricated narrative
+  quotation and a quantifier-less fabricated observation. It also found F-02 (CR-47 filename-only),
+  F-03 (planning-defect count drift) and informational residuals.
+- Round 2 (`a7645f6`) added CR-62 and content-level CR-47; F-01 residual attribution sub-classes
+  remained open. F-02, F-03, F-06 closed.
+- Round 3 (`f083c78`) closed the residual: optional articles, reverse-order and parenthetical
+  attribution rules, eight new negative tests (96 total). The auditor re-ran every probe and moved
+  F-01 to CLOSED.
+
+Final findings status: F-01/F-02/F-03/F-06/F-07/F-08/F-09 CLOSED. F-04 (provisional delivery fields)
+and F-05 (registry row) are finalized by this delivery commit. F-10 (CR-62 lexical scope) is accepted
+as an OPEN INFORMATIONAL residual: the check is a documented heuristic limited to its listed English
+role nouns, reporting verbs and straight-quotation forms; the tree contains zero quotations of any
+form and the scope must be extended before any Spanish/Portuguese narrative reporting. It is recorded
+in `data-contract/MC10-DATA-CONTRACT.md` §2.8 and is not hidden.
 
 ## 10. Git and remote evidence
 
-- Branch: `feature/marea-mc10-primary-customer-discovery`
+- Branch: `feature/marea-mc10-primary-customer-discovery`, pushed to `origin`
 - Base: MC-09 HEAD `9d206cc251ea63c7edd1cda0ca7a2d028ae7cca3`
-- Implementation commit and review-correction commit: recorded in the final delivery update
-- Draft PR: stacked on `feature/marea-mc09-market-competitive-intelligence`, not merged
+- Implementation commit: `cdfe67895fd138e1f1c87dffc90ee3c620aed277`
+- Audit-correction commits: `a7645f67fd2bb2147ce370d82db41fbd23e630cf` (F-01/F-02), `f083c782428b82226d9f1a3d50e0fb2ceec7f2d2` (F-01 residual) — reviewed commit
+- Delivery-update commit: the branch head recorded on PR #16 (this commit adds the independent review
+  record, the registry closure, the delivery finalisation and the F-10 documentation; no script or
+  product change)
+- Draft PR: [#16](https://github.com/manuelxose/embarcarte/pull/16), stacked on
+  `feature/marea-mc09-market-competitive-intelligence`, not merged
 - No force-push, no merge, no tag, no deployment, no publication, no sale, no outreach, no spend
 
 ## 11. Handoff to MC-11
 
 `MC10-MC11-HANDOFF.md` transfers **no customer evidence**. It lists the customer questions that remain
 unanswered (CQ-01…CQ-10), the hardware questions that are open regardless of customer input
-(HW-01…HW-10), the supplier questions (SUP-01…SUP-08) and the conformity/legal questions (CON-01…CON-10).
+(HW-01…HW-10), supplier questions (SUP-01…SUP-08) and conformity/legal questions (CON-01…CON-10).
 MC-11 requires its own Master Prompt and must carry the blocked-fieldwork dependency explicitly.
 
 ## 12. Honesty statement
@@ -212,5 +251,15 @@ MC-11 requires its own Master Prompt and must carry the blocked-fieldwork depend
 No participant was invented. No interview, quotation, observation, purchase record, objection or price
 response was fabricated. No simulated dialogue was labelled as evidence. The ten experiments are
 `NOT_EXECUTED`; the nine families and six bundles are `NOT_TESTED`; the milestone is `BLOCKED`. The
-preparation package is real and machine-verified; the customer research is not, because it was not
-authorized.
+preparation package is real, machine-verified and independently reviewed **for the preparation scope
+only**; the customer research is not, because it was not authorized. MC-10 answers no commercial
+question and clears nothing.
+
+## 13. Residual planning defects to resolve before any fielding
+
+Recorded in `data/research-status.json` → `planningInconsistencies` (PI-01…PI-05) and in
+`MC10-DECISION-REGISTER.md` OD-09…OD-12: quota arithmetic 37–57 vs 40–80; three conflicting segment
+target readings; the n ≥ 8 pricing minimum unreachable for four segments; instrument amendments
+IV-01…IV-09; and the owner-side monitoring-incident question gap. These defects existed in the MC-09
+preparation and are preserved, not silently repaired. A dated plan/instrument amendment is required
+before a real fieldwork wave.

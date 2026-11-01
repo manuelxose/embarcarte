@@ -309,7 +309,7 @@ proveedor, conformidad o precio como validado por clientes.
 | Codificación cualitativa | No ejecutada (0 unidades; κ no calculado) |
 | Veredictos de experimentos | 10 de 10 `NOT_EXECUTED` / `BLOCKED` |
 | Validadores de integridad | Script + suite negativa; ejecutados en la rama |
-| Revisión independiente | `review/MC-10-REVIEW.md` — auditor distinto de los autores |
+| Revisión independiente | `review/MC-10-REVIEW.md` (`MC10-REVIEW-03`) — `PASS` **solo del ámbito de preparación Wave 0**; trabajo de campo `BLOQUEADO`; auditor distinto de todos los autores; commit revisado `f083c78` |
 | Bloqueos restantes | Autorización, controlador, revisión legal, almacenamiento seguro, panel humano, instrumentos PT |
 | Rama y PR | `feature/marea-mc10-primary-customer-discovery`; PR borrador apilado sobre MC-09 |
 | Publicación / despliegue / venta | No realizados |
