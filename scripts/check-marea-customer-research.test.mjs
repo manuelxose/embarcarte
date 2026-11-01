@@ -1120,6 +1120,86 @@ test('CR-62 rejects a fabricated quotation hidden in a fenced code block', () =>
   });
 });
 
+test('CR-62 rejects an inline hyphen quotation attributed to an indefinite article role', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n"The alert is useless." - an owner\n`,
+    );
+  });
+});
+
+test('CR-62 rejects an inline em-dash quotation attributed to a definite article role', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n"The alert is useless." — the owner\n`,
+    );
+  });
+});
+
+test('CR-62 rejects an inline hyphen quotation attributed to a retailer', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n"I would pay for that." - a retailer\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a reverse-order quotation attribution without a comma', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n"I would pay for that." said an owner\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a reverse-order quotation attribution with a comma', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n"I would pay for that.", said an owner\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a parenthetical quotation attribution', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n"I would pay for that." (an owner)\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a reverse-order quotation attributed to a pseudonymous ID', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n"I would pay for that." said P-MC10-001\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a parenthetical quotation attributed to a pseudonymous ID', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n"I would pay for that." (P-MC10-001)\n`,
+    );
+  });
+});
+
 test('CR-49 rejects a milestone that reports PASS', () => {
   expectCheckFailure('CR-49', (root) => {
     editJson(root, `${DATA}/research-status.json`, (status) => {

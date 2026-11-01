@@ -169,10 +169,20 @@ that does not exist. The validator rejects (CR-62):
   an operator, a manager, a customer or a respondent — including a
   `P-MC10-###` reference — unless the referenced interview record exists as
   `COMPLETED`, analysis-eligible, with `quotationPermission: true` and the
-  participant's recorded `QUOTATION` consent. This covers blockquoted
-  quotations (a quote line attributed with a dash, a parenthetical role or a
-  pseudonymous ID), attribution-verb forms and quotation/dash attribution
-  forms.
+  participant's recorded `QUOTATION` consent. The covered inline forms are:
+  - blockquoted quotations attributed with a dash, a parenthetical role or a
+    pseudonymous ID;
+  - attribution before the quotation, with a definite or indefinite article
+    before the role noun;
+  - a closing quotation followed by a hyphen or em dash, an optional
+    definite/indefinite article and a role noun;
+  - reverse order — a closing quotation, an optional comma, a reporting verb
+    (`said|stated|told|reported|explained|commented|confirmed`), an optional
+    article and a role noun;
+  - a closing quotation followed by a parenthetical role, up to about 30
+    characters before the closing parenthesis;
+  - the same reverse-order and parenthetical forms attributed to a
+    `P-MC10-###` ID.
 - every `P-MC10-###` reference in any document must resolve to a valid
   interview record with recorded quotation permission; a dangling pseudonymous
   reference is fabricated evidence.

@@ -21,10 +21,12 @@ import { fileURLToPath } from 'node:url';
  * - a finding without a traceable valid interview record
  * - prices without currency, VAT treatment, ladder provenance or a known point
  * - a rate with a zero denominator, or a qualitative sample sold as a census
- * - quotations without recorded permission, including blockquoted narrative
- *   quotations and quantifier-less observation claims that would imply an
- *   interview which never happened (CR-62); every P-MC10-### reference in a
- *   document must resolve to a valid interview record with recorded permission
+ * - quotations without recorded permission in any attribution form (blockquote,
+ *   dash with or without an article, reverse-order reporting verb with or
+ *   without a comma, parenthetical role) and quantifier-less observation claims
+ *   that would imply an interview which never happened (CR-62); every
+ *   P-MC10-### reference in a document must resolve to a valid interview record
+ *   with recorded permission
  * - personal data, contact data, audio or verbatim transcripts in the repository
  * - participant or interview content in the application layers (CR-47 scans
  *   contents, not only filenames)
@@ -489,6 +491,10 @@ const NARRATIVE_ATTRIBUTION =
   '(?:participants?|owners?|installers?|retailers?|charter operators?|operators?|managers?|customers?|respondents?|interviewees?|P-MC10-\\d{3})';
 const NARRATIVE_ATTRIBUTION_RE = new RegExp(`\\b${NARRATIVE_ATTRIBUTION}\\b`, 'i');
 const NARRATIVE_PARTICIPANT_ID_RE = /\bP-MC10-\d{3}\b/g;
+const NARRATIVE_REPORTING_VERB =
+  '(?:said|stated|told|reported|claimed|explained|commented|confirmed)';
+/** `the owner`, `a retailer`, `an installer` or a bare role noun. */
+const NARRATIVE_ARTICLE = '(?:(?:the|a|an)\\s+)?';
 
 /** A quotation attributed to a participant cannot exist without a real record. */
 const NARRATIVE_QUOTE_RULES = [
@@ -500,13 +506,34 @@ const NARRATIVE_QUOTE_RULES = [
   {
     id: 'attribution-before-quotation',
     re: new RegExp(
-      `\\b${NARRATIVE_ATTRIBUTION}\\s+(?:said|stated|told|reported|claimed|explained|commented|confirmed)\\b[^.\\n]{0,20}["\u201c]`,
+      `\\b${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}\\s+${NARRATIVE_REPORTING_VERB}\\b[^.\\n]{0,20}["\u201c]`,
       'i',
     ),
+    insideQuotesExempt: true,
   },
   {
     id: 'quotation-attribution-dash',
-    re: new RegExp(`["\u201d]\\s*[\u2014\u2013-]\\s*${NARRATIVE_ATTRIBUTION}\\b`, 'i'),
+    re: new RegExp(
+      `["\u201d]\\s*[\u2014\u2013-]\\s*${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}\\b`,
+      'i',
+    ),
+    insideQuotesExempt: false,
+  },
+  {
+    id: 'reverse-order-quotation-attribution',
+    re: new RegExp(
+      `["\u201d]\\s*,?\\s*${NARRATIVE_REPORTING_VERB}\\s+${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}\\b`,
+      'i',
+    ),
+    insideQuotesExempt: false,
+  },
+  {
+    id: 'parenthetical-quotation-attribution',
+    re: new RegExp(
+      `["\u201d]\\s*\\(\\s*${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}\\b[^)\\n]{0,30}\\)`,
+      'i',
+    ),
+    insideQuotesExempt: false,
   },
 ];
 
@@ -1793,7 +1820,9 @@ function buildRunner(root) {
       for (const rule of NARRATIVE_QUOTE_RULES) {
         const flags = rule.re.flags.includes('g') ? rule.re.flags : `${rule.re.flags}g`;
         for (const match of text.matchAll(new RegExp(rule.re.source, flags))) {
-          if (insideDoubleQuotes(text, match.index)) continue;
+          // Rules anchored on a closing quotation sit inside the quoted span, so
+          // they must not be skipped as if they were a quoted meta-example.
+          if (rule.insideQuotesExempt !== false && insideDoubleQuotes(text, match.index)) continue;
           if (rule.attributionInMatch && !blockquoteAttribution(match[0])) continue;
           const sentence = rule.attributionInMatch
             ? match[0]
