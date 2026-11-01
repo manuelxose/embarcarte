@@ -1,0 +1,81 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "schemaVersion": "MC10-COMPREHENSION-1.0.0",
+  "experimentId": "EXP-MC10-06",
+  "concepts": [
+    {
+      "conceptId": "NAV",
+      "participantsTested": 0,
+      "correctTwoExclusions": 0,
+      "criticalMisconceptions": 0,
+      "denominator": 0,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "conceptId": "WATCH",
+      "participantsTested": 0,
+      "correctTwoExclusions": 0,
+      "criticalMisconceptions": 0,
+      "denominator": 0,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "conceptId": "PROTECT",
+      "participantsTested": 0,
+      "correctTwoExclusions": 0,
+      "criticalMisconceptions": 0,
+      "denominator": 0,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "conceptId": "HUB",
+      "participantsTested": 0,
+      "correctTwoExclusions": 0,
+      "criticalMisconceptions": 0,
+      "denominator": 0,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "conceptId": "START",
+      "participantsTested": 0,
+      "correctTwoExclusions": 0,
+      "criticalMisconceptions": 0,
+      "denominator": 0,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "conceptId": "INTEGRATED_SYSTEM",
+      "participantsTested": 0,
+      "correctTwoExclusions": 0,
+      "criticalMisconceptions": 0,
+      "denominator": 0,
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "conceptId": "FLEET",
+      "participantsTested": 0,
+      "correctTwoExclusions": 0,
+      "criticalMisconceptions": 0,
+      "denominator": 0,
+      "status": "NOT_EXECUTED"
+    }
+  ],
+  "aggregate": {
+    "participantsTested": 0,
+    "correctTwoExclusions": 0,
+    "criticalMisconceptions": 0,
+    "denominator": 0,
+    "status": "NOT_EXECUTED"
+  },
+  "thresholds": {
+    "pass": "At least 70% of participants correctly restate at least two exclusions per concept AND at most 20% hold a critical misconception.",
+    "fail": "More than 40% hold a critical misconception on any concept, which blocks any public copy for that concept.",
+    "between": "INCONCLUSIVE, requiring copy revision and retest with a new sample.",
+    "note": "Thresholds are quoted from the frozen MC-09 registry (EXP-MC10-06). They describe a target, never an observed result."
+  },
+  "note": "No participant has seen any concept: participantsTested and denominator are 0 for every concept and no comprehension rate exists. A zero denominator makes no percentage reportable."
+}

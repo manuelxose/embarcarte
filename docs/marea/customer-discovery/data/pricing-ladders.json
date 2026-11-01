@@ -1,0 +1,284 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "ladderVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-e-pricing",
+  "frozenAt": "2026-11-01",
+  "status": "PRE_REGISTERED_HYPOTHESIS",
+  "approvedPrice": false,
+  "administered": false,
+  "responses": [],
+  "scopeNote": "Frozen pre-registered price ladders for the MC-10 pricing modules EXP-MC10-04 (Gabor-Granger) and EXP-MC10-05 (Van Westendorp). No ladder point is an offer, an approved price, a market price for MAREA, a cost, a revenue or elasticity estimate, or a measurement of willingness to pay. Every amount is a research hypothesis derived from cited MC-09 price observations and unapproved MC-09 family price hypotheses, frozen on 2026-11-01 before any fieldwork. MC-10 fieldwork is BLOCKED (AUTH-MC10-001 NOT_GRANTED): zero responses exist and no price is approved. See pricing/MC10-GABOR-GRANGER.md and pricing/MC10-VAN-WESTENDORP.md.",
+  "freeze": {
+    "algorithm": "SHA-256",
+    "hashedPayload": "constructs",
+    "canonicalization": "UTF-8 bytes of JSON.stringify(constructs) after parsing this document with a standard JSON parser: compact form, no whitespace, parser-preserved property order. The freeze block itself is excluded from the hash.",
+    "constructsSha256": "bfa09ebc904a66ba65961864d5e026638e3756a41a0611f0c3fdf1e83bb5be8c",
+    "recordedAt": "2026-11-01",
+    "verificationCommand": "node -e \"const fs=require('fs'),c=require('crypto');const o=JSON.parse(fs.readFileSync(process.argv[1],'utf8'));process.stdout.write(c.createHash('sha256').update(JSON.stringify(o.constructs),'utf8').digest('hex'))\" docs/marea/customer-discovery/data/pricing-ladders.json",
+    "rule": "Any change to constructs, ladder amounts, questions, scale, provenance or limitations requires a dated amendment and a new ladderVersion; historical responses remain evaluated under the version in force when collected (D-031). No ladder value may be administered or presented as a price before this freeze is recorded and independently verified."
+  },
+  "governanceInvariants": {
+    "priceResponsesRecorded": 0,
+    "wtpStatedPreferenceObserved": false,
+    "wtpCommerciallyValidated": false,
+    "approvedPrices": 0,
+    "profitabilityEstablished": false,
+    "fieldworkExecuted": false,
+    "outreachAuthorization": "NOT_GRANTED",
+    "authorizationRecord": "AUTH-MC10-001",
+    "milestoneStatus": "BLOCKED"
+  },
+  "constructs": [
+    {
+      "constructId": "CONSTRUCT-01",
+      "title": "Navigation and onboard-data reference configuration",
+      "descriptionOfConcept": "A described research concept for one vessel: navigation software that shows position, heading, course, speed and depth, presents a licensed chart entitlement and displays onboard data from the boat's existing instruments on a screen the owner already owns. The tested unit is one year of access for one vessel on one account. The concept is described neutrally and excludes hardware, displays, installation, cellular connectivity, third-party chart or data rights that MAREA does not hold, guaranteed alerting and any claim of certification or availability. It is a verbal research description of a configuration that does not exist, is not for sale and cannot be reserved.",
+      "pricingMode": "ANNUAL_SUBSCRIPTION",
+      "currency": "EUR",
+      "vatTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS: every ladder amount is framed as a hypothetical VAT-inclusive Spanish consumer retail price. This framing is a pre-registered research hypothesis consistent with the MC-09 VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS designation used for PH-01, PH-02, PH-04 and familyPriceHypotheses.NAV in data/governance-status.json. It is not a tax determination, not tax advice and not an approved price; actual VAT treatment must be confirmed by a qualified adviser before any commercial use.",
+      "ladder": [
+        {
+          "pointIndex": 1,
+          "amount": 49,
+          "qualifier": "OBSERVED_ANCHOR: Orca Plus annual subscription, EUR 49/year (PRC-CMP-001; vatTreatment NOT_STATED_ON_PAGE)"
+        },
+        {
+          "pointIndex": 2,
+          "amount": 99,
+          "qualifier": "FAMILY_HYPOTHESIS_ANCHOR: NAV-ESSENTIAL annual subscription hypothesis, EUR 99/year (governance-status.json familyPriceHypotheses.NAV; HYPOTHESIS_UNAPPROVED)"
+        },
+        {
+          "pointIndex": 3,
+          "amount": 149,
+          "qualifier": "OBSERVED_ANCHOR + FAMILY_HYPOTHESIS_ANCHOR: Orca Smart Navigation, EUR 149/year (PRC-CMP-002) and NAV-PRO hypothesis, EUR 149/year (governance-status.json)"
+        },
+        {
+          "pointIndex": 4,
+          "amount": 199,
+          "qualifier": "BRACKET_PROBE: arithmetic extension of the uniform EUR 50 step above the observed and hypothesised band; not an observation"
+        },
+        {
+          "pointIndex": 5,
+          "amount": 249,
+          "qualifier": "UPPER_BRACKET_PROBE: arithmetic extension of the uniform EUR 50 step above the observed and hypothesised band; not an observation"
+        }
+      ],
+      "vanWestendorpQuestions": [
+        {
+          "questionId": "VW-TOO-CHEAP",
+          "wording": "At what price would this concept seem so cheap that you would doubt its quality?"
+        },
+        {
+          "questionId": "VW-BARGAIN",
+          "wording": "At what price would this concept seem a bargain, a good buy?"
+        },
+        {
+          "questionId": "VW-EXPENSIVE",
+          "wording": "At what price would this concept start to seem expensive, though you might still consider it?"
+        },
+        {
+          "questionId": "VW-TOO-EXPENSIVE",
+          "wording": "At what price would this concept seem so expensive that you would not buy it?"
+        }
+      ],
+      "buyResponseScale": [
+        {
+          "code": "DEFINITELY_WOULD_BUY",
+          "label": "definitely would buy"
+        },
+        {
+          "code": "PROBABLY_WOULD_BUY",
+          "label": "probably would"
+        },
+        {
+          "code": "MIGHT_BUY",
+          "label": "might"
+        },
+        {
+          "code": "PROBABLY_WOULD_NOT_BUY",
+          "label": "probably would not"
+        },
+        {
+          "code": "DEFINITELY_WOULD_NOT_BUY",
+          "label": "definitely would not"
+        }
+      ],
+      "provenance": [
+        {
+          "derivationNote": "The ladder floor is the Orca Plus annual subscription observed at EUR 49 per year (PRC-CMP-001) and the third point is the Orca Smart Navigation annual subscription observed at EUR 149 per year (PRC-CMP-002). Both are EUR subscription rates displayed on the vendor help page with vatTreatment NOT_STATED_ON_PAGE. No tax basis is inferred and no currency conversion is performed. These two observed amounts bound the navigation-subscription band used for this ladder.",
+          "mc09SourcePath": "docs/marea/market-validation/data/price-observations.json",
+          "priceIds": [
+            "PRC-CMP-001",
+            "PRC-CMP-002"
+          ],
+          "rationale": "Uses only real MC-09 observations to place the bottom and top of the observed navigation-subscription band. Neither is a MAREA price and neither measures willingness to pay."
+        },
+        {
+          "derivationNote": "EUR 99 (NAV-ESSENTIAL) and EUR 149 (NAV-PRO) are the MC-09 annual-subscription family price hypotheses for NAV. Both carry status HYPOTHESIS_UNAPPROVED and vatBasis VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS. EUR 99 supplies the second ladder point; EUR 149 coincides with PRC-CMP-002 and is not counted twice as evidence.",
+          "mc09SourcePath": "docs/marea/market-validation/data/governance-status.json",
+          "mc09RecordIds": [
+            "familyPriceHypotheses.NAV"
+          ],
+          "rationale": "Centres the ladder on the programme's own unapproved hypothesis so the tested range covers the range actually under internal discussion."
+        },
+        {
+          "derivationNote": "Points 4 and 5 are derived by arithmetic extension of the uniform EUR 50 step anchored on 49 (PRC-CMP-001) and 149 (PRC-CMP-002): 49, 99, 149, 199, 249. They are bracket probes, not observations, not family hypotheses and not market facts; they exist to test whether stated intent collapses above the observed and hypothesised band.",
+          "mc09SourcePath": "docs/marea/market-validation/data/price-observations.json",
+          "priceIds": [
+            "PRC-CMP-001",
+            "PRC-CMP-002"
+          ],
+          "rationale": "A ladder without an above-band probe cannot distinguish gradual decline from a ceiling; the probes are explicitly marked as not observed."
+        },
+        {
+          "derivationNote": "WTP-INS-01 fixes the instrument design rule: five to seven price points per configuration, derived from observed category prices and frozen before fieldwork, with the exact points never read out as 'the MAREA price'.",
+          "mc09SourcePath": "docs/marea/market-validation/economics/MC09-PRICING-AND-WTP.md",
+          "mc09RecordIds": [
+            "WTP-INS-01"
+          ],
+          "rationale": "The ladder structure follows the registered MC-09 instrument design; only the amounts are MC-10 pre-registration choices."
+        }
+      ],
+      "limitations": [
+        "PRC-CMP-001 and PRC-CMP-002 are competitor advertised prices in EUR with vatTreatment NOT_STATED_ON_PAGE. They record what two rival products are displayed at, not what any buyer would pay MAREA, and they are not a normalised comparison.",
+        "The VAT-inclusive framing is a pre-registered hypothesis consistent with the MC-09 VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS designation. It is not a tax determination, not tax advice and must be confirmed by a qualified adviser before any commercial use.",
+        "The licensed chart and data element depends on third-party rights that are not granted (governance-status.json chartRightsGranted = false, dataProviderRightsGranted = false). That element cannot be offered, costed or guaranteed, so part of the tested construct describes a function whose rights are unresolved.",
+        "The upper bracket points (EUR 199 and EUR 249) extend beyond the MC-09 WTP-INS-01 guidance of roughly 0.6x to 1.5x the reference hypothesis; relative to the EUR 149 NAV-PRO hypothesis, EUR 199 is 1.34x and EUR 249 is 1.67x. They are deliberate rejection probes and must never be read as a demonstrated ceiling or as a price.",
+        "No production cost, supplier quotation, bill of materials, installation cost or chart-licence cost exists, so no ladder point can be tested against a cost floor. Profitability is NOT_ESTABLISHED.",
+        "The construct is a verbal research description of a configuration that does not exist and is not available, certified or for sale. Comprehension of its exclusions is a separate precondition (EXP-MC10-06) that has not been met, and a positive price response cannot substitute for it."
+      ]
+    },
+    {
+      "constructId": "CONSTRUCT-02",
+      "title": "Monitoring configuration: hardware plus subscription",
+      "descriptionOfConcept": "A described research concept for one unattended vessel: a monitoring device installed on board that reports bilge, battery and shore-power conditions to the owner through an external service, plus a recurring service entitlement for alerts, stored history and connectivity-dependent notifications. The tested unit for the ladder is the first-year total a participant would associate with the concept: a one-off hardware amount plus twelve months of the external service. The ladder does not freeze, approve or publish either component separately. The concept is described neutrally and excludes installation labour, sensors beyond the described set, guaranteed alert delivery, cellular-coverage commitments, remote helm control and third-party marina integrations. It is a verbal research description of a configuration that does not exist, is not for sale and cannot be reserved.",
+      "pricingMode": "ONE_OFF_PLUS_SUBSCRIPTION",
+      "currency": "EUR",
+      "vatTreatment": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS: every ladder amount is framed as a hypothetical VAT-inclusive Spanish consumer retail price for a first-year total. This framing is a pre-registered research hypothesis consistent with the MC-09 VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS designation used for PH-04 in data/governance-status.json. The MC-09 WATCH family hypothesis records vatBasis OPEN, so the VAT-inclusive framing of this ladder is itself a hypothesis awaiting confirmation. It is not a tax determination, not tax advice and not an approved price.",
+      "ladder": [
+        {
+          "pointIndex": 1,
+          "amount": 299,
+          "qualifier": "HARDWARE_HYPOTHESIS_FLOOR: WATCH-CORE one-off hardware hypothesis, EUR 299 (governance-status.json familyPriceHypotheses.WATCH); first-year total assumes no separate service fee"
+        },
+        {
+          "pointIndex": 2,
+          "amount": 349,
+          "qualifier": "BRACKET_PROBE: EUR 299 floor + EUR 50 uniform step; not an observation"
+        },
+        {
+          "pointIndex": 3,
+          "amount": 399,
+          "qualifier": "HYPOTHESIS_ANCHOR: PH-04 PROTECT hardware-plus-subscription hypothesis, EUR 399, vatBasis VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS; recorded in MC-09 as not cost-justified"
+        },
+        {
+          "pointIndex": 4,
+          "amount": 449,
+          "qualifier": "BRACKET_PROBE: EUR 399 anchor + EUR 50 uniform step; not an observation"
+        },
+        {
+          "pointIndex": 5,
+          "amount": 499,
+          "qualifier": "UPPER_BRACKET_PROBE: EUR 399 anchor + EUR 100, 1.25x the PH-04 anchor; not an observation"
+        }
+      ],
+      "vanWestendorpQuestions": [
+        {
+          "questionId": "VW-TOO-CHEAP",
+          "wording": "At what price would this concept seem so cheap that you would doubt its quality?"
+        },
+        {
+          "questionId": "VW-BARGAIN",
+          "wording": "At what price would this concept seem a bargain, a good buy?"
+        },
+        {
+          "questionId": "VW-EXPENSIVE",
+          "wording": "At what price would this concept start to seem expensive, though you might still consider it?"
+        },
+        {
+          "questionId": "VW-TOO-EXPENSIVE",
+          "wording": "At what price would this concept seem so expensive that you would not buy it?"
+        }
+      ],
+      "buyResponseScale": [
+        {
+          "code": "DEFINITELY_WOULD_BUY",
+          "label": "definitely would buy"
+        },
+        {
+          "code": "PROBABLY_WOULD_BUY",
+          "label": "probably would"
+        },
+        {
+          "code": "MIGHT_BUY",
+          "label": "might"
+        },
+        {
+          "code": "PROBABLY_WOULD_NOT_BUY",
+          "label": "probably would not"
+        },
+        {
+          "code": "DEFINITELY_WOULD_NOT_BUY",
+          "label": "definitely would not"
+        }
+      ],
+      "provenance": [
+        {
+          "derivationNote": "PH-04 is the MC-09 historical PROTECT hypothesis of EUR 399 with vatBasis VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS, status HYPOTHESIS_UNAPPROVED, and the recorded binding 'Hardware plus separate subscription; not cost-justified by promised composition'. EUR 399 is the central ladder anchor for the hardware-plus-subscription construct.",
+          "mc09SourcePath": "docs/marea/market-validation/data/governance-status.json",
+          "mc09RecordIds": [
+            "PH-04"
+          ],
+          "rationale": "PH-04 is the only MC-09 hypothesis that combines hardware with a separate subscription, so it is the closest pre-existing anchor for this construct. Anchoring on it does not make it cost-justified or approved."
+        },
+        {
+          "derivationNote": "familyPriceHypotheses.WATCH records a WATCH-CORE one-off hardware hypothesis of EUR 299 and an unapproved subscription floor of EUR 9.90 per month. EUR 299 is the ladder floor (first-year total assuming no separate service fee); 299 + (12 x 9.90) = 417.80 brackets the third and fourth points, but no ladder amount equals that arithmetic because the ladder is fixed at uniform EUR 50 steps.",
+          "mc09SourcePath": "docs/marea/market-validation/data/governance-status.json",
+          "mc09RecordIds": [
+            "familyPriceHypotheses.WATCH"
+          ],
+          "rationale": "Gives the ladder a component-level basis from the programme's own unapproved hypotheses without converting the monthly floor into a validated annual price."
+        },
+        {
+          "derivationNote": "EU monitoring references recorded in MC-09: Yacht Sentinel YS Pro hardware EUR 1,590 with vatTreatment VAT_EXCLUDED (PRC-CMP-032), YS Pro annual service plan EUR 240 with vatTreatment UNKNOWN (PRC-CMP-033), and the derived PROTECT-equivalent first-year total EUR 1,830 ex-VAT (PRC-CMP-054, priceType MODEL_DERIVED). These describe a different scope, segment and tax basis; no conversion or normalisation is performed and they are not used to set any ladder amount.",
+          "mc09SourcePath": "docs/marea/market-validation/data/price-observations.json",
+          "priceIds": [
+            "PRC-CMP-032",
+            "PRC-CMP-033",
+            "PRC-CMP-054"
+          ],
+          "rationale": "Context only: the observed EU hardware-plus-service total is far above the ladder, which is a market-positioning risk flag, not a price conclusion and not a cost finding."
+        },
+        {
+          "derivationNote": "USD monitoring references recorded in MC-09: Siren 3 hardware USD 299.99 (PRC-CMP-027), Siren annual service plan USD 225 (PRC-CMP-028) and ArmIt Sentinel annual plan USD 100 (PRC-CMP-031), all with vatTreatment UNKNOWN. They are not converted to EUR and therefore cannot set a EUR ladder point; they only establish that monitoring service plans are advertised in the market.",
+          "mc09SourcePath": "docs/marea/market-validation/data/price-observations.json",
+          "priceIds": [
+            "PRC-CMP-027",
+            "PRC-CMP-028",
+            "PRC-CMP-031"
+          ],
+          "rationale": "Preserves currency integrity: converting USD observations would create a derived figure that is not an observation, and the brief for this file forbids inventing or converting market data."
+        },
+        {
+          "derivationNote": "WTP-INS-01 fixes the instrument design rule: five to seven price points per configuration, derived from observed category prices and frozen before fieldwork, with the exact points never read out as 'the MAREA price'.",
+          "mc09SourcePath": "docs/marea/market-validation/economics/MC09-PRICING-AND-WTP.md",
+          "mc09RecordIds": [
+            "WTP-INS-01"
+          ],
+          "rationale": "The ladder structure follows the registered MC-09 instrument design; only the amounts are MC-10 pre-registration choices."
+        }
+      ],
+      "limitations": [
+        "The tested unit is a first-year total that combines a one-off hardware amount and twelve months of service. Van Westendorp answers about a single 'price' cannot be interpreted as a subscription rate, so the priceBasis must be recorded per answer or the answer is unusable.",
+        "PH-04 is explicitly recorded in MC-09 as not cost-justified by the promised composition. Placing the ladder anchor at EUR 399 does not justify that amount, establish a margin or approve a price.",
+        "The WATCH family hypothesis records vatBasis OPEN. The VAT-inclusive framing of this ladder is a pre-registered hypothesis, not a tax determination and not tax advice.",
+        "Observed EU monitoring totals are VAT-excluded or tax-unknown and describe a different scope and segment. No conversion, normalisation or parity claim is made.",
+        "USD observations are not converted and cannot set EUR ladder points. Any cross-currency comparison would require a separately recorded MODEL_DERIVED step that does not exist in this file.",
+        "No alert guarantee, service-level agreement or cellular-coverage commitment exists (governance-status.json instantAlertGuarantee = false, slaEstablished = false). The construct must not imply them and the ladder cannot price them.",
+        "No production cost, bill of materials, supplier quotation or installation rate exists, so no ladder point can be tested against a cost floor. Profitability is NOT_ESTABLISHED."
+      ]
+    }
+  ]
+}

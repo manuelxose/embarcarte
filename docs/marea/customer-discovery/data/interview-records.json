@@ -1,0 +1,40 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "schemaVersion": "MC10-INTERVIEW-1.0.0",
+  "interviews": [],
+  "aggregate": 0,
+  "aggregateBySegment": {
+    "SEG-01": 0,
+    "SEG-02": 0,
+    "SEG-03": 0,
+    "SEG-04": 0,
+    "SEG-05": 0,
+    "SEG-06": 0,
+    "SEG-07": 0,
+    "SEG-08": 0
+  },
+  "requiredFields": [
+    "interviewId",
+    "participantId",
+    "segmentId",
+    "experimentIds",
+    "interviewDate",
+    "acquisitionSource",
+    "interviewerId",
+    "language",
+    "eligibilityConfirmed",
+    "consentRecorded",
+    "consentDate",
+    "recordingPermission",
+    "quotationPermission",
+    "completionStatus",
+    "analysisEligible"
+  ],
+  "validRecordRule": "An interview may be counted only when a real eligible participant, valid consent, a real interview date, a named source, an interviewer ID, a supported language and a completed-record status are all present and internally consistent.",
+  "invalidRecordRule": "AI-generated dialogue, simulated sessions, desk-research statements, staff proxies, second-hand reports and re-used quotes are never interview records.",
+  "note": "Empty by design: no interview was conducted, so aggregate is 0. A missing interview is not a null result."
+}
