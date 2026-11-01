@@ -1,0 +1,144 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "schemaVersion": "MC10-BUNDLE-EVIDENCE-1.0.0",
+  "sourceOrder": "docs/marea/market-validation/data/bundle-assessments.json (MC-09 commercialScore, descending)",
+  "currentEvidenceStatus": "NOT_TESTED",
+  "counterevidencePolicy": "Absence of primary evidence is not evidence of absence. No bundle may be advanced, deferred or discontinued on the basis of zero interviews.",
+  "bundles": [
+    {
+      "bundle": "PROTECT",
+      "mc09Rank": 1,
+      "mc09Score": 3.37,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether monitoring hardware plus a subscription is acceptable at the prepared price hypothesis",
+        "Whether owners understand that no theft prevention or safety guarantee is included"
+      ],
+      "nextValidationStep": "EXP-MC10-09 and EXP-MC10-10 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "bundle": "START",
+      "mc09Rank": 2,
+      "mc09Score": 3.27,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether the START composition and its exclusions are understood without prompting",
+        "Whether the entry bundle is a credible first purchase"
+      ],
+      "nextValidationStep": "EXP-MC10-06 and EXP-MC10-01 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "bundle": "FLEET",
+      "mc09Rank": 3,
+      "mc09Score": 3.22,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether fleet operators can articulate a measurable trial success criterion",
+        "Whether cross-tenant isolation, data-processing terms and support expectations are acceptable",
+        "Hardware remains not included by default and no SLA exists"
+      ],
+      "nextValidationStep": "EXP-MC10-07 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "bundle": "CRUISE",
+      "mc09Rank": 4,
+      "mc09Score": 2.99,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether the multi-feature composition is understood or overcomplicated",
+        "Whether a higher bundle price band is coherent"
+      ],
+      "nextValidationStep": "EXP-MC10-04 and EXP-MC10-06 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "bundle": "SAIL",
+      "mc09Rank": 5,
+      "mc09Score": 2.65,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether the SAIL composition is distinguishable from cheaper alternatives",
+        "Whether the PILOT safety restrictions inside the concept are understood",
+        "No installed price and no fixed turnkey offer exist"
+      ],
+      "nextValidationStep": "EXP-MC10-05 and EXP-MC10-06 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "bundle": "COMPLETE",
+      "mc09Rank": 6,
+      "mc09Score": 2.31,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether the all-in-one concept is understood or triggers excessive expectations",
+        "Whether a fixed turnkey price could ever be defensible",
+        "No fixed SAIL/COMPLETE price is established or approved"
+      ],
+      "nextValidationStep": "EXP-MC10-05 and EXP-MC10-06 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    }
+  ],
+  "aggregate": {
+    "bundles": 6,
+    "tested": 0,
+    "notTested": 6,
+    "withPrimaryEvidence": 0,
+    "readinessUpgrades": 0
+  },
+  "note": "All six bundles keep their MC-09 desk-research priority order and remain NOT_TESTED. MC-09 scores are prioritisation outcomes, not measured demand, and are reproduced here only as the frozen reference order."
+}

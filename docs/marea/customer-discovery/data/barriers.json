@@ -1,0 +1,28 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "schemaVersion": "MC10-BARRIERS-1.0.0",
+  "experimentId": "EXP-MC10-10",
+  "barriers": [
+    { "barrierCode": "WARRANTY", "label": "Warranty terms", "participantsRanking": 0, "topThreeCount": 0, "status": "NOT_EXECUTED" },
+    { "barrierCode": "LIABILITY", "label": "Installation liability", "participantsRanking": 0, "topThreeCount": 0, "status": "NOT_EXECUTED" },
+    { "barrierCode": "DATA_OWNERSHIP", "label": "Vessel-data ownership", "participantsRanking": 0, "topThreeCount": 0, "status": "NOT_EXECUTED" },
+    { "barrierCode": "BRAND_LONGEVITY", "label": "Brand longevity", "participantsRanking": 0, "topThreeCount": 0, "status": "NOT_EXECUTED" },
+    { "barrierCode": "SUBSCRIPTION_LAPSE", "label": "Subscription lapse", "participantsRanking": 0, "topThreeCount": 0, "status": "NOT_EXECUTED" },
+    { "barrierCode": "OFFLINE_OPERATION", "label": "Offline operation", "participantsRanking": 0, "topThreeCount": 0, "status": "NOT_EXECUTED" },
+    { "barrierCode": "SUPPORT", "label": "Support availability", "participantsRanking": 0, "topThreeCount": 0, "status": "NOT_EXECUTED" },
+    { "barrierCode": "SECURITY", "label": "Security", "participantsRanking": 0, "topThreeCount": 0, "status": "NOT_EXECUTED" },
+    { "barrierCode": "RELIABILITY", "label": "Reliability", "participantsRanking": 0, "topThreeCount": 0, "status": "NOT_EXECUTED" },
+    { "barrierCode": "UNKNOWN_BRAND", "label": "Unknown brand", "participantsRanking": 0, "topThreeCount": 0, "status": "NOT_EXECUTED" }
+  ],
+  "aggregate": {
+    "participantsRanking": 0,
+    "topThreeCount": 0,
+    "status": "NOT_EXECUTED"
+  },
+  "threshold": "The frozen EXP-MC10-10 PASS condition is that data-ownership or warranty/liability concerns appear among the top-three barriers for at least 50% of participants in at least three segments. No participant has ranked any barrier, so no barrier ranking exists.",
+  "note": "The codes are a prepared taxonomy, not observed objections. No requirement listed here has been satisfied by MAREA and none may be presented as satisfied."
+}

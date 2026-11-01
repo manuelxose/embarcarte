@@ -1,0 +1,39 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "schemaVersion": "MC10-PARTICIPANT-1.0.0",
+  "participants": [],
+  "aggregate": {
+    "total": 0,
+    "bySegment": {
+      "SEG-01": 0,
+      "SEG-02": 0,
+      "SEG-03": 0,
+      "SEG-04": 0,
+      "SEG-05": 0,
+      "SEG-06": 0,
+      "SEG-07": 0,
+      "SEG-08": 0
+    },
+    "consented": 0,
+    "withdrawn": 0
+  },
+  "pseudonymization": {
+    "participantIdPattern": "P-MC10-###",
+    "rule": "A participant is referenced only by a pseudonymous ID. The identity/consent key that could re-identify a participant is Layer A data stored outside this repository and was never created in MC-10.",
+    "pseudonymousIsNotAnonymous": true
+  },
+  "consentModel": {
+    "permissions": ["PARTICIPATION", "RECORDING", "QUOTATION", "FOLLOW_UP"],
+    "separatePermissions": true,
+    "preTicked": false,
+    "withdrawableAtAnyTime": true,
+    "permissionsRecorded": false
+  },
+  "withdrawalPolicy": "A withdrawn participant may not appear in any analysis-eligible interview or quoted finding. Withdrawal is recorded with a date but without justification.",
+  "piiPolicy": "No name, contact detail, address, berth number, vessel registration, billing data or marina customer record may be stored in this repository. Layer A/B data stay outside Git.",
+  "note": "Empty by design: AUTH-MC10-001 is NOT_GRANTED, so no participant was identified, screened or consented. This file is a schema and a zero-count register, not a sample."
+}

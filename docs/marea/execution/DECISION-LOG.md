@@ -1019,3 +1019,123 @@ checkout, offer or "from" price is published. (c) MC-11/MC-12 become the pricing
 `docs/marea/market-validation/data/tco-models.json`; `data/governance-status.json`.
 
 **Status effect.** No lifecycle change, no blocker cleared, no price approved, no sale or checkout.
+
+## D-029 - 2026-11-01 - MC-10 stops at the outreach authorization gate and reports BLOCKED, not PASS
+
+**Context.** Master Prompt 10/36 mandates real primary customer discovery and states that customer
+outreach requires explicit separate authorization, and that the execution request does not itself
+authorize external contact. No authorization record was issued by the programme owner. The
+environment's agent tool surface has no email, telephony or messaging tool; the repository's
+`nodemailer`/SMTP path is commerce-notification application code and is not an approved research channel.
+
+**Decision.** (1) MC-10 records `AUTH-MC10-001 = NOT_GRANTED`, `FIELDWORK_STATUS = BLOCKED` and
+delivers the complete Wave 0 preparation package (scope, authorization register, ethics and privacy
+design, protocol, frozen instruments, recruitment plan and templates, data contract, frozen thresholds
+and price ladders, research-integrity validator and negative tests). (2) No candidate is identified or
+contacted; no interview, price response or quotation exists. (3) The milestone is reported `BLOCKED`
+for the primary-research scope; preparation is never presented as customer research. (4) The exact
+unblock sequence is recorded in `MC10-FIELDWORK-AUTHORIZATION.md` §5.
+
+**Rationale.** Manufacturing participants, quotes or price responses would violate the programme's
+central rule of zero fabricated participants and would corrupt every downstream commercial decision
+that relied on them. An honest blocked milestone is more valuable than a fabricated PASS.
+
+**Consequences.** (a) Zero participants, zero interviews, zero price responses. (b) All ten registered
+experiments are `NOT_EXECUTED`/`BLOCKED`. (c) No product or bundle evidence exists. (d) The milestone
+cannot receive a primary-research PASS under the stated acceptance criteria.
+
+**Evidence.** `docs/marea/customer-discovery/MC10-FIELDWORK-AUTHORIZATION.md`;
+`docs/marea/customer-discovery/data/fieldwork-authorization.json`;
+`docs/marea/customer-discovery/data/research-status.json`; `MC10-EXPERIMENT-RESULTS.md`;
+`MC-10-DELIVERY.md`.
+
+**Status effect.** No commercial status change; no price, product, bundle or readiness approval.
+
+## D-030 - 2026-11-01 - The MC-09 priority order remains unvalidated and no product or bundle advances
+
+**Context.** MC-10 was mandated to test the assumptions behind the MC-09 nine-family and six-bundle
+prioritisation with real participants. No fieldwork was possible.
+
+**Decision.** (1) All nine families and six bundles are classified `NOT_TESTED` in MC-10. (2) The
+MC-09 ranking and scores are preserved unchanged as historical desk-research prioritisation and are
+neither confirmed nor contradicted. (3) No product readiness is upgraded and no `ADVANCE_TO_QUANTITATIVE_VALIDATION`,
+`DEFER`, `DISCONTINUE_RECOMMENDED` or `INCONCLUSIVE` verdict is issued on zero interviews.
+
+**Rationale.** Absence of evidence is not evidence of absence. An empty dataset cannot support a
+portfolio decision, and converting a plan into a verdict would be the exact failure the milestone
+exists to prevent.
+
+**Consequences.** (a) The central question (which products justify the next investment stage) remains
+unanswered by primary evidence. (b) MC-11 receives no customer prioritisation. (c) The next decision
+point is fieldwork authorization, not portfolio re-ranking.
+
+**Evidence.** `MC10-PRODUCT-PRIMARY-EVIDENCE.md`; `MC10-BUNDLE-PRIMARY-EVIDENCE.md`;
+`data/product-evidence.json`; `data/bundle-evidence.json`.
+
+**Status effect.** No lifecycle change, no investment approval, no readiness upgrade.
+
+## D-031 - 2026-11-01 - Instruments and experiment thresholds are frozen before fielding; Portuguese versions withheld
+
+**Context.** The MC-09 registry and instrument suite must not be adjusted after observing responses.
+Portuguese instruments require qualified linguistic review that MC-10 did not have.
+
+**Decision.** (1) Freeze the seven instruments at version 1.0.0 with the real SHA-256 of the MC-09
+discovery plan. (2) Freeze each of the ten experiment records by SHA-256 of its canonical JSON
+serialization, recomputed by the validator on every run. (3) Withhold Portuguese instruments
+(`NOT_PRODUCED`), so northern Portugal cannot be fielded. (4) Any change requires a dated amendment, a
+new version, and prior data evaluated under the version in force when collected.
+
+**Rationale.** Silent post-hoc threshold changes are the most common way qualitative research is made
+to support a predetermined conclusion; a machine-checked freeze makes that detectable.
+
+**Consequences.** (a) The validator fails on any altered threshold or instrument hash. (b) A future
+fieldwork wave must use exactly these versions or a formally amended successor.
+
+**Evidence.** `docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md`;
+`methodology/instruments.json`; `data/experiments.json`; `scripts/check-marea-customer-research.mjs`.
+
+**Status effect.** No commercial status change.
+
+## D-032 - 2026-11-01 - No commercial restriction is weakened and stated preference remains NOT_MEASURED
+
+**Context.** Even positive customer evidence could not clear legal, safety or conformity blockers;
+MC-10 has no customer evidence at all.
+
+**Decision.** Keep unchanged: `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`, `SOURCE_IP_CLEARANCE =
+NOT_CLEARED`, `PRODUCT_SALES = BLOCKED`, `COMMERCIAL_PUBLICATION = BLOCKED`, `PRODUCTION_DEPLOYMENT =
+NOT_AUTHORIZED`, `PROFITABILITY_NOT_ESTABLISHED`, `PILOT_SAFETY_GATE = BLOCKED`, `COMPATIBILITY_TESTED
+= NO`, `APPROVED_PRICES = NONE`, `ORDERABLE_PRODUCTS = ZERO`. Also keep `WTP_STATED_PREFERENCE_OBSERVED
+= false` and `WTP_COMMERCIALLY_VALIDATED = false` because zero pricing modules were administered.
+
+**Rationale.** A research milestone never becomes a commercial approval, and a milestone that collected
+no data can approve even less.
+
+**Consequences.** (a) Frozen price ladders remain hypotheses. (b) No page, offer, CTA, price or claim
+changed. (c) MC-10 cannot support any launch, supplier order or public statement.
+
+**Evidence.** `data/governance-status.json`; `pricing/MC10-GABOR-GRANGER.md`;
+`pricing/MC10-VAN-WESTENDORP.md`; `MC10-POSITIONING-RECOMMENDATIONS.md`.
+
+**Status effect.** No price approval, publication, order path or commercial claim.
+
+## D-033 - 2026-11-01 - MC-11 cannot inherit customer evidence and must first unblock fieldwork or re-scope
+
+**Context.** MC-11 (hardware, supplier, conformity and feasibility) expected MC-10 customer evidence
+to prioritise hardware work.
+
+**Decision.** MC-11 receives an explicit statement that no customer evidence exists. Its handoff
+separates internal hardware/supplier/conformity questions that can be researched without customers
+from customer questions that remain blocked behind `AUTH-MC10-001`. MC-11 may not present any
+hardware, BOM, supplier order, conformity claim or price as customer-validated, and requires its own
+Master Prompt.
+
+**Rationale.** A missing input must be recorded as missing rather than silently replaced with
+assumptions or desk research.
+
+**Consequences.** (a) MC-11 planning carries the blocked-fieldwork dependency. (b) Customer-driven
+hardware prioritisation remains unavailable. (c) No hardware, BOM, supplier or conformity
+authorisation is created.
+
+**Evidence.** `docs/marea/customer-discovery/MC10-MC11-HANDOFF.md`.
+
+**Status effect.** No hardware, BOM, supplier or conformity authorisation; no commercial status change.

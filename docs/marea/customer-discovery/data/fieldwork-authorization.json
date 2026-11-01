@@ -1,0 +1,54 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "recordId": "AUTH-MC10-001",
+  "owner": "lead",
+  "recordStatus": "ACTIVE",
+  "authorizationStatus": "NOT_GRANTED",
+  "authorizationDate": null,
+  "authorizer": null,
+  "authorizerRole": null,
+  "permittedParticipantCategories": [],
+  "permittedGeographicAreas": [],
+  "permittedContactMethods": [],
+  "directEmailAllowed": false,
+  "telephoneAllowed": false,
+  "introductionsAllowed": false,
+  "onsiteInvitationsAllowed": false,
+  "maximumOutreachVolume": 0,
+  "spendingApproved": false,
+  "incentivesApproved": false,
+  "incentivePolicy": {
+    "proposed": "ZERO_INCENTIVE",
+    "status": "NOT_APPROVED",
+    "note": "No incentive, payment, prize or advertising spend is proposed for MC-10. An incentive policy still requires explicit approval before fielding."
+  },
+  "authorizationDurationDays": 0,
+  "authorizationExpiresAt": null,
+  "fieldworkLead": null,
+  "prohibitedTargets": [
+    "MINORS",
+    "VULNERABLE_PERSONS",
+    "EMPLOYEES_OF_COMPETING_MARINE_ELECTRONICS_VENDORS",
+    "PROGRAMME_STAFF_OR_AGENTS_AS_PARTICIPANTS"
+  ],
+  "prohibitedContactChannels": [
+    "PURCHASED_CONTACT_LISTS",
+    "SCRAPED_PERSONAL_EMAILS",
+    "PRIVATE_MARINA_CUSTOMER_RECORDS",
+    "COLD_AUTOMATED_CAMPAIGNS",
+    "PAID_ADVERTISING_RECRUITMENT"
+  ],
+  "inferenceGuard": "The Master Prompt text, an open PR, an assigned task or the existence of approved instruments do not constitute outreach authorization. Authorization must be a separate, dated, scoped record naming the authorizer.",
+  "evidence": "The MC-10 execution request (Master Prompt 10/36) states that customer outreach requires explicit separate authorization and states that the request does not by itself authorize external contact. No later authorization record exists in this branch.",
+  "statusEffect": "FIELDWORK_STATUS = BLOCKED; no candidate may be identified, contacted, screened or interviewed.",
+  "revisionHistory": [
+    {
+      "revision": 1,
+      "date": "2026-11-01",
+      "change": "Initial record created at the authorization gate.",
+      "authorizer": "lead"
+    }
+  ]
+}

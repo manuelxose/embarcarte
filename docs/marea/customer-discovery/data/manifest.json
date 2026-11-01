@@ -1,0 +1,154 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "date": "2026-11-01",
+  "baseCommit": "9d206cc251ea63c7edd1cda0ca7a2d028ae7cca3",
+  "owner": "agent-f-data",
+  "authority": "docs/marea/customer-discovery/data-contract/MC10-DATA-CONTRACT.md",
+  "note": "Machine-readable index of the MC-10 primary customer-discovery contract. The contract is BLOCKED at the outreach authorization gate: no participant, interview, price response or coded unit exists and every count in these files is zero. Every file is validated by scripts/check-marea-customer-research.mjs; the human contract is data-contract/MC10-DATA-CONTRACT.md.",
+  "files": [
+    {
+      "path": "data/barriers.json",
+      "owner": "agent-f-data",
+      "purpose": "EXP-MC10-10 barrier taxonomy with zero observed rankings",
+      "recordCount": 10
+    },
+    {
+      "path": "data/bundle-evidence.json",
+      "owner": "agent-f-data",
+      "purpose": "MC-09 bundle priority order with NOT_TESTED primary-evidence status",
+      "recordCount": 6
+    },
+    {
+      "path": "data/coding.json",
+      "owner": "agent-f-data",
+      "purpose": "Coding, double-coding and saturation state (nothing coded)",
+      "recordCount": 0
+    },
+    {
+      "path": "data/concept-comprehension.json",
+      "owner": "agent-f-data",
+      "purpose": "Concept-comprehension test state per concept (nobody tested)",
+      "recordCount": 7
+    },
+    {
+      "path": "data/data-quality.json",
+      "owner": "agent-f-data",
+      "purpose": "Preparation-time reconciliation, PII and fixture-exclusion checks",
+      "recordCount": 9
+    },
+    {
+      "path": "data/decisions.json",
+      "owner": "lead",
+      "purpose": "Programme decisions D-029 to D-033 made during MC-10",
+      "recordCount": 5
+    },
+    {
+      "path": "data/experiments.json",
+      "owner": "agent-f-data",
+      "purpose": "Ten MC-09-frozen experiments, each NOT_EXECUTED/BLOCKED with a threshold SHA-256",
+      "recordCount": 10
+    },
+    {
+      "path": "data/fieldwork-authorization.json",
+      "owner": "lead",
+      "purpose": "AUTH-MC10-001 authorization record (NOT_GRANTED)",
+      "recordCount": 1
+    },
+    {
+      "path": "data/findings.json",
+      "owner": "agent-f-data",
+      "purpose": "Research findings register (empty; no valid interview record exists)",
+      "recordCount": 0
+    },
+    {
+      "path": "data/governance-status.json",
+      "owner": "agent-f-data",
+      "purpose": "MC-10 mirror of the MC-09 governance invariant; nothing changed",
+      "recordCount": 1
+    },
+    {
+      "path": "data/interview-records.json",
+      "owner": "agent-f-data",
+      "purpose": "Aggregate interview-record register (empty)",
+      "recordCount": 0
+    },
+    {
+      "path": "data/participants.json",
+      "owner": "agent-f-data",
+      "purpose": "Pseudonymous participant register (empty)",
+      "recordCount": 0
+    },
+    {
+      "path": "data/pricing-responses.json",
+      "owner": "agent-f-data",
+      "purpose": "Gabor-Granger / Van Westendorp response register (empty, not administered)",
+      "recordCount": 0
+    },
+    {
+      "path": "data/pricing-ladders.json",
+      "owner": "agent-e-pricing",
+      "purpose": "Frozen pre-registered price ladders (hypotheses only, no responses)",
+      "recordCount": 2
+    },
+    {
+      "path": "data/product-evidence.json",
+      "owner": "agent-f-data",
+      "purpose": "MC-09 product priority order with NOT_TESTED primary-evidence status",
+      "recordCount": 9
+    },
+    {
+      "path": "data/recruitment-funnel.json",
+      "owner": "agent-f-data",
+      "purpose": "Aggregate recruitment funnel by segment and state (all zero)",
+      "recordCount": 8
+    },
+    {
+      "path": "data/research-status.json",
+      "owner": "lead",
+      "purpose": "Milestone BLOCKED status, segment plan, Wave-0 checklist and blockers",
+      "recordCount": 1
+    }
+  ],
+  "deliverables": [
+    { "id": "D1", "path": "docs/marea/customer-discovery/MC10-RESEARCH-SCOPE.md", "owner": "lead", "title": "Research scope and verified baseline" },
+    { "id": "D2", "path": "docs/marea/customer-discovery/MC10-FIELDWORK-AUTHORIZATION.md", "owner": "lead", "title": "Fieldwork authorization register" },
+    { "id": "D3", "path": "docs/marea/customer-discovery/methodology/MC10-RESEARCH-ETHICS-AND-PRIVACY.md", "owner": "agent-a-methodologist", "title": "Research ethics and privacy design" },
+    { "id": "D4", "path": "docs/marea/customer-discovery/methodology/MC10-RESEARCH-PROTOCOL.md", "owner": "agent-a-methodologist", "title": "Preregistered research protocol" },
+    { "id": "D5", "path": "docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md", "owner": "agent-a-methodologist", "title": "Instrument version register" },
+    { "id": "D6", "path": "docs/marea/customer-discovery/recruitment/MC10-RECRUITMENT-PLAN.md", "owner": "agent-b-recruitment", "title": "Recruitment plan and quotas" },
+    { "id": "D7", "path": "docs/marea/customer-discovery/recruitment/MC10-RECRUITMENT-RESULTS.md", "owner": "agent-b-recruitment", "title": "Recruitment results (actual counts only)" },
+    { "id": "D8", "path": "docs/marea/customer-discovery/owners/MC10-OWNER-DISCOVERY.md", "owner": "agent-c-owners", "title": "Owner discovery framework" },
+    { "id": "D9", "path": "docs/marea/customer-discovery/professionals/MC10-INSTALLER-DISCOVERY.md", "owner": "agent-d-professionals", "title": "Installer discovery framework" },
+    { "id": "D10", "path": "docs/marea/customer-discovery/professionals/MC10-CHANNEL-AND-FLEET-DISCOVERY.md", "owner": "agent-d-professionals", "title": "Channel and fleet discovery framework" },
+    { "id": "D11", "path": "docs/marea/customer-discovery/methodology/MC10-QUALITATIVE-ANALYSIS.md", "owner": "agent-a-methodologist", "title": "Qualitative analysis plan (empty results scaffold)" },
+    { "id": "D12", "path": "docs/marea/customer-discovery/pricing/MC10-SUBSCRIPTION-ATTITUDES.md", "owner": "agent-e-pricing", "title": "Subscription-attitude design (unadministered)" },
+    { "id": "D13", "path": "docs/marea/customer-discovery/pricing/MC10-GABOR-GRANGER.md", "owner": "agent-e-pricing", "title": "Gabor-Granger design (zero responses)" },
+    { "id": "D14", "path": "docs/marea/customer-discovery/pricing/MC10-VAN-WESTENDORP.md", "owner": "agent-e-pricing", "title": "Van Westendorp design (zero responses)" },
+    { "id": "D15", "path": "docs/marea/customer-discovery/MC10-CONCEPT-COMPREHENSION.md", "owner": "agent-c-owners", "title": "Concept-comprehension test design (nobody tested)" },
+    { "id": "D16", "path": "docs/marea/customer-discovery/MC10-BUYER-OBJECTIONS.md", "owner": "lead", "title": "Prepared buyer-objection taxonomy" },
+    { "id": "D17", "path": "docs/marea/customer-discovery/MC10-EXPERIMENT-RESULTS.md", "owner": "lead", "title": "Ten pre-registered experiment results (none executed)" },
+    { "id": "D18", "path": "docs/marea/customer-discovery/MC10-PRODUCT-PRIMARY-EVIDENCE.md", "owner": "lead", "title": "Product primary-evidence assessment (all NOT_TESTED)" },
+    { "id": "D19", "path": "docs/marea/customer-discovery/MC10-BUNDLE-PRIMARY-EVIDENCE.md", "owner": "lead", "title": "Bundle primary-evidence assessment (all NOT_TESTED)" },
+    { "id": "D20", "path": "docs/marea/customer-discovery/MC10-POSITIONING-RECOMMENDATIONS.md", "owner": "lead", "title": "Positioning recommendations limited to prepared work" },
+    { "id": "D21", "path": "docs/marea/customer-discovery/MC10-DECISION-REGISTER.md", "owner": "lead", "title": "MC-10 decision and risk register" },
+    { "id": "D22", "path": "docs/marea/customer-discovery/data-contract/MC10-DATA-CONTRACT.md", "owner": "agent-f-data", "title": "Data contract and schema reference" },
+    { "id": "D23", "path": "scripts/check-marea-customer-research.mjs", "owner": "agent-f-data", "title": "Deterministic research-integrity validator" },
+    { "id": "D24", "path": "scripts/check-marea-customer-research.test.mjs", "owner": "agent-f-data", "title": "Negative-mutation test suite" },
+    { "id": "D25", "path": "docs/marea/customer-discovery/review/MC-10-REVIEW.md", "owner": "agent-g-auditor", "title": "Independent review verdict" },
+    { "id": "D26", "path": "docs/marea/customer-discovery/MC10-EXECUTIVE-REPORT.md", "owner": "lead", "title": "Executive report (Spanish)" },
+    { "id": "D27", "path": "docs/marea/customer-discovery/MC10-MC11-HANDOFF.md", "owner": "lead", "title": "MC-11 handoff separating customer and hardware questions" },
+    { "id": "D28", "path": "docs/marea/customer-discovery/MC-10-DELIVERY.md", "owner": "lead", "title": "Delivery record" }
+  ],
+  "supportingRecords": [
+    { "path": "docs/marea/customer-discovery/recruitment/MC10-OUTREACH-TEMPLATES.md", "owner": "agent-b-recruitment", "purpose": "Prepared outreach templates marked NOT_APPROVED and NOT_SENT" },
+    { "path": "docs/marea/customer-discovery/methodology/instruments.json", "owner": "agent-a-methodologist", "purpose": "Machine-readable instrument freeze record" },
+    { "path": "docs/marea/customer-discovery/data/pricing-ladders.json", "owner": "agent-e-pricing", "purpose": "Frozen price ladders (pre-registered hypotheses)" },
+    { "path": "docs/marea/customer-discovery/review/review-findings.json", "owner": "agent-g-auditor", "purpose": "Machine-readable independent-review findings" }
+  ],
+  "fixtureExclusion": {
+    "rule": "Synthetic fixtures created by scripts/check-marea-customer-research.test.mjs live only in an operating-system temporary directory and are tagged with testingFixture. They never appear under data/ and are never counted in any total.",
+    "realTreeFixtureRecords": 0
+  }
+}
