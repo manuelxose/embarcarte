@@ -1,0 +1,819 @@
+{
+  "contractId": "MAREA-MC10R-CUSTOMER-DISCOVERY-RECOVERY",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10R",
+  "date": "2026-11-01",
+  "owner": "lead",
+  "deliveryStage": "IMPLEMENTATION",
+  "recoveryWorkStatus": "READY_FOR_OWNER_REVIEW",
+  "note": "MC-10R recovery contract. It binds the blocked truth of MC-10 to the internal preparation of MC-10R. No field of this contract authorizes contact, fieldwork, spending, provisioning, publication or approval. deliveryStage IMPLEMENTATION requires deliverables D1-D32; a later FINAL stage additionally requires D33-D36. The Lead flips deliveryStage and recoveryWorkStatus in the delivery commit.",
+  "bindingTruth": {
+    "mc10Status": "BLOCKED",
+    "mc10Wave0Preparation": "PASS_INTERNAL_SCOPE",
+    "authMc10001": "NOT_GRANTED",
+    "outreachAuthorization": "NOT_GRANTED",
+    "fieldworkStatus": "BLOCKED",
+    "fieldworkReadiness": "PARTIALLY_READY",
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "sourceIpClearance": "NOT_CLEARED",
+    "productSales": "BLOCKED",
+    "commercialPublication": "BLOCKED",
+    "productionDeployment": "NOT_AUTHORIZED",
+    "profitability": "NOT_ESTABLISHED",
+    "pilotSafetyGate": "BLOCKED",
+    "counts": {
+      "participants": 0,
+      "identified": 0,
+      "contactAuthorized": 0,
+      "invited": 0,
+      "responded": 0,
+      "screened": 0,
+      "eligible": 0,
+      "consented": 0,
+      "interviews": 0,
+      "completedInterviews": 0,
+      "validAnalysisCases": 0,
+      "priceResponses": 0,
+      "executedExperiments": 0,
+      "productsEmpiricallyValidated": 0,
+      "bundlesEmpiricallyValidated": 0,
+      "approvedPrices": 0,
+      "orderableProducts": 0,
+      "trainedInterviewers": 0,
+      "assignedInterviewers": 0
+    },
+    "inferenceGuard": "A recovery contract, a passing validator, a PR approval, a task assignment or an agent inference is not research authorization. Nothing in MC-10R may be read as permission to contact, recruit, screen, interview or pay any person."
+  },
+  "sampling": {
+    "candidatePlanId": "MC10R-SAMPLING-1.1.0-PROPOSED",
+    "status": "PROPOSED_NOT_EFFECTIVE",
+    "segmentQuotaContractCandidate": "MC10R-SEGMENT-QUOTA-1.1.0-PROPOSED",
+    "decisionRef": "DR-MC10R-01",
+    "historicalQuotas": [
+      {
+        "segmentId": "SEG-01",
+        "name": "Recreational motorboat owners",
+        "minimum": 5,
+        "maximum": 8
+      },
+      {
+        "segmentId": "SEG-02",
+        "name": "Sailing yacht owners",
+        "minimum": 5,
+        "maximum": 8
+      },
+      {
+        "segmentId": "SEG-03",
+        "name": "Marina-based unattended-vessel owners",
+        "minimum": 5,
+        "maximum": 8
+      },
+      {
+        "segmentId": "SEG-04",
+        "name": "Marine electronics installers",
+        "minimum": 5,
+        "maximum": 7
+      },
+      {
+        "segmentId": "SEG-05",
+        "name": "Marine retailers and chandlers",
+        "minimum": 5,
+        "maximum": 7
+      },
+      {
+        "segmentId": "SEG-06",
+        "name": "Marina or shipyard operators",
+        "minimum": 3,
+        "maximum": 5
+      },
+      {
+        "segmentId": "SEG-07",
+        "name": "Charter operators and sailing schools",
+        "minimum": 5,
+        "maximum": 8
+      },
+      {
+        "segmentId": "SEG-08",
+        "name": "Fleet managers",
+        "minimum": 4,
+        "maximum": 6
+      }
+    ],
+    "totalMinimum": 37,
+    "totalMaximum": 57,
+    "completionRequirement": {
+      "minimum": 37,
+      "maximum": 57,
+      "derivation": "sum of the eight preserved per-segment minima and maxima"
+    },
+    "historicalTarget": {
+      "label": "HISTORICAL_PLANNING_ASPIRATION",
+      "minimum": 40,
+      "maximum": 80,
+      "derivableFromSegmentQuotas": false,
+      "note": "Preserved as a historical planning aspiration. It is not a completion requirement and its upper end cannot be met under the preserved segment maxima. Moving to it requires a separate approved quota-expansion amendment that is not recommended for Wave 1."
+    },
+    "waves": [
+      {
+        "wave": 1,
+        "role": "EXPLORATORY_PILOT",
+        "segmentIds": [
+          "SEG-01",
+          "SEG-03",
+          "SEG-04",
+          "SEG-06"
+        ],
+        "minimum": 18,
+        "maximum": 28,
+        "isFullStudy": false,
+        "status": "NOT_EXECUTED"
+      },
+      {
+        "wave": 2,
+        "role": "MAIN_STUDY",
+        "segmentIds": [
+          "SEG-01",
+          "SEG-02",
+          "SEG-03",
+          "SEG-04",
+          "SEG-05",
+          "SEG-06",
+          "SEG-07",
+          "SEG-08"
+        ],
+        "minimum": 19,
+        "maximum": 29,
+        "completesFullStudyMinimum": 37,
+        "completesFullStudyMaximum": 57,
+        "isFullStudy": true,
+        "status": "NOT_EXECUTED"
+      },
+      {
+        "wave": 3,
+        "role": "OPTIONAL_EXTENSION",
+        "requiresApprovedAmendment": true,
+        "segmentIds": [],
+        "minimum": 0,
+        "maximum": 0,
+        "isFullStudy": false,
+        "status": "NOT_EXECUTED"
+      }
+    ],
+    "wave1Cohorts": [
+      {
+        "cohort": "A",
+        "segmentId": "SEG-03",
+        "minimum": 5,
+        "maximum": 8
+      },
+      {
+        "cohort": "B",
+        "segmentId": "SEG-01",
+        "minimum": 5,
+        "maximum": 8
+      },
+      {
+        "cohort": "C",
+        "segmentId": "SEG-04",
+        "minimum": 5,
+        "maximum": 7
+      },
+      {
+        "cohort": "D",
+        "segmentId": "SEG-06",
+        "minimum": 3,
+        "maximum": 5
+      }
+    ],
+    "pricingFeasibility": {
+      "requiredN": 8,
+      "minimumNeverReduced": true,
+      "experiments": [
+        "EXP-MC10-04",
+        "EXP-MC10-05"
+      ],
+      "constructs": [
+        "CONSTRUCT-01",
+        "CONSTRUCT-02"
+      ],
+      "cellKeyPattern": "^SEG-0[1-8]__EXP-MC10-0[45]__CONSTRUCT-0[12]$",
+      "cellCount": 32,
+      "reachableCellCount": 16,
+      "belowMinimumCellCount": 16,
+      "populationEligibleCellCount": 20,
+      "experimentLevelEligibleCellCount": 16,
+      "executedCellCount": 0,
+      "populationCodes": [
+        "NAMED_SUBJECT",
+        "NAMED_RESALE_VARIANT",
+        "NAMED_SEPARATE_VIEW",
+        "NOT_NAMED"
+      ],
+      "segments": {
+        "SEG-01": {
+          "plannedMax": 8,
+          "plannedNWave1": 8,
+          "reachability": "REACHABLE_AT_PLANNED_MAX",
+          "registeredPopulation": {
+            "EXP-MC10-04": "NAMED_SUBJECT",
+            "EXP-MC10-05": "NAMED_SUBJECT"
+          }
+        },
+        "SEG-02": {
+          "plannedMax": 8,
+          "plannedNWave1": 0,
+          "reachability": "REACHABLE_AT_PLANNED_MAX",
+          "registeredPopulation": {
+            "EXP-MC10-04": "NAMED_SUBJECT",
+            "EXP-MC10-05": "NAMED_SUBJECT"
+          }
+        },
+        "SEG-03": {
+          "plannedMax": 8,
+          "plannedNWave1": 8,
+          "reachability": "REACHABLE_AT_PLANNED_MAX",
+          "registeredPopulation": {
+            "EXP-MC10-04": "NAMED_SUBJECT",
+            "EXP-MC10-05": "NAMED_SUBJECT"
+          }
+        },
+        "SEG-04": {
+          "plannedMax": 7,
+          "plannedNWave1": 7,
+          "reachability": "BELOW_REGISTERED_MINIMUM",
+          "registeredPopulation": {
+            "EXP-MC10-04": "NAMED_RESALE_VARIANT",
+            "EXP-MC10-05": "NOT_NAMED"
+          }
+        },
+        "SEG-05": {
+          "plannedMax": 7,
+          "plannedNWave1": 0,
+          "reachability": "BELOW_REGISTERED_MINIMUM",
+          "registeredPopulation": {
+            "EXP-MC10-04": "NOT_NAMED",
+            "EXP-MC10-05": "NOT_NAMED"
+          }
+        },
+        "SEG-06": {
+          "plannedMax": 5,
+          "plannedNWave1": 5,
+          "reachability": "BELOW_REGISTERED_MINIMUM",
+          "registeredPopulation": {
+            "EXP-MC10-04": "NOT_NAMED",
+            "EXP-MC10-05": "NOT_NAMED"
+          }
+        },
+        "SEG-07": {
+          "plannedMax": 8,
+          "plannedNWave1": 0,
+          "reachability": "REACHABLE_AT_PLANNED_MAX",
+          "registeredPopulation": {
+            "EXP-MC10-04": "NAMED_SEPARATE_VIEW",
+            "EXP-MC10-05": "NAMED_SUBJECT"
+          }
+        },
+        "SEG-08": {
+          "plannedMax": 6,
+          "plannedNWave1": 0,
+          "reachability": "BELOW_REGISTERED_MINIMUM",
+          "registeredPopulation": {
+            "EXP-MC10-04": "NOT_NAMED",
+            "EXP-MC10-05": "NAMED_SUBJECT"
+          }
+        }
+      },
+      "notApplicable": {
+        "SEG-04": [
+          "EXP-MC10-05"
+        ],
+        "SEG-05": [
+          "EXP-MC10-04",
+          "EXP-MC10-05"
+        ],
+        "SEG-06": [
+          "EXP-MC10-04",
+          "EXP-MC10-05"
+        ],
+        "SEG-08": [
+          "EXP-MC10-04"
+        ]
+      },
+      "experimentLevelEligibleCells": [
+        "SEG-01__EXP-MC10-04__CONSTRUCT-01",
+        "SEG-01__EXP-MC10-04__CONSTRUCT-02",
+        "SEG-01__EXP-MC10-05__CONSTRUCT-01",
+        "SEG-01__EXP-MC10-05__CONSTRUCT-02",
+        "SEG-02__EXP-MC10-04__CONSTRUCT-01",
+        "SEG-02__EXP-MC10-04__CONSTRUCT-02",
+        "SEG-02__EXP-MC10-05__CONSTRUCT-01",
+        "SEG-02__EXP-MC10-05__CONSTRUCT-02",
+        "SEG-03__EXP-MC10-04__CONSTRUCT-01",
+        "SEG-03__EXP-MC10-04__CONSTRUCT-02",
+        "SEG-03__EXP-MC10-05__CONSTRUCT-01",
+        "SEG-03__EXP-MC10-05__CONSTRUCT-02",
+        "SEG-07__EXP-MC10-04__CONSTRUCT-01",
+        "SEG-07__EXP-MC10-04__CONSTRUCT-02",
+        "SEG-07__EXP-MC10-05__CONSTRUCT-01",
+        "SEG-07__EXP-MC10-05__CONSTRUCT-02"
+      ],
+      "intendedInterpretations": {
+        "EXP-MC10-04": {
+          "NAMED_SUBJECT": "GG_BAND_AT_N8",
+          "NAMED_RESALE_VARIANT": "QUALITATIVE_PRICE_OBJECTIONS_ONLY",
+          "NAMED_SEPARATE_VIEW": "GG_BAND_AT_N8_SEPARATE_VIEW",
+          "NOT_NAMED": "QUALITATIVE_PRICE_OBJECTIONS_ONLY"
+        },
+        "EXP-MC10-05": {
+          "NAMED_SUBJECT": "VW_RANGE_AT_N8",
+          "NAMED_RESALE_VARIANT": "QUALITATIVE_PRICE_OBJECTIONS_ONLY",
+          "NAMED_SEPARATE_VIEW": "VW_RANGE_AT_N8",
+          "NOT_NAMED": "QUALITATIVE_PRICE_OBJECTIONS_ONLY"
+        }
+      },
+      "rule": "No cell may be reported as an experiment-level pricing result unless it is BOTH population-eligible (registeredPopulation is not NOT_NAMED) AND reachable at the registered minimum n>=8. A BELOW_REGISTERED_MINIMUM cell may only produce qualitative price objections. The n>=8 minimum is never reduced.",
+      "wave1ExperimentEligibleSegments": [
+        "SEG-01",
+        "SEG-03"
+      ],
+      "wave1ExperimentEligibleMax": 16,
+      "wave1QualitativeOnlyMax": 12,
+      "approvedPrices": 0,
+      "sourceNote": "Population codes follow the D2 section 3.4 refinement: EXP-MC10-04 names the owner segments plus the SEG-04 installer resale variant; EXP-MC10-05 names the owner segments plus SEG-07 and SEG-08. D7 section 4 additionally labels SEG-07 and SEG-08 as NAMED_SEPARATE_VIEW for EXP-MC10-04; D2 explicitly limits SEG-08 to EXP-MC10-05, so SEG-08/EXP-MC10-04 is recorded here as NOT_NAMED and the divergence is reported for owner reconciliation. Either reading leaves SEG-08 BELOW_REGISTERED_MINIMUM and therefore not experiment-level eligible."
+    }
+  },
+  "consentModel": {
+    "instrumentId": "CONSENT-01",
+    "candidateVersion": "1.1.0",
+    "status": "REVIEW_REQUIRED",
+    "effective": false,
+    "scopes": [
+      "PARTICIPATION",
+      "RECORDING",
+      "QUOTATION",
+      "FOLLOW_UP"
+    ],
+    "states": [
+      "NOT_SOUGHT",
+      "GRANTED",
+      "REFUSED",
+      "WITHDRAWN"
+    ],
+    "allowedTransitions": [
+      {
+        "from": "NOT_SOUGHT",
+        "to": "GRANTED"
+      },
+      {
+        "from": "NOT_SOUGHT",
+        "to": "REFUSED"
+      },
+      {
+        "from": "GRANTED",
+        "to": "WITHDRAWN"
+      }
+    ],
+    "terminalStates": [
+      "WITHDRAWN"
+    ],
+    "withdrawalPropagation": [
+      {
+        "step": 1,
+        "state": "RECEIVED",
+        "action": "Record the withdrawal, its scope and its channel",
+        "accountableRole": "fieldwork lead",
+        "accountableStatus": "UNASSIGNED"
+      },
+      {
+        "step": 2,
+        "state": "STOPPED",
+        "action": "Stop all contact and follow-up immediately",
+        "accountableRole": "fieldwork lead",
+        "accountableStatus": "UNASSIGNED"
+      },
+      {
+        "step": 3,
+        "state": "EXCLUDED",
+        "action": "Mark records non-eligible; exclude from coding and analysis",
+        "accountableRole": "qualitative analyst",
+        "accountableStatus": "UNASSIGNED"
+      },
+      {
+        "step": 4,
+        "state": "REMOVED",
+        "action": "Remove quotations and verbatim content from all outputs",
+        "accountableRole": "data steward",
+        "accountableStatus": "UNASSIGNED"
+      },
+      {
+        "step": 5,
+        "state": "RECOMPUTED",
+        "action": "Recompute affected Layer C aggregates",
+        "accountableRole": "data steward",
+        "accountableStatus": "UNASSIGNED"
+      },
+      {
+        "step": 6,
+        "state": "DELETED",
+        "action": "Delete per the D19 procedure unless a recorded legal hold applies",
+        "accountableRole": "data steward",
+        "accountableStatus": "UNASSIGNED"
+      },
+      {
+        "step": 7,
+        "state": "ACKNOWLEDGED",
+        "action": "Send written acknowledgement within 30 days",
+        "accountableRole": "privacy contact",
+        "accountableStatus": "OPEN"
+      },
+      {
+        "step": 8,
+        "state": "AUDITED",
+        "action": "Audit-log the chain and retain the proof record 36 months",
+        "accountableRole": "independent auditor",
+        "accountableStatus": "UNASSIGNED"
+      }
+    ],
+    "accountableOwnerFields": {
+      "controller": "OPEN",
+      "privacyContact": "OPEN",
+      "dataSteward": "UNASSIGNED",
+      "withdrawalAcknowledgement": "OPEN",
+      "retentionApprover": "OPEN",
+      "breachNotification": "OPEN"
+    },
+    "note": "The consent state machine and the withdrawal chain are designs. No consent, withdrawal or acknowledgement exists because no participant exists."
+  },
+  "amendments": {
+    "registryRef": "docs/marea/customer-discovery/recovery/data/mc10r-amendments.json",
+    "registryId": "MAREA-MC10R-AMENDMENT-REGISTRY",
+    "total": 14,
+    "planningInconsistencies": [
+      "PI-01",
+      "PI-02",
+      "PI-03",
+      "PI-04",
+      "PI-05"
+    ],
+    "instrumentAmendments": [
+      "IV-01",
+      "IV-02",
+      "IV-03",
+      "IV-04",
+      "IV-05",
+      "IV-06",
+      "IV-07",
+      "IV-08",
+      "IV-09"
+    ],
+    "documentStatus": "PROPOSED_NOT_EFFECTIVE",
+    "approvedCount": 0,
+    "effectiveCount": 0,
+    "allApprovalEvidenceNull": true,
+    "allEffectiveDatesNull": true,
+    "historicalInstrumentVersion": "1.0.0",
+    "historicalInstrumentStatus": "FROZEN_HISTORICAL",
+    "candidateInstrumentVersion": "1.1.0",
+    "note": "No amendment is approved or effective. Only a real authorized reviewer can confer APPROVED_FOR_FUTURE_FIELDWORK."
+  },
+  "authorization": {
+    "recordRef": "docs/marea/customer-discovery/recovery/data/mc10r-authorization-draft.json",
+    "sourceDocument": "docs/marea/customer-discovery/recovery/governance/AUTH-MC10-001-REV2-DRAFT.md",
+    "authorizationId": "AUTH-MC10-001",
+    "revision": 2,
+    "documentStatus": "DRAFT_PREPARED",
+    "authorizationStatus": "NOT_GRANTED",
+    "fieldworkPermission": false,
+    "externalContactAllowed": false,
+    "authorizingPerson": null,
+    "authorizationDate": null,
+    "expiryDate": null,
+    "fieldworkLead": null,
+    "controllerIdentity": null,
+    "privacyContact": null,
+    "approvalEvidence": null,
+    "legalReviewReference": null,
+    "approvedStorageReference": null,
+    "assignedInterviewers": [],
+    "permittedContactChannels": [],
+    "maximumAuthorizedContacts": 0,
+    "maximumCompletedInterviews": 0,
+    "note": "A draft approval record is not an approval. This block mirrors the ungranted revision 2 record; no human or legal value is invented."
+  },
+  "fieldworkReadiness": {
+    "recordRef": "docs/marea/customer-discovery/recovery/data/mc10r-fieldwork-readiness.json",
+    "readinessState": "PARTIALLY_READY",
+    "fieldworkStatus": "BLOCKED",
+    "prerequisiteClassifications": [
+      "VERIFIED_COMPLETE",
+      "PREPARED_PENDING_APPROVAL",
+      "EXTERNAL_DEPENDENCY",
+      "NOT_READY",
+      "BLOCKED"
+    ],
+    "rolesAllUnassigned": true,
+    "trainedInterviewers": 0,
+    "assignedInterviewers": 0,
+    "storage": {
+      "architectureDefined": true,
+      "localSyntheticTestsPass": true,
+      "provisioned": false,
+      "accessReviewed": false,
+      "operationallyApproved": false
+    },
+    "note": "PARTIALLY_READY is the honest readiness state after internal preparation. It is not permission to field and does not change FIELDWORK_STATUS = BLOCKED."
+  },
+  "deliverables": [
+    {
+      "id": "D1",
+      "path": "docs/marea/customer-discovery/recovery/MC10R-BASELINE-AND-SCOPE.md",
+      "owner": "lead"
+    },
+    {
+      "id": "D2",
+      "path": "docs/marea/customer-discovery/recovery/MC10R-RECOVERY-EXECUTION-PLAN.md",
+      "owner": "lead"
+    },
+    {
+      "id": "D3",
+      "path": "docs/marea/customer-discovery/recovery/MC10R-BLOCKER-REGISTER.md",
+      "owner": "lead"
+    },
+    {
+      "id": "D4",
+      "path": "docs/marea/customer-discovery/recovery/MC10R-DECISION-REGISTER.md",
+      "owner": "lead"
+    },
+    {
+      "id": "D5",
+      "path": "docs/marea/customer-discovery/recovery/methodology/MC10R-PI01-SAMPLING-RECONCILIATION.md",
+      "owner": "agent-a-methodologist"
+    },
+    {
+      "id": "D6",
+      "path": "docs/marea/customer-discovery/recovery/methodology/MC10R-PI02-SEGMENT-QUOTA-CONTRACT.md",
+      "owner": "agent-a-methodologist"
+    },
+    {
+      "id": "D7",
+      "path": "docs/marea/customer-discovery/recovery/pricing/MC10R-PI03-PRICING-FEASIBILITY.md",
+      "owner": "agent-b-pricing"
+    },
+    {
+      "id": "D8",
+      "path": "docs/marea/customer-discovery/recovery/methodology/MC10R-RESEARCH-PROTOCOL-AMENDMENT.md",
+      "owner": "agent-a-methodologist"
+    },
+    {
+      "id": "D9",
+      "path": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "owner": "agent-e-instruments"
+    },
+    {
+      "id": "D10",
+      "path": "docs/marea/customer-discovery/recovery/instruments/MC10R-INSTRUMENT-VERSION-REGISTER.md",
+      "owner": "agent-e-instruments"
+    },
+    {
+      "id": "D11",
+      "path": "docs/marea/customer-discovery/recovery/instruments/MC10R-ES-EN-RESEARCH-INSTRUMENTS.md",
+      "owner": "agent-e-instruments"
+    },
+    {
+      "id": "D12",
+      "path": "docs/marea/customer-discovery/recovery/instruments/MC10R-PT-TRANSLATION-REVIEW-PACKAGE.md",
+      "owner": "agent-e-instruments"
+    },
+    {
+      "id": "D13",
+      "path": "docs/marea/customer-discovery/recovery/governance/AUTH-MC10-001-REV2-DRAFT.md",
+      "owner": "agent-c-governance"
+    },
+    {
+      "id": "D14",
+      "path": "docs/marea/customer-discovery/recovery/governance/MC10R-AUTHORIZATION-GATE.md",
+      "owner": "agent-c-governance"
+    },
+    {
+      "id": "D15",
+      "path": "docs/marea/customer-discovery/recovery/governance/MC10R-LEGAL-REVIEW-PACKAGE.md",
+      "owner": "agent-c-governance"
+    },
+    {
+      "id": "D16",
+      "path": "docs/marea/customer-discovery/recovery/governance/MC10R-PRIVACY-AND-CONSENT-PACKAGE.md",
+      "owner": "agent-c-governance"
+    },
+    {
+      "id": "D17",
+      "path": "docs/marea/customer-discovery/recovery/data/MC10R-SECURE-DATA-ARCHITECTURE.md",
+      "owner": "agent-f-data"
+    },
+    {
+      "id": "D18",
+      "path": "docs/marea/customer-discovery/recovery/data/MC10R-DATA-CONTRACT.md",
+      "owner": "agent-f-data"
+    },
+    {
+      "id": "D19",
+      "path": "docs/marea/customer-discovery/recovery/data/MC10R-ACCESS-RETENTION-AND-DELETION.md",
+      "owner": "agent-f-data"
+    },
+    {
+      "id": "D20",
+      "path": "docs/marea/customer-discovery/recovery/data/MC10R-IMPLEMENTATION-AND-TEST-EVIDENCE.md",
+      "owner": "agent-f-data"
+    },
+    {
+      "id": "D21",
+      "path": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-HUMAN-INTERVIEWER-OPERATING-MODEL.md",
+      "owner": "agent-d-fieldwork"
+    },
+    {
+      "id": "D22",
+      "path": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-INTERVIEWER-TRAINING.md",
+      "owner": "agent-d-fieldwork"
+    },
+    {
+      "id": "D23",
+      "path": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-INTERVIEWER-OPERATIONS-KIT.md",
+      "owner": "agent-d-fieldwork"
+    },
+    {
+      "id": "D24",
+      "path": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-RECRUITMENT-TEMPLATES-ES-EN.md",
+      "owner": "agent-d-fieldwork"
+    },
+    {
+      "id": "D25",
+      "path": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-WAVE1-EXECUTION-PLAN.md",
+      "owner": "agent-d-fieldwork"
+    },
+    {
+      "id": "D26",
+      "path": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-FIELDWORK-CHECKLIST.md",
+      "owner": "agent-d-fieldwork"
+    },
+    {
+      "id": "D27",
+      "path": "docs/marea/customer-discovery/recovery/data/mc10r-recovery.contract.json",
+      "owner": "agent-f-data"
+    },
+    {
+      "id": "D28",
+      "path": "docs/marea/customer-discovery/recovery/data/mc10r-amendments.json",
+      "owner": "agent-f-data"
+    },
+    {
+      "id": "D29",
+      "path": "docs/marea/customer-discovery/recovery/data/mc10r-authorization-draft.json",
+      "owner": "agent-f-data"
+    },
+    {
+      "id": "D30",
+      "path": "docs/marea/customer-discovery/recovery/data/mc10r-fieldwork-readiness.json",
+      "owner": "agent-f-data"
+    },
+    {
+      "id": "D31",
+      "path": "scripts/check-marea-customer-recovery.mjs",
+      "owner": "agent-f-data"
+    },
+    {
+      "id": "D32",
+      "path": "scripts/check-marea-customer-recovery.test.mjs",
+      "owner": "agent-f-data"
+    },
+    {
+      "id": "D33",
+      "path": "docs/marea/customer-discovery/recovery/review/MC-10R-REVIEW.md",
+      "owner": "agent-g-auditor"
+    },
+    {
+      "id": "D34",
+      "path": "docs/marea/customer-discovery/recovery/MC10R-EXECUTIVE-REPORT.md",
+      "owner": "lead"
+    },
+    {
+      "id": "D35",
+      "path": "docs/marea/customer-discovery/recovery/MC-10R-DELIVERY.md",
+      "owner": "lead"
+    },
+    {
+      "id": "D36",
+      "path": "docs/marea/customer-discovery/recovery/MC10R-HANDOFF-TO-AUTHORIZED-FIELDWORK.md",
+      "owner": "lead"
+    }
+  ],
+  "validators": {
+    "existingResearchGate": {
+      "script": "scripts/check-marea-customer-research.mjs",
+      "checkPrefix": "CR",
+      "checks": 62,
+      "status": "UNCHANGED_62_OF_62",
+      "cr62Extension": "MULTILINGUAL_EN_ES_PT_ADDITIVE",
+      "note": "The existing gate keeps exactly 62 checks CR-01 to CR-62. CR-62 is strengthened inside the same check; no check is added, removed or weakened."
+    },
+    "recoveryGate": {
+      "script": "scripts/check-marea-customer-recovery.mjs",
+      "checkPrefix": "CRR",
+      "checkCount": "REPORTED_BY_RUN",
+      "staging": {
+        "IMPLEMENTATION_REQUIRED": "D1-D32",
+        "FINAL_ADDITIONAL_REQUIRED": "D33-D36"
+      }
+    },
+    "negativeSuites": [
+      "scripts/check-marea-customer-research.test.mjs",
+      "scripts/check-marea-customer-recovery.test.mjs"
+    ],
+    "networkAccess": false,
+    "newDependencies": 0
+  },
+  "statusModel": {
+    "recoveryWorkStatus": [
+      "NOT_STARTED",
+      "IN_PROGRESS",
+      "PARTIAL",
+      "READY_FOR_OWNER_REVIEW",
+      "PASS_INTERNAL_PREPARATION_SCOPE",
+      "BLOCKED",
+      "FAIL"
+    ],
+    "externalAuthorizationStatus": [
+      "NOT_GRANTED",
+      "DRAFT_PREPARED",
+      "PENDING_APPROVAL",
+      "GRANTED",
+      "EXPIRED",
+      "REVOKED"
+    ],
+    "fieldworkReadiness": [
+      "NOT_READY",
+      "PARTIALLY_READY",
+      "READY_PENDING_AUTHORIZATION",
+      "AUTHORIZED_NOT_STARTED",
+      "IN_PROGRESS",
+      "COMPLETED",
+      "BLOCKED"
+    ],
+    "documentAmendmentStatus": [
+      "DRAFT",
+      "REVIEW_REQUIRED",
+      "PROPOSED_NOT_EFFECTIVE",
+      "APPROVED_FOR_FUTURE_FIELDWORK",
+      "SUPERSEDED",
+      "REJECTED"
+    ],
+    "legalPrivacyDocumentStatus": [
+      "DRAFT_FOR_LEGAL_REVIEW",
+      "LEGAL_REVIEW_PENDING",
+      "APPROVED",
+      "REJECTED"
+    ],
+    "storageEvidenceStates": [
+      "ARCHITECTURE_DEFINED",
+      "LOCAL_SYNTHETIC_TESTS_PASS",
+      "PROVISIONED",
+      "ACCESS_REVIEWED",
+      "OPERATIONALLY_APPROVED"
+    ],
+    "fieldStatusVocabulary": [
+      "VALUE_PRESENT",
+      "PROPOSAL_PENDING_APPROVAL",
+      "OPEN",
+      "NULL"
+    ],
+    "deliveryStages": [
+      "IMPLEMENTATION",
+      "FINAL"
+    ],
+    "note": "Only real recorded human or qualified-professional action can produce GRANTED, APPROVED, PROVISIONED, ACCESS_REVIEWED or OPERATIONALLY_APPROVED. No agent may confer any of them."
+  },
+  "commercialInvariants": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "sourceIpClearance": "NOT_CLEARED",
+    "productSales": "BLOCKED",
+    "commercialPublication": "BLOCKED",
+    "productionDeployment": "NOT_AUTHORIZED",
+    "profitabilityNotEstablished": true,
+    "pilotSafetyGate": "BLOCKED",
+    "compatibilityTested": "NO",
+    "approvedPrices": 0,
+    "orderableProducts": 0
+  },
+  "changeControl": {
+    "stageTransitions": [
+      "IMPLEMENTATION -> FINAL by the Lead in the delivery commit only",
+      "recoveryWorkStatus READY_FOR_OWNER_REVIEW -> PASS_INTERNAL_PREPARATION_SCOPE only after the independent audit closes every blocking finding"
+    ],
+    "forbiddenTransitions": [
+      "recovery PASS read as fieldwork permission",
+      "DRAFT_PREPARED read as GRANTED",
+      "ARCHITECTURE_DEFINED read as PROVISIONED",
+      "REVIEW_REQUIRED read as APPROVED_FOR_FUTURE_FIELDWORK",
+      "PREPARED_PENDING_APPROVAL read as effective"
+    ],
+    "note": "No field may be edited to raise a status without a recorded external act and matching evidence. The recovery gate fails closed on any such attempt."
+  }
+}
