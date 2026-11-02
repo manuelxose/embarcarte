@@ -59,9 +59,13 @@ The recovery gate implements CRR check ids; the exact count is whatever the real
   instrument `1.0.0` preserved.
 - Deliverables: the D1-D36 inventory uses the canonical paths and owners; D1-D32 required at
   `IMPLEMENTATION`, D33-D36 only at `FINAL`; every recovery file is inventoried.
-- No fabricated attribution or participant claim in recovery prose (English, Spanish,
-  Portuguese heuristics), no positive participant/interview/price count, no PII, no
-  participant identity key, no audio or transcript.
+- No fabricated attribution or participant claim in recovery prose: the recovery-gate lexicon covers
+  English, Spanish and Portuguese role nouns and reporting verbs (including plural forms), quoted,
+  dash, reverse-order, parenthetical and indirect-speech attribution, customer-preference claims,
+  participant-percentage claims and positive completed participant/interview counts. That lexicon is
+  narrower than the research gate's CR-62 for forms outside this list, so CR-62 remains the primary
+  multilingual control and both gates run on the integrated tree. No positive participant/interview/
+  price count, no PII, no participant identity key, no audio or transcript in the recovery surface.
 - Consent transitions closed; withdrawal is terminal; the eight-step propagation chain and the
   accountable owner fields are present and never filled with an invented person.
 - Storage: only `ARCHITECTURE_DEFINED` and `LOCAL_SYNTHETIC_TESTS_PASS` are true; no role is
@@ -113,12 +117,12 @@ not a pre-declared target.
 node --test scripts/check-marea-customer-recovery.test.mjs
 ```
 
-Observed: 74 tests, 74 pass, 0 fail. Each case copies the package into an operating-system
-temporary directory, proves the unmutated fixture passes, applies exactly one mutation, and
-asserts that the expected `CRR` ids and exit code fail. Seven acceptance controls prove that
-prepared instrument wording, labelled training-synthetic fixtures, public-source quotations,
-zero counts, planning quotas, prohibited-form examples and hypothetical scripts are NOT
-rejected.
+Observed: 82 tests, 82 pass, 0 fail (74 initial cases plus 8 added by the MC10R-F01/F04 correction:
+four structured-permission string probes and four multilingual narrative/count claims). Each case copies
+the package into an operating-system temporary directory, proves the unmutated fixture passes, applies
+exactly one mutation, and asserts that the expected `CRR` ids and exit code fail. Acceptance controls
+prove that prepared instrument wording, labelled training-synthetic fixtures, public-source quotations,
+zero counts, planning quotas, prohibited-form examples and hypothetical scripts are NOT rejected.
 
 ### 3.5 Formatting
 

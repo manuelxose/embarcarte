@@ -423,38 +423,60 @@ const VERBS = [
   'declared',
   'declares',
   'dijo',
+  'dijeron',
   'dice',
+  'dicen',
   'coment[oó]',
+  'comentaron',
   'comenta',
   'se[nñ]al[oó]',
+  'se[nñ]alaron',
   'se[nñ]ala',
   'afirm[oó]',
+  'afirmaron',
   'afirma',
   'explic[oó]',
+  'explicaron',
   'explica',
   'indic[oó]',
+  'indicaron',
   'indica',
   'refiri[oó]',
+  'refirieron',
   'refiere',
   'report[oó]',
+  'reportaron',
   'reporta',
   'confirm[oó]',
+  'confirmaron',
   'confirma',
   'mencion[oó]',
+  'mencionaron',
   'menciona',
   'declar[oó]',
+  'declararon',
   'declara',
   'disse',
+  'disseram',
   'diz',
+  'dizem',
   'comentou',
+  'comentaram',
   'afirmou',
+  'afirmaram',
   'explicou',
+  'explicaram',
   'indicou',
+  'indicaram',
   'relatou',
+  'relataram',
   'relata',
   'confirmou',
+  'confirmaram',
   'mencionou',
+  'mencionaram',
   'declarou',
+  'declararam',
 ].join('|');
 
 const ARTICLE = '(?:(?:the|a|an|el|la|los|las|un|una|unos|unas|o|a|os|as|um|uma|uns|umas)\\s+)?';
@@ -489,9 +511,13 @@ const NARRATIVE_RULES = [
   {
     id: 'claimed-preference',
     re: new RegExp(
-      `\\b${ARTICLE}(?:${ROLE_NOUNS})\\s+(?:prefer|prefers|preferred|prefieren|prefiere|preferem|prefere|prefeririam)\\b`,
+      `\\b${ARTICLE}(?:${ROLE_NOUNS})\\s+(?:prefer|prefers|preferred|want|wants|wanted|demand|demands|demanded|would pay|prefieren|prefiere|prefirieron|quieren|quiere|quer[ií]an|demandan|demanda|pagar[ií]an|preferem|prefere|preferiram|querem|quer|queriam|exigem|exige|pagariam)\\b`,
       'iu',
     ),
+  },
+  {
+    id: 'participant-percentage-claim',
+    re: /\b\d{1,3}\s*%\s+(?:of\s+|de\s+|dos\s+|das\s+)?(?:participants?|owners?|installers?|retailers?|operators?|respondents?|entrevistados?|entrevistadas?|participantes?|propietarios?|propietarias?|armadores?|armadoras?|instaladores?|instaladoras?|operadores?|operadoras?|proprietários?|proprietárias?|retalhistas?|dueños?|dueñas?|gestores?|gestoras?|gerentes?)\b[^.\n]{0,40}\b(?:said|stated|reported|preferred|would pay|dijo|dijeron|afirmó|afirmaron|comentó|comentaron|señaló|señalaron|prefieren|prefirieron|pagarían|quieren|querían|disse|disseram|afirmou|afirmaram|preferem|preferiram|pagariam|querem|queriam)\b/i,
   },
 ];
 
@@ -499,6 +525,10 @@ const POSITIVE_COUNT_RULES = [
   {
     id: 'numbered-participant-claim',
     re: /\b([1-9]\d*)\s+(?:completed\s+|realizadas?\s+|realizados?\s+|conclu[ií]das?\s+|conclu[ií]dos?\s+)?(?:interviews?|participants?|entrevistas?|participantes)\s+(?:were|have been|had been|completed|conducted|recorded|realizad[oa]s?|completad[oa]s?|conclu[ií]d[oa]s?|conduzid[oa]s?)\b/giu,
+  },
+  {
+    id: 'numbered-role-completion-claim',
+    re: /\b([1-9]\d*)\s+(?:completed\s+|valid\s+|real\s+)?(?:interviews?|participants?|owners?|installers?|retailers?|operators?|respondents?|entrevistados?|entrevistadas?|participantes?|propietarios?|propietarias?|armadores?|armadoras?|instaladores?|instaladoras?|operadores?|operadoras?|proprietários?|proprietárias?|retalhistas?|dueños?|dueñas?|gestores?|gestoras?)\s+(?:were|was|have been|has been|completed|conducted|interviewed|recruited|surveyed|fueron|fue|han sido|foram|foi|realizad[oa]s?|completad[oa]s?|entrevistad[oa]s?|reclutad[oa]s?|conduzid[oa]s?)\b/giu,
   },
   {
     id: 'numbered-claim-verb',
@@ -1807,7 +1837,7 @@ function buildRunner(root) {
         walkJson(value, (node) => {
           if (!isPlainObject(node)) return;
           for (const [key, child] of Object.entries(node)) {
-            if (typeof child !== 'boolean' && child !== 'string') continue;
+            if (typeof child !== 'boolean' && typeof child !== 'string') continue;
             if (
               key === 'authorizationStatus' &&
               child !== 'NOT_GRANTED' &&
@@ -1831,7 +1861,8 @@ function buildRunner(root) {
               ['approvalEvidence', 'legalReviewReference', 'approvedStorageReference'].includes(
                 key,
               ) &&
-              child !== null
+              child !== null &&
+              child !== 'OPEN'
             ) {
               structured.push(`${path}: ${key}=${String(child)}`);
             }

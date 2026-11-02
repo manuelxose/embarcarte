@@ -57,10 +57,12 @@ lower operator/retailer minimums; SEG-04/05 minimum 5 in the table; experiment t
 some maxima).
 
 **Decision.** Create a single versioned segment-quota contract (`MC10R-SEGMENT-QUOTA-1.1.0-PROPOSED`)
-with all 14 fields per segment (ID, name, eligibility, screening rules, minimum qualitative interviews,
-target qualitative interviews, maximum planned interviews, pricing-module eligibility, required source
-diversity, geographic scope, research wave, stopping rule, evidence threshold, amendment version).
-Status `PROPOSED_NOT_EFFECTIVE`; the v1.0.0 table is preserved as an immutable historical reference.
+with all 15 fields per segment (the 14 enumerated fields — ID, name, eligibility, screening rules,
+minimum qualitative interviews, target qualitative interviews, maximum planned interviews,
+pricing-module eligibility, required source diversity, geographic scope, research wave, stopping rule,
+evidence threshold, amendment version — plus `priorVersionReading`, which records the preserved v1.0.0
+value). Status `PROPOSED_NOT_EFFECTIVE`; the v1.0.0 table is preserved as an immutable historical
+reference.
 All documents and datasets must point to the same effective version; the eight canonical segment names
 are never redefined.
 
@@ -100,6 +102,16 @@ requires later separate authorization.
 **Evidence.** D7, D27, `data/experiments.json`, `data/pricing-ladders.json`.
 
 **Status effect.** No price approval; no threshold change.
+
+**Addendum (MC-10R-F05 reconciliation).** The D7 matrix's `registeredPopulation` code is a
+*reporting-view* attribute, while the D27 recovery contract's code is the *experiment-eligibility*
+attribute. `MC10-GABOR-GRANGER.md` §6.1 reports SEG-07 and SEG-08 operator views separately and excludes
+them from the registered 4-of-5 monotonicity rule, which is why D7 marks those EXP-MC10-04 cells
+`NAMED_SEPARATE_VIEW`; the frozen `EXP-MC10-04` population does not name them as experiment subjects,
+which is why D27 marks them `NOT_NAMED`. Both are correct for their own attribute, neither makes any cell
+experiment-level eligible, and the canonical experiment-eligibility value is D27's. The distinction is
+recorded in D7 §4.3 and in D27 `sourceNote` so a reader cannot mistake the descriptive view for a
+registered experiment population.
 
 ---
 

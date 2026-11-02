@@ -78,9 +78,13 @@ D20 and D35; no count is asserted here for the new work.
 
 ## 6. Freeze integrity recomputation (independent, before amendments)
 
-The twelve frozen SHA-256 values were recomputed in a separate Node process using the documented
-canonicalisation (`JSON.stringify(sortKeys(value), null, 2)`, UTF-8, SHA-256, lowercase hex) and
-Python-independent file hashing:
+The twelve frozen SHA-256 values were recomputed in a separate Node process, each with the recipe
+recorded by the artefact that owns it: the ten experiment thresholds hash the sorted-key two-space JSON
+of the whole MC-09 experiment record (`JSON.stringify(sortKeys(value), null, 2)`, UTF-8, SHA-256,
+lowercase hex); the pricing-ladder self-freeze hashes the compact order-preserving serialization of
+`constructs` exactly as its own `freeze` block specifies (`JSON.stringify(constructs)`, no whitespace);
+and the instrument-source value is the raw SHA-256 of the frozen file bytes. The same independent run
+also hashed the container files for comparison:
 
 | Object | Recorded value (first 24 hex) | Recomputation |
 | --- | --- | --- |

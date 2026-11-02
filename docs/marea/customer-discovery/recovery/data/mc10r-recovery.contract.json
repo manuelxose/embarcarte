@@ -339,7 +339,7 @@
       "wave1ExperimentEligibleMax": 16,
       "wave1QualitativeOnlyMax": 12,
       "approvedPrices": 0,
-      "sourceNote": "Population codes follow the D2 section 3.4 refinement: EXP-MC10-04 names the owner segments plus the SEG-04 installer resale variant; EXP-MC10-05 names the owner segments plus SEG-07 and SEG-08. D7 section 4 additionally labels SEG-07 and SEG-08 as NAMED_SEPARATE_VIEW for EXP-MC10-04; D2 explicitly limits SEG-08 to EXP-MC10-05, so SEG-08/EXP-MC10-04 is recorded here as NOT_NAMED and the divergence is reported for owner reconciliation. Either reading leaves SEG-08 BELOW_REGISTERED_MINIMUM and therefore not experiment-level eligible."
+      "sourceNote": "Population codes follow the D2 section 3.4 refinement: EXP-MC10-04 names the owner segments plus the SEG-04 installer resale variant; EXP-MC10-05 names the owner segments plus SEG-07 and SEG-08. D7 section 4.3 additionally labels SEG-07 and SEG-08 as NAMED_SEPARATE_VIEW for EXP-MC10-04, but that is a descriptive reporting-view code from MC10-GABOR-GRANGER section 6.1 (views not counted toward the 4-of-5 monotonicity rule), not an experiment-eligibility population. This record's experiment-eligibility attribute is NOT_NAMED for SEG-07/SEG-08 on EXP-MC10-04, consistent with D2 and with the frozen experiment registry text; D7 carries an explicit reconciliation note (MC10R-F05 closure) that distinguishes the two attributes. Either reading leaves those cells below the registered minimum and not experiment-level eligible; no executed cell exists."
     }
   },
   "consentModel": {

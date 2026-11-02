@@ -629,6 +629,30 @@ test('CRR-17 rejects a fabricated completed-interview claim', () => {
   });
 });
 
+test('CRR-16 rejects a Spanish plural indirect-speech claim', () => {
+  expectChecksFailure(['CRR-16'], (root) => {
+    appendText(root, D20, 'Los armadores dijeron que pagarían por el aviso.');
+  });
+});
+
+test('CRR-16 rejects a Portuguese plural indirect-speech claim', () => {
+  expectChecksFailure(['CRR-16'], (root) => {
+    appendText(root, D20, 'Os proprietários disseram que o sistema falha.');
+  });
+});
+
+test('CRR-16 rejects a Spanish participant-percentage claim', () => {
+  expectChecksFailure(['CRR-16'], (root) => {
+    appendText(root, D20, '80% de los propietarios afirmaron que pagarían.');
+  });
+});
+
+test('CRR-17 rejects a completed count attributed to a participant role', () => {
+  expectChecksFailure(['CRR-17'], (root) => {
+    appendText(root, D20, '8 owners were interviewed for this study.');
+  });
+});
+
 test('CRR-18 rejects a participant email address in a recovery document', () => {
   expectChecksFailure(['CRR-18'], (root) => {
     appendText(root, D19, 'Contact the owner at owner.name@example.com for follow-up.');
@@ -658,6 +682,40 @@ test('CRR-25 rejects a recovery PASS read as fieldwork permission', () => {
       D20,
       'The MC-10R PASS grants fieldwork permission and the team may now contact owners.',
     );
+  });
+});
+
+test('CRR-25 rejects a bare granted authorization status in the structured draft', () => {
+  expectChecksFailure(['CRR-25', 'CRR-05', 'CRR-31'], (root) => {
+    editJson(root, D29, (draft) => {
+      draft.authorizationStatus = 'GRANTED';
+      draft.currentAuthorizationStatus = 'GRANTED';
+    });
+  });
+});
+
+test('CRR-25 rejects an invented approval-evidence string', () => {
+  expectChecksFailure(['CRR-25'], (root) => {
+    editJson(root, D28, (registry) => {
+      registry.amendments[0].approvalEvidence = 'APPROVED_BY_PROGRAMME_OWNER_2026';
+    });
+  });
+});
+
+test('CRR-25 rejects a non-null effective date on a candidate amendment', () => {
+  expectChecksFailure(['CRR-25'], (root) => {
+    editJson(root, D28, (registry) => {
+      registry.amendments[0].effectiveDate = '2026-11-02';
+    });
+  });
+});
+
+test('CRR-25 rejects an approved amendment status', () => {
+  expectChecksFailure(['CRR-25'], (root) => {
+    editJson(root, D28, (registry) => {
+      registry.amendments[0].status = 'APPROVED';
+      registry.amendments[0].reviewStatus = 'APPROVED';
+    });
   });
 });
 

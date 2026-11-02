@@ -459,6 +459,17 @@ because `0` modules/ladders/responses exist and the gate is closed.
 | `SEG-08__EXP-MC10-04__CONSTRUCT-01` | SEG-08 | CONSTRUCT-01 | 8 | 6 | 0 | `BELOW_REGISTERED_MINIMUM` | false | `NAMED_SEPARATE_VIEW` | `NOT_EXECUTED` | `QUALITATIVE_PRICE_OBJECTIONS_ONLY` |
 | `SEG-08__EXP-MC10-04__CONSTRUCT-02` | SEG-08 | CONSTRUCT-02 | 8 | 6 | 0 | `BELOW_REGISTERED_MINIMUM` | false | `NAMED_SEPARATE_VIEW` | `NOT_EXECUTED` | `QUALITATIVE_PRICE_OBJECTIONS_ONLY` |
 
+**Reconciliation note (MC-10R-F05, owner decision).** `registeredPopulation` in this D7 matrix is a
+*reporting-view* code: `NAMED_SEPARATE_VIEW` records that `MC10-GABOR-GRANGER.md` §6.1 reports SEG-07 and
+SEG-08 operator views separately and does **not** count them toward the registered 4-of-5 monotonicity
+rule. The recovery contract D27 uses `NOT_NAMED` for the same cells because it records the different
+attribute of *experiment-level eligibility*: the frozen `EXP-MC10-04` registered population names owners
+(and the SEG-04 resale variant), so a SEG-07/SEG-08 view can never produce an `EXP-MC10-04`
+experiment-level result. The two codes are therefore both correct for their own attribute and are not
+interchangeable: neither makes SEG-07 or SEG-08 experiment-level eligible, and SEG-08 remains
+`BELOW_REGISTERED_MINIMUM` in both readings. The canonical experiment-eligibility attribute is D27's
+`NOT_NAMED`; the descriptive view remains documented here only.
+
 ### 4.4 Matrix — `EXP-MC10-05` (Van Westendorp), all segments and both constructs
 
 | `cellKey` | Segment | Construct | `requiredN` | `plannedN` | `plannedNWave1` | `reachable` | `wave1ReachableIfAllPlannedComplete` | `registeredPopulation` | `experimentState` | `intendedInterpretation` |

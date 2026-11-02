@@ -232,8 +232,8 @@ are never silently recoded.
 `FIELDWORK_PERMISSION = FALSE`, `EXTERNAL_CONTACT_ALLOWED = FALSE`. Authorizer, signature, date, expiry,
 fieldwork lead, controller identity, privacy contact, approved storage, legal-review reference and
 interviewer roster remain `null`/`OPEN` because no real value exists. The Master Prompt, a PR approval,
-a passing validator and an agent's inference are explicitly not authorization. The full 30-field
-proposal is D13 and `data/mc10r-authorization-draft.json` (D29).
+a passing validator and an agent's inference are explicitly not authorization. The full 30-numbered-field
+(31 flat keys, because field 5 is compound) proposal is D13 and `data/mc10r-authorization-draft.json` (D29).
 
 ### 3.8 Legal, privacy and infrastructure states
 
@@ -295,7 +295,7 @@ MC-10R addendum appended to `docs/marea/customer-discovery/data-contract/MC10-DA
 | W-C | PI-03 pricing feasibility | B | D7 | Segment × experiment × construct × n matrix; unreachable cells explicitly classified; no threshold lowered |
 | W-D | Research-protocol amendment | A | D8 | Dated amendment binding PI-01/PI-02 decisions; PI-05 recorded as an instrument-scope boundary (D9-D12), not silently absorbed into the sampling amendment; wave sequence; approval state explicit |
 | W-E | IV-01 … IV-09 instrument amendments | E | D9, D10, D11, D12 | Nine dated amendments; ES/EN candidate text; PT review package; v1.0.0 retained; candidate hashes labelled non-effective |
-| W-F | Authorization rev 2 + gate | C | D13, D14 | 30 fields present; ungranted; fail-closed gate; release decision table |
+| W-F | Authorization rev 2 + gate | C | D13, D14 | 30 numbered fields (31 flat keys) present; ungranted; fail-closed gate; release decision table |
 | W-G | Legal/privacy review package | C | D15, D16 | GDPR/LOPDGDD/Lei 58/2019 analysis; controller OPEN; consent/retention; `DRAFT_FOR_LEGAL_REVIEW` |
 | W-H | Secure data infrastructure + synthetic evidence | F | D17–D20, D27–D30 | Three-layer model; access/retention/deletion; local synthetic tests; not provisioned |
 | W-I | Human interviewer operations and Wave 1 | D | D21–D26 | Roles, training, kit, ES/EN templates, Wave 1 plan, checklist; zero invented humans/sessions |
