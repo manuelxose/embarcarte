@@ -86,7 +86,7 @@ carries `status: APPLICABILITY_ASSESSED_NOT_CERTIFIED` and its own `qualifiedRev
 | `LEG-ROHS-2011-65-EU` | Directive 2011/65/EU (RoHS) | Governs hazardous substances in EEE | Open catch-all category from July 2019 | `EVD-MC11-313` |
 | `LEG-WEEE-2012-19-EU` | Directive 2012/19/EU (WEEE), as amended by (EU) 2024/884 | Producer responsibility for EEE | 65 % collection rate "from 2019" | `EVD-MC11-314` |
 | `LEG-GPSR-2023-988` | Regulation (EU) 2023/988 (GPSR) | General consumer product safety, residual risks | Applies 13 Dec 2024 ⚠ (date not rendered on the retrieved summary) | `EVD-MC11-308` |
-| `LEG-CRA-2024-2847` | Regulation (EU) 2024/2847 (CRA) | Horizontal cybersecurity for products with digital elements | In force 10 Dec 2024; reporting from 11 Sep 2026; main obligations 11 Dec 2027 | `EVD-MC11-301`, `301`–`303` |
+| `LEG-CRA-2024-2847` | Regulation (EU) 2024/2847 (CRA) | Horizontal cybersecurity for products with digital elements | In force 10 Dec 2024; reporting from 11 Sep 2026; main obligations 11 Dec 2027 | `EVD-MC11-301`–`303` |
 | `LEG-BAT-2023-1542` | Regulation (EU) 2023/1542 (Batteries) | Any battery incorporated in a product | Applies 18 Feb 2024; removability by 2027; labelling from 2026, QR 2027 | `EVD-MC11-309`, `310` |
 | `LEG-MED-2014-90-EU` | Directive 2014/90/EU (MED) | Only if a product is marine equipment on an EU-flag ship under the conventions | — (transposition date not rendered) | `EVD-MC11-311` |
 | `LEG-RCD-2013-53-EU` | Directive 2013/53/EU (Recreational Craft) | Adjacent: governs craft, designated components, propulsion engines | — | `EVD-MC11-315` |
@@ -132,6 +132,104 @@ Counts over the 22 rows (computed from `data/conformity-applicability.json`): RE
 (the 19 hardware rows plus `NAV`); Batteries **12** (of which 9 are conditional on a battery being present);
 MED **0**; RCD **0**; packaging **19**. LVD, MED and RCD appear only as non-applicable rows — zero by
 reasoning, not by omission: §5.2, §7 and §7.1 give the reasons and the re-assessment triggers.
+
+### 4.1 Per-family conformity parameters
+
+The matrix above says *which* acts apply. The blocks below state, per family, the remaining conformity
+parameters the mission requires: assessment route, notified-body potential, technical-file obligations, test
+evidence needed, DoC requirements, marking and language, lifecycle obligations, responsible person, cost
+confidence and status. The machine-readable version of every element is in
+`data/conformity-applicability.json` (same row IDs).
+
+**NAV (NAV-ESSENTIAL, NAV-PRO)**
+- Notified body: potential only if the product were classified "important"/"critical" under the CRA; classification undetermined.
+- Assessment: CRA risk assessment + technical documentation + internal control (default class).
+- Technical file: cybersecurity risk assessment, security features, SBOM, vulnerability-handling process, support-period statement, CRA DoC.
+- Test evidence: update/install integrity, authentication and session security, pen-test of data paths, vulnerability-handling dry run.
+- DoC/marking: CRA DoC and CE marking apply to the software product once obligations apply — currently prohibited; no DoC exists.
+- Language: security and support information in the market language (ES, PT).
+- Lifecycle: updates for the support period; reporting obligations from 11 Sep 2026 once placed on the market; SBOM maintained across releases.
+- Responsible person: `NOT_ASSIGNED`; cost confidence `UNKNOWN`; status `APPLICABILITY_ASSESSED_NOT_CERTIFIED`.
+
+**HUB (HUB-STANDARD, HUB-PRO)**
+- Notified body: **assumed required** (RED Modules B+C or H); CRA third-party assessment if classified "important".
+- Assessment: RED route with the RED carrying EMC/safety/spectrum requirements; RoHS self-declaration; CRA; GPSR risk analysis.
+- Technical file: RED Annex V content, module host-integration assessment, 10-year retention, firmware version control.
+- Test evidence: radio spectrum per interface, EMC, safety, RF exposure, ingress/thermal (candidate), security penetration.
+- DoC/marking: RED Annex VI DoC signed by a named person; CE + notified-body number; manufacturer/importer address; serial; frequency bands and max RF power; restriction states.
+- Language: Portuguese instructions required for PT (verified); Spanish rule unverified.
+- Lifecycle: production conformity, re-assessment on module/firmware change, corrective action/recall; WEEE and packaging producer duties; CRA updates.
+- Responsible person: `NOT_ASSIGNED`; cost confidence `UNKNOWN`; status `APPLICABILITY_ASSESSED_NOT_CERTIFIED`.
+
+**AIS (AIS-RECEIVER, AIS-CONNECTED)**
+- Notified body: **assumed required** (receiver parameters and radio EMC are unlikely to be fully covered by harmonised standards alone).
+- Assessment: RED route; receive-only status does not remove RED; **no transmitter is proposed and none may be added**.
+- Technical file: RED Annex V, receiver performance envelope, antenna/splitter conditions, explicit receive-only declaration, decoder licence position.
+- Test evidence: receiver spectrum parameters (sensitivity, blocking, spurious, image rejection), EMC, safety, RF exposure record, decoder security review.
+- DoC/marking: RED Annex VI DoC; CE + notified-body number; serial; receiver/frequency information; receive-only statement.
+- Language: Portuguese required for PT; Spanish unverified; receive-only limitation must be explicit.
+- Lifecycle: production conformity, re-assessment on module/decoder change, WEEE/packaging duties, CRA updates.
+- Responsible person: `NOT_ASSIGNED`; cost confidence `UNKNOWN`; status `APPLICABILITY_ASSESSED_NOT_CERTIFIED`.
+
+**PILOT (PILOT-COASTAL, PILOT-SAIL, PILOT-PRO)**
+- Notified body: not required for EMC; **no functional-safety approval regime exists** for a recreational autopilot, which is a burden, not a relief.
+- Assessment: EMC self-declaration; CRA; **GPSR risk analysis and safety documentation as the product-safety framework**; independent engineering verification separate from law.
+- Technical file: EMC design (drive, harness, filtering), safety concept (watchdog, E-stop, end-stop, takeover), commissioning records, hazard log.
+- Test evidence: motor-drive EMC campaign, immunity suite, bench motor and E-stop tests, HIL fault injection, supervised sea trials, independent review — **none executed; PILOT_SAFETY_GATE = BLOCKED**.
+- DoC/marking: EMC DoC once (and only if) conformity is achieved; CE; serial; explicit limitation-of-use statements in the manual.
+- Language: ES/PT operator and installer documentation.
+- Lifecycle: production conformity, installation change control, recall/remedy, safety-relevant update assessment.
+- Responsible person: `NOT_ASSIGNED` (also safety-case owner and competent marine engineer sign-off); cost confidence `UNKNOWN`; status `APPLICABILITY_ASSESSED_NOT_CERTIFIED`.
+
+**SENSE (WIND, POWER, BILGE, TANKS, ENV, ESSENTIALS, SAIL, SYSTEMS)**
+- Notified body: per module — RED route for wireless modules, self-declaration for wired; kits inherit per-item assessment.
+- Assessment: RED or EMC depending on the frozen radio decision; RoHS; CRA where digital; GPSR; packaging.
+- Technical file: per-module RED/EMC documentation, wetted-material and accuracy evidence, calibration records, battery documentation where applicable.
+- Test evidence: radio/EMC per module, accuracy and repeatability, ingress, environmental, battery safety where applicable.
+- DoC/marking: per-item DoC; CE; serial; RF band/power for radio items; WEEE bin and packaging labels.
+- Language: ES/PT installation and safety information.
+- Lifecycle: calibration/maintenance statements, WEEE/packaging duties, CRA updates, battery removability where relevant.
+- Responsible person: `NOT_ASSIGNED`; cost confidence `UNKNOWN`; status `APPLICABILITY_ASSESSED_NOT_CERTIFIED`.
+
+**WATCH (WATCH-CORE, WATCH-PLUS)**
+- Notified body: **assumed required** (multi-radio device with cellular integration); CRA third-party assessment if classified "important".
+- Assessment: RED route (cellular/Wi-Fi/BLE/GNSS), RoHS, WEEE, Batteries, CRA, GPSR, packaging.
+- Technical file: RED Annex V per interface, module certificates and host integration, RF exposure, SBOM (device + cloud client), battery documentation.
+- Test evidence: radio parameters, coexistence, RF exposure, EMC, battery safety/thermal, connectivity-loss and alert-path tests, cloud endpoint pen-test.
+- DoC/marking: RED Annex VI DoC; CE + notified-body number; serial and device identity; frequency bands and RF power; explicit "not a certified alarm" limitation.
+- Language: ES/PT security, privacy and safety information.
+- Lifecycle: support period including service lifetime, CRA incident reporting from 11 Sep 2026, battery removability by 2027, service-discontinuation notice.
+- Responsible person: `NOT_ASSIGNED` (manufacturer, service provider and responsible operator roles); cost confidence `UNKNOWN`; status `APPLICABILITY_ASSESSED_NOT_CERTIFIED`.
+
+**DISPLAY (DISPLAY-7, DISPLAY-LARGE-CONDITIONAL)**
+- Notified body: assumed for the radio variant; self-declaration if wired. `DISPLAY-LARGE-CONDITIONAL` cannot be assessed before hardware selection.
+- Assessment: RED or EMC; RoHS; CRA; GPSR (thermal/optical/mounting); packaging.
+- Technical file: RED/EMC documentation including panel and compute-module supplier declarations, thermal design, kiosk/lockdown configuration.
+- Test evidence: radio or EMC campaign, thermal/sunlight, ingress, vibration/impact, pen-test.
+- DoC/marking: DoC per act; CE (+ notified-body number); serial; frequency bands if radio.
+- Language: ES/PT instructions and safety information.
+- Lifecycle: re-assessment on panel/module change; WEEE screen category reporting; CRA updates.
+- Responsible person: `NOT_ASSIGNED`; cost confidence `UNKNOWN`; status `APPLICABILITY_ASSESSED_NOT_CERTIFIED`.
+
+**WEATHER (WEATHER-STANDARD, WEATHER-PRO)**
+- Notified body: none (no product placed on the market as defined).
+- Assessment: none under the assessed acts; data-licensing and consumer-law obligations sit outside this register.
+- Technical file: none under CE acts; provenance and licence records for data are a separate obligation.
+- Test evidence: none required by the assessed acts; the exclusion lapses if a client application is placed on the market.
+- DoC/marking: none; no CE marking may be applied to a service.
+- Language: service terms and consumer information in ES/PT.
+- Lifecycle: provider-term compliance and data-rights maintenance, not product lifecycle.
+- Responsible person: `NOT_ASSIGNED`; cost confidence `UNKNOWN`; status `APPLICABILITY_ASSESSED_NOT_CERTIFIED` (no applicable act).
+
+**FLEET (FLEET-START, FLEET-BUSINESS, FLEET-ENTERPRISE)**
+- Notified body: none.
+- Assessment: none under the assessed acts; B2B contracting, data protection and security-of-processing sit outside this register.
+- Technical file: none under CE acts; DPA and tenant-isolation documentation are separate obligations.
+- Test evidence: none required by the assessed acts; the exclusion lapses if a client application or edge device is placed on the market.
+- DoC/marking: none; no CE marking may be applied to a SaaS platform.
+- Language: ES/PT contractual and service information.
+- Lifecycle: service lifecycle and data-governance obligations, not product lifecycle.
+- Responsible person: `NOT_ASSIGNED` (controller/processor roles also undesignated); cost confidence `UNKNOWN`; status `APPLICABILITY_ASSESSED_NOT_CERTIFIED` (no applicable act).
 
 ## 5. Cross-cutting determinations (with the reasoning that makes them reusable)
 

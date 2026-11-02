@@ -59,7 +59,7 @@ document and no internal opinion closes any blocker in this register.
 | CON-17 | CRA reporting readiness absent (reporting already in force) | HIGH | OPEN | all digital products |
 | CON-18 | WEATHER/FLEET software scope decision (client application or edge device) | MEDIUM | OPEN | WEATHER, FLEET |
 
-Counts: 8 `CRITICAL`, 9 `HIGH`, 1 `MEDIUM`. None is closed. None can be closed by this milestone.
+Counts: 8 `CRITICAL`, 8 `HIGH`, 2 `MEDIUM`. None is closed. None can be closed by this milestone.
 
 ## 2. Blocker detail
 
@@ -356,7 +356,7 @@ Reading the graph:
 | "NMEA 0183 compliant" / "conforms to NMEA 0183" | CON-11 |
 | "IP67 / IPX7 / waterproof" or any IP rating | CON-04 (no IEC 60529 test executed) |
 | "Marine grade" / "IEC 60945 tested" | CON-03, CON-04 |
-| "MED approved" / wheel mark | CON-10, CON-14 (MED outside scope; no approval exists) |
+| "MED approved" / wheel mark | D23 §7 (MED outside scope, no approval exists) + CON-14 (national rule unverified) |
 | "CRA compliant" / "cyber-secure certified" | CON-07, CON-17 |
 | "AIS transponder" / any transmit capability | CON-12 |
 | "Battery replaceable by the user" unless designed and documented | CON-08 |

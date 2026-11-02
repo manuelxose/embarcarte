@@ -338,10 +338,11 @@ pre-scan, not a thermal image, not an ingress trial. Every row above is a plan, 
 
 ## 13. Closing statement
 
-The CE/EMC/RED route is **planned but not started**. For the twelve configurations with an intentional radio
-function the realistic route is Modules B+C (or H) with a notified body; for the wired configurations it is
-manufacturer self-declaration under the EMC Directive; RoHS and the CRA apply on top in every hardware and
-software case. None of the evidence such a route requires exists: no frozen design, no designated
-manufacturer, no technical file, no accredited test, no notified body, no declaration of conformity, no CE
-mark. This document defines the sequence that would have to be executed — it does not shorten it, and it
-does not replace the external parties whose assessments are mandatory.
+The CE/EMC/RED route is **planned but not started**. For the thirteen configurations in which an intentional
+radio function is present or assumed (two of them kits whose composition is conditional) the realistic route
+is Modules B+C (or H) with a notified body; for the wired configurations it is manufacturer self-declaration
+under the EMC Directive; RoHS and the CRA apply on top in every hardware and software case. None of the
+evidence such a route requires exists: no frozen design, no designated manufacturer, no technical file, no
+accredited test, no notified body, no declaration of conformity, no CE mark. This document defines the
+sequence that would have to be executed — it does not shorten it, and it does not replace the external
+parties whose assessments are mandatory.

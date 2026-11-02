@@ -1,0 +1,89 @@
+{
+  "contractId": "MAREA-MC11-HARDWARE-EVIDENCE-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-11",
+  "date": "2026-11-02",
+  "owner": "bom-cost-engineer",
+  "kind": "evidence-shard",
+  "member": "bom-cost-engineer",
+  "note": "Economics shard. It re-cites four sources already retrieved by the sourcing workstream in this same session (recorded in data/evidence/sourcing.json) for DIFFERENT economic assertions, because the economics workstream retrieved no external page of its own: the single ECB rate fetch attempt failed with HTTP 404 from the fetch endpoint. Each record states that it is a re-citation, not an independent retrieval.",
+  "evidence": [
+    {
+      "evidenceId": "EVD-MC11-201",
+      "claimId": "CLM-MC11-201",
+      "url": "https://www.ti.com/product/SN65HVD78/part-details/SN65HVD78D",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The SN65HVD78D product page publishes discrete quantity-banded unit prices (bands 1, 100, 250 and 1000) and does not state VAT treatment, which supports using a published tier per volume and treating the price as VAT_UNKNOWN rather than assuming an ex-VAT basis.",
+      "limitations": "Re-citation (not an independent re-retrieval) of the source recorded in data/evidence/sourcing.json; the page was retrieved by the sourcing workstream on 2026-11-02. No page was fetched by the economics workstream and no VAT statement was found.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "EBOM-HUB-STANDARD-01-L003",
+        "EBOM-HUB-PRO-01-L003",
+        "EBOM-SENSE-WIND-01-L011",
+        "EBOM-AIS-RECEIVER-01-L003",
+        "SCN-HUB-1-BASE",
+        "SCN-AIS-1-BASE"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-202",
+      "claimId": "CLM-MC11-202",
+      "url": "https://www.ti.com/product/LMR33630/part-details/LMR33630ADDA",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The LMR33630ADDA product page publishes quantity-banded unit list prices but does not state VAT treatment or any volume-negotiation basis, which supports treating the observed amount as a single published list price (VAT_UNKNOWN) and refusing to extrapolate a wholesale discount from it.",
+      "limitations": "Re-citation (not an independent re-retrieval) of the source recorded in data/evidence/sourcing.json, retrieved by the sourcing workstream on 2026-11-02. The external inductor, capacitors and MOSFET that the device requires are NOT included in the published device price.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "EBOM-HUB-STANDARD-01-L005",
+        "EBOM-HUB-STANDARD-01-L006",
+        "EBOM-WATCH-CORE-01-L005",
+        "EBOM-SENSE-POWER-01-L002",
+        "EBOM-DISPLAY-7-01-L003",
+        "EBOM-AIS-RECEIVER-01-L005"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-203",
+      "claimId": "CLM-MC11-203",
+      "url": "https://es.rs-online.com/web/p/can-interface-ics/2528889",
+      "publisher": "RS Components (RS Group plc)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "DISTRIBUTOR_WEBPAGE",
+      "supportedAssertion": "The only EUR-denominated component prices observed in this programme are VAT-excluded authorised-distributor pack-of-5 prices for a CAN transceiver. No EUR-denominated price exists for any component the current engineering BOMs actually use, which is why every BOM conversion in D21 depends on a labelled USD-to-EUR assumption rather than an observed EUR price.",
+      "limitations": "Re-citation (not an independent re-retrieval) of the source recorded in data/evidence/sourcing.json, retrieved by the sourcing workstream on 2026-11-02. The component is not used in any current BOM (NMEA 2000 is BLOCKED), so this source supports an absence-of-EUR-evidence finding, not a cost line.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "D21 foreign-exchange treatment",
+        "FX-USD-EUR-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-204",
+      "claimId": "CLM-MC11-204",
+      "url": "https://jlcpcb.com/",
+      "publisher": "JLCPCB",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The published PCB fabrication prices are advertised minimum-configuration \"from\" prices for 1-2 layer small batches, not prices for a MAREA 4-6 layer ENIG controlled-impedance board, so they cannot be adopted as a manufacturing BOM line and the PCB fabrication lines remain UNKNOWN.",
+      "limitations": "Re-citation (not an independent re-retrieval) of the source recorded in data/evidence/sourcing.json, retrieved by the sourcing workstream on 2026-11-02. Advertised prices exclude shipping, stencil/tooling for the order, test, VAT and EU handling.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "MBOM-HUB-STANDARD-01-L012",
+        "MBOM-WATCH-CORE-01-L012",
+        "COST-03"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    }
+  ]
+}

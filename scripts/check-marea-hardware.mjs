@@ -1021,11 +1021,19 @@ export const CHECKS = [
     rule: 'WATCH guaranteed alert delivery rejected',
     run(data) {
       const out = [];
+      const NEGATION = /\b(not|no|never|without|cannot|non)\b|-?non-?$/i;
       for (const text of collectStrings(data, /guarantee/i)) {
-        if (/\b(not|no|never|without|prohibit|unsupported|not guaranteed)\b/i.test(text)) continue;
-        if (/alert|notification|delivery|message/i.test(text)) {
-          out.push(`guaranteed alert delivery claimed: "${text.slice(0, 90)}"`);
+        const lower = text.toLowerCase();
+        const re = /guarantee/g;
+        let match;
+        let flagged = false;
+        while (!flagged && (match = re.exec(lower)) !== null) {
+          const before = lower.slice(Math.max(0, match.index - 40), match.index);
+          if (NEGATION.test(before) || /non[-\s]?$/.test(before)) continue;
+          const around = lower.slice(match.index, match.index + 70);
+          if (/alert|notification|delivery|message/i.test(around)) flagged = true;
         }
+        if (flagged) out.push(`guaranteed alert delivery claimed: "${text.slice(0, 90)}"`);
       }
       for (const { key, value, path } of collectFields(data, (k) =>
         /alertDeliveryGuarantee/i.test(k),
