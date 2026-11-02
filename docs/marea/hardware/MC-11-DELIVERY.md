@@ -10,14 +10,15 @@
 | Branch | `feature/marea-mc11-hardware-sourcing-conformity` |
 | Base commit | `67131782edaf8f3f8327ba79e5c5b4c554b137b0` (verified MC-10R HEAD, local = remote) |
 | Draft PR | [#18](https://github.com/manuelxose/embarcarte/pull/18) — `OPEN`, draft, `MERGEABLE`, base `feature/marea-mc10r-fieldwork-recovery`, **not merged** |
-| Independent review | `docs/marea/hardware/review/MC-11-REVIEW.md`; verdict `PARTIAL`; findings F01–F09 (no BLOCKING) |
+| Independent review | `docs/marea/hardware/review/MC-11-REVIEW.md`; full milestone `PARTIAL`; 9 findings, all `CLOSED_VERIFIED` at `0eceb86`; internal feasibility scope `PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE` |
 
 ## 1. Verdict
 
 ```
 MC11_VERDICT                       = PARTIAL
-MC11_INTERNAL_FEASIBILITY_SCOPE    = PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE
+MC11_INTERNAL_FEASIBILITY_SCOPE    = PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE (re-verified at 0eceb86)
 MC11_FORMAL_PROCUREMENT_EVIDENCE   = BLOCKED_OR_NOT_OBTAINED
+INDEPENDENT_FINDINGS               = 9/9 CLOSED_VERIFIED, 0 open BLOCKING/MAJOR/MINOR
 ```
 
 Full MC-11 `PASS` is impossible: the authoritative registry requires **real supplier quotation
@@ -65,14 +66,15 @@ blocked, not rewritten.
 | `npm run test:seo` | PASS — 101 sitemap URLs, canonical, reciprocal hreflang, JSON-LD, private noindex |
 | `npm run test:backup` | PASS |
 | `npm run build` | exit 0 |
-| `npm run test:e2e` | exit 0 (Playwright suite) |
+| `npm run test:e2e` | exit 0 — Playwright 15/15 passed |
 | `npm run format:check` | PASS |
 | `npm audit --omit=dev --audit-level=high` | 0 vulnerabilities |
 | `git diff --check` | clean |
 
 The independent auditor re-ran the node-based gates itself (all exit 0) and independently recomputed
 all 11 EBOMs, 11 MBOMs, 90 scenarios, FX conversions, architecture and portfolio scores, conformity
-and risk counts with **zero mismatches to the cent**.
+and risk counts with **zero mismatches to the cent**. `npm run build` and `npm run test:e2e` were run by
+the Lead only (auditor did not re-run them) and are recorded as Lead-reported evidence.
 
 ## 5. Independent review and corrections
 
@@ -84,9 +86,17 @@ and risk counts with **zero mismatches to the cent**.
 - Corrections applied in the audit-correction commit (`73ab0ac`): D3 aligned with scored
   recommendations and JSON; D31 corrected; D22 rounding unified; BOM typo fixed; 22 evidence records
   marked `VERIFIED_BY_AUDITOR`; manifest updated; branch pushed and draft PR #18 opened. F06, F07 and
-  F09 are addressed by this delivery commit.
-- Re-verification of the corrections by the same independent auditor is the remaining closure step;
-  a finding is not closed until the auditor verifies it.
+  F09 were addressed by the delivery commit.
+- **Re-verification performed by the same independent auditor at commit
+  `0eceb8663204e6b5d82a137bb0cb50b742e667dc`:** revised verdict — full MC-11 `PARTIAL` (unchanged,
+  no formal quotation), internal feasibility scope **`PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE`**,
+  no `FAIL`, no fabrication. Per-finding: **9/9 `CLOSED_VERIFIED`**, 0 open BLOCKING/MAJOR/MINOR.
+  `MC11-F03` was **withdrawn by the auditor**: it re-checked the scenario arithmetic and confirmed the
+  Lead was right that `COST-16` tooling is already inside the 437.13 EUR HUB subtotal and that
+  `toolingAmortizationEur` duplicates it and must not be added again. The auditor re-ran
+  `test:hardware` 54/54, `test:hardware:unit` 59/59, `test:bundles` 35/35, `test:products` 52/52,
+  `format:check` and `git diff --check`, all exit 0. The auditor's report and
+  `data/review-findings.json` record the corrections and the post-audit record refreshes PA-01–PA-05.
 
 ## 6. Restrictions preserved (verified, not merely stated)
 
@@ -130,7 +140,8 @@ inputs. Neither milestone is started by MC-11, and MC-10 is **not** complete.
 
 ```
 DELIVERED                  = YES (internal engineering feasibility package)
-INDEPENDENT_REVIEW         = PARTIAL (no BLOCKING findings; corrections applied, re-verification pending)
+INDEPENDENT_REVIEW         = PARTIAL (full milestone; 9/9 findings CLOSED_VERIFIED at 0eceb86,
+                             internal feasibility scope = PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE)
 MERGED                     = NO
 DEPLOYED                   = NO
 PUBLISHED                  = NO

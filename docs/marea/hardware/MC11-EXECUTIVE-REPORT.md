@@ -15,9 +15,9 @@
 | Estado | **PARTIAL — viabilidad interna de ingeniería entregada; evidencia formal de cotizaciones de proveedor NO OBTENIDA** |
 | Rama | `feature/marea-mc11-hardware-sourcing-conformity` |
 | Base | MC-10R `67131782edaf8f3f8327ba79e5c5b4c554b137b0` (PR #17 abierto, en borrador, sin fusionar) |
-| Commit de auditoría | `bef2f4b`; correcciones `73ab0ac`; commit de entrega: cabeza de la rama |
+| Commit de auditoría | `bef2f4b`; correcciones `73ab0ac`; entrega `0eceb86`; reverificación independiente en `0eceb86` |
 | PR | [#18](https://github.com/manuelxose/embarcarte/pull/18), borrador, apilado sobre `feature/marea-mc10r-fieldwork-recovery`, sin fusionar |
-| Revisión independiente | `PARTIAL` (sin hallazgos BLOCKING; 1 MAJOR, 4 MINOR, 4 INFORMATIONAL), ver D35 |
+| Revisión independiente | Hito completo `PARTIAL`; **alcance interno `PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE`**; 9/9 hallazgos `CLOSED_VERIFIED` (0 abiertos), ver D35 |
 | Entregables | D1–D37 (17 documentos de ingeniería, 18 registros JSON, validador de 54 comprobaciones y 59 pruebas negativas) |
 | Evidencia de aprovisionamiento formal | `MC11_FORMAL_PROCUREMENT_EVIDENCE = BLOCKED_OR_NOT_OBTAINED` (0 proveedores contactados, 0 RFQ enviadas, 0 cotizaciones) |
 
@@ -152,11 +152,12 @@ Subtotal BASE conocido (EUR, **no** es coste unitario), volumen 100/1 000: HUB 4
 
 ## 10. Auditoría y evidencia de ejecución
 
-- **Auditor independiente (`qa-reviewer`)** sobre el commit fijo `bef2f4b`: veredicto **PARTIAL**; sin hallazgos BLOCKING; 1 MAJOR (`MC11-F01`: rama sin remoto ni PR en el momento de la auditoría), 4 MINOR (composición de divisas en D31, base del subtotal con utillaje, arquitectura provisional de AIS/DISPLAY, errata «MCU-11») y 4 INFORMATIONAL.
-- **Correcciones aplicadas** en `73ab0ac`: D3 alineado con las recomendaciones puntuadas, D31 corregido, redondeo 27,5 % unificado, errata corregida en ambas BOM, 22 registros de evidencia marcados `VERIFIED_BY_AUDITOR`, manifiesto actualizado. Queda la reverificación independiente de esas correcciones.
-- **Fuentes verificadas por el auditor**: 11 de 13 muestreadas (Comisión Europea/CRA, NMEA 2000 y 0183, TI, Raspberry Pi, ST, u-blox EOL, Microchip NRND, JLCPCB, AISLER); 2 inaccesibles registradas como tales.
+- **Auditor independiente (`qa-reviewer`)**, ronda 1 sobre el commit fijo `bef2f4b`: veredicto **PARTIAL**; sin hallazgos BLOCKING; 1 MAJOR (`MC11-F01`: rama sin remoto ni PR en el momento de la auditoría), 4 MINOR (composición de divisas en D31, base del subtotal con utillaje, arquitectura provisional de AIS/DISPLAY, errata «MCU-11») y 4 INFORMATIONAL.
+- **Correcciones aplicadas** en `73ab0ac`: D3 alineado con las recomendaciones puntuadas, D31 corregido, redondeo 27,5 % unificado, errata corregida en ambas BOM, 22 registros de evidencia marcados `VERIFIED_BY_AUDITOR`, manifiesto actualizado; rama publicada y PR borrador #18 abierto.
+- **Reverificación independiente en `0eceb86`**: veredicto revisado — hito completo **PARTIAL** (sin cotización formal), **alcance interno de viabilidad `PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE`**, sin condición FAIL y sin fabricación de evidencia; **9/9 hallazgos `CLOSED_VERIFIED`** (0 abiertos BLOCKING/MAJOR/MINOR). El auditor **retiró `MC11-F03`**: recomprobó la aritmética y confirmó que el utillaje `COST-16` ya está dentro del subtotal y que `toolingAmortizationEur` lo duplica, por lo que no debe sumarse otra vez. Se registraron cinco refrescos documentales (PA-01…PA-05) sin cambio de veredicto técnico.
+- **Fuentes verificadas por el auditor**: 11 de 13 muestreadas (Comisión Europea/CRA, NMEA 2000 y 0183, TI, Raspberry Pi, ST, u-blox EOL, Microchip NRND, JLCPCB, AISLER); 2 inaccesibles registradas como tales; 22 registros de evidencia marcados como verificados por el auditor, ninguno de una fuente inaccesible.
 - **Cálculos recalculados por el auditor**: 11 BOM de ingeniería (155 líneas), 11 BOM de fabricación (171 líneas), 90 escenarios, conversión FX de 34 líneas USD, 33 puntuaciones de arquitectura, 9 puntuaciones de portafolio, conteos de conformidad y riesgo — **0 discrepancias al céntimo**.
-- **Puertas de validación** (ejecutadas por el Lead, y de nuevo por el auditor): `test:hardware` **54/54**, `test:hardware:unit` **59/59**, `test:products` 52/52, `test:products:unit` 106/106, `test:bundles` 35/35, `test:bundles:unit` 60/60, `test:brand` 21/21, `test:brand:unit` 13/13, `test:market` 40/40, `test:market:unit` 43/43, `test:customer-research` 62/62, `test:customer-research:unit` 111/111, `test:customer-recovery` 32/32, `test:customer-recovery:unit` 82/82, i18n/commerce/SEO/backup PASS, `format:check` PASS, `npm audit` 0 vulnerabilidades, `git diff --check` limpio, `npm run build` exit 0.
+- **Puertas de validación** (ejecutadas por el Lead, y de nuevo por el auditor las de Node): `test:hardware` **54/54**, `test:hardware:unit` **59/59**, `test:products` 52/52, `test:products:unit` 106/106, `test:bundles` 35/35, `test:bundles:unit` 60/60, `test:brand` 21/21, `test:brand:unit` 13/13, `test:market` 40/40, `test:market:unit` 43/43, `test:customer-research` 62/62, `test:customer-research:unit` 111/111, `test:customer-recovery` 32/32, `test:customer-recovery:unit` 82/82, i18n/commerce/SEO/backup PASS, `format:check` PASS, `npm audit` 0 vulnerabilidades, `git diff --check` limpio, `npm run build` exit 0, `npm run test:e2e` exit 0 con **15/15** pruebas Playwright.
 - **Bloqueos restantes**: sin cotizaciones reales, sin prototipo, sin ensayos, sin certificación, sin identidad legal de fabricante, sin derechos de marca ni de propiedad intelectual, sin evidencia de cliente.
 
 ---

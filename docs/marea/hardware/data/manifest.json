@@ -308,13 +308,19 @@
   "fixtureExclusion": "Validator fixtures are in-memory objects inside scripts/check-marea-hardware.test.mjs; no data file is mutated by a test.",
   "reviewSummary": {
     "verdict": "PARTIAL",
-    "reviewedCommit": "bef2f4b25e06205697bee4de9da908741c726621",
+    "internalFeasibilityScope": "PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE",
+    "reviewedCommit": "0eceb8663204e6b5d82a137bb0cb50b742e667dc",
+    "reviewedOn": "2026-11-02",
     "findings": 9,
     "blocking": 0,
     "major": 1,
     "minor": 4,
-    "informational": 4
+    "informational": 4,
+    "closedVerified": 9,
+    "open": 0,
+    "note": "Round 1 audited bef2f4b (1 MAJOR, 4 MINOR, 4 INFORMATIONAL). Corrections were applied and the auditor re-verified 0eceb86: all nine findings CLOSED_VERIFIED, F03 withdrawn after the auditor re-checked the scenario arithmetic. Full MC-11 remains PARTIAL because no formal supplier quotation exists."
   },
   "milestoneVerdict": "PARTIAL",
-  "formalProcurementEvidence": "BLOCKED_OR_NOT_OBTAINED"
+  "formalProcurementEvidence": "BLOCKED_OR_NOT_OBTAINED",
+  "internalFeasibilityScope": "PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE"
 }
