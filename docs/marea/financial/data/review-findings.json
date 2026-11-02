@@ -176,25 +176,196 @@
   "negativeControlEvidence": {
     "method": "Auditor-written in-memory clones of the corrected governed data passed to the committed validator; no repository file was written. Each mutation asserts that the validator fails and that the intended check id is among report.failures.",
     "mutations": [
-      { "id": "M01", "mutation": "VAT added to netRecognizedRevenue", "failedChecks": ["A-03", "A-04", "A-02", "A-14", "A-17", "V-15"], "intendedCheckFailed": true },
-      { "id": "M02", "mutation": "Tooling/NRE duplicated in amortizationNonCash (+37,500)", "failedChecks": ["A-18", "A-19"], "intendedCheckFailed": true },
-      { "id": "M03", "mutation": "Tooling/NRE embedded in HUB-STANDARD variable unit cost", "failedChecks": ["A-24", "V-16", "A-20", "A-21", "A-22", "D-03"], "intendedCheckFailed": true },
-      { "id": "M04", "mutation": "Unknown data-licence cost ASM-MC13-049 zeroed", "failedChecks": ["V-12", "D-10"], "intendedCheckFailed": true },
-      { "id": "M05", "mutation": "Price hypothesis APPROVED", "failedChecks": ["V-01", "S-04"], "intendedCheckFailed": true },
-      { "id": "M06", "mutation": "PILOT safety gate bypassed", "failedChecks": ["S-09", "V-03", "S-08", "A-21", "A-22", "D-03", "D-10"], "intendedCheckFailed": true },
-      { "id": "M07", "mutation": "One model period removed", "failedChecks": ["A-01", "S-04", "A-02", "A-04", "A-07"], "intendedCheckFailed": true },
-      { "id": "M08", "mutation": "Cumulative-cash identity broken", "failedChecks": ["A-13", "A-16"], "intendedCheckFailed": true },
-      { "id": "M09", "mutation": "Trade-receivables identity broken", "failedChecks": ["A-06"], "intendedCheckFailed": true },
-      { "id": "M10", "mutation": "Cloud override made a no-op", "failedChecks": ["A-26", "A-21", "A-22", "D-03"], "intendedCheckFailed": true },
-      { "id": "M11", "mutation": "False reviewer PASS with no recomputation", "failedChecks": ["D-07", "V-19"], "intendedCheckFailed": true },
-      { "id": "M12", "mutation": "False reviewer PASS with an open BLOCKING finding", "failedChecks": ["D-07", "V-19"], "intendedCheckFailed": true },
-      { "id": "M13", "mutation": "Amortisation above the capital schedule", "failedChecks": ["A-18", "A-19"], "intendedCheckFailed": true },
-      { "id": "M14", "mutation": "Cellular override made a no-op", "failedChecks": ["A-26", "A-21", "A-22", "D-03"], "intendedCheckFailed": true },
-      { "id": "M15", "mutation": "Refund cash outflow zeroed", "failedChecks": ["A-27", "A-06"], "intendedCheckFailed": true },
-      { "id": "M16", "mutation": "Warranty stress reverted to the base refund rate", "failedChecks": ["A-27", "A-26", "A-21"], "intendedCheckFailed": true },
-      { "id": "M17", "mutation": "Distributor invoice reverted to full price x 1.21", "failedChecks": ["A-28", "A-06"], "intendedCheckFailed": true },
-      { "id": "M18", "mutation": "Scenario assumption lineage emptied", "failedChecks": ["S-12", "A-22"], "intendedCheckFailed": true },
-      { "id": "M19", "mutation": "Document asserts an unawarded review PASS", "failedChecks": ["D-11"], "intendedCheckFailed": true }
+      {
+        "id": "M01",
+        "mutation": "VAT added to netRecognizedRevenue",
+        "failedChecks": [
+          "A-03",
+          "A-04",
+          "A-02",
+          "A-14",
+          "A-17",
+          "V-15"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M02",
+        "mutation": "Tooling/NRE duplicated in amortizationNonCash (+37,500)",
+        "failedChecks": [
+          "A-18",
+          "A-19"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M03",
+        "mutation": "Tooling/NRE embedded in HUB-STANDARD variable unit cost",
+        "failedChecks": [
+          "A-24",
+          "V-16",
+          "A-20",
+          "A-21",
+          "A-22",
+          "D-03"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M04",
+        "mutation": "Unknown data-licence cost ASM-MC13-049 zeroed",
+        "failedChecks": [
+          "V-12",
+          "D-10"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M05",
+        "mutation": "Price hypothesis APPROVED",
+        "failedChecks": [
+          "V-01",
+          "S-04"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M06",
+        "mutation": "PILOT safety gate bypassed",
+        "failedChecks": [
+          "S-09",
+          "V-03",
+          "S-08",
+          "A-21",
+          "A-22",
+          "D-03",
+          "D-10"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M07",
+        "mutation": "One model period removed",
+        "failedChecks": [
+          "A-01",
+          "S-04",
+          "A-02",
+          "A-04",
+          "A-07"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M08",
+        "mutation": "Cumulative-cash identity broken",
+        "failedChecks": [
+          "A-13",
+          "A-16"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M09",
+        "mutation": "Trade-receivables identity broken",
+        "failedChecks": [
+          "A-06"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M10",
+        "mutation": "Cloud override made a no-op",
+        "failedChecks": [
+          "A-26",
+          "A-21",
+          "A-22",
+          "D-03"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M11",
+        "mutation": "False reviewer PASS with no recomputation",
+        "failedChecks": [
+          "D-07",
+          "V-19"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M12",
+        "mutation": "False reviewer PASS with an open BLOCKING finding",
+        "failedChecks": [
+          "D-07",
+          "V-19"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M13",
+        "mutation": "Amortisation above the capital schedule",
+        "failedChecks": [
+          "A-18",
+          "A-19"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M14",
+        "mutation": "Cellular override made a no-op",
+        "failedChecks": [
+          "A-26",
+          "A-21",
+          "A-22",
+          "D-03"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M15",
+        "mutation": "Refund cash outflow zeroed",
+        "failedChecks": [
+          "A-27",
+          "A-06"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M16",
+        "mutation": "Warranty stress reverted to the base refund rate",
+        "failedChecks": [
+          "A-27",
+          "A-26",
+          "A-21"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M17",
+        "mutation": "Distributor invoice reverted to full price x 1.21",
+        "failedChecks": [
+          "A-28",
+          "A-06"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M18",
+        "mutation": "Scenario assumption lineage emptied",
+        "failedChecks": [
+          "S-12",
+          "A-22"
+        ],
+        "intendedCheckFailed": true
+      },
+      {
+        "id": "M19",
+        "mutation": "Document asserts an unawarded review PASS",
+        "failedChecks": [
+          "D-11"
+        ],
+        "intendedCheckFailed": true
+      }
     ],
     "newCheckTargeting": "A-27, A-28, S-12 and D-11 were each exercised by a dedicated mutation and failed as intended; the corrected refunds and distributor rules were re-derived independently and match the committed results exactly, so the checks are not merely self-consistent with the engine.",
     "note": "The mutation baseline still reports V-19/D-07 while the committed first-audit record lists open findings; after this record is committed, a false PASS mutation is isolated by M11/M12/M19."
@@ -431,5 +602,5 @@
     "Any regression of the refunds-cash, distributor-invoice, lineage or doc-level-PASS invariants (A-27/A-28/S-12/D-11) would reopen this audit, because those checks were specifically added for the first-audit findings.",
     "External commercial evidence is not required to change this verdict: PASS_INTERNAL_FINANCIAL_SCOPE covers the internal analytical scope only and MC13_EXTERNAL_COMMERCIAL_VALIDATION must remain BLOCKED_OR_NOT_OBTAINED."
   ],
-  "finalRecordCommit": null
+  "finalRecordCommit": "8ac2eaea1b28eab761299ee21a16d1ba62b14df9"
 }
