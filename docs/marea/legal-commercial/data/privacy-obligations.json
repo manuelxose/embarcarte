@@ -1,0 +1,78 @@
+{
+  "contractId": "MAREA-MC14-PRIVACY-OBLIGATIONS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-14",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "jurisdictionScope": "ES + EU",
+  "statusNote": "Prospective mapping only. No DPIA has been performed, no DPA exists, no processing inventory is approved and no security control is certified. This is a plan for compliance, not evidence of compliance. Vessel coordinates may or may not be personal data depending on identifiability and context; the mapping does not assume either way.",
+  "roles": [
+    {"roleId": "CONTROLLER_ACCOUNT", "description": "EMBARCARTE as controller for account, billing, marketing and self-determined telemetry.", "legalBasisNote": "Controller obligations under GDPR Arts 5, 6, 13-15, 17, 20, 28, 32 and 33."},
+    {"roleId": "PROCESSOR_FLEET", "description": "EMBARCARTE as processor for customer-instructed FLEET tenant data under an Article 28 agreement.", "legalBasisNote": "Article 28 and 32 processor duties; Article 33(2) notification to the controller."},
+    {"roleId": "JOINT_CONTROLLER_CANDIDATE", "description": "Potential joint controllership where EMBARCARTE and a fleet operator determine shared purposes; not decided.", "legalBasisNote": "Article 26 arrangement would be required if joint controllership is established."},
+    {"roleId": "SUBPROCESSOR", "description": "Cloud, messaging, payment and connectivity providers engaged by EMBARCARTE.", "legalBasisNote": "Article 28(2)-(4) authorisation and flow-down."}
+  ],
+  "processingPurposes": [
+    {"purposeId": "PRIV-P-01", "purpose": "Account creation and authentication", "dataCategories": ["name", "email", "hashed credential or federated identity", "account preferences"], "dataSubjects": ["vessel owner", "account user"], "potentialLegalBasis": "Contract (Art 6(1)(b))", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Account lifetime plus statutory limitation period", "recipientsSubprocessors": ["identity provider", "cloud host"], "internationalTransferRisk": "POSSIBLE_PROVIDER_DEPENDENT", "securityControls": ["access control", "password/federated authentication", "audit log"], "deletionExport": "Account deletion and export on request", "dpiaScreening": "NOT_HIGH_RISK_ALONE", "evidenceStatus": "NONE", "riskIds": ["PRIV-04", "PRIV-06"]},
+    {"purposeId": "PRIV-P-02", "purpose": "Billing, invoicing and tax records", "dataCategories": ["name", "billing address", "tax ID", "order and invoice data", "payment metadata (no card data stored)"], "dataSubjects": ["customer", "account user"], "potentialLegalBasis": "Contract and legal obligation (Art 6(1)(b)-(c))", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Statutory accounting period", "recipientsSubprocessors": ["hosted payment provider", "accounting system"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["hosted/tokenised payments", "least privilege", "encryption"], "deletionExport": "Retained for statutory period, then deleted", "dpiaScreening": "NOT_HIGH_RISK_ALONE", "evidenceStatus": "NONE", "riskIds": ["PAY-01", "PRIV-05"]},
+    {"purposeId": "PRIV-P-03", "purpose": "Device registration, ownership and entitlements", "dataCategories": ["device serial", "device identifiers", "firmware version", "entitlement status", "owner association"], "dataSubjects": ["vessel owner", "installer"], "potentialLegalBasis": "Contract (Art 6(1)(b))", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Device life plus support period", "recipientsSubprocessors": ["cloud host", "device provisioning service"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["device identity", "ownership transfer control", "audit log"], "deletionExport": "Unregister and delete on request where lawful", "dpiaScreening": "SCREEN_REQUIRED", "evidenceStatus": "NONE", "riskIds": ["CYB-07", "PRIV-05"]},
+    {"purposeId": "PRIV-P-04", "purpose": "Vessel telemetry display and history for the owner", "dataCategories": ["position", "speed", "heading", "depth", "system status", "timestamps"], "dataSubjects": ["vessel owner", "skipper", "crew"], "potentialLegalBasis": "Contract (Art 6(1)(b)); legitimate interest for safety features where applicable", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Defined history window, then aggregate or delete", "recipientsSubprocessors": ["cloud host", "connectivity provider"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["encryption in transit/at rest", "tenant isolation", "access control"], "deletionExport": "Export and delete per retention schedule", "dpiaScreening": "LIKELY_REQUIRED", "evidenceStatus": "NONE", "riskIds": ["PRIV-02", "PRIV-05"]},
+    {"purposeId": "PRIV-P-05", "purpose": "WATCH location monitoring and alerting", "dataCategories": ["vessel position", "geofence events", "battery/system status", "alert history"], "dataSubjects": ["vessel owner", "skipper", "crew", "guests"], "potentialLegalBasis": "Contract (Art 6(1)(b)); consent where crew/guests are monitored", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Short operational window plus alert record", "recipientsSubprocessors": ["cloud host", "SMS/email provider", "connectivity provider"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["access control", "alert delivery logging", "encryption"], "deletionExport": "Delete on request; export on termination", "dpiaScreening": "LIKELY_REQUIRED", "evidenceStatus": "NONE", "riskIds": ["PRIV-02", "PRIV-04", "LIA-08"]},
+    {"purposeId": "PRIV-P-06", "purpose": "Alert delivery to third-party recipients", "dataCategories": ["recipient name and contact", "vessel and alert data"], "dataSubjects": ["alert recipient", "vessel owner", "crew"], "potentialLegalBasis": "Consent of the recipient or legitimate interest of the owner, assessed per case", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Until removed by owner plus short log", "recipientsSubprocessors": ["SMS/email provider"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["recipient verification", "opt-out", "access log"], "deletionExport": "Remove recipient on request", "dpiaScreening": "SCREEN_REQUIRED", "evidenceStatus": "NONE", "riskIds": ["PRIV-04", "LIA-08"]},
+    {"purposeId": "PRIV-P-07", "purpose": "FLEET customer-instructed tenant data", "dataCategories": ["vessel and crew data", "position history", "reports", "tenant users and roles"], "dataSubjects": ["fleet operator personnel", "vessel crew"], "potentialLegalBasis": "Controller's instructions under Article 28", "controllerProcessorStatus": "PROCESSOR", "retentionRequirement": "As instructed by the customer and in the DPA", "recipientsSubprocessors": ["cloud host", "subprocessors listed in the DPA"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["tenant isolation", "role-based access", "processing logs"], "deletionExport": "Return or delete on termination", "dpiaScreening": "CUSTOMER_DPIA_COOPERATION_REQUIRED", "evidenceStatus": "NONE", "riskIds": ["PRIV-01", "PRIV-03", "PRD-10"]},
+    {"purposeId": "PRIV-P-08", "purpose": "Fleet analytics and aggregate reporting", "dataCategories": ["aggregated position and utilisation data", "anonymised or pseudonymised metrics"], "dataSubjects": ["fleet operators", "vessel crew (indirectly)"], "potentialLegalBasis": "Legitimate interest or contract, subject to anonymisation assessment", "controllerProcessorStatus": "CONTROLLER_OR_PROCESSOR_DEPENDENT", "retentionRequirement": "Defined aggregate retention", "recipientsSubprocessors": ["cloud host"], "internationalTransferRisk": "LOW_IF_AGGREGATED", "securityControls": ["aggregation controls", "re-identification risk review"], "deletionExport": "Aggregates deleted per schedule", "dpiaScreening": "SCREEN_REQUIRED", "evidenceStatus": "NONE", "riskIds": ["PRIV-04", "DATA-06"]},
+    {"purposeId": "PRIV-P-09", "purpose": "Support, diagnostics and field service", "dataCategories": ["contact data", "device logs", "configuration snapshots"], "dataSubjects": ["customer", "installer", "crew"], "potentialLegalBasis": "Contract and legitimate interest", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Ticket retention period", "recipientsSubprocessors": ["helpdesk provider"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["role-based access", "log minimisation"], "deletionExport": "Delete after retention", "dpiaScreening": "NOT_HIGH_RISK_ALONE", "evidenceStatus": "NONE", "riskIds": ["PRIV-06"]},
+    {"purposeId": "PRIV-P-10", "purpose": "Security monitoring, fraud prevention and incident response", "dataCategories": ["IP address", "access logs", "device and session metadata"], "dataSubjects": ["users", "attackers"], "potentialLegalBasis": "Legitimate interest and legal obligation (Art 6(1)(c)-(f); Art 32)", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Security log retention period", "recipientsSubprocessors": ["cloud host", "security tooling"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["logging", "alerting", "access review"], "deletionExport": "Delete per log policy", "dpiaScreening": "NOT_HIGH_RISK_ALONE", "evidenceStatus": "NONE", "riskIds": ["PRIV-06", "CYB-06"]},
+    {"purposeId": "PRIV-P-11", "purpose": "Marketing communications", "dataCategories": ["name", "email", "preferences", "consent record"], "dataSubjects": ["prospects", "customers"], "potentialLegalBasis": "Consent (ePrivacy/LSSI) or soft opt-in where lawful", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Until withdrawal plus proof of consent", "recipientsSubprocessors": ["email provider"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["consent record", "unsubscribe"], "deletionExport": "Delete on request", "dpiaScreening": "NOT_HIGH_RISK_ALONE", "evidenceStatus": "NONE", "riskIds": ["PRIV-07"]},
+    {"purposeId": "PRIV-P-12", "purpose": "Website analytics and cookies", "dataCategories": ["cookie identifiers", "browsing data", "device data"], "dataSubjects": ["website visitors"], "potentialLegalBasis": "Consent (ePrivacy Art 5(3); LSSI Art 22.2)", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Cookie-specific retention", "recipientsSubprocessors": ["analytics provider"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["consent management", "tag governance"], "deletionExport": "Consent withdrawal and cookie deletion", "dpiaScreening": "NOT_HIGH_RISK_ALONE", "evidenceStatus": "NONE", "riskIds": ["PRIV-07"]},
+    {"purposeId": "PRIV-P-13", "purpose": "Crew and guest data incidental to vessel monitoring", "dataCategories": ["location", "presence", "alert involvement"], "dataSubjects": ["crew", "guests"], "potentialLegalBasis": "Contract with the owner plus transparency to crew; consent where required", "controllerProcessorStatus": "CONTROLLER_OR_PROCESSOR_DEPENDENT", "retentionRequirement": "Minimise and delete after operational need", "recipientsSubprocessors": ["cloud host", "messaging provider"], "internationalTransferRisk": "PROVIDER_DEPENDENT", "securityControls": ["minimisation", "crew notice", "access control"], "deletionExport": "Delete on request", "dpiaScreening": "LIKELY_REQUIRED", "evidenceStatus": "NONE", "riskIds": ["PRIV-04", "PRIV-06"]},
+    {"purposeId": "PRIV-P-14", "purpose": "Data export and portability", "dataCategories": ["all user-provided and user-generated data"], "dataSubjects": ["users"], "potentialLegalBasis": "Legal obligation (Arts 15 and 20)", "controllerProcessorStatus": "CONTROLLER", "retentionRequirement": "Not applicable", "recipientsSubprocessors": [], "internationalTransferRisk": "NOT_APPLICABLE", "securityControls": ["identity verification before export"], "deletionExport": "Structured export within statutory period", "dpiaScreening": "NOT_APPLICABLE", "evidenceStatus": "NONE", "riskIds": ["PRIV-06", "CONS-04"]}
+  ],
+  "rightsImplementation": [
+    {"right": "Access (Art 15)", "implementationStatus": "NOT_IMPLEMENTED", "evidenceRequired": "DSAR procedure and log"},
+    {"right": "Rectification (Art 16)", "implementationStatus": "NOT_IMPLEMENTED", "evidenceRequired": "Account edit and correction workflow"},
+    {"right": "Erasure (Art 17)", "implementationStatus": "NOT_IMPLEMENTED", "evidenceRequired": "Deletion mechanism and verification"},
+    {"right": "Restriction (Art 18)", "implementationStatus": "NOT_IMPLEMENTED", "evidenceRequired": "Flagging and processing suspension"},
+    {"right": "Portability (Art 20)", "implementationStatus": "NOT_IMPLEMENTED", "evidenceRequired": "Structured export"},
+    {"right": "Objection (Art 21)", "implementationStatus": "NOT_IMPLEMENTED", "evidenceRequired": "Objection workflow for legitimate-interest processing"}
+  ],
+  "dpiaScreening": {
+    "screeningPerformed": false,
+    "likelyRequiredFor": ["WATCH location monitoring", "FLEET tenant data", "vessel history", "crew/guest monitoring"],
+    "decision": "SCREEN_REQUIRED_BEFORE_PROCESSING",
+    "aepdConsultation": "NOT_PERFORMED",
+    "aepdGuidanceRetrieved": false,
+    "note": "A recommended DPIA is not a completed DPIA. No DPIA, consultation or AEPD filing exists."
+  },
+  "securityAndBreach": {
+    "article32ControlsStatus": "NOT_ASSESSED",
+    "encryptionAtRest": "NOT_IMPLEMENTED",
+    "encryptionInTransit": "NOT_VERIFIED",
+    "accessSegregation": "NOT_IMPLEMENTED",
+    "logging": "NOT_IMPLEMENTED",
+    "breachRunbook": "NOT_IMPLEMENTED",
+    "notificationWithin72h": "NOT_IMPLEMENTED",
+    "subprocessorList": "NOT_MAINTAINED"
+  },
+  "internationalTransfers": {
+    "assessed": false,
+    "likelyRecipients": ["cloud hosting", "email/SMS", "payment", "connectivity"],
+    "transferMechanism": "NOT_DECIDED",
+    "note": "No transfer impact assessment exists; residency claims must not be published."
+  },
+  "fleetTenancy": {
+    "tenantIsolationTested": false,
+    "roleModel": "DEFINED_IN_PRODUCT_CONTRACT_BUT_NOT_IMPLEMENTED",
+    "customerAsController": "ASSUMED_IN_PRODUCT_CONTRACT_NOT_CONTRACTED",
+    "dpaExists": false,
+    "note": "FLEET cannot be offered until the DPA, tenant-isolation test and role map exist."
+  },
+  "evidenceStatus": "NO_DPIA_NO_DPA_NO_PROCESSING_INVENTORY",
+  "unknowns": [
+    "Whether vessel coordinates are personal data in each context (identifiability varies).",
+    "The final subprocessor list and hosting region.",
+    "Whether a DPO must be appointed and by whom.",
+    "The retention periods the business will adopt.",
+    "Whether joint controllership arises with fleet operators."
+  ]
+}

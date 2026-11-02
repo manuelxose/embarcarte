@@ -1,0 +1,140 @@
+{
+  "contractId": "MAREA-MC14-MC15-HANDOFF-INPUTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-14",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "MC15_STARTED": false,
+  "mc15ExecutionAuthorized": false,
+  "status": "READY_FOR_MC15_WITH_NAMED_GAPS",
+  "nextMilestone": "MC-15/36 — Bilingual information architecture and SEO migration",
+  "boundary": "Handoff package only. MC-15 is not started, no website page or metadata is modified, and no public content is authorised by this file.",
+  "approvedForInternalUseVocabulary": [
+    "MAREA (internal product brand name only)",
+    "product family and edition codes (NAV, HUB, AIS, PILOT, SENSE, WATCH, DISPLAY, WEATHER, FLEET and editions)",
+    "DEFINED / IN_DEFINITION / NOT_FOR_SALE / INTERNAL_ONLY",
+    "HYPOTHESIS_UNAPPROVED (price status, internal only)",
+    "supervised steering (PILOT design boundary)",
+    "receive-only AIS",
+    "navigational aid (not a certified navigation system)",
+    "demonstration / concept / proposed",
+    "EMBARCARTE as company name (subject to legal identity completion)"
+  ],
+  "forbiddenPublicVocabulary": [
+    "MAREA as a public brand until trademark clearance and a public-use decision exist",
+    "MAREA® / MAREA™ / 'registered trademark'",
+    "available, in stock, buy, order, delivery date, price from",
+    "CE marked, certified, approved, homologated, wheelmark",
+    "NMEA 2000 certified / compliant",
+    "official charts / official weather / licensed data (until licensed)",
+    "autonomous, self-steering without supervision, remote helm",
+    "collision avoidance, safety of life, guaranteed alerts, 24/7 monitoring",
+    "GDPR compliant, cybersecurity certified, secure by design",
+    "profitable, break-even, investment return, funded",
+    "tested at sea, proven, reliable (until evidence exists)",
+    "open source / free software (for OPEN-MARINE) until an outbound licence exists"
+  ],
+  "brandPublicationRestrictions": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "mareaPublicUse": "NO_GO",
+    "headerFooterBrandUsage": "No MAREA public lock-up, wordmark or ® / ™ until clearance; EMBARCARTE attribution only if the legal identity is complete.",
+    "ogImagesAndSocial": "No MAREA-named social previews until public-use clearance.",
+    "investorOrPartnerDecks": "Same restrictions apply; internal-only labels must be visible.",
+    "conflictRule": "The stricter MC-14 gate prevails over MC-03 class-A allowances; a formal supersession decision is required before any change."
+  },
+  "publicClaimsGates": {
+    "claimsPolicy": "docs/marea/legal-commercial/MC14-COMMERCIAL-CLAIMS-POLICY.md",
+    "machineContract": "data/claims-policy.json and data/bilingual-claims.json",
+    "publicationAuthorization": "NONE",
+    "rule": "A claim classified A for internal documentation is not authorised for public publication. Every public claim requires an evidence record, approver sign-off and an open release gate.",
+    "bilingualRule": "ES and EN must carry the same class, status, risk links and numbers; semantic drift is treated as a prohibited claim."
+  },
+  "legalFooterRequirements": [
+    "Verified registered company name, tax ID, address and registry data (currently empty in SITE.legal).",
+    "Contact email and complaint channel.",
+    "Legal notice, terms of use, privacy policy and cookie policy links.",
+    "No MAREA public brand attribution until clearance.",
+    "VAT and price-display basis if any price is ever shown.",
+    "No 'certified', 'official' or 'approved' badge in the footer."
+  ],
+  "productAndBundlePageRestrictions": {
+    "lifecycleStatesAllowed": ["CONCEPT", "DEFINED", "INTERNAL_ONLY"],
+    "ctaAllowed": ["read the concept", "see the specification", "register interest only where a lawful mechanism exists"],
+    "ctaForbidden": ["buy", "add to cart", "checkout", "pre-order", "price", "availability"],
+    "pilot": "Never purchasable; supervised-only boundary and safety gate must be stated wherever PILOT is mentioned.",
+    "ais": "Receive-only; no transmission, transponder, collision-avoidance or DSC implication.",
+    "watch": "No guaranteed alert delivery or continuous offshore coverage; disclaimers required.",
+    "fleet": "B2B only; no default hardware; no SLA until measured and contracted.",
+    "weather": "Probabilistic forecasts; source and freshness required; no accuracy or official status.",
+    "nav": "Navigational aid only; no official chart, ECDIS or navigation-grade claim.",
+    "bundles": "No bundle may be presented as purchasable while any included product is not available; PILOT-containing bundles cannot be sold."
+  },
+  "privacyCookieRequirements": [
+    "Cookie inventory and prior consent before non-essential cookies.",
+    "Cookie policy ES/EN consistent with the consent mechanism.",
+    "Privacy notice naming controller, purposes, legal bases, recipients, retention and rights.",
+    "Google Identity Services and payment provider recipients disclosed.",
+    "Registration/consent evidence stored server-side where consent is presented.",
+    "No 'GDPR compliant' badge or claim."
+  ],
+  "commerceCtaRestrictions": [
+    "Checkout must not be exposed for MAREA products while NOT_FOR_SALE.",
+    "Existing sample commerce must be disabled or clearly separated from MAREA before any publication.",
+    "Server-authoritative price/stock rules remain; no client-side price or stock override.",
+    "No card data stored; hosted/tokenised provider only, and only after a merchant agreement.",
+    "Refund, withdrawal and complaint information must be reachable before the order."
+  ],
+  "structuredDataRestrictions": [
+    "No Product/Offer JSON-LD for MAREA until availability, approved price and seller identity exist.",
+    "No aggregateRating, review or customer-count markup without real evidence.",
+    "Brand field must not assert registered trademark status.",
+    "Locale and currency must match the approved display rules.",
+    "Existing structured data in the site must be inventoried and remediated under MC-15."
+  ],
+  "seoMetadataRestrictions": [
+    "No MAREA in titles/descriptions until public-use clearance.",
+    "No availability, price, certification or performance in meta descriptions.",
+    "Canonical/hreflang reciprocity must be preserved for existing indexed URLs.",
+    "No duplicate ES/EN implementation; typed localized routes remain the architecture.",
+    "Structured data and sitemap changes require the MC-15 release gate."
+  ],
+  "pageByPageIssues": [
+    {"route": "/es/tienda", "findingIds": ["WEB-004", "WEB-019", "WEB-020"], "summary": "Shop/SEO instructs buying unavailable Open Marine Hub/autopilot; availability and product identity issues."},
+    {"route": "/es/tecnologia", "findingIds": ["WEB-003", "WEB-006", "WEB-010", "WEB-011"], "summary": "Ownership/open-source claims and autopilot safety claims."},
+    {"route": "/es/legal/aviso-legal", "findingIds": ["WEB-001", "WEB-007", "WEB-021"], "summary": "Missing legal identity; incomplete privacy recipients; non-binding draft notice."},
+    {"route": "/es/legal/privacidad", "findingIds": ["WEB-007", "WEB-008", "WEB-009"], "summary": "Incomplete controller/recipient information and unrecorded registration consent."},
+    {"route": "/es/legal/cookies", "findingIds": ["WEB-022"], "summary": "GIS cookie disclosure and consent mechanism gaps."},
+    {"route": "/es/tienda/checkout", "findingIds": ["WEB-012", "WEB-013", "WEB-023"], "summary": "Checkout CTAs, VAT-included labelling, shipping costs after order."},
+    {"route": "/es/sobre-nosotros", "findingIds": ["WEB-014", "WEB-015"], "summary": "Autopilot and test/safety claims in About/home content."},
+    {"route": "structured data / product detail", "findingIds": ["WEB-016", "WEB-017", "WEB-018"], "summary": "Product/Offer JSON-LD with admin price/stock and Open Marine brand; compatibility claims."}
+  ],
+  "esEnConsistencyRequirements": [
+    "One component per page; no duplicated ES/EN implementations.",
+    "Dictionary parity and localized route parity must be preserved.",
+    "Claims must be paired and semantically consistent; no translation may soften or strengthen a claim.",
+    "Legal, privacy and cookie pages must carry equivalent disclosures in both languages."
+  ],
+  "requiredEvidenceBeforeAvailabilityOrPrice": [
+    "Approved price list with VAT basis and territory.",
+    "OPERATIONS READY lifecycle decision and real stock/fulfilment record.",
+    "Signed consumer/B2B terms and legal identity.",
+    "Approved claim record with evidence and approver.",
+    "Open and verified release gates: GATE-PRICING, GATE-LEGAL-ENTITY, GATE-CONSUMER-TERMS, GATE-PAYMENTS, GATE-COMMERCIAL-CLAIMS.",
+    "Commerce decision for the existing sample shop."
+  ],
+  "doNotDo": [
+    "Do not modify website pages, routes, metadata, prices, checkout or deployment in MC-14.",
+    "Do not publish MAREA as a brand or product availability.",
+    "Do not translate claims without the bilingual parity check.",
+    "Do not add Product/Offer structured data before approval.",
+    "Do not treat this handoff as MC-15 execution."
+  ],
+  "handoffChecks": {
+    "websiteFindingsReferenced": true,
+    "claimsCatalogueReady": true,
+    "legalFooterRequirementsReady": true,
+    "commerceRestrictionsReady": true,
+    "mc15ExecutionStarted": false,
+    "websiteModified": false
+  }
+}

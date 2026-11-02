@@ -1,0 +1,1780 @@
+{
+  "contractId": "MAREA-MC14-PREDECESSOR-BLOCKER-MAPPING",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-14",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "note": "Read-only traceability map. Predecessor registers remain canonical for their own milestones; MC-14 neither deletes nor closes an inherited blocker. An inherited blocker is mapped to at least one MC-14 risk and keeps its predecessor status. 'AS_RECORDED_IN_PREDECESSOR' is used where the predecessor register, not MC-14, holds the exact status string.",
+  "sourceRegisters": [
+    {
+      "registerId": "MC-02",
+      "path": "docs/marea/compliance/MC-02-BLOCKERS-AND-DECISIONS.md",
+      "recordCount": 58,
+      "categories": [
+        "L",
+        "S",
+        "D",
+        "H",
+        "P",
+        "X"
+      ]
+    },
+    {
+      "registerId": "MC-11",
+      "path": "docs/marea/hardware/data/risks.json",
+      "recordCount": 39,
+      "categories": [
+        "RISK-ENG",
+        "RISK-MAR",
+        "RISK-SOURCING",
+        "RISK-COM",
+        "RISK-LEG",
+        "RISK-SAF",
+        "RISK-SEC"
+      ]
+    },
+    {
+      "registerId": "MC-12",
+      "path": "docs/marea/economics/data/blocker-register.json",
+      "recordCount": 23,
+      "categories": [
+        "BLK-LIC",
+        "BLK-COST",
+        "BLK-COMM",
+        "BLK-SAFE",
+        "BLK-REG",
+        "BLK-DATA",
+        "BLK-INS",
+        "BLK-PRICE",
+        "BLK-AIS"
+      ]
+    },
+    {
+      "registerId": "MC-13",
+      "path": "docs/marea/financial/data/blocker-register.json",
+      "recordCount": 14,
+      "categories": [
+        "BLK-FIN"
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "inheritedId": "L-01",
+      "register": "MC-02",
+      "severity": "CRITICAL",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "IPR-01"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "L-02",
+      "register": "MC-02",
+      "severity": "CRITICAL",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "IPR-02"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "L-03",
+      "register": "MC-02",
+      "severity": "CRITICAL",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "IPR-03"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "L-04",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-04"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "L-05",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-05"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "L-06",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-06"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "L-07",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "LEGAL_REVIEW_REQUIRED",
+      "mc14RiskIds": [
+        "IPR-07"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "L-08",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-08"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "L-09",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-09"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "S-01",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "LEGAL_REVIEW_REQUIRED",
+      "mc14RiskIds": [
+        "IPR-10",
+        "PRD-03"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "S-02",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-11"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "S-03",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-11"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "S-04",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-12"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "S-05",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-06",
+        "IPR-11"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "S-06",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-11"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "S-07",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-11"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "S-08",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-12"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "S-09",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "IPR-11"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "D-01",
+      "register": "MC-02",
+      "severity": "CRITICAL",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "DATA-01",
+        "LIA-06"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "D-02",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "DATA-04",
+        "DATA-01"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "D-03",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "DATA-03"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "D-04",
+      "register": "MC-02",
+      "severity": "CRITICAL",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "DATA-02",
+        "LIA-07"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "D-05",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "DATA-03"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "D-06",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "LEGAL_REVIEW_REQUIRED",
+      "mc14RiskIds": [
+        "DATA-03"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "D-07",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "DATA-02"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "D-08",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "DATA-04"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "D-09",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "LEGAL_REVIEW_REQUIRED",
+      "mc14RiskIds": [
+        "DATA-06",
+        "LEG-08",
+        "LIA-05"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "D-10",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "DATA-01",
+        "DATA-02",
+        "DATA-03",
+        "DATA-04",
+        "DATA-05"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-01",
+      "register": "MC-02",
+      "severity": "CRITICAL",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-01",
+        "LIA-10"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-02",
+      "register": "MC-02",
+      "severity": "CRITICAL",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "PRD-02",
+        "LIA-09"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-03",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "PRD-01"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-04",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-04",
+        "PRD-05"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-05",
+      "register": "MC-02",
+      "severity": "CRITICAL",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-06",
+        "LEG-01"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-06",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "NOT_YET_ASSESSABLE",
+      "mc14RiskIds": [
+        "LEG-01",
+        "LEG-06",
+        "CYB-01"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-07",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "LEG-02",
+        "PRD-06"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-08",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-03",
+        "LEG-08"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-09",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "PRD-01",
+        "CYB-02"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-10",
+      "register": "MC-02",
+      "severity": "CRITICAL",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-01",
+        "LIA-03"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-11",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-06",
+        "PRD-09",
+        "PRD-07"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-12",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-07",
+        "LIA-08"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "H-13",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "CYB-01",
+        "CYB-06",
+        "LIA-09"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "P-01",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "REUSE-CONDITIONAL",
+      "mc14RiskIds": [
+        "DATA-01"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "P-02",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-04"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "P-03",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-03",
+        "IPR-10"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "P-04",
+      "register": "MC-02",
+      "severity": "CRITICAL",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-01",
+        "LIA-10"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "P-05",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-08",
+        "LIA-04"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "P-06",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BUILD",
+      "mc14RiskIds": [
+        "PRD-07",
+        "LIA-08"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "P-07",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PRD-09"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "P-08",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "DATA-02"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "P-09",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BUILD",
+      "mc14RiskIds": [
+        "PRD-10",
+        "PRIV-01"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "P-10",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "X-01",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "IPR-13",
+        "IPR-14",
+        "CLM-01"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "X-02",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "OPS-01",
+        "LEG-09"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "X-03",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "IPR-05"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "X-04",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "OPS-02",
+        "LEG-09"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "X-05",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "PAY-01",
+        "CLM-02"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "X-06",
+      "register": "MC-02",
+      "severity": "MEDIUM",
+      "inheritedStatus": "BLOCKED",
+      "mc14RiskIds": [
+        "CLM-06"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "X-07",
+      "register": "MC-02",
+      "severity": "HIGH",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "PRIV-01",
+        "PRIV-02",
+        "CYB-07"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-ENG-01",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-ENG-02",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06",
+        "LIA-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-ENG-03",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-ENG-04",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-ENG-05",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CYB-04",
+        "LIA-11"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-ENG-06",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-05"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-ENG-07",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-09"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-ENG-08",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-09"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-ENG-09",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-08",
+        "LIA-04"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-MAR-01",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-MAR-02",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-MAR-03",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LIA-02",
+        "CONS-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-MAR-04",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-07"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-MAR-05",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-07",
+        "LIA-08"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SOURCING-01",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SOURCING-02",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SOURCING-03",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SOURCING-04",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SOURCING-05",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SOURCING-06",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SOURCING-07",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PAY-05"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-COM-01",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CLM-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-COM-02",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PAY-05"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-COM-03",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LEG-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-COM-04",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LEG-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-COM-05",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CONS-08"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-LEG-01",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "IPR-13"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-LEG-02",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "IPR-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-LEG-03",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LEG-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-LEG-04",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-04"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-LEG-05",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CYB-01",
+        "CYB-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-LEG-06",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LEG-02"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-LEG-07",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LIA-13"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SAF-01",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-01",
+        "LIA-10"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SAF-02",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LEG-08",
+        "LIA-05"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SEC-01",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CYB-05"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SEC-02",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CYB-07"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SEC-03",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CYB-03",
+        "CYB-04"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "RISK-SEC-04",
+      "register": "MC-11",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRIV-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-LIC-01",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "DATA-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-LIC-02",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "DATA-03"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-LIC-03",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "DATA-02"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-LIC-04",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-04"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-LIC-05",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-07"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-LIC-06",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRIV-03"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-LIC-07",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "DATA-03"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-LIC-08",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "IPR-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-LIC-09",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "IPR-13"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-COST-01",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LEG-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-COST-02",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LEG-02"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-COST-03",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-COST-04",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PAY-05"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-COST-05",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PAY-05"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-COMM-01",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CLM-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-COMM-02",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CONS-06"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-SAFE-01",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRD-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-REG-01",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LEG-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-REG-02",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CYB-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-DATA-01",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "PRIV-01"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-INS-01",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LIA-13"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-PRICE-01",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "CLM-02"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-AIS-01",
+      "register": "MC-12",
+      "severity": "AS_RECORDED_IN_PREDECESSOR",
+      "inheritedStatus": "AS_RECORDED_IN_PREDECESSOR",
+      "mc14RiskIds": [
+        "LEG-08"
+      ],
+      "treatment": "MAPPED_NO_STATUS_CHANGE",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-01",
+      "register": "MC-13",
+      "severity": "BLOCKING",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "DATA-01",
+        "DATA-02"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-02",
+      "register": "MC-13",
+      "severity": "BLOCKING",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "LEG-01"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-03",
+      "register": "MC-13",
+      "severity": "BLOCKING",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "LEG-02"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-04",
+      "register": "MC-13",
+      "severity": "BLOCKING",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "LIA-13"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-05",
+      "register": "MC-13",
+      "severity": "MAJOR",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "CYB-04",
+        "LIA-11"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-06",
+      "register": "MC-13",
+      "severity": "BLOCKING",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "CLM-06"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-07",
+      "register": "MC-13",
+      "severity": "BLOCKING",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "CLM-05"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-08",
+      "register": "MC-13",
+      "severity": "MAJOR",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "PAY-05"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-09",
+      "register": "MC-13",
+      "severity": "MAJOR",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "PAY-05"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-10",
+      "register": "MC-13",
+      "severity": "MAJOR",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "PRIV-01",
+        "PRIV-03"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-11",
+      "register": "MC-13",
+      "severity": "BLOCKING",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "PRD-01",
+        "LIA-10"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-12",
+      "register": "MC-13",
+      "severity": "MAJOR",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "CONS-08"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-13",
+      "register": "MC-13",
+      "severity": "BLOCKING",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "CLM-05"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    },
+    {
+      "inheritedId": "BLK-FIN-14",
+      "register": "MC-13",
+      "severity": "BLOCKING",
+      "inheritedStatus": "OPEN",
+      "mc14RiskIds": [
+        "CLM-02"
+      ],
+      "treatment": "CARRIED_FORWARD",
+      "doubleCounted": false
+    }
+  ],
+  "mc13HandoffConsumption": [
+    {
+      "dependencyId": "MC14-DEP-01",
+      "area": "COMPLIANCE_COST",
+      "amountStatus": "ILLUSTRATIVE_ENVELOPE_ONLY",
+      "mc14RiskIds": [
+        "LEG-01",
+        "LEG-06",
+        "LEG-07",
+        "LEG-10"
+      ],
+      "consumedIn": [
+        "MC14-CRA-CYBERSECURITY-OBLIGATIONS.md",
+        "MC14-MARINE-HARDWARE-CONFORMITY-GATES.md",
+        "risk-register.json"
+      ],
+      "treatment": "ENVELOPE_NOT_QUOTE",
+      "amountEur": 60000
+    },
+    {
+      "dependencyId": "MC14-DEP-02",
+      "area": "INSURANCE_EXPOSURE",
+      "amountStatus": "UNKNOWN",
+      "mc14RiskIds": [
+        "LIA-13",
+        "LIA-01",
+        "LIA-09"
+      ],
+      "consumedIn": [
+        "MC14-PRODUCT-LIABILITY-AND-INSURANCE.md",
+        "liability-insurance.json"
+      ],
+      "treatment": "PREMIUM_UNKNOWN",
+      "amountEur": null
+    },
+    {
+      "dependencyId": "MC14-DEP-03",
+      "area": "PRODUCT_LIABILITY",
+      "amountStatus": "NOT_QUANTIFIABLE",
+      "mc14RiskIds": [
+        "PRD-01",
+        "LIA-10"
+      ],
+      "consumedIn": [
+        "MC14-PRODUCT-LIABILITY-AND-INSURANCE.md",
+        "liability-insurance.json",
+        "risk-register.json"
+      ],
+      "treatment": "PILOT_BLOCKED",
+      "amountEur": null
+    },
+    {
+      "dependencyId": "MC14-DEP-04",
+      "area": "WARRANTY_RETURNS",
+      "amountStatus": "PERCENTAGE_ASSUMPTION",
+      "mc14RiskIds": [
+        "CONS-02",
+        "CONS-03",
+        "CONS-07",
+        "CONS-08"
+      ],
+      "consumedIn": [
+        "MC14-CONSUMER-RIGHTS-WARRANTY-RETURNS.md",
+        "consumer-rights.json"
+      ],
+      "treatment": "3PCT_ILLUSTRATIVE_NOT_MEASURED",
+      "amountEur": null,
+      "amountPct": 3
+    },
+    {
+      "dependencyId": "MC14-DEP-05",
+      "area": "CYBERSECURITY_MAINTENANCE",
+      "amountStatus": "PARTIALLY_MODELLED_UNKNOWN",
+      "mc14RiskIds": [
+        "CYB-04",
+        "CYB-06",
+        "LIA-11"
+      ],
+      "consumedIn": [
+        "MC14-CRA-CYBERSECURITY-OBLIGATIONS.md",
+        "cybersecurity-obligations.json"
+      ],
+      "treatment": "SUPPORT_COST_UNKNOWN",
+      "amountEur": null
+    },
+    {
+      "dependencyId": "MC14-DEP-06",
+      "area": "PRIVACY_DATA_PROCESSING",
+      "amountStatus": "UNKNOWN",
+      "mc14RiskIds": [
+        "PRIV-01",
+        "PRIV-02",
+        "PRIV-03",
+        "PRIV-05"
+      ],
+      "consumedIn": [
+        "MC14-PRIVACY-AND-TELEMETRY-DATA-GOVERNANCE.md",
+        "privacy-obligations.json"
+      ],
+      "treatment": "DPO_DPA_COST_UNKNOWN",
+      "amountEur": null
+    },
+    {
+      "dependencyId": "MC14-DEP-07",
+      "area": "PAYMENT_OBLIGATIONS",
+      "amountStatus": "PUBLISHED_PERCENTAGE_TARIFF",
+      "mc14RiskIds": [
+        "PAY-01",
+        "PAY-03",
+        "PAY-04",
+        "PAY-05"
+      ],
+      "consumedIn": [
+        "MC14-PAYMENTS-TAX-AND-COMMERCIAL-CONTRACTS.md",
+        "release-evidence-gates.json"
+      ],
+      "treatment": "TARIFF_NOT_CONTRACT",
+      "amountEur": null,
+      "amountPct": 1.5
+    },
+    {
+      "dependencyId": "MC14-DEP-08",
+      "area": "COMMERCIAL_CLAIMS",
+      "amountStatus": "NOT_APPLICABLE",
+      "mc14RiskIds": [
+        "CLM-02",
+        "CLM-03",
+        "CLM-04",
+        "CLM-05",
+        "CLM-06"
+      ],
+      "consumedIn": [
+        "MC14-COMMERCIAL-CLAIMS-POLICY.md",
+        "claims-policy.json",
+        "bilingual-claims.json"
+      ],
+      "treatment": "NO_EVIDENCE",
+      "amountEur": null
+    },
+    {
+      "dependencyId": "MC14-DEP-09",
+      "area": "UNRESOLVED_LICENSING",
+      "amountStatus": "UNKNOWN",
+      "mc14RiskIds": [
+        "IPR-01",
+        "IPR-10",
+        "IPR-13",
+        "DATA-01",
+        "DATA-02"
+      ],
+      "consumedIn": [
+        "MC14-IP-TRADEMARK-AND-LICENSING-RISKS.md",
+        "licensing-rights.json"
+      ],
+      "treatment": "NOT_GRANTED",
+      "amountEur": null
+    },
+    {
+      "dependencyId": "MC14-DEP-10",
+      "area": "BLOCKED_LAUNCH_CONSEQUENCE",
+      "amountStatus": "CONDITIONAL",
+      "mc14RiskIds": [
+        "CLM-02",
+        "CLM-05",
+        "OPS-01",
+        "OPS-02"
+      ],
+      "consumedIn": [
+        "MC14-REQUIRED-EXTERNAL-DECISIONS.md",
+        "release-evidence-gates.json"
+      ],
+      "treatment": "ZERO_AUTHORISED_REVENUE",
+      "amountEur": null
+    }
+  ],
+  "summary": {
+    "mc02BlockersMapped": 58,
+    "mc02RequiredCategoriesMapped": [
+      "L",
+      "D",
+      "H",
+      "X"
+    ],
+    "mc11RisksMapped": 39,
+    "mc12BlockersMapped": 23,
+    "mc13BlockersMapped": 14,
+    "totalMapped": 134,
+    "closedByMc14": 0,
+    "statusChanges": 0,
+    "deletions": 0,
+    "mc13HandoffDependenciesConsumed": 10
+  }
+}

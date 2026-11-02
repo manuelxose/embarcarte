@@ -1,0 +1,551 @@
+{
+  "contractId": "MAREA-MC14-CLAIMS-POLICY",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-14",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "statusNote": "Internal binding policy for claim classification and approval. It does not authorise any public publication. No claim is currently approved for public use; MC-14 publication authorization is NONE. The policy is compatible with MC-03's A/C/P/X classes but adds explicit audience and publication-status gates, and the stricter gate prevails over any inherited allowance.",
+  "baseReference": "docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md",
+  "claimClasses": [
+    {
+      "class": "A",
+      "name": "Allowed in the specified context",
+      "definition": "Supported by recorded facts and not conflicting with current governance.",
+      "audienceGate": "INTERNAL_DOCUMENTATION_ONLY unless a separate public gate explicitly authorises publication",
+      "publicationRequirement": "No evidence artefact required; context and audience must be stated",
+      "examples": "Internal concept descriptions, definitions, edition inclusions that are already recorded in the product contracts."
+    },
+    {
+      "class": "C",
+      "name": "Conditional",
+      "definition": "May only be used after the named evidence requirement and approval are satisfied.",
+      "audienceGate": "INTERNAL_DRAFT until evidence exists; PUBLIC after evidence and approval",
+      "publicationRequirement": "Evidence record attached to the claim, approver sign-off, release gate open",
+      "examples": "Tested compatibility, licensed data, measured performance, audited security."
+    },
+    {
+      "class": "P",
+      "name": "Prohibited in the current state",
+      "definition": "Unsupported or conflicting with an active blocker; no evidence route is currently satisfied.",
+      "audienceGate": "NO_PUBLICATION",
+      "publicationRequirement": "Cannot be published while the named blocker is open; requires a policy amendment after evidence",
+      "examples": "Availability, stock, final prices, certification, guarantees of alerts or performance."
+    },
+    {
+      "class": "X",
+      "name": "Prohibited absolutely",
+      "definition": "Fabricated or categorically impermissible assertions",
+      "audienceGate": "NO_PUBLICATION_AND_NO_INTERNAL_USE_AS_FACT",
+      "publicationRequirement": "No evidence route exists in this programme",
+      "examples": "Invented certifications, customers, testimonials, awards, insurance, safety-of-life guarantees, autonomous control."
+    }
+  ],
+  "publicationStatusVocabulary": [
+    {
+      "status": "INTERNAL_ONLY",
+      "meaning": "May appear in internal planning documents only; not customer-facing and not indexed."
+    },
+    {
+      "status": "PUBLIC_PROHIBITED",
+      "meaning": "May not appear on any public surface, channel, package, manual, proposal or store listing."
+    },
+    {
+      "status": "PUBLIC_CONDITIONAL",
+      "meaning": "Publication is conditional on the named evidence and approval; not currently authorised."
+    },
+    {
+      "status": "PUBLIC_AUTHORIZED",
+      "meaning": "Approved for a named surface after evidence and sign-off; not used in MC-14."
+    }
+  ],
+  "audienceVocabulary": [
+    "INTERNAL",
+    "INSTALLER",
+    "DISTRIBUTOR",
+    "B2B_CUSTOMER",
+    "CONSUMER",
+    "PUBLIC"
+  ],
+  "channels": [
+    "CORPORATE_WEBSITE",
+    "PRODUCT_CATALOGUE",
+    "PRODUCT_LANDING_PAGE",
+    "BUNDLE_COMPARISON_PAGE",
+    "SEARCH_ENGINE_DESCRIPTION",
+    "ADVERTISEMENT",
+    "EMAIL_CAMPAIGN",
+    "INSTALLER_BROCHURE",
+    "PACKAGING",
+    "MANUAL",
+    "PROPOSAL",
+    "QUOTATION",
+    "CHECKOUT",
+    "PARTNER_DOCUMENTATION",
+    "APP_STORE",
+    "SOCIAL_MEDIA"
+  ],
+  "mandatoryProhibitedClaimCategories": [
+    {
+      "categoryId": "PROH-01",
+      "category": "COMMERCIAL_AVAILABILITY",
+      "classRequired": "P",
+      "reason": "Nothing is for sale; COMMERCIAL_AVAILABILITY = NOT_FOR_SALE.",
+      "riskIds": [
+        "CLM-02"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-02",
+      "category": "STOCK",
+      "classRequired": "P",
+      "reason": "No stock record exists.",
+      "riskIds": [
+        "CLM-02"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-03",
+      "category": "DELIVERY_DATES",
+      "classRequired": "P",
+      "reason": "No fulfilment capability or lead time exists.",
+      "riskIds": [
+        "CLM-02"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29",
+        "SRC-EU-CRD-2011-83"
+      ]
+    },
+    {
+      "categoryId": "PROH-04",
+      "category": "FINAL_PRICING",
+      "classRequired": "P",
+      "reason": "PRICE_APPROVED = NONE; all prices are hypotheses.",
+      "riskIds": [
+        "CLM-02"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-PRICE-98-6"
+      ]
+    },
+    {
+      "categoryId": "PROH-05",
+      "category": "TRADEMARK_REGISTRATION",
+      "classRequired": "X",
+      "reason": "TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED; no registration exists.",
+      "riskIds": [
+        "IPR-13",
+        "IPR-14"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-EUTMR-2017-1001"
+      ]
+    },
+    {
+      "categoryId": "PROH-06",
+      "category": "OWNERSHIP_OF_UNDERLYING_CODE",
+      "classRequired": "P",
+      "reason": "Source IP clearance is NOT_CLEARED and ownership is undocumented.",
+      "riskIds": [
+        "IPR-01",
+        "IPR-15"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-EUTMR-2017-1001",
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-07",
+      "category": "OFFICIAL_OR_LICENSED_CHARTS",
+      "classRequired": "X",
+      "reason": "No chart licence or ENC distribution agreement exists.",
+      "riskIds": [
+        "DATA-01"
+      ],
+      "legalSourceIds": [
+        "SRC-ES-IHM-CHART-LICENSING"
+      ]
+    },
+    {
+      "categoryId": "PROH-08",
+      "category": "WEATHER_DATA_RIGHTS",
+      "classRequired": "X",
+      "reason": "No weather redistribution right is granted.",
+      "riskIds": [
+        "DATA-02"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-DB-96-9"
+      ]
+    },
+    {
+      "categoryId": "PROH-09",
+      "category": "CE_RED_EMC_COMPLIANCE",
+      "classRequired": "X",
+      "reason": "No conformity assessment or DoC exists; CE_MARKING_CLAIM = PROHIBITED.",
+      "riskIds": [
+        "LEG-06",
+        "CLM-03"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-CE-MARKING-GUIDANCE"
+      ]
+    },
+    {
+      "categoryId": "PROH-10",
+      "category": "NMEA_CERTIFICATION",
+      "classRequired": "X",
+      "reason": "NMEA 2000 is not implemented and no certification exists.",
+      "riskIds": [
+        "PRD-04",
+        "CLM-03"
+      ],
+      "legalSourceIds": [
+        "SRC-NMEA-CERTIFICATION"
+      ]
+    },
+    {
+      "categoryId": "PROH-11",
+      "category": "MARINE_SAFETY_CERTIFICATION",
+      "classRequired": "X",
+      "reason": "No RCD/MED approval, wheelmark or safety certification exists.",
+      "riskIds": [
+        "LEG-11",
+        "CLM-03"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-MED-2014-90",
+        "SRC-EU-RCD-2013-53"
+      ]
+    },
+    {
+      "categoryId": "PROH-12",
+      "category": "UNIVERSAL_INTEROPERABILITY",
+      "classRequired": "X",
+      "reason": "Zero tested compatibility rows; compatibility is per device and firmware.",
+      "riskIds": [
+        "PRD-05",
+        "CLM-04"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-13",
+      "category": "VALIDATED_INSTALLATION_COMPATIBILITY",
+      "classRequired": "C",
+      "reason": "Requires a tested compatibility matrix and installation evidence per device.",
+      "riskIds": [
+        "PRD-05",
+        "CLM-04"
+      ],
+      "legalSourceIds": [
+        "SRC-NMEA-0183"
+      ]
+    },
+    {
+      "categoryId": "PROH-14",
+      "category": "FULLY_AUTONOMOUS_STEERING",
+      "classRequired": "X",
+      "reason": "PILOT is supervised-only and the safety gate is BLOCKED.",
+      "riskIds": [
+        "PRD-01",
+        "LIA-10",
+        "CLM-04"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-PLD-2024-2853"
+      ]
+    },
+    {
+      "categoryId": "PROH-15",
+      "category": "COLLISION_PREVENTION",
+      "classRequired": "X",
+      "reason": "AIS is receive-only and incomplete; no collision-avoidance function exists.",
+      "riskIds": [
+        "LIA-05",
+        "CLM-04"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-16",
+      "category": "GUARANTEED_ALERT_DELIVERY",
+      "classRequired": "X",
+      "reason": "No delivery guarantee, coverage evidence or SLA exists.",
+      "riskIds": [
+        "LIA-08",
+        "CLM-04"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-17",
+      "category": "GUARANTEED_MONITORING_AVAILABILITY",
+      "classRequired": "X",
+      "reason": "No service availability measurement or SLA exists.",
+      "riskIds": [
+        "PRD-07",
+        "LIA-08"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-18",
+      "category": "GUARANTEED_FORECAST_ACCURACY",
+      "classRequired": "X",
+      "reason": "Forecasts are probabilistic and no accuracy validation exists.",
+      "riskIds": [
+        "LIA-07",
+        "CLM-04"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-19",
+      "category": "INSURANCE_COVERAGE",
+      "classRequired": "X",
+      "reason": "No insurance policy exists; premium and limits are UNKNOWN.",
+      "riskIds": [
+        "LIA-13"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-PLD-2024-2853"
+      ]
+    },
+    {
+      "categoryId": "PROH-20",
+      "category": "CUSTOMER_COUNTS",
+      "classRequired": "X",
+      "reason": "CUSTOMER_EVIDENCE = NONE.",
+      "riskIds": [
+        "CLM-06"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-21",
+      "category": "TESTIMONIALS",
+      "classRequired": "X",
+      "reason": "No customer testimonials exist; fabricating them is categorically prohibited.",
+      "riskIds": [
+        "CLM-06"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-22",
+      "category": "MARKET_SHARE",
+      "classRequired": "X",
+      "reason": "No market-share evidence exists.",
+      "riskIds": [
+        "CLM-06"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-23",
+      "category": "COMMERCIAL_PROFITABILITY",
+      "classRequired": "P",
+      "reason": "Financial scenarios are hypothetical and not profitability evidence.",
+      "riskIds": [
+        "CLM-05"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-24",
+      "category": "BREAK_EVEN",
+      "classRequired": "P",
+      "reason": "Break-even is conditional and hypothetical.",
+      "riskIds": [
+        "CLM-05"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-25",
+      "category": "INVESTMENT_RETURNS",
+      "classRequired": "X",
+      "reason": "No return can be promised from a conditional model.",
+      "riskIds": [
+        "CLM-05"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-26",
+      "category": "FINANCING_COMMITMENTS",
+      "classRequired": "X",
+      "reason": "No term sheet, funding commitment or authorization exists.",
+      "riskIds": [
+        "CLM-05"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-27",
+      "category": "CYBERSECURITY_CERTIFICATION",
+      "classRequired": "X",
+      "reason": "No CRA conformity, certificate or security certification exists.",
+      "riskIds": [
+        "CYB-01",
+        "CLM-03"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-CRA-2024-2847"
+      ]
+    },
+    {
+      "categoryId": "PROH-28",
+      "category": "UNVERIFIED_SLA",
+      "classRequired": "X",
+      "reason": "No SLA is offered, measured or contracted.",
+      "riskIds": [
+        "PRD-10",
+        "PRD-07"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ]
+    },
+    {
+      "categoryId": "PROH-29",
+      "category": "GDPR_COMPLIANCE_ASSERTION",
+      "classRequired": "X",
+      "reason": "No DPIA, DPA or processing inventory exists; compliance cannot be asserted.",
+      "riskIds": [
+        "PRIV-01",
+        "PRIV-02"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679"
+      ]
+    },
+    {
+      "categoryId": "PROH-30",
+      "category": "SAFETY_OF_LIFE_OR_LIFE_SAVING",
+      "classRequired": "X",
+      "reason": "WATCH alerting is not a safety-of-life service and no evidence exists.",
+      "riskIds": [
+        "LIA-08"
+      ],
+      "legalSourceIds": [
+        "SRC-EU-GPSR-2023-988"
+      ]
+    }
+  ],
+  "approvalWorkflow": [
+    {
+      "step": 1,
+      "action": "Author drafts the claim with its intended audience and channel, and cites the evidence artefact or records NONE."
+    },
+    {
+      "step": 2,
+      "action": "Classify A/C/P/X and set publicationStatus using the audience gate; internal and public contexts are separate decisions."
+    },
+    {
+      "step": 3,
+      "action": "Check against the mandatory prohibited categories and the active hard restrictions; a Class A internal claim is not automatically a public claim."
+    },
+    {
+      "step": 4,
+      "action": "Class C: attach the evidence record, obtain the approver sign-off and confirm the release gate is open. Until then the claim stays INTERNAL_ONLY."
+    },
+    {
+      "step": 5,
+      "action": "Independent review verifies the claim against the evidence artefact, not against a summary."
+    },
+    {
+      "step": 6,
+      "action": "Any claim in a signed commercial document additionally requires the human signatory named in the brand/legal decision package."
+    },
+    {
+      "step": 7,
+      "action": "Re-review every claim when a product lifecycle state, licence, certification, price or support period changes."
+    }
+  ],
+  "evidenceRules": [
+    "A claim record must cite the exact evidence file, certificate, test report, signed contract or measurement; a design document alone is not product evidence.",
+    "No claim may be published from a hypothesis, internal model, scenario or roadmap entry.",
+    "Absence of evidence is never evidence of absence: an unverified status stays unverified.",
+    "Evidence must exist at the time of publication and be retained with the claim record.",
+    "Numbers in claims must match the approved source exactly, including units, currency, VAT basis and scope."
+  ],
+  "brandState": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "mareaPublicUse": "NO_GO",
+    "internalNamingAllowed": true,
+    "publicBrandAttributionAllowed": false,
+    "registeredSymbolAllowed": false,
+    "trademarkSuffixAllowed": false,
+    "inheritedPolicyConflict": {
+      "conflictId": "MC14-BRAND-CONFLICT-01",
+      "sourceDocument": "docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md (MC-03)",
+      "sourceStatement": "Class A allows 'MAREA is a product brand of EMBARCARTE' and naming/edition statements today.",
+      "activeRestriction": "MAREA_PUBLIC_USE = NO_GO while TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED.",
+      "resolution": "The stricter gate prevails in MC-14: no public MAREA brand use. MC-03 evidence is not edited; a formal supersession proposal is recorded in the decision log/delivery record and requires brand-owner and counsel approval.",
+      "riskIds": [
+        "IPR-14",
+        "CLM-01"
+      ]
+    }
+  },
+  "internalVsPublic": {
+    "internalNaming": "MAREA may be used as an internal product name in planning, engineering and governance documents marked internal.",
+    "internalConceptDescription": "Concept and defined-functionality statements are allowed only in internal documentation and must state that the product is DEFINED/not available.",
+    "customerFacing": "No MAREA-branded customer-facing statement is authorised in MC-14.",
+    "publicTrademarkUse": "Prohibited (NO_GO).",
+    "availabilityStatements": "Prohibited (NOT_FOR_SALE).",
+    "publicationAuthorized": false
+  },
+  "enforcement": {
+    "validator": "scripts/check-marea-legal-commercial.mjs",
+    "testSuite": "scripts/check-marea-legal-commercial.test.mjs",
+    "scope": "Machine-verifiable conditions only: class/status vocabularies, prohibited categories blocked, bilingual parity, evidence presence for publication approval, hard restrictions.",
+    "limitation": "A keyword scanner cannot prove legal compliance; ambiguous claims require human legal review. Passing the validator is not a publication approval or a legal clearance.",
+    "incidentHandling": "A published claim found unsupported must be retracted within 24 hours, recorded, and the product's commercial state reviewed."
+  },
+  "summary": {
+    "claimsCatalogued": 42,
+    "classA": 4,
+    "classC": 3,
+    "classP": 11,
+    "classX": 24,
+    "internalOnly": 4,
+    "publicProhibited": 38,
+    "publicAuthorized": 0,
+    "publicationAuthorization": "NONE",
+    "mandatoryProhibitedCategories": 30
+  }
+}
