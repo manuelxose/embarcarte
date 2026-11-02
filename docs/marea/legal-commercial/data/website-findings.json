@@ -12,7 +12,7 @@
   "findings": [
     {
       "findingId": "WEB-001",
-      "route": "/es/aviso-legal",
+      "route": "/aviso-legal",
       "locale": "es",
       "category": "LEGAL_IDENTITY",
       "severity": "BLOCKING",
@@ -21,8 +21,15 @@
       "lineEnd": 26,
       "observedText": "    taxId: '',\n    address: '',\n    registry: '',",
       "whyRisk": "The seller's legal identity used by the footer, structured data and every legal page has an owner trade name only: tax ID, registered address and registry data are empty strings, so the LSSI/eCommerce information duty and the consumer pre-contract duty to identify the seller are not met while commerce is offered.",
-      "legalSourceIds": ["SRC-ES-LSSI-34-2002", "SRC-EU-ECOMMERCE-2000-31", "SRC-ES-TRLGDCU-RDL-1-2007"],
-      "riskIds": ["LEG-09", "LEG-01"],
+      "legalSourceIds": [
+        "SRC-ES-LSSI-34-2002",
+        "SRC-EU-ECOMMERCE-2000-31",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "riskIds": [
+        "LEG-09",
+        "LEG-01"
+      ],
       "suggestedRemediation": "Future work (MC-15, GATE-LEGAL-ENTITY): populate SITE.legal from the company registration evidence (legal name, NIF/CIF, registered address, registry data) and gate publication of commerce and legal pages on those fields being non-empty and independently verified.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -30,7 +37,7 @@
     },
     {
       "findingId": "WEB-002",
-      "route": "/es/aviso-legal",
+      "route": "/aviso-legal",
       "locale": "es",
       "category": "LEGAL_IDENTITY",
       "severity": "BLOCKING",
@@ -39,8 +46,13 @@
       "lineEnd": 264,
       "observedText": "'legal.pending': 'Datos fiscales y domicilio: pendientes de confirmación.',",
       "whyRisk": "The published legal notice explicitly tells visitors that the tax details and registered address are pending confirmation (rendered by the conditional at src/app/features/legal/legal.ts:36), which is a public admission that the seller identity required for distance selling is incomplete; the English page publishes the equivalent 'awaiting confirmation' text.",
-      "legalSourceIds": ["SRC-ES-LSSI-34-2002", "SRC-ES-TRLGDCU-RDL-1-2007"],
-      "riskIds": ["LEG-09"],
+      "legalSourceIds": [
+        "SRC-ES-LSSI-34-2002",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "riskIds": [
+        "LEG-09"
+      ],
       "suggestedRemediation": "Future work (MC-15): once SITE.legal is completed and verified, remove the 'pending confirmation' fallback so it can never render on a public legal page; until then keep commerce CTAs gated.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -48,7 +60,7 @@
     },
     {
       "findingId": "WEB-003",
-      "route": "/es/tecnologia",
+      "route": "/tecnologia",
       "locale": "es",
       "category": "OWNERSHIP",
       "severity": "BLOCKING",
@@ -57,8 +69,16 @@
       "lineEnd": 30,
       "observedText": "Open Marine es nuestra plataforma abierta de navegación e instrumentación.",
       "whyRisk": "The public technology page claims EMBARCARTE ownership of the OPEN-MARINE platform, while the programme's own audits record that OPEN-MARINE has no licence/COPYING/NOTICE file, custody is a personal account and no assignment or reuse right to EMBARCARTE is documented; the brand-claims policy prohibits ownership claims over uncleared software and the public-use gate is NO-GO.",
-      "legalSourceIds": ["SRC-EU-EUTMR-2017-1001", "SRC-ES-LCD-3-1991", "SRC-EU-UCPD-2005-29"],
-      "riskIds": ["IPR-15", "IPR-14", "CLM-05"],
+      "legalSourceIds": [
+        "SRC-EU-EUTMR-2017-1001",
+        "SRC-ES-LCD-3-1991",
+        "SRC-EU-UCPD-2005-29"
+      ],
+      "riskIds": [
+        "IPR-15",
+        "IPR-14",
+        "CLM-05"
+      ],
       "suggestedRemediation": "Future work (MC-12A/MC-15): close the OPEN-MARINE assignment/licence decision first, then either substantiate an owned-brand statement with the signed evidence or rewrite the copy to describe the technical origin without ownership language.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -66,7 +86,7 @@
     },
     {
       "findingId": "WEB-004",
-      "route": "/es/tienda",
+      "route": "/tienda",
       "locale": "es",
       "category": "AVAILABILITY",
       "severity": "BLOCKING",
@@ -75,8 +95,16 @@
       "lineEnd": 90,
       "observedText": "Compra el ordenador de navegación Open Marine Hub, el controlador de piloto automático y accesorios náuticos abiertos.",
       "whyRisk": "The published shop meta description tells search engines and users to buy an Open Marine Hub navigation computer and an autopilot controller, although the portfolio is NOT commercially available, PILOT is hard-blocked from sale and the default catalogue is seeded inactive (price 0, stock 0, active 0); the English description repeats the same buy instruction.",
-      "legalSourceIds": ["SRC-EU-UCPD-2005-29", "SRC-EU-CRD-2011-83", "SRC-EU-PRICE-98-6"],
-      "riskIds": ["CLM-02", "CLM-06", "LEG-09"],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29",
+        "SRC-EU-CRD-2011-83",
+        "SRC-EU-PRICE-98-6"
+      ],
+      "riskIds": [
+        "CLM-02",
+        "CLM-06",
+        "LEG-09"
+      ],
       "suggestedRemediation": "Future work (MC-15): replace the shop SEO title/description with a truthful catalogue statement and prohibit buy/price/availability language until approved SKUs, real stock and fulfilment exist.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -84,7 +112,7 @@
     },
     {
       "findingId": "WEB-005",
-      "route": "/es/aviso-legal",
+      "route": "/aviso-legal",
       "locale": "es",
       "category": "OWNERSHIP",
       "severity": "BLOCKING",
@@ -93,8 +121,16 @@
       "lineEnd": 32,
       "observedText": "Open Marine distribuido como código abierto se rige por su propia licencia.",
       "whyRisk": "The legal notice states publicly that Open Marine software is distributed as open source under its own licence, but the programme's licence audit found no outbound licence (all rights reserved by default) and the distribution policy expressly forbids representing the codebase to customers as open source; this is a false licensing statement in a legally binding page.",
-      "legalSourceIds": ["SRC-EU-EUTMR-2017-1001", "SRC-EU-UCPD-2005-29", "SRC-ES-LCD-3-1991"],
-      "riskIds": ["IPR-15", "IPR-14", "CLM-05"],
+      "legalSourceIds": [
+        "SRC-EU-EUTMR-2017-1001",
+        "SRC-EU-UCPD-2005-29",
+        "SRC-ES-LCD-3-1991"
+      ],
+      "riskIds": [
+        "IPR-15",
+        "IPR-14",
+        "CLM-05"
+      ],
       "suggestedRemediation": "Future work (MC-12A/MC-15): replace the passage with the actual, signed licence position once decided; publish no open-source or licence statement until the outbound licence file and attribution/notice obligations exist.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -102,7 +138,7 @@
     },
     {
       "findingId": "WEB-006",
-      "route": "/es/tecnologia/piloto-automatico",
+      "route": "/tecnologia/piloto-automatico",
       "locale": "es",
       "category": "SAFETY",
       "severity": "BLOCKING",
@@ -111,8 +147,16 @@
       "lineEnd": 95,
       "observedText": "Controlador de piloto automático abierto, con seguridad por diseño.",
       "whyRisk": "The product page markets a safety-critical steering autopilot as 'safe by design' and lists an emergency stop, watchdog and current limit as assurances, while the PILOT safety gate is BLOCKED (no hazard analysis, E-stop evidence, sea trials or conformity), there is no certification and the page omits the mandatory supervised-steering and navigation-aid disclaimers required by the programme's own claims policy.",
-      "legalSourceIds": ["SRC-EU-GPSR-2023-988", "SRC-EU-UCPD-2005-29", "SRC-ES-TRLGDCU-RDL-1-2007"],
-      "riskIds": ["CLM-06", "LIA-06", "LEG-01"],
+      "legalSourceIds": [
+        "SRC-EU-GPSR-2023-988",
+        "SRC-EU-UCPD-2005-29",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "riskIds": [
+        "CLM-06",
+        "LIA-06",
+        "LEG-01"
+      ],
       "suggestedRemediation": "Future work (MC-15): remove safety assurances, describe only defined design boundaries with the approved supervised-steering and navigation-aid disclaimers verbatim, mark the module DEFINED/not for sale and remove commerce links; no safety claim until an independent safety case and evidence exist.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -120,7 +164,7 @@
     },
     {
       "findingId": "WEB-007",
-      "route": "/es/privacidad",
+      "route": "/privacidad",
       "locale": "es",
       "category": "PRIVACY",
       "severity": "MAJOR",
@@ -129,8 +173,15 @@
       "lineEnd": 46,
       "observedText": "Responsable del tratamiento: {owner}. Contacto: {email}.",
       "whyRisk": "The privacy policy names the controller only by trade name and email and interpolates the empty identity fields; it gives no legal name, postal address or tax identifier, so the GDPR information duty on controller identity and contact details is incomplete.",
-      "legalSourceIds": ["SRC-EU-GDPR-2016-679", "SRC-ES-LOPDGDD-3-2018", "SRC-ES-LSSI-34-2002"],
-      "riskIds": ["PRIV-07", "CONS-01"],
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679",
+        "SRC-ES-LOPDGDD-3-2018",
+        "SRC-ES-LSSI-34-2002"
+      ],
+      "riskIds": [
+        "PRIV-07",
+        "CONS-01"
+      ],
       "suggestedRemediation": "Future work (MC-15): after GATE-LEGAL-ENTITY closes, publish the controller's legal name, NIF, postal address and a privacy contact/DPO route in both locales.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -138,7 +189,7 @@
     },
     {
       "findingId": "WEB-008",
-      "route": "/es/privacidad",
+      "route": "/privacidad",
       "locale": "es",
       "category": "PRIVACY",
       "severity": "MAJOR",
@@ -147,8 +198,14 @@
       "lineEnd": 66,
       "observedText": "No cedemos tus datos a terceros salvo obligación legal o proveedores técnicos necesarios (alojamiento y correo).",
       "whyRisk": "The recipients section lists only hosting and email, but the site sends personal data to Google Identity Services (account creation/login) and to Stripe (card checkout), and the policy says nothing about international transfers or processor safeguards for those providers.",
-      "legalSourceIds": ["SRC-EU-GDPR-2016-679", "SRC-ES-LOPDGDD-3-2018"],
-      "riskIds": ["PRIV-07", "CONS-01"],
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679",
+        "SRC-ES-LOPDGDD-3-2018"
+      ],
+      "riskIds": [
+        "PRIV-07",
+        "CONS-01"
+      ],
       "suggestedRemediation": "Future work (MC-15): add Google Identity Services and Stripe as processors/recipients with purpose, transfer mechanism and retention, plus the remainder of the GDPR art. 13 information (retention periods, legitimate interest, complaint route beyond AEPD).",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -156,7 +213,7 @@
     },
     {
       "findingId": "WEB-009",
-      "route": "/es/acceso",
+      "route": "/acceso",
       "locale": "es",
       "category": "PRIVACY",
       "severity": "MAJOR",
@@ -165,8 +222,14 @@
       "lineEnd": 169,
       "observedText": "INSERT INTO users (email, name, password_hash) VALUES (?, ?, ?)",
       "whyRisk": "Registration displays a privacy-consent checkbox, but the request is silently dropped: the endpoint never reads a consent flag and the users table has no consent/evidence field, so the controller cannot demonstrate consent or any other lawful basis for account creation.",
-      "legalSourceIds": ["SRC-EU-GDPR-2016-679", "SRC-ES-LOPDGDD-3-2018"],
-      "riskIds": ["PRIV-07", "CONS-01"],
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679",
+        "SRC-ES-LOPDGDD-3-2018"
+      ],
+      "riskIds": [
+        "PRIV-07",
+        "CONS-01"
+      ],
       "suggestedRemediation": "Future work (MC-15): require an explicit consent/terms flag server-side, store the accepted privacy-policy version, timestamp and source, and record the lawful basis before creating the account.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -174,7 +237,7 @@
     },
     {
       "findingId": "WEB-010",
-      "route": "/es/acceso",
+      "route": "/acceso",
       "locale": "es",
       "category": "COOKIES",
       "severity": "MINOR",
@@ -183,8 +246,13 @@
       "lineEnd": 46,
       "observedText": "script.src = 'https://accounts.google.com/gsi/client';",
       "whyRisk": "The login page injects a third-party Google Identity Services script at runtime, but the cookie policy states that only strictly necessary technical storage (emb_session, emb_cart) is used and does not disclose this third-party authentication integration or any cookies/storage it may set.",
-      "legalSourceIds": ["SRC-EU-EPRIVACY-2002-58", "SRC-EU-GDPR-2016-679"],
-      "riskIds": ["PRIV-07"],
+      "legalSourceIds": [
+        "SRC-EU-EPRIVACY-2002-58",
+        "SRC-EU-GDPR-2016-679"
+      ],
+      "riskIds": [
+        "PRIV-07"
+      ],
       "suggestedRemediation": "Future work (MC-15): disclose the Google sign-in integration in the cookie/privacy information, state its purpose and any storage it sets, and confirm the consent basis before enabling the button.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -192,7 +260,7 @@
     },
     {
       "findingId": "WEB-011",
-      "route": "/es/carrito",
+      "route": "/carrito",
       "locale": "es",
       "category": "CHECKOUT",
       "severity": "MAJOR",
@@ -201,8 +269,15 @@
       "lineEnd": 86,
       "observedText": "formControlName=\"terms\"",
       "whyRisk": "The single mandatory checkbox combines the terms of sale and the privacy-policy link, bundling data-protection acknowledgement with contract acceptance; the checkout screen also gives no summary of the withdrawal right or the model withdrawal form before the order is placed.",
-      "legalSourceIds": ["SRC-EU-CRD-2011-83", "SRC-ES-TRLGDCU-RDL-1-2007"],
-      "riskIds": ["CONS-01", "CONS-03", "CONS-10"],
+      "legalSourceIds": [
+        "SRC-EU-CRD-2011-83",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "riskIds": [
+        "CONS-01",
+        "CONS-03",
+        "CONS-10"
+      ],
       "suggestedRemediation": "Future work (MC-15): present the CRD pre-contract information before the order button (withdrawal right, model form, delivery/tax costs) and separate privacy acknowledgement from contractual acceptance.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -219,8 +294,15 @@
       "lineEnd": 408,
       "observedText": "Gracias por tu pedido en Embarcarte.",
       "whyRisk": "The order-creation flow immediately sends an email saying 'Thank you for your order' before any payment or acceptance decision, while the terms of sale say the order is accepted only when the seller sends a confirmation email; automatic acknowledgement is being conflated with contract conclusion.",
-      "legalSourceIds": ["SRC-EU-CRD-2011-83", "SRC-ES-TRLGDCU-RDL-1-2007", "SRC-EU-ECOMMERCE-2000-31"],
-      "riskIds": ["CONS-01", "PAY-05"],
+      "legalSourceIds": [
+        "SRC-EU-CRD-2011-83",
+        "SRC-ES-TRLGDCU-RDL-1-2007",
+        "SRC-EU-ECOMMERCE-2000-31"
+      ],
+      "riskIds": [
+        "CONS-01",
+        "PAY-05"
+      ],
       "suggestedRemediation": "Future work (MC-15): separate the automatic order-received acknowledgement from the seller's acceptance confirmation, align the terms of sale wording and record the acceptance event.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -228,7 +310,7 @@
     },
     {
       "findingId": "WEB-013",
-      "route": "/es/tienda/:slug",
+      "route": "/tienda/:slug",
       "locale": "es",
       "category": "PRICE",
       "severity": "MAJOR",
@@ -237,8 +319,16 @@
       "lineEnd": 47,
       "observedText": "{{ i18n.t('shopDetail.vat') }}",
       "whyRisk": "Every catalogue price is labelled 'IVA incluido', but the product data model stores a single price_cents with no VAT rate, tax base or territory field and the admin form accepts any integer; the site therefore makes a tax representation it cannot verify for the configured seller identity or destination.",
-      "legalSourceIds": ["SRC-EU-PRICE-98-6", "SRC-EU-CRD-2011-83", "SRC-ES-TRLGDCU-RDL-1-2007"],
-      "riskIds": ["CLM-04", "PAY-04", "LEG-09"],
+      "legalSourceIds": [
+        "SRC-EU-PRICE-98-6",
+        "SRC-EU-CRD-2011-83",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "riskIds": [
+        "CLM-04",
+        "PAY-04",
+        "LEG-09"
+      ],
       "suggestedRemediation": "Future work (MC-15): add explicit VAT treatment and territory to the product/SKU model and publish the final price only from an approved price list; hide the VAT label until the tax configuration is verified.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -246,7 +336,7 @@
     },
     {
       "findingId": "WEB-014",
-      "route": "/es/tienda/:slug",
+      "route": "/tienda/:slug",
       "locale": "es",
       "category": "STRUCTURED_DATA",
       "severity": "MAJOR",
@@ -255,8 +345,16 @@
       "lineEnd": 164,
       "observedText": "availability: product.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',",
       "whyRisk": "The page emits a schema.org Product/Offer with a concrete euro price, an InStock/OutOfStock availability and the brand 'Open Marine' taken directly from admin-entered price_cents and stock; the programme forbids deriving an offer or Product schema price from an unapproved price hypothesis and forbids uncleared brand use in structured data.",
-      "legalSourceIds": ["SRC-EU-UCPD-2005-29", "SRC-EU-PRICE-98-6", "SRC-EU-EUTMR-2017-1001"],
-      "riskIds": ["CLM-04", "CLM-02", "IPR-13"],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29",
+        "SRC-EU-PRICE-98-6",
+        "SRC-EU-EUTMR-2017-1001"
+      ],
+      "riskIds": [
+        "CLM-04",
+        "CLM-02",
+        "IPR-13"
+      ],
       "suggestedRemediation": "Future work (MC-15): gate JSON-LD offer generation on an approved SKU record (approved price list, real stock, seller identity, brand clearance) and stop using 'Open Marine' as Product brand until IPR-13/IPR-15 close.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -264,7 +362,7 @@
     },
     {
       "findingId": "WEB-015",
-      "route": "/es/tecnologia",
+      "route": "/tecnologia",
       "locale": "es",
       "category": "SEO",
       "severity": "MAJOR",
@@ -273,8 +371,15 @@
       "lineEnd": 56,
       "observedText": "Open Marine integra GPS, AIS, sonda, viento y piloto automático en un sistema abierto basado en Signal K",
       "whyRisk": "The technology page meta description published to search engines presents the platform as already integrating an autopilot and multiple sensors, which is an availability/capability claim for a DEFINED and blocked product family, not a description of delivered functionality.",
-      "legalSourceIds": ["SRC-EU-UCPD-2005-29", "SRC-EU-GPSR-2023-988"],
-      "riskIds": ["CLM-06", "CLM-03", "IPR-14"],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29",
+        "SRC-EU-GPSR-2023-988"
+      ],
+      "riskIds": [
+        "CLM-06",
+        "CLM-03",
+        "IPR-14"
+      ],
       "suggestedRemediation": "Future work (MC-15): rewrite the technology SEO metadata to describe the intended architecture and lifecycle status without implying an integrated, working autopilot/sensor system.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -282,7 +387,7 @@
     },
     {
       "findingId": "WEB-016",
-      "route": "/es",
+      "route": "/",
       "locale": "es",
       "category": "BRAND",
       "severity": "MAJOR",
@@ -291,8 +396,15 @@
       "lineEnd": 35,
       "observedText": "'footer.technology': 'Tecnología Open Marine',",
       "whyRisk": "The site-wide footer presents 'Open Marine' as the commercial technology brand of the business, while the programme defines OPEN-MARINE as the technical origin, not a cleared product brand, and MAREA as the proposed product brand still awaiting trademark clearance; no MAREA usage exists in src/, so the site continues a brand architecture the programme has not cleared.",
-      "legalSourceIds": ["SRC-EU-EUTMR-2017-1001", "SRC-ES-LCD-3-1991"],
-      "riskIds": ["IPR-13", "IPR-14", "CLM-05"],
+      "legalSourceIds": [
+        "SRC-EU-EUTMR-2017-1001",
+        "SRC-ES-LCD-3-1991"
+      ],
+      "riskIds": [
+        "IPR-13",
+        "IPR-14",
+        "CLM-05"
+      ],
       "suggestedRemediation": "Future work (MC-15, after trademark/ownership gates): migrate customer-facing brand references through the approved brand architecture, or keep them descriptive and non-commercial until MAREA/OPEN-MARINE clearance is granted.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -300,7 +412,7 @@
     },
     {
       "findingId": "WEB-017",
-      "route": "/es/tecnologia/navegador",
+      "route": "/tecnologia/navegador",
       "locale": "es",
       "category": "SAFETY",
       "severity": "MAJOR",
@@ -309,8 +421,14 @@
       "lineEnd": 22,
       "observedText": "Blancos AIS con cálculo de CPA/TCPA y alarmas de colisión",
       "whyRisk": "The navigation module advertises collision alarms and CPA/TCPA from AIS targets without stating that AIS is receive-only and incomplete and without the mandatory navigation-aid and AIS receive-only disclaimers; the claims policy prohibits implying collision avoidance or complete traffic awareness.",
-      "legalSourceIds": ["SRC-EU-GPSR-2023-988", "SRC-EU-UCPD-2005-29"],
-      "riskIds": ["CLM-06", "LIA-06"],
+      "legalSourceIds": [
+        "SRC-EU-GPSR-2023-988",
+        "SRC-EU-UCPD-2005-29"
+      ],
+      "riskIds": [
+        "CLM-06",
+        "LIA-06"
+      ],
       "suggestedRemediation": "Future work (MC-15): add the approved navigation-aid and AIS receive-only disclaimers verbatim on this page and avoid implying collision-avoidance capability.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -318,7 +436,7 @@
     },
     {
       "findingId": "WEB-018",
-      "route": "/es/tecnologia/hub",
+      "route": "/tecnologia/hub",
       "locale": "es",
       "category": "COMPATIBILITY",
       "severity": "MAJOR",
@@ -327,8 +445,15 @@
       "lineEnd": 70,
       "observedText": "Entradas NMEA 0183 y NMEA 2000 (mediante adaptador)",
       "whyRisk": "The public Hub page states NMEA 0183 and NMEA 2000 inputs and lists both protocols, but the programme records NMEA 2000 as stubs only, with no NMEA membership/licence, product code or conformance certificate; a compatibility claim is being published without the per-device tested matrix the claims policy requires.",
-      "legalSourceIds": ["SRC-NMEA-2000-LICENSING", "SRC-NMEA-CERTIFICATION", "SRC-EU-UCPD-2005-29"],
-      "riskIds": ["CLM-07", "LIA-05"],
+      "legalSourceIds": [
+        "SRC-NMEA-2000-LICENSING",
+        "SRC-NMEA-CERTIFICATION",
+        "SRC-EU-UCPD-2005-29"
+      ],
+      "riskIds": [
+        "CLM-07",
+        "LIA-05"
+      ],
       "suggestedRemediation": "Future work (MC-15): remove NMEA 2000 from public specs until licensed/tested evidence exists, and publish only compatibility rows backed by recorded tests per device and firmware.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -336,7 +461,7 @@
     },
     {
       "findingId": "WEB-019",
-      "route": "/es/tecnologia/piloto-automatico",
+      "route": "/tecnologia/piloto-automatico",
       "locale": "es",
       "category": "COMPATIBILITY",
       "severity": "MAJOR",
@@ -345,8 +470,14 @@
       "lineEnd": 87,
       "observedText": "Compatible con actuadores DC de dos hilos, como los de tipo ST3000",
       "whyRisk": "The autopilot page asserts compatibility with a named third-party actuator family (ST3000 type) without a tested compatibility matrix, installation scope or qualification evidence, which is a misleading compatibility claim for a safety-critical steering component.",
-      "legalSourceIds": ["SRC-EU-UCPD-2005-29", "SRC-EU-CRD-2011-83"],
-      "riskIds": ["CLM-07", "CLM-06"],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29",
+        "SRC-EU-CRD-2011-83"
+      ],
+      "riskIds": [
+        "CLM-07",
+        "CLM-06"
+      ],
       "suggestedRemediation": "Future work (MC-15): remove named-device compatibility until per-actuator test evidence and an installation qualification matrix are published.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -354,7 +485,7 @@
     },
     {
       "findingId": "WEB-020",
-      "route": "/es/tecnologia/hub",
+      "route": "/tecnologia/hub",
       "locale": "es",
       "category": "COMMERCIAL_CLAIM",
       "severity": "MAJOR",
@@ -363,8 +494,15 @@
       "lineEnd": 65,
       "observedText": "Instalación, configuración y puesta en marcha incluidas",
       "whyRisk": "The Hub page states that installation, configuration, commissioning, software updates and technical support are included, creating a service commitment and price expectation for a DEFINED product with no approved price, BOM, installer network or support contract; the programme forbids turning hypotheses into offers.",
-      "legalSourceIds": ["SRC-EU-CRD-2011-83", "SRC-EU-UCPD-2005-29"],
-      "riskIds": ["CLM-02", "OPS-02", "CLM-04"],
+      "legalSourceIds": [
+        "SRC-EU-CRD-2011-83",
+        "SRC-EU-UCPD-2005-29"
+      ],
+      "riskIds": [
+        "CLM-02",
+        "OPS-02",
+        "CLM-04"
+      ],
       "suggestedRemediation": "Future work (MC-15): replace inclusion language with an honest readiness/scope statement and move inclusions to an approved quotation or approved SKU record.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -372,7 +510,7 @@
     },
     {
       "findingId": "WEB-021",
-      "route": "/es",
+      "route": "/",
       "locale": "es",
       "category": "COMMERCIAL_CLAIM",
       "severity": "MAJOR",
@@ -381,8 +519,14 @@
       "lineEnd": 85,
       "observedText": "Sensores, instrumentación y pilotos automáticos con sistemas abiertos y protocolos estándar.",
       "whyRisk": "The home page advertises autopilots in the plural and features 'Piloto automático — Control inteligente · Abierto', implying a marketable intelligent steering product; PILOT is supervised-only, is not purchasable and its safety gate is blocked, and 'intelligent control' is exactly the kind of autonomy-adjacent wording the claims policy prohibits.",
-      "legalSourceIds": ["SRC-EU-UCPD-2005-29", "SRC-EU-GPSR-2023-988"],
-      "riskIds": ["CLM-06", "CLM-03"],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29",
+        "SRC-EU-GPSR-2023-988"
+      ],
+      "riskIds": [
+        "CLM-06",
+        "CLM-03"
+      ],
       "suggestedRemediation": "Future work (MC-15): remove the autopilot product feature from the home page or mark it explicitly as DEFINED/not available with supervised-steering language; delete 'intelligent control'.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -390,7 +534,7 @@
     },
     {
       "findingId": "WEB-022",
-      "route": "/es/sobre-nosotros",
+      "route": "/sobre-nosotros",
       "locale": "es",
       "category": "COMMERCIAL_CLAIM",
       "severity": "MAJOR",
@@ -399,8 +543,15 @@
       "lineEnd": 44,
       "observedText": "Cada sistema se prueba primero en un banco de simulación que reproduce viento, corriente, AIS y fallos de",
       "whyRisk": "The About page claims every system is tested on a simulation bench before going to the boat and that the autopilot includes physical emergency stop and permanent communication supervision; the programme evidence records no sea trials, simulation assertions never evaluated and a PILOT safety gate blocked, so this is an unsupported testing/safety assurance.",
-      "legalSourceIds": ["SRC-EU-UCPD-2005-29", "SRC-EU-GPSR-2023-988"],
-      "riskIds": ["CLM-03", "CLM-06", "LIA-06"],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29",
+        "SRC-EU-GPSR-2023-988"
+      ],
+      "riskIds": [
+        "CLM-03",
+        "CLM-06",
+        "LIA-06"
+      ],
       "suggestedRemediation": "Future work (MC-15): rewrite to state what is actually verified and what remains unvalidated, and remove safety assurances until the PILOT safety case and test evidence exist.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -408,7 +559,7 @@
     },
     {
       "findingId": "WEB-023",
-      "route": "/es/carrito",
+      "route": "/carrito",
       "locale": "es",
       "category": "PRICE",
       "severity": "MAJOR",
@@ -417,8 +568,16 @@
       "lineEnd": 121,
       "observedText": "'cart.shippingNote': 'Los costes de envío o instalación, si corresponden, se confirmarán por separado.',",
       "whyRisk": "The cart states the total with VAT but leaves shipping or installation costs to be confirmed separately and the terms repeat that they will be indicated before preparing the order; the consumer therefore cannot know the final payable amount before placing the order, contrary to pre-contract price information rules.",
-      "legalSourceIds": ["SRC-EU-CRD-2011-83", "SRC-EU-PRICE-98-6", "SRC-ES-TRLGDCU-RDL-1-2007"],
-      "riskIds": ["CLM-04", "CONS-01", "PAY-04"],
+      "legalSourceIds": [
+        "SRC-EU-CRD-2011-83",
+        "SRC-EU-PRICE-98-6",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "riskIds": [
+        "CLM-04",
+        "CONS-01",
+        "PAY-04"
+      ],
       "suggestedRemediation": "Future work (MC-15): calculate and display delivery/installation costs, or explicitly state that they are included, before the order button; make the total the final payable amount.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -426,7 +585,7 @@
     },
     {
       "findingId": "WEB-024",
-      "route": "/es/condiciones-de-venta",
+      "route": "/condiciones-de-venta",
       "locale": "es",
       "category": "OTHER",
       "severity": "MAJOR",
@@ -435,8 +594,14 @@
       "lineEnd": 133,
       "observedText": "No aplica a productos configurados o fabricados a medida.",
       "whyRisk": "The withdrawal clause excludes 'configured' as well as custom-made products (broader than the CRD custom-made exception) and the legal pack contains no model withdrawal form or a clear statement of who pays return costs; a consumer-rights exception is being widened without the required documentation.",
-      "legalSourceIds": ["SRC-EU-CRD-2011-83", "SRC-ES-TRLGDCU-RDL-1-2007"],
-      "riskIds": ["CONS-03", "CONS-10"],
+      "legalSourceIds": [
+        "SRC-EU-CRD-2011-83",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "riskIds": [
+        "CONS-03",
+        "CONS-10"
+      ],
       "suggestedRemediation": "Future work (MC-15): limit the exclusion to genuinely custom-made/ personalised goods, add the Annex I(B) model withdrawal form, and state return-cost allocation and the withdrawal channel.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -444,7 +609,7 @@
     },
     {
       "findingId": "WEB-025",
-      "route": "/es/aviso-legal",
+      "route": "/aviso-legal",
       "locale": "es",
       "category": "COMMERCIAL_CLAIM",
       "severity": "MAJOR",
@@ -453,8 +618,15 @@
       "lineEnd": 24,
       "observedText": "no constituyen una oferta vinculante",
       "whyRisk": "The legal notice tells visitors that site content is informational and not a binding offer and that prices/specifications are confirmed in each quotation, which directly contradicts the published shop with prices, add-to-cart, order submission and terms of sale; the consumer cannot tell whether a shop order is contractually binding.",
-      "legalSourceIds": ["SRC-EU-UCPD-2005-29", "SRC-EU-CRD-2011-83", "SRC-ES-TRLGDCU-RDL-1-2007"],
-      "riskIds": ["CONS-01", "CLM-04"],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29",
+        "SRC-EU-CRD-2011-83",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "riskIds": [
+        "CONS-01",
+        "CLM-04"
+      ],
       "suggestedRemediation": "Future work (MC-15): reconcile the legal notice with the actual commerce flow: state clearly which surfaces are binding offers and which are informational/quotation-only, and align with the terms of sale.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -462,7 +634,7 @@
     },
     {
       "findingId": "WEB-026",
-      "route": "/es/experiencias",
+      "route": "/experiencias",
       "locale": "es",
       "category": "COMMERCIAL_CLAIM",
       "severity": "MAJOR",
@@ -471,8 +643,15 @@
       "lineEnd": 54,
       "observedText": "Te proponemos una ruta, horario y precio cerrado según la previsión.",
       "whyRisk": "The experiences page markets consumer boat trips with an availability CTA and promises a closed price and fixed schedule, but the site publishes no booking, cancellation, weather-cancellation, passenger or liability-insurance information for that service; consumer pre-contract information is incomplete.",
-      "legalSourceIds": ["SRC-EU-CRD-2011-83", "SRC-ES-TRLGDCU-RDL-1-2007", "SRC-EU-UCPD-2005-29"],
-      "riskIds": ["CONS-01", "CONS-03"],
+      "legalSourceIds": [
+        "SRC-EU-CRD-2011-83",
+        "SRC-ES-TRLGDCU-RDL-1-2007",
+        "SRC-EU-UCPD-2005-29"
+      ],
+      "riskIds": [
+        "CONS-01",
+        "CONS-03"
+      ],
       "suggestedRemediation": "Future work (MC-15): add service-specific pre-contract information and booking/cancellation terms before promoting availability, or reduce the page to an enquiry-only description.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -480,7 +659,7 @@
     },
     {
       "findingId": "WEB-027",
-      "route": "/es/tienda/:slug",
+      "route": "/tienda/:slug",
       "locale": "es",
       "category": "SAFETY",
       "severity": "MAJOR",
@@ -489,8 +668,15 @@
       "lineEnd": 66,
       "observedText": "{{ p.stock < 5 ? i18n.t('shopDetail.lastUnits', { count: p.stock }) : i18n.t('shopDetail.inStock') }}",
       "whyRisk": "The purchasable product page presents photo, price, stock and description but no manufacturer/importer identity, batch/serial traceability, safety warnings, recall contact or required product-safety information, which GPSR online-offer duties require before distance sale of hardware.",
-      "legalSourceIds": ["SRC-EU-GPSR-2023-988", "SRC-EU-ECOMMERCE-2000-31"],
-      "riskIds": ["LEG-04", "LEG-09", "LIA-06"],
+      "legalSourceIds": [
+        "SRC-EU-GPSR-2023-988",
+        "SRC-EU-ECOMMERCE-2000-31"
+      ],
+      "riskIds": [
+        "LEG-04",
+        "LEG-09",
+        "LIA-06"
+      ],
       "suggestedRemediation": "Future work (MC-15): add mandatory GPSR product-identification, traceability, warning and recall fields to the SKU model and render them on the product page before any activation.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -498,7 +684,7 @@
     },
     {
       "findingId": "WEB-028",
-      "route": "/es/condiciones-de-venta",
+      "route": "/condiciones-de-venta",
       "locale": "es",
       "category": "WARRANTY",
       "severity": "MINOR",
@@ -507,8 +693,15 @@
       "lineEnd": 138,
       "observedText": "Los productos tienen la garantía legal de conformidad de tres años prevista en la normativa de consumo.",
       "whyRisk": "The three-year legal conformity guarantee is stated correctly but without any claim channel, proof-of-purchase rule, contact address or distinction between new and second-hand goods, and it is inconsistent with a product catalogue whose seller identity is still empty.",
-      "legalSourceIds": ["SRC-EU-CSD-2019-771", "SRC-ES-TRLGDCU-RDL-1-2007"],
-      "riskIds": ["CONS-02", "OPS-03", "LEG-01"],
+      "legalSourceIds": [
+        "SRC-EU-CSD-2019-771",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "riskIds": [
+        "CONS-02",
+        "OPS-03",
+        "LEG-01"
+      ],
       "suggestedRemediation": "Future work (MC-15): add the guarantee claim procedure, evidence and contact details, distinguish new/second-hand treatments and link the statutory guarantee to the verified seller identity.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -516,7 +709,7 @@
     },
     {
       "findingId": "WEB-029",
-      "route": "/es/tecnologia",
+      "route": "/tecnologia",
       "locale": "es",
       "category": "COMMERCIAL_CLAIM",
       "severity": "MINOR",
@@ -525,8 +718,12 @@
       "lineEnd": 48,
       "observedText": "Software auditable, probado con un banco de simulación antes de cada versión.",
       "whyRisk": "The page claims the software is auditable and tested on a simulation bench before every release, but the programme evidence records that simulation assertions are stored but never evaluated and that the test environment is not reproducible; this is an unverifiable quality/performance claim.",
-      "legalSourceIds": ["SRC-EU-UCPD-2005-29"],
-      "riskIds": ["CLM-03"],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ],
+      "riskIds": [
+        "CLM-03"
+      ],
       "suggestedRemediation": "Future work (MC-15): either publish the actual verification scope and evidence or remove the testing/audit assertion.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -534,7 +731,7 @@
     },
     {
       "findingId": "WEB-030",
-      "route": "/es/condiciones-de-venta",
+      "route": "/condiciones-de-venta",
       "locale": "es",
       "category": "SUBSCRIPTION",
       "severity": "MINOR",
@@ -543,8 +740,14 @@
       "lineEnd": 88,
       "observedText": "MAREA NAV Pro se define como una suscripción anual que proporciona los derechos de la edición durante el periodo y se renueva anualmente.",
       "whyRisk": "Recurring-charge terms exist only in an internal, explicitly unpublished bundle draft; the published site and legal pack contain no subscription renewal, cancellation, price-change or entitlement-loss information, so any future sale of NAV/WATCH subscriptions through this checkout would lack the required pre-contract recurring-payment information.",
-      "legalSourceIds": ["SRC-EU-CRD-2011-83", "SRC-EU-DCD-2019-770"],
-      "riskIds": ["CONS-07", "CONS-09"],
+      "legalSourceIds": [
+        "SRC-EU-CRD-2011-83",
+        "SRC-EU-DCD-2019-770"
+      ],
+      "riskIds": [
+        "CONS-07",
+        "CONS-09"
+      ],
       "suggestedRemediation": "Future work (MC-15): before publishing any subscription SKU, add the full recurring-payment terms (price, renewal, cancellation, refunds, what becomes inaccessible) to the legal pack and checkout in both locales.",
       "publicChangeAuthorized": false,
       "status": "NOT_REMEDIATED",
@@ -552,7 +755,7 @@
     },
     {
       "findingId": "WEB-031",
-      "route": "/es/tienda/muestra/:slug",
+      "route": "/tienda/muestra/:slug",
       "locale": "es",
       "category": "OTHER",
       "severity": "INFORMATIONAL",
@@ -561,7 +764,9 @@
       "lineEnd": 54,
       "observedText": "Samples are examples, not saleable products",
       "whyRisk": "Verified control: sample catalogue pages are explicitly labelled as not saleable, cannot be added to the cart, set noindex and emit no hreflang pair, and noindex is also enforced by the SEO checker; this reduces the sample-shop purchasability risk that remains open on the real catalogue.",
-      "legalSourceIds": ["SRC-EU-UCPD-2005-29"],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ],
       "riskIds": [],
       "suggestedRemediation": "No remediation required for the sample surface; keep the sample/real-catalogue separation when MC-15 changes shop copy.",
       "publicChangeAuthorized": false,
@@ -579,7 +784,9 @@
       "lineEnd": 365,
       "observedText": "if (int(item?.price_cents) !== product.price_cents) throw new OrderError('price_changed');",
       "whyRisk": "Verified control: the server re-reads the active product, price and stock, rejects client-side price changes and out-of-stock quantities and never trusts the basket's money fields, so prices and stock are server-authoritative as the programme requires; the remaining risk is the provenance/approval of the admin-entered values, not client tampering.",
-      "legalSourceIds": ["SRC-EU-PRICE-98-6"],
+      "legalSourceIds": [
+        "SRC-EU-PRICE-98-6"
+      ],
       "riskIds": [],
       "suggestedRemediation": "No remediation required for price integrity; MC-15 must gate activation on approved price/stock provenance.",
       "publicChangeAuthorized": false,
@@ -588,7 +795,7 @@
     },
     {
       "findingId": "WEB-033",
-      "route": "/es",
+      "route": "/",
       "locale": "es",
       "category": "OTHER",
       "severity": "INFORMATIONAL",
@@ -597,7 +804,10 @@
       "lineEnd": 45,
       "observedText": "{ id: 'legalNotice', key: 'footer.legalNotice' },",
       "whyRisk": "Verified control: the footer links to legal notice, privacy, cookies and terms of sale in both locales, and checkout and contact/registration forms link to the terms and privacy pages; the gap is the content/identity in those pages, not link discoverability.",
-      "legalSourceIds": ["SRC-ES-LSSI-34-2002", "SRC-EU-ECOMMERCE-2000-31"],
+      "legalSourceIds": [
+        "SRC-ES-LSSI-34-2002",
+        "SRC-EU-ECOMMERCE-2000-31"
+      ],
       "riskIds": [],
       "suggestedRemediation": "No remediation required for navigation; keep these links when MC-15 rewrites the legal pack.",
       "publicChangeAuthorized": false,
@@ -606,7 +816,7 @@
     },
     {
       "findingId": "WEB-034",
-      "route": "/es/tecnologia/piloto-automatico",
+      "route": "/tecnologia/piloto-automatico",
       "locale": "es",
       "category": "OTHER",
       "severity": "INFORMATIONAL",
@@ -615,7 +825,9 @@
       "lineEnd": 31,
       "observedText": "definición completa (DEFINED), no disponible para compra.",
       "whyRisk": "Verified control: the internal PILOT copy draft is explicitly marked DEFINED/not for sale, publishes no price, includes the approved supervised-steering, navigation-aid and open-source-avoidance disclaimers and is labelled DRAFT/INTERNAL/NOT PUBLISHED; it is therefore not itself a live website claim, but its controls are not yet reflected in the published technology pages.",
-      "legalSourceIds": ["SRC-EU-UCPD-2005-29"],
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29"
+      ],
       "riskIds": [],
       "suggestedRemediation": "No remediation required for the internal draft; MC-15 may reuse its approved disclaimers when the public pages are rewritten.",
       "publicChangeAuthorized": false,

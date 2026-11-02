@@ -7,7 +7,7 @@
 | Date | 2026-11-02 |
 | Owner | Programme Lead / Agent F (Claims and Website Governance) |
 | Machine data | `data/bilingual-claims.json` |
-| Claims | 42 pairs (4 internal, 38 public-prohibited, 0 public-authorised) |
+| Claims | 42 pairs (7 internal, 35 public-prohibited, 0 public-authorised) |
 | Status | INTERNAL_CATALOGUE — publication authorization = NONE |
 
 
@@ -52,7 +52,7 @@ that softens or strengthens a claim is treated as a different, prohibited claim.
 | CLM-016 | AIS | PRODUCT_LANDING_PAGE | X | PUBLIC_PROHIBITED | Certificado NMEA 2000. | NMEA 2000 certified. |
 | CLM-017 | DISPLAY | PACKAGING | X | PUBLIC_PROHIBITED | Homologado como equipo marino. | Approved as marine equipment. |
 | CLM-018 | HUB | ADVERTISEMENT | X | PUBLIC_PROHIBITED | Compatible con toda la electrónica del mercado. | Compatible with all marine electronics on the market. |
-| CLM-019 | NAV | PRODUCT_CATALOGUE | C | PUBLIC_PROHIBITED | Compatible con el equipo indicado, según la matriz de compatibilidad probada. | Compatible with the named device, as recorded in the tested compatibility matrix. |
+| CLM-019 | NAV | PRODUCT_CATALOGUE | C | INTERNAL_ONLY | Compatible con el equipo indicado, según la matriz de compatibilidad probada. | Compatible with the named device, as recorded in the tested compatibility matrix. |
 | CLM-020 | PILOT | PRODUCT_LANDING_PAGE | X | PUBLIC_PROHIBITED | Gobierno totalmente autónomo sin supervisión. | Fully autonomous steering without supervision. |
 | CLM-021 | AIS | PRODUCT_LANDING_PAGE | X | PUBLIC_PROHIBITED | Evita colisiones con otros buques. | Prevents collisions with other vessels. |
 | CLM-022 | WATCH | PRODUCT_LANDING_PAGE | X | PUBLIC_PROHIBITED | Entrega garantizada de alertas en todo momento. | Guaranteed alert delivery at all times. |
@@ -72,8 +72,8 @@ that softens or strengthens a claim is treated as a different, prohibited claim.
 | CLM-036 | AIS | PRODUCT_LANDING_PAGE | X | PUBLIC_PROHIBITED | Transmite y recibe AIS para ver y ser visto. | Transmits and receives AIS to see and be seen. |
 | CLM-037 | FLEET | PROPOSAL | P | PUBLIC_PROHIBITED | FLEET incluye hardware por defecto. | FLEET includes hardware by default. |
 | CLM-038 | — | CORPORATE_WEBSITE | P | PUBLIC_PROHIBITED | Open Marine es software libre y de código abierto. | Open Marine is free and open-source software. |
-| CLM-039 | NAV | PRODUCT_LANDING_PAGE | C | PUBLIC_PROHIBITED | Probado en el mar en condiciones reales. | Tested at sea in real conditions. |
-| CLM-040 | WEATHER | PRODUCT_LANDING_PAGE | C | PUBLIC_PROHIBITED | Con datos meteorológicos licenciados para uso comercial. | With weather data licensed for commercial use. |
+| CLM-039 | NAV | PRODUCT_LANDING_PAGE | C | INTERNAL_ONLY | Probado en el mar en condiciones reales. | Tested at sea in real conditions. |
+| CLM-040 | WEATHER | PRODUCT_LANDING_PAGE | C | INTERNAL_ONLY | Con datos meteorológicos licenciados para uso comercial. | With weather data licensed for commercial use. |
 | CLM-041 | — | CORPORATE_WEBSITE | X | PUBLIC_PROHIBITED | Cumplimiento total del RGPD. | Full GDPR compliance. |
 | CLM-042 | WATCH | MANUAL | A | INTERNAL_ONLY | Este producto es una ayuda a la navegación y no sustituye a la carta náutica oficial, al equipo reglamentario ni a la vigilancia continuada. La recepción AIS es únicamente de escucha y no constituye un sistema de evitación de colisiones. Las alertas pueden retrasarse o perderse y no son un servicio de seguridad de la vida. | This product is a navigational aid and does not replace official nautical charts, required equipment or continuous watchkeeping. AIS reception is receive-only and is not a collision-avoidance system. Alerts may be delayed or lost and are not a safety-of-life service. |
 

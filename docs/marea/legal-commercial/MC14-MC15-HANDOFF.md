@@ -59,13 +59,13 @@ tested-at-sea/reliability, and open-source claims for OPEN-MARINE.
 
 | Route | Findings | Issue |
 |---|---|---|
-| `/es/tienda` | WEB-004, WEB-019, WEB-020 | Shop/SEO instruct buying unavailable Open Marine Hub/autopilot |
-| `/es/tecnologia` | WEB-003, WEB-006, WEB-010, WEB-011 | Ownership/open-source claims and autopilot safety claims |
-| `/es/legal/aviso-legal` | WEB-001, WEB-007, WEB-021 | Missing legal identity; incomplete recipients; draft notice |
-| `/es/legal/privacidad` | WEB-007, WEB-008, WEB-009 | Incomplete controller/recipient information; unrecorded consent |
-| `/es/legal/cookies` | WEB-022 | GIS cookie disclosure and consent gap |
-| `/es/tienda/checkout` | WEB-012, WEB-013, WEB-023 | Checkout CTAs, VAT-included labelling, shipping costs |
-| `/es/sobre-nosotros` | WEB-014, WEB-015 | Autopilot and test/safety claims |
+| `/tienda` | WEB-004, WEB-019, WEB-020 | Shop/SEO instruct buying unavailable Open Marine Hub/autopilot |
+| `/tecnologia` | WEB-003, WEB-006, WEB-010, WEB-011 | Ownership/open-source claims and autopilot safety claims |
+| `/aviso-legal` | WEB-001, WEB-007, WEB-021 | Missing legal identity; incomplete recipients; draft notice |
+| `/privacidad` | WEB-007, WEB-008, WEB-009 | Incomplete controller/recipient information; unrecorded consent |
+| `/cookies` | WEB-022 | GIS cookie disclosure and consent gap |
+| `/carrito` | WEB-012, WEB-013, WEB-023 | Checkout CTAs, VAT-included labelling, shipping costs |
+| `/sobre-nosotros` | WEB-014, WEB-015 | Autopilot and test/safety claims |
 | Structured data / product detail | WEB-016, WEB-017, WEB-018 | Product/Offer JSON-LD with admin price/stock; compatibility claims |
 
 The full 34 findings with file/line references and remediation proposals are in

@@ -18,7 +18,9 @@ re-fetched the source this session the status is `VERIFIED_THIS_SESSION`; where
 the source came from an evidenced predecessor record it is
 `CONSUMED_FROM_PREDECESSOR_EVIDENCE`; failures are `NOT_RETRIEVED` or
 `INACCESSIBLE`. An application date is never inferred from an entry-into-force
-date. No compliance conclusion rests on a non-retrieved source, and no source
+date. No positive compliance conclusion rests on a non-retrieved source; a
+conservative negative determination that rests on a non-retrieved source is
+recorded as `UNDETERMINED` with the limitation stated, and no source
 establishes legal clearance for MAREA.
 
 Retrieved counts: 48 sources — 4 verified this session, 32 consumed from predecessor evidence, 2 partially verified, 10 not retrieved/inaccessible.
@@ -109,7 +111,7 @@ Retrieved counts: 48 sources — 4 verified this session, 32 consumed from prede
 | REQ-PLD-01 | Art 4, 7 and 9 | Economic operators may be liable for defective products including software; relevant evidence must be preserved and disclosed, and the corrected application and transposition dates must be respected. | SRC-EU-PLD-2024-2853 | NOT_ASSESSED | GATE-INSURANCE | LEG-05, LIA-03, LIA-12 |
 | REQ-RED-01 | Art 3(1), 3(2) and 3(3) | Radio equipment must meet safety, EMC and efficient-spectrum essential requirements and, where applicable, the cybersecurity requirements in force. | SRC-EU-RED-2014-53 | NOT_ASSESSED | GATE-MARKET-PLACEMENT | LEG-07 |
 | REQ-RED-02 | Art 17 and Annex III; Spanish transposition | Conformity assessment, EU declaration of conformity, CE marking and Spanish-language instructions and information must be completed before placing radio equipment on the Spanish market. | SRC-EU-RED-2014-53, SRC-ES-RD-188-2016 | NOT_ASSESSED | GATE-MARKET-PLACEMENT | LEG-03, LEG-07 |
-| REQ-DELREG-01 | Art 3(3)(d)-(f) and the 2026 repeal | Internet-connected radio equipment had to meet delegated cybersecurity requirements from 2025-02-01; the regime aligns with the CRA from 2027-12-11, and the current consolidated position must be confirmed before relying on either date. | SRC-EU-DELREG-2022-30, SRC-EU-DELREG-2026-339 | UNDETERMINED | GATE-MARKET-PLACEMENT | LEG-07 |
+| REQ-DELREG-01 | Art 3(3)(d)-(f) and the 2026 repeal | Internet-connected radio equipment had to meet delegated cybersecurity requirements from 2025-08-01; the regime aligns with the CRA from 2027-12-11, and the current consolidated position must be confirmed before relying on either date. | SRC-EU-DELREG-2022-30, SRC-EU-DELREG-2026-339 | UNDETERMINED | GATE-MARKET-PLACEMENT | LEG-07 |
 | REQ-EMC-01 | Art 4 and Annex II | Apparatus must meet electromagnetic-compatibility requirements and conformity assessment; radio equipment covered by the RED is excluded from the EMC Directive but carries equivalent requirements. | SRC-EU-EMC-2014-30, SRC-ES-RD-186-2016 | NOT_ASSESSED | GATE-MARKET-PLACEMENT | LEG-01, PRD-06 |
 | REQ-LVD-01 | Art 3 and Art 4 (voltage scope) | Electrical equipment within 50-1000 V AC or 75-1500 V DC must meet safety objectives; equipment outside the scope may be NOT_APPLICABLE with a cited rationale. | SRC-EU-LVD-2014-35, SRC-ES-RD-187-2016 | UNDETERMINED | GATE-MARKET-PLACEMENT | LEG-01, LIA-01 |
 | REQ-GPSR-01 | Art 5 | Only safe products may be placed on the market; safety must be assessed against product characteristics, use context and vulnerable consumers. | SRC-EU-GPSR-2023-988 | NOT_ASSESSED | GATE-MARKET-PLACEMENT | LEG-04, PRD-01 |
@@ -148,7 +150,7 @@ Retrieved counts: 48 sources — 4 verified this session, 32 consumed from prede
 | REQ-ES-LGT-01 | Spectrum title and radio-equipment rules | Radio transmission requires an authorisation; MAREA AIS is receive-only and must not offer transmission or imply it. | SRC-ES-LGT-11-2022, SRC-EU-RED-2014-53 | NON_COMPLIANT_UNVERIFIED | GATE-MARKET-PLACEMENT | LEG-08 |
 | REQ-ES-RD188-01 | Spanish RED transposition | Instructions and information for radio equipment must be provided in the required Spanish language and market-surveillance duties must be observed. | SRC-ES-RD-188-2016 | UNDETERMINED | GATE-MARKET-PLACEMENT | LEG-03 |
 | REQ-ES-LCD-01 | Art 5-7 | Deceptive, confusing or omissive commercial conduct is unfair competition and can be enjoined and corrected. | SRC-ES-LCD-3-1991, SRC-EU-UCPD-2005-29 | NON_COMPLIANT_UNVERIFIED | GATE-COMMERCIAL-CLAIMS | CLM-04, IPR-15 |
-| REQ-ES-LGP-01 | Art 3-4 | Advertising must be truthful and not misleading; unlawful advertising can be stopped and subject to corrective action. | SRC-ES-LGP-34-1988 | NON_COMPLIANT_UNVERIFIED | GATE-COMMERCIAL-CLAIMS | CLM-04 |
+| REQ-ES-LGP-01 | Art 3-4 | Advertising must be truthful and not misleading; unlawful advertising can be stopped and subject to corrective action. | SRC-ES-LGP-34-1988 | UNDETERMINED | GATE-COMMERCIAL-CLAIMS | CLM-04 |
 | REQ-ES-PROD-01 | Producer registration | Producers must register with the Spanish producer register for the applicable streams and evidence take-back and reporting. | SRC-ES-PRODUCER-REGISTER, SRC-EU-WEEE-2012-19 | NON_COMPLIANT_UNVERIFIED | GATE-MARKET-PLACEMENT | LEG-10 |
 | REQ-NMEA-01 | NMEA licence and certification programme | Marketing NMEA 2000 products requires the applicable licence, membership, manufacturer/product codes and certification; read-only interoperability is not certification. | SRC-NMEA-2000-LICENSING, SRC-NMEA-CERTIFICATION | NON_COMPLIANT_UNVERIFIED | GATE-IP-CLEARANCE | PRD-04 |
 | REQ-NMEA-02 | Interface standard | NMEA 0183 compatibility statements require tested sentence-level interoperability for the named device and firmware. | SRC-NMEA-0183 | NOT_ASSESSED | GATE-COMMERCIAL-CLAIMS | PRD-05 |

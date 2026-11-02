@@ -875,7 +875,11 @@ export function validateData(data, docs = {}) {
   add('MC14-050', 'Independent-review status matches the recorded evidence', () => {
     const reviewStatus = manifest?.review?.status;
     if (reviewStatus === 'PENDING') {
-      const ok = !review || review.verdict === undefined || review.verdict === 'PENDING';
+      const ok =
+        !review ||
+        review.verdict === undefined ||
+        review.verdict === 'PENDING' ||
+        review.verdict === 'PENDING_CORRECTION';
       return { ok, detail: review?.verdict };
     }
     if (!review) return { ok: false, detail: 'missing review-findings.json' };

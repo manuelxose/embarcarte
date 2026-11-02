@@ -480,7 +480,7 @@
     },
     {
       "step": 4,
-      "action": "Class C: attach the evidence record, obtain the approver sign-off and confirm the release gate is open. Until then the claim stays INTERNAL_ONLY."
+      "action": "Class C: attach the evidence record, obtain the approver sign-off and confirm the release gate is open. Until then the claim stays INTERNAL_ONLY and cannot be used publicly."
     },
     {
       "step": 5,
@@ -542,8 +542,8 @@
     "classC": 3,
     "classP": 11,
     "classX": 24,
-    "internalOnly": 4,
-    "publicProhibited": 38,
+    "internalOnly": 7,
+    "publicProhibited": 35,
     "publicAuthorized": 0,
     "publicationAuthorization": "NONE",
     "mandatoryProhibitedCategories": 30

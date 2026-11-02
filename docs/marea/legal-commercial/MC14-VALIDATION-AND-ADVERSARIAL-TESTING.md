@@ -109,8 +109,12 @@ cases:
 | `npm run test:legal-commercial` | 54/54 checks passed (record commit; see D23) |
 | `npm run test:legal-commercial:unit` | 41/41 tests passed |
 
-The implementation-freeze run passed 53/54 with only the record-commit documents
-absent, which is expected before the audit. Final outcomes are recorded in D23.
+At the frozen implementation candidate 6fb2285 the gate reports 54/54 (exit 0):
+check MC14-002 relaxes only the three record-commit artefacts while the review
+is `PENDING`. Once the independent review record exists and the manifest review
+status is still `PENDING`, the gate reports 53/54 with only MC14-050 failing —
+the designed pre-record state. The record commit reconciles the manifest and
+restores 54/54. Final outcomes are recorded in D23.
 
 ## 4. Semantic limitations
 
@@ -128,3 +132,11 @@ The validator is read-only, dependency-free and does not access the network. It
 never repairs, migrates or rewrites data. The tests clone the loaded data in
 memory, so they cannot corrupt the repository. Both commands exit non-zero on
 failure and print one line per check.
+
+
+## 6. CI position
+
+CI does not currently execute `test:legal-commercial` or the other MAREA
+milestone gates; they are manual gates at this milestone, as MC-13 recorded its
+own gate as manual (F-14). Passing CI is therefore not evidence that this gate
+ran.

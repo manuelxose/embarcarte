@@ -4,11 +4,11 @@
 **Owner role:** EU/Spain regulatory research lead (Agent A) · **Retrieved / recorded on:** 2026-11-02 (Europe/Madrid)
 **Branch:** `feature/marea-mc14-legal-commercial-risk-claims-policy` · **Baseline commit:** `f80c0f02ac14803e9e1539393abbb225d7f49e16` (MC-13 HEAD)
 **Status:** `INTERNAL_PRIMARY_SOURCE_RESEARCH — NOT LEGAL ADVICE — NO CLEARANCE OF ANY KIND`
-**Machine-readable companion:** [`mc14-legal-sources.csv`](mc14-legal-sources.csv) (50 rows, same sourceId vocabulary)
+**Machine-readable companion:** [`mc14-legal-sources.csv`](mc14-legal-sources.csv) (48 governed rows; 4 considered-only records are marked in the dossier text)
 
 ## Scope
 
-This dossier records, for 50 named instruments, what the **official primary sources** actually say on 2026-11-02 about: publication, entry into force, application/transposition, the provisions examined, and their applicability to the nine proposed MAREA product lines (NAV, HUB, AIS, PILOT, SENSE, WATCH, DISPLAY, WEATHER, FLEET). It is the research input from which the Lead compiles `docs/marea/legal-commercial/data/legal-sources.json`. It does **not** approve a price, a claim, a certification route, a market placement, a trademark or a legal position.
+This dossier records, for 50 research records (48 governed sources plus 4 considered-only records and 2 governed-only additions), what the **official primary sources** actually say on 2026-11-02 about: publication, entry into force, application/transposition, the provisions examined, and their applicability to the nine proposed MAREA product lines (NAV, HUB, AIS, PILOT, SENSE, WATCH, DISPLAY, WEATHER, FLEET). It is the research input from which the Lead compiles `docs/marea/legal-commercial/data/legal-sources.json`. It does **not** approve a price, a claim, a certification route, a market placement, a trademark or a legal position.
 
 ## Method
 
@@ -21,14 +21,18 @@ This dossier records, for 50 named instruments, what the **official primary sour
 
 | Metric | Count |
 |---|---|
-| Source rows in the vocabulary | **50** |
-| `RE_VERIFIED_THIS_SESSION` (official page fetched 2026-11-02) | **14** |
-| `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (cited by evidence ID, not re-fetched) | **25** |
+| Governed source rows in `legal-sources.json` / CSV | **48** |
+| `VERIFIED_THIS_SESSION` (official page fetched 2026-11-02) | **4** |
+| `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (cited by evidence ID, not re-fetched) | **32** |
+| `PARTIALLY_VERIFIED` (identified/partial) | **2** |
 | `NOT_RETRIEVED` (recorded, not quoted, date fields left blank) | **6** |
-| `INACCESSIBLE` (fetch attempted and failed / blocked) | **5** |
-| Rows with an official URL | 50 / 50 |
-| Acts/records naming a specific article/provision examined | 40 / 50 (the other 10 are marked "none retrieved" or "identification only" in §2) |
+| `INACCESSIBLE` (fetch attempted and failed / blocked) | **4** |
+| Governed rows with an official URL | 48 / 48 |
+| Research records naming a specific article/provision examined | 40 / 50 (the other 10 are marked "none retrieved" or "identification only" in §2) |
 | Legal clearances, certifications or approvals established | **0** |
+
+
+**Membership and status reconciliation (correction A-01, 2026-11-02).** The governed register is authoritative: 48 sources with one status per source, adopted by `data/legal-sources.json`, this dossier and `mc14-legal-sources.csv`. The research vocabulary contains 50 records: the 48 governed rows, minus two governed-only additions made during compilation (`SRC-EU-DB-96-9`, `SRC-ES-AEMET-TERMS`), plus four considered-only records that the governed register excludes because they are non-law authority portals or standards catalogues rather than instruments relied on for a requirement (`SRC-ES-AUTORIDAD-CONSUMIDOR`, `SRC-WIPO-GLOBAL-BRAND-DB`, `SRC-IEC-60945`, `SRC-ISO-16315`). Those four are marked `NOT_IN_GOVERNED_REGISTER` here and are not used as legal requirements. Counts above are the governed counts; no source carries two verification statuses. The dossier's earlier `RE_VERIFIED_THIS_SESSION` label is renamed `VERIFIED_THIS_SESSION` to match the governed vocabulary.
 
 **Key-currency corrections found this session (detail in §4):** (a) the RED cybersecurity delegated regulation 2022/30 applied from **2025-08-01**, not 2025-02-01; (b) Delegated Regulation (EU) **2026/339** exists and repeals 2022/30 **with effect from 2027-12-11**; (c) a **May 2026 corrigendum** to the PLD (OJ L 2026/90364, 7.5.2026) corrects Article 2(1) so that the PLD applies to products placed on the market **after 2026-12-08**; (d) Spanish RD 188/2016 Art 9(8) **does** impose a Spanish-language instructions duty, closing MC-11 open question L2.
 
@@ -61,7 +65,7 @@ This dossier records, for 50 named instruments, what the **official primary sour
 | SRC-EU-PRICE-98-6 | Price Indication Directive | 1998-03-18 | 1998-04-07 | 2000-03-18 | CONSUMED |
 | SRC-EU-ECOMMERCE-2000-31 | eCommerce Directive | 2000-07-17 | 2000-08-06 | NOT_RETRIEVED | RE_VERIFIED |
 | SRC-EU-PSD2-2015-2366 | PSD2 | 2015-12-23 | 2016-01-12 | 2018-01-13 | CONSUMED |
-| SRC-EU-SCA-2018-389 | PSD2 SCA RTS | 2018-03-13 | 2018-04-02 | 2019-09-14 | CONSUMED |
+| SRC-EU-SCA-2018-389 | PSD2 SCA RTS | 2018-03-13 | 2018-03-14 | 2019-09-14 | CONSUMED |
 | SRC-EU-VAT-2006-112 | VAT Directive (consolidated 2025-04-14) | 2006-12-11 | 2007-01-01 | 2007-01-01 | CONSUMED |
 | SRC-EU-OSS-282-2011 | VAT implementing measures / OSS | 2011-03-23 | 2011-04-12 | OSS from 2021-07-01 | CONSUMED |
 | SRC-EU-EUTMR-2017-1001 | EU Trade Mark Regulation | 2017-06-16 | 2017-07-06 | 2017-10-01 | CONSUMED |
@@ -98,7 +102,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 ### EU instruments
 
 #### SRC-EU-CRA-2024-2847 — Regulation (EU) 2024/2847 (Cyber Resilience Act)
-- **Instrument / provision examined:** CRA; Art 13(8) support period, Art 13(9) update availability, Art 14 reporting, Art 7/8 and Annex III/IV classification; recital 580 (phased application). | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
+- **Instrument / provision examined:** CRA; Art 13(8) support period, Art 13(9) update availability, Art 14 reporting, Art 7/8 and Annex III/IV classification; Article 71 (dossier correction 2026-11-02) (phased application). | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
 - **officialUrl:** https://eur-lex.europa.eu/eli/reg/2024/2847/oj
 - **Dates (publication / entry into force / application):** 2024-11-20 / 2024-12-10 / 2027-12-11 main obligations; reporting obligations Art 14 from 2026-09-11.
 - **Transposition status:** Directly applicable regulation; CE-marking act. No transposition. Spanish market-surveillance context not separately retrieved.
@@ -107,7 +111,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Reporting mechanics (Art 14, verified):** early warning within 24 h of awareness, vulnerability/incident notification within 72 h, final report within 14 days after a corrective measure (actively exploited vulnerability) or within one month of the 72-h notification (severe incident). Reporting is already in force at 2026-11-02 for products placed on the market.
 - **Evidence required:** documented risk assessment, SBOM/dependency inventory, vulnerability-handling and CVD process, support-period statement, update-integrity evidence, DoC, CE mark.
 - **Uncertainty / reviewOwner:** Art 69 transitional provision was **not retrieved** in the fetched OJ excerpt (recorded NOT_RETRIEVED; do not quote it). Whether HUB/AIS/WATCH/DISPLAY fall in Annex III classes I/II or Annex IV critical classes is **not determined**; Implementing Regulation (EU) 2025/2392 is referenced in predecessor evidence EVD-MC11-302 but not re-read. Open-source treatment: FOSS supplied in the course of a commercial activity is in scope; non-monetised FOSS and open-source stewards have a lighter regime (recitals 17–19), and Art 13(5)–(6) impose component due diligence — a legal reading is required for MAREA's own dependencies. **reviewOwner:** counsel + conformity.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-PLD-2024-2853 — Directive (EU) 2024/2853 (Product Liability Directive)
 - **Instrument / provision examined:** PLD; Art 2(1) as corrected, Art 4 scope (software, digital manufacturing files, related services), Art 6 defectiveness, Art 8 liable economic operators, Art 10 burden of proof, Art 11 exemptions, Arts 16–17 limitation/expiry, Arts 21–22 repeal/transposition. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -118,7 +122,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** no-fault liability of manufacturer, component manufacturer, importer, authorised representative, fulfilment service provider and substantial modifier; distributors liable as fallback where the EU operator cannot be identified (Art 8(3)); defectiveness assessed against expected safety, including cybersecurity vulnerabilities and failure to provide safety updates; destruction/corruption of data compensable; exemptions include development risk; liability cannot be capped contractually against the injured person (Art 15).
 - **Evidence required:** design and risk files, software/update lifecycle records, cybersecurity evidence, incident and complaint records, DoC/technical file showing compliance with mandatory product-safety requirements (presumption under Art 10(2)(b)), recall/corrective action records.
 - **Uncertainty / reviewOwner:** **the May 2026 corrigendum exists and was verified** (OJ L 2026/90364, 7.5.2026, CELEX 32024L2853R(01)); it changes the application-date wording only. Whether MAREA's app/cloud functions are "related services" within its control, and the scope of "digital manufacturing files", require counsel. **reviewOwner:** counsel (product liability) + DPO.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `VERIFIED_THIS_SESSION`
 
 #### SRC-EU-RED-2014-53 — Directive 2014/53/EU (Radio Equipment Directive)
 - **Instrument / provision examined:** RED; Art 1(2) exclusions (marine equipment within MED scope), Art 2 definition, Art 3(3)(d)(e)(f), Art 10/12/13 operator duties, Art 48 transitional. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -129,7 +133,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** essential requirements on safety/health, EMC and efficient spectrum use, plus activated Art 3(3)(d)(e)(f) cybersecurity/privacy/fraud requirements (see 2022/30 and 2026/339); technical documentation (Annex V), EU declaration of conformity (Annex VI), CE marking with notified-body number where involved, instructions and safety information, frequency bands and max RF power, 10-year retention.
 - **Evidence required:** radio test reports per interface, EMC/safety/RF-exposure evidence, DoC, technical file, language-specific instructions (Spanish per RD 188/2016 Art 9(8)).
 - **Uncertainty / reviewOwner:** whether any MAREA family carries a frozen radio interface remains undecided (MC-11). Where RED applies, the EMC Directive does not additionally apply. **reviewOwner:** conformity.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-304, EVD-MC11-317)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-DELREG-2022-30 — Commission Delegated Regulation (EU) 2022/30
 - **Instrument / provision examined:** Del Reg 2022/30; Art 1 (categories: internet-connected, childcare/toys, wearables), Art 2 exclusions, Art 3 entry into force/application. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -140,7 +144,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** activates RED Art 3(3)(d) (no harm to network), (e) (personal data/privacy protection) and (f) (fraud protection) for the listed equipment, with conformity assessed under the RED.
 - **Evidence required:** RED conformity evidence covering those essential requirements during the period 2025-08-01 to 2027-12-10; after that date the CRA regime applies.
 - **Uncertainty / reviewOwner:** **the MC-14 prompt's date "2025-02-01" is not supported by the OJ text.** The verified position is an original application date of 2024-08-01 in the published 2022/30 text, postponed to 2025-08-01 by the 2023 amendment and confirmed at 2025-08-01 by 2026/339. Any predecessor artefact stating 2025-02-01 must be corrected. **reviewOwner:** conformity + Lead (data correction).
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `VERIFIED_THIS_SESSION`
 
 #### SRC-EU-DELREG-2026-339 — Commission Delegated Regulation (EU) 2026/339
 - **Instrument / provision examined:** Del Reg 2026/339; Art 1 (repeal with effect from 2027-12-11), Art 2 (entry into force), recitals 2–5 (2022/30 history and CRA handover). | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -151,7 +155,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** no new obligation; it removes the overlap between 2022/30 and the CRA by repealing 2022/30 from the date the CRA applies in full.
 - **Evidence required:** none in itself; planning must show which regime governs a unit placed on the market before vs after 2027-12-11.
 - **Uncertainty / reviewOwner:** none material; the instrument was verified in full. **reviewOwner:** conformity.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `VERIFIED_THIS_SESSION`
 
 #### SRC-EU-EMC-2014-30 — Directive 2014/30/EU (EMC)
 - **Instrument / provision examined:** EMC Directive; scope, exclusions for RED equipment, essential requirements, conformity/CE. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -162,7 +166,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** emissions and immunity essential requirements; technical documentation; EU DoC; CE marking.
 - **Evidence required:** EMC test campaign, technical file, DoC.
 - **Uncertainty / reviewOwner:** the RED/EMC boundary must be re-run when the radio interface set is frozen. **reviewOwner:** conformity.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-307)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-LVD-2014-35 — Directive 2014/35/EU (LVD)
 - **Instrument / provision examined:** LVD; voltage limits 50–1000 V AC / 75–1500 V DC, scope and CE duties. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -173,7 +177,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** safety objectives for equipment within the voltage limits; technical documentation; CE marking.
 - **Evidence required:** PSU safety evidence only if a mains unit is placed on the market under MAREA's name.
 - **Uncertainty / reviewOwner:** bundled-PSU commercial decision. **reviewOwner:** conformity + commercial.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-306)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-GPSR-2023-988 — Regulation (EU) 2023/988 (GPSR)
 - **Instrument / provision examined:** GPSR; Art 5 general safety, Art 9 manufacturer risk analysis/documentation, Art 11 traceability, Art 14 complaints, Art 16 recalls, **Art 19 distance sales information**, Art 22 online marketplaces, Art 52 application. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -184,7 +188,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** only safe products; internal risk analysis and technical documentation; responsible EU economic operator; product safety and traceability information; complaints register; accident/incident reporting via Safety Business Gateway; corrective action/withdrawal/recall with at least two remedies; **Art 19**: online/distance offers must clearly and visibly indicate the manufacturer's identity/contact details (or importer/responsible person), a clear product description, and warnings/safety information.
 - **Evidence required:** GPSR risk analysis, warnings/instructions in ES/PT, traceability records, complaints register, recall plan, online listing information.
 - **Uncertainty / reviewOwner:** interaction with product-specific harmonised law must be reasoned per SKU (GPSR applies to residual risks/aspects). **reviewOwner:** conformity + counsel.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-ROHS-2011-65 — Directive 2011/65/EU (RoHS)
 - **Instrument / provision examined:** RoHS; substance restrictions, open EEE category, CE-marking duties. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -195,7 +199,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** restrict lead, mercury, cadmium, hexavalent chromium, PBB, PBDE and restricted phthalates; technical documentation; CE marking; supplier declarations.
 - **Evidence required:** material declarations per homogeneous material, XRF/analytical verification, RoHS technical file.
 - **Uncertainty / reviewOwner:** supplier declarations do not exist; exemptions to be tracked. **reviewOwner:** conformity.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-313)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-WEEE-2012-19 — Directive 2012/19/EU (WEEE)
 - **Instrument / provision examined:** WEEE; scope, producer responsibility, registration, take-back, financing, marking. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -206,7 +210,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** producer registration in each Member State, free take-back, collection/treatment/recycling targets, financing, crossed-out-wheeled-bin marking and user information. Not a CE-marking act.
 - **Evidence required:** registration number, put-on-market reporting, take-back/financing evidence, design-for-dismantling data.
 - **Uncertainty / reviewOwner:** Spanish register mechanics not retrieved (MC-11 CON-09 remains open). **reviewOwner:** conformity + commercial.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-314)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-BATTERIES-2023-1542 — Regulation (EU) 2023/1542 (Batteries)
 - **Instrument / provision examined:** Batteries Regulation; scope (all batteries incl. incorporated), substance/safety/labelling, removability/replaceability, producer obligations. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -217,7 +221,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** substance restrictions, safety/durability criteria, carbon-footprint and recycled-content rules, labelling/QR, producer registration and collection/recycling, end-user removability/replaceability.
 - **Evidence required:** battery documentation, safety testing, removability design evidence, labelling artwork, producer registration.
 - **Uncertainty / reviewOwner:** BOM not frozen; exact date in 2027 not asserted. **reviewOwner:** conformity.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-309/310), summary re-read this session.
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-PACKAGING-2025-40 — Regulation (EU) 2025/40 (PPWR)
 - **Instrument / provision examined:** PPWR; scope, EPR, packaging conformity assessment, EU declaration of conformity, labelling, application dates. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -228,7 +232,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** packaging sustainability/recyclability, EPR financing, packaging technical documentation (5 years; 10 for reusable), EU declaration of conformity for packaging, labelling, corrective action. Not a product CE mark.
 - **Evidence required:** packaging specification and material composition, recyclability assessment, packaging DoC, producer registration, labelling.
 - **Uncertainty / reviewOwner:** exact application date and the Spanish packaging EPR registration route remain unverified. **reviewOwner:** conformity + commercial.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-316), summary re-read this session.
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-RCD-2013-53 — Directive 2013/53/EU (Recreational Craft)
 - **Instrument / provision examined:** RCD; scope (watercraft, designated components, propulsion engines), CE marking on the craft. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -239,7 +243,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** none for an aftermarket accessory as such; the craft builder's CE obligations are unaffected.
 - **Evidence required:** only if a re-assessment trigger fires.
 - **Uncertainty / reviewOwner:** designated-components list not retrieved. **reviewOwner:** conformity + counsel.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-315)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-MED-2014-90 — Directive 2014/90/EU (Marine Equipment)
 - **Instrument / provision examined:** MED; scope (equipment on EU-flag ships subject to international conventions), wheel-mark, notified-body modules. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -250,7 +254,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** none today. Note: MED non-application does **not** approve the product; for PILOT it means there is no type-approval regime at all and the product-safety/liability burden is higher.
 - **Evidence required:** none today.
 - **Uncertainty / reviewOwner:** national equipment list not retrieved. **reviewOwner:** conformity + counsel.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-311/312)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-GDPR-2016-679 — Regulation (EU) 2016/679 (GDPR)
 - **Instrument / provision examined:** GDPR; Arts 4 (roles), 6 (lawfulness), 13/14 (information), 28 (processor), 30 (records), 32 (security), 33/34 (breach), 35 (DPIA), 44+ (transfers). | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -261,7 +265,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** lawful basis, transparency, Art 28 processor agreements, records, security of processing, 72-hour breach notification, DPIA before high-risk processing, transfer safeguards; EU data residency is a design choice, not a GDPR guarantee.
 - **Evidence required:** controller/processor mapping, DPAs with all processors, records of processing, DPIA, breach runbook, retention schedule, transfer assessment.
 - **Uncertainty / reviewOwner:** roles for WATCH/FLEET telemetry and vessel/crew data are undecided; no Art 28 DPA exists. **reviewOwner:** dpo + counsel.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-014…LT-017)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-EPRIVACY-2002-58 — Directive 2002/58/EC (ePrivacy)
 - **Instrument / provision examined:** ePrivacy; Art 5(3) storage/access on terminal equipment, cookie consent rule. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -272,7 +276,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** prior consent after clear information for non-essential storage/access; limited strictly-necessary exemption.
 - **Evidence required:** consent banner with logged choices, cookie inventory, blocking of non-essential scripts before consent.
 - **Uncertainty / reviewOwner:** current site consent implementation is assessed separately by the website inventory task. **reviewOwner:** dpo.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-018)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-CRD-2011-83 — Directive 2011/83/EU (Consumer Rights)
 - **Instrument / provision examined:** CRD; Arts 6/8 (pre-contract information), 9–14 (14-day withdrawal and reimbursement), 16(m) (digital content exception). | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -283,7 +287,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** 14-day withdrawal without reason; refund all payments including standard delivery within 14 days of withdrawal; digital content exception only with express prior consent and acknowledgement of loss of the right (Art 16(m)); pre-contractual information before the order becomes binding.
 - **Evidence required:** checkout consent/acknowledgement screen, withdrawal policy, refund process, pre-contract information block.
 - **Uncertainty / reviewOwner:** whether the checkout flow meets Art 16(m) is not verified. **reviewOwner:** counsel + commercial.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-009/010)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-CSD-2019-771 — Directive (EU) 2019/771 (Sale of Goods)
 - **Instrument / provision examined:** CSD; conformity, remedies, liability periods, updates obligation. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -294,7 +298,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** conformity with the contract, remedies (repair, replacement, price reduction, termination), seller liability, duty to supply updates including security updates.
 - **Evidence required:** conformity documentation, firmware/update policy, warranty process, evidence of the 3-year/24-month regime in consumer terms.
 - **Uncertainty / reviewOwner:** interaction with CRA support period and with the Spanish 3-year regime needs one coherent consumer-warranty policy. **reviewOwner:** counsel + commercial.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-011/008)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-DCD-2019-770 — Directive (EU) 2019/770 (Digital Content and Services)
 - **Instrument / provision examined:** DCD; scope (digital content/services for a price or personal data), conformity, updates, remedies, termination. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -305,7 +309,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** conformity of digital content/services, supply of updates including security updates, remedies and termination, return/retrieval of user content, data-protection obligations on termination.
 - **Evidence required:** service description and conformity criteria, update policy, termination/refund process.
 - **Uncertainty / reviewOwner:** B2B/B2C classification per channel. **reviewOwner:** counsel + commercial.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-UCPD-2005-29 — Directive 2005/29/EC (Unfair Commercial Practices)
 - **Instrument / provision examined:** UCPD; Arts 5–9 (unfair, misleading actions/omissions, aggressive practices), Annex I blacklist, amendments by (EU) 2019/2161 and (EU) 2024/825. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -316,7 +320,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** no misleading actions/omissions about product characteristics, availability, benefits, price or trader commitments; no aggressive practices; green claims must meet the (EU) 2024/825 rules (generic environmental claims prohibited without recognised excellent performance; sustainability labels require certification; carbon-offset neutrality claims prohibited).
 - **Evidence required:** claim substantiation file per public statement; pricing/availability evidence; review of "certified"/"approved"/"tested" wording; green-claim review.
 - **Uncertainty / reviewOwner:** any claim that a product is "certified", "approved", "compliant" or "tested" without evidence is a misleading-practice risk. **reviewOwner:** counsel + commercial.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-PRICE-98-6 — Directive 98/6/EC (Price Indication)
 - **Instrument / provision examined:** Price Indication Directive; selling price and unit price indication to consumers. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -327,7 +331,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** indicate the selling price (final, VAT-inclusive) and unit price where required; no misleading price reductions.
 - **Evidence required:** price display incl. VAT, price history for reductions, gross-to-net model (net = gross / 1.21 at 21 %).
 - **Uncertainty / reviewOwner:** reduced VAT rate treatment (10 %/4 %) is not applicable without tax counsel confirmation. **reviewOwner:** tax.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-002)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-ECOMMERCE-2000-31 — Directive 2000/31/EC (eCommerce)
 - **Instrument / provision examined:** eCommerce Directive; information duties, electronic contracts, order acknowledgement, intermediary liability, country-of-origin. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -338,7 +342,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** service-provider identification, clear advertising, electronic contract steps and error correction, order acknowledgement, information on contract storage/languages, intermediary liability conditions where applicable.
 - **Evidence required:** legal notice/imprint, terms and conditions, order confirmation, contract-language information.
 - **Uncertainty / reviewOwner:** consumer-facing site review is the website inventory task's scope. **reviewOwner:** counsel + commercial.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-PSD2-2015-2366 — Directive (EU) 2015/2366 (PSD2)
 - **Instrument / provision examined:** PSD2; strong customer authentication for remote electronic payments, limited exemptions. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -349,18 +353,18 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** SCA for electronic remote payment transactions with limited risk-based exemptions; payment provider must host/tokenise; merchant must not store card data.
 - **Evidence required:** payment-provider written schedule (does not exist), SCA flow evidence, refund/chargeback process.
 - **Uncertainty / reviewOwner:** no provider schedule; SCA abandonment is unmodelled. **reviewOwner:** commercial + counsel.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-019)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-SCA-2018-389 — Commission Delegated Regulation (EU) 2018/389 (SCA RTS)
 - **Instrument / provision examined:** SCA RTS; requirements for SCA, exemptions and transaction monitoring. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
 - **officialUrl:** https://eur-lex.europa.eu/eli/reg_del/2018/389/oj
-- **Dates:** 2018-03-13 / 2018-04-02 / 2019-09-14.
+- **Dates:** 2018-03-13 / 2018-03-14 / 2019-09-14.
 - **Transposition status:** Directly applicable delegated regulation.
 - **Product applicability:** all remote card payments **A**.
 - **Obligation:** apply SCA, or a monitored risk-based exemption; secure authentication elements.
 - **Evidence required:** provider integration evidence; no card data stored.
 - **Uncertainty / reviewOwner:** provider schedule missing (BLK-COMM-02). **reviewOwner:** commercial.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-019)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-VAT-2006-112 — Council Directive 2006/112/EC (VAT)
 - **Instrument / provision examined:** VAT Directive; place of supply (B2C/B2B), reverse charge, deduction, importation (Arts 70–71), rates. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -371,7 +375,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** charge VAT at the place of supply, issue compliant invoices, deduct input VAT, account for import VAT; customs duty under the UCC remains unclassified.
 - **Evidence required:** VAT registration, invoice fields, OSS registration before cross-border B2C, import/customs classification, margin model ex-VAT.
 - **Uncertainty / reviewOwner:** customs duty rate per SKU is UNKNOWN; Spanish invoice regulation (RD 1619/2012, referenced in the mission but outside the sourceId vocabulary) was not retrieved. **reviewOwner:** tax + customs.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-001/004/005/006)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-OSS-282-2011 — Council Implementing Regulation (EU) No 282/2011 (VAT implementing measures / OSS)
 - **Instrument / provision examined:** implementing measures for the VAT Directive; OSS single-return mechanics. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -382,7 +386,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** declare and pay VAT in the Member State of consumption through OSS; a single 21 % assumption holds only for Spanish consumers.
 - **Evidence required:** OSS registration, destination-rate table, per-country reporting.
 - **Uncertainty / reviewOwner:** OSS not registered; no cross-border selling yet. **reviewOwner:** tax.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-003; Agencia Tributaria OSS page)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-EUTMR-2017-1001 — Regulation (EU) 2017/1001 (EU Trade Mark)
 - **Instrument / provision examined:** EUTMR; acquisition of rights by registration, exclusive rights, relative grounds. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -393,7 +397,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** no exclusive right without registration; use of an identical/similar sign for identical/similar goods may be prohibited; clearance is a pre-publication condition.
 - **Evidence required:** clearance search (EUIPO/OEPM/WIPO), filing/registration, watching; **MAREA clearance = NOT_GRANTED**.
 - **Uncertainty / reviewOwner:** MC-03 verified live EUTM 018135609 "M MAREA" class 9 (apps) plus other live rights in classes 35/37; a material-conflict indication exists. No filing, no clearance. **reviewOwner:** ip (counsel).
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-024; MC-03)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-CE-MARKING-GUIDANCE — Commission CE marking guidance
 - **Instrument / provision examined:** Commission guidance on manufacturer/importer CE-marking duties, DoC and affixing. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -404,7 +408,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** guidance explains DoC content, CE affixing, importer duties and market-surveillance cooperation; it does not create or discharge conformity.
 - **Evidence required:** none from guidance; actual DoC, technical file and test evidence are required by the acts themselves.
 - **Uncertainty / reviewOwner:** none material; guidance cannot substitute for the Acts. **reviewOwner:** conformity.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-305)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EU-BLUE-GUIDE-2022 — Commission Notice "Blue Guide" 2022 (2022/C 247/01)
 - **Instrument / provision examined:** Commission guidance on the implementation of EU product rules (scope not re-read; no rule quoted). | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02
@@ -428,7 +432,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** legal guarantee of conformity for 3 years; presumption that a lack of conformity existed at delivery for 24 months; repair/replacement/price reduction/refund; pre-contractual information; unfair terms control.
 - **Evidence required:** consumer terms stating the 3-year guarantee and 24-month presumption, remedy process, warranty records, compliant pre-contract information.
 - **Uncertainty / reviewOwner:** consolidated BOE text and the exact RDL 7/2021 article numbers were not re-read this session; the 36-month warranty reserve in MC-12 remains an assumption, not a measured reserve. **reviewOwner:** counsel + commercial.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-008; BOE-A-2007-20555 original text re-fetched)
+- **verificationStatus:** `PARTIALLY_VERIFIED`
 
 #### SRC-ES-LSSI-34-2002 — Ley 34/2002 (LSSI)
 - **Instrument / provision examined:** LSSI; information-society service duties, electronic contracting, **art 22.2 cookie consent**. | **Jurisdiction:** Spain | **retrievedOn:** 2026-11-02
@@ -439,7 +443,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** provider identification, information duties, electronic contract rules, cookie consent (art 22.2) with information and prior consent for non-essential cookies.
 - **Evidence required:** legal notice, cookie banner and consent log, terms.
 - **Uncertainty / reviewOwner:** current site implementation is audited by the website inventory task. **reviewOwner:** dpo + counsel.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-018)
+- **verificationStatus:** `PARTIALLY_VERIFIED`
 
 #### SRC-ES-LOPDGDD-3-2018 — Ley Orgánica 3/2018 (LOPDGDD)
 - **Instrument / provision examined:** none retrieved — no article examined. | **Jurisdiction:** Spain | **retrievedOn:** 2026-11-02
@@ -461,7 +465,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** use of radio spectrum requires a legal title; AIS transmission is not an authorised MAREA offering; AIS receive-only wording must not imply transmission.
 - **Evidence required:** none for receive-only operation; any transmission feature is BLOCKED (HB-01).
 - **Uncertainty / reviewOwner:** specific LGT articles/authorisation routes not retrieved. **reviewOwner:** counsel + commercial.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-022)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-ES-RD-188-2016 — Real Decreto 188/2016 (Spanish RED transposition)
 - **Instrument / provision examined:** RD 188/2016, Art 1(2) definition of radio equipment, Art 9(7) manufacturer identification, **Art 9(8) instructions and safety information in Spanish**, Art 11 importer duties, Annexes V–VI (technical file and DoC). | **Jurisdiction:** Spain | **retrievedOn:** 2026-11-02
@@ -472,7 +476,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation (verified wording):** Art 9(8) requires the instructions and safety information to be drawn up **"en una lengua fácilmente comprensible para los consumidores y otros usuarios finales y, al menos en castellano, si se pone el equipo en el mercado español"**. Manufacturers must also provide name/address contact details in an easily understood language (Art 9(7)); importers must ensure instructions and safety information in Spanish or an easily understood language (Art 11(4)); the EU DoC must be in Spanish when the equipment is placed on the Spanish market.
 - **Evidence required:** Spanish-language instructions and safety information as a conformity input (not a marketing preference); Spanish DoC; technical file; CE marking with notified-body number where involved.
 - **Uncertainty / reviewOwner:** the 2026 amendment to RD 188/2016 was not retrieved; the consolidated text may have changed after 2026-03-13. **reviewOwner:** conformity + counsel.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `VERIFIED_THIS_SESSION`
 
 #### SRC-ES-RD-186-2016 — Real Decreto 186/2016 (Spanish EMC transposition)
 - **Instrument / provision examined:** identification, title and subject only (via the official cross-reference in RD 188/2016 Art 1(4) and the BOE ELI locator); no article read. | **Jurisdiction:** Spain | **retrievedOn:** 2026-11-02
@@ -483,7 +487,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** EMC essential requirements for apparatus; no article quoted.
 - **Evidence required:** EMC test evidence and DoC if the product is governed by EMC.
 - **Uncertainty / reviewOwner:** standalone consolidated text not read; BOE-A identifier `BOE-A-2016-4442` is inferred from the ELI locator and should be confirmed before citation. **reviewOwner:** conformity.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION` (identification only; see note)
+- **verificationStatus:** `NOT_RETRIEVED`
 
 #### SRC-ES-RD-187-2016 — Real Decreto 187/2016 (Spanish LVD transposition)
 - **Instrument / provision examined:** identification, title and subject only; confirmed to transpose Directive 2014/35/EU (BOE-A-2016-4443). | **Jurisdiction:** Spain | **retrievedOn:** 2026-11-02
@@ -494,7 +498,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** LVD safety objectives for equipment within 50–1000 V AC / 75–1500 V DC; no article quoted.
 - **Evidence required:** PSU safety evidence only in the bundled-PSU scenario.
 - **Uncertainty / reviewOwner:** standalone text not read; article numbers not asserted. **reviewOwner:** conformity.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION` (identification only; see note)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-ES-LCD-3-1991 — Ley 3/1991 (Competencia Desleal)
 - **Instrument / provision examined:** none retrieved. | **Jurisdiction:** Spain | **retrievedOn:** 2026-11-02
@@ -527,7 +531,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** register as producer before placing products on the market; declare put-on-market quantities annually; finance collection/recycling; registration number format `SEC/AÑO REGISTRO/XXXXXXXXX`.
 - **Evidence required:** RPP registration number, annual declarations, EPR scheme participation.
 - **Uncertainty / reviewOwner:** **no EMBARCARTE/MAREA registration exists**; the WEEE-specific register (RII-AEE) was not retrieved. **reviewOwner:** conformity + commercial.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (EVD-MC11-318)
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-ES-AEPD-DPIA — AEPD DPIA guidance
 - **Instrument / provision examined:** none retrieved. | **Jurisdiction:** Spain | **retrievedOn:** 2026-11-02
@@ -560,7 +564,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** none directly; confirms the 3-year guarantee and 24-month presumption published by the official consumer body.
 - **Evidence required:** none beyond consumer-law compliance evidence.
 - **Uncertainty / reviewOwner:** no complaint, inspection or authority action exists. **reviewOwner:** commercial + counsel.
-- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE` (MC-12 LT-008)
+- **verificationStatus:** `NOT_IN_GOVERNED_REGISTER` (considered only; see membership note)
 
 ### Private / standards-body records
 
@@ -573,7 +577,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** a licence is required to use the NMEA 2000 standard and marks; every manufacturer must purchase a Manufacturer Code (assignment up to 60 days) and product codes; the standard is copyrighted and not sold via an online store; tiered fees apply by industry group (fees not reproduced here).
 - **Evidence required:** signed NMEA licence, manufacturer code, product code, certification file.
 - **Uncertainty / reviewOwner:** **MAREA holds no NMEA licence, no manufacturer code and no product code.** Whether a receive-only/decoder product must license NMEA 2000 depends on whether it reads NMEA 2000 data — counsel/standards review required. **reviewOwner:** ip + commercial.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-NMEA-0183 — NMEA 0183 standard
 - **Instrument / provision examined:** official NMEA 0183 page — copyright, purchase process, version 4.30, manufacturer mnemonic code. | **Jurisdiction:** private standards body (US) | **retrievedOn:** 2026-11-02
@@ -584,7 +588,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** NMEA 0183 is a copyrighted document available only from NMEA; use of the standard and manufacturer mnemonic codes requires purchase/administrative fee; no certification programme for 0183 is stated on the page (unlike NMEA 2000).
 - **Evidence required:** purchase record for the standard, manufacturer mnemonic code USD 200 + standard purchase (price as published on 2026-11-02).
 - **Uncertainty / reviewOwner:** parsing public NMEA 0183 sentences from third-party equipment is a separate IP question that requires counsel. **reviewOwner:** ip + counsel.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-NMEA-CERTIFICATION — NMEA 2000 product certification
 - **Instrument / provision examined:** official NMEA 2000 certification and logo rules. | **Jurisdiction:** private standards body (US) | **retrievedOn:** 2026-11-02
@@ -595,7 +599,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** all products that read or transmit NMEA 2000 information must be certified based on the NMEA 2000 License Agreement; certification file validated by NMEA; only then may the logo and the term "NMEA 2000 Certified" be used.
 - **Evidence required:** NMEA certification grant, logo approval; **NMEA2000_CERTIFIED = false** today.
 - **Uncertainty / reviewOwner:** no MAREA product has been submitted, so no certification exists and no claim is permitted. **reviewOwner:** conformity + commercial.
-- **verificationStatus:** `RE_VERIFIED_THIS_SESSION`
+- **verificationStatus:** `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
 
 #### SRC-EUIPO-MAREA-SEARCH — EUIPO MAREA search
 - **Instrument / provision examined:** EUIPO register search interfaces; MC-03 verified records by record number. | **Jurisdiction:** EU | **retrievedOn:** 2026-11-02 (record evidence dated 2026-10-30)
@@ -628,7 +632,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** none directly.
 - **Evidence required:** name search; not obtained. MC-03 verified IR 1632684 and IR 1847368 by IRN (no EU/ES/PT designation).
 - **Uncertainty / reviewOwner:** **INACCESSIBLE** — bot verification and terms prohibiting automated querying. **reviewOwner:** ip.
-- **verificationStatus:** `INACCESSIBLE`
+- **verificationStatus:** `NOT_IN_GOVERNED_REGISTER` (considered only; see membership note)
 
 #### SRC-IEC-60945 — IEC 60945 (maritime navigation and radiocommunication equipment)
 - **Instrument / provision examined:** scope only (via standards index, not the official text). | **Jurisdiction:** private international standard | **retrievedOn:** 2026-11-02
@@ -639,7 +643,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** none by itself; would become relevant if cited as a harmonised standard or imposed contractually.
 - **Evidence required:** standard purchase, test laboratory campaign (NOT_EXECUTED).
 - **Uncertainty / reviewOwner:** **NOT_RETRIEVED** — the official IEC text was not purchased or fetched; the scope statement comes from a standards index and is not quoted as IEC text. Whether IEC 60945 is the applicable harmonised standard for any MAREA SKU is unresolved. **reviewOwner:** conformity.
-- **verificationStatus:** `NOT_RETRIEVED`
+- **verificationStatus:** `NOT_IN_GOVERNED_REGISTER` (considered only; see membership note)
 
 #### SRC-ISO-16315 — ISO 16315 (small craft electrical systems) — considered and excluded
 - **Instrument / provision examined:** scope checked to decide relevance. | **Jurisdiction:** private international standard | **retrievedOn:** 2026-11-02
@@ -650,7 +654,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 - **Obligation:** none for the current portfolio.
 - **Evidence required:** none.
 - **Uncertainty / reviewOwner:** **NOT_RETRIEVED** (official ISO text not fetched); exclusion is documented so that no future artefact cites ISO 16315 as a MAREA requirement. **reviewOwner:** conformity.
-- **verificationStatus:** `NOT_RETRIEVED`
+- **verificationStatus:** `NOT_IN_GOVERNED_REGISTER` (considered only; see membership note)
 
 ---
 
@@ -689,12 +693,12 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 ## §4 Mandatory-currency findings
 
 ### 4.1 CRA 2024/2847
-- Entry into force **2024-12-10**; **reporting from 2026-09-11** (Art 14; 24 h early warning, 72 h notification, final report 14 days after a corrective measure or one month after the 72-h notification); **main obligations from 2027-12-11** (recital 580 + predecessor EVD-MC11-301/303).
+- Entry into force **2024-12-10**; **reporting from 2026-09-11** (Art 14; 24 h early warning, 72 h notification, final report 14 days after a corrective measure or one month after the 72-h notification); **main obligations from 2027-12-11** (Article 71 (dossier correction 2026-11-02) + predecessor EVD-MC11-301/303).
 - **Support period (Art 13(8), exact wording verified):** the manufacturer determines a support period reflecting expected use; **"the support period shall be at least five years"**; where the product is expected to be in use for less than five years, the support period corresponds to that expected use time. Art 13(9): security updates remain available **at least 10 years or the remainder of the support period, whichever is longer**. The MC-12 summary ("shorter only if expected use is shorter") is correct.
 - **Classification:** Annex III holds "important" products in **classes I and II**; Annex IV holds "critical" products; conformity assessment route depends on class (internal control for default products; third-party modules B+C or H for important/critical). Recital 256 gives firewalls and intrusion detection/prevention systems as class II examples. Whether HUB (gateway/router-like) is class II is **not determined** and requires Implementing Regulation (EU) 2025/2392 plus counsel.
 - **CE marking / DoC:** CRA is a CE-marking act (Art 13(12)); DoC per Art 28, CE per Art 30. No DoC or CE mark exists.
 - **Open source / software:** FOSS supplied in the course of a commercial activity is in scope; non-monetised FOSS and open-source stewards have a lighter regime (recitals 17–19); Art 13(5) requires due diligence on third-party components (including FOSS) and Art 13(6) requires reporting vulnerabilities upstream. A software-only product (NAV) is in scope.
-- **Transitional provision (Art 69):** **NOT_RETRIEVED** in the fetched OJ excerpt; it is not quoted. Predecessor evidence records the phased dates, which are independently corroborated by recital 580.
+- **Transitional provision (Art 69):** **NOT_RETRIEVED** in the fetched OJ excerpt; it is not quoted. Predecessor evidence records the phased dates, which are independently corroborated by Article 71 (dossier correction 2026-11-02).
 - **Correction to carry forward:** the mission brief says "reporting obligations from 2026-09-11". As at 2026-11-02 those obligations are **already applicable** to products placed on the market; MAREA has placed none, so no report is due, but readiness is immediate.
 
 ### 4.2 PLD 2024/2853
@@ -842,7 +846,7 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 
 This document is **research, not legal advice, not a legal opinion, not a clearance, not a conformity assessment, not a certification and not an approval**. It records what official primary sources said on **2026-11-02** and what could not be retrieved. It does not establish that any MAREA product complies with any act, standard or licensing scheme; it does not establish that the MAREA name is available, registrable or free of conflict; it does not authorise publication, sale, CE marking, NMEA certification, chart distribution, weather-data use or any regulated claim. No authority, notified body, laboratory, provider, supplier, customer or lawyer was contacted in the production of this dossier.
 
-Six sources are `NOT_RETRIEVED` and five are `INACCESSIBLE`; where a date was not rendered by the official page it is marked `NOT_RETRIEVED` rather than inferred. Where predecessor evidence was consumed, it is cited by evidence ID and its original flags are preserved (notably the Packaging Regulation application date `2026-08-12`, which remains **flagged and unverified**, and the Packaging/RCD/MED date fields that were never rendered). The RED cybersecurity applicability date is corrected to **2025-08-01** against the mission brief's 2025-02-01. The PLD May 2026 corrigendum is identified and verified.
+In the governed register six sources are `NOT_RETRIEVED` and four are `INACCESSIBLE`; where a date was not rendered by the official page it is marked `NOT_RETRIEVED` rather than inferred. Where predecessor evidence was consumed, it is cited by evidence ID and its original flags are preserved (notably the Packaging Regulation application date `2026-08-12`, which remains **flagged and unverified**, and the Packaging/RCD/MED date fields that were never rendered). The RED cybersecurity applicability date is corrected to **2025-08-01** against the mission brief's 2025-02-01. The PLD May 2026 corrigendum is identified and verified.
 
 Any downstream artefact that needs a legal conclusion must route the open questions in §5 to qualified counsel; this dossier deliberately leaves them open. **MAREA remains a proposed brand, all products remain `NOT_FOR_SALE`, and no certification, approval or clearance of any kind is claimed.**
 

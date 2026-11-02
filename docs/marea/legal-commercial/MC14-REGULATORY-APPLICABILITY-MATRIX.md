@@ -65,7 +65,7 @@ Navigation software and licensed-data application, optionally bundled with hardw
 | GPSR | CONDITIONALLY_APPLICABLE | Software alone is not a GPSR product, but the general safety framework applies to any physical product supplied with NAV; the bundle is assessed as hardware. | NAV is sold with or pre-installed on a physical product. |
 | CRA | APPLICABLE | NAV is a product with digital elements made available on the market, including subscription and cloud-connected editions; CRA essential requirements, vulnerability handling, support period and reporting apply. | CRA technical documentation, SBOM, Support-period decision, Incident-reporting runbook |
 | ROHS | NOT_APPLICABLE_WITH_REASON | NAV software contains no electrical or electronic equipment unless it is supplied on hardware, in which case RoHS applies to that hardware. | — |
-| WEEE | NOT_APPLICABLE_WITH_REASON | WEEE applies to electrical and electronic equipment; pure software is out of scope, and any bundled hardware is registered separately. | — |
+| WEEE | NOT_APPLICABLE_WITH_REASON | WEEE applies to electrical and electronic equipment; pure software is out of scope, and any bundled hardware falls to be registered separately. | — |
 | BATTERIES | NOT_APPLICABLE_WITH_REASON | NAV software contains no batteries; battery obligations attach to the hardware families that contain them. | — |
 | RCD | NOT_APPLICABLE_WITH_REASON | NAV software is not a recreational craft or a component listed in the RCD scope; the RCD applies to the craft or covered components, not to navigation software. | — |
 | MED | NOT_APPLICABLE_WITH_REASON | NAV is not shipborne marine equipment listed for MED wheelmark; no wheelmark claim is made. | — |
@@ -212,7 +212,7 @@ Weather forecast subscription service with licensed data. Editions: WEATHER-STAN
 | GPSR | NOT_APPLICABLE_WITH_REASON | The GPSR applies to products, not to a forecast data service; if WEATHER is sold with a physical device, that device is assessed separately. | — |
 | CRA | CONDITIONALLY_APPLICABLE | A remote data service alone is generally outside the CRA's 'product with digital elements' scope, but the CRA may apply where the service is integral to a product or the client software is placed on the market. | The CRA consolidated scope analysis concludes that the service or app is in scope. |
 | ROHS | NOT_APPLICABLE_WITH_REASON | WEATHER software/data has no electrical equipment; RoHS applies to the hardware that displays it. | — |
-| WEEE | NOT_APPLICABLE_WITH_REASON | WEEE applies to EEE, not to a subscription service; the hardware is registered separately. | — |
+| WEEE | NOT_APPLICABLE_WITH_REASON | WEEE applies to EEE, not to a subscription service; the hardware falls to be registered separately. | — |
 | BATTERIES | NOT_APPLICABLE_WITH_REASON | WEATHER contains no battery. | — |
 | RCD | NOT_APPLICABLE_WITH_REASON | WEATHER is not a recreational craft or RCD component. | — |
 | MED | NOT_APPLICABLE_WITH_REASON | WEATHER is not shipborne MED equipment and no wheelmark is claimed. | — |

@@ -85,77 +85,77 @@ not an unassessed area.
 
 | ID | Route | File:line | Severity | Issue | Linked risk |
 | --- | --- | --- | --- | --- | --- |
-| WEB-001 | `/es/aviso-legal` | `src/app/core/site.config.ts:21-26` | BLOCKING | `SITE.legal` has empty `taxId`, `address`, `registry`; seller identity cannot be published. | LEG-09, LEG-01 |
-| WEB-002 | `/es/aviso-legal` | `src/app/i18n/es.ts:259-264` | BLOCKING | Public legal notice renders "Datos fiscales y domicilio: pendientes de confirmación." | LEG-09 |
+| WEB-001 | `/aviso-legal` | `src/app/core/site.config.ts:21-26` | BLOCKING | `SITE.legal` has empty `taxId`, `address`, `registry`; seller identity cannot be published. | LEG-09, LEG-01 |
+| WEB-002 | `/aviso-legal` | `src/app/i18n/es.ts:259-264` | BLOCKING | Public legal notice renders "Datos fiscales y domicilio: pendientes de confirmación." | LEG-09 |
 
 ### 4.2 Ownership, brand and licence claims (3)
 
 | ID | Route | File:line | Severity | Issue | Linked risk |
 | --- | --- | --- | --- | --- | --- |
-| WEB-003 | `/es/tecnologia` | `src/app/features/technology/content/technology-page.content.ts:27-30` | BLOCKING | "Open Marine es nuestra plataforma abierta": ownership of a codebase whose licence/ownership chain is not cleared. | IPR-15, IPR-14, CLM-05 |
-| WEB-005 | `/es/aviso-legal` | `src/app/features/legal/content/legal.es.ts:26-32` | BLOCKING | Legal notice states Open Marine software is "distribuido como código abierto" under its own licence; no outbound licence exists. | IPR-15, IPR-14, CLM-05 |
+| WEB-003 | `/tecnologia` | `src/app/features/technology/content/technology-page.content.ts:27-30` | BLOCKING | "Open Marine es nuestra plataforma abierta": ownership of a codebase whose licence/ownership chain is not cleared. | IPR-15, IPR-14, CLM-05 |
+| WEB-005 | `/aviso-legal` | `src/app/features/legal/content/legal.es.ts:26-32` | BLOCKING | Legal notice states Open Marine software is "distribuido como código abierto" under its own licence; no outbound licence exists. | IPR-15, IPR-14, CLM-05 |
 | WEB-016 | `/es` (site-wide footer) | `src/app/i18n/es.ts:35` | MAJOR | Footer presents "Tecnología Open Marine" as the commercial brand; no MAREA usage anywhere in `src/`; brand architecture not cleared. | IPR-13, IPR-14, CLM-05 |
 
 ### 4.3 Availability, checkout and price (5)
 
 | ID | Route | File:line | Severity | Issue | Linked risk |
 | --- | --- | --- | --- | --- | --- |
-| WEB-004 | `/es/tienda` | `src/app/i18n/es.ts:87-90` | BLOCKING | Shop meta description says "Compra … Open Marine Hub … controlador de piloto automático" while the portfolio is not available and PILOT is not sellable. | CLM-02, CLM-06, LEG-09 |
-| WEB-011 | `/es/carrito` | `src/app/features/shop/cart.ts:83-86` | MAJOR | Single checkbox bundles terms + privacy; no withdrawal-right summary or model form before the order. | CONS-01, CONS-03, CONS-10 |
+| WEB-004 | `/tienda` | `src/app/i18n/es.ts:87-90` | BLOCKING | Shop meta description says "Compra … Open Marine Hub … controlador de piloto automático" while the portfolio is not available and PILOT is not sellable. | CLM-02, CLM-06, LEG-09 |
+| WEB-011 | `/carrito` | `src/app/features/shop/cart.ts:83-86` | MAJOR | Single checkbox bundles terms + privacy; no withdrawal-right summary or model form before the order. | CONS-01, CONS-03, CONS-10 |
 | WEB-012 | `/api/orders` | `src/server/api.ts:402-408` | MAJOR | Automatic "Gracias por tu pedido" email conflates receipt with the acceptance defined in the terms of sale. | CONS-01, PAY-05 |
-| WEB-013 | `/es/tienda/:slug` | `src/app/features/shop/shop-detail.ts:47` | MAJOR | "IVA incluido" label on a `price_cents` value with no VAT rate/base/territory field. | CLM-04, PAY-04, LEG-09 |
-| WEB-023 | `/es/carrito` | `src/app/i18n/es.ts:119-121` | MAJOR | Shipping/installation costs are "confirmed separately"; final amount unknown before ordering. | CLM-04, CONS-01, PAY-04 |
+| WEB-013 | `/tienda/:slug` | `src/app/features/shop/shop-detail.ts:47` | MAJOR | "IVA incluido" label on a `price_cents` value with no VAT rate/base/territory field. | CLM-04, PAY-04, LEG-09 |
+| WEB-023 | `/carrito` | `src/app/i18n/es.ts:119-121` | MAJOR | Shipping/installation costs are "confirmed separately"; final amount unknown before ordering. | CLM-04, CONS-01, PAY-04 |
 
 ### 4.4 Structured data and SEO (2)
 
 | ID | Route | File:line | Severity | Issue | Linked risk |
 | --- | --- | --- | --- | --- | --- |
-| WEB-014 | `/es/tienda/:slug` | `src/app/features/shop/shop-detail.ts:148-164` | MAJOR | schema.org Product/Offer emits admin price, InStock/OutOfStock and brand "Open Marine" without approved SKU/brand evidence. | CLM-04, CLM-02, IPR-13 |
-| WEB-015 | `/es/tecnologia` | `src/app/features/technology/content/technology-page.content.ts:52-56` | MAJOR | SEO description says the platform already integrates autopilot and sensors; capability/availability claim. | CLM-06, CLM-03, IPR-14 |
+| WEB-014 | `/tienda/:slug` | `src/app/features/shop/shop-detail.ts:148-164` | MAJOR | schema.org Product/Offer emits admin price, InStock/OutOfStock and brand "Open Marine" without approved SKU/brand evidence. | CLM-04, CLM-02, IPR-13 |
+| WEB-015 | `/tecnologia` | `src/app/features/technology/content/technology-page.content.ts:52-56` | MAJOR | SEO description says the platform already integrates autopilot and sensors; capability/availability claim. | CLM-06, CLM-03, IPR-14 |
 
 ### 4.5 Privacy and cookies (4)
 
 | ID | Route | File:line | Severity | Issue | Linked risk |
 | --- | --- | --- | --- | --- | --- |
-| WEB-007 | `/es/privacidad` | `src/app/features/legal/content/legal.es.ts:44-46` | MAJOR | Controller identified only by trade name and email; no legal name, address or tax ID. | PRIV-07, CONS-01 |
-| WEB-008 | `/es/privacidad` | `src/app/features/legal/content/legal.es.ts:63-66` | MAJOR | Recipients limited to hosting/email; Google Identity Services and Stripe omitted, no transfers/safeguards. | PRIV-07, CONS-01 |
-| WEB-009 | `/es/acceso` | `src/server/api.ts:150-169` | MAJOR | Registration consent checkbox is never sent or stored; no proof of consent/lawful basis. | PRIV-07, CONS-01 |
-| WEB-010 | `/es/acceso` | `src/app/core/google-identity.ts:34-46` | MINOR | Third-party Google Identity Services script not disclosed in the cookie policy. | PRIV-07 |
+| WEB-007 | `/privacidad` | `src/app/features/legal/content/legal.es.ts:44-46` | MAJOR | Controller identified only by trade name and email; no legal name, address or tax ID. | PRIV-07, CONS-01 |
+| WEB-008 | `/privacidad` | `src/app/features/legal/content/legal.es.ts:63-66` | MAJOR | Recipients limited to hosting/email; Google Identity Services and Stripe omitted, no transfers/safeguards. | PRIV-07, CONS-01 |
+| WEB-009 | `/acceso` | `src/server/api.ts:150-169` | MAJOR | Registration consent checkbox is never sent or stored; no proof of consent/lawful basis. | PRIV-07, CONS-01 |
+| WEB-010 | `/acceso` | `src/app/core/google-identity.ts:34-46` | MINOR | Third-party Google Identity Services script not disclosed in the cookie policy. | PRIV-07 |
 
 ### 4.6 Safety and compatibility claims (5)
 
 | ID | Route | File:line | Severity | Issue | Linked risk |
 | --- | --- | --- | --- | --- | --- |
-| WEB-006 | `/es/tecnologia/piloto-automatico` | `src/app/features/technology/content/technology.es.ts:74-95` | BLOCKING | Autopilot marketed "con seguridad por diseño"; no certification, no supervised-steering/navigation-aid disclaimers; PILOT safety gate blocked. | CLM-06, LIA-06, LEG-01 |
-| WEB-017 | `/es/tecnologia/navegador` | `src/app/features/technology/content/technology.es.ts:15-22` | MAJOR | AIS "alarmas de colisión" with no receive-only/incomplete-AIS disclaimer. | CLM-06, LIA-06 |
-| WEB-018 | `/es/tecnologia/hub` | `src/app/features/technology/content/technology.es.ts:58-70` | MAJOR | Published NMEA 0183/NMEA 2000 compatibility; NMEA 2000 is stubs only, no licence/certification/tested matrix. | CLM-07, LIA-05 |
-| WEB-019 | `/es/tecnologia/piloto-automatico` | `src/app/features/technology/content/technology.es.ts:80-87` | MAJOR | Named third-party actuator compatibility (ST3000 type) without tested qualification. | CLM-07, CLM-06 |
-| WEB-027 | `/es/tienda/:slug` | `src/app/features/shop/shop-detail.ts:42-66` | MAJOR | Hardware product page lacks GPSR manufacturer/importer, traceability, warnings and recall information. | LEG-04, LEG-09, LIA-06 |
+| WEB-006 | `/tecnologia/piloto-automatico` | `src/app/features/technology/content/technology.es.ts:74-95` | BLOCKING | Autopilot marketed "con seguridad por diseño"; no certification, no supervised-steering/navigation-aid disclaimers; PILOT safety gate blocked. | CLM-06, LIA-06, LEG-01 |
+| WEB-017 | `/tecnologia/navegador` | `src/app/features/technology/content/technology.es.ts:15-22` | MAJOR | AIS "alarmas de colisión" with no receive-only/incomplete-AIS disclaimer. | CLM-06, LIA-06 |
+| WEB-018 | `/tecnologia/hub` | `src/app/features/technology/content/technology.es.ts:58-70` | MAJOR | Published NMEA 0183/NMEA 2000 compatibility; NMEA 2000 is stubs only, no licence/certification/tested matrix. | CLM-07, LIA-05 |
+| WEB-019 | `/tecnologia/piloto-automatico` | `src/app/features/technology/content/technology.es.ts:80-87` | MAJOR | Named third-party actuator compatibility (ST3000 type) without tested qualification. | CLM-07, CLM-06 |
+| WEB-027 | `/tienda/:slug` | `src/app/features/shop/shop-detail.ts:42-66` | MAJOR | Hardware product page lacks GPSR manufacturer/importer, traceability, warnings and recall information. | LEG-04, LEG-09, LIA-06 |
 
 ### 4.7 Commercial descriptions and offers (7)
 
 | ID | Route | File:line | Severity | Issue | Linked risk |
 | --- | --- | --- | --- | --- | --- |
-| WEB-020 | `/es/tecnologia/hub` | `src/app/features/technology/content/technology.es.ts:62-65` | MAJOR | Hub page states installation, commissioning, updates and support are "incluidas" for a DEFINED product. | CLM-02, OPS-02, CLM-04 |
+| WEB-020 | `/tecnologia/hub` | `src/app/features/technology/content/technology.es.ts:62-65` | MAJOR | Hub page states installation, commissioning, updates and support are "incluidas" for a DEFINED product. | CLM-02, OPS-02, CLM-04 |
 | WEB-021 | `/es` | `src/app/features/home/content/home.content.ts:55-85` | MAJOR | Home advertises autopilots in the plural and "Control inteligente"; autonomy-adjacent wording. | CLM-06, CLM-03 |
-| WEB-022 | `/es/sobre-nosotros` | `src/app/features/about/content/about.content.ts:35-44` | MAJOR | Claims every system is bench-tested before the boat and that the autopilot has "vigilancia permanente". | CLM-03, CLM-06, LIA-06 |
-| WEB-025 | `/es/aviso-legal` | `src/app/features/legal/content/legal.es.ts:19-24` | MAJOR | Legal notice says content is not a binding offer; contradicts the live shop/checkout. | CONS-01, CLM-04 |
-| WEB-026 | `/es/experiencias` | `src/app/features/experiences/content/experiences.content.ts:48-54` | MAJOR | Boat-trip service promises a closed price/availability with no booking or cancellation terms. | CONS-01, CONS-03 |
-| WEB-028 | `/es/condiciones-de-venta` | `src/app/features/legal/content/legal.es.ts:136-138` | MINOR | Three-year legal guarantee stated without claim channel, proof rules or contact identity. | CONS-02, OPS-03, LEG-01 |
-| WEB-029 | `/es/tecnologia` | `src/app/features/technology/content/technology-page.content.ts:42-48` | MINOR | "Software auditable, probado … antes de cada versión" — testing claim without reproducible evidence. | CLM-03 |
+| WEB-022 | `/sobre-nosotros` | `src/app/features/about/content/about.content.ts:35-44` | MAJOR | Claims every system is bench-tested before the boat and that the autopilot has "vigilancia permanente". | CLM-03, CLM-06, LIA-06 |
+| WEB-025 | `/aviso-legal` | `src/app/features/legal/content/legal.es.ts:19-24` | MAJOR | Legal notice says content is not a binding offer; contradicts the live shop/checkout. | CONS-01, CLM-04 |
+| WEB-026 | `/experiencias` | `src/app/features/experiences/content/experiences.content.ts:48-54` | MAJOR | Boat-trip service promises a closed price/availability with no booking or cancellation terms. | CONS-01, CONS-03 |
+| WEB-028 | `/condiciones-de-venta` | `src/app/features/legal/content/legal.es.ts:136-138` | MINOR | Three-year legal guarantee stated without claim channel, proof rules or contact identity. | CONS-02, OPS-03, LEG-01 |
+| WEB-029 | `/tecnologia` | `src/app/features/technology/content/technology-page.content.ts:42-48` | MINOR | "Software auditable, probado … antes de cada versión" — testing claim without reproducible evidence. | CLM-03 |
 
 ### 4.8 Consumer rights: withdrawal and subscriptions (2)
 
 | ID | Route | File:line | Severity | Issue | Linked risk |
 | --- | --- | --- | --- | --- | --- |
-| WEB-024 | `/es/condiciones-de-venta` | `src/app/features/legal/content/legal.es.ts:127-133` | MAJOR | Withdrawal exclusion extends to "productos configurados"; no Annex I(B) model withdrawal form. | CONS-03, CONS-10 |
-| WEB-030 | `/es/condiciones-de-venta` (future) | `docs/marea/bundles/copy/start.es.md:87-88` | MINOR | Subscription terms exist only in an unpublished internal draft; published legal pack has no recurring-payment terms. | CONS-07, CONS-09 |
+| WEB-024 | `/condiciones-de-venta` | `src/app/features/legal/content/legal.es.ts:127-133` | MAJOR | Withdrawal exclusion extends to "productos configurados"; no Annex I(B) model withdrawal form. | CONS-03, CONS-10 |
+| WEB-030 | `/condiciones-de-venta` (future) | `docs/marea/bundles/copy/start.es.md:87-88` | MINOR | Subscription terms exist only in an unpublished internal draft; published legal pack has no recurring-payment terms. | CONS-07, CONS-09 |
 
 ### 4.9 Verified controls / observations (4 — INFORMATIONAL)
 
 | ID | Route | File:line | Observation |
 | --- | --- | --- | --- |
-| WEB-031 | `/es/tienda/muestra/:slug` | `src/app/features/shop/sample-detail.ts:44-54` | Sample pages are non-sale, noindex and emit no hreflang pair; sample note says "no se puede comprar". |
+| WEB-031 | `/tienda/muestra/:slug` | `src/app/features/shop/sample-detail.ts:44-54` | Sample pages are non-sale, noindex and emit no hreflang pair; sample note says "no se puede comprar". |
 | WEB-032 | `/api/orders` | `src/server/api.ts:355-365` | Server re-reads active product, price and stock; rejects client price changes and out-of-stock quantities. |
 | WEB-033 | `/es` | `src/app/layout/footer/footer.ts:37-45` | Footer links to legal notice, privacy, cookies and terms of sale; checkout/contact/registration link to them too. |
 | WEB-034 | Future PILOT page | `docs/marea/products/copy/pilot.es.md:29-31` | Internal PILOT draft is marked DEFINED/not for sale, unpriced, with approved disclaimers; not itself a live claim. |

@@ -58,9 +58,24 @@
     "No 'certified', 'official' or 'approved' badge in the footer."
   ],
   "productAndBundlePageRestrictions": {
-    "lifecycleStatesAllowed": ["CONCEPT", "DEFINED", "INTERNAL_ONLY"],
-    "ctaAllowed": ["read the concept", "see the specification", "register interest only where a lawful mechanism exists"],
-    "ctaForbidden": ["buy", "add to cart", "checkout", "pre-order", "price", "availability"],
+    "lifecycleStatesAllowed": [
+      "CONCEPT",
+      "DEFINED",
+      "INTERNAL_ONLY"
+    ],
+    "ctaAllowed": [
+      "read the concept",
+      "see the specification",
+      "register interest only where a lawful mechanism exists"
+    ],
+    "ctaForbidden": [
+      "buy",
+      "add to cart",
+      "checkout",
+      "pre-order",
+      "price",
+      "availability"
+    ],
     "pilot": "Never purchasable; supervised-only boundary and safety gate must be stated wherever PILOT is mentioned.",
     "ais": "Receive-only; no transmission, transponder, collision-avoidance or DSC implication.",
     "watch": "No guaranteed alert delivery or continuous offshore coverage; disclaimers required.",
@@ -99,14 +114,76 @@
     "Structured data and sitemap changes require the MC-15 release gate."
   ],
   "pageByPageIssues": [
-    {"route": "/es/tienda", "findingIds": ["WEB-004", "WEB-019", "WEB-020"], "summary": "Shop/SEO instructs buying unavailable Open Marine Hub/autopilot; availability and product identity issues."},
-    {"route": "/es/tecnologia", "findingIds": ["WEB-003", "WEB-006", "WEB-010", "WEB-011"], "summary": "Ownership/open-source claims and autopilot safety claims."},
-    {"route": "/es/legal/aviso-legal", "findingIds": ["WEB-001", "WEB-007", "WEB-021"], "summary": "Missing legal identity; incomplete privacy recipients; non-binding draft notice."},
-    {"route": "/es/legal/privacidad", "findingIds": ["WEB-007", "WEB-008", "WEB-009"], "summary": "Incomplete controller/recipient information and unrecorded registration consent."},
-    {"route": "/es/legal/cookies", "findingIds": ["WEB-022"], "summary": "GIS cookie disclosure and consent mechanism gaps."},
-    {"route": "/es/tienda/checkout", "findingIds": ["WEB-012", "WEB-013", "WEB-023"], "summary": "Checkout CTAs, VAT-included labelling, shipping costs after order."},
-    {"route": "/es/sobre-nosotros", "findingIds": ["WEB-014", "WEB-015"], "summary": "Autopilot and test/safety claims in About/home content."},
-    {"route": "structured data / product detail", "findingIds": ["WEB-016", "WEB-017", "WEB-018"], "summary": "Product/Offer JSON-LD with admin price/stock and Open Marine brand; compatibility claims."}
+    {
+      "route": "/tienda",
+      "findingIds": [
+        "WEB-004",
+        "WEB-019",
+        "WEB-020"
+      ],
+      "summary": "Shop/SEO instructs buying unavailable Open Marine Hub/autopilot; availability and product identity issues."
+    },
+    {
+      "route": "/tecnologia",
+      "findingIds": [
+        "WEB-003",
+        "WEB-006",
+        "WEB-010",
+        "WEB-011"
+      ],
+      "summary": "Ownership/open-source claims and autopilot safety claims."
+    },
+    {
+      "route": "/legal/aviso-legal",
+      "findingIds": [
+        "WEB-001",
+        "WEB-007",
+        "WEB-021"
+      ],
+      "summary": "Missing legal identity; incomplete privacy recipients; non-binding draft notice."
+    },
+    {
+      "route": "/legal/privacidad",
+      "findingIds": [
+        "WEB-007",
+        "WEB-008",
+        "WEB-009"
+      ],
+      "summary": "Incomplete controller/recipient information and unrecorded registration consent."
+    },
+    {
+      "route": "/legal/cookies",
+      "findingIds": [
+        "WEB-022"
+      ],
+      "summary": "GIS cookie disclosure and consent mechanism gaps."
+    },
+    {
+      "route": "/tienda/checkout",
+      "findingIds": [
+        "WEB-012",
+        "WEB-013",
+        "WEB-023"
+      ],
+      "summary": "Checkout CTAs, VAT-included labelling, shipping costs after order."
+    },
+    {
+      "route": "/sobre-nosotros",
+      "findingIds": [
+        "WEB-014",
+        "WEB-015"
+      ],
+      "summary": "Autopilot and test/safety claims in About/home content."
+    },
+    {
+      "route": "structured data / product detail",
+      "findingIds": [
+        "WEB-016",
+        "WEB-017",
+        "WEB-018"
+      ],
+      "summary": "Product/Offer JSON-LD with admin price/stock and Open Marine brand; compatibility claims."
+    }
   ],
   "esEnConsistencyRequirements": [
     "One component per page; no duplicated ES/EN implementations.",

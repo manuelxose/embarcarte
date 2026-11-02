@@ -4,17 +4,352 @@
   "milestone": "MC-14",
   "date": "2026-11-02",
   "owner": "independent-auditor",
-  "status": "PENDING",
-  "verdict": "PENDING",
-  "frozenCandidateCommit": null,
+  "status": "PENDING_CORRECTION",
+  "verdict": "PENDING_CORRECTION",
+  "reviewedCommit": "6fb22850aa7acdcea3e4959024d93ea5adc54842",
+  "reviewedBranch": "feature/marea-mc14-legal-commercial-risk-claims-policy",
+  "frozenCandidateCommit": "6fb22850aa7acdcea3e4959024d93ea5adc54842",
+  "baseCommit": "f80c0f02ac14803e9e1539393abbb225d7f49e16",
   "finalRecordCommit": null,
-  "auditScope": "Independent audit not started. This file is the placeholder that the independent auditor replaces after the implementation freeze.",
-  "findings": [],
+  "verdictDetail": "Independent audit of the frozen implementation commit 6fb22850aa7acdcea3e4959024d93ea5adc54842. The machine gate (54/54), the adversarial suite (41/41), the 19 auditor-authored mutations (19/19 detected), the git ancestry and scope checks, the applicability challenge (9x14 + 6x14), the predecessor mapping (58/39/23/14 = 134, 0 closed/deleted), the economic-operator, GDPR/CRA, consumer-rights and claims-enforcement reviews all verify. One MAJOR defect (A-01) and nine MINOR defects remain open: the research source trail (CSV + dossier) and the governed source register (legal-sources.json + D02) publish contradictory verification statuses and counts (14 vs 4 'verified this session'; 50 vs 48 rows; 12 directly contradictory records), and a stale 2025-02-01 RED delegated-regulation date survives in the governed requirement. Because A-01 is MAJOR, no internal-scope award is issued now (fail-closed). After the correction list below is applied and re-verified, the evidence supports PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE with programme status PARTIAL: internal legal/commercial governance PASS, external legal clearance NOT_GRANTED (mirroring MC-13). No sale, certification, legal clearance, insurance, licence, publication, merge or deployment is authorised by this record.",
+  "programmeStatusOnCorrection": "PARTIAL",
+  "expectedVerdictOnCorrection": "PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE",
+  "internalScopeAssessment": "PASS_WITH_ONE_MAJOR_CORRECTION_PENDING",
+  "externalLegalClearance": "NOT_GRANTED",
+  "publicationAuthorized": false,
+  "correctionsRequiredBeforeAward": [
+    "A-01 (MAJOR): reconcile verification statuses and counts across research/mc14-legal-sources.csv, research/MC14-LEGAL-RESEARCH-DOSSIER.md and data/legal-sources.json + D02 so each source has one status and one documented count; explain the 48 vs 50 membership difference or make the registers identical.",
+    "A-02: correct the stale 2025-02-01 RED delegated-regulation date to 2025-08-01 in REQ-DELREG-01 (D02 line 112 and data/legal-sources.json line 1589).",
+    "A-03: correct SRC-EU-SCA-2018-389 effectiveDate (entry into force 2018-03-14; application 2019-09-14) and the dossier table value.",
+    "A-04: add the D19-declared fields to bundle assessments or amend D19 section 3.3 to state that bundle assessments omit them by design.",
+    "A-05: make D03 reproduce the governed WEATHER/BATTERIES and FLEET/BATTERIES rationales verbatim.",
+    "A-06: correct the public-URL attribution in website-findings.json/D15/D18/mc15-handoff-inputs.json to the real route registry (unprefixed Spanish routes; no /es/legal/* or /es/tienda/checkout).",
+    "A-07: correct D20 section 3 to the reproducible frozen-commit result (54/54, not 53/54).",
+    "A-08: reconcile the class C pre-evidence status (INTERNAL_ONLY per approvalWorkflow step 4 and D13 line 68) with the three PUBLIC_PROHIBITED class C claims.",
+    "A-09: qualify or correct the D02 'no compliance conclusion rests on a non-retrieved source' rule for REQ-ES-LGP-01, or retrieve the LGP 34/1988 text and re-status the requirement.",
+    "A-10: replace the dossier's 'recital 580' CRA citation with Article 71 and note the correction."
+  ],
+  "commands": [
+    {
+      "command": "git merge-base --is-ancestor f80c0f02ac14803e9e1539393abbb225d7f49e16 6fb22850aa7acdcea3e4959024d93ea5adc54842",
+      "result": "exit 0 — the MC-13 record commit is an ancestor of the frozen candidate"
+    },
+    {
+      "command": "git rev-parse HEAD && git rev-parse --abbrev-ref HEAD && git status --porcelain",
+      "result": "6fb22850aa7acdcea3e4959024d93ea5adc54842 on feature/marea-mc14-legal-commercial-risk-claims-policy; clean worktree before this review record"
+    },
+    {
+      "command": "git rev-list --merges f80c0f0..6fb2285 ; git rev-list --count f80c0f0..6fb2285",
+      "result": "0 merge commits; 1 commit — feat(mc14): legal/commercial governance, applicability, risk register, claims policy and validation"
+    },
+    {
+      "command": "git diff --name-only f80c0f0 6fb2285",
+      "result": "43 paths: 20 MC-14 documents, 18 data JSON, 2 research files, scripts/check-marea-legal-commercial.mjs + .test.mjs, package.json. No src/, public/, deploy/, .github/ or root-config change"
+    },
+    {
+      "command": "git diff --name-status f80c0f0 6fb2285",
+      "result": "42 added files + package.json modified (only the format/format:check file lists and 2 new test:legal-commercial scripts); no deletions"
+    },
+    {
+      "command": "git branch --contains 6fb2285 ; git merge-base --is-ancestor 6fb2285 main",
+      "result": "only feature/marea-mc14-... contains the commit; exit 1 for main (not merged); no remotes/origin/feature/marea-mc14-* ref in the local clone"
+    },
+    {
+      "command": "npm run test:legal-commercial",
+      "result": "MC-14 legal/commercial gate: 54/54 checks passed, exit 0 (run at the implementation freeze, before this review record replaced the placeholder)"
+    },
+    {
+      "command": "npm run test:legal-commercial:unit",
+      "result": "tests 41, pass 41, fail 0, exit 0 (package script already runs node --test --test-isolation=none)"
+    },
+    {
+      "command": "npm run test:legal-commercial (after this review record was written)",
+      "result": "53/54, exit 1 — only MC14-050 fails with detail [PENDING_CORRECTION] because data/manifest.json review.status is still PENDING; this is the designed pre-record state. The record commit must reconcile the manifest review/statusBlock to the awarded verdict and add D22/D23."
+    },
+    {
+      "command": "node --test scripts/check-marea-legal-commercial.test.mjs",
+      "result": "exit 1 with EPERM (spawn) — the documented Windows DSH sandbox child-process restriction; the packaged script's --test-isolation=none avoids it, so no manual command substitution was needed"
+    },
+    {
+      "command": "npm run test:i18n ; npm run test:commerce ; npm run test:seo ; npm run test:brand",
+      "result": "all exit 0 — inherited website gates: i18n PASS, commerce PASS, SEO 101 sitemap URLs PASS, brand 21/21 PASS"
+    },
+    {
+      "command": "npm run test:products ; npm run test:bundles ; npm run test:market ; npm run test:customer-research ; npm run test:customer-recovery ; npm run test:hardware ; npm run test:economics ; npm run test:financial",
+      "result": "all exit 0 — 52/52, 35/35, 40/40, 62/62, 32/32, 54/54, 49/49, 77/77 inherited checks pass at the frozen commit; worktree clean afterwards"
+    },
+    {
+      "command": "node --input-type=module (auditor in-memory mutation harness against the committed validator)",
+      "result": "19/19 auditor-authored mutations fail their intended check: CE certification, NMEA certification, PILOT safety approval, AIS transmission offer, price authorisation, fabricated insurance, A-class public claim vs brand NO-GO, ES/EN number contradiction, gate closed without evidence, risk closed, source-IP clearance, unknown-to-zero, wrong date, missing document, deleted predecessor blocker, false DPIA, website finding remediated, review verdict inconsistency, publication authorisation without claims"
+    },
+    {
+      "command": "node --input-type=module (auditor reconciliation of documents against data)",
+      "result": "manifest 23/23 evidenceCounts match; 48 sources / 51 requirements complete; D02 51/51 requirement rows match; D05 95/95 risk rows match; D16 13 gates + 24 documents match; D17 20 decisions match; D14 42/42 ES/EN pairs verbatim; D08 16 obligations + 8 templates; D09 14 purposes; D10 14 requirements + 12 controls; D12 13 scenarios; D04 11 roles + 9 scenarios; D03 208/210 rationale+status rows verbatim; 34/34 website findings cite a real file and the observedText is a verbatim substring; 0 unresolved foreign keys across all known *Id fields"
+    },
+    {
+      "command": "node --input-type=module (auditor comparison of the research register with the governed register)",
+      "result": "research CSV 50 rows / 14 RE_VERIFIED_THIS_SESSION / 25 CONSUMED / 6 NOT_RETRIEVED / 5 INACCESSIBLE vs governed 48 / 4 VERIFIED_THIS_SESSION / 32 CONSUMED / 2 PARTIALLY_VERIFIED / 6 NOT_RETRIEVED / 4 INACCESSIBLE; 12 sources with contradictory verification status; 4 CSV-only and 2 JSON-only sources — finding A-01"
+    },
+    {
+      "command": "node --input-type=module (auditor check of all 34 website finding line ranges and observedText)",
+      "result": "34/34 observedText values are verbatim substrings of the cited file:line range at the base commit"
+    },
+    {
+      "command": "external re-retrieval of legal primary sources (EUR-Lex search)",
+      "result": "CRA Art 71 application 2027-12-11, Art 13(8) support period >= 5 years and reporting from 2026-09-11 confirmed; PLD corrigendum OJ L 2026/90364 (CELEX 32024L2853R(01)) changes Art 2(1) scope to products placed on the market after 2026-12-08 confirmed; DelReg (EU) 2026/339 adopted 2026-02-16 repeals 2022/30 with effect from 2027-12-11 confirmed; RD 188/2016 art 9.8 Spanish-language instructions confirmed; RED DelReg 2022/30 application 2025-08-01 confirmed"
+    }
+  ],
+  "independentRecomputation": {
+    "description": "The auditor did not rely on the implementation's own summary or tests. Data was loaded through the committed validator module only as a JSON reader; every count, cross-reference, table and claim was recomputed with auditor-written loops, and the negative controls were written by the auditor rather than reusing the committed test cases.",
+    "countsRecomputed": {
+      "legalSources": 48,
+      "legalRequirements": 51,
+      "productFamilies": 9,
+      "bundles": 6,
+      "applicabilityAssessments": 210,
+      "economicOperatorRoles": 11,
+      "supplyScenarios": 9,
+      "risks": 95,
+      "riskSeverity": {"CRITICAL": 29, "HIGH": 62, "MEDIUM": 4},
+      "predecessorMappings": {"total": 134, "MC-02": 58, "MC-11": 39, "MC-12": 23, "MC-13": 14, "MC-02ByCategory": {"L": 9, "S": 9, "D": 10, "H": 13, "P": 10, "X": 7}},
+      "mc13HandoffDependencies": 10,
+      "claims": {"total": 42, "A": 4, "C": 3, "P": 11, "X": 24, "INTERNAL_ONLY": 4, "PUBLIC_PROHIBITED": 38, "PUBLIC_AUTHORIZED": 0},
+      "prohibitedClaimCategories": 30,
+      "websiteFindings": {"total": 34, "BLOCKING": 6, "MAJOR": 20, "MINOR": 4, "INFORMATIONAL": 4},
+      "releaseGates": 13,
+      "releaseDocuments": 24,
+      "externalDecisions": 20,
+      "consumerObligations": 16,
+      "consumerTemplates": 8,
+      "privacyPurposes": 14,
+      "craRequirements": 14,
+      "craLifecycleControls": 12,
+      "licensingRights": 17,
+      "liabilityScenarios": 13,
+      "manifestCountMismatches": 0
+    },
+    "sourceStatusCrossCheck": {
+      "governedRegister": {"total": 48, "VERIFIED_THIS_SESSION": 4, "CONSUMED_FROM_PREDECESSOR_EVIDENCE": 32, "PARTIALLY_VERIFIED": 2, "NOT_RETRIEVED": 6, "INACCESSIBLE": 4},
+      "researchRegister": {"total": 50, "RE_VERIFIED_THIS_SESSION": 14, "CONSUMED_FROM_PREDECESSOR_EVIDENCE": 25, "NOT_RETRIEVED": 6, "INACCESSIBLE": 5},
+      "contradictorySources": [
+        "SRC-EU-CRA-2024-2847",
+        "SRC-EU-GPSR-2023-988",
+        "SRC-EU-DCD-2019-770",
+        "SRC-EU-UCPD-2005-29",
+        "SRC-EU-ECOMMERCE-2000-31",
+        "SRC-ES-RD-186-2016",
+        "SRC-ES-RD-187-2016",
+        "SRC-NMEA-2000-LICENSING",
+        "SRC-NMEA-0183",
+        "SRC-NMEA-CERTIFICATION",
+        "SRC-ES-TRLGDCU-RDL-1-2007",
+        "SRC-ES-LSSI-34-2002"
+      ],
+      "researchOnlySources": ["SRC-ES-AUTORIDAD-CONSUMIDOR", "SRC-WIPO-GLOBAL-BRAND-DB", "SRC-IEC-60945", "SRC-ISO-16315"],
+      "governedOnlySources": ["SRC-EU-DB-96-9", "SRC-ES-AEMET-TERMS"]
+    }
+  },
+  "negativeControlEvidence": {
+    "method": "Auditor-written deep clones of the committed datasets + document map passed to the committed validateData(); no repository file was written. Each mutation had to fail its intended check id.",
+    "mutations": [
+      {"id": "M01", "mutation": "invent CE certification (DOC-01 status CERTIFIED)", "intendedCheck": "MC14-021", "failedChecks": ["MC14-021"], "detected": true},
+      {"id": "M02", "mutation": "invent NMEA 2000 certification", "intendedCheck": "MC14-021", "failedChecks": ["MC14-021"], "detected": true},
+      {"id": "M03", "mutation": "approve PILOT safety gate (BLOCKED -> CLEARED)", "intendedCheck": "MC14-018", "failedChecks": ["MC14-018", "MC14-022"], "detected": true},
+      {"id": "M04", "mutation": "offer AIS transmission in a public claim", "intendedCheck": "MC14-023", "failedChecks": ["MC14-017", "MC14-019", "MC14-023", "MC14-041", "MC14-052"], "detected": true},
+      {"id": "M05", "mutation": "authorise a price claim", "intendedCheck": "MC14-025", "failedChecks": ["MC14-014", "MC14-017", "MC14-019", "MC14-025", "MC14-041", "MC14-052"], "detected": true},
+      {"id": "M06", "mutation": "fabricate insurance cover in a public claim", "intendedCheck": "MC14-027", "failedChecks": ["MC14-014", "MC14-017", "MC14-019", "MC14-027", "MC14-041", "MC14-052"], "detected": true},
+      {"id": "M07", "mutation": "A-class public claim while brand public use is NO_GO", "intendedCheck": "MC14-052", "failedChecks": ["MC14-017", "MC14-019", "MC14-041", "MC14-052"], "detected": true},
+      {"id": "M08", "mutation": "contradict ES/EN numbers (2 vs 3 editions)", "intendedCheck": "MC14-015", "failedChecks": ["MC14-015"], "detected": true},
+      {"id": "M09", "mutation": "close a release gate without evidence", "intendedCheck": "MC14-021", "failedChecks": ["MC14-021"], "detected": true},
+      {"id": "M10", "mutation": "mark a risk CLOSED_VERIFIED", "intendedCheck": "MC14-039", "failedChecks": ["MC14-039"], "detected": true},
+      {"id": "M11", "mutation": "invent source-IP clearance", "intendedCheck": "MC14-020", "failedChecks": ["MC14-020"], "detected": true},
+      {"id": "M12", "mutation": "convert an UNKNOWN amount to zero", "intendedCheck": "MC14-029", "failedChecks": ["MC14-029"], "detected": true},
+      {"id": "M13", "mutation": "write a non-ISO legal date", "intendedCheck": "MC14-054", "failedChecks": ["MC14-054"], "detected": true},
+      {"id": "M14", "mutation": "delete a mandatory document", "intendedCheck": "MC14-002", "failedChecks": ["MC14-002"], "detected": true},
+      {"id": "M15", "mutation": "delete an inherited MC-02 blocker (L-01)", "intendedCheck": "MC14-031", "failedChecks": ["MC14-031", "MC14-032"], "detected": true},
+      {"id": "M16", "mutation": "assert a DPIA was performed", "intendedCheck": "MC14-053", "failedChecks": ["MC14-053"], "detected": true},
+      {"id": "M17", "mutation": "silently mark a website finding REMEDIATED", "intendedCheck": "MC14-035", "failedChecks": ["MC14-035"], "detected": true},
+      {"id": "M18", "mutation": "write a review verdict while the manifest review is PENDING", "intendedCheck": "MC14-050", "failedChecks": ["MC14-050"], "detected": true},
+      {"id": "M19", "mutation": "publish without publication authorisation", "intendedCheck": "MC14-017", "failedChecks": ["MC14-017"], "detected": true}
+    ],
+    "detectionRate": "19/19"
+  },
+  "findings": [
+    {
+      "id": "A-01",
+      "classification": "MAJOR",
+      "title": "Research source trail and governed source register publish contradictory verification statuses and counts (14 vs 4 sessions-verified; 50 vs 48 sources; 12 directly contradictory records)",
+      "evidence": "Governed register: data/legal-sources.json:1289-1297 (sourceCounts total 48, verifiedThisSession 4, consumed 32, partly verified 2, not-retrieved-or-inaccessible 10), D02 MC14-PRIMARY-LEGAL-SOURCE-REGISTER.md:24 ('48 sources — 4 verified this session, 32 consumed, 2 partially verified, 10 not retrieved/inaccessible'), and e.g. data/legal-sources.json:19-30 marks SRC-EU-CRA-2024-2847 CONSUMED_FROM_PREDECESSOR_EVIDENCE. Research trail: research/mc14-legal-sources.csv lines 2,3,5,6,9,20,21,23,35,36,37,44,45,46 record 14 rows as RE_VERIFIED_THIS_SESSION; research/MC14-LEGAL-RESEARCH-DOSSIER.md:24-29 reports 50 rows (14 RE_VERIFIED / 25 CONSUMED / 6 NOT_RETRIEVED / 5 INACCESSIBLE), dossier :41 records the CRA as RE_VERIFIED and section 4.1 (:697) refers to the 'fetched OJ excerpt'. The dossier's own definition (:25) is 'RE_VERIFIED_THIS_SESSION (official page fetched 2026-11-02)', which is mutually exclusive with the governed 'CONSUMED_FROM_PREDECESSOR_EVIDENCE ... not re-fetched' (:26). 12 sources are contradictory across the layers (CRA, GPSR, DCD, UCPD, eCommerce, RD 186/2016, RD 187/2016, NMEA 2000 licensing, NMEA 0183, NMEA certification, TRLGDCU, LSSI); 4 research-only rows (SRC-ES-AUTORIDAD-CONSUMIDOR, SRC-WIPO-GLOBAL-BRAND-DB, SRC-IEC-60945, SRC-ISO-16315) are absent from the governed register and 2 governed sources (SRC-EU-DB-96-9, SRC-ES-AEMET-TERMS) are absent from the CSV; the CSV vocabulary RE_VERIFIED_THIS_SESSION is not in data/legal-sources.json:verificationVocabulary. No document reconciles the 48/50 or 4/14 difference. No legal conclusion changes (all conclusions are NOT_ASSESSED/NON_COMPLIANT/UNDETERMINED), but the provenance trail on which the milestone's evidence standard rests is internally contradictory.",
+      "status": "OPEN",
+      "correction": "Reconcile the three artifacts in one pass: decide the true status of each source (re-fetched this session vs consumed from named predecessor evidence), make the CSV, dossier, legal-sources.json and D02 agree, document the 48-vs-50 membership rule (governed register excludes non-law standards/authority information pages) or make membership identical, and use one verification vocabulary. Recompute the published counts.",
+      "reVerification": "Re-run the auditor comparison: one status per source across CSV, dossier, legal-sources.json and D02; counts 48/50 reconciliation documented; no source claimed both RE_VERIFIED_THIS_SESSION and CONSUMED_FROM_PREDECESSOR_EVIDENCE."
+    },
+    {
+      "id": "A-02",
+      "classification": "MINOR",
+      "title": "Stale 2025-02-01 RED cybersecurity application date survives in the governed requirement and D02 obligations register",
+      "evidence": "data/legal-sources.json:1583-1589 (REQ-DELREG-01 obligation: '...had to meet delegated cybersecurity requirements from 2025-02-01...') and D02 MC14-PRIMARY-LEGAL-SOURCE-REGISTER.md:112 use 2025-02-01. The same documents state the correct date elsewhere: D02 section 2 (:36-39) says 2025-08-01 '(not 2025-02-01)'; SRC-EU-DELREG-2022-30 applicationDate is 2025-08-01; CSV line 5 and dossier section 4.3 (:710) state 2025-08-01; dossier :711 explicitly says 'Any artefact stating 2025-02-01 must be corrected to 2025-08-01'.",
+      "status": "OPEN",
+      "correction": "Replace 2025-02-01 with 2025-08-01 in REQ-DELREG-01 in data/legal-sources.json and MC14-PRIMARY-LEGAL-SOURCE-REGISTER.md:112.",
+      "reVerification": "grep for '2025-02-01' in docs/marea/legal-commercial/data and docs/marea/legal-commercial/*.md returns only the explanatory correction note, never a governed obligation."
+    },
+    {
+      "id": "A-03",
+      "classification": "MINOR",
+      "title": "SCA RTS 2018/389 entry-into-force date is wrong in the governed register (and differently wrong in the dossier)",
+      "evidence": "data/legal-sources.json:646-656 gives SRC-EU-SCA-2018-389 publicationDate 2018-03-13, effectiveDate 2018-09-14, applicationDate 2019-09-14. Regulation (EU) 2018/389 Article 38(1) enters into force on the day following OJ publication (OJ L 69, 13.03.2018, therefore 2018-03-14) and Article 38(2) applies it from 2019-09-14; the dossier's date table (:64) lists 2018-04-02, also incorrect. Only the application date is right.",
+      "status": "OPEN",
+      "correction": "Set effectiveDate to 2018-03-14 in data/legal-sources.json and correct the dossier table value to the same date; keep applicationDate 2019-09-14.",
+      "reVerification": "Read the record and the dossier row; both show entry into force 2018-03-14 and application 2019-09-14."
+    },
+    {
+      "id": "A-04",
+      "classification": "MINOR",
+      "title": "All 84 bundle assessments omit legalSourceIds, requirementIds and evidenceRequired that the data contract declares for assessment records",
+      "evidence": "D19 MC14-MACHINE-READABLE-CONTRACTS.md:62-66 declares 'Assessment fields: instrumentId, status, rationale, legalSourceIds[], requirementIds[], condition, evidenceRequired[]' for product and bundle assessments. data/regulatory-applicability.json bundleAssessments[*].assessments[*] contain only instrumentId, status, rationale, condition (e.g. bundleAssessments[0].assessments[0]); 84/84 lack the three fields. The validator enforces source citation (MC14-010) only for product families, so the divergence is invisible to the gate.",
+      "status": "OPEN",
+      "correction": "Either add legalSourceIds/requirementIds/evidenceRequired to bundle assessments (inheriting or citing family-level sources), or amend D19 section 3.3 to state the reduced bundle schema explicitly.",
+      "reVerification": "Compare bundle assessment keys with D19 section 3.3; the schema and data agree."
+    },
+    {
+      "id": "A-05",
+      "classification": "MINOR",
+      "title": "Applicability matrix does not reproduce two governed rationales (WEATHER/BATTERIES, FLEET/BATTERIES)",
+      "evidence": "D03 MC14-REGULATORY-APPLICABILITY-MATRIX.md:216 and :237 say 'WEATHER contains no battery.' / 'FLEET contains no batteries.', while data/regulatory-applicability.json WEATHER/BATTERIES and FLEET/BATTERIES rationales are the longer governed text ('...is a software or data service and contains no battery placed on the market; the Batteries Regulation applies to battery-containing hardware, not to the service itself.'). The other 208 rationale/status rows match the data verbatim.",
+      "status": "OPEN",
+      "correction": "Regenerate the two D03 rows from the governed rationales (status N is correct; only the wording differs).",
+      "reVerification": "Repeat the rationale-to-row comparison: 210/210 rows match the data."
+    },
+    {
+      "id": "A-06",
+      "classification": "MINOR",
+      "title": "Public-URL attribution in D15/website-findings, D18 and the MC-15 handoff does not match the real route registry; D18 cites routes that do not exist",
+      "evidence": "data/website-findings.json:15 and the other finding routes, D15 lines 88-158, D18 lines 62-69 and data/mc15-handoff-inputs.json:104 use '/es/...' paths. The route registry src/app/core/i18n/locale-routes.ts:44-63 defines unprefixed Spanish routes (aviso-legal, privacidad, cookies, tienda, carrito, tecnologia, sobre-nosotros); a grep for '/es/' under src/ returns no match and e2e/public.spec.ts:14 exercises '/aviso-legal'. D18 additionally lists '/es/legal/aviso-legal', '/es/legal/privacidad', '/es/legal/cookies' and '/es/tienda/checkout', none of which exists in the registry (checkout is a step in the cart page). File/line evidence in the 34 findings was separately verified as correct, so remediation targets remain anchored.",
+      "status": "OPEN",
+      "correction": "Replace the route labels with the canonical registry paths ('/aviso-legal', '/privacidad', '/cookies', '/carrito', ...) in data/website-findings.json, D15, D18 section 4 and data/mc15-handoff-inputs.json; keep the finding file:line references unchanged.",
+      "reVerification": "Diff the route fields against LOCALIZED_ROUTES; every page route resolves and no /es/legal/* or /es/tienda/checkout path remains."
+    },
+    {
+      "id": "A-07",
+      "classification": "MINOR",
+      "title": "D20 reports a 53/54 implementation-freeze gate result that is not reproducible at the frozen commit",
+      "evidence": "D20 MC14-VALIDATION-AND-ADVERSARIAL-TESTING.md:112-113 states 'The implementation-freeze run passed 53/54 with only the record-commit documents absent'. At commit 6fb2285 the same command reports 54/54/exit 0 because check MC14-002 relaxes the three record-only documents while manifest.review.status is 'PENDING' (scripts/check-marea-legal-commercial.mjs:258-270).",
+      "status": "OPEN",
+      "correction": "Record the reproducible result (54/54 at the frozen candidate while the review is PENDING) or state exactly which check the reported 53/54 run failed and why.",
+      "reVerification": "Run npm run test:legal-commercial at the frozen commit and compare with the D20 text."
+    },
+    {
+      "id": "A-08",
+      "classification": "MINOR",
+      "title": "Class C pre-evidence status in the data contradicts the claims policy workflow and D13",
+      "evidence": "data/claims-policy.json:483 (approvalWorkflow step 4) and D13 MC14-COMMERCIAL-CLAIMS-POLICY.md:68-69 say a class C claim 'stays INTERNAL_ONLY' until evidence exists, but the three class C claims CLM-019, CLM-039 and CLM-040 are PUBLIC_PROHIBITED; D13 section 3 (:36-38) says only INTERNAL_ONLY and PUBLIC_PROHIBITED are used and the policy summary counts internalOnly=4 (the class A claims).",
+      "status": "OPEN",
+      "correction": "Either set the class C claims to INTERNAL_ONLY until evidence, or amend approvalWorkflow step 4 and D13 to state that class C claims are recorded as PUBLIC_PROHIBITED in this milestone; make the summary consistent.",
+      "reVerification": "Compare the three class C records with the workflow text; one rule governs both."
+    },
+    {
+      "id": "A-09",
+      "classification": "MINOR",
+      "title": "One legal requirement's determination rests solely on a NOT_RETRIEVED source although D02 states no compliance conclusion rests on a non-retrieved source",
+      "evidence": "REQ-ES-LGP-01 (D02 MC14-PRIMARY-LEGAL-SOURCE-REGISTER.md:151) cites only SRC-ES-LGP-34-1988, whose verificationStatus is NOT_RETRIEVED; D02 section 1 (:21) states 'No compliance conclusion rests on a non-retrieved source'. The determination is conservative (NON_COMPLIANT_UNVERIFIED) and no positive compliance is asserted, but the stated rule is not literally met. No requirement is COMPLIANT_VERIFIED (0/51).",
+      "status": "OPEN",
+      "correction": "Retrieve the LGP 34/1988 text and re-status the requirement, or set REQ-ES-LGP-01 to UNDETERMINED, or qualify the D02 rule to allow conservative negative determinations that are explicitly marked UNVERIFIED.",
+      "reVerification": "Re-run the source-status/requirement cross-check; every requirement's conclusion basis is consistent with the written rule."
+    },
+    {
+      "id": "A-10",
+      "classification": "MINOR",
+      "title": "Research dossier cites a non-existent CRA 'recital 580' for the application date",
+      "evidence": "research/MC14-LEGAL-RESEARCH-DOSSIER.md:692 attributes the CRA main application date 2027-12-11 to 'recital 580 + predecessor EVD-MC11-301/303'. Regulation (EU) 2024/2847 contains no recital 580; the application date is set by Article 71 (confirmed on EUR-Lex), which data/legal-sources.json:34 cites correctly ('Art 71 application dates').",
+      "status": "OPEN",
+      "correction": "Replace 'recital 580' with Article 71 in the dossier and note the correction in the research change log.",
+      "reVerification": "Read dossier section 4.1; the citation matches the official act (Article 71)."
+    },
+    {
+      "id": "A-11",
+      "classification": "INFORMATIONAL",
+      "title": "CI does not execute the MC-14 gate or the other MAREA gates; the package does not disclose this",
+      "evidence": ".github/workflows/ci.yml runs format:check, build, i18n, commerce, seo, backup, brand, brand:unit and e2e only. test:legal-commercial and the other MAREA gates are manual. D20/D13 present the gate as a command but no MC-14 document states that CI does not run it.",
+      "status": "OPEN",
+      "correction": "None required for the internal-scope award; either wire test:legal-commercial (+ unit) into CI or disclose the manual-gate position in D20/D23 as MC-13 F-14 did.",
+      "reVerification": "Inspect .github/workflows/ci.yml and the disclosure text."
+    },
+    {
+      "id": "A-12",
+      "classification": "INFORMATIONAL",
+      "title": "Validator coverage gaps: owner/accountable role vocabularies, bundle source citations, external-decision risk references and document-level false-PASS claims are not machine-checked",
+      "evidence": "MC14-007 checks only that ownerRole is a non-empty string (11 internal role names are not defined in a machine vocabulary); MC14-010's source requirement applies only to families (see A-04); external-decisions blockingRiskIds are not validated; there is no MC-13-style D-11 check rejecting a document that asserts an awarded review PASS the record does not contain. The auditor's own cross-reference sweep found 0 unresolved references in these paths, so this is a coverage limitation, not a live defect.",
+      "status": "OPEN",
+      "correction": "No correction needed for this milestone; optional hardening: validate ownerRole/accountableRole against a declared vocabulary and add a document-level false-PASS check.",
+      "reVerification": "Inspect the validator check list against these paths."
+    },
+    {
+      "id": "A-13",
+      "classification": "INFORMATIONAL",
+      "title": "Field-name typo 'pilOtCoverage' in liability-insurance.json",
+      "evidence": "data/liability-insurance.json insuranceStatus contains 'pilOtCoverage': 'NOT_DECIDED' (irregular capitalisation). It is not consumed by the validator or any document, so there is no behavioural effect.",
+      "status": "OPEN",
+      "correction": "Rename to pilotCoverage or document the field name in D19; no contractual dependency exists.",
+      "reVerification": "Read the insuranceStatus record and D19 section 3.11."
+    },
+    {
+      "id": "A-14",
+      "classification": "INFORMATIONAL",
+      "title": "MC-11/MC-12 inherited statuses are recorded with an AS_RECORDED_IN_PREDECESSOR sentinel rather than the literal predecessor status",
+      "evidence": "data/predecessor-blocker-mapping.json uses inheritedStatus 'AS_RECORDED_IN_PREDECESSOR' for 39/39 MC-11 and 23/23 MC-12 records while MC-13 records exact statuses (14/14). The sentinel is documented in the file note. Auditor comparison of the 14 MC-13 records with docs/marea/financial/data/blocker-register.json shows 14/14 exact matches, so '0 status changes' is evidenced for MC-13 and structurally asserted for MC-11/12.",
+      "status": "OPEN",
+      "correction": "None required; optionally copy the literal predecessor status for MC-11/MC-12 as MC-13 does, to make the no-status-change claim directly comparable.",
+      "reVerification": "Compare the mapping statuses with the two predecessor registers."
+    },
+    {
+      "id": "A-15",
+      "classification": "INFORMATIONAL",
+      "title": "Record-commit artefacts are absent at the freeze by design and must be completed with the verdict",
+      "evidence": "At 6fb2285 data/manifest.json review.status is 'PENDING' and statusBlock.MC14_VERDICT is 'PENDING_INDEPENDENT_REVIEW'; D22 (MC14-EXECUTIVE-REPORT-ES.md) and D23 (MC-14-DELIVERY.md) do not exist; docs/marea/execution/MASTER-PROMPT-REGISTRY.md row 14 (:60) is 'PLANNED' and no MC-14 decision-log entry exists. The validator intentionally relaxes the three record-only documents while the review is PENDING (MC14-002). These are the Lead's record-commit duties, not defects of the implementation freeze, but they must be completed together with the awarded verdict or the gate will fail MC14-002/MC14-050.",
+      "status": "OPEN",
+      "correction": "Lead record commit: add D22/D23, set manifest.review.status + statusBlock.MC14_VERDICT + MC14_INDEPENDENT_REVIEW to the awarded verdict and MC14_INTERNAL_LEGAL_GOVERNANCE_SCOPE to PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE, update registry row 14 and the decision log, and record finalRecordCommit.",
+      "reVerification": "Run npm run test:legal-commercial at the record commit: 54/54 with the record documents present."
+    },
+    {
+      "id": "A-16",
+      "classification": "INFORMATIONAL",
+      "title": "Remote PR/remote-head state was not observable from this environment; local evidence shows no merge, deploy or publication",
+      "evidence": "No network Git query was made. Locally: the frozen commit is HEAD of feature/marea-mc14-legal-commercial-risk-claims-policy, is contained only by that branch, is not an ancestor of main, no merge commit exists in f80c0f0..6fb2285, git diff shows no deploy/, .github/, src/ or public/ change, and local remote-tracking refs contain no feature/marea-mc14-* branch. manifest.statusBlock has PR_CREATED=false, MERGED=false, DEPLOYED=false. The remote server state cannot be independently confirmed from this clone.",
+      "status": "OPEN",
+      "correction": "None required for the implementation freeze; the Lead's record should keep the no-merge/no-deploy statement and confirm remote state if it has network access.",
+      "reVerification": "Repeat the local git checks; query the remote only with an authorised network operation."
+    },
+    {
+      "id": "A-17",
+      "classification": "INFORMATIONAL",
+      "title": "Some WEEE rationales imply producer registration already exists",
+      "evidence": "D03 :68 and :215 and the corresponding data rationales say the bundled hardware 'is registered separately', a present-tense statement that could be read as registration having occurred, while REQ-ES-PROD-01 is NON_COMPLIANT_UNVERIFIED and risk LEG-10 is open/EVIDENCE_REQUIRED. The intent is the opposite (WEEE does not apply to pure software).",
+      "status": "OPEN",
+      "correction": "Reword to 'falls to be registered separately' (or equivalent) in the data and D03.",
+      "reVerification": "Check the two rationales after the wording change."
+    }
+  ],
   "summary": {
     "blocking": 0,
-    "major": 0,
-    "minor": 0,
-    "informational": 0,
+    "major": 1,
+    "minor": 9,
+    "informational": 7,
     "closed": 0
-  }
+  },
+  "residualRisks": [
+    "External legal clearance is NOT_GRANTED by definition: 0 counsel engagements, 0 trademark clearances, 0 conformity assessments, 0 insurance policies, 0 data licences, 0 supplier quotations and 0 executed contracts; external decisions are 19 PENDING + 1 OUT_OF_SCOPE_FOR_MC14.",
+    "No product is for sale, no price is approved and no public claim is authorised (0/42 claims PUBLIC_AUTHORIZED, publicationAuthorization NONE).",
+    "Applicability, CRA classification, RCD/MED boundaries, DPIA need, consumer contract architecture and insurance structure remain internal reasoned assessments requiring counsel.",
+    "Six legal sources are NOT_RETRIEVED and four INACCESSIBLE in the governed register; the Spanish PLD transposition text is not retrieved.",
+    "The frozen candidate's own gate no longer passes MC14-050 once this review record is written, because manifest.review.status is still PENDING; this is the designed pre-record state and is resolved by the Lead's record commit (A-15), not by editing the frozen data.",
+    "The auditor did not use a browser, deployment, credential or external commercial channel; no paid service, contact, purchase or publication occurred."
+  ],
+  "whatWouldChangeVerdict": [
+    "Apply and commit corrections A-01..A-10 (A-01 mandatory) and request re-verification against the corrected frozen SHA.",
+    "Re-run the source-register reconciliation (CSV vs dossier vs legal-sources.json vs D02) with one status per source and documented counts; the MAJOR closes when the same source has the same status in all four artifacts.",
+    "Re-run npm run test:legal-commercial and npm run test:legal-commercial:unit at the corrected commit; expect 54/54 and 41/41 before the record commit.",
+    "After correction and re-verification the evidence supports PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE with programme status PARTIAL (MC13 mirror): internal legal/commercial governance PASS, external legal clearance NOT_GRANTED.",
+    "Any change that authorises a public claim, a sale, a certification, a price, a licence, insurance cover or a website change reopens this audit."
+  ],
+  "honestLimit": "This review verifies internal consistency, evidence handling, applicability reasoning, inherited-blocker mapping and claims enforcement against the frozen commit. It is not a legal opinion, not a conformity assessment, not an insurance or licence review and not an authorisation to sell or publish. External legal clearance remains NOT_GRANTED and every external decision remains PENDING or OUT_OF_SCOPE_FOR_MC14. The two 2026 instruments (Commission Delegated Regulation (EU) 2026/339 and the PLD corrigendum OJ L 2026/90364) and the RD 188/2016 art 9.8 Spanish-language duty were independently re-retrieved from EUR-Lex/BOE-adjacent sources during this audit; the full corpus was not re-fetched source by source, so the audit verifies the register's internal provenance claims and their contradictions rather than replacing the research. No sale, certification, legal clearance, publication, merge or deployment is authorised by this record."
 }
