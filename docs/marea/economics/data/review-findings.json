@@ -1,68 +1,180 @@
 {
   "contractId": "MAREA-MC12-REVIEW-FINDINGS",
-  "contractVersion": "1.1.0",
+  "contractVersion": "1.3.0",
   "milestone": "MC-12",
   "date": "2026-11-02",
   "owner": "independent-auditor-agent-h",
   "currency": "EUR",
-  "reviewedCommit": "8f819c19a86d58b893bfab29a53d5a13c38fe2dc",
-  "previousReviewedCommit": "fe970624bc7c41ae5ffe0fb578c194fcb6a795f1",
+  "reviewedCommit": "0f7e826828d03f3f18e8edd39fba2742160e286e",
+  "recordRefreshCommit": "05883ac1fb3401a2f2ed96d9e7d71bb0c60fdb99",
+  "correctionCommit": "8f819c19a86d58b893bfab29a53d5a13c38fe2dc",
+  "previousReviewedCommits": [
+    "246030928e944450badbf69d4916aa92334dca07",
+    "8f819c19a86d58b893bfab29a53d5a13c38fe2dc",
+    "fe970624bc7c41ae5ffe0fb578c194fcb6a795f1"
+  ],
   "baseCommit": "5b47a3d51fa875a08ed6f4ad8448a3e51a0f0499",
   "reviewedBranch": "feature/marea-mc12-recurring-data-unit-economics",
   "reverification": {
-    "correctionCommit": "8f819c19a86d58b893bfab29a53d5a13c38fe2dc",
-    "previousReviewedCommit": "fe97062",
-    "correctionCommitIsChildOfPrevious": true,
-    "remoteHead": "8f819c19a86d58b893bfab29a53d5a13c38fe2dc",
+    "finalHead": "0f7e826828d03f3f18e8edd39fba2742160e286e",
+    "finalHeadIsRecordOnly": true,
+    "ancestry": "fe97062 -> 8f819c1 -> 05883ac -> 2460309 -> 0f7e826 (all verified)",
+    "remoteHead": "0f7e826828d03f3f18e8edd39fba2742160e286e",
     "remoteHeadMatchesLocal": true,
     "trackedWorktreeClean": true,
-    "untrackedPaths": [".recon/"],
-    "diffStat": "14 files changed, 1284 insertions(+), 99 deletions(-)",
-    "scope": "docs/marea/economics/** (11 files), docs/marea/execution/MASTER-PROMPT-REGISTRY.md, scripts/check-marea-unit-economics.mjs, scripts/check-marea-unit-economics.test.mjs. No MC-11, bundles, products, app or package change.",
-    "arithmeticImmutability": "All 50 unit-economics records and 6 bundle records: monetary fields and cost lines unchanged versus fe97062; only additive fields (recurringCostExposure, componentInclusions, conditionalComponents, fixedUnknownCosts, familyId/basis annotations) and intended null-cost PILOT/FLEET-START components changed.",
-    "predecessorPr18": { "state": "OPEN", "draft": true, "mergeable": "MERGEABLE", "merged": false },
-    "pr19": { "number": 19, "state": "OPEN", "draft": true, "mergeable": "MERGEABLE", "merged": false, "baseRefName": "feature/marea-mc11-hardware-sourcing-conformity" }
+    "untrackedPaths": [
+      ".recon/"
+    ],
+    "diffStat2460309ToHead": "3 files changed, 36 insertions(+), 10 deletions(-)",
+    "diffScope": "docs/marea/economics/MC-12-DELIVERY.md, MC12-EXECUTIVE-REPORT.md and an additive-only bundle-economics.json (three componentInclusions rows). No scripts, no MC-11/app/package change, no gate threshold change.",
+    "noGateThresholdChange": "No script changed in 2460309..0f7e826; the gate is byte-identical to the previously verified version.",
+    "noMonetaryChange": "All 6 bundle monetary fields, component cost lines and aggregateConversionBases are identical to 2460309; only three additive componentInclusions rows changed.",
+    "predecessorPr18": {
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": "MERGEABLE",
+      "merged": false
+    },
+    "pr19": {
+      "number": 19,
+      "state": "OPEN",
+      "draft": true,
+      "mergeable": "MERGEABLE",
+      "merged": false,
+      "baseRefName": "feature/marea-mc11-hardware-sourcing-conformity"
+    }
   },
   "verdict": "PASS_INTERNAL_ECONOMICS_SCOPE",
-  "verdictDetail": "Internal economics scope verified at 8f819c1: 0 arithmetic mismatches across 50 unit-economics records, 90 MC-11 scenarios, 70 sensitivity results, 4 stress cases, 6 bundles and 9 decision scores; all original findings F01-F11 closed with independently reproduced evidence; commercial governance flags hold. The PASS is conditional on record-refresh actions R1-R4 (documentation/status only, except the INDEPENDENT_REVIEW status constant in R4).",
+  "verdictDetail": "Internal economics scope fully verified at 0f7e826: 0 arithmetic mismatches across 50 unit-economics records, 90 MC-11 scenarios, 70 sensitivity results, 4 stress cases, 6 bundles and 9 decision scores; no monetary change through the record-refresh commits; all 18 findings are closed (16 CLOSED_VERIFIED, 2 CLOSED_INFORMATIONAL, 0 open); all gates pass (49/49 checks, 64/64 tests, 54/54 + 59/59 hardware, format:check); commercial governance flags hold and INDEPENDENT_REVIEW records the completed audit.",
   "mc12ExternalCommercialEvidence": "BLOCKED_OR_NOT_OBTAINED",
   "externalEvidenceBasis": "0 FORMAL_PROVIDER_QUOTATION, 0 EXECUTED_CONTRACT, RFQ NOT_SENT, 9 INACCESSIBLE sources, 5 UNKNOWN prices; chart/weather/NMEA/connectivity/cloud/tile/IP/trademark rights unlicensed.",
+  "findingCounts": {
+    "total": 18,
+    "closedVerified": 16,
+    "closedInformational": 2,
+    "open": 0,
+    "blocking": 0,
+    "major": 2,
+    "majorOpen": 0,
+    "minor": 12,
+    "informational": 4
+  },
   "independentRecomputation": {
-    "method": "Separate dependency-free Node script loading the corrected data plus docs/marea/hardware/data/cost-scenarios.json and docs/marea/bundles/bundle-definitions.json; arithmetic recomputed from source records without importing the validator. The validator was imported only to observe which check fails under in-memory mutations. Temporary scripts under .recon/audit/ were deleted before delivery.",
+    "method": "Separate dependency-free Node script loading the final data plus docs/marea/hardware/data/cost-scenarios.json and docs/marea/bundles/bundle-definitions.json; arithmetic recomputed from source records without importing the validator. The validator was imported only to observe which check fails under in-memory mutations. Temporary scripts under .recon/audit/ were deleted before delivery.",
     "unitEconomicsRecordsChecked": 50,
-    "breakEvenGrossPricesChecked": 41,
     "mc11ScenariosChecked": 90,
-    "subscriptionsChecked": 7,
     "sensitivityScenariosChecked": 70,
     "stressCasesChecked": 4,
     "bundlesChecked": 6,
     "decisionScoresChecked": 9,
-    "compositionChecks": 6,
+    "componentInclusionsRowsChecked": 25,
+    "conditionalComponentsRowsChecked": 7,
     "providerRecordsChecked": 53,
     "licensingRightsChecked": 11,
     "blockersChecked": 23,
     "arithmeticMismatches": 0,
-    "toleranceEur": 0.005,
-    "negativeControlsReproduced": 5
+    "monetaryFieldsChangedVs8f819c1": 0,
+    "toleranceEur": 0.005
   },
   "commands": [
-    { "command": "node scripts/check-marea-unit-economics.mjs", "exitCode": 0, "result": "49 checks - 49 PASS / 0 FAIL" },
-    { "command": "node --test --test-isolation=none scripts/check-marea-unit-economics.test.mjs", "exitCode": 0, "result": "tests 64 / pass 64 / fail 0" },
-    { "command": "npm run test:economics", "exitCode": 0, "result": "49/49 PASS" },
-    { "command": "npm run test:hardware", "exitCode": 0, "result": "54/54 checks passed" },
-    { "command": "node --test --test-isolation=none scripts/check-marea-hardware.test.mjs", "exitCode": 0, "result": "tests 59 / pass 59 / fail 0" },
-    { "command": "npm run format:check", "exitCode": 0, "result": "All matched files use Prettier code style!" },
-    { "command": "git rev-parse HEAD", "exitCode": 0, "result": "8f819c19a86d58b893bfab29a53d5a13c38fe2dc" },
-    { "command": "git ls-remote origin feature/marea-mc12-recurring-data-unit-economics", "exitCode": 0, "result": "8f819c19a86d58b893bfab29a53d5a13c38fe2dc" },
-    { "command": "git diff --stat fe97062..8f819c1", "exitCode": 0, "result": "14 files changed, 1284 insertions(+), 99 deletions(-)" },
-    { "command": "gh pr view 18 / 19 --json state,isDraft,mergeable,mergedAt", "exitCode": 0, "result": "PR18 OPEN/draft/MERGEABLE/unmerged; PR19 OPEN/draft/MERGEABLE/unmerged stacked on feature/marea-mc11-hardware-sourcing-conformity" }
+    {
+      "command": "node scripts/check-marea-unit-economics.mjs",
+      "exitCode": 0,
+      "result": "49 checks - 49 PASS / 0 FAIL"
+    },
+    {
+      "command": "node --test --test-isolation=none scripts/check-marea-unit-economics.test.mjs",
+      "exitCode": 0,
+      "result": "tests 64 / pass 64 / fail 0"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0,
+      "result": "All matched files use Prettier code style!"
+    },
+    {
+      "command": "npm run test:hardware",
+      "exitCode": 0,
+      "result": "54/54 checks passed (unchanged data, confirmation)"
+    },
+    {
+      "command": "node --test --test-isolation=none scripts/check-marea-hardware.test.mjs",
+      "exitCode": 0,
+      "result": "tests 59 / pass 59 / fail 0 (unchanged data, confirmation)"
+    },
+    {
+      "command": "git rev-parse HEAD; git ls-remote origin feature/marea-mc12-recurring-data-unit-economics",
+      "exitCode": 0,
+      "result": "local = remote = 0f7e826828d03f3f18e8edd39fba2742160e286e"
+    },
+    {
+      "command": "git diff --stat 2460309..HEAD",
+      "exitCode": 0,
+      "result": "3 files changed, 36 insertions(+), 10 deletions(-)"
+    },
+    {
+      "command": "gh pr view 19 / 18 --json state,isDraft,mergeable,mergedAt",
+      "exitCode": 0,
+      "result": "PR19 OPEN/draft/MERGEABLE/unmerged; PR18 unchanged"
+    }
   ],
   "negativeControlEvidence": [
-    { "control": "R-01 per-family", "mutation": "strip HUB recurringCostExposure, unknownVariableCostCategories and recurring cost lines; keep global cloud inputs", "observedFailures": ["R-01"], "verdict": "PASS" },
-    { "control": "D-03 PR_CREATED", "mutation": "manifest.statusBlock.PR_CREATED = false", "observedFailures": ["D-03"], "verdict": "PASS" },
-    { "control": "A-06 missing required component", "mutation": "remove NAV from START.componentEconomicIds", "observedFailures": ["A-06"], "verdict": "PASS" },
-    { "control": "A-06 conditional-only component", "mutation": "append UE-SENSE-MODULE-100-BASE to START.componentEconomicIds", "observedFailures": ["A-06"], "verdict": "PASS" },
-    { "control": "A-06 invented bundle line", "mutation": "append lineId ST-99 to START.componentInclusions", "observedFailures": ["A-06"], "verdict": "PASS" }
+    {
+      "control": "R-01 per-family",
+      "mutation": "strip HUB recurring declarations while global cloud inputs stay",
+      "observedFailures": [
+        "R-01"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "control": "D-03 PR_CREATED",
+      "mutation": "manifest.statusBlock.PR_CREATED = false",
+      "observedFailures": [
+        "D-03"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "control": "A-06 missing required component",
+      "mutation": "remove NAV from START.componentEconomicIds",
+      "observedFailures": [
+        "A-06"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "control": "A-06 conditional-only component",
+      "mutation": "append UE-SENSE-MODULE-100-BASE to START.componentEconomicIds",
+      "observedFailures": [
+        "A-06"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "control": "A-06 invented bundle line",
+      "mutation": "append lineId ST-99 to START.componentInclusions",
+      "observedFailures": [
+        "A-06"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "control": "D-03 final INDEPENDENT_REVIEW value",
+      "mutation": "manifest.statusBlock.INDEPENDENT_REVIEW = PENDING",
+      "observedFailures": [
+        "D-03"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "control": "D-03 wrong INDEPENDENT_REVIEW value",
+      "mutation": "manifest.statusBlock.INDEPENDENT_REVIEW = FAIL",
+      "observedFailures": [
+        "D-03"
+      ],
+      "verdict": "PASS"
+    }
   ],
   "findings": [
     {
@@ -70,84 +182,84 @@
       "title": "Validator R-01 per-family branch was unreachable (gate could not fail for a connected hardware family)",
       "severity": "MAJOR",
       "evidence": "scripts/check-marea-unit-economics.mjs:2126 (corrected); test scripts/check-marea-unit-economics.test.mjs:621",
-      "description": "Contract R-01 requires each connected hardware family (HUB, WATCH, DISPLAY, AIS) to declare recurring exposure. The previous check ended with `&& !cloudPerDevice.length`, making the per-family branch unreachable whenever the global cloud-input list was non-empty (always true for valid data).",
+      "description": "Contract R-01 requires each connected hardware family (HUB, WATCH, DISPLAY, AIS) to declare recurring exposure. The previous check ended with `&& !cloudPerDevice.length`, making the per-family branch unreachable whenever global cloud inputs existed.",
       "requiredCorrection": "Remove the cloudPerDevice clause and add a negative test that strips one family's declarations while global cloud inputs remain.",
-      "correctionOwner": "validation-engineering (MC-12 author) / programme-lead",
-      "remediationEvidence": "8f819c1: the per-family condition is now `!hasRecurringLine && !declaredUnknown && !declaredExposure` (mjs:2126); new test at test.mjs:621 removes only HUB declarations with global cloud inputs intact and expects R-01.",
-      "auditorReverification": "Independent in-memory mutation under validate() produced failures ['R-01']; fresh gate 49/49 exit 0; suite 64/64 exit 0. Observed 2026-11-02.",
+      "correctionOwner": "validation-engineering / programme-lead",
+      "remediationEvidence": "8f819c1: per-family condition is `!hasRecurringLine && !declaredUnknown && !declaredExposure`; new test at test.mjs:621.",
+      "auditorReverification": "Independent in-memory mutation produced failures ['R-01']; final gate 49/49, suite 64/64. Observed 2026-11-02.",
       "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F02",
       "title": "HUB, DISPLAY and AIS carried no recurring cost input or explicit UNKNOWN recurring entry",
       "severity": "MINOR",
-      "evidence": "docs/marea/economics/data/unit-economics.json (recurringCostExposure on HUB/DISPLAY/AIS records)",
-      "description": "Contract R-01 lists HUB, WATCH, DISPLAY and AIS as connected hardware that must declare recurring cost exposure or an explicit UNKNOWN. WATCH did; HUB, DISPLAY and AIS did not.",
-      "requiredCorrection": "Add explicit recurring UNKNOWN/NOT_APPLICABLE declarations to HUB, DISPLAY and AIS records.",
+      "evidence": "docs/marea/economics/data/unit-economics.json recurringCostExposure on HUB/DISPLAY/AIS records",
+      "description": "Contract R-01 required recurring cost exposure or an explicit UNKNOWN for HUB, DISPLAY and AIS.",
+      "requiredCorrection": "Add explicit recurring UNKNOWN/NOT_APPLICABLE declarations.",
       "correctionOwner": "economic-model data owner / programme-lead",
-      "remediationEvidence": "8f819c1: 26 records now carry recurringCostExposure (CLOUD_INFRA UNKNOWN with rationale; LOCAL_DATA_PATH or CUSTOMER_CONNECTIVITY NOT_APPLICABLE with rationale).",
-      "auditorReverification": "Independent R-01 re-derivation: HUB/DISPLAY/AIS satisfied via recurringCostExposure, WATCH via declared UNKNOWN categories; 4/4 satisfied; fresh validator 0 failures. Observed 2026-11-02.",
+      "remediationEvidence": "8f819c1: 26 records carry recurringCostExposure; R-01 4/4 satisfied.",
+      "auditorReverification": "Independent R-01 re-derivation: HUB/DISPLAY/AIS via recurringCostExposure, WATCH via declared unknown categories; final validator 0 failures. Observed 2026-11-02.",
       "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F03",
       "title": "PR_CREATED status block was self-contradictory and the gate froze the false value",
       "severity": "MAJOR",
-      "evidence": "docs/marea/economics/data/manifest.json:53; scripts/check-marea-unit-economics.mjs:104; docs/marea/economics/MC-12-DELIVERY.md:165; docs/marea/economics/MC12-EXECUTIVE-REPORT.md:248; test.mjs:775",
-      "description": "The machine status block said no PR was created although PR #19 existed and D18/D19 said PR_CREATED = true; D-03 enforced the stale value.",
-      "requiredCorrection": "Set PR_CREATED true in manifest and the frozen status block, keep MERGED/DEPLOYED/MC13_STARTED false, and add a negative test.",
+      "evidence": "docs/marea/economics/data/manifest.json:53; scripts/check-marea-unit-economics.mjs:104; D19/D18 status blocks; test.mjs:775",
+      "description": "The status block said no PR was created although PR #19 existed; D-03 enforced the stale value.",
+      "requiredCorrection": "Set PR_CREATED true in manifest and frozen block, keep MERGED/DEPLOYED/MC13_STARTED false, add a negative test.",
       "correctionOwner": "programme-lead + validation-engineering",
-      "remediationEvidence": "8f819c1: manifest.statusBlock.PR_CREATED = true (manifest.json:53); FROZEN_STATUS_BLOCK PR_CREATED true (mjs:104); D-03 negative test added (test.mjs:775); D18/D19 retain true.",
-      "auditorReverification": "Mutation PR_CREATED=false produced failures ['D-03']; fresh gate 49/49; PR #19 verified OPEN/draft/MERGEABLE/unmerged via gh. Observed 2026-11-02.",
+      "remediationEvidence": "8f819c1: PR_CREATED true in manifest/frozen block; D-03 negative test added; D18/D19 true.",
+      "auditorReverification": "Mutation PR_CREATED=false produced ['D-03']; final gate 49/49; PR #19 OPEN/draft/unmerged. Observed 2026-11-02.",
       "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F04",
       "title": "Licensing-rights count and status were misstated in the delivery record and registry",
       "severity": "MINOR",
-      "evidence": "docs/marea/economics/MC-12-DELIVERY.md:81-83; docs/marea/economics/MC12-EXECUTIVE-REPORT.md (D03 item); docs/marea/execution/MASTER-PROMPT-REGISTRY.md:58",
-      "description": "Docs stated 9 rights, all NOT_GRANTED or REQUIRES_CONTRACT; the register has 11 rights (7 NOT_GRANTED, 3 REQUIRES_CONTRACT, 1 PERMITTED public-domain context layer; 9 blocking).",
-      "requiredCorrection": "Correct the count and status distribution in the delivery record, executive report and registry.",
+      "evidence": "docs/marea/economics/MC-12-DELIVERY.md; MC12-EXECUTIVE-REPORT.md; MASTER-PROMPT-REGISTRY.md:58; licensing-rights.json",
+      "description": "Docs stated 9 rights, all NOT_GRANTED/REQUIRES_CONTRACT; the register has 11 (7/3/1; 9 blocking).",
+      "requiredCorrection": "Correct counts and status distribution.",
       "correctionOwner": "programme-lead",
-      "remediationEvidence": "8f819c1: D19:81-83, D18 D03 item and registry row 12 now state 11 rights (9 blocking): 7 NOT_GRANTED, 3 REQUIRES_CONTRACT, 1 PERMITTED.",
-      "auditorReverification": "Parsed licensing-rights.json: 11 rights, status counts 7/3/1, summary.blockingRights 9; documentation text matches. Observed 2026-11-02.",
+      "remediationEvidence": "8f819c1: D19/D18/registry now state 11 rights (9 blocking): 7 NOT_GRANTED, 3 REQUIRES_CONTRACT, 1 PERMITTED.",
+      "auditorReverification": "Parsed licensing-rights.json: 11 rights, 7/3/1, blocking 9; documentation matches at 2460309. Observed 2026-11-02.",
       "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F05",
       "title": "Blocker count and severity split were misstated in the delivery record and registry",
       "severity": "MINOR",
-      "evidence": "docs/marea/economics/MC-12-DELIVERY.md:81; docs/marea/economics/MC12-BLOCKER-REGISTER.md:9; docs/marea/economics/MC12-EXECUTIVE-REPORT.md; docs/marea/execution/MASTER-PROMPT-REGISTRY.md:58",
-      "description": "Docs stated 22 blockers (12 BLOCKING, 9 MAJOR, 1 MINOR); the register has 23 (14 BLOCKING, 8 MAJOR, 1 MINOR), all OPEN, 19 external.",
-      "requiredCorrection": "Correct the counts and severity split in D13/D18/D19 and the registry.",
+      "evidence": "docs/marea/economics/MC-12-DELIVERY.md; MC12-BLOCKER-REGISTER.md; MC12-EXECUTIVE-REPORT.md; MASTER-PROMPT-REGISTRY.md:58",
+      "description": "Docs stated 22 blockers (12/9/1); the register has 23 (14/8/1), 19 external.",
+      "requiredCorrection": "Correct counts and severity split.",
       "correctionOwner": "programme-lead",
-      "remediationEvidence": "8f819c1: D19, D18 D13 item, MC12-BLOCKER-REGISTER.md summary and registry row now state 23 blockers (14 BLOCKING, 8 MAJOR, 1 MINOR; 19 external).",
-      "auditorReverification": "Parsed blocker-register.json: 23 blockers, severities 14/8/1, 19 external; documentation matches. Observed 2026-11-02.",
+      "remediationEvidence": "8f819c1: D19/D18/D13/registry state 23 blockers (14 BLOCKING, 8 MAJOR, 1 MINOR; 19 external).",
+      "auditorReverification": "Parsed blocker-register.json: 23 (14/8/1), 19 external; docs match at 2460309. Observed 2026-11-02.",
       "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F06",
       "title": "Evidence-class accounting omitted the single ENGINEERING_ASSUMPTION provider record",
       "severity": "MINOR",
-      "evidence": "docs/marea/economics/data/manifest.json:37,42; docs/marea/economics/MC-12-DELIVERY.md:67",
-      "description": "manifest.engineeringAssumptions was 0 and class counts summed to 52 while providerRecords was 53; PE-CC-013 is an ENGINEERING_ASSUMPTION record.",
-      "requiredCorrection": "Count engineeringAssumptions = 1 (or reclassify) and make class counts sum to 53.",
+      "evidence": "docs/marea/economics/data/manifest.json:37,42; D19 evidence table; MASTER-PROMPT-REGISTRY.md:58",
+      "description": "engineeringAssumptions was 0 and class counts summed to 52 while providerRecords was 53.",
+      "requiredCorrection": "Count the class and make classes sum to 53.",
       "correctionOwner": "programme-lead",
-      "remediationEvidence": "8f819c1: manifest.json:37 engineeringAssumptions = 1, manifest.json:42 classSum = 53; D19 evidence table adds `ENGINEERING_ASSUMPTION | 1`.",
-      "auditorReverification": "Computed provider evidenceClass distribution: 21 tariff, 2 observation, 15 official, 9 inaccessible, 5 unknown, 1 engineering assumption = 53. Registry row enumeration residual tracked in F13. Observed 2026-11-02.",
+      "remediationEvidence": "8f819c1: engineeringAssumptions 1, classSum 53; D19 table adds the class. 2460309: registry enumeration now includes it and states sum 53.",
+      "auditorReverification": "Computed classes 21/2/15/9/5/1 = 53; registry text includes the class and sum. Observed 2026-11-02.",
       "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F07",
-      "title": "Registry row 12 still contains a placeholder commit reference and a premature review reference",
+      "title": "Registry row 12 contained a placeholder commit reference and a premature review reference",
       "severity": "MINOR",
       "evidence": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md:58",
-      "description": "The registry row still reads 'correction commit `correction commit in the final head`' and does not reference 8f819c1; it also announces the review path before the review commit.",
-      "requiredCorrection": "In the record-refresh commit, write the actual correction SHA 8f819c1 and an accurate review reference.",
+      "description": "The registry row read 'correction commit `correction commit in the final head`' and named the review before it existed.",
+      "requiredCorrection": "Write the actual correction commit SHA and an accurate review reference in the record-refresh commit.",
       "correctionOwner": "programme-lead",
-      "remediationEvidence": "",
-      "auditorReverification": "Verified registry row 58 still contains the placeholder and not 8f819c1 at 8f819c1. Documentation only; no code/data impact. Observed 2026-11-02.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "2460309: registry row 12 names correction commit `8f819c1` and record-refresh commit `05883ac`; the placeholder is gone and the independent review exists.",
+      "auditorReverification": "Verified registry row text at 2460309 contains 8f819c1 and 05883ac and no placeholder. Observed 2026-11-02.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F08",
@@ -155,153 +267,347 @@
       "severity": "MINOR",
       "evidence": "docs/marea/economics/data/bundle-economics.json; docs/marea/bundles/bundle-definitions.json",
       "description": "SAIL counted a CONDITIONAL SENSE-WIND module and omitted required PILOT; COMPLETE omitted PILOT; FLEET had an empty component list; no machine traceability to the definition lines.",
-      "requiredCorrection": "Align components with INCLUDED/QUOTATION_REQUIRED definition lines, keep conditional components separate, and add componentInclusions traceability.",
+      "requiredCorrection": "Align components with INCLUDED/QUOTATION_REQUIRED lines, separate conditional components, add componentInclusions.",
       "correctionOwner": "commercial-finance-pricing-strategist",
-      "remediationEvidence": "8f819c1: SAIL/COMPLETE now include UE-PILOT-COASTAL-100-BASE with null cost; FLEET includes UE-FLEET-FLEET-START-VESSEL-ANNUAL with null cost; SENSE-WIND/WATCH-PLUS/PILOT-SAIL etc. moved to conditionalComponents; componentInclusions added for all bundles.",
-      "auditorReverification": "Independent composition check (required/allowed families, componentInclusions line existence/type, SENSE kit quantities, FLEET hardware-free): 0 violations; bundle numeric aggregates unchanged. Observed 2026-11-02.",
+      "remediationEvidence": "8f819c1: SAIL/COMPLETE include PILOT with null cost; FLEET includes FLEET-START with null cost; conditional components separated; componentInclusions added.",
+      "auditorReverification": "Independent composition audit of 6 bundles: 0 violations; bundle monetary aggregates unchanged. Observed 2026-11-02.",
       "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F09",
       "title": "Validator A-06 did not verify bundle composition against INCLUDED lines or quantities",
       "severity": "MINOR",
-      "evidence": "scripts/check-marea-unit-economics.mjs:1598-1655 (corrected); tests at test.mjs:441,454,465",
-      "description": "A-06 previously accepted any family present in components plus optionalComponents and did not check inclusion type, required families or line existence.",
+      "evidence": "scripts/check-marea-unit-economics.mjs:1598-1655; tests at test.mjs:441,454,465",
+      "description": "A-06 accepted any family in components plus optionalComponents and did not check inclusion type, required families or line existence.",
       "requiredCorrection": "Check required/allowed families, inclusion type and componentInclusions line existence, with negative tests.",
       "correctionOwner": "validation-engineering",
-      "remediationEvidence": "8f819c1: A-06 now builds allowed and required families from INCLUDED plus required QUOTATION_REQUIRED lines, checks required families are present, rejects non-allowed families, and validates componentInclusions lineIds and inclusion types; three negative tests added.",
-      "auditorReverification": "Independent mutations (missing NAV, conditional SENSE, invented ST-99) each produced failures ['A-06'] only; suite 64/64. Observed 2026-11-02.",
+      "remediationEvidence": "8f819c1: A-06 checks allowed/required families, required presence, componentInclusions lineIds and inclusion types; three negative tests added.",
+      "auditorReverification": "Independent mutations (missing NAV, conditional SENSE, invented ST-99) each produced failures ['A-06']; suite 64/64. Observed 2026-11-02.",
       "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F10",
       "title": "Bundle unknownVariableCostCategories included fixed certification costs",
       "severity": "INFORMATIONAL",
-      "evidence": "docs/marea/economics/data/bundle-economics.json (fixedUnknownCosts on START/CRUISE/PROTECT)",
-      "description": "Fixed certification costs were listed in the unit-variable unknown vocabulary; now they are separate fixed unknowns and START/CRUISE/PROTECT variable-unknown lists carry only genuine variable unknowns.",
-      "requiredCorrection": "Move fixed unknowns to a separate declaration and keep variable unknowns in the variable list.",
+      "evidence": "docs/marea/economics/data/bundle-economics.json fixedUnknownCosts",
+      "description": "Fixed certification costs were listed in the unit-variable unknown vocabulary.",
+      "requiredCorrection": "Move fixed unknowns to a separate declaration.",
       "correctionOwner": "validation-engineering / pricing",
-      "remediationEvidence": "8f819c1: CERTIFICATION_CONFORMITY moved to bundle fixedUnknownCosts; START lists only CHART_DATA_LICENCE, CRUISE only chart/AIS/installation, PROTECT only cellular connectivity.",
-      "auditorReverification": "Inspected all six bundle records; no CERTIFICATION in unknownVariableCostCategories; contributionPct remains null where a material variable unknown exists. Observed 2026-11-02.",
+      "remediationEvidence": "8f819c1: CERTIFICATION_CONFORMITY in fixedUnknownCosts; START/CRUISE/PROTECT variable lists keep only genuine variable unknowns.",
+      "auditorReverification": "Inspected all six bundles; no fixed category in unknownVariableCostCategories. Observed 2026-11-02.",
       "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F11",
       "title": "WATCH monitoring returns line rounded to 2.94 where 3% of annual net gives 2.95",
       "severity": "INFORMATIONAL",
-      "evidence": "docs/marea/economics/data/assumptions.json ASM-MC12-010; unit-economics.json UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL",
-      "description": "The 3 % returns allowance is derived from the rounded per-period net annualised (8.18 x 12 = 98.16 -> 2.9448 -> 2.94), while re-deriving from the reported annual net (98.18) gives 2.95; the 0.01 difference is a rounding artefact.",
+      "evidence": "docs/marea/economics/data/assumptions.json ASM-MC12-010; unit-economics.json UE-WATCH-…-ANNUAL",
+      "description": "The allowance is derived from the rounded per-period net annualised (98.16 x 3% = 2.9448 -> 2.94); re-deriving from annual net (98.18) gives 2.95; 0.01 rounding artefact.",
       "requiredCorrection": "Document the derivation/rounding rule.",
       "correctionOwner": "pricing",
-      "remediationEvidence": "8f819c1: ASM-MC12-010 notes now document the allowance-derivation rounding rule and the 0.01 artefact.",
-      "auditorReverification": "Reproduced the arithmetic: 98.16 x 3 % = 2.9448 -> 2.94; record internally consistent (knownVariableCostEur 13.05 = line sum). Observed 2026-11-02.",
+      "remediationEvidence": "8f819c1: ASM-MC12-010 documents the rounding rule and the artefact.",
+      "auditorReverification": "Reproduced 98.16 x 3% = 2.9448 -> 2.94; record internally consistent. Observed 2026-11-02.",
       "finalStatus": "CLOSED_INFORMATIONAL"
     },
     {
       "id": "F12",
-      "title": "Bundle aggregates compose two documented FX bases and D-051 wording was not scoped",
+      "title": "Bundle aggregates compose two FX bases and D-051 wording was not scoped",
       "severity": "INFORMATIONAL",
-      "evidence": "docs/marea/economics/MC12-PROVIDER-RESEARCH-AND-PRICE-REGISTER.md §4; docs/marea/execution/DECISION-LOG.md D-051 (unchanged in fe97062..8f819c1); docs/marea/economics/data/bundle-economics.json",
-      "description": "The provider register is now scoped to individual cost registers and states that bundle aggregates compose the MC-11-inherited hardware basis and the ECB-based subscription basis. However, decision-log D-051 still says 'no subtotal mixes two bases', and bundle records carry no explicit FX-basis field; the wording scoping claimed for D-051 was not applied (decision log absent from the correction diff).",
-      "requiredCorrection": "Scope or clarify D-051 (optionally append decision D-053) and/or add an explicit FX-basis annotation to bundle aggregates. Documentation only.",
+      "evidence": "docs/marea/execution/DECISION-LOG.md D-051; docs/marea/economics/data/bundle-economics.json aggregateConversionBases; MC12-PROVIDER-RESEARCH-AND-PRICE-REGISTER.md §4",
+      "description": "D-051 said 'no subtotal mixes two bases' and bundle records did not declare their conversion bases.",
+      "requiredCorrection": "Scope D-051 to individual cost registers and declare the aggregate bases per bundle.",
       "correctionOwner": "programme-lead",
-      "remediationEvidence": "",
-      "auditorReverification": "Confirmed D-051 text unchanged by diffing the decision log (no hunks in fe97062..8f819c1); provider register §4 verified scoped. Observed 2026-11-02.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "2460309: D-051 now scopes the statement to individual cost registers and states that bundle aggregates sum components from both disclosed bases; every bundle record carries aggregateConversionBases (hardware null for FLEET, hardware-free); provider register scoped.",
+      "auditorReverification": "Verified D-051 text and 6/6 aggregateConversionBases objects; no monetary change to bundles. Observed 2026-11-02.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F13",
-      "title": "Stale adversarial-suite counts and incomplete registry evidence enumeration after the test-count change",
+      "title": "Stale adversarial-suite counts and incomplete registry evidence enumeration",
       "severity": "MINOR",
-      "evidence": "docs/marea/economics/MC-12-DELIVERY.md:97; docs/marea/economics/MC12-EXECUTIVE-REPORT.md:61,171; docs/marea/execution/MASTER-PROMPT-REGISTRY.md:58; actual suite = 64 tests",
-      "description": "The suite grew from 59 to 64 tests, but D19 §5 and D18 §1/§7 still show 59/59 / '59 tests', and the registry row still says '59-case adversarial suite' and 'test:economics:unit 59/59'. The registry evidence enumeration still lists 21+2+15+9+5 = 52 classes, omitting ENGINEERING_ASSUMPTION, so it does not sum to 53.",
-      "requiredCorrection": "Update the three documents and the registry to 64/64 / 64-case and add ENGINEERING_ASSUMPTION to the registry class enumeration. Documentation only.",
+      "evidence": "docs/marea/economics/MC-12-DELIVERY.md:98; MC12-EXECUTIVE-REPORT.md:61,171; MASTER-PROMPT-REGISTRY.md:58",
+      "description": "Docs and registry still said 59/59 / 59 tests / 59-case while the suite had 64 tests; the registry class enumeration summed 52.",
+      "requiredCorrection": "Update to 64/64 / 64-case and add ENGINEERING_ASSUMPTION to the registry enumeration.",
       "correctionOwner": "programme-lead",
-      "remediationEvidence": "",
-      "auditorReverification": "Executed suite: tests 64 / pass 64; grep confirms the stale 59 references and the 52-class enumeration at 8f819c1. Observed 2026-11-02.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "2460309: D19:98 says 64/64; D18:61/171 say 64 tests / 64/64; registry says 64-case and includes 1 engineering assumption with sum 53.",
+      "auditorReverification": "Executed suite: 64/64; greps confirm 64 references and sum-53 enumeration; no 59 remnants in the three documents. Observed 2026-11-02.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F14",
       "title": "Data contract was not updated for the new additive fields and their enumeration rules",
       "severity": "MINOR",
-      "evidence": "docs/marea/economics/data/MC12-DATA-CONTRACT.md:181 (§4.7), :214 (§4.8); docs/marea/economics/data/unit-economics.json; docs/marea/economics/data/bundle-economics.json",
-      "description": "The correction commit adds recurringCostExposure (unit records) and componentInclusions, conditionalComponents and fixedUnknownCosts (bundle records), which the data contract does not document. Enumeration rules are unspecified: componentInclusions omits PROTECT PR-07 even though its monitoring cost is included, and FLEET FP-04/FP-11; conditionalComponents omits FLEET FP-10. The contract's §7 change-control rule requires a versioned contract change note.",
-      "requiredCorrection": "Document the new fields and their inclusion/enumeration rule in MC12-DATA-CONTRACT.md with a change note (or complete the lists); documentation only, no arithmetic impact.",
+      "evidence": "docs/marea/economics/data/MC12-DATA-CONTRACT.md:228-236",
+      "description": "recurringCostExposure, componentInclusions, conditionalComponents, fixedUnknownCosts and aggregateConversionBases were undocumented and their enumeration rules unspecified.",
+      "requiredCorrection": "Document the fields and enumeration rule with a change note.",
       "correctionOwner": "validation-engineering / programme-lead",
-      "remediationEvidence": "",
-      "auditorReverification": "Verified the four field names are absent from the contract; compared componentInclusions/conditionalComponents against bundle-definitions.json line sets. No numeric effect. Observed 2026-11-02.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "2460309: contract documents all five fields and the enumeration rule (componentInclusions = every INCLUDED line + requiredForOutcome QUOTATION_REQUIRED lines; conditionalComponents = CONDITIONAL lines only); PR-07/FP-04/FP-11/FP-10 added to the data.",
+      "auditorReverification": "Verified contract text and the new data rows; enumeration completeness residual tracked in F17. Observed 2026-11-02.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F15",
-      "title": "One adversarial test title names the wrong check",
+      "title": "One adversarial test title named the wrong check",
       "severity": "INFORMATIONAL",
       "evidence": "scripts/check-marea-unit-economics.test.mjs:640",
-      "description": "The test title reads 'R-01 rejects WATCH without a cellular connectivity input' but its body expects R-02. Coverage is unaffected; the title is misleading.",
-      "requiredCorrection": "Rename the test title to R-02. Cosmetic; may be handled opportunistically.",
+      "description": "The title said R-01 while the body asserts R-02.",
+      "requiredCorrection": "Rename the title to R-02.",
       "correctionOwner": "validation-engineering",
-      "remediationEvidence": "",
-      "auditorReverification": "Read the test at line 640: expectFailure('R-02', ...) under an R-01 title; the suite still passes 64/64. Observed 2026-11-02.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "2460309: test.mjs:640 title now 'R-02 rejects WATCH without a cellular connectivity input'.",
+      "auditorReverification": "Read the corrected test; suite still 64/64. Observed 2026-11-02.",
+      "finalStatus": "CLOSED_INFORMATIONAL"
     },
     {
       "id": "F16",
-      "title": "INDEPENDENT_REVIEW status remains PENDING after the review was completed",
+      "title": "INDEPENDENT_REVIEW status remained PENDING after the review was completed",
       "severity": "MINOR",
-      "evidence": "docs/marea/economics/data/manifest.json:52; docs/marea/economics/MC-12-DELIVERY.md:164; docs/marea/economics/MC12-EXECUTIVE-REPORT.md:247; scripts/check-marea-unit-economics.mjs FROZEN_STATUS_BLOCK",
-      "description": "The status block still states INDEPENDENT_REVIEW = PENDING. With the re-verification complete, recording the closed review requires updating the manifest value, D18/D19 and the frozen validator constant together. That is a code-plus-docs refresh, not a docs-only one-off.",
-      "requiredCorrection": "In a post-review record-refresh commit (like MC-11 a912c4d), update INDEPENDENT_REVIEW in manifest/D18/D19 and FROZEN_STATUS_BLOCK together; alternatively keep PENDING explicitly as the pre-review value. If the final status must state the completed review, this code constant must change.",
+      "evidence": "docs/marea/economics/data/manifest.json:52; MC-12-DELIVERY.md:170; MC12-EXECUTIVE-REPORT.md:255; scripts/check-marea-unit-economics.mjs FROZEN_STATUS_BLOCK",
+      "description": "The status block still stated INDEPENDENT_REVIEW = PENDING after the audit was complete; recording the closed review required the manifest, D18/D19 and the frozen validator constant to change together.",
+      "requiredCorrection": "Update INDEPENDENT_REVIEW in manifest/D18/D19 and FROZEN_STATUS_BLOCK together.",
       "correctionOwner": "programme-lead + validation-engineering",
-      "remediationEvidence": "",
-      "auditorReverification": "Confirmed PENDING at 8f819c1 in all three documents and in the frozen constant; the review deliverable is complete at this commit. Observed 2026-11-02.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "2460309: INDEPENDENT_REVIEW = PASS_INTERNAL_ECONOMICS_SCOPE in manifest:52, D19:170, D18:255 and the frozen constant (mjs:104); D-03 still passes.",
+      "auditorReverification": "Final gate 49/49 includes D-03 with the shipped value; independent mutations PENDING and FAIL each produced failures ['D-03']. Observed 2026-11-02.",
+      "finalStatus": "CLOSED_VERIFIED"
+    },
+    {
+      "id": "F17",
+      "title": "componentInclusions does not fully satisfy the newly documented enumeration rule",
+      "severity": "MINOR",
+      "evidence": "docs/marea/economics/data/bundle-economics.json BE-SAIL/BE-COMPLETE componentInclusions; docs/marea/bundles/bundle-definitions.json SAIL SL-09/SL-10 and COMPLETE CP-17 (QUOTATION_REQUIRED, requiredForOutcome true); docs/marea/economics/data/MC12-DATA-CONTRACT.md:234-236 enumeration rule",
+      "description": "The contract now states that componentInclusions covers every INCLUDED line plus QUOTATION_REQUIRED lines with requiredForOutcome true. PROTECT PR-07 and FLEET FP-04/FP-11 were added, but SAIL still lists only SL-01/SL-02/SL-03 (missing SL-09 and SL-10) and COMPLETE lists only CP-01..CP-09 (missing CP-17). A-06 validates only rows that are listed, so the gate does not catch the omission. No arithmetic impact: all monetary bundle totals and contributions are unchanged and remain null where unpriced.",
+      "requiredCorrection": "Add the three missing componentInclusions rows (SL-09, SL-10 to BE-SAIL; CP-17 to BE-COMPLETE) with their definition values, or narrow the contract enumeration rule to the lines actually modelled; optionally add an A-06 completeness check so the rule is enforced.",
+      "correctionOwner": "commercial-finance-pricing-strategist / validation-engineering",
+      "remediationEvidence": "0f7e826: BE-SAIL componentInclusions gained SL-09 and SL-10; BE-COMPLETE gained CP-17, each QUOTATION_REQUIRED, requiredForOutcome true, familyId/editionId null, quantity 1, expandsTo null, additive only. No monetary value changed.",
+      "auditorReverification": "Re-derived all three rows against bundle-definitions.json: exact match on inclusion, requiredForOutcome, familyId, editionId, quantity and expandsTo. Enumeration rule now fully satisfied for all six bundles (SAIL 5, COMPLETE 10 inclusion rows); bundle monetary fields identical to 2460309. Observed 2026-11-02.",
+      "finalStatus": "CLOSED_VERIFIED"
+    },
+    {
+      "id": "F18",
+      "title": "Record-refresh audit-summary text misstates the findings and leaves D17 marked in progress",
+      "severity": "MINOR",
+      "evidence": "docs/marea/economics/MC-12-DELIVERY.md:125; docs/marea/economics/MC12-EXECUTIVE-REPORT.md:62,196-197",
+      "description": "D19 and D18 say the audit found '2 MAJOR, 7 MINOR, 7 INFORMATIONAL', while the F01-F16 findings contract is 2 MAJOR, 10 MINOR, 4 INFORMATIONAL. D18 item 17 still says 'D17 — Auditoría independiente: en curso' although section G says the audit is completed. Documentation only; no effect on data, gates or conclusions.",
+      "requiredCorrection": "Correct the severity split to 2 MAJOR / 10 MINOR / 4 INFORMATIONAL and change D17 status in D18 item 17 from 'en curso' to 'completada'.",
+      "correctionOwner": "programme-lead",
+      "remediationEvidence": "0f7e826: MC-12-DELIVERY.md now says 18 issues (0 BLOCKING, 2 MAJOR, 12 MINOR, 4 INFORMATIONAL) and 16 CLOSED_VERIFIED / 2 CLOSED_INFORMATIONAL / 0 open; MC12-EXECUTIVE-REPORT.md item 17 says D17 completed with PASS_INTERNAL_ECONOMICS_SCOPE and section G says 18 hallazgos (2 MAJOR, 12 MINOR, 4 INFORMATIONAL) with 16/2/0 closed.",
+      "auditorReverification": "Parsed both documents and compared with the findings contract (18 findings; severities 2 MAJOR / 12 MINOR / 4 INFORMATIONAL; 16/2/0 closed); D19/D18 text matches and no \"en curso\" remains. Observed 2026-11-02.",
+      "finalStatus": "CLOSED_VERIFIED"
     }
   ],
-  "recordRefreshConditions": [
-    { "id": "R1", "finding": "F07", "action": "Write the correction commit SHA 8f819c1 into registry row 12, removing the placeholder.", "codeOrDataChange": false },
-    { "id": "R2", "finding": "F13", "action": "Update adversarial-suite counts to 64/64 / 64-case in D19, D18 and the registry; add ENGINEERING_ASSUMPTION to the registry evidence enumeration so classes sum to 53.", "codeOrDataChange": false },
-    { "id": "R3", "finding": "F14, F12", "action": "Document the new fields and enumeration rules in MC12-DATA-CONTRACT.md with a change note; scope or clarify D-051 (optionally D-053).", "codeOrDataChange": false },
-    { "id": "R4", "finding": "F16", "action": "If the final status block is to state the completed review, update INDEPENDENT_REVIEW and FROZEN_STATUS_BLOCK (code) plus manifest/D18/D19 in a post-review record-refresh commit; otherwise keep PENDING as the honest pre-review value.", "codeOrDataChange": true },
-    { "id": "R5", "finding": "F15", "action": "Optional cosmetic: rename the R-02 test title at test.mjs:640.", "codeOrDataChange": true }
-  ],
+  "recordRefreshStatus": {
+    "applied": [
+      {
+        "id": "R1",
+        "finding": "F07",
+        "status": "APPLIED",
+        "evidence": "2460309 registry row 12 names 8f819c1 and 05883ac"
+      },
+      {
+        "id": "R2",
+        "finding": "F12, F13",
+        "status": "APPLIED",
+        "evidence": "D-051 scoped; aggregateConversionBases on all bundles; 64/64 counts and engineering-assumption class in D19/D18/registry"
+      },
+      {
+        "id": "R3",
+        "finding": "F14",
+        "status": "APPLIED",
+        "evidence": "MC12-DATA-CONTRACT.md:228-236 documents the fields and enumeration rule; PR-07/FP-04/FP-11/FP-10 rows added"
+      },
+      {
+        "id": "R4",
+        "finding": "F16",
+        "status": "APPLIED",
+        "evidence": "INDEPENDENT_REVIEW = PASS_INTERNAL_ECONOMICS_SCOPE in manifest, D18, D19 and frozen validator constant; D-03 verifies it"
+      },
+      {
+        "id": "R5",
+        "finding": "F15",
+        "status": "APPLIED",
+        "evidence": "test.mjs:640 title corrected to R-02"
+      },
+      {
+        "id": "A1",
+        "finding": "F17",
+        "status": "APPLIED",
+        "evidence": "0f7e826: SL-09/SL-10 in BE-SAIL, CP-17 in BE-COMPLETE; additive only, no monetary change"
+      },
+      {
+        "id": "A2",
+        "finding": "F18",
+        "status": "APPLIED",
+        "evidence": "0f7e826: D19/D18 audit counts, D17 completed, closure counts 16/2/0"
+      }
+    ],
+    "remaining": []
+  },
   "auditChecks": [
-    { "id": "AC-01", "dimension": "A", "check": "HEAD equals the correction commit and the correction commit is a child of the previously reviewed commit", "result": "PASS", "evidence": "git rev-parse HEAD = 8f819c19…; git merge-base --is-ancestor fe97062 8f819c1 exit 0" },
-    { "id": "AC-02", "dimension": "A", "check": "Correction diff stays inside MC-12 scope and does not touch MC-11", "result": "PASS", "evidence": "14 files: docs/marea/economics/** (11), registry, 2 scripts; no hardware/bundles/products/app/package change" },
-    { "id": "AC-03", "dimension": "A", "check": "Remote branch head matches local head and worktree has no tracked modification", "result": "PASS", "evidence": "git ls-remote -> 8f819c1; git status -> only untracked .recon/" },
-    { "id": "AC-04", "dimension": "A", "check": "Arithmetic values are unchanged versus fe97062", "result": "PASS", "evidence": "All 50 unit-economics records and 6 bundles: monetary fields and cost lines identical; only additive fields and null-cost components changed" },
-    { "id": "AC-05", "dimension": "B", "check": "Bundle composition matches bundle-definitions INCLUDED/QUOTATION_REQUIRED lines; SENSE conditional-only; PILOT included with null cost; FLEET hardware-free", "result": "PASS", "evidence": "Independent composition audit of 6 bundles: 0 violations; required/allowed families, componentInclusions line existence/type, kit quantities all pass" },
-    { "id": "AC-06", "dimension": "B", "check": "PILOT remains a quotation package and AIS remains receive-only", "result": "PASS", "evidence": "UE-PILOT objectType QUOTATION_PACKAGE / NOT_ESTABLISHED; V-03 PASS; no AIS transmit offering; V-04 PASS" },
-    { "id": "AC-07", "dimension": "C", "check": "Provider evidence counts, sources, nulls and prohibition on formal quotation/contract", "result": "PASS", "evidence": "53 records; 0 FORMAL/EXECUTED; RFQ NOT_SENT; all sources dated; class counts 21/2/15/9/5/1 sum 53" },
-    { "id": "AC-08", "dimension": "D", "check": "Licensing rights register and documentation agree; no right granted", "result": "PASS", "evidence": "11 rights (7 NOT_GRANTED, 3 REQUIRES_CONTRACT, 1 PERMITTED), blockingRights 9; docs corrected to match; 0 GRANTED" },
-    { "id": "AC-09", "dimension": "E", "check": "All EUR, 21% VAT, net = gross/1.21, no VAT-inclusive net, conversion basis declared", "result": "PASS", "evidence": "Independent recomputation 50/50 net values; 0 VAT violations; D04 wording now scoped" },
-    { "id": "AC-10", "dimension": "F", "check": "Independent recomputation of 50 unit-economics records", "result": "PASS", "evidence": "Net revenue, known variable cost, contribution, headroom, break-even gross price, contribution %: 0 mismatches at tol 0.005" },
-    { "id": "AC-11", "dimension": "G", "check": "Recurring aggregation, inactive state and no guaranteed delivery", "result": "PASS", "evidence": "7 subscriptions annualised, WATCH 6 lines, ASM-MC12-020 inactive model, all guarantee strings negated; R-02..R-08 PASS" },
-    { "id": "AC-12", "dimension": "H", "check": "Sensitivity, stress, bundle and decision recomputation", "result": "PASS", "evidence": "70/70 sensitivity, 4/4 stress, 6/6 bundle aggregates, 9/9 decision scores match; percentages suppressed under material unknowns" },
-    { "id": "AC-13", "dimension": "I", "check": "No approved price, validated demand, profitability/break-even claim or MC-13 start; status flags correct", "result": "PASS", "evidence": "Only HYPOTHESIS_UNAPPROVED/NOT_ESTABLISHED; PRICE_APPROVED NONE; WTP false; LICENSING_RIGHTS_GRANTED false; NOT_FOR_SALE; MERGED/DEPLOYED/MC13_STARTED false; PR_CREATED true" },
-    { "id": "AC-14", "dimension": "I", "check": "Status block consistent across manifest/D18/D19 except INDEPENDENT_REVIEW", "result": "PARTIAL", "evidence": "PR_CREATED now consistent true in all three and in the frozen block; INDEPENDENT_REVIEW still PENDING after review completion (F16)" },
-    { "id": "AC-15", "dimension": "J", "check": "MC-11 traceability: 90/90 COST-16/COST-12 invariants, D-04 hash, verdict strings", "result": "PASS", "evidence": "90/90 scenarios reconcile; COST-16 line equals tooling field and is not double counted; COST-12 once/zero; D-04 baseline PASS; MC10 BLOCKED / MC11 PARTIAL preserved" },
-    { "id": "AC-16", "dimension": "K", "check": "49 check ids present and no check weakened by the correction", "result": "PASS", "evidence": "5 S + 18 V + 14 A + 8 R + 4 D; R-01/A-06 stricter; V-05 extended; A-06 null-cost allowance only when bundle total is non-numeric" },
-    { "id": "AC-17", "dimension": "K", "check": "New negative controls genuinely fail the intended check", "result": "PASS", "evidence": "5/5 in-memory mutations produced exactly the intended check ids (R-01, D-03, A-06 x3); suite 64/64" },
-    { "id": "AC-18", "dimension": "K", "check": "No field-versus-itself comparison introduced", "result": "PASS", "evidence": "Inspected the changed validator sections; A-06 compares decoded definition data with bundle declarations and still relies on A-02 for unit-cost validation; no self-comparison" },
-    { "id": "AC-19", "dimension": "L", "check": "Deliverables present, links resolve and JSON contracts parse", "result": "PASS", "evidence": "D01-D19 substantive; 16 economic JSON datasets plus this review contract parse; relative links in the review resolve" },
-    { "id": "AC-20", "dimension": "L", "check": "Documentation counts match the dataset after the correction", "result": "PARTIAL", "evidence": "Rights/blockers/evidence now correct; stale 59/59 and 64-suite counts plus registry placeholder (F07, F13)" },
-    { "id": "AC-21", "dimension": "L", "check": "PR #19 remains open, draft, stacked, unmerged; PR #18 unchanged", "result": "PASS", "evidence": "gh pr view 19/18: OPEN, isDraft true, MERGEABLE, mergedAt null; PR19 base feature/marea-mc11-hardware-sourcing-conformity" },
-    { "id": "AC-22", "dimension": "K", "check": "R-01 requirement satisfied by the corrected dataset at family level", "result": "PASS", "evidence": "HUB/DISPLAY/AIS satisfied via recurringCostExposure; WATCH via unknown categories; 4/4" },
-    { "id": "AC-23", "dimension": "B", "check": "Bundle numeric aggregates unchanged by the composition correction", "result": "PASS", "evidence": "PILOT and FLEET-START added with null cost; SAIL/COMPLETE/FLEET totals remain null; START/CRUISE/PROTECT totals unchanged" },
-    { "id": "AC-24", "dimension": "F", "check": "Fixed certification costs are not treated as variable unknowns", "result": "PASS", "evidence": "CERTIFICATION_CONFORMITY in fixedUnknownCosts; unknownVariableCostCategories contain only variable unknowns" }
+    {
+      "id": "AC-01",
+      "dimension": "A",
+      "check": "HEAD equals the final record commit and the correction/refresh commits are ancestors",
+      "result": "PASS",
+      "evidence": "git rev-parse HEAD = 0f7e826828d03f3f18e8edd39fba2742160e286e; ancestry fe97062 -> 8f819c1 -> 05883ac -> 2460309 -> 0f7e826"
+    },
+    {
+      "id": "AC-02",
+      "dimension": "A",
+      "check": "Record-refresh diff is documentation/record-only plus additive bundle fields and the frozen status constant",
+      "result": "PASS",
+      "evidence": "3 files changed, 36 insertions(+), 10 deletions(-); no script/gate change; bundle-economics change is three additive componentInclusions rows only"
+    },
+    {
+      "id": "AC-03",
+      "dimension": "A",
+      "check": "Remote branch head matches local and worktree has no tracked modification",
+      "result": "PASS",
+      "evidence": "git ls-remote -> 0f7e826828d03f3f18e8edd39fba2742160e286e; git status -> only untracked .recon/"
+    },
+    {
+      "id": "AC-04",
+      "dimension": "A",
+      "check": "No monetary value changed versus 8f819c1",
+      "result": "PASS",
+      "evidence": "All 6 bundle monetary fields, cost lines and aggregateConversionBases identical to 2460309; only additive inclusion rows changed"
+    },
+    {
+      "id": "AC-05",
+      "dimension": "B",
+      "check": "Additive componentInclusions/conditionalComponents rows match bundle-definitions values",
+      "result": "PASS",
+      "evidence": "componentInclusions rows: SAIL 5 (SL-01/02/03/09/10), COMPLETE 10 (CP-01..09, CP-17), PROTECT 3, FLEET 4, START 2, CRUISE 4; all match the definition values"
+    },
+    {
+      "id": "AC-06",
+      "dimension": "B",
+      "check": "componentInclusions satisfies the contract enumeration rule",
+      "result": "PASS",
+      "evidence": "F17 fixed: enumeration rule now satisfied for all six bundles; no missing required line"
+    },
+    {
+      "id": "AC-07",
+      "dimension": "B",
+      "check": "Bundle monetary aggregates and composition remain correct",
+      "result": "PASS",
+      "evidence": "6/6 net, component sums, contribution and % suppression recomputed; FLEET hardware-free; PILOT/FLEET-START null cost not counted"
+    },
+    {
+      "id": "AC-08",
+      "dimension": "C",
+      "check": "Provider evidence classes and prohibitions",
+      "result": "PASS",
+      "evidence": "53 records; 21/2/15/9/5/1 = 53; 0 FORMAL/EXECUTED; RFQ NOT_SENT; sources dated"
+    },
+    {
+      "id": "AC-09",
+      "dimension": "D",
+      "check": "Licensing rights register and docs",
+      "result": "PASS",
+      "evidence": "11 rights (7 NOT_GRANTED, 3 REQUIRES_CONTRACT, 1 PERMITTED), 9 blocking, 0 GRANTED; docs/registry match"
+    },
+    {
+      "id": "AC-10",
+      "dimension": "E",
+      "check": "Currency/VAT and FX basis declarations",
+      "result": "PASS",
+      "evidence": "All EUR/21%; 50/50 net = gross/1.21; per-register FX scoped; bundle aggregateConversionBases on 6/6"
+    },
+    {
+      "id": "AC-11",
+      "dimension": "F",
+      "check": "Independent per-record arithmetic recomputation",
+      "result": "PASS",
+      "evidence": "Net, known variable cost, contribution, headroom, break-even gross, %: 0 mismatches at tol 0.005"
+    },
+    {
+      "id": "AC-12",
+      "dimension": "G",
+      "check": "Recurring aggregation and delivery claims",
+      "result": "PASS",
+      "evidence": "7 subscriptions annualised; WATCH 6 lines; inactive ASM-MC12-020; no guaranteed-delivery claim"
+    },
+    {
+      "id": "AC-13",
+      "dimension": "H",
+      "check": "Sensitivity/stress/bundle/decision recomputation",
+      "result": "PASS",
+      "evidence": "70/70, 4/4, 6/6, 9/9; percentages suppressed under material unknowns"
+    },
+    {
+      "id": "AC-14",
+      "dimension": "I",
+      "check": "Governance flags and completed-review status",
+      "result": "PASS",
+      "evidence": "PRICE_APPROVED NONE; WTP false; LICENSING_RIGHTS_GRANTED false; NOT_FOR_SALE; MERGED/DEPLOYED/MC13_STARTED false; INDEPENDENT_REVIEW = PASS_INTERNAL_ECONOMICS_SCOPE"
+    },
+    {
+      "id": "AC-15",
+      "dimension": "I",
+      "check": "D-03 rejects stale/wrong INDEPENDENT_REVIEW values",
+      "result": "PASS",
+      "evidence": "Mutations PENDING and FAIL each produce failures ['D-03']; shipped value passes 49/49"
+    },
+    {
+      "id": "AC-16",
+      "dimension": "J",
+      "check": "MC-11 no-regression and COST-16/COST-12 invariants",
+      "result": "PASS",
+      "evidence": "90/90 scenarios reconcile; D-04 19-file baseline PASS; MC10 BLOCKED / MC11 PARTIAL unchanged"
+    },
+    {
+      "id": "AC-17",
+      "dimension": "K",
+      "check": "Gate suite and negative controls",
+      "result": "PASS",
+      "evidence": "49/49 checks; 64/64 tests; 54/54 + 59/59 hardware; format:check clean; 7/7 mutation controls fail the intended check"
+    },
+    {
+      "id": "AC-18",
+      "dimension": "L",
+      "check": "Record-refresh items R1-R5 applied",
+      "result": "PASS",
+      "evidence": "R1-R5 and A1-A2 applied and independently verified"
+    },
+    {
+      "id": "AC-19",
+      "dimension": "L",
+      "check": "Remaining record-consistency items",
+      "result": "PASS",
+      "evidence": "F17/F18 closed; D19/D18 report 18 findings (2 MAJOR, 12 MINOR, 4 INFORMATIONAL) and 16 CLOSED_VERIFIED / 2 CLOSED_INFORMATIONAL / 0 open"
+    },
+    {
+      "id": "AC-20",
+      "dimension": "L",
+      "check": "PR state and no merge/deploy/publication",
+      "result": "PASS",
+      "evidence": "PR19 OPEN/draft/MERGEABLE/unmerged stacked on feature/marea-mc11-hardware-sourcing-conformity; PR18 unchanged"
+    },
+    {
+      "id": "AC-21",
+      "dimension": "A",
+      "check": "No MC-11 or app file touched by the record-refresh commits",
+      "result": "PASS",
+      "evidence": "git diff --name-only 8f819c1..HEAD lists no hardware/app/package path"
+    },
+    {
+      "id": "AC-22",
+      "dimension": "B",
+      "check": "The three additive inclusion rows are the only data change and are definition-exact",
+      "result": "PASS",
+      "evidence": "git diff 2460309..0f7e826 shows exactly SL-09, SL-10 and CP-17 added; each matches bundle-definitions inclusion/requiredForOutcome/familyId/editionId/quantity/expandsTo; no monetary field changed"
+    }
   ],
   "residualRisks": [
-    "The third new A-06 control depends on componentInclusions being populated; it is populated for all six bundles, but a future bundle without it would silently skip the inclusion-line check.",
-    "Independent recomputation verifies arithmetic and identity, not the truth of published tariffs, licensing terms or external prices.",
-    "Inherited MC-11 FX assumption 0.925925926 USD/EUR remains on hardware lines; the observed ECB rate applies only to new conversions (D-051/ASM-MC12-021), and bundle aggregates compose both disclosed bases.",
+    "FLEET aggregateConversionBases.hardware is null (hardware-free, correct) while the generic note mentions \"both bases\" — cosmetic wording only.",
+    "Independent recomputation verifies arithmetic and identity, not the truth of published tariffs or licensing terms.",
+    "Inherited MC-11 FX assumption 0.925925926 USD/EUR remains on hardware lines; ECB 0.8916 applies only to new conversions; bundle aggregates disclose both bases.",
     "Observed public-price coverage of modelled hardware cost is 0.8-4.7%; certification is UNKNOWN in all 90 MC-11 scenarios.",
     "No customer evidence, no WTP, no churn/CAC; recurring costs are published tariffs, not contracts or SLAs.",
     "Uncommitted .recon/ author scratch remains untracked in the working tree; it is not part of any commit."
   ],
   "whatWouldChangeVerdict": [
-    "A weakened check or any economic-data change that fails the independent recomputation returns the verdict to PARTIAL/FAIL.",
-    "Failure to apply R1-R4 in the final record refresh means the delivered documentation/status would not match the verified commit, so the internal-scope PASS should not be recorded as final.",
+    "Any change to economic data, cost lines, bundle totals or gate logic that fails the independent recomputation or the 49/64/54/59 gates returns the verdict to PARTIAL/FAIL.",
     "Obtaining real quotations, contracts or licensing changes MC12_EXTERNAL_COMMERCIAL_EVIDENCE, not this internal-scope verdict."
-  ]
+  ],
+  "finalRecordCommit": "0f7e826828d03f3f18e8edd39fba2742160e286e"
 }
