@@ -1,0 +1,310 @@
+{
+  "contractId": "MAREA-MC12-ASSUMPTIONS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-12",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "currency": "EUR",
+  "note": "Every unobserved number used by the model is declared here with its basis. No assumption is presented as a fact, a quotation or a validated market input.",
+  "decisionRules": {
+    "weights": {
+      "costEvidence": 25,
+      "recurringCertainty": 15,
+      "licensingReadiness": 20,
+      "technicalReadiness": 10,
+      "customerEvidence": 15,
+      "regulatoryReadiness": 10,
+      "contributionConfidence": 5
+    },
+    "classificationOrder": [
+      "SAFETY_BLOCKED",
+      "LICENSING_BLOCKED",
+      "COST_MODEL_INCOMPLETE",
+      "ECONOMICS_EVIDENCED",
+      "CONDITIONAL_ECONOMIC_CASE",
+      "DEFER_RECOMMENDED"
+    ],
+    "evidencedRequiresZeroMaterialUnknowns": true,
+    "materialUnitVariableUnknownForcesIncomplete": true,
+    "fixedOneOffUnknownsExcludedFromUnitContribution": true,
+    "ruleOrderNote": "A lower rule never overrides a higher one. A material unknown unit-variable cost forces COST_MODEL_INCOMPLETE; a fixed one-off unknown (certification, tooling, insurance) is excluded from unit contribution and listed separately, so it does not by itself block a conditional unit case.",
+    "scoreScale": "0 = no evidence / hard block, 5 = fully evidenced and ready"
+  },
+  "assumptions": [
+    {
+      "id": "ASM-MC12-001",
+      "statement": "Spanish standard VAT rate of 21% is applied to consumer-facing hardware and digital subscriptions to convert a VAT-inclusive price hypothesis into ex-VAT net revenue.",
+      "value": 21,
+      "unit": "percent",
+      "evidenceClass": "OFFICIAL_LICENSING_DOCUMENT",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics",
+        "bundle-economics"
+      ],
+      "notes": "Confirmed by the legal-tax research. Reduced rates are not assumed to apply to these digital services."
+    },
+    {
+      "id": "ASM-MC12-002",
+      "statement": "Conversion rule: net revenue = gross hypothesis / (1 + VAT/100); a VAT-excluded B2B price is used as net revenue directly.",
+      "value": 1.21,
+      "unit": "divisor at 21%",
+      "evidenceClass": "OFFICIAL_LICENSING_DOCUMENT",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics",
+        "bundle-economics"
+      ],
+      "notes": "The conversion is disclosed on every revenue line."
+    },
+    {
+      "id": "ASM-MC12-003",
+      "statement": "No price is approved. Every selling price used is an unapproved hypothesis from MC-05/MC-08 or an explicit symbolic entry figure.",
+      "value": null,
+      "unit": "not applicable",
+      "evidenceClass": "UNKNOWN",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics",
+        "bundle-economics",
+        "decision-matrix"
+      ],
+      "notes": "PRICE_APPROVED = NONE."
+    },
+    {
+      "id": "ASM-MC12-004",
+      "statement": "The base hardware configuration is a self-install hardware-only sale: MC-11 COST-12 installation labour is excluded from the unit variable cost and treated as a separately quoted service.",
+      "value": null,
+      "unit": "not applicable",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics"
+      ],
+      "notes": "The installer-included configuration is modelled separately and never mixed with the self-install figure."
+    },
+    {
+      "id": "ASM-MC12-005",
+      "statement": "Tooling/NRE amortisation (COST-16) and the certification programme (COST-17) are fixed one-off costs, excluded from unit contribution and listed separately. Certification is reclassified from a per-unit amortisation to a fixed programme cost for contribution analysis.",
+      "value": null,
+      "unit": "not applicable",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics"
+      ],
+      "notes": "MC-11 includes COST-16 inside knownSubtotalEur; MC-12 removes it from variable cost and never adds toolingAmortizationEur again. The certification amount remains UNKNOWN and is never treated as zero."
+    },
+    {
+      "id": "ASM-MC12-006",
+      "statement": "WATCH monitoring subscription hypothesis of EUR 9.90/month, VAT-inclusive, from the MC-08 register.",
+      "value": 9.9,
+      "unit": "EUR per month",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics"
+      ],
+      "notes": "Subscription contents are OPEN; no monitoring service exists."
+    },
+    {
+      "id": "ASM-MC12-007",
+      "statement": "FLEET per-vessel SaaS hypotheses of EUR 49 (START) and EUR 79 (BUSINESS) per vessel-month, VAT-excluded B2B; hardware is never included by default.",
+      "value": 49,
+      "unit": "EUR per vessel-month",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics"
+      ],
+      "notes": "PH-06 package price is NOT_ESTABLISHED; only the per-vessel SaaS hypothesis exists."
+    },
+    {
+      "id": "ASM-MC12-008",
+      "statement": "Distribution channels: direct card processing at the published EEA rate; app-store commission 30% (15% small-business condition); installer trade margin 15%; distributor/retail margin 35%. The last three are explicit hypotheses, not negotiated terms.",
+      "value": 35,
+      "unit": "percent (distributor)",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "channel-economics",
+        "sensitivity"
+      ],
+      "notes": "Only the card-processing rate is a published tariff."
+    },
+    {
+      "id": "ASM-MC12-009",
+      "statement": "Consumer support allowance of EUR 6 per active account-year and EUR 4 per active hardware device-year; FLEET support EUR 24 per vessel-year. No support model, ticket rate or response-time commitment exists.",
+      "value": 6,
+      "unit": "EUR per account-year",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics"
+      ],
+      "notes": "These are allowances, not observed costs."
+    },
+    {
+      "id": "ASM-MC12-010",
+      "statement": "Returns and withdrawal exposure of 3% of net revenue, reflecting the 14-day distance-selling withdrawal right at an assumed return rate.",
+      "value": 3,
+      "unit": "percent of net revenue",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "MEDIUM",
+      "usedBy": [
+        "unit-economics",
+        "sensitivity"
+      ],
+      "notes": "No return-rate data exists."
+    },
+    {
+      "id": "ASM-MC12-011",
+      "statement": "Cloud cost drivers: EUR 0.12 per account-month, EUR 0.15 per device-month, EUR 0.50 per FLEET vessel-month; 12-month telemetry retention. Derived from published on-demand tariffs under a BASE usage profile.",
+      "value": 0.155,
+      "unit": "EUR per device-month",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "MEDIUM",
+      "usedBy": [
+        "unit-economics",
+        "sensitivity"
+      ],
+      "notes": "BASE vendor subtotal of EUR 0.15484/device-month at 1,000 devices from published AWS IoT Core, Lambda, R2 and Workers tariffs (recurring-cost-inputs.json RC-006..RC-017). No cloud agreement exists; this is a modelled floor."
+    },
+    {
+      "id": "ASM-MC12-012",
+      "statement": "Cellular IoT allowance of EUR 0.05 per device-month for 10 MB/month at the published Spain/EU pay-as-you-go rate, with plan-level alternatives of EUR 0.10-0.375 per device-month. No operator or MVNO contract exists and terrestrial coverage offshore is not assumed.",
+      "value": 0.05,
+      "unit": "EUR per device-month",
+      "evidenceClass": "PUBLISHED_PROVIDER_TARIFF",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics",
+        "sensitivity"
+      ],
+      "notes": "10 MB/month at the published iot.cards Spain/EU pay-as-you-go rate of EUR 0.005/MB (recurring-cost-inputs.json RC-002), with no monthly minimum. Alternative plans are EUR 0.10-0.375/device-month (1NCE, Soracom). A published tariff is not a negotiated service and offshore coverage is not assumed."
+    },
+    {
+      "id": "ASM-MC12-013",
+      "statement": "Notification allowance of EUR 0.070714 per device-month for the BASE alert mix (6 alerts, 15% SMS, push/email, retries and history). Modelled delivery cost never becomes a guaranteed alert-delivery claim.",
+      "value": 0.070714,
+      "unit": "EUR per device-month",
+      "evidenceClass": "PUBLISHED_PROVIDER_TARIFF",
+      "sensitivity": "LOW",
+      "usedBy": [
+        "unit-economics"
+      ],
+      "notes": "BASE alert mix: 6 alerts/device-month, 15% by SMS at the published Twilio Spain rate plus SES email (recurring-cost-inputs.json RC-022). No notification contract exists and no guaranteed-delivery claim is made."
+    },
+    {
+      "id": "ASM-MC12-014",
+      "statement": "The SENSE entry hypothesis of EUR 99 is the MC-08 symbolic entry figure, not an edition price. It is used only to expose the module cost structure.",
+      "value": 99,
+      "unit": "EUR (symbolic)",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics"
+      ],
+      "notes": "No SENSE edition price exists in the product data."
+    },
+    {
+      "id": "ASM-MC12-015",
+      "statement": "The EUR/USD conversion of 0.925925926 is inherited from the MC-11 engineering assumption ASM-001; the ECB reference rate could not be retrieved when MC-11 was prepared.",
+      "value": 0.925925926,
+      "unit": "EUR per USD",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "hardware"
+      ],
+      "notes": "Must be replaced by an observed ECB rate before any procurement decision."
+    },
+    {
+      "id": "ASM-MC12-016",
+      "statement": "Customer acquisition cost, churn, renewal rate and willingness to pay are UNKNOWN. No demand figure is used in any calculation.",
+      "value": null,
+      "unit": "not applicable",
+      "evidenceClass": "UNKNOWN",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "decision-matrix",
+        "mc13-handoff"
+      ],
+      "notes": "CUSTOMER_EVIDENCE = NONE; CUSTOMER_WTP_VALIDATED = false."
+    },
+    {
+      "id": "ASM-MC12-017",
+      "statement": "Evidence older than 180 days relative to the analysis date is not silently reused.",
+      "value": 180,
+      "unit": "days",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "LOW",
+      "usedBy": [
+        "validator"
+      ],
+      "notes": "All MC-12 observations are dated 2026-11-02."
+    },
+    {
+      "id": "ASM-MC12-018",
+      "statement": "Contribution means net revenue ex-VAT minus known variable cost, before fixed operating costs. It is not gross margin, EBITDA or net profit.",
+      "value": null,
+      "unit": "definition",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "LOW",
+      "usedBy": [
+        "unit-economics",
+        "bundle-economics"
+      ],
+      "notes": "Fixed costs excluded: tooling/NRE, engineering NRE, certification programme, insurance, annual security maintenance."
+    },
+    {
+      "id": "ASM-MC12-019",
+      "statement": "Decision-matrix weights are pre-registered: cost evidence 25, recurring certainty 15, licensing readiness 20, technical readiness 10, customer evidence 15, regulatory readiness 10, contribution confidence 5.",
+      "value": 100,
+      "unit": "weights sum",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "LOW",
+      "usedBy": [
+        "decision-matrix"
+      ],
+      "notes": "Fixed before scoring so results cannot choose their own weights."
+    },
+    {
+      "id": "ASM-MC12-020",
+      "statement": "The recurring cost of inactive or suspended devices is modelled as zero telemetry but retained account/identity and storage cost; no provider has been asked whether a suspended SIM is free.",
+      "value": null,
+      "unit": "not applicable",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "MEDIUM",
+      "usedBy": [
+        "unit-economics"
+      ],
+      "notes": "Suspension terms are unknown."
+    },
+    {
+      "id": "ASM-MC12-021",
+      "statement": "An ECB euro reference rate of USD 1.1216 per EUR (EUR 0.8916 per USD) was observed on 2026-11-02 by the connectivity research and is recorded in the provider evidence and recurring-cost-inputs FX basis.",
+      "value": 0.8916,
+      "unit": "EUR per USD",
+      "evidenceClass": "PUBLISHED_PROVIDER_TARIFF",
+      "sensitivity": "MEDIUM",
+      "usedBy": [
+        "recurring-cost-inputs",
+        "providers"
+      ],
+      "notes": "This closes the MC-11 FX observation gap for new MC-12 conversions only. The inherited MC-11 BOM lines keep their recorded conversion (0.925925926, ASM-001) and are NOT re-converted, to avoid mixing two bases in one subtotal; MC-13 should refresh the BOM conversion."
+    },
+    {
+      "id": "ASM-MC12-022",
+      "statement": "Recurring cost drivers are taken from recurring-cost-inputs.json: cellular EUR 0.05/device-month (BASE PAYG), cloud EUR 0.155/device-month (BASE vendor subtotal), notifications EUR 0.070714/device-month, cloud EUR 0.02/account-month and EUR 0.10/vessel-month. Each is a published tariff or a labelled assumption, never a contract.",
+      "value": 0.155,
+      "unit": "EUR per device-month (cloud)",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sensitivity": "HIGH",
+      "usedBy": [
+        "unit-economics"
+      ],
+      "notes": "No connectivity, cloud, notification, payment or distribution contract exists."
+    }
+  ]
+}

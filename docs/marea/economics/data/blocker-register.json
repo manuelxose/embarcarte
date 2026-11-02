@@ -1,0 +1,537 @@
+{
+  "contractId": "MAREA-MC12-BLOCKER-REGISTER",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-12",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "currency": "EUR",
+  "note": "Every blocker that prevents a defensible commercial contribution conclusion or a full-PASS milestone. Status is OPEN unless an external authorization produces the required evidence. MC-12 may not close an external blocker by inference.",
+  "blockers": [
+    {
+      "id": "BLK-LIC-01",
+      "domain": "LICENSING",
+      "title": "Official ENC chart redistribution right for Spanish/Portuguese waters not granted",
+      "productIds": [
+        "NAV"
+      ],
+      "impact": "NAV revenue cannot be justified for the target geography; the chart entitlement is the core paid feature and is also an input cost.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Commercial/Legal with NAV Product Director",
+      "approvalRequired": "Hydrographic-office or OEM chart distribution agreement (IHM/UKHO/Shom/IHO route)",
+      "sourceRefs": [
+        "LR-CHART-001",
+        "PE-CW-003",
+        "PE-CW-004",
+        "PE-CW-005",
+        "PE-CW-006"
+      ],
+      "requiredEvidence": "Executed redistribution licence with territory, caching, update, per-device terms and price",
+      "external": true
+    },
+    {
+      "id": "BLK-LIC-02",
+      "domain": "LICENSING",
+      "title": "Third-party commercial chart product cannot be redistributed under current terms",
+      "productIds": [
+        "NAV",
+        "DISPLAY"
+      ],
+      "impact": "The fastest route to chart coverage is contractually unavailable; an OEM agreement would be required.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "Commercial/Legal",
+      "approvalRequired": "OEM/developer agreement with Garmin/Navionics or C-MAP",
+      "sourceRefs": [
+        "LR-CHART-003",
+        "PE-CW-007",
+        "PE-CW-009"
+      ],
+      "requiredEvidence": "Signed OEM agreement or written permission with price schedule",
+      "external": true
+    },
+    {
+      "id": "BLK-LIC-03",
+      "domain": "LICENSING",
+      "title": "Commercial marine-weather re-display right not granted",
+      "productIds": [
+        "WEATHER",
+        "NAV"
+      ],
+      "impact": "WEATHER cannot be sold as a licensed-data product; provider terms, continuity and liability are unconfirmed.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Commercial/Legal with WEATHER Product Director",
+      "approvalRequired": "Weather data licence with commercial display and caching rights",
+      "sourceRefs": [
+        "LR-WEATHER-001",
+        "PE-CW-014",
+        "PE-CW-016",
+        "PE-CW-017"
+      ],
+      "requiredEvidence": "Executed data licence and DPA, forecast-source attribution rules, price and SLA",
+      "external": true
+    },
+    {
+      "id": "BLK-LIC-04",
+      "domain": "LICENSING",
+      "title": "NMEA 0183 licence and NMEA 2000 certification not held",
+      "productIds": [
+        "HUB",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "impact": "Any claimed NMEA interface or NMEA 2000 compatibility is unauthorised; the licence is also an unquantified one-off and recurring cost.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Engineering with Legal",
+      "approvalRequired": "NMEA membership/licence and, if claimed, NMEA 2000 certification",
+      "sourceRefs": [
+        "LR-NMEA-001",
+        "PE-CW-023",
+        "PE-CW-024"
+      ],
+      "requiredEvidence": "NMEA licence certificate and certification record; published NMEA 2000 fee schedule",
+      "external": true
+    },
+    {
+      "id": "BLK-LIC-05",
+      "domain": "CONNECTIVITY",
+      "title": "Cellular IoT contract and SIM/eSIM supply not established",
+      "productIds": [
+        "WATCH",
+        "HUB",
+        "FLEET"
+      ],
+      "impact": "WATCH recurring cost is UNKNOWN; a per-device-month connectivity cost cannot be evidenced.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Operations with Commercial",
+      "approvalRequired": "Operator or IoT MVNO agreement (procurement authorization)",
+      "sourceRefs": [
+        "LR-CONN-001"
+      ],
+      "requiredEvidence": "Contract or formal quotation: data allowance, roaming, activation, overage, suspension, term",
+      "external": true
+    },
+    {
+      "id": "BLK-LIC-06",
+      "domain": "CLOUD",
+      "title": "Cloud hosting agreement, DPA and data-residency decision not established",
+      "productIds": [
+        "WATCH",
+        "FLEET",
+        "NAV",
+        "WEATHER"
+      ],
+      "impact": "Hosting cost is a modelled tariff only; no contractual service level, DPA or EU-region commitment exists.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Engineering with Legal",
+      "approvalRequired": "Cloud agreement and DPA (procurement authorization)",
+      "sourceRefs": [
+        "LR-CLOUD-001"
+      ],
+      "requiredEvidence": "Signed agreement/DPA with region, retention, egress and support terms",
+      "external": true
+    },
+    {
+      "id": "BLK-LIC-07",
+      "domain": "LICENSING",
+      "title": "Production map-tile right or self-hosted tile stack not established",
+      "productIds": [
+        "NAV",
+        "WEATHER",
+        "FLEET"
+      ],
+      "impact": "A basemap is required for the navigation surface; OSM tile policy prohibits the required load.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "Engineering with Commercial",
+      "approvalRequired": "Commercial tile provider agreement or self-hosting decision",
+      "sourceRefs": [
+        "LR-MAP-001",
+        "PE-CW-011"
+      ],
+      "requiredEvidence": "Tile agreement with quota/price or a costed self-hosted stack",
+      "external": true
+    },
+    {
+      "id": "BLK-LIC-08",
+      "domain": "IP",
+      "title": "Source IP clearance not cleared (inherited)",
+      "productIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "impact": "No product may be represented as free of third-party IP claims; no IP licensing revenue may be modelled.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Legal",
+      "approvalRequired": "Legal clearance review",
+      "sourceRefs": [
+        "LR-IP-001"
+      ],
+      "requiredEvidence": "Signed clearance opinion covering source and third-party components",
+      "external": true
+    },
+    {
+      "id": "BLK-LIC-09",
+      "domain": "TRADEMARK",
+      "title": "MAREA trademark legal clearance not granted (inherited)",
+      "productIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "impact": "The brand is proposed; no registered-mark claim and no brand-derived premium may be modelled.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Legal",
+      "approvalRequired": "Trademark clearance and filing decision",
+      "sourceRefs": [
+        "LR-BRAND-001"
+      ],
+      "requiredEvidence": "Clearance opinion with territory and class coverage",
+      "external": true
+    },
+    {
+      "id": "BLK-COST-01",
+      "domain": "COST",
+      "title": "Conformity and certification cost UNKNOWN in all 90 MC-11 scenarios",
+      "productIds": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS",
+        "PILOT"
+      ],
+      "impact": "No hardware contribution can be treated as complete; certification may be material and is recurring through the support period.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Conformity lead",
+      "approvalRequired": "Test-house and notified-body quotations (procurement authorization)",
+      "sourceRefs": [
+        "hardware-cost-reconciliation.json#invariant",
+        "MC11-COST-17"
+      ],
+      "requiredEvidence": "Formal EMC/RED/environmental/CRA quotations and a conformity budget",
+      "external": true
+    },
+    {
+      "id": "BLK-COST-02",
+      "domain": "COST",
+      "title": "No supplier quotation, MOQ, lead time or Incoterms",
+      "productIds": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS",
+        "PILOT"
+      ],
+      "impact": "Unit variable cost is assumption-based; observed public-price coverage is only 0.8-4.7% of the modelled subtotal.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Procurement",
+      "approvalRequired": "Supplier engagement authorization (RFQ currently NOT_SENT)",
+      "sourceRefs": [
+        "UNK-HW-09",
+        "supplier-register.json"
+      ],
+      "requiredEvidence": "Formal supplier quotations for every material line",
+      "external": true
+    },
+    {
+      "id": "BLK-COST-03",
+      "domain": "COST",
+      "title": "Tooling/NRE quotation absent; only an engineering envelope exists",
+      "productIds": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "impact": "Tooling amortisation is an assumption; no fixed-investment figure can be used for financing.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "Engineering/Procurement",
+      "approvalRequired": "Tooling and NRE quotations",
+      "sourceRefs": [
+        "UNK-HW-02",
+        "ASM-MC12-005"
+      ],
+      "requiredEvidence": "Quotes for enclosure tooling, stencils, fixtures, programming jig, optical bonding",
+      "external": true
+    },
+    {
+      "id": "BLK-COST-04",
+      "domain": "TAX",
+      "title": "VAT status of input prices unresolved (37 of 42 observations VAT_UNKNOWN)",
+      "productIds": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "impact": "An ex-VAT input cost cannot be claimed; recoverable input VAT treatment is unknown.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "Finance",
+      "approvalRequired": "Tax position confirmation",
+      "sourceRefs": [
+        "UNK-HW-07",
+        "legal-tax-inputs.json#vatRules"
+      ],
+      "requiredEvidence": "Documented VAT treatment per input and purchase route",
+      "external": true
+    },
+    {
+      "id": "BLK-COST-05",
+      "domain": "FX",
+      "title": "Observed EUR/USD rate not retrieved; FX is an engineering assumption",
+      "productIds": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "impact": "USD-denominated component prices carry an unverified conversion; the earlier ECB retrieval failed.",
+      "severity": "MINOR",
+      "status": "OPEN",
+      "owner": "Finance",
+      "approvalRequired": "None (public reference rate)",
+      "sourceRefs": [
+        "UNK-HW-06",
+        "ASM-MC12-015"
+      ],
+      "requiredEvidence": "ECB euro reference rate with date, recorded as OBSERVED_RATE",
+      "external": false
+    },
+    {
+      "id": "BLK-COMM-01",
+      "domain": "CUSTOMER",
+      "title": "Customer evidence NONE and willingness to pay unvalidated",
+      "productIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "impact": "Every revenue figure is a hypothesis; no demand, price acceptance or retention rate is evidenced.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Customer Research with Commercial",
+      "approvalRequired": "AUTH-MC10-001 fieldwork authorization",
+      "sourceRefs": [
+        "MC11-MC12-HANDOFF.md",
+        "MC-10"
+      ],
+      "requiredEvidence": "Executed interviews and pricing responses with recorded consent",
+      "external": true
+    },
+    {
+      "id": "BLK-COMM-02",
+      "domain": "CHANNEL",
+      "title": "Installer and distributor margins and service prices not established",
+      "productIds": [
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "NAV"
+      ],
+      "impact": "Channel economics are hypotheses only; no negotiated rate exists.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "Channel Management",
+      "approvalRequired": "Partner engagement authorization",
+      "sourceRefs": [
+        "MC11-MC12-HANDOFF.md#5",
+        "MC-09"
+      ],
+      "requiredEvidence": "Signed distributor/installer terms or formal quotations",
+      "external": true
+    },
+    {
+      "id": "BLK-SAFE-01",
+      "domain": "SAFETY",
+      "title": "PILOT safety gate BLOCKED",
+      "productIds": [
+        "PILOT"
+      ],
+      "impact": "PILOT cannot be sold, priced as a fixed SKU or included as a firm commercial component; only a survey-based quotation model may be described.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "PILOT Product Director with Safety",
+      "approvalRequired": "Safety case, independent assessment, supervised trials",
+      "sourceRefs": [
+        "PILOT-SAFETY-CASE-OUTLINE.md",
+        "D-009"
+      ],
+      "requiredEvidence": "Documented safety case and independent sign-off",
+      "external": true
+    },
+    {
+      "id": "BLK-REG-01",
+      "domain": "REGULATORY",
+      "title": "CE/EMC/RED conformity not started",
+      "productIds": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS",
+        "PILOT"
+      ],
+      "impact": "No product may be placed on the EU market; conformity cost is part of the unit economics and is unknown.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Conformity lead",
+      "approvalRequired": "Test-house engagement and technical file",
+      "sourceRefs": [
+        "conformity-applicability.json",
+        "MC11-CE-EMC-RED-AND-TESTING-ROADMAP.md"
+      ],
+      "requiredEvidence": "Test reports, declaration of conformity, technical file",
+      "external": true
+    },
+    {
+      "id": "BLK-REG-02",
+      "domain": "REGULATORY",
+      "title": "CRA cybersecurity obligations make firmware maintenance a recurring cost",
+      "productIds": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "impact": "Security support for the support period is a recurring engineering obligation, not a one-off.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "Engineering/Security",
+      "approvalRequired": "Compliance programme",
+      "sourceRefs": [
+        "legal-tax-inputs.json#cra",
+        "MC11-DEVICE-SECURITY-AND-LIFECYCLE.md"
+      ],
+      "requiredEvidence": "Support-period policy, SBOM/CVD process, security-update budget",
+      "external": false
+    },
+    {
+      "id": "BLK-DATA-01",
+      "domain": "DATA_PROTECTION",
+      "title": "GDPR controller/processor roles, DPIA and processor agreements not established",
+      "productIds": [
+        "WATCH",
+        "FLEET",
+        "NAV"
+      ],
+      "impact": "Data-protection operations are a recurring cost driver and a legal precondition for telemetry services.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "Data Protection",
+      "approvalRequired": "DPIA sign-off and processor agreements",
+      "sourceRefs": [
+        "legal-tax-inputs.json#gdpr",
+        "FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md"
+      ],
+      "requiredEvidence": "DPIA, records of processing, DPAs, retention schedule",
+      "external": false
+    },
+    {
+      "id": "BLK-INS-01",
+      "domain": "INSURANCE",
+      "title": "Product liability insurance premium UNKNOWN",
+      "productIds": [
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "impact": "A potentially material fixed and per-unit cost cannot be quantified.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "Finance/Legal",
+      "approvalRequired": "Broker engagement",
+      "sourceRefs": [
+        "MC11-MC12-HANDOFF.md#4",
+        "legal-tax-inputs.json#insurance"
+      ],
+      "requiredEvidence": "Broker quotation for product liability cover",
+      "external": true
+    },
+    {
+      "id": "BLK-PRICE-01",
+      "domain": "PRICING",
+      "title": "No price approved; every price is an unapproved hypothesis",
+      "productIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "impact": "No catalogue, checkout, advertisement or structured data may publish a price.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Commercial Lead",
+      "approvalRequired": "Pricing decision after cost, licensing and customer evidence",
+      "sourceRefs": [
+        "PRICE_APPROVED = NONE"
+      ],
+      "requiredEvidence": "Approved price list with margin and evidence backing",
+      "external": false
+    },
+    {
+      "id": "BLK-AIS-01",
+      "domain": "REGULATORY",
+      "title": "AIS transmission is not an authorised offering",
+      "productIds": [
+        "AIS"
+      ],
+      "impact": "Only receive-only AIS integration may be modelled; transmission would require radio licensing and is prohibited.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "Regulatory/Product",
+      "approvalRequired": "Radio licensing and maritime approval (not pursued)",
+      "sourceRefs": [
+        "AIS_TRANSMISSION_OFFERED = false"
+      ],
+      "requiredEvidence": "None within MC-12; must remain out of scope",
+      "external": true
+    }
+  ]
+}

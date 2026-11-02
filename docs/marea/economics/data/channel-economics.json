@@ -1,0 +1,97 @@
+{
+  "contractId": "MAREA-MC12-CHANNEL-ECONOMICS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-12",
+  "date": "2026-11-02",
+  "owner": "commercial-finance-pricing-strategist",
+  "currency": "EUR",
+  "note": "Revenue deductions by channel. Payment processing is a published tariff; installer and distributor margins are explicit HYPOTHESES because no negotiated term exists.",
+  "records": [
+    {
+      "id": "CH-DIRECT",
+      "channel": "DIRECT_TO_CONSUMER",
+      "appliesTo": [
+        "NAV",
+        "WEATHER",
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "FLEET"
+      ],
+      "revenueDeductionPct": 1.5,
+      "fixedFeeEur": 0.25,
+      "revenueBasis": "GROSS_VAT_INCLUSIVE_TRANSACTION",
+      "status": "PUBLISHED_TARIFF_APPLIED",
+      "evidenceClass": "PUBLISHED_PROVIDER_TARIFF",
+      "sourceUrl": "https://stripe.com/pricing",
+      "notes": "Card processing at the published EEA consumer-card rate plus fixed fee per transaction. VAT and scheme fees may vary; no negotiated merchant rate exists."
+    },
+    {
+      "id": "CH-APP-STORE",
+      "channel": "APP_STORE",
+      "appliesTo": [
+        "NAV",
+        "WEATHER"
+      ],
+      "revenueDeductionPct": 30,
+      "fixedFeeEur": 0,
+      "revenueBasis": "GROSS_TRANSACTION_VALUE",
+      "status": "HYPOTHESIS_UNAPPROVED",
+      "evidenceClass": "PUBLISHED_PROVIDER_TARIFF",
+      "sourceUrl": "https://developer.apple.com/app-store/small-business-program/",
+      "notes": "30% standard commission; 15% small-business rate is a conditional alternative. Selling an in-app subscription also constrains pricing flexibility and refund handling. Not an executed distribution agreement."
+    },
+    {
+      "id": "CH-INSTALLER",
+      "channel": "PROFESSIONAL_INSTALLER",
+      "appliesTo": [
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "PILOT"
+      ],
+      "revenueDeductionPct": 15,
+      "fixedFeeEur": 0,
+      "revenueBasis": "NET_REVENUE_EX_VAT",
+      "status": "HYPOTHESIS_UNAPPROVED",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "notes": "Assumed 15% installer trade margin and a separately quoted installation service. No installer agreement, rate card or measured duration exists."
+    },
+    {
+      "id": "CH-DISTRIBUTOR",
+      "channel": "DISTRIBUTOR_RETAIL",
+      "appliesTo": [
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "revenueDeductionPct": 35,
+      "fixedFeeEur": 0,
+      "revenueBasis": "NET_REVENUE_EX_VAT",
+      "status": "HYPOTHESIS_UNAPPROVED",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "notes": "Assumed 35% distributor/retail margin. No distributor term, MOQ, price-hold or returns agreement exists."
+    },
+    {
+      "id": "CH-QUOTATION",
+      "channel": "QUOTATION_INSTALLATION",
+      "appliesTo": [
+        "PILOT",
+        "SAIL",
+        "COMPLETE"
+      ],
+      "revenueDeductionPct": null,
+      "fixedFeeEur": null,
+      "revenueBasis": "NOT_APPLICABLE",
+      "status": "QUOTATION_ONLY",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "notes": "Survey-based installation quotation. No rate, margin, survey cost or installation duration is evidenced; the model cannot derive a channel price."
+    }
+  ]
+}

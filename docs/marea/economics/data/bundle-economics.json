@@ -1,0 +1,293 @@
+{
+  "contractId": "MAREA-MC12-BUNDLE-ECONOMICS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-12",
+  "date": "2026-11-02",
+  "owner": "commercial-finance-pricing-strategist",
+  "currency": "EUR",
+  "note": "All six MC-08 bundles. Bundle composition is read from bundle-definitions.json; no included product is invented. FLEET is hardware-free by default.",
+  "records": [
+    {
+      "id": "BE-START",
+      "bundleId": "START",
+      "priceHypothesisId": "PH-01",
+      "grossHypothesisEur": 499,
+      "vatBasis": "VAT_INCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": 412.4,
+      "componentEconomicIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE",
+        "UE-NAV-NAV-PRO-ANNUAL"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-HUB-HUB-STANDARD-100-BASE",
+          "knownVariableCostEur": 281.13,
+          "basis": "HUB Standard variable cost at 100 units BASE, self-install."
+        },
+        {
+          "componentId": "UE-NAV-NAV-PRO-ANNUAL",
+          "knownVariableCostEur": 12.42,
+          "basis": "NAV Pro first-year known variable cost."
+        }
+      ],
+      "knownVariableCostEur": 293.55,
+      "unknownVariableCostCategories": [
+        {
+          "category": "CHART_DATA_LICENCE",
+          "reason": "START requires a licensed chart entitlement; no right or price.",
+          "materiality": "MATERIAL"
+        },
+        {
+          "category": "CERTIFICATION",
+          "reason": "HUB conformity cost is UNKNOWN (fixed, excluded from contribution).",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": 118.85,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "LICENSING_BLOCKED",
+      "confidence": "LOW",
+      "notes": "PH-01 EUR 499 is an unapproved first-year product-only reference, not an installed-system price. The bundle requires a chart right that is NOT_GRANTED."
+    },
+    {
+      "id": "BE-CRUISE",
+      "bundleId": "CRUISE",
+      "priceHypothesisId": "PH-02",
+      "grossHypothesisEur": 1399,
+      "vatBasis": "VAT_INCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": 1156.2,
+      "componentEconomicIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE",
+        "UE-AIS-AIS-RECEIVER-100-BASE",
+        "UE-DISPLAY-DISPLAY-7-100-BASE",
+        "UE-NAV-NAV-ESSENTIAL-ANNUAL"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-HUB-HUB-STANDARD-100-BASE",
+          "knownVariableCostEur": 281.13,
+          "basis": "HUB Standard variable cost at 100 units BASE."
+        },
+        {
+          "componentId": "UE-AIS-AIS-RECEIVER-100-BASE",
+          "knownVariableCostEur": 281.35,
+          "basis": "AIS receiver variable cost at 100 units BASE."
+        },
+        {
+          "componentId": "UE-DISPLAY-DISPLAY-7-100-BASE",
+          "knownVariableCostEur": 303.32,
+          "basis": "DISPLAY 7 variable cost at 100 units BASE."
+        },
+        {
+          "componentId": "UE-NAV-NAV-ESSENTIAL-ANNUAL",
+          "knownVariableCostEur": 10.43,
+          "basis": "NAV Essential first-year known variable cost."
+        }
+      ],
+      "knownVariableCostEur": 876.23,
+      "unknownVariableCostCategories": [
+        {
+          "category": "CHART_DATA_LICENCE",
+          "reason": "CRUISE requires a licensed chart entitlement.",
+          "materiality": "MATERIAL"
+        },
+        {
+          "category": "AIS_ANTENNA_SPLITTER_AND_CABLING",
+          "reason": "Antenna, splitter and cabling are excluded from the bundle definition and have no cost.",
+          "materiality": "MATERIAL"
+        },
+        {
+          "category": "INSTALLATION_COMMISSIONING",
+          "reason": "Installation is excluded and quoted separately.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": 279.97,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "LICENSING_BLOCKED",
+      "confidence": "LOW",
+      "notes": "PH-02 EUR 1,399 excludes antenna/splitter, mounts, cabling, installation, commissioning and channel margin. It is not an installed-system price."
+    },
+    {
+      "id": "BE-PROTECT",
+      "bundleId": "PROTECT",
+      "priceHypothesisId": "PH-04",
+      "grossHypothesisEur": 399,
+      "vatBasis": "VAT_INCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": 329.75,
+      "componentEconomicIds": [
+        "UE-WATCH-WATCH-CORE-100-BASE",
+        "UE-SENSE-MODULE-100-BASE",
+        "UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-WATCH-WATCH-CORE-100-BASE",
+          "knownVariableCostEur": 190.9,
+          "basis": "WATCH Core hardware variable cost at 100 units BASE."
+        },
+        {
+          "componentId": "UE-SENSE-MODULE-100-BASE",
+          "knownVariableCostEur": 176.54,
+          "basis": "Two SENSE modules (SENSE-ESSENTIALS kit expands to SENSE-POWER + SENSE-BILGE), 2 x module variable cost."
+        },
+        {
+          "componentId": "UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL",
+          "knownVariableCostEur": 13.05,
+          "basis": "WATCH monitoring subscription first-year known variable cost."
+        }
+      ],
+      "knownVariableCostEur": 380.49,
+      "unknownVariableCostCategories": [
+        {
+          "category": "CELLULAR_CONNECTIVITY",
+          "reason": "WATCH connectivity contract does not exist.",
+          "materiality": "MATERIAL"
+        },
+        {
+          "category": "CERTIFICATION",
+          "reason": "WATCH and SENSE conformity cost is UNKNOWN.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": -50.74,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "DEFER_RECOMMENDED",
+      "confidence": "LOW",
+      "notes": "The historical PH-04 EUR 399 is below the conditional variable cost of its own composition (EUR 497 symbolic component floor already exceeds it). At the modelled 100-unit BASE cost the bundle contribution is negative; the price must rise or the composition change."
+    },
+    {
+      "id": "BE-SAIL",
+      "bundleId": "SAIL",
+      "priceHypothesisId": "PH-03",
+      "grossHypothesisEur": null,
+      "vatBasis": "VAT_EXCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": null,
+      "componentEconomicIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE",
+        "UE-SENSE-MODULE-100-BASE",
+        "UE-NAV-NAV-PRO-ANNUAL"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-HUB-HUB-STANDARD-100-BASE",
+          "knownVariableCostEur": 281.13,
+          "basis": "HUB Standard variable cost at 100 units BASE."
+        },
+        {
+          "componentId": "UE-SENSE-MODULE-100-BASE",
+          "knownVariableCostEur": 88.27,
+          "basis": "One SENSE module variable cost."
+        },
+        {
+          "componentId": "UE-NAV-NAV-PRO-ANNUAL",
+          "knownVariableCostEur": 12.42,
+          "basis": "NAV Pro first-year known variable cost."
+        }
+      ],
+      "knownVariableCostEur": null,
+      "unknownVariableCostCategories": [
+        {
+          "category": "PILOT_INSTALLATION_SCOPE",
+          "reason": "Steering drive, actuator, rudder feedback, E-stop, survey, commissioning, sea trials and training are unpriced.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": null,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "SAFETY_BLOCKED",
+      "confidence": "LOW",
+      "notes": "SAIL includes PILOT, whose safety gate is BLOCKED. PH-03 EUR 1,990 is a historical turnkey reference only and is not a quotation. No bundle price or contribution is established."
+    },
+    {
+      "id": "BE-COMPLETE",
+      "bundleId": "COMPLETE",
+      "priceHypothesisId": "PH-05",
+      "grossHypothesisEur": null,
+      "vatBasis": "VAT_EXCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": null,
+      "componentEconomicIds": [
+        "UE-HUB-HUB-PRO-100-BASE",
+        "UE-DISPLAY-DISPLAY-7-100-BASE",
+        "UE-WATCH-WATCH-CORE-100-BASE",
+        "UE-SENSE-MODULE-100-BASE",
+        "UE-NAV-NAV-PRO-ANNUAL"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-HUB-HUB-PRO-100-BASE",
+          "knownVariableCostEur": 281.13,
+          "basis": "HUB Pro modelled variable cost, incremental lines unpriced."
+        },
+        {
+          "componentId": "UE-DISPLAY-DISPLAY-7-100-BASE",
+          "knownVariableCostEur": 303.32,
+          "basis": "DISPLAY 7 variable cost at 100 units BASE."
+        },
+        {
+          "componentId": "UE-WATCH-WATCH-CORE-100-BASE",
+          "knownVariableCostEur": 190.9,
+          "basis": "WATCH Core hardware variable cost."
+        },
+        {
+          "componentId": "UE-SENSE-MODULE-100-BASE",
+          "knownVariableCostEur": 353.08,
+          "basis": "Four symbolic SENSE modules."
+        },
+        {
+          "componentId": "UE-NAV-NAV-PRO-ANNUAL",
+          "knownVariableCostEur": 12.42,
+          "basis": "NAV Pro first-year known variable cost."
+        }
+      ],
+      "knownVariableCostEur": null,
+      "unknownVariableCostCategories": [
+        {
+          "category": "PILOT_INSTALLATION_SCOPE",
+          "reason": "PILOT steering installation is unpriced and safety-blocked.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": null,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "SAFETY_BLOCKED",
+      "confidence": "LOW",
+      "notes": "COMPLETE includes PILOT (safety gate BLOCKED) and has no approved turnkey price. PH-05 EUR 3,490 is a historical reference only."
+    },
+    {
+      "id": "BE-FLEET",
+      "bundleId": "FLEET",
+      "priceHypothesisId": "PH-06",
+      "grossHypothesisEur": null,
+      "vatBasis": "VAT_EXCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": null,
+      "componentEconomicIds": [],
+      "componentCosts": [],
+      "knownVariableCostEur": null,
+      "unknownVariableCostCategories": [
+        {
+          "category": "FLEET_PACKAGE",
+          "reason": "Bespoke contracted B2B solution: no package, onboarding, training, support, hardware or connectivity price is established.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": null,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "COST_MODEL_INCOMPLETE",
+      "confidence": "LOW",
+      "notes": "FLEET is a per-vessel SaaS plus separately quoted onboarding, never default hardware. No package price exists; PH-06 is NOT_ESTABLISHED."
+    }
+  ]
+}
