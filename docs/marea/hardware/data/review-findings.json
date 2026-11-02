@@ -1,0 +1,398 @@
+{
+  "contractId": "MAREA-MC11-HARDWARE-EVIDENCE-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-11",
+  "date": "2026-11-02",
+  "owner": "qa-reviewer",
+  "reviewId": "MC-11-REVIEW",
+  "reviewedCommit": "a912c4d77918e1d4e04877e097fda75a3fc89ea8",
+  "technicalReverifiedCommit": "0eceb8663204e6b5d82a137bb0cb50b742e667dc",
+  "finalRecordConfirmedOn": "2026-11-02",
+  "previousReviewedCommit": "bef2f4b25e06205697bee4de9da908741c726621",
+  "verdict": "PARTIAL",
+  "internalFeasibilityScope": "PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE",
+  "verdictStatement": "PARTIAL. Full MC-11 cannot be PASS: the authoritative registry requires real supplier quotation evidence, no supplier was contacted and no quotation exists, so MC11_FORMAL_PROCUREMENT_EVIDENCE = BLOCKED_OR_NOT_OBTAINED (external evidence gap, not a finding against the authors; the requirement is not rewritten). Internal hardware feasibility scope: PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE - all 22 items of MC11-BASELINE-AND-GOVERNANCE.md section 10 are evidenced after the technical re-verification at 0eceb86 and the final record confirmation at a912c4d, including item 21 (all BLOCKING/MAJOR findings closed) and item 22 (draft PR #18 verified stacked/unmerged). Findings MC11-F01..F09 are CLOSED_VERIFIED (0 BLOCKING, 0 MAJOR, 0 MINOR open) and post-audit actions PA-01..PA-05 are CLOSED_VERIFIED. The final head a912c4d is a record-refresh-only commit: the diff 0eceb86..a912c4d touches only registry/governance/manifest/D2/D36/D37/review records, with no change to data semantics, prices, evidence classes or restrictions.",
+  "findings": [
+    {
+      "findingId": "MC11-F01",
+      "severity": "MAJOR",
+      "file": "docs/marea/hardware/MC11-BASELINE-AND-GOVERNANCE.md",
+      "line": 244,
+      "description": "Acceptance item 22 ('PR verified draft, stacked on the verified base, unmerged') was not evidenced at the original audit commit bef2f4b: the branch had no remote ref and no MC-11 PR existed.",
+      "correction": "Lead (git owner): push feature/marea-mc11-hardware-sourcing-conformity to origin and open a DRAFT pull request whose base is feature/marea-mc10r-fieldwork-recovery (verified base 6713178). Confirm the PR head equals the corrected audit commit, isDraft=true, mergeable and unmerged; record the PR number in D2 section 1 and in manifest.json/governance-status.json; then request re-verification of item 22. Do not merge, tag or deploy.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "evidence": "Re-verified 2026-11-02 at 0eceb86: git ls-remote origin refs/heads/feature/marea-mc11-hardware-sourcing-conformity = 0eceb8663204e6b5d82a137bb0cb50b742e667dc; gh pr view 18 = {number:18, state:OPEN, isDraft:true, mergeable:MERGEABLE, baseRefName:feature/marea-mc10r-fieldwork-recovery, headRefName:feature/marea-mc11-hardware-sourcing-conformity, headRefOid:0eceb86}; no tags at head and no merge commits in 6713178..0eceb86. D2 section 1 rows 16-17 now record the remote ref and the draft PR and state F01 explicitly.",
+      "verification": "CLOSED_VERIFIED: branch on origin, draft PR #18 stacked on the verified base, unmerged."
+    },
+    {
+      "findingId": "MC11-F02",
+      "severity": "MINOR",
+      "file": "docs/marea/hardware/MC11-MC12-HANDOFF.md",
+      "line": 17,
+      "description": "The currency composition of the price set was misstated: D31 described 37 manufacturer-list observations as USD and 37 of 42 observations as 'USD list prices', while the data contain 36 USD + 1 EUR manufacturer-list prices and 5 EUR distributor prices.",
+      "correction": "Correct D31 section 1 and section 3 item 1 to '37 manufacturer list prices (36 USD + 1 EUR) and 5 authorised-distributor retail prices (EUR); VAT basis 37 VAT_UNKNOWN + 5 VAT_EXCLUDED'.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "evidence": "D31:17 now reads '42 observations: 37 manufacturer list prices (36 USD + 1 EUR) and 5 authorised-distributor retail prices (EUR); VAT basis 37 VAT_UNKNOWN + 5 VAT_EXCLUDED'; D31:70 now reads '37 of 42 observations are manufacturer list prices - 36 USD and 1 EUR - with an unverified VAT basis; the other 5 are EUR retail distributor listings'. Recomputed from price-observations.json: 37 MANUFACTURER_PUBLIC_LIST_PRICE (36 USD + 1 EUR) + 5 AUTHORIZED_DISTRIBUTOR_PUBLIC_PRICE (EUR); 37 VAT_UNKNOWN + 5 VAT_EXCLUDED. Exact match.",
+      "verification": "CLOSED_VERIFIED: both statements now match the raw observations."
+    },
+    {
+      "findingId": "MC11-F03",
+      "severity": "MINOR",
+      "file": "docs/marea/hardware/MC11-MC12-HANDOFF.md",
+      "line": 47,
+      "description": "Original finding: the scenario table heading said the BASE known subtotals include 'assumption-based class-B allowance and amortised tooling', but the audit then believed the figures excluded the separately amortised tooling envelope. That premise was WRONG and the finding is withdrawn. Re-inspection of cost-scenarios.json at 0eceb86 shows the COST-16 tooling/NRE line is a KNOWN category line inside the subtotal: SCN-HUB-100-BASE known lines sum to 437.13 INCLUDING COST-16 = 120.00; the standalone toolingAmortizationEur field (120.00) repeats the same amount and must not be added again. Adding it (437.13 + 120) would double count. The original D31 values were correct.",
+      "correction": "No data change was required. The Lead clarified the D31 heading and paragraph to state explicitly that COST-16 is included in the sum and that toolingAmortizationEur repeats it and is not added again, with the volume-1/10/100/500/1000 HUB tooling amounts. Verified accurate; the auditor's earlier 'excludes tooling' statement is corrected in D35 section 7 and in calculationsRechecked.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "evidence": "At 0eceb86: SCN-HUB-100-BASE lines include {categoryId:COST-16, amountEur:120, status:KNOWN}; sum of KNOWN lines = 437.13; toolingAmortizationEur = 120. All 90 scenarios: toolingAmortizationEur equals the COST-16 line amount (or 0) - 0 mismatches; D31 BASE table equals sum(KNOWN lines) for 6 families x 5 volumes - 0 mismatches. D31:47-60 now states inclusion/non-addition explicitly.",
+      "verification": "CLOSED_VERIFIED by clarification; original finding withdrawn because its arithmetic premise double-counted tooling. No fabricated or missing data."
+    },
+    {
+      "findingId": "MC11-F04",
+      "severity": "MINOR",
+      "file": "docs/marea/hardware/architecture/MC11-PORTFOLIO-HARDWARE-MAP.md",
+      "line": 160,
+      "description": "D3 labelled ARCH-AIS-B and ARCH-DISPLAY-B as 'provisional', contradicting D4 section 3.3, D9 sections 1.7/2.5 and architecture-options.json recommendations[] (AIS-E near term, DISPLAY-D).",
+      "correction": "Align D3 and hardware-families.json with the scored recommendations: AIS provisional ARCH-AIS-E (alternatives A,B,C,D); DISPLAY provisional ARCH-DISPLAY-D (alternatives A,B,C,E); label both 'near-term recommendation'.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "evidence": "hardware-families.json at 0eceb86: AIS provisionalArchitectureId=ARCH-AIS-E, alternatives [A,B,C,D]; DISPLAY provisionalArchitectureId=ARCH-DISPLAY-D, alternatives [A,B,C,E]. D3:160 and D3:302 label them 'near-term recommendation' with weights 4.86 and 3.69. This matches D4:189, D9:131/191/206, architecture-options.json recommendations[] and D29 section 4.",
+      "verification": "CLOSED_VERIFIED: data and D3 agree with the scored recommendations."
+    },
+    {
+      "findingId": "MC11-F05",
+      "severity": "MINOR",
+      "file": "docs/marea/hardware/data/engineering-bom.json",
+      "line": 692,
+      "description": "The HUB-PRO BOM architectureVersion free text in the engineering and manufacturing BOMs read 'MCU-11 engineering preference' instead of 'MC-11'.",
+      "correction": "Replace 'MCU-11 engineering preference' with 'MC-11 engineering preference' in EBOM-HUB-PRO-01 and MBOM-HUB-PRO-01 architectureVersion.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "evidence": "git diff bef2f4b..0eceb86 shows the corrected architectureVersion in engineering-bom.json and manufacturing-bom.json; Select-String over docs/marea/hardware/data/*.json finds no remaining 'MCU-11' token (only the historical finding description in review-findings.json).",
+      "verification": "CLOSED_VERIFIED: both BOMs read 'MC-11 engineering preference'."
+    },
+    {
+      "findingId": "MC11-F06",
+      "severity": "INFORMATIONAL",
+      "file": "docs/marea/hardware/economics/MC11-COST-UNCERTAINTY-AND-VOLUME-SCENARIOS.md",
+      "line": 215,
+      "description": "HUB tooling amortisation at volume 100 was shown as 27.4% in the table but 27.5% in prose and D31 (120.00 / 437.13 = 27.4517%).",
+      "correction": "Change line 215 to 27.5% so the table matches lines 100 and 228 and D31.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "evidence": "D22:215 now reads '120.00 (27.5%)'; D22:100 and :228 also state 27.5%; recomputed 120.00/437.13 = 0.274517... = 27.45%, which rounds to 27.5%. D31:59 also states 27.5%.",
+      "verification": "CLOSED_VERIFIED: single consistent rounding."
+    },
+    {
+      "findingId": "MC11-F07",
+      "severity": "INFORMATIONAL",
+      "file": "docs/marea/hardware/data/manifest.json",
+      "line": null,
+      "description": "Deliverables D36 (Spanish executive report) and D37 (delivery record) were absent at bef2f4b; the manifest then correctly recorded them as PENDING.",
+      "correction": "Produce D36 and D37 before any milestone-complete claim (or state they are produced after the audit).",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "evidence": "At 0eceb86 both files exist: MC11-EXECUTIVE-REPORT.md (19 543 bytes) and MC-11-DELIVERY.md (9 083 bytes); manifest.deliverables D35/D36/D37 = COMPLETE. Content reviewed: D36 states the milestone verdict PARTIAL and the formal-procurement evidence NOT_OBTAINED, with no certification/supplier/customer claim; D37 records PARTIAL and the external gaps. D37 section 1's internal-scope PASS statement is now substantiated by this re-verification (see postAuditActions PA-05 for the wording refresh).",
+      "verification": "CLOSED_VERIFIED: deliverables exist, honest, and consistent with the evidence."
+    },
+    {
+      "findingId": "MC11-F08",
+      "severity": "INFORMATIONAL",
+      "file": "docs/marea/hardware/sourcing/MC11-COMPONENT-AND-MANUFACTURER-LANDSCAPE.md",
+      "line": 26,
+      "description": "Evidence-strength limitation: 21/127 evidence records are explicitly INACCESSIBLE/partial, datasheetStatus RETRIEVED = 0/41, and the sole EUR distributor price series (RS, EVD-MC11-109) could not be independently reproduced. Disclosed by the authors; this audit records it as a residual limitation, not a defect.",
+      "correction": "Before gate G2/G3 or any BOM freeze, retrieve datasheets and a second EUR distributor price series; keep DATA_STATUS honest until then.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "evidence": "No evidence upgrade was attempted in 73ab0ac/0eceb86: the evidence-index diff adds only independentVerification and auditNote fields; no URL, supportedAssertion, evidenceClass or datasheetStatus changed; component-register.json is unchanged. The disclosure remains explicit in D11 sections 0.2-0.3, D23 section 10 and D37 section 1. The limitation stands and is carried in notVerified.",
+      "verification": "CLOSED_VERIFIED: closure is of the audit action (confirm disclosure and no upgrade), not of the external limitation."
+    },
+    {
+      "findingId": "MC11-F09",
+      "severity": "INFORMATIONAL",
+      "file": "docs/marea/hardware/data/evidence-index.json",
+      "line": null,
+      "description": "All 127 evidence records previously carried independentVerification = NOT_PERFORMED despite the audit having verified sampled sources.",
+      "correction": "Mark the evidence ids actually re-fetched and confirmed as VERIFIED_BY_AUDITOR; update manifest.files[review-findings.json].recordCount and D35 status.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "evidence": "At 0eceb86, 22 evidence records carry independentVerification = VERIFIED_BY_AUDITOR with an auditNote. All 22 map to the 11 URLs the auditor actually fetched (NMEA 2000 x3, NMEA 0183 x3, Raspberry Pi 5 x3, ST x1, u-blox MAX-M10 x2, Microchip ATECC608B x3, TI TCAN1042 x1, JLCPCB x2, AISLER x1, EC CRA policy x2, EC CRA reporting x1). None of the two inaccessible URLs (TI datasheet PDF, RS Components) and none of the disclosed-inaccessible records is marked verified. manifest.files[review-findings.json].recordCount = 9 and decisions.json has D-041..D-048 (8 decisions). Remaining refresh: manifest.reviewSummary still carries reviewedCommit=bef2f4b and 1 MAJOR/4 MINOR - see postAuditActions PA-03.",
+      "verification": "CLOSED_VERIFIED for the evidence-index/manifest-count part; postAuditActions PA-03 covers the stale reviewSummary."
+    }
+  ],
+  "postAuditActions": [
+    {
+      "actionId": "PA-01",
+      "severity": "MINOR",
+      "file": "docs/marea/hardware/MC11-BASELINE-AND-GOVERNANCE.md",
+      "line": 30,
+      "description": "D2 section 1 row 16 records the MC-11 remote ref at 73ab0ac (audit-correction commit), but the current remote head and PR #18 head is 0eceb86 (delivery commit). The row is stale at the re-verified tree.",
+      "correction": "Update D2 section 1 row 16 to the current remote head 0eceb8663204e6b5d82a137bb0cb50b742e667dc (or record both: 73ab0ac correction commit, 0eceb86 delivery commit = current head), and keep row 17's PR facts aligned.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "owner": "lead"
+    },
+    {
+      "actionId": "PA-02",
+      "severity": "MINOR",
+      "file": "docs/marea/hardware/data/governance-status.json",
+      "line": null,
+      "description": "governance-status.milestoneState still has mc11Verdict = PENDING_INDEPENDENT_REVIEW and internalFeasibilityScope = PENDING_INDEPENDENT_REVIEW at 0eceb86, although the re-verification has now been issued.",
+      "correction": "After this re-verification, set milestoneState.mc11Verdict = PARTIAL and internalFeasibilityScope = PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE (formalProcurementEvidence remains BLOCKED_OR_NOT_OBTAINED and every numeric invariant stays 0/false); record the re-verified commit 0eceb86.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "owner": "lead"
+    },
+    {
+      "actionId": "PA-03",
+      "severity": "MINOR",
+      "file": "docs/marea/hardware/data/manifest.json",
+      "line": null,
+      "description": "manifest.reviewSummary still records reviewedCommit = bef2f4b, findings 9, major 1, minor 4, informational 4, with no closed/open status after re-verification.",
+      "correction": "Update reviewSummary.reviewedCommit to 0eceb8663204e6b5d82a137bb0cb50b742e667dc and record the re-verified statuses (9 findings, 0 BLOCKING, 0 MAJOR open, 0 MINOR open; 9 CLOSED_VERIFIED). Keep manifest.files[review-findings.json].recordCount = 9.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "owner": "lead"
+    },
+    {
+      "actionId": "PA-04",
+      "severity": "MINOR",
+      "file": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md",
+      "line": null,
+      "description": "Registry row 11 still says 'independent audit PARTIAL with 1 MAJOR + 4 MINOR findings corrected pending re-verification', which is stale after this re-verification.",
+      "correction": "Update row 11 to record: internal feasibility scope PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE, re-verified at 0eceb86, all nine findings CLOSED_VERIFIED, full milestone PARTIAL with formal supplier quotations BLOCKED_OR_NOT_OBTAINED; keep the real-quotes requirement unchanged.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "owner": "lead"
+    },
+    {
+      "actionId": "PA-05",
+      "severity": "MINOR",
+      "file": "docs/marea/hardware/MC-11-DELIVERY.md",
+      "line": 19,
+      "description": "D37 section 1 asserted MC11_INTERNAL_FEASIBILITY_SCOPE = PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE before the independent re-verification that D-048 itself requires; D37 section 5/9 and D36/D37 references still say 're-verification pending' and '1 MAJOR, 4 MINOR'. The assertion is now substantiated by this re-verification, but the records remain stale.",
+      "correction": "Refresh D36/D37/registry/decision records after re-verification: state that the independent re-verification was performed at 0eceb86, that all findings are CLOSED_VERIFIED, and that the internal-scope PASS is now verified (not pending). Do not change the full-milestone PARTIAL verdict.",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
+      "owner": "lead"
+    }
+  ],
+  "finalConfirmation": {
+    "confirmedCommit": "a912c4d77918e1d4e04877e097fda75a3fc89ea8",
+    "technicalReverifiedCommit": "0eceb8663204e6b5d82a137bb0cb50b742e667dc",
+    "confirmedOn": "2026-11-02",
+    "result": "PA-01..PA-05 CLOSED_VERIFIED; verdict unchanged: full MC-11 PARTIAL, internal feasibility scope PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE; 9/9 findings CLOSED_VERIFIED, 0 open.",
+    "scopeCheck": "git diff --stat 0eceb86..a912c4d = 8 files, all records: MASTER-PROMPT-REGISTRY.md, MC-11-DELIVERY.md, MC11-BASELINE-AND-GOVERNANCE.md, MC11-EXECUTIVE-REPORT.md, data/governance-status.json, data/manifest.json, data/review-findings.json, review/MC-11-REVIEW.md. No hardware data file changed (component-register, price-observations, BOMs, cost-scenarios, conformity, qualification, compatibility, nmea, risks, decisions and evidence-index are identical to the re-verified 0eceb86).",
+    "perAction": {
+      "PA-01": "D2 section 1 row 30 now records audit-correction 73ab0ac and delivery/re-verified 0eceb86; row 31 keeps PR #18 facts. Both SHAs recorded; base 6713178 unchanged.",
+      "PA-02": "governance-status.milestoneState now: mc11Verdict PARTIAL; internalFeasibilityScope PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE; formalProcurementEvidence BLOCKED_OR_NOT_OBTAINED; independentReview PARTIAL; reverifiedCommit 0eceb86; reverifiedOn 2026-11-02; openBlockingFindings/openMajorFindings/openMinorFindings = 0/0/0. Diff shows only these milestoneState fields changed; all 28 invariants and every numeric zero untouched.",
+      "PA-03": "manifest.reviewSummary now: reviewedCommit 0eceb86, verdict PARTIAL, internalFeasibilityScope PASS..., findings 9, blocking 0, major 1 (historical total), minor 4, informational 4, closedVerified 9, open 0, plus top-level milestoneVerdict/internalFeasibilityScope/formalProcurementEvidence; review-findings recordCount remains 9 = actual findings.",
+      "PA-04": "Registry row 11 now records the re-verification at 0eceb86: internal feasibility scope PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE, 9/9 findings CLOSED_VERIFIED (0 open), full milestone PARTIAL, formal quotations BLOCKED_OR_NOT_OBTAINED; the 'real quotes only' requirement is unchanged.",
+      "PA-05": "D37 section 1 carries the re-verified verdict block (PARTIAL + internal PASS + 9/9 closed); section 4 records e2e 15/15 as Lead-run only; section 5 records the re-verification at 0eceb86, the withdrawn F03 (COST-16 inside 437.13) and the auditor's re-run gates; section 9 INDEPENDENT_REVIEW updated. D36 section 1 and section 10 record the re-issued verdict, withdrawn F03 and PA refreshes."
+    },
+    "residualNote": "D2 line 30 and registry row 11 phrase 0eceb86 as 'current head'/'branch head'; at the final head a912c4d the accurate statement is that 0eceb86 is the re-verified delivery head and a912c4d is the record-refresh-only commit. This is a non-blocking wording note (it cannot invalidate the verdict); a future docs touch may phrase the head dynamically as 'current head tracked by PR #18'."
+  },
+  "sourceVerification": [
+    {
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act",
+      "verified": true,
+      "note": "Official Commission CRA page (HTTP 200, fetched during the audit of bef2f4b; not re-fetched in the correction round). Confirms in force 10 Dec 2024, main obligations 11 Dec 2027, reporting obligations from 11 Sep 2026. Supports EVD-MC11-301/417; independent verification of the CRA dates."
+    },
+    {
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+      "verified": true,
+      "note": "Official Commission CRA reporting page (HTTP 200). Confirms reporting applies from 11 Sep 2026 and the 24 h / 72 h / 14-day / one-month mechanics. Supports EVD-MC11-303."
+    },
+    {
+      "url": "https://www.nmea.org/nmea-2000.html",
+      "verified": true,
+      "note": "Official NMEA page (HTTP 200). Confirms that all products reading or transmitting NMEA 2000 must be certified by NMEA, the licence model, manufacturer-code assignment up to 60 days, per-product codes, the encrypted certification file and the logo/terminology rule. Supports EVD-MC11-001/002/319."
+    },
+    {
+      "url": "https://www.nmea.org/nmea-0183.html",
+      "verified": true,
+      "note": "Official NMEA page (HTTP 200). Confirms copy/licence position, 4800-baud bus, Version 4.30 (Dec 2023), USD 1,150 / 7,500 / 10,000 tiers and USD 200 manufacturer mnemonic fee. Supports EVD-MC11-003/004/320."
+    },
+    {
+      "url": "https://www.ti.com/product/TCAN1042HGV/part-details/TCAN1042HGVDR",
+      "verified": true,
+      "note": "Manufacturer page (HTTP 200). Confirms USD 2.196 / 1.689 / 1.244 / 0.889 bands, -55 to 125 C, Automotive rating, SOIC-8. Supports EVD-MC11-102."
+    },
+    {
+      "url": "https://www.ti.com/lit/ds/symlink/tcan1042.pdf",
+      "verified": false,
+      "note": "INACCESSIBLE to the auditor: fetch endpoint HTTP 404 / no PDF content (reproduces EVD-MC11-131). Not evidence the claim is false; no datasheet is retrieved anywhere (0/41)."
+    },
+    {
+      "url": "https://www.raspberrypi.com/news/introducing-raspberry-pi-5/",
+      "verified": true,
+      "note": "Manufacturer announcement (HTTP 200). Confirms USD 60 (4 GB) / USD 80 (8 GB), 2.4 GHz quad Cortex-A76, 802.11ac, BT 5.0/BLE, GbE, PCIe 2.0 x1, 40-pin GPIO, RTC, 5 V/5 A, ~12 W pathological peak, sole first-party OS. Supports EVD-MC11-005/006/018."
+    },
+    {
+      "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32h743zi.html",
+      "verified": true,
+      "note": "Manufacturer page (HTTP 200). Confirms active/volume production, Cortex-M7 480 MHz, 2 MB flash / 1 MB RAM, 1.62-3.6 V, 2x CAN FD, watchdogs, RTC, 3x ADC, Ethernet MAC, 2.95 uA standby. Supports EVD-MC11-012."
+    },
+    {
+      "url": "https://www.u-blox.com/en/product/max-m10-series",
+      "verified": true,
+      "note": "Manufacturer page (HTTP 200). Every listed MAX-M10 variant is marked 'This product is not longer available'. Supports the EOL finding EVD-MC11-116 and CMP-GNSS-01/02/03."
+    },
+    {
+      "url": "https://www.microchip.com/en-us/product/ATECC608B",
+      "verified": true,
+      "note": "Manufacturer page (HTTP 200). Confirms status 'Not Recommended for new designs', ECC-P256/SHA-256/AES-128-GCM, up to 16 keys, <150 nA sleep, 2.0-5.5 V. Supports EVD-MC11-014/112/508."
+    },
+    {
+      "url": "https://jlcpcb.com/",
+      "verified": true,
+      "note": "Service manufacturer page (HTTP 200). Confirms 'From $2.00 / 5 pcs', 24-hour build, PCBA 'From $8.00', SMT stencil 'From $3.00', ISO 27001/27701 and PCI DSS. Supports EVD-MC11-124/204."
+    },
+    {
+      "url": "https://aisler.net/",
+      "verified": true,
+      "note": "Service manufacturer page (HTTP 200). Confirms PCBs made in Europe 'starting at just EUR 14.20' and one-business-day manufacturing. Supports EVD-MC11-126 (the single EUR manufacturer-list price)."
+    },
+    {
+      "url": "https://es.rs-online.com/web/p/can-interface-ics/2528889",
+      "verified": false,
+      "note": "INACCESSIBLE to the auditor: fetch endpoint HTTP 404 on two attempts, so EVD-MC11-109 (the only EUR authorised-distributor price series) could not be independently reproduced. Not proof the claim is false; recorded as inaccessible and as an evidence-strength limitation."
+    }
+  ],
+  "calculationsRechecked": [
+    {
+      "check": "Engineering BOM totals (re-verified at 0eceb86)",
+      "scope": "all 11 engineering BOMs, 155 lines (data values unchanged except the F05 typo)",
+      "recomputed": "knownLinesEur = sum(qtyPerUnit x unitPriceEur); partialSubtotalEur; knownLineCount; unknownLineCount; totalStatus; totalEur",
+      "result": "0 mismatches (tolerance 0.01 EUR); every BOM INCOMPLETE with totalEur null; unknownLineCount 8-16"
+    },
+    {
+      "check": "Manufacturing BOM totals (re-verified at 0eceb86)",
+      "scope": "all 11 manufacturing BOMs, 171 lines",
+      "recomputed": "same fields as engineering BOM",
+      "result": "0 mismatches; every BOM INCOMPLETE with totalEur null"
+    },
+    {
+      "check": "EUR conversion of USD BOM lines",
+      "scope": "34 USD lines across both BOM files",
+      "recomputed": "unitPriceEur = observedUnitPrice x 0.925925926 (FX-USD-EUR-01); fxRateId resolution; original currency preserved",
+      "result": "0 mismatches; rate is the labelled ENGINEERING_ASSUMPTION ASM-001 (ECB retrieval failed and is documented)"
+    },
+    {
+      "check": "BOM price-tier integrity",
+      "scope": "every BOM line with a priceObservationId",
+      "recomputed": "line.priceQuantityTier vs price-observations.priceQuantityTier",
+      "result": "0 mismatches"
+    },
+    {
+      "check": "Cost scenarios - known-line sums (CORRECTED UNDERSTANDING)",
+      "scope": "all 90 scenarios (6 families x 5 volumes x LOW/BASE/HIGH)",
+      "recomputed": "sum of KNOWN category lines (which INCLUDES the COST-16 tooling/NRE line); missingCategories; totalStatus; totalEur presence",
+      "result": "0 mismatches; all 90 totalStatus INCOMPLETE with totalEur null; missing categories explicit"
+    },
+    {
+      "check": "Tooling treatment (CORRECTED; resolves MC11-F03)",
+      "scope": "all 90 scenarios",
+      "recomputed": "toolingAmortizationEur vs the COST-16 line amount; ASM-008 envelope x case multiplier / volume",
+      "result": "toolingAmortizationEur equals the COST-16 line amount (or 0) in 90/90 scenarios and equals the ASM-008 envelope x multiplier / volume; it is a duplicate convenience field and must NOT be added to the known-line sum. SCN-HUB-100-BASE: KNOWN lines = 437.13 including COST-16 = 120.00. The round-1 audit statement that the D31 values excluded tooling was incorrect and is withdrawn."
+    },
+    {
+      "check": "D31 BASE scenario table (CORRECTED; resolves MC11-F03)",
+      "scope": "6 families x volumes 1/10/100/500/1000",
+      "recomputed": "sum of KNOWN category lines including COST-16",
+      "result": "0 mismatches against D31: HUB 12,351.22 / 1,541.20 / 437.13 / 322.50 / 300.05; WATCH 8,268.51 / 1,061.69 / 324.90 / 248.10 / 232.93; SENSE 3,645.27 / 492.05 / 168.27 / 133.01 / 125.55; DISPLAY 9,399.13 / 1,288.42 / 453.32 / 362.77 / 343.11; AIS 5,353.62 / 843.91 / 370.35 / 312.06 / 296.63; PILOT 0. The clarified D31 heading (COST-16 included; toolingAmortizationEur not added again) is accurate."
+    },
+    {
+      "check": "FX sensitivity multipliers",
+      "scope": "10 family/volume pairs, COST-01 LOW/HIGH",
+      "recomputed": "BASE x 0.947368 (LOW) and BASE x 1.048544 (HIGH)",
+      "result": "all within 0.02 EUR"
+    },
+    {
+      "check": "Architecture weighted scores",
+      "scope": "all 33 options",
+      "recomputed": "sum(score x weight) / 100 on the frozen D2 section 6 weights; weight sum",
+      "result": "weights sum 100; 0 score mismatches at 2 dp; summaryTable 0 drift from options[]"
+    },
+    {
+      "check": "Portfolio weighted scores (D29 section 2)",
+      "scope": "9 families",
+      "recomputed": "sum(score x weight) / 100 on the frozen D2 section 6 portfolio weights",
+      "result": "all 9 correct: NAV 3.68, WEATHER 3.46, FLEET 3.14, SENSE 2.94, HUB 2.74, WATCH 2.20, DISPLAY 2.00, AIS 1.58, PILOT 1.22"
+    },
+    {
+      "check": "Risk-register distribution (D30 section 3)",
+      "scope": "39 risks",
+      "recomputed": "impact, blockerStatus, evidenceStrength and domain counts",
+      "result": "matches exactly (CRITICAL 7, HIGH 28, MEDIUM 3, LOW 1; BLOCKED 15, OPEN 23, MONITORED 1; DOCUMENTED 22, ASSUMED 17; domains 9/5/7/5/7/2/4); all mitigations PROPOSED_NOT_IMPLEMENTED"
+    },
+    {
+      "check": "Conformity applicability counts (D23 section 4)",
+      "scope": "22 configuration rows x 11 acts",
+      "recomputed": "count of applicable/excluded rows per legislation",
+      "result": "matches exactly: RED 13/9, EMC 6, LVD 0, RoHS 19, WEEE 19, GPSR 19, CRA 20, Batteries 12, MED 0, RCD 0, packaging 19; every rationale present"
+    },
+    {
+      "check": "Canonical product/edition and bundle mapping",
+      "scope": "9 families, 6 bundles",
+      "recomputed": "editions vs product-definitions.batch-01/02/03.json; bundle component lines vs bundle-definitions.json",
+      "result": "0 invalid editions; 0 bundle-line mismatches; FLEET hardwareIncludedByDefault=false; all fixedTurnkeyPrice=false; PROTECT sensor counted once; kits expand only to existing module editions"
+    },
+    {
+      "check": "Count cross-checks (D31/D30/D29, re-verified at 0eceb86)",
+      "scope": "BOMs, lines, scenarios, observations, components, risks, qualification tests, configurations",
+      "recomputed": "record counts from JSON",
+      "result": "EBOM 11 BOMs/155 lines; MBOM 11/171; 90 scenarios; 42 observations; 41 components; 39 risks; 45 qualification tests all NOT_EXECUTED; 22 configurations - all match the documents"
+    },
+    {
+      "check": "F02 currency/VAT composition (correction recheck)",
+      "scope": "42 price observations",
+      "recomputed": "evidenceClass, currency and vatTreatment counts",
+      "result": "37 MANUFACTURER_PUBLIC_LIST_PRICE = 36 USD + 1 EUR; 5 AUTHORIZED_DISTRIBUTOR_PUBLIC_PRICE = EUR; 37 VAT_UNKNOWN + 5 VAT_EXCLUDED - exactly matches the corrected D31 statements"
+    },
+    {
+      "check": "F06 tooling percentage (correction recheck)",
+      "scope": "HUB volume 100",
+      "recomputed": "120.00 / 437.13",
+      "result": "0.274517... = 27.45%, rendered consistently as 27.5% in D22 and D31"
+    },
+    {
+      "check": "F04 architecture alignment (correction recheck)",
+      "scope": "AIS and DISPLAY provisional architecture ids and D3 labels",
+      "recomputed": "hardware-families.json provisional/alternatives vs architecture-options recommendations and D4/D9/D29",
+      "result": "AIS-ARCH-AIS-E and DISPLAY-ARCH-DISPLAY-D now consistent across all records; 0 contradictions"
+    },
+    {
+      "check": "F05 typo scan (correction recheck)",
+      "scope": "all hardware data JSON",
+      "recomputed": "search for 'MCU-11'",
+      "result": "0 occurrences in engineering-bom.json / manufacturing-bom.json; both HUB-PRO architectureVersion fields read 'MC-11 engineering preference'"
+    },
+    {
+      "check": "Manifest record counts and structural integrity (post-correction)",
+      "scope": "all data files plus review-findings recordCount",
+      "recomputed": "manifest.files[] recordCount vs actual array lengths; deliverables count",
+      "result": "validator S03 passes (54/54); review-findings recordCount = 9 = actual findings; governance-status restriction count 10; deliverables D35/D36/D37 = COMPLETE; decisions.json D-041..D-048 (8)"
+    },
+    {
+      "check": "Final record-refresh scope check (a912c4d vs 0eceb86)",
+      "scope": "all files changed by the final head",
+      "recomputed": "git diff --stat/--name-only 0eceb86..a912c4d; presence of technical data files",
+      "result": "8 files changed, all records (registry, D37, D2, D36, governance-status, manifest, review-findings, review MD); 0 hardware data files changed - no data semantics, price, evidence class, cost, conformity or restriction change. test:hardware 54/54, test:hardware:unit 59/59, format:check PASS, git diff --check clean at a912c4d."
+    }
+  ],
+  "notVerified": [
+    "npm run build (Angular SSR/prerender) and npm run test:e2e (Playwright) - not run by the auditor in either round; Lead-owned. D37 reports exit 0 for both; that is Lead-reported, not auditor-verified.",
+    "External sources were fetched in the first audit pass only; they were not re-fetched during this correction round. The two inaccessible sources remain inaccessible: TI TCAN1042 datasheet PDF and the RS Components TCAN1042 page (EVD-MC11-131 and EVD-MC11-109).",
+    "The 21 evidence records the authors themselves mark INACCESSIBLE/partial remain unverified, and no datasheet is retrieved (0/41); disclosed in D11 sections 0.2-0.3 and D23 section 10.",
+    "Historical command records in D2 section 1 (as true at programme entry) were not re-executed; only the present-state facts (ancestry, remote MC-11 head 0eceb86, PR #18, clean tree, tool versions) were re-verified.",
+    "Post-audit record refreshes PA-01..PA-05 are CLOSED_VERIFIED at a912c4d (see finalConfirmation); the final head is a record-refresh-only commit and no technical data changed since the re-verified 0eceb86.",
+    "Full MC-11 remains PARTIAL and can never be PASS without genuine supplier quotation evidence; no supplier contact, RFQ or quotation exists (0/0/0)."
+  ],
+  "residualNotes": [
+    "D2 line 30 and MASTER-PROMPT-REGISTRY row 11 describe 0eceb86 as 'current head'/'branch head'; the final head is a912c4d (record-refresh-only commit, no technical change). Non-blocking wording note; at a future docs touch phrase the head dynamically as 'current head tracked by PR #18' and keep 0eceb86 labelled as the re-verified delivery head.",
+    "External sources were fetched only in the first audit pass; no re-fetch was performed in the correction or final-record rounds. The two inaccessible sources (TI datasheet PDF, RS Components page) and the authors' 21 disclosed-inaccessible records remain as recorded; no claim is upgraded from them."
+  ]
+}

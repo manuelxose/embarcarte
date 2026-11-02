@@ -1,0 +1,113 @@
+{
+  "contractId": "MAREA-MC11-HARDWARE-EVIDENCE-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-11",
+  "date": "2026-11-02",
+  "owner": "lead",
+  "authority": "docs/marea/hardware/MC11-BASELINE-AND-GOVERNANCE.md",
+  "asOf": "2026-11-02",
+  "invariants": {
+    "COMMERCIAL_AVAILABILITY": "NOT_FOR_SALE",
+    "PRICE_APPROVED": "NONE",
+    "TRADEMARK_LEGAL_CLEARANCE": "NOT_GRANTED",
+    "SOURCE_IP_CLEARANCE": "NOT_CLEARED",
+    "OPEN_MARINE_WRITE": "PROHIBITED",
+    "NMEA2000_CERTIFIED": false,
+    "TESTED_COMPATIBILITY_ROWS": 0,
+    "AIS_TRANSMISSION_OFFERED": false,
+    "PILOT_SAFETY_GATE": "BLOCKED",
+    "REMOTE_HELM_CONTROL": false,
+    "CHART_RIGHTS_GRANTED": false,
+    "WEATHER_PROVIDER_RIGHTS": "NOT_GRANTED",
+    "FLEET_DEFAULT_HARDWARE": false,
+    "GOVERNANCE_CONTROLLER_DESIGNATED": false,
+    "SUPPLIER_CONTACT": "NOT_CONTACTED",
+    "RFQ_TRANSMISSION": "NOT_AUTHORIZED",
+    "PURCHASES": "NOT_AUTHORIZED",
+    "PROTOTYPE_PROCUREMENT": "NOT_AUTHORIZED",
+    "PHYSICAL_TESTS": "NOT_EXECUTED",
+    "CONFORMITY_CERTIFICATION": "NOT_ESTABLISHED",
+    "CE_MARKING_CLAIM": "PROHIBITED",
+    "ENVIRONMENTAL_RATING_CLAIM": "PROHIBITED",
+    "PRODUCTION_DEPLOYMENT": "NOT_AUTHORIZED",
+    "PUBLICATION_CHANGE": "NOT_AUTHORIZED",
+    "CUSTOMER_EVIDENCE": "NONE",
+    "CUSTOMER_WTP_VALIDATED": false,
+    "FLEET_TENANCY_IMPLEMENTED": false,
+    "FLEET_SLA_ESTABLISHED": false
+  },
+  "milestoneState": {
+    "mc11Verdict": "PARTIAL",
+    "internalFeasibilityScope": "PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE",
+    "formalProcurementEvidence": "BLOCKED_OR_NOT_OBTAINED",
+    "suppliersContacted": 0,
+    "rfqsSent": 0,
+    "purchasesMade": 0,
+    "prototypesProcured": 0,
+    "physicalTestsExecuted": 0,
+    "certificationsEstablished": 0,
+    "formalSupplierQuotations": 0,
+    "approvedProductionBom": 0,
+    "testedCompatibilityRows": 0,
+    "pilotSafetyGate": "BLOCKED",
+    "manufacturerOperatorIdentity": "UNDETERMINED",
+    "independentReview": "PARTIAL",
+    "reverifiedCommit": "0eceb8663204e6b5d82a137bb0cb50b742e667dc",
+    "reverifiedOn": "2026-11-02",
+    "openBlockingFindings": 0,
+    "openMajorFindings": 0,
+    "openMinorFindings": 0
+  },
+  "restrictions": [
+    {
+      "restrictionId": "RES-01",
+      "statement": "MAREA is a proposed commercial brand: no trademark use as registered and no branding claim is authorised.",
+      "status": "ENFORCED"
+    },
+    {
+      "restrictionId": "RES-02",
+      "statement": "No MAREA product or bundle is for sale, pre-orderable, quotable or purchasable.",
+      "status": "ENFORCED"
+    },
+    {
+      "restrictionId": "RES-03",
+      "statement": "No supplier has been contacted, no RFQ transmitted, no sample or prototype purchased and no laboratory engaged.",
+      "status": "ENFORCED"
+    },
+    {
+      "restrictionId": "RES-04",
+      "statement": "No NMEA 2000 certification, NMEA membership, manufacturer identification or tested compatibility exists.",
+      "status": "ENFORCED"
+    },
+    {
+      "restrictionId": "RES-05",
+      "statement": "No CE marking, declaration of conformity, EMC/RED approval, IP rating or maritime type approval is established.",
+      "status": "ENFORCED"
+    },
+    {
+      "restrictionId": "RES-06",
+      "statement": "PILOT remains safety-gated: no actuator, motor or steering control is designed, implemented, tested or offered.",
+      "status": "ENFORCED"
+    },
+    {
+      "restrictionId": "RES-07",
+      "statement": "AIS transmission is not offered; only receive-only integration or third-party equipment is assessed.",
+      "status": "ENFORCED"
+    },
+    {
+      "restrictionId": "RES-08",
+      "statement": "FLEET includes no hardware by default; any edge device is a conditional, explicitly contracted integration.",
+      "status": "ENFORCED"
+    },
+    {
+      "restrictionId": "RES-09",
+      "statement": "OPEN-MARINE remains read-only reference; no code is copied and no rights are cleared.",
+      "status": "ENFORCED"
+    },
+    {
+      "restrictionId": "RES-10",
+      "statement": "No public page, checkout, price list or product copy was changed by MC-11.",
+      "status": "ENFORCED"
+    }
+  ]
+}
