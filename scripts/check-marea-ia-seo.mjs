@@ -17,6 +17,7 @@ export const DATASETS = [
   'current-routes',
   'current-urls',
   'url-evidence',
+  'search-console-evidence',
   'proposed-ia',
   'proposed-routes',
   'slug-governance',
@@ -274,8 +275,12 @@ export function validateData(data, { root = process.cwd() } = {}) {
     if (dataset.publicationAuthorized !== false) {
       add('IA-003', `${name}.json publicationAuthorized must be false`);
     }
-    if (nice(dataset.evidenceState).includes('SEARCH_CONSOLE')) {
-      add('IA-018', `${name}.json claims Search Console evidence, which is unavailable`);
+    if (
+      name !== 'search-console-evidence' &&
+      name !== 'url-evidence' &&
+      nice(dataset.evidenceState).includes('SEARCH_CONSOLE')
+    ) {
+      add('IA-018', `${name}.json claims Search Console evidence outside the evidence datasets`);
     }
     for (const reference of asArray(dataset.crossReferences)) {
       const target = nice(reference).split('#')[0];
@@ -480,12 +485,143 @@ export function validateData(data, { root = process.cwd() } = {}) {
       add('IA-018', `${evidenceId} invalid evidenceClass ${item.evidenceClass}`);
     }
     if (item.evidenceClass === 'SEARCH_CONSOLE_VERIFIED') {
-      add('IA-018', `${evidenceId} claims Search Console evidence, which is unavailable`);
+      const gsc = byName('search-console-evidence');
+      if (!gsc?.property?.siteUrl) {
+        add('IA-018', `${evidenceId} claims Search Console evidence without the evidence dataset`);
+      } else if (!/sc-domain:embarcarte\.com/.test(nice(item.evidenceSource))) {
+        add('IA-018', `${evidenceId} does not name the verified Search Console property`);
+      } else if (!item.observedAt || item.observedAt === 'NOT_OBSERVED') {
+        add('IA-018', `${evidenceId} lacks a real capture timestamp`);
+      }
     }
     for (const value of Object.values(item)) {
       if (typeof value === 'string' && /GOOGLE_INDEXED/i.test(value)) {
         add('IA-018', `${evidenceId} claims GOOGLE_INDEXED`);
       }
+    }
+  }
+
+  const gscData = byName('search-console-evidence');
+  if (!gscData || Object.keys(gscData).length === 0) {
+    add('IA-071', 'search-console-evidence dataset is missing');
+  } else {
+    if (gscData.contractId !== 'MAREA-MC15-SEARCH-CONSOLE-EVIDENCE') {
+      add('IA-071', 'search-console-evidence contractId is not the expected contract');
+    }
+    if (gscData.evidenceState !== 'SEARCH_CONSOLE_VERIFIED') {
+      add('IA-071', 'search-console-evidence evidenceState must be SEARCH_CONSOLE_VERIFIED');
+    }
+    if (gscData.property?.siteUrl !== 'sc-domain:embarcarte.com') {
+      add('IA-071', 'search-console-evidence property must be sc-domain:embarcarte.com');
+    }
+    if (gscData.property?.permissionLevel !== 'siteFullUser') {
+      add('IA-071', 'search-console-evidence permissionLevel must be siteFullUser');
+    }
+    if (!gscData.property?.capturedAt) {
+      add('IA-071', 'search-console-evidence missing capture timestamp');
+    }
+    const inspections = asArray(gscData.inspections);
+    if (inspections.length !== 24) {
+      add('IA-071', `search-console-evidence must contain 24 inspections (${inspections.length})`);
+    }
+    const inspectionUrls = new Set();
+    for (const inspection of inspections) {
+      const url = nice(inspection.inspectionUrl);
+      if (!url.startsWith('https://embarcarte.com/')) {
+        add('IA-071', `search-console-evidence invalid inspection URL ${url}`);
+      }
+      if (inspectionUrls.has(url)) add('IA-071', `duplicate inspection URL ${url}`);
+      inspectionUrls.add(url);
+      if (!['PASS', 'NEUTRAL', 'FAIL'].includes(inspection.verdict)) {
+        add('IA-071', `${url} has invalid verdict ${inspection.verdict}`);
+      }
+      if (!inspection.coverageState) add('IA-071', `${url} lacks coverageState`);
+    }
+    const pass = inspections.filter((inspection) => inspection.verdict === 'PASS');
+    const noindex = inspections.filter((inspection) =>
+      /noindex/i.test(nice(inspection.coverageState)),
+    );
+    const notRecognized = inspections.filter(
+      (inspection) => inspection.classification === 'NOT_RECOGNIZED',
+    );
+    const publicNotIndexed = inspections.filter(
+      (inspection) => inspection.classification === 'PUBLIC_INDEXABLE_NOT_INDEXED',
+    );
+    const discovered = inspections.filter(
+      (inspection) => inspection.classification === 'DISCOVERED_NOT_INDEXED',
+    );
+    if (gscData.summary?.inspectedUrls !== inspections.length) {
+      add('IA-071', 'search-console-evidence summary inspectedUrls mismatch');
+    }
+    if (gscData.summary?.indexedConfirmed !== pass.length) {
+      add('IA-071', 'search-console-evidence summary indexedConfirmed mismatch');
+    }
+    if (gscData.summary?.excludedNoindex !== noindex.length) {
+      add('IA-071', 'search-console-evidence summary excludedNoindex mismatch');
+    }
+    if (gscData.summary?.notRecognized !== notRecognized.length) {
+      add('IA-071', 'search-console-evidence summary notRecognized mismatch');
+    }
+    if (gscData.summary?.publicIndexableNotIndexed !== publicNotIndexed.length) {
+      add('IA-071', 'search-console-evidence summary publicIndexableNotIndexed mismatch');
+    }
+    if (gscData.summary?.discoveredNotIndexed !== undefined) {
+      if (gscData.summary.discoveredNotIndexed !== discovered.length) {
+        add('IA-071', 'search-console-evidence summary discoveredNotIndexed mismatch');
+      }
+    }
+    for (const inspection of pass) {
+      const url = nice(inspection.inspectionUrl);
+      if (inspection.googleCanonical !== url || inspection.userCanonical !== url) {
+        add('IA-074', `${url} indexed inspection canonical is not the inspected URL`);
+      }
+    }
+    if (gscData.summary?.mareaIndexed !== 0) {
+      add('IA-071', 'search-console-evidence reports a MAREA URL as indexed');
+    }
+    if (gscData.summary?.sitemapSubmittedUrls !== 98) {
+      add('IA-071', 'search-console-evidence sitemap submitted URL count must be 98');
+    }
+    if (gscData.summary?.sitemapErrors !== 0) {
+      add('IA-071', 'search-console-evidence preferred sitemap must have 0 errors');
+    }
+    const mareaIndexed = pass.filter((inspection) =>
+      /\/marea/.test(nice(inspection.inspectionUrl)),
+    );
+    if (mareaIndexed.length > 0) {
+      add('IA-072', 'search-console-evidence marks a proposed MAREA URL as indexed');
+    }
+    const traslados = inspections.find((inspection) =>
+      /\/traslados$/.test(nice(inspection.inspectionUrl)),
+    );
+    if (!traslados) {
+      add('IA-073', 'search-console-evidence must record /traslados');
+    } else if (
+      traslados.verdict === 'PASS' ||
+      !['PUBLIC_INDEXABLE_NOT_INDEXED', 'DISCOVERED_NOT_INDEXED', 'NOT_RECOGNIZED'].includes(
+        traslados.classification,
+      )
+    ) {
+      add('IA-073', '/traslados must be recorded as public/indexable but not indexed');
+    }
+    const sitemaps = asArray(gscData.sitemaps);
+    const preferred = sitemaps.find(
+      (sitemap) => sitemap.path === 'https://embarcarte.com/sitemap.xml',
+    );
+    if (!preferred) add('IA-071', 'search-console-evidence missing sitemap.xml entry');
+    else if (preferred.submittedUrls !== 98 || preferred.errors !== '0') {
+      add('IA-071', 'search-console-evidence sitemap.xml must be 98 URLs / 0 errors');
+    }
+    for (const findingId of ['GSC-01', 'GSC-02', 'GSC-03', 'GSC-04', 'GSC-05']) {
+      if (!asArray(gscData.findings).some((finding) => finding.findingId === findingId)) {
+        add('IA-071', `search-console-evidence missing ${findingId}`);
+      }
+    }
+    if (JSON.stringify(gscData).includes('private_key')) {
+      add('IA-071', 'search-console-evidence must not contain key material');
+    }
+    if (/GOOGLE_INDEXED/.test(JSON.stringify(gscData))) {
+      add('IA-018', 'search-console-evidence uses the forbidden GOOGLE_INDEXED token');
     }
   }
 
@@ -1405,10 +1541,9 @@ export function validateData(data, { root = process.cwd() } = {}) {
   }
 
   // ------------------------------------------- forbidden search-console claims
+  // SEARCH_CONSOLE_VERIFIED is allowed only through the validated evidence dataset;
+  // the forbidden token remains GOOGLE_INDEXED, which no dataset may use.
   const serialized = JSON.stringify(data);
-  if (/"evidenceClass"\s*:\s*"SEARCH_CONSOLE_VERIFIED"/.test(serialized)) {
-    add('IA-018', 'dataset claims SEARCH_CONSOLE_VERIFIED');
-  }
   if (/GOOGLE_INDEXED/.test(serialized)) add('IA-018', 'dataset claims GOOGLE_INDEXED');
 
   return errors;

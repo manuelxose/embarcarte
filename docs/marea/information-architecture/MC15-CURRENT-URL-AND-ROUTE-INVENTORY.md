@@ -11,8 +11,8 @@
 | Machine data | `data/current-routes.json`, `data/current-urls.json`, `data/url-evidence.json` |
 | Contract | `MC15-DATA-CONTRACT.md` (contractVersion `1.0.0`) |
 | Status | `INTERNAL_PLANNING_ONLY` — `readOnly: true`, `publicationAuthorized: false`, `MC16_STARTED: false` |
-| Public observation | `NOT_PERFORMED` |
-| Indexation evidence | `INDEXATION_UNVERIFIED` |
+| Public observation | `PERFORMED_2026-11-03_READ_ONLY_SITEMAP_AND_THREE_URLS` |
+| Indexation evidence | `SEARCH_CONSOLE_VERIFIED_PARTIAL` (24 URL inspections, 2026-11-02) |
 | Live deployment verified | `false` |
 
 This document records what the site already has. It adds no route, changes no URL, adds no
@@ -31,9 +31,10 @@ MC-15 or to MC-16, and every one of them is `NOT_AUTHORIZED` today.
 
 **Hard limits of this document:**
 
-- It does **not** claim that any URL is indexed by Google. No Search Console property was
-  consulted, no `site:` query was run, no public URL was requested. The only permitted label is
-  `INDEXATION_UNVERIFIED`.
+- It does **not** claim that every URL is indexed by Google. A real Search Console property was
+  consulted on 2026-11-02/03 for 24 representative URLs; 16 are confirmed indexed, 2 are excluded by
+  noindex, 5 are not recognized and 1 public/indexable URL (`/traslados`) is not indexed. This is a
+  partial sample, not a census; see §20 and `MC15-SEARCH-CONSOLE-EVIDENCE.md`.
 - It does **not** prove runtime behaviour. It proves what the repository declares and what the
   local build emitted.
 - It does **not** state that MAREA is public, registered, available or for sale. MAREA remains a
@@ -45,16 +46,17 @@ MC-15 or to MC-16, and every one of them is `NOT_AUTHORIZED` today.
 
 | Class | Meaning | Used here |
 |---|---|---|
-| `REPOSITORY_VERIFIED` | A fact read from a file (or a build artefact) of the frozen commit, reproducible by opening that file. | **Yes — every record in `url-evidence.json`** |
-| `LOCAL_SSR_VERIFIED` | A fact observed by sending a request to a locally started SSR server. | **Yes, for the D07/D08/D09 evidence run of 2026-11-02** (built `dist` server, temporary `DATA_DIR`, port 4323). D02's own route and URL records remain `REPOSITORY_VERIFIED`, as recorded in `url-evidence.json`. |
-| `PUBLIC_OBSERVATION` | A fact observed against the public site. | **No — `NOT_PERFORMED`** (forbidden for this task) |
-| `SEARCH_CONSOLE_VERIFIED` | A fact taken from Search Console. | **Never claimed in MC-15** |
+| `REPOSITORY_VERIFIED` | A fact read from a file (or a build artefact) of the frozen commit, reproducible by opening that file. | **Yes — the 23 original records in `url-evidence.json`** |
+| `LOCAL_SSR_VERIFIED` | A fact observed by sending a request to a locally started SSR server. | **Yes, for the D07/D08/D09 evidence run of 2026-11-02** (built `dist` server, temporary `DATA_DIR`, port 4323). D02's own route and URL records remain `REPOSITORY_VERIFIED`. |
+| `PUBLIC_OBSERVATION` | A fact observed against the public site. | **Yes, 2026-11-03** — read-only sitemap fetch and three representative URLs (`/traslados`, `/en/delivery`, `/experiencias`). |
+| `SEARCH_CONSOLE_VERIFIED` | A fact taken from the verified Search Console property `sc-domain:embarcarte.com`. | **Yes, 2026-11-02** — 24 URL inspections recorded as `EV-GSC-001`…`EV-GSC-024`; partial sample, not a census. |
 | `ASSUMED` | A working assumption that is not evidence. | Only where explicitly labelled |
 | `UNKNOWN` | Not determinable from the available material. | Used as `NOT_OBSERVED` / `NOT_VERIFIED` |
 
-No MC-15 dataset, document or report may state that a URL is indexed by Google, and no MC-15
-record may cite Search Console as evidence. Where indexation matters, the only permitted value is
-`INDEXATION_UNVERIFIED`.
+No MC-15 dataset, document or report may state that **every** URL is indexed by Google. The only
+permitted indexation states are `SEARCH_CONSOLE_VERIFIED_PARTIAL` for the 24-URL sample and
+`INDEXATION_UNVERIFIED` for everything outside it. No full coverage count, ranking, traffic or
+revenue claim is made.
 
 ### 2.2 Inspection method
 
@@ -73,8 +75,9 @@ record may cite Search Console as evidence. Where indexation matters, the only p
    to `12 static ids × 2 locales` + `6 technology slugs × 2` + `30 guide slugs × 2` (set equality
    checked, zero missing, zero extra). `dist/` is git-ignored build output produced from a tree
    with no tracked source modification relative to the frozen commit.
-5. No request was sent to any server, local or public. Consequently every `observed*` field in
-   `url-evidence.json` is `NOT_OBSERVED`.
+5. The original repository pass sent no request. Later evidence runs (2026-11-02 local SSR and
+   Search Console; 2026-11-03 public read-only sitemap and three URLs) are recorded separately in
+   §20 and in `data/url-evidence.json`; they do not change the repository-derived records.
 
 ### 2.3 Identifier conventions
 
@@ -410,13 +413,14 @@ Why this is not a production number:
 2. `scripts/check-seo.mjs:132` asserts only `blocks.length >= 100` — a floor, not an inventory.
 3. The frozen tree's own database seeds only three **draft** products with `active = 0`
    (`src/server/db.ts:110-139`), so 101 is not even reproducible without the fixture.
-4. 101 is **not** Google indexation evidence. It is the number of `<loc>` entries one test run
-   produced. The indexation status of every URL in this document is `INDEXATION_UNVERIFIED`.
+4. 101 is **not** a production or Google indexation count. It is the number of `<loc>` entries one
+   test run produced. The indexation status of every URL is now `SEARCH_CONSOLE_VERIFIED_PARTIAL`
+   for the 24 inspected URLs and `INDEXATION_UNVERIFIED` outside that sample (§20).
 
 An independent predecessor statement agrees with the 98 baseline: `docs/marea/brand/
 WEBSITE-BRAND-MIGRATION.md` §7.1 records "98 static URLs (24 prerendered prose pages + 12
 technology-detail pages + 60 guide-detail pages + 2 shop lists)". MC-03 calls them "indexed"; MC-15
-records them as served and sitemap-eligible, because indexation is unverified (§18, O-03).
+records 16 of 24 sampled URLs as confirmed indexed and the rest as unverified (§20).
 
 ## 18. Structural observations, discrepancies and open items
 
@@ -427,7 +431,7 @@ a false premise.
 |---|---|---|---|
 | O-01 | `orderDetail` has **no explicit `serverRoutes` entry**: `src/app/app.routes.server.ts` declares client render for `cart`, `login` and `account` only, while `src/server.ts:30` lists `orderDetail` in `CLIENT_ROUTES`. A normal HTML request is served by the CSR-shell middleware, but a request that bypasses the shell middleware would fall through to the `**` route declared with `status: 404`. | `app.routes.server.ts:48-54`, `server.ts:29-30,239-252`; the shell path is asserted 200 in `check-i18n.mjs:554-559` | `orderDetail` is recorded as `Client (CSR shell)` with this caveat in `current-routes.json`. Any future touch of render modes must add the missing declaration; MC-15 proposes the fix but does not apply it. |
 | O-02 | The MC-14 **human-readable** page table (`MC14-MC15-HANDOFF.md` §4, `data/mc15-handoff-inputs.json` → `pageByPageIssues`) does not match the MC-14 **machine dataset** `website-findings.json`: the route/finding grouping is shifted, e.g. the handoff lists WEB-022 under `/cookies` while the dataset places it on `/sobre-nosotros`, and `/cookies` has no finding at all. | `website-findings.json` (34 records) vs `mc15-handoff-inputs.json` `pageByPageIssues` (8 rows) | MC-15 uses the machine dataset as the authority for route↔finding mapping; the handoff summary is treated as a narrative index. The mismatch is not corrected here (MC-14 files are frozen and out of scope) and must be reconciled by whoever owns MC-14 records. |
-| O-03 | MC-03 §7.1 labels the 98 URLs "indexed". The repository can show they are served and sitemapped; it cannot show they are indexed. | `WEBSITE-BRAND-MIGRATION.md` §7.1 | MC-15 uses "served / sitemap-eligible" and `INDEXATION_UNVERIFIED`. No dataset claims indexation. |
+| O-03 | MC-03 §7.1 labels the 98 URLs "indexed". The repository shows they are served and sitemapped; Search Console confirms 16 of 24 sampled URLs as indexed, not all 98. | `WEBSITE-BRAND-MIGRATION.md` §7.1; `data/search-console-evidence.json` | MC-15 uses `SEARCH_CONSOLE_VERIFIED_PARTIAL` for the sample and `INDEXATION_UNVERIFIED` outside it. No full-coverage claim. |
 | O-04 | The sitemap is built from the **filesystem** of the build output, not from the route registry. A registry route without a `Prerender` entry is invisible to the sitemap unless it is added by hand (as `shop` is). | `src/server.ts:139-155,195-201` | Any future MAREA route must be prerendered **or** explicitly added; the redirect/canonical registry (D04–D06) must state which. |
 | O-05 | `shopDetail` resolves without a `CanMatch` guard, unlike `technologyDetail`, `guideDetail` and `shopSample`. An unknown slug renders a 200 page with `noindex` and no canonical instead of a 404. | `app.routes.ts:74-75`, `shop-detail.ts:122-131` | Recorded as current behaviour. MC-15 does not change status codes; a future decision may revisit it. |
 | O-06 | `x-default` exists on the home pair only. Every other bilingual pair declares `es` + `en` and no `x-default`. | `seo.service.ts:134`; `check-seo.mjs:173-180` | D04's canonical/hreflang matrix must keep this rule or justify a change explicitly. |
@@ -442,15 +446,40 @@ legacy redirects, 96 prerendered paths, 98 static URLs, 141 concrete URL records
 ## 19. What this inventory does not establish
 
 - It does not establish that the site is deployed, reachable or currently serving these URLs.
-- It does not establish indexation, ranking, impressions, clicks or crawl status for any URL.
-- It does not establish sitemap submission, robots fetching or Search Console state.
+- It does not establish indexation, ranking, impressions, clicks or crawl status for every URL. It
+  records the 24-URL Search Console sample in §20 and leaves the rest `INDEXATION_UNVERIFIED`.
+- It does not establish sitemap submission for every future URL; it records the current
+  `sitemap.xml` submission and the invalid root-URL sitemap submission.
 - It does not establish that any MC-14 finding has been remediated: all 34 remain
   `NOT_REMEDIATED`.
 - It does not establish any MAREA route, slug, title, canonical, redirect or publication state.
   Every MAREA page in MC-15 remains `PROPOSED_INTERNAL_NOT_DEPLOYABLE`.
 - It does not start MC-16.
 
-## 20. Cross-references
+## 20. Search Console verification (2026-11-02)
+
+Read-only Search Console evidence was captured for `sc-domain:embarcarte.com`
+(permission `siteFullUser`) using the service account
+`guiatv-gsc@guia-tv-8fe3c.iam.gserviceaccount.com`:
+
+| Metric | Count |
+|---|---:|
+| URLs inspected | 24 |
+| Indexed confirmed | 16 |
+| Excluded by noindex | 2 |
+| Not recognized | 5 |
+| Public/indexable but not indexed | 1 (`/traslados`; coverage wording varies between “not recognized” and “discovered, currently not indexed”) |
+| MAREA URLs indexed | 0 |
+| Sitemap submitted URLs | 98 |
+
+The preferred sitemap (`sitemap.xml`) is submitted with 0 errors and 98 URLs; the home URL was
+also submitted as a sitemap and reports 1 error. `/traslados` is public, indexable, self-canonical
+and in the sitemap but not indexed; Search Console coverage wording varies between “does not
+recognize” and “discovered, currently not indexed” — a pre-existing operational gap recorded as
+`GSC-01`. Private, sample and proposed MAREA URLs are not recognized or are noindex, as expected.
+Full evidence: `MC15-SEARCH-CONSOLE-EVIDENCE.md` and `data/search-console-evidence.json`.
+
+## 21. Cross-references
 
 | Reference | Why it is cited |
 |---|---|
@@ -458,7 +487,8 @@ legacy redirects, 96 prerendered paths, 98 static URLs, 141 concrete URL records
 | `MC15-EXISTING-URL-PRESERVATION-POLICY.md` (D03) | Binding preservation rules for every URL catalogued here. |
 | `data/current-routes.json` | 28 route records (21 public + 7 admin) with the §3/§4 tables. |
 | `data/current-urls.json` | 141 concrete URL records with `migrationDisposition` and `preservationReason`. |
-| `data/url-evidence.json` | 23 evidence records, one per URL class, `REPOSITORY_VERIFIED` only. |
+| `data/url-evidence.json` | 47 evidence records: 23 `REPOSITORY_VERIFIED` + 24 `SEARCH_CONSOLE_VERIFIED`. |
+| `data/search-console-evidence.json` | 24 URL inspections, sitemap status, five GSC findings and limitations (partial sample). |
 | `src/app/core/i18n/locale-routes.ts` | The only list of public URLs. |
 | `src/app/app.routes.ts`, `src/app/app.routes.server.ts` | Route table and render-mode table. |
 | `src/app/core/seo.service.ts` | Canonical/hreflang derivation. |

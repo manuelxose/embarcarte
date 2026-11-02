@@ -23,7 +23,7 @@ Every dataset root object contains:
   "owner": "<agent or role>",
   "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
   "generationMethod": "manual repository inspection | deterministic derivation | local SSR observation",
-  "evidenceState": "REPOSITORY_VERIFIED | LOCAL_SSR_VERIFIED | PUBLIC_OBSERVATION | ASSUMED | SEARCH_CONSOLE_UNVERIFIED",
+  "evidenceState": "REPOSITORY_VERIFIED | LOCAL_SSR_VERIFIED | PUBLIC_OBSERVATION | SEARCH_CONSOLE_VERIFIED | ASSUMED",
   "scope": "MC-15 internal bilingual IA/SEO planning",
   "readOnly": true,
   "publicationAuthorized": false,
@@ -103,7 +103,8 @@ Each file uses the common envelope and the listed item fields. Additional fields
 
 - `current-routes.json` items: `routeId, es, en, pageFamily, contentSource, renderMode, dynamic, private, admin, guards, component, translationState, indexable, sitemapExpected, notes`.
 - `current-urls.json` items: `urlId, routeId, routePattern, concreteUrl, locale, pageFamily, contentSource, renderMode, robotsPolicy, sitemapMembership, publicationState, migrationDisposition, preservationReason, evidenceSource, observedStatus`.
-- `url-evidence.json` items: `evidenceId, urlId, evidenceClass, evidenceSource, observedAt, status, canonicalObserved, hreflangObserved, sitemapObserved, robotsObserved, notes`. `evidenceClass` ∈ `REPOSITORY_VERIFIED, LOCAL_SSR_VERIFIED, PUBLIC_OBSERVATION, SEARCH_CONSOLE_VERIFIED, ASSUMED, UNKNOWN`. Never claim `SEARCH_CONSOLE_VERIFIED` or `GOOGLE_INDEXED`.
+- `url-evidence.json` items: `evidenceId, urlId, evidenceClass, evidenceSource, observedAt, status, canonicalObserved, hreflangObserved, sitemapObserved, robotsObserved, notes`. `evidenceClass` ∈ `REPOSITORY_VERIFIED, LOCAL_SSR_VERIFIED, PUBLIC_OBSERVATION, SEARCH_CONSOLE_VERIFIED, ASSUMED, UNKNOWN`. `SEARCH_CONSOLE_VERIFIED` is allowed only when `search-console-evidence.json` records the real property, capture timestamp and inspection; `GOOGLE_INDEXED` is never allowed.
+- `search-console-evidence.json`: `property{siteUrl, permissionLevel, capturedAt, credentialEmail, credentialMaterialStored}, sitemaps[], inspections[]{inspectionUrl, verdict, coverageState, robotsTxtState, indexingState, lastCrawlTime, pageFetchState, googleCanonical, userCanonical, classification}, summary, findings[], limitations[]`. It must not contain key material or access tokens. Its evidence is partial and never a full index census.
 - `proposed-ia.json` items: `nodeId, parentId, level, nodeType, routeId, entityId, publicationStatus, indexationAuthorized, commercialTransactionAuthorized, blockingGateIds, sortOrder`.
 - `proposed-routes.json` items: `routeId, pageId, entityId, entityType, es, en, dynamic, localeIdenticalSlug, collisionStatus, collidesWith, status, publicationStatus, implementationReady, indexationAuthorized, commercialTransactionAuthorized, blockingGateIds, evidenceState`.
 - `slug-governance.json` items: `ruleId, rule, appliesTo, normalization, testId`.

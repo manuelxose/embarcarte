@@ -9,7 +9,7 @@
 | Base commit | `e0be1e457456a401a529e1912770e07ed9a863e4` |
 | Date | 2026-11-02 |
 | Status | `INTERNAL_PLANNING_ONLY` |
-| Indexation state | `INDEXATION_UNVERIFIED` |
+| Indexation state | `SEARCH_CONSOLE_VERIFIED_PARTIAL` (24-URL sample, 2026-11-02) |
 | MC16_STARTED | `false` |
 
 ## 1. Boundary and evidence state
@@ -18,16 +18,20 @@ This contract states the **policy** for HTTP status, robots meta, `X-Robots-Tag`
 hreflang, sitemap membership, structured-data eligibility and publication gate per page class. It
 changes no header, no meta tag, no sitemap entry and no `robots.txt` line.
 
-**`INDEXATION_UNVERIFIED` applies to every URL.** There is no Search Console access in this
-milestone, so:
+**Indexation is partially verified by a real Search Console sample.** The property
+`sc-domain:embarcarte.com` was inspected read-only on 2026-11-02/03 for 24 representative URLs:
+16 are confirmed indexed, 2 are excluded by noindex, 5 are not recognized and 1 public/indexable
+URL (`/traslados`) is not indexed. Everything outside that sample remains
+`INDEXATION_UNVERIFIED`. Therefore:
 
 - no URL may be described as `GOOGLE_INDEXED`;
-- no indexation, impression or coverage count may be asserted;
-- "indexable" means *permitted by policy*, never *present in an index*.
+- no full indexation, impression or coverage count may be asserted;
+- "indexable" means *permitted by policy*, never *present in an index* by itself.
 
-Evidence classes actually used: `REPOSITORY_VERIFIED` (code inspection) and
-`LOCAL_SSR_VERIFIED` (isolated SSR run, disposable database, 2026-11-02). No `PUBLIC_OBSERVATION`
-was performed.
+Evidence classes actually used: `REPOSITORY_VERIFIED` (code inspection), `LOCAL_SSR_VERIFIED`
+(isolated SSR run, disposable database, 2026-11-02), `PUBLIC_OBSERVATION` (2026-11-03 sitemap and
+three URLs) and `SEARCH_CONSOLE_VERIFIED` (24 URL inspections, 2026-11-02). Full addendum:
+`MC15-SEARCH-CONSOLE-EVIDENCE.md`.
 
 ## 2. The current sitemap generator
 
@@ -194,6 +198,26 @@ is closed, downgraded or marked remediated by this document.
 | `x-default` count and target | sitemap scan | 2, both `https://embarcarte.com/` |
 | 404 behaviour | direct probes | `/marea`, `/en/marea`, `/productos/does-not-exist` → 404 with noindex |
 
-**What is not verified:** real indexation, crawl behaviour in production, Google's rendering of the
-client-rendered private/admin surfaces, and any behaviour of an unpublished MAREA URL (there is
-none to observe). `INDEXATION_UNVERIFIED` remains the honest state of the whole indexation model.
+## Search Console observation
+
+| Metric | Value |
+|---|---|
+| Property | `sc-domain:embarcarte.com` (siteFullUser) |
+| Captured | 2026-11-02, read-only |
+| URLs inspected | 24 |
+| Indexed confirmed | 16 |
+| Excluded by noindex | 2 (`/carrito`, `/cuenta`) |
+| Not recognized | 5 (private `/acceso`; sample; three proposed MAREA URLs) |
+| Public/indexable but not indexed | 1 (`/traslados`; coverage wording varies between “not recognized” and “discovered, currently not indexed”) |
+| Sitemap submitted URLs | 98 (`sitemap.xml`, 0 errors) |
+| Extra invalid sitemap submission | home URL, 1 error |
+| MAREA URLs indexed | 0 |
+
+`/traslados` is the one public/indexable/in-sitemap URL that Search Console does not recognize
+(`GSC-01`). It is a pre-existing operational gap, not an MC-15 implementation defect, and no live
+change is authorized here. The sitemap `indexed: 0` field is not a coverage count (`GSC-03`).
+
+**What is not verified:** full 98-URL coverage, ranking, traffic, crawl behaviour in production,
+Google's rendering of the client-rendered private/admin surfaces, and any behaviour of an
+unpublished MAREA URL (there is none to observe). The 24-URL sample is
+`SEARCH_CONSOLE_VERIFIED_PARTIAL`; everything outside it remains `INDEXATION_UNVERIFIED`.

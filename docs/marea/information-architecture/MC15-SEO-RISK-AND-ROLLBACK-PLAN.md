@@ -180,7 +180,7 @@ entity with the same status, canonical, hreflang and robots policy as the snapsh
 | Redirect configuration version recorded | `PARTIAL` | the redirect map dataset and the registry define the expected set; no release-time version record exists |
 | Application rollback dependencies verified | `NO` | no rebuild-from-SHA check, no schema version record, no cache-purge procedure, no media inventory |
 | Rehearsal performed | `NO` | D15 Phase 5 requires at least one rehearsal before release |
-| Monitoring available | `NO` | no Search Console access; no monitoring harness exists |
+| Monitoring available | `PARTIAL` | read-only Search Console access exists (24-URL sample, 2026-11-02), but there is no monitoring harness, alerting or SLA |
 | **Overall** | **`PLAN_ONLY — NOT_READY_TO_EXECUTE`** | nothing here authorises a release; the plan is ready to be rehearsed, not executed |
 
 MC-15 deliberately does **not** claim rollback readiness. Claiming it without a snapshot, a
@@ -208,8 +208,9 @@ register against the risks they affect. No finding is closed and no gate is clos
 
 - It does not claim that any redirect, canonical, hreflang or structured-data change is safe to
   deploy; it claims only that a way back is defined.
-- It does not claim monitoring exists, that Search Console is available, or that any indexation
-  measurement has been taken.
+- It does not claim a full monitoring system exists. Search Console read-only access exists and a
+  24-URL sample was measured on 2026-11-02, but there is no monitoring harness, alerting, SLA or
+  full 98-URL census.
 - It does not claim a deployment identifier, a release number, a pipeline run or a change ticket:
   none exists, and inventing one would make the rollback plan unusable.
 - It does not authorise a release, a merge, a redirect activation or a publication.

@@ -10,8 +10,8 @@
   "scope": "MC-15 internal bilingual IA/SEO planning",
   "readOnly": true,
   "publicationAuthorized": false,
-  "publicObservation": "NOT_PERFORMED",
-  "indexationEvidence": "INDEXATION_UNVERIFIED",
+  "publicObservation": "PERFORMED_2026-11-03_READ_ONLY_SITEMAP_AND_THREE_URLS",
+  "indexationEvidence": "SEARCH_CONSOLE_VERIFIED_PARTIAL",
   "liveDeploymentVerified": false,
   "mc16Started": false,
   "crossReferences": [
@@ -22,7 +22,10 @@
     "src/app/app.routes.ts#routes",
     "src/app/app.routes.server.ts#serverRoutes",
     "docs/marea/information-architecture/data/current-urls.json#MAREA-MC15-CURRENT-URLS",
-    "docs/marea/information-architecture/data/url-evidence.json#MAREA-MC15-URL-EVIDENCE"
+    "docs/marea/information-architecture/data/url-evidence.json#MAREA-MC15-URL-EVIDENCE",
+    "docs/marea/information-architecture/data/search-console-evidence.json#MAREA-MC15-SEARCH-CONSOLE-EVIDENCE",
+    "docs/marea/information-architecture/data/search-console-evidence.json#MAREA-MC15-SEARCH-CONSOLE-EVIDENCE",
+    "docs/marea/information-architecture/data/search-console-evidence.json#MAREA-MC15-SEARCH-CONSOLE-EVIDENCE"
   ],
   "summary": {
     "publicRouteIds": 21,
@@ -38,7 +41,8 @@
     "nonIndexableRouteIds": 11,
     "legacyRedirectPatterns": 3,
     "unknownRoutePatterns": 1,
-    "computeCheck": "21 public + 7 admin = 28; 12 prerender + 3 server (shop, shopDetail, shopSample) + 4 client (cart, login, account, orderDetail) + 2 pattern-only (legacy redirects, unknown route) = 21."
+    "computeCheck": "21 public + 7 admin = 28; 12 prerender + 3 server (shop, shopDetail, shopSample) + 4 client (cart, login, account, orderDetail) + 2 pattern-only (legacy redirects, unknown route) = 21.",
+    "indexationEvidence": "SEARCH_CONSOLE_VERIFIED_PARTIAL"
   },
   "items": [
     {

@@ -92,9 +92,10 @@ recorded authorisation, a redirect map entry with a one-hop destination, an upda
 `hreflang`/sitemap plan, the automated gates green, and a post-change crawl comparison. Until all
 five exist, the URL does not move.
 
-**R-13 (no invented preservation claims).** Preservation is asserted only from repository
-evidence (`REPOSITORY_VERIFIED`). No MC-15 document may state that a URL is indexed, ranked or
-crawled; the only permitted label is `INDEXATION_UNVERIFIED`.
+**R-13 (no invented preservation claims).** Preservation is asserted from repository evidence
+(`REPOSITORY_VERIFIED`) and, where inspected, Search Console evidence. No MC-15 document may state
+that every URL is indexed, ranked or crawled; the permitted states are
+`SEARCH_CONSOLE_VERIFIED_PARTIAL` for the 24-URL sample and `INDEXATION_UNVERIFIED` outside it.
 
 ## 3. Disposition vocabulary
 
@@ -169,7 +170,7 @@ authorisation supersedes them:
 | P-06 | Making a private, admin or sample URL indexable, or adding one to the sitemap. | Leaks private data or invents indexable samples; §2 R-08. |
 | P-07 | Translating slugs into English (`/en/technology/navigator`). | Requires a redirect strategy MC-15 does not own; §2 R-06. |
 | P-08 | Changing a route's canonical, `hreflang`, sitemap membership or robots policy while claiming "the URL did not change". | Preservation includes the metadata contract; §2 R-11. |
-| P-09 | Declaring any URL "indexed", "Google-indexed" or "verified in Search Console". | No such evidence exists in MC-15; §2 R-13. |
+| P-09 | Declaring any URL "indexed", "Google-indexed" or "verified in Search Console" beyond the recorded 24-URL sample. | `SEARCH_CONSOLE_VERIFIED_PARTIAL` is supported only by `data/search-console-evidence.json`; everything else is `INDEXATION_UNVERIFIED`; §2 R-13. |
 | P-10 | Adding a redirect that is "temporary" (302/307) to a MAREA page and later promoting it, bypassing the change procedure. | §2 R-12 forbids the change without the five elements. |
 
 ## 6. Legacy redirect invariants
@@ -236,7 +237,8 @@ database rows, so no product URL may move and none may be retired by a bulk rewr
   sitemap entry.
 - It does not authorise any change to `src/`, `public/`, `package.json`, deployment configuration or
   any MC-14 artefact.
-- It does not authorise publication, indexing requests, sitemap submission or Search Console work.
+- It does not authorise publication, indexing requests, sitemap submission, Search Console writes or
+  re-indexing. The 2026-11-02 Search Console inspection was read-only.
 - It does not close any of the 13 MC-14 release gates; `GATE-WEBSITE-REMEDIATION` stays
   `EVIDENCE_REQUIRED` and the other twelve stay `BLOCKED`.
 - It does not start MC-16 and does not treat MC-16 work as done.

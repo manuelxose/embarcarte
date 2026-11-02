@@ -119,14 +119,22 @@ Allowed evidence classes:
 - `REPOSITORY_VERIFIED` — inspected in this working tree at the frozen base.
 - `LOCAL_SSR_VERIFIED` — observed from an isolated local SSR run with disposable
   data.
-- `PUBLIC_OBSERVATION` — read-only public observation, only if performed; not
-  performed in this milestone.
-- `SEARCH_CONSOLE_VERIFIED` — requires genuine Search Console access; **none is
-  available**, so this class must not appear.
+- `PUBLIC_OBSERVATION` — read-only public observation; performed on 2026-11-03
+  for the sitemap and three representative URLs.
+- `SEARCH_CONSOLE_VERIFIED` — real Search Console access now exists: property
+  `sc-domain:embarcarte.com`, permission `siteFullUser`, service account
+  `guiatv-gsc@guia-tv-8fe3c.iam.gserviceaccount.com`. The addendum captured 24 URL
+  inspections and the sitemap status on 2026-11-02. It is a **partial sample**, not
+  a full census.
 - `ASSUMED` / `UNKNOWN` — explicitly labelled.
 
-Search-engine indexation state is `INDEXATION_UNVERIFIED` throughout. No URL may
-be labelled `GOOGLE_INDEXED`, and no indexation count may be invented.
+Search-engine indexation is `SEARCH_CONSOLE_VERIFIED_PARTIAL`: 16 of 24 inspected
+URLs are confirmed indexed, 2 are excluded by noindex, 5 are not recognized and 1
+public/indexable URL (`/traslados`) is not indexed. No full coverage count is
+claimed, no URL may be labelled `GOOGLE_INDEXED`, and no indexation count may be
+invented. Earlier `INDEXATION_UNVERIFIED` statements in this package apply only to
+the URLs outside the inspected sample and are superseded by the
+`MC15-SEARCH-CONSOLE-EVIDENCE.md` addendum where they conflict.
 
 ## 6. Agent execution model
 

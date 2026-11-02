@@ -1670,3 +1670,15 @@ no merge, no deployment.
 **Evidence.** `MC15-MC16-HANDOFF.md`; `data/mc16-handoff-inputs.json`; D17; D13.
 
 **Status effect.** Handoff ready with named gaps; no MC-16 execution.
+
+## D-067 - 2026-11-03 - MC-15 adds verified, partial Search Console evidence without changing publication status
+
+**Context.** The initial MC-15 delivery recorded `INDEXATION_UNVERIFIED` because no Search Console access was available. A real service account (`guiatv-gsc@guia-tv-8fe3c.iam.gserviceaccount.com`) with `siteFullUser` access to `sc-domain:embarcarte.com` was subsequently provided, so the external-indexation limitation could be tested read-only instead of remaining an assumption.
+
+**Decision.** Add a Search Console evidence addendum: 24 representative URL inspections and the sitemap status captured on 2026-11-02 and refreshed on 2026-11-03, recorded in `MC15-SEARCH-CONSOLE-EVIDENCE.md`, `data/search-console-evidence.json` and 24 `SEARCH_CONSOLE_VERIFIED` records in `data/url-evidence.json`. The result is 16 indexed, 2 excluded by noindex, 5 not recognized and 1 public/indexable URL not indexed (`/traslados`; coverage wording varies between "no reconocida" and "descubierta sin indexar"), with 0 MAREA URLs indexed. `/traslados` is public, indexable and in the 98-URL sitemap but not indexed (`GSC-01`, pre-existing operational gap); the home URL is also submitted as an invalid sitemap with 1 error (`GSC-02`). The sample is not a full census, so `MC15_VERDICT` remains PARTIAL, `MC15_PUBLICATION` and `MC15_LIVE_MIGRATION` remain NOT_AUTHORIZED, and no full coverage, ranking or traffic claim is made. The addendum is verified independently by a non-authoring reviewer.
+
+**Rationale.** Real read-only evidence is better than an unverified assumption, but a 24-URL sample cannot justify a full-coverage claim or a publication authorization. The two operational findings must be recorded as post-MC-15 debt rather than hidden or closed.
+
+**Evidence.** `MC15-SEARCH-CONSOLE-EVIDENCE.md`; `data/search-console-evidence.json`; `data/url-evidence.json` (`EV-GSC-001`…`EV-GSC-024`); `data/indexation-policy.json`; `data/risk-register.json` (`SEO-RISK-22`); `MC15-SEARCH-CONSOLE-REVIEW.md`; D20/D21/D22.
+
+**Status effect.** Indexation evidence `SEARCH_CONSOLE_VERIFIED_PARTIAL`; overall verdict still PARTIAL; no merge, deployment, publication, indexation request or MC-16 start.

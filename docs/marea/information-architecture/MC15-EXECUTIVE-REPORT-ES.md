@@ -32,9 +32,10 @@ pruebas adversariales pasan.
 
 El **veredicto global es PARTIAL** porque:
 
-1. No hay evidencia externa de indexación: no se dispone de Search Console y no se
-   ha realizado ninguna consulta a un motor de búsqueda. Toda la superficie queda
-   `INDEXATION_UNVERIFIED`.
+1. La evidencia externa de indexación es **parcial**: Search Console confirma 16 de
+   24 URLs inspeccionadas, 2 excluidas por noindex, 5 no reconocidas y 1 URL
+   pública/indexable no indexada (`/traslados`); no es un censo de las 98 URLs del
+   sitemap. `/traslados` es un hallazgo operativo preexistente (`GSC-01`).
 2. La migración en vivo, la publicación de páginas MAREA y la indexación no están
    autorizadas por MC-15.
 3. La validación heredada `test:financial` falla por un defecto **preexistente**
@@ -78,9 +79,10 @@ vivo, ninguna redirección nueva, ningún sitemap ni ninguna venta.
   `shopDetail` solo emite alternate EN cuando el producto tiene traducción
   completa.
 - **Evidencia**: `REPOSITORY_VERIFIED` para el inventario; ejecución SSR aislada
-  del 2026-11-02 (build `dist`, `DATA_DIR` temporal, puerto 4323/4324) para
-  sitemap, canonical, hreflang, robots, estados y redirects. Ninguna observación
-  pública ni de Search Console.
+  del 2026-11-02 (build `dist`, `DATA_DIR` temporal, puertos 4323/4324) para
+  sitemap, canonical, hreflang, robots, estados y redirects; observación pública
+  read-only del 2026-11-03 (sitemap y tres URLs); y **Search Console verificado
+  el 2026-11-02** para 24 URLs representativas.
 
 ---
 
@@ -181,8 +183,21 @@ el 301 activo.
   **no se modifica**. Cero `Product`/`Offer`/precio/disponibilidad/rating/review/
   certificación para MAREA. La elegibilidad de producto se decide con
   independencia de que el producto esté definido internamente.
-- Toda la indexación queda `INDEXATION_UNVERIFIED`; no se afirma que Google haya
-  indexado ninguna URL.
+- **Search Console (2026-11-02/03, read-only)**: propiedad
+  `sc-domain:embarcarte.com` con permiso `siteFullUser`; 24 URLs inspeccionadas:
+  **16 indexadas**, 2 excluidas por noindex (`/carrito`, `/cuenta`), **5 no
+  reconocidas** y **1 pública/indexable no indexada** (`/traslados`; el texto de
+  cobertura varía entre “no reconoce” y “descubierta, actualmente sin indexar”).
+  **0 URLs MAREA indexadas.**
+- **Sitemap en Search Console**: `sitemap.xml` enviado con **98 URLs, 0 errores**;
+  además, la home `https://embarcarte.com/` figura enviada como sitemap con
+  **1 error** (envío inválido, deuda operativa `GSC-02`).
+- **`/traslados`**: pública, indexable, autocanónica y en el sitemap, pero Google
+  no la reconoce (`GSC-01`). Es un hallazgo operativo preexistente, fuera del
+  alcance de implementación de MC-15.
+- La indexación queda `SEARCH_CONSOLE_VERIFIED_PARTIAL` para las 24 URLs
+  inspeccionadas y `INDEXATION_UNVERIFIED` para el resto. No se afirma un censo
+  completo, ni ranking, ni tráfico, ni ingresos.
 
 ---
 
@@ -278,8 +293,8 @@ sin cambio.
 
 | Gate | Resultado |
 |---|---|
-| `npm run test:ia-seo` | PASS — 19 datasets, 21 rutas actuales, 23 propuestas, 34 hallazgos, 13 gates |
-| `npm run test:ia-seo:unit` | PASS — 58/58 pruebas |
+| `npm run test:ia-seo` | PASS — 20 datasets, 21 rutas actuales, 23 propuestas, 34 hallazgos, 13 gates |
+| `npm run test:ia-seo:unit` | PASS — 63/63 pruebas |
 | Mutaciones adversariales del auditor | 21/21 rechazadas por su motivo previsto |
 | `test:i18n`, `test:commerce`, `test:seo`, `test:backup` | PASS |
 | `test:legal-commercial` (+unit) | PASS |
@@ -287,8 +302,11 @@ sin cambio.
 | `format:check`, `build`, `test:e2e` (15/15), `npm audit --omit=dev --audit-level=high`, `git diff --check` | PASS |
 | `test:financial` / `test:financial:unit` | **FAIL preexistente** — V-18: la fila 14 del registro está en `PARTIAL` desde MC-14 `2626853`; el validador financiero no se actualizó. No es una regresión de MC-15 y no se ha modificado ningún archivo financiero. |
 | SSR aislado | 98 URLs de sitemap con catálogo vacío; 101 con el fixture heredado; 3×301 de un salto; `/marea` 404; privadas noindex sin canonical; `x-default` solo home ES. |
+| Search Console (read-only) | 24 inspecciones: 16 indexadas, 2 noindex, 5 no reconocidas y 1 pública/indexable no indexada (`/traslados`); sitemap 98/0 errores; home enviada como sitemap con 1 error; 0 MAREA indexadas. |
 
-No se ha ejecutado ninguna prueba contra Search Console ni contra el sitio público.
+Se ejecutaron pruebas **contra Search Console en modo read-only** (24 inspecciones y
+sitemaps) y una observación pública read-only del sitemap y tres URLs. No se ejecutó
+ninguna escritura, envío de sitemap, solicitud de indexación ni cambio en vivo.
 Ninguna prueba bloqueada o no ejecutada se reporta como PASS.
 
 ---
@@ -352,13 +370,15 @@ MC15_CURRENT_ROUTE_INVENTORY = 21 routeIds / 28 route records / 141 concrete URL
 MC15_PROPOSED_ROUTE_REGISTRY = 23 routes (3 hubs + 9 families + 6 bundles + configurator + professionals + installers + support + documentation), all PROPOSED_INTERNAL_NOT_DEPLOYABLE
 MC15_REDIRECT_MAP = 53 records (3 existing active 301 + 42 KEEP_AS_IS + 7 admin internal + 1 conditional proposed); 0 activated
 MC15_CANONICAL_HREFLANG = 88 rows / 44 pageIds; 15 reciprocal groups; 1 x-default (ES home); 46 BLOCKED_NO_CANONICAL proposed
-MC15_SITEMAP_INDEXATION_POLICY = 14 classes; 0 MAREA sitemap-eligible; 98/101 local observation; INDEXATION_UNVERIFIED
+MC15_SITEMAP_INDEXATION_POLICY = 14 classes; 0 MAREA sitemap-eligible; 98 sitemap URLs; 24-URL Search Console sample
+MC15_SEARCH_CONSOLE_EVIDENCE = 24 inspected: 16 indexed / 2 noindex / 5 not recognized / 1 public-indexable-not-indexed (/traslados, GSC-01); sitemap 98/0 errors; root sitemap GSC-02; 0 MAREA indexed
 MC15_MC14_FINDINGS_COVERAGE = 34/34 mapped; 0 remediated; 0 closed
 MC15_INDEPENDENT_REVIEW = PASS after corrections (d1d7a1a); 0 BLOCKING / 0 MAJOR / 0 MINOR open; 3 INFORMATIONAL accepted
+MC15_SEARCH_CONSOLE_REVIEW = PENDING_ADDENDUM_VERIFICATION
 
 MC15_LIVE_MIGRATION = NOT_AUTHORIZED
 MC15_PUBLICATION = NOT_AUTHORIZED
-MC15_INDEXATION_EVIDENCE = NOT_AVAILABLE_INDEXATION_UNVERIFIED
+MC15_INDEXATION_EVIDENCE = SEARCH_CONSOLE_VERIFIED_PARTIAL_24_URLS
 
 MC14_VERDICT = PARTIAL
 MC14_INTERNAL_LEGAL_GOVERNANCE_SCOPE = PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE

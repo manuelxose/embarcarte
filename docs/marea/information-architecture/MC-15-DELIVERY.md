@@ -27,14 +27,17 @@ MC16_STARTED: false
 MC15_VERDICT = PARTIAL
 MC15_INTERNAL_IA_SEO_SCOPE = PASS_INTERNAL_IA_SEO_SCOPE
 MC15_INDEPENDENT_REVIEW = PASS after corrections (d1d7a1a)
-MC15_INDEXATION_EVIDENCE = NOT_AVAILABLE_INDEXATION_UNVERIFIED
+MC15_INDEXATION_EVIDENCE = SEARCH_CONSOLE_VERIFIED_PARTIAL_24_URLS
 ```
 
-The internal planning scope is PASS. The overall milestone is PARTIAL because
-external indexation evidence is unavailable (no Search Console), the live
-migration/publication is not authorized, and the inherited `test:financial` V-18
-failure is pre-existing at the MC-14 baseline (registry row 14 `PARTIAL` since
-`2626853`, financial validator unchanged by MC-15).
+The internal planning scope is PASS. The overall milestone is PARTIAL because the
+external indexation evidence is **partial** (24 URL inspections, not the 98-URL
+census), the live migration/publication is not authorized, and the inherited
+`test:financial` V-18 failure is pre-existing at the MC-14 baseline (registry row
+14 `PARTIAL` since `2626853`, financial validator unchanged by MC-15). Search
+Console confirms 16 of 24 inspected URLs as indexed; `/traslados` is a pre-existing
+operational gap (`GSC-01`) and the root URL is submitted as an invalid sitemap
+(`GSC-02`).
 
 ## 3. Deliverables
 
@@ -57,23 +60,31 @@ failure is pre-existing at the MC-14 baseline (registry row 14 `PARTIAL` since
 | D15 | Phased SEO migration plan | `MC15-PHASED-SEO-MIGRATION-PLAN.md` |
 | D16 | SEO risk and rollback plan | `MC15-SEO-RISK-AND-ROLLBACK-PLAN.md` |
 | D17 | MC-16 handoff | `MC15-MC16-HANDOFF.md` |
-| D18 | Machine-readable contracts (19 datasets) | `data/*.json` |
+| D18 | Machine-readable contracts (20 datasets) | `data/*.json` |
 | D19 | Deterministic validator and adversarial tests | `scripts/check-marea-ia-seo.mjs`, `scripts/check-marea-ia-seo.test.mjs` |
 | D20 | Independent review | `MC15-INDEPENDENT-REVIEW.md`, `data/review-findings.json` |
 | D21 | Spanish executive report | `MC15-EXECUTIVE-REPORT-ES.md` |
 | D22 | Final delivery record | this file |
 | — | Data contract | `MC15-DATA-CONTRACT.md` |
+| — | Search Console evidence addendum | `MC15-SEARCH-CONSOLE-EVIDENCE.md`, `data/search-console-evidence.json` |
+| — | Search Console independent verification | `MC15-SEARCH-CONSOLE-REVIEW.md`, `data/search-console-review.json` |
 | — | Validation snapshot evidence | `data/manifest.json` and the D07/D08/D09 inline observations |
 
 ## 4. Verified data
 
-- 21 current RouteIds, 7 admin RouteIds, 141 concrete URLs, 23 evidence records.
+- 21 current RouteIds, 7 admin RouteIds, 141 concrete URLs, 47 evidence records
+  (23 repository + 24 Search Console).
 - 23 proposed routes, 46 ES/EN patterns, 0 collisions, 45 IA nodes.
 - 53 redirect records: 3 existing active 301, 42 KEEP_AS_IS, 7 admin internal,
   1 conditional proposed not active. 0 new redirects for existing Spanish URLs.
 - 88 canonical/hreflang rows, 44 pageIds, 15 reciprocal groups, 1 x-default,
   46 blocked proposed rows.
 - 14 indexation classes; 0 MAREA sitemap-eligible.
+- Search Console: property `sc-domain:embarcarte.com`, 24 URLs inspected,
+  16 indexed, 2 noindex, 5 not recognized, 1 public/indexable not indexed
+  (`/traslados`), 0 MAREA indexed; `sitemap.xml` 98 submitted / 0 errors; invalid
+  root-URL sitemap submission with 1 error; five GSC findings (2 open operational,
+  3 accepted informational).
 - 9 structured-data types, 45 page identities; 0 MAREA Product/Offer, 0 ratings,
   0 reviews, 0 unauthorized prices.
 - 88 bilingual metadata rows; proposed templates contain no literal MAREA brand,
@@ -90,9 +101,9 @@ failure is pre-existing at the MC-14 baseline (registry row 14 `PARTIAL` since
 
 | Command | Result |
 |---|---|
-| `npm run test:ia-seo` | PASS (19 datasets, 21/23 routes, 34 findings, 13 gates) |
-| `npm run test:ia-seo:unit` | PASS (58/58) |
-| Auditor's independent mutations | 21/21 rejected for the intended reason |
+| `npm run test:ia-seo` | PASS (20 datasets including manifest, 21/23 routes, 34 findings, 13 gates) |
+| `npm run test:ia-seo:unit` | PASS (63/63) |
+| Auditor's independent mutations | 21/21 rejected for the intended reason; Search Console addendum mutations additionally rejected |
 | `npm run test:i18n` | PASS |
 | `npm run test:commerce` | PASS |
 | `npm run test:seo` | PASS (101 fixture sitemap URLs) |
@@ -112,6 +123,7 @@ failure is pre-existing at the MC-14 baseline (registry row 14 `PARTIAL` since
 | `npm run test:e2e` | PASS (15/15) |
 | `npm audit --omit=dev --audit-level=high` | PASS (0 vulnerabilities) |
 | `git diff --check` | PASS |
+| Search Console read-only | 24 URL inspections + sitemaps captured 2026-11-02 |
 
 Isolated local SSR (built `dist`, disposable `DATA_DIR`, ports 4323/4324/4455):
 98 sitemap URLs with an empty catalogue; 101 with the inherited 2-product
@@ -119,8 +131,18 @@ fixture; 3 legacy 301s one hop; `/marea` and `/en/marea` 404; private surfaces
 `noindex` without canonical/hreflang; `x-default` only on the home pair; unknown
 legacy slug 404 + `Location` + empty body (recorded, not changed).
 
-No blocked or unexecuted check is reported as PASS. No public-site or Search
-Console evidence exists; all indexation is `INDEXATION_UNVERIFIED`.
+Search Console read-only (refreshed 2026-11-03, `sc-domain:embarcarte.com`): 24 URL
+inspections; 16 indexed, 2 excluded by noindex (`/carrito`, `/cuenta`), 5 not
+recognized, and 1 public/indexable URL not indexed (`/traslados`; coverage wording
+varies between "not recognized" and "discovered, currently not indexed"). `/traslados`
+is in the 98-URL sitemap with 0 errors on `sitemap.xml`; the home URL is also
+submitted as a sitemap with 1 error (`GSC-02`); 0 MAREA URLs indexed. This is a
+partial sample, not a full census.
+
+No blocked or unexecuted check is reported as PASS. Indexation is
+`SEARCH_CONSOLE_VERIFIED_PARTIAL` for the 24 inspected URLs and
+`INDEXATION_UNVERIFIED` for the rest; no full coverage, ranking or traffic claim
+is made.
 
 ## 6. Independent review history
 
@@ -128,11 +150,14 @@ Console evidence exists; all indexation is `INDEXATION_UNVERIFIED`.
 |---|---|---|---|
 | 1 | `b70d550` | NEEDS_REVISION | 0 BLOCKING, 2 MAJOR (IA-01, IA-02), 3 MINOR (IA-03…IA-05), 3 INFORMATIONAL |
 | 2 (corrections applied) | `d1d7a1a` | PASS | 5/5 corrected findings `CLOSED_VERIFIED`; 3 INFORMATIONAL accepted |
+| 3 (Search Console addendum) | pending commit | pending | independent verification of the 24-URL evidence and the addendum |
 
 Corrections: unified blocking-gate union enforced by validator rule IA-068;
 AIS/FLEET hard-restriction guards and tests (IA-069); shop sitemap consistency
 (IA-070); exact 404+Location observation; manifest regeneration after PASS.
-The auditor authored no implementation file.
+The auditor authored no implementation file. The Search Console addendum is being
+verified by a separate non-authoring reviewer; its verdict is recorded in
+`MC15-SEARCH-CONSOLE-REVIEW.md` and `data/search-console-review.json`.
 
 ## 7. Preserved status and residual debt
 

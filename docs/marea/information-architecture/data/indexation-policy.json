@@ -17,7 +17,10 @@
     "docs/marea/information-architecture/MC15-SITEMAP-ROBOTS-INDEXATION-CONTRACT.md#D09",
     "docs/marea/information-architecture/MC15-DATA-CONTRACT.md#3-dataset-minimum-keys",
     "src/server.ts#sitemap",
-    "public/robots.txt#robots"
+    "public/robots.txt#robots",
+    "docs/marea/information-architecture/data/search-console-evidence.json#MAREA-MC15-SEARCH-CONSOLE-EVIDENCE",
+    "docs/marea/information-architecture/data/search-console-evidence.json#MAREA-MC15-SEARCH-CONSOLE-EVIDENCE",
+    "docs/marea/information-architecture/data/search-console-evidence.json#MAREA-MC15-SEARCH-CONSOLE-EVIDENCE"
   ],
   "evidenceNotes": [
     "INDEXATION_UNVERIFIED: no Search Console access exists, so no URL is claimed indexed and no indexation count is asserted.",
@@ -291,5 +294,28 @@
       "findings": [],
       "notes": "Static files are not pages. They are neither sitemapped nor redirected, and they must not be used to host a second copy of indexable page content."
     }
-  ]
+  ],
+  "searchConsoleObservation": {
+    "property": "sc-domain:embarcarte.com",
+    "capturedAt": "2026-11-02T23:34:24.641Z",
+    "inspectedUrls": 24,
+    "indexedConfirmed": 16,
+    "excludedNoindex": 2,
+    "discoveredNotIndexed": 0,
+    "notRecognized": 5,
+    "publicIndexableNotIndexed": 1,
+    "mareaIndexed": 0,
+    "sitemapSubmittedUrls": 98,
+    "sitemapErrors": 0,
+    "extraSitemapSubmissionErrors": 1,
+    "evidenceState": "SEARCH_CONSOLE_VERIFIED_PARTIAL",
+    "note": "Partial external evidence, not a full 98-URL census. 16 of 24 refreshed URLs are confirmed indexed; /traslados is public/indexable but not indexed (coverage wording varies: no reconocida / descubierta sin indexar); private/sample/MAREA URLs are not recognized or noindex as expected. Sitemap indexed=0 is not an index count.",
+    "findings": [
+      "GSC-01",
+      "GSC-02",
+      "GSC-03",
+      "GSC-04",
+      "GSC-05"
+    ]
+  }
 }

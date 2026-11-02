@@ -5,15 +5,15 @@
   "date": "2026-11-02",
   "owner": "programme-lead",
   "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
-  "generationMethod": "deterministic SHA-256 over every MC-15 dataset at the reviewed correction commit d1d7a1a; regenerated after the independent PASS verdict",
+  "generationMethod": "deterministic SHA-256 over every MC-15 dataset at the frozen implementation candidate; regenerated after audit corrections",
   "evidenceState": "REPOSITORY_VERIFIED",
   "scope": "MC-15 internal bilingual IA/SEO planning package",
   "readOnly": true,
   "publicationAuthorized": false,
   "liveChangeExecuted": false,
   "MC16_STARTED": false,
-  "reviewedCommit": "d1d7a1a848fb2a82334811aad9b916d4041cd4a2",
-  "datasetCount": 18,
+  "reviewedCommit": "PENDING_FREEZE",
+  "datasetCount": 19,
   "datasets": [
     {
       "name": "current-routes",
@@ -21,8 +21,8 @@
       "contractId": "MAREA-MC15-CURRENT-ROUTES",
       "contractVersion": "1.0.0",
       "evidenceState": "REPOSITORY_VERIFIED",
-      "sha256": "cbc56e5e7c2382b29cb6dab5a190986f48b1924f7f19af93887b0bb7f786ba37",
-      "bytes": 30284,
+      "sha256": "bc5ba9f266674e1334a6a8d3ddda120e360794537497c62553a89ddb7c3d5d2c",
+      "bytes": 30731,
       "items": 28,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     },
@@ -32,8 +32,8 @@
       "contractId": "MAREA-MC15-CURRENT-URLS",
       "contractVersion": "1.0.0",
       "evidenceState": "REPOSITORY_VERIFIED",
-      "sha256": "202341f47245e4bdcf5cfb24d2bf3e2b311f3e36ceca1f2fffa6abdf8757e1a9",
-      "bytes": 142422,
+      "sha256": "f41c66e45cb42736a466fd46cbf27a1c0cd85ca6b8b81ec6f9c920c63636a7c6",
+      "bytes": 149385,
       "items": 141,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     },
@@ -43,9 +43,20 @@
       "contractId": "MAREA-MC15-URL-EVIDENCE",
       "contractVersion": "1.0.0",
       "evidenceState": "REPOSITORY_VERIFIED",
-      "sha256": "b262b2e5a05709d7f1fbec4ac2d75393879ea8a4fbfdc235be6ead31a9678e9d",
-      "bytes": 33193,
-      "items": 23,
+      "sha256": "f2130032fd363105da751e6e2dfff30742478e903624928213add120d376a33c",
+      "bytes": 55170,
+      "items": 47,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "search-console-evidence",
+      "path": "docs/marea/information-architecture/data/search-console-evidence.json",
+      "contractId": "MAREA-MC15-SEARCH-CONSOLE-EVIDENCE",
+      "contractVersion": "1.0.0",
+      "evidenceState": "SEARCH_CONSOLE_VERIFIED",
+      "sha256": "a94af8b604230ef2af148ee6bc46891f0f01ed5f754a7f47938df938e76d3d9d",
+      "bytes": 22085,
+      "items": 5,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     },
     {
@@ -109,8 +120,8 @@
       "contractId": "MAREA-MC15-INDEXATION-POLICY",
       "contractVersion": "1.0.0",
       "evidenceState": "LOCAL_SSR_VERIFIED",
-      "sha256": "b1d6e56cfe53e72c1122ef925a21bf61f7fd4572dfa2adda65edc4aca3011587",
-      "bytes": 16293,
+      "sha256": "f10baea2c61ccade10b3207974f718d9b52ab24da12730e4bd51dfe2ff97952d",
+      "bytes": 17543,
       "items": 14,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     },
@@ -186,8 +197,8 @@
       "contractId": "MAREA-MC15-RISK-REGISTER",
       "contractVersion": "1.0.0",
       "evidenceState": "LOCAL_SSR_VERIFIED",
-      "sha256": "d18276beff42142d13b4e82c0e623c6dea74eeb404978f03dfbdead94b66ea11",
-      "bytes": 29783,
+      "sha256": "45a8412d7cf3b7817f8be456e33a8998ec12bcb88689b3b3367ca1545431a695",
+      "bytes": 32224,
       "items": 22,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     },
@@ -217,20 +228,5 @@
   "crossReferences": [
     "docs/marea/information-architecture/MC-15-BASELINE-AND-GOVERNANCE.md#9-deliverable-map",
     "docs/marea/information-architecture/MC15-DATA-CONTRACT.md#1-common-envelope"
-  ],
-  "reviewStatus": "PASS_AFTER_CORRECTION",
-  "reviewVerdict": "PASS",
-  "correctionCommit": "d1d7a1a848fb2a82334811aad9b916d4041cd4a2",
-  "correctionFindings": [
-    "IA-01",
-    "IA-02",
-    "IA-03",
-    "IA-04",
-    "IA-05"
-  ],
-  "acceptedObservations": [
-    "IA-06",
-    "IA-07",
-    "IA-08"
   ]
 }

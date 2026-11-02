@@ -10,8 +10,8 @@
   "scope": "MC-15 internal bilingual IA/SEO planning",
   "readOnly": true,
   "publicationAuthorized": false,
-  "publicObservation": "NOT_PERFORMED",
-  "indexationEvidence": "INDEXATION_UNVERIFIED",
+  "publicObservation": "PERFORMED_2026-11-03_READ_ONLY_SITEMAP_AND_THREE_URLS",
+  "indexationEvidence": "SEARCH_CONSOLE_VERIFIED_PARTIAL",
   "liveDeploymentVerified": false,
   "mc16Started": false,
   "crossReferences": [
@@ -23,7 +23,10 @@
     "src/app/app.routes.server.ts#serverRoutes",
     "docs/marea/information-architecture/data/current-routes.json#MAREA-MC15-CURRENT-ROUTES",
     "docs/marea/information-architecture/data/url-evidence.json#MAREA-MC15-URL-EVIDENCE",
-    "docs/marea/legal-commercial/data/website-findings.json#MAREA-MC14-WEBSITE-FINDINGS"
+    "docs/marea/legal-commercial/data/website-findings.json#MAREA-MC14-WEBSITE-FINDINGS",
+    "docs/marea/information-architecture/data/search-console-evidence.json#MAREA-MC15-SEARCH-CONSOLE-EVIDENCE",
+    "docs/marea/information-architecture/data/search-console-evidence.json#MAREA-MC15-SEARCH-CONSOLE-EVIDENCE",
+    "docs/marea/information-architecture/data/search-console-evidence.json#MAREA-MC15-SEARCH-CONSOLE-EVIDENCE"
   ],
   "summary": {
     "concreteUrlRecords": 141,
@@ -70,7 +73,13 @@
       "NOT_FOUND": 2
     },
     "arithmetic": "24 static prerendered (12 ids x 2 locales) + 12 technology detail (6x2) + 60 guide detail (30x2) = 96 prerendered; + 2 shop lists = 98 static URLs without products; + 2 shop-detail pattern records + 20 sample URLs + 8 private URLs + 7 admin patterns + 4 legacy redirect records + 2 unknown-404 records = 141 records in this file.",
-    "indexationEvidence": "INDEXATION_UNVERIFIED"
+    "indexationEvidence": "SEARCH_CONSOLE_VERIFIED_PARTIAL",
+    "searchConsoleInspections": 24,
+    "searchConsoleIndexed": 16,
+    "searchConsoleExcludedNoindex": 2,
+    "searchConsoleNotRecognized": 5,
+    "note": "Search Console evidence is partial: 24 representative URLs were refreshed on 2026-11-03, not the full 98-URL surface. /traslados is public/indexable but not indexed; coverage wording varies. It does not authorize publication or migration.",
+    "searchConsoleDiscoveredNotIndexed": 0
   },
   "items": [
     {
@@ -92,7 +101,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Only page with x-default; canonical is https://embarcarte.com/."
+      "notes": "Only page with x-default; canonical is https://embarcarte.com/.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-001"
+      }
     },
     {
       "urlId": "URL-HOME-EN",
@@ -113,7 +130,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "English home; declares hreflang es, en and x-default (x-default points at the Spanish home)."
+      "notes": "English home; declares hreflang es, en and x-default (x-default points at the Spanish home).",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-015"
+      }
     },
     {
       "urlId": "URL-TECHNOLOGY-ES",
@@ -134,7 +159,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Static prerendered index of the six modules."
+      "notes": "Static prerendered index of the six modules.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-002"
+      }
     },
     {
       "urlId": "URL-TECHNOLOGY-EN",
@@ -155,7 +188,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Reciprocal alternate of the Spanish URL; both are in the sitemap."
+      "notes": "Reciprocal alternate of the Spanish URL; both are in the sitemap.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-016"
+      }
     },
     {
       "urlId": "URL-EXPERIENCES-ES",
@@ -176,7 +217,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Existing service page; preserved verbatim."
+      "notes": "Existing service page; preserved verbatim.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-005"
+      }
     },
     {
       "urlId": "URL-EXPERIENCES-EN",
@@ -218,7 +267,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Existing boat-delivery service page; preserved verbatim."
+      "notes": "Existing boat-delivery service page; preserved verbatim.",
+      "searchConsole": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Google no reconoce esta URL",
+        "classification": "PUBLIC_INDEXABLE_NOT_INDEXED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-006"
+      }
     },
     {
       "urlId": "URL-DELIVERY-EN",
@@ -260,7 +317,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Existing services page; preserved verbatim."
+      "notes": "Existing services page; preserved verbatim.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-007"
+      }
     },
     {
       "urlId": "URL-SERVICES-EN",
@@ -302,7 +367,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Static page; claims review pending."
+      "notes": "Static page; claims review pending.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-008"
+      }
     },
     {
       "urlId": "URL-ABOUT-EN",
@@ -344,7 +417,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Static page with server-side contact endpoint."
+      "notes": "Static page with server-side contact endpoint.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-009"
+      }
     },
     {
       "urlId": "URL-CONTACT-EN",
@@ -428,7 +509,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Legal page; content gated by GATE-LEGAL-ENTITY."
+      "notes": "Legal page; content gated by GATE-LEGAL-ENTITY.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-010"
+      }
     },
     {
       "urlId": "URL-LEGAL-NOTICE-EN",
@@ -470,7 +559,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Legal page; content gated by GATE-PRIVACY-DPA-DPIA."
+      "notes": "Legal page; content gated by GATE-PRIVACY-DPA-DPIA.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-011"
+      }
     },
     {
       "urlId": "URL-PRIVACY-EN",
@@ -512,7 +609,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Legal page; cookie consent evidence is not yet recorded."
+      "notes": "Legal page; cookie consent evidence is not yet recorded.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-012"
+      }
     },
     {
       "urlId": "URL-COOKIES-EN",
@@ -554,7 +659,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Legal page; gated by GATE-CONSUMER-TERMS."
+      "notes": "Legal page; gated by GATE-CONSUMER-TERMS.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-013"
+      }
     },
     {
       "urlId": "URL-TERMS-OF-SALE-EN",
@@ -596,7 +709,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "One of six module detail URLs prerendered from TECHNOLOGY."
+      "notes": "One of six module detail URLs prerendered from TECHNOLOGY.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-003"
+      }
     },
     {
       "urlId": "URL-TECH-DETAIL-EN-NAVEGADOR",
@@ -848,7 +969,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Guide slugs are frozen in GUIDE_SLUGS and asserted by scripts/check-i18n.mjs:254."
+      "notes": "Guide slugs are frozen in GUIDE_SLUGS and asserted by scripts/check-i18n.mjs:254.",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-004"
+      }
     },
     {
       "urlId": "URL-GUIDE-DETAIL-EN-que-es-signal-k",
@@ -2108,7 +2237,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Added to the sitemap explicitly (src/server.ts:197)."
+      "notes": "Added to the sitemap explicitly (src/server.ts:197).",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-014"
+      }
     },
     {
       "urlId": "URL-SHOP-EN",
@@ -2129,7 +2266,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Added to the sitemap explicitly (src/server.ts:198)."
+      "notes": "Added to the sitemap explicitly (src/server.ts:198).",
+      "searchConsole": {
+        "verdict": "PASS",
+        "coverageState": "Enviada e indexada",
+        "classification": "INDEXED_CONFIRMED",
+        "indexingState": "INDEXING_ALLOWED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-017"
+      }
     },
     {
       "urlId": "URL-SHOP-DETAIL-PATTERN-ES",
@@ -2192,7 +2337,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "sample-detail.ts:44-54 sets noindex and an empty alternate list."
+      "notes": "sample-detail.ts:44-54 sets noindex and an empty alternate list.",
+      "searchConsole": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Google no reconoce esta URL",
+        "classification": "NOT_RECOGNIZED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-021"
+      }
     },
     {
       "urlId": "URL-SAMPLE-EN-anemometro",
@@ -2612,7 +2765,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Cart is session-bound; excluded from the indexable surface. The shell is served before Angular (src/server.ts:239-252) with Cache-Control no-store and no canonical or hreflang."
+      "notes": "Cart is session-bound; excluded from the indexable surface. The shell is served before Angular (src/server.ts:239-252) with Cache-Control no-store and no canonical or hreflang.",
+      "searchConsole": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Excluida por una etiqueta \"noindex\"",
+        "classification": "EXCLUDED_NOINDEX",
+        "indexingState": "BLOCKED_BY_META_TAG",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-018"
+      }
     },
     {
       "urlId": "URL-CART-EN",
@@ -2654,7 +2815,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Login form is noindex; it is reachable anonymously but never indexed. The shell is served before Angular (src/server.ts:239-252) with Cache-Control no-store and no canonical or hreflang."
+      "notes": "Login form is noindex; it is reachable anonymously but never indexed. The shell is served before Angular (src/server.ts:239-252) with Cache-Control no-store and no canonical or hreflang.",
+      "searchConsole": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Google no reconoce esta URL",
+        "classification": "NOT_RECOGNIZED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-019"
+      }
     },
     {
       "urlId": "URL-LOGIN-EN",
@@ -2696,7 +2865,15 @@
       "expectedStatus": 200,
       "liveDeploymentVerified": false,
       "indexationEvidence": "INDEXATION_UNVERIFIED",
-      "notes": "Account area is authGuard protected and excluded from the indexable surface. The shell is served before Angular (src/server.ts:239-252) with Cache-Control no-store and no canonical or hreflang."
+      "notes": "Account area is authGuard protected and excluded from the indexable surface. The shell is served before Angular (src/server.ts:239-252) with Cache-Control no-store and no canonical or hreflang.",
+      "searchConsole": {
+        "verdict": "NEUTRAL",
+        "coverageState": "Excluida por una etiqueta \"noindex\"",
+        "classification": "EXCLUDED_NOINDEX",
+        "indexingState": "BLOCKED_BY_META_TAG",
+        "inspectedAt": "2026-11-02T23:34:24.641Z",
+        "evidenceId": "EV-GSC-020"
+      }
     },
     {
       "urlId": "URL-ACCOUNT-EN",

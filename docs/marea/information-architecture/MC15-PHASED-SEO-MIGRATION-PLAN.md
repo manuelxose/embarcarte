@@ -165,12 +165,13 @@ A completed phase is not a release. A release is Phase 5 and needs its own writt
 |---|---|---|
 | `REPOSITORY_VERIFIED` | Inspected in the frozen tree | yes, for code/config claims |
 | `LOCAL_SSR_VERIFIED` | Observed from an isolated local SSR run with disposable data | yes, for behaviour of the frozen base |
-| `PUBLIC_OBSERVATION` | Read-only observation of the live site | only if actually performed; not performed in MC-15 |
-| `SEARCH_CONSOLE_VERIFIED` | Requires real Search Console access | **never available in MC-15** |
+| `PUBLIC_OBSERVATION` | Read-only observation of the live site | yes; 2026-11-03 sitemap and three URLs |
+| `SEARCH_CONSOLE_VERIFIED` | Real Search Console read-only evidence | yes for the 24-URL sample captured 2026-11-02; not a full census |
 | `ASSUMED` / `UNKNOWN` | Explicitly labelled | never as exit evidence |
 
-Indexation state is `INDEXATION_UNVERIFIED` throughout MC-15 and remains so until Phase 6 supplies
-a measurement source.
+Indexation state is `SEARCH_CONSOLE_VERIFIED_PARTIAL` for the 24 inspected URLs and
+`INDEXATION_UNVERIFIED` for the rest. Phase 6 still requires a full measurement source; the
+existing sample does not close that requirement.
 
 ## 7. Position in the roadmap
 

@@ -1,0 +1,300 @@
+{
+  "contractId": "MAREA-MC15-SEARCH-CONSOLE-REVIEW",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-15",
+  "date": "2026-11-03",
+  "owner": "independent-auditor",
+  "reviewRound": 2,
+  "reviewStatus": "COMPLETED_PASS",
+  "verdict": "PASS",
+  "scope": "Read-only round-2 re-verification of the MC-15 Search Console evidence addendum (MC15-SEARCH-CONSOLE-EVIDENCE.md and data/search-console-evidence.json) and of C-01/C-02. No publication, indexation request, sitemap submission, Search Console write, deployment or MC-16 action.",
+  "previousReview": {
+    "round": 1,
+    "date": "2026-11-02",
+    "verdict": "NEEDS_REVISION",
+    "record": "MC15-SEARCH-CONSOLE-REVIEW.md sections 1-15 (historical)",
+    "openCorrections": ["C-01", "C-02"]
+  },
+  "reviewedAddendum": {
+    "contractId": "MAREA-MC15-SEARCH-CONSOLE-EVIDENCE",
+    "contractVersion": "1.0.0",
+    "path": "docs/marea/information-architecture/data/search-console-evidence.json",
+    "sha256": "a94af8b604230ef2af148ee6bc46891f0f01ed5f754a7f47938df938e76d3d9d",
+    "bytes": 22085,
+    "capturedAt": "2026-11-02T23:34:24.641Z",
+    "source": "Lead-refreshed read-only Search Console capture; manifest entry matches sha256/bytes",
+    "manifestEntryMatches": true
+  },
+  "reviewedDoc": {
+    "path": "docs/marea/information-architecture/MC15-SEARCH-CONSOLE-EVIDENCE.md",
+    "sha256": "92ac824458ca255fb3c48fc0b2546e1e86208f0548143e88f20853d7bd19eed1",
+    "bytes": 8810
+  },
+  "reviewedReviewDoc": {
+    "path": "docs/marea/information-architecture/MC15-SEARCH-CONSOLE-REVIEW.md",
+    "sha256": "21cf04ef6e996eeccaeea0e248bdfb8831f36d0951d33b53855d31bd966458b2",
+    "bytes": 41569
+  },
+  "reviewedCommit": "b7ea3ac41fc5b7942ef1c11ca8e5f9ce39e75fd1",
+  "baseCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
+  "capturedAt": "2026-11-02T23:40:30.751Z",
+  "readOnly": true,
+  "publicationAuthorized": false,
+  "liveChangeExecuted": false,
+  "MC16_STARTED": false,
+  "property": {
+    "siteUrl": "sc-domain:embarcarte.com",
+    "permissionLevel": "siteFullUser",
+    "credentialEmail": "guiatv-gsc@guia-tv-8fe3c.iam.gserviceaccount.com",
+    "credentialMaterialStored": false,
+    "siteEntries": [
+      {
+        "siteUrl": "sc-domain:embarcarte.com",
+        "permissionLevel": "siteFullUser"
+      },
+      {
+        "siteUrl": "sc-domain:guiaprogramaciontv.com",
+        "permissionLevel": "siteOwner",
+        "inScope": false
+      }
+    ]
+  },
+  "apiProbe": {
+    "capturedAt": "2026-11-02T23:40:30.751Z",
+    "sitesHttpStatus": 200,
+    "sitemapsHttpStatus": 200,
+    "inspectionsHttp200": 24,
+    "siteFullUser": true,
+    "sitemapSubmittedUrls": 98,
+    "sitemapWarnings": 0,
+    "sitemapErrors": 0,
+    "extraSitemapSubmissionErrors": 1,
+    "sitemapIndexedField": 0,
+    "sitemapIndexedFieldUsedAsCount": false
+  },
+  "summary": {
+    "inspectedUrls": 24,
+    "datasetMatches": 24,
+    "coverageStateDrift": 0,
+    "indexedConfirmed": 16,
+    "excludedNoindex": 2,
+    "notRecognized": 5,
+    "publicIndexableNotIndexed": 1,
+    "discoveredNotIndexed": 0,
+    "mareaIndexed": 0,
+    "sitemapSubmittedUrls": 98,
+    "sitemapErrors": 0,
+    "extraSitemapSubmissionErrors": 1,
+    "urlEvidenceRecords": 24,
+    "currentUrlEnrichments": 21,
+    "manifestDatasetsVerified": 19,
+    "dataChecksPassed": 154,
+    "dataChecksFailed": 0,
+    "mutationsRun": 5,
+    "mutationsRejected": 5,
+    "mutationsNotRejected": 0,
+    "testsPassed": 4,
+    "testsFailed": 0
+  },
+  "findings": [
+    {
+      "findingId": "GSC-01",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "scope": "PRE_EXISTING_OPERATIONAL_OUTSIDE_MC15_IMPLEMENTATION",
+      "evidence": "Round-2 URL Inspection at 2026-11-02T23:40:30.751Z returns NEUTRAL for https://embarcarte.com/traslados with coverageState 'Google no reconoce esta URL'; the dataset records the same refreshed state plus coverageStateHistory ['Google no reconoce esta URL' at 22:59Z, 'Descubierta: actualmente sin indexar' at 23:12Z, 'Google no reconoce esta URL' at 23:34Z]. Public verification: HTTP 200, self-canonical https://embarcarte.com/traslados, meta robots index/follow, hreflang es/en, and the URL is one of the 98 <loc> entries in https://embarcarte.com/sitemap.xml; /marea and /en/marea return 404. The URL is public, indexable, self-canonical and in the 98-URL sitemap but not indexed. This is a pre-existing operational gap, not caused by MC-15.",
+      "requiredCorrection": "No MC-15 implementation correction. Keep OPEN and outside the MC-15 implementation scope; treat coverage wording as volatile and use the stable classification PUBLIC_INDEXABLE_NOT_INDEXED."
+    },
+    {
+      "findingId": "GSC-02",
+      "severity": "MINOR",
+      "status": "OPEN",
+      "scope": "PRE_EXISTING_OPERATIONAL_OUTSIDE_MC15_IMPLEMENTATION",
+      "evidence": "Round-2 sitemaps.list (HTTP 200): https://embarcarte.com/sitemap.xml reports 98 submitted URLs, 0 warnings, 0 errors; the extra submission https://embarcarte.com/ reports 1 error and is not a valid sitemap.",
+      "requiredCorrection": "No MC-15 implementation correction. Remove the invalid root-URL submission in a future authorised SEO operation and keep the sitemap.xml submission."
+    },
+    {
+      "findingId": "GSC-03",
+      "severity": "INFORMATIONAL",
+      "status": "ACCEPTED",
+      "scope": "MEASUREMENT",
+      "evidence": "Round-2 sitemaps.list returns contents[0].submitted='98' and indexed='0'. The addendum and dataset record indexedReported=0 but derive no coverage count from it; summary.indexedConfirmed is 16 from URL Inspection.",
+      "requiredCorrection": "None; verified."
+    },
+    {
+      "findingId": "GSC-04",
+      "severity": "INFORMATIONAL",
+      "status": "ACCEPTED",
+      "scope": "PRIVATE_SURFACE",
+      "evidence": "Round-2 URL Inspection: https://embarcarte.com/cuenta is NEUTRAL, 'Excluida por una etiqueta \"noindex\"', googleCanonical=https://embarcarte.com/cuenta, userCanonical=https://embarcarte.com/acceso. https://embarcarte.com/carrito is NEUTRAL noindex with self-canonical.",
+      "requiredCorrection": "None; verified."
+    },
+    {
+      "findingId": "GSC-05",
+      "severity": "INFORMATIONAL",
+      "status": "ACCEPTED",
+      "scope": "CANONICAL",
+      "evidence": "Round-2 URL Inspection: all 16 PASS inspections return googleCanonical == userCanonical == inspected URL (0 mismatches); the dataset records the same. IA-074 now enforces this invariant.",
+      "requiredCorrection": "None; verified."
+    },
+    {
+      "findingId": "C-01",
+      "severity": "MINOR",
+      "status": "CLOSED_VERIFIED",
+      "scope": "EVIDENCE_STABILITY",
+      "evidence": "Dataset GSC-URL-006 is classified PUBLIC_INDEXABLE_NOT_INDEXED with a three-observation coverageStateHistory (22:59Z, 23:12Z, 23:34Z). Summary is 16 indexed / 2 noindex / 5 not recognized / 1 public-indexable-not-indexed / 0 MAREA / 98 sitemap. The addendum and D01/D02/D09/D17/D21/D22 state 5 not recognized + 1 public/indexable not indexed; none of them asserts '6 not recognized'. GSC-01/GSC-02 remain OPEN as pre-existing operational debt.",
+      "requiredCorrection": "None; C-01 verified closed."
+    },
+    {
+      "findingId": "C-02",
+      "severity": "MINOR",
+      "status": "CLOSED_VERIFIED",
+      "scope": "VALIDATOR_COVERAGE",
+      "evidence": "scripts/check-marea-ia-seo.mjs line 573-578 enforces googleCanonical === userCanonical === inspectionUrl for every PASS inspection via IA-074. The new unit test 'rejects a verified indexed URL with a changed canonical (C-02)' passes; test:ia-seo:unit is 63/63. Adversarial mutations M-08 (googleCanonical only) and M-08b (both canonicals self-consistent wrong) are rejected with IA-074, exit 1.",
+      "requiredCorrection": "None; C-02 verified closed."
+    }
+  ],
+  "mutations": [
+    {
+      "mutationId": "M-08",
+      "round": 2,
+      "mutation": "Change a verified PASS googleCanonical to https://embarcarte.com/wrong-canonical while keeping userCanonical correct.",
+      "expectedReason": "PASS canonical must equal userCanonical and the inspected URL.",
+      "result": "REJECTED",
+      "exitCode": 1,
+      "observedCodes": ["IA-074"],
+      "notes": "IA-074 https://embarcarte.com/ indexed inspection canonical is not the inspected URL."
+    },
+    {
+      "mutationId": "M-08b",
+      "round": 2,
+      "mutation": "Change both googleCanonical and userCanonical of a verified PASS URL to a self-consistent wrong URL.",
+      "expectedReason": "The canonical must match the inspected URL.",
+      "result": "REJECTED",
+      "exitCode": 1,
+      "observedCodes": ["IA-074"],
+      "notes": "Same three-way equality predicate catches the self-consistent wrong canonical."
+    },
+    {
+      "mutationId": "M-02",
+      "round": 2,
+      "mutation": "Mark https://embarcarte.com/traslados as PASS/indexed.",
+      "expectedReason": "/traslados must be recorded as public/indexable but not indexed.",
+      "result": "REJECTED",
+      "exitCode": 1,
+      "observedCodes": ["IA-071", "IA-073", "IA-074"],
+      "notes": "IA-073 reports the classification/verdict; IA-071 reports the summary count; IA-074 reports the null canonical on a PASS row."
+    },
+    {
+      "mutationId": "M-07b",
+      "round": 2,
+      "mutation": "Claim summary.indexedConfirmed=98 derived from the sitemap field.",
+      "expectedReason": "Indexed-confirmed must equal the 16 PASS inspections.",
+      "result": "REJECTED",
+      "exitCode": 1,
+      "observedCodes": ["IA-071"],
+      "notes": "IA-071 summary indexedConfirmed mismatch."
+    },
+    {
+      "mutationId": "M-01",
+      "round": 2,
+      "mutation": "Mark https://embarcarte.com/marea as PASS/indexed and adjust summary.",
+      "expectedReason": "A proposed MAREA URL must not be recorded as indexed.",
+      "result": "REJECTED",
+      "exitCode": 1,
+      "observedCodes": ["IA-071", "IA-072", "IA-074"],
+      "notes": "IA-071 summary MAREA count; IA-072 proposed MAREA URL marked indexed; IA-074 null canonical on a PASS row."
+    }
+  ],
+  "tests": [
+    {
+      "name": "IA/SEO deterministic validation",
+      "command": "npm run test:ia-seo",
+      "result": "PASS",
+      "exitCode": 0,
+      "outputSummary": "MC-15 IA/SEO validation passed: 20 datasets, 21 current routes, 23 proposed routes, 34 findings, 13 gates."
+    },
+    {
+      "name": "IA/SEO adversarial unit suite",
+      "command": "npm run test:ia-seo:unit",
+      "result": "PASS",
+      "exitCode": 0,
+      "outputSummary": "tests 63, pass 63, fail 0, cancelled 0, skipped 0, duration_ms 1508.7758."
+    },
+    {
+      "name": "Dataset/doc/satellite audit",
+      "command": "node %TEMP%\\mc15-reverify\\data-checks.mjs",
+      "result": "PASS",
+      "exitCode": 0,
+      "outputSummary": "DATA_CHECKS passed=154 failed=0."
+    },
+    {
+      "name": "Adversarial mutation harness",
+      "command": "node %TEMP%\\mc15-reverify\\mutations.mjs",
+      "result": "PASS",
+      "exitCode": 0,
+      "outputSummary": "Baseline errors=0; MUTATIONS rejected=5/5."
+    }
+  ],
+  "publicEvidence": {
+    "traslados": {
+      "status": 200,
+      "canonical": "https://embarcarte.com/traslados",
+      "robots": "index, follow, max-image-preview:large",
+      "hreflang": ["es", "en"],
+      "inSitemap": true
+    },
+    "sitemap": {
+      "status": 200,
+      "locCount": 98,
+      "includesTraslados": true,
+      "includesMarea": false
+    },
+    "marea": {
+      "mareaStatus": 404,
+      "enMareaStatus": 404
+    }
+  },
+  "dataChecks": {
+    "datasetDocCrossCheck": "154 passed / 0 failed (data-checks.mjs)",
+    "inspections": "24 unique inspections, 24 unique inspectionUrls",
+    "urlEvidence": "24 SEARCH_CONSOLE_VERIFIED records EV-GSC-001..EV-GSC-024, 24 unique ids/URLs, evidenceSource sc-domain:embarcarte.com, observedAt 2026-11-02T23:34:24.641Z, 0 PASS canonical mismatches",
+    "currentUrls": "141 records; 21 searchConsole enrichments; all resolve to EV-GSC records; 0 /marea current-url records",
+    "indexationPolicy": "searchConsoleObservation 24/16/2/5/1/0/0/98/0/1, SEARCH_CONSOLE_VERIFIED_PARTIAL, findings GSC-01..GSC-05",
+    "riskRegister": "SEO-RISK-22 OPEN, partial 24-URL evidence, no full census",
+    "manifest": "19 datasets, 19/19 sha256/bytes match, sourceCommit e0be1e4, MC16_STARTED false, GSC entry sha256/bytes match",
+    "docs": "Addendum + D01/D02/D09/D17/D21/D22: 0 occurrences of '6 not recognized'; each states 5 not recognized + 1 public/indexable not indexed; GSC-01/GSC-02 preserved as open operational debt",
+    "secretScan": "Precise scan for PEM blocks, private_key, access_token, client_secret and ya29. values: 0 credential values found; key remains outside the repository",
+    "diffScope": "No src/, public/, .github/, checkout, price, live route, redirect, sitemap generator or robots implementation change; package.json diff is test/format scripts only; MC16_STARTED false"
+  },
+  "residualObservations": [
+    {
+      "id": "R-06",
+      "observation": "Satellite notes in data/indexation-policy.json, data/risk-register.json (SEO-RISK-22 mitigation) and the global note in data/current-urls.json still describe /traslados as 'discovered but currently not indexed' / '1 discovered-not-indexed URL'. The refreshed capture and controlling dataset use 'not recognized' + PUBLIC_INDEXABLE_NOT_INDEXED; counts are 5 + 1. Documentation wording only; no indexation claim changes. Recommend superseding wording in a future authorised docs change."
+    },
+    {
+      "id": "R-07",
+      "observation": "docs/marea/execution/DECISION-LOG.md D-067 still records the original '6 not recognized' result. It is the historical decision entry from the 22:59Z capture and is outside the specified D01/D02/D09/D17/D21/D22 correction set; no controlling current doc repeats it. Recommend a superseding decision note, not a rewrite of the historical entry."
+    },
+    {
+      "id": "R-08",
+      "observation": "The URL Inspection sitemap array is unstable: the refreshed /traslados row has sitemapCount 0 even though the public sitemap.xml contains /traslados. The dataset records the API value; the substantive 'in sitemap' fact is verified against sitemap.xml. No claim depends on sitemapCount."
+    },
+    {
+      "id": "R-09",
+      "observation": "/traslados coverage wording moved between 'Google no reconoce esta URL' and 'Descubierta: actualmente sin indexar' across captures. The dataset records all three observations; future captures may legitimately differ without changing the non-indexation conclusion."
+    },
+    {
+      "id": "R-10",
+      "observation": "The evidence is a 24-URL sample, not a 98-URL census. No coverage percentage, ranking, traffic or revenue claim is made."
+    }
+  ],
+  "limitations": [
+    "Only the 24 addendum URLs were re-inspected; this is not a full census of the 98 sitemap URLs and no coverage, ranking, traffic or revenue claim is made.",
+    "URL Inspection reflects Google's state at inspection time; the /traslados coverage label is volatile and the dataset records the observed history rather than a timeless label.",
+    "Only the read-only Webmasters and URL Inspection APIs were used; no Search Console coverage/performance export or UI was used.",
+    "The mutation harness cloned and mutated datasets in memory against the real validator; no real dataset, script or repository file was modified.",
+    "Two residual documentation inconsistencies remain outside the specified C-01 correction set (R-06 satellite wording, R-07 historical DECISION-LOG D-067); they do not affect the stable classification or any indexation claim.",
+    "No publication, live migration, sitemap submission, Search Console write or MC-16 action is authorised by this review."
+  ]
+}

@@ -547,3 +547,54 @@ test('rejects a sitemap membership contradiction (IA-03)', () => {
   });
   assert.ok(found.includes('IA-070'));
 });
+
+test('rejects Search Console evidence without the verified property', () => {
+  const found = codes((d) => {
+    d['search-console-evidence'].property.siteUrl = 'https://example.test/';
+  });
+  assert.ok(found.includes('IA-071'));
+});
+
+test('rejects a Search Console claim without a capture timestamp', () => {
+  const found = codes((d) => {
+    const record = d['url-evidence'].items.find(
+      (item) => item.evidenceClass === 'SEARCH_CONSOLE_VERIFIED',
+    );
+    record.observedAt = 'NOT_OBSERVED';
+  });
+  assert.ok(found.includes('IA-018'));
+});
+
+test('rejects a proposed MAREA URL marked indexed', () => {
+  const found = codes((d) => {
+    const inspection = d['search-console-evidence'].inspections.find(
+      (item) => item.inspectionUrl === 'https://embarcarte.com/marea',
+    );
+    inspection.verdict = 'PASS';
+    inspection.coverageState = 'Enviada e indexada';
+    d['search-console-evidence'].summary.indexedConfirmed += 1;
+  });
+  assert.ok(found.includes('IA-072') || found.includes('IA-071'));
+});
+
+test('rejects /traslados marked as indexed instead of not recognized', () => {
+  const found = codes((d) => {
+    const inspection = d['search-console-evidence'].inspections.find(
+      (item) => item.inspectionUrl === 'https://embarcarte.com/traslados',
+    );
+    inspection.coverageState = 'Enviada e indexada';
+    inspection.verdict = 'PASS';
+  });
+  assert.ok(found.includes('IA-073') || found.includes('IA-071'));
+});
+
+test('rejects a verified indexed URL with a changed canonical (C-02)', () => {
+  const found = codes((d) => {
+    const inspection = d['search-console-evidence'].inspections.find(
+      (item) => item.inspectionUrl === 'https://embarcarte.com/tecnologia',
+    );
+    inspection.googleCanonical = 'https://embarcarte.com/otra';
+    inspection.userCanonical = 'https://embarcarte.com/otra';
+  });
+  assert.ok(found.includes('IA-074'));
+});

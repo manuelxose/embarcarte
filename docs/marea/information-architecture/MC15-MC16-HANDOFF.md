@@ -274,7 +274,11 @@ Metadata rules: no MAREA in any title/description/OG/Twitter card until clearanc
 availability, stock, price, delivery, certification or performance wording; canonical
 self-referencing; reciprocal hreflang; `x-default` home-only; no alternate for an
 untranslated page; a blocked page never enters the sitemap even if it resolves locally.
-Indexation state is `INDEXATION_UNVERIFIED`; no Search Console data exists.
+Indexation state is `SEARCH_CONSOLE_VERIFIED_PARTIAL`: a read-only 24-URL sample from
+`sc-domain:embarcarte.com` (2026-11-02/03) records 16 indexed, 2 noindex, 5 not
+recognized and 1 public/indexable URL not indexed (`/traslados`); everything outside
+the sample is `INDEXATION_UNVERIFIED`. This does not authorize MC-16 or any
+publication.
 
 ## 11. Structured-data restrictions
 
