@@ -202,7 +202,21 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional cloud/dashboard service; no cloud contract exists. Local vessel-data functions do not require it."
+        },
+        {
+          "dependency": "CUSTOMER_CONNECTIVITY",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "HUB does not include cellular connectivity by default; the data path is customer-supplied or installed separately."
+        }
+      ]
     },
     {
       "id": "UE-HUB-HUB-STANDARD-10-BASE",
@@ -386,7 +400,21 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional cloud/dashboard service; no cloud contract exists. Local vessel-data functions do not require it."
+        },
+        {
+          "dependency": "CUSTOMER_CONNECTIVITY",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "HUB does not include cellular connectivity by default; the data path is customer-supplied or installed separately."
+        }
+      ]
     },
     {
       "id": "UE-HUB-HUB-STANDARD-100-BASE",
@@ -570,7 +598,21 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional cloud/dashboard service; no cloud contract exists. Local vessel-data functions do not require it."
+        },
+        {
+          "dependency": "CUSTOMER_CONNECTIVITY",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "HUB does not include cellular connectivity by default; the data path is customer-supplied or installed separately."
+        }
+      ]
     },
     {
       "id": "UE-HUB-HUB-STANDARD-500-BASE",
@@ -754,7 +796,21 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional cloud/dashboard service; no cloud contract exists. Local vessel-data functions do not require it."
+        },
+        {
+          "dependency": "CUSTOMER_CONNECTIVITY",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "HUB does not include cellular connectivity by default; the data path is customer-supplied or installed separately."
+        }
+      ]
     },
     {
       "id": "UE-HUB-HUB-STANDARD-1000-BASE",
@@ -938,7 +994,21 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional cloud/dashboard service; no cloud contract exists. Local vessel-data functions do not require it."
+        },
+        {
+          "dependency": "CUSTOMER_CONNECTIVITY",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "HUB does not include cellular connectivity by default; the data path is customer-supplied or installed separately."
+        }
+      ]
     },
     {
       "id": "UE-HUB-HUB-STANDARD-100-LOW",
@@ -1122,7 +1192,21 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional cloud/dashboard service; no cloud contract exists. Local vessel-data functions do not require it."
+        },
+        {
+          "dependency": "CUSTOMER_CONNECTIVITY",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "HUB does not include cellular connectivity by default; the data path is customer-supplied or installed separately."
+        }
+      ]
     },
     {
       "id": "UE-HUB-HUB-STANDARD-100-HIGH",
@@ -1306,7 +1390,21 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional cloud/dashboard service; no cloud contract exists. Local vessel-data functions do not require it."
+        },
+        {
+          "dependency": "CUSTOMER_CONNECTIVITY",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "HUB does not include cellular connectivity by default; the data path is customer-supplied or installed separately."
+        }
+      ]
     },
     {
       "id": "UE-HUB-HUB-STANDARD-100-BASE-INSTALLER",
@@ -1499,7 +1597,21 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Installer-included configuration: COST-12 installation labour is inside the variable cost and is not charged as a separate service. No installer service price or margin exists."
+      "notes": "Installer-included configuration: COST-12 installation labour is inside the variable cost and is not charged as a separate service. No installer service price or margin exists.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional cloud/dashboard service; no cloud contract exists. Local vessel-data functions do not require it."
+        },
+        {
+          "dependency": "CUSTOMER_CONNECTIVITY",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "HUB does not include cellular connectivity by default; the data path is customer-supplied or installed separately."
+        }
+      ]
     },
     {
       "id": "UE-WATCH-WATCH-CORE-1-BASE",
@@ -4773,7 +4885,15 @@
       "recurringContributionEurYear": 0,
       "classification": "CONDITIONAL_ECONOMIC_CASE",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional data services; base display software is included with the device and no cloud contract exists."
+        }
+      ]
     },
     {
       "id": "UE-DISPLAY-DISPLAY-7-10-BASE",
@@ -4957,7 +5077,15 @@
       "recurringContributionEurYear": 0,
       "classification": "CONDITIONAL_ECONOMIC_CASE",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional data services; base display software is included with the device and no cloud contract exists."
+        }
+      ]
     },
     {
       "id": "UE-DISPLAY-DISPLAY-7-100-BASE",
@@ -5141,7 +5269,15 @@
       "recurringContributionEurYear": 0,
       "classification": "CONDITIONAL_ECONOMIC_CASE",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional data services; base display software is included with the device and no cloud contract exists."
+        }
+      ]
     },
     {
       "id": "UE-DISPLAY-DISPLAY-7-500-BASE",
@@ -5325,7 +5461,15 @@
       "recurringContributionEurYear": 0,
       "classification": "CONDITIONAL_ECONOMIC_CASE",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional data services; base display software is included with the device and no cloud contract exists."
+        }
+      ]
     },
     {
       "id": "UE-DISPLAY-DISPLAY-7-1000-BASE",
@@ -5509,7 +5653,15 @@
       "recurringContributionEurYear": 0,
       "classification": "CONDITIONAL_ECONOMIC_CASE",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional data services; base display software is included with the device and no cloud contract exists."
+        }
+      ]
     },
     {
       "id": "UE-DISPLAY-DISPLAY-7-100-LOW",
@@ -5693,7 +5845,15 @@
       "recurringContributionEurYear": 0,
       "classification": "CONDITIONAL_ECONOMIC_CASE",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional data services; base display software is included with the device and no cloud contract exists."
+        }
+      ]
     },
     {
       "id": "UE-DISPLAY-DISPLAY-7-100-HIGH",
@@ -5877,7 +6037,15 @@
       "recurringContributionEurYear": 0,
       "classification": "CONDITIONAL_ECONOMIC_CASE",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional data services; base display software is included with the device and no cloud contract exists."
+        }
+      ]
     },
     {
       "id": "UE-DISPLAY-DISPLAY-7-100-BASE-INSTALLER",
@@ -6070,7 +6238,15 @@
       "recurringContributionEurYear": 0,
       "classification": "CONDITIONAL_ECONOMIC_CASE",
       "confidence": "LOW",
-      "notes": "Installer-included configuration: COST-12 installation labour is inside the variable cost and is not charged as a separate service. No installer service price or margin exists."
+      "notes": "Installer-included configuration: COST-12 installation labour is inside the variable cost and is not charged as a separate service. No installer service price or margin exists.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional data services; base display software is included with the device and no cloud contract exists."
+        }
+      ]
     },
     {
       "id": "UE-AIS-AIS-RECEIVER-1-BASE",
@@ -6254,7 +6430,15 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "LOCAL_DATA_PATH",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "Receive-only local output; no inclusion of connectivity or cloud telemetry. Any connected variant is a separate, uncosted edition."
+        }
+      ]
     },
     {
       "id": "UE-AIS-AIS-RECEIVER-10-BASE",
@@ -6438,7 +6622,15 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "LOCAL_DATA_PATH",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "Receive-only local output; no inclusion of connectivity or cloud telemetry. Any connected variant is a separate, uncosted edition."
+        }
+      ]
     },
     {
       "id": "UE-AIS-AIS-RECEIVER-100-BASE",
@@ -6622,7 +6814,15 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "LOCAL_DATA_PATH",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "Receive-only local output; no inclusion of connectivity or cloud telemetry. Any connected variant is a separate, uncosted edition."
+        }
+      ]
     },
     {
       "id": "UE-AIS-AIS-RECEIVER-500-BASE",
@@ -6806,7 +7006,15 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "LOCAL_DATA_PATH",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "Receive-only local output; no inclusion of connectivity or cloud telemetry. Any connected variant is a separate, uncosted edition."
+        }
+      ]
     },
     {
       "id": "UE-AIS-AIS-RECEIVER-1000-BASE",
@@ -6990,7 +7198,15 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "LOCAL_DATA_PATH",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "Receive-only local output; no inclusion of connectivity or cloud telemetry. Any connected variant is a separate, uncosted edition."
+        }
+      ]
     },
     {
       "id": "UE-AIS-AIS-RECEIVER-100-LOW",
@@ -7174,7 +7390,15 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "LOCAL_DATA_PATH",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "Receive-only local output; no inclusion of connectivity or cloud telemetry. Any connected variant is a separate, uncosted edition."
+        }
+      ]
     },
     {
       "id": "UE-AIS-AIS-RECEIVER-100-HIGH",
@@ -7358,7 +7582,15 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "LOCAL_DATA_PATH",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "Receive-only local output; no inclusion of connectivity or cloud telemetry. Any connected variant is a separate, uncosted edition."
+        }
+      ]
     },
     {
       "id": "UE-AIS-AIS-RECEIVER-100-BASE-INSTALLER",
@@ -7551,7 +7783,15 @@
       "recurringContributionEurYear": 0,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "Installer-included configuration: COST-12 installation labour is inside the variable cost and is not charged as a separate service. No installer service price or margin exists."
+      "notes": "Installer-included configuration: COST-12 installation labour is inside the variable cost and is not charged as a separate service. No installer service price or margin exists.",
+      "recurringCostExposure": [
+        {
+          "dependency": "LOCAL_DATA_PATH",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "Receive-only local output; no inclusion of connectivity or cloud telemetry. Any connected variant is a separate, uncosted edition."
+        }
+      ]
     },
     {
       "id": "UE-PILOT-COASTAL-100-BASE",
@@ -7784,7 +8024,21 @@
       "recurringContributionEurYear": 0,
       "classification": "COST_MODEL_INCOMPLETE",
       "confidence": "LOW",
-      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice."
+      "notes": "Self-install hardware-only configuration: COST-12 installation labour excluded; installation is a separately quoted service where required. COST-16 tooling/NRE and COST-17 certification are fixed costs excluded from unit contribution and are never added twice.",
+      "recurringCostExposure": [
+        {
+          "dependency": "CLOUD_INFRA",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "UNKNOWN",
+          "note": "Optional cloud/dashboard service; no cloud contract exists. Local vessel-data functions do not require it."
+        },
+        {
+          "dependency": "CUSTOMER_CONNECTIVITY",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "HUB does not include cellular connectivity by default; the data path is customer-supplied or installed separately."
+        }
+      ]
     },
     {
       "id": "UE-AIS-AIS-CONNECTED-100-BASE",
@@ -7827,7 +8081,15 @@
       "recurringContributionEurYear": null,
       "classification": "COST_MODEL_INCOMPLETE",
       "confidence": "NONE",
-      "notes": "The AIS-CONNECTED edition is not separately costed; no contribution is computed and none is implied."
+      "notes": "The AIS-CONNECTED edition is not separately costed; no contribution is computed and none is implied.",
+      "recurringCostExposure": [
+        {
+          "dependency": "LOCAL_DATA_PATH",
+          "driver": "PER_DEVICE_MONTH",
+          "status": "NOT_APPLICABLE",
+          "note": "Receive-only local output; no inclusion of connectivity or cloud telemetry. Any connected variant is a separate, uncosted edition."
+        }
+      ]
     },
     {
       "id": "UE-NAV-NAV-ESSENTIAL-ANNUAL",

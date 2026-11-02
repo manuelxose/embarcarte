@@ -34,11 +34,12 @@
     "publishedTariffs": 21,
     "publicPriceObservations": 2,
     "officialLicensingDocuments": 15,
-    "engineeringAssumptions": 0,
+    "engineeringAssumptions": 1,
     "inaccessible": 9,
     "unknown": 5,
     "providerRecords": 53,
-    "recurringCostInputs": 35
+    "recurringCostInputs": 35,
+    "classSum": 53
   },
   "statusBlock": {
     "MC12_VERDICT": "PARTIAL",
@@ -49,12 +50,13 @@
     "LICENSING_RIGHTS_GRANTED": false,
     "COMMERCIAL_AVAILABILITY": "NOT_FOR_SALE",
     "INDEPENDENT_REVIEW": "PENDING",
-    "PR_CREATED": false,
+    "PR_CREATED": true,
     "MERGED": false,
     "DEPLOYED": false,
     "MC13_STARTED": false
   },
   "profitability": "NONE",
   "forecastProduced": false,
-  "breakEvenClaim": false
+  "breakEvenClaim": false,
+  "pullRequest": 19
 }

@@ -101,7 +101,7 @@ const FROZEN_STATUS_BLOCK = {
   LICENSING_RIGHTS_GRANTED: false,
   COMMERCIAL_AVAILABILITY: 'NOT_FOR_SALE',
   INDEPENDENT_REVIEW: 'PENDING',
-  PR_CREATED: false,
+  PR_CREATED: true,
   MERGED: false,
   DEPLOYED: false,
   MC13_STARTED: false,
@@ -871,11 +871,12 @@ export const CHECKS = [
       if (!fleetBundle) {
         out.push('FLEET bundle-economics record missing');
       } else {
-        if (arr(fleetBundle.componentCosts).length) {
-          out.push('FLEET: bundle declares component costs (hardware must be excluded)');
-        }
         const ueById = indexBy(ueRecords(data), 'id');
-        for (const componentId of arr(fleetBundle.componentEconomicIds)) {
+        const declaredComponentIds = new Set([
+          ...arr(fleetBundle.componentEconomicIds),
+          ...arr(fleetBundle.componentCosts).map((cost) => obj(cost).componentId),
+        ]);
+        for (const componentId of declaredComponentIds) {
           const component = ueById.get(componentId);
           const objectType = obj(component).objectType;
           if (['PHYSICAL_SKU', 'OPTIONAL_ACCESSORY'].includes(objectType)) {
@@ -1564,7 +1565,10 @@ export const CHECKS = [
                 `${bundle.id}: component ${cost.componentId} cost ${cost.knownVariableCostEur} is not an integer multiple of the unit record ${unitCost}`,
               );
             }
-          } else if (isNum(unitCost) !== isNum(cost.knownVariableCostEur)) {
+          } else if (
+            isNum(unitCost) !== isNum(cost.knownVariableCostEur) &&
+            isNum(bundle.knownVariableCostEur)
+          ) {
             out.push(
               `${bundle.id}: component ${cost.componentId} known/unknown cost disagrees with the unit record`,
             );
@@ -1594,16 +1598,58 @@ export const CHECKS = [
         }
         const definition = definitionById.get(bundle.bundleId);
         if (definition) {
-          const definitionFamilies = new Set(
-            [...arr(definition.components), ...arr(definition.optionalComponents)]
-              .map((component) => obj(component).familyId)
-              .filter(isStr),
-          );
+          const definitionComponents = arr(definition.components).map(obj);
+          const allowedFamilies = new Set();
+          const requiredFamilies = new Set();
+          for (const component of definitionComponents) {
+            const families = [];
+            if (isStr(component.familyId)) families.push(component.familyId);
+            for (const expansion of arr(component.expandsTo)) {
+              const match = /^([A-Z]+)-/.exec(String(expansion));
+              if (match) families.push(match[1]);
+            }
+            const priced =
+              component.inclusion === 'INCLUDED' ||
+              (component.inclusion === 'QUOTATION_REQUIRED' &&
+                component.requiredForOutcome === true);
+            if (!priced) continue;
+            for (const family of families) {
+              allowedFamilies.add(family);
+              if (component.requiredForOutcome === true) requiredFamilies.add(family);
+            }
+          }
+          const actualFamilies = new Set();
           for (const componentId of arr(bundle.componentEconomicIds)) {
             const familyId = obj(ueById.get(componentId)).familyId;
-            if (isStr(familyId) && definitionFamilies.size && !definitionFamilies.has(familyId)) {
+            if (isStr(familyId)) actualFamilies.add(familyId);
+          }
+          if (arr(bundle.componentInclusions).length) {
+            const lineIds = new Set(definitionComponents.map((component) => component.lineId));
+            for (const inclusion of arr(bundle.componentInclusions)) {
+              const row = obj(inclusion);
+              if (!lineIds.has(row.lineId)) {
+                out.push(
+                  `bundle ${bundle.bundleId}: component line ${row.lineId} is not in bundle-definitions.json`,
+                );
+              }
+              if (!['INCLUDED', 'QUOTATION_REQUIRED'].includes(String(row.inclusion))) {
+                out.push(
+                  `bundle ${bundle.bundleId}: line ${row.lineId} inclusion ${row.inclusion} cannot be a priced component`,
+                );
+              }
+            }
+          }
+          for (const family of requiredFamilies) {
+            if (!actualFamilies.has(family)) {
               out.push(
-                `bundle ${bundle.bundleId}: component family ${familyId} is not in bundle-definitions.json`,
+                `bundle ${bundle.bundleId}: required family ${family} missing from componentEconomicIds`,
+              );
+            }
+          }
+          for (const family of actualFamilies) {
+            if (allowedFamilies.size && !allowedFamilies.has(family)) {
+              out.push(
+                `bundle ${bundle.bundleId}: component family ${family} is not an INCLUDED or QUOTATION_REQUIRED component`,
               );
             }
           }
@@ -2062,9 +2108,22 @@ export const CHECKS = [
           arr(record.unknownVariableCostCategories).map((unknown) => obj(unknown).category),
         );
         const declaredUnknown = unknownCategories.some((category) =>
-          /CLOUD|CELLULAR|CONNECTIVITY|TELEMETRY|NOTIFICATION/i.test(String(category)),
+          /CLOUD|CELLULAR|CONNECTIVITY|TELEMETRY|NOTIFICATION|LOCAL_DATA_PATH/i.test(
+            String(category),
+          ),
         );
-        if (!hasRecurringLine && !declaredUnknown && !cloudPerDevice.length) {
+        const declaredExposure = familyRecords.some((record) =>
+          arr(record.recurringCostExposure).some((entry) => {
+            const row = obj(entry);
+            return (
+              ['UNKNOWN', 'NOT_APPLICABLE'].includes(String(row.status)) &&
+              /CLOUD|CELLULAR|CONNECTIVITY|TELEMETRY|NOTIFICATION|LOCAL_DATA_PATH|CUSTOMER_CONNECTIVITY/i.test(
+                `${row.dependency} ${row.driver}`,
+              )
+            );
+          }),
+        );
+        if (!hasRecurringLine && !declaredUnknown && !declaredExposure) {
           out.push(`${family}: no recurring cost input or explicit UNKNOWN entry`);
         }
       }

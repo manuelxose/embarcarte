@@ -438,6 +438,45 @@ test('A-06 rejects bundle component cost drift', () => {
   );
 });
 
+test('A-06 rejects a missing required bundle component', () => {
+  expectFailure(
+    'A-06',
+    (data) => {
+      const start = data.bundleEconomics.records.find((bundle) => bundle.bundleId === 'START');
+      start.componentEconomicIds = start.componentEconomicIds.filter(
+        (componentId) => !componentId.includes('NAV'),
+      );
+    },
+    'START loses its required NAV component',
+  );
+});
+
+test('A-06 rejects a conditional-only component presented as included', () => {
+  expectFailure(
+    'A-06',
+    (data) => {
+      const start = data.bundleEconomics.records.find((bundle) => bundle.bundleId === 'START');
+      start.componentEconomicIds.push('UE-SENSE-MODULE-100-BASE');
+    },
+    'SENSE is CONDITIONAL in START and cannot be a priced component',
+  );
+});
+
+test('A-06 rejects an invented bundle component line', () => {
+  expectFailure(
+    'A-06',
+    (data) => {
+      const start = data.bundleEconomics.records.find((bundle) => bundle.bundleId === 'START');
+      start.componentInclusions.push({
+        lineId: 'ST-99',
+        familyId: 'SENSE',
+        inclusion: 'INCLUDED',
+      });
+    },
+    'ST-99 is not in bundle-definitions.json',
+  );
+});
+
 test('A-07 rejects a sensitivity result that ignores its factor', () => {
   expectFailure(
     'A-07',
@@ -579,7 +618,26 @@ test('R-01 rejects missing cloud recurring inputs for connected hardware', () =>
   );
 });
 
-test('R-02 rejects WATCH without a cellular connectivity input', () => {
+test('R-01 rejects one connected family without any recurring declaration while global cloud inputs remain', () => {
+  expectFailure(
+    'R-01',
+    (data) => {
+      for (const record of ueRecords(data).filter((item) => item.familyId === 'HUB')) {
+        record.costLines = record.costLines.filter(
+          (line) =>
+            !/CLOUD|CELLULAR|CONNECTIVITY|TELEMETRY|NOTIFICATION/i.test(
+              line.categoryId ?? line.category ?? '',
+            ),
+        );
+        record.unknownVariableCostCategories = [];
+        delete record.recurringCostExposure;
+      }
+    },
+    'HUB loses every recurring declaration while the global cloud inputs stay intact',
+  );
+});
+
+test('R-01 rejects WATCH without a cellular connectivity input', () => {
   expectFailure(
     'R-02',
     (data) => {
@@ -711,6 +769,16 @@ test('D-03 rejects a status block that does not match the delivery values', () =
       data.manifest.statusBlock.MC12_VERDICT = 'PASS';
     },
     'MC12_VERDICT changed from PARTIAL',
+  );
+});
+
+test('D-03 rejects a false PR_CREATED status now that PR #19 exists', () => {
+  expectFailure(
+    'D-03',
+    (data) => {
+      data.manifest.statusBlock.PR_CREATED = false;
+    },
+    'PR_CREATED false contradicts the open draft PR',
   );
 });
 

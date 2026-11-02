@@ -155,7 +155,7 @@
         "unit-economics",
         "sensitivity"
       ],
-      "notes": "No return-rate data exists."
+      "notes": "No return-rate data exists. Derived allowance lines are computed from the exact net revenue and then rounded to 2 decimals; a 0.01 EUR difference against re-deriving from the already-rounded net figure is a rounding artefact, not an arithmetic error (e.g. WATCH returns 2.94 vs 2.95)."
     },
     {
       "id": "ASM-MC12-011",

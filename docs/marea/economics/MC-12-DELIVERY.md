@@ -64,6 +64,7 @@ Supporting research notes: `research/MC12-RESEARCH-CHARTS-WEATHER-NMEA.md`,
 | `PUBLIC_PRICE_OBSERVATION` | 2 |
 | `OFFICIAL_LICENSING_DOCUMENT` | 15 |
 | `INACCESSIBLE` | 9 |
+| `ENGINEERING_ASSUMPTION` | 1 |
 | `UNKNOWN` | 5 |
 | RFQ packages | `NOT_SENT` |
 
@@ -78,8 +79,9 @@ BOM lines keep their original conversion (decision D-051).
 - 6 bundle records, 5 channel records, 70 sensitivity scenarios, 4 stress cases.
 - 90 MC-11 scenarios reconciled; `COST-16` invariant PASS (max delta 0.00 EUR).
 - 9 families classified; 0 `ECONOMICS_EVIDENCED`.
-- 22 blockers (12 `BLOCKING`, 9 `MAJOR`, 1 `MINOR`); 9 licensing rights, all
-  `NOT_GRANTED` or `REQUIRES_CONTRACT`.
+- 23 blockers (14 `BLOCKING`, 8 `MAJOR`, 1 `MINOR`); 11 licensing rights
+  (9 blocking): 7 `NOT_GRANTED`, 3 `REQUIRES_CONTRACT`, 1 `PERMITTED`
+  (public-domain context layer only).
 
 Key conditional results (not prices, not margins): DISPLAY +274.37 at 100 units and
 the only hardware case positive under combined stress; HUB +7.30 and negative under

@@ -35,8 +35,9 @@ derecho de licencia queda concedido.
    aceptación separados en dos ejes (interno/externo).
 2. **D02 — Contrato de datos:** esquemas, unidades, moneda, IVA, clases de evidencia,
    vocabularios y 49 comprobaciones obligatorias.
-3. **D03 — Paisaje de licencias:** 9 derechos requeridos, todos `NOT_GRANTED` o
-   `REQUIRES_CONTRACT`; límites duros (AIS, PILOT, marca, IP).
+3. **D03 — Paisaje de licencias:** 11 derechos registrados (9 bloqueantes):
+   7 `NOT_GRANTED`, 3 `REQUIRES_CONTRACT` y 1 `PERMITTED` (capa de contexto de dominio
+   público, no apta para navegación); límites duros (AIS, PILOT, marca, IP).
 4. **D04 — Registro de proveedores y precios:** 53 registros clasificados, con fecha
    de consulta y URL; 0 cotizaciones formales y 0 contratos.
 5. **D05 — Modelo de nube y conectividad:** tres perfiles de uso y coste por
@@ -53,7 +54,7 @@ derecho de licencia queda concedido.
 11. **D11 — Sensibilidad y estrés:** 70 escenarios, 4 casos de estrés, 12 palancas.
 12. **D12 — Priorización:** matriz ponderada con pesos preinscritos y prioridad
     provisional.
-13. **D13 — Registro de bloqueos:** 22 bloqueos (12 `BLOCKING`, 9 `MAJOR`, 1 `MINOR`).
+13. **D13 — Registro de bloqueos:** 23 bloqueos (14 `BLOCKING`, 8 `MAJOR`, 1 `MINOR`).
 14. **D14 — Handoff a MC-13:** entradas, incógnitas y rangos, sin ejecutar MC-13.
 15. **D15 — Datos legibles por máquina:** 16 ficheros JSON.
 16. **D16 — Validador y pruebas:** `check-marea-unit-economics.mjs` (49 checks) y

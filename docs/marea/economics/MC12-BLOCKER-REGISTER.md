@@ -6,7 +6,7 @@
 | Owner / date | `programme-lead`, 2026-11-02 |
 | Status | `OPEN` blockers; nothing is closed by inference |
 | Machine companion | [blocker-register.json](data/blocker-register.json) |
-| Summary | 22 blockers: 12 `BLOCKING`, 9 `MAJOR`, 1 `MINOR`; 17 external |
+| Summary | 23 blockers: 14 `BLOCKING`, 8 `MAJOR`, 1 `MINOR`; 19 external |
 
 ## 1. Rule
 

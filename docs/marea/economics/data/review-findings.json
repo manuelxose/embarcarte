@@ -1,0 +1,305 @@
+{
+  "contractId": "MAREA-MC12-REVIEW-FINDINGS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-12",
+  "date": "2026-11-02",
+  "owner": "independent-auditor-agent-h",
+  "currency": "EUR",
+  "reviewedCommit": "fe970624bc7c41ae5ffe0fb578c194fcb6a795f1",
+  "baseCommit": "5b47a3d51fa875a08ed6f4ad8448a3e51a0f0499",
+  "reviewedBranch": "feature/marea-mc12-recurring-data-unit-economics",
+  "predecessor": {
+    "milestone": "MC-11",
+    "pr": 18,
+    "state": "OPEN",
+    "draft": true,
+    "mergeable": "MERGEABLE",
+    "merged": false
+  },
+  "pullRequest": {
+    "number": 19,
+    "state": "OPEN",
+    "draft": true,
+    "mergeable": "MERGEABLE",
+    "merged": false,
+    "baseRefName": "feature/marea-mc11-hardware-sourcing-conformity",
+    "headRefName": "feature/marea-mc12-recurring-data-unit-economics"
+  },
+  "frozenState": {
+    "headMatchesFrozenCommit": true,
+    "trackedWorktreeClean": true,
+    "untrackedPaths": [".recon/"],
+    "untrackedNote": "Pre-existing author scratch directory; untracked and not part of the reviewed commit. No tracked file is modified."
+  },
+  "verdict": "PARTIAL",
+  "verdictDetail": "Independent recomputation is exact (0 arithmetic mismatches across 50 unit-economics records, 90 MC-11 scenarios, 70 sensitivity cases, 4 stress cases, 6 bundles and 9 decision scores) and all commercial-availability/price/WTP/licensing governance flags hold, except PR_CREATED. Internal-scope sign-off is withheld because dimension I (status-block consistency) and dimension K (every check must be able to fail) fail: R-01 has an unreachable per-family branch and D-03 enforces the stale PR_CREATED=false. Findings are OPEN pending Lead correction and re-verification.",
+  "mc12ExternalCommercialEvidence": "BLOCKED_OR_NOT_OBTAINED",
+  "externalEvidenceBasis": "0 FORMAL_PROVIDER_QUOTATION, 0 EXECUTED_CONTRACT, RFQ NOT_SENT, 9 INACCESSIBLE sources, 5 UNKNOWN prices; chart/weather/NMEA/connectivity/cloud/tile/IP/trademark rights unlicensed.",
+  "independentRecomputation": {
+    "method": "Separate dependency-free Node script loading docs/marea/economics/data/*.json plus docs/marea/hardware/data/cost-scenarios.json and docs/marea/bundles/bundle-definitions.json; recomputed from source records without importing the validator. Temporary scripts were under .recon/audit/ and were deleted before delivery.",
+    "unitEconomicsRecordsChecked": 50,
+    "breakEvenGrossPricesChecked": 41,
+    "mc11ScenariosChecked": 90,
+    "ueHardwareCrossChecks": 41,
+    "sensitivityScenariosChecked": 70,
+    "stressCasesChecked": 4,
+    "bundlesChecked": 6,
+    "decisionScoresChecked": 9,
+    "providerRecordsChecked": 53,
+    "licensingRightsChecked": 11,
+    "blockersChecked": 23,
+    "arithmeticMismatches": 0,
+    "toleranceEur": 0.005
+  },
+  "commands": [
+    {
+      "command": "node scripts/check-marea-unit-economics.mjs",
+      "exitCode": 0,
+      "result": "49 checks - 49 PASS / 0 FAIL"
+    },
+    {
+      "command": "node --test --test-isolation=none scripts/check-marea-unit-economics.test.mjs",
+      "exitCode": 0,
+      "result": "tests 59 / pass 59 / fail 0"
+    },
+    {
+      "command": "npm run test:economics",
+      "exitCode": 0,
+      "result": "49/49 PASS"
+    },
+    {
+      "command": "npm run test:hardware",
+      "exitCode": 0,
+      "result": "54/54 checks passed"
+    },
+    {
+      "command": "node --test --test-isolation=none scripts/check-marea-hardware.test.mjs",
+      "exitCode": 0,
+      "result": "tests 59 / pass 59 / fail 0"
+    },
+    {
+      "command": "git rev-parse HEAD",
+      "exitCode": 0,
+      "result": "fe970624bc7c41ae5ffe0fb578c194fcb6a795f1"
+    },
+    {
+      "command": "git status --porcelain=v1",
+      "exitCode": 0,
+      "result": "Only '?? .recon/' (untracked author scratch); no tracked modification"
+    },
+    {
+      "command": "git diff --stat 5b47a3d..HEAD",
+      "exitCode": 0,
+      "result": "40 files changed, 24253 insertions(+), 5 deletions(-)"
+    },
+    {
+      "command": "gh pr view 18 / 19 --json state,isDraft,mergeable,mergedAt,baseRefName",
+      "exitCode": 0,
+      "result": "PR18 OPEN/draft/MERGEABLE/mergedAt null; PR19 OPEN/draft/MERGEABLE/mergedAt null, stacked on feature/marea-mc11-hardware-sourcing-conformity"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "title": "Validator R-01 per-family branch is unreachable, so the check can never fail for a connected hardware family",
+      "severity": "MAJOR",
+      "evidence": "scripts/check-marea-unit-economics.mjs:2039-2069; the branch at line 2067 reads `if (!hasRecurringLine && !declaredUnknown && !cloudPerDevice.length)`. `cloudPerDevice` is non-empty in the shipped dataset (RC-006/007/008/009/010/011/012/014/015/016 and Cloudflare Workers inputs), so `!cloudPerDevice.length` is false and the per-family requirement can never trigger. The only negative test (scripts/check-marea-unit-economics.test.mjs:570-580) removes all cloud inputs, which also empties `cloudPerDevice`, so it passes without exercising the per-family branch.",
+      "description": "Contract R-01 requires every connected hardware SKU (HUB, WATCH, DISPLAY, AIS) to carry recurring cost inputs or an explicit UNKNOWN. The validator's family-level enforcement is dead code whenever the global cloud-input list is non-empty, which is always true for a valid dataset. The 49/49 PASS result therefore does not prove R-01.",
+      "requiredCorrection": "Remove the trailing `&& !cloudPerDevice.length` from the per-family condition and add a negative test that strips recurring cost lines and declared UNKNOWN entries from exactly one connected family while leaving global cloud inputs intact, asserting R-01 fails.",
+      "correctionOwner": "validation-engineering (MC-12 author) / programme-lead",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F02",
+      "title": "HUB, DISPLAY and AIS records carry no recurring cost input or explicit UNKNOWN recurring entry",
+      "severity": "MINOR",
+      "evidence": "docs/marea/economics/data/unit-economics.json: all UE-HUB-* records have empty unknownVariableCostCategories except HUB-PRO's HUB_PRO_INCREMENTAL_LINES; UE-DISPLAY-* have no recurring category or UNKNOWN; UE-AIS-* only declare AIS_CONNECTED_COST. None has a CLOUD/CELLULAR/CONNECTIVITY/TELEMETRY/NOTIFICATION line. Requirement: docs/marea/economics/data/MC12-DATA-CONTRACT.md:327 (R-01).",
+      "description": "Contract R-01 lists HUB, WATCH, DISPLAY and AIS as connected hardware that must declare recurring cost exposure or an explicit UNKNOWN. WATCH does (cellular/cloud/notification) and WATCH-FLEET subscription records do; HUB, DISPLAY and AIS do not declare it at all. The exposed data gap is currently masked by F01.",
+      "requiredCorrection": "Add explicit recurring UNKNOWN/NOT_APPLICABLE declarations (for example a customer-supplied connectivity/data-path entry) to the HUB, DISPLAY and AIS records, or amend the contract's connected-family list through change control with a recorded decision. Then re-run R-01 after F01 is fixed.",
+      "correctionOwner": "economic-model data owner / programme-lead",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F03",
+      "title": "PR_CREATED status block is self-contradictory and the gate freezes the false value",
+      "severity": "MAJOR",
+      "evidence": "docs/marea/economics/data/manifest.json:52 (`\"PR_CREATED\": false`) versus docs/marea/economics/MC-12-DELIVERY.md:163 and docs/marea/economics/MC12-EXECUTIVE-REPORT.md:247 (`PR_CREATED = true`); PR #19 is OPEN/draft/MERGEABLE (gh pr view 19). The validator's FROZEN_STATUS_BLOCK (scripts/check-marea-unit-economics.mjs:95-108, line 104) also hardcodes false and D-03 (lines 2331-2350) enforces it, so the gate certifies the inconsistency.",
+      "description": "The machine-readable status block states that no PR was created, although the registry row names PR #19 and D18/D19 state PR_CREATED = true. This violates the required status-block consistency across manifest/D18/D19/registry and is a truthfulness defect in the evidence chain.",
+      "requiredCorrection": "Set manifest.statusBlock.PR_CREATED to true and update FROZEN_STATUS_BLOCK (with a negative test that would fail if it were false), keeping MERGED/DEPLOYED/MC13_STARTED false; or, if the intended semantic is 'merged PR', rename the field and align D18/D19/registry wording. Re-run the gate after correction.",
+      "correctionOwner": "programme-lead + validation-engineering",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F04",
+      "title": "Licensing-rights count and status are misstated in the delivery record and registry",
+      "severity": "MINOR",
+      "evidence": "docs/marea/economics/MC-12-DELIVERY.md:81-82 and docs/marea/execution/MASTER-PROMPT-REGISTRY.md:58 state '9 licensing rights, all NOT_GRANTED or REQUIRES_CONTRACT'. docs/marea/economics/data/licensing-rights.json has 11 rights: 7 NOT_GRANTED, 3 REQUIRES_CONTRACT, 1 PERMITTED (LR-CHART-002, NOAA ENC/public-domain context layer); summary.blockingRights = 9.",
+      "description": "The prose understates the register size and asserts a status distribution that the dataset does not have (one right is PERMITTED, explicitly as a fee-free public-domain context layer, not as a navigation-grade grant). The governance conclusion LICENSING_RIGHTS_GRANTED=false still holds.",
+      "requiredCorrection": "Correct the delivery record and registry to '11 rights (9 blocking): 7 NOT_GRANTED, 3 REQUIRES_CONTRACT, 1 PERMITTED (public-domain context layer only)' and keep the clarification that PERMITTED does not imply fitness for navigation.",
+      "correctionOwner": "programme-lead",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F05",
+      "title": "Blocker count and severity split are misstated in the delivery record and registry",
+      "severity": "MINOR",
+      "evidence": "docs/marea/economics/MC-12-DELIVERY.md:81 and docs/marea/execution/MASTER-PROMPT-REGISTRY.md:58 state '22 blockers (12 BLOCKING, 9 MAJOR, 1 MINOR)'. docs/marea/economics/data/blocker-register.json contains 23 blockers, all OPEN, with 14 BLOCKING, 8 MAJOR, 1 MINOR.",
+      "description": "The delivered blocker register and the narrative record disagree on both the total and the severity distribution. No blocker status is affected (all remain OPEN).",
+      "requiredCorrection": "Correct the counts to 23 blockers (14 BLOCKING, 8 MAJOR, 1 MINOR) in MC-12-DELIVERY.md and the registry row, or reconcile the register if a blocker was removed.",
+      "correctionOwner": "programme-lead",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F06",
+      "title": "Evidence-class accounting omits the single ENGINEERING_ASSUMPTION provider record",
+      "severity": "MINOR",
+      "evidence": "docs/marea/economics/data/manifest.json:37 engineeringAssumptions = 0, but providers.json contains PE-CC-013 with evidenceClass ENGINEERING_ASSUMPTION (offshore coverage assumption). The manifest evidenceCounts total 52 (21+2+15+9+5+0) while manifest.json:40 providerRecords = 53. docs/marea/economics/MC-12-DELIVERY.md:58-68 repeats the class table without the engineering-assumption class.",
+      "description": "The machine and narrative evidence accounting do not add up to the 53 provider records that the same files report; one class is silently uncounted. The record itself is correctly labelled.",
+      "requiredCorrection": "Record engineeringAssumptions = 1 (or reclassify PE-CC-013 with justification) so the evidence-class counts sum to 53, and add the class to the D19 evidence table.",
+      "correctionOwner": "programme-lead",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F07",
+      "title": "Registry row 12 contains a placeholder commit reference and a premature review reference",
+      "severity": "MINOR",
+      "evidence": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md:58: 'implementation commit `e6e181a`, correction commit `correction commit in the final head`'; the same row names docs/marea/economics/review/MC-12-REVIEW.md as an existing artefact although the review is authored after the delivery commit.",
+      "description": "A governing registry row must not contain placeholder text or claim an artefact that does not exist at that commit. The placeholder obscures which correction commit was applied.",
+      "requiredCorrection": "Replace the placeholder with the actual commit SHA(s), and state that the independent review is added by the reviewer commit (or reference it as pending until committed).",
+      "correctionOwner": "programme-lead",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F08",
+      "title": "Bundle economic component lists deviate from bundle-definitions.json",
+      "severity": "MINOR",
+      "evidence": "docs/marea/economics/data/bundle-economics.json: BE-SAIL (lines 166-207) componentEconomicIds include UE-SENSE-MODULE-100-BASE but not UE-PILOT-COASTAL-100-BASE; BE-COMPLETE (lines 211-260) omits PILOT-COASTAL; BE-FLEET (lines 268-283) has an empty component list. docs/marea/bundles/bundle-definitions.json SAIL components: SL-01 NAV-PRO INCLUDED, SL-02 HUB-STANDARD INCLUDED, SL-03 PILOT-COASTAL QUOTATION_REQUIRED requiredForOutcome, SL-04 SENSE-WIND CONDITIONAL (not included); COMPLETE CP-09 PILOT-COASTAL QUOTATION_REQUIRED; FLEET FP-01 FLEET-START INCLUDED. MC12-BUNDLE-ECONOMICS.md:13-16 claims 'No included product is added or removed'.",
+      "description": "SAIL counts a CONDITIONAL SENSE-WIND module as a bundle component and omits the required PILOT-COASTAL component; COMPLETE omits PILOT (acknowledged only as an unknown category); FLEET lists no component although FLEET-START is INCLUDED. No numeric result changes because SAIL/COMPLETE known variable cost and contribution are null and FLEET has no package price, but component identity is not traceable to the authoritative definition as claimed.",
+      "requiredCorrection": "Align componentEconomicIds/componentCosts with INCLUDED and QUOTATION_REQUIRED components of bundle-definitions.json (or label conditional components explicitly and document deliberate omissions in the machine record, not only in prose); reconcile the BE-FLEET component list with FP-01.",
+      "correctionOwner": "commercial-finance-pricing-strategist",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F09",
+      "title": "Validator A-06 does not verify bundle composition against INCLUDED lines or quantities",
+      "severity": "MINOR",
+      "evidence": "scripts/check-marea-unit-economics.mjs:1595-1610: A-06 builds definitionFamilies from `components` plus `optionalComponents` and only checks that each component family is present somewhere in that union. It does not check inclusion type, requiredForOutcome, or quantity/kit expansion.",
+      "description": "An invented optional or CONDITIONAL inclusion, or a missing required component, would pass A-06; the check is a family-membership check rather than the composition check that contract §4.8 describes. This is how F08 escaped the gate.",
+      "requiredCorrection": "Check componentEconomicIds families against the INCLUDED set (and QUOTATION_REQUIRED where requiredForOutcome is true), verify kit-expansion quantities from senseKitExpansion, and add negative tests injecting a conditional-only component and a missing required component.",
+      "correctionOwner": "validation-engineering",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F10",
+      "title": "Bundle unknownVariableCostCategories include fixed certification costs",
+      "severity": "INFORMATIONAL",
+      "evidence": "docs/marea/economics/data/bundle-economics.json: BE-START and BE-PROTECT list CERTIFICATION inside unknownVariableCostCategories with materiality MATERIAL; contract MC12-DATA-CONTRACT.md:301 (V-17) distinguishes fixed one-off unknowns from unit-variable unknowns.",
+      "description": "Fixed certification costs are recorded in the variable-unknown vocabulary; the validator's V-17 suppresses contributionPct for any material entry there. In these bundles the suppression is independently justified by a genuine variable unknown (chart licence, cellular connectivity), so no numeric effect exists in the frozen data.",
+      "requiredCorrection": "Add a fixed-unknown field to the bundle schema or annotate these entries, and make V-17 distinguish fixed one-off from unit-variable unknowns.",
+      "correctionOwner": "validation-engineering / pricing",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F11",
+      "title": "WATCH monitoring returns line rounds to 2.94 where 3% of net revenue gives 2.95",
+      "severity": "INFORMATIONAL",
+      "evidence": "docs/marea/economics/data/unit-economics.json: UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL SVC-RETURNS amountEur 2.94; 3% x net 98.18 = 2.9454, round-half-up 2.95. Already disclosed in docs/marea/economics/MC-12-DELIVERY.md:143-144 and MC12-SENSITIVITY-AND-STRESS-ANALYSIS.md.",
+      "description": "The SVC-RETURNS derivation is truncated rather than round-half-up; the record remains internally consistent (knownVariableCostEur 13.05 equals the line sum) and no contribution error beyond 0.01 arises.",
+      "requiredCorrection": "State the truncation rule or use 2.95 with knownVariableCostEur 13.06 and the dependent contribution values updated.",
+      "correctionOwner": "pricing",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    },
+    {
+      "id": "F12",
+      "title": "Bundle aggregates compose two documented FX bases",
+      "severity": "INFORMATIONAL",
+      "evidence": "docs/marea/economics/data/bundle-economics.json: BE-START knownVariableCostEur 293.55 = HUB 281.13 (MC-11 BOM basis 0.925925926 USD/EUR) + NAV 12.42 (recurring model derived with ECB 0.8916 USD/EUR). ASM-MC12-021 and MC12-PROVIDER-RESEARCH-AND-PRICE-REGISTER.md §4 state 'no subtotal mixes two conversion bases'; D-051 forbids rebasing inherited MC-11 lines.",
+      "description": "Every register is internally consistent and the inherited MC-11 lines are correctly not rebased, which is what D-051 requires. However, bundle-level knownVariableCostEur sums hardware (inherited basis) and subscription (ECB basis) components, so the statement 'no subtotal mixes two bases' is true for the cost registers but not for bundle aggregates.",
+      "requiredCorrection": "Scope the D-051 / provider-register wording to the cost registers, or annotate bundle aggregates with the two conversion bases. No arithmetic change is required.",
+      "correctionOwner": "programme-lead",
+      "remediationEvidence": "",
+      "auditorReverification": "",
+      "finalStatus": "OPEN"
+    }
+  ],
+  "auditChecks": [
+    { "id": "AC-A1", "dimension": "A", "check": "HEAD equals frozen commit and no tracked working-tree modification", "result": "PASS", "evidence": "git rev-parse HEAD = fe970624bc7c41ae5ffe0fb578c194fcb6a795f1; git status --porcelain only '?? .recon/' untracked" },
+    { "id": "AC-A2", "dimension": "A", "check": "Diff contains only MC-12 paths, package.json scripts and required execution governance edits", "result": "PASS", "evidence": "git diff --name-only: docs/marea/economics/** (36), DECISION-LOG.md, MASTER-PROMPT-REGISTRY.md, package.json, two scripts; no hardware/bundles/products/app change" },
+    { "id": "AC-A3", "dimension": "A", "check": "No MC-11 data file changed", "result": "PASS", "evidence": "Diff name list contains no docs/marea/hardware path; D-04 recomputed aggregate SHA-256 equals recorded bc2ae455bab331acb8990e10d7851980f4df5994240e3ae1bdd1d267033e13aa over 19 files" },
+    { "id": "AC-A4", "dimension": "A", "check": "Historical registry rows 1-11 and decisions D-001..D-048 unchanged", "result": "PASS", "evidence": "Registry diff removes only the header date and row 12; decision-log diff has 0 removed lines and adds D-049..D-052" },
+    { "id": "AC-B1", "dimension": "B", "check": "9 families and editions resolve in product-definitions.batch-01..03.json", "result": "PASS", "evidence": "9 family ids and 26 edition ids resolved; every bundle edition id exists; UE skuIds SENSE-MODULE and WATCH-MONITORING are economic constructs mapped to kit expansion and entitlement, not claimed as editions" },
+    { "id": "AC-B2", "dimension": "B", "check": "6 canonical bundles present in bundle economics and decision matrix", "result": "PASS", "evidence": "START, CRUISE, SAIL, PROTECT, COMPLETE, FLEET in bundle-economics.json and bundle-definitions.json" },
+    { "id": "AC-B3", "dimension": "B", "check": "Bundle component economic ids match authoritative bundle composition", "result": "FAIL", "evidence": "F08: SAIL includes CONDITIONAL SENSE and omits required PILOT; COMPLETE omits PILOT; FLEET component list empty" },
+    { "id": "AC-B4", "dimension": "B", "check": "FLEET is hardware-free by default", "result": "PASS", "evidence": "bundle-definitions.json FLEET hardwareIncludedByDefault false; BE-FLEET has no componentCosts; FLEET unit-economics records contain no COST-* hardware line; validator V-05 PASS" },
+    { "id": "AC-B5", "dimension": "B", "check": "PILOT is not a fixed-price SKU", "result": "PASS", "evidence": "UE-PILOT-COASTAL-100-BASE objectType QUOTATION_PACKAGE, grossHypothesisEur null, priceStatus NOT_ESTABLISHED, classification SAFETY_BLOCKED; PH-03/PH-05 historical references never used as prices (BE-SAIL/BE-COMPLETE gross null); V-03 PASS" },
+    { "id": "AC-B6", "dimension": "B", "check": "AIS is receive-only with no transmission offering", "result": "PASS", "evidence": "CR-03 receiveOnly true; no transmit/transponder offering text in economics data; V-04 PASS" },
+    { "id": "AC-C1", "dimension": "C", "check": "53 provider records, 0 formal quotations, 0 executed contracts, RFQ NOT_SENT", "result": "PASS", "evidence": "providers.json records 53; quotationRegister status EMPTY / 0 / 0 / NOT_SENT; evidenceClass counts contain no FORMAL_PROVIDER_QUOTATION or EXECUTED_CONTRACT" },
+    { "id": "AC-C2", "dimension": "C", "check": "Every price/dependency record declares sourceUrl and retrievedOn", "result": "PASS", "evidence": "All 53 provider records have https sourceUrl and ISO retrievedOn (including the ENGINEERING_ASSUMPTION record); 0 violations" },
+    { "id": "AC-C3", "dimension": "C", "check": "Inaccessible/unknown prices are null, never zero", "result": "PASS", "evidence": "All priceStatus INACCESSIBLE/UNKNOWN records have price null; 0 violations" },
+    { "id": "AC-C4", "dimension": "C", "check": "Published tariffs are not labelled quotations; published status has an allowed evidence class", "result": "PASS", "evidence": "0 FORMAL_PROVIDER_QUOTATION/EXECUTED_CONTRACT; PE-CW-023 states tiers are published tariffs, not a quotation to MAREA; 1 PUBLISHED record carries tiered prices in priceUnit with null single price (acceptable; noted)" },
+    { "id": "AC-C5", "dimension": "C", "check": "Manifest evidence counts reconcile to provider records", "result": "FAIL", "evidence": "F06: engineeringAssumptions 0 vs 1 actual; class counts sum 52 vs providerRecords 53" },
+    { "id": "AC-D1", "dimension": "D", "check": "No right sold or presented as granted; chart/weather/NMEA not granted", "result": "PASS", "evidence": "licensing-rights.json has no GRANTED status; LR-CHART-001, LR-WEATHER-001, LR-NMEA-001 NOT_GRANTED; summary chartRightsGranted/weatherRightsGranted/nmeaCertified/connectivityContract/cloudContract/productionTileRight/sourceIpCleared/brandCleared all false; V-13 PASS" },
+    { "id": "AC-D2", "dimension": "D", "check": "Rights map to blockers, provider records and products", "result": "PASS", "evidence": "Every blockerId, sourceRecordId and blocksProductIds resolves; blockingRights 9" },
+    { "id": "AC-D3", "dimension": "D", "check": "Documented rights count/status equals the register", "result": "FAIL", "evidence": "F04: docs say 9 rights all NOT_GRANTED/REQUIRES_CONTRACT; actual 11 with 1 PERMITTED" },
+    { "id": "AC-E1", "dimension": "E", "check": "All model values are EUR and VAT-inclusive net = gross/1.21", "result": "PASS", "evidence": "All 16 files currency EUR; every vatRatePct 21; 50/50 net revenue recomputed exactly; 0 mismatches" },
+    { "id": "AC-E2", "dimension": "E", "check": "No VAT-inclusive figure used as net revenue", "result": "PASS", "evidence": "Independent net recomputation and validator A-13/A-01 PASS; bundle net values equal gross/1.21" },
+    { "id": "AC-E3", "dimension": "E", "check": "Non-EUR observations declare a conversion basis; inherited MC-11 FX not applied to new conversions and vice versa", "result": "PASS", "evidence": "9 USD-priced provider records with central fxBasis/fxRates and ASM-MC12-021; GBP record has null price; MC-11 BOM lines unchanged and not re-converted; bundle aggregate composition noted in F12 (informational)" },
+    { "id": "AC-F1", "dimension": "F", "check": "Independent recomputation of net revenue, known variable cost, contribution, headroom and break-even gross price", "result": "PASS", "evidence": "50/50 records, 0 mismatches at tol 0.005; 41 break-even prices match kvc x 1.21 (or kvc for VAT-excluded); nulls exactly where cost is unknown" },
+    { "id": "AC-F2", "dimension": "F", "check": "Contribution percentage suppressed when a material unknown unit-variable cost exists", "result": "PASS", "evidence": "0 violations across 50 unit-economics and 6 bundle records; V-17 PASS" },
+    { "id": "AC-G1", "dimension": "G", "check": "Subscription monthly-to-annual arithmetic recomputed", "result": "PASS", "evidence": "7 subscriptions: grossPerPeriod x periods, net per period and annual net all match (0 mismatches)" },
+    { "id": "AC-G2", "dimension": "G", "check": "WATCH/FLEET recurring line coverage, inactive state and no guaranteed delivery", "result": "PASS", "evidence": "WATCH monitoring has cellular/cloud/notification/payment/support/returns; FLEET has cloud/support/payment with connectivity delegated as REQUIRED_EXTERNAL; ASM-MC12-020 inactive-state model present; all 'guarantee' strings negated; R-02..R-08 PASS" },
+    { "id": "AC-H1", "dimension": "H", "check": "70 sensitivity results recomputed from base record + declared operation/factor", "result": "PASS", "evidence": "70/70 match, including payment fee per family, 1.2 cost, 1.02 yield, 1.05 FX, 35/30/15 margins, data licence 6/24, 70% retention" },
+    { "id": "AC-H2", "dimension": "H", "check": "4 stress cases and 6 bundle records recomputed", "result": "PASS", "evidence": "STRESS-01..04 all match; 6/6 bundle net revenue, component-cost sums and contributions match where numeric" },
+    { "id": "AC-H3", "dimension": "H", "check": "9 decision weighted scores recomputed from 7 registered weights summing to 100", "result": "PASS", "evidence": "9/9 match; weight sum 100; family classifications consistent with unit-economics classifications" },
+    { "id": "AC-I1", "dimension": "I", "check": "No approved price, no validated demand, no profitability/break-even claim, no MC-13 artefact", "result": "PASS", "evidence": "Only HYPOTHESIS_UNAPPROVED/NOT_ESTABLISHED; manifest priceApproved NONE, commercialAvailability NOT_FOR_SALE, CUSTOMER_WTP_VALIDATED false, LICENSING_RIGHTS_GRANTED false, profitability NONE, breakEvenClaim false, forecastProduced false; handoff mc13Started false; no forecast file" },
+    { "id": "AC-I2", "dimension": "I", "check": "Status block consistent across manifest, D18, D19 and registry", "result": "FAIL", "evidence": "F03: PR_CREATED false in manifest vs true in D18/D19; PR #19 exists; gate freezes false" },
+    { "id": "AC-I3", "dimension": "I", "check": "Documented blocker/rights/evidence counts equal the machine registers", "result": "FAIL", "evidence": "F04, F05, F06" },
+    { "id": "AC-J1", "dimension": "J", "check": "COST-16 tooling invariant across all 90 MC-11 scenarios", "result": "PASS", "evidence": "90/90: sum of numeric lines equals knownSubtotalEur; toolingAmortizationEur equals COST-16 line; variableCostExcludingTooling recomputed; invariant result PASS, max delta 0, 0 field mismatches" },
+    { "id": "AC-J2", "dimension": "J", "check": "COST-12 installation never double counted; COST-16/17 never variable", "result": "PASS", "evidence": "Self-install UE records contain no COST-12; installer records contain exactly 1; no COST-16/17 line in unit economics; A-10 PASS" },
+    { "id": "AC-J3", "dimension": "J", "check": "Hardware unit-economics costs equal MC-11 scenario costs derived independently", "result": "PASS", "evidence": "41 physical UE records: per-category amounts and derived known cost match MC-11 cost-scenarios, 0 mismatches" },
+    { "id": "AC-J4", "dimension": "J", "check": "MC-11 verdict strings and files unchanged", "result": "PASS", "evidence": "MC10_VERDICT BLOCKED and MC11_VERDICT PARTIAL preserved; D-04 SHA baseline PASS; no hardware file in diff" },
+    { "id": "AC-K1", "dimension": "K", "check": "49 required check ids exist and are implemented", "result": "PASS", "evidence": "5 S + 18 V + 14 A + 8 R + 4 D = 49, matches contract §5 exactly; no extra/missing id" },
+    { "id": "AC-K2", "dimension": "K", "check": "Every check can fail (no rubber stamp) and no field-vs-itself comparison", "result": "FAIL", "evidence": "F01: R-01 per-family branch unreachable; F09: A-06 composition check too weak; D-03 enforces stale PR_CREATED (F03). No literal field-vs-self comparison found; A-06 compares declared-to-declared but transitively validated by A-02" },
+    { "id": "AC-K3", "dimension": "K", "check": "Adversarial suite proves the validator rejects invalid data", "result": "PASS", "evidence": "59/59 tests pass with --test-isolation=none; expectFailure asserts the intended check id is FAIL and in report.failures; each of the 49 ids has at least one negative test; the R-01 test does not exercise its per-family branch (F01)" },
+    { "id": "AC-L1", "dimension": "L", "check": "D01-D19 present and substantive; machine-readable contract parses", "result": "PASS", "evidence": "D01-D14, D18, D19 present (92-362 lines); D15 = 16 economic JSON datasets plus the review contract review-findings.json added by this audit; D16 = validator + test suite; D17 is this review; all 16 economic JSON files parse (S-01 PASS)" },
+    { "id": "AC-L2", "dimension": "L", "check": "No broken relative links in the key deliverable documents", "result": "PASS", "evidence": "MC-12-DELIVERY.md, MC12-EXECUTIVE-REPORT.md, MC-12-BASELINE-AND-GOVERNANCE.md and MC12-PER-SKU-CONTRIBUTION-MODEL.md: 0 broken relative links" },
+    { "id": "AC-L3", "dimension": "L", "check": "PR #19 draft/stacked/unmerged and no merge/deploy/publication", "result": "PASS", "evidence": "gh pr view 19: OPEN, draft, MERGEABLE, mergedAt null, base feature/marea-mc11-hardware-sourcing-conformity; PR #18 unchanged; no deploy/publication artefact" },
+    { "id": "AC-L4", "dimension": "L", "check": "Registry row 12 is accurate and free of placeholders", "result": "FAIL", "evidence": "F07: placeholder 'correction commit in the final head'; premature review reference" }
+  ],
+  "residualRisks": [
+    "A validation check that cannot fail (F01) gives false assurance for future data edits even though current arithmetic is correct.",
+    "Independent recomputation verifies arithmetic and identity, not the truth of published tariffs, licensing terms or external prices.",
+    "Inherited MC-11 FX assumption 0.925925926 USD/EUR remains on all hardware lines; observed ECB rate only applies to new conversions.",
+    "Observed public-price coverage of modelled hardware cost is 0.8-4.7%; certification is UNKNOWN in all 90 MC-11 scenarios.",
+    "No customer evidence, no WTP, no churn/CAC; recurring costs are published tariffs, not contracts and not SLAs.",
+    "Untracked .recon/ author scratch remains in the working tree; it is not part of the frozen commit."
+  ],
+  "whatWouldChangeVerdict": [
+    "Fix R-01 (remove the unreachable condition, add a per-family negative test) and add explicit recurring UNKNOWN entries for HUB/DISPLAY/AIS (F01, F02).",
+    "Make PR_CREATED consistent across manifest, D18, D19, registry and the frozen validator constant (F03).",
+    "Correct the rights/blocker/evidence counts, the registry placeholder and the bundle component lists or their labels (F04-F09).",
+    "Re-run the five gates and the independent recomputation on the corrected commit; with F01/F03 CLOSED_VERIFIED the recommendation becomes PASS_INTERNAL_ECONOMICS_SCOPE. MC12_EXTERNAL_COMMERCIAL_EVIDENCE remains BLOCKED_OR_NOT_OBTAINED regardless."
+  ]
+}

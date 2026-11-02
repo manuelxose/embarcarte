@@ -95,8 +95,10 @@ All observations carry `retrievedOn: 2026-11-02`. USD amounts are converted at t
 ECB euro reference rate observed that day (USD 1.1216 per EUR; EUR 0.8916 per USD),
 recorded with its source in the register and in
 [recurring-cost-inputs.json](data/recurring-cost-inputs.json). The inherited MC-11
-BOM conversion (EUR 0.925925926 per USD) is **not** re-based, so no subtotal mixes
-two conversion bases. This closure is recorded as `ASM-MC12-021`.
+BOM conversion (EUR 0.925925926 per USD) is **not** re-based, so no individual cost
+register mixes two conversion bases. Bundle aggregates do combine hardware components
+(inherited MC-11 basis) and subscription components (ECB basis); each component keeps
+its own disclosed basis. This closure is recorded as `ASM-MC12-021`.
 
 ## 5. What remains unavailable
 

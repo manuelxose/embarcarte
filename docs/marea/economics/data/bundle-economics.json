@@ -23,12 +23,14 @@
         {
           "componentId": "UE-HUB-HUB-STANDARD-100-BASE",
           "knownVariableCostEur": 281.13,
-          "basis": "HUB Standard variable cost at 100 units BASE, self-install."
+          "familyId": "HUB",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-NAV-NAV-PRO-ANNUAL",
           "knownVariableCostEur": 12.42,
-          "basis": "NAV Pro first-year known variable cost."
+          "familyId": "NAV",
+          "basis": "Known variable cost from the referenced unit-economics record."
         }
       ],
       "knownVariableCostEur": 293.55,
@@ -37,11 +39,6 @@
           "category": "CHART_DATA_LICENCE",
           "reason": "START requires a licensed chart entitlement; no right or price.",
           "materiality": "MATERIAL"
-        },
-        {
-          "category": "CERTIFICATION",
-          "reason": "HUB conformity cost is UNKNOWN (fixed, excluded from contribution).",
-          "materiality": "MATERIAL"
         }
       ],
       "contributionBeforeUnknownsEur": 118.85,
@@ -49,7 +46,35 @@
       "contributionPct": null,
       "classification": "LICENSING_BLOCKED",
       "confidence": "LOW",
-      "notes": "PH-01 EUR 499 is an unapproved first-year product-only reference, not an installed-system price. The bundle requires a chart right that is NOT_GRANTED."
+      "notes": "PH-01 EUR 499 is an unapproved first-year product-only reference, not an installed-system price. The bundle requires a chart right that is NOT_GRANTED.",
+      "componentInclusions": [
+        {
+          "lineId": "ST-01",
+          "familyId": "HUB",
+          "editionId": "HUB-STANDARD",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "ST-02",
+          "familyId": "NAV",
+          "editionId": "NAV-PRO",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "fixedUnknownCosts": [
+        {
+          "category": "CERTIFICATION_CONFORMITY",
+          "amountEur": null,
+          "status": "UNKNOWN",
+          "note": "HUB certification is a fixed programme cost and is not part of unit contribution."
+        }
+      ]
     },
     {
       "id": "BE-CRUISE",
@@ -69,22 +94,26 @@
         {
           "componentId": "UE-HUB-HUB-STANDARD-100-BASE",
           "knownVariableCostEur": 281.13,
-          "basis": "HUB Standard variable cost at 100 units BASE."
+          "familyId": "HUB",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-AIS-AIS-RECEIVER-100-BASE",
           "knownVariableCostEur": 281.35,
-          "basis": "AIS receiver variable cost at 100 units BASE."
+          "familyId": "AIS",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-DISPLAY-DISPLAY-7-100-BASE",
           "knownVariableCostEur": 303.32,
-          "basis": "DISPLAY 7 variable cost at 100 units BASE."
+          "familyId": "DISPLAY",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-NAV-NAV-ESSENTIAL-ANNUAL",
           "knownVariableCostEur": 10.43,
-          "basis": "NAV Essential first-year known variable cost."
+          "familyId": "NAV",
+          "basis": "Known variable cost from the referenced unit-economics record."
         }
       ],
       "knownVariableCostEur": 876.23,
@@ -110,7 +139,64 @@
       "contributionPct": null,
       "classification": "LICENSING_BLOCKED",
       "confidence": "LOW",
-      "notes": "PH-02 EUR 1,399 excludes antenna/splitter, mounts, cabling, installation, commissioning and channel margin. It is not an installed-system price."
+      "notes": "PH-02 EUR 1,399 excludes antenna/splitter, mounts, cabling, installation, commissioning and channel margin. It is not an installed-system price.",
+      "componentInclusions": [
+        {
+          "lineId": "CR-01",
+          "familyId": "NAV",
+          "editionId": "NAV-ESSENTIAL",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CR-02",
+          "familyId": "HUB",
+          "editionId": "HUB-STANDARD",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CR-03",
+          "familyId": "AIS",
+          "editionId": "AIS-RECEIVER",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CR-04",
+          "familyId": "DISPLAY",
+          "editionId": "DISPLAY-7",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "conditionalComponents": [
+        {
+          "lineId": "CR-06",
+          "familyId": "AIS",
+          "editionId": "AIS-CONNECTED",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "fixedUnknownCosts": [
+        {
+          "category": "CERTIFICATION_CONFORMITY",
+          "amountEur": null,
+          "status": "UNKNOWN",
+          "note": "Fixed programme cost; excluded from unit contribution."
+        }
+      ]
     },
     {
       "id": "BE-PROTECT",
@@ -129,17 +215,20 @@
         {
           "componentId": "UE-WATCH-WATCH-CORE-100-BASE",
           "knownVariableCostEur": 190.9,
-          "basis": "WATCH Core hardware variable cost at 100 units BASE."
+          "familyId": "WATCH",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-SENSE-MODULE-100-BASE",
           "knownVariableCostEur": 176.54,
-          "basis": "Two SENSE modules (SENSE-ESSENTIALS kit expands to SENSE-POWER + SENSE-BILGE), 2 x module variable cost."
+          "familyId": "SENSE",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL",
           "knownVariableCostEur": 13.05,
-          "basis": "WATCH monitoring subscription first-year known variable cost."
+          "familyId": "WATCH",
+          "basis": "Known variable cost from the referenced unit-economics record."
         }
       ],
       "knownVariableCostEur": 380.49,
@@ -148,11 +237,6 @@
           "category": "CELLULAR_CONNECTIVITY",
           "reason": "WATCH connectivity contract does not exist.",
           "materiality": "MATERIAL"
-        },
-        {
-          "category": "CERTIFICATION",
-          "reason": "WATCH and SENSE conformity cost is UNKNOWN.",
-          "materiality": "MATERIAL"
         }
       ],
       "contributionBeforeUnknownsEur": -50.74,
@@ -160,7 +244,49 @@
       "contributionPct": null,
       "classification": "DEFER_RECOMMENDED",
       "confidence": "LOW",
-      "notes": "The historical PH-04 EUR 399 is below the conditional variable cost of its own composition (EUR 497 symbolic component floor already exceeds it). At the modelled 100-unit BASE cost the bundle contribution is negative; the price must rise or the composition change."
+      "notes": "The historical PH-04 EUR 399 is below the conditional variable cost of its own composition (EUR 497 symbolic component floor already exceeds it). At the modelled 100-unit BASE cost the bundle contribution is negative; the price must rise or the composition change.",
+      "componentInclusions": [
+        {
+          "lineId": "PR-01",
+          "familyId": "WATCH",
+          "editionId": "WATCH-CORE",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "PR-02",
+          "familyId": "SENSE",
+          "editionId": "SENSE-ESSENTIALS",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": [
+            "SENSE-POWER",
+            "SENSE-BILGE"
+          ]
+        }
+      ],
+      "conditionalComponents": [
+        {
+          "lineId": "PR-05",
+          "familyId": "WATCH",
+          "editionId": "WATCH-PLUS",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "fixedUnknownCosts": [
+        {
+          "category": "CERTIFICATION_CONFORMITY",
+          "amountEur": null,
+          "status": "UNKNOWN",
+          "note": "WATCH/SENSE certification is a fixed programme cost and is not part of unit contribution."
+        }
+      ]
     },
     {
       "id": "BE-SAIL",
@@ -172,24 +298,27 @@
       "netRevenueEur": null,
       "componentEconomicIds": [
         "UE-HUB-HUB-STANDARD-100-BASE",
-        "UE-SENSE-MODULE-100-BASE",
-        "UE-NAV-NAV-PRO-ANNUAL"
+        "UE-NAV-NAV-PRO-ANNUAL",
+        "UE-PILOT-COASTAL-100-BASE"
       ],
       "componentCosts": [
         {
           "componentId": "UE-HUB-HUB-STANDARD-100-BASE",
           "knownVariableCostEur": 281.13,
-          "basis": "HUB Standard variable cost at 100 units BASE."
-        },
-        {
-          "componentId": "UE-SENSE-MODULE-100-BASE",
-          "knownVariableCostEur": 88.27,
-          "basis": "One SENSE module variable cost."
+          "familyId": "HUB",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-NAV-NAV-PRO-ANNUAL",
           "knownVariableCostEur": 12.42,
-          "basis": "NAV Pro first-year known variable cost."
+          "familyId": "NAV",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-PILOT-COASTAL-100-BASE",
+          "knownVariableCostEur": null,
+          "familyId": "PILOT",
+          "basis": "No known variable cost exists for this component; it is carried as a fixed/unknown obligation, never as zero."
         }
       ],
       "knownVariableCostEur": null,
@@ -205,7 +334,56 @@
       "contributionPct": null,
       "classification": "SAFETY_BLOCKED",
       "confidence": "LOW",
-      "notes": "SAIL includes PILOT, whose safety gate is BLOCKED. PH-03 EUR 1,990 is a historical turnkey reference only and is not a quotation. No bundle price or contribution is established."
+      "notes": "SAIL includes PILOT, whose safety gate is BLOCKED. PH-03 EUR 1,990 is a historical turnkey reference only and is not a quotation. No bundle price or contribution is established.",
+      "componentInclusions": [
+        {
+          "lineId": "SL-01",
+          "familyId": "NAV",
+          "editionId": "NAV-PRO",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "SL-02",
+          "familyId": "HUB",
+          "editionId": "HUB-STANDARD",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "SL-03",
+          "familyId": "PILOT",
+          "editionId": "PILOT-COASTAL",
+          "inclusion": "QUOTATION_REQUIRED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "conditionalComponents": [
+        {
+          "lineId": "SL-04",
+          "familyId": "SENSE",
+          "editionId": "SENSE-WIND",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "SL-05",
+          "familyId": "PILOT",
+          "editionId": "PILOT-SAIL",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ]
     },
     {
       "id": "BE-COMPLETE",
@@ -220,33 +398,45 @@
         "UE-DISPLAY-DISPLAY-7-100-BASE",
         "UE-WATCH-WATCH-CORE-100-BASE",
         "UE-SENSE-MODULE-100-BASE",
-        "UE-NAV-NAV-PRO-ANNUAL"
+        "UE-NAV-NAV-PRO-ANNUAL",
+        "UE-PILOT-COASTAL-100-BASE"
       ],
       "componentCosts": [
         {
           "componentId": "UE-HUB-HUB-PRO-100-BASE",
           "knownVariableCostEur": 281.13,
-          "basis": "HUB Pro modelled variable cost, incremental lines unpriced."
+          "familyId": "HUB",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-DISPLAY-DISPLAY-7-100-BASE",
           "knownVariableCostEur": 303.32,
-          "basis": "DISPLAY 7 variable cost at 100 units BASE."
+          "familyId": "DISPLAY",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-WATCH-WATCH-CORE-100-BASE",
           "knownVariableCostEur": 190.9,
-          "basis": "WATCH Core hardware variable cost."
+          "familyId": "WATCH",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-SENSE-MODULE-100-BASE",
           "knownVariableCostEur": 353.08,
-          "basis": "Four symbolic SENSE modules."
+          "familyId": "SENSE",
+          "basis": "Known variable cost from the referenced unit-economics record."
         },
         {
           "componentId": "UE-NAV-NAV-PRO-ANNUAL",
           "knownVariableCostEur": 12.42,
-          "basis": "NAV Pro first-year known variable cost."
+          "familyId": "NAV",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-PILOT-COASTAL-100-BASE",
+          "knownVariableCostEur": null,
+          "familyId": "PILOT",
+          "basis": "No known variable cost exists for this component; it is carried as a fixed/unknown obligation, never as zero."
         }
       ],
       "knownVariableCostEur": null,
@@ -262,7 +452,101 @@
       "contributionPct": null,
       "classification": "SAFETY_BLOCKED",
       "confidence": "LOW",
-      "notes": "COMPLETE includes PILOT (safety gate BLOCKED) and has no approved turnkey price. PH-05 EUR 3,490 is a historical reference only."
+      "notes": "COMPLETE includes PILOT (safety gate BLOCKED) and has no approved turnkey price. PH-05 EUR 3,490 is a historical reference only.",
+      "componentInclusions": [
+        {
+          "lineId": "CP-01",
+          "familyId": "NAV",
+          "editionId": "NAV-PRO",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-02",
+          "familyId": "HUB",
+          "editionId": "HUB-PRO",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-03",
+          "familyId": "DISPLAY",
+          "editionId": "DISPLAY-7",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-04",
+          "familyId": "WATCH",
+          "editionId": "WATCH-CORE",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-05",
+          "familyId": "SENSE",
+          "editionId": "SENSE-POWER",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-06",
+          "familyId": "SENSE",
+          "editionId": "SENSE-BILGE",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-07",
+          "familyId": "SENSE",
+          "editionId": "SENSE-TANKS",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-08",
+          "familyId": "SENSE",
+          "editionId": "SENSE-ENV",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-09",
+          "familyId": "PILOT",
+          "editionId": "PILOT-COASTAL",
+          "inclusion": "QUOTATION_REQUIRED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "conditionalComponents": [
+        {
+          "lineId": "CP-14",
+          "familyId": "PILOT",
+          "editionId": "PILOT-SAIL",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ]
     },
     {
       "id": "BE-FLEET",
@@ -272,8 +556,17 @@
       "vatBasis": "VAT_EXCLUDED",
       "vatRatePct": 21,
       "netRevenueEur": null,
-      "componentEconomicIds": [],
-      "componentCosts": [],
+      "componentEconomicIds": [
+        "UE-FLEET-FLEET-START-VESSEL-ANNUAL"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-FLEET-FLEET-START-VESSEL-ANNUAL",
+          "knownVariableCostEur": null,
+          "familyId": "FLEET",
+          "basis": "Per-vessel SaaS hypothesis; no package price, onboarding price or contract exists. No hardware is included by default."
+        }
+      ],
       "knownVariableCostEur": null,
       "unknownVariableCostCategories": [
         {
@@ -287,7 +580,38 @@
       "contributionPct": null,
       "classification": "COST_MODEL_INCOMPLETE",
       "confidence": "LOW",
-      "notes": "FLEET is a per-vessel SaaS plus separately quoted onboarding, never default hardware. No package price exists; PH-06 is NOT_ESTABLISHED."
+      "notes": "FLEET is a per-vessel SaaS plus separately quoted onboarding, never default hardware. No package price exists; PH-06 is NOT_ESTABLISHED.",
+      "componentInclusions": [
+        {
+          "lineId": "FP-01",
+          "familyId": "FLEET",
+          "editionId": "FLEET-START",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "FP-03",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "conditionalComponents": [
+        {
+          "lineId": "FP-02",
+          "familyId": "FLEET",
+          "editionId": "FLEET-ENTERPRISE",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ]
     }
   ]
 }

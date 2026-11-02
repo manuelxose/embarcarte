@@ -58,7 +58,7 @@ EUR 50.74** before connectivity and certification. The MC-08 note already record
 that the symbolic component floor exceeded EUR 399. `DEFER_RECOMMENDED`: the bundle
 cannot be sold at PH-04 with this composition and cost structure.
 
-### SAIL (NAV Pro + HUB + PILOT + SENSE)
+### SAIL (NAV Pro + HUB + PILOT; SENSE-WIND is CONDITIONAL and not included)
 Includes PILOT. The safety gate is `BLOCKED`, no PILOT cost or fixed price exists,
 and the entire steering installation scope is unpriced. PH-03 EUR 1 990 is a
 historical turnkey reference only. `SAFETY_BLOCKED`; no contribution is computed.
