@@ -12,7 +12,7 @@
   "frozenCandidateCommit": "7f31db83797f9423bbd9d0b60764f8db22fe8bbf",
   "previousFrozenCandidateCommit": "e32673ea26fa1b115e57b02b9755d3149c3db1ea",
   "baseCommit": "f80c0f02ac14803e9e1539393abbb225d7f49e16",
-  "finalRecordCommit": null,
+  "finalRecordCommit": "2626853d1049b9b615b77d17a773dbdad6784cc6",
   "reVerificationRound": 3,
   "reVerifiedAt": "2026-11-02",
   "verdictDetail": "Third-round re-verification of residual-fix commit 7f31db83797f9423bbd9d0b60764f8db22fe8bbf (3 commits from base, no merges, no src/public/.github/deploy change; branch pushed and remote HEAD = 7f31db8; draft PR #21 OPEN targeting feature/marea-mc13-financial-model-cashflow-break-even, mergedAt null). All four residual defects from round 2 are closed: (A-01) dossier §1 key-date table (50 rows) and §3 transposition table now carry the governed verificationStatus for every shared source, no shared source carries two statuses, and §0 line 11 was corrected to 50 research records = 46 shared + 4 considered-only while governed 48 = 46 shared + 2 compilation additions; (A-04) D19 §3.3 now states the reduced bundle-assessment schema explicitly (bundle assessments use instrumentId/status/rationale/condition and inherit legalSourceIds/requirementIds/evidenceRequired from the included family assessments); (A-05) D03 WEATHER/BATTERIES and FLEET/BATTERIES now reproduce the governed rationales verbatim (210/210 rationale/status rows match); (A-06) data/mc15-handoff-inputs.json pageByPageIssues routes are now /tienda, /tecnologia, /aviso-legal, /privacidad, /cookies, /carrito, /sobre-nosotros with no /legal/* or /tienda/checkout path remaining. At 7f31db8 the gate is 54/54, the committed adversarial suite is 41/41, format:check passes, 5/5 fresh auditor mutations (N7-N11) are detected, 34/34 website findings remain verbatim, 0 unresolved foreign keys, manifest 23/23 counts, D02/D05 rows and 42-claim bilingual parity intact. A-02/A-03/A-07/A-08/A-09/A-10/A-11/A-13/A-17 were already closed in round 2. AWARD: PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE for the internal legal/commercial governance scope, with programme status PARTIAL: external legal clearance, certification, insurance, licences, prices and 19 external decisions remain NOT_GRANTED/PENDING (MC-13 mirror). Four INFORMATIONAL observations remain open by design (A-12 validator coverage gaps, A-14 inherited-status sentinel, A-15 record-commit artefacts, A-16 remote-state snapshot) and none blocks the internal award. No sale, certification, legal clearance, insurance, licence, publication, merge or deployment is authorised by this record; finalRecordCommit stays null until the Lead records this award.",
@@ -90,9 +90,29 @@
   "independentRecomputation": {
     "description": "The auditor re-ran the provenance and document-to-data reconciliations at 7f31db8 with auditor-written loops and did not trust the correction summary. Fresh negative controls N7-N11 were written for this round; the earlier 19 + 6 controls remain recorded.",
     "reVerificationOutcome": {
-      "residualItemsClosedInRound3": ["A-01", "A-04", "A-05", "A-06"],
-      "previouslyClosed": ["A-02", "A-03", "A-07", "A-08", "A-09", "A-10", "A-11", "A-13", "A-17"],
-      "informationalOpenByDesign": ["A-12", "A-14", "A-15", "A-16"],
+      "residualItemsClosedInRound3": [
+        "A-01",
+        "A-04",
+        "A-05",
+        "A-06"
+      ],
+      "previouslyClosed": [
+        "A-02",
+        "A-03",
+        "A-07",
+        "A-08",
+        "A-09",
+        "A-10",
+        "A-11",
+        "A-13",
+        "A-17"
+      ],
+      "informationalOpenByDesign": [
+        "A-12",
+        "A-14",
+        "A-15",
+        "A-16"
+      ],
       "gateAtReviewedCommit": "54/54",
       "suiteAtReviewedCommit": "41/41",
       "freshMutationsDetected": "5/5 (N7-N11)",
@@ -107,12 +127,46 @@
       "economicOperatorRoles": 11,
       "supplyScenarios": 9,
       "risks": 95,
-      "riskSeverity": {"CRITICAL": 29, "HIGH": 62, "MEDIUM": 4},
-      "predecessorMappings": {"total": 134, "MC-02": 58, "MC-11": 39, "MC-12": 23, "MC-13": 14, "MC-02ByCategory": {"L": 9, "S": 9, "D": 10, "H": 13, "P": 10, "X": 7}},
+      "riskSeverity": {
+        "CRITICAL": 29,
+        "HIGH": 62,
+        "MEDIUM": 4
+      },
+      "predecessorMappings": {
+        "total": 134,
+        "MC-02": 58,
+        "MC-11": 39,
+        "MC-12": 23,
+        "MC-13": 14,
+        "MC-02ByCategory": {
+          "L": 9,
+          "S": 9,
+          "D": 10,
+          "H": 13,
+          "P": 10,
+          "X": 7
+        }
+      },
       "mc13HandoffDependencies": 10,
-      "claims": {"total": 42, "A": 4, "C": 3, "P": 11, "X": 24, "INTERNAL_ONLY": 7, "PUBLIC_PROHIBITED": 35, "PUBLIC_AUTHORIZED": 0},
+      "claims": {
+        "total": 42,
+        "A": 4,
+        "C": 3,
+        "P": 11,
+        "X": 24,
+        "INTERNAL_ONLY": 7,
+        "PUBLIC_PROHIBITED": 35,
+        "PUBLIC_AUTHORIZED": 0
+      },
       "prohibitedClaimCategories": 30,
-      "websiteFindings": {"total": 34, "BLOCKING": 6, "MAJOR": 20, "MINOR": 4, "INFORMATIONAL": 4, "verbatimVerified": 34},
+      "websiteFindings": {
+        "total": 34,
+        "BLOCKING": 6,
+        "MAJOR": 20,
+        "MINOR": 4,
+        "INFORMATIONAL": 4,
+        "verbatimVerified": 34
+      },
       "releaseGates": 13,
       "releaseDocuments": 24,
       "externalDecisions": 20,
@@ -126,11 +180,38 @@
       "manifestCountMismatches": 0
     },
     "sourceStatusCrossCheck": {
-      "governedRegister": {"total": 48, "VERIFIED_THIS_SESSION": 4, "CONSUMED_FROM_PREDECESSOR_EVIDENCE": 32, "PARTIALLY_VERIFIED": 2, "NOT_RETRIEVED": 6, "INACCESSIBLE": 4},
-      "researchCsv": {"total": 48, "sameIdsAsGoverned": true, "statusMismatches": 0, "statusDistribution": {"VERIFIED_THIS_SESSION": 4, "CONSUMED_FROM_PREDECESSOR_EVIDENCE": 32, "PARTIALLY_VERIFIED": 2, "NOT_RETRIEVED": 6, "INACCESSIBLE": 4}},
-      "dossierSection1": {"rows": 50, "statusMismatchesForSharedSources": 0},
-      "dossierSection2": {"blocks": 50, "statusMismatchesForSharedSources": 0, "consideredOnlyMarked": 4},
-      "dossierSection3": {"reVerifiedLabelsForSharedSources": 0},
+      "governedRegister": {
+        "total": 48,
+        "VERIFIED_THIS_SESSION": 4,
+        "CONSUMED_FROM_PREDECESSOR_EVIDENCE": 32,
+        "PARTIALLY_VERIFIED": 2,
+        "NOT_RETRIEVED": 6,
+        "INACCESSIBLE": 4
+      },
+      "researchCsv": {
+        "total": 48,
+        "sameIdsAsGoverned": true,
+        "statusMismatches": 0,
+        "statusDistribution": {
+          "VERIFIED_THIS_SESSION": 4,
+          "CONSUMED_FROM_PREDECESSOR_EVIDENCE": 32,
+          "PARTIALLY_VERIFIED": 2,
+          "NOT_RETRIEVED": 6,
+          "INACCESSIBLE": 4
+        }
+      },
+      "dossierSection1": {
+        "rows": 50,
+        "statusMismatchesForSharedSources": 0
+      },
+      "dossierSection2": {
+        "blocks": 50,
+        "statusMismatchesForSharedSources": 0,
+        "consideredOnlyMarked": 4
+      },
+      "dossierSection3": {
+        "reVerifiedLabelsForSharedSources": 0
+      },
       "dossierSection0Membership": "50 = 46 shared + 4 considered-only; governed 48 = 46 shared + 2 compilation additions (SRC-EU-DB-96-9, SRC-ES-AEMET-TERMS)",
       "assessment": "A-01 closed: one governed status per shared source across CSV/dossier §1/§2/§3/D02/legal-sources.json, with a documented membership rule"
     }
@@ -138,40 +219,209 @@
   "negativeControlEvidence": {
     "method": "Auditor-written deep clones of the committed datasets + document map passed to the committed validateData(); no repository file was written. M01-M19 were the round-1 controls at 6fb2285; N1-N6 the round-2 controls at e32673e; N7-N11 are fresh controls at 7f31db8.",
     "firstRoundMutations": [
-      {"id": "M01", "mutation": "invent CE certification (DOC-01 CERTIFIED)", "intendedCheck": "MC14-021", "detected": true},
-      {"id": "M02", "mutation": "invent NMEA 2000 certification", "intendedCheck": "MC14-021", "detected": true},
-      {"id": "M03", "mutation": "approve PILOT safety gate", "intendedCheck": "MC14-018", "detected": true},
-      {"id": "M04", "mutation": "offer AIS transmission in a public claim", "intendedCheck": "MC14-023", "detected": true},
-      {"id": "M05", "mutation": "authorise a price claim", "intendedCheck": "MC14-025", "detected": true},
-      {"id": "M06", "mutation": "fabricate insurance cover in a public claim", "intendedCheck": "MC14-027", "detected": true},
-      {"id": "M07", "mutation": "A-class public claim vs brand NO_GO", "intendedCheck": "MC14-052", "detected": true},
-      {"id": "M08", "mutation": "contradict ES/EN numbers", "intendedCheck": "MC14-015", "detected": true},
-      {"id": "M09", "mutation": "close a gate without evidence", "intendedCheck": "MC14-021", "detected": true},
-      {"id": "M10", "mutation": "mark a risk CLOSED_VERIFIED", "intendedCheck": "MC14-039", "detected": true},
-      {"id": "M11", "mutation": "invent source-IP clearance", "intendedCheck": "MC14-020", "detected": true},
-      {"id": "M12", "mutation": "convert an UNKNOWN amount to zero", "intendedCheck": "MC14-029", "detected": true},
-      {"id": "M13", "mutation": "write a non-ISO legal date", "intendedCheck": "MC14-054", "detected": true},
-      {"id": "M14", "mutation": "delete a mandatory document", "intendedCheck": "MC14-002", "detected": true},
-      {"id": "M15", "mutation": "delete an inherited MC-02 blocker", "intendedCheck": "MC14-031", "detected": true},
-      {"id": "M16", "mutation": "assert a DPIA was performed", "intendedCheck": "MC14-053", "detected": true},
-      {"id": "M17", "mutation": "mark a website finding REMEDIATED", "intendedCheck": "MC14-035", "detected": true},
-      {"id": "M18", "mutation": "write a review verdict while manifest review is PENDING", "intendedCheck": "MC14-050", "detected": true},
-      {"id": "M19", "mutation": "publish without publication authorisation", "intendedCheck": "MC14-017", "detected": true}
+      {
+        "id": "M01",
+        "mutation": "invent CE certification (DOC-01 CERTIFIED)",
+        "intendedCheck": "MC14-021",
+        "detected": true
+      },
+      {
+        "id": "M02",
+        "mutation": "invent NMEA 2000 certification",
+        "intendedCheck": "MC14-021",
+        "detected": true
+      },
+      {
+        "id": "M03",
+        "mutation": "approve PILOT safety gate",
+        "intendedCheck": "MC14-018",
+        "detected": true
+      },
+      {
+        "id": "M04",
+        "mutation": "offer AIS transmission in a public claim",
+        "intendedCheck": "MC14-023",
+        "detected": true
+      },
+      {
+        "id": "M05",
+        "mutation": "authorise a price claim",
+        "intendedCheck": "MC14-025",
+        "detected": true
+      },
+      {
+        "id": "M06",
+        "mutation": "fabricate insurance cover in a public claim",
+        "intendedCheck": "MC14-027",
+        "detected": true
+      },
+      {
+        "id": "M07",
+        "mutation": "A-class public claim vs brand NO_GO",
+        "intendedCheck": "MC14-052",
+        "detected": true
+      },
+      {
+        "id": "M08",
+        "mutation": "contradict ES/EN numbers",
+        "intendedCheck": "MC14-015",
+        "detected": true
+      },
+      {
+        "id": "M09",
+        "mutation": "close a gate without evidence",
+        "intendedCheck": "MC14-021",
+        "detected": true
+      },
+      {
+        "id": "M10",
+        "mutation": "mark a risk CLOSED_VERIFIED",
+        "intendedCheck": "MC14-039",
+        "detected": true
+      },
+      {
+        "id": "M11",
+        "mutation": "invent source-IP clearance",
+        "intendedCheck": "MC14-020",
+        "detected": true
+      },
+      {
+        "id": "M12",
+        "mutation": "convert an UNKNOWN amount to zero",
+        "intendedCheck": "MC14-029",
+        "detected": true
+      },
+      {
+        "id": "M13",
+        "mutation": "write a non-ISO legal date",
+        "intendedCheck": "MC14-054",
+        "detected": true
+      },
+      {
+        "id": "M14",
+        "mutation": "delete a mandatory document",
+        "intendedCheck": "MC14-002",
+        "detected": true
+      },
+      {
+        "id": "M15",
+        "mutation": "delete an inherited MC-02 blocker",
+        "intendedCheck": "MC14-031",
+        "detected": true
+      },
+      {
+        "id": "M16",
+        "mutation": "assert a DPIA was performed",
+        "intendedCheck": "MC14-053",
+        "detected": true
+      },
+      {
+        "id": "M17",
+        "mutation": "mark a website finding REMEDIATED",
+        "intendedCheck": "MC14-035",
+        "detected": true
+      },
+      {
+        "id": "M18",
+        "mutation": "write a review verdict while manifest review is PENDING",
+        "intendedCheck": "MC14-050",
+        "detected": true
+      },
+      {
+        "id": "M19",
+        "mutation": "publish without publication authorisation",
+        "intendedCheck": "MC14-017",
+        "detected": true
+      }
     ],
     "round2Mutations": [
-      {"id": "N1", "mutation": "pre-record PASS verdict while manifest.review.status is PENDING", "intendedCheck": "MC14-050", "detected": true},
-      {"id": "N2", "mutation": "class C claim PUBLIC_CONDITIONAL with empty evidence", "intendedCheck": "MC14-042", "detected": true},
-      {"id": "N3", "mutation": "bundle NOT_APPLICABLE with a trivial rationale", "intendedCheck": "MC14-010", "detected": true},
-      {"id": "N4", "mutation": "delete a referenced governed source", "intendedCheck": "MC14-005", "detected": true},
-      {"id": "N5", "mutation": "publicationAuthorization AUTHORIZED without a claim", "intendedCheck": "MC14-017", "detected": true},
-      {"id": "N6", "mutation": "invent NMEA certification", "intendedCheck": "MC14-021", "detected": true}
+      {
+        "id": "N1",
+        "mutation": "pre-record PASS verdict while manifest.review.status is PENDING",
+        "intendedCheck": "MC14-050",
+        "detected": true
+      },
+      {
+        "id": "N2",
+        "mutation": "class C claim PUBLIC_CONDITIONAL with empty evidence",
+        "intendedCheck": "MC14-042",
+        "detected": true
+      },
+      {
+        "id": "N3",
+        "mutation": "bundle NOT_APPLICABLE with a trivial rationale",
+        "intendedCheck": "MC14-010",
+        "detected": true
+      },
+      {
+        "id": "N4",
+        "mutation": "delete a referenced governed source",
+        "intendedCheck": "MC14-005",
+        "detected": true
+      },
+      {
+        "id": "N5",
+        "mutation": "publicationAuthorization AUTHORIZED without a claim",
+        "intendedCheck": "MC14-017",
+        "detected": true
+      },
+      {
+        "id": "N6",
+        "mutation": "invent NMEA certification",
+        "intendedCheck": "MC14-021",
+        "detected": true
+      }
     ],
     "freshRound3Mutations": [
-      {"id": "N7", "mutation": "recorded PASS award while a MAJOR finding is OPEN (manifest + review set to the award)", "intendedCheck": "MC14-050", "failedChecks": ["MC14-002", "MC14-050"], "detected": true},
-      {"id": "N8", "mutation": "class C claim PUBLIC_AUTHORIZED with synthetic evidence", "intendedCheck": "MC14-017", "failedChecks": ["MC14-017", "MC14-019", "MC14-041", "MC14-052"], "detected": true},
-      {"id": "N9", "mutation": "invent source-IP clearance and granted rights", "intendedCheck": "MC14-020", "failedChecks": ["MC14-020"], "detected": true},
-      {"id": "N10", "mutation": "class C claim PUBLIC_CONDITIONAL without evidence", "intendedCheck": "MC14-042", "failedChecks": ["MC14-042"], "detected": true},
-      {"id": "N11", "mutation": "remove required evidence from a critical risk", "intendedCheck": "MC14-008", "failedChecks": ["MC14-008"], "detected": true}
+      {
+        "id": "N7",
+        "mutation": "recorded PASS award while a MAJOR finding is OPEN (manifest + review set to the award)",
+        "intendedCheck": "MC14-050",
+        "failedChecks": [
+          "MC14-002",
+          "MC14-050"
+        ],
+        "detected": true
+      },
+      {
+        "id": "N8",
+        "mutation": "class C claim PUBLIC_AUTHORIZED with synthetic evidence",
+        "intendedCheck": "MC14-017",
+        "failedChecks": [
+          "MC14-017",
+          "MC14-019",
+          "MC14-041",
+          "MC14-052"
+        ],
+        "detected": true
+      },
+      {
+        "id": "N9",
+        "mutation": "invent source-IP clearance and granted rights",
+        "intendedCheck": "MC14-020",
+        "failedChecks": [
+          "MC14-020"
+        ],
+        "detected": true
+      },
+      {
+        "id": "N10",
+        "mutation": "class C claim PUBLIC_CONDITIONAL without evidence",
+        "intendedCheck": "MC14-042",
+        "failedChecks": [
+          "MC14-042"
+        ],
+        "detected": true
+      },
+      {
+        "id": "N11",
+        "mutation": "remove required evidence from a critical risk",
+        "intendedCheck": "MC14-008",
+        "failedChecks": [
+          "MC14-008"
+        ],
+        "detected": true
+      }
     ],
     "detectionRate": "M01-M19 19/19 at 6fb2285; N1-N6 6/6 at e32673e; N7-N11 5/5 at 7f31db8"
   },

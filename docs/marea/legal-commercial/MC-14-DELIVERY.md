@@ -57,8 +57,7 @@ families and six bundles under `docs/marea/legal-commercial/`:
 | record commit | manifest/status block, D23, registry, decision log, review record |
 | final SHA commit | records `finalRecordCommit` in the manifest and review record |
 
-The final HEAD SHA and `finalRecordCommit` are recorded in the follow-up record
-commit and in `data/manifest.json`. No merge commit exists.
+The record commit is `2626853d1049b9b615b77d17a773dbdad6784cc6`; the final SHA commit records `finalRecordCommit = 2626853d1049b9b615b77d17a773dbdad6784cc6` in `data/manifest.json` and `data/review-findings.json`. No merge commit exists.
 
 ## 4. Validation evidence
 
