@@ -4,14 +4,16 @@
 |---|---|
 | Deliverable | D20 `MC15-INDEPENDENT-REVIEW.md` + `data/review-findings.json` |
 | Auditor | `auditor` (independent; did not author the implementation) |
-| Reviewed commit | `b70d5500591be63d00ac33b4c1de6c802981b46d` (`b70d550`) |
+| Reviewed commit (re-verification) | `d1d7a1a848fb2a82334811aad9b916d4041cd4a2` (`d1d7a1a`) |
+| Original audit commit | `b70d5500591be63d00ac33b4c1de6c802981b46d` (`b70d550`) |
 | Base commit | `e0be1e457456a401a529e1912770e07ed9a863e4` (`e0be1e4`) |
 | Branch | `feature/marea-mc15-bilingual-ia-seo-migration` |
 | Merge base | `e0be1e457456a401a529e1912770e07ed9a863e4` (verified) |
 | Review date | 2026-11-02 |
-| Verdict | **NEEDS_REVISION** |
-| Review status | `NEEDS_REVISION` |
-| Open findings | 0 BLOCKING, 2 MAJOR, 3 MINOR, 3 INFORMATIONAL |
+| Re-verification date | 2026-11-02 |
+| Verdict | **PASS** (after correction commit `d1d7a1a`; see §19) |
+| Review status | `PASS_AFTER_CORRECTION` |
+| Open findings | 0 BLOCKING, 0 MAJOR, 0 MINOR; 3 INFORMATIONAL accepted observations |
 | Scope | **Internal IA/SEO planning only; no publication, indexation, deployment or MC-16 authorization.** |
 | Publication / deployment | NOT_AUTHORIZED / NOT_EXECUTED |
 | MC16_STARTED | `false` |
@@ -19,6 +21,11 @@
 > This audit is an internal, read-only review. It does not authorise publication, indexation,
 > deployment, a redirect change, a merge or MC-16. It claims no Google indexing and no Search
 > Console evidence; indexation remains `INDEXATION_UNVERIFIED`.
+>
+> **Re-verification notice:** §1–§18 record the independent audit of `b70d550` whose original
+> verdict was `NEEDS_REVISION`. §19 records the independent re-verification of correction commit
+> `d1d7a1a` and is the operative verdict: **PASS**, with only the three informational observations
+> IA-06…IA-08 retained as disclosed, non-blocking limitations.
 
 ## 1. Audit method and independence
 
@@ -434,18 +441,184 @@ and EN), even though `publication-gates.hardRestrictions` records
 explicit forbidden-token checks and unit tests for both restrictions (and any other
 `hardRestrictions` value that is a claim, not a status), then re-run the mutation set.
 
-## 18. Verdict and re-verification conditions
+## 18. Verdict at `b70d550` and re-verification conditions (superseded by §19)
 
-**Verdict: NEEDS_REVISION.** No BLOCKING finding and no live/publication defect was found; the
-route inventory, URL preservation, redirect map, canonical/hreflang, sitemap/indexation,
-structured-data restrictions, 34-finding mapping, 13 gates / 24 documents / 23 matrix rows,
-nine families / six bundles / 26 editions, MC-16-not-started and the no-live-change boundary all
-hold under independent reproduction. However, the two MAJOR findings above must be corrected and
-independently re-verified before MC-15 can be accepted or any downstream MC-16 planning starts.
+**Verdict at `b70d550`: NEEDS_REVISION.** No BLOCKING finding and no live/publication defect was
+found; the route inventory, URL preservation, redirect map, canonical/hreflang,
+sitemap/indexation, structured-data restrictions, 34-finding mapping, 13 gates / 24 documents /
+23 matrix rows, nine families / six bundles / 26 editions, MC-16-not-started and the
+no-live-change boundary all hold under independent reproduction. However, the two MAJOR findings
+above had to be corrected and independently re-verified before MC-15 could be accepted or any
+downstream MC-16 planning started.
 
-Re-verification is required for: IA-01 (the corrected datasets/docs and an equality check),
+Re-verification was required for: IA-01 (the corrected datasets/docs and an equality check),
 IA-02 (new validator rules that make M16/M17 fail for the intended reason), IA-03, IA-04 and
 IA-05 (corrected observations/metadata). IA-06…IA-08 are informational and do not block
 acceptance, but must be retained as disclosed limitations. The re-verification must use the same
 commands and reproducibility standard as this review and must not treat a build, a local test pass
 or a validator run as publication or indexation evidence.
+
+## 19. Re-verification of correction commit `d1d7a1a` (operative verdict: PASS)
+
+### 19.1 Correction commit and boundary
+
+```text
+git rev-parse HEAD                         -> d1d7a1a848fb2a82334811aad9b916d4041cd4a2
+git log --oneline -2                       -> d1d7a1a fix(mc15): apply independent audit corrections IA-01..IA-05
+                                              b70d550 feat(mc15): bilingual IA, SEO route registry, redirect map and publication gates
+git merge-base e0be1e4 d1d7a1a             -> e0be1e457456a401a529e1912770e07ed9a863e4
+git diff --name-only b70d550 d1d7a1a -- src public .github -> (empty)
+git diff --name-only b70d550 d1d7a1a | where { $_ -notmatch '^docs/' } -> scripts/check-marea-ia-seo.mjs, scripts/check-marea-ia-seo.test.mjs
+```
+
+15 files changed: 6 MC-15 documents, 8 MC-15 datasets (including `manifest.json`,
+`review-findings.json` and the two audit-updated datasets) and the validator + its unit suite.
+No `src/`, `public/`, `.github/`, `package.json`, dependency, deployment, checkout, price,
+redirect, sitemap, robots or live-SEO file changed. `git status --porcelain` shows only the
+untracked `.agent-teams/` state at the start of the re-verification and only this review's two
+in-scope files at the end.
+
+### 19.2 Per-finding re-verification
+
+| Finding | Severity | Status | Re-verification evidence |
+|---|---|---|---|
+| IA-01 | MAJOR | **CLOSED_VERIFIED** | 23/23 route sets equal across `proposed-routes`, `proposed-ia` and `routeGateMatrix`; each new set is exactly the sorted union of the three pre-correction sets; 0 gates removed (no relaxation); 13 gates still 12 BLOCKED + 1 EVIDENCE_REQUIRED, 0 closed; matrix gate/evidence/document ids resolve (0 errors); D05 matrix and D13 §6 counts match all 23 dataset counts (23/23). D05 §2.1 + D13 §5/§6 + `gateDerivation` document the sorted union as deliberately conservative. Validator `IA-068` + unit test. |
+| IA-02 | MAJOR | **CLOSED_VERIFIED** | Validator now rejects AIS transmission/transponder and FLEET default/included hardware with `IA-069`; the auditor re-ran the original ES and EN claims and both fail (`mareaFamilyAis:es`/`:en` and `mareaFamilyFleet:es`/`:en`). Unit suite includes an AIS ES test and a FLEET EN test; 58/58 tests pass. Full 21-mutation set now 21/21 rejected for the intended reason. |
+| IA-03 | MINOR | **CLOSED_VERIFIED** | `current-routes.json` `shop.sitemapExpected=true`; `current-urls` both shop rows `MEMBER_SERVER_LIST`; 98-URL baseline includes `/tienda` + `/en/shop`; direct mutation (set false) fails with `IA-070`; unit suite includes the IA-070 test. |
+| IA-04 | MINOR | **CLOSED_VERIFIED** | `redirect-map.json`, D07 and D02 O-09 now record `/productos/does-not-exist` as `404` **with** `Location: /tecnologia/does-not-exist` and an empty body, explicitly not a 3xx. Independently reproduced on an isolated SSR run on port 4455 (fresh build, disposable `DATA_DIR`): status 404, `location=/tecnologia/does-not-exist`, body length 0, no noindex meta; the three legacy 301s stay one-hop. |
+| IA-05 | MINOR | **CLOSED_VERIFIED** | `manifest.json` regenerated at `d1d7a1a`: 18/18 dataset sha256 and byte counts match the correction tree (including `review-findings` 16299 bytes), items counts match, `reviewedCommit=b70d550` truthfully names the last completed review, `reviewStatus` of that audit record is `NEEDS_REVISION` and this re-verification now supersedes it. The Lead's final manifest regeneration after this verdict is the expected delivery step (set `reviewedCommit=d1d7a1a`, new review-findings hash, `reviewStatus=PASS`); the current state is not misleading. |
+| IA-06 | INFORMATIONAL | OPEN — accepted observation | Four `NON_PAGE_SURFACE` urlIds remain outside `current-urls.json`; D02 §2.3 documents them deliberately. No correction required; retained as a disclosed limitation. |
+| IA-07 | INFORMATIONAL | OPEN — accepted observation | `url-evidence.json` still carries repository-only evidence while four datasets claim `LOCAL_SSR_VERIFIED`; the observations are inline and were reproduced again (98/101, redirects, canonical). No correction required beyond the correction commit. |
+| IA-08 | INFORMATIONAL | OPEN — accepted observation | The stale port-4323 test server was a local environment condition, not an MC-15 code/data defect. Port 4323 was free for this re-verification and `test:seo` passed first time. No correction required. |
+
+No finding was closed on a summary: every `CLOSED_VERIFIED` item above has a reproduced command
+result in this section or in §19.3–§19.5.
+
+### 19.3 Test matrix (correction commit)
+
+All required commands were re-run at `d1d7a1a`. 31 commands executed: **29 passed, 2 failed
+(pre-existing inherited baseline), 0 blocked**.
+
+| Command | Result | Evidence |
+|---|---|---|
+| `npm run test:ia-seo` | PASS | 19 datasets, 21 current routes, 23 proposed routes, 34 findings, 13 gates |
+| `npm run test:ia-seo:unit` | PASS | 58/58 (54 original + 4 correction tests) |
+| `npm run test:i18n` | PASS | foundation + server-rendering checks |
+| `npm run test:commerce` | PASS | commerce integration checks |
+| `npm run test:seo` | PASS | 101 sitemap URLs, canonical, reciprocal hreflang, JSON-LD, private noindex |
+| `npm run test:backup` | PASS | backup/restore integrity |
+| `npm run test:legal-commercial` | PASS | 54/54 |
+| `npm run test:legal-commercial:unit` | PASS | exit 0 |
+| `npm run test:financial` | **FAIL (pre-existing)** | V-18: registry row 14 is not PLANNED |
+| `npm run test:financial:unit` | **FAIL (pre-existing)** | 1 failing positive control, same V-18 |
+| `npm run test:economics` | PASS | 0 discrepancies |
+| `npm run test:economics:unit` | PASS | exit 0 |
+| `npm run test:hardware` | PASS | 54/54 |
+| `npm run test:hardware:unit` | PASS | exit 0 |
+| `npm run test:products` | PASS | 52/52, 51/51 files |
+| `npm run test:products:unit` | PASS | exit 0 |
+| `npm run test:bundles` | PASS | 35/35, 6 bundles |
+| `npm run test:bundles:unit` | PASS | exit 0 |
+| `npm run test:brand` | PASS | 21/21, 24 files |
+| `npm run test:brand:unit` | PASS | exit 0 |
+| `npm run test:market` | PASS | 40/40 |
+| `npm run test:market:unit` | PASS | exit 0 |
+| `npm run test:customer-research` | PASS | 62/62 |
+| `npm run test:customer-research:unit` | PASS | exit 0 |
+| `npm run test:customer-recovery` | PASS | 32/32 |
+| `npm run test:customer-recovery:unit` | PASS | exit 0 |
+| `npm run format:check` | PASS | all files Prettier-clean |
+| `npm run build` | PASS | `dist/embarcarte` produced |
+| `npm run test:e2e` | PASS | 15/15 Chromium |
+| `npm audit --omit=dev --audit-level=high` | PASS | 0 vulnerabilities |
+| `git diff --check` | PASS | no whitespace errors |
+
+**Inherited baseline failure (unchanged classification).** `test:financial` and
+`test:financial:unit` fail only on V-18: `MASTER-PROMPT-REGISTRY.md` row 14 is `PARTIAL` at the
+MC-15 base `e0be1e4` (changed in MC-14 commit `2626853`), while the MC-13-era validator still
+requires `PLANNED`. No financial file changed in `b70d550..d1d7a1a`; this is predecessor debt,
+not an MC-15 regression and not fixed or hidden by MC-15. Both commands are reported as FAIL, not
+PASS and not blocked.
+
+### 19.4 Adversarial mutations (full set re-run)
+
+The same 21 auditor-authored mutations from §14 were re-run against a disposable copy of the
+correction tree (`node scripts/check-marea-ia-seo.mjs --root <temp-root>`; clean base exit 0
+first). **21/21 now fail for the intended reason**, including the two previously uncaught cases:
+
+```text
+M16 AIS transmission, ES + EN  -> exit 1, IA-069 mareaFamilyAis:es / :en implies AIS transmission/transponder capability
+M17 FLEET default hardware, ES + EN -> exit 1, IA-069 mareaFamilyFleet:es / :en implies FLEET default/included hardware
+IA-03 shop sitemapExpected=false -> exit 1, IA-070 shop has sitemap member URLs but sitemapExpected is not true
+```
+
+The other 18 mutations (M01–M15, M18–M21) still fail with their original expected codes
+(IA-025, IA-006, IA-012, IA-032/033, IA-033, IA-024, IA-034, IA-020, IA-040, IA-041, IA-038,
+IA-015, IA-026, IA-046/047/049, IA-021, IA-056, IA-059, IA-018, IA-062).
+
+### 19.5 Isolated local SSR re-verification
+
+Fresh `npm run build`, disposable `DATA_DIR`, free ports 4455 (empty) and 4456 (2-product
+fixture); production data untouched; both servers terminated after the checks.
+
+```text
+empty fixture:   /sitemap.xml -> 200, 98 <loc>, x-default 2, no /marea, /admin, /carrito, /en/cart, /muestra or /en/login URL
+2-product fixture: /sitemap.xml -> 200, 101 <loc>, x-default 2; product URLs = /tienda/seo-translated, /tienda/seo-solo-es, /en/shop/seo-translated
+/marea, /en/marea -> 404, no Location, noindex, follow, no canonical
+/open-marine -> 301 /tecnologia; /productos -> 301 /tecnologia; /productos/navegador -> 301 /tecnologia/navegador (one hop)
+/productos/does-not-exist -> 404, Location: /tecnologia/does-not-exist, body length 0, no noindex meta (documented inherited behaviour)
+/tecnologia canonical https://embarcarte.com/tecnologia, alternates es + en
+/tienda/seo-translated -> canonical self, alternates es + en; /tienda/seo-solo-es -> only es alternate;
+/en/shop/seo-solo-es -> 200 noindex, self canonical, no alternates
+```
+
+No MAREA or private/admin/sample URL appears in either sitemap; the 98/101 figures are local
+fixture observations, not production or indexation evidence.
+
+### 19.6 Boundary and integrity checks
+
+- `git diff --name-only b70d550 d1d7a1a -- src public .github` is empty; no live route, redirect,
+  sitemap, robots, SEO, checkout or price change, no dependency change, no deployment artefact.
+- 34/34 MC-14 findings remain `originalStatus=NOT_REMEDIATED` and `status=PLANNED_NOT_REMEDIATED`
+  (0 closed); 13/13 gates consumed with 12 `BLOCKED` + 1 `EVIDENCE_REQUIRED`, 0 closed; 24/24
+  documents still 0 executed.
+- `MC16_STARTED=false` in every dataset and in the manifest; no MC-16 execution, deployment,
+  publication, merge, sitemap submission or external contact was performed.
+- No dataset claims `SEARCH_CONSOLE_VERIFIED` or `GOOGLE_INDEXED`; indexation remains
+  `INDEXATION_UNVERIFIED`.
+
+### 19.7 Residual observations (non-blocking)
+
+1. **IA-06 accepted:** the four `NON_PAGE_SURFACE` urlIds stay outside `current-urls.json` by
+   documented design (D02 §2.3); machine-checking them would need a small surface allowlist.
+2. **IA-07 accepted:** `url-evidence.json` remains repository-only; the local-SSR observations
+   are inline in the datasets and were reproduced again, but they are not keyed in the central
+   evidence registry.
+3. **IA-08 accepted:** the port-4323 collision was a local leftover test server, not a repo
+   defect; port hygiene remains an operational recommendation for the inherited harness.
+4. **Lead delivery step:** one final `manifest.json` regeneration after this verdict should set
+   `reviewedCommit=d1d7a1a`, refresh the `review-findings` hash/bytes/items and set the audit
+   `reviewStatus=PASS`; the current manifest correctly matches the correction tree and is not
+   misleading.
+5. The inherited `test:financial` V-18 failure remains predecessor debt owned by the MC-13
+   financial gate; it is not an MC-15 regression and must not be hidden in MC-15.
+6. **Observation only, non-blocking:** `routeGateMatrix.requiredEvidenceIds` is the exact union of
+   the blocking gates' evidence ids, but `requiredDocumentIds` is a route-specific mapping rather
+   than a strict union (for the routes carrying `GATE-MARKET-PLACEMENT`, `DOC-03` and `DOC-18` are
+   omitted; some family routes add `DOC-12`). Every id resolves, all 24 documents remain required
+   package-wide and no gate is cleared, so this does not block acceptance; a future revision should
+   either document the route-document applicability rule or derive the lists mechanically. This was
+   not one of the original audit findings and is not counted as an open finding.
+
+### 19.8 Final verdict
+
+**Verdict: PASS.** All five corrected findings (IA-01…IA-05) are verified closed against
+`d1d7a1a` with independently reproduced evidence; no BLOCKING, MAJOR or MINOR finding remains
+open. Only the three informational observations IA-06…IA-08 remain, explicitly accepted and
+non-blocking. The internal IA/SEO planning package is accepted at the planning level only:
+publication, indexation, deployment, live route/redirect/SEO changes, merge and MC-16 remain
+**NOT_AUTHORIZED / NOT_EXECUTED**, and no Search Console or Google-indexation evidence is claimed.
+
+Re-verification standard for the future: any change after `d1d7a1a` requires a new commit, a new
+independent check against the same commands and mutation set, and a fresh manifest regeneration;
+a build, a local test pass or a validator run is never evidence of publication or indexation.

@@ -5,14 +5,14 @@
   "date": "2026-11-02",
   "owner": "programme-lead",
   "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
-  "generationMethod": "deterministic SHA-256 over every MC-15 dataset after the correction round; regenerated after re-verification",
+  "generationMethod": "deterministic SHA-256 over every MC-15 dataset at the reviewed correction commit d1d7a1a; regenerated after the independent PASS verdict",
   "evidenceState": "REPOSITORY_VERIFIED",
   "scope": "MC-15 internal bilingual IA/SEO planning package",
   "readOnly": true,
   "publicationAuthorized": false,
   "liveChangeExecuted": false,
   "MC16_STARTED": false,
-  "reviewedCommit": "b70d5500591be63d00ac33b4c1de6c802981b46d",
+  "reviewedCommit": "d1d7a1a848fb2a82334811aad9b916d4041cd4a2",
   "datasetCount": 18,
   "datasets": [
     {
@@ -207,9 +207,9 @@
       "path": "docs/marea/information-architecture/data/review-findings.json",
       "contractId": "MAREA-MC15-REVIEW-FINDINGS",
       "contractVersion": "1.0.0",
-      "evidenceState": "INDEPENDENT_AUDIT_COMPLETE",
-      "sha256": "509031e0e107dd4dbae4263f57a7fd1a600fa91aa793bfeb036d57fb429d0efa",
-      "bytes": 16299,
+      "evidenceState": "REVERIFICATION_COMPLETE",
+      "sha256": "b0c4109666a11b48f77e95304168cffef317f2b3da6183495ae63e6772636487",
+      "bytes": 18880,
       "items": 8,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     }
@@ -218,7 +218,9 @@
     "docs/marea/information-architecture/MC-15-BASELINE-AND-GOVERNANCE.md#9-deliverable-map",
     "docs/marea/information-architecture/MC15-DATA-CONTRACT.md#1-common-envelope"
   ],
-  "reviewStatus": "CORRECTIONS_APPLIED_PENDING_REVERIFICATION",
+  "reviewStatus": "PASS_AFTER_CORRECTION",
+  "reviewVerdict": "PASS",
+  "correctionCommit": "d1d7a1a848fb2a82334811aad9b916d4041cd4a2",
   "correctionFindings": [
     "IA-01",
     "IA-02",
@@ -226,5 +228,9 @@
     "IA-04",
     "IA-05"
   ],
-  "correctionCommit": "PENDING_COMMIT"
+  "acceptedObservations": [
+    "IA-06",
+    "IA-07",
+    "IA-08"
+  ]
 }
