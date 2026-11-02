@@ -1393,7 +1393,8 @@ export function validate(data, options = {}) {
           const receipts =
             c.directReceiptsGross[m] +
             c.distributorCollectionsGross[m] +
-            c.subscriptionCashGross[m];
+            c.subscriptionCashGross[m] -
+            c.refundsCash[m];
           if (!approx(receipts, c.cashReceiptsGross[m], 0.05)) {
             problems.push(`${scenarioId} M${m + 1}: cash receipts identity`);
             break;
@@ -1858,6 +1859,99 @@ export function validate(data, options = {}) {
     return problems;
   });
 
+  add(
+    'A-27',
+    'Refund and withdrawal allowances are paid in cash and adverse returns stress stays adverse',
+    () => {
+      const problems = [];
+      for (const scenarioId of ['DOWNSIDE', 'BASE_HYPOTHETICAL', 'UPSIDE_HYPOTHETICAL']) {
+        const c = hypotheticalMonthly(scenarioId)?.columns;
+        if (!c) continue;
+        for (let m = 0; m < HORIZON; m += 1) {
+          if (!approx(c.refundsCash[m], c.refundsAllowance[m], 0.05)) {
+            problems.push(`${scenarioId} M${m + 1}: refunds cash does not equal the allowance`);
+            break;
+          }
+        }
+      }
+      if (model) {
+        const base = model.stressTests.summary.baseReference;
+        const warranty = model.stressTests.cases.find((item) => item.id === 'ST-07');
+        if (warranty) {
+          if (!(warranty.cumulativeCashEndEur < base.cumulativeCashEndEur)) {
+            problems.push('ST-07 (higher returns) does not worsen cumulative cash');
+          }
+          if (!(warranty.financingRequirementEur > base.financingRequirementEur)) {
+            problems.push('ST-07 (higher returns) does not increase the financing requirement');
+          }
+        }
+      }
+      return problems;
+    },
+  );
+
+  add(
+    'A-28',
+    'Distributor invoicing uses the channel-adjusted trade price without adding VAT twice',
+    () => {
+      const problems = [];
+      for (const scenarioId of ['DOWNSIDE', 'BASE_HYPOTHETICAL', 'UPSIDE_HYPOTHETICAL']) {
+        const scenario = scenarioById.get(scenarioId);
+        const monthlyScenario = hypotheticalMonthly(scenarioId);
+        const c = monthlyScenario?.columns;
+        if (!scenario || !c) continue;
+        const shareRow = (scenario.channelMix ?? []).find(
+          (row) => row.appliesTo === 'HARDWARE' && row.channel === 'DISTRIBUTOR_RETAIL',
+        );
+        if (!shareRow) continue;
+        const share = shareRow.sharePct / 100;
+        const margin = shareRow.revenueDeductionPct / 100;
+        for (let m = 0; m < HORIZON; m += 1) {
+          let expected = 0;
+          for (const sku of hardwareSkus) {
+            if (sku.modelEnabled === false || sku.priceHypothesis?.grossAmountEur == null) continue;
+            const units = c.hardwareUnitsBySku?.[sku.id]?.[m] ?? 0;
+            expected += units * sku.priceHypothesis.grossAmountEur * share * (1 - margin);
+          }
+          if (
+            !approx(c.distributorInvoicedGross[m], expected, 0.05 * Math.max(1, expected / 100))
+          ) {
+            problems.push(
+              `${scenarioId} M${m + 1}: distributor invoicing is not the channel-adjusted trade price`,
+            );
+            break;
+          }
+        }
+      }
+      return problems;
+    },
+  );
+
+  add('S-12', 'Scenario and portfolio-threshold lineage is populated', () => {
+    const problems = [];
+    for (const scenario of scenarioDefs) {
+      if (scenario.eligibilityCase === 'HYPOTHETICAL_POST_CLEARANCE') {
+        if (!(scenario.scenarioAssumptionIds ?? []).length) {
+          problems.push(`${scenario.id}: empty scenarioAssumptionIds`);
+        }
+        for (const id of scenario.scenarioAssumptionIds ?? []) {
+          if (!A.has(id)) problems.push(`${scenario.id}: unresolved assumption ${id}`);
+        }
+      }
+    }
+    for (const threshold of data.breakEvenThresholds?.thresholds ?? []) {
+      if (
+        ['OPERATING_BREAK_EVEN', 'FINANCING_REQUIREMENT', 'CUMULATIVE_CASH_RECOVERY'].includes(
+          threshold.breakEvenType,
+        ) &&
+        !(threshold.inputAssumptionIds ?? []).length
+      ) {
+        problems.push(`${threshold.id}: empty inputAssumptionIds`);
+      }
+    }
+    return problems;
+  });
+
   add('A-26', 'Every declared stress override changes at least one result', () => {
     if (!model) return ['engine recomputation failed'];
     const problems = [];
@@ -2256,6 +2350,28 @@ export function validate(data, options = {}) {
     }
     return problems;
   });
+
+  add(
+    'D-11',
+    'No document asserts an independent-review PASS that the review record does not award',
+    () => {
+      const problems = [];
+      const verdict = data.reviewFindings?.verdict ?? 'PENDING_INDEPENDENT_REVIEW';
+      const awarded = verdict === 'PASS_INTERNAL_FINANCIAL_SCOPE';
+      const texts = Object.entries(external.docs ?? {}).filter(([, text]) => Boolean(text));
+      for (const [file, text] of texts) {
+        const claimsInternal =
+          /MC13_INTERNAL_FINANCIAL_SCOPE\s*=\s*PASS_INTERNAL_FINANCIAL_SCOPE/.test(text);
+        const claimsReview = /MC13_INDEPENDENT_REVIEW\s*=\s*PASS_INTERNAL_FINANCIAL_SCOPE/.test(
+          text,
+        );
+        if ((claimsInternal || claimsReview) && !awarded) {
+          problems.push(`${file}: asserts a PASS not awarded by review-findings.json`);
+        }
+      }
+      return problems;
+    },
+  );
 
   add('D-10', 'Assumptions and evidence register equals deterministic regeneration', () => {
     if (!model) return ['engine recomputation failed'];

@@ -142,16 +142,16 @@ total EUR 402 500.00; DOWNSIDE and UPSIDE scale every payment by their multiplie
 | Working capital (`INV-10`) | `WORKING_CAPITAL_NOT_CAPEX` | `workingCapitalMovement` in the monthly model |
 | Contingency (`INV-11`) | `RESERVE_NOT_SPENT`, `NOT_CAPITALIZED` | 15 % of known capex (`ASM-MC13-043`): EUR 60 375.00 in BASE |
 
-| Scenario | Inventory purchases cash to M60 (EUR) | Cumulative working-capital movement to M60 (EUR) | Contingency reserve (EUR) |
-|---|---|---|---|
-| DOWNSIDE | 209 338.10 | -57 618.53 | 75 468.75 |
-| BASE_HYPOTHETICAL | 1 541 872.72 | -605 082.86 | 60 375.00 |
-| UPSIDE_HYPOTHETICAL | 4 016 463.75 | -1 818 975.72 | 51 318.75 |
+| Scenario | Inventory purchases cash to M60 (EUR) | Cash collections net of VAT to M60 (EUR) | Trade receivables M60 (EUR) | Cumulative working-capital movement to M60 (EUR) | Contingency reserve (EUR) |
+|---|---|---|---|---|---|
+| DOWNSIDE | 209 338.10 | 432 684.74 | 2 300.70 | -51 582.26 | 75 468.75 |
+| BASE_HYPOTHETICAL | 1 541 872.72 | 4 002 334.08 | 15 068.64 | -555 683.63 | 60 375.00 |
+| UPSIDE_HYPOTHETICAL | 4 016 463.75 | 11 852 509.62 | 38 530.40 | -1 689 229.40 | 51 318.75 |
 
-These are real cash movements, but they are **not capex**: the modelled capex total
-remains EUR 402 500.00 (BASE) and never absorbs inventory, working-capital movement or
-the reserve. The contingency reserve is an unfunded analytical allowance, not a
-committed spend; it is excluded from capex cash and from the financing requirement.
+These are real cash movements, not capex: the modelled capex total remains
+EUR 402 500.00 (BASE) and never absorbs inventory, working-capital movement or the
+reserve. The unfunded contingency reserve is an analytical allowance, excluded from
+capex cash and from the financing requirement.
 
 ## 7. Conditional financing requirement by scenario
 
@@ -166,9 +166,9 @@ sum of `netCashFlow` before first revenue.
 
 | Scenario | First revenue month (derived) | Cumulative pre-revenue exposure (derived, EUR) | Financing requirement (EUR) | Cumulative cash M60 (EUR) | Envelope (EUR) | Gap (EUR) | Headroom (EUR) |
 |---|---|---|---|---|---|---|---|
-| DOWNSIDE | M14 | -1 074 159.40 | 3 075 765.77 | -3 075 765.77 | 2 000 000.00 | **1 075 765.77** | 0.00 |
-| BASE_HYPOTHETICAL | M07 | -627 623.61 | 987 326.73 | -415 478.92 | 2 000 000.00 | 0.00 | 1 012 673.27 |
-| UPSIDE_HYPOTHETICAL | M06 | -445 423.51 | 632 135.66 | 5 440 764.18 | 2 000 000.00 | 0.00 | 1 367 864.34 |
+| DOWNSIDE | M14 | -1 074 159.40 | 3 081 802.04 | -3 081 802.04 | 2 000 000.00 | **1 081 802.04** | 0.00 |
+| BASE_HYPOTHETICAL | M07 | -627 623.61 | 995 185.23 | -464 878.15 | 2 000 000.00 | 0.00 | 1 004 814.77 |
+| UPSIDE_HYPOTHETICAL | M06 | -445 423.51 | 621 240.91 | 5 311 017.86 | 2 000 000.00 | 0.00 | 1 378 759.09 |
 | RESTRICTED_CURRENT | no authorized sale | UNKNOWN | UNKNOWN | UNKNOWN | 2 000 000.00 | NOT_DETERMINABLE | NOT_DETERMINABLE |
 
 Conditional break-even status (from [scenario-results.json](data/scenario-results.json)):
@@ -179,25 +179,24 @@ is EUR 150 666.06 / 1 688 226.86 / 5 475 105.86 and EBITDA-like is
 EUR -2 630 259.30 / -618 061.78 / 3 963 913.46 (DOWNSIDE / BASE / UPSIDE). None is a
 verified break-even: every figure excludes named unknown costs, including unknown
 capex and certification.
-
 ## 8. Stress evidence on the funding envelope
 
 [stress-tests.json](data/stress-tests.json) runs 24 declared single-variable and
 compound cases on the BASE hypothesis. Summary: **24 of 24** miss cash recovery within
 60 periods, **23 of 24** keep positive unit contribution yet still collapse at company
 level, and only **2 of 24** exceed the EUR 2 000 000 envelope (`fundingGapEur > 0`:
-ST-17 and ST-24). Stress financing requirements range from EUR 983 928.23 (ST-07) to
-EUR 2 708 788.64 (ST-17); across scenarios and stress cases the range is EUR 632 135.66
-(UPSIDE) to EUR 3 075 765.77 (DOWNSIDE), against a BASE reference of EUR 987 326.73.
+ST-17 and ST-24). Stress cases range from EUR 995 185.23 to EUR 2 708 788.64 (ST-17);
+across scenarios and stress cases the range is EUR 621 240.91 (UPSIDE) to
+EUR 3 081 802.04 (DOWNSIDE), against a BASE reference of EUR 995 185.23.
 
 | Case | Stress | Financing requirement (EUR) | Envelope (EUR) | Gap (EUR) | Cumulative cash M60 (EUR) | Insolvent without funding |
 |---|---|---|---|---|---|---|
-| ST-07 | Warranty and returns 6 % | 983 928.23 | 2 000 000 | 0.00 | -404 870.91 | false |
-| ST-16 | No licensing clearance | 1 621 575.35 | 2 000 000 | 0.00 | -1 621 575.35 | false |
+| ST-07 | Warranty and returns 6 % | 1 012 627.43 | 2 000 000 | 0.00 | -516 651.57 | false |
+| ST-16 | No licensing clearance | 1 670 974.58 | 2 000 000 | 0.00 | -1 670 974.58 | false |
 | ST-17 | No customer acquisition | 2 708 788.64 | 2 000 000 | 708 788.64 | -2 708 788.64 | true |
-| ST-19 | Inventory overstock and 30 % write-down | 1 013 587.28 | 2 000 000 | 0.00 | -466 121.52 | false |
-| ST-23 | Compound adverse case | 1 344 974.00 | 2 000 000 | 0.00 | -1 258 225.84 | false |
-| ST-24 | Positive unit contribution, company viability collapse | 2 021 059.52 | 2 000 000 | 21 059.52 | -2 021 059.52 | true |
+| ST-19 | Inventory overstock and 30 % write-down | 1 020 186.97 | 2 000 000 | 0.00 | -515 520.75 | false |
+| ST-23 | Compound adverse case | 1 417 316.26 | 2 000 000 | 0.00 | -1 357 393.37 | false |
+| ST-24 | Positive unit contribution, company viability collapse | 2 032 603.84 | 2 000 000 | 32 603.84 | -2 032 603.84 | true |
 
 Only ST-17 and ST-24 exceed the envelope; all 24 cases still end with negative
 cumulative cash before any financing, and no case recovers cash within 60 periods.
@@ -221,8 +220,8 @@ financing requirement.
 | `BLK-FIN-13` | Financing | BLOCKING | programme-lead | Written funding authorization or signed term sheet |
 | `BLK-FIN-14` | Price | BLOCKING | programme-lead | Approved price policy with channel, tax and WTP evidence |
 
-All 14 register blockers are `OPEN` (8 `BLOCKING`, 6 `MAJOR`); none is closed by this
-document. `BLK-FIN-13` is the direct reason the envelope remains a hypothesis.
+All 14 register blockers are `OPEN` (**9 `BLOCKING`**, **5 `MAJOR`**); none is closed by
+this document. `BLK-FIN-13` is the direct reason the envelope remains a hypothesis.
 
 ## 10. Traceability register
 
@@ -235,10 +234,11 @@ document. `BLK-FIN-13` is the direct reason the envelope remains a hypothesis.
 | Capex cash, DOWNSIDE / UPSIDE | EUR 503 125.00 / 342 125.00 | `scenario-results.json`, `ASM-MC13-039/041` |
 | Contingency reserve, BASE | EUR 60 375.00 | `ASM-MC13-043`; `monthly-financial-model.json#supporting.contingencyReserveEur` |
 | Amortisation M60, BASE | EUR 402 499.93 | `scenario-results.json#BASE_HYPOTHETICAL.views.M60.amortizationNonCash` |
-| Financing requirement, BASE | EUR 987 326.73 | `scenario-results.json#BASE_HYPOTHETICAL.breakEven.financingRequirementEur` |
-| Financing requirement, DOWNSIDE / UPSIDE | EUR 3 075 765.77 / 632 135.66 | `scenario-results.json#...breakEven.financingRequirementEur` |
+| Financing requirement, BASE | EUR 995 185.23 | `scenario-results.json#BASE_HYPOTHETICAL.breakEven.financingRequirementEur` |
+| Financing requirement, DOWNSIDE / UPSIDE | EUR 3 081 802.04 / 621 240.91 | `scenario-results.json#...breakEven.financingRequirementEur` |
 | Illustrative funding envelope | EUR 2 000 000.00 | `assumptions.json#ASM-MC13-046` |
-| Envelope gap, DOWNSIDE | EUR 1 075 765.77 | derived: financing requirement − envelope |
+| Envelope gap, DOWNSIDE | EUR 1 081 802.04 | derived: financing requirement − envelope |
+| Cash collections net of VAT / trade receivables, BASE | EUR 4 002 334.08 / 15 068.64 | `scenario-results.json#BASE_HYPOTHETICAL.views.M60` |
 | Cumulative pre-revenue exposure | EUR -1 074 159.40 / -627 623.61 / -445 423.51 | derived from `monthly-financial-model.json` cash flows |
 | Stress envelope gaps | 2 cases, max EUR 708 788.64 | `stress-tests.json#cases[].fundingGapEur` |
 | Inventory purchases cash to M60 | EUR 1 541 872.72 (BASE) | `scenario-results.json#BASE_HYPOTHETICAL.views.M60.inventoryPurchasesCash` |

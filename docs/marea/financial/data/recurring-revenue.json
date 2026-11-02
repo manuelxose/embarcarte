@@ -35,17 +35,20 @@
     "DOWNSIDE": {
       "annualRenewalRate": 0.55,
       "monthlyChurnRate": 0.03,
-      "activationRate": 0.7
+      "activationRate": 0.7,
+      "deferredRevenueRefundPct": 0
     },
     "BASE_HYPOTHETICAL": {
       "annualRenewalRate": 0.75,
       "monthlyChurnRate": 0.015,
-      "activationRate": 0.85
+      "activationRate": 0.85,
+      "deferredRevenueRefundPct": 0
     },
     "UPSIDE_HYPOTHETICAL": {
       "annualRenewalRate": 0.85,
       "monthlyChurnRate": 0.008,
-      "activationRate": 0.95
+      "activationRate": 0.95,
+      "deferredRevenueRefundPct": 0
     },
     "note": "Every rate is an ILLUSTRATIVE SCENARIO ASSUMPTION. CHURN_VALIDATED = false, RENEWAL_RATE_VALIDATED = false, ACTIVATION_VALIDATED = false."
   },

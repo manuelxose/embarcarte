@@ -45,10 +45,11 @@ that case (see §8).
 
 `data/break-even-thresholds.json` stores 70 records: 36 `UNIT_CONTRIBUTION_ZERO`, 6
 `OPERATING_BREAK_EVEN`, 3 `CASH_FLOW_BREAK_EVEN`, 3 `CUMULATIVE_CASH_RECOVERY`, 4
-`FINANCING_REQUIREMENT` and 18 supplemental `MINIMUM_GROSS_PRICE` unit price points. Status counts:
-56 `CONDITIONAL_HYPOTHETICAL_THRESHOLD`, 14 `NOT_DETERMINABLE`, 0 verified. A threshold that depends
-on an unknown cost, licence or demand input is `NOT_DETERMINABLE` and lists the missing input; it is
-never converted to zero.
+`FINANCING_REQUIREMENT` and 18 supplemental `MINIMUM_GROSS_PRICE` unit price points. The file summary
+confirms the same counts, including `minimumGrossPrice: 18`. Status counts: 56
+`CONDITIONAL_HYPOTHETICAL_THRESHOLD`, 14 `NOT_DETERMINABLE`, 0 verified. A threshold that depends on
+an unknown cost, licence or demand input is `NOT_DETERMINABLE` and lists the missing input; it is never
+converted to zero.
 
 ## 4. Portfolio thresholds by scenario
 
@@ -59,7 +60,7 @@ Model-relative months; `UNKNOWN` means the threshold is not reached or cannot be
 | `OPERATING_BREAK_EVEN` | `null` — `NOT_DETERMINABLE` (company expenses/cash unknown) | not reached within M60 | M39 | M15 |
 | `CASH_FLOW_BREAK_EVEN` | no record — no authorised sale | not reached within M60 | M23 | M11 |
 | `CUMULATIVE_CASH_RECOVERY` | no record — no authorised sale | not reached within M60 | not reached within M60 | M23 |
-| `FINANCING_REQUIREMENT` | `UNKNOWN` — company cash/funding unknown | EUR 3 075 765.77 | EUR 987 326.73 | EUR 632 135.66 |
+| `FINANCING_REQUIREMENT` | `UNKNOWN` — company cash/funding unknown | EUR 3 081 802.04 | EUR 995 185.23 | EUR 621 240.91 |
 
 Supplementary operating thresholds: BE-BASE-FIXED-COST-UNITS = 1 138 units per month (average known
 fixed monthly envelope divided by the simple average known hardware unit contribution; a conditional
@@ -70,19 +71,18 @@ for sale, so a company-level break-even cannot be produced from authorised reven
 ## 5. Month-level evidence
 
 `BASE_HYPOTHETICAL`: EBITDA-like -695.66 at M38 and +340.47 at M39 (operating break-even); operating
-cash flow -3 581.59 at M22 and +2 168.50 at M23 (cash-flow break-even, earlier than operating
-break-even because working capital releases cash); cumulative cash reaches its deepest point
--987 326.73 at M27 and ends at -415 478.92 at M60, so **cumulative cash recovery does not occur within
-60 periods**.
+cash flow -4 840.40 at M22 and +909.69 at M23 (cash-flow break-even, earlier than operating break-even
+because working capital releases cash); cumulative cash reaches its deepest point -995 185.23 at M27 and
+ends at -464 878.15 at M60, so **cumulative cash recovery does not occur within 60 periods**.
 
-`UPSIDE_HYPOTHETICAL`: operating cash flow -19 713.38 at M10 and +3 657.15 at M11 (cash-flow
+`UPSIDE_HYPOTHETICAL`: operating cash flow -16 050.34 at M10 and +6 939.55 at M11 (cash-flow
 break-even); EBITDA-like -1 403.16 at M14 and +2 755.02 at M15 (operating break-even); cumulative cash
-troughs at -632 135.66 at M10, is -38 393.28 at M22 and +36 417.95 at M23 (cumulative cash recovery),
-ending at +5 440 764.18 at M60.
+troughs at -621 240.91 at M10, is -45 826.72 at M22 and +25 765.75 at M23 (cumulative cash recovery),
+ending at +5 311 017.86 at M60.
 
 `DOWNSIDE`: no month has positive EBITDA-like, positive operating cash flow or a cash recovery; the
 M60 contribution is +150 666.06 but the M60 EBITDA-like is -2 630 259.30 and cumulative cash
--3 075 765.77, which is also the financing requirement.
+-3 081 802.04, which is also the financing requirement.
 
 ## 6. Unit-level conditional thresholds
 

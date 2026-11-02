@@ -95,26 +95,27 @@ DOWNSIDE 214 269.17 / 152 781.09 (41.62 %), UPSIDE 4 354 099.89 / 5 794 201.93 (
 
 ### 6.2 VAT output, input, payment lag and credit carry-forward
 
-VAT is 21 % on VAT-inclusive consumer hypotheses (ASM-MC13-001/002); FLEET is VAT-excluded B2B and VAT
-output is never revenue (`A-04`). Input VAT is computed from inventory receipts (ASM-MC13-010), netted
-against output VAT with a one-month lag (ASM-MC13-009) and a credit carry-forward. M60 output/input/paid:
-BASE 658 285.24 / 323 793.20 / 317 758.93; DOWNSIDE 66 841.65 / 43 960.99 / 20 952.17; UPSIDE
-1 969 367.21 / 843 457.44 / 1 076 693.05. The unused credit is not carried as a separate receivable
-column — a disclosed limitation, not a zero cost.
+VAT is 21 % on VAT-inclusive consumer hypotheses (ASM-MC13-001/002); FLEET is VAT-excluded B2B and VAT output is
+never revenue (`A-04`). Input VAT is computed from inventory receipts (ASM-MC13-010), netted against output VAT
+with a one-month lag (ASM-MC13-009) and a credit carry-forward. M60 output/input/paid: BASE 658 285.24 /
+323 793.20 / 317 758.93; DOWNSIDE 66 841.65 / 43 960.99 / 20 952.17; UPSIDE 1 969 367.21 / 843 457.44 /
+1 076 693.05. The unused credit is not a separate receivable column — a disclosed limitation, not a zero cost.
 
 ### 6.3 Cash collections versus recognised revenue
 
-`cashReceiptsGross` = direct receipts + distributor collections + subscription cash;
-`cashCollectionsNetOfVat = cashReceiptsGross − vatPaid`, verified monthly (`A-06`). Collections
-differ from recognised revenue because annual subscriptions are collected on invoice before
-recognition, receivables settle on 60-day (distributor) and 2-day (direct) terms, VAT settles
-with a lag and a 3 % refund allowance is carried. M60:
+`cashReceiptsGross` = direct receipts + distributor collections + subscription cash − refunds cash paid;
+`cashCollectionsNetOfVat = cashReceiptsGross − vatPaid`, verified monthly (`A-06`). **Refunds are now a cash
+outflow** at the 3 % allowance (DOWNSIDE 8 018.35, BASE 62 381.43, UPSIDE 162 941.70), so they reduce gross
+receipts, not only net revenue. Distributor invoicing uses the channel-adjusted **trade price**: the 35 %
+distributor margin is applied once and VAT is computed once on that trade price, with no double VAT.
+Collections differ from recognised revenue because annual subscriptions are collected on invoice before
+recognition, receivables settle on 60-day (distributor) and 2-day (direct) terms and VAT settles with a lag. M60:
 
 | Scenario | Cash receipts gross | VAT paid | Collections net of VAT | Net recognised revenue |
 |---|---|---|---|---|
-| `DOWNSIDE` | 459 673.18 | 20 952.17 | 438 721.01 | 367 050.26 |
-| `BASE_HYPOTHETICAL` | 4 369 492.24 | 317 758.93 | 4 051 733.31 | 3 426 647.12 |
-| `UPSIDE_HYPOTHETICAL` | 13 058 948.99 | 1 076 693.05 | 11 982 255.94 | 10 148 301.82 |
+| `DOWNSIDE` | 453 636.91 | 20 952.17 | 432 684.74 | 367 050.26 |
+| `BASE_HYPOTHETICAL` | 4 320 093.01 | 317 758.93 | 4 002 334.08 | 3 426 647.12 |
+| `UPSIDE_HYPOTHETICAL` | 12 929 202.67 | 1 076 693.05 | 11 852 509.62 | 10 148 301.82 |
 
 ### 6.4 Deferred revenue
 
@@ -124,10 +125,10 @@ recognised in the billed month. M60 deferred: DOWNSIDE 22 045.70, BASE 250 229.2
 
 ### 6.5 Hardware COGS
 
-Hardware COGS = units sold × declared known variable unit cost (`A-09`), excluding tooling/NRE and
-certification. M60 COGS: DOWNSIDE 195 285.88, BASE 1 521 869.39, UPSIDE 3 974 165.07; cumulative
-units sold 859 / 6 642 / 17 349. Unit costs are inherited exactly from MC-12 (`A-24`): HUB 281.13,
-WATCH 190.90, SENSE 88.27, DISPLAY 303.32, AIS 281.35 EUR/unit at the 100-unit BASE tier.
+Hardware COGS = units sold × declared known variable unit cost (`A-09`), excluding tooling/NRE and certification.
+M60 COGS: DOWNSIDE 195 285.88, BASE 1 521 869.39, UPSIDE 3 974 165.07; cumulative units sold 859 / 6 642 /
+17 349. Unit costs are inherited exactly from MC-12 (`A-24`): HUB 281.13, WATCH 190.90, SENSE 88.27, DISPLAY
+303.32, AIS 281.35 EUR/unit at the 100-unit BASE tier.
 
 ### 6.6 Variable versus fixed costs and known-variable contribution
 
@@ -200,19 +201,20 @@ financingRequirement(m)  = max over i ≤ m of max(0, −cumulativeCashBalance(i
 ```
 
 Working capital is `netRecognizedRevenue − cashReceiptsGross + vatPaid + (inventoryPurchasesCash −
-cogsHardware) − inventoryWriteOffCost`, so the non-cash write-off appears once in EBITDA and is added
-back once here; it never affects operating cash. M60 (EUR, conditional):
+cogsHardware) − inventoryWriteOffCost`, where `cashReceiptsGross` is already net of refunds paid; the
+non-cash write-off appears once in EBITDA and is added back once here, so it never affects operating
+cash. M60 (EUR, conditional):
 
 | Scenario | EBITDA-like | Working-capital movement | Operating cash flow | Investing cash flow | Net cash flow | Cumulative cash | Financing requirement | Peak month |
 |---|---|---|---|---|---|---|---|---|
-| `DOWNSIDE` | -2 630 259.30 | -57 618.53 | -2 572 640.77 | -503 125.00 | -3 075 765.77 | -3 075 765.77 | 3 075 765.77 | M60 |
-| `BASE_HYPOTHETICAL` | -618 061.78 | -605 082.86 | -12 978.92 | -402 500.00 | -415 478.92 | -415 478.92 | 987 326.73 | M27 |
-| `UPSIDE_HYPOTHETICAL` | 3 963 913.46 | -1 818 975.72 | 5 782 889.18 | -342 125.00 | 5 440 764.18 | 5 440 764.18 | 632 135.66 | M10 |
+| `DOWNSIDE` | -2 630 259.30 | -51 582.26 | -2 578 677.04 | -503 125.00 | -3 081 802.04 | -3 081 802.04 | 3 081 802.04 | M60 |
+| `BASE_HYPOTHETICAL` | -618 061.78 | -555 683.63 | -62 378.15 | -402 500.00 | -464 878.15 | -464 878.15 | 995 185.23 | M27 |
+| `UPSIDE_HYPOTHETICAL` | 3 963 913.46 | -1 689 229.40 | 5 653 142.86 | -342 125.00 | 5 311 017.86 | 5 311 017.86 | 621 240.91 | M10 |
 
-The BASE financing requirement (987 326.73) is larger than the absolute M60 cash position
-(415 478.92) because it is a running maximum and the deepest trough is at M27; the UPSIDE peak is
-at M10. A negative working-capital movement is a cash release (deferred subscription cash and
-payables exceed the cash absorbed by inventory and receivables); `RESTRICTED_CURRENT` cash is `UNKNOWN`.
+The BASE financing requirement (995 185.23) is larger than the absolute M60 cash position (464 878.15) because it
+is a running maximum and the deepest trough is at M27; the UPSIDE peak is at M10. A negative working-capital
+movement is a cash release (deferred subscription cash and payables exceed cash absorbed by inventory and
+receivables); `RESTRICTED_CURRENT` cash is `UNKNOWN`.
 
 ## 9. Inventory identity and working capital
 
@@ -235,10 +237,10 @@ agreement exists.
 | `BASE_HYPOTHETICAL` | 6 725 | 6 642 | 0 | 83 | 20 002.61 | 1 541 872.72 | 3 929.26 | 0.00 |
 | `UPSIDE_HYPOTHETICAL` | 17 532 | 17 349 | 131 | 52 | 14 978.20 | 4 016 463.75 | 6 964.80 | 27 320.28 |
 
-Inventory is no longer a material net cash absorber in the BASE path: purchases cash 1 541 872.72 is close to
-COGS 1 521 869.39, the end balance is 83 units and the write-off cost is 0.00. In UPSIDE, 131 units are written
-off (27 320.28 non-cash cost in contribution, reversed through working capital); because working capital is a
-net release in all three hypothetical scenarios, the financing requirement is driven by operating loss and capex.
+Inventory is no longer a material net cash absorber in the BASE path: purchases cash 1 541 872.72 is close to COGS
+1 521 869.39, the end balance is 83 units and the write-off cost is 0.00. In UPSIDE, 131 units are written off
+(27 320.28 non-cash cost in contribution, reversed through working capital); since working capital is a net release
+in all three hypothetical scenarios, the financing requirement is driven by operating loss and capex.
 
 ## 10. 12 / 36 / 60 reporting views
 
@@ -252,26 +254,26 @@ table reconciles to `MC13-GENERATED-FIGURES.md` and `scenario-results.json`; all
 | `RESTRICTED_CURRENT` | M36 | 0.00 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
 | `RESTRICTED_CURRENT` | M60 | 0.00 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
 | `DOWNSIDE` | M12 | 0.00 | 0.00 | -523 800.00 | -1 029 199.90 | 1 029 199.90 |
-| `DOWNSIDE` | M36 | 120 860.60 | 34 147.79 | -1 584 865.69 | -2 075 310.95 | 2 075 310.95 |
-| `DOWNSIDE` | M60 | 367 050.26 | 150 666.06 | -2 630 259.30 | -3 075 765.77 | 3 075 765.77 |
-| `BASE_HYPOTHETICAL` | M12 | 67 257.32 | 15 294.95 | -419 105.05 | -858 503.42 | 858 503.42 |
-| `BASE_HYPOTHETICAL` | M36 | 1 376 225.77 | 523 430.13 | -819 256.83 | -924 705.28 | 987 326.73 |
-| `BASE_HYPOTHETICAL` | M60 | 3 426 647.12 | 1 688 226.86 | -618 061.78 | -415 478.92 | 987 326.73 |
-| `UPSIDE_HYPOTHETICAL` | M12 | 258 753.72 | 53 940.35 | -230 699.65 | -613 109.98 | 632 135.66 |
-| `UPSIDE_HYPOTHETICAL` | M36 | 4 028 122.59 | 1 706 337.08 | 826 543.28 | 1 414 228.28 | 632 135.66 |
-| `UPSIDE_HYPOTHETICAL` | M60 | 10 148 301.82 | 5 475 105.86 | 3 963 913.46 | 5 440 764.18 | 632 135.66 |
+| `DOWNSIDE` | M36 | 120 860.60 | 34 147.79 | -1 584 865.69 | -2 076 734.66 | 2 076 734.66 |
+| `DOWNSIDE` | M60 | 367 050.26 | 150 666.06 | -2 630 259.30 | -3 081 802.04 | 3 081 802.04 |
+| `BASE_HYPOTHETICAL` | M12 | 67 257.32 | 15 294.95 | -419 105.05 | -853 063.06 | 853 063.06 |
+| `BASE_HYPOTHETICAL` | M36 | 1 376 225.77 | 523 430.13 | -819 256.83 | -943 893.07 | 995 185.23 |
+| `BASE_HYPOTHETICAL` | M60 | 3 426 647.12 | 1 688 226.86 | -618 061.78 | -464 878.15 | 995 185.23 |
+| `UPSIDE_HYPOTHETICAL` | M12 | 258 753.72 | 53 940.35 | -230 699.65 | -596 117.18 | 621 240.91 |
+| `UPSIDE_HYPOTHETICAL` | M36 | 4 028 122.59 | 1 706 337.08 | 826 543.28 | 1 361 732.20 | 621 240.91 |
+| `UPSIDE_HYPOTHETICAL` | M60 | 10 148 301.82 | 5 475 105.86 | 3 963 913.46 | 5 311 017.86 | 621 240.91 |
 
 DOWNSIDE M12 cash -1 029 199.90 = capex 503 125.00 + fixed opex 523 800.00 + working-capital movement 2 274.90. DOWNSIDE cash never improves; BASE troughs at M27; UPSIDE at M10.
 
 ## 11. What the 60-period path shows — and does not show
 
 - DOWNSIDE: no authorised revenue until M14; M60 contribution 150 666.06, EBITDA-like
-  -2 630 259.30, cash -3 075 765.77; no break-even month within the horizon.
+  -2 630 259.30, cash -3 081 802.04; no break-even month within the horizon.
 - BASE: first revenue M07; operating break-even M39 (EBITDA-like +340.47); cash-flow break-even M23
-  (+2 168.50), earlier than operating break-even because working capital releases cash; no cash
-  recovery within 60 periods (M60 cash -415 478.92; trough 987 326.73 at M27).
+  (+909.69), earlier than operating break-even because working capital releases cash; no cash
+  recovery within 60 periods (M60 cash -464 878.15; trough 995 185.23 at M27).
 - UPSIDE: first revenue M06; operating break-even M15 (+2 755.02), cash-flow break-even M11
-  (+3 657.15), cash recovery M23 (+36 417.95); M60 cash 5 440 764.18; trough 632 135.66 at M10.
+  (+6 939.55), cash recovery M23 (+25 765.75); M60 cash 5 311 017.86; trough 621 240.91 at M10.
 - Arithmetic outcomes of labelled assumptions only: no verified break-even, profitability, investment return
   or financing capacity is shown or asserted.
 
@@ -287,18 +289,17 @@ DOWNSIDE M12 cash -1 029 199.90 = capex 503 125.00 + fixed opex 523 800.00 + wor
 | Unknown capex/certification items | INV-09, INV-10, INV-11 | financing requirement is a floor |
 | PILOT economics | `BLK-FIN-11` | safety `BLOCKED`; zero units, cost and revenue in every scenario |
 
-Full profit is suppressed — no net profit, earnings before tax or shareholder result — because excluded
-inputs could change its sign, no tax or interest schedule exists, demand is illustrative, and a profit
-claim is a commercial assertion MC-13 is not authorised to make. The model stops at a conditional
-EBITDA-like line and a pre-unknown, pre-tax accounting result.
+Full profit is suppressed — no net profit, earnings before tax or shareholder result — because excluded inputs could change its
+sign, no tax or interest schedule exists, demand is illustrative, and a profit claim is a commercial assertion MC-13 is not
+authorised to make. The model stops at a conditional EBITDA-like line and a pre-unknown, pre-tax accounting result.
 
 ## 13. Governance boundary
 
-Frozen flags from `data/scenario-definitions.json`: commercial availability `NOT_FOR_SALE`, price approved
-`NONE`, customer evidence `NONE`, WTP not validated, licensing rights not granted, formal supplier quotations
-`NONE`, PILOT safety `BLOCKED`, AIS receive-only, FLEET without default hardware, CE marking claim prohibited.
-AIS-CONNECTED and PILOT-COASTAL are not modelled. No scenario changes a status flag; no hypothetical clearance
-is a certification, licence or approval. The milestone is not merged, not deployed and MC-14 is not started.
+Frozen flags from `data/scenario-definitions.json`: commercial availability `NOT_FOR_SALE`, price approved `NONE`,
+customer evidence `NONE`, WTP not validated, licensing rights not granted, formal supplier quotations `NONE`, PILOT
+safety `BLOCKED`, AIS receive-only, FLEET without default hardware, CE marking claim prohibited. AIS-CONNECTED and
+PILOT-COASTAL are not modelled. No scenario changes a status flag; no hypothetical clearance is a certification,
+licence or approval. The milestone is not merged, not deployed and MC-14 is not started.
 
 ## 14. Reproducibility and reconciliation
 
@@ -307,12 +308,11 @@ node scripts/build-marea-financial-model.mjs
 node scripts/check-marea-financial-model.mjs
 ```
 
-The builder uses the deterministic engine `scripts/marea-financial-engine.mjs`; running it twice must produce
-byte-identical output with no network, clock or random dependency. The validator recomputes the derived files
-in memory and rejects divergence, including the 12/36/60 views and figures register. All §10 view totals were
-recomputed as sums of the monthly arrays; the revenue bridge, contribution and EBITDA-like lines, cash-flow
-bridge, inventory identity and capex/amortisation reconciliation hold for every month. Contract-text
-discrepancies affecting no figure are reported to the Lead.
+The builder uses the deterministic engine `scripts/marea-financial-engine.mjs`; running it twice must produce byte-identical
+output with no network, clock or random dependency. The validator recomputes the derived files in memory and rejects divergence,
+including the 12/36/60 views and figures register. All §10 view totals were recomputed as sums of the monthly arrays; the revenue
+bridge, contribution and EBITDA-like lines, cash-flow bridge, inventory identity and capex/amortisation reconciliation hold for
+every month. Contract-text discrepancies affecting no figure are reported to the Lead.
 
 ## 15. References
 

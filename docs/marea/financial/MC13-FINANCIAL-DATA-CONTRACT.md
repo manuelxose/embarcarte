@@ -129,7 +129,7 @@ Derived human-readable register: `MC13-GENERATED-FIGURES.md` (generated, never h
   "commercialAvailability": "NOT_FOR_SALE",
   "priceApproved": "NONE",
   "files": { "assumptions": "assumptions.json", "...": "..." },
-  "evidenceCounts": { "formalQuotations": 0, "executedContracts": 0, "verifiedObserved": 0, "publishedTariffs": 0, "inheritedAssumptions": 0, "engineeringAssumptions": 0, "scenarioAssumptions": 0, "unknown": 0, "blocked": 0 },
+  "evidenceCounts": { "formalQuotations": 0, "executedContracts": 0, "verifiedObserved": 0, "publishedTariffs": 0, "officialLicensingDocuments": 0, "inheritedAssumptions": 0, "engineeringAssumptions": 0, "scenarioAssumptions": 0, "unknown": 0, "blocked": 0 },
   "unknownSummary": [ { "inputId": "...", "unknownReason": "..." } ],
   "statusBlock": { "MC13_VERDICT": "PARTIAL", "...": "..." }
 }
@@ -285,7 +285,10 @@ Required columns per hypothetical scenario (each a 60-element array unless state
 | Cash flow | `operatingCashFlow`, `investingCashFlow`, `workingCapitalMovement`, `netCashFlow`, `cumulativeCashBalance`, `cashBurn`, `financingRequirement` |
 | Governance | `authorizedForSaleMask` (0/1), `revenueSuppressedMask` (0/1) |
 
-`RESTRICTED_CURRENT` has 60 periods with `authorizedForSaleMask` all `0`,
+`RESTRICTED_CURRENT` has 60 periods with `authorizedForSaleMask` all `0`; its authorized revenue,
+output VAT and other strictly zero-revenue derivatives are stored as evidenced `0`, while cost,
+cash and financing columns are `null` with a suppression reason (a zero authorized sale is a
+governance fact, not an unknown): `knownVariableContribution` is `null`.
 `grossInvoicedRevenue` all `0` (no authorized sale), and monetary
 cost/cash columns all `null` with `suppression` reasons, because the current company
 cash position and expenses are unknown. Its `knownVariableContribution` is `null`.
@@ -332,9 +335,12 @@ all three from `monthly-financial-model.json`.
 `cases[]`: `id`, `label`, `baseScenarioId`, `overrides` (declared, typed),
 `rationale`, `evidenceClass`, `results { M12, M36, M60 totals, breakEvenMonths,
 financingRequirementEur, viabilityCollapsed: bool, unitContributionStillPositive: bool }`,
-`status: "CONDITIONAL_HYPOTHETICAL"`. At least 20 single-variable stresses plus
-compound adverse cases, including one case where unit contribution remains positive
-while the company-level cash position never recovers.
+`status: "CONDITIONAL_HYPOTHETICAL"`. Each result records `unitContributionStillPositive`
+(per-unit known contribution, independent of volume) and `aggregateContributionPositive`
+(monthly aggregate contribution), plus `averageUnitContributionEur`. At least 20
+single-variable stresses plus compound adverse cases, including one case where per-unit
+and aggregate contribution remain positive while the company-level cash position never
+recovers.
 
 ### 4.13 `data/break-even-thresholds.json`
 
@@ -410,7 +416,7 @@ explicitly suppressed or `null`.
 ## 6. Mandatory validation checks
 
 The executable gate implements at least the checks below. Identifiers are stable. The
-implemented contract contains 71 checks; the count emerges from the contract, not from a
+implemented contract contains 77 checks; the count emerges from the contract, not from a
 target number.
 
 ### Structural
@@ -428,6 +434,7 @@ target number.
 | `S-09` | Clearance-dependency schedule covers all nine families in every scenario; PILOT never clears. |
 | `S-10` | Package scripts expose the financial gate and the formatting list. |
 | `S-11` | Manufacturing volume tiers are the declared analytical tiers 1/10/100/500/1000. |
+| `S-12` | Hypothetical scenarios and portfolio break-even thresholds declare resolving assumption lineage. |
 
 
 ### Governance and truthfulness
@@ -486,6 +493,8 @@ target number.
 | `A-24` | Unit economics inherit MC-12 values exactly (no silent cost change). |
 | `A-25` | Negative economics retained; no suppression of adverse results. |
 | `A-26` | Stress overrides that are declared must change at least one result (including the funding envelope); a no-op override fails. |
+| `A-27` | Refund/withdrawal allowances are paid in cash; higher-returns stress worsens cash and the financing requirement. |
+| `A-28` | Distributor invoicing uses the channel-adjusted trade price and does not add VAT to a VAT-inclusive hypothesis. |
 
 ### Recurring and working capital
 
@@ -512,6 +521,7 @@ target number.
 | `D-08` | No merge/deploy/publication/MC-14 execution assertion. |
 | `D-09` | Human-readable reports reference the generated figures or machine data. |
 | `D-10` | The assumptions and evidence register equals deterministic regeneration. |
+| `D-11` | No document asserts an independent-review/internally-scoped PASS the review record does not award. |
 
 Adding a check is non-breaking; removing or weakening one is breaking and requires a
 decision-log entry. The validator is read-only with respect to business data.

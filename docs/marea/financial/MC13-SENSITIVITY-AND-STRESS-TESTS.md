@@ -24,7 +24,7 @@ never recovers. It assigns no probability to any case and makes no verified-viab
 ## 2. Method and metric definitions
 
 - Base case: `BASE_HYPOTHETICAL` (M60 net revenue 3 426 647.12; contribution 1 688 226.86;
-  EBITDA-like -618 061.78; cumulative cash -415 478.92; financing requirement 987 326.73).
+  EBITDA-like -618 061.78; cumulative cash -464 878.15; financing requirement 995 185.23).
 - Overrides are declared per case and applied deterministically to cost, price, demand, cohort,
   timing, channel or inventory parameters. No random sampling, no Monte Carlo, no probability weights.
   All declared overrides are effective in this snapshot (the cloud and cellular overrides now change
@@ -42,30 +42,34 @@ never recovers. It assigns no probability to any case and makes no verified-viab
 
 | ID | Stress | Overrides | M60 net revenue | Contribution | Cumulative cash | Financing requirement | Funding gap | Op. BE month | Unit contribution positive |
 |---|---|---|---|---|---|---|---|---|---|
-| ST-01 | Hardware cost +20 % | `hardwareCostMultiplier 1.2` | 3 426 647.12 | 1 383 066.60 | -659 880.21 | 1 075 328.34 | 0.00 | M46 | true |
-| ST-02 | Hardware cost +40 % | `hardwareCostMultiplier 1.4` | 3 426 647.12 | 1 077 907.65 | -904 281.56 | 1 189 603.42 | 0.00 | M54 | true |
-| ST-03 | Distributor margin 45 % | `distributorMarginPct 45` | 3 380 599.28 | 1 643 040.67 | -462 583.76 | 1 003 193.71 | 0.00 | M40 | true |
-| ST-04 | Material cost inflation +10 % | `materialInflationMultiplier 1.1` | 3 426 647.12 | 1 535 649.64 | -537 677.72 | 1 031 326.66 | 0.00 | M42 | true |
-| ST-05 | FX movement +10 % cost | `fxCostMultiplier 1.1` | 3 426 647.12 | 1 535 649.64 | -537 677.72 | 1 031 326.66 | 0.00 | M42 | true |
-| ST-06 | Manufacturing yield 92 % | `manufacturingYieldPct 0.92` | 3 426 647.12 | 1 555 526.80 | -521 757.95 | 1 025 594.53 | 0.00 | M42 | true |
-| ST-07 | Warranty and returns 6 % | `warrantyReturnsPct 0.06` | 3 375 092.17 | 1 636 671.91 | -404 870.91 | 983 928.23 | 0.00 | M40 | true |
-| ST-08 | Subscription churn +50 % | `monthlyChurnRate 0.0225` | 3 370 885.12 | 1 635 523.81 | -468 181.97 | 991 031.67 | 0.00 | M40 | true |
-| ST-09 | Activation -30 % | `activationRate 0.595` | 3 065 845.48 | 1 363 054.14 | -818 262.79 | 1 061 993.42 | 0.00 | M52 | true |
-| ST-10 | Distributor payments +60 days | `distributorDays 120` | 3 426 647.12 | 1 688 226.86 | -443 529.76 | 1 015 377.57 | 0.00 | M39 | true |
-| ST-11 | Cloud usage 2× | `cloudMultiplier 2` | 3 426 647.12 | 1 658 157.73 | -445 548.05 | 990 832.94 | 0.00 | M40 | true |
-| ST-12 | Cellular overage EUR 0.375/device-month | `cellularCostEurPerDeviceMonth 0.375` | 3 426 647.12 | 1 676 349.41 | -427 356.37 | 988 736.18 | 0.00 | M39 | true |
-| ST-13 | Data licence EUR 30/account-year | `dataLicenceCostEurPerAccountYear 30` | 3 426 647.12 | 1 394 859.36 | -708 846.42 | 1 016 221.73 | 0.00 | M48 | true |
-| ST-14 | Certification delay 6 months | `certificationDelayMonths 6` | 3 198 295.24 | 1 658 498.26 | -489 527.83 | 1 061 513.48 | 0.00 | M39 | true |
-| ST-15 | Certification delay 12 months | `certificationDelayMonths 12` | 2 972 104.42 | 1 629 926.51 | -559 217.72 | 1 124 809.85 | 0.00 | M40 | true |
-| ST-16 | No licensing clearance | `noLicensingClearance true` | 2 345 695.95 | 715 396.54 | -1 621 575.35 | 1 621 575.35 | 0.00 | none | true |
-| ST-17 | No customer acquisition | `noCustomerAcquisition true` | 0.00 | 0.00 | -2 708 788.64 | 2 708 788.64 | 708 788.64 | none | false |
-| ST-18 | Unexpected cybersecurity maintenance EUR 60 000/year | `cybersecurityMaintenanceEurPerYear 60000` | 3 426 647.12 | 1 388 226.86 | -715 478.92 | 1 122 326.73 | 0.00 | M44 | true |
-| ST-19 | Inventory overstock ×2 and 30 % write-down | `inventoryOverstockMultiplier 2, obsolescencePctPerYear 30` | 3 426 647.12 | 1 611 835.64 | -466 121.52 | 1 013 587.28 | 0.00 | M41 | true |
-| ST-20 | Funding availability -50 % | `fundingEnvelopeMultiplier 0.5` | 3 426 647.12 | 1 688 226.86 | -415 478.92 | 987 326.73 | 0.00 | M39 | true |
-| ST-21 | Selling prices -15 % | `sellingPriceMultiplier 0.85` | 2 912 648.91 | 1 183 079.93 | -965 818.36 | 1 156 472.95 | 0.00 | M56 | true |
-| ST-22 | Installer cost overrun +25 % | `installerMarginPct 18.75` | 3 423 192.63 | 1 684 836.97 | -419 012.31 | 988 516.89 | 0.00 | M39 | true |
-| ST-23 | Compound adverse case | 7 overrides, see §5 | 2 506 003.90 | 819 017.40 | -1 258 225.84 | 1 344 974.00 | 0.00 | none | true |
-| ST-24 | Positive unit contribution but company-level viability collapse | 4 overrides, see §6 | 1 025 521.18 | 508 512.77 | -2 021 059.52 | 2 021 059.52 | 21 059.52 | none | true |
+| ST-01 | Hardware cost +20 % | `hardwareCostMultiplier 1.2` | 3 426 647.12 | 1 383 066.60 | -709 279.44 | 1 084 036.29 | 0.00 | M46 | true |
+| ST-02 | Hardware cost +40 % | `hardwareCostMultiplier 1.4` | 3 426 647.12 | 1 077 907.65 | -953 680.79 | 1 209 441.88 | 0.00 | M54 | true |
+| ST-03 | Distributor margin 45 % | `distributorMarginPct 45` | 3 380 599.28 | 1 643 040.67 | -507 941.22 | 1 008 158.18 | 0.00 | M40 | true |
+| ST-04 | Material cost inflation +10 % | `materialInflationMultiplier 1.1` | 3 426 647.12 | 1 535 649.64 | -587 076.95 | 1 039 185.16 | 0.00 | M42 | true |
+| ST-05 | FX movement +10 % cost | `fxCostMultiplier 1.1` | 3 426 647.12 | 1 535 649.64 | -587 076.95 | 1 039 185.16 | 0.00 | M42 | true |
+| ST-06 | Manufacturing yield 92 % | `manufacturingYieldPct 0.92` | 3 426 647.12 | 1 555 526.80 | -571 157.18 | 1 033 453.03 | 0.00 | M42 | true |
+| ST-07 | Warranty and returns 6 % | `warrantyReturnsPct 0.06` | 3 375 092.17 | 1 636 671.91 | -516 651.57 | 1 012 627.43 | 0.00 | M40 | true |
+| ST-08 | Subscription churn +50 % | `monthlyChurnRate 0.0225` | 3 370 885.12 | 1 635 523.81 | -517 581.20 | 998 890.17 | 0.00 | M40 | true |
+| ST-09 | Activation -30 % | `activationRate 0.595` | 3 065 845.48 | 1 363 054.14 | -867 662.02 | 1 081 181.21 | 0.00 | M52 | true |
+| ST-10 | Distributor payments +60 days | `distributorDays 120` | 3 426 647.12 | 1 688 226.86 | -479 946.79 | 1 010 253.87 | 0.00 | M39 | true |
+| ST-11 | Cloud usage 2× | `cloudMultiplier 2` | 3 426 647.12 | 1 658 157.73 | -494 947.28 | 998 691.44 | 0.00 | M40 | true |
+| ST-12 | Cellular overage EUR 0.375/device-month | `cellularCostEurPerDeviceMonth 0.375` | 3 426 647.12 | 1 676 349.41 | -476 755.60 | 996 594.68 | 0.00 | M39 | true |
+| ST-13 | Data licence EUR 30/account-year | `dataLicenceCostEurPerAccountYear 30` | 3 426 647.12 | 1 394 859.36 | -758 245.65 | 1 024 359.03 | 0.00 | M48 | true |
+| ST-14 | Certification delay 6 months | `certificationDelayMonths 6` | 3 198 295.24 | 1 658 498.26 | -531 374.20 | 1 061 252.99 | 0.00 | M39 | true |
+| ST-15 | Certification delay 12 months | `certificationDelayMonths 12` | 2 972 104.42 | 1 629 926.51 | -593 511.23 | 1 117 827.05 | 0.00 | M40 | true |
+| ST-16 | No licensing clearance | `noLicensingClearance true` | 2 345 695.95 | 715 396.54 | -1 670 974.58 | 1 670 974.58 | 0.00 | none | true |
+| ST-17 | No customer acquisition | `noCustomerAcquisition true` | 0.00 | 0.00 | -2 708 788.64 | 2 708 788.64 | 708 788.64 | none | no (0.00) |
+| ST-18 | Unexpected cybersecurity maintenance EUR 60 000/year | `cybersecurityMaintenanceEurPerYear 60000` | 3 426 647.12 | 1 388 226.86 | -764 878.15 | 1 131 296.53 | 0.00 | M44 | true |
+| ST-19 | Inventory overstock ×2 and 30 % write-down | `inventoryOverstockMultiplier 2, obsolescencePctPerYear 30` | 3 426 647.12 | 1 611 835.64 | -515 520.75 | 1 020 186.97 | 0.00 | M41 | true |
+| ST-20 | Funding availability -50 % | `fundingEnvelopeMultiplier 0.5` | 3 426 647.12 | 1 688 226.86 | -464 878.15 | 995 185.23 | 0.00 | M39 | true |
+| ST-21 | Selling prices -15 % | `sellingPriceMultiplier 0.85` | 2 912 648.91 | 1 183 079.93 | -1 007 808.27 | 1 175 992.86 | 0.00 | M56 | true |
+| ST-22 | Installer cost overrun +25 % | `installerMarginPct 18.75` | 3 423 192.63 | 1 684 836.97 | -468 282.67 | 996 332.32 | 0.00 | M39 | true |
+| ST-23 | Compound adverse case | 7 overrides, see §5 | 2 506 003.90 | 819 017.40 | -1 357 393.37 | 1 417 316.26 | 0.00 | none | true |
+| ST-24 | Positive unit contribution but company-level viability collapse | 4 overrides, see §6 | 1 025 521.18 | 508 512.77 | -2 032 603.84 | 2 032 603.84 | 32 603.84 | none | true |
+
+The ST-17 row reports the strictly-positive test: its final-month known-variable contribution is 0.00.
+The stored `unitContributionStillPositive` flag treats non-negative as positive and therefore reads
+`true` for ST-17 in `stress-tests.json`, while the summary counts 23 strictly positive cases.
 
 ### 3.1 Case rationale
 
@@ -99,34 +103,36 @@ never recovers. It assigns no probability to any case and makes no verified-viab
 ## 4. Single-variable stresses
 
 - Known-variable cost increases (ST-01/02/04/05/06) reduce contribution from 1 688 226.86 to
-  1 077 907.65–1 555 526.80 and raise the financing requirement to 1 025 594.53–1 189 603.42, with
+  1 077 907.65–1 555 526.80 and raise the financing requirement to 1 025 594.53–1 209 441.88, with
   operating break-even between M42 and M54.
-- Channel and price pressure: selling prices -15 % (ST-21) is the severest single-variable revenue case
-  (contribution 1 183 079.93; operating break-even M56; cash-flow break-even M38), while distributor
-  margin 45 % (ST-03) and installer overrun (ST-22) cost less (1 643 040.67 / 1 684 836.97; M40/M39).
+- Channel, price and warranty pressure: selling prices -15 % (ST-21) is the severest single-variable
+  revenue case (contribution 1 183 079.93; operating break-even M56; cash-flow break-even M38), while
+  distributor margin 45 % (ST-03) and installer overrun (ST-22) cost less (1 643 040.67 / 1 684 836.97;
+  M40/M39). The 6 % warranty/returns stress (ST-07) is now adverse: financing requirement 1 012 627.43
+  and cumulative cash -516 651.57.
 - Demand/cohort stress (ST-08/09): activation -30 % pushes operating break-even to M52 and the
-  financing requirement to 1 061 993.42; +50 % churn delays it to M40.
+  financing requirement to 1 081 181.21; +50 % churn delays it to M40.
 - Timing stress (ST-10/14/15): payment-term extension adds a small working-capital cost; certification
-  delays of 6/12 months move operating break-even to M39/M40 and cash-flow break-even to M27.
-- Cloud/connectivity (ST-11/12) are now effective: cloud 2× leaves contribution at 1 658 157.73 and the
-  financing requirement at 990 832.94; cellular overage leaves 1 676 349.41 and 988 736.18 (base
-  1 688 226.86 / 987 326.73).
+  delays of 6/12 months move operating break-even to M39/M40 and cash-flow break-even to M28.
+- Cloud/connectivity (ST-11/12) are effective: cloud 2× leaves contribution at 1 658 157.73 and the
+  financing requirement at 998 691.44; cellular overage leaves 1 676 349.41 and 996 594.68 (base
+  1 688 226.86 / 995 185.23).
 - Licensing and security (ST-13/16/18): no licensing clearance (ST-16) is the severest single-domain
-  case (contribution 715 396.54; financing requirement 1 621 575.35; no break-even month), followed by
+  case (contribution 715 396.54; financing requirement 1 670 974.58; no break-even month), followed by
   data licence at EUR 30/account-year (ST-13, operating M48) and unexpected CRA maintenance (ST-18, M44).
 - Inventory stress (ST-19) still leaves positive contribution (1 611 835.64) and brings cash-flow
-  break-even forward to M17, the earliest of all cases, while financing rises to 1 013 587.28.
+  break-even to M22, the earliest of all cases, while financing rises to 1 020 186.97.
 - Funding availability -50 % (ST-20) does not change the cash path; the lower 1 000 000 envelope still
-  covers the 987 326.73 requirement, so the recorded gap is 0.00.
+  covers the 995 185.23 requirement, so the recorded gap is 0.00.
 
 ## 5. Compound adverse case (ST-23)
 
 ST-23 combines hardware cost +30 %, warranty/returns 8 %, monthly churn 3 %, selling prices -10 %,
 certification delay 12 months, cloud usage 1.5× and distributor margin 40 %. Recorded result: M60 net
 revenue 2 506 003.90, contribution 819 017.40, EBITDA-like -1 487 271.24, cumulative cash
--1 258 225.84, financing requirement 1 344 974.00, funding gap 0.00, cash-flow break-even M35 and no
+-1 357 393.37, financing requirement 1 417 316.26, funding gap 0.00, cash-flow break-even M40 and no
 operating break-even within M60; `viabilityCollapsed = true`. It is the fourth-largest financing
-requirement of the 24 cases (after ST-17 2 708 788.64, ST-24 2 021 059.52 and ST-16 1 621 575.35) and
+requirement of the 24 cases (after ST-17 2 708 788.64, ST-24 2 032 603.84 and ST-16 1 670 974.58) and
 remains below the 2 000 000 illustrative envelope, conditional on the same excluded unknowns.
 
 ## 6. Positive unit contribution with no company cash recovery (ST-24)
@@ -134,8 +140,8 @@ remains below the 2 000 000 illustrative envelope, conditional on the same exclu
 ST-24 is the declared demonstration case: demand multiplier 0.35, hardware cost +10 %, selling prices
 -5 %, certification delay 12 months. Recorded result: M60 net revenue 1 025 521.18, cumulative
 contribution 508 512.77 (final-month known-variable contribution 18 577.96 > 0), but EBITDA-like is
--1 797 775.87 and cumulative cash never returns to zero: cumulative cash -2 021 059.52, financing
-requirement 2 021 059.52, funding gap 21 059.52, operating/cash-flow/recovery months `null`,
+-1 797 775.87 and cumulative cash never returns to zero: cumulative cash -2 032 603.84, financing
+requirement 2 032 603.84, funding gap 32 603.84, operating/cash-flow/recovery months `null`,
 `viabilityCollapsed = true`, `unitContributionStillPositive = true`, `insolventWithoutFunding = true`.
 The case proves that a positive product-level contribution does not pay for the fixed operating
 envelope, capex and working capital; it is a conditional result, not a prediction.
@@ -143,7 +149,7 @@ envelope, capex and working capital; it is a conditional result, not a predictio
 ## 7. No-licensing and no-customer cases
 
 - ST-16 (no licensing clearance): chart/weather rights never granted; M60 net revenue 2 345 695.95,
-  contribution 715 396.54, cumulative cash -1 621 575.35, financing requirement 1 621 575.35, no
+  contribution 715 396.54, cumulative cash -1 670 974.58, financing requirement 1 670 974.58, no
   funding gap against the illustrative envelope, no break-even month. Estimated licensing cost is
   excluded from the base model, so the real effect is likely worse than this stress.
 - ST-17 (no customer acquisition): zero demand, M60 net revenue 0.00, contribution 0.00, cumulative cash
@@ -152,11 +158,11 @@ envelope, capex and working capital; it is a conditional result, not a predictio
 
 ## 8. What all cases share
 
-Summary of `stress-tests.json#summary`: 24 cases; 24 miss cash recovery within M60; 23 keep a positive
-unit contribution yet collapse at company level (only ST-17 turns it negative); 2 have a funding gap
-above the 2 000 000.00 envelope (ST-17 708 788.64; ST-24 21 059.52); every case is
+Summary of `stress-tests.json#summary`: 24 cases; 24 miss cash recovery within M60; 23 keep a strictly
+positive unit contribution yet collapse at company level (ST-17 has 0.00 contribution); 2 have a
+funding gap above the 2 000 000.00 envelope (ST-17 708 788.64; ST-24 32 603.84); every case is
 `CONDITIONAL_HYPOTHETICAL` with `viabilityCollapsed = true`. Base reference: cumulative cash
--415 478.92, financing requirement 987 326.73, no cash recovery. No case reaches a verified
+-464 878.15, financing requirement 995 185.23, no cash recovery. No case reaches a verified
 break-even, profitability, financing approval or a verified-viability state.
 
 ## 9. Sensitivity envelope carried from the MC-12 handoff

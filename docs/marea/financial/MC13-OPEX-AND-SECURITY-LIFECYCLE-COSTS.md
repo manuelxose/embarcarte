@@ -185,13 +185,13 @@ declared CRA/security lifecycle cost on top of the `BASE_HYPOTHETICAL` envelope.
 
 | View | Fixed envelope | EBITDA-like | Cumulative cash | Financing requirement | Break-even |
 |---|---|---|---|---|---|
-| `M12` | EUR 434 400.00 | -EUR 479 105.05 | -EUR 918 503.42 | EUR 918 503.42 | — |
-| `M36` | EUR 1 342 686.96 | -EUR 999 256.83 | -EUR 1 104 705.28 | EUR 1 122 326.73 | — |
-| `M60` | EUR 2 306 288.64 | -EUR 918 061.78 | -EUR 715 478.92 | EUR 1 122 326.73 | operating 44, cash flow 28 |
+| `M12` | EUR 434 400.00 | -EUR 479 105.05 | -EUR 913 063.06 | EUR 913 063.06 | — |
+| `M36` | EUR 1 342 686.96 | -EUR 999 256.83 | -EUR 1 123 893.07 | EUR 1 131 296.53 | — |
+| `M60` | EUR 2 306 288.64 | -EUR 918 061.78 | -EUR 764 878.15 | EUR 1 131 296.53 | operating 44, cash flow 28 |
 
 Against `BASE_HYPOTHETICAL` the case reduces the EBITDA-like result by EUR 60 000.00
 at `M12`, EUR 180 000.00 at `M36` and EUR 300 000.00 at `M60`, and raises the conditional
-financing requirement to EUR 1 122 326.73 (+EUR 135 000.00). It records
+financing requirement to EUR 1 131 296.53 (+EUR 136 111.30). It records
 `viabilityCollapsed: true`, `unitContributionStillPositive: true`,
 `cashRecoveryWithinHorizon: false` and `insolventWithoutFunding: false`, staying within
 the EUR 2 000 000.00 analytical envelope; this is a stress override, not an estimate.

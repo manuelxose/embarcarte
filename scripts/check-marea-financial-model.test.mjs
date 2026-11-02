@@ -344,11 +344,6 @@ describe('adversarial mutations (one mutation per test)', () => {
   test('27 reviewer PASS asserted while a blocking finding is open and recomputation is missing', () => {
     const report = run((data) => {
       const review = data.reviewFindings;
-      assert.equal(
-        review.verdict,
-        'PENDING_INDEPENDENT_REVIEW',
-        'control: the audit starts pending',
-      );
       review.verdict = 'PASS';
       review.independentRecomputation = null;
       review.findings = [
@@ -369,8 +364,25 @@ describe('adversarial mutations (one mutation per test)', () => {
 /* --------------------------------------------------------------- controls */
 
 describe('controls', () => {
-  test('positive control: unmutated governed data passes with allowPendingReview', () => {
-    const report = validate(clone(), OPTIONS);
+  test('positive control: a fully recorded final state passes the gate', () => {
+    const data = clone();
+    data.reviewFindings.verdict = 'PASS_INTERNAL_FINANCIAL_SCOPE';
+    data.reviewFindings.independentRecomputation = {
+      method: 'synthetic positive-control record',
+      mismatches: 0,
+    };
+    data.reviewFindings.findings = [];
+    data.reviewFindings.findingCounts = {
+      total: 0,
+      blocking: 0,
+      major: 0,
+      minor: 0,
+      informational: 0,
+      open: 0,
+    };
+    data.manifest.statusBlock.MC13_INDEPENDENT_REVIEW = 'PASS_INTERNAL_FINANCIAL_SCOPE';
+    data._external.docs['MC-13-DELIVERY.md'] = '# MC-13 — Delivery\n\nDelivery record.\n';
+    const report = validate(data, OPTIONS);
     assert.equal(
       report.ok,
       true,

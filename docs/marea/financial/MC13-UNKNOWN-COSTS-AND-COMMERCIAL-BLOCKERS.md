@@ -149,8 +149,8 @@ threshold `BE-RESTRICTED-OPERATING` is `NOT_DETERMINABLE`, and the scenario summ
 records status `CONDITIONAL_RESTRICTED_ZERO` with no break-even month. In the
 hypothetical scenarios the blocked inputs above make the financing requirement
 conditional and unfunded: the `BASE_HYPOTHETICAL` financing requirement is
-EUR 987 326.73, the `DOWNSIDE` figure is EUR 3 075 765.77 and the
-`UPSIDE_HYPOTHETICAL` figure is EUR 632 135.66 — all
+EUR 995 185.23, the `DOWNSIDE` figure is EUR 3 081 802.04 and the
+`UPSIDE_HYPOTHETICAL` figure is EUR 621 240.91 — all
 `CONDITIONAL_HYPOTHETICAL_THRESHOLD`, all excluding the unknown costs, and none a
 funding offer or a launch commitment.
 

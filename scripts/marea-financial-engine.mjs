@@ -350,6 +350,7 @@ function buildHardwareBlock(ctx, scenario, params, overrides) {
   const unitsBySku = {};
   const grossInvoiced = zeros();
   const refundsAllowance = zeros();
+  const refundsCash = zeros();
   const vatOutput = zeros();
   const netRevenue = zeros();
   const receivables = zeros();
@@ -367,6 +368,11 @@ function buildHardwareBlock(ctx, scenario, params, overrides) {
       'HARDWARE',
     );
     const distributorShare = channelShare(scenario.channelMix, 'HARDWARE', 'DISTRIBUTOR_RETAIL');
+    const distributorMarginPct = channelDeductionPct(
+      scenario.channelMix,
+      'HARDWARE',
+      'DISTRIBUTOR_RETAIL',
+    );
     const vatBasis = sku.priceHypothesis?.vatBasis ?? CONSUMER_VAT_BASIS;
     const skuGross = zeros();
     const skuRefund = zeros();
@@ -388,7 +394,7 @@ function buildHardwareBlock(ctx, scenario, params, overrides) {
       skuVat[m] = round2(vat);
       skuNet[m] = round2(net);
       skuReceivable[m] = round2(
-        units[m] * grossPrice * distributorShare * (1 + params.vatPct / 100),
+        units[m] * grossPrice * distributorShare * (1 - distributorMarginPct / 100),
       );
       transactions[m] += units[m];
       const unitCost =
@@ -399,6 +405,7 @@ function buildHardwareBlock(ctx, scenario, params, overrides) {
       refundsAllowance[m] += skuRefund[m];
       vatOutput[m] += skuVat[m];
       netRevenue[m] += skuNet[m];
+      refundsCash[m] += skuRefund[m];
     }
     // Distributor collections lag the invoice by the declared days; direct and installer settle
     // in the same month.
@@ -459,6 +466,7 @@ function buildHardwareBlock(ctx, scenario, params, overrides) {
     unitsBySku,
     grossInvoiced,
     refundsAllowance,
+    refundsCash: refundsCash.map(round2),
     vatOutput,
     netRevenue,
     distributorReceipts: receipts,
@@ -1099,7 +1107,10 @@ function buildHypotheticalScenario(ctx, scenario, overrides = {}) {
       directHardware += row.grossInvoiced[m] - row.distributorReceivable[m];
     }
     cashReceiptsGross[m] = round2(
-      directHardware + hardware.distributorReceipts[m] + subscriptions.cashGrossTotal[m],
+      directHardware +
+        hardware.distributorReceipts[m] +
+        subscriptions.cashGrossTotal[m] -
+        hardware.refundsCash[m],
     );
   }
   const cashCollectionsNetOfVat = zeros();
@@ -1167,6 +1178,7 @@ function buildHypotheticalScenario(ctx, scenario, overrides = {}) {
     hardwareRevenueNet: hardware.netRevenue.map(round2),
     subscriptionRevenueNet: subscriptions.netRevenueTotal.map(round2),
     cashReceiptsGross,
+    refundsCash: hardware.refundsCash,
     directReceiptsGross: hardware.directReceiptsGross,
     distributorInvoicedGross: hardware.distributorInvoicedGross,
     distributorCollectionsGross: hardware.distributorCollectionsGross,
@@ -1489,7 +1501,9 @@ function buildBreakEven(ctx, monthlyModel, scenarioResults) {
       status: 'CONDITIONAL_HYPOTHETICAL_THRESHOLD',
       derivation: 'First month with operatingCashFlow > 0.',
       requiredUnknownInputs: ['data licence cost', 'insurance', 'CRA lifecycle cost'],
-      inputAssumptionIds: [],
+      inputAssumptionIds:
+        ctx.scenarioDefinitions.scenarios.find((item) => item.id === scenarioId)
+          ?.scenarioAssumptionIds ?? [],
       notes: 'Operating cash flow excludes capex; investing outflows are reported separately.',
     });
     thresholds.push({
@@ -1720,7 +1734,10 @@ function buildBreakEven(ctx, monthlyModel, scenarioResults) {
           'data licence cost',
           'actual demand',
         ],
-        inputAssumptionIds: [],
+        inputAssumptionIds: (ctx.opex.costLines ?? [])
+          .map((line) => line.assumptionId)
+          .filter(Boolean),
+        scenarioAssumptionIds: ['ASM-MC13-021', 'ASM-MC13-024', 'ASM-MC13-027'],
         notes: 'Fixed-cost coverage on known costs only; excludes named unknown fixed costs.',
       });
       thresholds.push({
@@ -1739,7 +1756,8 @@ function buildBreakEven(ctx, monthlyModel, scenarioResults) {
           'validated subscription mix',
           'validated churn/renewal',
         ],
-        inputAssumptionIds: [],
+        inputAssumptionIds: ['ASM-MC13-020', 'ASM-MC13-021', 'ASM-MC13-022', 'ASM-MC13-049'],
+        scenarioAssumptionIds: ['ASM-MC13-021', 'ASM-MC13-024', 'ASM-MC13-027'],
         notes: 'Reported as not determinable rather than inventing a subscriber number.',
       });
     }
@@ -1789,6 +1807,8 @@ function buildBreakEven(ctx, monthlyModel, scenarioResults) {
       financingRequirement: thresholds.filter(
         (item) => item.breakEvenType === 'FINANCING_REQUIREMENT',
       ).length,
+      minimumGrossPrice: thresholds.filter((item) => item.breakEvenType === 'MINIMUM_GROSS_PRICE')
+        .length,
       notDeterminable: thresholds.filter((item) => item.status === 'NOT_DETERMINABLE').length,
       conditional: thresholds.filter((item) => item.status === 'CONDITIONAL_HYPOTHETICAL_THRESHOLD')
         .length,
@@ -1902,6 +1922,22 @@ function runStressCase(ctx, definition) {
   const cumulativeEnd = monthly.columns.cumulativeCashBalance[HORIZON - 1];
   const unitContribution = monthly.columns.knownVariableContribution[HORIZON - 1];
   const unitsSold = monthly.columns.hardwareUnitsTotal.reduce((total, value) => total + value, 0);
+  const baseScenario = ctx.scenarios.get(definition.baseScenarioId ?? 'BASE_HYPOTHETICAL');
+  const hardwareFactor = channelFactor(
+    baseScenario?.channelMix?.filter((row) => row.appliesTo === 'HARDWARE'),
+    'HARDWARE',
+  );
+  const vatPct = ctx.number('ASM-MC13-001');
+  const unitContributions = (ctx.drivers.hardwareSkus ?? [])
+    .filter((sku) => sku.modelEnabled !== false && sku.knownVariableCostEur != null)
+    .map((sku) => {
+      const gross = (sku.priceHypothesis?.grossAmountEur ?? 0) * hardwareFactor;
+      const net =
+        sku.priceHypothesis?.vatBasis === 'VAT_EXCLUDED_B2B' ? gross : gross / (1 + vatPct / 100);
+      return net - sku.knownVariableCostEur;
+    });
+  const averageUnitContribution =
+    unitContributions.length > 0 ? sum(unitContributions) / unitContributions.length : null;
   return {
     scenarioId: definition.baseScenarioId ?? 'BASE_HYPOTHETICAL',
     results,
@@ -1921,7 +1957,9 @@ function runStressCase(ctx, definition) {
     unitsSold,
     viabilityCollapsed: cumulativeEnd != null && cumulativeEnd < 0,
     cashRecoveryWithinHorizon: be.cumulativeCashRecoveryMonth != null,
-    unitContributionStillPositive: unitContribution != null && unitContribution > 0,
+    averageUnitContributionEur: round2(averageUnitContribution),
+    unitContributionStillPositive: averageUnitContribution != null && averageUnitContribution > 0,
+    aggregateContributionPositive: unitContribution != null && unitContribution > 0,
     insolventWithoutFunding:
       financing != null && fundingEnvelope != null && financing > fundingEnvelope,
   };
@@ -1972,7 +2010,13 @@ function buildStressTests(ctx) {
       cases: cases.length,
       cashRecoveryMissed: cases.filter((item) => !item.cashRecoveryWithinHorizon).length,
       unitContributionPositiveButCollapsed: cases.filter(
-        (item) => !item.cashRecoveryWithinHorizon && item.unitContributionStillPositive,
+        (item) =>
+          !item.cashRecoveryWithinHorizon &&
+          item.unitContributionStillPositive &&
+          item.aggregateContributionPositive,
+      ).length,
+      aggregateContributionPositiveButCashNeverRecovers: cases.filter(
+        (item) => !item.cashRecoveryWithinHorizon && item.aggregateContributionPositive,
       ).length,
       fundingGap: cases.filter((item) => (item.fundingGapEur ?? 0) > 0).length,
       baseReference: {
@@ -2263,12 +2307,12 @@ export function renderFiguresMarkdown(model) {
   lines.push('## 3. Stress results (base hypothetical scenario with declared overrides)');
   lines.push('');
   lines.push(
-    '| Case | M60 net revenue | Contribution | Cumulative cash | Financing requirement | Viability collapsed | Unit contribution positive |',
+    '| Case | M60 net revenue | Contribution | Cumulative cash | Financing requirement | Viability collapsed | Per-unit contribution positive | Aggregate contribution positive | Average unit contribution |',
   );
   lines.push('|---|---|---|---|---|---|---|');
   for (const testCase of model.stressTests.cases) {
     lines.push(
-      `| ${testCase.id} | ${fmtEur(testCase.results.M60.netRecognizedRevenue)} | ${fmtEur(testCase.results.M60.contribution)} | ${fmtEur(testCase.cumulativeCashEndEur)} | ${fmtEur(testCase.financingRequirementEur)} | ${testCase.viabilityCollapsed} | ${testCase.unitContributionStillPositive} |`,
+      `| ${testCase.id} | ${fmtEur(testCase.results.M60.netRecognizedRevenue)} | ${fmtEur(testCase.results.M60.contribution)} | ${fmtEur(testCase.cumulativeCashEndEur)} | ${fmtEur(testCase.financingRequirementEur)} | ${testCase.viabilityCollapsed} | ${testCase.unitContributionStillPositive} | ${testCase.aggregateContributionPositive} | ${fmtNumber(testCase.averageUnitContributionEur)} |`,
     );
   }
   lines.push('');

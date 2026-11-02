@@ -6,7 +6,7 @@
 | Fecha | 2026-11-02 |
 | Rama | `feature/marea-mc13-financial-model-cashflow-break-even` |
 | Base verificada | MC-12 `e59a8b9b3916d979d8eaeff78acd3795fd26c125` |
-| Estado | `PARTIAL` — alcance financiero interno completo; evidencia comercial externa `BLOCKED_OR_NOT_OBTAINED` |
+| Estado | `PARTIAL` — auditoría independiente inicial con 16 hallazgos; correcciones aplicadas y re-auditoría en curso |
 | Disponibilidad comercial | `NOT_FOR_SALE` |
 | Precio aprobado | `NONE` |
 | MC-14 iniciado | `false` |
@@ -19,13 +19,22 @@ auditable: un único modelo de 60 periodos mensuales (`M01`…`M60`) con vistas 
 el caso restringido actual, flujo de caja mensual, capital circulante, calendario de
 inversión, punto de equilibrio condicional y 24 pruebas de tensión.
 
-El veredicto es **PARTIAL**, no PASS, porque las condiciones de aceptación del
-registro exigen evidencia comercial y de aprovisionamiento que no existe: 0
-cotizaciones formales de proveedor, 0 contratos ejecutados, 0 derechos de licencia
-concedidos, 0 evidencia de clientes, prima de seguro de responsabilidad civil
-desconocida y posición de caja real de EMBARCARTE desconocida. El modelo es
-internamente consistente, pero no comercialmente validado. Un resultado hipotético
-favorable no convierte el negocio en rentable ni autoriza su venta.
+La primera auditoría independiente recompuso el modelo completo sin usar el código del
+autor (61 series × 60 periodos, 0 discrepancias), verificó las identidades de caja,
+IVA, inventario, capital circulante y deuda diferida, confirmó 90/90 escenarios MC-11 y
+la invariancia del utillaje/NRE, y comprobó 208 cifras documentales. Concedió un
+veredicto **PARTIAL** y retuvo la firma por 2 hallazgos BLOCKING y 3 MAJOR: falta del
+registro de entrega D21, un PASS de revisión prematuro en este informe, los reembolsos
+no pagados en caja, la base de facturación al distribuidor y el acoplamiento de la
+suite adversaria al estado de revisión. Las correcciones se aplicaron antes de
+re-congelar y la auditoría fue solicitada de nuevo.
+
+El veredicto de fondo sigue siendo **PARTIAL** porque falta evidencia comercial y de
+aprovisionamiento externa: 0 cotizaciones formales, 0 contratos, 0 derechos de licencia
+concedidos, 0 evidencia de clientes, seguro de responsabilidad civil desconocido y
+posición de caja real de EMBARCARTE desconocida. El modelo es internamente coherente,
+pero no comercialmente validado. Un resultado hipotético favorable no convierte el
+negocio en rentable ni autoriza su venta.
 
 ## B. Modelo financiero
 
@@ -42,7 +51,9 @@ favorable no convierte el negocio en rentable ni autoriza su venta.
 - **Regla contable clave:** el utillaje/NRE (`COST-16`) es capex y amortización no
   monetaria; nunca coste variable por unidad y nunca se cuenta dos veces. La merma de
   inventario es un coste no monetario que se reconoce en la contribución condicional y
-  se revierte en el capital circulante.
+  se revierte en el capital circulante. Los reembolsos y devoluciones se pagan en caja
+  en el mes de la venta. La facturación al distribuidor usa el precio de trade ajustado
+  por margen, con el IVA ya incluido en la hipótesis de precio de consumo.
 - **Desconocidos:** coste de licencia de cartas/meteo, seguro de responsabilidad
   civil, mantenimiento CRA, onboarding/DPA/SLA de FLEET y términos de proveedor y
   cliente permanecen `UNKNOWN`; el resultado condicional los excluye y los nombra.
@@ -55,9 +66,9 @@ precios):
 | Escenario | Ingreso neto 60m | Contribución | EBITDA-like | Caja acumulada M60 | Necesidad de financiación |
 |---|---:|---:|---:|---:|---:|
 | `RESTRICTED_CURRENT` | 0,00 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
-| `DOWNSIDE` | 367.050,26 | 150.666,06 | −2.630.259,30 | −3.075.765,77 | 3.075.765,77 |
-| `BASE_HYPOTHETICAL` | 3.426.647,12 | 1.688.226,86 | −618.061,78 | −415.478,92 | 987.326,73 |
-| `UPSIDE_HYPOTHETICAL` | 10.148.301,82 | 5.475.105,86 | 3.963.913,46 | +5.440.764,18 | 632.135,66 |
+| `DOWNSIDE` | 367.050,26 | 150.666,06 | −2.630.259,30 | −3.081.802,04 | 3.081.802,04 |
+| `BASE_HYPOTHETICAL` | 3.426.647,12 | 1.688.226,86 | −618.061,78 | −464.878,15 | 995.185,23 |
+| `UPSIDE_HYPOTHETICAL` | 10.148.301,82 | 5.475.105,86 | 3.963.913,46 | +5.311.017,86 | 621.240,91 |
 
 Lectura honesta:
 
@@ -69,9 +80,9 @@ Lectura honesta:
   2,00 M€.
 - **BASE hipotético:** alcanza break-even operativo en M39 y de caja en M23, pero no
   recupera la caja inicial dentro del horizonte; la financiación condicional ronda
-  0,99 M€.
-- **UPSIDE hipotético:** recupera caja en M23 y acumula +5,44 M€ al final del
-  horizonte, con un máximo de financiación condicional de 0,63 M€.
+  1,00 M€.
+- **UPSIDE hipotético:** recupera caja en M23 y acumula +5,31 M€ al final del
+  horizonte, con un máximo de financiación condicional de 0,62 M€.
 
 El reparto de ingreso a 60 meses en BASE es aproximadamente 49 % hardware y 51 %
 recurrente; en UPSIDE la exposición recurrente supera el 57 %. Estas cifras son
@@ -100,14 +111,15 @@ compromiso de capital.**
   caja acumulada`.
 - `flujo operativo = EBITDA-like condicional − movimiento de capital circulante`.
 - `flujo de inversión = −capex en efectivo`; la amortización no es caja.
-- Cobros a cliente directo en el mes; distribuidor a 60 días (cuentas a cobrar
-  conciliadas y positivas); IVA repercutido con un mes de retraso y IVA soportado
-  recuperable sobre compras de inventario, con crédito arrastrado.
+- Cobros a cliente directo en el mes; distribuidor a 60 días sobre el precio de trade
+  (cuentas a cobrar conciliadas y positivas); IVA repercutido con un mes de retraso y
+  IVA soportado recuperable sobre compras de inventario, con crédito arrastrado.
+- Reembolsos por devolución/desistimiento pagados en caja en el mes de la venta.
 - Compras de inventario: depósito del 30 % al pedido, saldo un mes después de la
   recepción; plan de producción con objetivo de existencias de seguridad de un mes,
   MOQ 25, lead time 2 meses, merma y obsolescencia modeladas. Las compras de
   inventario no se cuentan dos veces como gasto operativo.
-- Exposición de caja máxima condicional: DOWNSIDE 3,08 M€; BASE 0,99 M€; UPSIDE 0,63
+- Exposición de caja máxima condicional: DOWNSIDE 3,08 M€; BASE 1,00 M€; UPSIDE 0,62
   M€. El caso restringido no permite calcular caja real.
 
 ## F. Punto de equilibrio
@@ -119,14 +131,13 @@ Se distinguen cinco conceptos que no son intercambiables:
 | Escenario | Break-even operativo | Break-even de caja | Recuperación de caja | Financiación |
 |---|---|---|---|---|
 | `RESTRICTED_CURRENT` | no aplicable | no aplicable | no aplicable | UNKNOWN |
-| `DOWNSIDE` | no se alcanza | no se alcanza | no se alcanza | 3.075.765,77 € |
-| `BASE_HYPOTHETICAL` | M39 | M23 | no se alcanza | 987.326,73 € |
-| `UPSIDE_HYPOTHETICAL` | M15 | M11 | M23 | 632.135,66 € |
+| `DOWNSIDE` | no se alcanza | no se alcanza | no se alcanza | 3.081.802,04 € |
+| `BASE_HYPOTHETICAL` | M39 | M23 | no se alcanza | 995.185,23 € |
+| `UPSIDE_HYPOTHETICAL` | M15 | M11 | M23 | 621.240,91 € |
 
-Umbrales condicionales adicionales: cobertura de costes fijos con una cartera mixta
-de unidades; contribución unitaria conocida por SKU (DISPLAY positiva; HUB, AIS y
-SENSE negativas en las hipótesis actuales); precio mínimo bruto para contribución
-cero; y 24 casos de tensión recalculados.
+Umbrales condicionales adicionales: 36 contribuciones unitarias a cero, 18 precios
+mínimos brutos, cobertura de costes fijos con una cartera mixta de unidades y 4
+necesidades de financiación; 70 umbrales en total.
 
 **Estado:** todos los umbrales son `CONDITIONAL_HYPOTHETICAL_THRESHOLD` o
 `NOT_DETERMINABLE`; **0 verificados**. NAV y WEATHER no permiten un punto de
@@ -173,14 +184,16 @@ financiación −50 %, precios −15 %, sobrecoste de instalador y dos casos com
 Resultados clave:
 
 - **24/24** casos no recuperan la caja dentro del horizonte; **23/24** mantienen
-  contribución unitaria positiva pese al colapso de caja (ST-24 es el caso
-  demostrativo: contribución 508.512,77 € y empresa sin recuperación).
+  contribución unitaria y contribución agregada positivas pese al colapso de caja
+  (ST-24 es el caso demostrativo: contribución agregada positiva y empresa sin
+  recuperación). ST-17 (sin clientes) no tiene contribución agregada positiva.
+- ST-07 (devoluciones 6 %) es ahora correctamente adverso: necesidad 1.012.627,43 € y
+  caja −516.651,57 €, frente a 995.185,23 € y −464.878,15 € del BASE.
 - Solo **2/24** superan la envolvente ilustrativa de 2 M€: ST-17 (sin clientes) con
-  708.788,64 € de déficit y ST-24 con 21.059,52 €. El rango de financiación de las
-  tensiones va de 0,63 M€ a 2,71 M€.
+  708.788,64 € de déficit y ST-24 con 32.603,84 €. El rango de financiación de las
+  tensiones va de 0,62 M€ a 2,71 M€.
 - Sin licencia de cartas/meteo, NAV y WEATHER no generan ingreso modelable y la caja
-  nunca se recupera (ST-16: necesidad 1,62 M€); sin clientes, la necesidad es 2,71 M€
-  y no hay break-even.
+  nunca se recupera; sin clientes, la necesidad es 2,71 M€ y no hay break-even.
 - La viabilidad económica es frágil: depende de licencias, certificación, precio,
   retención y capital. No se asignan probabilidades sin evidencia.
 
@@ -188,30 +201,34 @@ Resultados clave:
 
 - Modelo determinista: `node scripts/build-marea-financial-model.mjs` reproduce los
   archivos derivados byte a byte; el validador lo comprueba.
-- Validador: `npm run test:financial` — **73 comprobaciones** de estructura,
+- Validador: `npm run test:financial` — **77 comprobaciones** de estructura,
   gobernanza, aritmética, recurrencia y entrega.
 - Suite adversaria: `npm run test:financial:unit` — **29 pruebas** (27 mutaciones
-  obligatorias, control positivo y control de regresión); cada mutación falla
-  exactamente en el control previsto.
+  obligatorias, control positivo y control de regresión); 29/29 reproducibles con la
+  revisión sintética final, independiente del estado vivo del registro de auditoría.
 - Regresión heredada: `test:economics`, `test:hardware`, `test:products`,
   `test:bundles`, `test:brand`, `test:market`, `test:customer-research`,
   `test:customer-recovery`, `test:i18n`, `test:commerce`, `test:seo`, `test:backup`,
-  `format:check`, `build`, `test:e2e`, `npm audit` y `git diff --check`.
-- Revisión independiente (agente distinto del autor) sobre el commit congelado; los
-  resultados exactos, hallazgos y correcciones se registran en
-  `review/MC-13-REVIEW.md`, `data/review-findings.json` y `MC-13-DELIVERY.md`.
-- Durante la construcción se detectaron y corrigieron, antes del congelado, defectos
-  reales de alias en cobros de distribuidor, base del IVA soportado, planificación de
-  inventario, reconocimiento de merma, overrides de tensión inefectivos y composición
-  de bundles. El auditor independiente debe re-verificar la versión corregida.
+  `format:check`, `build`, `test:e2e`, `npm audit` y `git diff --check`: todos PASS.
+- Revisión independiente: el auditor (agente distinto del autor) emitió `PARTIAL` sobre
+  el commit congelado `7dfb56d` con 16 hallazgos (2 BLOCKING, 3 MAJOR, 8 MINOR, 3
+  INFORMATIONAL), todos abiertos. Se aplicaron correcciones de código, datos y
+  documentación (reembolsos en caja, base de distribuidor, suite desacoplada,
+  linaje, contrato, conteos y estado de revisión) y se solicitó la re-verificación; el
+  registro final se publica en `review/MC-13-REVIEW.md` y
+  `data/review-findings.json`.
+- La primera auditoría también recomputó de forma independiente el modelo completo
+  (61 series × 60 periodos, 0 discrepancias), 24/24 casos de tensión, 70 umbrales,
+  90/90 escenarios MC-11 y 208 cifras documentales.
 
 ## J. Git y PR
 
 - Rama: `feature/marea-mc13-financial-model-cashflow-break-even`, creada desde el
   HEAD verificado de MC-12, nunca desde `main`.
 - Base: `e59a8b9b3916d979d8eaeff78acd3795fd26c125`.
-- PR en borrador apilado sobre la rama MC-12; sin merge ni despliegue. El commit
-  final y la URL exacta se registran en `MC-13-DELIVERY.md`.
+- PR en borrador [#20](https://github.com/manuelxose/embarcarte/pull/20), apilado
+  sobre la rama MC-12; sin merge ni despliegue. El commit final y el registro de
+  entrega se publican en `MC-13-DELIVERY.md`.
 
 ## K. Bloqueos pendientes
 
@@ -240,7 +257,7 @@ consecuencias financieras de lanzamientos bloqueados.
 
 ```text
 MC13_VERDICT = PARTIAL
-MC13_INTERNAL_FINANCIAL_SCOPE = PASS_INTERNAL_FINANCIAL_SCOPE
+MC13_INTERNAL_FINANCIAL_SCOPE = PENDING_REAUDIT
 MC13_60_MONTH_MODEL = IMPLEMENTED
 MC13_12_36_60_RECONCILIATION = PASS
 MC13_CASHFLOW_VALIDATED = PASS_INTERNAL_SCOPE
@@ -248,7 +265,7 @@ MC13_FINANCING_REQUIREMENT_MODEL = CONDITIONAL_HYPOTHETICAL
 MC13_BREAK_EVEN_STATUS = CONDITIONAL_HYPOTHETICAL_ONLY
 MC13_CUSTOMER_DEMAND_EVIDENCE = NONE
 MC13_EXTERNAL_COMMERCIAL_VALIDATION = BLOCKED_OR_NOT_OBTAINED
-MC13_INDEPENDENT_REVIEW = PASS_INTERNAL_FINANCIAL_SCOPE
+MC13_INDEPENDENT_REVIEW = PARTIAL_WITHHELD_PENDING_REAUDIT
 
 MC12_VERDICT = PARTIAL
 MC12_INTERNAL_ECONOMICS_SCOPE = PASS_INTERNAL_ECONOMICS_SCOPE

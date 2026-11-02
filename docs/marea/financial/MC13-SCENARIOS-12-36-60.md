@@ -59,14 +59,14 @@ values at the cut-off month.
 | `RESTRICTED_CURRENT` | M36 | 0.00 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
 | `RESTRICTED_CURRENT` | M60 | 0.00 | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN |
 | `DOWNSIDE` | M12 | 0.00 | 0.00 | -523 800.00 | -1 029 199.90 | 1 029 199.90 |
-| `DOWNSIDE` | M36 | 120 860.60 | 34 147.79 | -1 584 865.69 | -2 075 310.95 | 2 075 310.95 |
-| `DOWNSIDE` | M60 | 367 050.26 | 150 666.06 | -2 630 259.30 | -3 075 765.77 | 3 075 765.77 |
-| `BASE_HYPOTHETICAL` | M12 | 67 257.32 | 15 294.95 | -419 105.05 | -858 503.42 | 858 503.42 |
-| `BASE_HYPOTHETICAL` | M36 | 1 376 225.77 | 523 430.13 | -819 256.83 | -924 705.28 | 987 326.73 |
-| `BASE_HYPOTHETICAL` | M60 | 3 426 647.12 | 1 688 226.86 | -618 061.78 | -415 478.92 | 987 326.73 |
-| `UPSIDE_HYPOTHETICAL` | M12 | 258 753.72 | 53 940.35 | -230 699.65 | -613 109.98 | 632 135.66 |
-| `UPSIDE_HYPOTHETICAL` | M36 | 4 028 122.59 | 1 706 337.08 | 826 543.28 | 1 414 228.28 | 632 135.66 |
-| `UPSIDE_HYPOTHETICAL` | M60 | 10 148 301.82 | 5 475 105.86 | 3 963 913.46 | 5 440 764.18 | 632 135.66 |
+| `DOWNSIDE` | M36 | 120 860.60 | 34 147.79 | -1 584 865.69 | -2 076 734.66 | 2 076 734.66 |
+| `DOWNSIDE` | M60 | 367 050.26 | 150 666.06 | -2 630 259.30 | -3 081 802.04 | 3 081 802.04 |
+| `BASE_HYPOTHETICAL` | M12 | 67 257.32 | 15 294.95 | -419 105.05 | -853 063.06 | 853 063.06 |
+| `BASE_HYPOTHETICAL` | M36 | 1 376 225.77 | 523 430.13 | -819 256.83 | -943 893.07 | 995 185.23 |
+| `BASE_HYPOTHETICAL` | M60 | 3 426 647.12 | 1 688 226.86 | -618 061.78 | -464 878.15 | 995 185.23 |
+| `UPSIDE_HYPOTHETICAL` | M12 | 258 753.72 | 53 940.35 | -230 699.65 | -596 117.18 | 621 240.91 |
+| `UPSIDE_HYPOTHETICAL` | M36 | 4 028 122.59 | 1 706 337.08 | 826 543.28 | 1 361 732.20 | 621 240.91 |
+| `UPSIDE_HYPOTHETICAL` | M60 | 10 148 301.82 | 5 475 105.86 | 3 963 913.46 | 5 311 017.86 | 621 240.91 |
 
 ## 5. Cumulative totals versus period values at each cut-off
 
@@ -76,14 +76,14 @@ requirement are point-in-time stocks. Source: `scenario-results.json#scenarios.*
 | Scenario | Cut-off | Period gross invoiced | Period net revenue | Period contribution | Period EBITDA-like | Period net cash flow | Cumulative cash | Financing requirement |
 |---|---|---|---|---|---|---|---|---|
 | `DOWNSIDE` | M12 | 0.00 | 0.00 | 0.00 | -43 650.00 | -45 924.90 | -1 029 199.90 | 1 029 199.90 |
-| `DOWNSIDE` | M36 | 10 616.17 | 8 284.06 | 3 096.45 | -43 211.84 | -42 552.68 | -2 075 310.95 | 2 075 310.95 |
-| `DOWNSIDE` | M60 | 13 753.91 | 11 462.64 | 5 936.68 | -43 191.78 | -38 080.85 | -3 075 765.77 | 3 075 765.77 |
-| `BASE_HYPOTHETICAL` | M12 | 32 670.65 | 25 436.77 | 5 039.39 | -31 160.61 | -27 259.64 | -858 503.42 | 858 503.42 |
-| `BASE_HYPOTHETICAL` | M36 | 89 546.89 | 72 080.76 | 36 616.55 | -1 788.03 | 5 004.01 | -924 705.28 | 987 326.73 |
-| `BASE_HYPOTHETICAL` | M60 | 115 607.38 | 95 948.21 | 57 979.23 | 17 235.81 | 33 582.11 | -415 478.92 | 987 326.73 |
-| `UPSIDE_HYPOTHETICAL` | M12 | 129 462.52 | 84 002.68 | 15 983.09 | -7 736.91 | 15 368.53 | -613 109.98 | 632 135.66 |
-| `UPSIDE_HYPOTHETICAL` | M36 | 269 283.44 | 209 063.16 | 115 672.70 | 90 508.15 | 130 143.47 | 1 414 228.28 | 632 135.66 |
-| `UPSIDE_HYPOTHETICAL` | M60 | 361 538.73 | 293 762.02 | 192 454.61 | 165 757.54 | 200 996.69 | 5 440 764.18 | 632 135.66 |
+| `DOWNSIDE` | M36 | 10 616.17 | 8 284.06 | 3 096.45 | -43 211.84 | -42 744.87 | -2 076 734.66 | 2 076 734.66 |
+| `DOWNSIDE` | M60 | 13 753.91 | 11 462.64 | 5 936.68 | -43 191.78 | -38 273.04 | -3 081 802.04 | 3 081 802.04 |
+| `BASE_HYPOTHETICAL` | M12 | 32 670.65 | 25 436.77 | 5 039.39 | -31 160.61 | -25 994.82 | -853 063.06 | 853 063.06 |
+| `BASE_HYPOTHETICAL` | M36 | 89 546.89 | 72 080.76 | 36 616.55 | -1 788.03 | 3 745.20 | -943 893.07 | 995 185.23 |
+| `BASE_HYPOTHETICAL` | M60 | 115 607.38 | 95 948.21 | 57 979.23 | 17 235.81 | 32 323.30 | -464 878.15 | 995 185.23 |
+| `UPSIDE_HYPOTHETICAL` | M12 | 129 462.52 | 84 002.68 | 15 983.09 | -7 736.91 | 18 184.18 | -596 117.18 | 621 240.91 |
+| `UPSIDE_HYPOTHETICAL` | M36 | 269 283.44 | 209 063.16 | 115 672.70 | 90 508.15 | 126 924.71 | 1 361 732.20 | 621 240.91 |
+| `UPSIDE_HYPOTHETICAL` | M60 | 361 538.73 | 293 762.02 | 192 454.61 | 165 757.54 | 197 777.93 | 5 311 017.86 | 621 240.91 |
 
 `RESTRICTED_CURRENT` has no period-value table because it authorises no sale and its monetary columns
 are suppressed. Note the distinction: `BASE_HYPOTHETICAL` shows a positive final-month EBITDA-like
@@ -105,14 +105,16 @@ recurring-revenue forecast.
 
 ## 7. Invoice and collection timing (M60)
 
-| Scenario | Gross invoiced | Refunds (3 %) | VAT output | Cash collections net of VAT | VAT paid | Deferred end | Trade receivables end |
-|---|---|---|---|---|---|---|---|
-| `DOWNSIDE` | 463 955.96 | 8 018.35 | 66 841.65 | 438 721.01 | 20 952.17 | 22 045.70 | 4 282.78 |
-| `BASE_HYPOTHETICAL` | 4 397 543.08 | 62 381.43 | 658 285.24 | 4 051 733.31 | 317 758.93 | 250 229.29 | 28 050.84 |
-| `UPSIDE_HYPOTHETICAL` | 13 130 674.77 | 162 941.70 | 1 969 367.21 | 11 982 255.94 | 1 076 693.05 | 850 064.04 | 71 725.78 |
+| Scenario | Gross invoiced | Distributor invoiced | Distributor collected | Refunds cash | VAT output | Collections net of VAT | VAT paid | Deferred end | Receivables end |
+|---|---|---|---|---|---|---|---|---|---|
+| `DOWNSIDE` | 463 955.96 | 47 993.40 | 45 692.70 | 8 018.35 | 66 841.65 | 432 684.74 | 20 952.17 | 22 045.70 | 2 300.70 |
+| `BASE_HYPOTHETICAL` | 4 397 543.08 | 373 369.81 | 358 301.17 | 62 381.43 | 658 285.24 | 4 002 334.08 | 317 758.93 | 250 229.29 | 15 068.64 |
+| `UPSIDE_HYPOTHETICAL` | 13 130 674.77 | 975 252.66 | 936 722.26 | 162 941.70 | 1 969 367.21 | 11 852 509.62 | 1 076 693.05 | 850 064.04 | 38 530.40 |
 
 Cash collections differ from recognised revenue by the deferred subscription balance, VAT settlement
-and the receivable lag; `cashCollectionsNetOfVat = cashReceiptsGross − vatPaid` (D04 §6.3).
+and the receivable lag; `cashCollectionsNetOfVat = cashReceiptsGross − vatPaid` (D04 §6.3). Refunds
+are now paid in cash, and distributor invoicing uses the channel-adjusted trade price (35 % margin
+applied once, VAT computed once), so the distributor receivable is invoiced minus collected.
 
 ## 8. Investment exposure, additional funding and cash recovery
 
@@ -124,9 +126,9 @@ gap is the derived difference `max(0, financing requirement − 2 000 000.00)`.
 
 | Scenario | Capex cash | Working-capital movement | Cumulative investment | Financing requirement | Gap vs 2 000 000 envelope | Cash recovery month |
 |---|---|---|---|---|---|---|
-| `DOWNSIDE` | 503 125.00 | -57 618.53 | 445 506.47 | 3 075 765.77 | 1 075 765.77 | none within M60 |
-| `BASE_HYPOTHETICAL` | 402 500.00 | -605 082.86 | -202 582.86 | 987 326.73 | 0.00 (1 012 673.27 headroom) | none within M60 |
-| `UPSIDE_HYPOTHETICAL` | 342 125.00 | -1 818 975.72 | -1 476 850.72 | 632 135.66 | 0.00 (1 367 864.34 headroom) | M23 |
+| `DOWNSIDE` | 503 125.00 | -51 582.26 | 451 542.74 | 3 081 802.04 | 1 081 802.04 | none within M60 |
+| `BASE_HYPOTHETICAL` | 402 500.00 | -555 683.63 | -153 183.63 | 995 185.23 | 0.00 (1 004 814.77 headroom) | none within M60 |
+| `UPSIDE_HYPOTHETICAL` | 342 125.00 | -1 689 229.40 | -1 347 104.40 | 621 240.91 | 0.00 (1 378 759.09 headroom) | M23 |
 
 `RESTRICTED_CURRENT` cannot be assessed: company cash, funding and existing expenses are `UNKNOWN`.
 The financing requirement is a conditional floor because unknown insurance, CRA, licensing and capex
@@ -140,9 +142,9 @@ number of months` (opening cash 0). Negative values are burn.
 
 | Scenario | Average monthly net cash M01–M12 | M01–M36 | M01–M60 |
 |---|---|---|---|
-| `DOWNSIDE` | -85 766.66 | -57 647.53 | -51 262.76 |
-| `BASE_HYPOTHETICAL` | -71 541.95 | -25 686.26 | -6 924.65 |
-| `UPSIDE_HYPOTHETICAL` | -51 092.50 | +39 284.12 | +90 679.40 |
+| `DOWNSIDE` | -85 766.66 | -57 687.07 | -51 363.37 |
+| `BASE_HYPOTHETICAL` | -71 088.59 | -26 219.25 | -7 747.97 |
+| `UPSIDE_HYPOTHETICAL` | -49 676.43 | +37 825.89 | +88 516.96 |
 
 The burn narrows in all paths as revenue ramps; `BASE_HYPOTHETICAL` is close to monthly break-even by
 M60 and `UPSIDE_HYPOTHETICAL` turns to a net average inflow by M36. `RESTRICTED_CURRENT` has no

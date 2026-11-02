@@ -88,6 +88,7 @@ function evidenceCounts(assumptions) {
     executedContracts: 0,
     verifiedObserved: 0,
     publishedTariffs: 0,
+    officialLicensingDocuments: 0,
     inheritedAssumptions: 0,
     engineeringAssumptions: 0,
     scenarioAssumptions: 0,
@@ -101,6 +102,9 @@ function evidenceCounts(assumptions) {
         break;
       case 'PUBLISHED_TARIFF':
         counts.publishedTariffs += 1;
+        break;
+      case 'OFFICIAL_LICENSING_DOCUMENT':
+        counts.officialLicensingDocuments += 1;
         break;
       case 'CONTRACTED':
         counts.executedContracts += 1;

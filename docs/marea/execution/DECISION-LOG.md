@@ -1537,3 +1537,18 @@ no merge, no deployment.
 **Evidence.** `scripts/marea-financial-engine.mjs`; `scripts/check-marea-financial-model.mjs` checks `A-26`, `V-21`; `MC13-HARDWARE-PRODUCTION-AND-INVENTORY-CASHFLOW.md` verification note; `data/review-findings.json`.
 
 **Status effect.** No approval; no merge or deployment.
+
+
+## D-057 - 2026-11-02 - MC-13 applies the first-audit corrections before re-freezing
+
+**Context.** The independent auditor withheld sign-off on the frozen commit `7dfb56d` with 2 BLOCKING findings (missing delivery record/registry update; an unawarded independent-review PASS asserted in the Spanish report), 3 MAJOR findings (refund allowance not settled in cash; distributor invoice basis adding VAT twice and ignoring the declared margin; the adversarial suite coupled to the live review state), 8 MINOR and 3 INFORMATIONAL findings.
+
+**Decision.** Apply the corrections before any re-audit: settle refunds/withdrawal allowances as a cash outflow and keep ST-07 adverse; compute distributor invoicing from the channel-adjusted VAT-inclusive trade price; decouple the positive-control and review-state tests from the live record so 29/29 is reproducible; populate scenario and threshold assumption lineage; synchronise the data contract with the implemented gate (77 checks, A-15, A-27/A-28, D-11, restricted zero-vs-null); count all evidence classes; add a document-level false-PASS guard; author D21 and update the registry; and correct the documentation copies of blocker severities, subscription headroom and stress semantics. Record the first audit as PARTIAL/withheld and require the auditor to re-run the independent recomputation, its own mutation harness, the 208-claim reconciliation, the validator and the unit suite on the corrected commit.
+
+**Rationale.** An audit that is merely acknowledged is not an audit. The corrections change conditional cash and financing figures, so every derived dataset, generated register and affected report must be regenerated and the corrected commit independently re-verified; a later documentation-only commit cannot re-characterise which implementation commit was audited.
+
+**Consequences.** (a) Conditional financing requirements and cumulative cash changed again before the final freeze. (b) The gate now contains 77 checks and the adversarial suite is reproducible at 29/29. (c) The final internal-scope verdict depends on the re-audit, not on this decision. (d) No price, budget, financing, launch or MC-14 authorization changes.
+
+**Evidence.** `docs/marea/financial/review/MC-13-REVIEW.md`; `data/review-findings.json`; `MC-13-DELIVERY.md`; `MC13-FINANCIAL-DATA-CONTRACT.md`; `scripts/check-marea-financial-model.mjs`; `MASTER-PROMPT-REGISTRY.md` row 13.
+
+**Status effect.** No approval; no merge; no deployment; no MC-14 start.

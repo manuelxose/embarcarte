@@ -108,7 +108,7 @@ No bundle revenue line exists in the model. Bundles are excluded because their c
 | `SUBSCRIPTION` | `DIRECT_TO_CONSUMER` | 80 % | 0 % | `ASM-MC13-103` / `-117` / `-131` |
 | `SUBSCRIPTION` | `APP_STORE` | 20 % | 30 % | `ASM-MC13-104` / `-118` / `-132` |
 
-Shares are identical in the three hypothetical scenarios; only the assumption IDs differ. The engine blends them into a channel factor `Σ share × (1 − deduction)`: hardware `0.9050` (9.50 % blended deduction before VAT) and subscription `0.9400` (6.00 %, all of it the published 30 % app-store commission of `ASM-MC13-006` on the 20 % app-store share). `FLEET` is not routed through this factor; it is modelled directly at its per-vessel monthly hypothesis. Reseller margin, installation labour revenue and app-store listing costs are not modelled as separate lines; the deduction is the declared treatment.
+Shares are identical in the three hypothetical scenarios; only the assumption IDs differ. The engine blends them into a channel factor `Σ share × (1 − deduction)`: hardware `0.9050` (9.50 % blended deduction before VAT) and subscription `0.9400` (6.00 %, all of it the published 30 % app-store commission of `ASM-MC13-006` on the 20 % app-store share). `FLEET` is not routed through this factor; it is modelled directly at its per-vessel monthly hypothesis. Reseller margin, installation labour revenue and app-store listing costs are not modelled as separate lines; the deduction is the declared treatment. Distributor invoicing is channel-adjusted in the final data — the 35 % distributor deduction is applied once at the invoice and VAT is charged once on the resulting amount — so `distributorInvoicedGross` is a post-margin figure and hardware cash receipts, not gross revenue, move as a result.
 
 ## 7. Conditional clearance-dependency schedule
 
@@ -165,13 +165,13 @@ The mature figure is a *monthly addition rate* at full ramp, not an installed ba
 
 **Monthly subscriptions (FLEET).** A vessel balance: `balance = balance − round(balance × monthlyChurnRate) + newVessels`; revenue and cash are recognised in the month billed and there is no deferred balance. FLEET uses `monthlyChurnRate` (`0.03` / `0.015` / `0.008`) and no activation multiplier. `FLEET-BUSINESS` has no demand profile in any scenario.
 
-| Scenario | Annual renewal rate | Monthly churn rate | Activation rate |
-|---|---|---|---|
-| `DOWNSIDE` | 0.55 | 0.03 | 0.70 |
-| `BASE_HYPOTHETICAL` | 0.75 | 0.015 | 0.85 |
-| `UPSIDE_HYPOTHETICAL` | 0.85 | 0.008 | 0.95 |
+| Scenario | Annual renewal rate | Monthly churn rate | Activation rate | Deferred refund % |
+|---|---|---|---|---|
+| `DOWNSIDE` | 0.55 | 0.03 | 0.70 | 0 |
+| `BASE_HYPOTHETICAL` | 0.75 | 0.015 | 0.85 | 0 |
+| `UPSIDE_HYPOTHETICAL` | 0.85 | 0.008 | 0.95 | 0 |
 
-`ASM-MC13-051` records `CHURN_VALIDATED = false` and `RENEWAL_RATE_VALIDATED = false` with `value: null`. These rates are invented so the model can run; they are not observations. The cohort behaviour is still readable: in `BASE_HYPOTHETICAL` the first annual cohort starts at M14 (NAV gate M13), the first renewal falls due at M26, and WATCH monitoring (gate M08) produces the first renewal at M21 — so no renewal is visible in any M12 view.
+`ASM-MC13-051` records `CHURN_VALIDATED = false` and `RENEWAL_RATE_VALIDATED = false` with `value: null`. These rates are invented so the model can run; they are not observations. The cohort behaviour is still readable: in `BASE_HYPOTHETICAL` the first annual cohort starts at M14 (NAV gate M13), the first renewal falls due at M26, and WATCH monitoring (gate M08) produces the first renewal at M21 — so no renewal is visible in any M12 view. Each scenario's `cohortAssumptions` block now also carries `deferredRevenueRefundPct: 0`, and `scenario-definitions.json#scenarios[].scenarioAssumptionIds` is populated — 9 IDs for `RESTRICTED_CURRENT` (`ASM-MC13-091`…`-099`, the nine `null` clearance-month declarations) and 29 per hypothetical scenario covering clearance schedule, channel mix, demand profiles and cohort rates — so every scenario input resolves to a declared assumption.
 
 | Scenario | Deferred at M12 | Deferred at M36 | Deferred at M60 | Deferred M60 as % of annual-billed recurring revenue |
 |---|---|---|---|---|
@@ -210,19 +210,19 @@ Cumulative recognised revenue from `data/scenario-results.json#scenarios[*].view
 
 Two consequences follow directly. First, the recurring share rises monotonically inside every hypothetical case — 10.75 % → 37.54 % → 51.35 % in `BASE_HYPOTHETICAL` — because the cohort base compounds while hardware is capped by the mature monthly demand assumption. Second, a majority-recurring mix is reached only at the end of the horizon even in the base case; nothing in the data supports a claim that recurring revenue dominates by year three.
 
-Gross-to-net bridge and cash at the same views (`grossInvoicedRevenue`, `vatOutput`, `refundsAllowance`, `cashCollectionsNetOfVat`, `tradeReceivablesEnd`, `paymentFees`):
+Gross-to-net bridge and cash at the same views (`grossInvoicedRevenue`, `vatOutput`, `refundsAllowance`, `refundsCash`, `cashCollectionsNetOfVat`, `tradeReceivablesEnd`, `paymentFees`):
 
 | Scenario | View | Gross invoiced | VAT output | Refund allowance | Net revenue | Cash net of VAT | Trade receivables at view | Payment fees |
 |---|---|---|---|---|---|---|---|---|
-| `DOWNSIDE` | M36 | EUR 159 131.94 | EUR 23 489.31 | EUR 3 405.79 | EUR 120 860.60 | EUR 153 414.48 | EUR 4 282.78 | EUR 2 412.67 |
-| `DOWNSIDE` | M60 | EUR 463 955.96 | EUR 66 841.65 | EUR 8 018.35 | EUR 367 050.26 | EUR 438 721.01 | EUR 4 282.78 | EUR 6 922.08 |
-| `BASE_HYPOTHETICAL` | M12 | EUR 86 250.34 | EUR 13 439.64 | EUR 2 246.47 | EUR 67 257.32 | EUR 69 641.27 | EUR 16 609.07 | EUR 1 333.64 |
-| `BASE_HYPOTHETICAL` | M36 | EUR 1 851 266.02 | EUR 284 109.48 | EUR 32 169.99 | EUR 1 376 225.77 | EUR 1 720 162.46 | EUR 28 050.84 | EUR 27 884.43 |
-| `BASE_HYPOTHETICAL` | M60 | EUR 4 397 543.08 | EUR 658 285.24 | EUR 62 381.43 | EUR 3 426 647.12 | EUR 4 051 733.31 | EUR 28 050.84 | EUR 65 353.40 |
-| `UPSIDE_HYPOTHETICAL` | M36 | EUR 5 465 572.45 | EUR 841 556.36 | EUR 85 691.46 | EUR 4 028 122.59 | EUR 5 035 313.78 | EUR 71 725.78 | EUR 81 915.31 |
-| `UPSIDE_HYPOTHETICAL` | M60 | EUR 13 130 674.77 | EUR 1 969 367.21 | EUR 162 941.70 | EUR 10 148 301.82 | EUR 11 982 255.94 | EUR 71 725.78 | EUR 194 072.07 |
+| `DOWNSIDE` | M36 | EUR 159 131.94 | EUR 23 489.31 | EUR 3 405.79 | EUR 120 860.60 | EUR 151 990.77 | EUR 2 300.70 | EUR 2 412.67 |
+| `DOWNSIDE` | M60 | EUR 463 955.96 | EUR 66 841.65 | EUR 8 018.35 | EUR 367 050.26 | EUR 432 684.74 | EUR 2 300.70 | EUR 6 922.08 |
+| `BASE_HYPOTHETICAL` | M12 | EUR 86 250.34 | EUR 13 439.64 | EUR 2 246.47 | EUR 67 257.32 | EUR 75 081.63 | EUR 8 922.24 | EUR 1 333.64 |
+| `BASE_HYPOTHETICAL` | M36 | EUR 1 851 266.02 | EUR 284 109.48 | EUR 32 169.99 | EUR 1 376 225.77 | EUR 1 700 974.67 | EUR 15 068.64 | EUR 27 884.43 |
+| `BASE_HYPOTHETICAL` | M60 | EUR 4 397 543.08 | EUR 658 285.24 | EUR 62 381.43 | EUR 3 426 647.12 | EUR 4 002 334.08 | EUR 15 068.64 | EUR 65 353.40 |
+| `UPSIDE_HYPOTHETICAL` | M36 | EUR 5 465 572.45 | EUR 841 556.36 | EUR 85 691.46 | EUR 4 028 122.59 | EUR 4 982 817.70 | EUR 38 530.40 | EUR 81 915.31 |
+| `UPSIDE_HYPOTHETICAL` | M60 | EUR 13 130 674.77 | EUR 1 969 367.21 | EUR 162 941.70 | EUR 10 148 301.82 | EUR 11 852 509.62 | EUR 38 530.40 | EUR 194 072.07 |
 
-Cash net of VAT exceeds recognised revenue in every view, because annual prepayment is collected ahead of straight-line recognition and hardware settles faster than it is recognised; trade receivables settle at a steady level once the distributor book reaches its 60-day equilibrium. The refund allowance is hardware-only in the model — subscription lines are not reduced by it, which is inconsistent with the MC-12 subscription direct cost that already contains a returns line (see D07 §4).
+Cash net of VAT exceeds recognised revenue in every view, because annual prepayment is collected ahead of straight-line recognition and hardware settles faster than it is recognised; trade receivables settle at a steady level once the distributor book reaches its 60-day equilibrium. Refund allowance is settled in cash in the same period — `refundsCash` equals `refundsAllowance` at every view (EUR 2 246.47 / 32 169.99 / 62 381.43 at `BASE_HYPOTHETICAL`) — so it is a cash outflow and not an accrual only. The refund allowance is hardware-only in the model — subscription lines are not reduced by it, which is inconsistent with the MC-12 subscription direct cost that already contains a returns line (see D07 §4).
 
 ## 12. Revenue by family and by SKU
 
@@ -257,4 +257,4 @@ Recorded for the Lead and the independent reviewer; nothing is edited outside th
 2. **`channelMix` location (resolved in the contract).** `channelMix` is declared per scenario in `scenario-definitions.json#scenarios[].channelMix`; the data contract now states this explicitly and this document reads it there.
 3. **Fee base includes VAT.** The payment-processing percentage is applied to gross VAT-inclusive receipts, not to net revenue; see D07 §8.
 4. **`ASM-MC13-038` mis-reference closed.** Drafting found that `recurring-revenue.json#deferredRevenuePolicy` cited `ASM-MC13-038` ("Hardware device attrition per year = 2 %") as the straight-line authority. The final dataset adds `ASM-MC13-159` ("Annual subscription revenue recognition method", 12 months, `SCENARIO_ASSUMPTION`, confidence `NONE`) and the policy now points to it, so the record resolves; no figure changed.
-5. **Figures reflect the final data snapshot.** Two rebuilds occurred during drafting (distributor-collections aliasing, input VAT from receipts, safety stock, obsolescence write-off, then an inventory-planning and override-effective fix). Every figure here is re-read from the current `data/` files and `MC13-GENERATED-FIGURES.md`: net revenue, the hardware/subscription split, recurring shares, per-SKU lines and deferred balances are unchanged, while `cashCollectionsNetOfVat`, contribution, cash-flow and financing columns changed. The identities verified arithmetically are: net revenue equals hardware net plus subscription net at every view; FLEET revenue equals vessel-months × EUR 49.00; per-SKU hardware net revenue sums to `hardwareRevenueNet`; per-SKU subscription revenue plus FLEET revenue equals `subscriptionRevenueNet`. The builder and validator scripts are committed in the implementation commit and are the executable gate.
+5. **Figures reflect the post-audit final snapshot.** Three rebuilds occurred during drafting (collection aliasing, input VAT from receipts, safety stock, obsolescence write-off; an inventory-planning and override-effective fix; then the audit corrections). The audit corrections settle refunds in cash (`refundsCash` equals `refundsAllowance` at every view) and channel-adjust distributor invoicing (35 % once, no double VAT), which moves `cashCollectionsNetOfVat`, trade receivables, contribution, cash flow and financing. Every figure here is re-read from the current `data/` files and `MC13-GENERATED-FIGURES.md`: net revenue, the hardware/subscription split, recurring shares, per-SKU lines and deferred balances are unchanged. The identities verified arithmetically are: net revenue equals hardware net plus subscription net at every view; FLEET revenue equals vessel-months × EUR 49.00; per-SKU hardware net revenue sums to `hardwareRevenueNet`; per-SKU subscription revenue plus FLEET revenue equals `subscriptionRevenueNet`. The builder and validator scripts are committed in the implementation commit and are the executable gate.

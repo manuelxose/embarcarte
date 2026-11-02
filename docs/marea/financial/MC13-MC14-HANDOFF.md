@@ -54,11 +54,11 @@ The values below are copied from `financialStatusAtHandoff` in
 | `CUSTOMER_WTP_VALIDATED` | `false` |
 | `MC14_STARTED` | `false` |
 
-Both the handoff JSON and `data/manifest.json` now record
-`MC13_INTERNAL_FINANCIAL_SCOPE: "PENDING_INDEPENDENT_REVIEW"` and
-`MC13_INDEPENDENT_REVIEW: "PENDING_INDEPENDENT_REVIEW"`; the independent audit will
-finalise them. This handoff asserts neither PASS nor FAIL, and MC-14 must treat the
-internal financial scope as pending independent review.
+Both the handoff JSON and `data/manifest.json` record
+`MC13_INTERNAL_FINANCIAL_SCOPE: "PENDING_INDEPENDENT_REVIEW"`; the manifest records
+`MC13_INDEPENDENT_REVIEW: "PARTIAL"`. The internal financial scope stays pending until
+the auditor re-verifies the post-audit corrections. This handoff asserts neither PASS
+nor FAIL, and MC-14 must treat the internal financial scope as pending.
 
 ## 4. The ten financial dependencies
 

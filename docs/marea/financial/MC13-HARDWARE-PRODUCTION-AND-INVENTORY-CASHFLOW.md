@@ -236,9 +236,11 @@ material plus assembly/test labour by LOW/BASE/HIGH case) — an allowance, not 
 no failure-rate data or RMA history exists (UNK-HW-05). **Refund and withdrawal allowance** is
 modelled at 3 % of hardware gross invoiced revenue (ASM-MC13-003, `ENGINEERING_ASSUMPTION`): BASE
 EUR 62 381.43, DOWNSIDE EUR 8 018.35, UPSIDE EUR 162 941.70; subscription cash gross is outside the
-base. No measured return rate, 14-day withdrawal experience or returns agreement exists
-(BLK-FIN-12). **Obsolescence** is physical write-off units (5 %/yr) valued at the constant unit cost
-and recognised as a non-cash cost (§4.2, §5); no disposal or recovery proceeds are modelled.
+base. It is also **paid in cash in the same period** (`refundsCash`, validator **A-27**), so it
+reduces cash receipts as well as revenue. No measured return rate, 14-day withdrawal experience or
+returns agreement exists (BLK-FIN-12). **Obsolescence** is physical write-off units (5 %/yr) valued
+at the constant unit cost and recognised as a non-cash cost (§4.2, §5); no disposal or recovery
+proceeds are modelled.
 
 ## 7. Unknowns and blockers affecting this deliverable
 
@@ -263,15 +265,16 @@ exact; purchases-cash / COGS bridge recomputed for all three scenarios (residual
 0.10, UPSIDE 0.20 EUR, disclosed); 60-month totals recomputed and matched to `scenario-results.json`
 M60 views and `MC13-GENERATED-FIGURES.md` (BASE: purchases cash 1 541 872.72; COGS 1 521 869.39;
 ending asset 20 002.61; carrying 3 929.26; write-off cost 0.00). The MC-13 validator was run on this
-final snapshot: its model arithmetic checks (`A-06`, `A-09`–`A-16`, `V-15`, `V-16`, `R-06`) PASS; the
-remaining reported failures concern pending documents and the independent review.
+final snapshot: its model arithmetic checks (`A-06`, `A-09`–`A-16`, `A-27`, `A-28`, `V-15`, `V-16`,
+`R-06`) PASS; the remaining reported failures concern pending documents and the open review findings.
 
 **Correction note (audit lineage).** An earlier working snapshot had four defects — aliased per-SKU
 distributor collections, input VAT computed on units sold, a declared safety-stock month not
-consumed, and an unexpensed write-off value. All four were corrected by the engine/data owner, and a
-later inventory-planning (MRP) revision replaced the monthly safety-stock add-on with the
-1-month-buffer plan described in §4.2 before this delivery; the figures here are the final
-`2026-11-02` snapshot. The corrections are recorded for lineage only and are not presented as the
+consumed, and an unexpensed write-off value. All four were corrected, a later inventory-planning
+(MRP) revision replaced the monthly safety-stock add-on with the 1-month-buffer plan described in
+§4.2, and the post-audit corrections made refunds a cash outflow and fixed distributor invoicing to
+the channel-adjusted VAT-inclusive trade price. All corrections predate this delivery; the figures
+here are the final audited `2026-11-02` snapshot and are recorded for lineage only, not as the
 current state.
 
 ## 9. Boundary statement
