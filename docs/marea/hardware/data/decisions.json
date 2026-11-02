@@ -82,6 +82,17 @@
       "consequences": "Any future change to hardware data must pass the gate; weakening a rule requires a new decision, a contract version and independent re-verification.",
       "evidence": ["scripts/check-marea-hardware.mjs", "scripts/check-marea-hardware.test.mjs", "docs/marea/hardware/data/DATA-CONTRACT.md"],
       "statusEffect": "Validation gate active; no commercial or safety status change."
+    },
+    {
+      "decisionId": "D-048",
+      "date": "2026-11-02",
+      "title": "MC-11 delivers internal hardware feasibility and stays PARTIAL because no formal quotation exists",
+      "context": "The registry requires hardware BOM, supplier quotations and a conformity plan, but MC-11 was authorised only for internal engineering and public-source research: no supplier contact, RFQ, purchase, prototype or certification. The evidence environment could not retrieve application/datasheet PDFs, so no datasheet was retrieved and verified parameters come from manufacturer HTML pages, recorded as a disclosed limitation.",
+      "decision": "Deliver D1-D37 as an internal feasibility package and record the verdict as PARTIAL with MC11_FORMAL_PROCUREMENT_EVIDENCE = BLOCKED_OR_NOT_OBTAINED; keep every architecture, price, compatibility and conformity statement unapproved; apply the independent audit corrections and require the auditor to re-verify them before any internal-scope PASS is claimed.",
+      "rationale": "A catalogue price is not a quotation and an internal design review is not a certification; reporting a full PASS would require fabricating supplier or laboratory evidence, which the milestone forbids.",
+      "consequences": "No BOM is production-approved and no price is approved; gates G1-G7 remain closed; MC-12 inherits per-line cost confidence, labelled assumptions and quotation gaps; MC-13 inherits capital, tooling, certification and working-capital gaps; draft PR #18 remains stacked and unmerged.",
+      "evidence": ["docs/marea/hardware/MC11-EXECUTIVE-REPORT.md", "docs/marea/hardware/MC-11-DELIVERY.md", "docs/marea/hardware/review/MC-11-REVIEW.md", "docs/marea/execution/DECISION-LOG.md"],
+      "statusEffect": "No supplier contact, purchase, test, certification, price approval, publication, merge or deployment."
     }
   ],
   "gates": [

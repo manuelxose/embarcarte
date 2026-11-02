@@ -1306,3 +1306,41 @@ delivery evidence only.
 `review/MC-10R-REVIEW.md` (D33); `MASTER-PROMPT-REGISTRY.md` row 10.
 
 **Status effect.** No authorization, no fieldwork, no merge, no deployment, no renumbering.
+
+## D-048 - 2026-11-02 - MC-11 delivers internal hardware feasibility and stays PARTIAL because no formal quotation exists
+
+**Context.** Milestone 11 requires a hardware BOM, supplier quotations and a conformity plan. MC-11 was
+authorised only for internal engineering and public-source research: no supplier contact, RFQ
+transmission, purchase, prototype, laboratory engagement or certification was permitted. The evidence
+environment also could not retrieve application/datasheet PDFs, so zero datasheets were retrieved and
+all verified parameters come from manufacturer HTML pages, recorded as a disclosed limitation.
+
+**Decision.** Deliver the complete internal engineering package (D1-D37: nine families and six bundles,
+33 scored candidate architectures, 41 real candidate MPNs, 19 suppliers with `NOT_CONTACTED`, 42
+classified public price observations, 11 engineering and 11 manufacturing BOMs all `INCOMPLETE`, 90
+volume scenarios, per-configuration EU applicability over 11 acts, 18 conformity blockers, 52 device
+security requirements, 45 qualification tests `NOT_EXECUTED`, 18 machine-readable files, a 54-check
+deterministic gate with a 59-case adversarial suite, an independent audit and a Spanish executive
+report). Record the verdict as `PARTIAL` with `MC11_FORMAL_PROCUREMENT_EVIDENCE =
+BLOCKED_OR_NOT_OBTAINED`, and keep every architecture, price, compatibility and conformity statement
+unapproved.
+
+**Rationale.** A catalogue price is not a quotation and an internal design review is not a
+certification. Reporting a full PASS would require fabricating supplier or laboratory evidence, which is
+exactly what the milestone forbids. Separating the internal feasibility verdict from the procurement
+verdict preserves both the work done and the evidence missing.
+
+**Consequences.** (a) No BOM is production-approved and no price is approved. (b) Gates G1-G7 remain
+closed; supplier engagement, procurement, testing, regulatory evaluation and production release each need
+their own authorisation. (c) MC-12 inherits per-line cost confidence, labelled assumptions and explicit
+quotation gaps; MC-13 inherits capital, tooling, certification and working-capital gaps. (d) The
+independent audit's MAJOR/MINOR findings were corrected and require the auditor's re-verification before
+any internal-scope PASS is claimed. (e) Draft PR #18 remains stacked on the unmerged MC-10R branch and is
+delivery evidence only.
+
+**Evidence.** `docs/marea/hardware/MC11-EXECUTIVE-REPORT.md` (D36); `MC-11-DELIVERY.md` (D37);
+`review/MC-11-REVIEW.md` (D35); `data/review-findings.json`; `MC11-BASELINE-AND-GOVERNANCE.md` §10;
+`MASTER-PROMPT-REGISTRY.md` row 11.
+
+**Status effect.** No authorization, no supplier contact, no purchase, no test, no certification, no
+price approval, no publication, no merge, no deployment.

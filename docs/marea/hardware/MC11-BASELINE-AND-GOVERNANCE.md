@@ -27,11 +27,19 @@ program fact.
 | 13 | Git CLI / GitHub CLI | `git --version`, `gh --version` | `2.38.0.windows.1`, `2.96.0` |
 | 14 | Graph tooling | `graphify --version`, `graphify-out/graph.json` | `0.9.94`; graph present (6.9 MB) and used as the first-pass repository index |
 | 15 | Verified npm gates | `package.json` | `test:products`, `test:products:unit`, `test:bundles`, `test:bundles:unit`, `test:brand`, `test:brand:unit`, `test:market`, `test:market:unit`, `test:customer-research(:unit)`, `test:customer-recovery(:unit)`, `test:i18n`, `test:commerce`, `test:seo`, `test:backup`, `test:performance`, `test:e2e`, `build`, `format:check`; **`npm test` is not defined** (documented in `AGENTS.md`) |
+| 16 | MC-11 remote branch (post-audit, 2026-11-02) | `git push -u origin feature/marea-mc11-hardware-sourcing-conformity`; `git ls-remote origin …` | remote ref exists at `73ab0ac0ea7b28ac77c14137cf269bd4408f605f` (audit-correction commit); MC-10R base unchanged at `6713178` |
+| 17 | MC-11 draft PR (post-audit, 2026-11-02) | `gh pr view 18 --json …` | PR [#18](https://github.com/manuelxose/embarcarte/pull/18) `OPEN`, `isDraft: true`, `MERGEABLE`, head `feature/marea-mc11-hardware-sourcing-conformity`, base `feature/marea-mc10r-fieldwork-recovery` — **unmerged**; no merge, tag, release, deployment or publication performed |
 
 **MC-11 branch created:** `feature/marea-mc11-hardware-sourcing-conformity`
-from `67131782edaf8f3f8327ba79e5c5b4c554b137b0`. Planned draft PR base:
-`feature/marea-mc10r-fieldwork-recovery` (because PR #17 is open and unmerged). No merge, tag,
-release, deployment or publication is performed by this milestone.
+from `67131782edaf8f3f8327ba79e5c5b4c554b137b0`. Draft PR **#18** targets
+`feature/marea-mc10r-fieldwork-recovery` (because PR #17 is open and unmerged); verified `OPEN`,
+draft, `MERGEABLE`, unmerged. No merge, tag, release, deployment or publication is performed by this
+milestone.
+
+Acceptance item 22 ("PR is verified as draft and unmerged") was not yet true at the commit the
+independent auditor reviewed (`bef2f4b`), because the branch had not been pushed; it is evidenced by
+baseline rows 16–17 above after the audit-correction commit. This is recorded rather than hidden: the
+audit finding MC11-F01 exists precisely because the PR was opened after the fixed audit commit.
 
 ### 1.1 Discrepancies and environment notes (recorded, not silently resolved)
 
