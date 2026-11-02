@@ -766,6 +766,14 @@ test('CRR-14 rejects a FINAL stage that omits the audit and delivery records', (
     editJson(root, D27, (contract) => {
       contract.deliveryStage = 'FINAL';
     });
+    for (const relativePath of [
+      `${RECOVERY}/review/MC-10R-REVIEW.md`,
+      `${RECOVERY}/MC10R-EXECUTIVE-REPORT.md`,
+      `${RECOVERY}/MC-10R-DELIVERY.md`,
+      `${RECOVERY}/MC10R-HANDOFF-TO-AUTHORIZED-FIELDWORK.md`,
+    ]) {
+      rmSync(join(root, relativePath), { force: true });
+    }
   });
 });
 

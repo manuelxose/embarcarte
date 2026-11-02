@@ -2103,10 +2103,17 @@ function buildRunner(root) {
     require(contract.milestone === MILESTONE, 'milestone must be MC-10R');
     require(contract.date === DATE, 'date must be 2026-11-01');
     require(contract.owner === 'lead', 'owner must be lead');
-    require(contract.deliveryStage ===
-      'IMPLEMENTATION', 'deliveryStage must be IMPLEMENTATION for the implementation commit');
-    require(contract.recoveryWorkStatus ===
-      'READY_FOR_OWNER_REVIEW', 'recoveryWorkStatus must be READY_FOR_OWNER_REVIEW before the audit');
+    const stage = contract.deliveryStage;
+    require(['IMPLEMENTATION', 'FINAL'].includes(
+      stage,
+    ), 'deliveryStage must be IMPLEMENTATION or FINAL');
+    if (stage === 'FINAL') {
+      require(contract.recoveryWorkStatus ===
+        'PASS_INTERNAL_PREPARATION_SCOPE', 'FINAL stage requires recoveryWorkStatus PASS_INTERNAL_PREPARATION_SCOPE after the audit');
+    } else {
+      require(contract.recoveryWorkStatus ===
+        'READY_FOR_OWNER_REVIEW', 'recoveryWorkStatus must be READY_FOR_OWNER_REVIEW before the audit');
+    }
     require(contract.authorization.recordRef === D29, 'authorization recordRef must be D29');
     require(contract.fieldworkReadiness.recordRef ===
       D30, 'fieldworkReadiness recordRef must be D30');
