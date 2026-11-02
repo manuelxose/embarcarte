@@ -852,7 +852,8 @@ export const CHECKS = [
         out.push(`nmea0183: productCertification "${obj(nmea.nmea0183).productCertification}"`);
       }
       for (const { value, path } of collectFields(data, (k) => /nmea.*certif/i.test(k))) {
-        if (value === true || value === 'CERTIFIED') out.push(`${path}: NMEA certification claimed`);
+        if (value === true || value === 'CERTIFIED')
+          out.push(`${path}: NMEA certification claimed`);
       }
       // Narrow free-text heuristic: only an affirmative subject-verb assertion counts, never a
       // quoted prohibited claim or a requirement statement.
@@ -860,7 +861,11 @@ export const CHECKS = [
         if (typeof node !== 'string') return;
         if (/prohibit|claimsProhibited|limitations|nonAssertions/i.test(path)) return;
         if (!/NMEA\s*2000/i.test(node)) return;
-        if (/\b(not|no|never|without|prohibit|required|requires|must|shall|only after|until)\b/i.test(node)) {
+        if (
+          /\b(not|no|never|without|prohibit|required|requires|must|shall|only after|until)\b/i.test(
+            node,
+          )
+        ) {
           return;
         }
         if (
