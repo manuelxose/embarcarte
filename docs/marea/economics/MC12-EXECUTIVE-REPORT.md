@@ -59,7 +59,7 @@ derecho de licencia queda concedido.
 15. **D15 — Datos legibles por máquina:** 16 ficheros JSON.
 16. **D16 — Validador y pruebas:** `check-marea-unit-economics.mjs` (49 checks) y
     suite adversaria (64 tests), integrados en `npm`.
-17. **D17 — Auditoría independiente:** en curso; se registra en `review/MC-12-REVIEW.md`.
+17. **D17 — Auditoría independiente:** completada con veredicto `PASS_INTERNAL_ECONOMICS_SCOPE`; se registra en `review/MC-12-REVIEW.md`.
 18. **D18 — este informe.**
 19. **D19 — Registro de entrega.**
 
@@ -193,15 +193,14 @@ esos comandos quedan `BLOCKED_BY_ENVIRONMENT`, no `FAIL`.
 ## G. Auditoría independiente
 
 **Estado: completada.** El auditor es un agente distinto del autor y revisó el commit
-congelado `fe97062`, no el resumen. Emitió 16 hallazgos (2 MAJOR, 7 MINOR,
-7 INFORMATIONAL; 0 BLOCKING) y dictaminó `PARTIAL` porque dos MAJOR afectaban a la
+congelado `fe97062`, no el resumen. Emitió 18 hallazgos (2 MAJOR, 12 MINOR,
+4 INFORMATIONAL; 0 BLOCKING) y dictaminó `PARTIAL` porque dos MAJOR afectaban a la
 consistencia del estado y a la capacidad real de fallo del gate. Las correcciones se
 commitearon en `8f819c1`; el auditor las re-verificó de forma independiente
 (recomputación propia de 50 registros, 90 escenarios MC-11, 70 sensibilidades,
 4 casos de estrés, 6 bundles y 9 puntuaciones: 0 discrepancias) y emitió
-`PASS_INTERNAL_ECONOMICS_SCOPE`. Los hallazgos MAJOR/MINOR originales quedaron
-`CLOSED_VERIFIED`; los elementos de documentación y registro restantes se cierran en
-el commit de refresco de registros. El veredicto, la evidencia y la re-verificación
+`PASS_INTERNAL_ECONOMICS_SCOPE`. Los 18 hallazgos quedan cerrados: 16 `CLOSED_VERIFIED` y
+2 `CLOSED_INFORMATIONAL`, 0 abiertos, tras el commit de refresco de registros. El veredicto, la evidencia y la re-verificación
 constan en `review/MC-12-REVIEW.md` y `data/review-findings.json`. Ningún hallazgo se
 cerró por prosa: cada cierre requiere la re-ejecución del gate y la comprobación del
 auditor.

@@ -122,14 +122,14 @@ implied.
 ## 6. Independent audit
 
 The independent auditor (a different agent from the author) reviewed the frozen
-commit `fe97062`, found 16 issues (0 BLOCKING, 2 MAJOR, 7 MINOR, 7 INFORMATIONAL)
+commit `fe97062`, found 18 issues (0 BLOCKING, 2 MAJOR, 12 MINOR, 4 INFORMATIONAL)
 and withheld internal-scope sign-off. The corrections were committed at `8f819c1`
 and independently re-verified: 50/50 unit-economics records, 90/90 MC-11 scenarios,
 70/70 sensitivities, 4/4 stress cases, 6/6 bundles and 9/9 decision scores
 recomputed with 0 mismatches, and the new negative controls each failed exactly the
-intended check. Verdict: `PASS_INTERNAL_ECONOMICS_SCOPE`; the original MAJOR/MINOR
-findings are `CLOSED_VERIFIED` and the remaining documentation/record items are
-closed in the record-refresh commit. `review/MC-12-REVIEW.md` and
+intended check. Verdict: `PASS_INTERNAL_ECONOMICS_SCOPE`; all 18 findings are closed
+(16 `CLOSED_VERIFIED`, 2 `CLOSED_INFORMATIONAL`, 0 open) after the
+record-refresh commit. `review/MC-12-REVIEW.md` and
 `data/review-findings.json` hold the evidence.
 
 ## 7. Prohibited actions asserted absent
