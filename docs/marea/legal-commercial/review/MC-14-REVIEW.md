@@ -6,63 +6,52 @@
 | Milestone | MC-14/36 — Legal/commercial risk register, regulatory compliance, consumer rights and commercial claims governance |
 | Date | 2026-11-02 |
 | Reviewer | Agent G — Independent Compliance Auditor (did not author the implementation) |
-| Frozen commit | `e32673ea26fa1b115e57b02b9755d3149c3db1ea` — round-2 corrected candidate (`fix(mc14): apply independent-audit corrections A-01..A-10 and reconcile research provenance`); previous frozen candidate `6fb22850aa7acdcea3e4959024d93ea5adc54842` |
+| Frozen commit | `7f31db83797f9423bbd9d0b60764f8db22fe8bbf` — round-3 audited candidate (`fix(mc14): close residual audit items in dossier tables, D19 schema and MC-15 routes`); previous candidates `e32673ea26fa1b115e57b02b9755d3149c3db1ea` and `6fb22850aa7acdcea3e4959024d93ea5adc54842` |
 | Base commit | `f80c0f02ac14803e9e1539393abbb225d7f49e16` (MC-13 record commit) |
-| Branch | `feature/marea-mc14-legal-commercial-risk-claims-policy` |
-| Machine-readable record | `data/review-findings.json` (`MAREA-MC14-REVIEW-FINDINGS`, re-verification round 2) |
-| Verdict | **PENDING_CORRECTION** — 0 BLOCKING, 1 MAJOR, 3 MINOR, 4 INFORMATIONAL open; 9 closed |
-| Expected verdict after residual correction | `PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE`, programme status `PARTIAL` (internal PASS, external clearance `NOT_GRANTED`), mirroring MC-13 |
+| Branch | `feature/marea-mc14-legal-commercial-risk-claims-policy` (pushed; remote head = `7f31db8`; draft PR #21 open, not merged) |
+| Machine-readable record | `data/review-findings.json` (`MAREA-MC14-REVIEW-FINDINGS`, re-verification round 3) |
+| Verdict | **`PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE`** |
+| Programme status | **`PARTIAL`** — internal legal/commercial governance PASS; external legal clearance `NOT_GRANTED` (mirroring MC-13) |
+| Findings | 0 BLOCKING, 0 open MAJOR, 0 open MINOR; 4 INFORMATIONAL open by design; 13 closed |
 | Nature | Internal governance audit. Not a legal opinion, certification, insurance or licence review, clearance to sell or publication authorisation |
 
 ## 0. Executive summary
 
-**Round 1 (frozen candidate `6fb2285`)** found the implementation technically solid and
-self-consistent in almost every dimension I could machine-check or manually challenge, but it
-found one MAJOR defect (A-01: contradictory legal-research provenance between the research trail
-and the governed register), a stale `2025-02-01` RED date (A-02) and a set of documentation
-defects, and it failed closed with `PENDING_CORRECTION`.
+**Round 1 (`6fb2285`)** found the implementation technically solid and self-consistent in almost
+every dimension, but with one MAJOR provenance defect (A-01), a stale RED date (A-02) and a set of
+documentation defects; it failed closed with `PENDING_CORRECTION`. **Round 2 (`e32673e`)** verified
+most corrections but found A-01 only partially fixed, A-04/A-05 claimed but not applied, and A-06
+partially fixed; it kept `PENDING_CORRECTION`. **Round 3 (`7f31db8`)** closes all four residuals and
+awards the internal-scope verdict.
 
-**Round 2 (correction commit `e32673e`)** re-verifies the corrections independently. Most are
-genuinely fixed: the CSV is now a 48-row governance mirror of `legal-sources.json` (same ids,
-statuses, URLs and retrieval dates, 0 mismatches); the D02 source table (48/48) and requirement
-table (51/51) match; dossier §2 per-source statuses match the governed register for every shared
-source (0 mismatches) and the four considered-only records are explicitly marked
-`NOT_IN_GOVERNED_REGISTER`; the stale RED date is `2025-08-01`; SCA RTS entry into force is
-`2018-03-14`; the class C claims are `INTERNAL_ONLY` with 7 internal / 35 public-prohibited
-summaries; the LGP requirement is `UNDETERMINED`; the "recital 580" citation is replaced by
-Article 71; the WEEE wording and the `pilotCoverage` typo are fixed; and D20 now states the
-reproducible 54/54 frozen result plus the CI manual-gate position. The gate at `e32673e` is
-**54/54**, the committed suite is **41/41**, and **6/6 fresh** auditor mutations are detected.
+At `7f31db8`:
 
-Four items are not cleanly closed, however:
+- the dossier's §1 key-date table (50 rows) and §3 transposition table now carry the governed
+  verification status for every shared source, no shared source carries two statuses, and the §0
+  membership arithmetic is corrected (50 research records = 46 shared + 4 considered-only; governed
+  48 = 46 shared + 2 compilation additions);
+- D19 §3.3 now states the reduced bundle-assessment schema explicitly, so the data contract and
+  the 84 bundle assessments agree;
+- D03 reproduces all 210 governed rationale/status rows verbatim, including the two BATTERIES rows;
+- `data/mc15-handoff-inputs.json` routes now match the real unprefixed registry paths.
 
-- **A-01 (MAJOR) is only partially corrected.** The dossier's §1 key-date table still labels 14
-  sources `RE_VERIFIED` and its §3 transposition table still labels 6 sources `RE_VERIFIED`,
-  including governed `CONSUMED_FROM_PREDECESSOR_EVIDENCE` sources (CRA, GPSR, DCD, UCPD,
-  eCommerce, RD 186/2016, RD 187/2016, NMEA 2000 licensing, NMEA 0183, NMEA certification). The
-  same document therefore still states two verification statuses for the same source and its own
-  note "no source carries two verification statuses" is false; its §0 membership sentence
-  (48 + 4 + 2) also contradicts its own 48 − 2 + 4 = 50 rule.
-- **A-04 was claimed but not applied:** `git diff 6fb2285..e32673e` shows D19 was not modified;
-  its §3.3 still declares fields that the 84 bundle assessments do not carry.
-- **A-05 was claimed but not applied:** D03 lines 216/237 still shorten the governed
-  WEATHER/FLEET BATTERIES rationales.
-- **A-06 is only partially fixed:** D15, `website-findings.json` and D18 now use the real
-  unprefixed routes, but `data/mc15-handoff-inputs.json` still contains `/legal/aviso-legal`,
-  `/legal/privacidad`, `/legal/cookies` and `/tienda/checkout`, none of which exists in the route
-  registry.
+The gate is **54/54**, the committed adversarial suite **41/41**, `format:check` **PASS**, and
+**5/5 fresh** auditor mutations are detected. The three commits in `f80c0f0..7f31db8` contain no
+merge commit and touch no `src/`, `public/`, `deploy/` or `.github/` file. The branch is pushed
+(remote head = `7f31db8`) and draft PR #21 is open against the MC-13 branch with `mergedAt: null`.
 
-I therefore keep **PENDING_CORRECTION** (fail-closed): the standing rule is that no internal-scope
-award is made while a MAJOR defect is open. The residual corrections are small documentation/data
-edits and do not require new legal research. Once A-01, A-04, A-05 and A-06 are actually applied
-and re-checked, the evidence supports `PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE` with programme
-status **PARTIAL** (internal legal/commercial governance PASS; external legal clearance
-`NOT_GRANTED`, as in MC-13).
+**Award:** `PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE` for the internal legal/commercial governance
+scope, with programme status **`PARTIAL`**: external legal clearance, certification, insurance,
+data licences, prices and all external decisions remain `NOT_GRANTED`/`PENDING`. No sale,
+certification, legal clearance, insurance cover, licence, price approval, commercial claim,
+publication, merge or deployment is authorised. `finalRecordCommit` stays `null` until the Lead
+records this award.
 
 ## 1. Scope and method
 
-Audited candidates: `6fb22850aa7acdcea3e4959024d93ea5adc54842` (round 1) and
-`e32673ea26fa1b115e57b02b9755d3149c3db1ea` (round 2, on top of `6fb2285`), both on
+Audited candidates: `6fb22850aa7acdcea3e4959024d93ea5adc54842` (round 1),
+`e32673ea26fa1b115e57b02b9755d3149c3db1ea` (round 2) and
+`7f31db83797f9423bbd9d0b60764f8db22fe8bbf` (round 3, the awarded candidate), on
 `feature/marea-mc14-legal-commercial-risk-claims-policy`, diffed against
 `f80c0f02ac14803e9e1539393abbb225d7f49e16`.
 
@@ -70,75 +59,78 @@ Method, in order:
 
 1. Read `AGENTS.md` and `docs/marea/execution/AGENT-OPERATING-MODEL.md` (roles, evidence
    standard, review rules, milestone status rules).
-2. Verified Git ancestry, branch state, commit count, merge-commit absence and changed-file
-   scope from Git itself, not from the delivery summary, for both candidates.
-3. Read the validator and its suite in full. Round 2 inspected the only validator change
-   (MC14-050 now accepts a `PENDING`/`PENDING_CORRECTION` review as the designed pre-record
-   state) before accepting it.
-4. Loaded every machine-readable dataset through the committed validator's JSON reader only,
-   and recomputed counts, references and document-to-data reconciliation with auditor-written
-   loops. For round 2, every changed data file was semantically diffed against `6fb2285` to
-   prove that the changes are limited to the claimed corrections (formatting-only diffs in
-   `bilingual-claims.json`, `liability-insurance.json`, `website-findings.json`,
-   `mc15-handoff-inputs.json` were ignored by the semantic comparison).
+2. Verified Git ancestry, branch state, commit count, merge-commit absence, remote head and PR
+   state, and changed-file scope from Git/GitHub themselves, not from the delivery summary.
+3. Read the validator and its suite in full. The only validator change across the three commits
+   is MC14-050 accepting a `PENDING`/`PENDING_CORRECTION` review as the designed pre-record state;
+   the auditor reviewed that diff and wrote mutation N7 to confirm a recorded false award with an
+   open MAJOR finding is still rejected.
+4. Loaded every machine-readable dataset through the committed validator's JSON reader only, and
+   recomputed counts, references and document-to-data reconciliation with auditor-written loops.
+   Every changed data file was semantically diffed against the previous candidate to prove that
+   the changes are limited to the claimed corrections (JSON re-formatting ignored).
 5. Cross-checked each delivered document against its governed dataset, including verbatim table
-   rows and rationale text, and verified all 34 website findings against the cited `file:line`
+   rows and rationale text; verified all 34 website findings against the cited `file:line`
    ranges.
 6. Re-fetched the four currency-critical external positions (CRA, PLD corrigendum, RED
    delegated-repeal, RD 188/2016 art 9.8) from official/EUR-Lex sources as an independent check.
-7. Wrote 19 independent negative controls in round 1 and 6 fresh controls in round 2 (in-memory
-   clones, no repository write) and confirmed each intended validator check fails.
-8. Did not run the Angular build, Playwright or the backup gate (long/side-effectful), and did
-   not use any credential, browser, deployment or commercial channel.
+7. Wrote 19 independent negative controls in round 1, 6 in round 2 and 5 fresh ones in round 3
+   (in-memory clones, no repository write) and confirmed each intended validator check fails.
+8. Did not run the Angular build, Playwright, backup or npm-audit gates (they write artifacts or
+   require network/browser and are outside the auditor's write scope); `format:check` was run
+   (read-only). No credential, browser, deployment or commercial channel was used.
 
 No implementation file was modified by the auditor. The only writes are this document and
 `data/review-findings.json`.
 
-## 2. Git ancestry and changed-file scope
+## 2. Git ancestry, scope and remote state
 
 | Check | Command | Result |
 |---|---|---|
-| Ancestry (round 1) | `git merge-base --is-ancestor f80c0f0 6fb2285` | exit 0 |
-| Ancestry (round 2) | `git merge-base --is-ancestor f80c0f0 e32673e` | exit 0 |
-| Branch HEAD at re-verification | `git rev-parse HEAD` | `e32673e…` (the corrected candidate) |
-| Worktree | `git status --porcelain --untracked-files=all` | clean before this re-verification record |
-| Merge commits | `git rev-list --merges f80c0f0..e32673e` | none |
-| Commits in range | `git log f80c0f0..e32673e` | 2: `6fb2285` (frozen candidate), `e32673e` (correction commit) |
-| Branch containment | `git branch --contains e32673e` | only `feature/marea-mc14-legal-commercial-risk-claims-policy` |
-| Merged to `main`? | `git merge-base --is-ancestor e32673e main` | exit 1 — not merged |
-| Total changed paths | `git diff --name-only f80c0f0 e32673e` | 44 paths: the MC-14 package (20 documents, 18 data JSON, 2 research files, D21 review), `package.json` and the two MC-14 scripts |
-| Correction diff | `git diff --name-status 6fb2285 e32673e` | 17 modified files (14 documents/data + dossier + CSV + validator) + D21 added; no source, deployment or dependency change |
+| Ancestry | `git merge-base --is-ancestor f80c0f0 7f31db8` | exit 0 |
+| Branch HEAD | `git rev-parse HEAD` | `7f31db8…` (the awarded candidate) |
+| Commits in range | `git log f80c0f0..7f31db8` | 3: `6fb2285`, `e32673e`, `7f31db8` |
+| Merge commits | `git rev-list --merges f80c0f0..7f31db8` | none |
+| Branch containment | `git branch --contains 7f31db8` | only `feature/marea-mc14-legal-commercial-risk-claims-policy` |
+| Merged to `main`? | `git merge-base --is-ancestor 7f31db8 main` | exit 1 — not merged |
+| Total changed paths | `git diff --name-only f80c0f0 7f31db8` | 45 paths: the MC-14 package, `docs/marea/execution/DECISION-LOG.md` (record artefact), `package.json` and the two MC-14 scripts |
 | Forbidden prefixes | filter of `^(src/|public/|deploy/|\.github/)` over the full diff | no match |
+| Remote head | `git ls-remote origin feature/marea-mc14-legal-commercial-risk-claims-policy` | `7f31db8…` — branch pushed, remote = local Head |
+| Draft PR | `gh pr view 21 --json …` | #21 OPEN, draft, base `feature/marea-mc13-financial-model-cashflow-break-even`, head `7f31db8`, `mergedAt: null` |
+| Worktree | `git status --porcelain --untracked-files=all` | only an uncommitted `docs/marea/execution/DECISION-LOG.md` change (Lead record work, not the auditor's) |
 
-The correction commit is a normal commit on the same branch (no merge), and it did not touch
-`src/`, `public/`, `deploy/`, `.github/`, `AGENTS.md`, the predecessor milestone data or the
-route/price/product/checkout implementation. The `package.json` change from round 1 only added
-the two `test:legal-commercial*` scripts and the Prettier file lists; no dependency changed.
-The website remains unmodified (`websiteModified = false`, `readOnly = true`,
-`publicationAuthorized = false`), no deployment occurred (`DEPLOYED = false`) and no merge
-occurred. The remote server state could not be queried without a network Git operation; locally
-there is no `feature/marea-mc14-*` remote-tracking branch.
+The correction commits are normal commits on the same branch (no merge) and touch no `src/`,
+`public/`, `deploy/`, `.github/`, `AGENTS.md`, predecessor milestone data, route, price, metadata,
+checkout or product file. `package.json` from round 1 only added the two `test:legal-commercial*`
+scripts and Prettier file lists; no dependency changed. The website remains unmodified
+(`websiteModified = false`, `readOnly = true`, `publicationAuthorized = false`), the manifest keeps
+`MERGED = false`/`DEPLOYED = false`, no deployment occurred, and PR #21 is a draft with
+`mergedAt: null`.
 
 ## 3. Data/document reconciliation and validator/test outputs
 
-### 3.1 Commands executed
+### 3.1 Commands executed at `7f31db8`
 
 | Command | Result |
 |---|---|
-| `npm run test:legal-commercial` (round 1, at `6fb2285`) | **54/54 checks passed**, exit 0 |
-| `npm run test:legal-commercial` (round 2, at `e32673e`, before this record) | **54/54 checks passed**, exit 0 |
-| `npm run test:legal-commercial:unit` (both rounds) | **41/41 tests passed**, exit 0 |
-| `node --test scripts/check-marea-legal-commercial.test.mjs` (plain) | exit 1, `EPERM` spawn — the documented Windows DSH sandbox child-process restriction. The package script already runs `node --test --test-isolation=none`, so no manual substitution was needed; the `npm run` result is authoritative. |
-| `npm run test:i18n` / `test:commerce` / `test:seo` / `test:brand` | all exit 0 at `6fb2285` (SEO: 101 sitemap URLs; brand: 21/21) |
-| `npm run test:products` / `test:bundles` / `test:market` / `test:customer-research` / `test:customer-recovery` / `test:hardware` / `test:economics` / `test:financial` | all exit 0 at `6fb2285` — 52/52, 35/35, 40/40, 62/62, 32/32, 54/54, 49/49, 77/77 inherited checks pass. The correction commit changes only MC-14 documents/data and the MC-14 validator, which these gates do not read, so they were not re-read by the correction. |
-| Auditor reconciliation loops (both rounds) | see §3.2 and §3.3 |
-| Fresh auditor mutation harness (round 2) | 6/6 independent mutations detected (N1–N6, §9.3) |
+| `npm run test:legal-commercial` | **54/54 checks passed**, exit 0 |
+| `npm run test:legal-commercial:unit` | **41/41 tests passed**, exit 0 |
+| `npm run format:check` | All matched files use Prettier code style, exit 0 |
+| `node --test scripts/check-marea-legal-commercial.test.mjs` (plain) | exit 1, `EPERM` spawn — the documented Windows DSH sandbox child-process restriction; the packaged script already uses `--test-isolation=none` |
+| Auditor reconciliation loops (all three rounds) | see §3.2 and §3.3 |
+| Fresh auditor mutation harness (round 3) | 5/5 independent mutations detected (N7–N11, §9.3) |
 
-Inherited unit suites (`node --test scripts/check-marea-*.test.mjs`) hit the same sandbox
-`EPERM` without `--test-isolation=none`; only MC-14's own suite is configured for this
-environment. That is an environment limitation, not a regression introduced by MC-14.
+Inherited website gates (`test:i18n`, `test:commerce`, `test:seo`, `test:brand`) and the inherited
+MAREA validators (products 52/52, bundles 35/35, market 40/40, customer-research 62/62,
+customer-recovery 32/32, hardware 54/54, economics 49/49, financial 77/77) were run at `6fb2285`
+and all passed; the subsequent commits change only MC-14 documents/data and the MC-14 validator,
+which those gates do not read. Inherited unit suites hit the same sandbox `EPERM` without
+`--test-isolation=none`; only MC-14's own suite is configured for this environment. The build,
+Playwright E2E, backup and npm-audit results in D22 are Lead-reported and were not independently
+re-run by the auditor (they write artifacts or need network/browser); `format:check` was
+independently re-run and passes.
 
-### 3.2 Manifest evidence counts — recomputed at `e32673e`, 23/23 match
+### 3.2 Manifest evidence counts — recomputed at `7f31db8`, 23/23 match
 
 | Count | Manifest | Recomputed |
 |---|---:|---:|
@@ -155,36 +147,38 @@ environment. That is an environment limitation, not a regression introduced by M
 | cybersecurityRequirements / lifecycleControls | 14 / 12 | 14 / 12 |
 | licensingRights / liabilityScenarios | 17 / 13 | 17 / 13 |
 | claims / prohibitedClaimCategories | 42 / 30 | 42 (A4/C3/P11/X24; 7 INTERNAL_ONLY / 35 PUBLIC_PROHIBITED) / 30 |
-| websiteFindings | 34 | 34 (6 BLOCKING, 20 MAJOR, 4 MINOR, 4 INFORMATIONAL) |
+| websiteFindings | 34 | 34 (6 BLOCKING, 20 MAJOR, 4 MINOR, 4 INFORMATIONAL; 34/34 observedText verbatim) |
 | releaseGates / releaseDocuments | 13 / 24 | 13 / 24 |
 | externalDecisions | 20 | 20 (19 PENDING, 1 OUT_OF_SCOPE_FOR_MC14) |
 | formalQuotations / executedContracts / contacts | 0 | 0 (no fabricated contact) |
 
-### 3.3 Document-to-data reconciliation at `e32673e`
+### 3.3 Document-to-data reconciliation at `7f31db8`
 
 | Document | Check | Result |
 |---|---|---|
-| D02 source register | 48/48 source rows (verification status) and 51/51 requirement rows (provision, obligation, sources, status, gate) match `legal-sources.json` | match |
-| CSV research register | 48 rows; ids = governed ids; 0 status/URL/retrieval-date mismatches vs `legal-sources.json`; status distribution 4 / 32 / 2 / 6 / 4 | match |
-| Dossier §2 | 50 per-source blocks (46 governed + 4 considered-only `NOT_IN_GOVERNED_REGISTER`); 0 verification-status mismatches for shared sources; 2 governed-only additions documented | match |
-| Dossier §1 / §3 | still 14 + 6 `RE_VERIFIED` labels for governed-CONSUMED sources; §0 membership arithmetic inconsistent | **mismatch (A-01)** |
-| D05 risk register | 95/95 risk rows match (title, severity, status, owner, gate, evidence count); domain counts sum to 95 | match |
+| D02 source register | 48/48 source rows (verification status) and 51/51 requirement rows match `legal-sources.json` | match |
+| CSV research register | 48 rows; ids = governed ids; 0 status/URL/retrieval-date mismatches; status distribution 4 / 32 / 2 / 6 / 4 | match |
+| Dossier §1 key-date table | 50 rows; 0 verification-status mismatches for shared sources; governed vocabulary used | match |
+| Dossier §2 | 50 per-source blocks (46 governed + 4 considered-only `NOT_IN_GOVERNED_REGISTER`); 0 status mismatches | match |
+| Dossier §3 transposition table | 0 `RE_VERIFIED` labels for shared sources; CRA line carries the governed status; the only `RE_VERIFIED` text left is the historical renaming note at line 35 | match |
+| Dossier §0 membership | 50 research records = 46 shared + 4 considered-only; governed 48 = 46 shared + 2 compilation additions (DB-96-9, AEMET) | match |
+| D05 risk register | 95/95 risk rows match (title, severity, status, owner, gate, evidence count) | match |
 | D16 release gates | 13/13 gate rows and 24/24 document rows match | match |
 | D17 external decisions | 20/20 decision rows match (status, owner, due date, blocking risks) | match |
-| D14 bilingual catalogue | 42/42 claim ids; every ES/EN pair appears verbatim; class/status/channel columns match, including the three C claims now `INTERNAL_ONLY` and the updated "7 internal / 35 public-prohibited" header | match |
-| D03 applicability matrix | 208/210 rationale+status rows match verbatim; 2 rows still shortened | **mismatch ×2 (A-05)** |
-| D08 / D09 / D10 / D12 | 16 obligations + 8 templates / 14 purposes / 14 requirements + 12 controls / 13 scenarios — counts and statuses match | match |
-| D04 economic operators | 11 role rows and 9 scenario rows; human labels rather than `roleId` values (traceable through D19); no role asserted as held | match |
-| D15 website inventory | all 34 findings: cited file exists, line range valid, `observedText` is a verbatim substring, `status = NOT_REMEDIATED`, `publicChangeAuthorized = false`; route labels now match the registry | match |
-| `mc15-handoff-inputs.json` routes | 4 of 8 page routes still non-existent (`/legal/*`, `/tienda/checkout`) while D18 is correct | **mismatch (A-06)** |
-| Reference integrity | auditor sweep of every known `*Id`/`*Ids` foreign-key field (including paths the validator does not check) | 0 unresolved |
+| D14 bilingual catalogue | 42/42 claim ids; every ES/EN pair appears verbatim; class/status/channel columns match; 7 internal / 35 public-prohibited header | match |
+| D03 applicability matrix | 210/210 rationale+status rows match the governed data verbatim (including WEATHER/FLEET BATTERIES) | match |
+| D19 data contract | §3.3 declares the reduced bundle-assessment schema explicitly and the 84 bundle assessments match it | match |
+| D08 / D09 / D10 / D12 | 16 obligations + 8 templates / 14 purposes / 14 requirements + 12 controls / 13 scenarios | match |
+| D04 economic operators | 11 role rows and 9 scenario rows; no role asserted as held | match |
+| D15 website inventory | 34/34 findings verbatim, `NOT_REMEDIATED`, `publicChangeAuthorized = false`; route labels match the registry | match |
+| `mc15-handoff-inputs.json` routes | /tienda, /tecnologia, /aviso-legal, /privacidad, /cookies, /carrito, /sobre-nosotros — all real registry paths | match |
+| Reference integrity | auditor sweep of every known `*Id`/`*Ids` foreign-key field | 0 unresolved |
 | Manifest counts | 23/23 recomputed counts match | match |
 
-Residual reconciliation defects are A-01 (dossier §1/§3/§0), A-04 (D19 vs bundle schema) and
-A-05 (two D03 rows); A-06 is a data/document route mismatch. The repeated-count claims inside the
-documents (D01 "48/51/95/134/42/30/34/13/24/20", D05 "CRITICAL=29, HIGH=62, MEDIUM=4", D03
-collated per-family A/C/N/U counts, D16 "13 gates, 24 documents, 0 executed", D14 "42 pairs
-(7 internal, 35 public-prohibited)") all recompute correctly.
+The repeated-count claims inside the documents (D01 "48/51/95/134/42/30/34/13/24/20", D05
+"CRITICAL=29, HIGH=62, MEDIUM=4", D03 collated per-family A/C/N/U counts, D16 "13 gates, 24
+documents, 0 executed", D14 "42 pairs (7 internal, 35 public-prohibited)") all recompute
+correctly. There is no remaining reconciliation mismatch.
 
 ## 4. Source and date verification
 
@@ -194,37 +188,32 @@ collated per-family A/C/N/U counts, D16 "13 gates, 24 documents, 0 executed", D1
 |---|---|---|
 | CRA 2024/2847 | publication 2024-11-20, in force 2024-12-10, reporting from 2026-09-11, main obligations 2027-12-11, support period ≥ 5 years (Art 13(8); updates Art 13(9)) | Confirmed: Art 71 applies the Regulation from 2027-12-11; Art 14 reporting from 2026-09-11; Art 13(8) five-year floor |
 | PLD 2024/2853 | publication 2024-11-18, entry into force 2024-12-08, transposition 2026-12-09; May 2026 corrigendum OJ L 2026/90364 (2026-05-07, CELEX 32024L2853R(01)) changes Art 2(1) so it applies to products placed on the market after 2026-12-08 | Confirmed: corrigendum text replaces Article 2(1) with "after 8 December 2026" |
-| RED DelReg 2022/30 | applied from 2025-08-01 | Confirmed. At `e32673e` the stale `2025-02-01` is gone from the governed requirement and D02 (A-02 closed) |
+| RED DelReg 2022/30 | applied from 2025-08-01 | Confirmed; the stale `2025-02-01` was corrected (A-02) |
 | DelReg 2026/339 | adopted 2026-02-16, OJ 2026-04-29, in force 2026-05-19, repeals 2022/30 with effect from 2027-12-11 | Confirmed: "Delegated Regulation (EU) 2022/30 is repealed with effect from 11 December 2027" |
 | GPSR 2023/988 | applies 2024-12-13; Art 19 online-offer information duties | Confirmed |
 | RD 188/2016 Art 9(8) | Spanish-language instructions and safety information for the Spanish market | Confirmed: "Las instrucciones e información de seguridad deberán estar al menos en castellano, si se pone el equipo en el mercado español" |
 | Consumer floor | 3-year Spanish legal guarantee, 24-month presumption, 14-day withdrawal; EU floor 2 years | Confirmed and correctly separated from the EU minimum |
-| SCA RTS 2018/389 | entry into force 2018-03-14; application 2019-09-14 | Confirmed at `e32673e` in JSON and dossier (A-03 closed) |
+| SCA RTS 2018/389 | entry into force 2018-03-14; application 2019-09-14 | Confirmed (A-03) |
 
 ### 4.2 Register quality
 
 All 48 governed sources carry `sourceId`, instrument, `officialUrl` (EUR-Lex ELI, BOE, European
 Commission, AEPD, MITECO, IHM, AEMET, NMEA, EUIPO, OEPM), jurisdiction (EU 31 / ES 14 /
 international 3), `retrievedOn` 2026-11-02 and a `verificationStatus` from the declared
-vocabulary. Requirements are complete (51/51). No requirement is marked `COMPLIANT_VERIFIED`
-(0/51); no `APPLICABLE` determination relies only on a `NOT_RETRIEVED`/`INACCESSIBLE` source; no
-`NOT_APPLICABLE` determination relies only on a weak source (0/56). The one negative determination
-that rested solely on a `NOT_RETRIEVED` source is now `UNDETERMINED` and the D02 rule is
-qualified (A-09 closed).
+vocabulary. Requirements are complete (51/51): every requirement cites an existing source with a
+retrieval date and an owner. No requirement is marked `COMPLIANT_VERIFIED` (0/51); no
+`APPLICABLE` determination relies only on a `NOT_RETRIEVED`/`INACCESSIBLE` source; no
+`NOT_APPLICABLE` determination relies only on a weak source (0/56). The one negative
+determination that rested solely on a `NOT_RETRIEVED` source is `UNDETERMINED` and the D02 rule
+is qualified (A-09).
 
-### 4.3 Defect status after round 2
+### 4.3 Provenance reconciliation (A-01, closed)
 
-- **A-01 (MAJOR, still open):** the CSV, D02 and dossier §2 now reconcile with the governed
-  register, but the dossier §1 (14 rows) and §3 (6 rows) still label governed-CONSUMED sources
-  `RE_VERIFIED`, and the §0 membership sentence is arithmetically inconsistent. Detail in §10
-  and `data/review-findings.json`.
-- **A-02 / A-03 / A-10 (MINOR, now closed):** stale RED date corrected to `2025-08-01`; SCA RTS
-  entry into force corrected to `2018-03-14`; "recital 580" replaced by Article 71.
-- Observations not raised as findings: several dossier date-table entries use OJ-publication
-  dates while the governed JSON uses adoption/publication dates (e.g. EMC/LVD, CRD, CSD/DCD,
-  UCPD, eCommerce, EUTMR, MED). These are annotation-convention differences inside the A-01
-  reconciliation scope rather than independent wrong conclusions; the four mission-critical
-  positions are correct in both layers.
+The governed register is authoritative: 48 sources, one status per source, mirrored exactly by
+the CSV (48 rows) and by dossier §1/§2/§3 and D02. The research layer's 50 records are explained
+by the documented membership rule: 46 shared with the governed register plus 4 considered-only
+records marked `NOT_IN_GOVERNED_REGISTER`; the governed register adds 2 compilation sources
+(`SRC-EU-DB-96-9`, `SRC-ES-AEMET-TERMS`). No source carries two verification statuses.
 
 ## 5. Applicability and mapping review
 
@@ -248,9 +237,9 @@ The RCD/MED/CRA/PLD boundaries are reasoned: RCD is excluded for add-on electron
 PILOT/DISPLAY component question left `UNDETERMINED`; MED is excluded with an explicit
 "not shipborne MED equipment / no wheelmark claim" rationale; CRA scope for NAV/WEATHER/FLEET is
 `CONDITIONALLY_APPLICABLE` on a scope analysis rather than asserted; PLD application is explained
-per product. One wording defect was closed in `e32673e`: the WEEE rationales now say the
-hardware "falls to be registered separately" (A-17). Two documentation residuals remain: the
-D03 rows for two rationales (A-05) and the bundle-assessment schema gap (A-04).
+per product. The WEEE wording ("falls to be registered separately") and the two BATTERIES
+rationales now match the governed data (A-17, A-05 closed), and the bundle-assessment schema gap
+is documented in D19 (A-04 closed).
 
 ### 5.2 Inherited blocker mapping (58 MC-02 + 39 MC-11 + 23 MC-12 + 14 MC-13 = 134)
 
@@ -263,8 +252,7 @@ D03 rows for two rationales (A-05) and the bundle-assessment schema gap (A-04).
   extras; all 14 inherited statuses match the predecessor register exactly.
 - 134 unique `register/inheritedId` pairs, `doubleCounted = false` everywhere, 0
   `CLOSED_VERIFIED`, 0 deletions, 0 status changes; every mapping resolves to at least one MC-14
-  risk and every risk `predecessorBlockerIds` reference resolves to a mapped record (re-verified
-  at `e32673e`; unchanged by the correction).
+  risk and every risk `predecessorBlockerIds` reference resolves to a mapped record.
 - All 10 MC-13 handoff dependencies (`MC14-DEP-01`…`MC14-DEP-10`) are consumed with area and
   amount status identical to `docs/marea/financial/data/mc14-handoff-inputs.json`; unknown
   amounts stay `null` (DEP-02/05/09), the 3% returns assumption stays labelled illustrative
@@ -311,8 +299,7 @@ maintenance costs are `UNKNOWN` (EUR 60,000 is an illustrative stress envelope, 
 reporting obligation is correctly recorded as **already applicable from 2026-09-11**, so the
 absent process is a present gap; no classification memo, conformity route, notified body, DoC,
 CE marking or reporting channel exists; `GATE-CRA-CYBERSECURITY` is `BLOCKED`. The RED-to-CRA
-transition (2022/30 repealed from 2027-12-11) is recorded correctly. These facts are unchanged
-at `e32673e`.
+transition (2022/30 repealed from 2027-12-11) is recorded correctly.
 
 ## 8. Consumer-rights review
 
@@ -324,23 +311,22 @@ may add to but not replace, restrict or shorten legal rights
 labelled `ILLUSTRATIVE_ASSUMPTION_NOT_MEASURED` and D08 §2 explains it is not a measured return
 rate or reliability evidence. B2C and B2B are separated (`sameTemplateJustified = false`).
 Consumer terms, withdrawal form and subscription terms are all `DRAFT_REQUIRED`/not approved;
-`GATE-CONSUMER-TERMS` is `BLOCKED`. These facts are unchanged at `e32673e`.
+`GATE-CONSUMER-TERMS` is `BLOCKED`.
 
 ## 9. Claims enforcement and negative tests
 
-### 9.1 Policy state (after the `e32673e` corrections)
+### 9.1 Policy state
 
 42 bilingual claim pairs (4 A / 3 C / 11 P / 24 X), 30 mandatory prohibited categories, valid
 classes and statuses. **0 claims are `PUBLIC_AUTHORIZED`**; **7 are `INTERNAL_ONLY`** (4 A plus
-the three C claims CLM-019/039/040, corrected in `e32673e`) and **35 are `PUBLIC_PROHIBITED`**.
-`publicationAuthorization = NONE`; `MAREA_PUBLIC_USE = NO_GO`;
-`TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`; no `®`/`™` appears in any non-prohibited claim (the
-only `®` is CLM-008, an X-class catalogue example of a prohibited statement, with
-`registeredSymbolAllowed = false`). The inherited MC-03 conflict is documented and resolved in
-favour of the stricter rule. All 42 claims have both locales, and ES/EN numeric tokens match
-(`24,7`/`24.7`, `1.000`/`1,000` are correctly localised, not mismatches). Every claim has an
-approver role, release gate, legal sources and risks that resolve. The policy workflow step 4
-("Until then it stays INTERNAL_ONLY") and the data are now consistent (A-08 closed).
+the three C claims CLM-019/039/040) and **35 are `PUBLIC_PROHIBITED`**. `publicationAuthorization
+= NONE`; `MAREA_PUBLIC_USE = NO_GO`; `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`; no `®`/`™`
+appears in any non-prohibited claim (the only `®` is CLM-008, an X-class catalogue example of a
+prohibited statement, with `registeredSymbolAllowed = false`). The inherited MC-03 conflict is
+documented and resolved in favour of the stricter rule. All 42 claims have both locales, and
+ES/EN numeric tokens match (`24,7`/`24.7`, `1.000`/`1,000` are correctly localised). Every claim
+has an approver role, release gate, legal sources and risks that resolve. The policy workflow
+step 4 and the data are consistent.
 
 ### 9.2 Validator enforcement
 
@@ -349,85 +335,75 @@ requirements, publication-authorisation `NONE`, frozen flags, trademark/IP statu
 blocking, AIS receive-only, FLEET no-default-hardware, price/financial/insurance prohibitions,
 consumer rights, MC-13 unknown amounts, the 134-record mapping, the brand conflict, predecessor
 verdicts, website immutability, MC-15 non-start, gate/document non-certification, external
-decisions, review-state consistency and publication/trademark coexistence. The only validator
-change in `e32673e` makes MC14-050 accept a `PENDING`/`PENDING_CORRECTION` review as the designed
-pre-record state; the auditor reviewed the diff and ran mutation N1 to confirm a pre-record PASS
-is still rejected. The suite's 40 negative controls plus the positive control pass 41/41.
+decisions, review-state consistency and publication/trademark coexistence. The suite's 40
+negative controls plus the positive control pass 41/41.
 
-### 9.3 Independent negative tests (auditor-written; 19/19 in round 1, 6/6 fresh in round 2)
+### 9.3 Independent negative tests (auditor-written; 19/19 + 6/6 + 5/5 detected)
 
 | # | Mutation | Intended check | Detected |
 |---|---|---|---|
-| M01 | Invent CE certification (DOC-01 CERTIFIED) | MC14-021 | yes |
-| M02 | Invent NMEA 2000 certification | MC14-021 | yes |
-| M03 | Approve PILOT safety gate (BLOCKED → CLEARED) | MC14-018 | yes (also 022) |
-| M04 | Offer AIS transmission in a public claim | MC14-023 | yes (also 017/019/041/052) |
-| M05 | Authorise a price claim | MC14-025 | yes (also 014/017/019/041/052) |
-| M06 | Fabricate insurance cover in a public claim | MC14-027 | yes (also 014/017/019/041/052) |
-| M07 | A-class public claim vs brand `NO_GO` | MC14-052 | yes (also 017/019/041) |
-| M08 | Contradict ES/EN numbers (2 vs 3 editions) | MC14-015 | yes |
-| M09 | Close a gate without evidence | MC14-021 | yes |
-| M10 | Mark a risk `CLOSED_VERIFIED` | MC14-039 | yes |
-| M11 | Invent source-IP clearance | MC14-020 | yes |
-| M12 | Convert an UNKNOWN amount to zero | MC14-029 | yes |
-| M13 | Write a non-ISO legal date | MC14-054 | yes |
-| M14 | Delete a mandatory document | MC14-002 | yes |
-| M15 | Delete inherited MC-02 blocker L-01 | MC14-031 | yes (also 032) |
-| M16 | Assert a DPIA was performed | MC14-053 | yes |
-| M17 | Mark a website finding `REMEDIATED` | MC14-035 | yes |
-| M18 | Write a review verdict while the manifest review is PENDING | MC14-050 | yes |
-| M19 | Publish without publication authorisation | MC14-017 | yes |
-| **N1** | **Pre-record PASS verdict while `manifest.review.status = PENDING`** | MC14-050 | **yes** |
-| **N2** | **Class C claim `PUBLIC_CONDITIONAL` with empty evidence** | MC14-042 | **yes** |
-| **N3** | **Bundle `NOT_APPLICABLE` with a trivial rationale** | MC14-010 | **yes** |
-| **N4** | **Delete a governed source still referenced** | MC14-005 | **yes** (also 006/043/048) |
-| **N5** | **`publicationAuthorization = AUTHORIZED` without an authorised claim** | MC14-017 | **yes** |
-| **N6** | **Invent NMEA certification at the corrected candidate** | MC14-021 | **yes** |
+| M01–M19 | round-1 controls: invented CE/NMEA certification, PILOT approval, AIS transmission, price authorisation, fabricated insurance, A-class public claim vs brand NO-GO, ES/EN number contradiction, gate/risk closure without evidence, source-IP clearance, unknown-to-zero, wrong date, missing document, predecessor deletion, false DPIA, remediated website finding, review-verdict inconsistency, unauthorised publication | MC14-021/018/023/025/027/052/015/020/029/054/002/031/053/035/050/017 | 19/19 |
+| N1–N6 | round-2 controls: pre-record PASS, class C conditional-public without evidence, unreasoned bundle NOT_APPLICABLE, deleted governed source, publication authorisation without a claim, invented NMEA certification | MC14-050/042/010/005/017/021 | 6/6 |
+| **N7** | **recorded PASS award while a MAJOR finding is OPEN (manifest + review set to the award)** | MC14-050 | **yes** (also MC14-002 without D23) |
+| **N8** | **class C claim `PUBLIC_AUTHORIZED` with synthetic evidence** | MC14-017 | **yes** (also 019/041/052) |
+| **N9** | **invented source-IP clearance / rights granted** | MC14-020 | **yes** |
+| **N10** | **class C claim `PUBLIC_CONDITIONAL` without evidence** | MC14-042 | **yes** |
+| **N11** | **critical risk without required evidence** | MC14-008 | **yes** |
 
-The mutations are the auditor's own; the committed test fixtures were not reused. Round-1
-M01–M19 were run at `6fb2285`; round-2 N1–N6 were run at `e32673e` after the correction. The
-detection rate confirms the controls are not merely self-consistent with the implementation's
-own tests.
+The mutations are the auditor's own; the committed test fixtures were not reused. M01–M19 were
+run at `6fb2285`, N1–N6 at `e32673e`, N7–N11 at `7f31db8`. The detection rate confirms the
+controls are not merely self-consistent with the implementation's own tests.
 
 ## 10. Findings
 
-Full evidence, required correction and re-verification steps are in
-`data/review-findings.json`. Status after round 2:
+Full evidence, correction and re-verification steps are in `data/review-findings.json`.
+Status at the awarded candidate:
 
-| ID | Class | Status after `e32673e` | Finding |
+| ID | Class | Status | Finding |
 |---|---|---|---|
-| A-01 | **MAJOR** | **OPEN (partial)** | Dossier §1 (14 rows) and §3 (6 rows) still label governed-CONSUMED sources `RE_VERIFIED`; §0 membership arithmetic inconsistent; CSV/D02/§2 now reconcile |
+| A-01 | MAJOR | CLOSED | Research provenance: dossier §1/§3 now carry the governed status for all shared sources; §0 membership arithmetic corrected |
 | A-02 | MINOR | CLOSED | Stale `2025-02-01` RED date corrected to `2025-08-01` |
 | A-03 | MINOR | CLOSED | SCA RTS entry into force corrected to `2018-03-14` |
-| A-04 | MINOR | **OPEN** | D19 §3.3 vs the 84 bundle assessments — claimed correction not applied (D19 unmodified) |
-| A-05 | MINOR | **OPEN** | D03 WEATHER/FLEET BATTERIES rationales — claimed correction not applied |
-| A-06 | MINOR | **OPEN (partial)** | D15/website-findings/D18 fixed; `mc15-handoff-inputs.json` still has `/legal/*` and `/tienda/checkout` |
-| A-07 | MINOR | CLOSED | D20 now states the reproducible 54/54 frozen result and the designed 53/54 pre-record state |
-| A-08 | MINOR | CLOSED | Class C claims now `INTERNAL_ONLY`; summaries 7 internal / 35 public-prohibited; catalogue aligned |
-| A-09 | MINOR | CLOSED | `REQ-ES-LGP-01` now `UNDETERMINED`; D02 rule qualified for conservative negative determinations |
+| A-04 | MINOR | CLOSED | D19 §3.3 now states the reduced bundle-assessment schema explicitly |
+| A-05 | MINOR | CLOSED | D03 now reproduces the governed WEATHER/FLEET BATTERIES rationales (210/210 rows match) |
+| A-06 | MINOR | CLOSED | MC-15 handoff routes now match the registry (no `/legal/*` or `/tienda/checkout`) |
+| A-07 | MINOR | CLOSED | D20 gate-result statement reproducible (54/54 frozen; designed 53/54 pre-record) |
+| A-08 | MINOR | CLOSED | Class C claims `INTERNAL_ONLY`; summaries 7 internal / 35 public-prohibited |
+| A-09 | MINOR | CLOSED | `REQ-ES-LGP-01` `UNDETERMINED`; D02 rule qualified |
 | A-10 | MINOR | CLOSED | "recital 580" replaced by Article 71 |
-| A-11 | INFORMATIONAL | CLOSED | D20 §6 discloses that CI does not execute the gate (manual gate) |
-| A-12 | INFORMATIONAL | OPEN | Validator coverage gaps (owner-role vocabulary, bundle citations, decision risk refs, no document-level false-PASS check) — accepted limitation |
+| A-11 | INFORMATIONAL | CLOSED | CI manual-gate position disclosed in D20 §6 |
+| A-12 | INFORMATIONAL | OPEN (by design) | Validator coverage gaps (owner-role vocabulary, decision risk refs, document-level false-PASS check) — accepted limitation |
 | A-13 | INFORMATIONAL | CLOSED | `pilotCoverage` typo fixed |
-| A-14 | INFORMATIONAL | OPEN | MC-11/MC-12 inherited statuses via `AS_RECORDED_IN_PREDECESSOR` sentinel — documented |
-| A-15 | INFORMATIONAL | OPEN | Record-commit artefacts still pending (manifest `PENDING`, D22/D23 absent, registry row 14 `PLANNED`) — Lead duty |
-| A-16 | INFORMATIONAL | OPEN | Remote PR/head state not observable; local evidence shows no merge/deploy/publication |
-| A-17 | INFORMATIONAL | CLOSED | WEEE wording now "falls to be registered separately" in data and D03 |
+| A-14 | INFORMATIONAL | OPEN (by design) | MC-11/MC-12 inherited statuses via `AS_RECORDED_IN_PREDECESSOR` sentinel — documented |
+| A-15 | INFORMATIONAL | OPEN (record duty) | Record-commit artefacts pending (manifest, D23, registry row 14, decision log, finalRecordCommit) — Lead duty, does not block the internal award |
+| A-16 | INFORMATIONAL | OPEN (snapshot) | Remote state now partially verified: branch pushed at `7f31db8`, draft PR #21 open, not merged |
+| A-17 | INFORMATIONAL | CLOSED | WEEE wording "falls to be registered separately" in data and D03 |
 
-Counts: **0 BLOCKING, 1 MAJOR, 3 MINOR, 4 INFORMATIONAL open; 9 closed.** A-01 is the only
-finding that prevents an internal-scope award; it is a provenance-reconciliation defect in the
-research dossier, not a change of legal conclusion.
+Counts: **0 BLOCKING, 0 open MAJOR, 0 open MINOR; 4 INFORMATIONAL open by design; 13 closed.**
+No blocking or major defect remains; the internal-scope award is issued.
 
 ### Record-commit reconciliation note
 
-At `e32673e` the gate is **54/54** because the validator now treats `manifest.review.status =
-PENDING` with a `PENDING_CORRECTION` review verdict as the designed pre-record state. The Lead's
-record commit must still reconcile `manifest.review.status`, `statusBlock.MC14_VERDICT`,
-`statusBlock.MC14_INDEPENDENT_REVIEW` and `statusBlock.MC14_INTERNAL_LEGAL_GOVERNANCE_SCOPE` with
-the awarded verdict, add D22/D23, update registry row 14 and the decision log, and record
-`finalRecordCommit`. Because the interim verdict is `PENDING_CORRECTION`, the correct sequence is:
-apply A-01/A-04/A-05/A-06, obtain re-verification of the corrected candidate, then record the
-awarded `PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE` / programme `PARTIAL`.
+Writing this award changes the pre-record gate state: with the manifest still `PENDING` and the
+review verdict now `PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE`, the unmodified validator reports
+**53/54** with only `MC14-050` failing — the designed pre-record state. The Lead's record commit
+must reconcile the manifest and may choose either path (both verified/simulated by the auditor):
+
+- **Path A (works with the frozen validator):** set `manifest.review.status`,
+  `statusBlock.MC14_VERDICT` and `statusBlock.MC14_INDEPENDENT_REVIEW` to
+  `PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE`, set `MC14_INTERNAL_LEGAL_GOVERNANCE_SCOPE` to the same,
+  set `PR_CREATED = true`, `review.frozenCandidateCommit = 7f31db8`; add D23. In-memory
+  simulation with D23 present: **54/54**.
+- **Path B (MC-13 mirror, requires amending MC14-050):** keep `statusBlock.MC14_VERDICT =
+  PARTIAL` and record `MC14_INTERNAL_LEGAL_GOVERNANCE_SCOPE = MC14_INDEPENDENT_REVIEW =
+  PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE`, with `review.status = PARTIAL`; MC14-050 must then
+  compare `MC14_INTERNAL_LEGAL_GOVERNANCE_SCOPE` with the review verdict. With the frozen
+  MC14-050, Path B reports **53/54** (`MC14-050`, plus `MC14-002` until D23 exists).
+
+Also required in the record commit: add D23 `MC-14-DELIVERY.md`; update
+`MASTER-PROMPT-REGISTRY.md` row 14 and the decision log (D-058…D-061 are staged but uncommitted at
+`7f31db8`); update `MC14-EXECUTIVE-REPORT-ES.md`'s commit list to include `7f31db8` (it currently
+stops at `e32673e`); and set `finalRecordCommit`.
 
 ## 11. Residual limitations
 
@@ -443,79 +419,93 @@ awarded `PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE` / programme `PARTIAL`.
 - The claims validator proves internal consistency and prohibited-status enforcement, not that
   wording is legally non-misleading; ambiguous claims require human legal review.
 - The auditor re-fetched the four currency-critical external positions but did not re-fetch the
-  full 48-source corpus, so the audit verifies the register's internal provenance claims (and
-  finds the dossier tables still contradictory in A-01), not the original retrieval of every
-  source.
-- The Angular build, Playwright E2E, backup/restore and performance gates were not run (long or
-  side-effectful, and no runtime code changed); the read-only inherited gates that were run at
-  `6fb2285` all pass and the correction commit does not touch their inputs.
-- The remote Git/PR state was not queried; the no-merge, no-deploy and no-publication statements
-  rest on local Git evidence and the manifest flags.
+  full 48-source corpus, so the audit verifies the register's internal provenance and its
+  reconciliation rather than the original retrieval of every source.
+- The Angular build, Playwright E2E, backup/restore, npm audit and performance gates were not run
+  by the auditor (they write artifacts or need network/browser and are outside the auditor's write
+  scope); D22's rows for build/E2E/audit are Lead-reported, while `format:check` was independently
+  re-run and passes. The inherited read-only gates were run and pass at `6fb2285`, and the later
+  commits do not touch their inputs.
+- The award is internal-scope only. It does not constitute legal clearance, a conformity
+  assessment, an insurance or licence confirmation, a price approval or a publication
+  authorisation, and the programme verdict stays PARTIAL.
 
 ## 12. Final verdict and authorisation statement
 
-**Verdict: PENDING_CORRECTION (round 2).** The round-1 corrections were re-verified: nine
-findings are closed and the machine gate (54/54), the suite (41/41), the fresh mutation harness
-(6/6), the applicability/mapping/claims/privacy/CRA/consumer reviews and the scope checks all
-still hold at `e32673e`. One MAJOR defect remains open — the research dossier still states two
-verification statuses for the same governed sources in its §1/§3 tables and its §0 membership
-arithmetic is inconsistent (A-01) — and three MINOR corrections were claimed but not applied or
-only partially applied (A-04, A-05, A-06). Per the auditing rule, no internal-scope award is
-issued while a MAJOR defect is open. Once A-01, A-04, A-05 and A-06 are applied and re-verified,
-the evidence supports `PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE` with programme status **PARTIAL**:
-the internal legal governance scope passes, while external legal clearance is `NOT_GRANTED` by
-definition (mirroring MC-13's internal PASS / programme PARTIAL).
+**Verdict: `PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE`.** The independent audit of
+`7f31db83797f9423bbd9d0b60764f8db22fe8bbf` finds the MC-14 internal legal/commercial governance
+package complete, internally reconciled and gated: Git ancestry and scope are correct (3 commits,
+0 merges, no `src/`/`public/`/`deploy/`/`.github/` change, branch pushed, draft PR #21 open and
+unmerged); the legal source register reconciles across CSV, dossier, D02 and the governed JSON
+with one status per source; the applicability matrix (9×14 + 6×14), predecessor mapping
+(134 records, 0 closed/deleted, 10 MC-13 dependencies), economic-operator, GDPR/CRA,
+consumer-rights, claims-enforcement, release-gate and machine-data layers are consistent; the
+gate is 54/54, the suite 41/41, `format:check` passes and the auditor's fresh mutations are all
+detected. **Programme status: `PARTIAL`** — the internal governance scope passes while external
+legal clearance is `NOT_GRANTED` by definition (mirroring MC-13's internal PASS / programme
+PARTIAL). The four remaining INFORMATIONAL items are accepted limitations and record-commit
+duties; none is a defect.
 
 No sign-off of external legal clearance is given or implied. **No sale, certification, legal
 clearance, insurance cover, licence, price approval, commercial claim, publication, merge or
 deployment is authorised by this review record.** MAREA remains an internal proposed brand
 (`MAREA_PUBLIC_USE = NO_GO`, `TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`), every product remains
 `NOT_FOR_SALE`, `PRICE_APPROVED = NONE`, no public claim is authorised, the website is
-unmodified, and MC-15 has not started (`MC15_STARTED = false`).
+unmodified, and MC-15 has not started (`MC15_STARTED = false`). `finalRecordCommit` remains null
+in the machine-readable record until the Lead records this award.
 
-## 13. Re-verification log — correction commit `e32673e`
+## 13. Re-verification log — round 2, correction commit `e32673e`
 
 **Trigger:** Lead corrections A-01…A-10 plus A-11 disclosure, A-13 typo and A-17 wording in
 `e32673ea26fa1b115e57b02b9755d3149c3db1ea`, on top of the frozen candidate `6fb2285`.
 
+**Verified applied and correct:** A-02 (`REQ-DELREG-01` = `2025-08-01`; only the correction note
+retains `2025-02-01`); A-03 (SCA RTS `2018-03-14`; no `2018-04-02`); A-07 (D20 reproducible 54/54
+and designed 53/54 pre-record state); A-08 (CLM-019/039/040 `INTERNAL_ONLY`; summaries 7 internal
+/ 35 public-prohibited; D14 aligned); A-09 (`REQ-ES-LGP-01` `UNDETERMINED`; D02 rule qualified);
+A-10 (Article 71; no "recital 580"); A-11 (D20 §6 CI disclosure); A-13 (`pilotCoverage`); A-17
+(WEEE "falls to be registered separately"). Provenance layer: CSV 48 rows with 0 mismatches, D02
+48/48 + 51/51, dossier §2 50 blocks with 0 mismatches. Gate 54/54, suite 41/41, 6/6 fresh
+mutations at `e32673e`.
+
+**Verified not complete at that commit (fixed in `7f31db8`):** dossier §1 (14 rows) and §3
+(6 rows) still labelled governed-CONSUMED sources `RE_VERIFIED` and §0 arithmetic was
+inconsistent (A-01); D19 was unmodified (A-04); D03 battery rows were shortened (A-05); four
+MC-15 handoff routes were non-existent (A-06). The verdict remained `PENDING_CORRECTION`.
+
+## 14. Re-verification log — round 3, residual-fix commit `7f31db8` (award)
+
+**Trigger:** residual fixes in `7f31db83797f9423bbd9d0b60764f8db22fe8bbf`, on top of `e32673e`.
+
 **Verified applied and correct:**
 
-- A-02: `REQ-DELREG-01` now says `2025-08-01` in `legal-sources.json` and D02:114; only the
-  explanatory correction note retains `2025-02-01`.
-- A-03: SRC-EU-SCA-2018-389 `effectiveDate = 2018-03-14`; dossier §1 shows `2018-03-14`; no
-  `2018-04-02` remains.
-- A-07: D20:109-117 states the reproducible `54/54` frozen result and explains the designed
-  `53/54` pre-record state.
-- A-08: CLM-019/039/040 are `INTERNAL_ONLY`; claims-policy and bilingual-claims summaries are
-  4/3/11/24 and 7 internal / 35 public-prohibited / 0 authorised; D14 header and rows aligned.
-- A-09: `REQ-ES-LGP-01` is `UNDETERMINED`; D02:21-24 qualifies the no-non-retrieved-source rule.
-- A-10: "recital 580" replaced by Article 71; no occurrence remains.
-- A-11: D20 §6 "CI position" discloses that the gate is manual and not CI-executed.
-- A-13: `pilotCoverage` present, `pilOtCoverage` absent.
-- A-17: WEEE rationales now "falls to be registered separately" in data and D03.
-- Data integrity re-checked: 0 unresolved foreign keys; D02 51/51 + 48/48; D05 95/95; D16
-  13+24; D17 20/20; D14 42/42; 34/34 website findings verbatim; manifest 23/23 counts; 42
-  claims with bilingual/numeric parity and 0 public authorised.
-- Gate `npm run test:legal-commercial` **54/54**, suite `npm run test:legal-commercial:unit`
-  **41/41**, fresh mutations **6/6** at `e32673e`.
-- Semantic diffs of every changed data file against `6fb2285` show only the claimed
-  corrections (the large line diffs in `bilingual-claims.json`, `liability-insurance.json`,
-  `website-findings.json` and `mc15-handoff-inputs.json` are JSON re-formatting; parsed-object
-  comparison confirms no other change).
+- A-01: dossier §1 key-date table 50 rows with 0 verification-status mismatches for shared
+  sources; §3 0 `RE_VERIFIED` labels for shared sources (CRA line now
+  `CONSUMED_FROM_PREDECESSOR_EVIDENCE`); the only `RE_VERIFIED` text is the historical renaming
+  note at line 35; §0 corrected to 50 = 46 shared + 4 considered-only and governed 48 = 46 shared
+  + 2 compilation additions. CLOSED.
+- A-04: D19 §3.3 explicitly declares the reduced bundle schema
+  (`instrumentId`/`status`/`rationale`/`condition`, inheriting `legalSourceIds`/`requirementIds`/
+  `evidenceRequired` from the included family assessments) and the 84 bundle assessments match
+  it. CLOSED.
+- A-05: D03 WEATHER/BATTERIES and FLEET/BATTERIES reproduce the governed rationales verbatim;
+  210/210 rationale/status rows match. CLOSED.
+- A-06: `data/mc15-handoff-inputs.json` routes are /tienda, /tecnologia, /aviso-legal,
+  /privacidad, /cookies, /carrito, /sobre-nosotros; no `/legal/*` or `/tienda/checkout`. CLOSED.
+- Re-check of previously closed items and the whole package: 0 unresolved foreign keys; manifest
+  23/23 counts; D02 51/51 + 48/48; D05 95/95; D16 13+24; D17 20/20; D14 42/42; 34/34 website
+  observedText verbatim; 42 claims, 0 numeric-parity failures, 0 public authorised; gate 54/54,
+  suite 41/41, format:check PASS, fresh mutations N7–N11 5/5.
+- Semantic diffs of every changed data file against `e32673e` show only the claimed corrections
+  (JSON re-formatting ignored by parsed-object comparison).
+- Git/remote: 3 commits from base, 0 merges, 45 changed paths all inside the package +
+  `DECISION-LOG.md` (record artefact) + `package.json` + the two scripts; no forbidden prefix;
+  branch pushed and remote head = `7f31db8`; draft PR #21 OPEN against the MC-13 branch,
+  `mergedAt: null`; `main` does not contain the candidate.
+- Record-commit state simulated in memory: with D23 present and the manifest review/status block
+  reconciled to the internal award (Path A), the gate returns 54/54; keeping
+  `MC14_VERDICT = PARTIAL` (Path B, MC-13 mirror) requires the MC14-050 recorded-state amendment
+  described in §10.
 
-**Verified NOT applied / not complete (remain open):**
-
-- A-01: dossier §1 lines 45,46,48,49,52,63,64,66,78,79,80,87,88,89 and §3 lines
-  665,666,667,668,686,689 still say `RE_VERIFIED` for governed `CONSUMED_FROM_PREDECESSOR_EVIDENCE`
-  sources; §0 line 11 arithmetic (48 + 4 + 2) contradicts the line-35 rule (48 − 2 + 4 = 50).
-- A-04: `git diff 6fb2285..e32673e -- MC14-MACHINE-READABLE-CONTRACTS.md` is empty; D19 §3.3
-  unchanged; 84/84 bundle assessments still lack the three declared fields.
-- A-05: D03:216/237 still read "WEATHER contains no battery." / "FLEET contains no batteries.".
-- A-06: `data/mc15-handoff-inputs.json`:137/146/155/162 still contain `/legal/aviso-legal`,
-  `/legal/privacidad`, `/legal/cookies`, `/tienda/checkout`; D15, `website-findings.json` and D18
-  are correct.
-
-**Git/scope at `e32673e`:** ancestry from `f80c0f0` exit 0; exactly 2 commits in range; 0 merge
-commits; 44 total changed paths, all inside the MC-14 package/scripts/`package.json`; no
-`src/`, `public/`, `deploy/`, `.github/` change; HEAD on the feature branch only; not an ancestor
-of `main`; no local remote-tracking MC-14 branch; clean worktree before this record was written.
+**Award:** `PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE`, programme status `PARTIAL`,
+`finalRecordCommit` null (Lead to record).

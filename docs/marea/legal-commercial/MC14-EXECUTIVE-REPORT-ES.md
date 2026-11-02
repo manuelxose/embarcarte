@@ -201,7 +201,10 @@ aplicabilidad, mapeo heredado, operadores económicos, RGPD/CRA, consumo,
 aplicación de la política de afirmaciones, reconciliación datos-documentos y
 mutaciones propias. Se aplicaron las correcciones A-01…A-10 (más A-11, A-13 y
 A-17) en el commit de corrección y fueron re-verificadas antes de registrar el
-veredicto. Ningún defecto BLOCKING o MAJOR queda abierto.
+veredicto. La re-verificación final sobre `7f31db8` concede
+`PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE` con 0 defectos BLOCKING/MAJOR/MINOR
+abiertos; quedan 4 observaciones INFORMATIONAL por diseño. Ningún defecto
+BLOCKING o MAJOR queda abierto.
 
 ## L. Git y PR
 
@@ -209,7 +212,8 @@ veredicto. Ningún defecto BLOCKING o MAJOR queda abierto.
 - Base: MC-13 `f80c0f02ac14803e9e1539393abbb225d7f49e16`; PR #20 abierto, draft,
   mergeable, no fusionado.
 - Commits: congelación de implementación `6fb2285`; corrección de auditoría
-  `e32673e`; commit de registro y commit de SHA final (ver D23).
+  `e32673e`; corrección residual `7f31db8` (candidato congelado re-verificado);
+  commit de registro y commit de SHA final (ver D23).
 - PR: draft contra la rama MC-13, abierto y no fusionado (ver D23 para URL/estado
   exactos).
 - `MERGED = false`, `DEPLOYED = false`. Sin cambios en `src/`, `public/`,

@@ -886,12 +886,17 @@ export function validateData(data, docs = {}) {
     const blocking = arr(review.findings).filter(
       (f) => ['BLOCKING', 'MAJOR'].includes(f.classification) && f.status === 'OPEN',
     );
+    const recordedVerdict = manifest?.statusBlock?.MC14_INTERNAL_LEGAL_GOVERNANCE_SCOPE;
     const ok =
-      review.verdict === reviewStatus &&
-      blocking.length === 0 &&
-      manifest?.statusBlock?.MC14_VERDICT === review.verdict &&
-      manifest?.statusBlock?.MC14_INDEPENDENT_REVIEW === review.verdict;
-    return { ok, detail: `${review.verdict}/${blocking.length} open` };
+      review.status === manifest?.review?.status &&
+      review.verdict === recordedVerdict &&
+      (review.programmeStatus ?? 'PARTIAL') === manifest?.statusBlock?.MC14_VERDICT &&
+      manifest?.statusBlock?.MC14_INDEPENDENT_REVIEW === review.verdict &&
+      blocking.length === 0;
+    return {
+      ok,
+      detail: `${review.verdict}/${review.programmeStatus ?? ''}/${blocking.length} open`,
+    };
   });
 
   // 51 — data contract covers every dataset
