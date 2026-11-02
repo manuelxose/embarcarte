@@ -157,9 +157,11 @@ component IDs — component IDs belong to the sourcing workstream).
   where tested; **no transmission path of any kind**; no NMEA 2000 and no NMEA 2000 claim.
 - **Power:** 12 V nominal (24 V to be confirmed); candidate range 9–32 V DC; consumption `UNKNOWN`.
 - **Safety classification:** `NON_SAFETY_RELATED` (awareness aid; not collision avoidance).
-- **Architecture:** provisional `ARCH-AIS-B`; alternatives `-A` (SDR/dev board), `-C` (custom board),
-  `-D` (certified third-party receiver module + MAREA supervisory MCU), `-E` (software/service-first
-  integration, no MAREA receiver). D9 recommends the `-E` posture for the near term.
+- **Architecture:** near-term recommendation `ARCH-AIS-E` (software/service-first: integrate
+  third-party certified receivers, defer MAREA receiver hardware; weighted 4.86); superseded
+  candidates `-B` (SOM-based receiver appliance), `-A` (SDR/dev-board receiver), `-C` (custom
+  receiver board), `-D` (certified third-party receiver module + MAREA supervisory MCU). D9
+  recommends the `-E` posture for the near term.
 - **Verification:** RF sensitivity/selectivity/spurious; EMC and RED; antenna/splitter installation
   test; decoder correctness against recorded captures; stale/lost and antenna-fault behaviour;
   per-consumer integration.
@@ -297,9 +299,10 @@ component IDs — component IDs belong to the sourcing workstream).
 - **Power:** 12/24 V nominal; candidate 9–32 V DC; consumption `UNKNOWN` — **no current or power
   figure may be published before measurement**.
 - **Safety classification:** `NON_SAFETY_RELATED`.
-- **Architecture:** provisional `ARCH-DISPLAY-B` (industrial HMI module + SOM); alternatives `-A`
-  (tablet-based), `-C` (custom screen/carrier/enclosure), `-D` (hybrid industrial panel + carrier),
-  `-E` (third-party display integration). **Size stays `SIZE_NOT_FROZEN`.**
+- **Architecture:** near-term recommendation `ARCH-DISPLAY-D` (hybrid industrial panel + MAREA
+  carrier + SOM compute; weighted 3.69, tied with `-B` and chosen for panel-supply independence);
+  alternatives `-E` (third-party display integration), `-A` (tablet-based), `-B` (industrial HMI
+  module + SOM carrier), `-C` (custom screen/carrier/enclosure). **Size stays `SIZE_NOT_FROZEN`.**
 - **Verification:** photometric sunlight and night validation; thermal/ingress/salt-fog/UV/vibration;
   wet and gloved input measurement; boot/rollback/power-loss recovery; EMC; RED only if radio;
   readable safety information in every mode.

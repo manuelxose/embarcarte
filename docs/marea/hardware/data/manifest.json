@@ -103,7 +103,7 @@
       "path": "review-findings.json",
       "owner": "qa-reviewer",
       "purpose": "Independent audit findings and verdict",
-      "recordCount": null
+      "recordCount": 9
     },
     {
       "path": "evidence-index.json",
@@ -286,7 +286,7 @@
     {
       "id": "D35",
       "path": "docs/marea/hardware/review/MC-11-REVIEW.md",
-      "status": "PENDING"
+      "status": "COMPLETE"
     },
     {
       "id": "D36",
@@ -305,5 +305,14 @@
     "distinctUrls": 104,
     "retrievedOn": "2026-11-02"
   },
-  "fixtureExclusion": "Validator fixtures are in-memory objects inside scripts/check-marea-hardware.test.mjs; no data file is mutated by a test."
+  "fixtureExclusion": "Validator fixtures are in-memory objects inside scripts/check-marea-hardware.test.mjs; no data file is mutated by a test.",
+  "reviewSummary": {
+    "verdict": "PARTIAL",
+    "reviewedCommit": "bef2f4b25e06205697bee4de9da908741c726621",
+    "findings": 9,
+    "blocking": 0,
+    "major": 1,
+    "minor": 4,
+    "informational": 4
+  }
 }
