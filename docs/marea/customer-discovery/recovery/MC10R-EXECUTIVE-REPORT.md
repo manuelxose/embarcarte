@@ -12,7 +12,7 @@
 | Base | `d1ac69a4873222fbde93dcf69c360a5e0ca1542d` (HEAD verificado de MC-10) |
 | Commits | implementación `b0a8c12`; corrección de auditoría `ea80ea5`; commit de entrega (este registro) |
 | Commit revisado | `ea80ea5927fa5b0df376bbbe71567ad8d86a3853`, re-verificado por la revisión independiente D33 |
-| PR | PR en borrador apilado contra `feature/marea-mc10-primary-customer-discovery`; su URL y metadatos verificados se incorporan tras el push en D35 §7 y en la actualización final del registro |
+| PR | PR en borrador apilado [#17](https://github.com/manuelxose/embarcarte/pull/17) contra `feature/marea-mc10-primary-customer-discovery`; `OPEN`, borrador, `MERGEABLE`, no fusionado; PR #16 intacto |
 | Veredicto de recuperación | `PASS_INTERNAL_PREPARATION_SCOPE` (solo preparación interna) |
 | MC-10 investigación primaria | `BLOCKED / NOT_EXECUTED` |
 | Autorización | `AUTH-MC10-001 = NOT_GRANTED` |

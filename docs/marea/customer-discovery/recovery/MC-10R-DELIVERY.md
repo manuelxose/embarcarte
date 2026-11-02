@@ -119,12 +119,20 @@ consent requirement or commercial restriction was weakened.
 
 ## 7. Remote verification (post-push)
 
-Recorded after the branch was pushed and the stacked draft PR opened: see the final row of the
-`MASTER-PROMPT-REGISTRY.md` entry for MC-10 and §7 of the final delivery update. Values verified with
-`git ls-remote` and `gh pr view`: remote branch head equals local HEAD; PR base is
-`feature/marea-mc10-primary-customer-discovery`; PR is `OPEN`, draft, mergeable and not merged; PR #16 is
-unchanged. (This section is completed in the final registry-update commit; no value is asserted here
-before it is verified.)
+Verified with `git ls-remote` and `gh pr view` after pushing the branch and opening the stacked draft
+PR. This closes MC10R-F06 (the offline-unverifiable remote/PR limitation) with real remote evidence:
+
+- **Remote branch:** `origin/feature/marea-mc10r-fieldwork-recovery` exists; at the delivery push its
+  head equalled local HEAD `7361f83ce9dad759855f9c63516879e0ed5ae02e`. The final evidence commit (this
+  registry/PR update) is pushed on top and its hash is the head commit published on the PR.
+- **Stacked draft PR:** [#17](https://github.com/manuelxose/embarcarte/pull/17) — title "MC-10R:
+  fieldwork recovery, ungranted AUTH rev2 and dual research-integrity gates (fieldwork BLOCKED)",
+  state `OPEN`, `isDraft = true`, base `feature/marea-mc10-primary-customer-discovery`, head
+  `feature/marea-mc10r-fieldwork-recovery`, `mergeable = MERGEABLE`, `mergedAt = null`.
+- **PR #16 untouched:** `OPEN`, draft, base `feature/marea-mc09-market-competitive-intelligence`, head
+  `d1ac69a4873222fbde93dcf69c360a5e0ca1542d`, not merged.
+- **No merge, force-push or deployment occurred.** No CI/check state is claimed beyond what GitHub
+  reports; the deterministic gates were executed locally and independently reproduced by the auditor.
 
 ## 8. Verdict separation
 
