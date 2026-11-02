@@ -1,0 +1,309 @@
+{
+  "contractId": "MAREA-MC11-HARDWARE-EVIDENCE-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-11",
+  "date": "2026-11-02",
+  "baseCommit": "67131782edaf8f3f8327ba79e5c5b4c554b137b0",
+  "branch": "feature/marea-mc11-hardware-sourcing-conformity",
+  "owner": "lead",
+  "authority": "docs/marea/hardware/data/DATA-CONTRACT.md",
+  "note": "Index of the MC-11 machine-readable evidence package. Every file is validated by scripts/check-marea-hardware.mjs; the human contract is data/DATA-CONTRACT.md. Record counts are the primary array length of each file.",
+  "files": [
+    {
+      "path": "hardware-families.json",
+      "owner": "hw-architect",
+      "purpose": "Nine canonical product families plus six bundles with hardware applicability",
+      "recordCount": 9
+    },
+    {
+      "path": "architecture-options.json",
+      "owner": "hw-architect",
+      "purpose": "33 scored candidate architectures with frozen criteria weights",
+      "recordCount": 33
+    },
+    {
+      "path": "component-register.json",
+      "owner": "sourcing-specialist",
+      "purpose": "41 real candidate components with MPN, manufacturer and datasheet state",
+      "recordCount": 41
+    },
+    {
+      "path": "supplier-register.json",
+      "owner": "sourcing-specialist",
+      "purpose": "19 real suppliers and service providers, none contacted",
+      "recordCount": 19
+    },
+    {
+      "path": "price-observations.json",
+      "owner": "sourcing-specialist",
+      "purpose": "42 classified public catalogue price observations",
+      "recordCount": 42
+    },
+    {
+      "path": "engineering-bom.json",
+      "owner": "bom-cost-engineer",
+      "purpose": "11 engineering BOMs, all INCOMPLETE with explicit unknowns",
+      "recordCount": 11
+    },
+    {
+      "path": "manufacturing-bom.json",
+      "owner": "bom-cost-engineer",
+      "purpose": "11 manufacturing BOMs, all INCOMPLETE with explicit unknowns",
+      "recordCount": 11
+    },
+    {
+      "path": "cost-scenarios.json",
+      "owner": "bom-cost-engineer",
+      "purpose": "90 LOW/BASE/HIGH volume scenarios across 6 hardware families",
+      "recordCount": 90
+    },
+    {
+      "path": "conformity-applicability.json",
+      "owner": "conformity-specialist",
+      "purpose": "22 per-configuration EU applicability rows over 11 Union acts",
+      "recordCount": 22
+    },
+    {
+      "path": "qualification-plan.json",
+      "owner": "manufacturing-engineer",
+      "purpose": "45 physical qualification tests, all NOT_EXECUTED",
+      "recordCount": 45
+    },
+    {
+      "path": "nmea-status.json",
+      "owner": "hw-architect",
+      "purpose": "Six separated NMEA questions; nothing certified or licensed",
+      "recordCount": 0
+    },
+    {
+      "path": "compatibility-requirements.json",
+      "owner": "hw-architect",
+      "purpose": "29 compatibility rows, zero tested",
+      "recordCount": 29
+    },
+    {
+      "path": "risks.json",
+      "owner": "lead",
+      "purpose": "39 consolidated risks with proposed-only mitigations",
+      "recordCount": 39
+    },
+    {
+      "path": "decisions.json",
+      "owner": "lead",
+      "purpose": "7 MC-11 decisions and gates G1-G7",
+      "recordCount": 7
+    },
+    {
+      "path": "governance-status.json",
+      "owner": "lead",
+      "purpose": "Enforced governance invariants and milestone state",
+      "recordCount": 10
+    },
+    {
+      "path": "review-findings.json",
+      "owner": "qa-reviewer",
+      "purpose": "Independent audit findings and verdict",
+      "recordCount": null
+    },
+    {
+      "path": "evidence-index.json",
+      "owner": "lead",
+      "purpose": "127 merged provenance records over 104 distinct URLs",
+      "recordCount": 127
+    }
+  ],
+  "deliverables": [
+    {
+      "id": "D1",
+      "path": "docs/marea/hardware/MC11-RESEARCH-SCOPE.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D2",
+      "path": "docs/marea/hardware/MC11-BASELINE-AND-GOVERNANCE.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D3",
+      "path": "docs/marea/hardware/architecture/MC11-PORTFOLIO-HARDWARE-MAP.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D4",
+      "path": "docs/marea/hardware/architecture/MC11-EMBEDDED-ARCHITECTURE-OPTIONS.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D5",
+      "path": "docs/marea/hardware/architecture/MC11-MARINE-ELECTRICAL-ARCHITECTURE.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D6",
+      "path": "docs/marea/hardware/architecture/MC11-PROTOCOL-AND-COMPATIBILITY-ASSESSMENT.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D7",
+      "path": "docs/marea/hardware/architecture/MC11-HUB-ARCHITECTURE.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D8",
+      "path": "docs/marea/hardware/architecture/MC11-WATCH-SENSE-ARCHITECTURE.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D9",
+      "path": "docs/marea/hardware/architecture/MC11-AIS-DISPLAY-PILOT-BOUNDARIES.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D10",
+      "path": "docs/marea/hardware/architecture/MC11-SOFTWARE-FIRST-HARDWARE-DEPENDENCIES.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D11",
+      "path": "docs/marea/hardware/sourcing/MC11-COMPONENT-AND-MANUFACTURER-LANDSCAPE.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D12",
+      "path": "docs/marea/hardware/sourcing/MC11-SUPPLIER-REGISTER.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D13",
+      "path": "docs/marea/hardware/sourcing/MC11-PUBLIC-PRICE-EVIDENCE.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D14",
+      "path": "docs/marea/hardware/sourcing/MC11-RFQ-PACKAGE-NOT-SENT.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D15",
+      "path": "docs/marea/hardware/manufacturing/MC11-MANUFACTURING-ROUTES.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D16",
+      "path": "docs/marea/hardware/manufacturing/MC11-DFM-DFT-AND-QUALITY-PLAN.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D17",
+      "path": "docs/marea/hardware/manufacturing/MC11-ENVIRONMENTAL-RELIABILITY-PLAN.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D18",
+      "path": "docs/marea/hardware/manufacturing/MC11-SERVICE-WARRANTY-AND-RMA.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D19",
+      "path": "docs/marea/hardware/economics/MC11-ENGINEERING-BOM.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D20",
+      "path": "docs/marea/hardware/economics/MC11-PRELIMINARY-MANUFACTURING-BOM.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D21",
+      "path": "docs/marea/hardware/economics/MC11-HARDWARE-COST-MODEL.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D22",
+      "path": "docs/marea/hardware/economics/MC11-COST-UNCERTAINTY-AND-VOLUME-SCENARIOS.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D23",
+      "path": "docs/marea/hardware/conformity/MC11-EU-REGULATORY-APPLICABILITY.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D24",
+      "path": "docs/marea/hardware/conformity/MC11-CE-EMC-RED-AND-TESTING-ROADMAP.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D25",
+      "path": "docs/marea/hardware/conformity/MC11-NMEA-LICENSING-AND-CERTIFICATION-ROADMAP.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D26",
+      "path": "docs/marea/hardware/conformity/MC11-CONFORMITY-BLOCKER-REGISTER.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D27",
+      "path": "docs/marea/hardware/firmware-security/MC11-DEVICE-SECURITY-AND-LIFECYCLE.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D28",
+      "path": "docs/marea/hardware/firmware-security/MC11-FIRMWARE-IP-AND-SUPPLY-CHAIN.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D29",
+      "path": "docs/marea/hardware/MC11-ENGINEERING-FEASIBILITY-ASSESSMENT.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D30",
+      "path": "docs/marea/hardware/MC11-DECISION-AND-RISK-REGISTER.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D31",
+      "path": "docs/marea/hardware/MC11-MC12-HANDOFF.md",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D32",
+      "path": "docs/marea/hardware/data/manifest.json",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D33",
+      "path": "scripts/check-marea-hardware.mjs",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D34",
+      "path": "scripts/check-marea-hardware.test.mjs",
+      "status": "COMPLETE"
+    },
+    {
+      "id": "D35",
+      "path": "docs/marea/hardware/review/MC-11-REVIEW.md",
+      "status": "PENDING"
+    },
+    {
+      "id": "D36",
+      "path": "docs/marea/hardware/MC11-EXECUTIVE-REPORT.md",
+      "status": "PENDING"
+    },
+    {
+      "id": "D37",
+      "path": "docs/marea/hardware/MC-11-DELIVERY.md",
+      "status": "PENDING"
+    }
+  ],
+  "provenanceSummary": {
+    "evidenceIds": 127,
+    "claimIds": 127,
+    "distinctUrls": 104,
+    "retrievedOn": "2026-11-02"
+  },
+  "fixtureExclusion": "Validator fixtures are in-memory objects inside scripts/check-marea-hardware.test.mjs; no data file is mutated by a test."
+}

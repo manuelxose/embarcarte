@@ -1440,6 +1440,17 @@ test('V47 rejects totals inconsistent with quantities', () => {
   );
 });
 
+test('V47 rejects a non-EUR line summed without an explicit EUR conversion', () => {
+  assertFails(
+    'V47',
+    (d) => {
+      d.ebom.boms[0].lines[1].currency = 'USD';
+      delete d.ebom.boms[0].lines[1].unitPriceEur;
+    },
+    'a USD observation is treated as EUR',
+  );
+});
+
 test('V48 rejects a critical single-source component without a sourcing risk', () => {
   assertFails(
     'V48',

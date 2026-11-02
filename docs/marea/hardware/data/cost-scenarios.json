@@ -6,6 +6,20 @@
   "owner": "bom-cost-engineer",
   "status": "COST_MODEL_NOT_APPROVED",
   "currency": "EUR",
+  "totalsCurrencyBasis": "EUR only. BOM totals use the per-line converted unitPriceEur (EUR lines: observedUnitPrice; USD lines: observedUnitPrice × 0.925925926 with fxRateId FX-USD-EUR-01). Scenario COST-01 is the base-rate EUR component figure multiplied by the explicit labelled FX case multiplier; no USD figure is ever treated as EUR.",
+  "fxConversion": {
+    "baseRateId": "FX-USD-EUR-01",
+    "baseRateEurPerUsd": 0.9259259259259258,
+    "quotedPair": "EUR/USD",
+    "quotedRate": 1.08,
+    "quotedRateDirection": "USD per EUR",
+    "caseMultipliers": {
+      "LOW": 0.947368,
+      "BASE": 1,
+      "HIGH": 1.048544
+    },
+    "note": "The base rate is the single rate recorded on BOM lines (unitPriceEur / fxRateId). LOW and HIGH scenarios apply the explicit labelled multiplier above to the base-rate EUR component cost (ASM-002/003); the recorded rate is never swapped silently, and no other category is converted."
+  },
   "vatTreatmentBasis": "Costs are modelled ex-VAT in intent only. No input price has an established VAT status (36 of 42 observations are VAT_UNKNOWN) and no purchase, import or reverse-charge position exists, so no ex-VAT total is claimed anywhere.",
   "profitabilityClaim": "NONE. No margin, mark-up or profitability figure is computed or implied.",
   "fxRates": [
@@ -58,7 +72,7 @@
   "assumptions": [
     {
       "assumptionId": "ASM-001",
-      "statement": "BASE-case FX conversion assumes 1 EUR = 1.0800 USD, i.e. 0.925925926 EUR per USD. The ECB euro reference rate could NOT be retrieved in this session: the only fetch attempt (https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) returned an HTTP 404 from the fetch endpoint. This is therefore an ENGINEERING_ASSUMPTION, not an observed rate, and must be replaced by an observed ECB reference rate before any procurement or price decision.",
+      "statement": "BASE-case FX conversion assumes 1 EUR = 1.0800 USD, i.e. 0.925925926 EUR per USD. The ECB euro reference rate could NOT be retrieved in this session: the only fetch attempt (https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) returned an HTTP 404 from the fetch endpoint. This is therefore an ENGINEERING_ASSUMPTION, not an observed rate, and must be replaced by an observed ECB reference rate before any procurement or price decision. The same base rate is recorded on every USD BOM line as unitPriceEur with fxRateId FX-USD-EUR-01, so no USD figure is ever summed as EUR.",
       "value": 0.925925926,
       "evidenceClass": "ENGINEERING_ASSUMPTION",
       "sensitivity": "HIGH",
@@ -68,21 +82,21 @@
     },
     {
       "assumptionId": "ASM-002",
-      "statement": "LOW cost case FX sensitivity assumes a stronger euro: 1 EUR = 1.1400 USD (0.877192982 EUR per USD).",
-      "value": 0.877192982,
+      "statement": "LOW cost case FX sensitivity is an explicit multiplier of 0.947368 applied to the base-rate EUR component cost (equivalent to 1 EUR = 1.1400 USD, or 0.877192982 EUR per USD). It is applied as a labelled multiplier on COST-01 and never by silently changing the rate recorded on a BOM line.",
+      "value": 0.947368,
       "evidenceClass": "ENGINEERING_ASSUMPTION",
       "sensitivity": "HIGH",
       "presentedAsFact": false,
-      "unit": "EUR per USD"
+      "unit": "multiplier on the base-rate EUR conversion"
     },
     {
       "assumptionId": "ASM-003",
-      "statement": "HIGH cost case FX sensitivity assumes a weaker euro: 1 EUR = 1.0300 USD (0.970873786 EUR per USD).",
-      "value": 0.970873786,
+      "statement": "HIGH cost case FX sensitivity is an explicit multiplier of 1.048544 applied to the base-rate EUR component cost (equivalent to 1 EUR = 1.0300 USD, or 0.970873786 EUR per USD). It is applied as a labelled multiplier on COST-01 and never by silently changing the rate recorded on a BOM line.",
+      "value": 1.048544,
       "evidenceClass": "ENGINEERING_ASSUMPTION",
       "sensitivity": "HIGH",
       "presentedAsFact": false,
-      "unit": "EUR per USD"
+      "unit": "multiplier on the base-rate EUR conversion"
     },
     {
       "assumptionId": "ASM-004",
@@ -292,7 +306,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.56,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -391,6 +405,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 9600,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -413,7 +428,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.04,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -512,6 +527,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 12000,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -534,7 +550,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.48,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -633,6 +649,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 18000,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -655,7 +672,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.56,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -754,6 +771,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 960,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -776,7 +794,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.04,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -875,6 +893,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 1200,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -897,7 +916,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.48,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -996,6 +1015,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 1800,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -1018,7 +1038,7 @@
           "categoryId": "COST-01",
           "amountEur": 7.34,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002), 8.37 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002): 8.37 USD converted to 7.75 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -1117,6 +1137,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 96,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -1139,7 +1160,7 @@
           "categoryId": "COST-01",
           "amountEur": 7.75,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002), 8.37 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002): 8.37 USD converted to 7.75 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -1238,6 +1259,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 120,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -1260,7 +1282,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.13,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002), 8.37 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002): 8.37 USD converted to 7.75 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -1359,6 +1381,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 180,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -1381,7 +1404,7 @@
           "categoryId": "COST-01",
           "amountEur": 5.19,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003), 5.92 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003): 5.92 USD converted to 5.48 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -1480,6 +1503,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 19.2,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -1502,7 +1526,7 @@
           "categoryId": "COST-01",
           "amountEur": 5.48,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003), 5.92 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003): 5.92 USD converted to 5.48 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -1601,6 +1625,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 24,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -1623,7 +1648,7 @@
           "categoryId": "COST-01",
           "amountEur": 5.75,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003), 5.92 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003): 5.92 USD converted to 5.48 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -1722,6 +1747,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 36,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -1744,7 +1770,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.08,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004), 4.66 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004): 4.66 USD converted to 4.31 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -1843,6 +1869,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 9.6,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -1865,7 +1892,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.31,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004), 4.66 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004): 4.66 USD converted to 4.31 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -1964,6 +1991,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 12,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -1986,7 +2014,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.52,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004), 4.66 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004): 4.66 USD converted to 4.31 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -2085,6 +2113,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 18,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -2107,7 +2136,7 @@
           "categoryId": "COST-01",
           "amountEur": 7.4,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001), 8.44 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001): 8.44 USD converted to 7.81 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -2206,6 +2235,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 6400,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -2228,7 +2258,7 @@
           "categoryId": "COST-01",
           "amountEur": 7.81,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001), 8.44 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001): 8.44 USD converted to 7.81 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -2327,6 +2357,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 8000,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -2349,7 +2380,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.19,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001), 8.44 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001): 8.44 USD converted to 7.81 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -2448,6 +2479,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 12000,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -2470,7 +2502,7 @@
           "categoryId": "COST-01",
           "amountEur": 7.4,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001), 8.44 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001): 8.44 USD converted to 7.81 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -2569,6 +2601,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 640,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -2591,7 +2624,7 @@
           "categoryId": "COST-01",
           "amountEur": 7.81,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001), 8.44 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001): 8.44 USD converted to 7.81 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -2690,6 +2723,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 800,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -2712,7 +2746,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.19,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001), 8.44 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001): 8.44 USD converted to 7.81 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -2811,6 +2845,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 1200,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -2833,7 +2868,7 @@
           "categoryId": "COST-01",
           "amountEur": 6.19,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002), 7.06 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002): 7.06 USD converted to 6.54 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -2932,6 +2967,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 64,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -2954,7 +2990,7 @@
           "categoryId": "COST-01",
           "amountEur": 6.54,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002), 7.06 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002): 7.06 USD converted to 6.54 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -3053,6 +3089,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 80,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -3075,7 +3112,7 @@
           "categoryId": "COST-01",
           "amountEur": 6.85,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002), 7.06 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002): 7.06 USD converted to 6.54 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -3174,6 +3211,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 120,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -3196,7 +3234,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.6,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003), 5.25 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003): 5.25 USD converted to 4.86 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -3295,6 +3333,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 12.8,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -3317,7 +3356,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.86,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003), 5.25 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003): 5.25 USD converted to 4.86 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -3416,6 +3455,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 16,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -3438,7 +3478,7 @@
           "categoryId": "COST-01",
           "amountEur": 5.09,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003), 5.25 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003): 5.25 USD converted to 4.86 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -3537,6 +3577,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 24,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -3559,7 +3600,7 @@
           "categoryId": "COST-01",
           "amountEur": 3.75,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004), 4.27 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004): 4.27 USD converted to 3.95 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -3658,6 +3699,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 6.4,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -3680,7 +3722,7 @@
           "categoryId": "COST-01",
           "amountEur": 3.95,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004), 4.27 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004): 4.27 USD converted to 3.95 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -3779,6 +3821,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 8,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -3801,7 +3844,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.15,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004), 4.27 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004): 4.27 USD converted to 3.95 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 3 of 18 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -3900,6 +3943,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 12,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -3922,7 +3966,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.88,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005), 10.13 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005): 10.13 USD converted to 9.38 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -4021,6 +4065,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 2800,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -4043,7 +4088,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.38,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005), 10.13 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005): 10.13 USD converted to 9.38 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -4142,6 +4187,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 3500,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -4164,7 +4210,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.83,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005), 10.13 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005): 10.13 USD converted to 9.38 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -4263,6 +4309,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 5250,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -4285,7 +4332,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.88,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005), 10.13 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005): 10.13 USD converted to 9.38 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -4384,6 +4431,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 280,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -4406,7 +4454,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.38,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005), 10.13 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005): 10.13 USD converted to 9.38 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -4505,6 +4553,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 350,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -4527,7 +4576,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.83,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005), 10.13 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001, PO-SENSE-001, PO-N183-005): 10.13 USD converted to 9.38 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -4626,6 +4675,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 525,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -4648,7 +4698,7 @@
           "categoryId": "COST-01",
           "amountEur": 7.41,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002, PO-N183-006), 8.45 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002, PO-N183-006): 8.45 USD converted to 7.83 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -4747,6 +4797,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 28,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -4769,7 +4820,7 @@
           "categoryId": "COST-01",
           "amountEur": 7.83,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002, PO-N183-006), 8.45 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002, PO-N183-006): 8.45 USD converted to 7.83 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -4868,6 +4919,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 35,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -4890,7 +4942,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.21,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002, PO-N183-006), 8.45 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002, PO-SENSE-002, PO-N183-006): 8.45 USD converted to 7.83 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -4989,6 +5041,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 52.5,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -5011,7 +5064,7 @@
           "categoryId": "COST-01",
           "amountEur": 5.48,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003, PO-N183-007), 6.25 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003, PO-N183-007): 6.25 USD converted to 5.79 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -5110,6 +5163,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 5.6,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -5132,7 +5186,7 @@
           "categoryId": "COST-01",
           "amountEur": 5.79,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003, PO-N183-007), 6.25 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003, PO-N183-007): 6.25 USD converted to 5.79 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -5231,6 +5285,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 7,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -5253,7 +5308,7 @@
           "categoryId": "COST-01",
           "amountEur": 6.07,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003, PO-N183-007), 6.25 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003, PO-SENSE-003, PO-N183-007): 6.25 USD converted to 5.79 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -5352,6 +5407,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 10.5,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -5374,7 +5430,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.41,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004, PO-N183-008), 5.03 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004, PO-N183-008): 5.03 USD converted to 4.65 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -5473,6 +5529,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 2.8,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -5495,7 +5552,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.65,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004, PO-N183-008), 5.03 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004, PO-N183-008): 5.03 USD converted to 4.65 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -5594,6 +5651,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 3.5,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -5616,7 +5674,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.88,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004, PO-N183-008), 5.03 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004, PO-SENSE-004, PO-N183-008): 5.03 USD converted to 4.65 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 12 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -5715,6 +5773,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 5.25,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -5737,7 +5796,7 @@
           "categoryId": "COST-01",
           "amountEur": 3.99,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001), 4.55 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001): 4.55 USD converted to 4.21 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -5836,6 +5895,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 7200,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -5858,7 +5918,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.21,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001), 4.55 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001): 4.55 USD converted to 4.21 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -5957,6 +6017,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 9000,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -5979,7 +6040,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.41,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001), 4.55 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001): 4.55 USD converted to 4.21 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -6078,6 +6139,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 13500,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -6100,7 +6162,7 @@
           "categoryId": "COST-01",
           "amountEur": 3.99,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001), 4.55 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001): 4.55 USD converted to 4.21 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -6199,6 +6261,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 720,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -6221,7 +6284,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.21,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001), 4.55 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001): 4.55 USD converted to 4.21 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -6320,6 +6383,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 900,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -6342,7 +6406,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.41,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001), 4.55 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-PWR-005, PO-PWR-001): 4.55 USD converted to 4.21 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -6441,6 +6505,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 1350,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -6463,7 +6528,7 @@
           "categoryId": "COST-01",
           "amountEur": 3.41,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002), 3.88 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002): 3.88 USD converted to 3.60 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -6562,6 +6627,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 72,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -6584,7 +6650,7 @@
           "categoryId": "COST-01",
           "amountEur": 3.6,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002), 3.88 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002): 3.88 USD converted to 3.60 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -6683,6 +6749,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 90,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -6705,7 +6772,7 @@
           "categoryId": "COST-01",
           "amountEur": 3.77,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002), 3.88 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-PWR-006, PO-PWR-002): 3.88 USD converted to 3.60 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -6804,6 +6871,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 135,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -6826,7 +6894,7 @@
           "categoryId": "COST-01",
           "amountEur": 2.41,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003), 2.75 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003): 2.75 USD converted to 2.55 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -6925,6 +6993,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 14.4,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -6947,7 +7016,7 @@
           "categoryId": "COST-01",
           "amountEur": 2.55,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003), 2.75 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003): 2.75 USD converted to 2.55 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -7046,6 +7115,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 18,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -7068,7 +7138,7 @@
           "categoryId": "COST-01",
           "amountEur": 2.67,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003), 2.75 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-PWR-007, PO-PWR-003): 2.75 USD converted to 2.55 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -7167,6 +7237,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 27,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -7189,7 +7260,7 @@
           "categoryId": "COST-01",
           "amountEur": 1.89,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004), 2.16 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004): 2.16 USD converted to 2.00 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -7288,6 +7359,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 7.2,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -7310,7 +7382,7 @@
           "categoryId": "COST-01",
           "amountEur": 2,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004), 2.16 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004): 2.16 USD converted to 2.00 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -7409,6 +7481,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 9,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -7431,7 +7504,7 @@
           "categoryId": "COST-01",
           "amountEur": 2.09,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004), 2.16 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-PWR-008, PO-PWR-004): 2.16 USD converted to 2.00 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 2 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -7530,6 +7603,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 13.5,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -7552,7 +7626,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.56,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -7651,6 +7725,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 4000,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -7673,7 +7748,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.04,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -7772,6 +7847,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 5000,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -7794,7 +7870,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.48,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -7893,6 +7969,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 7500,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -7915,7 +7992,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.56,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -8014,6 +8091,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 400,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -8036,7 +8114,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.04,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -8135,6 +8213,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 500,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -8157,7 +8236,7 @@
           "categoryId": "COST-01",
           "amountEur": 9.48,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001), 9.76 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1 (PO-N183-001, PO-N183-005, PO-PWR-005, PO-PWR-001): 9.76 USD converted to 9.04 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -8256,6 +8335,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 750,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -8278,7 +8358,7 @@
           "categoryId": "COST-01",
           "amountEur": 7.34,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002), 8.37 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002): 8.37 USD converted to 7.75 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -8377,6 +8457,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 40,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -8399,7 +8480,7 @@
           "categoryId": "COST-01",
           "amountEur": 7.75,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002), 8.37 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002): 8.37 USD converted to 7.75 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -8498,6 +8579,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 50,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -8520,7 +8602,7 @@
           "categoryId": "COST-01",
           "amountEur": 8.13,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002), 8.37 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 100 (PO-N183-002, PO-N183-006, PO-PWR-006, PO-PWR-002): 8.37 USD converted to 7.75 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -8619,6 +8701,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 75,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -8641,7 +8724,7 @@
           "categoryId": "COST-01",
           "amountEur": 5.19,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003), 5.92 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003): 5.92 USD converted to 5.48 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -8740,6 +8823,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 8,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -8762,7 +8846,7 @@
           "categoryId": "COST-01",
           "amountEur": 5.48,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003), 5.92 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003): 5.92 USD converted to 5.48 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -8861,6 +8945,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 10,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -8883,7 +8968,7 @@
           "categoryId": "COST-01",
           "amountEur": 5.75,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003), 5.92 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 250 (PO-N183-003, PO-N183-007, PO-PWR-007, PO-PWR-003): 5.92 USD converted to 5.48 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -8982,6 +9067,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 15,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -9004,7 +9090,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.08,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004), 4.66 USD converted at FX USD->EUR 0.877192982 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004): 4.66 USD converted to 4.31 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 0.947368 (ASM-002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -9103,6 +9189,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 0.947368,
       "toolingAmortizationEur": 4,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -9125,7 +9212,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.31,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004), 4.66 USD converted at FX USD->EUR 0.925925926 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004): 4.66 USD converted to 4.31 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); no FX case multiplier is applied (BASE case: multiplier 1.000000; the base rate is the only rate used). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -9224,6 +9311,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1,
       "toolingAmortizationEur": 5,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -9246,7 +9334,7 @@
           "categoryId": "COST-01",
           "amountEur": 4.52,
           "status": "KNOWN",
-          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004), 4.66 USD converted at FX USD->EUR 0.970873786 (ASM-001/002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
+          "basis": "Observed public list prices at published tier 1000 (PO-N183-004, PO-N183-008, PO-PWR-008, PO-PWR-004): 4.66 USD converted to 4.31 EUR at the base rate 0.925925926 (FX-USD-EUR-01 / ASM-001; each EBOM line records the same unitPriceEur); then multiplied by the explicit labelled FX case multiplier 1.048544 (ASM-002/003). Covers only 4 of 13 EBOM lines: NOT a component cost."
         },
         {
           "categoryId": "COST-02",
@@ -9345,6 +9433,7 @@
           "basis": "UNKNOWN: conformity/certification cost does not exist (no laboratory contacted, no public price, no quotation). Left UNKNOWN so no scenario subtracts it as zero."
         }
       ],
+      "fxMultiplier": 1.048544,
       "toolingAmortizationEur": 7.5,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -9466,6 +9555,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -9603,6 +9693,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -9740,6 +9831,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -9877,6 +9969,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -10014,6 +10107,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -10151,6 +10245,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -10288,6 +10383,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -10425,6 +10521,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -10562,6 +10659,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -10699,6 +10797,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -10836,6 +10935,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -10973,6 +11073,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -11110,6 +11211,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -11247,6 +11349,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",
@@ -11384,6 +11487,7 @@
           "basis": "UNKNOWN: no certification cost exists and no laboratory was contacted."
         }
       ],
+      "fxMultiplier": null,
       "toolingAmortizationEur": null,
       "totalEur": null,
       "totalStatus": "INCOMPLETE",

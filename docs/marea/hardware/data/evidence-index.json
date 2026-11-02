@@ -1,0 +1,2363 @@
+{
+  "contractId": "MAREA-MC11-HARDWARE-EVIDENCE-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-11",
+  "date": "2026-11-02",
+  "owner": "lead",
+  "authority": "docs/marea/hardware/data/DATA-CONTRACT.md §4.18",
+  "note": "Merged provenance index for MC-11. Every record names the exact assertion its URL supports. Duplicate URLs are permitted only with distinct claimId and assertion. Retrieval date 2026-11-02 unless the record states otherwise; inaccessible sources are recorded as such and never quoted as verified facts.",
+  "sourceShards": [
+    "architecture.json",
+    "conformity.json",
+    "economics.json",
+    "firmware-security.json",
+    "manufacturing.json",
+    "sourcing.json"
+  ],
+  "provenanceSummary": {
+    "records": 127,
+    "distinctUrls": 104,
+    "retrievedOn": "2026-11-02"
+  },
+  "evidence": [
+    {
+      "evidenceId": "EVD-MC11-001",
+      "claimId": "CLM-MC11-001",
+      "url": "https://www.nmea.org/nmea-2000.html",
+      "publisher": "National Marine Electronics Association (NMEA)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "NMEA states that all products that read and/or transmit NMEA 2000 information must be certified by NMEA, that the NMEA 2000 standard is a registered trademark, that certification is based on the NMEA 2000 License Agreement and produces a mandatory encrypted certification file that NMEA validates before certification is granted, and that use of the official NMEA 2000 logo and the term 'NMEA 2000 Certified' follows validation.",
+      "limitations": "Association webpage summary, not the licensed standard text; no fee schedule for NMEA 2000 licensing was printed on the page. Applies to entities that implement NMEA 2000; MAREA implements none.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "DISPLAY",
+        "WATCH",
+        "D6",
+        "D7",
+        "D9"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-002",
+      "claimId": "CLM-MC11-002",
+      "url": "https://www.nmea.org/nmea-2000.html",
+      "publisher": "National Marine Electronics Association (NMEA)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "NMEA states that each manufacturer must purchase a NMEA 2000 Manufacturer code issued by NMEA and that manufacturer code assignments take up to 60 days, and that a unique NMEA 2000 Product code must be purchased for each certified product.",
+      "limitations": "No fee amount is printed on the page; lead time is stated as 'up to 60 days' by the association and is not a contractual availability commitment to MAREA.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "HUB",
+        "AIS",
+        "SENSE",
+        "D6",
+        "D7"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-003",
+      "claimId": "CLM-MC11-003",
+      "url": "https://www.nmea.org/nmea-0183.html",
+      "publisher": "National Marine Electronics Association (NMEA)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "NMEA states that the NMEA 0183 Interface Standard is a copyrighted document available only from NMEA, defines a 4800-baud serial data bus with one talker and multiple listeners, is not sold through an online store, and lists prices of USD 1,150 (NMEA manufacturer member), USD 7,500 (government/industrial/testing) and USD 10,000 (consumer electronics); latest version is 4.30 and NMEA 0183-HS defines 38.4 kbaud.",
+      "limitations": "Prices are the published USD price list for the standard document, not a MAREA quotation; no purchase was made and no member discount was confirmed as available to MAREA.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "HUB",
+        "AIS",
+        "SENSE",
+        "PILOT",
+        "D6"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-004",
+      "claimId": "CLM-MC11-004",
+      "url": "https://www.nmea.org/nmea-0183.html",
+      "publisher": "National Marine Electronics Association (NMEA)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "NMEA states that an NMEA 0183 Manufacturer Mnemonic Code carries an administrative fee of USD 200, requires purchase of the standard at the applicable industry-group price, and is issued to companies only, not individuals.",
+      "limitations": "Association webpage statement; no application was filed in MC-11.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "HUB",
+        "AIS",
+        "D6"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-005",
+      "claimId": "CLM-MC11-005",
+      "url": "https://www.raspberrypi.com/news/introducing-raspberry-pi-5/",
+      "publisher": "Raspberry Pi Ltd",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Raspberry Pi 5 (launch announcement) has a 2.4 GHz quad-core 64-bit Arm Cortex-A76 CPU, VideoCore VII GPU, dual 4Kp60 HDMI, dual-band 802.11ac Wi-Fi, Bluetooth 5.0/BLE, Gigabit Ethernet, two USB 3.0 and two USB 2.0 ports, PCIe 2.0 x1, a standard 40-pin GPIO header and a real-time clock; peak power consumption is stated as around 12 W for pathological workloads and a 5 V/5 A (25 W) USB-C supply mode exists.",
+      "limitations": "Announcement webpage, not the product datasheet; no operating-temperature range, ingress rating, vibration or EMC qualification is published on that page. Peak-power wording is approximate and not a measured product figure.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "HUB",
+        "AIS",
+        "WATCH",
+        "DISPLAY",
+        "PILOT",
+        "D4",
+        "D5"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-006",
+      "claimId": "CLM-MC11-006",
+      "url": "https://www.raspberrypi.com/news/introducing-raspberry-pi-5/",
+      "publisher": "Raspberry Pi Ltd",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Raspberry Pi 5 is announced at USD 60 for the 4 GB variant and USD 80 for the 8 GB variant, plus local taxes.",
+      "limitations": "Manufacturer launch price observation (HISTORICAL_OBSERVATION class); not a distributor price, not a MAREA cost, and the page is not a current price list. No price was retrieved for a current SKU in this session.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "HUB",
+        "D4",
+        "D13"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-007",
+      "claimId": "CLM-MC11-007",
+      "url": "https://www.raspberrypi.com/news/raspberry-pi-pico-2/",
+      "publisher": "Raspberry Pi Ltd",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Raspberry Pi Pico 2 is a USD 5 microcontroller board built on RP2350 with two 150 MHz Arm Cortex-M33 cores, 520 KB on-chip SRAM, 4 MB external QSPI flash, signed-boot support, 8 KB antifuse OTP, SHA-256 acceleration and a hardware TRNG; it is form-factor and electrically compatible with the original Pico.",
+      "limitations": "Launch announcement; no absolute-maximum ratings, temperature range, ADC accuracy or EMC data on the page. RP2350 datasheet was not retrieved in this session.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "HUB",
+        "SENSE",
+        "WATCH",
+        "PILOT",
+        "DISPLAY",
+        "D4"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-008",
+      "claimId": "CLM-MC11-008",
+      "url": "https://www.raspberrypi.com/news/raspberry-pi-pico-2/",
+      "publisher": "Raspberry Pi Ltd",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "RP2350 variants are offered in a 7x7 mm QFN60 package (RP2350A, 30 GPIOs) or 10x10 mm QFN80 package (RP2350B, 48 GPIOs), with RP2354A/B adding 2 MB stacked QSPI flash; RP2350A is stated at USD 0.80 in 3,400-unit reels and USD 1.10 single-unit.",
+      "limitations": "Announcement quantity-tier prices; no current distributor price was retrieved and no MAREA purchase occurred.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "HUB",
+        "SENSE",
+        "WATCH",
+        "D4"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-009",
+      "claimId": "CLM-MC11-009",
+      "url": "https://digitalyacht.co.uk/product/ikonvert-usb/",
+      "publisher": "Digital Yacht Ltd",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The Digital Yacht iKonvert is a bidirectional NMEA 2000 to USB converter that is powered from the NMEA 2000 network, provides full galvanic isolation between the USB interface and the NMEA 2000 network, uses an FTDI USB interface, operates at 230 kbaud in RAW PGN mode and 4.8/38.4/115 kbaud in NMEA 0183 conversion modes, and can send data (for example routes and waypoints) back onto the NMEA 2000 network where the software supports it.",
+      "limitations": "Vendor product page; isolation type/voltage and transient ratings are not printed; no independent test. Used as a third-party comparator and as a design caution (bidirectional write path), never as a MAREA component.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "HUB",
+        "AIS",
+        "D6",
+        "D7"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-010",
+      "claimId": "CLM-MC11-010",
+      "url": "https://www.toradex.com/computer-on-modules/verdin-arm-family/nxp-imx-8m-plus",
+      "publisher": "Toradex AG",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The Toradex Verdin iMX8M Plus system-on-module uses an NXP i.MX 8M Plus with up to four 1.6 GHz Arm Cortex-A53 cores plus a 800 MHz Cortex-M7F, up to 8 GB LPDDR4 and up to 32 GB eMMC, two Gigabit Ethernet interfaces, 2.4/5 GHz 2x2 Wi-Fi 5 and Bluetooth 5.3 on wireless variants, two CAN FD interfaces, four UARTs, five I2C and three SPI, and is specified for -40 to +85 degrees C operation.",
+      "limitations": "Vendor module page (returned in Chinese localisation); no carrier-board or enclosure qualification, no EMC certificate, no price other than the vendor's evaluation-kit amount. Wireless variants need their own radio conformity.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "HUB",
+        "D4",
+        "D7"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-011",
+      "claimId": "CLM-MC11-011",
+      "url": "https://www.toradex.com/computer-on-modules/verdin-arm-family/nxp-imx-8m-plus",
+      "publisher": "Toradex AG",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Toradex publishes a minimum product commitment of 2036+ for the Verdin iMX8M Plus variants shown on the page and states that several variants are in mass production.",
+      "limitations": "Vendor lifecycle declaration, not a contractual supply guarantee to MAREA; variants differ (one shown as sample-only, one in development).",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "HUB",
+        "D4",
+        "D11"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-012",
+      "claimId": "CLM-MC11-012",
+      "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32h743zi.html",
+      "publisher": "STMicroelectronics",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The STM32H743ZI is an Arm Cortex-M7 microcontroller at up to 480 MHz with up to 2 MB dual-bank flash and 1 MB RAM, a 1.62 to 3.6 V application supply and I/Os, two CAN controllers with CAN FD, two watchdogs (independent and window), an RTC, three ADCs and an Ethernet MAC, with 2.95 microamps in Standby mode; ST lists the product as active and in volume production.",
+      "limitations": "Vendor product page; no price retrieved, no package-specific thermal data, no EMC data. 'In volume production' is a vendor lifecycle statement.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "PILOT",
+        "D4"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-013",
+      "claimId": "CLM-MC11-013",
+      "url": "https://www.u-blox.com/en/product/max-m10-series",
+      "publisher": "u-blox AG",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The u-blox MAX-M10 series are M10 standard-precision GNSS modules with stated power consumption below 25 mW, concurrent reception of major GNSS constellations, UART and I2C interfaces, a supply range of 1.76 to 3.6 V (5.5 V maximum on some variants) and an operating temperature range of -40 to +85 degrees C; the page lists several MAX-M10 variants including MAX-M10S-00B as 'not longer available'.",
+      "limitations": "Vendor page; availability wording indicates end-of-life on listed order codes at the time of retrieval, and no successor part number was confirmed. Sensitivity, TTFF and antenna requirements were not retrieved.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "HUB",
+        "AIS",
+        "WATCH",
+        "D4",
+        "D7"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-014",
+      "claimId": "CLM-MC11-014",
+      "url": "https://www.microchip.com/en-us/product/ATECC608B",
+      "publisher": "Microchip Technology Inc.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The Microchip ATECC608B secure element supports ECC-P256 ECDH/ECDSA, SHA-256, AES-128-GCM, protected storage for up to 16 keys/certificates, a 72-bit unique serial number, I2C or single-wire interfaces, 1.8-5.5 V IO, 2.0-5.5 V supply, 0.03 microamps typical standby and operating temperature up to 100 degrees C; the page marks the device 'Not Recommended for new designs'.",
+      "limitations": "Vendor lifecycle status is the material finding: the part is not recommended for new designs at retrieval date. No successor was confirmed from the page. Security claims are vendor claims and no evaluation was performed.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "HUB",
+        "WATCH",
+        "AIS",
+        "D4",
+        "D7"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-015",
+      "claimId": "CLM-MC11-015",
+      "url": "https://eur-lex.europa.eu/eli/dir/2014/53/oj",
+      "publisher": "European Union (EUR-Lex, Official Journal L 153, 22.5.2014)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2014-05-22",
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Directive 2014/53/EU (Radio Equipment Directive) applies to equipment that intentionally emits or receives radio waves for radio communication or radiodetermination; recital 6 states that all such equipment should fall within scope and recital 11 addresses receiver performance, so a receive-only radio receiver is radio equipment under the directive. The directive was in force with a current consolidated version dated 30/05/2026 at retrieval.",
+      "limitations": "Legal text quoted for scope only; applicability to a specific MAREA configuration, the choice of conformity-assessment module and the current consolidated wording are reserved to the conformity workstream and qualified legal review. No conformity assessment was performed.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "AIS",
+        "HUB",
+        "WATCH",
+        "DISPLAY",
+        "D6",
+        "D9"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-016",
+      "claimId": "CLM-MC11-016",
+      "url": "https://eur-lex.europa.eu/eli/dir/2014/53/oj",
+      "publisher": "European Union (EUR-Lex, Official Journal L 153, 22.5.2014)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2014-05-22",
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Annex I of Directive 2014/53/EU excludes from its scope marine equipment falling within the scope of Council Directive 96/98/EC (the predecessor Marine Equipment Directive), which is relevant when deciding whether a marine radio product is assessed under the RED or under the marine equipment regime.",
+      "limitations": "The exclusion is quoted as published in 2014 and refers to Directive 96/98/EC; the MED has since been replaced by Directive 2014/90/EU, so the exact current interaction must be confirmed by the conformity workstream and qualified review. No applicability determination is made here.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "AIS",
+        "HUB",
+        "DISPLAY",
+        "D9"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-017",
+      "claimId": "CLM-MC11-017",
+      "url": "https://www.cytron.io/p-md30c",
+      "publisher": "Cytron Technologies",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "RETRIEVAL FAILED: the Cytron product page could not be fetched in this session (HTTP 404 returned through the fetch tool, and the education-motor-driver page also failed). No Cytron parameter, voltage limit, current rating, price, lifecycle status or certification is asserted from the manufacturer. A previously cited Cytron URL in the MC-02 audit also returned HTTP 404 on 2026-10-30.",
+      "limitations": "Inaccessible source. Third-party reseller and student-datasheet excerpts encountered in search results were NOT treated as manufacturer evidence and no value from them is used in any MC-11 deliverable.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "PILOT",
+        "D4"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-018",
+      "claimId": "CLM-MC11-018",
+      "url": "https://www.raspberrypi.com/news/introducing-raspberry-pi-5/",
+      "publisher": "Raspberry Pi Ltd",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Raspberry Pi states that Raspberry Pi OS (Debian-derived) is the sole supported first-party operating system for Raspberry Pi 5, and that the board supports boot from microSD and, with the PCIe connector and adapters, other storage.",
+      "limitations": "Launch announcement wording; third-party OS support exists but is not first-party. No long-term support duration is stated on the page.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "HUB",
+        "DISPLAY",
+        "D4",
+        "D7"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-019",
+      "claimId": "CLM-MC11-019",
+      "url": "https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html",
+      "publisher": "Raspberry Pi Ltd",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "RETRIEVAL FAILED: the Raspberry Pi Pico-series documentation page could not be fetched in this session (HTTP 404 through the fetch tool). The Pico 2 datasheet PDF (pip-assets.raspberrypi.com RP-008299-DS-3) also could not be fetched. No Pico 2 electrical absolute-maximum, GPIO voltage or temperature value is asserted from the datasheet.",
+      "limitations": "Inaccessible source. Pico 2 facts used in MC-11 come only from EVD-MC11-007/EVD-MC11-008 (launch announcement).",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "HUB",
+        "SENSE",
+        "PILOT",
+        "D4"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-101",
+      "claimId": "CLM-MC11-101",
+      "url": "https://www.ti.com/product/TCAN1042HGV",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "TCAN1042HGV family page lists one data sheet (TCAN1042 Fault Protected CAN Transceiver with CAN FD datasheet, Rev. D, dated 8 Oct 2021) and states a newer version of the product is available; family description: fault-protected CAN FD transceiver.",
+      "limitations": "Datasheet document itself not retrieved (PDF blocked in environment). Page content truncated; no temperature/price table rendered on this URL.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "CMP-CAN-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-102",
+      "claimId": "CLM-MC11-102",
+      "url": "https://www.ti.com/product/TCAN1042HGV/part-details/TCAN1042HGVDR",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Orderable TCAN1042HGVDR: price USD 2.196 (1-99), 1.689 (100-249), 1.244 (250-999), 0.889 (1000+); SOIC (D) 8 pins; operating temperature -55 to 125 C; rating Automotive; MSL Level-1-260C-UNLIM; RoHS/REACH yes; features cite ISO 11898-2:2016, plus/minus 70 V bus fault (H variants), 5 Mbps (G options), -55 to 150 C junction.",
+      "limitations": "TI web price, USD, VAT treatment not stated on page. Availability not stated. Datasheet not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-CAN-01",
+        "PO-CAN-001",
+        "PO-CAN-002",
+        "PO-CAN-003",
+        "PO-CAN-004"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-103",
+      "claimId": "CLM-MC11-103",
+      "url": "https://www.ti.com/product/ISO1042/part-details/ISO1042DWV",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "ISO1042DWV isolated CAN transceiver with 70 V bus fault protection: price USD 5.589 (1-99), 4.898 (100-249), 3.434 (250-999), 2.767 (1000+); SOIC (DWV) 8 pins; operating temperature -40 to 125 C; RoHS yes; MSL Level-3-260C-168 HR.",
+      "limitations": "TI web price, USD, VAT treatment not stated. Availability not stated. Datasheet not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-CAN-02",
+        "PO-CAN-005",
+        "PO-CAN-006",
+        "PO-CAN-007",
+        "PO-CAN-008"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-104",
+      "claimId": "CLM-MC11-104",
+      "url": "https://www.ti.com/product/SN65HVD78/part-details/SN65HVD78D",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "SN65HVD78D 3.3 V half-duplex RS-485 transceiver with IEC ESD, 50 Mbps: price USD 3.529 (1-99), 3.092 (100-249), 2.168 (250-999), 1.747 (1000+); SOIC (D) 8 pins; temperature -40 to 125 C; features >15 kV HBM, >12 kV IEC 61000-4-2, receiver hysteresis 80 mV, low standby current <2 uA.",
+      "limitations": "TI web price, USD, VAT treatment not stated. Datasheet not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-N183-01",
+        "PO-N183-001",
+        "PO-N183-002",
+        "PO-N183-003",
+        "PO-N183-004"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-105",
+      "claimId": "CLM-MC11-105",
+      "url": "https://www.ti.com/product/ISO7721/part-details/ISO7721DR",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "ISO7721DR reinforced 2-channel digital isolator: price USD 1.689 (1-99), 1.395 (100-249), 1.002 (250-999), 0.754 (1000+); SOIC (D) 8 pins; temperature -55 to 125 C; 2.25-5.5 V supply; page displayed 'Out of stock' and a sample-purchase limit message on the retrieval date.",
+      "limitations": "TI web price, USD, VAT treatment not stated. Out-of-stock state is a point-in-time observation only. Datasheet not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-N183-02",
+        "PO-N183-005",
+        "PO-N183-006",
+        "PO-N183-007",
+        "PO-N183-008"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-106",
+      "claimId": "CLM-MC11-106",
+      "url": "https://www.ti.com/product/LM74700-Q1/part-details/LM74700QDBVRQ1",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "LM74700QDBVRQ1 automotive ideal-diode controller: price USD 1.951 (1-99), 1.611 (100-249), 1.158 (250-999), 0.871 (1000+); SOT-23 (DBV) 6 pins; temperature -40 to 125 C; input 3.2-65 V (3.9 V startup); -65 V reverse rating; 80 uA quiescent current; AEC-Q100 grade 1.",
+      "limitations": "TI web price, USD, VAT treatment not stated. Datasheet not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-PWR-02",
+        "PO-PWR-001",
+        "PO-PWR-002",
+        "PO-PWR-003",
+        "PO-PWR-004"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-107",
+      "claimId": "CLM-MC11-107",
+      "url": "https://www.ti.com/product/INA228/part-details/INA228AIDGSR",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "INA228AIDGSR 85 V 20-bit I2C current/voltage/power/energy/charge monitor: price USD 3.893 (1-99), 3.174 (100-249), 2.495 (250-999), 2.116 (1000+); VSSOP (DGS) 10 pins; temperature -40 to 125 C; supply 2.7-5.5 V; common-mode range -0.3 to 85 V; 2.94 MHz I2C.",
+      "limitations": "TI web price, USD, VAT treatment not stated. Datasheet not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-SENSE-02",
+        "PO-SENSE-001",
+        "PO-SENSE-002",
+        "PO-SENSE-003",
+        "PO-SENSE-004"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-108",
+      "claimId": "CLM-MC11-108",
+      "url": "https://www.ti.com/product/LMR33630/part-details/LMR33630ADDA",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "LMR33630ADDA SIMPLE SWITCHER synchronous buck: price USD 2.594 (1-99), 2.273 (100-249), 1.593 (250-999), 1.284 (1000+); HSOIC (DDA) 8 pins; temperature -40 to 125 C; input 3.8-36 V; output 1-24 V; 3 A.",
+      "limitations": "TI web price, USD, VAT treatment not stated. Datasheet not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-PWR-01",
+        "PO-PWR-005",
+        "PO-PWR-006",
+        "PO-PWR-007",
+        "PO-PWR-008"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-109",
+      "claimId": "CLM-MC11-109",
+      "url": "https://es.rs-online.com/web/p/can-interface-ics/2528889",
+      "publisher": "RS Components (RS Group plc)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "DISTRIBUTOR_WEBPAGE",
+      "supportedAssertion": "RS Spain product page for Texas Instruments TCAN1042HGVDR: unit prices 2.198 EUR (5-20), 2.09 EUR (25-45), 1.876 EUR (50-120), 1.69 EUR (125-245), 1.606 EUR (250+), VAT excluded (13.30 EUR incl. VAT for a pack of 5); packaged in packs of 5; 4,435 units available for despatch from another distribution centre; specifications list max data rate 2 Mbps, supply 4.5-5.5 V, operating temperature -55 to 150 C, ISO 11898-2, SOIC-8; 'Automotive standard: No'.",
+      "limitations": "Single-unit retail, VAT-excluded price on the Spanish storefront; pack of 5; price marked '*precio indicativo'. Manufacturer rating on TI page says Automotive for the same orderable - CONTRADICTION recorded. Distributor authorisation not stated on the retrieved page.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-CAN-01",
+        "PO-CAN-009",
+        "PO-CAN-010",
+        "PO-CAN-011",
+        "PO-CAN-012",
+        "PO-CAN-013"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-110",
+      "claimId": "CLM-MC11-110",
+      "url": "https://es.rs-online.com/web/p/circuitos-integrados-rf/1809061",
+      "publisher": "RS Components (RS Group plc)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "DISTRIBUTOR_WEBPAGE",
+      "supportedAssertion": "RS Spain product page for Nordic Semiconductor NRF52840-QIAA-R: page states 'No disponible actualmente' and that RS plans to withdraw the item from its range; specifications list QFN-73, -40 to 85 C, 2.4 GHz transceiver.",
+      "limitations": "No price displayed. Withdrawal notice applies to this distributor line only, not necessarily to manufacturer lifecycle. Manufacturer page not retrieved (nordicsemi.com unreachable in this environment).",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "CMP-BLE-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-111",
+      "claimId": "CLM-MC11-111",
+      "url": "https://www.st.com/en/microcontrollers-microprocessors/stm32h743vi.html",
+      "publisher": "STMicroelectronics N.V.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "STM32H743VI product page: 'Active Product is in volume production'; Cortex-M7 480 MHz, 2 Mbytes flash, 1 Mbyte RAM, 1.62-3.6 V supply, 2 CAN FD controllers, Ethernet MAC, 2 USB OTG, 3x 16-bit ADC, LCD-TFT controller.",
+      "limitations": "Datasheet not retrieved. Page did not render package/speed ordering table or operating temperature range in the retrieved content.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-MCU-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-112",
+      "claimId": "CLM-MC11-112",
+      "url": "https://www.microchip.com/en-us/product/ATECC608B",
+      "publisher": "Microchip Technology Inc.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "ATECC608B secure element page: Status 'Not Recommended for new designs'; ECC-P256, SHA256, AES128-GCM; single-wire and I2C interfaces; supply 2.0-5.5 V, IO 1.8-5.5 V; operating temperature up to 100 C; 16 keys; sleeps <150 nA.",
+      "limitations": "Datasheet not retrieved. No orderable package MPN rendered.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-SEC-01",
+        "CMP-SEC-02"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-113",
+      "claimId": "CLM-MC11-113",
+      "url": "https://www.microchip.com/en-us/product/MCP2518FD",
+      "publisher": "Microchip Technology Inc.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "MCP2518FD external CAN FD controller page: Status 'In Production'; CAN FD up to 8 Mbps, SPI up to 17 MHz, 2.7-5.5 V, -40 to +150 C, VDFN14/SOIC14, ISO 11898-1:2015, ASIL B capable, Linux kernel support since 5.10.",
+      "limitations": "Datasheet not retrieved. No orderable package MPN or price rendered.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-CAN-03"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-114",
+      "claimId": "CLM-MC11-114",
+      "url": "https://www.microchip.com/en-us/product/AT24CS32",
+      "publisher": "Microchip Technology Inc.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "AT24CS32 I2C EEPROM page: Status 'Not Recommended for new designs'; 32 Kbit, 1.7-5.5 V, 1 MHz, 1,000,000 erase/write cycles, 128-bit factory serial number, SOIC/TSSOP/UDFN/SOT23 packages.",
+      "limitations": "Datasheet not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-MEM-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-115",
+      "claimId": "CLM-MC11-115",
+      "url": "https://sensirion.com/products/catalog/SHT40",
+      "publisher": "Sensirion AG",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "SHT40 humidity/temperature sensor: supply 1.08-3.6 V, temperature range -40 to 125 C, I2C, typical RH accuracy 1.8 %RH, typical temperature accuracy 0.2 C, average supply current 0.4 uA, DFN 1.5x1.5x0.5 mm, factory calibration, tape and reel 2500/10000 pcs.",
+      "limitations": "Datasheet not retrieved. No price on page.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-SENSE-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-116",
+      "claimId": "CLM-MC11-116",
+      "url": "https://www.u-blox.com/en/product/max-m10-series",
+      "publisher": "u-blox AG",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "MAX-M10 series GNSS modules: every listed variant (MAX-M10M-00B, MAX-M10M-20B, MAX-M10N-00B, MAX-M10N-10B, MAX-M10S-00B) is marked 'This product is not longer available' on the retrieval date; family data: UART/I2C, supply 1.76-3.6 V or up to 5.5 V depending on variant, -40 to +85 C, LCC 9.7x10 mm.",
+      "limitations": "Lifecycle text observed on manufacturer page; no replacement part recommended on the page. Datasheet not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-GNSS-01",
+        "CMP-GNSS-02",
+        "CMP-GNSS-03"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-117",
+      "claimId": "CLM-MC11-117",
+      "url": "https://www.u-blox.com/en/product/zed-f9p-module",
+      "publisher": "u-blox AG",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "ZED-F9P module page: variants ZED-F9P-02B (not available), -04B listed at 127.42 USD, -05B listed at 127.42 USD, -15B listed at 124.62 USD; L1/L2 or L1/L5 multi-band RTK; supply 2.7-3.6 V; -40 to +85 C; 17x22x2.4 mm; UART x2/USB/SPI/I2C.",
+      "limitations": "Currency USD, VAT treatment not stated, quantity basis not stated on retrieved content, price shown on manufacturer page - not a quotation. Datasheet not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-GNSS-02",
+        "CMP-GNSS-05",
+        "CMP-GNSS-06",
+        "PO-GNSS-001",
+        "PO-GNSS-002",
+        "PO-GNSS-003"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-118",
+      "claimId": "CLM-MC11-118",
+      "url": "https://www.quectel.com/product/lte-cat-1-bis-eg915u-series/",
+      "publisher": "Quectel Wireless Solutions Co., Ltd.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "EG915U series LTE Cat 1 bis module: LGA 23.6x19.9x2.4 mm, 10 Mbps DL / 5 Mbps UL, -40 to +85 C, 3GPP Rel-13, variants EG915U-CN / -EU / -LA, compatible with EG91, EG95, BG95 and BG96 modules; optional Bluetooth and Wi-Fi scan.",
+      "limitations": "Datasheet not retrieved. Page states compatibility with BG95 series but does not verify the BG95-M3 orderable. No price on page.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-CELL-01",
+        "CMP-CELL-02",
+        "CMP-CELL-03",
+        "CMP-CELL-04"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-119",
+      "claimId": "CLM-MC11-119",
+      "url": "https://www.toradex.com/computer-on-modules/verdin-arm-family/nxp-imx-8m-plus",
+      "publisher": "Toradex AG",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Verdin iMX8M Plus SoMs: Quad 4GB IT (PN 0063), Quad 8GB Wi-Fi/BT IT (PN 0070), Quad 2GB Wi-Fi/BT IT (PN 0064) listed as mass production; 4x Cortex-A53 1.6 GHz, Cortex-M7F 800 MHz, 2x GbE, 2x CAN FD, -40 to +85 C, 69.6x35.0x6.0 mm, minimum product commitment 2036+; ITPN 0058 listed as mass production.",
+      "limitations": "Datasheet not retrieved. No component-level price published on the retrieved page (evaluation kit prices only). Supplier-rendered page returned in Chinese locale; content interpreted.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-PROC-02",
+        "CMP-PROC-04",
+        "CMP-PROC-05",
+        "CMP-PROC-06"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-120",
+      "claimId": "CLM-MC11-120",
+      "url": "https://www.variscite.com/product/system-on-module-som/cortex-a53-krait/var-som-mx8m-plus-nxp-i-mx-8m-plus/",
+      "publisher": "Variscite Ltd.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "VAR-SOM-MX8M-PLUS SoM: NXP i.MX 8M Plus, up to 1.8 GHz quad Cortex-A53 plus 800 MHz Cortex-M7, 1-8 GB LPDDR4, 8-128 GB eMMC, 3.3 V supply, 2x GbE, 2x CAN FD, industrial -40 to +85 C, 67.8x33 mm, stated 15-year availability; manufacturer states ISO 9001 and ISO 13485 certification; ordering-code template published but not a single orderable MPN.",
+      "limitations": "Datasheet not retrieved. Exact ordering code must be composed by the buyer. No price. Certification statement is manufacturer self-declared on its own page.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-PROC-03"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-121",
+      "claimId": "CLM-MC11-121",
+      "url": "https://riverdi.com/product/7-inch-lcd-display-stm32h7-rvt70hssnwn00",
+      "publisher": "Riverdi Sp. z o.o.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Riverdi RVT70HSSNWN00: 7.0 inch TFT, 1024x600, high brightness 800-1000 cd/m2, IPS, STM32H757XIH6 (2 MB flash, 1 MB RAM), input 6.0-48.0 V with reverse-polarity protection, RS232/RS485, 2 independent CAN FD, 64 Mb SDRAM, 512 Mb QSPI, TouchGFX support, customisation services.",
+      "limitations": "Datasheet not retrieved. Operating temperature range not rendered on retrieved page. No price on page.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "CMP-DISP-01",
+        "CMP-MCU-02"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-122",
+      "claimId": "CLM-MC11-122",
+      "url": "https://www.bosch-sensortec.com/en/products/motion-sensors/imus/bmi088",
+      "publisher": "Bosch Sensortec GmbH",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "BMI088 high-performance IMU product page exists and positions the part for drone/robotics with vibration robustness; numeric electrical/mechanical data table did not render in the retrieved content.",
+      "limitations": "No numeric parameters observed: temperature range, supply and interfaces are UNKNOWN from this retrieval. Datasheet not retrieved.",
+      "confidence": "LOW",
+      "affectedItems": [
+        "CMP-SENSE-03"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-123",
+      "claimId": "CLM-MC11-123",
+      "url": "https://www.espressif.com/en/products/modules/esp32-c6",
+      "publisher": "Espressif Systems (Shanghai) Co., Ltd.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Espressif ESP32-C6 module family page was retrieved; the ESP32-C6 module table did not render, so no ESP32-C6-MINI-1 orderable MPN, parameter or price was observed.",
+      "limitations": "Product content not retrievable in rendered form; MPN verification failed. Distributor page for the module was INACCESSIBLE (see EVD-MC11-135).",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "CMP-WIFI-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-124",
+      "claimId": "CLM-MC11-124",
+      "url": "https://jlcpcb.com/",
+      "publisher": "JLCPCB (Shenzhen JLC; legal entity not published on retrieved page)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "JLCPCB homepage advertises FR-4 PCBs 'From $2.00 / 5 pcs' with 'Build Time: 24 hours', PCB Assembly 'From $8.00', SMT stencil 'From $3.00', PCB layout 'From $0.46 / pin', 1-32 layers; page states ISO 27001 and ISO 27701 and PCI DSS certification for privacy/security processes; claims 21M+ orders/year, 320+ acres factory area.",
+      "limitations": "Advertised 'from' starting prices for a generic cheapest configuration, USD, VAT treatment and shipping not stated, quantity/tier conditions not detailed on the homepage; not a quotation. Capacity and quality figures are self-declared marketing.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "PO-PCB-001",
+        "PO-PCB-002",
+        "PO-PCBA-001",
+        "SUP-jlcpcb-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-125",
+      "claimId": "CLM-MC11-125",
+      "url": "https://www.pcbway.com/",
+      "publisher": "PCBWay (legal entity not published on retrieved page)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "PCBWay homepage advertises '$ 5.00 10 pcs 1-2 layer' with 'Build Time: 24 hours' and '$ 29 free shipping for 1-20pcs assembly'; claims 1-64 layers, SMT/THT assembly, 24-hour production lead time.",
+      "limitations": "Advertised starting prices, USD, VAT treatment and shipping terms not stated; not a quotation. Lead time and capacity claims are self-declared.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "PO-PCB-003",
+        "PO-PCBA-002",
+        "SUP-pcbway-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-126",
+      "claimId": "CLM-MC11-126",
+      "url": "https://aisler.net/",
+      "publisher": "AISLER (legal entity not published on retrieved page)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "AISLER homepage states PCBs manufactured in Europe 'starting at just EUR 14.20', one business day PCB manufacturing, 2/4+ layers, ENIG/HASL, assembly within 6 business days, 'Made in Europe', free worldwide shipping.",
+      "limitations": "Advertised from-price in EUR; VAT status not stated on retrieved content; configuration-dependent; not a quotation. Free shipping is a marketing statement not verified for our destination or order.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "PO-PCB-004",
+        "SUP-aisler-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-127",
+      "claimId": "CLM-MC11-127",
+      "url": "https://www.efacec.pt/",
+      "publisher": "Efacec",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Efacec Portuguese corporate website retrieved (Portuguese-language homepage featuring an energy product); establishes an operating Portuguese industrial company website, no electronics-manufacturing or certification statement observed.",
+      "limitations": "Only identity/locale validated; role as EMS and any quality certification NOT verified from this page.",
+      "confidence": "LOW",
+      "affectedItems": [
+        "SUP-efacec-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-128",
+      "claimId": "CLM-MC11-128",
+      "url": "https://www.applus.com/",
+      "publisher": "Applus+",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Applus+ corporate website retrieved (cookie notice only in rendered content); establishes a corporate web presence for the testing/inspection group, no laboratory scope, accreditation or certification statement observed.",
+      "limitations": "Only identity validated; EMC/RED test scope and accreditation NOT verified.",
+      "confidence": "LOW",
+      "affectedItems": [
+        "SUP-applus-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-129",
+      "claimId": "CLM-MC11-129",
+      "url": "https://www.fibox.com/",
+      "publisher": "Fibox Oy Ab",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Fibox corporate homepage: Finnish enclosure manufacturer since 1966, 20 product ranges, 10 manufacturing sites; group entities state ISO 9001, ISO 14001, ISO 45001 and UL 508A certification for Fibox Tested Systems (Kiuruvesi, FI) and Fibox Poland (Warsaw); custom plastic mechanics/injection moulding services.",
+      "limitations": "Certification statements apply to named group entities/sites, not to every product or site. Enclosure datasheet not retrieved (product page INACCESSIBLE). No price.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "CMP-MECH-01",
+        "SUP-fibox-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-130",
+      "claimId": "CLM-MC11-130",
+      "url": "https://www.raspberrypi.com/products/compute-module-4/",
+      "publisher": "Raspberry Pi Ltd",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. The manufacturer product page returned no retrievable content (fetch failed); no CM4 specification, orderable code, lifecycle or price was observed.",
+      "limitations": "INACCESSIBLE in this research environment. Sources of record for CM4 are therefore absent from MC-11.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "CMP-PROC-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-131",
+      "claimId": "CLM-MC11-131",
+      "url": "https://www.ti.com/lit/ds/symlink/tcan1042.pdf",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_DATASHEET",
+      "supportedAssertion": "INACCESSIBLE. Attempt to retrieve the TCAN1042 datasheet PDF failed (fetch endpoint does not return application/pdf). No datasheet content was read.",
+      "limitations": "This record documents the environment's PDF limitation; it must not be cited for any parameter. All component parameters in this shard come from manufacturer HTML product pages or distributor listings, never from a datasheet document.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-132",
+      "claimId": "CLM-MC11-132",
+      "url": "https://www.microchip.com/en-us/product/KSZ8081RNB",
+      "publisher": "Microchip Technology Inc.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "PARTIAL/INACCESSIBLE FOR PRODUCT CONTENT. The KSZ8081RNB URL resolved to a generic Microchip corporate page; no KSZ8081RNB parameter, lifecycle or orderable data was observed.",
+      "limitations": "Product content not retrieved; do not cite KSZ8081RNB parameters from this record.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "CMP-ETH-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-133",
+      "claimId": "CLM-MC11-133",
+      "url": "https://www.wiznet.io/product-item/w5500/",
+      "publisher": "WIZnet Co., Ltd.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. WIZnet W5500 product page returned no retrievable content; no parameter, lifecycle or price observed.",
+      "limitations": "INACCESSIBLE in this research environment.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "CMP-ETH-02"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-134",
+      "claimId": "CLM-MC11-134",
+      "url": "https://www.analog.com/en/products/max3490.html",
+      "publisher": "Analog Devices, Inc.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. Analog Devices MAX3490 product page returned no retrievable content; no parameter, lifecycle or price observed.",
+      "limitations": "INACCESSIBLE in this research environment.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "CMP-N183-03"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-135",
+      "claimId": "CLM-MC11-135",
+      "url": "https://www.tme.eu/en/details/esp32-c6-mini-1-h4/iot-wifi-bluetooth-modules/espressif/",
+      "publisher": "Transfer Multisort Elektronik (TME)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "DISTRIBUTOR_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. TME product page for ESP32-C6-MINI-1-H4 returned no retrievable content; the MPN and any price were NOT observed on a fetched page.",
+      "limitations": "INACCESSIBLE. The MPN was seen only in a search-engine snippet, which is not accepted as evidence in MC-11.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "CMP-WIFI-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-136",
+      "claimId": "CLM-MC11-136",
+      "url": "https://recom-power.com/en/products/dc-dc-converters/rec-p/R-78E5.0-1.0.html",
+      "publisher": "RECOM Power GmbH",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. RECOM R-78E5.0-1.0 product page returned no retrievable content; no parameter, lifecycle or price observed.",
+      "limitations": "INACCESSIBLE in this research environment.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "CMP-PWR-03"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-137",
+      "claimId": "CLM-MC11-137",
+      "url": "https://www.taoglas.com/product/gsa-8841-a-001/",
+      "publisher": "Taoglas Limited",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. Taoglas product page for the GSA.8841 antenna returned no retrievable content; no antenna parameter, price or lifecycle observed.",
+      "limitations": "INACCESSIBLE in this research environment. Antenna selection cannot be evidenced in MC-11.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "CMP-RF-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-138",
+      "claimId": "CLM-MC11-138",
+      "url": "https://www.newark.com/amphenol-ltw/m12a-05pffs-sf8001/sensor-connector-m12-rcpt-5pos/dp/05AC3206",
+      "publisher": "Newark (Avnet)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "DISTRIBUTOR_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. Newark page for the Amphenol LTW M12A-05PFFS-SF8001 connector returned no retrievable content; IP rating, temperature range and price were NOT observed on a fetched page.",
+      "limitations": "INACCESSIBLE. Ratings seen only in a search snippet are not accepted as evidence in MC-11.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "CMP-MECH-02",
+        "CMP-CAN-04"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-139",
+      "claimId": "CLM-MC11-139",
+      "url": "https://www.fibox.com/en/products/cab/pc-abs-3030",
+      "publisher": "Fibox Oy Ab",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. Fibox CAB PC/ABS product page returned no retrievable content; enclosure dimensions, IP/IK rating and material were NOT observed.",
+      "limitations": "INACCESSIBLE. The CAB range existence is asserted only by the fibre homepage navigation, not by a product page.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "CMP-MECH-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-140",
+      "claimId": "CLM-MC11-140",
+      "url": "https://www.st.com/resource/en/datasheet/stm32h743vi.pdf",
+      "publisher": "STMicroelectronics N.V.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_DATASHEET",
+      "supportedAssertion": "INACCESSIBLE. Attempt to retrieve the STM32H743VI datasheet PDF failed (fetch endpoint does not return application/pdf). No datasheet content was read.",
+      "limitations": "Environment PDF limitation; must not be cited for parameters.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-141",
+      "claimId": "CLM-MC11-141",
+      "url": "https://www.mouser.es/ProductDetail/Texas-Instruments/TCAN1042HGVDRQ1",
+      "publisher": "Mouser Electronics",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "DISTRIBUTOR_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. Mouser product page returned no retrievable content; no Mouser price, stock or MOQ was observed. Mouser is therefore NOT used as a price source in MC-11.",
+      "limitations": "INACCESSIBLE in this research environment.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-142",
+      "claimId": "CLM-MC11-142",
+      "url": "https://www.digikey.com/en/products/detail/texas-instruments/TCAN1042HGVDRQ1/6591664",
+      "publisher": "Digi-Key Electronics",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "DISTRIBUTOR_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. Digi-Key product page returned no retrievable content; no Digi-Key price, stock or MOQ was observed. Digi-Key is therefore NOT used as a price source in MC-11.",
+      "limitations": "INACCESSIBLE in this research environment.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-143",
+      "claimId": "CLM-MC11-143",
+      "url": "https://www.eu.mouser.com/ProductDetail/Texas-Instruments/TCAN1042HGVDRQ1",
+      "publisher": "Mouser Electronics",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "DISTRIBUTOR_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE. Mouser EU product page returned no retrievable content (duplicate attempt of EVD-MC11-141 with EU storefront).",
+      "limitations": "INACCESSIBLE; duplicate URL family, merged into the same finding as EVD-MC11-141.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-201",
+      "claimId": "CLM-MC11-201",
+      "url": "https://www.ti.com/product/SN65HVD78/part-details/SN65HVD78D",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The SN65HVD78D product page publishes discrete quantity-banded unit prices (bands 1, 100, 250 and 1000) and does not state VAT treatment, which supports using a published tier per volume and treating the price as VAT_UNKNOWN rather than assuming an ex-VAT basis.",
+      "limitations": "Re-citation (not an independent re-retrieval) of the source recorded in data/evidence/sourcing.json; the page was retrieved by the sourcing workstream on 2026-11-02. No page was fetched by the economics workstream and no VAT statement was found.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "EBOM-HUB-STANDARD-01-L003",
+        "EBOM-HUB-PRO-01-L003",
+        "EBOM-SENSE-WIND-01-L011",
+        "EBOM-AIS-RECEIVER-01-L003",
+        "SCN-HUB-1-BASE",
+        "SCN-AIS-1-BASE"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-202",
+      "claimId": "CLM-MC11-202",
+      "url": "https://www.ti.com/product/LMR33630/part-details/LMR33630ADDA",
+      "publisher": "Texas Instruments Incorporated",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The LMR33630ADDA product page publishes quantity-banded unit list prices but does not state VAT treatment or any volume-negotiation basis, which supports treating the observed amount as a single published list price (VAT_UNKNOWN) and refusing to extrapolate a wholesale discount from it.",
+      "limitations": "Re-citation (not an independent re-retrieval) of the source recorded in data/evidence/sourcing.json, retrieved by the sourcing workstream on 2026-11-02. The external inductor, capacitors and MOSFET that the device requires are NOT included in the published device price.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "EBOM-HUB-STANDARD-01-L005",
+        "EBOM-HUB-STANDARD-01-L006",
+        "EBOM-WATCH-CORE-01-L005",
+        "EBOM-SENSE-POWER-01-L002",
+        "EBOM-DISPLAY-7-01-L003",
+        "EBOM-AIS-RECEIVER-01-L005"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-203",
+      "claimId": "CLM-MC11-203",
+      "url": "https://es.rs-online.com/web/p/can-interface-ics/2528889",
+      "publisher": "RS Components (RS Group plc)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "DISTRIBUTOR_WEBPAGE",
+      "supportedAssertion": "The only EUR-denominated component prices observed in this programme are VAT-excluded authorised-distributor pack-of-5 prices for a CAN transceiver. No EUR-denominated price exists for any component the current engineering BOMs actually use, which is why every BOM conversion in D21 depends on a labelled USD-to-EUR assumption rather than an observed EUR price.",
+      "limitations": "Re-citation (not an independent re-retrieval) of the source recorded in data/evidence/sourcing.json, retrieved by the sourcing workstream on 2026-11-02. The component is not used in any current BOM (NMEA 2000 is BLOCKED), so this source supports an absence-of-EUR-evidence finding, not a cost line.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "D21 foreign-exchange treatment",
+        "FX-USD-EUR-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-204",
+      "claimId": "CLM-MC11-204",
+      "url": "https://jlcpcb.com/",
+      "publisher": "JLCPCB",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "The published PCB fabrication prices are advertised minimum-configuration \"from\" prices for 1-2 layer small batches, not prices for a MAREA 4-6 layer ENIG controlled-impedance board, so they cannot be adopted as a manufacturing BOM line and the PCB fabrication lines remain UNKNOWN.",
+      "limitations": "Re-citation (not an independent re-retrieval) of the source recorded in data/evidence/sourcing.json, retrieved by the sourcing workstream on 2026-11-02. Advertised prices exclude shipping, stencil/tooling for the order, test, VAT and EU handling.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "MBOM-HUB-STANDARD-01-L012",
+        "MBOM-WATCH-CORE-01-L012",
+        "COST-03"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-301",
+      "claimId": "CLM-MC11-301",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act",
+      "publisher": "European Commission — Directorate-General for Communications Networks, Content and Technology",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "The Cyber Resilience Act (Regulation (EU) 2024/2847) entered into force on 10 December 2024; its main obligations apply from 11 December 2027 and reporting obligations apply from 11 September 2026. The CRA requires manufacturers to meet mandatory cybersecurity requirements across planning, design, development and maintenance, to handle vulnerabilities during the product lifecycle, to bear the CE marking, and — for some products of particular cybersecurity relevance — to undergo third-party assessment by a notified body. The Commission published practical CRA guidance on 27 July 2026.",
+      "limitations": "Policy overview page, not the legal text. It does not enumerate Annex III 'important' product classes or the exact scope test, so downstream classification of a MAREA product as default/important/critical is NOT established by this source. Page last-update stamp displayed: 7 September 2026.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D24",
+        "D26",
+        "LEG-CRA-2024-2847"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-302",
+      "claimId": "CLM-MC11-302",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32024R2847",
+      "publisher": "Publications Office of the European Union (EUR-Lex summary)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "The CRA applies to products with digital elements placed on the EU market, regardless of where the manufacturer is based, that can connect directly or indirectly to other devices or networks, covering both hardware (IoT devices, industrial control systems, microchips) and software products (apps, computer programmes). Some products are classified 'important' or 'critical' and are subject to stricter conformity assessment; Implementing Regulation (EU) 2025/2392 sets out the technical descriptions of those categories. The CRA excludes certain products, including medical devices under specific EU regulations, aviation and automotive products under sector-specific legislation, and marine equipment within the scope of Directive 2014/90/EU. Manufacturers must perform a risk assessment, apply secure-by-default configuration and access control, provide security updates during the support period, provide documentation and a declaration of conformity, and report severe incidents and actively exploited vulnerabilities. Importers must verify manufacturer compliance; distributors must ensure CE marking and user information. Fines can reach 2.5 % of global annual turnover.",
+      "limitations": "EUR-Lex summary. The page's 'FROM WHEN DOES THE REGULATION APPLY' dates were not rendered in the retrieved copy, so no CRA date is taken from this record (dates are taken from EVD-MC11-301 and EVD-MC11-303). The exclusion for 'marine equipment within the scope of Directive 2014/90/EU' is narrow: it does not cover recreational-craft electronics that are outside the MED scope (see EVD-MC11-311).",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D24",
+        "D26",
+        "LEG-CRA-2024-2847"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-303",
+      "claimId": "CLM-MC11-303",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cra-reporting",
+      "publisher": "European Commission — Directorate-General for Communications Networks, Content and Technology",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "As of 11 September 2026 manufacturers must report actively exploited vulnerabilities and severe incidents affecting the security of products with digital elements (Article 71(2) CRA); open-source software stewards are subject to the reporting obligation of Article 24(3) from 11 December 2027. Reporting is through the CRA Single Reporting Platform established by ENISA under Article 16, operational as of 11 September 2026: an early warning within 24 hours of becoming aware, a full notification within 72 hours, a final report no later than 14 days after a corrective measure is available (actively exploited vulnerabilities) or within one month of the 72-hour notification (severe incidents). Notifications go to the CSIRT of the main establishment and simultaneously to ENISA, and are shared with other CSIRTs. A delegated act on CSIRT withholding of notifications was adopted on 11 December 2025.",
+      "limitations": "Commission guidance page, not the legal text. It describes obligations that attach to a manufacturer placing a product with digital elements on the market; MAREA places none today, so the obligations are prospective and not yet triggered.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D24",
+        "D26",
+        "LEG-CRA-2024-2847"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-304",
+      "claimId": "CLM-MC11-304",
+      "url": "https://single-market-economy.ec.europa.eu/sectors/electrical-and-electronic-engineering-industries-eei/radio-equipment-directive-red_en",
+      "publisher": "European Commission — Directorate-General for Internal Market, Industry, Entrepreneurship and SMEs",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "Radio Equipment Directive 2014/53/EU establishes a framework for placing radio equipment on the market with essential requirements for safety and health, electromagnetic compatibility and efficient use of the radio spectrum, plus additional aspects including protection of privacy and personal data, protection against fraud, interoperability, access to emergency services and the combination of radio equipment with software. It was published in the OJEU on 22 May 2014, entered into force on 11 June 2014 and applies as of 13 June 2016, with a transitional period that ended on 12 June 2017 (Article 48). Article 45 establishes the TCAM committee. Implementing Regulation (EU) 2017/1354 Article 10(10) defines a pictogram for printed product documentation. The Commission adopted Delegated Regulation (EU) 2022/30 of 29 October 2021 activating Articles 3(3)(d), (e) and (f) for certain categories of radio equipment; to avoid overlap with the CRA the Commission adopted a repealing Delegated Regulation on 16 February 2026 and Delegated Regulation (EU) 2026/339 repealing Delegated Regulation (EU) 2022/30 was published in the Official Journal on 29 April 2026, with repeal effective 11 December 2027. The initiative on Articles 3(3)(i) and 4 (reconfigurable radio systems) was abandoned by the Commission on 20 January 2026. Voluntary/unregulated certificates are not a recognised means to prove compliance; CE marking may only be affixed after testing and the prescribed conformity assessment.",
+      "limitations": "Commission policy page. It states the essential-requirement structure but does not reproduce the article text of Article 3 or the conformity-assessment modules; those are taken from the Portuguese transposition in EVD-MC11-317, which is national law implementing the same directive and is flagged as such.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D24",
+        "D26",
+        "LEG-RED-2014-53-EU"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-305",
+      "claimId": "CLM-MC11-305",
+      "url": "https://single-market-economy.ec.europa.eu/single-market/ce-marking/manufacturers_en",
+      "publisher": "European Commission — Directorate-General for Internal Market, Industry, Entrepreneurship and SMEs",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "Affixing CE marking is a six-step manufacturer process: identify the applicable directive(s)/regulation(s) and harmonised standards; verify product-specific requirements; identify whether an independent conformity assessment by a notified body is necessary (NANDO database); test the product and check conformity; draw up the EU declaration of conformity under the manufacturer's sole responsibility, including manufacturer details, essential characteristics and, where applicable, the notified body identification number and a legally binding signature; and draw up and keep the technical documentation, which must be established before submission to a notified body or at the latest when placing the first device on the market and kept for the period specified in the applicable act. The CE marking must be affixed visibly and legibly on the product or, if not possible, on the packaging and accompanying documents, with components of the same vertical dimension not smaller than 5 mm; where a notified body was involved its identification number must also be displayed; CE marking must not be affixed to products outside the scope of a CE-marking act.",
+      "limitations": "Horizontal Commission guidance; it does not determine which acts apply to a given MAREA configuration — that is the object of D23 and remains subject to qualified review.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D24",
+        "D26"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-306",
+      "claimId": "CLM-MC11-306",
+      "url": "https://single-market-economy.ec.europa.eu/sectors/electrical-and-electronic-engineering-industries-eei/low-voltage-directive-lvd_en",
+      "publisher": "European Commission — Directorate-General for Internal Market, Industry, Entrepreneurship and SMEs",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "Low Voltage Directive 2014/35/EU covers health and safety risks of electrical equipment operating with an input or output voltage between 50 and 1000 V alternating current and between 75 and 1500 V direct current, and has been applicable since 20 April 2016. The directive does not require notified bodies to assess products; the manufacturer alone is responsible for determining compliance through the conformity assessment procedures. The page records that the (former) general product safety directive covers consumer goods below those voltage thresholds.",
+      "limitations": "Commission policy page. Voltage thresholds are stated for input OR output voltage, which matters for a bundled mains power supply; the page does not analyse 12 V DC marine systems, so the non-applicability reasoning in D23 is an engineering/legal reading flagged for qualified review.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D24",
+        "LEG-LVD-2014-35-EU"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-307",
+      "claimId": "CLM-MC11-307",
+      "url": "https://single-market-economy.ec.europa.eu/sectors/electrical-and-electronic-engineering-industries-eei/electromagnetic-compatibility-emc-directive_en",
+      "publisher": "European Commission — Directorate-General for Internal Market, Industry, Entrepreneurship and SMEs",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "Electromagnetic Compatibility Directive 2014/30/EU was published in the Official Journal L 96/79 of 29 March 2014 and repealed Directive 2004/108/EC as from 20 April 2016. It limits electromagnetic emissions from equipment so that, when used as intended, it does not disturb radio and telecommunication and other equipment, and governs immunity. It applies to equipment (apparatus and fixed installations) when placed on the market and/or taken into service, and requires good engineering practice for fixed installations. Harmonised standards must be referenced in the OJEU to give presumption of conformity; notified bodies are listed in NANDO.",
+      "limitations": "Commission policy page. It does not reproduce Article 2 (scope exclusions), so the exclusion of radio equipment covered by the RED is evidenced instead through the Portuguese transposition (EVD-MC11-317, Article 2(2)) and through the RED's own EMC essential requirement (EVD-MC11-304).",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D24",
+        "LEG-EMC-2014-30-EU"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-308",
+      "claimId": "CLM-MC11-308",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32023R0988",
+      "publisher": "Publications Office of the European Union (EUR-Lex summary)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Regulation (EU) 2023/988 (General Product Safety Regulation) applies to products made available on the EU market that are not covered by other specific EU product safety legislation, and to risks and aspects not already covered by such legislation; it applies to new, used, repaired or reconditioned products and to all sales channels including distance selling. It sets a general safety requirement assessed against product characteristics, effect on other products, labelling and warnings, categories of consumers and the product's cybersecurity features and evolving/learning functionalities. It requires a responsible economic operator in the EU for each product (EU manufacturer, importer, authorised representative or fulfilment service provider); manufacturers must ensure safety by design, carry out internal risk analyses and technical documentation, inform consumers and authorities through the Safety Business Gateway, provide product safety and traceability information, keep a complaints register, provide product information on request for 10 years and supply-chain traceability for 6 years, and run recalls with a mandatory recall notice template and at least two remedies. Importers and distributors have verification and escalation duties.",
+      "limitations": "EUR-Lex summary. The application date was not rendered in the retrieved copy; the 13 December 2024 application date recorded in D23 is flagged as requiring qualified confirmation. The regulation does not require CE marking.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D24",
+        "D26",
+        "LEG-GPSR-2023-988"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-309",
+      "claimId": "CLM-MC11-309",
+      "url": "https://environment.ec.europa.eu/topics/waste-and-recycling/batteries_en",
+      "publisher": "European Commission — Directorate-General for Environment",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "The EU batteries framework is governed by Regulation (EU) 2023/1542, which establishes harmonised rules for all batteries placed on the EU market regardless of origin, composition or whether sold separately or incorporated into products, and covers five categories: portable batteries, light means of transport (LMT) batteries, electric vehicle batteries, industrial batteries and starting/lighting/ignition batteries. It sets binding requirements for sustainability, safety, labelling, supply-chain due diligence and end-of-life management. The regulation has been in force since 17 August 2023 and applies from 18 February 2024.",
+      "limitations": "Commission policy overview. It does not enumerate every producer obligation or the appliance-removability provision; that detail comes from EVD-MC11-310.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "LEG-BAT-2023-1542"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-310",
+      "claimId": "CLM-MC11-310",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32023R1542",
+      "publisher": "Publications Office of the European Union (EUR-Lex summary)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Regulation (EU) 2023/1542 covers portable, LMT, EV, industrial and SLI batteries and sets lifecycle rules including waste collection targets for producers of portable batteries (63 % by end-2027, 73 % by end-2030), lithium/cobalt/copper/lead/nickel recovery targets, recycled-content minima, recycling-efficiency targets, a requirement that portable batteries incorporated into appliances be removable and replaceable by the end user by 2027, restrictions on hazardous substances, carbon-footprint information, labelling requirements applying from 2026 with a QR code from 2027, and battery passports for LMT/industrial/EV batteries. It amends Directive 2008/98/EC and Regulation (EU) 2019/1020 and repeals Directive 2006/66/EC.",
+      "limitations": "EUR-Lex summary; the precise application dates were not rendered in the retrieved copy (the 18 February 2024 date is taken from EVD-MC11-309). The summary does not distinguish producer-registration mechanics per Member State.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D26",
+        "LEG-BAT-2023-1542"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-311",
+      "claimId": "CLM-MC11-311",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32014L0090",
+      "publisher": "Publications Office of the European Union (EUR-Lex summary)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Marine Equipment Directive 2014/90/EU applies to equipment on ships flying an EU flag (whether or not the vessel was in the EU when the equipment was fitted), implements international maritime safety conventions for equipment on those ships, requires assessment by an independent third party (notified body), and requires the certification mark ('wheel mark') where the equipment meets the requirements. Equipment manufacturers may attach an electronic tag (Delegated Regulation (EU) 2018/414, Implementing Regulation (EU) 2018/608). Member States must carry out market surveillance and suppliers must withdraw non-compliant or risky equipment. The Commission adopts annual implementing acts on design, construction, performance requirements and testing standards.",
+      "limitations": "EUR-Lex summary. It does not list the equipment items in scope (those are in the annual implementing act), so MED non-applicability for recreational-craft electronics is a reasoned determination (D23) requiring qualified review, not a proof.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D26",
+        "LEG-MED-2014-90-EU"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-312",
+      "claimId": "CLM-MC11-312",
+      "url": "https://www.transportes.gob.es/marina-mercante/nautica-de-recreo/normas-de-seguridad-y-recomendaciones/homologacion-de-equipos/homologacion-de-equipos-marinos",
+      "publisher": "Ministerio de Transportes y Movilidad Sostenible — Dirección General de la Marina Mercante (Spain)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "Spanish marine equipment homologation (homologación) is governed by Real Decreto 1837/2000 of 10 November 2000 (BOE 28-11-2000), Título II, Capítulo VII (inspection and certification of civil vessels); Real Decreto 701/2016 of 23 December 2016, which regulates the requirements for marine equipment intended to be installed on board ships and transposes Directive 2014/90/EU; and Orden FOM/2258/2015 of 23 October 2015, Annex A.1, which lists the marine equipment subject to it. Conformity is assessed under Real Decreto 701/2016 Annex II using modules B (EC type-examination by a notified body), D, E, F, G and H (notified-body quality-assurance or verification modules), with wheel-mark CE marking and the notified body's identification number, and the notified-body group database is at mared.org.",
+      "limitations": "Spanish administration guidance page. It establishes the national homologation architecture and the equipment-subject list reference (Orden FOM/2258/2015 Anexo A.1) but the Anexo A.1 item list was NOT retrieved this session, so whether any MAREA item appears on it is unverified.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D26",
+        "LEG-MED-2014-90-EU",
+        "LEG-ES-RD-701-2016"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-313",
+      "claimId": "CLM-MC11-313",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32011L0065",
+      "publisher": "Publications Office of the European Union (EUR-Lex summary)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "RoHS Directive 2011/65/EU restricts the use of hazardous substances in electrical and electronic equipment; an annex sets the covered EEE categories from household appliances to IT equipment plus an open catch-all category relevant from July 2019; the ban applies to all EEE and to cables and spare parts; a short list of exclusions covers weapons, space equipment, large-scale stationary industrial tools, fixed installations and photovoltaic panels. Manufacturers must design and produce EEE in line with the requirements, importers must check equipment, and distributors must ensure the standards are met. Directive (EU) 2017/2102 amended it (excluding pipe organs and some non-road mobile machinery; removing the ban on secondary-market operations) and exemption lists are continuously updated.",
+      "limitations": "EUR-Lex summary; it does not give the substance-concentration limits (RoHS Annex II) or the CE-marking/marking article references.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "LEG-ROHS-2011-65-EU"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-314",
+      "claimId": "CLM-MC11-314",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32012L0019",
+      "publisher": "Publications Office of the European Union (EUR-Lex summary)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "WEEE Directive 2012/19/EU recasts Directive 2002/96/EC and does not apply to certain EEE, notably material for military or space purposes, filament bulbs, active implantable medical devices and means of transport. Member States must set up a register of all companies producing or importing EEE, allow free return of WEEE, apply a minimum collection rate (45 % from 2016, 65 % from 2019), license treatment plants and require producers to meet treatment targets and finance collection, treatment, recovery and disposal. Implementing Regulation (EU) 2019/290 sets the format for registration and reporting of EEE producers. Amending Directive (EU) 2024/884 clarifies producer responsibility for costs following a Court of Justice judgment and introduces a review clause for the Commission by end-2026.",
+      "limitations": "EUR-Lex summary; the summary's transposition deadlines were not rendered in the retrieved copy. National producer-registration mechanics are Member-State law and were not verified for Spain or Portugal in this session.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D26",
+        "LEG-WEEE-2012-19-EU"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-315",
+      "claimId": "CLM-MC11-315",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32013L0053",
+      "publisher": "Publications Office of the European Union (EUR-Lex summary)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Directive 2013/53/EU (recreational craft and personal watercraft) lays down requirements for manufacturers, importers and distributors of watercraft, specifies design categories A–D, and makes all watercraft, designated components and propulsion engines subject to CE marking, affixed on the craft builder's plate (watercraft) or directly on the engine (propulsion engines). Other essential requirements include a watercraft identification number, builder's plate, falling-overboard/reboarding provisions, visibility, a written manual, structure/stability/buoyancy by design category, and an emergency stopping device for tiller-controlled outboard engines. Implementing Regulation (EU) 2017/1 clarifies watercraft identification, and implementing decisions publish the harmonised standards list.",
+      "limitations": "EUR-Lex summary. The summary does not list the 'designated components' (Annex II of the directive), so the exclusion of navigation/steering electronics from that list is a reasoned reading requiring qualified confirmation.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D24",
+        "LEG-RCD-2013-53-EU"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-316",
+      "claimId": "CLM-MC11-316",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32025R0040",
+      "publisher": "Publications Office of the European Union (EUR-Lex summary)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Regulation (EU) 2025/40 (packaging and packaging waste, summarised as applicable 'from 2026') sets sustainability and labelling requirements for packaging throughout its life cycle, covers all packaging regardless of material or origin, and harmonises national measures. Producers are responsible for the entire life cycle including waste management through extended producer responsibility covering collection, sorting and recycling costs with modulated fees. Manufacturers and importers must conduct or ensure conformity assessment and keep technical documentation for five years (ten for reusable packaging), manufacturers must issue an EU declaration of conformity, ensure labelling, and take corrective action; distributors must verify compliance. It amends Regulation (EU) 2019/1020 and Directive (EU) 2019/904 and repeals Directive 94/62/EC.",
+      "limitations": "EUR-Lex summary; the entry-into-force and application dates were not rendered in the retrieved copy. The 12 August 2026 application date used in D23 is therefore flagged for qualified confirmation and is not presented as verified.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "D23",
+        "LEG-PPWR-2025-40"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-317",
+      "claimId": "CLM-MC11-317",
+      "url": "https://diariodarepublica.pt/dr/detalhe/decreto-lei/57-2017-107495704",
+      "publisher": "Diário da República (Portugal) — Decreto-Lei n.º 57/2017, de 9 de junho",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2017-06-09",
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Portuguese Decreto-Lei n.º 57/2017 of 9 June 2017 transposes Directive 2014/53/EU (RED) into Portuguese law and establishes the regime for making radio equipment available on the market, putting it into service and using it. Article 2(1) excludes equipment listed in Annex I and radio equipment used exclusively for public security, defence, State security and criminal-investigation activities; Article 2(2) provides that radio equipment covered by this decree-law is not subject to Decreto-Lei n.º 31/2017 (the EMC transposition) except for Article 4(1)(a); Annex I point 2 lists marine equipment covered by Decreto-Lei n.º 167/99 (the Portuguese marine equipment regime implementing the international conventions). Article 4 sets out essential requirements (health/safety, EMC, efficient spectrum use, plus delegated-act categories under Article 4(3)(a)–(i)). Article 11(1) lists manufacturer duties including technical documentation, conformity assessment, EU declaration of conformity and CE marking, retention of technical documentation and DoC for 10 years, serial/lot identification, name and postal address on the equipment or packaging, instructions and safety information in Portuguese, information on frequency bands and maximum RF power, a copy of the DoC with every unit, and identification of Member States with restrictions. Article 11(2) treats importers/distributors as manufacturers where they market under their own name/brand or modify the equipment. Article 12 limits what may be mandated to an authorised representative (the Article 11(1)(a)–(e) duties may not). Article 13 sets importer duties including Portuguese-language instructions. Article 17 refers to conformity assessment under Annex II (Module A internal production control), Annex III (Modules B+C) and Annex IV (Module H). Annex V lists the content of the technical documentation (a–i), Annex VI the content of the EU declaration of conformity, Annex VII the simplified EU declaration of conformity, and Annex VIII the charges for verification tests.",
+      "limitations": "This is national implementing law, not the directive text, and it is used here as a faithful indicator of the RED requirement structure, not as a substitute for the directive. Portugal's Annex I marine-equipment exclusion is a national transposition feature and does not by itself settle the EU-level MED/RED boundary for any MAREA configuration.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D24",
+        "LEG-RED-2014-53-EU",
+        "LEG-PT-DL-57-2017"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-318",
+      "claimId": "CLM-MC11-318",
+      "url": "https://www.miteco.gob.es/es/calidad-y-evaluacion-ambiental/temas/prevencion-y-gestion-residuos/registro-productores-producto.html",
+      "publisher": "Ministerio para la Transición Ecológica y el Reto Demográfico (Spain) — Registro de Productores de Producto",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "Spain operates a Registro de Productores de Producto (RPP) for producers subject to extended producer responsibility. The registration number that must appear on invoices of affected products is the code assigned by the RPP at registration, in the format SEC/AÑO REGISTRO/XXXXXXXXX, where SEC is the registry section (the page names 'ENV', 'NEU', 'SFT' and 'BOL'). The annual product information reporting window for products placed on the Spanish market in 2025 was open from 2 January 2026 to 2 April 2026 inclusive.",
+      "limitations": "Spanish ministry page. It documents the packaging (ENV) extended-producer-responsibility registry and the reporting calendar; it does NOT document WEEE producer registration, battery producer registration or RoHS enforcement, which are separate instruments not retrieved this session.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D23",
+        "D26",
+        "LEG-PPWR-2025-40"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-319",
+      "claimId": "CLM-MC11-319",
+      "url": "https://www.nmea.org/nmea-2000.html",
+      "publisher": "National Marine Electronics Association (NMEA)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "NMEA states that 'all products that read and or transmit NMEA 2000 information must be certified by NMEA'. The NMEA 2000 standard is a copyrighted work under a licence agreement; the standard is licensed by industry group and is not sold via an online store. The current published version named on the page is NMEA 2000 Version 3.000 (with amendments). Updates are provided at no cost to marine manufacturer members only, in good standing for the calendar year; non-members may purchase updates. Product certification is performed via the NMEA 2000 Certification Tool, which generates a mandatory encrypted certification file sent to NMEA for validation; only after validation is certification granted, and only then may the official NMEA 2000 logo and the term 'NMEA 2000 Certified' be used on marketing material. Each manufacturer must purchase an NMEA 2000 Manufacturer Code (assignment takes up to 60 days) and, for each certified product, a unique Product Code; each certified product must broadcast its class and function code. NMEA does not issue memberships to non-marine entities, and associate memberships do not qualify for the member discount on standard licensing fees.",
+      "limitations": "The page's licensing-fee table did not render in the retrieved copy, so NO NMEA 2000 fee is asserted (UNKNOWN). The page does not state a certification timetable beyond the 60-day manufacturer-code assignment.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D25",
+        "D26",
+        "CONF-HUB-HUB-STANDARD",
+        "CONF-HUB-HUB-PRO",
+        "CONF-AIS-AIS-RECEIVER",
+        "CONF-AIS-AIS-CONNECTED",
+        "CONF-DISPLAY-DISPLAY-7",
+        "CONF-DISPLAY-DISPLAY-LARGE-CONDITIONAL"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-320",
+      "claimId": "CLM-MC11-320",
+      "url": "https://www.nmea.org/nmea-0183.html",
+      "publisher": "National Marine Electronics Association (NMEA)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "NMEA 0183 is a copyrighted document available only from NMEA; NMEA states that other internet offerings of NMEA 0183 material 'are not authorized and may constitute a copyright infringement'. The current version named is NMEA 0183 Version 4.30 (December 2023), which replaced Version 4.11 (2018), with NMEA 0183-HS (38.4 kbaud) included as an appendix; the base bus is 4800 baud. Published price tiers: NMEA 0183 manufacturer-member price USD 1,150; government/industrial/testing USD 7,500; consumer electronics USD 10,000. NMEA 0183 manufacturer mnemonic codes carry an administrative fee of USD 200 and require purchase of the standard at the applicable industry-group price; codes are issued to companies, not individuals.",
+      "limitations": "The page states no NMEA 0183 product-certification programme (unlike NMEA 2000); its absence on the page is recorded as 'not evidenced', not as 'no programme exists'. Prices are published schedules, not MAREA quotations, and are asserted as BUDGETARY_INDICATION only.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D25",
+        "D26"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-321",
+      "claimId": "CLM-MC11-321",
+      "url": "https://www.nmea.org/",
+      "publisher": "National Marine Electronics Association (NMEA)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "NMEA describes itself as a worldwide, member-based trade organisation revolving around marine electronics interface standards, marine electronics installer training, and an annual marine electronics conference and expo, with four main offerings and installer trainings/certifications recognised by manufacturers for installation, support and warranty. The NMEA registered address is 846 Ritchie Highway, Suite L4, Severna Park, MD 21146, USA, and the page is marked 'Copyright 2026 National Marine Electronics Association (NMEA)'.",
+      "limitations": "Home page only; it does not state membership categories, fees or eligibility conditions, which could not be retrieved (see EVD-MC11-322).",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "D25"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-322",
+      "claimId": "CLM-MC11-322",
+      "url": "https://www.nmea.org/nmea-2000-certification.html",
+      "publisher": "National Marine Electronics Association (NMEA)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "INACCESSIBLE. The following NMEA URLs were requested on 2026-11-02 and returned HTTP 404 through the retrieval endpoint, so their content was NOT read and is not quoted anywhere in MC-11: https://www.nmea.org/nmea-2000-certification.html, https://www.nmea.org/product-certification.html, https://www.nmea.org/nmea-membership.html, https://www.nmea.org/membership.html, https://www.nmea.org/membership, https://web.nmea.org/External/WCPages/WCWebContent/webcontentpage.aspx?ContentID=238 and the candidate PDF assets under https://www.nmea.org/Assets/.",
+      "limitations": "A 404 records non-retrieval, not non-existence: the pages may exist under other paths or may have been moved. No NMEA membership fee, membership category table, certification-process document or approved-terminology page is therefore asserted in D25; these remain UNKNOWN and are listed as unverified retrievals.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "D25",
+        "D26"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-323",
+      "claimId": "CLM-MC11-323",
+      "url": "https://apambiente.pt/en/node/861",
+      "publisher": "Agência Portuguesa do Ambiente (APA) — Registo de Produtores de Produtos",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "INACCESSIBLE. The Portuguese producer-registration pages requested on 2026-11-02 (https://apambiente.pt/en/node/861 and https://apambiente.pt/residuos/registo-de-produtores-de-produtos) timed out through the retrieval endpoint and their content was NOT read. Consequently no Portuguese producer-registration procedure, registry section or reporting deadline is asserted in MC-11.",
+      "limitations": "Timeout is an access failure, not evidence of absence. Portuguese extended-producer-responsibility registration for EEE, batteries and packaging therefore remains NOT_VERIFIED in MC-11 and is carried as a blocker (CON-09) rather than assumed identical to Spain.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "D23",
+        "D26"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-401",
+      "claimId": "CLM-MC11-401",
+      "url": "https://webstore.iec.ch/en/publication/3959",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2002-08-14",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 60945:2002, Edition 4.0, 'Maritime navigation and radiocommunication equipment and systems - General requirements - Methods of testing and required test results'; TC 80; 179 pages; stability date 2028; the 2008 corrigendum is included; the catalogue scope states the requirements apply to shipborne radio equipment, shipborne navigational equipment and, for EMC only, all other bridge-mounted equipment, equipment in close proximity to receiving antennas and equipment capable of interfering with safe navigation of the ship and with radiocommunications; IEC catalogue price CHF 380.",
+      "limitations": "Catalogue metadata and scope summary only; the standard text was NOT purchased or read. The CHF 380 is the IEC catalogue price of the document, NOT a quotation for MAREA and not a test cost. The scope statement is not a determination that IEC 60945 applies to a recreational-craft accessory; that determination is made explicitly in D17 section 2.2 as NOT a legal requirement on the recorded market position.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-01",
+        "QUAL-HUB-02",
+        "QUAL-HUB-03",
+        "QUAL-HUB-04",
+        "QUAL-HUB-08",
+        "QUAL-HUB-09",
+        "QUAL-AIS-01",
+        "QUAL-AIS-03",
+        "QUAL-AIS-04",
+        "QUAL-AIS-08",
+        "QUAL-WATCH-01",
+        "QUAL-WATCH-07",
+        "QUAL-SENSE-01",
+        "QUAL-SENSE-06",
+        "QUAL-SENSE-07",
+        "QUAL-DISPLAY-08"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-402",
+      "claimId": "CLM-MC11-402",
+      "url": "https://webstore.iec.ch/en/publication/2452",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2013-08-29",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 60529:1989+AMD1:1999+AMD2:2013 CSV (Edition 2.2), 'Degrees of protection provided by enclosures (IP Code)'; TC 70; applies to the classification of degrees of protection provided by enclosures for electrical equipment with a rated voltage not exceeding 72.5 kV; 207 pages; stability date 2027; IEC catalogue price CHF 515.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read. This record establishes the existence and classification purpose of the IP Code, NOT any MAREA rating. No IP digit is chosen and no IP claim is made; an IP test of an empty purchased enclosure does not establish the rating of an assembled product, and the IP Code does not address internal condensation.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-05",
+        "QUAL-AIS-05",
+        "QUAL-WATCH-05",
+        "QUAL-SENSE-05",
+        "QUAL-DISPLAY-05",
+        "QUAL-PILOT-04"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-403",
+      "claimId": "CLM-MC11-403",
+      "url": "https://webstore.iec.ch/en/publication/30839",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2017-11-07",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 60068-2-52:2017, Edition 3.0, 'Environmental testing - Part 2-52: Tests - Test Kb: Salt mist, cyclic (sodium chloride solution)'; TC 104; 16 pages; the catalogue description states the test applies to components or equipment designed to withstand a salt-laden atmosphere, has been harmonised with ISO 9227 as far as possible, and adds test methods 7 and 8; IEC catalogue price CHF 80.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read and no severity was selected. Naming the method is not a corrosion qualification and not a claim that any MAREA enclosure would pass.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-06",
+        "QUAL-AIS-06",
+        "QUAL-WATCH-06",
+        "QUAL-SENSE-05",
+        "QUAL-DISPLAY-06",
+        "QUAL-PILOT-04"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-404",
+      "claimId": "CLM-MC11-404",
+      "url": "https://webstore.iec.ch/en/publication/544",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2007-12-13",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 60068-2-6:2007, Edition 7.0, 'Environmental testing - Part 2-6: Tests - Test Fc: Vibration (sinusoidal)'; TC 104; 82 pages; the catalogue description states it provides a standard procedure to determine the ability of specimens to withstand specified severities of sinusoidal vibration, for mechanical weakness/degradation and to decide acceptability in conjunction with the relevant specification; IEC catalogue price CHF 295.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read, no severity or fixture was defined and no vibration qualification exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-09",
+        "QUAL-SENSE-06",
+        "QUAL-DISPLAY-08"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-405",
+      "claimId": "CLM-MC11-405",
+      "url": "https://webstore.iec.ch/en/publication/514",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2008-02-27",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 60068-2-27:2008, Edition 4.0, 'Environmental testing - Part 2-27: Tests - Test Ea and guidance: Shock'; TC 104; 75 pages; the catalogue description states it provides a standard procedure for determining the ability of a specimen to withstand specified severities of non-repetitive or repetitive shocks using prescribed pulse shapes; IEC catalogue price CHF 260.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read, no pulse severity was selected and no shock qualification exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-09",
+        "QUAL-SENSE-06"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-406",
+      "claimId": "CLM-MC11-406",
+      "url": "https://webstore.iec.ch/en/publication/515",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2005-08-10",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 60068-2-30:2005, Edition 3.0, 'Environmental testing - Part 2-30: Tests - Test Db: Damp heat, cyclic (12 h + 12 h cycle)'; TC 104; 27 pages; the catalogue page states this edition was withdrawn on 2025-08-07 and that IEC 60068-2-30:2025 (Edition 4.0) replaced it; the description covers high humidity combined with cyclic temperature changes producing condensation on the specimen surface; IEC catalogue price CHF 80.",
+      "limitations": "The 2005 edition is superseded; the 2025 edition was NOT retrieved or read. No damp-heat severity was selected and no condensation qualification exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-07",
+        "QUAL-DISPLAY-07"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-407",
+      "claimId": "CLM-MC11-407",
+      "url": "https://webstore.iec.ch/en/publication/4189",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2008-12-09",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 61000-4-2:2008, Edition 2.0, 'Electromagnetic compatibility (EMC) - Part 4-2: Testing and measurement techniques - Electrostatic discharge immunity test'; TC 77/SC 77B; 129 pages; the catalogue description covers immunity requirements and test methods for equipment subjected to static electricity discharges from operators directly and from personnel to adjacent objects, defines test levels and procedures; the page states this edition was withdrawn on 2025-03-07 and that IEC 61000-4-2:2025 replaced it; IEC catalogue price CHF 380.",
+      "limitations": "The 2008 edition is superseded; the 2025 edition was NOT retrieved or read. No ESD level was selected and no ESD test exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-03",
+        "QUAL-AIS-03",
+        "QUAL-WATCH-03",
+        "QUAL-SENSE-03",
+        "QUAL-DISPLAY-03",
+        "QUAL-PILOT-03"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-408",
+      "claimId": "CLM-MC11-408",
+      "url": "https://webstore.iec.ch/en/publication/61166",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2017-08-04",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 61000-4-5:2014+AMD1:2017 CSV (Edition 3.1), 'Electromagnetic compatibility (EMC) - Part 4-5: Testing and measurement techniques - Surge immunity test'; TC 77/SC 77B; 334 pages; the catalogue description states it relates to immunity requirements, test methods and recommended test levels for unidirectional surges caused by over-voltages from switching and lightning transients and that direct lightning strikes are not covered; IEC catalogue price CHF 680.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read. The standard explicitly does not cover direct lightning strikes. No surge level was selected and no transient qualification exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-02",
+        "QUAL-HUB-04",
+        "QUAL-AIS-02",
+        "QUAL-AIS-04",
+        "QUAL-WATCH-02",
+        "QUAL-WATCH-04",
+        "QUAL-SENSE-02",
+        "QUAL-SENSE-04",
+        "QUAL-DISPLAY-02",
+        "QUAL-DISPLAY-04",
+        "QUAL-PILOT-02"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-409",
+      "claimId": "CLM-MC11-409",
+      "url": "https://webstore.iec.ch/en/publication/71612",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2026-07-30",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 61000-4-29:2026, Edition 2.0, 'Electromagnetic compatibility (EMC) - Part 4-29: Testing and measurement techniques - Voltage dips, short interruptions and voltage variations on d.c. input power port immunity tests'; TC 77/SC 77A; 24 pages; the catalogue description defines test levels, generator, set-up and procedure for DC input power ports connected to low-voltage DC networks external to the equipment, and states ripple is covered by IEC 61000-4-17, not by this document; IEC catalogue price CHF 160.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read, the edition is newly published (2026-07-30) and no DC dip severity was selected. No power-interruption qualification exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-02",
+        "QUAL-HUB-10",
+        "QUAL-WATCH-08"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-410",
+      "claimId": "CLM-MC11-410",
+      "url": "https://webstore.iec.ch/en/publication/65836",
+      "publisher": "International Electrotechnical Commission (IEC), CISPR",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2019-10-01",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "CISPR 32:2015+AMD1:2019 CSV (Edition 2.1), 'Electromagnetic compatibility of multimedia equipment - Emission requirements'; applies to multimedia equipment with a rated r.m.s. AC or DC supply voltage not exceeding 600 V; covers Class A and Class B; frequency range 9 kHz to 400 GHz; the catalogue page states Edition 3.0 is under development (forecast publication 2027-01-01); IEC catalogue price CHF 1230.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read. Class A vs Class B is a conformity decision, not chosen here. No emission test exists and no emission result is claimed.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-01",
+        "QUAL-HUB-02",
+        "QUAL-AIS-01",
+        "QUAL-AIS-02",
+        "QUAL-WATCH-01",
+        "QUAL-WATCH-02",
+        "QUAL-SENSE-01",
+        "QUAL-SENSE-02",
+        "QUAL-DISPLAY-01",
+        "QUAL-DISPLAY-02",
+        "QUAL-PILOT-01",
+        "QUAL-PILOT-02"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-411",
+      "claimId": "CLM-MC11-411",
+      "url": "https://webstore.iec.ch/en/publication/19260",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2000-07-07",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 61162-1:2000, Edition 2.0, 'Maritime navigation and radiocommunication equipment and systems - Digital interfaces - Part 1: Single talker and multiple listeners'; closely aligned with NMEA 0183 version 2.30; the catalogue page states this edition was withdrawn on 2007-04-11 and that a more recent IEC 61162-1:2024 (Edition 6) exists; IEC catalogue price CHF 380.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read. This is an interface/digital-communication standard, NOT an environmental or RF qualification standard; it is not used in D17 to derive any environmental severity.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-AIS-07"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-412",
+      "claimId": "CLM-MC11-412",
+      "url": "https://www.iso.org/standard/81744.html",
+      "publisher": "International Organization for Standardization (ISO)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "ISO 9227:2022 (Edition 5), 'Corrosion tests in artificial atmospheres - Salt spray tests'; ISO/TC 156; 23 pages; published 2022-11; specifies the neutral salt spray (NSS), acetic acid salt spray (AASS) and copper-accelerated acetic acid salt spray (CASS) apparatus, reagents and procedure; the abstract explicitly states the methods are not intended for comparative ranking of materials or for predicting long-term corrosion resistance; Amendment 1:2024 exists.",
+      "limitations": "Abstract only; the standard text was NOT read. The standard itself warns against predicting long-term corrosion resistance, so a pass cannot be extrapolated into a service-life claim.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-06",
+        "QUAL-AIS-06",
+        "QUAL-WATCH-06",
+        "QUAL-SENSE-05",
+        "QUAL-DISPLAY-06",
+        "QUAL-PILOT-04"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-413",
+      "claimId": "CLM-MC11-413",
+      "url": "https://www.iso.org/standard/55481.html",
+      "publisher": "International Organization for Standardization (ISO)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "ISO 4892-2:2013 (Edition 3), 'Plastics - Methods of exposure to laboratory light sources - Part 2: Xenon-arc lamps'; ISO/TC 61/SC 6; 13 pages; published 2013-03; specifies methods for exposing specimens to xenon-arc light in the presence of moisture to reproduce weathering effects; status 'to be revised'; Amendment 1:2021 (classification of daylight filters) exists.",
+      "limitations": "Abstract only; the standard text was NOT read. This is a materials-exposure method, not an equipment-level environmental test; it cannot by itself qualify an assembled product.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-DISPLAY-07"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-414",
+      "claimId": "CLM-MC11-414",
+      "url": "https://rules.dnv.com/docs/pdf/DNV/CG/2021-08/DNV-CG-0339.pdf",
+      "publisher": "DNV AS (Det Norske Veritas)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "THIRD_PARTY_COMMENTARY",
+      "supportedAssertion": "Requested on 2026-11-02: the DNV rules server returned HTTP 200, but the extracted body contained only cover/trademark text ('The trademarks DNV GL, DNV, the Horizon Graphic and Det Norske Veritas are the properties of companies in the Det Norske Veritas group... WHEN TRUST MATTERS'). The environmental test scope, categories, severities and tables of DNV-CG-0339:2021 were NOT retrievable in this environment.",
+      "limitations": "PARTIALLY_INACCESSIBLE: this record is evidence that the source could NOT be read, not evidence of its content. No DNV requirement, severity or category is quoted, adopted or relied on anywhere in D15-D18. Recorded so the auditor does not assume the document was studied.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "QUAL-HUB-09",
+        "QUAL-DISPLAY-08"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-415",
+      "claimId": "CLM-MC11-415",
+      "url": "https://single-market-economy.ec.europa.eu/sectors/electrical-and-electronic-engineering-industries-eei/electromagnetic-compatibility-emc-directive_en",
+      "publisher": "European Commission (DG Internal Market, Industry, Entrepreneurship and SMEs)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "The EMC Directive is Directive 2014/30/EU, published in OJ L 96/79 of 29 March 2014 and repealing Directive 2004/108/EC from 20 April 2016; equipment (apparatus and fixed installations) needs to comply with EMC requirements when placed on the market and/or taken into service; harmonised standards published in the OJEU provide a presumption of conformity; the page states that CE marking can only be affixed after testing the product and performing the conformity assessment procedure prescribed by the applicable EU harmonisation legislation, and that voluntary/unregulated certificates are not a recognised means to prove compliance.",
+      "limitations": "Official Commission guidance page; not the legal text itself and not legal advice. It does not determine MAREA's per-configuration applicability (owned by D24) and does not establish any test result.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-01",
+        "QUAL-HUB-02",
+        "QUAL-AIS-01",
+        "QUAL-WATCH-01",
+        "QUAL-SENSE-01",
+        "QUAL-DISPLAY-01",
+        "QUAL-PILOT-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-416",
+      "claimId": "CLM-MC11-416",
+      "url": "https://single-market-economy.ec.europa.eu/sectors/electrical-and-electronic-engineering-industries-eei/radio-equipment-directive-red_en",
+      "publisher": "European Commission (DG Internal Market, Industry, Entrepreneurship and SMEs)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "The Radio Equipment Directive 2014/53/EU establishes essential requirements for safety and health, electromagnetic compatibility and efficient use of the radio spectrum; it entered into force on 2014-06-11 and applies from 2016-06-13; the page records that the RED cybersecurity Delegated Regulation (EU) 2022/30 was repealed by Delegated Regulation (EU) 2026/339, published in the OJ on 2026-04-29, with the repeal effective from 2027-12-11 when the CRA takes over, and that the CRA main obligations apply from 2027-12-11.",
+      "limitations": "Official Commission guidance page; not the legal text and not legal advice. It does not establish that a MAREA configuration is radio equipment (owned by D24) and does not constitute a test result.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-AIS-01",
+        "QUAL-AIS-02",
+        "QUAL-AIS-07",
+        "QUAL-WATCH-01",
+        "QUAL-WATCH-02",
+        "QUAL-DISPLAY-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-417",
+      "claimId": "CLM-MC11-417",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act",
+      "publisher": "European Commission (DG Communications Networks, Content and Technology)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "The Cyber Resilience Act (Regulation (EU) 2024/2847) entered into force on 2024-12-10; its main obligations apply from 2027-12-11 and the reporting obligations apply from 2026-09-11; products bear the CE marking; manufacturers must handle vulnerabilities during the lifecycle; the Commission published practical guidance on 2026-07-27; the page was last updated 2026-09-07.",
+      "limitations": "Official Commission policy page; not the regulation text and not legal advice. It does not determine whether a specific MAREA configuration is in scope (owned by D24/D27).",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-WATCH-08"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-418",
+      "claimId": "CLM-MC11-418",
+      "url": "https://www.lr.org/en/knowledge/lloyds-register-rules/type-approval-test-specifications2/type-approval-test-specifications/",
+      "publisher": "Lloyd's Register (classification society)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "THIRD_PARTY_COMMENTARY",
+      "supportedAssertion": "Lloyd's Register Type Approval Test Specification 1 is the 'Performance and Environmental Test Specification' for electrical equipment, control and monitoring equipment, instrumentation and internal communication equipment and programmable electronic systems used in the marine environment; the page states the specification applies to LR Type Approval of those systems for marine use, that the introduction specifies categories of approval for differing environmental conditions together with applicable tests in tabular form, and that it was published in July 2024.",
+      "limitations": "Classification-society type-approval framework for classed vessels; it is not an ISO/IEC standard and is NOT applicable to an unclassed recreational craft by default. The specification document itself was NOT retrieved or read. Naming it is a voluntary-reference note, not a compliance claim and not a test result.",
+      "confidence": "MEDIUM",
+      "affectedItems": [
+        "QUAL-HUB-09",
+        "QUAL-SENSE-07",
+        "QUAL-DISPLAY-08"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-419",
+      "claimId": "CLM-MC11-419",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/LSU/?uri=CELEX:32024R2847",
+      "publisher": "Publications Office of the European Union (EUR-Lex)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "EUR-Lex summary of Regulation (EU) 2024/2847 (Cyber Resilience Act): manufacturers must provide security updates during the product's support period, which needs to reflect the period the product is expected to be in use; updates must address vulnerabilities and ensure continued security; the regulation excludes from scope, among others, marine equipment within the scope of Directive 2014/90/EU; importers must verify manufacturer compliance and distributors must ensure CE marking and user information before making products available.",
+      "limitations": "EUR-Lex SUMMARY, not the consolidated regulation text. The summary's application-date fields rendered blank in the retrieved extract, so no date is taken from this record (dates are taken from EVD-MC11-417). The MED exclusion does not by itself remove the CRA from a recreational-craft product, because the MED is not applicable on the recorded market position (HARDWARE-COMPLIANCE-MATRIX.md C-09); the per-configuration determination is owned by D24/D27.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-WATCH-08"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-420",
+      "claimId": "CLM-MC11-420",
+      "url": "https://webstore.iec.ch/en/publication/71503",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2023-07-27",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 60068-2-14:2023, Edition 7.0, 'Environmental testing - Part 2-14: Tests - Test N: Change of temperature'; TC 104; 70 pages; the catalogue description states it provides tests with specified ambient temperature changes to analyse their impacts on specimens and updates severities, tolerances and test-report requirements; IEC catalogue price CHF 260.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read, no temperature range or rate of change was selected and no thermal-cycling qualification exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-08",
+        "QUAL-WATCH-07",
+        "QUAL-DISPLAY-08",
+        "QUAL-PILOT-04"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-421",
+      "claimId": "CLM-MC11-421",
+      "url": "https://webstore.iec.ch/en/publication/82357",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2025-08-06",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 60068-2-78:2025, Edition 3.0, 'Environmental testing - Part 2-78: Tests - Test Cab: Damp heat, steady state'; TC 104; 13 pages; the catalogue description covers high humidity at constant temperature WITHOUT condensation over a specified period and applies to small and large, heat-dissipating and non-heat-dissipating specimens; IEC catalogue price CHF 80.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read. The method explicitly targets non-condensing humidity, so it does not replace a condensation test. No humidity severity was selected and no humidity qualification exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-07",
+        "QUAL-WATCH-08"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-422",
+      "claimId": "CLM-MC11-422",
+      "url": "https://webstore.iec.ch/en/publication/62945",
+      "publisher": "International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2018-04-06",
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "IEC 60068-2-5:2018, Edition 3.0, 'Environmental testing - Part 2-5: Tests - Test S: Simulated solar radiation at ground level and guidance for solar radiation testing and weathering'; TC 104; 54 pages; the catalogue description states it specifies methods for testing equipment or components under simulated solar radiation at the earth's surface and retains Test method Sa (thermal effect) while adding Test method Sb (weathering); IEC catalogue price CHF 272.",
+      "limitations": "Catalogue metadata only; the standard text was NOT read. No solar-irradiance profile or exposure duration was selected and no UV/solar qualification exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-DISPLAY-07"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-423",
+      "claimId": "CLM-MC11-423",
+      "url": "https://www.iso.org/standard/66912.html",
+      "publisher": "International Organization for Standardization (ISO) / International Electrotechnical Commission (IEC)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_STANDARDS_BODY",
+      "supportedAssertion": "ISO/IEC 17025:2017 (Edition 3) is the international standard for testing and calibration laboratories; it sets out requirements for competence, impartiality and consistent operation, ensuring the accuracy and reliability of testing and calibration results; accreditation bodies use ISO/IEC 17025 as the criteria for assessing and accrediting laboratories; published 2017-11 with a corrected version in 2018-03.",
+      "limitations": "Abstract and overview only; the standard text was NOT read. This record establishes the basis on which an 'accredited laboratory' should be judged; it does NOT establish that any specific laboratory is accredited, and no laboratory was contacted or verified.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "QUAL-HUB-01",
+        "QUAL-HUB-05",
+        "QUAL-AIS-07",
+        "QUAL-DISPLAY-01"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-501",
+      "claimId": "CLM-MC11-501",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847",
+      "publisher": "Publications Office of the European Union (EUR-Lex), Regulation (EU) 2024/2847",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2024-11-20",
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Regulation (EU) 2024/2847 (Cyber Resilience Act) applies from 11 December 2027, except the reporting obligations concerning actively exploited vulnerabilities and severe incidents, which apply from 11 September 2026, and the provisions on notification of conformity assessment bodies, which apply from 11 June 2026 (recital 126). Article 6 makes products whose core functionality is not listed in Annex III default products with digital elements; Article 7 makes products whose core functionality is listed in Annex III 'important products with digital elements' (classes I and II) subject to the stricter conformity assessment of Article 32(2) and (3); Article 8 allows delegated acts to require a European cybersecurity certification for 'critical products with digital elements' listed in Annex IV. Article 7(4) required the Commission to adopt an implementing act specifying the technical descriptions of the Annex III and Annex IV categories by 11 December 2025.",
+      "limitations": "The EUR-Lex HTML retrieval was truncated before Article 71 and before Annex I–VIII, so the final Article 71 wording, the Annex III/IV category lists and the Annex I essential-requirement text were NOT retrieved in this session. The application dates above are quoted from recital 126 of the retrieved text. Whether any MAREA product is default, 'important' (class I or II) or 'critical' is NOT established by this record and depends on the implementing act's technical descriptions, which were not retrieved here.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D27",
+        "D28",
+        "LEG-CRA-2024-2847",
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-502",
+      "claimId": "CLM-MC11-502",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847",
+      "publisher": "Publications Office of the European Union (EUR-Lex), Regulation (EU) 2024/2847",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2024-11-20",
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Article 13 of the CRA requires manufacturers to design, develop and produce products in accordance with the essential cybersecurity requirements of Annex I Part I; to document a cybersecurity risk assessment updated during the support period (13(3)); to exercise due diligence over third-party components (13(5)); to report component vulnerabilities upstream and share fixes (13(6)); to determine a support period reflecting expected use that is at least five years (13(8)); to have policies and procedures including coordinated vulnerability disclosure policies (13(8)); to keep each security update available for at least 10 years or the remainder of the support period, whichever is longer (13(9)); to draw up technical documentation and the EU declaration of conformity and affix CE marking after conformity assessment (13(12)); to keep documentation for at least 10 years or the support period (13(13)); to indicate a type/batch/serial number (13(15)); to designate a single point of contact for users and vulnerability reporting (13(17)); to provide user information and instructions (13(18)); to specify the end date of the support period, at least month and year, at the time of purchase (13(19)); to take corrective measures, withdraw or recall a non-conforming product (13(21)); to inform authorities and users before ceasing operations (13(23)); and to provide a software bill of materials as referred to in Annex I Part II point (1), whose format the Commission may specify by implementing act (13(24)).",
+      "limitations": "Annex I itself was not rendered by the retrieval; the obligation references to Annex I Part I points (1) and (2) and Part II points (1), (2), (5) and (8) are quoted as they appear in Article 13, but their full content is NOT verified from a fetched source. This record establishes that the obligations exist, not that MAREA satisfies any of them.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D27",
+        "D28",
+        "LEG-CRA-2024-2847",
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-503",
+      "claimId": "CLM-MC11-503",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R2847",
+      "publisher": "Publications Office of the European Union (EUR-Lex), Regulation (EU) 2024/2847",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": "2024-11-20",
+      "evidenceType": "OFFICIAL_LEGAL_TEXT",
+      "supportedAssertion": "Article 14 of the CRA requires a manufacturer to notify any actively exploited vulnerability in a product with digital elements, and any severe incident having an impact on the security of the product, simultaneously to the CSIRT designated as coordinator and to ENISA through the single reporting platform: an early warning without undue delay and within 24 hours; a vulnerability or incident notification within 72 hours; a final report for a vulnerability no later than 14 days after a corrective or mitigating measure is available, and for an incident within one month after the 72-hour notification. Article 14(5) defines a severe incident as one that negatively affects or is capable of negatively affecting the product's ability to protect availability, authenticity, integrity or confidentiality of sensitive or important data or functions, or that has led or could lead to the introduction or execution of malicious code. Article 14(8) requires the manufacturer to inform impacted users of the vulnerability or incident and of mitigation measures. Article 15 provides for voluntary reporting.",
+      "limitations": "Article 16 (the single reporting platform procedure) and the delegated/implementing acts on delaying dissemination were not retrieved. The reporting process is therefore known only from Article 14 and Article 15 text; no ENISA platform process, account or registration was accessed or tested.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D27",
+        "LEG-CRA-2024-2847",
+        "HUB",
+        "WATCH",
+        "DISPLAY",
+        "AIS"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-504",
+      "claimId": "CLM-MC11-504",
+      "url": "https://www.enisa.europa.eu/topics/vulnerability-disclosure",
+      "publisher": "European Union Agency for Cybersecurity (ENISA)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "ENISA operates the Single Reporting Platform (SRP) established for the Cyber Resilience Act, through which manufacturers report actively exploited vulnerabilities and severe incidents in products with digital elements once, to a designated coordinator CSIRT and ENISA; ENISA states that the CRA Article 14 reporting obligations apply from 11 September 2026. ENISA also operates the European Vulnerability Database (EUVD), is a CVE Numbering Authority and CVE Root, publishes the EU KEV catalogue, and supports coordinated vulnerability disclosure (CVD) with guidance and good-practice material for Member States.",
+      "limitations": "Agency service overview page, not the legal text and not a reporting procedure specification. It does not state form fields, account prerequisites or national coordinator details for Spain/Portugal. No ENISA service was registered for or tested by MAREA.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D27",
+        "LEG-CRA-2024-2847",
+        "WATCH",
+        "HUB"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-505",
+      "claimId": "CLM-MC11-505",
+      "url": "https://raw.githubusercontent.com/micropython/micropython/master/LICENSE",
+      "publisher": "MicroPython project (upstream repository licence file)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "THIRD_PARTY_COMMENTARY",
+      "supportedAssertion": "The MicroPython repository licence file states the MIT licence (copyright 2013-2026 Damien P. George) for the repository unless specified otherwise, and lists per-directory third-party components: the rp2 port files mutex_extra.c and clocks_extra.c under BSD-3-clause, pico-sdk under BSD-3-clause, lwip, littlefs, axtls, re15, nrfx, nxp_driver, open-amp and stm32lib under BSD-3-clause, tinyusb and wiznet5k under MIT, uzlib under Zlib, the logo under OFL-1.1, and tools/dfu.py under LGPL-3.0-only; it notes that (L)GPL-licensed code listed is used only during the build process and is not part of the compiled source code.",
+      "limitations": "This is the upstream licence summary file, not a notice bundle generated for a specific pinned release or a specific board build. The exact notices that must ship with a programmed board depend on the pinned MicroPython revision, the port and every enabled module; that mapping was NOT produced in this session, and no board or firmware image exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D28",
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-506",
+      "claimId": "CLM-MC11-506",
+      "url": "https://www.nxp.com/products/security-and-authentication/secure-elements/plug-and-trust-se050:SE050",
+      "publisher": "NXP Semiconductors N.V.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "NXP's EdgeLock SE050 page describes a Plug and Trust secure-element family that is Common Criteria EAL 6+ certified up to OS level, is part of the EdgeLock Assurance programme, and is stated to be available for a minimum of 10 years (15 years for designated automotive, telecom and medical products). The page names the EdgeLock 2GO provisioning/onboarding service and Plug & Trust middleware packages for MCU/MPU integration, and states that some software downloads require an account.",
+      "limitations": "Marketing product-family page, not a datasheet, security target, price list, lifecycle certificate or MOQ statement. No interface, supply, temperature or key-slot detail was rendered. The part was NOT registered in the MC-11 component register and no alternative selection was made. Third-party CC certificate number and scope were not retrieved.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D27",
+        "HUB"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-507",
+      "claimId": "CLM-MC11-507",
+      "url": "https://www.st.com/en/secure-mcus/stsafe-a120.html",
+      "publisher": "STMicroelectronics N.V.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "ST's STSAFE-A120 product page describes a secure authentication companion device: Common Criteria EAL5+ AVA_VAN.5 with ALC_DVS.2; unique ID; ECDSA/EdDSA signature generation and verification and ECDH; AES-128/256 with CCM, GCM, CMAC and HKDF; SHA-2/SHA-3; a NIST SP 800-90B compliant RNG; 16 Kbytes of configurable nonvolatile memory with 25 years data retention at 25 degrees C and 500 000 erase/write cycles; 2.7-5.5 V supply; -40 to +105 degrees C; I2C up to 400 kbps; SO8N/UFDFPN packages. The page lists a signature-verification service for secure boot and firmware upgrade, host pairing and secure channel, TLS 1.2/1.3 handshake, and customer-specific secrets loaded at ST manufacturing as a personalization service. The product status is shown as active, with availability until 01/2035.",
+      "limitations": "Marketing product page, not a datasheet or security target. Personalization-service contract terms, key-management responsibility split, SDK/ middleware licence terms and per-unit provisioning cost were NOT retrieved. The part was NOT registered in the MC-11 component register and is not a selection.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D27",
+        "HUB",
+        "WATCH"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-508",
+      "claimId": "CLM-MC11-508",
+      "url": "https://www.microchip.com/en-us/product/ATECC608B",
+      "publisher": "Microchip Technology Inc.",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Microchip's ATECC608B page states the device status as 'Not Recommended for new designs'. It describes a secure element with ECC-P256 (ECDH and ECDSA), SHA-256/HMAC and AES-128-GCM, protected storage for up to 16 keys, certificates or data, two high-endurance monotonic counters, a guaranteed unique 72-bit serial number, a NIST SP 800-90 A/B/C random number generator, a 1.8-5.5 V IO / 2.0-5.5 V supply range, <150 nA sleep current, operating temperature up to 100 degrees C, I2C up to 1 MHz or single-wire interface, and secure-boot support through full ECDSA code-signature validation with optional stored digest/signature. The page names Trust&GO (pre-provisioned), TrustFLEX (pre-configured) and TrustCUSTOM variants.",
+      "limitations": "Marketing product page, not a datasheet, security target or lifecycle PCN. 'Guaranteed unique 72-bit serial number' is the manufacturer's page wording, quoted as a manufacturer statement and not independently verified. NRND is the material finding already recorded by the sourcing workstream (CMP-SEC-01/CMP-SEC-02); alternatives were not evaluated, so no replacement part is proposed here. The same manufacturer URL is also recorded as EVD-MC11-014 (architecture workstream) and EVD-MC11-112 (sourcing workstream) with different claimIds and different assertions; this record exists for the security workstream's distinct claim, which satisfies the DATA-CONTRACT section 4.18 duplicate-URL rule. If the Lead prefers a single merged record, the citations in D27/D28 must be updated in the same change.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D27",
+        "CMP-SEC-01",
+        "CMP-SEC-02",
+        "HUB"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-509",
+      "claimId": "CLM-MC11-509",
+      "url": "https://developer.toradex.com/torizon/security/secure-boot-fuse-programming-at-scale/",
+      "publisher": "Toradex AG (developer documentation)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "Toradex documents production programming of secure boot for Torizon OS based modules: secure boot is configured by programming one-time-programmable e-fuses with the public key information of the signing PKI tree (8 fuse values for HAB, 16 for AHAB) and then, as the last step, setting a closing fuse; once the closing fuse is blown the SoC does not load an image not signed with the correct PKI tree and the operation cannot be reversed. Automatic fusing on first boot requires a Torizon OS image of at least version 7.2.0 with at least the Basic Chain of Trust configured and TorizonCore Builder of at least version 3.13.0 (3.17.0 for the build-command approach). The documented fusing logic avoids closing the device if fuse programming errors or HAB/AHAB events are reported. In-field fusing uses Torizon Cloud and requires a commercial licence for the Torizon Cloud account.",
+      "limitations": "Vendor documentation for one SOM family and one OS/BSP path (Torizon OS and Yocto). It documents the mechanism and its irreversibility, not a MAREA design, key hierarchy, HSM choice, manufacturing station or test. It does not state which modules support which fuse-programming options; that matrix is referenced but was not retrieved. No MAREA image, PKI tree or product exists.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D27",
+        "D28",
+        "HUB",
+        "DISPLAY",
+        "AIS"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-510",
+      "claimId": "CLM-MC11-510",
+      "url": "https://docs.mcuboot.com/",
+      "publisher": "MCUboot project (documentation for release v2.4.0)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "THIRD_PARTY_COMMENTARY",
+      "supportedAssertion": "MCUboot documentation describes a secure bootloader for 32-bit microcontrollers that defines a common bootloader and flash layout on MCU systems, enables signed-image boot and software upgrade, provides an image signing tool (imgtool) and a serial recovery protocol (MCUmgr) for recovery of a device without a working application.",
+      "limitations": "Open-source project documentation; the licence of the MCUboot project itself was NOT retrieved in this session and is not asserted. No MCU target, boot-time measurement, rollback test or compatibility assessment was performed. MCUboot is named as a candidate mechanism only.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D27",
+        "SENSE",
+        "WATCH"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-511",
+      "claimId": "CLM-MC11-511",
+      "url": "https://rauc.readthedocs.io/en/latest/",
+      "publisher": "RAUC project (documentation)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "THIRD_PARTY_COMMENTARY",
+      "supportedAssertion": "RAUC documentation describes a lightweight embedded-Linux update client with fail-safe and atomic updates ('an update may be interrupted at any point without breaking the running system'), cryptographic signing and verification of update bundles using OpenSSL with X.509 certificates, support for keys and certificates on PKCS#11 tokens (HSMs), marking boots as successful or failed, symmetric A/B root-filesystem or asymmetric recovery/normal layouts, a bootloader interface, and eMMC boot-partition/ext4/UBI/UBIFS/raw-NAND/raw-NOR storage support. It states that RAUC is not a deployment server and does not replace the bootloader.",
+      "limitations": "Open-source project documentation; the RAUC licence was NOT retrieved and is not asserted. It does not cover MCU-class targets. No integration, bundle, key ceremony, A/B test, power-loss test or measured boot time exists. RAUC is a candidate mechanism only.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D27",
+        "HUB",
+        "DISPLAY",
+        "AIS",
+        "WATCH"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-512",
+      "claimId": "CLM-MC11-512",
+      "url": "https://raw.githubusercontent.com/u-boot/u-boot/master/doc/board/toradex/verdin-imx8mp.rst",
+      "publisher": "U-Boot project (board documentation authored by a Toradex engineer)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "THIRD_PARTY_COMMENTARY",
+      "supportedAssertion": "The upstream U-Boot board document for the Toradex Verdin i.MX8M Plus states the build and boot flow: build the ARM Trusted Firmware (TF-A), obtain the NXP DDR firmware from the firmware-imx package (a vendor binary distribution) and copy the lpddr4 training binaries, build U-Boot, flash to eMMC; ATF, U-Boot proper and the device tree are packed into a FIT image loaded and parsed by SPL, with the boot sequence SPL -> ATF (TF-A) -> U-Boot proper and the example log showing the SoC BootROM handing over to SPL. The file is marked SPDX-License-Identifier: GPL-2.0-or-later.",
+      "limitations": "Upstream community/vendor-authored board document, not a MAREA BSP. It establishes that the documented i.MX8M Plus boot flow depends on vendor TF-A and a vendor DDR-firmware binary blob, but the exact BSP revision, blob licence terms, redistribution conditions and notice obligations were NOT retrieved. The document's own GPL-2.0-or-later SPDX tag applies to the document, not to MAREA code.",
+      "confidence": "HIGH",
+      "affectedItems": [
+        "D28",
+        "HUB",
+        "DISPLAY",
+        "AIS"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-513",
+      "claimId": "CLM-MC11-513",
+      "url": "https://www.infineon.com/products/security-smart-card-solutions/optiga-embedded-security-solutions/optiga-trust-m",
+      "publisher": "Infineon Technologies AG",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE: the URL returned HTTP 404 through the fetch tool on the retrieval date. No Infineon OPTIGA Trust M parameter, certification, lifecycle or interface is asserted anywhere in D27 or D28.",
+      "limitations": "INACCESSIBLE. The product family is recorded only as an alternative secure-element family to evaluate in a future lifecycle review, without any parameter being taken from this failed retrieval.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "D27"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-514",
+      "claimId": "CLM-MC11-514",
+      "url": "https://www.raspberrypi.com/documentation/microcontrollers/security.html",
+      "publisher": "Raspberry Pi Ltd",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "MANUFACTURER_WEBPAGE",
+      "supportedAssertion": "INACCESSIBLE: the URL returned HTTP 404 through the fetch tool on the retrieval date. No Raspberry Pi RP2350 secure-boot parameter is asserted from this retrieval; D27/D28 rely only on the RP2350 facts already established by the architecture workstream (EVD-MC11-007 — signed boot, antifuse OTP, SHA-256, TRNG) and cross-reference that record.",
+      "limitations": "INACCESSIBLE. Recorded so the auditor can see the attempted retrieval and so no parameter is attributed to a page that was not retrieved.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "D27",
+        "D28"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    },
+    {
+      "evidenceId": "EVD-MC11-515",
+      "claimId": "CLM-MC11-515",
+      "url": "https://www.enisa.europa.eu/topics/cyber-resilience-act",
+      "publisher": "European Union Agency for Cybersecurity (ENISA)",
+      "retrievedOn": "2026-11-02",
+      "publishedOn": null,
+      "evidenceType": "OFFICIAL_GOVERNMENT_GUIDE",
+      "supportedAssertion": "INACCESSIBLE: the URL returned HTTP 404 through the fetch tool on the retrieval date. No ENISA CRA page content is asserted from this URL; the retrieved ENISA source used by D27 is EVD-MC11-504 (ENISA vulnerability services page).",
+      "limitations": "INACCESSIBLE. Recorded for retrieval transparency only.",
+      "confidence": "UNKNOWN",
+      "affectedItems": [
+        "D27"
+      ],
+      "independentVerification": "NOT_PERFORMED"
+    }
+  ]
+}

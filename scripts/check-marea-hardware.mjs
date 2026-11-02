@@ -225,6 +225,17 @@ function evidenceIdsIn(root) {
   return unique(collectStrings(root, /^EVD-MC11-\d{3,}$/));
 }
 
+/**
+ * EUR value of a BOM line used for totals. A non-EUR observation must be converted explicitly;
+ * treating a USD figure as EUR is the defect this helper prevents.
+ */
+const lineEurValue = (line) => {
+  const record = obj(line);
+  if (isNum(record.unitPriceEur)) return record.unitPriceEur;
+  if (record.currency === 'EUR' && isNum(record.observedUnitPrice)) return record.observedUnitPrice;
+  return null;
+};
+
 /* ------------------------------------------------------------------ checks */
 
 /**
@@ -459,7 +470,7 @@ export const CHECKS = [
       for (const bom of [...arr(data.ebom?.boms), ...arr(data.mbom?.boms)]) {
         const totals = obj(bom.totals);
         const lines = arr(bom.lines);
-        const unknown = lines.filter((l) => !isNum(l.observedUnitPrice)).length;
+        const unknown = lines.filter((l) => lineEurValue(l) === null).length;
         if (isNum(totals.unknownLineCount) && totals.unknownLineCount !== unknown) {
           out.push(
             `${bom.bomId}: unknownLineCount ${totals.unknownLineCount} != actual ${unknown}`,
@@ -1088,9 +1099,28 @@ export const CHECKS = [
           out.push(`${path}: AIS transmit capability added`);
       }
       for (const text of collectStrings(data, /AIS/i)) {
-        if (/\b(no|not|never|without|prohibit|defer|out of scope)\b/i.test(text)) continue;
-        if (/transmit|transponder/i.test(text)) {
-          out.push(`AIS transmission implied: "${text.slice(0, 90)}"`);
+        // Only an affirmative capability sentence counts: a prohibition statement or a context
+        // sentence that merely names transponders must not be flagged.
+        for (const sentence of text.split(/(?<=[.;:])\s+/)) {
+          if (!/transmit|transponder/i.test(sentence)) continue;
+          if (
+            /\b(no|not|never|without|defer|blocked|out of scope)\b|\bprohibit\w*/i.test(sentence)
+          ) {
+            continue;
+          }
+          const offers =
+            /\b(offers?|includes?|supports?|provides?|implements?|enables?)\b[^.]{0,25}\b(transmit|transpond)\w*/i.test(
+              sentence,
+            );
+          const builds =
+            /\b(builds?|develops?|produces?|sells?)\b[^.]{0,25}\b(ais\s+)?(transmit|transpond)\w*/i.test(
+              sentence,
+            );
+          const capability =
+            /(transmit|transponder)[^.]{0,30}(capabilit|mode|function|support)/i.test(sentence);
+          if (offers || builds || capability) {
+            out.push(`AIS transmission implied: "${sentence.slice(0, 90)}"`);
+          }
         }
       }
       return out;
@@ -1293,20 +1323,36 @@ export const CHECKS = [
     rule: 'Totals computed from inconsistent quantities rejected',
     run(data) {
       const out = [];
+      const rates = arr(data.costs?.fxRates);
+      const rateIds = new Set(rates.map((r) => r.rateId).filter(isStr));
       for (const bom of [...arr(data.ebom?.boms), ...arr(data.mbom?.boms)]) {
         const totals = obj(bom.totals);
         const computed = arr(bom.lines)
-          .filter((l) => isNum(l.observedUnitPrice) && isInt(l.qtyPerUnit))
-          .reduce((sum, l) => sum + l.observedUnitPrice * l.qtyPerUnit, 0);
+          .filter((l) => lineEurValue(l) !== null && isInt(l.qtyPerUnit))
+          .reduce((sum, l) => sum + lineEurValue(l) * l.qtyPerUnit, 0);
         if (isNum(totals.knownLinesEur) && !near(totals.knownLinesEur, computed)) {
           out.push(
-            `${bom.bomId}: knownLinesEur ${totals.knownLinesEur} != recomputed ${computed.toFixed(2)}`,
+            `${bom.bomId}: knownLinesEur ${totals.knownLinesEur} != recomputed EUR ${computed.toFixed(2)}`,
           );
         }
         if (isNum(totals.partialSubtotalEur) && !near(totals.partialSubtotalEur, computed)) {
           out.push(
-            `${bom.bomId}: partialSubtotalEur does not match recomputed ${computed.toFixed(2)}`,
+            `${bom.bomId}: partialSubtotalEur does not match recomputed EUR ${computed.toFixed(2)}`,
           );
+        }
+        for (const line of arr(bom.lines)) {
+          if (
+            line.currency !== 'EUR' &&
+            isNum(line.observedUnitPrice) &&
+            !isNum(line.unitPriceEur)
+          ) {
+            out.push(
+              `${line.lineId}: ${line.currency} price used without an explicit unitPriceEur conversion`,
+            );
+          }
+          if (isStr(line.fxRateId) && !rateIds.has(line.fxRateId)) {
+            out.push(`${line.lineId}: fxRateId ${line.fxRateId} does not resolve`);
+          }
         }
       }
       return out;

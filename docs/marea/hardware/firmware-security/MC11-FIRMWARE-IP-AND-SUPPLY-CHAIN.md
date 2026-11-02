@@ -13,11 +13,11 @@
 
 ## 0. Status block (read before any other sentence)
 
-**No MAREA firmware has been written. No code has been copied from OPEN-MARINE. No licence has been
-granted. `SOURCE_IP_CLEARANCE = NOT_CLEARED`, `OPEN_MARINE_WRITE = PROHIBITED`, `TRADEMARK_LEGAL_CLEARANCE =
-NOT_GRANTED`, `CONFORMITY_CERTIFICATION = NOT_ESTABLISHED`. No supplier, distributor, contract
-manufacturer, licence holder or counsel was contacted. No purchase, flash, board bring-up, build
-reproduction test or licence audit was performed in this session.**
+**No MAREA device exists. No MAREA firmware has been written. No code has been copied from OPEN-MARINE. No
+licence has been granted. `SOURCE_IP_CLEARANCE = NOT_CLEARED`, `OPEN_MARINE_WRITE = PROHIBITED`,
+`TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED`, `CONFORMITY_CERTIFICATION = NOT_ESTABLISHED`. No supplier,
+distributor, contract manufacturer, licence holder or counsel was contacted. No purchase, flash, board
+bring-up, build-reproduction test or licence audit was performed in this session.**
 
 This document is a **boundary analysis**. It records what MAREA may study, what a licence covers, what
 needs separate permission, what cannot be reused, what specifications could be independently implemented,
@@ -67,6 +67,7 @@ document does not re-litigate it.
 | `MC-02-BLOCKERS-AND-DECISIONS.md` | Blockers S-01…S-09 (software licensing/supply chain), H-01…H-13 (hardware/safety/certification) |
 | `MAREA-PRODUCT-REUSE-MAP.md` §4 + `HARDWARE-COMPLIANCE-MATRIX.md` §4 | Legacy firmware provenance, Pico 2 safety-bridge status, NMEA licensing, hardware-device notices |
 | `MC11-BASELINE-AND-GOVERNANCE.md` §4 | The invariants D28 may not weaken |
+| `MC11-PROTOCOL-AND-COMPATIBILITY-ASSESSMENT.md` (D6) | Transport-level compatibility vocabulary, the NMEA licensing position and the rule that compatibility is a claim about a specific device, firmware version, message type and direction backed by a recorded test |
 | D27 | The device-security requirement set that firmware supply-chain controls must support |
 
 ### 1.3 Sources fetched in this session (retrieval date 2026-11-02)
@@ -169,7 +170,7 @@ not the idea question.
 | ID | Element (legacy) | Status (MC-02) | Study the idea? | Reusable code today? | Conditions under which code would be reusable |
 |---|---|---|---|---|---|
 | E-01 | Marine data contract (Signal K-derived paths, SI units, quality flags, `DataPoint<T>`, clock-drift normalisation) | `REUSE-CANDIDATE` | **Yes** — the *requirement* to have units/quality/freshness is a design idea; MAREA must define its own contract text and types | **No** — all rights reserved | Written assignment/licence from rightsholders (D-01…D-05) **and** a programme rights decision (D-002); then still a legal review of what is copied |
-| E-02 | Signal K server runtime as deployed (third-party image + systemd units) | `REUSE-CANDIDATE` | Yes, as an interoperability target | No (third-party component; embedding a server in MAREA firmware is a separate architectural decision) | Apache-2.0 notices, digest pinning, image SBOM; product support position |
+| E-02 | Signal K server runtime as deployed (third-party image + systemd units) | `REUSE-CANDIDATE` | Yes, as an interoperability target | As a third-party server only: Apache-2.0 with notices and digest pinning; not a MAREA firmware component | Apache-2.0 notice retention, digest pinning, image SBOM; product support position |
 | E-03 | Signal K delta publish/subscribe client patterns | `REUSE-CANDIDATE` | Yes — the pattern; the protocol is an independent interface | **No** — all rights reserved | Assignment/licence + rights decision |
 | E-04 | First-party sensor publishers (NMEA 0183 wind parser, IMU fusion, GPS) | `REUSE-CONDITIONAL` | Yes — the failure-handling and calibration ideas | **No** | Assignment/licence; real-sensor tests; calibration evidence |
 | E-05 | Autopilot control engine (state machine, controllers, fault manager) | `REUSE-CONDITIONAL` | **No for a product path** — `PILOT_SAFETY_GATE = BLOCKED`; only a future authorised safety programme could even consider it | **No** | Would require the safety programme and a rights decision; out of scope in MC-11 |
@@ -229,7 +230,7 @@ not the idea question.
 | Diagnostics vocabulary and owner-export bundle | MAREA product requirement + D27 | Must not copy the legacy diagnostics text/structure |
 | Boot/update state model, A/B semantics, anti-rollback | Public documentation of the candidate mechanisms (MCUboot, RAUC, SoC HAB/AHAB) and standards-level understanding | Mechanisms are usable as third-party components under their licences with notices; a from-scratch implementation must be MAREA's own |
 | Signal K path consumption/publishing | Signal K is a documented open interface; MAREA implements its own client | **Licence terms of the Signal K specification were not verified in this session**; `LEGAL_REVIEW_REQUIRED` before any compatibility claim |
-| NMEA 0183 sentence parsing | MAREA could implement a parser from the licensed standard and its own requirements | **The standard is copyrighted and not licensed to MAREA**; no conformance claim; `BLOCKED`/`LEGAL_REVIEW_REQUIRED` |
+| NMEA 0183 sentence parsing | MAREA could implement an independent parser from public sentence descriptions plus its own requirements — D6 §5 conclusion 2 records that NMEA 0183 is the only legacy interface implementable without a standard purchase | **The standard text is copyrighted and not licensed to MAREA**; field-level detail must not be taken from unlicensed copies; no conformance claim; `LEGAL_REVIEW_REQUIRED` |
 | AIS message decoding (`!AIVDM`) | Independent implementation from public technical descriptions (e.g. ITU-R M.1371) if a MAREA receiver is ever built | No AIS-catcher code; standards text not held; receive-only; no transmission; decoder GPL decision (D9/DEC-04) |
 | Device identity, provisioning, signed-update authorisation | MAREA's own design informed by public secure-boot/update documentation | Must be MAREA's own implementation; vendor tooling used under its own terms |
 | SBOM generation | Deterministic extraction from MAREA's own build | Tool licences to be verified before selection |
@@ -469,5 +470,6 @@ Candidate rules for a future firmware programme (they are requirements, not curr
 
 **Cross-references:** D27 (device security), `INTELLECTUAL-PROPERTY-CHAIN.md`,
 `LICENSE-NOTICE-AND-DISTRIBUTION-POLICY.md`, `MAREA-PRODUCT-REUSE-MAP.md`, `MC-02-BLOCKERS-AND-DECISIONS.md`,
-`HARDWARE-COMPLIANCE-MATRIX.md` §3.5–§3.6 and §4, `MC11-RESEARCH-SCOPE.md` §8, `MC11-BASELINE-AND-GOVERNANCE.md`
+`HARDWARE-COMPLIANCE-MATRIX.md` §3.5–§3.6 and §4, `MC11-PROTOCOL-AND-COMPATIBILITY-ASSESSMENT.md` (D6),
+`MC11-RESEARCH-SCOPE.md` §8, `MC11-BASELINE-AND-GOVERNANCE.md`
 §4, `data/conformity-applicability.json` (`LEG-CRA-2024-2847` — cross-referenced, not edited).

@@ -173,9 +173,14 @@ Each line: `lineId`, `category` (`ELECTRONIC`, `MECHANICAL`, `CABLE_CONNECTOR`, 
 `priceEvidenceClass`, `observedUnitPrice` (number|null), `currency`, `vatTreatment`,
 `priceDate`|null, `priceQuantityTier`|null, `volumeAdjustmentAssumptionId`|null,
 `availabilityStatus`, `riskRating`, `lifecycleStatus`, `evidenceSource`, `engineeringConfidence`,
-`normalizationApplied`, `normalizationNote`|null, `verificationRequirement`.
+`normalizationApplied`, `normalizationNote`|null, `verificationRequirement`, `unitPriceEur`
+(number|null — the only value used in EUR totals; for a EUR line it equals `observedUnitPrice`, for a
+non-EUR line it is the converted value and `fxRateId` must resolve), `fxRateId` (string|null).
+`observedUnitPrice` and `currency` always preserve the original observed figure: a USD line is never
+silently treated as EUR, and a non-EUR line without `unitPriceEur` counts as unpriced.
 `totals{}`: `knownLinesEur`, `unknownLineCount`, `knownLineCount`, `totalStatus`, `partialSubtotalEur`
-(number|null), `totalEur` (number|null).
+(number|null), `totalEur` (number|null). `knownLinesEur` and `partialSubtotalEur` are
+`Σ(qtyPerUnit × unitPriceEur)` only; `unknownLineCount` counts lines whose `unitPriceEur` is null.
 
 ### 4.9 `cost-scenarios.json` (economics)
 

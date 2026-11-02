@@ -217,6 +217,10 @@ honesty of the data and of the device's own state**, not merely about "no danger
 
 ## 4. Trust boundaries and network segmentation
 
+Transport-by-transport exposure (NMEA 0183/2000, generic CAN, Ethernet, Wi-Fi, BLE, GNSS, AIS, cellular,
+satellite) is assessed in D6 §3; this section defines the segmentation and authentication policy that the
+firmware must enforce across those transports.
+
 ### 4.1 Candidate zones
 
 | Zone | Contents | Trust level | Candidate rule |
@@ -865,7 +869,8 @@ be made in MC-11.**
 
 **Cross-references:** D28 (firmware IP and supply chain), `MC11-HUB-ARCHITECTURE.md` (D7 §4.11, §4.16,
 §4.18, §9), `MC11-WATCH-SENSE-ARCHITECTURE.md` (D8 §2.6, §2.8), `MC11-AIS-DISPLAY-PILOT-BOUNDARIES.md`
-(D9), `MC11-EMBEDDED-ARCHITECTURE-OPTIONS.md` (D4), `data/conformity-applicability.json`
+(D9), `MC11-EMBEDDED-ARCHITECTURE-OPTIONS.md` (D4), `MC11-PROTOCOL-AND-COMPATIBILITY-ASSESSMENT.md` (D6 §3,
+§5), `data/conformity-applicability.json`
 (`LEG-CRA-2024-2847`, owned by the conformity workstream — referenced, not modified), `HARDWARE-COMPLIANCE-MATRIX.md`
 §3.5–§3.6 (firmware/safety gaps of the legacy stack), `docs/marea/products/WATCH-ALERT-DELIVERY-AND-PRIVACY-CONTRACT.md`,
 `docs/marea/products/FLEET-TENANCY-SECURITY-AND-DATA-GOVERNANCE.md` §8 and §27.
