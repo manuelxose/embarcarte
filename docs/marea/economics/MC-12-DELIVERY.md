@@ -8,7 +8,8 @@
 | Verified base | MC-11 `5b47a3d51fa875a08ed6f4ad8448a3e51a0f0499` (local = remote = prompt-preparation SHA) |
 | Predecessor PR | #18 `OPEN`, draft, not merged, head `5b47a3d` |
 | Implementation commit | `e6e181a` |
-| Delivery commit | recorded in Git history; see `git log` |
+| Correction commit | `8f819c1` |
+| Record-refresh commit | `05883ac` |
 | Draft PR | [#19](https://github.com/manuelxose/embarcarte/pull/19), stacked on `feature/marea-mc11-hardware-sourcing-conformity`, not merged |
 | Verdict | `MC12_VERDICT = PARTIAL`; `PASS_INTERNAL_ECONOMICS_SCOPE`; `BLOCKED_OR_NOT_OBTAINED` for external commercial evidence |
 
