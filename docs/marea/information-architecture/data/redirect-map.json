@@ -34,7 +34,8 @@
     "destination404": "DYNAMIC_CONDITIONAL on /productos/:slug only, and unknown slugs are answered 404 at the source path instead of being redirected (observed)",
     "unapprovedMareaDestination": "NONE (no redirect points at /marea or /en/marea)",
     "loginAsSubstitute": "PROHIBITED (no redirect targets /acceso, /en/login, /cuenta or /en/account)",
-    "entityIdentity": "PRESERVED (legacy slug maps to the same product slug; hubs map to hubs)"
+    "entityIdentity": "PRESERVED (legacy slug maps to the same product slug; hubs map to hubs)",
+    "ia04Correction": "Unknown legacy product slugs answer 404 with a Location header and an empty body (inherited Angular behaviour). They are not redirected; the invariant is no 3xx to a 404 destination."
   },
   "counts": {
     "total": 53,
@@ -1066,7 +1067,7 @@
       "reason": "Existing legacy 301 preserved exactly as inherited: one product slug maps to the same product slug under /tecnologia, so the entity identity is preserved. Unknown slugs are not redirected (see nonRedirectSurfaces).",
       "riskClassification": "MEDIUM_SLUG_DEPENDENT",
       "canonicalDestination": "https://embarcarte.com/tecnologia/:slug",
-      "observed": "Isolated local SSR run 2026-11-02: /productos/hub -> 301 location /tecnologia/hub -> 200 (one hop); query string dropped; /productos/does-not-exist -> 404 at the source URL with no Location header.",
+      "observed": "Isolated local SSR run 2026-11-02: /productos/hub -> 301 location /tecnologia/hub -> 200 (one hop); query string dropped; Isolated local SSR run 2026-11-02: /productos/does-not-exist answered 404 with Location: /tecnologia/does-not-exist, an empty body and no noindex meta. This is the inherited Angular redirect leaving a Location header on a 404, not a 3xx redirect; the no-301-to-a-404-destination invariant holds.",
       "sourceLocale": "es",
       "destinationLocale": "es",
       "sourceRouteId": null,
@@ -1283,7 +1284,8 @@
       "xRobotsTag": "none",
       "reason": "Unknown paths are rendered by the Angular wildcard route with a real 404 and a noindex meta. Swallowing unknown URLs into the home page, a hub or a login page is prohibited.",
       "evidenceSource": "LOCAL_SSR_VERIFIED",
-      "observed": "Isolated local SSR run 2026-11-02: /marea, /en/marea and /productos/does-not-exist answered 404 with no Location header."
+      "observed": "Isolated local SSR run 2026-11-02: /marea and /en/marea answered 404 with no Location and a noindex body. /productos/does-not-exist answered 404 with Location: /tecnologia/does-not-exist and an empty body (inherited Angular redirect behaviour); it is not a redirect.",
+      "note": "The empty-body 404 with a Location header bypasses the NotFound noindex surface; recorded as inherited behaviour and out of MC-15 change scope."
     },
     {
       "surfaceId": "legacyProductoDetailUnresolvedSlug",
@@ -1294,7 +1296,8 @@
       "xRobotsTag": "none",
       "reason": "When a legacy product slug has no TECHNOLOGY counterpart the router does not redirect; the request is answered 404 at the legacy URL. That prevents a 301 to a 404 destination. Only a per-slug verified mapping may ever change this, and no such change is authorised in MC-15.",
       "evidenceSource": "LOCAL_SSR_VERIFIED",
-      "observed": "Isolated local SSR run 2026-11-02: /productos/does-not-exist -> 404, zero redirect hops."
+      "observed": "Isolated local SSR run 2026-11-02: /productos/does-not-exist answered 404 with Location: /tecnologia/does-not-exist, an empty body and no noindex meta. This is the inherited Angular redirect leaving a Location header on a 404, not a 3xx redirect; the no-301-to-a-404-destination invariant holds.",
+      "note": "Inherited empty-body 404 + Location behaviour; no routing change is authorised in MC-15."
     },
     {
       "surfaceId": "apiEndpoints",

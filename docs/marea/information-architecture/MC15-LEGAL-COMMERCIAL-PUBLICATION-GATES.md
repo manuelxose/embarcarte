@@ -1,7 +1,7 @@
 # MC-15 — Legal and commercial publication gates (D13)
 
 | Field | Value |
-|---|---|
+| --- | --- |
 | Deliverable | D13 `MC15-LEGAL-COMMERCIAL-PUBLICATION-GATES.md` |
 | Milestone | MC-15/36 — Bilingual information architecture and SEO migration |
 | Date | 2026-11-02 |
@@ -30,7 +30,7 @@ implementing it is not publishing it.
 ## 2. Inherited hard restrictions (unchanged)
 
 | Restriction | Value | Effect on MC-15 |
-|---|---|---|
+| --- | --- | --- |
 | `TRADEMARK_LEGAL_CLEARANCE` | `NOT_GRANTED` | No MAREA public brand use, no `®`/`™`, no registration claim. |
 | `MAREA_PUBLIC_USE` | `NO_GO` | No MAREA page title, description, breadcrumb or JSON-LD brand. |
 | `SOURCE_IP_CLEARANCE` | `NOT_CLEARED` | No ownership or open-source statement. |
@@ -50,7 +50,7 @@ implementing it is not publishing it.
 ## 3. Independent route states
 
 | State | Meaning | Value for the 23 proposed routes |
-|---|---|---|
+| --- | --- | --- |
 | `routeDefined` | Route identity, ES/EN mapping and entity binding recorded in MC-15 planning data. | `true` |
 | `implementationReady` | Component, guard, translation and content source exist and pass implementation tests. | `false` |
 | `publicationAuthorized` | Written authorisation after every blocking gate closed with verified evidence. | `false` |
@@ -67,7 +67,7 @@ Gate codes used in later tables: MKT, PIL, IPC, DAT, PRI, CRA, CON, CLM, PRC, PA
 LGE, WEB.
 
 | Gate | Code | Name | Source status | Closure owner | Families / bundles affected |
-|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- |
 | `GATE-MARKET-PLACEMENT` | MKT | EU market placement (conformity, DoC, CE, traceability) | BLOCKED | PRODUCT_COMPLIANCE_ENGINEER | NAV, HUB, AIS, PILOT, SENSE, WATCH, DISPLAY; START–COMPLETE |
 | `GATE-SAFETY-PILOT` | PIL | PILOT safety gate | BLOCKED | HARDWARE_LEAD | PILOT; SAIL, PROTECT, COMPLETE, FLEET |
 | `GATE-IP-CLEARANCE` | IPC | Intellectual-property clearance | BLOCKED | LEGAL_COUNSEL | all nine families; all six bundles |
@@ -88,7 +88,7 @@ because 0 of 34 findings are remediated; the other twelve remain `BLOCKED`.
 ## 5. Gates mapped to future page types
 
 | Gate | Page types affected | Gate-specific note |
-|---|---|---|
+| --- | --- | --- |
 | MKT | Product family, bundle, product index, solution index, product documentation | No page may present a product as placed on the market. |
 | PIL | Product family, bundle, product/solution index, product documentation | PILOT and PILOT-containing bundles stay non-transactional. |
 | IPC | All ten page types | Brand, ownership and licence content block every page type. |
@@ -103,9 +103,10 @@ because 0 of 34 findings are remediated; the other twelve remain `BLOCKED`.
 | LGE | All ten page types | The footer legal block cannot be completed. |
 | WEB | All ten page types | No MAREA page may publish before the D14 findings close. |
 
-`PAGE_PRODUCT_INDEX` and `PAGE_SOLUTION_INDEX` inherit every gate of the entities they
-expose; that is why both carry all 13 gates. `PAGE_MAREA_OVERVIEW` carries only the four
-universal gates (IPC, CLM, LGE, WEB) because it makes no product or transaction claim.
+Post-audit correction (finding IA-01): the route-level blocking set is the sorted union of the
+registry, IA and gate-scope derivations, so a page that presents a family or bundle inherits every
+gate attached to it. `PAGE_MAREA_OVERVIEW`, `PAGE_PRODUCT_INDEX` and `PAGE_SOLUTION_INDEX` therefore
+carry all 13 gates. The union is deliberately conservative and closes or relaxes nothing.
 
 ## 6. Route gate matrix (23/23)
 
@@ -114,44 +115,43 @@ Every row has `routeDefined=true`, `implementationReady=false`,
 `commercialTransactionAuthorized=false`.
 
 | Route | Entity | Page type | Gates | Docs |
-|---|---|---|---:|---:|
-| `mareaOverview` | ENT-HUB-MAREA | PAGE_MAREA_OVERVIEW | 4 — IPC, CLM, LGE, WEB | 2 |
-| `mareaProducts` | ENT-HUB-PRODUCTS | PAGE_PRODUCT_INDEX | 13 — all | 24 |
-| `mareaSolutions` | ENT-HUB-SOLUTIONS | PAGE_SOLUTION_INDEX | 13 — all | 24 |
-| `mareaFamilyNav` | ENT-FAMILY-NAV | PAGE_PRODUCT_FAMILY | 12 — all except PIL | 24 |
-| `mareaFamilyHub` | ENT-FAMILY-HUB | PAGE_PRODUCT_FAMILY | 10 — MKT, IPC, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 19 |
-| `mareaFamilyAis` | ENT-FAMILY-AIS | PAGE_PRODUCT_FAMILY | 11 — MKT, IPC, DAT, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 21 |
-| `mareaFamilyPilot` | ENT-FAMILY-PILOT | PAGE_PRODUCT_FAMILY | 11 — MKT, PIL, IPC, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 19 |
-| `mareaFamilySense` | ENT-FAMILY-SENSE | PAGE_PRODUCT_FAMILY | 10 — MKT, IPC, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 19 |
-| `mareaFamilyWatch` | ENT-FAMILY-WATCH | PAGE_PRODUCT_FAMILY | 11 — MKT, IPC, PRI, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 22 |
-| `mareaFamilyDisplay` | ENT-FAMILY-DISPLAY | PAGE_PRODUCT_FAMILY | 11 — MKT, IPC, DAT, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 21 |
-| `mareaFamilyWeather` | ENT-FAMILY-WEATHER | PAGE_PRODUCT_FAMILY | 10 — MKT, IPC, DAT, CRA, CON, CLM, PRC, PAY, LGE, WEB | 20 |
+| --- | --- | --- | ---: | ---: |
+| `mareaOverview` | ENT-HUB-MAREA | PAGE_MAREA_OVERVIEW | 13 — all | 22 |
+| `mareaProducts` | ENT-HUB-PRODUCTS | PAGE_PRODUCT_INDEX | 13 — all | 22 |
+| `mareaSolutions` | ENT-HUB-SOLUTIONS | PAGE_SOLUTION_INDEX | 13 — all | 22 |
+| `mareaFamilyNav` | ENT-FAMILY-NAV | PAGE_PRODUCT_FAMILY | 12 — MKT, IPC, DAT, PRI, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 22 |
+| `mareaFamilyHub` | ENT-FAMILY-HUB | PAGE_PRODUCT_FAMILY | 10 — MKT, IPC, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 18 |
+| `mareaFamilyAis` | ENT-FAMILY-AIS | PAGE_PRODUCT_FAMILY | 11 — MKT, IPC, DAT, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 20 |
+| `mareaFamilyPilot` | ENT-FAMILY-PILOT | PAGE_PRODUCT_FAMILY | 11 — MKT, PIL, IPC, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 18 |
+| `mareaFamilySense` | ENT-FAMILY-SENSE | PAGE_PRODUCT_FAMILY | 10 — MKT, IPC, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 18 |
+| `mareaFamilyWatch` | ENT-FAMILY-WATCH | PAGE_PRODUCT_FAMILY | 11 — MKT, IPC, PRI, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 20 |
+| `mareaFamilyDisplay` | ENT-FAMILY-DISPLAY | PAGE_PRODUCT_FAMILY | 11 — MKT, IPC, DAT, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 20 |
+| `mareaFamilyWeather` | ENT-FAMILY-WEATHER | PAGE_PRODUCT_FAMILY | 10 — MKT, IPC, DAT, CRA, CON, CLM, PRC, PAY, LGE, WEB | 19 |
 | `mareaFamilyFleet` | ENT-FAMILY-FLEET | PAGE_PRODUCT_FAMILY | 10 — IPC, DAT, PRI, CRA, CON, CLM, PRC, PAY, LGE, WEB | 15 |
-| `mareaSolutionStart` | ENT-BUNDLE-START | PAGE_BUNDLE_SOLUTION | 12 — all except PIL | 24 |
-| `mareaSolutionCruise` | ENT-BUNDLE-CRUISE | PAGE_BUNDLE_SOLUTION | 12 — all except PIL | 24 |
-| `mareaSolutionSail` | ENT-BUNDLE-SAIL | PAGE_BUNDLE_SOLUTION | 13 — all | 24 |
-| `mareaSolutionProtect` | ENT-BUNDLE-PROTECT | PAGE_BUNDLE_SOLUTION | 11 — MKT, IPC, PRI, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 22 |
-| `mareaSolutionComplete` | ENT-BUNDLE-COMPLETE | PAGE_BUNDLE_SOLUTION | 13 — all | 24 |
+| `mareaSolutionStart` | ENT-BUNDLE-START | PAGE_BUNDLE_SOLUTION | 12 — MKT, IPC, DAT, PRI, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 22 |
+| `mareaSolutionCruise` | ENT-BUNDLE-CRUISE | PAGE_BUNDLE_SOLUTION | 12 — MKT, IPC, DAT, PRI, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 22 |
+| `mareaSolutionSail` | ENT-BUNDLE-SAIL | PAGE_BUNDLE_SOLUTION | 13 — all | 22 |
+| `mareaSolutionProtect` | ENT-BUNDLE-PROTECT | PAGE_BUNDLE_SOLUTION | 12 — MKT, PIL, IPC, PRI, CRA, CON, CLM, PRC, PAY, INS, LGE, WEB | 20 |
+| `mareaSolutionComplete` | ENT-BUNDLE-COMPLETE | PAGE_BUNDLE_SOLUTION | 13 — all | 22 |
 | `mareaSolutionFleet` | ENT-BUNDLE-FLEET | PAGE_BUNDLE_SOLUTION | 11 — PIL, IPC, DAT, PRI, CRA, CON, CLM, PRC, PAY, LGE, WEB | 16 |
-| `mareaConfigurator` | ENT-TOOL-CONFIGURATOR | PAGE_CONFIGURATOR | 5 — IPC, PRI, CLM, LGE, WEB | 5 |
+| `mareaConfigurator` | ENT-TOOL-CONFIGURATOR | PAGE_CONFIGURATOR | 12 — MKT, PIL, IPC, DAT, PRI, CRA, CON, CLM, PRC, INS, LGE, WEB | 21 |
 | `professionals` | ENT-PAGE-PROFESSIONALS | PAGE_PROFESSIONAL | 6 — IPC, PRI, CON, CLM, LGE, WEB | 9 |
 | `installers` | ENT-PAGE-INSTALLERS | PAGE_INSTALLER_PROGRAM | 6 — IPC, PRI, CON, CLM, LGE, WEB | 9 |
-| `support` | ENT-PAGE-SUPPORT | PAGE_SUPPORT | 6 — IPC, CRA, CON, CLM, LGE, WEB | 9 |
-| `productDocumentation` | ENT-DOC-PRODUCT | PAGE_PRODUCT_DOCUMENTATION | 7 — MKT, IPC, CRA, CON, CLM, LGE, WEB | 17 |
+| `support` | ENT-PAGE-SUPPORT | PAGE_SUPPORT | 6 — IPC, CRA, CON, CLM, LGE, WEB | 10 |
+| `productDocumentation` | ENT-DOC-PRODUCT | PAGE_PRODUCT_DOCUMENTATION | 9 — MKT, PIL, IPC, DAT, CRA, CON, CLM, LGE, WEB | 19 |
 
 The machine-readable matrix also carries the exact `blockingGateIds`,
 `requiredEvidenceIds` and `requiredDocumentIds` per route.
 
-Scope note: MC-14's `GATE-SAFETY-PILOT` bundle scope lists PROTECT and FLEET even though
-the PROTECT reference configuration contains no PILOT component. The route matrix follows
-the actual bundle composition for PROTECT and the recorded source scope for FLEET. This
-note does not clear, relax or reinterpret any gate; it records why the route-level gate
-counts differ from the gate-level scope.
+Scope note (post-audit): the union follows MC-14's recorded gate scope and the actual bundle
+composition. PROTECT inherits `GATE-SAFETY-PILOT` through the union even though its reference
+configuration contains no PILOT component; FLEET keeps it from the recorded bundle scope. This note
+does not clear, relax or reinterpret any gate; it explains why the route-level sets are conservative.
 
 ## 7. Required documents (24)
 
 | Document | Name | Status | Gate | Owner |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | DOC-01 | EU declaration of conformity | NOT_EXECUTED | MKT | PRODUCT_COMPLIANCE_ENGINEER |
 | DOC-02 | Technical documentation file | NOT_EXECUTED | MKT | PRODUCT_COMPLIANCE_ENGINEER |
 | DOC-03 | Product risk assessment | NOT_EXECUTED | MKT | PRODUCT_COMPLIANCE_ENGINEER |

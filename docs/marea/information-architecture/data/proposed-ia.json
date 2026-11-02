@@ -662,7 +662,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 210
+      "sortOrder": 210,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-PRODUCTS",
@@ -698,7 +699,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 10
+      "sortOrder": 10,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-FAMILY-NAV",
@@ -733,7 +735,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 10
+      "sortOrder": 10,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-FAMILY-HUB",
@@ -766,7 +769,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 20
+      "sortOrder": 20,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-FAMILY-AIS",
@@ -800,7 +804,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 30
+      "sortOrder": 30,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-FAMILY-PILOT",
@@ -834,7 +839,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 40
+      "sortOrder": 40,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-FAMILY-SENSE",
@@ -867,7 +873,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 50
+      "sortOrder": 50,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-FAMILY-WATCH",
@@ -901,7 +908,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 60
+      "sortOrder": 60,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-FAMILY-DISPLAY",
@@ -935,7 +943,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 70
+      "sortOrder": 70,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-FAMILY-WEATHER",
@@ -956,6 +965,7 @@
       "commercialTransactionAuthorized": false,
       "sitemapEligible": false,
       "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
         "GATE-IP-CLEARANCE",
         "GATE-DATA-LICENSING",
         "GATE-CRA-CYBERSECURITY",
@@ -967,7 +977,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 80
+      "sortOrder": 80,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-FAMILY-FLEET",
@@ -1000,7 +1011,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 90
+      "sortOrder": 90,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-SOLUTIONS",
@@ -1036,7 +1048,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 20
+      "sortOrder": 20,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-BUNDLE-START",
@@ -1060,6 +1073,7 @@
         "GATE-MARKET-PLACEMENT",
         "GATE-IP-CLEARANCE",
         "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
         "GATE-CRA-CYBERSECURITY",
         "GATE-CONSUMER-TERMS",
         "GATE-COMMERCIAL-CLAIMS",
@@ -1070,7 +1084,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 10
+      "sortOrder": 10,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-BUNDLE-CRUISE",
@@ -1094,6 +1109,7 @@
         "GATE-MARKET-PLACEMENT",
         "GATE-IP-CLEARANCE",
         "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
         "GATE-CRA-CYBERSECURITY",
         "GATE-CONSUMER-TERMS",
         "GATE-COMMERCIAL-CLAIMS",
@@ -1104,7 +1120,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 20
+      "sortOrder": 20,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-BUNDLE-SAIL",
@@ -1129,6 +1146,7 @@
         "GATE-SAFETY-PILOT",
         "GATE-IP-CLEARANCE",
         "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
         "GATE-CRA-CYBERSECURITY",
         "GATE-CONSUMER-TERMS",
         "GATE-COMMERCIAL-CLAIMS",
@@ -1139,7 +1157,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 30
+      "sortOrder": 30,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-BUNDLE-PROTECT",
@@ -1174,7 +1193,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 40
+      "sortOrder": 40,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-BUNDLE-COMPLETE",
@@ -1210,7 +1230,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 50
+      "sortOrder": 50,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-BUNDLE-FLEET",
@@ -1244,7 +1265,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 60
+      "sortOrder": 60,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-MAREA-CONFIGURATOR",
@@ -1279,7 +1301,8 @@
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 30
+      "sortOrder": 30,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-PROFESSIONALS",
@@ -1301,13 +1324,15 @@
       "sitemapEligible": false,
       "blockingGateIds": [
         "GATE-IP-CLEARANCE",
+        "GATE-PRIVACY-DPA-DPIA",
         "GATE-CONSUMER-TERMS",
         "GATE-COMMERCIAL-CLAIMS",
         "GATE-LEGAL-ENTITY",
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 220
+      "sortOrder": 220,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-INSTALLERS",
@@ -1329,13 +1354,15 @@
       "sitemapEligible": false,
       "blockingGateIds": [
         "GATE-IP-CLEARANCE",
+        "GATE-PRIVACY-DPA-DPIA",
         "GATE-CONSUMER-TERMS",
         "GATE-COMMERCIAL-CLAIMS",
         "GATE-LEGAL-ENTITY",
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 230
+      "sortOrder": 230,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-SUPPORT",
@@ -1358,12 +1385,14 @@
       "blockingGateIds": [
         "GATE-IP-CLEARANCE",
         "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
         "GATE-COMMERCIAL-CLAIMS",
         "GATE-LEGAL-ENTITY",
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 240
+      "sortOrder": 240,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     },
     {
       "nodeId": "N-DOCUMENTATION",
@@ -1384,16 +1413,19 @@
       "commercialTransactionAuthorized": false,
       "sitemapEligible": false,
       "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
         "GATE-SAFETY-PILOT",
         "GATE-IP-CLEARANCE",
         "GATE-DATA-LICENSING",
         "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
         "GATE-COMMERCIAL-CLAIMS",
         "GATE-LEGAL-ENTITY",
         "GATE-WEBSITE-REMEDIATION"
       ],
       "blockingGateIdsBasis": "ROUTE_GATE_MATRIX",
-      "sortOrder": 10
+      "sortOrder": 10,
+      "blockingGateBasis": "UNION_OF_REGISTRY_IA_AND_ROUTE_GATE_SCOPE_POST_AUDIT"
     }
   ]
 }

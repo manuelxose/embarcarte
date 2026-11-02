@@ -510,3 +510,40 @@ test('rejects a published admin route', () => {
   });
   assert.ok(found.includes('IA-064'));
 });
+
+test('rejects divergent blocking gate lists (IA-01)', () => {
+  const found = codes((d) => {
+    const item = d['proposed-routes'].items.find((route) => route.routeId === 'mareaOverview');
+    item.blockingGateIds = item.blockingGateIds.filter((gate) => gate !== 'GATE-SAFETY-PILOT');
+  });
+  assert.ok(found.includes('IA-068'));
+});
+
+test('rejects an AIS transmission claim (IA-02)', () => {
+  const found = codes((d) => {
+    const item = d['bilingual-metadata'].items.find(
+      (candidate) => candidate.pageId === 'mareaFamilyAis' && candidate.locale === 'es',
+    );
+    item.descriptionTemplate =
+      'Familia AIS con transmision AIS integrada y alcance de 30 millas nauticas.';
+  });
+  assert.ok(found.includes('IA-069'));
+});
+
+test('rejects a FLEET default-hardware claim (IA-02)', () => {
+  const found = codes((d) => {
+    const item = d['bilingual-metadata'].items.find(
+      (candidate) => candidate.pageId === 'mareaFamilyFleet' && candidate.locale === 'en',
+    );
+    item.descriptionTemplate = 'FLEET ships with default hardware on every vessel.';
+  });
+  assert.ok(found.includes('IA-069'));
+});
+
+test('rejects a sitemap membership contradiction (IA-03)', () => {
+  const found = codes((d) => {
+    const item = d['current-routes'].items.find((route) => route.routeId === 'shop');
+    item.sitemapExpected = false;
+  });
+  assert.ok(found.includes('IA-070'));
+});

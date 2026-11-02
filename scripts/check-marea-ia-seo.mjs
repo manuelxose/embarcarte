@@ -195,6 +195,12 @@ export const ALL_ROUTE_IDS = [...CURRENT_ROUTE_IDS, ...PROPOSED_ROUTE_IDS];
 const FORBIDDEN_PUBLIC_CLAIM =
   /\b(buy|order now|add to cart|checkout|pre-?order|in stock|available now|price|from €|€\s?\d|eur\s?\d|ce marked|certified|nmea\s?2000 certified|autonomous|self-steering|collision avoidance|guaranteed|official charts|official weather|gdpr compliant|best|leading)\b/i;
 const FORBIDDEN_BRAND = /\bMAREA\b/i;
+// Hard restrictions inherited from MC-14: no AIS transmission/transponder offer and no
+// FLEET default/included hardware claim may pass the validators.
+const AIS_TRANSMISSION_CLAIM =
+  /\bAIS\b[^.\n]{0,120}\b(transmi(?:t|ts|tted|tter|ssion|tir|si[oó]n|sor)|transceiver|transceptor)\b/i;
+const FLEET_DEFAULT_HARDWARE_CLAIM =
+  /\bFLEET\b[^.\n]{0,120}\b(default hardware|hardware (?:is )?included|includes? hardware|hardware de serie|incluye hardware|equipo(?:s)? incluido(?:s)?)\b/i;
 
 const nice = (value) => (value === undefined || value === null ? '' : String(value));
 const asArray = (value) => (Array.isArray(value) ? value : []);
@@ -440,6 +446,19 @@ export function validateData(data, { root = process.cwd() } = {}) {
   ]) {
     const count = urlRouteCounts.get(routeId) ?? 0;
     if (count < minimum) add('IA-016', `${routeId} concrete URL records ${count} < ${minimum}`);
+  }
+  for (const routeId of CURRENT_ROUTE_IDS) {
+    const route = currentItems.find((item) => (item.routeId ?? item.id) === routeId);
+    if (!route) continue;
+    const memberships = urlItems
+      .filter((item) => item.routeId === routeId)
+      .map((item) => nice(item.sitemapMembership));
+    if (
+      memberships.some((membership) => /^MEMBER_|^INCLUDED/.test(membership)) &&
+      route.sitemapExpected !== true
+    ) {
+      add('IA-070', `${routeId} has sitemap member URLs but sitemapExpected is not true`);
+    }
   }
 
   // ------------------------------------------------------------ URL evidence
@@ -971,6 +990,12 @@ export function validateData(data, { root = process.cwd() } = {}) {
       if (/InStock|OutOfStock|aggregateRating|review/i.test(text)) {
         add('IA-049', `${key} contains availability/rating markup language`);
       }
+      if (AIS_TRANSMISSION_CLAIM.test(text)) {
+        add('IA-069', `${key} implies AIS transmission/transponder capability`);
+      }
+      if (FLEET_DEFAULT_HARDWARE_CLAIM.test(text)) {
+        add('IA-069', `${key} implies FLEET default/included hardware`);
+      }
     }
     for (const gate of asArray(item.commercialGate ? [item.commercialGate] : [])) {
       if (!gateIds.has(gate)) add('IA-050', `${key} unknown commercialGate ${gate}`);
@@ -1171,6 +1196,28 @@ export function validateData(data, { root = process.cwd() } = {}) {
   }
   for (const routeId of PROPOSED_ROUTE_IDS) {
     if (!matrixIds.has(routeId)) add('IA-057', `route gate matrix missing ${routeId}`);
+  }
+  const registryById = new Map(
+    proposedItems.filter((item) => item.routeId).map((item) => [item.routeId, item]),
+  );
+  const iaByRoute = new Map(
+    iaNodes.filter((node) => node.routeId).map((node) => [node.routeId, node]),
+  );
+  for (const row of matrix) {
+    if (!PROPOSED_ROUTES[row.routeId]) continue;
+    const registryRoute = registryById.get(row.routeId);
+    const iaNode = iaByRoute.get(row.routeId);
+    const canonical = [...asArray(row.blockingGateIds)].sort().join('|');
+    if (!registryRoute) {
+      add('IA-068', `proposed-routes lacks ${row.routeId}`);
+      continue;
+    }
+    if ([...asArray(registryRoute.blockingGateIds)].sort().join('|') !== canonical) {
+      add('IA-068', `${row.routeId} proposed-routes blocking gates diverge from the route matrix`);
+    }
+    if (iaNode && [...asArray(iaNode.blockingGateIds)].sort().join('|') !== canonical) {
+      add('IA-068', `${row.routeId} proposed-ia blocking gates diverge from the route matrix`);
+    }
   }
 
   // -------------------------------------------------------- website remediation

@@ -235,17 +235,18 @@ six bundle pages are peers, so neither group nests inside the other.
 ## 7. Publication-gate inheritance (summary)
 
 Every proposed node in `proposed-ia.json` carries the blocking gate ids that come from MC-14
-(`data/release-evidence-gates.json`). The derivation is deterministic:
+(`data/release-evidence-gates.json`). The post-audit corrected derivation is the sorted union of the
+registry, IA and gate-scope sets; the union is conservative and closes or relaxes no gate.
 
 | Surface | Gate basis | Gates |
 |---|---|---|
 | Three MAREA hubs | union of every family and bundle presented | all 13 |
-| Nine family routes | `productFamilyIds` of each gate | 9–12 per family |
-| Six bundle routes | `bundleIds` of each gate | 11–13 per bundle |
+| Nine family routes | union of `productFamilyIds` scope and registry/IA gates | 10–12 per family |
+| Six bundle routes | union of `bundleIds` scope and registry/IA gates | 11–13 per bundle |
 | Configurator | union minus `GATE-PAYMENTS` (quote request, no checkout) | 12 |
-| Professionals, installers | brand, claims, legal, remediation, contract gates | 5 |
-| Support | brand, claims, legal, remediation, CRA | 5 |
-| Product documentation | support set plus data licensing and PILOT safety | 7 |
+| Professionals, installers | brand, claims, legal, privacy, remediation, contract gates | 6 |
+| Support | brand, claims, legal, remediation, CRA, contract gates | 6 |
+| Product documentation | brand, claims, legal, data licensing, CRA, contract and PILOT safety gates | 9 |
 
 Corporate nodes only carry gates that the MC-14 page-level findings justify, referenced by
 `WEB-` finding ids in the same dataset. Full per-route lists are in

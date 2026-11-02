@@ -4,18 +4,178 @@
   "milestone": "MC-15",
   "date": "2026-11-02",
   "owner": "independent-auditor",
+  "auditor": "auditor",
   "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
-  "generationMethod": "independent audit; this scaffold is replaced by the auditor after the implementation freeze",
-  "evidenceState": "PENDING_INDEPENDENT_AUDIT",
-  "scope": "MC-15 independent SEO and architecture review",
+  "reviewedCommit": "b70d5500591be63d00ac33b4c1de6c802981b46d",
+  "reviewedCommitShort": "b70d550",
+  "baseCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
+  "reviewedBranch": "feature/marea-mc15-bilingual-ia-seo-migration",
+  "generationMethod": "independent audit by a non-authoring auditor: git ancestry and diff, repository route/URL reconstruction, all 19 JSON datasets, MC-14 source datasets, validator and unit suite, isolated local SSR reproduction (empty and 2-product fixture) and 21 auditor-authored adversarial mutations",
+  "evidenceState": "INDEPENDENT_AUDIT_COMPLETE",
+  "scope": "D20 independent SEO and architecture review of the frozen MC-15 implementation candidate b70d550; internal IA/SEO planning only",
+  "scopeLine": "Internal IA/SEO planning only; no publication, indexation, deployment or MC-16 authorization.",
   "readOnly": true,
   "publicationAuthorized": false,
+  "deploymentAuthorized": false,
+  "liveChangeExecuted": false,
   "MC16_STARTED": false,
-  "reviewStatus": "NOT_STARTED",
-  "auditor": "auditor",
-  "reviewedCommit": "PENDING_FREEZE",
+  "reviewStatus": "NEEDS_REVISION",
+  "verdict": "NEEDS_REVISION",
+  "verdictRule": "PASS only with no open BLOCKING or MAJOR finding; this review has 2 open MAJOR findings.",
+  "summary": {
+    "findingsTotal": 8,
+    "blocking": 0,
+    "major": 2,
+    "minor": 3,
+    "informational": 3,
+    "open": 8,
+    "resolved": 0,
+    "testsRun": 31,
+    "testsPassed": 29,
+    "testsFailedPreExisting": 2,
+    "testsEnvironmentBlocked": 0,
+    "mutationsRun": 21,
+    "mutationsRejectedForIntendedReason": 19,
+    "mutationsNotCaught": 2,
+    "localSsrSitemapUrlsEmptyFixture": 98,
+    "localSsrSitemapUrlsTwoProductFixture": 101
+  },
   "crossReferences": [
-    "docs/marea/information-architecture/MC15-DATA-CONTRACT.md#3-dataset-minimum-keys"
+    "docs/marea/information-architecture/MC15-DATA-CONTRACT.md#3-dataset-minimum-keys",
+    "docs/marea/information-architecture/MC-15-BASELINE-AND-GOVERNANCE.md#7-quality-gates-for-this-milestone",
+    "docs/marea/information-architecture/MC15-INDEPENDENT-REVIEW.md"
   ],
-  "items": []
+  "items": [
+    {
+      "findingId": "IA-01",
+      "severity": "MAJOR",
+      "affectedFile": "docs/marea/information-architecture/data/proposed-routes.json",
+      "relatedFiles": [
+        "docs/marea/information-architecture/data/proposed-ia.json",
+        "docs/marea/information-architecture/data/publication-gates.json",
+        "docs/marea/information-architecture/MC15-PROPOSED-ROUTE-REGISTRY.md",
+        "docs/marea/information-architecture/MC15-LEGAL-COMMERCIAL-PUBLICATION-GATES.md"
+      ],
+      "reproduction": "node -e \"const r=require('./docs/marea/information-architecture/data/proposed-routes.json').items;const m=require('./docs/marea/information-architecture/data/publication-gates.json').routeGateMatrix;const n=require('./docs/marea/information-architecture/data/proposed-ia.json').items.filter(x=>x.routeId);const s=a=>[...a].sort().join('|');for(const x of r){const row=m.find(y=>y.routeId===x.routeId);const node=n.find(y=>y.routeId===x.routeId);if(s(x.blockingGateIds)!==s(row.blockingGateIds))console.log(x.routeId,'proposed',x.blockingGateIds.length,'matrix',row.blockingGateIds.length,'proposedIa',node.blockingGateIds.length);}\"",
+      "evidence": "11 of 23 routes differ: mareaOverview 13 vs 4; mareaFamilyWeather 9 vs 10 (matrix adds GATE-MARKET-PLACEMENT); mareaSolutionStart/Cruise 11 vs 12 and mareaSolutionSail 12 vs 13 (matrix adds GATE-PRIVACY-DPA-DPIA); mareaSolutionProtect 12 vs 11 (registry adds GATE-SAFETY-PILOT); mareaConfigurator 12 vs 5; professionals/installers 5 vs 6; support 5 vs 6; productDocumentation 7 vs 7 with a different composition (registry SAFETY+DATA, matrix CONSUMER-TERMS+MARKET-PLACEMENT). proposed-routes.json and proposed-ia.json agree with each other (0 differences) and both disagree with routeGateMatrix. D05 MC15-PROPOSED-ROUTE-REGISTRY.md:77-107 documents the productFamilyIds/bundleIds derivation; D13 MC15-LEGAL-COMMERCIAL-PUBLICATION-GATES.md:142-150 declares the matrix the exact blockingGateIds and explains only matrix-vs-gate-scope, not registry-vs-matrix. The validator checks id existence only, never set equality. Both lists are plausible to an implementer, one over-blocks and the other under-blocks.",
+      "requiredCorrection": "Choose one authoritative blocking-gate derivation (or define two explicitly named fields with a documented relationship), regenerate proposed-routes.json, proposed-ia.json and routeGateMatrix from it, reconcile D05 and D13, and add a validator equality rule (and unit test) so the datasets cannot diverge again. Do not close or relax any gate.",
+      "owner": "legal-governance + ia-content + programme-lead (validator)",
+      "status": "OPEN",
+      "correctionCommit": null,
+      "auditorReverification": "PENDING_REVERIFICATION_AFTER_CORRECTION"
+    },
+    {
+      "findingId": "IA-02",
+      "severity": "MAJOR",
+      "affectedFile": "scripts/check-marea-ia-seo.mjs",
+      "relatedFiles": [
+        "scripts/check-marea-ia-seo.test.mjs",
+        "docs/marea/information-architecture/data/bilingual-metadata.json",
+        "docs/marea/information-architecture/data/publication-gates.json"
+      ],
+      "reproduction": "Copy the repository to a disposable root, set the mareaFamilyAis:es descriptionTemplate to 'Familia AIS con transmision AIS integrada y alcance de 30 millas nauticas.' (and the EN row to 'AIS transmission with 30 nautical mile range included.'), then run: node scripts/check-marea-ia-seo.mjs --root <temp-root>. Repeat for mareaFamilyFleet with 'FLEET incluye hardware por defecto...' / 'FLEET ships with default hardware on every vessel.'",
+      "evidence": "Both mutations exit 0 with 'MC-15 IA/SEO validation passed' (ES and EN variants). FORBIDDEN_PUBLIC_CLAIM (scripts/check-marea-ia-seo.mjs:195-197) has no AIS-transmission or default-hardware token, even though publication-gates.json hardRestrictions records AIS_TRANSMISSION_OFFERED=false and FLEET_DEFAULT_HARDWARE=false. The 21-mutation audit table shows M16 and M17 as the only two mutations not rejected for their intended reason.",
+      "requiredCorrection": "Add explicit forbidden-claim rules and unit tests for AIS transmission/transponder and default/included FLEET hardware, and preferably derive the rule list from publication-gates.hardRestrictions so every false hard restriction has a matching guard. Re-run the full mutation set and record the results.",
+      "owner": "programme-lead (D19 validator)",
+      "status": "OPEN",
+      "correctionCommit": null,
+      "auditorReverification": "PENDING_REVERIFICATION_AFTER_CORRECTION"
+    },
+    {
+      "findingId": "IA-03",
+      "severity": "MINOR",
+      "affectedFile": "docs/marea/information-architecture/data/current-routes.json",
+      "relatedFiles": [
+        "docs/marea/information-architecture/MC15-CURRENT-URL-AND-ROUTE-INVENTORY.md",
+        "docs/marea/information-architecture/data/current-urls.json"
+      ],
+      "reproduction": "node -e \"const c=require('./docs/marea/information-architecture/data/current-routes.json').items.find(r=>r.routeId==='shop');console.log(c.sitemapExpected);const u=require('./docs/marea/information-architecture/data/current-urls.json').items.filter(x=>x.routeId==='shop');console.log(u.map(x=>x.sitemapMembership));\"",
+      "evidence": "current-routes.json:309/327 records routeId 'shop' with sitemapExpected=false, while D02 MC15-CURRENT-URL-AND-ROUTE-INVENTORY.md:117 table row 11 says Sitemap=yes, current-urls.json records sitemapMembership=MEMBER_SERVER_LIST for both shop list URLs, and the 98-URL baseline explicitly includes /tienda + /en/shop. The data field and its own note ('Added to the sitemap explicitly...') contradict each other.",
+      "requiredCorrection": "Set shop.sitemapExpected=true (or rename/define the field as 'prerender-walk expected' and make it consistent with the note); add a validator consistency check between current-routes.sitemapExpected and current-urls.sitemapMembership for existing public routes.",
+      "owner": "route-architect",
+      "status": "OPEN",
+      "correctionCommit": null,
+      "auditorReverification": "PENDING_REVERIFICATION_AFTER_CORRECTION"
+    },
+    {
+      "findingId": "IA-04",
+      "severity": "MINOR",
+      "affectedFile": "docs/marea/information-architecture/data/redirect-map.json",
+      "relatedFiles": [
+        "docs/marea/information-architecture/MC15-REDIRECT-AND-MIGRATION-MAP.md",
+        "docs/marea/information-architecture/MC15-CURRENT-URL-AND-ROUTE-INVENTORY.md"
+      ],
+      "reproduction": "node -e \"(async()=>{const r=await fetch('http://127.0.0.1:4399/productos/does-not-exist');const t=await r.text();console.log(r.status,r.headers.get('location'),t.length,/<meta name=\\\"robots\\\"/.test(t));})()\" against an isolated local SSR run (dist build, disposable DATA_DIR).",
+      "evidence": "redirect-map.json:1069 records '/productos/does-not-exist -> 404 at the source URL with no Location header' (also :1286) and :1297 records '404, zero redirect hops'. The reproduced response is HTTP 404 WITH 'Location: /tecnologia/does-not-exist', an empty body (0 bytes) and no noindex meta; /no-existe, /marea and /tienda/no-existe return a 404 with a noindex body and no Location. The inherited Angular route redirect leaves a Location header on the empty 404 for unknown legacy product slugs. The important invariant (no 301 to a 404 destination; unknown slug is not 301-redirected) still holds, but the recorded observation is inaccurate and the empty-body 404 bypasses the documented NotFound noindex surface.",
+      "requiredCorrection": "Correct the D07 observation wording and add the inherited empty-body 404 + Location behaviour to the D02/D07 observations (and to nonRedirectSurfaces), explicitly stating it is not a redirect and is out of MC-15 change scope. Do not change live routing in MC-15.",
+      "owner": "seo-migration",
+      "status": "OPEN",
+      "correctionCommit": null,
+      "auditorReverification": "PENDING_REVERIFICATION_AFTER_CORRECTION"
+    },
+    {
+      "findingId": "IA-05",
+      "severity": "MINOR",
+      "affectedFile": "docs/marea/information-architecture/data/manifest.json",
+      "relatedFiles": [
+        "docs/marea/information-architecture/data/review-findings.json"
+      ],
+      "reproduction": "node -e \"const c=require('crypto');const f=require('fs');const m=require('./docs/marea/information-architecture/data/manifest.json');const b=f.readFileSync('./docs/marea/information-architecture/data/review-findings.json');console.log('reviewedCommit',m.reviewedCommit,'pinnedSha',m.datasets.find(d=>d.name==='review-findings').sha256,'actualSha',c.createHash('sha256').update(b).digest('hex'));\"",
+      "evidence": "manifest.json:15 records reviewedCommit=PENDING_FREEZE although the frozen candidate is b70d550, and the review-findings entry (manifest.json:206-215) pins the PENDING_INDEPENDENT_AUDIT scaffold (sha256 3390fc3d…, 752 bytes, items 0). The D20 audit replaces that scaffold, so the manifest entry and reviewedCommit become stale. At b70d550 (before this audit) all 18 dataset hashes and byte counts matched the frozen tree.",
+      "requiredCorrection": "The programme lead regenerates manifest.json after the audit corrections: reviewedCommit=b70d550 (or the correction commit), review-findings sha256/bytes/items updated, evidenceState for review-findings set to the audit result, datasetCount reconciled, and the validator re-run. This is a freeze-time metadata task, not an implementation change.",
+      "owner": "programme-lead",
+      "status": "OPEN",
+      "correctionCommit": null,
+      "auditorReverification": "PENDING_REVERIFICATION_AFTER_CORRECTION"
+    },
+    {
+      "findingId": "IA-06",
+      "severity": "INFORMATIONAL",
+      "affectedFile": "docs/marea/information-architecture/data/url-evidence.json",
+      "relatedFiles": [
+        "docs/marea/information-architecture/MC15-CURRENT-URL-AND-ROUTE-INVENTORY.md",
+        "docs/marea/information-architecture/data/current-urls.json"
+      ],
+      "reproduction": "node -e \"const e=require('./docs/marea/information-architecture/data/url-evidence.json').items;const u=new Set(require('./docs/marea/information-architecture/data/current-urls.json').items.map(x=>x.urlId));console.log(e.filter(x=>!u.has(x.urlId)).map(x=>x.evidenceId+':'+x.urlId));\"",
+      "evidence": "Four url-evidence records (EV-CLASS-ROBOTS-TXT, EV-CLASS-SITEMAP-ENDPOINT, EV-CLASS-API-EXCLUDED, EV-CLASS-BUILD-MANIFEST) carry urlIds that are not page records in current-urls.json. D02 §2.3 documents this deliberately and marks them urlIdKind=NON_PAGE_SURFACE/BUILD_ARTEFACT; no page is invented. Referential integrity is therefore a documented exception, not enforced by the validator.",
+      "requiredCorrection": "Optional hardening: declare a small non-page surface registry (or a validator allowlist) for the four infrastructure urlIds so the exception is machine-checkable, and reference it from D02. No acceptance impact.",
+      "owner": "route-architect",
+      "status": "OPEN",
+      "correctionCommit": null,
+      "auditorReverification": "PENDING_REVERIFICATION_AFTER_CORRECTION"
+    },
+    {
+      "findingId": "IA-07",
+      "severity": "INFORMATIONAL",
+      "affectedFile": "docs/marea/information-architecture/data/url-evidence.json",
+      "relatedFiles": [
+        "docs/marea/information-architecture/data/redirect-map.json",
+        "docs/marea/information-architecture/data/canonical-hreflang.json",
+        "docs/marea/information-architecture/data/indexation-policy.json",
+        "docs/marea/information-architecture/data/risk-register.json"
+      ],
+      "reproduction": "node -e \"const e=require('./docs/marea/information-architecture/data/url-evidence.json').items;console.log([...new Set(e.map(x=>x.evidenceClass))],e.filter(x=>x.observedAt!=='NOT_OBSERVED').length);\" and grep LOCAL_SSR_VERIFIED over the data directory.",
+      "evidence": "url-evidence.json has 23/23 REPOSITORY_VERIFIED rows with observedAt=NOT_OBSERVED, while redirect-map, canonical-hreflang, indexation-policy and risk-register declare dataset evidenceState LOCAL_SSR_VERIFIED. The observations are documented inline (observed/notes fields) and were independently reproduced by the auditor (98/101 sitemap URLs, three 301s, canonical/hreflang, 404s), so the claim is substantiated, but the central evidence registry does not carry the local-run evidence records.",
+      "requiredCorrection": "Optional hardening: add the 2026-11-02 isolated-SSR evidence records (or an evidence-run dataset) to the central registry so LOCAL_SSR_VERIFIED is resolvable by evidence id. No acceptance impact.",
+      "owner": "seo-migration",
+      "status": "OPEN",
+      "correctionCommit": null,
+      "auditorReverification": "PENDING_REVERIFICATION_AFTER_CORRECTION"
+    },
+    {
+      "findingId": "IA-08",
+      "severity": "INFORMATIONAL",
+      "affectedFile": "scripts/check-seo.mjs",
+      "relatedFiles": [
+        "scripts/e2e-server.mjs"
+      ],
+      "reproduction": "Run npm run test:seo while a stale 'node dist/embarcarte/server/server.mjs' process holds port 4323; the health check passes against the stale server and the fixture admin login returns 401. Identify the listener, terminate the disposable test server, re-run npm run test:seo (passes: 101 sitemap URLs).",
+      "evidence": "First test:seo attempt in this audit failed at scripts/check-seo.mjs:79 (401 !== 200). Get-NetTCPConnection -LocalPort 4323 resolved the listener to a node process started at 22:19:21 before the audit, with command line 'node dist/embarcarte/server/server.mjs'. After Stop-Process the suite passed. This is test-environment hygiene (a leftover disposable server), not an MC-15 code or data regression.",
+      "requiredCorrection": "Optional hardening: make the inherited SEO/e2e harness fail loudly or choose a free port when 4323 is already bound, and document the cleanup expectation for local runs. No acceptance impact.",
+      "owner": "programme-lead (test harness)",
+      "status": "OPEN",
+      "correctionCommit": null,
+      "auditorReverification": "PENDING_REVERIFICATION_AFTER_CORRECTION"
+    }
+  ]
 }

@@ -1,7 +1,7 @@
 # MC-15 D05 — Proposed route registry and collision analysis (non-deployable)
 
 | Field | Value |
-|---|---|
+| --- | --- |
 | Deliverable | D05 `MC15-PROPOSED-ROUTE-REGISTRY.md` |
 | Milestone | MC-15/36 — Bilingual information architecture, SEO route registry and migration planning |
 | Status | `INTERNAL_PLANNING_ONLY` |
@@ -17,7 +17,7 @@
 ## 1. Registry summary
 
 | Property | Value |
-|---|---|
+| --- | --- |
 | Proposed route ids | 23 |
 | Proposed entities | 23 (`ENT-HUB-*` ×3, `ENT-FAMILY-*` ×9, `ENT-BUNDLE-*` ×6, `ENT-TOOL-CONFIGURATOR`, `ENT-PAGE-*` ×3, `ENT-DOC-PRODUCT`) |
 | Literal routes | 22 |
@@ -49,7 +49,7 @@ Publication state is `PROPOSED_INTERNAL_NOT_DEPLOYABLE` for every row; it is wri
 here and abbreviated `PROPOSED` in the table only to keep the row readable.
 
 | # | routeId | pageId | entityId | ES pattern | EN pattern | Page type | Publication | Impl | Index | Commerce | Gates (n) | Blocking gates |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 | `mareaOverview` | `mareaOverview` | `ENT-HUB-MAREA` | `/marea` | `/en/marea` | HUB_OVERVIEW | PROPOSED | false | false | false | 13 | MKT, SAFETY, IP, DATA, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
 | 2 | `mareaProducts` | `mareaProducts` | `ENT-HUB-PRODUCTS` | `/marea/productos` | `/en/marea/products` | PRODUCTS_OVERVIEW | PROPOSED | false | false | false | 13 | MKT, SAFETY, IP, DATA, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
 | 3 | `mareaSolutions` | `mareaSolutions` | `ENT-HUB-SOLUTIONS` | `/marea/soluciones` | `/en/marea/solutions` | SOLUTIONS_OVERVIEW | PROPOSED | false | false | false | 13 | MKT, SAFETY, IP, DATA, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
@@ -60,26 +60,26 @@ here and abbreviated `PROPOSED` in the table only to keep the row readable.
 | 8 | `mareaFamilySense` | `mareaFamilySense` | `ENT-FAMILY-SENSE` | `/marea/sense` | `/en/marea/sense` | PRODUCT_FAMILY | PROPOSED | false | false | false | 10 | MKT, IP, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
 | 9 | `mareaFamilyWatch` | `mareaFamilyWatch` | `ENT-FAMILY-WATCH` | `/marea/watch` | `/en/marea/watch` | PRODUCT_FAMILY | PROPOSED | false | false | false | 11 | MKT, IP, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
 | 10 | `mareaFamilyDisplay` | `mareaFamilyDisplay` | `ENT-FAMILY-DISPLAY` | `/marea/display` | `/en/marea/display` | PRODUCT_FAMILY | PROPOSED | false | false | false | 11 | MKT, IP, DATA, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
-| 11 | `mareaFamilyWeather` | `mareaFamilyWeather` | `ENT-FAMILY-WEATHER` | `/marea/weather` | `/en/marea/weather` | PRODUCT_FAMILY | PROPOSED | false | false | false | 9 | IP, DATA, CRA, TERMS, CLAIMS, PRICING, PAY, LEGAL, REMED |
+| 11 | `mareaFamilyWeather` | `mareaFamilyWeather` | `ENT-FAMILY-WEATHER` | `/marea/weather` | `/en/marea/weather` | PRODUCT_FAMILY | PROPOSED | false | false | false | 10 | MKT, IP, DATA, CRA, TERMS, CLAIMS, PRICING, PAY, LEGAL, REMED |
 | 12 | `mareaFamilyFleet` | `mareaFamilyFleet` | `ENT-FAMILY-FLEET` | `/marea/fleet` | `/en/marea/fleet` | PRODUCT_FAMILY | PROPOSED | false | false | false | 10 | IP, DATA, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, LEGAL, REMED |
-| 13 | `mareaSolutionStart` | `mareaSolutionStart` | `ENT-BUNDLE-START` | `/marea/soluciones/start` | `/en/marea/solutions/start` | BUNDLE | PROPOSED | false | false | false | 11 | MKT, IP, DATA, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
-| 14 | `mareaSolutionCruise` | `mareaSolutionCruise` | `ENT-BUNDLE-CRUISE` | `/marea/soluciones/cruise` | `/en/marea/solutions/cruise` | BUNDLE | PROPOSED | false | false | false | 11 | MKT, IP, DATA, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
-| 15 | `mareaSolutionSail` | `mareaSolutionSail` | `ENT-BUNDLE-SAIL` | `/marea/soluciones/sail` | `/en/marea/solutions/sail` | BUNDLE | PROPOSED | false | false | false | 12 | MKT, SAFETY, IP, DATA, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
+| 13 | `mareaSolutionStart` | `mareaSolutionStart` | `ENT-BUNDLE-START` | `/marea/soluciones/start` | `/en/marea/solutions/start` | BUNDLE | PROPOSED | false | false | false | 12 | MKT, IP, DATA, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
+| 14 | `mareaSolutionCruise` | `mareaSolutionCruise` | `ENT-BUNDLE-CRUISE` | `/marea/soluciones/cruise` | `/en/marea/solutions/cruise` | BUNDLE | PROPOSED | false | false | false | 12 | MKT, IP, DATA, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
+| 15 | `mareaSolutionSail` | `mareaSolutionSail` | `ENT-BUNDLE-SAIL` | `/marea/soluciones/sail` | `/en/marea/solutions/sail` | BUNDLE | PROPOSED | false | false | false | 13 | MKT, SAFETY, IP, DATA, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
 | 16 | `mareaSolutionProtect` | `mareaSolutionProtect` | `ENT-BUNDLE-PROTECT` | `/marea/soluciones/protect` | `/en/marea/solutions/protect` | BUNDLE | PROPOSED | false | false | false | 12 | MKT, SAFETY, IP, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
 | 17 | `mareaSolutionComplete` | `mareaSolutionComplete` | `ENT-BUNDLE-COMPLETE` | `/marea/soluciones/complete` | `/en/marea/solutions/complete` | BUNDLE | PROPOSED | false | false | false | 13 | MKT, SAFETY, IP, DATA, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, INS, LEGAL, REMED |
 | 18 | `mareaSolutionFleet` | `mareaSolutionFleet` | `ENT-BUNDLE-FLEET` | `/marea/soluciones/fleet` | `/en/marea/solutions/fleet` | BUNDLE | PROPOSED | false | false | false | 11 | SAFETY, IP, DATA, PRIV, CRA, TERMS, CLAIMS, PRICING, PAY, LEGAL, REMED |
 | 19 | `mareaConfigurator` | `mareaConfigurator` | `ENT-TOOL-CONFIGURATOR` | `/marea/configurador` | `/en/marea/configurator` | TOOL | PROPOSED | false | false | false | 12 | MKT, SAFETY, IP, DATA, PRIV, CRA, TERMS, CLAIMS, PRICING, INS, LEGAL, REMED |
-| 20 | `professionals` | `professionals` | `ENT-PAGE-PROFESSIONALS` | `/profesionales` | `/en/professionals` | PROFESSIONALS | PROPOSED | false | false | false | 5 | IP, TERMS, CLAIMS, LEGAL, REMED |
-| 21 | `installers` | `installers` | `ENT-PAGE-INSTALLERS` | `/instaladores` | `/en/installers` | INSTALLERS | PROPOSED | false | false | false | 5 | IP, TERMS, CLAIMS, LEGAL, REMED |
-| 22 | `support` | `support` | `ENT-PAGE-SUPPORT` | `/soporte` | `/en/support` | SUPPORT | PROPOSED | false | false | false | 5 | IP, CRA, CLAIMS, LEGAL, REMED |
-| 23 | `productDocumentation` | `productDocumentation` | `ENT-DOC-PRODUCT` | `/soporte/marea/:slug` | `/en/support/marea/:slug` | DOCUMENTATION | PROPOSED | false | false | false | 7 | SAFETY, IP, DATA, CRA, CLAIMS, LEGAL, REMED |
+| 20 | `professionals` | `professionals` | `ENT-PAGE-PROFESSIONALS` | `/profesionales` | `/en/professionals` | PROFESSIONALS | PROPOSED | false | false | false | 6 | IP, PRIV, TERMS, CLAIMS, LEGAL, REMED |
+| 21 | `installers` | `installers` | `ENT-PAGE-INSTALLERS` | `/instaladores` | `/en/installers` | INSTALLERS | PROPOSED | false | false | false | 6 | IP, PRIV, TERMS, CLAIMS, LEGAL, REMED |
+| 22 | `support` | `support` | `ENT-PAGE-SUPPORT` | `/soporte` | `/en/support` | SUPPORT | PROPOSED | false | false | false | 6 | IP, CRA, TERMS, CLAIMS, LEGAL, REMED |
+| 23 | `productDocumentation` | `productDocumentation` | `ENT-DOC-PRODUCT` | `/soporte/marea/:slug` | `/en/support/marea/:slug` | DOCUMENTATION | PROPOSED | false | false | false | 9 | MKT, SAFETY, IP, DATA, CRA, TERMS, CLAIMS, LEGAL, REMED |
 
 ### 2.1 Gate matrix
 
 `X` marks a blocking gate attached to the route. All 13 MC-14 gates are consumed.
 
 | routeId | MKT | SAFETY | IP | DATA | PRIV | CRA | TERMS | CLAIMS | PRICING | PAY | INS | LEGAL | REMED |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | `mareaOverview` | X | X | X | X | X | X | X | X | X | X | X | X | X |
 | `mareaProducts` | X | X | X | X | X | X | X | X | X | X | X | X | X |
 | `mareaSolutions` | X | X | X | X | X | X | X | X | X | X | X | X | X |
@@ -90,31 +90,30 @@ here and abbreviated `PROPOSED` in the table only to keep the row readable.
 | `mareaFamilySense` | X |  | X |  |  | X | X | X | X | X | X | X | X |
 | `mareaFamilyWatch` | X |  | X |  | X | X | X | X | X | X | X | X | X |
 | `mareaFamilyDisplay` | X |  | X | X |  | X | X | X | X | X | X | X | X |
-| `mareaFamilyWeather` |  |  | X | X |  | X | X | X | X | X |  | X | X |
+| `mareaFamilyWeather` | X |  | X | X |  | X | X | X | X | X |  | X | X |
 | `mareaFamilyFleet` |  |  | X | X | X | X | X | X | X | X |  | X | X |
-| `mareaSolutionStart` | X |  | X | X |  | X | X | X | X | X | X | X | X |
-| `mareaSolutionCruise` | X |  | X | X |  | X | X | X | X | X | X | X | X |
-| `mareaSolutionSail` | X | X | X | X |  | X | X | X | X | X | X | X | X |
+| `mareaSolutionStart` | X |  | X | X | X | X | X | X | X | X | X | X | X |
+| `mareaSolutionCruise` | X |  | X | X | X | X | X | X | X | X | X | X | X |
+| `mareaSolutionSail` | X | X | X | X | X | X | X | X | X | X | X | X | X |
 | `mareaSolutionProtect` | X | X | X |  | X | X | X | X | X | X | X | X | X |
 | `mareaSolutionComplete` | X | X | X | X | X | X | X | X | X | X | X | X | X |
 | `mareaSolutionFleet` |  | X | X | X | X | X | X | X | X | X |  | X | X |
 | `mareaConfigurator` | X | X | X | X | X | X | X | X | X |  | X | X | X |
-| `professionals` |  |  | X |  |  |  | X | X |  |  |  | X | X |
-| `installers` |  |  | X |  |  |  | X | X |  |  |  | X | X |
-| `support` |  |  | X |  |  | X |  | X |  |  |  | X | X |
-| `productDocumentation` |  | X | X | X |  | X |  | X |  |  |  | X | X |
+| `professionals` |  |  | X |  | X |  | X | X |  |  |  | X | X |
+| `installers` |  |  | X |  | X |  | X | X |  |  |  | X | X |
+| `support` |  |  | X |  |  | X | X | X |  |  |  | X | X |
+| `productDocumentation` | X | X | X | X |  | X | X | X |  |  |  | X | X |
 
-Gate derivation is deterministic and recorded in `data/proposed-routes.json`
-(`gateDerivation`): commerce-bearing surfaces receive the eight gates that MC-14 attaches to all
-nine families and all six bundles; family and bundle routes add the gates whose
-`productFamilyIds` / `bundleIds` lists contain them; the three hubs and the configurator inherit
-the union of the nodes they present; the configurator drops `GATE-PAYMENTS` because it produces a
-quotation request and no checkout.
+Post-audit correction (finding IA-01): the blocking gate set is deterministic and recorded in
+`data/proposed-routes.json`, `data/proposed-ia.json` and `data/publication-gates.json` as the
+sorted union of the registry, IA and D13 gate-scope derivations. The union is intentionally
+conservative: a page that presents a family or bundle inherits every gate attached to it. No gate
+is closed or relaxed, and the validator enforces equality across the three datasets (IA-068).
 
 ## 3. Coverage matrix — nine families
 
 | familyId | routeId | entityId | ES | EN | Editions (n) | Edition ids | Gates (n) |
-|---|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- | --- |
 | NAV | `mareaFamilyNav` | `ENT-FAMILY-NAV` | `/marea/nav` | `/en/marea/nav` | 2 | NAV-ESSENTIAL, NAV-PRO | 12 |
 | HUB | `mareaFamilyHub` | `ENT-FAMILY-HUB` | `/marea/hub` | `/en/marea/hub` | 2 | HUB-STANDARD, HUB-PRO | 10 |
 | AIS | `mareaFamilyAis` | `ENT-FAMILY-AIS` | `/marea/ais` | `/en/marea/ais` | 2 | AIS-RECEIVER, AIS-CONNECTED | 11 |
@@ -122,7 +121,7 @@ quotation request and no checkout.
 | SENSE | `mareaFamilySense` | `ENT-FAMILY-SENSE` | `/marea/sense` | `/en/marea/sense` | 8 | SENSE-WIND, SENSE-POWER, SENSE-BILGE, SENSE-TANKS, SENSE-ENV, SENSE-ESSENTIALS, SENSE-SAIL, SENSE-SYSTEMS | 10 |
 | WATCH | `mareaFamilyWatch` | `ENT-FAMILY-WATCH` | `/marea/watch` | `/en/marea/watch` | 2 | WATCH-CORE, WATCH-PLUS | 11 |
 | DISPLAY | `mareaFamilyDisplay` | `ENT-FAMILY-DISPLAY` | `/marea/display` | `/en/marea/display` | 2 | DISPLAY-7, DISPLAY-LARGE-CONDITIONAL | 11 |
-| WEATHER | `mareaFamilyWeather` | `ENT-FAMILY-WEATHER` | `/marea/weather` | `/en/marea/weather` | 2 | WEATHER-STANDARD, WEATHER-PRO | 9 |
+| WEATHER | `mareaFamilyWeather` | `ENT-FAMILY-WEATHER` | `/marea/weather` | `/en/marea/weather` | 2 | WEATHER-STANDARD, WEATHER-PRO | 10 |
 | FLEET | `mareaFamilyFleet` | `ENT-FAMILY-FLEET` | `/marea/fleet` | `/en/marea/fleet` | 3 | FLEET-START, FLEET-BUSINESS, FLEET-ENTERPRISE | 10 |
 
 Coverage result: **9 of 9 families present, each with exactly one route identity, one entity id
@@ -136,10 +135,10 @@ Bundle composition is taken from `docs/marea/bundles/bundle-definitions.json` co
 (`familyId` + `editionId`), deduplicated.
 
 | bundleId | routeId | entityId | ES | EN | Component editions (n) | Edition ids referenced | Gates (n) |
-|---|---|---|---|---|---|---|---|
-| START | `mareaSolutionStart` | `ENT-BUNDLE-START` | `/marea/soluciones/start` | `/en/marea/solutions/start` | 2 | HUB-STANDARD, NAV-PRO | 11 |
-| CRUISE | `mareaSolutionCruise` | `ENT-BUNDLE-CRUISE` | `/marea/soluciones/cruise` | `/en/marea/solutions/cruise` | 6 | HUB-STANDARD, NAV-ESSENTIAL, AIS-RECEIVER, AIS-CONNECTED, DISPLAY-7, DISPLAY-LARGE-CONDITIONAL | 11 |
-| SAIL | `mareaSolutionSail` | `ENT-BUNDLE-SAIL` | `/marea/soluciones/sail` | `/en/marea/solutions/sail` | 6 | HUB-STANDARD, NAV-PRO, PILOT-COASTAL, PILOT-SAIL, PILOT-PRO, SENSE-WIND | 12 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| START | `mareaSolutionStart` | `ENT-BUNDLE-START` | `/marea/soluciones/start` | `/en/marea/solutions/start` | 2 | HUB-STANDARD, NAV-PRO | 12 |
+| CRUISE | `mareaSolutionCruise` | `ENT-BUNDLE-CRUISE` | `/marea/soluciones/cruise` | `/en/marea/solutions/cruise` | 6 | HUB-STANDARD, NAV-ESSENTIAL, AIS-RECEIVER, AIS-CONNECTED, DISPLAY-7, DISPLAY-LARGE-CONDITIONAL | 12 |
+| SAIL | `mareaSolutionSail` | `ENT-BUNDLE-SAIL` | `/marea/soluciones/sail` | `/en/marea/solutions/sail` | 6 | HUB-STANDARD, NAV-PRO, PILOT-COASTAL, PILOT-SAIL, PILOT-PRO, SENSE-WIND | 13 |
 | PROTECT | `mareaSolutionProtect` | `ENT-BUNDLE-PROTECT` | `/marea/soluciones/protect` | `/en/marea/solutions/protect` | 3 | SENSE-ESSENTIALS, WATCH-CORE, WATCH-PLUS | 12 |
 | COMPLETE | `mareaSolutionComplete` | `ENT-BUNDLE-COMPLETE` | `/marea/soluciones/complete` | `/en/marea/solutions/complete` | 12 | HUB-PRO, NAV-PRO, PILOT-COASTAL, PILOT-SAIL, PILOT-PRO, DISPLAY-7, DISPLAY-LARGE-CONDITIONAL, SENSE-BILGE, SENSE-ENV, SENSE-POWER, SENSE-TANKS, WATCH-CORE | 13 |
 | FLEET | `mareaSolutionFleet` | `ENT-BUNDLE-FLEET` | `/marea/soluciones/fleet` | `/en/marea/solutions/fleet` | 2 | FLEET-START, FLEET-ENTERPRISE | 11 |
@@ -173,7 +172,7 @@ not-found route.
 ### 5.2 Every current route pattern
 
 | routeId | ES pattern | EN pattern | First segment owned | Overlap with proposed layer |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | `home` | `/` | `/en` | (empty) / `en` | None; no proposed route is the empty path, and `en` is a prefix, not a sibling segment |
 | `technology` | `/tecnologia` | `/en/technology` | `tecnologia` / `en` | None; different literal segment |
 | `technologyDetail` | `/tecnologia/:slug` | `/en/technology/:slug` | `tecnologia` / `en` | None; a proposed URL never starts with `tecnologia` |
@@ -200,7 +199,7 @@ not-found route.
 legacy redirect patterns:
 
 | Legacy pattern | Type | Overlap with proposed layer |
-|---|---|---|
+| --- | --- | --- |
 | `/open-marine` | literal | None |
 | `/productos` | literal | None at root; `/marea/productos` is two segments and starts with `marea`, so it cannot match. The root segment stays reserved so a future products page cannot silently take over the redirect |
 | `/productos/:slug` | parameterised | None; segment count and first literal differ from every proposed URL |
@@ -210,7 +209,7 @@ legacy redirect patterns:
 Current dynamic routes and their literal competitors:
 
 | Namespace | Literal pattern | Parameterised pattern | Resolution rule that must be preserved |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Shop | `/tienda/muestra/:slug` (`shopSample`) | `/tienda/:slug` (`shopDetail`) | Literal wins. `shopSample` is declared before `shopDetail` in `src/app/app.routes.ts` and guarded by `sampleExists`, so `/tienda/muestra/x` never resolves as a product with slug `muestra` |
 | Technology | `/tecnologia` | `/tecnologia/:slug` | Segment count differs, so the hub is not shadowed by the detail route |
 | Guides | `/guias` | `/guias/:slug` | Segment count differs, so the hub is not shadowed by the detail route |
@@ -220,7 +219,7 @@ The proposed registry adds exactly one parameterised route, and it is deliberate
 different, deeper namespace:
 
 | Proposed dynamic route | Pattern | Competes with | Verdict |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `productDocumentation` | `/soporte/marea/:slug` | nothing | **Shadows nothing.** Its first segment is `soporte`, which no current route owns; its second segment is the literal `marea`; its third segment is a parameter constrained to the nine family ids. The six family and bundle namespaces are rooted at `/marea`, so the two never share a first segment |
 
 Two further precedence decisions are recorded because a later implementer could reintroduce the
@@ -236,7 +235,7 @@ risk:
 ### 5.4 Admin and private namespaces
 
 | Namespace | Patterns | Overlap | Note |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Admin (7 ids, ES only) | `/admin`, `/admin/pedidos`, `/admin/pedidos/:id`, `/admin/productos`, `/admin/productos/:id`, `/admin/clientes`, `/admin/mensajes` | None | First segment `admin` is reserved; no proposed route starts with it and no proposed route exposes an admin id |
 | Cart / login / account / order detail | `/carrito`, `/acceso`, `/cuenta`, `/cuenta/pedidos/:id` (+ EN) | None | Private surfaces stay out of the proposed IA, the sitemap and the slug map |
 
@@ -251,7 +250,7 @@ Existing slugs are used in four parameter namespaces: technology (`/tecnologia/:
 They are frozen and stay where they are. The analysis relevant to this milestone:
 
 | Case | Consequence |
-|---|---|
+| --- | --- |
 | A shop product whose slug equals a family id (for example a product slug `nav`) | `/tienda/nav` and `/marea/nav` are different URLs in different namespaces. Not a collision. The slug value is shared, the entities are not, and identity is carried by the route plus `entityId`, never by the slug string alone |
 | A technology or guide slug equal to `fleet` | Same reasoning: `/tecnologia/fleet` and `/marea/fleet` coexist without ambiguity |
 | The documentation parameter reusing the family slugs (`/soporte/marea/nav`) | Intentional and declared: the parameter domain is exactly the nine family ids, so a documentation page is always addressable from its family identity |
@@ -295,7 +294,7 @@ linked**. This is recorded per route in `data/proposed-routes.json`
 `data/proposed-ia.json`.
 
 | Assertion | Evidence |
-|---|---|
+| --- | --- |
 | Not activated | None of the 23 ids appears in `src/app/core/i18n/locale-routes.ts` or `src/app/app.routes.ts`; no component exists |
 | Not in the sitemap | `src/server.ts` builds `/sitemap.xml` from prerendered page folders plus active shop products. A route that is neither defined nor prerendered cannot appear. The proposed pages are not prerendered, so the generated sitemap is unchanged |
 | Not publicly linked | No navigation, footer, internal link graph file, JSON-LD or content file in the repository references the proposed paths. The navigation model in D04 section 4 is a design table, not markup |
@@ -306,11 +305,11 @@ linked**. This is recorded per route in `data/proposed-routes.json`
 ## 7. Open decisions
 
 | Id | Decision | Blocks | Owner (proposed) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | D05-OD-01 | Bundle namespace: closed enumeration (current registry) or parameterised `:slug` | Registry shape, precedence re-verification | Lead |
 | D05-OD-02 | Documentation parameter domain: family-only or family plus edition | `productDocumentation` domain and slug rules | Product governance |
 | D05-OD-03 | Whether `/profesionales`, `/instaladores`, `/soporte` stay root-level or move under `/marea` | Their namespace, collision set, breadcrumbs | Lead with brand owner |
 | D05-OD-04 | Whether the configurator may quote before `GATE-PRICING` and `GATE-PAYMENTS` are addressed | Whether the tool can ever present a number | Commercial director |
-| D05-OD-05 | Which MC-15 dataset becomes the operational gate matrix owner (`data/publication-gates.json`) | Cross-file duplication of the per-route gate list | Lead |
+| D05-OD-05 | **Resolved by post-audit correction IA-01:** `data/publication-gates.json.routeGateMatrix` is the operational owner, mirrored by `proposed-routes.json` and `proposed-ia.json`; the validator enforces set equality (IA-068) | Cross-file duplication of the per-route gate list | Lead |
 
 No decision in this table is taken by this document.

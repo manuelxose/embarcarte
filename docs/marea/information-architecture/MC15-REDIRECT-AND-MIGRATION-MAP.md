@@ -48,10 +48,12 @@ Local SSR evidence (isolated run, disposable database, 2026-11-02):
 | `/productos/hub` | `301`, `location: /tecnologia/hub` | one hop, ends `200`; entity identity kept by slug |
 | `/productos?x=1` | `301`, `location: /tecnologia` | **query string dropped** (inherited behaviour) |
 | `/open-marine?utm=1` | `301`, `location: /tecnologia` | **query string dropped** (inherited behaviour) |
-| `/productos/does-not-exist` | `404` at the legacy URL, no `location` | no redirect to a 404 destination |
+| `/productos/does-not-exist` | `404` plus `location: /tecnologia/does-not-exist`, empty body | not a 3xx; the inherited Angular redirect leaves a `Location` header on the empty 404. The no-301-to-a-404-destination invariant still holds. |
 
-These six observations are the whole live redirect surface. Everything else in this document is a
-planning record.
+These six observations are the whole live redirect surface. The `/productos/does-not-exist` case is
+the inherited empty-body 404 with a `Location` header: it is not a redirect, it bypasses the normal
+NotFound noindex body, and it is recorded rather than changed (MC-15 changes no live routing).
+Everything else in this document is a planning record.
 
 ## 3. Decision rule for existing Spanish URLs
 

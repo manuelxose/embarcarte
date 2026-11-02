@@ -5,14 +5,14 @@
   "date": "2026-11-02",
   "owner": "programme-lead",
   "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
-  "generationMethod": "deterministic SHA-256 over every MC-15 dataset at the frozen implementation candidate; regenerated after audit corrections",
+  "generationMethod": "deterministic SHA-256 over every MC-15 dataset after the correction round; regenerated after re-verification",
   "evidenceState": "REPOSITORY_VERIFIED",
   "scope": "MC-15 internal bilingual IA/SEO planning package",
   "readOnly": true,
   "publicationAuthorized": false,
   "liveChangeExecuted": false,
   "MC16_STARTED": false,
-  "reviewedCommit": "PENDING_FREEZE",
+  "reviewedCommit": "b70d5500591be63d00ac33b4c1de6c802981b46d",
   "datasetCount": 18,
   "datasets": [
     {
@@ -21,8 +21,8 @@
       "contractId": "MAREA-MC15-CURRENT-ROUTES",
       "contractVersion": "1.0.0",
       "evidenceState": "REPOSITORY_VERIFIED",
-      "sha256": "a650cc152affcb196f7ffa94a28c0609a0586d561b0202a44743eb85f4f19b56",
-      "bytes": 30171,
+      "sha256": "cbc56e5e7c2382b29cb6dab5a190986f48b1924f7f19af93887b0bb7f786ba37",
+      "bytes": 30284,
       "items": 28,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     },
@@ -54,8 +54,8 @@
       "contractId": "MAREA-MC15-PROPOSED-IA",
       "contractVersion": "1.0.0",
       "evidenceState": "REPOSITORY_VERIFIED",
-      "sha256": "a06665fc5da96fb147dc92e1e7c4d4cfe7667d26c8a020e667e636c620acf8a1",
-      "bytes": 45110,
+      "sha256": "9db87a9fb341024d96036eb73c087f0c36f625a7a89680b0c699bcaed357576c",
+      "bytes": 47312,
       "items": 45,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     },
@@ -65,8 +65,8 @@
       "contractId": "MAREA-MC15-PROPOSED-ROUTES",
       "contractVersion": "1.0.0",
       "evidenceState": "REPOSITORY_VERIFIED",
-      "sha256": "71c913e67747941d339983f38156bb445694a3770c4256ad3a0847473b12a6a2",
-      "bytes": 40745,
+      "sha256": "b791d4f99dca6c810bd1d751154a4bc274d9ebd86385a6eaf0324f5e49003ec3",
+      "bytes": 51604,
       "items": 23,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     },
@@ -87,8 +87,8 @@
       "contractId": "MAREA-MC15-REDIRECT-MAP",
       "contractVersion": "1.0.0",
       "evidenceState": "LOCAL_SSR_VERIFIED",
-      "sha256": "ea1b040aee7ece5f3135171420530678e36cd6145eb8cfaac2624bebb99691ab",
-      "bytes": 62029,
+      "sha256": "54be7695d17e1c2ce188160bff2d34c8510026fbb775b9521165b25254b9b8a4",
+      "bytes": 63077,
       "items": 53,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     },
@@ -153,8 +153,8 @@
       "contractId": "MAREA-MC15-PUBLICATION-GATES",
       "contractVersion": "1.0.0",
       "evidenceState": "REPOSITORY_VERIFIED",
-      "sha256": "6fa24f1aa3bbb1974071361c9cd5f30a4fb2eca688c2722e4fd9ccfe05551c6c",
-      "bytes": 96039,
+      "sha256": "f0e9ee37c863ce79aee667269b4d6722f66e3299f0cfc93acd751f2355d35d7a",
+      "bytes": 101575,
       "items": 13,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     },
@@ -207,15 +207,24 @@
       "path": "docs/marea/information-architecture/data/review-findings.json",
       "contractId": "MAREA-MC15-REVIEW-FINDINGS",
       "contractVersion": "1.0.0",
-      "evidenceState": "PENDING_INDEPENDENT_AUDIT",
-      "sha256": "3390fc3dfe0f10924c06e7950a29241ee7253474e47df2ef1c82f1384ca114b9",
-      "bytes": 752,
-      "items": 0,
+      "evidenceState": "INDEPENDENT_AUDIT_COMPLETE",
+      "sha256": "509031e0e107dd4dbae4263f57a7fd1a600fa91aa793bfeb036d57fb429d0efa",
+      "bytes": 16299,
+      "items": 8,
       "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
     }
   ],
   "crossReferences": [
     "docs/marea/information-architecture/MC-15-BASELINE-AND-GOVERNANCE.md#9-deliverable-map",
     "docs/marea/information-architecture/MC15-DATA-CONTRACT.md#1-common-envelope"
-  ]
+  ],
+  "reviewStatus": "CORRECTIONS_APPLIED_PENDING_REVERIFICATION",
+  "correctionFindings": [
+    "IA-01",
+    "IA-02",
+    "IA-03",
+    "IA-04",
+    "IA-05"
+  ],
+  "correctionCommit": "PENDING_COMMIT"
 }
