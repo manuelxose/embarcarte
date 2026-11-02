@@ -1,0 +1,808 @@
+{
+  "contractId": "MAREA-MC11-HARDWARE-EVIDENCE-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-11",
+  "date": "2026-11-02",
+  "owner": "hw-architect",
+  "statusNote": "PROPOSED_NOT_APPROVED. Every architecture reference here is an option, not a frozen design. No family is FOR_SALE, none is certified, and customerRequirementUncertainty is UNVALIDATED for all nine families because MC-10 transferred zero customer evidence.",
+  "families": [
+    {
+      "familyId": "NAV",
+      "canonicalName": "MAREA NAV",
+      "editions": ["NAV-ESSENTIAL", "NAV-PRO"],
+      "hardwareClass": "SOFTWARE_ONLY",
+      "requiredPhysicalComponents": [],
+      "optionalPhysicalComponents": [
+        "customer phone/tablet/desktop with GNSS (never supplied by MAREA)",
+        "MAREA HUB for connected vessel data (optional, separate purchase)",
+        "MAREA AIS receive-only receiver for traffic targets (optional, separate purchase)",
+        "documented USB-serial or isolated interface adapter for a third-party instrument feed (optional, per matrix)"
+      ],
+      "softwareOnlyComponents": [
+        "navigation application (planning, charts view, logbook)",
+        "licensed-chart client and offline region manager",
+        "instrument overlay client consuming a HUB/third-party data path",
+        "AIS target display and CPA/TCPA computation where valid inputs exist",
+        "weather/tide/current overlay client bound to licensed entitlements",
+        "account, entitlement, export and multi-device session management"
+      ],
+      "externalDataDependencies": [
+        "licensed chart/ENC data right (CHART_RIGHTS_GRANTED=false)",
+        "licensed weather/tide/current data right (WEATHER_PROVIDER_RIGHTS=NOT_GRANTED)",
+        "customer device GNSS and connectivity",
+        "compatible vessel data source for live overlays"
+      ],
+      "interfaceRequirements": [
+        "device GNSS (no MAREA hardware)",
+        "HTTPS/WSS to HUB or third-party local source",
+        "NMEA 0183 receive-only sentence path where an adapter is documented and tested",
+        "AIS receive-only data path (!AIVDM) where a receiver is present",
+        "internet for licensed data (degradable, never required for previously cached data beyond licence terms)"
+      ],
+      "powerRequirements": {
+        "nominalSupply": "none supplied by MAREA; runs on the customer device",
+        "voltageRange": null,
+        "typicalConsumptionW": null,
+        "standbyConsumptionW": null,
+        "evidenceStatus": "UNKNOWN_NOT_MEASURED"
+      },
+      "safetyClassification": "NON_SAFETY_RELATED",
+      "provisionalArchitectureId": "ARCH-NAV-E",
+      "alternativeArchitectureIds": [],
+      "verificationNeeded": [
+        "licensed chart and weather rights with written scope",
+        "device- and adapter-level integration tests with recorded firmware versions",
+        "offline-region behaviour validated against licence terms",
+        "CPA/TCPA computation boundary validated and documented",
+        "data-freshness and no-position degraded states validated on device"
+      ],
+      "supplierEvidenceIds": ["EVD-MC11-015"],
+      "preliminaryCost": {"status": "NOT_ESTABLISHED", "rangeEur": null},
+      "conformityQuestions": [
+        "app-store distribution obligations and consumer software duties",
+        "CRA applicability to the connectable application and its update duty",
+        "whether any device accessory supplied by MAREA (mount, cable) creates a separate product obligation",
+        "chart/weather provider terms as a contractual, not regulatory, blocker"
+      ],
+      "readiness": "DEFINED_NOT_BUILT",
+      "customerRequirementUncertainty": "UNVALIDATED",
+      "commercialBlockers": [
+        "CHART_RIGHTS_GRANTED=false",
+        "WEATHER_PROVIDER_RIGHTS=NOT_GRANTED",
+        "no tested integration path",
+        "navigational-aid disclaimer obligation on every surface"
+      ],
+      "sharedPlatformBlocks": ["LOG", "SEC", "GNSS", "ETH", "WIFI", "MEM", "PKG"]
+    },
+    {
+      "familyId": "HUB",
+      "canonicalName": "MAREA HUB",
+      "editions": ["HUB-STANDARD", "HUB-PRO"],
+      "hardwareClass": "PROPRIETARY_HARDWARE",
+      "requiredPhysicalComponents": [
+        "computing module (application processor class; exact family not selected)",
+        "supervisory microcontroller with independent watchdog",
+        "isolated NMEA 0183 listener/transceiver interface (RS-422, opto-isolated)",
+        "vessel-network Ethernet PHY and connector",
+        "Wi-Fi/BLE radio module for local access (edition boundary unspecified)",
+        "regulated DC power input with reverse-polarity, overcurrent and transient protection",
+        "internal storage (eMMC/SD class) and a real-time clock with backup",
+        "hardware root of trust / secure element candidate for device identity",
+        "enclosure, mounting and labelled harness for a marine environment",
+        "status indication and a factory-test access path"
+      ],
+      "optionalPhysicalComponents": [
+        "isolated NMEA 2000 CAN interface (blocked: not implemented, not licensed, not certified)",
+        "external GNSS antenna and receiver",
+        "cellular modem (not in the HUB edition boundary; EDITION_INTERFACE_UNSPECIFIED)",
+        "USB ports for adapters and storage",
+        "second Ethernet port / switch for network segmentation"
+      ],
+      "softwareOnlyComponents": [
+        "vessel-data normalisation service and local data contract",
+        "source health, freshness and diagnostics services",
+        "local dashboard and configuration experience",
+        "signed update, rollback, backup/restore services",
+        "device identity, ownership transfer and provisional registration",
+        "installer tooling and commissioning record (HUB-PRO by edition definition)"
+      ],
+      "externalDataDependencies": [
+        "third-party instrument/device data through documented interfaces",
+        "GNSS position/time from a supported receiver",
+        "receive-only AIS data from a compatible receiver (optional)",
+        "licensed data is not consumed by HUB itself"
+      ],
+      "interfaceRequirements": [
+        "NMEA 0183 receive (isolated) per published matrix",
+        "Signal K over the local network",
+        "HTTPS/WSS local interface for NAV, DISPLAY and browser clients",
+        "Wi-Fi/Ethernet local access with authenticated owner and installer roles",
+        "NMEA 2000 explicitly absent and prohibited until licensed and certified",
+        "any write path to third-party equipment must be enumerated, bounded and separately approved"
+      ],
+      "powerRequirements": {
+        "nominalSupply": "12 V DC and 24 V DC vessel systems",
+        "voltageRange": "9-32 V DC (CANDIDATE requirement; not tested)",
+        "typicalConsumptionW": null,
+        "standbyConsumptionW": null,
+        "evidenceStatus": "UNKNOWN_NOT_MEASURED"
+      },
+      "safetyClassification": "NON_SAFETY_RELATED",
+      "provisionalArchitectureId": "ARCH-HUB-D",
+      "alternativeArchitectureIds": ["ARCH-HUB-A", "ARCH-HUB-B", "ARCH-HUB-C", "ARCH-HUB-E"],
+      "verificationNeeded": [
+        "isolation and transient tests on the electrical interface",
+        "EMC pre-scan and accredited EMC on a representative article",
+        "thermal, ingress and vibration qualification of the enclosure",
+        "period/latency measurement of the local data contract",
+        "power-loss, reboot and update-recovery behaviour",
+        "network security review and authenticated local access model",
+        "edition interface freeze for HUB-STANDARD vs HUB-PRO"
+      ],
+      "supplierEvidenceIds": ["EVD-MC11-005", "EVD-MC11-006", "EVD-MC11-010", "EVD-MC11-011", "EVD-MC11-012", "EVD-MC11-014", "EVD-MC11-018"],
+      "preliminaryCost": {"status": "NOT_ESTABLISHED", "rangeEur": null},
+      "conformityQuestions": [
+        "EMC Directive applicability and test route for a wired appliance",
+        "RED applicability only if a radio is integrated (Wi-Fi/BLE counts as radio equipment)",
+        "CRA obligations for a connectable product, including update support period",
+        "GPSR risk assessment and technical documentation",
+        "RoHS/WEEE registration and material declarations",
+        "LVD non-applicability reasoning for a sub-75 V DC appliance (to be confirmed)",
+        "whether a NMEA 2000 interface would require licence, certification and MED consideration"
+      ],
+      "readiness": "DEFINED_NOT_ENGINEERED",
+      "customerRequirementUncertainty": "UNVALIDATED",
+      "commercialBlockers": [
+        "H-04 (no tested protocol matrix)",
+        "H-05/H-07 (no hardware, BOM or quotes)",
+        "unspecified edition interface boundary",
+        "no authenticated local access model",
+        "local-first functions must never depend on the commercial website"
+      ],
+      "sharedPlatformBlocks": ["PROC", "MCU", "CAN", "N183", "ETH", "WIFI", "BLE", "GNSS", "SEC", "PWR", "MEM", "MECH", "RF", "PCB", "PCBA", "TEST", "PKG", "LOG"]
+    },
+    {
+      "familyId": "AIS",
+      "canonicalName": "MAREA AIS",
+      "editions": ["AIS-RECEIVER", "AIS-CONNECTED"],
+      "hardwareClass": "PROPRIETARY_HARDWARE",
+      "requiredPhysicalComponents": [
+        "receive-only AIS VHF receiver (dual-channel target; single-channel minimum if dual cannot be evidenced)",
+        "AIS decoder running on a host processor or dedicated MCU",
+        "VHF antenna input (dedicated antenna or splitter, both excluded from the SKU)",
+        "regulated DC power input with fuse, polarity and transient protection",
+        "local data output interface (documented transport; USB-serial and/or Ethernet)",
+        "status indication and a decoding-health indication",
+        "enclosure, mounting and labelled harness"
+      ],
+      "optionalPhysicalComponents": [
+        "dedicated AIS VHF antenna (never included)",
+        "VHF splitter for sharing the existing antenna (never included, and only with acceptable insertion loss)",
+        "mast coax, connectors and mounting hardware",
+        "second local data consumer networking capability (AIS-CONNECTED boundary, CONDITIONAL)",
+        "external GNSS/own-position source (supplied by NAV/HUB/customer equipment)"
+      ],
+      "softwareOnlyComponents": [
+        "target state model with message age, stale and lost states",
+        "target list, filters and honest empty state",
+        "receiver diagnostics and support export",
+        "Signal K path mapping where tested",
+        "CPA/TCPA computation only in the consuming application"
+      ],
+      "externalDataDependencies": [
+        "receive-only AIS VHF broadcast data (no data rights for retention/redistribution)",
+        "own-vessel position/COG/SOG from a compatible source for derived values",
+        "GPL-3.0 decoder decision (S-01/DEC-04) before any distribution"
+      ],
+      "interfaceRequirements": [
+        "50-ohm VHF antenna input with documented connector type",
+        "NMEA 0183 !AIVDM output over a documented transport",
+        "Signal K path where tested",
+        "no transmission path of any kind",
+        "no NMEA 2000 and no NMEA 2000 claim"
+      ],
+      "powerRequirements": {
+        "nominalSupply": "12 V DC vessel system (24 V support to be confirmed)",
+        "voltageRange": "9-32 V DC (CANDIDATE requirement; not tested)",
+        "typicalConsumptionW": null,
+        "standbyConsumptionW": null,
+        "evidenceStatus": "UNKNOWN_NOT_MEASURED"
+      },
+      "safetyClassification": "NON_SAFETY_RELATED",
+      "provisionalArchitectureId": "ARCH-AIS-B",
+      "alternativeArchitectureIds": ["ARCH-AIS-A", "ARCH-AIS-C", "ARCH-AIS-D", "ARCH-AIS-E"],
+      "verificationNeeded": [
+        "RF sensitivity, selectivity and spurious response on the real receiver",
+        "EMC and RED conformity on the actual SKU",
+        "antenna/splitter installation test with a reference receiver",
+        "decoder correctness against recorded AIS captures",
+        "stale/lost and antenna-fault behaviour",
+        "per-consumer integration test (NAV, HUB, third party)"
+      ],
+      "supplierEvidenceIds": ["EVD-MC11-015", "EVD-MC11-016", "EVD-MC11-013"],
+      "preliminaryCost": {"status": "NOT_ESTABLISHED", "rangeEur": null},
+      "conformityQuestions": [
+        "RED applicability to a receive-only receiver (yes on the directive's own scope)",
+        "MED scope question: is a receive-only AIS used on an EU-flag ship marine equipment? to be determined, not assumed",
+        "EMC through RED, GPSR, RoHS, WEEE, CRA if connectable",
+        "antenna and splitter are separate products with their own conformity",
+        "AIS-derived data retention/redistribution rights (not a radio conformity question)"
+      ],
+      "readiness": "DEFINED_NOT_ENGINEERED",
+      "customerRequirementUncertainty": "UNVALIDATED",
+      "commercialBlockers": [
+        "AIS_TRANSMISSION_OFFERED=false",
+        "H-08 (no receiver hardware or RF conformity)",
+        "S-01/DEC-04 GPL-3.0 decoder distribution decision",
+        "AIS-CONNECTED edition verdict CONDITIONAL/NOT_YET_JUSTIFIED"
+      ],
+      "sharedPlatformBlocks": ["RF", "PROC", "MCU", "N183", "PWR", "GNSS", "MECH", "PCB", "PCBA", "TEST", "PKG", "LOG"]
+    },
+    {
+      "familyId": "PILOT",
+      "canonicalName": "MAREA PILOT",
+      "editions": ["PILOT-COASTAL", "PILOT-SAIL", "PILOT-PRO"],
+      "hardwareClass": "SAFETY_BLOCKED",
+      "requiredPhysicalComponents": [
+        "control computer (guidance, mode logic, alarms, logging)",
+        "independent motor-control electronics with its own real-time limits and watchdog",
+        "physical helm control head with engage/standby, mode, adjust, acknowledge",
+        "surveyed drive/actuator matched to the steering system",
+        "steering/rudder feedback reference",
+        "calibrated heading reference",
+        "physical E-stop and independent motor-power isolation (contactor/breaker, operator-actuated)",
+        "fused, transient-protected power architecture and harness",
+        "installation records, commissioning tooling and handover pack"
+      ],
+      "optionalPhysicalComponents": [
+        "wind sensor qualified as a steering input (Sail only, conditional)",
+        "GNSS source for route/track mode",
+        "second control-head station (only if the survey and safety case support it)",
+        "read-only status display (DISPLAY/WATCH integration, future and approved only)"
+      ],
+      "softwareOnlyComponents": [
+        "heading-hold controller (final intent of Coastal)",
+        "wind-angle controller (CONDITIONAL, not delivered as an equivalent mode)",
+        "route/track controller (CONDITIONAL, not delivered as an equivalent mode)",
+        "fault taxonomy, demotion and latched-fault rearm",
+        "authenticated local control plane (required; the audited legacy API is unauthenticated)",
+        "commissioning and sea-trial evidence package"
+      ],
+      "externalDataDependencies": [
+        "vessel-specific survey and steering-system data",
+        "calibrated heading and wind references",
+        "GNSS position/course for route mode",
+        "installer competence, insurance and liability framework (does not exist)"
+      ],
+      "interfaceRequirements": [
+        "local-only control boundary; no cloud, internet or remote command path",
+        "read-only status export to HUB/DISPLAY/WATCH only under an approved authenticated interface",
+        "no actuator path outside the PILOT boundary",
+        "no route upload that commands the helm from NAV",
+        "no NMEA 2000, no NMEA 2000 certification claim"
+      ],
+      "powerRequirements": {
+        "nominalSupply": "12 V DC and 24 V DC vessel systems; dedicated fused motor circuit",
+        "voltageRange": "to be derived from the surveyed drive; NOT_ESTABLISHED",
+        "typicalConsumptionW": null,
+        "standbyConsumptionW": null,
+        "evidenceStatus": "UNKNOWN_NOT_MEASURED"
+      },
+      "safetyClassification": "SAFETY_RELEVANT_BLOCKED",
+      "provisionalArchitectureId": "ARCH-PILOT-E",
+      "alternativeArchitectureIds": ["ARCH-PILOT-A", "ARCH-PILOT-B", "ARCH-PILOT-C", "ARCH-PILOT-D"],
+      "verificationNeeded": [
+        "frozen hardware design with schematics, harness, enclosure and power architecture (gate G1)",
+        "independent fail-safe evidence: verified power cut, MCU hardware watchdog, E-stop channel, overcurrent by two independent means (G2)",
+        "rudder feedback or a documented open-loop case with end-stop and stall protection (G3)",
+        "heading integrity: calibration, deviation, heading-vs-COG plausibility (G4)",
+        "software safety case, authenticated control plane, mode-transition handshake, manual takeover (G5)",
+        "bench and commissioning logs measured with instruments (G6)",
+        "sea trials per mode with failure injection (G7)",
+        "conformity assessment incl. motor-drive EMC (G8)",
+        "independent marine-engineer review, notified body where applicable, insurance position (G9)"
+      ],
+      "supplierEvidenceIds": ["EVD-MC11-017"],
+      "preliminaryCost": {"status": "NOT_ESTABLISHED", "rangeEur": null},
+      "conformityQuestions": [
+        "EMC for a switched motor drive; enclosure and thermal design",
+        "LVD applicability position for the drive circuit",
+        "GPSR risk assessment and technical documentation",
+        "CRA if any connectable element is introduced",
+        "national rules for professional/passenger vessels",
+        "product-liability and insurance exposure for a steering device",
+        "independent review requirement before any sale or quotation"
+      ],
+      "readiness": "SAFETY_BLOCKED_NOT_ENGINEERED",
+      "customerRequirementUncertainty": "UNVALIDATED",
+      "commercialBlockers": [
+        "PILOT_SAFETY_GATE=BLOCKED (binding)",
+        "REMOTE_HELM_CONTROL=false",
+        "H-01/H-03/H-05/H-07/P-04",
+        "no installer network, no competence scheme, no insurance position",
+        "no bench or sea-trial evidence of any kind"
+      ],
+      "sharedPlatformBlocks": ["MCU", "PROC", "PWR", "GNSS", "MECH", "PCB", "PCBA", "TEST", "LOG"]
+    },
+    {
+      "familyId": "SENSE",
+      "canonicalName": "MAREA SENSE",
+      "editions": ["SENSE-WIND", "SENSE-POWER", "SENSE-BILGE", "SENSE-TANKS", "SENSE-ENV", "SENSE-ESSENTIALS", "SENSE-SAIL", "SENSE-SYSTEMS"],
+      "hardwareClass": "PROPRIETARY_HARDWARE",
+      "requiredPhysicalComponents": [
+        "module MCU with isolated or protected input front end (one module per measurement type)",
+        "sensing element or documented input interface per module (anemometer, shunt/hall, float switch, tank sender, temperature/humidity/pressure sensor)",
+        "regulated DC power input with reverse-polarity, overcurrent and transient protection",
+        "local data interface to a compatible consumer (HUB or documented direct interface)",
+        "enclosure, cable gland, connectors and mounting appropriate to the compartment",
+        "calibration record medium and module identity"
+      ],
+      "optionalPhysicalComponents": [
+        "MAREA HUB (required for integrated local data in the intended architecture)",
+        "MAREA WATCH (required for remote alerts; separate hardware and subscription)",
+        "third-party wind instrument, tank sender or shunt where the module acts as an adapter",
+        "masthead cable and connector items",
+        "replacement sensing elements and calibration service"
+      ],
+      "softwareOnlyComponents": [
+        "measurement model with units, range, quality, freshness and calibration state",
+        "calibration workflow and record",
+        "diagnostics and fault state presentation",
+        "firmware update with rollback",
+        "adapters for documented third-party sentence/sender inputs"
+      ],
+      "externalDataDependencies": [
+        "no cloud dependency for local measurement",
+        "HUB or tested direct consumer for data to be visible",
+        "third-party sender/sensor characteristics for adapter modules"
+      ],
+      "interfaceRequirements": [
+        "analogue/digital sensor front end per module",
+        "NMEA 0183 MWV/MWD receive where acting as a wind adapter",
+        "Signal K / documented local interface through HUB",
+        "no NMEA 2000 and no NMEA 2000 claim",
+        "no connectivity of its own"
+      ],
+      "powerRequirements": {
+        "nominalSupply": "12 V DC (24 V support to be confirmed per module)",
+        "voltageRange": "9-32 V DC (CANDIDATE requirement; not tested)",
+        "typicalConsumptionW": null,
+        "standbyConsumptionW": null,
+        "evidenceStatus": "UNKNOWN_NOT_MEASURED"
+      },
+      "safetyClassification": "NON_SAFETY_RELATED",
+      "provisionalArchitectureId": "ARCH-SENSE-C",
+      "alternativeArchitectureIds": ["ARCH-SENSE-A", "ARCH-SENSE-B", "ARCH-SENSE-D", "ARCH-SENSE-E"],
+      "verificationNeeded": [
+        "per-module measurement chain verification against a reference class with a dated calibration record",
+        "accuracy, repeatability and drift measurement (no figure may be published without it)",
+        "electrical protection and isolation test on the vessel DC environment",
+        "ingress, salt-fog, vibration and thermal qualification per compartment class",
+        "invalid/stale/out-of-range/fault state demonstration",
+        "HUB publication test and cable-length/EMC behaviour"
+      ],
+      "supplierEvidenceIds": ["EVD-MC11-010", "EVD-MC11-012"],
+      "preliminaryCost": {"status": "NOT_ESTABLISHED", "rangeEur": null},
+      "conformityQuestions": [
+        "EMC; RED only if a radio is integrated (intended: none)",
+        "GPSR, RoHS, WEEE; CRA if network-connected through HUB",
+        "non-certified-alarm statement and the vessel's required-equipment boundary",
+        "calibration responsibility and reference-equipment traceability"
+      ],
+      "readiness": "DEFINED_NOT_ENGINEERED",
+      "customerRequirementUncertainty": "UNVALIDATED",
+      "commercialBlockers": [
+        "H-05/H-11 (no modules)",
+        "no accuracy evidence and no calibration fixture",
+        "no kit pricing (a kit is packaging, never new capability)",
+        "SENSE-ESSENTIALS is defined, SAIL/SYSTEMS conditional"
+      ],
+      "sharedPlatformBlocks": ["MCU", "SENSE", "PWR", "N183", "MECH", "PCB", "PCBA", "TEST", "PKG", "LOG"]
+    },
+    {
+      "familyId": "WATCH",
+      "canonicalName": "MAREA WATCH",
+      "editions": ["WATCH-CORE", "WATCH-PLUS"],
+      "hardwareClass": "PROPRIETARY_HARDWARE",
+      "requiredPhysicalComponents": [
+        "monitoring device with declared sensor inputs and an internal backup energy source if the final design includes one",
+        "outbound-only cellular modem with SIM/eSIM and antenna (or a documented connectivity arrangement)",
+        "secure element / hardware root of trust or secure key storage for device identity",
+        "regulated DC power input, power-loss detection and local buffering",
+        "connectors/adapters for the declared monitored-input set",
+        "enclosure, mounting and installation materials",
+        "status indication and a local diagnostics path"
+      ],
+      "optionalPhysicalComponents": [
+        "external antenna or extension where coverage requires it",
+        "backup-energy accessory if the final design supports one",
+        "additional SENSE modules where the monitored-input documentation confirms them",
+        "installation service and hardware replacement"
+      ],
+      "softwareOnlyComponents": [
+        "device provisioning, identity, ownership proof and transfer",
+        "freshness, last-known-good and connectivity-gap model",
+        "alert rule evaluation, local buffering, replay and escalation record",
+        "subscription service, entitlement ledger and notification provider handoff",
+        "privacy controls, roles and revocation",
+        "signed OTA update with rollback"
+      ],
+      "externalDataDependencies": [
+        "cellular network coverage and data plan (external provider)",
+        "push/notification provider",
+        "monitoring subscription service (does not exist)",
+        "installation survey and connectivity assessment"
+      ],
+      "interfaceRequirements": [
+        "outbound-only TLS connection; no inbound internet-reachable service",
+        "GPS/GNSS position option where the design includes it",
+        "no AIS traffic display in the defined product",
+        "no control or steering path; read-only status only",
+        "no routing of HUB data ashore without separate consent"
+      ],
+      "powerRequirements": {
+        "nominalSupply": "12 V DC vessel system (24 V support to be confirmed)",
+        "voltageRange": "9-32 V DC (CANDIDATE requirement; not tested)",
+        "typicalConsumptionW": null,
+        "standbyConsumptionW": null,
+        "evidenceStatus": "UNKNOWN_NOT_MEASURED",
+        "batteryDrainWarning": "A monitoring device must not materially drain the battery it monitors. Quiescent drain, modem wake duty cycle and backup-source charging must be measured on the real article; no figure is asserted in MC-11."
+      },
+      "safetyClassification": "NON_SAFETY_RELATED",
+      "provisionalArchitectureId": "ARCH-WATCH-D",
+      "alternativeArchitectureIds": ["ARCH-WATCH-A", "ARCH-WATCH-B", "ARCH-WATCH-C", "ARCH-WATCH-E"],
+      "verificationNeeded": [
+        "quiescent and average current measurement across modem states, including a full unattended period",
+        "network-loss buffering and replay across a power cut",
+        "end-to-end alert test with distinct provider-acceptance, delivery and acknowledgement timestamps",
+        "subscription-expiry test proving local functions survive",
+        "coverage survey at representative berths",
+        "antenna design and RF conformity",
+        "secure provisioning, device revocation and ownership transfer"
+      ],
+      "supplierEvidenceIds": ["EVD-MC11-012", "EVD-MC11-014", "EVD-MC11-013", "EVD-MC11-015"],
+      "preliminaryCost": {"status": "NOT_ESTABLISHED", "rangeEur": null},
+      "conformityQuestions": [
+        "RED for the cellular radio plus operator acceptance",
+        "EMC, GPSR, RoHS, WEEE",
+        "CRA for a connectable device and its update duty",
+        "GDPR/data-protection role for vessel position and telemetry",
+        "no certified alarm, no distress service, no guaranteed delivery"
+      ],
+      "readiness": "DEFINED_NOT_ENGINEERED",
+      "customerRequirementUncertainty": "UNVALIDATED",
+      "commercialBlockers": [
+        "no connectivity contract or data plan",
+        "no subscription service or terms",
+        "H-11/H-12",
+        "no guaranteed-alert-delivery claim permitted"
+      ],
+      "sharedPlatformBlocks": ["MCU", "PROC", "CELL", "GNSS", "SEC", "PWR", "MECH", "RF", "PCB", "PCBA", "TEST", "PKG", "LOG"]
+    },
+    {
+      "familyId": "DISPLAY",
+      "canonicalName": "MAREA DISPLAY",
+      "editions": ["DISPLAY-7", "DISPLAY-LARGE-CONDITIONAL"],
+      "hardwareClass": "PROPRIETARY_HARDWARE",
+      "requiredPhysicalComponents": [
+        "panel and backlight suitable for a marine helm with daylight, sunlight and night experiences (technology open)",
+        "compute module or SoC able to render instrument layouts at helm responsiveness",
+        "durable local storage for configuration, logs and update staging",
+        "sealed enclosure and bezel with a service opening strategy",
+        "specified mount family with documented surface, orientation and load case",
+        "power conversion and protection from a 12/24 V vessel supply",
+        "marine connectors and a documented harness for supported data inputs",
+        "dedicated operating environment locked to an approved application set"
+      ],
+      "optionalPhysicalComponents": [
+        "physical buttons or a rotary control (only if the final hardware includes them)",
+        "second-station mount and harness",
+        "external GNSS or data source (does not supply position itself)",
+        "touch sensor suitable for wet use"
+      ],
+      "softwareOnlyComponents": [
+        "instrument, alarm and received-AIS presentation",
+        "navigation presentation (NAV runtime on the device)",
+        "configuration, backup, diagnostics and update client",
+        "PILOT read-only status view only after an approved interface"
+      ],
+      "externalDataDependencies": [
+        "HUB local data or another compatible source",
+        "licensed weather/chart data through entitlements where displayed",
+        "no independent internet requirement for local instrument display"
+      ],
+      "interfaceRequirements": [
+        "Ethernet/Wi-Fi to the vessel network",
+        "documented data inputs (HUB API, NMEA 0183 where applicable)",
+        "no steering authority and no PILOT control-head function",
+        "no NMEA 2000 claim"
+      ],
+      "powerRequirements": {
+        "nominalSupply": "12 V DC and 24 V DC vessel systems",
+        "voltageRange": "9-32 V DC (CANDIDATE requirement; not tested)",
+        "typicalConsumptionW": null,
+        "standbyConsumptionW": null,
+        "evidenceStatus": "UNKNOWN_NOT_MEASURED"
+      },
+      "safetyClassification": "NON_SAFETY_RELATED",
+      "provisionalArchitectureId": "ARCH-DISPLAY-B",
+      "alternativeArchitectureIds": ["ARCH-DISPLAY-A", "ARCH-DISPLAY-C", "ARCH-DISPLAY-D", "ARCH-DISPLAY-E"],
+      "verificationNeeded": [
+        "photometric sunlight and night validation on the actual panel",
+        "thermal, ingress, salt-fog, UV and vibration qualification",
+        "wet and gloved input measurement",
+        "boot, update rollback and power-loss recovery",
+        "EMC; RED only if a radio is included",
+        "readable safety information under all modes"
+      ],
+      "supplierEvidenceIds": ["EVD-MC11-005", "EVD-MC11-006", "EVD-MC11-010"],
+      "preliminaryCost": {"status": "NOT_ESTABLISHED", "rangeEur": null},
+      "conformityQuestions": [
+        "EMC clearly applicable; RED potentially applicable only if a radio is present",
+        "LVD non-applicability position for a sub-75 V DC appliance to be confirmed",
+        "GPSR, RoHS, WEEE, CRA",
+        "display is not a PILOT control head and must not be presented as one",
+        "no screen-size, brightness or IP rating may be published without measurement"
+      ],
+      "readiness": "CONDITIONAL_SIZE_NOT_FROZEN",
+      "customerRequirementUncertainty": "UNVALIDATED",
+      "commercialBlockers": [
+        "HARDWARE_NOT_SELECTED, SIZE_NOT_FROZEN, BOM_NOT_ESTABLISHED",
+        "DISPLAY-EMBEDDED-RUNTIME=NOT_FOUND",
+        "no photometric or environmental measurement",
+        "DISPLAY-LARGE-CONDITIONAL is never selectable"
+      ],
+      "sharedPlatformBlocks": ["DISP", "PROC", "MEM", "PWR", "ETH", "WIFI", "MECH", "PCB", "PCBA", "TEST", "PKG", "LOG"]
+    },
+    {
+      "familyId": "WEATHER",
+      "canonicalName": "MAREA WEATHER",
+      "editions": ["WEATHER-STANDARD", "WEATHER-PRO"],
+      "hardwareClass": "LICENSED_DATA_SERVICE",
+      "requiredPhysicalComponents": [],
+      "optionalPhysicalComponents": [
+        "no physical accessory of its own",
+        "MAREA DISPLAY to render the licensed view where display rights and entitlement permit",
+        "MAREA HUB to supply own-vessel observations (clearly labelled as own-vessel)"
+      ],
+      "softwareOnlyComponents": [
+        "source registry with provider, model, model run, valid time and receipt time",
+        "freshness (current/aging/stale/expired), missing-data and out-of-coverage states",
+        "multi-model comparison showing labelled disagreement, never a fabricated consensus",
+        "entitlement ledger and NAV integration",
+        "caching only within the licensed scope"
+      ],
+      "externalDataDependencies": [
+        "licensed forecast/observation datasets and API plans",
+        "provider display and caching rights",
+        "internet connectivity"
+      ],
+      "interfaceRequirements": [
+        "HTTPS provider APIs server-side",
+        "read-only feed to NAV/DISPLAY/FLEET where rights permit",
+        "no vessel control and no official warning authority"
+      ],
+      "powerRequirements": {
+        "nominalSupply": "not applicable (server-side service)",
+        "voltageRange": null,
+        "typicalConsumptionW": null,
+        "standbyConsumptionW": null,
+        "evidenceStatus": "NOT_APPLICABLE"
+      },
+      "safetyClassification": "NON_SAFETY_RELATED",
+      "provisionalArchitectureId": "ARCH-WEATHER-E",
+      "alternativeArchitectureIds": [],
+      "verificationNeeded": [
+        "provider contracts covering commercial display, caching and derived products",
+        "declared evaluation of forecast quality with published methodology and no accuracy claim until then",
+        "freshness and stale-forecast behaviour validated",
+        "entitlement sharing with NAV without double billing"
+      ],
+      "supplierEvidenceIds": ["EVD-MC11-015"],
+      "preliminaryCost": {"status": "NOT_ESTABLISHED", "rangeEur": null},
+      "conformityQuestions": [
+        "consumer software and subscription obligations",
+        "CRA if the service or client is in scope",
+        "data-protection obligations for location data",
+        "no meteorological guarantee and no official-warning claim"
+      ],
+      "readiness": "DEFINED_NOT_BUILT",
+      "customerRequirementUncertainty": "UNVALIDATED",
+      "commercialBlockers": [
+        "WEATHER_PROVIDER_RIGHTS=NOT_GRANTED",
+        "no source registry, no evaluation, no entitlement service",
+        "no accuracy or coverage claim permitted"
+      ],
+      "sharedPlatformBlocks": ["LOG", "SEC", "PKG"]
+    },
+    {
+      "familyId": "FLEET",
+      "canonicalName": "MAREA FLEET",
+      "editions": ["FLEET-START", "FLEET-BUSINESS", "FLEET-ENTERPRISE"],
+      "hardwareClass": "SOFTWARE_ONLY",
+      "requiredPhysicalComponents": [],
+      "optionalPhysicalComponents": [
+        "no hardware included by default (FLEET_DEFAULT_HARDWARE=false)",
+        "any edge device (WATCH/HUB) is a separate purchase and an explicitly conditional integration"
+      ],
+      "softwareOnlyComponents": [
+        "organisation tenancy, roles, invitations and revocation",
+        "vessel registry, profiles and operational state",
+        "maintenance tasks, work orders, service history, equipment inventory",
+        "documents with expiry control, incidents and operational events",
+        "reporting, export, audit log and tenant isolation",
+        "read-only telemetry integration where a compatible WATCH/HUB exists"
+      ],
+      "externalDataDependencies": [
+        "cloud hosting and database",
+        "notification and email providers",
+        "optional read-only telemetry from WATCH/HUB with organisation consent",
+        "connectivity/SIM per connected device (external provider, never in the SaaS fee)"
+      ],
+      "interfaceRequirements": [
+        "HTTPS web application and API",
+        "read-only telemetry ingestion; no inbound vessel connection and no command topic",
+        "permissioned outbound integrations only",
+        "no control, steering, throttle or remote helm path"
+      ],
+      "powerRequirements": {
+        "nominalSupply": "not applicable (SaaS)",
+        "voltageRange": null,
+        "typicalConsumptionW": null,
+        "standbyConsumptionW": null,
+        "evidenceStatus": "NOT_APPLICABLE"
+      },
+      "safetyClassification": "NON_SAFETY_RELATED",
+      "provisionalArchitectureId": "ARCH-FLEET-E",
+      "alternativeArchitectureIds": [],
+      "verificationNeeded": [
+        "tenant-isolation and authorisation test with adversarial cases",
+        "read-only boundary proof (no write path to a vessel)",
+        "audit, export and deletion behaviour",
+        "CRA and data-processing obligations",
+        "no SLA or uptime figure before a measured service exists"
+      ],
+      "supplierEvidenceIds": ["EVD-MC11-015"],
+      "preliminaryCost": {"status": "NOT_ESTABLISHED", "rangeEur": null},
+      "conformityQuestions": [
+        "CRA obligations for a B2B SaaS and its client software",
+        "GDPR controller/processor roles and data-processing agreement",
+        "no security certification, no SLA and no uptime figure may be claimed"
+      ],
+      "readiness": "DEFINED_NOT_BUILT",
+      "customerRequirementUncertainty": "UNVALIDATED",
+      "commercialBlockers": [
+        "no tenancy service, no billing, no terms, no DPA",
+        "FLEET hardware-not-included rule is binding",
+        "FLEET-ENTERPRISE is contracted, never a checkout SKU"
+      ],
+      "sharedPlatformBlocks": ["LOG", "SEC", "PKG"]
+    }
+  ],
+  "bundles": [
+    {
+      "bundleId": "START",
+      "canonicalName": "MAREA START",
+      "componentLines": [
+        {"familyId": "HUB", "editionId": "HUB-STANDARD", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "NAV", "editionId": "NAV-PRO", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": null, "editionId": null, "inclusion": "REQUIRED_EXTERNAL", "quantity": 1, "externalItem": "licensed chart entitlement within the purchased region"}
+      ],
+      "physicalHardwareFamilies": ["HUB"],
+      "hardwareIncludedByDefault": true,
+      "fixedTurnkeyPrice": false,
+      "exclusions": ["no AIS receiver and no AIS transponder", "DISPLAY", "PILOT", "SENSE", "WATCH", "FLEET", "NMEA 2000 certification or compatibility", "ECDIS status"],
+      "safetyGate": "NO_ACTUATOR_PATH; PILOT excluded; HUB has no steering output"
+    },
+    {
+      "bundleId": "CRUISE",
+      "canonicalName": "MAREA CRUISE",
+      "componentLines": [
+        {"familyId": "NAV", "editionId": "NAV-ESSENTIAL", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "HUB", "editionId": "HUB-STANDARD", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "AIS", "editionId": "AIS-RECEIVER", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "DISPLAY", "editionId": "DISPLAY-7", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "AIS", "editionId": "AIS-CONNECTED", "inclusion": "CONDITIONAL", "quantity": 1},
+        {"familyId": "DISPLAY", "editionId": "DISPLAY-LARGE-CONDITIONAL", "inclusion": "INELIGIBLE", "quantity": 1},
+        {"familyId": null, "editionId": null, "inclusion": "REQUIRED_EXTERNAL", "quantity": 1, "externalItem": "AIS VHF antenna and optional VHF splitter"},
+        {"familyId": null, "editionId": null, "inclusion": "REQUIRED_EXTERNAL", "quantity": 1, "externalItem": "mounts, power items, cabling, professional installation and commissioning"},
+        {"familyId": null, "editionId": null, "inclusion": "REQUIRED_EXTERNAL", "quantity": 1, "externalItem": "licensed chart region and GNSS source"}
+      ],
+      "physicalHardwareFamilies": ["HUB", "AIS", "DISPLAY"],
+      "hardwareIncludedByDefault": true,
+      "fixedTurnkeyPrice": false,
+      "exclusions": ["no AIS transmission and no AIS transponder", "approved DISPLAY large size", "PILOT", "SENSE", "WATCH", "FLEET", "NMEA 2000 certification", "ECDIS", "unlimited charts"],
+      "safetyGate": "AIS_RECEIVE_ONLY; DISPLAY has no steering authority; PILOT excluded"
+    },
+    {
+      "bundleId": "SAIL",
+      "canonicalName": "MAREA SAIL",
+      "componentLines": [
+        {"familyId": "NAV", "editionId": "NAV-PRO", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "HUB", "editionId": "HUB-STANDARD", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "PILOT", "editionId": "PILOT-COASTAL", "inclusion": "QUOTATION_REQUIRED", "quantity": 1},
+        {"familyId": "SENSE", "editionId": "SENSE-WIND", "inclusion": "CONDITIONAL", "quantity": 1},
+        {"familyId": "PILOT", "editionId": "PILOT-SAIL", "inclusion": "CONDITIONAL", "quantity": 1},
+        {"familyId": "PILOT", "editionId": "PILOT-PRO", "inclusion": "INELIGIBLE", "quantity": 1},
+        {"familyId": null, "editionId": null, "inclusion": "REQUIRED_EXTERNAL", "quantity": 1, "externalItem": "documented vessel and steering survey"},
+        {"familyId": null, "editionId": null, "inclusion": "QUOTATION_REQUIRED", "quantity": 1, "externalItem": "drive/actuator, feedback, E-stop assembly, cabling and power protection selected by survey"},
+        {"familyId": null, "editionId": null, "inclusion": "QUOTATION_REQUIRED", "quantity": 1, "externalItem": "installer labour, commissioning, sea trials, training, conformity and warranty reserve"}
+      ],
+      "physicalHardwareFamilies": ["HUB", "SENSE", "PILOT"],
+      "hardwareIncludedByDefault": true,
+      "fixedTurnkeyPrice": false,
+      "exclusions": ["fixed PILOT price or turnkey SAIL price", "PILOT-PRO as a retail SKU", "autonomous or remote steering", "certified steering system", "AIS", "DISPLAY", "WATCH", "FLEET"],
+      "safetyGate": "BLOCKED",
+      "safetyGateNote": "PILOT_SAFETY_GATE = BLOCKED; steering is quotation-only and never a priced bundle line; no capability may be inferred from the bundle"
+    },
+    {
+      "bundleId": "PROTECT",
+      "canonicalName": "MAREA PROTECT",
+      "componentLines": [
+        {"familyId": "WATCH", "editionId": "WATCH-CORE", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "SENSE", "editionId": "SENSE-ESSENTIALS", "inclusion": "INCLUDED", "quantity": 1, "expandsTo": ["SENSE-POWER", "SENSE-BILGE"]},
+        {"familyId": "SENSE", "editionId": null, "inclusion": "INELIGIBLE", "quantity": 1, "note": "a loose SENSE-POWER or SENSE-BILGE beside the kit is a duplicate and is counted once"},
+        {"familyId": "WATCH", "editionId": "WATCH-PLUS", "inclusion": "CONDITIONAL", "quantity": 1},
+        {"familyId": null, "editionId": null, "inclusion": "REQUIRED_EXTERNAL", "quantity": 1, "externalItem": "cellular/SIM/data plan for remote monitoring"},
+        {"familyId": null, "editionId": null, "inclusion": "INCLUDED", "quantity": 1, "externalItem": "recurring WATCH monitoring subscription (remote monitoring stops on expiry; local functions continue)"},
+        {"familyId": null, "editionId": null, "inclusion": "REQUIRED_EXTERNAL", "quantity": 1, "externalItem": "installation materials, labour, commissioning, registration and privacy notice"}
+      ],
+      "physicalHardwareFamilies": ["WATCH", "SENSE"],
+      "hardwareIncludedByDefault": true,
+      "fixedTurnkeyPrice": false,
+      "exclusions": ["duplicate loose modules beside the kit", "SENSE-SAIL and SENSE-SYSTEMS", "HUB as a requirement", "PILOT", "DISPLAY", "AIS", "FLEET", "no guaranteed or immediate alert delivery", "certified distress/theft service", "subscription-free cloud monitoring", "sensor accuracy or IP claims"],
+      "safetyGate": "BLOCKED",
+      "safetyGateNote": "No control path; alerts are conditional and not a certified alarm or distress service; PILOT excluded; local functions survive subscription expiry"
+    },
+    {
+      "bundleId": "COMPLETE",
+      "canonicalName": "MAREA COMPLETE",
+      "componentLines": [
+        {"familyId": "NAV", "editionId": "NAV-PRO", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "HUB", "editionId": "HUB-PRO", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "DISPLAY", "editionId": "DISPLAY-7", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "WATCH", "editionId": "WATCH-CORE", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "SENSE", "editionId": "SENSE-POWER", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "SENSE", "editionId": "SENSE-BILGE", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "SENSE", "editionId": "SENSE-TANKS", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "SENSE", "editionId": "SENSE-ENV", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "PILOT", "editionId": "PILOT-COASTAL", "inclusion": "QUOTATION_REQUIRED", "quantity": 1},
+        {"familyId": "PILOT", "editionId": "PILOT-PRO", "inclusion": "INELIGIBLE", "quantity": 1},
+        {"familyId": "PILOT", "editionId": "PILOT-SAIL", "inclusion": "CONDITIONAL", "quantity": 1},
+        {"familyId": "DISPLAY", "editionId": "DISPLAY-LARGE-CONDITIONAL", "inclusion": "INELIGIBLE", "quantity": 1},
+        {"familyId": null, "editionId": null, "inclusion": "REQUIRED_EXTERNAL", "quantity": 1, "externalItem": "full compatibility and safety survey for a coordinated professional installation"},
+        {"familyId": null, "editionId": null, "inclusion": "QUOTATION_REQUIRED", "quantity": 1, "externalItem": "vessel-specific components, labour, commissioning, training, support proposal and conformity work"}
+      ],
+      "physicalHardwareFamilies": ["HUB", "DISPLAY", "WATCH", "SENSE", "PILOT"],
+      "hardwareIncludedByDefault": true,
+      "fixedTurnkeyPrice": false,
+      "exclusions": ["fixed turnkey COMPLETE price", "PILOT-PRO as retail SKU", "DISPLAY-LARGE-CONDITIONAL", "SENSE-SYSTEMS in the reference configuration", "autonomous/remote steering", "no guaranteed alert delivery", "ECDIS", "NMEA 2000 certification", "unlimited charts/data/coverage", "a tenth product family"],
+      "safetyGate": "BLOCKED",
+      "safetyGateNote": "PILOT_SAFETY_GATE = BLOCKED; steering quotation-only; no capability inference; COMPLETE is not a turnkey system and carries no fixed price"
+    },
+    {
+      "bundleId": "FLEET",
+      "canonicalName": "MAREA FLEET",
+      "componentLines": [
+        {"familyId": "FLEET", "editionId": "FLEET-START", "inclusion": "INCLUDED", "quantity": 1},
+        {"familyId": "FLEET", "editionId": "FLEET-ENTERPRISE", "inclusion": "CONDITIONAL", "quantity": 1},
+        {"familyId": null, "editionId": null, "inclusion": "INCLUDED", "quantity": 1, "externalItem": "organisation onboarding and setup, separately quoted service"},
+        {"familyId": null, "editionId": null, "inclusion": "INCLUDED", "quantity": 1, "externalItem": "device enrolment, personnel/permission setup and initial data migration, separately quoted services"},
+        {"familyId": null, "editionId": null, "inclusion": "REQUIRED_EXTERNAL", "quantity": 1, "externalItem": "cellular/SIM/data connectivity per connected device"},
+        {"familyId": null, "editionId": null, "inclusion": "CONDITIONAL", "quantity": 1, "externalItem": "contracted integrations and optional SLA, only as a written measurable contract"}
+      ],
+      "physicalHardwareFamilies": [],
+      "hardwareIncludedByDefault": false,
+      "fixedTurnkeyPrice": false,
+      "exclusions": ["hardware included in the per-vessel SaaS fee", "WATCH/HUB/SENSE hardware and subscriptions", "connectivity/SIM/data in the subscription", "a standard FLEET-ENTERPRISE price", "an invented SLA, uptime figure or security certification", "unlimited vessels/users/storage/API", "cross-tenant access", "vessel control or remote helm", "a tenth family or new edition"],
+      "safetyGate": "READ_ONLY_TELEMETRY_ONLY; no command path; no hardware by default; NO_SLA_ESTABLISHED"
+    }
+  ],
+  "crossReferences": {
+    "architectureOptions": "data/architecture-options.json",
+    "compatibility": "data/compatibility-requirements.json",
+    "nmea": "data/nmea-status.json",
+    "bundleSource": "docs/marea/bundles/bundle-definitions.json",
+    "productSpecs": "docs/marea/products/README.md and the nine commercial specs"
+  }
+}

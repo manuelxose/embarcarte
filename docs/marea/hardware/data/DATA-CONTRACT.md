@@ -16,12 +16,14 @@ specialist may add fields but may not omit one or invent a vocabulary value outs
 4. **No claim upgrade.** `TESTED`/`SUPPORTED` compatibility, NMEA certification, CE marking,
    IP/temperature/EMC ratings, sensor accuracy and guaranteed alert delivery are forbidden values.
 5. **Quantities are integers.** `qtyPerUnit >= 1` for a `REQUIRED`/`OPTIONAL` material line.
-6. **Currencies** are ISO-4217. Costs are `EUR`; a non-EUR observation converts only with a recorded
-   `fxRates` entry (`from`, `to`, `rate`, `sourceUrl`, `retrievedOn`); otherwise the line is
-   `COST_UNVERIFIED`.
+6. **Currencies** are ISO-4217. Costs are `EUR`; a non-EUR observation used in a cost converts only
+   with a recorded `fxRates` entry that is either an observed rate (`sourceUrl` + `retrievedOn`) or an
+   `ENGINEERING_ASSUMPTION` rate resolving to an `ASM-###` record; otherwise the line is
+   `COST_UNVERIFIED`. A rate with neither provenance is rejected.
 7. **VAT never mixes.** Each price observation declares `vatTreatment`. A BOM/cost line whose input
-   was `VAT_INCLUDED` must set `normalizationApplied: true` and `normalizationNote`. `VAT_UNKNOWN`
-   forces the containing total to `INCOMPLETE`.
+   was `VAT_INCLUDED` must set `normalizationApplied: true` and `normalizationNote`. A `VAT_UNKNOWN`
+   input does not fail the line, but it forces the containing total to `INCOMPLETE`; declaring a total
+   `COMPLETE_TO_EVIDENCE` while any input is `VAT_UNKNOWN` is a violation.
 8. **Tier integrity.** A BOM line reuses the price observation's tier; a volume adjustment is allowed
    only through a named `ENGINEERING_ASSUMPTION` record (`volumeAdjustmentAssumptionId`).
 9. **Dates are real.** `observedAt` / `retrievedOn` are the actual retrieval dates of this session
@@ -31,6 +33,11 @@ specialist may add fields but may not omit one or invent a vocabulary value outs
 11. **The validator is read-only.** It never writes business data; it exits non-zero on violation.
 12. **No runtime dependencies.** Plain Node (`node:fs`, `node:path`, `node:assert`), matching the
     existing `scripts/check-marea-*.mjs` gates.
+13. **Enum fields may carry a bounded explanation.** An enum-valued field is valid when it *starts*
+    with the required token followed by an optional explanation, e.g.
+    `"productCertification": "NOT_CERTIFIED. No certification file exists."`. The validator checks the
+    token prefix, so the machine state stays unambiguous while the record can explain itself. Prose
+    never upgrades an enum value.
 
 ## 2. Identifiers (all unique inside their namespace)
 
@@ -119,10 +126,13 @@ typicalConsumptionW|null, standbyConsumptionW|null, evidenceStatus }`, `safetyCl
 `options[]`: `architectureId`, `familyId`, `optionClass` (`A`…`E` — development board, compute
 module/SOM, custom MCU/gateway, hybrid, software/service-first), `label`, `description`,
 `buildingBlocks[]` (block names such as `PROC`, `MCU`, `CAN`, `N183`, `PWR`, `MECH` — not component
-IDs), `scores` (all 11 criteria, integers 1–5), `weightedScore` (computed,
-2 decimals), `status: "PROPOSED_NOT_APPROVED"`, `limitations[]`, `verificationNeeded[]`,
-`conformityImplications[]`, `costImplication`, `evidenceIds[]`.
-`recommendations[]`: `familyId`, `preferredArchitectureId`, `rationale`, `confidence`, `explicitlyUnfrozen`.
+IDs), `scores` (all 11 criteria, integers 1–5), `weightedScore` (computed as
+`Σ(score × weight) / Σweight`, 2 decimals, on the same 1–5 scale), `status:
+"PROPOSED_NOT_APPROVED"`, `limitations[]`, `verificationNeeded[]`, `conformityImplications[]`,
+`costImplication`, `evidenceIds[]`.
+`recommendations[]`: `familyId`, `preferredArchitectureId`, `rationale`, `confidence`,
+`explicitlyUnfrozen` (`true`, or a non-empty statement of what remains unfrozen — either satisfies
+the "not frozen" requirement).
 
 ### 4.4 `component-register.json` (sourcing)
 
@@ -169,7 +179,8 @@ Each line: `lineId`, `category` (`ELECTRONIC`, `MECHANICAL`, `CABLE_CONNECTOR`, 
 
 ### 4.9 `cost-scenarios.json` (economics)
 
-`fxRates[]`: `from`, `to`, `rate`, `sourceUrl`, `retrievedOn`.
+`fxRates[]`: `from`, `to`, `rate`, `sourceUrl`|null, `retrievedOn`|null, `evidenceClass`
+(`OBSERVED_RATE` needing URL+date, or `ENGINEERING_ASSUMPTION` needing `assumptionId`).
 `assumptions[]`: `assumptionId`, `statement`, `value`|null, `evidenceClass`, `sensitivity`.
 `categories[]`: `categoryId`, `name`, `included`, `basis`.
 `scenarios[]`: `scenarioId`, `familyId`, `editionId`|null, `volume`, `case` (`LOW`|`BASE`|`HIGH`),

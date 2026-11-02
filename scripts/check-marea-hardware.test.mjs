@@ -48,8 +48,9 @@ function evidenceRecord(n, overrides = {}) {
 function scoreSet(value) {
   const scores = {};
   for (const criterion of Object.keys(CRITERIA_WEIGHTS)) scores[criterion] = value;
+  const totalWeight = Object.values(CRITERIA_WEIGHTS).reduce((a, b) => a + b, 0);
   const weightedScore = Object.entries(CRITERIA_WEIGHTS).reduce(
-    (sum, [criterion, weight]) => sum + (value * weight) / 5,
+    (sum, [criterion, weight]) => sum + (value * weight) / totalWeight,
     0,
   );
   return { scores, weightedScore: Math.round(weightedScore * 100) / 100 };

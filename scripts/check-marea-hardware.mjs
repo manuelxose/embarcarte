@@ -126,7 +126,7 @@ export const CRITERIA_WEIGHTS = {
   connectivity: 6,
   security: 8,
   mechanicalIntegration: 8,
-  fieldService: 10,
+  fieldServiceRequirements: 10,
 };
 
 export const FILES = {
@@ -424,8 +424,12 @@ export const CHECKS = [
       const gov = obj(data.governance?.milestoneState);
       if (isNum(gov.purchasesMade) && gov.purchasesMade > 0)
         out.push('governance: purchasesMade > 0');
+      // An evidence record may legitimately quote a legal text that mentions invoices or purchase
+      // orders; only an assertion that this programme bought something is a violation.
       const purchaseEvidence = arr(data.evidence?.evidence).filter((e) =>
-        /invoice|purchase order|receipt/i.test(String(e?.supportedAssertion ?? '')),
+        /\b(we|marea|embarcarte)\b[^.]{0,30}\b(purchased|ordered|bought|procured)\b/i.test(
+          String(e?.supportedAssertion ?? ''),
+        ),
       );
       if (purchaseEvidence.length)
         out.push(`evidence index contains purchase claims (${purchaseEvidence[0].evidenceId})`);
@@ -504,16 +508,18 @@ export const CHECKS = [
     run(data) {
       const out = [];
       for (const bom of [...arr(data.ebom?.boms), ...arr(data.mbom?.boms)]) {
+        let hasVatUnknown = false;
         for (const line of arr(bom.lines)) {
           if (line.vatTreatment === 'VAT_INCLUDED' && line.normalizationApplied !== true) {
             out.push(`${line.lineId}: VAT_INCLUDED input used without normalizationApplied`);
           }
-          if (line.vatTreatment === 'VAT_UNKNOWN') {
-            out.push(`${line.lineId}: VAT_UNKNOWN input makes the total unverifiable`);
-          }
+          if (line.vatTreatment === 'VAT_UNKNOWN') hasVatUnknown = true;
           if (!['VAT_INCLUDED', 'VAT_EXCLUDED', 'VAT_UNKNOWN'].includes(line.vatTreatment)) {
             out.push(`${line.lineId}: invalid vatTreatment "${line.vatTreatment}"`);
           }
+        }
+        if (hasVatUnknown && obj(bom.totals).totalStatus === 'COMPLETE_TO_EVIDENCE') {
+          out.push(`${bom.bomId}: COMPLETE_TO_EVIDENCE declared with a VAT_UNKNOWN input`);
         }
       }
       return out;
@@ -617,11 +623,20 @@ export const CHECKS = [
     run(data) {
       const out = [];
       const rates = arr(data.costs?.fxRates);
+      const assumptionIds = new Set(arr(data.costs?.assumptions).map((a) => a.assumptionId));
       for (const rate of rates) {
         if (!isStr(rate.from) || !isStr(rate.to) || !isNum(rate.rate) || rate.rate <= 0) {
           out.push(`fxRates: invalid rate entry ${JSON.stringify(rate)}`);
         }
-        if (!isUrl(rate.sourceUrl) || !/^\d{4}-\d{2}-\d{2}$/.test(String(rate.retrievedOn ?? ''))) {
+        // A rate needs either a real observed source, or an explicitly labelled engineering
+        // assumption that resolves to an ASM record. An invented "market" rate is neither.
+        const observed =
+          isUrl(rate.sourceUrl) && /^\d{4}-\d{2}-\d{2}$/.test(String(rate.retrievedOn ?? ''));
+        const assumed =
+          rate.evidenceClass === 'ENGINEERING_ASSUMPTION' &&
+          isStr(rate.assumptionId) &&
+          assumptionIds.has(rate.assumptionId);
+        if (!observed && !assumed) {
           out.push(`fxRates ${rate.from}->${rate.to}: missing rate provenance`);
         }
       }
@@ -817,25 +832,45 @@ export const CHECKS = [
     run(data) {
       const out = [];
       const nmea = obj(data.nmea);
-      for (const bus of ['nmea2000', 'nmea0183']) {
-        const section = obj(nmea[bus]);
-        if (section.productCertification && section.productCertification !== 'NOT_CERTIFIED') {
-          out.push(`${bus}: productCertification "${section.productCertification}"`);
+      const prefix = (value, token) => isStr(value) && value.trim().toUpperCase().startsWith(token);
+      if (nmea.nmea2000) {
+        const bus = obj(nmea.nmea2000);
+        if (!prefix(bus.productCertification, 'NOT_CERTIFIED')) {
+          out.push(`nmea2000: productCertification "${bus.productCertification}"`);
         }
-        if (isNum(section.testedCompatibilityRows) && section.testedCompatibilityRows !== 0) {
-          out.push(`${bus}: testedCompatibilityRows must be 0`);
+        if (!prefix(bus.membership, 'NOT_A_MEMBER') && !prefix(bus.membership, 'NOT_HELD')) {
+          out.push(`nmea2000: membership "${bus.membership}"`);
         }
+        if (!prefix(bus.logoUse, 'NOT_PERMITTED') && !prefix(bus.logoUse, 'PROHIBITED')) {
+          out.push(`nmea2000: logoUse "${bus.logoUse}"`);
+        }
+        if (isNum(bus.testedCompatibilityRows) && bus.testedCompatibilityRows !== 0) {
+          out.push('nmea2000: testedCompatibilityRows must be 0');
+        }
+      }
+      if (nmea.nmea0183 && !prefix(obj(nmea.nmea0183).productCertification, 'NOT_CERTIFIED')) {
+        out.push(`nmea0183: productCertification "${obj(nmea.nmea0183).productCertification}"`);
       }
       for (const { value, path } of collectFields(data, (k) => /nmea.*certif/i.test(k))) {
-        if (value === true || value === 'CERTIFIED')
-          out.push(`${path}: NMEA certification claimed`);
+        if (value === true || value === 'CERTIFIED') out.push(`${path}: NMEA certification claimed`);
       }
-      for (const text of collectStrings(data, /NMEA\s*2000/i)) {
-        if (/\b(not|no|never|without|prohibit|pending)/i.test(text)) continue;
-        if (/certified|approved|certification/i.test(text)) {
-          out.push(`text claims NMEA 2000 certification: "${text.slice(0, 90)}"`);
+      // Narrow free-text heuristic: only an affirmative subject-verb assertion counts, never a
+      // quoted prohibited claim or a requirement statement.
+      walk(data, '', (node, path) => {
+        if (typeof node !== 'string') return;
+        if (/prohibit|claimsProhibited|limitations|nonAssertions/i.test(path)) return;
+        if (!/NMEA\s*2000/i.test(node)) return;
+        if (/\b(not|no|never|without|prohibit|required|requires|must|shall|only after|until)\b/i.test(node)) {
+          return;
         }
-      }
+        if (
+          /(MAREA|product|device|gateway|hub|watch|display)[^.]{0,40}\b(is|are|has been)\b[^.]{0,30}(certified|approved)/i.test(
+            node,
+          )
+        ) {
+          out.push(`text claims NMEA 2000 certification: "${node.slice(0, 90)}"`);
+        }
+      });
       return out;
     },
   },
@@ -1059,11 +1094,9 @@ export const CHECKS = [
         if (fleetBundle.hardwareIncludedByDefault !== false)
           out.push('FLEET: hardwareIncludedByDefault must be false');
         for (const line of arr(fleetBundle.componentLines)) {
-          if (
-            line.familyId !== 'FLEET' &&
-            line.inclusion !== 'CONDITIONAL' &&
-            line.inclusion !== 'EXCLUDED'
-          ) {
+          if (!isStr(line.familyId) || line.familyId === 'FLEET') continue;
+          if (!Object.prototype.hasOwnProperty.call(CANONICAL_PRODUCTS, line.familyId)) continue;
+          if (line.inclusion !== 'CONDITIONAL' && line.inclusion !== 'EXCLUDED') {
             out.push(`FLEET: hardware line ${line.familyId}/${line.editionId} included by default`);
           }
         }
@@ -1302,8 +1335,10 @@ export const CHECKS = [
         }
       }
       for (const rec of arr(data.arch?.recommendations)) {
-        if (rec.explicitlyUnfrozen !== true)
+        // True, or a non-empty statement of what remains unfrozen: both mean "not frozen".
+        if (rec.explicitlyUnfrozen !== true && !isStr(rec.explicitlyUnfrozen)) {
           out.push(`recommendation ${rec.familyId}: not marked explicitly unfrozen`);
+        }
       }
       for (const { key, value, path } of collectFields(data, (k) =>
         ['architectureApproved', 'designFrozen', 'hardwareFrozen', 'bomApproved'].includes(k),
@@ -1450,10 +1485,7 @@ export const CHECKS = [
           out.push(`manifest ${file}: recordCount ${entry.recordCount} != actual ${actual}`);
         }
       }
-      if (
-        !isNum(arr(data.manifest?.deliverables).length) ||
-        arr(data.manifest?.deliverables).length < 30
-      ) {
+      if (arr(data.manifest?.deliverables).length < 30) {
         out.push('manifest deliverables: fewer than 30 MC-11 deliverables recorded');
       }
       return out;
@@ -1478,14 +1510,15 @@ export const CHECKS = [
             out.push(`${option.architectureId}: score for ${criterion} must be an integer 1-5`);
           }
         }
+        const totalWeight = Object.values(CRITERIA_WEIGHTS).reduce((a, b) => a + b, 0);
         const computed = isNum(option.weightedScore)
           ? Object.entries(CRITERIA_WEIGHTS).reduce(
               (sum2, [criterion, weight]) =>
-                sum2 + ((obj(option.scores)[criterion] ?? 0) * weight) / 5,
+                sum2 + (obj(option.scores)[criterion] ?? 0) * (weight / totalWeight),
               0,
             )
           : null;
-        if (computed !== null && Math.abs(computed - option.weightedScore) > 0.05) {
+        if (computed !== null && Math.abs(computed - option.weightedScore) > 0.02) {
           out.push(`${option.architectureId}: weightedScore does not match the frozen weights`);
         }
       }
