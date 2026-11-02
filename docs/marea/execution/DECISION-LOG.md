@@ -1622,3 +1622,63 @@ no merge, no deployment.
 **Evidence.** docs/marea/legal-commercial/review/MC-14-REVIEW.md (rounds 1-3); data/review-findings.json; data/manifest.json; MC-14-DELIVERY.md; MC14-EXECUTIVE-REPORT-ES.md; MASTER-PROMPT-REGISTRY.md row 14.
 
 **Status effect.** Internal-scope award recorded; no merge, deployment, publication, sale or MC-15 start.
+
+## D-063 - 2026-11-02 - MC-15 preserves every existing URL and defines the MAREA layer as non-deployable
+
+**Context.** The current Angular site has 21 typed RouteIds, 141 concrete URLs and 98 sitemap URLs (101 with the inherited two-product test fixture). MC-14 left the 34 website findings open and MAREA is not cleared for public use.
+
+**Decision.** Every current Spanish public URL is `KEEP_AS_IS`; no migration is proposed for any existing service, experience, guide, shop, account or legal page. The 23 proposed MAREA routes are registered as `PROPOSED_INTERNAL_NOT_DEPLOYABLE` with `routeDefined=true` and implementation/publication/indexation/commercial authorization all false. The three inherited 301s are preserved unchanged and no redirect is activated.
+
+**Rationale.** URL churn without a verified migration decision would destroy existing equity; publishing MAREA before brand/claims clearance would bypass MC-14.
+
+**Evidence.** `docs/marea/information-architecture/MC15-CURRENT-URL-AND-ROUTE-INVENTORY.md`; `MC15-PROPOSED-ROUTE-REGISTRY.md`; `data/current-urls.json`; `data/proposed-routes.json`; `data/redirect-map.json`.
+
+**Status effect.** No live change; no indexation authorization.
+
+## D-064 - 2026-11-02 - MC-15 adopts the conservative gate union and one operational gate matrix
+
+**Context.** The independent audit found that `proposed-routes.json`, `proposed-ia.json` and `publication-gates.routeGateMatrix` disagreed on 11/23 routes, so an implementer could follow an over- or under-blocking list.
+
+**Decision.** The operational blocking set is the sorted union of the registry, IA and gate-scope derivations. It is mirrored in all three datasets, `publication-gates.routeGateMatrix` is the operational owner, and validator rule IA-068 enforces exact set equality. The union is deliberately conservative; no gate is closed or relaxed.
+
+**Rationale.** A stricter gate set cannot authorize anything and prevents an under-blocked route from being published on a later build or test pass.
+
+**Evidence.** `data/publication-gates.json`; `data/proposed-routes.json`; `data/proposed-ia.json`; D05/D13; `scripts/check-marea-ia-seo.mjs` (IA-068); auditor finding IA-01.
+
+**Status effect.** All 23 routes remain blocked; gate statuses unchanged.
+
+## D-065 - 2026-11-02 - MC-15 records the independent PASS after corrections and keeps the milestone PARTIAL
+
+**Context.** The frozen implementation `b70d550` received NEEDS_REVISION with 2 MAJOR and 3 MINOR findings. The corrections were applied in `d1d7a1a` and independently re-verified.
+
+**Decision.** Record `MC15_INTERNAL_IA_SEO_SCOPE = PASS_INTERNAL_IA_SEO_SCOPE` and `MC15_VERDICT = PARTIAL`. The overall PARTIAL reflects the absence of Search Console/indexation evidence and the prohibition on live migration/publication, not an internal-scope defect. The pre-existing `test:financial` V-18 failure (registry row 14 `PARTIAL` since MC-14 `2626853`) remains classified as inherited and is not concealed or fixed in predecessor files.
+
+**Rationale.** An internal planning pass cannot be reported as full external SEO verification; indexation stays `INDEXATION_UNVERIFIED` until real evidence exists.
+
+**Evidence.** `MC15-INDEPENDENT-REVIEW.md` (rounds 1-2); `data/review-findings.json`; `data/manifest.json`; `MC15-EXECUTIVE-REPORT-ES.md`; `MC-15-DELIVERY.md`.
+
+**Status effect.** Internal scope awarded; external indexation evidence NOT_AVAILABLE; no merge/deploy/publication.
+
+## D-066 - 2026-11-02 - MC-15 hands the route and page identities to MC-16 without starting it
+
+**Context.** MC-16 owns the commerce/product data model (product vs SKU vs readiness vs subscription entitlement). MC-15 has stable page identities, family/bundle/edition ids and publication gates that MC-16 must consume.
+
+**Decision.** Deliver `MC15-MC16-HANDOFF.md` and `data/mc16-handoff-inputs.json` with the 21 current + 23 proposed route identities, 9 families, 6 bundles, 26 editions, locale/slug mappings, page-vs-SKU separation, lifecycle fields, gates, SEO eligibility, structured-data restrictions, price/stock provenance and entitlement references. `MC16_STARTED=false`; no SKU, order, payment, checkout or MC-16 data model is designed or executed.
+
+**Rationale.** MC-16 needs stable identities and restrictions before defining commerce records; starting it inside MC-15 would exceed the milestone boundary.
+
+**Evidence.** `MC15-MC16-HANDOFF.md`; `data/mc16-handoff-inputs.json`; D17; D13.
+
+**Status effect.** Handoff ready with named gaps; no MC-16 execution.
+
+## D-067 - 2026-11-03 - MC-15 adds verified, partial Search Console evidence without changing publication status
+
+**Context.** The initial MC-15 delivery recorded `INDEXATION_UNVERIFIED` because no Search Console access was available. A real service account (`guiatv-gsc@guia-tv-8fe3c.iam.gserviceaccount.com`) with `siteFullUser` access to `sc-domain:embarcarte.com` was subsequently provided, so the external-indexation limitation could be tested read-only instead of remaining an assumption.
+
+**Decision.** Add a Search Console evidence addendum: 24 representative URL inspections and the sitemap status captured on 2026-11-02 and refreshed on 2026-11-03, recorded in `MC15-SEARCH-CONSOLE-EVIDENCE.md`, `data/search-console-evidence.json` and 24 `SEARCH_CONSOLE_VERIFIED` records in `data/url-evidence.json`. The result is 16 indexed, 2 excluded by noindex, 5 not recognized and 1 public/indexable URL not indexed (`/traslados`; coverage wording varies between "no reconocida" and "descubierta sin indexar"), with 0 MAREA URLs indexed. `/traslados` is public, indexable and in the 98-URL sitemap but not indexed (`GSC-01`, pre-existing operational gap); the home URL is also submitted as an invalid sitemap with 1 error (`GSC-02`). The sample is not a full census, so `MC15_VERDICT` remains PARTIAL, `MC15_PUBLICATION` and `MC15_LIVE_MIGRATION` remain NOT_AUTHORIZED, and no full coverage, ranking or traffic claim is made. The addendum is verified independently by a non-authoring reviewer.
+
+**Rationale.** Real read-only evidence is better than an unverified assumption, but a 24-URL sample cannot justify a full-coverage claim or a publication authorization. The two operational findings must be recorded as post-MC-15 debt rather than hidden or closed.
+
+**Evidence.** `MC15-SEARCH-CONSOLE-EVIDENCE.md`; `data/search-console-evidence.json`; `data/url-evidence.json` (`EV-GSC-001`…`EV-GSC-024`); `data/indexation-policy.json`; `data/risk-register.json` (`SEO-RISK-22`); `MC15-SEARCH-CONSOLE-REVIEW.md`; D20/D21/D22.
+
+**Status effect.** Indexation evidence `SEARCH_CONSOLE_VERIFIED_PARTIAL`; overall verdict still PARTIAL; no merge, deployment, publication, indexation request or MC-16 start.

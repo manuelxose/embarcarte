@@ -1,0 +1,1115 @@
+{
+  "contractId": "MAREA-MC15-STRUCTURED-DATA-POLICY",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-15",
+  "date": "2026-11-02",
+  "owner": "seo-migration",
+  "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
+  "generationMethod": "manual repository inspection",
+  "evidenceState": "REPOSITORY_VERIFIED",
+  "scope": "MC-15 internal bilingual IA/SEO planning",
+  "status": "INTERNAL_PLANNING_ONLY",
+  "readOnly": true,
+  "publicationAuthorized": false,
+  "liveChangeExecuted": false,
+  "MC16_STARTED": false,
+  "crossReferences": [
+    "docs/marea/information-architecture/MC15-STRUCTURED-DATA-GOVERNANCE.md#D10",
+    "docs/marea/legal-commercial/MC14-MC15-HANDOFF.md#6-evidence-required-before-availability-or-price-in-structured-data",
+    "docs/marea/legal-commercial/data/website-findings.json#WEBSITE-FINDINGS",
+    "src/app/features/shop/shop-detail.ts#structured-data",
+    "src/app/features/technology/product-detail.ts#structured-data",
+    "src/app/core/seo.service.ts#breadcrumb"
+  ],
+  "evidenceNotes": [
+    "Repository inspection only for this dataset; JSON-LD output was not re-observed over HTTP in this task and no live markup is changed.",
+    "Existing non-MAREA Product/Offer markup is inventoried as an existing risky pattern and must not be modified by MC-15.",
+    "No aggregateRating or Review node exists anywhere in the current implementation (verified: zero matches in src)."
+  ],
+  "absoluteRestrictions": [
+    "No Product or Offer JSON-LD for any MAREA identity while the gates are closed.",
+    "No price, priceCurrency, priceRange, priceSpecification or \"price from\" value for MAREA, hypothetical or otherwise.",
+    "No availability, InStock, OutOfStock, PreOrder or BackOrder claim for MAREA, and no availability claim that is not backed by real stock.",
+    "No seller or provider Organization that has not been approved and legally identified.",
+    "No aggregateRating, ratingValue, review, Review or reviewCount anywhere for MAREA (and none exists for EMBARCARTE today).",
+    "No certification, CE, RED, EMC, NMEA 2000, GDPR or cybersecurity claim in any node.",
+    "No claim in JSON-LD that is stronger than the visible page copy.",
+    "Product eligibility is gated independently of page publication: a page may exist without Product markup, never the reverse.",
+    "No AggregateRating, Review, Event, FAQPage, HowTo or JobPosting invention on any MAREA page."
+  ],
+  "pageTypeMatrix": [
+    "SD-ORGANIZATION",
+    "SD-WEBSITE",
+    "SD-BREADCRUMBLIST",
+    "SD-ARTICLE",
+    "SD-SERVICE",
+    "SD-ITEMLIST",
+    "SD-PRODUCT",
+    "SD-OFFER",
+    "SD-SOFTWAREAPPLICATION"
+  ],
+  "counts": {
+    "schemaTypesCovered": 9,
+    "pageIdentitiesCovered": 45,
+    "mareaProductOrOfferNodesAuthorized": 0,
+    "aggregateRatingNodesAuthorized": 0
+  },
+  "items": [
+    {
+      "pageTypeId": "SD-ORGANIZATION",
+      "schemaTypesAllowed": [
+        "Organization"
+      ],
+      "schemaTypesForbidden": [
+        "Review",
+        "AggregateRating",
+        "Product",
+        "Offer",
+        "Service"
+      ],
+      "allowedOn": "home only (/, /en), as the publisher/seller node",
+      "requiredEvidence": "Verified registered legal name, tax ID, address, registry data and contact channel; the fields in SITE.legal are currently empty (WEB-001/WEB-002)",
+      "commercialGate": "GATE-LEGAL-ENTITY",
+      "restrictions": "No address, tax ID, award, certification or founding claim that is not verified. No Organization node may name MAREA as the public brand while MAREA_PUBLIC_USE is NO_GO.",
+      "currentObservation": "Emitted on home: Organization (name, url, logo, email) plus WebSite, observed in src/app/features/home/home.ts.",
+      "evidenceState": "REPOSITORY_VERIFIED"
+    },
+    {
+      "pageTypeId": "SD-WEBSITE",
+      "schemaTypesAllowed": [
+        "WebSite"
+      ],
+      "schemaTypesForbidden": [
+        "SearchAction",
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review"
+      ],
+      "allowedOn": "home only (/, /en)",
+      "requiredEvidence": "Site name and URL are verified constants; inLanguage must match the rendered locale",
+      "commercialGate": "GATE-WEBSITE-REMEDIATION",
+      "restrictions": "No sitelinks SearchAction until a real internal search endpoint is published and authorised. No potentialAction pointing at an unbuilt page.",
+      "currentObservation": "Emitted on home with inLanguage es-ES/en.",
+      "evidenceState": "REPOSITORY_VERIFIED"
+    },
+    {
+      "pageTypeId": "SD-BREADCRUMBLIST",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "schemaTypesForbidden": [
+        "Product",
+        "Offer",
+        "Review",
+        "AggregateRating"
+      ],
+      "allowedOn": "every indexable existing page that has a navigable parent: technology, technologyDetail, experiences, delivery, services, about, contact, guides, guideDetail, shop, shopDetail",
+      "requiredEvidence": "The breadcrumb path must match the visible navigation and the canonical URLs, built from LOCALIZED_ROUTES via breadcrumb()",
+      "commercialGate": "GATE-WEBSITE-REMEDIATION",
+      "restrictions": "Never include a proposed MAREA URL, a private URL, a login URL or a redirecting URL in a breadcrumb while those targets are unpublished. Breadcrumb depth must stay within four levels.",
+      "currentObservation": "Emitted by breadcrumb() on the pages above; legal pages, home, samples, private pages and 404 emit none.",
+      "evidenceState": "REPOSITORY_VERIFIED"
+    },
+    {
+      "pageTypeId": "SD-ARTICLE",
+      "schemaTypesAllowed": [
+        "Article"
+      ],
+      "schemaTypesForbidden": [
+        "Product",
+        "Offer",
+        "Review",
+        "AggregateRating",
+        "NewsArticle"
+      ],
+      "allowedOn": "guideDetail only (/guias/:slug, /en/guides/:slug)",
+      "requiredEvidence": "A real guide with visible headline and description; an author/publisher identity that can be named truthfully",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "restrictions": "No datePublished/dateModified invention, no author identity invention, no claim stronger than the visible guide copy. The technology guide content must not be reused as MAREA product documentation.",
+      "currentObservation": "Emitted on guide detail with headline, description, inLanguage, mainEntityOfPage and an Organization publisher named Embarcarte.",
+      "evidenceState": "REPOSITORY_VERIFIED"
+    },
+    {
+      "pageTypeId": "SD-SERVICE",
+      "schemaTypesAllowed": [
+        "Service"
+      ],
+      "schemaTypesForbidden": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "Service with price or availability"
+      ],
+      "allowedOn": "delivery only (/traslados, /en/delivery) among existing pages; any future service page needs its own authorisation",
+      "requiredEvidence": "A service actually offered, with truthful scope, provider identity and any legal terms required for that service",
+      "commercialGate": "GATE-CONSUMER-TERMS",
+      "restrictions": "No price, no availability, no rating, no certification. A Service node must never be used to imply that a MAREA product exists or is bookable.",
+      "currentObservation": "Emitted on delivery: Service with provider Organization Embarcarte, no price/availability.",
+      "evidenceState": "REPOSITORY_VERIFIED"
+    },
+    {
+      "pageTypeId": "SD-ITEMLIST",
+      "schemaTypesAllowed": [
+        "ItemList"
+      ],
+      "schemaTypesForbidden": [
+        "Offer",
+        "AggregateRating",
+        "Review"
+      ],
+      "allowedOn": "shop index (/tienda, /en/shop); a technology or MAREA index only after separate authorisation",
+      "requiredEvidence": "The list is rendered only from products actually shown on the page (the existing code emits it only once the catalogue has loaded)",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "restrictions": "ItemList items must be real published products. No MAREA family or bundle may appear in an ItemList until its page is authorised and published. No ListItem may point at a 404.",
+      "currentObservation": "Emitted on the shop index with ListItem entries built from the loaded catalogue.",
+      "evidenceState": "REPOSITORY_VERIFIED"
+    },
+    {
+      "pageTypeId": "SD-PRODUCT",
+      "schemaTypesAllowed": [
+        "Product"
+      ],
+      "schemaTypesForbidden": [
+        "Product for MAREA",
+        "AggregateRating",
+        "Review",
+        "Certification claims",
+        "InStock on an unstocked or unapproved product"
+      ],
+      "allowedOn": "existing non-MAREA commerce only: shopDetail (/tienda/:slug, /en/shop/:slug) and technologyDetail hardware (/tecnologia/:slug)",
+      "requiredEvidence": "For shop detail: an active product with a real price from the server-authoritative database, real stock, approved seller identity and approved copy. For technology detail: an existing hardware entity that can be described truthfully, with no offer and no availability",
+      "commercialGate": "GATE-PRICING",
+      "restrictions": "Product eligibility is gated independently from page publication: a page may be published while Product markup is not authorised. Absolutely no Product node for any MAREA family, bundle, edition or concept, no hypothetical price, no invented stock, no unsupported certification or compatibility claim, no rating or review.",
+      "currentObservation": "shopDetail emits Product with brand Open Marine, price from the products table, availability InStock/OutOfStock from stock and a seller Organization; technologyDetail emits Product for hardware with brand Open Marine and no offer. Both are inherited patterns inventoried here and NOT modified.",
+      "evidenceState": "REPOSITORY_VERIFIED"
+    },
+    {
+      "pageTypeId": "SD-OFFER",
+      "schemaTypesAllowed": [
+        "Offer"
+      ],
+      "schemaTypesForbidden": [
+        "Offer for MAREA",
+        "Offer without approved price",
+        "PriceSpecification with a hypothesis",
+        "Availability on an unapproved product"
+      ],
+      "allowedOn": "existing non-MAREA shop detail only, nested inside its Product",
+      "requiredEvidence": "Approved price list with VAT basis and territory, orderable stock, fulfilment capability and a signed commercial agreement; these are open gates",
+      "commercialGate": "GATE-PRICING",
+      "restrictions": "price and priceCurrency must come from the server-authoritative product record only; availability must reflect real stock; no priceRange, no \"price from\", no strike-through or discount claim, no offer on a quote-only or concept page.",
+      "currentObservation": "shopDetail emits Offer with priceCurrency EUR, price (price_cents/100).toFixed(2), availability InStock/OutOfStock and seller Organization Embarcarte.",
+      "evidenceState": "REPOSITORY_VERIFIED"
+    },
+    {
+      "pageTypeId": "SD-SOFTWAREAPPLICATION",
+      "schemaTypesAllowed": [
+        "SoftwareApplication"
+      ],
+      "schemaTypesForbidden": [
+        "SoftwareApplication for MAREA",
+        "SoftwareApplication with price or availability",
+        "operatingSystem or applicationCategory invention",
+        "AggregateRating",
+        "Review"
+      ],
+      "allowedOn": "existing technology detail for the Software kind only (/tecnologia/navegador, /tecnologia/cartografia, /tecnologia/simulacion in both locales)",
+      "requiredEvidence": "A real software entity that exists today, described without certification, performance or compatibility claims",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "restrictions": "The existing node carries applicationCategory and operatingSystem values; no new value may be invented. A MAREA page must never be marked up as SoftwareApplication while its lifecycle is concept/internal-only, and no proposed MAREA page may reuse the existing technology software node.",
+      "currentObservation": "technologyDetail emits SoftwareApplication (applicationCategory NavigationApplication, operatingSystem Web) for Software-kind products.",
+      "evidenceState": "REPOSITORY_VERIFIED"
+    }
+  ],
+  "pageIdentityMatrix": [
+    {
+      "pageId": "home",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "Organization",
+        "WebSite"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits Organization, WebSite today"
+    },
+    {
+      "pageId": "technology",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits BreadcrumbList today"
+    },
+    {
+      "pageId": "technologyDetail",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList",
+        "Product",
+        "SoftwareApplication"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "Approved price list and real stock for any Offer; verified seller identity; approved product copy and compatibility claims; no MAREA node",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits BreadcrumbList, Product, SoftwareApplication today"
+    },
+    {
+      "pageId": "experiences",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits BreadcrumbList today"
+    },
+    {
+      "pageId": "delivery",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList",
+        "Service"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits BreadcrumbList, Service today"
+    },
+    {
+      "pageId": "services",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits BreadcrumbList today"
+    },
+    {
+      "pageId": "about",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits BreadcrumbList today"
+    },
+    {
+      "pageId": "contact",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits BreadcrumbList today"
+    },
+    {
+      "pageId": "guides",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits BreadcrumbList today"
+    },
+    {
+      "pageId": "guideDetail",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList",
+        "Article"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits BreadcrumbList, Article today"
+    },
+    {
+      "pageId": "shop",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList",
+        "ItemList"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits BreadcrumbList, ItemList today"
+    },
+    {
+      "pageId": "shopDetail",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [
+        "BreadcrumbList",
+        "Product",
+        "Offer"
+      ],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "Approved price list and real stock for any Offer; verified seller identity; approved product copy and compatibility claims; no MAREA node",
+      "commercialGate": "GATE-PRICING",
+      "currentObservation": "Emits BreadcrumbList, Product, Offer today"
+    },
+    {
+      "pageId": "shopSample",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits no JSON-LD today"
+    },
+    {
+      "pageId": "cart",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits no JSON-LD today"
+    },
+    {
+      "pageId": "login",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits no JSON-LD today"
+    },
+    {
+      "pageId": "account",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits no JSON-LD today"
+    },
+    {
+      "pageId": "orderDetail",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits no JSON-LD today"
+    },
+    {
+      "pageId": "legalNotice",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits no JSON-LD today"
+    },
+    {
+      "pageId": "privacy",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits no JSON-LD today"
+    },
+    {
+      "pageId": "cookies",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits no JSON-LD today"
+    },
+    {
+      "pageId": "termsOfSale",
+      "identityStatus": "EXISTING_PUBLISHED",
+      "allowedTypes": [],
+      "forbiddenTypes": [
+        "AggregateRating",
+        "Review",
+        "Product (unless listed in allowedTypes)",
+        "Offer (unless listed in allowedTypes)",
+        "any claim stronger than the visible copy"
+      ],
+      "requiredEvidence": "No new evidence required to keep the current node; any new node needs an approved claim record and the gate named in D10",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "Emits no JSON-LD today"
+    },
+    {
+      "pageId": "mareaOverview",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-HUB-MAREA",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the MAREA ecosystem overview landmark URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaProducts",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-HUB-PRODUCTS",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the product family index URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaSolutions",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-HUB-SOLUTIONS",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the bundle/solution index URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaFamilyNav",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-FAMILY-NAV",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the NAV family page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaFamilyHub",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-FAMILY-HUB",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the HUB family page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaFamilyAis",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-FAMILY-AIS",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the AIS family page (receive-only) URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaFamilyPilot",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-FAMILY-PILOT",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the PILOT family page (safety gate blocked) URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaFamilySense",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-FAMILY-SENSE",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the SENSE family page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaFamilyWatch",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-FAMILY-WATCH",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the WATCH family page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaFamilyDisplay",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-FAMILY-DISPLAY",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the DISPLAY family page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaFamilyWeather",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-FAMILY-WEATHER",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the WEATHER family page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaFamilyFleet",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-FAMILY-FLEET",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the FLEET family page (B2B) URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaSolutionStart",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-BUNDLE-START",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the START bundle page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaSolutionCruise",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-BUNDLE-CRUISE",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the CRUISE bundle page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaSolutionSail",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-BUNDLE-SAIL",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the SAIL bundle page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaSolutionProtect",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-BUNDLE-PROTECT",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the PROTECT bundle page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaSolutionComplete",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-BUNDLE-COMPLETE",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the COMPLETE bundle page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaSolutionFleet",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-BUNDLE-FLEET",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the FLEET bundle page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "mareaConfigurator",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-TOOL-CONFIGURATOR",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the compatibility/configurator tool URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "professionals",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-PAGE-PROFESSIONALS",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the professional partner page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "installers",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-PAGE-INSTALLERS",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the installer programme page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "support",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-PAGE-SUPPORT",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the support landing page URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "productDocumentation",
+      "identityStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "entityId": "ENT-DOC-PRODUCT",
+      "allowedTypes": [],
+      "allowedTypesAfterPublicationAuthorization": [
+        "BreadcrumbList"
+      ],
+      "forbiddenTypes": [
+        "Product",
+        "Offer",
+        "AggregateRating",
+        "Review",
+        "SoftwareApplication",
+        "Service",
+        "Article",
+        "ItemList",
+        "any availability, price, certification or performance claim"
+      ],
+      "requiredEvidence": "Publication and indexation authorisation, the blocking publication gates for the entity, an approved claim record per visible claim, verified legal identity and a decided structured-data authorisation for this page type",
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "currentObservation": "No JSON-LD: the product documentation detail URL does not exist yet and answers 404 (observed 2026-11-02)."
+    },
+    {
+      "pageId": "admin (7 admin route ids)",
+      "identityStatus": "INTERNAL_ONLY",
+      "allowedTypes": [],
+      "forbiddenTypes": [
+        "all schema.org types"
+      ],
+      "requiredEvidence": "None: an internal tool must never emit structured data",
+      "commercialGate": "GATE-PRIVACY-DPA-DPIA",
+      "currentObservation": "No JSON-LD observed in the admin shell."
+    }
+  ]
+}

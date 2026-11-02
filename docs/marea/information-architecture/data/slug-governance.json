@@ -1,0 +1,409 @@
+{
+  "contractId": "MAREA-MC15-SLUG-GOVERNANCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-15",
+  "date": "2026-11-02",
+  "owner": "ia-content",
+  "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
+  "generationMethod": "manual repository inspection",
+  "evidenceState": "REPOSITORY_VERIFIED",
+  "scope": "MC-15 internal bilingual IA/SEO planning",
+  "readOnly": true,
+  "publicationAuthorized": false,
+  "deploymentAuthorized": false,
+  "liveRouteChangeAuthorized": false,
+  "MC16_STARTED": false,
+  "governanceSemantics": "These rules govern how a slug may be derived and validated for the proposed layer. They do not authorize creating, publishing or redirecting any URL. Existing indexed slugs are frozen and are recorded, not renamed.",
+  "slugModel": "A canonical slug is the final path segment of a public route. It is stored without a leading or trailing slash and without query string or fragment. Identity belongs to entityId and routeId; the slug is only the locale-specific locator.",
+  "normalizationPipeline": [
+    "1. Strip query string and fragment (SG-019) and decode exactly once (SG-024).",
+    "2. Apply Unicode NFC (SG-001).",
+    "3. If the segment belongs to the frozen current-route registry, stop and keep it verbatim (SG-004).",
+    "4. Otherwise lowercase ASCII (SG-002) and transliterate diacritics to ASCII (SG-003).",
+    "5. Replace separator characters with a single hyphen and collapse repeats (SG-005, SG-009).",
+    "6. Reject any remaining character outside [a-z0-9-] (SG-006, SG-007).",
+    "7. Validate length (SG-010), reserved segments (SG-011, SG-025), namespace uniqueness (SG-012), locale mapping (SG-015 to SG-018) and claim language (SG-026).",
+    "8. Bind the accepted slug to exactly one entityId and one routeId (SG-028)."
+  ],
+  "namespaceModel": {
+    "definition": "A slug namespace is the parent path plus the locale. /marea/[family] and /marea/soluciones/[bundle] are separate namespaces, so the same slug value may exist in both.",
+    "namespaces": [
+      "root (corporate pages)",
+      "root/en (localized corporate pages)",
+      "marea",
+      "en/marea",
+      "marea/productos and en/marea/products (family namespace)",
+      "marea/soluciones and en/marea/solutions (bundle namespace)",
+      "soporte/marea and en/support/marea (documentation namespace)",
+      "admin (private, never governed as public slugs)"
+    ],
+    "violation": "Two different entities with the same slug in the same namespace and locale is a hard rejection (SG-012). The reverse case, one slug value in two namespaces, is allowed only when both bindings are declared in this file (SG-013)."
+  },
+  "crossReferences": [
+    "../MC15-DATA-CONTRACT.md#section-2.4",
+    "../products/product-definitions.batch-01.json#MC-05-PRODUCT-DEFINITIONS-BATCH-01",
+    "../products/product-definitions.batch-02.json#MC-06-PRODUCT-DEFINITIONS-BATCH-02",
+    "../products/product-definitions.batch-03.json#MC-07-PRODUCT-DEFINITIONS-BATCH-03",
+    "../bundles/bundle-definitions.json#MC-08-BUNDLE-DEFINITIONS",
+    "proposed-routes.json#MAREA-MC15-PROPOSED-ROUTES",
+    "proposed-ia.json#MAREA-MC15-PROPOSED-IA"
+  ],
+  "items": [
+    {
+      "ruleId": "SG-001",
+      "rule": "Every candidate slug must be normalized to Unicode NFC before comparison, hashing or storage; two slugs that differ only by canonical composition are the same slug.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "NFC",
+      "testId": "SG-001-NFC-NORMALIZATION",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-002",
+      "rule": "Canonical new slugs are ASCII lowercase; no locale-dependent casing rules may be applied (for example Turkish dotless i must not change a slug).",
+      "appliesTo": "NEW_PROPOSED_SLUG",
+      "normalization": "ASCII_LOWERCASE",
+      "testId": "SG-002-ASCII-LOWERCASE",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-003",
+      "rule": "Diacritics are transliterated to ASCII for NEW proposed slugs only: a-acute to a, e-acute to e, i-acute to i, o-acute to o, u-acute and u-diaeresis to u, n-tilde to n, c-cedilla to c. A new slug may never keep a non-ASCII character.",
+      "appliesTo": "NEW_PROPOSED_SLUG",
+      "normalization": "ASCII_TRANSLITERATION",
+      "testId": "SG-003-ASCII-TRANSLITERATION",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-004",
+      "rule": "Existing indexed slugs recorded in src/app/core/i18n/locale-routes.ts are immutable byte for byte, including any accented or non-ASCII form. They are never re-normalized, transliterated or lowercased by this governance, and they never move.",
+      "appliesTo": "EXISTING_INDEXED_SLUG",
+      "normalization": "NONE_VERBATIM",
+      "testId": "SG-004-EXISTING-SLUG-IMMUTABLE",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-005",
+      "rule": "Words inside a slug are separated by exactly one hyphen. Underscores, spaces, plus signs, dots, camelCase and concatenated words without a separator are rejected.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "HYPHEN_SEPARATOR",
+      "testId": "SG-005-HYPHEN-SEPARATOR",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-006",
+      "rule": "A canonical slug contains only the characters a-z, 0-9 and hyphen. Every other character is a rejection, not a substitution, except for the diacritic transliteration allowed by SG-003.",
+      "appliesTo": "NEW_PROPOSED_SLUG",
+      "normalization": "ALLOWED_CHARSET_A_Z_0_9_HYPHEN",
+      "testId": "SG-006-ALLOWED-CHARSET",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-007",
+      "rule": "No canonical slug may contain a space, punctuation mark, percent sign or percent-encoded sequence. Encoding is a transport concern applied once at link generation, never part of the stored identity.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "NO_PUNCTUATION_NO_PERCENT_ENCODING",
+      "testId": "SG-007-NO-PUNCTUATION-NO-PERCENT",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-008",
+      "rule": "A stored slug never begins or ends with a slash and never contains an empty segment. Path assembly is owned by the route registry, not by the slug value.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "TRIM_EDGE_SLASHES",
+      "testId": "SG-008-NO-EDGE-SLASH",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-009",
+      "rule": "A slug never starts or ends with a hyphen and never contains two consecutive hyphens.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "COLLAPSE_AND_TRIM_HYPHENS",
+      "testId": "SG-009-HYPHEN-POSITION",
+      "severity": "MEDIUM"
+    },
+    {
+      "ruleId": "SG-010",
+      "rule": "A slug is at most 60 characters. The limit is an internal design objective for readability and linking, not a search-engine requirement.",
+      "appliesTo": "NEW_PROPOSED_SLUG",
+      "normalization": "MAX_LENGTH_60",
+      "testId": "SG-010-MAX-LENGTH",
+      "severity": "LOW"
+    },
+    {
+      "ruleId": "SG-011",
+      "rule": "No new slug may equal a segment listed in reservedSegments at the same position. Reservation is per position: productos is reserved at the root because of the legacy redirect and also reserved inside /marea for the products overview.",
+      "appliesTo": "NEW_PROPOSED_SLUG",
+      "normalization": "RESERVED_SEGMENT_CHECK",
+      "testId": "SG-011-RESERVED-SEGMENT",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-012",
+      "rule": "Two different entities may never share a slug inside the same namespace and locale. A duplicate is rejected at registration, not merged, suffixed or auto-disambiguated.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "UNIQUE_PER_NAMESPACE_AND_LOCALE",
+      "testId": "SG-012-DUPLICATE-REJECT",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-013",
+      "rule": "Reusing one slug value across two declared namespaces is allowed only when both bindings appear in this file. Currently declared: fleet for ENT-FAMILY-FLEET under /marea and ENT-BUNDLE-FLEET under /marea/soluciones.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "DECLARED_NAMESPACE_REUSE",
+      "testId": "SG-013-NAMESPACE-REUSE-DECLARED",
+      "severity": "MEDIUM"
+    },
+    {
+      "ruleId": "SG-014",
+      "rule": "Entity identity is the entityId plus edition and bundle ids from the product and bundle data; it never depends on a locale display name. Renaming a display name in ES or EN does not change the entity and does not change any slug.",
+      "appliesTo": "ENTITY_SLUG",
+      "normalization": "IDENTITY_INDEPENDENT_OF_DISPLAY_NAME",
+      "testId": "SG-014-ENTITY-IDENTITY-STABLE",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-015",
+      "rule": "ES and EN slugs differ only where an explicit mapping exists in entitySlug or surfaceSlug. No slug may be produced by translating, transliterating or guessing the other locale.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "EXPLICIT_LOCALE_MAPPING_ONLY",
+      "testId": "SG-015-EXPLICIT-LOCALE-MAPPING",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-016",
+      "rule": "No EN slug is invented where no approved EN translation of the page exists. The page is then ES-only, emits no EN alternate and receives no hreflang pair.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "NO_EN_SLUG_WITHOUT_TRANSLATION",
+      "testId": "SG-016-NO-INVENTED-EN-SLUG",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-017",
+      "rule": "An edition slug is derived deterministically from editionId: lowercased and hyphen-separated, so NAV-PRO becomes nav-pro and DISPLAY-LARGE-CONDITIONAL becomes display-large-conditional. Edition slugs are technical and documentation locators and are not independent public routes in MC-15.",
+      "appliesTo": "EDITION_SLUG",
+      "normalization": "EDITION_ID_LOWERCASE_HYPHEN",
+      "testId": "SG-017-EDITION-SLUG-DERIVATION",
+      "severity": "MEDIUM"
+    },
+    {
+      "ruleId": "SG-018",
+      "rule": "Bundle slugs come from the closed enumeration START, CRUISE, SAIL, PROTECT, COMPLETE, FLEET, lowercased. The bundle path segment is literal: no open :slug parameter exists in the bundle namespace, so a new bundle requires a registry decision, not a new slug.",
+      "appliesTo": "BUNDLE_SLUG",
+      "normalization": "CLOSED_BUNDLE_ENUMERATION",
+      "testId": "SG-018-BUNDLE-SLUG-ENUMERATION",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-019",
+      "rule": "Query string and fragment are never part of entity identity. They are stripped before matching and are preserved only as presentation state by the language switcher.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "STRIP_QUERY_AND_FRAGMENT",
+      "testId": "SG-019-QUERY-FRAGMENT-STRIPPED",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-020",
+      "rule": "Private identifiers such as order id, customer id, product database id and admin route ids never appear in a public slug. Private routes are never indexed and never enter the slug map.",
+      "appliesTo": "PRIVATE_ROUTE",
+      "normalization": "PRIVATE_ID_EXCLUSION",
+      "testId": "SG-020-PRIVATE-ID-EXCLUSION",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-021",
+      "rule": "A historical alias is a redirect source only. It is never canonical, never linked, never emitted in a sitemap and never re-registered as a route slug.",
+      "appliesTo": "HISTORICAL_ALIAS",
+      "normalization": "REDIRECT_ONLY",
+      "testId": "SG-021-ALIAS-REDIRECT-ONLY",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-022",
+      "rule": "A value bound to a route parameter is validated with the same rules as a literal slug. For productDocumentation the accepted parameter domain is exactly the nine family ids lowercased: nav, hub, ais, pilot, sense, watch, display, weather, fleet.",
+      "appliesTo": "ROUTE_PARAMETER",
+      "normalization": "PARAM_VALIDATED_AS_SLUG",
+      "testId": "SG-022-PARAM-SLUG-VALIDATION",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-023",
+      "rule": "Once a slug is recorded as canonical for an entity in a locale it may only change through a redirect-mapped migration with authorization, never by a silent rename. Existing indexed slugs are permanently frozen by SG-004.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "NO_SILENT_RENAME",
+      "testId": "SG-023-SLUG-CHANGE-REQUIRES-REDIRECT",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-024",
+      "rule": "An incoming path is decoded exactly once before normalization. Double-encoded input is rejected rather than decoded twice, so an encoded separator can never enter the slug space.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "DECODE_ONCE",
+      "testId": "SG-024-DECODE-ONCE",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-025",
+      "rule": "Technical first segments served by the application are reserved and may never be a page slug: api, uploads, healthz, readyz, sitemap.xml, robots.txt, favicon.ico, favicon.svg, site.webmanifest, images, assets, static.",
+      "appliesTo": "NEW_PROPOSED_SLUG",
+      "normalization": "TECHNICAL_TOKEN_RESERVED",
+      "testId": "SG-025-TECHNICAL-TOKEN-RESERVED",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-026",
+      "rule": "A slug may not encode commercial state or a claim: buy, comprar, price, precio, stock, disponible, available, certified, certificado, oferta, cheap are prohibited as slug words.",
+      "appliesTo": "NEW_PROPOSED_SLUG",
+      "normalization": "NO_CLAIM_LANGUAGE",
+      "testId": "SG-026-NO-CLAIM-LANGUAGE",
+      "severity": "HIGH"
+    },
+    {
+      "ruleId": "SG-027",
+      "rule": "The locale prefix en/ belongs to the EN path only. An ES slug never begins with en, and an EN pattern always begins with en/ after the leading slash. The bare segment en is reserved at the root.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "LOCALE_PREFIX_OWNERSHIP",
+      "testId": "SG-027-LOCALE-PREFIX",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-028",
+      "rule": "Every accepted slug resolves to exactly one entityId and one routeId in the proposed registries. An orphan slug with no entity binding, or one slug bound to two entities in one namespace, is rejected.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "SLUG_ENTITY_BINDING",
+      "testId": "SG-028-SLUG-ENTITY-BINDING",
+      "severity": "BLOCKER"
+    },
+    {
+      "ruleId": "SG-029",
+      "rule": "Slug comparison is exact after normalization: no fuzzy match, no edit-distance fallback, no case-insensitive alias resolution beyond ASCII lowercasing. An unmatched slug resolves to the not-found page.",
+      "appliesTo": "ALL_SLUGS",
+      "normalization": "EXACT_MATCH_AFTER_NORMALIZATION",
+      "testId": "SG-029-EXACT-MATCH",
+      "severity": "MEDIUM"
+    },
+    {
+      "ruleId": "SG-030",
+      "rule": "The documentation slug domain is restricted to the nine family ids lowercased and shares the same value in both locales. A documentation page whose EN translation does not exist may not emit an EN slug, an EN alternate or a hreflang pair.",
+      "appliesTo": "DOCUMENTATION_SLUG",
+      "normalization": "FAMILY_ID_DOMAIN_IDENTICAL_ACROSS_LOCALES",
+      "testId": "SG-030-DOC-SLUG-DOMAIN",
+      "severity": "HIGH"
+    }
+  ],
+  "reservedSegments": [
+    {"segment": "en", "position": "ROOT_FIRST_SEGMENT", "category": "LOCALE_PREFIX", "reason": "Every EN route is prefixed with en; an ES page at /en would collide with the locale space.", "source": "src/app/core/i18n/locale-routes.ts"},
+    {"segment": "home", "position": "ROOT_ONLY", "category": "CURRENT_ROUTE", "reason": "The home route resolves to the empty path; no page may claim home as a first segment.", "source": "LOCALIZED_ROUTES home"},
+    {"segment": "tecnologia", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Indexed ES technology page, frozen by SG-004.", "source": "LOCALIZED_ROUTES technology"},
+    {"segment": "experiencias", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Indexed ES experiences page.", "source": "LOCALIZED_ROUTES experiences"},
+    {"segment": "traslados", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Indexed ES boat-delivery page.", "source": "LOCALIZED_ROUTES delivery"},
+    {"segment": "servicios", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Indexed ES services page.", "source": "LOCALIZED_ROUTES services"},
+    {"segment": "sobre-nosotros", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Indexed ES about page; also demonstrates a hyphenated multi-word slug.", "source": "LOCALIZED_ROUTES about"},
+    {"segment": "contacto", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Indexed ES contact page.", "source": "LOCALIZED_ROUTES contact"},
+    {"segment": "guias", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Indexed ES guides hub; its :slug children form a separate namespace.", "source": "LOCALIZED_ROUTES guides"},
+    {"segment": "tienda", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Indexed ES shop hub.", "source": "LOCALIZED_ROUTES shop"},
+    {"segment": "muestra", "position": "SHOP_SECOND_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Literal segment of shopSample that must keep winning over the shopDetail parameter.", "source": "LOCALIZED_ROUTES shopSample"},
+    {"segment": "sample", "position": "EN_SHOP_SECOND_SEGMENT", "category": "CURRENT_ROUTE", "reason": "EN literal segment of shopSample.", "source": "LOCALIZED_ROUTES shopSample"},
+    {"segment": "carrito", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_PRIVATE_ROUTE", "reason": "Private cart page; never indexed and never a public slug target.", "source": "LOCALIZED_ROUTES cart"},
+    {"segment": "acceso", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_PRIVATE_ROUTE", "reason": "Private login page.", "source": "LOCALIZED_ROUTES login"},
+    {"segment": "cuenta", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_PRIVATE_ROUTE", "reason": "Private account area; its pedidos child keeps the order id private (SG-020).", "source": "LOCALIZED_ROUTES account, orderDetail"},
+    {"segment": "pedidos", "position": "ACCOUNT_SECOND_SEGMENT", "category": "CURRENT_PRIVATE_ROUTE", "reason": "Private order list and order detail segment.", "source": "LOCALIZED_ROUTES orderDetail"},
+    {"segment": "aviso-legal", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Legal notice page.", "source": "LOCALIZED_ROUTES legalNotice"},
+    {"segment": "privacidad", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Privacy policy page.", "source": "LOCALIZED_ROUTES privacy"},
+    {"segment": "cookies", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Cookie policy page.", "source": "LOCALIZED_ROUTES cookies"},
+    {"segment": "condiciones-de-venta", "position": "ROOT_FIRST_SEGMENT", "category": "CURRENT_ROUTE", "reason": "Terms of sale page.", "source": "LOCALIZED_ROUTES termsOfSale"},
+    {"segment": "admin", "position": "ROOT_FIRST_SEGMENT", "category": "PRIVATE_NAMESPACE", "reason": "Admin namespace guarded by adminGuard; ES-only and never public.", "source": "src/app/app.routes.ts"},
+    {"segment": "open-marine", "position": "ROOT_FIRST_SEGMENT", "category": "LEGACY_REDIRECT_SOURCE", "reason": "Active 301 source to /tecnologia; redirect-only by SG-021.", "source": "src/app/app.routes.ts legacyOpenMarine"},
+    {"segment": "productos", "position": "ROOT_FIRST_SEGMENT", "category": "LEGACY_REDIRECT_SOURCE", "reason": "Active 301 source to /tecnologia; reserving it prevents a future products page from silently overriding the redirect. The proposed products overview lives at /marea/productos instead.", "source": "src/app/app.routes.ts legacyProductos"},
+    {"segment": "productos", "position": "MAREA_SECOND_SEGMENT", "category": "PROPOSED_NAMESPACE", "reason": "Reserved for mareaProducts ES; the EN counterpart is products under en/marea.", "source": "MC15 data contract 2.4"},
+    {"segment": "products", "position": "EN_MAREA_SECOND_SEGMENT", "category": "PROPOSED_NAMESPACE", "reason": "Reserved for mareaProducts EN.", "source": "MC15 data contract 2.4"},
+    {"segment": "marea", "position": "ROOT_FIRST_SEGMENT", "category": "PROPOSED_BRAND_ROOT", "reason": "Reserved as the proposed brand root. The word is used as an internal planning name only; reservation is a routing decision, not a trademark claim.", "source": "MC15 data contract 2.4"},
+    {"segment": "soluciones", "position": "MAREA_SECOND_SEGMENT", "category": "PROPOSED_NAMESPACE", "reason": "Reserved for mareaSolutions ES; EN counterpart is solutions.", "source": "MC15 data contract 2.4"},
+    {"segment": "solutions", "position": "EN_MAREA_SECOND_SEGMENT", "category": "PROPOSED_NAMESPACE", "reason": "Reserved for mareaSolutions EN.", "source": "MC15 data contract 2.4"},
+    {"segment": "configurador", "position": "MAREA_SECOND_SEGMENT", "category": "PROPOSED_NAMESPACE", "reason": "Reserved for mareaConfigurator ES; EN counterpart is configurator.", "source": "MC15 data contract 2.4"},
+    {"segment": "nav", "position": "MAREA_FAMILY_SEGMENT", "category": "PROPOSED_FAMILY_SLUG", "reason": "Family slug reserved inside /marea and /en/marea.", "source": "MC15 data contract 2.4"},
+    {"segment": "hub", "position": "MAREA_FAMILY_SEGMENT", "category": "PROPOSED_FAMILY_SLUG", "reason": "Family slug reserved inside /marea and /en/marea.", "source": "MC15 data contract 2.4"},
+    {"segment": "ais", "position": "MAREA_FAMILY_SEGMENT", "category": "PROPOSED_FAMILY_SLUG", "reason": "Family slug reserved inside /marea and /en/marea.", "source": "MC15 data contract 2.4"},
+    {"segment": "pilot", "position": "MAREA_FAMILY_SEGMENT", "category": "PROPOSED_FAMILY_SLUG", "reason": "Family slug reserved inside /marea and /en/marea.", "source": "MC15 data contract 2.4"},
+    {"segment": "sense", "position": "MAREA_FAMILY_SEGMENT", "category": "PROPOSED_FAMILY_SLUG", "reason": "Family slug reserved inside /marea and /en/marea.", "source": "MC15 data contract 2.4"},
+    {"segment": "watch", "position": "MAREA_FAMILY_SEGMENT", "category": "PROPOSED_FAMILY_SLUG", "reason": "Family slug reserved inside /marea and /en/marea.", "source": "MC15 data contract 2.4"},
+    {"segment": "display", "position": "MAREA_FAMILY_SEGMENT", "category": "PROPOSED_FAMILY_SLUG", "reason": "Family slug reserved inside /marea and /en/marea.", "source": "MC15 data contract 2.4"},
+    {"segment": "weather", "position": "MAREA_FAMILY_SEGMENT", "category": "PROPOSED_FAMILY_SLUG", "reason": "Family slug reserved inside /marea and /en/marea.", "source": "MC15 data contract 2.4"},
+    {"segment": "fleet", "position": "MAREA_FAMILY_SEGMENT_AND_BUNDLE_SEGMENT", "category": "PROPOSED_FAMILY_AND_BUNDLE_SLUG", "reason": "One value, two declared namespaces: ENT-FAMILY-FLEET under /marea and ENT-BUNDLE-FLEET under /marea/soluciones (SG-013).", "source": "MC15 data contract 2.4"},
+    {"segment": "start", "position": "BUNDLE_SEGMENT", "category": "PROPOSED_BUNDLE_SLUG", "reason": "Bundle slug reserved inside /marea/soluciones and /en/marea/solutions.", "source": "MC15 data contract 2.4"},
+    {"segment": "cruise", "position": "BUNDLE_SEGMENT", "category": "PROPOSED_BUNDLE_SLUG", "reason": "Bundle slug reserved inside /marea/soluciones and /en/marea/solutions.", "source": "MC15 data contract 2.4"},
+    {"segment": "sail", "position": "BUNDLE_SEGMENT", "category": "PROPOSED_BUNDLE_SLUG", "reason": "Bundle slug reserved inside /marea/soluciones and /en/marea/solutions.", "source": "MC15 data contract 2.4"},
+    {"segment": "protect", "position": "BUNDLE_SEGMENT", "category": "PROPOSED_BUNDLE_SLUG", "reason": "Bundle slug reserved inside /marea/soluciones and /en/marea/solutions.", "source": "MC15 data contract 2.4"},
+    {"segment": "complete", "position": "BUNDLE_SEGMENT", "category": "PROPOSED_BUNDLE_SLUG", "reason": "Bundle slug reserved inside /marea/soluciones and /en/marea/solutions.", "source": "MC15 data contract 2.4"},
+    {"segment": "profesionales", "position": "ROOT_FIRST_SEGMENT", "category": "PROPOSED_NAMESPACE", "reason": "Reserved for the professionals page ES; EN counterpart is professionals.", "source": "MC15 data contract 2.4"},
+    {"segment": "instaladores", "position": "ROOT_FIRST_SEGMENT", "category": "PROPOSED_NAMESPACE", "reason": "Reserved for the installers page ES; EN counterpart is installers.", "source": "MC15 data contract 2.4"},
+    {"segment": "soporte", "position": "ROOT_FIRST_SEGMENT", "category": "PROPOSED_NAMESPACE", "reason": "Reserved for the support page ES and for the documentation namespace soporte/marea.", "source": "MC15 data contract 2.4"},
+    {"segment": "support", "position": "EN_ROOT_FIRST_SEGMENT", "category": "PROPOSED_NAMESPACE", "reason": "Reserved for the support page EN and for en/support/marea documentation pages.", "source": "MC15 data contract 2.4"},
+    {"segment": "api", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Express API mount point.", "source": "src/server.ts app.use('/api', api)"},
+    {"segment": "uploads", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Static upload directory.", "source": "src/server.ts express.static(UPLOADS_DIR)"},
+    {"segment": "healthz", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Health probe endpoint.", "source": "src/server.ts app.get('/healthz')"},
+    {"segment": "readyz", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Readiness probe endpoint.", "source": "src/server.ts app.get('/readyz')"},
+    {"segment": "sitemap.xml", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Generated sitemap endpoint; a page slug may never shadow it.", "source": "src/server.ts app.get('/sitemap.xml')"},
+    {"segment": "robots.txt", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Static robots file.", "source": "public/robots.txt"},
+    {"segment": "favicon.ico", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Static icon file.", "source": "public/favicon.ico"},
+    {"segment": "favicon.svg", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Static icon file.", "source": "public/favicon.svg"},
+    {"segment": "site.webmanifest", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Static web app manifest.", "source": "public/site.webmanifest"},
+    {"segment": "images", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Static image directory.", "source": "public/images"},
+    {"segment": "assets", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Reserved for build assets.", "source": "Angular build output convention"},
+    {"segment": "static", "position": "ROOT_FIRST_SEGMENT", "category": "TECHNICAL", "reason": "Reserved for static asset hosting.", "source": "Angular build output convention"}
+  ],
+  "entitySlug": [
+    {"entityId": "ENT-FAMILY-NAV", "entityType": "PRODUCT_FAMILY", "familyId": "NAV", "esSlug": "nav", "enSlug": "nav", "namespace": "/marea/[family]", "namespaceEn": "/en/marea/[family]", "editionIds": ["NAV-ESSENTIAL", "NAV-PRO"], "editionIdsSemantics": "OWN_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-FAMILY-HUB", "entityType": "PRODUCT_FAMILY", "familyId": "HUB", "esSlug": "hub", "enSlug": "hub", "namespace": "/marea/[family]", "namespaceEn": "/en/marea/[family]", "editionIds": ["HUB-STANDARD", "HUB-PRO"], "editionIdsSemantics": "OWN_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-FAMILY-AIS", "entityType": "PRODUCT_FAMILY", "familyId": "AIS", "esSlug": "ais", "enSlug": "ais", "namespace": "/marea/[family]", "namespaceEn": "/en/marea/[family]", "editionIds": ["AIS-RECEIVER", "AIS-CONNECTED"], "editionIdsSemantics": "OWN_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-FAMILY-PILOT", "entityType": "PRODUCT_FAMILY", "familyId": "PILOT", "esSlug": "pilot", "enSlug": "pilot", "namespace": "/marea/[family]", "namespaceEn": "/en/marea/[family]", "editionIds": ["PILOT-COASTAL", "PILOT-SAIL", "PILOT-PRO"], "editionIdsSemantics": "OWN_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-FAMILY-SENSE", "entityType": "PRODUCT_FAMILY", "familyId": "SENSE", "esSlug": "sense", "enSlug": "sense", "namespace": "/marea/[family]", "namespaceEn": "/en/marea/[family]", "editionIds": ["SENSE-WIND", "SENSE-POWER", "SENSE-BILGE", "SENSE-TANKS", "SENSE-ENV", "SENSE-ESSENTIALS", "SENSE-SAIL", "SENSE-SYSTEMS"], "editionIdsSemantics": "OWN_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-FAMILY-WATCH", "entityType": "PRODUCT_FAMILY", "familyId": "WATCH", "esSlug": "watch", "enSlug": "watch", "namespace": "/marea/[family]", "namespaceEn": "/en/marea/[family]", "editionIds": ["WATCH-CORE", "WATCH-PLUS"], "editionIdsSemantics": "OWN_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-FAMILY-DISPLAY", "entityType": "PRODUCT_FAMILY", "familyId": "DISPLAY", "esSlug": "display", "enSlug": "display", "namespace": "/marea/[family]", "namespaceEn": "/en/marea/[family]", "editionIds": ["DISPLAY-7", "DISPLAY-LARGE-CONDITIONAL"], "editionIdsSemantics": "OWN_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-FAMILY-WEATHER", "entityType": "PRODUCT_FAMILY", "familyId": "WEATHER", "esSlug": "weather", "enSlug": "weather", "namespace": "/marea/[family]", "namespaceEn": "/en/marea/[family]", "editionIds": ["WEATHER-STANDARD", "WEATHER-PRO"], "editionIdsSemantics": "OWN_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-FAMILY-FLEET", "entityType": "PRODUCT_FAMILY", "familyId": "FLEET", "esSlug": "fleet", "enSlug": "fleet", "namespace": "/marea/[family]", "namespaceEn": "/en/marea/[family]", "editionIds": ["FLEET-START", "FLEET-BUSINESS", "FLEET-ENTERPRISE"], "editionIdsSemantics": "OWN_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "sharedSlugWith": ["ENT-BUNDLE-FLEET"], "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-BUNDLE-START", "entityType": "BUNDLE", "bundleId": "START", "esSlug": "start", "enSlug": "start", "namespace": "/marea/soluciones/[bundle]", "namespaceEn": "/en/marea/solutions/[bundle]", "editionIds": ["HUB-STANDARD", "NAV-PRO"], "editionIdsSemantics": "COMPOSITE_COMPONENT_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-BUNDLE-CRUISE", "entityType": "BUNDLE", "bundleId": "CRUISE", "esSlug": "cruise", "enSlug": "cruise", "namespace": "/marea/soluciones/[bundle]", "namespaceEn": "/en/marea/solutions/[bundle]", "editionIds": ["HUB-STANDARD", "NAV-ESSENTIAL", "AIS-RECEIVER", "AIS-CONNECTED", "DISPLAY-7", "DISPLAY-LARGE-CONDITIONAL"], "editionIdsSemantics": "COMPOSITE_COMPONENT_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-BUNDLE-SAIL", "entityType": "BUNDLE", "bundleId": "SAIL", "esSlug": "sail", "enSlug": "sail", "namespace": "/marea/soluciones/[bundle]", "namespaceEn": "/en/marea/solutions/[bundle]", "editionIds": ["HUB-STANDARD", "NAV-PRO", "PILOT-COASTAL", "PILOT-SAIL", "PILOT-PRO", "SENSE-WIND"], "editionIdsSemantics": "COMPOSITE_COMPONENT_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-BUNDLE-PROTECT", "entityType": "BUNDLE", "bundleId": "PROTECT", "esSlug": "protect", "enSlug": "protect", "namespace": "/marea/soluciones/[bundle]", "namespaceEn": "/en/marea/solutions/[bundle]", "editionIds": ["SENSE-ESSENTIALS", "WATCH-CORE", "WATCH-PLUS"], "editionIdsSemantics": "COMPOSITE_COMPONENT_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-BUNDLE-COMPLETE", "entityType": "BUNDLE", "bundleId": "COMPLETE", "esSlug": "complete", "enSlug": "complete", "namespace": "/marea/soluciones/[bundle]", "namespaceEn": "/en/marea/solutions/[bundle]", "editionIds": ["HUB-PRO", "NAV-PRO", "PILOT-COASTAL", "PILOT-SAIL", "PILOT-PRO", "DISPLAY-7", "DISPLAY-LARGE-CONDITIONAL", "SENSE-BILGE", "SENSE-ENV", "SENSE-POWER", "SENSE-TANKS", "WATCH-CORE"], "editionIdsSemantics": "COMPOSITE_COMPONENT_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "evidenceState": "REPOSITORY_VERIFIED"},
+    {"entityId": "ENT-BUNDLE-FLEET", "entityType": "BUNDLE", "bundleId": "FLEET", "esSlug": "fleet", "enSlug": "fleet", "namespace": "/marea/soluciones/[bundle]", "namespaceEn": "/en/marea/solutions/[bundle]", "editionIds": ["FLEET-START", "FLEET-ENTERPRISE"], "editionIdsSemantics": "COMPOSITE_COMPONENT_EDITIONS", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED", "sharedSlugWith": ["ENT-FAMILY-FLEET"], "evidenceState": "REPOSITORY_VERIFIED"}
+  ],
+  "surfaceSlug": [
+    {"routeId": "mareaOverview", "entityId": "ENT-HUB-MAREA", "esSlug": "marea", "enSlug": "marea", "namespace": "/", "namespaceEn": "/en/", "localeMappingState": "IDENTICAL_SLUG_ES_EN_CONTRACT_FIXED"},
+    {"routeId": "mareaProducts", "entityId": "ENT-HUB-PRODUCTS", "esSlug": "productos", "enSlug": "products", "namespace": "marea", "namespaceEn": "en/marea", "localeMappingState": "EXPLICIT_ES_EN_MAPPING_CONTRACT_FIXED"},
+    {"routeId": "mareaSolutions", "entityId": "ENT-HUB-SOLUTIONS", "esSlug": "soluciones", "enSlug": "solutions", "namespace": "marea", "namespaceEn": "en/marea", "localeMappingState": "EXPLICIT_ES_EN_MAPPING_CONTRACT_FIXED"},
+    {"routeId": "mareaConfigurator", "entityId": "ENT-TOOL-CONFIGURATOR", "esSlug": "configurador", "enSlug": "configurator", "namespace": "marea", "namespaceEn": "en/marea", "localeMappingState": "EXPLICIT_ES_EN_MAPPING_CONTRACT_FIXED"},
+    {"routeId": "professionals", "entityId": "ENT-PAGE-PROFESSIONALS", "esSlug": "profesionales", "enSlug": "professionals", "namespace": "/", "namespaceEn": "/en/", "localeMappingState": "EXPLICIT_ES_EN_MAPPING_CONTRACT_FIXED"},
+    {"routeId": "installers", "entityId": "ENT-PAGE-INSTALLERS", "esSlug": "instaladores", "enSlug": "installers", "namespace": "/", "namespaceEn": "/en/", "localeMappingState": "EXPLICIT_ES_EN_MAPPING_CONTRACT_FIXED"},
+    {"routeId": "support", "entityId": "ENT-PAGE-SUPPORT", "esSlug": "soporte", "enSlug": "support", "namespace": "/", "namespaceEn": "/en/", "localeMappingState": "EXPLICIT_ES_EN_MAPPING_CONTRACT_FIXED"},
+    {"routeId": "productDocumentation", "entityId": "ENT-DOC-PRODUCT", "esSlug": ":slug", "enSlug": ":slug", "namespace": "soporte/marea", "namespaceEn": "en/support/marea", "parameterDomain": ["nav", "hub", "ais", "pilot", "sense", "watch", "display", "weather", "fleet"], "localeMappingState": "PARAMETER_IDENTICAL_ACROSS_LOCALES"}
+  ],
+  "rejectionVectors": [
+    {"input": "Marea", "expectedNormalized": "marea", "expectedVerdict": "ACCEPT_AS_NORMALIZED", "ruleRefs": ["SG-002", "SG-014"]},
+    {"input": "MAREA/Nav", "expectedNormalized": null, "expectedVerdict": "REJECT_EMBEDDED_SLASH", "ruleRefs": ["SG-008"]},
+    {"input": "/marea/nav/", "expectedNormalized": "marea/nav", "expectedVerdict": "REJECT_EDGE_SLASH", "ruleRefs": ["SG-008"]},
+    {"input": "marea//nav", "expectedNormalized": null, "expectedVerdict": "REJECT_EMPTY_SEGMENT", "ruleRefs": ["SG-008", "SG-009"]},
+    {"input": "marea/nav?lang=en", "expectedNormalized": "marea/nav", "expectedVerdict": "STRIP_QUERY_THEN_ACCEPT", "ruleRefs": ["SG-019"]},
+    {"input": "marea/nav#top", "expectedNormalized": "marea/nav", "expectedVerdict": "STRIP_FRAGMENT_THEN_ACCEPT", "ruleRefs": ["SG-019"]},
+    {"input": "marea/n%C3%A1v", "expectedNormalized": null, "expectedVerdict": "REJECT_PERCENT_ENCODING_IN_STORED_SLUG", "ruleRefs": ["SG-007", "SG-024"]},
+    {"input": "marea/n av", "expectedNormalized": null, "expectedVerdict": "REJECT_SPACE", "ruleRefs": ["SG-005", "SG-007"]},
+    {"input": "marea/nav_2026", "expectedNormalized": null, "expectedVerdict": "REJECT_UNDERSCORE", "ruleRefs": ["SG-005", "SG-006"]},
+    {"input": "marea/n-a-v", "expectedNormalized": "marea/n-a-v", "expectedVerdict": "ACCEPT_CHARACTER_SET_VALID", "ruleRefs": ["SG-006", "SG-009"]},
+    {"input": "marea/-nav", "expectedNormalized": null, "expectedVerdict": "REJECT_LEADING_HYPHEN", "ruleRefs": ["SG-009"]},
+    {"input": "marea/nav-", "expectedNormalized": null, "expectedVerdict": "REJECT_TRAILING_HYPHEN", "ruleRefs": ["SG-009"]},
+    {"input": "marea/nav--hub", "expectedNormalized": null, "expectedVerdict": "REJECT_DOUBLE_HYPHEN", "ruleRefs": ["SG-009"]},
+    {"input": "productos", "expectedNormalized": null, "expectedVerdict": "REJECT_RESERVED_LEGACY_REDIRECT_SOURCE", "ruleRefs": ["SG-011", "SG-021"]},
+    {"input": "marea/productos", "expectedNormalized": "marea/productos", "expectedVerdict": "ACCEPT_PROPOSED_NAMESPACE", "ruleRefs": ["SG-011"]},
+    {"input": "marea/soluciones/fleet", "expectedNormalized": "marea/soluciones/fleet", "expectedVerdict": "ACCEPT_DECLARED_NAMESPACE_REUSE", "ruleRefs": ["SG-013"]},
+    {"input": "marea/fleet/otra-cosa", "expectedNormalized": null, "expectedVerdict": "REJECT_NO_SUCH_NAMESPACE", "ruleRefs": ["SG-028"]},
+    {"input": "soporte/marea/fleet", "expectedNormalized": "soporte/marea/fleet", "expectedVerdict": "ACCEPT_DOC_PARAMETER_DOMAIN", "ruleRefs": ["SG-022", "SG-030"]},
+    {"input": "soporte/marea/nav-pro", "expectedNormalized": null, "expectedVerdict": "REJECT_PARAMETER_OUTSIDE_DOMAIN", "ruleRefs": ["SG-022"]},
+    {"input": "soporte/marea/productos", "expectedNormalized": null, "expectedVerdict": "REJECT_PARAMETER_OUTSIDE_DOMAIN", "ruleRefs": ["SG-022"]},
+    {"input": "comprar-nav", "expectedNormalized": null, "expectedVerdict": "REJECT_CLAIM_LANGUAGE", "ruleRefs": ["SG-026"]},
+    {"input": "api", "expectedNormalized": null, "expectedVerdict": "REJECT_TECHNICAL_TOKEN", "ruleRefs": ["SG-025"]},
+    {"input": "en/marea", "expectedNormalized": "en/marea", "expectedVerdict": "ACCEPT_EN_LOCALE_PREFIX", "ruleRefs": ["SG-027"]},
+    {"input": "en", "expectedNormalized": null, "expectedVerdict": "REJECT_RESERVED_LOCALE_PREFIX", "ruleRefs": ["SG-027", "SG-011"]},
+    {"input": "tecnologia", "expectedNormalized": "tecnologia", "expectedVerdict": "ACCEPT_EXISTING_FROZEN_SLUG_VERBATIM", "ruleRefs": ["SG-004"]},
+    {"input": "Tecnología", "expectedNormalized": "tecnologia", "expectedVerdict": "REJECT_AS_NEW_SLUG_BUT_ACCEPT_EXISTING_FORM", "ruleRefs": ["SG-003", "SG-004", "SG-015"]}
+  ]
+}
