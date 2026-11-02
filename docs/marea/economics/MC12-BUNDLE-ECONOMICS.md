@@ -27,7 +27,7 @@ channel margin and data rights.
 |---|---|---|---|---|---|---|---|
 | START | PH-01 | 499 | 412.40 | 293.55 | +118.85 | chart licence, certification | `LICENSING_BLOCKED` |
 | CRUISE | PH-02 | 1 399 | 1 156.20 | 876.23 | +279.97 | chart licence, AIS antenna/splitter/cabling, installation | `LICENSING_BLOCKED` |
-| PROTECT | PH-04 | 399 | 329.75 | 377.55 | **−47.80** | cellular connectivity, certification | `DEFER_RECOMMENDED` |
+| PROTECT | PH-04 | 399 | 329.75 | 380.49 | **−50.74** | cellular connectivity, certification | `DEFER_RECOMMENDED` |
 | SAIL | PH-03 | n/a (quotation) | n/a | n/a | n/a | PILOT scope | `SAFETY_BLOCKED` |
 | COMPLETE | PH-05 | n/a (quotation) | n/a | n/a | n/a | PILOT scope | `SAFETY_BLOCKED` |
 | FLEET | PH-06 | `NOT_ESTABLISHED` | n/a | n/a | n/a | FLEET package | `COST_MODEL_INCOMPLETE` |
@@ -53,8 +53,8 @@ does **not** make AIS viable; it makes CRUISE dependent on DISPLAY.
 
 ### PROTECT (WATCH Core + SENSE-POWER + SENSE-BILGE)
 The historical EUR 399 is below the conditional variable cost of its own
-composition: EUR 377.55 of known cost against EUR 329.75 net revenue, a **negative
-EUR 47.80** before connectivity and certification. The MC-08 note already recorded
+composition: EUR 380.49 of known cost against EUR 329.75 net revenue, a **negative
+EUR 50.74** before connectivity and certification. The MC-08 note already recorded
 that the symbolic component floor exceeded EUR 399. `DEFER_RECOMMENDED`: the bundle
 cannot be sold at PH-04 with this composition and cost structure.
 

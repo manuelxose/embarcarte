@@ -1344,3 +1344,138 @@ delivery evidence only.
 
 **Status effect.** No authorization, no supplier contact, no purchase, no test, no certification, no
 price approval, no publication, no merge, no deployment.
+
+## D-049 - 2026-11-02 - MC-12 delivers the internal economic model and stays PARTIAL because no licensing, connectivity or customer evidence exists
+
+**Context.** Milestone 12 requires recurring/data licensing and per-SKU contribution
+economics (ex-VAT), with bottom-up costs with sources, no unlabelled assumptions and
+**real data/connectivity quotations** as acceptance evidence. The execution mandate
+prohibits provider outreach, RFQ transmission, account registration, paid-API
+activation and contractual acceptance, so no quotation or contract could be
+obtained. MC-11 handed over 90 incomplete cost scenarios, 42 public price
+observations and zero supplier quotations; customer evidence is `NONE`.
+
+**Decision.** Deliver the complete internal economics package (D01-D19): a verified
+baseline, a machine-readable data contract, nine licensing-rights records and 53
+classified provider records, a recurring cost model over three usage profiles, a
+90-scenario hardware reconciliation with a proven no-double-count invariant, 50
+per-SKU unit-economics records, six bundle records, five channel records, 70
+sensitivity scenarios, a 22-blocker register, a nine-family decision matrix, an
+MC-13 handoff, a 49-check deterministic validator with a 59-test adversarial suite,
+an independent audit and a Spanish executive report. Record `MC12_VERDICT = PARTIAL`
+with `MC12_INTERNAL_ECONOMICS_SCOPE = PASS_INTERNAL_ECONOMICS_SCOPE` and
+`MC12_EXTERNAL_COMMERCIAL_EVIDENCE = BLOCKED_OR_NOT_OBTAINED`. Keep every price
+unapproved and every product `NOT_FOR_SALE`.
+
+**Rationale.** The registry's full-PASS clause requires real data and connectivity
+quotations. Inventing one, or relabelling a website tariff as a quotation, would
+violate the milestone's core prohibition. Separating the internal-scope verdict from
+the external-evidence verdict preserves both the work done and the evidence missing.
+
+**Consequences.** (a) No price is approved and no product becomes commercially
+available. (b) Chart, weather, NMEA, connectivity, cloud, tile, IP and trademark
+rights remain `NOT_GRANTED`; the nine blocking rights stay open. (c) The economic
+classification is analysis, not a lifecycle approval. (d) MC-13 receives inputs with
+named gaps and must not be treated as started. (e) The draft PR is delivery evidence
+only and remains stacked on the unmerged MC-11 branch.
+
+**Evidence.** `docs/marea/economics/` (D01-D19); `data/manifest.json`;
+`data/unit-economics.json`; `data/blocker-register.json`;
+`review/MC-12-REVIEW.md`; `scripts/check-marea-unit-economics.mjs` and test suite;
+`MASTER-PROMPT-REGISTRY.md` row 12.
+
+**Status effect.** No authorization, no outreach, no purchase, no price approval, no
+publication, no merge, no deployment. MC-13 is not started.
+
+## D-050 - 2026-11-02 - MC-12 treats tooling and certification as fixed costs and forbids double counting
+
+**Context.** MC-11's scenario `knownSubtotalEur` already contains the `COST-16`
+tooling/NRE amortisation line, and the separate `toolingAmortizationEur` field
+repeats the same amount. MC-11 also models certification (`COST-17`) as a per-unit
+amortisation whose amount is `UNKNOWN`. Using either as a variable unit cost would
+inflate cost or double count.
+
+**Decision.** For contribution analysis, `COST-16` tooling/NRE and `COST-17`
+certification are reclassified as fixed one-off programme costs. They are excluded
+from variable cost, listed in each record's `fixedCostsExcluded`, and never added a
+second time. `toolingAmortizationEur` is treated as a reporting field only. The
+validator recomputes, for all 90 MC-11 scenarios, that `Σ lines = knownSubtotalEur`
+and that `toolingAmortizationEur` equals the `COST-16` line, and it rejects any
+variable cost line that contains `COST-16`/`COST-17`.
+
+**Rationale.** A one-off cost divided by volume is not a property of the product.
+Treating an unknown certification amount as zero would be worse: the model carries
+it explicitly as a fixed unknown and states that true break-even is higher than the
+conditional unit figure.
+
+**Consequences.** (a) Conditional contribution is identifiable per unit while fixed
+investment remains a named gap for MC-13. (b) Break-even prices in the model are
+variable-cost break-evens and exclude fixed spend. (c) The accounting rule is
+machine-enforced.
+
+**Evidence.** `docs/marea/economics/data/MC12-DATA-CONTRACT.md` A-09/A-10/A-11;
+`data/hardware-cost-reconciliation.json#invariant`; `data/assumptions.json`
+ASM-MC12-005/018; `MC12-HARDWARE-COST-RECONCILIATION.md`.
+
+**Status effect.** No BOM approval, no price approval, no certification claim.
+
+## D-051 - 2026-11-02 - MC-12 records one observed ECB rate but does not rebase inherited MC-11 BOM lines
+
+**Context.** MC-11 could not retrieve the ECB euro reference rate and used an
+engineering assumption (EUR 0.925925926 per USD). MC-12's connectivity research
+retrieved an ECB euro reference rate for 2026-11-02 (USD 1.1216 per EUR, i.e.
+EUR 0.8916 per USD).
+
+**Decision.** Record the observed rate with its source and use it for MC-12's new
+USD-denominated recurring-cost conversions. Do **not** retroactively re-convert the
+inherited MC-11 BOM lines: they keep their recorded conversion so no subtotal mixes
+two bases. Record this as `ASM-MC12-021` and require MC-13 to refresh the BOM
+conversion in a single, disclosed pass.
+
+**Rationale.** Re-basing half a BOM would silently change the inherited cost lines
+and make the reconciliation untraceable. Using an observed rate for new conversions
+improves evidence without invalidating prior arithmetic.
+
+**Consequences.** (a) MC-11 cost lines remain comparable to their source records.
+(b) New recurring USD tariffs carry an observed rate. (c) The MC-11 FX gap is
+partially closed, not erased.
+
+**Evidence.** `data/providers.json` ECB record; `data/recurring-cost-inputs.json`
+`fxBasis`; `data/assumptions.json` ASM-MC12-021; `MC12-CLOUD-AND-CELLULAR-COST-MODEL.md` §1.
+
+**Status effect.** No procurement, no purchase, no price approval.
+
+## D-052 - 2026-11-02 - MC-12 classifies the portfolio economically and sets an evidence-first priority without changing any lifecycle state
+
+**Context.** The milestone requires a per-family decision matrix and a provisional
+priority. MC-11 left every product `DEFINED` / `NOT_FOR_SALE`; customer evidence is
+`NONE`; no data right is granted.
+
+**Decision.** Pre-register seven weighted dimensions (cost evidence 25, recurring
+certainty 15, licensing readiness 20, technical readiness 10, customer evidence 15,
+regulatory readiness 10, contribution confidence 5) and a fixed classification
+order. Classify NAV and WEATHER `LICENSING_BLOCKED`; PILOT `SAFETY_BLOCKED`;
+HUB, SENSE and AIS `DEFER_RECOMMENDED`; FLEET and WATCH `COST_MODEL_INCOMPLETE`;
+DISPLAY `CONDITIONAL_ECONOMIC_CASE`; no family `ECONOMICS_EVIDENCED`. Set the
+provisional priority `NAV > FLEET > DISPLAY > WEATHER > HUB > SENSE > WATCH > AIS >
+PILOT`. At bundle level: START/CRUISE `LICENSING_BLOCKED`, PROTECT
+`DEFER_RECOMMENDED`, SAIL/COMPLETE `SAFETY_BLOCKED`, FLEET
+`COST_MODEL_INCOMPLETE`.
+
+**Rationale.** The classifications follow the evidence, not a preferred narrative.
+An economic score cannot override a legal, safety or IP gate, and the pre-registered
+weights stop the result from choosing its own criteria. Customer evidence scores
+zero for every family, which caps the portfolio and identifies the cheapest
+evidence to obtain.
+
+**Consequences.** (a) No lifecycle state changes. (b) The recommendation is
+evidence-first software direction with DISPLAY as the only hardware candidate.
+(c) Any price remains `HYPOTHESIS_UNAPPROVED` and no product is purchasable.
+(d) MC-13 must not treat the priority as a market forecast.
+
+**Evidence.** `data/decision-matrix.json`; `data/assumptions.json`
+decisionRules/ASM-MC12-019; `MC12-COMMERCIAL-PRIORITIZATION.md`;
+`MC12-BUNDLE-ECONOMICS.md`.
+
+**Status effect.** No price approval, no commercial availability, no publication,
+no merge, no deployment.
