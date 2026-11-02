@@ -13,10 +13,11 @@ MC16_STARTED: false
 | Base | MC-14 HEAD `e0be1e457456a401a529e1912770e07ed9a863e4` |
 | Implementation candidate (frozen) | `b70d5500591be63d00ac33b4c1de6c802981b46d` |
 | Correction commit (reviewed) | `d1d7a1a848fb2a82334811aad9b916d4041cd4a2` |
+| Search Console addendum commit (reviewed) | `ad744e9f5f4d7e71d6c77692f45c3f737032771e` |
 | Draft PR | [#22](https://github.com/manuelxose/embarcarte/pull/22) |
 | PR base | `feature/marea-mc14-legal-commercial-risk-claims-policy` |
 | PR state | OPEN, draft, MERGEABLE, not merged |
-| Changed files vs base | 41 (docs/marea/information-architecture, package.json, 2 scripts) |
+| Changed files vs base | 49 (docs/marea/information-architecture, docs/marea/execution, package.json, 2 scripts) |
 | Live website files changed | none (`src/`, `public/`, `.github/` diff empty) |
 | Merge / deploy / publication / sitemap submission | NO / NO / NO / NO |
 | MC-16 execution | none (`MC16_STARTED = false` everywhere) |
@@ -27,6 +28,7 @@ MC16_STARTED: false
 MC15_VERDICT = PARTIAL
 MC15_INTERNAL_IA_SEO_SCOPE = PASS_INTERNAL_IA_SEO_SCOPE
 MC15_INDEPENDENT_REVIEW = PASS after corrections (d1d7a1a)
+MC15_SEARCH_CONSOLE_REVIEW = PASS (addendum ad744e9); C-01/C-02 CLOSED_VERIFIED; GSC-01/GSC-02 OPEN pre-existing operational debt
 MC15_INDEXATION_EVIDENCE = SEARCH_CONSOLE_VERIFIED_PARTIAL_24_URLS
 ```
 
@@ -150,7 +152,7 @@ is made.
 |---|---|---|---|
 | 1 | `b70d550` | NEEDS_REVISION | 0 BLOCKING, 2 MAJOR (IA-01, IA-02), 3 MINOR (IA-03…IA-05), 3 INFORMATIONAL |
 | 2 (corrections applied) | `d1d7a1a` | PASS | 5/5 corrected findings `CLOSED_VERIFIED`; 3 INFORMATIONAL accepted |
-| 3 (Search Console addendum) | pending commit | pending | independent verification of the 24-URL evidence and the addendum |
+| 3 (Search Console addendum) | `ad744e9` | PASS | C-01/C-02 `CLOSED_VERIFIED`; GSC-01/GSC-02 OPEN as pre-existing operational debt outside MC-15 |
 
 Corrections: unified blocking-gate union enforced by validator rule IA-068;
 AIS/FLEET hard-restriction guards and tests (IA-069); shop sitemap consistency

@@ -329,6 +329,16 @@ Ninguna prueba bloqueada o no ejecutada se reporta como PASS.
 - El auditor no autoró la implementación y no modificó archivos de
   implementación; solo escribió `MC15-INDEPENDENT-REVIEW.md` y
   `review-findings.json`.
+- **Ronda 3 — anexo Search Console**, commit `ad744e9`: revisión independiente
+  **PASS**. La revisión inicial detectó dos MINOR (`C-01`: clasificación de
+  `/traslados` y recuentos derivados; `C-02`: el validador no rechazaba un
+  canonical manipulado en una URL PASS). Correcciones: `/traslados` se clasifica
+  como `PUBLIC_INDEXABLE_NOT_INDEXED` con historial de cobertura
+  (“no reconoce” / “descubierta sin indexar”), recuentos 16/2/5/1; regla `IA-074`
+  con prueba. `C-01` y `C-02` `CLOSED_VERIFIED`; `GSC-01`/`GSC-02` permanecen
+  abiertos como deuda operativa preexistente, fuera de la implementación MC-15.
+  Revisor: 154/154 comprobaciones de datos, 5/5 mutaciones rechazadas, 63/63
+  pruebas.
 
 ---
 
@@ -340,9 +350,11 @@ Ninguna prueba bloqueada o no ejecutada se reporta como PASS.
 | Rama | `feature/marea-mc15-bilingual-ia-seo-migration` |
 | Commit implementación | `b70d5500591be63d00ac33b4c1de6c802981b46d` |
 | Commit correcciones | `d1d7a1a848fb2a82334811aad9b916d4041cd4a2` |
+| Commit anexo Search Console | `ad744e9f5f4d7e71d6c77692f45c3f737032771e` |
+| Commit final de registro | se reporta en la respuesta final y en el PR |
 | PR | [#22](https://github.com/manuelxose/embarcarte/pull/22) |
 | Estado PR | OPEN, borrador, MERGEABLE, sin merge |
-| Archivos cambiados respecto a base | 41 (solo `docs/marea/information-architecture/`, `package.json`, `scripts/check-marea-ia-seo.mjs`, `scripts/check-marea-ia-seo.test.mjs`) |
+| Archivos cambiados respecto a base | 49 (solo `docs/marea/information-architecture/`, `docs/marea/execution/`, `package.json`, `scripts/check-marea-ia-seo.mjs`, `scripts/check-marea-ia-seo.test.mjs`) |
 | `src/`, `public/`, `.github/` | 0 cambios |
 | Merge / deploy / publicación / sitemap | NO / NO / NO / NO |
 
@@ -374,7 +386,7 @@ MC15_SITEMAP_INDEXATION_POLICY = 14 classes; 0 MAREA sitemap-eligible; 98 sitema
 MC15_SEARCH_CONSOLE_EVIDENCE = 24 inspected: 16 indexed / 2 noindex / 5 not recognized / 1 public-indexable-not-indexed (/traslados, GSC-01); sitemap 98/0 errors; root sitemap GSC-02; 0 MAREA indexed
 MC15_MC14_FINDINGS_COVERAGE = 34/34 mapped; 0 remediated; 0 closed
 MC15_INDEPENDENT_REVIEW = PASS after corrections (d1d7a1a); 0 BLOCKING / 0 MAJOR / 0 MINOR open; 3 INFORMATIONAL accepted
-MC15_SEARCH_CONSOLE_REVIEW = PENDING_ADDENDUM_VERIFICATION
+MC15_SEARCH_CONSOLE_REVIEW = PASS (addendum commit ad744e9); C-01/C-02 CLOSED_VERIFIED; GSC-01/GSC-02 OPEN pre-existing operational debt
 
 MC15_LIVE_MIGRATION = NOT_AUTHORIZED
 MC15_PUBLICATION = NOT_AUTHORIZED

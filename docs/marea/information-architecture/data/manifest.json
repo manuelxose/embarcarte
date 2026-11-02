@@ -5,14 +5,14 @@
   "date": "2026-11-02",
   "owner": "programme-lead",
   "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
-  "generationMethod": "deterministic SHA-256 over every MC-15 dataset at the frozen implementation candidate; regenerated after audit corrections",
+  "generationMethod": "deterministic SHA-256 over every MC-15 dataset at the reviewed Search Console addendum commit ad744e9; regenerated after the independent PASS verdict and satellite-note alignment",
   "evidenceState": "REPOSITORY_VERIFIED",
   "scope": "MC-15 internal bilingual IA/SEO planning package",
   "readOnly": true,
   "publicationAuthorized": false,
   "liveChangeExecuted": false,
   "MC16_STARTED": false,
-  "reviewedCommit": "PENDING_FREEZE",
+  "reviewedCommit": "ad744e9f5f4d7e71d6c77692f45c3f737032771e",
   "datasetCount": 19,
   "datasets": [
     {
@@ -228,5 +228,38 @@
   "crossReferences": [
     "docs/marea/information-architecture/MC-15-BASELINE-AND-GOVERNANCE.md#9-deliverable-map",
     "docs/marea/information-architecture/MC15-DATA-CONTRACT.md#1-common-envelope"
+  ],
+  "reviewStatus": "SEARCH_CONSOLE_ADDENDUM_VERIFIED_PASS",
+  "reviewVerdict": "PASS",
+  "correctionCommit": "d1d7a1a848fb2a82334811aad9b916d4041cd4a2",
+  "correctionFindings": [
+    "IA-01",
+    "IA-02",
+    "IA-03",
+    "IA-04",
+    "IA-05"
+  ],
+  "acceptedObservations": [
+    "IA-06",
+    "IA-07",
+    "IA-08"
+  ],
+  "searchConsoleReview": {
+    "commit": "ad744e9f5f4d7e71d6c77692f45c3f737032771e",
+    "verdict": "PASS",
+    "c01": "CLOSED_VERIFIED",
+    "c02": "CLOSED_VERIFIED",
+    "gsc01": "OPEN_PRE_EXISTING_OPERATIONAL",
+    "gsc02": "OPEN_PRE_EXISTING_OPERATIONAL"
+  },
+  "supplementaryReviews": [
+    {
+      "path": "docs/marea/information-architecture/MC15-SEARCH-CONSOLE-REVIEW.md",
+      "contractId": "MAREA-MC15-SEARCH-CONSOLE-REVIEW"
+    },
+    {
+      "path": "docs/marea/information-architecture/data/search-console-review.json",
+      "contractId": "MAREA-MC15-SEARCH-CONSOLE-REVIEW"
+    }
   ]
 }
