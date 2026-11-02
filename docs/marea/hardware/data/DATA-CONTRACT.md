@@ -100,7 +100,9 @@ array or object as described. Every file lists its `owner` member name.
 ### 4.2 `hardware-families.json` (architecture)
 
 `families[9]`: `familyId`, `canonicalName`, `editions[]` (subset of D2 §3), `hardwareClass`,
-`requiredPhysicalComponents[]`, `optionalPhysicalComponents[]`, `softwareOnlyComponents[]`,
+`requiredPhysicalComponents[]` (capability statements, e.g. "isolated NMEA 2000 CAN interface" — not
+component IDs, because component IDs are allocated by sourcing), `optionalPhysicalComponents[]`,
+`softwareOnlyComponents[]`,
 `externalDataDependencies[]`, `interfaceRequirements[]`, `powerRequirements{ nominalSupply, voltageRange,
 typicalConsumptionW|null, standbyConsumptionW|null, evidenceStatus }`, `safetyClassification`,
 `provisionalArchitectureId`, `alternativeArchitectureIds[]`, `verificationNeeded[]`,
@@ -116,7 +118,8 @@ typicalConsumptionW|null, standbyConsumptionW|null, evidenceStatus }`, `safetyCl
 `criteriaWeights` (exactly D2 §6 architecture table, each 1–100, sum 100), `hardGates`,
 `options[]`: `architectureId`, `familyId`, `optionClass` (`A`…`E` — development board, compute
 module/SOM, custom MCU/gateway, hybrid, software/service-first), `label`, `description`,
-`blocks[]` (component IDs), `scores` (all 11 criteria, integers 1–5), `weightedScore` (computed,
+`buildingBlocks[]` (block names such as `PROC`, `MCU`, `CAN`, `N183`, `PWR`, `MECH` — not component
+IDs), `scores` (all 11 criteria, integers 1–5), `weightedScore` (computed,
 2 decimals), `status: "PROPOSED_NOT_APPROVED"`, `limitations[]`, `verificationNeeded[]`,
 `conformityImplications[]`, `costImplication`, `evidenceIds[]`.
 `recommendations[]`: `familyId`, `preferredArchitectureId`, `rationale`, `confidence`, `explicitlyUnfrozen`.
@@ -233,7 +236,13 @@ Each line: `lineId`, `category` (`ELECTRONIC`, `MECHANICAL`, `CABLE_CONNECTOR`, 
 `description`, `correction`, `status`, `verifiedByAuditor`, `evidence`), `sourceVerification[]`,
 `calculationsRechecked[]`, `notVerified[]`.
 
-### 4.18 `evidence-index.json` (every author contributes; Lead merges)
+### 4.18 `evidence-index.json` (Lead merges; each author writes its own shard)
+
+To avoid concurrent writes to one shared file, each author writes its own shard
+`data/evidence/<member>.json` (e.g. `data/evidence/architecture.json`) containing
+`evidence[]` with the record schema below. The Lead merges all shards into
+`data/evidence-index.json`; the validator validates the merged index and rejects any reference that
+does not resolve in it. A shard is not a deliverable in its own right.
 
 `evidence[]`: `evidenceId`, `claimId`, `url`, `publisher`, `retrievedOn`, `publishedOn`|null,
 `evidenceType` (`MANUFACTURER_DATASHEET`, `MANUFACTURER_WEBPAGE`, `DISTRIBUTOR_WEBPAGE`,
