@@ -1,0 +1,1448 @@
+{
+  "contractId": "MAREA-MC13-BREAK-EVEN-THRESHOLDS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "financial-architecture",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "thresholds": [
+    {
+      "id": "BE-RESTRICTED-OPERATING",
+      "scenarioId": "RESTRICTED_CURRENT",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "OPERATING_BREAK_EVEN",
+      "value": null,
+      "unit": "month",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "No authorized sale exists; company expenses and cash are unknown.",
+      "requiredUnknownInputs": [
+        "company current expenses",
+        "company cash position"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-045"
+      ],
+      "notes": "The restricted operating case cannot produce a break-even."
+    },
+    {
+      "id": "BE-DOWNSIDE-OPERATING",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "OPERATING_BREAK_EVEN",
+      "value": null,
+      "unit": "month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "First month with ebitdaLikeConditional >= 0 under the scenario assumptions; excludes named unknown costs.",
+      "requiredUnknownInputs": [
+        "data licence cost",
+        "product liability insurance",
+        "CRA/security maintenance cost",
+        "FLEET onboarding/DPA/SLA cost"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-105",
+        "ASM-MC13-106",
+        "ASM-MC13-107",
+        "ASM-MC13-108",
+        "ASM-MC13-109",
+        "ASM-MC13-110",
+        "ASM-MC13-111",
+        "ASM-MC13-112",
+        "ASM-MC13-113",
+        "ASM-MC13-100",
+        "ASM-MC13-101",
+        "ASM-MC13-102",
+        "ASM-MC13-103",
+        "ASM-MC13-104",
+        "ASM-MC13-055",
+        "ASM-MC13-058",
+        "ASM-MC13-061",
+        "ASM-MC13-064",
+        "ASM-MC13-067",
+        "ASM-MC13-070",
+        "ASM-MC13-073",
+        "ASM-MC13-076",
+        "ASM-MC13-079",
+        "ASM-MC13-082",
+        "ASM-MC13-085",
+        "ASM-MC13-088",
+        "ASM-MC13-020",
+        "ASM-MC13-023",
+        "ASM-MC13-026"
+      ],
+      "notes": "No operating break-even month occurs within 60 periods; the threshold is not reached."
+    },
+    {
+      "id": "BE-DOWNSIDE-CASHFLOW",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "CASH_FLOW_BREAK_EVEN",
+      "value": null,
+      "unit": "month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "First month with operatingCashFlow > 0.",
+      "requiredUnknownInputs": [
+        "data licence cost",
+        "insurance",
+        "CRA lifecycle cost"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-105",
+        "ASM-MC13-106",
+        "ASM-MC13-107",
+        "ASM-MC13-108",
+        "ASM-MC13-109",
+        "ASM-MC13-110",
+        "ASM-MC13-111",
+        "ASM-MC13-112",
+        "ASM-MC13-113",
+        "ASM-MC13-100",
+        "ASM-MC13-101",
+        "ASM-MC13-102",
+        "ASM-MC13-103",
+        "ASM-MC13-104",
+        "ASM-MC13-055",
+        "ASM-MC13-058",
+        "ASM-MC13-061",
+        "ASM-MC13-064",
+        "ASM-MC13-067",
+        "ASM-MC13-070",
+        "ASM-MC13-073",
+        "ASM-MC13-076",
+        "ASM-MC13-079",
+        "ASM-MC13-082",
+        "ASM-MC13-085",
+        "ASM-MC13-088",
+        "ASM-MC13-020",
+        "ASM-MC13-023",
+        "ASM-MC13-026"
+      ],
+      "notes": "Operating cash flow excludes capex; investing outflows are reported separately."
+    },
+    {
+      "id": "BE-DOWNSIDE-CUMULATIVE-RECOVERY",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "CUMULATIVE_CASH_RECOVERY",
+      "value": null,
+      "unit": "month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "First month with cumulativeCashBalance >= 0 after a negative balance, starting from the declared zero opening-cash analysis convention.",
+      "requiredUnknownInputs": [
+        "current company cash",
+        "unknown capex items",
+        "unknown recurring costs"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-044"
+      ],
+      "notes": "Not a verified cash recovery; the opening balance is an analysis convention, not the real company balance."
+    },
+    {
+      "id": "BE-DOWNSIDE-FINANCING",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "FINANCING_REQUIREMENT",
+      "value": 3081802.04,
+      "unit": "EUR",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Running maximum of max(0, -cumulativeCashBalance) over the 60 periods.",
+      "requiredUnknownInputs": [
+        "unknown capex items",
+        "unknown recurring costs",
+        "unknown insurance"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-044"
+      ],
+      "notes": "Conditional minimum external cash under the scenario. It is not an approved budget, financing offer or investment requirement."
+    },
+    {
+      "id": "BE-DOWNSIDE-UNIT-HUB-STANDARD",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "HUB-STANDARD",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": -20.1,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE"
+      ],
+      "notes": "Known variable cost at the MC-11 100-unit BASE tier; fixed tooling and certification excluded. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-DOWNSIDE-PRICE-HUB-STANDARD",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "HUB-STANDARD",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 375.88,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-DOWNSIDE-UNIT-HUB-PRO",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "HUB-PRO",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 92.09,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [
+        "HUB_PRO_INCREMENTAL_COST"
+      ],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-PRO-100-BASE"
+      ],
+      "notes": "Uses the HUB-STANDARD variable-cost floor; the incremental PRO cost is unknown. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-DOWNSIDE-PRICE-HUB-PRO",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "HUB-PRO",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 375.88,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [
+        "unsupported edition-specific cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-PRO-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-DOWNSIDE-UNIT-DISPLAY-7",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "DISPLAY-7",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 219.49,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-DISPLAY-DISPLAY-7-100-BASE"
+      ],
+      "notes": "Strongest conditional hardware case carried from MC-12. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-DOWNSIDE-PRICE-DISPLAY-7",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "DISPLAY-7",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 405.54,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-DISPLAY-DISPLAY-7-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-DOWNSIDE-UNIT-AIS-RECEIVER",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "AIS-RECEIVER",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": -95.11,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-AIS-AIS-RECEIVER-100-BASE"
+      ],
+      "notes": "Receive-only AIS; no transmission offer or revenue is modelled. Negative contribution at hypotheses. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-DOWNSIDE-PRICE-AIS-RECEIVER",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "AIS-RECEIVER",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 376.17,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-AIS-AIS-RECEIVER-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-DOWNSIDE-UNIT-SENSE-ENTRY-SYMBOLIC",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "SENSE-ENTRY-SYMBOLIC",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": -14.22,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-SENSE-MODULE-100-BASE"
+      ],
+      "notes": "SYMBOLIC family entry hypothesis, not an edition price. No SENSE edition has an established price. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-DOWNSIDE-PRICE-SENSE-ENTRY-SYMBOLIC",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "SENSE-ENTRY-SYMBOLIC",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 118.02,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-SENSE-MODULE-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-DOWNSIDE-UNIT-WATCH-CORE",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "WATCH-CORE",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 32.73,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-WATCH-WATCH-CORE-100-BASE"
+      ],
+      "notes": "Cellular and notification recurring drivers apply. No guaranteed alert delivery is claimed. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-DOWNSIDE-PRICE-WATCH-CORE",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SKU",
+      "subjectId": "WATCH-CORE",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 255.24,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-WATCH-WATCH-CORE-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-DOWNSIDE-SUB-NAV-ESSENTIAL",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "NAV-ESSENTIAL",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-NAV-NAV-ESSENTIAL-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-DOWNSIDE-SUB-NAV-PRO",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "NAV-PRO",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-NAV-NAV-PRO-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-DOWNSIDE-SUB-WEATHER-STANDARD",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "WEATHER-STANDARD",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-WEATHER-WEATHER-STANDARD-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-DOWNSIDE-SUB-WEATHER-PRO",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "WEATHER-PRO",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-WEATHER-WEATHER-PRO-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-DOWNSIDE-SUB-WATCH-MONITORING",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "WATCH-MONITORING",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 79.24,
+      "unit": "EUR per account-year",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-DOWNSIDE-FLEET-VESSELS",
+      "scenarioId": "DOWNSIDE",
+      "subjectType": "FLEET",
+      "subjectId": "FLEET-START",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 45.91,
+      "unit": "EUR per vessel-month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net per-vessel monthly revenue ex-VAT minus known monthly direct cost; excludes cloud tenancy beyond the declared driver and onboarding/SLA cost.",
+      "requiredUnknownInputs": [
+        "FLEET onboarding/DPA/SLA cost",
+        "telemetry volume above the declared driver"
+      ],
+      "inputAssumptionIds": [
+        "UE-FLEET-FLEET-START-VESSEL-ANNUAL"
+      ],
+      "notes": "Conditional; no FLEET contract, SLA or hardware exists."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-OPERATING",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "OPERATING_BREAK_EVEN",
+      "value": 39,
+      "unit": "month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "First month with ebitdaLikeConditional >= 0 under the scenario assumptions; excludes named unknown costs.",
+      "requiredUnknownInputs": [
+        "data licence cost",
+        "product liability insurance",
+        "CRA/security maintenance cost",
+        "FLEET onboarding/DPA/SLA cost"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-119",
+        "ASM-MC13-120",
+        "ASM-MC13-121",
+        "ASM-MC13-122",
+        "ASM-MC13-123",
+        "ASM-MC13-124",
+        "ASM-MC13-125",
+        "ASM-MC13-126",
+        "ASM-MC13-127",
+        "ASM-MC13-114",
+        "ASM-MC13-115",
+        "ASM-MC13-116",
+        "ASM-MC13-117",
+        "ASM-MC13-118",
+        "ASM-MC13-056",
+        "ASM-MC13-059",
+        "ASM-MC13-062",
+        "ASM-MC13-065",
+        "ASM-MC13-068",
+        "ASM-MC13-071",
+        "ASM-MC13-074",
+        "ASM-MC13-077",
+        "ASM-MC13-080",
+        "ASM-MC13-083",
+        "ASM-MC13-086",
+        "ASM-MC13-089",
+        "ASM-MC13-021",
+        "ASM-MC13-024",
+        "ASM-MC13-027"
+      ],
+      "notes": "Conditional hypothetical threshold, not a verified break-even."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-CASHFLOW",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "CASH_FLOW_BREAK_EVEN",
+      "value": 23,
+      "unit": "month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "First month with operatingCashFlow > 0.",
+      "requiredUnknownInputs": [
+        "data licence cost",
+        "insurance",
+        "CRA lifecycle cost"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-119",
+        "ASM-MC13-120",
+        "ASM-MC13-121",
+        "ASM-MC13-122",
+        "ASM-MC13-123",
+        "ASM-MC13-124",
+        "ASM-MC13-125",
+        "ASM-MC13-126",
+        "ASM-MC13-127",
+        "ASM-MC13-114",
+        "ASM-MC13-115",
+        "ASM-MC13-116",
+        "ASM-MC13-117",
+        "ASM-MC13-118",
+        "ASM-MC13-056",
+        "ASM-MC13-059",
+        "ASM-MC13-062",
+        "ASM-MC13-065",
+        "ASM-MC13-068",
+        "ASM-MC13-071",
+        "ASM-MC13-074",
+        "ASM-MC13-077",
+        "ASM-MC13-080",
+        "ASM-MC13-083",
+        "ASM-MC13-086",
+        "ASM-MC13-089",
+        "ASM-MC13-021",
+        "ASM-MC13-024",
+        "ASM-MC13-027"
+      ],
+      "notes": "Operating cash flow excludes capex; investing outflows are reported separately."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-CUMULATIVE-RECOVERY",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "CUMULATIVE_CASH_RECOVERY",
+      "value": null,
+      "unit": "month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "First month with cumulativeCashBalance >= 0 after a negative balance, starting from the declared zero opening-cash analysis convention.",
+      "requiredUnknownInputs": [
+        "current company cash",
+        "unknown capex items",
+        "unknown recurring costs"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-044"
+      ],
+      "notes": "Not a verified cash recovery; the opening balance is an analysis convention, not the real company balance."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-FINANCING",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "FINANCING_REQUIREMENT",
+      "value": 995185.23,
+      "unit": "EUR",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Running maximum of max(0, -cumulativeCashBalance) over the 60 periods.",
+      "requiredUnknownInputs": [
+        "unknown capex items",
+        "unknown recurring costs",
+        "unknown insurance"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-044"
+      ],
+      "notes": "Conditional minimum external cash under the scenario. It is not an approved budget, financing offer or investment requirement."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-UNIT-HUB-STANDARD",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "HUB-STANDARD",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": -20.1,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE"
+      ],
+      "notes": "Known variable cost at the MC-11 100-unit BASE tier; fixed tooling and certification excluded. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-PRICE-HUB-STANDARD",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "HUB-STANDARD",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 375.88,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-UNIT-HUB-PRO",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "HUB-PRO",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 92.09,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [
+        "HUB_PRO_INCREMENTAL_COST"
+      ],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-PRO-100-BASE"
+      ],
+      "notes": "Uses the HUB-STANDARD variable-cost floor; the incremental PRO cost is unknown. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-PRICE-HUB-PRO",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "HUB-PRO",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 375.88,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [
+        "unsupported edition-specific cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-PRO-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-UNIT-DISPLAY-7",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "DISPLAY-7",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 219.49,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-DISPLAY-DISPLAY-7-100-BASE"
+      ],
+      "notes": "Strongest conditional hardware case carried from MC-12. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-PRICE-DISPLAY-7",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "DISPLAY-7",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 405.54,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-DISPLAY-DISPLAY-7-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-UNIT-AIS-RECEIVER",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "AIS-RECEIVER",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": -95.11,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-AIS-AIS-RECEIVER-100-BASE"
+      ],
+      "notes": "Receive-only AIS; no transmission offer or revenue is modelled. Negative contribution at hypotheses. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-PRICE-AIS-RECEIVER",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "AIS-RECEIVER",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 376.17,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-AIS-AIS-RECEIVER-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-UNIT-SENSE-ENTRY-SYMBOLIC",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "SENSE-ENTRY-SYMBOLIC",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": -14.22,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-SENSE-MODULE-100-BASE"
+      ],
+      "notes": "SYMBOLIC family entry hypothesis, not an edition price. No SENSE edition has an established price. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-PRICE-SENSE-ENTRY-SYMBOLIC",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "SENSE-ENTRY-SYMBOLIC",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 118.02,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-SENSE-MODULE-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-UNIT-WATCH-CORE",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "WATCH-CORE",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 32.73,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-WATCH-WATCH-CORE-100-BASE"
+      ],
+      "notes": "Cellular and notification recurring drivers apply. No guaranteed alert delivery is claimed. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-PRICE-WATCH-CORE",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "WATCH-CORE",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 255.24,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-WATCH-WATCH-CORE-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-SUB-NAV-ESSENTIAL",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "NAV-ESSENTIAL",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-NAV-NAV-ESSENTIAL-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-SUB-NAV-PRO",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "NAV-PRO",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-NAV-NAV-PRO-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-SUB-WEATHER-STANDARD",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "WEATHER-STANDARD",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-WEATHER-WEATHER-STANDARD-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-SUB-WEATHER-PRO",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "WEATHER-PRO",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-WEATHER-WEATHER-PRO-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-SUB-WATCH-MONITORING",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "WATCH-MONITORING",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 79.24,
+      "unit": "EUR per account-year",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-BASE_HYPOTHETICAL-FLEET-VESSELS",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "FLEET",
+      "subjectId": "FLEET-START",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 45.91,
+      "unit": "EUR per vessel-month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net per-vessel monthly revenue ex-VAT minus known monthly direct cost; excludes cloud tenancy beyond the declared driver and onboarding/SLA cost.",
+      "requiredUnknownInputs": [
+        "FLEET onboarding/DPA/SLA cost",
+        "telemetry volume above the declared driver"
+      ],
+      "inputAssumptionIds": [
+        "UE-FLEET-FLEET-START-VESSEL-ANNUAL"
+      ],
+      "notes": "Conditional; no FLEET contract, SLA or hardware exists."
+    },
+    {
+      "id": "BE-BASE-FIXED-COST-UNITS",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MIXED_HARDWARE_PORTFOLIO",
+      "breakEvenType": "OPERATING_BREAK_EVEN",
+      "value": 1138,
+      "unit": "units per month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "average fixed monthly opex envelope divided by the simple average known hardware unit contribution. A mixed portfolio is used only as a conditional illustration, not a demand forecast.",
+      "requiredUnknownInputs": [
+        "insurance",
+        "CRA lifecycle cost",
+        "data licence cost",
+        "actual demand"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-142",
+        "ASM-MC13-143",
+        "ASM-MC13-144",
+        "ASM-MC13-145",
+        "ASM-MC13-146",
+        "ASM-MC13-147",
+        "ASM-MC13-148",
+        "ASM-MC13-149",
+        "ASM-MC13-150",
+        "ASM-MC13-151",
+        "ASM-MC13-152",
+        "ASM-MC13-047",
+        "ASM-MC13-048"
+      ],
+      "scenarioAssumptionIds": [
+        "ASM-MC13-021",
+        "ASM-MC13-024",
+        "ASM-MC13-027"
+      ],
+      "notes": "Fixed-cost coverage on known costs only; excludes named unknown fixed costs."
+    },
+    {
+      "id": "BE-BASE-SUBSCRIBERS",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "MIXED_SUBSCRIPTION_PORTFOLIO",
+      "breakEvenType": "OPERATING_BREAK_EVEN",
+      "value": null,
+      "unit": "active paying subscriptions",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "A portfolio subscriber count cannot be derived while the NAV/WEATHER data-licence cost is unknown and the subscription mix/renewal is unvalidated.",
+      "requiredUnknownInputs": [
+        "data licence cost",
+        "validated subscription mix",
+        "validated churn/renewal"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-020",
+        "ASM-MC13-021",
+        "ASM-MC13-022",
+        "ASM-MC13-049"
+      ],
+      "scenarioAssumptionIds": [
+        "ASM-MC13-021",
+        "ASM-MC13-024",
+        "ASM-MC13-027"
+      ],
+      "notes": "Reported as not determinable rather than inventing a subscriber number."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-OPERATING",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "OPERATING_BREAK_EVEN",
+      "value": 15,
+      "unit": "month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "First month with ebitdaLikeConditional >= 0 under the scenario assumptions; excludes named unknown costs.",
+      "requiredUnknownInputs": [
+        "data licence cost",
+        "product liability insurance",
+        "CRA/security maintenance cost",
+        "FLEET onboarding/DPA/SLA cost"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-133",
+        "ASM-MC13-134",
+        "ASM-MC13-135",
+        "ASM-MC13-136",
+        "ASM-MC13-137",
+        "ASM-MC13-138",
+        "ASM-MC13-139",
+        "ASM-MC13-140",
+        "ASM-MC13-141",
+        "ASM-MC13-128",
+        "ASM-MC13-129",
+        "ASM-MC13-130",
+        "ASM-MC13-131",
+        "ASM-MC13-132",
+        "ASM-MC13-057",
+        "ASM-MC13-060",
+        "ASM-MC13-063",
+        "ASM-MC13-066",
+        "ASM-MC13-069",
+        "ASM-MC13-072",
+        "ASM-MC13-075",
+        "ASM-MC13-078",
+        "ASM-MC13-081",
+        "ASM-MC13-084",
+        "ASM-MC13-087",
+        "ASM-MC13-090",
+        "ASM-MC13-022",
+        "ASM-MC13-025",
+        "ASM-MC13-028"
+      ],
+      "notes": "Conditional hypothetical threshold, not a verified break-even."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-CASHFLOW",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "CASH_FLOW_BREAK_EVEN",
+      "value": 11,
+      "unit": "month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "First month with operatingCashFlow > 0.",
+      "requiredUnknownInputs": [
+        "data licence cost",
+        "insurance",
+        "CRA lifecycle cost"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-133",
+        "ASM-MC13-134",
+        "ASM-MC13-135",
+        "ASM-MC13-136",
+        "ASM-MC13-137",
+        "ASM-MC13-138",
+        "ASM-MC13-139",
+        "ASM-MC13-140",
+        "ASM-MC13-141",
+        "ASM-MC13-128",
+        "ASM-MC13-129",
+        "ASM-MC13-130",
+        "ASM-MC13-131",
+        "ASM-MC13-132",
+        "ASM-MC13-057",
+        "ASM-MC13-060",
+        "ASM-MC13-063",
+        "ASM-MC13-066",
+        "ASM-MC13-069",
+        "ASM-MC13-072",
+        "ASM-MC13-075",
+        "ASM-MC13-078",
+        "ASM-MC13-081",
+        "ASM-MC13-084",
+        "ASM-MC13-087",
+        "ASM-MC13-090",
+        "ASM-MC13-022",
+        "ASM-MC13-025",
+        "ASM-MC13-028"
+      ],
+      "notes": "Operating cash flow excludes capex; investing outflows are reported separately."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-CUMULATIVE-RECOVERY",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "CUMULATIVE_CASH_RECOVERY",
+      "value": 23,
+      "unit": "month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "First month with cumulativeCashBalance >= 0 after a negative balance, starting from the declared zero opening-cash analysis convention.",
+      "requiredUnknownInputs": [
+        "current company cash",
+        "unknown capex items",
+        "unknown recurring costs"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-044"
+      ],
+      "notes": "Not a verified cash recovery; the opening balance is an analysis convention, not the real company balance."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-FINANCING",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "FINANCING_REQUIREMENT",
+      "value": 621240.91,
+      "unit": "EUR",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Running maximum of max(0, -cumulativeCashBalance) over the 60 periods.",
+      "requiredUnknownInputs": [
+        "unknown capex items",
+        "unknown recurring costs",
+        "unknown insurance"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-044"
+      ],
+      "notes": "Conditional minimum external cash under the scenario. It is not an approved budget, financing offer or investment requirement."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-UNIT-HUB-STANDARD",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "HUB-STANDARD",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": -20.1,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE"
+      ],
+      "notes": "Known variable cost at the MC-11 100-unit BASE tier; fixed tooling and certification excluded. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-PRICE-HUB-STANDARD",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "HUB-STANDARD",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 375.88,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-UNIT-HUB-PRO",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "HUB-PRO",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 92.09,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [
+        "HUB_PRO_INCREMENTAL_COST"
+      ],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-PRO-100-BASE"
+      ],
+      "notes": "Uses the HUB-STANDARD variable-cost floor; the incremental PRO cost is unknown. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-PRICE-HUB-PRO",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "HUB-PRO",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 375.88,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [
+        "unsupported edition-specific cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-HUB-HUB-PRO-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-UNIT-DISPLAY-7",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "DISPLAY-7",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 219.49,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-DISPLAY-DISPLAY-7-100-BASE"
+      ],
+      "notes": "Strongest conditional hardware case carried from MC-12. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-PRICE-DISPLAY-7",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "DISPLAY-7",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 405.54,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-DISPLAY-DISPLAY-7-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-UNIT-AIS-RECEIVER",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "AIS-RECEIVER",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": -95.11,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-AIS-AIS-RECEIVER-100-BASE"
+      ],
+      "notes": "Receive-only AIS; no transmission offer or revenue is modelled. Negative contribution at hypotheses. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-PRICE-AIS-RECEIVER",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "AIS-RECEIVER",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 376.17,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-AIS-AIS-RECEIVER-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-UNIT-SENSE-ENTRY-SYMBOLIC",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "SENSE-ENTRY-SYMBOLIC",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": -14.22,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-SENSE-MODULE-100-BASE"
+      ],
+      "notes": "SYMBOLIC family entry hypothesis, not an edition price. No SENSE edition has an established price. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-PRICE-SENSE-ENTRY-SYMBOLIC",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "SENSE-ENTRY-SYMBOLIC",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 118.02,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-SENSE-MODULE-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-UNIT-WATCH-CORE",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "WATCH-CORE",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 32.73,
+      "unit": "EUR per unit",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net unit revenue ex-VAT after channel deductions minus the declared known variable unit cost. Fixed tooling/NRE and certification are excluded and never added back.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-WATCH-WATCH-CORE-100-BASE"
+      ],
+      "notes": "Cellular and notification recurring drivers apply. No guaranteed alert delivery is claimed. Prices remain HYPOTHESIS_UNAPPROVED."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-PRICE-WATCH-CORE",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SKU",
+      "subjectId": "WATCH-CORE",
+      "breakEvenType": "MINIMUM_GROSS_PRICE",
+      "value": 255.24,
+      "unit": "EUR gross",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Known variable unit cost divided by the channel factor, then grossed up for VAT where the hypothesis is VAT-inclusive. Excludes fixed costs and unknown costs.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-WATCH-WATCH-CORE-100-BASE"
+      ],
+      "notes": "Minimum price to reach zero unit contribution on known costs; not a recommended price."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-SUB-NAV-ESSENTIAL",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "NAV-ESSENTIAL",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-NAV-NAV-ESSENTIAL-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-SUB-NAV-PRO",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "NAV-PRO",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-NAV-NAV-PRO-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-SUB-WEATHER-STANDARD",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "WEATHER-STANDARD",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-WEATHER-WEATHER-STANDARD-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-SUB-WEATHER-PRO",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "WEATHER-PRO",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": null,
+      "unit": "EUR per account-year",
+      "status": "NOT_DETERMINABLE",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [
+        "chart/weather data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "UE-WEATHER-WEATHER-PRO-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-SUB-WATCH-MONITORING",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "SUBSCRIPTION",
+      "subjectId": "WATCH-MONITORING",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 79.24,
+      "unit": "EUR per account-year",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net annual subscription revenue ex-VAT after channel deductions minus the known direct account cost. Unknown data licence excluded.",
+      "requiredUnknownInputs": [],
+      "inputAssumptionIds": [
+        "UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL"
+      ],
+      "notes": "Excludes unknown data licence, onboarding, DPA and SLA costs."
+    },
+    {
+      "id": "BE-UPSIDE_HYPOTHETICAL-FLEET-VESSELS",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "subjectType": "FLEET",
+      "subjectId": "FLEET-START",
+      "breakEvenType": "UNIT_CONTRIBUTION_ZERO",
+      "value": 45.91,
+      "unit": "EUR per vessel-month",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "net per-vessel monthly revenue ex-VAT minus known monthly direct cost; excludes cloud tenancy beyond the declared driver and onboarding/SLA cost.",
+      "requiredUnknownInputs": [
+        "FLEET onboarding/DPA/SLA cost",
+        "telemetry volume above the declared driver"
+      ],
+      "inputAssumptionIds": [
+        "UE-FLEET-FLEET-START-VESSEL-ANNUAL"
+      ],
+      "notes": "Conditional; no FLEET contract, SLA or hardware exists."
+    },
+    {
+      "id": "BE-BASE-MINIMUM-CASH-INVESTMENT",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "subjectType": "PORTFOLIO",
+      "subjectId": "MAREA",
+      "breakEvenType": "FINANCING_REQUIREMENT",
+      "value": 995185.23,
+      "unit": "EUR",
+      "status": "CONDITIONAL_HYPOTHETICAL_THRESHOLD",
+      "derivation": "Base hypothetical maximum cash drawdown before cumulative recovery.",
+      "requiredUnknownInputs": [
+        "unknown capex items",
+        "insurance",
+        "CRA lifecycle cost",
+        "data licence cost"
+      ],
+      "inputAssumptionIds": [
+        "ASM-MC13-044"
+      ],
+      "notes": "Conditional minimum external cash; excludes named unknown costs and is not an approved budget."
+    }
+  ],
+  "summary": {
+    "unitContributionZero": 36,
+    "operatingBreakEven": 6,
+    "cashFlowBreakEven": 3,
+    "cumulativeCashRecovery": 3,
+    "financingRequirement": 4,
+    "minimumGrossPrice": 18,
+    "notDeterminable": 14,
+    "conditional": 56,
+    "verified": 0
+  }
+}

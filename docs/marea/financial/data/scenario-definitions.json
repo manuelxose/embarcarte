@@ -1,0 +1,869 @@
+{
+  "contractId": "MAREA-MC13-SCENARIO-DEFINITIONS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "commercial-strategy",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "statusFlags": {
+    "TRADEMARK_LEGAL_CLEARANCE": "NOT_GRANTED",
+    "SOURCE_IP_CLEARANCE": "NOT_CLEARED",
+    "COMMERCIAL_AVAILABILITY": "NOT_FOR_SALE",
+    "PRICE_APPROVED": "NONE",
+    "CUSTOMER_EVIDENCE": "NONE",
+    "CUSTOMER_WTP_VALIDATED": false,
+    "FORMAL_SUPPLIER_QUOTATIONS": "NONE",
+    "LICENSING_RIGHTS_GRANTED": false,
+    "PILOT_SAFETY_GATE": "BLOCKED",
+    "AIS_TRANSMISSION_OFFERED": false,
+    "FLEET_DEFAULT_HARDWARE": false,
+    "NMEA2000_CERTIFIED": false,
+    "TESTED_COMPATIBILITY_ROWS": 0,
+    "CE_MARKING_CLAIM": "PROHIBITED",
+    "MERGED": false,
+    "DEPLOYED": false,
+    "PRODUCTION_DEPLOYMENT": "NOT_AUTHORIZED"
+  },
+  "scenarios": [
+    {
+      "id": "RESTRICTED_CURRENT",
+      "label": "Restricted current operating case",
+      "eligibilityCase": "RESTRICTED_CURRENT",
+      "commercialRevenueAuthorized": false,
+      "demandMultiplier": 0,
+      "channelMix": [],
+      "clearanceSchedule": [
+        {
+          "id": "CLR-RESTRICTED_CURRENT-NAV",
+          "familyId": "NAV",
+          "gate": "CHART_LICENCE",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-091"
+        },
+        {
+          "id": "CLR-RESTRICTED_CURRENT-HUB",
+          "familyId": "HUB",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-092"
+        },
+        {
+          "id": "CLR-RESTRICTED_CURRENT-AIS",
+          "familyId": "AIS",
+          "gate": "NMEA_LICENCE",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-093"
+        },
+        {
+          "id": "CLR-RESTRICTED_CURRENT-PILOT",
+          "familyId": "PILOT",
+          "gate": "SAFETY_GATE",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-094"
+        },
+        {
+          "id": "CLR-RESTRICTED_CURRENT-SENSE",
+          "familyId": "SENSE",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-095"
+        },
+        {
+          "id": "CLR-RESTRICTED_CURRENT-WATCH",
+          "familyId": "WATCH",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-096"
+        },
+        {
+          "id": "CLR-RESTRICTED_CURRENT-DISPLAY",
+          "familyId": "DISPLAY",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-097"
+        },
+        {
+          "id": "CLR-RESTRICTED_CURRENT-WEATHER",
+          "familyId": "WEATHER",
+          "gate": "WEATHER_LICENCE",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-098"
+        },
+        {
+          "id": "CLR-RESTRICTED_CURRENT-FLEET",
+          "familyId": "FLEET",
+          "gate": "NONE",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-099"
+        }
+      ],
+      "scenarioAssumptionIds": [
+        "ASM-MC13-091",
+        "ASM-MC13-092",
+        "ASM-MC13-093",
+        "ASM-MC13-094",
+        "ASM-MC13-095",
+        "ASM-MC13-096",
+        "ASM-MC13-097",
+        "ASM-MC13-098",
+        "ASM-MC13-099"
+      ],
+      "notes": "The current authorized commercial reality: every product is NOT_FOR_SALE. No revenue can be authorized. Cash, expenses and funding remain UNKNOWN."
+    },
+    {
+      "id": "DOWNSIDE",
+      "label": "Hypothetical post-clearance downside",
+      "eligibilityCase": "HYPOTHETICAL_POST_CLEARANCE",
+      "commercialRevenueAuthorized": false,
+      "demandMultiplier": 0.4,
+      "channelMix": [
+        {
+          "channel": "DIRECT_TO_CONSUMER",
+          "sharePct": 70,
+          "revenueDeductionPct": 0,
+          "appliesTo": "HARDWARE",
+          "assumptionId": "ASM-MC13-100"
+        },
+        {
+          "channel": "DISTRIBUTOR_RETAIL",
+          "sharePct": 25,
+          "revenueDeductionPct": 35,
+          "appliesTo": "HARDWARE",
+          "assumptionId": "ASM-MC13-101"
+        },
+        {
+          "channel": "PROFESSIONAL_INSTALLER",
+          "sharePct": 5,
+          "revenueDeductionPct": 15,
+          "appliesTo": "HARDWARE",
+          "assumptionId": "ASM-MC13-102"
+        },
+        {
+          "channel": "DIRECT_TO_CONSUMER",
+          "sharePct": 80,
+          "revenueDeductionPct": 0,
+          "appliesTo": "SUBSCRIPTION",
+          "assumptionId": "ASM-MC13-103"
+        },
+        {
+          "channel": "APP_STORE",
+          "sharePct": 20,
+          "revenueDeductionPct": 30,
+          "appliesTo": "SUBSCRIPTION",
+          "assumptionId": "ASM-MC13-104"
+        }
+      ],
+      "clearanceSchedule": [
+        {
+          "id": "CLR-DOWNSIDE-NAV",
+          "familyId": "NAV",
+          "gate": "CHART_LICENCE",
+          "hypotheticalClearanceMonth": 26,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-105"
+        },
+        {
+          "id": "CLR-DOWNSIDE-HUB",
+          "familyId": "HUB",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 16,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-106"
+        },
+        {
+          "id": "CLR-DOWNSIDE-AIS",
+          "familyId": "AIS",
+          "gate": "NMEA_LICENCE",
+          "hypotheticalClearanceMonth": 22,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-107"
+        },
+        {
+          "id": "CLR-DOWNSIDE-PILOT",
+          "familyId": "PILOT",
+          "gate": "SAFETY_GATE",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-108"
+        },
+        {
+          "id": "CLR-DOWNSIDE-SENSE",
+          "familyId": "SENSE",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 18,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-109"
+        },
+        {
+          "id": "CLR-DOWNSIDE-WATCH",
+          "familyId": "WATCH",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 16,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-110"
+        },
+        {
+          "id": "CLR-DOWNSIDE-DISPLAY",
+          "familyId": "DISPLAY",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 14,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-111"
+        },
+        {
+          "id": "CLR-DOWNSIDE-WEATHER",
+          "familyId": "WEATHER",
+          "gate": "WEATHER_LICENCE",
+          "hypotheticalClearanceMonth": 26,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-112"
+        },
+        {
+          "id": "CLR-DOWNSIDE-FLEET",
+          "familyId": "FLEET",
+          "gate": "NONE",
+          "hypotheticalClearanceMonth": 12,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-113"
+        }
+      ],
+      "scenarioAssumptionIds": [
+        "ASM-MC13-105",
+        "ASM-MC13-106",
+        "ASM-MC13-107",
+        "ASM-MC13-108",
+        "ASM-MC13-109",
+        "ASM-MC13-110",
+        "ASM-MC13-111",
+        "ASM-MC13-112",
+        "ASM-MC13-113",
+        "ASM-MC13-100",
+        "ASM-MC13-101",
+        "ASM-MC13-102",
+        "ASM-MC13-103",
+        "ASM-MC13-104",
+        "ASM-MC13-055",
+        "ASM-MC13-058",
+        "ASM-MC13-061",
+        "ASM-MC13-064",
+        "ASM-MC13-067",
+        "ASM-MC13-070",
+        "ASM-MC13-073",
+        "ASM-MC13-076",
+        "ASM-MC13-079",
+        "ASM-MC13-082",
+        "ASM-MC13-085",
+        "ASM-MC13-088",
+        "ASM-MC13-020",
+        "ASM-MC13-023",
+        "ASM-MC13-026"
+      ],
+      "notes": "Slow adoption, delayed licensing, certification delays, lower renewal and channel margin pressure. Not a forecast."
+    },
+    {
+      "id": "BASE_HYPOTHETICAL",
+      "label": "Hypothetical post-clearance base case",
+      "eligibilityCase": "HYPOTHETICAL_POST_CLEARANCE",
+      "commercialRevenueAuthorized": false,
+      "demandMultiplier": 1,
+      "channelMix": [
+        {
+          "channel": "DIRECT_TO_CONSUMER",
+          "sharePct": 70,
+          "revenueDeductionPct": 0,
+          "appliesTo": "HARDWARE",
+          "assumptionId": "ASM-MC13-114"
+        },
+        {
+          "channel": "DISTRIBUTOR_RETAIL",
+          "sharePct": 25,
+          "revenueDeductionPct": 35,
+          "appliesTo": "HARDWARE",
+          "assumptionId": "ASM-MC13-115"
+        },
+        {
+          "channel": "PROFESSIONAL_INSTALLER",
+          "sharePct": 5,
+          "revenueDeductionPct": 15,
+          "appliesTo": "HARDWARE",
+          "assumptionId": "ASM-MC13-116"
+        },
+        {
+          "channel": "DIRECT_TO_CONSUMER",
+          "sharePct": 80,
+          "revenueDeductionPct": 0,
+          "appliesTo": "SUBSCRIPTION",
+          "assumptionId": "ASM-MC13-117"
+        },
+        {
+          "channel": "APP_STORE",
+          "sharePct": 20,
+          "revenueDeductionPct": 30,
+          "appliesTo": "SUBSCRIPTION",
+          "assumptionId": "ASM-MC13-118"
+        }
+      ],
+      "clearanceSchedule": [
+        {
+          "id": "CLR-BASE_HYPOTHETICAL-NAV",
+          "familyId": "NAV",
+          "gate": "CHART_LICENCE",
+          "hypotheticalClearanceMonth": 13,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-119"
+        },
+        {
+          "id": "CLR-BASE_HYPOTHETICAL-HUB",
+          "familyId": "HUB",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 8,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-120"
+        },
+        {
+          "id": "CLR-BASE_HYPOTHETICAL-AIS",
+          "familyId": "AIS",
+          "gate": "NMEA_LICENCE",
+          "hypotheticalClearanceMonth": 11,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-121"
+        },
+        {
+          "id": "CLR-BASE_HYPOTHETICAL-PILOT",
+          "familyId": "PILOT",
+          "gate": "SAFETY_GATE",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-122"
+        },
+        {
+          "id": "CLR-BASE_HYPOTHETICAL-SENSE",
+          "familyId": "SENSE",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 9,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-123"
+        },
+        {
+          "id": "CLR-BASE_HYPOTHETICAL-WATCH",
+          "familyId": "WATCH",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 8,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-124"
+        },
+        {
+          "id": "CLR-BASE_HYPOTHETICAL-DISPLAY",
+          "familyId": "DISPLAY",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 7,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-125"
+        },
+        {
+          "id": "CLR-BASE_HYPOTHETICAL-WEATHER",
+          "familyId": "WEATHER",
+          "gate": "WEATHER_LICENCE",
+          "hypotheticalClearanceMonth": 12,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-126"
+        },
+        {
+          "id": "CLR-BASE_HYPOTHETICAL-FLEET",
+          "familyId": "FLEET",
+          "gate": "NONE",
+          "hypotheticalClearanceMonth": 6,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-127"
+        }
+      ],
+      "scenarioAssumptionIds": [
+        "ASM-MC13-119",
+        "ASM-MC13-120",
+        "ASM-MC13-121",
+        "ASM-MC13-122",
+        "ASM-MC13-123",
+        "ASM-MC13-124",
+        "ASM-MC13-125",
+        "ASM-MC13-126",
+        "ASM-MC13-127",
+        "ASM-MC13-114",
+        "ASM-MC13-115",
+        "ASM-MC13-116",
+        "ASM-MC13-117",
+        "ASM-MC13-118",
+        "ASM-MC13-056",
+        "ASM-MC13-059",
+        "ASM-MC13-062",
+        "ASM-MC13-065",
+        "ASM-MC13-068",
+        "ASM-MC13-071",
+        "ASM-MC13-074",
+        "ASM-MC13-077",
+        "ASM-MC13-080",
+        "ASM-MC13-083",
+        "ASM-MC13-086",
+        "ASM-MC13-089",
+        "ASM-MC13-021",
+        "ASM-MC13-024",
+        "ASM-MC13-027"
+      ],
+      "notes": "Moderate illustrative adoption with explicit sequencing and declared production cadence. No implied probability or evidence of demand."
+    },
+    {
+      "id": "UPSIDE_HYPOTHETICAL",
+      "label": "Hypothetical post-clearance upside",
+      "eligibilityCase": "HYPOTHETICAL_POST_CLEARANCE",
+      "commercialRevenueAuthorized": false,
+      "demandMultiplier": 1.6,
+      "channelMix": [
+        {
+          "channel": "DIRECT_TO_CONSUMER",
+          "sharePct": 70,
+          "revenueDeductionPct": 0,
+          "appliesTo": "HARDWARE",
+          "assumptionId": "ASM-MC13-128"
+        },
+        {
+          "channel": "DISTRIBUTOR_RETAIL",
+          "sharePct": 25,
+          "revenueDeductionPct": 35,
+          "appliesTo": "HARDWARE",
+          "assumptionId": "ASM-MC13-129"
+        },
+        {
+          "channel": "PROFESSIONAL_INSTALLER",
+          "sharePct": 5,
+          "revenueDeductionPct": 15,
+          "appliesTo": "HARDWARE",
+          "assumptionId": "ASM-MC13-130"
+        },
+        {
+          "channel": "DIRECT_TO_CONSUMER",
+          "sharePct": 80,
+          "revenueDeductionPct": 0,
+          "appliesTo": "SUBSCRIPTION",
+          "assumptionId": "ASM-MC13-131"
+        },
+        {
+          "channel": "APP_STORE",
+          "sharePct": 20,
+          "revenueDeductionPct": 30,
+          "appliesTo": "SUBSCRIPTION",
+          "assumptionId": "ASM-MC13-132"
+        }
+      ],
+      "clearanceSchedule": [
+        {
+          "id": "CLR-UPSIDE_HYPOTHETICAL-NAV",
+          "familyId": "NAV",
+          "gate": "CHART_LICENCE",
+          "hypotheticalClearanceMonth": 10,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-133"
+        },
+        {
+          "id": "CLR-UPSIDE_HYPOTHETICAL-HUB",
+          "familyId": "HUB",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 7,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-134"
+        },
+        {
+          "id": "CLR-UPSIDE_HYPOTHETICAL-AIS",
+          "familyId": "AIS",
+          "gate": "NMEA_LICENCE",
+          "hypotheticalClearanceMonth": 9,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-135"
+        },
+        {
+          "id": "CLR-UPSIDE_HYPOTHETICAL-PILOT",
+          "familyId": "PILOT",
+          "gate": "SAFETY_GATE",
+          "hypotheticalClearanceMonth": null,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-136"
+        },
+        {
+          "id": "CLR-UPSIDE_HYPOTHETICAL-SENSE",
+          "familyId": "SENSE",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 8,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-137"
+        },
+        {
+          "id": "CLR-UPSIDE_HYPOTHETICAL-WATCH",
+          "familyId": "WATCH",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 7,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-138"
+        },
+        {
+          "id": "CLR-UPSIDE_HYPOTHETICAL-DISPLAY",
+          "familyId": "DISPLAY",
+          "gate": "RED_CERTIFICATION",
+          "hypotheticalClearanceMonth": 6,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-139"
+        },
+        {
+          "id": "CLR-UPSIDE_HYPOTHETICAL-WEATHER",
+          "familyId": "WEATHER",
+          "gate": "WEATHER_LICENCE",
+          "hypotheticalClearanceMonth": 10,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-140"
+        },
+        {
+          "id": "CLR-UPSIDE_HYPOTHETICAL-FLEET",
+          "familyId": "FLEET",
+          "gate": "NONE",
+          "hypotheticalClearanceMonth": 5,
+          "statusFlagUnchanged": true,
+          "conditional": true,
+          "assumptionId": "ASM-MC13-141"
+        }
+      ],
+      "scenarioAssumptionIds": [
+        "ASM-MC13-133",
+        "ASM-MC13-134",
+        "ASM-MC13-135",
+        "ASM-MC13-136",
+        "ASM-MC13-137",
+        "ASM-MC13-138",
+        "ASM-MC13-139",
+        "ASM-MC13-140",
+        "ASM-MC13-141",
+        "ASM-MC13-128",
+        "ASM-MC13-129",
+        "ASM-MC13-130",
+        "ASM-MC13-131",
+        "ASM-MC13-132",
+        "ASM-MC13-057",
+        "ASM-MC13-060",
+        "ASM-MC13-063",
+        "ASM-MC13-066",
+        "ASM-MC13-069",
+        "ASM-MC13-072",
+        "ASM-MC13-075",
+        "ASM-MC13-078",
+        "ASM-MC13-081",
+        "ASM-MC13-084",
+        "ASM-MC13-087",
+        "ASM-MC13-090",
+        "ASM-MC13-022",
+        "ASM-MC13-025",
+        "ASM-MC13-028"
+      ],
+      "notes": "Faster adoption and retention under the same unapproved prices. Not a forecast."
+    }
+  ],
+  "stressCases": [
+    {
+      "id": "ST-01",
+      "label": "Hardware cost +20%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "hardwareCostMultiplier": 1.2
+      },
+      "rationale": "Cost inflation stress on known variable hardware costs.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-02",
+      "label": "Hardware cost +40%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "hardwareCostMultiplier": 1.4
+      },
+      "rationale": "Severe cost inflation stress.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-03",
+      "label": "Distributor margin 45%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "distributorMarginPct": 45
+      },
+      "rationale": "Channel margin pressure above the BASE 35%.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-04",
+      "label": "Material cost inflation +10%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "materialInflationMultiplier": 1.1
+      },
+      "rationale": "Annual material inflation averaged over the horizon.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-05",
+      "label": "FX movement +10% cost",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "fxCostMultiplier": 1.1
+      },
+      "rationale": "Imported component cost increases; no hedge exists.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-06",
+      "label": "Manufacturing yield 92%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "manufacturingYieldPct": 0.92
+      },
+      "rationale": "Yield loss raises effective cost per good unit.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-07",
+      "label": "Warranty and returns 6%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "warrantyReturnsPct": 0.06
+      },
+      "rationale": "Double the BASE refund/withdrawal allowance.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-08",
+      "label": "Subscription churn +50%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "monthlyChurnRate": 0.0225
+      },
+      "rationale": "Churn deterioration from the BASE 1.5%/month.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-09",
+      "label": "Activation -30%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "activationRate": 0.595
+      },
+      "rationale": "Lower activation of new accounts.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-10",
+      "label": "Distributor payments +60 days",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "distributorDays": 120
+      },
+      "rationale": "Delayed customer collections.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-11",
+      "label": "Cloud usage 2x",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "cloudMultiplier": 2
+      },
+      "rationale": "Cloud usage doubles.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-12",
+      "label": "Cellular overage EUR 0.375/device-month",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "cellularCostEurPerDeviceMonth": 0.375
+      },
+      "rationale": "Cellular plan overage.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-13",
+      "label": "Data licence EUR 30/account-year",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "dataLicenceCostEurPerAccountYear": 30
+      },
+      "rationale": "Hypothetical licence cost threshold; the real cost is unknown.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-14",
+      "label": "Certification delay 6 months",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "certificationDelayMonths": 6
+      },
+      "rationale": "Conformity/certification programme slips by six months.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-15",
+      "label": "Certification delay 12 months",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "certificationDelayMonths": 12
+      },
+      "rationale": "Conformity/certification programme slips by twelve months.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-16",
+      "label": "No licensing clearance",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "noLicensingClearance": true
+      },
+      "rationale": "Chart and weather rights never granted within the horizon.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-17",
+      "label": "No customer acquisition",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "noCustomerAcquisition": true
+      },
+      "rationale": "Zero demand; no invented customers.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-18",
+      "label": "Unexpected cybersecurity maintenance EUR 60k/year",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "cybersecurityMaintenanceEurPerYear": 60000
+      },
+      "rationale": "CRA/security lifecycle cost materialises.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-19",
+      "label": "Inventory overstock and 30% write-down",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "inventoryOverstockMultiplier": 2,
+        "obsolescencePctPerYear": 30
+      },
+      "rationale": "Stranded inventory and write-down.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-20",
+      "label": "Funding availability -50%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "fundingEnvelopeMultiplier": 0.5
+      },
+      "rationale": "Reduced funding availability against the illustrative envelope.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-21",
+      "label": "Selling prices -15%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "sellingPriceMultiplier": 0.85
+      },
+      "rationale": "Lower realized prices.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-22",
+      "label": "Installer cost overrun +25%",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "installerMarginPct": 18.75
+      },
+      "rationale": "Installer margin rises from 15% to 18.75%.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-23",
+      "label": "Compound adverse case",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "hardwareCostMultiplier": 1.3,
+        "warrantyReturnsPct": 0.08,
+        "monthlyChurnRate": 0.03,
+        "sellingPriceMultiplier": 0.9,
+        "certificationDelayMonths": 12,
+        "cloudMultiplier": 1.5,
+        "distributorMarginPct": 40
+      },
+      "rationale": "Compound adverse case combining cost, price, churn, delay and channel pressure.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "ST-24",
+      "label": "Positive unit contribution but company-level viability collapse",
+      "baseScenarioId": "BASE_HYPOTHETICAL",
+      "overrides": {
+        "demandMultiplier": 0.35,
+        "hardwareCostMultiplier": 1.1,
+        "sellingPriceMultiplier": 0.95,
+        "certificationDelayMonths": 12
+      },
+      "rationale": "Demonstrates that positive unit contribution does not cover fixed operating costs and the company never recovers its cash.",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    }
+  ],
+  "stressBaseScenarioId": "BASE_HYPOTHETICAL",
+  "modelHorizonMonths": 60,
+  "reportingViewsMonths": [
+    12,
+    36,
+    60
+  ]
+}

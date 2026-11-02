@@ -1,0 +1,363 @@
+{
+  "contractId": "MAREA-MC13-SOURCE-LEDGER",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "financial-data-engineering",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "sources": [
+    {
+      "id": "SRC-001",
+      "title": "MC-12 economic assumptions",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/economics/data/assumptions.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-002",
+      "title": "MC-12 per-SKU unit economics",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/economics/data/unit-economics.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-003",
+      "title": "MC-12 hardware cost reconciliation (COST-16 invariant)",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/economics/data/hardware-cost-reconciliation.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-004",
+      "title": "MC-12 recurring cost inputs",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/economics/data/recurring-cost-inputs.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-005",
+      "title": "MC-12 channel economics",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/economics/data/channel-economics.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-006",
+      "title": "MC-12 legal and tax inputs",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/economics/data/legal-tax-inputs.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-007",
+      "title": "MC-11 cost scenarios",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/hardware/data/cost-scenarios.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-008",
+      "title": "MC-11 engineering and manufacturing BOMs",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/hardware/data/engineering-bom.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-009",
+      "title": "MC-08 bundle definitions and price hypotheses",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/bundles/bundle-definitions.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-010",
+      "title": "MC-05/06/07 product definitions and edition identities",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/products/product-definitions.batch-01.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-011",
+      "title": "MC-12 licensing rights register",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/economics/data/licensing-rights.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-012",
+      "title": "MC-12 blocker register",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/economics/data/blocker-register.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-013",
+      "title": "Stripe published EEA card pricing",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": "https://stripe.com/pricing",
+      "sourcePath": null,
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "PUBLISHED_TARIFF",
+      "sourceType": "PUBLISHED_TARIFF",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-014",
+      "title": "ECB euro reference rate inherited from MC-12",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/economics/data/providers.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "PUBLISHED_TARIFF",
+      "sourceType": "PUBLISHED_TARIFF",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-015",
+      "title": "Spain VAT rates (official)",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": "https://sede.agenciatributaria.gob.es/",
+      "sourcePath": null,
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "OFFICIAL_LICENSING_DOCUMENT",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-016",
+      "title": "EU Cyber Resilience Act (Regulation (EU) 2024/2847)",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj",
+      "sourcePath": null,
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "OFFICIAL_LICENSING_DOCUMENT",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-017",
+      "title": "EU Product Liability Directive (EU) 2024/2853",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": "https://eur-lex.europa.eu/eli/dir/2024/2853/oj",
+      "sourcePath": null,
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "OFFICIAL_LICENSING_DOCUMENT",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-018",
+      "title": "MC-10 customer discovery record (no participants)",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/customer-discovery/",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "UNKNOWN",
+      "sourceType": "UNKNOWN",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-019",
+      "title": "MC-12 MC-13 financial handoff inputs",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/economics/data/mc13-handoff-inputs.json",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "INHERITED_ASSUMPTION",
+      "sourceType": "INHERITED_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    },
+    {
+      "id": "SRC-020",
+      "title": "MC-13 analysis conventions and scenario envelopes",
+      "publisher": "EMBARCARTE / MAREA programme",
+      "url": null,
+      "sourcePath": "docs/marea/financial/MC13-FINANCIAL-DATA-CONTRACT.md",
+      "retrievedOn": "2026-11-02",
+      "evidenceClass": "ENGINEERING_ASSUMPTION",
+      "sourceType": "ENGINEERING_ASSUMPTION",
+      "usedBy": [],
+      "notes": "Inherited evidence; MC-13 adds no new external observation."
+    }
+  ],
+  "transformations": [
+    {
+      "id": "TRF-MC13-001",
+      "inputs": [
+        "ASM-MC13-001"
+      ],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Demand schedule from illustrative scenario demand profiles and clearance dependency schedule.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-002",
+      "inputs": [
+        "ASM-MC13-001",
+        "ASM-MC13-003"
+      ],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Gross invoiced revenue = units x unapproved price hypothesis x channel factor; refunds and VAT separated.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-003",
+      "inputs": [
+        "ASM-MC13-001",
+        "ASM-MC13-009",
+        "ASM-MC13-010"
+      ],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "VAT output = gross net of refunds minus net revenue; VAT paid with declared lag net of recoverable input VAT.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-004",
+      "inputs": [
+        "ASM-MC13-020",
+        "ASM-MC13-021",
+        "ASM-MC13-022"
+      ],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Subscription cohorts: annual prepayment straight-line recognition, monthly billing, churn, renewal and deferred revenue.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-005",
+      "inputs": [
+        "SRC-002"
+      ],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Hardware COGS = units sold x declared known variable cost; tooling/NRE excluded.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-006",
+      "inputs": [
+        "ASM-MC13-011",
+        "ASM-MC13-015"
+      ],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Inventory: MOQ production plan, lead time, safety stock, write-down, deposits and payables.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-007",
+      "inputs": [
+        "ASM-MC13-042"
+      ],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Fixed operating-cost envelopes with inflation; unknown insurance and CRA excluded and listed.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-008",
+      "inputs": [
+        "ASM-MC13-039",
+        "ASM-MC13-040",
+        "ASM-MC13-041"
+      ],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Capex cash and non-cash straight-line amortisation per capital item; working capital excluded.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-009",
+      "inputs": [
+        "ASM-MC13-052"
+      ],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Operating cash flow = conditional EBITDA - working-capital movement; investing cash flow = -capex cash.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-010",
+      "inputs": [],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Conditional break-even thresholds from monthly model; unknown inputs force NOT_DETERMINABLE.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-011",
+      "inputs": [],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Stress cases re-run the base hypothetical scenario with declared overrides.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    },
+    {
+      "id": "TRF-MC13-012",
+      "inputs": [],
+      "output": "docs/marea/financial/data/monthly-financial-model.json",
+      "operation": "Scenario results aggregate the single 60-period monthly model into 12/36/60 views.",
+      "notes": "Deterministic engine transformation; no clock, network or randomness."
+    }
+  ]
+}

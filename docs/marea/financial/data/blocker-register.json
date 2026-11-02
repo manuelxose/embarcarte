@@ -1,0 +1,341 @@
+{
+  "contractId": "MAREA-MC13-BLOCKER-REGISTER",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "compliance-risk",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "note": "Financial blockers. Inherited MC-12 blockers are referenced and never silently removed or reclassified.",
+  "blockers": [
+    {
+      "id": "BLK-FIN-01",
+      "domain": "LICENSING",
+      "title": "Chart and weather data-licence cost is UNKNOWN and the rights are NOT_GRANTED",
+      "productIds": [
+        "NAV",
+        "WEATHER"
+      ],
+      "impact": "A material variable cost is missing, so NAV/WEATHER unit contribution and any subscription break-even are NOT_DETERMINABLE.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "legal-licensing",
+      "sourceRefs": [
+        "LR-CHART-001",
+        "LR-WEATHER-001",
+        "ASM-MC13-049",
+        "BLK-LIC-01",
+        "BLK-LIC-03"
+      ],
+      "requiredEvidence": "Executed licence terms with territory, caching, per-device and price conditions.",
+      "external": true,
+      "inheritedBlockerId": "BLK-LIC-01"
+    },
+    {
+      "id": "BLK-FIN-02",
+      "domain": "CERTIFICATION",
+      "title": "Conformity and certification programme cost is UNKNOWN",
+      "productIds": [
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "PILOT"
+      ],
+      "impact": "Capex and financing requirement exclude a real, potentially material cost; the model carries an illustrative envelope only.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "conformity-engineering",
+      "sourceRefs": [
+        "BLK-COST-01",
+        "BLK-REG-01",
+        "INV-02"
+      ],
+      "requiredEvidence": "Laboratory quotations for EMC/RED/environmental/CRA scope.",
+      "external": true,
+      "inheritedBlockerId": "BLK-COST-01"
+    },
+    {
+      "id": "BLK-FIN-03",
+      "domain": "PROCUREMENT",
+      "title": "No supplier quotation, MOQ, lead time or payment term exists",
+      "productIds": [
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "impact": "Inventory cash, working capital and hardware COGS rest on inherited assumptions and scenario terms.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "hardware-sourcing",
+      "sourceRefs": [
+        "BLK-COST-02",
+        "ASM-MC13-011",
+        "ASM-MC13-015"
+      ],
+      "requiredEvidence": "Formal supplier quotations with MOQ, Incoterms and payment terms.",
+      "external": true,
+      "inheritedBlockerId": "BLK-COST-02"
+    },
+    {
+      "id": "BLK-FIN-04",
+      "domain": "INSURANCE",
+      "title": "Product liability insurance premium is UNKNOWN",
+      "productIds": [
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "impact": "A material fixed cost is excluded from EBITDA-like and break-even; the true operating break-even is higher.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "legal-risk",
+      "sourceRefs": [
+        "BLK-INS-01",
+        "ASM-MC13-047"
+      ],
+      "requiredEvidence": "Broker indication or quotation with territory and product scope.",
+      "external": true,
+      "inheritedBlockerId": "BLK-INS-01"
+    },
+    {
+      "id": "BLK-FIN-05",
+      "domain": "SECURITY_LIFECYCLE",
+      "title": "CRA support-period engineering and update cost is UNKNOWN",
+      "productIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "impact": "A multi-year recurring engineering cost is excluded from profitability and break-even.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "security-engineering",
+      "sourceRefs": [
+        "BLK-REG-02",
+        "ASM-MC13-048"
+      ],
+      "requiredEvidence": "Maintenance scope, support-period plan and cost rate.",
+      "external": false,
+      "inheritedBlockerId": "BLK-REG-02"
+    },
+    {
+      "id": "BLK-FIN-06",
+      "domain": "CUSTOMER",
+      "title": "No customer evidence, CAC, conversion, churn, renewal or willingness to pay",
+      "productIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "impact": "Every demand profile and retention rate is an illustrative scenario assumption, not a forecast.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "commercial-research",
+      "sourceRefs": [
+        "BLK-COMM-01",
+        "ASM-MC13-050",
+        "ASM-MC13-051",
+        "ASM-MC13-052"
+      ],
+      "requiredEvidence": "Executed interviews and pricing responses under AUTH-MC10-001.",
+      "external": true,
+      "inheritedBlockerId": "BLK-COMM-01"
+    },
+    {
+      "id": "BLK-FIN-07",
+      "domain": "COMPANY_CASH",
+      "title": "EMBARCARTE current cash, funding and existing expenses are UNKNOWN",
+      "productIds": [],
+      "impact": "The restricted current case cannot compute actual cash, burn or financing need; the model uses a zero opening-cash analysis convention only.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "programme-lead",
+      "sourceRefs": [
+        "ASM-MC13-045",
+        "ASM-MC13-044"
+      ],
+      "requiredEvidence": "Company accounts, bank statement and written funding authorization.",
+      "external": true,
+      "inheritedBlockerId": null
+    },
+    {
+      "id": "BLK-FIN-08",
+      "domain": "FX",
+      "title": "EUR/USD exposure is not hedged and inherited BOM conversions use an engineering assumption",
+      "productIds": [
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "impact": "A 10% FX movement changes hardware cost; no hedge or price-hold exists.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "hardware-sourcing",
+      "sourceRefs": [
+        "BLK-COST-05"
+      ],
+      "requiredEvidence": "Supplier currency terms and a disclosed re-conversion pass (decision D-053).",
+      "external": true,
+      "inheritedBlockerId": "BLK-COST-05"
+    },
+    {
+      "id": "BLK-FIN-09",
+      "domain": "TAX",
+      "title": "Cross-border VAT/OSS and input-VAT treatment are not professionally confirmed",
+      "productIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "impact": "VAT cash timing and net revenue conversion are modelled on a documented illustration, not tax advice.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "finance-tax",
+      "sourceRefs": [
+        "BLK-COST-04",
+        "ASM-MC13-001",
+        "ASM-MC13-010"
+      ],
+      "requiredEvidence": "Spanish tax adviser confirmation for each supply and channel.",
+      "external": true,
+      "inheritedBlockerId": "BLK-COST-04"
+    },
+    {
+      "id": "BLK-FIN-10",
+      "domain": "FLEET",
+      "title": "FLEET onboarding, DPA, SLA and tenancy cost are not established",
+      "productIds": [
+        "FLEET"
+      ],
+      "impact": "FLEET unit contribution and break-even are conditional and exclude real onboarding and SLA cost.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "saas-operations",
+      "sourceRefs": [
+        "BLK-DATA-01",
+        "ASM-MC13-033",
+        "ASM-MC13-036"
+      ],
+      "requiredEvidence": "Tenancy design, DPA, SLA and support-cost plan.",
+      "external": false,
+      "inheritedBlockerId": "BLK-DATA-01"
+    },
+    {
+      "id": "BLK-FIN-11",
+      "domain": "SAFETY",
+      "title": "PILOT has no cost, revenue or safety case and cannot be modelled financially",
+      "productIds": [
+        "PILOT"
+      ],
+      "impact": "PILOT is excluded from every financial scenario; no zero-cost, zero-revenue fiction is produced.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "safety-engineering",
+      "sourceRefs": [
+        "BLK-SAFE-01"
+      ],
+      "requiredEvidence": "PILOT safety case, hardware scope and quotation.",
+      "external": true,
+      "inheritedBlockerId": "BLK-SAFE-01"
+    },
+    {
+      "id": "BLK-FIN-12",
+      "domain": "WORKING_CAPITAL",
+      "title": "No inventory, credit, return or obsolescence agreement exists",
+      "productIds": [
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "impact": "Inventory cash and stranded-stock exposure are scenario assumptions; downside stress shows the funding gap.",
+      "severity": "MAJOR",
+      "status": "OPEN",
+      "owner": "hardware-sourcing",
+      "sourceRefs": [
+        "BLK-COST-02",
+        "ASM-MC13-015",
+        "ASM-MC13-017"
+      ],
+      "requiredEvidence": "Supplier credit terms, return agreement and demand evidence.",
+      "external": true,
+      "inheritedBlockerId": "BLK-COST-02"
+    },
+    {
+      "id": "BLK-FIN-13",
+      "domain": "FINANCING",
+      "title": "No financing authorization, term sheet or investor commitment exists",
+      "productIds": [],
+      "impact": "The analytical funding envelope is not an offer; the financing requirement is conditional and unfunded.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "programme-lead",
+      "sourceRefs": [
+        "ASM-MC13-046"
+      ],
+      "requiredEvidence": "Written funding authorization or signed term sheet.",
+      "external": true,
+      "inheritedBlockerId": null
+    },
+    {
+      "id": "BLK-FIN-14",
+      "domain": "PRICE",
+      "title": "No price is approved",
+      "productIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET",
+        "PILOT"
+      ],
+      "impact": "Every price in the model is HYPOTHESIS_UNAPPROVED; no revenue figure is a forecast of realized price.",
+      "severity": "BLOCKING",
+      "status": "OPEN",
+      "owner": "programme-lead",
+      "sourceRefs": [
+        "BLK-PRICE-01"
+      ],
+      "requiredEvidence": "Approved price policy with channel, tax and WTP evidence.",
+      "external": true,
+      "inheritedBlockerId": "BLK-PRICE-01"
+    }
+  ],
+  "summary": {
+    "total": 14,
+    "blocking": 9,
+    "major": 5,
+    "minor": 0,
+    "informational": 0,
+    "open": 14
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "contractId": "MAREA-MC13-MC14-HANDOFF-INPUTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "status": "READY_FOR_MC14_WITH_NAMED_GAPS",
+  "mc14Started": false,
+  "mc14StartedByAnyAgent": false,
+  "note": "Handoff package only. MC-14 (legal/commercial risk register and claims policy) consumes these financial dependencies; no MC-14 work is executed here.",
+  "dependencies": [
+    {
+      "id": "MC14-DEP-01",
+      "area": "COMPLIANCE_COST",
+      "title": "Compliance and conformity cost",
+      "financialInputs": [
+        "INV-02",
+        "BLK-FIN-02",
+        "BLK-REG-01"
+      ],
+      "amountStatus": "ILLUSTRATIVE_ENVELOPE_ONLY",
+      "amountEur": 60000,
+      "mc14Use": "Risk register must treat the certification cost as UNKNOWN until a laboratory quotation exists.",
+      "claimsPolicyRelevance": "No CE marking, RED, EMC or NMEA claim may be published before conformity evidence.",
+      "evidenceGap": "No laboratory engaged; no quotation."
+    },
+    {
+      "id": "MC14-DEP-02",
+      "area": "INSURANCE_EXPOSURE",
+      "title": "Product liability insurance",
+      "financialInputs": [
+        "OPEX-INSURANCE",
+        "BLK-FIN-04"
+      ],
+      "amountStatus": "UNKNOWN",
+      "amountEur": null,
+      "mc14Use": "Insurance is a named unknown fixed cost; no premium estimate may be invented as a revenue percentage.",
+      "claimsPolicyRelevance": "Liability, capped/uncapped regimes and territorial scope must be stated truthfully.",
+      "evidenceGap": "No broker indication or quotation."
+    },
+    {
+      "id": "MC14-DEP-03",
+      "area": "PRODUCT_LIABILITY",
+      "title": "Product liability and safety exposure",
+      "financialInputs": [
+        "BLK-FIN-11",
+        "BLK-SAFE-01"
+      ],
+      "amountStatus": "NOT_QUANTIFIABLE",
+      "amountEur": null,
+      "mc14Use": "PILOT safety gate is BLOCKED; no financial value may be attached to an uncertified control product.",
+      "claimsPolicyRelevance": "PILOT must not be offered, and no remote-control or safety claim is permitted.",
+      "evidenceGap": "No safety case, E-stop evidence, motor-isolation evidence or sea trials."
+    },
+    {
+      "id": "MC14-DEP-04",
+      "area": "WARRANTY_RETURNS",
+      "title": "Warranty, legal guarantee and returns",
+      "financialInputs": [
+        "ASM-MC13-003",
+        "OPEX-WARRANTY"
+      ],
+      "amountStatus": "PERCENTAGE_ASSUMPTION",
+      "amountEur": null,
+      "mc14Use": "3% refund/withdrawal allowance is illustrative; the real return rate is unknown.",
+      "claimsPolicyRelevance": "Consumer guarantee and withdrawal rights must be stated accurately; no reliability claim.",
+      "evidenceGap": "No measured return or failure rate.",
+      "amountPct": 3
+    },
+    {
+      "id": "MC14-DEP-05",
+      "area": "CYBERSECURITY_MAINTENANCE",
+      "title": "CRA lifecycle and cybersecurity maintenance",
+      "financialInputs": [
+        "OPEX-CRA",
+        "OPEX-CYBER",
+        "BLK-FIN-05",
+        "BLK-REG-02"
+      ],
+      "amountStatus": "PARTIALLY_MODELLED_UNKNOWN",
+      "amountEur": null,
+      "mc14Use": "Support-period engineering cost is a named unknown; the stress case tests a 60k/year envelope.",
+      "claimsPolicyRelevance": "No security certification, guaranteed update period or vulnerability-response SLA may be claimed before it exists.",
+      "evidenceGap": "No scope, rate or support contract."
+    },
+    {
+      "id": "MC14-DEP-06",
+      "area": "PRIVACY_DATA_PROCESSING",
+      "title": "GDPR roles, DPIA and processor agreements",
+      "financialInputs": [
+        "BLK-FIN-10",
+        "ASM-MC13-033"
+      ],
+      "amountStatus": "UNKNOWN",
+      "amountEur": null,
+      "mc14Use": "FLEET tenancy and DPA cost are excluded from the conditional result.",
+      "claimsPolicyRelevance": "Data-protection claims, retention and processor statements must not be published without agreements.",
+      "evidenceGap": "No controller/processor mapping, DPIA or processor agreement."
+    },
+    {
+      "id": "MC14-DEP-07",
+      "area": "PAYMENT_OBLIGATIONS",
+      "title": "Payment processing and chargeback exposure",
+      "financialInputs": [
+        "ASM-MC13-004",
+        "ASM-MC13-005",
+        "ASM-MC13-006"
+      ],
+      "amountStatus": "PUBLISHED_PERCENTAGE_TARIFF",
+      "amountEur": null,
+      "mc14Use": "Published card fees and app-store commission are modelled; chargeback and fraud cost are not.",
+      "claimsPolicyRelevance": "Checkout and refund terms must match the hosted/tokenized payment policy.",
+      "evidenceGap": "No merchant agreement; chargeback exposure unknown.",
+      "amountPct": 1.5
+    },
+    {
+      "id": "MC14-DEP-08",
+      "area": "COMMERCIAL_CLAIMS",
+      "title": "Commercial claims restrictions",
+      "financialInputs": [
+        "ASM-MC13-046"
+      ],
+      "amountStatus": "NOT_APPLICABLE",
+      "amountEur": null,
+      "mc14Use": "No hypothetical financial result may be presented as profitability, investment return or demand evidence.",
+      "claimsPolicyRelevance": "Prohibited claims must include profitability, break-even, investment return, market share, certified status and validated demand.",
+      "evidenceGap": "None of the required commercial evidence exists."
+    },
+    {
+      "id": "MC14-DEP-09",
+      "area": "UNRESOLVED_LICENSING",
+      "title": "Chart, weather, NMEA, tile, source-IP and trademark rights",
+      "financialInputs": [
+        "BLK-FIN-01",
+        "BLK-LIC-01",
+        "BLK-LIC-03",
+        "BLK-LIC-04",
+        "BLK-LIC-07",
+        "BLK-LIC-08",
+        "BLK-LIC-09"
+      ],
+      "amountStatus": "UNKNOWN",
+      "amountEur": null,
+      "mc14Use": "NAV/WEATHER break-even and unit contribution are NOT_DETERMINABLE while the licence cost is unknown.",
+      "claimsPolicyRelevance": "No chart, weather, NMEA certification or registered-trademark claim is permitted.",
+      "evidenceGap": "Eleven rights recorded; nine blocking; no granted right."
+    },
+    {
+      "id": "MC14-DEP-10",
+      "area": "BLOCKED_LAUNCH_CONSEQUENCE",
+      "title": "Financial consequences of blocked launches",
+      "financialInputs": [
+        "ASM-MC13-045",
+        "ASM-MC13-046",
+        "BLK-FIN-07",
+        "BLK-FIN-13"
+      ],
+      "amountStatus": "CONDITIONAL",
+      "amountEur": null,
+      "mc14Use": "The restricted current case produces zero authorized revenue and cannot compute cash; the company cash position is UNKNOWN.",
+      "claimsPolicyRelevance": "No launch date, availability or investment commitment may be represented.",
+      "evidenceGap": "Company accounts, funding authorization and customer evidence."
+    }
+  ],
+  "financialStatusAtHandoff": {
+    "MC13_VERDICT": "PARTIAL",
+    "MC13_INTERNAL_FINANCIAL_SCOPE": "PASS_INTERNAL_FINANCIAL_SCOPE",
+    "MC13_EXTERNAL_COMMERCIAL_VALIDATION": "BLOCKED_OR_NOT_OBTAINED",
+    "COMMERCIAL_AVAILABILITY": "NOT_FOR_SALE",
+    "PRICE_APPROVED": "NONE",
+    "LICENSING_RIGHTS_GRANTED": false,
+    "CUSTOMER_WTP_VALIDATED": false,
+    "MC14_STARTED": false,
+    "MC13_INDEPENDENT_REVIEW": "PASS_INTERNAL_FINANCIAL_SCOPE"
+  }
+}

@@ -1,0 +1,610 @@
+{
+  "contractId": "MAREA-MC13-PORTFOLIO-PRIORITIZATION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "commercial-strategy",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "note": "Six separate rankings are provided. They are never merged into a single launch-readiness score. Economic potential, evidence readiness, capital efficiency, implementation dependency and commercial authorization are distinct dimensions.",
+  "metrics": {
+    "NAV": {
+      "familyId": "NAV",
+      "bestConditionalUnitContributionPct": 89.91,
+      "bestConditionalUnitSubjectId": "NAV-PRO",
+      "bestConditionalUnitMetric": "SUBSCRIPTION_ANNUAL_CONTRIBUTION_PCT",
+      "cumulativeRevenueNetM60Eur": 894350.7,
+      "cumulativeRecurringRevenueNetM60Eur": 894350.7,
+      "downsideCumulativeRevenueNetEur": 60265.94,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "commercialAuthorization": "NOT_AUTHORIZED",
+      "licensingDependency": 5,
+      "evidenceReadinessScore": 2,
+      "implementationDependency": 3,
+      "capitalAllocationEur": 70000,
+      "inheritedMc12Classification": "LICENSING_BLOCKED",
+      "inheritedMc12SourceId": "decision-matrix.NAV"
+    },
+    "HUB": {
+      "familyId": "HUB",
+      "bestConditionalUnitContributionPct": 24.67,
+      "bestConditionalUnitSubjectId": "HUB-PRO",
+      "bestConditionalUnitMetric": "HARDWARE_UNIT_CONTRIBUTION_PCT",
+      "cumulativeRevenueNetM60Eur": 644693.43,
+      "cumulativeRecurringRevenueNetM60Eur": 0,
+      "downsideCumulativeRevenueNetEur": 78251.22,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "commercialAuthorization": "NOT_AUTHORIZED",
+      "licensingDependency": 2,
+      "evidenceReadinessScore": 3,
+      "implementationDependency": 4,
+      "capitalAllocationEur": 60000,
+      "inheritedMc12Classification": "DEFER_RECOMMENDED",
+      "inheritedMc12SourceId": "decision-matrix.HUB"
+    },
+    "AIS": {
+      "familyId": "AIS",
+      "bestConditionalUnitContributionPct": -51.07,
+      "bestConditionalUnitSubjectId": "AIS-RECEIVER",
+      "bestConditionalUnitMetric": "HARDWARE_UNIT_CONTRIBUTION_PCT",
+      "cumulativeRevenueNetM60Eur": 100802.23,
+      "cumulativeRecurringRevenueNetM60Eur": 0,
+      "downsideCumulativeRevenueNetEur": 12826.12,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "commercialAuthorization": "NOT_AUTHORIZED",
+      "licensingDependency": 3,
+      "evidenceReadinessScore": 2,
+      "implementationDependency": 4,
+      "capitalAllocationEur": 30000,
+      "inheritedMc12Classification": "DEFER_RECOMMENDED",
+      "inheritedMc12SourceId": "decision-matrix.AIS"
+    },
+    "PILOT": {
+      "familyId": "PILOT",
+      "bestConditionalUnitContributionPct": null,
+      "bestConditionalUnitSubjectId": null,
+      "bestConditionalUnitMetric": null,
+      "cumulativeRevenueNetM60Eur": 0,
+      "cumulativeRecurringRevenueNetM60Eur": 0,
+      "downsideCumulativeRevenueNetEur": 0,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "commercialAuthorization": "NOT_AUTHORIZED",
+      "licensingDependency": 3,
+      "evidenceReadinessScore": 1,
+      "implementationDependency": 5,
+      "capitalAllocationEur": 25000,
+      "inheritedMc12Classification": "SAFETY_BLOCKED",
+      "inheritedMc12SourceId": "decision-matrix.PILOT"
+    },
+    "SENSE": {
+      "familyId": "SENSE",
+      "bestConditionalUnitContributionPct": -19.21,
+      "bestConditionalUnitSubjectId": "SENSE-ENTRY-SYMBOLIC",
+      "bestConditionalUnitMetric": "HARDWARE_UNIT_CONTRIBUTION_PCT",
+      "cumulativeRevenueNetM60Eur": 87122.53,
+      "cumulativeRecurringRevenueNetM60Eur": 0,
+      "downsideCumulativeRevenueNetEur": 11348.32,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "commercialAuthorization": "NOT_AUTHORIZED",
+      "licensingDependency": 2,
+      "evidenceReadinessScore": 3,
+      "implementationDependency": 3,
+      "capitalAllocationEur": 35000,
+      "inheritedMc12Classification": "DEFER_RECOMMENDED",
+      "inheritedMc12SourceId": "decision-matrix.SENSE"
+    },
+    "WATCH": {
+      "familyId": "WATCH",
+      "bestConditionalUnitContributionPct": 86.71,
+      "bestConditionalUnitSubjectId": "WATCH-MONITORING",
+      "bestConditionalUnitMetric": "SUBSCRIPTION_ANNUAL_CONTRIBUTION_PCT",
+      "cumulativeRevenueNetM60Eur": 458700.04,
+      "cumulativeRecurringRevenueNetM60Eur": 136569.38,
+      "downsideCumulativeRevenueNetEur": 55886.03,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "commercialAuthorization": "NOT_AUTHORIZED",
+      "licensingDependency": 3,
+      "evidenceReadinessScore": 2,
+      "implementationDependency": 4,
+      "capitalAllocationEur": 45000,
+      "inheritedMc12Classification": "COST_MODEL_INCOMPLETE",
+      "inheritedMc12SourceId": "decision-matrix.WATCH"
+    },
+    "DISPLAY": {
+      "familyId": "DISPLAY",
+      "bestConditionalUnitContributionPct": 41.98,
+      "bestConditionalUnitSubjectId": "DISPLAY-7",
+      "bestConditionalUnitMetric": "HARDWARE_UNIT_CONTRIBUTION_PCT",
+      "cumulativeRevenueNetM60Eur": 512192.72,
+      "cumulativeRecurringRevenueNetM60Eur": 0,
+      "downsideCumulativeRevenueNetEur": 66940.26,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "commercialAuthorization": "NOT_AUTHORIZED",
+      "licensingDependency": 3,
+      "evidenceReadinessScore": 3,
+      "implementationDependency": 3,
+      "capitalAllocationEur": 55000,
+      "inheritedMc12Classification": "CONDITIONAL_ECONOMIC_CASE",
+      "inheritedMc12SourceId": "decision-matrix.DISPLAY"
+    },
+    "WEATHER": {
+      "familyId": "WEATHER",
+      "bestConditionalUnitContributionPct": 90.43,
+      "bestConditionalUnitSubjectId": "WEATHER-PRO",
+      "bestConditionalUnitMetric": "SUBSCRIPTION_ANNUAL_CONTRIBUTION_PCT",
+      "cumulativeRevenueNetM60Eur": 186600.47,
+      "cumulativeRecurringRevenueNetM60Eur": 186600.47,
+      "downsideCumulativeRevenueNetEur": 10727.37,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "commercialAuthorization": "NOT_AUTHORIZED",
+      "licensingDependency": 5,
+      "evidenceReadinessScore": 2,
+      "implementationDependency": 2,
+      "capitalAllocationEur": 35000,
+      "inheritedMc12Classification": "LICENSING_BLOCKED",
+      "inheritedMc12SourceId": "decision-matrix.WEATHER"
+    },
+    "FLEET": {
+      "familyId": "FLEET",
+      "bestConditionalUnitContributionPct": 24.33,
+      "bestConditionalUnitSubjectId": "FLEET-START",
+      "bestConditionalUnitMetric": "SUBSCRIPTION_ANNUAL_CONTRIBUTION_PCT",
+      "cumulativeRevenueNetM60Eur": 542185,
+      "cumulativeRecurringRevenueNetM60Eur": 542185,
+      "downsideCumulativeRevenueNetEur": 70805,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "commercialAuthorization": "NOT_AUTHORIZED",
+      "licensingDependency": 2,
+      "evidenceReadinessScore": 2,
+      "implementationDependency": 3,
+      "capitalAllocationEur": 47500,
+      "inheritedMc12Classification": "COST_MODEL_INCOMPLETE",
+      "inheritedMc12SourceId": "decision-matrix.FLEET"
+    }
+  },
+  "rankings": [
+    {
+      "id": "conditionalUnitEconomics",
+      "label": "Best conditional known unit economics",
+      "direction": "DESCENDING",
+      "familyOrder": [
+        "WEATHER",
+        "NAV",
+        "WATCH",
+        "DISPLAY",
+        "HUB",
+        "FLEET",
+        "SENSE",
+        "AIS"
+      ],
+      "metricBasis": [
+        {
+          "familyId": "WEATHER",
+          "value": 90.43,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "NAV",
+          "value": 89.91,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "WATCH",
+          "value": 86.71,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "DISPLAY",
+          "value": 41.98,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "HUB",
+          "value": 24.67,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "FLEET",
+          "value": 24.33,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "SENSE",
+          "value": -19.21,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "AIS",
+          "value": -51.07,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        }
+      ],
+      "notes": "Known-cost contribution percentage before unknown licence cost. NAV and WEATHER are licensing-blocked: their figures are not actionable and must not be read as a launch ranking."
+    },
+    {
+      "id": "initialCapitalRequirement",
+      "label": "Lowest hypothetical initial capital allocation",
+      "direction": "ASCENDING",
+      "familyOrder": [
+        "PILOT",
+        "AIS",
+        "SENSE",
+        "WEATHER",
+        "WATCH",
+        "FLEET",
+        "DISPLAY",
+        "HUB",
+        "NAV"
+      ],
+      "metricBasis": [
+        {
+          "familyId": "PILOT",
+          "value": 25000,
+          "licensingBlocked": false,
+          "safetyBlocked": true
+        },
+        {
+          "familyId": "AIS",
+          "value": 30000,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "SENSE",
+          "value": 35000,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "WEATHER",
+          "value": 35000,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "WATCH",
+          "value": 45000,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "FLEET",
+          "value": 47500,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "DISPLAY",
+          "value": 55000,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "HUB",
+          "value": 60000,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "NAV",
+          "value": 70000,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        }
+      ],
+      "notes": "Analytical envelope allocation, not an approved budget or quotation."
+    },
+    {
+      "id": "licensingDependency",
+      "label": "Lowest licensing/regulatory dependency",
+      "direction": "ASCENDING",
+      "familyOrder": [
+        "HUB",
+        "SENSE",
+        "FLEET",
+        "AIS",
+        "PILOT",
+        "WATCH",
+        "DISPLAY",
+        "NAV",
+        "WEATHER"
+      ],
+      "metricBasis": [
+        {
+          "familyId": "HUB",
+          "value": 2,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "SENSE",
+          "value": 2,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "FLEET",
+          "value": 2,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "AIS",
+          "value": 3,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "PILOT",
+          "value": 3,
+          "licensingBlocked": false,
+          "safetyBlocked": true
+        },
+        {
+          "familyId": "WATCH",
+          "value": 3,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "DISPLAY",
+          "value": 3,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "NAV",
+          "value": 5,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "WEATHER",
+          "value": 5,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        }
+      ],
+      "notes": "Curated 0-5 dependency score carried from MC-12 rights analysis."
+    },
+    {
+      "id": "recurringRevenuePotential",
+      "label": "Strongest potential recurring revenue",
+      "direction": "DESCENDING",
+      "familyOrder": [
+        "NAV",
+        "FLEET",
+        "WEATHER",
+        "WATCH",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "DISPLAY"
+      ],
+      "metricBasis": [
+        {
+          "familyId": "NAV",
+          "value": 894350.7,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "FLEET",
+          "value": 542185,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "WEATHER",
+          "value": 186600.47,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "WATCH",
+          "value": 136569.38,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "HUB",
+          "value": 0,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "AIS",
+          "value": 0,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "PILOT",
+          "value": 0,
+          "licensingBlocked": false,
+          "safetyBlocked": true
+        },
+        {
+          "familyId": "SENSE",
+          "value": 0,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "DISPLAY",
+          "value": 0,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        }
+      ],
+      "notes": "Hypothetical cumulative subscription revenue over 60 periods under BASE_HYPOTHETICAL."
+    },
+    {
+      "id": "downsideExposure",
+      "label": "Lowest downside revenue exposure",
+      "direction": "DESCENDING",
+      "familyOrder": [
+        "HUB",
+        "FLEET",
+        "DISPLAY",
+        "NAV",
+        "WATCH",
+        "AIS",
+        "SENSE",
+        "WEATHER",
+        "PILOT"
+      ],
+      "metricBasis": [
+        {
+          "familyId": "HUB",
+          "value": 78251.22,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "FLEET",
+          "value": 70805,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "DISPLAY",
+          "value": 66940.26,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "NAV",
+          "value": 60265.94,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "WATCH",
+          "value": 55886.03,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "AIS",
+          "value": 12826.12,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "SENSE",
+          "value": 11348.32,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "WEATHER",
+          "value": 10727.37,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "PILOT",
+          "value": 0,
+          "licensingBlocked": false,
+          "safetyBlocked": true
+        }
+      ],
+      "notes": "Higher retained downside revenue ranks first; the ranking is not a probability."
+    },
+    {
+      "id": "evidenceAcquisitionPriority",
+      "label": "Highest evidence-acquisition priority (lowest evidence readiness first)",
+      "direction": "ASCENDING",
+      "familyOrder": [
+        "PILOT",
+        "NAV",
+        "AIS",
+        "WATCH",
+        "WEATHER",
+        "FLEET",
+        "HUB",
+        "SENSE",
+        "DISPLAY"
+      ],
+      "metricBasis": [
+        {
+          "familyId": "PILOT",
+          "value": 1,
+          "licensingBlocked": false,
+          "safetyBlocked": true
+        },
+        {
+          "familyId": "NAV",
+          "value": 2,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "AIS",
+          "value": 2,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "WATCH",
+          "value": 2,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "WEATHER",
+          "value": 2,
+          "licensingBlocked": true,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "FLEET",
+          "value": 2,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "HUB",
+          "value": 3,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "SENSE",
+          "value": 3,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        },
+        {
+          "familyId": "DISPLAY",
+          "value": 3,
+          "licensingBlocked": false,
+          "safetyBlocked": false
+        }
+      ],
+      "notes": "Families with the least complete evidence come first because acquiring that evidence is the cheapest way to change a decision."
+    }
+  ],
+  "inheritedMc12Conclusions": [
+    "NAV and WEATHER licensing is blocked; a unit contribution before an unknown data licence is not a decision number.",
+    "FLEET is economically interesting but incomplete; no contract, SLA or vessel customer exists.",
+    "DISPLAY is the strongest conditional hardware case.",
+    "WATCH is a potentially interesting hardware-plus-service structure, with unverified recurring contracts.",
+    "HUB is marginal at the 100-unit BASE cost.",
+    "SENSE entry price is below modelled cost.",
+    "AIS is negative at current hypotheses.",
+    "PILOT is safety blocked and cannot be modelled financially.",
+    "PROTECT is negative at its historical bundle hypothesis."
+  ],
+  "noCommercialAuthorization": true
+}
