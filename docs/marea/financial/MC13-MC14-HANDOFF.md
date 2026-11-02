@@ -46,7 +46,7 @@ The values below are copied from `financialStatusAtHandoff` in
 | Flag | Value |
 |---|---|
 | `MC13_VERDICT` | `PARTIAL` |
-| `MC13_INTERNAL_FINANCIAL_SCOPE` | `PENDING_INDEPENDENT_REVIEW` |
+| `MC13_INTERNAL_FINANCIAL_SCOPE` | `PASS_INTERNAL_FINANCIAL_SCOPE` |
 | `MC13_EXTERNAL_COMMERCIAL_VALIDATION` | `BLOCKED_OR_NOT_OBTAINED` |
 | `COMMERCIAL_AVAILABILITY` | `NOT_FOR_SALE` |
 | `PRICE_APPROVED` | `NONE` |
@@ -55,10 +55,11 @@ The values below are copied from `financialStatusAtHandoff` in
 | `MC14_STARTED` | `false` |
 
 Both the handoff JSON and `data/manifest.json` record
-`MC13_INTERNAL_FINANCIAL_SCOPE: "PENDING_INDEPENDENT_REVIEW"`; the manifest records
-`MC13_INDEPENDENT_REVIEW: "PARTIAL"`. The internal financial scope stays pending until
-the auditor re-verifies the post-audit corrections. This handoff asserts neither PASS
-nor FAIL, and MC-14 must treat the internal financial scope as pending.
+`MC13_INTERNAL_FINANCIAL_SCOPE: "PASS_INTERNAL_FINANCIAL_SCOPE"` after the independent
+re-verification of corrected commit `573d65a`; the external commercial validation
+remains `BLOCKED_OR_NOT_OBTAINED`. The PASS covers the internal analytical scope only:
+no price, availability, financing or launch is approved, and MC-14 consumers must not
+treat it as commercial validation.
 
 ## 4. The ten financial dependencies
 

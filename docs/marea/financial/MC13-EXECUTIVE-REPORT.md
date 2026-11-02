@@ -6,7 +6,7 @@
 | Fecha | 2026-11-02 |
 | Rama | `feature/marea-mc13-financial-model-cashflow-break-even` |
 | Base verificada | MC-12 `e59a8b9b3916d979d8eaeff78acd3795fd26c125` |
-| Estado | `PARTIAL` — auditoría independiente inicial con 16 hallazgos; correcciones aplicadas y re-auditoría en curso |
+| Estado | `PARTIAL` — alcance financiero interno `PASS_INTERNAL_FINANCIAL_SCOPE` verificado de forma independiente; evidencia comercial externa `BLOCKED_OR_NOT_OBTAINED` |
 | Disponibilidad comercial | `NOT_FOR_SALE` |
 | Precio aprobado | `NONE` |
 | MC-14 iniciado | `false` |
@@ -22,12 +22,14 @@ inversión, punto de equilibrio condicional y 24 pruebas de tensión.
 La primera auditoría independiente recompuso el modelo completo sin usar el código del
 autor (61 series × 60 periodos, 0 discrepancias), verificó las identidades de caja,
 IVA, inventario, capital circulante y deuda diferida, confirmó 90/90 escenarios MC-11 y
-la invariancia del utillaje/NRE, y comprobó 208 cifras documentales. Concedió un
-veredicto **PARTIAL** y retuvo la firma por 2 hallazgos BLOCKING y 3 MAJOR: falta del
-registro de entrega D21, un PASS de revisión prematuro en este informe, los reembolsos
-no pagados en caja, la base de facturación al distribuidor y el acoplamiento de la
-suite adversaria al estado de revisión. Las correcciones se aplicaron antes de
-re-congelar y la auditoría fue solicitada de nuevo.
+la invariancia del utillaje/NRE, y comprobó 208 cifras documentales. Retuvo la firma sobre el primer commit congelado por 2 hallazgos BLOCKING y 3 MAJOR:
+falta del registro de entrega D21, un PASS de revisión prematuro en este informe, los
+reembolsos no pagados en caja, la base de facturación al distribuidor y el acoplamiento
+de la suite adversaria al estado de revisión. Las correcciones se aplicaron y la
+auditoría fue repetida sobre el commit corregido `573d65a`; el auditor concedió
+**PASS_INTERNAL_FINANCIAL_SCOPE**, con 13 de 16 hallazgos cerrados y 3 no bloqueantes
+abiertos (2 MINOR, 1 INFORMATIONAL). La firma cubre únicamente el alcance financiero
+interno.
 
 El veredicto de fondo sigue siendo **PARTIAL** porque falta evidencia comercial y de
 aprovisionamiento externa: 0 cotizaciones formales, 0 contratos, 0 derechos de licencia
@@ -210,13 +212,12 @@ Resultados clave:
   `test:bundles`, `test:brand`, `test:market`, `test:customer-research`,
   `test:customer-recovery`, `test:i18n`, `test:commerce`, `test:seo`, `test:backup`,
   `format:check`, `build`, `test:e2e`, `npm audit` y `git diff --check`: todos PASS.
-- Revisión independiente: el auditor (agente distinto del autor) emitió `PARTIAL` sobre
-  el commit congelado `7dfb56d` con 16 hallazgos (2 BLOCKING, 3 MAJOR, 8 MINOR, 3
-  INFORMATIONAL), todos abiertos. Se aplicaron correcciones de código, datos y
-  documentación (reembolsos en caja, base de distribuidor, suite desacoplada,
-  linaje, contrato, conteos y estado de revisión) y se solicitó la re-verificación; el
-  registro final se publica en `review/MC-13-REVIEW.md` y
-  `data/review-findings.json`.
+- Revisión independiente: el auditor (agente distinto del autor) revisó primero el
+  commit congelado `7dfb56d` (veredicto `PARTIAL`, 16 hallazgos) y, tras las
+  correcciones, re-verificó el commit `573d65a` y concedió
+  `PASS_INTERNAL_FINANCIAL_SCOPE`: 13 hallazgos cerrados, 0 BLOCKING/MAJOR abiertos y
+  3 no bloqueantes abiertos (F-05 MINOR, F-11 MINOR, F-14 INFORMATIONAL). El registro
+  completo está en `review/MC-13-REVIEW.md` y `data/review-findings.json`.
 - La primera auditoría también recomputó de forma independiente el modelo completo
   (61 series × 60 periodos, 0 discrepancias), 24/24 casos de tensión, 70 umbrales,
   90/90 escenarios MC-11 y 208 cifras documentales.
@@ -257,7 +258,7 @@ consecuencias financieras de lanzamientos bloqueados.
 
 ```text
 MC13_VERDICT = PARTIAL
-MC13_INTERNAL_FINANCIAL_SCOPE = PENDING_REAUDIT
+MC13_INTERNAL_FINANCIAL_SCOPE = PASS_INTERNAL_FINANCIAL_SCOPE
 MC13_60_MONTH_MODEL = IMPLEMENTED
 MC13_12_36_60_RECONCILIATION = PASS
 MC13_CASHFLOW_VALIDATED = PASS_INTERNAL_SCOPE
@@ -265,7 +266,7 @@ MC13_FINANCING_REQUIREMENT_MODEL = CONDITIONAL_HYPOTHETICAL
 MC13_BREAK_EVEN_STATUS = CONDITIONAL_HYPOTHETICAL_ONLY
 MC13_CUSTOMER_DEMAND_EVIDENCE = NONE
 MC13_EXTERNAL_COMMERCIAL_VALIDATION = BLOCKED_OR_NOT_OBTAINED
-MC13_INDEPENDENT_REVIEW = PARTIAL_WITHHELD_PENDING_REAUDIT
+MC13_INDEPENDENT_REVIEW = PASS_INTERNAL_FINANCIAL_SCOPE
 
 MC12_VERDICT = PARTIAL
 MC12_INTERNAL_ECONOMICS_SCOPE = PASS_INTERNAL_ECONOMICS_SCOPE

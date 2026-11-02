@@ -9,8 +9,9 @@
 | Predecessor PR | [#19](https://github.com/manuelxose/embarcarte/pull/19), open, draft, unmerged |
 | Draft PR | [#20](https://github.com/manuelxose/embarcarte/pull/20), stacked on `feature/marea-mc12-recurring-data-unit-economics`, open, draft, unmerged |
 | Initial audited commit | `7dfb56dddfa20939605129d51c1a203d3e325cc6` (`7dfb56d`) |
-| Correction commit | recorded in `data/review-findings.json` `finalRecordCommit` and in PR #20 |
-| Verdict | `MC13_VERDICT = PARTIAL`; internal financial scope withheld until independent re-verification; external commercial validation `BLOCKED_OR_NOT_OBTAINED` |
+| Corrected audited commit | `573d65a4e1f3c3799350691a6e698e97f5e483c1` (`573d65a`) |
+| Final record commit | recorded in `data/review-findings.json` `finalRecordCommit` and in PR #20 |
+| Verdict | `MC13_VERDICT = PARTIAL`; `MC13_INTERNAL_FINANCIAL_SCOPE = PASS_INTERNAL_FINANCIAL_SCOPE`; external commercial validation `BLOCKED_OR_NOT_OBTAINED` |
 
 ## 1. Scope delivered
 
@@ -94,7 +95,7 @@ return.
 
 | Command | Result |
 |---|---|
-| `npm run test:financial` | 77 checks — expected 77/77 at the final record (initial audit: 71/73) |
+| `npm run test:financial` | 77 checks — **77/77 PASS** |
 | `npm run test:financial:unit` | 29 tests — 29/29 (decoupled positive control) |
 | `npm run test:economics` / `:unit` | PASS |
 | `npm run test:hardware` / `:unit` | PASS |
@@ -140,10 +141,15 @@ Corrections applied before re-freezing:
 - documentation copies of blocker severity, subscription headroom and stress semantics
   were corrected.
 
-The auditor re-verifies the corrected commit independently (recomputation, its own
-mutation harness, 208-claim reconciliation, validator and unit suite) before any
-internal-scope sign-off. The final verdict and finding closure are recorded in
-`review/MC-13-REVIEW.md` and `data/review-findings.json`.
+The auditor re-verified corrected commit `573d65a` independently (61 series × 60
+periods, 12/36/60 views, 24/24 stress cases, 70 thresholds, 197/197 document claims,
+19/19 own mutations, 90/90 MC-11 scenarios and 13/13 inherited unit costs): 0
+mismatches, builder current, unit suite 29/29 and validator 77/77 with the regenerated
+manifest. Verdict: `PASS_INTERNAL_FINANCIAL_SCOPE`; 13 of 16 findings closed, 0
+BLOCKING/MAJOR open, 3 non-blocking open (F-05 MINOR contract/id mapping, F-11 MINOR
+per-unit average/D13 wording, F-14 INFORMATIONAL CI not running the financial gate).
+The PASS covers the internal analytical scope only; external commercial evidence
+remains `BLOCKED_OR_NOT_OBTAINED`.
 
 ## 7. Prohibited actions asserted absent
 
@@ -173,7 +179,7 @@ hardware, safety gating, trademark filing or MC-14 execution.
 
 ```text
 MC13_VERDICT = PARTIAL
-MC13_INTERNAL_FINANCIAL_SCOPE = PENDING_REAUDIT
+MC13_INTERNAL_FINANCIAL_SCOPE = PASS_INTERNAL_FINANCIAL_SCOPE
 MC13_60_MONTH_MODEL = IMPLEMENTED
 MC13_12_36_60_RECONCILIATION = PASS
 MC13_CASHFLOW_VALIDATED = PASS_INTERNAL_SCOPE
@@ -181,7 +187,7 @@ MC13_FINANCING_REQUIREMENT_MODEL = CONDITIONAL_HYPOTHETICAL
 MC13_BREAK_EVEN_STATUS = CONDITIONAL_HYPOTHETICAL_ONLY
 MC13_CUSTOMER_DEMAND_EVIDENCE = NONE
 MC13_EXTERNAL_COMMERCIAL_VALIDATION = BLOCKED_OR_NOT_OBTAINED
-MC13_INDEPENDENT_REVIEW = PARTIAL_WITHHELD_PENDING_REAUDIT
+MC13_INDEPENDENT_REVIEW = PASS_INTERNAL_FINANCIAL_SCOPE
 
 MC12_VERDICT = PARTIAL
 MC12_INTERNAL_ECONOMICS_SCOPE = PASS_INTERNAL_ECONOMICS_SCOPE

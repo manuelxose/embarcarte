@@ -6,425 +6,430 @@
   "owner": "independent-auditor",
   "currency": "EUR",
   "asOf": "2026-11-02",
-  "reviewedCommit": "7dfb56dddfa20939605129d51c1a203d3e325cc6",
+  "reviewedCommit": "573d65a4e1f3c3799350691a6e698e97f5e483c1",
   "reviewedBranch": "feature/marea-mc13-financial-model-cashflow-break-even",
   "baseCommit": "e59a8b9b3916d979d8eaeff78acd3795fd26c125",
-  "verdict": "PARTIAL",
-  "verdictDetail": "The 60-period integrated model, the 12/36/60 views, the cash/VAT/inventory/working-capital identities, the 24 stress cases and the conditional break-even thresholds recompute exactly from the curated inputs (0 mismatches) and the COST-16 tooling invariant holds. The frozen candidate is nevertheless NOT approved: the mandatory delivery record D21 MC-13-DELIVERY.md is absent so the gate is 71/73 (D-02 fails) and the unit-suite positive control fails; the adversarial suite is additionally state-dependent and cannot reach 29/29 at the final record; the Spanish executive report asserts an independent-review PASS that was never awarded and contradicts the manifest and the MC-14 handoff; the refund/returns allowance is never settled as cash, which overstates cash and reverses the direction of stress ST-07; and distributor receivables/invoiced cash are computed at full list price x 1.21 without the declared 35% distributor margin. External commercial evidence is BLOCKED_OR_NOT_OBTAINED by design and is not counted as a defect.",
+  "previouslyReviewedCommit": "7dfb56dddfa20939605129d51c1a203d3e325cc6",
+  "verdict": "PASS_INTERNAL_FINANCIAL_SCOPE",
+  "verdictDetail": "Re-verification of the corrected frozen candidate 573d65a: the independent model (rebuilding all four scenarios from the curated inputs, with refunds settled in cash and the channel-adjusted distributor trade price) reproduces every committed column, the 12/36/60 views and all 24 stress cases with 0 mismatches; the 60-period accounting identities hold; the COST-16 tooling invariant and the MC-12 inherited costs are intact; A-27/A-28/S-12/D-11 catch the corrected defects when re-mutated; the builder is current, the validator reports 77 checks and the adversarial suite is 29/29. The 16 first-audit findings are closed except three non-blocking items kept OPEN with explicit reasons (F-05 contract A-15 formula/check-id mapping still not fully synchronised; F-11 the per-unit metric is a static base-case average and one D13 statement contradicts the data; F-14 CI does not run the financial gate). External commercial evidence remains BLOCKED_OR_NOT_OBTAINED by design and is not a defect. PASS_INTERNAL_FINANCIAL_SCOPE is awarded for the internal financial scope only; no price, commercial availability, financing approval, break-even verification or MC-14 execution is implied. finalRecordCommit stays null until the Lead records this re-issued audit in the record commit and updates the manifest status block, D20 and the registry row to the awarded verdict.",
   "findingCounts": {
     "total": 16,
     "blocking": 2,
     "major": 3,
     "minor": 8,
     "informational": 3,
-    "open": 16
+    "open": 3,
+    "closed": 13
   },
   "independentRecomputation": {
-    "description": "Auditor-written model (throw-away scripts under %TEMP%\\mc13-audit, not committed, importing no MC-13 code) that rebuilds every scenario from docs/marea/financial/data/{assumptions,revenue-drivers,recurring-revenue,operating-costs,capital-investments,working-capital,scenario-definitions}.json and compares its output with the committed derived files. Every compared array, view and stress result matched within the contract tolerance of +/-0.005 EUR; a second pass verified the accounting identities directly on the committed columns. The defects below were then found by economic re-derivation beyond the committed arithmetic.",
-    "periods": "60 periods per scenario; 4 scenarios (RESTRICTED_CURRENT, DOWNSIDE, BASE_HYPOTHETICAL, UPSIDE_HYPOTHETICAL); 58 monetary/quantity column series plus 3 per-SKU maps per hypothetical scenario; 12/36/60 views.",
-    "comparedNumericSeries": 61,
+    "description": "Auditor-written model under %TEMP%\\mc13-audit (not committed, importing no MC-13 code) rebuilt all scenarios from docs/marea/financial/data/{assumptions,revenue-drivers,recurring-revenue,operating-costs,capital-investments,working-capital,scenario-definitions}.json with the corrected refunds-cash and channel-adjusted distributor rules. It compared 61 numeric column series x 60 periods, the 12/36/60 views, all 24 stress cases, the 70 break-even thresholds and the COST-16/MC-12 inheritance against the committed derived files. A second pass verified the accounting identities directly on the committed columns and reconciled 197 numeric claims from the human-readable documents.",
+    "periods": "60 periods per scenario; 4 scenarios; 61 column series per hypothetical scenario; 12/36/60 views.",
     "comparisonMismatches": 0,
     "recomputedM60TotalsEur": {
       "DOWNSIDE": {
         "grossInvoicedRevenue": 463955.96,
+        "refundsAllowance": 8018.35,
+        "refundsCash": 8018.35,
         "netRecognizedRevenue": 367050.26,
         "knownVariableContribution": 150666.06,
         "ebitdaLikeConditional": -2630259.3,
-        "operatingCashFlow": -2572640.77,
-        "netCashFlow": -3075765.77,
-        "cumulativeCashBalance": -3075765.77,
-        "financingRequirement": 3075765.77,
+        "operatingCashFlow": -2578677.04,
+        "netCashFlow": -3081802.04,
+        "cumulativeCashBalance": -3081802.04,
+        "financingRequirement": 3081802.04,
         "capexCash": 503125
       },
       "BASE_HYPOTHETICAL": {
         "grossInvoicedRevenue": 4397543.08,
+        "refundsAllowance": 62381.43,
+        "refundsCash": 62381.43,
         "netRecognizedRevenue": 3426647.12,
         "knownVariableContribution": 1688226.86,
         "ebitdaLikeConditional": -618061.78,
-        "operatingCashFlow": -12978.92,
-        "netCashFlow": -415478.92,
-        "cumulativeCashBalance": -415478.92,
-        "financingRequirement": 987326.73,
-        "capexCash": 402500
+        "operatingCashFlow": -62378.15,
+        "netCashFlow": -464878.15,
+        "cumulativeCashBalance": -464878.15,
+        "financingRequirement": 995185.23,
+        "capexCash": 402500,
+        "tradeReceivablesEnd": 15068.64,
+        "distributorInvoicedTotal": 373369.81,
+        "cashReceiptsGross": 4320093.01,
+        "cashCollectionsNetOfVat": 4002334.08
       },
       "UPSIDE_HYPOTHETICAL": {
         "grossInvoicedRevenue": 13130674.77,
+        "refundsAllowance": 162941.7,
+        "refundsCash": 162941.7,
         "netRecognizedRevenue": 10148301.82,
         "knownVariableContribution": 5475105.86,
         "ebitdaLikeConditional": 3963913.46,
-        "operatingCashFlow": 5782889.18,
-        "netCashFlow": 5440764.18,
-        "cumulativeCashBalance": 5440764.18,
-        "financingRequirement": 632135.66,
+        "operatingCashFlow": 5653142.86,
+        "netCashFlow": 5311017.86,
+        "cumulativeCashBalance": 5311017.86,
+        "financingRequirement": 621240.91,
         "capexCash": 342125
       },
       "RESTRICTED_CURRENT": {
         "authorizedRevenue": 0,
         "monetaryCostAndCashColumns": null,
-        "note": "60 periods; revenue and masks zero; cogs, opex, EBITDA-like, cash, cumulative cash and financing columns null with suppression reason."
+        "note": "60 periods; authorized revenue, output VAT and strictly zero-revenue derivatives evidenced as 0; cost/cash/financing columns null with suppression reason."
       }
     },
     "identitiesVerified": [
-      "grossInvoicedRevenue - refundsAllowance - vatOutput = netRecognizedRevenue (max monthly round-off deviation 0.03 EUR, within tolerance)",
-      "netRecognizedRevenue = hardwareRevenueNet + subscriptionRevenueNet",
-      "vatOutput = hardwareVatOutput + subscriptionVatOutput",
-      "tradeReceivablesEnd[m] = tradeReceivablesEnd[m-1] + distributorInvoicedGross[m] - distributorCollectionsGross[m] (0 deviation)",
-      "cashReceiptsGross = directReceiptsGross + distributorCollectionsGross + subscriptionCashGross (0 deviation)",
-      "cashCollectionsNetOfVat = cashReceiptsGross - vatPaid",
-      "inventoryUnitsEnd = inventoryUnitsBegin + receiptsUnits - unitsSold - writeOffsUnits, never negative (exact integers)",
-      "cogsHardware = sum(units by SKU x declared unit cost) (0 deviation)",
-      "inventoryPurchasesCash = inventoryReceiptsCost + delta(prepayments) - delta(payables) (max monthly deviation 0.03 EUR)",
-      "vatPaid recomputed with one-month lag, recoverable input VAT and credit carry-forward (0 deviation)",
-      "operatingCashFlow = ebitdaLikeConditional - workingCapitalMovement (0 deviation) and equals the direct cash route cashReceiptsGross - vatPaid - software - paymentFees - carrying - fixedOpex - purchasesCash (0 deviation)",
-      "netCashFlow = operatingCashFlow + investingCashFlow; investingCashFlow = -capexCash",
-      "0 + sum(netCashFlow) = cumulativeCashBalance (0 deviation)",
-      "financingRequirement = running max(max(0, -cumulativeCashBalance)) (0 deviation)",
-      "deferredRevenueEnd[m] = deferredRevenueEnd[m-1] + subscriptionCashNet - subscriptionRevenueNet (0 deviation)",
-      "12/36/60 view totals recomputed from the monthly arrays (26 view fields x 3 views x 3 scenarios, 0 mismatches)"
+      "refundsCash = refundsAllowance in every month of every hypothetical scenario (A-27)",
+      "cashReceiptsGross = directReceiptsGross + distributorCollectionsGross + subscriptionCashGross - refundsCash (A-06)",
+      "distributorInvoicedGross = units x price x distributorShare x (1 - 35% margin) in every month (max deviation 0.02 EUR; A-28)",
+      "grossInvoicedRevenue - refundsAllowance - vatOutput - netRecognizedRevenue = delta(deferredRevenueEnd) (A-03/A-08)",
+      "cogsHardware = sum(units by SKU x declared unit cost); inventory unit identity exact and never negative; purchases cash = receipts cost + delta(prepayments) - delta(payables)",
+      "vatPaid recomputed with one-month lag, recoverable input VAT and credit carry-forward",
+      "operatingCashFlow = ebitdaLikeConditional - workingCapitalMovement and equals cashReceiptsGross - vatPaid - software - paymentFees - carrying - fixedOpex - purchasesCash",
+      "netCashFlow = operatingCashFlow + investingCashFlow; investingCashFlow = -capexCash; 0 + sum(netCashFlow) = cumulativeCashBalance",
+      "financingRequirement = running max(max(0, -cumulativeCashBalance)); deferred-revenue identity; 12/36/60 view totals",
+      "COST-16: MC-11 reconciliation 90/90, max subtotal delta 0.00, tooling never in variable cost; MC-13 capex includes tooling/NRE 37,500 at M02 BASE with 36-month amortisation (cumulative M12 124,444.44 / M36 390,069.38 / M60 402,499.93); 13/13 inherited MC-12 unit costs unchanged"
     ],
-    "stressRecomputation": "All 24 cases rebuilt from the base scenario plus declared overrides; financingRequirementEur, cumulativeCashEndEur, fundingEnvelopeEur, unitsSold and the M12/M36/M60 view fields matched the committed stress file exactly (0 mismatches). All 32 individual override applications change at least one result: ST-11 cloud 2x (cumulative-cash delta -30,069.13), ST-12 cellular 0.375/device-month (-11,877.45), ST-20 funding envelope halved 2,000,000 -> 1,000,000 (no cash change by design; envelope/gap field changes), ST-23 compound adverse (-842,746.92), ST-24 positive monthly contribution at M60 (32,355.27) with no cash recovery and funding gap 21,059.52.",
-    "breakEvenRecomputation": "70 thresholds; 0 VERIFIED; 14 NOT_DETERMINABLE; 56 CONDITIONAL_HYPOTHETICAL_THRESHOLD. Operating/cash-flow/cumulative-recovery/financing thresholds recomputed from the committed columns match the stored values for DOWNSIDE, BASE_HYPOTHETICAL and UPSIDE_HYPOTHETICAL (BASE operating M39, cash-flow M23, no recovery; UPSIDE M15/M11/M23; DOWNSIDE none). No NAV, WEATHER or PILOT threshold asserts a numeric value while the material input is UNKNOWN; RESTRICTED_CURRENT operating break-even is NOT_DETERMINABLE.",
-    "cost16AndInheritance": "MC-11 reconciliation: 90/90 scenarios, max abs subtotal delta 0.00 EUR, tooling repeat field mismatch 0, tooling inside variable cost 0, negative tooling 0. MC-13 capital schedule includes tooling/NRE 37,500.00 EUR as capex at M02 BASE and amortises it over 36 months (cumulative amortisation M12 124,444.44, M36 390,069.38, M60 402,499.93); contribution excludes amortisation; all 13 inherited hardware/subscription unit costs equal their MC-12 unit-economics records.",
-    "docsReconciliation": "208 explicit numeric claims in MC13-WORKING-CAPITAL-AND-CASHFLOW.md, MC13-GENERATED-FIGURES.md, MC13-SENSITIVITY-AND-STRESS-TESTS.md and MC13-CAPEX-AND-FUNDING-REQUIREMENTS.md were checked against the governed JSON; all 208 matched. Two further documentation numeric mismatches were found (F-08 blocker severity counts, F-09 subscription headroom omitted channel factor).",
-    "defectsFoundOutsideCommittedArithmetic": [
-      "Refunds/returns allowance reduces revenue and VAT but is never paid as cash (F-03): BASE cumulative cash M60 -415,478.92 would be -477,860.35 (-62,381.43) and the financing requirement 987,326.73 would be 1,008,167.43 (+20,840.70); DOWNSIDE +8,018.35; UPSIDE -162,941.70. Stress ST-07 (refund allowance doubled to 6%) then becomes adverse: corrected cumulative cash -529,633.77 vs corrected base -477,860.35.",
-      "Distributor invoiced gross uses full list price x 1.21 without the declared 35% distributor margin (F-04): BASE distributor invoiced total 695,041.92 vs 373,369.78 channel-consistent, trade receivables end 28,050.84 vs 15,068.64, financing requirement 987,326.73 vs 974,344.53, cumulative cash M60 differs by 12,982.20; DOWNSIDE receivables 4,282.78 vs 2,300.66; UPSIDE 71,725.78 vs 38,530.38."
+    "stressRecomputation": "All 24 cases rebuilt from the base scenario plus declared overrides; financingRequirementEur, cumulativeCashEndEur, fundingEnvelopeEur, fundingGapEur, unitsSold and the M12/M36/M60 view fields matched exactly (0 mismatches). The corrected ST-07 is adverse: cumulative cash -516,651.57 and financing requirement 1,012,627.43 versus BASE -464,878.15 / 995,185.23, i.e. -51,773.42 cash and +17,442.20 financing; A-27 enforces the direction. ST-23 compound adverse (-1,357,393.37 cumulative cash / 1,417,316.26 financing); ST-24 keeps positive aggregate contribution at M60 (18,577.96 final-month; 508,512.77 cumulative) with no cash recovery and a 32,603.84 funding gap. All 32 individual override applications remain effective and the funding-envelope override (ST-20) is still detected.",
+    "breakEvenRecomputation": "70 thresholds, 0 VERIFIED, 14 NOT_DETERMINABLE, 56 CONDITIONAL_HYPOTHETICAL_THRESHOLD, 18 MINIMUM_GROSS_PRICE now counted in the summary. Operating/cash-flow/cumulative-recovery/financing months match the stored values (BASE M39/M23/no recovery; UPSIDE M15/M11/M23; DOWNSIDE none). No NAV/WEATHER/PILOT unit or price threshold asserts a numeric value while the material input is UNKNOWN.",
+    "docsReconciliation": "197 explicit numeric claims from MC13-WORKING-CAPITAL-AND-CASHFLOW.md, MC13-SENSITIVITY-AND-STRESS-TESTS.md, MC-13-DELIVERY.md, MC13-RECURRING-REVENUE-AND-SAAS-ECONOMICS.md, MC13-CAPEX-AND-FUNDING-REQUIREMENTS.md and MC13-EXECUTIVE-REPORT.md were checked against the governed JSON: 197/197 match, including the 9-view cash/financing table, all 24 stress rows (revenue, contribution, cumulative cash, financing, funding gap), the delivery-record headline and the break-even summary. Search for the pre-correction figures (-415,478.92 / 987,326.73 / 28,050.84 / 3,075,765.77 / 5,440,764.18 / 983,928.23 / -404,870.91 / 4,051,733.31) returns no hit in any non-review document.",
+    "correctionsVerified": [
+      "F-03: refunds are a cash outflow equal to the allowance (refundsCash alias), cash receipts are net of refunds, and the corrected figures match the auditor's first-audit prediction exactly (BASE -464,878.15 / 995,185.23; DOWNSIDE -3,081,802.04 / 3,081,802.04; UPSIDE 5,311,017.86 / 621,240.91).",
+      "F-04: distributor invoicing uses the channel-adjusted VAT-inclusive trade price; BASE receivables 15,068.64 and distributor invoiced 373,369.81, as predicted; A-28 recomputes it every month.",
+      "F-16: the unit suite is 29/29 with a synthetic final-record positive control and test 27 no longer asserts a live PENDING review."
     ]
   },
   "commands": [
     {
-      "command": "git rev-parse HEAD",
+      "command": "git rev-parse HEAD && git rev-parse --abbrev-ref HEAD && git status --porcelain",
       "exitCode": 0,
-      "result": "7dfb56dddfa20939605129d51c1a203d3e325cc6"
+      "result": "573d65a4e1f3c3799350691a6e698e97f5e483c1 on feature/marea-mc13-financial-model-cashflow-break-even; clean worktree before this review record"
     },
     {
-      "command": "git rev-parse --abbrev-ref HEAD && git status --porcelain",
+      "command": "git merge-base HEAD e59a8b9b3916d979d8eaeff78acd3795fd26c125 && git merge-base --is-ancestor 7dfb56d HEAD",
       "exitCode": 0,
-      "result": "feature/marea-mc13-financial-model-cashflow-break-even; clean worktree"
+      "result": "base e59a8b9b3916d979d8eaeff78acd3795fd26c125; 7dfb56d is an ancestor of 573d65a"
     },
     {
-      "command": "git merge-base HEAD e59a8b9b3916d979d8eaeff78acd3795fd26c125 && git merge-base --is-ancestor e59a8b9b3916d979d8eaeff78acd3795fd26c125 HEAD",
+      "command": "git ls-remote origin feature/marea-mc13-financial-model-cashflow-break-even && gh pr view 20 --json number,state,isDraft,mergeable,mergeStateStatus,mergedAt,headRefOid,baseRefOid",
       "exitCode": 0,
-      "result": "merge base e59a8b9b3916d979d8eaeff78acd3795fd26c125; ancestor exit 0"
+      "result": "remote head 573d65a (identical to local); PR #20 OPEN, draft, MERGEABLE, UNSTABLE, mergedAt null, base e59a8b9b"
     },
     {
-      "command": "git ls-remote origin feature/marea-mc13-financial-model-cashflow-break-even feature/marea-mc12-recurring-data-unit-economics",
+      "command": "git diff --stat 7dfb56d..573d65a && git diff --name-status 7dfb56d..573d65a",
       "exitCode": 0,
-      "result": "MC-13 remote head 7dfb56dddfa20939605129d51c1a203d3e325cc6 (identical to local); MC-12 branch e59a8b9b3916d979d8eaeff78acd3795fd26c125"
-    },
-    {
-      "command": "gh pr view 20 --json number,state,isDraft,mergeable,mergeStateStatus,mergedAt,baseRefName,baseRefOid,headRefName,headRefOid,title",
-      "exitCode": 0,
-      "result": "#20 state OPEN, isDraft true, mergeable MERGEABLE, mergeStateStatus UNSTABLE, mergedAt null, base feature/marea-mc12-recurring-data-unit-economics (e59a8b9b), head 7dfb56d"
-    },
-    {
-      "command": "gh pr checks 20",
-      "exitCode": 0,
-      "result": "1 check: 'Build, test and verify' pass (1m33s). The CI workflow does not run test:financial (see F-14)."
-    },
-    {
-      "command": "git diff --stat e59a8b9b3916d979d8eaeff78acd3795fd26c125..7dfb56dddfa20939605129d51c1a203d3e325cc6",
-      "exitCode": 0,
-      "result": "43 files, 71,303 insertions(+), 3 deletions: docs/marea/financial/** (19 new documents, 22 new data JSON, 4 new scripts), docs/marea/execution/DECISION-LOG.md (D-053..D-056), package.json (format list + test:financial scripts). No src/, deploy/, public/, commerce, price, route or public-catalogue change; no predecessor data modification."
+      "result": "31 files, +7217/-5534: 18 documents, 8 data JSON, engine/builder/validator/unit suite, D21 added, registry row 13 and decision log D-057, predecessor baseline untouched. No src/, deploy/, public/, commerce, price, route or public-catalogue change; package.json unchanged."
     },
     {
       "command": "node %TEMP%\\mc13-audit\\baseline-check.mjs <repo>",
       "exitCode": 0,
-      "result": "45/45 sha256 values in data/predecessor-baseline.json match the predecessor files; 0 changed, 0 missing"
+      "result": "45/45 predecessor SHA-256 values match; 0 changed, 0 missing"
     },
     {
-      "command": "node scripts/build-marea-financial-model.mjs --check",
+      "command": "node scripts/build-marea-financial-model.mjs --check (before this review record)",
       "exitCode": 0,
       "result": "MC-13 builder: 8 derived files are current."
     },
     {
-      "command": "node scripts/check-marea-financial-model.mjs --allow-pending-review",
+      "command": "node scripts/build-marea-financial-model.mjs --check (after this review record)",
       "exitCode": 1,
-      "result": "73 checks - 71 PASS / 2 FAIL: D-02 (MC-13-DELIVERY.md missing) and D-07 (independent recomputation not recorded; audit not completed). This is the pre-review state of the frozen commit."
+      "result": "MC-13 builder: stale derived files: manifest.json - expected, because manifest.json is itself a derived file and buildManifest() derives MC13_INDEPENDENT_REVIEW and MC13_INTERNAL_FINANCIAL_SCOPE from review-findings.json (build script lines 134-180). The record commit must run the builder in write mode, not hand-edit the manifest."
     },
     {
-      "command": "node --test scripts/check-marea-financial-model.test.mjs",
+      "command": "in-memory validation with buildManifest(review-findings.json) applied (i.e. manifest regenerated for verdict PASS_INTERNAL_FINANCIAL_SCOPE) and this review record",
+      "exitCode": 0,
+      "result": "77 checks - 77 PASS / 0 FAIL. This is exactly what the record commit achieves by running `node scripts/build-marea-financial-model.mjs` after committing this record."
+    },
+    {
+      "command": "node %TEMP%\\mc13-audit\\recompute.mjs <repo> <out573.json> (corrected rules)",
+      "exitCode": 0,
+      "result": "Independent recomputation: 61 series x 60 periods + 12/36/60 views + 24 stress cases + 70 thresholds: 0 mismatches; all identities hold; COST-16 and MC-12 inheritance pass."
+    },
+    {
+      "command": "node %TEMP%\\mc13-audit\\mutations2.mjs <repo>",
+      "exitCode": 0,
+      "result": "19/19 auditor mutations fail the intended validator check, including A-27 (refund cash zeroed; ST-07 direction reverted), A-28 (distributor double-VAT regression), S-12 (lineage emptied) and D-11 (document-level false PASS)."
+    },
+    {
+      "command": "node %TEMP%\\mc13-audit\\verify-claims-573.mjs <repo>",
+      "exitCode": 0,
+      "result": "197/197 document-to-JSON numeric claims match; refunds/cash/receivables/VAT/deferred identities verified; distributor invoice identity max deviation 0.02 EUR."
+    },
+    {
+      "command": "node scripts/check-marea-financial-model.mjs --allow-pending-review (at 573d65a with the first-audit record)",
       "exitCode": 1,
-      "result": "Pre-review state: tests 29 / pass 28 / fail 1 (the positive control 'unmutated governed data passes with allowPendingReview' fails with D-02, D-07; the 27 mutation tests and the regression control pass). Post-review-record state: tests 29 / pass 27 / fail 2 - test 27 fails its own control assertion that the live review verdict equals PENDING_INDEPENDENT_REVIEW, and the positive control still fails; see F-16."
+      "result": "77 checks - 75 PASS / 2 FAIL: V-19 and D-07 because the committed review record still listed the 16 first-audit findings OPEN. D-02 now PASSES (MC-13-DELIVERY.md present)."
     },
     {
-      "command": "node %TEMP%\\mc13-audit\\recompute.mjs <repo> <out.json>",
+      "command": "node --test scripts/check-marea-financial-model.test.mjs (at 573d65a)",
       "exitCode": 0,
-      "result": "Independent recomputation: 0 column/view mismatches; the three gross-refund-VAT-net checks exceeded 0.05 EUR only by per-SKU round-off (max 0.03 EUR); stress recomputation 0 mismatches; tooling/inheritance checks pass."
+      "result": "29 tests / 29 PASS, including test 27 and the synthetic final-record positive control."
     },
     {
-      "command": "node %TEMP%\\mc13-audit\\mutations.mjs <repo>",
-      "exitCode": 0,
-      "result": "14/14 auditor mutations fail the intended validator check; every one of the 32 declared stress-override applications changes at least one result; doc-level false-review claim is not detected (evidence for F-02)."
-    },
-    {
-      "command": "node %TEMP%\\mc13-audit\\verify-claims.mjs <repo>",
-      "exitCode": 0,
-      "result": "208/208 human-readable numeric claims match the governed JSON."
-    },
-    {
-      "command": "git diff --check e59a8b9b3916d979d8eaeff78acd3795fd26c125..7dfb56dddfa20939605129d51c1a203d3e325cc6",
-      "exitCode": 0,
-      "result": "no whitespace errors"
-    },
-    {
-      "command": "node scripts/check-marea-financial-model.mjs --allow-pending-review (after this review record was written)",
+      "command": "node scripts/check-marea-financial-model.mjs --allow-pending-review (after this re-issued review record)",
       "exitCode": 1,
-      "result": "73 checks - 70 PASS / 3 FAIL: D-02 (MC-13-DELIVERY.md missing), D-07 (2 open BLOCKING and 3 open MAJOR findings), V-19 (manifest statusBlock.MC13_INDEPENDENT_REVIEW still PENDING_INDEPENDENT_REVIEW, does not match the review verdict PARTIAL). The Lead must add D21, close F-01..F-04/F-16 and update the manifest in the record commit before a re-verification can reach 73/73."
+      "result": "77 checks - 76 PASS / 1 FAIL: only V-19, because data/manifest.json still carries MC13_INDEPENDENT_REVIEW = PARTIAL while the review now awards PASS_INTERNAL_FINANCIAL_SCOPE. This is the expected record-commit reconciliation step (manifest, D20, D21 status block and registry row 13 must be updated to the awarded verdict)."
+    },
+    {
+      "command": "in-memory validation with manifest.statusBlock MC13_INDEPENDENT_REVIEW/MC13_INTERNAL_FINANCIAL_SCOPE = PASS_INTERNAL_FINANCIAL_SCOPE and this review record",
+      "exitCode": 0,
+      "result": "77 checks - 77 PASS / 0 FAIL. The only remaining gate failure is the one-line record-commit manifest reconciliation."
     }
   ],
   "negativeControlEvidence": {
-    "method": "Auditor-written in-memory clones of the governed data passed to the committed validator; no repository file was written. Each mutation asserts that the validator fails and that the intended check id is among report.failures.",
+    "method": "Auditor-written in-memory clones of the corrected governed data passed to the committed validator; no repository file was written. Each mutation asserts that the validator fails and that the intended check id is among report.failures.",
     "mutations": [
       { "id": "M01", "mutation": "VAT added to netRecognizedRevenue", "failedChecks": ["A-03", "A-04", "A-02", "A-14", "A-17", "V-15"], "intendedCheckFailed": true },
-      { "id": "M02", "mutation": "Tooling/NRE duplicated in amortizationNonCash (+37,500) with no matching capex schedule", "failedChecks": ["A-18", "A-19"], "intendedCheckFailed": true },
-      { "id": "M03", "mutation": "Tooling/NRE (+375) embedded in the declared HUB-STANDARD variable unit cost", "failedChecks": ["A-24", "V-16", "A-20", "A-21", "A-22", "D-03"], "intendedCheckFailed": true },
-      { "id": "M04", "mutation": "Unknown data-licence cost ASM-MC13-049 set to 0 and status KNOWN", "failedChecks": ["V-12", "D-10"], "intendedCheckFailed": true },
-      { "id": "M05", "mutation": "Hardware priceHypothesis.status set to APPROVED", "failedChecks": ["V-01", "S-04"], "intendedCheckFailed": true },
-      { "id": "M06", "mutation": "PILOT safety gate bypassed (clearance month 3, PILOT-COASTAL enabled, demand profile added)", "failedChecks": ["S-09", "V-03", "S-08", "A-21", "A-22", "D-03", "D-10"], "intendedCheckFailed": true },
-      { "id": "M07", "mutation": "One model period removed from the monthly model", "failedChecks": ["A-01", "S-04", "A-02", "A-04", "A-07"], "intendedCheckFailed": true },
-      { "id": "M08", "mutation": "cumulativeCashBalance[9] shifted by +100", "failedChecks": ["A-13", "A-16"], "intendedCheckFailed": true },
-      { "id": "M09", "mutation": "tradeReceivablesEnd[5] shifted by +100", "failedChecks": ["A-06"], "intendedCheckFailed": true },
-      { "id": "M10", "mutation": "ST-11 cloudMultiplier override reverted to a no-op (1)", "failedChecks": ["A-26", "A-21", "A-22", "D-03"], "intendedCheckFailed": true },
-      { "id": "M11", "mutation": "review-findings.json set to PASS_INTERNAL_FINANCIAL_SCOPE with no independentRecomputation", "failedChecks": ["D-07", "V-19"], "intendedCheckFailed": true },
-      { "id": "M12", "mutation": "review-findings.json set to PASS with an open BLOCKING finding", "failedChecks": ["D-07", "V-19"], "intendedCheckFailed": true },
-      { "id": "M13", "mutation": "amortizationNonCash inflated above the capital schedule", "failedChecks": ["A-18", "A-19"], "intendedCheckFailed": true },
-      { "id": "M14", "mutation": "ST-12 cellular override reverted to the base 0.05 no-op", "failedChecks": ["A-26", "A-21", "A-22", "D-03"], "intendedCheckFailed": true }
+      { "id": "M02", "mutation": "Tooling/NRE duplicated in amortizationNonCash (+37,500)", "failedChecks": ["A-18", "A-19"], "intendedCheckFailed": true },
+      { "id": "M03", "mutation": "Tooling/NRE embedded in HUB-STANDARD variable unit cost", "failedChecks": ["A-24", "V-16", "A-20", "A-21", "A-22", "D-03"], "intendedCheckFailed": true },
+      { "id": "M04", "mutation": "Unknown data-licence cost ASM-MC13-049 zeroed", "failedChecks": ["V-12", "D-10"], "intendedCheckFailed": true },
+      { "id": "M05", "mutation": "Price hypothesis APPROVED", "failedChecks": ["V-01", "S-04"], "intendedCheckFailed": true },
+      { "id": "M06", "mutation": "PILOT safety gate bypassed", "failedChecks": ["S-09", "V-03", "S-08", "A-21", "A-22", "D-03", "D-10"], "intendedCheckFailed": true },
+      { "id": "M07", "mutation": "One model period removed", "failedChecks": ["A-01", "S-04", "A-02", "A-04", "A-07"], "intendedCheckFailed": true },
+      { "id": "M08", "mutation": "Cumulative-cash identity broken", "failedChecks": ["A-13", "A-16"], "intendedCheckFailed": true },
+      { "id": "M09", "mutation": "Trade-receivables identity broken", "failedChecks": ["A-06"], "intendedCheckFailed": true },
+      { "id": "M10", "mutation": "Cloud override made a no-op", "failedChecks": ["A-26", "A-21", "A-22", "D-03"], "intendedCheckFailed": true },
+      { "id": "M11", "mutation": "False reviewer PASS with no recomputation", "failedChecks": ["D-07", "V-19"], "intendedCheckFailed": true },
+      { "id": "M12", "mutation": "False reviewer PASS with an open BLOCKING finding", "failedChecks": ["D-07", "V-19"], "intendedCheckFailed": true },
+      { "id": "M13", "mutation": "Amortisation above the capital schedule", "failedChecks": ["A-18", "A-19"], "intendedCheckFailed": true },
+      { "id": "M14", "mutation": "Cellular override made a no-op", "failedChecks": ["A-26", "A-21", "A-22", "D-03"], "intendedCheckFailed": true },
+      { "id": "M15", "mutation": "Refund cash outflow zeroed", "failedChecks": ["A-27", "A-06"], "intendedCheckFailed": true },
+      { "id": "M16", "mutation": "Warranty stress reverted to the base refund rate", "failedChecks": ["A-27", "A-26", "A-21"], "intendedCheckFailed": true },
+      { "id": "M17", "mutation": "Distributor invoice reverted to full price x 1.21", "failedChecks": ["A-28", "A-06"], "intendedCheckFailed": true },
+      { "id": "M18", "mutation": "Scenario assumption lineage emptied", "failedChecks": ["S-12", "A-22"], "intendedCheckFailed": true },
+      { "id": "M19", "mutation": "Document asserts an unawarded review PASS", "failedChecks": ["D-11"], "intendedCheckFailed": true }
     ],
-    "refundCashControl": "Subtracting the refund allowance from cashReceiptsGross trips A-06 and A-14 because the committed identities contain no refund-cash column; the current gate therefore cannot detect the missing refund cash outflow (F-03). A correction must extend the contract identities, not only the data.",
-    "docLevelFalsePassControl": "Appending 'MC13_INDEPENDENT_REVIEW = PASS_INTERNAL_FINANCIAL_SCOPE' to MC13-SCENARIOS-12-36-60.md produced no new validator failure; the gate checks only review-findings.json and the manifest, so the premature PASS in MC13-EXECUTIVE-REPORT.md (F-02) is invisible to it."
+    "newCheckTargeting": "A-27, A-28, S-12 and D-11 were each exercised by a dedicated mutation and failed as intended; the corrected refunds and distributor rules were re-derived independently and match the committed results exactly, so the checks are not merely self-consistent with the engine.",
+    "note": "The mutation baseline still reports V-19/D-07 while the committed first-audit record lists open findings; after this record is committed, a false PASS mutation is isolated by M11/M12/M19."
   },
   "findings": [
     {
       "id": "F-01",
-      "title": "Mandatory delivery record D21 MC-13-DELIVERY.md is absent from the frozen commit and the records that reference it do not exist",
+      "title": "Mandatory delivery record D21 MC-13-DELIVERY.md was absent from the frozen commit and the records that reference it did not exist",
       "severity": "BLOCKING",
-      "status": "OPEN",
-      "evidence": "node scripts/check-marea-financial-model.mjs --allow-pending-review => 71/73, FAIL D-02 'MC-13-DELIVERY.md: missing'. node --test scripts/check-marea-financial-model.test.mjs => 28/29, the positive control fails with D-02. Contract MC13-FINANCIAL-DATA-CONTRACT.md §4.0 lists D21 as a canonical deliverable and §6 D-02 requires every required document to exist. DECISION-LOG.md D-054 and D-056 cite MC-13-DELIVERY.md and review/MC-13-REVIEW.md as evidence. MASTER-PROMPT-REGISTRY.md row 13 is still 'PLANNED' while rows 1-12 carry delivery evidence, unlike the MC-12 delivery commit fe97062 that updated row 12.",
-      "description": "The candidate cannot satisfy the delivery contract: the delivery record is missing, the master-prompt registry row for milestone 13 was not updated, and two decision-log entries cite artifacts that do not exist at the frozen commit. The required 73/73 gate result is unreachable in this state.",
-      "requiredCorrection": "Author MC-13-DELIVERY.md (D21) with the frozen commit, base, PR, commands/results, verdict and open findings; update MASTER-PROMPT-REGISTRY.md row 13 with the MC-13 status and gate evidence; correct the D-054/D-056 evidence references so they point only to artifacts that exist; include all of this in the record commit and re-freeze.",
+      "status": "CLOSED",
+      "evidence": "Re-verified at 573d65a: docs/marea/financial/MC-13-DELIVERY.md exists (198 lines, D21 inventory, scope, model coverage, headline results, automated results, audit/correction loop, prohibited actions, risks, status block); MASTER-PROMPT-REGISTRY.md row 13 is populated (IN PROGRESS - independent re-audit pending) instead of PLANNED; DECISION-LOG.md D-057 records the first-audit corrections; the validator D-02 check now PASSES (77-check run: D-02 not among failures).",
+      "description": "Missing mandatory delivery record and registry update made the gate unreachable at 7dfb56d.",
+      "requiredCorrection": "Add D21, update registry row 13 and correct decision-log references in the record commit.",
       "correctionOwner": "programme-lead",
-      "remediationEvidence": null,
-      "auditorReverification": "Re-run the validator (D-02 must PASS) and the unit suite positive control (must PASS); inspect the record commit for D21 and registry row 13.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "D21 added at 573d65a; registry row 13 updated; decision log D-057 added; D-02 PASS; registry row will move from IN PROGRESS to the final award when the Lead records this re-issued audit.",
+      "auditorReverification": "Inspected D21, registry row 13 and D-057; ran the 77-check validator and confirmed D-02 PASS.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F-02",
-      "title": "Spanish executive report asserts an independent-review PASS that was never awarded and contradicts the manifest and the MC-14 handoff",
+      "title": "Spanish executive report asserted an independent-review PASS that was never awarded and contradicted the manifest and the MC-14 handoff",
       "severity": "BLOCKING",
-      "status": "OPEN",
-      "evidence": "MC13-EXECUTIVE-REPORT.md lines 242-251: 'MC13_VERDICT = PARTIAL' together with 'MC13_INTERNAL_FINANCIAL_SCOPE = PASS_INTERNAL_FINANCIAL_SCOPE', 'MC13_CASHFLOW_VALIDATED = PASS_INTERNAL_SCOPE' and 'MC13_INDEPENDENT_REVIEW = PASS_INTERNAL_FINANCIAL_SCOPE', while the document's own text says the independent audit is pending (lines 200-202 'La revision independiente ... se registran en review/MC-13-REVIEW.md, data/review-findings.json y MC-13-DELIVERY.md'). At the frozen commit data/manifest.json statusBlock says MC13_INTERNAL_FINANCIAL_SCOPE = PENDING_INDEPENDENT_REVIEW and MC13_INDEPENDENT_REVIEW = PENDING_INDEPENDENT_REVIEW, data/review-findings.json verdict is PENDING_INDEPENDENT_REVIEW, and MC13-MC14-HANDOFF.md lines 48-59 correctly say PENDING_INDEPENDENT_REVIEW. Contract §4.1 requires the status block to equal the final delivery status block and the review record; U-08 and the programme truthfulness rules forbid asserting an unearned PASS. The auditor mutation 'doc-level false PASS' appended to a report produced no validator failure: the gate does not check document-level review claims (D-08 only checks MERGED/DEPLOYED/MC14, V-19 only reads review-findings.json and the manifest).",
-      "description": "The executive report self-approves the independent review before it happened, which is false evidence and directly contradicts the manifest, the handoff and the review placeholder. The gate cannot detect it, so a green or partially green run could be misread as an awarded PASS.",
-      "requiredCorrection": "In MC-13-EXECUTIVE-REPORT.md set MC13_INDEPENDENT_REVIEW and MC13_INTERNAL_FINANCIAL_SCOPE to PENDING_INDEPENDENT_REVIEW (or to the actual verdict recorded in review-findings.json after this audit) and remove the statement that review results are already recorded; keep the status block consistent with data/manifest.json. Add a validator guard that rejects a document asserting PASS_INTERNAL_FINANCIAL_SCOPE while the review record is PENDING or while open BLOCKING/MAJOR findings exist.",
+      "status": "CLOSED",
+      "evidence": "MC13-EXECUTIVE-REPORT.md now reads MC13_INTERNAL_FINANCIAL_SCOPE = PENDING_REAUDIT and MC13_INDEPENDENT_REVIEW = PARTIAL_WITHHELD_PENDING_REAUDIT, states the first audit emitted PARTIAL with 16 findings, and contains no PASS_INTERNAL_FINANCIAL_SCOPE claim. A new check D-11 rejects a document asserting an independent-review/internal-scope PASS that review-findings.json does not award; auditor mutation M19 (document PASS while the record is PARTIAL) fails D-11; the unmutated corrected commit passes D-11.",
+      "description": "Premature/false independent-review PASS in D20 contradicted the manifest and the review record.",
+      "requiredCorrection": "Make D20 report the actual review state and add a validator guard against document-level false PASS claims.",
       "correctionOwner": "programme-lead (document owner) with the financial-model reviewer",
-      "remediationEvidence": null,
-      "auditorReverification": "Diff the D20 status block against data/manifest.json.statusBlock and data/review-findings.json; re-run the gate and confirm a false doc-level PASS mutation now fails a named check.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "D20 status block corrected; D-11 added and exercised by auditor mutation M19. In the record commit the D20/D21 status blocks must be refreshed to the awarded PASS_INTERNAL_FINANCIAL_SCOPE (the interim PENDING_REAUDIT wording is honest and is superseded by this record).",
+      "auditorReverification": "Compared D20 against manifest/review record; reviewed the D-11 implementation; ran M19.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F-03",
-      "title": "Refund/returns allowance reduces revenue and VAT but is never paid in cash, overstating cash and the direction of an adverse stress case",
+      "title": "Refund/returns allowance reduced revenue and VAT but was never paid in cash, overstating cash and reversing the direction of an adverse stress case",
       "severity": "MAJOR",
-      "status": "OPEN",
-      "evidence": "Engine scripts/marea-financial-engine.mjs computes refundsAllowance from gross invoices and deducts it from net revenue and output VAT, but cashReceiptsGross stays gross of refunds and no refund cash outflow column exists. Correcting the cash flow by paying the allowance in the sale month: BASE cumulative cash M60 -415,478.92 -> -477,860.35 (-62,381.43, total refunds) and financing requirement 987,326.73 -> 1,008,167.43 (+20,840.70); DOWNSIDE -3,075,765.77 -> -3,083,784.12 and 3,075,765.77 -> 3,083,784.12; UPSIDE 5,440,764.18 -> 5,277,822.48 and 632,135.66 -> 635,750.07. Stress ST-07 (warranty/returns 6%) currently reports cumulativeCashDeltaVsBaseEur = +10,608.01 and financingRequirementDeltaVsBaseEur = -3,398.50, i.e. an adverse case improves cash and reduces the funding requirement; corrected, it is -51,773.42 versus the corrected base. MC13-WORKING-CAPITAL-AND-CASHFLOW.md §3.3 labels the allowance a 'non-cash deduction' while §9 claims 'higher returns reduce net revenue and cash' - the second statement is contradicted by the model.",
-      "description": "The refund treatment is economically inconsistent: it removes revenue and remitted VAT as if the sale had not happened, yet assumes the customer still pays the gross price and never refunds it. Cash and financing requirement are therefore overstated in favour of the candidate, and the ST-07 stress case is presented as adverse although it improves the computed cash position. The auditor cash-refund control shows the existing identities cannot absorb a refund-cash column, so the gate cannot see this defect.",
-      "requiredCorrection": "Decide and implement one consistent treatment: (a) preferred - add a refunds cash outflow (month of sale or a declared lag), reduce cash receipts and output VAT accordingly, extend the working-capital/cash identities and validator checks, regenerate all derived files and refresh every document figure and the ST-07 row; or (b) if refunds are to remain a non-cash allowance, stop reducing output VAT on refunded sales and restate the cash bridge, but then explain why collected cash is retained. Correct the contradictory D10 §9 statement and the ST-07 direction in every human-readable report.",
+      "status": "CLOSED",
+      "evidence": "At 573d65a the engine adds a refundsCash column equal to refundsAllowance, nets it inside cashReceiptsGross and carries it in the monthly model; A-27 checks refundsCash = refundsAllowance every month and that ST-07 worsens both cumulative cash and the financing requirement. Verified figures match the auditor's first-audit prediction exactly: BASE cumulative cash -464,878.15 and financing 995,185.23; DOWNSIDE -3,081,802.04 / 3,081,802.04; UPSIDE 5,311,017.86 / 621,240.91. ST-07 is adverse: cumulative cash -516,651.57 (-51,773.42 vs BASE) and financing 1,012,627.43 (+17,442.20). The independent model reproduces the new cash flow with 0 mismatches, and the docs now describe refunds as paid in cash (D10 §3.3/§9, D06, D05).",
+      "description": "Refunds were an accrual only, inflating cash and making ST-07 favourable.",
+      "requiredCorrection": "Settle refunds in cash, extend the identities/validator, regenerate derived files and documents.",
       "correctionOwner": "financial-model owner (engine + validator + data) with the documentation owner",
-      "remediationEvidence": null,
-      "auditorReverification": "Recompute cumulative cash and financing requirement with the corrected treatment, confirm ST-07 is adverse versus the corrected base and that the documents quote the corrected figures.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "refundsCash column, revised cashReceiptsGross identity, check A-27, regenerated data and updated documents; ST-07 adverse.",
+      "auditorReverification": "Independent recomputation of refunds/cash (0 mismatches), identity checks, A-27 mutation M15/M16, ST-07 direction confirmed.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F-04",
-      "title": "Distributor receivables and distributor invoiced gross use full list price x 1.21, ignoring the declared 35% distributor margin and double-counting VAT on a VAT-inclusive price",
+      "title": "Distributor receivables and distributor invoiced gross used full list price x 1.21, ignoring the declared 35% distributor margin and double-counting VAT on a VAT-inclusive price",
       "severity": "MAJOR",
-      "status": "OPEN",
-      "evidence": "Engine buildHardwareBlock: skuReceivable[m] = round2(units[m] * grossPrice * distributorShare * (1 + vat/100)) with grossPrice = priceHypothesis.grossAmountEur (vatBasis VAT_INCLUDED) and channel mix DISTRIBUTOR_RETAIL 25% share / 35% revenue deduction. For HUB-STANDARD the modelled distributor invoice is 0.25 x 349 x 1.21 = 105.57 EUR/unit while the channel-consistent figure is 0.25 x 349 x 0.65 = 56.71 EUR/unit. Channel-consistent correction: BASE distributor invoiced total 695,041.92 -> 373,369.78, trade receivables M60 28,050.84 -> 15,068.64, financing requirement 987,326.73 -> 974,344.53 and cumulative cash M60 -415,478.92 -> -402,496.72 (12,982.20 timing difference from the uncollected last two months); DOWNSIDE receivables 4,282.78 -> 2,300.66 and UPSIDE 71,725.78 -> 38,530.38. Total cash over an extended horizon is conserved because direct receipts are correspondingly understated, so this is an allocation/timing error rather than a double count of total cash.",
-      "description": "The distributor invoice basis is wrong twice (margin not applied, VAT added to an already VAT-inclusive price). It materially overstates two published columns (trade receivables by 46%, distributor invoiced gross by 86% in BASE), understates direct receipts and distorts the collection timing used for the financing-requirement trough. The internal receivables identity still balances because both sides use the same wrong invoice basis, so the gate passes it.",
-      "requiredCorrection": "Compute distributor invoiced/collected cash from the channel-adjusted gross (apply the declared distributor margin once, no second VAT gross-up), regenerate the monthly model, scenario results, stress tests, generated figures and the receivables tables/bridges in the documents, and add a validator check tying distributorInvoicedGross to the declared channel share/margin and VAT basis.",
+      "status": "CLOSED",
+      "evidence": "At 573d65a skuReceivable = units x grossPrice x distributorShare x (1 - distributorMarginPct/100), i.e. the channel-adjusted VAT-inclusive trade price; A-28 recomputes it every month from the declared channel share and margin. Verified: BASE distributor invoiced total 373,369.81, trade receivables M60 15,068.64 (was 28,050.84), consistent with the auditor's independent correction; the independent model and the monthly A-28 identity agree within 0.02 EUR; the documents (D10 receivables table, D05 cash bridge, D21 headline) carry the corrected figures.",
+      "description": "Distributor invoice basis double-counted VAT and omitted the 35% margin.",
+      "requiredCorrection": "Use the channel-adjusted trade price, regenerate derived files/documents and add a validator check.",
       "correctionOwner": "financial-model owner (engine + validator + data) with the documentation owner",
-      "remediationEvidence": null,
-      "auditorReverification": "Recompute HUB-STANDARD distributor invoice per unit, the BASE/DOWNSIDE/UPSIDE receivables series and the financing requirement; verify the new validator check catches a re-applied VAT gross-up.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "Channel-adjusted skuReceivable, check A-28, regenerated receipts/receivables/financing figures and updated documents.",
+      "auditorReverification": "Independent recomputation (0 mismatches), A-28 mutation M17, receivables and financing values re-derived.",
+      "finalStatus": "CLOSED_VERIFIED"
+    },
+    {
+      "id": "F-16",
+      "title": "Adversarial unit suite was coupled to the live review state and could not pass 29/29 at the final record",
+      "severity": "MAJOR",
+      "status": "CLOSED",
+      "evidence": "At 573d65a scripts/check-marea-financial-model.test.mjs passes 29/29: test 27 no longer asserts a live PENDING verdict and the positive control uses a synthetic fully recorded final state. Auditor run: `node --test scripts/check-marea-financial-model.test.mjs` -> tests 29, pass 29, fail 0, exit 0.",
+      "description": "Suite state-coupling made the advertised 29/29 unreachable.",
+      "requiredCorrection": "Decouple test 27 and make the positive control independent of the repository review state.",
+      "correctionOwner": "financial-model owner (validator/test author)",
+      "remediationEvidence": "Test fixture change in the correction commit; 29/29 reproduced by the auditor at 573d65a.",
+      "auditorReverification": "Ran the suite; inspected that test 27 builds its own fixture and the positive control is synthetic.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F-05",
-      "title": "Financial data contract §6 is stale and internally inconsistent with the implemented gate",
+      "title": "Financial data contract §6 was stale and internally inconsistent with the implemented gate",
       "severity": "MINOR",
       "status": "OPEN",
-      "evidence": "MC13-FINANCIAL-DATA-CONTRACT.md §6 states 'The implemented contract contains 71 checks'; the validator reports 73. Contract A-15 says operatingCashFlow = ebitdaLike - workingCapitalMovement - paymentFees, while §4.9 says payment fees are already inside the conditional contribution and must not be subtracted again; the implementation follows §4.9. The contract's A-13..A-25 identifiers are renumbered in the implementation (contract A-14 opening cash = implementation A-13; contract A-15 operating cash = implementation A-14; contract A-22 stress = implementation A-21; contract A-23 views = implementation A-22; contract A-25 negative economics = implementation A-23), and the implementation adds A-26, so check-id traceability between contract and gate is broken.",
-      "description": "The governing contract no longer describes the implemented validator. Reviewers and future milestones cannot rely on the check identifiers, and the contract's own operating-cash formula contradicts its economics section.",
-      "requiredCorrection": "Update §6 to the 73 implemented checks with the actual identifiers and behaviours, correct the A-15 formula to match §4.9, and state that adding checks is non-breaking while removing/renaming requires a contractVersion bump and decision-log entry.",
+      "evidence": "Partially corrected: the contract now states 77 checks and documents S-12, A-27, A-28 and D-11. However A-15 still reads `operatingCashFlow = ebitdaLike − workingCapitalMovement − paymentFees` (line 484) although §4.9 of the same contract says payment fees are already inside the conditional contribution and must not be subtracted twice (the implementation follows §4.9); and the contract's A-13..A-23 identifiers remain misaligned with the implemented ids (contract A-13 VAT lag = implementation A-12; contract A-14 opening cash = implementation A-13; contract A-15 operating cash = implementation A-14; contract A-16 net cash = implementation A-15; contract A-17 financing = implementation A-16; contract A-18 contribution = implementation A-17; contract A-19 D&A = implementation A-18; contract A-20 capex = implementation A-19; contract A-21 break-even = implementation A-20; contract A-22 stress = implementation A-21; contract A-23 views = implementation A-22; contract A-25 negative economics = implementation A-23).",
+      "description": "The check count is synchronised but one formula still contradicts the economics section and the A-13..A-23 mapping remains inconsistent, so check-id traceability between contract and gate is still broken. Non-blocking documentation defect; kept OPEN with this explicit reason.",
+      "requiredCorrection": "Correct the A-15 row to `operatingCashFlow = ebitdaLike − workingCapitalMovement` (payment fees already in the contribution, not subtracted twice) and either renumber the contract arithmetic table to the implemented ids or add an explicit mapping table in §6.",
       "correctionOwner": "financial-architecture (contract owner)",
       "remediationEvidence": null,
-      "auditorReverification": "Diff contract §6 against `node scripts/check-marea-financial-model.mjs --json` check ids/descriptions; confirm no formula contradiction remains.",
+      "auditorReverification": "Re-diff contract §6 against `node scripts/check-marea-financial-model.mjs --json` ids and the §4.9 formula.",
       "finalStatus": "OPEN"
     },
     {
       "id": "F-06",
-      "title": "Scenario definitions declare empty scenarioAssumptionIds and portfolio break-even thresholds carry empty inputAssumptionIds, weakening lineage for 125 scenario assumptions",
+      "title": "Scenario definitions declared empty scenarioAssumptionIds and portfolio break-even thresholds carried empty inputAssumptionIds",
       "severity": "MINOR",
-      "status": "OPEN",
-      "evidence": "data/scenario-definitions.json: scenarioAssumptionIds = [] for RESTRICTED_CURRENT, DOWNSIDE, BASE_HYPOTHETICAL and UPSIDE_HYPOTHETICAL while assumptions.json has 125 SCENARIO_ASSUMPTION records. data/break-even-thresholds.json: the operating/cash-flow/cumulative/financing portfolio thresholds have inputAssumptionIds = [] (engine buildBreakEven reads scenario.scenarioAssumptionIds). Contract §4.10 requires scenarioAssumptionIds[] and §4.13 requires inputAssumptionIds[]; the fields exist but are empty, so the documented lineage is nominal only.",
-      "description": "The 125 illustrative scenario assumptions are not linked from the scenario definitions, and the threshold register cannot show which assumptions produced each conditional threshold. This is a traceability weakness rather than a wrong number.",
-      "requiredCorrection": "Populate scenarioAssumptionIds with the scenario's demand, churn, renewal, activation, channel, clearance and opex assumptions, and have the break-even thresholds derive inputAssumptionIds from them; add a validator check that the arrays are non-empty for hypothetical scenarios.",
+      "status": "CLOSED",
+      "evidence": "At 573d65a data/scenario-definitions.json populates scenarioAssumptionIds (9 ids for RESTRICTED_CURRENT; 29 per hypothetical scenario covering clearance, channel mix, demand profiles and cohort rates) and a new check S-12 rejects empty lineage in hypothetical scenarios and in OPERATING_BREAK_EVEN/FINANCING_REQUIREMENT/CUMULATIVE_CASH_RECOVERY thresholds. Portfolio thresholds now carry inputAssumptionIds and the fixed-cost units threshold carries scenarioAssumptionIds. S-12 passes on the corrected commit; auditor mutation M18 (empty lineage) fails S-12.",
+      "description": "125 scenario assumptions were not linked from the scenario definitions.",
+      "requiredCorrection": "Populate the lineage and add a validator check.",
       "correctionOwner": "financial-model owner",
-      "remediationEvidence": null,
-      "auditorReverification": "Confirm every scenario has non-empty assumption ids and every conditional threshold resolves at least one assumption id.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "Populated scenarioAssumptionIds/inputAssumptionIds plus check S-12; regenerated break-even-thresholds.json.",
+      "auditorReverification": "Inspected the populated arrays, ran S-12 and mutation M18.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F-07",
-      "title": "cohortAssumptions lacks the deferredRevenueRefundPct field required by the contract",
+      "title": "cohortAssumptions lacked the deferredRevenueRefundPct field required by the contract",
       "severity": "MINOR",
-      "status": "OPEN",
-      "evidence": "MC13-FINANCIAL-DATA-CONTRACT.md §4.5 requires per-scenario cohortAssumptions { annualRenewalRate, monthlyChurnRate, activationRate, deferredRevenueRefundPct }. data/recurring-revenue.json declares only the first three per scenario and records the refund policy separately in deferredRevenuePolicy.refundOnChurnPct = 0.",
-      "description": "The declared record shape diverges from the contract; a consumer looking for deferredRevenueRefundPct in cohortAssumptions will not find it, even though the policy value exists elsewhere.",
-      "requiredCorrection": "Either add deferredRevenueRefundPct to each cohortAssumptions block (0) or amend contract §4.5 to point to deferredRevenuePolicy.refundOnChurnPct and document the change.",
+      "status": "CLOSED",
+      "evidence": "At 573d65a each per-scenario cohortAssumptions block carries deferredRevenueRefundPct: 0 (data/recurring-revenue.json lines 39/45/51), and D07 documents it.",
+      "description": "Record shape diverged from contract §4.5.",
+      "requiredCorrection": "Add the field or amend the contract.",
       "correctionOwner": "saas-economics (record owner)",
-      "remediationEvidence": null,
-      "auditorReverification": "Schema check against §4.5 or the amended contract.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "deferredRevenueRefundPct: 0 added to all three scenarios.",
+      "auditorReverification": "Read data/recurring-revenue.json and D07.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F-08",
-      "title": "Capex/funding document states the wrong blocker severity split",
+      "title": "Capex/funding document stated the wrong blocker severity split",
       "severity": "MINOR",
-      "status": "OPEN",
-      "evidence": "MC13-CAPEX-AND-FUNDING-REQUIREMENTS.md line 224: 'All 14 register blockers are OPEN (8 BLOCKING, 6 MAJOR)'. data/blocker-register.json has 14 blockers, all OPEN, but 9 BLOCKING (FIN-01, -02, -03, -04, -06, -07, -11, -13, -14) and 5 MAJOR (FIN-05, -08, -09, -10, -12). MC13-UNKNOWN-COSTS-AND-COMMERCIAL-BLOCKERS.md line 83 states the correct '9 blocking, 5 major, 14 open'.",
-      "description": "A documentation numeric claim contradicts the governed data and another MC-13 document. It does not change any financial result but is an evidence-integrity defect.",
-      "requiredCorrection": "Correct the severity split in MC13-CAPEX-AND-FUNDING-REQUIREMENTS.md to 9 BLOCKING / 5 MAJOR (or derive it from blocker-register.json at generation time).",
+      "status": "CLOSED",
+      "evidence": "MC13-CAPEX-AND-FUNDING-REQUIREMENTS.md now says 14 blockers OPEN (9 BLOCKING, 5 MAJOR), matching data/blocker-register.json and D15.",
+      "description": "Documentation claim contradicted the blocker register.",
+      "requiredCorrection": "Correct the split to 9/5.",
       "correctionOwner": "financial-model documentation owner",
-      "remediationEvidence": null,
-      "auditorReverification": "Recount severities from blocker-register.json and compare every document statement.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "D09 text corrected.",
+      "auditorReverification": "Recounted severities from blocker-register.json and compared D09/D15/D21.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F-09",
-      "title": "Subscription headroom figures omit the declared subscription channel factor and contradict the same document's own table",
+      "title": "Subscription headroom figures omitted the declared subscription channel factor and contradicted the same document's own table",
       "severity": "MINOR",
-      "status": "OPEN",
-      "evidence": "MC13-RECURRING-REVENUE-AND-SAAS-ECONOMICS.md line 72 states pre-licence headroom 'EUR 71.39 / 110.72 for NAV and EUR 35.05 / 66.51 for WEATHER per account-year'. Those values are (gross price / 1.21) - known direct cost and omit the declared subscription channel factor 0.94: NAV-ESSENTIAL = 99 x 0.94 / 1.21 - 10.43 = 66.48, NAV-PRO = 103.33, WEATHER-STANDARD = 32.62, WEATHER-PRO = 62.10. The same document's §4 table (lines 60-68) correctly shows net per period 76.91 / 115.75 / 38.07 / 69.14, which minus direct cost gives the 66.48 / 103.33 / 32.62 / 62.10 above - so line 72 contradicts the document's own table.",
-      "description": "A numeric claim in a human-readable report is not data-derived and overstates subscription headroom by about 7%, which matters because the argument is that the unknown data licence could exceed the headroom. Direction is unchanged but the numbers are wrong.",
-      "requiredCorrection": "Replace the four headroom figures with the data-derived values (66.48 / 103.33 / 32.62 / 62.10) or derive them from break-even inputs at generation time.",
+      "status": "CLOSED",
+      "evidence": "D07 now states channel-adjusted headroom 66.48 / 103.33 / 32.62 / 62.10 / 79.24 (NAV-ESSENTIAL, NAV-PRO, WEATHER-STANDARD, WEATHER-PRO, WATCH-MONITORING; plus FLEET 550.92/905.52 in the table), consistent with its §4 net-per-period table and the auditor's data-derived values; the old 71.39/110.72/35.05/66.51 figures are gone.",
+      "description": "Headroom figures ignored the 6% subscription channel deduction.",
+      "requiredCorrection": "Replace with channel-adjusted values.",
       "correctionOwner": "saas-economics (document owner)",
-      "remediationEvidence": null,
-      "auditorReverification": "Recompute from annual gross price, channel factor and VAT, minus known direct cost.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "D07 corrected and regenerated tables.",
+      "auditorReverification": "Recomputed from annual gross price, channel factor 0.94 and VAT, minus known direct cost.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F-10",
-      "title": "Break-even summary counts omit the MINIMUM_GROSS_PRICE threshold type",
+      "title": "Break-even summary counts omitted the MINIMUM_GROSS_PRICE threshold type",
       "severity": "MINOR",
-      "status": "OPEN",
-      "evidence": "data/break-even-thresholds.json summary type counts are UNIT_CONTRIBUTION_ZERO 36, OPERATING_BREAK_EVEN 6, CASH_FLOW_BREAK_EVEN 3, CUMULATIVE_CASH_RECOVERY 3, FINANCING_REQUIREMENT 4 = 52, while the file contains 70 thresholds; the missing 18 are MINIMUM_GROSS_PRICE records (6 SKUs x 3 hypothetical scenarios). MC13-CONDITIONAL-BREAK-EVEN-ANALYSIS.md states the correct total 70.",
-      "description": "The machine-readable summary under-reports its own contents; a consumer summing the summary would understate the threshold register by 18 records.",
-      "requiredCorrection": "Add a minimumGrossPrice count to the summary (or a total field that equals the array length) in the engine and regenerate.",
+      "status": "CLOSED",
+      "evidence": "data/break-even-thresholds.json summary now includes minimumGrossPrice: 18; the type counts sum to 70 (36+6+3+3+4+18) and the total matches thresholds.length (70).",
+      "description": "Summary under-reported its own contents by 18 records.",
+      "requiredCorrection": "Add the count in the engine and regenerate.",
       "correctionOwner": "financial-model owner",
-      "remediationEvidence": null,
-      "auditorReverification": "Sum of summary counts equals thresholds.length (70).",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "Engine summary extended; data regenerated.",
+      "auditorReverification": "Summed summary counts and compared with the array length.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F-11",
-      "title": "unitContributionStillPositive measures monthly aggregate contribution, not per-unit contribution, and the reports call it 'contribucion unitaria'",
+      "title": "unitContributionStillPositive measured monthly aggregate contribution and the reports called it per-unit",
       "severity": "MINOR",
       "status": "OPEN",
-      "evidence": "Engine runStressCase: unitContributionStillPositive = knownVariableContribution[HORIZON-1] > 0, i.e. the month-60 aggregate variable contribution. stress-tests.json summary reports 23/24 true and MC13-EXECUTIVE-REPORT.md lines 175-177 and MC13-SENSITIVITY-AND-STRESS-TESTS.md present this as 'contribucion unitaria' together with a cumulative contribution figure (ST-24: 508,512.77). Several SKUs have negative per-unit contribution (HUB-STANDARD -20.10, AIS-RECEIVER -95.11, SENSE-ENTRY-SYMBOLIC -14.22), so the portfolio aggregate can be positive while the per-unit claim is unsupported.",
-      "description": "The field name and the Spanish wording promise a per-unit metric but the computation is a monthly aggregate. The demonstrated ST-24 behaviour (positive aggregate contribution with no cash recovery) is still true, but the label is misleading and could be read as claiming positive unit economics for every product.",
-      "requiredCorrection": "Rename the field/flag to reflect the actual aggregate metric (e.g. monthlyContributionPositive or aggregateContributionPositive) or compute a genuine per-unit contribution metric; update D13/D20 wording and the generated register.",
+      "evidence": "Partially corrected: stress results now expose averageUnitContributionEur, unitContributionStillPositive (average per-unit contribution) and aggregateContributionPositive (monthly aggregate), and D13/D20 distinguish per-unit from aggregate. Two residual defects remain: (a) the average unit contribution is computed from base prices/costs with the BASE channel factor and does not apply the stress overrides, so averageUnitContributionEur is 35.81 in all 24 cases - including ST-21 (selling prices -15%) and ST-01/ST-02 (hardware cost +20%/+40%) - and 'Per-unit contribution positive' is therefore always true and adds no case-specific evidence; (b) D13 records 'no (0.00)' for ST-17's unit-contribution column and explains that the flag 'treats non-negative as positive', but data/stress-tests.json has unitContributionStillPositive = true for ST-17 because the static average is 35.81, not because of a zero comparison - the table value and the explanation contradict the data.",
+      "description": "The original semantics defect is largely addressed but the per-unit metric is not case-specific and one document statement is wrong. Non-blocking; kept OPEN with this explicit reason.",
+      "requiredCorrection": "Apply the declared stress overrides (selling price, hardware/material/FX/yield multipliers, channel margin) when computing averageUnitContributionEur, or relabel it explicitly as a base-case average; correct D13's ST-17 row and §3 note so the table, the explanation and stress-tests.json agree.",
       "correctionOwner": "financial-model owner with the documentation owner",
       "remediationEvidence": null,
-      "auditorReverification": "Check the renamed field definition and all document wording against the stress-tests.json value.",
+      "auditorReverification": "Compare averageUnitContributionEur across cases where price/cost overrides apply; check D13 ST-17 row against stress-tests.json.",
       "finalStatus": "OPEN"
     },
     {
       "id": "F-12",
-      "title": "RESTRICTED_CURRENT monetary cash/tax columns are stored as zero rather than null as required by contract §4.9",
+      "title": "RESTRICTED_CURRENT monetary cash/tax columns were stored as zero rather than null as required by contract §4.9",
       "severity": "MINOR",
-      "status": "OPEN",
-      "evidence": "MC13-FINANCIAL-DATA-CONTRACT.md §4.9 requires RESTRICTED_CURRENT monetary cost/cash columns to be null with suppression reasons. data/monthly-financial-model.json RESTRICTED_CURRENT stores cashReceiptsGross, tradeReceivablesEnd, vatCollected, vatOutput and refundsAllowance as 60 zeros, while cogsHardware, fixedOpexEnvelope, EBITDA-like, operating/net/cumulative cash and financing are null. The zero revenue masks and grossInvoicedRevenue = 0 are explicitly required by the same paragraph, so the text is partly self-contradictory.",
-      "description": "A literal contract reader sees non-null monetary columns in the restricted case. The zeros are economically correct (no authorized revenue means no collections or receivables), but the contract text and the data disagree.",
-      "requiredCorrection": "Clarify §4.9: revenue, refunds, VAT output and collections derived from the zero authorized revenue are zero; cost, expense, cash balance and financing columns are null/unknown. Optionally store the former as zero with an explicit note, or null them and derive zero from the mask.",
+      "status": "CLOSED",
+      "evidence": "Contract §4.9 now states: RESTRICTED_CURRENT has 60 periods with authorizedForSaleMask all 0; authorized revenue, output VAT and other strictly zero-revenue derivatives are stored as evidenced 0, while cost, cash and financing columns are null with a suppression reason (a zero authorized sale is a known zero, not an unknown). The data matches this wording.",
+      "description": "Contract text and the restricted columns disagreed.",
+      "requiredCorrection": "Clarify the evidenced-zero versus null distinction.",
       "correctionOwner": "financial-architecture (contract owner)",
-      "remediationEvidence": null,
-      "auditorReverification": "Compare the amended §4.9 text with the restricted columns.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "Contract §4.9 clarified; no data change needed.",
+      "auditorReverification": "Compared §4.9 wording with the restricted columns.",
+      "finalStatus": "CLOSED_VERIFIED"
     },
     {
       "id": "F-13",
-      "title": "Manifest evidenceCounts cover 152 of 153 assumption records because the OFFICIAL_LICENSING_DOCUMENT category is not counted",
+      "title": "Manifest evidenceCounts covered 152 of 153 assumption records because the OFFICIAL_LICENSING_DOCUMENT category was not counted",
       "severity": "INFORMATIONAL",
-      "status": "OPEN",
-      "evidence": "data/assumptions.json contains 153 records: 125 SCENARIO_ASSUMPTION, 11 ENGINEERING_ASSUMPTION, 7 PUBLISHED_TARIFF, 1 INHERITED_ASSUMPTION, 1 VERIFIED_OBSERVED, 7 UNKNOWN and 1 OFFICIAL_LICENSING_DOCUMENT (ASM-MC13-002). data/manifest.json evidenceCounts lists every category except the official licensing document, so its declared categories total 152. The contract's §4.1 evidenceCounts schema also has no official-document field.",
-      "description": "A small completeness gap in the evidence inventory; no financial output depends on it.",
-      "requiredCorrection": "Add an officialLicensingDocuments count (value 1) to the manifest and contract schema, or document why that class is excluded from the inventory.",
+      "status": "CLOSED",
+      "evidence": "At 573d65a manifest.evidenceCounts includes officialLicensingDocuments: 1 and sums to 153 (125 scenario + 11 engineering + 7 published tariff + 1 official licensing + 1 inherited + 1 verified + 7 unknown); the builder counts the class and D21 states the 153-record breakdown.",
+      "description": "Evidence inventory completeness gap.",
+      "requiredCorrection": "Add the count to the manifest and builder.",
       "correctionOwner": "financial-architecture",
-      "remediationEvidence": null,
-      "auditorReverification": "Recount evidence classes and compare with the manifest.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "officialLicensingDocuments added to the builder/manifest; data regenerated.",
+      "auditorReverification": "Recounted assumption classes and compared the manifest.",
+      "finalStatus": "CLOSED_INFORMATIONAL"
     },
     {
       "id": "F-14",
-      "title": "CI workflows do not execute the MC-13 financial gate, so the passing PR check does not evidence the 73-check gate",
+      "title": "CI workflows do not execute the MC-13 financial gate, so the passing PR check does not evidence the 77-check gate",
       "severity": "INFORMATIONAL",
       "status": "OPEN",
-      "evidence": ".github/workflows/ci.yml runs test:i18n, test:commerce, test:seo, test:backup, test:brand, test:brand:unit and test:e2e only; neither test:economics nor test:financial nor test:financial:unit is wired. gh pr checks 20 reports the single 'Build, test and verify' check as pass, and mergeStateStatus is UNSTABLE. S-10 only checks that package.json exposes the scripts.",
-      "description": "The green CI signal on PR #20 does not include the milestone gate; MC-13 acceptance depends on the manually run commands documented in this review. This is a process risk rather than a data defect.",
-      "requiredCorrection": "Add npm run test:financial and npm run test:financial:unit (and the inherited economics gates) to the CI workflow, or explicitly record in the delivery record that the MC-13 gate is run manually and that the CI check does not cover it.",
+      "evidence": ".github/workflows/ci.yml still runs only test:i18n, test:commerce, test:seo, test:backup, test:brand and test:e2e; test:financial and test:financial:unit are not wired. D21 §8 and §5 now explicitly disclose that CI does not run test:financial and that the MC-13 gate is run manually; the PR check remains a build/test signal only. No blocking or major finding depends on it.",
+      "description": "Process risk, truthfully disclosed in the delivery record; kept OPEN with this explicit reason rather than silently closed.",
+      "requiredCorrection": "Optionally add test:financial and test:financial:unit to CI; otherwise the disclosure in D21 must be retained.",
       "correctionOwner": "programme-lead / build-and-verification",
-      "remediationEvidence": null,
-      "auditorReverification": "Inspect the workflow and the delivery record statement.",
+      "remediationEvidence": "Disclosure added to D21 §8 (accepted risk).",
+      "auditorReverification": "Inspected ci.yml and D21 §8.",
       "finalStatus": "OPEN"
     },
     {
       "id": "F-15",
       "title": "Disclosed model simplifications: input VAT recovered only on inventory receipts; refunds are hardware-only; opening cash is an analysis convention",
       "severity": "INFORMATIONAL",
-      "status": "OPEN",
-      "evidence": "Engine inputVat = inventoryReceiptsCost x 21% x 100%; VAT on opex, software and capex is neither recovered nor paid. refundsAllowance is hardware-only while the MC-12 subscription direct cost already contains a returns line (disclosed in MC13-RECURRING-REVENUE-AND-SAAS-ECONOMICS.md §4 and §11). Opening cash is 0 by ASM-MC13-044 while the real company position is UNKNOWN.",
-      "description": "These are declared modelling choices that make the conditional financing requirement conservative in some directions and incomplete in others; they are not concealed. They must remain explicit residual risks and may not be presented as complete economics.",
-      "requiredCorrection": "None required for this verdict if the disclosures are retained; keep the statements in the delivery record and the executive report.",
+      "status": "CLOSED",
+      "evidence": "D21 §8, D10 §5/§9, D06 and D05 retain the disclosures: input VAT recovered on inventory receipts only; refunds are hardware-only while the MC-12 subscription direct cost contains a returns line (D05 explains the non-double-deduction); opening cash is 0 by ASM-MC13-044 with the company position UNKNOWN; the M60 VAT balance is paid in M61 outside the horizon. These remain residual risks, not concealed.",
+      "description": "Declared modelling simplifications that must stay explicit.",
+      "requiredCorrection": "None required; retain the disclosures.",
       "correctionOwner": "financial-model owner",
-      "remediationEvidence": null,
-      "auditorReverification": "Confirm the disclosures survive the correction commits.",
-      "finalStatus": "OPEN"
-    },
-    {
-      "id": "F-16",
-      "title": "Adversarial unit suite is coupled to the live review state and cannot pass 29/29 at the final record; the positive control already fails at the frozen commit",
-      "severity": "MAJOR",
-      "status": "OPEN",
-      "evidence": "scripts/check-marea-financial-model.test.mjs test 27 asserts 'control: the audit starts pending' - assert.equal(review.verdict, 'PENDING_INDEPENDENT_REVIEW') - and then mutates the live data.reviewFindings record. Runner results: at the frozen commit 28/29 pass and the positive control fails with D-02, D-07; after this review record was written 27/29 pass, with test 27 failing its own control assertion and the positive control still failing with V-19, D-02, D-07. MC13-EXECUTIVE-REPORT.md §I claims 'Suite adversaria: npm run test:financial:unit - 29 pruebas ... cada mutacion falla exactamente en el control previsto', but the suite as committed is red and the claimed 29/29 is unreachable even after the delivery record is added, because test 27 will always fail once a genuine review verdict is recorded.",
-      "description": "The negative-control suite cannot certify the final state: one test depends on the repository review record being PENDING rather than constructing its own fixture, and the positive control cannot pass while the mandatory delivery record is missing. The milestone requirement of 29/29 is therefore not met and cannot be met without a test change, regardless of the financial model.",
-      "requiredCorrection": "Refactor test 27 to inject a synthetic pending-review fixture (working on a clone with reviewFindings overridden) so the negative control is independent of the repository review state; keep the positive control asserting a genuine 73/73 at the final record (requires F-01 and the final verdict/manifest reconciliation); after the corrections re-run `node --test scripts/check-marea-financial-model.test.mjs` and record 29/29 with the exact output in the delivery record.",
-      "correctionOwner": "financial-model owner (validator/test author)",
-      "remediationEvidence": null,
-      "auditorReverification": "Run the suite at the final record state and confirm 29/29 with the positive control and test 27 independent of live data; inspect the diff for the fixture change.",
-      "finalStatus": "OPEN"
+      "remediationEvidence": "Disclosures present in D21 §8 and the analytical documents after the corrections.",
+      "auditorReverification": "Read the corrected documents and confirmed the disclosures survive.",
+      "finalStatus": "CLOSED_INFORMATIONAL"
     }
   ],
   "residualRisks": [
     "External commercial evidence is BLOCKED_OR_NOT_OBTAINED by design: 0 formal supplier quotations, 0 executed contracts, 0 granted licensing rights, 0 customer evidence, CUSTOMER_WTP_VALIDATED = false. Every revenue, contribution, cash and break-even figure is a conditional output of labelled scenario assumptions, not a forecast.",
     "Named unknown costs are excluded from the conditional result: data licence, product-liability insurance, CRA/security lifecycle, FLEET onboarding/DPA/SLA, CAC, validated churn/renewal, willingness to pay and the company cash/funding position. The true financing requirement is higher than every figure reported.",
-    "Opening cash is zero by analysis convention (ASM-MC13-044); the real EMBARCARTE cash position is UNKNOWN, so cumulative cash and financing requirement cannot be interpreted as the actual funding need until the opening position is known.",
-    "VAT treatment is an illustration (21% Spain, 100% recoverable input VAT on inventory receipts only, one-month lag); M60 VAT balances are paid in M61, outside the horizon, and no tax adviser has confirmed the treatment.",
-    "Demand, churn, renewal, activation, channel mix and operating-cost envelopes are ILLUSTRATIVE SCENARIO_ASSUMPTIONS; there is no validated demand and no probability is assigned to any scenario.",
-    "The 60-month horizon truncates collections: with a 2-period distributor lag the last two months of distributor invoices are not collected within the horizon, so M60 cumulative cash contains a timing artifact (28,050.84 EUR in BASE even before the F-04 correction).",
-    "FX exposure is inherited as an engineering assumption (MC-11 basis) and no hedge exists; the FX gap is disclosed, not closed (decision D-053).",
+    "Opening cash is zero by analysis convention (ASM-MC13-044); the real EMBARCARTE cash position is UNKNOWN.",
+    "VAT is an illustration (21% Spain, 100% recoverable input VAT on inventory receipts only, one-month lag); the M60 VAT balance is paid in M61 outside the horizon and no tax adviser has confirmed the treatment.",
+    "Demand, churn, renewal, activation, channel mix and operating-cost envelopes are illustrative scenario assumptions with no probability; no validated demand exists.",
+    "The 60-month horizon truncates collections: with a 2-period distributor lag the last two months of distributor invoices are not collected within the horizon (15,068.64 EUR of BASE receivables at M60).",
+    "FX exposure is inherited as an engineering assumption (MC-11 basis) and no hedge exists; the gap is disclosed, not closed (D-053).",
     "Break-even thresholds are CONDITIONAL_HYPOTHETICAL_THRESHOLD or NOT_DETERMINABLE; 0 are VERIFIED. No document may promote them to a verified break-even, profitability, investment-return or launch statement.",
-    "The refund-cash and distributor-basis corrections (F-03, F-04) will change the reported cash, financing requirement and receivables; any document not regenerated afterwards becomes inconsistent.",
-    "The gate cannot currently detect a document-level false review PASS (F-02) or a missing refund-cash column (F-03); the auditor exercised both as negative controls, so process discipline plus the required validator changes are needed.",
-    "The adversarial unit suite is not independent of the repository review state (F-16): the positive control fails at the frozen commit and test 27 fails once a genuine verdict is recorded, so the claimed 29/29 cannot be reproduced and the suite cannot currently certify a final record."
+    "Refunds are modelled as paid in the sale month (no lag), equal to the allowance (A-27); a real return lag or a different measured return rate would move the financing requirement.",
+    "The corrected distributor/trade-price model conserves total cash over the horizon but still depends on the declared 60-day distributor term and 35% margin, which are scenario assumptions.",
+    "The per-unit contribution metric is still a static base-case average (F-11) and the contract check-id mapping/A-15 formula still needs a documentation fix (F-05).",
+    "CI does not run the financial gate (F-14); the PR check does not evidence the 77-check run."
   ],
   "whatWouldChangeVerdict": [
-    "F-01: author MC-13-DELIVERY.md, update MASTER-PROMPT-REGISTRY.md row 13 and correct the decision-log evidence references in a record commit; then D-02 and the unit-suite positive control pass.",
-    "F-02: make the MC13-EXECUTIVE-REPORT.md status block equal the manifest/review verdict (PENDING_INTERNAL or the actual verdict), remove the unearned PASS, and add a validator guard against document-level false PASS claims.",
-    "F-03: settle refunds in cash (or otherwise make the treatment internally consistent), regenerate all derived files and documents, and confirm ST-07 is adverse versus the corrected base.",
-    "F-04: compute distributor invoiced/collected cash from the channel-adjusted gross price, regenerate the derived files and documents, and confirm the receivables and financing-requirement figures.",
-    "F-05..F-12 and F-13..F-16 are documentation/traceability/process/testing matters: they do not by themselves block PASS_INTERNAL_FINANCIAL_SCOPE, but the contract/validator inconsistencies in F-05, the figure corrections in F-08/F-09 and the state-dependent test suite (F-16) must be fixed in the same record commit so the gate and its unit suite can reach 73/73 and 29/29.",
-    "After corrections are committed and re-frozen (new head SHA), the auditor re-runs the independent recomputation, the 14-mutation harness, the 208-claim reconciliation and the gate; PASS_INTERNAL_FINANCIAL_SCOPE is awarded only if no BLOCKING/MAJOR finding remains open and the gate is 73/73 with the manifest/status block reconciled to the actual review verdict.",
-    "External commercial evidence is not required to change this verdict: PASS_INTERNAL_FINANCIAL_SCOPE covers the internal analytical scope only, and MC13_EXTERNAL_COMMERCIAL_VALIDATION must stay BLOCKED_OR_NOT_OBTAINED."
+    "The Lead records this re-issued audit in the record commit: commit review/MC-13-REVIEW.md and data/review-findings.json, then run `node scripts/build-marea-financial-model.mjs` (write mode) so the derived manifest.json is regenerated from the awarded verdict (MC13_INDEPENDENT_REVIEW and MC13_INTERNAL_FINANCIAL_SCOPE become PASS_INTERNAL_FINANCIAL_SCOPE while MC13_VERDICT stays PARTIAL), refresh the D20/D21 status blocks and registry row 13, record finalRecordCommit and freeze the record commit. In-memory validation with the regenerated manifest already yields 77/77, and `--check` becomes current again.",
+    "If a future change modifies the engine, data or documents after 573d65a, the recomputation, the 19-mutation harness and the 197-claim reconciliation must be re-run against the new frozen SHA.",
+    "If F-05/F-11 are corrected in the record commit (contract A-15/id mapping; case-specific average unit contribution and D13 ST-17 wording), those findings close; they are non-blocking and do not affect this PASS.",
+    "If CI is wired to test:financial/test:financial:unit, F-14 can be closed as resolved; otherwise the D21 disclosure must stay.",
+    "Any regression of the refunds-cash, distributor-invoice, lineage or doc-level-PASS invariants (A-27/A-28/S-12/D-11) would reopen this audit, because those checks were specifically added for the first-audit findings.",
+    "External commercial evidence is not required to change this verdict: PASS_INTERNAL_FINANCIAL_SCOPE covers the internal analytical scope only and MC13_EXTERNAL_COMMERCIAL_VALIDATION must remain BLOCKED_OR_NOT_OBTAINED."
   ],
   "finalRecordCommit": null
 }
