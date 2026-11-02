@@ -23,16 +23,26 @@ import { fileURLToPath } from 'node:url';
  * - a rate with a zero denominator, or a qualitative sample sold as a census
  * - quotations without recorded permission in any attribution form (blockquote,
  *   dash with or without an article, reverse-order reporting verb with or
- *   without a comma, parenthetical role) and quantifier-less observation claims
- *   that would imply an interview which never happened (CR-62); every
- *   P-MC10-### reference in a document must resolve to a valid interview record
- *   with recorded permission
+ *   without a comma, parenthetical role, straight/curly/guillemet marks) and
+ *   quantifier-less observation, participant-count, percentage or customer-
+ *   preference claims that would imply field work which never happened (CR-62);
+ *   every P-MC10-### reference in a document must resolve to a valid interview
+ *   record with recorded permission
  * - personal data, contact data, audio or verbatim transcripts in the repository
  * - participant or interview content in the application layers (CR-47 scans
  *   contents, not only filenames)
  * - commercial claims: availability, sale, distribution, pilot, price approval
  * - product/bundle readiness upgrades or a weakened governance invariant
  * - a review that does not exist or that issues a primary-research PASS
+ *
+ * CR-62 language coverage (MC-10R): the attribution vocabulary covers English,
+ * Spanish and Portuguese role nouns and reporting verbs, and the quotation rules
+ * cover straight, curly and guillemet marks. This is a deterministic lexical
+ * heuristic, not proof that a document contains no fabricated evidence: forms
+ * outside the documented lexicon can still pass, so an independent human review
+ * remains required. The covered forms and the known limits are recorded in the
+ * MC-10R addendum of the data-contract document. No rule here replaces recorded
+ * consent or a real interview record.
  *
  * Usage:
  *   node scripts/check-marea-customer-research.mjs [--root <dir>] [--json]
@@ -486,64 +496,136 @@ const QUOTE_CLAIM_RULES = [
   },
 ];
 
-/** Attribution subjects used by the narrative-fabrication check CR-62. */
+/**
+ * Attribution subjects used by the narrative-fabrication check CR-62.
+ *
+ * MC-10R extends the original English list with Spanish and Portuguese role
+ * nouns (with gender/number variants) because the study instruments are ES/EN
+ * and a PT version is prepared. This is a lexical heuristic, not proof that a
+ * document contains no fabricated evidence: the documented scope is recorded in
+ * the MC-10R data-contract addendum and the module header.
+ */
 const NARRATIVE_ATTRIBUTION =
-  '(?:participants?|owners?|installers?|retailers?|charter operators?|operators?|managers?|customers?|respondents?|interviewees?|P-MC10-\\d{3})';
-const NARRATIVE_ATTRIBUTION_RE = new RegExp(`\\b${NARRATIVE_ATTRIBUTION}\\b`, 'i');
+  '(?:participants?|owners?|installers?|retailers?|charter operators?|operators?|managers?|customers?|respondents?|interviewees?|' +
+  'dueñ(?:o|a|os|as)|propietari(?:o|a|os|as)|armador(?:a|as|es)?|patrón|patrona|patrones|patronas|instalador(?:a|as|es)?|' +
+  'minorista(?:s)?|comerciante(?:s)?|operador(?:a|as|es)?|gerente(?:s)? de marina|gestor(?:a|as|es)? de flota|' +
+  'proprietári(?:o|a|os|as)|retalhista(?:s)?|gestor(?:a|as|es)? de frota|' +
+  'entrevistad(?:o|a|os|as)|P-MC10-\\d{3})';
+const NARRATIVE_ATTRIBUTION_RE = new RegExp(`\\b${NARRATIVE_ATTRIBUTION}\\b`, 'iu');
 const NARRATIVE_PARTICIPANT_ID_RE = /\bP-MC10-\d{3}\b/g;
+/** Reporting verbs in English, Spanish and Portuguese, in several tenses. */
 const NARRATIVE_REPORTING_VERB =
-  '(?:said|stated|told|reported|claimed|explained|commented|confirmed)';
-/** `the owner`, `a retailer`, `an installer` or a bare role noun. */
-const NARRATIVE_ARTICLE = '(?:(?:the|a|an)\\s+)?';
+  '(?:said|stated|told|reported|claimed|explained|commented|confirmed|noted|mentioned|described|added|remarked|observed|' +
+  'dijo|dijeron|dice|dicen|declar[oó]|declararon|declara|coment[oó]|comentaron|comenta|señal[oó]|señalaron|señala|' +
+  'afirm[oó]|afirmaron|afirma|explic[oó]|explicaron|explica|indic[oó]|indicaron|indica|refiri[oó]|refirieron|refiere|' +
+  'mencion[oó]|mencionaron|menciona|confirm[oó]|confirmaron|confirma|cont[oó]|contaron|cuenta|manifest[oó]|manifestaron|manifiesta|precis[oó]|precisaron|precisa|' +
+  'disse|disseram|diz|dizem|declarou|declararam|declara|comentou|comentaram|comenta|afirmou|afirmaram|afirma|' +
+  'explicou|explicaram|explica|indicou|indicaram|indica|referiu|referiram|refere|mencionou|mencionaram|menciona|' +
+  'confirmou|confirmaram|confirma|contou|contaram|conta|manifestou|manifestaram|manifesta)';
+/** Preference verbs that assert an empirical customer preference. */
+const NARRATIVE_PREFERENCE_VERB =
+  '(?:prefer|preferred|want|wanted|demand|demanded|would pay|prefieren|prefirieron|quieren|querían|demandan|demandaron|pagarían|pagar[íi]an|preferem|preferiram|querem|queriam|exigem|exigiram|pagariam)';
+/** `the owner`, `a retailer`, `an installer`, `un armador` or a bare role noun. */
+const NARRATIVE_ARTICLE = '(?:(?:the|a|an|el|la|los|las|un|una|unos|unas|o|a|os|as|um|uma)\\s+)?';
+/** Opening and closing quotation marks covered by CR-62 (straight, curly, guillemet). */
+const NARRATIVE_OPEN_QUOTE = '["\'“«‘]';
+const NARRATIVE_CLOSE_QUOTE = '["\'”»’]';
+/** A Unicode-aware word end, because accented verb forms defeat `\\b`. */
+const NARRATIVE_WORD_END = '(?![\\p{L}\\p{N}])';
 
 /** A quotation attributed to a participant cannot exist without a real record. */
 const NARRATIVE_QUOTE_RULES = [
   {
     id: 'blockquoted-attributed-quotation',
-    re: /^[ \t]*>[^\n]*["\u201c][^\n]*$/gm,
+    re: /^[ \t]*>[^\n]*["“”«»‘’][^\n]*$/gm,
     attributionInMatch: true,
   },
   {
     id: 'attribution-before-quotation',
     re: new RegExp(
-      `\\b${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}\\s+${NARRATIVE_REPORTING_VERB}\\b[^.\\n]{0,20}["\u201c]`,
-      'i',
+      `\\b${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}\\s+${NARRATIVE_REPORTING_VERB}${NARRATIVE_WORD_END}[^.\\n]{0,20}(?<![\\p{L}])${NARRATIVE_OPEN_QUOTE}`,
+      'iu',
     ),
     insideQuotesExempt: true,
   },
   {
     id: 'quotation-attribution-dash',
     re: new RegExp(
-      `["\u201d]\\s*[\u2014\u2013-]\\s*${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}\\b`,
-      'i',
+      `${NARRATIVE_CLOSE_QUOTE}\\s*[\u2014\u2013-]\\s*${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}${NARRATIVE_WORD_END}`,
+      'iu',
     ),
     insideQuotesExempt: false,
   },
   {
     id: 'reverse-order-quotation-attribution',
     re: new RegExp(
-      `["\u201d]\\s*,?\\s*${NARRATIVE_REPORTING_VERB}\\s+${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}\\b`,
-      'i',
+      `${NARRATIVE_CLOSE_QUOTE}\\s*,?\\s*${NARRATIVE_REPORTING_VERB}${NARRATIVE_WORD_END}\\s+${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}${NARRATIVE_WORD_END}`,
+      'iu',
     ),
     insideQuotesExempt: false,
   },
   {
     id: 'parenthetical-quotation-attribution',
     re: new RegExp(
-      `["\u201d]\\s*\\(\\s*${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}\\b[^)\\n]{0,30}\\)`,
-      'i',
+      `${NARRATIVE_CLOSE_QUOTE}\\s*\\(\\s*${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}${NARRATIVE_WORD_END}[^)\\n]{0,30}\\)`,
+      'iu',
     ),
     insideQuotesExempt: false,
   },
 ];
 
 /** Quantifier-less observational claims imply an interview that never happened. */
-const NARRATIVE_OBSERVATION_RE =
-  /\b(?:participants?|owners?|installers?|retailers?|charter operators?|operators?|managers?|customers?|respondents?|buyers?)\s+(?:also\s+|consistently\s+|repeatedly\s+|generally\s+|typically\s+|often\s+|frequently\s+)?(?:reported|said|stated|told\s+us|explained|commented|confirmed|mentioned|described|claimed)\b/gi;
+const NARRATIVE_OBSERVATION_RE = new RegExp(
+  `\\b${NARRATIVE_ATTRIBUTION}\\s+(?:(?:also|consistently|repeatedly|generally|typically|often|frequently|también|además|sistemáticamente|repetidamente)\\s+)?${NARRATIVE_REPORTING_VERB}${NARRATIVE_WORD_END}`,
+  'giu',
+);
+
+/** Explicitly labelled synthetic or hypothetical content is not an empirical claim. */
+const SYNTHETIC_LABEL_RE =
+  /\b(?:SYNTHETIC_FIXTURE|TRAINING_SYNTHETIC_NOT_RESEARCH|SYNTHETIC_EXAMPLE|synthetic fixture|synthetic example|hypothetical|for illustration only|illustrative example)\b/i;
 
 /** Honest contexts that make a narrative phrase non-assertive about field data. */
 const PREPARED_CONTEXT_RE =
-  /\b(?:interviewer|instrument|script|template|prepared|prompt|question|read aloud|read the|wording|guide|consent text|NOT_APPROVED|NOT_EXECUTED|SCREEN-01|CONSENT-01|GUIDE-01|PRICE-01|NOTE-01|SCHEMA-01|ANA-01)\b/i;
+  /\b(?:interviewer|instrument|script|template|prepared|prompt|question|read aloud|read the|wording|guide|consent text|guion|guión|plantilla|borrador|instrucción|texto de consentimiento|guião|modelo|minuta|instrução|NOT_APPROVED|NOT_EXECUTED|SCREEN-01|CONSENT-01|GUIDE-01|PRICE-01|NOTE-01|SCHEMA-01|ANA-01)\b/i;
+
+/** Threshold language that makes a numeric statement a plan, not an observation. */
+const NARRATIVE_THRESHOLD_RE =
+  /(?:≥|>=|<=|≤|at least|at most|no more than|PASS if|FAIL if|minimum of|maximum of|target of|range of|between|planned|requires?|required|threshold|pre-?registered)/i;
+
+/** Contexts that mark a claim as a hypothesis, question or explicitly absent fact. */
+const NARRATIVE_NON_ASSERTIVE_RE =
+  /\b(?:unknown|not known|unclear|unverified|not measured|not established|hypothes[ie]s|hypothesis|expected|anticipated|assumed|whether|evidence that|no evidence|unproven|registered hypothesis|research question|to be tested|to test|not:)\b/i;
+const NARRATIVE_INTERROGATIVE_RE =
+  /^\s*(?:[-*]\s*)?(?:do|does|did|which|what|how|why|when|where|who|would|could|should|is|are|can|will|¿)\b/i;
+
+/**
+ * Claims of completed field data or customer preference that need a real record.
+ * These are additive to the original CR-62 rules and are exempted for negated,
+ * threshold, desk-research, prepared/labelled-synthetic and prohibited content.
+ */
+const NARRATIVE_CLAIM_RULES = [
+  {
+    id: 'fabricated-completed-participant-count',
+    re: new RegExp(
+      '\\b(?:\\d{1,4}|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|fifteen|twenty|thirty|forty|fifty|cien|diez|doce|quince|veinte|treinta|vinte|doze|quinze|trinta)\\s+' +
+        '(?:(?:completed|valid|real)\\s+){0,2}' +
+        '(?:interviews?|participants?|owners?|installers?|retailers?|operators?|respondents?|entrevistados?|entrevistadas?|participantes?|propietarios?|armadores?|instaladores?|operadores?|proprietários?|retalhistas?)' +
+        '\\b[^.\\n]{0,40}\\b(?:were|was|have been|has been|completed|conducted|interviewed|recruited|surveyed|realizadas?|completadas?|completados?|realizados?|entrevistad[oa]s?|reclutad[oa]s?)\\b',
+      'iu',
+    ),
+  },
+  {
+    id: 'fabricated-participant-percentage-claim',
+    re: /\b\d{1,3}\s*%\s+(?:of\s+|de\s+|dos\s+|das\s+)?(?:participants?|owners?|installers?|retailers?|operators?|respondents?|entrevistados?|entrevistadas?|participantes?|propietarios?|armadores?|instaladores?|operadores?|proprietários?|retalhistas?)\b[^.\n]{0,40}\b(?:said|stated|reported|preferred|would pay|dijo|afirmó|comentó|señaló|prefieren|prefirieron|pagarían|disse|afirmou|preferem|preferiram|pagariam)\b/i,
+  },
+  {
+    id: 'unsupported-customer-preference-claim',
+    re: new RegExp(
+      `\\b${NARRATIVE_ATTRIBUTION}\\s+${NARRATIVE_PREFERENCE_VERB}${NARRATIVE_WORD_END}`,
+      'iu',
+    ),
+  },
+];
 const DESK_RESEARCH_RE =
   /\b(?:MC-09|desk research|secondary research|public source|public evidence|public signal|existing desk|published evidence)\b/i;
 const PROHIBITION_CONTEXT_RE =
@@ -805,24 +887,25 @@ function buildRunner(root) {
   /**
    * A blockquoted line is attributed when it carries a participant ID, a
    * dash/parenthetical attribution or an attribution verb next to a quotation.
+   * The role/verb vocabulary is the multilingual CR-62 set (EN/ES/PT).
    */
   function blockquoteAttribution(line) {
     if (/\bP-MC10-\d{3}\b/.test(line)) return true;
-    if (
-      /[\u2014\u2013-]\s*(?:the\s+|a\s+|an\s+)?(?:participants?|owners?|installers?|retailers?|operators?|managers?|customers?|respondents?)\b/i.test(
-        line,
-      )
-    )
-      return true;
-    if (
-      /[([]\s*(?:the\s+|a\s+|an\s+)?(?:participants?|owners?|installers?|retailers?|operators?|managers?|customers?|respondents?)[^)\]]{0,30}[)\]]/i.test(
-        line,
-      )
-    )
-      return true;
-    return /\b(?:participants?|owners?|installers?|retailers?|operators?|managers?|customers?|respondents?)\s+(?:said|stated|reported|told\s+us|explained|commented|confirmed)\b/i.test(
-      line,
+    const dash = new RegExp(
+      `[\u2014\u2013-]\\s*${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}${NARRATIVE_WORD_END}`,
+      'iu',
     );
+    if (dash.test(line)) return true;
+    const parenthetical = new RegExp(
+      `[([]\\s*${NARRATIVE_ARTICLE}${NARRATIVE_ATTRIBUTION}${NARRATIVE_WORD_END}[^)\\]]{0,30}[)\\]]`,
+      'iu',
+    );
+    if (parenthetical.test(line)) return true;
+    const verb = new RegExp(
+      `\\b${NARRATIVE_ATTRIBUTION}\\s+${NARRATIVE_REPORTING_VERB}${NARRATIVE_WORD_END}`,
+      'iu',
+    );
+    return verb.test(line);
   }
 
   /** Sentence window around a match; folded lines do not split a sentence. */
@@ -1806,67 +1889,97 @@ function buildRunner(root) {
     ), 'findings schema must document the QUOTATION permission rule');
   });
 
-  check('CR-62', 'Narrative documents contain no fabricated quotation or observation', () => {
-    const participants = new Map(
-      participantList().map((participant) => [participant.participantId, participant]),
-    );
-    const interviews = interviewList();
-    const violations = [];
-    for (const doc of docFiles()) {
-      if (!exists(doc)) continue;
-      const text = read(doc);
-      // (a) a quotation attributed to a participant, a pseudonymous ID or an
-      // owner/installer/retailer/operator cannot exist without a real record.
-      for (const rule of NARRATIVE_QUOTE_RULES) {
-        const flags = rule.re.flags.includes('g') ? rule.re.flags : `${rule.re.flags}g`;
-        for (const match of text.matchAll(new RegExp(rule.re.source, flags))) {
-          // Rules anchored on a closing quotation sit inside the quoted span, so
-          // they must not be skipped as if they were a quoted meta-example.
-          if (rule.insideQuotesExempt !== false && insideDoubleQuotes(text, match.index)) continue;
-          if (rule.attributionInMatch && !blockquoteAttribution(match[0])) continue;
-          const sentence = rule.attributionInMatch
-            ? match[0]
-            : sentenceAround(text, match.index, match[0].length);
-          if (PREPARED_CONTEXT_RE.test(sentence) && !/P-MC10-\d{3}/.test(sentence)) continue;
-          if (PROHIBITION_CONTEXT_RE.test(sentence)) continue;
-          const ids = [...sentence.matchAll(new RegExp('\\bP-MC10-\\d{3}\\b', 'g'))].map(
-            (entry) => entry[0],
-          );
-          if (quotationCleared(ids, participants, interviews)) continue;
-          violations.push(`${doc}: ${rule.id} -> "${sentence.trim().slice(0, 120)}"`);
+  check(
+    'CR-62',
+    'Narrative documents contain no fabricated quotation, observation or participant claim (EN/ES/PT)',
+    () => {
+      const participants = new Map(
+        participantList().map((participant) => [participant.participantId, participant]),
+      );
+      const interviews = interviewList();
+      const violations = [];
+      for (const doc of docFiles()) {
+        if (!exists(doc)) continue;
+        const text = read(doc);
+        // (a) a quotation attributed to a participant, a pseudonymous ID or an
+        // owner/installer/retailer/operator cannot exist without a real record.
+        for (const rule of NARRATIVE_QUOTE_RULES) {
+          const flags = rule.re.flags.includes('g') ? rule.re.flags : `${rule.re.flags}g`;
+          for (const match of text.matchAll(new RegExp(rule.re.source, flags))) {
+            // Rules anchored on a closing quotation sit inside the quoted span, so
+            // they must not be skipped as if they were a quoted meta-example.
+            if (rule.insideQuotesExempt !== false && insideDoubleQuotes(text, match.index))
+              continue;
+            if (rule.attributionInMatch && !blockquoteAttribution(match[0])) continue;
+            const sentence = rule.attributionInMatch
+              ? match[0]
+              : sentenceAround(text, match.index, match[0].length);
+            if (PREPARED_CONTEXT_RE.test(sentence) && !/P-MC10-\d{3}/.test(sentence)) continue;
+            if (PROHIBITION_CONTEXT_RE.test(sentence)) continue;
+            const ids = [...sentence.matchAll(new RegExp('\\bP-MC10-\\d{3}\\b', 'g'))].map(
+              (entry) => entry[0],
+            );
+            if (quotationCleared(ids, participants, interviews)) continue;
+            violations.push(`${doc}: ${rule.id} -> "${sentence.trim().slice(0, 120)}"`);
+          }
         }
-      }
-      // (b) every pseudonymous participant reference must resolve to a valid
-      // interview record with recorded quotation permission.
-      for (const match of text.matchAll(new RegExp('\\bP-MC10-\\d{3}\\b', 'g'))) {
-        if (!quotationCleared([match[0]], participants, interviews)) {
-          violations.push(`${doc}: unresolvable participant reference ${match[0]}`);
+        // (b) every pseudonymous participant reference must resolve to a valid
+        // interview record with recorded quotation permission.
+        for (const match of text.matchAll(new RegExp('\\bP-MC10-\\d{3}\\b', 'g'))) {
+          if (!quotationCleared([match[0]], participants, interviews)) {
+            violations.push(`${doc}: unresolvable participant reference ${match[0]}`);
+          }
         }
-      }
-      // (c) quantifier-less observational claims imply an interview that never
-      // happened unless they are negated, desk research or prepared text.
-      for (const match of text.matchAll(new RegExp(NARRATIVE_OBSERVATION_RE.source, 'gi'))) {
-        if (insideDoubleQuotes(text, match.index)) continue;
-        const sentence = sentenceAround(text, match.index, match[0].length);
-        if (NEGATION_TOKENS.test(sentence)) continue;
-        if (DESK_RESEARCH_RE.test(sentence)) continue;
-        if (
-          PREPARED_CONTEXT_RE.test(sentence) &&
-          /\b(?:prepared|instrument|template|script|wording|question|prompt|interviewer)\b/i.test(
-            sentence,
+        // (c) quantifier-less observational claims imply an interview that never
+        // happened unless they are negated, desk research, prepared or labelled
+        // synthetic/hypothetical text. MC-10R covers EN/ES/PT role nouns and verbs.
+        for (const match of text.matchAll(new RegExp(NARRATIVE_OBSERVATION_RE.source, 'giu'))) {
+          if (insideDoubleQuotes(text, match.index)) continue;
+          const sentence = sentenceAround(text, match.index, match[0].length);
+          if (NEGATION_TOKENS.test(sentence)) continue;
+          if (DESK_RESEARCH_RE.test(sentence)) continue;
+          if (SYNTHETIC_LABEL_RE.test(sentence)) continue;
+          if (
+            PREPARED_CONTEXT_RE.test(sentence) &&
+            /\b(?:prepared|instrument|template|script|wording|question|prompt|interviewer|guion|guión|plantilla|borrador|guião|minuta)\b/i.test(
+              sentence,
+            )
           )
-        )
-          continue;
-        if (PROHIBITION_CONTEXT_RE.test(sentence)) continue;
-        if (/\b(?:only as|as the|as a|exactly as|according to)\b/i.test(sentence)) continue;
-        violations.push(
-          `${doc}: quantifier-less observation -> "${sentence.trim().slice(0, 120)}"`,
-        );
+            continue;
+          if (PROHIBITION_CONTEXT_RE.test(sentence)) continue;
+          if (/\b(?:only as|as the|as a|exactly as|according to)\b/i.test(sentence)) continue;
+          violations.push(
+            `${doc}: quantifier-less observation -> "${sentence.trim().slice(0, 120)}"`,
+          );
+        }
+        // (d) explicit claims of completed field work, participant percentages or
+        // customer preference are fabricated unless a real record exists. They
+        // must not be negated, threshold/planning language, desk research,
+        // prepared or labelled synthetic/hypothetical text, or a prohibition.
+        for (const rule of NARRATIVE_CLAIM_RULES) {
+          for (const match of text.matchAll(
+            new RegExp(rule.re.source, `${rule.re.flags.replace('g', '')}g`),
+          )) {
+            if (insideDoubleQuotes(text, match.index)) continue;
+            const sentence = sentenceAround(text, match.index, match[0].length);
+            if (NEGATION_TOKENS.test(sentence)) continue;
+            if (NARRATIVE_THRESHOLD_RE.test(sentence)) continue;
+            if (NARRATIVE_NON_ASSERTIVE_RE.test(sentence)) continue;
+            if (/\?/.test(sentence)) continue;
+            if (NARRATIVE_INTERROGATIVE_RE.test(sentence.trim())) continue;
+            if (DESK_RESEARCH_RE.test(sentence)) continue;
+            if (SYNTHETIC_LABEL_RE.test(sentence)) continue;
+            if (PREPARED_CONTEXT_RE.test(sentence)) continue;
+            if (PROHIBITION_CONTEXT_RE.test(sentence)) continue;
+            if (/\b(?:only as|as the|as a|exactly as|according to)\b/i.test(sentence)) continue;
+            violations.push(`${doc}: ${rule.id} -> "${sentence.trim().slice(0, 120)}"`);
+          }
+        }
       }
-    }
-    require(violations.length ===
-      0, `narrative fabrication: ${violations.slice(0, 5).join(' | ')}`);
-  });
+      require(violations.length ===
+        0, `narrative fabrication: ${violations.slice(0, 5).join(' | ')}`);
+    },
+  );
 
   check('CR-29', 'Coding state is honest: nothing is coded and kappa is not computed', () => {
     const coding = readJson(`${DATA}/coding.json`);

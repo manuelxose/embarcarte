@@ -482,7 +482,7 @@ zero-dependency. It exits 1 on any failed check and prints
 | CR-49–CR-52 | Governance and history | a milestone that claims PASS, a decision that approves something, a modified MC-09 registry or weakened canonical contracts |
 | CR-53–CR-56 | Frozen support records | a broken instrument hash, an approved or non-ascending price ladder, a mismatched response reference, an approved/sent outreach template |
 | CR-57–CR-61 | Contract and delivery | a data contract that omits a file or a check family, a non-independent review, a dishonest Spanish report or handoff, a delivery record without real evidence |
-| CR-62 | Narrative fabrication | a blockquoted or attributive participant quotation, an unresolvable `P-MC10-###` reference, or a quantifier-less observation claim that implies an interview which never happened |
+| CR-62 | Narrative fabrication | a blockquoted or attributive participant quotation, an unresolvable `P-MC10-###` reference, or a quantifier-less observation claim that implies an interview which never happened. After MC-10R it also covers straight/curly/guillemet quotation marks, EN/ES/PT role nouns and reporting verbs, and participant-count, participant-percentage and customer-preference claims (MC-10R addendum, section 9) |
 
 Run `node --test scripts/check-marea-customer-research.test.mjs` for the
 negative-mutation suite (D24), which mutates a temporary fixture copy and asserts
@@ -495,3 +495,81 @@ A change to this contract, a schema, a threshold, an instrument or a ladder
 requires a dated amendment, a new version and independent review before further
 fielding. While the gate is closed, the correct change is to record the better
 preparation, not to relax the data contract or delete a check.
+
+## 9. MC-10R addendum — multilingual narrative-integrity gate and recovery gate
+
+This addendum records the MC-10R recovery changes. It adds coverage and a second
+gate; it does not weaken, delete or relax any clause above. The CR-01…CR-62 set
+remains exactly 62 checks and the original negative-mutation tests remain in the
+suite (the suite grows additively).
+
+### 9.1 CR-62 multilingual scope after MC-10R
+
+CR-62 remains one check with the same id. Its rules now cover:
+
+- **Quotation marks:** straight double/single quotes, curly double/single quotes
+  and guillemets, in opening and closing position.
+- **Attribution positions:** blockquote attribution, attribution before the
+  quotation, dash/em-dash/hyphen attribution after it, reverse-order reporting
+  verb, and parenthetical attribution.
+- **Role nouns:** English (participant, owner, installer, retailer, operator,
+  manager, customer, respondent, interviewee, charter operator) plus Spanish and
+  Portuguese role nouns with gender/number variants (for example dueño/dueña,
+  propietario/propietaria, armador/armadora, patrón/patrona,
+  instalador/instaladora, minorista, comerciante, operador/operadora, gerente de
+  marina, gestor de flota, proprietário/proprietária, retalhista, gestor de
+  frota).
+- **Reporting verbs:** English, Spanish and Portuguese, in several tenses (for
+  example said/stated/reported; dijo/dijeron/dice/comentó/señaló/afirmó/
+  explicó/indicó; disse/disseram/diz/comentou/afirmou/explicou/indicou).
+- **Claim classes:** quantifier-less observation claims, fabricated completed
+  participant/interview counts, participant-percentage claims and unsupported
+  customer-preference claims.
+
+### 9.2 Documented false negatives (known lexical limits)
+
+This is a deterministic heuristic, not proof of authenticity. The following can
+still pass and therefore remain the responsibility of independent human review:
+
+1. A role noun outside the documented lexicon, or a paraphrase with no role noun.
+2. A fabricated finding expressed impersonally ("the need for monitoring is
+   universal") with no attribution and no numeric claim.
+3. A first-person fabricated claim ("we interviewed twelve owners") where the
+   grammatical subject is not a participant role noun; the count rule needs a
+   participant role noun.
+4. Languages other than English, Spanish and Portuguese.
+5. Unusual quotation devices (for example corner brackets, quotation dashes
+   without a role noun, or a quotation spanning a table-cell boundary).
+6. Numeric claims without a completion/reporting verb, or counts hidden in
+   footnotes or images.
+7. Passive-voice implication ("twelve owners were said to prefer…") where no
+   listed verb/role adjacency survives tokenisation.
+8. Typographical corruption (OCR errors, deliberate misspelling of role nouns).
+
+### 9.3 Documented false-positive classes and exemptions
+
+The gate does not flag content that is explicitly negated, threshold/planning
+language (`at least`, `target`, `planned`, `PASS if`…), desk-research attribution,
+prepared instrument/template/script context, clearly labelled synthetic
+(`SYNTHETIC_FIXTURE`, `TRAINING_SYNTHETIC_NOT_RESEARCH`, `SYNTHETIC_EXAMPLE`) or
+hypothetical/illustrative content, a prohibition, an interrogative or hypothesis
+statement, a possessive apostrophe, or an honest explicit zero count.
+
+### 9.4 Second gate for the recovery package
+
+`scripts/check-marea-customer-recovery.mjs` is a new deterministic gate whose ids
+are `CRR-01…`; it validates the MC-10R recovery contract and readiness records
+(`data/mc10r-*.json`), the D1-D36 deliverable inventory, the ungranted
+authorization draft, the amendment registry, sampling arithmetic, pricing
+reachability, privacy/storage states and the prohibition on reading recovery PASS
+as fieldwork permission. Its check count and its negative-suite count are
+reported from the actual run; this document does not pre-declare them. The
+research-integrity gate and the recovery gate are complementary and both must
+pass on the integrated tree.
+
+### 9.5 Standing rule
+
+A passing CR-62 or CRR run never proves that a document contains no fabricated
+evidence and never authorizes fieldwork, contact, spending, publication or a
+price. Ethical and evidence integrity remain a human responsibility recorded in
+the research governance documents.

@@ -1139,3 +1139,170 @@ authorisation is created.
 **Evidence.** `docs/marea/customer-discovery/MC10-MC11-HANDOFF.md`.
 
 **Status effect.** No hardware, BOM, supplier or conformity authorisation; no commercial status change.
+
+## D-034 - 2026-11-01 - MC-10R reconciles the sampling arithmetic as a proposal: quotas 37/57, 40-80 preserved as a historical aspiration
+
+**Context.** The preserved per-segment quotas sum to 37 minimum / 57 maximum, while MC-09 and MC-10 also
+state a 40-80 planning target that no set of segment maxima can reach at its upper end. MC-10 correctly
+recorded the defect (PI-01) without silently repairing it.
+
+**Decision.** Adopt, as a proposal (`PROPOSED_NOT_EFFECTIVE`) requiring programme-owner approval: the
+per-segment quotas remain authoritative (minimum 37, achievable maximum 57); the candidate overall target
+is 37/57; 40-80 is preserved as `HISTORICAL_PLANNING_ASPIRATION`; the study is staged as Wave 1
+(exploratory 18-28 over SEG-01/03/04/06), Wave 2 (eight-segment minimum 37, ceiling 57) and Wave 3
+(optional extension only under an approved amendment). No wave may be presented as the full study.
+
+**Rationale.** Expanding quotas to satisfy an aspiration would multiply cost without adding a required
+experiment minimum, while keeping only the 40-80 target would leave an untestable conflict. The staged
+design keeps the minimum statistical requirements intact and makes every total derived.
+
+**Consequences.** (a) 40-80 can never be cited as an approved total. (b) Any move above 57 needs a
+separate approved quota-expansion amendment. (c) Validators reject inconsistent totals and exploratory
+waves presented as complete.
+
+**Evidence.** `docs/marea/customer-discovery/recovery/methodology/MC10R-PI01-SAMPLING-RECONCILIATION.md`
+(D5); `MC10R-PI02-SEGMENT-QUOTA-CONTRACT.md` (D6); `MC10R-RESEARCH-PROTOCOL-AMENDMENT.md` (D8);
+`docs/marea/customer-discovery/recovery/data/mc10r-recovery.contract.json` (D27).
+
+**Status effect.** No effective sampling change; fieldwork remains blocked pending approval.
+
+## D-035 - 2026-11-01 - MC-10R prepares AUTH-MC10-001 revision 2 and does not grant it
+
+**Context.** No external research authorization exists. A prepared but ungranted authorization record
+removes the excuse that fieldwork cannot be authorized because the record is undefined, while keeping the
+hard gate.
+
+**Decision.** Prepare `AUTH-MC10-001` revision 2 as `DRAFT_PREPARED` / `NOT_GRANTED` /
+`FIELDWORK_PERMISSION = FALSE` / `EXTERNAL_CONTACT_ALLOWED = FALSE`, with the 30 numbered fields (31 flat
+keys) and every missing human or legal value `null`/`OPEN`: proposed Wave 1 scope SEG-03 5-8, SEG-01 5-8,
+SEG-04 5-7, SEG-06 3-5 = 18-28; geography Rías Baixas / Galicia; Portugal excluded; incentives `ZERO` and
+spending `ZERO` as proposals. Only a separate, dated, signed programme-owner authorization with
+prerequisite evidence may later set `GRANTED`.
+
+**Rationale.** The Master Prompt, a PR approval, a task assignment, a passing validator and an agent
+statement are not authorization. The record must be prepared without being confused with permission.
+
+**Consequences.** (a) No contact, recruitment or interview may occur. (b) The fail-closed gate of D14
+remains `DENY`. (c) A future grant must supply the missing external evidence.
+
+**Evidence.** `docs/marea/customer-discovery/recovery/governance/AUTH-MC10-001-REV2-DRAFT.md` (D13);
+`MC10R-AUTHORIZATION-GATE.md` (D14); `docs/marea/customer-discovery/recovery/data/mc10r-authorization-draft.json`
+(D29).
+
+**Status effect.** `AUTH_MC10_001 = NOT_GRANTED`; `OUTREACH_AUTHORIZATION = NOT_GRANTED`;
+`FIELDWORK_STATUS = BLOCKED`.
+
+## D-036 - 2026-11-01 - MC-10R prepares instrument amendment v1.1.0 as review-required and keeps v1.0.0 historical
+
+**Context.** PI-04/PI-05 require nine instrument amendments. The frozen v1.0.0 instruments are the
+historical authority and cannot be edited in place.
+
+**Decision.** Issue `MC10R-INSTRUMENT-AMENDMENT-v1.1.0` with IV-01…IV-09, previous/candidate versions,
+exact change, reason, source hash `cbe7f9fe4634c44a7344a4b9817827368a284efdcfb4ec8e80e11252ba1a120d`,
+candidate hashes labelled non-effective, affected experiments, translation/legal dependencies and approval
+state `REVIEW_REQUIRED` / `PROPOSED_NOT_EFFECTIVE`. Candidate ES/EN text is prepared; PT remains an
+unapproved draft; no translation is represented as professionally reviewed or equivalence-established.
+
+**Rationale.** Fieldwork cannot use an instrument whose consent wording, exclusions or concept identity
+are defective, but no agent can confer methodological or legal approval.
+
+**Consequences.** (a) No instrument may be administered until an authorized reviewer approves an effective
+version. (b) Portugal stays excluded. (c) A change to the candidate source requires re-issuing the
+candidate hashes.
+
+**Evidence.** `docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md` (D9);
+`MC10R-INSTRUMENT-VERSION-REGISTER.md` (D10); `MC10R-ES-EN-RESEARCH-INSTRUMENTS.md` (D11);
+`MC10R-PT-TRANSLATION-REVIEW-PACKAGE.md` (D12); `data/mc10r-amendments.json` (D28).
+
+**Status effect.** No effective instrument change; fieldwork remains blocked.
+
+## D-037 - 2026-11-01 - MC-10R classifies unreachable pricing cells instead of lowering the registered minimum
+
+**Context.** EXP-MC10-04/05 require `n>=8` per segment per construct while SEG-04 (max 7), SEG-05 (max 7),
+SEG-06 (max 5) and SEG-08 (max 6) cannot reach it.
+
+**Decision.** Keep `n>=8` unchanged. Classify those segments `BELOW_REGISTERED_MINIMUM` and restrict them
+to qualitative price objections; classify SEG-01/02/03/07 `REACHABLE_AT_PLANNED_MAX` only at eight
+completed pricing-module interviews. Apply a two-attribute rule (reachability and registered population):
+a cell is experiment-level eligible only when both hold. Wave 1 can produce at most a segment-level
+indication (`WAVE1_PRICING_INDICATION_ONLY`); all experiment verdicts are `PENDING_WAVE2`. No price is
+approved and no threshold is reduced.
+
+**Rationale.** Reducing a statistical minimum to make a result reachable is post-hoc manipulation; an
+honest qualitative objection analysis is useful without pretending to be a willingness-to-pay curve.
+
+**Consequences.** Four segments cannot produce experiment-level pricing results; a powered quantitative
+study requires later separate authorization; approved prices remain 0.
+
+**Evidence.** `docs/marea/customer-discovery/recovery/pricing/MC10R-PI03-PRICING-FEASIBILITY.md` (D7);
+D27 pricing matrix; `data/experiments.json`; `data/pricing-ladders.json`.
+
+**Status effect.** No price approval, no threshold change.
+
+## D-038 - 2026-11-01 - MC-10R defines secure research infrastructure and proves it only with local synthetic tests
+
+**Context.** No secure research store exists and no participant data may enter Git.
+
+**Decision.** Define Layer A (identity/consent), Layer B (research records) and Layer C (repository
+outputs), with an access matrix, encryption, retention, deletion, withdrawal propagation, backup, audit
+logging, processor inventory, export controls, breach response and a synthetic test plan. Implement local
+schemas and synthetic deletion/withdrawal tests. Record `ARCHITECTURE_DEFINED = true`,
+`LOCAL_SYNTHETIC_TESTS_PASS = true`, and `PROVISIONED = false`, `ACCESS_REVIEWED = false`,
+`OPERATIONALLY_APPROVED = false`.
+
+**Rationale.** Designing and testing locally is possible and safe; claiming a provisioned, access-reviewed
+or operationally approved store would be false.
+
+**Consequences.** Fieldwork still requires a real store and access review; the synthetic tests prove
+procedure logic, not security operation.
+
+**Evidence.** `docs/marea/customer-discovery/recovery/data/MC10R-SECURE-DATA-ARCHITECTURE.md` (D17);
+`MC10R-DATA-CONTRACT.md` (D18); `MC10R-ACCESS-RETENTION-AND-DELETION.md` (D19);
+`MC10R-IMPLEMENTATION-AND-TEST-EVIDENCE.md` (D20); D27-D30.
+
+**Status effect.** No infrastructure approved; fieldwork remains blocked.
+
+## D-039 - 2026-11-01 - MC-10R prepares human interviewer operations with zero humans invented
+
+**Context.** No interviewer panel, training or supervision exists.
+
+**Decision.** Define the roles (research owner, fieldwork lead, interviewers, data steward, qualitative
+analyst, second coder, independent auditor), qualification criteria, the 16-module training with synthetic
+mock verification, the operations kit, ES/EN recruitment templates and the Wave 1 plan. Every role is
+`UNASSIGNED`, every interviewer `UNTRAINED`, every template `NOT_APPROVED`/`NOT_SENT`, every training
+completion `NOT_PERFORMED`; no names, credentials, dates or appointments are invented.
+
+**Rationale.** A complete manual is executable by a real competent human only after appointment and
+training; the package must make that possible without pretending it has happened.
+
+**Consequences.** Fieldwork cannot start until named humans accept roles and a supervisor signs off
+training.
+
+**Evidence.** `docs/marea/customer-discovery/recovery/fieldwork/` D21-D26; `data/mc10r-fieldwork-readiness.json`
+(D30).
+
+**Status effect.** No human appointed, trained or authorized.
+
+## D-040 - 2026-11-01 - MC-10R is an internal recovery PASS while MC-10 remains BLOCKED; the programme stays at milestone 10 of 36
+
+**Context.** The recovery package can be complete internally while no external authorization exists.
+
+**Decision.** Record `MC10R = PASS_INTERNAL_PREPARATION_SCOPE` alongside `MC10 = BLOCKED`,
+`AUTH_MC10-001 = NOT_GRANTED`, `OUTREACH_AUTHORIZATION = NOT_GRANTED`,
+`FIELDWORK_STATUS = BLOCKED`, `FIELDWORK_READINESS = PARTIALLY_READY`. Update the 36-prompt registry row
+10 with this honest state and the recovery evidence. Do not create milestone 37, do not rename or start
+MC-11, do not merge PR #16 and do not merge the recovery PR. The recovery PASS never means a
+primary-research PASS, legal sign-off, authorization, interviewer readiness or a provisioned store.
+
+**Rationale.** Conflating internal preparation with external authorization is the exact defect MC-10R
+exists to prevent.
+
+**Consequences.** (a) The programme remains at milestone 10 of 36 with fieldwork blocked. (b) A Spanish
+executive report and delivery record must state both verdicts separately. (c) The stacked draft PR is
+delivery evidence only.
+
+**Evidence.** `docs/marea/customer-discovery/recovery/MC10R-EXECUTIVE-REPORT.md` (D34);
+`MC-10R-DELIVERY.md` (D35); `MC10R-HANDOFF-TO-AUTHORIZED-FIELDWORK.md` (D36);
+`review/MC-10R-REVIEW.md` (D33); `MASTER-PROMPT-REGISTRY.md` row 10.
+
+**Status effect.** No authorization, no fieldwork, no merge, no deployment, no renumbering.

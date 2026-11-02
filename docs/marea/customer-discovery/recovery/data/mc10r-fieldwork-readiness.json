@@ -1,0 +1,655 @@
+{
+  "readinessId": "MAREA-MC10R-FIELDWORK-READINESS",
+  "contractId": "MAREA-MC10R-CUSTOMER-DISCOVERY-RECOVERY",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10R",
+  "date": "2026-11-01",
+  "owner": "agent-f-data",
+  "readinessState": "PARTIALLY_READY",
+  "fieldworkStatus": "BLOCKED",
+  "authorizationStatus": "NOT_GRANTED",
+  "outreachAuthorization": "NOT_GRANTED",
+  "fieldworkPermission": false,
+  "note": "Readiness record for future MC-10R fieldwork. PARTIALLY_READY means the internal preparation material exists; it is not permission to field. Fieldwork stays BLOCKED because AUTH-MC10-001 is NOT_GRANTED and no controller, privacy contact, store, appointed interviewer or approved instrument exists. Every count in this file is a real zero.",
+  "prerequisites": [
+    {
+      "id": "PRQ-01",
+      "prerequisite": "External research authorization AUTH-MC10-001 granted by a named authorizer with recorded authority basis",
+      "classification": "BLOCKED",
+      "ownerRole": "programme owner",
+      "requiredEvidence": "Dated, scoped, signed authorization record naming the authorizer, authority basis, segments, geography, channels, contact ceiling, interview ceiling, spending, duration and fieldwork lead",
+      "currentStatus": "NOT_GRANTED",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/governance/AUTH-MC10-001-REV2-DRAFT.md"
+    },
+    {
+      "id": "PRQ-02",
+      "prerequisite": "Data controller designated with verified legal identity",
+      "classification": "BLOCKED",
+      "ownerRole": "programme owner",
+      "requiredEvidence": "Registered legal entity name, registration identifier, registered address and recorded acceptance of controllership",
+      "currentStatus": "OPEN",
+      "evidenceRef": null
+    },
+    {
+      "id": "PRQ-03",
+      "prerequisite": "Verified privacy contact and data-protection-officer determination",
+      "classification": "BLOCKED",
+      "ownerRole": "programme owner + controller",
+      "requiredEvidence": "Verified, monitored, role-based contact route and a recorded DPO determination",
+      "currentStatus": "OPEN",
+      "evidenceRef": null
+    },
+    {
+      "id": "PRQ-04",
+      "prerequisite": "Qualified legal review of the lawful basis, notices and recruitment communications",
+      "classification": "EXTERNAL_DEPENDENCY",
+      "ownerRole": "legal adviser",
+      "requiredEvidence": "Written dated legal review covering GDPR Art. 6/7/13, LOPDGDD and PT Lei 58/2019",
+      "currentStatus": "LEGAL_REVIEW_PENDING",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/governance/MC10R-LEGAL-REVIEW-PACKAGE.md"
+    },
+    {
+      "id": "PRQ-05",
+      "prerequisite": "Legal and privacy review package prepared for that review",
+      "classification": "PREPARED_PENDING_APPROVAL",
+      "ownerRole": "agent-c-governance",
+      "requiredEvidence": "Draft review package with controller models, lawful-basis analysis and open questions",
+      "currentStatus": "DRAFT_FOR_LEGAL_REVIEW",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/governance/MC10R-LEGAL-REVIEW-PACKAGE.md"
+    },
+    {
+      "id": "PRQ-06",
+      "prerequisite": "Participant information notice approved",
+      "classification": "NOT_READY",
+      "ownerRole": "programme owner + controller",
+      "requiredEvidence": "Approved notice with controller identity and privacy contact; neither exists",
+      "currentStatus": "NOT_APPROVED",
+      "evidenceRef": null
+    },
+    {
+      "id": "PRQ-07",
+      "prerequisite": "Consent instrument CONSENT-01 v1.1.0 approved",
+      "classification": "NOT_READY",
+      "ownerRole": "instrument reviewer + legal adviser",
+      "requiredEvidence": "Recorded approval of the candidate consent instrument, including quotation and de-identification scope",
+      "currentStatus": "REVIEW_REQUIRED",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md"
+    },
+    {
+      "id": "PRQ-08",
+      "prerequisite": "Instrument amendment package MC10R-INSTRUMENT-AMENDMENT-v1.1.0 approved (IV-01 to IV-09)",
+      "classification": "NOT_READY",
+      "ownerRole": "instrument reviewer + legal adviser",
+      "requiredEvidence": "Recorded approval of all nine amendments with qualified language review",
+      "currentStatus": "REVIEW_REQUIRED",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md"
+    },
+    {
+      "id": "PRQ-09",
+      "prerequisite": "Historical instrument version 1.0.0 preserved and hash-verified without in-place edits",
+      "classification": "VERIFIED_COMPLETE",
+      "ownerRole": "agent-f-data",
+      "requiredEvidence": "Frozen v1.0.0 source hash cbe7f9fe4634c44a7344a4b9817827368a284efdcfb4ec8e80e11252ba1a120d verified locally",
+      "currentStatus": "VERIFIED_COMPLETE",
+      "evidenceRef": "docs/marea/customer-discovery/methodology/instruments.json"
+    },
+    {
+      "id": "PRQ-10",
+      "prerequisite": "Portuguese instruments produced and linguistically reviewed",
+      "classification": "NOT_READY",
+      "ownerRole": "research methodologist + qualified PT reviewer",
+      "requiredEvidence": "Qualified PT translation and review, frozen as a new instrument version before any Portugal fielding",
+      "currentStatus": "NOT_PRODUCED",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-PT-TRANSLATION-REVIEW-PACKAGE.md"
+    },
+    {
+      "id": "PRQ-11",
+      "prerequisite": "Sampling amendment package approved (PI-01 resolution)",
+      "classification": "PREPARED_PENDING_APPROVAL",
+      "ownerRole": "programme owner + research methodologist",
+      "requiredEvidence": "Recorded approval of MC10R-SAMPLING-1.1.0-PROPOSED with the 37/57 completion requirement and 40-80 preserved as historical aspiration",
+      "currentStatus": "PROPOSED_NOT_EFFECTIVE",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/methodology/MC10R-PI01-SAMPLING-RECONCILIATION.md"
+    },
+    {
+      "id": "PRQ-12",
+      "prerequisite": "Single segment-quota contract approved (PI-02 resolution)",
+      "classification": "PREPARED_PENDING_APPROVAL",
+      "ownerRole": "programme owner + research methodologist",
+      "requiredEvidence": "Recorded approval of MC10R-SEGMENT-QUOTA-1.1.0-PROPOSED",
+      "currentStatus": "PROPOSED_NOT_EFFECTIVE",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/methodology/MC10R-PI02-SEGMENT-QUOTA-CONTRACT.md"
+    },
+    {
+      "id": "PRQ-13",
+      "prerequisite": "Pricing feasibility classification recorded and approved (PI-03 resolution)",
+      "classification": "PREPARED_PENDING_APPROVAL",
+      "ownerRole": "programme owner + pricing researcher",
+      "requiredEvidence": "Recorded approval of the segment x experiment x construct reachability matrix; n>=8 minimum unchanged",
+      "currentStatus": "PROPOSED_NOT_EFFECTIVE",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/pricing/MC10R-PI03-PRICING-FEASIBILITY.md"
+    },
+    {
+      "id": "PRQ-14",
+      "prerequisite": "Access-controlled Layer A/B research store provisioned outside the repository",
+      "classification": "BLOCKED",
+      "ownerRole": "data steward",
+      "requiredEvidence": "Provisioned store with access list, encryption at rest and in transit, audit log, retention jobs and deletion procedure in force",
+      "currentStatus": "PROVISIONED_FALSE",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/data/MC10R-SECURE-DATA-ARCHITECTURE.md"
+    },
+    {
+      "id": "PRQ-15",
+      "prerequisite": "Restricted access policy in force and access reviewed",
+      "classification": "BLOCKED",
+      "ownerRole": "data steward + independent reviewer",
+      "requiredEvidence": "Named access list per role, least-privilege review record and recertification schedule",
+      "currentStatus": "ACCESS_REVIEWED_FALSE",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/data/MC10R-ACCESS-RETENTION-AND-DELETION.md"
+    },
+    {
+      "id": "PRQ-16",
+      "prerequisite": "Retention, deletion and withdrawal procedures in force and synthetically tested",
+      "classification": "NOT_READY",
+      "ownerRole": "data steward + controller",
+      "requiredEvidence": "Approved retention schedule, executed deletion/withdrawal synthetic tests, accountable owners named",
+      "currentStatus": "PROPOSED_NOT_EFFECTIVE",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/data/MC10R-ACCESS-RETENTION-AND-DELETION.md"
+    },
+    {
+      "id": "PRQ-17",
+      "prerequisite": "Human interviewers appointed",
+      "classification": "NOT_READY",
+      "ownerRole": "fieldwork lead",
+      "requiredEvidence": "Named humans with recorded acceptance; zero appointed today",
+      "currentStatus": "NOT_APPOINTED",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-HUMAN-INTERVIEWER-OPERATING-MODEL.md"
+    },
+    {
+      "id": "PRQ-18",
+      "prerequisite": "Interviewer training completed on the approved instrument version",
+      "classification": "NOT_READY",
+      "ownerRole": "fieldwork lead",
+      "requiredEvidence": "Training records with dates and assessment; zero trained today",
+      "currentStatus": "NOT_STARTED",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-INTERVIEWER-TRAINING.md"
+    },
+    {
+      "id": "PRQ-19",
+      "prerequisite": "Outreach channels authorized with gatekeeper permissions",
+      "classification": "BLOCKED",
+      "ownerRole": "programme owner + fieldwork manager",
+      "requiredEvidence": "Channel-level authorization and gatekeeper permissions plus legal review of the recruitment communication",
+      "currentStatus": "OPEN",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-RECRUITMENT-TEMPLATES-ES-EN.md"
+    },
+    {
+      "id": "PRQ-20",
+      "prerequisite": "Recruitment templates prepared, approved and not sent",
+      "classification": "PREPARED_PENDING_APPROVAL",
+      "ownerRole": "fieldwork manager",
+      "requiredEvidence": "Approved ES/EN templates; currently NOT_APPROVED and NOT_SENT",
+      "currentStatus": "NOT_APPROVED",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-RECRUITMENT-TEMPLATES-ES-EN.md"
+    },
+    {
+      "id": "PRQ-21",
+      "prerequisite": "Incentive policy approved (ZERO proposed, not approved)",
+      "classification": "NOT_READY",
+      "ownerRole": "programme owner + finance",
+      "requiredEvidence": "Recorded approval of the zero-incentive policy",
+      "currentStatus": "NOT_APPROVED",
+      "evidenceRef": null
+    },
+    {
+      "id": "PRQ-22",
+      "prerequisite": "Research spending position approved (ZERO proposed, not approved)",
+      "classification": "NOT_READY",
+      "ownerRole": "programme owner + finance",
+      "requiredEvidence": "Recorded approval of the spending ceiling; paid research remains NOT_AUTHORIZED",
+      "currentStatus": "NOT_APPROVED",
+      "evidenceRef": null
+    },
+    {
+      "id": "PRQ-23",
+      "prerequisite": "Interviewer operations kit ready for a real session",
+      "classification": "PREPARED_PENDING_APPROVAL",
+      "ownerRole": "fieldwork manager",
+      "requiredEvidence": "Approved kit contents, consent capture route and withdrawal intake route; none operable without a store",
+      "currentStatus": "PREPARED_NOT_OPERABLE",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/fieldwork/MC10R-INTERVIEWER-OPERATIONS-KIT.md"
+    },
+    {
+      "id": "PRQ-24",
+      "prerequisite": "Authorization-gate prerequisites verified complete",
+      "classification": "BLOCKED",
+      "ownerRole": "programme owner",
+      "requiredEvidence": "D14 checklist with every prerequisite VERIFIED_COMPLETE and a recorded release decision",
+      "currentStatus": "BLOCKED",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/governance/MC10R-AUTHORIZATION-GATE.md"
+    },
+    {
+      "id": "PRQ-25",
+      "prerequisite": "Existing research-integrity gate still passes at 62/62 and its negative suite passes",
+      "classification": "VERIFIED_COMPLETE",
+      "ownerRole": "agent-f-data",
+      "requiredEvidence": "Real local run of node scripts/check-marea-customer-research.mjs and node --test scripts/check-marea-customer-research.test.mjs",
+      "currentStatus": "VERIFIED_COMPLETE",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/data/MC10R-IMPLEMENTATION-AND-TEST-EVIDENCE.md"
+    },
+    {
+      "id": "PRQ-26",
+      "prerequisite": "Recovery contract gate and adversarial suite pass locally",
+      "classification": "VERIFIED_COMPLETE",
+      "ownerRole": "agent-f-data",
+      "requiredEvidence": "Real local run of node scripts/check-marea-customer-recovery.mjs and node --test scripts/check-marea-customer-recovery.test.mjs",
+      "currentStatus": "VERIFIED_COMPLETE",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/data/MC10R-IMPLEMENTATION-AND-TEST-EVIDENCE.md"
+    },
+    {
+      "id": "PRQ-27",
+      "prerequisite": "MC-10 baseline and blocker register preserved",
+      "classification": "VERIFIED_COMPLETE",
+      "ownerRole": "lead",
+      "requiredEvidence": "D1 baseline and D3 blocker register present at base d1ac69a",
+      "currentStatus": "VERIFIED_COMPLETE",
+      "evidenceRef": "docs/marea/customer-discovery/recovery/MC10R-BASELINE-AND-SCOPE.md"
+    }
+  ],
+  "roles": [
+    {
+      "role": "researchOwner",
+      "label": "Research owner / programme research director",
+      "status": "UNASSIGNED",
+      "trained": false,
+      "appointed": false,
+      "count": 0,
+      "requiredEvidence": "Named human accepting research ownership, distinct from the authorizing office"
+    },
+    {
+      "role": "fieldworkLead",
+      "label": "Fieldwork lead",
+      "status": "UNASSIGNED",
+      "trained": false,
+      "appointed": false,
+      "count": 0,
+      "requiredEvidence": "Named human accepting fieldwork lead responsibility inside a granted authorization"
+    },
+    {
+      "role": "dataSteward",
+      "label": "Data steward / custodian",
+      "status": "UNASSIGNED",
+      "trained": false,
+      "appointed": false,
+      "count": 0,
+      "requiredEvidence": "Named human accepting the data-protection operating policy and store custody"
+    },
+    {
+      "role": "qualitativeAnalyst",
+      "label": "Qualitative analyst",
+      "status": "UNASSIGNED",
+      "trained": false,
+      "appointed": false,
+      "count": 0,
+      "requiredEvidence": "Named human with codebook certification and confidentiality undertaking"
+    },
+    {
+      "role": "secondCoder",
+      "label": "Second coder",
+      "status": "UNASSIGNED",
+      "trained": false,
+      "appointed": false,
+      "count": 0,
+      "requiredEvidence": "Named human independent of the first coder, with codebook certification"
+    },
+    {
+      "role": "independentAuditor",
+      "label": "Independent auditor",
+      "status": "UNASSIGNED",
+      "trained": false,
+      "appointed": false,
+      "count": 0,
+      "requiredEvidence": "Appointment independent of every author of the reviewed scope"
+    },
+    {
+      "role": "interviewers",
+      "label": "Human interviewers",
+      "status": "UNTRAINED",
+      "trained": false,
+      "appointed": false,
+      "count": 0,
+      "requiredEvidence": "Named humans with completed training on the approved instrument version and a recorded channel authorization"
+    }
+  ],
+  "storage": {
+    "architectureDefined": true,
+    "localSyntheticTestsPass": true,
+    "provisioned": false,
+    "accessReviewed": false,
+    "operationallyApproved": false,
+    "storeExists": false,
+    "keyManagementExists": false,
+    "auditLogExists": false,
+    "processorEngaged": false
+  },
+  "legalPrivacy": {
+    "controllerIdentity": "OPEN",
+    "privacyContact": "OPEN",
+    "legalReviewStatus": "LEGAL_REVIEW_PENDING",
+    "lawfulBasis": "PROPOSED_NOT_APPROVED",
+    "privacyPackageStatus": "DRAFT_FOR_LEGAL_REVIEW",
+    "consentInstrumentStatus": "REVIEW_REQUIRED",
+    "participantNoticeStatus": "NOT_APPROVED",
+    "retentionPolicyStatus": "PROPOSED_NOT_EFFECTIVE",
+    "dataProtectionImpactAssessment": "NOT_PRODUCED"
+  },
+  "instrumentVersions": {
+    "historicalEffectiveVersion": "1.0.0",
+    "historicalEffectiveStatus": "FROZEN_HISTORICAL",
+    "historicalSourceHash": "cbe7f9fe4634c44a7344a4b9817827368a284efdcfb4ec8e80e11252ba1a120d",
+    "candidateVersion": "1.1.0",
+    "candidateStatus": "REVIEW_REQUIRED",
+    "candidateEffective": false,
+    "amendmentPackage": "MC10R-INSTRUMENT-AMENDMENT-v1.1.0",
+    "languages": {
+      "ES": "STRUCTURAL_REVIEW_ONLY",
+      "EN": "STRUCTURAL_REVIEW_ONLY",
+      "PT": "NOT_PRODUCED"
+    }
+  },
+  "wave1": {
+    "waveId": "MC10R-WAVE-1",
+    "status": "NOT_EXECUTED",
+    "completionState": "0_OF_18_MINIMUM",
+    "isFullStudy": false,
+    "presentedAsFullStudy": false,
+    "geography": "Rías Baixas / Galicia (Spain only)",
+    "portugalScope": "EXCLUDED",
+    "wavesTotal": 3,
+    "cohorts": [
+      {
+        "cohort": "A",
+        "segmentId": "SEG-03",
+        "name": "Marina-based unattended-vessel owners",
+        "minimum": 5,
+        "maximum": 8,
+        "completed": 0
+      },
+      {
+        "cohort": "B",
+        "segmentId": "SEG-01",
+        "name": "Recreational motorboat owners",
+        "minimum": 5,
+        "maximum": 8,
+        "completed": 0
+      },
+      {
+        "cohort": "C",
+        "segmentId": "SEG-04",
+        "name": "Marine electronics installers",
+        "minimum": 5,
+        "maximum": 7,
+        "completed": 0
+      },
+      {
+        "cohort": "D",
+        "segmentId": "SEG-06",
+        "name": "Marina or shipyard operators",
+        "minimum": 3,
+        "maximum": 5,
+        "completed": 0
+      }
+    ],
+    "quotaMinimum": 18,
+    "quotaMaximum": 28,
+    "fullStudyMinimum": 37,
+    "fullStudyMaximum": 57,
+    "historicalPlanningAspiration": "40-80",
+    "pricingOutcome": "SEG-01 and SEG-03 may reach n>=8 at their ceiling only; SEG-04 and SEG-06 are BELOW_REGISTERED_MINIMUM and may produce qualitative price objections only; no price is approved",
+    "note": "Wave 1 is an exploratory pilot for four cohorts. It is not the full study, not the 40-80 aspiration and not a sample reduction. No first wave may be presented as satisfying the full study, the experiment minimums or the MC-10 acceptance criteria.",
+    "pricing": {
+      "cellKeyPattern": "^SEG-0[1-8]__EXP-MC10-0[45]__CONSTRUCT-0[12]$",
+      "requiredN": 8,
+      "minimumNeverReduced": true,
+      "experimentEligibleSegments": [
+        "SEG-01",
+        "SEG-03"
+      ],
+      "cells": [
+        {
+          "cellKey": "SEG-01__EXP-MC10-04__CONSTRUCT-01",
+          "segmentId": "SEG-01",
+          "experimentId": "EXP-MC10-04",
+          "constructId": "CONSTRUCT-01",
+          "requiredN": 8,
+          "plannedNWave1": 8,
+          "reachableAtPlannedMax": true,
+          "registeredPopulation": "NAMED_SUBJECT",
+          "populationEligible": true,
+          "experimentLevelResultPermitted": true,
+          "intendedInterpretation": "GG_BAND_AT_N8"
+        },
+        {
+          "cellKey": "SEG-01__EXP-MC10-04__CONSTRUCT-02",
+          "segmentId": "SEG-01",
+          "experimentId": "EXP-MC10-04",
+          "constructId": "CONSTRUCT-02",
+          "requiredN": 8,
+          "plannedNWave1": 8,
+          "reachableAtPlannedMax": true,
+          "registeredPopulation": "NAMED_SUBJECT",
+          "populationEligible": true,
+          "experimentLevelResultPermitted": true,
+          "intendedInterpretation": "GG_BAND_AT_N8"
+        },
+        {
+          "cellKey": "SEG-01__EXP-MC10-05__CONSTRUCT-01",
+          "segmentId": "SEG-01",
+          "experimentId": "EXP-MC10-05",
+          "constructId": "CONSTRUCT-01",
+          "requiredN": 8,
+          "plannedNWave1": 8,
+          "reachableAtPlannedMax": true,
+          "registeredPopulation": "NAMED_SUBJECT",
+          "populationEligible": true,
+          "experimentLevelResultPermitted": true,
+          "intendedInterpretation": "VW_RANGE_AT_N8"
+        },
+        {
+          "cellKey": "SEG-01__EXP-MC10-05__CONSTRUCT-02",
+          "segmentId": "SEG-01",
+          "experimentId": "EXP-MC10-05",
+          "constructId": "CONSTRUCT-02",
+          "requiredN": 8,
+          "plannedNWave1": 8,
+          "reachableAtPlannedMax": true,
+          "registeredPopulation": "NAMED_SUBJECT",
+          "populationEligible": true,
+          "experimentLevelResultPermitted": true,
+          "intendedInterpretation": "VW_RANGE_AT_N8"
+        },
+        {
+          "cellKey": "SEG-03__EXP-MC10-04__CONSTRUCT-01",
+          "segmentId": "SEG-03",
+          "experimentId": "EXP-MC10-04",
+          "constructId": "CONSTRUCT-01",
+          "requiredN": 8,
+          "plannedNWave1": 8,
+          "reachableAtPlannedMax": true,
+          "registeredPopulation": "NAMED_SUBJECT",
+          "populationEligible": true,
+          "experimentLevelResultPermitted": true,
+          "intendedInterpretation": "GG_BAND_AT_N8"
+        },
+        {
+          "cellKey": "SEG-03__EXP-MC10-04__CONSTRUCT-02",
+          "segmentId": "SEG-03",
+          "experimentId": "EXP-MC10-04",
+          "constructId": "CONSTRUCT-02",
+          "requiredN": 8,
+          "plannedNWave1": 8,
+          "reachableAtPlannedMax": true,
+          "registeredPopulation": "NAMED_SUBJECT",
+          "populationEligible": true,
+          "experimentLevelResultPermitted": true,
+          "intendedInterpretation": "GG_BAND_AT_N8"
+        },
+        {
+          "cellKey": "SEG-03__EXP-MC10-05__CONSTRUCT-01",
+          "segmentId": "SEG-03",
+          "experimentId": "EXP-MC10-05",
+          "constructId": "CONSTRUCT-01",
+          "requiredN": 8,
+          "plannedNWave1": 8,
+          "reachableAtPlannedMax": true,
+          "registeredPopulation": "NAMED_SUBJECT",
+          "populationEligible": true,
+          "experimentLevelResultPermitted": true,
+          "intendedInterpretation": "VW_RANGE_AT_N8"
+        },
+        {
+          "cellKey": "SEG-03__EXP-MC10-05__CONSTRUCT-02",
+          "segmentId": "SEG-03",
+          "experimentId": "EXP-MC10-05",
+          "constructId": "CONSTRUCT-02",
+          "requiredN": 8,
+          "plannedNWave1": 8,
+          "reachableAtPlannedMax": true,
+          "registeredPopulation": "NAMED_SUBJECT",
+          "populationEligible": true,
+          "experimentLevelResultPermitted": true,
+          "intendedInterpretation": "VW_RANGE_AT_N8"
+        },
+        {
+          "cellKey": "SEG-04__EXP-MC10-04__CONSTRUCT-01",
+          "segmentId": "SEG-04",
+          "experimentId": "EXP-MC10-04",
+          "constructId": "CONSTRUCT-01",
+          "requiredN": 8,
+          "plannedNWave1": 7,
+          "reachableAtPlannedMax": false,
+          "registeredPopulation": "NAMED_RESALE_VARIANT",
+          "populationEligible": true,
+          "experimentLevelResultPermitted": false,
+          "intendedInterpretation": "QUALITATIVE_PRICE_OBJECTIONS_ONLY"
+        },
+        {
+          "cellKey": "SEG-04__EXP-MC10-04__CONSTRUCT-02",
+          "segmentId": "SEG-04",
+          "experimentId": "EXP-MC10-04",
+          "constructId": "CONSTRUCT-02",
+          "requiredN": 8,
+          "plannedNWave1": 7,
+          "reachableAtPlannedMax": false,
+          "registeredPopulation": "NAMED_RESALE_VARIANT",
+          "populationEligible": true,
+          "experimentLevelResultPermitted": false,
+          "intendedInterpretation": "QUALITATIVE_PRICE_OBJECTIONS_ONLY"
+        },
+        {
+          "cellKey": "SEG-04__EXP-MC10-05__CONSTRUCT-01",
+          "segmentId": "SEG-04",
+          "experimentId": "EXP-MC10-05",
+          "constructId": "CONSTRUCT-01",
+          "requiredN": 8,
+          "plannedNWave1": 7,
+          "reachableAtPlannedMax": false,
+          "registeredPopulation": "NOT_NAMED",
+          "populationEligible": false,
+          "experimentLevelResultPermitted": false,
+          "intendedInterpretation": "QUALITATIVE_PRICE_OBJECTIONS_ONLY"
+        },
+        {
+          "cellKey": "SEG-04__EXP-MC10-05__CONSTRUCT-02",
+          "segmentId": "SEG-04",
+          "experimentId": "EXP-MC10-05",
+          "constructId": "CONSTRUCT-02",
+          "requiredN": 8,
+          "plannedNWave1": 7,
+          "reachableAtPlannedMax": false,
+          "registeredPopulation": "NOT_NAMED",
+          "populationEligible": false,
+          "experimentLevelResultPermitted": false,
+          "intendedInterpretation": "QUALITATIVE_PRICE_OBJECTIONS_ONLY"
+        },
+        {
+          "cellKey": "SEG-06__EXP-MC10-04__CONSTRUCT-01",
+          "segmentId": "SEG-06",
+          "experimentId": "EXP-MC10-04",
+          "constructId": "CONSTRUCT-01",
+          "requiredN": 8,
+          "plannedNWave1": 5,
+          "reachableAtPlannedMax": false,
+          "registeredPopulation": "NOT_NAMED",
+          "populationEligible": false,
+          "experimentLevelResultPermitted": false,
+          "intendedInterpretation": "QUALITATIVE_PRICE_OBJECTIONS_ONLY"
+        },
+        {
+          "cellKey": "SEG-06__EXP-MC10-04__CONSTRUCT-02",
+          "segmentId": "SEG-06",
+          "experimentId": "EXP-MC10-04",
+          "constructId": "CONSTRUCT-02",
+          "requiredN": 8,
+          "plannedNWave1": 5,
+          "reachableAtPlannedMax": false,
+          "registeredPopulation": "NOT_NAMED",
+          "populationEligible": false,
+          "experimentLevelResultPermitted": false,
+          "intendedInterpretation": "QUALITATIVE_PRICE_OBJECTIONS_ONLY"
+        },
+        {
+          "cellKey": "SEG-06__EXP-MC10-05__CONSTRUCT-01",
+          "segmentId": "SEG-06",
+          "experimentId": "EXP-MC10-05",
+          "constructId": "CONSTRUCT-01",
+          "requiredN": 8,
+          "plannedNWave1": 5,
+          "reachableAtPlannedMax": false,
+          "registeredPopulation": "NOT_NAMED",
+          "populationEligible": false,
+          "experimentLevelResultPermitted": false,
+          "intendedInterpretation": "QUALITATIVE_PRICE_OBJECTIONS_ONLY"
+        },
+        {
+          "cellKey": "SEG-06__EXP-MC10-05__CONSTRUCT-02",
+          "segmentId": "SEG-06",
+          "experimentId": "EXP-MC10-05",
+          "constructId": "CONSTRUCT-02",
+          "requiredN": 8,
+          "plannedNWave1": 5,
+          "reachableAtPlannedMax": false,
+          "registeredPopulation": "NOT_NAMED",
+          "populationEligible": false,
+          "experimentLevelResultPermitted": false,
+          "intendedInterpretation": "QUALITATIVE_PRICE_OBJECTIONS_ONLY"
+        }
+      ],
+      "rule": "No Wave 1 cell may be presented as an experiment-level pricing result unless it is both population-eligible and reachable at n>=8; SEG-04 and SEG-06 are qualitative-price-objection cells only.",
+      "approvedPrices": 0
+    }
+  },
+  "counts": {
+    "identified": 0,
+    "contactAuthorized": 0,
+    "invited": 0,
+    "responded": 0,
+    "screened": 0,
+    "eligible": 0,
+    "consented": 0,
+    "interviewCompleted": 0,
+    "analysisEligible": 0,
+    "withdrawn": 0,
+    "excluded": 0,
+    "participants": 0,
+    "interviewsCompleted": 0,
+    "validAnalysisCases": 0,
+    "priceResponses": 0,
+    "codedUnits": 0,
+    "findings": 0,
+    "approvedPrices": 0,
+    "trainedInterviewers": 0,
+    "assignedInterviewers": 0
+  },
+  "inferenceGuard": "A readiness record, a passing validator, a PR approval, a task assignment or an agent inference is not authorization. PARTIALLY_READY with fieldworkStatus BLOCKED is the only honest state until a named human issues a real grant and every prerequisite above is VERIFIED_COMPLETE."
+}

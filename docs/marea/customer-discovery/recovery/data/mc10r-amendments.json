@@ -1,0 +1,398 @@
+{
+  "registryId": "MAREA-MC10R-AMENDMENT-REGISTRY",
+  "registryTitle": "MC-10R amendment registry (PI-01 to PI-05, IV-01 to IV-09)",
+  "contractId": "MAREA-MC10R-CUSTOMER-DISCOVERY-RECOVERY",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10R",
+  "date": "2026-11-01",
+  "owner": "agent-f-data",
+  "status": "PROPOSED_NOT_EFFECTIVE",
+  "note": "Registry of the fourteen candidate amendments prepared by MC-10R. Every entry is a proposal: no approval evidence exists, no effective date exists and no amendment is in force. PI entries are not approvals; IV entries are candidate instrument versions that remain REVIEW_REQUIRED or DRAFT_NOT_APPROVED. The historical instrument version 1.0.0 and the historical plan remain the only effective readings.",
+  "previousVersionPolicy": "The historical effective versions (instrument 1.0.0, plan v1.0.0, segment quotas v1.0.0) are preserved and may never be edited in place. A candidate version is effective only after a dated recorded human approval that this milestone cannot confer.",
+  "counts": {
+    "total": 14,
+    "planningInconsistencies": 5,
+    "instrumentAmendments": 9,
+    "approved": 0,
+    "effective": 0,
+    "withApprovalEvidence": 0
+  },
+  "amendments": [
+    {
+      "id": "PI-01",
+      "title": "Sampling arithmetic reconciliation: per-segment quotas sum to 37/57 while the total target states 40-80",
+      "source": "MC-09 planning inconsistency register (docs/marea/customer-discovery/data/research-status.json, PI-01, severity BLOCKING_BEFORE_FIELDING)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "MC10R-SAMPLING-1.1.0-PROPOSED",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "PROPOSED_NOT_EFFECTIVE",
+      "summary": "Preserve the historical per-segment quotas as the authoritative completion requirement (minimum 37, achievable maximum 57); preserve 40-80 as a historical planning aspiration that cannot be met at its upper end under the preserved maxima; adopt the sequential multi-wave reading (Wave 1 pilot 18-28, Wave 2 completes 37 minimum to 57 maximum, Wave 3 only under a separate approved amendment). No quota value is changed and no threshold is lowered.",
+      "affectedExperiments": [
+        "EXP-MC10-01",
+        "EXP-MC10-02",
+        "EXP-MC10-03",
+        "EXP-MC10-04",
+        "EXP-MC10-05",
+        "EXP-MC10-06",
+        "EXP-MC10-07",
+        "EXP-MC10-08",
+        "EXP-MC10-09",
+        "EXP-MC10-10"
+      ],
+      "dependencies": [
+        "D5",
+        "D8"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/methodology/MC10R-PI01-SAMPLING-RECONCILIATION.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "PI-02",
+      "title": "Single authoritative segment-quota contract replacing the three conflicting minimum/target readings",
+      "source": "MC-09 planning inconsistency register (docs/marea/customer-discovery/data/research-status.json, PI-02, severity BLOCKING_BEFORE_FIELDING)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "MC10R-SEGMENT-QUOTA-1.1.0-PROPOSED",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "PROPOSED_NOT_EFFECTIVE",
+      "summary": "One versioned machine-readable quota contract carrying all fifteen contract fields per segment, separating minimum, target, ceiling and experiment minimum-evidence readings, so no segment is silently redefined. The preserved numbers are unchanged; the candidate contract is not effective.",
+      "affectedExperiments": [
+        "EXP-MC10-01",
+        "EXP-MC10-02",
+        "EXP-MC10-03",
+        "EXP-MC10-04",
+        "EXP-MC10-05",
+        "EXP-MC10-06",
+        "EXP-MC10-07",
+        "EXP-MC10-08",
+        "EXP-MC10-09",
+        "EXP-MC10-10"
+      ],
+      "dependencies": [
+        "D5",
+        "D8"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/methodology/MC10R-PI02-SEGMENT-QUOTA-CONTRACT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "PI-03",
+      "title": "Pricing feasibility: registered n>=8 minimum versus preserved segment maxima",
+      "source": "MC-09 planning inconsistency register (docs/marea/customer-discovery/data/research-status.json, PI-03, severity BLOCKING_BEFORE_PRICING_ANALYSIS)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "MC10R-PI03-PRICING-FEASIBILITY-1.0.0-PROPOSED",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "PROPOSED_NOT_EFFECTIVE",
+      "summary": "Classify each segment x experiment x construct cell as REACHABLE_AT_PLANNED_MAX or BELOW_REGISTERED_MINIMUM. SEG-01, SEG-02, SEG-03 and SEG-07 reach n>=8 at their planned maxima; SEG-04 (7), SEG-05 (7), SEG-06 (5) and SEG-08 (6) are BELOW_REGISTERED_MINIMUM and may produce qualitative price objections only. The n>=8 minimum is never reduced and no price is approved.",
+      "affectedExperiments": [
+        "EXP-MC10-04",
+        "EXP-MC10-05"
+      ],
+      "dependencies": [
+        "D5",
+        "D6"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/pricing/MC10R-PI03-PRICING-FEASIBILITY.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "PI-04",
+      "title": "Required instrument amendments IV-01 to IV-06 before any fielding",
+      "source": "MC-09 planning inconsistency register (docs/marea/customer-discovery/data/research-status.json, PI-04, severity BLOCKING_BEFORE_FIELDING)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "MC10R-INSTRUMENT-AMENDMENT-v1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "PROPOSED_NOT_EFFECTIVE",
+      "summary": "Six dated instrument amendments are required before any fielding: quotation and de-identification consent wording (CONSENT-01), brand-disclosure text and timing (GUIDE-01), PRICE-01 ladder-provenance freeze, consent version and language capture (NOTE-01, SCHEMA-01), ANA-01 operational codebook v1.1.0, and supervisory-authority complaint information that depends on the undesignated controller. All remain unapproved.",
+      "affectedExperiments": [
+        "EXP-MC10-01",
+        "EXP-MC10-02",
+        "EXP-MC10-03",
+        "EXP-MC10-04",
+        "EXP-MC10-05",
+        "EXP-MC10-06",
+        "EXP-MC10-07",
+        "EXP-MC10-08",
+        "EXP-MC10-09",
+        "EXP-MC10-10"
+      ],
+      "dependencies": [
+        "D9",
+        "D10",
+        "D11",
+        "D16"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "PI-05",
+      "title": "Owner-side instrument gaps IV-07 to IV-09 before Wave 1 and Wave 3",
+      "source": "MC-09 planning inconsistency register (docs/marea/customer-discovery/data/research-status.json, PI-05, severity BLOCKING_BEFORE_WAVE_1_AND_WAVE_3)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "MC10R-INSTRUMENT-AMENDMENT-v1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "PROPOSED_NOT_EFFECTIVE",
+      "summary": "Three owner-side instrument amendments close the gaps recorded as IV-07 to IV-09: a neutral incident and near-miss sequence for EXP-MC10-09, exclusions-before-benefits ordering in GUIDE-01 Q11, and reconciliation of the GUIDE-01 concept set A-E with the programme concept ids NAV, WATCH, PROTECT, HUB, START, INTEGRATED_SYSTEM and FLEET. Historical v1.0.0 scripts are preserved and never silently recoded.",
+      "affectedExperiments": [
+        "EXP-MC10-06",
+        "EXP-MC10-09",
+        "EXP-MC10-10"
+      ],
+      "dependencies": [
+        "D9",
+        "D11",
+        "D12"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "IV-01",
+      "title": "Quotation and de-identification consent",
+      "source": "MC-10 instrument version register (docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md, IV-01)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "instrumentId": "CONSENT-01",
+      "summary": "CONSENT-01 v1.1.0 adds explicit quotation permission and de-identification rules so that C3 (de-identified quotation) is a recorded scope, not an inference from participation consent. Candidate section hash is non-effective; no qualified review is claimed.",
+      "affectedExperiments": [
+        "EXP-MC10-01",
+        "EXP-MC10-02",
+        "EXP-MC10-03",
+        "EXP-MC10-04",
+        "EXP-MC10-05",
+        "EXP-MC10-06",
+        "EXP-MC10-07",
+        "EXP-MC10-08",
+        "EXP-MC10-09",
+        "EXP-MC10-10"
+      ],
+      "dependencies": [
+        "D9",
+        "D10",
+        "D12",
+        "D16"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "IV-02",
+      "title": "Brand-disclosure text and timing",
+      "source": "MC-10 instrument version register (docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md, IV-02)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "instrumentId": "GUIDE-01",
+      "summary": "Frozen brand-disclosure wording and its position in the session are added to GUIDE-01 v1.1.0 so the disclosure is identical across interviewers and its effect is a registered confounder rather than an improvisation. Candidate text is not approved and no translation equivalence is claimed.",
+      "affectedExperiments": [
+        "EXP-MC10-01",
+        "EXP-MC10-06",
+        "EXP-MC10-10"
+      ],
+      "dependencies": [
+        "D9",
+        "D10",
+        "D12"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "IV-03",
+      "title": "PRICE-01 ladder provenance record",
+      "source": "MC-10 instrument version register (docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md, IV-03)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "instrumentId": "PRICE-01",
+      "summary": "PRICE-01 v1.1.0 records ladder provenance (derivation note, rationale, hash) for every administered point, so a price answer can never be detached from the frozen ladder version that produced it. EXP-MC10-03 is a qualitative experiment whose threshold is not changed.",
+      "affectedExperiments": [
+        "EXP-MC10-04",
+        "EXP-MC10-05"
+      ],
+      "dependencies": [
+        "D9",
+        "D10",
+        "D11"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "IV-04",
+      "title": "Consent version and language capture in NOTE-01 and SCHEMA-01",
+      "source": "MC-10 instrument version register (docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md, IV-04)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "instrumentId": "NOTE-01, SCHEMA-01",
+      "summary": "NOTE-01 and SCHEMA-01 v1.1.0 capture the exact consent instrument version and language that the participant saw, so record validity can be verified instead of assumed. No threshold, denominator or verdict rule is changed.",
+      "affectedExperiments": [
+        "EXP-MC10-01",
+        "EXP-MC10-02",
+        "EXP-MC10-03",
+        "EXP-MC10-04",
+        "EXP-MC10-05",
+        "EXP-MC10-06",
+        "EXP-MC10-07",
+        "EXP-MC10-08",
+        "EXP-MC10-09",
+        "EXP-MC10-10"
+      ],
+      "dependencies": [
+        "D9",
+        "D10",
+        "D12",
+        "D16"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "IV-05",
+      "title": "ANA-01 operational codebook v1.1.0",
+      "source": "MC-10 instrument version register (docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md, IV-05)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "instrumentId": "ANA-01",
+      "summary": "ANA-01 v1.1.0 reconciles the twelve operational codes with the eight theme families so double coding can be consistent across coders. No code is exercised: zero coded units exist.",
+      "affectedExperiments": [
+        "EXP-MC10-01",
+        "EXP-MC10-02",
+        "EXP-MC10-03",
+        "EXP-MC10-06",
+        "EXP-MC10-09",
+        "EXP-MC10-10"
+      ],
+      "dependencies": [
+        "D9",
+        "D10",
+        "D11"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "IV-06",
+      "title": "Supervisory-authority complaint information",
+      "source": "MC-10 instrument version register (docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md, IV-06)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "DRAFT_NOT_APPROVED",
+      "instrumentId": "CONSENT-01",
+      "summary": "CONSENT-01 privacy text gains a complaint route to the supervisory authority, but the wording cannot be finalized while the data controller and privacy contact remain OPEN; recorded as DRAFT_FOR_LEGAL_REVIEW and never as approved.",
+      "affectedExperiments": [
+        "EXP-MC10-01",
+        "EXP-MC10-02",
+        "EXP-MC10-03",
+        "EXP-MC10-04",
+        "EXP-MC10-05",
+        "EXP-MC10-06",
+        "EXP-MC10-07",
+        "EXP-MC10-08",
+        "EXP-MC10-09",
+        "EXP-MC10-10"
+      ],
+      "dependencies": [
+        "D9",
+        "D10",
+        "D12",
+        "D15",
+        "D16"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null,
+      "documentStatus": "DRAFT_FOR_LEGAL_REVIEW"
+    },
+    {
+      "id": "IV-07",
+      "title": "Incident and near-miss sequence for EXP-MC10-09",
+      "source": "MC-10 instrument version register (docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md, IV-07)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "instrumentId": "GUIDE-01",
+      "summary": "GUIDE-01 v1.1.0 adds a neutral incident and near-miss discovery sequence so EXP-MC10-09 can obtain its registered evidence type without improvisation. The registered threshold and minimum evidence are unchanged.",
+      "affectedExperiments": [
+        "EXP-MC10-09"
+      ],
+      "dependencies": [
+        "D9",
+        "D11",
+        "D12"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "IV-08",
+      "title": "Exclusions before benefits in GUIDE-01 Q11",
+      "source": "MC-10 instrument version register (docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md, IV-08)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "instrumentId": "GUIDE-01",
+      "summary": "GUIDE-01 Q11 is reordered so exclusions are probed before benefits, matching the programme rule and avoiding a leading sequence. EXP-MC10-06 is primary; EXP-MC10-10 and EXP-MC10-01 are not changed in threshold or method.",
+      "affectedExperiments": [
+        "EXP-MC10-06",
+        "EXP-MC10-10",
+        "EXP-MC10-01"
+      ],
+      "dependencies": [
+        "D9",
+        "D11",
+        "D12"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    },
+    {
+      "id": "IV-09",
+      "title": "Concept-ID reconciliation (GUIDE-01 A-E to programme concept ids)",
+      "source": "MC-10 instrument version register (docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md, IV-09)",
+      "previousVersion": "1.0.0",
+      "candidateVersion": "1.1.0",
+      "status": "PROPOSED_NOT_EFFECTIVE",
+      "reviewStatus": "REVIEW_REQUIRED",
+      "instrumentId": "GUIDE-01, NOTE-01, SCHEMA-01, ANA-01",
+      "summary": "Maps GUIDE-01 concept set A-E to the machine concept ids NAV, WATCH, PROTECT, HUB, START, INTEGRATED_SYSTEM and FLEET so comprehension, coding and price modules reference one identity. Historical v1.0.0 scripts are preserved as historical records and are never silently recoded. No threshold is changed.",
+      "affectedExperiments": [
+        "EXP-MC10-06",
+        "EXP-MC10-04",
+        "EXP-MC10-05"
+      ],
+      "dependencies": [
+        "D9",
+        "D10",
+        "D11",
+        "D12"
+      ],
+      "docRef": "docs/marea/customer-discovery/recovery/instruments/MC10R-IV01-IV09-AMENDMENT.md",
+      "approvalEvidence": null,
+      "effectiveDate": null
+    }
+  ]
+}

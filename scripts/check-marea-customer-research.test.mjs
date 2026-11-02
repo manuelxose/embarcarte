@@ -1200,6 +1200,162 @@ test('CR-62 rejects a parenthetical quotation attributed to a pseudonymous ID', 
   });
 });
 
+// MC-10R multilingual extension of CR-62 (EN/ES/PT, quotation variants and
+// participant-claim forms). Every case appends a synthetic sentence to a
+// throwaway fixture document; none of this text enters the real repository.
+
+test('CR-62 rejects an English single-quote quotation with a dash attribution', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\n'The bilge alarm never reached me.' — an owner\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a curly single-quote quotation with an em-dash attribution', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\n‘I would not pay for that’ — an installer\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a Spanish guillemet quotation with a dash attribution', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\n«Nunca me llega la alarma.» — un armador\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a Spanish guillemet quotation in reverse order', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\n«No pagaría una suscripción», afirmó un instalador\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a Portuguese guillemet quotation in parentheses', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\n«Nunca recebo o alerta.» (um operador)\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a Spanish quantifier-less observation claim', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\nLos armadores dijeron que pagarían por el aviso.\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a Portuguese quantifier-less observation claim', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\nOs proprietários disseram que o sistema falha.\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a fabricated Spanish completed-interview count', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\n8 armadores fueron entrevistados en el estudio.\n`,
+    );
+  });
+});
+
+test('CR-62 rejects a Portuguese participant-percentage claim', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\n80% dos proprietários afirmaram que pagariam.\n`,
+    );
+  });
+});
+
+test('CR-62 rejects an unsupported English customer-preference claim', () => {
+  expectCheckFailure('CR-62', (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n\nOwners prefer a single bundled subscription.\n`,
+    );
+  });
+});
+
+test('CR-62 accepts possessive apostrophes that are not attributions', () => {
+  expectChecksPass(['CR-62'], (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) =>
+        `${text}\nThe owner's boat was built in 2012 and the marina's berth is paid in advance.\n`,
+    );
+  });
+});
+
+test('CR-62 accepts a labelled synthetic fixture count', () => {
+  expectChecksPass(['CR-62'], (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\nSYNTHETIC_FIXTURE — 8 owners were interviewed in the mock scenario.\n`,
+    );
+  });
+});
+
+test('CR-62 accepts an honest zero count', () => {
+  expectChecksPass(['CR-62'], (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\n0 owners were interviewed; no participant data exist.\n`,
+    );
+  });
+});
+
+test('CR-62 accepts a planning threshold statement', () => {
+  expectChecksPass(['CR-62'], (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) => `${text}\nAt least 8 owners must be interviewed in each segment.\n`,
+    );
+  });
+});
+
+test('CR-62 accepts a labelled hypothetical interview script', () => {
+  expectChecksPass(['CR-62'], (root) => {
+    editText(
+      root,
+      `${CD}/MC10-BUYER-OBJECTIONS.md`,
+      (text) =>
+        `${text}\nHypothetical interview script: «¿Qué le preocupa?» — pregunta el entrevistador.\n`,
+    );
+  });
+});
+
 test('CR-49 rejects a milestone that reports PASS', () => {
   expectCheckFailure('CR-49', (root) => {
     editJson(root, `${DATA}/research-status.json`, (status) => {
