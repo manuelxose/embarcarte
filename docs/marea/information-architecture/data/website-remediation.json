@@ -1,0 +1,1338 @@
+{
+  "contractId": "MAREA-MC15-WEBSITE-REMEDIATION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-15",
+  "date": "2026-11-02",
+  "owner": "legal-governance",
+  "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
+  "generationMethod": "deterministic derivation from MC-14 website-findings.json plus MC-15 planning roles",
+  "evidenceState": "REPOSITORY_VERIFIED",
+  "scope": "MC-15 internal bilingual IA/SEO planning",
+  "readOnly": true,
+  "publicationAuthorized": false,
+  "MC16_STARTED": false,
+  "statusNote": "Planning inventory only. No finding is closed, remediated or verified; no source file is modified and no public change is authorised.",
+  "crossReferences": [
+    "docs/marea/legal-commercial/data/website-findings.json#MAREA-MC14-WEBSITE-FINDINGS",
+    "docs/marea/legal-commercial/data/mc15-handoff-inputs.json#MAREA-MC14-MC15-HANDOFF-INPUTS",
+    "docs/marea/information-architecture/data/publication-gates.json#MAREA-MC15-PUBLICATION-GATES",
+    "docs/marea/information-architecture/data/mc16-handoff-inputs.json#MAREA-MC15-MC16-HANDOFF-INPUTS"
+  ],
+  "authoritativeSource": {
+    "path": "docs/marea/legal-commercial/data/website-findings.json",
+    "contractId": "MAREA-MC14-WEBSITE-FINDINGS",
+    "baselineCommit": "f80c0f02ac14803e9e1539393abbb225d7f49e16",
+    "totalFindings": 34,
+    "sourceStatus": "NOT_REMEDIATED",
+    "precedence": "Authoritative for findingId, route, file, lineStart, lineEnd, severity, riskIds, category, observedText and suggestedRemediation."
+  },
+  "statusPolicy": {
+    "originalStatus": "NOT_REMEDIATED",
+    "mc15PlanningStatus": "PLANNED_NOT_REMEDIATED",
+    "allowedMc15Statuses": [
+      "PLANNED_NOT_REMEDIATED",
+      "OWNER_ASSIGNED_NOT_REMEDIATED"
+    ],
+    "closureRule": "A finding may be closed only by a future authorised remediation milestone with verified evidence; MC-15 neither closes nor remediates any finding.",
+    "sourceMutationRule": "No file listed in currentFile is created, edited, moved or deleted by MC-15."
+  },
+  "summary": {
+    "total": 34,
+    "severityCounts": {
+      "BLOCKING": 6,
+      "MAJOR": 20,
+      "MINOR": 4,
+      "INFORMATIONAL": 4
+    },
+    "categoryCounts": {
+      "LEGAL_IDENTITY": 2,
+      "OWNERSHIP": 2,
+      "AVAILABILITY": 1,
+      "SAFETY": 3,
+      "PRIVACY": 3,
+      "COOKIES": 1,
+      "CHECKOUT": 2,
+      "PRICE": 2,
+      "STRUCTURED_DATA": 1,
+      "SEO": 1,
+      "BRAND": 1,
+      "COMPATIBILITY": 2,
+      "COMMERCIAL_CLAIM": 6,
+      "OTHER": 5,
+      "WARRANTY": 1,
+      "SUBSCRIPTION": 1
+    },
+    "remediated": 0,
+    "closed": 0,
+    "remediationRequired": 30,
+    "verifiedControls": 4
+  },
+  "handoffMappingDiscrepancy": {
+    "handoffSource": "docs/marea/legal-commercial/data/mc15-handoff-inputs.json#pageByPageIssues",
+    "authoritativeSource": "docs/marea/legal-commercial/data/website-findings.json",
+    "rule": "website-findings.json wins on every finding route; the handoff grouping is non-exhaustive and route-inaccurate.",
+    "summary": {
+      "handoffListedUniqueFindings": 21,
+      "handoffUnlistedFindings": 13,
+      "routeOrLabelMismatches": 16,
+      "unlistedFindings": 13
+    },
+    "entries": [
+      {
+        "findingId": "WEB-019",
+        "handoffGroupRoute": "/tienda",
+        "authoritativeRoute": "/tecnologia/piloto-automatico",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-020",
+        "handoffGroupRoute": "/tienda",
+        "authoritativeRoute": "/tecnologia/hub",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-006",
+        "handoffGroupRoute": "/tecnologia",
+        "authoritativeRoute": "/tecnologia/piloto-automatico",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-010",
+        "handoffGroupRoute": "/tecnologia",
+        "authoritativeRoute": "/acceso",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-011",
+        "handoffGroupRoute": "/tecnologia",
+        "authoritativeRoute": "/carrito",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-007",
+        "handoffGroupRoute": "/aviso-legal",
+        "authoritativeRoute": "/privacidad",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-021",
+        "handoffGroupRoute": "/aviso-legal",
+        "authoritativeRoute": "/",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-009",
+        "handoffGroupRoute": "/privacidad",
+        "authoritativeRoute": "/acceso",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-022",
+        "handoffGroupRoute": "/cookies",
+        "authoritativeRoute": "/sobre-nosotros",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-012",
+        "handoffGroupRoute": "/carrito",
+        "authoritativeRoute": "/api/orders",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-013",
+        "handoffGroupRoute": "/carrito",
+        "authoritativeRoute": "/tienda/:slug",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-014",
+        "handoffGroupRoute": "/sobre-nosotros",
+        "authoritativeRoute": "/tienda/:slug",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-015",
+        "handoffGroupRoute": "/sobre-nosotros",
+        "authoritativeRoute": "/tecnologia",
+        "discrepancyType": "ROUTE_MISMATCH"
+      },
+      {
+        "findingId": "WEB-016",
+        "handoffGroupRoute": "structured data / product detail",
+        "authoritativeRoute": "/",
+        "discrepancyType": "NON_ROUTE_GROUP_LABEL"
+      },
+      {
+        "findingId": "WEB-017",
+        "handoffGroupRoute": "structured data / product detail",
+        "authoritativeRoute": "/tecnologia/navegador",
+        "discrepancyType": "NON_ROUTE_GROUP_LABEL"
+      },
+      {
+        "findingId": "WEB-018",
+        "handoffGroupRoute": "structured data / product detail",
+        "authoritativeRoute": "/tecnologia/hub",
+        "discrepancyType": "NON_ROUTE_GROUP_LABEL"
+      },
+      {
+        "findingId": "WEB-002",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/aviso-legal",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-005",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/aviso-legal",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-024",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/condiciones-de-venta",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-025",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/aviso-legal",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-026",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/experiencias",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-027",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/tienda/:slug",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-028",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/condiciones-de-venta",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-029",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/tecnologia",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-030",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/condiciones-de-venta",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-031",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/tienda/muestra/:slug",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-032",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/api/orders",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-033",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      },
+      {
+        "findingId": "WEB-034",
+        "handoffGroupRoute": null,
+        "authoritativeRoute": "/tecnologia/piloto-automatico",
+        "discrepancyType": "NOT_LISTED_IN_HANDOFF"
+      }
+    ]
+  },
+  "items": [
+    {
+      "findingId": "WEB-001",
+      "category": "LEGAL_IDENTITY",
+      "currentFile": "src/app/core/site.config.ts",
+      "currentLineRange": "21-26",
+      "currentLineStart": 21,
+      "currentLineEnd": 26,
+      "currentRoute": "/aviso-legal",
+      "locale": "es",
+      "severity": "BLOCKING",
+      "riskIds": [
+        "LEG-09",
+        "LEG-01"
+      ],
+      "observedText": "    taxId: '',\n    address: '',\n    registry: '',",
+      "seoOrIaImpact": "SEO: the site-wide footer and the legal page cannot carry a verified seller identity, so every page stays blocked for indexation. IA: the legal region and the legal-notice entity lack required identity content.",
+      "recommendedAction": "Future work (MC-15, GATE-LEGAL-ENTITY): populate SITE.legal from the company registration evidence (legal name, NIF/CIF, registered address, registry data) and gate publication of commerce and legal pages on those fields being non-empty and independently verified.",
+      "futureImplementationOwner": "COMMERCIAL_DIRECTOR",
+      "requiredEvidence": [
+        "Verified company registration data (legal name, NIF/CIF, registered address, registry data)",
+        "Independent verification record of the SITE.legal values",
+        "GATE-LEGAL-ENTITY closure record"
+      ],
+      "publicationGate": "GATE-LEGAL-ENTITY",
+      "relatedGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-002",
+      "category": "LEGAL_IDENTITY",
+      "currentFile": "src/app/i18n/es.ts",
+      "currentLineRange": "259-264",
+      "currentLineStart": 259,
+      "currentLineEnd": 264,
+      "currentRoute": "/aviso-legal",
+      "locale": "es",
+      "severity": "BLOCKING",
+      "riskIds": [
+        "LEG-09"
+      ],
+      "observedText": "'legal.pending': 'Datos fiscales y domicilio: pendientes de confirmación.',",
+      "seoOrIaImpact": "SEO: the legal notice cannot be publication-ready while it advertises missing seller data. IA: the pending-confirmation fallback is a prohibited public content state.",
+      "recommendedAction": "Future work (MC-15): once SITE.legal is completed and verified, remove the 'pending confirmation' fallback so it can never render on a public legal page; until then keep commerce CTAs gated.",
+      "futureImplementationOwner": "COMMERCIAL_DIRECTOR",
+      "requiredEvidence": [
+        "Verified company registration data",
+        "Removal of the pending-confirmation fallback verified in both locales",
+        "Copy review of the legal pack"
+      ],
+      "publicationGate": "GATE-LEGAL-ENTITY",
+      "relatedGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-003",
+      "category": "OWNERSHIP",
+      "currentFile": "src/app/features/technology/content/technology-page.content.ts",
+      "currentLineRange": "27-30",
+      "currentLineStart": 27,
+      "currentLineEnd": 30,
+      "currentRoute": "/tecnologia",
+      "locale": "es",
+      "severity": "BLOCKING",
+      "riskIds": [
+        "IPR-15",
+        "IPR-14",
+        "CLM-05"
+      ],
+      "observedText": "Open Marine es nuestra plataforma abierta de navegación e instrumentación.",
+      "seoOrIaImpact": "SEO: the technology page title, description and body carry an ownership claim over uncleared code. IA: OPEN-MARINE versus MAREA entity and brand mapping is unresolved.",
+      "recommendedAction": "Future work (MC-12A/MC-15): close the OPEN-MARINE assignment/licence decision first, then either substantiate an owned-brand statement with the signed evidence or rewrite the copy to describe the technical origin without ownership language.",
+      "futureImplementationOwner": "LEGAL_COUNSEL",
+      "requiredEvidence": [
+        "OPEN-MARINE assignment/ownership chain or licence",
+        "Outbound licence decision and third-party notices",
+        "Approved brand wording with claims sign-off"
+      ],
+      "publicationGate": "GATE-IP-CLEARANCE",
+      "relatedGateIds": [
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-004",
+      "category": "AVAILABILITY",
+      "currentFile": "src/app/i18n/es.ts",
+      "currentLineRange": "87-90",
+      "currentLineStart": 87,
+      "currentLineEnd": 90,
+      "currentRoute": "/tienda",
+      "locale": "es",
+      "severity": "BLOCKING",
+      "riskIds": [
+        "CLM-02",
+        "CLM-06",
+        "LEG-09"
+      ],
+      "observedText": "Compra el ordenador de navegación Open Marine Hub, el controlador de piloto automático y accesorios náuticos abiertos.",
+      "seoOrIaImpact": "SEO: the shop meta description instructs buying unavailable products, so the shop surface stays blocked. IA: the concept catalogue and the purchasable SKU catalogue are not separated.",
+      "recommendedAction": "Future work (MC-15): replace the shop SEO title/description with a truthful catalogue statement and prohibit buy/price/availability language until approved SKUs, real stock and fulfilment exist.",
+      "futureImplementationOwner": "COMMERCIAL_DIRECTOR",
+      "requiredEvidence": [
+        "Approved SKU catalogue state per product",
+        "Approved price list or written NOT_FOR_SALE decision",
+        "Claims approval for the shop metadata"
+      ],
+      "publicationGate": "GATE-COMMERCIAL-CLAIMS",
+      "relatedGateIds": [
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-005",
+      "category": "OWNERSHIP",
+      "currentFile": "src/app/features/legal/content/legal.es.ts",
+      "currentLineRange": "26-32",
+      "currentLineStart": 26,
+      "currentLineEnd": 32,
+      "currentRoute": "/aviso-legal",
+      "locale": "es",
+      "severity": "BLOCKING",
+      "riskIds": [
+        "IPR-15",
+        "IPR-14",
+        "CLM-05"
+      ],
+      "observedText": "Open Marine distribuido como código abierto se rige por su propia licencia.",
+      "seoOrIaImpact": "SEO: the legal notice publishes a false open-source licence statement and cannot be indexed. IA: the licence statement is a legal-pack content dependency.",
+      "recommendedAction": "Future work (MC-12A/MC-15): replace the passage with the actual, signed licence position once decided; publish no open-source or licence statement until the outbound licence file and attribution/notice obligations exist.",
+      "futureImplementationOwner": "LEGAL_COUNSEL",
+      "requiredEvidence": [
+        "Signed licence position for the distributed software",
+        "Outbound licence decision",
+        "Counsel review of the legal notice text"
+      ],
+      "publicationGate": "GATE-IP-CLEARANCE",
+      "relatedGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-006",
+      "category": "SAFETY",
+      "currentFile": "src/app/features/technology/content/technology.es.ts",
+      "currentLineRange": "74-95",
+      "currentLineStart": 74,
+      "currentLineEnd": 95,
+      "currentRoute": "/tecnologia/piloto-automatico",
+      "locale": "es",
+      "severity": "BLOCKING",
+      "riskIds": [
+        "CLM-06",
+        "LIA-06",
+        "LEG-01"
+      ],
+      "observedText": "Controlador de piloto automático abierto, con seguridad por diseño.",
+      "seoOrIaImpact": "SEO: the PILOT detail page markets safety-critical steering without evidence. IA: the PILOT family page and any commerce CTA stay blocked.",
+      "recommendedAction": "Future work (MC-15): remove safety assurances, describe only defined design boundaries with the approved supervised-steering and navigation-aid disclaimers verbatim, mark the module DEFINED/not for sale and remove commerce links; no safety claim until an independent safety case and evidence exist.",
+      "futureImplementationOwner": "HARDWARE_LEAD",
+      "requiredEvidence": [
+        "Independent hazard analysis and safety case",
+        "Physical E-stop and fail-closed evidence",
+        "Supervised sea-trial reports and independent safety review",
+        "Approved supervised-steering and navigation-aid disclaimers"
+      ],
+      "publicationGate": "GATE-SAFETY-PILOT",
+      "relatedGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-INSURANCE",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-007",
+      "category": "PRIVACY",
+      "currentFile": "src/app/features/legal/content/legal.es.ts",
+      "currentLineRange": "44-46",
+      "currentLineStart": 44,
+      "currentLineEnd": 46,
+      "currentRoute": "/privacidad",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "PRIV-07",
+        "CONS-01"
+      ],
+      "observedText": "Responsable del tratamiento: {owner}. Contacto: {email}.",
+      "seoOrIaImpact": "SEO: the privacy page cannot be publication-ready. IA: the controller identity block in the legal pack is incomplete.",
+      "recommendedAction": "Future work (MC-15): after GATE-LEGAL-ENTITY closes, publish the controller's legal name, NIF, postal address and a privacy contact/DPO route in both locales.",
+      "futureImplementationOwner": "DPO",
+      "requiredEvidence": [
+        "Verified controller legal identity",
+        "Approved privacy notice ES/EN with contact route",
+        "DPIA screening record"
+      ],
+      "publicationGate": "GATE-PRIVACY-DPA-DPIA",
+      "relatedGateIds": [
+        "GATE-LEGAL-ENTITY"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-008",
+      "category": "PRIVACY",
+      "currentFile": "src/app/features/legal/content/legal.es.ts",
+      "currentLineRange": "63-66",
+      "currentLineStart": 63,
+      "currentLineEnd": 66,
+      "currentRoute": "/privacidad",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "PRIV-07",
+        "CONS-01"
+      ],
+      "observedText": "No cedemos tus datos a terceros salvo obligación legal o proveedores técnicos necesarios (alojamiento y correo).",
+      "seoOrIaImpact": "SEO: the privacy page omits processors and transfers. IA: the recipient and transfer sections are missing from the legal pack.",
+      "recommendedAction": "Future work (MC-15): add Google Identity Services and Stripe as processors/recipients with purpose, transfer mechanism and retention, plus the remainder of the GDPR art. 13 information (retention periods, legitimate interest, complaint route beyond AEPD).",
+      "futureImplementationOwner": "DPO",
+      "requiredEvidence": [
+        "Article 28 DPA and subprocessor register",
+        "Transfer mechanism and retention schedule",
+        "Updated privacy notice ES/EN"
+      ],
+      "publicationGate": "GATE-PRIVACY-DPA-DPIA",
+      "relatedGateIds": [
+        "GATE-LEGAL-ENTITY"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-009",
+      "category": "PRIVACY",
+      "currentFile": "src/server/api.ts",
+      "currentLineRange": "150-169",
+      "currentLineStart": 150,
+      "currentLineEnd": 169,
+      "currentRoute": "/acceso",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "PRIV-07",
+        "CONS-01"
+      ],
+      "observedText": "INSERT INTO users (email, name, password_hash) VALUES (?, ?, ?)",
+      "seoOrIaImpact": "SEO: no indexation impact, the login page is private. IA: the account-creation and consent surface cannot be described as lawful.",
+      "recommendedAction": "Future work (MC-15): require an explicit consent/terms flag server-side, store the accepted privacy-policy version, timestamp and source, and record the lawful basis before creating the account.",
+      "futureImplementationOwner": "DPO",
+      "requiredEvidence": [
+        "Server-side consent storage design and implementation",
+        "Stored policy version, timestamp and source",
+        "Approved privacy notice and lawful-basis record"
+      ],
+      "publicationGate": "GATE-PRIVACY-DPA-DPIA",
+      "relatedGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-010",
+      "category": "COOKIES",
+      "currentFile": "src/app/core/google-identity.ts",
+      "currentLineRange": "34-46",
+      "currentLineStart": 34,
+      "currentLineEnd": 46,
+      "currentRoute": "/acceso",
+      "locale": "es",
+      "severity": "MINOR",
+      "riskIds": [
+        "PRIV-07"
+      ],
+      "observedText": "script.src = 'https://accounts.google.com/gsi/client';",
+      "seoOrIaImpact": "SEO: no indexation impact, the login page is private. IA: the cookie inventory must disclose the third-party authentication script.",
+      "recommendedAction": "Future work (MC-15): disclose the Google sign-in integration in the cookie/privacy information, state its purpose and any storage it sets, and confirm the consent basis before enabling the button.",
+      "futureImplementationOwner": "DPO",
+      "requiredEvidence": [
+        "Cookie inventory listing Google Identity Services",
+        "Consent implementation evidence",
+        "Updated cookie and privacy disclosures ES/EN"
+      ],
+      "publicationGate": "GATE-LEGAL-ENTITY",
+      "relatedGateIds": [
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-011",
+      "category": "CHECKOUT",
+      "currentFile": "src/app/features/shop/cart.ts",
+      "currentLineRange": "83-86",
+      "currentLineStart": 83,
+      "currentLineEnd": 86,
+      "currentRoute": "/carrito",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CONS-01",
+        "CONS-03",
+        "CONS-10"
+      ],
+      "observedText": "formControlName=\"terms\"",
+      "seoOrIaImpact": "SEO: no indexation impact, the cart is private. IA: checkout content must present pre-contract and withdrawal information before the order button.",
+      "recommendedAction": "Future work (MC-15): present the CRD pre-contract information before the order button (withdrawal right, model form, delivery/tax costs) and separate privacy acknowledgement from contractual acceptance.",
+      "futureImplementationOwner": "LEGAL_COUNSEL",
+      "requiredEvidence": [
+        "Approved consumer terms of sale",
+        "Model withdrawal form (Annex I(B))",
+        "Checkout pre-contract information review"
+      ],
+      "publicationGate": "GATE-CONSUMER-TERMS",
+      "relatedGateIds": [
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-012",
+      "category": "CHECKOUT",
+      "currentFile": "src/server/api.ts",
+      "currentLineRange": "402-408",
+      "currentLineStart": 402,
+      "currentLineEnd": 408,
+      "currentRoute": "/api/orders",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CONS-01",
+        "PAY-05"
+      ],
+      "observedText": "Gracias por tu pedido en Embarcarte.",
+      "seoOrIaImpact": "SEO: no indexation impact, the endpoint is not a page. IA: order acknowledgement and seller acceptance must be separated in the commerce content model.",
+      "recommendedAction": "Future work (MC-15): separate the automatic order-received acknowledgement from the seller's acceptance confirmation, align the terms of sale wording and record the acceptance event.",
+      "futureImplementationOwner": "LEGAL_COUNSEL",
+      "requiredEvidence": [
+        "Order acknowledgement versus acceptance decision",
+        "Approved consumer terms",
+        "Checkout and email flow test evidence"
+      ],
+      "publicationGate": "GATE-CONSUMER-TERMS",
+      "relatedGateIds": [
+        "GATE-PAYMENTS"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-013",
+      "category": "PRICE",
+      "currentFile": "src/app/features/shop/shop-detail.ts",
+      "currentLineRange": "47-47",
+      "currentLineStart": 47,
+      "currentLineEnd": 47,
+      "currentRoute": "/tienda/:slug",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CLM-04",
+        "PAY-04",
+        "LEG-09"
+      ],
+      "observedText": "{{ i18n.t('shopDetail.vat') }}",
+      "seoOrIaImpact": "SEO: product-detail metadata and offer display carry an unverified VAT representation. IA: the SKU model needs VAT basis and territory fields.",
+      "recommendedAction": "Future work (MC-15): add explicit VAT treatment and territory to the product/SKU model and publish the final price only from an approved price list; hide the VAT label until the tax configuration is verified.",
+      "futureImplementationOwner": "FINANCE_LEAD",
+      "requiredEvidence": [
+        "Approved price list with VAT basis and territory",
+        "VAT configuration evidence",
+        "Price-display rules"
+      ],
+      "publicationGate": "GATE-PRICING",
+      "relatedGateIds": [
+        "GATE-CONSUMER-TERMS"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-014",
+      "category": "STRUCTURED_DATA",
+      "currentFile": "src/app/features/shop/shop-detail.ts",
+      "currentLineRange": "148-164",
+      "currentLineStart": 148,
+      "currentLineEnd": 164,
+      "currentRoute": "/tienda/:slug",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CLM-04",
+        "CLM-02",
+        "IPR-13"
+      ],
+      "observedText": "availability: product.stock > 0 ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',",
+      "seoOrIaImpact": "SEO: Product/Offer structured data on product detail is ineligible for publication. IA: the structured-data policy must forbid admin-derived offers.",
+      "recommendedAction": "Future work (MC-15): gate JSON-LD offer generation on an approved SKU record (approved price list, real stock, seller identity, brand clearance) and stop using 'Open Marine' as Product brand until IPR-13/IPR-15 close.",
+      "futureImplementationOwner": "ENGINEERING_LEAD",
+      "requiredEvidence": [
+        "Approved structured-data policy",
+        "Approved SKU record with approved price and real stock",
+        "Brand clearance for the Product brand field"
+      ],
+      "publicationGate": "GATE-COMMERCIAL-CLAIMS",
+      "relatedGateIds": [
+        "GATE-PRICING",
+        "GATE-IP-CLEARANCE"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-015",
+      "category": "SEO",
+      "currentFile": "src/app/features/technology/content/technology-page.content.ts",
+      "currentLineRange": "52-56",
+      "currentLineStart": 52,
+      "currentLineEnd": 56,
+      "currentRoute": "/tecnologia",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CLM-06",
+        "CLM-03",
+        "IPR-14"
+      ],
+      "observedText": "Open Marine integra GPS, AIS, sonda, viento y piloto automático en un sistema abierto basado en Signal K",
+      "seoOrIaImpact": "SEO: the technology meta description publishes an availability and capability claim. IA: metadata is treated as a governed claim surface.",
+      "recommendedAction": "Future work (MC-15): rewrite the technology SEO metadata to describe the intended architecture and lifecycle status without implying an integrated, working autopilot/sensor system.",
+      "futureImplementationOwner": "COMMERCIAL_DIRECTOR",
+      "requiredEvidence": [
+        "Approved technology claim records",
+        "Bilingual semantic parity check",
+        "Lifecycle status statement"
+      ],
+      "publicationGate": "GATE-COMMERCIAL-CLAIMS",
+      "relatedGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-016",
+      "category": "BRAND",
+      "currentFile": "src/app/i18n/es.ts",
+      "currentLineRange": "35-35",
+      "currentLineStart": 35,
+      "currentLineEnd": 35,
+      "currentRoute": "/",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "IPR-13",
+        "IPR-14",
+        "CLM-05"
+      ],
+      "observedText": "'footer.technology': 'Tecnología Open Marine',",
+      "seoOrIaImpact": "SEO: the footer brand string appears site-wide, including structured-data brand fields. IA: the brand architecture and public-use decision are unresolved.",
+      "recommendedAction": "Future work (MC-15, after trademark/ownership gates): migrate customer-facing brand references through the approved brand architecture, or keep them descriptive and non-commercial until MAREA/OPEN-MARINE clearance is granted.",
+      "futureImplementationOwner": "COMMERCIAL_DIRECTOR",
+      "requiredEvidence": [
+        "Trademark clearance and public-use decision",
+        "Brand architecture decision",
+        "Approved footer wording"
+      ],
+      "publicationGate": "GATE-IP-CLEARANCE",
+      "relatedGateIds": [
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-017",
+      "category": "SAFETY",
+      "currentFile": "src/app/features/technology/content/technology.es.ts",
+      "currentLineRange": "15-22",
+      "currentLineStart": 15,
+      "currentLineEnd": 22,
+      "currentRoute": "/tecnologia/navegador",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CLM-06",
+        "LIA-06"
+      ],
+      "observedText": "Blancos AIS con cálculo de CPA/TCPA y alarmas de colisión",
+      "seoOrIaImpact": "SEO: the NAV detail page implies collision awareness without receive-only AIS disclaimers. IA: mandatory disclaimers are missing from the content model.",
+      "recommendedAction": "Future work (MC-15): add the approved navigation-aid and AIS receive-only disclaimers verbatim on this page and avoid implying collision-avoidance capability.",
+      "futureImplementationOwner": "COMMERCIAL_DIRECTOR",
+      "requiredEvidence": [
+        "Approved navigation-aid and AIS receive-only disclaimers",
+        "Claims approval",
+        "AIS scope statement"
+      ],
+      "publicationGate": "GATE-COMMERCIAL-CLAIMS",
+      "relatedGateIds": [
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-018",
+      "category": "COMPATIBILITY",
+      "currentFile": "src/app/features/technology/content/technology.es.ts",
+      "currentLineRange": "58-70",
+      "currentLineStart": 58,
+      "currentLineEnd": 70,
+      "currentRoute": "/tecnologia/hub",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CLM-07",
+        "LIA-05"
+      ],
+      "observedText": "Entradas NMEA 0183 y NMEA 2000 (mediante adaptador)",
+      "seoOrIaImpact": "SEO: the Hub page publishes NMEA 2000 compatibility without licence or tests. IA: compatibility rows per device and firmware are missing.",
+      "recommendedAction": "Future work (MC-15): remove NMEA 2000 from public specs until licensed/tested evidence exists, and publish only compatibility rows backed by recorded tests per device and firmware.",
+      "futureImplementationOwner": "ENGINEERING_LEAD",
+      "requiredEvidence": [
+        "NMEA licence and certification decision",
+        "Tested compatibility rows per device and firmware",
+        "Approved Hub specification wording"
+      ],
+      "publicationGate": "GATE-IP-CLEARANCE",
+      "relatedGateIds": [
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-019",
+      "category": "COMPATIBILITY",
+      "currentFile": "src/app/features/technology/content/technology.es.ts",
+      "currentLineRange": "80-87",
+      "currentLineStart": 80,
+      "currentLineEnd": 87,
+      "currentRoute": "/tecnologia/piloto-automatico",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CLM-07",
+        "CLM-06"
+      ],
+      "observedText": "Compatible con actuadores DC de dos hilos, como los de tipo ST3000",
+      "seoOrIaImpact": "SEO: the PILOT page asserts named third-party actuator compatibility. IA: installation qualification data is missing.",
+      "recommendedAction": "Future work (MC-15): remove named-device compatibility until per-actuator test evidence and an installation qualification matrix are published.",
+      "futureImplementationOwner": "ENGINEERING_LEAD",
+      "requiredEvidence": [
+        "Per-actuator tested compatibility matrix",
+        "Installation qualification evidence",
+        "Claims approval"
+      ],
+      "publicationGate": "GATE-COMMERCIAL-CLAIMS",
+      "relatedGateIds": [
+        "GATE-SAFETY-PILOT"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-020",
+      "category": "COMMERCIAL_CLAIM",
+      "currentFile": "src/app/features/technology/content/technology.es.ts",
+      "currentLineRange": "62-65",
+      "currentLineStart": 62,
+      "currentLineEnd": 65,
+      "currentRoute": "/tecnologia/hub",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CLM-02",
+        "OPS-02",
+        "CLM-04"
+      ],
+      "observedText": "Instalación, configuración y puesta en marcha incluidas",
+      "seoOrIaImpact": "SEO: the Hub page converts inclusions into an offer expectation. IA: inclusions must move to an approved SKU or quotation record.",
+      "recommendedAction": "Future work (MC-15): replace inclusion language with an honest readiness/scope statement and move inclusions to an approved quotation or approved SKU record.",
+      "futureImplementationOwner": "COMMERCIAL_DIRECTOR",
+      "requiredEvidence": [
+        "Approved SKU or quotation model",
+        "Approved price list",
+        "Claims approval for inclusion wording"
+      ],
+      "publicationGate": "GATE-COMMERCIAL-CLAIMS",
+      "relatedGateIds": [
+        "GATE-PRICING"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-021",
+      "category": "COMMERCIAL_CLAIM",
+      "currentFile": "src/app/features/home/content/home.content.ts",
+      "currentLineRange": "55-85",
+      "currentLineStart": 55,
+      "currentLineEnd": 85,
+      "currentRoute": "/",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CLM-06",
+        "CLM-03"
+      ],
+      "observedText": "Sensores, instrumentación y pilotos automáticos con sistemas abiertos y protocolos estándar.",
+      "seoOrIaImpact": "SEO: the home page markets autopilots as a product feature. IA: the home product grid conflates DEFINED with available.",
+      "recommendedAction": "Future work (MC-15): remove the autopilot product feature from the home page or mark it explicitly as DEFINED/not available with supervised-steering language; delete 'intelligent control'.",
+      "futureImplementationOwner": "COMMERCIAL_DIRECTOR",
+      "requiredEvidence": [
+        "Approved home-page claims",
+        "Lifecycle and availability labels",
+        "Bilingual parity check"
+      ],
+      "publicationGate": "GATE-COMMERCIAL-CLAIMS",
+      "relatedGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-022",
+      "category": "COMMERCIAL_CLAIM",
+      "currentFile": "src/app/features/about/content/about.content.ts",
+      "currentLineRange": "35-44",
+      "currentLineStart": 35,
+      "currentLineEnd": 44,
+      "currentRoute": "/sobre-nosotros",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CLM-03",
+        "CLM-06",
+        "LIA-06"
+      ],
+      "observedText": "Cada sistema se prueba primero en un banco de simulación que reproduce viento, corriente, AIS y fallos de",
+      "seoOrIaImpact": "SEO: the About page publishes unsupported test and safety assurances. IA: testing and safety narratives need a stated verification scope.",
+      "recommendedAction": "Future work (MC-15): rewrite to state what is actually verified and what remains unvalidated, and remove safety assurances until the PILOT safety case and test evidence exist.",
+      "futureImplementationOwner": "COMMERCIAL_DIRECTOR",
+      "requiredEvidence": [
+        "Verification scope and test evidence",
+        "PILOT safety case",
+        "Approved claims"
+      ],
+      "publicationGate": "GATE-COMMERCIAL-CLAIMS",
+      "relatedGateIds": [
+        "GATE-SAFETY-PILOT"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-023",
+      "category": "PRICE",
+      "currentFile": "src/app/i18n/es.ts",
+      "currentLineRange": "119-121",
+      "currentLineStart": 119,
+      "currentLineEnd": 121,
+      "currentRoute": "/carrito",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CLM-04",
+        "CONS-01",
+        "PAY-04"
+      ],
+      "observedText": "'cart.shippingNote': 'Los costes de envío o instalación, si corresponden, se confirmarán por separado.',",
+      "seoOrIaImpact": "SEO: no indexation impact, the cart is private. IA: the cart total and shipping/installation content contract is incomplete.",
+      "recommendedAction": "Future work (MC-15): calculate and display delivery/installation costs, or explicitly state that they are included, before the order button; make the total the final payable amount.",
+      "futureImplementationOwner": "LEGAL_COUNSEL",
+      "requiredEvidence": [
+        "Delivery and installation cost rules",
+        "Approved consumer terms",
+        "Price-display rules"
+      ],
+      "publicationGate": "GATE-CONSUMER-TERMS",
+      "relatedGateIds": [
+        "GATE-PRICING"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-024",
+      "category": "OTHER",
+      "currentFile": "src/app/features/legal/content/legal.es.ts",
+      "currentLineRange": "127-133",
+      "currentLineStart": 127,
+      "currentLineEnd": 133,
+      "currentRoute": "/condiciones-de-venta",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CONS-03",
+        "CONS-10"
+      ],
+      "observedText": "No aplica a productos configurados o fabricados a medida.",
+      "seoOrIaImpact": "SEO: the terms page carries a widened withdrawal exclusion. IA: the model withdrawal form is absent from the legal pack.",
+      "recommendedAction": "Future work (MC-15): limit the exclusion to genuinely custom-made/ personalised goods, add the Annex I(B) model withdrawal form, and state return-cost allocation and the withdrawal channel.",
+      "futureImplementationOwner": "LEGAL_COUNSEL",
+      "requiredEvidence": [
+        "Approved consumer terms with CRD-compliant exclusions",
+        "Model withdrawal form",
+        "Returns and return-cost policy"
+      ],
+      "publicationGate": "GATE-CONSUMER-TERMS",
+      "relatedGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-025",
+      "category": "COMMERCIAL_CLAIM",
+      "currentFile": "src/app/features/legal/content/legal.es.ts",
+      "currentLineRange": "19-24",
+      "currentLineStart": 19,
+      "currentLineEnd": 24,
+      "currentRoute": "/aviso-legal",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CONS-01",
+        "CLM-04"
+      ],
+      "observedText": "no constituyen una oferta vinculante",
+      "seoOrIaImpact": "SEO: the legal notice contradicts the live shop and checkout. IA: binding versus informational surfaces are not defined.",
+      "recommendedAction": "Future work (MC-15): reconcile the legal notice with the actual commerce flow: state clearly which surfaces are binding offers and which are informational/quotation-only, and align with the terms of sale.",
+      "futureImplementationOwner": "LEGAL_COUNSEL",
+      "requiredEvidence": [
+        "Documented commerce model (binding versus informational)",
+        "Approved consumer terms",
+        "Claims approval"
+      ],
+      "publicationGate": "GATE-CONSUMER-TERMS",
+      "relatedGateIds": [
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-026",
+      "category": "COMMERCIAL_CLAIM",
+      "currentFile": "src/app/features/experiences/content/experiences.content.ts",
+      "currentLineRange": "48-54",
+      "currentLineStart": 48,
+      "currentLineEnd": 54,
+      "currentRoute": "/experiencias",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "CONS-01",
+        "CONS-03"
+      ],
+      "observedText": "Te proponemos una ruta, horario y precio cerrado según la previsión.",
+      "seoOrIaImpact": "SEO: the experiences page promises a closed price and availability. IA: service pre-contract and cancellation content is missing.",
+      "recommendedAction": "Future work (MC-15): add service-specific pre-contract information and booking/cancellation terms before promoting availability, or reduce the page to an enquiry-only description.",
+      "futureImplementationOwner": "COMMERCIAL_DIRECTOR",
+      "requiredEvidence": [
+        "Service booking and cancellation terms",
+        "Liability insurance decision",
+        "Approved service claims"
+      ],
+      "publicationGate": "GATE-CONSUMER-TERMS",
+      "relatedGateIds": [
+        "GATE-INSURANCE"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-027",
+      "category": "SAFETY",
+      "currentFile": "src/app/features/shop/shop-detail.ts",
+      "currentLineRange": "42-66",
+      "currentLineStart": 42,
+      "currentLineEnd": 66,
+      "currentRoute": "/tienda/:slug",
+      "locale": "es",
+      "severity": "MAJOR",
+      "riskIds": [
+        "LEG-04",
+        "LEG-09",
+        "LIA-06"
+      ],
+      "observedText": "{{ p.stock < 5 ? i18n.t('shopDetail.lastUnits', { count: p.stock }) : i18n.t('shopDetail.inStock') }}",
+      "seoOrIaImpact": "SEO: the product page omits GPSR identity and traceability information. IA: SKU-level safety fields are missing.",
+      "recommendedAction": "Future work (MC-15): add mandatory GPSR product-identification, traceability, warning and recall fields to the SKU model and render them on the product page before any activation.",
+      "futureImplementationOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "requiredEvidence": [
+        "GPSR manufacturer/importer and traceability fields",
+        "Safety warnings and recall contact",
+        "Product-page rendering review"
+      ],
+      "publicationGate": "GATE-MARKET-PLACEMENT",
+      "relatedGateIds": [
+        "GATE-LEGAL-ENTITY"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-028",
+      "category": "WARRANTY",
+      "currentFile": "src/app/features/legal/content/legal.es.ts",
+      "currentLineRange": "136-138",
+      "currentLineStart": 136,
+      "currentLineEnd": 138,
+      "currentRoute": "/condiciones-de-venta",
+      "locale": "es",
+      "severity": "MINOR",
+      "riskIds": [
+        "CONS-02",
+        "OPS-03",
+        "LEG-01"
+      ],
+      "observedText": "Los productos tienen la garantía legal de conformidad de tres años prevista en la normativa de consumo.",
+      "seoOrIaImpact": "SEO: the warranty paragraph lacks a claim channel. IA: warranty and RMA content is incomplete.",
+      "recommendedAction": "Future work (MC-15): add the guarantee claim procedure, evidence and contact details, distinguish new/second-hand treatments and link the statutory guarantee to the verified seller identity.",
+      "futureImplementationOwner": "LEGAL_COUNSEL",
+      "requiredEvidence": [
+        "Warranty and RMA policy",
+        "Verified seller identity and contact",
+        "Guarantee claim procedure"
+      ],
+      "publicationGate": "GATE-CONSUMER-TERMS",
+      "relatedGateIds": [
+        "GATE-LEGAL-ENTITY"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-029",
+      "category": "COMMERCIAL_CLAIM",
+      "currentFile": "src/app/features/technology/content/technology-page.content.ts",
+      "currentLineRange": "42-48",
+      "currentLineStart": 42,
+      "currentLineEnd": 48,
+      "currentRoute": "/tecnologia",
+      "locale": "es",
+      "severity": "MINOR",
+      "riskIds": [
+        "CLM-03"
+      ],
+      "observedText": "Software auditable, probado con un banco de simulación antes de cada versión.",
+      "seoOrIaImpact": "SEO: the technology page claims reproducible testing without evidence. IA: verification scope must be stated.",
+      "recommendedAction": "Future work (MC-15): either publish the actual verification scope and evidence or remove the testing/audit assertion.",
+      "futureImplementationOwner": "ENGINEERING_LEAD",
+      "requiredEvidence": [
+        "Verification scope and reproducible evidence",
+        "Approved claims"
+      ],
+      "publicationGate": "GATE-COMMERCIAL-CLAIMS",
+      "relatedGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-030",
+      "category": "SUBSCRIPTION",
+      "currentFile": "docs/marea/bundles/copy/start.es.md",
+      "currentLineRange": "87-88",
+      "currentLineStart": 87,
+      "currentLineEnd": 88,
+      "currentRoute": "/condiciones-de-venta",
+      "locale": "es",
+      "severity": "MINOR",
+      "riskIds": [
+        "CONS-07",
+        "CONS-09"
+      ],
+      "observedText": "MAREA NAV Pro se define como una suscripción anual que proporciona los derechos de la edición durante el periodo y se renueva anualmente.",
+      "seoOrIaImpact": "SEO: future subscription pages have no recurring-payment terms. IA: the legal pack and checkout lack subscription content.",
+      "recommendedAction": "Future work (MC-15): before publishing any subscription SKU, add the full recurring-payment terms (price, renewal, cancellation, refunds, what becomes inaccessible) to the legal pack and checkout in both locales.",
+      "futureImplementationOwner": "LEGAL_COUNSEL",
+      "requiredEvidence": [
+        "Approved subscription terms",
+        "Renewal, cancellation and entitlement-loss rules",
+        "Approved price-display and renewal rules"
+      ],
+      "publicationGate": "GATE-CONSUMER-TERMS",
+      "relatedGateIds": [
+        "GATE-PRICING"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": true,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-031",
+      "category": "OTHER",
+      "currentFile": "src/app/features/shop/sample-detail.ts",
+      "currentLineRange": "44-54",
+      "currentLineStart": 44,
+      "currentLineEnd": 54,
+      "currentRoute": "/tienda/muestra/:slug",
+      "locale": "es",
+      "severity": "INFORMATIONAL",
+      "riskIds": [],
+      "observedText": "Samples are examples, not saleable products",
+      "seoOrIaImpact": "SEO: verified control, sample pages stay noindex and non-sale. IA: sample and real-catalogue separation must be preserved.",
+      "recommendedAction": "No remediation required for the sample surface; keep the sample/real-catalogue separation when MC-15 changes shop copy.",
+      "futureImplementationOwner": "ENGINEERING_LEAD",
+      "requiredEvidence": [
+        "Preservation test: sample pages stay noindex and non-sale"
+      ],
+      "publicationGate": "GATE-WEBSITE-REMEDIATION",
+      "relatedGateIds": [],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": false,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-032",
+      "category": "OTHER",
+      "currentFile": "src/server/api.ts",
+      "currentLineRange": "355-365",
+      "currentLineStart": 355,
+      "currentLineEnd": 365,
+      "currentRoute": "/api/orders",
+      "locale": "es",
+      "severity": "INFORMATIONAL",
+      "riskIds": [],
+      "observedText": "if (int(item?.price_cents) !== product.price_cents) throw new OrderError('price_changed');",
+      "seoOrIaImpact": "SEO: verified control, no indexation impact. IA: server-authoritative price and stock must remain the commerce invariant.",
+      "recommendedAction": "No remediation required for price integrity; MC-15 must gate activation on approved price/stock provenance.",
+      "futureImplementationOwner": "ENGINEERING_LEAD",
+      "requiredEvidence": [
+        "Preservation test: server-authoritative price and stock validation"
+      ],
+      "publicationGate": "GATE-PRICING",
+      "relatedGateIds": [
+        "GATE-PAYMENTS"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": false,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-033",
+      "category": "OTHER",
+      "currentFile": "src/app/layout/footer/footer.ts",
+      "currentLineRange": "37-45",
+      "currentLineStart": 37,
+      "currentLineEnd": 45,
+      "currentRoute": "/",
+      "locale": "es",
+      "severity": "INFORMATIONAL",
+      "riskIds": [],
+      "observedText": "{ id: 'legalNotice', key: 'footer.legalNotice' },",
+      "seoOrIaImpact": "SEO: verified control, footer legal links exist in both locales. IA: the legal link graph must be preserved.",
+      "recommendedAction": "No remediation required for navigation; keep these links when MC-15 rewrites the legal pack.",
+      "futureImplementationOwner": "ENGINEERING_LEAD",
+      "requiredEvidence": [
+        "Preservation test: footer legal links in both locales"
+      ],
+      "publicationGate": "GATE-WEBSITE-REMEDIATION",
+      "relatedGateIds": [],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": false,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    },
+    {
+      "findingId": "WEB-034",
+      "category": "OTHER",
+      "currentFile": "docs/marea/products/copy/pilot.es.md",
+      "currentLineRange": "29-31",
+      "currentLineStart": 29,
+      "currentLineEnd": 31,
+      "currentRoute": "/tecnologia/piloto-automatico",
+      "locale": "es",
+      "severity": "INFORMATIONAL",
+      "riskIds": [],
+      "observedText": "definición completa (DEFINED), no disponible para compra.",
+      "seoOrIaImpact": "SEO: verified control, the internal draft is not a live claim. IA: approved disclaimers can seed the future PILOT page.",
+      "recommendedAction": "No remediation required for the internal draft; MC-15 may reuse its approved disclaimers when the public pages are rewritten.",
+      "futureImplementationOwner": "HARDWARE_LEAD",
+      "requiredEvidence": [
+        "Approved PILOT disclaimers reused in public copy"
+      ],
+      "publicationGate": "GATE-SAFETY-PILOT",
+      "relatedGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "plannedMilestone": "POST_MC15",
+      "remediationRequired": false,
+      "status": "PLANNED_NOT_REMEDIATED",
+      "originalStatus": "NOT_REMEDIATED"
+    }
+  ]
+}

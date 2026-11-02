@@ -1,0 +1,3737 @@
+{
+  "contractId": "MAREA-MC15-BILINGUAL-METADATA",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-15",
+  "date": "2026-11-02",
+  "owner": "ia-content",
+  "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
+  "generationMethod": "deterministic derivation",
+  "evidenceState": "REPOSITORY_VERIFIED",
+  "scope": "MC-15 internal bilingual IA/SEO planning",
+  "readOnly": true,
+  "publicationAuthorized": false,
+  "deploymentAuthorized": false,
+  "MC16_STARTED": false,
+  "metadataStatusVocabulary": [
+    "CURRENT_REPOSITORY_VALUE_RECORDED",
+    "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+    "GATED_INTERNAL_SPECIFICATION"
+  ],
+  "robotsVocabulary": {
+    "indexable": "index,follow,max-image-preview:large",
+    "noindexPrivate": "noindex,nofollow",
+    "noindexSample": "noindex,follow",
+    "conditional": "index,follow when an approved translation exists; noindex,follow otherwise with no alternate"
+  },
+  "canonicalPolicyVocabulary": [
+    "SELF_CANONICAL",
+    "NONE",
+    "NONE_UNTIL_AUTHORIZED"
+  ],
+  "hreflangGroupStatusVocabulary": [
+    "PUBLISHED_PAIR",
+    "PRIVATE_NOINDEX_PAIR",
+    "NO_GROUP",
+    "PROPOSED_NOT_PUBLISHED",
+    "CONDITIONAL_PER_PRODUCT_TRANSLATION"
+  ],
+  "robotsPolicySemantics": "robotsPolicy is the target contract value. For private, sample and proposed pages the MC-15 task contract fixes noindex,nofollow; the repository currently emits noindex, follow and indexation-policy.json records that class value, so robotsPolicyObserved records the observed value and the divergence is an open decision (D11-OD-01). No robots directive is changed in MC-15.",
+  "sitemapEligibilitySemantics": "sitemapEligible records policy eligibility, not observed membership. Membership is generated at request time by src/server.ts from prerendered folders, /tienda, /en/shop and active shop products; the observed membership figures come from the indexation-policy owner local SSR run and are not re-measured here. Every proposed page is false.",
+  "indexationPolicyAlignment": "Each row names its robotsPolicyClass and canonicalPolicyClass from indexation-policy.json (IDX-*) so the two datasets can be reconciled mechanically.",
+  "placeholderVocabulary": {
+    "{{siteName}}": "SITE.name from src/app/core/site.config.ts (currently Embarcarte).",
+    "{{approvedBrand}}": "Public brand name, usable only after GATE-IP-CLEARANCE; never the literal planning token.",
+    "{{familyName}}": "Approved public family name from the product contract; never invented here.",
+    "{{bundleName}}": "Approved public bundle name from the bundle contract.",
+    "{{productName}}": "Product name from the shop or technology data.",
+    "{{productKind}}": "Product kind label from the technology model.",
+    "{{productSummary}}": "Approved product summary; must pass the claims policy before publication.",
+    "{{guideTitle}}": "Guide title from the guide content set.",
+    "{{guideSummary}}": "Guide summary from the guide content set.",
+    "{{sampleName}}": "Sample product name; samples are illustrative and not saleable.",
+    "{{sampleSummary}}": "Sample product summary.",
+    "{{shopSectionLabel}}": "Shop section label from the dictionary.",
+    "{{shopEyebrow}}": "Current shop eyebrow label, recorded for fidelity only.",
+    "{{legalTitle}}": "Legal page title from the legal content set.",
+    "{{readinessLabel}}": "Approved lifecycle label (DEFINED / IN_DEFINITION / NOT_FOR_SALE) for a proposed page.",
+    "{{approvedEvidence}}": "Evidence reference identifier approved by the owning gate; never rendered as a claim."
+  },
+  "semantics": "One row per pageId and locale for the 21 current public route ids and the 23 proposed route ids. titleTemplate/descriptionTemplate are internal target specifications: for current pages they record intent and neutralise claims that MC-14 findings block, without changing any live metadata; for proposed pages they are gated and cannot be rendered until the named gates open. No MC-15 artefact publishes, indexes or deploys anything.",
+  "crossReferences": [
+    "../MC15-DATA-CONTRACT.md#section-3",
+    "../legal-commercial/data/bilingual-claims.json#MAREA-MC14-BILINGUAL-CLAIMS",
+    "../legal-commercial/data/website-findings.json#MAREA-MC14-WEBSITE-FINDINGS",
+    "../legal-commercial/data/release-evidence-gates.json#MAREA-MC14-RELEASE-EVIDENCE-GATES",
+    "proposed-routes.json#MAREA-MC15-PROPOSED-ROUTES",
+    "proposed-ia.json#MAREA-MC15-PROPOSED-IA",
+    "structured-data-policy.json#MAREA-MC15-STRUCTURED-DATA-POLICY",
+    "internal-link-graph.json#MAREA-MC15-INTERNAL-LINK-GRAPH"
+  ],
+  "summary": {
+    "items": 88,
+    "pageIds": 44,
+    "currentPageIds": 21,
+    "proposedPageIds": 23,
+    "locales": 2,
+    "privatePageIds": 4,
+    "gatedProposedItems": 46
+  },
+  "items": [
+    {
+      "pageId": "home",
+      "locale": "es",
+      "pageType": "CORPORATE",
+      "intent": "Present the company, its services and the proposed product ecosystem, and route visitors to the existing corporate sections.",
+      "titleTemplate": "{{siteName}} - Tecnología náutica y servicios para tu embarcación",
+      "descriptionTemplate": "Tecnología náutica, experiencias en el mar y traslado de embarcaciones con {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-home",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "Organization",
+        "WebSite"
+      ],
+      "breadcrumbParent": null,
+      "breadcrumbParentBasis": "ROOT_NO_PARENT",
+      "internalLinkTargets": [
+        "technology",
+        "experiences",
+        "delivery",
+        "services",
+        "about",
+        "contact",
+        "guides",
+        "shop",
+        "cart",
+        "login",
+        "legalNotice",
+        "privacy",
+        "cookies",
+        "termsOfSale",
+        "mareaOverview"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Embarcarte - Tecnología abierta. Libertad en el mar.",
+          "desc": "Tecnología náutica abierta, experiencias en el mar y traslado de embarcaciones.",
+          "src": "src/app/features/home/content/home.content.ts:91-92"
+        }
+      },
+      "openFindingIds": [
+        "WEB-016",
+        "WEB-021",
+        "WEB-033"
+      ],
+      "notes": "The template removes the Open Marine brand position (WEB-016) and the unverified service wording (WEB-021). The recorded live value is unchanged by MC-15."
+    },
+    {
+      "pageId": "home",
+      "locale": "en",
+      "pageType": "CORPORATE",
+      "intent": "Present the company, its services and the proposed product ecosystem, and route visitors to the existing corporate sections.",
+      "titleTemplate": "{{siteName}} - Marine technology and boat services",
+      "descriptionTemplate": "Marine electronics, experiences at sea and boat delivery with {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-home",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "Organization",
+        "WebSite"
+      ],
+      "breadcrumbParent": null,
+      "breadcrumbParentBasis": "ROOT_NO_PARENT",
+      "internalLinkTargets": [
+        "technology",
+        "experiences",
+        "delivery",
+        "services",
+        "about",
+        "contact",
+        "guides",
+        "shop",
+        "cart",
+        "login",
+        "legalNotice",
+        "privacy",
+        "cookies",
+        "termsOfSale",
+        "mareaOverview"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Open marine technology and boat services",
+          "desc": "Open marine electronics, experiences at sea and boat delivery with Embarcarte.",
+          "src": "src/app/features/home/content/home.content.ts:141-142"
+        }
+      },
+      "openFindingIds": [
+        "WEB-016",
+        "WEB-021",
+        "WEB-033"
+      ],
+      "notes": "The template removes the Open Marine brand position (WEB-016) and the unverified service wording (WEB-021). The recorded live value is unchanged by MC-15."
+    },
+    {
+      "pageId": "technology",
+      "locale": "es",
+      "pageType": "TECHNOLOGY_LISTING",
+      "intent": "Describe the technology offering and link to the technology detail pages.",
+      "titleTemplate": "Tecnología náutica",
+      "descriptionTemplate": "Instrumentación, navegación y datos a bordo: qué ofrece {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-technology",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "technologyDetail",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Tecnología náutica abierta Open Marine",
+          "desc": "Tecnología náutica abierta con Open Marine: instrumentación, cartografía local y datos del barco.",
+          "src": "src/app/features/technology/content/technology-page.content.ts:53-54"
+        }
+      },
+      "openFindingIds": [
+        "WEB-003",
+        "WEB-015",
+        "WEB-029"
+      ],
+      "notes": "Template removes the ownership and open-source claim (WEB-003) and the brand keyword (WEB-015, WEB-029)."
+    },
+    {
+      "pageId": "technology",
+      "locale": "en",
+      "pageType": "TECHNOLOGY_LISTING",
+      "intent": "Describe the technology offering and link to the technology detail pages.",
+      "titleTemplate": "Marine technology",
+      "descriptionTemplate": "Instruments, navigation and on-board data: what {{siteName}} offers.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-technology",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "technologyDetail",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Open Marine technology",
+          "desc": "Open Marine integrates navigation instruments and local charts using Signal K.",
+          "src": "src/app/features/technology/content/technology-page.content.ts:87-88"
+        }
+      },
+      "openFindingIds": [
+        "WEB-003",
+        "WEB-015",
+        "WEB-029"
+      ],
+      "notes": "Template removes the ownership and open-source claim (WEB-003) and the brand keyword (WEB-015, WEB-029)."
+    },
+    {
+      "pageId": "technologyDetail",
+      "locale": "es",
+      "pageType": "TECHNOLOGY_DETAIL",
+      "intent": "Describe one technology product and route the visitor to an assessment request.",
+      "titleTemplate": "{{productName}}: {{productKind}}",
+      "descriptionTemplate": "{{productSummary}}",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-technologyDetail",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList",
+        "Product",
+        "SoftwareApplication"
+      ],
+      "breadcrumbParent": "technology",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "contact",
+        "technology"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "{{productName}}: {{productKind}}",
+          "desc": "{{productSummary}}",
+          "src": "src/app/features/technology/product-detail.ts:113-114"
+        }
+      },
+      "openFindingIds": [
+        "WEB-006",
+        "WEB-017",
+        "WEB-018",
+        "WEB-019",
+        "WEB-020",
+        "WEB-034"
+      ],
+      "notes": "Dynamic detail template. Findings WEB-006/017/018/019/020 are content claims, not metadata claims; the template carries no claim beyond the product name and the recorded summary that a future review must approve."
+    },
+    {
+      "pageId": "technologyDetail",
+      "locale": "en",
+      "pageType": "TECHNOLOGY_DETAIL",
+      "intent": "Describe one technology product and route the visitor to an assessment request.",
+      "titleTemplate": "{{productName}}: {{productKind}}",
+      "descriptionTemplate": "{{productSummary}}",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-technologyDetail",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList",
+        "Product",
+        "SoftwareApplication"
+      ],
+      "breadcrumbParent": "technology",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "contact",
+        "technology"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "{{productName}}: {{productKind}}",
+          "desc": "{{productSummary}}",
+          "src": "src/app/features/technology/product-detail.ts:113-114"
+        }
+      },
+      "openFindingIds": [
+        "WEB-006",
+        "WEB-017",
+        "WEB-018",
+        "WEB-019",
+        "WEB-020",
+        "WEB-034"
+      ],
+      "notes": "Dynamic detail template. Findings WEB-006/017/018/019/020 are content claims, not metadata claims; the template carries no claim beyond the product name and the recorded summary that a future review must approve."
+    },
+    {
+      "pageId": "experiences",
+      "locale": "es",
+      "pageType": "EXPERIENCE",
+      "intent": "Present marine experiences and route visitors to a contact request.",
+      "titleTemplate": "Experiencias y salidas en barco",
+      "descriptionTemplate": "Salidas por la costa, iniciación a la navegación y travesías a medida con {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-experiences",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "contact",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Experiencias y salidas en barco",
+          "desc": "Salidas por la costa, iniciación a la navegación y travesías a medida con Embarcarte.",
+          "src": "src/app/features/experiences/content/experiences.content.ts:56-58"
+        }
+      },
+      "openFindingIds": [
+        "WEB-026"
+      ],
+      "notes": "Template keeps the service description; WEB-026 concerns an on-page claim, not the metadata."
+    },
+    {
+      "pageId": "experiences",
+      "locale": "en",
+      "pageType": "EXPERIENCE",
+      "intent": "Present marine experiences and route visitors to a contact request.",
+      "titleTemplate": "Boat trips and marine experiences",
+      "descriptionTemplate": "Coastal trips, sailing introductions and tailored boat experiences with {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-experiences",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "contact",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Boat trips and marine experiences",
+          "desc": "Coastal trips, sailing introductions and tailored boat experiences with Embarcarte.",
+          "src": "src/app/features/experiences/content/experiences.content.ts:94-95"
+        }
+      },
+      "openFindingIds": [
+        "WEB-026"
+      ],
+      "notes": "Template keeps the service description; WEB-026 concerns an on-page claim, not the metadata."
+    },
+    {
+      "pageId": "delivery",
+      "locale": "es",
+      "pageType": "DELIVERY",
+      "intent": "Describe boat delivery between ports and route visitors to a quote request.",
+      "titleTemplate": "Traslado de embarcaciones",
+      "descriptionTemplate": "Traslados de veleros y motoras entre puertos, con planificación y seguimiento.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-CLEAN",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-delivery",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList",
+        "Service"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "contact",
+        "home"
+      ],
+      "requiredClaimEvidence": [],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Traslado de embarcaciones",
+          "desc": "Traslados de veleros y motoras entre puertos, con planificación y seguimiento.",
+          "src": "src/app/features/delivery/content/delivery.content.ts:42-43"
+        }
+      },
+      "notes": "No MC-14 finding is attached to this route."
+    },
+    {
+      "pageId": "delivery",
+      "locale": "en",
+      "pageType": "DELIVERY",
+      "intent": "Describe boat delivery between ports and route visitors to a quote request.",
+      "titleTemplate": "Boat delivery",
+      "descriptionTemplate": "Sailboat and motorboat deliveries between ports, with planning and tracking.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-CLEAN",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-delivery",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList",
+        "Service"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "contact",
+        "home"
+      ],
+      "requiredClaimEvidence": [],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Boat delivery",
+          "desc": "Sailboat and motorboat deliveries between ports, with planning and tracking.",
+          "src": "src/app/features/delivery/content/delivery.content.ts:68-69"
+        }
+      },
+      "notes": "No MC-14 finding is attached to this route."
+    },
+    {
+      "pageId": "services",
+      "locale": "es",
+      "pageType": "SERVICE",
+      "intent": "Describe installation, integration and support services and route visitors to an assessment request.",
+      "titleTemplate": "Instalación e integración de electrónica náutica",
+      "descriptionTemplate": "Integración de instrumentos, instalación de ordenadores de navegación, desarrollo a medida y soporte técnico para embarcaciones.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-CLEAN",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-services",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "contact",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Instalación e integración de electrónica náutica",
+          "desc": "Integración de instrumentos NMEA, instalación de ordenadores de navegación, desarrollo a medida y soporte técnico para embarcaciones.",
+          "src": "src/app/features/services/content/services.content.ts:78-81"
+        }
+      },
+      "notes": "Template removes the NMEA protocol mention until a licence and tested matrix exist (WEB-018 precedent)."
+    },
+    {
+      "pageId": "services",
+      "locale": "en",
+      "pageType": "SERVICE",
+      "intent": "Describe installation, integration and support services and route visitors to an assessment request.",
+      "titleTemplate": "Marine electronics installation and integration",
+      "descriptionTemplate": "Marine instrument integration, onboard computer installation, custom development and support.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-CLEAN",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-services",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "contact",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Marine electronics installation and integration",
+          "desc": "Marine instrument integration, onboard computer installation, custom development and support.",
+          "src": "src/app/features/services/content/services.content.ts:97-100"
+        }
+      },
+      "notes": "Template removes the NMEA protocol mention until a licence and tested matrix exist (WEB-018 precedent)."
+    },
+    {
+      "pageId": "about",
+      "locale": "es",
+      "pageType": "ABOUT",
+      "intent": "Explain who the company is and how it works, without unverified capability claims.",
+      "titleTemplate": "Sobre {{siteName}}",
+      "descriptionTemplate": "{{siteName}} combina tecnología náutica, experiencias en el mar y traslados de embarcaciones.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-about",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "contact",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-IP-CLEARANCE"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Sobre Embarcarte",
+          "desc": "Embarcarte une tecnología náutica abierta, experiencias en el mar y traslados de embarcaciones, con la plataforma Open Marine.",
+          "src": "src/app/features/about/content/about.content.ts:57-60"
+        }
+      },
+      "openFindingIds": [
+        "WEB-022"
+      ],
+      "notes": "Template removes the Open Marine platform attribution and the test/safety claim tracked by WEB-022."
+    },
+    {
+      "pageId": "about",
+      "locale": "en",
+      "pageType": "ABOUT",
+      "intent": "Explain who the company is and how it works, without unverified capability claims.",
+      "titleTemplate": "About {{siteName}}",
+      "descriptionTemplate": "{{siteName}} combines marine technology, experiences at sea and boat delivery.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-about",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "contact",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-IP-CLEARANCE"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "More connection with your boat",
+          "desc": "We combine technical development, a passion for the sea and services informed by life on board.",
+          "src": "src/app/features/about/content/about.content.ts:90-93"
+        }
+      },
+      "openFindingIds": [
+        "WEB-022"
+      ],
+      "notes": "Template removes the Open Marine platform attribution and the test/safety claim tracked by WEB-022."
+    },
+    {
+      "pageId": "contact",
+      "locale": "es",
+      "pageType": "CONTACT",
+      "intent": "Offer contact channels for services and enquiries.",
+      "titleTemplate": "Contacto",
+      "descriptionTemplate": "Habla con {{siteName}} sobre electrónica náutica, experiencias en el mar o traslados de embarcaciones.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-CLEAN",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-contact",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Contacto",
+          "desc": "Habla con Embarcarte sobre electrónica náutica, experiencias en el mar o traslados de embarcaciones.",
+          "src": "src/app/features/contact/content/contact.content.ts:24-25"
+        }
+      },
+      "notes": "Contact data handling depends on GATE-PRIVACY-DPA-DPIA before any enquiry form is added."
+    },
+    {
+      "pageId": "contact",
+      "locale": "en",
+      "pageType": "CONTACT",
+      "intent": "Offer contact channels for services and enquiries.",
+      "titleTemplate": "Contact",
+      "descriptionTemplate": "Contact {{siteName}} about marine electronics, experiences at sea and boat delivery.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-CLEAN",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-contact",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Contact",
+          "desc": "Contact Embarcarte about marine electronics, experiences and boat delivery.",
+          "src": "src/app/features/contact/content/contact.content.ts:35-36"
+        }
+      },
+      "notes": "Contact data handling depends on GATE-PRIVACY-DPA-DPIA before any enquiry form is added."
+    },
+    {
+      "pageId": "guides",
+      "locale": "es",
+      "pageType": "GUIDE_LISTING",
+      "intent": "List practical guides and route readers to individual guides.",
+      "titleTemplate": "Guías de navegación y electrónica náutica",
+      "descriptionTemplate": "Guías prácticas sobre instrumentos, navegación y tecnología náutica.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-CLEAN",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-guides",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "guideDetail",
+        "home"
+      ],
+      "requiredClaimEvidence": [],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Guías de navegación y electrónica náutica",
+          "desc": "Guías prácticas sobre instrumentos, navegación y tecnología náutica.",
+          "src": "src/app/features/guides/content/guides-page.content.ts:28-29"
+        }
+      },
+      "notes": "Guide content is editorial; no MC-14 finding is attached to the listing metadata."
+    },
+    {
+      "pageId": "guides",
+      "locale": "en",
+      "pageType": "GUIDE_LISTING",
+      "intent": "List practical guides and route readers to individual guides.",
+      "titleTemplate": "Marine navigation and electronics guides",
+      "descriptionTemplate": "Practical guides to marine instruments, navigation and technology.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-CLEAN",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-guides",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "guideDetail",
+        "home"
+      ],
+      "requiredClaimEvidence": [],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Marine navigation and electronics guides",
+          "desc": "Practical guides to marine instruments, navigation and technology.",
+          "src": "src/app/features/guides/content/guides-page.content.ts:43-44"
+        }
+      },
+      "notes": "Guide content is editorial; no MC-14 finding is attached to the listing metadata."
+    },
+    {
+      "pageId": "guideDetail",
+      "locale": "es",
+      "pageType": "GUIDE_DETAIL",
+      "intent": "Answer one practical question about instruments, navigation or onboard data.",
+      "titleTemplate": "{{guideTitle}}",
+      "descriptionTemplate": "{{guideSummary}}",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-CLEAN",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-guideDetail",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList",
+        "Article"
+      ],
+      "breadcrumbParent": "guides",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "guides"
+      ],
+      "requiredClaimEvidence": [],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "{{guideTitle}}",
+          "desc": "{{guideDescription}}",
+          "src": "src/app/features/guides/content/guides.es.ts"
+        }
+      },
+      "notes": "Dynamic detail template; the guide title and description are editorial values that a bilingual parity check must approve."
+    },
+    {
+      "pageId": "guideDetail",
+      "locale": "en",
+      "pageType": "GUIDE_DETAIL",
+      "intent": "Answer one practical question about instruments, navigation or onboard data.",
+      "titleTemplate": "{{guideTitle}}",
+      "descriptionTemplate": "{{guideSummary}}",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-CLEAN",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-guideDetail",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList",
+        "Article"
+      ],
+      "breadcrumbParent": "guides",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "guides"
+      ],
+      "requiredClaimEvidence": [],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "{{guideTitle}}",
+          "desc": "{{guideDescription}}",
+          "src": "src/app/features/guides/content/guides.en.ts"
+        }
+      },
+      "notes": "Dynamic detail template; the guide title and description are editorial values that a bilingual parity check must approve."
+    },
+    {
+      "pageId": "shop",
+      "locale": "es",
+      "pageType": "SHOP_LISTING",
+      "intent": "Present the shop as a catalogue with each product status, without a buying instruction.",
+      "titleTemplate": "Tienda de electrónica náutica: catálogo y estado de los productos",
+      "descriptionTemplate": "Catálogo de electrónica náutica de {{siteName}} con el estado de cada producto y sus condiciones de venta.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-shop",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList",
+        "ItemList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "shopDetail",
+        "shopSample",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Tienda de electrónica náutica Open Marine",
+          "desc": "Compra el ordenador de navegación Open Marine Hub, el controlador de piloto automático y accesorios náuticos abiertos.",
+          "src": "src/app/i18n/es.ts:87-89"
+        }
+      },
+      "openFindingIds": [
+        "WEB-004"
+      ],
+      "notes": "BLOCKING finding WEB-004: the live description instructs a purchase while the portfolio is NOT_FOR_SALE. The template replaces it with a catalogue statement, matching the D15 remediation plan section 6.3."
+    },
+    {
+      "pageId": "shop",
+      "locale": "en",
+      "pageType": "SHOP_LISTING",
+      "intent": "Present the shop as a catalogue with each product status, without a buying instruction.",
+      "titleTemplate": "Marine electronics shop: catalogue and product status",
+      "descriptionTemplate": "Marine electronics catalogue from {{siteName}} with each product state and sale conditions.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-PUBLIC-WITH-FINDINGS",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-shop",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [
+        "BreadcrumbList",
+        "ItemList"
+      ],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "shopDetail",
+        "shopSample",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Marine electronics shop",
+          "desc": "Buy the Open Marine Hub navigation computer, the autopilot controller and open marine accessories.",
+          "src": "src/app/i18n/en.ts:83-85"
+        }
+      },
+      "openFindingIds": [
+        "WEB-004"
+      ],
+      "notes": "BLOCKING finding WEB-004: the live description instructs a purchase while the portfolio is NOT_FOR_SALE. The template replaces it with a catalogue statement, matching the D15 remediation plan section 6.3."
+    },
+    {
+      "pageId": "shopDetail",
+      "locale": "es",
+      "pageType": "SHOP_DETAIL",
+      "intent": "Describe one shop product and its status, without an availability or price claim in metadata.",
+      "titleTemplate": "{{productName}} — {{shopSectionLabel}}",
+      "descriptionTemplate": "{{productSummary}}",
+      "robotsPolicy": "index,follow,max-image-preview:large",
+      "robotsPolicyClass": "IDX-DYNAMIC-SHOP-DETAIL",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "robotsCondition": "ES is indexable for an active product. EN is indexable only when an approved EN translation exists; otherwise the EN row is noindex,follow and no EN alternate is emitted.",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-shopDetail",
+      "hreflangGroupStatus": "CONDITIONAL_PER_PRODUCT_TRANSLATION",
+      "schemaTypesAllowed": [
+        "BreadcrumbList",
+        "Product",
+        "Offer"
+      ],
+      "breadcrumbParent": "shop",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "cart",
+        "shop"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "{{productName}} — {{shopEyebrow}}",
+          "desc": "{{productSummary}}",
+          "src": "src/app/features/shop/shop-detail.ts:137-138"
+        }
+      },
+      "openFindingIds": [
+        "WEB-013",
+        "WEB-014",
+        "WEB-027"
+      ],
+      "notes": "Product/Offer JSON-LD on this route carries an admin price and stock (WEB-013, WEB-014); structured data is governed by MC15-STRUCTURED-DATA-GOVERNANCE.md and is not authorised here."
+    },
+    {
+      "pageId": "shopDetail",
+      "locale": "en",
+      "pageType": "SHOP_DETAIL",
+      "intent": "Describe one shop product and its status, without an availability or price claim in metadata.",
+      "titleTemplate": "{{productName}} — {{shopSectionLabel}}",
+      "descriptionTemplate": "{{productSummary}}",
+      "robotsPolicy": "conditional: index, follow, max-image-preview:large when an approved EN translation exists; otherwise noindex, follow with no EN alternate",
+      "robotsPolicyClass": "IDX-UNTRANSLATED-EN-SURFACE",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "robotsCondition": "ES is indexable for an active product. EN is indexable only when an approved EN translation exists; otherwise the EN row is noindex,follow and no EN alternate is emitted.",
+      "canonicalPolicy": "SELF_CANONICAL_WHEN_TRANSLATED_OTHERWISE_NONE",
+      "canonicalPolicyClass": "SELF_OR_NONE_PER_TRANSLATION",
+      "hreflangGroup": "GROUP-shopDetail",
+      "hreflangGroupStatus": "CONDITIONAL_PER_PRODUCT_TRANSLATION",
+      "schemaTypesAllowed": [
+        "BreadcrumbList",
+        "Product",
+        "Offer"
+      ],
+      "breadcrumbParent": "shop",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "cart",
+        "shop"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "{{productName}} — {{shopEyebrow}}",
+          "desc": "{{productSummary}}",
+          "src": "src/app/features/shop/shop-detail.ts:137-138"
+        }
+      },
+      "openFindingIds": [
+        "WEB-013",
+        "WEB-014",
+        "WEB-027"
+      ],
+      "notes": "Product/Offer JSON-LD on this route carries an admin price and stock (WEB-013, WEB-014); structured data is governed by MC15-STRUCTURED-DATA-GOVERNANCE.md and is not authorised here."
+    },
+    {
+      "pageId": "shopSample",
+      "locale": "es",
+      "pageType": "SHOP_SAMPLE",
+      "intent": "Show an illustrative sample product that is explicitly not saleable.",
+      "titleTemplate": "{{sampleName}}",
+      "descriptionTemplate": "{{sampleSummary}}",
+      "robotsPolicy": "noindex,follow",
+      "robotsPolicyClass": "IDX-SAMPLE-PRODUCTS",
+      "robotsPolicyObserved": "noindex, follow",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF_OBSERVED_ON_NOINDEX",
+      "hreflangGroup": "NO_GROUP",
+      "hreflangGroupStatus": "NO_GROUP",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "shop",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "shop"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "{{sampleName}}",
+          "desc": "{{sampleSummary}}",
+          "src": "src/app/features/shop/sample-detail.ts:49-50"
+        }
+      },
+      "openFindingIds": [
+        "WEB-031"
+      ],
+      "notes": "Sample pages emit no alternates in the repository (sample-detail.ts sets alternates: []); the language switcher must not invent an EN sample."
+    },
+    {
+      "pageId": "shopSample",
+      "locale": "en",
+      "pageType": "SHOP_SAMPLE",
+      "intent": "Show an illustrative sample product that is explicitly not saleable.",
+      "titleTemplate": "{{sampleName}}",
+      "descriptionTemplate": "{{sampleSummary}}",
+      "robotsPolicy": "noindex,follow",
+      "robotsPolicyClass": "IDX-SAMPLE-PRODUCTS",
+      "robotsPolicyObserved": "noindex, follow",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF_OBSERVED_ON_NOINDEX",
+      "hreflangGroup": "NO_GROUP",
+      "hreflangGroupStatus": "NO_GROUP",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "shop",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "shop"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "{{sampleName}}",
+          "desc": "{{sampleSummary}}",
+          "src": "src/app/features/shop/sample-detail.ts:49-50"
+        }
+      },
+      "openFindingIds": [
+        "WEB-031"
+      ],
+      "notes": "Sample pages emit no alternates in the repository (sample-detail.ts sets alternates: []); the language switcher must not invent an EN sample."
+    },
+    {
+      "pageId": "cart",
+      "locale": "es",
+      "pageType": "CART",
+      "intent": "Review the selected items and continue to checkout once commerce is authorised.",
+      "titleTemplate": "Carrito",
+      "descriptionTemplate": "Tu carrito en {{siteName}}.",
+      "robotsPolicy": "noindex, follow",
+      "robotsPolicyClass": "IDX-PRIVATE-CLIENT-AREA",
+      "robotsPolicyObserved": "noindex, follow",
+      "canonicalPolicy": "NONE",
+      "canonicalPolicyClass": "NONE_PRIVATE",
+      "hreflangGroup": "GROUP-cart",
+      "hreflangGroupStatus": "PRIVATE_NOINDEX_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "termsOfSale",
+        "privacy",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-CONSUMER-TERMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "private": true,
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Carrito",
+          "desc": "Tu carrito en Embarcarte.",
+          "src": "src/app/i18n/es.ts:140-141"
+        }
+      },
+      "openFindingIds": [
+        "WEB-011",
+        "WEB-023"
+      ],
+      "notes": "Private page. The repository currently emits noindex,follow with a self canonical; this contract records the target noindex,nofollow with no canonical, which is not applied in MC-15."
+    },
+    {
+      "pageId": "cart",
+      "locale": "en",
+      "pageType": "CART",
+      "intent": "Review the selected items and continue to checkout once commerce is authorised.",
+      "titleTemplate": "Basket",
+      "descriptionTemplate": "Your {{siteName}} basket.",
+      "robotsPolicy": "noindex, follow",
+      "robotsPolicyClass": "IDX-PRIVATE-CLIENT-AREA",
+      "robotsPolicyObserved": "noindex, follow",
+      "canonicalPolicy": "NONE",
+      "canonicalPolicyClass": "NONE_PRIVATE",
+      "hreflangGroup": "GROUP-cart",
+      "hreflangGroupStatus": "PRIVATE_NOINDEX_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "termsOfSale",
+        "privacy",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-CONSUMER-TERMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "private": true,
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Basket",
+          "desc": "Your Embarcarte basket.",
+          "src": "src/app/i18n/en.ts:135-136"
+        }
+      },
+      "openFindingIds": [
+        "WEB-011",
+        "WEB-023"
+      ],
+      "notes": "Private page. The repository currently emits noindex,follow with a self canonical; this contract records the target noindex,nofollow with no canonical, which is not applied in MC-15."
+    },
+    {
+      "pageId": "login",
+      "locale": "es",
+      "pageType": "LOGIN",
+      "intent": "Authenticate a returning customer.",
+      "titleTemplate": "Acceso clientes",
+      "descriptionTemplate": "Accede a tu área de cliente.",
+      "robotsPolicy": "noindex, follow",
+      "robotsPolicyClass": "IDX-PRIVATE-CLIENT-AREA",
+      "robotsPolicyObserved": "noindex, follow",
+      "canonicalPolicy": "NONE",
+      "canonicalPolicyClass": "NONE_PRIVATE",
+      "hreflangGroup": "GROUP-login",
+      "hreflangGroupStatus": "PRIVATE_NOINDEX_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "account",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "private": true,
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Acceso clientes",
+          "desc": "Accede a tu área de cliente.",
+          "src": "src/app/i18n/es.ts:165-166"
+        }
+      },
+      "openFindingIds": [
+        "WEB-009",
+        "WEB-010"
+      ],
+      "notes": "Google Identity Services is loaded at runtime (WEB-009, WEB-010); the cookie disclosure and consent basis are gated by GATE-PRIVACY-DPA-DPIA and GATE-LEGAL-ENTITY."
+    },
+    {
+      "pageId": "login",
+      "locale": "en",
+      "pageType": "LOGIN",
+      "intent": "Authenticate a returning customer.",
+      "titleTemplate": "Customer sign in",
+      "descriptionTemplate": "Sign in to your customer account.",
+      "robotsPolicy": "noindex, follow",
+      "robotsPolicyClass": "IDX-PRIVATE-CLIENT-AREA",
+      "robotsPolicyObserved": "noindex, follow",
+      "canonicalPolicy": "NONE",
+      "canonicalPolicyClass": "NONE_PRIVATE",
+      "hreflangGroup": "GROUP-login",
+      "hreflangGroupStatus": "PRIVATE_NOINDEX_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "account",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "private": true,
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Customer sign in",
+          "desc": "Sign in to your customer account.",
+          "src": "src/app/i18n/en.ts:158-159"
+        }
+      },
+      "openFindingIds": [
+        "WEB-009",
+        "WEB-010"
+      ],
+      "notes": "Google Identity Services is loaded at runtime (WEB-009, WEB-010); the cookie disclosure and consent basis are gated by GATE-PRIVACY-DPA-DPIA and GATE-LEGAL-ENTITY."
+    },
+    {
+      "pageId": "account",
+      "locale": "es",
+      "pageType": "ACCOUNT",
+      "intent": "Let a signed-in customer review their orders and account data.",
+      "titleTemplate": "Mi cuenta",
+      "descriptionTemplate": "Área de cliente.",
+      "robotsPolicy": "noindex, follow",
+      "robotsPolicyClass": "IDX-PRIVATE-CLIENT-AREA",
+      "robotsPolicyObserved": "noindex, follow",
+      "canonicalPolicy": "NONE",
+      "canonicalPolicyClass": "NONE_PRIVATE",
+      "hreflangGroup": "GROUP-account",
+      "hreflangGroupStatus": "PRIVATE_NOINDEX_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "orderDetail",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "private": true,
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Mi cuenta",
+          "desc": "Área de cliente.",
+          "src": "src/app/i18n/es.ts:196-197"
+        }
+      },
+      "notes": "Private, guarded by authGuard."
+    },
+    {
+      "pageId": "account",
+      "locale": "en",
+      "pageType": "ACCOUNT",
+      "intent": "Let a signed-in customer review their orders and account data.",
+      "titleTemplate": "My account",
+      "descriptionTemplate": "Customer account.",
+      "robotsPolicy": "noindex, follow",
+      "robotsPolicyClass": "IDX-PRIVATE-CLIENT-AREA",
+      "robotsPolicyObserved": "noindex, follow",
+      "canonicalPolicy": "NONE",
+      "canonicalPolicyClass": "NONE_PRIVATE",
+      "hreflangGroup": "GROUP-account",
+      "hreflangGroupStatus": "PRIVATE_NOINDEX_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "orderDetail",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "private": true,
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "My account",
+          "desc": "Customer account.",
+          "src": "src/app/i18n/en.ts:189-190"
+        }
+      },
+      "notes": "Private, guarded by authGuard."
+    },
+    {
+      "pageId": "orderDetail",
+      "locale": "es",
+      "pageType": "ORDER_DETAIL",
+      "intent": "Show one order to its owner.",
+      "titleTemplate": "Pedido",
+      "descriptionTemplate": "Detalle del pedido.",
+      "robotsPolicy": "noindex, follow",
+      "robotsPolicyClass": "IDX-PRIVATE-CLIENT-AREA",
+      "robotsPolicyObserved": "noindex, follow",
+      "canonicalPolicy": "NONE",
+      "canonicalPolicyClass": "NONE_PRIVATE",
+      "hreflangGroup": "GROUP-orderDetail",
+      "hreflangGroupStatus": "PRIVATE_NOINDEX_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "account",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "account"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-CONSUMER-TERMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "private": true,
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Pedido",
+          "desc": "Detalle del pedido.",
+          "src": "src/app/i18n/es.ts:218-219"
+        }
+      },
+      "notes": "Order id is a private identifier and never appears in metadata or a public slug."
+    },
+    {
+      "pageId": "orderDetail",
+      "locale": "en",
+      "pageType": "ORDER_DETAIL",
+      "intent": "Show one order to its owner.",
+      "titleTemplate": "Order",
+      "descriptionTemplate": "Order details.",
+      "robotsPolicy": "noindex, follow",
+      "robotsPolicyClass": "IDX-PRIVATE-CLIENT-AREA",
+      "robotsPolicyObserved": "noindex, follow",
+      "canonicalPolicy": "NONE",
+      "canonicalPolicyClass": "NONE_PRIVATE",
+      "hreflangGroup": "GROUP-orderDetail",
+      "hreflangGroupStatus": "PRIVATE_NOINDEX_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "account",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "account"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-CONSUMER-TERMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "private": true,
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Order",
+          "desc": "Order details.",
+          "src": "src/app/i18n/en.ts:211-212"
+        }
+      },
+      "notes": "Order id is a private identifier and never appears in metadata or a public slug."
+    },
+    {
+      "pageId": "legalNotice",
+      "locale": "es",
+      "pageType": "LEGAL_NOTICE",
+      "intent": "Publish the seller identity and the legal notice.",
+      "titleTemplate": "Aviso legal",
+      "descriptionTemplate": "Aviso legal de {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-LEGAL-PAGES",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-legalNotice",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-LEGAL-ENTITY",
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Aviso legal",
+          "desc": "Aviso legal de Embarcarte.",
+          "src": "src/app/features/legal/content/legal.es.ts:9 + src/app/i18n/es.ts:265"
+        }
+      },
+      "openFindingIds": [
+        "WEB-001",
+        "WEB-002",
+        "WEB-005",
+        "WEB-025"
+      ],
+      "notes": "BLOCKING findings WEB-001/002/005: the legal identity is empty and the notice asserts an open-source licence that does not exist."
+    },
+    {
+      "pageId": "legalNotice",
+      "locale": "en",
+      "pageType": "LEGAL_NOTICE",
+      "intent": "Publish the seller identity and the legal notice.",
+      "titleTemplate": "Legal notice",
+      "descriptionTemplate": "Legal notice of {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-LEGAL-PAGES",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-legalNotice",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-LEGAL-ENTITY",
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Legal notice",
+          "desc": "Legal notice of Embarcarte.",
+          "src": "src/app/features/legal/content/legal.en.ts:6 + src/app/i18n/en.ts:258"
+        }
+      },
+      "openFindingIds": [
+        "WEB-001",
+        "WEB-002",
+        "WEB-005",
+        "WEB-025"
+      ],
+      "notes": "BLOCKING findings WEB-001/002/005: the legal identity is empty and the notice asserts an open-source licence that does not exist."
+    },
+    {
+      "pageId": "privacy",
+      "locale": "es",
+      "pageType": "PRIVACY",
+      "intent": "Publish the privacy policy, controller identity, purposes, recipients and rights.",
+      "titleTemplate": "Política de privacidad",
+      "descriptionTemplate": "Política de privacidad de {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-LEGAL-PAGES",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-privacy",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Política de privacidad",
+          "desc": "Política de privacidad de Embarcarte.",
+          "src": "src/app/features/legal/content/legal.es.ts:43 + src/app/i18n/es.ts:265"
+        }
+      },
+      "openFindingIds": [
+        "WEB-007",
+        "WEB-008"
+      ],
+      "notes": "WEB-007 and WEB-008: controller identity and recipients are incomplete, and registration consent is not recorded server side."
+    },
+    {
+      "pageId": "privacy",
+      "locale": "en",
+      "pageType": "PRIVACY",
+      "intent": "Publish the privacy policy, controller identity, purposes, recipients and rights.",
+      "titleTemplate": "Privacy policy",
+      "descriptionTemplate": "Privacy policy of {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-LEGAL-PAGES",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-privacy",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Privacy policy",
+          "desc": "Privacy policy of Embarcarte.",
+          "src": "src/app/features/legal/content/legal.en.ts:35 + src/app/i18n/en.ts:258"
+        }
+      },
+      "openFindingIds": [
+        "WEB-007",
+        "WEB-008"
+      ],
+      "notes": "WEB-007 and WEB-008: controller identity and recipients are incomplete, and registration consent is not recorded server side."
+    },
+    {
+      "pageId": "cookies",
+      "locale": "es",
+      "pageType": "COOKIES",
+      "intent": "Publish the cookie inventory, purposes and consent basis.",
+      "titleTemplate": "Política de cookies",
+      "descriptionTemplate": "Política de cookies de {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-LEGAL-PAGES",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-cookies",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-LEGAL-ENTITY",
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Política de cookies",
+          "desc": "Política de cookies de Embarcarte.",
+          "src": "src/app/features/legal/content/legal.es.ts:77 + src/app/i18n/es.ts:265"
+        }
+      },
+      "notes": "No WEB finding names this route directly; the cookie disclosure risk is recorded against /acceso (WEB-010)."
+    },
+    {
+      "pageId": "cookies",
+      "locale": "en",
+      "pageType": "COOKIES",
+      "intent": "Publish the cookie inventory, purposes and consent basis.",
+      "titleTemplate": "Cookie policy",
+      "descriptionTemplate": "Cookie policy of {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-LEGAL-PAGES",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-cookies",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-LEGAL-ENTITY",
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Cookie policy",
+          "desc": "Cookie policy of Embarcarte.",
+          "src": "src/app/features/legal/content/legal.en.ts:66 + src/app/i18n/en.ts:258"
+        }
+      },
+      "notes": "No WEB finding names this route directly; the cookie disclosure risk is recorded against /acceso (WEB-010)."
+    },
+    {
+      "pageId": "termsOfSale",
+      "locale": "es",
+      "pageType": "TERMS_OF_SALE",
+      "intent": "Publish the sale conditions, withdrawal information and warranty summary.",
+      "titleTemplate": "Condiciones de venta",
+      "descriptionTemplate": "Condiciones de venta de {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-LEGAL-PAGES",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-termsOfSale",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-CONSUMER-TERMS",
+        "GATE-PRICING",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "es": {
+          "title": "Condiciones de venta",
+          "desc": "Condiciones de venta de Embarcarte.",
+          "src": "src/app/features/legal/content/legal.es.ts:104 + src/app/i18n/es.ts:265"
+        }
+      },
+      "openFindingIds": [
+        "WEB-024",
+        "WEB-028",
+        "WEB-030"
+      ],
+      "notes": "WEB-024, WEB-028 and WEB-030 are contract-text gaps, not metadata wording."
+    },
+    {
+      "pageId": "termsOfSale",
+      "locale": "en",
+      "pageType": "TERMS_OF_SALE",
+      "intent": "Publish the sale conditions, withdrawal information and warranty summary.",
+      "titleTemplate": "Terms of sale",
+      "descriptionTemplate": "Terms of sale of {{siteName}}.",
+      "robotsPolicy": "index, follow, max-image-preview:large",
+      "robotsPolicyClass": "IDX-EXISTING-LEGAL-PAGES",
+      "robotsPolicyObserved": "index, follow, max-image-preview:large",
+      "canonicalPolicy": "SELF_CANONICAL",
+      "canonicalPolicyClass": "SELF",
+      "hreflangGroup": "GROUP-termsOfSale",
+      "hreflangGroupStatus": "PUBLISHED_PAIR",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-CONSUMER-TERMS",
+        "GATE-PRICING",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": null,
+      "publicationStatus": "CURRENT_PAGE_PUBLISHED",
+      "metadataStatus": "TARGET_TEMPLATE_NOT_IMPLEMENTED",
+      "indexationAuthorized": false,
+      "sitemapEligible": true,
+      "sitemapMembershipSource": "indexation-policy.json IDX-* class and its local SSR sitemap observation",
+      "currentLiveValue": {
+        "status": "CURRENT_REPOSITORY_VALUE_RECORDED",
+        "en": {
+          "title": "Terms of sale",
+          "desc": "Terms of sale of Embarcarte.",
+          "src": "src/app/features/legal/content/legal.en.ts:89 + src/app/i18n/en.ts:258"
+        }
+      },
+      "openFindingIds": [
+        "WEB-024",
+        "WEB-028",
+        "WEB-030"
+      ],
+      "notes": "WEB-024, WEB-028 and WEB-030 are contract-text gaps, not metadata wording."
+    },
+    {
+      "pageId": "mareaFamilyNav",
+      "locale": "es",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the NAV family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: navegación",
+      "descriptionTemplate": "{{familyName}} es una familia de producto en definición. Alcance previsto, ediciones y límites de uso se publican solo con evidencia aprobada.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyNav",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-DATA-LICENSING"
+      ],
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-007",
+        "CLM-009",
+        "CLM-011",
+        "CLM-012",
+        "CLM-019",
+        "CLM-039"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-001, CLM-002, CLM-003, CLM-004, CLM-007, CLM-009, CLM-011, CLM-012, CLM-019, CLM-039."
+    },
+    {
+      "pageId": "mareaFamilyNav",
+      "locale": "en",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the NAV family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: navigation",
+      "descriptionTemplate": "{{familyName}} is a product family under definition. Planned scope, editions and use boundaries are published only with approved evidence.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyNav",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-DATA-LICENSING"
+      ],
+      "requiredClaimIds": [
+        "CLM-001",
+        "CLM-002",
+        "CLM-003",
+        "CLM-004",
+        "CLM-007",
+        "CLM-009",
+        "CLM-011",
+        "CLM-012",
+        "CLM-019",
+        "CLM-039"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-001, CLM-002, CLM-003, CLM-004, CLM-007, CLM-009, CLM-011, CLM-012, CLM-019, CLM-039."
+    },
+    {
+      "pageId": "mareaFamilyHub",
+      "locale": "es",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the HUB family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: conexión de datos a bordo",
+      "descriptionTemplate": "{{familyName}} es una familia de producto en definición. Interfaces previstas y compatibilidad sujeta a verificación.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyHub",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-CRA-CYBERSECURITY"
+      ],
+      "requiredClaimIds": [
+        "CLM-005",
+        "CLM-006",
+        "CLM-014",
+        "CLM-015",
+        "CLM-018",
+        "CLM-033"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-005, CLM-006, CLM-014, CLM-015, CLM-018, CLM-033."
+    },
+    {
+      "pageId": "mareaFamilyHub",
+      "locale": "en",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the HUB family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: on-board data connection",
+      "descriptionTemplate": "{{familyName}} is a product family under definition. Planned interfaces and compatibility are subject to verification.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyHub",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-CRA-CYBERSECURITY"
+      ],
+      "requiredClaimIds": [
+        "CLM-005",
+        "CLM-006",
+        "CLM-014",
+        "CLM-015",
+        "CLM-018",
+        "CLM-033"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-005, CLM-006, CLM-014, CLM-015, CLM-018, CLM-033."
+    },
+    {
+      "pageId": "mareaFamilyAis",
+      "locale": "es",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the AIS family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: recepción de tráfico AIS",
+      "descriptionTemplate": "{{familyName}} es una familia de producto de solo recepción, en definición. Alcance previsto y límites de recepción.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyAis",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "requiredClaimIds": [
+        "CLM-016",
+        "CLM-021",
+        "CLM-036"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-016, CLM-021, CLM-036."
+    },
+    {
+      "pageId": "mareaFamilyAis",
+      "locale": "en",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the AIS family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: AIS traffic reception",
+      "descriptionTemplate": "{{familyName}} is a receive-only product family under definition. Planned scope and reception limits.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyAis",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "requiredClaimIds": [
+        "CLM-016",
+        "CLM-021",
+        "CLM-036"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-016, CLM-021, CLM-036."
+    },
+    {
+      "pageId": "mareaFamilyPilot",
+      "locale": "es",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the PILOT family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: gobierno asistido bajo supervisión",
+      "descriptionTemplate": "{{familyName}} es una familia de producto en definición con gobierno asistido bajo supervisión. Requiere caso de seguridad independiente antes de cualquier oferta.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyPilot",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-SAFETY-PILOT"
+      ],
+      "requiredClaimIds": [
+        "CLM-020",
+        "CLM-035"
+      ],
+      "commercialGate": "GATE-SAFETY-PILOT",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-020, CLM-035."
+    },
+    {
+      "pageId": "mareaFamilyPilot",
+      "locale": "en",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the PILOT family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: supervised assisted steering",
+      "descriptionTemplate": "{{familyName}} is a product family under definition for supervised assisted steering. An independent safety case is required before any offer.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyPilot",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-SAFETY-PILOT"
+      ],
+      "requiredClaimIds": [
+        "CLM-020",
+        "CLM-035"
+      ],
+      "commercialGate": "GATE-SAFETY-PILOT",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-020, CLM-035."
+    },
+    {
+      "pageId": "mareaFamilySense",
+      "locale": "es",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the SENSE family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: sensórica a bordo",
+      "descriptionTemplate": "{{familyName}} es una familia de producto en definición. Qué se mide, con qué límites y qué calibración requiere.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilySense",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: none."
+    },
+    {
+      "pageId": "mareaFamilySense",
+      "locale": "en",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the SENSE family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: on-board sensors",
+      "descriptionTemplate": "{{familyName}} is a product family under definition. What is measured, with which limits and which calibration is required.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilySense",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: none."
+    },
+    {
+      "pageId": "mareaFamilyWatch",
+      "locale": "es",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the WATCH family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: supervisión remota",
+      "descriptionTemplate": "{{familyName}} es una familia de producto en definición. Alcance de la supervisión, límites de cobertura y tratamiento de datos.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyWatch",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-INSURANCE"
+      ],
+      "requiredClaimIds": [
+        "CLM-022",
+        "CLM-042"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-022, CLM-042."
+    },
+    {
+      "pageId": "mareaFamilyWatch",
+      "locale": "en",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the WATCH family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: remote monitoring",
+      "descriptionTemplate": "{{familyName}} is a product family under definition. Monitoring scope, coverage limits and data processing.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyWatch",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-INSURANCE"
+      ],
+      "requiredClaimIds": [
+        "CLM-022",
+        "CLM-042"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-022, CLM-042."
+    },
+    {
+      "pageId": "mareaFamilyDisplay",
+      "locale": "es",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the DISPLAY family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: pantallas a bordo",
+      "descriptionTemplate": "{{familyName}} es una familia de producto en definición. Requisitos previstos de instalación, lectura y alimentación.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyDisplay",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "requiredClaimIds": [
+        "CLM-017"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-017."
+    },
+    {
+      "pageId": "mareaFamilyDisplay",
+      "locale": "en",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the DISPLAY family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: on-board displays",
+      "descriptionTemplate": "{{familyName}} is a product family under definition. Planned installation, readability and power requirements.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyDisplay",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "requiredClaimIds": [
+        "CLM-017"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-017."
+    },
+    {
+      "pageId": "mareaFamilyWeather",
+      "locale": "es",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the WEATHER family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: información meteorológica",
+      "descriptionTemplate": "{{familyName}} es una familia de datos en definición basada en pronóstico probabilístico. Fuente, vigencia y límites se publican con la licencia aprobada.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyWeather",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-DATA-LICENSING"
+      ],
+      "requiredClaimIds": [
+        "CLM-013",
+        "CLM-024",
+        "CLM-040"
+      ],
+      "commercialGate": "GATE-DATA-LICENSING",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-013, CLM-024, CLM-040."
+    },
+    {
+      "pageId": "mareaFamilyWeather",
+      "locale": "en",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the WEATHER family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: weather information",
+      "descriptionTemplate": "{{familyName}} is a data family under definition based on probabilistic forecasting. Source, freshness and limits are published with the approved licence.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyWeather",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-DATA-LICENSING"
+      ],
+      "requiredClaimIds": [
+        "CLM-013",
+        "CLM-024",
+        "CLM-040"
+      ],
+      "commercialGate": "GATE-DATA-LICENSING",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-013, CLM-024, CLM-040."
+    },
+    {
+      "pageId": "mareaFamilyFleet",
+      "locale": "es",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the FLEET family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: gestión de flotas",
+      "descriptionTemplate": "{{familyName}} es una familia de software B2B en definición. Alcance operativo, aislamiento de datos y condiciones comerciales.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyFleet",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CRA-CYBERSECURITY"
+      ],
+      "requiredClaimIds": [
+        "CLM-023",
+        "CLM-034",
+        "CLM-037"
+      ],
+      "commercialGate": "GATE-CRA-CYBERSECURITY",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-023, CLM-034, CLM-037."
+    },
+    {
+      "pageId": "mareaFamilyFleet",
+      "locale": "en",
+      "pageType": "PRODUCT_FAMILY",
+      "intent": "Explain the FLEET family, its planned editions and its explicitly stated limits, without any availability, price or certification claim.",
+      "titleTemplate": "{{familyName}}: fleet management",
+      "descriptionTemplate": "{{familyName}} is a B2B software family under definition. Operational scope, data isolation and commercial conditions.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaFamilyFleet",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaProducts",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "mareaProducts"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CRA-CYBERSECURITY"
+      ],
+      "requiredClaimIds": [
+        "CLM-023",
+        "CLM-034",
+        "CLM-037"
+      ],
+      "commercialGate": "GATE-CRA-CYBERSECURITY",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Metadata is a gated internal specification. The literal brand token is replaced by {{approvedBrand}} and must not be rendered until GATE-IP-CLEARANCE and the claim gates open. Claim records: CLM-023, CLM-034, CLM-037."
+    },
+    {
+      "pageId": "mareaSolutionStart",
+      "locale": "es",
+      "pageType": "BUNDLE",
+      "intent": "Explain the START bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "START: paquete de inicio",
+      "descriptionTemplate": "Composición del paquete START, qué incluye, qué no incluye y qué requiere instalación.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionStart",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "requiredClaimIds": [
+        "CLM-005"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: CLM-005. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionStart",
+      "locale": "en",
+      "pageType": "BUNDLE",
+      "intent": "Explain the START bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "START: entry package",
+      "descriptionTemplate": "START bundle composition, what it includes, what it excludes and what requires installation.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionStart",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "requiredClaimIds": [
+        "CLM-005"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: CLM-005. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionCruise",
+      "locale": "es",
+      "pageType": "BUNDLE",
+      "intent": "Explain the CRUISE bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "CRUISE: paquete de crucero",
+      "descriptionTemplate": "Composición del paquete CRUISE, qué incluye, qué no incluye y qué requiere instalación.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionCruise",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-DATA-LICENSING",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "requiredClaimIds": [
+        "CLM-011",
+        "CLM-013",
+        "CLM-036"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: CLM-011, CLM-013, CLM-036. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionCruise",
+      "locale": "en",
+      "pageType": "BUNDLE",
+      "intent": "Explain the CRUISE bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "CRUISE: cruising package",
+      "descriptionTemplate": "CRUISE bundle composition, what it includes, what it excludes and what requires installation.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionCruise",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-DATA-LICENSING",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "requiredClaimIds": [
+        "CLM-011",
+        "CLM-013",
+        "CLM-036"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: CLM-011, CLM-013, CLM-036. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionSail",
+      "locale": "es",
+      "pageType": "BUNDLE",
+      "intent": "Explain the SAIL bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "SAIL: paquete de vela",
+      "descriptionTemplate": "Composición del paquete SAIL, con el límite de gobierno asistido bajo supervisión y lo que no incluye.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionSail",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-SAFETY-PILOT"
+      ],
+      "requiredClaimIds": [
+        "CLM-020",
+        "CLM-035"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: CLM-020, CLM-035. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionSail",
+      "locale": "en",
+      "pageType": "BUNDLE",
+      "intent": "Explain the SAIL bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "SAIL: sailing package",
+      "descriptionTemplate": "SAIL bundle composition, with the supervised assisted steering boundary and what it excludes.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionSail",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-SAFETY-PILOT"
+      ],
+      "requiredClaimIds": [
+        "CLM-020",
+        "CLM-035"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: CLM-020, CLM-035. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionProtect",
+      "locale": "es",
+      "pageType": "BUNDLE",
+      "intent": "Explain the PROTECT bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "PROTECT: paquete de supervisión",
+      "descriptionTemplate": "Composición del paquete PROTECT, alcance de la supervisión y límites de cobertura.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionProtect",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-INSURANCE"
+      ],
+      "requiredClaimIds": [
+        "CLM-022",
+        "CLM-042"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: CLM-022, CLM-042. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionProtect",
+      "locale": "en",
+      "pageType": "BUNDLE",
+      "intent": "Explain the PROTECT bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "PROTECT: monitoring package",
+      "descriptionTemplate": "PROTECT bundle composition, monitoring scope and coverage limits.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionProtect",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-INSURANCE"
+      ],
+      "requiredClaimIds": [
+        "CLM-022",
+        "CLM-042"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: CLM-022, CLM-042. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionComplete",
+      "locale": "es",
+      "pageType": "BUNDLE",
+      "intent": "Explain the COMPLETE bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "COMPLETE: paquete completo",
+      "descriptionTemplate": "Composición del paquete COMPLETE, qué incluye, qué no incluye y qué requiere instalación.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionComplete",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: none. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionComplete",
+      "locale": "en",
+      "pageType": "BUNDLE",
+      "intent": "Explain the COMPLETE bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "COMPLETE: complete package",
+      "descriptionTemplate": "COMPLETE bundle composition, what it includes, what it excludes and what requires installation.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionComplete",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: none. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionFleet",
+      "locale": "es",
+      "pageType": "BUNDLE",
+      "intent": "Explain the FLEET bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "FLEET: paquete de flota",
+      "descriptionTemplate": "Composición del paquete FLEET para flotas, alcance operativo y condiciones B2B.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionFleet",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CRA-CYBERSECURITY"
+      ],
+      "requiredClaimIds": [
+        "CLM-023",
+        "CLM-037"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: CLM-023, CLM-037. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaSolutionFleet",
+      "locale": "en",
+      "pageType": "BUNDLE",
+      "intent": "Explain the FLEET bundle composition, inclusions, exclusions and installation requirements, without a price or availability claim.",
+      "titleTemplate": "FLEET: fleet package",
+      "descriptionTemplate": "FLEET bundle composition for fleets, operational scope and B2B conditions.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutionFleet",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaSolutions",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutions"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CRA-CYBERSECURITY"
+      ],
+      "requiredClaimIds": [
+        "CLM-023",
+        "CLM-037"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Bundle metadata is a gated internal specification. Bundle-level claim records: CLM-023, CLM-037. A bundle may never be described as purchasable while any included product is unavailable."
+    },
+    {
+      "pageId": "mareaOverview",
+      "locale": "es",
+      "pageType": "MAREA_OVERVIEW",
+      "intent": "Introduce the proposed product ecosystem and route visitors to products, solutions and the configurator.",
+      "titleTemplate": "Productos y soluciones para tu embarcación",
+      "descriptionTemplate": "Ecosistema de producto en definición: familias, soluciones por uso y configurador de compatibilidad. Estado de publicación: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaOverview",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaProducts",
+        "mareaSolutions",
+        "mareaConfigurator",
+        "professionals",
+        "installers",
+        "support",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "requiredClaimIds": [
+        "CLM-008",
+        "CLM-010",
+        "CLM-025",
+        "CLM-026",
+        "CLM-027",
+        "CLM-028",
+        "CLM-029",
+        "CLM-030",
+        "CLM-031",
+        "CLM-032",
+        "CLM-038",
+        "CLM-041"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "The brand root is a placeholder ({{approvedBrand}} is available but deliberately unused in the title until GATE-IP-CLEARANCE opens). The literal token is prohibited in public metadata."
+    },
+    {
+      "pageId": "mareaOverview",
+      "locale": "en",
+      "pageType": "MAREA_OVERVIEW",
+      "intent": "Introduce the proposed product ecosystem and route visitors to products, solutions and the configurator.",
+      "titleTemplate": "Products and solutions for your vessel",
+      "descriptionTemplate": "Product ecosystem under definition: families, use-case solutions and a compatibility configurator. Publication state: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaOverview",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaProducts",
+        "mareaSolutions",
+        "mareaConfigurator",
+        "professionals",
+        "installers",
+        "support",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "requiredClaimIds": [
+        "CLM-008",
+        "CLM-010",
+        "CLM-025",
+        "CLM-026",
+        "CLM-027",
+        "CLM-028",
+        "CLM-029",
+        "CLM-030",
+        "CLM-031",
+        "CLM-032",
+        "CLM-038",
+        "CLM-041"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "The brand root is a placeholder ({{approvedBrand}} is available but deliberately unused in the title until GATE-IP-CLEARANCE opens). The literal token is prohibited in public metadata."
+    },
+    {
+      "pageId": "mareaProducts",
+      "locale": "es",
+      "pageType": "PRODUCTS_OVERVIEW",
+      "intent": "List the nine product families with their definition state and planned editions.",
+      "titleTemplate": "Productos: familias y ediciones previstas",
+      "descriptionTemplate": "Nueve familias de producto, su estado de definición y las ediciones previstas. Estado de publicación: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaProducts",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaOverview",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaFamilyNav",
+        "mareaFamilyHub",
+        "mareaFamilyAis",
+        "mareaFamilyPilot",
+        "mareaFamilySense",
+        "mareaFamilyWatch",
+        "mareaFamilyDisplay",
+        "mareaFamilyWeather",
+        "mareaFamilyFleet",
+        "mareaOverview"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Families and editions are internal identifiers; no public edition naming is authorized."
+    },
+    {
+      "pageId": "mareaProducts",
+      "locale": "en",
+      "pageType": "PRODUCTS_OVERVIEW",
+      "intent": "List the nine product families with their definition state and planned editions.",
+      "titleTemplate": "Products: families and planned editions",
+      "descriptionTemplate": "Nine product families, their definition state and planned editions. Publication state: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaProducts",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaOverview",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaFamilyNav",
+        "mareaFamilyHub",
+        "mareaFamilyAis",
+        "mareaFamilyPilot",
+        "mareaFamilySense",
+        "mareaFamilyWatch",
+        "mareaFamilyDisplay",
+        "mareaFamilyWeather",
+        "mareaFamilyFleet",
+        "mareaOverview"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": "GATE-COMMERCIAL-CLAIMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "Families and editions are internal identifiers; no public edition naming is authorized."
+    },
+    {
+      "pageId": "mareaSolutions",
+      "locale": "es",
+      "pageType": "SOLUTIONS_OVERVIEW",
+      "intent": "List the six bundles by use case with inclusions and exclusions.",
+      "titleTemplate": "Soluciones: paquetes por uso",
+      "descriptionTemplate": "Seis soluciones por tipo de uso, con lo incluido, lo excluido y lo que requiere instalación. Estado de publicación: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutions",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaOverview",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutionStart",
+        "mareaSolutionCruise",
+        "mareaSolutionSail",
+        "mareaSolutionProtect",
+        "mareaSolutionComplete",
+        "mareaSolutionFleet",
+        "mareaOverview"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING"
+      ],
+      "commercialGate": "GATE-PRICING",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "No price may appear in metadata or on the page until GATE-PRICING records an approved price list."
+    },
+    {
+      "pageId": "mareaSolutions",
+      "locale": "en",
+      "pageType": "SOLUTIONS_OVERVIEW",
+      "intent": "List the six bundles by use case with inclusions and exclusions.",
+      "titleTemplate": "Solutions: use-case packages",
+      "descriptionTemplate": "Six packages by use case, with inclusions, exclusions and installation requirements. Publication state: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaSolutions",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaOverview",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaSolutionStart",
+        "mareaSolutionCruise",
+        "mareaSolutionSail",
+        "mareaSolutionProtect",
+        "mareaSolutionComplete",
+        "mareaSolutionFleet",
+        "mareaOverview"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING"
+      ],
+      "commercialGate": "GATE-PRICING",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "No price may appear in metadata or on the page until GATE-PRICING records an approved price list."
+    },
+    {
+      "pageId": "mareaConfigurator",
+      "locale": "es",
+      "pageType": "CONFIGURATOR",
+      "intent": "Collect vessel and equipment data to return a validated configuration or a specialist-assessment request.",
+      "titleTemplate": "Configurador de compatibilidad",
+      "descriptionTemplate": "Selecciona embarcación y equipamiento para obtener una evaluación preliminar. Los casos no validados se derivan a revisión especializada. Estado de publicación: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaConfigurator",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaOverview",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaOverview"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-SAFETY-PILOT"
+      ],
+      "commercialGate": "GATE-PRICING",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "The tool asserts compatibility only through deterministic validated rules; otherwise it must return a specialist-assessment outcome. No price, lead time or availability is displayed."
+    },
+    {
+      "pageId": "mareaConfigurator",
+      "locale": "en",
+      "pageType": "CONFIGURATOR",
+      "intent": "Collect vessel and equipment data to return a validated configuration or a specialist-assessment request.",
+      "titleTemplate": "Compatibility configurator",
+      "descriptionTemplate": "Select vessel and equipment to obtain a preliminary assessment. Cases that are not validated are routed to a specialist assessment. Publication state: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-mareaConfigurator",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "mareaOverview",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "mareaOverview"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-SAFETY-PILOT"
+      ],
+      "commercialGate": "GATE-PRICING",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "The tool asserts compatibility only through deterministic validated rules; otherwise it must return a specialist-assessment outcome. No price, lead time or availability is displayed."
+    },
+    {
+      "pageId": "professionals",
+      "locale": "es",
+      "pageType": "PROFESSIONALS",
+      "intent": "Explain the professional programme for installers and distributors.",
+      "titleTemplate": "Para profesionales",
+      "descriptionTemplate": "Información para instaladores y distribuidores sobre el programa profesional, criterios de colaboración y contacto. Estado de publicación: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-professionals",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": "GATE-CONSUMER-TERMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "No accreditation, partner network or discount claim may appear before installer and distributor agreements exist (DOC-17 NOT_EXECUTED)."
+    },
+    {
+      "pageId": "professionals",
+      "locale": "en",
+      "pageType": "PROFESSIONALS",
+      "intent": "Explain the professional programme for installers and distributors.",
+      "titleTemplate": "For professionals",
+      "descriptionTemplate": "Information for installers and distributors on the professional programme, collaboration criteria and contact. Publication state: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-professionals",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": "GATE-CONSUMER-TERMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "No accreditation, partner network or discount claim may appear before installer and distributor agreements exist (DOC-17 NOT_EXECUTED)."
+    },
+    {
+      "pageId": "installers",
+      "locale": "es",
+      "pageType": "INSTALLERS",
+      "intent": "Explain installation criteria and the installer programme.",
+      "titleTemplate": "Programa para instaladores",
+      "descriptionTemplate": "Criterios de instalación, requisitos técnicos y alta en el programa de instaladores. Estado de publicación: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-installers",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": "GATE-CONSUMER-TERMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "No certified-installer or training claim is authorized; installer agreements are NOT_EXECUTED."
+    },
+    {
+      "pageId": "installers",
+      "locale": "en",
+      "pageType": "INSTALLERS",
+      "intent": "Explain installation criteria and the installer programme.",
+      "titleTemplate": "Installer programme",
+      "descriptionTemplate": "Installation criteria, technical requirements and registration in the installer programme. Publication state: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-installers",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": "GATE-CONSUMER-TERMS",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "No certified-installer or training claim is authorized; installer agreements are NOT_EXECUTED."
+    },
+    {
+      "pageId": "support",
+      "locale": "es",
+      "pageType": "SUPPORT",
+      "intent": "Give access to documentation and support channels with an honest support-period statement.",
+      "titleTemplate": "Soporte",
+      "descriptionTemplate": "Documentación, guías de puesta en marcha y canales de soporte. Estado de publicación: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-support",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": "GATE-CRA-CYBERSECURITY",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "No support-period, SLA or update-commitment statement is authorized before DOC-19 is approved."
+    },
+    {
+      "pageId": "support",
+      "locale": "en",
+      "pageType": "SUPPORT",
+      "intent": "Give access to documentation and support channels with an honest support-period statement.",
+      "titleTemplate": "Support",
+      "descriptionTemplate": "Documentation, commissioning guides and support channels. Publication state: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-support",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "home",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "productDocumentation",
+        "home"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-LEGAL-ENTITY"
+      ],
+      "commercialGate": "GATE-CRA-CYBERSECURITY",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "No support-period, SLA or update-commitment statement is authorized before DOC-19 is approved."
+    },
+    {
+      "pageId": "productDocumentation",
+      "locale": "es",
+      "pageType": "DOCUMENTATION",
+      "intent": "Publish manuals and technical notes for one product family.",
+      "titleTemplate": "Documentación de {{familyName}}",
+      "descriptionTemplate": "Manuales y notas técnicas de {{familyName}}. Estado de publicación: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-productDocumentation",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "support",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "support"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-SAFETY-PILOT",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": "GATE-CRA-CYBERSECURITY",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "The parameter is limited to the nine family ids. No EN documentation page may exist without an approved EN translation."
+    },
+    {
+      "pageId": "productDocumentation",
+      "locale": "en",
+      "pageType": "DOCUMENTATION",
+      "intent": "Publish manuals and technical notes for one product family.",
+      "titleTemplate": "{{familyName}} documentation",
+      "descriptionTemplate": "Manuals and technical notes for {{familyName}}. Publication state: {{readinessLabel}}.",
+      "robotsPolicy": "noindex,nofollow",
+      "robotsPolicyClass": "IDX-MAREA-PROPOSED-PAGES",
+      "robotsPolicyObserved": "none (route does not resolve)",
+      "canonicalPolicy": "NONE_UNTIL_AUTHORIZED",
+      "canonicalPolicyClass": "BLOCKED_NO_CANONICAL",
+      "hreflangGroup": "GROUP-productDocumentation",
+      "hreflangGroupStatus": "PROPOSED_NOT_PUBLISHED",
+      "schemaTypesAllowed": [],
+      "breadcrumbParent": "support",
+      "breadcrumbParentBasis": "SUPERIOR_PAGE",
+      "internalLinkTargets": [
+        "support"
+      ],
+      "requiredClaimEvidence": [
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-SAFETY-PILOT",
+        "GATE-COMMERCIAL-CLAIMS"
+      ],
+      "commercialGate": "GATE-CRA-CYBERSECURITY",
+      "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "metadataStatus": "GATED_INTERNAL_SPECIFICATION",
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "sitemapMembershipSource": "NOT_APPLICABLE_PROPOSED",
+      "notes": "The parameter is limited to the nine family ids. No EN documentation page may exist without an approved EN translation."
+    }
+  ]
+}

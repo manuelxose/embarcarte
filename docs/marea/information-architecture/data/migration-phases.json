@@ -1,0 +1,475 @@
+{
+  "contractId": "MAREA-MC15-MIGRATION-PHASES",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-15",
+  "date": "2026-11-02",
+  "owner": "seo-migration",
+  "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
+  "generationMethod": "manual repository inspection",
+  "evidenceState": "REPOSITORY_VERIFIED",
+  "scope": "MC-15 internal bilingual IA/SEO planning",
+  "status": "INTERNAL_PLANNING_ONLY",
+  "readOnly": true,
+  "publicationAuthorized": false,
+  "liveChangeExecuted": false,
+  "MC16_STARTED": false,
+  "executionStatusVocabulary": [
+    "NOT_EXECUTED",
+    "EXECUTED"
+  ],
+  "crossReferences": [
+    "docs/marea/information-architecture/MC15-PHASED-SEO-MIGRATION-PLAN.md#D15",
+    "docs/marea/information-architecture/MC15-DATA-CONTRACT.md#3-dataset-minimum-keys",
+    "docs/marea/information-architecture/data/redirect-map.json#MAREA-MC15-REDIRECT-MAP",
+    "docs/marea/legal-commercial/data/release-evidence-gates.json#RELEASE-EVIDENCE-GATES",
+    "docs/marea/execution/DECISION-LOG.md#D-061"
+  ],
+  "evidenceNotes": [
+    "No phase is executed in MC-15. Phases 1-6 describe work that future milestones and human owners may perform only after the written authorisations named per phase.",
+    "MC-16 is not started. This dataset is a planning record, not a schedule commitment, and no date is promised.",
+    "Phase 0 observations gathered during MC-15 (isolated local SSR probes documented in D07/D08/D09) are partial evidence inputs; they are not the formal Phase 0 snapshot, which requires an immutable artefact.",
+    "No Search Console access exists in MC-15, so no phase may claim indexation evidence."
+  ],
+  "counts": {
+    "phases": 7,
+    "executedInMc15": 0,
+    "authorizedInMc15": 0,
+    "gatesConsumed": 13
+  },
+  "items": [
+    {
+      "phaseId": "PHASE-0",
+      "order": 0,
+      "name": "Baseline preservation",
+      "objective": "Freeze the current public URL surface as the immutable reference every later phase must preserve: route and URL inventory, canonical and hreflang map, redirect map, sitemap output, robots.txt content, HTTP status per URL and the structured-data inventory. Read-only capture; nothing may be published, moved or redirected.",
+      "scope": [
+        "Read-only crawl of the local or staging SSR surface with a disposable database and the inherited test fixtures.",
+        "Record, per URL: status code, canonical, hreflang set, robots meta, X-Robots-Tag, sitemap membership, JSON-LD types, redirect location where applicable.",
+        "Record the full sitemap URL set and the robots.txt content verbatim.",
+        "Record the inherited redirect set: /open-marine -> /tecnologia, /productos -> /tecnologia, /productos/:slug -> /tecnologia/:slug (EXISTING_ACTIVE)."
+      ],
+      "outOfScope": [
+        "Any write to src/, public/, package.json, the sitemap generator or robots.txt.",
+        "Any deployment, release, DNS, CDN, hosting or Search Console action.",
+        "Any redirect creation, removal or re-pointing."
+      ],
+      "entryCriteria": [
+        "Working tree at the frozen MC-15 base commit e0be1e457456a401a529e1912770e07ed9a863e4 with no pending writer.",
+        "MC-15 D02/D03 URL and route inventories accepted, and D07-D10 decisions available as the expected-state reference.",
+        "Read-only access to a reproducible SSR run with a disposable DATA_DIR and seeded fixtures identical to the inherited SEO gate."
+      ],
+      "exitCriteria": [
+        "An immutable snapshot artefact exists containing the complete public URL set with status, canonical, hreflang, robots and sitemap membership.",
+        "The snapshot explains every difference from the registered inventories; unexplained differences block the phase.",
+        "The snapshot is referenced by name from Phase 4 and from D16, and cannot be edited after capture (append-only correction record instead)."
+      ],
+      "authorizationRequired": true,
+      "authorizationAuthority": "PROGRAMME_LEAD",
+      "authorizationStatus": "NOT_GRANTED",
+      "blockingGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "deliverables": [
+        "Pre-release URL snapshot artefact (see D16 section 2)",
+        "Snapshot verification note against the registered inventories"
+      ],
+      "prohibitedActions": [
+        "Publishing, deploying, redirecting, re-indexing or submitting a sitemap.",
+        "Treating the partial local probes gathered in MC-15 as the formal snapshot."
+      ],
+      "riskIds": [
+        "SEO-RISK-01",
+        "SEO-RISK-11",
+        "SEO-RISK-18",
+        "SEO-RISK-22"
+      ],
+      "owner": "seo-migration",
+      "executionStatus": "NOT_EXECUTED",
+      "executedInMc15": false,
+      "evidenceRequired": [
+        "Immutable snapshot artefact with capture timestamp and source commit",
+        "Diff report between the snapshot and the registered inventories",
+        "Local SSR run log with the fixture description"
+      ]
+    },
+    {
+      "phaseId": "PHASE-1",
+      "order": 1,
+      "name": "Approved corporate IA planning candidates",
+      "objective": "Turn the corporate information architecture into a reviewed candidate list that can be implemented later: which page identities exist, which entity each one represents, which locale paths are proposed, what the collision and canonical/hreflang consequence is, and that none of them is pre-authorised for publication or indexation.",
+      "scope": [
+        "Existing corporate pages (home, technology, experiences, delivery, services, about, contact, guides, shop, legal) treated as already published and preserved.",
+        "New corporate candidates such as professionals, installers and support recorded as planning candidates only.",
+        "Collision analysis against all 21 current route ids, the 7 admin ids and the 3 legacy redirect paths.",
+        "Per-candidate publication decision recorded as NOT_AUTHORIZED with the blocking gates named."
+      ],
+      "outOfScope": [
+        "Any MAREA product, family, bundle or solution page (Phase 2 and Phase 3).",
+        "Any publication, route registration in src/, sitemap inclusion or indexation request.",
+        "Any claim wording that has not passed the claims policy."
+      ],
+      "entryCriteria": [
+        "Phase 0 snapshot accepted.",
+        "D04-D06 bilingual IA, proposed route registry and slug/entity governance accepted.",
+        "D08/D09 canonical and indexation policies accepted, and D11 metadata contract available for the candidates."
+      ],
+      "exitCriteria": [
+        "Every candidate has an entityId, ES and EN path, collision status, canonical/hreflang plan and a publication decision of NOT_AUTHORIZED.",
+        "No candidate is marked published, indexable or sitemapped; the route-gate matrix carries publicationAuthorized=false and indexationAuthorized=false for all of them.",
+        "Claims review outcome is recorded per candidate, including the finding references that remain open."
+      ],
+      "authorizationRequired": true,
+      "authorizationAuthority": "COMMERCIAL_DIRECTOR with PROGRAMME_LEAD",
+      "authorizationStatus": "NOT_GRANTED",
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "deliverables": [
+        "Corporate IA candidate register with per-candidate publication decision",
+        "Collision report against current, admin and legacy surfaces"
+      ],
+      "prohibitedActions": [
+        "Treating a planning candidate as pre-authorised.",
+        "Creating a route, a page or a sitemap entry.",
+        "Publishing any MAREA reference inside a corporate candidate."
+      ],
+      "riskIds": [
+        "SEO-RISK-05",
+        "SEO-RISK-06",
+        "SEO-RISK-19",
+        "SEO-RISK-21"
+      ],
+      "owner": "ia-content",
+      "executionStatus": "NOT_EXECUTED",
+      "executedInMc15": false,
+      "evidenceRequired": [
+        "Candidate register with entityId and locale paths",
+        "Collision report with zero unresolved collisions",
+        "Claims review record per candidate"
+      ]
+    },
+    {
+      "phaseId": "PHASE-2",
+      "order": 2,
+      "name": "MAREA brand clearance prerequisite",
+      "objective": "Establish that no MAREA page may become public before external brand, IP, claims and market-placement gates open, and define what a granted decision would have to contain. This phase cannot be completed by any agent and produces no page.",
+      "scope": [
+        "Record the current state: TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED, MAREA_PUBLIC_USE = NO_GO (D-003 and D-059).",
+        "Define the minimum external decision set: counsel opinion on the class-9 conflict, written public-use decision, IP ownership chain, outbound licence decision.",
+        "Define what stays forbidden even after clearance: unverified certification, availability, price, safety and performance claims."
+      ],
+      "outOfScope": [
+        "Filing, clearing, renaming or negotiating a trademark.",
+        "Creating, registering or publishing any MAREA URL.",
+        "Publishing MAREA in titles, descriptions, navigation, breadcrumbs or structured data."
+      ],
+      "entryCriteria": [
+        "Phase 1 corporate candidates recorded (so MAREA work cannot hide inside a corporate page).",
+        "D-003 trademark gate and D-059 stricter public-brand rule accepted as binding.",
+        "MC-14 release gates register available with all 13 gates open."
+      ],
+      "exitCriteria": [
+        "Either a written external clearance decision exists and is recorded with its scope, or the phase remains BLOCKED and no MAREA page may be created.",
+        "The forbidden-claim list is restated for the cleared scope, including certification, availability, price, ratings and performance.",
+        "No MAREA URL exists in any environment reachable by a crawler."
+      ],
+      "authorizationRequired": true,
+      "authorizationAuthority": "LEGAL_COUNSEL with COMMERCIAL_DIRECTOR",
+      "authorizationStatus": "NOT_GRANTED",
+      "blockingGateIds": [
+        "GATE-IP-CLEARANCE",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "deliverables": [
+        "Recorded clearance decision or a recorded BLOCKED verdict with the missing artefacts named",
+        "Restated forbidden-claim list for the cleared scope"
+      ],
+      "prohibitedActions": [
+        "Any public use of MAREA while public use is NO_GO, including og:image, social preview, footer attribution or JSON-LD brand.",
+        "Any agent-authored 'clearance' statement.",
+        "Any MAREA page, redirect or sitemap entry."
+      ],
+      "riskIds": [
+        "SEO-RISK-05",
+        "SEO-RISK-07",
+        "SEO-RISK-19",
+        "SEO-RISK-20"
+      ],
+      "owner": "legal-governance",
+      "executionStatus": "NOT_EXECUTED",
+      "executedInMc15": false,
+      "evidenceRequired": [
+        "Written external clearance or public-use decision, or a BLOCKED record naming the missing artefacts",
+        "Gate status snapshot showing all blocking gates open"
+      ]
+    },
+    {
+      "phaseId": "PHASE-3",
+      "order": 3,
+      "name": "Product and solution page implementation (future milestones)",
+      "objective": "Implement the product, family, bundle and solution pages in future implementation milestones, each with its own publication and structured-data authorisation. This is engineering work that is deliberately separate from SEO planning and is not started.",
+      "scope": [
+        "One component per page, localised from LOCALIZED_ROUTES; no duplicated ES/EN implementation.",
+        "Per-page publication decision, per-page indexation decision and a structured-data decision that is independent of both.",
+        "Per-family gates: PILOT safety, AIS receive-only boundary, WATCH alert wording, WEATHER data licensing, FLEET tenancy, NAV navigational-aid boundary, DISPLAY/HUB conformity and compatibility evidence.",
+        "Quote-only and concept states expressed as content states, never as purchasable offers."
+      ],
+      "outOfScope": [
+        "Any price, stock, availability or checkout for a MAREA product.",
+        "Any Product/Offer/AggregateRating/Review JSON-LD for MAREA.",
+        "Any SEO planning change (that is MC-15's closed scope)."
+      ],
+      "entryCriteria": [
+        "Phase 2 clearance for the scope being implemented.",
+        "D05 proposed route registry frozen for the page being built, with a collision-free ES/EN path pair.",
+        "D10 structured-data authorisation recorded per page type, and D11 metadata approved for both locales.",
+        "The relevant family gates open for the claims used on that page."
+      ],
+      "exitCriteria": [
+        "Implementation reviewed and tested, with one component per page and locale parity verified.",
+        "Publication, indexation and structured data each recorded as independently authorised or explicitly withheld.",
+        "No page is released by this phase; release is Phase 5."
+      ],
+      "authorizationRequired": true,
+      "authorizationAuthority": "PROGRAMME_LEAD with COMMERCIAL_DIRECTOR",
+      "authorizationStatus": "NOT_GRANTED",
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT",
+        "GATE-DATA-LICENSING",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "deliverables": [
+        "Implemented pages behind an unpublished state",
+        "Per-page publication, indexation and structured-data authorisation records"
+      ],
+      "prohibitedActions": [
+        "Shipping a MAREA Product/Offer node, price, availability, rating or certification.",
+        "Creating a purchasable SKU from a hypothesis (D-007, D-009).",
+        "Publishing before Phase 5 authorisation."
+      ],
+      "riskIds": [
+        "SEO-RISK-05",
+        "SEO-RISK-08",
+        "SEO-RISK-12",
+        "SEO-RISK-20",
+        "SEO-RISK-21"
+      ],
+      "owner": "ia-content",
+      "executionStatus": "NOT_EXECUTED",
+      "executedInMc15": false,
+      "evidenceRequired": [
+        "Code review record and test output for each page",
+        "Locale parity and one-component verification",
+        "Structured-data authorisation record per page type"
+      ]
+    },
+    {
+      "phaseId": "PHASE-4",
+      "order": 4,
+      "name": "Controlled migration verification",
+      "objective": "Verify, in a controlled non-public environment and against the Phase 0 snapshot, that redirects, canonical, hreflang, structured data and the sitemap behave exactly as decided, before any release decision.",
+      "scope": [
+        "Redirect verification: the three EXISTING_ACTIVE legacy 301s still resolve in one hop to the same destinations; no new redirect exists; no PROPOSED_NOT_ACTIVE record has become active.",
+        "Canonical and hreflang verification: self-referencing absolute canonical on every indexable page, reciprocal groups, single x-default on the Spanish home, no invented EN alternate for an ES-only product.",
+        "Structured-data verification: valid JSON-LD, only whitelisted types, no MAREA Product/Offer, no price/availability/rating/certification claim.",
+        "Sitemap verification: set equality with the expected URL set, no private, admin, sample or blocked MAREA URL, alternates only when both locales are published.",
+        "Robots verification: no reliance on Disallow as a substitute for noindex; private and admin surfaces still noindex with the header."
+      ],
+      "outOfScope": [
+        "Any change to live routing, headers, sitemap or robots while verifying.",
+        "Search Console submission or re-indexing requests.",
+        "Release, DNS or CDN changes."
+      ],
+      "entryCriteria": [
+        "Phase 0 snapshot is authoritative and unchanged.",
+        "A candidate build artefact is identified by its git commit SHA and checksum (never by an invented deployment or release identifier).",
+        "A disposable database with the same fixture class used for the snapshot, so counts are comparable.",
+        "D07-D10 decisions frozen for the candidate under test."
+      ],
+      "exitCriteria": [
+        "Verification report states, per URL family, that status, canonical, hreflang and robots are identical to the snapshot where preservation was decided, and identical to the plan where a change was authorised.",
+        "Redirect set equality: exactly the three inherited 301s active, zero chains, zero loops, zero cross-locale targets, zero destinations on a blocked page or a private page.",
+        "Sitemap set equality against the expected set, with every difference explained by dynamic data or content.",
+        "Zero blocked URL reachable as indexable, and zero structured-data restriction breach.",
+        "Any failed check blocks the phase; a failed phase cannot be reported as PASS."
+      ],
+      "authorizationRequired": true,
+      "authorizationAuthority": "PROGRAMME_LEAD with an independent reviewer",
+      "authorizationStatus": "NOT_GRANTED",
+      "blockingGateIds": [
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "deliverables": [
+        "Migration verification report keyed to the Phase 0 snapshot",
+        "Redirect, canonical/hreflang, structured-data and sitemap check outputs"
+      ],
+      "prohibitedActions": [
+        "Verifying against a moving target or against production traffic.",
+        "Editing the snapshot to match the candidate.",
+        "Reporting an unexecuted or environment-blocked check as PASS."
+      ],
+      "riskIds": [
+        "SEO-RISK-02",
+        "SEO-RISK-03",
+        "SEO-RISK-04",
+        "SEO-RISK-06",
+        "SEO-RISK-08",
+        "SEO-RISK-09",
+        "SEO-RISK-10",
+        "SEO-RISK-12",
+        "SEO-RISK-13",
+        "SEO-RISK-14",
+        "SEO-RISK-15",
+        "SEO-RISK-16",
+        "SEO-RISK-17"
+      ],
+      "owner": "seo-migration",
+      "executionStatus": "NOT_EXECUTED",
+      "executedInMc15": false,
+      "evidenceRequired": [
+        "Verification report with per-URL evidence",
+        "Candidate artefact SHA and checksum",
+        "Independent reviewer sign-off"
+      ]
+    },
+    {
+      "phaseId": "PHASE-5",
+      "order": 5,
+      "name": "Authorized release",
+      "objective": "Release only with a separate written authorisation from the responsible human owner, after Phase 4 passes, with the rollback plan and its prerequisites verified. No agent may release, and MC-15 authorises nothing here.",
+      "scope": [
+        "Record the authorisation: who authorised, what exactly is being released (URL set and code SHA), and what is explicitly not released.",
+        "Confirm the 13 gates that apply to the released scope, and record every gate that remains open together with its consequence.",
+        "Confirm the rollback prerequisites of D16 are true before release, not after an incident."
+      ],
+      "outOfScope": [
+        "Any release performed by an autonomous agent.",
+        "Releasing a MAREA page before Phase 2 and Phase 3 are satisfied for that page.",
+        "Releasing a price, an offer or a stock state that has no approval."
+      ],
+      "entryCriteria": [
+        "Phase 4 verification PASS with an independent reviewer.",
+        "A written authorisation naming the URL set, the code SHA and the excluded scope.",
+        "Rollback plan rehearsed at least once against the Phase 0 snapshot, with the checklist in D16 completed.",
+        "A named incident owner and an escalation channel available for the release window."
+      ],
+      "exitCriteria": [
+        "Release executed by the authorised human owner and a change record created referencing the code SHA and the authorisation.",
+        "Post-release checks of Phase 6 started immediately, including redirect and canonical spot checks.",
+        "Any deviation from the authorised URL set is treated as an incident and triggers D16."
+      ],
+      "authorizationRequired": true,
+      "authorizationAuthority": "COMMERCIAL_DIRECTOR with PROGRAMME_LEAD and an independent reviewer",
+      "authorizationStatus": "NOT_GRANTED",
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "deliverables": [
+        "Written release authorisation",
+        "Change record with code SHA, URL set and excluded scope",
+        "Release-window incident owner and escalation channel"
+      ],
+      "prohibitedActions": [
+        "Releasing without a written authorisation.",
+        "Releasing a URL set larger than the one authorised.",
+        "Releasing before the rollback prerequisites are verified.",
+        "Any agent performing the release, merge or deployment."
+      ],
+      "riskIds": [
+        "SEO-RISK-01",
+        "SEO-RISK-07",
+        "SEO-RISK-18",
+        "SEO-RISK-22"
+      ],
+      "owner": "PROGRAMME_LEAD",
+      "executionStatus": "NOT_EXECUTED",
+      "executedInMc15": false,
+      "evidenceRequired": [
+        "Signed/recorded authorisation",
+        "Change record with SHA and URL set",
+        "Rollback rehearsal record"
+      ]
+    },
+    {
+      "phaseId": "PHASE-6",
+      "order": 6,
+      "name": "Post-release monitoring",
+      "objective": "Monitor the released surface for crawl errors, redirect regressions, canonical/hreflang drift, sitemap coverage and indexation, and trigger the D16 rollback when a threshold is crossed. Monitoring access is a prerequisite, not an assumption.",
+      "scope": [
+        "Scheduled verification of the redirect set (the three inherited 301s and any authorised new one) with one-hop and destination checks.",
+        "Sitemap fetch and diff against the expected URL set; report additions, removals and status changes.",
+        "Crawl-error and canonical/hreflang sampling across the preserved URL inventory.",
+        "Search Console coverage, impressions and indexation checks once access exists; until then the honest state is INDEXATION_UNVERIFIED.",
+        "Incident log with thresholds, decisions and evidence for every rollback trigger."
+      ],
+      "outOfScope": [
+        "Changing content, routes, redirects or metadata to 'fix' a metric without authorisation.",
+        "Claiming indexation or ranking evidence that was not measured.",
+        "Any Marketing experiment that would invalidate the snapshot comparison."
+      ],
+      "entryCriteria": [
+        "Phase 5 release executed with a change record.",
+        "Monitoring access established (Search Console or an equivalent first-party measurement); without it the phase runs in a reduced mode that must be declared.",
+        "The Phase 0 snapshot and the authorised expected URL set are available for diffing.",
+        "D16 thresholds and the named incident owner are agreed before the release window."
+      ],
+      "exitCriteria": [
+        "An agreed stable window with no threshold breach, recorded with its measurement source.",
+        "Or a rollback executed and verified against the Phase 0 snapshot, with the incident closed and its cause recorded.",
+        "Every claim in the monitoring report traces to a measurement artefact; unmeasured metrics stay UNVERIFIED."
+      ],
+      "authorizationRequired": true,
+      "authorizationAuthority": "PROGRAMME_LEAD with COMMERCIAL_DIRECTOR",
+      "authorizationStatus": "NOT_GRANTED",
+      "blockingGateIds": [
+        "GATE-WEBSITE-REMEDIATION",
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "deliverables": [
+        "Monitoring report with measurement sources",
+        "Incident log and rollback decisions",
+        "Indexation state record (UNVERIFIED until measured)"
+      ],
+      "prohibitedActions": [
+        "Inventing crawl, coverage or ranking numbers.",
+        "Declaring a stable window without measurements.",
+        "Silently reverting a change outside the D16 procedure."
+      ],
+      "riskIds": [
+        "SEO-RISK-02",
+        "SEO-RISK-11",
+        "SEO-RISK-16",
+        "SEO-RISK-17",
+        "SEO-RISK-18",
+        "SEO-RISK-22"
+      ],
+      "owner": "seo-migration",
+      "executionStatus": "NOT_EXECUTED",
+      "executedInMc15": false,
+      "evidenceRequired": [
+        "Measurement artefacts (sitemap diff, redirect checks, coverage export when available)",
+        "Threshold breach log",
+        "Rollback record where applicable"
+      ]
+    }
+  ]
+}

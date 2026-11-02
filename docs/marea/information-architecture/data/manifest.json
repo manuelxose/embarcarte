@@ -1,0 +1,221 @@
+{
+  "contractId": "MAREA-MC15-MANIFEST",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-15",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
+  "generationMethod": "deterministic SHA-256 over every MC-15 dataset at the frozen implementation candidate; regenerated after audit corrections",
+  "evidenceState": "REPOSITORY_VERIFIED",
+  "scope": "MC-15 internal bilingual IA/SEO planning package",
+  "readOnly": true,
+  "publicationAuthorized": false,
+  "liveChangeExecuted": false,
+  "MC16_STARTED": false,
+  "reviewedCommit": "PENDING_FREEZE",
+  "datasetCount": 18,
+  "datasets": [
+    {
+      "name": "current-routes",
+      "path": "docs/marea/information-architecture/data/current-routes.json",
+      "contractId": "MAREA-MC15-CURRENT-ROUTES",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "a650cc152affcb196f7ffa94a28c0609a0586d561b0202a44743eb85f4f19b56",
+      "bytes": 30171,
+      "items": 28,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "current-urls",
+      "path": "docs/marea/information-architecture/data/current-urls.json",
+      "contractId": "MAREA-MC15-CURRENT-URLS",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "202341f47245e4bdcf5cfb24d2bf3e2b311f3e36ceca1f2fffa6abdf8757e1a9",
+      "bytes": 142422,
+      "items": 141,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "url-evidence",
+      "path": "docs/marea/information-architecture/data/url-evidence.json",
+      "contractId": "MAREA-MC15-URL-EVIDENCE",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "b262b2e5a05709d7f1fbec4ac2d75393879ea8a4fbfdc235be6ead31a9678e9d",
+      "bytes": 33193,
+      "items": 23,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "proposed-ia",
+      "path": "docs/marea/information-architecture/data/proposed-ia.json",
+      "contractId": "MAREA-MC15-PROPOSED-IA",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "a06665fc5da96fb147dc92e1e7c4d4cfe7667d26c8a020e667e636c620acf8a1",
+      "bytes": 45110,
+      "items": 45,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "proposed-routes",
+      "path": "docs/marea/information-architecture/data/proposed-routes.json",
+      "contractId": "MAREA-MC15-PROPOSED-ROUTES",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "71c913e67747941d339983f38156bb445694a3770c4256ad3a0847473b12a6a2",
+      "bytes": 40745,
+      "items": 23,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "slug-governance",
+      "path": "docs/marea/information-architecture/data/slug-governance.json",
+      "contractId": "MAREA-MC15-SLUG-GOVERNANCE",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "462a160955a07613b423b956af8b00de1877cc6d5e57c5e5d31a41e52dae2e47",
+      "bytes": 39283,
+      "items": 30,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "redirect-map",
+      "path": "docs/marea/information-architecture/data/redirect-map.json",
+      "contractId": "MAREA-MC15-REDIRECT-MAP",
+      "contractVersion": "1.0.0",
+      "evidenceState": "LOCAL_SSR_VERIFIED",
+      "sha256": "ea1b040aee7ece5f3135171420530678e36cd6145eb8cfaac2624bebb99691ab",
+      "bytes": 62029,
+      "items": 53,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "canonical-hreflang",
+      "path": "docs/marea/information-architecture/data/canonical-hreflang.json",
+      "contractId": "MAREA-MC15-CANONICAL-HREFLANG",
+      "contractVersion": "1.0.0",
+      "evidenceState": "LOCAL_SSR_VERIFIED",
+      "sha256": "35f5c5133ebbb0ba59dc87514cfd3197cf7a17247cf92ebad8a5252e77ed78b1",
+      "bytes": 74384,
+      "items": 88,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "indexation-policy",
+      "path": "docs/marea/information-architecture/data/indexation-policy.json",
+      "contractId": "MAREA-MC15-INDEXATION-POLICY",
+      "contractVersion": "1.0.0",
+      "evidenceState": "LOCAL_SSR_VERIFIED",
+      "sha256": "b1d6e56cfe53e72c1122ef925a21bf61f7fd4572dfa2adda65edc4aca3011587",
+      "bytes": 16293,
+      "items": 14,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "structured-data-policy",
+      "path": "docs/marea/information-architecture/data/structured-data-policy.json",
+      "contractId": "MAREA-MC15-STRUCTURED-DATA-POLICY",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "fc5080589d59f438289021e83f411338dfdde373cadd40e377fe01a2ce7d6acf",
+      "bytes": 47995,
+      "items": 9,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "bilingual-metadata",
+      "path": "docs/marea/information-architecture/data/bilingual-metadata.json",
+      "contractId": "MAREA-MC15-BILINGUAL-METADATA",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "78d651b11cf2a52f3f177564754273efd2dc2b8c03881309063ff2d983de4dad",
+      "bytes": 161220,
+      "items": 88,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "internal-link-graph",
+      "path": "docs/marea/information-architecture/data/internal-link-graph.json",
+      "contractId": "MAREA-MC15-INTERNAL-LINK-GRAPH",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "e05684698afd504caabed06a1d6f444a3058b1ca30fc64f388aca930b0c94649",
+      "bytes": 83532,
+      "items": 206,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "publication-gates",
+      "path": "docs/marea/information-architecture/data/publication-gates.json",
+      "contractId": "MAREA-MC15-PUBLICATION-GATES",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "6fa24f1aa3bbb1974071361c9cd5f30a4fb2eca688c2722e4fd9ccfe05551c6c",
+      "bytes": 96039,
+      "items": 13,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "website-remediation",
+      "path": "docs/marea/information-architecture/data/website-remediation.json",
+      "contractId": "MAREA-MC15-WEBSITE-REMEDIATION",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "c9a96dd755ea503dbc0820637caed66d69d68aea3837084ab1f86a43df5e5aa0",
+      "bytes": 54873,
+      "items": 34,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "migration-phases",
+      "path": "docs/marea/information-architecture/data/migration-phases.json",
+      "contractId": "MAREA-MC15-MIGRATION-PHASES",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "247348f65d27d5898e6c89570707d4ba263ee4a79aa5edc9d31e82a3f36eddc9",
+      "bytes": 24682,
+      "items": 7,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "risk-register",
+      "path": "docs/marea/information-architecture/data/risk-register.json",
+      "contractId": "MAREA-MC15-RISK-REGISTER",
+      "contractVersion": "1.0.0",
+      "evidenceState": "LOCAL_SSR_VERIFIED",
+      "sha256": "d18276beff42142d13b4e82c0e623c6dea74eeb404978f03dfbdead94b66ea11",
+      "bytes": 29783,
+      "items": 22,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "mc16-handoff-inputs",
+      "path": "docs/marea/information-architecture/data/mc16-handoff-inputs.json",
+      "contractId": "MAREA-MC15-MC16-HANDOFF-INPUTS",
+      "contractVersion": "1.0.0",
+      "evidenceState": "REPOSITORY_VERIFIED",
+      "sha256": "6b24a5ea721d37afb502e036dc1d4afd4a7560b2b9ec6f6a10ef1bcf3f63ebc6",
+      "bytes": 89606,
+      "items": 0,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    },
+    {
+      "name": "review-findings",
+      "path": "docs/marea/information-architecture/data/review-findings.json",
+      "contractId": "MAREA-MC15-REVIEW-FINDINGS",
+      "contractVersion": "1.0.0",
+      "evidenceState": "PENDING_INDEPENDENT_AUDIT",
+      "sha256": "3390fc3dfe0f10924c06e7950a29241ee7253474e47df2ef1c82f1384ca114b9",
+      "bytes": 752,
+      "items": 0,
+      "status": "FROZEN_IMPLEMENTATION_CANDIDATE"
+    }
+  ],
+  "crossReferences": [
+    "docs/marea/information-architecture/MC-15-BASELINE-AND-GOVERNANCE.md#9-deliverable-map",
+    "docs/marea/information-architecture/MC15-DATA-CONTRACT.md#1-common-envelope"
+  ]
+}
