@@ -8,7 +8,7 @@
 
 ## Scope
 
-This dossier records, for 50 research records (48 governed sources plus 4 considered-only records and 2 governed-only additions), what the **official primary sources** actually say on 2026-11-02 about: publication, entry into force, application/transposition, the provisions examined, and their applicability to the nine proposed MAREA product lines (NAV, HUB, AIS, PILOT, SENSE, WATCH, DISPLAY, WEATHER, FLEET). It is the research input from which the Lead compiles `docs/marea/legal-commercial/data/legal-sources.json`. It does **not** approve a price, a claim, a certification route, a market placement, a trademark or a legal position.
+This dossier records 50 research records: 46 shared with the governed register plus 4 considered-only records marked NOT_IN_GOVERNED_REGISTER. The governed register contains 48 sources: those 46 shared records plus 2 additions made during compilation (SRC-EU-DB-96-9, SRC-ES-AEMET-TERMS). what the **official primary sources** actually say on 2026-11-02 about: publication, entry into force, application/transposition, the provisions examined, and their applicability to the nine proposed MAREA product lines (NAV, HUB, AIS, PILOT, SENSE, WATCH, DISPLAY, WEATHER, FLEET). It is the research input from which the Lead compiles `docs/marea/legal-commercial/data/legal-sources.json`. It does **not** approve a price, a claim, a certification route, a market placement, a trademark or a legal position.
 
 ## Method
 
@@ -42,51 +42,51 @@ This dossier records, for 50 research records (48 governed sources plus 4 consid
 
 | sourceId | Instrument (short) | Publication | Entry into force | Application / transposition | Verification |
 |---|---|---|---|---|---|
-| SRC-EU-CRA-2024-2847 | Cyber Resilience Act | 2024-11-20 | 2024-12-10 | 2027-12-11 (reporting 2026-09-11) | RE_VERIFIED |
-| SRC-EU-PLD-2024-2853 | Product Liability Directive | 2024-11-18 | 2024-12-08 | transposition 2026-12-09; applies to products placed after 2026-12-08 (corrigendum) | RE_VERIFIED |
-| SRC-EU-RED-2014-53 | Radio Equipment Directive | 2014-05-22 | 2014-06-11 | 2016-06-13 (transitional to 2017-06-12) | CONSUMED |
-| SRC-EU-DELREG-2022-30 | RED Art 3(3)(d)(e)(f) delegated act | 2022-01-12 | 2022-02-01 | 2025-08-01 (as amended) | RE_VERIFIED |
-| SRC-EU-DELREG-2026-339 | Repeal of 2022/30 | 2026-04-29 | 2026-05-19 | repeal effective 2027-12-11 | RE_VERIFIED |
-| SRC-EU-EMC-2014-30 | EMC Directive | 2014-03-29 | 2014-04-18 | 2016-04-20 | CONSUMED |
-| SRC-EU-LVD-2014-35 | Low Voltage Directive | 2014-03-29 | 2014-04-18 | 2016-04-20 | CONSUMED |
-| SRC-EU-GPSR-2023-988 | General Product Safety Regulation | 2023-05-23 | 2023-06-12 | 2024-12-13 | RE_VERIFIED |
-| SRC-EU-ROHS-2011-65 | RoHS Directive | 2011-07-01 | 2011-07-21 | 2013-01-02 (catch-all 2019-07-22) | CONSUMED |
-| SRC-EU-WEEE-2012-19 | WEEE Directive | 2012-07-24 | 2012-08-13 | 2014-02-14 | CONSUMED |
-| SRC-EU-BATTERIES-2023-1542 | Batteries Regulation | 2023-07-28 | 2023-08-17 | 2024-02-18 | CONSUMED |
-| SRC-EU-PACKAGING-2025-40 | Packaging and Packaging Waste Regulation | 2025-01-22 | 2025-02-11 | 2026-08-12 (FLAGGED — not rendered) | CONSUMED |
-| SRC-EU-RCD-2013-53 | Recreational Craft Directive | 2013-12-28 | NOT_RETRIEVED | NOT_RETRIEVED | CONSUMED |
-| SRC-EU-MED-2014-90 | Marine Equipment Directive | 2014-08-28 | NOT_RETRIEVED | NOT_RETRIEVED | CONSUMED |
-| SRC-EU-GDPR-2016-679 | GDPR | 2016-05-04 | 2016-05-24 | 2018-05-25 | CONSUMED |
-| SRC-EU-EPRIVACY-2002-58 | ePrivacy Directive | 2002-07-31 | 2002-08-20 | 2003-10-31 | CONSUMED |
-| SRC-EU-CRD-2011-83 | Consumer Rights Directive | 2011-11-22 | 2011-12-12 | transposition 2013-12-13; applies 2014-06-13 | CONSUMED |
-| SRC-EU-CSD-2019-771 | Sale of Goods Directive | 2019-05-22 | 2019-06-11 | 2022-01-01 (not stated in predecessor evidence) | CONSUMED |
-| SRC-EU-DCD-2019-770 | Digital Content Directive | 2019-05-22 | 2019-06-11 | NOT_RETRIEVED | RE_VERIFIED |
-| SRC-EU-UCPD-2005-29 | Unfair Commercial Practices Directive | 2005-06-11 | 2005-07-01 | NOT_RETRIEVED | RE_VERIFIED |
-| SRC-EU-PRICE-98-6 | Price Indication Directive | 1998-03-18 | 1998-04-07 | 2000-03-18 | CONSUMED |
-| SRC-EU-ECOMMERCE-2000-31 | eCommerce Directive | 2000-07-17 | 2000-08-06 | NOT_RETRIEVED | RE_VERIFIED |
-| SRC-EU-PSD2-2015-2366 | PSD2 | 2015-12-23 | 2016-01-12 | 2018-01-13 | CONSUMED |
-| SRC-EU-SCA-2018-389 | PSD2 SCA RTS | 2018-03-13 | 2018-03-14 | 2019-09-14 | CONSUMED |
-| SRC-EU-VAT-2006-112 | VAT Directive (consolidated 2025-04-14) | 2006-12-11 | 2007-01-01 | 2007-01-01 | CONSUMED |
-| SRC-EU-OSS-282-2011 | VAT implementing measures / OSS | 2011-03-23 | 2011-04-12 | OSS from 2021-07-01 | CONSUMED |
-| SRC-EU-EUTMR-2017-1001 | EU Trade Mark Regulation | 2017-06-16 | 2017-07-06 | 2017-10-01 | CONSUMED |
-| SRC-EU-CE-MARKING-GUIDANCE | Commission CE marking guidance | N/A | N/A | N/A (guidance) | CONSUMED |
+| SRC-EU-CRA-2024-2847 | Cyber Resilience Act | 2024-11-20 | 2024-12-10 | 2027-12-11 (reporting 2026-09-11) | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-PLD-2024-2853 | Product Liability Directive | 2024-11-18 | 2024-12-08 | transposition 2026-12-09; applies to products placed after 2026-12-08 (corrigendum) | VERIFIED_THIS_SESSION |
+| SRC-EU-RED-2014-53 | Radio Equipment Directive | 2014-05-22 | 2014-06-11 | 2016-06-13 (transitional to 2017-06-12) | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-DELREG-2022-30 | RED Art 3(3)(d)(e)(f) delegated act | 2022-01-12 | 2022-02-01 | 2025-08-01 (as amended) | VERIFIED_THIS_SESSION |
+| SRC-EU-DELREG-2026-339 | Repeal of 2022/30 | 2026-04-29 | 2026-05-19 | repeal effective 2027-12-11 | VERIFIED_THIS_SESSION |
+| SRC-EU-EMC-2014-30 | EMC Directive | 2014-03-29 | 2014-04-18 | 2016-04-20 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-LVD-2014-35 | Low Voltage Directive | 2014-03-29 | 2014-04-18 | 2016-04-20 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-GPSR-2023-988 | General Product Safety Regulation | 2023-05-23 | 2023-06-12 | 2024-12-13 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-ROHS-2011-65 | RoHS Directive | 2011-07-01 | 2011-07-21 | 2013-01-02 (catch-all 2019-07-22) | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-WEEE-2012-19 | WEEE Directive | 2012-07-24 | 2012-08-13 | 2014-02-14 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-BATTERIES-2023-1542 | Batteries Regulation | 2023-07-28 | 2023-08-17 | 2024-02-18 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-PACKAGING-2025-40 | Packaging and Packaging Waste Regulation | 2025-01-22 | 2025-02-11 | 2026-08-12 (FLAGGED — not rendered) | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-RCD-2013-53 | Recreational Craft Directive | 2013-12-28 | NOT_RETRIEVED | NOT_RETRIEVED | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-MED-2014-90 | Marine Equipment Directive | 2014-08-28 | NOT_RETRIEVED | NOT_RETRIEVED | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-GDPR-2016-679 | GDPR | 2016-05-04 | 2016-05-24 | 2018-05-25 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-EPRIVACY-2002-58 | ePrivacy Directive | 2002-07-31 | 2002-08-20 | 2003-10-31 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-CRD-2011-83 | Consumer Rights Directive | 2011-11-22 | 2011-12-12 | transposition 2013-12-13; applies 2014-06-13 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-CSD-2019-771 | Sale of Goods Directive | 2019-05-22 | 2019-06-11 | 2022-01-01 (not stated in predecessor evidence) | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-DCD-2019-770 | Digital Content Directive | 2019-05-22 | 2019-06-11 | NOT_RETRIEVED | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-UCPD-2005-29 | Unfair Commercial Practices Directive | 2005-06-11 | 2005-07-01 | NOT_RETRIEVED | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-PRICE-98-6 | Price Indication Directive | 1998-03-18 | 1998-04-07 | 2000-03-18 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-ECOMMERCE-2000-31 | eCommerce Directive | 2000-07-17 | 2000-08-06 | NOT_RETRIEVED | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-PSD2-2015-2366 | PSD2 | 2015-12-23 | 2016-01-12 | 2018-01-13 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-SCA-2018-389 | PSD2 SCA RTS | 2018-03-13 | 2018-03-14 | 2019-09-14 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-VAT-2006-112 | VAT Directive (consolidated 2025-04-14) | 2006-12-11 | 2007-01-01 | 2007-01-01 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-OSS-282-2011 | VAT implementing measures / OSS | 2011-03-23 | 2011-04-12 | OSS from 2021-07-01 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-EUTMR-2017-1001 | EU Trade Mark Regulation | 2017-06-16 | 2017-07-06 | 2017-10-01 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-EU-CE-MARKING-GUIDANCE | Commission CE marking guidance | N/A | N/A | N/A (guidance) | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
 | SRC-EU-BLUE-GUIDE-2022 | Blue Guide 2022 | 2022-06-29 | N/A | N/A (guidance) | NOT_RETRIEVED |
-| SRC-ES-TRLGDCU-RDL-1-2007 | TRLGDCU | 2007-11-30 | 2007-12-01 | 3-year guarantee / 24-month presumption from 2022-01-01 | CONSUMED |
-| SRC-ES-LSSI-34-2002 | LSSI 34/2002 | 2002-07-12 | 2002-10-12 | 2002-10-12 | CONSUMED |
+| SRC-ES-TRLGDCU-RDL-1-2007 | TRLGDCU | 2007-11-30 | 2007-12-01 | 3-year guarantee / 24-month presumption from 2022-01-01 | PARTIALLY_VERIFIED |
+| SRC-ES-LSSI-34-2002 | LSSI 34/2002 | 2002-07-12 | 2002-10-12 | 2002-10-12 | PARTIALLY_VERIFIED |
 | SRC-ES-LOPDGDD-3-2018 | LOPDGDD 3/2018 | 2018-12-06 | 2018-12-07 | 2018-12-07 | NOT_RETRIEVED |
-| SRC-ES-LGT-11-2022 | Ley 11/2022 General de Telecomunicaciones | 2022-06-29 | NOT_RETRIEVED | NOT_RETRIEVED | CONSUMED |
-| SRC-ES-RD-188-2016 | Spanish RED transposition | 2016-05-10 | 2016-06-13 | 2016-06-13 | RE_VERIFIED |
-| SRC-ES-RD-186-2016 | Spanish EMC transposition | 2016-05-10 | NOT_RETRIEVED | NOT_RETRIEVED | RE_VERIFIED |
-| SRC-ES-RD-187-2016 | Spanish LVD transposition | 2016-05-10 | NOT_RETRIEVED | NOT_RETRIEVED | RE_VERIFIED |
+| SRC-ES-LGT-11-2022 | Ley 11/2022 General de Telecomunicaciones | 2022-06-29 | NOT_RETRIEVED | NOT_RETRIEVED | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-ES-RD-188-2016 | Spanish RED transposition | 2016-05-10 | 2016-06-13 | 2016-06-13 | VERIFIED_THIS_SESSION |
+| SRC-ES-RD-186-2016 | Spanish EMC transposition | 2016-05-10 | NOT_RETRIEVED | NOT_RETRIEVED | NOT_RETRIEVED |
+| SRC-ES-RD-187-2016 | Spanish LVD transposition | 2016-05-10 | NOT_RETRIEVED | NOT_RETRIEVED | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
 | SRC-ES-LCD-3-1991 | Unfair Competition Law | NOT_RETRIEVED | NOT_RETRIEVED | NOT_RETRIEVED | NOT_RETRIEVED |
 | SRC-ES-LGP-34-1988 | General Advertising Law | NOT_RETRIEVED | NOT_RETRIEVED | NOT_RETRIEVED | NOT_RETRIEVED |
-| SRC-ES-PRODUCER-REGISTER | MITECO producer register (RPP) | N/A | N/A | annual window 2026-01-02 to 2026-04-02 | CONSUMED |
+| SRC-ES-PRODUCER-REGISTER | MITECO producer register (RPP) | N/A | N/A | annual window 2026-01-02 to 2026-04-02 | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
 | SRC-ES-AEPD-DPIA | AEPD DPIA guidance | N/A | N/A | N/A | INACCESSIBLE |
 | SRC-ES-IHM-CHART-LICENSING | IHM chart/ENC licensing | N/A | N/A | N/A | INACCESSIBLE |
 | SRC-ES-AUTORIDAD-CONSUMIDOR | Spanish consumer authority (CEC) | N/A | N/A | N/A | CONSUMED |
-| SRC-NMEA-2000-LICENSING | NMEA 2000 licence | N/A | N/A | N/A (contractual) | RE_VERIFIED |
-| SRC-NMEA-0183 | NMEA 0183 standard | N/A | N/A | N/A (contractual) | RE_VERIFIED |
-| SRC-NMEA-CERTIFICATION | NMEA 2000 certification | N/A | N/A | N/A (contractual) | RE_VERIFIED |
+| SRC-NMEA-2000-LICENSING | NMEA 2000 licence | N/A | N/A | N/A (contractual) | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-NMEA-0183 | NMEA 0183 standard | N/A | N/A | N/A (contractual) | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
+| SRC-NMEA-CERTIFICATION | NMEA 2000 certification | N/A | N/A | N/A (contractual) | CONSUMED_FROM_PREDECESSOR_EVIDENCE |
 | SRC-EUIPO-MAREA-SEARCH | EUIPO MAREA search | N/A | N/A | N/A | INACCESSIBLE |
 | SRC-OEPM-MAREA-SEARCH | OEPM MAREA search | N/A | N/A | N/A | INACCESSIBLE |
 | SRC-WIPO-GLOBAL-BRAND-DB | WIPO Brand DB | N/A | N/A | N/A | INACCESSIBLE |
@@ -662,10 +662,10 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 
 | Union act / topic | Spanish transposition or implementation | Instrument / BOE reference | Status in this dossier | MAREA consequence |
 |---|---|---|---|---|
-| RED 2014/53/EU | Real Decreto 188/2016 | BOE-A-2016-4444; in force 2016-06-13 | RE_VERIFIED (Art 9(8) Spanish-language duty) | ES instructions/DoC must be in Spanish; radio variants need RED conformity |
-| EMC 2014/30/EU | Real Decreto 186/2016 | BOE-A-2016-4442 (ELI locator); 2016-05-10 | RE_VERIFIED (identification only) | PILOT and wired SENSE are EMC apparatus |
-| LVD 2014/35/EU | Real Decreto 187/2016 | BOE-A-2016-4443; 2016-05-10 | RE_VERIFIED (identification only) | Only a bundled mains PSU would trigger LVD |
-| GPSR 2023/988 | Directly applicable; no transposition | — | RE_VERIFIED (EU) | Residual safety duties, Art 19 online listing duties |
+| RED 2014/53/EU | Real Decreto 188/2016 | BOE-A-2016-4444; in force 2016-06-13 | CONSUMED_FROM_PREDECESSOR_EVIDENCE | ES instructions/DoC must be in Spanish; radio variants need RED conformity |
+| EMC 2014/30/EU | Real Decreto 186/2016 | BOE-A-2016-4442 (ELI locator); 2016-05-10 | CONSUMED_FROM_PREDECESSOR_EVIDENCE | PILOT and wired SENSE are EMC apparatus |
+| LVD 2014/35/EU | Real Decreto 187/2016 | BOE-A-2016-4443; 2016-05-10 | CONSUMED_FROM_PREDECESSOR_EVIDENCE | Only a bundled mains PSU would trigger LVD |
+| GPSR 2023/988 | Directly applicable; no transposition | — | CONSUMED_FROM_PREDECESSOR_EVIDENCE | Residual safety duties, Art 19 online listing duties |
 | RoHS 2011/65/EU | Spanish RoHS instrument | **NOT_RETRIEVED** | NOT_RETRIEVED | Material declarations still required for CE |
 | WEEE 2012/19/EU | RII-AEE producer register | **NOT_RETRIEVED** | NOT_RETRIEVED (MC-11 CON-09) | Producer registration/take-back financing |
 | Batteries 2023/1542 | Directly applicable + producer register | RPP (MITECO) | CONSUMED (EVD-MC11-318) | Removability by 2027; labelling 2026; QR 2027 |
@@ -683,10 +683,10 @@ Legend — **Product applicability** uses NAV / HUB / AIS / PILOT / SENSE / WATC
 | PSD2 / SCA | Spanish payment-services transposition | **NOT_RETRIEVED** (provider schedule missing) | CONSUMED (EU rules only) | Hosted/tokenised checkout; SCA flow |
 | VAT 2006/112 + OSS | Ley 37/1992; Agencia Tributaria OSS | MC-12 LT-001/003/004/006 | CONSUMED | 21 %; OSS; import VAT; duty UNKNOWN |
 | EUTMR 2017/1001 | EUIPO; Spanish trade-mark law | MC-03 / MC-12 LT-024 | CONSUMED | MAREA clearance NOT_GRANTED |
-| CRA 2024/2847 | Directly applicable; no transposition | — | RE_VERIFIED (EU) | Reporting live; main obligations 2027-12-11 |
+| CRA 2024/2847 | Directly applicable; no transposition | — | CONSUMED_FROM_PREDECESSOR_EVIDENCE (EU) | Reporting live; main obligations 2027-12-11 |
 | PLD 2024/2853 | Spanish transposition due 2026-12-09 | **NOT_RETRIEVED** | NOT_RETRIEVED | No-fault liability from products placed after 2026-12-08 |
 | AIS / spectrum | Ley 11/2022 (LGT) | BOE-A-2022-10757 | CONSUMED (MC-12 LT-022) | Receive-only only; no transmission authorised |
-| NMEA licensing/certification | Private contract (NMEA) | nmea.org pages | RE_VERIFIED | No licence, no manufacturer/product code, no certification |
+| NMEA licensing/certification | Private contract (NMEA) | nmea.org pages | CONSUMED_FROM_PREDECESSOR_EVIDENCE | No licence, no manufacturer/product code, no certification |
 
 ---
 

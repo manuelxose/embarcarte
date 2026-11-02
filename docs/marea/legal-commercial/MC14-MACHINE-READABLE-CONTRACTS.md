@@ -63,12 +63,16 @@ evidence.
 `instruments[]`, `productFamilies[]` with `assessments[]` (14 per family) and
 `summary`; `bundleAssessments[]` with 14 assessments per bundle.
 Assessment fields: `instrumentId`, `status`, `rationale`, `legalSourceIds[]`,
-`requirementIds[]`, `condition`, `evidenceRequired[]`.
+`requirementIds[]`, `condition`, `evidenceRequired[]`. Bundle assessments use
+the reduced schema `instrumentId`, `status`, `rationale`, `condition` and
+inherit `legalSourceIds`, `requirementIds` and `evidenceRequired` from the
+included family assessments; D03 renders them accordingly.
 Statuses: `APPLICABLE`, `CONDITIONALLY_APPLICABLE`,
 `NOT_APPLICABLE_WITH_REASON`, `UNDETERMINED`.
 Rules: `NOT_APPLICABLE_WITH_REASON` requires a rationale naming the legal
 reason; `CONDITIONALLY_APPLICABLE` requires the condition; every family has
-exactly one assessment per instrument.
+exactly one assessment per instrument; every bundle has exactly one assessment
+per instrument.
 
 ### 3.4 `economic-operator-roles.json`
 `roleDefinitions[]` (11 roles) and `scenarios[]` (9 supply models). Fields

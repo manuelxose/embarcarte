@@ -213,7 +213,7 @@ Weather forecast subscription service with licensed data. Editions: WEATHER-STAN
 | CRA | CONDITIONALLY_APPLICABLE | A remote data service alone is generally outside the CRA's 'product with digital elements' scope, but the CRA may apply where the service is integral to a product or the client software is placed on the market. | The CRA consolidated scope analysis concludes that the service or app is in scope. |
 | ROHS | NOT_APPLICABLE_WITH_REASON | WEATHER software/data has no electrical equipment; RoHS applies to the hardware that displays it. | — |
 | WEEE | NOT_APPLICABLE_WITH_REASON | WEEE applies to EEE, not to a subscription service; the hardware falls to be registered separately. | — |
-| BATTERIES | NOT_APPLICABLE_WITH_REASON | WEATHER contains no battery. | — |
+| BATTERIES | NOT_APPLICABLE_WITH_REASON | The WEATHER offering is a software or data service and contains no battery placed on the market; the Batteries Regulation applies to battery-containing hardware, not to the service itself. | — |
 | RCD | NOT_APPLICABLE_WITH_REASON | WEATHER is not a recreational craft or RCD component. | — |
 | MED | NOT_APPLICABLE_WITH_REASON | WEATHER is not shipborne MED equipment and no wheelmark is claimed. | — |
 | PLD | APPLICABLE | The revised PLD covers software and digital services; forecast errors presented as reliable can ground liability. | Disclaimer and limits, Liability assessment |
@@ -234,7 +234,7 @@ Multi-tenant B2B fleet monitoring SaaS. Editions: FLEET-START, FLEET-BUSINESS, F
 | CRA | CONDITIONALLY_APPLICABLE | The CRA addresses products with digital elements; a pure SaaS service is generally outside its scope, but integrated clients or remote-processing features that are part of a product can bring obligations. | The CRA scope analysis concludes FLEET or its client software is in scope. |
 | ROHS | NOT_APPLICABLE_WITH_REASON | FLEET is software and contains no EEE subject to RoHS. | — |
 | WEEE | NOT_APPLICABLE_WITH_REASON | FLEET is not EEE placed on the market. | — |
-| BATTERIES | NOT_APPLICABLE_WITH_REASON | FLEET contains no batteries. | — |
+| BATTERIES | NOT_APPLICABLE_WITH_REASON | The FLEET offering is a software or data service and contains no battery placed on the market; the Batteries Regulation applies to battery-containing hardware, not to the service itself. | — |
 | RCD | NOT_APPLICABLE_WITH_REASON | FLEET is not a recreational craft or RCD component. | — |
 | MED | NOT_APPLICABLE_WITH_REASON | FLEET is not shipborne MED equipment. | — |
 | PLD | APPLICABLE | The revised PLD covers software; a defective fleet service can cause economic and safety-relevant loss. | Liability assessment, B2B contract |
