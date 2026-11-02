@@ -5,11 +5,13 @@
   "date": "2026-11-02",
   "owner": "qa-reviewer",
   "reviewId": "MC-11-REVIEW",
-  "reviewedCommit": "0eceb8663204e6b5d82a137bb0cb50b742e667dc",
+  "reviewedCommit": "a912c4d77918e1d4e04877e097fda75a3fc89ea8",
+  "technicalReverifiedCommit": "0eceb8663204e6b5d82a137bb0cb50b742e667dc",
+  "finalRecordConfirmedOn": "2026-11-02",
   "previousReviewedCommit": "bef2f4b25e06205697bee4de9da908741c726621",
   "verdict": "PARTIAL",
   "internalFeasibilityScope": "PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE",
-  "verdictStatement": "PARTIAL. Full MC-11 cannot be PASS: the authoritative registry requires real supplier quotation evidence, no supplier was contacted and no quotation exists, so MC11_FORMAL_PROCUREMENT_EVIDENCE = BLOCKED_OR_NOT_OBTAINED (external evidence gap, not a finding against the authors; the requirement is not rewritten). Internal hardware feasibility scope: PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE - all 22 items of MC11-BASELINE-AND-GOVERNANCE.md section 10 are evidenced after re-verification at 0eceb86, including item 21 (all BLOCKING/MAJOR findings closed) and item 22 (draft PR #18 verified stacked/unmerged). Findings MC11-F01..F09 are CLOSED_VERIFIED (0 BLOCKING, 0 MAJOR, 0 MINOR open). Post-re-verification record refreshes for Lead-owned metadata are listed in postAuditActions; they do not weaken the technical verdict.",
+  "verdictStatement": "PARTIAL. Full MC-11 cannot be PASS: the authoritative registry requires real supplier quotation evidence, no supplier was contacted and no quotation exists, so MC11_FORMAL_PROCUREMENT_EVIDENCE = BLOCKED_OR_NOT_OBTAINED (external evidence gap, not a finding against the authors; the requirement is not rewritten). Internal hardware feasibility scope: PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE - all 22 items of MC11-BASELINE-AND-GOVERNANCE.md section 10 are evidenced after the technical re-verification at 0eceb86 and the final record confirmation at a912c4d, including item 21 (all BLOCKING/MAJOR findings closed) and item 22 (draft PR #18 verified stacked/unmerged). Findings MC11-F01..F09 are CLOSED_VERIFIED (0 BLOCKING, 0 MAJOR, 0 MINOR open) and post-audit actions PA-01..PA-05 are CLOSED_VERIFIED. The final head a912c4d is a record-refresh-only commit: the diff 0eceb86..a912c4d touches only registry/governance/manifest/D2/D36/D37/review records, with no change to data semantics, prices, evidence classes or restrictions.",
   "findings": [
     {
       "findingId": "MC11-F01",
@@ -128,7 +130,8 @@
       "line": 30,
       "description": "D2 section 1 row 16 records the MC-11 remote ref at 73ab0ac (audit-correction commit), but the current remote head and PR #18 head is 0eceb86 (delivery commit). The row is stale at the re-verified tree.",
       "correction": "Update D2 section 1 row 16 to the current remote head 0eceb8663204e6b5d82a137bb0cb50b742e667dc (or record both: 73ab0ac correction commit, 0eceb86 delivery commit = current head), and keep row 17's PR facts aligned.",
-      "status": "OPEN",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
       "owner": "lead"
     },
     {
@@ -138,7 +141,8 @@
       "line": null,
       "description": "governance-status.milestoneState still has mc11Verdict = PENDING_INDEPENDENT_REVIEW and internalFeasibilityScope = PENDING_INDEPENDENT_REVIEW at 0eceb86, although the re-verification has now been issued.",
       "correction": "After this re-verification, set milestoneState.mc11Verdict = PARTIAL and internalFeasibilityScope = PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE (formalProcurementEvidence remains BLOCKED_OR_NOT_OBTAINED and every numeric invariant stays 0/false); record the re-verified commit 0eceb86.",
-      "status": "OPEN",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
       "owner": "lead"
     },
     {
@@ -148,7 +152,8 @@
       "line": null,
       "description": "manifest.reviewSummary still records reviewedCommit = bef2f4b, findings 9, major 1, minor 4, informational 4, with no closed/open status after re-verification.",
       "correction": "Update reviewSummary.reviewedCommit to 0eceb8663204e6b5d82a137bb0cb50b742e667dc and record the re-verified statuses (9 findings, 0 BLOCKING, 0 MAJOR open, 0 MINOR open; 9 CLOSED_VERIFIED). Keep manifest.files[review-findings.json].recordCount = 9.",
-      "status": "OPEN",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
       "owner": "lead"
     },
     {
@@ -158,7 +163,8 @@
       "line": null,
       "description": "Registry row 11 still says 'independent audit PARTIAL with 1 MAJOR + 4 MINOR findings corrected pending re-verification', which is stale after this re-verification.",
       "correction": "Update row 11 to record: internal feasibility scope PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE, re-verified at 0eceb86, all nine findings CLOSED_VERIFIED, full milestone PARTIAL with formal supplier quotations BLOCKED_OR_NOT_OBTAINED; keep the real-quotes requirement unchanged.",
-      "status": "OPEN",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
       "owner": "lead"
     },
     {
@@ -168,10 +174,26 @@
       "line": 19,
       "description": "D37 section 1 asserted MC11_INTERNAL_FEASIBILITY_SCOPE = PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE before the independent re-verification that D-048 itself requires; D37 section 5/9 and D36/D37 references still say 're-verification pending' and '1 MAJOR, 4 MINOR'. The assertion is now substantiated by this re-verification, but the records remain stale.",
       "correction": "Refresh D36/D37/registry/decision records after re-verification: state that the independent re-verification was performed at 0eceb86, that all findings are CLOSED_VERIFIED, and that the internal-scope PASS is now verified (not pending). Do not change the full-milestone PARTIAL verdict.",
-      "status": "OPEN",
+      "status": "CLOSED_VERIFIED",
+      "verifiedByAuditor": true,
       "owner": "lead"
     }
   ],
+  "finalConfirmation": {
+    "confirmedCommit": "a912c4d77918e1d4e04877e097fda75a3fc89ea8",
+    "technicalReverifiedCommit": "0eceb8663204e6b5d82a137bb0cb50b742e667dc",
+    "confirmedOn": "2026-11-02",
+    "result": "PA-01..PA-05 CLOSED_VERIFIED; verdict unchanged: full MC-11 PARTIAL, internal feasibility scope PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE; 9/9 findings CLOSED_VERIFIED, 0 open.",
+    "scopeCheck": "git diff --stat 0eceb86..a912c4d = 8 files, all records: MASTER-PROMPT-REGISTRY.md, MC-11-DELIVERY.md, MC11-BASELINE-AND-GOVERNANCE.md, MC11-EXECUTIVE-REPORT.md, data/governance-status.json, data/manifest.json, data/review-findings.json, review/MC-11-REVIEW.md. No hardware data file changed (component-register, price-observations, BOMs, cost-scenarios, conformity, qualification, compatibility, nmea, risks, decisions and evidence-index are identical to the re-verified 0eceb86).",
+    "perAction": {
+      "PA-01": "D2 section 1 row 30 now records audit-correction 73ab0ac and delivery/re-verified 0eceb86; row 31 keeps PR #18 facts. Both SHAs recorded; base 6713178 unchanged.",
+      "PA-02": "governance-status.milestoneState now: mc11Verdict PARTIAL; internalFeasibilityScope PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE; formalProcurementEvidence BLOCKED_OR_NOT_OBTAINED; independentReview PARTIAL; reverifiedCommit 0eceb86; reverifiedOn 2026-11-02; openBlockingFindings/openMajorFindings/openMinorFindings = 0/0/0. Diff shows only these milestoneState fields changed; all 28 invariants and every numeric zero untouched.",
+      "PA-03": "manifest.reviewSummary now: reviewedCommit 0eceb86, verdict PARTIAL, internalFeasibilityScope PASS..., findings 9, blocking 0, major 1 (historical total), minor 4, informational 4, closedVerified 9, open 0, plus top-level milestoneVerdict/internalFeasibilityScope/formalProcurementEvidence; review-findings recordCount remains 9 = actual findings.",
+      "PA-04": "Registry row 11 now records the re-verification at 0eceb86: internal feasibility scope PASS_INTERNAL_HARDWARE_FEASIBILITY_SCOPE, 9/9 findings CLOSED_VERIFIED (0 open), full milestone PARTIAL, formal quotations BLOCKED_OR_NOT_OBTAINED; the 'real quotes only' requirement is unchanged.",
+      "PA-05": "D37 section 1 carries the re-verified verdict block (PARTIAL + internal PASS + 9/9 closed); section 4 records e2e 15/15 as Lead-run only; section 5 records the re-verification at 0eceb86, the withdrawn F03 (COST-16 inside 437.13) and the auditor's re-run gates; section 9 INDEPENDENT_REVIEW updated. D36 section 1 and section 10 record the re-issued verdict, withdrawn F03 and PA refreshes."
+    },
+    "residualNote": "D2 line 30 and registry row 11 phrase 0eceb86 as 'current head'/'branch head'; at the final head a912c4d the accurate statement is that 0eceb86 is the re-verified delivery head and a912c4d is the record-refresh-only commit. This is a non-blocking wording note (it cannot invalidate the verdict); a future docs touch may phrase the head dynamically as 'current head tracked by PR #18'."
+  },
   "sourceVerification": [
     {
       "url": "https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act",
@@ -353,6 +375,12 @@
       "scope": "all data files plus review-findings recordCount",
       "recomputed": "manifest.files[] recordCount vs actual array lengths; deliverables count",
       "result": "validator S03 passes (54/54); review-findings recordCount = 9 = actual findings; governance-status restriction count 10; deliverables D35/D36/D37 = COMPLETE; decisions.json D-041..D-048 (8)"
+    },
+    {
+      "check": "Final record-refresh scope check (a912c4d vs 0eceb86)",
+      "scope": "all files changed by the final head",
+      "recomputed": "git diff --stat/--name-only 0eceb86..a912c4d; presence of technical data files",
+      "result": "8 files changed, all records (registry, D37, D2, D36, governance-status, manifest, review-findings, review MD); 0 hardware data files changed - no data semantics, price, evidence class, cost, conformity or restriction change. test:hardware 54/54, test:hardware:unit 59/59, format:check PASS, git diff --check clean at a912c4d."
     }
   ],
   "notVerified": [
@@ -360,7 +388,11 @@
     "External sources were fetched in the first audit pass only; they were not re-fetched during this correction round. The two inaccessible sources remain inaccessible: TI TCAN1042 datasheet PDF and the RS Components TCAN1042 page (EVD-MC11-131 and EVD-MC11-109).",
     "The 21 evidence records the authors themselves mark INACCESSIBLE/partial remain unverified, and no datasheet is retrieved (0/41); disclosed in D11 sections 0.2-0.3 and D23 section 10.",
     "Historical command records in D2 section 1 (as true at programme entry) were not re-executed; only the present-state facts (ancestry, remote MC-11 head 0eceb86, PR #18, clean tree, tool versions) were re-verified.",
-    "Post-re-verification metadata refreshes PA-01..PA-05 are Lead-owned files outside the auditor write scope and remain OPEN at the re-verified tree; they must be applied before milestone closure and do not change the technical evidence.",
+    "Post-audit record refreshes PA-01..PA-05 are CLOSED_VERIFIED at a912c4d (see finalConfirmation); the final head is a record-refresh-only commit and no technical data changed since the re-verified 0eceb86.",
     "Full MC-11 remains PARTIAL and can never be PASS without genuine supplier quotation evidence; no supplier contact, RFQ or quotation exists (0/0/0)."
+  ],
+  "residualNotes": [
+    "D2 line 30 and MASTER-PROMPT-REGISTRY row 11 describe 0eceb86 as 'current head'/'branch head'; the final head is a912c4d (record-refresh-only commit, no technical change). Non-blocking wording note; at a future docs touch phrase the head dynamically as 'current head tracked by PR #18' and keep 0eceb86 labelled as the re-verified delivery head.",
+    "External sources were fetched only in the first audit pass; no re-fetch was performed in the correction or final-record rounds. The two inaccessible sources (TI datasheet PDF, RS Components page) and the authors' 21 disclosed-inaccessible records remain as recorded; no claim is upgraded from them."
   ]
 }
