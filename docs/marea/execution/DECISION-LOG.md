@@ -1428,8 +1428,10 @@ EUR 0.8916 per USD).
 
 **Decision.** Record the observed rate with its source and use it for MC-12's new
 USD-denominated recurring-cost conversions. Do **not** retroactively re-convert the
-inherited MC-11 BOM lines: they keep their recorded conversion so no subtotal mixes
-two bases. Record this as `ASM-MC12-021` and require MC-13 to refresh the BOM
+inherited MC-11 BOM lines: they keep their recorded conversion so no individual cost
+register mixes two bases. Bundle aggregates sum hardware components (inherited MC-11
+basis) and subscription components (ECB basis), and each bundle declares
+`aggregateConversionBases` so the two bases are disclosed rather than mixed silently. Record this as `ASM-MC12-021` and require MC-13 to refresh the BOM
 conversion in a single, disclosed pass.
 
 **Rationale.** Re-basing half a BOM would silently change the inherited cost lines

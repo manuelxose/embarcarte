@@ -74,7 +74,12 @@
           "status": "UNKNOWN",
           "note": "HUB certification is a fixed programme cost and is not part of unit contribution."
         }
-      ]
+      ],
+      "aggregateConversionBases": {
+        "hardware": "MC11_INHERITED_FX_ASSUMPTION_EUR_0.925925926_PER_USD (not rebased; ASM-MC12-015 / D-051)",
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
     },
     {
       "id": "BE-CRUISE",
@@ -196,7 +201,12 @@
           "status": "UNKNOWN",
           "note": "Fixed programme cost; excluded from unit contribution."
         }
-      ]
+      ],
+      "aggregateConversionBases": {
+        "hardware": "MC11_INHERITED_FX_ASSUMPTION_EUR_0.925925926_PER_USD (not rebased; ASM-MC12-015 / D-051)",
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
     },
     {
       "id": "BE-PROTECT",
@@ -266,6 +276,15 @@
             "SENSE-POWER",
             "SENSE-BILGE"
           ]
+        },
+        {
+          "lineId": "PR-07",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
         }
       ],
       "conditionalComponents": [
@@ -286,7 +305,12 @@
           "status": "UNKNOWN",
           "note": "WATCH/SENSE certification is a fixed programme cost and is not part of unit contribution."
         }
-      ]
+      ],
+      "aggregateConversionBases": {
+        "hardware": "MC11_INHERITED_FX_ASSUMPTION_EUR_0.925925926_PER_USD (not rebased; ASM-MC12-015 / D-051)",
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
     },
     {
       "id": "BE-SAIL",
@@ -383,7 +407,12 @@
           "quantity": 1,
           "expandsTo": null
         }
-      ]
+      ],
+      "aggregateConversionBases": {
+        "hardware": "MC11_INHERITED_FX_ASSUMPTION_EUR_0.925925926_PER_USD (not rebased; ASM-MC12-015 / D-051)",
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
     },
     {
       "id": "BE-COMPLETE",
@@ -546,7 +575,12 @@
           "quantity": 1,
           "expandsTo": null
         }
-      ]
+      ],
+      "aggregateConversionBases": {
+        "hardware": "MC11_INHERITED_FX_ASSUMPTION_EUR_0.925925926_PER_USD (not rebased; ASM-MC12-015 / D-051)",
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
     },
     {
       "id": "BE-FLEET",
@@ -599,6 +633,24 @@
           "requiredForOutcome": true,
           "quantity": 1,
           "expandsTo": null
+        },
+        {
+          "lineId": "FP-04",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "FP-11",
+          "familyId": "FLEET",
+          "editionId": null,
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
         }
       ],
       "conditionalComponents": [
@@ -610,8 +662,22 @@
           "requiredForOutcome": false,
           "quantity": 1,
           "expandsTo": null
+        },
+        {
+          "lineId": "FP-10",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
         }
-      ]
+      ],
+      "aggregateConversionBases": {
+        "hardware": null,
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
     }
   ]
 }

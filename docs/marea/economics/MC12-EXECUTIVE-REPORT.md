@@ -58,7 +58,7 @@ derecho de licencia queda concedido.
 14. **D14 — Handoff a MC-13:** entradas, incógnitas y rangos, sin ejecutar MC-13.
 15. **D15 — Datos legibles por máquina:** 16 ficheros JSON.
 16. **D16 — Validador y pruebas:** `check-marea-unit-economics.mjs` (49 checks) y
-    suite adversaria (59 tests), integrados en `npm`.
+    suite adversaria (64 tests), integrados en `npm`.
 17. **D17 — Auditoría independiente:** en curso; se registra en `review/MC-12-REVIEW.md`.
 18. **D18 — este informe.**
 19. **D19 — Registro de entrega.**
@@ -168,7 +168,7 @@ Comandos ejecutados y resultado (salida real):
 | Comando | Resultado |
 |---|---|
 | `npm run test:economics` | **exit 0** — 49/49 checks |
-| `npm run test:economics:unit` | **exit 0** — 59/59 tests |
+| `npm run test:economics:unit` | **exit 0** — 64/64 tests |
 | `npm run test:hardware` / `:unit` | exit 0 — 54/54 / 59/59 |
 | `npm run test:products` / `:unit` | exit 0 — 52/52 / 106/106 |
 | `npm run test:bundles` / `:unit` | exit 0 — 35/35 / 60/60 |
@@ -192,11 +192,19 @@ esos comandos quedan `BLOCKED_BY_ENVIRONMENT`, no `FAIL`.
 
 ## G. Auditoría independiente
 
-**Estado: en curso.** El auditor es un agente distinto del autor y revisa el commit
-congelado, no el resumen. Sus hallazgos (severidad, corrección, re-verificación) se
-registran en `docs/marea/economics/review/MC-12-REVIEW.md` y en
-`data/review-findings.json`. Este informe se actualizará con el veredicto final.
-Ningún hallazgo se cierra por prosa: requiere re-ejecución del gate.
+**Estado: completada.** El auditor es un agente distinto del autor y revisó el commit
+congelado `fe97062`, no el resumen. Emitió 16 hallazgos (2 MAJOR, 7 MINOR,
+7 INFORMATIONAL; 0 BLOCKING) y dictaminó `PARTIAL` porque dos MAJOR afectaban a la
+consistencia del estado y a la capacidad real de fallo del gate. Las correcciones se
+commitearon en `8f819c1`; el auditor las re-verificó de forma independiente
+(recomputación propia de 50 registros, 90 escenarios MC-11, 70 sensibilidades,
+4 casos de estrés, 6 bundles y 9 puntuaciones: 0 discrepancias) y emitió
+`PASS_INTERNAL_ECONOMICS_SCOPE`. Los hallazgos MAJOR/MINOR originales quedaron
+`CLOSED_VERIFIED`; los elementos de documentación y registro restantes se cierran en
+el commit de refresco de registros. El veredicto, la evidencia y la re-verificación
+constan en `review/MC-12-REVIEW.md` y `data/review-findings.json`. Ningún hallazgo se
+cerró por prosa: cada cierre requiere la re-ejecución del gate y la comprobación del
+auditor.
 
 ## H. Git y PR
 
@@ -244,7 +252,7 @@ CUSTOMER_WTP_VALIDATED = false
 PRICE_APPROVED = NONE
 LICENSING_RIGHTS_GRANTED = false
 COMMERCIAL_AVAILABILITY = NOT_FOR_SALE
-INDEPENDENT_REVIEW = PENDING
+INDEPENDENT_REVIEW = PASS_INTERNAL_ECONOMICS_SCOPE
 PR_CREATED = true
 MERGED = false
 DEPLOYED = false

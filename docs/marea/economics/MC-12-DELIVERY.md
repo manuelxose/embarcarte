@@ -94,7 +94,7 @@ vessel-year conditional.
 | Command | Result |
 |---|---|
 | `npm run test:economics` | exit 0 — 49/49 checks |
-| `npm run test:economics:unit` | exit 0 — 59/59 tests |
+| `npm run test:economics:unit` | exit 0 — 64/64 tests |
 | `npm run test:hardware` / `:unit` | exit 0 — 54/54 / 59/59 |
 | `npm run test:products` / `:unit` | exit 0 — 52/52 / 106/106 |
 | `npm run test:bundles` / `:unit` | exit 0 — 35/35 / 60/60 |
@@ -121,10 +121,15 @@ implied.
 ## 6. Independent audit
 
 The independent auditor (a different agent from the author) reviewed the frozen
-commit, recomputed arithmetic from source records and recorded findings in
-`review/MC-12-REVIEW.md` and `data/review-findings.json`. Findings are closed only
-after the auditor re-runs the relevant gate against the corrected commit. The final
-verdict is recorded there and in the executive report.
+commit `fe97062`, found 16 issues (0 BLOCKING, 2 MAJOR, 7 MINOR, 7 INFORMATIONAL)
+and withheld internal-scope sign-off. The corrections were committed at `8f819c1`
+and independently re-verified: 50/50 unit-economics records, 90/90 MC-11 scenarios,
+70/70 sensitivities, 4/4 stress cases, 6/6 bundles and 9/9 decision scores
+recomputed with 0 mismatches, and the new negative controls each failed exactly the
+intended check. Verdict: `PASS_INTERNAL_ECONOMICS_SCOPE`; the original MAJOR/MINOR
+findings are `CLOSED_VERIFIED` and the remaining documentation/record items are
+closed in the record-refresh commit. `review/MC-12-REVIEW.md` and
+`data/review-findings.json` hold the evidence.
 
 ## 7. Prohibited actions asserted absent
 
@@ -161,7 +166,7 @@ CUSTOMER_WTP_VALIDATED = false
 PRICE_APPROVED = NONE
 LICENSING_RIGHTS_GRANTED = false
 COMMERCIAL_AVAILABILITY = NOT_FOR_SALE
-INDEPENDENT_REVIEW = PENDING
+INDEPENDENT_REVIEW = PASS_INTERNAL_ECONOMICS_SCOPE
 PR_CREATED = true
 MERGED = false
 DEPLOYED = false

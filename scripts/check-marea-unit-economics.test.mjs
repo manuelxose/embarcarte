@@ -637,7 +637,7 @@ test('R-01 rejects one connected family without any recurring declaration while 
   );
 });
 
-test('R-01 rejects WATCH without a cellular connectivity input', () => {
+test('R-02 rejects WATCH without a cellular connectivity input', () => {
   expectFailure(
     'R-02',
     (data) => {

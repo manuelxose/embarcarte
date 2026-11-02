@@ -206,6 +206,12 @@ Each family scenario must expose `knownSubtotalEur`, `recomputedSubtotalEur`,
 }
 ```
 
+A record may additionally declare `recurringCostExposure[]` with
+`{dependency, driver, status, note}` entries. It is the explicit recurring-cost
+declaration for a connected family that has no included recurring cost line; `status`
+`UNKNOWN` or `NOT_APPLICABLE` satisfies the R-01 declaration rule and never implies a
+zero cost.
+
 Rules: when `unknownCostCategories` contains a `MATERIAL` entry,
 `contributionStatus` must be `INCOMPLETE_UNKNOWN_COSTS` and `contributionPct`
 must be `null`. `headroomEur` is the maximum additional unknown cost that keeps
@@ -219,7 +225,16 @@ One record per bundle (`START`, `CRUISE`, `SAIL`, `PROTECT`, `COMPLETE`, `FLEET`
 `unknownCostCategories[]`, `contributionBeforeUnknownsEur`,
 `contributionStatus`, `contributionPct`, `classification`, `notes`.
 
-Bundle component IDs must match `docs/marea/bundles/bundle-definitions.json`;
+Bundle records also declare `componentInclusions[]` (the authoritative `lineId`,
+`inclusion`, `quantity` and `expandsTo` copied from
+`bundle-definitions.json`), `conditionalComponents[]` (components whose inclusion is
+`CONDITIONAL` and which therefore cannot be priced as included), `fixedUnknownCosts[]`
+(fixed one-off unknowns such as certification, excluded from unit contribution) and
+`aggregateConversionBases` (the conversion basis of each component class, so a bundle
+aggregate never hides a mixed basis). Enumerations: `componentInclusions` covers every
+`INCLUDED` line plus `QUOTATION_REQUIRED` lines with `requiredForOutcome: true`;
+`conditionalComponents` covers `CONDITIONAL` lines only. Bundle component IDs must
+match `docs/marea/bundles/bundle-definitions.json`;
 bundle `FLEET` must have no default hardware and no hardware cost line.
 
 ### 4.9 `channel-economics.json`
