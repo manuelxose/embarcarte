@@ -1,0 +1,299 @@
+{
+  "contractId": "MAREA-MC12-DECISION-MATRIX",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-12",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "currency": "EUR",
+  "note": "Economic-analysis classification only. It is not a commercial lifecycle approval and it cannot override a legal, safety or IP gate. Weights were pre-registered in assumptions.json before scoring.",
+  "dimensions": [
+    {
+      "id": "costEvidence",
+      "weight": 25
+    },
+    {
+      "id": "recurringCertainty",
+      "weight": 15
+    },
+    {
+      "id": "licensingReadiness",
+      "weight": 20
+    },
+    {
+      "id": "technicalReadiness",
+      "weight": 10
+    },
+    {
+      "id": "customerEvidence",
+      "weight": 15
+    },
+    {
+      "id": "regulatoryReadiness",
+      "weight": 10
+    },
+    {
+      "id": "contributionConfidence",
+      "weight": 5
+    }
+  ],
+  "families": [
+    {
+      "familyId": "NAV",
+      "scores": {
+        "costEvidence": 3,
+        "recurringCertainty": 2,
+        "licensingReadiness": 0,
+        "technicalReadiness": 3,
+        "customerEvidence": 0,
+        "regulatoryReadiness": 2,
+        "contributionConfidence": 2
+      },
+      "weightedScore": 1.65,
+      "classification": "LICENSING_BLOCKED",
+      "rationale": "Software with the best conceptual contribution, but the core paid feature is a chart right that is NOT_GRANTED. No amount of cost modelling can clear that gate.",
+      "blockerIds": [
+        "BLK-LIC-01",
+        "BLK-LIC-08",
+        "BLK-LIC-09",
+        "BLK-COMM-01"
+      ]
+    },
+    {
+      "familyId": "HUB",
+      "scores": {
+        "costEvidence": 2,
+        "recurringCertainty": 2,
+        "licensingReadiness": 1,
+        "technicalReadiness": 2,
+        "customerEvidence": 0,
+        "regulatoryReadiness": 0,
+        "contributionConfidence": 1
+      },
+      "weightedScore": 1.25,
+      "classification": "DEFER_RECOMMENDED",
+      "rationale": "Modelled variable cost is within a few euros of the ex-VAT price hypothesis at 100 units and turns negative under a 20% cost increase or any distributor margin. Not viable at the current hypothesis and evidence level.",
+      "blockerIds": [
+        "BLK-COST-01",
+        "BLK-COST-02",
+        "BLK-LIC-04",
+        "BLK-REG-01",
+        "BLK-COMM-01"
+      ]
+    },
+    {
+      "familyId": "AIS",
+      "scores": {
+        "costEvidence": 2,
+        "recurringCertainty": 2,
+        "licensingReadiness": 1,
+        "technicalReadiness": 1,
+        "customerEvidence": 0,
+        "regulatoryReadiness": 0,
+        "contributionConfidence": 0
+      },
+      "weightedScore": 1.1,
+      "classification": "DEFER_RECOMMENDED",
+      "rationale": "Negative contribution at every modelled volume, including under the most favourable modelled case. Needs a materially higher price or a lower receiver cost, and the NMEA/radio conformity route is unresolved.",
+      "blockerIds": [
+        "BLK-COST-01",
+        "BLK-COST-02",
+        "BLK-LIC-04",
+        "BLK-REG-01",
+        "BLK-COMM-01",
+        "BLK-AIS-01"
+      ]
+    },
+    {
+      "familyId": "PILOT",
+      "scores": {
+        "costEvidence": 0,
+        "recurringCertainty": 1,
+        "licensingReadiness": 1,
+        "technicalReadiness": 0,
+        "customerEvidence": 0,
+        "regulatoryReadiness": 0,
+        "contributionConfidence": 0
+      },
+      "weightedScore": 0.35,
+      "classification": "SAFETY_BLOCKED",
+      "rationale": "No cost exists, no fixed price exists, and the safety gate is BLOCKED. Only a survey-based quotation model may be described; it is not a purchasable product.",
+      "blockerIds": [
+        "BLK-SAFE-01",
+        "BLK-REG-01",
+        "BLK-COMM-01"
+      ]
+    },
+    {
+      "familyId": "SENSE",
+      "scores": {
+        "costEvidence": 2,
+        "recurringCertainty": 2,
+        "licensingReadiness": 1,
+        "technicalReadiness": 2,
+        "customerEvidence": 0,
+        "regulatoryReadiness": 0,
+        "contributionConfidence": 1
+      },
+      "weightedScore": 1.25,
+      "classification": "DEFER_RECOMMENDED",
+      "rationale": "At the symbolic EUR 99 entry hypothesis the contribution is negative at 1-100 units and only turns positive at 500+ units. The module has no product price; the current entry hypothesis is below its modelled variable cost.",
+      "blockerIds": [
+        "BLK-COST-01",
+        "BLK-COST-02",
+        "BLK-LIC-04",
+        "BLK-REG-01",
+        "BLK-COMM-01"
+      ]
+    },
+    {
+      "familyId": "WATCH",
+      "scores": {
+        "costEvidence": 2,
+        "recurringCertainty": 1,
+        "licensingReadiness": 1,
+        "technicalReadiness": 2,
+        "customerEvidence": 0,
+        "regulatoryReadiness": 0,
+        "contributionConfidence": 2
+      },
+      "weightedScore": 1.15,
+      "classification": "COST_MODEL_INCOMPLETE",
+      "rationale": "Hardware plus a monitoring subscription can be positive under the modelled assumptions, but connectivity, cloud and alert-delivery costs have no contract and are material. The answer is incomplete, not favourable.",
+      "blockerIds": [
+        "BLK-LIC-05",
+        "BLK-LIC-06",
+        "BLK-COST-01",
+        "BLK-REG-01",
+        "BLK-COMM-01"
+      ]
+    },
+    {
+      "familyId": "DISPLAY",
+      "scores": {
+        "costEvidence": 2,
+        "recurringCertainty": 2,
+        "licensingReadiness": 2,
+        "technicalReadiness": 1,
+        "customerEvidence": 0,
+        "regulatoryReadiness": 0,
+        "contributionConfidence": 3
+      },
+      "weightedScore": 1.45,
+      "classification": "CONDITIONAL_ECONOMIC_CASE",
+      "rationale": "The only hardware family whose conditional contribution stays positive under a 20% cost increase and a 35% distributor margin. It remains conditional: no supplier quote, no certification cost and no customer evidence.",
+      "blockerIds": [
+        "BLK-COST-01",
+        "BLK-COST-02",
+        "BLK-REG-01",
+        "BLK-COMM-01"
+      ]
+    },
+    {
+      "familyId": "WEATHER",
+      "scores": {
+        "costEvidence": 2,
+        "recurringCertainty": 2,
+        "licensingReadiness": 0,
+        "technicalReadiness": 2,
+        "customerEvidence": 0,
+        "regulatoryReadiness": 2,
+        "contributionConfidence": 2
+      },
+      "weightedScore": 1.3,
+      "classification": "LICENSING_BLOCKED",
+      "rationale": "Cheapest data dependency per published tariffs, but a commercial re-display right is not granted and no provider contract exists. The low price point also leaves little room for a licence plus provider usage.",
+      "blockerIds": [
+        "BLK-LIC-03",
+        "BLK-LIC-08",
+        "BLK-LIC-09",
+        "BLK-COMM-01"
+      ]
+    },
+    {
+      "familyId": "FLEET",
+      "scores": {
+        "costEvidence": 2,
+        "recurringCertainty": 2,
+        "licensingReadiness": 2,
+        "technicalReadiness": 1,
+        "customerEvidence": 0,
+        "regulatoryReadiness": 1,
+        "contributionConfidence": 2
+      },
+      "weightedScore": 1.5,
+      "classification": "COST_MODEL_INCOMPLETE",
+      "rationale": "Hardware-free software with a large conditional headroom per vessel-month, but no cloud contract, no support model, no DPA and no customer evidence. Cloud and tenant-isolation costs are modelled tariffs only.",
+      "blockerIds": [
+        "BLK-LIC-06",
+        "BLK-DATA-01",
+        "BLK-COMM-01"
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "bundleId": "START",
+      "classification": "LICENSING_BLOCKED",
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "blockerIds": [
+        "BLK-LIC-01",
+        "BLK-COMM-01"
+      ]
+    },
+    {
+      "bundleId": "CRUISE",
+      "classification": "LICENSING_BLOCKED",
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "blockerIds": [
+        "BLK-LIC-01",
+        "BLK-COMM-01"
+      ]
+    },
+    {
+      "bundleId": "PROTECT",
+      "classification": "DEFER_RECOMMENDED",
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "blockerIds": [
+        "BLK-COST-01",
+        "BLK-COMM-01"
+      ]
+    },
+    {
+      "bundleId": "SAIL",
+      "classification": "SAFETY_BLOCKED",
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "blockerIds": [
+        "BLK-SAFE-01"
+      ]
+    },
+    {
+      "bundleId": "COMPLETE",
+      "classification": "SAFETY_BLOCKED",
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "blockerIds": [
+        "BLK-SAFE-01"
+      ]
+    },
+    {
+      "bundleId": "FLEET",
+      "classification": "COST_MODEL_INCOMPLETE",
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "blockerIds": [
+        "BLK-COST-01",
+        "BLK-COMM-01"
+      ]
+    }
+  ],
+  "priorityOrder": [
+    "NAV",
+    "FLEET",
+    "DISPLAY",
+    "WEATHER",
+    "HUB",
+    "SENSE",
+    "WATCH",
+    "AIS",
+    "PILOT"
+  ],
+  "priorityRationale": "Software-first where a route to rights exists (NAV, FLEET, WEATHER), then DISPLAY as the only hardware configuration with a positive conditional case; AIS, SENSE and HUB are deferred at their current hypotheses; PILOT remains safety-blocked."
+}

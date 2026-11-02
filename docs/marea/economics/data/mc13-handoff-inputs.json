@@ -1,0 +1,171 @@
+{
+  "contractId": "MAREA-MC12-MC13-HANDOFF",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-12",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "currency": "EUR",
+  "status": "READY_FOR_MC13_WITH_NAMED_GAPS",
+  "mc13Started": false,
+  "note": "Inputs only. MC-12 produces no 12/36/60-month forecast, no break-even claim and no approved price.",
+  "oneTimeInvestments": [
+    {
+      "id": "INV-01",
+      "item": "Tooling and NRE per family",
+      "status": "UNKNOWN",
+      "amountEur": null,
+      "basis": "MC-11 ASM-008 envelope only (HUB 12,000; WATCH 8,000; SENSE 3,500; DISPLAY 9,000; AIS 5,000) used for amortisation sensitivity, never a quote."
+    },
+    {
+      "id": "INV-02",
+      "item": "Certification and conformity programme (EMC/RED/environmental/CRA)",
+      "status": "UNKNOWN",
+      "amountEur": null,
+      "basis": "No laboratory contact; COST-17 unknown in all 90 MC-11 scenarios."
+    },
+    {
+      "id": "INV-03",
+      "item": "Hardware, firmware and mechanical engineering NRE",
+      "status": "UNKNOWN",
+      "amountEur": null,
+      "basis": "No schedule, rate or supplier."
+    },
+    {
+      "id": "INV-04",
+      "item": "Cloud/connectivity integration and device provisioning infrastructure",
+      "status": "UNKNOWN",
+      "amountEur": null,
+      "basis": "Not designed."
+    },
+    {
+      "id": "INV-05",
+      "item": "Legal, trademark and IP clearance",
+      "status": "UNKNOWN",
+      "amountEur": null,
+      "basis": "Inherited NOT_GRANTED / NOT_CLEARED."
+    },
+    {
+      "id": "INV-06",
+      "item": "First-article and certification sample material",
+      "status": "UNKNOWN",
+      "amountEur": null,
+      "basis": "Not planned or authorised."
+    }
+  ],
+  "recurringCosts": [
+    {
+      "id": "REC-01",
+      "item": "Cloud hosting, telemetry ingestion, storage and retention",
+      "driver": "PER_DEVICE_MONTH",
+      "amountEur": 0.155,
+      "status": "MODELLED_TARIFF",
+      "source": "recurring-cost-inputs.json"
+    },
+    {
+      "id": "REC-02",
+      "item": "Cellular IoT connectivity",
+      "driver": "PER_DEVICE_MONTH",
+      "amountEur": 0.05,
+      "status": "MODELLED_TARIFF",
+      "source": "recurring-cost-inputs.json"
+    },
+    {
+      "id": "REC-03",
+      "item": "Chart/weather data licence",
+      "driver": "PER_SUBSCRIPTION_MONTH",
+      "amountEur": null,
+      "status": "UNKNOWN_LICENSING_BLOCKED",
+      "source": "licensing-rights.json"
+    },
+    {
+      "id": "REC-04",
+      "item": "Firmware and security maintenance for the CRA support period",
+      "driver": "ANNUAL_FIXED",
+      "amountEur": null,
+      "status": "UNKNOWN",
+      "source": "legal-tax-inputs.json#cra"
+    },
+    {
+      "id": "REC-05",
+      "item": "Customer and installer support",
+      "driver": "PER_ACCOUNT_YEAR",
+      "amountEur": 6,
+      "status": "ENGINEERING_ASSUMPTION",
+      "source": "assumptions.json"
+    },
+    {
+      "id": "REC-06",
+      "item": "Payment processing",
+      "driver": "PER_TRANSACTION",
+      "amountEur": 0.25,
+      "status": "PUBLISHED_TARIFF",
+      "source": "channel-economics.json"
+    },
+    {
+      "id": "REC-07",
+      "item": "Warranty and RMA reserve",
+      "driver": "PER_UNIT",
+      "amountEur": null,
+      "status": "ASSUMPTION_INSIDE_MC11",
+      "source": "hardware-cost-reconciliation.json"
+    },
+    {
+      "id": "REC-08",
+      "item": "Product liability insurance",
+      "driver": "ANNUAL_FIXED",
+      "amountEur": null,
+      "status": "UNKNOWN",
+      "source": "legal-tax-inputs.json#insurance"
+    }
+  ],
+  "customerAcquisition": {
+    "status": "UNKNOWN",
+    "cacEur": null,
+    "churnPct": null,
+    "renewalPct": null,
+    "note": "CUSTOMER_EVIDENCE = NONE. MC-13 must not invent a funnel."
+  },
+  "workingCapital": {
+    "status": "UNKNOWN",
+    "inventoryUnits": [
+      1,
+      10,
+      100,
+      500,
+      1000
+    ],
+    "paymentTerms": "UNKNOWN",
+    "note": "No MOQ, payment term, price-hold or FX hedge exists."
+  },
+  "uncertaintyRanges": {
+    "variableCostPct": [
+      80,
+      140
+    ],
+    "dataLicenceEurYear": [
+      null,
+      null
+    ],
+    "connectivityEurDeviceMonth": [
+      0.2,
+      0.8
+    ],
+    "cloudMultiplier": [
+      0.5,
+      2
+    ],
+    "note": "Ranges are analytical envelopes, not forecasts."
+  },
+  "modelConfidence": "LOW",
+  "requiredExternalEvidence": [
+    "chart redistribution licence",
+    "weather data licence",
+    "NMEA 0183/2000 licence and certification",
+    "cellular IoT contract or formal quotation",
+    "cloud agreement and DPA",
+    "supplier quotations and MOQ",
+    "certification quotations",
+    "product liability quotation",
+    "customer interviews and pricing responses"
+  ]
+}
