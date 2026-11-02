@@ -1552,3 +1552,73 @@ no merge, no deployment.
 **Evidence.** `docs/marea/financial/review/MC-13-REVIEW.md`; `data/review-findings.json`; `MC-13-DELIVERY.md`; `MC13-FINANCIAL-DATA-CONTRACT.md`; `scripts/check-marea-financial-model.mjs`; `MASTER-PROMPT-REGISTRY.md` row 13.
 
 **Status effect.** No approval; no merge; no deployment; no MC-14 start.
+
+## D-058 - 2026-11-02 - MC-14 builds internal legal/commercial governance and consumes the MC-13 handoff without altering it
+
+**Context.** MC-13 handed over ten financial dependencies with external commercial evidence BLOCKED_OR_NOT_OBTAINED, and MC-02/MC-11/MC-12 left 134 inherited legal, data, hardware, sourcing, commercial and financial blockers. MC-14 must turn the legal landscape into enforceable internal rules without fabricating clearance or changing predecessor calculations.
+
+**Decision.** MC-14 creates the docs/marea/legal-commercial/ package (D01-D23) with a canonical 48-source legal register, 51 obligations, 9x14 product and 6x14 bundle applicability assessments, 95 risks, a 134-record inherited-blocker map, 17 licensing rights, 13 liability scenarios, 42 bilingual claims, 30 prohibited claim categories, 13 release gates and 24 required documents. The MC-13 handoff dependencies are consumed exactly as handed over: the compliance envelope stays illustrative, insurance premium stays UNKNOWN, PILOT liability stays NOT_QUANTIFIABLE, the 3% returns allowance stays illustrative, CRA cost stays UNKNOWN, privacy cost stays UNKNOWN, the payment tariff is not a contract, licensing stays NOT_GRANTED, and the blocked launch still produces zero authorised revenue. No MC-13 data, price, flag or verdict is modified.
+
+**Rationale.** A legal governance layer must be traceable to primary sources and to predecessor evidence, and it must be impossible to confuse an identified obligation with achieved compliance.
+
+**Consequences.** (a) The milestone is an internal governance scope only: external legal clearance, certification, insurance, licences and prices remain blocked. (b) The validator and adversarial suite enforce the hard restrictions. (c) No product is for sale and no public claim is authorised.
+
+**Evidence.** docs/marea/legal-commercial/MC-14-BASELINE-AND-GOVERNANCE.md; data/legal-sources.json; data/regulatory-applicability.json; data/risk-register.json; data/predecessor-blocker-mapping.json; data/mc14-handoff-inputs.json (consumed by reference); scripts/check-marea-legal-commercial.mjs.
+
+**Status effect.** No approval, publication, price, merge or deployment. MC-13 remains PARTIAL with its financial scope unchanged.
+
+## D-059 - 2026-11-02 - MC-14 applies the stricter public-brand rule and records the MC-03 class-A conflict
+
+**Context.** MC-03 classifies "MAREA is a product brand of EMBARCARTE" and naming/edition statements as Class A claims allowed today, while the active programme state is TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED and MAREA_PUBLIC_USE = NO_GO. A public Class A claim would therefore authorise exactly the use the trademark restriction forbids.
+
+**Decision.** (a) The stricter MC-14 gate prevails: no public MAREA brand use in any channel until clearance and a recorded public-use decision. (b) Internal naming and internal concept/defined-functionality statements remain allowed in internal documents marked internal. (c) The conflict is recorded as MC14-BRAND-CONFLICT-01 in data/claims-policy.json and in risk IPR-14. (d) MC-03 evidence is not edited or silently replaced; a formal supersession proposal is recorded in the delivery record and requires brand-owner and counsel approval before the brand contract changes.
+
+**Rationale.** Inherited governance may permit a statement at a broader scope than a later hard restriction; when that happens the stricter gate must control, with the conflict documented rather than erased.
+
+**Consequences.** (a) No MAREA-branded public surface is authorised in MC-14. (b) The claims validator rejects public authorisation while MAREA_PUBLIC_USE = NO_GO. (c) The brand contract update is an external decision.
+
+**Evidence.** data/claims-policy.json (randState.inheritedPolicyConflict); data/risk-register.json risks IPR-13, IPR-14, CLM-01; D06, D13, D14.
+
+**Status effect.** No public use, no trademark filing, no brand valuation.
+
+## D-060 - 2026-11-02 - MC-14 adds audience and publication gates to the claims policy and authorises no public claim
+
+**Context.** MC-03's A/C/P/X classes govern what may be said, but a claim allowed for internal documentation is not automatically allowed in public, and a translated claim can drift. The website also contains live commercial statements written before MC-14.
+
+**Decision.** MC-14 adds explicit audience (INTERNAL, INSTALLER, DISTRIBUTOR, B2B_CUSTOMER, CONSUMER, PUBLIC) and publication statuses (INTERNAL_ONLY, PUBLIC_PROHIBITED, PUBLIC_CONDITIONAL, PUBLIC_AUTHORIZED) to the MC-03 classes, and requires evidence, approver and release gate for any public approval. In MC-14 only INTERNAL_ONLY and PUBLIC_PROHIBITED are used; 0 of 42 claims are authorised. The 30 mandatory prohibited categories include availability, stock, delivery, price, trademark, ownership, charts/weather, CE/RED/EMC/NMEA/marine certification, universal compatibility, autonomy, collision avoidance, guaranteed alerts/monitoring, forecast accuracy, insurance, customer counts, testimonials, market share, profitability, break-even, returns, financing, cyber certification, SLA, GDPR and safety-of-life. ES/EN pairs must keep the same class, status, numbers and negation. A read-only inventory of 34 website findings is recorded; no fix is claimed.
+
+**Rationale.** Availability and certification claims are the fastest route to consumer-protection and unfair-competition exposure, and bilingual drift multiplies the risk.
+
+**Consequences.** (a) The website and all future copy must pass the claims gate. (b) Internal examples distinguish concept, defined, tested, licensed and available states. (c) The read-only findings are future MC-15 work.
+
+**Evidence.** data/claims-policy.json; data/bilingual-claims.json; data/website-findings.json; D13, D14, D15; scripts/check-marea-legal-commercial.mjs.
+
+**Status effect.** MC14_COMMERCIAL_CLAIMS_PUBLICATION = NOT_AUTHORIZED; no website change.
+
+## D-061 - 2026-11-02 - MC-14 defines release gates from evidence and keeps every gate open
+
+**Context.** A list of legal requirements is not a release control. The milestone needs objective gates that close only with real external artefacts, and a validator that cannot confuse a plan with evidence.
+
+**Decision.** MC-14 defines 13 release gates (market placement, PILOT safety, IP clearance, data licensing, privacy/DPA/DPIA, CRA, consumer terms, commercial claims, pricing, payments, insurance, legal identity, website remediation) and 24 required documents, all NOT_EXECUTED / NOT_PRESENT / DRAFT_REQUIRED. The deterministic validator runs 54 checks over 18 datasets and documents; the adversarial suite runs 41 tests including 40 negative controls. The gate is a manual gate at this milestone because CI does not execute it (disclosed in D20/D23). No document may be marked EXECUTED, SIGNED, CERTIFIED or APPROVED without evidence, and no gate may be CLOSED_VERIFIED without evidence.
+
+**Rationale.** Without evidence-based gates the commercial pressure would convert an identified obligation into an assumed clearance.
+
+**Consequences.** (a) Every product remains NOT_FOR_SALE and every gate open. (b) A failed mutation is treated as a control failure, not as a schema nit. (c) External decisions are the only route to closing the gates.
+
+**Evidence.** data/release-evidence-gates.json; D16, D20; scripts/check-marea-legal-commercial.test.mjs.
+
+**Status effect.** No gate closed; no release authorization.
+
+## D-062 - 2026-11-02 - MC-14 applies the independent-audit corrections and records the internal-scope award
+
+**Context.** The independent auditor withheld sign-off on the frozen candidate 6fb2285 with one MAJOR finding (contradictory provenance between the research trail and the governed legal-source register) and nine MINOR findings, then identified four residual items at the first correction commit 32673e (dossier §1/§3 status labels, the D19 bundle schema, two D03 battery rationales and four MC-15 route labels). All findings were verified against the artifacts rather than accepted on summary.
+
+**Decision.** Apply all corrections in two commits (32673e, 7f31db8) before any award: reconcile the CSV, dossier, legal-sources.json and D02 to one status per shared source and document the 48-vs-50 research membership; correct the RED 2022/30 date to 2025-08-01, the SCA RTS entry-into-force date to 2018-03-14, the dossier 'recital 580' citation to Article 71, the D19 bundle schema, the D03 rationales, the website route labels, the D20 freeze result, the class-C claim status, the LGP requirement status and the pilotCoverage typo. Re-verify at 7f31db8; the auditor awarded PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE with 0 open BLOCKING/MAJOR/MINOR and 4 INFORMATIONAL observations by design. Record the programme verdict as PARTIAL: internal legal/commercial governance PASS, external legal clearance NOT_GRANTED (MC-13 mirror).
+
+**Rationale.** A legal evidence package cannot be awarded while its provenance claims contradict; the award must follow re-verification of corrected artifacts, not an acknowledgment of findings.
+
+**Consequences.** (a) The record commit reconciles the manifest, D22/D23, registry row 14 and this decision log with the award. (b) No external clearance, certification, licence, insurance, price or publication is authorised. (c) The MC-13 residual debt F-05/F-11/F-14 stays OPEN and MC-14 does not edit MC-13 files.
+
+**Evidence.** docs/marea/legal-commercial/review/MC-14-REVIEW.md (rounds 1-3); data/review-findings.json; data/manifest.json; MC-14-DELIVERY.md; MC14-EXECUTIVE-REPORT-ES.md; MASTER-PROMPT-REGISTRY.md row 14.
+
+**Status effect.** Internal-scope award recorded; no merge, deployment, publication, sale or MC-15 start.

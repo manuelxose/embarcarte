@@ -1,0 +1,623 @@
+{
+  "contractId": "MAREA-MC14-LIABILITY-INSURANCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-14",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "jurisdictionScope": "ES + EU",
+  "statusNote": "Liability and insurance requirements analysis only. No insurance policy, broker indication, premium, limit or exclusion exists. No insurer or broker has been contacted. Premiums remain UNKNOWN. A disclaimer does not eliminate statutory liability; no coverage may be assumed or promised.",
+  "insuranceStatus": {
+    "productLiabilityPolicy": "NONE",
+    "cyberLiabilityPolicy": "NONE",
+    "professionalIndemnityPolicy": "NONE",
+    "directorsAndOfficersPolicy": "NONE",
+    "brokerContacted": false,
+    "premium": "UNKNOWN",
+    "limits": "UNKNOWN",
+    "exclusions": "UNKNOWN",
+    "territorialScope": "UNKNOWN",
+    "retroactiveDate": "UNKNOWN",
+    "claimsMadeOrOccurrence": "UNKNOWN",
+    "financialDependencyId": "MC14-DEP-02",
+    "pilotCoverage": "NOT_DECIDED"
+  },
+  "insuranceRequirementsPackage": {
+    "purpose": "Package prepared for a future authorised specialist or broker review. It does not constitute a request for cover.",
+    "requiredCoverTypes": [
+      "Product liability (hardware, software and data)",
+      "Cyber and privacy liability",
+      "Professional indemnity for installation/commissioning advice",
+      "Recall and product-withdrawal costs",
+      "Marine products liability extension for use afloat"
+    ],
+    "scopeQuestionsForBroker": [
+      "Are software and SaaS products covered as 'products' under the policy wording?",
+      "Does cover extend to products used on recreational and professional vessels, including offshore?",
+      "Are punitive damages, contractual penalties and pure economic loss covered?",
+      "What exclusions apply to navigation/steering or safety-related products?",
+      "Is worldwide territory available for EU products used outside the EU?",
+      "What is the retroactive date and the claims-made trigger?",
+      "Are regulatory defence costs and GDPR fines (where insurable) covered?",
+      "What information is required for PILOT and any future steering product?"
+    ],
+    "evidenceRequiredBeforeBinding": [
+      "Completed proposal form",
+      "Product list and risk description",
+      "Revenue/units forecast (as planning inputs only)",
+      "Safety and conformity documentation",
+      "Claims history statement"
+    ],
+    "contactAuthorized": false
+  },
+  "liabilityScenarios": [
+    {
+      "scenarioId": "LIA-S-01",
+      "scenario": "Electrical fault, overheating or fire",
+      "legalResponsibility": "Manufacturer liability for defective product; installer liability for defective installation; seller liability to consumer under statutory guarantee",
+      "exposedEconomicOperator": [
+        "MANUFACTURER",
+        "INSTALLER",
+        "SELLER"
+      ],
+      "productFamilyIds": [
+        "HUB",
+        "SENSE",
+        "DISPLAY",
+        "PILOT"
+      ],
+      "claimSeverity": "CRITICAL",
+      "controlRequirements": [
+        "Electrical safety test",
+        "Fuse/breaker specification",
+        "Installation limits",
+        "FMEA"
+      ],
+      "evidenceRequired": [
+        "Test report",
+        "Installation manual",
+        "FMEA"
+      ],
+      "potentialContractProvisions": [
+        "Liability caps for B2B only",
+        "Warranty allocation with installer",
+        "Indemnity for installation defects"
+      ],
+      "insuranceCoverageCategory": "PRODUCT_LIABILITY",
+      "residualRisk": "HIGH",
+      "releaseGate": "GATE-INSURANCE",
+      "riskIds": [
+        "LIA-01"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-02",
+      "scenario": "Installation defect (ingress, interference, wiring)",
+      "legalResponsibility": "Installer bears installation responsibility; seller/manufacturer may share liability where instructions were inadequate",
+      "exposedEconomicOperator": [
+        "INSTALLER",
+        "SELLER",
+        "MANUFACTURER"
+      ],
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "claimSeverity": "HIGH",
+      "controlRequirements": [
+        "Installer agreement",
+        "Competence requirements",
+        "Commissioning record",
+        "Installation instructions"
+      ],
+      "evidenceRequired": [
+        "Signed commissioning record",
+        "Installer certificate",
+        "Indemnity clauses"
+      ],
+      "potentialContractProvisions": [
+        "Responsibility matrix",
+        "Installer indemnity",
+        "Insurance evidence from installer"
+      ],
+      "insuranceCoverageCategory": "PROFESSIONAL_INDEMNITY",
+      "residualRisk": "HIGH",
+      "releaseGate": "GATE-INSURANCE",
+      "riskIds": [
+        "LIA-02"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-03",
+      "scenario": "Product malfunction causing loss of function",
+      "legalResponsibility": "Manufacturer/seller liability if the product is defective; contractual remedies under consumer law",
+      "exposedEconomicOperator": [
+        "MANUFACTURER",
+        "SELLER"
+      ],
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "DISPLAY",
+        "WATCH"
+      ],
+      "claimSeverity": "HIGH",
+      "controlRequirements": [
+        "FMEA",
+        "Reliability and soak testing",
+        "Watchdog and rollback",
+        "Field-failure monitoring"
+      ],
+      "evidenceRequired": [
+        "Reliability test report",
+        "Failure analysis",
+        "RMA records"
+      ],
+      "potentialContractProvisions": [
+        "B2B liability caps",
+        "Consumer statutory rights preserved"
+      ],
+      "insuranceCoverageCategory": "PRODUCT_LIABILITY",
+      "residualRisk": "HIGH",
+      "releaseGate": "GATE-INSURANCE",
+      "riskIds": [
+        "LIA-03"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-04",
+      "scenario": "Incorrect sensor measurement",
+      "legalResponsibility": "Manufacturer liability for inaccurate measurements presented as reliable; seller liability to consumer",
+      "exposedEconomicOperator": [
+        "MANUFACTURER",
+        "SELLER"
+      ],
+      "productFamilyIds": [
+        "SENSE",
+        "DISPLAY",
+        "NAV"
+      ],
+      "claimSeverity": "HIGH",
+      "controlRequirements": [
+        "Accuracy measurement",
+        "Calibration procedure",
+        "Published tolerances",
+        "Warnings for safety-critical use"
+      ],
+      "evidenceRequired": [
+        "Accuracy report",
+        "Calibration records",
+        "Uncertainty statement"
+      ],
+      "potentialContractProvisions": [
+        "Conformity criteria",
+        "Tolerance specifications"
+      ],
+      "insuranceCoverageCategory": "PRODUCT_LIABILITY",
+      "residualRisk": "MEDIUM",
+      "releaseGate": "GATE-INSURANCE",
+      "riskIds": [
+        "LIA-04"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-05",
+      "scenario": "AIS reception limitation or misinterpretation",
+      "legalResponsibility": "Manufacturer liability if reception limitations are not disclosed or if collision-avoidance is implied; receive-only scope is a mandatory limit",
+      "exposedEconomicOperator": [
+        "MANUFACTURER",
+        "SELLER"
+      ],
+      "productFamilyIds": [
+        "AIS",
+        "NAV",
+        "DISPLAY"
+      ],
+      "claimSeverity": "CRITICAL",
+      "controlRequirements": [
+        "Mandatory receive-only disclaimer",
+        "No collision-avoidance claims",
+        "Antenna/installation guidance"
+      ],
+      "evidenceRequired": [
+        "Disclaimer in ES/EN",
+        "Reception limitation documentation",
+        "No-transmit evidence"
+      ],
+      "potentialContractProvisions": [
+        "Explicit acknowledgement of AIS limits"
+      ],
+      "insuranceCoverageCategory": "PRODUCT_LIABILITY",
+      "residualRisk": "HIGH",
+      "releaseGate": "GATE-INSURANCE",
+      "riskIds": [
+        "LIA-05",
+        "LEG-08"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-06",
+      "scenario": "Chart or navigation-data error (grounding)",
+      "legalResponsibility": "Manufacturer/supplier liability if the product is presented as navigation-grade without licensed official data; strict product liability may apply",
+      "exposedEconomicOperator": [
+        "MANUFACTURER",
+        "SELLER",
+        "DATA_CONTROLLER"
+      ],
+      "productFamilyIds": [
+        "NAV",
+        "DISPLAY"
+      ],
+      "claimSeverity": "CRITICAL",
+      "controlRequirements": [
+        "Licensed chart rights or explicit user-supplied-chart model",
+        "Provenance and freshness display",
+        "Navigation-aid disclaimer",
+        "No ECDIS claim"
+      ],
+      "evidenceRequired": [
+        "Chart licence or user-supplied-chart policy",
+        "Disclaimer",
+        "Data-freshness UI evidence"
+      ],
+      "potentialContractProvisions": [
+        "Data licence restrictions",
+        "Navigation-aid acknowledgement"
+      ],
+      "insuranceCoverageCategory": "PRODUCT_LIABILITY",
+      "residualRisk": "CRITICAL",
+      "releaseGate": "GATE-DATA-LICENSING",
+      "riskIds": [
+        "LIA-06",
+        "DATA-01"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-07",
+      "scenario": "Weather data error",
+      "legalResponsibility": "Liability if forecasts are presented as accurate or reliable; reliance loss and misrepresentation exposure",
+      "exposedEconomicOperator": [
+        "SAAS_PROVIDER",
+        "SELLER"
+      ],
+      "productFamilyIds": [
+        "WEATHER",
+        "NAV",
+        "DISPLAY"
+      ],
+      "claimSeverity": "HIGH",
+      "controlRequirements": [
+        "Probabilistic-forecast disclaimer",
+        "Source/freshness display",
+        "Forecast evaluation in the target area",
+        "No accuracy guarantee"
+      ],
+      "evidenceRequired": [
+        "Disclaimer",
+        "Provider terms",
+        "Evaluation report if any accuracy claim is made"
+      ],
+      "potentialContractProvisions": [
+        "No-guarantee clause for B2B",
+        "Consumer statutory rights preserved"
+      ],
+      "insuranceCoverageCategory": "PROFESSIONAL_INDEMNITY",
+      "residualRisk": "MEDIUM",
+      "releaseGate": "GATE-INSURANCE",
+      "riskIds": [
+        "LIA-07"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-08",
+      "scenario": "Remote monitoring failure or missed/delayed alert",
+      "legalResponsibility": "Liability if continuous monitoring or guaranteed alerts are promised; safety-of-life expectations create severe exposure",
+      "exposedEconomicOperator": [
+        "SAAS_PROVIDER",
+        "SERVICE_OPERATOR",
+        "SELLER"
+      ],
+      "productFamilyIds": [
+        "WATCH",
+        "FLEET"
+      ],
+      "claimSeverity": "CRITICAL",
+      "controlRequirements": [
+        "Measured delivery and latency",
+        "Coverage limits statement",
+        "No-guarantee disclaimer",
+        "Escalation runbook"
+      ],
+      "evidenceRequired": [
+        "Delivery/latency report",
+        "Coverage map",
+        "Disclaimer"
+      ],
+      "potentialContractProvisions": [
+        "Service limitations",
+        "No safety-of-life guarantee"
+      ],
+      "insuranceCoverageCategory": "CYBER_AND_PROFESSIONAL_INDEMNITY",
+      "residualRisk": "CRITICAL",
+      "releaseGate": "GATE-INSURANCE",
+      "riskIds": [
+        "LIA-08"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-09",
+      "scenario": "Cybersecurity failure (compromise, data breach, unauthorised control)",
+      "legalResponsibility": "Manufacturer/service-provider liability; GDPR and CRA exposure; potential injury liability where control is compromised",
+      "exposedEconomicOperator": [
+        "MANUFACTURER",
+        "SAAS_PROVIDER",
+        "DATA_CONTROLLER"
+      ],
+      "productFamilyIds": [
+        "HUB",
+        "PILOT",
+        "WATCH",
+        "FLEET",
+        "DISPLAY",
+        "AIS"
+      ],
+      "claimSeverity": "CRITICAL",
+      "controlRequirements": [
+        "Authentication and access control",
+        "Penetration testing",
+        "Incident response",
+        "CRA conformity"
+      ],
+      "evidenceRequired": [
+        "Penetration-test report",
+        "Incident runbook",
+        "CRA documentation"
+      ],
+      "potentialContractProvisions": [
+        "Security obligations",
+        "Breach notification",
+        "Liability allocation"
+      ],
+      "insuranceCoverageCategory": "CYBER_LIABILITY",
+      "residualRisk": "CRITICAL",
+      "releaseGate": "GATE-CRA-CYBERSECURITY",
+      "riskIds": [
+        "LIA-09",
+        "PRD-02"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-10",
+      "scenario": "Unsafe steering behaviour (PILOT)",
+      "legalResponsibility": "Manufacturer liability for a defective steering product; potentially uncapped no-fault liability; installer and seller exposure",
+      "exposedEconomicOperator": [
+        "MANUFACTURER",
+        "INSTALLER",
+        "SELLER"
+      ],
+      "productFamilyIds": [
+        "PILOT"
+      ],
+      "claimSeverity": "CATASTROPHIC",
+      "controlRequirements": [
+        "Full safety case",
+        "Physical E-stop and fail-closed relay",
+        "Supervised sea trials",
+        "Independent verification",
+        "Mandatory supervised-only warnings"
+      ],
+      "evidenceRequired": [
+        "Safety case",
+        "Test evidence",
+        "Independent assessment",
+        "Insurance"
+      ],
+      "potentialContractProvisions": [
+        "Not offered until gate closes",
+        "Strict installation and supervision conditions"
+      ],
+      "insuranceCoverageCategory": "PRODUCT_LIABILITY_SPECIALIST",
+      "residualRisk": "UNINSURABLE_UNTIL_EVIDENCED",
+      "releaseGate": "GATE-SAFETY-PILOT",
+      "riskIds": [
+        "LIA-10",
+        "PRD-01"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-11",
+      "scenario": "Software update regression or update-related defect",
+      "legalResponsibility": "Manufacturer liability for defective updates; consumer conformity duty to maintain conformity through updates",
+      "exposedEconomicOperator": [
+        "MANUFACTURER",
+        "SAAS_PROVIDER"
+      ],
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "FLEET"
+      ],
+      "claimSeverity": "HIGH",
+      "controlRequirements": [
+        "Regression testing",
+        "Signed updates and rollback",
+        "Change notification",
+        "Conformity-impact assessment"
+      ],
+      "evidenceRequired": [
+        "Regression test report",
+        "Rollback test",
+        "Update policy"
+      ],
+      "potentialContractProvisions": [
+        "Update terms consistent with consumer rights"
+      ],
+      "insuranceCoverageCategory": "PRODUCT_LIABILITY",
+      "residualRisk": "MEDIUM",
+      "releaseGate": "GATE-CRA-CYBERSECURITY",
+      "riskIds": [
+        "LIA-11"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-12",
+      "scenario": "Defective connected product",
+      "legalResponsibility": "Manufacturer/importer liability under the revised PLD for software and connected products; service provider exposure for cloud functions",
+      "exposedEconomicOperator": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "SAAS_PROVIDER"
+      ],
+      "productFamilyIds": [
+        "HUB",
+        "AIS",
+        "WATCH",
+        "DISPLAY",
+        "PILOT",
+        "SENSE"
+      ],
+      "claimSeverity": "HIGH",
+      "controlRequirements": [
+        "CRA conformity",
+        "Connected-product risk assessment",
+        "Security update policy",
+        "Liability assessment"
+      ],
+      "evidenceRequired": [
+        "CRA documentation",
+        "Risk assessment",
+        "Insurance"
+      ],
+      "potentialContractProvisions": [
+        "B2B liability caps",
+        "Consumer rights preserved"
+      ],
+      "insuranceCoverageCategory": "PRODUCT_LIABILITY",
+      "residualRisk": "HIGH",
+      "releaseGate": "GATE-INSURANCE",
+      "riskIds": [
+        "LIA-12"
+      ]
+    },
+    {
+      "scenarioId": "LIA-S-13",
+      "scenario": "No insurance cover exists at all",
+      "legalResponsibility": "Uninsured liability would be borne directly by the company; directors may face personal exposure for insolvent trading in some circumstances",
+      "exposedEconomicOperator": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR",
+        "SELLER",
+        "SAAS_PROVIDER"
+      ],
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "claimSeverity": "CRITICAL",
+      "controlRequirements": [
+        "Broker indication",
+        "Coverage decision",
+        "Residual-risk acceptance"
+      ],
+      "evidenceRequired": [
+        "Broker indication",
+        "Policy wording",
+        "Board decision on residual risk"
+      ],
+      "potentialContractProvisions": [
+        "Insurance obligations in distribution/installer agreements"
+      ],
+      "insuranceCoverageCategory": "ALL_LINES",
+      "residualRisk": "UNTRANSFERABLE_UNTIL_QUOTED",
+      "releaseGate": "GATE-INSURANCE",
+      "riskIds": [
+        "LIA-13"
+      ]
+    }
+  ],
+  "insuranceCoverageMatrix": [
+    {
+      "coverageCategory": "PRODUCT_LIABILITY",
+      "requiredFor": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "status": "NOT_OBTAINED",
+      "premium": "UNKNOWN",
+      "limit": "UNKNOWN",
+      "notes": "PILOT may require specialist cover and may be uninsurable before safety evidence exists."
+    },
+    {
+      "coverageCategory": "CYBER_LIABILITY",
+      "requiredFor": [
+        "HUB",
+        "WATCH",
+        "FLEET",
+        "NAV",
+        "DISPLAY"
+      ],
+      "status": "NOT_OBTAINED",
+      "premium": "UNKNOWN",
+      "limit": "UNKNOWN",
+      "notes": "Cyber cover wording varies; GDPR fines may be uninsurable."
+    },
+    {
+      "coverageCategory": "PROFESSIONAL_INDEMNITY",
+      "requiredFor": [
+        "INSTALLER",
+        "SERVICE_OPERATOR",
+        "WEATHER"
+      ],
+      "status": "NOT_OBTAINED",
+      "premium": "UNKNOWN",
+      "limit": "UNKNOWN",
+      "notes": "Needed for installation/commissioning and forecast advice."
+    },
+    {
+      "coverageCategory": "RECALL_COSTS",
+      "requiredFor": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "status": "NOT_OBTAINED",
+      "premium": "UNKNOWN",
+      "limit": "UNKNOWN",
+      "notes": "Recall and withdrawal cost cover is separate from liability."
+    }
+  ],
+  "residualRiskStatement": "With no insurance in place, every liability scenario remains fully retained by EMBARCARTE. Any future decision to operate without cover requires an explicit, documented residual-risk acceptance by the company owner after broker indications; it cannot be inferred from this register.",
+  "unknowns": [
+    "Premium, limits, deductibles and exclusions for every line.",
+    "Whether PILOT or safety-related navigation products are insurable at all.",
+    "Whether software/SaaS is treated as a product under the policy.",
+    "The insurer's territorial and retroactive terms.",
+    "The recall-cost exposure."
+  ]
+}

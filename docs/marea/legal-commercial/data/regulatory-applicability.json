@@ -1,0 +1,2758 @@
+{
+  "contractId": "MAREA-MC14-REGULATORY-APPLICABILITY",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-14",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "jurisdictionScope": "ES + EU",
+  "statusVocabulary": [
+    "APPLICABLE",
+    "CONDITIONALLY_APPLICABLE",
+    "NOT_APPLICABLE_WITH_REASON",
+    "UNDETERMINED"
+  ],
+  "note": "Product- and bundle-specific applicability assessment. NOT_APPLICABLE always carries a cited legal rationale; CONDITIONALLY_APPLICABLE always carries the condition that would change applicability. A product definition is not a tested product; applicability of an instrument is not conformity with it. No CE marking, wheelmark, NMEA certification or marine approval is claimed.",
+  "instruments": [
+    {
+      "instrumentId": "EMC",
+      "name": "Electromagnetic Compatibility Directive 2014/30/EU",
+      "legalSourceIds": [
+        "SRC-EU-EMC-2014-30"
+      ]
+    },
+    {
+      "instrumentId": "RED",
+      "name": "Radio Equipment Directive 2014/53/EU (including delegated cybersecurity acts)",
+      "legalSourceIds": [
+        "SRC-EU-RED-2014-53",
+        "SRC-EU-DELREG-2022-30",
+        "SRC-EU-DELREG-2026-339"
+      ]
+    },
+    {
+      "instrumentId": "LVD",
+      "name": "Low Voltage Directive 2014/35/EU",
+      "legalSourceIds": [
+        "SRC-EU-LVD-2014-35"
+      ]
+    },
+    {
+      "instrumentId": "GPSR",
+      "name": "General Product Safety Regulation (EU) 2023/988",
+      "legalSourceIds": [
+        "SRC-EU-GPSR-2023-988"
+      ]
+    },
+    {
+      "instrumentId": "CRA",
+      "name": "Cyber Resilience Act — Regulation (EU) 2024/2847",
+      "legalSourceIds": [
+        "SRC-EU-CRA-2024-2847"
+      ]
+    },
+    {
+      "instrumentId": "ROHS",
+      "name": "RoHS Directive 2011/65/EU",
+      "legalSourceIds": [
+        "SRC-EU-ROHS-2011-65"
+      ]
+    },
+    {
+      "instrumentId": "WEEE",
+      "name": "WEEE Directive 2012/19/EU",
+      "legalSourceIds": [
+        "SRC-EU-WEEE-2012-19"
+      ]
+    },
+    {
+      "instrumentId": "BATTERIES",
+      "name": "Batteries Regulation (EU) 2023/1542",
+      "legalSourceIds": [
+        "SRC-EU-BATTERIES-2023-1542"
+      ]
+    },
+    {
+      "instrumentId": "RCD",
+      "name": "Recreational Craft Directive 2013/53/EU",
+      "legalSourceIds": [
+        "SRC-EU-RCD-2013-53"
+      ]
+    },
+    {
+      "instrumentId": "MED",
+      "name": "Marine Equipment Directive 2014/90/EU",
+      "legalSourceIds": [
+        "SRC-EU-MED-2014-90"
+      ]
+    },
+    {
+      "instrumentId": "PLD",
+      "name": "Product Liability Directive (EU) 2024/2853",
+      "legalSourceIds": [
+        "SRC-EU-PLD-2024-2853"
+      ]
+    },
+    {
+      "instrumentId": "CONSUMER_COMMERCIAL",
+      "name": "Consumer and commercial law (CRD, CSD, DCD, UCPD, Price Indication, TRLGDCU, LSSI, LCD, LGP)",
+      "legalSourceIds": [
+        "SRC-EU-CRD-2011-83",
+        "SRC-EU-CSD-2019-771",
+        "SRC-EU-DCD-2019-770",
+        "SRC-EU-UCPD-2005-29",
+        "SRC-EU-PRICE-98-6",
+        "SRC-ES-TRLGDCU-RDL-1-2007",
+        "SRC-ES-LSSI-34-2002",
+        "SRC-ES-LCD-3-1991",
+        "SRC-ES-LGP-34-1988"
+      ]
+    },
+    {
+      "instrumentId": "RADIO_SPECTRUM",
+      "name": "Radio spectrum and maritime radio rules (Ley 11/2022, ITU-R M.1371, AIS receive-only scope)",
+      "legalSourceIds": [
+        "SRC-ES-LGT-11-2022",
+        "SRC-EU-RED-2014-53"
+      ]
+    },
+    {
+      "instrumentId": "DATA_PROTECTION",
+      "name": "GDPR, LOPDGDD 3/2018 and ePrivacy/LSSI cookies",
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679",
+        "SRC-ES-LOPDGDD-3-2018",
+        "SRC-EU-EPRIVACY-2002-58",
+        "SRC-ES-LSSI-34-2002"
+      ]
+    }
+  ],
+  "productFamilies": [
+    {
+      "productFamilyId": "NAV",
+      "displayName": "MAREA NAV",
+      "productType": "Navigation software and licensed-data application, optionally bundled with hardware",
+      "editions": [
+        "NAV-ESSENTIAL",
+        "NAV-PRO"
+      ],
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Standalone NAV software is not apparatus placed on the market; an EMC assessment becomes necessary if NAV ships pre-installed on a HUB, DISPLAY or appliance supplied by EMBARCARTE.",
+          "legalSourceIds": [
+            "SRC-EU-EMC-2014-30"
+          ],
+          "requirementIds": [
+            "REQ-EMC-01"
+          ],
+          "condition": "NAV is supplied on or with electrical hardware placed on the market.",
+          "evidenceRequired": [
+            "System EMC test for the supplied configuration"
+          ]
+        },
+        {
+          "instrumentId": "RED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "NAV, as defined, performs no intentional radio transmission or reception; radio functions belong to HUB/AIS/WATCH hardware. If NAV is embedded in radio equipment, the RED applies to that equipment instead.",
+          "legalSourceIds": [
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "NAV is software/data and has no electrical equipment within the 50-1000 V AC / 75-1500 V DC scope; any bundled appliance is assessed as its own product.",
+          "legalSourceIds": [
+            "SRC-EU-LVD-2014-35"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Software alone is not a GPSR product, but the general safety framework applies to any physical product supplied with NAV; the bundle is assessed as hardware.",
+          "legalSourceIds": [
+            "SRC-EU-GPSR-2023-988"
+          ],
+          "requirementIds": [
+            "REQ-GPSR-01"
+          ],
+          "condition": "NAV is sold with or pre-installed on a physical product.",
+          "evidenceRequired": [
+            "Product safety assessment for the supplied configuration"
+          ]
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "APPLICABLE",
+          "rationale": "NAV is a product with digital elements made available on the market, including subscription and cloud-connected editions; CRA essential requirements, vulnerability handling, support period and reporting apply.",
+          "legalSourceIds": [
+            "SRC-EU-CRA-2024-2847"
+          ],
+          "requirementIds": [
+            "REQ-CRA-01",
+            "REQ-CRA-02",
+            "REQ-CRA-03",
+            "REQ-CRA-04",
+            "REQ-CRA-05"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "CRA technical documentation",
+            "SBOM",
+            "Support-period decision",
+            "Incident-reporting runbook"
+          ]
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "NAV software contains no electrical or electronic equipment unless it is supplied on hardware, in which case RoHS applies to that hardware.",
+          "legalSourceIds": [
+            "SRC-EU-ROHS-2011-65"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WEEE applies to electrical and electronic equipment; pure software is out of scope, and any bundled hardware falls to be registered separately.",
+          "legalSourceIds": [
+            "SRC-EU-WEEE-2012-19"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "NAV software contains no batteries; battery obligations attach to the hardware families that contain them.",
+          "legalSourceIds": [
+            "SRC-EU-BATTERIES-2023-1542"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "NAV software is not a recreational craft or a component listed in the RCD scope; the RCD applies to the craft or covered components, not to navigation software.",
+          "legalSourceIds": [
+            "SRC-EU-RCD-2013-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "NAV is not shipborne marine equipment listed for MED wheelmark; no wheelmark claim is made.",
+          "legalSourceIds": [
+            "SRC-EU-MED-2014-90"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "The revised PLD covers software and digital products, so NAV and its update stream can fall within the liability regime even without physical hardware.",
+          "legalSourceIds": [
+            "SRC-EU-PLD-2024-2853"
+          ],
+          "requirementIds": [
+            "REQ-PLD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Liability assessment",
+            "Update and evidence-retention procedure"
+          ]
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "Consumer sales, subscriptions and claims are subject to CRD/CSD/DCD/UCPD, the Price Indication Directive and Spanish consumer and advertising law; B2B terms require a separate contract set.",
+          "legalSourceIds": [
+            "SRC-ES-TRLGDCU-RDL-1-2007",
+            "SRC-EU-CRD-2011-83",
+            "SRC-EU-DCD-2019-770",
+            "SRC-EU-UCPD-2005-29"
+          ],
+          "requirementIds": [
+            "REQ-CRD-01",
+            "REQ-CSD-01",
+            "REQ-DCD-01",
+            "REQ-UCPD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Approved consumer terms",
+            "Claims evidence register"
+          ]
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "NAV does not transmit or receive radio signals directly; AIS reception and radio conformity belong to the AIS/HUB hardware family.",
+          "legalSourceIds": [
+            "SRC-ES-LGT-11-2022"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "NAV processes account data, track history and location data, so GDPR/LOPDGDD transparency, lawful basis, retention and rights apply.",
+          "legalSourceIds": [
+            "SRC-EU-GDPR-2016-679",
+            "SRC-ES-LOPDGDD-3-2018"
+          ],
+          "requirementIds": [
+            "REQ-GDPR-01",
+            "REQ-GDPR-02"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Privacy notice",
+            "Retention and export schedule"
+          ]
+        }
+      ],
+      "summary": {
+        "applicable": 4,
+        "conditional": 2,
+        "notApplicable": 8,
+        "undetermined": 0
+      }
+    },
+    {
+      "productFamilyId": "HUB",
+      "displayName": "MAREA HUB",
+      "productType": "Networked marine data hub and appliance",
+      "editions": [
+        "HUB-STANDARD",
+        "HUB-PRO"
+      ],
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "APPLICABLE",
+          "rationale": "HUB is apparatus placed on the market with active electronics and networking; it must not cause or suffer electromagnetic disturbance beyond the essential requirements. If HUB is radio equipment, the RED carries the EMC requirement instead.",
+          "legalSourceIds": [
+            "SRC-EU-EMC-2014-30"
+          ],
+          "requirementIds": [
+            "REQ-EMC-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "EMC test report",
+            "DoC"
+          ]
+        },
+        {
+          "instrumentId": "RED",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "HUB may include Wi-Fi/Bluetooth or cellular modules; intentional radio transmitters or receivers bring the product within the RED, which then carries the EMC requirement.",
+          "legalSourceIds": [
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [
+            "REQ-RED-01"
+          ],
+          "condition": "A radio module or antenna is integrated into the shipped HUB.",
+          "evidenceRequired": [
+            "Radio module scope",
+            "RED test report"
+          ]
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "HUB is normally 12/24 V DC and outside the LVD voltage scope; a mains-powered variant within 50-1000 V AC would bring the LVD into scope.",
+          "legalSourceIds": [
+            "SRC-EU-LVD-2014-35"
+          ],
+          "requirementIds": [
+            "REQ-LVD-01"
+          ],
+          "condition": "A mains-voltage variant is placed on the market.",
+          "evidenceRequired": [
+            "Voltage-scope analysis",
+            "Electrical safety test if in scope"
+          ]
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "HUB is a consumer product placed on the market; safety, traceability, warnings and incident duties apply.",
+          "legalSourceIds": [
+            "SRC-EU-GPSR-2023-988"
+          ],
+          "requirementIds": [
+            "REQ-GPSR-01",
+            "REQ-GPSR-02",
+            "REQ-GPSR-04"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Risk assessment",
+            "Traceability labels"
+          ]
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "APPLICABLE",
+          "rationale": "HUB is a connected product with digital elements; CRA essential requirements, vulnerability handling, update support and incident reporting apply from the relevant dates.",
+          "legalSourceIds": [
+            "SRC-EU-CRA-2024-2847"
+          ],
+          "requirementIds": [
+            "REQ-CRA-01",
+            "REQ-CRA-02",
+            "REQ-CRA-03",
+            "REQ-CRA-04",
+            "REQ-CRA-05"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "CRA technical file",
+            "SBOM",
+            "Security update policy"
+          ]
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "HUB is electrical and electronic equipment; restricted-substance compliance and DoC are required.",
+          "legalSourceIds": [
+            "SRC-EU-ROHS-2011-65"
+          ],
+          "requirementIds": [
+            "REQ-ROHS-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Material declarations",
+            "RoHS DoC"
+          ]
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "HUB is EEE placed on the Spanish market; producer registration, take-back, marking and reporting apply.",
+          "legalSourceIds": [
+            "SRC-EU-WEEE-2012-19",
+            "SRC-ES-PRODUCER-REGISTER"
+          ],
+          "requirementIds": [
+            "REQ-WEEE-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Producer registration",
+            "Take-back agreement"
+          ]
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "HUB may include a backup battery or be supplied with one; the Batteries Regulation applies to any battery placed on the market with the product.",
+          "legalSourceIds": [
+            "SRC-EU-BATTERIES-2023-1542"
+          ],
+          "requirementIds": [
+            "REQ-BAT-01"
+          ],
+          "condition": "A battery is included in the shipped product or packaging.",
+          "evidenceRequired": [
+            "Battery category analysis",
+            "Labelling and take-back evidence"
+          ]
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "HUB is an electronics product, not a recreational craft or a listed RCD component; the craft's own RCD conformity is the builder's responsibility.",
+          "legalSourceIds": [
+            "SRC-EU-RCD-2013-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "HUB is not shipborne marine equipment placed on an EU ship and no wheelmark claim is made.",
+          "legalSourceIds": [
+            "SRC-EU-MED-2014-90"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "HUB is a product and its software can be defective; PLD liability covers hardware, firmware and connected-product updates.",
+          "legalSourceIds": [
+            "SRC-EU-PLD-2024-2853"
+          ],
+          "requirementIds": [
+            "REQ-PLD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Liability assessment",
+            "Insurance indication"
+          ]
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "Consumer sales of HUB are subject to CRD/CSD, the Spanish 3-year guarantee and fair-claims rules; B2B sales require separate terms.",
+          "legalSourceIds": [
+            "SRC-ES-TRLGDCU-RDL-1-2007",
+            "SRC-EU-CSD-2019-771",
+            "SRC-EU-UCPD-2005-29"
+          ],
+          "requirementIds": [
+            "REQ-CRD-01",
+            "REQ-CSD-01",
+            "REQ-UCPD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Consumer terms",
+            "Warranty and RMA workflow"
+          ]
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Radio transmission by an integrated Wi-Fi/cellular module requires authorised spectrum use and radio conformity; receive-only operation remains subject to radio-equipment rules.",
+          "legalSourceIds": [
+            "SRC-ES-LGT-11-2022"
+          ],
+          "requirementIds": [
+            "REQ-ES-LGT-01"
+          ],
+          "condition": "The shipped HUB transmits radio signals.",
+          "evidenceRequired": [
+            "Module authorisation/conformity evidence"
+          ]
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "HUB processes device identifiers, telemetry and potentially location data; GDPR/LOPDGDD transparency and security apply.",
+          "legalSourceIds": [
+            "SRC-EU-GDPR-2016-679",
+            "SRC-ES-LOPDGDD-3-2018"
+          ],
+          "requirementIds": [
+            "REQ-GDPR-01",
+            "REQ-GDPR-04"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Privacy notice",
+            "Security measures description"
+          ]
+        }
+      ],
+      "summary": {
+        "applicable": 8,
+        "conditional": 4,
+        "notApplicable": 2,
+        "undetermined": 0
+      }
+    },
+    {
+      "productFamilyId": "AIS",
+      "displayName": "MAREA AIS",
+      "productType": "Receive-only AIS receiver and connected edition",
+      "editions": [
+        "AIS-RECEIVER",
+        "AIS-CONNECTED"
+      ],
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "AIS is radio equipment: the RED carries the EMC essential requirement, and the EMC Directive expressly does not additionally apply to radio equipment covered by the RED.",
+          "legalSourceIds": [
+            "SRC-EU-EMC-2014-30",
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "RED",
+          "status": "APPLICABLE",
+          "rationale": "The receiver intentionally receives radio waves (AIS VHF), so it is radio equipment under the RED; safety, EMC and spectrum requirements plus conformity assessment apply.",
+          "legalSourceIds": [
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [
+            "REQ-RED-01",
+            "REQ-RED-02"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "RED applicability analysis",
+            "Radio test report",
+            "DoC"
+          ]
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "AIS receiver hardware is typically 12/24 V DC and outside the LVD scope; a mains-powered variant or a power supply within the voltage limits would bring it into scope.",
+          "legalSourceIds": [
+            "SRC-EU-LVD-2014-35"
+          ],
+          "requirementIds": [
+            "REQ-LVD-01"
+          ],
+          "condition": "A mains-voltage variant or supplied power supply is placed on the market.",
+          "evidenceRequired": [
+            "Voltage-scope analysis"
+          ]
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "AIS is a consumer product placed on the market; safety, traceability, warnings and incident duties apply, including antenna installation warnings.",
+          "legalSourceIds": [
+            "SRC-EU-GPSR-2023-988"
+          ],
+          "requirementIds": [
+            "REQ-GPSR-01",
+            "REQ-GPSR-02"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Risk assessment",
+            "Installation warnings"
+          ]
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "AIS-CONNECTED is a product with digital elements and is in scope; a purely local receiver without network capability may be outside the CRA's connected-product scope, which must be confirmed.",
+          "legalSourceIds": [
+            "SRC-EU-CRA-2024-2847"
+          ],
+          "requirementIds": [
+            "REQ-CRA-01",
+            "REQ-CRA-03"
+          ],
+          "condition": "The edition includes network connectivity or software updates.",
+          "evidenceRequired": [
+            "CRA scope analysis",
+            "Update and vulnerability process"
+          ]
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "AIS is electrical and electronic equipment subject to RoHS.",
+          "legalSourceIds": [
+            "SRC-EU-ROHS-2011-65"
+          ],
+          "requirementIds": [
+            "REQ-ROHS-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Material declarations"
+          ]
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "AIS is EEE placed on the Spanish market; producer responsibility applies.",
+          "legalSourceIds": [
+            "SRC-EU-WEEE-2012-19"
+          ],
+          "requirementIds": [
+            "REQ-WEEE-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Producer registration"
+          ]
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "AIS receiver hardware is defined without a battery; if a backup battery is added, the Batteries Regulation would apply to it.",
+          "legalSourceIds": [
+            "SRC-EU-BATTERIES-2023-1542"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "AIS is not a recreational craft or an RCD-listed component.",
+          "legalSourceIds": [
+            "SRC-EU-RCD-2013-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "AIS is not shipborne MED equipment and no wheelmark is claimed; a receiver for leisure craft does not become MED equipment by being installed on a yacht.",
+          "legalSourceIds": [
+            "SRC-EU-MED-2014-90"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "A defective receiver or misleading reception expectations can cause reliance loss; the PLD applies.",
+          "legalSourceIds": [
+            "SRC-EU-PLD-2024-2853"
+          ],
+          "requirementIds": [
+            "REQ-PLD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Liability assessment",
+            "Mandatory receive-only disclaimer"
+          ]
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "AIS consumer sales are subject to consumer terms, guarantee and fair-claims rules, including the prohibition on transponder/collision-avoidance claims.",
+          "legalSourceIds": [
+            "SRC-ES-TRLGDCU-RDL-1-2007",
+            "SRC-EU-UCPD-2005-29"
+          ],
+          "requirementIds": [
+            "REQ-CRD-01",
+            "REQ-CSD-01",
+            "REQ-UCPD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Consumer terms",
+            "AIS disclaimer"
+          ]
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "APPLICABLE",
+          "rationale": "AIS reception uses maritime radio frequencies; the receiver must be authorised/conformant and no transmission may be offered. Transmission would require a maritime radio authorisation MAREA does not hold.",
+          "legalSourceIds": [
+            "SRC-ES-LGT-11-2022",
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [
+            "REQ-ES-LGT-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Receive-only no-transmit evidence",
+            "Receiver conformity"
+          ]
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "A local receiver may process no personal data; AIS-CONNECTED or fleet-shared data can identify vessels and owners, bringing GDPR into scope.",
+          "legalSourceIds": [
+            "SRC-EU-GDPR-2016-679"
+          ],
+          "requirementIds": [
+            "REQ-GDPR-01"
+          ],
+          "condition": "AIS data is transmitted to EMBARCARTE or shared with other users.",
+          "evidenceRequired": [
+            "Data-flow map",
+            "Privacy notice"
+          ]
+        }
+      ],
+      "summary": {
+        "applicable": 7,
+        "conditional": 3,
+        "notApplicable": 4,
+        "undetermined": 0
+      }
+    },
+    {
+      "productFamilyId": "PILOT",
+      "displayName": "MAREA PILOT",
+      "productType": "Supervised steering controller and drive interface (safety gate BLOCKED)",
+      "editions": [
+        "PILOT-COASTAL",
+        "PILOT-SAIL",
+        "PILOT-PRO"
+      ],
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "PILOT includes active electronics and motor drive interfaces; if the product is radio equipment the RED carries the EMC requirement, otherwise the EMC Directive applies.",
+          "legalSourceIds": [
+            "SRC-EU-EMC-2014-30"
+          ],
+          "requirementIds": [
+            "REQ-EMC-01"
+          ],
+          "condition": "The shipped controller is not radio equipment.",
+          "evidenceRequired": [
+            "EMC test report"
+          ]
+        },
+        {
+          "instrumentId": "RED",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "A remote control or wireless link would make PILOT radio equipment; a wired-only controller is not.",
+          "legalSourceIds": [
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [
+            "REQ-RED-01"
+          ],
+          "condition": "A wireless control or telemetry radio is integrated.",
+          "evidenceRequired": [
+            "Radio conformity report"
+          ]
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "PILOT is normally 12/24 V DC; a mains-powered variant would fall within the LVD scope.",
+          "legalSourceIds": [
+            "SRC-EU-LVD-2014-35"
+          ],
+          "requirementIds": [
+            "REQ-LVD-01"
+          ],
+          "condition": "A mains-powered variant is placed on the market.",
+          "evidenceRequired": [
+            "Voltage-scope analysis"
+          ]
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "PILOT is a consumer product with safety implications; GPSR safety, traceability and incident duties apply, and the safety gate must keep it off the market.",
+          "legalSourceIds": [
+            "SRC-EU-GPSR-2023-988"
+          ],
+          "requirementIds": [
+            "REQ-GPSR-01",
+            "REQ-GPSR-04"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Safety case",
+            "Risk assessment"
+          ]
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "APPLICABLE",
+          "rationale": "PILOT is a connected product with digital elements; CRA security, update and reporting duties apply alongside the safety gate.",
+          "legalSourceIds": [
+            "SRC-EU-CRA-2024-2847"
+          ],
+          "requirementIds": [
+            "REQ-CRA-01",
+            "REQ-CRA-02",
+            "REQ-CRA-04"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "CRA documentation",
+            "Security tests"
+          ]
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "PILOT is electrical equipment subject to RoHS.",
+          "legalSourceIds": [
+            "SRC-EU-ROHS-2011-65"
+          ],
+          "requirementIds": [
+            "REQ-ROHS-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Material declarations"
+          ]
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "PILOT is EEE placed on the Spanish market, if it were ever placed, and producer responsibility would apply.",
+          "legalSourceIds": [
+            "SRC-EU-WEEE-2012-19"
+          ],
+          "requirementIds": [
+            "REQ-WEEE-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Producer registration"
+          ]
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "A backup battery in the controller would bring the Batteries Regulation into scope.",
+          "legalSourceIds": [
+            "SRC-EU-BATTERIES-2023-1542"
+          ],
+          "requirementIds": [
+            "REQ-BAT-01"
+          ],
+          "condition": "A battery is included in the product.",
+          "evidenceRequired": [
+            "Battery analysis"
+          ]
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "UNDETERMINED",
+          "rationale": "Whether a steering controller is a 'component' under the RCD or an add-on outside its scope has not been determined; the answer changes the conformity route and cannot be assumed.",
+          "legalSourceIds": [
+            "SRC-EU-RCD-2013-53"
+          ],
+          "requirementIds": [
+            "REQ-RCD-01"
+          ],
+          "condition": "A product-scope legal analysis determines whether PILOT is RCD-covered.",
+          "evidenceRequired": [
+            "RCD scope legal analysis"
+          ]
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "PILOT is not shipborne MED equipment and no wheelmark claim is made.",
+          "legalSourceIds": [
+            "SRC-EU-MED-2014-90"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "A steering product is a high-risk product; the PLD applies to hardware and software, and the safety gate must remain closed until the liability assessment is complete.",
+          "legalSourceIds": [
+            "SRC-EU-PLD-2024-2853"
+          ],
+          "requirementIds": [
+            "REQ-PLD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Safety case",
+            "Liability assessment",
+            "Insurance indication"
+          ]
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "Any consumer offer would be subject to consumer and fair-claims law; PILOT must not be offered while the safety gate is BLOCKED.",
+          "legalSourceIds": [
+            "SRC-ES-TRLGDCU-RDL-1-2007",
+            "SRC-EU-UCPD-2005-29"
+          ],
+          "requirementIds": [
+            "REQ-CRD-01",
+            "REQ-UCPD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Consumer terms",
+            "Supervised-only disclaimers"
+          ]
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Any wireless link would require radio conformity and authorised spectrum use; a wired-only installation is not radio equipment.",
+          "legalSourceIds": [
+            "SRC-ES-LGT-11-2022"
+          ],
+          "requirementIds": [
+            "REQ-ES-LGT-01"
+          ],
+          "condition": "A wireless remote or telemetry link is shipped.",
+          "evidenceRequired": [
+            "Radio conformity evidence"
+          ]
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "PILOT may process vessel position and control data; if linked to an account or cloud, GDPR applies.",
+          "legalSourceIds": [
+            "SRC-EU-GDPR-2016-679"
+          ],
+          "requirementIds": [
+            "REQ-GDPR-01"
+          ],
+          "condition": "Control/telemetry data is linked to an identified user or vessel owner.",
+          "evidenceRequired": [
+            "Data-flow map",
+            "Privacy notice"
+          ]
+        }
+      ],
+      "summary": {
+        "applicable": 6,
+        "conditional": 6,
+        "notApplicable": 1,
+        "undetermined": 1
+      }
+    },
+    {
+      "productFamilyId": "SENSE",
+      "displayName": "MAREA SENSE",
+      "productType": "Marine sensor modules and kits",
+      "editions": [
+        "SENSE-WIND",
+        "SENSE-POWER",
+        "SENSE-BILGE",
+        "SENSE-TANKS",
+        "SENSE-ENV",
+        "SENSE-ESSENTIALS",
+        "SENSE-SAIL",
+        "SENSE-SYSTEMS"
+      ],
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "APPLICABLE",
+          "rationale": "SENSE modules are active electronic apparatus placed on the market; EMC essential requirements apply unless a module is radio equipment covered by the RED.",
+          "legalSourceIds": [
+            "SRC-EU-EMC-2014-30"
+          ],
+          "requirementIds": [
+            "REQ-EMC-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "EMC test report"
+          ]
+        },
+        {
+          "instrumentId": "RED",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Wireless sensor variants (for example wireless wind or tank sensors) are radio equipment; wired variants are not.",
+          "legalSourceIds": [
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [
+            "REQ-RED-01"
+          ],
+          "condition": "The module intentionally transmits or receives radio waves.",
+          "evidenceRequired": [
+            "Radio test report"
+          ]
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "SENSE modules are normally 12/24 V DC and outside the LVD scope; a mains-powered variant would be in scope.",
+          "legalSourceIds": [
+            "SRC-EU-LVD-2014-35"
+          ],
+          "requirementIds": [
+            "REQ-LVD-01"
+          ],
+          "condition": "A mains-powered variant is placed on the market.",
+          "evidenceRequired": [
+            "Voltage-scope analysis"
+          ]
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "SENSE is a consumer product placed on the market; safety, installation warnings and traceability apply.",
+          "legalSourceIds": [
+            "SRC-EU-GPSR-2023-988"
+          ],
+          "requirementIds": [
+            "REQ-GPSR-01",
+            "REQ-GPSR-02"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Risk assessment",
+            "Installation warnings"
+          ]
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Network-connected SENSE modules shipped with firmware fall in scope; a dumb analogue sensor without digital elements may not.",
+          "legalSourceIds": [
+            "SRC-EU-CRA-2024-2847"
+          ],
+          "requirementIds": [
+            "REQ-CRA-01"
+          ],
+          "condition": "The module ships firmware or network connectivity.",
+          "evidenceRequired": [
+            "CRA scope analysis",
+            "Firmware update process"
+          ]
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "SENSE is electrical and electronic equipment subject to RoHS.",
+          "legalSourceIds": [
+            "SRC-EU-ROHS-2011-65"
+          ],
+          "requirementIds": [
+            "REQ-ROHS-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Material declarations"
+          ]
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "SENSE is EEE placed on the Spanish market; producer responsibility applies.",
+          "legalSourceIds": [
+            "SRC-EU-WEEE-2012-19"
+          ],
+          "requirementIds": [
+            "REQ-WEEE-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Producer registration"
+          ]
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Battery-powered sensor variants bring the Batteries Regulation into scope; wired variants do not contain batteries.",
+          "legalSourceIds": [
+            "SRC-EU-BATTERIES-2023-1542"
+          ],
+          "requirementIds": [
+            "REQ-BAT-01"
+          ],
+          "condition": "A battery is integrated or supplied.",
+          "evidenceRequired": [
+            "Battery analysis"
+          ]
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "SENSE modules are not recreational craft or RCD-listed components.",
+          "legalSourceIds": [
+            "SRC-EU-RCD-2013-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "SENSE is not shipborne MED equipment and no wheelmark is claimed.",
+          "legalSourceIds": [
+            "SRC-EU-MED-2014-90"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "Incorrect sensor measurements can cause reliance loss; the PLD applies to the hardware and firmware.",
+          "legalSourceIds": [
+            "SRC-EU-PLD-2024-2853"
+          ],
+          "requirementIds": [
+            "REQ-PLD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Accuracy evidence",
+            "Liability assessment"
+          ]
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "SENSE consumer sales are subject to consumer terms, guarantee and accurate measurement claims.",
+          "legalSourceIds": [
+            "SRC-ES-TRLGDCU-RDL-1-2007",
+            "SRC-EU-UCPD-2005-29"
+          ],
+          "requirementIds": [
+            "REQ-CSD-01",
+            "REQ-UCPD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Consumer terms",
+            "Measurement limits"
+          ]
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Wireless sensors require radio conformity and authorised spectrum use.",
+          "legalSourceIds": [
+            "SRC-ES-LGT-11-2022"
+          ],
+          "requirementIds": [
+            "REQ-ES-LGT-01"
+          ],
+          "condition": "The module uses a radio link.",
+          "evidenceRequired": [
+            "Radio conformity evidence"
+          ]
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "A local sensor may process no personal data; cloud-synced sensor data linked to a vessel or owner falls within GDPR.",
+          "legalSourceIds": [
+            "SRC-EU-GDPR-2016-679"
+          ],
+          "requirementIds": [
+            "REQ-GDPR-01"
+          ],
+          "condition": "Measurements are linked to an identified user or vessel.",
+          "evidenceRequired": [
+            "Data-flow map"
+          ]
+        }
+      ],
+      "summary": {
+        "applicable": 6,
+        "conditional": 6,
+        "notApplicable": 2,
+        "undetermined": 0
+      }
+    },
+    {
+      "productFamilyId": "WATCH",
+      "displayName": "MAREA WATCH",
+      "productType": "Connected remote monitoring device and alert service",
+      "editions": [
+        "WATCH-CORE",
+        "WATCH-PLUS"
+      ],
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WATCH includes cellular radio equipment; the RED carries the EMC essential requirement and the EMC Directive does not additionally apply to radio equipment covered by the RED.",
+          "legalSourceIds": [
+            "SRC-EU-EMC-2014-30",
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "RED",
+          "status": "APPLICABLE",
+          "rationale": "WATCH intentionally transmits over cellular networks and is radio equipment; RED essential requirements and conformity assessment apply.",
+          "legalSourceIds": [
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [
+            "REQ-RED-01",
+            "REQ-RED-02"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Radio test report",
+            "DoC"
+          ]
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "WATCH is battery-powered and normally outside the LVD scope; a supplied mains charger within the voltage limits would bring the charger into scope.",
+          "legalSourceIds": [
+            "SRC-EU-LVD-2014-35"
+          ],
+          "requirementIds": [
+            "REQ-LVD-01"
+          ],
+          "condition": "A mains charger or power supply is supplied with the product.",
+          "evidenceRequired": [
+            "Charger conformity"
+          ]
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "WATCH is a consumer product with safety and monitoring implications; GPSR safety, traceability and incident duties apply.",
+          "legalSourceIds": [
+            "SRC-EU-GPSR-2023-988"
+          ],
+          "requirementIds": [
+            "REQ-GPSR-01",
+            "REQ-GPSR-02"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Risk assessment",
+            "Battery and installation warnings"
+          ]
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "APPLICABLE",
+          "rationale": "WATCH is a connected product with digital elements and a cloud service; CRA essential requirements, vulnerability handling, support period and reporting apply.",
+          "legalSourceIds": [
+            "SRC-EU-CRA-2024-2847"
+          ],
+          "requirementIds": [
+            "REQ-CRA-01",
+            "REQ-CRA-02",
+            "REQ-CRA-03",
+            "REQ-CRA-04",
+            "REQ-CRA-05"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "CRA documentation",
+            "Security update policy",
+            "Incident runbook"
+          ]
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "WATCH is EEE subject to RoHS.",
+          "legalSourceIds": [
+            "SRC-EU-ROHS-2011-65"
+          ],
+          "requirementIds": [
+            "REQ-ROHS-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Material declarations"
+          ]
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "WATCH is EEE placed on the Spanish market; producer responsibility applies.",
+          "legalSourceIds": [
+            "SRC-EU-WEEE-2012-19"
+          ],
+          "requirementIds": [
+            "REQ-WEEE-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Producer registration"
+          ]
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "APPLICABLE",
+          "rationale": "WATCH contains a battery placed on the market with the product; the Batteries Regulation applies.",
+          "legalSourceIds": [
+            "SRC-EU-BATTERIES-2023-1542"
+          ],
+          "requirementIds": [
+            "REQ-BAT-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Battery analysis",
+            "Labelling and take-back"
+          ]
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WATCH is not a recreational craft or RCD-listed component.",
+          "legalSourceIds": [
+            "SRC-EU-RCD-2013-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WATCH is not shipborne MED equipment and no wheelmark is claimed.",
+          "legalSourceIds": [
+            "SRC-EU-MED-2014-90"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "Missed or delayed alerts and device defects can cause reliance loss; the PLD applies to the device and service.",
+          "legalSourceIds": [
+            "SRC-EU-PLD-2024-2853"
+          ],
+          "requirementIds": [
+            "REQ-PLD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Delivery evidence",
+            "Liability assessment"
+          ]
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "WATCH hardware and subscription sales are subject to consumer terms, the 3-year guarantee and fair-claims rules; no guaranteed alert claim is allowed.",
+          "legalSourceIds": [
+            "SRC-ES-TRLGDCU-RDL-1-2007",
+            "SRC-EU-DCD-2019-770",
+            "SRC-EU-UCPD-2005-29"
+          ],
+          "requirementIds": [
+            "REQ-CRD-01",
+            "REQ-CSD-01",
+            "REQ-DCD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Consumer terms",
+            "Subscription terms"
+          ]
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "APPLICABLE",
+          "rationale": "Cellular transmission uses licensed spectrum through an operator; the device must be radio-conformant and the connectivity contract must exist.",
+          "legalSourceIds": [
+            "SRC-ES-LGT-11-2022"
+          ],
+          "requirementIds": [
+            "REQ-ES-LGT-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Radio conformity",
+            "Connectivity contract"
+          ]
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "WATCH processes location, vessel identity, account data and alert recipients; a DPIA is likely required.",
+          "legalSourceIds": [
+            "SRC-EU-GDPR-2016-679",
+            "SRC-ES-LOPDGDD-3-2018"
+          ],
+          "requirementIds": [
+            "REQ-GDPR-01",
+            "REQ-GDPR-02",
+            "REQ-GDPR-06"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "DPIA",
+            "Privacy notice",
+            "DPA"
+          ]
+        }
+      ],
+      "summary": {
+        "applicable": 10,
+        "conditional": 1,
+        "notApplicable": 3,
+        "undetermined": 0
+      }
+    },
+    {
+      "productFamilyId": "DISPLAY",
+      "displayName": "MAREA DISPLAY",
+      "productType": "Marine display and embedded runtime",
+      "editions": [
+        "DISPLAY-7",
+        "DISPLAY-LARGE-CONDITIONAL"
+      ],
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "APPLICABLE",
+          "rationale": "DISPLAY is active electronic apparatus; EMC essential requirements apply unless it is radio equipment covered by the RED.",
+          "legalSourceIds": [
+            "SRC-EU-EMC-2014-30"
+          ],
+          "requirementIds": [
+            "REQ-EMC-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "EMC test report"
+          ]
+        },
+        {
+          "instrumentId": "RED",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "A DISPLAY with Wi-Fi/Bluetooth or cellular connectivity is radio equipment; a wired-only display is not.",
+          "legalSourceIds": [
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [
+            "REQ-RED-01"
+          ],
+          "condition": "A radio module is integrated into the shipped DISPLAY.",
+          "evidenceRequired": [
+            "Radio test report"
+          ]
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "DISPLAY is normally 12/24 V DC and outside the LVD scope; a mains-powered variant or supplied power supply within the voltage limits is in scope.",
+          "legalSourceIds": [
+            "SRC-EU-LVD-2014-35"
+          ],
+          "requirementIds": [
+            "REQ-LVD-01"
+          ],
+          "condition": "A mains-voltage variant or power supply is placed on the market.",
+          "evidenceRequired": [
+            "Electrical safety test"
+          ]
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "DISPLAY is a consumer product placed on the market; safety, traceability and installation warnings apply.",
+          "legalSourceIds": [
+            "SRC-EU-GPSR-2023-988"
+          ],
+          "requirementIds": [
+            "REQ-GPSR-01",
+            "REQ-GPSR-02"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Risk assessment",
+            "Installation warnings"
+          ]
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "APPLICABLE",
+          "rationale": "DISPLAY ships firmware and network capability; CRA essential requirements and lifecycle duties apply.",
+          "legalSourceIds": [
+            "SRC-EU-CRA-2024-2847"
+          ],
+          "requirementIds": [
+            "REQ-CRA-01",
+            "REQ-CRA-02",
+            "REQ-CRA-03"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "CRA documentation",
+            "Update policy"
+          ]
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "DISPLAY is EEE subject to RoHS.",
+          "legalSourceIds": [
+            "SRC-EU-ROHS-2011-65"
+          ],
+          "requirementIds": [
+            "REQ-ROHS-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Material declarations"
+          ]
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "DISPLAY is EEE placed on the Spanish market; producer responsibility applies.",
+          "legalSourceIds": [
+            "SRC-EU-WEEE-2012-19"
+          ],
+          "requirementIds": [
+            "REQ-WEEE-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Producer registration"
+          ]
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "A backup battery inside DISPLAY would bring the Batteries Regulation into scope.",
+          "legalSourceIds": [
+            "SRC-EU-BATTERIES-2023-1542"
+          ],
+          "requirementIds": [
+            "REQ-BAT-01"
+          ],
+          "condition": "A battery is integrated into the display.",
+          "evidenceRequired": [
+            "Battery analysis"
+          ]
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "UNDETERMINED",
+          "rationale": "Whether a display installed as a fixed navigation instrument is an RCD-covered component has not been determined; a scope analysis is required before any conformity route is chosen.",
+          "legalSourceIds": [
+            "SRC-EU-RCD-2013-53"
+          ],
+          "requirementIds": [
+            "REQ-RCD-01"
+          ],
+          "condition": "A product-scope legal analysis determines RCD coverage.",
+          "evidenceRequired": [
+            "RCD scope legal analysis"
+          ]
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "DISPLAY is not shipborne MED equipment and no wheelmark is claimed.",
+          "legalSourceIds": [
+            "SRC-EU-MED-2014-90"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "A defective display or runtime can mislead navigation; the PLD applies.",
+          "legalSourceIds": [
+            "SRC-EU-PLD-2024-2853"
+          ],
+          "requirementIds": [
+            "REQ-PLD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Liability assessment"
+          ]
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "DISPLAY consumer sales are subject to consumer terms and fair-claims rules.",
+          "legalSourceIds": [
+            "SRC-ES-TRLGDCU-RDL-1-2007",
+            "SRC-EU-UCPD-2005-29"
+          ],
+          "requirementIds": [
+            "REQ-CRD-01",
+            "REQ-CSD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Consumer terms"
+          ]
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Wireless display variants require radio conformity and authorised spectrum use.",
+          "legalSourceIds": [
+            "SRC-ES-LGT-11-2022"
+          ],
+          "requirementIds": [
+            "REQ-ES-LGT-01"
+          ],
+          "condition": "The display uses a radio link.",
+          "evidenceRequired": [
+            "Radio conformity evidence"
+          ]
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "A local display may process no personal data; cloud-linked chart/track data can be personal data.",
+          "legalSourceIds": [
+            "SRC-EU-GDPR-2016-679"
+          ],
+          "requirementIds": [
+            "REQ-GDPR-01"
+          ],
+          "condition": "Display data is synced to an account or cloud service.",
+          "evidenceRequired": [
+            "Data-flow map"
+          ]
+        }
+      ],
+      "summary": {
+        "applicable": 7,
+        "conditional": 5,
+        "notApplicable": 1,
+        "undetermined": 1
+      }
+    },
+    {
+      "productFamilyId": "WEATHER",
+      "displayName": "MAREA WEATHER",
+      "productType": "Weather forecast subscription service with licensed data",
+      "editions": [
+        "WEATHER-STANDARD",
+        "WEATHER-PRO"
+      ],
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WEATHER is a data service, not electrical apparatus placed on the market; any hardware that displays it is assessed as its own product.",
+          "legalSourceIds": [
+            "SRC-EU-EMC-2014-30"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "RED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WEATHER performs no radio transmission or reception; connectivity belongs to the user's device or the WATCH/HUB hardware.",
+          "legalSourceIds": [
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WEATHER is a service with no electrical equipment within the LVD scope.",
+          "legalSourceIds": [
+            "SRC-EU-LVD-2014-35"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The GPSR applies to products, not to a forecast data service; if WEATHER is sold with a physical device, that device is assessed separately.",
+          "legalSourceIds": [
+            "SRC-EU-GPSR-2023-988"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "A remote data service alone is generally outside the CRA's 'product with digital elements' scope, but the CRA may apply where the service is integral to a product or the client software is placed on the market.",
+          "legalSourceIds": [
+            "SRC-EU-CRA-2024-2847"
+          ],
+          "requirementIds": [
+            "REQ-CRA-01"
+          ],
+          "condition": "The CRA consolidated scope analysis concludes that the service or app is in scope.",
+          "evidenceRequired": [
+            "CRA scope analysis"
+          ]
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WEATHER software/data has no electrical equipment; RoHS applies to the hardware that displays it.",
+          "legalSourceIds": [
+            "SRC-EU-ROHS-2011-65"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WEEE applies to EEE, not to a subscription service; the hardware falls to be registered separately.",
+          "legalSourceIds": [
+            "SRC-EU-WEEE-2012-19"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The WEATHER offering is a software or data service and contains no battery placed on the market; the Batteries Regulation applies to battery-containing hardware, not to the service itself.",
+          "legalSourceIds": [
+            "SRC-EU-BATTERIES-2023-1542"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WEATHER is not a recreational craft or RCD component.",
+          "legalSourceIds": [
+            "SRC-EU-RCD-2013-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WEATHER is not shipborne MED equipment and no wheelmark is claimed.",
+          "legalSourceIds": [
+            "SRC-EU-MED-2014-90"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "The revised PLD covers software and digital services; forecast errors presented as reliable can ground liability.",
+          "legalSourceIds": [
+            "SRC-EU-PLD-2024-2853"
+          ],
+          "requirementIds": [
+            "REQ-PLD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Disclaimer and limits",
+            "Liability assessment"
+          ]
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "Weather subscriptions are digital services subject to DCD, CRD and fair-claims rules, including probabilistic-forecast disclosures.",
+          "legalSourceIds": [
+            "SRC-EU-DCD-2019-770",
+            "SRC-EU-CRD-2011-83",
+            "SRC-EU-UCPD-2005-29"
+          ],
+          "requirementIds": [
+            "REQ-DCD-01",
+            "REQ-CRD-01",
+            "REQ-UCPD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Subscription terms",
+            "Forecast disclaimers"
+          ]
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WEATHER does not transmit or receive radio signals itself.",
+          "legalSourceIds": [
+            "SRC-ES-LGT-11-2022"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "WEATHER processes account data and possibly location preferences, so GDPR transparency and lawful basis apply.",
+          "legalSourceIds": [
+            "SRC-EU-GDPR-2016-679"
+          ],
+          "requirementIds": [
+            "REQ-GDPR-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Privacy notice",
+            "Retention schedule"
+          ]
+        }
+      ],
+      "summary": {
+        "applicable": 3,
+        "conditional": 1,
+        "notApplicable": 10,
+        "undetermined": 0
+      }
+    },
+    {
+      "productFamilyId": "FLEET",
+      "displayName": "MAREA FLEET",
+      "productType": "Multi-tenant B2B fleet monitoring SaaS",
+      "editions": [
+        "FLEET-START",
+        "FLEET-BUSINESS",
+        "FLEET-ENTERPRISE"
+      ],
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is a hosted B2B service; any hardware used with it is a separate product assessed in its own family.",
+          "legalSourceIds": [
+            "SRC-EU-EMC-2014-30"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "RED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET performs no radio transmission or reception itself.",
+          "legalSourceIds": [
+            "SRC-EU-RED-2014-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is a software service with no electrical equipment.",
+          "legalSourceIds": [
+            "SRC-EU-LVD-2014-35"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is not a product placed on the market; GPSR does not apply to a pure SaaS offering.",
+          "legalSourceIds": [
+            "SRC-EU-GPSR-2023-988"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "The CRA addresses products with digital elements; a pure SaaS service is generally outside its scope, but integrated clients or remote-processing features that are part of a product can bring obligations.",
+          "legalSourceIds": [
+            "SRC-EU-CRA-2024-2847"
+          ],
+          "requirementIds": [
+            "REQ-CRA-01"
+          ],
+          "condition": "The CRA scope analysis concludes FLEET or its client software is in scope.",
+          "evidenceRequired": [
+            "CRA scope analysis"
+          ]
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is software and contains no EEE subject to RoHS.",
+          "legalSourceIds": [
+            "SRC-EU-ROHS-2011-65"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is not EEE placed on the market.",
+          "legalSourceIds": [
+            "SRC-EU-WEEE-2012-19"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The FLEET offering is a software or data service and contains no battery placed on the market; the Batteries Regulation applies to battery-containing hardware, not to the service itself.",
+          "legalSourceIds": [
+            "SRC-EU-BATTERIES-2023-1542"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is not a recreational craft or RCD component.",
+          "legalSourceIds": [
+            "SRC-EU-RCD-2013-53"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is not shipborne MED equipment.",
+          "legalSourceIds": [
+            "SRC-EU-MED-2014-90"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "The revised PLD covers software; a defective fleet service can cause economic and safety-relevant loss.",
+          "legalSourceIds": [
+            "SRC-EU-PLD-2024-2853"
+          ],
+          "requirementIds": [
+            "REQ-PLD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "Liability assessment",
+            "B2B contract"
+          ]
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is defined as a B2B service sold to professional operators, so the consumer distance-selling rules (CRD) do not apply to that relationship; B2B terms and business-to-business fairness rules apply instead.",
+          "legalSourceIds": [
+            "SRC-ES-TRLGDCU-RDL-1-2007",
+            "SRC-EU-CRD-2011-83"
+          ],
+          "requirementIds": [
+            "REQ-CRD-01"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "B2B terms and DPA"
+          ]
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET does not transmit or receive radio signals; connectivity is provided by operators and devices.",
+          "legalSourceIds": [
+            "SRC-ES-LGT-11-2022"
+          ],
+          "requirementIds": [],
+          "condition": null,
+          "evidenceRequired": []
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "FLEET processes vessel and personnel data as processor/controller; GDPR, LOPDGDD and Article 28 DPA obligations apply, likely with a DPIA.",
+          "legalSourceIds": [
+            "SRC-EU-GDPR-2016-679",
+            "SRC-ES-LOPDGDD-3-2018"
+          ],
+          "requirementIds": [
+            "REQ-GDPR-01",
+            "REQ-GDPR-02",
+            "REQ-GDPR-03",
+            "REQ-GDPR-04",
+            "REQ-GDPR-06"
+          ],
+          "condition": null,
+          "evidenceRequired": [
+            "DPA",
+            "DPIA",
+            "Tenant isolation test"
+          ]
+        }
+      ],
+      "summary": {
+        "applicable": 2,
+        "conditional": 1,
+        "notApplicable": 11,
+        "undetermined": 0
+      }
+    }
+  ],
+  "bundleAssessments": [
+    {
+      "bundleId": "START",
+      "displayName": "MAREA START",
+      "includedProducts": [
+        "NAV",
+        "HUB"
+      ],
+      "bundleType": "Mixed hardware plus software, entry solution",
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes HUB apparatus, so the EMC Directive applies to the hardware component unless HUB is radio equipment under the RED.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RED",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Applies if the bundled HUB includes a radio module.",
+          "condition": "The shipped HUB contains a radio module."
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only a mains-powered variant or supplied power supply would fall within the LVD scope.",
+          "condition": "A mains-voltage component is included."
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes products placed on the market, so GPSR safety and traceability duties apply.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "APPLICABLE",
+          "rationale": "NAV and HUB are products with digital elements and connected capabilities, so CRA duties apply to the bundle's software and firmware.",
+          "condition": null
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "HUB is EEE and subject to RoHS.",
+          "condition": null
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "HUB is EEE placed on the Spanish market; producer responsibility applies.",
+          "condition": null
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only if the shipped bundle includes a battery or battery-powered accessory.",
+          "condition": "A battery is included."
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The bundle contains electronics and software, not a recreational craft or an RCD-listed component.",
+          "condition": null
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The bundle is not shipborne MED equipment and no wheelmark is claimed.",
+          "condition": null
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes software and connected hardware within the revised PLD scope.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "The bundle is offered to consumers, so CRD/CSD, Spanish guarantee rules and fair-claims law apply.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only if the shipped hardware transmits radio signals.",
+          "condition": "The HUB transmits radio signals."
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "NAV/HUB account and telemetry data are personal data, so GDPR duties apply.",
+          "condition": null
+        }
+      ],
+      "summary": {
+        "applicable": 8,
+        "conditional": 4,
+        "notApplicable": 2,
+        "undetermined": 0
+      }
+    },
+    {
+      "bundleId": "CRUISE",
+      "displayName": "MAREA CRUISE",
+      "includedProducts": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "DISPLAY"
+      ],
+      "bundleType": "Mixed hardware, radio receiver, display and software",
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes HUB and DISPLAY apparatus subject to the EMC Directive or, for radio equipment, the RED's EMC requirement.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RED",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes AIS radio receiver equipment; the RED applies to that equipment and to any radio-enabled HUB/DISPLAY.",
+          "condition": null
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only a mains-powered variant or supplied power supply within the voltage limits would be in scope.",
+          "condition": "A mains-voltage component is included."
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes products placed on the market; GPSR safety and traceability duties apply.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes connected products with digital elements; CRA duties attach to those products and their updates.",
+          "condition": null
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes EEE subject to RoHS.",
+          "condition": null
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes EEE placed on the Spanish market; producer responsibility applies.",
+          "condition": null
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only if the shipped bundle includes a battery or battery-powered accessory.",
+          "condition": "A battery is included."
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The bundle is not a recreational craft or an RCD-listed component; the craft's own conformity remains the builder's responsibility.",
+          "condition": null
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The bundle is not shipborne MED equipment and no wheelmark is claimed.",
+          "condition": null
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes software and connected hardware within the revised PLD scope.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "The bundle is offered to consumers and must satisfy consumer terms, guarantee and claims rules.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "APPLICABLE",
+          "rationale": "The AIS receiver uses maritime radio frequencies in receive-only mode, which must be authorised and must not offer transmission.",
+          "condition": null
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "Account, location and AIS-derived data can identify users and vessels; GDPR applies.",
+          "condition": null
+        }
+      ],
+      "summary": {
+        "applicable": 10,
+        "conditional": 2,
+        "notApplicable": 2,
+        "undetermined": 0
+      }
+    },
+    {
+      "bundleId": "SAIL",
+      "displayName": "MAREA SAIL",
+      "includedProducts": [
+        "NAV",
+        "HUB",
+        "PILOT",
+        "SENSE"
+      ],
+      "bundleType": "Sailing solution including supervised steering controller",
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "The bundle includes HUB/SENSE/PILOT electronics; the EMC Directive applies unless the equipment is radio equipment covered by the RED.",
+          "condition": "The shipped hardware is not radio equipment."
+        },
+        {
+          "instrumentId": "RED",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Applies if any bundled device includes a radio module or wireless link.",
+          "condition": "A radio module or wireless link is shipped."
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only a mains-powered component would be in scope.",
+          "condition": "A mains-voltage component is included."
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes products placed on the market, and PILOT raises safety duties that the GPSR reinforces.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes connected products with digital elements, including PILOT's control software.",
+          "condition": null
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes EEE subject to RoHS.",
+          "condition": null
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes EEE placed on the Spanish market; producer responsibility applies.",
+          "condition": null
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only if the shipped bundle includes a battery.",
+          "condition": "A battery is included."
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "UNDETERMINED",
+          "rationale": "Whether PILOT is an RCD-covered component or an add-on outside the RCD scope has not been determined; the answer changes the conformity route for the bundle.",
+          "condition": "A product-scope legal analysis determines RCD coverage."
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The bundle is not shipborne MED equipment and no wheelmark is claimed.",
+          "condition": null
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes software and a steering product within the revised PLD scope; the safety gate must keep PILOT off the market.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "Consumer bundle sales are subject to consumer terms and fair-claims rules, and PILOT must not be sold while the gate is BLOCKED.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only if a wireless link is shipped with the bundled devices.",
+          "condition": "A wireless link is shipped."
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "The bundle processes account, vessel and control data linked to identified users; GDPR applies.",
+          "condition": null
+        }
+      ],
+      "summary": {
+        "applicable": 7,
+        "conditional": 5,
+        "notApplicable": 1,
+        "undetermined": 1
+      }
+    },
+    {
+      "bundleId": "PROTECT",
+      "displayName": "MAREA PROTECT",
+      "includedProducts": [
+        "WATCH",
+        "SENSE"
+      ],
+      "bundleType": "Monitoring solution combining WATCH device, service and sensors",
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "WATCH is radio equipment; the RED carries the EMC requirement and the EMC Directive does not additionally apply to radio equipment covered by the RED.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RED",
+          "status": "APPLICABLE",
+          "rationale": "WATCH is cellular radio equipment and the bundle includes SENSE wireless modules if those variants are shipped.",
+          "condition": null
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only a mains charger or power supply within the voltage limits would be in scope.",
+          "condition": "A mains charger is supplied."
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes products placed on the market; GPSR safety, traceability and incident duties apply.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "APPLICABLE",
+          "rationale": "WATCH and bundled sensors are connected products with digital elements; CRA duties apply, including service incident reporting.",
+          "condition": null
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes EEE subject to RoHS.",
+          "condition": null
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes EEE placed on the Spanish market; producer responsibility applies.",
+          "condition": null
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "APPLICABLE",
+          "rationale": "WATCH contains a battery placed on the market with the product.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The bundle contains electronics and a service, not a recreational craft or RCD component.",
+          "condition": null
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The bundle is not shipborne MED equipment and no wheelmark is claimed.",
+          "condition": null
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "Missed alerts or defective sensors can cause reliance loss; the revised PLD applies.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "The bundle is offered to consumers with a subscription, so CRD/CSD/DCD and fair-claims rules apply.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "APPLICABLE",
+          "rationale": "WATCH transmits over licensed cellular spectrum through an operator and must be radio-conformant.",
+          "condition": null
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "WATCH processes vessel location, owner identity and alert recipients; a DPIA is likely required.",
+          "condition": null
+        }
+      ],
+      "summary": {
+        "applicable": 10,
+        "conditional": 1,
+        "notApplicable": 3,
+        "undetermined": 0
+      }
+    },
+    {
+      "bundleId": "COMPLETE",
+      "displayName": "MAREA COMPLETE",
+      "includedProducts": [
+        "NAV",
+        "HUB",
+        "DISPLAY",
+        "WATCH",
+        "SENSE",
+        "PILOT"
+      ],
+      "bundleType": "Full ecosystem solution including monitoring and supervised steering",
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes multiple apparatuses; the EMC Directive applies except where the RED carries the requirement for radio equipment.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RED",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes WATCH cellular radio equipment and AIS receiver radio equipment.",
+          "condition": null
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only a mains-powered component would be in scope.",
+          "condition": "A mains-voltage component is included."
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes multiple products placed on the market, including safety-relevant steering hardware.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "APPLICABLE",
+          "rationale": "All connected components and their software fall within the CRA's product-with-digital-elements scope.",
+          "condition": null
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes EEE subject to RoHS.",
+          "condition": null
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes EEE placed on the Spanish market; producer responsibility applies.",
+          "condition": null
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "APPLICABLE",
+          "rationale": "WATCH and possibly other bundled devices contain batteries.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "UNDETERMINED",
+          "rationale": "The RCD coverage of the display/steering components is undetermined and changes the bundle conformity route.",
+          "condition": "A product-scope legal analysis determines RCD coverage."
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The bundle is not shipborne MED equipment and no wheelmark is claimed.",
+          "condition": null
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes software, sensors and a steering product, all within the revised PLD scope.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "APPLICABLE",
+          "rationale": "The bundle is offered to consumers; consumer, subscription and claims rules apply, and PILOT must remain unsellable.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "APPLICABLE",
+          "rationale": "The bundle includes cellular radio equipment and an AIS receiver operating on maritime frequencies.",
+          "condition": null
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "The bundle processes location, vessel, owner and control data across multiple services; GDPR and DPIA duties apply.",
+          "condition": null
+        }
+      ],
+      "summary": {
+        "applicable": 11,
+        "conditional": 1,
+        "notApplicable": 1,
+        "undetermined": 1
+      }
+    },
+    {
+      "bundleId": "FLEET",
+      "displayName": "MAREA FLEET package",
+      "includedProducts": [
+        "FLEET",
+        "WATCH"
+      ],
+      "bundleType": "B2B fleet SaaS with optional monitoring hardware",
+      "assessments": [
+        {
+          "instrumentId": "EMC",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The FLEET SaaS itself is not apparatus; any WATCH hardware included is radio equipment assessed under the RED.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RED",
+          "status": "APPLICABLE",
+          "rationale": "The package includes WATCH cellular radio equipment, so RED duties apply to that hardware.",
+          "condition": null
+        },
+        {
+          "instrumentId": "LVD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "The SaaS has no electrical equipment within the LVD scope; a supplied charger would be assessed separately.",
+          "condition": null
+        },
+        {
+          "instrumentId": "GPSR",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "GPSR applies to any physical product included in the package (for example WATCH), not to the SaaS itself.",
+          "condition": "Physical hardware is included in the package."
+        },
+        {
+          "instrumentId": "CRA",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "WATCH hardware is in scope; the SaaS alone is generally outside the CRA, but integrated clients may be covered.",
+          "condition": "Hardware or client software is supplied as part of the package."
+        },
+        {
+          "instrumentId": "ROHS",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only the hardware component of the package is subject to RoHS.",
+          "condition": "Physical hardware is included."
+        },
+        {
+          "instrumentId": "WEEE",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only the hardware component is subject to WEEE producer responsibility.",
+          "condition": "Physical hardware is included."
+        },
+        {
+          "instrumentId": "BATTERIES",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Only if battery-powered hardware is included.",
+          "condition": "Battery-powered hardware is included."
+        },
+        {
+          "instrumentId": "RCD",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is a B2B SaaS package, not a recreational craft or RCD component.",
+          "condition": null
+        },
+        {
+          "instrumentId": "MED",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is not shipborne MED equipment and no wheelmark is claimed.",
+          "condition": null
+        },
+        {
+          "instrumentId": "PLD",
+          "status": "APPLICABLE",
+          "rationale": "The FLEET service is software within the revised PLD scope, and the included hardware adds product-liability exposure.",
+          "condition": null
+        },
+        {
+          "instrumentId": "CONSUMER_COMMERCIAL",
+          "status": "NOT_APPLICABLE_WITH_REASON",
+          "rationale": "FLEET is a B2B package sold to professional fleet operators; consumer distance-selling rules do not apply to that relationship, and B2B terms govern instead.",
+          "condition": null
+        },
+        {
+          "instrumentId": "RADIO_SPECTRUM",
+          "status": "CONDITIONALLY_APPLICABLE",
+          "rationale": "Applies to the WATCH hardware included in the package, not to the SaaS.",
+          "condition": "WATCH hardware is included."
+        },
+        {
+          "instrumentId": "DATA_PROTECTION",
+          "status": "APPLICABLE",
+          "rationale": "FLEET processes vessel and personnel data as controller/processor; GDPR, LOPDGDD and DPA duties apply.",
+          "condition": null
+        }
+      ],
+      "summary": {
+        "applicable": 3,
+        "conditional": 6,
+        "notApplicable": 5,
+        "undetermined": 0
+      }
+    }
+  ]
+}

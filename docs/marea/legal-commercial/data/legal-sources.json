@@ -1,0 +1,3024 @@
+{
+  "contractId": "MAREA-MC14-LEGAL-SOURCES",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-14",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "jurisdictionScope": "ES + EU",
+  "researchDate": "2026-11-02",
+  "statusNote": "Internal legal research register. Not a legal opinion, not a clearance certificate and not advice. Official primary sources are recorded with retrieval dates; 'CONSUMED_FROM_PREDECESSOR_EVIDENCE' means the predecessor milestone recorded the source and this milestone did not re-retrieve the full text. 'NOT_RETRIEVED' sources are listed honestly and cannot support a compliance conclusion. An identified obligation is not compliance.",
+  "verificationVocabulary": [
+    "VERIFIED_THIS_SESSION",
+    "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+    "NOT_RETRIEVED",
+    "INACCESSIBLE",
+    "PARTIALLY_VERIFIED"
+  ],
+  "sources": [
+    {
+      "sourceId": "SRC-EU-CRA-2024-2847",
+      "instrument": "Regulation (EU) 2024/2847 on horizontal cybersecurity requirements for products with digital elements (Cyber Resilience Act)",
+      "shortRef": "CRA 2024/2847",
+      "celexOrBoer": "CELEX:32024R2847",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg/2024/2847/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2024-11-20",
+      "effectiveDate": "2024-12-10",
+      "applicationDate": "2027-12-11",
+      "transpositionStatus": "DIRECTLY_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 13 manufacturer obligations and support period",
+        "Art 14 reporting obligations (from 2026-09-11)",
+        "Art 71 application dates",
+        "Annex I essential requirements",
+        "Annex III/IV important and critical products"
+      ],
+      "obligationSummary": "Manufacturers of products with digital elements must meet essential cybersecurity requirements, handle vulnerabilities, provide security updates for a defined support period, report actively exploited vulnerabilities and severe incidents, and complete conformity assessment with CE marking.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "SAAS_PROVIDER"
+      ],
+      "uncertainty": "Product classification (default/important/critical) and the applicable conformity route for each MAREA family are not established; the reporting duties already apply.",
+      "reviewOwner": "SECURITY_LEAD"
+    },
+    {
+      "sourceId": "SRC-EU-PLD-2024-2853",
+      "instrument": "Directive (EU) 2024/2853 on liability for defective products",
+      "shortRef": "PLD 2024/2853",
+      "celexOrBoer": "CELEX:32024L2853",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2024/2853/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2024-11-18",
+      "effectiveDate": "2024-12-08",
+      "applicationDate": "2026-12-09",
+      "transpositionStatus": "TRANSPOSITION_REQUIRED_BY_2026-12-09",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "VERIFIED_THIS_SESSION",
+      "provisions": [
+        "Art 4 defectiveness including software and updates",
+        "Art 7 liable economic operators",
+        "Art 9 disclosure of evidence",
+        "Art 17 presumptions",
+        "Corrigendum OJ L 2026/90364 (2026-05-07) corrects Art 2(1): products placed on the market after 2026-12-08"
+      ],
+      "obligationSummary": "Producers, importers, authorised representatives and fulfilment service providers may be liable for defective products, including software and connected products; defect and causation may be presumed in complex cases. The May 2026 corrigendum corrects the temporal scope to products placed on the market after 8 December 2026.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR",
+        "SAAS_PROVIDER"
+      ],
+      "uncertainty": "The Spanish transposition instrument was NOT_RETRIEVED; its implementing rules must be confirmed by counsel before reliance.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-EU-RED-2014-53",
+      "instrument": "Directive 2014/53/EU on the making available on the market of radio equipment (Radio Equipment Directive)",
+      "shortRef": "RED 2014/53/EU",
+      "celexOrBoer": "CELEX:32014L0053",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2014/53/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2014-05-22",
+      "effectiveDate": "2014-06-11",
+      "applicationDate": "2016-06-13",
+      "transpositionStatus": "TRANSPOSED_SPAIN_RD_188_2016",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 3(1) safety",
+        "Art 3(1)(a) EMC",
+        "Art 3(2) efficient spectrum use",
+        "Art 3(3)(d)-(f) cybersecurity (Delegated Reg 2022/30)",
+        "Art 17 conformity assessment",
+        "Art 10(10) CE marking"
+      ],
+      "obligationSummary": "Radio equipment must meet safety, EMC and spectrum essential requirements and carry CE marking after conformity assessment; radio products with digital elements also fall under the CRA from 2027-12-11.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER"
+      ],
+      "uncertainty": "Which MAREA SKUs intentionally transmit or receive radio waves is not finally frozen; the module-vs-product distinction matters.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-DELREG-2022-30",
+      "instrument": "Commission Delegated Regulation (EU) 2022/30 supplementing Directive 2014/53/EU as regards the essential requirements for cybersecurity",
+      "shortRef": "DelReg 2022/30",
+      "celexOrBoer": "CELEX:32022R0030",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg_del/2022/30/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2022-01-12",
+      "effectiveDate": "2022-02-01",
+      "applicationDate": "2025-08-01",
+      "transpositionStatus": "DIRECTLY_APPLICABLE_UNTIL_REPEAL",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "VERIFIED_THIS_SESSION",
+      "provisions": [
+        "Art 3(3)(d) network protection",
+        "Art 3(3)(e) personal data protection",
+        "Art 3(3)(f) fraud prevention",
+        "Application postponed to 2025-08-01 by the 2023 amendment",
+        "Repealed with effect from 2027-12-11 by Delegated Regulation (EU) 2026/339"
+      ],
+      "obligationSummary": "Delegated cybersecurity requirements applied to internet-connected radio equipment from 2025-08-01; Delegated Regulation (EU) 2026/339 repeals them with effect from 2027-12-11, when the CRA takes over.",
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "uncertainty": "The repeal measure and the amendment history are recorded from official sources retrieved this session; the consolidated transitional position should still be confirmed before reliance.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-DELREG-2026-339",
+      "instrument": "Commission Delegated Regulation (EU) 2026/339 repealing Delegated Regulation (EU) 2022/30",
+      "shortRef": "DelReg 2026/339",
+      "celexOrBoer": "CELEX:32026R0339",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg_del/2026/339/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2026-04-29",
+      "effectiveDate": "2026-05-19",
+      "applicationDate": "2027-12-11",
+      "transpositionStatus": "DIRECTLY_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "VERIFIED_THIS_SESSION",
+      "provisions": [
+        "Adopted 2026-02-16",
+        "Repeal of Delegated Regulation (EU) 2022/30 with effect from 2027-12-11",
+        "Recital 2 confirms that DelReg 2022/30 applied from 2025-08-01",
+        "Alignment with CRA application date"
+      ],
+      "obligationSummary": "Repeals the RED delegated cybersecurity regulation so that the CRA carries the cybersecurity requirements for radio equipment from 2027-12-11; the repeal takes effect on the same date.",
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "uncertainty": "Transitional provisions for products placed before 2027-12-11 require counsel confirmation.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-EMC-2014-30",
+      "instrument": "Directive 2014/30/EU on the harmonisation of the laws of the Member States relating to electromagnetic compatibility",
+      "shortRef": "EMC 2014/30/EU",
+      "celexOrBoer": "CELEX:32014L0030",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2014/30/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2014-03-26",
+      "effectiveDate": "2014-04-18",
+      "applicationDate": "2016-04-20",
+      "transpositionStatus": "TRANSPOSED_SPAIN_RD_186_2016",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 4 apparatus requirements",
+        "Art 5 fixed installations",
+        "Annex II conformity assessment"
+      ],
+      "obligationSummary": "Apparatus must not generate excessive electromagnetic disturbance and must have adequate immunity; radio equipment covered by the RED carries its own EMC requirement instead.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER"
+      ],
+      "uncertainty": "The EMC/RED boundary per SKU depends on whether the product is radio equipment.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-LVD-2014-35",
+      "instrument": "Directive 2014/35/EU on the harmonisation of the laws of the Member States relating to the making available on the market of electrical equipment designed for use within certain voltage limits (Low Voltage Directive)",
+      "shortRef": "LVD 2014/35/EU",
+      "celexOrBoer": "CELEX:32014L0035",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2014/35/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2014-03-26",
+      "effectiveDate": "2014-04-18",
+      "applicationDate": "2016-04-20",
+      "transpositionStatus": "TRANSPOSED_SPAIN_RD_187_2016",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 3 safety objectives",
+        "Art 4 voltage scope 50-1000 V AC / 75-1500 V DC",
+        "Annex II conformity assessment"
+      ],
+      "obligationSummary": "Electrical equipment within the voltage limits must satisfy safety objectives; equipment outside the voltage scope or covered by other harmonised legislation may not be in scope.",
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "uncertainty": "Marine 12/24 V DC products are generally outside the LVD voltage scope; applicability must be reasoned per SKU rather than assumed.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-GPSR-2023-988",
+      "instrument": "Regulation (EU) 2023/988 on general product safety (General Product Safety Regulation)",
+      "shortRef": "GPSR 2023/988",
+      "celexOrBoer": "CELEX:32023R0988",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg/2023/988/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2023-05-23",
+      "effectiveDate": "2023-06-12",
+      "applicationDate": "2024-12-13",
+      "transpositionStatus": "DIRECTLY_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 5 general safety requirement",
+        "Art 9 manufacturer obligations",
+        "Art 11 distributor obligations",
+        "Art 19 online sales information",
+        "Art 22 traceability",
+        "Art 35-36 incident reporting and recall"
+      ],
+      "obligationSummary": "Products must be safe; manufacturers and distributors have information, traceability, incident-reporting and corrective-action duties, and online offers must carry specified safety and traceability information.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR",
+        "SELLER"
+      ],
+      "uncertainty": "Interaction with product-specific harmonised legislation must be assessed per family; GPSR residual role differs where sectoral rules fully harmonise.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-ROHS-2011-65",
+      "instrument": "Directive 2011/65/EU on the restriction of the use of certain hazardous substances in electrical and electronic equipment (RoHS)",
+      "shortRef": "RoHS 2011/65/EU",
+      "celexOrBoer": "CELEX:32011L0065",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2011/65/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2011-07-01",
+      "effectiveDate": "2011-07-21",
+      "applicationDate": "2013-01-02",
+      "transpositionStatus": "TRANSPOSED_SPAIN",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 4 substance restrictions",
+        "Art 7 manufacturer obligations",
+        "Annex II restricted substances"
+      ],
+      "obligationSummary": "Electrical and electronic equipment must not contain restricted substances above the thresholds; manufacturers must draw up technical documentation and EU declaration of conformity.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER"
+      ],
+      "uncertainty": "Supplier material declarations are absent; compliance cannot be assumed from module certificates.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-WEEE-2012-19",
+      "instrument": "Directive 2012/19/EU on waste electrical and electronic equipment (WEEE)",
+      "shortRef": "WEEE 2012/19/EU",
+      "celexOrBoer": "CELEX:32012L0019",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2012/19/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2012-07-24",
+      "effectiveDate": "2012-08-13",
+      "applicationDate": "2014-02-14",
+      "transpositionStatus": "TRANSPOSED_SPAIN_RD_110_2015",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 12 producer responsibility",
+        "Art 14 take-back",
+        "Annex III marking"
+      ],
+      "obligationSummary": "Producers of EEE must register, finance take-back and recycling, mark equipment and report; online sellers may be treated as producers.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "uncertainty": "Spanish producer registration numbers and scheme membership do not exist.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-BATTERIES-2023-1542",
+      "instrument": "Regulation (EU) 2023/1542 concerning batteries and waste batteries",
+      "shortRef": "Batteries 2023/1542",
+      "celexOrBoer": "CELEX:32023R1542",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg/2023/1542/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2023-07-28",
+      "effectiveDate": "2023-08-17",
+      "applicationDate": "2024-02-18",
+      "transpositionStatus": "DIRECTLY_APPLICABLE_PHASED",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 10 labelling",
+        "Art 13 conformity",
+        "Art 38 producer responsibility",
+        "Chapter on removability/replaceability"
+      ],
+      "obligationSummary": "Batteries must meet sustainability, labelling, conformity and take-back obligations; producer registration and due diligence apply where batteries are placed on the market.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "uncertainty": "Whether MAREA devices contain batteries and which category applies (portable/LMT) is not frozen.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-PACKAGING-2025-40",
+      "instrument": "Regulation (EU) 2025/40 on packaging and packaging waste",
+      "shortRef": "Packaging 2025/40",
+      "celexOrBoer": "CELEX:32025R0040",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg/2025/40/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2025-01-22",
+      "effectiveDate": "2025-02-11",
+      "applicationDate": "2026-08-12",
+      "transpositionStatus": "DIRECTLY_APPLICABLE_PHASED",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 6 recyclability",
+        "Art 11 labelling",
+        "Producer registration and EPR"
+      ],
+      "obligationSummary": "Packaging placed on the market must meet sustainability and labelling requirements, with producer-responsibility registration and reporting in each Member State.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "uncertainty": "Packaging design and Spanish registration are not established.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-RCD-2013-53",
+      "instrument": "Directive 2013/53/EU on recreational craft and personal watercraft",
+      "shortRef": "RCD 2013/53/EU",
+      "celexOrBoer": "CELEX:32013L0053",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2013/53/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2013-12-28",
+      "effectiveDate": "2014-01-17",
+      "applicationDate": "2016-01-18",
+      "transpositionStatus": "TRANSPOSED_SPAIN_RD_44_2019",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 4 products covered",
+        "Art 5 free movement",
+        "Annex I essential requirements",
+        "Art 19 CE marking"
+      ],
+      "obligationSummary": "Recreational craft and certain components must meet essential safety requirements and carry CE marking; the RCD applies to the craft or covered component, not automatically to an add-on electronics product.",
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "uncertainty": "Whether any MAREA product is a 'component' within the RCD scope or an add-on outside it requires a product-specific legal analysis.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-EU-MED-2014-90",
+      "instrument": "Directive 2014/90/EU on marine equipment (Marine Equipment Directive)",
+      "shortRef": "MED 2014/90/EU",
+      "celexOrBoer": "CELEX:32014L0090",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2014/90/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2014-07-23",
+      "effectiveDate": "2014-08-12",
+      "applicationDate": "2016-09-18",
+      "transpositionStatus": "TRANSPOSED_SPAIN",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 3 scope (shipborne equipment)",
+        "Art 5 wheelmark",
+        "Annex A/B equipment lists"
+      ],
+      "obligationSummary": "Marine equipment placed on EU ships must meet MED requirements and carry the wheelmark; recreational electronics sold to leisure craft are generally outside the MED shipborne scope.",
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "uncertainty": "No wheelmark may be claimed; applicability depends on whether a product is shipborne equipment under the MED, which is not established.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-EU-GDPR-2016-679",
+      "instrument": "Regulation (EU) 2016/679 on the protection of natural persons with regard to the processing of personal data (GDPR)",
+      "shortRef": "GDPR 2016/679",
+      "celexOrBoer": "CELEX:32016R0679",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2016-05-04",
+      "effectiveDate": "2016-05-24",
+      "applicationDate": "2018-05-25",
+      "transpositionStatus": "DIRECTLY_APPLICABLE_COMPLEMENTED_BY_LOPDGDD",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 5 principles",
+        "Art 6 lawful basis",
+        "Art 13-15 transparency and access",
+        "Art 17 erasure",
+        "Art 20 portability",
+        "Art 28 processor",
+        "Art 32 security",
+        "Art 33 breach notification",
+        "Art 35 DPIA"
+      ],
+      "obligationSummary": "Processing requires a lawful basis, transparency, data-subject rights, processor agreements, security, breach notification and a DPIA where the processing is likely to result in high risk.",
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER",
+        "DATA_PROCESSOR",
+        "SAAS_PROVIDER"
+      ],
+      "uncertainty": "Identifiability of vessel telemetry is context-dependent; no role map, DPIA or DPA exists.",
+      "reviewOwner": "DPO"
+    },
+    {
+      "sourceId": "SRC-EU-EPRIVACY-2002-58",
+      "instrument": "Directive 2002/58/EC concerning the processing of personal data and the protection of privacy in the electronic communications sector (ePrivacy Directive)",
+      "shortRef": "ePrivacy 2002/58/EC",
+      "celexOrBoer": "CELEX:32002L0058",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2002/58/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2002-07-31",
+      "effectiveDate": "2002-07-31",
+      "applicationDate": "2003-10-31",
+      "transpositionStatus": "TRANSPOSED_SPAIN_LSSI",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 5(3) cookie consent",
+        "Art 6 traffic data",
+        "Art 9 location data"
+      ],
+      "obligationSummary": "Non-essential cookies and device storage require prior informed consent, and traffic/location data require protection and transparency.",
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER",
+        "SERVICE_OPERATOR"
+      ],
+      "uncertainty": "The existing site's consent mechanism and cookie inventory are unverified.",
+      "reviewOwner": "DPO"
+    },
+    {
+      "sourceId": "SRC-EU-CRD-2011-83",
+      "instrument": "Directive 2011/83/EU on consumer rights",
+      "shortRef": "CRD 2011/83/EU",
+      "celexOrBoer": "CELEX:32011L0083",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2011/83/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2011-10-25",
+      "effectiveDate": "2011-12-12",
+      "applicationDate": "2014-06-13",
+      "transpositionStatus": "TRANSPOSED_SPAIN_TRLGDCU",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 6 precontractual information",
+        "Art 9 withdrawal right 14 days",
+        "Art 16 exceptions",
+        "Art 14 refund consequences"
+      ],
+      "obligationSummary": "Distance contracts require precontractual information, a 14-day withdrawal right with defined exceptions, and refunds within the statutory period.",
+      "economicOperatorRoles": [
+        "SELLER"
+      ],
+      "uncertainty": "No approved consumer terms or withdrawal flow exist.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-EU-CSD-2019-771",
+      "instrument": "Directive (EU) 2019/771 on certain aspects concerning contracts for the sale of goods",
+      "shortRef": "CSD 2019/771",
+      "celexOrBoer": "CELEX:32019L0771",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2019/771/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2019-05-20",
+      "effectiveDate": "2019-06-11",
+      "applicationDate": "2022-01-01",
+      "transpositionStatus": "TRANSPOSED_SPAIN_RDL_7_2021",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 5 conformity",
+        "Art 7 subjective requirements",
+        "Art 8 updates",
+        "Art 10 liability periods",
+        "Art 13 remedies"
+      ],
+      "obligationSummary": "Sellers must deliver goods in conformity, provide updates where required, and offer repair, replacement, price reduction or termination; Spain applies a 3-year guarantee with a 24-month presumption.",
+      "economicOperatorRoles": [
+        "SELLER",
+        "MANUFACTURER"
+      ],
+      "uncertainty": "Commercial warranty drafts do not yet preserve the statutory rights.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-EU-DCD-2019-770",
+      "instrument": "Directive (EU) 2019/770 on certain aspects concerning contracts for the supply of digital content and digital services",
+      "shortRef": "DCD 2019/770",
+      "celexOrBoer": "CELEX:32019L0770",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2019/770/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2019-05-20",
+      "effectiveDate": "2019-06-11",
+      "applicationDate": "2022-01-01",
+      "transpositionStatus": "TRANSPOSED_SPAIN_RDL_7_2021",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 5 conformity",
+        "Art 8 updates",
+        "Art 14 remedies",
+        "Art 16 termination"
+      ],
+      "obligationSummary": "Digital content and services must conform, be updated as required, and give rise to remedies including termination and data export; subscription terms must reflect this.",
+      "economicOperatorRoles": [
+        "SAAS_PROVIDER",
+        "SELLER"
+      ],
+      "uncertainty": "Subscription terms, update commitments and data-export rights are absent.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-EU-UCPD-2005-29",
+      "instrument": "Directive 2005/29/EC concerning unfair business-to-consumer commercial practices",
+      "shortRef": "UCPD 2005/29/EC",
+      "celexOrBoer": "CELEX:32005L0029",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2005/29/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2005-05-11",
+      "effectiveDate": "2005-06-11",
+      "applicationDate": "2007-12-12",
+      "transpositionStatus": "TRANSPOSED_SPAIN_LCD_3_1991",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 6 misleading actions",
+        "Art 7 misleading omissions",
+        "Art 8-9 aggressive practices",
+        "Annex I blacklist"
+      ],
+      "obligationSummary": "Commercial statements must not be misleading or omit material information; unsupported availability, certification, performance or price claims breach the UCPD.",
+      "economicOperatorRoles": [
+        "SELLER",
+        "BRAND_OWNER",
+        "DISTRIBUTOR"
+      ],
+      "uncertainty": "Existing public copy was not written under the MC-14 claims policy and requires remediation.",
+      "reviewOwner": "COMMERCIAL_DIRECTOR"
+    },
+    {
+      "sourceId": "SRC-EU-PRICE-98-6",
+      "instrument": "Directive 98/6/EC on consumer protection in the indication of the prices of products offered to consumers",
+      "shortRef": "Price Indication 98/6/EC",
+      "celexOrBoer": "CELEX:31998L0006",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/1998/6/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "1998-02-16",
+      "effectiveDate": "1998-03-18",
+      "applicationDate": "2000-03-18",
+      "transpositionStatus": "TRANSPOSED_SPAIN",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 3 selling price indication",
+        "Art 4 unit price"
+      ],
+      "obligationSummary": "The selling price, including VAT and taxes, must be indicated clearly; any price shown must be an approved selling price, not an internal hypothesis.",
+      "economicOperatorRoles": [
+        "SELLER"
+      ],
+      "uncertainty": "Every MAREA price is HYPOTHESIS_UNAPPROVED and no final price exists.",
+      "reviewOwner": "COMMERCIAL_DIRECTOR"
+    },
+    {
+      "sourceId": "SRC-EU-ECOMMERCE-2000-31",
+      "instrument": "Directive 2000/31/EC on electronic commerce",
+      "shortRef": "eCommerce 2000/31/EC",
+      "celexOrBoer": "CELEX:32000L0031",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2000/31/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2000-06-08",
+      "effectiveDate": "2000-07-17",
+      "applicationDate": "2002-01-17",
+      "transpositionStatus": "TRANSPOSED_SPAIN_LSSI_34_2002",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 5 general information",
+        "Art 6 commercial communications",
+        "Art 10 information to recipients"
+      ],
+      "obligationSummary": "Information-society service providers must identify themselves, label commercial communications and provide contract information before ordering.",
+      "economicOperatorRoles": [
+        "SELLER",
+        "SERVICE_OPERATOR"
+      ],
+      "uncertainty": "The company legal identity is missing from the site.",
+      "reviewOwner": "COMMERCIAL_DIRECTOR"
+    },
+    {
+      "sourceId": "SRC-EU-PSD2-2015-2366",
+      "instrument": "Directive (EU) 2015/2366 on payment services in the internal market (PSD2)",
+      "shortRef": "PSD2 2015/2366",
+      "celexOrBoer": "CELEX:32015L2366",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/2015/2366/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2015-12-23",
+      "effectiveDate": "2016-01-12",
+      "applicationDate": "2018-01-13",
+      "transpositionStatus": "TRANSPOSED_SPAIN_RDL_19_2018",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 4 definitions",
+        "Art 5 authorisation",
+        "Art 45 fraud",
+        "Payment role allocation"
+      ],
+      "obligationSummary": "Payment-service roles and authorisation depend on the model; a hosted/tokenised merchant model reduces but does not automatically remove scope.",
+      "economicOperatorRoles": [
+        "SELLER",
+        "SERVICE_OPERATOR"
+      ],
+      "uncertainty": "No merchant agreement or provider onboarding exists; role analysis is not performed.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-EU-SCA-2018-389",
+      "instrument": "Commission Delegated Regulation (EU) 2018/389 supplementing PSD2 with regard to regulatory technical standards for strong customer authentication",
+      "shortRef": "SCA RTS 2018/389",
+      "celexOrBoer": "CELEX:32018R0389",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg_del/2018/389/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2018-03-13",
+      "effectiveDate": "2018-03-14",
+      "applicationDate": "2019-09-14",
+      "transpositionStatus": "DIRECTLY_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 4 SCA requirement",
+        "Art 6 exemptions",
+        "Art 13-16 authentication elements"
+      ],
+      "obligationSummary": "Electronic payments must apply strong customer authentication subject to the defined exemptions; the provider's hosted flow determines implementation.",
+      "economicOperatorRoles": [
+        "SELLER"
+      ],
+      "uncertainty": "No checkout flow or provider contract exists. Entry into force corrected to 2018-03-14 (OJ publication 2018-03-13; Art 38(1)); application remains 2019-09-14.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-EU-VAT-2006-112",
+      "instrument": "Directive 2006/112/EC on the common system of value added tax",
+      "shortRef": "VAT Directive 2006/112/EC",
+      "celexOrBoer": "CELEX:32006L0112",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg/2006/112/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2006-11-28",
+      "effectiveDate": "2007-01-01",
+      "applicationDate": "2007-01-01",
+      "transpositionStatus": "TRANSPOSED_SPAIN_LIVA_37_1992",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 2 taxable transactions",
+        "Art 73 taxable amount",
+        "Art 226 invoice content",
+        "Place-of-supply rules"
+      ],
+      "obligationSummary": "VAT applies to supplies of goods and services with place-of-supply, invoicing and rate rules; B2B reverse charge and OSS affect the displayed price and the invoice.",
+      "economicOperatorRoles": [
+        "SELLER",
+        "IMPORTER"
+      ],
+      "uncertainty": "Spanish 21% is verified for Spain but cross-border B2C, OSS and import VAT treatment require professional confirmation.",
+      "reviewOwner": "FINANCE_LEAD"
+    },
+    {
+      "sourceId": "SRC-EU-OSS-282-2011",
+      "instrument": "Council Implementing Regulation (EU) No 282/2011 laying down implementing measures for Directive 2006/112/EC",
+      "shortRef": "VAT Implementing Reg 282/2011",
+      "celexOrBoer": "CELEX:32011R0282",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg/2011/282/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2011-03-15",
+      "effectiveDate": "2011-07-01",
+      "applicationDate": "2011-07-01",
+      "transpositionStatus": "DIRECTLY_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "OSS place-of-supply evidence",
+        "Customer location presumptions"
+      ],
+      "obligationSummary": "Defines evidence and presumptions for the place of supply of digital services, relevant to OSS registration and VAT-inclusive pricing.",
+      "economicOperatorRoles": [
+        "SELLER"
+      ],
+      "uncertainty": "OSS registration decision and evidence of customer location are not established.",
+      "reviewOwner": "FINANCE_LEAD"
+    },
+    {
+      "sourceId": "SRC-EU-EUTMR-2017-1001",
+      "instrument": "Regulation (EU) 2017/1001 on the European Union trade mark",
+      "shortRef": "EUTMR 2017/1001",
+      "celexOrBoer": "CELEX:32017R1001",
+      "officialUrl": "https://eur-lex.europa.eu/eli/reg/2017/1001/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "2017-06-16",
+      "effectiveDate": "2017-10-01",
+      "applicationDate": "2017-10-01",
+      "transpositionStatus": "DIRECTLY_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 1 EU trade mark",
+        "Art 8 relative grounds",
+        "Art 9 rights conferred",
+        "Art 25-29 filing"
+      ],
+      "obligationSummary": "EU trade mark rights arise only by registration; use of an unregistered proposed mark creates prior-right and opposition risk and cannot be presented as registered.",
+      "economicOperatorRoles": [
+        "BRAND_OWNER"
+      ],
+      "uncertainty": "MAREA clearance and registration are NOT_GRANTED; a prior-use signal exists.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-EU-CE-MARKING-GUIDANCE",
+      "instrument": "European Commission guidance on CE marking and the obligations of manufacturers",
+      "shortRef": "CE marking guidance",
+      "celexOrBoer": "COMMISSION_GUIDANCE_NOT_CELEX",
+      "officialUrl": "https://single-market-economy.ec.europa.eu/single-market/ce-marking/manufacturers_en",
+      "jurisdiction": "EU",
+      "publicationDate": "NOT_RETRIEVED",
+      "effectiveDate": "NOT_RETRIEVED",
+      "applicationDate": "NOT_RETRIEVED",
+      "transpositionStatus": "NOT_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Manufacturer obligations",
+        "Technical documentation",
+        "Declaration of conformity",
+        "CE marking rules"
+      ],
+      "obligationSummary": "The manufacturer must carry out conformity assessment, draw up technical documentation and an EU declaration of conformity, and affix CE marking before placing the product on the market.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER"
+      ],
+      "uncertainty": "No conformity route, DoC or test report exists for any MAREA product.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-EU-BLUE-GUIDE-2022",
+      "instrument": "Commission Notice — The Blue Guide on the implementation of EU product rules 2022 (2022/C 247/01)",
+      "shortRef": "Blue Guide 2022",
+      "celexOrBoer": "OJ C 247/01 (2022)",
+      "officialUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:C:2022:247:TOC",
+      "jurisdiction": "EU",
+      "publicationDate": "2022-06-29",
+      "effectiveDate": "NOT_APPLICABLE",
+      "applicationDate": "NOT_APPLICABLE",
+      "transpositionStatus": "NOT_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "NOT_RETRIEVED",
+      "provisions": [
+        "Economic operator definitions",
+        "Module vs final-product certification",
+        "Market surveillance",
+        "CE marking principles"
+      ],
+      "obligationSummary": "Explains the product-rule framework, the roles of manufacturer/importer/distributor and the principle that integrating certified modules creates a new product that must be assessed.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "uncertainty": "Interpretive guidance, not law; the specific applicable directive prevails. Verification corrected on 2026-11-02 against the research dossier: full text/page not retrievable this session, so no conclusion may rely on it.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-EU-DB-96-9",
+      "instrument": "Directive 96/9/EC on the legal protection of databases",
+      "shortRef": "Database Directive 96/9/EC",
+      "celexOrBoer": "CELEX:31996L0009",
+      "officialUrl": "https://eur-lex.europa.eu/eli/dir/1996/9/oj",
+      "jurisdiction": "EU",
+      "publicationDate": "1996-03-11",
+      "effectiveDate": "1996-03-27",
+      "applicationDate": "1998-01-01",
+      "transpositionStatus": "TRANSPOSED_SPAIN",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Art 7 sui generis right",
+        "Art 10 term"
+      ],
+      "obligationSummary": "Substantial extraction or re-utilisation of a database may require the rights holder's authorisation; provider terms and sui generis rights must be cleared for chart/weather/tile use.",
+      "economicOperatorRoles": [
+        "SAAS_PROVIDER",
+        "DISTRIBUTOR"
+      ],
+      "uncertainty": "Provider terms are the primary source; sui generis protection depends on the dataset.",
+      "reviewOwner": "DATA_RIGHTS_OWNER"
+    },
+    {
+      "sourceId": "SRC-ES-TRLGDCU-RDL-1-2007",
+      "instrument": "Real Decreto Legislativo 1/2007, de 16 de noviembre, por el que se aprueba el texto refundido de la Ley General para la Defensa de los Consumidores y Usuarios",
+      "shortRef": "TRLGDCU",
+      "celexOrBoer": "BOE-A-2007-20555",
+      "officialUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2007-20555",
+      "jurisdiction": "ES",
+      "publicationDate": "2007-11-30",
+      "effectiveDate": "2007-12-01",
+      "applicationDate": "2007-12-01",
+      "transpositionStatus": "NATIONAL_LAW",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "PARTIALLY_VERIFIED",
+      "provisions": [
+        "Art 114-127 consumer guarantees (3 years, 24-month presumption)",
+        "Art 80-90 unfair terms",
+        "Art 60-68 precontractual information",
+        "Art 47-53 guarantees"
+      ],
+      "obligationSummary": "Spanish consumer law requires precontractual information, a 3-year legal guarantee with a 24-month presumption of non-conformity, and fair terms; mandatory rights cannot be waived.",
+      "economicOperatorRoles": [
+        "SELLER",
+        "MANUFACTURER",
+        "DISTRIBUTOR"
+      ],
+      "uncertainty": "The current consolidated text and the RDL 7/2021 amendments should be confirmed article-by-article by counsel.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-ES-LSSI-34-2002",
+      "instrument": "Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico",
+      "shortRef": "LSSI 34/2002",
+      "celexOrBoer": "BOE-A-2002-13758",
+      "officialUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758",
+      "jurisdiction": "ES",
+      "publicationDate": "2002-07-12",
+      "effectiveDate": "2002-10-12",
+      "applicationDate": "2002-10-12",
+      "transpositionStatus": "NATIONAL_LAW",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "PARTIALLY_VERIFIED",
+      "provisions": [
+        "Art 10 information obligations",
+        "Art 21 unsolicited communications",
+        "Art 22.2 cookies",
+        "Art 27 contractual information"
+      ],
+      "obligationSummary": "Information-society service providers must publish identity, contact and registry data, and obtain consent for cookies and unsolicited communications.",
+      "economicOperatorRoles": [
+        "SELLER",
+        "SERVICE_OPERATOR"
+      ],
+      "uncertainty": "SITE.legal identity fields are empty and cookie consent is unverified.",
+      "reviewOwner": "COMMERCIAL_DIRECTOR"
+    },
+    {
+      "sourceId": "SRC-ES-LOPDGDD-3-2018",
+      "instrument": "Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales",
+      "shortRef": "LOPDGDD 3/2018",
+      "celexOrBoer": "BOE-A-2018-16673",
+      "officialUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673",
+      "jurisdiction": "ES",
+      "publicationDate": "2018-12-06",
+      "effectiveDate": "2018-12-07",
+      "applicationDate": "2018-12-07",
+      "transpositionStatus": "NATIONAL_LAW",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "NOT_RETRIEVED",
+      "provisions": [
+        "Art 28 DPO",
+        "Art 32-34 rights",
+        "Art 35-39 security and breach",
+        "Art 5-10 principles"
+      ],
+      "obligationSummary": "Complements the GDPR in Spain, including DPO duties, digital-rights provisions, security and breach notification.",
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER",
+        "DATA_PROCESSOR"
+      ],
+      "uncertainty": "DPO appointment and Spanish-specific duties are not implemented. Verification corrected on 2026-11-02 against the research dossier: full text/page not retrievable this session, so no conclusion may rely on it.",
+      "reviewOwner": "DPO"
+    },
+    {
+      "sourceId": "SRC-ES-LGT-11-2022",
+      "instrument": "Ley 11/2022, de 28 de junio, General de Telecomunicaciones",
+      "shortRef": "LGT 11/2022",
+      "celexOrBoer": "BOE-A-2022-10757",
+      "officialUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2022-10757",
+      "jurisdiction": "ES",
+      "publicationDate": "2022-06-29",
+      "effectiveDate": "2022-06-30",
+      "applicationDate": "2022-06-30",
+      "transpositionStatus": "NATIONAL_LAW",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Spectrum titles and radio equipment use",
+        "AIS/maritime radio regime"
+      ],
+      "obligationSummary": "Radio equipment and spectrum use are regulated; transmitting AIS is a maritime radio service requiring authorisation, while receive-only reception remains subject to radio-equipment conformity.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "INSTALLER"
+      ],
+      "uncertainty": "AIS receive-only scope is confirmed as the programme restriction; transmission is not authorised.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-ES-RD-188-2016",
+      "instrument": "Real Decreto 188/2016, de 6 de mayo, por el que se aprueba el Reglamento de comercialización y puesta en servicio de equipos radioeléctricos (transposición de la Directiva 2014/53/UE)",
+      "shortRef": "RD 188/2016",
+      "celexOrBoer": "BOE-A-2016-4444",
+      "officialUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2016-4444",
+      "jurisdiction": "ES",
+      "publicationDate": "2016-05-13",
+      "effectiveDate": "2016-05-14",
+      "applicationDate": "2016-05-14",
+      "transpositionStatus": "TRANSPOSITION_OF_2014_53_EU",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "VERIFIED_THIS_SESSION",
+      "provisions": [
+        "Spanish RED transposition",
+        "Art 9(8): instructions and safety information at least in Spanish for the Spanish market",
+        "Manufacturer duties",
+        "Market surveillance"
+      ],
+      "obligationSummary": "Spanish transposition of the RED; Article 9(8) requires instructions and safety information at least in Spanish when the equipment is placed on the Spanish market. This closes the MC-11 open question on the Spanish-language duty.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "uncertainty": "The full consolidated text should still be checked by counsel for any amendment after 2016.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-ES-RD-186-2016",
+      "instrument": "Real Decreto 186/2016, de 6 de mayo, por el que se regula la compatibilidad electromagnética de los equipos eléctricos y electrónicos",
+      "shortRef": "RD 186/2016",
+      "celexOrBoer": "BOE-A-2016-4442",
+      "officialUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2016-4442",
+      "jurisdiction": "ES",
+      "publicationDate": "2016-05-13",
+      "effectiveDate": "2016-05-14",
+      "applicationDate": "2016-05-14",
+      "transpositionStatus": "TRANSPOSITION_OF_2014_30_EU",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "NOT_RETRIEVED",
+      "provisions": [
+        "Spanish EMC regime",
+        "Conformity and marking"
+      ],
+      "obligationSummary": "Spanish EMC transposition; full text not retrieved, so Spanish procedural details are not verified.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER"
+      ],
+      "uncertainty": "VERIFY_BEFORE_RELIANCE",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-ES-RD-187-2016",
+      "instrument": "Real Decreto 187/2016, de 6 de mayo, por el que se regulan los requisitos de seguridad del material eléctrico destinado a utilizarse con determinados límites de tensión (transposición de la Directiva 2014/35/UE)",
+      "shortRef": "RD 187/2016",
+      "celexOrBoer": "BOE-A-2016-4443",
+      "officialUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-2016-4443",
+      "jurisdiction": "ES",
+      "publicationDate": "2016-05-13",
+      "effectiveDate": "2016-05-14",
+      "applicationDate": "2016-05-14",
+      "transpositionStatus": "TRANSPOSITION_OF_2014_35_EU",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Spanish LVD transposition",
+        "Confirmed as the LVD transposition (not the EMC one)"
+      ],
+      "obligationSummary": "Spanish LVD transposition; applicability to low-voltage marine DC products is likely outside the voltage scope and must be assessed per product.",
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "uncertainty": "Full text not re-retrieved this session; the transposition identity is confirmed.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-ES-LCD-3-1991",
+      "instrument": "Ley 3/1991, de 10 de enero, de Competencia Desleal",
+      "shortRef": "LCD 3/1991",
+      "celexOrBoer": "BOE-A-1991-628",
+      "officialUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1991-628",
+      "jurisdiction": "ES",
+      "publicationDate": "1991-01-11",
+      "effectiveDate": "1991-01-11",
+      "applicationDate": "1991-01-11",
+      "transpositionStatus": "NATIONAL_LAW",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "NOT_RETRIEVED",
+      "provisions": [
+        "Art 5 acts of deception",
+        "Art 6-7 confusion and omission",
+        "Art 15-18 comparative advertising"
+      ],
+      "obligationSummary": "Unfair competitive practices, including misleading and omitted information and unauthorised comparative advertising, are actionable by competitors and consumers.",
+      "economicOperatorRoles": [
+        "BRAND_OWNER",
+        "SELLER"
+      ],
+      "uncertainty": "Existing public copy is not audited against this law. Verification corrected on 2026-11-02 against the research dossier: full text/page not retrievable this session, so no conclusion may rely on it.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-ES-LGP-34-1988",
+      "instrument": "Ley 34/1988, de 11 de noviembre, General de Publicidad",
+      "shortRef": "LGP 34/1988",
+      "celexOrBoer": "BOE-A-1988-26156",
+      "officialUrl": "https://www.boe.es/buscar/act.php?id=BOE-A-1988-26156",
+      "jurisdiction": "ES",
+      "publicationDate": "1988-11-15",
+      "effectiveDate": "1988-11-16",
+      "applicationDate": "1988-11-16",
+      "transpositionStatus": "NATIONAL_LAW",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "NOT_RETRIEVED",
+      "provisions": [
+        "Art 3 unlawful advertising",
+        "Art 4 misleading advertising",
+        "Art 6 corrective action"
+      ],
+      "obligationSummary": "Advertising must be truthful; misleading or unfair advertising can be stopped and corrected by the authorities and courts.",
+      "economicOperatorRoles": [
+        "BRAND_OWNER",
+        "SELLER"
+      ],
+      "uncertainty": "No advertising review process exists. Verification corrected on 2026-11-02 against the research dossier: full text/page not retrievable this session, so no conclusion may rely on it.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-ES-PRODUCER-REGISTER",
+      "instrument": "Registro de productores de productos — Ministerio para la Transición Ecológica y el Reto Demográfico",
+      "shortRef": "Registro de productores",
+      "celexOrBoer": "NOT_CELEX",
+      "officialUrl": "https://www.miteco.gob.es/es/calidad-y-evaluacion-ambiental/temas/prevencion-y-gestion-residuos/registro-productores-producto.html",
+      "jurisdiction": "ES",
+      "publicationDate": "NOT_RETRIEVED",
+      "effectiveDate": "NOT_APPLICABLE",
+      "applicationDate": "NOT_APPLICABLE",
+      "transpositionStatus": "NATIONAL_PROCEDURE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Producer registration procedure",
+        "WEEE, batteries and packaging streams"
+      ],
+      "obligationSummary": "Producers of EEE, batteries and packaged goods must register in the Spanish producer register and comply with take-back and reporting duties.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "uncertainty": "No registration exists; the applicable stream depends on the final product composition.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER"
+    },
+    {
+      "sourceId": "SRC-ES-AEPD-DPIA",
+      "instrument": "Agencia Española de Protección de Datos — guidance on data protection impact assessments",
+      "shortRef": "AEPD DPIA guidance",
+      "celexOrBoer": "NOT_CELEX",
+      "officialUrl": "https://www.aepd.es/derechos-y-deberes/cumple-tus-deberes/medidas-de-cumplimiento/realizacion-de-evaluaciones-de-impacto-de-proteccion-de-datos",
+      "jurisdiction": "ES",
+      "publicationDate": "NOT_RETRIEVED",
+      "effectiveDate": "NOT_APPLICABLE",
+      "applicationDate": "NOT_APPLICABLE",
+      "transpositionStatus": "NATIONAL_GUIDANCE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "INACCESSIBLE",
+      "provisions": [
+        "DPIA methodology",
+        "AEPD consultation"
+      ],
+      "obligationSummary": "AEPD guidance supports DPIA methodology; the page was inaccessible during predecessor research, so reliance is limited to the GDPR text.",
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER"
+      ],
+      "uncertainty": "Guidance not retrieved (HTTP 404 recorded on 2026-11-02).",
+      "reviewOwner": "DPO"
+    },
+    {
+      "sourceId": "SRC-ES-IHM-CHART-LICENSING",
+      "instrument": "Instituto Hidrográfico de la Marina — official nautical chart and ENC distribution",
+      "shortRef": "IHM charts",
+      "celexOrBoer": "NOT_CELEX",
+      "officialUrl": "https://www.ihm.mdef.es/",
+      "jurisdiction": "ES",
+      "publicationDate": "NOT_RETRIEVED",
+      "effectiveDate": "NOT_APPLICABLE",
+      "applicationDate": "NOT_APPLICABLE",
+      "transpositionStatus": "NATIONAL_PROCEDURE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "INACCESSIBLE",
+      "provisions": [
+        "ENC distribution agreements",
+        "S-63/OEM status",
+        "End-user licensing"
+      ],
+      "obligationSummary": "Official chart and ENC redistribution requires a distributor/OEM agreement and per-user licences; public access to data is not a redistribution right.",
+      "economicOperatorRoles": [
+        "DISTRIBUTOR",
+        "SAAS_PROVIDER"
+      ],
+      "uncertainty": "No agreement exists; official licensing terms were not retrieved. Verification corrected on 2026-11-02 against the research dossier: full text/page not retrievable this session, so no conclusion may rely on it.",
+      "reviewOwner": "DATA_RIGHTS_OWNER"
+    },
+    {
+      "sourceId": "SRC-ES-AEMET-TERMS",
+      "instrument": "Agencia Estatal de Meteorología — terms of use of meteorological data and products",
+      "shortRef": "AEMET terms",
+      "celexOrBoer": "NOT_CELEX",
+      "officialUrl": "https://www.aemet.es/es/nota_legal",
+      "jurisdiction": "ES",
+      "publicationDate": "NOT_RETRIEVED",
+      "effectiveDate": "NOT_APPLICABLE",
+      "applicationDate": "NOT_APPLICABLE",
+      "transpositionStatus": "NATIONAL_PROCEDURE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "NOT_RETRIEVED",
+      "provisions": [
+        "Reuse conditions",
+        "NWP output restrictions",
+        "Attribution"
+      ],
+      "obligationSummary": "AEMET data reuse is subject to its legal notice; numerical weather prediction outputs are not automatically open for commercial re-display.",
+      "economicOperatorRoles": [
+        "SAAS_PROVIDER",
+        "DISTRIBUTOR"
+      ],
+      "uncertainty": "Terms not retrieved this session; predecessor research recorded restrictions.",
+      "reviewOwner": "DATA_RIGHTS_OWNER"
+    },
+    {
+      "sourceId": "SRC-NMEA-2000-LICENSING",
+      "instrument": "NMEA 2000 licensing and standards participation",
+      "shortRef": "NMEA 2000",
+      "celexOrBoer": "STANDARDS_BODY",
+      "officialUrl": "https://www.nmea.org/nmea-2000.html",
+      "jurisdiction": "INTERNATIONAL",
+      "publicationDate": "NOT_RETRIEVED",
+      "effectiveDate": "NOT_APPLICABLE",
+      "applicationDate": "NOT_APPLICABLE",
+      "transpositionStatus": "NOT_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Membership and licence",
+        "Manufacturer and product codes",
+        "Protocol use terms"
+      ],
+      "obligationSummary": "Implementing or marketing NMEA 2000 products requires the applicable NMEA licence, membership, manufacturer/product codes and certification; read-only interoperability is not certification.",
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "uncertainty": "No NMEA membership, licence or product codes exist.",
+      "reviewOwner": "ENGINEERING_LEAD"
+    },
+    {
+      "sourceId": "SRC-NMEA-0183",
+      "instrument": "NMEA 0183 interface standard",
+      "shortRef": "NMEA 0183",
+      "celexOrBoer": "STANDARDS_BODY",
+      "officialUrl": "https://www.nmea.org/nmea-0183.html",
+      "jurisdiction": "INTERNATIONAL",
+      "publicationDate": "NOT_RETRIEVED",
+      "effectiveDate": "NOT_APPLICABLE",
+      "applicationDate": "NOT_APPLICABLE",
+      "transpositionStatus": "NOT_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Electrical interface",
+        "Sentence formats",
+        "Interoperability"
+      ],
+      "obligationSummary": "NMEA 0183 compatibility statements require tested sentence-level interoperability; the standard itself is not a certification mark.",
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "INSTALLER"
+      ],
+      "uncertainty": "No tested NMEA 0183 sentence matrix exists.",
+      "reviewOwner": "ENGINEERING_LEAD"
+    },
+    {
+      "sourceId": "SRC-NMEA-CERTIFICATION",
+      "instrument": "NMEA product certification programme",
+      "shortRef": "NMEA certification",
+      "celexOrBoer": "STANDARDS_BODY",
+      "officialUrl": "https://www.nmea.org/nmea-2000-certification.html",
+      "jurisdiction": "INTERNATIONAL",
+      "publicationDate": "NOT_RETRIEVED",
+      "effectiveDate": "NOT_APPLICABLE",
+      "applicationDate": "NOT_APPLICABLE",
+      "transpositionStatus": "NOT_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "CONSUMED_FROM_PREDECESSOR_EVIDENCE",
+      "provisions": [
+        "Certification application",
+        "Product testing",
+        "Trademark use"
+      ],
+      "obligationSummary": "NMEA certification is a voluntary product programme with its own testing and trademark rules; no MAREA product is certified.",
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "uncertainty": "No certificate exists.",
+      "reviewOwner": "ENGINEERING_LEAD"
+    },
+    {
+      "sourceId": "SRC-EUIPO-MAREA-SEARCH",
+      "instrument": "EUIPO eSearch plus — EU trade mark database",
+      "shortRef": "EUIPO eSearch",
+      "celexOrBoer": "OFFICIAL_REGISTER",
+      "officialUrl": "https://euipo.europa.eu/eSearch/",
+      "jurisdiction": "EU",
+      "publicationDate": "NOT_APPLICABLE",
+      "effectiveDate": "NOT_APPLICABLE",
+      "applicationDate": "NOT_APPLICABLE",
+      "transpositionStatus": "NOT_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "INACCESSIBLE",
+      "provisions": [
+        "EU trade mark register",
+        "Earlier marks search"
+      ],
+      "obligationSummary": "Official register for EU trade mark status; absence of a registration for MAREA does not itself establish availability or non-infringement.",
+      "economicOperatorRoles": [
+        "BRAND_OWNER"
+      ],
+      "uncertainty": "No formal clearance search was commissioned in MC-14; the register is recorded as a source only. Verification corrected on 2026-11-02 against the research dossier: full text/page not retrievable this session, so no conclusion may rely on it.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    },
+    {
+      "sourceId": "SRC-OEPM-MAREA-SEARCH",
+      "instrument": "OEPM — Oficina Española de Patentes y Marcas, marca database",
+      "shortRef": "OEPM",
+      "celexOrBoer": "OFFICIAL_REGISTER",
+      "officialUrl": "https://www.oepm.es/es/",
+      "jurisdiction": "ES",
+      "publicationDate": "NOT_APPLICABLE",
+      "effectiveDate": "NOT_APPLICABLE",
+      "applicationDate": "NOT_APPLICABLE",
+      "transpositionStatus": "NOT_APPLICABLE",
+      "retrievedOn": "2026-11-02",
+      "verificationStatus": "INACCESSIBLE",
+      "provisions": [
+        "Spanish trade mark register"
+      ],
+      "obligationSummary": "Official Spanish trade mark register source; no MAREA clearance search has been performed.",
+      "economicOperatorRoles": [
+        "BRAND_OWNER"
+      ],
+      "uncertainty": "Not retrieved in MC-14; commission a formal search. Verification corrected on 2026-11-02 against the research dossier: full text/page not retrievable this session, so no conclusion may rely on it.",
+      "reviewOwner": "LEGAL_COUNSEL"
+    }
+  ],
+  "sourceCounts": {
+    "total": 48,
+    "eu": 31,
+    "spain": 14,
+    "internationalOrStandards": 3,
+    "verifiedThisSession": 4,
+    "consumedFromPredecessorEvidence": 32,
+    "partiallyVerified": 2,
+    "notRetrievedOrInaccessible": 10
+  },
+  "requirements": [
+    {
+      "requirementId": "REQ-CRA-01",
+      "legalSourceIds": [
+        "SRC-EU-CRA-2024-2847"
+      ],
+      "articleOrProvision": "Annex I",
+      "obligation": "Products with digital elements must meet the essential cybersecurity requirements (secure by design/default, protection against unauthorised access, confidentiality/integrity/availability).",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Annex I requirement-by-requirement compliance matrix",
+        "Security test reports",
+        "CRA technical documentation"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No CRA conformity work has started.",
+      "reviewOwner": "SECURITY_LEAD",
+      "releaseGate": "GATE-CRA-CYBERSECURITY",
+      "riskIds": [
+        "CYB-01",
+        "CYB-02"
+      ]
+    },
+    {
+      "requirementId": "REQ-CRA-02",
+      "legalSourceIds": [
+        "SRC-EU-CRA-2024-2847"
+      ],
+      "articleOrProvision": "Art 13(1) and Art 13(6)-(7)",
+      "obligation": "Manufacturers must identify and document vulnerabilities and components, handle vulnerabilities and provide coordinated disclosure arrangements.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Vulnerability-handling policy",
+        "CVD policy and security contact",
+        "SBOM and component register"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No vulnerability process exists.",
+      "reviewOwner": "SECURITY_LEAD",
+      "releaseGate": "GATE-CRA-CYBERSECURITY",
+      "riskIds": [
+        "CYB-03"
+      ]
+    },
+    {
+      "requirementId": "REQ-CRA-03",
+      "legalSourceIds": [
+        "SRC-EU-CRA-2024-2847"
+      ],
+      "articleOrProvision": "Art 13(8)",
+      "obligation": "Manufacturers must determine and publish a support period during which security updates are provided, having regard to the expected product lifetime; the statutory minimum is five years unless the product lifetime is shorter.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Written support-period decision per family",
+        "End-of-support policy",
+        "Update delivery mechanism"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "The 5-year figure is an engineering/financial assumption, not a legal guarantee; the support period must be decided and justified.",
+      "reviewOwner": "SECURITY_LEAD",
+      "releaseGate": "GATE-CRA-CYBERSECURITY",
+      "riskIds": [
+        "CYB-04"
+      ]
+    },
+    {
+      "requirementId": "REQ-CRA-04",
+      "legalSourceIds": [
+        "SRC-EU-CRA-2024-2847"
+      ],
+      "articleOrProvision": "Art 14",
+      "obligation": "Manufacturers must report actively exploited vulnerabilities and severe incidents to the relevant authorities and inform users, with early warning and final reporting deadlines.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER"
+      ],
+      "evidenceRequired": [
+        "Incident-reporting runbook with 24h/72h/14d steps",
+        "Named contact point",
+        "Tabletop exercise record"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "Reporting duties apply from 2026-09-11; no process exists.",
+      "reviewOwner": "SECURITY_LEAD",
+      "releaseGate": "GATE-CRA-CYBERSECURITY",
+      "riskIds": [
+        "CYB-06"
+      ]
+    },
+    {
+      "requirementId": "REQ-CRA-05",
+      "legalSourceIds": [
+        "SRC-EU-CRA-2024-2847",
+        "SRC-EU-CE-MARKING-GUIDANCE"
+      ],
+      "articleOrProvision": "Art 27-32 and Annex VIII",
+      "obligation": "Manufacturers must complete the applicable conformity assessment, draw up the EU declaration of conformity, affix CE marking and retain documentation.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Conformity-assessment route decision",
+        "EU declaration of conformity",
+        "Technical documentation"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "Product classification determines self-assessment vs notified body.",
+      "reviewOwner": "SECURITY_LEAD",
+      "releaseGate": "GATE-CRA-CYBERSECURITY",
+      "riskIds": [
+        "CYB-01",
+        "LEG-01"
+      ]
+    },
+    {
+      "requirementId": "REQ-PLD-01",
+      "legalSourceIds": [
+        "SRC-EU-PLD-2024-2853"
+      ],
+      "articleOrProvision": "Art 4, 7 and 9",
+      "obligation": "Economic operators may be liable for defective products including software; relevant evidence must be preserved and disclosed, and the corrected application and transposition dates must be respected.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR",
+        "SAAS_PROVIDER"
+      ],
+      "evidenceRequired": [
+        "Liability assessment per family",
+        "Evidence-retention procedure",
+        "Insurance indication"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "The May 2026 corrigendum and the Spanish transposition calendar require verification.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-INSURANCE",
+      "riskIds": [
+        "LEG-05",
+        "LIA-03",
+        "LIA-12"
+      ]
+    },
+    {
+      "requirementId": "REQ-RED-01",
+      "legalSourceIds": [
+        "SRC-EU-RED-2014-53"
+      ],
+      "articleOrProvision": "Art 3(1), 3(2) and 3(3)",
+      "obligation": "Radio equipment must meet safety, EMC and efficient-spectrum essential requirements and, where applicable, the cybersecurity requirements in force.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "AIS",
+        "WATCH",
+        "HUB",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "RED applicability analysis per SKU",
+        "Radio test reports",
+        "Essential-requirements checklist"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No radio equipment assessment exists.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-07"
+      ]
+    },
+    {
+      "requirementId": "REQ-RED-02",
+      "legalSourceIds": [
+        "SRC-EU-RED-2014-53",
+        "SRC-ES-RD-188-2016"
+      ],
+      "articleOrProvision": "Art 17 and Annex III; Spanish transposition",
+      "obligation": "Conformity assessment, EU declaration of conformity, CE marking and Spanish-language instructions and information must be completed before placing radio equipment on the Spanish market.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "AIS",
+        "WATCH",
+        "HUB",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER"
+      ],
+      "evidenceRequired": [
+        "Conformity assessment and DoC",
+        "Spanish-language manual",
+        "Importer information"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "The Spanish RD 188/2016 full text was NOT_RETRIEVED; language duties are not verified.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-03",
+        "LEG-07"
+      ]
+    },
+    {
+      "requirementId": "REQ-DELREG-01",
+      "legalSourceIds": [
+        "SRC-EU-DELREG-2022-30",
+        "SRC-EU-DELREG-2026-339"
+      ],
+      "articleOrProvision": "Art 3(3)(d)-(f) and the 2026 repeal",
+      "obligation": "Internet-connected radio equipment had to meet delegated cybersecurity requirements from 2025-08-01; the regime aligns with the CRA from 2027-12-11, and the current consolidated position must be confirmed before relying on either date.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "WATCH",
+        "HUB",
+        "DISPLAY",
+        "AIS"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Current-text verification of the delegated acts",
+        "Product network-connection assessment"
+      ],
+      "complianceStatus": "UNDETERMINED",
+      "uncertainty": "The 2026 repeal instrument was NOT_RETRIEVED this session.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-07"
+      ]
+    },
+    {
+      "requirementId": "REQ-EMC-01",
+      "legalSourceIds": [
+        "SRC-EU-EMC-2014-30",
+        "SRC-ES-RD-186-2016"
+      ],
+      "articleOrProvision": "Art 4 and Annex II",
+      "obligation": "Apparatus must meet electromagnetic-compatibility requirements and conformity assessment; radio equipment covered by the RED is excluded from the EMC Directive but carries equivalent requirements.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "EMC test report",
+        "DoC with EMC directive reference"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No EMC testing exists.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-01",
+        "PRD-06"
+      ]
+    },
+    {
+      "requirementId": "REQ-LVD-01",
+      "legalSourceIds": [
+        "SRC-EU-LVD-2014-35",
+        "SRC-ES-RD-187-2016"
+      ],
+      "articleOrProvision": "Art 3 and Art 4 (voltage scope)",
+      "obligation": "Electrical equipment within 50-1000 V AC or 75-1500 V DC must meet safety objectives; equipment outside the scope may be NOT_APPLICABLE with a cited rationale.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "HUB",
+        "DISPLAY",
+        "SENSE",
+        "PILOT"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Voltage-scope analysis per SKU",
+        "Electrical safety test where applicable"
+      ],
+      "complianceStatus": "UNDETERMINED",
+      "uncertainty": "Marine 12/24 V DC products are likely outside the LVD scope; the analysis must be product-specific.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-01",
+        "LIA-01"
+      ]
+    },
+    {
+      "requirementId": "REQ-GPSR-01",
+      "legalSourceIds": [
+        "SRC-EU-GPSR-2023-988"
+      ],
+      "articleOrProvision": "Art 5",
+      "obligation": "Only safe products may be placed on the market; safety must be assessed against product characteristics, use context and vulnerable consumers.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "evidenceRequired": [
+        "Product safety risk assessment",
+        "Residual-risk and warning documentation"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No product-safety assessment exists; PILOT is safety-blocked.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-04",
+        "PRD-01"
+      ]
+    },
+    {
+      "requirementId": "REQ-GPSR-02",
+      "legalSourceIds": [
+        "SRC-EU-GPSR-2023-988"
+      ],
+      "articleOrProvision": "Art 22",
+      "obligation": "Manufacturers and importers must ensure product identification, manufacturer/importer details and batch/serial traceability.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER"
+      ],
+      "evidenceRequired": [
+        "Traceability data model",
+        "Labels and serialisation plan"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No serial/lot traceability exists.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-04"
+      ]
+    },
+    {
+      "requirementId": "REQ-GPSR-03",
+      "legalSourceIds": [
+        "SRC-EU-GPSR-2023-988"
+      ],
+      "articleOrProvision": "Art 19",
+      "obligation": "Online offers must display required product-safety information, the responsible economic operator, warnings and traceability identifiers.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "SELLER",
+        "DISTRIBUTOR"
+      ],
+      "evidenceRequired": [
+        "Product-page safety information fields",
+        "Traceability identifiers in structured data"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "The existing site does not carry these fields.",
+      "reviewOwner": "COMMERCIAL_DIRECTOR",
+      "releaseGate": "GATE-WEBSITE-REMEDIATION",
+      "riskIds": [
+        "LEG-04",
+        "OPS-04"
+      ]
+    },
+    {
+      "requirementId": "REQ-GPSR-04",
+      "legalSourceIds": [
+        "SRC-EU-GPSR-2023-988"
+      ],
+      "articleOrProvision": "Art 35-36",
+      "obligation": "Economic operators must notify dangerous products, cooperate with authorities and carry out recall or withdrawal.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "evidenceRequired": [
+        "Safety-incident process",
+        "Recall plan and contact channel"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No recall or incident process exists.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-04"
+      ]
+    },
+    {
+      "requirementId": "REQ-ROHS-01",
+      "legalSourceIds": [
+        "SRC-EU-ROHS-2011-65"
+      ],
+      "articleOrProvision": "Art 4 and Annex II",
+      "obligation": "EEE must not contain restricted substances above thresholds; technical documentation and DoC must be retained.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Material declarations from suppliers",
+        "RoHS DoC"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No supplier declarations exist.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-10"
+      ]
+    },
+    {
+      "requirementId": "REQ-WEEE-01",
+      "legalSourceIds": [
+        "SRC-EU-WEEE-2012-19",
+        "SRC-ES-PRODUCER-REGISTER"
+      ],
+      "articleOrProvision": "Art 12-14",
+      "obligation": "Producers must register, finance take-back and recycling, mark EEE and report; distance sellers may be producers.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "evidenceRequired": [
+        "Spanish producer registration",
+        "Take-back agreement",
+        "WEEE marking"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No registration exists.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-10"
+      ]
+    },
+    {
+      "requirementId": "REQ-BAT-01",
+      "legalSourceIds": [
+        "SRC-EU-BATTERIES-2023-1542"
+      ],
+      "articleOrProvision": "Art 10, 13 and 38",
+      "obligation": "Batteries must meet labelling, conformity and producer-responsibility duties; removability/replaceability rules apply.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "WATCH",
+        "HUB",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER"
+      ],
+      "evidenceRequired": [
+        "Battery category analysis",
+        "Labelling and conformity evidence",
+        "Take-back registration"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "Battery presence and category are not frozen.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-10"
+      ]
+    },
+    {
+      "requirementId": "REQ-PACK-01",
+      "legalSourceIds": [
+        "SRC-EU-PACKAGING-2025-40"
+      ],
+      "articleOrProvision": "Art 6, 11 and EPR chapter",
+      "obligation": "Packaging must meet sustainability and labelling requirements, with producer-responsibility registration and reporting.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "evidenceRequired": [
+        "Packaging compliance declaration",
+        "EPR registration"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No packaging design or registration exists.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-10"
+      ]
+    },
+    {
+      "requirementId": "REQ-RCD-01",
+      "legalSourceIds": [
+        "SRC-EU-RCD-2013-53"
+      ],
+      "articleOrProvision": "Art 4-5 and Annex I",
+      "obligation": "Recreational craft and covered components must meet essential safety requirements and carry CE marking; add-on electronics may fall outside the RCD scope.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "DISPLAY",
+        "PILOT"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Product-scope legal analysis per family",
+        "Component vs add-on determination"
+      ],
+      "complianceStatus": "UNDETERMINED",
+      "uncertainty": "No scope determination exists; no RCD claim may be made.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-11"
+      ]
+    },
+    {
+      "requirementId": "REQ-MED-01",
+      "legalSourceIds": [
+        "SRC-EU-MED-2014-90"
+      ],
+      "articleOrProvision": "Art 3 and 5",
+      "obligation": "Shipborne marine equipment must meet MED requirements and carry the wheelmark; no wheelmark may be claimed absent certification.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "AIS",
+        "DISPLAY",
+        "HUB"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "MED scope determination",
+        "Wheelmark certificate if applicable"
+      ],
+      "complianceStatus": "NOT_APPLICABLE",
+      "uncertainty": "Recreational electronics are generally outside shipborne MED scope, but a product-specific rationale is required.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "CLM-03"
+      ]
+    },
+    {
+      "requirementId": "REQ-GDPR-01",
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679",
+        "SRC-ES-LOPDGDD-3-2018"
+      ],
+      "articleOrProvision": "Art 5, 6 and 13",
+      "obligation": "Processing requires a lawful basis, data-minimisation and transparent information to data subjects.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "WATCH",
+        "FLEET",
+        "WEATHER"
+      ],
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER"
+      ],
+      "evidenceRequired": [
+        "Processing-purpose matrix",
+        "Privacy notice ES/EN",
+        "Lawful-basis record"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No purpose matrix or notice exists.",
+      "reviewOwner": "DPO",
+      "releaseGate": "GATE-PRIVACY-DPA-DPIA",
+      "riskIds": [
+        "PRIV-04"
+      ]
+    },
+    {
+      "requirementId": "REQ-GDPR-02",
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679"
+      ],
+      "articleOrProvision": "Art 15, 17, 20 and 21",
+      "obligation": "Data subjects must be able to access, erase, port and object to processing within the statutory periods.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "WATCH",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER"
+      ],
+      "evidenceRequired": [
+        "DSAR procedure and log",
+        "Export mechanism",
+        "Deletion verification"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No rights workflow exists.",
+      "reviewOwner": "DPO",
+      "releaseGate": "GATE-PRIVACY-DPA-DPIA",
+      "riskIds": [
+        "PRIV-06"
+      ]
+    },
+    {
+      "requirementId": "REQ-GDPR-03",
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679"
+      ],
+      "articleOrProvision": "Art 28",
+      "obligation": "Processing by a processor requires a binding Article 28 agreement and authorised subprocessors with flow-down obligations.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "WATCH",
+        "FLEET",
+        "WEATHER"
+      ],
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER",
+        "DATA_PROCESSOR"
+      ],
+      "evidenceRequired": [
+        "DPA with each processor",
+        "Subprocessor register"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No DPAs exist.",
+      "reviewOwner": "DPO",
+      "releaseGate": "GATE-PRIVACY-DPA-DPIA",
+      "riskIds": [
+        "PRIV-03"
+      ]
+    },
+    {
+      "requirementId": "REQ-GDPR-04",
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679"
+      ],
+      "articleOrProvision": "Art 32",
+      "obligation": "Controllers and processors must implement appropriate technical and organisational security measures, including encryption and access control.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "WATCH",
+        "FLEET",
+        "HUB"
+      ],
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER",
+        "DATA_PROCESSOR"
+      ],
+      "evidenceRequired": [
+        "Security-measures description",
+        "Penetration-test report",
+        "Access-control test"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No security evidence exists; the control plane is unauthenticated.",
+      "reviewOwner": "SECURITY_LEAD",
+      "releaseGate": "GATE-PRIVACY-DPA-DPIA",
+      "riskIds": [
+        "PRIV-06",
+        "LIA-09"
+      ]
+    },
+    {
+      "requirementId": "REQ-GDPR-05",
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679"
+      ],
+      "articleOrProvision": "Art 33",
+      "obligation": "Personal-data breaches must be notified to the supervisory authority within 72 hours where required, and to data subjects where high risk.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "WATCH",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER",
+        "DATA_PROCESSOR"
+      ],
+      "evidenceRequired": [
+        "Breach-response runbook",
+        "Notification templates",
+        "Processor notification clauses"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No runbook exists.",
+      "reviewOwner": "DPO",
+      "releaseGate": "GATE-PRIVACY-DPA-DPIA",
+      "riskIds": [
+        "PRIV-06"
+      ]
+    },
+    {
+      "requirementId": "REQ-GDPR-06",
+      "legalSourceIds": [
+        "SRC-EU-GDPR-2016-679",
+        "SRC-ES-AEPD-DPIA"
+      ],
+      "articleOrProvision": "Art 35",
+      "obligation": "A DPIA is required where processing is likely to result in a high risk, in particular systematic monitoring or large-scale location data.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "WATCH",
+        "FLEET",
+        "NAV"
+      ],
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER"
+      ],
+      "evidenceRequired": [
+        "DPIA screening",
+        "DPIA report where required",
+        "AEPD consultation if residual high risk"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No DPIA exists; AEPD guidance was inaccessible.",
+      "reviewOwner": "DPO",
+      "releaseGate": "GATE-PRIVACY-DPA-DPIA",
+      "riskIds": [
+        "PRIV-02"
+      ]
+    },
+    {
+      "requirementId": "REQ-EPRIV-01",
+      "legalSourceIds": [
+        "SRC-EU-EPRIVACY-2002-58",
+        "SRC-ES-LSSI-34-2002"
+      ],
+      "articleOrProvision": "ePrivacy Art 5(3); LSSI Art 22.2",
+      "obligation": "Non-essential cookies and device storage require prior informed consent, with clear information and an ability to refuse.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER"
+      ],
+      "evidenceRequired": [
+        "Cookie inventory",
+        "Consent mechanism test",
+        "Cookie policy"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "The existing site's consent mechanism is unverified.",
+      "reviewOwner": "DPO",
+      "releaseGate": "GATE-LEGAL-ENTITY",
+      "riskIds": [
+        "PRIV-07"
+      ]
+    },
+    {
+      "requirementId": "REQ-CRD-01",
+      "legalSourceIds": [
+        "SRC-EU-CRD-2011-83",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "articleOrProvision": "Art 6",
+      "obligation": "Before a distance contract is concluded, the trader must provide specified information on identity, price, delivery, withdrawal, guarantees and complaints in a clear and comprehensible manner.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "SELLER"
+      ],
+      "evidenceRequired": [
+        "Approved precontractual information set ES/EN",
+        "Checkout disclosure evidence"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No approved consumer terms exist.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-CONSUMER-TERMS",
+      "riskIds": [
+        "CONS-01"
+      ]
+    },
+    {
+      "requirementId": "REQ-CRD-02",
+      "legalSourceIds": [
+        "SRC-EU-CRD-2011-83",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "articleOrProvision": "Art 9-16",
+      "obligation": "Consumers have a 14-day withdrawal right with defined exceptions and consequences; missing information extends the period and return costs/refunds follow statutory rules.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "SELLER"
+      ],
+      "evidenceRequired": [
+        "Withdrawal information and model form",
+        "Refund-timing procedure",
+        "Digital-content consent flow"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No withdrawal flow exists.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-CONSUMER-TERMS",
+      "riskIds": [
+        "CONS-03"
+      ]
+    },
+    {
+      "requirementId": "REQ-CSD-01",
+      "legalSourceIds": [
+        "SRC-EU-CSD-2019-771",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "articleOrProvision": "Art 5-13 (Spain Arts 114-127 TRLGDCU)",
+      "obligation": "Goods must conform; consumers have a 3-year legal guarantee in Spain with a 24-month presumption, and sellers must repair, replace, reduce price or terminate; updates must maintain conformity.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "SELLER",
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Warranty wording preserving statutory rights",
+        "RMA/remedy workflow",
+        "Update policy"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "Commercial warranty drafts do not preserve the statutory rights; the 3% returns allowance is not a measured rate.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-CONSUMER-TERMS",
+      "riskIds": [
+        "CONS-02",
+        "CONS-08"
+      ]
+    },
+    {
+      "requirementId": "REQ-DCD-01",
+      "legalSourceIds": [
+        "SRC-EU-DCD-2019-770"
+      ],
+      "articleOrProvision": "Art 5-16",
+      "obligation": "Digital content and services must conform, be updated as required, and give remedies including termination and data recovery; terms must state duration, renewal and termination.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "WEATHER",
+        "WATCH",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "SAAS_PROVIDER",
+        "SELLER"
+      ],
+      "evidenceRequired": [
+        "Subscription terms",
+        "Update commitment",
+        "Termination and data-export rules"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No subscription terms exist.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-CONSUMER-TERMS",
+      "riskIds": [
+        "CONS-04",
+        "CONS-07"
+      ]
+    },
+    {
+      "requirementId": "REQ-UCPD-01",
+      "legalSourceIds": [
+        "SRC-EU-UCPD-2005-29",
+        "SRC-ES-LCD-3-1991"
+      ],
+      "articleOrProvision": "Art 6-7 and Annex I",
+      "obligation": "Commercial claims must be truthful and must not omit material information; blacklisted practices are prohibited in all circumstances.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "BRAND_OWNER",
+        "SELLER",
+        "DISTRIBUTOR"
+      ],
+      "evidenceRequired": [
+        "Claims register with evidence per claim",
+        "Pre-publication review"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "Existing public copy contains unsupported claims.",
+      "reviewOwner": "COMMERCIAL_DIRECTOR",
+      "releaseGate": "GATE-COMMERCIAL-CLAIMS",
+      "riskIds": [
+        "CLM-02",
+        "CLM-03",
+        "CLM-04"
+      ]
+    },
+    {
+      "requirementId": "REQ-PRICE-01",
+      "legalSourceIds": [
+        "SRC-EU-PRICE-98-6",
+        "SRC-ES-TRLGDCU-RDL-1-2007"
+      ],
+      "articleOrProvision": "Art 3-4",
+      "obligation": "Prices offered to consumers must show the selling price including VAT and taxes; a hypothesis price cannot be presented as a selling price.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "SELLER"
+      ],
+      "evidenceRequired": [
+        "Approved price list",
+        "VAT display rules",
+        "Price-display test"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "PRICE_APPROVED = NONE; every price is a hypothesis.",
+      "reviewOwner": "COMMERCIAL_DIRECTOR",
+      "releaseGate": "GATE-PRICING",
+      "riskIds": [
+        "CLM-02",
+        "PAY-05"
+      ]
+    },
+    {
+      "requirementId": "REQ-ECOM-01",
+      "legalSourceIds": [
+        "SRC-EU-ECOMMERCE-2000-31",
+        "SRC-ES-LSSI-34-2002"
+      ],
+      "articleOrProvision": "eCommerce Art 5-6, 10; LSSI Art 10",
+      "obligation": "The service provider must publish its name, address, contact and registration data and provide contract information before ordering.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "SELLER",
+        "SERVICE_OPERATOR"
+      ],
+      "evidenceRequired": [
+        "Published legal notice with full identity",
+        "Contact and registry data"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "SITE.legal fields are empty.",
+      "reviewOwner": "COMMERCIAL_DIRECTOR",
+      "releaseGate": "GATE-LEGAL-ENTITY",
+      "riskIds": [
+        "OPS-01",
+        "LEG-09"
+      ]
+    },
+    {
+      "requirementId": "REQ-PSD2-01",
+      "legalSourceIds": [
+        "SRC-EU-PSD2-2015-2366",
+        "SRC-EU-SCA-2018-389"
+      ],
+      "articleOrProvision": "PSD2 Art 4-5, 45; SCA RTS",
+      "obligation": "Payment-service roles must be identified and strong customer authentication applied subject to exemptions; card data must not be stored by the merchant in a hosted/tokenised model.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "WATCH",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "SELLER",
+        "SERVICE_OPERATOR"
+      ],
+      "evidenceRequired": [
+        "Payment-role analysis",
+        "Provider contract and SCA configuration",
+        "PCI-scope confirmation"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No merchant agreement or payment flow exists.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-PAYMENTS",
+      "riskIds": [
+        "PAY-01",
+        "PAY-02"
+      ]
+    },
+    {
+      "requirementId": "REQ-VAT-01",
+      "legalSourceIds": [
+        "SRC-EU-VAT-2006-112",
+        "SRC-EU-OSS-282-2011"
+      ],
+      "articleOrProvision": "Place-of-supply and invoicing rules; OSS",
+      "obligation": "VAT must be charged at the applicable rate and place of supply, invoices must contain the required information, and OSS may apply to cross-border B2C digital supplies.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "SELLER",
+        "IMPORTER"
+      ],
+      "evidenceRequired": [
+        "Tax adviser confirmation",
+        "Invoice template",
+        "OSS decision"
+      ],
+      "complianceStatus": "UNDETERMINED",
+      "uncertainty": "Cross-border, import VAT and OSS treatment are unconfirmed; Spanish 21% is verified for Spain only.",
+      "reviewOwner": "FINANCE_LEAD",
+      "releaseGate": "GATE-PRICING",
+      "riskIds": [
+        "PAY-05"
+      ]
+    },
+    {
+      "requirementId": "REQ-TM-01",
+      "legalSourceIds": [
+        "SRC-EU-EUTMR-2017-1001",
+        "SRC-EUIPO-MAREA-SEARCH"
+      ],
+      "articleOrProvision": "Art 8-9, 25-29",
+      "obligation": "Trade-mark rights arise by registration; use of an unregistered or confusingly similar sign may infringe earlier rights and may not be described as registered.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "BRAND_OWNER"
+      ],
+      "evidenceRequired": [
+        "Clearance search",
+        "Counsel opinion",
+        "Registration certificate or documented no-use decision"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED; MAREA_PUBLIC_USE = NO_GO.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-IP-CLEARANCE",
+      "riskIds": [
+        "IPR-13",
+        "CLM-01"
+      ]
+    },
+    {
+      "requirementId": "REQ-CE-01",
+      "legalSourceIds": [
+        "SRC-EU-CE-MARKING-GUIDANCE",
+        "SRC-EU-BLUE-GUIDE-2022"
+      ],
+      "articleOrProvision": "CE marking rules and manufacturer obligations",
+      "obligation": "CE marking may be affixed only after the applicable conformity assessment, technical documentation and EU declaration of conformity exist.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Completed conformity assessment",
+        "DoC",
+        "CE marking artwork"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No conformity route exists; CE_MARKING_CLAIM = PROHIBITED.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-06",
+        "CLM-03"
+      ]
+    },
+    {
+      "requirementId": "REQ-BLUE-01",
+      "legalSourceIds": [
+        "SRC-EU-BLUE-GUIDE-2022",
+        "SRC-EU-GPSR-2023-988"
+      ],
+      "articleOrProvision": "Blue Guide on modules and final products",
+      "obligation": "Integrating a certified module into a new product does not transfer the module certificate to the final product; the integrator must assess the new product.",
+      "jurisdiction": "EU",
+      "productFamilyIds": [
+        "AIS",
+        "HUB",
+        "DISPLAY",
+        "SENSE",
+        "PILOT"
+      ],
+      "economicOperatorRoles": [
+        "OEM_ASSEMBLER",
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Module certificate scope analysis",
+        "System-level assessment and tests"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No system-level assessment exists.",
+      "reviewOwner": "HARDWARE_LEAD",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-01",
+        "LEG-02"
+      ]
+    },
+    {
+      "requirementId": "REQ-DB-01",
+      "legalSourceIds": [
+        "SRC-EU-DB-96-9",
+        "SRC-ES-IHM-CHART-LICENSING",
+        "SRC-ES-AEMET-TERMS"
+      ],
+      "articleOrProvision": "Art 7 and provider terms",
+      "obligation": "Substantial extraction or re-utilisation of chart/weather/tile databases requires the rights holder's authorisation; public access is not a redistribution right.",
+      "jurisdiction": "ES + EU",
+      "productFamilyIds": [
+        "NAV",
+        "WEATHER",
+        "DISPLAY",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "SAAS_PROVIDER",
+        "DISTRIBUTOR"
+      ],
+      "evidenceRequired": [
+        "Signed data licences",
+        "Rights matrix per variable/region",
+        "Attribution compliance"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No data rights are granted.",
+      "reviewOwner": "DATA_RIGHTS_OWNER",
+      "releaseGate": "GATE-DATA-LICENSING",
+      "riskIds": [
+        "DATA-01",
+        "DATA-02",
+        "DATA-03"
+      ]
+    },
+    {
+      "requirementId": "REQ-ES-TRL-01",
+      "legalSourceIds": [
+        "SRC-ES-TRLGDCU-RDL-1-2007",
+        "SRC-EU-CSD-2019-771"
+      ],
+      "articleOrProvision": "Arts 114-127 TRLGDCU",
+      "obligation": "Spanish consumers benefit from a 3-year legal guarantee and a 24-month presumption of non-conformity; commercial warranties cannot replace or shorten these rights.",
+      "jurisdiction": "ES",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "SELLER",
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Counsel-reviewed guarantee wording",
+        "Consumer information",
+        "RMA workflow"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No consumer terms exist; the 3% returns allowance is illustrative.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-CONSUMER-TERMS",
+      "riskIds": [
+        "CONS-02",
+        "CONS-10"
+      ]
+    },
+    {
+      "requirementId": "REQ-ES-LSSI-01",
+      "legalSourceIds": [
+        "SRC-ES-LSSI-34-2002"
+      ],
+      "articleOrProvision": "Art 10, 21 and 22",
+      "obligation": "The Spanish information-society rules require published provider identity, consent for commercial communications and cookies, and contract information.",
+      "jurisdiction": "ES",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "SELLER",
+        "SERVICE_OPERATOR"
+      ],
+      "evidenceRequired": [
+        "Legal notice with identity",
+        "Cookie consent test",
+        "Commercial-communication consent"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "Identity is empty and consent is unverified.",
+      "reviewOwner": "COMMERCIAL_DIRECTOR",
+      "releaseGate": "GATE-LEGAL-ENTITY",
+      "riskIds": [
+        "OPS-01",
+        "PRIV-07"
+      ]
+    },
+    {
+      "requirementId": "REQ-ES-LOPD-01",
+      "legalSourceIds": [
+        "SRC-ES-LOPDGDD-3-2018",
+        "SRC-EU-GDPR-2016-679"
+      ],
+      "articleOrProvision": "Art 28 and 32-39",
+      "obligation": "Spanish law complements the GDPR on DPO designation, rights, security and breach notification.",
+      "jurisdiction": "ES",
+      "productFamilyIds": [
+        "NAV",
+        "WATCH",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "DATA_CONTROLLER",
+        "DATA_PROCESSOR"
+      ],
+      "evidenceRequired": [
+        "DPO appointment",
+        "Rights procedure",
+        "Breach procedure"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No DPO or procedures exist.",
+      "reviewOwner": "DPO",
+      "releaseGate": "GATE-PRIVACY-DPA-DPIA",
+      "riskIds": [
+        "PRIV-01",
+        "PRIV-06"
+      ]
+    },
+    {
+      "requirementId": "REQ-ES-LGT-01",
+      "legalSourceIds": [
+        "SRC-ES-LGT-11-2022",
+        "SRC-EU-RED-2014-53"
+      ],
+      "articleOrProvision": "Spectrum title and radio-equipment rules",
+      "obligation": "Radio transmission requires an authorisation; MAREA AIS is receive-only and must not offer transmission or imply it.",
+      "jurisdiction": "ES",
+      "productFamilyIds": [
+        "AIS",
+        "NAV",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "INSTALLER"
+      ],
+      "evidenceRequired": [
+        "Receive-only design confirmation",
+        "No-transmit test",
+        "Receiver conformity"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No receiver conformity or no-transmit evidence exists.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-08"
+      ]
+    },
+    {
+      "requirementId": "REQ-ES-RD188-01",
+      "legalSourceIds": [
+        "SRC-ES-RD-188-2016"
+      ],
+      "articleOrProvision": "Spanish RED transposition",
+      "obligation": "Instructions and information for radio equipment must be provided in the required Spanish language and market-surveillance duties must be observed.",
+      "jurisdiction": "ES",
+      "productFamilyIds": [
+        "AIS",
+        "WATCH",
+        "HUB",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "evidenceRequired": [
+        "Retrieved BOE text",
+        "Spanish manual and safety information"
+      ],
+      "complianceStatus": "UNDETERMINED",
+      "uncertainty": "NOT_RETRIEVED; do not infer Spanish duties from the Portuguese analogue.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-03"
+      ]
+    },
+    {
+      "requirementId": "REQ-ES-LCD-01",
+      "legalSourceIds": [
+        "SRC-ES-LCD-3-1991",
+        "SRC-EU-UCPD-2005-29"
+      ],
+      "articleOrProvision": "Art 5-7",
+      "obligation": "Deceptive, confusing or omissive commercial conduct is unfair competition and can be enjoined and corrected.",
+      "jurisdiction": "ES",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "BRAND_OWNER",
+        "SELLER"
+      ],
+      "evidenceRequired": [
+        "Claims evidence register",
+        "Copy review"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "Existing public copy may contain unsupported claims.",
+      "reviewOwner": "LEGAL_COUNSEL",
+      "releaseGate": "GATE-COMMERCIAL-CLAIMS",
+      "riskIds": [
+        "CLM-04",
+        "IPR-15"
+      ]
+    },
+    {
+      "requirementId": "REQ-ES-LGP-01",
+      "legalSourceIds": [
+        "SRC-ES-LGP-34-1988"
+      ],
+      "articleOrProvision": "Art 3-4",
+      "obligation": "Advertising must be truthful and not misleading; unlawful advertising can be stopped and subject to corrective action.",
+      "jurisdiction": "ES",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "economicOperatorRoles": [
+        "BRAND_OWNER",
+        "SELLER"
+      ],
+      "evidenceRequired": [
+        "Advertising review procedure",
+        "Claim evidence"
+      ],
+      "complianceStatus": "UNDETERMINED",
+      "uncertainty": "Source SRC-ES-LGP-34-1988 is NOT_RETRIEVED; the determination is withheld (conservative UNVERIFIED, no positive compliance asserted). The requirement must be re-based on the BOE text before any conclusion.",
+      "reviewOwner": "COMMERCIAL_DIRECTOR",
+      "releaseGate": "GATE-COMMERCIAL-CLAIMS",
+      "riskIds": [
+        "CLM-04"
+      ]
+    },
+    {
+      "requirementId": "REQ-ES-PROD-01",
+      "legalSourceIds": [
+        "SRC-ES-PRODUCER-REGISTER",
+        "SRC-EU-WEEE-2012-19"
+      ],
+      "articleOrProvision": "Producer registration",
+      "obligation": "Producers must register with the Spanish producer register for the applicable streams and evidence take-back and reporting.",
+      "jurisdiction": "ES",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "IMPORTER",
+        "DISTRIBUTOR"
+      ],
+      "evidenceRequired": [
+        "Registration numbers per stream",
+        "Take-back agreement"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "No registration exists.",
+      "reviewOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "releaseGate": "GATE-MARKET-PLACEMENT",
+      "riskIds": [
+        "LEG-10"
+      ]
+    },
+    {
+      "requirementId": "REQ-NMEA-01",
+      "legalSourceIds": [
+        "SRC-NMEA-2000-LICENSING",
+        "SRC-NMEA-CERTIFICATION"
+      ],
+      "articleOrProvision": "NMEA licence and certification programme",
+      "obligation": "Marketing NMEA 2000 products requires the applicable licence, membership, manufacturer/product codes and certification; read-only interoperability is not certification.",
+      "jurisdiction": "INTERNATIONAL",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER"
+      ],
+      "evidenceRequired": [
+        "Membership/licence agreement",
+        "Manufacturer/product codes",
+        "Certificate"
+      ],
+      "complianceStatus": "NON_COMPLIANT_UNVERIFIED",
+      "uncertainty": "NMEA 2000 is not implemented and no licence exists.",
+      "reviewOwner": "ENGINEERING_LEAD",
+      "releaseGate": "GATE-IP-CLEARANCE",
+      "riskIds": [
+        "PRD-04"
+      ]
+    },
+    {
+      "requirementId": "REQ-NMEA-02",
+      "legalSourceIds": [
+        "SRC-NMEA-0183"
+      ],
+      "articleOrProvision": "Interface standard",
+      "obligation": "NMEA 0183 compatibility statements require tested sentence-level interoperability for the named device and firmware.",
+      "jurisdiction": "INTERNATIONAL",
+      "productFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "DISPLAY"
+      ],
+      "economicOperatorRoles": [
+        "MANUFACTURER",
+        "INSTALLER"
+      ],
+      "evidenceRequired": [
+        "Tested compatibility matrix",
+        "Test method description"
+      ],
+      "complianceStatus": "NOT_ASSESSED",
+      "uncertainty": "No tested rows exist (TESTED_COMPATIBILITY_ROWS = 0).",
+      "reviewOwner": "ENGINEERING_LEAD",
+      "releaseGate": "GATE-COMMERCIAL-CLAIMS",
+      "riskIds": [
+        "PRD-05"
+      ]
+    }
+  ]
+}

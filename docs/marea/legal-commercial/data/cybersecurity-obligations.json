@@ -1,0 +1,103 @@
+{
+  "contractId": "MAREA-MC14-CYBERSECURITY-OBLIGATIONS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-14",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "jurisdictionScope": "EU + ES",
+  "statusNote": "Prospective CRA compliance plan. No conformity assessment, certificate, secure-development process, SBOM, vulnerability programme or update capability exists. Support-period and cybersecurity costs remain UNKNOWN. No cybersecurity certification is claimed.",
+  "keyDates": {
+    "craEntryIntoForce": "2024-12-10",
+    "reportingObligationsFrom": "2026-09-11",
+    "mainObligationsFrom": "2027-12-11",
+    "delReg2022_30AppliedFrom": "2025-08-01",
+    "delReg2022_30RepealedWithEffectFrom": "2027-12-11",
+    "delReg2026_339Adopted": "2026-02-16",
+    "delReg2026_339InForce": "2026-05-19",
+    "craSupportPeriodMinimumYears": 5,
+    "craSupportPeriodRule": "CRA Art 13(8): the support period shall be at least five years; where the product is expected to be in use for less than five years, the support period shall correspond to the expected use time.",
+    "craSecurityUpdatePeriodYears": 10,
+    "note": "The 5-year figure is a statutory floor tied to an assessment of expected product lifetime; it is not a universal marketing guarantee. The financial model's 5-year assumption is not evidence of a decided support period."
+  },
+  "productClassification": [
+    {"productFamilyId": "NAV", "classification": "UNDETERMINED", "likelyAnnex": "DEFAULT_OR_NOT_IN_SCOPE_IF_PURE_REMOTE_PROCESSING", "conformityRoute": "NOT_DECIDED", "evidenceStatus": "NONE"},
+    {"productFamilyId": "HUB", "classification": "UNDETERMINED", "likelyAnnex": "DEFAULT", "conformityRoute": "NOT_DECIDED", "evidenceStatus": "NONE"},
+    {"productFamilyId": "AIS", "classification": "UNDETERMINED", "likelyAnnex": "DEFAULT", "conformityRoute": "NOT_DECIDED", "evidenceStatus": "NONE"},
+    {"productFamilyId": "PILOT", "classification": "UNDETERMINED", "likelyAnnex": "DEFAULT_OR_IMPORTANT_IF_SAFETY_FUNCTION", "conformityRoute": "NOT_DECIDED", "evidenceStatus": "NONE"},
+    {"productFamilyId": "SENSE", "classification": "UNDETERMINED", "likelyAnnex": "DEFAULT", "conformityRoute": "NOT_DECIDED", "evidenceStatus": "NONE"},
+    {"productFamilyId": "WATCH", "classification": "UNDETERMINED", "likelyAnnex": "DEFAULT_OR_IMPORTANT", "conformityRoute": "NOT_DECIDED", "evidenceStatus": "NONE"},
+    {"productFamilyId": "DISPLAY", "classification": "UNDETERMINED", "likelyAnnex": "DEFAULT", "conformityRoute": "NOT_DECIDED", "evidenceStatus": "NONE"},
+    {"productFamilyId": "WEATHER", "classification": "UNDETERMINED", "likelyAnnex": "SERVICE_NOT_PRODUCT_SUBJECT_TO_SCOPE_ANALYSIS", "conformityRoute": "NOT_DECIDED", "evidenceStatus": "NONE"},
+    {"productFamilyId": "FLEET", "classification": "UNDETERMINED", "likelyAnnex": "SERVICE_NOT_PRODUCT_SUBJECT_TO_SCOPE_ANALYSIS", "conformityRoute": "NOT_DECIDED", "evidenceStatus": "NONE"}
+  ],
+  "essentialRequirements": [
+    {"requirementId": "CRA-ER-01", "annexReference": "Annex I(1)(a)", "requirement": "Products must be designed, developed and produced to ensure an appropriate level of cybersecurity based on risk.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Risk-based security design documentation", "Threat model"], "riskIds": ["CYB-02"]},
+    {"requirementId": "CRA-ER-02", "annexReference": "Annex I(1)(b)", "requirement": "Products must be delivered with a secure by default configuration, including the ability to reset to a secure state.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Secure configuration baseline", "Reset test"], "riskIds": ["CYB-05", "CYB-07"]},
+    {"requirementId": "CRA-ER-03", "annexReference": "Annex I(1)(c)", "requirement": "Products must ensure protection from unauthorised access through authentication, identity and access-management mechanisms.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Authentication design", "Access-control test", "Control-plane hardening evidence"], "riskIds": ["CYB-07", "PRD-02"]},
+    {"requirementId": "CRA-ER-04", "annexReference": "Annex I(1)(d)", "requirement": "Products must protect the confidentiality and integrity of stored, transmitted and processed data.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Encryption design and test", "Key management plan"], "riskIds": ["CYB-05", "PRIV-06"]},
+    {"requirementId": "CRA-ER-05", "annexReference": "Annex I(1)(e)", "requirement": "Products must minimise the attack surface, including external interfaces and unnecessary services.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Interface inventory", "Port/service hardening evidence"], "riskIds": ["PRD-02"]},
+    {"requirementId": "CRA-ER-06", "annexReference": "Annex I(1)(f)", "requirement": "Products must reduce the impact of an incident using exploitation mitigation and resilience mechanisms.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Failure-mode and isolation design", "Recovery test"], "riskIds": ["CYB-02"]},
+    {"requirementId": "CRA-ER-07", "annexReference": "Annex I(1)(g)", "requirement": "Products must record and monitor relevant internal activity, with the option to allow users to deactivate it.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Logging design", "User control over logging"], "riskIds": ["CYB-05"]},
+    {"requirementId": "CRA-ER-08", "annexReference": "Annex I(1)(h)", "requirement": "Products must ensure that security updates can be applied in a timely and secure manner, including automatic updates where appropriate.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Signed firmware and rollback test", "Update-distribution evidence"], "riskIds": ["CYB-05", "LIA-11"]},
+    {"requirementId": "CRA-ER-09", "annexReference": "Annex I(1)(i)", "requirement": "Products must ensure the confidentiality, integrity and authenticity of data used for security purposes.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Secure boot evidence", "Integrity-measurement evidence"], "riskIds": ["CYB-05"]},
+    {"requirementId": "CRA-ER-10", "annexReference": "Annex I(1)(j)", "requirement": "Products must be designed and produced to limit known vulnerabilities and provide security updates for the support period.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Dependency inventory and monitoring", "Support-period policy"], "riskIds": ["CYB-03", "CYB-04"]},
+    {"requirementId": "CRA-ER-11", "annexReference": "Annex I(1)(k)", "requirement": "Manufacturers must apply due diligence when integrating third-party components and document the components and their vulnerabilities.", "implementationStatus": "NOT_MET", "evidenceRequired": ["SBOM", "Component due-diligence records"], "riskIds": ["CYB-05", "IPR-11"]},
+    {"requirementId": "CRA-ER-12", "annexReference": "Annex I(1)(l)", "requirement": "Manufacturers must establish a coordinated vulnerability-disclosure policy and handle vulnerabilities throughout the lifecycle.", "implementationStatus": "NOT_MET", "evidenceRequired": ["CVD policy", "Security contact", "Triage and remediation runbook"], "riskIds": ["CYB-03"]},
+    {"requirementId": "CRA-ER-13", "annexReference": "CRA Art 13(9)", "requirement": "Security updates must be provided for at least ten years after the last product placement, or for the remainder of the support period where longer.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Update-capability plan", "Support-period decision", "Publication of support period"], "riskIds": ["CYB-04"]},
+    {"requirementId": "CRA-ER-14", "annexReference": "CRA Art 14", "requirement": "Actively exploited vulnerabilities and severe incidents must be reported to the competent authority and users within the statutory deadlines.", "implementationStatus": "NOT_MET", "evidenceRequired": ["Reporting runbook", "Named authority contact", "Tabletop exercise"], "riskIds": ["CYB-06"]}
+  ],
+  "lifecycleControls": [
+    {"controlId": "CRA-LC-01", "control": "Secure development lifecycle", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["SSDLC policy", "Threat modelling", "Secure code review"]},
+    {"controlId": "CRA-LC-02", "control": "Vulnerability intake and disclosure", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["CVD policy", "Intake channel", "Triage SLA"]},
+    {"controlId": "CRA-LC-03", "control": "Security updates and firmware lifecycle", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["Signed update mechanism", "Rollback test", "Update end-of-support notice"]},
+    {"controlId": "CRA-LC-04", "control": "Software bill of materials", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["SPDX/CycloneDX SBOM per release"]},
+    {"controlId": "CRA-LC-05", "control": "Dependency maintenance and monitoring", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["Dependency register", "CVE monitoring process"]},
+    {"controlId": "CRA-LC-06", "control": "Incident reporting and response", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["24h/72h/14d procedure", "Contact point", "Exercise record"]},
+    {"controlId": "CRA-LC-07", "control": "Support-period decision", "status": "OPEN", "evidenceRequired": ["Written support-period decision per family", "Expected-lifetime justification", "End-of-support policy"]},
+    {"controlId": "CRA-LC-08", "control": "Risk assessment and security documentation", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["CRA risk assessment", "Technical documentation"]},
+    {"controlId": "CRA-LC-09", "control": "Secure configuration and reset", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["Baseline", "Reset evidence"]},
+    {"controlId": "CRA-LC-10", "control": "Authentication and access control", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["Auth design", "Role model", "Access test"]},
+    {"controlId": "CRA-LC-11", "control": "Device provisioning and ownership transfer", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["Provisioning design", "Ownership-transfer test"]},
+    {"controlId": "CRA-LC-12", "control": "End-of-support policy", "status": "NOT_IMPLEMENTED", "evidenceRequired": ["Published end-of-support policy"]}
+  ],
+  "inheritedDeviceRequirements": {
+    "sourceDocument": "docs/marea/hardware/firmware-security/MC11-DEVICE-SECURITY-AND-LIFECYCLE.md",
+    "requirementCount": 52,
+    "executedCount": 0,
+    "note": "MC-11 recorded 52 device-security requirements; MC-14 maps the CRA obligations to them but executes none. No requirement is marked met."
+  },
+  "reportingAndConformity": {
+    "competentAuthorityIdentified": false,
+    "reportingChannel": "NOT_ESTABLISHED",
+    "conformityAssessmentRoute": "NOT_DECIDED",
+    "notifiedBodyEngaged": false,
+    "euDeclarationOfConformity": "NOT_EXISTS",
+    "ceMarkingForCRA": "NOT_APPLIED",
+    "technicalDocumentation": "NOT_EXISTS"
+  },
+  "costStatus": {
+    "supportPeriodEngineeringCost": "UNKNOWN",
+    "securityMaintenanceAnnualCost": "UNKNOWN",
+    "conformityAssessmentCost": "UNKNOWN",
+    "illustrativeStressEnvelopeEurPerYear": 60000,
+    "envelopeStatus": "ILLUSTRATIVE_STRESS_TEST_ONLY_NOT_A_QUOTE_OR_BUDGET",
+    "financialDependencyId": "MC14-DEP-05"
+  },
+  "unknowns": [
+    "CRA product classification per family (default/important/critical).",
+    "The support period to be offered and the expected product lifetime.",
+    "The conformity-assessment route (self-assessment vs notified body).",
+    "The cost of the CRA programme and annual maintenance.",
+    "The competent Spanish authority and reporting channel.",
+    "Whether WEATHER/FLEET services are in CRA scope at all."
+  ],
+  "claimsProhibited": [
+    "CRA compliant",
+    "cybersecurity certified",
+    "ISO 27001 certified",
+    "secure by design",
+    "guaranteed updates for N years",
+    "no known vulnerabilities",
+    "24/7 security monitoring"
+  ]
+}
