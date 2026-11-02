@@ -1481,3 +1481,59 @@ decisionRules/ASM-MC12-019; `MC12-COMMERCIAL-PRIORITIZATION.md`;
 
 **Status effect.** No price approval, no commercial availability, no publication,
 no merge, no deployment.
+
+## D-053 - 2026-11-02 - MC-13 inherits the MC-11/MC-12 cost and FX basis without a silent re-conversion
+
+**Context.** MC-11 computed its BOM lines with an engineering FX assumption (EUR 0.925925926 per USD). MC-12 recorded an observed ECB reference rate (USD 1.1216 per EUR, EUR 0.8916 per USD) for new connectivity and cloud conversions and explicitly did not re-base the inherited BOM. MC-13 consumes those same variable unit costs.
+
+**Decision.** MC-13 does not re-convert or re-base any inherited MC-11/MC-12 cost line. It consumes the recorded variable costs exactly (`D-06` SHA-256 predecessor baseline and check `A-24`), carries the FX exposure as a named risk (`BLK-FIN-08`) and models a +10% FX cost stress without claiming a hedge exists. A single disclosed re-conversion pass remains future work requiring a procurement/treasury decision.
+
+**Rationale.** Re-basing part of a BOM silently changes the inherited evidence and breaks traceability. A stress envelope communicates the exposure without rewriting predecessor arithmetic.
+
+**Consequences.** (a) Unit costs remain comparable with MC-11/MC-12 records. (b) The FX gap is disclosed, not closed. (c) No price, budget or hedge is approved.
+
+**Evidence.** `docs/marea/financial/data/predecessor-baseline.json`; `docs/marea/financial/data/assumptions.json`; `MC13-HARDWARE-PRODUCTION-AND-INVENTORY-CASHFLOW.md`; validator `D-06`, `A-24`.
+
+**Status effect.** No procurement, no purchase, no price approval, no financial commitment.
+
+## D-054 - 2026-11-02 - MC-13 delivers the internal 60-month financial model and stays PARTIAL because external commercial evidence is absent
+
+**Context.** Milestone 13 requires a 60-month financial model, 12/36/60 views, scenario economics, cash flow, investment requirements, conditional break-even and stress tests. The acceptance criteria also require externally credible commercial/financing evidence, but the execution mandate prohibits supplier, provider, customer and financial outreach; the predecessor evidence contains 0 quotations, 0 contracts, 0 customer interviews and 0 granted rights.
+
+**Decision.** Deliver the complete internal financial package: one integrated 60-period model, the restricted current case plus three hypothetical post-clearance scenarios, a monthly cash-flow and working-capital model, a capital-investment schedule, conditional break-even thresholds, 24 stress cases, machine-readable datasets, a deterministic engine/builder, a 73-check validator, a 29-test adversarial suite, an independent audit and a Spanish executive report. Record `MC13_VERDICT = PARTIAL` with `MC13_INTERNAL_FINANCIAL_SCOPE = PASS_INTERNAL_FINANCIAL_SCOPE` and `MC13_EXTERNAL_COMMERCIAL_VALIDATION = BLOCKED_OR_NOT_OBTAINED`. Keep every price `HYPOTHESIS_UNAPPROVED` and every product `NOT_FOR_SALE`.
+
+**Rationale.** The model is internally defensible and reproducible, but no external observation can be invented. Separating the internal-scope verdict from the external-evidence verdict preserves both the work and the missing evidence.
+
+**Consequences.** (a) No price, budget, financing or launch is approved. (b) Break-even values are conditional hypothetical thresholds or NOT_DETERMINABLE. (c) MC-14 receives a named-gap handoff only and is not started. (d) The draft PR is delivery evidence only.
+
+**Evidence.** `docs/marea/financial/` (D01-D21); `data/manifest.json`; `data/scenario-results.json`; `data/break-even-thresholds.json`; `review/MC-13-REVIEW.md`; `MC-13-DELIVERY.md`.
+
+**Status effect.** No authorization, outreach, purchase, price approval, publication, merge, deployment or MC-14 start.
+
+## D-055 - 2026-11-02 - MC-13 fixes the scenario, unknown-cost and inventory conventions
+
+**Context.** The financial model needs conventions that are honest about what is unknown and deterministic enough to audit. MC-12 handed over unknown data-licence, insurance, CRA, onboarding/SLA and supplier/customer terms, no company cash position and no demand evidence.
+
+**Decision.** (a) The model starts from a declared zero opening-cash analysis convention (`ASM-MC13-044`) solely to compute the external cash requirement; this is not the company balance (`ASM-MC13-045` is UNKNOWN). (b) The restricted current case carries zero authorized revenue and null cost/cash columns. (c) Demand, churn, renewal, activation, channel mix, capex multipliers and operating-cost envelopes are labelled `SCENARIO_ASSUMPTION`. (d) Unknown variable/fixed costs stay null and are excluded from the conditional result, never zeroed. (e) Tooling/NRE is capex plus non-cash amortisation, never a variable unit cost. (f) Inventory uses a projected-on-hand production plan with MOQ 25, two-month lead time and a one-month safety buffer; purchases cash, COGS, prepayments, payables and write-off value reconcile. (g) A material unknown forces the corresponding break-even threshold to `NOT_DETERMINABLE`.
+
+**Rationale.** Without fixed conventions the model cannot be independently recomputed, and an unknown silently treated as zero would overstate viability.
+
+**Consequences.** (a) All financial outputs are conditional. (b) True financing requirements are higher than the conditional figure because named unknowns are excluded. (c) The validator enforces the conventions (`V-12`, `V-13`, `V-20`, `V-21`, `A-14`, `A-17`, `A-18`, `A-26`).
+
+**Evidence.** `MC13-FINANCIAL-DATA-CONTRACT.md`; `data/assumptions.json`; `data/scenario-definitions.json`; `data/working-capital.json`; `MC13-60-MONTH-INTEGRATED-FINANCIAL-MODEL.md`.
+
+**Status effect.** No approval or commercial authorization.
+
+## D-056 - 2026-11-02 - MC-13 records the pre-freeze model corrections for independent re-verification
+
+**Context.** During implementation the hardware specialist found that per-SKU distributor collection arrays were aliased and multi-counted, that input VAT was computed on units sold rather than inventory purchased, that safety stock was declared but unused, and that the obsolescence write-off value was not recognised in the conditional result. A later review found that two stress overrides (cloud and cellular cost) were no-ops and that generated bundle component-edition lists did not match the governing bundle contract.
+
+**Decision.** Correct all six defects before freezing the candidate: per-SKU collection arrays are distinct, input VAT is based on inventory receipts cost, safety stock drives the production plan through a projected-on-hand MRP calculation, the write-off value is a non-cash cost recognised in contribution and reversed in working capital, cloud/cellular overrides are effective, and bundle `componentEditionIds` are derived from `bundle-definitions.json`. Regenerate every derived dataset and the generated figures/register, add validator controls (`A-26`, `V-21`) and require the independent auditor to re-verify the corrected commit.
+
+**Rationale.** An internally consistent but methodologically wrong cash model would overstate or understate financing requirements. The correction must be traceable rather than silently absorbed into a regenerated dataset.
+
+**Consequences.** (a) Conditional financing requirements changed materially before the audit. (b) Human-readable reports were refreshed to the corrected snapshot. (c) The audited commit is the corrected one; later documentation-only commits cannot re-characterise it.
+
+**Evidence.** `scripts/marea-financial-engine.mjs`; `scripts/check-marea-financial-model.mjs` checks `A-26`, `V-21`; `MC13-HARDWARE-PRODUCTION-AND-INVENTORY-CASHFLOW.md` verification note; `data/review-findings.json`.
+
+**Status effect.** No approval; no merge or deployment.

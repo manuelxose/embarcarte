@@ -1,0 +1,87 @@
+{
+  "contractId": "MAREA-MC13-RECURRING-REVENUE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "saas-economics",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "billingModels": [
+    {
+      "id": "BILL-ANNUAL",
+      "label": "Annual upfront subscription",
+      "cashTiming": "Collected at the start of each paid year.",
+      "revenueRecognition": "Straight-line over 12 months; deferred revenue carried for the unearned part.",
+      "appliesTo": [
+        "NAV-ESSENTIAL",
+        "NAV-PRO",
+        "WEATHER-STANDARD",
+        "WEATHER-PRO",
+        "WATCH-MONITORING"
+      ]
+    },
+    {
+      "id": "BILL-MONTHLY",
+      "label": "Monthly per-vessel subscription",
+      "cashTiming": "Collected monthly in arrears/advance at the start of the month.",
+      "revenueRecognition": "Recognised in the month billed.",
+      "appliesTo": [
+        "FLEET-START",
+        "FLEET-BUSINESS"
+      ]
+    }
+  ],
+  "cohortAssumptions": {
+    "DOWNSIDE": {
+      "annualRenewalRate": 0.55,
+      "monthlyChurnRate": 0.03,
+      "activationRate": 0.7
+    },
+    "BASE_HYPOTHETICAL": {
+      "annualRenewalRate": 0.75,
+      "monthlyChurnRate": 0.015,
+      "activationRate": 0.85
+    },
+    "UPSIDE_HYPOTHETICAL": {
+      "annualRenewalRate": 0.85,
+      "monthlyChurnRate": 0.008,
+      "activationRate": 0.95
+    },
+    "note": "Every rate is an ILLUSTRATIVE SCENARIO ASSUMPTION. CHURN_VALIDATED = false, RENEWAL_RATE_VALIDATED = false, ACTIVATION_VALIDATED = false."
+  },
+  "sharedEntitlements": [
+    {
+      "id": "ENT-NAV-WEATHER",
+      "entitlement": "CHART_WEATHER_DATA_LICENCE",
+      "skuIds": [
+        "NAV-ESSENTIAL",
+        "NAV-PRO",
+        "WEATHER-STANDARD",
+        "WEATHER-PRO"
+      ],
+      "doubleBillingAllowed": false,
+      "doubleCostingAllowed": false,
+      "sharedCostDriverId": "ASM-MC13-049",
+      "notes": "NAV and WEATHER share one chart/weather data-licence entitlement ledger. The licence cost is charged at most once per licensed account and is UNKNOWN."
+    }
+  ],
+  "paymentProcessing": {
+    "percentage": 1.5,
+    "fixedFeeEur": 0.25,
+    "sourceId": "ASM-MC13-004",
+    "notes": "Published EEA card rate; not a negotiated merchant rate. App-store commission covers its own transaction."
+  },
+  "inactiveAccountPolicy": {
+    "telemetryCostAssumedZero": true,
+    "retainedIdentityAndStorageCost": true,
+    "retainedCostFactor": 0.2,
+    "assumptionId": "ASM-MC13-037",
+    "notes": "No provider has confirmed that a suspended SIM or dormant account is free."
+  },
+  "deferredRevenuePolicy": {
+    "method": "STRAIGHT_LINE_12_MONTHS",
+    "refundOnChurnPct": 0,
+    "assumptionId": "ASM-MC13-159",
+    "notes": "No refund-on-churn right is assumed; the treatment is a scenario assumption, not a contract term."
+  }
+}
