@@ -1,0 +1,207 @@
+{
+  "contractId": "MC18-SEO-METADATA-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "owner": "MC-18 implementation team",
+  "status": "INTERNAL_PROPOSED",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Future metadata planning contract for mareaOverview (ES/EN). Public emission stays disabled.",
+  "generationMethod": "node scripts/build-marea-landing-data.mjs",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "Canonical, hreflang, Open Graph, Twitter card and JSON-LD are NOT emitted in MC-18.",
+    "Activation requires all gates plus a release authorization record that does not exist.",
+    "The preview is non-indexable: robots noindex,nofollow and X-Robots-Tag noindex."
+  ],
+  "data": {
+    "locales": {
+      "es": {
+        "routeId": "mareaOverview",
+        "entityId": "ENT-HUB-MAREA",
+        "pageType": "HUB_OVERVIEW",
+        "locale": "es",
+        "pageTitle": "MAREA — ecosistema marino propuesto (vista interna, no publicada)",
+        "metaDescription": "Vista interna no publicada del ecosistema MAREA propuesto: nueve familias de producto y seis conceptos de solución. Sin precio aprobado, sin disponibilidad comercial y sin autorización de publicación.",
+        "canonicalCandidate": "https://embarcarte.com/marea",
+        "hreflangGroupCandidate": [
+          {
+            "locale": "es",
+            "hreflang": "es-ES",
+            "href": "https://embarcarte.com/marea",
+            "isXDefault": true
+          },
+          {
+            "locale": "en",
+            "hreflang": "en",
+            "href": "https://embarcarte.com/en/marea",
+            "isXDefault": false
+          }
+        ],
+        "robotsPolicy": "noindex,nofollow",
+        "openGraphCandidate": {
+          "title": "MAREA — ecosistema marino propuesto (vista interna, no publicada)",
+          "description": "Vista interna no publicada del ecosistema MAREA propuesto: nueve familias de producto y seis conceptos de solución. Sin precio aprobado, sin disponibilidad comercial y sin autorización de publicación.",
+          "type": "website",
+          "locale": "es_ES",
+          "siteName": "EMBARCARTE",
+          "image": null
+        },
+        "twitterCardCandidate": {
+          "card": "summary",
+          "title": "MAREA — ecosistema marino propuesto (vista interna, no publicada)",
+          "description": "Vista interna no publicada del ecosistema MAREA propuesto: nueve familias de producto y seis conceptos de solución. Sin precio aprobado, sin disponibilidad comercial y sin autorización de publicación."
+        },
+        "structuredDataEligibility": {
+          "product": false,
+          "offer": false,
+          "aggregateRating": false,
+          "review": false,
+          "breadcrumbList": false,
+          "organization": false,
+          "anyJsonLdEmitted": false
+        },
+        "sitemapEligibility": false,
+        "publicationGateIds": [
+          "publicCopyApprovedUnsatisfied",
+          "trademarkClearedUnsatisfied",
+          "sourceIpClearedUnsatisfied",
+          "legalIdentityVerifiedUnsatisfied",
+          "claimsApprovedUnsatisfied",
+          "privacyApprovedUnsatisfied",
+          "commercialDataApprovedUnsatisfied",
+          "publicationApprovedUnsatisfied",
+          "indexationApprovedUnsatisfied",
+          "deploymentApprovedUnsatisfied",
+          "releaseAuthorizationMissing"
+        ],
+        "activation": {
+          "metadataActivationAllowed": false,
+          "canonicalEmissionAllowed": false,
+          "hreflangEmissionAllowed": false,
+          "openGraphEmissionAllowed": false,
+          "structuredDataAllowed": false,
+          "sitemapEligible": false,
+          "indexationAllowed": false,
+          "blockingReasons": [
+            "publicCopyApprovedUnsatisfied",
+            "trademarkClearedUnsatisfied",
+            "sourceIpClearedUnsatisfied",
+            "legalIdentityVerifiedUnsatisfied",
+            "claimsApprovedUnsatisfied",
+            "privacyApprovedUnsatisfied",
+            "commercialDataApprovedUnsatisfied",
+            "publicationApprovedUnsatisfied",
+            "indexationApprovedUnsatisfied",
+            "deploymentApprovedUnsatisfied",
+            "releaseAuthorizationMissing"
+          ],
+          "authorization": null
+        },
+        "emitted": {
+          "canonical": false,
+          "hreflang": false,
+          "openGraph": false,
+          "twitterCard": false,
+          "jsonLd": false,
+          "robotsNoindex": true
+        }
+      },
+      "en": {
+        "routeId": "mareaOverview",
+        "entityId": "ENT-HUB-MAREA",
+        "pageType": "HUB_OVERVIEW",
+        "locale": "en",
+        "pageTitle": "MAREA — proposed marine ecosystem (internal view, unpublished)",
+        "metaDescription": "Unpublished internal view of the proposed MAREA ecosystem: nine product families and six solution concepts. No approved price, no commercial availability and no publication authorisation.",
+        "canonicalCandidate": "https://embarcarte.com/en/marea",
+        "hreflangGroupCandidate": [
+          {
+            "locale": "es",
+            "hreflang": "es-ES",
+            "href": "https://embarcarte.com/marea",
+            "isXDefault": true
+          },
+          {
+            "locale": "en",
+            "hreflang": "en",
+            "href": "https://embarcarte.com/en/marea",
+            "isXDefault": false
+          }
+        ],
+        "robotsPolicy": "noindex,nofollow",
+        "openGraphCandidate": {
+          "title": "MAREA — proposed marine ecosystem (internal view, unpublished)",
+          "description": "Unpublished internal view of the proposed MAREA ecosystem: nine product families and six solution concepts. No approved price, no commercial availability and no publication authorisation.",
+          "type": "website",
+          "locale": "en_GB",
+          "siteName": "EMBARCARTE",
+          "image": null
+        },
+        "twitterCardCandidate": {
+          "card": "summary",
+          "title": "MAREA — proposed marine ecosystem (internal view, unpublished)",
+          "description": "Unpublished internal view of the proposed MAREA ecosystem: nine product families and six solution concepts. No approved price, no commercial availability and no publication authorisation."
+        },
+        "structuredDataEligibility": {
+          "product": false,
+          "offer": false,
+          "aggregateRating": false,
+          "review": false,
+          "breadcrumbList": false,
+          "organization": false,
+          "anyJsonLdEmitted": false
+        },
+        "sitemapEligibility": false,
+        "publicationGateIds": [
+          "publicCopyApprovedUnsatisfied",
+          "trademarkClearedUnsatisfied",
+          "sourceIpClearedUnsatisfied",
+          "legalIdentityVerifiedUnsatisfied",
+          "claimsApprovedUnsatisfied",
+          "privacyApprovedUnsatisfied",
+          "commercialDataApprovedUnsatisfied",
+          "publicationApprovedUnsatisfied",
+          "indexationApprovedUnsatisfied",
+          "deploymentApprovedUnsatisfied",
+          "releaseAuthorizationMissing"
+        ],
+        "activation": {
+          "metadataActivationAllowed": false,
+          "canonicalEmissionAllowed": false,
+          "hreflangEmissionAllowed": false,
+          "openGraphEmissionAllowed": false,
+          "structuredDataAllowed": false,
+          "sitemapEligible": false,
+          "indexationAllowed": false,
+          "blockingReasons": [
+            "publicCopyApprovedUnsatisfied",
+            "trademarkClearedUnsatisfied",
+            "sourceIpClearedUnsatisfied",
+            "legalIdentityVerifiedUnsatisfied",
+            "claimsApprovedUnsatisfied",
+            "privacyApprovedUnsatisfied",
+            "commercialDataApprovedUnsatisfied",
+            "publicationApprovedUnsatisfied",
+            "indexationApprovedUnsatisfied",
+            "deploymentApprovedUnsatisfied",
+            "releaseAuthorizationMissing"
+          ],
+          "authorization": null
+        },
+        "emitted": {
+          "canonical": false,
+          "hreflang": false,
+          "openGraph": false,
+          "twitterCard": false,
+          "jsonLd": false,
+          "robotsNoindex": true
+        }
+      }
+    },
+    "publicEmissionEnabled": false,
+    "canonicalEmitted": false,
+    "hreflangEmitted": false,
+    "jsonLdEmitted": false,
+    "sitemapEntryAdded": false
+  }
+}

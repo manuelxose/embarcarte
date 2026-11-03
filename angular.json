@@ -163,6 +163,74 @@
           "defaultConfiguration": "development"
         }
       }
+    },
+    "marea-landing-preview": {
+      "projectType": "application",
+      "root": "preview/landing",
+      "sourceRoot": "preview/landing",
+      "prefix": "marea",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "preview/landing/main.ts",
+            "index": "preview/landing/index.html",
+            "tsConfig": "preview/landing/tsconfig.json",
+            "inlineStyleLanguage": "scss",
+            "outputPath": "dist/marea-landing-preview",
+            "styles": [
+              "preview/landing/styles.css",
+              "src/app/marea-design-system/tokens/generated/marea-tokens.generated.css"
+            ],
+            "server": "preview/landing/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "preview/landing/server.ts"
+            },
+            "assets": [],
+            "security": {
+              "allowedHosts": [
+                "127.0.0.1",
+                "localhost"
+              ]
+            },
+            "optimization": false,
+            "sourceMap": true
+          },
+          "configurations": {
+            "development": {},
+            "production": {
+              "optimization": true,
+              "outputHashing": "all",
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "600kB",
+                  "maximumError": "1.2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "8kB",
+                  "maximumError": "12kB"
+                }
+              ]
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "development": {
+              "buildTarget": "marea-landing-preview:build:development"
+            },
+            "production": {
+              "buildTarget": "marea-landing-preview:build:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
     }
   }
 }

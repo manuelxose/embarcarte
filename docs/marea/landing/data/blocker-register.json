@@ -1,0 +1,394 @@
+{
+  "contractId": "MC18-BLOCKER-REGISTER",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "MC-18 docs",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "External-approval blockers, cross-cutting risks and inherited debt for the MC-18 internal MAREA landing and its future publication. No blocker is closed and no publication is authorized.",
+  "generationMethod": "authored by docs-b from verified repository evidence",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "Statuses and counts are recorded as of 2026-11-03 at HEAD 6002c49f898e755154c1b65c97781177719ce11c plus the uncommitted MC-18 working tree; they can change as other deliverables land.",
+    "Authored by docs-b from repository evidence; not an independent audit and not a milestone verdict.",
+    "Severities, owners and closure conditions are author judgement derived from repository evidence; they are not confirmed by the named owners.",
+    "External approval statuses are read from the legal-commercial datasets (claims-policy.json, release-evidence-gates.json) and were not re-verified with the approval owners.",
+    "The relevantCommit target MC18-FINAL-DELIVERY-RECORD.md (D23) is PENDING; it is used because the programme dataset envelope requires it.",
+    "Performance evidence, legacy baseline, review findings, the Spanish executive report and the final delivery record are PENDING and therefore not assessed here; accessibility, responsive, visual-regression and SSR/hydration evidence datasets are now present.",
+    "Counts such as 13 release gates, 24 required documents and 42 catalogued claims are repository-recorded values, not live legal status.",
+    "No penetration test, vulnerability scan or security certification is claimed; see D15 for the security non-claims."
+  ],
+  "data": {
+    "blockers": [
+      {
+        "id": "B01",
+        "title": "Trademark legal clearance not granted",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "brand owner + legal counsel",
+        "status": "OPEN",
+        "closureCondition": "Written trademark clearance GRANTED is recorded in the brand/legal evidence and reflected in claims-policy brandState.trademarkLegalClearance.",
+        "evidence": [
+          "docs/marea/legal-commercial/data/claims-policy.json brandState.trademarkLegalClearance = NOT_GRANTED",
+          "docs/marea/landing/models/publication-gates.ts MC18_GATE_INPUTS.trademarkCleared = false"
+        ]
+      },
+      {
+        "id": "B02",
+        "title": "MAREA public use is NO_GO",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "brand owner + legal counsel",
+        "status": "OPEN",
+        "closureCondition": "MAREA_PUBLIC_USE is changed to an authorized state with brand-owner and counsel approval, and the MC14-BRAND-CONFLICT-01 supersession is recorded.",
+        "evidence": [
+          "docs/marea/legal-commercial/data/claims-policy.json brandState.mareaPublicUse = NO_GO",
+          "docs/marea/legal-commercial/data/claims-policy.json brandState.inheritedPolicyConflict.conflictId = MC14-BRAND-CONFLICT-01"
+        ]
+      },
+      {
+        "id": "B03",
+        "title": "Source IP and licensing clearance not granted",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "legal + data licensors",
+        "status": "OPEN",
+        "closureCondition": "Source IP clearance and licensing rights are granted and recorded; LICENSING_NOT_CLEARED restrictions are lifted for the families that present licensed data.",
+        "evidence": [
+          "docs/marea/landing/models/publication-gates.ts MC18_GATE_INPUTS.sourceIpCleared = false",
+          "docs/marea/landing/data/product-family-presentation.json NAV/AIS/WEATHER/FLEET restrictions include LICENSING_NOT_CLEARED",
+          "docs/marea/legal-commercial/data/release-evidence-gates.json open gates GATE-IP-CLEARANCE and GATE-DATA-LICENSING"
+        ]
+      },
+      {
+        "id": "B04",
+        "title": "Legal identity not verified",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "company legal owner",
+        "status": "OPEN",
+        "closureCondition": "GATE-LEGAL-ENTITY is closed with verifiable legal-entity evidence and legalIdentityVerified is true.",
+        "evidence": [
+          "docs/marea/landing/data/publication-gates.json data.evaluation.legalIdentityVerified = false",
+          "docs/marea/legal-commercial/data/release-evidence-gates.json open gate GATE-LEGAL-ENTITY"
+        ]
+      },
+      {
+        "id": "B05",
+        "title": "Public copy not approved",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "copy owner + legal",
+        "status": "OPEN",
+        "closureCondition": "ES and EN public copy are approved with provenance and the content approval status leaves INTERNAL_DRAFT_NOT_APPROVED / NOT_APPROVED.",
+        "evidence": [
+          "src/app/marea-landing/content/content.types.ts PUBLICATION_STATUS = INTERNAL_DRAFT_NOT_APPROVED, APPROVAL_STATUS = NOT_APPROVED",
+          "docs/marea/landing/data/publication-gates.json data.evaluation.publicCopyApproved = false"
+        ]
+      },
+      {
+        "id": "B06",
+        "title": "No claim is public-authorized",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "claims owner + legal",
+        "status": "OPEN",
+        "closureCondition": "Each claim intended for public use is individually approved and publicationAuthorization is no longer NONE; the 30 mandatory prohibited categories remain respected.",
+        "evidence": [
+          "docs/marea/legal-commercial/data/claims-policy.json summary: claimsCatalogued 42, publicAuthorized 0, publicationAuthorization NONE, mandatoryProhibitedCategories 30",
+          "docs/marea/landing/data/publication-gates.json data.evaluation.claimsApproved = false"
+        ]
+      },
+      {
+        "id": "B07",
+        "title": "Privacy, DPA and DPIA not approved",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "privacy owner + legal",
+        "status": "OPEN",
+        "closureCondition": "Privacy approval, DPA and DPIA are executed, including the design of any future enquiry or lead flow, and privacyApproved is true.",
+        "evidence": [
+          "docs/marea/landing/data/publication-gates.json data.evaluation.privacyApproved = false",
+          "docs/marea/legal-commercial/data/release-evidence-gates.json open gate GATE-PRIVACY-DPA-DPIA; 24 required documents, 0 executed"
+        ]
+      },
+      {
+        "id": "B08",
+        "title": "Commercial data and pricing not approved",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "commercial owner",
+        "status": "OPEN",
+        "closureCondition": "Either an approved price list and commercial-availability decision exist, or an explicit no-price/no-offer publication decision is recorded and commercialDataApproved is true.",
+        "evidence": [
+          "docs/marea/landing/data/product-family-presentation.json all families commercialAvailability NOT_FOR_SALE, priceVisible false",
+          "docs/marea/landing/data/publication-gates.json data.evaluation.commercialDataApproved = false",
+          "docs/marea/legal-commercial/data/release-evidence-gates.json open gate GATE-PRICING"
+        ]
+      },
+      {
+        "id": "B09",
+        "title": "Publication, indexation and deployment approvals absent",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "accountable release owner",
+        "status": "OPEN",
+        "closureCondition": "Publication, indexation and deployment approvals are recorded AND a ReleaseAuthorization record with scope PUBLICATION exists; both activation locks in D09 open.",
+        "evidence": [
+          "docs/marea/landing/data/publication-gates.json data.evaluation.publicationApproved/indexationApproved/deploymentApproved = false",
+          "src/app/marea-landing/models/seo.ts LANDING_RELEASE_AUTHORIZATION = null",
+          "docs/marea/landing/data/seo-metadata-contract.json activation.blockingReasons includes releaseAuthorizationMissing"
+        ]
+      },
+      {
+        "id": "B10",
+        "title": "MC-14 release-gate programme is not closed",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "legal/commercial gate owners + independent audit",
+        "status": "OPEN",
+        "closureCondition": "13 release gates are closed with evidence and 24 required documents are executed/signed/certified/approved as applicable.",
+        "evidence": [
+          "docs/marea/legal-commercial/data/release-evidence-gates.json summary: gates 13, gatesClosed 0, gatesBlocked 12, documents 24, documentsExecuted 0",
+          "docs/marea/landing/data/publication-gates.json data.recordedReleaseGates"
+        ]
+      },
+      {
+        "id": "B11",
+        "title": "PILOT safety gate blocked",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "safety owner",
+        "status": "OPEN",
+        "closureCondition": "PILOT safety gate is closed with evidence and the SAFETY_GATE_BLOCKED restriction is lifted where PILOT is presented.",
+        "evidence": [
+          "docs/marea/landing/data/product-family-presentation.json MAREA PILOT restrictions include SAFETY_GATE_BLOCKED",
+          "docs/marea/legal-commercial/data/release-evidence-gates.json open gate GATE-SAFETY-PILOT"
+        ]
+      },
+      {
+        "id": "B12",
+        "title": "Hardware conformity and compatibility evidence absent",
+        "type": "EXTERNAL_APPROVAL",
+        "severity": "BLOCKER",
+        "owner": "hardware/compliance owner",
+        "status": "OPEN",
+        "closureCondition": "Selected hardware, conformity evidence and any authorized CE/NMEA statement exist; tested compatibility rows are greater than zero or the copy keeps the no-claim position.",
+        "evidence": [
+          "docs/marea/hardware/data/conformity-applicability.json statusNote: applicability only, no row establishes conformity, certification, CE marking or NMEA certification",
+          "src/app/marea-landing/content/evidence.ts EV-MC11-HARDWARE: no selected hardware, no conformity evidence, no CE marking claim, no tested compatibility rows"
+        ]
+      }
+    ],
+    "risks": [
+      {
+        "id": "R01",
+        "title": "Preview leakage through hosting, tunnel or port-forward",
+        "severity": "HIGH",
+        "owner": "MC-18 lead + preview operators",
+        "status": "MITIGATED",
+        "closureCondition": "Loopback-only operation is retained, no tunnel/proxy/hosting is configured for port 4302, and the operator runbook states that the preview must never be published.",
+        "evidence": [
+          "preview/landing/server.ts binds 127.0.0.1 and rejects non-loopback Host headers with 403",
+          "HTTP probe: forged Host evil.example -> 403; loopback -> 200",
+          "validator MC18-46 PASS; no deploy/nginx/Caddy/Docker reference to the landing preview"
+        ]
+      },
+      {
+        "id": "R02",
+        "title": "Copy drift between approved copy, canonical datasets and rendered content",
+        "severity": "HIGH",
+        "owner": "content architect + docs-b + independent reviewer",
+        "status": "OPEN",
+        "closureCondition": "Every content block keeps its evidence ids and approval state; the validator and bilingual parity checks stay green; approved public copy replaces draft copy only through a recorded change.",
+        "evidence": [
+          "src/app/marea-landing/content/landing-content.ts every block cites evidence ids",
+          "validator MC18-20 content references resolve, MC18-21 ES/EN parity, MC18-58 EN copy checks all PASS at authoring",
+          "docs/marea/landing/data/bilingual-content.json 348 resolved records"
+        ]
+      },
+      {
+        "id": "R03",
+        "title": "Design-system fork or duplicate component implementation",
+        "severity": "MEDIUM",
+        "owner": "art director + implementation",
+        "status": "MITIGATED",
+        "closureCondition": "The landing imports components only from the canonical MC-17 library and adds no duplicate visual primitives; reuse checks stay green.",
+        "evidence": [
+          "validator MC18-35 canonical design-system imports, MC18-49 declared reuse PASS at authoring",
+          "adversarial unit test 'duplicating a design-system component is rejected' PASS",
+          "docs/marea/landing/data/design-system-dependencies.json"
+        ]
+      },
+      {
+        "id": "R04",
+        "title": "Future route collision when /marea and /en/marea are registered",
+        "severity": "HIGH",
+        "owner": "architecture owner + MC-19 team",
+        "status": "MONITORED",
+        "closureCondition": "A future milestone re-runs the collision check before registration and confirms NO_COLLISION, preserving the 21 existing public route ids.",
+        "evidence": [
+          "docs/marea/information-architecture/data/proposed-routes.json mareaOverview collisionStatus NO_COLLISION, collidesWith []",
+          "src/app/marea-landing/models/page-identity.ts existingPublicRouteIdsRetained = 21",
+          "validator MC18-28 production route files unchanged PASS"
+        ]
+      },
+      {
+        "id": "R05",
+        "title": "Metadata or indexation activated by accident",
+        "severity": "HIGH",
+        "owner": "SEO owner + independent reviewer",
+        "status": "MITIGATED",
+        "closureCondition": "Two-lock activation is preserved and hardened (all 12 publication gates plus a real ReleaseAuthorization record); tests prove a single boolean cannot activate canonical/indexation.",
+        "evidence": [
+          "src/app/marea-landing/models/seo.ts LANDING_RELEASE_AUTHORIZATION = null; evaluateSeoActivation requires all 12 publication gates and the authorization",
+          "validator MC18-43 a single boolean cannot activate public metadata PASS",
+          "evaluateSeoActivation emits <gate>Unsatisfied blocking reasons for every unsatisfied gate; activation is impossible because 10 gates are false and the authorization is null"
+        ]
+      },
+      {
+        "id": "R06",
+        "title": "Evidence staleness or inflated claims",
+        "severity": "MEDIUM",
+        "owner": "lead + QA + docs owners",
+        "status": "OPEN",
+        "closureCondition": "Every evidence file records its real command, date and commit; the validator is green at delivery and the delivery record quotes only observed results; pending artefacts are present before PASS is claimed.",
+        "evidence": [
+          "Observed validator: 55/60 PASS, 5 FAIL, exit 1 after reconciliation (first authored run 52/60 before parallel deliverables landed)",
+          "Missing in the final run: D10-D12 documents, performance-evidence.json, legacy-baseline.json, review-findings.json, independent review, Spanish report and delivery record; accessibility/responsive/visual-regression/ssr-hydration evidence, D01 and D03 are now present; MC18-41 and MC18-55 now PASS"
+        ]
+      },
+      {
+        "id": "R07",
+        "title": "Inherited debt from previous milestones",
+        "severity": "MEDIUM",
+        "owner": "programme lead",
+        "status": "MONITORED",
+        "closureCondition": "The inherited items are tracked here and in the relevant milestone records; none is silently rewritten or closed by MC-18.",
+        "evidence": [
+          "docs/marea/landing/data/blocker-register.json data.inherited",
+          "docs/marea/design-system/MC17-FINAL-DELIVERY-RECORD.md MC17_VERDICT = PARTIAL",
+          "MC-14 brand conflict MC14-BRAND-CONFLICT-01; MC-15 indexation unverified; 13 release gates 0 closed; 0/42 public claims"
+        ]
+      }
+    ],
+    "inherited": [
+      {
+        "id": "I01",
+        "title": "MC-17 playwrightTests index discrepancy (28 vs 37)",
+        "type": "INHERITED_FROM_MC17",
+        "severity": "INFORMATIONAL",
+        "owner": "MC-18 validator owner + MC-17 docs",
+        "status": "RESOLVED",
+        "closureCondition": "Fixed: MC18-55 reads implementationCounts?.playwrightTests ?? completeness?.playwrightTests and requires 28; D01 keeps the historical classification.",
+        "evidence": [
+          "docs/marea/design-system/data/manifest.json implementationCounts.playwrightTests = 28 (unchanged; MC18-39 PASS)",
+          "validator MC18-55 PASS after the key-path fix in scripts/check-marea-landing.mjs"
+        ]
+      },
+      {
+        "id": "I02",
+        "title": "MC-14 brand policy conflict",
+        "type": "INHERITED_FROM_MC14",
+        "severity": "BLOCKER",
+        "owner": "brand owner + counsel",
+        "status": "OPEN",
+        "closureCondition": "A formal supersession decision is approved by brand owner and counsel; MC-03 evidence is not edited.",
+        "evidence": [
+          "docs/marea/legal-commercial/data/claims-policy.json brandState.inheritedPolicyConflict conflictId MC14-BRAND-CONFLICT-01"
+        ]
+      },
+      {
+        "id": "I03",
+        "title": "Release-gate and required-document debt",
+        "type": "INHERITED_FROM_MC14",
+        "severity": "BLOCKER",
+        "owner": "legal/commercial gate owners",
+        "status": "OPEN",
+        "closureCondition": "13 gates closed and 24 required documents executed with evidence.",
+        "evidence": [
+          "docs/marea/legal-commercial/data/release-evidence-gates.json summary: gates 13, gatesClosed 0, documents 24, documentsExecuted 0"
+        ]
+      },
+      {
+        "id": "I04",
+        "title": "Claim-authorization debt (0 of 42)",
+        "type": "INHERITED_FROM_MC14",
+        "severity": "BLOCKER",
+        "owner": "claims owner + legal",
+        "status": "OPEN",
+        "closureCondition": "Claims intended for public use are individually approved; publicationAuthorization is no longer NONE.",
+        "evidence": [
+          "docs/marea/legal-commercial/data/claims-policy.json summary: claimsCatalogued 42, publicAuthorized 0, publicationAuthorization NONE"
+        ]
+      },
+      {
+        "id": "I05",
+        "title": "Indexation unverified (no Search Console access)",
+        "type": "INHERITED_FROM_MC15",
+        "severity": "INFORMATIONAL",
+        "owner": "SEO owner",
+        "status": "INFORMATIONAL",
+        "closureCondition": "Search Console access exists and a verified submitted-URL/error record is captured.",
+        "evidence": [
+          "docs/marea/information-architecture/data/indexation-policy.json evidenceNotes: INDEXATION_UNVERIFIED, no Search Console access exists"
+        ]
+      },
+      {
+        "id": "I06",
+        "title": "Public sitemap is generated at runtime; no static public/sitemap.xml exists",
+        "type": "INHERITED_FROM_MC15",
+        "severity": "INFORMATIONAL",
+        "owner": "SEO owner",
+        "status": "RESOLVED",
+        "closureCondition": "Fixed: PRODUCTION_ROUTE_FILES guards the four real route surfaces and no longer names a non-existent static sitemap.",
+        "evidence": [
+          "public/ contains no sitemap file (repository inspection)",
+          "src/app/marea-landing/models/page-identity.ts PRODUCTION_ROUTE_FILES = app.routes.ts, app.routes.server.ts, locale-routes.ts, server.ts",
+          "validator MC18-29 PASS: no sitemap entry added for the proposed landing"
+        ]
+      },
+      {
+        "id": "I07",
+        "title": "Generated design-system-dependencies dataset reported stale",
+        "type": "CROSS_DELIVERABLE",
+        "severity": "MEDIUM",
+        "owner": "art director + implementation owner",
+        "status": "RESOLVED",
+        "closureCondition": "Fixed: the datasets were regenerated after the visual pass and `npm run check:landing:data` plus MC18-41 are green.",
+        "evidence": [
+          "validator MC18-41 PASS after regeneration",
+          "generator: scripts/build-marea-landing-data.mjs"
+        ]
+      },
+      {
+        "id": "I08",
+        "title": "Page-type label discrepancy (PAGE_MAREA_OVERVIEW vs HUB_OVERVIEW)",
+        "type": "INHERITED_FROM_MC15",
+        "severity": "INFORMATIONAL",
+        "owner": "MC-15 dataset owner + docs-b",
+        "status": "INFORMATIONAL",
+        "closureCondition": "Future changes align human-readable evidence text with the canonical dataset; the MC-15 dataset remains authority and is not rewritten by MC-18.",
+        "evidence": [
+          "docs/marea/information-architecture/data/proposed-routes.json pageType HUB_OVERVIEW",
+          "src/app/marea-landing/content/evidence.ts EV-MC15-ROUTES establishes text says PAGE_MAREA_OVERVIEW",
+          "src/app/marea-landing/models/page-identity.ts pageType HUB_OVERVIEW with explanatory comment"
+        ]
+      },
+      {
+        "id": "I09",
+        "title": "Pending QA evidence, independent review, Spanish report and delivery record",
+        "type": "CROSS_DELIVERABLE",
+        "severity": "BLOCKER",
+        "owner": "lead + QA + independent auditor",
+        "status": "PENDING",
+        "closureCondition": "All required evidence and review artefacts exist, the validator is green, and the independent audit issues the milestone verdict.",
+        "evidence": [
+          "docs/marea/landing/data missing in the final run: performance-evidence, legacy-baseline, review-findings; accessibility-evidence, responsive-evidence, visual-regression-evidence and ssr-hydration-evidence are now present",
+          "docs/marea/landing missing in the final run: MC18-ACCESSIBILITY-VALIDATION.md, MC18-RESPONSIVE-AND-VISUAL-EVIDENCE.md, MC18-PERFORMANCE-AND-BUNDLE-EVIDENCE.md, MC18-INDEPENDENT-REVIEW.md, MC18-SPANISH-EXECUTIVE-REPORT.md, MC18-FINAL-DELIVERY-RECORD.md; D01 and D03 are present",
+          "Observed validator: 55/60 PASS, 5 FAIL, exit 1 after reconciliation (MC18-44, 51, 52, 53, 54 pending artefacts)"
+        ]
+      }
+    ]
+  }
+}

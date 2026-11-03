@@ -1,0 +1,75 @@
+{
+  "contractId": "MC18-PUBLICATION-GATES",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "owner": "MC-18 implementation team",
+  "status": "INTERNAL_PROPOSED",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Fail-closed page publication evaluation with the recorded MC-14 release gate state.",
+  "generationMethod": "node scripts/build-marea-landing-data.mjs",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "No external approval exists: trademark, source IP, legal identity, copy, claims, privacy and commercial data are all unsatisfied.",
+    "A UI boolean or environment variable cannot satisfy a gate; missing values are false."
+  ],
+  "data": {
+    "evaluation": {
+      "pageImplemented": true,
+      "internalPreviewReady": true,
+      "publicCopyApproved": false,
+      "trademarkCleared": false,
+      "sourceIpCleared": false,
+      "legalIdentityVerified": false,
+      "claimsApproved": false,
+      "privacyApproved": false,
+      "commercialDataApproved": false,
+      "publicationApproved": false,
+      "indexationApproved": false,
+      "deploymentApproved": false,
+      "blockingGateIds": [
+        "GATE-PUBLIC-COPY-APPROVED",
+        "GATE-TRADEMARK-CLEARED",
+        "GATE-SOURCE-IP-CLEARED",
+        "GATE-LEGAL-IDENTITY-VERIFIED",
+        "GATE-CLAIMS-APPROVED",
+        "GATE-PRIVACY-APPROVED",
+        "GATE-COMMERCIAL-DATA-APPROVED",
+        "GATE-PUBLICATION-APPROVED",
+        "GATE-INDEXATION-APPROVED",
+        "GATE-DEPLOYMENT-APPROVED"
+      ],
+      "publishable": false
+    },
+    "recordedReleaseGates": {
+      "source": "docs/marea/legal-commercial/data/release-evidence-gates.json",
+      "gates": 13,
+      "gatesClosed": 0,
+      "gatesBlocked": 12,
+      "gatesEvidenceRequired": 1,
+      "requiredDocuments": 24,
+      "documentsExecuted": 0,
+      "openGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    "canonicalGateState": {
+      "gates": 13,
+      "gatesClosed": 0,
+      "gatesBlocked": 12,
+      "documents": 24,
+      "documentsExecuted": 0
+    }
+  }
+}

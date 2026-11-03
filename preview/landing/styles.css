@@ -1,0 +1,83 @@
+@use '@fontsource-variable/manrope';
+@use '@fontsource-variable/dm-sans';
+
+/*
+ * MC-18 internal landing preview — global baseline.
+ *
+ * This stylesheet belongs to the isolated preview project only. It is never
+ * listed in the production application's `styles` array. The MC-17 token CSS is
+ * scoped to `marea-theme`, so it cannot restyle the public site.
+ *
+ * Scope: box-sizing, document canvas/typography fallbacks, the internal
+ * classification strip, selection colour and the reduced-motion override. All
+ * landing composition and component styling lives in the component styles; no
+ * shared visual helper classes are exported from this file.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-block-start: 1rem;
+}
+
+body {
+  margin: 0;
+  background: #f5f8fa;
+  color: #17365d;
+  font-family: 'DM Sans Variable', 'DM Sans', system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+::selection {
+  background: #17365d;
+  color: #ffffff;
+}
+
+/*
+ * MC-17 commerce CTA layout fix (preview-only). The CTA grid stretches its
+ * status chip to the full column, which reads as a button-shaped control. The
+ * chip is status text, never an action, so it is pinned to its intrinsic width.
+ * This is the only cross-component visual override in the preview; a future
+ * authorized integration must carry the equivalent fix in the design system.
+ */
+marea-commercial-cta .cta > .marea-status-badge {
+  justify-self: start;
+}
+
+/* Internal classification strip: a preview artefact, never present in production. */
+html::before {
+  content: 'INTERNAL PREVIEW / NOT PUBLISHED / LOOPBACK ONLY';
+  display: block;
+  padding: 7px 16px;
+  background: #14324a;
+  color: #ffffff;
+  font-family: 'Manrope Variable', Manrope, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

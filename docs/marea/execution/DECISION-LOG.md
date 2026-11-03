@@ -1756,3 +1756,51 @@ no merge, no deployment.
 **Outcome (2026-11-03).** The correction round was implemented and frozen at `f2c9ec2` and independently re-audited. The reviewer reproduced: validator 38/38 PASS; unit/adversarial 41/41; nine family cards rendering their own limits in ES and EN with material-first chips and six adversarial cases; five production-import mutations and two variant mutations and two focus mutations detected (9/9); Playwright 37/37 without `--update-snapshots`; public e2e 15/15; axe 0 violations in four modes; expanded `format:check` green with generated artefacts validated by their generators; 26 baselines with the ES/EN pair differing and the two refreshed mobile instrument captures reviewed. Final result: `MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = PASS_INTERNAL_DESIGN_SYSTEM_SCOPE` and `MC17_VERDICT = PARTIAL` (external gates remain ungranted). No merge, deployment, publication, sale, brand adoption or MC-18 start.
 
 **Status effect.** `MC17_VERDICT = PARTIAL`; internal scope `PASS_INTERNAL_DESIGN_SYSTEM_SCOPE`; third-round re-audit complete; no merge, deployment, publication, brand adoption, sale or MC-18 start. `MC16-FINAL-02`, `MC16-FINAL-09`, `FINANCIAL_V18`, `MC15-GSC-01/GSC-02` and the hardware/trademark no-go states remain unchanged.
+
+## D-074 - 2026-11-03 - MC-18 implements an isolated, non-published bilingual landing
+
+**Context.** MC-17 delivered a verified internal design system, but publishing a MAREA landing is blocked by trademark clearance, unlicensed data, unapproved copy, no price/stock and open release gates. A landing still needs to be designed, built and tested before any authorized release.
+
+**Decision.** Implement the real bilingual Angular landing inside this repository as an isolated internal feature: one locale-aware component tree for ES/EN, an isolated loopback-only SSR preview application, and no registration in the public router, sitemap, navigation or production build.
+
+**Rationale.** Building and verifying the actual Angular feature now surfaces design, bilingual, SSR/hydration and accessibility risks while making public leakage a deliberate, reviewable change rather than a side effect. The preview is loopback-only and non-indexable.
+
+**Evidence.** `src/app/marea-landing/`; `preview/landing/`; `angular.json` project `marea-landing-preview`; PR #25 draft targeting the MC-17 branch; validator 60/60; landing Playwright 44/44.
+
+**Status effect.** Landing implemented internally; publication and public brand adoption remain NOT_AUTHORIZED; no merge, deployment or MC-19 start.
+
+## D-075 - 2026-11-03 - MC-18 consumes MC-16 data through a generated read-only projection
+
+**Context.** The landing must show nine families, 26 editions and six bundles without duplicating the authoritative MC-16 database or inventing commercial facts.
+
+**Decision.** Generate a bounded read-only projection (`src/app/marea-landing/data/domain.generated.ts`) and the machine-readable presentation datasets from the canonical MC-16/MC-14 JSON, with a deterministic `--check` generator. No price amount, stock, merchant SKU, customer or vessel data enters the projection. The MC-17 bundle/family presentation fixtures supply the same verified component contracts.
+
+**Rationale.** One authority, no drift, no invented commercial data. Editions remain canonical identities and not merchant SKUs.
+
+**Evidence.** `scripts/build-marea-landing-data.mjs`; `docs/marea/landing/data/product-family-presentation.json`, `bundle-presentation.json`; `check:landing:data` current at delivery; 0 approved prices, 0 stock rows, 0 merchant SKU codes.
+
+**Status effect.** Presentation contracts derived and verified; commercial availability remains NOT_FOR_SALE.
+
+## D-076 - 2026-11-03 - MC-18 keeps publication metadata disabled behind two locks
+
+**Context.** MC-15/16 define future metadata, canonical and hreflang for `mareaOverview`, but the page is not published and 0/42 claims are public-authorized.
+
+**Decision.** Model SEO as a planning contract. Canonical, hreflang, Open Graph, Twitter card and structured data are candidates only. Activation requires all publication gates AND a release authorization record that does not exist; a single boolean or environment variable cannot enable it. The preview emits only `noindex` meta and `X-Robots-Tag`.
+
+**Rationale.** Prevent accidental indexation of an unauthorized brand/page and make any future activation an explicit, documented act.
+
+**Evidence.** `src/app/marea-landing/models/seo.ts`, `publication-gates.ts`; `docs/marea/landing/data/seo-metadata-contract.json`, `publication-gates.json`; validator MC18-26/27/43; SSR evidence shows no canonical/hreflang/JSON-LD; sitemap unchanged.
+
+**Status effect.** `MC18_PUBLIC_INDEXATION = NOT_AUTHORIZED`; no sitemap submission.
+
+## D-077 - 2026-11-03 - MC-18 records the independent audit and correction round
+
+**Context.** The independent auditor reviewed the frozen implementation at `ca64ec7` and recommended `PASS_INTERNAL_LANDING_SCOPE` with 0 open BLOCKING/MAJOR, 3 MINOR and 2 INFORMATIONAL findings. The three MINOR findings were evidence/documentation drift, a pageType label in the evidence registry, and an unguarded preview listener during build analysis.
+
+**Decision.** Apply the correction round at `d5e9980` (canonical `HUB_OVERVIEW` evidence label, `isMainModule` listener guard, developer root alias recorded, preview comment reworded to keep MC-17 validator green), reconcile the pre-freeze counts in D23, and require the auditor to re-verify the corrections. Keep `MC18_VERDICT = PARTIAL` because external approvals are ungranted.
+
+**Rationale.** An internal scope can be verified without an external authorization, but the documentation must match the measured state and the corrections must be independently re-verified.
+
+**Evidence.** `MC18-INDEPENDENT-REVIEW.md` (including the correction-round section); `data/review-findings.json` (IR-01/02/03 CLOSED with correctionCommit and independentReverification); D22/D23; final validator 60/60; landing Playwright 44/44; production isolation 0 landing identifiers and public `/marea` 404.
+
+**Status effect.** Internal landing scope PASS; overall MC-18 PARTIAL; no merge, deployment, publication, brand adoption or MC-19 execution. `FINANCIAL_V18`, `MC16_FINAL_02`, MC-13 F-05/F-11/F-14 and MC-15 GSC-01/GSC-02 remain open.

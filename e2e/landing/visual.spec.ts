@@ -1,0 +1,190 @@
+import { expect, test } from '@playwright/test';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import {
+  EVIDENCE_ENVELOPE,
+  LOCALES,
+  SCREENSHOT_WIDTHS,
+  captureCommittedScreenshotHere,
+  gotoLanding,
+  measuredAt,
+  sha256,
+  toPosix,
+  viewportHeight,
+  writeEvidence,
+} from './helpers';
+import type { ScreenshotCapture } from './helpers';
+
+/**
+ * MC-18 visual composition captures and snapshot regression (@visual).
+ *
+ * Baseline generation procedure (documented, not hidden):
+ *   1. npx playwright test -c playwright.landing.config.ts --grep @visual --update-snapshots
+ *   2. npx playwright test -c playwright.landing.config.ts
+ *
+ * Step 1 creates the reference PNGs under
+ * e2e/landing/visual.spec.ts-snapshots/. Step 2 compares against them. The QA
+ * author generated and hashed the baselines; they were NOT reviewed by a second
+ * human reviewer, and no claim of design review is made here.
+ *
+ * In addition, each viewport is captured twice into the committed `committed/`
+ * folder. A byte difference between the two captures is recorded in
+ * summary.unstableCaptureDetails; it proves capture repeatability in the same
+ * run, not visual regression across commits.
+ */
+
+const SNAPSHOT_OPTIONS = {
+  fullPage: true,
+  animations: 'disabled' as const,
+  caret: 'hide' as const,
+  scale: 'css' as const,
+  maxDiffPixelRatio: 0.001,
+} as const;
+
+const SOURCE_COMMIT_POLICY =
+  'No QA commit; evidence generated from the working tree. relevantCommit = docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23).';
+
+const SNAPSHOT_SUFFIX = process.platform;
+const SNAPSHOT_DIR = join(process.cwd(), 'e2e', 'landing', 'visual.spec.ts-snapshots');
+
+interface VisualCapture {
+  readonly committed: ScreenshotCapture;
+  readonly snapshotName: string;
+  readonly baselinePath: string | null;
+  readonly baselineSha256: string | null;
+  readonly baselineBytes: number | null;
+  readonly compared: boolean;
+}
+
+const captures: VisualCapture[] = [];
+const mismatches: string[] = [];
+const unstableCaptures: {
+  locale: string;
+  width: number;
+  height: number;
+  sha256: string;
+  secondCaptureSha256: string;
+}[] = [];
+let browserVersion = '';
+
+/** Default Playwright baseline path for a snapshot name in this project. */
+function baselinePathFor(snapshotName: string): string {
+  const base = snapshotName.replace(/\.png$/i, '');
+  return join(SNAPSHOT_DIR, `${base}-chromium-${SNAPSHOT_SUFFIX}.png`);
+}
+
+test.describe('@visual landing composition baselines', () => {
+  test.describe.configure({ mode: 'serial' });
+
+  for (const locale of LOCALES) {
+    for (const width of SCREENSHOT_WIDTHS) {
+      const height = viewportHeight(width);
+      test(`@visual ${locale.label} ${width}x${height}`, async ({ page, browser }) => {
+        browserVersion = browser.version();
+        await page.setViewportSize({ width, height });
+        await gotoLanding(page, locale);
+
+        const committed = await captureCommittedScreenshotHere(
+          page,
+          locale,
+          width,
+          height,
+          browserVersion,
+        );
+        if (!committed.byteIdentical) {
+          unstableCaptures.push({
+            locale: locale.key,
+            width,
+            height,
+            sha256: committed.sha256,
+            secondCaptureSha256: committed.secondCaptureSha256,
+          });
+        }
+
+        const snapshotName = `landing-${locale.key}-${width}x${height}.png`;
+        try {
+          await expect(page).toHaveScreenshot(snapshotName, SNAPSHOT_OPTIONS);
+        } catch (error) {
+          mismatches.push(`${locale.key} ${width}x${height}`);
+          throw error;
+        }
+
+        const baselinePath = baselinePathFor(snapshotName);
+        const baselineExists = existsSync(baselinePath);
+        captures.push({
+          committed,
+          snapshotName,
+          baselinePath: baselineExists ? toPosix(baselinePath) : null,
+          baselineSha256: baselineExists ? sha256(readFileSync(baselinePath)) : null,
+          baselineBytes: baselineExists ? readFileSync(baselinePath).byteLength : null,
+          compared: baselineExists,
+        });
+      });
+    }
+  }
+});
+
+test.afterAll(() => {
+  writeEvidence('visual-regression-evidence.json', {
+    contractId: 'MC18-VISUAL-REGRESSION-EVIDENCE',
+    ...EVIDENCE_ENVELOPE,
+    description:
+      'Full-page visual captures of the internal MC-18 landing at 320/390/768/1440 in ES and EN: committed hashed screenshots, in-run repeatability and Playwright snapshot comparison against generated baselines.',
+    generationMethod: [
+      'npx playwright test -c playwright.landing.config.ts --grep @visual --update-snapshots',
+      'npx playwright test -c playwright.landing.config.ts',
+    ],
+    measuredAt: measuredAt(),
+    browser: { name: 'Chromium', version: browserVersion },
+    platform: process.platform,
+    deviceScaleFactor: 1,
+    mode: 'web-light',
+    sourceCommitPolicy: SOURCE_COMMIT_POLICY,
+    knownLimitations: [
+      'Baselines were generated by this QA run; they were not reviewed by a second human reviewer and are not a design sign-off.',
+      'Chromium only, deviceScaleFactor 1, development (unminified) preview build; cross-browser and high-DPI rendering are untested.',
+      'The visual comparison tolerance is maxDiffPixelRatio 0.001; anti-aliasing differences below that threshold are not reported.',
+      'Screenshots prove layout/colour stability for the reviewed working tree; a later CSS change must regenerate and re-review baselines.',
+      'The in-run byte-identical check proves capture repeatability only, not regression against previous commits; any non-identical repeat is recorded in summary.unstableCaptureDetails.',
+    ],
+    data: {
+      captures: captures.map((capture) => ({
+        path: capture.committed.path,
+        snapshotName: capture.snapshotName,
+        baselinePath: capture.baselinePath,
+        baselineSha256: capture.baselineSha256,
+        baselineBytes: capture.baselineBytes,
+        viewport: `${capture.committed.width}x${capture.committed.height}`,
+        locale: capture.committed.locale,
+        sha256: capture.committed.sha256,
+        bytes: capture.committed.bytes,
+        secondCaptureSha256: capture.committed.secondCaptureSha256,
+        byteIdentical: capture.committed.byteIdentical,
+        deviceScaleFactor: capture.committed.deviceScaleFactor,
+        browser: capture.committed.browser,
+        platform: capture.committed.platform,
+        mode: capture.committed.mode,
+        sourceCommitPolicy: SOURCE_COMMIT_POLICY,
+        compared: capture.compared,
+      })),
+      summary: {
+        captures: captures.length,
+        baselinesCompared: captures.filter((capture) => capture.compared).length,
+        mismatches: mismatches.length,
+        unstableCaptures: unstableCaptures.length,
+        unstableCaptureDetails: unstableCaptures,
+        snapshotOptions: {
+          fullPage: SNAPSHOT_OPTIONS.fullPage,
+          animations: SNAPSHOT_OPTIONS.animations,
+          maxDiffPixelRatio: SNAPSHOT_OPTIONS.maxDiffPixelRatio,
+          scale: SNAPSHOT_OPTIONS.scale,
+        },
+      },
+      evidencePaths: {
+        committedScreenshots: toPosix('e2e/landing/visual.spec.ts-snapshots/committed'),
+        baselines: toPosix('e2e/landing/visual.spec.ts-snapshots'),
+        results: toPosix('test-results/landing/results.json'),
+      },
+    },
+  });
+});
