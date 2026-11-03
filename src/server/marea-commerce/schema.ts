@@ -334,7 +334,7 @@ CREATE TABLE IF NOT EXISTS marea_audit_events (
   result TEXT NOT NULL CHECK (result IN ('DENIED','ACCEPTED','RECORDED')),
   prev_event_hash TEXT,
   event_hash TEXT NOT NULL UNIQUE CHECK (length(event_hash) >= 32),
-  CHECK (event_type NOT IN ('READINESS_TRANSITION_ACCEPTED','READINESS_TRANSITION_DENIED') OR json_array_length(evidence_refs_json) >= 0)
+  CHECK (result = 'DENIED' OR json_array_length(evidence_refs_json) > 0)
 ) STRICT;
 
 CREATE INDEX IF NOT EXISTS idx_marea_audit_entity ON marea_audit_events(entity_type, entity_id, timestamp);
@@ -357,6 +357,7 @@ CREATE TABLE IF NOT EXISTS marea_publication_eligibility (
 CREATE TRIGGER IF NOT EXISTS trg_marea_family_mc16_guard
 BEFORE INSERT ON marea_product_families
 WHEN NEW.commercial_availability = 'FOR_SALE'
+  OR NEW.publication_state = 'PUBLISHED'
   OR NEW.lifecycle_state IN ('REGULATORY_READY','OPERATIONS_READY','COMMERCIALLY_AVAILABLE')
 BEGIN
   SELECT RAISE(ABORT, 'MC16_COMMERCIAL_ACTIVATION_PROHIBITED');
@@ -365,6 +366,7 @@ END;
 CREATE TRIGGER IF NOT EXISTS trg_marea_family_mc16_guard_update
 BEFORE UPDATE ON marea_product_families
 WHEN NEW.commercial_availability = 'FOR_SALE'
+  OR NEW.publication_state = 'PUBLISHED'
   OR NEW.lifecycle_state IN ('REGULATORY_READY','OPERATIONS_READY','COMMERCIALLY_AVAILABLE')
 BEGIN
   SELECT RAISE(ABORT, 'MC16_COMMERCIAL_ACTIVATION_PROHIBITED');

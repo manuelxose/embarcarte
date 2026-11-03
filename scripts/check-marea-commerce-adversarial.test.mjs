@@ -364,6 +364,22 @@ test('ADV-32 an unverified movement making stock negative is rejected', () => {
   assert.ok(result.reasonCodes.includes('INVENTORY_QUANTITY_INVARIANT_VIOLATED'));
 });
 
+test('ADV-33 a bundle component pointing at an unknown edition is rejected', () => {
+  const result = mutate((model) => {
+    bundle(model, 'PROTECT').components.push({
+      lineId: 'ADV-UNKNOWN',
+      editionId: 'UNKNOWN-EDITION',
+      familyId: 'SENSE',
+      quantity: 1,
+      inclusion: 'INCLUDED',
+      required: true,
+      expandsTo: [],
+      subscriptionCapabilityIds: [],
+    });
+  });
+  assert.ok(result.failures.some((failure) => failure.ruleId === 'BND-009'));
+});
+
 test('ADV-34 a synthetic approval escaping its fixture is rejected', () => {
   const result = validatePriceApproval(
     {

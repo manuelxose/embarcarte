@@ -326,12 +326,13 @@ export function isEvidenceUsable(
   if (evidence.status === 'REVOKED' || evidence.status === 'EXPIRED') return false;
   if (evidence.revokedAt) return false;
   if (!allowedClasses.includes(evidence.evidenceClass)) return false;
-  if (
-    evidence.expiresAt &&
-    isIsoDate(evidence.expiresAt) &&
-    Date.parse(evidence.expiresAt) <= Date.parse(now)
-  )
-    return false;
+  if (!isIsoDate(now)) return false;
+  if (!isIsoDate(evidence.issuedAt)) return false;
+  if (Date.parse(evidence.issuedAt!) > Date.parse(now)) return false;
+  if (evidence.expiresAt !== null && evidence.expiresAt !== undefined) {
+    if (!isIsoDate(evidence.expiresAt)) return false;
+    if (Date.parse(evidence.expiresAt) <= Date.parse(now)) return false;
+  }
   if (!evidence.issuedBy) return false;
   return true;
 }

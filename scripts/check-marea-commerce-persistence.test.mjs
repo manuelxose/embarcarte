@@ -143,6 +143,7 @@ function insertAuditEvent(db, overrides = {}) {
     actor_role: 'FIXTURE_ROLE',
     timestamp: FIXTURE_TIME,
     reason: 'Synthetic persistence test event',
+    evidence_refs_json: '["EV-FIXTURE"]',
     correlation_id: 'corr-1',
     result: 'RECORDED',
     event_hash: 'a'.repeat(64),
@@ -495,6 +496,11 @@ test('blocks merchantable, priced, published and activation fields', (t) => {
   );
 
   assert.throws(
+    () => insertFamily(db, { family_id: 'fam-published', publication_state: 'PUBLISHED' }),
+    /MC16_COMMERCIAL_ACTIVATION_PROHIBITED/,
+  );
+
+  assert.throws(
     () =>
       insertRow(db, 'marea_publication_eligibility', {
         route_id: 'fixture-route',
@@ -598,6 +604,15 @@ test('keeps audit events append-only with unique identity and hash', (t) => {
   );
   assert.throws(() => insertAuditEvent(db, { event_hash: 'b'.repeat(64) }), /MC16_AUDIT_DUPLICATE/);
   assert.throws(() => insertAuditEvent(db, { event_id: 'ev-audit-2' }), /MC16_AUDIT_DUPLICATE/);
+  assert.throws(
+    () =>
+      insertAuditEvent(db, {
+        event_id: 'ev-audit-empty',
+        event_hash: 'd'.repeat(64),
+        evidence_refs_json: '[]',
+      }),
+    /CHECK constraint failed/,
+  );
 
   insertAuditEvent(db, { event_id: 'ev-audit-3', event_hash: 'c'.repeat(64) });
   assert.equal(count(db, 'marea_audit_events'), 2);

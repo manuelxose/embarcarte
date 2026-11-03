@@ -6,6 +6,7 @@ import {
   evaluatePublicationEligibility,
   evaluateReadiness,
   evaluateReadinessTransition,
+  isEvidenceUsable,
   resolveEntitlementDependencies,
   validateAuditEvent,
   validateEntitlementGrant,
@@ -254,6 +255,19 @@ test('expired evidence is unusable', () => {
   );
   assert.equal(result.approved, false);
   assert.ok(result.reasonCodes.includes('PRICE_APPROVAL_EVIDENCE_INVALID'));
+});
+
+test('future-issued and malformed-expiry evidence are unusable', () => {
+  assert.equal(
+    isEvidenceUsable(
+      { ...priceEvidence, issuedAt: '2099-01-01T00:00:00.000Z', expiresAt: null },
+      NOW,
+    ),
+    false,
+  );
+  assert.equal(isEvidenceUsable({ ...priceEvidence, expiresAt: 'not-a-date' }, NOW), false);
+  assert.equal(isEvidenceUsable({ ...priceEvidence, issuedAt: null }, NOW), false);
+  assert.equal(isEvidenceUsable(priceEvidence, NOW), true);
 });
 
 test('readiness requires all eleven dimensions and closed evidence-backed gates', () => {

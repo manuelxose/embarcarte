@@ -514,7 +514,11 @@ export function validateModel(model, options = {}) {
 
   // Lifecycle and readiness
   check(model.lifecycle?.states?.length === 7, 'LIF-001', 'Lifecycle does not define 7 states');
-  check(model.lifecycle?.stateCount === 7 || true, 'LIF-002', 'unused');
+  check(
+    new Set(model.lifecycle?.states ?? []).size === 7,
+    'LIF-002',
+    'Lifecycle states are not unique',
+  );
   check(
     model.lifecycle?.currentState?.commerciallyAvailable === 0,
     'LIF-003',
@@ -1253,7 +1257,7 @@ export async function runCli() {
   for (const failure of failures) console.error(`FAIL ${failure.ruleId}: ${failure.message}`);
   console.log(`MC-16 commerce data: ${checks - failures.length}/${checks} checks passed`);
   console.log(
-    `files: 21; families: 9; editions: 26; bundles: 6; routes: 23; gates: 13; approved prices: 0; merchant SKUs: 0; verified inventory: 0`,
+    `files: ${model.manifest.files.length}; families: ${model.families.families.length}; editions: ${model.editions.editions.length}; bundles: ${model.bundles.bundles.length}; routes: ${model.publication.routes.length}; gates: ${model.gates.gates.length}; approved prices: ${model.price.currentState.approvedPrices}; merchant SKUs: ${model.manifest.counts.merchantSkus}; verified inventory: ${model.inventory.currentState.inventoryItemCount}`,
   );
   if (failures.length > 0) process.exitCode = 1;
   return { ok: failures.length === 0, checks, failures };
