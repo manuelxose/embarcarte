@@ -69,7 +69,7 @@ checkout):
 
 No reset, rebase, force-push, merge or history rewrite was performed. No tracked
 legacy commerce file is modified: the eight frozen legacy files match their
-SHA-256 values exactly (see D14).
+LF-normalized SHA-256 values exactly (see D14).
 
 ## 3. Frozen governance (must not be modified)
 
@@ -227,7 +227,7 @@ Rules:
 | `git ls-remote origin …mc15…` | `99212a4…` | REPOSITORY_VERIFIED (remote) |
 | `gh pr view 22 --json …` | `OPEN`, `isDraft: true`, `MERGEABLE`, `mergedAt: null` | REPOSITORY_VERIFIED (read-only API) |
 | `gh pr list --head feature/marea-mc16-commerce-product-data-model` | `[]` | REPOSITORY_VERIFIED |
-| `Get-FileHash` on the 8 legacy files | all 8 match the frozen mapping | LOCAL_SCRATCH_VERIFIED |
+| LF-normalized SHA-256 on the 8 legacy files | all 8 match the frozen mapping | LOCAL_SCRATCH_VERIFIED |
 | `node scripts/check-marea-commerce-data.mjs` | `MC-16 commerce data: 1730/1730 checks passed`; `files: 21; families: 9; editions: 26; bundles: 6; routes: 23; gates: 13; approved prices: 0; merchant SKUs: 0; verified inventory: 0` (snapshot, parallel workstream) | LOCAL_SCRATCH_VERIFIED |
 | Disposable schema install / guard probe | 20 tables (19 MC-16 + `sqlite_sequence`), 19 triggers, idempotent double install, all six activation probes blocked (`MC16_COMMERCIAL_ACTIVATION_PROHIBITED`, `MC16_MERCHANTABLE_EDITION_PROHIBITED`, `MC16_AUDIT_APPEND_ONLY` ×2, `MC16_REAL_ENTITLEMENT_GRANT_PROHIBITED`, publication CHECK), drop leaves 0 `marea_%` tables | LOCAL_SCRATCH_VERIFIED |
 | `npm run test:financial` | `77 checks - 76 PASS / 1 FAIL`; `FAIL V-18 - No MC-14 execution`; exit 1 | LOCAL_SCRATCH_VERIFIED |

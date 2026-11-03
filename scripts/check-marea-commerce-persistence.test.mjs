@@ -569,6 +569,13 @@ test('rejects an approved price without verified external approval evidence', (t
   );
   assert.throws(
     () =>
+      db.exec(
+        "UPDATE marea_price_versions SET status = 'REVOKED' WHERE price_version_id = 'price-valid'",
+      ),
+    /MC16_APPROVED_PRICE_IMMUTABLE/,
+  );
+  assert.throws(
+    () =>
       db.exec("DELETE FROM marea_price_approval_evidence WHERE price_version_id = 'price-valid'"),
     /MC16_APPROVED_PRICE_EVIDENCE_IMMUTABLE/,
   );

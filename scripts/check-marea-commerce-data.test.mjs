@@ -173,6 +173,14 @@ test('approved price requires verified external evidence and authorized role', (
   );
   assert.equal(wrongRole.approved, false);
   assert.ok(wrongRole.reasonCodes.includes('PRICE_APPROVER_ROLE_UNAUTHORIZED'));
+
+  const wrongEdition = validatePriceApproval(approvedPrice, [priceEvidence], NOW, {
+    territory: 'ES',
+    channel: 'DIRECT',
+    editionId: 'NAV-PRO',
+  });
+  assert.equal(wrongEdition.approved, false);
+  assert.ok(wrongEdition.reasonCodes.includes('PRICE_EDITION_MISMATCH'));
 });
 
 test('unknown price remains null and is never coerced to zero', () => {

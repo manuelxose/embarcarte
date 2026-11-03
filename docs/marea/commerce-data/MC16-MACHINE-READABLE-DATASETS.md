@@ -39,7 +39,7 @@ validator fails if the manifest and the directory diverge.
 | `legacy-commerce-mapping.json` | Legacy shop file hashes and zero MAREA mapping | 8 files |
 | `security-invariants.json` | Server authority, tenant and audit invariants | 25 |
 | `audit-event-contract.json` | Append-only event fields, types and rules | 12 event types |
-| `blocker-register.json` | Gates, documents, findings, preconditions and inherited debt | 13 / 24 / 34 / 10 |
+| `blocker-register.json` | Gate and precondition arrays plus inherited summary counters (documents/findings) | 13 gates / 10 preconditions; 24 docs / 34 findings counters |
 | `mc17-handoff-inputs.json` | Presentation and data contract for MC-17 | `MC17_STARTED=false` |
 | `review-findings.json` | Independent audit findings and verdict | set after audit |
 

@@ -39,9 +39,10 @@ Eight code files define the legacy commerce behaviour:
 | `src/app/features/shop/shop-detail.ts` | `4a7b8ded4316123b60d845adf353cdeb6a0bf92006591b422a8e5a11d3ea5708` |
 | `src/app/features/shop/cart.ts` | `79791769995434e8576c02dd6ec728ad583135ad543664f703694a9b51702c56` |
 
-All eight hashes were recomputed with `Get-FileHash` at the baseline and match the
-mapping exactly. `scripts/marea-commerce-validator.mjs` enforces the same rule
-(`LEG-001` file exists, `LEG-002` hash unchanged).
+All eight hashes are computed over LF-normalized content (`CRLF` replaced by `LF`) and
+match the mapping exactly. `scripts/marea-commerce-validator.mjs` enforces the same
+normalized rule (`LEG-001` file exists, `LEG-002` hash unchanged), so a clean checkout
+with different line endings still reproduces the result.
 
 ## 3. `products.active` semantics
 
@@ -162,7 +163,7 @@ respects all of the following:
 
 | Command / check | Result |
 |---|---|
-| `Get-FileHash` × 8 legacy files | 8/8 match the frozen mapping |
+| LF-normalized SHA-256 × 8 legacy files | 8/8 match the frozen mapping |
 | `git diff --name-only HEAD` for the legacy set | empty |
 | `node scripts/check-marea-commerce-data.mjs` (snapshot) | `LEG-001..007` pass within 1730/1730; `mareaSkusMappedFromLegacy` empty |
 | `data/legacy-commerce-mapping.json` parse | valid; preservation flags all `false` |

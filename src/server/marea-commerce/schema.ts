@@ -462,7 +462,8 @@ CREATE TRIGGER IF NOT EXISTS trg_marea_approved_price_immutable
 BEFORE UPDATE ON marea_price_versions
 WHEN OLD.status = 'APPROVED'
   AND (
-    NEW.amount_minor IS NOT OLD.amount_minor
+    NEW.status IS NOT OLD.status
+    OR NEW.amount_minor IS NOT OLD.amount_minor
     OR NEW.currency IS NOT OLD.currency
     OR NEW.territory IS NOT OLD.territory
     OR NEW.channel IS NOT OLD.channel

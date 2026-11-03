@@ -680,6 +680,7 @@ export function evaluatePurchasability(context: PurchasabilityContext): Purchasa
       reasonCodes.add('DISPLAY_LARGE_CONDITIONAL_NOT_SELECTABLE');
   }
 
+  const evidenceById = new Map(context.evidence.map((item) => [item.evidenceId, item]));
   if (!context.merchantSku) {
     reasonCodes.add('MERCHANT_SKU_MISSING');
   } else {
@@ -700,7 +701,6 @@ export function evaluatePurchasability(context: PurchasabilityContext): Purchasa
     }
   }
 
-  const evidenceById = new Map(context.evidence.map((item) => [item.evidenceId, item]));
   const gateResult = evaluateGates(context.gates, context.evidence, now);
   for (const gateId of gateResult.blockingGateIds) reasonCodes.add(`GATE_OPEN:${gateId}`);
   for (const evidenceId of gateResult.missingEvidenceIds) missingEvidenceIds.add(evidenceId);
