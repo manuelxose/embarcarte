@@ -150,6 +150,42 @@ test('admin activation and client claims are recorded but ignored', () => {
   assert.ok(decision.reasonCodes.includes('CLIENT_CLAIMS_IGNORED'));
 });
 
+test('merchant SKU approval evidence is resolved and missing evidence denies', () => {
+  const edition = editions[0];
+  const family = families[0];
+  const context = {
+    family,
+    edition,
+    merchantSku: {
+      skuCode: 'SKU-TEST-001',
+      editionId: edition.editionId,
+      state: 'ACTIVE',
+      merchantable: true,
+      priceApproved: true,
+      approvalEvidenceIds: ['EV-PRICE-APPROVAL'],
+    },
+    gates,
+    evidence: [priceEvidence],
+    price: priceByEdition.get(edition.editionId),
+    inventory: [],
+    actor: { actorId: 'synthetic-actor', roles: ['COMMERCE_OPERATOR'] },
+    territory: 'ES',
+    channel: 'DIRECT',
+    now: NOW,
+  };
+  const valid = evaluatePurchasability(context);
+  assert.equal(valid.allowed, false);
+  assert.equal(valid.reasonCodes.includes('MERCHANT_SKU_APPROVAL_EVIDENCE_INVALID'), false);
+
+  const invalid = evaluatePurchasability({
+    ...context,
+    merchantSku: { ...context.merchantSku, approvalEvidenceIds: ['EV-MISSING'] },
+  });
+  assert.equal(invalid.allowed, false);
+  assert.ok(invalid.reasonCodes.includes('MERCHANT_SKU_APPROVAL_EVIDENCE_INVALID'));
+  assert.ok(invalid.missingEvidenceIds.includes('EV-MISSING'));
+});
+
 test('approved price requires verified external evidence and authorized role', () => {
   const approved = validatePriceApproval(approvedPrice, [priceEvidence], NOW, {
     territory: 'ES',

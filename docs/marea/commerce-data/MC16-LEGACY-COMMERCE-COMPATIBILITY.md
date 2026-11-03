@@ -30,14 +30,14 @@ Eight code files define the legacy commerce behaviour:
 
 | File | Frozen SHA-256 (expected = verified) |
 |---|---|
-| `src/server/db.ts` | `3ae2ad956814879f338d0b2c316df7c1d6936bfbc6adda80e81bdc6fc96fa4e2` |
-| `src/server/api.ts` | `73be2572baaaa4a9220be167a6b1926b841d68cb76e9944cfbd702c7f8908ea3` |
-| `src/server/stripe.ts` | `7cc627e7f232effe4c7b88811085f7bd3987b6dfa0c1bac473245f12c4be5d47` |
-| `src/app/core/models.ts` | `9ea5b31c494ee13bcd18801a09077bd888d5fb344c50eb99c7c79e59abaec4c5` |
-| `src/app/core/cart.service.ts` | `b523ae521d1b69e9ce4702c2aec25ecb3e1d7a6ca47a4daa075758691e9b2d42` |
-| `src/app/features/shop/shop-list.ts` | `0ad972eb532220837d4cfbe54a898673004518349cac3194315f4bc66c181476` |
-| `src/app/features/shop/shop-detail.ts` | `4a7b8ded4316123b60d845adf353cdeb6a0bf92006591b422a8e5a11d3ea5708` |
-| `src/app/features/shop/cart.ts` | `79791769995434e8576c02dd6ec728ad583135ad543664f703694a9b51702c56` |
+| `src/server/db.ts` | `27be6c2a536d709efd49d9231f90d934e13dab3cad300ab7163490d7e706e4a4` |
+| `src/server/api.ts` | `41c3ea13c2cfdcd6fb62d5e60e12bf4fedca04bb5c369bee12869622ce163ed1` |
+| `src/server/stripe.ts` | `849d56613df69ff25dd3832429a7713ea73dbbe4b6f46465cc5d586e42736ad8` |
+| `src/app/core/models.ts` | `143d4f8c99a419e5d6710f1db748443fe1a24b0e34529b5df9459415a1d65776` |
+| `src/app/core/cart.service.ts` | `1f8f5f7d96b0c53339fb208aedddb8dc0404de007f0917cbe09fafa8bd648b1f` |
+| `src/app/features/shop/shop-list.ts` | `45e7ccf091de6fb1bbf6db8366c37c5cec94a77e6e8a9433d5725063b985e578` |
+| `src/app/features/shop/shop-detail.ts` | `7f1496d5f4638b8082a137686c4eb9747564392065b339e37b0d3a9aa05df0c2` |
+| `src/app/features/shop/cart.ts` | `744dbbbcb4d5f896f5a641086334fcf773dfdb76c667ae127ee887cb7976d142` |
 
 All eight hashes are computed over LF-normalized content (`CRLF` replaced by `LF`) and
 match the mapping exactly. `scripts/marea-commerce-validator.mjs` enforces the same
