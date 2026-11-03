@@ -1,0 +1,72 @@
+{
+  "contractId": "MC17-MODE-CONTRACTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "lead",
+  "generationMethod": "node scripts/build-marea-design-tokens.mjs",
+  "scope": "Supported visual modes, their context separation and selector contract.",
+  "knownLimitations": [
+    "All colour, typography and layout values are internal proposals derived from MC-04; no value here is a public brand adoption.",
+    "Instrument day/sunlight/night modes are software-only specimens. No marine hardware visibility, daylight readability or night-vision performance is claimed: hardware validation remains BLOCKED.",
+    "The corporate web-light context keeps the measured MC-04 baseline values; it applies one proposed correction (focusRing) that is NOT applied to the live website, so MC-04 finding F-1 remains OPEN for the public site.",
+    "Contrast ratios are computed from declared token values only; they do not model anti-aliasing, glare, night adaptation or real display hardware."
+  ],
+  "sourceRefs": [
+    "docs/marea/brand/tokens/marea-instrument-tokens.proposed.json",
+    "docs/marea/brand/COLOUR-SYSTEM.md",
+    "docs/marea/brand/TYPOGRAPHY-SYSTEM.md",
+    "docs/marea/brand/ICONOGRAPHY-SYSTEM.md",
+    "docs/marea/brand/MC-04-VISUAL-IDENTITY-BRIEF.md",
+    "docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md",
+    "src/styles.scss"
+  ],
+  "selectorContract": {
+    "hostElement": "marea-theme",
+    "attribute": "data-marea-mode",
+    "selection": "Components inherit custom properties from the nearest <marea-theme> host; no :root or body override exists.",
+    "defaultMode": "web-light"
+  },
+  "modes": {
+    "web-light": {
+      "label": "Corporate web (light)",
+      "context": "corporate",
+      "colorScheme": "light",
+      "status": "EXISTING_MEASURED_BASELINE",
+      "appliesTo": "Isolated corporate web components on the existing light EMBARCARTE visual system. The live site itself is not restyled.",
+      "selectorAttribute": null,
+      "colorRoleCount": 33,
+      "selector": "marea-theme (default host state)"
+    },
+    "instrument-day": {
+      "label": "Instrument — day",
+      "context": "instrument",
+      "colorScheme": "light",
+      "status": "INTERNAL_PROPOSED",
+      "appliesTo": "Internal software specimens for bridge daylight use. Not a hardware readability claim.",
+      "selectorAttribute": "instrument-day",
+      "colorRoleCount": 33,
+      "selector": "marea-theme[data-marea-mode='instrument-day']"
+    },
+    "instrument-sunlight": {
+      "label": "Instrument — sunlight",
+      "context": "instrument",
+      "colorScheme": "light",
+      "status": "INTERNAL_PROPOSED",
+      "appliesTo": "Internal high-ambient-light software specimen. Glare readability is NOT validated; hardware validation is BLOCKED.",
+      "selectorAttribute": "instrument-sunlight",
+      "colorRoleCount": 33,
+      "selector": "marea-theme[data-marea-mode='instrument-sunlight']"
+    },
+    "instrument-night": {
+      "label": "Instrument — night",
+      "context": "instrument",
+      "colorScheme": "dark",
+      "status": "INTERNAL_PROPOSED",
+      "appliesTo": "Internal watchkeeping software specimen. Night-vision performance is NOT validated. No #000000 canvas and no #ffffff text.",
+      "selectorAttribute": "instrument-night",
+      "colorRoleCount": 33,
+      "selector": "marea-theme[data-marea-mode='instrument-night']"
+    }
+  }
+}

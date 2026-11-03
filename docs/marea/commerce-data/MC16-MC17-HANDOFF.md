@@ -12,6 +12,16 @@
 | `publicUiChangeAuthorized` | `false` |
 | Machine inputs | `data/mc17-handoff-inputs.json` |
 
+> **Supersession note — 2026-11-03.** This document is a historical MC-16 record:
+> `MC17_STARTED = false` was true when it was written. MC-17 has since started and
+> the design system has been implemented under `src/app/marea-design-system/`. Its
+> current recorded state is `MC17_VERDICT = PARTIAL` and
+> `MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = IMPLEMENTED_AND_TECHNICALLY_VERIFIED_PENDING_FINAL_RE_AUDIT`;
+> the third-round independent verdict is still pending. See
+> `docs/marea/design-system/` (D01–D24) and row 17 of
+> `docs/marea/execution/MASTER-PROMPT-REGISTRY.md`. The historical statements below
+> are retained unchanged; they are not the current status.
+
 ## 1. Boundary
 
 MC-17 is the **presentation milestone** for the defined MAREA portfolio. It consumes

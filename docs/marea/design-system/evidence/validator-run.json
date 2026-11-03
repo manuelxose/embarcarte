@@ -1,0 +1,288 @@
+{
+  "contractId": "MC17-DESIGN-SYSTEM-VALIDATOR-RUN",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "PASS",
+  "owner": "lead",
+  "generationMethod": "node scripts/check-marea-design-system.mjs",
+  "scope": "Static contract, token, provenance, isolation, commerce-policy and dataset validation of the MC-17 implementation.",
+  "knownLimitations": [
+    "Automated checks do not replace the independent review or the Playwright accessibility/keyboard/visual suites.",
+    "Production-bundle scanning is skipped when dist/embarcarte is absent in the run environment."
+  ],
+  "sourceRefs": [
+    "."
+  ],
+  "executedAtUtc": "deterministic-runT00:00:00.000Z",
+  "checkCount": 38,
+  "passed": 38,
+  "failed": 0,
+  "checks": [
+    {
+      "id": "MC17-01",
+      "description": "Token contract keeps internal/provisional governance status",
+      "status": "PASS",
+      "detail": "INTERNAL_PROPOSED / NOT_ADOPTED / NO_GO",
+      "evidence": null
+    },
+    {
+      "id": "MC17-02",
+      "description": "Four visual modes are defined and every colour role has a value per mode",
+      "status": "PASS",
+      "detail": "33 roles x 4 modes",
+      "evidence": null
+    },
+    {
+      "id": "MC17-03",
+      "description": "Night mode uses no pure black canvas or pure white text",
+      "status": "PASS",
+      "detail": "night palette avoids #000000 and #ffffff",
+      "evidence": null
+    },
+    {
+      "id": "MC17-04",
+      "description": "All declared contrast pairs pass their threshold in every mode",
+      "status": "PASS",
+      "detail": "296 pair/mode measurements",
+      "evidence": null
+    },
+    {
+      "id": "MC17-05",
+      "description": "Token outputs are deterministic and current",
+      "status": "PASS",
+      "detail": "token, fixture and baseline generators report current",
+      "evidence": null
+    },
+    {
+      "id": "MC17-06",
+      "description": "Every token reference resolves to a defined custom property",
+      "status": "PASS",
+      "detail": "180 references resolved against 182 definitions",
+      "evidence": null
+    },
+    {
+      "id": "MC17-07",
+      "description": "No global style override or legacy token mutation exists",
+      "status": "PASS",
+      "detail": "no :root/html override, no legacy token mutation, production styles unchanged",
+      "evidence": null
+    },
+    {
+      "id": "MC17-08",
+      "description": "Production entry points cannot reach preview or design-system code by any import path",
+      "status": "PASS",
+      "detail": "5 entries, 86 local project modules followed; relative imports, re-exports and dynamic imports resolved against tsconfig paths/baseUrl (0 alias patterns)",
+      "evidence": null
+    },
+    {
+      "id": "MC17-09",
+      "description": "Production build output contains no design-system or catalogue code",
+      "status": "PASS",
+      "detail": "168 build files scanned",
+      "evidence": null
+    },
+    {
+      "id": "MC17-10",
+      "description": "Internal catalogue is a separate non-production project",
+      "status": "PASS",
+      "detail": "catalogue project isolated at preview/ with its own output path",
+      "evidence": null
+    },
+    {
+      "id": "MC17-11",
+      "description": "No MAREA asset is copied into public/",
+      "status": "PASS",
+      "detail": "15 public files unchanged, zero MAREA assets",
+      "evidence": null
+    },
+    {
+      "id": "MC17-12",
+      "description": "Registered components all exist in the real implementation",
+      "status": "PASS",
+      "detail": "49 registry entries verified against implementation",
+      "evidence": null
+    },
+    {
+      "id": "MC17-13",
+      "description": "No undocumented component variant is exposed",
+      "status": "PASS",
+      "detail": "33 option inputs resolved to 126 string values and compared in both directions with the registry (types + visualVariants); 64 visual variants matched, 4 non-enumerable option inputs skipped",
+      "evidence": null
+    },
+    {
+      "id": "MC17-14",
+      "description": "Every component state contract covers the eleven required states",
+      "status": "PASS",
+      "detail": "49 components x 11 states",
+      "evidence": null
+    },
+    {
+      "id": "MC17-15",
+      "description": "Interactive components implement a visible focus contract",
+      "status": "PASS",
+      "detail": "11 keyboard-operable components expose :focus-visible with the focus-ring token and no hidden/transparent outline",
+      "evidence": null
+    },
+    {
+      "id": "MC17-16",
+      "description": "Instrument numerics use the Manrope numeric role with tabular figures",
+      "status": "PASS",
+      "detail": "2 numeric renderers use Manrope tabular figures",
+      "evidence": null
+    },
+    {
+      "id": "MC17-17",
+      "description": "Disabled controls keep an accessible explanation",
+      "status": "PASS",
+      "detail": "button exposes disabled reason; commerce CTA renders no action",
+      "evidence": null
+    },
+    {
+      "id": "MC17-18",
+      "description": "Status is never conveyed by colour alone",
+      "status": "PASS",
+      "detail": "6 status tones require text and a shape icon",
+      "evidence": null
+    },
+    {
+      "id": "MC17-19",
+      "description": "No purchase path, price or stock quantity exists in the design system",
+      "status": "PASS",
+      "detail": "no purchase wording, currency or price/stock amount API",
+      "evidence": null
+    },
+    {
+      "id": "MC17-20",
+      "description": "Commerce presentation reports MC-16 readiness and restrictions truthfully and the family-limit map covers all nine families",
+      "status": "PASS",
+      "detail": "PILOT blocked, AIS receive-only, FLEET without default hardware; FAMILY_LIMIT_KEYS statically covers 9/9 families and all copy keys resolve",
+      "evidence": null
+    },
+    {
+      "id": "MC17-21",
+      "description": "All nine families, 26 editions and six bundles are representable",
+      "status": "PASS",
+      "detail": "9 families, 26 editions, 6 bundles represented from MC-16 data",
+      "evidence": null
+    },
+    {
+      "id": "MC17-22",
+      "description": "Fixtures are synthetic and contain no customer, vessel, price or stock data",
+      "status": "PASS",
+      "detail": "fixture classification present; no commercial or personal fields",
+      "evidence": null
+    },
+    {
+      "id": "MC17-23",
+      "description": "Family limitation copy is stated and the commerce gallery is statically coupled to all nine families",
+      "status": "PASS",
+      "detail": "family-limitation copy present, no autonomy/steering claim; commerce gallery statically instantiates 9/9 family cards including WEATHER and HUB (rendered evidence is Playwright-only)",
+      "evidence": null
+    },
+    {
+      "id": "MC17-24",
+      "description": "Shared entitlements are presented once per ledger",
+      "status": "PASS",
+      "detail": "ledger grouping implemented and exercised by fixtures",
+      "evidence": null
+    },
+    {
+      "id": "MC17-25",
+      "description": "ES/EN dictionaries are complete and structurally equivalent",
+      "status": "PASS",
+      "detail": "138 bilingual keys with ES and EN non-empty",
+      "evidence": null
+    },
+    {
+      "id": "MC17-26",
+      "description": "No locale-specific duplicate entity or component exists",
+      "status": "PASS",
+      "detail": "one component set, 26 unique editions",
+      "evidence": null
+    },
+    {
+      "id": "MC17-27",
+      "description": "Preview command exists and the catalogue is documented as internal-only",
+      "status": "PASS",
+      "detail": "preview and test scripts present",
+      "evidence": null
+    },
+    {
+      "id": "MC17-28",
+      "description": "Legacy public site files are byte-identical to the MC-16 baseline",
+      "status": "PASS",
+      "detail": "35 watched files unchanged vs 6d8287c8507038c4f90fd6e35471f78081ca4676",
+      "evidence": null
+    },
+    {
+      "id": "MC17-29",
+      "description": "Proposed routes remain undeployed and route registry unchanged",
+      "status": "PASS",
+      "detail": "23 proposed routes, none added to the Angular router",
+      "evidence": null
+    },
+    {
+      "id": "MC17-30",
+      "description": "Public metadata and static assets are unchanged",
+      "status": "PASS",
+      "detail": "robots, manifest, OG image, favicon and index unchanged",
+      "evidence": null
+    },
+    {
+      "id": "MC17-31",
+      "description": "No structured Product/Offer data is emitted by the design system",
+      "status": "PASS",
+      "detail": "no JSON-LD, Product/Offer, priceCurrency or ratings markup",
+      "evidence": null
+    },
+    {
+      "id": "MC17-32",
+      "description": "Inherited risks remain recorded and predecessor verdicts untouched",
+      "status": "PASS",
+      "detail": "MC16 PARTIAL retained; MC16-FINAL-02, MC16-FINAL-09 and V-18 registered",
+      "evidence": null
+    },
+    {
+      "id": "MC17-33",
+      "description": "MC-18 has not started",
+      "status": "PASS",
+      "detail": "MC18_STARTED=false and no MC-18 implementation files",
+      "evidence": null
+    },
+    {
+      "id": "MC17-34",
+      "description": "No publication, deployment or brand adoption occurred",
+      "status": "PASS",
+      "detail": "publication non-deployable; identity NOT_ADOPTED / NO_GO",
+      "evidence": null
+    },
+    {
+      "id": "MC17-35",
+      "description": "Required documentation deliverables exist",
+      "status": "PASS",
+      "detail": "24 documentation deliverables present",
+      "evidence": null
+    },
+    {
+      "id": "MC17-36",
+      "description": "Required machine-readable datasets exist and declare their governance metadata",
+      "status": "PASS",
+      "detail": "20 datasets valid",
+      "evidence": null
+    },
+    {
+      "id": "MC17-37",
+      "description": "Design-system automated and adversarial test suites exist",
+      "status": "PASS",
+      "detail": "8 test artifacts present",
+      "evidence": null
+    },
+    {
+      "id": "MC17-38",
+      "description": "Accessibility requirements dataset covers the applicable WCAG 2.2 AA criteria",
+      "status": "PASS",
+      "detail": "required criteria present; no full-conformance claim recorded",
+      "evidence": null
+    }
+  ]
+}

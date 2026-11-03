@@ -1,0 +1,272 @@
+{
+  "contractId": "MC17-ASSET-PROVENANCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "adoption": "NOT_ADOPTED",
+  "publicUse": "NO_GO",
+  "owner": "documentation-specialist (MC-17/36)",
+  "generationMethod": "authored by hand from directory listings and file counts observed in the working tree on 2026-11-03; no generator script produces this file",
+  "scope": "Provenance, rights state and publication state of every asset family that the MC-17 design system consumes, references or deliberately does not consume, plus the state of public/.",
+  "knownLimitations": [
+    "File counts are directory counts observed at authoring time; a later commit changes them and this dataset must be re-derived, not trusted.",
+    "No licence review, originality opinion, trademark clearance or professional resemblance check exists for any family listed here. Every licenceCleared and originalityClaim value is false because no such clearance was performed, not because it was performed and denied.",
+    "The MC-04 candidate library is internal design evidence under a proposed brand; the absence of a public copy in public/ is verified by the validator check MC17-11, not by this file alone.",
+    "Per-file SHA-256 registration belongs to the asset manifest (MC-04 QA-23, still incomplete); this dataset records families and counts, not hashes."
+  ],
+  "sourceRefs": [
+    "docs/marea/brand/ICONOGRAPHY-SYSTEM.md",
+    "docs/marea/brand/IDENTITY-SYSTEM.md",
+    "docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md",
+    "docs/marea/brand/assets/icons/ui/",
+    "docs/marea/brand/assets/logo/",
+    "docs/marea/brand/assets/diagrams/",
+    "docs/marea/brand/assets/packaging/",
+    "docs/marea/brand/assets/social/",
+    "docs/marea/brand/assets/print/",
+    "docs/marea/brand/assets/evidence/renders/",
+    "src/app/marea-design-system/components/foundation/marea-icon-paths.ts",
+    "docs/marea/design-system/data/legacy-ui-baseline.json",
+    "scripts/check-marea-design-system.mjs (check MC17-11)"
+  ],
+  "governance": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "mareaPublicUse": "NO_GO",
+    "finalIdentityAdoption": "BLOCKED",
+    "publicationAuthorized": false,
+    "productionDeployment": "NOT_AUTHORIZED",
+    "note": "No asset in this dataset may be published, and no MAREA logo, lockup, icon master or render may be copied into public/ in MC-17."
+  },
+  "publicState": {
+    "publicFiles": 15,
+    "publicMareaAssets": 0,
+    "publicAssetCopiesFromBrandLibrary": 0,
+    "verifiedBy": "MC17-11 — PASS, detail '15 public files unchanged, zero MAREA assets'",
+    "baseline": "docs/marea/design-system/data/legacy-ui-baseline.json (publicFileCount 15, baselineCommit 6d8287c8507038c4f90fd6e35471f78081ca4676)"
+  },
+  "assetFamilies": [
+    {
+      "id": "MC04-UI-ICONS",
+      "name": "MC-04 candidate UI icon masters",
+      "location": "docs/marea/brand/assets/icons/ui/",
+      "fileCount": 59,
+      "fileTypes": {
+        "svg": 57,
+        "html": 2
+      },
+      "provenanceStatus": "INHERITED_MC04_CANDIDATE_LIBRARY_INTERNAL",
+      "publicUse": false,
+      "licenceCleared": false,
+      "originalityClaim": false,
+      "permittedUse": "Internal design evidence and review specimens only.",
+      "mc17Action": "NOT_COPIED. MC-17 authors its own 28-glyph set in marea-icon-paths.ts; no MC-04 icon file is imported, copied or referenced by the design system or the catalogue.",
+      "evidence": "ICONOGRAPHY-SYSTEM.md §0/§2/§13 (57 authored masters, 24,648 B total, max 845 B, structural self-check 57/57); directory count observed 59 files (57 svg + index.html + reduction-proof.html).",
+      "notes": "Legal originality and professional resemblance review are PENDING; the set is not APPROVED_FOR_USE or CLEARED, and those statuses do not exist in the programme vocabulary."
+    },
+    {
+      "id": "MC17-SHIPPED-GLYPHS",
+      "name": "MC-17 shipped geometric UI glyphs",
+      "location": "src/app/marea-design-system/components/foundation/marea-icon-paths.ts",
+      "fileCount": 1,
+      "fileTypes": {
+        "ts": 1
+      },
+      "glyphCount": 28,
+      "glyphNames": [
+        "chevron-down",
+        "chevron-up",
+        "chevron-right",
+        "chevron-left",
+        "check",
+        "close",
+        "info",
+        "warning",
+        "critical",
+        "clock",
+        "offline",
+        "online",
+        "arrow-right",
+        "external",
+        "menu",
+        "plus",
+        "minus",
+        "dot",
+        "square",
+        "dash",
+        "document",
+        "download",
+        "link",
+        "target",
+        "gauge",
+        "lock",
+        "shield-alert",
+        "sliders"
+      ],
+      "provenanceStatus": "ORIGINAL_GEOMETRIC_AUTHORED_FOR_MC17",
+      "publicUse": false,
+      "licenceCleared": false,
+      "originalityClaim": false,
+      "permittedUse": "Internal design-system rendering; currentColor stroke geometry, decorative unless the consumer supplies an accessible name.",
+      "mc17Action": "SHIPPED_IN_SOURCE_ONLY. Not exported to public/, not used by any production route.",
+      "evidence": "File header states the glyphs are drawn as simple 24x24 stroke geometry, are not copied, traced or adapted from a competitor icon set, and are not the proposed MAREA identity artwork; no originality clearance is claimed.",
+      "notes": "No competitor icon set was copied, no tracing was performed, and no MAREA logo or mark is included in this file."
+    },
+    {
+      "id": "MC04-LOGO-AND-LOCKUPS",
+      "name": "MC-04 provisional MAREA logo, mark and family lockups",
+      "location": "docs/marea/brand/assets/logo/",
+      "fileCount": 16,
+      "fileTypes": {
+        "svg": 16
+      },
+      "provenanceStatus": "INHERITED_MC04_PROVISIONAL_IDENTITY_LAYER_B",
+      "publicUse": false,
+      "licenceCleared": false,
+      "originalityClaim": false,
+      "permittedUse": "Internal identity evidence under a proposed brand; no trademark symbol, no publication.",
+      "mc17Action": "NOT_COPIED, NOT_EXPORTED. Zero logo, wordmark, mark or family lockup file is present in public/ or referenced by the design system.",
+      "evidence": "IDENTITY-SYSTEM.md §0 (PROPOSED, not adopted, not cleared, not published; PREFERRED_PROVISIONAL = B); directory count 16 svg (7 in logo/ + 9 in logo/family/).",
+      "notes": "FINAL_IDENTITY_ADOPTION = BLOCKED; ORIGINALITY_PROFESSIONAL_CHECK = PENDING."
+    },
+    {
+      "id": "MC04-APP-ICONS",
+      "name": "MC-04 app icon masters and favicon sources",
+      "location": "docs/marea/brand/assets/icons/ (root) and docs/marea/brand/assets/icons/app/",
+      "fileCount": 15,
+      "fileTypes": {
+        "svg": 6,
+        "png": 8,
+        "ico": 1
+      },
+      "provenanceStatus": "INHERITED_MC04_PROVISIONAL_IDENTITY_LAYER_B",
+      "publicUse": false,
+      "licenceCleared": false,
+      "originalityClaim": false,
+      "permittedUse": "Internal identity evidence only.",
+      "mc17Action": "NOT_COPIED. The public favicon/apple-touch/icon files in public/ remain the pre-existing EMBARCARTE assets, byte-identical to the baseline.",
+      "evidence": "Directory counts: icons/ 6 files (favicon.ico, favicon.svg, marea-app-icon-1024.png, marea-apple-touch-180.png, marea-icon-192.png, marea-icon-512.png); icons/app/ 9 files (5 svg, 4 png including a 16/32 proof).",
+      "notes": "public/favicon.svg, public/favicon.ico, public/apple-touch-icon.png, public/icon-192.png and public/icon-512.png are unchanged and are not MAREA assets."
+    },
+    {
+      "id": "MC04-DIAGRAMS",
+      "name": "MC-04 technical diagram specimens",
+      "location": "docs/marea/brand/assets/diagrams/",
+      "fileCount": 3,
+      "fileTypes": {
+        "svg": 3
+      },
+      "provenanceStatus": "INHERITED_MC04_INTERNAL_SPECIMEN",
+      "publicUse": false,
+      "licenceCleared": false,
+      "originalityClaim": false,
+      "permittedUse": "Internal explanatory specimens; not product documentation.",
+      "mc17Action": "NOT_COPIED.",
+      "evidence": "Files: marea-ais-receive-only.svg, marea-ecosystem-overview.svg, marea-pilot-supervised-boundary.svg.",
+      "notes": "These are semantic illustrations, not measured engineering drawings."
+    },
+    {
+      "id": "MC04-PACKAGING",
+      "name": "MC-04 packaging dielines",
+      "location": "docs/marea/brand/assets/packaging/",
+      "fileCount": 6,
+      "fileTypes": {
+        "svg": 6
+      },
+      "provenanceStatus": "INHERITED_MC04_CONCEPT_ONLY",
+      "publicUse": false,
+      "licenceCleared": false,
+      "originalityClaim": false,
+      "permittedUse": "Vector concept only; print and procurement are BLOCKED.",
+      "mc17Action": "NOT_COPIED.",
+      "evidence": "Six family dielines (ais, display, hub, pilot, sense, watch); MC-04 accessibility evidence QA-20 records packaging accessibility as BLOCKED.",
+      "notes": "No packaging was produced, proofed or procured."
+    },
+    {
+      "id": "MC04-SOCIAL-AND-PRINT",
+      "name": "MC-04 social cards and print/PDF records",
+      "location": "docs/marea/brand/assets/social/ and docs/marea/brand/assets/print/",
+      "fileCount": 8,
+      "fileTypes": {
+        "jpg": 2,
+        "pdf": 2,
+        "html": 4
+      },
+      "provenanceStatus": "INHERITED_MC04_INTERNAL_SPECIMEN",
+      "publicUse": false,
+      "licenceCleared": false,
+      "originalityClaim": false,
+      "permittedUse": "Internal specimens; no social profile was published and no print authorisation exists.",
+      "mc17Action": "NOT_COPIED.",
+      "evidence": "social/: og-marea-es/en 1200x630 (.jpg + .html source). print/: installer commissioning record ES/EN (.pdf + .html source).",
+      "notes": "public/og-image.png is unchanged and is not a MAREA card."
+    },
+    {
+      "id": "MC04-EVIDENCE-RENDERS",
+      "name": "MC-04 review evidence renders",
+      "location": "docs/marea/brand/assets/evidence/renders/",
+      "fileCount": 13,
+      "fileTypes": {
+        "png": 13
+      },
+      "provenanceStatus": "INHERITED_MC04_REVIEW_EVIDENCE",
+      "publicUse": false,
+      "licenceCleared": false,
+      "originalityClaim": false,
+      "permittedUse": "Review evidence only; screenshots of internal specimens, not product photography.",
+      "mc17Action": "NOT_COPIED.",
+      "evidence": "13 PNG renders (icon index/reduction proof, contrast CVD and greyscale boards, three specimen sets, territory comparison and proof sheets).",
+      "notes": "These are renders of authored HTML/SVG specimens; they are not evidence of hardware performance."
+    },
+    {
+      "id": "MC17-PREVIEW-CATALOGUE-ASSETS",
+      "name": "MC-17 internal catalogue static assets",
+      "location": "preview/",
+      "fileCount": 0,
+      "fileTypes": {},
+      "provenanceStatus": "NO_RASTER_ASSET",
+      "publicUse": false,
+      "licenceCleared": false,
+      "originalityClaim": false,
+      "permittedUse": "The catalogue composes DOM, inline SVG glyphs and CSS only.",
+      "mc17Action": "NO_ASSET_ADDED. preview/assets is empty by construction and the Angular project declares assets: [].",
+      "evidence": "angular.json project marea-design-system-catalogue build options assets = []; styles = preview/catalogue.css + generated token CSS.",
+      "notes": "No screenshot, mock-up or generated image is part of the catalogue."
+    },
+    {
+      "id": "PUBLIC-BASELINE",
+      "name": "Public website static assets (pre-existing EMBARCARTE)",
+      "location": "public/",
+      "fileCount": 15,
+      "fileTypes": {
+        "png": 4,
+        "webp": 7,
+        "ico": 1,
+        "svg": 1,
+        "txt": 1,
+        "webmanifest": 1
+      },
+      "provenanceStatus": "PRE_EXISTING_BASELINE_UNCHANGED",
+      "publicUse": true,
+      "licenceCleared": false,
+      "originalityClaim": false,
+      "permittedUse": "Existing public site assets, unchanged; their rights state is inherited from the pre-MAREA site and is not certified by this dataset.",
+      "mc17Action": "UNCHANGED. Byte-identical to the MC-16 baseline; zero MAREA asset added.",
+      "evidence": "legacy-ui-baseline.json fileCount of watched public files = 15 with SHA-256 per file; check MC17-11 PASS; check MC17-30 PASS (robots, manifest, OG image, favicon, index unchanged).",
+      "notes": "publicUse true here describes the pre-existing public site only; it is not a MAREA publication."
+    }
+  ],
+  "totals": {
+    "mc04BrandAssetFiles": 120,
+    "mc17ShippedSourceFiles": 1,
+    "mc17ShippedGlyphs": 28,
+    "publicFiles": 15,
+    "publicMareaAssets": 0,
+    "familiesWithPublicUseWithinMc17": 0
+  },
+  "prohibitedActions": [
+    "Copying any MC-04 logo, lockup, mark, icon master, diagram, packaging dieline, social card, print record or render into public/.",
+    "Presenting a MAREA mark, family lockup or icon as a registered trademark, a certification mark or a clearance.",
+    "Labelling MC-04 candidate artwork as adopted identity or as professionally cleared.",
+    "Importing a third-party icon library, tracing a competitor icon set or bundling downloaded artwork."
+  ]
+}

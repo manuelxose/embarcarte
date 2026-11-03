@@ -1,0 +1,2480 @@
+{
+  "contractId": "MC17-COMPONENT-STATES",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "lead",
+  "generationMethod": "node scripts/build-marea-design-system-catalogue-data.mjs (derived from component-registry.json)",
+  "scope": "Applicability of the eleven required interaction/states per registered component. NOT_APPLICABLE entries carry an explicit reason instead of a manufactured variant.",
+  "knownLimitations": [
+    "State descriptions document the implemented contract; automated behaviour coverage is recorded in the design-system test evidence."
+  ],
+  "sourceRefs": [
+    "docs/marea/design-system/data/component-registry.json"
+  ],
+  "requiredStates": [
+    "DEFAULT",
+    "HOVER",
+    "FOCUS_VISIBLE",
+    "PRESSED",
+    "DISABLED",
+    "LOADING",
+    "EMPTY",
+    "ERROR",
+    "WARNING",
+    "READ_ONLY",
+    "BLOCKED"
+  ],
+  "components": [
+    {
+      "componentId": "marea-theme",
+      "componentName": "MareaTheme",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Applies the selected mode, locale and context attributes to a block host and renders projected content."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: projected content may be empty; the host still renders without a distinct empty state."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-text",
+      "componentName": "MareaText",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the selected typography role and tone on the consumer element."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: text has no pointer affordance."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: copy is projected; empty text is a content decision, not a component state."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "tone='critical' renders the critical colour; the meaning is carried by the supplied text."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "tone='warning' renders the warning colour; the meaning is carried by the supplied text."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-section-heading",
+      "componentName": "MareaSectionHeading",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the supplied heading, optional kicker/lead and projected actions."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: heading is required, so a headingless section is impossible."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-container",
+      "componentName": "MareaContainer",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Applies the selected maximum width and fluid gutters."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no content-collection state of its own."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-grid",
+      "componentName": "MareaGrid",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the intrinsic auto-fit grid with the selected gap."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: an empty grid simply collapses; there is no distinct empty contract."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-stack",
+      "componentName": "MareaStack",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Applies the selected vertical gap between projected children."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: an empty stack collapses; there is no distinct empty contract."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-inline",
+      "componentName": "MareaInline",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders a wrapping horizontal group with the selected gap and alignment."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: an empty group collapses; there is no distinct empty contract."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-divider",
+      "componentName": "MareaDivider",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders a hairline rule with the selected vertical spacing."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no content-collection state of its own."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-surface",
+      "componentName": "MareaSurface",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the selected surface treatment and padding."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: empty projected content is permitted but is not a distinct state."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-icon",
+      "componentName": "MareaIcon",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the selected glyph at the selected size, decorative by default."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: name is required, so an unnamed glyph cannot be rendered."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-button",
+      "componentName": "MareaButton",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Enabled native button rendered with the selected variant and size."
+        },
+        "HOVER": {
+          "applicable": true,
+          "description": "Background and border change per variant (action hover, quiet surface or action border)."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "Token focus outline is visible; filled variants inset the ring so it is not obscured."
+        },
+        "PRESSED": {
+          "applicable": true,
+          "description": "Native button active state; no authored pressed style, and activated is emitted once."
+        },
+        "DISABLED": {
+          "applicable": true,
+          "description": "Without a reason the native disabled attribute is used; with it, aria-disabled=true keeps the control focusable, described by the reason, and blocks activation."
+        },
+        "LOADING": {
+          "applicable": true,
+          "description": "aria-busy=true, clock icon and screen-reader loading text; activation is blocked and no timer is required to understand the state."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no content-collection state of its own."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "disabled or loading prevents click, Enter and Space and stops propagation; no action is emitted."
+        }
+      }
+    },
+    {
+      "componentId": "marea-link",
+      "componentName": "MareaLink",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the selected link variant with the supplied href."
+        },
+        "HOVER": {
+          "applicable": true,
+          "description": "Colour changes to action-hover; quiet links add underline on hover."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "Token focus outline is visible with an offset, independent of the link colour."
+        },
+        "PRESSED": {
+          "applicable": true,
+          "description": "Native anchor activation; no authored pressed style."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: anchors have no disabled input; omit href or do not render the link."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the consumer supplies the link text; empty copy is a content decision."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-status-badge",
+      "componentName": "MareaStatusBadge",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the selected tone with its shape icon and the required text label."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no content-collection state of its own."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "tone='critical' renders the critical surface, critical icon and the supplied text."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "tone='warning' renders the warning surface, warning icon and the supplied text."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-notice",
+      "componentName": "MareaNotice",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the info variant without a live region."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no content-collection state of its own."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "variant='critical' uses the critical surface; role=alert and aria-live=assertive are set only when live='assertive'."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "variant='warning' uses the warning surface and icon with the supplied text."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "variant='permission' or 'internal' renders the internal-banner treatment for a withheld scope; it never grants access."
+        }
+      }
+    },
+    {
+      "componentId": "marea-state-panel",
+      "componentName": "MareaStatePanel",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders kind=empty with role=status and a dash icon."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": true,
+          "description": "kind='loading' sets aria-busy=true and role=status with a clock icon; no spinner is required."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "kind='empty' uses role=status and a dash icon; it never fabricates content."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "kind='error' sets role=alert and aria-live=assertive with a critical icon."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no warning kind exists; use marea-notice variant=warning for warnings."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "kind='unavailable' announces a withheld state with a lock icon and role=status."
+        }
+      }
+    },
+    {
+      "componentId": "marea-form-field",
+      "componentName": "MareaFormField",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the label, projected control and optional hint."
+        },
+        "HOVER": {
+          "applicable": true,
+          "description": "The projected .marea-input border changes to the action colour on hover."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "The projected .marea-input shows the token focus outline with offset."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": true,
+          "description": "A native disabled projected control uses the disabled surface and colour; the field adds no state of its own."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no content-collection state of its own."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "The error paragraph renders with role=alert and is referenced by describedBy; pair it with mareaInput invalid on the control."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: readonly is native and not modelled by this component."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-input",
+      "componentName": "MareaInput",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "The native control keeps its own value and appearance; only the invalid/required attributes are added."
+        },
+        "HOVER": {
+          "applicable": true,
+          "description": "Border hover comes from marea-form-field's .marea-input rule."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "The focus ring comes from marea-form-field's .marea-input:focus-visible rule."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the directive models no disabled state; native disabled styling is provided by marea-form-field."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: native value emptiness is not a component state."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "invalid=true adds aria-invalid=true and the marea-input--invalid class; visible error text belongs to marea-form-field."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: native readonly is allowed but not styled or exposed as a contract state."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-tabs",
+      "componentName": "MareaTabs",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the strip with the controlled active tab, or the first tab as the tab stop when activeId is null."
+        },
+        "HOVER": {
+          "applicable": true,
+          "description": "Tabs change to primary text on an action-quiet background."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "The focused tab shows a token outline with inset offset; selection is also weight and border coded."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: activation happens on focus or click; no aria-pressed or separate pressed style exists."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API has no disabled tab item."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "An empty items array renders an empty tablist; the caller must not present it as a usable strip."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-tab-panel",
+      "componentName": "MareaTabPanel",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Visible panel for the selected itemId, with role=tabpanel and focusability."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "The panel shows the token focus outline when it receives focus."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "Empty projected content is allowed; the panel still exposes its tabpanel role."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-accordion",
+      "componentName": "MareaAccordion",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders all items collapsed by default with native details/summary behaviour."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "The focused summary shows a token outline with inset offset."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the native details toggle is used; no authored pressed state exists."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API has no disabled item."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "An empty items array renders an empty bordered container; no message is manufactured."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-disclosure",
+      "componentName": "MareaDisclosure",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Closed by default, or open when the open input is true."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "The focused summary shows a token outline with inset offset."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the native details toggle is used; no authored pressed state exists."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API has no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "Projected content may be empty; the details element still toggles."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-spec-table",
+      "componentName": "MareaSpecTable",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the caption and all supplied rows with header associations."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "The scroll region shows a token outline with inset offset when focused."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "A rows=[] array renders the table headers with no body rows; callers should use a state panel for genuine absence."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-definition-list",
+      "componentName": "MareaDefinitionList",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the supplied term/definition pairs, labelled when a label is supplied."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "An empty items array renders an empty dl; no placeholder is added."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-responsive-nav",
+      "componentName": "MareaResponsiveNav",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Closed below 1024px with the toggle visible; open when toggled; always horizontal at 1024px and above."
+        },
+        "HOVER": {
+          "applicable": true,
+          "description": "Toggle and links change to the action colour, and links add underline."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "Toggle and links show token outlines; offset variants keep the ring visible."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the toggle is a stateful button, not a pressed-button control; aria-expanded carries its state."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled item or toggle state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "An empty items array renders the nav with no links; the toggle can open an empty list."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-breadcrumb",
+      "componentName": "MareaBreadcrumb",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the trail with links for earlier items and a non-link current page."
+        },
+        "HOVER": {
+          "applicable": true,
+          "description": "Rendered marea-link items change to the action colour on hover."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "Repository links show the shared focus outline; the current page has no focus ring because it is not a control."
+        },
+        "PRESSED": {
+          "applicable": true,
+          "description": "Native anchor activation; no authored pressed style."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API has no disabled trail item."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "An empty items array renders an empty nav; no placeholder is added."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-status-display",
+      "componentName": "MareaStatusDisplay",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the required label with the selected tone icon and optional description/meta."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no content-collection state of its own."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "tone='critical' colours the icon critical; the required label carries the meaning."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "tone='warning' colours the icon warning; the required label carries the meaning."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-feature-comparison",
+      "componentName": "MareaFeatureComparison",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the comparison table with booleans and missing cells converted to explicit text."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": true,
+          "description": "The scroll region shows a token outline with inset offset when focused."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "A rows=[] array renders headers with no rows; null or undefined cells render as unverified instead of blank."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-data-quality",
+      "componentName": "MareaDataQuality",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the supplied status as a text badge plus the dimension name."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: MISSING is a data-quality value, not an empty-content state."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "status='MISSING' maps to the critical badge and text; the component adds no other error surface."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "status='UNVERIFIED' maps to the warning badge and text."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-permission-notice",
+      "componentName": "MareaPermissionNotice",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the permission notice for the supplied restriction kind with the internal-scope note."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no content-collection state of its own."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no error variant exists; the chrome is always the permission notice."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "A restriction that limits use but is not a closed gate is presented with the same permission chrome and supplied text."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "Gate-closed kinds such as PUBLICATION_NOT_AUTHORIZED or SAFETY_GATE_BLOCKED render a blocked-scope notice; nothing is authorised."
+        }
+      }
+    },
+    {
+      "componentId": "marea-readiness-panel",
+      "componentName": "MareaReadinessPanel",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the overall readiness badge, the derived note, each dimension and the blocked-gate summary."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "A summary with no dimensions renders only the overall badge, note and gate summary."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the panel reports derived readiness; it is not an error surface."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "overall or dimension status NOT_READY maps to the warning badge and text."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "overall or dimension status BLOCKED maps to the critical badge; the blocked-gate count is display-only and exposes no gate evidence."
+        }
+      }
+    },
+    {
+      "componentId": "marea-family-card",
+      "componentName": "MareaFamilyCard",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders family identity, readiness badge, summary, restriction chips and the explanation-only CTA."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: family and presentation are required, so an empty card cannot be produced."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the card has no error variant; readiness carries the derived condition."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "Readiness NOT_READY or warning restrictions render warning badges and chips without promoting the state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "Readiness BLOCKED or gate restrictions render critical badges; the embedded CTA still renders no action."
+        }
+      }
+    },
+    {
+      "componentId": "marea-edition-card",
+      "componentName": "MareaEditionCard",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the edition identity, definition badge, CTA explanation and the fixed withheld price/availability blocks."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: edition and presentation are required."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "A CONDITIONAL definition or requiresQuotation renders warning badges."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "The card always renders withheld price and availability; no amount, quantity or purchase path is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-bundle-components",
+      "componentName": "MareaBundleComponents",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the heading and each supplied component line with its inclusion badge."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "A components=[] array renders the heading and an empty list; no placeholder line is added."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the list has no error variant."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "CONDITIONAL or QUOTATION_REQUIRED inclusion renders the warning badge."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-bundle-exclusions",
+      "componentName": "MareaBundleExclusions",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the populated groups of contract-only, ineligible and external-requirement items."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "All three arrays empty renders marea-state-panel kind=empty with the 'none recorded' text."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "Contract-only and ineligible groups render as explicit limits with visible reasons."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "Contract-only lines are not available as standard components; no availability or purchase path is implied."
+        }
+      }
+    },
+    {
+      "componentId": "marea-entitlement-summary",
+      "componentName": "MareaEntitlementSummary",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders one row per ledger key with the entitlement names and terms."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "An entitlements=[] array renders the heading and an empty list."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the summary has no error variant."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the summary states usage rights and has no warning tone."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no gate or purchase block is represented here."
+        }
+      }
+    },
+    {
+      "componentId": "marea-compatibility-notice",
+      "componentName": "MareaCompatibilityNotice",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the verified case as a text note with status and tested-row count."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: testedRows=0 is handled as unverified, not as an empty-content state."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "Zero tested rows or status UNTESTED renders the unverified warning notice."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "Zero tested rows blocks any compatibility claim; the warning copy is shown instead of a positive statement."
+        }
+      }
+    },
+    {
+      "componentId": "marea-price-unavailable",
+      "componentName": "MareaPriceUnavailable",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Always renders the withheld-price heading, explanation and not-for-sale label; the optional status line appears only when priceStatus is supplied."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "priceStatus=null simply omits the status line; the withheld-price statement always renders."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the block has no error variant."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "The not-for-sale label uses the warning tone; it is a restriction, not an offer."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "The price block states that no approved price exists; no amount, currency or purchase action is rendered."
+        }
+      }
+    },
+    {
+      "componentId": "marea-stock-unavailable",
+      "componentName": "MareaStockUnavailable",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Always renders the availability-unverified heading, explanation and not-for-sale label; the optional status line appears only when stockState is supplied."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "stockState=null simply omits the status line; the unavailable statement always renders."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the block has no error variant."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "The not-for-sale label uses the warning tone; it is a restriction, not an offer."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "Availability is withheld; no quantity, sold-out claim or purchase action is rendered."
+        }
+      }
+    },
+    {
+      "componentId": "marea-commercial-cta",
+      "componentName": "MareaCommercialCta",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "ctaState='DISABLED' renders the neutral no-action badge and explanation."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": true,
+          "description": "The DISABLED ctaState renders the neutral no-action badge and its explanation."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the explanation never enters a pending state."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: presentation is required, so no empty CTA state exists."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "ctaState='NOT_AVAILABLE' renders the critical badge and not-available explanation."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "ctaState='QUOTE_ONLY' renders the warning badge; no solicitation control is created."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "Blocked signals render critical notices; the blocked commercial action is reported, never recovered."
+        }
+      }
+    },
+    {
+      "componentId": "marea-quote-status",
+      "componentName": "MareaQuoteStatus",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the quotation-only warning notice, with the optional scope line when supplied."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "scope=null omits the optional scope line; the quotation statement always renders."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the notice has no error variant."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "The notice is warning-toned and states the quotation-only limits."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "The quotation category is not an offer; no amount, date or commitment is rendered."
+        }
+      }
+    },
+    {
+      "componentId": "marea-documentation-panel",
+      "componentName": "MareaDocumentationPanel",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders each document with its availability badge and optional limitation."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "items=[] renders marea-state-panel kind=empty with the no-documentation copy."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the panel has no error variant."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "PENDING documents render the pending status badge and are never presented as available."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "Documents are status-only with no links; no download or publication path is exposed."
+        }
+      }
+    },
+    {
+      "componentId": "marea-numeric-readout",
+      "componentName": "MareaNumericReadout",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the preformatted value, unit, demo tag and freshness marker."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "value=null renders an em dash plus the no-data text; it never renders zero or a frozen last reading."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "freshness='OFFLINE' renders the critical offline badge alongside the readout."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "freshness='STALE' renders the stale badge with the mm:ss age."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-measurement",
+      "componentName": "MareaMeasurement",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the label, unit and optional detail with no numeric value."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: detail is optional and is simply omitted when null."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the annotation has no error variant."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the annotation has no warning variant."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-freshness",
+      "componentName": "MareaFreshness",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "state='FRESH' renders the safe badge with the current label."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: freshness is a supplied value, not a pending operation."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "state='NO_DATA' renders the no-data badge; no value is implied."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "state='OFFLINE' renders the critical offline badge."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "state='STALE' renders the stale badge with the mm:ss age."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-sensor-unavailable",
+      "componentName": "MareaSensorUnavailable",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "state='NOT_INSTALLED' states that the sensor is not installed and shows no value."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": true,
+          "description": "state='CALIBRATING' states that calibration is in progress without a value."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "The no-data message always states that no value is available; no zero or frozen reading is rendered."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "state='ERROR' reports the sensor failure in text."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "state='NO_SIGNAL' reports a degraded sensor without a fallback reading."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": true,
+          "description": "state='UNLICENSED' states that the data is not licensed; no reading is shown."
+        }
+      }
+    },
+    {
+      "componentId": "marea-instrument-status",
+      "componentName": "MareaInstrumentStatus",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the supplied label with the selected tone icon and optional cause/action."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no loading tone exists."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no content-collection state of its own."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "tone='critical' renders the critical icon and copy; role=alert is used only when live='assertive'."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "tone='warning' renders the warning icon and copy."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the status line reports information; no gate is exposed."
+        }
+      }
+    },
+    {
+      "componentId": "marea-connectivity",
+      "componentName": "MareaConnectivity",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "state='ONLINE' renders the safe online badge with optional metadata."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: connectivity is a supplied value, not a pending operation."
+        },
+        "EMPTY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: state UNKNOWN is not an empty-content state."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "state='OFFLINE' renders the critical offline badge."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "state='DEGRADED' renders the warning degraded badge."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-instrument-tile",
+      "componentName": "MareaInstrumentTile",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders the surface, title and visible demo tag with projected readouts."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "Projected body may be empty; the tile still renders its heading and demo tag."
+        },
+        "ERROR": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no error state."
+        },
+        "WARNING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no warning state."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    },
+    {
+      "componentId": "marea-telemetry-list",
+      "componentName": "MareaTelemetryList",
+      "states": {
+        "DEFAULT": {
+          "applicable": true,
+          "description": "Renders all telemetry rows with units and non-fresh markers where applicable."
+        },
+        "HOVER": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no pointer-activated affordance is rendered."
+        },
+        "FOCUS_VISIBLE": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls."
+        },
+        "PRESSED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component has no activation or toggle behaviour."
+        },
+        "DISABLED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the API exposes no disabled state."
+        },
+        "LOADING": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component performs no asynchronous work."
+        },
+        "EMPTY": {
+          "applicable": true,
+          "description": "items=[] renders marea-state-panel kind=empty with the no-data title."
+        },
+        "ERROR": {
+          "applicable": true,
+          "description": "Rows with freshness OFFLINE render the critical offline badge."
+        },
+        "WARNING": {
+          "applicable": true,
+          "description": "Rows with freshness STALE render the stale badge with age."
+        },
+        "READ_ONLY": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: the component is not a form control."
+        },
+        "BLOCKED": {
+          "applicable": false,
+          "description": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/preview",
+    "types": []
+  },
+  "include": ["**/*.ts", "../src/app/marea-design-system/**/*.ts"],
+  "exclude": ["**/*.spec.ts"]
+}

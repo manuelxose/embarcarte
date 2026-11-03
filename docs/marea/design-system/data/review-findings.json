@@ -1,0 +1,553 @@
+{
+  "contractId": "MC17-REVIEW-FINDINGS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "PASS_INTERNAL_DESIGN_SYSTEM_SCOPE",
+  "owner": "independent-reviewer",
+  "generationMethod": "Independent audit of the actual MC-17 working tree: repository inspection, independent WCAG recomputation, independent registry audit, re-execution of validator/unit/typecheck/build/Playwright gates, and a mutation harness around the real validator. No implementation file was edited by the reviewer.",
+  "scope": "MC-17/36 internal design system only: src/app/marea-design-system/**, preview/**, e2e/design-system/**, docs/marea/design-system/**, the named scripts and the isolated catalogue build. No public route, brand adoption, price, stock, purchase, merge, deploy or publication is reviewed as authorised.",
+  "knownLimitations": [
+    "Historical limitations recorded by the first two reviews are retained in sections 9-10 of MC17-INDEPENDENT-REVIEW.md and in this dataset; they are not current-state claims.",
+    "Visual baselines are Chromium/Windows-specific; two 320x812 instrument captures were refreshed for renderer drift after a before/after review. A later environment change needs a new platform suffix.",
+    "Axe 0 violations / 36 passes / 0 incomplete in four modes is automated evidence only; no screen-reader, cross-browser, real-device, glare/night-vision or WCAG 2.2 AA conformance claim exists.",
+    "Performance evidence is one laboratory run; no field/RUM data and no marine-hardware validation exists.",
+    "Hydration is argued from deterministic ids and static copy; the design system is not rendered by the public SSR server.",
+    "The 49-entry registry is an internal contract, not a public API.",
+    "Only hand-authored source is covered by Prettier; machine-generated *.generated.ts files are validated by their deterministic generators instead, as asserted by a unit test."
+  ],
+  "sourceRefs": [
+    "src/app/marea-design-system/tokens/marea-design-tokens.source.json",
+    "docs/marea/design-system/data/contrast-evidence.json",
+    "docs/marea/design-system/data/component-registry.json",
+    "docs/marea/design-system/data/component-states.json",
+    "docs/marea/design-system/evidence/validator-run.json",
+    "docs/marea/design-system/evidence/axe-summary.json",
+    "docs/marea/design-system/data/visual-regression-evidence.json",
+    "e2e/design-system/visual.spec.ts-snapshots/",
+    "scripts/check-marea-design-system.mjs",
+    "scripts/check-marea-design-system.test.mjs",
+    "scripts/check-marea-design-system-adversarial.test.mjs",
+    ".tmp/audit/contrast-recompute.mjs",
+    ".tmp/audit/registry-audit2.mjs",
+    ".tmp/audit/run-adversarial.mjs",
+    ".tmp/audit/rendered-copy.mjs",
+    "docs/marea/design-system/evidence/validator-run.json",
+    ".tmp/review2/rendered-copy.mjs",
+    ".tmp/review2/locale-pair.mjs",
+    ".tmp/review2/ir05-scan.mjs",
+    ".tmp/review2/commerce-scan.mjs",
+    ".tmp/audit/contrast-recompute.mjs",
+    ".tmp/audit/make-harness.mjs",
+    ".tmp/audit/run-adversarial.mjs"
+  ],
+  "reviewedCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+  "reviewedCommitShort": "f2c9ec2",
+  "reviewedBranch": "feature/marea-mc17-premium-design-system",
+  "baseCommit": "6d8287c8507038c4f90fd6e35471f78081ca4676",
+  "reviewedWorktreeState": "CLEAN at f2c9ec2: git status --porcelain empty and git diff HEAD --quiet exit 0 during the Stage C gate window; only the reviewer-owned record files were written afterwards.",
+  "verdict": "PASS_INTERNAL_DESIGN_SYSTEM_SCOPE",
+  "verdictRecommendation": "PASS_INTERNAL_DESIGN_SYSTEM_SCOPE with MC17_VERDICT = PARTIAL. Merge/deploy/publication/brand adoption/price/stock/MC-18 remain NOT AUTHORISED. Preserve the finding history; do not convert the internal PASS into a commercial or legal approval.",
+  "findings": [
+    {
+      "findingId": "MC17-CR-01",
+      "severity": "MINOR",
+      "title": "The correction commit leaves npm run format:check red: two files it edited fail Prettier",
+      "evidence": "npm run format:check exits 1 with \"[warn] e2e/design-system/ssr-contract.spec.ts\" and \"[warn] scripts/check-marea-design-system.mjs\" (\"Code style issues found in 2 files\"). Both files were edited by 7cbc99e (ssr-contract.spec.ts gained the new import-scan test; the validator was reformatted). A Prettier render of the current file differs from HEAD by 25 insertions/19 deletions for the spec and 12/6 for the validator. The same command exited 0 in the original review.",
+      "affectedFile": "e2e/design-system/ssr-contract.spec.ts; scripts/check-marea-design-system.mjs; package.json (format:check script)",
+      "reproduction": "git status --porcelain (empty); npm run format:check  -> exit 1, the two files listed above. npx prettier <file> shows the formatting delta.",
+      "requiredCorrection": "Run the repository formatter on both files (or `npm run format`), commit the formatted result, and re-run `npm run format:check` at the resulting SHA.",
+      "correctionOwner": "MC-17 implementer / programme Lead (git owner)",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "independentReverification": "`npm run format:check` exits 0 at 4a9043b and at f2c9ec2 with the expanded coverage. The two files that were red at 7cbc99e are covered by the same command.",
+      "resolved": true
+    },
+    {
+      "findingId": "MC17-CR-02",
+      "severity": "MINOR",
+      "title": "Correction-round documentation edits are mechanically corrupted and self-contradictory",
+      "evidence": "A global replacement produced the phrase \"38/38 (current; earlier snapshots superseded)\" inside FAIL sentences in at least 13 places (MC17-COMMERCIAL-CTA-AND-READINESS-POLICY.md:242; MC17-BILINGUAL-PRESENTATION-CONTRACT.md:69,208; MC17-LEGACY-UI-NON-REGRESSION.md:196,207; MC17-MC18-HANDOFF.md:23,33,269; MC17-PRODUCT-EDITION-BUNDLE-PRESENTATION.md:159; MC17-RISKS-AND-UNRESOLVED-GAPS.md:156; blocker-register.json:12,188; mc18-handoff-inputs.json:17,230). \"FAIL (38/38 ...)\" is internally contradictory (the actual run is 37/38 with only MC17-35 failing). D08 MC17-ANGULAR-COMPONENT-ARCHITECTURE.md:127 now reads \"It keeps a module-level counter (`let per-render `MareaIds` counter (a process-wide module counter was found during review and replaced; the current implementation injects `MareaIds`)\" and :241 is an incomplete sentence, so the paragraph contradicts itself about whether MareaIds is injected. Independent of the stale-claim finding, these are corrupted sentences introduced by the correction.",
+      "affectedFile": "docs/marea/design-system/MC17-ANGULAR-COMPONENT-ARCHITECTURE.md:127,241; docs/marea/design-system/MC17-COMMERCIAL-CTA-AND-READINESS-POLICY.md:242,248; docs/marea/design-system/MC17-BILINGUAL-PRESENTATION-CONTRACT.md:69,208; docs/marea/design-system/MC17-MC18-HANDOFF.md:23,33,269; docs/marea/design-system/MC17-RISKS-AND-UNRESOLVED-GAPS.md:156; docs/marea/design-system/MC17-LEGACY-UI-NON-REGRESSION.md:196,207; docs/marea/design-system/MC17-PRODUCT-EDITION-BUNDLE-PRESENTATION.md:159; docs/marea/design-system/data/blocker-register.json:12,188; docs/marea/design-system/data/mc18-handoff-inputs.json:17,230",
+      "reproduction": "grep -rn \"earlier snapshots superseded\\|per-render\" docs/marea/design-system; read MC17-ANGULAR-COMPONENT-ARCHITECTURE.md:126-129,240-241; compare with evidence/validator-run.json (37/38, only MC17-35), evidence/axe-summary.json (0 violations in all four modes) and src/app/marea-design-system/components/foundation/marea-form-field.ts (injects MareaIds).",
+      "requiredCorrection": "Replace the corrupted sentences with accurate wording: validator 37/38 at 7cbc99e (MC17-35 waits for D23/D24), axe 0 violations / 36 passes / 0 incomplete in all four modes, review D22 committed, MareaIds injected, 29 Playwright tests. Do not use another blind find-and-replace: edit each claim against the current evidence.",
+      "correctionOwner": "MC-17 documentation owners / programme Lead",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "independentReverification": "The corrupted sentences were repaired: D08 now states that marea-form-field injects MareaIds and that the earlier module-level counter was removed; D09 records the item as CLOSED_VERIFIED; the contradictory \"FAIL (historical snapshot; 38/38)\" strings were replaced by dated PASS 38/38 plus historical rows; D11/D15/D17/D18/D19/D21 and the datasets match evidence/validator-run.json and evidence/axe-summary.json. Remaining mentions of the old phrases are confined to the reviewer-owned historical sections 1-10 and this finding record.",
+      "resolved": true
+    },
+    {
+      "findingId": "MC17-CR-03",
+      "severity": "INFORMATIONAL",
+      "title": "The working tree moved again at 04:04:45, after this review's gates; the follow-up edits are uncommitted and unreviewed",
+      "evidence": "All gates in this re-review ran while `git status --porcelain` was empty at 7cbc99e (03:49-04:03 local). At 04:04:45 a concurrent workstream modified 15 tracked implementation/doc/test paths: preview/catalogue/app/galleries/commerce.gallery.ts (adds AIS/WATCH/SENSE/DISPLAY family cards), e2e/design-system/visual.spec.ts (locale pair moved to the commerce gallery), scripts/check-marea-design-system.mjs (reformatting), e2e/design-system/ssr-contract.spec.ts, nine documents under docs/marea/design-system/, data/blocker-register.json, data/commerce-presentation-policy.json and data/mc18-handoff-inputs.json. `git status --porcelain` is no longer empty. The edits are not in 7cbc99e and were not reviewed or credited; they appear aimed at MC17-IR-01, IR-03, IR-06 and CR-01 but have no committed SHA, gate output or evidence yet.",
+      "affectedFile": "preview/catalogue/app/galleries/commerce.gallery.ts; e2e/design-system/visual.spec.ts; scripts/check-marea-design-system.mjs; e2e/design-system/ssr-contract.spec.ts; docs/marea/design-system/**; docs/marea/design-system/data/blocker-register.json; docs/marea/design-system/data/commerce-presentation-policy.json; docs/marea/design-system/data/mc18-handoff-inputs.json",
+      "reproduction": "git status --porcelain (17 modified tracked paths at 04:04:45, including the two re-review deliverables) ; git diff --stat; git diff -- preview/catalogue/app/galleries/commerce.gallery.ts e2e/design-system/visual.spec.ts scripts/check-marea-design-system.mjs.",
+      "requiredCorrection": "Commit the follow-up work at a frozen SHA, re-run the full gate (validator with D23/D24, unit/adversarial, both typechecks, format:check, build, generator checks, Playwright without --update-snapshots), regenerate the affected evidence and request another independent re-audit. Do not treat the in-progress edits as approved.",
+      "correctionOwner": "Programme Lead (git owner) and the concurrent workstream",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "independentReverification": "The follow-up work started after the second review was committed at 4a9043b and the third-round corrections at f2c9ec2. Both audited worktrees were clean; no unreviewed working-tree change is credited.",
+      "resolved": true
+    },
+    {
+      "findingId": "MC17-IR-01",
+      "severity": "MAJOR",
+      "title": "Family-specific limits are declared in copy and in FAMILY_LIMIT_KEYS but are not presented; the family card drops the fifth restriction (safety/licensing/compatibility) and no rendered surface states AIS receive-only, WATCH no-guarantee, FLEET no-default-hardware, SENSE kit-once or DISPLAY no-dimensions.",
+      "evidence": "FAMILY_LIMIT_KEYS is defined at src/app/marea-design-system/data/commerce-presentation.adapter.ts:96-105 and is referenced by no component: `grep -r FAMILY_LIMIT_KEYS src preview e2e` returns only the definition. MareaFamilyCard builds at most four restriction labels (src/app/marea-design-system/components/commerce/marea-family-card.ts:95-104, `if (labels.length === 4) break;`) from `restrictionCopyKey()` only; it never reads FAMILY_LIMIT_KEYS. Fixture restrictions put the family-specific kind fifth for PILOT/AIS/NAV/WEATHER/FLEET/SENSE/WATCH, so the safety/licensing/compatibility chip is the one dropped. Runtime probe `.tmp/audit/rendered-copy.mjs` on the built catalogue at 127.0.0.1:4301 rendered 100 of 138 copy keys but false for aisReceiveOnly, watchNoGuarantee, fleetNoHardware, senseEssentialsKit, displayConditional and navWeatherLicensing. Runtime `marea-family-card` restriction lists for NAV, PILOT and FLEET contain only the four generic restrictions (publication, trademark, price, stock); the PILOT safety gate is visible only in a separately hand-composed marea-permission-notice elsewhere in the gallery. The catalogue renders bundle components only for START and FLEET (preview/catalogue/app/galleries/commerce.gallery.ts:167-180); the PROTECT bundle that contains SENSE-ESSENTIALS is not rendered. Docs D10 (MC17-PRODUCT-EDITION-BUNDLE-PRESENTATION.md:91-98) and D15 (MC17-BILINGUAL-PRESENTATION-CONTRACT.md:108-112) explicitly claim these limits are rendered via MareaFamilyCard and FAMILY_LIMIT_KEYS; that claim is false. Validator MC17-20 (scripts/check-marea-design-system.mjs:527-546) and MC17-23 (:590-609) only search fixture/copy strings, so both PASS while the presentation is absent.",
+      "affectedFile": "src/app/marea-design-system/data/commerce-presentation.adapter.ts:96; src/app/marea-design-system/components/commerce/marea-family-card.ts:95-104; preview/catalogue/app/galleries/commerce.gallery.ts:167-180; docs/marea/design-system/MC17-PRODUCT-EDITION-BUNDLE-PRESENTATION.md:91-98; docs/marea/design-system/MC17-BILINGUAL-PRESENTATION-CONTRACT.md:108-112",
+      "reproduction": "Build and serve the catalogue (node scripts/marea-ds-preview-server.mjs after npx ng build marea-design-system-catalogue), then run node .tmp/audit/rendered-copy.mjs and inspect the familyLimitKeys object: aisReceiveOnly, watchNoGuarantee, fleetNoHardware, senseEssentialsKit, displayConditional and navWeatherLicensing are false. Inspect `document.querySelectorAll('marea-family-card .restriction')`: NAV/PILOT/FLEET each show four generic chips and no safety/licensing chip. `grep -rn FAMILY_LIMIT_KEYS src preview e2e` shows no consumer.",
+      "requiredCorrection": "Bind the family-specific limit copy to a rendered surface: use FAMILY_LIMIT_KEYS[familyId] in MareaFamilyCard (and/or a dedicated limit/notice component) before the generic restriction chips, or raise/reorder the cap so a safety/licensing/compatibility restriction is never dropped; render the PROTECT bundle or otherwise demonstrate SENSE-ESSENTIALS expansion; add per-family end-to-end assertions that the required sentence is visible in the catalogue. Update D10/D15 to match the implementation.",
+      "correctionOwner": "MC-17 design-system implementer and documentation owner, coordinated by the Lead",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "resolved": true,
+      "independentReverification": "At f2c9ec2 the catalogue renders nine family cards (NAV, PILOT, FLEET, AIS, WATCH, SENSE, DISPLAY, WEATHER, HUB) with stable data-testid values. Independent DOM probe (family-probe.mjs, ES and EN) confirmed each family limit inside its own card, no missing family, a material restriction first for every card with one, and the six adversarial specimens (safety first, safety fifth, duplicates, missing array, unknown kind, dual blocking). FAMILY_LIMIT_KEYS covers 9/9 families including HUB; selectVisibleRestrictions orders material gates before generic ones and deduplicates before the four-chip cap; SENSE renders the kit note and the PROTECT bundle expands SENSE-ESSENTIALS into SENSE-POWER + SENSE-BILGE. commerce.spec.ts now asserts per card in both locales; the body-wide innerText assertion was removed. Playwright 37/37 at f2c9ec2."
+    },
+    {
+      "findingId": "MC17-IR-02",
+      "severity": "MAJOR",
+      "title": "The reviewed implementation is not committed: HEAD 3a8d4fd lacks 6 documents, 4 datasets, the 26 visual baselines, the renamed marea-commercial-cta and the hardened validator; the same HEAD commit also tracks 14 .tmp scratch files.",
+      "evidence": "`git rev-parse --short HEAD` = 3a8d4fd. `git status --porcelain` = 81 lines: 54 modified tracked files, 14 staged deletions (the .tmp files), 12 untracked entries including MC17-ACCESSIBILITY-WCAG22-AUDIT.md, MC17-DESIGN-SYSTEM-ARCHITECTURE.md, MC17-MACHINE-READABLE-CONTRACTS.md, MC17-PERFORMANCE-AND-SSR-HYDRATION.md, MC17-RESPONSIVE-BEHAVIOR-AND-VISUAL-TESTING.md, MC17-VALIDATOR-AND-ADVERSARIAL-EVIDENCE.md, manifest.json, performance-evidence.json, responsive-evidence.json, visual-regression-evidence.json, e2e/design-system/visual.spec.ts-snapshots/ (26 PNGs) and src/app/marea-design-system/components/commerce/marea-commercial-cta.ts. `git show HEAD:scripts/check-marea-design-system.mjs | wc -l` = 563 lines versus 964 in the working tree; HEAD has no performance-evidence.json and no visual snapshots. `git show --stat 3a8d4fd` lists .tmp/contrast-check.mjs, .tmp/ds-run3.log, .tmp/fix-preview*.mjs, .tmp/patch*.mjs, .tmp/pw.json, .tmp/server-*.txt (14 files, 1,023 lines), and .tmp/pw.json contains absolute local paths and a Playwright JSON dump. The staged deletion plus the modified .gitignore are the cleanup, but they are uncommitted.",
+      "affectedFile": ".tmp/* (HEAD 3a8d4fd); scripts/check-marea-design-system.mjs (worktree vs HEAD); docs/marea/design-system/** (untracked); e2e/design-system/visual.spec.ts-snapshots/** (untracked); src/app/marea-design-system/components/commerce/marea-commercial-cta.ts (untracked); .gitignore",
+      "reproduction": "git rev-parse --short HEAD; git status --porcelain; git show --stat 3a8d4fd; git show HEAD:scripts/check-marea-design-system.mjs | Measure-Object -Line; git ls-tree -r --name-only HEAD docs/marea/design-system/data | Select-String performance-evidence; git ls-tree -r --name-only HEAD e2e/design-system | Select-String snapshots. A fresh checkout of 3a8d4fd cannot reproduce the reviewed validator result or the reviewed deliverable set.",
+      "requiredCorrection": "Commit the full reviewed working tree: the 6 new documents, 4 datasets, 26 visual baselines, the marea-commerce-cta→marea-commercial-cta rename (delete old path, add new path), the hardened validator/tests, evidence updates and .gitignore. Ensure `.tmp/` is removed from the commit and ignored. Re-run the complete gate at the resulting SHA and supply that SHA to the reviewer.",
+      "correctionOwner": "Programme Lead (git owner)",
+      "correctionCommit": "7cbc99e",
+      "finalStatus": "CLOSED",
+      "resolved": true,
+      "independentReverification": "HEAD 7cbc99e; git status --porcelain empty; git diff HEAD --quiet exit 0. git ls-tree HEAD contains 22 Markdown deliverables (D01-D22), 20 datasets, 26 PNG baselines and marea-commercial-cta.ts; the old marea-commerce-cta.ts path is absent. git ls-files .tmp and git ls-tree HEAD .tmp are empty; .gitignore:62 adds /.tmp/ and git check-ignore matches. git hash-object equals git rev-parse HEAD:<path> for the validator, ssr-contract spec, family card and review-findings.json. D23/D24 are authored after this review and are intentionally absent."
+    },
+    {
+      "findingId": "MC17-IR-03",
+      "severity": "MINOR",
+      "title": "Several deliverables still assert current-state facts that the working tree and current evidence contradict (validator 33/38, one axe color-contrast violation, missing performance/visual evidence, and a fieldSequence SSR defect that no longer exists).",
+      "evidence": "D11 MC17-COMMERCIAL-CTA-AND-READINESS-POLICY.md:242 says the recorded validator run is FAIL 33/38 and :246 says axe reports one instrument-night color-contrast violation; the current run is 36/38 (37/38 after review-findings.json is written) and axe reports 0 violations in all four modes. D15 MC17-BILINGUAL-PRESENTATION-CONTRACT.md:69 and :208 repeat 33/38 and the one-violation axe claim. D18 MC17-RISKS-AND-UNRESOLVED-GAPS.md:149, :156, :158, :159 repeat the 1-violation axe state and 33/38 and say there are no responsive screenshots or visual baselines; test-results/design-system/responsive-*.png and the 26 baselines exist. D19 MC17-MC18-HANDOFF.md:23, :33, :269, :271, :272 repeat 33/38, the one-violation axe claim and 'no responsive screenshots or baselines'; :216 says performance-evidence.json is missing, but the file exists. D08 MC17-ANGULAR-COMPONENT-ARCHITECTURE.md:127 and :242 say marea-form-field keeps a module-level `let fieldSequence = 0`; the current file injects MareaIds (marea-form-field.ts:3, :78-79). accessibility-requirements.json:20 still records one instrument-night color-contrast violation; the current axe JSONs show 0. D12 §3 reconciles the axe change in prose but does not update the other documents/dataset.",
+      "affectedFile": "docs/marea/design-system/MC17-COMMERCIAL-CTA-AND-READINESS-POLICY.md:242,246; docs/marea/design-system/MC17-BILINGUAL-PRESENTATION-CONTRACT.md:69,208; docs/marea/design-system/MC17-RISKS-AND-UNRESOLVED-GAPS.md:149,156,158,159; docs/marea/design-system/MC17-MC18-HANDOFF.md:23,33,216,269,271,272; docs/marea/design-system/MC17-ANGULAR-COMPONENT-ARCHITECTURE.md:127,242; docs/marea/design-system/data/accessibility-requirements.json:20",
+      "reproduction": "Read the cited lines and compare with docs/marea/design-system/evidence/validator-run.json (36/38 before review-findings.json), test-results/design-system/axe-*.json (violations: 0 in each), docs/marea/design-system/data/performance-evidence.json and visual-regression-evidence.json, and src/app/marea-design-system/components/foundation/marea-form-field.ts.",
+      "requiredCorrection": "Update the stale current-state claims, or add an explicit 'superseded by <evidence file/date>' banner to each stale section. Update D08 §6 to record that marea-form-field now injects MareaIds (D02 already records the correction). Update accessibility-requirements.json knownLimitations. D10/D15's false FAMILY_LIMIT_KEYS rendering claim is covered by MC17-IR-01.",
+      "correctionOwner": "MC-17 documentation owners (programme-docs, documentation-specialist), coordinated by the Lead",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "resolved": true,
+      "independentReverification": "At f2c9ec2 D01-D24 and the datasets record the actual current state (validator 38/38, axe 0 violations / 36 passes / 0 incomplete in all four modes, D22 present with three rounds, 26 baselines, evidence present, 37 Playwright tests). Historical failed runs are retained with dates/SHAs. grep for \"earlier snapshots superseded\", \"per-render\", \"0 violations in 3 modes\", \"performance-evidence.json is missing\" and \"no responsive screenshots\" finds no non-historical hit outside the reviewer-owned historical sections and the words used inside this finding record itself."
+    },
+    {
+      "findingId": "MC17-IR-04",
+      "severity": "MINOR",
+      "title": "Validator MC17-15 detects the presence of ':focus-visible' but not a hidden focus outline; a component whose focus rule is `outline: none` still passes the static check.",
+      "evidence": "scripts/check-marea-design-system.mjs:420-438 only tests `source.includes(':focus-visible')`. Adversarial mutation .tmp/audit/run-adversarial.mjs replaced marea-link's focus rule with `:host(:focus-visible) { outline: none; }`; the harness observed MC17-15 = PASS (recorded in .tmp/audit/adversarial-report-2.json, failureMode d-hidden-focus-outline, detected false). The Playwright accessibility test only checks the first Tab-reached button and link in web-light and instrument-night (e2e/design-system/accessibility.spec.ts:117-131), so a broader or mode-specific hidden focus ring could ship without a failing gate.",
+      "affectedFile": "scripts/check-marea-design-system.mjs:420-438; e2e/design-system/accessibility.spec.ts:117-131",
+      "reproduction": "Run node .tmp/audit/make-harness.mjs then node .tmp/audit/run-adversarial.mjs; scenario d-hidden-focus-outline shows targetCheck MC17-15 observed PASS and detected false.",
+      "requiredCorrection": "Extend MC17-15 (or a companion static check) to reject `outline: none|0` in focus rules without an alternative visible indicator, and add a computed-style Playwright assertion for every keyboard-operable component in all four modes.",
+      "correctionOwner": "Design-system validator/test owner (Lead)",
+      "correctionCommit": "7cbc99e",
+      "finalStatus": "CLOSED",
+      "resolved": true,
+      "independentReverification": "Reproduced the original mutation: replace marea-link focus rule with \":host(:focus-visible) { outline: none; }\" and run the I/O-overlay harness (.tmp/audit/make-harness.mjs + run-adversarial.mjs). MC17-15 now observes FAIL and the scenario is detected (was undetected at 3a8d4fd). The added condition is /:focus-visible[\\s\\S]{0,400}--marea-focus-ring/ at scripts/check-marea-design-system.mjs:433. Residual limitation: the check is textual, and there is still no computed-style Playwright assertion for every keyboard-operable component in all four modes (accessibility.spec.ts checks the first button/link in web-light and instrument-night)."
+    },
+    {
+      "findingId": "MC17-IR-05",
+      "severity": "MINOR",
+      "title": "Validator MC17-08 (and the SSR-contract spec) only search for 'marea'; a production entry importing `../preview/main` passes the isolation check because the path contains no 'marea'.",
+      "evidence": "scripts/check-marea-design-system.mjs:269-281 filters the five production entry files with /marea/i; e2e/design-system/ssr-contract.spec.ts:129-141 uses /marea-design-system|marea-/i. Adversarial mutation appended `import '../preview/main';` to src/main.ts; the harness observed MC17-08 = PASS (recorded in .tmp/audit/adversarial-report-2.json, failureMode i-preview-imported-by-production-entry, detected false). MC17-09's production-bundle scan would catch catalogue code after a build, but it is skipped with a PASS-and-limitation when dist/embarcarte is absent (scripts/check-marea-design-system.mjs:283-298), so the static check alone is not a complete guard.",
+      "affectedFile": "scripts/check-marea-design-system.mjs:269-281; e2e/design-system/ssr-contract.spec.ts:129-141",
+      "reproduction": "Run node .tmp/audit/make-harness.mjs then node .tmp/audit/run-adversarial.mjs; scenario i-preview-imported-by-production-entry shows targetCheck MC17-08 observed PASS and detected false.",
+      "requiredCorrection": "Reject imports of `preview/`, `catalogue` and the isolated project from any production entry (not only paths containing 'marea'), and fail the check when the production build is absent instead of passing with a limitation, or make the bundle scan a required gate.",
+      "correctionOwner": "Design-system validator/test owner (Lead)",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "resolved": true,
+      "independentReverification": "At f2c9ec2 MC17-08 uses a shared TypeScript AST resolver (scripts/marea-design-system-guards.mjs) that follows static imports, re-exports, dynamic imports and transitive local modules from the five production entries, resolving tsconfig paths/baseUrl aliases (JSONC) and keeping a literal fallback. Independent mutation harness: `import \"../preview/main\"`, `export * from \"../preview/main\"`, dynamic import, the `@catalogue/*` -> `preview/*` alias and a transitive `./preview-bridge` are all detected by MC17-08 (5/5). The Playwright SSR-contract test imports the same resolver and fails on the same mutations."
+    },
+    {
+      "findingId": "MC17-IR-06",
+      "severity": "MINOR",
+      "title": "The 26 visual baselines were generated with `--update-snapshots` in the recorded run, quote no commit SHA, and the ES/EN locale pair is byte-identical; a passing comparison proves only that the tree still matches baselines generated from itself.",
+      "evidence": "docs/marea/design-system/data/visual-regression-evidence.json:16 records `npx playwright test -c playwright.design-system.config.ts --update-snapshots`; :17 and :345 admit the set is not self-validating; :336 sets commitSha null. SHA-256 inspection of the snapshots shows foundation-1440x900-web-light-chromium-win32.png, foundation-1440x900-web-light-locale-en-chromium-win32.png and foundation-1440x900-web-light-locale-es-chromium-win32.png are byte-identical (same 77260-byte file), so the 'ES vs EN pair' test does not discriminate locale rendering. The reviewer re-ran the suite without --update-snapshots (28/28 passed), which verifies current pixels equal these self-generated baselines, not that they equal an independent prior state.",
+      "affectedFile": "docs/marea/design-system/data/visual-regression-evidence.json:16,17,336,345; e2e/design-system/visual.spec.ts:72-90; e2e/design-system/visual.spec.ts-snapshots/",
+      "reproduction": "node -e \"const c=require('crypto'),f=require('fs'); for (const n of ['foundation-1440x900-web-light-chromium-win32.png','foundation-1440x900-web-light-locale-en-chromium-win32.png','foundation-1440x900-web-light-locale-es-chromium-win32.png']) console.log(n, c.createHash('sha256').update(f.readFileSync('e2e/design-system/visual.spec.ts-snapshots/'+n)).digest('hex'));\" ; inspect the three hashes; read visual-regression-evidence.json lines 16-17 and 336.",
+      "requiredCorrection": "Freeze the baselines from an independently recorded tree/commit (or restore the prior committed baselines) and record the commit SHA; do not claim regression evidence from a same-run update. Make the locale pair capture localized component copy that actually differs, or remove the pair and record that locale rendering is covered by the functional ES/EN assertions only.",
+      "correctionOwner": "Design-system visual-test owner and documentation owner (Lead)",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "resolved": true,
+      "independentReverification": "At f2c9ec2 visual-regression-evidence.json v1.1.0 records source commits 3a8d4fd/7cbc99e/4a9043b plus the correction commit, Windows + installed Playwright 1.64.1 + Node 24.18.0, explicit generation vs always-without-update acceptance, per-file SHA-256 for 26 baselines, and the differing commerce ES/EN pair. The two orphaned foundation locale captures were deleted. The two 320x812 instrument captures were refreshed after the committed pixels no longer matched the same renderer; the reviewer compared before/after (identical layout/content, mean absolute pixel delta ~1.2/255, antialiasing only) and the other 24 baselines are byte-identical. Playwright 37/37 without --update-snapshots at the frozen SHA."
+    },
+    {
+      "findingId": "MC17-IR-07",
+      "severity": "MINOR",
+      "title": "Validator MC17-13 does not actually prove the 'no undocumented variant' claim: it scans only inline literal unions in the input type argument, ignores aliased enums/default values, and its detail string has a dead arithmetic expression.",
+      "evidence": "scripts/check-marea-design-system.mjs:365-391. The extraction regex `input<([^>]*)>` captures the type text and then only single-quoted literals inside it; aliased enums such as MareaTextVariant and defaults such as `input<MareaButtonVariant>('action')` contribute nothing. The detail at :388 is `${documented} option values and ${registry.components.length * 0 || ''} variants documented`, which always prints an empty count. The independent registry audit (tmp/audit/registry-audit2.mjs) found visualVariants inconsistently aggregates behavioural enums: marea-notice includes off/polite/assertive (live input), marea-accordion includes single/multiple (mode input), marea-permission-notice includes live values but not its `kind` values. The actual visual variants are documented in the registry, so this is an evidence-quality defect, not a missing feature.",
+      "affectedFile": "scripts/check-marea-design-system.mjs:365-391 (detail at :388); docs/marea/design-system/data/component-registry.json visualVariants",
+      "reproduction": "Read the check; run node .tmp/audit/registry-audit2.mjs and observe the mismatches for marea-notice/accordion/permission-notice; run the validator and inspect the MC17-13 detail line '39 option values and  variants documented'.",
+      "requiredCorrection": "Resolve named type aliases and default values, compare each option-like input's full value set with the registry, fix the detail string, and normalise visualVariants so it consistently means 'visual option values' (including live/mode/kind where those are part of the documented API).",
+      "correctionOwner": "Design-system validator owner (Lead)",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "resolved": true,
+      "independentReverification": "At f2c9ec2 MC17-13 is a TypeScript-compiler-based comparison: 33 option inputs resolved to 126 string values, compared in both directions with the registry (documented type text and visualVariants); 64 visual variants matched and 4 broad non-enumerable inputs are reported as skipped, not silently ignored. The mutation harness detected an aliased union with an undocumented value and an enum-valued input with an undocumented value (2/2). The dead arithmetic detail was removed."
+    },
+    {
+      "findingId": "MC17-IR-08",
+      "severity": "MINOR",
+      "title": "MC-17 execution is not recorded in the programme registry/decision log, and the MC-16→MC-17 handoff still says MC-17 has not started, despite the implementation existing in the working tree.",
+      "evidence": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md row 17 still reads `PLANNED` with no evidence column; DECISION-LOG D-068–D-070 are MC-16 decisions that explicitly say no MC-17 execution; docs/marea/commerce-data/MC16-MC17-HANDOFF.md:10 sets `MC17_STARTED=false` and :159-171 requires written MC-17 authorization, a claims/copy path and an accessibility audit owner before start. D01 MC-17-BASELINE-AND-GOVERNANCE.md:39-47 discloses that the Master Prompt 17/36 is not committed and that the registry still shows PLANNED. mc18-handoff-inputs.json still records `mc17ValidatorStatus: FAIL_31_OF_38_AT_AUTHORING_TIME`.",
+      "affectedFile": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md row 17; docs/marea/execution/DECISION-LOG.md (no MC-17 entry); docs/marea/commerce-data/MC16-MC17-HANDOFF.md:10,159-171; docs/marea/design-system/data/mc18-handoff-inputs.json",
+      "reproduction": "grep -n \"| 17 |\" docs/marea/execution/MASTER-PROMPT-REGISTRY.md; grep -n 'MC-17' docs/marea/execution/DECISION-LOG.md; read MC16-MC17-HANDOFF.md §11; read mc18-handoff-inputs.json flags.",
+      "requiredCorrection": "Record the MC-17 authorization/scope decision in DECISION-LOG, update registry row 17 with the real status and evidence, and update the MC-16 handoff/handoff-inputs to state that MC-17 has started with its named gaps. This is a governance record correction, not a permission granted by this review.",
+      "correctionOwner": "Programme Lead / governance-docs",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "resolved": true,
+      "independentReverification": "At f2c9ec2 MASTER-PROMPT-REGISTRY row 17 records the exact strings `MC17_VERDICT = PARTIAL` and `MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = IMPLEMENTED_AND_TECHNICALLY_VERIFIED_PENDING_FINAL_RE_AUDIT`; DECISION-LOG D-073 records the third-round audit and correction round; mc18-handoff-inputs.json records mc17State IMPLEMENTED_AND_TECHNICALLY_VERIFIED_PENDING_FINAL_RE_AUDIT, validator PASS_38_OF_38 and the completed two prior rounds; the MC-16 historical handoff keeps its text and gains a dated supersession note. The third-round verdict is recorded in this review and in the final delivery commit."
+    },
+    {
+      "findingId": "MC17-IR-09",
+      "severity": "INFORMATIONAL",
+      "title": "Performance evidence is author-reported and was not re-measured by the reviewer; the build-size and zero-byte design-system-contribution parts were independently re-checked and match.",
+      "evidence": "performance-evidence.json:7-16 records a single `npm run test:performance` run at 2026-11-03T02:11:59Z; the reviewer did not run that command. The current production build is 168 files / 3,032,047 bytes versus the recorded 168 / 3,032,053, and the catalogue is 60 files / 4,551,110 bytes versus 4,550,963. A scan of dist/embarcarte/browser found no marea-design-system/marea-ds-catalogue/MareaTheme/marea-theme identifiers. The evidence itself labels the measurement laboratory-only, non-RUM and non-CI.",
+      "affectedFile": "docs/marea/design-system/data/performance-evidence.json:7-16,182-302; dist/embarcarte/browser",
+      "reproduction": "Read performance-evidence.json; compare with `Get-ChildItem dist/embarcarte/browser -Recurse -File | Measure-Object Length -Sum`; grep dist for the four identifiers. Do not treat this as a field-performance claim.",
+      "requiredCorrection": "None required for MC-17 internal scope; if a performance claim is ever published, re-run test:performance on the target build and record the environment.",
+      "correctionOwner": "Programme Lead (if a performance claim is later made)",
+      "correctionCommit": "N/A",
+      "finalStatus": "ACCEPTED_LIMITATION",
+      "resolved": false,
+      "independentReverification": "Not re-measured; accepted limitation retained. At 7cbc99e the production build is 168 files / 3,032,030 bytes (recorded 3,032,047) and a scan of dist/embarcarte/browser finds 0 design-system/catalogue identifiers. The evidence remains a single laboratory run, not RUM and not a CI gate; no performance claim is made."
+    },
+    {
+      "findingId": "MC17-IR-10",
+      "severity": "INFORMATIONAL",
+      "title": "`npm run format:check` passes but does not cover the new design-system source, the preview project or the new design-system Playwright config.",
+      "evidence": "package.json format:check lists `e2e`, `playwright.config.ts` and the enumerated `scripts/*.mjs`, but not `src/app/marea-design-system/**`, `preview/**` or `playwright.design-system.config.ts`. The check reported 'All matched files use Prettier code style!' (exit 0) while the newly added component/preview files are outside its glob.",
+      "affectedFile": "package.json (format and format:check scripts); playwright.design-system.config.ts; src/app/marea-design-system/**; preview/**",
+      "reproduction": "Read package.json scripts.format:check; observe that no src/ or preview/ path is present; run npm run format:check (exit 0).",
+      "requiredCorrection": "Add the design-system source, preview files, playwright.design-system.config.ts and the design-system documents/data generators to the format:check glob, then run it.",
+      "correctionOwner": "Programme Lead",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "resolved": true,
+      "independentReverification": "At f2c9ec2 package.json format/format:check cover e2e/design-system, src/app/marea-design-system, preview, playwright.design-system.config.ts and the shared guard module. `**/*.generated.ts` is deliberately ignored by Prettier (.prettierignore, documented) because the three deterministic generators remain its authority; the generators --check all pass and a unit test asserts both the coverage and the generated-artefact exclusion. `npm run format:check` exit 0."
+    },
+    {
+      "findingId": "MC17-IR-11",
+      "severity": "INFORMATIONAL",
+      "title": "The working tree changed during the audit: a concurrent workstream renamed marea-commerce-cta to marea-commercial-cta and added a testIgnore to the public Playwright config at 03:31:53; the audit re-ran all gates after the change.",
+      "evidence": "At the start of the audit, git status showed marea-commerce-cta.ts modified; at 03:31:53 it had been deleted and marea-commercial-cta.ts added, with component-registry.json, component-states.json, preview galleries, e2e/commerce.spec.ts, docs and playwright.config.ts (`testIgnore: ['**/design-system/**']`) rewritten. All reported gates were re-run after the tree stabilized (validator 36/38, unit 27/27, tsc 0, build 0, Playwright 28/28). This is a reproducibility/process finding, not a code defect: the final reviewed state is the post-rename tree.",
+      "affectedFile": "src/app/marea-design-system/components/commerce/marea-commercial-cta.ts; playwright.config.ts; docs/marea/design-system/**; e2e/design-system/**",
+      "reproduction": "Inspect file mtimes around 03:31:53 and `git status --porcelain`; `git diff playwright.config.ts` shows the testIgnore addition. Re-run the full gate on a frozen SHA to avoid a moving target.",
+      "requiredCorrection": "Freeze the working tree before the final independent gate; include the rename and the testIgnore change in the reviewed commit; do not edit during a review.",
+      "correctionOwner": "Programme Lead",
+      "correctionCommit": "7cbc99e",
+      "finalStatus": "CLOSED",
+      "resolved": true,
+      "independentReverification": "The reviewed state is one frozen commit (7cbc99e); git status --porcelain was empty before and after every gate and git diff HEAD --quiet exits 0. The only tracked file written by the suite (evidence/axe-summary.json, generatedAt) was byte-restored; no file changed during the re-review."
+    },
+    {
+      "findingId": "MC17-IR-12",
+      "severity": "MINOR",
+      "title": "The MC17-15 focus heuristic still accepted a transparent outline colour and a zero-width/transparent focus treatment that references the focus token",
+      "evidence": "At 4a9043b focusContractProblems did not exist; the validator only matched /:focus-visible[\\s\\S]{0,400}--marea-focus-ring/. An I/O-overlay mutation adding `outline-color: transparent` after the token-based outline passed MC17-15, and the earlier `outline: none` form was detected only by the string heuristic added in the first correction.",
+      "affectedFile": "scripts/check-marea-design-system.mjs:443-457 (at 4a9043b)",
+      "reproduction": "Mutate marea-link.ts focus rule to keep `outline: var(--marea-focus-width) var(--marea-focus-style) var(--marea-focus-ring)` and add `outline-color: transparent;`; run the validator: MC17-15 observed PASS at 4a9043b. The same mutation is rejected at f2c9ec2.",
+      "requiredCorrection": "Reject outline: none/0, outline-style: none, zero outline-width and transparent outline colours inside every :focus-visible rule, while still requiring the focus-ring token; add tests.",
+      "correctionOwner": "design-system validator owner (implementation agent), reviewed by the independent auditor",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "resolved": true,
+      "independentReverification": "At f2c9ec2 focusContractProblems rejects transparent outline/outline-color, outline none/0 and zero-width styles. Independent mutation harness: hidden focus and transparent focus mutations are both detected (2/2), and the design-system unit suite includes a real-component transparent-mutation test (41/41 pass)."
+    },
+    {
+      "findingId": "MC17-IR-13",
+      "severity": "MINOR",
+      "title": "Visual evidence counted 26 baselines while 28 PNGs were committed; two orphaned foundation locale captures were not referenced by any test",
+      "evidence": "The committed visual.spec.ts captured the locale pair on the commerce gallery, but the older foundation-1440x900-web-light-locale-es/en PNGs were still present and byte-identical to the foundation web-light baseline; visual-regression-evidence.json still claimed 26 committed PNGs and contained stale generation wording.",
+      "affectedFile": "e2e/design-system/visual.spec.ts-snapshots/; docs/marea/design-system/data/visual-regression-evidence.json",
+      "reproduction": "Count the PNGs (28) against the dataset (26); re-run node -e SHA-256 of the three foundation web-light/locale files: identical hashes; grep the visual spec for the locale pair: commerce only.",
+      "requiredCorrection": "Delete the orphaned pair (or reference it), record the true count, compute per-file SHA-256, and document the source commits, environment and generation/acceptance procedure.",
+      "correctionOwner": "MC-17 documentation/visual evidence owner, reviewed by the independent auditor",
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "finalStatus": "CLOSED_VERIFIED",
+      "resolved": true,
+      "independentReverification": "At f2c9ec2 exactly 26 PNGs remain; the two orphaned foundation locale captures are deleted; the dataset lists 26 files with SHA-256 and no orphan; the ES/EN commerce pair differs (27132adf… EN vs a57f0370… ES). The two refreshed mobile instrument baselines are documented with the before/after antialiasing-only comparison."
+    }
+  ],
+  "summary": {
+    "total": 16,
+    "blocking": 0,
+    "major": 2,
+    "minor": 10,
+    "informational": 4,
+    "open": 0,
+    "acceptedLimitations": 1,
+    "resolved": 15
+  },
+  "reReviewedCommit": "7cbc99e1a1499f22ddc6053d661983e1d91f841b",
+  "reReviewedCommitShort": "7cbc99e",
+  "reReviewDate": "2026-11-03",
+  "reReviewBaseCommit": "6d8287c8507038c4f90fd6e35471f78081ca4676",
+  "reReviewedWorktreeState": "CLEAN during the gate window 03:49-04:03 on 2026-11-03 (git status --porcelain empty, git diff HEAD --quiet exit 0). At 04:04:45 a concurrent workstream began modifying 17 tracked paths; those follow-up edits are uncommitted, are not in 7cbc99e and are unreviewed (MC17-CR-03).",
+  "reReviewCommands": [
+    {
+      "command": "git status --porcelain",
+      "exit": 0,
+      "result": "empty (clean tree)"
+    },
+    {
+      "command": "git merge-base --is-ancestor 6d8287c8507038c4f90fd6e35471f78081ca4676 HEAD",
+      "exit": 0,
+      "result": "ancestry verified"
+    },
+    {
+      "command": "git ls-files .tmp",
+      "exit": 0,
+      "result": "empty; .tmp/ ignored by .gitignore:62"
+    },
+    {
+      "command": "git diff HEAD --quiet",
+      "exit": 0,
+      "result": "worktree identical to HEAD 7cbc99e"
+    },
+    {
+      "command": "node scripts/check-marea-design-system.mjs",
+      "exit": 1,
+      "result": "37/38; only MC17-35 fails because D23/D24 are authored after this review"
+    },
+    {
+      "command": "node --test --test-isolation=none scripts/check-marea-design-system.test.mjs scripts/check-marea-design-system-adversarial.test.mjs",
+      "exit": 0,
+      "result": "27/27 pass"
+    },
+    {
+      "command": "npx tsc -p tsconfig.app.json --noEmit",
+      "exit": 0,
+      "result": "no diagnostics"
+    },
+    {
+      "command": "npx tsc -p preview/tsconfig.json --noEmit",
+      "exit": 0,
+      "result": "no diagnostics"
+    },
+    {
+      "command": "npm run format:check",
+      "exit": 1,
+      "result": "FAIL: e2e/design-system/ssr-contract.spec.ts and scripts/check-marea-design-system.mjs are not Prettier-formatted (new finding MC17-CR-01)"
+    },
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "result": "96 static routes prerendered; 168 files / 3,032,030 bytes"
+    },
+    {
+      "command": "node scripts/build-marea-design-tokens.mjs --check",
+      "exit": 0,
+      "result": "262 provenance rows current across 4 modes"
+    },
+    {
+      "command": "node scripts/build-marea-design-system-baseline.mjs --check",
+      "exit": 0,
+      "result": "35 watched files current vs 6d8287c"
+    },
+    {
+      "command": "node scripts/build-marea-design-system-fixtures.mjs --check",
+      "exit": 0,
+      "result": "9 families / 26 editions / 6 bundles / 12 entitlements current"
+    },
+    {
+      "command": "node scripts/build-marea-design-system-catalogue-data.mjs --check",
+      "exit": 0,
+      "result": "49 registered components current"
+    },
+    {
+      "command": "npx playwright test -c playwright.design-system.config.ts (without --update-snapshots), run 1",
+      "exit": 0,
+      "result": "29/29 passed in 1.7 min, 1 worker, no flake"
+    },
+    {
+      "command": "npx playwright test -c playwright.design-system.config.ts (without --update-snapshots), run 2",
+      "exit": 0,
+      "result": "29/29 passed in 1.7 min (repeat run for flake check)"
+    },
+    {
+      "command": "node .tmp/audit/contrast-recompute.mjs (independent WCAG recomputation)",
+      "exit": 0,
+      "result": "296/296 measurements, 0 failures, 0 mismatches; min text 4.71:1, min UI 3.07:1, min focus 5.55:1"
+    },
+    {
+      "command": "node .tmp/audit/make-harness.mjs && node .tmp/audit/run-adversarial.mjs",
+      "exit": 0,
+      "result": "7/8 mutations detected; i-preview-imported-by-production-entry still not detected (MC17-08 PASS); adapter invariants 4/4"
+    },
+    {
+      "command": "node .tmp/review2/rendered-copy.mjs against dist/marea-ds-catalogue served at 127.0.0.1:4301",
+      "exit": 0,
+      "result": "102/138 copy keys rendered (was 100/138); pilotSupervised, fleetNoHardware, navWeatherLicensing render; aisReceiveOnly, watchNoGuarantee, senseEssentialsKit, displayConditional do not"
+    },
+    {
+      "command": "node .tmp/review2/locale-pair.mjs",
+      "exit": 0,
+      "result": "ES and EN screenshots are byte-identical (646348bb...) and match both committed baselines; locale text difference is below the captured first viewport"
+    },
+    {
+      "command": "node .tmp/review2/ir05-scan.mjs on a temp copy with import \"../preview/main\"",
+      "exit": 0,
+      "result": "new e2e-style scan catches src/main.ts: ../preview/main; validator MC17-08 catches nothing"
+    },
+    {
+      "command": "node .tmp/review2/commerce-scan.mjs against the rendered catalogue",
+      "exit": 0,
+      "result": "0 JSON-LD, 0 Product/Offer microdata, 0 currency/amount; only honest negation copy"
+    }
+  ],
+  "reReviewVerdict": "PARTIAL",
+  "reReviewPostGateDrift": {
+    "observedAtLocal": "2026-11-03T04:04:45+01:00",
+    "observedAtUtc": "2026-11-03T03:04:45Z",
+    "statusAtGates": "CLEAN",
+    "statusAfterDrift": "DIRTY",
+    "modifiedPaths": [
+      "docs/marea/design-system/MC17-ANGULAR-COMPONENT-ARCHITECTURE.md",
+      "docs/marea/design-system/MC17-BILINGUAL-PRESENTATION-CONTRACT.md",
+      "docs/marea/design-system/MC17-COMMERCIAL-CTA-AND-READINESS-POLICY.md",
+      "docs/marea/design-system/MC17-COMPONENT-API-AND-STATE-CONTRACTS.md",
+      "docs/marea/design-system/MC17-LEGACY-UI-NON-REGRESSION.md",
+      "docs/marea/design-system/MC17-MC18-HANDOFF.md",
+      "docs/marea/design-system/MC17-PRODUCT-EDITION-BUNDLE-PRESENTATION.md",
+      "docs/marea/design-system/MC17-RISKS-AND-UNRESOLVED-GAPS.md",
+      "docs/marea/design-system/data/blocker-register.json",
+      "docs/marea/design-system/data/commerce-presentation-policy.json",
+      "docs/marea/design-system/data/mc18-handoff-inputs.json",
+      "e2e/design-system/ssr-contract.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "preview/catalogue/app/galleries/commerce.gallery.ts",
+      "scripts/check-marea-design-system.mjs"
+    ],
+    "note": "The two re-review deliverables (MC17-INDEPENDENT-REVIEW.md and review-findings.json) are also modified, by this reviewer. The other 15 paths are the concurrent follow-up. None of the follow-up is reviewed here."
+  },
+  "mc17Verdict": "PARTIAL",
+  "overallVerdictReason": "The internal MC-17 design-system scope is implemented and independently verified. The milestone verdict remains PARTIAL because trademark clearance, brand adoption, price/stock approval, hardware validation and public publication are external gates that are not granted; no merge, deployment, sale or MC-18 start is authorised.",
+  "firstThirdRoundCandidate": "4a9043b98144c0ad4313728642321cd3752f5ccf",
+  "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+  "thirdReview": {
+    "reviewer": "independent auditor (not the author of the design system)",
+    "date": "2026-11-03",
+    "stageA": {
+      "commit": "4a9043b98144c0ad4313728642321cd3752f5ccf",
+      "verdict": "NEEDS_REVISION",
+      "blocking": 0,
+      "majorOpen": 1,
+      "minorOpen": 7,
+      "informational": 4
+    },
+    "stageB": {
+      "correctionCommit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "authoredBy": "implementation agents and the Lead (git owner); not by the reviewer",
+      "filesChanged": 85
+    },
+    "stageC": {
+      "commit": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+      "verdict": "PASS_INTERNAL_DESIGN_SYSTEM_SCOPE",
+      "blockingOpen": 0,
+      "majorOpen": 0,
+      "minorOpen": 0
+    }
+  },
+  "thirdReviewCommands": [
+    {
+      "command": "git status --porcelain (f2c9ec2)",
+      "exit": 0,
+      "result": "empty; clean frozen tree"
+    },
+    {
+      "command": "node scripts/check-marea-design-system.mjs",
+      "exit": 0,
+      "result": "38/38 PASS"
+    },
+    {
+      "command": "npm run test:design-system:unit",
+      "exit": 0,
+      "result": "41/41 pass"
+    },
+    {
+      "command": "npx tsc -p tsconfig.app.json --noEmit",
+      "exit": 0,
+      "result": "no diagnostics"
+    },
+    {
+      "command": "npx tsc -p preview/tsconfig.json --noEmit",
+      "exit": 0,
+      "result": "no diagnostics"
+    },
+    {
+      "command": "npm run format:check",
+      "exit": 0,
+      "result": "expanded coverage green"
+    },
+    {
+      "command": "node scripts/build-marea-design-tokens.mjs --check",
+      "exit": 0,
+      "result": "262 rows / 4 modes current"
+    },
+    {
+      "command": "node scripts/build-marea-design-system-fixtures.mjs --check",
+      "exit": 0,
+      "result": "9 families / 26 editions / 6 bundles current"
+    },
+    {
+      "command": "node scripts/build-marea-design-system-catalogue-data.mjs --check",
+      "exit": 0,
+      "result": "49 components current"
+    },
+    {
+      "command": "node scripts/build-marea-design-system-baseline.mjs --check",
+      "exit": 0,
+      "result": "35 watched files current vs 6d8287c"
+    },
+    {
+      "command": "npm run build",
+      "exit": 0,
+      "result": "96 routes; 168 files / 3,032,021 bytes"
+    },
+    {
+      "command": "npx ng build marea-design-system-catalogue",
+      "exit": 0,
+      "result": "60 files / 4,601,309 bytes"
+    },
+    {
+      "command": "npx playwright test -c playwright.design-system.config.ts (no --update-snapshots)",
+      "exit": 0,
+      "result": "37/37 passed"
+    },
+    {
+      "command": "npm run test:e2e",
+      "exit": 0,
+      "result": "15/15 passed"
+    },
+    {
+      "command": "npm run test:i18n / test:commerce / test:seo",
+      "exit": 0,
+      "result": "all passed"
+    },
+    {
+      "command": "npm audit --omit=dev --audit-level=high",
+      "exit": 0,
+      "result": "0 vulnerabilities"
+    },
+    {
+      "command": "production bundle scan",
+      "exit": 0,
+      "result": "0 design-system/catalogue identifiers; styles exactly [\"src/styles.scss\"]"
+    },
+    {
+      "command": "independent DOM probe ES/EN",
+      "exit": 0,
+      "result": "9/9 families render their own limit; material chip first; six adversarial cases; SENSE kit note"
+    },
+    {
+      "command": "mutation harness around the real validator",
+      "exit": 0,
+      "result": "9/9 mutations detected (literal, re-export, dynamic, alias, transitive, aliased union, enum, hidden focus, transparent focus)"
+    }
+  ]
+}

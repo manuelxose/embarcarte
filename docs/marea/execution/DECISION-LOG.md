@@ -1718,3 +1718,41 @@ no merge, no deployment.
 **Evidence.** `MC16-INDEPENDENT-REVIEW.md` (D21); `data/review-findings.json`; `MC16-DELIVERY.md` (D23); `MC16-EXECUTIVE-REPORT-ES.md` (D22); PR #23 (draft, unmerged).
 
 **Status effect.** Internal-scope PASS recorded; overall PARTIAL; no merge, deploy, publication, sale, billing or MC-17 execution.
+
+## D-071 - 2026-11-03 - MC-17 implements an isolated, non-published design system
+
+**Context.** The future MAREA product, bundle, configurator and onboard surfaces need one reusable presentation system, but the brand is proposed (trademark NOT_GRANTED, public use NO_GO), no price/stock/public copy is approved, hardware validation is blocked, and the public website must not change.
+
+**Decision.** Implement the design system under `src/app/marea-design-system/` as an isolated, non-imported library: one canonical token source with MC-04 provenance and a deterministic generator, scoped `marea-theme` CSS (no `:root`), 48 standalone Angular components plus one directive, typed presentation contracts, synthetic MC-16 fixtures, a fail-closed commercial adapter (`purchaseActionAllowed/cartAllowed/priceVisible/availabilityVisible = false`), and a separate internal catalogue Angular project (`preview/`, output `dist/marea-ds-catalogue`). No production route, style, metadata, asset, checkout or deployment change. The catalogue is executed only by its own scripts; the inherited public test suite excludes it with `testIgnore`.
+
+**Rationale.** A presentation system that can be built and verified without being published is the only defensible way to prepare MC-18 while identity, legal clearance, price, stock and hardware evidence are unavailable. Scoped tokens and a separate build target make accidental public leakage a deliberate change rather than a side effect.
+
+**Evidence.** `src/app/marea-design-system/`; `preview/`; `docs/marea/design-system/` D01-D24 + 20 datasets; `scripts/check-marea-design-system*.mjs`; `e2e/design-system/`; validator 38/38 and catalogue suite 30/30 at the delivery commit.
+
+**Status effect.** Internal design-system scope implemented and technically verified; overall MC-17 PARTIAL pending the final independent re-audit; no publication, deployment, brand adoption, sale or MC-18 start.
+
+## D-072 - 2026-11-03 - MC-17 records the independent review and the correction round
+
+**Context.** The first independent review of the implementation found no BLOCKING findings but two MAJOR defects: family-specific limits were defined but not rendered, and the reviewed tree was uncommitted. A correction round renamed the CTA to avoid the inherited MC-16 ISO-001 collision, rendered family limits for all families in the catalogue, replaced a module-level id counter with `MareaIds`, hardened the validator, repaired documentation, regenerated visual baselines and committed the tree.
+
+**Decision.** Record `MC17_INDEPENDENT_REVIEW = PARTIAL` for both reviewed SHAs and require a third independent re-audit of the delivery SHA before MC-17 can be considered internally complete. Preserve every finding with its closure status in `data/review-findings.json`; do not mark a MAJOR closed without independent verification.
+
+**Rationale.** The internal build is usable and the committed state is reproducible, but the presentation MAJOR and several minor evidence gaps were open at the last reviewed SHA. Recording PARTIAL is more accurate than claiming completion.
+
+**Evidence.** `MC17-INDEPENDENT-REVIEW.md`; `data/review-findings.json`; commits `3a8d4fd` and `7cbc99e`; validator, unit, Playwright, axe and contrast evidence under `docs/marea/design-system/evidence/`.
+
+**Status effect.** MC-17 PARTIAL; no merge, deployment, publication, brand adoption, price/stock authorisation or MC-18 start. Inherited `MC16-FINAL-02`, `MC16-FINAL-09` and `FINANCIAL_V18` remain as recorded.
+
+## D-073 - 2026-11-03 - MC-17 third-round audit initiation and correction round
+
+**Context.** The frozen audit candidate `4a9043b` was submitted to a third independent review. The audit found `MC17-IR-03` (stale/contradictory deliverables) and `MC17-CR-02` (corrupted correction sentences) still open, and `MC17-IR-06` (visual-regression provenance) and `MC17-IR-08` (MC-17 governance) only partially closed. The remaining presentation defect `MC17-IR-01` was only partially corrected in the tree (seven family cards rendered and a body-wide e2e assertion; WEATHER/HUB and per-card assertions were still missing), and `MC17-IR-05`, `MC17-IR-07` and `MC17-IR-10` were still open. The deterministic evidence at `4a9043b` was green: validator 38/38 PASS; unit/adversarial 27/27; catalogue Playwright 30/30; axe 0 violations, 36 passes and 0 incomplete in each of the four modes; commerce ES/EN baselines differ (`27132adf…` vs `a57f0370…`).
+
+**Decision.** Open the third-round correction round with these limits: (1) present the family-specific limits for all nine MAREA families (seven family cards rendered at `4a9043b`; the correction completes HUB/WEATHER and the per-family assertions); (2) repair every stale/contradictory/corrupted current-state statement across D01-D24 and the datasets against the verified `4a9043b` evidence, marking genuine historical FAILs with date/SHA and preserving the record; (3) rewrite `data/visual-regression-evidence.json` with source commits, installed environment, reproducible generation procedure, 26 baselines after removing the two orphaned foundation locale captures, per-pair SHA-256 and the explicit ES/EN commerce difference; (4) harden the validator guards (preview-import detection, aliased-enum extraction, focus-contract mutation) and expand `format:check` coverage via the parallel engineering workstream, re-running both at the correction commit; (5) record governance row 17 with `MC17_VERDICT = PARTIAL` and `MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = IMPLEMENTED_AND_TECHNICALLY_VERIFIED_PENDING_FINAL_RE_AUDIT`, add this decision and a dated supersession note to the MC-16 handoff; (6) update the delivery record and append the round-3 addendum to the Spanish executive report. Do not claim a final independent PASS: the third-round verdict is written by the reviewer, not by the author.
+
+**Rationale.** The internal implementation is green and reproducible, but an honest PARTIAL requires that the documents match the evidence, that the review record is complete, and that the final verdict is issued by an agent distinct from the author. Repairing the record is necessary for the next audit to be meaningful.
+
+**Evidence.** `4a9043b`; `docs/marea/design-system/evidence/{validator-run,axe-summary}.json`; `e2e/design-system/visual.spec.ts-snapshots/` (26 PNGs, SHA-256 in `data/visual-regression-evidence.json`); `docs/marea/design-system/MC17-INDEPENDENT-REVIEW.md` (three rounds); `data/review-findings.json`; `docs/marea/design-system/data/{blocker-register,mc18-handoff-inputs,commerce-presentation-policy,accessibility-requirements}.json`; `docs/marea/commerce-data/MC16-MC17-HANDOFF.md` (supersession note). Correction commit: `f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d`.
+
+**Outcome (2026-11-03).** The correction round was implemented and frozen at `f2c9ec2` and independently re-audited. The reviewer reproduced: validator 38/38 PASS; unit/adversarial 41/41; nine family cards rendering their own limits in ES and EN with material-first chips and six adversarial cases; five production-import mutations and two variant mutations and two focus mutations detected (9/9); Playwright 37/37 without `--update-snapshots`; public e2e 15/15; axe 0 violations in four modes; expanded `format:check` green with generated artefacts validated by their generators; 26 baselines with the ES/EN pair differing and the two refreshed mobile instrument captures reviewed. Final result: `MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = PASS_INTERNAL_DESIGN_SYSTEM_SCOPE` and `MC17_VERDICT = PARTIAL` (external gates remain ungranted). No merge, deployment, publication, sale, brand adoption or MC-18 start.
+
+**Status effect.** `MC17_VERDICT = PARTIAL`; internal scope `PASS_INTERNAL_DESIGN_SYSTEM_SCOPE`; third-round re-audit complete; no merge, deployment, publication, brand adoption, sale or MC-18 start. `MC16-FINAL-02`, `MC16-FINAL-09`, `FINANCIAL_V18`, `MC15-GSC-01/GSC-02` and the hardware/trademark no-go states remain unchanged.
