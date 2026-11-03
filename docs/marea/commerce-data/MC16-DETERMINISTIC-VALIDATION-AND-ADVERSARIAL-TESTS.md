@@ -45,8 +45,11 @@ by changing a status to `PASS`.
 - price hypotheses never become effective prices;
 - inventory requires provenance and rejects admin-entered quantity alone;
 - expired evidence is unusable;
+- future-issued, invalid-issued and malformed-expiry evidence are unusable;
+- merchant SKU approval evidence is resolved; missing evidence denies;
 - readiness requires all dimensions and evidence-backed closed gates;
-- commercial transition is denied during MC-16;
+- commercial transition is denied during MC-16 and any transition without `mc16Allowed=true` is denied;
+- price bound to a different edition is denied (`PRICE_EDITION_MISMATCH`);
 - publication eligibility is false while gates or brand clearance are open;
 - PILOT bundle ineligibility and SENSE kit non-duplication;
 - shared entitlement ledger prevents duplicate billing;

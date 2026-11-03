@@ -2,7 +2,182 @@
   "contractId": "MC16-REVIEW-FINDINGS",
   "contractVersion": "1.0.0",
   "milestone": "MC-16",
-  "status": "PENDING_INDEPENDENT_AUDIT",
-  "findings": [],
-  "verdict": "PENDING"
+  "status": "AUDITED",
+  "verdict": "PASS_INTERNAL_COMMERCE_DATA_SCOPE",
+  "reviewedCommit": "ee4f5d2",
+  "reviewedCommitFull": "ee4f5d20bb0613b6a0e3eaff600b93047cd8ea3e",
+  "reviewedBaseCommit": "99212a41f5942a6fef4ede75815132c11fa4de50",
+  "correctionRange": "4e67ae2f0a4f4d8d2de3d46ddf2a2543796be366..ee4f5d20bb0613b6a0e3eaff600b93047cd8ea3e",
+  "independentAuditor": "independent-auditor-final",
+  "reviewedAt": "2026-11-03",
+  "scope": "Final independent audit of MC-16 at ee4f5d2 (full range 99212a4..HEAD and correction range 4e67ae2..HEAD), internal commerce data contract only. No merge, deploy, publication, activation or MC-17 work is authorized.",
+  "verdictRule": "PASS_INTERNAL_COMMERCE_DATA_SCOPE because the audited commit type-checks and builds, the MC-16 data (1730/1730) and unit (74/74) gates pass, the merchant-SKU evidence path executes and fails closed, the truthfulness zeros and open gates are intact, and no BLOCKING or MAJOR finding remains open. One MINOR residual (approved-price trigger field coverage) and two INFORMATIONAL residuals are recorded for follow-up; V-18 is inherited MC-13 debt.",
+  "commands": [
+    {
+      "command": "git status --short",
+      "exitCode": 0,
+      "result": "Only the two authorised D21 record files were modified (pre-existing drafts); no implementation, schema, test, route or other dataset change."
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0,
+      "result": "No whitespace or conflict errors."
+    },
+    {
+      "command": "npx tsc -p tsconfig.app.json --noEmit",
+      "exitCode": 0,
+      "result": "Clean type-check (TypeScript 5.9.3); no TS2448/TS2454."
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "result": "Application bundle generation complete. [18.233 seconds]; 96 static routes prerendered; only the four pre-existing CommonJS optimisation warnings."
+    },
+    {
+      "command": "npm run test:commerce-data",
+      "exitCode": 0,
+      "result": "1730/1730 checks passed; files 21; families 9; editions 26; bundles 6; routes 23; gates 13; approved prices 0; merchant SKUs 0; verified inventory 0."
+    },
+    {
+      "command": "npm run test:commerce-data:unit",
+      "exitCode": 0,
+      "result": "tests 74; pass 74; fail 0; cancelled 0; skipped 0; the merchant-SKU evidence regression test passes."
+    },
+    {
+      "command": "npm run test:financial",
+      "exitCode": 1,
+      "result": "77 checks - 76 PASS / 1 FAIL; only V-18 - No MC-14 execution (inherited)."
+    }
+  ],
+  "counts": {
+    "families": 9,
+    "editions": 26,
+    "skuCandidates": 26,
+    "merchantSkus": 0,
+    "bundles": 6,
+    "proposedRoutes": 23,
+    "publishedRoutes": 0,
+    "releaseGates": 13,
+    "releaseGatesOpen": 13,
+    "approvedPrices": 0,
+    "verifiedInventoryItems": 0,
+    "subscriptionPlans": 13,
+    "realSubscriptions": 0,
+    "entitlementDefinitions": 12,
+    "realEntitlementGrants": 0,
+    "requiredDocumentsUnexecuted": 24,
+    "websiteFindingsOpen": 34,
+    "mc16PreconditionsMet": 0,
+    "mc16PreconditionsTotal": 10
+  },
+  "findings": [
+    {
+      "id": "MC16-FINAL-01",
+      "severity": "BLOCKING",
+      "affectedFile": "src/server/marea-commerce/domain.ts",
+      "evidence": "At c9ef80e the merchant-SKU evidence loop used evidenceById before its declaration: npm run build failed with TS2448/TS2454 and evaluatePurchasability threw ReferenceError for any merchant SKU carrying approvalEvidenceIds. At 981c53f the map is declared at line 683 before the block that uses it at lines 693-697. tsc and build now exit 0. At ee4f5d2 the regression test 'merchant SKU approval evidence is resolved and missing evidence denies' was added to scripts/check-marea-commerce-data.test.mjs: it returns allowed=false without MERCHANT_SKU_APPROVAL_EVIDENCE_INVALID for usable VERIFIED_EXTERNAL evidence, and returns allowed=false with MERCHANT_SKU_APPROVAL_EVIDENCE_INVALID and missingEvidenceIds=['EV-MISSING'] when the evidence id is absent. The 74/74 unit run passes.",
+      "reproduction": "npx tsc -p tsconfig.app.json --noEmit (exit 0); npm run build (exit 0, 96 routes); npm run test:commerce-data:unit (74/74, including the merchant-SKU evidence test).",
+      "requiredCorrection": "Implemented: hoist const evidenceById above the if (context.merchantSku) block (981c53f) and add the valid/missing evidence regression test (ee4f5d2).",
+      "owner": "MC-16 correction owner (domain)",
+      "status": "CLOSED",
+      "correctionCommit": "ee4f5d20bb0613b6a0e3eaff600b93047cd8ea3e",
+      "independentReverification": "Rechecked at ee4f5d2: tsc 0, build 0, positive evidence path executes without exception, missing evidence id denied, unit gate 74/74."
+    },
+    {
+      "id": "MC16-FINAL-02",
+      "severity": "MINOR",
+      "affectedFile": "src/server/marea-commerce/schema.ts",
+      "evidence": "trg_marea_approved_price_immutable covers status, amount_minor, currency, territory, channel, vat_basis, includes_vat, effective_from, approved_by and approved_by_role, and the companion trigger blocks deletion of the approval evidence link. It does not cover edition_id, effective_to or approval_evidence_ids_json. A disposable-DB probe confirms: while the row is APPROVED / 199900, UPDATE edition_id='ed-2', UPDATE effective_to and UPDATE approval_evidence_ids_json='[\"ev-other\"]' all succeed; UPDATE status='REVOKED', UPDATE amount_minor, UPDATE effective_from, UPDATE approved_by and the evidence DELETE abort with MC16_APPROVED_PRICE_IMMUTABLE / MC16_APPROVED_PRICE_EVIDENCE_IMMUTABLE. Latent: 0 approved prices, 0 merchant SKUs, no public or production path.",
+      "reproduction": "Install MAREA_COMMERCE_SCHEMA_SQL into a temp DB; insert family/edition/gate/evidence/price; link evidence and approve; then UPDATE edition_id, UPDATE effective_to and UPDATE approval_evidence_ids_json while APPROVED: all succeed; UPDATE status, UPDATE amount_minor, UPDATE effective_from, UPDATE approved_by and DELETE evidence abort.",
+      "requiredCorrection": "Extend the immutable trigger (or add a companion trigger) to cover edition_id, effective_to, approval_evidence_ids_json and any other approval-scoped financial field; keep the status flip, amount and evidence-delete guards.",
+      "owner": "MC-17 schema hardening",
+      "status": "OPEN_FOLLOW_UP",
+      "correctionCommit": null,
+      "independentReverification": "Re-run the disposable-DB probe after the fix; assert that edition re-binding, expiry mutation and approval-JSON mutation also abort on an APPROVED price."
+    },
+    {
+      "id": "MC16-FINAL-03",
+      "severity": "MINOR",
+      "affectedFile": "docs/marea/commerce-data/MC16-DETERMINISTIC-VALIDATION-AND-ADVERSARIAL-TESTS.md",
+      "evidence": "The D20 matrix rows 23 and 33 did not match the executed suite at 4e67ae2. At 981c53f row 23 reads 'Invalid transition skips a required gate | LIF-007' and row 33 reads 'Unknown bundle component edition | BND-009'; ADV-23 asserts LIF-007 and ADV-33 asserts BND-009, and both pass in the unit run.",
+      "reproduction": "npm run test:commerce-data:unit; compare the D20 matrix rows 23 and 33 with the ADV-23/ADV-33 assertions.",
+      "requiredCorrection": "Implemented at 981c53f.",
+      "owner": "MC-16 documentation owner",
+      "status": "CLOSED",
+      "correctionCommit": "981c53f353fdd19640d6857dcc8a6bacc2364ff8",
+      "independentReverification": "Rows 23 and 33 re-derived from the executed test titles and rule ids."
+    },
+    {
+      "id": "MC16-FINAL-04",
+      "severity": "MINOR",
+      "affectedFile": "docs/marea/commerce-data/MC16-LEGACY-COMMERCE-COMPATIBILITY.md",
+      "evidence": "The D14 hash table listed raw-byte SHA-256 values that did not match the frozen mapping. At ee4f5d2 the table matches data/legacy-commerce-mapping.json and independently recomputes over LF-normalised content (8/8); raw-byte matches are 0/8 because all eight files currently contain CRLF bytes. No stale raw-byte hash remains in any D01-D20 document.",
+      "reproduction": "Hash each of the eight files over raw bytes and over CRLF-to-LF content; compare with the D14 table and data/legacy-commerce-mapping.json.",
+      "requiredCorrection": "Implemented at ee4f5d2.",
+      "owner": "MC-16 documentation owner (D14)",
+      "status": "CLOSED",
+      "correctionCommit": "ee4f5d20bb0613b6a0e3eaff600b93047cd8ea3e",
+      "independentReverification": "8/8 normalised values equal the table and the mapping; grep for the old raw values returns no matches."
+    },
+    {
+      "id": "MC16-FINAL-05",
+      "severity": "INFORMATIONAL",
+      "affectedFile": "docs/marea/commerce-data/MC16-MACHINE-READABLE-DATASETS.md",
+      "evidence": "D19 describes blocker-register.json as 'Gate and precondition arrays plus inherited summary counters (documents/findings) | 13 gates / 10 preconditions; 24 docs / 34 findings counters'. The file has gates[] (13), preconditions[] (10), inheritedDebt[] (6) and summary.requiredDocumentsUnexecuted=24 / summary.websiteFindingsOpen=34; it has no documents[] or findings[] arrays.",
+      "reproduction": "Read the keys of data/blocker-register.json and compare with D19 line 42.",
+      "requiredCorrection": "Implemented at 981c53f.",
+      "owner": "MC-16 documentation owner (D19)",
+      "status": "CLOSED",
+      "correctionCommit": "981c53f353fdd19640d6857dcc8a6bacc2364ff8",
+      "independentReverification": "D19 re-read against the actual blocker-register keys and counts."
+    },
+    {
+      "id": "MC16-FINAL-06",
+      "severity": "INFORMATIONAL",
+      "affectedFile": "scripts/check-marea-financial-model.mjs",
+      "evidence": "npm run test:financial exits 1 with 77 checks, 76 PASS / 1 FAIL, only V-18 'No MC-14 execution' (registry row 14 is not PLANNED). The failure predates MC-16 (MC-13 7dfb56d), the MC-16 diff changes no financial script, engine or registry file, and blocker-register.json classifies it INHERITED_VALIDATOR_STATE_DEBT, OPEN. Not an MC-16 regression or blocker.",
+      "reproduction": "npm run test:financial (exit 1, only V-18); git diff --name-only 99212a4..HEAD filtered for financial/registry files returns no matches.",
+      "requiredCorrection": "None in MC-16. Resolve under the MC-13/MC-14 financial-model registry owner; do not edit frozen financial data or the registry from MC-16.",
+      "owner": "MC-13 financial-model owner (V-18)",
+      "status": "INHERITED_OPEN",
+      "correctionCommit": null,
+      "independentReverification": "Reconfirmed at ee4f5d2: same 76 PASS / 1 FAIL and exit 1; the failing script is untouched by the MC-16 diff."
+    },
+    {
+      "id": "MC16-FINAL-07",
+      "severity": "INFORMATIONAL",
+      "affectedFile": "scripts/check-marea-commerce-data.test.mjs",
+      "evidence": "Price edition binding is implemented at domain.ts:481-483 (PRICE_EDITION_MISMATCH) and evaluatePurchasability passes the edition id. At 981c53f the 'approved price requires verified external evidence and authorized role' test adds a wrongEdition case and asserts PRICE_EDITION_MISMATCH; the 74-test unit gate passes.",
+      "reproduction": "npm run test:commerce-data:unit; inspect the wrongEdition assertion in scripts/check-marea-commerce-data.test.mjs.",
+      "requiredCorrection": "Implemented at 981c53f.",
+      "owner": "MC-16 test suite owner",
+      "status": "CLOSED",
+      "correctionCommit": "981c53f353fdd19640d6857dcc8a6bacc2364ff8",
+      "independentReverification": "Assertion present and passing; the domain returns PRICE_EDITION_MISMATCH for a mismatched edition id."
+    },
+    {
+      "id": "MC16-FINAL-08",
+      "severity": "MINOR",
+      "affectedFile": "scripts/check-marea-commerce-data.test.mjs",
+      "evidence": "Before ee4f5d2 no suite passed a non-null merchantSku to evaluatePurchasability, so the repaired path that caused the BLOCKING build failure had no committed regression test. At ee4f5d2 the test 'merchant SKU approval evidence is resolved and missing evidence denies' covers both a usable VERIFIED_EXTERNAL evidence id (no exception, no invalid-evidence reason) and a missing id (MERCHANT_SKU_APPROVAL_EVIDENCE_INVALID + missingEvidenceIds). The 74/74 unit run passes.",
+      "reproduction": "npm run test:commerce-data:unit; confirm the new test is executed and passes.",
+      "requiredCorrection": "Implemented at ee4f5d2.",
+      "owner": "MC-16 test suite owner",
+      "status": "CLOSED",
+      "correctionCommit": "ee4f5d20bb0613b6a0e3eaff600b93047cd8ea3e",
+      "independentReverification": "Test present in the committed file and passing in the 74-test gate."
+    },
+    {
+      "id": "MC16-FINAL-09",
+      "severity": "INFORMATIONAL",
+      "affectedFile": "docs/marea/commerce-data/MC16-DETERMINISTIC-VALIDATION-AND-ADVERSARIAL-TESTS.md",
+      "evidence": "D20 section 2 enumerates the unit-test coverage but does not mention the merchant-SKU evidence test added by ee4f5d2; section 3 correctly covers the persistence and edition-mismatch additions. The suite is correct and passing; the documentation list is stale by one case, so a reader could conclude the evidence path is still untested.",
+      "reproduction": "Compare D20:35-55 with the test titles emitted by npm run test:commerce-data:unit.",
+      "requiredCorrection": "Add 'merchant SKU approval evidence (valid resolves, missing denies)' to the D20 unit-test coverage list at the next documentation pass.",
+      "owner": "MC-16 documentation owner (D20)",
+      "status": "OPEN_DOC",
+      "correctionCommit": null,
+      "independentReverification": "Re-read D20 after the edit and confirm the new case is listed."
+    }
+  ]
 }
