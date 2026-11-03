@@ -269,7 +269,7 @@ release-gate set.
 | Checkout false | every plan `checkoutAllowed=false`; schema CHECK | `false` |
 | No double billing rule | `resolveEntitlementDependencies` | Dedupe deterministic |
 | Local safety independence | definitions + evaluator + isolation table | Design requirement |
-| Data validator | `node scripts/check-marea-commerce-data.mjs` | 1,727/1,727 checks passed |
+| Data validator | `node scripts/check-marea-commerce-data.mjs` | 1,730/1,730 checks passed |
 
 ## 11. Acceptance criteria
 

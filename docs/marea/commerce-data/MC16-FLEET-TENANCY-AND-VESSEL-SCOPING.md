@@ -92,7 +92,7 @@ exists. It fixes them as acceptance obligations for the future implementation.
 MC-16 represents an entitlement's scope with:
 
 ```text
-grep_type: ACCOUNT | ORGANIZATION | TENANT | VESSEL | DEVICE
+scope_type: ACCOUNT | ORGANIZATION | TENANT | VESSEL | DEVICE
 scope_id:  opaque, non-empty, server-resolved identifier
 ```
 
@@ -275,7 +275,7 @@ per their own terms.
 | `ENT-FLEET` hypothesis, 0 grants | `entitlement-definitions.json` | Verified |
 | Cross-tenant evaluator exists | `domain.ts:788-797` | Present |
 | Telemetry read-only contract | FLEET tenancy contract §8, §24.3; product limitation statement | Defined |
-| Data validator | `node scripts/check-marea-commerce-data.mjs` | 1,727/1,727 checks passed |
+| Data validator | `node scripts/check-marea-commerce-data.mjs` | 1,730/1,730 checks passed |
 
 ## 10. Acceptance criteria
 

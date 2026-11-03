@@ -222,7 +222,7 @@ None is met. `MC17_STARTED = false`; `mc17ImplementationAuthorized = false`;
 | 0 MAREA price/availability markup | same | `false` each |
 | Current routes preserved | `currentRoutes`; `current-routes.json` summary | `preserved = true`, `changedByMc16 = false` |
 | Publication evaluator denies | `domain.ts:648-667` | Denies on all current inputs |
-| Data validator | `node scripts/check-marea-commerce-data.mjs` | 1,727/1,727 checks passed |
+| Data validator | `node scripts/check-marea-commerce-data.mjs` | 1,730/1,730 checks passed |
 
 ## 9. Acceptance criteria
 

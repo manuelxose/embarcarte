@@ -496,6 +496,11 @@ test('blocks merchantable, priced, published and activation fields', (t) => {
   );
 
   assert.throws(
+    () => insertGate(db, { gate_id: 'gate-closed', status: 'CLOSED_VERIFIED' }),
+    /MC16_GATE_CLOSURE_PROHIBITED/,
+  );
+
+  assert.throws(
     () => insertFamily(db, { family_id: 'fam-published', publication_state: 'PUBLISHED' }),
     /MC16_COMMERCIAL_ACTIVATION_PROHIBITED/,
   );
@@ -554,6 +559,18 @@ test('rejects an approved price without verified external approval evidence', (t
       .prepare("SELECT status FROM marea_price_versions WHERE price_version_id = 'price-valid'")
       .get().status,
     'APPROVED',
+  );
+  assert.throws(
+    () =>
+      db.exec(
+        "UPDATE marea_price_versions SET amount_minor = 999999 WHERE price_version_id = 'price-valid'",
+      ),
+    /MC16_APPROVED_PRICE_IMMUTABLE/,
+  );
+  assert.throws(
+    () =>
+      db.exec("DELETE FROM marea_price_approval_evidence WHERE price_version_id = 'price-valid'"),
+    /MC16_APPROVED_PRICE_EVIDENCE_IMMUTABLE/,
   );
 
   assert.throws(

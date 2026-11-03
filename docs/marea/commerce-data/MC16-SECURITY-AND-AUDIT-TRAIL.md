@@ -221,14 +221,14 @@ exists.
 | No startup migration | `installMareaCommerceSchema` is an explicit export; `src/server.ts` and `src/server/db.ts` never call it |
 | Disposable database only | Internal tooling must require an explicit temporary path and refuse `data/embarcarte.sqlite` and any repository data path (D13/D17; tooling authored under the persistence workstream) |
 | No legacy FKs | No `REFERENCES` from any `marea_*` table to `products`, `orders`, `users` or other legacy tables |
-| Activation blocked | 14 triggers abort commercial activation, approval without evidence, real grants, subscription checkout, publication flags and audit mutation |
+| Activation blocked | 19 triggers abort commercial activation, approval without evidence, real grants, subscription checkout, publication flags and audit mutation |
 | Publication blocked | `marea_publication_eligibility` CHECKs require all four authorization flags to be `0`; no route or markup is emitted anywhere |
 
 ## 11. Verification evidence
 
 | Check | Result | Class |
 |---|---|---|
-| Schema triggers present | 14 triggers created on install | LOCAL_SCRATCH_VERIFIED |
+| Schema triggers present | 19 triggers created on install | LOCAL_SCRATCH_VERIFIED |
 | Double install | idempotent, one schema version row | LOCAL_SCRATCH_VERIFIED |
 | `FOR_SALE` family insert/update | aborted `MC16_COMMERCIAL_ACTIVATION_PROHIBITED` | LOCAL_SCRATCH_VERIFIED |
 | Merchantable edition insert | aborted `MC16_MERCHANTABLE_EDITION_PROHIBITED` | LOCAL_SCRATCH_VERIFIED |
@@ -236,7 +236,7 @@ exists.
 | Real entitlement grant | aborted `MC16_REAL_ENTITLEMENT_GRANT_PROHIBITED` | LOCAL_SCRATCH_VERIFIED |
 | Publication authorization | failed CHECK (`publication_authorized = 0`) | LOCAL_SCRATCH_VERIFIED |
 | Drop | 0 remaining `marea_%` tables | LOCAL_SCRATCH_VERIFIED |
-| Package validator | `AUD-001..003`, `SEC-001..002` pass in the 1727/1727 snapshot (parallel workstream) | LOCAL_SCRATCH_VERIFIED (snapshot) |
+| Package validator | `AUD-001..003`, `SEC-001..002` pass in the 1730/1730 snapshot (parallel workstream) | LOCAL_SCRATCH_VERIFIED (snapshot) |
 | Domain unit tests | audit rejects missing evidence and secret wording; real grant rejected; `check-marea-commerce-data.test.mjs` | LOCAL_SCRATCH_VERIFIED (snapshot) |
 | Persistence suite | not executed by this workstream — authored in parallel; must be run at the final candidate | NOT EXECUTED |
 

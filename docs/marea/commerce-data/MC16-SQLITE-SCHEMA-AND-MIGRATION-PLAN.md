@@ -97,11 +97,11 @@ Index count: **9** (`idx_marea_editions_family`,
 also have `json_valid(...)` checks. `marea_inventory_items.quantity_available` is
 a stored generated column, so callers cannot forge it.
 
-## 5. Triggers (15)
+## 5. Triggers (19)
 
 | Trigger | Event | Effect |
 |---|---|---|
-| `trg_marea_family_mc16_guard` | INSERT families | Abort `MC16_COMMERCIAL_ACTIVATION_PROHIBITED` on `FOR_SALE` or readiness lifecycle |
+| `trg_marea_family_mc16_guard` | INSERT families | Abort `MC16_COMMERCIAL_ACTIVATION_PROHIBITED` on `FOR_SALE`, `PUBLISHED` or readiness lifecycle |
 | `trg_marea_family_mc16_guard_update` | UPDATE families | Same |
 | `trg_marea_edition_mc16_guard` | INSERT editions | Abort `MC16_MERCHANTABLE_EDITION_PROHIBITED` on merchantable/price/published/availability/readiness |
 | `trg_marea_edition_mc16_guard_update` | UPDATE editions | Same |
@@ -111,6 +111,10 @@ a stored generated column, so callers cannot forge it.
 | `trg_marea_bundle_mc16_guard_update` | UPDATE bundles | Same |
 | `trg_marea_price_approval_guard` | UPDATE price status | Abort `MC16_PRICE_APPROVAL_EVIDENCE_REQUIRED` unless valid verified external `PRICE_APPROVAL`/`EXTERNAL_PRICE_LIST` evidence is linked |
 | `trg_marea_price_approval_guard_insert` | INSERT price | Same; a price cannot be born `APPROVED` |
+| `trg_marea_approved_price_immutable` | UPDATE approved price | Abort `MC16_APPROVED_PRICE_IMMUTABLE` on any financial-field change |
+| `trg_marea_approved_price_evidence_no_delete` | DELETE price evidence | Abort `MC16_APPROVED_PRICE_EVIDENCE_IMMUTABLE` while the price is approved |
+| `trg_marea_gate_closure_prohibited` | INSERT gates | Abort `MC16_GATE_CLOSURE_PROHIBITED` on `CLOSED_VERIFIED` during MC-16 |
+| `trg_marea_gate_closure_prohibited_update` | UPDATE gates | Same |
 | `trg_marea_entitlement_real_grant_guard` | INSERT grants | Abort `MC16_REAL_ENTITLEMENT_GRANT_PROHIBITED` on non-synthetic or contract/purchase/migration basis |
 | `trg_marea_subscription_activation_guard` | INSERT plans | Abort `MC16_SUBSCRIPTION_ACTIVATION_PROHIBITED` on checkout or non-definition state |
 | `trg_marea_audit_no_update` | UPDATE audit | Abort `MC16_AUDIT_APPEND_ONLY` |
@@ -145,13 +149,13 @@ node scripts/marea-commerce-schema.mjs --print-version
 
 ## 7. Rollback
 
-`dropMareaCommerceSchema(db)` executes `MAREA_COMMERCE_DROP_SQL`: drop all 15
+`dropMareaCommerceSchema(db)` executes `MAREA_COMMERCE_DROP_SQL`: drop all 19
 triggers first, then all 19 tables in reverse dependency order, using
 `IF EXISTS`. The result is a clean database with zero `marea_*` tables; a
 subsequent install restores the full schema. This is a full disposable-database
 rollback, not a production down-migration.
 
-Verified evidence (2026-11-03): two installs produced **19/19 tables**, **15
+Verified evidence (2026-11-03): two installs produced **19/19 tables**, **19
 triggers**, **1** schema-meta row, `foreign_keys = 1`; `--drop` left **0**
 `marea_*` tables. The persistence suite additionally passes 16/16 tests,
 including idempotency, FK failure rollback and full drop/reinstall reversibility.
@@ -210,8 +214,8 @@ MC-16. A test pass cannot substitute for external evidence or gate closure.
 |---|---|
 | `node scripts/marea-commerce-schema.mjs --print-version` | `mc16-commerce-schema-1.0.0` |
 | `node --test --test-isolation=none scripts/check-marea-commerce-persistence.test.mjs` | **16/16 passed**, 0 failed |
-| `node scripts/check-marea-commerce-data.mjs` | **1,727/1,727 checks passed** |
-| Two-install probe | 19 tables, 15 triggers, 1 meta row, FK on |
+| `node scripts/check-marea-commerce-data.mjs` | **1,730/1,730 checks passed** |
+| Two-install probe | 19 tables, 19 triggers, 1 meta row, FK on |
 | Drop probe | 0 `marea_*` tables after drop |
 
 ## 12. References

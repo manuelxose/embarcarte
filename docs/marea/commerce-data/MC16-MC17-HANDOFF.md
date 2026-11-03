@@ -36,7 +36,7 @@ from it without written authorization.
 | SKU candidate | `skuCandidateId` | Internal candidate only; no public SKU code exists |
 | Bundle | `bundleId` (`START` … `FLEET`) | An entity with components/exclusions, not a SKU |
 | Page | `routeId` / `entityId` | One page per family/bundle/tool; never one page per edition |
-| Entitlement | `SE-*` / `RS-*` | A licensed capability reference, not a grant and not a page |
+| Entitlement | `ENT-*` / `RS-*` | A licensed capability reference, not a grant and not a page |
 
 `displayName` is language-neutral. Localized content belongs to one entity: never
 duplicate an edition as an ES and an EN SKU, and never derive identity from a slug.

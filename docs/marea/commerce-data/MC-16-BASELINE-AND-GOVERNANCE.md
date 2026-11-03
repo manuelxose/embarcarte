@@ -159,10 +159,10 @@ Supporting machine artefacts (parallel workstreams, not separate documents):
 `scripts/check-marea-commerce-data.mjs`, and the internal disposable-database
 tooling and persistence suite under `scripts/`.
 
-D01 is a governance document. D19–D22 are not part of the MC-16 document numbering
-in this package; validation, adversarial tests, independent review and delivery
-records are recorded as supporting artefacts when they exist, and none of them is
-an approval.
+D01 is a governance document. D19–D23 are supporting artefacts (datasets and
+persistence, deterministic and adversarial testing, independent review, Spanish
+executive report and the delivery record). They are recorded when they exist and
+none of them is an approval.
 
 ## 5. Governing principles
 
@@ -228,8 +228,8 @@ Rules:
 | `gh pr view 22 --json …` | `OPEN`, `isDraft: true`, `MERGEABLE`, `mergedAt: null` | REPOSITORY_VERIFIED (read-only API) |
 | `gh pr list --head feature/marea-mc16-commerce-product-data-model` | `[]` | REPOSITORY_VERIFIED |
 | `Get-FileHash` on the 8 legacy files | all 8 match the frozen mapping | LOCAL_SCRATCH_VERIFIED |
-| `node scripts/check-marea-commerce-data.mjs` | `MC-16 commerce data: 1727/1727 checks passed`; `files: 21; families: 9; editions: 26; bundles: 6; routes: 23; gates: 13; approved prices: 0; merchant SKUs: 0; verified inventory: 0` (snapshot, parallel workstream) | LOCAL_SCRATCH_VERIFIED |
-| Disposable schema install / guard probe | 20 tables (19 MC-16 + `sqlite_sequence`), 14 triggers, idempotent double install, all six activation probes blocked (`MC16_COMMERCIAL_ACTIVATION_PROHIBITED`, `MC16_MERCHANTABLE_EDITION_PROHIBITED`, `MC16_AUDIT_APPEND_ONLY` ×2, `MC16_REAL_ENTITLEMENT_GRANT_PROHIBITED`, publication CHECK), drop leaves 0 `marea_%` tables | LOCAL_SCRATCH_VERIFIED |
+| `node scripts/check-marea-commerce-data.mjs` | `MC-16 commerce data: 1730/1730 checks passed`; `files: 21; families: 9; editions: 26; bundles: 6; routes: 23; gates: 13; approved prices: 0; merchant SKUs: 0; verified inventory: 0` (snapshot, parallel workstream) | LOCAL_SCRATCH_VERIFIED |
+| Disposable schema install / guard probe | 20 tables (19 MC-16 + `sqlite_sequence`), 19 triggers, idempotent double install, all six activation probes blocked (`MC16_COMMERCIAL_ACTIVATION_PROHIBITED`, `MC16_MERCHANTABLE_EDITION_PROHIBITED`, `MC16_AUDIT_APPEND_ONLY` ×2, `MC16_REAL_ENTITLEMENT_GRANT_PROHIBITED`, publication CHECK), drop leaves 0 `marea_%` tables | LOCAL_SCRATCH_VERIFIED |
 | `npm run test:financial` | `77 checks - 76 PASS / 1 FAIL`; `FAIL V-18 - No MC-14 execution`; exit 1 | LOCAL_SCRATCH_VERIFIED |
 | `git diff --stat HEAD` | `package.json` only (parallel workstream script entries) | REPOSITORY_VERIFIED |
 | Import scan `marea-commerce` under `src/` | 0 matches outside `src/server/marea-commerce/` | REPOSITORY_VERIFIED |

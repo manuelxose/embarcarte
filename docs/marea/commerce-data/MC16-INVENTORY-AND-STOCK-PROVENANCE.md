@@ -264,7 +264,7 @@ Stripe. No MAREA stock is visible, reservable, published or sold.
 | Admin stock not MAREA stock | `sources.ADMIN_ENTERED_STOCK` | `usableAsMareaStock = false` |
 | No legacy-to-MAREA mapping | `legacy-commerce-mapping.json` | `mareaSkusMappedFromLegacy = []` |
 | Legacy shop untouched | file hashes in `legacy-commerce-mapping.json` | `UNCHANGED` required; MC-16 edits no shop file |
-| Data validator | `node scripts/check-marea-commerce-data.mjs` | 1,727/1,727 checks passed |
+| Data validator | `node scripts/check-marea-commerce-data.mjs` | 1,730/1,730 checks passed |
 
 ## 11. Acceptance criteria
 

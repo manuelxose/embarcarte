@@ -458,6 +458,48 @@ BEGIN
   SELECT RAISE(ABORT, 'MC16_PRICE_APPROVAL_EVIDENCE_REQUIRED');
 END;
 
+CREATE TRIGGER IF NOT EXISTS trg_marea_approved_price_immutable
+BEFORE UPDATE ON marea_price_versions
+WHEN OLD.status = 'APPROVED'
+  AND (
+    NEW.amount_minor IS NOT OLD.amount_minor
+    OR NEW.currency IS NOT OLD.currency
+    OR NEW.territory IS NOT OLD.territory
+    OR NEW.channel IS NOT OLD.channel
+    OR NEW.vat_basis IS NOT OLD.vat_basis
+    OR NEW.includes_vat IS NOT OLD.includes_vat
+    OR NEW.effective_from IS NOT OLD.effective_from
+    OR NEW.approved_by IS NOT OLD.approved_by
+    OR NEW.approved_by_role IS NOT OLD.approved_by_role
+  )
+BEGIN
+  SELECT RAISE(ABORT, 'MC16_APPROVED_PRICE_IMMUTABLE');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_marea_approved_price_evidence_no_delete
+BEFORE DELETE ON marea_price_approval_evidence
+WHEN EXISTS (
+  SELECT 1 FROM marea_price_versions
+  WHERE price_version_id = OLD.price_version_id AND status = 'APPROVED'
+)
+BEGIN
+  SELECT RAISE(ABORT, 'MC16_APPROVED_PRICE_EVIDENCE_IMMUTABLE');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_marea_gate_closure_prohibited
+BEFORE INSERT ON marea_release_gates
+WHEN NEW.status = 'CLOSED_VERIFIED'
+BEGIN
+  SELECT RAISE(ABORT, 'MC16_GATE_CLOSURE_PROHIBITED');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_marea_gate_closure_prohibited_update
+BEFORE UPDATE ON marea_release_gates
+WHEN NEW.status = 'CLOSED_VERIFIED'
+BEGIN
+  SELECT RAISE(ABORT, 'MC16_GATE_CLOSURE_PROHIBITED');
+END;
+
 CREATE TRIGGER IF NOT EXISTS trg_marea_entitlement_real_grant_guard
 BEFORE INSERT ON marea_entitlement_grants
 WHEN NEW.synthetic = 0 OR NEW.basis IN ('CONTRACT','PURCHASE','MIGRATION')
@@ -514,6 +556,10 @@ DROP TRIGGER IF EXISTS trg_marea_audit_no_delete;
 DROP TRIGGER IF EXISTS trg_marea_audit_no_update;
 DROP TRIGGER IF EXISTS trg_marea_subscription_activation_guard;
 DROP TRIGGER IF EXISTS trg_marea_entitlement_real_grant_guard;
+DROP TRIGGER IF EXISTS trg_marea_gate_closure_prohibited_update;
+DROP TRIGGER IF EXISTS trg_marea_gate_closure_prohibited;
+DROP TRIGGER IF EXISTS trg_marea_approved_price_evidence_no_delete;
+DROP TRIGGER IF EXISTS trg_marea_approved_price_immutable;
 DROP TRIGGER IF EXISTS trg_marea_price_approval_guard_insert;
 DROP TRIGGER IF EXISTS trg_marea_price_approval_guard;
 DROP TRIGGER IF EXISTS trg_marea_bundle_mc16_guard_update;

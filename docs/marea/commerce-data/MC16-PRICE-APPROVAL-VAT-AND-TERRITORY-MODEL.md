@@ -282,7 +282,7 @@ is non-null; otherwise it is `null`. `evaluatePurchasability()` then re-nulls
 | Schema rejects invalid integer and missing scope on approval | `schema.ts:187-213` | Present |
 | Domain evaluator denies all current records | `domain.ts:401-488`, `558-646` | `allowed=false`, `effectivePrice=null` |
 | No price in structured data for MAREA | `publication-eligibility.json`; D15 | `mareaPriceInStructuredData=false` |
-| Data validator | `node scripts/check-marea-commerce-data.mjs` | 1,727/1,727 checks passed on the base datasets |
+| Data validator | `node scripts/check-marea-commerce-data.mjs` | 1,730/1,730 checks passed on the base datasets |
 
 ## 10. Acceptance criteria
 

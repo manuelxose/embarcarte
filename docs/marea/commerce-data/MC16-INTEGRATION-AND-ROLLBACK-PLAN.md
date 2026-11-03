@@ -124,7 +124,7 @@ Rules:
 
 | Rehearsal | Pass condition | Status at MC-16 |
 |---|---|---|
-| Fresh install | 19 MC-16 tables + meta, 14 triggers | PASS on disposable DB (this workstream) |
+| Fresh install | 19 MC-16 tables + meta, 19 triggers | PASS on disposable DB (this workstream) |
 | Idempotent install | second install leaves one schema version row | PASS on disposable DB |
 | Guard probes | activation, approval, grant, audit mutation and publication attempts abort | PASS on disposable DB |
 | Drop | 0 remaining `marea_%` tables | PASS on disposable DB |

@@ -306,6 +306,25 @@ test('commercial transition is denied during MC-16', () => {
   assert.ok(result.reasonCodes.includes('MC16_COMMERCIAL_ACTIVATION_PROHIBITED'));
 });
 
+test('any lifecycle transition is denied while MC16 is not explicitly allowed', () => {
+  const result = evaluateReadinessTransition(
+    {
+      transitionId: 'TR-TEST-OPERATIONS',
+      entityId: 'NAV',
+      fromState: 'DEFINED',
+      toState: 'OPERATIONS_READY',
+      requiredGateIds: [],
+      requiredEvidenceIds: [],
+      requiredApproverRoles: ['PROGRAMME_LEAD'],
+      authorizationStatus: 'APPROVED',
+      auditEventId: 'AUD-1',
+    },
+    { gates: [], evidence: [], actor: { actorId: 'lead', roles: ['PROGRAMME_LEAD'] }, now: NOW },
+  );
+  assert.equal(result.authorized, false);
+  assert.ok(result.reasonCodes.includes('MC16_TRANSITION_NOT_AUTHORIZED'));
+});
+
 test('publication eligibility is false while gates or brand clearance are open', () => {
   const result = evaluatePublicationEligibility({
     gates,

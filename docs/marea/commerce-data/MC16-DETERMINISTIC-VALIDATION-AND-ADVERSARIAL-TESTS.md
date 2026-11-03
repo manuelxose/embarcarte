@@ -26,7 +26,7 @@ loads the 21 canonical datasets and performs four independent families of checks
 4. **Schema smoke** — the isolated schema is installed twice and dropped on a temporary
    SQLite database, with table, foreign-key and idempotency assertions.
 
-Current result at the frozen implementation: **1727/1727 checks pass**. The validator
+Current result at the frozen implementation: **1730/1730 checks pass**. The validator
 prints the exact command result and exits non-zero on any failure; it cannot be satisfied
 by changing a status to `PASS`.
 
@@ -84,7 +84,7 @@ reason; each assertion names the expected rule id.
 | 20 | Unauthorised actor authorises a gate | `ACTOR_UNAUTHORIZED` |
 | 21 | Historical audit records deleted | `AUD-001` |
 | 22 | Version collision overwrites an approval | `PRC-002` |
-| 23 | Invalid transition skips a required gate | `LIF-007` |
+| 23 | Transition not explicitly allowed in MC-16 | `MC16_TRANSITION_NOT_AUTHORIZED` |
 | 24 | Proposed MAREA page becomes indexable | `PUB-003` |
 | 25 | MAREA Product/Offer markup enabled | `PUB-006` |
 | 26 | Sample shop row mapped to live MAREA SKU | `LEG-003` |
@@ -94,15 +94,18 @@ reason; each assertion names the expected rule id.
 | 30 | Duplicate bundle composition inflates quantity | `BND-025` |
 | 31 | ES/EN mismatch creates a second entity | `EDN-002` |
 | 32 | Unverified movement makes stock negative | `INVENTORY_QUANTITY_INVARIANT_VIOLATED` |
-| 33 | Concurrent reservations oversell | persistence suite |
+| 33 | Two-connection conditional reservation cannot oversell | second conditional update changes = 0 |
 | 34 | Synthetic approval escapes its fixture | `PRICE_APPROVAL_EVIDENCE_INVALID` |
 | 35 | Forbidden production migration executed | `MNF-009` |
 | 36 | Existing customer orders altered | `LEG-004` |
 | 37 | Proposed route published | `PUB-010` |
 
 The persistence suite covers the attacks that require real SQLite transactions:
-historical audit deletion, negative movement, concurrent reservation over-sell, foreign-key
-violation, approved-price guard and production-path refusal.
+historical audit deletion, negative movement, atomic conditional reservation,
+foreign-key violation, approved-price immutability and production-path refusal. SQLite
+serializes writers; the reservation operation uses `BEGIN IMMEDIATE` plus a conditional
+`UPDATE ... WHERE quantity_reserved + ? <= quantity_on_hand`, and the test starts from two
+connections and proves the second conditional update changes zero rows.
 
 ## 4. Property-style domain checks
 

@@ -240,6 +240,7 @@ export interface ReadinessTransition {
   requiredApproverRoles: string[];
   authorizationStatus: string;
   auditEventId: string | null;
+  mc16Allowed?: boolean;
 }
 
 export interface AuditEvent {
@@ -419,7 +420,7 @@ export function validatePriceApproval(
   price: PriceVersion | null,
   evidence: EvidenceRecord[],
   now: string,
-  scope: { territory: string | null; channel: string | null },
+  scope: { territory: string | null; channel: string | null; editionId?: string | null },
 ): {
   approved: boolean;
   reasonCodes: string[];
@@ -476,6 +477,9 @@ export function validatePriceApproval(
   }
   if (scope.channel !== null && price.channel !== null && scope.channel !== price.channel) {
     reasonCodes.push('PRICE_CHANNEL_MISMATCH');
+  }
+  if (scope.editionId && price.editionId !== scope.editionId) {
+    reasonCodes.push('PRICE_EDITION_MISMATCH');
   }
 
   const evidenceById = new Map(evidence.map((item) => [item.evidenceId, item]));
@@ -685,11 +689,18 @@ export function evaluatePurchasability(context: PurchasabilityContext): Purchasa
     if (context.merchantSku.state !== 'ACTIVE') reasonCodes.add('MERCHANT_SKU_NOT_ACTIVE');
     if (context.merchantSku.approvalEvidenceIds.length === 0)
       reasonCodes.add('MERCHANT_SKU_APPROVAL_EVIDENCE_MISSING');
+    for (const evidenceId of context.merchantSku.approvalEvidenceIds) {
+      if (!isEvidenceUsable(evidenceById.get(evidenceId), now, ['VERIFIED_EXTERNAL'])) {
+        reasonCodes.add('MERCHANT_SKU_APPROVAL_EVIDENCE_INVALID');
+        missingEvidenceIds.add(evidenceId);
+      }
+    }
     if (!context.edition || context.merchantSku.editionId !== context.edition.editionId) {
       reasonCodes.add('MERCHANT_SKU_EDITION_MISMATCH');
     }
   }
 
+  const evidenceById = new Map(context.evidence.map((item) => [item.evidenceId, item]));
   const gateResult = evaluateGates(context.gates, context.evidence, now);
   for (const gateId of gateResult.blockingGateIds) reasonCodes.add(`GATE_OPEN:${gateId}`);
   for (const evidenceId of gateResult.missingEvidenceIds) missingEvidenceIds.add(evidenceId);
@@ -716,6 +727,7 @@ export function evaluatePurchasability(context: PurchasabilityContext): Purchasa
   const priceResult = validatePriceApproval(context.price, context.evidence, now, {
     territory,
     channel,
+    editionId: context.edition?.editionId ?? null,
   });
   for (const code of priceResult.reasonCodes) reasonCodes.add(code);
   for (const evidenceId of priceResult.missingEvidenceIds) missingEvidenceIds.add(evidenceId);
@@ -950,6 +962,8 @@ export function validateEntitlementGrant(
   if (!grant.basis) reasonCodes.add('ENTITLEMENT_BASIS_MISSING');
   if (!grant.auditEventId) reasonCodes.add('AUDIT_EVENT_MISSING');
   if (grant.synthetic !== true) reasonCodes.add('REAL_ENTITLEMENT_GRANT_PROHIBITED_MC16');
+  if (['CONTRACT', 'PURCHASE', 'MIGRATION'].includes(grant.basis))
+    reasonCodes.add('REAL_ENTITLEMENT_GRANT_PROHIBITED_MC16');
   if (!grant.startsAt || !isIsoDate(grant.startsAt)) reasonCodes.add('GRANT_START_INVALID');
   if (grant.endsAt && isIsoDate(grant.endsAt) && Date.parse(grant.endsAt) <= Date.parse(now))
     reasonCodes.add('GRANT_EXPIRED');
@@ -1012,6 +1026,7 @@ export function evaluateReadinessTransition(
   }
   if (transition.toState === 'COMMERCIALLY_AVAILABLE')
     reasonCodes.add('MC16_COMMERCIAL_ACTIVATION_PROHIBITED');
+  if (transition.mc16Allowed !== true) reasonCodes.add('MC16_TRANSITION_NOT_AUTHORIZED');
   return {
     authorized: reasonCodes.size === 0,
     reasonCodes: [...reasonCodes].sort(),

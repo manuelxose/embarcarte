@@ -35,7 +35,7 @@ validator fails if the manifest and the directory diverge.
 | `entitlement-definitions.json` | Capability and licence definitions | 12 |
 | `entitlement-mappings.json` | Bundle-to-entitlement maps and shared ledgers | 6 bundles |
 | `publication-eligibility.json` | 23 proposed routes, all non-deployable | 23 |
-| `source-lineage.json` | Immutable source paths and SHA-256 hashes | 19 sources |
+| `source-lineage.json` | Immutable source paths and SHA-256 hashes | 16 sources |
 | `legacy-commerce-mapping.json` | Legacy shop file hashes and zero MAREA mapping | 8 files |
 | `security-invariants.json` | Server authority, tenant and audit invariants | 25 |
 | `audit-event-contract.json` | Append-only event fields, types and rules | 12 event types |

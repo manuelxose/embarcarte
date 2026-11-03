@@ -164,7 +164,7 @@ respects all of the following:
 |---|---|
 | `Get-FileHash` × 8 legacy files | 8/8 match the frozen mapping |
 | `git diff --name-only HEAD` for the legacy set | empty |
-| `node scripts/check-marea-commerce-data.mjs` (snapshot) | `LEG-001..007` pass within 1727/1727; `mareaSkusMappedFromLegacy` empty |
+| `node scripts/check-marea-commerce-data.mjs` (snapshot) | `LEG-001..007` pass within 1730/1730; `mareaSkusMappedFromLegacy` empty |
 | `data/legacy-commerce-mapping.json` parse | valid; preservation flags all `false` |
 | Import scan `marea-commerce` | no legacy module imports the MC-16 schema |
 

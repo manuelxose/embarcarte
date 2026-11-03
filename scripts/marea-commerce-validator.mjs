@@ -81,7 +81,7 @@ export const PACKAGE_BASENAME = 'docs/marea/commerce-data/data';
 const readJson = (name) => JSON.parse(readFileSync(join(DATA_DIR, name), 'utf8'));
 const sha256 = (path) =>
   createHash('sha256')
-    .update(readFileSync(join(ROOT, path)))
+    .update(readFileSync(join(ROOT, path), 'utf8').replace(/\r\n/g, '\n'))
     .digest('hex');
 const sameSet = (left, right) => {
   const a = [...left].sort();
@@ -1163,14 +1163,15 @@ export function validateAgainstSources(model) {
 export function validateNoActivationImports() {
   const failures = [];
   let checks = 0;
-  const roots = [join(ROOT, 'src/server'), join(ROOT, 'src/app')];
+  const roots = [join(ROOT, 'src')];
+  const isolatedDirectory = resolve(join(ROOT, 'src/server/marea-commerce'));
   const forbidden = ['marea-commerce', 'evaluatePurchasability', 'MC16_POLICY_VERSION'];
   const walk = (directory) => {
     for (const entry of readdirSync(directory)) {
       const absolute = join(directory, entry);
       const stat = statSync(absolute);
       if (stat.isDirectory()) {
-        if (relative(ROOT, absolute).includes('marea-commerce')) continue;
+        if (resolve(absolute) === isolatedDirectory) continue;
         walk(absolute);
         continue;
       }
