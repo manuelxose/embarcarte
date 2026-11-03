@@ -1,0 +1,237 @@
+{
+  "contractId": "MC17-MC18-HANDOFF-INPUTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "READY_WITH_NAMED_GAPS",
+  "handoffStatus": "READY_WITH_NAMED_GAPS",
+  "mc18Started": false,
+  "mc18ImplementationPresent": false,
+  "publicationState": "NOT_AUTHORIZED",
+  "publicBrandAdoption": "NOT_AUTHORIZED",
+  "owner": "documentation-specialist (MC-17/36)",
+  "generationMethod": "authored by hand from the implementation, the cited datasets and the recorded validator run on 2026-11-03; no generator script produces this file",
+  "scope": "The subset of MC-17 handoff inputs that the documentation package can establish from evidence: design-system contracts, component count, preview commands and the commercial CTA restrictions MC-18 must inherit. It does not authorise MC-18 and records no result for it.",
+  "knownLimitations": [
+    "Only contracts, component count, preview commands and CTA restrictions are established here. Visual, responsive, performance, visual-regression and accessibility-audit evidence are NOT included because those artefacts did not exist at authoring time.",
+    "Component counts are the counts recorded in component-registry.json and verified against the implementation by check MC17-12; a later registry change makes this file stale.",
+    "The recorded validator run is FAIL (31/38). This handoff is READY_WITH_NAMED_GAPS, not a pass.",
+    "No MC-18 code, route, page or test exists; mc18Started and mc18ImplementationPresent are false by observation, not by policy alone."
+  ],
+  "sourceRefs": [
+    "src/app/marea-design-system/",
+    "src/app/marea-design-system/tokens/marea-design-tokens.source.json",
+    "docs/marea/design-system/data/component-registry.json",
+    "docs/marea/design-system/data/component-states.json",
+    "docs/marea/design-system/data/contrast-evidence.json",
+    "docs/marea/design-system/data/asset-provenance.json",
+    "docs/marea/design-system/data/blocker-register.json",
+    "docs/marea/design-system/evidence/validator-run.json",
+    "docs/marea/commerce-data/MC16-MC17-HANDOFF.md",
+    "docs/marea/commerce-data/data/mc17-handoff-inputs.json",
+    "angular.json (project marea-design-system-catalogue)",
+    "package.json (design-system scripts)"
+  ],
+  "flags": {
+    "mc18Started": false,
+    "mc18ImplementationPresent": false,
+    "publicationState": "NOT_AUTHORIZED",
+    "publicBrandAdoption": "NOT_AUTHORIZED",
+    "mc17State": "INTERNAL_IMPLEMENTATION_IN_PROGRESS",
+    "mc17ValidatorStatus": "FAIL_31_OF_38_AT_AUTHORING_TIME",
+    "mc17ValidatorLastObserved": "FAIL_35_OF_38",
+    "mc17ValidatorNote": "The evidence file is rewritten on every run and was observed twice while parallel workstreams were landing artefacts; read evidence/validator-run.json for the current result.",
+    "mc17IndependentReview": "PENDING",
+    "note": "MC-17 itself is not complete: its validator does not pass and no independent review exists. MC-18 must not be started from this file."
+  },
+  "contracts": [
+    {
+      "contractId": "MC17-DESIGN-TOKENS",
+      "contractVersion": "1.0.0",
+      "path": "src/app/marea-design-system/tokens/marea-design-tokens.source.json",
+      "generatedBy": "node scripts/build-marea-design-tokens.mjs",
+      "status": "INTERNAL_PROPOSED",
+      "content": "4 visual modes, 33 colour roles per mode, 163 token ids, 262 provenance rows, typography roles, layout scales"
+    },
+    {
+      "contractId": "MC17-TOKEN-SOURCE-MAP",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/token-source-map.json",
+      "generatedBy": "node scripts/build-marea-design-tokens.mjs",
+      "content": "262 provenance rows with tokenId, cssVar, mode, value, status and sourceTokenId"
+    },
+    {
+      "contractId": "MC17-COLOR-ROLES",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/color-roles.json",
+      "content": "33 colour roles x 4 modes, 10 declared contrast pair groups, data status semantics, forbidden night values"
+    },
+    {
+      "contractId": "MC17-MODE-CONTRACTS",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/mode-contracts.json",
+      "content": "web-light, instrument-day, instrument-sunlight, instrument-night; selector scoped to marea-theme[data-marea-mode]"
+    },
+    {
+      "contractId": "MC17-TYPOGRAPHY-ROLES",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/typography-roles.json",
+      "content": "2 families, 13 roles, numeric contract (tabular-nums, U+2212 minus, 0.6 unit ratio)"
+    },
+    {
+      "contractId": "MC17-LAYOUT-TOKENS",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/layout-tokens.json",
+      "content": "space, size, grid, radius, border, elevation, opacity, focus, motion, breakpoint, zIndex, icon scales"
+    },
+    {
+      "contractId": "MC17-COMPONENT-REGISTRY",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/component-registry.json",
+      "generatedBy": "node scripts/build-marea-design-system-catalogue-data.mjs (derives preview/catalogue/app/registry.generated.ts)",
+      "content": "49 components: identity, type contract, selector, inputs, outputs, variants, modes, tokens, keyboard/focus/aria contracts, 11 states, limitations"
+    },
+    {
+      "contractId": "MC17-COMPONENT-STATES",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/component-states.json",
+      "generatedBy": "node scripts/build-marea-design-system-catalogue-data.mjs",
+      "content": "49 components x 11 required states with applicability and explicit NOT_APPLICABLE reasons"
+    },
+    {
+      "contractId": "MC17-CONTRAST-EVIDENCE",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/contrast-evidence.json",
+      "generatedBy": "node scripts/check-marea-design-system.mjs",
+      "content": "296 pair/mode measurements (74 per mode), 0 failures at authoring time; WCAG 2.x relative luminance on declared values"
+    },
+    {
+      "contractId": "MC17-LEGACY-UI-BASELINE",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/legacy-ui-baseline.json",
+      "generatedBy": "node scripts/build-marea-design-system-baseline.mjs",
+      "content": "35 watched files and 15 public files with SHA-256 at baseline commit 6d8287c8507038c4f90fd6e35471f78081ca4676"
+    },
+    {
+      "contractId": "MC17-ASSET-PROVENANCE",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/asset-provenance.json",
+      "content": "10 asset families; 120 MC-04 brand asset files; 28 original MC-17 glyphs; 0 MAREA assets in public/"
+    },
+    {
+      "contractId": "MC17-BLOCKER-REGISTER",
+      "contractVersion": "1.0.0",
+      "path": "docs/marea/design-system/data/blocker-register.json",
+      "content": "17 entries: inherited MC-13/MC-15/MC-16 blockers plus MC-17-specific blockers; 0 closed by MC-17"
+    }
+  ],
+  "componentCount": {
+    "total": 49,
+    "byLayer": {
+      "theme": 1,
+      "foundation": 16,
+      "structured": 12,
+      "commerce": 12,
+      "instrument": 8
+    },
+    "implementationKinds": {
+      "angularComponent": 48,
+      "angularDirective": 1
+    },
+    "declaredInputs": 131,
+    "declaredOutputs": 3,
+    "requiredStatesPerComponent": 11,
+    "notApplicableStateEntries": 386,
+    "verifiedBy": "MC17-12 — PASS, '49 registry entries verified against implementation'; MC17-14 — PASS, '49 components x 11 states'",
+    "authority": "docs/marea/design-system/data/component-registry.json is the machine-readable authority; preview/catalogue/app/registry.generated.ts is derived from it"
+  },
+  "preview": {
+    "project": "marea-design-system-catalogue",
+    "angularJsonRoot": "preview/",
+    "outputPath": "dist/marea-ds-catalogue",
+    "serveCommand": "npm run preview:design-system",
+    "serveCommandResolved": "ng serve marea-design-system-catalogue --port 4301",
+    "buildCommand": "npm run build:design-system-preview",
+    "buildCommandResolved": "ng build marea-design-system-catalogue",
+    "staticServeCommand": "npm run serve:design-system-preview",
+    "tokenBuildCommand": "npm run build:tokens",
+    "gateCommand": "npm run test:design-system",
+    "unitGateCommand": "npm run test:design-system:unit",
+    "visualGateCommand": "npm run test:design-system:visual",
+    "isolation": "Separate Angular project outside src/; own output path; loads preview/catalogue.css plus the generated token CSS only; production styles remain ['src/styles.scss'] and contain no MAREA reference",
+    "notProduction": true
+  },
+  "ctaRestrictions": {
+    "states": [
+      "DISABLED",
+      "COMING_SOON",
+      "REQUEST_INFORMATION",
+      "QUOTE_ONLY",
+      "NOT_AVAILABLE"
+    ],
+    "stateSemantics": {
+      "DISABLED": "Defined entity with no authorised public action; non-interactive status plus explanation.",
+      "COMING_SOON": "Conditional/defined edition with an internal plan but no approved date; informational text only.",
+      "REQUEST_INFORMATION": "Informational surface; a contact route would require consent and authorised copy.",
+      "QUOTE_ONLY": "Installation package, contracted solution or quotation-required entity; human survey/quotation process only.",
+      "NOT_AVAILABLE": "Safety/legal/gate block, retired or out-of-scope entity; explicit unavailability statement."
+    },
+    "globalRules": {
+      "buyCtaAllowed": false,
+      "cartAllowed": false,
+      "priceVisible": false,
+      "availabilityVisible": false,
+      "purchaseActionAllowed": false
+    },
+    "invariants": [
+      "deriveCommercialPresentation() returns purchaseActionAllowed=false, cartAllowed=false, priceVisible=false and availabilityVisible=false unconditionally.",
+      "A release gate that is not explicitly open is closed; there is no MC-17 path that opens it.",
+      "Unknown or malformed CTA input resolves to NOT_AVAILABLE (sanitizeCtaState).",
+      "marea-commerce-cta renders no button, anchor or role=button element.",
+      "State is always accompanied by text and a shape-coded icon; colour never carries the meaning alone.",
+      "Disabled controls use aria-disabled with a visible reason via aria-describedby and remain keyboard discoverable.",
+      "State identifiers are internal enums, not public marketing labels; no authorised public copy exists."
+    ],
+    "blockedSignalPresentation": {
+      "BUY_CTA": "Rendered as a critical notice; the signal is neutralised, never honoured.",
+      "CART": "Rendered as a critical notice; no cart exists.",
+      "PRICE_VISIBILITY": "Rendered as a critical notice; no amount is representable.",
+      "AVAILABILITY_VISIBILITY": "Rendered as a critical notice; no quantity is representable."
+    },
+    "derivationPrecedence": [
+      "INSTALLATION_PACKAGE -> QUOTE_ONLY",
+      "requiresQuotation or contractedSolution -> QUOTE_ONLY",
+      "CONDITIONAL -> COMING_SOON",
+      "informational -> REQUEST_INFORMATION",
+      "DEFINED -> DISABLED",
+      "otherwise -> NOT_AVAILABLE"
+    ]
+  },
+  "presentationIdentity": {
+    "families": 9,
+    "editions": 26,
+    "bundles": 6,
+    "editionIsNotSku": true,
+    "oneComponentPerEntity": true,
+    "locales": 2,
+    "bilingualCopyKeys": 138,
+    "copyIsInternalOnly": true,
+    "fixtureClass": "SYNTHETIC_INTERNAL_FIXTURE"
+  },
+  "mc18MustInherit": [
+    "No purchase path, price, stock, cart, checkout, subscription or entitlement grant.",
+    "No public MAREA brand use, mark, lockup, registered or unregistered trademark symbol.",
+    "No Product/Offer/price/availability/rating structured data for MAREA.",
+    "No deployment, indexation or sitemap entry for any of the 23 proposed routes.",
+    "WCAG 2.2 AA is a target verified per surface by evidence; no conformance claim exists.",
+    "Instrument mode contrast is a software computation over declared values; hardware validation stays BLOCKED.",
+    "Inherited blockers stay inherited (see blocker-register.json); MC-18 may not close them."
+  ],
+  "namedGaps": [
+    "Design-system validator is FAIL (31/38 first observation, 35/38 last observation) at authoring time; missing datasets and documents remain.",
+    "No independent MC-17 review exists.",
+    "No accessibility audit, visual-regression baseline, responsive evidence set or performance measurement is included here.",
+    "No authorised ES/EN public copy and no approved claims (0 of 42 claims public-authorised).",
+    "No read API for MC-16 data; presentation uses generated synthetic fixtures, not a runtime service.",
+    "No hardware exists for sunlight/night validation."
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "contractId": "MC17-TYPOGRAPHY-ROLES",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "lead",
+  "generationMethod": "node scripts/build-marea-design-tokens.mjs",
+  "scope": "Semantic typography roles, families and the instrument numeric contract.",
+  "knownLimitations": [
+    "Font metrics were not re-measured on this milestone; the MC-04 typography evidence remains the authority.",
+    "Fluid sizes are CSS expressions; pixel equivalents depend on the viewport and are not asserted."
+  ],
+  "sourceRefs": [
+    "docs/marea/brand/tokens/marea-instrument-tokens.proposed.json",
+    "docs/marea/brand/COLOUR-SYSTEM.md",
+    "docs/marea/brand/TYPOGRAPHY-SYSTEM.md",
+    "docs/marea/brand/ICONOGRAPHY-SYSTEM.md",
+    "docs/marea/brand/MC-04-VISUAL-IDENTITY-BRIEF.md",
+    "docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md",
+    "src/styles.scss"
+  ],
+  "families": {
+    "display": {
+      "cssVar": "--marea-font-display",
+      "value": "'Manrope Variable', Manrope, system-ui, sans-serif",
+      "unit": "font-family-list",
+      "semanticRole": "Headings, display, product-family lockups and instrument numerics.",
+      "sourceTokenId": "MC04:/typography/families/displayNumeric",
+      "status": "EXISTING_MEASURED_BASELINE",
+      "evidence": "TYPOGRAPHY-SYSTEM.md measured tabular figures; @fontsource-variable/manrope 5.3.0 already installed."
+    },
+    "body": {
+      "cssVar": "--marea-font-body",
+      "value": "'DM Sans Variable', 'DM Sans', system-ui, sans-serif",
+      "unit": "font-family-list",
+      "semanticRole": "Body text, labels, instructions and prose.",
+      "sourceTokenId": "MC04:/typography/families/body",
+      "status": "EXISTING_MEASURED_BASELINE",
+      "evidence": "TYPOGRAPHY-SYSTEM.md; DM Sans is not numeric-capable for instrument figures."
+    }
+  },
+  "numericContract": {
+    "fontVariantNumeric": "tabular-nums",
+    "fontFeatureSettings": "'tnum' 1",
+    "minusGlyph": "−",
+    "unitRatio": 0.6,
+    "sourceTokenId": "MC04:/typography/numeric",
+    "status": "INTERNAL_PROPOSED",
+    "evidence": "TYPOGRAPHY-SYSTEM.md numeric contract; Manrope + tabular-nums."
+  },
+  "roles": {
+    "display1": {
+      "family": "display",
+      "size": "clamp(2.5rem, 5vw, 4.5rem)",
+      "lineHeight": "1.05",
+      "weight": "600",
+      "letterSpacing": "-0.03em",
+      "sourceTokenId": "MC04:/typography/roles/display",
+      "purpose": "Page display statement on corporate surfaces."
+    },
+    "display2": {
+      "family": "display",
+      "size": "clamp(2rem, 3.6vw, 3.25rem)",
+      "lineHeight": "1.1",
+      "weight": "600",
+      "letterSpacing": "-0.025em",
+      "sourceTokenId": "MC04:/typography/roles/display",
+      "purpose": "Section display statement."
+    },
+    "title1": {
+      "family": "display",
+      "size": "clamp(1.5rem, 2.6vw, 2.25rem)",
+      "lineHeight": "1.2",
+      "weight": "600",
+      "letterSpacing": "-0.02em",
+      "sourceTokenId": "MC04:/typography/roles/heading",
+      "purpose": "Page section title."
+    },
+    "title2": {
+      "family": "display",
+      "size": "1.375rem",
+      "lineHeight": "1.3",
+      "weight": "600",
+      "letterSpacing": "-0.01em",
+      "sourceTokenId": "MC04:/typography/roles/heading",
+      "purpose": "Sub-section title."
+    },
+    "heading": {
+      "family": "display",
+      "size": "1.125rem",
+      "lineHeight": "1.35",
+      "weight": "600",
+      "letterSpacing": "0",
+      "sourceTokenId": "MC04:/typography/roles/heading",
+      "purpose": "Component heading inside a panel or card."
+    },
+    "body": {
+      "family": "body",
+      "size": "1rem",
+      "lineHeight": "1.65",
+      "weight": "400",
+      "letterSpacing": "0",
+      "sourceTokenId": "MC04:/typography/roles/body",
+      "purpose": "Default reading text and instructions."
+    },
+    "bodySmall": {
+      "family": "body",
+      "size": "0.875rem",
+      "lineHeight": "1.6",
+      "weight": "400",
+      "letterSpacing": "0",
+      "sourceTokenId": "MC04:/typography/roles/body",
+      "purpose": "Dense supporting text."
+    },
+    "label": {
+      "family": "body",
+      "size": "0.75rem",
+      "lineHeight": "1.4",
+      "weight": "700",
+      "letterSpacing": "0.02em",
+      "sourceTokenId": "MC04:/typography/roles/label",
+      "purpose": "Form and control labels."
+    },
+    "meta": {
+      "family": "body",
+      "size": "0.6875rem",
+      "lineHeight": "1.5",
+      "weight": "500",
+      "letterSpacing": "0.03em",
+      "sourceTokenId": "MC04:/typography/roles/metadata",
+      "purpose": "Provenance, age and reference metadata."
+    },
+    "numericPrimary": {
+      "family": "display",
+      "size": "clamp(2.5rem, 6vw, 4.5rem)",
+      "lineHeight": "1",
+      "weight": "700",
+      "letterSpacing": "0",
+      "numeric": true,
+      "sourceTokenId": "MC04:/typography/sizes/numericPrimary",
+      "purpose": "Primary instrument numeric readout."
+    },
+    "numericSecondary": {
+      "family": "display",
+      "size": "clamp(1.5rem, 3vw, 2.25rem)",
+      "lineHeight": "1.1",
+      "weight": "700",
+      "letterSpacing": "0",
+      "numeric": true,
+      "sourceTokenId": "MC04:/typography/sizes/numericSecondary",
+      "purpose": "Secondary instrument numeric context."
+    },
+    "numericTertiary": {
+      "family": "display",
+      "size": "1.125rem",
+      "lineHeight": "1.3",
+      "weight": "600",
+      "letterSpacing": "0",
+      "numeric": true,
+      "sourceTokenId": "MC04:/typography/sizes/numericSecondary",
+      "purpose": "Compact telemetry numeric value."
+    },
+    "unit": {
+      "family": "body",
+      "size": "0.75rem",
+      "lineHeight": "1.3",
+      "weight": "700",
+      "letterSpacing": "0.08em",
+      "textTransform": "uppercase",
+      "sourceTokenId": "MC04:/typography/numeric/unit",
+      "purpose": "Measurement unit label."
+    }
+  },
+  "cssVariablePattern": "--marea-type-<role>-<field>"
+}

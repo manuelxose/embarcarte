@@ -1,0 +1,574 @@
+{
+  "contractId": "MC17-COMMERCE-PRESENTATION-POLICY",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "programme-docs",
+  "generationMethod": "Manual authoring from the actual implementation at branch feature/marea-mc17-premium-design-system: core/types.ts (MareaCtaState, MareaRestrictionKind, MareaBlockedSignal, MareaCommercialPresentation), data/commerce-presentation.adapter.ts (deriveCtaState, deriveCommercialPresentation, FAMILY_LIMIT_KEYS, RESTRICTION_COPY), components/commerce/*, core/i18n.ts and scripts/check-marea-design-system.mjs. No generator script produces this file.",
+  "scope": "Fail-closed commercial presentation policy for the isolated MC-17 design system: CTA derivation, adapter invariants, blocked-signal reporting, restriction kinds, prohibited capabilities and the prohibited-wording list.",
+  "knownLimitations": [
+    "This policy is a presentation guard, not the authoritative commercial evaluator; the MC-16 server-side evaluator remains the final control.",
+    "No price, availability, stock, cart, checkout, payment, subscription or entitlement grant is represented or enabled.",
+    "The policy describes the implementation at the time of authoring. The recorded validator run (docs/marea/design-system/evidence/validator-run.json) is overall FAIL (33/38), while the commercial checks MC17-17, MC17-19, MC17-20, MC17-23, MC17-24 and MC17-31 are each recorded PASS.",
+    "The recorded axe summary reports one color-contrast violation in instrument-night inside the preview-only component documentation block; it is not a library component.",
+    "Catalogue prose is internal and Spanish-only; the policy itself is language-neutral and the component copy is bilingual."
+  ],
+  "sourceRefs": [
+    "src/app/marea-design-system/core/types.ts",
+    "src/app/marea-design-system/data/commerce-presentation.adapter.ts",
+    "src/app/marea-design-system/core/i18n.ts",
+    "src/app/marea-design-system/components/commerce/marea-commerce-cta.ts",
+    "src/app/marea-design-system/components/commerce/marea-edition-card.ts",
+    "src/app/marea-design-system/components/commerce/marea-family-card.ts",
+    "src/app/marea-design-system/components/commerce/marea-readiness-panel.ts",
+    "src/app/marea-design-system/data/fixtures/marea-fixtures.generated.ts",
+    "docs/marea/commerce-data/MC16-MC17-HANDOFF.md",
+    "scripts/check-marea-design-system.mjs",
+    "e2e/design-system/commerce.spec.ts"
+  ],
+  "presentationContract": {
+    "designSystem": "src/app/marea-design-system",
+    "derivedNotAuthored": true,
+    "stateIdentifiersAreNotPublicLabels": true,
+    "publicCopyAuthorized": false,
+    "commercialStateFields": [
+      "ctaState",
+      "purchaseActionAllowed",
+      "cartAllowed",
+      "priceVisible",
+      "availabilityVisible",
+      "restrictions",
+      "blockedSignals"
+    ],
+    "sourceInputFields": [
+      "releaseGateOpen",
+      "buyCtaAllowed",
+      "cartAllowed",
+      "priceVisible",
+      "availabilityVisible",
+      "ctaState",
+      "restrictions"
+    ]
+  },
+  "states": [
+    {
+      "state": "DISABLED",
+      "derivationCondition": "definitionStatus === 'DEFINED' and no quotation, contracted-solution or informational flag applies",
+      "allowedInteraction": "Non-interactive explanatory status; no action control is rendered",
+      "prohibited": [
+        "fake active button",
+        "hidden action",
+        "hover promise"
+      ],
+      "labelCopyKey": "ctaDisabledLabel",
+      "bodyCopyKey": "ctaDisabled"
+    },
+    {
+      "state": "COMING_SOON",
+      "derivationCondition": "definitionStatus === 'CONDITIONAL' after the QUOTE_ONLY checks",
+      "allowedInteraction": "Informational text only",
+      "prohibited": [
+        "approved date",
+        "price",
+        "waitlist promise",
+        "pre-order"
+      ],
+      "labelCopyKey": "ctaComingSoonLabel",
+      "bodyCopyKey": "ctaComingSoon"
+    },
+    {
+      "state": "REQUEST_INFORMATION",
+      "derivationCondition": "informational === true after the QUOTE_ONLY and CONDITIONAL checks",
+      "allowedInteraction": "Informational text only; the internal view collects no personal data and creates no contact mechanism",
+      "prohibited": [
+        "live data collection",
+        "quote",
+        "order",
+        "price expectation"
+      ],
+      "labelCopyKey": "ctaRequestInformationLabel",
+      "bodyCopyKey": "ctaRequestInformation"
+    },
+    {
+      "state": "QUOTE_ONLY",
+      "derivationCondition": "definitionStatus === 'INSTALLATION_PACKAGE' OR requiresQuotation === true OR contractedSolution === true",
+      "allowedInteraction": "Explains a future human survey/quotation process; no live form, no amount and no commitment",
+      "prohibited": [
+        "checkout",
+        "cart",
+        "fixed price",
+        "self-service commitment",
+        "guaranteed quotation"
+      ],
+      "labelCopyKey": "ctaQuoteOnlyLabel",
+      "bodyCopyKey": "ctaQuoteOnly"
+    },
+    {
+      "state": "NOT_AVAILABLE",
+      "derivationCondition": "Unknown, missing or non-string state (sanitizeCtaState) or a source that matches no permitted branch (explicitly retired or out-of-scope entity)",
+      "allowedInteraction": "Explicit unavailability statement",
+      "prohibited": [
+        "sold out",
+        "fake stock",
+        "implied future availability"
+      ],
+      "labelCopyKey": "ctaNotAvailableLabel",
+      "bodyCopyKey": "ctaNotAvailable"
+    }
+  ],
+  "derivationPrecedence": [
+    {
+      "order": 1,
+      "rule": "if the source is not an object -> NOT_AVAILABLE",
+      "implementedBy": "deriveCtaState"
+    },
+    {
+      "order": 2,
+      "rule": "definitionStatus === 'INSTALLATION_PACKAGE' -> QUOTE_ONLY",
+      "implementedBy": "deriveCtaState"
+    },
+    {
+      "order": 3,
+      "rule": "requiresQuotation === true OR contractedSolution === true -> QUOTE_ONLY",
+      "implementedBy": "deriveCtaState"
+    },
+    {
+      "order": 4,
+      "rule": "definitionStatus === 'CONDITIONAL' -> COMING_SOON",
+      "implementedBy": "deriveCtaState"
+    },
+    {
+      "order": 5,
+      "rule": "informational === true -> REQUEST_INFORMATION",
+      "implementedBy": "deriveCtaState"
+    },
+    {
+      "order": 6,
+      "rule": "definitionStatus === 'DEFINED' -> DISABLED",
+      "implementedBy": "deriveCtaState"
+    },
+    {
+      "order": 7,
+      "rule": "anything else -> NOT_AVAILABLE",
+      "implementedBy": "deriveCtaState"
+    }
+  ],
+  "invariants": {
+    "purchaseActionAllowed": false,
+    "cartAllowed": false,
+    "priceVisible": false,
+    "availabilityVisible": false,
+    "rule": "The adapter always returns false for these four properties, even when the upstream input flags are true.",
+    "sanitizeUnknownState": "NOT_AVAILABLE",
+    "restrictions": "Deduplicated through Set before being returned",
+    "blockedSignalsReportedOnlyWhenGateNotOpen": true,
+    "blockedSignalsInputsChecked": [
+      "buyCtaAllowed !== false -> BUY_CTA",
+      "cartAllowed !== false -> CART",
+      "priceVisible !== false -> PRICE_VISIBILITY",
+      "availabilityVisible !== false -> AVAILABILITY_VISIBILITY"
+    ],
+    "gateRule": "gateOpen = input.releaseGateOpen === true; a gate that is not explicitly open is closed and no MC-17 path opens it",
+    "note": "If a future caller passes releaseGateOpen=true, the four false invariants still hold but blockedSignals is returned as an empty array. MC-17 always passes false."
+  },
+  "blockedSignals": [
+    "BUY_CTA",
+    "CART",
+    "PRICE_VISIBILITY",
+    "AVAILABILITY_VISIBILITY"
+  ],
+  "blockedSignalCopyKeys": {
+    "BUY_CTA": "buySignalBlocked",
+    "CART": "buySignalBlocked",
+    "PRICE_VISIBILITY": "priceSignalBlocked",
+    "AVAILABILITY_VISIBILITY": "stockSignalBlocked"
+  },
+  "restrictionKinds": [
+    {
+      "kind": "PUBLICATION_NOT_AUTHORIZED",
+      "copyKey": "publicationNotAuthorized"
+    },
+    {
+      "kind": "TRADEMARK_NOT_CLEARED",
+      "copyKey": "provisionalBrand"
+    },
+    {
+      "kind": "SAFETY_GATE_BLOCKED",
+      "copyKey": "pilotSupervised"
+    },
+    {
+      "kind": "LICENSING_NOT_CLEARED",
+      "copyKey": "navWeatherLicensing"
+    },
+    {
+      "kind": "COMPATIBILITY_UNTESTED",
+      "copyKey": "compatibilityUnverified"
+    },
+    {
+      "kind": "PRICE_NOT_APPROVED",
+      "copyKey": "priceUnavailable"
+    },
+    {
+      "kind": "STOCK_NOT_VERIFIED",
+      "copyKey": "stockUnavailable"
+    },
+    {
+      "kind": "BRAND_PROVISIONAL",
+      "copyKey": "provisionalBrand"
+    }
+  ],
+  "readiness": {
+    "labels": [
+      "READY",
+      "NOT_READY",
+      "BLOCKED",
+      "NOT_ASSESSED"
+    ],
+    "derivedServerSide": true,
+    "dimensionCount": 11,
+    "dimensions": [
+      "definition",
+      "engineering",
+      "licensing",
+      "hardware",
+      "dataRights",
+      "compliance",
+      "safety",
+      "pricing",
+      "brandPublication",
+      "operations",
+      "availability"
+    ],
+    "rule": "A page render never promotes the product lifecycle; gate evidence details are not exposed, only an opaque blocked-gate count.",
+    "implementedBy": "MareaReadinessPanel"
+  },
+  "prohibitedCapabilities": [
+    "purchase",
+    "cart",
+    "pre-order",
+    "waitlist",
+    "price display",
+    "stock display",
+    "delivery promise",
+    "guaranteed quotation",
+    "SLA",
+    "checkout",
+    "payment",
+    "subscription purchase",
+    "entitlement grant",
+    "merchant SKU",
+    "Product/Offer structured data"
+  ],
+  "prohibitedWording": {
+    "validatorCheckId": "MC17-19",
+    "patterns": [
+      "add to cart",
+      "buy now",
+      "añadir al carrito",
+      "comprar ahora",
+      "pre-order / preorder",
+      "waiting list",
+      "preventa",
+      "lista de espera",
+      "€",
+      "EUR",
+      "USD"
+    ],
+    "e2eAdditionalPatterns": [
+      "en stock",
+      "in stock",
+      "disponible ahora",
+      "available now",
+      "sold out",
+      "agotado",
+      "comprar",
+      "buy now",
+      "add to cart",
+      "añadir al carrito"
+    ],
+    "forbiddenAmountApiPattern": "input names matching amount|priceAmount|priceValue|stockCount|quantityAvailable",
+    "scope": "All design-system and preview .ts/.html/.scss/.css files except core/i18n.ts"
+  },
+  "familyLimits": {
+    "NAV": {
+      "copyKey": "navWeatherLicensing",
+      "rule": "unlicensed chart/weather data is not represented as included"
+    },
+    "PILOT": {
+      "copyKey": "pilotSupervised",
+      "rule": "supervised pilot concept; no autonomous navigation, no live steering control; safety gate blocked"
+    },
+    "AIS": {
+      "copyKey": "aisReceiveOnly",
+      "rule": "receive-only; no AIS transmission and no collision-avoidance promise"
+    },
+    "SENSE": {
+      "copyKey": "localSafetyIndependent",
+      "rule": "local safety functions do not depend on a subscription payment; the ESSENTIALS kit is one kit"
+    },
+    "WATCH": {
+      "copyKey": "watchNoGuarantee",
+      "rule": "alerts are not guaranteed and continuous remote monitoring is not provided"
+    },
+    "FLEET": {
+      "copyKey": "fleetNoHardware",
+      "rule": "no default hardware and no established SLA; no customer examples"
+    },
+    "DISPLAY": {
+      "copyKey": "displayConditional",
+      "rule": "no invented dimensions, final size or price"
+    },
+    "WEATHER": {
+      "copyKey": "navWeatherLicensing",
+      "rule": "unlicensed weather data is not represented as included"
+    }
+  },
+  "perEntityRestrictions": {
+    "families": [
+      {
+        "familyId": "NAV",
+        "editionCount": 2,
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "LICENSING_NOT_CLEARED"
+        ]
+      },
+      {
+        "familyId": "HUB",
+        "editionCount": 2,
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED"
+        ]
+      },
+      {
+        "familyId": "AIS",
+        "editionCount": 2,
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "LICENSING_NOT_CLEARED"
+        ]
+      },
+      {
+        "familyId": "PILOT",
+        "editionCount": 3,
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "SAFETY_GATE_BLOCKED"
+        ]
+      },
+      {
+        "familyId": "SENSE",
+        "editionCount": 8,
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "COMPATIBILITY_UNTESTED"
+        ]
+      },
+      {
+        "familyId": "WATCH",
+        "editionCount": 2,
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "COMPATIBILITY_UNTESTED"
+        ]
+      },
+      {
+        "familyId": "DISPLAY",
+        "editionCount": 2,
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED"
+        ]
+      },
+      {
+        "familyId": "WEATHER",
+        "editionCount": 2,
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "LICENSING_NOT_CLEARED"
+        ]
+      },
+      {
+        "familyId": "FLEET",
+        "editionCount": 3,
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "LICENSING_NOT_CLEARED"
+        ]
+      }
+    ],
+    "specialEditions": [
+      {
+        "editionId": "PILOT-PRO",
+        "definitionStatus": "INSTALLATION_PACKAGE",
+        "requiresQuotation": true,
+        "derivedCta": "QUOTE_ONLY",
+        "rule": "installation package, never a priced SKU, never a bundle line"
+      },
+      {
+        "editionId": "SENSE-ESSENTIALS",
+        "definitionStatus": "DEFINED",
+        "requiresQuotation": false,
+        "expandsTo": [
+          "SENSE-POWER",
+          "SENSE-BILGE"
+        ],
+        "rule": "one kit; modules are not double-counted"
+      },
+      {
+        "editionId": "DISPLAY-LARGE-CONDITIONAL",
+        "definitionStatus": "CONDITIONAL",
+        "requiresQuotation": false,
+        "derivedCta": "COMING_SOON",
+        "rule": "no dimensions, final size or price; not selectable in a bundle"
+      },
+      {
+        "editionId": "FLEET-ENTERPRISE",
+        "definitionStatus": "CONDITIONAL",
+        "requiresQuotation": true,
+        "derivedCta": "QUOTE_ONLY",
+        "rule": "contracted B2B tier, not self-service; no SLA"
+      }
+    ],
+    "bundles": [
+      {
+        "bundleId": "START",
+        "components": 2,
+        "optionalComponents": 2,
+        "ineligible": 0,
+        "contractOnly": 0,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false
+      },
+      {
+        "bundleId": "CRUISE",
+        "components": 4,
+        "optionalComponents": 3,
+        "ineligible": 1,
+        "ineligibleIds": [
+          "DISPLAY-LARGE-CONDITIONAL"
+        ],
+        "contractOnly": 0,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false
+      },
+      {
+        "bundleId": "SAIL",
+        "components": 3,
+        "optionalComponents": 2,
+        "ineligible": 1,
+        "ineligibleIds": [
+          "PILOT-PRO"
+        ],
+        "contractOnly": 0,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false
+      },
+      {
+        "bundleId": "PROTECT",
+        "components": 2,
+        "optionalComponents": 2,
+        "ineligible": 0,
+        "contractOnly": 0,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false
+      },
+      {
+        "bundleId": "COMPLETE",
+        "components": 9,
+        "optionalComponents": 3,
+        "ineligible": 2,
+        "ineligibleIds": [
+          "PILOT-PRO",
+          "DISPLAY-LARGE-CONDITIONAL"
+        ],
+        "contractOnly": 0,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false
+      },
+      {
+        "bundleId": "FLEET",
+        "components": 1,
+        "optionalComponents": 3,
+        "ineligible": 0,
+        "contractOnly": 1,
+        "contractOnlyIds": [
+          "FLEET-ENTERPRISE"
+        ],
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false
+      }
+    ]
+  },
+  "entitlementPolicy": {
+    "oneRowPerSharedLedgerKey": true,
+    "implementedBy": "MareaEntitlementSummary",
+    "observedSharedLedgers": {
+      "ACCOUNT:WATCH_MONITORING": [
+        "ENT-WATCH",
+        "ENT-CLOUD-MONITORING"
+      ],
+      "LOCAL:SAFETY_NOT_BILLABLE": [
+        "ENT-PILOT-LOCAL",
+        "ENT-SENSE-LOCAL"
+      ]
+    },
+    "localSafetyIndependent": true,
+    "billingImplemented": false,
+    "entitlementLedgerActive": false,
+    "doubleBillingAllowed": false
+  },
+  "enforcement": {
+    "validator": "scripts/check-marea-design-system.mjs",
+    "validatorChecks": [
+      "MC17-17",
+      "MC17-19",
+      "MC17-20",
+      "MC17-21",
+      "MC17-22",
+      "MC17-23",
+      "MC17-24",
+      "MC17-31"
+    ],
+    "e2eSuite": "e2e/design-system/commerce.spec.ts",
+    "e2eAssertions": [
+      "purchaseActionAllowed=false",
+      "cartAllowed=false",
+      "priceVisible=false",
+      "availabilityVisible=false",
+      "ctaState=NOT_AVAILABLE for hostile input",
+      "blockedSignals=BUY_CTA, CART, PRICE_VISIBILITY, AVAILABILITY_VISIBILITY",
+      "no control inside marea-commerce-cta",
+      "no amount or availability claim in the catalogue",
+      "no Product/Offer JSON-LD or microdata"
+    ],
+    "historicalVerdict": "MC16_VERDICT = PARTIAL",
+    "publicationAuthorized": false
+  }
+}

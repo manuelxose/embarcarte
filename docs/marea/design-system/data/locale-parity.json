@@ -1,0 +1,330 @@
+{
+  "contractId": "MC17-LOCALE-PARITY",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "programme-docs",
+  "generationMethod": "Manual authoring from src/app/marea-design-system/core/i18n.ts (MAREA_COPY and MareaI18n), core/types.ts (MareaLocale, MareaLocalizedText), data/fixtures/marea-fixtures.generated.ts (localized summary fields) and the routing contract in docs/marea/information-architecture/MC15-MC16-HANDOFF.md. Key list counted from the source file; no generator writes this dataset.",
+  "scope": "Bilingual presentation contract for the isolated MC-17 design system: copy-dictionary size, parity rule, localized fixture fields and the one-entity/two-locale identity rule.",
+  "knownLimitations": [
+    "The copy is internal and provisional. No public MAREA copy is authorised and the dictionary is not an approved public translation.",
+    "Spanish public paths stay unprefixed and English paths stay under /en; this dataset records the contract but creates no route.",
+    "The internal catalogue shell, section headings and demonstration prose are Spanish-only; only component copy and the family summary fixture are bilingual.",
+    "No Arabic, RTL or additional locale is in scope. MareaLocale is exactly 'es' | 'en'.",
+    "The validator counts dictionary pairs structurally; it cannot judge semantic equivalence of a nuance, which remains a human review duty."
+  ],
+  "sourceRefs": [
+    "src/app/marea-design-system/core/i18n.ts",
+    "src/app/marea-design-system/core/types.ts",
+    "src/app/marea-design-system/theme/marea-theme.ts",
+    "src/app/marea-design-system/data/fixtures/marea-fixtures.generated.ts",
+    "src/app/marea-design-system/components/commerce/marea-family-card.ts",
+    "docs/marea/information-architecture/MC15-MC16-HANDOFF.md",
+    "docs/marea/brand/BRAND-VOICE-ES-EN.md",
+    "docs/marea/legal-commercial/data/claims-policy.json",
+    "scripts/check-marea-design-system.mjs"
+  ],
+  "locales": {
+    "default": "es",
+    "supported": [
+      "es",
+      "en"
+    ],
+    "localeType": "MareaLocale = 'es' | 'en'",
+    "additionalLocales": "none",
+    "rtlSupport": "none in scope",
+    "documentLocaleMechanism": "MareaTheme.ngOnChanges sets MareaI18n.locale before children render; the host binds [attr.lang] to the active locale.",
+    "ssrHydrationNote": "A single document locale is set by the theme host so server-rendered markup and hydration agree; components read copy from the dictionary synchronously."
+  },
+  "routing": {
+    "spanish": "unprefixed paths (existing live routes unchanged)",
+    "english": "same route identity under /en",
+    "currentRouteIdentities": 21,
+    "proposedRouteIdentities": 23,
+    "proposedRoutePublication": "all 23 remain non-deployable",
+    "componentCatalogueRoutes": 0,
+    "rule": "One entity, one component, two locales. No locale-specific page, edition, bundle or SKU may be created."
+  },
+  "copyDictionary": {
+    "file": "src/app/marea-design-system/core/i18n.ts",
+    "symbol": "MAREA_COPY",
+    "keyCount": 138,
+    "perKeyPairCount": 1,
+    "totalEsStrings": 138,
+    "totalEnStrings": 138,
+    "pairCountPerKey": 1,
+    "structure": "Record<MareaCopyKey, { es: string; en: string }>",
+    "allKeysNonEmpty": true,
+    "placeholderKeys": [
+      {
+        "key": "tableLabel",
+        "es": "Tabla: {name}",
+        "en": "Table: {name}"
+      }
+    ],
+    "parityRule": "Every key has exactly one non-empty ES string and one non-empty EN string; EN must express the same claim, never a weaker or stronger one.",
+    "keys": [
+      "internalOnlyBanner",
+      "provisionalBrand",
+      "demoData",
+      "demo",
+      "status",
+      "readiness",
+      "definitionStatus",
+      "family",
+      "edition",
+      "editions",
+      "bundle",
+      "component",
+      "components",
+      "optionalComponents",
+      "exclusions",
+      "externalRequirements",
+      "entitlement",
+      "entitlements",
+      "documentation",
+      "limitations",
+      "features",
+      "specifications",
+      "factSheet",
+      "included",
+      "optional",
+      "contractOnly",
+      "quotationRequired",
+      "conditionalLine",
+      "excluded",
+      "required",
+      "ready",
+      "notReady",
+      "blocked",
+      "notAssessed",
+      "verified",
+      "partial",
+      "unverified",
+      "staleData",
+      "missing",
+      "noData",
+      "stale",
+      "offline",
+      "online",
+      "degraded",
+      "unknown",
+      "sensorUnavailable",
+      "sensorNotInstalled",
+      "sensorNoSignal",
+      "sensorError",
+      "sensorCalibrating",
+      "sensorUnlicensed",
+      "noDataAvailable",
+      "freshness",
+      "lastUpdate",
+      "age",
+      "measuredValue",
+      "unit",
+      "connectivity",
+      "device",
+      "telemetry",
+      "dataQuality",
+      "evidence",
+      "source",
+      "loading",
+      "empty",
+      "error",
+      "retry",
+      "expand",
+      "collapse",
+      "open",
+      "close",
+      "navigation",
+      "mainNavigation",
+      "breadcrumb",
+      "currentPage",
+      "tabs",
+      "permission",
+      "gateClosed",
+      "publicationNotAuthorized",
+      "internalScope",
+      "quotationOnly",
+      "requiresQuotation",
+      "installationPackage",
+      "conditional",
+      "defined",
+      "notForSale",
+      "priceUnavailable",
+      "priceUnavailableHeading",
+      "stockUnavailable",
+      "stockUnavailableHeading",
+      "compatibilityUnverified",
+      "compatibilityHeading",
+      "sharedEntitlement",
+      "localSafetyIndependent",
+      "watchNoGuarantee",
+      "fleetNoHardware",
+      "pilotSupervised",
+      "aisReceiveOnly",
+      "navWeatherLicensing",
+      "senseEssentialsKit",
+      "displayConditional",
+      "ctaDisabled",
+      "ctaComingSoon",
+      "ctaRequestInformation",
+      "ctaQuoteOnly",
+      "ctaNotAvailable",
+      "buySignalBlocked",
+      "priceSignalBlocked",
+      "stockSignalBlocked",
+      "buyCtaBlockedRule",
+      "noPurchasePath",
+      "documentPending",
+      "documentAvailable",
+      "noDocumentation",
+      "notApplicable",
+      "scrollHint",
+      "openNavigation",
+      "closeNavigation",
+      "tableLabel",
+      "blockedGates",
+      "noneRecorded",
+      "derivedReadiness",
+      "comparisonUnverified",
+      "yes",
+      "no",
+      "rowHeader",
+      "optionHeader",
+      "definitionList",
+      "note",
+      "valueLabel",
+      "includes",
+      "fresh",
+      "ctaDisabledLabel",
+      "ctaComingSoonLabel",
+      "ctaRequestInformationLabel",
+      "ctaQuoteOnlyLabel",
+      "external",
+      "ctaNotAvailableLabel"
+    ]
+  },
+  "localizedFixtureFields": [
+    {
+      "field": "MareaFixtureFamily.summary",
+      "type": "MareaLocalizedText { es, en }",
+      "renderedBy": "MareaFamilyCard.localizedSummary",
+      "count": 9
+    },
+    {
+      "field": "MareaFixtureEdition.displayName",
+      "type": "language-neutral string",
+      "renderedBy": "MareaEditionCard",
+      "count": 26
+    },
+    {
+      "field": "MareaFixtureBundle.displayName",
+      "type": "language-neutral string",
+      "renderedBy": "MareaBundleComponents / MareaBundleExclusions",
+      "count": 6
+    },
+    {
+      "field": "product-families.json localizedContent.es/en",
+      "type": "{ available: false, ref: null }",
+      "renderedBy": "not rendered: no authorized localized content exists",
+      "count": 9
+    }
+  ],
+  "identityRules": {
+    "oneEntityPerLocalePair": true,
+    "duplicateLocaleFiles": 0,
+    "duplicateEditionIds": 0,
+    "editionCount": 26,
+    "familyCount": 9,
+    "bundleCount": 6,
+    "displayNameLanguageNeutral": true,
+    "localeSpecificComponents": "forbidden and absent",
+    "slugIdentity": "dynamic slugs use the same identifier in both locales; an edition id never appears in a URL",
+    "evidence": "scripts/check-marea-design-system.mjs MC17-26 asserts zero *.en.ts/*.es.ts component files and exactly 26 edition ids in fixtures."
+  },
+  "examples": {
+    "ctaStates": [
+      {
+        "state": "DISABLED",
+        "es": "Acción no disponible: la publicación comercial no está autorizada. No existe botón de compra.",
+        "en": "Action unavailable: commercial publication is not authorised. No purchase button exists."
+      },
+      {
+        "state": "COMING_SOON",
+        "es": "Concepto interno definido sin fecha aprobada. No hay preventa, reserva ni lista de espera.",
+        "en": "Internal concept defined without an approved date. There is no pre-order, reservation or waiting list."
+      },
+      {
+        "state": "REQUEST_INFORMATION",
+        "es": "Información pendiente de autorización de copy. Esta vista interna no recoge datos personales ni crea un mecanismo de contacto.",
+        "en": "Information pending copy authorisation. This internal view collects no personal data and creates no contact mechanism."
+      },
+      {
+        "state": "QUOTE_ONLY",
+        "es": "Categoría de interacción contractual futura. No constituye una oferta, no muestra precio y no garantiza un presupuesto.",
+        "en": "Future contractual interaction category. It is not an offer, shows no price and does not guarantee a quotation."
+      },
+      {
+        "state": "NOT_AVAILABLE",
+        "es": "No disponible. El estado refleja puertas de seguridad o legales cerradas.",
+        "en": "Not available. The status reflects closed safety or legal gates."
+      }
+    ],
+    "familyLimits": [
+      {
+        "key": "pilotSupervised",
+        "es": "Concepto de pilotaje asistido. Sin navegación autónoma ni control de gobierno en vivo. Puerta de seguridad bloqueada.",
+        "en": "Supervised pilot concept. No autonomous navigation and no live steering control. Safety gate blocked."
+      },
+      {
+        "key": "aisReceiveOnly",
+        "es": "Recepción únicamente. Sin transmisión AIS ni promesa de evitación de colisiones.",
+        "en": "Receive-only. No AIS transmission and no collision-avoidance promise."
+      },
+      {
+        "key": "navWeatherLicensing",
+        "es": "Los datos de cartas náuticas y meteorología no licenciados no se representan como incluidos.",
+        "en": "Unlicensed chart and weather data are not represented as included."
+      },
+      {
+        "key": "senseEssentialsKit",
+        "es": "Un kit que representa POWER + BILGE; los módulos no se cuentan dos veces.",
+        "en": "One kit representing POWER + BILGE; modules are not double-counted."
+      },
+      {
+        "key": "watchNoGuarantee",
+        "es": "No se garantizan alertas ni una monitorización remota continua.",
+        "en": "Alerts are not guaranteed and continuous remote monitoring is not provided."
+      },
+      {
+        "key": "fleetNoHardware",
+        "es": "Sin hardware por defecto y sin acuerdo de nivel de servicio establecido.",
+        "en": "No default hardware and no established service-level agreement."
+      },
+      {
+        "key": "displayConditional",
+        "es": "Sin dimensiones, tamaño final ni precio inventados.",
+        "en": "No invented dimensions, final size or price."
+      }
+    ]
+  },
+  "copyAuthorization": {
+    "publicClaimsAuthorized": 0,
+    "publicationAuthorization": "NONE",
+    "trademarkStatus": "NOT_GRANTED",
+    "mareaPublicUse": "NO_GO",
+    "copyStatus": "INTERNAL_PROVISIONAL",
+    "rule": "No dictionary string may be presented as an approved public claim. Provisional status must accompany any rendered MAREA identity."
+  },
+  "enforcement": {
+    "validator": "scripts/check-marea-design-system.mjs",
+    "checks": [
+      "MC17-25",
+      "MC17-26"
+    ],
+    "check25Expectation": "parsed bilingual keys equals declared keys; every ES and EN string non-empty",
+    "check26Expectation": "zero locale-suffixed component files; 26 unique edition ids",
+    "e2eLocaleCheck": "e2e/design-system/helpers.ts setLocale asserts the marea-theme lang attribute is es or en",
+    "historicalVerdict": "MC16_VERDICT = PARTIAL"
+  }
+}

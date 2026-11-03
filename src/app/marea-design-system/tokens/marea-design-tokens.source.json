@@ -1,0 +1,682 @@
+{
+  "contractId": "MC17-DESIGN-TOKENS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "adoption": "NOT_ADOPTED",
+  "publicUse": "NO_GO",
+  "owner": "lead",
+  "generationMethod": "node scripts/build-marea-design-tokens.mjs (deterministic; --check verifies committed output)",
+  "scope": "Isolated internal Angular design system (src/app/marea-design-system) and its internal catalogue. Never applied to :root or to the public website.",
+  "knownLimitations": [
+    "All colour, typography and layout values are internal proposals derived from MC-04; no value here is a public brand adoption.",
+    "Instrument day/sunlight/night modes are software-only specimens. No marine hardware visibility, daylight readability or night-vision performance is claimed: hardware validation remains BLOCKED.",
+    "The corporate web-light context keeps the measured MC-04 baseline values; it applies one proposed correction (focusRing) that is NOT applied to the live website, so MC-04 finding F-1 remains OPEN for the public site.",
+    "Contrast ratios are computed from declared token values only; they do not model anti-aliasing, glare, night adaptation or real display hardware."
+  ],
+  "sourceRefs": [
+    "docs/marea/brand/tokens/marea-instrument-tokens.proposed.json",
+    "docs/marea/brand/COLOUR-SYSTEM.md",
+    "docs/marea/brand/TYPOGRAPHY-SYSTEM.md",
+    "docs/marea/brand/ICONOGRAPHY-SYSTEM.md",
+    "docs/marea/brand/MC-04-VISUAL-IDENTITY-BRIEF.md",
+    "docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md",
+    "src/styles.scss"
+  ],
+  "sourceModeRefs": {
+    "web-light": "MC04:/modes/web-light",
+    "instrument-day": "MC04:/modes/instrument-day",
+    "instrument-sunlight": "MC04:/modes/instrument-sunlight",
+    "instrument-night": "MC04:/modes/instrument-night"
+  },
+  "modes": {
+    "web-light": {
+      "label": "Corporate web (light)",
+      "context": "corporate",
+      "colorScheme": "light",
+      "status": "EXISTING_MEASURED_BASELINE",
+      "appliesTo": "Isolated corporate web components on the existing light EMBARCARTE visual system. The live site itself is not restyled.",
+      "selectorAttribute": null
+    },
+    "instrument-day": {
+      "label": "Instrument — day",
+      "context": "instrument",
+      "colorScheme": "light",
+      "status": "INTERNAL_PROPOSED",
+      "appliesTo": "Internal software specimens for bridge daylight use. Not a hardware readability claim.",
+      "selectorAttribute": "instrument-day"
+    },
+    "instrument-sunlight": {
+      "label": "Instrument — sunlight",
+      "context": "instrument",
+      "colorScheme": "light",
+      "status": "INTERNAL_PROPOSED",
+      "appliesTo": "Internal high-ambient-light software specimen. Glare readability is NOT validated; hardware validation is BLOCKED.",
+      "selectorAttribute": "instrument-sunlight"
+    },
+    "instrument-night": {
+      "label": "Instrument — night",
+      "context": "instrument",
+      "colorScheme": "dark",
+      "status": "INTERNAL_PROPOSED",
+      "appliesTo": "Internal watchkeeping software specimen. Night-vision performance is NOT validated. No #000000 canvas and no #ffffff text.",
+      "selectorAttribute": "instrument-night"
+    }
+  },
+  "tokens": {
+    "color": {
+      "canvas": {
+        "cssVar": "--marea-canvas",
+        "unit": "color",
+        "semanticRole": "Application background / page surface of the isolated component context.",
+        "evidence": "MC-04 COLOUR-SYSTEM.md measured baseline; instrument roles from the proposed token contract.",
+        "values": {
+          "web-light": { "value": "#ffffff", "sourceTokenId": "MC04:/modes/web-light/tokens/canvas", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#f2f9fd", "sourceTokenId": "MC04:/modes/instrument-day/tokens/canvas", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#ffffff", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/canvas", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#0d1b26", "sourceTokenId": "MC04:/modes/instrument-night/tokens/canvas", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "surface": {
+        "cssVar": "--marea-surface",
+        "unit": "color",
+        "semanticRole": "Panel that holds data; never a decorative card.",
+        "evidence": "MC-04 COLOUR-SYSTEM.md §surfaces.",
+        "values": {
+          "web-light": { "value": "#f2f9fd", "sourceTokenId": "MC04:/modes/web-light/tokens/surface", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#ffffff", "sourceTokenId": "MC04:/modes/instrument-day/tokens/surface", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#f7fbfe", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/surface", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#132733", "sourceTokenId": "MC04:/modes/instrument-night/tokens/surface", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "surfaceRaised": {
+        "cssVar": "--marea-surface-raised",
+        "unit": "color",
+        "semanticRole": "Grouped sub-surface; its boundary always carries a text label.",
+        "evidence": "MC-04 COLOUR-SYSTEM.md §surfaces.",
+        "values": {
+          "web-light": { "value": "#eaf7ff", "sourceTokenId": "MC04:/modes/web-light/tokens/surfaceRaised", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#eaf7ff", "sourceTokenId": "MC04:/modes/instrument-day/tokens/surfaceRaised", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#eaf7ff", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/surfaceRaised", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#1a3343", "sourceTokenId": "MC04:/modes/instrument-night/tokens/surfaceRaised", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "fieldSurface": {
+        "cssVar": "--marea-field-surface",
+        "unit": "color",
+        "semanticRole": "Input control background.",
+        "evidence": "Derived implementation layer: MC-04 defines no field token; the value keeps the existing site's input surface character.",
+        "values": {
+          "web-light": { "value": "#fbfdff", "sourceTokenId": "DERIVED:/src/styles.scss/.form input background", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#ffffff", "sourceTokenId": "DERIVED:/MC04 instrument surfaces", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#ffffff", "sourceTokenId": "DERIVED:/MC04 instrument surfaces", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#0f202b", "sourceTokenId": "DERIVED:/MC04 instrument surfaces", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "line": {
+        "cssVar": "--marea-line",
+        "unit": "color",
+        "semanticRole": "Decorative divider rule only; never the sole boundary of an interactive control.",
+        "evidence": "MC-04 web-light baseline --line #e1edf5 (read-only mapping).",
+        "values": {
+          "web-light": { "value": "#e1edf5", "sourceTokenId": "MC04:/modes/web-light/tokens/line", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#e1edf5", "sourceTokenId": "MC04:/modes/web-light/tokens/line", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#e1edf5", "sourceTokenId": "MC04:/modes/web-light/tokens/line", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#28404f", "sourceTokenId": "DERIVED:/MC04 night surfaces", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "borderStrong": {
+        "cssVar": "--marea-border-strong",
+        "unit": "color",
+        "semanticRole": "Interactive control boundary; meets the 3:1 non-text contrast requirement on its supported surfaces.",
+        "evidence": "MC-04 non-text contrast requirement (WCAG 2.2 SC 1.4.11); values measured in data/contrast-evidence.json.",
+        "values": {
+          "web-light": { "value": "#7d8b97", "sourceTokenId": "DERIVED:/MC04 non-text 3:1 requirement", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#788997", "sourceTokenId": "DERIVED:/MC04 non-text 3:1 requirement", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#74879a", "sourceTokenId": "DERIVED:/MC04 non-text 3:1 requirement", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#5d7282", "sourceTokenId": "DERIVED:/MC04 non-text 3:1 requirement", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "textPrimary": {
+        "cssVar": "--marea-text-primary",
+        "unit": "color",
+        "semanticRole": "Primary text and headings.",
+        "evidence": "MC-04 COLOUR-SYSTEM.md; instrument-day value from the proposed instrument block.",
+        "values": {
+          "web-light": { "value": "#17365d", "sourceTokenId": "MC04:/modes/web-light/tokens/textPrimary", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#17365d", "sourceTokenId": "MC04:/modes/instrument-day/tokens/textPrimary", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#0b2440", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/textPrimary", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#8fd3f5", "sourceTokenId": "MC04:/modes/instrument-night/tokens/textPrimary", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "textSecondary": {
+        "cssVar": "--marea-text-secondary",
+        "unit": "color",
+        "semanticRole": "Secondary labels and context values.",
+        "evidence": "MC-04 COLOUR-SYSTEM.md; instrument values refined to meet the internal 5:1 target.",
+        "values": {
+          "web-light": { "value": "#57708a", "sourceTokenId": "MC04:/modes/web-light/tokens/textSecondary", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#4a6579", "sourceTokenId": "MC04:/modes/instrument-day/tokens/textSecondary", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#3f5468", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/textSecondary", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#93a6b5", "sourceTokenId": "MC04:/modes/instrument-night/tokens/textSecondary", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "textMeta": {
+        "cssVar": "--marea-text-meta",
+        "unit": "color",
+        "semanticRole": "Provenance, age and units metadata.",
+        "evidence": "MC-04 COLOUR-SYSTEM.md; instrument meta values refined for normal-size text.",
+        "values": {
+          "web-light": { "value": "#57708a", "sourceTokenId": "MC04:/modes/web-light/tokens/textMeta", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#52697f", "sourceTokenId": "MC04:/modes/instrument-day/tokens/textMeta", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#4a5f73", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/textMeta", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#a9b7c4", "sourceTokenId": "MC04:/modes/instrument-night/tokens/textMeta", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "textOnAccent": {
+        "cssVar": "--marea-text-on-accent",
+        "unit": "color",
+        "semanticRole": "Text/icons placed on a filled action or state surface.",
+        "evidence": "MC-04 COLOUR-SYSTEM.md §5.8.",
+        "values": {
+          "web-light": { "value": "#ffffff", "sourceTokenId": "MC04:/modes/web-light/tokens/textOnAccent", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#ffffff", "sourceTokenId": "MC04:/modes/instrument-day/tokens/textOnAccent", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#ffffff", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/textOnAccent", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#0d1b26", "sourceTokenId": "MC04:/modes/instrument-night/tokens/textOnAccent", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "dataPrimary": {
+        "cssVar": "--marea-data-primary",
+        "unit": "color",
+        "semanticRole": "Primary instrument numeric values (cockpit-critical).",
+        "evidence": "MC-04 instrument token contract.",
+        "values": {
+          "web-light": { "value": "#17365d", "sourceTokenId": "MC04:/modes/web-light/tokens/dataPrimary", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#17365d", "sourceTokenId": "MC04:/modes/instrument-day/tokens/dataPrimary", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#0b2440", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/dataPrimary", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#8fd3f5", "sourceTokenId": "MC04:/modes/instrument-night/tokens/dataPrimary", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "dataSecondary": {
+        "cssVar": "--marea-data-secondary",
+        "unit": "color",
+        "semanticRole": "Secondary numeric context.",
+        "evidence": "MC-04 instrument token contract.",
+        "values": {
+          "web-light": { "value": "#57708a", "sourceTokenId": "MC04:/modes/web-light/tokens/dataSecondary", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#4a6579", "sourceTokenId": "MC04:/modes/instrument-day/tokens/dataSecondary", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#3f5468", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/dataSecondary", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#93a6b5", "sourceTokenId": "MC04:/modes/instrument-night/tokens/dataSecondary", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "chartLine": {
+        "cssVar": "--marea-chart-line",
+        "unit": "color",
+        "semanticRole": "Trend line / scale line required to understand content.",
+        "evidence": "MC-04 instrument token contract.",
+        "values": {
+          "web-light": { "value": "#17365d", "sourceTokenId": "MC04:/modes/web-light/tokens/chartLine", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#17365d", "sourceTokenId": "MC04:/modes/instrument-day/tokens/chartLine", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#0b2440", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/chartLine", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#8fd3f5", "sourceTokenId": "MC04:/modes/instrument-night/tokens/chartLine", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "chartGrid": {
+        "cssVar": "--marea-chart-grid",
+        "unit": "color",
+        "semanticRole": "Grid, ticks and axis rules; supporting cue, never the only encoding.",
+        "evidence": "MC-04 instrument token contract.",
+        "values": {
+          "web-light": { "value": "#748d9f", "sourceTokenId": "MC04:/modes/web-light/tokens/chartGrid", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#748d9f", "sourceTokenId": "MC04:/modes/instrument-day/tokens/chartGrid", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#5f7a8e", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/chartGrid", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#6a7f8d", "sourceTokenId": "MC04:/modes/instrument-night/tokens/chartGrid", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "action": {
+        "cssVar": "--marea-action",
+        "unit": "color",
+        "semanticRole": "Interactive text, links and filled action surfaces.",
+        "evidence": "MC-04 COLOUR-SYSTEM.md; maps to existing --sea-strong.",
+        "values": {
+          "web-light": { "value": "#176ca6", "sourceTokenId": "MC04:/modes/web-light/tokens/action", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#176ca6", "sourceTokenId": "MC04:/modes/instrument-day/tokens/action", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#0b4f78", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/action", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#8fd3f5", "sourceTokenId": "MC04:/modes/instrument-night/tokens/action", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "actionHover": {
+        "cssVar": "--marea-action-hover",
+        "unit": "color",
+        "semanticRole": "Hover/active partner of the filled action surface.",
+        "evidence": "MC-04 instrument token contract.",
+        "values": {
+          "web-light": { "value": "#12568a", "sourceTokenId": "DERIVED:/MC04 action scale", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#12568a", "sourceTokenId": "MC04:/modes/instrument-day/tokens/actionHover", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#083f61", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/actionHover", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#b6e2fa", "sourceTokenId": "MC04:/modes/instrument-night/tokens/actionHover", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "actionQuietSurface": {
+        "cssVar": "--marea-action-quiet-surface",
+        "unit": "color",
+        "semanticRole": "Quiet secondary control background.",
+        "evidence": "Derived implementation layer from the web-light --sky surface.",
+        "values": {
+          "web-light": { "value": "#f2f9fd", "sourceTokenId": "DERIVED:/src/styles.scss/--mist", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#eaf7ff", "sourceTokenId": "DERIVED:/MC04 surfaceRaised", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#eaf7ff", "sourceTokenId": "DERIVED:/MC04 surfaceRaised", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#1a3343", "sourceTokenId": "DERIVED:/MC04 surfaceRaised", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "stateCritical": {
+        "cssVar": "--marea-state-critical",
+        "unit": "color",
+        "semanticRole": "Alarm-level text/icon; always paired with shape, cause and required action.",
+        "evidence": "MC-04 instrument token contract (tightened for cockpit reading).",
+        "values": {
+          "web-light": { "value": "#b4423a", "sourceTokenId": "MC04:/modes/web-light/tokens/stateCritical", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#a32b22", "sourceTokenId": "MC04:/modes/instrument-day/tokens/stateCritical", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#8f1a12", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/stateCritical", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#ff9b8f", "sourceTokenId": "MC04:/modes/instrument-night/tokens/stateCritical", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "stateCriticalSurface": {
+        "cssVar": "--marea-state-critical-surface",
+        "unit": "color",
+        "semanticRole": "Tinted critical status chip background.",
+        "evidence": "Derived from the MC-04 badge background values; measured for 4.5:1 text contrast.",
+        "values": {
+          "web-light": { "value": "#fbe9e7", "sourceTokenId": "DERIVED:/src/styles.scss/.badge.danger", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#fbe9e7", "sourceTokenId": "DERIVED:/src/styles.scss/.badge.danger", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#fbe9e7", "sourceTokenId": "DERIVED:/src/styles.scss/.badge.danger", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#3a1e1c", "sourceTokenId": "DERIVED:/MC04 night surfaces", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "stateWarning": {
+        "cssVar": "--marea-state-warning",
+        "unit": "color",
+        "semanticRole": "Caution/warning text/icon; always paired with a triangle and a label.",
+        "evidence": "MC-04 instrument token contract.",
+        "values": {
+          "web-light": { "value": "#8a5a00", "sourceTokenId": "MC04:/modes/web-light/tokens/stateWarning", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#8a5a00", "sourceTokenId": "MC04:/modes/instrument-day/tokens/stateWarning", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#6b4300", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/stateWarning", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#ffc46b", "sourceTokenId": "MC04:/modes/instrument-night/tokens/stateWarning", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "stateWarningSurface": {
+        "cssVar": "--marea-state-warning-surface",
+        "unit": "color",
+        "semanticRole": "Tinted warning status chip background.",
+        "evidence": "Derived from the MC-04 badge background values; measured for 4.5:1 text contrast.",
+        "values": {
+          "web-light": { "value": "#fff4dc", "sourceTokenId": "DERIVED:/src/styles.scss/.badge.warn", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#fff4dc", "sourceTokenId": "DERIVED:/src/styles.scss/.badge.warn", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#fff4dc", "sourceTokenId": "DERIVED:/src/styles.scss/.badge.warn", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#3a2c14", "sourceTokenId": "DERIVED:/MC04 night surfaces", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "stateSafe": {
+        "cssVar": "--marea-state-safe",
+        "unit": "color",
+        "semanticRole": "Normal/safe state text/icon; describes a signal, never a guarantee about the vessel.",
+        "evidence": "MC-04 instrument token contract.",
+        "values": {
+          "web-light": { "value": "#27775c", "sourceTokenId": "MC04:/modes/web-light/tokens/stateSafe", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#1f5f49", "sourceTokenId": "MC04:/modes/instrument-day/tokens/stateSafe", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#10513c", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/stateSafe", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#7bd8b0", "sourceTokenId": "MC04:/modes/instrument-night/tokens/stateSafe", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "stateSafeSurface": {
+        "cssVar": "--marea-state-safe-surface",
+        "unit": "color",
+        "semanticRole": "Tinted safe status chip background.",
+        "evidence": "Derived from the MC-04 badge background values; measured for 4.5:1 text contrast.",
+        "values": {
+          "web-light": { "value": "#e2f5ee", "sourceTokenId": "DERIVED:/src/styles.scss/.badge.ok", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#e2f5ee", "sourceTokenId": "DERIVED:/src/styles.scss/.badge.ok", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#e2f5ee", "sourceTokenId": "DERIVED:/src/styles.scss/.badge.ok", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#17332a", "sourceTokenId": "DERIVED:/MC04 night surfaces", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "stateStale": {
+        "cssVar": "--marea-state-stale",
+        "unit": "color",
+        "semanticRole": "Stale/offline/no-data text/icon; always paired with an age counter and a pattern.",
+        "evidence": "MC-04 instrument token contract.",
+        "values": {
+          "web-light": { "value": "#555555", "sourceTokenId": "MC04:/modes/web-light/tokens/stateStale", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#55646f", "sourceTokenId": "MC04:/modes/instrument-day/tokens/stateStale", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#46586a", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/stateStale", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#a9b7c4", "sourceTokenId": "MC04:/modes/instrument-night/tokens/stateStale", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "stateStaleSurface": {
+        "cssVar": "--marea-state-stale-surface",
+        "unit": "color",
+        "semanticRole": "Tinted stale/offline status chip background.",
+        "evidence": "Derived from the MC-04 badge background values; measured for 4.5:1 text contrast.",
+        "values": {
+          "web-light": { "value": "#f1f1f1", "sourceTokenId": "DERIVED:/src/styles.scss/.badge.off", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#eef2f4", "sourceTokenId": "DERIVED:/MC04 surfaces", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#eef2f4", "sourceTokenId": "DERIVED:/MC04 surfaces", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#232f38", "sourceTokenId": "DERIVED:/MC04 night surfaces", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "stateInfo": {
+        "cssVar": "--marea-state-info",
+        "unit": "color",
+        "semanticRole": "Advisory/info text/icon; neutral ink, not a hue accent.",
+        "evidence": "MC-04 instrument token contract.",
+        "values": {
+          "web-light": { "value": "#176ca6", "sourceTokenId": "MC04:/modes/web-light/tokens/stateInfo", "status": "EXISTING_MEASURED_BASELINE" },
+          "instrument-day": { "value": "#17365d", "sourceTokenId": "MC04:/modes/instrument-day/tokens/stateInfo", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#17365d", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/stateInfo", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#93a6b5", "sourceTokenId": "MC04:/modes/instrument-night/tokens/stateInfo", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "stateInfoSurface": {
+        "cssVar": "--marea-state-info-surface",
+        "unit": "color",
+        "semanticRole": "Tinted advisory status chip background.",
+        "evidence": "Derived; measured for 4.5:1 text contrast.",
+        "values": {
+          "web-light": { "value": "#eaf3fa", "sourceTokenId": "DERIVED:/MC04 surfaces", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#eaf3fa", "sourceTokenId": "DERIVED:/MC04 surfaces", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#eaf3fa", "sourceTokenId": "DERIVED:/MC04 surfaces", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#1e2f3c", "sourceTokenId": "DERIVED:/MC04 night surfaces", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "focusRing": {
+        "cssVar": "--marea-focus-ring",
+        "unit": "color",
+        "semanticRole": "Keyboard focus indicator drawn on canvas/surface/raised.",
+        "evidence": "MC-04 proposes a compliant replacement (#0f5f8c) for the live site's #8fd2f5. Applied here only; the live site keeps #8fd2f5, so MC-04 finding F-1 remains OPEN for the public site.",
+        "values": {
+          "web-light": { "value": "#0f5f8c", "sourceTokenId": "MC04:/modes/instrument-day/tokens/focusRing", "status": "INTERNAL_PROPOSED" },
+          "instrument-day": { "value": "#0f5f8c", "sourceTokenId": "MC04:/modes/instrument-day/tokens/focusRing", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#0a4568", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/focusRing", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#8fd3f5", "sourceTokenId": "MC04:/modes/instrument-night/tokens/focusRing", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "focusRingOnFill": {
+        "cssVar": "--marea-focus-ring-on-fill",
+        "unit": "color",
+        "semanticRole": "Focus indicator drawn inside a filled action/state control.",
+        "evidence": "MC-04 instrument token contract.",
+        "values": {
+          "web-light": { "value": "#ffffff", "sourceTokenId": "MC04:/modes/instrument-day/tokens/focusRingOnFill", "status": "INTERNAL_PROPOSED" },
+          "instrument-day": { "value": "#ffffff", "sourceTokenId": "MC04:/modes/instrument-day/tokens/focusRingOnFill", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#ffffff", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/focusRingOnFill", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#0d1b26", "sourceTokenId": "MC04:/modes/instrument-night/tokens/focusRingOnFill", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "disabled": {
+        "cssVar": "--marea-disabled",
+        "unit": "color",
+        "semanticRole": "Disabled control text/icon; remains perceivable, never invisible.",
+        "evidence": "MC-04 leaves the web-light disabled value unset; this implementation layer adds a measured internal value. WCAG 2.2 exempts disabled controls from text contrast, but the internal 3:1 floor is enforced as a quality target.",
+        "values": {
+          "web-light": { "value": "#6b7f90", "sourceTokenId": "DERIVED:/MC04 disabled internal target", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#7a8d9b", "sourceTokenId": "MC04:/modes/instrument-day/tokens/disabled", "status": "INTERNAL_PROPOSED" },
+          "instrument-sunlight": { "value": "#6a7f92", "sourceTokenId": "MC04:/modes/instrument-sunlight/tokens/disabled", "status": "INTERNAL_PROPOSED" },
+          "instrument-night": { "value": "#7d8f9d", "sourceTokenId": "MC04:/modes/instrument-night/tokens/disabled", "status": "INTERNAL_PROPOSED" }
+        }
+      },
+      "disabledSurface": {
+        "cssVar": "--marea-disabled-surface",
+        "unit": "color",
+        "semanticRole": "Disabled control background.",
+        "evidence": "Derived internal value, measured for a perceivable disabled boundary.",
+        "values": {
+          "web-light": { "value": "#f1f5f7", "sourceTokenId": "DERIVED:/MC04 disabled internal target", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#eef3f6", "sourceTokenId": "DERIVED:/MC04 disabled internal target", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#eef3f6", "sourceTokenId": "DERIVED:/MC04 disabled internal target", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#1a2833", "sourceTokenId": "DERIVED:/MC04 night surfaces", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "internalBannerSurface": {
+        "cssVar": "--marea-internal-banner-surface",
+        "unit": "color",
+        "semanticRole": "Background of the mandatory internal/provisional status banner.",
+        "evidence": "Derived; required so every specimen displaying proposed MAREA identity carries a visible internal status.",
+        "values": {
+          "web-light": { "value": "#fff6e6", "sourceTokenId": "DERIVED:/MC17 internal status banner", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#fff6e6", "sourceTokenId": "DERIVED:/MC17 internal status banner", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#fff6e6", "sourceTokenId": "DERIVED:/MC17 internal status banner", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#332a18", "sourceTokenId": "DERIVED:/MC17 internal status banner", "status": "DERIVED_INTERNAL" }
+        }
+      },
+      "internalBannerText": {
+        "cssVar": "--marea-internal-banner-text",
+        "unit": "color",
+        "semanticRole": "Text on the internal/provisional status banner.",
+        "evidence": "Derived; measured against internalBannerSurface.",
+        "values": {
+          "web-light": { "value": "#6b4500", "sourceTokenId": "DERIVED:/MC17 internal status banner", "status": "DERIVED_INTERNAL" },
+          "instrument-day": { "value": "#6b4500", "sourceTokenId": "DERIVED:/MC17 internal status banner", "status": "DERIVED_INTERNAL" },
+          "instrument-sunlight": { "value": "#5c3a00", "sourceTokenId": "DERIVED:/MC17 internal status banner", "status": "DERIVED_INTERNAL" },
+          "instrument-night": { "value": "#ffd9a0", "sourceTokenId": "DERIVED:/MC17 internal status banner", "status": "DERIVED_INTERNAL" }
+        }
+      }
+    },
+    "typography": {
+      "families": {
+        "display": {
+          "cssVar": "--marea-font-display",
+          "value": "'Manrope Variable', Manrope, system-ui, sans-serif",
+          "unit": "font-family-list",
+          "semanticRole": "Headings, display, product-family lockups and instrument numerics.",
+          "sourceTokenId": "MC04:/typography/families/displayNumeric",
+          "status": "EXISTING_MEASURED_BASELINE",
+          "evidence": "TYPOGRAPHY-SYSTEM.md measured tabular figures; @fontsource-variable/manrope 5.3.0 already installed."
+        },
+        "body": {
+          "cssVar": "--marea-font-body",
+          "value": "'DM Sans Variable', 'DM Sans', system-ui, sans-serif",
+          "unit": "font-family-list",
+          "semanticRole": "Body text, labels, instructions and prose.",
+          "sourceTokenId": "MC04:/typography/families/body",
+          "status": "EXISTING_MEASURED_BASELINE",
+          "evidence": "TYPOGRAPHY-SYSTEM.md; DM Sans is not numeric-capable for instrument figures."
+        }
+      },
+      "numeric": {
+        "fontVariantNumeric": "tabular-nums",
+        "fontFeatureSettings": "'tnum' 1",
+        "minusGlyph": "−",
+        "unitRatio": 0.6,
+        "sourceTokenId": "MC04:/typography/numeric",
+        "status": "INTERNAL_PROPOSED",
+        "evidence": "TYPOGRAPHY-SYSTEM.md numeric contract; Manrope + tabular-nums."
+      },
+      "roles": {
+        "display1": { "family": "display", "size": "clamp(2.5rem, 5vw, 4.5rem)", "lineHeight": "1.05", "weight": "600", "letterSpacing": "-0.03em", "sourceTokenId": "MC04:/typography/roles/display", "purpose": "Page display statement on corporate surfaces." },
+        "display2": { "family": "display", "size": "clamp(2rem, 3.6vw, 3.25rem)", "lineHeight": "1.1", "weight": "600", "letterSpacing": "-0.025em", "sourceTokenId": "MC04:/typography/roles/display", "purpose": "Section display statement." },
+        "title1": { "family": "display", "size": "clamp(1.5rem, 2.6vw, 2.25rem)", "lineHeight": "1.2", "weight": "600", "letterSpacing": "-0.02em", "sourceTokenId": "MC04:/typography/roles/heading", "purpose": "Page section title." },
+        "title2": { "family": "display", "size": "1.375rem", "lineHeight": "1.3", "weight": "600", "letterSpacing": "-0.01em", "sourceTokenId": "MC04:/typography/roles/heading", "purpose": "Sub-section title." },
+        "heading": { "family": "display", "size": "1.125rem", "lineHeight": "1.35", "weight": "600", "letterSpacing": "0", "sourceTokenId": "MC04:/typography/roles/heading", "purpose": "Component heading inside a panel or card." },
+        "body": { "family": "body", "size": "1rem", "lineHeight": "1.65", "weight": "400", "letterSpacing": "0", "sourceTokenId": "MC04:/typography/roles/body", "purpose": "Default reading text and instructions." },
+        "bodySmall": { "family": "body", "size": "0.875rem", "lineHeight": "1.6", "weight": "400", "letterSpacing": "0", "sourceTokenId": "MC04:/typography/roles/body", "purpose": "Dense supporting text." },
+        "label": { "family": "body", "size": "0.75rem", "lineHeight": "1.4", "weight": "700", "letterSpacing": "0.02em", "sourceTokenId": "MC04:/typography/roles/label", "purpose": "Form and control labels." },
+        "meta": { "family": "body", "size": "0.6875rem", "lineHeight": "1.5", "weight": "500", "letterSpacing": "0.03em", "sourceTokenId": "MC04:/typography/roles/metadata", "purpose": "Provenance, age and reference metadata." },
+        "numericPrimary": { "family": "display", "size": "clamp(2.5rem, 6vw, 4.5rem)", "lineHeight": "1", "weight": "700", "letterSpacing": "0", "numeric": true, "sourceTokenId": "MC04:/typography/sizes/numericPrimary", "purpose": "Primary instrument numeric readout." },
+        "numericSecondary": { "family": "display", "size": "clamp(1.5rem, 3vw, 2.25rem)", "lineHeight": "1.1", "weight": "700", "letterSpacing": "0", "numeric": true, "sourceTokenId": "MC04:/typography/sizes/numericSecondary", "purpose": "Secondary instrument numeric context." },
+        "numericTertiary": { "family": "display", "size": "1.125rem", "lineHeight": "1.3", "weight": "600", "letterSpacing": "0", "numeric": true, "sourceTokenId": "MC04:/typography/sizes/numericSecondary", "purpose": "Compact telemetry numeric value." },
+        "unit": { "family": "body", "size": "0.75rem", "lineHeight": "1.3", "weight": "700", "letterSpacing": "0.08em", "textTransform": "uppercase", "sourceTokenId": "MC04:/typography/numeric/unit", "purpose": "Measurement unit label." }
+      }
+    },
+    "space": {
+      "unit": "length",
+      "values": {
+        "space1": { "cssVar": "--marea-space-1", "value": "4px", "semanticRole": "Hairline separation.", "sourceTokenId": "MC04:/density/space/--inst-space-1", "status": "INTERNAL_PROPOSED" },
+        "space2": { "cssVar": "--marea-space-2", "value": "8px", "semanticRole": "Inline icon-to-label gap.", "sourceTokenId": "MC04:/density/space/--inst-space-2", "status": "INTERNAL_PROPOSED" },
+        "space3": { "cssVar": "--marea-space-3", "value": "12px", "semanticRole": "Dense stack gap.", "sourceTokenId": "MC04:/density/space/--inst-space-3", "status": "INTERNAL_PROPOSED" },
+        "space4": { "cssVar": "--marea-space-4", "value": "16px", "semanticRole": "Default control and panel gap.", "sourceTokenId": "MC04:/density/space/--inst-space-4", "status": "INTERNAL_PROPOSED" },
+        "space5": { "cssVar": "--marea-space-5", "value": "24px", "semanticRole": "Panel padding.", "sourceTokenId": "MC04:/density/space/--inst-space-5", "status": "INTERNAL_PROPOSED" },
+        "space6": { "cssVar": "--marea-space-6", "value": "32px", "semanticRole": "Section rhythm.", "sourceTokenId": "MC04:/density/space/--inst-space-6", "status": "INTERNAL_PROPOSED" },
+        "space7": { "cssVar": "--marea-space-7", "value": "40px", "semanticRole": "Large block separation.", "sourceTokenId": "DERIVED:/MC04 density scale", "status": "DERIVED_INTERNAL" },
+        "space8": { "cssVar": "--marea-space-8", "value": "48px", "semanticRole": "Page section gap.", "sourceTokenId": "DERIVED:/MC04 density scale", "status": "DERIVED_INTERNAL" },
+        "space9": { "cssVar": "--marea-space-9", "value": "64px", "semanticRole": "Major section gap.", "sourceTokenId": "DERIVED:/MC04 density scale", "status": "DERIVED_INTERNAL" },
+        "space10": { "cssVar": "--marea-space-10", "value": "80px", "semanticRole": "Editorial section gap.", "sourceTokenId": "DERIVED:/MC04 density scale", "status": "DERIVED_INTERNAL" },
+        "space11": { "cssVar": "--marea-space-11", "value": "96px", "semanticRole": "Landing block gap.", "sourceTokenId": "DERIVED:/MC04 density scale", "status": "DERIVED_INTERNAL" },
+        "space12": { "cssVar": "--marea-space-12", "value": "128px", "semanticRole": "Maximum section gap.", "sourceTokenId": "DERIVED:/MC04 density scale", "status": "DERIVED_INTERNAL" }
+      }
+    },
+    "size": {
+      "unit": "length",
+      "values": {
+        "controlSm": { "cssVar": "--marea-control-sm", "value": "32px", "semanticRole": "Compact control height; still above the 24px AA floor.", "sourceTokenId": "DERIVED:/MC17 touch target", "status": "DERIVED_INTERNAL" },
+        "controlMd": { "cssVar": "--marea-control-md", "value": "40px", "semanticRole": "Default control height.", "sourceTokenId": "DERIVED:/MC17 touch target", "status": "DERIVED_INTERNAL" },
+        "controlLg": { "cssVar": "--marea-control-lg", "value": "48px", "semanticRole": "Preferred wet/glove control height (internal design goal, not a WCAG minimum).", "sourceTokenId": "MC04:/typography/sizes/touchTarget", "status": "INTERNAL_PROPOSED" },
+        "touchTargetMin": { "cssVar": "--marea-touch-target-min", "value": "24px", "semanticRole": "WCAG 2.2 SC 2.5.8 minimum target size.", "sourceTokenId": "WCAG22:/2.5.8", "status": "NORMATIVE_WCAG_22_AA" },
+        "wetTargetPreferred": { "cssVar": "--marea-wet-target-preferred", "value": "44px", "semanticRole": "Internal preference for wet/glove use; NOT the AA minimum.", "sourceTokenId": "MC04:/typography/sizes/touchTarget", "status": "INTERNAL_DESIGN_GOAL" },
+        "iconSm": { "cssVar": "--marea-icon-sm", "value": "16px", "semanticRole": "Inline metadata icon.", "sourceTokenId": "MC04:/shape/--inst-stroke-icon", "status": "INTERNAL_PROPOSED" },
+        "iconMd": { "cssVar": "--marea-icon-md", "value": "20px", "semanticRole": "Inline control icon.", "sourceTokenId": "MC04:/shape/--inst-stroke-icon", "status": "INTERNAL_PROPOSED" },
+        "iconLg": { "cssVar": "--marea-icon-lg", "value": "24px", "semanticRole": "Status and section icon.", "sourceTokenId": "MC04:/shape/--inst-stroke-icon", "status": "INTERNAL_PROPOSED" },
+        "iconXl": { "cssVar": "--marea-icon-xl", "value": "32px", "semanticRole": "Instrument tile icon.", "sourceTokenId": "DERIVED:/MC17 icon scale", "status": "DERIVED_INTERNAL" },
+        "tileMin": { "cssVar": "--marea-tile-min", "value": "160px", "semanticRole": "Minimum instrument tile width; tiles wrap instead of shrinking text.", "sourceTokenId": "DERIVED:/MC17 instrument layout", "status": "DERIVED_INTERNAL" }
+      }
+    },
+    "grid": {
+      "unit": "length",
+      "values": {
+        "containerNarrow": { "cssVar": "--marea-container-narrow", "value": "800px", "semanticRole": "Prose and documentation column width.", "sourceTokenId": "DERIVED:/src/styles.scss/.wrap-narrow", "status": "DERIVED_INTERNAL" },
+        "containerDefault": { "cssVar": "--marea-container-default", "value": "1160px", "semanticRole": "Default corporate content width.", "sourceTokenId": "MC04:/src/styles.scss/.wrap", "status": "EXISTING_MEASURED_BASELINE" },
+        "containerWide": { "cssVar": "--marea-container-wide", "value": "1360px", "semanticRole": "Wide data tables and catalogues.", "sourceTokenId": "DERIVED:/MC17 grid", "status": "DERIVED_INTERNAL" },
+        "columns": { "cssVar": "--marea-grid-columns", "value": "12", "unit": "count", "semanticRole": "Reference grid columns (documented; components use fluid minmax grids).", "sourceTokenId": "DERIVED:/MC17 grid", "status": "DERIVED_INTERNAL" },
+        "gutterSm": { "cssVar": "--marea-gutter-sm", "value": "16px", "semanticRole": "Gutter below 768px.", "sourceTokenId": "DERIVED:/MC17 grid", "status": "DERIVED_INTERNAL" },
+        "gutterMd": { "cssVar": "--marea-gutter-md", "value": "24px", "semanticRole": "Gutter at 768-1159px.", "sourceTokenId": "DERIVED:/MC17 grid", "status": "DERIVED_INTERNAL" },
+        "gutterLg": { "cssVar": "--marea-gutter-lg", "value": "32px", "semanticRole": "Gutter at 1160px and above.", "sourceTokenId": "DERIVED:/MC17 grid", "status": "DERIVED_INTERNAL" },
+        "measure": { "cssVar": "--marea-measure", "value": "68ch", "semanticRole": "Maximum reading line length.", "sourceTokenId": "DERIVED:/MC17 typography", "status": "DERIVED_INTERNAL" }
+      }
+    },
+    "radius": {
+      "unit": "length",
+      "values": {
+        "none": { "cssVar": "--marea-radius-none", "value": "0", "semanticRole": "Square technical surface.", "sourceTokenId": "DERIVED:/MC04 shape", "status": "DERIVED_INTERNAL" },
+        "control": { "cssVar": "--marea-radius-control", "value": "3px", "semanticRole": "Control corners (MC-04 range 2-4px).", "sourceTokenId": "MC04:/shape/--inst-radius-control", "status": "INTERNAL_PROPOSED" },
+        "surface": { "cssVar": "--marea-radius-surface", "value": "6px", "semanticRole": "Surface corners (MC-04 range 4-8px).", "sourceTokenId": "MC04:/shape/--inst-radius-surface", "status": "INTERNAL_PROPOSED" },
+        "pill": { "cssVar": "--marea-radius-pill", "value": "999px", "semanticRole": "Status chips with text only; never a decorative pill elsewhere.", "sourceTokenId": "MC04:/shape/notes pills", "status": "INTERNAL_PROPOSED" }
+      }
+    },
+    "border": {
+      "unit": "length",
+      "values": {
+        "hairline": { "cssVar": "--marea-border-width-hairline", "value": "1px", "semanticRole": "Decorative rule.", "sourceTokenId": "DERIVED:/MC04 shape", "status": "DERIVED_INTERNAL" },
+        "strong": { "cssVar": "--marea-border-width-strong", "value": "2px", "semanticRole": "Control boundary.", "sourceTokenId": "DERIVED:/MC04 shape", "status": "DERIVED_INTERNAL" },
+        "focus": { "cssVar": "--marea-border-width-focus", "value": "3px", "semanticRole": "Focus indicator width (WCAG 2.2 SC 2.4.7 perceivability).", "sourceTokenId": "WCAG22:/2.4.7", "status": "NORMATIVE_WCAG_22_AA" },
+        "icon": { "cssVar": "--marea-icon-stroke", "value": "2px", "semanticRole": "Icon stroke width.", "sourceTokenId": "MC04:/shape/--inst-stroke-icon", "status": "INTERNAL_PROPOSED" },
+        "chart": { "cssVar": "--marea-chart-stroke", "value": "2px", "semanticRole": "Chart line stroke.", "sourceTokenId": "MC04:/shape/--inst-stroke-chart", "status": "INTERNAL_PROPOSED" }
+      }
+    },
+    "elevation": {
+      "unit": "shadow",
+      "values": {
+        "none": { "cssVar": "--marea-elevation-none", "value": "none", "semanticRole": "Default: flat surfaces, no decorative shadow.", "sourceTokenId": "MC04:/brief/one-elevation", "status": "INTERNAL_PROPOSED" },
+        "overlay": { "cssVar": "--marea-elevation-overlay", "value": "0 18px 40px rgba(11, 37, 64, 0.18)", "semanticRole": "Overlays only (navigation panel, explanatory panel). Never used for cards.", "sourceTokenId": "MC04:/brief/one-elevation", "status": "INTERNAL_PROPOSED" }
+      }
+    },
+    "opacity": {
+      "unit": "number",
+      "values": {
+        "full": { "cssVar": "--marea-opacity-full", "value": "1", "semanticRole": "Default opacity.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" },
+        "decorative": { "cssVar": "--marea-opacity-decorative", "value": "0.6", "semanticRole": "Decorative only; never applied to essential text or status.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" },
+        "mutedIcon": { "cssVar": "--marea-opacity-muted-icon", "value": "0.85", "semanticRole": "Non-essential icon softening; text never softened.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" }
+      }
+    },
+    "focus": {
+      "unit": "mixed",
+      "values": {
+        "width": { "cssVar": "--marea-focus-width", "value": "3px", "semanticRole": "Focus outline width.", "sourceTokenId": "WCAG22:/2.4.7", "status": "NORMATIVE_WCAG_22_AA" },
+        "offset": { "cssVar": "--marea-focus-offset", "value": "2px", "semanticRole": "Focus outline offset on flat surfaces.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" },
+        "inset": { "cssVar": "--marea-focus-inset", "value": "-3px", "semanticRole": "Inset focus ring inside filled controls.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" },
+        "style": { "cssVar": "--marea-focus-style", "value": "solid", "semanticRole": "Focus outline style.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" }
+      }
+    },
+    "motion": {
+      "unit": "mixed",
+      "values": {
+        "durationState": { "cssVar": "--marea-motion-state", "value": "120ms", "semanticRole": "State transition (hover/press).", "sourceTokenId": "MC04:/motion/--inst-motion-state", "status": "INTERNAL_PROPOSED" },
+        "durationEnter": { "cssVar": "--marea-motion-enter", "value": "180ms", "semanticRole": "Disclosure expansion entrance.", "sourceTokenId": "DERIVED:/MC17 motion", "status": "DERIVED_INTERNAL" },
+        "durationExit": { "cssVar": "--marea-motion-exit", "value": "200ms", "semanticRole": "Disclosure collapse.", "sourceTokenId": "DERIVED:/MC17 motion", "status": "DERIVED_INTERNAL" },
+        "easeStandard": { "cssVar": "--marea-ease-standard", "value": "cubic-bezier(0.2, 0, 0, 1)", "semanticRole": "Calm standard easing; no bounce, no spring.", "sourceTokenId": "DERIVED:/MC17 motion", "status": "DERIVED_INTERNAL" },
+        "alertMaxHz": { "cssVar": "--marea-alert-max-hz", "value": "1", "unit": "count", "semanticRole": "Maximum optional alert pulse rate; reduced-motion disables it.", "sourceTokenId": "MC04:/motion/--inst-motion-alert-max-hz", "status": "INTERNAL_PROPOSED" }
+      }
+    },
+    "breakpoint": {
+      "unit": "length",
+      "values": {
+        "bp320": { "cssVar": "--marea-bp-320", "value": "320px", "semanticRole": "Minimum supported viewport; reflow test floor.", "sourceTokenId": "WCAG22:/1.4.10", "status": "NORMATIVE_WCAG_22_AA" },
+        "bp360": { "cssVar": "--marea-bp-360", "value": "360px", "semanticRole": "Small phone.", "sourceTokenId": "DERIVED:/MC17 responsive", "status": "DERIVED_INTERNAL" },
+        "bp390": { "cssVar": "--marea-bp-390", "value": "390px", "semanticRole": "Modern phone.", "sourceTokenId": "DERIVED:/MC17 responsive", "status": "DERIVED_INTERNAL" },
+        "bp480": { "cssVar": "--marea-bp-480", "value": "480px", "semanticRole": "Large phone / small landscape.", "sourceTokenId": "DERIVED:/MC17 responsive", "status": "DERIVED_INTERNAL" },
+        "bp768": { "cssVar": "--marea-bp-768", "value": "768px", "semanticRole": "Tablet portrait; two-column compositions.", "sourceTokenId": "DERIVED:/MC17 responsive", "status": "DERIVED_INTERNAL" },
+        "bp900": { "cssVar": "--marea-bp-900", "value": "900px", "semanticRole": "Wide tablet; sidebar compositions.", "sourceTokenId": "DERIVED:/MC17 responsive", "status": "DERIVED_INTERNAL" },
+        "bp1024": { "cssVar": "--marea-bp-1024", "value": "1024px", "semanticRole": "Desktop; full navigation pattern.", "sourceTokenId": "DERIVED:/MC17 responsive", "status": "DERIVED_INTERNAL" },
+        "bp1160": { "cssVar": "--marea-bp-1160", "value": "1160px", "semanticRole": "Default container width reached.", "sourceTokenId": "DERIVED:/MC17 responsive", "status": "DERIVED_INTERNAL" },
+        "bp1440": { "cssVar": "--marea-bp-1440", "value": "1440px", "semanticRole": "Large desktop reference width.", "sourceTokenId": "DERIVED:/MC17 responsive", "status": "DERIVED_INTERNAL" }
+      }
+    },
+    "zIndex": {
+      "unit": "number",
+      "values": {
+        "base": { "cssVar": "--marea-z-base", "value": "0", "semanticRole": "Normal flow.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" },
+        "raised": { "cssVar": "--marea-z-raised", "value": "10", "semanticRole": "Instrument tile overlays.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" },
+        "sticky": { "cssVar": "--marea-z-sticky", "value": "20", "semanticRole": "Sticky section chrome inside the catalogue.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" },
+        "nav": { "cssVar": "--marea-z-nav", "value": "30", "semanticRole": "Responsive navigation panel.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" },
+        "overlay": { "cssVar": "--marea-z-overlay", "value": "40", "semanticRole": "Overlay scrim and explanatory panel.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" },
+        "skip": { "cssVar": "--marea-z-skip", "value": "50", "semanticRole": "Skip link.", "sourceTokenId": "DERIVED:/MC17", "status": "DERIVED_INTERNAL" }
+      }
+    },
+    "icon": {
+      "unit": "length",
+      "values": {
+        "sm": { "cssVar": "--marea-icon-size-sm", "value": "16px", "semanticRole": "Inline metadata icon size.", "sourceTokenId": "MC04:/icons", "status": "INTERNAL_PROPOSED" },
+        "md": { "cssVar": "--marea-icon-size-md", "value": "20px", "semanticRole": "Control icon size.", "sourceTokenId": "MC04:/icons", "status": "INTERNAL_PROPOSED" },
+        "lg": { "cssVar": "--marea-icon-size-lg", "value": "24px", "semanticRole": "Status icon size.", "sourceTokenId": "MC04:/icons", "status": "INTERNAL_PROPOSED" },
+        "xl": { "cssVar": "--marea-icon-size-xl", "value": "32px", "semanticRole": "Tile icon size.", "sourceTokenId": "MC04:/icons", "status": "INTERNAL_PROPOSED" }
+      }
+    }
+  },
+  "dataStatusSemantics": [
+    { "tone": "critical", "colorRole": "stateCritical", "surfaceRole": "stateCriticalSurface", "shape": "solid triangle or octagon", "live": "off", "requiresText": true, "note": "Cause and required action accompany the alarm; acknowledgement never removes the condition." },
+    { "tone": "warning", "colorRole": "stateWarning", "surfaceRole": "stateWarningSurface", "shape": "triangle with exclamation", "live": "off", "requiresText": true, "note": "Cause and required action accompany the warning." },
+    { "tone": "safe", "colorRole": "stateSafe", "surfaceRole": "stateSafeSurface", "shape": "filled circle", "live": "off", "requiresText": true, "note": "Describes a received signal, never a guarantee about the vessel." },
+    { "tone": "stale", "colorRole": "stateStale", "surfaceRole": "stateStaleSurface", "shape": "dashed outline with clock", "live": "off", "requiresText": true, "note": "Age counter always rendered; no frozen last value." },
+    { "tone": "info", "colorRole": "stateInfo", "surfaceRole": "stateInfoSurface", "shape": "outlined square with i", "live": "off", "requiresText": true, "note": "Neutral advisory ink, not a hue accent." },
+    { "tone": "neutral", "colorRole": "textSecondary", "surfaceRole": "surfaceRaised", "shape": "outline", "live": "off", "requiresText": true, "note": "Non-semantic label (e.g. definition status)." }
+  ],
+  "contrastPairs": [
+    { "id": "text-on-surfaces", "foregrounds": ["textPrimary", "textSecondary", "textMeta", "dataPrimary", "dataSecondary", "stateCritical", "stateWarning", "stateSafe", "stateStale", "stateInfo", "action"], "backgrounds": ["canvas", "surface", "surfaceRaised", "fieldSurface"], "kind": "text-normal", "minRatio": 4.5, "modes": "all" },
+    { "id": "on-accent-on-fills", "foregrounds": ["textOnAccent"], "backgrounds": ["action", "actionHover", "stateCritical", "stateWarning", "stateSafe"], "kind": "text-normal", "minRatio": 4.5, "modes": "all" },
+    { "id": "status-text-on-status-surface", "foregrounds": ["stateCritical", "stateWarning", "stateSafe", "stateStale", "stateInfo"], "backgroundsByRole": { "stateCritical": "stateCriticalSurface", "stateWarning": "stateWarningSurface", "stateSafe": "stateSafeSurface", "stateStale": "stateStaleSurface", "stateInfo": "stateInfoSurface" }, "kind": "text-normal", "minRatio": 4.5, "modes": "all" },
+    { "id": "action-text-on-quiet-surface", "foregrounds": ["action"], "backgrounds": ["actionQuietSurface"], "kind": "text-normal", "minRatio": 4.5, "modes": "all" },
+    { "id": "internal-banner-text", "foregrounds": ["internalBannerText"], "backgrounds": ["internalBannerSurface"], "kind": "text-normal", "minRatio": 4.5, "modes": "all" },
+    { "id": "disabled-text-internal-target", "foregrounds": ["disabled"], "backgrounds": ["disabledSurface", "canvas", "surface"], "kind": "text-disabled-internal", "minRatio": 3.0, "modes": "all" },
+    { "id": "focus-ring-on-surfaces", "foregrounds": ["focusRing"], "backgrounds": ["canvas", "surface", "surfaceRaised", "fieldSurface"], "kind": "focus", "minRatio": 3.0, "modes": "all" },
+    { "id": "focus-ring-on-fill", "foregrounds": ["focusRingOnFill"], "backgrounds": ["action", "actionHover", "stateCritical", "stateWarning"], "kind": "focus", "minRatio": 3.0, "modes": "all" },
+    { "id": "control-boundary", "foregrounds": ["borderStrong"], "backgrounds": ["canvas", "surface", "fieldSurface"], "kind": "ui", "minRatio": 3.0, "modes": "all" },
+    { "id": "chart-supporting-cues", "foregrounds": ["chartGrid", "chartLine"], "backgrounds": ["canvas", "surface"], "kind": "ui", "minRatio": 3.0, "modes": "all" }
+  ],
+  "forbiddenValues": {
+    "instrument-night": ["#000000", "#ffffff"],
+    "note": "Night mode must not use a pure black canvas or pure white text (MC-04 halation rule §5.8). Values are checked against resolved colours, not source strings."
+  },
+  "componentVariantTokens": [
+    { "componentId": "marea-button", "variant": "action", "tokenRefs": ["action", "textOnAccent", "focusRingOnFill"], "modes": "all" },
+    { "componentId": "marea-button", "variant": "secondary", "tokenRefs": ["actionQuietSurface", "action", "borderStrong", "focusRing"], "modes": "all" },
+    { "componentId": "marea-button", "variant": "ghost", "tokenRefs": ["action", "focusRing"], "modes": "all" },
+    { "componentId": "marea-button", "variant": "critical", "tokenRefs": ["stateCritical", "textOnAccent", "focusRingOnFill"], "modes": "all" },
+    { "componentId": "marea-status-badge", "variant": "critical", "tokenRefs": ["stateCritical", "stateCriticalSurface"], "modes": "all" },
+    { "componentId": "marea-status-badge", "variant": "warning", "tokenRefs": ["stateWarning", "stateWarningSurface"], "modes": "all" },
+    { "componentId": "marea-status-badge", "variant": "safe", "tokenRefs": ["stateSafe", "stateSafeSurface"], "modes": "all" },
+    { "componentId": "marea-status-badge", "variant": "stale", "tokenRefs": ["stateStale", "stateStaleSurface"], "modes": "all" },
+    { "componentId": "marea-status-badge", "variant": "info", "tokenRefs": ["stateInfo", "stateInfoSurface"], "modes": "all" },
+    { "componentId": "marea-notice", "variant": "permission", "tokenRefs": ["internalBannerSurface", "internalBannerText", "borderStrong"], "modes": "all" },
+    { "componentId": "marea-instrument-tile", "variant": "default", "tokenRefs": ["surface", "surfaceRaised", "dataPrimary", "line"], "modes": ["instrument-day", "instrument-sunlight", "instrument-night"] },
+    { "componentId": "marea-numeric-readout", "variant": "primary", "tokenRefs": ["dataPrimary", "textMeta"], "modes": "all" }
+  ]
+}

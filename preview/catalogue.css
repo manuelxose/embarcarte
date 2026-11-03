@@ -1,0 +1,52 @@
+@use '@fontsource-variable/manrope';
+@use '@fontsource-variable/dm-sans';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #f5f8fa;
+  color: #17365d;
+  font-family: 'DM Sans Variable', 'DM Sans', system-ui, sans-serif;
+}
+
+html::before {
+  content: 'INTERNAL / NOT PUBLISHED';
+  display: block;
+  padding: 6px 16px;
+  background: #14324a;
+  color: #ffffff;
+  font: 700 11px/1.4 'DM Sans Variable', 'DM Sans', system-ui, sans-serif;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
+.marea-catalogue-block {
+  padding-block: 40px;
+}
+
+.marea-catalogue-block + .marea-catalogue-block {
+  border-block-start: 1px solid #d7e3ec;
+}
+
+pre {
+  overflow-x: auto;
+  padding: 16px;
+  background: #0f202b;
+  color: #d8e8f2;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}
