@@ -1,0 +1,55 @@
+{
+  "contractId": "MC16-AUDIT-EVENT-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "appendOnly": true,
+  "tamperEvidence": "SHA-256 CHAIN OF PREVIOUS EVENT HASH",
+  "fields": [
+    "eventId",
+    "entityType",
+    "entityId",
+    "eventType",
+    "previousVersion",
+    "newVersion",
+    "actorId",
+    "actorRole",
+    "timestamp",
+    "reason",
+    "evidenceRefs",
+    "correlationId",
+    "result",
+    "prevEventHash",
+    "eventHash"
+  ],
+  "eventTypes": [
+    "PRODUCT_DEFINITION_CHANGED",
+    "EDITION_CHANGED",
+    "PRICE_REVISED",
+    "READINESS_TRANSITION_PROPOSED",
+    "READINESS_TRANSITION_DENIED",
+    "READINESS_TRANSITION_ACCEPTED",
+    "GATE_EVIDENCE_CHANGED",
+    "MERCHANT_SKU_CREATION_ATTEMPTED",
+    "INVENTORY_MOVEMENT_RECORDED",
+    "ENTITLEMENT_CHANGED",
+    "PUBLICATION_AUTHORIZATION_CHANGED",
+    "ADMIN_OVERRIDE_ATTEMPTED"
+  ],
+  "rules": {
+    "updateForbidden": true,
+    "deleteForbidden": true,
+    "externalApprovalInferenceForbidden": true,
+    "paymentSecretsForbidden": true,
+    "unnecessaryPersonalDataForbidden": true,
+    "actorAndRoleRequired": true,
+    "reasonRequired": true,
+    "evidenceRequiredForStateChanges": true,
+    "correlationIdRequired": true
+  },
+  "distinction": {
+    "internalDecisionEvent": "Records an EMBARCARTE decision or attempt; does not prove an external approval.",
+    "externalEvidenceRecord": "Records a third-party document with issuer, date, scope and verification; required before a gate may close."
+  }
+}

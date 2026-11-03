@@ -1,0 +1,1188 @@
+{
+  "contractId": "MC16-RELEASE-GATE-MAPPING",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "REPOSITORY_VERIFIED",
+  "sourceRefs": [
+    "docs/marea/legal-commercial/data/release-evidence-gates.json"
+  ],
+  "summary": {
+    "gates": 13,
+    "open": 13,
+    "closedVerified": 0,
+    "documents": 24,
+    "documentsExecuted": 0,
+    "inheritedFrom": "MC-14",
+    "inheritedVerdict": "PARTIAL"
+  },
+  "gates": [
+    {
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "name": "EU market placement (conformity, DoC, CE, traceability)",
+      "purpose": "Ensure no hardware product is placed on the EU market without the applicable conformity assessment, DoC, CE marking and traceability.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Final-product conformity assessment",
+        "EU declaration of conformity",
+        "Accredited test reports",
+        "Technical documentation file",
+        "Traceability and labelling",
+        "Instructions and safety information in the required language"
+      ],
+      "closureOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "decisionId": "DEC-MC14-001",
+      "affectedFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "riskIds": [
+        "LEG-01",
+        "LEG-06",
+        "LEG-07",
+        "PRD-06"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-SAFETY-PILOT",
+      "name": "PILOT safety gate",
+      "purpose": "Keep PILOT unsellable and unoffered until an independent safety case, physical controls and supervised sea trials exist.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Independent hazard analysis and safety case",
+        "Physical E-stop and fail-closed evidence",
+        "Bench/HIL test reports",
+        "Supervised sea-trial reports",
+        "Independent safety review",
+        "Product liability insurance"
+      ],
+      "closureOwner": "HARDWARE_LEAD",
+      "decisionId": "DEC-MC14-010",
+      "affectedFamilyIds": [
+        "PILOT"
+      ],
+      "affectedBundleIds": [
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "PRD-01",
+        "PRD-02",
+        "LIA-10"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-IP-CLEARANCE",
+      "name": "Intellectual-property clearance",
+      "purpose": "Prove ownership/licence of the source, firmware, media and marks before distribution.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Assignment/ownership chain",
+        "Contributor waivers",
+        "Outbound licence decision",
+        "Third-party notices bundle and SBOM",
+        "MAREA trademark clearance and filing",
+        "NMEA licence/certification if claimed"
+      ],
+      "closureOwner": "LEGAL_COUNSEL",
+      "decisionId": "DEC-MC14-003",
+      "affectedFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "IPR-01",
+        "IPR-02",
+        "IPR-03",
+        "IPR-10",
+        "IPR-13",
+        "PRD-04"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-DATA-LICENSING",
+      "name": "Marine data licensing",
+      "purpose": "Ensure every chart, weather, tile and AIS-derived data use is licensed for the intended commercial use.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Signed chart licence or user-supplied-chart policy",
+        "Signed weather licence with display/cache/offline rights",
+        "Tile/basemap licence or self-hosted licensed stack",
+        "Attribution and freshness implementation",
+        "Provider terms register"
+      ],
+      "closureOwner": "DATA_RIGHTS_OWNER",
+      "decisionId": "DEC-MC14-006",
+      "affectedFamilyIds": [
+        "NAV",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET",
+        "AIS"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "DATA-01",
+        "DATA-02",
+        "DATA-03",
+        "DATA-04",
+        "LIA-06",
+        "LIA-07"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-PRIVACY-DPA-DPIA",
+      "name": "Privacy, DPIA and processor agreements",
+      "purpose": "Ensure lawful processing, DPIA completion and processor agreements before WATCH/FLEET processing.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Controller/processor role map",
+        "DPIA screening and report",
+        "Article 28 DPA and subprocessor register",
+        "Privacy notices ES/EN",
+        "Retention and export schedule",
+        "Breach-response runbook",
+        "Tenant isolation test"
+      ],
+      "closureOwner": "DPO",
+      "decisionId": "DEC-MC14-014",
+      "affectedFamilyIds": [
+        "NAV",
+        "WATCH",
+        "FLEET"
+      ],
+      "affectedBundleIds": [
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "PRIV-01",
+        "PRIV-02",
+        "PRIV-03",
+        "PRIV-05",
+        "PRIV-06"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-CRA-CYBERSECURITY",
+      "name": "CRA cybersecurity lifecycle",
+      "purpose": "Establish CRA scope, secure development, vulnerability handling, updates, support period and incident reporting.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "CRA classification memo",
+        "Secure development lifecycle",
+        "Vulnerability-handling and CVD policy",
+        "SBOM and dependency monitoring",
+        "Support-period decision",
+        "Incident-reporting runbook and exercise",
+        "Conformity assessment and technical documentation"
+      ],
+      "closureOwner": "SECURITY_LEAD",
+      "decisionId": "DEC-MC14-015",
+      "affectedFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "CYB-01",
+        "CYB-02",
+        "CYB-03",
+        "CYB-04",
+        "CYB-05",
+        "CYB-06",
+        "PRD-02"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-CONSUMER-TERMS",
+      "name": "Consumer, B2B and installer contracts",
+      "purpose": "Approve the contract set before any sale or quotation.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Consumer terms of sale ES/EN",
+        "B2B sales terms",
+        "Subscription terms",
+        "Returns/cancellation policy",
+        "Warranty and RMA workflow",
+        "Installer/distributor agreements",
+        "Counsel sign-off"
+      ],
+      "closureOwner": "LEGAL_COUNSEL",
+      "decisionId": "DEC-MC14-016",
+      "affectedFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "CONS-01",
+        "CONS-02",
+        "CONS-03",
+        "CONS-04",
+        "CONS-05",
+        "CONS-06",
+        "CONS-09",
+        "CONS-10"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-COMMERCIAL-CLAIMS",
+      "name": "Commercial claims approval",
+      "purpose": "Allow only evidence-backed, bilingual, channel-approved claims.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Approved claim records with evidence",
+        "Bilingual semantic parity check",
+        "Channel and audience approval",
+        "Trademark public-use decision",
+        "Financial-claim prohibition review"
+      ],
+      "closureOwner": "COMMERCIAL_DIRECTOR",
+      "decisionId": "DEC-MC14-018",
+      "affectedFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "CLM-01",
+        "CLM-02",
+        "CLM-03",
+        "CLM-04",
+        "CLM-05",
+        "CLM-06",
+        "CLM-07"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-PRICING",
+      "name": "Price approval",
+      "purpose": "Prevent any price from being displayed as an offer before it is approved with VAT basis and territory.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Approved price list",
+        "Bottom-up cost and margin evidence",
+        "VAT and tax confirmation",
+        "Price-display and renewal rules"
+      ],
+      "closureOwner": "FINANCE_LEAD",
+      "decisionId": "DEC-MC14-013",
+      "affectedFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "CLM-02",
+        "PAY-05"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-PAYMENTS",
+      "name": "Payments and merchant agreement",
+      "purpose": "Ensure a lawful, hosted/tokenised payment flow exists before any checkout.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Executed merchant agreement",
+        "Payment-role and SCA analysis",
+        "Refund/chargeback procedure",
+        "PCI-scope confirmation",
+        "Checkout test evidence"
+      ],
+      "closureOwner": "FINANCE_LEAD",
+      "decisionId": "DEC-MC14-013",
+      "affectedFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "PAY-01",
+        "PAY-02",
+        "PAY-03",
+        "PAY-04"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-INSURANCE",
+      "name": "Liability insurance",
+      "purpose": "Ensure an insurance decision and cover exist before products with material liability are offered.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Broker indication and quotation",
+        "Policy wording with limits/exclusions/territory",
+        "PILOT-specific cover decision",
+        "Cyber cover decision",
+        "Documented residual-risk acceptance if deferred"
+      ],
+      "closureOwner": "FINANCE_LEAD",
+      "decisionId": "DEC-MC14-012",
+      "affectedFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "riskIds": [
+        "LIA-01",
+        "LIA-03",
+        "LIA-08",
+        "LIA-09",
+        "LIA-10",
+        "LIA-13"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-LEGAL-ENTITY",
+      "name": "Legal identity and website legal pack",
+      "purpose": "Publish the seller's verified identity and legal/cookie information before any commerce.",
+      "status": "BLOCKED",
+      "open": true,
+      "requiredEvidence": [
+        "Verified company registration data",
+        "Legal notice",
+        "Privacy and cookie policy",
+        "Terms of use",
+        "Cookie consent implementation"
+      ],
+      "closureOwner": "COMMERCIAL_DIRECTOR",
+      "decisionId": "DEC-MC14-017",
+      "affectedFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "OPS-01",
+        "LEG-09",
+        "PRIV-07"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    },
+    {
+      "gateId": "GATE-WEBSITE-REMEDIATION",
+      "name": "Website and SEO remediation (MC-15)",
+      "purpose": "Remediate the read-only findings before publication of any MAREA content, price or availability.",
+      "status": "EVIDENCE_REQUIRED",
+      "open": true,
+      "requiredEvidence": [
+        "D15 findings closed with evidence",
+        "Claims review of remediated copy",
+        "Structured-data policy",
+        "MC-15 migration authorization"
+      ],
+      "closureOwner": "COMMERCIAL_DIRECTOR",
+      "decisionId": "DEC-MC14-018",
+      "affectedFamilyIds": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "affectedBundleIds": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "riskIds": [
+        "OPS-02",
+        "OPS-03",
+        "OPS-04",
+        "CLM-07"
+      ],
+      "evidenceIds": [],
+      "closureAuthorized": false
+    }
+  ],
+  "documents": [
+    {
+      "documentId": "DOC-01",
+      "name": "EU declaration of conformity",
+      "requiredForProductFamilies": [
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "ownerRole": "PRODUCT_COMPLIANCE_ENGINEER",
+      "notes": "No DoC exists for any product.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-02",
+      "name": "Technical documentation file",
+      "requiredForProductFamilies": [
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "ownerRole": "PRODUCT_COMPLIANCE_ENGINEER",
+      "notes": "No technical file exists.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-03",
+      "name": "Product risk assessment",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "ownerRole": "PRODUCT_COMPLIANCE_ENGINEER",
+      "notes": "No product risk assessment exists.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-04",
+      "name": "Accredited test reports (EMC, radio, safety, environmental)",
+      "requiredForProductFamilies": [
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "ownerRole": "PRODUCT_COMPLIANCE_ENGINEER",
+      "notes": "No laboratory has been engaged.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-05",
+      "name": "Label, serial and traceability information",
+      "requiredForProductFamilies": [
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "ownerRole": "PRODUCT_COMPLIANCE_ENGINEER",
+      "notes": "No serial/lot scheme exists.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-06",
+      "name": "Instructions and safety warnings (ES/EN or required language)",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "DRAFT_REQUIRED",
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "ownerRole": "PRODUCT_COMPLIANCE_ENGINEER",
+      "notes": "Spanish language requirement for the Spanish market is confirmed for radio equipment.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-07",
+      "name": "Product liability insurance policy",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-INSURANCE",
+      "ownerRole": "FINANCE_LEAD",
+      "notes": "Premium UNKNOWN; no policy, broker indication or quotation.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-08",
+      "name": "Third-party notices bundle and SBOM",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-IP-CLEARANCE",
+      "ownerRole": "ENGINEERING_LEAD",
+      "notes": "No NOTICE bundle or SBOM exists.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-09",
+      "name": "IP assignment/licence agreements (OPEN-MARINE)",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-IP-CLEARANCE",
+      "ownerRole": "LEGAL_COUNSEL",
+      "notes": "No assignment or licence exists.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-10",
+      "name": "Chart and ENC licence",
+      "requiredForProductFamilies": [
+        "NAV",
+        "DISPLAY",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-DATA-LICENSING",
+      "ownerRole": "DATA_RIGHTS_OWNER",
+      "notes": "No chart licence exists; NAV must be presented as user-supplied-chart only.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-11",
+      "name": "Weather and marine-data licences",
+      "requiredForProductFamilies": [
+        "WEATHER",
+        "NAV",
+        "DISPLAY",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "CRUISE",
+        "SAIL",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-DATA-LICENSING",
+      "ownerRole": "DATA_RIGHTS_OWNER",
+      "notes": "No weather provider licence or written public-sector terms.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-12",
+      "name": "Privacy notices (ES/EN)",
+      "requiredForProductFamilies": [
+        "NAV",
+        "WATCH",
+        "FLEET",
+        "WEATHER"
+      ],
+      "requiredForBundles": [
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "DRAFT_REQUIRED",
+      "gateId": "GATE-PRIVACY-DPA-DPIA",
+      "ownerRole": "DPO",
+      "notes": "No approved privacy notice exists.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-13",
+      "name": "Processor agreements (DPA) and subprocessor register",
+      "requiredForProductFamilies": [
+        "NAV",
+        "WATCH",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-PRIVACY-DPA-DPIA",
+      "ownerRole": "DPO",
+      "notes": "No DPA exists.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-14",
+      "name": "Warranty and returns policy",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "status": "DRAFT_REQUIRED",
+      "gateId": "GATE-CONSUMER-TERMS",
+      "ownerRole": "LEGAL_COUNSEL",
+      "notes": "No approved policy; 3% returns allowance is illustrative.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-15",
+      "name": "Consumer terms of sale",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "status": "DRAFT_REQUIRED",
+      "gateId": "GATE-CONSUMER-TERMS",
+      "ownerRole": "LEGAL_COUNSEL",
+      "notes": "No approved consumer terms.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-16",
+      "name": "B2B supply terms",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "CRUISE",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "DRAFT_REQUIRED",
+      "gateId": "GATE-CONSUMER-TERMS",
+      "ownerRole": "LEGAL_COUNSEL",
+      "notes": "No B2B terms.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-17",
+      "name": "Installer and distributor agreements",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-CONSUMER-TERMS",
+      "ownerRole": "COMMERCIAL_DIRECTOR",
+      "notes": "No installer or distributor agreement.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-18",
+      "name": "Supplier and manufacturing contracts",
+      "requiredForProductFamilies": [
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "ownerRole": "PROGRAMME_LEAD",
+      "notes": "No supplier has been contacted or contracted.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-19",
+      "name": "Support, update and end-of-support policy",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "DRAFT_REQUIRED",
+      "gateId": "GATE-CRA-CYBERSECURITY",
+      "ownerRole": "SECURITY_LEAD",
+      "notes": "Support period not decided.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-20",
+      "name": "Vulnerability reporting and incident-response process",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-CRA-CYBERSECURITY",
+      "ownerRole": "SECURITY_LEAD",
+      "notes": "Reporting duties already apply; no process exists.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-21",
+      "name": "Merchant/payment provider agreement",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-PAYMENTS",
+      "ownerRole": "FINANCE_LEAD",
+      "notes": "No merchant agreement.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-22",
+      "name": "Product identity and serial/lot traceability system",
+      "requiredForProductFamilies": [
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "ownerRole": "HARDWARE_LEAD",
+      "notes": "No traceability system exists.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-23",
+      "name": "DPIA screening and report",
+      "requiredForProductFamilies": [
+        "WATCH",
+        "FLEET",
+        "NAV"
+      ],
+      "requiredForBundles": [
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-PRIVACY-DPA-DPIA",
+      "ownerRole": "DPO",
+      "notes": "A recommended DPIA is not a completed DPIA.",
+      "executed": false,
+      "evidenceIds": []
+    },
+    {
+      "documentId": "DOC-24",
+      "name": "EU declaration of conformity for cybersecurity (CRA)",
+      "requiredForProductFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ],
+      "requiredForBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "status": "NOT_EXECUTED",
+      "gateId": "GATE-CRA-CYBERSECURITY",
+      "ownerRole": "SECURITY_LEAD",
+      "notes": "CRA classification not decided; no DoC exists.",
+      "executed": false,
+      "evidenceIds": []
+    }
+  ]
+}

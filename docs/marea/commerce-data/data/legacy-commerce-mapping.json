@@ -1,0 +1,90 @@
+{
+  "contractId": "MC16-LEGACY-COMMERCE-MAPPING",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "REPOSITORY_VERIFIED",
+  "sourceCommit": "99212a41f5942a6fef4ede75815132c11fa4de50",
+  "principle": "Existing generic commerce remains separate and functionally unchanged. A legacy products.active=1 row never authorizes MAREA commerce.",
+  "legacyTables": [
+    "users",
+    "sessions",
+    "products",
+    "orders",
+    "order_items",
+    "messages"
+  ],
+  "legacyCommerceFiles": [
+    {
+      "path": "src/server/db.ts",
+      "sha256": "3ae2ad956814879f338d0b2c316df7c1d6936bfbc6adda80e81bdc6fc96fa4e2",
+      "requiredState": "UNCHANGED"
+    },
+    {
+      "path": "src/server/api.ts",
+      "sha256": "73be2572baaaa4a9220be167a6b1926b841d68cb76e9944cfbd702c7f8908ea3",
+      "requiredState": "UNCHANGED"
+    },
+    {
+      "path": "src/server/stripe.ts",
+      "sha256": "7cc627e7f232effe4c7b88811085f7bd3987b6dfa0c1bac473245f12c4be5d47",
+      "requiredState": "UNCHANGED"
+    },
+    {
+      "path": "src/app/core/models.ts",
+      "sha256": "9ea5b31c494ee13bcd18801a09077bd888d5fb344c50eb99c7c79e59abaec4c5",
+      "requiredState": "UNCHANGED"
+    },
+    {
+      "path": "src/app/core/cart.service.ts",
+      "sha256": "b523ae521d1b69e9ce4702c2aec25ecb3e1d7a6ca47a4daa075758691e9b2d42",
+      "requiredState": "UNCHANGED"
+    },
+    {
+      "path": "src/app/features/shop/shop-list.ts",
+      "sha256": "0ad972eb532220837d4cfbe54a898673004518349cac3194315f4bc66c181476",
+      "requiredState": "UNCHANGED"
+    },
+    {
+      "path": "src/app/features/shop/shop-detail.ts",
+      "sha256": "4a7b8ded4316123b60d845adf353cdeb6a0bf92006591b422a8e5a11d3ea5708",
+      "requiredState": "UNCHANGED"
+    },
+    {
+      "path": "src/app/features/shop/cart.ts",
+      "sha256": "79791769995434e8576c02dd6ec728ad583135ad543664f703694a9b51702c56",
+      "requiredState": "UNCHANGED"
+    }
+  ],
+  "seedSampleProducts": [
+    {
+      "slug": "open-marine-hub",
+      "mareaMapping": "NONE",
+      "treatment": "LEGACY_SAMPLE_NON_SALE_NOINDEX"
+    },
+    {
+      "slug": "open-marine-autopilot",
+      "mareaMapping": "NONE",
+      "treatment": "LEGACY_SAMPLE_NON_SALE_NOINDEX"
+    },
+    {
+      "slug": "kit-ais-sdr",
+      "mareaMapping": "NONE",
+      "treatment": "LEGACY_SAMPLE_NON_SALE_NOINDEX"
+    }
+  ],
+  "mareaSkusMappedFromLegacy": [],
+  "activeFlagSemantics": {
+    "legacyActiveIsMareaReadiness": false,
+    "legacyActiveIsPriceApproval": false,
+    "legacyActiveIsStockProvenance": false,
+    "legacyActiveIsPublicationAuthorization": false
+  },
+  "preservation": {
+    "existingOrdersModified": false,
+    "existingProductsDeleted": false,
+    "existingCheckoutChanged": false,
+    "existingStripeIntegrationChanged": false,
+    "existingCartSemanticsChanged": false
+  }
+}

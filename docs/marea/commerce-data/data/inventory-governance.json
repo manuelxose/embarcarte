@@ -1,0 +1,54 @@
+{
+  "contractId": "MC16-INVENTORY-GOVERNANCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "sourceRefs": [
+    "docs/marea/hardware/MC11-BASELINE-AND-GOVERNANCE.md",
+    "docs/marea/information-architecture/data/mc16-handoff-inputs.json"
+  ],
+  "currentState": {
+    "verifiedMareaStock": "NONE",
+    "mareaStockAvailableForSale": false,
+    "adminEnteredLegacyStockIsMareaStock": false,
+    "verifiedQuantity": null,
+    "availableQuantity": null,
+    "inventoryItemCount": 0,
+    "inventoryMovementCount": 0,
+    "warehousedItems": 0,
+    "serialisedItems": 0
+  },
+  "sources": {
+    "ADMIN_ENTERED_STOCK": {
+      "table": "products.stock",
+      "provenance": "NONE",
+      "usableAsMareaStock": false,
+      "usableAsFulfilmentEvidence": false
+    },
+    "VERIFIED_INVENTORY": {
+      "table": "marea_inventory_items",
+      "provenance": "REQUIRED",
+      "usableAsMareaStock": false,
+      "note": "No verified MAREA inventory exists at MC-16."
+    }
+  },
+  "invariants": [
+    "quantityOnHand >= 0",
+    "quantityReserved >= 0",
+    "quantityReserved <= quantityOnHand",
+    "reservation is atomic and must not oversell",
+    "movement requires actor, reason and evidence reference",
+    "quarantined stock is not available for sale",
+    "stock quantity alone does not authorize fulfilment",
+    "no legacy sample stock may be migrated into MAREA stock"
+  ],
+  "reservationPolicy": {
+    "transactionMode": "BEGIN IMMEDIATE",
+    "conditionalUpdate": "UPDATE ... WHERE quantity_reserved + ? <= quantity_on_hand",
+    "overSellMustFail": true,
+    "reservationWithoutVerifiedInventory": false
+  },
+  "items": [],
+  "movements": []
+}
