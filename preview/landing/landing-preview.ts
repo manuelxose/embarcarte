@@ -42,6 +42,7 @@ export class LandingPreview {
     this.meta.updateTag({ name: 'robots', content: 'noindex, nofollow, noarchive' });
     this.meta.updateTag({ name: 'description', content: contract.metaDescription });
     this.meta.updateTag({ name: 'marea-publication', content: 'NOT_AUTHORIZED' });
-    // No canonical, hreflang, og:*, twitter:* or application/ld+json is added here.
+    // No canonical link, alternate-language link, social-card metadata or
+    // structured-data script is added by this internal preview host.
   }
 }

@@ -92,15 +92,18 @@ app.use((_req, res) => {
   res.status(404).type('text/plain').send('Not found: internal preview');
 });
 
-const server = app.listen(port, host, () => {
-  console.log(`MC-18 internal landing preview (NOT PUBLISHED): http://${host}:${port}/marea`);
-  console.log('Publication NOT_AUTHORIZED · indexation disabled · loopback only');
-});
-
-if (isMainModule(import.meta.url)) {
-  // The server starts on import for the preview; the handler export below keeps
-  // the file compatible with the Angular SSR toolchain conventions.
-}
+/**
+ * The listener only starts when this file is the process entry point. Angular
+ * build tooling imports the SSR entry during analysis; starting a listener at
+ * import time would print the preview banner and could collide on the port in
+ * CI or on another platform.
+ */
+const server = isMainModule(import.meta.url)
+  ? app.listen(port, host, () => {
+      console.log(`MC-18 internal landing preview (NOT PUBLISHED): http://${host}:${port}/marea`);
+      console.log('Publication NOT_AUTHORIZED · indexation disabled · loopback only');
+    })
+  : null;
 
 export const reqHandler = createNodeRequestHandler(app);
 export { server };

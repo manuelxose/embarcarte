@@ -865,6 +865,11 @@ if (!DOMAIN_ONLY) {
         sourceRoot: previewProject.root,
         outputPath: previewProject.architect.build.options.outputPath,
         previewOnlyRoutes: LANDING_PREVIEW_PATHS,
+        developerRootAlias: {
+          path: '/',
+          locale: 'es',
+          note: 'Developer convenience alias rendered by the preview shell; it is not a public route, not canonical and not sitemap-eligible.',
+        },
         productionEntryPoints: [
           'src/main.ts',
           'src/main.server.ts',

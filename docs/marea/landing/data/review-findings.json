@@ -1,0 +1,107 @@
+{
+  "contractId": "MC18-REVIEW-FINDINGS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "independent auditor (Agent G)",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Independent audit findings for the frozen MC-18 internal bilingual landing at ca64ec7. Severities are BLOCKING/MAJOR/MINOR/INFORMATIONAL; the recommendation is limited to the internal landing scope and is not a programme verdict, publication approval or WCAG conformance statement. External legal/commercial/hardware approvals are recorded as limitations, not implementation defects.",
+  "generationMethod": "Independent audit executed in the frozen worktree at ca64ec7f9f079326321cc7070ad2b1acf2832bc9: diff inspection, npm run test:landing (56/60), npm run test:landing:unit (45/45), 37 independently reproduced adversarial mutations, tsc app+preview, preview build/probe, Playwright landing suite (44/44), public build isolation probe, screenshot SHA-256 verification, data re-derivation, content/evidence/parity checks and document-vs-code cross-check.",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "External approvals do not exist and are not MC-18 implementation defects: trademark clearance NOT_GRANTED and public use NO_GO, source-IP/licensing not cleared, legal identity not verified, no approved price or stock, no selected hardware, no conformity/CE/NMEA 2000/CRA evidence, no SLA, PILOT safety gate BLOCKED, no customer evidence, no WCAG conformance, no Search Console/hosting/TLS evidence.",
+    "The 13 MC-14 release gates are open (0 closed) and 24 required documents are unexecuted; publication remains NOT_AUTHORIZED and LANDING_RELEASE_AUTHORIZATION is null.",
+    "Accessibility evidence is automated axe only (Chromium, no serious/critical violations, one color-contrast incomplete per run); no screen reader, manual WCAG 2.2 AA or non-Chromium verification was executed.",
+    "Visual baselines were generated and compared by the same QA run and were not reviewed by a second human; 5 of 8 repeat captures are not byte-identical and are disclosed with both hashes.",
+    "Performance evidence is a single lab run over loopback without throttling or field data and asserts no thresholds.",
+    "Hydration is proven in Chromium only on the development preview configuration; the preview is loopback-only, not a public host.",
+    "The preview serves / as a documented developer alias inside the loopback preview; it is not listed in preview-isolation.json previewOnlyRoutes and is not a public route.",
+    "Documents D01/D02/D08/D09/D14 still quote authoring-time counts (55/60, format:check exit 1, uncommitted worktree); D23 must record the frozen-state values. This is recorded as MC18-IR-01."
+  ],
+  "data": {
+    "auditedSha": "ca64ec7f9f079326321cc7070ad2b1acf2832bc9",
+    "baseSha": "6002c49f898e755154c1b65c97781177719ce11c",
+    "auditedAt": "2026-11-03",
+    "recommendation": "PASS_INTERNAL_LANDING_SCOPE",
+    "findings": [
+      {
+        "findingId": "MC18-IR-01",
+        "severity": "MINOR",
+        "area": "Documentation accuracy / frozen-state reconciliation",
+        "file": "docs/marea/landing/MC-18-BASELINE-AND-GOVERNANCE.md; docs/marea/landing/MC18-LANDING-ARCHITECTURE.md; docs/marea/landing/MC18-ANGULAR-SSR-AND-HYDRATION.md; docs/marea/landing/MC18-SEO-METADATA-AND-INDEXATION-CONTRACT.md; docs/marea/landing/MC18-LEGACY-SITE-NON-REGRESSION.md",
+        "lineOrRange": "D01 §2.3-2.4; D02 §8/§10; D08 §3.1-3.2; D09 §9.5/§11; D14 §1/§2.1/§2.3/§6",
+        "evidence": "At the frozen commit the validator reports 56/60 (not 55/60), npm run format:check exits 0 (not 1), HEAD is committed ca64ec7 and src/app contains only newly added landing files (not an uncommitted or empty diff), and the SSR byte counts are 316,049/313,958 (not 315,629/313,904). The affected documents quote authoring-time observations, not the frozen state.",
+        "reproduction": "Run npm run test:landing, npm run format:check, git rev-parse HEAD, git diff --name-only 6002c49..HEAD -- src/app, and HTTP probes against the freshly built preview.",
+        "requiredCorrection": "D23 must record ca64ec7 and the frozen command results and explicitly supersede these authoring-time snapshots; alternatively update D01/D02/D08/D09/D14 before delivery. No source change required.",
+        "owner": "docs-a (documents group A) + Lead for D23",
+        "status": "OPEN",
+        "correctionCommit": null,
+        "independentReverification": null
+      },
+      {
+        "findingId": "MC18-IR-02",
+        "severity": "MINOR",
+        "area": "Content evidence provenance",
+        "file": "src/app/marea-landing/content/evidence.ts; docs/marea/landing/data/content-evidence.json",
+        "lineOrRange": "evidence.ts:74-79 (EV-MC15-ROUTES.establishes); content-evidence.json:60-64",
+        "evidence": "The evidence descriptor says the canonical dataset establishes PAGE_MAREA_OVERVIEW, but docs/marea/information-architecture/data/proposed-routes.json items[0].pageType is HUB_OVERVIEW and models/page-identity.ts correctly uses HUB_OVERVIEW. D09 §2 already records the inconsistency as informational; validator MC18-45 passes because the typed identity is correct, not because the evidence text is.",
+        "reproduction": "Read evidence.ts and the generated content-evidence.json; run node -e over proposed-routes.json to print items.find(r => r.routeId === 'mareaOverview').pageType (HUB_OVERVIEW).",
+        "requiredCorrection": "Change the establishes text to HUB_OVERVIEW (optionally noting the master-prompt label) and regenerate with npm run build:landing:data, or explicitly annotate the master-prompt label inside the string. Do not edit the canonical MC-15 dataset.",
+        "owner": "MC-18 content owner + docs owner",
+        "status": "OPEN",
+        "correctionCommit": null,
+        "independentReverification": null
+      },
+      {
+        "findingId": "MC18-IR-03",
+        "severity": "MINOR",
+        "area": "Preview tooling / build portability",
+        "file": "preview/landing/server.ts",
+        "lineOrRange": "lines 95-103",
+        "evidence": "app.listen(port, host, ...) is top-level, outside the if (isMainModule(import.meta.url)) block, which is empty. npm run build:landing:preview prints the runtime banner 'MC-18 internal landing preview (NOT PUBLISHED): http://127.0.0.1:4302/marea', proving the Angular build evaluates the server entry and reaches app.listen during the build. The build still exits 0 on this Windows host (duplicate-bind tolerance), but on a host that does not tolerate a second bind the build can fail with EADDRINUSE when 4302 is occupied.",
+        "reproduction": "With port 4302 free, run npm run build:landing:preview and observe the startup lines in the build output; node dist/marea-landing-preview/server/server.mjs still serves correctly.",
+        "requiredCorrection": "Move app.listen(...) and its log lines inside the existing isMainModule guard (keep the reqHandler export). Isolation behaviour is otherwise correct.",
+        "owner": "preview implementation owner",
+        "status": "OPEN",
+        "correctionCommit": null,
+        "independentReverification": null
+      },
+      {
+        "findingId": "MC18-IR-04",
+        "severity": "INFORMATIONAL",
+        "area": "Inherited debt / documentation consistency",
+        "file": "docs/marea/design-system/data/blocker-register.json; docs/marea/design-system/MC17-SPANISH-EXECUTIVE-REPORT.md; docs/marea/landing/MC-18-BASELINE-AND-GOVERNANCE.md",
+        "lineOrRange": "blocker-register FINANCIAL_V18 entry; MC17-SPANISH-EXECUTIVE-REPORT line 129; D01 §8",
+        "evidence": "FINANCIAL_V18 is OPEN_INHERITED in the blocker register but INHERITED_OPEN in the MC-17/MC-18 summaries; MC16-FINAL-02 and MC16_FINAL_02 differ only by separator notation. All inherited items remain open and no predecessor file changed.",
+        "reproduction": "Read docs/marea/design-system/data/blocker-register.json and the MC-17/MC-18 summaries.",
+        "requiredCorrection": "None required for MC-18; future documentation should use the register vocabulary or state the mapping.",
+        "owner": "docs owners (pre-existing, inherited)",
+        "status": "ACCEPTED_LIMITATION",
+        "correctionCommit": null,
+        "independentReverification": "Register re-read at ca64ec7: MC16-FINAL-02, MC16-FINAL-09, FINANCIAL_V18 (OPEN_INHERITED), MC13-F-05, MC13-F-11, MC13-F-14, MC15-GSC-01 and MC15-GSC-02 are present and open; git diff for predecessor docs directories is empty."
+      },
+      {
+        "findingId": "MC18-IR-05",
+        "severity": "INFORMATIONAL",
+        "area": "Preview isolation dataset completeness",
+        "file": "preview/landing/app.routes.ts; docs/marea/landing/data/preview-isolation.json",
+        "lineOrRange": "app.routes.ts:14; preview-isolation.json data.previewOnlyRoutes",
+        "evidence": "The preview serves / as a developer alias for the ES landing (documented in D02 §2.2 and D08 §3.2 and covered by the same loopback/Host/noindex controls), but previewOnlyRoutes lists only /marea and /en/marea. This is a documentation/data-completeness gap, not a publication risk: the alias is loopback-only, noindexed and never mounted in the public application.",
+        "reproduction": "GET http://127.0.0.1:4302/ returns 200 with the ES landing; read preview-isolation.json.",
+        "requiredCorrection": "None required for internal scope; if the alias is kept, add it to the isolation dataset as a documented developer alias in a future data regeneration.",
+        "owner": "preview/data owner",
+        "status": "ACCEPTED_LIMITATION",
+        "correctionCommit": null,
+        "independentReverification": "HTTP probe and dataset read at ca64ec7: / returns 200 ES landing while previewOnlyRoutes lists only the two locale paths."
+      }
+    ],
+    "totals": {
+      "blocking": 0,
+      "major": 0,
+      "minor": 3,
+      "informational": 2,
+      "openBlocking": 0,
+      "openMajor": 0
+    }
+  }
+}

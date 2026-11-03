@@ -75,7 +75,7 @@ export const LANDING_EVIDENCE: readonly LandingEvidence[] = [
     sourcePath: 'docs/marea/information-architecture/data/proposed-routes.json',
     sourceType: 'DATASET',
     establishes:
-      'Frozen proposed route identity mareaOverview / ENT-HUB-MAREA / PAGE_MAREA_OVERVIEW at /marea and /en/marea, publication not authorized.',
+      'Frozen proposed route identity mareaOverview / ENT-HUB-MAREA / HUB_OVERVIEW (pageType as recorded in the canonical dataset) at /marea and /en/marea, publication not authorized.',
   },
   {
     evidenceId: 'EV-MC15-INDEXATION',

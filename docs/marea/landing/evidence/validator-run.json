@@ -5,13 +5,13 @@
   "owner": "MC-18 implementation team",
   "publicationStatus": "NOT_AUTHORIZED",
   "status": "FAIL",
-  "runAt": "2026-11-03T11:44:55.507Z",
-  "head": "6002c49f898e755154c1b65c97781177719ce11c",
+  "runAt": "2026-11-03T12:05:26.187Z",
+  "head": "ca64ec7f9f079326321cc7070ad2b1acf2832bc9",
   "baseCommit": "6002c49f898e755154c1b65c97781177719ce11c",
   "totals": {
     "checks": 60,
-    "passed": 56,
-    "failed": 4
+    "passed": 58,
+    "failed": 2
   },
   "checks": [
     {
@@ -275,8 +275,8 @@
     {
       "id": "MC18-44",
       "description": "every machine-readable dataset exists with its provenance envelope",
-      "status": "FAIL",
-      "detail": "missing datasets: review-findings.json"
+      "status": "PASS",
+      "detail": "20 datasets with full provenance envelope"
     },
     {
       "id": "MC18-45",
@@ -318,7 +318,7 @@
       "id": "MC18-51",
       "description": "all required MC-18 documents exist",
       "status": "FAIL",
-      "detail": "missing documents: MC18-INDEPENDENT-REVIEW.md, MC18-SPANISH-EXECUTIVE-REPORT.md, MC18-FINAL-DELIVERY-RECORD.md"
+      "detail": "missing documents: MC18-SPANISH-EXECUTIVE-REPORT.md, MC18-FINAL-DELIVERY-RECORD.md"
     },
     {
       "id": "MC18-52",
@@ -329,8 +329,8 @@
     {
       "id": "MC18-53",
       "description": "no blocking or major review finding is open",
-      "status": "FAIL",
-      "detail": "threw: ENOENT: no such file or directory, open 'C:\\Users\\Admin\\Documents\\workspace\\embarcarte\\docs\\marea\\landing\\data\\review-findings.json'"
+      "status": "PASS",
+      "detail": "5 findings recorded; 0 open BLOCKING/MAJOR"
     },
     {
       "id": "MC18-54",
@@ -348,7 +348,7 @@
       "id": "MC18-56",
       "description": "the changed-file scope stays inside MC-18",
       "status": "PASS",
-      "detail": "working tree changes limited to the MC-18 scope (15 entries)"
+      "detail": "working tree changes limited to the MC-18 scope (8 entries)"
     },
     {
       "id": "MC18-57",
