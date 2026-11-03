@@ -61,10 +61,13 @@ import { MareaText } from '../foundation/marea-text';
   `,
   styles: `
     :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .bundle-exclusions { display: grid; gap: var(--marea-space-4); min-inline-size: 0; }
-    .group { display: grid; gap: var(--marea-space-2); min-inline-size: 0; }
+    .bundle-exclusions { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-4); min-inline-size: 0; }
+    .group { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-2); min-inline-size: 0; }
     .heading { margin: 0; }
-    .items { display: grid; gap: var(--marea-space-1); margin: 0; padding: 0; list-style: none; }
+    .items { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-1); margin: 0; padding: 0; list-style: none; }
     .item { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--marea-space-2); min-inline-size: 0; }
     .item span { overflow-wrap: anywhere; }
     .reason { font-variant-numeric: tabular-nums; }

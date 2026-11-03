@@ -44,6 +44,7 @@ const DATA_STATUS: Readonly<
   styles: `
     :host {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--marea-space-2);
       min-inline-size: 0;
     }

@@ -41,9 +41,9 @@ test('adversarial invariants force purchase, cart, price and availability off', 
 
 test('commerce CTA renders no control and no purchase/price copy', async ({ page }) => {
   await gotoCatalogue(page);
-  const ctas = page.locator('marea-commerce-cta');
+  const ctas = page.locator('marea-commercial-cta');
   const count = await ctas.count();
-  expect(count, 'No se renderizó ningún marea-commerce-cta').toBeGreaterThan(0);
+  expect(count, 'No se renderizó ningún marea-commercial-cta').toBeGreaterThan(0);
 
   const problems = await ctas.evaluateAll((elements) => {
     const found: string[] = [];
@@ -96,7 +96,7 @@ test('price and stock panels never render an amount or an availability claim', a
   await gotoCatalogue(page);
 
   const commercial = page.locator(
-    'marea-price-unavailable, marea-stock-unavailable, marea-commerce-cta, marea-family-card, marea-adversarial-gallery',
+    'marea-price-unavailable, marea-stock-unavailable, marea-commercial-cta, marea-family-card, marea-adversarial-gallery',
   );
   const commercialText = await commercial.evaluateAll((elements) =>
     elements.map((element) => (element as HTMLElement).innerText).join('\n'),
@@ -126,7 +126,7 @@ test('price and stock panels never render an amount or an availability claim', a
   // Protección adicional: los botones comprables no existen en estas páginas.
   const purchaseControls = await page
     .locator(
-      'marea-price-unavailable button, marea-stock-unavailable button, marea-commerce-cta button, marea-commerce-cta a',
+      'marea-price-unavailable button, marea-stock-unavailable button, marea-commercial-cta button, marea-commercial-cta a',
     )
     .count();
   expect(purchaseControls, 'Hay controles dentro de paneles de precio/stock/CTA').toBe(0);
@@ -134,9 +134,9 @@ test('price and stock panels never render an amount or an availability claim', a
 
 test('each CTA state explanation is visible prose, not only a badge', async ({ page }) => {
   await gotoCatalogue(page);
-  const ctas = page.locator('marea-commerce-cta');
+  const ctas = page.locator('marea-commercial-cta');
   const count = await ctas.count();
-  expect(count, 'No se renderizó ningún marea-commerce-cta').toBeGreaterThan(0);
+  expect(count, 'No se renderizó ningún marea-commercial-cta').toBeGreaterThan(0);
 
   const explanations = await ctas.evaluateAll((elements) =>
     elements.map((element) =>

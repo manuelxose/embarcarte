@@ -48,17 +48,38 @@ const requiredFields = [
 const problems = [];
 const ids = new Set();
 for (const entry of registry.components ?? []) {
-  for (const field of requiredFields) if (!(field in entry)) problems.push(`${entry.componentId ?? '(missing id)'} is missing ${field}`);
+  for (const field of requiredFields)
+    if (!(field in entry))
+      problems.push(`${entry.componentId ?? '(missing id)'} is missing ${field}`);
   if (ids.has(entry.componentId)) problems.push(`duplicate componentId ${entry.componentId}`);
   ids.add(entry.componentId);
-  if (entry.status !== 'INTERNAL_READY' && entry.status !== 'INTERNAL_PROPOSED') problems.push(`${entry.componentId} has an unsupported status`);
+  if (entry.status !== 'INTERNAL_READY' && entry.status !== 'INTERNAL_PROPOSED')
+    problems.push(`${entry.componentId} has an unsupported status`);
   for (const mode of entry.supportedModes ?? []) {
-    if (!['web-light', 'instrument-day', 'instrument-sunlight', 'instrument-night'].includes(mode)) problems.push(`${entry.componentId} lists an unknown mode ${mode}`);
+    if (!['web-light', 'instrument-day', 'instrument-sunlight', 'instrument-night'].includes(mode))
+      problems.push(`${entry.componentId} lists an unknown mode ${mode}`);
   }
-  for (const token of entry.tokenDependencies ?? []) if (typeof token !== 'string' || !token.startsWith('--marea-')) problems.push(`${entry.componentId} has a non-token dependency ${token}`);
+  for (const token of entry.tokenDependencies ?? [])
+    if (typeof token !== 'string' || !token.startsWith('--marea-'))
+      problems.push(`${entry.componentId} has a non-token dependency ${token}`);
   const states = entry.states ?? {};
-  for (const state of ['DEFAULT', 'HOVER', 'FOCUS_VISIBLE', 'PRESSED', 'DISABLED', 'LOADING', 'EMPTY', 'ERROR', 'WARNING', 'READ_ONLY', 'BLOCKED']) {
-    if (!(state in states)) problems.push(`${entry.componentId} does not declare the ${state} state (applicable or NOT_APPLICABLE with a reason)`);
+  for (const state of [
+    'DEFAULT',
+    'HOVER',
+    'FOCUS_VISIBLE',
+    'PRESSED',
+    'DISABLED',
+    'LOADING',
+    'EMPTY',
+    'ERROR',
+    'WARNING',
+    'READ_ONLY',
+    'BLOCKED',
+  ]) {
+    if (!(state in states))
+      problems.push(
+        `${entry.componentId} does not declare the ${state} state (applicable or NOT_APPLICABLE with a reason)`,
+      );
   }
 }
 if (problems.length) {
@@ -144,23 +165,40 @@ const stateRows = (registry.components ?? []).map((entry) => ({
   ),
 }));
 
-const states = JSON.stringify(
-  {
-    contractId: 'MC17-COMPONENT-STATES',
-    contractVersion: registry.contractVersion,
-    milestone: 'MC-17',
-    status: 'INTERNAL_PROPOSED',
-    owner: registry.owner ?? 'lead',
-    generationMethod: 'node scripts/build-marea-design-system-catalogue-data.mjs (derived from component-registry.json)',
-    scope: 'Applicability of the eleven required interaction/states per registered component. NOT_APPLICABLE entries carry an explicit reason instead of a manufactured variant.',
-    knownLimitations: ['State descriptions document the implemented contract; automated behaviour coverage is recorded in the design-system test evidence.'],
-    sourceRefs: [REGISTRY],
-    requiredStates: ['DEFAULT', 'HOVER', 'FOCUS_VISIBLE', 'PRESSED', 'DISABLED', 'LOADING', 'EMPTY', 'ERROR', 'WARNING', 'READ_ONLY', 'BLOCKED'],
-    components: stateRows,
-  },
-  null,
-  2,
-) + '\n';
+const states =
+  JSON.stringify(
+    {
+      contractId: 'MC17-COMPONENT-STATES',
+      contractVersion: registry.contractVersion,
+      milestone: 'MC-17',
+      status: 'INTERNAL_PROPOSED',
+      owner: registry.owner ?? 'lead',
+      generationMethod:
+        'node scripts/build-marea-design-system-catalogue-data.mjs (derived from component-registry.json)',
+      scope:
+        'Applicability of the eleven required interaction/states per registered component. NOT_APPLICABLE entries carry an explicit reason instead of a manufactured variant.',
+      knownLimitations: [
+        'State descriptions document the implemented contract; automated behaviour coverage is recorded in the design-system test evidence.',
+      ],
+      sourceRefs: [REGISTRY],
+      requiredStates: [
+        'DEFAULT',
+        'HOVER',
+        'FOCUS_VISIBLE',
+        'PRESSED',
+        'DISABLED',
+        'LOADING',
+        'EMPTY',
+        'ERROR',
+        'WARNING',
+        'READ_ONLY',
+        'BLOCKED',
+      ],
+      components: stateRows,
+    },
+    null,
+    2,
+  ) + '\n';
 
 const outputs = {
   [OUT_TS]: ts,
@@ -176,7 +214,9 @@ for (const [relPath, content] of Object.entries(outputs)) {
       console.error(`MISSING ${relPath}`);
       stale++;
     } else if (readFileSync(abs, 'utf8') !== content) {
-      console.error(`STALE ${relPath} (run node scripts/build-marea-design-system-catalogue-data.mjs)`);
+      console.error(
+        `STALE ${relPath} (run node scripts/build-marea-design-system-catalogue-data.mjs)`,
+      );
       stale++;
     }
   } else {

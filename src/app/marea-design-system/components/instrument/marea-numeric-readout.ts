@@ -48,6 +48,7 @@ export type MareaNumericReadoutSize = 'primary' | 'secondary' | 'tertiary';
     }
     .group {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--marea-space-1);
       min-inline-size: 0;
     }

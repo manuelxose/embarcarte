@@ -7,11 +7,11 @@ import type {
   MareaReadinessStatus,
   MareaTone,
 } from '../../core/types';
-import { restrictionCopyKey } from '../../data/commerce-presentation.adapter';
+import { FAMILY_LIMIT_KEYS, restrictionCopyKey } from '../../data/commerce-presentation.adapter';
 import { MareaStatusBadge } from '../foundation/marea-status-badge';
 import { MareaSurface } from '../foundation/marea-surface';
 import { MareaText } from '../foundation/marea-text';
-import { MareaCommerceCta } from './marea-commerce-cta';
+import { MareaCommercialCta } from './marea-commercial-cta';
 
 const READINESS_TONE: Readonly<Record<MareaReadinessStatus, MareaTone>> = {
   READY: 'safe',
@@ -32,7 +32,7 @@ const READINESS_COPY: Readonly<Record<MareaReadinessStatus, MareaCopyKey>> = {
   selector: 'marea-family-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: { 'data-marea-component': 'marea-family-card' },
-  imports: [MareaStatusBadge, MareaSurface, MareaText, MareaCommerceCta],
+  imports: [MareaStatusBadge, MareaSurface, MareaText, MareaCommercialCta],
   template: `
     <marea-surface [labelledBy]="titleId">
       <article class="card">
@@ -49,18 +49,23 @@ const READINESS_COPY: Readonly<Record<MareaReadinessStatus, MareaCopyKey>> = {
             }
           </ul>
         }
+        @if (familyLimit()) {
+          <p marea-text variant="bodySmall" tone="secondary" class="family-limit">{{ familyLimit() }}</p>
+        }
         @if (ctaHint()) {
           <p marea-text variant="bodySmall" tone="secondary" class="hint">{{ ctaHint() }}</p>
         }
-        <marea-commerce-cta [presentation]="presentation()" />
+        <marea-commercial-cta [presentation]="presentation()" />
       </article>
     </marea-surface>
   `,
   styles: `
     :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .card { display: grid; gap: var(--marea-space-3); min-inline-size: 0; }
+    .card { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-3); min-inline-size: 0; }
     .head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--marea-space-2); }
-    .title, .summary, .meta, .hint { margin: 0; }
+    .title, .summary, .meta, .hint, .family-limit { margin: 0; }
+    .family-limit { color: var(--marea-text-secondary); overflow-wrap: break-word; }
     .restrictions { display: flex; flex-wrap: wrap; gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
     .restriction {
       padding: var(--marea-space-1) var(--marea-space-2);
@@ -89,6 +94,12 @@ export class MareaFamilyCard {
   readonly readinessTone = computed<MareaTone>(() => READINESS_TONE[this.family().readiness] ?? 'neutral');
 
   readonly readinessLabel = computed(() => this.i18n.text(READINESS_COPY[this.family().readiness] ?? 'notAssessed'));
+
+  /** Family-specific limit that must never be dropped from a rendered specimen. */
+  readonly familyLimit = computed<string | null>(() => {
+    const key = FAMILY_LIMIT_KEYS[this.family().familyId];
+    return key ? this.i18n.text(key) : null;
+  });
 
   /** At most four distinct visible restriction labels, deduplicated by copy key. */
   readonly restrictions = computed<readonly string[]>(() => {

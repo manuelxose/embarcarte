@@ -39,9 +39,17 @@ assert(families.families?.length === 9, 'MC-16 must expose exactly 9 product fam
 assert(editions.editions?.length === 26, 'MC-16 must expose exactly 26 editions');
 assert(bundles.bundles?.length === 6, 'MC-16 must expose exactly 6 bundles');
 assert(readiness.dimensions?.length === 11, 'MC-16 must expose 11 readiness dimensions');
-assert(Array.isArray(entitlements.definitions) && entitlements.definitions.length > 0, 'entitlement definitions are required');
+assert(
+  Array.isArray(entitlements.definitions) && entitlements.definitions.length > 0,
+  'entitlement definitions are required',
+);
 
-const baseRestrictions = ['PUBLICATION_NOT_AUTHORIZED', 'TRADEMARK_NOT_CLEARED', 'PRICE_NOT_APPROVED', 'STOCK_NOT_VERIFIED'];
+const baseRestrictions = [
+  'PUBLICATION_NOT_AUTHORIZED',
+  'TRADEMARK_NOT_CLEARED',
+  'PRICE_NOT_APPROVED',
+  'STOCK_NOT_VERIFIED',
+];
 
 function editionDisplayName(editionId) {
   return 'MAREA ' + editionId.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
@@ -61,11 +69,16 @@ const readinessSummary = {
 };
 
 const fixtureFamilies = families.families.map((family) => {
-  const familyEditions = editions.editions.filter((edition) => edition.familyId === family.familyId);
+  const familyEditions = editions.editions.filter(
+    (edition) => edition.familyId === family.familyId,
+  );
   const restrictions = [...baseRestrictions];
-  if (family.safetyStatus === 'BLOCKED' || family.familyId === 'PILOT') restrictions.push('SAFETY_GATE_BLOCKED');
-  if (['AIS', 'NAV', 'WEATHER', 'FLEET'].includes(family.familyId)) restrictions.push('LICENSING_NOT_CLEARED');
-  if (family.familyId === 'SENSE' || family.familyId === 'WATCH') restrictions.push('COMPATIBILITY_UNTESTED');
+  if (family.safetyStatus === 'BLOCKED' || family.familyId === 'PILOT')
+    restrictions.push('SAFETY_GATE_BLOCKED');
+  if (['AIS', 'NAV', 'WEATHER', 'FLEET'].includes(family.familyId))
+    restrictions.push('LICENSING_NOT_CLEARED');
+  if (family.familyId === 'SENSE' || family.familyId === 'WATCH')
+    restrictions.push('COMPATIBILITY_UNTESTED');
 
   return {
     familyId: family.familyId,
@@ -85,7 +98,8 @@ const fixtureFamilies = families.families.map((family) => {
 const fixtureEditions = editions.editions.map((edition) => {
   const restrictions = [...baseRestrictions];
   if (edition.safetyStatus === 'BLOCKED') restrictions.push('SAFETY_GATE_BLOCKED');
-  if (edition.familyId === 'FLEET' || edition.familyId === 'NAV' || edition.familyId === 'WEATHER') restrictions.push('LICENSING_NOT_CLEARED');
+  if (edition.familyId === 'FLEET' || edition.familyId === 'NAV' || edition.familyId === 'WEATHER')
+    restrictions.push('LICENSING_NOT_CLEARED');
   return {
     editionId: edition.editionId,
     familyId: edition.familyId,
@@ -159,11 +173,25 @@ const fixtureEntitlements = entitlements.definitions.map((entitlement) => ({
 }));
 
 // Hard guard: the emitted fixture must not contain commercial capability fields.
-const emitted = JSON.stringify({ fixtureFamilies, fixtureEditions, fixtureBundles, fixtureEntitlements });
-for (const forbidden of ['"merchantSkuCode"', '"priceAmount"', '"priceCurrency"', '"stock"', '"quantityAvailable"', '"customerId"', '"vesselId"']) {
+const emitted = JSON.stringify({
+  fixtureFamilies,
+  fixtureEditions,
+  fixtureBundles,
+  fixtureEntitlements,
+});
+for (const forbidden of [
+  '"merchantSkuCode"',
+  '"priceAmount"',
+  '"priceCurrency"',
+  '"stock"',
+  '"quantityAvailable"',
+  '"customerId"',
+  '"vesselId"',
+]) {
   assert(!emitted.includes(forbidden), `fixture generation leaked forbidden field ${forbidden}`);
 }
-for (const edition of fixtureEditions) assert(edition.displayName && edition.editionId, 'edition fixture needs identity');
+for (const edition of fixtureEditions)
+  assert(edition.displayName && edition.editionId, 'edition fixture needs identity');
 
 if (problems.length) {
   console.error('Fixture generation failed:');
@@ -225,13 +253,19 @@ if (process.argv.includes('--check')) {
     process.exit(1);
   }
   if (readFileSync(abs, 'utf8') !== out) {
-    console.error(`STALE generated fixture module: ${OUT} (run node scripts/build-marea-design-system-fixtures.mjs)`);
+    console.error(
+      `STALE generated fixture module: ${OUT} (run node scripts/build-marea-design-system-fixtures.mjs)`,
+    );
     process.exit(1);
   }
-  console.log(`Fixture module current: ${fixtureFamilies.length} families, ${fixtureEditions.length} editions, ${fixtureBundles.length} bundles, ${fixtureEntitlements.length} entitlement definitions.`);
+  console.log(
+    `Fixture module current: ${fixtureFamilies.length} families, ${fixtureEditions.length} editions, ${fixtureBundles.length} bundles, ${fixtureEntitlements.length} entitlement definitions.`,
+  );
 } else {
   mkdirSync(dirname(abs), { recursive: true });
   writeFileSync(abs, out);
   console.log(`wrote ${OUT}`);
-  console.log(`${fixtureFamilies.length} families, ${fixtureEditions.length} editions, ${fixtureBundles.length} bundles, ${fixtureEntitlements.length} entitlements.`);
+  console.log(
+    `${fixtureFamilies.length} families, ${fixtureEditions.length} editions, ${fixtureBundles.length} bundles, ${fixtureEntitlements.length} entitlements.`,
+  );
 }

@@ -1,0 +1,364 @@
+{
+  "contractId": "MC17-VISUAL-REGRESSION-EVIDENCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "documentation-specialist (MC-17/36)",
+  "generationMethod": "authored from the recorded e2e/design-system/visual.spec.ts run, the 26 committed PNGs under e2e/design-system/visual.spec.ts-snapshots/ and test-results/design-system/artifacts/.last-run.json; no Playwright run was made for this dataset",
+  "scope": "Inventory, capture settings, provenance and non-self-validating caveat for the 26 Chromium/Windows visual baselines of the internal MC-17 catalogue.",
+  "recordedRun": {
+    "config": "playwright.design-system.config.ts",
+    "spec": "e2e/design-system/visual.spec.ts",
+    "testsInSpec": 6,
+    "totalTestsAcrossSuite": 28,
+    "finalStatus": "passed",
+    "finalStatusEvidence": "test-results/design-system/artifacts/.last-run.json",
+    "recordedGenerationCommand": "npx playwright test -c playwright.design-system.config.ts --update-snapshots",
+    "caveat": "That command generates and compares in the same run, so the set is not self-validating. The independent auditor must re-run the suite WITHOUT --update-snapshots against the frozen commit.",
+    "browser": "Chromium (Playwright Desktop Chrome)",
+    "operatingSystem": "Windows",
+    "workers": 1,
+    "retries": 0
+  },
+  "snapshotSettings": {
+    "maxDiffPixelRatio": 0.002,
+    "animations": "disabled",
+    "fullPage": false,
+    "caret": "hide",
+    "scale": "css",
+    "locale": "es (forced), except the explicit ES/EN pair",
+    "viewportDesktop": "1440x900",
+    "viewportMobile": "320x812",
+    "beforeCapture": "scroll the gallery to the top of the viewport, wait for fonts and two animation frames",
+    "platformSuffix": "-chromium-win32"
+  },
+  "coverageByTest": [
+    {
+      "test": "all galleries at 1440x900 in web-light",
+      "galleries": [
+        "foundation",
+        "structured",
+        "commerce",
+        "instrument"
+      ],
+      "baselines": 4
+    },
+    {
+      "test": "all galleries at 1440x900 in instrument-day",
+      "galleries": [
+        "foundation",
+        "structured",
+        "commerce",
+        "instrument"
+      ],
+      "baselines": 4
+    },
+    {
+      "test": "all galleries at 1440x900 in instrument-sunlight",
+      "galleries": [
+        "foundation",
+        "structured",
+        "commerce",
+        "instrument"
+      ],
+      "baselines": 4
+    },
+    {
+      "test": "all galleries at 1440x900 in instrument-night",
+      "galleries": [
+        "foundation",
+        "structured",
+        "commerce",
+        "instrument"
+      ],
+      "baselines": 4
+    },
+    {
+      "test": "all galleries at 320x812 in web-light and instrument-night",
+      "galleries": [
+        "foundation",
+        "structured",
+        "commerce",
+        "instrument"
+      ],
+      "baselines": 8
+    },
+    {
+      "test": "foundation gallery ES vs EN pair at 1440x900",
+      "galleries": [
+        "foundation"
+      ],
+      "baselines": 2
+    }
+  ],
+  "baselineInventory": {
+    "directory": "e2e/design-system/visual.spec.ts-snapshots",
+    "count": 26,
+    "files": [
+      {
+        "file": "commerce-1440x900-instrument-day-chromium-win32.png",
+        "gallery": "commerce",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-day",
+        "locale": "es",
+        "bytes": 58957
+      },
+      {
+        "file": "commerce-1440x900-instrument-night-chromium-win32.png",
+        "gallery": "commerce",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-night",
+        "locale": "es",
+        "bytes": 59571
+      },
+      {
+        "file": "commerce-1440x900-instrument-sunlight-chromium-win32.png",
+        "gallery": "commerce",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-sunlight",
+        "locale": "es",
+        "bytes": 58725
+      },
+      {
+        "file": "commerce-1440x900-web-light-chromium-win32.png",
+        "gallery": "commerce",
+        "width": 1440,
+        "height": 900,
+        "mode": "web-light",
+        "locale": "es",
+        "bytes": 59024
+      },
+      {
+        "file": "commerce-320x812-instrument-night-chromium-win32.png",
+        "gallery": "commerce",
+        "width": 320,
+        "height": 812,
+        "mode": "instrument-night",
+        "locale": "es",
+        "bytes": 43038
+      },
+      {
+        "file": "commerce-320x812-web-light-chromium-win32.png",
+        "gallery": "commerce",
+        "width": 320,
+        "height": 812,
+        "mode": "web-light",
+        "locale": "es",
+        "bytes": 42698
+      },
+      {
+        "file": "foundation-1440x900-instrument-day-chromium-win32.png",
+        "gallery": "foundation",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-day",
+        "locale": "es",
+        "bytes": 77069
+      },
+      {
+        "file": "foundation-1440x900-instrument-night-chromium-win32.png",
+        "gallery": "foundation",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-night",
+        "locale": "es",
+        "bytes": 78825
+      },
+      {
+        "file": "foundation-1440x900-instrument-sunlight-chromium-win32.png",
+        "gallery": "foundation",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-sunlight",
+        "locale": "es",
+        "bytes": 77091
+      },
+      {
+        "file": "foundation-1440x900-web-light-chromium-win32.png",
+        "gallery": "foundation",
+        "width": 1440,
+        "height": 900,
+        "mode": "web-light",
+        "locale": "es",
+        "bytes": 77260
+      },
+      {
+        "file": "foundation-1440x900-web-light-locale-en-chromium-win32.png",
+        "gallery": "foundation",
+        "width": 1440,
+        "height": 900,
+        "mode": "web-light",
+        "locale": "en",
+        "bytes": 77260
+      },
+      {
+        "file": "foundation-1440x900-web-light-locale-es-chromium-win32.png",
+        "gallery": "foundation",
+        "width": 1440,
+        "height": 900,
+        "mode": "web-light",
+        "locale": "es",
+        "bytes": 77260
+      },
+      {
+        "file": "foundation-320x812-instrument-night-chromium-win32.png",
+        "gallery": "foundation",
+        "width": 320,
+        "height": 812,
+        "mode": "instrument-night",
+        "locale": "es",
+        "bytes": 41075
+      },
+      {
+        "file": "foundation-320x812-web-light-chromium-win32.png",
+        "gallery": "foundation",
+        "width": 320,
+        "height": 812,
+        "mode": "web-light",
+        "locale": "es",
+        "bytes": 40837
+      },
+      {
+        "file": "instrument-1440x900-instrument-day-chromium-win32.png",
+        "gallery": "instrument",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-day",
+        "locale": "es",
+        "bytes": 75911
+      },
+      {
+        "file": "instrument-1440x900-instrument-night-chromium-win32.png",
+        "gallery": "instrument",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-night",
+        "locale": "es",
+        "bytes": 77474
+      },
+      {
+        "file": "instrument-1440x900-instrument-sunlight-chromium-win32.png",
+        "gallery": "instrument",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-sunlight",
+        "locale": "es",
+        "bytes": 75422
+      },
+      {
+        "file": "instrument-1440x900-web-light-chromium-win32.png",
+        "gallery": "instrument",
+        "width": 1440,
+        "height": 900,
+        "mode": "web-light",
+        "locale": "es",
+        "bytes": 76053
+      },
+      {
+        "file": "instrument-320x812-instrument-night-chromium-win32.png",
+        "gallery": "instrument",
+        "width": 320,
+        "height": 812,
+        "mode": "instrument-night",
+        "locale": "es",
+        "bytes": 36233
+      },
+      {
+        "file": "instrument-320x812-web-light-chromium-win32.png",
+        "gallery": "instrument",
+        "width": 320,
+        "height": 812,
+        "mode": "web-light",
+        "locale": "es",
+        "bytes": 35619
+      },
+      {
+        "file": "structured-1440x900-instrument-day-chromium-win32.png",
+        "gallery": "structured",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-day",
+        "locale": "es",
+        "bytes": 69581
+      },
+      {
+        "file": "structured-1440x900-instrument-night-chromium-win32.png",
+        "gallery": "structured",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-night",
+        "locale": "es",
+        "bytes": 71408
+      },
+      {
+        "file": "structured-1440x900-instrument-sunlight-chromium-win32.png",
+        "gallery": "structured",
+        "width": 1440,
+        "height": 900,
+        "mode": "instrument-sunlight",
+        "locale": "es",
+        "bytes": 68983
+      },
+      {
+        "file": "structured-1440x900-web-light-chromium-win32.png",
+        "gallery": "structured",
+        "width": 1440,
+        "height": 900,
+        "mode": "web-light",
+        "locale": "es",
+        "bytes": 69638
+      },
+      {
+        "file": "structured-320x812-instrument-night-chromium-win32.png",
+        "gallery": "structured",
+        "width": 320,
+        "height": 812,
+        "mode": "instrument-night",
+        "locale": "es",
+        "bytes": 30322
+      },
+      {
+        "file": "structured-320x812-web-light-chromium-win32.png",
+        "gallery": "structured",
+        "width": 320,
+        "height": 812,
+        "mode": "web-light",
+        "locale": "es",
+        "bytes": 29650
+      }
+    ]
+  },
+  "provenance": {
+    "generatedOn": "the frozen MC-17 implementation commit",
+    "commitSha": null,
+    "commitShaReason": "Git commands are outside this documentation task; the Lead holds the frozen SHA and the independent reviewer must verify the baselines against it.",
+    "generatedBy": "the recorded Playwright run with --update-snapshots",
+    "platformSuffix": "-chromium-win32",
+    "reVerification": "independent auditor re-runs npx playwright test -c playwright.design-system.config.ts without --update-snapshots"
+  },
+  "nonSelfValidatingCaveat": "A baseline generated in the same run that compares it cannot prove the implementation correct. The 26 PNGs record the visual state of the frozen tree; they are evidence for a future comparison, not an approval. A passing comparison proves only that pixels did not change.",
+  "knownLimitations": [
+    "Chromium/Windows-specific; Firefox, WebKit, macOS, Linux, real phones and high-DPI hardware are not covered.",
+    "The baselines were generated and compared with --update-snapshots in the recorded run, so they are not self-validating.",
+    "The commit SHA is not quoted because Git was not run; the independent auditor must confirm it.",
+    "Only the stated galleries/widths/modes are captured; not every component state or consumer composition.",
+    "A visual pass is not accessibility conformance, brand approval or publication authorisation.",
+    "Screenshots are page captures anchored to the gallery top, not full-page captures."
+  ],
+  "commands": [
+    "npm run build:design-system-preview",
+    "npx playwright test -c playwright.design-system.config.ts --update-snapshots (recorded generation run)",
+    "npx playwright test -c playwright.design-system.config.ts (required re-verification without updating)"
+  ],
+  "sourceRefs": [
+    "e2e/design-system/visual.spec.ts",
+    "e2e/design-system/visual.spec.ts-snapshots/",
+    "e2e/design-system/helpers.ts",
+    "playwright.design-system.config.ts",
+    "test-results/design-system/artifacts/.last-run.json",
+    "docs/marea/design-system/MC17-RESPONSIVE-BEHAVIOR-AND-VISUAL-TESTING.md"
+  ]
+}

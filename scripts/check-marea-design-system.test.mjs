@@ -25,7 +25,9 @@ const modes = Object.keys(source.modes);
 function luminance(hex) {
   const clean = hex.replace('#', '');
   const channels = [0, 2, 4].map((index) => parseInt(clean.slice(index, index + 2), 16) / 255);
-  const linear = channels.map((value) => (value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4)));
+  const linear = channels.map((value) =>
+    value <= 0.03928 ? value / 12.92 : Math.pow((value + 0.055) / 1.055, 2.4),
+  );
   return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2];
 }
 
@@ -43,7 +45,12 @@ test('token contract keeps internal/provisional status', () => {
 });
 
 test('four modes with complete colour values', () => {
-  assert.deepEqual(modes, ['web-light', 'instrument-day', 'instrument-sunlight', 'instrument-night']);
+  assert.deepEqual(modes, [
+    'web-light',
+    'instrument-day',
+    'instrument-sunlight',
+    'instrument-night',
+  ]);
   for (const mode of modes) {
     for (const [role, def] of Object.entries(source.tokens.color)) {
       assert.match(def.values[mode].value, /^#[0-9a-f]{6}$/i, `${role}/${mode}`);
@@ -58,7 +65,8 @@ test('custom properties are namespaced, unique and never target :root', () => {
     for (const def of Object.values(group.values ?? {})) vars.add(def.cssVar);
     for (const [role, def] of Object.entries(group.roles ?? {})) {
       const prefix = `--marea-type-${role.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase()}`;
-      for (const suffix of ['family', 'size', 'line-height', 'weight', 'tracking']) vars.add(`${prefix}-${suffix}`);
+      for (const suffix of ['family', 'size', 'line-height', 'weight', 'tracking'])
+        vars.add(`${prefix}-${suffix}`);
       if (def.textTransform) vars.add(`${prefix}-transform`);
       if (def.numeric) vars.add(`${prefix}-numeric`);
     }
@@ -68,9 +76,13 @@ test('custom properties are namespaced, unique and never target :root', () => {
   assert.ok(vars.size > 120);
   for (const name of vars) assert.match(name, /^--marea-[a-z0-9-]+$/, name);
   const generated = read('src/app/marea-design-system/tokens/generated/marea-tokens.generated.css');
-  assert.ok(!/^\\s*:root\\s*\\{/m.test(generated), 'generated CSS must not target :root even if a comment mentions it');
+  assert.ok(
+    !/^\\s*:root\\s*\\{/m.test(generated),
+    'generated CSS must not target :root even if a comment mentions it',
+  );
   assert.match(generated, /^marea-theme \{/m);
-  for (const name of vars) assert.ok(generated.includes(`${name}:`), `generated CSS missing ${name}`);
+  for (const name of vars)
+    assert.ok(generated.includes(`${name}:`), `generated CSS missing ${name}`);
 });
 
 test('night mode avoids pure black and pure white', () => {
@@ -90,14 +102,22 @@ test('declared contrast pairs all pass in every mode', () => {
   for (const pair of source.contrastPairs) {
     for (const mode of modes) {
       const targets = pair.backgroundsByRole
-        ? Object.entries(pair.backgroundsByRole).map(([foreground, background]) => [foreground, background])
-        : pair.foregrounds.flatMap((foreground) => (pair.backgrounds ?? []).map((background) => [foreground, background]));
+        ? Object.entries(pair.backgroundsByRole).map(([foreground, background]) => [
+            foreground,
+            background,
+          ])
+        : pair.foregrounds.flatMap((foreground) =>
+            (pair.backgrounds ?? []).map((background) => [foreground, background]),
+          );
       for (const [foreground, background] of targets) {
         const a = source.tokens.color[foreground]?.values[mode].value;
         const b = source.tokens.color[background]?.values[mode].value;
         assert.ok(a && b, `${pair.id} unresolved ${foreground}/${background}`);
         const ratio = contrast(a, b);
-        if (ratio < pair.minRatio) failures.push(`${pair.id}:${foreground}-on-${background} ${ratio.toFixed(2)} < ${pair.minRatio} (${mode})`);
+        if (ratio < pair.minRatio)
+          failures.push(
+            `${pair.id}:${foreground}-on-${background} ${ratio.toFixed(2)} < ${pair.minRatio} (${mode})`,
+          );
       }
     }
   }
@@ -108,7 +128,8 @@ test('generated TypeScript layer is consistent with the source map', () => {
   const map = readJson('docs/marea/design-system/data/token-source-map.json');
   const ids = new Set(map.rows.map((row) => row.tokenId));
   const ts = read('src/app/marea-design-system/tokens/generated/marea-tokens.generated.ts');
-  for (const id of [...ids].slice(0, 25)) assert.ok(ts.includes(`'${id}'`), `TS layer missing ${id}`);
+  for (const id of [...ids].slice(0, 25))
+    assert.ok(ts.includes(`'${id}'`), `TS layer missing ${id}`);
   assert.ok(map.rows.length > 200);
 });
 
@@ -118,7 +139,9 @@ test('MC-16 identities are preserved in synthetic fixtures', () => {
   assert.equal((fixtures.match(/"editionType": "/g) ?? []).length, 26);
   assert.equal((fixtures.match(/"bundleId": "/g) ?? []).length, 6);
   assert.match(fixtures, /SYNTHETIC_INTERNAL_FIXTURE/);
-  assert.ok(!/"merchantSkuCode"|"priceAmount"|"stockQuantity"|"customerId"|"vesselId"/.test(fixtures));
+  assert.ok(
+    !/"merchantSkuCode"|"priceAmount"|"stockQuantity"|"customerId"|"vesselId"/.test(fixtures),
+  );
   assert.match(fixtures, /SAFETY_GATE_BLOCKED/);
   assert.match(fixtures, /RECEIVE_ONLY_NO_TRANSMISSION/);
   assert.ok(!/"hardwareIncludedByDefault": true/.test(fixtures));
@@ -129,13 +152,17 @@ test('shared entitlement ledgers are represented', () => {
   const ledgers = [...fixtures.matchAll(/"sharedLedgerKey": "([^"]+)"/g)].map((match) => match[1]);
   const counts = new Map();
   for (const ledger of ledgers) counts.set(ledger, (counts.get(ledger) ?? 0) + 1);
-  assert.ok([...counts.values()].some((count) => count >= 2), 'no shared ledger exercised');
+  assert.ok(
+    [...counts.values()].some((count) => count >= 2),
+    'no shared ledger exercised',
+  );
 });
 
 test('ES/EN copy entries are complete and non-empty', () => {
   const copy = read('src/app/marea-design-system/core/i18n.ts');
   const pairPattern = /^\s{2}([A-Za-z_]\w*):\s*\{\s*es:\s*'([^']*)',\s*en:\s*'([^']*)'\s*\},?$/gm;
-  const multiline = /^\s{2}([A-Za-z_]\w*):\s*\{\s*\n\s*es:\s*'([^']*)',\n\s*en:\s*'([^']*)',?\n\s*\},?$/gm;
+  const multiline =
+    /^\s{2}([A-Za-z_]\w*):\s*\{\s*\n\s*es:\s*'([^']*)',\n\s*en:\s*'([^']*)',?\n\s*\},?$/gm;
   const entries = [...copy.matchAll(pairPattern), ...copy.matchAll(multiline)];
   assert.ok(entries.length > 60, `parsed ${entries.length} copy keys`);
   for (const [, key, es, en] of entries) {
@@ -174,7 +201,11 @@ test('public directory gained no MAREA asset', () => {
 
 test('generated token, fixture and baseline artefacts are current', async () => {
   const { execFileSync } = await import('node:child_process');
-  for (const script of ['scripts/build-marea-design-tokens.mjs', 'scripts/build-marea-design-system-fixtures.mjs', 'scripts/build-marea-design-system-baseline.mjs']) {
+  for (const script of [
+    'scripts/build-marea-design-tokens.mjs',
+    'scripts/build-marea-design-system-fixtures.mjs',
+    'scripts/build-marea-design-system-baseline.mjs',
+  ]) {
     execFileSync(process.execPath, [script, '--check'], { stdio: 'pipe' });
   }
 });
@@ -194,8 +225,10 @@ test('design-system sources contain no browser globals or nondeterminism', () =>
   const offenders = [];
   for (const file of files) {
     const content = read(file);
-    if (/\bMath\.random\s*\(|\bDate\.now\s*\(|new Date\s*\(/.test(content)) offenders.push(`${file}: nondeterministic value`);
-    if (/\blocalStorage\b|\bsessionStorage\b|\bmatchMedia\b/.test(content)) offenders.push(`${file}: browser storage/media`);
+    if (/\bMath\.random\s*\(|\bDate\.now\s*\(|new Date\s*\(/.test(content))
+      offenders.push(`${file}: nondeterministic value`);
+    if (/\blocalStorage\b|\bsessionStorage\b|\bmatchMedia\b/.test(content))
+      offenders.push(`${file}: browser storage/media`);
     if (/\bdocument\.|\bwindow\./.test(content)) offenders.push(`${file}: browser global`);
   }
   assert.deepEqual(offenders, []);
@@ -214,7 +247,16 @@ test('no purchase path or currency literal exists in design-system or preview co
     return out;
   };
   const all = files.flatMap((dir) => walkAll(dir));
-  const forbidden = [/€/, /\bEUR\b/, /\bUSD\b/, /\badd to cart\b/i, /\bbuy now\b/i, /\bañadir al carrito\b/i, /\bpre-?order\b/i, /\bwaiting list\b/i];
+  const forbidden = [
+    /€/,
+    /\bEUR\b/,
+    /\bUSD\b/,
+    /\badd to cart\b/i,
+    /\bbuy now\b/i,
+    /\bañadir al carrito\b/i,
+    /\bpre-?order\b/i,
+    /\bwaiting list\b/i,
+  ];
   const offenders = [];
   for (const file of all) {
     // The bilingual dictionary legitimately contains honest negations ("no pre-order,
@@ -230,11 +272,32 @@ test('no purchase path or currency literal exists in design-system or preview co
 });
 
 test('registry and state datasets are coherent when present', () => {
-  if (!existsSync(new URL('../docs/marea/design-system/data/component-registry.json', import.meta.url))) return;
+  if (
+    !existsSync(
+      new URL('../docs/marea/design-system/data/component-registry.json', import.meta.url),
+    )
+  )
+    return;
   const registry = readJson('docs/marea/design-system/data/component-registry.json');
   const states = readJson('docs/marea/design-system/data/component-states.json');
-  assert.ok(registry.components.length >= 40, `registry has ${registry.components.length} components`);
+  assert.ok(
+    registry.components.length >= 40,
+    `registry has ${registry.components.length} components`,
+  );
   assert.equal(states.components.length, registry.components.length);
-  const required = ['DEFAULT', 'HOVER', 'FOCUS_VISIBLE', 'PRESSED', 'DISABLED', 'LOADING', 'EMPTY', 'ERROR', 'WARNING', 'READ_ONLY', 'BLOCKED'];
-  for (const entry of states.components) for (const state of required) assert.ok(entry.states[state], `${entry.componentId}/${state}`);
+  const required = [
+    'DEFAULT',
+    'HOVER',
+    'FOCUS_VISIBLE',
+    'PRESSED',
+    'DISABLED',
+    'LOADING',
+    'EMPTY',
+    'ERROR',
+    'WARNING',
+    'READ_ONLY',
+    'BLOCKED',
+  ];
+  for (const entry of states.components)
+    for (const state of required) assert.ok(entry.states[state], `${entry.componentId}/${state}`);
 });

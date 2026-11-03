@@ -240,6 +240,7 @@ interface InstrumentTileSpec {
     }
     section {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: 12px;
       min-inline-size: 0;
     }

@@ -244,3 +244,15 @@ function lineNumberAt(source: string, index: number): number {
 function toPosix(path: string): string {
   return path.replace(/\\/g, '/');
 }
+
+test('production entries import no design-system or preview module by any path', () => {
+  const files = ['src/main.ts', 'src/main.server.ts', 'src/app/app.routes.ts', 'src/app/core/seo.service.ts', 'src/server.ts'];
+  const offenders: string[] = [];
+  for (const file of files) {
+    const source = readFileSync(file, 'utf8');
+    for (const match of source.matchAll(/(?:from|import)\s*\(?\s*['"]([^'"]+)['"]/g)) {
+      if (/marea|preview\//i.test(match[1])) offenders.push(file + ': ' + match[1]);
+    }
+  }
+  expect(offenders, offenders.join('\n')).toEqual([]);
+});

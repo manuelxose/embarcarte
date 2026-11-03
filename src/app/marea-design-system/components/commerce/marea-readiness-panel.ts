@@ -61,12 +61,15 @@ const READINESS_COPY: Readonly<Record<MareaReadinessStatus, MareaCopyKey>> = {
   `,
   styles: `
     :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .panel { display: grid; gap: var(--marea-space-3); min-inline-size: 0; }
+    .panel { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-3); min-inline-size: 0; }
     .heading, .note, .gates { margin: 0; }
     .overall { display: flex; flex-wrap: wrap; gap: var(--marea-space-2); }
-    .dimensions { display: grid; gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
+    .dimensions { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
     .dimension {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--marea-space-1);
       padding-block-end: var(--marea-space-2);
       border-block-end: var(--marea-border-width-hairline, 1px) solid var(--marea-line);

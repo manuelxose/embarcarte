@@ -23,7 +23,8 @@ import { MareaText } from '../foundation/marea-text';
   `,
   styles: `
     :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .stock-unavailable { display: grid; gap: var(--marea-space-1); min-inline-size: 0; }
+    .stock-unavailable { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-1); min-inline-size: 0; }
     .heading, .body, .meta, .sale { margin: 0; }
     .meta { overflow-wrap: anywhere; }
   `,

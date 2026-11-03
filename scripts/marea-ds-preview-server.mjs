@@ -51,10 +51,17 @@ const server = createServer(async (request, response) => {
       file = join(base, 'index.html');
     }
     const data = await readFile(file);
-    response.writeHead(200, { 'content-type': MIME[extname(file)] ?? 'application/octet-stream', 'cache-control': 'no-store' });
+    response.writeHead(200, {
+      'content-type': MIME[extname(file)] ?? 'application/octet-stream',
+      'cache-control': 'no-store',
+    });
     response.end(data);
   } catch (error) {
-    response.writeHead(500).end(`Internal catalogue server error: ${error instanceof Error ? error.message : 'unknown'}`);
+    response
+      .writeHead(500)
+      .end(
+        `Internal catalogue server error: ${error instanceof Error ? error.message : 'unknown'}`,
+      );
   }
 });
 

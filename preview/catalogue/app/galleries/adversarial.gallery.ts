@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
-import { MareaCommerceCta } from '../../../../src/app/marea-design-system/components/commerce/marea-commerce-cta';
+import { MareaCommercialCta } from '../../../../src/app/marea-design-system/components/commerce/marea-commercial-cta';
 import { MareaFamilyCard } from '../../../../src/app/marea-design-system/components/commerce/marea-family-card';
 import { MareaPriceUnavailable } from '../../../../src/app/marea-design-system/components/commerce/marea-price-unavailable';
 import { MareaStockUnavailable } from '../../../../src/app/marea-design-system/components/commerce/marea-stock-unavailable';
@@ -22,7 +22,7 @@ import type { MareaCommercialInput } from '../../../../src/app/marea-design-syst
 @Component({
   selector: 'marea-adversarial-gallery',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MareaCommerceCta, MareaFamilyCard, MareaPriceUnavailable, MareaStockUnavailable, MareaReadinessPanel, MareaSpecTable, MareaText, MareaSurface, MareaStack, MareaNotice, MareaComponentDoc],
+  imports: [MareaCommercialCta, MareaFamilyCard, MareaPriceUnavailable, MareaStockUnavailable, MareaReadinessPanel, MareaSpecTable, MareaText, MareaSurface, MareaStack, MareaNotice, MareaComponentDoc],
   template: `
     <marea-stack [gap]="5">
       <marea-notice variant="critical" heading="Fixture hostil: compra autorizada por error" body="El view model declara buyCtaAllowed=true, cartAllowed=true, priceVisible=true, availabilityVisible=true y un estado inexistente. La presentación debe bloquearlo todo." live="off" />
@@ -46,7 +46,7 @@ import type { MareaCommercialInput } from '../../../../src/app/marea-design-syst
 
       <marea-surface>
         <h3 marea-text variant="heading">CTA con fixture hostil</h3>
-        <marea-commerce-cta [presentation]="hostile()" />
+        <marea-commercial-cta [presentation]="hostile()" />
       </marea-surface>
 
       <marea-surface>
@@ -72,7 +72,7 @@ import type { MareaCommercialInput } from '../../../../src/app/marea-design-syst
         <marea-spec-table caption="Derivación de estado CTA desde identidad MC-16 (solo códigos internos)" [rows]="ctaRows()" />
       </marea-surface>
 
-      <marea-component-doc componentId="marea-commerce-cta" />
+      <marea-component-doc componentId="marea-commercial-cta" />
       <marea-component-doc componentId="marea-price-unavailable" />
       <marea-component-doc componentId="marea-stock-unavailable" />
       <marea-component-doc componentId="marea-readiness-panel" />
@@ -82,9 +82,10 @@ import type { MareaCommercialInput } from '../../../../src/app/marea-design-syst
   styles: `
     :host { display: block; }
     h3 { margin: 0 0 8px; }
-    .invariants { display: grid; grid-template-columns: minmax(180px, 260px) 1fr; gap: 4px 16px; margin: 0; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; }
-    .invariants dt { font-weight: 700; }
-    .invariants dd { margin: 0; }
+    .invariants { display: grid;
+      grid-template-columns: minmax(0, 1fr); grid-template-columns: minmax(96px, 200px) minmax(0, 1fr); gap: 4px 16px; margin: 0; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 12px; }
+    .invariants dt { font-weight: 700; overflow-wrap: anywhere; }
+    .invariants dd { margin: 0; min-inline-size: 0; overflow-wrap: anywhere; }
   `,
 })
 export class AdversarialGallery {

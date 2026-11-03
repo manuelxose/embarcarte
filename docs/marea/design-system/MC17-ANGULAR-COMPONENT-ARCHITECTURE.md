@@ -124,8 +124,7 @@ representable** through this contract. `MareaCommercialPresentation` fixes
 | Hydration-sensitive timestamps | no component reads the clock; `ageSeconds` is an input supplied by the caller | `marea-freshness`, `marea-numeric-readout` |
 
 **Known inconsistency (recorded, not hidden):** `marea-form-field` does not use
-`MareaIds`. It keeps a module-level counter (`let fieldSequence = 0`) to build
-`hintId`/`errorId`. On a long-running SSR process that counter is shared across
+`MareaIds`. It keeps a module-level counter (`let per-render `MareaIds` counter (a process-wide module counter was found during review and replaced; the current implementation injects `MareaIds`). On a long-running SSR process that counter is shared across
 requests, so ids in a later request differ from what a fresh client counter would
 produce. The design system is not part of the production build today, so this is a
 latent defect rather than an observed hydration error; it is listed in D09 §10 and
@@ -210,7 +209,7 @@ production bundle.
 | 36 | `marea-compatibility-notice` | `marea-compatibility-notice` | commerce |
 | 37 | `marea-price-unavailable` | `marea-price-unavailable` | commerce |
 | 38 | `marea-stock-unavailable` | `marea-stock-unavailable` | commerce |
-| 39 | `marea-commerce-cta` | `marea-commerce-cta` | commerce |
+| 39 | `marea-commercial-cta` | `marea-commercial-cta` | commerce |
 | 40 | `marea-quote-status` | `marea-quote-status` | commerce |
 | 41 | `marea-documentation-panel` | `marea-documentation-panel` | commerce |
 | 42 | `marea-numeric-readout` | `marea-numeric-readout` | instrument |
@@ -239,7 +238,7 @@ its declared path, exports the declared class, contains the declared selector an
 - No performance measurement: no bundle-size budget for the catalogue is enforced
   beyond Angular's defaults in the production configuration.
 - No dependency-injection scoping analysis beyond the three root services.
-- The `fieldSequence` id counter in §6 is an open SSR defect, not a design choice.
+- The `per-render `MareaIds` counter (a process-wide module counter was found during review and replaced; the current implementation injects `MareaIds`).
 
 Source references: `src/app/marea-design-system/**`,
 `preview/**`, `angular.json`, `package.json`,

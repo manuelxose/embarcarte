@@ -72,6 +72,7 @@ const TONE_ICON: Readonly<Record<MareaTone, MareaIconName>> = {
     }
     .body {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--marea-space-1);
       min-inline-size: 0;
     }

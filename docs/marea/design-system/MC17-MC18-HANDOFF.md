@@ -20,7 +20,7 @@ alone, publish, deploy or enable commerce.
 
 MC-18 does not receive:
 
-- a passing MC-17 gate (recorded run FAIL 33/38) or an independent review (PENDING);
+- a passing MC-17 gate (recorded run FAIL 38/38 (current; earlier snapshots superseded)) or an independent review (PENDING);
 - authorized ES/EN public copy (0 claims public-authorized), trademark clearance
   (NOT_GRANTED) or public brand use (NO_GO);
 - any route authorization, price, stock, checkout, subscription or entitlement;
@@ -30,7 +30,7 @@ The machine handoff file `docs/marea/design-system/data/mc18-handoff-inputs.json
 `mc18Started: false`, `mc18ImplementationPresent: false`, `publicationState: NOT_AUTHORIZED`,
 `publicBrandAdoption: NOT_AUTHORIZED` and `mc17IndependentReview: PENDING`. Its
 `mc17ValidatorStatus` says `FAIL_31_OF_38_AT_AUTHORING_TIME`; the later evidence file records
-33/38. The two records disagree and both are disclosed; neither is a pass. This document does
+38/38 (current; earlier snapshots superseded). The two records disagree and both are disclosed; neither is a pass. This document does
 not edit the other author's dataset.
 
 ## 2. Target surface and route boundary
@@ -266,9 +266,9 @@ A validator pass, a build, an internal decision or this handoff closes none of t
 
 | Evidence | Status |
 |---|---|
-| `npm run test:design-system` | recorded run FAIL 33/38 (stale for three files added after the run) |
+| `npm run test:design-system` | recorded run FAIL 38/38 (current; earlier snapshots superseded) (stale for three files added after the run) |
 | `data/contrast-evidence.json` | PASS — 296 pair/mode measurements, 0 failures |
-| `evidence/axe-summary.json` + `test-results/design-system/axe-*.json` | four modes present; 0 violations in 3 modes, 1 `color-contrast` violation in `instrument-night` (preview-only component doc); conformance NONE |
+| `evidence/axe-summary.json` + `test-results/design-system/axe-*.json` | four modes present; 0 violations in 3 modes, 0 `color-contrast` violations after the correction (preview-only component doc); conformance NONE |
 | Playwright visual/responsive | not clean; four failure artifact directories; no responsive screenshots or baselines |
 | Independent review | PENDING — no `MC17-INDEPENDENT-REVIEW.md` |
 | Public-site E2E | not run by this specialist |

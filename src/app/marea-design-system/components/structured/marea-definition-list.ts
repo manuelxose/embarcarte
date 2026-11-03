@@ -46,6 +46,7 @@ export interface MareaDefinitionItem {
     }
     .list {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       grid-template-columns: minmax(7rem, max-content) 1fr;
       gap: var(--marea-space-2) var(--marea-space-4);
       margin: 0;
@@ -62,6 +63,7 @@ export interface MareaDefinitionItem {
     }
     .definition {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--marea-space-1);
       margin: 0;
       font-family: var(--marea-font-body);

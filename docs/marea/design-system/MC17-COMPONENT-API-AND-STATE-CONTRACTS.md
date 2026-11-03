@@ -104,7 +104,7 @@ applicable/not-applicable.
 | `marea-compatibility-notice` | `status` | `testedRows` | — | 3 / 8 |
 | `marea-price-unavailable` | — | `priceStatus`, `heading` | — | 4 / 7 |
 | `marea-stock-unavailable` | — | `stockState` | — | 4 / 7 |
-| `marea-commerce-cta` | `presentation` | — | — | 5 / 6 |
+| `marea-commercial-cta` | `presentation` | — | — | 5 / 6 |
 | `marea-quote-status` | — | `scope` | — | 4 / 7 |
 | `marea-documentation-panel` | `familyId`, `items` | `heading` | — | 4 / 7 |
 | `marea-numeric-readout` | `value`, `unit`, `label` | `size`, `freshness`, `ageSeconds`, `demo` | — | 4 / 7 |
@@ -143,7 +143,7 @@ expressible through the API (check `MC17-18`).
 | `ARIA-disabled` styling | `disabled-surface` + `disabled` ink + `border-strong` | — | — |
 
 The check `MC17-17` asserts `disabledReason`, `aria-describedby` and
-`aria-disabled` are all present in `marea-button`, and that `marea-commerce-cta`
+`aria-disabled` are all present in `marea-button`, and that `marea-commercial-cta`
 contains no `<button>`, `<a ` or `role="button"`.
 
 ### 4.3 ARIA relationship wiring
@@ -223,7 +223,7 @@ separately as restriction notices and readiness labels
 
 ### 5.3 Rendering consequences
 
-- `marea-commerce-cta` renders a status chip, an explanation, the global rule text
+- `marea-commercial-cta` renders a status chip, an explanation, the global rule text
   ("buyCtaAllowed=false, cartAllowed=false, priceVisible=false,
   availabilityVisible=false") and one critical notice per blocked signal. It
   contains **no action element at all**.

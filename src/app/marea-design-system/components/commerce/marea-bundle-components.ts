@@ -59,10 +59,13 @@ const INCLUSION_COPY: Readonly<Record<MareaInclusion, MareaCopyKey>> = {
   `,
   styles: `
     :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .bundle-components { display: grid; gap: var(--marea-space-3); min-inline-size: 0; }
+    .bundle-components { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-3); min-inline-size: 0; }
     .heading { margin: 0; }
-    .lines { display: grid; gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
-    .line { display: grid; gap: var(--marea-space-1); min-inline-size: 0; }
+    .lines { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
+    .line { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-1); min-inline-size: 0; }
     .line-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--marea-space-2); }
     .line-name { font-weight: 600; overflow-wrap: anywhere; }
     .quantity { font-variant-numeric: tabular-nums; }

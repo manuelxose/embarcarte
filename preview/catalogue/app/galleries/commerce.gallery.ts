@@ -12,7 +12,7 @@ import { MareaEntitlementSummary } from '../../../../src/app/marea-design-system
 import { MareaCompatibilityNotice } from '../../../../src/app/marea-design-system/components/commerce/marea-compatibility-notice';
 import { MareaPriceUnavailable } from '../../../../src/app/marea-design-system/components/commerce/marea-price-unavailable';
 import { MareaStockUnavailable } from '../../../../src/app/marea-design-system/components/commerce/marea-stock-unavailable';
-import { MareaCommerceCta } from '../../../../src/app/marea-design-system/components/commerce/marea-commerce-cta';
+import { MareaCommercialCta } from '../../../../src/app/marea-design-system/components/commerce/marea-commercial-cta';
 import { MareaQuoteStatus } from '../../../../src/app/marea-design-system/components/commerce/marea-quote-status';
 import { MareaDocumentationPanel } from '../../../../src/app/marea-design-system/components/commerce/marea-documentation-panel';
 import { MareaComponentDoc } from '../component-doc';
@@ -96,7 +96,7 @@ function presentationFor(
     MareaCompatibilityNotice,
     MareaPriceUnavailable,
     MareaStockUnavailable,
-    MareaCommerceCta,
+    MareaCommercialCta,
     MareaQuoteStatus,
     MareaDocumentationPanel,
     MareaComponentDoc,
@@ -260,10 +260,10 @@ function presentationFor(
         <marea-stack [gap]="4">
           @for (example of ctaExamples; track example.state) {
             <h4 marea-text variant="heading">{{ example.state }}</h4>
-            <marea-commerce-cta [presentation]="example.presentation" />
+            <marea-commercial-cta [presentation]="example.presentation" />
           }
         </marea-stack>
-        <marea-component-doc componentId="marea-commerce-cta" />
+        <marea-component-doc componentId="marea-commercial-cta" />
       </section>
 
       <hr marea-divider spacing="loose" />
@@ -306,6 +306,7 @@ function presentationFor(
     }
     section {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: 12px;
       min-inline-size: 0;
     }

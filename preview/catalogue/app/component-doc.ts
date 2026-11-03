@@ -118,10 +118,12 @@ import { COMPONENT_REGISTRY, type MareaRegistryComponent } from './registry.gene
     .body { padding: 4px 14px 16px; font-size: 13px; line-height: 1.55; }
     .purpose { margin: 0 0 10px; max-inline-size: 80ch; overflow-wrap: anywhere; }
     h4 { margin: 16px 0 6px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--marea-text-secondary); }
-    dl.meta { display: grid; grid-template-columns: minmax(90px, 140px) minmax(0, 1fr); gap: 2px 12px; margin: 0; }
+    dl.meta { display: grid;
+      grid-template-columns: minmax(0, 1fr); grid-template-columns: minmax(90px, 140px) minmax(0, 1fr); gap: 2px 12px; margin: 0; }
     dl.meta dt { font-weight: 700; overflow-wrap: anywhere; }
     dl.meta dd { margin: 0; min-inline-size: 0; overflow-wrap: anywhere; }
     .table-scroll { overflow-x: auto; max-inline-size: 100%; }
+    pre { white-space: pre-wrap; overflow-wrap: anywhere; max-inline-size: 100%; }
     table { inline-size: 100%; border-collapse: collapse; font-size: 12px; }
     th, td { text-align: start; padding: 6px 8px; border-block-end: 1px solid var(--marea-line); vertical-align: top; overflow-wrap: anywhere; }
     th { background: var(--marea-surface-raised); }

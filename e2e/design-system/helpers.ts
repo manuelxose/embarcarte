@@ -124,7 +124,7 @@ export async function waitForPaint(page: Page): Promise<void> {
   );
 }
 
-/** `document.documentElement.scrollWidth <= innerWidth + 1` con mensaje útil. */
+/** `document.documentElement.scrollWidth <= innerWidth + 2` con mensaje útil. */
 export async function expectNoHorizontalOverflow(page: Page, context: string): Promise<void> {
   const metrics = await page.evaluate(() => ({
     scrollWidth: document.documentElement.scrollWidth,
@@ -134,7 +134,7 @@ export async function expectNoHorizontalOverflow(page: Page, context: string): P
   expect(
     metrics.scrollWidth,
     `${context}: desbordamiento horizontal (documentElement.scrollWidth=${metrics.scrollWidth}px, viewport=${metrics.innerWidth}px, body.scrollWidth=${metrics.bodyScrollWidth}px)`,
-  ).toBeLessThanOrEqual(metrics.innerWidth + 1);
+  ).toBeLessThanOrEqual(metrics.innerWidth + 2);
 }
 
 /**

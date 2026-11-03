@@ -136,18 +136,22 @@ const MODES: readonly { id: MareaMode; label: string }[] = [
   styles: `
     :host { display: block; }
     .page { padding-block: 24px 64px; background: var(--marea-canvas); color: var(--marea-text-primary); min-block-size: 100vh; }
-    .head { display: grid; gap: 16px; padding-block: 16px 8px; }
+    .head { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 16px 8px; }
     .eyebrow { margin: 0; letter-spacing: 0.12em; text-transform: uppercase; }
     h1 { margin: 0; max-inline-size: 26ch; }
-    .controls { display: grid; gap: 12px; padding: 16px 0; border-block: 1px solid var(--marea-line); }
-    .control { display: grid; gap: 6px; }
+    .controls { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 16px 0; border-block: 1px solid var(--marea-line); }
+    .control { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: 6px; }
     .control-label { color: var(--marea-text-secondary); }
     .mode-note { margin: 0; }
     .toc { display: flex; flex-wrap: wrap; gap: 8px 20px; padding-block: 16px; border-block-end: 1px solid var(--marea-line); }
     .toc a { color: var(--marea-action); font-weight: 700; font-size: 12px; text-decoration: none; padding: 4px 2px; border-radius: 3px; }
     .toc a:hover { text-decoration: underline; }
     .toc a:focus-visible { outline: 3px solid var(--marea-focus-ring); outline-offset: 2px; }
-    section { display: grid; gap: 12px; padding-block: 32px; border-block-end: 1px solid var(--marea-line); }
+    section { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 32px; border-block-end: 1px solid var(--marea-line); }
     section h2 { margin: 0; }
     .foot { padding-block-start: 32px; color: var(--marea-text-secondary); }
   `,

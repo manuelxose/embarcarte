@@ -179,7 +179,8 @@ import { MAREA_ICON_NAMES } from '../../../../src/app/marea-design-system/compon
   `,
   styles: `
     :host { display: block; }
-    section { display: grid; gap: 4px; }
+    section { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: 4px; }
     .live { margin: 0; }
   `,
 })

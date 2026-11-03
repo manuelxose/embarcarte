@@ -35,9 +35,9 @@ const BLOCKED_SIGNAL_HEADING: Readonly<Record<MareaBlockedSignal, MareaCopyKey>>
  * signals are surfaced as honest critical notices, never as a recovered action.
  */
 @Component({
-  selector: 'marea-commerce-cta',
+  selector: 'marea-commercial-cta',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { 'data-marea-component': 'marea-commerce-cta' },
+  host: { 'data-marea-component': 'marea-commercial-cta' },
   imports: [MareaNotice, MareaStatusBadge, MareaText],
   template: `
     <div class="cta">
@@ -52,12 +52,13 @@ const BLOCKED_SIGNAL_HEADING: Readonly<Record<MareaBlockedSignal, MareaCopyKey>>
   `,
   styles: `
     :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .cta { display: grid; gap: var(--marea-space-2); min-inline-size: 0; }
+    .cta { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-2); min-inline-size: 0; }
     .explanation { margin: 0; max-inline-size: var(--marea-measure); }
     .rule { margin: 0; overflow-wrap: anywhere; }
   `,
 })
-export class MareaCommerceCta {
+export class MareaCommercialCta {
   readonly presentation = input.required<MareaCommercialPresentation>();
 
   readonly i18n = inject(MareaI18n);

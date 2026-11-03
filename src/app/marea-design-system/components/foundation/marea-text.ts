@@ -27,6 +27,7 @@ export type MareaTextTone = 'primary' | 'secondary' | 'meta' | 'data' | 'action'
       letter-spacing: var(--marea-type-body-tracking, 0);
       color: var(--marea-text-primary, inherit);
       text-wrap: pretty;
+      overflow-wrap: break-word;
       max-inline-size: var(--marea-measure, 68ch);
     }
     :host(.marea-text--display1) { font-family: var(--marea-type-display1-family); font-size: var(--marea-type-display1-size); line-height: var(--marea-type-display1-line-height); font-weight: var(--marea-type-display1-weight); letter-spacing: var(--marea-type-display1-tracking); max-inline-size: 24ch; }

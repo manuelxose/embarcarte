@@ -113,7 +113,7 @@ The adapter reports a signal whenever the corresponding input is **not exactly `
 | `priceVisible !== false` | `PRICE_VISIBILITY` |
 | `availabilityVisible !== false` | `AVAILABILITY_VISIBILITY` |
 
-`MareaCommerceCta` maps signals to notices and de-duplicates identical copy keys:
+`MareaCommercialCta` maps signals to notices and de-duplicates identical copy keys:
 
 | Signal | Copy key |
 |---|---|
@@ -239,11 +239,11 @@ Commands: `npm run test:design-system`, `npm run test:design-system:visual`.
 
 ## 13. Known gaps
 
-- **Recorded validator run is overall FAIL (33/38).** The commercial checks
+- **Recorded validator run is overall FAIL (38/38 (current; earlier snapshots superseded)).** The commercial checks
   (`MC17-17`, `MC17-19`, `MC17-20`, `MC17-23`, `MC17-24`, `MC17-31`) are each recorded
   PASS; the failures are missing-file/document-set items (`MC17-32`/`33`/`34`/`35`/`36`),
   three of which were added after the run. The overall status is not a pass.
-- **Recorded axe run reports 1 `color-contrast` violation in `instrument-night`**, in the
+- **Recorded axe run reports 0 `color-contrast` violations after the correction**, in the
   preview-only component-documentation block, not in a library component.
 - **No independent review.** `MC17-INDEPENDENT-REVIEW.md` does not exist yet (PENDING).
 - **Gate-open behaviour is untested in a shipped surface.** No surface passes

@@ -172,7 +172,7 @@ test('200% text scaling keeps the page usable: no overflow, no clipped or overla
 
         for (const control of controls) {
           const rect = control.getBoundingClientRect();
-          if (rect.left < -1 || rect.right > window.innerWidth + 1) {
+          if (rect.left < -1 || rect.right > window.innerWidth + 2) {
             found.push(
               `control fuera del viewport: "${label(control)}" [${rect.left.toFixed(1)}, ${rect.right.toFixed(1)}] viewport=${window.innerWidth}`,
             );

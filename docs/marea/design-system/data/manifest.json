@@ -1,0 +1,466 @@
+{
+  "contractId": "MC17-MACHINE-READABLE-MANIFEST",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "documentation-specialist (MC-17/36)",
+  "generationMethod": "authored by hand as an index of files observed in docs/marea/design-system/data and docs/marea/design-system on 2026-11-03; it indexes generators and validator checks but generates nothing",
+  "scope": "Contract index of the MC-17 machine-readable datasets and the 24-document deliverable set, with generation method, status, consuming validator check and existence at authoring time. The datasets and the validator remain the authority; this manifest is an index.",
+  "completeness": {
+    "datasetsDeclared": 20,
+    "datasetsPresent": 19,
+    "datasetsPending": [
+      "review-findings.json (D22 independent review, PENDING)"
+    ],
+    "documentsDeclared": 24,
+    "documentsPresent": 21,
+    "documentsPending": [
+      "D22 MC17-INDEPENDENT-REVIEW.md",
+      "D23 MC17-SPANISH-EXECUTIVE-REPORT.md",
+      "D24 MC17-FINAL-DELIVERY-RECORD.md"
+    ],
+    "note": "The manifest is intentionally incomplete while D22-D24 and review-findings.json are absent. No pending artefact is indexed as present, and this incompleteness is why validator MC17-35/MC17-36 still fail."
+  },
+  "knownLimitations": [
+    "The manifest is an index, not an authority: when it disagrees with a dataset or scripts/check-marea-design-system.mjs, the dataset/validator wins and this file must be corrected.",
+    "19 of the 20 datasets declared by validator MC17-36 exist at authoring; review-findings.json is owned by the independent reviewer (D22) and is absent. D22-D24 documents are also absent.",
+    "Dataset status values describe the artefact only; none is a milestone verdict, WCAG conformance claim, price approval, brand adoption or publication authorisation.",
+    "The responsive, performance and visual evidence files cite recorded runs on the frozen implementation; this package did not re-run Playwright, and the 876 px pre-fix responsive state is a Lead-recorded before-state that cannot be reconstructed without reverting the tree.",
+    "The count of MC-17 datasets is 20. Counting the external MC-16 input docs/marea/commerce-data/data/mc17-handoff-inputs.json as well gives 21 machine-readable contracts in the wider handoff; that file is an input, not an MC-17 output.",
+    "The validator was run by the author of this package; independent re-execution is still pending."
+  ],
+  "sourceRefs": [
+    "docs/marea/design-system/data/",
+    "docs/marea/design-system/",
+    "scripts/build-marea-design-tokens.mjs",
+    "scripts/build-marea-design-system-fixtures.mjs",
+    "scripts/build-marea-design-system-baseline.mjs",
+    "scripts/build-marea-design-system-catalogue-data.mjs",
+    "scripts/check-marea-design-system.mjs",
+    "docs/marea/design-system/evidence/validator-run.json",
+    "docs/marea/commerce-data/data/mc17-handoff-inputs.json"
+  ],
+  "verifiedAt": "2026-11-03",
+  "governanceFlags": {
+    "TRADEMARK_LEGAL_CLEARANCE": "NOT_GRANTED",
+    "MAREA_PUBLIC_USE": "NO_GO",
+    "FINAL_IDENTITY_ADOPTION": "BLOCKED",
+    "SOURCE_IP_CLEARANCE": "NOT_CLEARED",
+    "COMMERCIAL_AVAILABILITY": "NOT_FOR_SALE",
+    "PRICE_APPROVED": "NONE",
+    "CUSTOMER_EVIDENCE": "NONE",
+    "CUSTOMER_WTP_VALIDATED": "false",
+    "LICENSING_RIGHTS_GRANTED": "false",
+    "PILOT_SAFETY_GATE": "BLOCKED",
+    "AIS_TRANSMISSION_OFFERED": "false",
+    "FLEET_DEFAULT_HARDWARE": "false",
+    "CE_MARKING_CLAIM": "PROHIBITED",
+    "NMEA2000_CERTIFIED": "false",
+    "TESTED_COMPATIBILITY_ROWS": "0",
+    "PUBLICATION_AUTHORIZED": "false",
+    "PRODUCTION_DEPLOYMENT": "NOT_AUTHORIZED"
+  },
+  "implementationCounts": {
+    "dsTypeScriptFiles": 56,
+    "dsTypeScriptLines": 6425,
+    "registeredEntries": 49,
+    "angularComponents": 48,
+    "angularDirectives": 1,
+    "themeEntries": 1,
+    "foundationEntries": 16,
+    "structuredEntries": 12,
+    "commerceEntries": 12,
+    "instrumentEntries": 8,
+    "visualModes": 4,
+    "colourRolesPerMode": 33,
+    "tokenIds": 163,
+    "provenanceRows": 262,
+    "typographyRoles": 13,
+    "bilingualCopyKeys": 138,
+    "syntheticFamilies": 9,
+    "syntheticEditions": 26,
+    "syntheticBundles": 6,
+    "readinessDimensions": 11,
+    "entitlementDefinitions": 12,
+    "visualBaselines": 26,
+    "playwrightTests": 28
+  },
+  "productionIsolation": {
+    "importedByProduction": false,
+    "productionEntryFilesChecked": 5,
+    "productionBuildFilesScanned": 168,
+    "designSystemIdentifierFoundInBuild": false,
+    "productionStyles": [
+      "src/styles.scss"
+    ],
+    "contributionBytes": 0,
+    "contributionBasis": "No import path exists from the production entry points, and the 168-file browser build contains no design-system or catalogue identifier (validator MC17-09). The 0 is an absence-of-import conclusion, not a per-module byte diff.",
+    "validatedBy": [
+      "MC17-07",
+      "MC17-08",
+      "MC17-09",
+      "MC17-10"
+    ]
+  },
+  "validator": {
+    "command": "node scripts/check-marea-design-system.mjs",
+    "checkCount": 38,
+    "latestRunStatus": "FAIL",
+    "latestRunPassed": 36,
+    "latestRunFailed": 2,
+    "latestRunFailingChecks": [
+      "MC17-35",
+      "MC17-36"
+    ],
+    "latestRunFailingDetail": "MC17-35: required documents missing (D22-D24); MC17-36: review-findings.json missing",
+    "evidence": "docs/marea/design-system/evidence/validator-run.json"
+  },
+  "datasets": [
+    {
+      "file": "manifest.json",
+      "contractId": "MC17-MACHINE-READABLE-MANIFEST",
+      "contractVersion": "1.0.0",
+      "owner": "documentation-specialist (MC-17/36)",
+      "generationMethod": "authored index",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-36",
+      "exists": true
+    },
+    {
+      "file": "token-source-map.json",
+      "contractId": "MC17-TOKEN-SOURCE-MAP",
+      "contractVersion": "1.0.0",
+      "owner": "lead",
+      "generationMethod": "generated by scripts/build-marea-design-tokens.mjs",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-05 (freshness); unit test 7",
+      "exists": true
+    },
+    {
+      "file": "color-roles.json",
+      "contractId": "MC17-COLOR-ROLES",
+      "contractVersion": "1.0.0",
+      "owner": "lead",
+      "generationMethod": "generated by scripts/build-marea-design-tokens.mjs",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-04 via the token source it mirrors",
+      "exists": true
+    },
+    {
+      "file": "mode-contracts.json",
+      "contractId": "MC17-MODE-CONTRACTS",
+      "contractVersion": "1.0.0",
+      "owner": "lead",
+      "generationMethod": "generated by scripts/build-marea-design-tokens.mjs",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-02 via the token source it mirrors",
+      "exists": true
+    },
+    {
+      "file": "typography-roles.json",
+      "contractId": "MC17-TYPOGRAPHY-ROLES",
+      "contractVersion": "1.0.0",
+      "owner": "lead",
+      "generationMethod": "generated by scripts/build-marea-design-tokens.mjs",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-16 (numeric role); MC17-05 (freshness)",
+      "exists": true
+    },
+    {
+      "file": "layout-tokens.json",
+      "contractId": "MC17-LAYOUT-TOKENS",
+      "contractVersion": "1.0.0",
+      "owner": "lead",
+      "generationMethod": "generated by scripts/build-marea-design-tokens.mjs",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-05 (freshness); documentation D06/D13",
+      "exists": true
+    },
+    {
+      "file": "component-registry.json",
+      "contractId": "MC17-COMPONENT-REGISTRY",
+      "contractVersion": "1.0.0",
+      "owner": "lead",
+      "generationMethod": "authored from the implementation; machine-validated by scripts/check-marea-design-system.mjs",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-12, MC17-13, MC17-14, MC17-15",
+      "exists": true
+    },
+    {
+      "file": "component-states.json",
+      "contractId": "MC17-COMPONENT-STATES",
+      "contractVersion": "1.0.0",
+      "owner": "lead",
+      "generationMethod": "generated by scripts/build-marea-design-system-catalogue-data.mjs from component-registry.json",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-14",
+      "exists": true
+    },
+    {
+      "file": "accessibility-requirements.json",
+      "contractId": "MC17-ACCESSIBILITY-REQUIREMENTS",
+      "contractVersion": "1.0.0",
+      "owner": "programme-docs",
+      "generationMethod": "manual authoring from the implementation, tests and datasets",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-38",
+      "exists": true
+    },
+    {
+      "file": "contrast-evidence.json",
+      "contractId": "MC17-CONTRAST-EVIDENCE",
+      "contractVersion": "1.0.0",
+      "owner": "lead",
+      "generationMethod": "generated by scripts/check-marea-design-system.mjs from declared token values",
+      "status": "PASS",
+      "consumedBy": "produced by MC17-04; evidence for D05/D12",
+      "exists": true
+    },
+    {
+      "file": "responsive-evidence.json",
+      "contractId": "MC17-RESPONSIVE-EVIDENCE",
+      "contractVersion": "1.0.0",
+      "owner": "documentation-specialist (MC-17/36)",
+      "generationMethod": "authored from the recorded responsive.spec.ts run and its retained screenshots",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-36",
+      "exists": true
+    },
+    {
+      "file": "performance-evidence.json",
+      "contractId": "MC17-PERFORMANCE-EVIDENCE",
+      "contractVersion": "1.0.0",
+      "owner": "documentation-specialist (MC-17/36)",
+      "generationMethod": "authored from the actual output of npm run test:performance and measured dist sizes",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-36",
+      "exists": true
+    },
+    {
+      "file": "visual-regression-evidence.json",
+      "contractId": "MC17-VISUAL-REGRESSION-EVIDENCE",
+      "contractVersion": "1.0.0",
+      "owner": "documentation-specialist (MC-17/36)",
+      "generationMethod": "authored from the recorded visual.spec.ts run and the 26 committed baselines",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-36",
+      "exists": true
+    },
+    {
+      "file": "commerce-presentation-policy.json",
+      "contractId": "MC17-COMMERCE-PRESENTATION-POLICY",
+      "contractVersion": "1.0.0",
+      "owner": "programme-docs",
+      "generationMethod": "manual authoring from the adapter, components and validator",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-19, MC17-20 (code mirror, not read directly)",
+      "exists": true
+    },
+    {
+      "file": "locale-parity.json",
+      "contractId": "MC17-LOCALE-PARITY",
+      "contractVersion": "1.0.0",
+      "owner": "programme-docs",
+      "generationMethod": "manual authoring from core/i18n.ts and the routing contract",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-25, MC17-26",
+      "exists": true
+    },
+    {
+      "file": "asset-provenance.json",
+      "contractId": "MC17-ASSET-PROVENANCE",
+      "contractVersion": "1.0.0",
+      "owner": "documentation-specialist (MC-17/36)",
+      "generationMethod": "authored by hand from directory listings and file counts",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-34",
+      "exists": true
+    },
+    {
+      "file": "legacy-ui-baseline.json",
+      "contractId": "MC17-LEGACY-UI-BASELINE",
+      "contractVersion": "1.0.0",
+      "owner": "lead",
+      "generationMethod": "generated by scripts/build-marea-design-system-baseline.mjs from the Git object database at 6d8287c8507038c4f90fd6e35471f78081ca4676",
+      "status": "INTERNAL_PROPOSED",
+      "consumedBy": "MC17-11, MC17-28, MC17-30",
+      "exists": true
+    },
+    {
+      "file": "blocker-register.json",
+      "contractId": "MC17-BLOCKER-REGISTER",
+      "contractVersion": "1.0.0",
+      "owner": "documentation-specialist (MC-17/36)",
+      "generationMethod": "authored by hand from cited source documents and the recorded validator run",
+      "status": "OPEN",
+      "consumedBy": "MC17-32",
+      "exists": true
+    },
+    {
+      "file": "mc18-handoff-inputs.json",
+      "contractId": "MC17-MC18-HANDOFF-INPUTS",
+      "contractVersion": "1.0.0",
+      "owner": "documentation-specialist (MC-17/36)",
+      "generationMethod": "authored by hand from implementation and datasets",
+      "status": "READY_WITH_NAMED_GAPS",
+      "consumedBy": "MC17-33",
+      "exists": true
+    },
+    {
+      "file": "review-findings.json",
+      "contractId": "MC17-REVIEW-FINDINGS",
+      "contractVersion": "1.0.0",
+      "owner": "independent reviewer (D22)",
+      "generationMethod": "to be authored by the independent reviewer; not generated by this package",
+      "status": "PENDING",
+      "consumedBy": "MC17-36",
+      "exists": false
+    }
+  ],
+  "documents": [
+    {
+      "id": "D01",
+      "file": "MC-17-BASELINE-AND-GOVERNANCE.md",
+      "title": "Baseline and governance",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D02",
+      "file": "MC17-DESIGN-SYSTEM-ARCHITECTURE.md",
+      "title": "Design-system architecture",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D03",
+      "file": "MC17-CURRENT-WEBSITE-STYLE-INVENTORY.md",
+      "title": "Current website style inventory",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D04",
+      "file": "MC17-MC04-TOKEN-RECONCILIATION.md",
+      "title": "MC-04 token reconciliation",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D05",
+      "file": "MC17-COLOR-MODES-AND-CONTRAST.md",
+      "title": "Colour modes and contrast",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D06",
+      "file": "MC17-TYPOGRAPHY-SPACING-AND-LAYOUT.md",
+      "title": "Typography, spacing and layout",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D07",
+      "file": "MC17-ICONOGRAPHY-AND-ASSET-PROVENANCE.md",
+      "title": "Iconography and asset provenance",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D08",
+      "file": "MC17-ANGULAR-COMPONENT-ARCHITECTURE.md",
+      "title": "Angular component architecture",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D09",
+      "file": "MC17-COMPONENT-API-AND-STATE-CONTRACTS.md",
+      "title": "Component API and state contracts",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D10",
+      "file": "MC17-PRODUCT-EDITION-BUNDLE-PRESENTATION.md",
+      "title": "Product, edition and bundle presentation",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D11",
+      "file": "MC17-COMMERCIAL-CTA-AND-READINESS-POLICY.md",
+      "title": "Commercial CTA and readiness policy",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D12",
+      "file": "MC17-ACCESSIBILITY-WCAG22-AUDIT.md",
+      "title": "Accessibility WCAG 2.2 AA audit",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D13",
+      "file": "MC17-RESPONSIVE-BEHAVIOR-AND-VISUAL-TESTING.md",
+      "title": "Responsive behaviour and visual testing",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D14",
+      "file": "MC17-PERFORMANCE-AND-SSR-HYDRATION.md",
+      "title": "Performance and SSR/hydration",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D15",
+      "file": "MC17-BILINGUAL-PRESENTATION-CONTRACT.md",
+      "title": "Bilingual presentation contract",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D16",
+      "file": "MC17-INTERNAL-COMPONENT-CATALOGUE.md",
+      "title": "Internal component catalogue",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D17",
+      "file": "MC17-LEGACY-UI-NON-REGRESSION.md",
+      "title": "Legacy UI non-regression",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D18",
+      "file": "MC17-RISKS-AND-UNRESOLVED-GAPS.md",
+      "title": "Risks and unresolved gaps",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D19",
+      "file": "MC17-MC18-HANDOFF.md",
+      "title": "MC-18 handoff",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D20",
+      "file": "MC17-MACHINE-READABLE-CONTRACTS.md",
+      "title": "Machine-readable contracts",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D21",
+      "file": "MC17-VALIDATOR-AND-ADVERSARIAL-EVIDENCE.md",
+      "title": "Validator and adversarial evidence",
+      "status": "PRESENT"
+    },
+    {
+      "id": "D22",
+      "file": "MC17-INDEPENDENT-REVIEW.md",
+      "title": "Independent review",
+      "status": "PENDING"
+    },
+    {
+      "id": "D23",
+      "file": "MC17-SPANISH-EXECUTIVE-REPORT.md",
+      "title": "Spanish executive report",
+      "status": "PENDING"
+    },
+    {
+      "id": "D24",
+      "file": "MC17-FINAL-DELIVERY-RECORD.md",
+      "title": "Final delivery record",
+      "status": "PENDING"
+    }
+  ]
+}

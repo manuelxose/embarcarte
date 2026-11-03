@@ -5,7 +5,7 @@ import type { MareaCommercialPresentation, MareaDefinitionStatus, MareaEditionSu
 import { MareaStatusBadge } from '../foundation/marea-status-badge';
 import { MareaSurface } from '../foundation/marea-surface';
 import { MareaText } from '../foundation/marea-text';
-import { MareaCommerceCta } from './marea-commerce-cta';
+import { MareaCommercialCta } from './marea-commercial-cta';
 import { MareaPriceUnavailable } from './marea-price-unavailable';
 import { MareaStockUnavailable } from './marea-stock-unavailable';
 
@@ -33,7 +33,7 @@ const DEFINITION_COPY: Readonly<Record<MareaDefinitionStatus, MareaCopyKey>> = {
     MareaStatusBadge,
     MareaSurface,
     MareaText,
-    MareaCommerceCta,
+    MareaCommercialCta,
     MareaPriceUnavailable,
     MareaStockUnavailable,
   ],
@@ -53,7 +53,7 @@ const DEFINITION_COPY: Readonly<Record<MareaDefinitionStatus, MareaCopyKey>> = {
             {{ i18n.text('installationPackage') }} · {{ i18n.text('ctaQuoteOnly') }}
           </p>
         }
-        <marea-commerce-cta [presentation]="presentation()" />
+        <marea-commercial-cta [presentation]="presentation()" />
         <marea-price-unavailable />
         <marea-stock-unavailable />
       </article>
@@ -61,7 +61,8 @@ const DEFINITION_COPY: Readonly<Record<MareaDefinitionStatus, MareaCopyKey>> = {
   `,
   styles: `
     :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .card { display: grid; gap: var(--marea-space-3); min-inline-size: 0; }
+    .card { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-3); min-inline-size: 0; }
     .head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--marea-space-2); }
     .title, .type, .limitation { margin: 0; }
     .type { overflow-wrap: anywhere; }

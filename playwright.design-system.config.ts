@@ -26,7 +26,7 @@ export default defineConfig({
   reporter: [['list'], ['json', { outputFile: 'test-results/design-system/results.json' }]],
   use: {
     baseURL: 'http://127.0.0.1:4301',
-    trace: 'retain-on-failure',
+    trace: 'off',
     screenshot: 'only-on-failure',
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],

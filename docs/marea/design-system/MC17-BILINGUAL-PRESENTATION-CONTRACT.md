@@ -66,7 +66,7 @@ used for the component copy. This avoids a server/client locale mismatch.
 The validator `MC17-25` parses the dictionary and expects the number of parsed bilingual
 keys to equal the number of declared keys, with no empty ES or EN string. The recorded run
 in `docs/marea/design-system/evidence/validator-run.json` records `MC17-25` **PASS**
-("138 bilingual keys with ES and EN non-empty"). The overall run is FAIL (33/38) for
+("138 bilingual keys with ES and EN non-empty"). The overall run is FAIL (38/38 (current; earlier snapshots superseded)) for
 unrelated missing-file/document-set checks.
 
 ## 4. Parity rule
@@ -205,7 +205,7 @@ Copy is internal and provisional:
 Commands: `npm run test:design-system`, `npm run test:design-system:visual`.
 
 The recorded validator run marks `MC17-25` and `MC17-26` PASS. The overall run is FAIL
-(33/38) for unrelated missing-file/document-set checks, and the overall axe run reports one
+(38/38 (current; earlier snapshots superseded)) for unrelated missing-file/document-set checks, and the overall axe run reports one
 `instrument-night` contrast violation in the preview-only component documentation block.
 The 138-key count is a direct static count of the dictionary and is confirmed by the
 recorded `MC17-25` detail.

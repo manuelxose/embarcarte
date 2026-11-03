@@ -38,6 +38,7 @@ const KIND_ICON: Readonly<Record<MareaStateKind, MareaIconName>> = {
   styles: `
     :host {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       justify-items: center;
       gap: var(--marea-space-2);
       padding: var(--marea-space-8) var(--marea-space-4);
@@ -49,7 +50,7 @@ const KIND_ICON: Readonly<Record<MareaStateKind, MareaIconName>> = {
     }
     :host(.marea-state-panel--error) { border-style: solid; border-color: var(--marea-state-critical); }
     .title { margin: 0; font-family: var(--marea-font-display); font-weight: 700; font-size: var(--marea-type-heading-size); }
-    .description { margin: 0; max-inline-size: var(--marea-measure); color: var(--marea-text-secondary); }
+    .description { margin: 0; max-inline-size: var(--marea-measure); overflow-wrap: break-word; color: var(--marea-text-secondary); }
     .actions:empty { display: none; }
   `,
 })

@@ -90,6 +90,7 @@ import { MareaFreshness } from './marea-freshness';
     }
     dl {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       grid-template-columns: minmax(0, auto) minmax(0, 1fr);
       gap: var(--marea-space-2) var(--marea-space-4);
       margin: 0;

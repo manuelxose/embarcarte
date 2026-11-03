@@ -1,0 +1,386 @@
+{
+  "contractId": "MC17-PERFORMANCE-EVIDENCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "documentation-specialist (MC-17/36)",
+  "generationMethod": "authored from the actual output of npm run test:performance (scripts/check-performance.mjs), the written artifacts/performance/m04-performance.json, and raw file sizes measured in dist/embarcarte/browser and dist/marea-ds-catalogue/browser",
+  "scope": "Laboratory performance measurement of the existing production application at three paths on desktop and emulated mobile, production and catalogue build sizes, the design system's zero-byte production contribution, dependency state, and static SSR/hydration safety checks.",
+  "measurement": {
+    "command": "npm run test:performance",
+    "resolvedCommand": "node scripts/check-performance.mjs",
+    "exitCode": 0,
+    "measuredAt": "2026-11-03T02:11:59.677Z",
+    "tool": "Playwright Chromium, cold cache via CDP; mobile: 4x CPU, 150ms latency, 1.6 Mbps down; desktop: unthrottled",
+    "nature": "single laboratory run; no thresholds, no CI gate, no field data",
+    "outputFile": "artifacts/performance/m04-performance.json",
+    "paths": [
+      "/",
+      "/en/shop",
+      "/en/shop/e2e-hub"
+    ],
+    "results": [
+      {
+        "path": "/",
+        "device": "desktop-1440x900",
+        "status": 200,
+        "wall_ms": 3500,
+        "ttfb_ms": 193.80000001192093,
+        "dom_content_loaded_ms": 433,
+        "load_ms": 434.80000001192093,
+        "fcp_ms": 352,
+        "lcp_ms": 360,
+        "lcp_element": "div.home-hero-image",
+        "cls": 0.0018043787575552984,
+        "long_tasks": 1,
+        "long_task_ms": 56,
+        "js_transfer_bytes": 467403,
+        "css_transfer_bytes": 25715,
+        "image_transfer_bytes": 80724,
+        "font_transfer_bytes": 62368,
+        "dom_nodes": 231,
+        "language_switch_ms": 68,
+        "observed_interaction_ms": null
+      },
+      {
+        "path": "/en/shop",
+        "device": "desktop-1440x900",
+        "status": 200,
+        "wall_ms": 3517,
+        "ttfb_ms": 169.70000004768372,
+        "dom_content_loaded_ms": 471.9000000357628,
+        "load_ms": 473.80000001192093,
+        "fcp_ms": 356,
+        "lcp_ms": 356,
+        "lcp_element": "h1.display h-xl",
+        "cls": 0.0006765076772012174,
+        "long_tasks": 1,
+        "long_task_ms": 57,
+        "js_transfer_bytes": 467056,
+        "css_transfer_bytes": 25715,
+        "image_transfer_bytes": 6236,
+        "font_transfer_bytes": 62368,
+        "dom_nodes": 322,
+        "language_switch_ms": 68,
+        "observed_interaction_ms": null
+      },
+      {
+        "path": "/en/shop/e2e-hub",
+        "device": "desktop-1440x900",
+        "status": 200,
+        "wall_ms": 3327,
+        "ttfb_ms": 47.299999952316284,
+        "dom_content_loaded_ms": 248.29999995231628,
+        "load_ms": 249.79999995231628,
+        "fcp_ms": 184,
+        "lcp_ms": 184,
+        "lcp_element": "h1.display h-md",
+        "cls": 0.0007299699529535323,
+        "long_tasks": 1,
+        "long_task_ms": 57,
+        "js_transfer_bytes": 468599,
+        "css_transfer_bytes": 25715,
+        "image_transfer_bytes": 0,
+        "font_transfer_bytes": 62368,
+        "dom_nodes": 173,
+        "language_switch_ms": 67,
+        "observed_interaction_ms": null
+      },
+      {
+        "path": "/",
+        "device": "mobile-390x844-4x-cpu-1.6Mbps",
+        "status": 200,
+        "wall_ms": 7609,
+        "ttfb_ms": 5.099999964237213,
+        "dom_content_loaded_ms": 4507.199999988079,
+        "load_ms": 4521.699999988079,
+        "fcp_ms": 368,
+        "lcp_ms": 1392,
+        "lcp_element": "div.home-hero-image",
+        "cls": 0.00009075773230610273,
+        "long_tasks": 2,
+        "long_task_ms": 653,
+        "js_transfer_bytes": 467403,
+        "css_transfer_bytes": 25715,
+        "image_transfer_bytes": 80724,
+        "font_transfer_bytes": 62368,
+        "dom_nodes": 231,
+        "language_switch_ms": 442,
+        "observed_interaction_ms": 56
+      },
+      {
+        "path": "/en/shop",
+        "device": "mobile-390x844-4x-cpu-1.6Mbps",
+        "status": 200,
+        "wall_ms": 7049,
+        "ttfb_ms": 58.40000003576279,
+        "dom_content_loaded_ms": 3754.5,
+        "load_ms": 3773.900000035763,
+        "fcp_ms": 324,
+        "lcp_ms": 744,
+        "lcp_element": "h1.display h-xl",
+        "cls": 0.0001966120568858603,
+        "long_tasks": 4,
+        "long_task_ms": 826,
+        "js_transfer_bytes": 467056,
+        "css_transfer_bytes": 25715,
+        "image_transfer_bytes": 6236,
+        "font_transfer_bytes": 62368,
+        "dom_nodes": 322,
+        "language_switch_ms": 425,
+        "observed_interaction_ms": 64
+      },
+      {
+        "path": "/en/shop/e2e-hub",
+        "device": "mobile-390x844-4x-cpu-1.6Mbps",
+        "status": 200,
+        "wall_ms": 6902,
+        "ttfb_ms": 37.5,
+        "dom_content_loaded_ms": 3795,
+        "load_ms": 3806.2000000476837,
+        "fcp_ms": 308,
+        "lcp_ms": 704,
+        "lcp_element": "p.price",
+        "cls": 0.0002530855820200666,
+        "long_tasks": 3,
+        "long_task_ms": 870,
+        "js_transfer_bytes": 468599,
+        "css_transfer_bytes": 25715,
+        "image_transfer_bytes": 0,
+        "font_transfer_bytes": 62368,
+        "dom_nodes": 173,
+        "language_switch_ms": 387,
+        "observed_interaction_ms": 56
+      }
+    ]
+  },
+  "coreWebVitalsContext": {
+    "targetsNotClaims": {
+      "lcpMs": 2500,
+      "cls": 0.1,
+      "inpMs": 200,
+      "ttfbDiagnosticMs": 800
+    },
+    "observedRange": {
+      "desktopLcpMs": [
+        184,
+        360
+      ],
+      "mobileLcpMs": [
+        704,
+        1392
+      ],
+      "maxCls": 0.0018043787575552984,
+      "observedInteractionMs": [
+        56,
+        64
+      ],
+      "desktopObservedInteraction": null
+    },
+    "statement": "In this single laboratory run every LCP is below 2.5s, every CLS is far below 0.1 and observed mobile interactions are below 200ms. This is not a field INP measurement, not a representative sample and not a performance claim."
+  },
+  "productionBuild": {
+    "command": "npx ng build embarcarte",
+    "exitCode": 0,
+    "basis": "Lead-recorded build state; dist/embarcarte was present at authoring, so the build was not re-run by this documentation task",
+    "browserOutput": {
+      "directory": "dist/embarcarte/browser",
+      "files": 168,
+      "rawBytes": 3032053,
+      "byExtension": {
+        "html": {
+          "files": 97,
+          "rawBytes": 1847298,
+          "gzipBytesLevel9": 591359
+        },
+        "js": {
+          "files": 47,
+          "rawBytes": 637563,
+          "gzipBytesLevel9": 215802
+        },
+        "css": {
+          "files": 1,
+          "rawBytes": 25415,
+          "gzipBytesLevel9": 6456
+        },
+        "png": {
+          "files": 4,
+          "rawBytes": 297154
+        },
+        "woff2": {
+          "files": 8,
+          "rawBytes": 130132
+        },
+        "webp": {
+          "files": 7,
+          "rawBytes": 78624
+        },
+        "ico": {
+          "files": 1,
+          "rawBytes": 15086
+        },
+        "webmanifest": {
+          "files": 1,
+          "rawBytes": 354,
+          "gzipBytesLevel9": 206
+        },
+        "svg": {
+          "files": 1,
+          "rawBytes": 338,
+          "gzipBytesLevel9": 213
+        },
+        "txt": {
+          "files": 1,
+          "rawBytes": 89,
+          "gzipBytesLevel9": 99
+        }
+      },
+      "gzipNote": "gzip values were computed with Node zlib.gzipSync(...,{level:9}) over the current files; they are not emitted by the build. Raw bytes are authoritative.",
+      "jsCssRawBytes": 662978,
+      "jsCssGzipBytesLevel9": 222258,
+      "namedAssets": {
+        "mainJs": {
+          "file": "main-RFVWCSHZ.js",
+          "rawBytes": 12870,
+          "gzipBytesDefault": 3905
+        },
+        "stylesCss": {
+          "file": "styles-4YSTMKXD.css",
+          "rawBytes": 25415,
+          "gzipBytesDefault": 6481,
+          "gzipBytesLevel9": 6456
+        }
+      }
+    },
+    "serverOutput": {
+      "serverMjsBytes": 1269637,
+      "indexServerHtmlBytes": 1962,
+      "outputMode": "server",
+      "ssrEntry": "src/server.ts"
+    }
+  },
+  "catalogueBuild": {
+    "project": "marea-design-system-catalogue",
+    "directory": "dist/marea-ds-catalogue/browser",
+    "configuration": "development (optimization: false, sourceMap: true; defaultConfiguration development)",
+    "files": 60,
+    "rawBytes": 4550963,
+    "mainJs": {
+      "rawBytes": 1793363,
+      "gzipBytesLevel9": 324179
+    },
+    "stylesCss": {
+      "rawBytes": 11447,
+      "gzipBytesLevel9": 2576
+    },
+    "mainJsMapBytes": 2632805,
+    "otherMapBytes": 112726,
+    "indexHtml": {
+      "rawBytes": 622,
+      "gzipBytesLevel9": 374
+    },
+    "note": "Unoptimized internal catalogue build; not a shipped payload and not directly comparable to the production bundle."
+  },
+  "designSystemContribution": {
+    "bytes": 0,
+    "basis": "No production entry point imports the design system, and the production browser build scan found no design-system or catalogue identifier.",
+    "productionEntryFilesChecked": 5,
+    "productionBuildFilesScanned": 168,
+    "identifiersSearched": [
+      "marea-design-system",
+      "marea-ds-catalogue",
+      "MareaTheme",
+      "marea-theme"
+    ],
+    "validatorChecks": [
+      "MC17-07",
+      "MC17-08",
+      "MC17-09",
+      "MC17-10"
+    ],
+    "caveat": "An absence-of-import conclusion corroborated by a string scan, not a per-module byte diff."
+  },
+  "dependencies": {
+    "newRuntimeDependencies": 0,
+    "designSystemRuntimeImports": [
+      "@angular/core",
+      "@angular/common",
+      "local type-only modules"
+    ],
+    "fonts": [
+      "@fontsource-variable/manrope",
+      "@fontsource-variable/dm-sans"
+    ],
+    "testTooling": [
+      "@playwright/test",
+      "@axe-core/playwright"
+    ],
+    "statement": "No runtime dependency was added for the design system. Test tooling is in devDependencies and is not shipped."
+  },
+  "ssrHydration": {
+    "productionSsrBuildPresent": true,
+    "designSystemRenderedThroughProductionSsr": false,
+    "dsRenderedThroughProductionSsrReason": "By design: the catalogue is a browser-only Angular project with no server/ssr entry, and the production app does not import the DS.",
+    "staticContractSuite": {
+      "spec": "e2e/design-system/ssr-contract.spec.ts",
+      "tests": 5,
+      "recordedStatus": "passed"
+    },
+    "sourceScan": {
+      "window": 0,
+      "document": 0,
+      "localStorage": 0,
+      "sessionStorage": 0,
+      "matchMedia": 0,
+      "navigator": 0,
+      "MathRandom": 0,
+      "DateNow": 0,
+      "newDate": 0,
+      "effectCalls": 0,
+      "afterNextRender": 0,
+      "timers": 0
+    },
+    "deterministicIds": {
+      "service": "src/app/marea-design-system/core/ids.ts",
+      "pattern": "marea-<prefix>-<n>",
+      "injectedByComponentFiles": 9,
+      "note": "marea-form-field now injects MareaIds; D08's recorded fieldSequence defect has 0 occurrences in the current tree."
+    },
+    "notVerified": [
+      "No server-render to client-hydrate comparison of design-system markup.",
+      "No hydration mismatch, warning or interaction-replay test.",
+      "The design system is not rendered through the production SSR server.",
+      "Static API-absence checks do not prove that a future composition will hydrate correctly."
+    ]
+  },
+  "knownLimitations": [
+    "Single laboratory run: no CrUX/RUM, real users, real devices or real networks.",
+    "The six measured pages are the public app, not the design-system catalogue; the 0-byte DS contribution is established by import analysis, not by this measurement.",
+    "Network and CPU are emulated; a mobile user-agent string is not a phone.",
+    "Cache is disabled, so repeat-visit performance is not measured.",
+    "wall_ms includes a deliberate 2.5s settle and is not a page-load metric.",
+    "observed_interaction_ms is the largest event-timing entry from one language-switch click, not field INP; desktop produced no entry.",
+    "Gzip sizes were computed at level 9 by the author and are not emitted by the build.",
+    "Build sizes depend on the toolchain and can change; the catalogue is an unoptimized development build.",
+    "No performance budget is enforced and this measurement is not a CI gate.",
+    "No design-system SSR/hydration run exists; the production SSR build was recorded by the Lead, not re-run here."
+  ],
+  "commands": [
+    "npm run test:performance",
+    "npx ng build embarcarte (recorded exit 0; not re-run because dist was present)",
+    "npx ng build marea-design-system-catalogue (recorded build producing dist/marea-ds-catalogue)"
+  ],
+  "sourceRefs": [
+    "scripts/check-performance.mjs",
+    "scripts/e2e-server.mjs",
+    "artifacts/performance/m04-performance.json",
+    "dist/embarcarte/browser",
+    "dist/embarcarte/server/server.mjs",
+    "dist/marea-ds-catalogue/browser",
+    "angular.json",
+    "package.json",
+    "e2e/design-system/ssr-contract.spec.ts",
+    "docs/marea/design-system/evidence/validator-run.json",
+    "docs/marea/design-system/MC17-PERFORMANCE-AND-SSR-HYDRATION.md"
+  ]
+}

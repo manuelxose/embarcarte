@@ -16,6 +16,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   styles: `
     :host {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--marea-grid-min, 240px)), 1fr));
       gap: var(--marea-gutter-md, 24px);
       align-items: start;

@@ -15,8 +15,8 @@
   ],
   "executedAtUtc": "deterministic-runT00:00:00.000Z",
   "checkCount": 38,
-  "passed": 35,
-  "failed": 3,
+  "passed": 37,
+  "failed": 1,
   "checks": [
     {
       "id": "MC17-01",
@@ -245,8 +245,8 @@
     {
       "id": "MC17-33",
       "description": "MC-18 has not started",
-      "status": "FAIL",
-      "detail": "started=undefined files=",
+      "status": "PASS",
+      "detail": "MC18_STARTED=false and no MC-18 implementation files",
       "evidence": null
     },
     {
@@ -260,14 +260,14 @@
       "id": "MC17-35",
       "description": "Required documentation deliverables exist",
       "status": "FAIL",
-      "detail": "missing: MC17-DESIGN-SYSTEM-ARCHITECTURE.md, MC17-TYPOGRAPHY-SPACING-AND-LAYOUT.md, MC17-ICONOGRAPHY-AND-ASSET-PROVENANCE.md, MC17-ANGULAR-COMPONENT-ARCHITECTURE.md, MC17-COMPONENT-API-AND-STATE-CONTRACTS.md, MC17-ACCESSIBILITY-WCAG22-AUDIT.md, MC17-RESPONSIVE-BEHAVIOR-AND-VISUAL-TESTING.md, MC17-PERFORMANCE-AND-SSR-HYDRATION.md, MC17-MC18-HANDOFF.md, MC17-MACHINE-READABLE-CONTRACTS.md, MC17-VALIDATOR-AND-ADVERSARIAL-EVIDENCE.md, MC17-INDEPENDENT-REVIEW.md, MC17-SPANISH-EXECUTIVE-REPORT.md, MC17-FINAL-DELIVERY-RECORD.md",
+      "detail": "missing: MC17-SPANISH-EXECUTIVE-REPORT.md, MC17-FINAL-DELIVERY-RECORD.md",
       "evidence": null
     },
     {
       "id": "MC17-36",
       "description": "Required machine-readable datasets exist and declare their governance metadata",
-      "status": "FAIL",
-      "detail": "manifest.json: missing | responsive-evidence.json: missing | performance-evidence.json: missing | visual-regression-evidence.json: missing | review-findings.json: missing",
+      "status": "PASS",
+      "detail": "20 datasets valid",
       "evidence": null
     },
     {

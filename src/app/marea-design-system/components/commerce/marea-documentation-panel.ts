@@ -50,10 +50,13 @@ const DOCUMENT_COPY: Readonly<Record<MareaDocumentationStatus, MareaCopyKey>> = 
   `,
   styles: `
     :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .documentation { display: grid; gap: var(--marea-space-3); min-inline-size: 0; }
+    .documentation { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-3); min-inline-size: 0; }
     .heading, .family, .kind, .limitation { margin: 0; }
-    .documents { display: grid; gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
-    .document { display: grid; gap: var(--marea-space-1); min-inline-size: 0; }
+    .documents { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
+    .document { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-1); min-inline-size: 0; }
     .document-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--marea-space-2); }
     .document-title { font-weight: 600; overflow-wrap: anywhere; }
     .kind { overflow-wrap: anywhere; }

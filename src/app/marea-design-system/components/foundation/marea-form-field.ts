@@ -38,7 +38,8 @@ import { MareaIds } from '../../core/ids';
     }
   `,
   styles: `
-    :host { display: grid; gap: var(--marea-space-1); min-inline-size: 0; }
+    :host { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-1); min-inline-size: 0; }
     .label { font-family: var(--marea-font-body); font-size: var(--marea-type-label-size); font-weight: 700; color: var(--marea-text-primary); }
     .required { color: var(--marea-state-critical); }
     .hint { margin: 0; font-size: var(--marea-type-body-small-size); color: var(--marea-text-secondary); }

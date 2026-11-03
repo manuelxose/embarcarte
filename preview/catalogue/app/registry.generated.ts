@@ -3393,13 +3393,13 @@ export const COMPONENT_REGISTRY: readonly MareaRegistryComponent[] = [
     "usage": "<marea-stock-unavailable stockState=\"MC16_STATUS\" />"
   },
   {
-    "componentId": "marea-commerce-cta",
-    "componentName": "MareaCommerceCta",
+    "componentId": "marea-commercial-cta",
+    "componentName": "MareaCommercialCta",
     "version": "1.0.0",
     "status": "INTERNAL_READY",
     "implementationKind": "angular-component",
-    "implementationPath": "src/app/marea-design-system/components/commerce/marea-commerce-cta.ts",
-    "selector": "marea-commerce-cta",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-commercial-cta.ts",
+    "selector": "marea-commercial-cta",
     "purpose": "Explains the derived CTA state and blocked commercial signals without rendering an action. It must never render a button, link or purchasable state.",
     "semanticElement": "Custom element with a status badge, explanatory <p> lines and critical notices; no button, anchor or role=button.",
     "inputs": [
@@ -3456,7 +3456,7 @@ export const COMPONENT_REGISTRY: readonly MareaRegistryComponent[] = [
     "knownLimitations": [
       "The CTA state is sanitized from the presentation; a blocked or invalid state can never produce an action."
     ],
-    "usage": "<marea-commerce-cta [presentation]=\"presentation\" />"
+    "usage": "<marea-commercial-cta [presentation]=\"presentation\" />"
   },
   {
     "componentId": "marea-quote-status",

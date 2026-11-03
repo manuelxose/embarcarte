@@ -1,0 +1,179 @@
+{
+  "contractId": "MC17-RESPONSIVE-EVIDENCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "documentation-specialist (MC-17/36)",
+  "generationMethod": "authored from the recorded e2e/design-system/responsive.spec.ts run, its six retained screenshots and test-results/design-system/artifacts/.last-run.json; no responsive test was re-run for this dataset",
+  "scope": "Responsive behaviour of the internal MC-17 catalogue at six widths and 200% text scaling: page overflow, table scroll regions, clipping, control overlap, the found-and-fixed grid defect, and the limits of the evidence.",
+  "recordedRun": {
+    "config": "playwright.design-system.config.ts",
+    "spec": "e2e/design-system/responsive.spec.ts",
+    "testsInSpec": 2,
+    "totalTestsAcrossSuite": 28,
+    "finalStatus": "passed",
+    "finalStatusEvidence": "test-results/design-system/artifacts/.last-run.json",
+    "finalStatusContent": {
+      "status": "passed",
+      "failedTests": []
+    },
+    "reporterCaveat": "test-results/design-system/results.json retains 28 skipped entries with zero results from the same run; it is a reporter artifact. The completion record is .last-run.json plus the generated screenshots and axe summary.",
+    "browser": "Chromium (Playwright Desktop Chrome)",
+    "operatingSystem": "Windows",
+    "viewHeight": 900,
+    "catalogueUrl": "http://127.0.0.1:4301"
+  },
+  "widths": [
+    {
+      "width": 320,
+      "height": 900,
+      "purpose": "WCAG 1.4.10 reflow floor and narrowest supported phone; original overflow defect width",
+      "assertions": [
+        "documentElement.scrollWidth <= innerWidth + 2",
+        "every table inside a labelled focusable scrollable region",
+        "no clipped headings/paragraphs",
+        "no clipped or overlapping controls at 200% text"
+      ],
+      "result": "PASS (recorded run)",
+      "screenshot": "test-results/design-system/responsive-320.png",
+      "screenshotBytes": 39819
+    },
+    {
+      "width": 360,
+      "height": 900,
+      "purpose": "Common small-Android width; confirms 320-only fixes are not width-hardcoded",
+      "assertions": [
+        "same four responsive assertions"
+      ],
+      "result": "PASS (recorded run)",
+      "screenshot": "test-results/design-system/responsive-360.png",
+      "screenshotBytes": 42938
+    },
+    {
+      "width": 390,
+      "height": 900,
+      "purpose": "Reference modern phone width (also the performance profile width)",
+      "assertions": [
+        "same four responsive assertions"
+      ],
+      "result": "PASS (recorded run)",
+      "screenshot": "test-results/design-system/responsive-390.png",
+      "screenshotBytes": 43382
+    },
+    {
+      "width": 768,
+      "height": 900,
+      "purpose": "Tablet / two-column boundary; definition and specification layouts collapse",
+      "assertions": [
+        "same four responsive assertions"
+      ],
+      "result": "PASS (recorded run)",
+      "screenshot": "test-results/design-system/responsive-768.png",
+      "screenshotBytes": 55895
+    },
+    {
+      "width": 1024,
+      "height": 900,
+      "purpose": "Navigation breakpoint: toggle hidden, horizontal list visible",
+      "assertions": [
+        "same four responsive assertions"
+      ],
+      "result": "PASS (recorded run)",
+      "screenshot": "test-results/design-system/responsive-1024.png",
+      "screenshotBytes": 58340
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "purpose": "Desktop reference width also used by the visual baselines",
+      "assertions": [
+        "same four responsive assertions"
+      ],
+      "result": "PASS (recorded run)",
+      "screenshot": "test-results/design-system/responsive-1440.png",
+      "screenshotBytes": 62732
+    }
+  ],
+  "textScaling": {
+    "method": "inject html { font-size: 200% !important; } at each width, wait two frames, remove in finally",
+    "widths": [
+      320,
+      360,
+      390,
+      768,
+      1024,
+      1440
+    ],
+    "assertions": [
+      "no page-level horizontal overflow",
+      "every visible button/link stays within the viewport",
+      "no control clips its own content in either axis",
+      "no sibling controls overlap by more than 1px in both axes"
+    ],
+    "result": "PASS (recorded run)",
+    "retainedScreenshots": false,
+    "caveat": "Assertion-level evidence only; no 200% screenshot and no manual browser-zoom review."
+  },
+  "defect": {
+    "id": "MC17-RESPONSIVE-GRID-OVERFLOW",
+    "symptom": "Horizontal page overflow at 320px",
+    "recordedMagnitudePx": 876,
+    "viewportPx": 320,
+    "metric": "document.documentElement.scrollWidth",
+    "cause": "Implicit/auto grid tracks sized to the max-content width of a long child, widening the grid instead of wrapping",
+    "fix": [
+      "explicit minmax(0, 1fr) single-column grid tracks",
+      "overflow-wrap: break-word/anywhere for long unbreakable words",
+      "fluid grids retain repeat(auto-fit, minmax(var(--marea-grid-min), 1fr))"
+    ],
+    "currentVerification": "responsive.spec.ts asserts no overflow at all six widths, with and without 200% text scaling; the six screenshots exist",
+    "provenance": "The 876px magnitude and max-content diagnosis are from the Lead's milestone defect record. The pre-fix tree is not reconstructable here without Git and source changes, so the before-state is recorded, not re-executed; the after-state is verified by the committed assertion.",
+    "status": "FIXED_AND_VERIFIED_BY_RECORDED_RUN"
+  },
+  "screenshotInventory": {
+    "directory": "test-results/design-system",
+    "gitignored": true,
+    "files": [
+      "responsive-320.png",
+      "responsive-360.png",
+      "responsive-390.png",
+      "responsive-768.png",
+      "responsive-1024.png",
+      "responsive-1440.png"
+    ],
+    "count": 6,
+    "note": "Written only after the assertions for that width pass, because the screenshot call follows them in the loop."
+  },
+  "commands": [
+    "npm run build:design-system-preview",
+    "npx playwright test -c playwright.design-system.config.ts e2e/design-system/responsive.spec.ts"
+  ],
+  "knownLimitations": [
+    "Chromium/Windows only; Firefox, WebKit, macOS, Linux, real phones and high-DPI hardware are not covered.",
+    "The responsive test exercises the internal catalogue, not every future consumer composition.",
+    "The 200% check is a scripted font-size override, not a manual browser-zoom or assistive-technology review.",
+    "No cross-browser or real-device claim is made.",
+    "The 876px before-state is a Lead-recorded value and was not reproduced by this documentation task.",
+    "The JSON reporter file does not contain per-test results; the completion status comes from .last-run.json and the retained screenshots."
+  ],
+  "notClaimed": [
+    "No responsive certification.",
+    "No mobile-device compatibility claim.",
+    "No visual approval or brand adoption.",
+    "No accessibility conformance claim."
+  ],
+  "sourceRefs": [
+    "e2e/design-system/responsive.spec.ts",
+    "e2e/design-system/helpers.ts",
+    "playwright.design-system.config.ts",
+    "test-results/design-system/artifacts/.last-run.json",
+    "test-results/design-system/responsive-320.png",
+    "test-results/design-system/responsive-360.png",
+    "test-results/design-system/responsive-390.png",
+    "test-results/design-system/responsive-768.png",
+    "test-results/design-system/responsive-1024.png",
+    "test-results/design-system/responsive-1440.png",
+    "docs/marea/design-system/data/layout-tokens.json",
+    "docs/marea/design-system/MC17-RESPONSIVE-BEHAVIOR-AND-VISUAL-TESTING.md"
+  ]
+}

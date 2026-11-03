@@ -48,11 +48,14 @@ interface MareaEntitlementRow {
   `,
   styles: `
     :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .entitlements { display: grid; gap: var(--marea-space-3); min-inline-size: 0; }
+    .entitlements { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-3); min-inline-size: 0; }
     .heading { margin: 0; }
-    .rows { display: grid; gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
+    .rows { display: grid;
+      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
     .row {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: var(--marea-space-1);
       padding-block-end: var(--marea-space-2);
       border-block-end: var(--marea-border-width-hairline, 1px) solid var(--marea-line);
