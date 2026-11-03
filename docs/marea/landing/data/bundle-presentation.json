@@ -1,0 +1,445 @@
+{
+  "contractId": "MC18-BUNDLE-PRESENTATION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "owner": "MC-18 implementation team",
+  "status": "INTERNAL_PROPOSED",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Read-only presentation projection of the six canonical MC-16 bundle compositions.",
+  "generationMethod": "node scripts/build-marea-landing-data.mjs",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "Solution concepts are internally defined; no price, package price, stock or delivery exists.",
+    "FLEET is a contracted solution with no default hardware and no established SLA.",
+    "Kit expansions are nested on the kit line and never counted twice."
+  ],
+  "data": {
+    "bundles": [
+      {
+        "bundleId": "START",
+        "displayName": "MAREA START",
+        "contractedSolution": false,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false,
+        "compatibilityStatus": "UNTESTED",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "checkoutAllowed": false,
+        "orderable": false,
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "packagePriceEstablished": false,
+        "components": [
+          {
+            "editionId": "HUB-STANDARD",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "NAV-PRO",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          }
+        ],
+        "optionalComponents": [
+          {
+            "editionId": "HUB-PRO",
+            "inclusion": "OPTIONAL",
+            "required": false,
+            "expandsTo": []
+          },
+          {
+            "editionId": "WEATHER-STANDARD",
+            "inclusion": "OPTIONAL",
+            "required": false,
+            "expandsTo": []
+          }
+        ],
+        "contractOnlyEditions": [],
+        "ineligibleEditions": [],
+        "externalRequirements": [
+          "installation",
+          "cabling",
+          "commissioning",
+          "licensed chart or weather data where applicable",
+          "SIM/connectivity where applicable"
+        ],
+        "presentationOnlyNote": "Derived read-only presentation contract. Internally defined solution concept; no price, stock, delivery or orderable state."
+      },
+      {
+        "bundleId": "CRUISE",
+        "displayName": "MAREA CRUISE",
+        "contractedSolution": false,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false,
+        "compatibilityStatus": "UNTESTED",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "checkoutAllowed": false,
+        "orderable": false,
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "packagePriceEstablished": false,
+        "components": [
+          {
+            "editionId": "NAV-ESSENTIAL",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "HUB-STANDARD",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "AIS-RECEIVER",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "DISPLAY-7",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          }
+        ],
+        "optionalComponents": [
+          {
+            "editionId": "AIS-CONNECTED",
+            "inclusion": "CONDITIONAL",
+            "required": false,
+            "expandsTo": []
+          },
+          {
+            "editionId": "NAV-PRO",
+            "inclusion": "OPTIONAL",
+            "required": false,
+            "expandsTo": []
+          },
+          {
+            "editionId": "WEATHER-STANDARD",
+            "inclusion": "OPTIONAL",
+            "required": false,
+            "expandsTo": []
+          }
+        ],
+        "contractOnlyEditions": [],
+        "ineligibleEditions": [
+          {
+            "lineId": "CR-07",
+            "editionId": "DISPLAY-LARGE-CONDITIONAL",
+            "reason": "CONDITIONAL_SIZE_NOT_SELECTABLE"
+          }
+        ],
+        "externalRequirements": [
+          "installation",
+          "cabling",
+          "commissioning",
+          "licensed chart or weather data where applicable",
+          "SIM/connectivity where applicable"
+        ],
+        "presentationOnlyNote": "Derived read-only presentation contract. Internally defined solution concept; no price, stock, delivery or orderable state."
+      },
+      {
+        "bundleId": "SAIL",
+        "displayName": "MAREA SAIL",
+        "contractedSolution": false,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false,
+        "compatibilityStatus": "UNTESTED",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "checkoutAllowed": false,
+        "orderable": false,
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "packagePriceEstablished": false,
+        "components": [
+          {
+            "editionId": "NAV-PRO",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "HUB-STANDARD",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "PILOT-COASTAL",
+            "inclusion": "QUOTATION_REQUIRED",
+            "required": true,
+            "expandsTo": []
+          }
+        ],
+        "optionalComponents": [
+          {
+            "editionId": "SENSE-WIND",
+            "inclusion": "CONDITIONAL",
+            "required": false,
+            "expandsTo": []
+          },
+          {
+            "editionId": "PILOT-SAIL",
+            "inclusion": "CONDITIONAL",
+            "required": false,
+            "expandsTo": []
+          }
+        ],
+        "contractOnlyEditions": [],
+        "ineligibleEditions": [
+          {
+            "lineId": "SL-06",
+            "editionId": "PILOT-PRO",
+            "reason": "INSTALLATION_PACKAGE_NEVER_A_PRICED_SKU_OR_BUNDLE_LINE"
+          }
+        ],
+        "externalRequirements": [
+          "installation",
+          "cabling",
+          "commissioning",
+          "licensed chart or weather data where applicable",
+          "SIM/connectivity where applicable"
+        ],
+        "presentationOnlyNote": "Derived read-only presentation contract. Internally defined solution concept; no price, stock, delivery or orderable state."
+      },
+      {
+        "bundleId": "PROTECT",
+        "displayName": "MAREA PROTECT",
+        "contractedSolution": false,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false,
+        "compatibilityStatus": "UNTESTED",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "checkoutAllowed": false,
+        "orderable": false,
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "packagePriceEstablished": false,
+        "components": [
+          {
+            "editionId": "WATCH-CORE",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "SENSE-ESSENTIALS",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": [
+              "SENSE-POWER",
+              "SENSE-BILGE"
+            ]
+          }
+        ],
+        "optionalComponents": [
+          {
+            "editionId": "WATCH-PLUS",
+            "inclusion": "CONDITIONAL",
+            "required": false,
+            "expandsTo": []
+          },
+          {
+            "editionId": "HUB-STANDARD",
+            "inclusion": "OPTIONAL",
+            "required": false,
+            "expandsTo": []
+          }
+        ],
+        "contractOnlyEditions": [],
+        "ineligibleEditions": [],
+        "externalRequirements": [
+          "installation",
+          "cabling",
+          "commissioning",
+          "licensed chart or weather data where applicable",
+          "SIM/connectivity where applicable"
+        ],
+        "presentationOnlyNote": "Derived read-only presentation contract. Internally defined solution concept; no price, stock, delivery or orderable state."
+      },
+      {
+        "bundleId": "COMPLETE",
+        "displayName": "MAREA COMPLETE",
+        "contractedSolution": false,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false,
+        "compatibilityStatus": "UNTESTED",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "checkoutAllowed": false,
+        "orderable": false,
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "packagePriceEstablished": false,
+        "components": [
+          {
+            "editionId": "NAV-PRO",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "HUB-PRO",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "DISPLAY-7",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "WATCH-CORE",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "SENSE-POWER",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "SENSE-BILGE",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "SENSE-TANKS",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "SENSE-ENV",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          },
+          {
+            "editionId": "PILOT-COASTAL",
+            "inclusion": "QUOTATION_REQUIRED",
+            "required": true,
+            "expandsTo": []
+          }
+        ],
+        "optionalComponents": [
+          {
+            "editionId": "PILOT-SAIL",
+            "inclusion": "CONDITIONAL",
+            "required": false,
+            "expandsTo": []
+          },
+          {
+            "editionId": "AIS-RECEIVER",
+            "inclusion": "OPTIONAL",
+            "required": false,
+            "expandsTo": []
+          },
+          {
+            "editionId": "WEATHER-PRO",
+            "inclusion": "OPTIONAL",
+            "required": false,
+            "expandsTo": []
+          }
+        ],
+        "contractOnlyEditions": [],
+        "ineligibleEditions": [
+          {
+            "lineId": "CP-13",
+            "editionId": "PILOT-PRO",
+            "reason": "INSTALLATION_PACKAGE_NEVER_A_PRICED_SKU_OR_BUNDLE_LINE"
+          },
+          {
+            "lineId": "CP-15",
+            "editionId": "DISPLAY-LARGE-CONDITIONAL",
+            "reason": "CONDITIONAL_SIZE_NOT_SELECTABLE"
+          }
+        ],
+        "externalRequirements": [
+          "installation",
+          "cabling",
+          "commissioning",
+          "licensed chart or weather data where applicable",
+          "SIM/connectivity where applicable"
+        ],
+        "presentationOnlyNote": "Derived read-only presentation contract. Internally defined solution concept; no price, stock, delivery or orderable state."
+      },
+      {
+        "bundleId": "FLEET",
+        "displayName": "MAREA FLEET",
+        "contractedSolution": true,
+        "hardwareIncludedByDefault": false,
+        "slaEstablished": false,
+        "compatibilityStatus": "UNTESTED",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "checkoutAllowed": false,
+        "orderable": false,
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "packagePriceEstablished": false,
+        "components": [
+          {
+            "editionId": "FLEET-START",
+            "inclusion": "INCLUDED",
+            "required": true,
+            "expandsTo": []
+          }
+        ],
+        "optionalComponents": [
+          {
+            "editionId": "WATCH-CORE",
+            "inclusion": "OPTIONAL",
+            "required": false,
+            "expandsTo": []
+          },
+          {
+            "editionId": "HUB-STANDARD",
+            "inclusion": "OPTIONAL",
+            "required": false,
+            "expandsTo": []
+          },
+          {
+            "editionId": "FLEET-BUSINESS",
+            "inclusion": "OPTIONAL",
+            "required": false,
+            "expandsTo": []
+          }
+        ],
+        "contractOnlyEditions": [
+          {
+            "lineId": "FP-02",
+            "editionId": "FLEET-ENTERPRISE",
+            "reason": "CONTRACTED_B2B_TIER_NOT_SELF_SERVICE"
+          }
+        ],
+        "ineligibleEditions": [],
+        "externalRequirements": [
+          "installation",
+          "cabling",
+          "commissioning",
+          "licensed chart or weather data where applicable",
+          "SIM/connectivity where applicable"
+        ],
+        "presentationOnlyNote": "Derived read-only presentation contract. Internally defined solution concept; no price, stock, delivery or orderable state."
+      }
+    ],
+    "totals": {
+      "bundles": 6
+    }
+  }
+}

@@ -8,7 +8,7 @@ export default defineConfig({
   testDir: './e2e',
   // El catálogo interno MC-17 es un proyecto Angular aislado (preview/) y no forma
   // parte de la aplicación pública: su suite se ejecuta con playwright.design-system.config.ts.
-  testIgnore: ['**/design-system/**'],
+  testIgnore: ['**/design-system/**', '**/landing/**'],
   fullyParallel: false,
   workers: 1,
   timeout: 60_000,

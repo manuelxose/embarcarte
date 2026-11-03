@@ -1,0 +1,227 @@
+{
+  "contractId": "MC18-PRODUCT-FAMILY-PRESENTATION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "owner": "MC-18 implementation team",
+  "status": "INTERNAL_PROPOSED",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Read-only presentation projection of the nine canonical MC-16 families.",
+  "generationMethod": "node scripts/build-marea-landing-data.mjs",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "References the canonical MC-16 datasets; it does not duplicate the product database.",
+    "No price, stock, purchase action or availability is representable.",
+    "Restrictions come from the verified MC-17 presentation adapter fixtures."
+  ],
+  "data": {
+    "families": [
+      {
+        "familyId": "NAV",
+        "displayName": "MAREA NAV",
+        "definitionStatus": "DEFINED",
+        "editionCount": 2,
+        "editionIds": [
+          "NAV-ESSENTIAL",
+          "NAV-PRO"
+        ],
+        "readiness": "NOT_READY",
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "LICENSING_NOT_CLEARED"
+        ],
+        "commercialAvailability": "NOT_FOR_SALE",
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "purchaseActionAllowed": false
+      },
+      {
+        "familyId": "HUB",
+        "displayName": "MAREA HUB",
+        "definitionStatus": "DEFINED",
+        "editionCount": 2,
+        "editionIds": [
+          "HUB-STANDARD",
+          "HUB-PRO"
+        ],
+        "readiness": "NOT_READY",
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED"
+        ],
+        "commercialAvailability": "NOT_FOR_SALE",
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "purchaseActionAllowed": false
+      },
+      {
+        "familyId": "AIS",
+        "displayName": "MAREA AIS",
+        "definitionStatus": "DEFINED",
+        "editionCount": 2,
+        "editionIds": [
+          "AIS-RECEIVER",
+          "AIS-CONNECTED"
+        ],
+        "readiness": "NOT_READY",
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "LICENSING_NOT_CLEARED"
+        ],
+        "commercialAvailability": "NOT_FOR_SALE",
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "purchaseActionAllowed": false
+      },
+      {
+        "familyId": "PILOT",
+        "displayName": "MAREA PILOT",
+        "definitionStatus": "DEFINED",
+        "editionCount": 3,
+        "editionIds": [
+          "PILOT-COASTAL",
+          "PILOT-SAIL",
+          "PILOT-PRO"
+        ],
+        "readiness": "NOT_READY",
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "SAFETY_GATE_BLOCKED"
+        ],
+        "commercialAvailability": "NOT_FOR_SALE",
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "purchaseActionAllowed": false
+      },
+      {
+        "familyId": "SENSE",
+        "displayName": "MAREA SENSE",
+        "definitionStatus": "DEFINED",
+        "editionCount": 8,
+        "editionIds": [
+          "SENSE-WIND",
+          "SENSE-POWER",
+          "SENSE-BILGE",
+          "SENSE-TANKS",
+          "SENSE-ENV",
+          "SENSE-ESSENTIALS",
+          "SENSE-SAIL",
+          "SENSE-SYSTEMS"
+        ],
+        "readiness": "NOT_READY",
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "COMPATIBILITY_UNTESTED"
+        ],
+        "commercialAvailability": "NOT_FOR_SALE",
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "purchaseActionAllowed": false
+      },
+      {
+        "familyId": "WATCH",
+        "displayName": "MAREA WATCH",
+        "definitionStatus": "DEFINED",
+        "editionCount": 2,
+        "editionIds": [
+          "WATCH-CORE",
+          "WATCH-PLUS"
+        ],
+        "readiness": "NOT_READY",
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "COMPATIBILITY_UNTESTED"
+        ],
+        "commercialAvailability": "NOT_FOR_SALE",
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "purchaseActionAllowed": false
+      },
+      {
+        "familyId": "DISPLAY",
+        "displayName": "MAREA DISPLAY",
+        "definitionStatus": "DEFINED",
+        "editionCount": 2,
+        "editionIds": [
+          "DISPLAY-7",
+          "DISPLAY-LARGE-CONDITIONAL"
+        ],
+        "readiness": "NOT_READY",
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED"
+        ],
+        "commercialAvailability": "NOT_FOR_SALE",
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "purchaseActionAllowed": false
+      },
+      {
+        "familyId": "WEATHER",
+        "displayName": "MAREA WEATHER",
+        "definitionStatus": "DEFINED",
+        "editionCount": 2,
+        "editionIds": [
+          "WEATHER-STANDARD",
+          "WEATHER-PRO"
+        ],
+        "readiness": "NOT_READY",
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "LICENSING_NOT_CLEARED"
+        ],
+        "commercialAvailability": "NOT_FOR_SALE",
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "purchaseActionAllowed": false
+      },
+      {
+        "familyId": "FLEET",
+        "displayName": "MAREA FLEET",
+        "definitionStatus": "DEFINED",
+        "editionCount": 3,
+        "editionIds": [
+          "FLEET-START",
+          "FLEET-BUSINESS",
+          "FLEET-ENTERPRISE"
+        ],
+        "readiness": "NOT_READY",
+        "restrictions": [
+          "PUBLICATION_NOT_AUTHORIZED",
+          "TRADEMARK_NOT_CLEARED",
+          "PRICE_NOT_APPROVED",
+          "STOCK_NOT_VERIFIED",
+          "LICENSING_NOT_CLEARED"
+        ],
+        "commercialAvailability": "NOT_FOR_SALE",
+        "priceVisible": false,
+        "availabilityVisible": false,
+        "purchaseActionAllowed": false
+      }
+    ],
+    "totals": {
+      "families": 9
+    }
+  }
+}

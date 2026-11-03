@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/preview-landing",
+    "types": ["node"]
+  },
+  "include": [
+    "**/*.ts",
+    "../src/app/marea-landing/**/*.ts",
+    "../src/app/marea-design-system/**/*.ts"
+  ],
+  "exclude": ["**/*.spec.ts"]
+}

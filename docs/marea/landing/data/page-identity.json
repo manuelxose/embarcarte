@@ -1,0 +1,62 @@
+{
+  "contractId": "MC18-PAGE-IDENTITY",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "owner": "MC-18 implementation team",
+  "status": "INTERNAL_PROPOSED",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Frozen planning identity inherited from MC-15 for the future MAREA overview page, plus the internal preview paths.",
+  "generationMethod": "node scripts/build-marea-landing-data.mjs",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "The route is NOT registered in the public application, the sitemap or public navigation.",
+    "Preview paths are served by an isolated loopback SSR application only."
+  ],
+  "data": {
+    "identity": {
+      "routeId": "mareaOverview",
+      "entityId": "ENT-HUB-MAREA",
+      "pageType": "HUB_OVERVIEW",
+      "source": "docs/marea/information-architecture/data/proposed-routes.json",
+      "locales": {
+        "es": {
+          "path": "/marea",
+          "languageTag": "es-ES",
+          "hreflang": "es-ES",
+          "isDefault": true
+        },
+        "en": {
+          "path": "/en/marea",
+          "languageTag": "en",
+          "hreflang": "en",
+          "isDefault": false
+        }
+      },
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false,
+      "publicRouteActivated": false,
+      "sitemapEligible": false,
+      "previewOnly": true,
+      "existingPublicRouteIdsRetained": 21
+    },
+    "previewPaths": [
+      "/marea",
+      "/en/marea"
+    ],
+    "routeTable": [
+      {
+        "routeId": "mareaOverview",
+        "locale": "es",
+        "path": "/marea",
+        "renderMode": "Server"
+      },
+      {
+        "routeId": "mareaOverview",
+        "locale": "en",
+        "path": "/en/marea",
+        "renderMode": "Server"
+      }
+    ]
+  }
+}

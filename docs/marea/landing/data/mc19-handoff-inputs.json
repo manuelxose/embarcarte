@@ -1,0 +1,279 @@
+{
+  "contractId": "MC18-MC19-HANDOFF-INPUTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "MC-18 docs",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Technical handoff inputs from MC-18 to a future MC-19 milestone: architecture, sections, reuse, ES/EN content contracts, product and bundle presentation, reserved segment references, CTA restrictions, privacy and consent dependencies, SEO publication gates and explicit non-goals. MC-19 has not started and publication is not authorized.",
+  "generationMethod": "authored by docs-b from the verified MC-18 implementation",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "Authored by docs-b as handoff inputs; it is not an MC-19 plan, not an implementation approval and not an independent audit.",
+    "MC-19 has not started: there are no segment pages, no enquiry flows, no lead capture and no installer registration in the repository.",
+    "Accessibility, responsive, visual-regression and SSR/hydration evidence datasets are present; performance evidence, legacy baseline and the corresponding narrative documents are PENDING, so accessibility and hydration statements are limited to the recorded evidence and repository checks.",
+    "Independent review, Spanish executive report, D10-D12 documents, performance evidence and the final delivery record are PENDING; D01 and D03 are present; relevantCommit points to the required envelope target.",
+    "Statuses are recorded as of 2026-11-03 at HEAD 6002c49f898e755154c1b65c97781177719ce11c plus the uncommitted MC-18 working tree.",
+    "The generated design-system-dependencies.json was regenerated after the visual pass; MC18-41 now PASSES.",
+    "The landing validator observed 55/60 PASS and 5 FAIL in the final run (52/60 at the first run before parallel deliverables landed); the remaining failures are pending artefacts (MC18-44/51/52/53/54), not a PASS.",
+    "Content is bilingual internal draft copy (INTERNAL_DRAFT_NOT_APPROVED / NOT_APPROVED), not approved public copy.",
+    "All products are NOT_FOR_SALE, no price is approved and 0 of 42 claims are public-authorized; no commercial readiness is implied.",
+    "No Search Console, DNS, TLS or live-indexation evidence exists; indexation is unverified and disabled."
+  ],
+  "data": {
+    "mc19Started": false,
+    "publicationAuthorized": false,
+    "indexationAuthorized": false,
+    "landingSources": [
+      {
+        "path": "src/app/marea-landing/landing.ts",
+        "role": "single bilingual landing component; one component tree for ES/EN; theme host web-light; skip link; internal banner; ten sections"
+      },
+      {
+        "path": "src/app/marea-landing/sections/",
+        "role": "ten section components in document order"
+      },
+      {
+        "path": "src/app/marea-landing/components/",
+        "role": "landing-local shell components: internal banner, header, footer, section frame, sheet index"
+      },
+      {
+        "path": "src/app/marea-landing/content/landing-content.ts",
+        "role": "one bilingual LandingContent source; 174 blocks per locale (348 resolved records); evidence-backed"
+      },
+      {
+        "path": "src/app/marea-landing/content/content.types.ts",
+        "role": "content contract: LandingSectionId, CopyClass, publication/approval literals, per-section copy interfaces"
+      },
+      {
+        "path": "src/app/marea-landing/content/evidence.ts",
+        "role": "evidence registry; every content block cites at least one evidence id with a repository source path"
+      },
+      {
+        "path": "src/app/marea-landing/models/page-identity.ts",
+        "role": "frozen route identity mareaOverview / ENT-HUB-MAREA / HUB_OVERVIEW; preview paths /marea and /en/marea; preview-only route table"
+      },
+      {
+        "path": "src/app/marea-landing/models/publication-gates.ts",
+        "role": "fail-closed page publication gates and recorded MC-14 release-gate state"
+      },
+      {
+        "path": "src/app/marea-landing/models/seo.ts",
+        "role": "typed planning metadata contract, reciprocal hreflang candidates and two-lock activation evaluator"
+      },
+      {
+        "path": "src/app/marea-landing/data/domain.generated.ts",
+        "role": "generated read-only projection of 9 families, 26 editions, 6 bundles, readiness dimensions and facts; no price/stock/SKU/customer/vessel data"
+      },
+      {
+        "path": "src/app/marea-landing/data/landing-domain.ts",
+        "role": "domain adapter to verified MC-17 presentation contracts; fail-closed commercial presentation (buy/cart/price/availability disabled)"
+      },
+      {
+        "path": "preview/landing/",
+        "role": "isolated loopback SSR preview host (separate Angular project marea-landing-preview); not part of the production application"
+      }
+    ],
+    "sections": [
+      {
+        "sectionId": "hero",
+        "order": 1,
+        "blocks": 12,
+        "sourceFile": "src/app/marea-landing/sections/section-hero.ts"
+      },
+      {
+        "sectionId": "ecosystem",
+        "order": 2,
+        "blocks": 14,
+        "sourceFile": "src/app/marea-landing/sections/section-ecosystem.ts"
+      },
+      {
+        "sectionId": "families",
+        "order": 3,
+        "blocks": 31,
+        "sourceFile": "src/app/marea-landing/sections/section-families.ts"
+      },
+      {
+        "sectionId": "architecture",
+        "order": 4,
+        "blocks": 30,
+        "sourceFile": "src/app/marea-landing/sections/section-architecture.ts"
+      },
+      {
+        "sectionId": "bundles",
+        "order": 5,
+        "blocks": 22,
+        "sourceFile": "src/app/marea-landing/sections/section-bundles.ts"
+      },
+      {
+        "sectionId": "softwareHardware",
+        "order": 6,
+        "blocks": 12,
+        "sourceFile": "src/app/marea-landing/sections/section-software-hardware.ts"
+      },
+      {
+        "sectionId": "professionals",
+        "order": 7,
+        "blocks": 10,
+        "sourceFile": "src/app/marea-landing/sections/section-professionals.ts"
+      },
+      {
+        "sectionId": "documentation",
+        "order": 8,
+        "blocks": 13,
+        "sourceFile": "src/app/marea-landing/sections/section-documentation.ts"
+      },
+      {
+        "sectionId": "availability",
+        "order": 9,
+        "blocks": 22,
+        "sourceFile": "src/app/marea-landing/sections/section-availability.ts"
+      },
+      {
+        "sectionId": "closing",
+        "order": 10,
+        "blocks": 8,
+        "sourceFile": "src/app/marea-landing/sections/section-closing.ts"
+      }
+    ],
+    "reuse": [
+      {
+        "kind": "theme",
+        "identifier": "theme/marea-theme",
+        "note": "MareaTheme web-light host; no instrument mode on the corporate surface"
+      },
+      {
+        "kind": "navigation",
+        "identifier": "components/structured/marea-responsive-nav",
+        "note": "used by the landing header with in-page anchors only"
+      },
+      {
+        "kind": "commerce",
+        "identifier": "components/commerce/marea-family-card",
+        "note": "family card; identity/readiness/restrictions from MC-17 fixtures, summary from landing content"
+      },
+      {
+        "kind": "commerce",
+        "identifier": "components/commerce/marea-bundle-components",
+        "note": "bundle composition including kit expansion"
+      },
+      {
+        "kind": "commerce",
+        "identifier": "components/commerce/marea-bundle-exclusions",
+        "note": "ineligible/conditional bundle lines"
+      },
+      {
+        "kind": "commerce",
+        "identifier": "components/commerce/marea-readiness-panel",
+        "note": "readiness summary in availability section"
+      },
+      {
+        "kind": "commerce",
+        "identifier": "components/commerce/marea-commercial-cta",
+        "note": "rendered with the fail-closed disabled presentation; no purchase action"
+      },
+      {
+        "kind": "foundation",
+        "identifier": "components/foundation/marea-notice",
+        "note": "critical/internal notices"
+      },
+      {
+        "kind": "foundation",
+        "identifier": "components/foundation/marea-section-heading",
+        "note": "kicker/heading/lead hierarchy"
+      },
+      {
+        "kind": "foundation",
+        "identifier": "components/foundation/marea-text",
+        "note": "body/meta/heading typography"
+      },
+      {
+        "kind": "foundation",
+        "identifier": "components/foundation/marea-container",
+        "note": "layout container"
+      },
+      {
+        "kind": "foundation",
+        "identifier": "components/foundation/marea-status-badge",
+        "note": "critical status badges for publication/indexation"
+      },
+      {
+        "kind": "foundation",
+        "identifier": "components/foundation/marea-surface",
+        "note": "raised/outline surfaces for the status console and CTA panel"
+      }
+    ],
+    "ctas": {
+      "purchase": false,
+      "leadCapture": false
+    },
+    "requiredApprovals": [
+      {
+        "id": "B01",
+        "approval": "TRADEMARK_LEGAL_CLEARANCE",
+        "owner": "brand owner + legal counsel"
+      },
+      {
+        "id": "B02",
+        "approval": "MAREA_PUBLIC_USE_AUTHORIZATION",
+        "owner": "brand owner + legal counsel"
+      },
+      {
+        "id": "B03",
+        "approval": "SOURCE_IP_AND_DATA_LICENSING_CLEARANCE",
+        "owner": "legal + data licensors"
+      },
+      { "id": "B04", "approval": "LEGAL_IDENTITY_VERIFICATION", "owner": "company legal owner" },
+      { "id": "B05", "approval": "PUBLIC_COPY_APPROVAL", "owner": "copy owner + legal" },
+      {
+        "id": "B06",
+        "approval": "CLAIMS_PUBLICATION_AUTHORIZATION",
+        "owner": "claims owner + legal"
+      },
+      { "id": "B07", "approval": "PRIVACY_DPA_DPIA", "owner": "privacy owner + legal" },
+      {
+        "id": "B08",
+        "approval": "COMMERCIAL_DATA_AND_PRICING_DECISION",
+        "owner": "commercial owner"
+      },
+      {
+        "id": "B09",
+        "approval": "PUBLICATION_INDEXATION_DEPLOYMENT_AND_RELEASE_AUTHORIZATION",
+        "owner": "accountable release owner"
+      },
+      {
+        "id": "B10",
+        "approval": "MC14_RELEASE_GATE_PROGRAMME_CLOSURE",
+        "owner": "legal/commercial gate owners + independent audit"
+      },
+      { "id": "B11", "approval": "PILOT_SAFETY_GATE_CLOSURE", "owner": "safety owner" },
+      {
+        "id": "B12",
+        "approval": "HARDWARE_CONFORMITY_AND_COMPATIBILITY_EVIDENCE",
+        "owner": "hardware/compliance owner"
+      }
+    ],
+    "blockers": [
+      { "id": "B01", "title": "Trademark legal clearance not granted", "status": "OPEN" },
+      { "id": "B02", "title": "MAREA public use is NO_GO", "status": "OPEN" },
+      { "id": "B03", "title": "Source IP and licensing clearance not granted", "status": "OPEN" },
+      { "id": "B04", "title": "Legal identity not verified", "status": "OPEN" },
+      { "id": "B05", "title": "Public copy not approved", "status": "OPEN" },
+      { "id": "B06", "title": "No claim is public-authorized", "status": "OPEN" },
+      { "id": "B07", "title": "Privacy, DPA and DPIA not approved", "status": "OPEN" },
+      { "id": "B08", "title": "Commercial data and pricing not approved", "status": "OPEN" },
+      {
+        "id": "B09",
+        "title": "Publication, indexation and deployment approvals absent",
+        "status": "OPEN"
+      },
+      { "id": "B10", "title": "MC-14 release-gate programme not closed", "status": "OPEN" },
+      { "id": "B11", "title": "PILOT safety gate blocked", "status": "OPEN" },
+      {
+        "id": "B12",
+        "title": "Hardware conformity and compatibility evidence absent",
+        "status": "OPEN"
+      }
+    ]
+  }
+}

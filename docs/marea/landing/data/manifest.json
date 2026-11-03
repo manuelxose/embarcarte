@@ -1,0 +1,100 @@
+{
+  "contractId": "MC18-MACHINE-READABLE-MANIFEST",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "owner": "MC-18 implementation team",
+  "status": "INTERNAL_PROPOSED",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Index of the MC-18 landing machine-readable datasets, their generator, status and provenance policy.",
+  "generationMethod": "node scripts/build-marea-landing-data.mjs",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "The manifest is an index: when it disagrees with a dataset or the validator, the dataset/validator wins.",
+    "The relevant commit for every dataset is the MC-18 delivery record commit (D23); regeneration is deterministic."
+  ],
+  "data": {
+    "datasets": [
+      {
+        "dataset": "accessibility-evidence.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "bilingual-content.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "bundle-presentation.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "blocker-register.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "content-evidence.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "design-system-dependencies.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "legacy-baseline.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "manifest.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "mc19-handoff-inputs.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "page-identity.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "performance-evidence.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "preview-isolation.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "product-family-presentation.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "publication-gates.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "responsive-evidence.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "review-findings.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "section-registry.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "seo-metadata-contract.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "ssr-hydration-evidence.json",
+        "generatedBy": "see dataset generationMethod"
+      },
+      {
+        "dataset": "visual-regression-evidence.json",
+        "generatedBy": "see dataset generationMethod"
+      }
+    ],
+    "authority": "docs/marea/landing/data/*.json + scripts/check-marea-landing.mjs"
+  }
+}
