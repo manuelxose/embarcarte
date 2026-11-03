@@ -239,13 +239,13 @@ Commands: `npm run test:design-system`, `npm run test:design-system:visual`.
 
 ## 13. Known gaps
 
-- **Recorded validator run is overall FAIL (38/38 (current; earlier snapshots superseded)).** The commercial checks
+- **Recorded validator run is overall FAIL (historical snapshot; the current committed run is 38/38).** The commercial checks
   (`MC17-17`, `MC17-19`, `MC17-20`, `MC17-23`, `MC17-24`, `MC17-31`) are each recorded
   PASS; the failures are missing-file/document-set items (`MC17-32`/`33`/`34`/`35`/`36`),
   three of which were added after the run. The overall status is not a pass.
 - **Recorded axe run reports 0 `color-contrast` violations after the correction**, in the
   preview-only component-documentation block, not in a library component.
-- **No independent review.** `MC17-INDEPENDENT-REVIEW.md` does not exist yet (PENDING).
+- **Independent review.** `MC17-INDEPENDENT-REVIEW.md` exists: first round PARTIAL with two MAJOR findings, corrected in `7cbc99e`; see the review for the current status.
 - **Gate-open behaviour is untested in a shipped surface.** No surface passes
   `releaseGateOpen: true`; the suppression branch is code-reviewed only.
 - **No server API.** The adapter receives hand-built view models; no MC-16 read API exists,

@@ -153,7 +153,7 @@ none of this and publishes no route.
 
 | Evidence | Status at authoring |
 |---|---|
-| `docs/marea/design-system/evidence/validator-run.json` | PRESENT — `status: FAIL`, 38/38 (current; earlier snapshots superseded) passed (stale: run predates several datasets) |
+| `docs/marea/design-system/evidence/validator-run.json` | PRESENT — `status: FAIL`, 38/38 passed (stale: run predates several datasets) |
 | `docs/marea/design-system/data/contrast-evidence.json` | PRESENT — `status: PASS`, 296 pair/mode measurements, 0 failures |
 | `docs/marea/design-system/evidence/axe-summary.json` | PRESENT — 0 violations in three modes, 0 `color-contrast` violations after the correction (preview-only component doc) |
 | `test-results/design-system/**` | PARTIAL — four axe JSON files present; no responsive screenshots or visual baselines; four Playwright failure directories present |

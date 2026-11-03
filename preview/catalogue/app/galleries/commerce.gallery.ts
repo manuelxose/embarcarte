@@ -132,6 +132,14 @@ function presentationFor(
           <marea-family-card [family]="pilotFamily" [presentation]="pilotPresentation" />
           <h4 marea-text variant="heading">FLEET</h4>
           <marea-family-card [family]="fleetFamily" [presentation]="fleetPresentation" />
+          <h4 marea-text variant="heading">AIS</h4>
+          <marea-family-card [family]="aisFamily" [presentation]="aisPresentation" />
+          <h4 marea-text variant="heading">WATCH</h4>
+          <marea-family-card [family]="watchFamily" [presentation]="watchPresentation" />
+          <h4 marea-text variant="heading">SENSE</h4>
+          <marea-family-card [family]="senseFamily" [presentation]="sensePresentation" />
+          <h4 marea-text variant="heading">DISPLAY</h4>
+          <marea-family-card [family]="displayFamily" [presentation]="displayPresentation" />
         </marea-stack>
         <marea-component-doc componentId="marea-family-card" />
       </section>
@@ -321,10 +329,18 @@ export class CommerceGallery {
   readonly navFamily = familyFixture('NAV');
   readonly pilotFamily = familyFixture('PILOT');
   readonly fleetFamily = familyFixture('FLEET');
+  readonly aisFamily = familyFixture('AIS');
+  readonly watchFamily = familyFixture('WATCH');
+  readonly senseFamily = familyFixture('SENSE');
+  readonly displayFamily = familyFixture('DISPLAY');
 
   readonly navPresentation = this.familyPresentation(this.navFamily);
   readonly pilotPresentation = this.familyPresentation(this.pilotFamily);
   readonly fleetPresentation = this.familyPresentation(this.fleetFamily);
+  readonly aisPresentation = this.familyPresentation(this.aisFamily);
+  readonly watchPresentation = this.familyPresentation(this.watchFamily);
+  readonly sensePresentation = this.familyPresentation(this.senseFamily);
+  readonly displayPresentation = this.familyPresentation(this.displayFamily);
 
   readonly navEssential = editionFixture('NAV-ESSENTIAL');
   readonly pilotPro = editionFixture('PILOT-PRO');

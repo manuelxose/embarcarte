@@ -156,7 +156,7 @@ These absences are structural, not editorial:
 | `MC17-26` | One component set and exactly 26 edition ids |
 
 The run command is `npm run test:design-system`. The recorded run in
-`docs/marea/design-system/evidence/validator-run.json` is overall **FAIL (38/38 (current; earlier snapshots superseded))**, but the
+`docs/marea/design-system/evidence/validator-run.json` is overall **FAIL (historical snapshot; the current committed run is 38/38)**, but the
 five portfolio checks above are recorded **PASS**: `MC17-20`, `MC17-21`, `MC17-22`,
 `MC17-23` and `MC17-24`. The failures are missing-file/document-set items unrelated to the
 portfolio counts (`MC17-32`/`33`/`34`/`35`/`36`); three of those files were added after the

@@ -124,7 +124,7 @@ representable** through this contract. `MareaCommercialPresentation` fixes
 | Hydration-sensitive timestamps | no component reads the clock; `ageSeconds` is an input supplied by the caller | `marea-freshness`, `marea-numeric-readout` |
 
 **Known inconsistency (recorded, not hidden):** `marea-form-field` does not use
-`MareaIds`. It keeps a module-level counter (`let per-render `MareaIds` counter (a process-wide module counter was found during review and replaced; the current implementation injects `MareaIds`). On a long-running SSR process that counter is shared across
+`MareaIds`. It keeps a module-level counter (``MareaIds` is injected per component instance (a process-wide module counter found in the first revision was replaced). On a long-running SSR process that counter is shared across
 requests, so ids in a later request differ from what a fresh client counter would
 produce. The design system is not part of the production build today, so this is a
 latent defect rather than an observed hydration error; it is listed in D09 §10 and
@@ -238,7 +238,7 @@ its declared path, exports the declared class, contains the declared selector an
 - No performance measurement: no bundle-size budget for the catalogue is enforced
   beyond Angular's defaults in the production configuration.
 - No dependency-injection scoping analysis beyond the three root services.
-- The `per-render `MareaIds` counter (a process-wide module counter was found during review and replaced; the current implementation injects `MareaIds`).
+- The ``MareaIds` is injected per component instance; the earlier module-level counter was removed.
 
 Source references: `src/app/marea-design-system/**`,
 `preview/**`, `angular.json`, `package.json`,

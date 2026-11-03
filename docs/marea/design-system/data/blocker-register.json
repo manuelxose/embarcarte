@@ -9,7 +9,7 @@
   "knownLimitations": [
     "Status values record the state observed at authoring time. An inherited blocker is never closed by this file; only the named owner with real external evidence may close one.",
     "The MC-17 independent review had not been performed when this file was authored; entry MC17-INDEPENDENT-REVIEW is therefore PENDING, not passed.",
-    "The recorded validator run (docs/marea/design-system/evidence/validator-run.json) was FAIL at both observations (38/38 (current; earlier snapshot superseded) then 38/38 (current; earlier snapshot superseded)) and is a snapshot of an in-flux working tree; it is cited as recorded evidence, not as the final gate result.",
+    "The recorded validator run (docs/marea/design-system/evidence/validator-run.json) was FAIL at both historical observations (31/38 at 02:47, 36/38 at 02:56) and is a snapshot of an in-flux working tree; it is cited as recorded evidence, not as the final gate result.",
     "Severity here is the severity recorded by the originating milestone. Where the originating milestone records a category instead (for example 'informational residual'), that category is preserved in the severity field."
   ],
   "sourceRefs": [
@@ -185,7 +185,7 @@
       "severity": "MAJOR",
       "status": "OPEN",
       "inherited": false,
-      "evidence": "docs/marea/design-system/evidence/validator-run.json was observed twice while the tree was being built in parallel: at 02:47 local it recorded status FAIL with 38/38 (current; earlier snapshot superseded) passed and 7 failures (MC17-06 unresolved token names, MC17-32/33/34/36/38 missing datasets, MC17-35 missing documents); at 02:56 local it recorded 38/38 (current; earlier snapshot superseded) passed with 3 failures (MC17-33 mc18Started field, MC17-35 missing documents, MC17-36 missing datasets: manifest, responsive-evidence, performance-evidence, visual-regression-evidence, review-findings). The file is rewritten on every run and is the authority.",
+      "evidence": "docs/marea/design-system/evidence/validator-run.json was observed twice while the tree was being built in parallel: at 02:47 local it recorded status FAIL with 31/38 passed and 7 failures (MC17-06 unresolved token names, MC17-32/33/34/36/38 missing datasets, MC17-35 missing documents); at 02:56 local it recorded 36/38 passed with 3 failures (MC17-33 mc18Started field, MC17-35 missing documents, MC17-36 missing datasets: manifest, responsive-evidence, performance-evidence, visual-regression-evidence, review-findings). The file is rewritten on every run and is the authority.",
       "impact": "The machine gate does not pass. A green build or a passing subset is not the gate result, and a stale snapshot must not be reported as the current one.",
       "owner": "MC-17 implementation/documentation owner",
       "nextAction": "Re-run npm run test:design-system once the remaining documents and datasets exist; record the new run in the same file. MC-17 must not be reported as PASS before that run is green."

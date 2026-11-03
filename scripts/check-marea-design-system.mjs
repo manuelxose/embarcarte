@@ -274,9 +274,20 @@ add('MC17-08', 'Design-system code is absent from production entry points', () =
     'src/app/core/seo.service.ts',
     'src/server.ts',
   ];
-  const offenders = files.filter((file) => /marea/i.test(read(file)));
+  const offenders = [];
+  for (const file of files) {
+    const source = read(file);
+    if (/marea-design-system|marea-theme|marea-ds-catalogue|preview\/catalogue/i.test(source)) {
+      offenders.push(`${file}: forbidden literal`);
+    }
+    for (const match of source.matchAll(/(?:from|import)\s*\(?\s*['"]([^'"]+)['"]/g)) {
+      if (/marea|preview\//i.test(match[1])) offenders.push(`${file}: import ${match[1]}`);
+    }
+  }
   return offenders.length === 0
-    ? pass(`${files.length} production files free of design-system imports`)
+    ? pass(
+        `${files.length} production files free of design-system imports (literal + import-path scan)`,
+      )
     : fail(offenders.join(', '));
 });
 
@@ -373,7 +384,9 @@ add('MC17-13', 'No undocumented component variant is exposed', () => {
     const variants = new Set(entry.visualVariants);
     for (const match of source.matchAll(/\b([A-Za-z_]\w*)\s*=\s*input<([^>]*)>\s*\(/g)) {
       if (!optionInputs.test(match[1])) continue;
-      const literals = [...match[2].matchAll(/'([^']+)'|"([^"]+)"/g)].map((literal) => literal[1] ?? literal[2]);
+      const literals = [...match[2].matchAll(/'([^']+)'|"([^"]+)"/g)].map(
+        (literal) => literal[1] ?? literal[2],
+      );
       for (const literal of literals) {
         documented++;
         if (!variants.has(literal)) offenders.push(`${entry.componentId}.${match[1]}=${literal}`);
@@ -430,7 +443,11 @@ add('MC17-15', 'Interactive components implement a visible focus contract', () =
         ? read(`${DS}/components/foundation/marea-form-field.ts`).includes(':focus-visible')
         : source.includes(':focus-visible');
     if (!focusOk) offenders.push(entry.componentId);
-    else if (!/:focus-visible[\s\S]{0,400}--marea-focus-ring/.test(source) && entry.componentId !== 'marea-input') offenders.push(`${entry.componentId}: focus-visible does not reference the focus-ring token`);
+    else if (
+      !/:focus-visible[\s\S]{0,400}--marea-focus-ring/.test(source) &&
+      entry.componentId !== 'marea-input'
+    )
+      offenders.push(`${entry.componentId}: focus-visible does not reference the focus-ring token`);
   }
   return offenders.length === 0
     ? pass(

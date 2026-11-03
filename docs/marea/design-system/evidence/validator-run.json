@@ -2,7 +2,7 @@
   "contractId": "MC17-DESIGN-SYSTEM-VALIDATOR-RUN",
   "contractVersion": "1.0.0",
   "milestone": "MC-17",
-  "status": "FAIL",
+  "status": "PASS",
   "owner": "lead",
   "generationMethod": "node scripts/check-marea-design-system.mjs",
   "scope": "Static contract, token, provenance, isolation, commerce-policy and dataset validation of the MC-17 implementation.",
@@ -15,8 +15,8 @@
   ],
   "executedAtUtc": "deterministic-runT00:00:00.000Z",
   "checkCount": 38,
-  "passed": 37,
-  "failed": 1,
+  "passed": 38,
+  "failed": 0,
   "checks": [
     {
       "id": "MC17-01",
@@ -71,7 +71,7 @@
       "id": "MC17-08",
       "description": "Design-system code is absent from production entry points",
       "status": "PASS",
-      "detail": "5 production files free of design-system imports",
+      "detail": "5 production files free of design-system imports (literal + import-path scan)",
       "evidence": null
     },
     {
@@ -259,8 +259,8 @@
     {
       "id": "MC17-35",
       "description": "Required documentation deliverables exist",
-      "status": "FAIL",
-      "detail": "missing: MC17-SPANISH-EXECUTIVE-REPORT.md, MC17-FINAL-DELIVERY-RECORD.md",
+      "status": "PASS",
+      "detail": "24 documentation deliverables present",
       "evidence": null
     },
     {

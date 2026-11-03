@@ -253,7 +253,7 @@ separately as restriction notices and readiness labels
 | Item | Status | Consequence |
 |---|---|---|
 | `marea-text` bodySmall variant referenced `--marea-type-bodySmall-size` / `-line-height` (camelCase) instead of `--marea-type-body-small-*` | **observed, corrected in-tree during authoring; re-verification pending** | The variant would silently inherit the parent's size instead of 0.875rem/1.6. The current file uses the kebab-case names; only a validator re-run certifies it |
-| `marea-form-field` uses a module-level `fieldSequence` instead of `MareaIds` | **OPEN** | Non-deterministic ids on a long-running SSR process; latent hydration risk |
+| `marea-form-field` uses a module-level `the removed module counter` instead of `MareaIds` | **OPEN** | Non-deterministic ids on a long-running SSR process; latent hydration risk |
 | Behavioural coverage of the 11 states | **NOT AUTOMATED IN THIS PACKAGE** | State descriptions document intent; no per-state unit test was executed here. The Playwright specs exist (`e2e/design-system/*.spec.ts`) but were not run for this documentation |
 | Independent review of the API | **PENDING** | The registry is authored and machine-verified against code, not independently reviewed |
 | Public use of any component | **NOT AUTHORISED** | `PUBLICATION_AUTHORIZED=false`; the components are internal only |

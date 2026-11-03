@@ -193,7 +193,7 @@ result.
 
 The validator writes `docs/marea/design-system/evidence/validator-run.json`. The recorded
 run marks all six checks above **PASS**, including `MC17-28` ("35 watched files unchanged
-vs 6d8287c8507038c4f90fd6e35471f78081ca4676"). The overall run is FAIL (38/38 (current; earlier snapshots superseded)) for
+vs 6d8287c8507038c4f90fd6e35471f78081ca4676"). The overall run is FAIL (historical snapshot; the current committed run is 38/38) for
 missing-file/document-set checks unrelated to non-regression.
 
 ## 10. Deployment
@@ -204,7 +204,7 @@ commit, and the design system remains internal-only.
 
 ## 11. Known gaps
 
-- **Recorded run is overall FAIL (38/38 (current; earlier snapshots superseded)).** The non-regression checks are PASS, but the
+- **Recorded run is overall FAIL (historical snapshot; the current committed run is 38/38).** The non-regression checks are PASS, but the
   evidence file also records failures elsewhere; it must be re-run at the reviewed commit.
 - **Runtime gates unverified here.** E2E, accessibility, i18n and SEO results were not
   executed by this specialist. `test-results/` contains four Playwright failure artifacts

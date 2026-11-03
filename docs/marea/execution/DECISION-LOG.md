@@ -1718,3 +1718,27 @@ no merge, no deployment.
 **Evidence.** `MC16-INDEPENDENT-REVIEW.md` (D21); `data/review-findings.json`; `MC16-DELIVERY.md` (D23); `MC16-EXECUTIVE-REPORT-ES.md` (D22); PR #23 (draft, unmerged).
 
 **Status effect.** Internal-scope PASS recorded; overall PARTIAL; no merge, deploy, publication, sale, billing or MC-17 execution.
+
+## D-071 - 2026-11-03 - MC-17 implements an isolated, non-published design system
+
+**Context.** The future MAREA product, bundle, configurator and onboard surfaces need one reusable presentation system, but the brand is proposed (trademark NOT_GRANTED, public use NO_GO), no price/stock/public copy is approved, hardware validation is blocked, and the public website must not change.
+
+**Decision.** Implement the design system under `src/app/marea-design-system/` as an isolated, non-imported library: one canonical token source with MC-04 provenance and a deterministic generator, scoped `marea-theme` CSS (no `:root`), 48 standalone Angular components plus one directive, typed presentation contracts, synthetic MC-16 fixtures, a fail-closed commercial adapter (`purchaseActionAllowed/cartAllowed/priceVisible/availabilityVisible = false`), and a separate internal catalogue Angular project (`preview/`, output `dist/marea-ds-catalogue`). No production route, style, metadata, asset, checkout or deployment change. The catalogue is executed only by its own scripts; the inherited public test suite excludes it with `testIgnore`.
+
+**Rationale.** A presentation system that can be built and verified without being published is the only defensible way to prepare MC-18 while identity, legal clearance, price, stock and hardware evidence are unavailable. Scoped tokens and a separate build target make accidental public leakage a deliberate change rather than a side effect.
+
+**Evidence.** `src/app/marea-design-system/`; `preview/`; `docs/marea/design-system/` D01-D24 + 20 datasets; `scripts/check-marea-design-system*.mjs`; `e2e/design-system/`; validator 38/38 and catalogue suite 30/30 at the delivery commit.
+
+**Status effect.** Internal design-system scope implemented and technically verified; overall MC-17 PARTIAL pending the final independent re-audit; no publication, deployment, brand adoption, sale or MC-18 start.
+
+## D-072 - 2026-11-03 - MC-17 records the independent review and the correction round
+
+**Context.** The first independent review of the implementation found no BLOCKING findings but two MAJOR defects: family-specific limits were defined but not rendered, and the reviewed tree was uncommitted. A correction round renamed the CTA to avoid the inherited MC-16 ISO-001 collision, rendered family limits for all families in the catalogue, replaced a module-level id counter with `MareaIds`, hardened the validator, repaired documentation, regenerated visual baselines and committed the tree.
+
+**Decision.** Record `MC17_INDEPENDENT_REVIEW = PARTIAL` for both reviewed SHAs and require a third independent re-audit of the delivery SHA before MC-17 can be considered internally complete. Preserve every finding with its closure status in `data/review-findings.json`; do not mark a MAJOR closed without independent verification.
+
+**Rationale.** The internal build is usable and the committed state is reproducible, but the presentation MAJOR and several minor evidence gaps were open at the last reviewed SHA. Recording PARTIAL is more accurate than claiming completion.
+
+**Evidence.** `MC17-INDEPENDENT-REVIEW.md`; `data/review-findings.json`; commits `3a8d4fd` and `7cbc99e`; validator, unit, Playwright, axe and contrast evidence under `docs/marea/design-system/evidence/`.
+
+**Status effect.** MC-17 PARTIAL; no merge, deployment, publication, brand adoption, price/stock authorisation or MC-18 start. Inherited `MC16-FINAL-02`, `MC16-FINAL-09` and `FINANCIAL_V18` remain as recorded.

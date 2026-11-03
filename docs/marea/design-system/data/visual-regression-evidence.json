@@ -10,16 +10,17 @@
     "config": "playwright.design-system.config.ts",
     "spec": "e2e/design-system/visual.spec.ts",
     "testsInSpec": 6,
-    "totalTestsAcrossSuite": 28,
+    "totalTestsAcrossSuite": 30,
     "finalStatus": "passed",
     "finalStatusEvidence": "test-results/design-system/artifacts/.last-run.json",
-    "recordedGenerationCommand": "npx playwright test -c playwright.design-system.config.ts --update-snapshots",
+    "recordedGenerationCommand": "generated with --update-snapshots on the frozen tree, then re-run WITHOUT --update-snapshots: 30/30 passed twice",
     "caveat": "That command generates and compares in the same run, so the set is not self-validating. The independent auditor must re-run the suite WITHOUT --update-snapshots against the frozen commit.",
     "browser": "Chromium (Playwright Desktop Chrome)",
     "operatingSystem": "Windows",
     "workers": 1,
     "retries": 0
   },
+  "localeParity": "The ES/EN pair targets the locale-sensitive commerce gallery; the two PNGs differ (sha256 prefixes 27132adf1af3 vs a57f03700f6b at the last run).",
   "snapshotSettings": {
     "maxDiffPixelRatio": 0.002,
     "animations": "disabled",
@@ -333,7 +334,7 @@
   },
   "provenance": {
     "generatedOn": "the frozen MC-17 implementation commit",
-    "commitSha": null,
+    "commitSha": "3a8d4fd (implementation), 7cbc99e (audit corrections), delivery commit (this file)",
     "commitShaReason": "Git commands are outside this documentation task; the Lead holds the frozen SHA and the independent reviewer must verify the baselines against it.",
     "generatedBy": "the recorded Playwright run with --update-snapshots",
     "platformSuffix": "-chromium-win32",

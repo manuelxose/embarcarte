@@ -69,7 +69,7 @@ test.describe('visual baselines', () => {
     }
   });
 
-  test('foundation gallery ES vs EN pair at 1440x900', async ({ page }) => {
+  test('commerce gallery ES vs EN pair at 1440x900', async ({ page }) => {
     await page.setViewportSize({ width: 1440, height: 900 });
     await gotoCatalogue(page);
     await setMode(page, 'web-light');
@@ -77,15 +77,15 @@ test.describe('visual baselines', () => {
     await setLocale(page, 'es');
     await captureGallery(
       page,
-      'marea-foundation-gallery',
-      'foundation-1440x900-web-light-locale-es.png',
+      'marea-commerce-gallery',
+      'commerce-1440x900-web-light-locale-es.png',
     );
 
     await setLocale(page, 'en');
     await captureGallery(
       page,
-      'marea-foundation-gallery',
-      'foundation-1440x900-web-light-locale-en.png',
+      'marea-commerce-gallery',
+      'commerce-1440x900-web-light-locale-en.png',
     );
   });
 });

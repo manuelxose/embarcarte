@@ -172,3 +172,21 @@ test('the internal-use banner is visible in Spanish and English', async ({ page 
     'No se ve el aviso interno "Internal use only" en EN',
   ).toBeVisible();
 });
+
+// IR-01 closure: the catalogue must render the family-specific limitation copy,
+// not merely define it. These are the exact ES strings from MAREA_COPY.
+test('every family-specific limit is rendered by a family card', async ({ page }) => {
+  await gotoCatalogue(page);
+  const body = await page.evaluate(() => document.body.innerText);
+  const required: ReadonlyArray<readonly [string, string]> = [
+    ['PILOT', 'Concepto de pilotaje asistido'],
+    ['AIS', 'Recepción únicamente'],
+    ['WATCH', 'No se garantizan alertas'],
+    ['FLEET', 'Sin hardware por defecto'],
+    ['SENSE', 'Las funciones locales de seguridad'],
+    ['DISPLAY', 'Sin dimensiones, tamaño final ni precio inventados'],
+    ['NAV/WEATHER', 'cartas náuticas y meteorología no licenciados'],
+  ];
+  const missing = required.filter(([, copy]) => !body.includes(copy)).map(([family]) => family);
+  expect(missing, 'Límites familiares no renderizados: ' + missing.join(', ')).toEqual([]);
+});

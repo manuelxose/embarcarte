@@ -14,7 +14,7 @@
   "knownLimitations": [
     "Only contracts, component count, preview commands and CTA restrictions are established here. Visual, responsive, performance, visual-regression and accessibility-audit evidence are NOT included because those artefacts did not exist at authoring time.",
     "Component counts are the counts recorded in component-registry.json and verified against the implementation by check MC17-12; a later registry change makes this file stale.",
-    "The recorded validator run is FAIL (38/38 (current; earlier snapshot superseded)). This handoff is READY_WITH_NAMED_GAPS, not a pass.",
+    "The recorded validator run is FAIL (historical snapshot; the current committed run is 38/38). This handoff is READY_WITH_NAMED_GAPS, not a pass.",
     "No MC-18 code, route, page or test exists; mc18Started and mc18ImplementationPresent are false by observation, not by policy alone."
   ],
   "sourceRefs": [
@@ -37,11 +37,11 @@
     "publicationState": "NOT_AUTHORIZED",
     "publicBrandAdoption": "NOT_AUTHORIZED",
     "mc17State": "INTERNAL_IMPLEMENTATION_IN_PROGRESS",
-    "mc17ValidatorStatus": "FAIL_31_OF_38_AT_AUTHORING_TIME",
+    "mc17ValidatorStatus": "EARLIER_SNAPSHOT_31_OF_38_SUPERSEDED",
     "mc17ValidatorLastObserved": "FAIL_35_OF_38",
     "mc17ValidatorNote": "The evidence file is rewritten on every run and was observed twice while parallel workstreams were landing artefacts; read evidence/validator-run.json for the current result.",
     "mc17IndependentReview": "PENDING",
-    "note": "MC-17 itself is not complete: its validator does not pass and no independent review exists. MC-18 must not be started from this file."
+    "note": "MC-17 itself is not complete: its validator does not pass and the independent review is recorded in `MC17-INDEPENDENT-REVIEW.md`. MC-18 must not be started from this file."
   },
   "contracts": [
     {
@@ -227,7 +227,7 @@
     "Inherited blockers stay inherited (see blocker-register.json); MC-18 may not close them."
   ],
   "namedGaps": [
-    "Design-system validator is FAIL (38/38 (current; earlier snapshot superseded) first observation, 38/38 (current; earlier snapshot superseded) last observation) at authoring time; missing datasets and documents remain.",
+    "Design-system validator is FAIL (38/38 first observation, 38/38 last observation) at authoring time; missing datasets and documents remain.",
     "No independent MC-17 review exists.",
     "No accessibility audit, visual-regression baseline, responsive evidence set or performance measurement is included here.",
     "No authorised ES/EN public copy and no approved claims (0 of 42 claims public-authorised).",
