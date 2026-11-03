@@ -138,14 +138,14 @@ surfaces.
 Screenshot and JSON evidence is produced by the Playwright suite, not committed by this
 document:
 
-| Artifact | Location | Presence at authoring time |
+| Artifact | Location | Presence at `4a9043b` |
 |---|---|---|
-| Responsive screenshots (320/360/390/768/1024/1440) | `test-results/design-system/responsive-*.png` | absent (the responsive test writes them only after its assertions pass) |
-| Visual baselines / diffs | Playwright snapshot output under the project's default snapshot directory | not present; the first run creates baselines and fails by design |
-| axe results per mode | `test-results/design-system/axe-<mode>.json` | present for all four modes |
-| axe summary | `docs/marea/design-system/evidence/axe-summary.json` | present |
-| Playwright JSON report | `test-results/design-system/results.json` | absent; the reporter path is configured but the file was not produced |
-| Failure artifacts | `test-results/<test-name>/` (`error-context.md`, `test-failed-1.png`, `trace.zip`) | present for four spec cases at authoring time |
+| Responsive screenshots (320/360/390/768/1024/1440) | `test-results/design-system/responsive-*.png` | present for all six widths (the responsive test writes them after its assertions pass) |
+| Visual baselines / diffs | `e2e/design-system/visual.spec.ts-snapshots/` | 26 committed PNGs (after removing the two orphaned foundation locale captures); acceptance comparison runs without `--update-snapshots` |
+| axe results per mode | `test-results/design-system/axe-<mode>.json` | present for all four modes, 0 violations each |
+| axe summary | `docs/marea/design-system/evidence/axe-summary.json` | present; 0 violations, 36 passes, 0 incomplete per mode |
+| Playwright JSON report | `test-results/design-system/results.json` | present as a reporter artifact only; `.last-run.json` is the completion record |
+| Failure artifacts | `test-results/<test-name>/` (`error-context.md`, `test-failed-1.png`, `trace.zip`) | four historical directories retained from pre-correction runs; not current failures |
 
 The suite is `e2e/design-system/` with `accessibility.spec.ts`, `keyboard.spec.ts`,
 `responsive.spec.ts`, `visual.spec.ts` and `commerce.spec.ts`. The config forces one
@@ -153,23 +153,24 @@ worker, Chromium only, locale `es` and disabled animations for visual snapshots.
 
 ### 7.1 Recorded axe outcome
 
-The committed `evidence/axe-summary.json` reports 0 violations for `web-light`,
-`instrument-day` and `instrument-sunlight`, and **1 `color-contrast` violation for
-`instrument-night`** (36 passes and 1 incomplete in that mode; the other modes have
-0 incomplete). The failing nodes are in
-`marea-component-doc` (the preview-only documentation block, `.name`, `.status`, `.purpose`,
-definition-list and table text), not in a library component. The summary states
-`conformanceClaim: "NONE..."`; it is not a WCAG claim.
+The committed `evidence/axe-summary.json` at `4a9043b` reports **0 violations, 36
+passes and 0 incomplete in each of the four modes** (`web-light`, `instrument-day`,
+`instrument-sunlight`, `instrument-night`). The earlier record of 1
+`color-contrast` violation in `instrument-night` inside `marea-component-doc` (the
+preview-only documentation block) is historical: the contrast was corrected, axe was
+re-run, and the failure artifact is retained only as evidence of the previous state.
+The summary states `conformanceClaim: "NONE..."`; it is not a WCAG claim.
 
-The matching Playwright failure artifact is
+The historical Playwright failure artifact is
 `test-results/accessibility-all-four-vis-6661a-d-automated-WCAG-A-AA-rules-chromium/`.
-Three other failure directories exist (status-badge text, CTA purchase/price copy,
-price/stock amount). Their results are **not** treated as a clean gate here.
+Three other historical failure directories exist (status-badge text, CTA purchase/price
+copy, price/stock amount). They are not current failures: the catalogue suite passes
+30/30 at `4a9043b`.
 
-At authoring time no responsive screenshot or visual baseline was committed, so **no
-screenshot is claimed as captured**. Evidence is reproducible with
-`npm run build:design-system-preview` followed by `npm run test:design-system:visual` on a
-machine with Chromium installed; a clean run is still required.
+Six responsive screenshots and 26 visual baselines are committed. Evidence is
+reproducible with `npm run build:design-system-preview` followed by
+`npm run test:design-system:visual` on a machine with Chromium installed; baseline
+acceptance is always compared **without** `--update-snapshots`.
 
 ## 8. Catalogue documentation blocks
 
@@ -184,10 +185,10 @@ At authoring time the registry dataset exists and the generated file contains
 records `MC17-12` PASS ("49 registry entries verified against implementation") and
 `MC17-14` PASS ("49 components x 11 states"). The documentation blocks therefore render.
 
-Recorded side effect: the `instrument-night` axe finding described in §7.1 is located
+Historical side effect: the pre-correction `instrument-night` axe finding was located
 entirely in the `marea-component-doc` nodes, which render only when the registry is
-populated. The failing styles belong to the preview-only documentation block, not to the
-library token set.
+populated. The failing styles belonged to the preview-only documentation block, not to
+the library token set, and the current run records 0 violations in all four modes.
 
 ## 9. What the catalogue does not do
 
@@ -216,21 +217,21 @@ Commands: `npm run test:design-system`, `npm run test:design-system:unit`,
 
 ## 11. Known gaps
 
-- **Instrument-night axe contrast finding is open** (§7.1). It is in the preview-only
-  documentation block; it still blocks a clean accessibility gate.
-- **The visual and responsive suites are not clean at authoring time.** Failure artifacts
-  exist for four cases; no responsive screenshots or baselines are committed.
+- **Instrument-night axe contrast finding is closed at `4a9043b`.** The current summary
+  and all four raw runs record 0 violations; the historical failure artifact is retained.
+- **The visual and responsive suites pass at `4a9043b`.** 30/30 catalogue tests, six
+  responsive screenshots and 26 committed baselines; four historical failure directories
+  are retained from pre-correction runs.
 - **Chromium-only, Windows-specific** screenshots; Firefox/WebKit and macOS/Linux captures
   are not produced.
 - **Catalogue prose is Spanish-only**, including demo documentation titles and the
   component-doc captions.
-- **No independent review** of the catalogue (`MC17-INDEPENDENT-REVIEW.md` absent,
-  PENDING).
+- **Independent review not final**: `MC17-INDEPENDENT-REVIEW.md` exists with two rounds,
+  both PARTIAL; the third-round verdict on `4a9043b` is pending.
 - **No accessibility conformance claim**: axe is partial evidence, not an audit. The
   recorded summary explicitly says `conformanceClaim: NONE`.
-- **No validator pass**: the recorded run is `FAIL` (see `evidence/validator-run.json`);
-  three failures are missing-file errors for datasets added after the run and two are
-  documentation/dataset completeness. None of this is a pass.
+- **Validator at `4a9043b` is `PASS` 38/38** (`evidence/validator-run.json`). The earlier
+  FAIL snapshots are historical; the current evidence file is the authority.
 
 ## 12. Source map
 

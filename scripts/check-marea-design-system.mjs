@@ -17,6 +17,14 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  PRODUCTION_ENTRY_FILES,
+  analyzeFamilyGalleryCoupling,
+  analyzeVariantCoverage,
+  extractFamilyLimitKeys,
+  findIsolationOffenders,
+  focusContractProblems,
+} from './marea-design-system-guards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DS = 'src/app/marea-design-system';
@@ -266,30 +274,17 @@ add('MC17-07', 'No global style override or legacy token mutation exists', () =>
     : fail(offenders.join(' | '));
 });
 
-add('MC17-08', 'Design-system code is absent from production entry points', () => {
-  const files = [
-    'src/main.ts',
-    'src/main.server.ts',
-    'src/app/app.routes.ts',
-    'src/app/core/seo.service.ts',
-    'src/server.ts',
-  ];
-  const offenders = [];
-  for (const file of files) {
-    const source = read(file);
-    if (/marea-design-system|marea-theme|marea-ds-catalogue|preview\/catalogue/i.test(source)) {
-      offenders.push(`${file}: forbidden literal`);
-    }
-    for (const match of source.matchAll(/(?:from|import)\s*\(?\s*['"]([^'"]+)['"]/g)) {
-      if (/marea|preview\//i.test(match[1])) offenders.push(`${file}: import ${match[1]}`);
-    }
-  }
-  return offenders.length === 0
-    ? pass(
-        `${files.length} production files free of design-system imports (literal + import-path scan)`,
-      )
-    : fail(offenders.join(', '));
-});
+add(
+  'MC17-08',
+  'Production entry points cannot reach preview or design-system code by any import path',
+  () => {
+    const { offenders, scanned, aliasPatterns } = findIsolationOffenders({ root });
+    if (offenders.length > 0) return fail(offenders.slice(0, 10).join(' | '));
+    return pass(
+      `${PRODUCTION_ENTRY_FILES.length} entries, ${scanned} local project modules followed; relative imports, re-exports and dynamic imports resolved against tsconfig paths/baseUrl (${aliasPatterns} alias patterns)`,
+    );
+  },
+);
 
 add('MC17-09', 'Production build output contains no design-system or catalogue code', () => {
   const dist = 'dist/embarcarte/browser';
@@ -375,32 +370,13 @@ add('MC17-12', 'Registered components all exist in the real implementation', () 
 
 add('MC17-13', 'No undocumented component variant is exposed', () => {
   const registry = readJson(`${DATA}/component-registry.json`);
-  const optionInputs =
-    /^(variant|size|tone|kind|status|mode|state|gap|align|spacing|padding|level|live|freshness)$/;
-  const offenders = [];
-  let documented = 0;
-  for (const entry of registry.components) {
-    const source = read(entry.implementationPath);
-    const variants = new Set(entry.visualVariants);
-    for (const match of source.matchAll(/\b([A-Za-z_]\w*)\s*=\s*input<([^>]*)>\s*\(/g)) {
-      if (!optionInputs.test(match[1])) continue;
-      const literals = [...match[2].matchAll(/'([^']+)'|"([^"]+)"/g)].map(
-        (literal) => literal[1] ?? literal[2],
-      );
-      for (const literal of literals) {
-        documented++;
-        if (!variants.has(literal)) offenders.push(`${entry.componentId}.${match[1]}=${literal}`);
-      }
-    }
-    for (const variant of variants)
-      if (!source.includes(`'${variant}'`) && !source.includes(`"${variant}"`))
-        offenders.push(`${entry.componentId}: variant ${variant} declared but not implemented`);
+  const outcome = analyzeVariantCoverage({ root, registry });
+  if (outcome.offenders.length > 0) {
+    return fail(`${outcome.offenders.length}: ${outcome.offenders.slice(0, 10).join(' | ')}`);
   }
-  return offenders.length === 0
-    ? pass(
-        `${documented} option values and ${registry.components.length * 0 || ''} variants documented`,
-      )
-    : fail(`${offenders.length}: ${offenders.slice(0, 10).join(' | ')}`);
+  return pass(
+    `${outcome.optionInputs} option inputs resolved to ${outcome.resolvedValues} string values and compared in both directions with the registry (types + visualVariants); ${outcome.visualMatched} visual variants matched, ${outcome.nonEnumerable} non-enumerable option inputs skipped`,
+  );
 });
 
 add('MC17-14', 'Every component state contract covers the eleven required states', () => {
@@ -437,23 +413,18 @@ add('MC17-15', 'Interactive components implement a visible focus contract', () =
   );
   const offenders = [];
   for (const entry of interactive) {
-    const source = read(entry.implementationPath);
-    const focusOk =
+    const focusSource =
       entry.componentId === 'marea-input'
-        ? read(`${DS}/components/foundation/marea-form-field.ts`).includes(':focus-visible')
-        : source.includes(':focus-visible');
-    if (!focusOk) offenders.push(entry.componentId);
-    else if (
-      !/:focus-visible[\s\S]{0,400}--marea-focus-ring/.test(source) &&
-      entry.componentId !== 'marea-input'
-    )
-      offenders.push(`${entry.componentId}: focus-visible does not reference the focus-ring token`);
+        ? read(`${DS}/components/foundation/marea-form-field.ts`)
+        : read(entry.implementationPath);
+    const problems = focusContractProblems(focusSource);
+    if (problems.length > 0) offenders.push(`${entry.componentId}: ${problems.join(', ')}`);
   }
   return offenders.length === 0
     ? pass(
-        `${interactive.length} keyboard-operable components expose :focus-visible with focus tokens`,
+        `${interactive.length} keyboard-operable components expose :focus-visible with the focus-ring token and no hidden/transparent outline`,
       )
-    : fail(offenders.join(', '));
+    : fail(offenders.join(' | '));
 });
 
 add('MC17-16', 'Instrument numerics use the Manrope numeric role with tabular figures', () => {
@@ -542,26 +513,56 @@ add('MC17-19', 'No purchase path, price or stock quantity exists in the design s
     : fail(offenders.slice(0, 8).join(' | '));
 });
 
-add('MC17-20', 'Commerce presentation reports MC-16 readiness and restrictions truthfully', () => {
-  const fixtures = read(`${DS}/data/fixtures/marea-fixtures.generated.ts`);
-  const required = [
-    'PILOT',
-    'AIS',
-    'WATCH',
-    'FLEET',
-    'SENSE-ESSENTIALS',
-    'DISPLAY-LARGE-CONDITIONAL',
-  ];
-  const missing = required.filter((token) => !fixtures.includes(token));
-  const pilotBlocked = /PILOT[\s\S]{0,400}SAFETY_GATE_BLOCKED/.test(fixtures);
-  const aisReceiveOnly = fixtures.includes('RECEIVE_ONLY_NO_TRANSMISSION');
-  const fleetNoHardware = (fixtures.match(/"hardwareIncludedByDefault": true/g) ?? []).length === 0;
-  return missing.length === 0 && pilotBlocked && aisReceiveOnly && fleetNoHardware
-    ? pass('PILOT blocked, AIS receive-only, FLEET without default hardware')
-    : fail(
-        `missing=${missing.join(',')} pilot=${pilotBlocked} ais=${aisReceiveOnly} fleet=${fleetNoHardware}`,
+const FAMILY_IDS = ['PILOT', 'AIS', 'SENSE', 'WATCH', 'FLEET', 'NAV', 'WEATHER', 'DISPLAY', 'HUB'];
+
+add(
+  'MC17-20',
+  'Commerce presentation reports MC-16 readiness and restrictions truthfully and the family-limit map covers all nine families',
+  () => {
+    const fixtures = read(`${DS}/data/fixtures/marea-fixtures.generated.ts`);
+    const required = [
+      'PILOT',
+      'AIS',
+      'WATCH',
+      'FLEET',
+      'SENSE-ESSENTIALS',
+      'DISPLAY-LARGE-CONDITIONAL',
+    ];
+    const missingFixtures = required.filter((token) => !fixtures.includes(token));
+    const pilotBlocked = /PILOT[\s\S]{0,400}SAFETY_GATE_BLOCKED/.test(fixtures);
+    const aisReceiveOnly = fixtures.includes('RECEIVE_ONLY_NO_TRANSMISSION');
+    const fleetNoHardware =
+      (fixtures.match(/"hardwareIncludedByDefault": true/g) ?? []).length === 0;
+
+    const copy = read(`${DS}/core/i18n.ts`);
+    const { keys, unresolved } = extractFamilyLimitKeys({ root });
+    const missingFamilies = FAMILY_IDS.filter((familyId) => !keys.has(familyId));
+    const extraFamilies = [...keys.keys()].filter((familyId) => !FAMILY_IDS.includes(familyId));
+    const danglingCopyKeys = [...keys.values()].filter(
+      (copyKey) => !new RegExp(`\\b${copyKey}\\s*:`).test(copy),
+    );
+    const familyProblems = [
+      ...unresolved,
+      ...missingFamilies.map((familyId) => `FAMILY_LIMIT_KEYS missing ${familyId}`),
+      ...extraFamilies.map((familyId) => `FAMILY_LIMIT_KEYS unknown ${familyId}`),
+      ...danglingCopyKeys.map((copyKey) => `FAMILY_LIMIT_KEYS copy key ${copyKey} not in i18n`),
+    ];
+    if (
+      missingFixtures.length === 0 &&
+      pilotBlocked &&
+      aisReceiveOnly &&
+      fleetNoHardware &&
+      familyProblems.length === 0
+    ) {
+      return pass(
+        `PILOT blocked, AIS receive-only, FLEET without default hardware; FAMILY_LIMIT_KEYS statically covers ${FAMILY_IDS.length}/${FAMILY_IDS.length} families and all copy keys resolve`,
       );
-});
+    }
+    return fail(
+      `missingFixtures=${missingFixtures.join(',')} pilot=${pilotBlocked} ais=${aisReceiveOnly} fleet=${fleetNoHardware} familyLimits=${familyProblems.join('; ') || 'ok'}`,
+    );
+  },
+);
 
 add('MC17-21', 'All nine families, 26 editions and six bundles are representable', () => {
   const families = readJson('docs/marea/commerce-data/data/product-families.json').families;
@@ -605,26 +606,46 @@ add(
   },
 );
 
-add('MC17-23', 'PILOT, AIS, WATCH, FLEET, SENSE and DISPLAY limits are stated in copy', () => {
-  const copy = read(`${DS}/core/i18n.ts`);
-  const required = [
-    'pilotSupervised',
-    'aisReceiveOnly',
-    'watchNoGuarantee',
-    'fleetNoHardware',
-    'senseEssentialsKit',
-    'displayConditional',
-    'navWeatherLicensing',
-  ];
-  const missing = required.filter((key) => !new RegExp(`\\b${key}\\s*:`).test(copy));
-  const noAutonomyClaim =
-    !/AUTONOMOUS_NAVIGATION|autonomousNavigation|live steering control enabled/i.test(
-      sourceOf(DS_FILES),
+add(
+  'MC17-23',
+  'Family limitation copy is stated and the commerce gallery is statically coupled to all nine families',
+  () => {
+    const copy = read(`${DS}/core/i18n.ts`);
+    const required = [
+      'pilotSupervised',
+      'aisReceiveOnly',
+      'watchNoGuarantee',
+      'fleetNoHardware',
+      'senseEssentialsKit',
+      'displayConditional',
+      'navWeatherLicensing',
+    ];
+    const missing = required.filter((key) => !new RegExp(`\\b${key}\\s*:`).test(copy));
+    const noAutonomyClaim =
+      !/AUTONOMOUS_NAVIGATION|autonomousNavigation|live steering control enabled/i.test(
+        sourceOf(DS_FILES),
+      );
+    const gallery = analyzeFamilyGalleryCoupling({ root });
+    const missingGalleryFamilies = FAMILY_IDS.filter(
+      (familyId) => !gallery.familyIds.has(familyId),
     );
-  return missing.length === 0 && noAutonomyClaim
-    ? pass('family-limitation copy present, no autonomy/steering claim')
-    : fail(`missing ${missing.join(',')} autonomyClaim=${!noAutonomyClaim}`);
-});
+    const galleryProblems = [
+      ...gallery.unresolved,
+      ...(gallery.cards === FAMILY_IDS.length
+        ? []
+        : [`${gallery.cards} <marea-family-card> specimens (expected ${FAMILY_IDS.length})`]),
+      ...missingGalleryFamilies.map((familyId) => `gallery missing ${familyId} family card`),
+    ];
+    if (missing.length === 0 && noAutonomyClaim && galleryProblems.length === 0) {
+      return pass(
+        `family-limitation copy present, no autonomy/steering claim; commerce gallery statically instantiates ${gallery.cards}/${FAMILY_IDS.length} family cards including WEATHER and HUB (rendered evidence is Playwright-only)`,
+      );
+    }
+    return fail(
+      `missing copy ${missing.join(',')} autonomyClaim=${!noAutonomyClaim} gallery=${galleryProblems.join('; ') || 'ok'}`,
+    );
+  },
+);
 
 add('MC17-24', 'Shared entitlements are presented once per ledger', () => {
   const component = read(`${DS}/components/commerce/marea-entitlement-summary.ts`);

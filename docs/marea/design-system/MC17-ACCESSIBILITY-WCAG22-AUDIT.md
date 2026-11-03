@@ -91,16 +91,17 @@ The raw files confirm the same counts and axe-core `4.11.4`. The summary states:
 "`conformanceClaim`: `NONE`. This file is not a claim of full WCAG conformance;
 automated coverage is partial and manual review is required."
 
-**Record reconciliation.** Earlier authoring records — `MC17-INTERNAL-COMPONENT-CATALOGUE.md`
-§7.1, `MC17-RISKS-AND-UNRESOLVED-GAPS.md` G11 and the limitations block of
-`accessibility-requirements.json` — report one `color-contrast` violation in
-`instrument-night` inside `marea-component-doc`. That finding has a retained failure
-artifact at
+**Record reconciliation (2026-11-03, third-round correction).** Earlier authoring
+records — `MC17-INTERNAL-COMPONENT-CATALOGUE.md` §7.1,
+`MC17-RISKS-AND-UNRESOLVED-GAPS.md` G11 and the limitations block of
+`accessibility-requirements.json` — reported one `color-contrast` violation in
+`instrument-night` inside `marea-component-doc`. That finding has a retained historical
+failure artifact at
 `test-results/accessibility-all-four-vis-6661a-d-automated-WCAG-A-AA-rules-chromium/`.
-The **current** summary and all four current raw files report 0 violations and 0
-incomplete, so the older text describes a previous run, not the current tree. This
-document uses the current evidence and does not edit the other authors' documents or
-datasets.
+The **current** summary and all four current raw files report 0 violations, 36 passes
+and 0 incomplete, so the older text describes a previous run, not the current tree.
+Those records have now been reconciled in the same correction; the failure artifact is
+kept as history.
 
 ## 4. WCAG 2.2 criteria table
 
@@ -161,9 +162,9 @@ WCAG 2.2 AA does not require 2.4.13, and MC-17 does not claim or measure it.
 7. **Axe `region` is disabled** because the catalogue lacks a `main` landmark. That
    is acceptable for an internal tool, but it means the run is not a public-page
    audit.
-8. **The older one-violation record remains in retained failure artifacts and in
-   other authors' documents.** The current summary supersedes it; the retained
-   failure artifact is evidence of the previous state.
+8. **The older one-violation record remains in retained failure artifacts.** The
+   current summary supersedes it and the documents that repeated it were reconciled
+   at `4a9043b`; the failure artifact is evidence of the previous state.
 9. **No testing of error states, loading states or live-region behaviour** beyond the
    disabled-button status assertion.
 
@@ -183,7 +184,8 @@ review of every surface.
 - Design system: `INTERNAL_PROPOSED`, `NOT_ADOPTED`, public use `NO_GO`.
 - Accessibility: no conformance claim, no audit certificate, no approval.
 - Publication and deployment: not authorised.
-- Independent MC-17 review: `PENDING` (D22 absent at authoring).
+- Independent MC-17 review: two rounds recorded, both PARTIAL; third-round verdict on
+  `4a9043b` pending (`MC17-INDEPENDENT-REVIEW.md`).
 
 ## 8. Evidence index
 
@@ -191,11 +193,11 @@ review of every surface.
 |---|---|---|
 | Axe summary | `docs/marea/design-system/evidence/axe-summary.json` | present; 0 violations/mode |
 | Raw axe JSON | `test-results/design-system/axe-<mode>.json` | present (gitignored) |
-| Accessibility requirements | `docs/marea/design-system/data/accessibility-requirements.json` | present; authored, older night-mode note |
+| Accessibility requirements | `docs/marea/design-system/data/accessibility-requirements.json` | present; reconciled to 0 violations in all four modes |
 | Contrast evidence | `docs/marea/design-system/data/contrast-evidence.json` | 296 measurements, 0 failures |
-| Playwright suite | `e2e/design-system/accessibility.spec.ts`, `keyboard.spec.ts`, `responsive.spec.ts`, `commerce.spec.ts` | 28 tests across 6 files in the recorded run |
+| Playwright suite | `e2e/design-system/accessibility.spec.ts`, `keyboard.spec.ts`, `responsive.spec.ts`, `commerce.spec.ts` | 30 tests across 6 files at `4a9043b` (count re-measured at the correction commit) |
 | Playwright final status | `test-results/design-system/artifacts/.last-run.json` | `status: passed` |
-| Validator | `docs/marea/design-system/evidence/validator-run.json` | current run 36/38; failures are missing deliverables/datasets, not accessibility checks |
+| Validator | `docs/marea/design-system/evidence/validator-run.json` | `PASS` 38/38 at `4a9043b`; no accessibility check fails |
 
 Commands: `node scripts/check-marea-design-system.mjs`,
 `npm run test:design-system:unit`,

@@ -6,10 +6,10 @@
 | Milestone | MC-17/36 — MAREA premium design system (internal only) |
 | Date | 2026-11-03 |
 | Owner | documentation-specialist (MC-17/36) |
-| Validator | `scripts/check-marea-design-system.mjs` (964 lines) |
+| Validator | `scripts/check-marea-design-system.mjs` (983 lines at `4a9043b`) |
 | Check count | **38** (`MC17-01` … `MC17-38`) |
 | Unit/adversarial suites | 2 files, **27 tests** (16 unit + 11 adversarial) |
-| Most recent run | **36/38 PASS, 2 FAIL** — failures are missing artefacts, not code checks |
+| Most recent run | **PASS, 38/38** at `4a9043b` (`evidence/validator-run.json`) |
 
 ## 1. What the validator is
 
@@ -106,8 +106,8 @@ Descriptions are the validator's own (abbreviated detail in the third column).
 
 | ID | Verifies | Latest result |
 |---|---|---|
-| `MC17-35` | 24 required documents exist | **FAIL** — 3 missing (D22–D24) |
-| `MC17-36` | 20 datasets exist with governance metadata | **FAIL** — `review-findings.json` missing |
+| `MC17-35` | 24 required documents exist | PASS — 24/24 present at `4a9043b` |
+| `MC17-36` | 20 datasets exist with governance metadata | PASS — 20/20 present |
 | `MC17-37` | 8 design-system test artefacts exist | PASS |
 | `MC17-38` | Accessibility dataset covers required WCAG 2.2 AA criteria | PASS |
 
@@ -176,33 +176,34 @@ components use rather than a test double.
 | Status not colour-only | `MC17-18`; accessibility badge test |
 | Restricted families/limits in copy | `MC17-20`, `MC17-23`, `MC17-24` |
 
-## 5. Most recent validator result
+## 5. Current validator result and historical failures
 
-Command run for this package:
+Current result at `4a9043b`:
 
 ```text
 node scripts/check-marea-design-system.mjs
+MC-17 design system validator: 38/38 checks passed
 ```
 
-Result: **36/38 passed, 2 failed**, exit code **1**. The two failures, verbatim from
-the final run after the six documents and four datasets of this package were written:
+The committed `docs/marea/design-system/evidence/validator-run.json` records
+`status: PASS`, `checkCount: 38`, `passed: 38`, `failed: 0`.
+
+The earlier authoring snapshots are retained as history: at 02:47 the run was
+`FAIL` 31/38; at 02:56 it was `FAIL` 35/38 (36/38 before
+`review-findings.json` was written); at `7cbc99e` it was `FAIL` 37/38, with
+`MC17-35` the only failure because D23/D24 did not exist yet. The verbatim final
+pre-correction failure was:
 
 ```text
 FAIL  MC17-35  Required documentation deliverables exist — missing: MC17-INDEPENDENT-REVIEW.md, MC17-SPANISH-EXECUTIVE-REPORT.md, MC17-FINAL-DELIVERY-RECORD.md
 FAIL  MC17-36  Required machine-readable datasets exist and declare their governance metadata — review-findings.json: missing
 ```
 
-The residual failures are entirely outside this package: D22 (independent review),
-D23 (Spanish executive report), D24 (final delivery record) and the reviewer-owned
-`review-findings.json`. The six documents and four datasets authored here are
-recognised by `MC17-35`/`MC17-36`; no code, token, isolation, commerce, baseline or
-test-artefact check failed. The first run made before authoring had the same two
-failing checks with nine and five missing artefacts respectively; the current file
-`evidence/validator-run.json` is authoritative and this document does not claim a
-milestone PASS.
-
-All 36 passing checks include every code, token, isolation, commerce, baseline and
-test-artefact check. No code check failed.
+Those missing artefacts were subsequently authored (D22–D24 and
+`review-findings.json`) and the third-round correction at `4a9043b` records a clean
+38/38 run. No code, token, isolation, commerce, baseline or test-artefact check has
+ever failed. The evidence file is the authority; this document does not claim a
+milestone PASS, because the final independent verdict is still pending.
 
 ## 6. Exit behaviour
 
@@ -224,12 +225,15 @@ test-artefact check. No code check failed.
    the validator; zero axe violations does not prove WCAG 2.2 AA.
 3. **Visual baselines are platform-specific.** The 26 PNGs are Chromium/Windows;
    they do not validate other engines, platforms or DPRs, and a comparison proves
-   only that pixels did not change.
+   only that pixels did not change. They were generated with `--update-snapshots`
+   on the frozen implementation; acceptance comparison must always run without it
+   (see D13 §7 and `data/visual-regression-evidence.json`).
 4. **The validator checks presence, not full semantics.** `MC17-36` requires
    governance fields; a syntactically valid but substantively wrong dataset could
    pass that check.
 5. **Self-authored evidence.** The validator, datasets and documents share authors;
-   the independent review (D22) is the control that is still pending.
+   the independent review (D22) is the control, and its final third-round verdict on
+   `4a9043b` is still pending after two PARTIAL rounds.
 6. **The recorded run is a snapshot.** The file is rewritten on every run and can go
    stale as parallel work lands; read it at review time, not this document.
 7. **No browser run is performed by the validator.** Keyboard, focus, reflow, axe

@@ -25,7 +25,9 @@ interface MareaEntitlementRow {
   imports: [MareaText],
   template: `
     <section class="entitlements">
-      <h3 marea-text variant="heading" class="heading">{{ heading() ?? i18n.text('entitlements') }}</h3>
+      <h3 marea-text variant="heading" class="heading">
+        {{ heading() ?? i18n.text('entitlements') }}
+      </h3>
       <ul class="rows">
         @for (row of rows(); track row.rowKey) {
           <li class="row">
@@ -34,7 +36,9 @@ interface MareaEntitlementRow {
               <span marea-text variant="meta" class="term">{{ row.term }}</span>
             </div>
             @if (row.sharedLedger) {
-              <p marea-text variant="bodySmall" tone="secondary" class="note">{{ i18n.text('sharedEntitlement') }}</p>
+              <p marea-text variant="bodySmall" tone="secondary" class="note">
+                {{ i18n.text('sharedEntitlement') }}
+              </p>
             }
             @if (row.localSafetyIndependent) {
               <p marea-text variant="bodySmall" tone="secondary" class="note">
@@ -47,12 +51,28 @@ interface MareaEntitlementRow {
     </section>
   `,
   styles: `
-    :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .entitlements { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-3); min-inline-size: 0; }
-    .heading { margin: 0; }
-    .rows { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
+    :host {
+      display: block;
+      min-inline-size: 0;
+      color: var(--marea-text-primary);
+    }
+    .entitlements {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-3);
+      min-inline-size: 0;
+    }
+    .heading {
+      margin: 0;
+    }
+    .rows {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-2);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
     .row {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
@@ -61,11 +81,27 @@ interface MareaEntitlementRow {
       border-block-end: var(--marea-border-width-hairline, 1px) solid var(--marea-line);
       min-inline-size: 0;
     }
-    .row:last-child { padding-block-end: 0; border-block-end: 0; }
-    .row-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--marea-space-2); }
-    .names { font-weight: 600; overflow-wrap: anywhere; }
-    .term { overflow-wrap: anywhere; }
-    .note { margin: 0; }
+    .row:last-child {
+      padding-block-end: 0;
+      border-block-end: 0;
+    }
+    .row-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--marea-space-2);
+    }
+    .names {
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+    .term {
+      overflow-wrap: anywhere;
+    }
+    .note {
+      margin: 0;
+    }
   `,
 })
 export class MareaEntitlementSummary {

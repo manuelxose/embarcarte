@@ -21,9 +21,18 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       gap: var(--marea-gutter-md, 24px);
       align-items: start;
     }
-    :host(.marea-grid--compact) { gap: var(--marea-space-3); }
-    :host(.marea-grid--roomy) { gap: var(--marea-space-6); }
-    @media (max-width: 767px) { :host { grid-template-columns: 1fr; gap: var(--marea-gutter-sm, 16px); } }
+    :host(.marea-grid--compact) {
+      gap: var(--marea-space-3);
+    }
+    :host(.marea-grid--roomy) {
+      gap: var(--marea-space-6);
+    }
+    @media (max-width: 767px) {
+      :host {
+        grid-template-columns: 1fr;
+        gap: var(--marea-gutter-sm, 16px);
+      }
+    }
   `,
 })
 export class MareaGrid {

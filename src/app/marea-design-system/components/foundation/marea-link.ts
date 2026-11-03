@@ -39,12 +39,32 @@ import { MareaIcon } from './marea-icon';
       border-radius: var(--marea-radius-control);
       cursor: pointer;
     }
-    :host(:hover) { color: var(--marea-action-hover); }
-    :host(:focus-visible) { outline: var(--marea-focus-width) var(--marea-focus-style) var(--marea-focus-ring); outline-offset: var(--marea-focus-offset); }
-    :host(.marea-link--quiet) { color: var(--marea-text-primary); text-decoration: none; }
-    :host(.marea-link--quiet:hover) { color: var(--marea-action); text-decoration: underline; }
-    :host(.marea-link--standalone) { font-size: var(--marea-type-body-size); }
-    .sr-only { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    :host(:hover) {
+      color: var(--marea-action-hover);
+    }
+    :host(:focus-visible) {
+      outline: var(--marea-focus-width) var(--marea-focus-style) var(--marea-focus-ring);
+      outline-offset: var(--marea-focus-offset);
+    }
+    :host(.marea-link--quiet) {
+      color: var(--marea-text-primary);
+      text-decoration: none;
+    }
+    :host(.marea-link--quiet:hover) {
+      color: var(--marea-action);
+      text-decoration: underline;
+    }
+    :host(.marea-link--standalone) {
+      font-size: var(--marea-type-body-size);
+    }
+    .sr-only {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
   `,
 })
 export class MareaLink {

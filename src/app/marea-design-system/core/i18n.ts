@@ -207,7 +207,10 @@ export const MAREA_COPY = {
     en: 'No authorised documentation exists yet for this family.',
   },
   notApplicable: { es: 'No aplicable', en: 'Not applicable' },
-  scrollHint: { es: 'Desplaza horizontalmente para ver la tabla completa', en: 'Scroll horizontally to see the full table' },
+  scrollHint: {
+    es: 'Desplaza horizontalmente para ver la tabla completa',
+    en: 'Scroll horizontally to see the full table',
+  },
   openNavigation: { es: 'Abrir navegación', en: 'Open navigation' },
   closeNavigation: { es: 'Cerrar navegación', en: 'Close navigation' },
   tableLabel: { es: 'Tabla: {name}', en: 'Table: {name}' },

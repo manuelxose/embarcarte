@@ -28,7 +28,9 @@ export interface MareaComparisonRow {
     <div class="scroll" role="region" tabindex="0" [attr.aria-label]="caption()">
       <table class="table">
         <caption>
-          {{ caption() }}
+          {{
+            caption()
+          }}
         </caption>
         <thead>
           <tr>

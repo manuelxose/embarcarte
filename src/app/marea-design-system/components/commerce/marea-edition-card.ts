@@ -1,7 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { MareaI18n, type MareaCopyKey } from '../../core/i18n';
 import { MareaIds } from '../../core/ids';
-import type { MareaCommercialPresentation, MareaDefinitionStatus, MareaEditionSummary, MareaTone } from '../../core/types';
+import type {
+  MareaCommercialPresentation,
+  MareaDefinitionStatus,
+  MareaEditionSummary,
+  MareaTone,
+} from '../../core/types';
 import { MareaStatusBadge } from '../foundation/marea-status-badge';
 import { MareaSurface } from '../foundation/marea-surface';
 import { MareaText } from '../foundation/marea-text';
@@ -41,7 +46,9 @@ const DEFINITION_COPY: Readonly<Record<MareaDefinitionStatus, MareaCopyKey>> = {
     <marea-surface [labelledBy]="titleId">
       <article class="card">
         <div class="head">
-          <h3 marea-text variant="title2" class="title" [id]="titleId">{{ edition().displayName }}</h3>
+          <h3 marea-text variant="title2" class="title" [id]="titleId">
+            {{ edition().displayName }}
+          </h3>
           <span marea-status-badge [tone]="definitionTone()" [label]="definitionLabel()"></span>
           @if (edition().requiresQuotation) {
             <span marea-status-badge tone="warning" [label]="i18n.text('requiresQuotation')"></span>
@@ -60,12 +67,31 @@ const DEFINITION_COPY: Readonly<Record<MareaDefinitionStatus, MareaCopyKey>> = {
     </marea-surface>
   `,
   styles: `
-    :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .card { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-3); min-inline-size: 0; }
-    .head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--marea-space-2); }
-    .title, .type, .limitation { margin: 0; }
-    .type { overflow-wrap: anywhere; }
+    :host {
+      display: block;
+      min-inline-size: 0;
+      color: var(--marea-text-primary);
+    }
+    .card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-3);
+      min-inline-size: 0;
+    }
+    .head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--marea-space-2);
+    }
+    .title,
+    .type,
+    .limitation {
+      margin: 0;
+    }
+    .type {
+      overflow-wrap: anywhere;
+    }
   `,
 })
 export class MareaEditionCard {

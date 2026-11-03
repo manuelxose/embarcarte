@@ -11,9 +11,19 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   },
   template: '<ng-content />',
   styles: `
-    :host { display: flex; flex-wrap: wrap; align-items: center; gap: var(--marea-inline-gap, var(--marea-space-3)); min-inline-size: 0; }
-    :host(.marea-inline--between) { justify-content: space-between; }
-    :host(.marea-inline--start) { justify-content: flex-start; }
+    :host {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--marea-inline-gap, var(--marea-space-3));
+      min-inline-size: 0;
+    }
+    :host(.marea-inline--between) {
+      justify-content: space-between;
+    }
+    :host(.marea-inline--start) {
+      justify-content: flex-start;
+    }
   `,
 })
 export class MareaInline {

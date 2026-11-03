@@ -1,33 +1,82 @@
 {
   "contractId": "MC17-VISUAL-REGRESSION-EVIDENCE",
-  "contractVersion": "1.0.0",
+  "contractVersion": "1.1.0",
   "milestone": "MC-17",
   "status": "INTERNAL_PROPOSED",
-  "owner": "documentation-specialist (MC-17/36)",
-  "generationMethod": "authored from the recorded e2e/design-system/visual.spec.ts run, the 26 committed PNGs under e2e/design-system/visual.spec.ts-snapshots/ and test-results/design-system/artifacts/.last-run.json; no Playwright run was made for this dataset",
-  "scope": "Inventory, capture settings, provenance and non-self-validating caveat for the 26 Chromium/Windows visual baselines of the internal MC-17 catalogue.",
+  "owner": "documentation-specialist (MC-17/36); provenance reconciled in the third-round correction",
+  "generationMethod": "authored from the real e2e/design-system/visual.spec.ts run, the 26 committed PNGs under e2e/design-system/visual.spec.ts-snapshots/, test-results/design-system/artifacts/.last-run.json and SHA-256/byte/dimension measurements of each PNG; the two orphaned foundation locale captures were removed because the spec now captures the commerce locale pair. No Playwright run was made by this documentation task.",
+  "scope": "Inventory, capture settings, environment, source commits, per-pair SHA-256, the explicit ES/EN commerce difference, reproducible generation/acceptance procedure and non-self-validating caveat for the 26 Chromium/Windows visual baselines of the internal MC-17 catalogue.",
   "recordedRun": {
     "config": "playwright.design-system.config.ts",
     "spec": "e2e/design-system/visual.spec.ts",
     "testsInSpec": 6,
-    "totalTestsAcrossSuite": 30,
+    "totalTestsAcrossSuiteAt4a9043b": 30,
+    "totalTestsAcrossSuiteAtCorrection": 37,
+    "totalTestsAcrossSuiteNote": "30 at 4a9043b (29 at 7cbc99e, 28 at authoring). 37 at the third-round correction commit: eight per-family/adversarial commerce tests replaced one body-wide assertion. The count is measured from the Playwright run, not hardcoded.",
     "finalStatus": "passed",
     "finalStatusEvidence": "test-results/design-system/artifacts/.last-run.json",
-    "recordedGenerationCommand": "generated with --update-snapshots on the frozen tree, then re-run WITHOUT --update-snapshots: 30/30 passed twice",
-    "caveat": "That command generates and compares in the same run, so the set is not self-validating. The independent auditor must re-run the suite WITHOUT --update-snapshots against the frozen commit.",
-    "browser": "Chromium (Playwright Desktop Chrome)",
+    "recordedAcceptanceCommand": "npx playwright test -c playwright.design-system.config.ts (no --update-snapshots)",
+    "snapshotWriteCommand": "npx playwright test -c playwright.design-system.config.ts --update-snapshots (only to write baselines on an explicitly reviewed tree; never the acceptance command)",
+    "caveat": "A run that writes and compares in the same invocation is not self-validating. Baseline acceptance is always a later run WITHOUT --update-snapshots; the independent reviewer must re-run it against the frozen commit.",
+    "browser": "Chromium (Playwright Desktop Chrome, channel bundled with @playwright/test 1.64.1)",
     "operatingSystem": "Windows",
     "workers": 1,
     "retries": 0
   },
-  "localeParity": "The ES/EN pair targets the locale-sensitive commerce gallery; the two PNGs differ (sha256 prefixes 27132adf1af3 vs a57f03700f6b at the last run).",
+  "environment": {
+    "operatingSystem": "Windows (win32)",
+    "node": "24.18.0",
+    "playwright": "@playwright/test 1.64.1 (installed; verified with npx playwright --version)",
+    "browser": "Chromium, Playwright Desktop Chrome",
+    "platformSuffix": "-chromium-win32",
+    "note": "Firefox, WebKit, macOS, Linux, real phones and high-DPI hardware are not covered."
+  },
+  "sourceCommits": [
+    {
+      "commit": "3a8d4fd9797db953271e1c5951c68c89cecc9fce",
+      "role": "initial MC-17 implementation with the first 26-baseline set"
+    },
+    {
+      "commit": "7cbc99e1a1499f22ddc6053d661983e1d91f841b",
+      "role": "audit corrections and baseline corrections"
+    },
+    {
+      "commit": "4a9043b98144c0ad4313728642321cd3752f5ccf",
+      "role": "delivery candidate: commerce locale pair captured, two orphaned foundation locale captures removed, instrument baselines regenerated"
+    },
+    {
+      "commit": "<pending: correction commit containing this reconciliation file>",
+      "role": "third-round documentation/evidence correction; SHA assigned at commit time"
+    }
+  ],
+  "generationProcedure": [
+    "Start from the frozen, reviewed tree; no uncommitted source change.",
+    "Run npm run build:design-system-preview to serve the internal catalogue.",
+    "Write baselines only on that reviewed tree with npx playwright test -c playwright.design-system.config.ts --update-snapshots; this is an explicit, reviewed action, never a way to make a failing test green.",
+    "Commit the PNGs together with the reviewed change.",
+    "Run acceptance on every later verification WITHOUT --update-snapshots: npx playwright test -c playwright.design-system.config.ts.",
+    "If a comparison fails, classify the diff as intended change, rendering-environment change or regression before any regeneration; an environment change needs a new platform suffix, never a silent overwrite."
+  ],
+  "localeParity": {
+    "test": "commerce gallery ES vs EN pair at 1440x900",
+    "esBaseline": {
+      "file": "commerce-1440x900-web-light-locale-es-chromium-win32.png",
+      "sha256": "a57f03700f6b22bf39366bf4ff51c3bd6b56e12167c62feffff866e2538b189a"
+    },
+    "enBaseline": {
+      "file": "commerce-1440x900-web-light-locale-en-chromium-win32.png",
+      "sha256": "27132adf1af3330f41ce9a2a09506ff948e6c383b13f2bb241d531ac57603596"
+    },
+    "difference": "The ES and EN commerce baselines DIFFER: sha256 27132adf1af3… (EN, 63,372 bytes) vs a57f03700f6b… (ES, 59,024 bytes). The pair now discriminates locale rendering. The two earlier foundation locale captures were byte-identical to each other and to foundation-1440x900-web-light, did not discriminate locale (the differing copy sat below the captured viewport) and were deleted as orphaned.",
+    "note": "The ES commerce locale baseline is byte-identical to commerce-1440x900-web-light because both capture the same ES commerce gallery state; that is expected, not a defect."
+  },
   "snapshotSettings": {
     "maxDiffPixelRatio": 0.002,
     "animations": "disabled",
     "fullPage": false,
     "caret": "hide",
     "scale": "css",
-    "locale": "es (forced), except the explicit ES/EN pair",
+    "locale": "es (forced), except the explicit ES/EN commerce pair",
     "viewportDesktop": "1440x900",
     "viewportMobile": "320x812",
     "beforeCapture": "scroll the gallery to the top of the viewport, wait for fonts and two animation frames",
@@ -85,9 +134,9 @@
       "baselines": 8
     },
     {
-      "test": "foundation gallery ES vs EN pair at 1440x900",
+      "test": "commerce gallery ES vs EN pair at 1440x900",
       "galleries": [
-        "foundation"
+        "commerce"
       ],
       "baselines": 2
     }
@@ -95,6 +144,10 @@
   "baselineInventory": {
     "directory": "e2e/design-system/visual.spec.ts-snapshots",
     "count": 26,
+    "removedOrphans": [
+      "foundation-1440x900-web-light-locale-es-chromium-win32.png",
+      "foundation-1440x900-web-light-locale-en-chromium-win32.png"
+    ],
     "files": [
       {
         "file": "commerce-1440x900-instrument-day-chromium-win32.png",
@@ -103,7 +156,8 @@
         "height": 900,
         "mode": "instrument-day",
         "locale": "es",
-        "bytes": 58957
+        "bytes": 58957,
+        "sha256": "dfca1de62872c6206deb098a6d6678ec68bbf69f1978ad57e67aa4d1e416686a"
       },
       {
         "file": "commerce-1440x900-instrument-night-chromium-win32.png",
@@ -112,7 +166,8 @@
         "height": 900,
         "mode": "instrument-night",
         "locale": "es",
-        "bytes": 59571
+        "bytes": 59571,
+        "sha256": "0a14131d0d331a565a920cd4226e0b2f73425af094801f778e387ee7593ec782"
       },
       {
         "file": "commerce-1440x900-instrument-sunlight-chromium-win32.png",
@@ -121,7 +176,8 @@
         "height": 900,
         "mode": "instrument-sunlight",
         "locale": "es",
-        "bytes": 58725
+        "bytes": 58725,
+        "sha256": "8f755f8a8a7fe5eb911c29981d19dc2b1cef8fc03fc9315220a802e7cbef5dd9"
       },
       {
         "file": "commerce-1440x900-web-light-chromium-win32.png",
@@ -130,7 +186,28 @@
         "height": 900,
         "mode": "web-light",
         "locale": "es",
-        "bytes": 59024
+        "bytes": 59024,
+        "sha256": "a57f03700f6b22bf39366bf4ff51c3bd6b56e12167c62feffff866e2538b189a"
+      },
+      {
+        "file": "commerce-1440x900-web-light-locale-en-chromium-win32.png",
+        "gallery": "commerce",
+        "width": 1440,
+        "height": 900,
+        "mode": "web-light",
+        "locale": "en",
+        "bytes": 63372,
+        "sha256": "27132adf1af3330f41ce9a2a09506ff948e6c383b13f2bb241d531ac57603596"
+      },
+      {
+        "file": "commerce-1440x900-web-light-locale-es-chromium-win32.png",
+        "gallery": "commerce",
+        "width": 1440,
+        "height": 900,
+        "mode": "web-light",
+        "locale": "es",
+        "bytes": 59024,
+        "sha256": "a57f03700f6b22bf39366bf4ff51c3bd6b56e12167c62feffff866e2538b189a"
       },
       {
         "file": "commerce-320x812-instrument-night-chromium-win32.png",
@@ -139,7 +216,8 @@
         "height": 812,
         "mode": "instrument-night",
         "locale": "es",
-        "bytes": 43038
+        "bytes": 43038,
+        "sha256": "b72c0cfcfc2fac5d8540cd46766c90df578eb5f3ff3a1caddc7050ef59818a45"
       },
       {
         "file": "commerce-320x812-web-light-chromium-win32.png",
@@ -148,7 +226,8 @@
         "height": 812,
         "mode": "web-light",
         "locale": "es",
-        "bytes": 42698
+        "bytes": 42698,
+        "sha256": "5d519fabc2b77d3feb29f864b3bcda474bad2f8284662bd58d0c7053c37a5d1f"
       },
       {
         "file": "foundation-1440x900-instrument-day-chromium-win32.png",
@@ -157,7 +236,8 @@
         "height": 900,
         "mode": "instrument-day",
         "locale": "es",
-        "bytes": 77069
+        "bytes": 77069,
+        "sha256": "a282def6b5c5c32cbb557f8bb13b2b34a8dcfebe8be6176cecb562eb693e6893"
       },
       {
         "file": "foundation-1440x900-instrument-night-chromium-win32.png",
@@ -166,7 +246,8 @@
         "height": 900,
         "mode": "instrument-night",
         "locale": "es",
-        "bytes": 78825
+        "bytes": 78825,
+        "sha256": "11e1c6701a922a0e0bc88164d21745dfa8da672e038d543b7919cb88df7d225e"
       },
       {
         "file": "foundation-1440x900-instrument-sunlight-chromium-win32.png",
@@ -175,7 +256,8 @@
         "height": 900,
         "mode": "instrument-sunlight",
         "locale": "es",
-        "bytes": 77091
+        "bytes": 77091,
+        "sha256": "e70d943988cabfb69945b1a4cd5bd176905e18b5b680ae4ab2e5288d902a2104"
       },
       {
         "file": "foundation-1440x900-web-light-chromium-win32.png",
@@ -184,25 +266,8 @@
         "height": 900,
         "mode": "web-light",
         "locale": "es",
-        "bytes": 77260
-      },
-      {
-        "file": "foundation-1440x900-web-light-locale-en-chromium-win32.png",
-        "gallery": "foundation",
-        "width": 1440,
-        "height": 900,
-        "mode": "web-light",
-        "locale": "en",
-        "bytes": 77260
-      },
-      {
-        "file": "foundation-1440x900-web-light-locale-es-chromium-win32.png",
-        "gallery": "foundation",
-        "width": 1440,
-        "height": 900,
-        "mode": "web-light",
-        "locale": "es",
-        "bytes": 77260
+        "bytes": 77260,
+        "sha256": "646348bbd4cdaa5681c8616137d99ec810f93fde5f9c98002bbbb3447665cd13"
       },
       {
         "file": "foundation-320x812-instrument-night-chromium-win32.png",
@@ -211,7 +276,8 @@
         "height": 812,
         "mode": "instrument-night",
         "locale": "es",
-        "bytes": 41075
+        "bytes": 41075,
+        "sha256": "0f7c440cd89ef023b3ee39e02043ccaa1f57d27d144779a0b1018cc7b37affd8"
       },
       {
         "file": "foundation-320x812-web-light-chromium-win32.png",
@@ -220,7 +286,8 @@
         "height": 812,
         "mode": "web-light",
         "locale": "es",
-        "bytes": 40837
+        "bytes": 40837,
+        "sha256": "68bd41669ea9bd5bd70792d9a081526196b35c59b280551edb254bb5e97bd4cd"
       },
       {
         "file": "instrument-1440x900-instrument-day-chromium-win32.png",
@@ -229,7 +296,8 @@
         "height": 900,
         "mode": "instrument-day",
         "locale": "es",
-        "bytes": 75911
+        "bytes": 75787,
+        "sha256": "5013f87b4a6decddb893483ea79e4c5336cf347091ac16697dfe5e49c8665638"
       },
       {
         "file": "instrument-1440x900-instrument-night-chromium-win32.png",
@@ -238,7 +306,8 @@
         "height": 900,
         "mode": "instrument-night",
         "locale": "es",
-        "bytes": 77474
+        "bytes": 77420,
+        "sha256": "4f49f1ec264e016e35d463db40eca5950be46be3fafa9cb1c7880964246f6cb2"
       },
       {
         "file": "instrument-1440x900-instrument-sunlight-chromium-win32.png",
@@ -247,7 +316,8 @@
         "height": 900,
         "mode": "instrument-sunlight",
         "locale": "es",
-        "bytes": 75422
+        "bytes": 75386,
+        "sha256": "2273e8c414648b16da6b503d85d2fdd99dfce150b4db960ba51d312f8c90a7f0"
       },
       {
         "file": "instrument-1440x900-web-light-chromium-win32.png",
@@ -256,7 +326,8 @@
         "height": 900,
         "mode": "web-light",
         "locale": "es",
-        "bytes": 76053
+        "bytes": 75945,
+        "sha256": "3196fae694f3f714d981ee4963942570c409d1074e16dd444eee56f9b24f3b68"
       },
       {
         "file": "instrument-320x812-instrument-night-chromium-win32.png",
@@ -265,7 +336,8 @@
         "height": 812,
         "mode": "instrument-night",
         "locale": "es",
-        "bytes": 36233
+        "bytes": 36251,
+        "sha256": "e66970d0c1dec5597fa36ae2164406d99612a02aaaece0bee2f5ca661889cdca0"
       },
       {
         "file": "instrument-320x812-web-light-chromium-win32.png",
@@ -274,7 +346,8 @@
         "height": 812,
         "mode": "web-light",
         "locale": "es",
-        "bytes": 35619
+        "bytes": 35683,
+        "sha256": "4665a9c15b0dccbb14ee4ec41e620ac5a7cadee4071406e36a274c24bdb1090f"
       },
       {
         "file": "structured-1440x900-instrument-day-chromium-win32.png",
@@ -283,7 +356,8 @@
         "height": 900,
         "mode": "instrument-day",
         "locale": "es",
-        "bytes": 69581
+        "bytes": 69581,
+        "sha256": "2ae262a8ee4439e27d58ef0a1a0565774b45e987a90c1718ba83abfda04d46aa"
       },
       {
         "file": "structured-1440x900-instrument-night-chromium-win32.png",
@@ -292,7 +366,8 @@
         "height": 900,
         "mode": "instrument-night",
         "locale": "es",
-        "bytes": 71408
+        "bytes": 71408,
+        "sha256": "78ff6ec1a6079d8da013b3dd2f42f16509516c1fb907e43d93023d79e7a0ec0d"
       },
       {
         "file": "structured-1440x900-instrument-sunlight-chromium-win32.png",
@@ -301,7 +376,8 @@
         "height": 900,
         "mode": "instrument-sunlight",
         "locale": "es",
-        "bytes": 68983
+        "bytes": 68983,
+        "sha256": "3d5095dfb4b11d8f35d981c6340e98ad95aa357f726d9545f51c7b4e585f0291"
       },
       {
         "file": "structured-1440x900-web-light-chromium-win32.png",
@@ -310,7 +386,8 @@
         "height": 900,
         "mode": "web-light",
         "locale": "es",
-        "bytes": 69638
+        "bytes": 69638,
+        "sha256": "3db890d89bf4f8cb20621b3b574eee84775ccd4f45a4751b6f9d4d108b36d588"
       },
       {
         "file": "structured-320x812-instrument-night-chromium-win32.png",
@@ -319,7 +396,8 @@
         "height": 812,
         "mode": "instrument-night",
         "locale": "es",
-        "bytes": 30322
+        "bytes": 30322,
+        "sha256": "fa826f5d3f415d5aa4d6a4771f0258f1e4676488aab33cf30307bfecbdf31e70"
       },
       {
         "file": "structured-320x812-web-light-chromium-win32.png",
@@ -328,37 +406,33 @@
         "height": 812,
         "mode": "web-light",
         "locale": "es",
-        "bytes": 29650
+        "bytes": 29650,
+        "sha256": "6acc8c76f6dd7669a6aac6529d8d7977c6ac0cac004eeb14b0e9607b7c253874"
       }
     ]
-  },
-  "provenance": {
-    "generatedOn": "the frozen MC-17 implementation commit",
-    "commitSha": "3a8d4fd (implementation), 7cbc99e (audit corrections), delivery commit (this file)",
-    "commitShaReason": "Git commands are outside this documentation task; the Lead holds the frozen SHA and the independent reviewer must verify the baselines against it.",
-    "generatedBy": "the recorded Playwright run with --update-snapshots",
-    "platformSuffix": "-chromium-win32",
-    "reVerification": "independent auditor re-runs npx playwright test -c playwright.design-system.config.ts without --update-snapshots"
   },
   "nonSelfValidatingCaveat": "A baseline generated in the same run that compares it cannot prove the implementation correct. The 26 PNGs record the visual state of the frozen tree; they are evidence for a future comparison, not an approval. A passing comparison proves only that pixels did not change.",
   "knownLimitations": [
     "Chromium/Windows-specific; Firefox, WebKit, macOS, Linux, real phones and high-DPI hardware are not covered.",
-    "The baselines were generated and compared with --update-snapshots in the recorded run, so they are not self-validating.",
-    "The commit SHA is not quoted because Git was not run; the independent auditor must confirm it.",
+    "The baselines are self-generated evidence; a later run without --update-snapshots is the acceptance comparison, and the independent reviewer must reproduce it.",
     "Only the stated galleries/widths/modes are captured; not every component state or consumer composition.",
     "A visual pass is not accessibility conformance, brand approval or publication authorisation.",
-    "Screenshots are page captures anchored to the gallery top, not full-page captures."
+    "Screenshots are page captures anchored to the gallery top, not full-page captures.",
+    "The earlier claim that 26 committed PNGs were generated with --update-snapshots as the recorded acceptance command is removed: writing snapshots is an explicit baseline-generation step, and acceptance never uses --update-snapshots.",
+    "Third-round correction (2026-11-03): the two 320x812 instrument captures were deliberately refreshed after the committed baselines no longer matched the same Chromium/Windows renderer. The refreshed images were compared with the previous ones: identical layout and content, pixel differences confined to text antialiasing (mean absolute delta ~1.2/255, bbox across the text area). The other 24 baselines are byte-identical to the delivery candidate. This is a renderer-environment refresh, not a design change; a later environment change must use a new platform suffix, never a silent overwrite.",
+    "At the third-round correction commit the design-system Playwright config runs 37 tests (30 at 4a9043b): eight per-family/adversarial commerce tests replaced one body-wide assertion."
   ],
   "commands": [
     "npm run build:design-system-preview",
-    "npx playwright test -c playwright.design-system.config.ts --update-snapshots (recorded generation run)",
-    "npx playwright test -c playwright.design-system.config.ts (required re-verification without updating)"
+    "npx playwright test -c playwright.design-system.config.ts --update-snapshots (explicit baseline-write step on a reviewed tree only)",
+    "npx playwright test -c playwright.design-system.config.ts (required acceptance comparison, never with --update-snapshots)"
   ],
   "sourceRefs": [
     "e2e/design-system/visual.spec.ts",
     "e2e/design-system/visual.spec.ts-snapshots/",
     "e2e/design-system/helpers.ts",
     "playwright.design-system.config.ts",
+    "package.json",
     "test-results/design-system/artifacts/.last-run.json",
     "docs/marea/design-system/MC17-RESPONSIVE-BEHAVIOR-AND-VISUAL-TESTING.md"
   ]

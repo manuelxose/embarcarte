@@ -27,7 +27,8 @@ const VARIANT_ICON: Readonly<Record<MareaNoticeVariant, MareaIconName>> = {
     'data-marea-component': 'marea-notice',
     '[class]': "'marea-notice marea-notice--' + variant()",
     '[attr.role]': "live() === 'assertive' ? 'alert' : live() === 'polite' ? 'status' : null",
-    '[attr.aria-live]': "live() === 'assertive' ? 'assertive' : live() === 'polite' ? 'polite' : null",
+    '[attr.aria-live]':
+      "live() === 'assertive' ? 'assertive' : live() === 'polite' ? 'polite' : null",
   },
   template: `
     <marea-icon [name]="icon()" size="lg" />
@@ -50,17 +51,53 @@ const VARIANT_ICON: Readonly<Record<MareaNoticeVariant, MareaIconName>> = {
       background: var(--marea-surface);
       color: var(--marea-text-primary);
     }
-    :host(.marea-notice--info) { color: var(--marea-state-info); }
-    :host(.marea-notice--warning) { color: var(--marea-state-warning); background: var(--marea-state-warning-surface); }
-    :host(.marea-notice--critical) { color: var(--marea-state-critical); background: var(--marea-state-critical-surface); }
-    :host(.marea-notice--permission) { color: var(--marea-internal-banner-text); background: var(--marea-internal-banner-surface); }
-    :host(.marea-notice--internal) { color: var(--marea-internal-banner-text); background: var(--marea-internal-banner-surface); }
-    .body { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-1); min-inline-size: 0; }
-    .heading { margin: 0; overflow-wrap: break-word; font-family: var(--marea-font-display); font-size: var(--marea-type-heading-size); font-weight: 700; color: currentColor; }
-    .text { margin: 0; overflow-wrap: break-word; color: var(--marea-text-primary); }
-    :host(.marea-notice--warning) .heading, :host(.marea-notice--critical) .heading { color: currentColor; }
-    @media (max-width: 479px) { :host { padding: var(--marea-space-3); } }
+    :host(.marea-notice--info) {
+      color: var(--marea-state-info);
+    }
+    :host(.marea-notice--warning) {
+      color: var(--marea-state-warning);
+      background: var(--marea-state-warning-surface);
+    }
+    :host(.marea-notice--critical) {
+      color: var(--marea-state-critical);
+      background: var(--marea-state-critical-surface);
+    }
+    :host(.marea-notice--permission) {
+      color: var(--marea-internal-banner-text);
+      background: var(--marea-internal-banner-surface);
+    }
+    :host(.marea-notice--internal) {
+      color: var(--marea-internal-banner-text);
+      background: var(--marea-internal-banner-surface);
+    }
+    .body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-1);
+      min-inline-size: 0;
+    }
+    .heading {
+      margin: 0;
+      overflow-wrap: break-word;
+      font-family: var(--marea-font-display);
+      font-size: var(--marea-type-heading-size);
+      font-weight: 700;
+      color: currentColor;
+    }
+    .text {
+      margin: 0;
+      overflow-wrap: break-word;
+      color: var(--marea-text-primary);
+    }
+    :host(.marea-notice--warning) .heading,
+    :host(.marea-notice--critical) .heading {
+      color: currentColor;
+    }
+    @media (max-width: 479px) {
+      :host {
+        padding: var(--marea-space-3);
+      }
+    }
   `,
 })
 export class MareaNotice {

@@ -24,12 +24,30 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       border-radius: var(--marea-radius-surface);
       padding: var(--marea-space-5);
     }
-    :host(.marea-surface--raised) { background: var(--marea-surface-raised); }
-    :host(.marea-surface--outline) { background: transparent; border-color: var(--marea-border-strong); }
-    :host(.marea-surface--pad-none) { padding: 0; }
-    :host(.marea-surface--pad-tight) { padding: var(--marea-space-3); }
-    :host(.marea-surface--pad-roomy) { padding: var(--marea-space-7); }
-    @media (max-width: 479px) { :host { padding: var(--marea-space-4); } :host(.marea-surface--pad-roomy) { padding: var(--marea-space-5); } }
+    :host(.marea-surface--raised) {
+      background: var(--marea-surface-raised);
+    }
+    :host(.marea-surface--outline) {
+      background: transparent;
+      border-color: var(--marea-border-strong);
+    }
+    :host(.marea-surface--pad-none) {
+      padding: 0;
+    }
+    :host(.marea-surface--pad-tight) {
+      padding: var(--marea-space-3);
+    }
+    :host(.marea-surface--pad-roomy) {
+      padding: var(--marea-space-7);
+    }
+    @media (max-width: 479px) {
+      :host {
+        padding: var(--marea-space-4);
+      }
+      :host(.marea-surface--pad-roomy) {
+        padding: var(--marea-space-5);
+      }
+    }
   `,
 })
 export class MareaSurface {

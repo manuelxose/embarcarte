@@ -11,8 +11,8 @@
 | Public use | `NO_GO` |
 | Branch | `feature/marea-mc17-premium-design-system` |
 | Verified base commit | `6d8287c8507038c4f90fd6e35471f78081ca4676` |
-| Independent review | `PENDING` — no MC-17 independent review exists at the time of writing |
-| Validator status | `FAIL` — the recorded run was `FAIL` at both observations made during authoring (see §7); the evidence file is the authority |
+| Independent review | `MC17-INDEPENDENT-REVIEW.md` (D22) present — two rounds recorded, both PARTIAL; third-round verdict on `4a9043b` pending |
+| Validator status | `PASS` — 38/38 at `4a9043b` (`evidence/validator-run.json`); the two FAIL observations in §7 are historical authoring snapshots |
 
 This document fixes what MC-17 is, what it is authorised to change, which
 governance state it inherits and what has actually been verified. It does not
@@ -36,10 +36,11 @@ No public surface, route, page, asset, deployment or brand use is authorised.
 
 Two facts must be stated plainly:
 
-1. The registry row for prompt 17 still reads `PLANNED` with no evidence column.
-   It was not updated to `IN PROGRESS` when implementation started, so the
-   registry does not yet reflect this milestone. That is a bookkeeping gap, not a
-   retroactive permission: the scope boundary in §5 is the binding constraint.
+1. The registry row for prompt 17 read `PLANNED` while implementation was in
+   progress. At `4a9043b` the Lead updated row 17 to `PARTIAL` with the
+   `MC17_VERDICT`/scope strings and the evidence reference (see D-073). The
+   original bookkeeping gap was a real omission, not a retroactive permission: the
+   scope boundary in §5 is the binding constraint.
 2. The Master Prompt 17/36 text itself is **not committed to this repository**.
    The closest committed artefacts are registry row 17 above, the MC-16 → MC-17
    presentation handoff (`docs/marea/commerce-data/MC16-MC17-HANDOFF.md`) and the
@@ -171,44 +172,47 @@ observed at authoring time; `MC17-12` re-verifies every registry entry against
 the implementation file it names, and fails if a class, selector, input, output
 or host marker is missing.
 
-## 7. Verification state — what has and has not run
+## 7. Verification state — authoring snapshot and current result
 
 A recorded run exists at
 `docs/marea/design-system/evidence/validator-run.json`, written by
 `npm run test:design-system` (`node scripts/check-marea-design-system.mjs`). The
 working tree was being built by parallel workstreams while this document was
-written, so the file changed under observation. Both snapshots are recorded here
-because the trend matters:
+written, so the file changed under observation. Both authoring snapshots are kept
+here because the trend is part of the record; they are **historical** and are
+superseded by the third-round correction at `4a9043b`:
 
-| Observation (local time) | status | passed / total | failing checks |
+| Observation | status | passed / total | failing checks |
 |---|---|---|---|
-| 02:47 | `FAIL` | 31 / 38 | `MC17-06` (13 unresolved `--marea-type-*-letter-spacing` names), `MC17-32`, `MC17-33`, `MC17-34`, `MC17-35`, `MC17-36`, `MC17-38` (missing datasets/documents) |
-| 02:56 | `FAIL` | 35 / 38 | `MC17-33` (`mc18Started` read at the wrong level), `MC17-35` (missing documents), `MC17-36` (missing `manifest.json`, `responsive-evidence.json`, `performance-evidence.json`, `visual-regression-evidence.json`, `review-findings.json`) |
+| 2026-11-03 02:47 (historical) | `FAIL` | 31 / 38 | `MC17-06` (13 unresolved `--marea-type-*-letter-spacing` names), `MC17-32`, `MC17-33`, `MC17-34`, `MC17-35`, `MC17-36`, `MC17-38` (missing datasets/documents) |
+| 2026-11-03 02:56 (historical) | `FAIL` | 35 / 38 | `MC17-33` (`mc18Started` read at the wrong level), `MC17-35` (missing documents), `MC17-36` (missing `manifest.json`, `responsive-evidence.json`, `performance-evidence.json`, `visual-regression-evidence.json`, `review-findings.json`) |
+| 2026-11-03 `7cbc99e` (historical) | `FAIL` | 37 / 38 | `MC17-35` only: D23/D24 were authored after that review |
+| `4a9043b` (current delivery candidate) | `PASS` | 38 / 38 | none |
 
 The contrast evidence written by the same command is
-`data/contrast-evidence.json` — at both observations status `PASS`, 296 pair/mode
+`data/contrast-evidence.json` — at every observation status `PASS`, 296 pair/mode
 measurements, 0 failures.
 
-Checks that pass in the 02:56 snapshot and are directly relevant to the scope
-boundary: `MC17-01` governance status unchanged, `MC17-04` all declared contrast
-pairs pass, `MC17-07` no global override, `MC17-08` production isolation,
-`MC17-09` bundle scan, `MC17-10` catalogue project isolation, `MC17-11` zero MAREA
-public assets, `MC17-12` registry vs implementation (49 entries), `MC17-14` 49
-components × 11 states, `MC17-19` no purchase path/currency/price API, `MC17-21`
-9/26/6 entities represented, `MC17-28` baseline unchanged, `MC17-29` routes
-untouched, `MC17-31` no Product/Offer markup, `MC17-37` test artefacts present.
+The axe summary at `4a9043b` reports 0 violations, 36 passes and 0 incomplete in
+each of the four modes. The earlier single `instrument-night` `color-contrast`
+finding in the preview-only component-documentation block is historical and
+retained only as a failure artifact.
 
-**This document does not claim PASS.** The run is `FAIL`; the remaining failures
-are missing artefacts (`manifest.json`, `responsive-evidence.json`,
-`performance-evidence.json`, `visual-regression-evidence.json`,
-`review-findings.json` and several documents of the 24-deliverable set) plus one
-handoff-field mismatch. The snapshot is also stale by construction: the tree kept
-changing after it was written, so the only valid statement is the one in the file
-at the moment it is read.
+**Current state:** the validator is `PASS` 38/38 at `4a9043b`, but this document
+still does **not** claim a milestone PASS. Two independent rounds are recorded, both
+PARTIAL; the third-round verdict on `4a9043b` is pending. An earlier version of this
+document reported the authoring-time `FAIL` snapshots as the current state; that
+wording is superseded by the third-round correction (D-073) and the historical rows
+above are kept with date and SHA.
 
-Not run by this milestone: `npm run build`, `npm run test:design-system:visual`,
-the Playwright suites, any axe audit, and any git command. No performance
-measurement, visual-regression baseline or hardware test exists.
+Verified at `4a9043b` (recorded evidence, not re-run by this document):
+`npm run build` PASS, Playwright catalogue 30/30, unit/adversarial 27/27,
+26 visual baselines, six responsive screenshots and the performance evidence file.
+`format:check` passed on the delivered glob at `4a9043b`, but the parallel agent's
+expanded coverage (design-system source, preview, e2e/design-system and the
+design-system Playwright config) is not green yet and must be re-run at the
+correction commit. Hardware validation remains
+BLOCKED; no WCAG conformance claim exists.
 
 ## 8. Inheritance and non-amendment
 
@@ -225,20 +229,25 @@ measurement, visual-regression baseline or hardware test exists.
 MC-17 adds one blocker register of its own
 (`docs/marea/design-system/data/blocker-register.json`, 17 entries) that carries
 `MC16-FINAL-02`, `MC16-FINAL-09`, `FINANCIAL_V18`, `MC13-F-05`, `MC13-F-11`,
-`MC13-F-14`, `MC15-GSC-01`, `MC15-GSC-02` unchanged and adds the MC-17-specific
-blockers (trademark, hardware validation, no authorised copy, no independent
-review, validator not passing, token-reference defect, live F-1, deliverable
-coverage, open publication gates).
+`MC13-F-14`, `MC15-GSC-01`, `MC15-GSC-02` unchanged and records the MC-17-specific
+items (trademark, hardware validation, no authorised copy, review status, validator,
+token-reference defect, live F-1, deliverable coverage, open publication gates).
+`MC17-VALIDATOR-NOT-PASSING`, `MC17-TOKEN-REFERENCE-DEFECT` and
+`MC17-DELIVERABLE-COVERAGE` are marked `CLOSED_HISTORICAL` at `4a9043b`; the
+inherited entries remain open and no predecessor verdict is amended.
 
 ## 9. Named gaps in this governance record
 
 1. Master Prompt 17/36 is not committed; the authorisation in §1 is a recorded
    scope statement, not a repository quote.
-2. The registry still shows prompt 17 as `PLANNED`; it must be updated by the
-   Lead with the real status and evidence when the milestone is graded.
+2. The registry row 17 was `PLANNED` during implementation; at `4a9043b` it records
+   `PARTIAL` with the evidence strings and the correction-commit placeholder. It
+   must be updated again only after the third-round verdict.
 3. PR #23 state is quoted from committed MC-16 records, not re-verified live.
-4. No MC-17 independent review exists; author review is not independent review.
-5. The validator does not pass; the recorded run is stale.
+4. The independent review has two PARTIAL rounds; the third-round verdict is pending.
+   Author review is not independent review.
+5. The validator records PASS 38/38 at `4a9043b`; the two earlier FAIL snapshots are
+   historical. A new SHA requires a fresh run.
 6. No public-surface change was made, so no live-site visual or accessibility
    claim can be derived from this milestone.
 

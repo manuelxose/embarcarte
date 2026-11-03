@@ -252,10 +252,10 @@ separately as restriction notices and readiness labels
 
 | Item | Status | Consequence |
 |---|---|---|
-| `marea-text` bodySmall variant referenced `--marea-type-bodySmall-size` / `-line-height` (camelCase) instead of `--marea-type-body-small-*` | **observed, corrected in-tree during authoring; re-verification pending** | The variant would silently inherit the parent's size instead of 0.875rem/1.6. The current file uses the kebab-case names; only a validator re-run certifies it |
-| `marea-form-field` uses a module-level `the removed module counter` instead of `MareaIds` | **OPEN** | Non-deterministic ids on a long-running SSR process; latent hydration risk |
-| Behavioural coverage of the 11 states | **NOT AUTOMATED IN THIS PACKAGE** | State descriptions document intent; no per-state unit test was executed here. The Playwright specs exist (`e2e/design-system/*.spec.ts`) but were not run for this documentation |
-| Independent review of the API | **PENDING** | The registry is authored and machine-verified against code, not independently reviewed |
+| `marea-text` bodySmall variant referenced `--marea-type-bodySmall-size` / `-line-height` (camelCase) instead of `--marea-type-body-small-*` | **CLOSED_VERIFIED at `4a9043b`** | The variant would have silently inherited the parent's size instead of 0.875rem/1.6. The current file uses the kebab-case names (`marea-text.ts:38`), and validator `MC17-06` passes with 180 references resolved against 182 definitions |
+| `marea-form-field` module-level counter (the former `fieldSequence`) | **CLOSED_VERIFIED at `4a9043b`** | The component now injects `MareaIds` (`marea-form-field.ts:3,78-81`); validator `MC17-15` and the SSR static scan pass. The old `fieldSequence` wording was a stale historical defect record, not the current implementation |
+| Behavioural coverage of the 11 states | **NOT AUTOMATED IN THIS PACKAGE** | State descriptions document intent; no per-state unit test was executed by this documentation author. The Playwright suite (`e2e/design-system/*.spec.ts`, 30 tests at `4a9043b`) is executed by the delivery gate, not re-run for this document |
+| Independent review of the API | **TWO ROUNDS RECORDED, BOTH PARTIAL; THIRD-ROUND VERDICT PENDING** | `MC17-INDEPENDENT-REVIEW.md` exists and is committed; the registry is machine-verified against code, and the final independent verdict on `4a9043b` is still pending |
 | Public use of any component | **NOT AUTHORISED** | `PUBLICATION_AUTHORIZED=false`; the components are internal only |
 
 A designed component is a documented, machine-checked API — not a shipped feature.

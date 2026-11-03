@@ -142,30 +142,36 @@ none of this and publishes no route.
 | G4 | No hardware validation for instrument modes | Day/sunlight/night readability, glare and night-vision performance are unmeasured | Modes are labelled software-only specimens; no hardware claim in copy | HARDWARE_LEAD | Physical display and daylight/night test evidence on named hardware |
 | G5 | No full WCAG 2.2 AA conformance claim | Accessibility evidence is partial; a public claim would be false | `conformanceClaim: "NOT_CLAIMED"`; axe + keyboard + reflow tests only | Programme lead (no audit owner assigned) | Independent audit with assistive technology and manual checks; findings closed |
 | G6 | Catalogue screenshots are Chromium/Windows-specific | Visual evidence does not cover Firefox, WebKit, macOS, Linux, mobile hardware or real DPI | Evidence is labelled as such; one worker, Chromium only | Design-system maintainer | Cross-engine/platform evidence or a documented, approved scope decision |
-| G7 | No independent review of MC-17 yet | Self-assessment cannot become a PASS | Status is PENDING; the author does not sign off their own work | Programme lead | A reviewer distinct from the author audits the real diff and issues PASS/PARTIAL/BLOCKED/FAIL |
+| G7 | Independent review not final | Self-assessment cannot become a PASS; two rounds are recorded but neither is a PASS | `MC17-INDEPENDENT-REVIEW.md` exists with two PARTIAL rounds; the author does not sign off their own work | Programme lead | A reviewer distinct from the author audits the real diff at `4a9043b` and issues the final PASS/PARTIAL/BLOCKED/FAIL |
 | G8 | Font metrics were not re-measured | Typography roles rely on MC-04 evidence; pixel equivalents are not asserted | `typography-roles.json` records the limitation; sizes are CSS expressions | Design-system maintainer | Re-measured metrics with method and environment recorded |
 | G9 | No real price, stock or API integration | The system cannot represent live commerce; sample data is synthetic | Structural absence of amount/quantity APIs; synthetic fixtures only | Programme lead with FINANCE_LEAD / data owner | An authorized, server-authoritative read API with approved price and verified stock; not before G1-G3 and gate closure |
-| G10 | Recorded validator run is FAIL and stale | The committed evidence does not demonstrate a passing contract; three failures are missing-file errors for datasets added after the run | The evidence file is kept as recorded, not rewritten; this package does not claim a pass | Design-system maintainer | Re-run `npm run test:design-system` at the reviewed commit and commit a PASS run with no missing files |
-| G11 | Component documentation block carries an axe finding | `instrument-night` has 1 `color-contrast` violation in the preview-only `marea-component-doc` block | Real components still render; the finding is recorded and attributable | Design-system maintainer | Fix the component-doc contrast and re-run axe; `conformanceClaim` stays NONE |
-| G12 | Several required MC-17 datasets are absent at authoring time | `MC17-36` cannot pass; missing: `manifest.json`, `responsive-evidence.json`, `performance-evidence.json`, `visual-regression-evidence.json`, `review-findings.json` (the recorded run also predates `asset-provenance`, `blocker-register` and `mc18-handoff-inputs`, which now exist) | Only the three assigned datasets are authored here; others remain other authors' scope | Programme lead | All 20 datasets listed in `MC17-36` exist with governance metadata and the validator is re-run |
+| G10 | ~~Recorded validator run is FAIL and stale~~ **CLOSED at `4a9043b`** | The recorded evidence now demonstrates a passing contract: `PASS`, 38/38 | The earlier FAIL snapshots (31/38, 36/38, 37/38) are retained as history with date/SHA; the current evidence file is authoritative | Design-system maintainer | Closed: `npm run test:design-system` was re-run at `4a9043b` and recorded PASS 38/38 |
+| G11 | ~~Component documentation block carries an axe finding~~ **CLOSED at `4a9043b`** | The recorded pre-correction run had 1 `color-contrast` violation in `instrument-night` in the preview-only `marea-component-doc` block; the current summary and all four raw runs record 0 violations | The historical failure artifact is retained; real components always rendered | Design-system maintainer | Closed: contrast corrected and axe re-run with 0 violations, 36 passes and 0 incomplete in all four modes; `conformanceClaim` stays NONE |
+| G12 | ~~Several required MC-17 datasets are absent at authoring time~~ **CLOSED at `4a9043b`** | `MC17-36` now passes: all 20 datasets exist with governance metadata, and all 24 documents exist | Earlier missing-file snapshots are retained as history | Programme lead | Closed: all 20 datasets listed in `MC17-36` exist and the validator records PASS 38/38 |
 
-## 4. Authoring-time evidence status
+## 4. Evidence status at `4a9043b`
 
-| Evidence | Status at authoring |
+The authoring-time rows below were superseded by the third-round correction; the historical
+FAIL snapshots (31/38 at 02:47, 36/38 at 02:56, 37/38 at `7cbc99e`) remain in D01 §7 and in
+`data/review-findings.json` as part of the record.
+
+| Evidence | Status at `4a9043b` |
 |---|---|
-| `docs/marea/design-system/evidence/validator-run.json` | PRESENT — `status: FAIL`, 38/38 passed (stale: run predates several datasets) |
+| `docs/marea/design-system/evidence/validator-run.json` | PRESENT — `status: PASS`, 38/38 checks |
 | `docs/marea/design-system/data/contrast-evidence.json` | PRESENT — `status: PASS`, 296 pair/mode measurements, 0 failures |
-| `docs/marea/design-system/evidence/axe-summary.json` | PRESENT — 0 violations in three modes, 0 `color-contrast` violations after the correction (preview-only component doc) |
-| `test-results/design-system/**` | PARTIAL — four axe JSON files present; no responsive screenshots or visual baselines; four Playwright failure directories present |
-| `MC17-INDEPENDENT-REVIEW.md` | ABSENT — review PENDING |
+| `docs/marea/design-system/evidence/axe-summary.json` | PRESENT — 0 violations, 36 passes, 0 incomplete in each of all four modes (`web-light`, `instrument-day`, `instrument-sunlight`, `instrument-night`) |
+| `test-results/design-system/**` | PRESENT — four axe JSON files, six responsive screenshots, `results.json` reporter artifact and `artifacts/.last-run.json`; four historical Playwright failure directories retained |
+| `MC17-INDEPENDENT-REVIEW.md` | PRESENT — two rounds recorded, both PARTIAL; third-round verdict pending |
 | `docs/marea/design-system/data/component-registry.json` | PRESENT — 49 components; `MC17-12`/`MC17-14` PASS in the recorded run |
-| `docs/marea/design-system/data/mc18-handoff-inputs.json` | PRESENT — `mc18Started: false`; owned by another author and not overwritten |
+| `docs/marea/design-system/data/mc18-handoff-inputs.json` | PRESENT — `mc18Started: false`; reconciled to `mc18ValidatorStatus: PASS_38_OF_38` |
 | `docs/marea/design-system/data/asset-provenance.json` | PRESENT — `adoption: NOT_ADOPTED`, `publicUse: NO_GO` |
 | `docs/marea/design-system/data/blocker-register.json` | PRESENT |
-| Required MC-17 document set | INCOMPLETE at the recorded run — this specialist authored D10, D11, D15, D16, D17, D18 and D19 |
+| Required MC-17 document set | COMPLETE — 24/24 documents (`MC17-35` PASS) |
 
-No test command was executed by this specialist. The recorded run is **not** a pass and this
-package does not present it as one.
+This specialist authored D10, D11, D15, D16, D17, D18 and D19 and did not execute the gate
+commands; the delivery record and the recorded evidence files are the authority. The current
+validator run is **PASS**, but MC-17 as a milestone remains `PARTIAL` because the final
+independent verdict is still pending.
 
 ## 5. What is explicitly not claimed
 
@@ -175,7 +181,8 @@ package does not present it as one.
 - No hardware performance, daylight readability or night-vision performance.
 - No publication, deployment, indexation or route activation.
 - No market, commercial, accessibility or brand adoption.
-- No independent review verdict for MC-17.
+- No final independent verdict for MC-17; two PARTIAL rounds are recorded and the
+  third-round verdict is pending.
 
 ## 6. Governance invariants preserved
 
@@ -195,9 +202,9 @@ package does not present it as one.
 ## 7. Recommended escalation order
 
 1. Fix MC16-FINAL-02 before any price approval path is created.
-2. Commit the validator/contrast evidence and close G10-G12 so the implementation is
-   reviewable.
-3. Obtain the independent review (G7) — no PASS before it.
+2. G10–G12 are closed at `4a9043b` (validator PASS 38/38, axe 0 in four modes, 20/20
+   datasets and 24/24 documents); keep the evidence current at any new SHA.
+3. Obtain the final independent review verdict (G7) — no PASS before it.
 4. Only then pursue copy authorization (G1), trademark/public use (G2-G3) and the hardware
    and accessibility evidence (G4-G5).
 5. Keep V-18, F-05/F-11/F-14 and GSC-01/GSC-02 with their owners; do not rewrite history.

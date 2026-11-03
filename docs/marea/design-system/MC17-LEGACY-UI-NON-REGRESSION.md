@@ -193,8 +193,10 @@ result.
 
 The validator writes `docs/marea/design-system/evidence/validator-run.json`. The recorded
 run marks all six checks above **PASS**, including `MC17-28` ("35 watched files unchanged
-vs 6d8287c8507038c4f90fd6e35471f78081ca4676"). The overall run is FAIL (historical snapshot; the current committed run is 38/38) for
-missing-file/document-set checks unrelated to non-regression.
+vs 6d8287c8507038c4f90fd6e35471f78081ca4676"). The recorded run at `4a9043b`
+is overall **PASS, 38/38**; earlier FAIL snapshots while the tree was being built
+(31/38 and 36/38 during authoring, 37/38 at `7cbc99e`) are historical and unrelated
+to non-regression.
 
 ## 10. Deployment
 
@@ -204,11 +206,14 @@ commit, and the design system remains internal-only.
 
 ## 11. Known gaps
 
-- **Recorded run is overall FAIL (historical snapshot; the current committed run is 38/38).** The non-regression checks are PASS, but the
-  evidence file also records failures elsewhere; it must be re-run at the reviewed commit.
-- **Runtime gates unverified here.** E2E, accessibility, i18n and SEO results were not
-  executed by this specialist. `test-results/` contains four Playwright failure artifacts
-  from the design-system suite; they are not public-site evidence.
+- **Recorded run at `4a9043b` is overall PASS, 38/38.** The non-regression checks are
+  PASS and no missing-file/document-set check fails at this commit. The earlier FAIL
+  snapshots (31/38 and 36/38 during authoring, 37/38 at `7cbc99e`) are historical;
+  they are retained in D01 §7 and the review record.
+- **Runtime gates were not executed by this specialist.** E2E, accessibility, i18n and
+  SEO results are recorded elsewhere in the package; `test-results/` retains four
+  historical Playwright failure directories from the design-system suite, which are not
+  public-site evidence. The current suite passes 30/30 at `4a9043b`.
 - **Baseline commit resolution is not re-audited here.** The dataset says
   `baselineCommitResolved` equals `6d8287c…`; this document quotes it rather than
   re-running Git.

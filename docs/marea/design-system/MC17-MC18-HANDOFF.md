@@ -20,7 +20,9 @@ alone, publish, deploy or enable commerce.
 
 MC-18 does not receive:
 
-- a passing MC-17 gate (recorded run FAIL (historical snapshot; the current committed run is 38/38)) or an independent review (PENDING);
+- a final independent PASS: the validator records PASS 38/38 at `4a9043b`, but the
+  independent review has two PARTIAL rounds and the third-round verdict is still
+  pending;
 - authorized ES/EN public copy (0 claims public-authorized), trademark clearance
   (NOT_GRANTED) or public brand use (NO_GO);
 - any route authorization, price, stock, checkout, subscription or entitlement;
@@ -28,10 +30,12 @@ MC-18 does not receive:
 
 The machine handoff file `docs/marea/design-system/data/mc18-handoff-inputs.json` records
 `mc18Started: false`, `mc18ImplementationPresent: false`, `publicationState: NOT_AUTHORIZED`,
-`publicBrandAdoption: NOT_AUTHORIZED` and `mc17IndependentReview: PENDING`. Its
-`mc17ValidatorStatus` says `FAIL_31_OF_38_AT_AUTHORING_TIME`; the later evidence file records
-38/38. The two records disagree and both are disclosed; neither is a pass. This document does
-not edit the other author's dataset.
+`publicBrandAdoption: NOT_AUTHORIZED`, `mc17ValidatorStatus: PASS_38_OF_38` and
+`mc17IndependentReview: PARTIAL_TWO_ROUNDS_PENDING_THIRD`. The earlier
+`FAIL_31_OF_38_AT_AUTHORING_TIME` observations are historical and retained in the
+evidence history. The handoff dataset is reconciled to the `4a9043b` evidence
+as part of the third-round correction, and its historical `FAIL_31_OF_38` observation
+is retained with a date.
 
 ## 2. Target surface and route boundary
 
@@ -212,9 +216,11 @@ Evidence-based properties:
 - The existing application keeps Angular 21 SSR, prerender and hydration; MC-18 must not
   change that architecture.
 
-**Unverified:** hydration mismatch measurements, render timing, bundle size contribution and
-performance budgets for these components. `performance-evidence.json` is missing
-(`MC17-36` failure).
+**Unverified:** hydration mismatch measurements, render timing, bundle-size budgets and
+field performance for these components. `data/performance-evidence.json` exists and
+records a single laboratory run (`npm run test:performance`, measured 2026-11-03T02:11Z)
+plus the catalogue/production build sizes; it is author-reported, non-CI and not
+re-measured by the independent reviewer (MC17-IR-09, accepted limitation).
 
 ## 12. SEO and structured-data prohibitions
 
@@ -266,12 +272,12 @@ A validator pass, a build, an internal decision or this handoff closes none of t
 
 | Evidence | Status |
 |---|---|
-| `npm run test:design-system` | recorded run FAIL (historical snapshot; the current committed run is 38/38) (stale for three files added after the run) |
+| `npm run test:design-system` | **PASS, 38/38** at `4a9043b` (`evidence/validator-run.json`); earlier FAIL snapshots are historical |
 | `data/contrast-evidence.json` | PASS — 296 pair/mode measurements, 0 failures |
-| `evidence/axe-summary.json` + `test-results/design-system/axe-*.json` | four modes present; 0 violations in 3 modes, 0 `color-contrast` violations after the correction (preview-only component doc); conformance NONE |
-| Playwright visual/responsive | not clean; four failure artifact directories; no responsive screenshots or baselines |
-| Independent review | PENDING — no `MC17-INDEPENDENT-REVIEW.md` |
-| Public-site E2E | not run by this specialist |
+| `evidence/axe-summary.json` + `test-results/design-system/axe-*.json` | four modes present; **0 violations, 36 passes, 0 incomplete in each of all four modes**; conformance NONE |
+| Playwright visual/responsive | **30/30 at `4a9043b`** (count re-measured at the correction commit); six responsive screenshots retained; 26 visual baselines committed; the ES/EN commerce pair differs (SHA-256 `27132adf…` vs `a57f0370…`) |
+| Independent review | two rounds recorded, both PARTIAL; third-round verdict on `4a9043b` pending — `MC17-INDEPENDENT-REVIEW.md` |
+| Public-site E2E | 15/15 inherited run recorded in the delivery record; not re-run by this specialist |
 
 Commands MC-18 should re-run before trusting any contract: `npm run build:tokens`,
 `npm run test:design-system`, `npm run test:design-system:unit`,
@@ -282,8 +288,9 @@ Commands MC-18 should re-run before trusting any contract: `npm run build:tokens
 
 1. MC16-FINAL-02 (OPEN_UNTIL_REVERIFIED), V-18, MC-13 F-05/F-11/F-14.
 2. MC-15 GSC-01/GSC-02.
-3. MC-17 validator FAIL/stale, missing datasets, instrument-night axe finding.
-4. No independent review; no authorized copy; trademark/public use NOT_GRANTED/NO_GO.
+3. MC-17 final independent verdict pending (two PARTIAL rounds); the validator itself
+   passes 38/38 at `4a9043b` and no instrument-night axe finding remains.
+4. No final independent PASS; no authorized copy; trademark/public use NOT_GRANTED/NO_GO.
 5. No hardware validation; no WCAG claim; font metrics unmeasured.
 6. No real price/stock/API; no public-site visual baseline.
 

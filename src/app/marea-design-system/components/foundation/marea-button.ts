@@ -63,27 +63,82 @@ export type MareaButtonVariant = 'action' | 'secondary' | 'ghost' | 'critical';
       text-align: center;
       text-decoration: none;
       cursor: pointer;
-      transition: background-color var(--marea-motion-state) var(--marea-ease-standard), border-color var(--marea-motion-state) var(--marea-ease-standard);
+      transition:
+        background-color var(--marea-motion-state) var(--marea-ease-standard),
+        border-color var(--marea-motion-state) var(--marea-ease-standard);
     }
-    :host(.marea-button--action) { background: var(--marea-action); color: var(--marea-text-on-accent); }
-    :host(.marea-button--action:hover) { background: var(--marea-action-hover); }
-    :host(.marea-button--secondary) { background: var(--marea-action-quiet-surface); color: var(--marea-action); border-color: var(--marea-border-strong); }
-    :host(.marea-button--secondary:hover) { border-color: var(--marea-action); }
-    :host(.marea-button--ghost) { background: transparent; color: var(--marea-action); }
-    :host(.marea-button--ghost:hover) { background: var(--marea-action-quiet-surface); }
-    :host(.marea-button--critical) { background: var(--marea-state-critical); color: var(--marea-text-on-accent); }
-    :host(.marea-button--sm) { min-block-size: var(--marea-control-sm); padding-inline: var(--marea-space-3); }
-    :host(.marea-button--lg) { min-block-size: var(--marea-control-lg); padding-inline: var(--marea-space-5); }
-    :host(:focus-visible) { outline: var(--marea-focus-width) var(--marea-focus-style) var(--marea-focus-ring); outline-offset: var(--marea-focus-offset); }
-    :host(.marea-button--action:focus-visible), :host(.marea-button--critical:focus-visible) {
+    :host(.marea-button--action) {
+      background: var(--marea-action);
+      color: var(--marea-text-on-accent);
+    }
+    :host(.marea-button--action:hover) {
+      background: var(--marea-action-hover);
+    }
+    :host(.marea-button--secondary) {
+      background: var(--marea-action-quiet-surface);
+      color: var(--marea-action);
+      border-color: var(--marea-border-strong);
+    }
+    :host(.marea-button--secondary:hover) {
+      border-color: var(--marea-action);
+    }
+    :host(.marea-button--ghost) {
+      background: transparent;
+      color: var(--marea-action);
+    }
+    :host(.marea-button--ghost:hover) {
+      background: var(--marea-action-quiet-surface);
+    }
+    :host(.marea-button--critical) {
+      background: var(--marea-state-critical);
+      color: var(--marea-text-on-accent);
+    }
+    :host(.marea-button--sm) {
+      min-block-size: var(--marea-control-sm);
+      padding-inline: var(--marea-space-3);
+    }
+    :host(.marea-button--lg) {
+      min-block-size: var(--marea-control-lg);
+      padding-inline: var(--marea-space-5);
+    }
+    :host(:focus-visible) {
+      outline: var(--marea-focus-width) var(--marea-focus-style) var(--marea-focus-ring);
+      outline-offset: var(--marea-focus-offset);
+    }
+    :host(.marea-button--action:focus-visible),
+    :host(.marea-button--critical:focus-visible) {
       outline-color: var(--marea-focus-ring-on-fill);
       outline-offset: var(--marea-focus-inset);
     }
-    :host([aria-disabled='true']), :host([disabled]) { background: var(--marea-disabled-surface); color: var(--marea-disabled); border-color: var(--marea-border-strong); cursor: not-allowed; }
-    :host([aria-disabled='true']:hover), :host([disabled]:hover) { background: var(--marea-disabled-surface); }
-    :host(.marea-button--ghost[aria-disabled='true']), :host(.marea-button--ghost[disabled]) { background: transparent; border-color: transparent; }
-    @media (prefers-reduced-motion: reduce) { :host { transition: none; } }
-    .sr-only { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    :host([aria-disabled='true']),
+    :host([disabled]) {
+      background: var(--marea-disabled-surface);
+      color: var(--marea-disabled);
+      border-color: var(--marea-border-strong);
+      cursor: not-allowed;
+    }
+    :host([aria-disabled='true']:hover),
+    :host([disabled]:hover) {
+      background: var(--marea-disabled-surface);
+    }
+    :host(.marea-button--ghost[aria-disabled='true']),
+    :host(.marea-button--ghost[disabled]) {
+      background: transparent;
+      border-color: transparent;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      :host {
+        transition: none;
+      }
+    }
+    .sr-only {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
   `,
 })
 export class MareaButton {
@@ -93,7 +148,16 @@ export class MareaButton {
   readonly disabled = input(false);
   readonly disabledReason = input<string | null>(null);
   readonly loading = input(false);
-  readonly icon = input<null | 'chevron-right' | 'arrow-right' | 'external' | 'check' | 'close' | 'download' | 'document'>(null);
+  readonly icon = input<
+    | null
+    | 'chevron-right'
+    | 'arrow-right'
+    | 'external'
+    | 'check'
+    | 'close'
+    | 'download'
+    | 'document'
+  >(null);
 
   readonly activated = output<void>();
 
@@ -102,8 +166,12 @@ export class MareaButton {
   readonly reasonSpanId = this.ids.next('button-reason');
   readonly loadingSpanId = this.ids.next('button-loading');
 
-  readonly isAriaDisabled = computed(() => (this.disabled() || this.loading()) && !!this.disabledReason());
-  readonly isNativelyDisabled = computed(() => (this.disabled() || this.loading()) && !this.disabledReason());
+  readonly isAriaDisabled = computed(
+    () => (this.disabled() || this.loading()) && !!this.disabledReason(),
+  );
+  readonly isNativelyDisabled = computed(
+    () => (this.disabled() || this.loading()) && !this.disabledReason(),
+  );
   readonly reasonId = computed(() => (this.isAriaDisabled() ? this.reasonSpanId : null));
 
   onActivate(event: Event): void {

@@ -34,11 +34,30 @@ import { MAREA_ICON_PATHS, type MareaIconName } from './marea-icon-paths';
     </svg>
   `,
   styles: `
-    :host { display: inline-flex; flex: none; align-items: center; justify-content: center; inline-size: var(--marea-icon-size-md); block-size: var(--marea-icon-size-md); }
-    :host(.marea-icon--sm) { inline-size: var(--marea-icon-size-sm); block-size: var(--marea-icon-size-sm); }
-    :host(.marea-icon--lg) { inline-size: var(--marea-icon-size-lg); block-size: var(--marea-icon-size-lg); }
-    :host(.marea-icon--xl) { inline-size: var(--marea-icon-size-xl); block-size: var(--marea-icon-size-xl); }
-    svg { inline-size: 100%; block-size: 100%; }
+    :host {
+      display: inline-flex;
+      flex: none;
+      align-items: center;
+      justify-content: center;
+      inline-size: var(--marea-icon-size-md);
+      block-size: var(--marea-icon-size-md);
+    }
+    :host(.marea-icon--sm) {
+      inline-size: var(--marea-icon-size-sm);
+      block-size: var(--marea-icon-size-sm);
+    }
+    :host(.marea-icon--lg) {
+      inline-size: var(--marea-icon-size-lg);
+      block-size: var(--marea-icon-size-lg);
+    }
+    :host(.marea-icon--xl) {
+      inline-size: var(--marea-icon-size-xl);
+      block-size: var(--marea-icon-size-xl);
+    }
+    svg {
+      inline-size: 100%;
+      block-size: 100%;
+    }
   `,
 })
 export class MareaIcon {

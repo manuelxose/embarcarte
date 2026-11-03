@@ -13,20 +13,41 @@ import { MareaText } from '../foundation/marea-text';
   imports: [MareaText],
   template: `
     <section class="price-unavailable">
-      <h4 marea-text variant="heading" class="heading">{{ heading() ?? i18n.text('priceUnavailableHeading') }}</h4>
-      <p marea-text variant="bodySmall" tone="secondary" class="body">{{ i18n.text('priceUnavailable') }}</p>
+      <h4 marea-text variant="heading" class="heading">
+        {{ heading() ?? i18n.text('priceUnavailableHeading') }}
+      </h4>
+      <p marea-text variant="bodySmall" tone="secondary" class="body">
+        {{ i18n.text('priceUnavailable') }}
+      </p>
       @if (priceStatus()) {
-        <p marea-text variant="meta" class="meta">{{ i18n.text('status') }} · {{ priceStatus() }}</p>
+        <p marea-text variant="meta" class="meta">
+          {{ i18n.text('status') }} · {{ priceStatus() }}
+        </p>
       }
       <p marea-text variant="label" tone="warning" class="sale">{{ i18n.text('notForSale') }}</p>
     </section>
   `,
   styles: `
-    :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .price-unavailable { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-1); min-inline-size: 0; }
-    .heading, .body, .meta, .sale { margin: 0; }
-    .meta { overflow-wrap: anywhere; }
+    :host {
+      display: block;
+      min-inline-size: 0;
+      color: var(--marea-text-primary);
+    }
+    .price-unavailable {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-1);
+      min-inline-size: 0;
+    }
+    .heading,
+    .body,
+    .meta,
+    .sale {
+      margin: 0;
+    }
+    .meta {
+      overflow-wrap: anywhere;
+    }
   `,
 })
 export class MareaPriceUnavailable {

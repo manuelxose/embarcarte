@@ -29,13 +29,38 @@ import { MareaText } from './marea-text';
     <div class="actions"><ng-content /></div>
   `,
   styles: `
-    :host { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--marea-space-4); margin-block-end: var(--marea-space-5); }
-    .head { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-2); min-inline-size: 0; }
-    .kicker { margin: 0; color: var(--marea-action); }
-    .lead { margin-block-start: var(--marea-space-1); max-inline-size: 56ch; }
-    .actions { display: flex; flex-wrap: wrap; gap: var(--marea-space-3); }
-    @media (max-width: 767px) { :host { align-items: start; } }
+    :host {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: end;
+      justify-content: space-between;
+      gap: var(--marea-space-4);
+      margin-block-end: var(--marea-space-5);
+    }
+    .head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-2);
+      min-inline-size: 0;
+    }
+    .kicker {
+      margin: 0;
+      color: var(--marea-action);
+    }
+    .lead {
+      margin-block-start: var(--marea-space-1);
+      max-inline-size: 56ch;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--marea-space-3);
+    }
+    @media (max-width: 767px) {
+      :host {
+        align-items: start;
+      }
+    }
   `,
 })
 export class MareaSectionHeading {

@@ -7,7 +7,11 @@ import type {
   MareaReadinessStatus,
   MareaTone,
 } from '../../core/types';
-import { FAMILY_LIMIT_KEYS, restrictionCopyKey } from '../../data/commerce-presentation.adapter';
+import {
+  FAMILY_LIMIT_KEYS,
+  restrictionCopyKey,
+  selectVisibleRestrictions,
+} from '../../data/commerce-presentation.adapter';
 import { MareaStatusBadge } from '../foundation/marea-status-badge';
 import { MareaSurface } from '../foundation/marea-surface';
 import { MareaText } from '../foundation/marea-text';
@@ -37,11 +41,15 @@ const READINESS_COPY: Readonly<Record<MareaReadinessStatus, MareaCopyKey>> = {
     <marea-surface [labelledBy]="titleId">
       <article class="card">
         <div class="head">
-          <h3 marea-text variant="title2" class="title" [id]="titleId">{{ family().displayName }}</h3>
+          <h3 marea-text variant="title2" class="title" [id]="titleId">
+            {{ family().displayName }}
+          </h3>
           <span marea-status-badge [tone]="readinessTone()" [label]="readinessLabel()"></span>
         </div>
         <p marea-text variant="body" tone="secondary" class="summary">{{ localizedSummary() }}</p>
-        <p marea-text variant="meta" class="meta">{{ family().editionCount }} · {{ i18n.text('editions') }}</p>
+        <p marea-text variant="meta" class="meta">
+          {{ family().editionCount }} · {{ i18n.text('editions') }}
+        </p>
         @if (restrictions().length > 0) {
           <ul class="restrictions" [attr.aria-label]="i18n.text('limitations')">
             @for (label of restrictions(); track label) {
@@ -50,7 +58,14 @@ const READINESS_COPY: Readonly<Record<MareaReadinessStatus, MareaCopyKey>> = {
           </ul>
         }
         @if (familyLimit()) {
-          <p marea-text variant="bodySmall" tone="secondary" class="family-limit">{{ familyLimit() }}</p>
+          <p marea-text variant="bodySmall" tone="secondary" class="family-limit">
+            {{ familyLimit() }}
+          </p>
+        }
+        @if (kitNote()) {
+          <p marea-text variant="bodySmall" tone="secondary" class="family-limit kit-note">
+            {{ kitNote() }}
+          </p>
         }
         @if (ctaHint()) {
           <p marea-text variant="bodySmall" tone="secondary" class="hint">{{ ctaHint() }}</p>
@@ -60,13 +75,43 @@ const READINESS_COPY: Readonly<Record<MareaReadinessStatus, MareaCopyKey>> = {
     </marea-surface>
   `,
   styles: `
-    :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .card { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-3); min-inline-size: 0; }
-    .head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--marea-space-2); }
-    .title, .summary, .meta, .hint, .family-limit { margin: 0; }
-    .family-limit { color: var(--marea-text-secondary); overflow-wrap: break-word; }
-    .restrictions { display: flex; flex-wrap: wrap; gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
+    :host {
+      display: block;
+      min-inline-size: 0;
+      color: var(--marea-text-primary);
+    }
+    .card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-3);
+      min-inline-size: 0;
+    }
+    .head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--marea-space-2);
+    }
+    .title,
+    .summary,
+    .meta,
+    .hint,
+    .family-limit {
+      margin: 0;
+    }
+    .family-limit {
+      color: var(--marea-text-secondary);
+      overflow-wrap: break-word;
+    }
+    .restrictions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--marea-space-2);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
     .restriction {
       padding: var(--marea-space-1) var(--marea-space-2);
       border: var(--marea-border-width-hairline) solid var(--marea-line);
@@ -83,6 +128,8 @@ export class MareaFamilyCard {
   readonly family = input.required<MareaFamilySummary>();
   readonly presentation = input.required<MareaCommercialPresentation>();
   readonly ctaHint = input<string | null>(null);
+  /** Kit composition note shown next to the family limit (e.g. SENSE ESSENTIALS). */
+  readonly kitNote = input<string | null>(null);
 
   readonly i18n = inject(MareaI18n);
   private readonly ids = inject(MareaIds);
@@ -91,9 +138,13 @@ export class MareaFamilyCard {
 
   readonly localizedSummary = computed(() => this.family().summary[this.i18n.locale()]);
 
-  readonly readinessTone = computed<MareaTone>(() => READINESS_TONE[this.family().readiness] ?? 'neutral');
+  readonly readinessTone = computed<MareaTone>(
+    () => READINESS_TONE[this.family().readiness] ?? 'neutral',
+  );
 
-  readonly readinessLabel = computed(() => this.i18n.text(READINESS_COPY[this.family().readiness] ?? 'notAssessed'));
+  readonly readinessLabel = computed(() =>
+    this.i18n.text(READINESS_COPY[this.family().readiness] ?? 'notAssessed'),
+  );
 
   /** Family-specific limit that must never be dropped from a rendered specimen. */
   readonly familyLimit = computed<string | null>(() => {
@@ -101,17 +152,14 @@ export class MareaFamilyCard {
     return key ? this.i18n.text(key) : null;
   });
 
-  /** At most four distinct visible restriction labels, deduplicated by copy key. */
-  readonly restrictions = computed<readonly string[]>(() => {
-    const seen = new Set<string>();
-    const labels: string[] = [];
-    for (const kind of this.family().restrictions) {
-      const key = restrictionCopyKey(kind);
-      if (seen.has(key)) continue;
-      seen.add(key);
-      labels.push(this.i18n.text(key));
-      if (labels.length === 4) break;
-    }
-    return labels;
-  });
+  /**
+   * At most four distinct visible restriction labels. Material gates are ranked
+   * first and duplicates are removed by copy key, including a missing or
+   * malformed restrictions array and unknown runtime kinds.
+   */
+  readonly restrictions = computed<readonly string[]>(() =>
+    selectVisibleRestrictions(this.family().restrictions, restrictionCopyKey).map((kind) =>
+      this.i18n.text(restrictionCopyKey(kind)),
+    ),
+  );
 }

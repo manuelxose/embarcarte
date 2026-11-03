@@ -66,8 +66,10 @@ used for the component copy. This avoids a server/client locale mismatch.
 The validator `MC17-25` parses the dictionary and expects the number of parsed bilingual
 keys to equal the number of declared keys, with no empty ES or EN string. The recorded run
 in `docs/marea/design-system/evidence/validator-run.json` records `MC17-25` **PASS**
-("138 bilingual keys with ES and EN non-empty"). The overall run is FAIL (historical snapshot; the current committed run is 38/38) for
-unrelated missing-file/document-set checks.
+("138 bilingual keys with ES and EN non-empty"). The recorded run at `4a9043b` is
+overall **PASS, 38/38**; the earlier FAIL snapshots (31/38 and 36/38 during
+authoring, 37/38 at `7cbc99e` while D23/D24 were still absent) are historical and
+superseded by the third-round correction.
 
 ## 4. Parity rule
 
@@ -204,11 +206,12 @@ Copy is internal and provisional:
 
 Commands: `npm run test:design-system`, `npm run test:design-system:visual`.
 
-The recorded validator run marks `MC17-25` and `MC17-26` PASS. The overall run is FAIL
-(38/38) for unrelated missing-file/document-set checks, and the overall axe run reports one
-`instrument-night` contrast violation in the preview-only component documentation block.
-The 138-key count is a direct static count of the dictionary and is confirmed by the
-recorded `MC17-25` detail.
+The recorded validator run at `4a9043b` marks `MC17-25` and `MC17-26` PASS and the
+overall run is **PASS, 38/38**. The axe run reports **0 violations in all four
+modes** (36 passes, 0 incomplete each); the earlier one `instrument-night` contrast
+violation in the preview-only component documentation block was corrected and is
+retained only as a historical failure artifact. The 138-key count is a direct static
+count of the dictionary and is confirmed by the recorded `MC17-25` detail.
 
 ## 14. Known gaps
 
@@ -217,7 +220,8 @@ recorded `MC17-25` detail.
   not nuance; a human ES/EN review is still required before any public use.
 - **Catalogue prose is Spanish-only** (section leads, demo documentation titles).
 - **No RTL/Arabic** — explicitly out of scope, not a regression.
-- **No independent review** (`MC17-INDEPENDENT-REVIEW.md` absent, PENDING).
+- **Independent review is not final.** `MC17-INDEPENDENT-REVIEW.md` exists with two
+  rounds, both PARTIAL; the third-round verdict on `4a9043b` is pending.
 
 ## 15. Source map
 

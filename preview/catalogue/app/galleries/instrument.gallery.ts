@@ -97,13 +97,37 @@ interface InstrumentTileSpec {
         />
         <marea-stack [gap]="4">
           <h4 marea-text variant="heading">Primaria</h4>
-          <marea-numeric-readout label="Profundidad" value="12.4" unit="m" size="primary" freshness="FRESH" />
+          <marea-numeric-readout
+            label="Profundidad"
+            value="12.4"
+            unit="m"
+            size="primary"
+            freshness="FRESH"
+          />
           <h4 marea-text variant="heading">Secundaria</h4>
-          <marea-numeric-readout label="Velocidad" value="6.3" unit="kn" size="secondary" freshness="FRESH" />
+          <marea-numeric-readout
+            label="Velocidad"
+            value="6.3"
+            unit="kn"
+            size="secondary"
+            freshness="FRESH"
+          />
           <h4 marea-text variant="heading">Terciaria</h4>
-          <marea-numeric-readout label="Rumbo" value="214" unit="°" size="tertiary" freshness="FRESH" />
+          <marea-numeric-readout
+            label="Rumbo"
+            value="214"
+            unit="°"
+            size="tertiary"
+            freshness="FRESH"
+          />
           <h4 marea-text variant="heading">Sin dato</h4>
-          <marea-numeric-readout [value]="null" label="Sensor de viento" unit="kn" size="tertiary" freshness="NO_DATA" />
+          <marea-numeric-readout
+            [value]="null"
+            label="Sensor de viento"
+            unit="kn"
+            size="tertiary"
+            freshness="NO_DATA"
+          />
         </marea-stack>
         <marea-component-doc componentId="marea-numeric-readout" />
       </section>
@@ -229,7 +253,10 @@ interface InstrumentTileSpec {
           heading="Telemetría"
           lead="Seis filas que mezclan dato actual, obsoleto, sin dato y sin conexión. Cada fila es un par dt/dd y las filas no actuales añaden su marcador de frescura."
         />
-        <marea-telemetry-list [items]="telemetry" caption="Telemetría sintética interna · 6 filas" />
+        <marea-telemetry-list
+          [items]="telemetry"
+          caption="Telemetría sintética interna · 6 filas"
+        />
         <marea-component-doc componentId="marea-telemetry-list" />
       </section>
     </marea-stack>
@@ -261,11 +288,53 @@ export class InstrumentGallery {
   ];
 
   readonly telemetry: readonly MareaTelemetryItem[] = [
-    { id: 'telemetry-depth', label: 'Profundidad', value: '12.4', unit: 'm', freshness: 'FRESH', ageSeconds: null },
-    { id: 'telemetry-speed', label: 'Velocidad', value: '6.3', unit: 'kn', freshness: 'STALE', ageSeconds: 95 },
-    { id: 'telemetry-wind', label: 'Viento', value: null, unit: 'kn', freshness: 'NO_DATA', ageSeconds: null },
-    { id: 'telemetry-battery', label: 'Batería', value: '82', unit: '%', freshness: 'FRESH', ageSeconds: null },
-    { id: 'telemetry-heading', label: 'Rumbo', value: '214', unit: '°', freshness: 'OFFLINE', ageSeconds: null },
-    { id: 'telemetry-temperature', label: 'Temperatura', value: '18.2', unit: '°C', freshness: 'FRESH', ageSeconds: null },
+    {
+      id: 'telemetry-depth',
+      label: 'Profundidad',
+      value: '12.4',
+      unit: 'm',
+      freshness: 'FRESH',
+      ageSeconds: null,
+    },
+    {
+      id: 'telemetry-speed',
+      label: 'Velocidad',
+      value: '6.3',
+      unit: 'kn',
+      freshness: 'STALE',
+      ageSeconds: 95,
+    },
+    {
+      id: 'telemetry-wind',
+      label: 'Viento',
+      value: null,
+      unit: 'kn',
+      freshness: 'NO_DATA',
+      ageSeconds: null,
+    },
+    {
+      id: 'telemetry-battery',
+      label: 'Batería',
+      value: '82',
+      unit: '%',
+      freshness: 'FRESH',
+      ageSeconds: null,
+    },
+    {
+      id: 'telemetry-heading',
+      label: 'Rumbo',
+      value: '214',
+      unit: '°',
+      freshness: 'OFFLINE',
+      ageSeconds: null,
+    },
+    {
+      id: 'telemetry-temperature',
+      label: 'Temperatura',
+      value: '18.2',
+      unit: '°C',
+      freshness: 'FRESH',
+      ageSeconds: null,
+    },
   ];
 }

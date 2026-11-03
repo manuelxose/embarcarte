@@ -29,20 +29,39 @@ const MODES: readonly { id: MareaMode; label: string }[] = [
 @Component({
   selector: 'marea-ds-catalogue',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MareaTheme, MareaNotice, MareaButton, MareaInline, MareaContainer, MareaText, FoundationGallery, StructuredGallery, CommerceGallery, InstrumentGallery, AdversarialGallery],
+  imports: [
+    MareaTheme,
+    MareaNotice,
+    MareaButton,
+    MareaInline,
+    MareaContainer,
+    MareaText,
+    FoundationGallery,
+    StructuredGallery,
+    CommerceGallery,
+    InstrumentGallery,
+    AdversarialGallery,
+  ],
   template: `
     <marea-theme [mode]="mode()" [locale]="locale()">
       <div class="page">
         <marea-container size="wide">
           <header class="head">
-            <p class="eyebrow" marea-text variant="meta">MC-17/36 · catálogo interno · no publicado</p>
+            <p class="eyebrow" marea-text variant="meta">
+              MC-17/36 · catálogo interno · no publicado
+            </p>
             <h1 marea-text variant="title1">Sistema de diseño MAREA — catálogo de componentes</h1>
             <p marea-text variant="body" tone="secondary">
-              Cada ejemplo siguiente renderiza el componente Angular real. El catálogo se compila como proyecto Angular aislado y no forma parte de
-              la aplicación pública. Todos los datos son fixtures internos sintéticos.
+              Cada ejemplo siguiente renderiza el componente Angular real. El catálogo se compila
+              como proyecto Angular aislado y no forma parte de la aplicación pública. Todos los
+              datos son fixtures internos sintéticos.
             </p>
 
-            <marea-notice variant="internal" heading="Estado interno y provisional" body="Marca MAREA propuesta, no adoptada. Uso público NO_GO. Sin autorización de publicación, sin precio aprobado y sin stock verificado." />
+            <marea-notice
+              variant="internal"
+              heading="Estado interno y provisional"
+              body="Marca MAREA propuesta, no adoptada. Uso público NO_GO. Sin autorización de publicación, sin precio aprobado y sin stock verificado."
+            />
 
             <div class="controls" role="group" aria-label="Controles del catálogo">
               <div class="control">
@@ -62,7 +81,9 @@ const MODES: readonly { id: MareaMode; label: string }[] = [
                 </marea-inline>
               </div>
               <div class="control">
-                <span class="control-label" marea-text variant="label">Idioma de los textos del sistema</span>
+                <span class="control-label" marea-text variant="label"
+                  >Idioma de los textos del sistema</span
+                >
                 <marea-inline [gap]="2">
                   @for (option of locales; track option.id) {
                     <button
@@ -78,7 +99,8 @@ const MODES: readonly { id: MareaMode; label: string }[] = [
                 </marea-inline>
               </div>
               <p class="mode-note" marea-text variant="meta">
-                Modo activo: {{ mode() }} · idioma: {{ locale() }} · contexto: {{ mode().startsWith('instrument') ? 'instrumento' : 'corporativo' }}
+                Modo activo: {{ mode() }} · idioma: {{ locale() }} · contexto:
+                {{ mode().startsWith('instrument') ? 'instrumento' : 'corporativo' }}
               </p>
             </div>
           </header>
@@ -107,26 +129,32 @@ const MODES: readonly { id: MareaMode; label: string }[] = [
           </section>
 
           <section id="instrumentos" aria-labelledby="instrumentos-title">
-            <h2 id="instrumentos-title" marea-text variant="title2">Instrumentación interna (demostración)</h2>
+            <h2 id="instrumentos-title" marea-text variant="title2">
+              Instrumentación interna (demostración)
+            </h2>
             <p marea-text variant="body" tone="secondary">
-              Especímenes de presentación con datos sintéticos. No son instrumentos certificados y no se afirma legibilidad en hardware, visión nocturna,
-              transmisión AIS ni control de gobierno.
+              Especímenes de presentación con datos sintéticos. No son instrumentos certificados y
+              no se afirma legibilidad en hardware, visión nocturna, transmisión AIS ni control de
+              gobierno.
             </p>
             <marea-instrument-gallery />
           </section>
 
           <section id="adversario" aria-labelledby="adversario-title">
-            <h2 id="adversario-title" marea-text variant="title2">Datos adversarios (fail-closed)</h2>
+            <h2 id="adversario-title" marea-text variant="title2">
+              Datos adversarios (fail-closed)
+            </h2>
             <p marea-text variant="body" tone="secondary">
-              Los siguientes view models son deliberadamente inválidos o contradictorios. La capa de presentación debe bloquear compra, precio y stock, y
-              explicarlo con texto.
+              Los siguientes view models son deliberadamente inválidos o contradictorios. La capa de
+              presentación debe bloquear compra, precio y stock, y explicarlo con texto.
             </p>
             <marea-adversarial-gallery />
           </section>
 
           <footer class="foot">
             <p marea-text variant="meta">
-              Catálogo interno. Sin rutas públicas, sin indexación, sin despliegue y sin aprobación de marca. Generado con Angular 21 y pruebas Playwright.
+              Catálogo interno. Sin rutas públicas, sin indexación, sin despliegue y sin aprobación
+              de marca. Generado con Angular 21 y pruebas Playwright.
             </p>
           </footer>
         </marea-container>
@@ -134,26 +162,84 @@ const MODES: readonly { id: MareaMode; label: string }[] = [
     </marea-theme>
   `,
   styles: `
-    :host { display: block; }
-    .page { padding-block: 24px 64px; background: var(--marea-canvas); color: var(--marea-text-primary); min-block-size: 100vh; }
-    .head { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: 16px; padding-block: 16px 8px; }
-    .eyebrow { margin: 0; letter-spacing: 0.12em; text-transform: uppercase; }
-    h1 { margin: 0; max-inline-size: 26ch; }
-    .controls { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 16px 0; border-block: 1px solid var(--marea-line); }
-    .control { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: 6px; }
-    .control-label { color: var(--marea-text-secondary); }
-    .mode-note { margin: 0; }
-    .toc { display: flex; flex-wrap: wrap; gap: 8px 20px; padding-block: 16px; border-block-end: 1px solid var(--marea-line); }
-    .toc a { color: var(--marea-action); font-weight: 700; font-size: 12px; text-decoration: none; padding: 4px 2px; border-radius: 3px; }
-    .toc a:hover { text-decoration: underline; }
-    .toc a:focus-visible { outline: 3px solid var(--marea-focus-ring); outline-offset: 2px; }
-    section { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: 12px; padding-block: 32px; border-block-end: 1px solid var(--marea-line); }
-    section h2 { margin: 0; }
-    .foot { padding-block-start: 32px; color: var(--marea-text-secondary); }
+    :host {
+      display: block;
+    }
+    .page {
+      padding-block: 24px 64px;
+      background: var(--marea-canvas);
+      color: var(--marea-text-primary);
+      min-block-size: 100vh;
+    }
+    .head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+      padding-block: 16px 8px;
+    }
+    .eyebrow {
+      margin: 0;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      max-inline-size: 26ch;
+    }
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+      padding: 16px 0;
+      border-block: 1px solid var(--marea-line);
+    }
+    .control {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 6px;
+    }
+    .control-label {
+      color: var(--marea-text-secondary);
+    }
+    .mode-note {
+      margin: 0;
+    }
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      padding-block: 16px;
+      border-block-end: 1px solid var(--marea-line);
+    }
+    .toc a {
+      color: var(--marea-action);
+      font-weight: 700;
+      font-size: 12px;
+      text-decoration: none;
+      padding: 4px 2px;
+      border-radius: 3px;
+    }
+    .toc a:hover {
+      text-decoration: underline;
+    }
+    .toc a:focus-visible {
+      outline: 3px solid var(--marea-focus-ring);
+      outline-offset: 2px;
+    }
+    section {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 12px;
+      padding-block: 32px;
+      border-block-end: 1px solid var(--marea-line);
+    }
+    section h2 {
+      margin: 0;
+    }
+    .foot {
+      padding-block-start: 32px;
+      color: var(--marea-text-secondary);
+    }
   `,
 })
 export class CatalogueApp {

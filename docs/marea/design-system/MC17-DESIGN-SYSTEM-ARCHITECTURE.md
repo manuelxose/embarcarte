@@ -290,11 +290,13 @@ npx ng build embarcarte
 npx playwright test -c playwright.design-system.config.ts
 ```
 
-At the time of writing, the validator recorded **36/38 PASS**; the two failures are
-missing deliverables/datasets owned by other authors (`MC17-35`, `MC17-36`), not
-architecture failures. This document does not convert that state into a milestone
-PASS. It also does not claim that the design system works inside the live site: no
-route imports it, so that integration is untested.
+At `4a9043b` the validator records **PASS, 38/38**
+(`evidence/validator-run.json`). The earlier 36/38 and 37/38 observations were
+missing deliverables/datasets (`MC17-35`, `MC17-36`) owned by other authors, not
+architecture failures; they are historical and retained in D01 §7. This document
+does not convert that state into a milestone PASS, because the third-round
+independent verdict is still pending. It also does not claim that the design system
+works inside the live site: no route imports it, so that integration is untested.
 
 Source references: `src/app/marea-design-system/**`, `preview/**`, `angular.json`,
 `package.json`, `docs/marea/design-system/data/*.json`,

@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { MareaI18n } from '../../../../src/app/marea-design-system/core/i18n';
 import { MareaText } from '../../../../src/app/marea-design-system/components/foundation/marea-text';
 import { MareaStack } from '../../../../src/app/marea-design-system/components/foundation/marea-stack';
 import { MareaDivider } from '../../../../src/app/marea-design-system/components/foundation/marea-divider';
@@ -35,6 +36,7 @@ import type {
   MareaCommercialPresentation,
   MareaCtaState,
   MareaDocumentationItem,
+  MareaFamilySummary,
   MareaRestrictionKind,
 } from '../../../../src/app/marea-design-system/core/types';
 
@@ -70,6 +72,49 @@ function presentationFor(
     ctaState,
     restrictions,
   });
+}
+
+/** One hostile family-card specimen. Synthetic internal demo data only. */
+interface AdversarialFamilyCase {
+  readonly testId: string;
+  readonly heading: string;
+  readonly family: MareaFamilySummary;
+  readonly presentation: MareaCommercialPresentation;
+}
+
+const SYNTHETIC_SUMMARY = {
+  es: 'Especimen sintético interno para probar límites adversariales. Sin precio, stock ni oferta.',
+  en: 'Synthetic internal specimen for adversarial limitation testing. No price, stock or offer.',
+} as const;
+
+function syntheticFamily(
+  familyId: string,
+  displayName: string,
+  restrictions: readonly MareaRestrictionKind[] | undefined,
+): MareaFamilySummary {
+  return {
+    familyId,
+    displayName,
+    definitionStatus: 'DEFINED',
+    editionCount: 0,
+    readiness: 'BLOCKED',
+    summary: SYNTHETIC_SUMMARY,
+    // The missing-restrictions specimen deliberately violates the static type.
+    restrictions: restrictions as readonly MareaRestrictionKind[],
+  };
+}
+
+function adversarialCase(
+  testId: string,
+  heading: string,
+  restrictions: readonly MareaRestrictionKind[] | undefined,
+): AdversarialFamilyCase {
+  return {
+    testId,
+    heading: `Synthetic · ${heading}`,
+    family: syntheticFamily(testId, `SYNTHETIC · ${heading}`, restrictions),
+    presentation: presentationFor('NOT_AVAILABLE', restrictions ?? []),
+  };
 }
 
 /**
@@ -127,21 +172,84 @@ function presentationFor(
         />
         <marea-stack [gap]="4">
           <h4 marea-text variant="heading">NAV</h4>
-          <marea-family-card [family]="navFamily" [presentation]="navPresentation" />
+          <marea-family-card
+            data-testid="family-card-NAV"
+            [family]="navFamily"
+            [presentation]="navPresentation"
+          />
           <h4 marea-text variant="heading">PILOT</h4>
-          <marea-family-card [family]="pilotFamily" [presentation]="pilotPresentation" />
+          <marea-family-card
+            data-testid="family-card-PILOT"
+            [family]="pilotFamily"
+            [presentation]="pilotPresentation"
+          />
           <h4 marea-text variant="heading">FLEET</h4>
-          <marea-family-card [family]="fleetFamily" [presentation]="fleetPresentation" />
+          <marea-family-card
+            data-testid="family-card-FLEET"
+            [family]="fleetFamily"
+            [presentation]="fleetPresentation"
+          />
           <h4 marea-text variant="heading">AIS</h4>
-          <marea-family-card [family]="aisFamily" [presentation]="aisPresentation" />
+          <marea-family-card
+            data-testid="family-card-AIS"
+            [family]="aisFamily"
+            [presentation]="aisPresentation"
+          />
           <h4 marea-text variant="heading">WATCH</h4>
-          <marea-family-card [family]="watchFamily" [presentation]="watchPresentation" />
+          <marea-family-card
+            data-testid="family-card-WATCH"
+            [family]="watchFamily"
+            [presentation]="watchPresentation"
+          />
           <h4 marea-text variant="heading">SENSE</h4>
-          <marea-family-card [family]="senseFamily" [presentation]="sensePresentation" />
+          <marea-family-card
+            data-testid="family-card-SENSE"
+            [family]="senseFamily"
+            [presentation]="sensePresentation"
+            [kitNote]="senseKitNote()"
+          />
           <h4 marea-text variant="heading">DISPLAY</h4>
-          <marea-family-card [family]="displayFamily" [presentation]="displayPresentation" />
+          <marea-family-card
+            data-testid="family-card-DISPLAY"
+            [family]="displayFamily"
+            [presentation]="displayPresentation"
+          />
+          <h4 marea-text variant="heading">WEATHER</h4>
+          <marea-family-card
+            data-testid="family-card-WEATHER"
+            [family]="weatherFamily"
+            [presentation]="weatherPresentation"
+          />
+          <h4 marea-text variant="heading">HUB</h4>
+          <marea-family-card
+            data-testid="family-card-HUB"
+            [family]="hubFamily"
+            [presentation]="hubPresentation"
+          />
         </marea-stack>
         <marea-component-doc componentId="marea-family-card" />
+      </section>
+
+      <hr marea-divider spacing="loose" />
+
+      <section aria-labelledby="commerce-adversarial-families-title">
+        <marea-section-heading
+          [level]="3"
+          id="commerce-adversarial-families-title"
+          kicker="Adversarial"
+          heading="Fichas adversariales de familia"
+          lead="Seis casos sintéticos internos con orden hostil, duplicados y datos malformados. Ninguna ficha incluye precio, stock ni acción de compra: las puertas materiales deben sobrevivir siempre al recorte de cuatro etiquetas."
+        />
+        <marea-stack [gap]="4">
+          @for (specimen of adversarialFamilyCases; track specimen.testId) {
+            <h4 marea-text variant="heading">{{ specimen.heading }}</h4>
+            <marea-family-card
+              [attr.data-testid]="specimen.testId"
+              [family]="specimen.family"
+              [presentation]="specimen.presentation"
+            />
+          }
+        </marea-stack>
       </section>
 
       <hr marea-divider spacing="loose" />
@@ -173,7 +281,7 @@ function presentationFor(
           id="commerce-bundle-title"
           kicker="Comercio"
           heading="Componentes de paquete"
-          lead="Listas de componentes obligatorios y opcionales de START y FLEET. Un kit se expande en su propia línea y no se cuenta como líneas adicionales."
+          lead="Listas de componentes obligatorios y opcionales de START, FLEET y PROTECT. Un kit se expande en su propia línea y no se cuenta como líneas adicionales."
         />
         <marea-stack [gap]="4">
           <h4 marea-text variant="heading">MAREA START · obligatorios</h4>
@@ -184,6 +292,8 @@ function presentationFor(
           <marea-bundle-components [components]="fleetBundle.components" />
           <h4 marea-text variant="heading">MAREA FLEET · opcionales</h4>
           <marea-bundle-components [components]="fleetBundle.optionalComponents" />
+          <h4 marea-text variant="heading">MAREA PROTECT · obligatorios</h4>
+          <marea-bundle-components [components]="protectBundle.components" />
         </marea-stack>
         <marea-component-doc componentId="marea-bundle-components" />
       </section>
@@ -324,6 +434,8 @@ function presentationFor(
   `,
 })
 export class CommerceGallery {
+  private readonly i18n = inject(MareaI18n);
+
   readonly readiness = MAREA_FIXTURE_READINESS;
 
   readonly navFamily = familyFixture('NAV');
@@ -333,6 +445,8 @@ export class CommerceGallery {
   readonly watchFamily = familyFixture('WATCH');
   readonly senseFamily = familyFixture('SENSE');
   readonly displayFamily = familyFixture('DISPLAY');
+  readonly weatherFamily = familyFixture('WEATHER');
+  readonly hubFamily = familyFixture('HUB');
 
   readonly navPresentation = this.familyPresentation(this.navFamily);
   readonly pilotPresentation = this.familyPresentation(this.pilotFamily);
@@ -341,6 +455,49 @@ export class CommerceGallery {
   readonly watchPresentation = this.familyPresentation(this.watchFamily);
   readonly sensePresentation = this.familyPresentation(this.senseFamily);
   readonly displayPresentation = this.familyPresentation(this.displayFamily);
+  readonly weatherPresentation = this.familyPresentation(this.weatherFamily);
+  readonly hubPresentation = this.familyPresentation(this.hubFamily);
+
+  /** SENSE kit composition copy, rendered next to the family limit. */
+  readonly senseKitNote = computed(() => this.i18n.text('senseEssentialsKit'));
+
+  readonly adversarialFamilyCases: readonly AdversarialFamilyCase[] = [
+    adversarialCase('family-card-adversarial-safety-first', 'safety restriction first', [
+      'SAFETY_GATE_BLOCKED',
+      'TRADEMARK_NOT_CLEARED',
+      'PRICE_NOT_APPROVED',
+      'STOCK_NOT_VERIFIED',
+      'PUBLICATION_NOT_AUTHORIZED',
+    ]),
+    adversarialCase('family-card-adversarial-safety-fifth', 'safety restriction fifth', [
+      'PUBLICATION_NOT_AUTHORIZED',
+      'TRADEMARK_NOT_CLEARED',
+      'PRICE_NOT_APPROVED',
+      'STOCK_NOT_VERIFIED',
+      'SAFETY_GATE_BLOCKED',
+    ]),
+    adversarialCase('family-card-adversarial-duplicates', 'duplicate restrictions', [
+      'SAFETY_GATE_BLOCKED',
+      'SAFETY_GATE_BLOCKED',
+      'TRADEMARK_NOT_CLEARED',
+      'BRAND_PROVISIONAL',
+      'PRICE_NOT_APPROVED',
+      'PRICE_NOT_APPROVED',
+    ]),
+    adversarialCase(
+      'family-card-adversarial-missing-restrictions',
+      'missing restrictions array',
+      undefined,
+    ),
+    adversarialCase('family-card-adversarial-unknown-kind', 'unknown restriction kind', [
+      'FUTURE_UNKNOWN_GATE' as MareaRestrictionKind,
+    ]),
+    adversarialCase(
+      'family-card-adversarial-dual-blocking',
+      'two simultaneous blocking restrictions',
+      ['LICENSING_NOT_CLEARED', 'SAFETY_GATE_BLOCKED'],
+    ),
+  ];
 
   readonly navEssential = editionFixture('NAV-ESSENTIAL');
   readonly pilotPro = editionFixture('PILOT-PRO');
@@ -352,6 +509,7 @@ export class CommerceGallery {
 
   readonly startBundle = bundleFixture('START');
   readonly fleetBundle = bundleFixture('FLEET');
+  readonly protectBundle = bundleFixture('PROTECT');
   readonly completeBundle = bundleFixture('COMPLETE');
 
   readonly entitlements = MAREA_FIXTURE_ENTITLEMENTS;
@@ -393,7 +551,9 @@ export class CommerceGallery {
   readonly noDocumentation: readonly MareaDocumentationItem[] = [];
 
   private familyPresentation(family: MareaFixtureFamily): MareaCommercialPresentation {
-    const editions = MAREA_FIXTURE_EDITIONS.filter((edition) => edition.familyId === family.familyId);
+    const editions = MAREA_FIXTURE_EDITIONS.filter(
+      (edition) => edition.familyId === family.familyId,
+    );
     const primary = editions[0];
     return presentationFor(
       deriveCtaState({

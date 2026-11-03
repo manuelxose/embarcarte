@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
 import { assertCatalogueBuilt, gotoCatalogue, setLocale } from './helpers';
 
 /**
@@ -173,20 +173,217 @@ test('the internal-use banner is visible in Spanish and English', async ({ page 
   ).toBeVisible();
 });
 
-// IR-01 closure: the catalogue must render the family-specific limitation copy,
-// not merely define it. These are the exact ES strings from MAREA_COPY.
-test('every family-specific limit is rendered by a family card', async ({ page }) => {
+// IR-01 closure: each of the nine family cards must render its own localized
+// limitation and its material (safety/licensing/compatibility) restriction chip.
+// Every assertion is scoped to that family's own card, never to body text.
+
+interface LocalizedCopy {
+  readonly es: string;
+  readonly en: string;
+}
+
+const COPY = {
+  pilotSupervised: {
+    es: 'Concepto de pilotaje asistido. Sin navegación autónoma ni control de gobierno en vivo. Puerta de seguridad bloqueada.',
+    en: 'Supervised pilot concept. No autonomous navigation and no live steering control. Safety gate blocked.',
+  },
+  aisReceiveOnly: {
+    es: 'Recepción únicamente. Sin transmisión AIS ni promesa de evitación de colisiones.',
+    en: 'Receive-only. No AIS transmission and no collision-avoidance promise.',
+  },
+  watchNoGuarantee: {
+    es: 'No se garantizan alertas ni una monitorización remota continua.',
+    en: 'Alerts are not guaranteed and continuous remote monitoring is not provided.',
+  },
+  fleetNoHardware: {
+    es: 'Sin hardware por defecto y sin acuerdo de nivel de servicio establecido.',
+    en: 'No default hardware and no established service-level agreement.',
+  },
+  localSafetyIndependent: {
+    es: 'Las funciones locales de seguridad no dependen del pago de una suscripción.',
+    en: 'Local safety functions do not depend on a subscription payment.',
+  },
+  navWeatherLicensing: {
+    es: 'Los datos de cartas náuticas y meteorología no licenciados no se representan como incluidos.',
+    en: 'Unlicensed chart and weather data are not represented as included.',
+  },
+  senseEssentialsKit: {
+    es: 'Un kit que representa POWER + BILGE; los módulos no se cuentan dos veces.',
+    en: 'One kit representing POWER + BILGE; modules are not double-counted.',
+  },
+  displayConditional: {
+    es: 'Sin dimensiones, tamaño final ni precio inventados.',
+    en: 'No invented dimensions, final size or price.',
+  },
+  compatibilityUnverified: {
+    es: 'Compatibilidad no verificada: 0 filas probadas. No se afirma compatibilidad con equipos de terceros.',
+    en: 'Compatibility unverified: 0 tested rows. No compatibility with third-party equipment is claimed.',
+  },
+  permission: { es: 'Autorización', en: 'Authorisation' },
+  provisionalBrand: {
+    es: 'Marca propuesta MAREA · identidad no adoptada · uso público NO_GO',
+    en: 'MAREA is a proposed brand · identity not adopted · public use NO_GO',
+  },
+  priceUnavailable: {
+    es: 'Importe no establecido. No se muestra ningún precio porque no existe un precio aprobado.',
+    en: 'No amount established. No price is shown because no approved price exists.',
+  },
+} as const satisfies Record<string, LocalizedCopy>;
+
+interface FamilyExpectation {
+  readonly familyId: string;
+  /** Family-limit paragraph copy from FAMILY_LIMIT_KEYS. */
+  readonly limit: LocalizedCopy;
+  /** Material restriction that must lead the visible chips (never pushed out). */
+  readonly firstChip?: LocalizedCopy;
+  readonly kitNote?: LocalizedCopy;
+}
+
+const FAMILY_EXPECTATIONS: readonly FamilyExpectation[] = [
+  { familyId: 'NAV', limit: COPY.navWeatherLicensing, firstChip: COPY.navWeatherLicensing },
+  { familyId: 'PILOT', limit: COPY.pilotSupervised, firstChip: COPY.pilotSupervised },
+  { familyId: 'FLEET', limit: COPY.fleetNoHardware, firstChip: COPY.navWeatherLicensing },
+  { familyId: 'AIS', limit: COPY.aisReceiveOnly, firstChip: COPY.navWeatherLicensing },
+  { familyId: 'WATCH', limit: COPY.watchNoGuarantee, firstChip: COPY.compatibilityUnverified },
+  {
+    familyId: 'SENSE',
+    limit: COPY.localSafetyIndependent,
+    firstChip: COPY.compatibilityUnverified,
+    kitNote: COPY.senseEssentialsKit,
+  },
+  { familyId: 'DISPLAY', limit: COPY.displayConditional },
+  { familyId: 'WEATHER', limit: COPY.navWeatherLicensing, firstChip: COPY.navWeatherLicensing },
+  { familyId: 'HUB', limit: COPY.compatibilityUnverified },
+];
+
+function cardFor(page: Page, testId: string) {
+  return page.locator(`[data-testid="${testId}"]`);
+}
+
+test('each of the nine family cards renders its own localized limitation in ES and EN', async ({
+  page,
+}) => {
   await gotoCatalogue(page);
-  const body = await page.evaluate(() => document.body.innerText);
-  const required: ReadonlyArray<readonly [string, string]> = [
-    ['PILOT', 'Concepto de pilotaje asistido'],
-    ['AIS', 'Recepción únicamente'],
-    ['WATCH', 'No se garantizan alertas'],
-    ['FLEET', 'Sin hardware por defecto'],
-    ['SENSE', 'Las funciones locales de seguridad'],
-    ['DISPLAY', 'Sin dimensiones, tamaño final ni precio inventados'],
-    ['NAV/WEATHER', 'cartas náuticas y meteorología no licenciados'],
-  ];
-  const missing = required.filter(([, copy]) => !body.includes(copy)).map(([family]) => family);
-  expect(missing, 'Límites familiares no renderizados: ' + missing.join(', ')).toEqual([]);
+
+  for (const locale of ['es', 'en'] as const) {
+    await setLocale(page, locale);
+    for (const expectation of FAMILY_EXPECTATIONS) {
+      const context = `${expectation.familyId} (${locale})`;
+      const card = cardFor(page, `family-card-${expectation.familyId}`);
+      await expect(card, `No se renderizó la ficha de familia ${context}`).toBeVisible();
+
+      // The family limit is a dedicated paragraph inside that card, not body text.
+      await expect(
+        card.locator('p.family-limit').first(),
+        `${context}: falta el límite de familia localizado`,
+      ).toHaveText(expectation.limit[locale]);
+
+      const chips = await card.locator('li.restriction').allInnerTexts();
+      expect(chips.length, `${context}: se esperaban cuatro restricciones visibles`).toBe(4);
+
+      if (expectation.firstChip) {
+        expect(chips[0], `${context}: la restricción material no encabeza las etiquetas`).toBe(
+          expectation.firstChip[locale],
+        );
+      }
+      if (expectation.kitNote) {
+        await expect(
+          card.locator('p.kit-note'),
+          `${context}: falta la composición del kit SENSE`,
+        ).toHaveText(expectation.kitNote[locale]);
+      }
+    }
+  }
+});
+
+test('the SENSE kit composition is visible on its family card and in the PROTECT bundle', async ({
+  page,
+}) => {
+  await gotoCatalogue(page);
+
+  const senseCard = cardFor(page, 'family-card-SENSE');
+  await expect(senseCard.locator('p.kit-note')).toHaveText(COPY.senseEssentialsKit.es);
+
+  const protect = page
+    .locator('marea-bundle-components')
+    .filter({ hasText: 'MAREA SENSE ESSENTIALS' });
+  await expect(protect, 'El paquete PROTECT no está renderizado').toHaveCount(1);
+  await expect(protect).toContainText('Incluye: SENSE-POWER, SENSE-BILGE');
+});
+
+test('adversarial family card: a safety restriction listed first is never dropped', async ({
+  page,
+}) => {
+  await gotoCatalogue(page);
+  const card = cardFor(page, 'family-card-adversarial-safety-first');
+  await expect(card, 'No se renderizó el caso adversarial safety-first').toBeVisible();
+  const chips = await card.locator('li.restriction').allInnerTexts();
+  expect(chips, 'La restricción de seguridad desapareció').toContain(COPY.pilotSupervised.es);
+});
+
+test('adversarial family card: a safety restriction listed fifth is never dropped', async ({
+  page,
+}) => {
+  await gotoCatalogue(page);
+  const card = cardFor(page, 'family-card-adversarial-safety-fifth');
+  await expect(card, 'No se renderizó el caso adversarial safety-fifth').toBeVisible();
+  const chips = await card.locator('li.restriction').allInnerTexts();
+  expect(chips, 'La restricción de seguridad en quinta posición desapareció').toContain(
+    COPY.pilotSupervised.es,
+  );
+  expect(chips[0], 'La restricción de seguridad no se priorizó al frente').toBe(
+    COPY.pilotSupervised.es,
+  );
+});
+
+test('adversarial family card: duplicate restrictions render once', async ({ page }) => {
+  await gotoCatalogue(page);
+  const card = cardFor(page, 'family-card-adversarial-duplicates');
+  await expect(card, 'No se renderizó el caso adversarial duplicates').toBeVisible();
+  const chips = await card.locator('li.restriction').allInnerTexts();
+  expect(chips, 'Los duplicados no se deduplicaron por clave de copy').toEqual([
+    COPY.pilotSupervised.es,
+    COPY.provisionalBrand.es,
+    COPY.priceUnavailable.es,
+  ]);
+});
+
+test('adversarial family card: a missing restrictions array renders no chips and does not crash', async ({
+  page,
+}) => {
+  await gotoCatalogue(page);
+  const card = cardFor(page, 'family-card-adversarial-missing-restrictions');
+  await expect(card, 'La ficha con restricciones ausentes no se renderizó').toBeVisible();
+  await expect(card.locator('ul.restrictions')).toHaveCount(0);
+  await expect(card.locator('li.restriction')).toHaveCount(0);
+  await expect(card.locator('h3')).toContainText('SYNTHETIC');
+});
+
+test('adversarial family card: an unknown restriction kind falls back to the permission copy', async ({
+  page,
+}) => {
+  await gotoCatalogue(page);
+  const card = cardFor(page, 'family-card-adversarial-unknown-kind');
+  await expect(card, 'No se renderizó el caso adversarial unknown-kind').toBeVisible();
+  const chips = await card.locator('li.restriction').allInnerTexts();
+  expect(chips, 'Una restricción desconocida no usó el copy de permiso').toEqual([
+    COPY.permission.es,
+  ]);
+});
+
+test('adversarial family card: two simultaneous blocking restrictions both survive', async ({
+  page,
+}) => {
+  await gotoCatalogue(page);
+  const card = cardFor(page, 'family-card-adversarial-dual-blocking');
+  await expect(card, 'No se renderizó el caso adversarial dual-blocking').toBeVisible();
+  const chips = await card.locator('li.restriction').allInnerTexts();
+  expect(chips, 'No sobrevivieron ambas restricciones bloqueantes').toContain(
+    COPY.pilotSupervised.es,
+  );
+  expect(chips).toContain(COPY.navWeatherLicensing.es);
+  expect(
+    chips.indexOf(COPY.pilotSupervised.es),
+    'La seguridad no se ordenó antes que la licencia',
+  ).toBeLessThan(chips.indexOf(COPY.navWeatherLicensing.es));
 });

@@ -245,20 +245,14 @@ function toPosix(path: string): string {
   return path.replace(/\\/g, '/');
 }
 
-test('production entries import no design-system or preview module by any path', () => {
-  const files = [
-    'src/main.ts',
-    'src/main.server.ts',
-    'src/app/app.routes.ts',
-    'src/app/core/seo.service.ts',
-    'src/server.ts',
-  ];
-  const offenders: string[] = [];
-  for (const file of files) {
-    const source = readFileSync(file, 'utf8');
-    for (const match of source.matchAll(/(?:from|import)\s*\(?\s*['"]([^'"]+)['"]/g)) {
-      if (/marea|preview\//i.test(match[1])) offenders.push(file + ': ' + match[1]);
-    }
-  }
-  expect(offenders, offenders.join('\n')).toEqual([]);
+test('production entries import no design-system or preview module by any path', async () => {
+  // Shared resolver: relative imports, re-exports, dynamic imports, tsconfig
+  // `paths`/`baseUrl` aliases and local transitive bridges are all followed.
+  const { findIsolationOffenders } = await import('../../scripts/marea-design-system-guards.mjs');
+  const { offenders, scanned } = findIsolationOffenders({ root: ROOT });
+  expect(scanned, 'no local project module was scanned').toBeGreaterThan(0);
+  expect(
+    offenders,
+    `El entry de producción alcanza el catálogo/DS interno (import, re-export, ruta alias o puente transitivo):\n${offenders.join('\n')}`,
+  ).toEqual([]);
 });

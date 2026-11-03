@@ -13,8 +13,12 @@ import { MareaText } from '../foundation/marea-text';
   imports: [MareaText],
   template: `
     <section class="stock-unavailable">
-      <h4 marea-text variant="heading" class="heading">{{ i18n.text('stockUnavailableHeading') }}</h4>
-      <p marea-text variant="bodySmall" tone="secondary" class="body">{{ i18n.text('stockUnavailable') }}</p>
+      <h4 marea-text variant="heading" class="heading">
+        {{ i18n.text('stockUnavailableHeading') }}
+      </h4>
+      <p marea-text variant="bodySmall" tone="secondary" class="body">
+        {{ i18n.text('stockUnavailable') }}
+      </p>
       @if (stockState()) {
         <p marea-text variant="meta" class="meta">{{ i18n.text('status') }} · {{ stockState() }}</p>
       }
@@ -22,11 +26,26 @@ import { MareaText } from '../foundation/marea-text';
     </section>
   `,
   styles: `
-    :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .stock-unavailable { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-1); min-inline-size: 0; }
-    .heading, .body, .meta, .sale { margin: 0; }
-    .meta { overflow-wrap: anywhere; }
+    :host {
+      display: block;
+      min-inline-size: 0;
+      color: var(--marea-text-primary);
+    }
+    .stock-unavailable {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-1);
+      min-inline-size: 0;
+    }
+    .heading,
+    .body,
+    .meta,
+    .sale {
+      margin: 0;
+    }
+    .meta {
+      overflow-wrap: anywhere;
+    }
   `,
 })
 export class MareaStockUnavailable {

@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, input, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  inject,
+  input,
+  signal,
+  viewChild,
+} from '@angular/core';
 import { MareaI18n } from '../../core/i18n';
 import { MareaIds } from '../../core/ids';
 import { MareaIcon } from '../foundation/marea-icon';

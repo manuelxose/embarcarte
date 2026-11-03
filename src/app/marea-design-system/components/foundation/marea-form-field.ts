@@ -38,13 +38,40 @@ import { MareaIds } from '../../core/ids';
     }
   `,
   styles: `
-    :host { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-1); min-inline-size: 0; }
-    .label { font-family: var(--marea-font-body); font-size: var(--marea-type-label-size); font-weight: 700; color: var(--marea-text-primary); }
-    .required { color: var(--marea-state-critical); }
-    .hint { margin: 0; font-size: var(--marea-type-body-small-size); color: var(--marea-text-secondary); }
-    .error { margin: 0; font-size: var(--marea-type-body-small-size); font-weight: 600; color: var(--marea-state-critical); }
-    .sr-only { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+    :host {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-1);
+      min-inline-size: 0;
+    }
+    .label {
+      font-family: var(--marea-font-body);
+      font-size: var(--marea-type-label-size);
+      font-weight: 700;
+      color: var(--marea-text-primary);
+    }
+    .required {
+      color: var(--marea-state-critical);
+    }
+    .hint {
+      margin: 0;
+      font-size: var(--marea-type-body-small-size);
+      color: var(--marea-text-secondary);
+    }
+    .error {
+      margin: 0;
+      font-size: var(--marea-type-body-small-size);
+      font-weight: 600;
+      color: var(--marea-state-critical);
+    }
+    .sr-only {
+      position: absolute;
+      inline-size: 1px;
+      block-size: 1px;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
     :host ::ng-deep .marea-input {
       inline-size: 100%;
       min-block-size: var(--marea-control-md);
@@ -57,13 +84,22 @@ import { MareaIds } from '../../core/ids';
       font-size: var(--marea-type-body-size);
       line-height: var(--marea-type-body-line-height);
     }
-    :host ::ng-deep .marea-input:hover { border-color: var(--marea-action); }
+    :host ::ng-deep .marea-input:hover {
+      border-color: var(--marea-action);
+    }
     :host ::ng-deep .marea-input:focus-visible {
       outline: var(--marea-focus-width) var(--marea-focus-style) var(--marea-focus-ring);
       outline-offset: var(--marea-focus-offset);
     }
-    :host ::ng-deep .marea-input--invalid { border-color: var(--marea-state-critical); border-inline-start-width: var(--marea-border-width-strong); }
-    :host ::ng-deep .marea-input:disabled { background: var(--marea-disabled-surface); color: var(--marea-disabled); cursor: not-allowed; }
+    :host ::ng-deep .marea-input--invalid {
+      border-color: var(--marea-state-critical);
+      border-inline-start-width: var(--marea-border-width-strong);
+    }
+    :host ::ng-deep .marea-input:disabled {
+      background: var(--marea-disabled-surface);
+      color: var(--marea-disabled);
+      cursor: not-allowed;
+    }
   `,
 })
 export class MareaFormField {

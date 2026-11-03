@@ -8,7 +8,13 @@ import type {
   MareaRestrictionKind,
 } from '../core/types';
 
-const CTA_STATES: readonly MareaCtaState[] = ['DISABLED', 'COMING_SOON', 'REQUEST_INFORMATION', 'QUOTE_ONLY', 'NOT_AVAILABLE'];
+const CTA_STATES: readonly MareaCtaState[] = [
+  'DISABLED',
+  'COMING_SOON',
+  'REQUEST_INFORMATION',
+  'QUOTE_ONLY',
+  'NOT_AVAILABLE',
+];
 
 /**
  * MC-17 fail-closed commercial adapter.
@@ -18,7 +24,9 @@ const CTA_STATES: readonly MareaCtaState[] = ['DISABLED', 'COMING_SOON', 'REQUES
  * design system cannot render a purchase path, a price or a stock quantity even
  * when upstream data is malformed or contradicts the global release gate.
  */
-export function deriveCommercialPresentation(input: MareaCommercialInput): MareaCommercialPresentation {
+export function deriveCommercialPresentation(
+  input: MareaCommercialInput,
+): MareaCommercialPresentation {
   const blockedSignals: MareaBlockedSignal[] = [];
   if (input.buyCtaAllowed !== false) blockedSignals.push('BUY_CTA');
   if (input.cartAllowed !== false) blockedSignals.push('CART');
@@ -42,7 +50,9 @@ export function deriveCommercialPresentation(input: MareaCommercialInput): Marea
 
 /** Unknown, missing or non-string states resolve to the most restrictive state. */
 export function sanitizeCtaState(state: unknown): MareaCtaState {
-  return typeof state === 'string' && (CTA_STATES as readonly string[]).includes(state) ? (state as MareaCtaState) : 'NOT_AVAILABLE';
+  return typeof state === 'string' && (CTA_STATES as readonly string[]).includes(state)
+    ? (state as MareaCtaState)
+    : 'NOT_AVAILABLE';
 }
 
 export interface MareaCtaSource {
@@ -92,7 +102,12 @@ export function restrictionCopyKey(kind: MareaRestrictionKind): MareaCopyKeyForR
   return RESTRICTION_COPY[kind] ?? 'permission';
 }
 
-/** Family-specific limits that must never be dropped from a rendered specimen. */
+/**
+ * Family-specific limits that must never be dropped from a rendered specimen.
+ * Covers the nine MC-16 families. HUB has no dedicated limitation copy, so it
+ * uses the existing compatibility limitation (its integration with third-party
+ * equipment is not verified).
+ */
 export const FAMILY_LIMIT_KEYS: Readonly<Record<string, MareaCopyKey>> = {
   PILOT: 'pilotSupervised',
   AIS: 'aisReceiveOnly',
@@ -102,4 +117,69 @@ export const FAMILY_LIMIT_KEYS: Readonly<Record<string, MareaCopyKey>> = {
   NAV: 'navWeatherLicensing',
   WEATHER: 'navWeatherLicensing',
   DISPLAY: 'displayConditional',
+  HUB: 'compatibilityUnverified',
 };
+
+/** Material gates first; generic commercial gates last. Ties keep input order. */
+const RESTRICTION_PRIORITY: Readonly<Record<string, number>> = {
+  SAFETY_GATE_BLOCKED: 0,
+  LICENSING_NOT_CLEARED: 1,
+  COMPATIBILITY_UNTESTED: 2,
+  TRADEMARK_NOT_CLEARED: 3,
+  BRAND_PROVISIONAL: 3,
+  PRICE_NOT_APPROVED: 4,
+  STOCK_NOT_VERIFIED: 5,
+  PUBLICATION_NOT_AUTHORIZED: 6,
+};
+
+const VISIBLE_RESTRICTION_LIMIT = 4;
+
+/**
+ * Deterministically selects at most four visible restriction kinds.
+ *
+ * Safety, licensing and compatibility are ranked before generic commercial
+ * gates, so an adversarial upstream order can never push a material limitation
+ * out of the visible chips. Duplicates are removed by resulting copy key, which
+ * also collapses TRADEMARK_NOT_CLEARED and BRAND_PROVISIONAL into one chip.
+ * Unknown runtime kinds fall back to the permission copy instead of crashing.
+ */
+export function selectVisibleRestrictions(
+  kinds: readonly MareaRestrictionKind[] | null | undefined,
+  toCopyKey: (kind: MareaRestrictionKind) => MareaCopyKey,
+): readonly MareaRestrictionKind[] {
+  const source: readonly unknown[] = Array.isArray(kinds) ? kinds : [];
+  const ranked: {
+    kind: MareaRestrictionKind;
+    key: MareaCopyKey;
+    priority: number;
+    index: number;
+  }[] = [];
+  for (let index = 0; index < source.length; index++) {
+    const value = source[index];
+    if (typeof value !== 'string') continue;
+    const kind = value as MareaRestrictionKind;
+    let key: MareaCopyKey;
+    try {
+      key = toCopyKey(kind) ?? 'permission';
+    } catch {
+      key = 'permission';
+    }
+    ranked.push({
+      kind,
+      key,
+      priority: RESTRICTION_PRIORITY[kind] ?? Number.MAX_SAFE_INTEGER,
+      index,
+    });
+  }
+  ranked.sort((left, right) => left.priority - right.priority || left.index - right.index);
+
+  const seen = new Set<MareaCopyKey>();
+  const visible: MareaRestrictionKind[] = [];
+  for (const entry of ranked) {
+    if (seen.has(entry.key)) continue;
+    seen.add(entry.key);
+    visible.push(entry.kind);
+    if (visible.length === VISIBLE_RESTRICTION_LIMIT) break;
+  }
+  return visible;
+}

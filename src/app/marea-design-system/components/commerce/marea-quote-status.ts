@@ -24,8 +24,15 @@ import { MareaText } from '../foundation/marea-text';
     </marea-notice>
   `,
   styles: `
-    :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .scope { margin: 0; overflow-wrap: anywhere; }
+    :host {
+      display: block;
+      min-inline-size: 0;
+      color: var(--marea-text-primary);
+    }
+    .scope {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
   `,
 })
 export class MareaQuoteStatus {

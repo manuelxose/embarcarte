@@ -139,3 +139,33 @@ MERGED = false
 DEPLOYED = false
 MC18_STARTED = false
 ```
+
+## Addendum — Ronda 3 (2026-11-03)
+
+La tercera auditoría independiente se ejecutó sobre el SHA congelado `4a9043b`
+(commit de entrega documental). Su resultado **no es un PASS** y no se adelanta aquí:
+el veredicto final lo registra el revisor independiente en
+`MC17-INDEPENDENT-REVIEW.md`. Estado real de los hallazgos en ese SHA:
+
+| Hallazgo | Estado real en `4a9043b` |
+|---|---|
+| `MC17-IR-01` — límites familiares definidos pero no presentados | **ABIERTO/PARCIAL**: la galería comercial ya renderiza fichas NAV, PILOT, FLEET, AIS, WATCH, SENSE y DISPLAY y existe una prueba e2e por familia (`commerce.spec.ts`, «every family-specific limit is rendered by a family card»), pero HUB y WEATHER no tienen ficha propia y la tercera ronda aún no ha validado el cierre. |
+| `MC17-IR-03` — entregables obsoletos/contradictorios | **ABIERTO**: frases corruptas y contradictorias en varios documentos y datasets. La corrección de esta ronda las repara y conserva el histórico con fecha/SHA. |
+| `MC17-IR-05` — el validador no detecta la importación del preview | **ABIERTO/MITIGADO**: `MC17-08` sigue siendo textual; la prueba e2e `ssr-contract.spec.ts` sí detecta la importación, pero el check nombrado no. |
+| `MC17-IR-06` — baselines autogeneradas y par ES/EN idéntico | **PARCIALMENTE ABIERTO**: el par ES/EN ahora es el de la galería comercial y difiere (`27132adf…` vs `a57f0370…`), y la procedencia se reescribe con commits, entorno y SHA-256; la aceptación debe compararse siempre sin `--update-snapshots`. |
+| `MC17-IR-07` — cobertura de variantes de `MC17-13` | **ABIERTO**: la extracción de literales entre comillas dobles mejoró, pero siguen sin cubrirse alias, enums y valores por defecto, y el detalle sigue imprimiendo un recuento vacío. |
+| `MC17-IR-08` — gobernanza de MC-17 no registrada | **PARCIALMENTE ABIERTO**: la fila 17 del registro ya existe y esta corrección añade las cadenas exactas de veredicto y alcance más la decisión D-073; el veredicto final sigue pendiente. |
+| `MC17-IR-10` — cobertura de `format:check` | **ABIERTO**: la cobertura se amplía en un agente paralelo a `src/app/marea-design-system`, `preview`, `e2e/design-system` y `playwright.design-system.config.ts`; el resultado debe re-medirse en el commit de corrección. |
+| `MC17-CR-02` — documentos corruptos por la corrección anterior | **ABIERTO**: se reparan las frases malformadas de D08 y las afirmaciones contradictorias; no se hace un reemplazo ciego. |
+
+Las correcciones se están implementando en el árbol de trabajo y no se atribuyen al
+SHA auditado. El veredicto final de la ronda 3 y el cierre o no de cada hallazgo los
+añadirá el revisor independiente; hasta entonces:
+
+```text
+MC17_VERDICT = PARTIAL
+MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = IMPLEMENTED_AND_TECHNICALLY_VERIFIED_PENDING_FINAL_RE_AUDIT
+```
+
+No se autoriza fusión, despliegue, publicación, venta, adopción de marca ni inicio
+de MC-18. Las dos rondas anteriores de este informe se conservan intactas.

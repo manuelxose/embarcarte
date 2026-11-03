@@ -301,3 +301,54 @@ test('registry and state datasets are coherent when present', () => {
   for (const entry of states.components)
     for (const state of required) assert.ok(entry.states[state], `${entry.componentId}/${state}`);
 });
+
+test('format scripts cover the design-system, preview and design-system e2e scopes', () => {
+  const pkg = readJson('package.json');
+  const required = [
+    'src/app/marea-design-system',
+    'preview',
+    'e2e/design-system',
+    'playwright.design-system.config.ts',
+  ];
+  const tokens = (script) => script.split(/\s+/).filter(Boolean);
+  for (const name of ['format', 'format:check']) {
+    const script = pkg.scripts[name];
+    assert.equal(typeof script, 'string', `${name} script missing`);
+    assert.ok(script.startsWith('prettier '), `${name} must invoke prettier`);
+    for (const path of required)
+      assert.ok(tokens(script).includes(path), `${name} does not cover ${path}`);
+  }
+  const coverage = (script) =>
+    tokens(script)
+      .filter((token) => token !== 'prettier' && !token.startsWith('--'))
+      .sort();
+  assert.deepEqual(
+    coverage(pkg.scripts.format),
+    coverage(pkg.scripts['format:check']),
+    'format and format:check must cover the same paths',
+  );
+  assert.ok(
+    coverage(pkg.scripts.format).includes('scripts/marea-design-system-guards.mjs'),
+    'the shared guard module must be formatted and checked',
+  );
+});
+
+test('generated design-system artefacts stay canonical via their generators', () => {
+  const ignored = read('.prettierignore')
+    .split(/\r?\n/)
+    .map((line) => line.trim());
+  assert.ok(
+    ignored.includes('**/*.generated.ts'),
+    '.prettierignore must exclude generated TypeScript artefacts from Prettier',
+  );
+  for (const generator of [
+    'scripts/build-marea-design-tokens.mjs',
+    'scripts/build-marea-design-system-fixtures.mjs',
+    'scripts/build-marea-design-system-catalogue-data.mjs',
+  ]) {
+    assert.ok(
+      ignored.some((line) => line.startsWith('#') && line.includes(generator)),
+      `.prettierignore must document that ${generator} validates its output`,
+    );
+  }
+});

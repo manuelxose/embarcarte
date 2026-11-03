@@ -20,7 +20,8 @@ export type MareaTone = 'critical' | 'warning' | 'safe' | 'stale' | 'info' | 'ne
 export type MareaDefinitionStatus = 'DEFINED' | 'CONDITIONAL' | 'INSTALLATION_PACKAGE';
 
 /** The five MC-16 CTA states. Derived, never authored as marketing copy. */
-export type MareaCtaState = 'DISABLED' | 'COMING_SOON' | 'REQUEST_INFORMATION' | 'QUOTE_ONLY' | 'NOT_AVAILABLE';
+export type MareaCtaState =
+  'DISABLED' | 'COMING_SOON' | 'REQUEST_INFORMATION' | 'QUOTE_ONLY' | 'NOT_AVAILABLE';
 
 /** Derived readiness label. Never promoted by a page render. */
 export type MareaReadinessStatus = 'READY' | 'NOT_READY' | 'BLOCKED' | 'NOT_ASSESSED';
@@ -43,9 +44,11 @@ export type MareaFreshnessState = 'FRESH' | 'STALE' | 'OFFLINE' | 'NO_DATA';
 
 export type MareaConnectivityState = 'ONLINE' | 'DEGRADED' | 'OFFLINE' | 'UNKNOWN';
 
-export type MareaSensorState = 'NOT_INSTALLED' | 'NO_SIGNAL' | 'ERROR' | 'CALIBRATING' | 'UNLICENSED';
+export type MareaSensorState =
+  'NOT_INSTALLED' | 'NO_SIGNAL' | 'ERROR' | 'CALIBRATING' | 'UNLICENSED';
 
-export type MareaInclusion = 'INCLUDED' | 'OPTIONAL' | 'CONDITIONAL' | 'QUOTATION_REQUIRED' | 'EXCLUDED' | 'CONTRACT_ONLY';
+export type MareaInclusion =
+  'INCLUDED' | 'OPTIONAL' | 'CONDITIONAL' | 'QUOTATION_REQUIRED' | 'EXCLUDED' | 'CONTRACT_ONLY';
 
 export type MareaDocumentationStatus = 'AVAILABLE' | 'PENDING';
 
@@ -167,7 +170,8 @@ export interface MareaCommercialPresentation {
   readonly blockedSignals: readonly MareaBlockedSignal[];
 }
 
-export type MareaBlockedSignal = 'BUY_CTA' | 'CART' | 'PRICE_VISIBILITY' | 'AVAILABILITY_VISIBILITY';
+export type MareaBlockedSignal =
+  'BUY_CTA' | 'CART' | 'PRICE_VISIBILITY' | 'AVAILABILITY_VISIBILITY';
 
 export interface MareaInstrumentReadout {
   /** Pre-formatted by the domain layer; components never locale-format numeric values. */

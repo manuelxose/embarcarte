@@ -10,7 +10,12 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   },
   template: '<ng-content />',
   styles: `
-    :host { display: flex; flex-direction: column; gap: var(--marea-stack-gap, var(--marea-space-4)); min-inline-size: 0; }
+    :host {
+      display: flex;
+      flex-direction: column;
+      gap: var(--marea-stack-gap, var(--marea-space-4));
+      min-inline-size: 0;
+    }
   `,
 })
 export class MareaStack {

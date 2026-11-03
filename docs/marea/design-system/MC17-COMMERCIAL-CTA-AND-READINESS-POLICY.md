@@ -239,13 +239,22 @@ Commands: `npm run test:design-system`, `npm run test:design-system:visual`.
 
 ## 13. Known gaps
 
-- **Recorded validator run is overall FAIL (historical snapshot; the current committed run is 38/38).** The commercial checks
-  (`MC17-17`, `MC17-19`, `MC17-20`, `MC17-23`, `MC17-24`, `MC17-31`) are each recorded
-  PASS; the failures are missing-file/document-set items (`MC17-32`/`33`/`34`/`35`/`36`),
-  three of which were added after the run. The overall status is not a pass.
-- **Recorded axe run reports 0 `color-contrast` violations after the correction**, in the
-  preview-only component-documentation block, not in a library component.
-- **Independent review.** `MC17-INDEPENDENT-REVIEW.md` exists: first round PARTIAL with two MAJOR findings, corrected in `7cbc99e`; see the review for the current status.
+- **Recorded validator run at `4a9043b` is `PASS`: 38/38 checks** (`evidence/validator-run.json`).
+  The commercial checks (`MC17-17`, `MC17-19`, `MC17-20`, `MC17-23`, `MC17-24`,
+  `MC17-31`) pass. Earlier FAIL snapshots taken while the tree was being built in
+  parallel (31/38 at 02:47 and 36/38 at 02:56 on 2026-11-03, and 37/38 at `7cbc99e`
+  while D23/D24 were absent) are historical and superseded by the third-round
+  correction at `4a9043b`; they are retained in D01 §7 and in the review record.
+- **Axe run at `4a9043b` reports 0 violations in all four modes** (`web-light`,
+  `instrument-day`, `instrument-sunlight`, `instrument-night`), 36 passes and 0
+  incomplete per mode (`evidence/axe-summary.json`). The earlier single
+  `instrument-night` `color-contrast` finding in the preview-only
+  component-documentation block is historical: it was corrected and the summary and
+  all four raw runs now record zero violations.
+- **Independent review.** `MC17-INDEPENDENT-REVIEW.md` exists and is committed: round 1
+  PARTIAL (two MAJOR), round 2 PARTIAL on `7cbc99e` with IR-02 and IR-04 closed. The
+  third-round verdict on the delivery SHA `4a9043b` is pending; the review record, not
+  this policy, is authoritative for its status.
 - **Gate-open behaviour is untested in a shipped surface.** No surface passes
   `releaseGateOpen: true`; the suppression branch is code-reviewed only.
 - **No server API.** The adapter receives hand-built view models; no MC-16 read API exists,

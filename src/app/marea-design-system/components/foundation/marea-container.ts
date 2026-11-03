@@ -15,9 +15,17 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       inline-size: min(100% - 2 * var(--marea-space-4), var(--marea-container-default, 1160px));
       margin-inline: auto;
     }
-    :host(.marea-container--narrow) { inline-size: min(100% - 2 * var(--marea-space-4), var(--marea-container-narrow, 800px)); }
-    :host(.marea-container--wide) { inline-size: min(100% - 2 * var(--marea-space-4), var(--marea-container-wide, 1360px)); }
-    @media (max-width: 479px) { :host { inline-size: calc(100% - 2 * var(--marea-space-3, 12px)); } }
+    :host(.marea-container--narrow) {
+      inline-size: min(100% - 2 * var(--marea-space-4), var(--marea-container-narrow, 800px));
+    }
+    :host(.marea-container--wide) {
+      inline-size: min(100% - 2 * var(--marea-space-4), var(--marea-container-wide, 1360px));
+    }
+    @media (max-width: 479px) {
+      :host {
+        inline-size: calc(100% - 2 * var(--marea-space-3, 12px));
+      }
+    }
   `,
 })
 export class MareaContainer {

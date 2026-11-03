@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnChanges, computed, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnChanges,
+  computed,
+  inject,
+  input,
+} from '@angular/core';
 import { MareaI18n } from '../core/i18n';
 import type { MareaContext, MareaLocale, MareaMode } from '../core/types';
 
@@ -42,7 +49,9 @@ export class MareaTheme implements OnChanges {
 
   private readonly i18n = inject(MareaI18n);
 
-  readonly context = computed<MareaContext>(() => (this.mode().startsWith('instrument-') ? 'instrument' : 'corporate'));
+  readonly context = computed<MareaContext>(() =>
+    this.mode().startsWith('instrument-') ? 'instrument' : 'corporate',
+  );
 
   ngOnChanges(): void {
     this.i18n.locale.set(this.locale());

@@ -123,12 +123,19 @@ representable** through this contract. `MareaCommercialPresentation` fixes
 | Hydration of ARIA relationships | ids come from a deterministic counter in component construction order, so `aria-describedby`/`aria-labelledby` match between server and client for the same component order | `ids.ts`; `marea-button`, `marea-form-field` |
 | Hydration-sensitive timestamps | no component reads the clock; `ageSeconds` is an input supplied by the caller | `marea-freshness`, `marea-numeric-readout` |
 
-**Known inconsistency (recorded, not hidden):** `marea-form-field` does not use
-`MareaIds`. It keeps a module-level counter (``MareaIds` is injected per component instance (a process-wide module counter found in the first revision was replaced). On a long-running SSR process that counter is shared across
-requests, so ids in a later request differ from what a fresh client counter would
-produce. The design system is not part of the production build today, so this is a
-latent defect rather than an observed hydration error; it is listed in D09 §10 and
-must be fixed before any SSR use.
+**Correction to an earlier record (2026-11-03):** the first revision of
+`marea-form-field` used a process-wide module counter instead of the injectable
+`MareaIds` service. That module-level counter was replaced during the audit
+correction; the current implementation injects the root-provided `MareaIds`
+singleton (`marea-form-field.ts:78-81`), so ids are generated per component
+instance in construction order and the earlier SSR concern no longer applies.
+`MareaIds` is a root singleton: on a long-running SSR process its sequence is
+shared across requests, but because ids are derived from construction order the
+server and client agree for the same component order. The design system is not part
+of the production build today, so this remains a latent design consideration rather
+than an observed hydration error, and it must still be validated before any SSR use
+(see D14 §8). The stale "module-level `fieldSequence`" wording that the previous
+correction left in D09 is superseded.
 
 ## 7. Imports boundary and production isolation
 
@@ -238,7 +245,9 @@ its declared path, exports the declared class, contains the declared selector an
 - No performance measurement: no bundle-size budget for the catalogue is enforced
   beyond Angular's defaults in the production configuration.
 - No dependency-injection scoping analysis beyond the three root services.
-- The ``MareaIds` is injected per component instance; the earlier module-level counter was removed.
+- The `MareaIds` singleton is injected per component instance; the earlier
+  module-level counter was removed during the audit correction and a source search
+  finds 0 `fieldSequence` occurrences in the current tree.
 
 Source references: `src/app/marea-design-system/**`,
 `preview/**`, `angular.json`, `package.json`,

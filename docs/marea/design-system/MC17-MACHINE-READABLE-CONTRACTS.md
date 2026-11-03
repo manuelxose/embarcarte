@@ -8,7 +8,7 @@
 | Owner | documentation-specialist (MC-17/36) |
 | Directory | `docs/marea/design-system/data/` |
 | Contract set | 20 datasets declared by validator check `MC17-36` |
-| Present at authoring | 19 files; `review-findings.json` pending (D22) |
+| Present at `4a9043b` | 20/20 files; `review-findings.json` is present and reviewer-owned |
 | Governance | `INTERNAL_PROPOSED` / `NOT_ADOPTED` / public use `NO_GO` |
 
 ## 1. Why these datasets exist
@@ -72,14 +72,14 @@ evidence or a contract mirrored in code and is enforced indirectly.
 | 15 | `locale-parity.json` | `MC17-LOCALE-PARITY` | 138 bilingual keys, routing and identity rules | programme-docs | authored | `INTERNAL_PROPOSED` | `MC17-25` / `MC17-26` |
 | 16 | `asset-provenance.json` | `MC17-ASSET-PROVENANCE` | 10 asset families, rights and publication state, 0 public MAREA assets | documentation-specialist | authored | `INTERNAL_PROPOSED` | `MC17-34` |
 | 17 | `legacy-ui-baseline.json` | `MC17-LEGACY-UI-BASELINE` | 35 watched files / 15 public files SHA-256 at the MC-16 commit | lead | generated (Git object DB) | `INTERNAL_PROPOSED` | `MC17-11`, `MC17-28`, `MC17-30` |
-| 18 | `blocker-register.json` | `MC17-BLOCKER-REGISTER` | 17 inherited and MC-17 blockers; 0 closed | documentation-specialist | authored | `OPEN` | `MC17-32` |
+| 18 | `blocker-register.json` | `MC17-BLOCKER-REGISTER` | 17 inherited and MC-17 blockers; 3 MC-17-internal entries closed historical at `4a9043b`, inherited ones open | documentation-specialist | authored | `OPEN` | `MC17-32` |
 | 19 | `mc18-handoff-inputs.json` | `MC17-MC18-HANDOFF-INPUTS` | Handoff contracts and `mc18Started: false` | documentation-specialist | authored | `READY_WITH_NAMED_GAPS` | `MC17-33` |
-| 20 | `review-findings.json` | `MC17-REVIEW-FINDINGS` | Independent review findings, if any | independent reviewer (D22) | authored by reviewer | **PENDING — absent** | `MC17-36` |
+| 20 | `review-findings.json` | `MC17-REVIEW-FINDINGS` | Independent review findings, per-finding status and re-review record | independent reviewer (D22) | authored by reviewer | `PRESENT` | `MC17-36` |
 
-**Present/absent at authoring:** 19 of 20 files exist. `review-findings.json` is the
-only absent dataset; it is owned by the independent review (D22), which is also
-pending. No author of this document fabricated review findings to make the check
-green.
+**Present/absent at `4a9043b`:** all 20 files exist. `review-findings.json` is
+owned by the independent review (D22), whose two rounds are recorded and whose
+third-round verdict on `4a9043b` is pending. No author of this document fabricated
+review findings to make the check green.
 
 ### Count reconciliation
 
@@ -88,8 +88,8 @@ contract `docs/marea/commerce-data/data/mc17-handoff-inputs.json`
 (`MC16-MC17-HANDOFF-INPUTS`, 2,201 bytes), which is outside this directory and is an
 **input**, not an MC-17 dataset. Counting that external input as well gives 21
 machine-readable contracts in the wider MC-17 handoff, but only 20 are governed by
-`MC17-36` and only 19 exist in the directory at authoring. The table above indexes
-the 20; the external input is cited but not claimed as an MC-17 output.
+`MC17-36` and all 20 exist at `4a9043b`. The table above indexes the 20; the
+external input is cited but not claimed as an MC-17 output.
 
 ## 4. Determinism and `--check` commands
 
@@ -123,7 +123,8 @@ components.").
 - a `datasets` array (20 entries) with contractId, path, owner, generation kind,
   status, consumed-by check and `exists` flag;
 - a `documents` array of the 24 MC-17 deliverables with deliverable id, title,
-  status (`PRESENT` / `PENDING`) and path; D22–D24 are marked `PENDING` at authoring;
+  status (`PRESENT` / `PENDING`) and path; all 24, including D22–D24, are `PRESENT`
+  at `4a9043b`;
 - a `productionIsolation` summary and the governance flag block.
 
 The manifest is an **index, not a new authority**: when it disagrees with a dataset
@@ -137,7 +138,8 @@ or the validator, the dataset/validator wins and the manifest is corrected.
 3. Treat `legacy-ui-baseline.json` as a byte baseline, not a visual approval.
 4. Treat `contrast-evidence.json` as declared-value evidence, not rendered-pixel
    proof.
-5. Treat `review-findings.json` as absent until the independent review writes it.
+5. Treat `review-findings.json` as the independent reviewer's record; read its
+   per-finding status rather than a summary, and do not edit it as an author.
 6. Never edit a generated file to change a contract; change the source and rerun the
    generator.
 7. A dataset `PASS` status is scoped to that dataset. It is not a milestone verdict,

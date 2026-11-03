@@ -48,10 +48,25 @@ const KIND_ICON: Readonly<Record<MareaStateKind, MareaIconName>> = {
       background: var(--marea-surface);
       color: var(--marea-text-primary);
     }
-    :host(.marea-state-panel--error) { border-style: solid; border-color: var(--marea-state-critical); }
-    .title { margin: 0; font-family: var(--marea-font-display); font-weight: 700; font-size: var(--marea-type-heading-size); }
-    .description { margin: 0; max-inline-size: var(--marea-measure); overflow-wrap: break-word; color: var(--marea-text-secondary); }
-    .actions:empty { display: none; }
+    :host(.marea-state-panel--error) {
+      border-style: solid;
+      border-color: var(--marea-state-critical);
+    }
+    .title {
+      margin: 0;
+      font-family: var(--marea-font-display);
+      font-weight: 700;
+      font-size: var(--marea-type-heading-size);
+    }
+    .description {
+      margin: 0;
+      max-inline-size: var(--marea-measure);
+      overflow-wrap: break-word;
+      color: var(--marea-text-secondary);
+    }
+    .actions:empty {
+      display: none;
+    }
   `,
 })
 export class MareaStatePanel {

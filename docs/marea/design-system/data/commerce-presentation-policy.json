@@ -9,8 +9,8 @@
   "knownLimitations": [
     "This policy is a presentation guard, not the authoritative commercial evaluator; the MC-16 server-side evaluator remains the final control.",
     "No price, availability, stock, cart, checkout, payment, subscription or entitlement grant is represented or enabled.",
-    "The policy describes the implementation at the time of authoring. The recorded validator run (docs/marea/design-system/evidence/validator-run.json) is overall FAIL (historical snapshot; the current committed run is 38/38), while the commercial checks MC17-17, MC17-19, MC17-20, MC17-23, MC17-24 and MC17-31 are each recorded PASS.",
-    "The recorded axe summary reports one color-contrast violation in instrument-night inside the preview-only component documentation block; it is not a library component.",
+    "The recorded validator run at 4a9043b (docs/marea/design-system/evidence/validator-run.json) is overall PASS, 38/38, and the commercial checks MC17-17, MC17-19, MC17-20, MC17-23, MC17-24 and MC17-31 are each recorded PASS. Earlier FAIL snapshots (31/38 and 36/38 during authoring, 37/38 at 7cbc99e) are historical and superseded.",
+    "The recorded axe summary at 4a9043b reports 0 violations, 36 passes and 0 incomplete in each of the four modes. The earlier single instrument-night color-contrast finding in the preview-only component documentation block was corrected and is retained only as a historical failure artifact.",
     "Catalogue prose is internal and Spanish-only; the policy itself is language-neutral and the component copy is bilingual."
   ],
   "sourceRefs": [

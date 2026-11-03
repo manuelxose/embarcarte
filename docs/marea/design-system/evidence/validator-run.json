@@ -69,9 +69,9 @@
     },
     {
       "id": "MC17-08",
-      "description": "Design-system code is absent from production entry points",
+      "description": "Production entry points cannot reach preview or design-system code by any import path",
       "status": "PASS",
-      "detail": "5 production files free of design-system imports (literal + import-path scan)",
+      "detail": "5 entries, 86 local project modules followed; relative imports, re-exports and dynamic imports resolved against tsconfig paths/baseUrl (0 alias patterns)",
       "evidence": null
     },
     {
@@ -106,7 +106,7 @@
       "id": "MC17-13",
       "description": "No undocumented component variant is exposed",
       "status": "PASS",
-      "detail": "39 option values and  variants documented",
+      "detail": "33 option inputs resolved to 126 string values and compared in both directions with the registry (types + visualVariants); 64 visual variants matched, 4 non-enumerable option inputs skipped",
       "evidence": null
     },
     {
@@ -120,7 +120,7 @@
       "id": "MC17-15",
       "description": "Interactive components implement a visible focus contract",
       "status": "PASS",
-      "detail": "11 keyboard-operable components expose :focus-visible with focus tokens",
+      "detail": "11 keyboard-operable components expose :focus-visible with the focus-ring token and no hidden/transparent outline",
       "evidence": null
     },
     {
@@ -153,9 +153,9 @@
     },
     {
       "id": "MC17-20",
-      "description": "Commerce presentation reports MC-16 readiness and restrictions truthfully",
+      "description": "Commerce presentation reports MC-16 readiness and restrictions truthfully and the family-limit map covers all nine families",
       "status": "PASS",
-      "detail": "PILOT blocked, AIS receive-only, FLEET without default hardware",
+      "detail": "PILOT blocked, AIS receive-only, FLEET without default hardware; FAMILY_LIMIT_KEYS statically covers 9/9 families and all copy keys resolve",
       "evidence": null
     },
     {
@@ -174,9 +174,9 @@
     },
     {
       "id": "MC17-23",
-      "description": "PILOT, AIS, WATCH, FLEET, SENSE and DISPLAY limits are stated in copy",
+      "description": "Family limitation copy is stated and the commerce gallery is statically coupled to all nine families",
       "status": "PASS",
-      "detail": "family-limitation copy present, no autonomy/steering claim",
+      "detail": "family-limitation copy present, no autonomy/steering claim; commerce gallery statically instantiates 9/9 family cards including WEATHER and HUB (rendered evidence is Playwright-only)",
       "evidence": null
     },
     {

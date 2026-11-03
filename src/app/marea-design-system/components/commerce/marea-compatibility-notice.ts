@@ -27,8 +27,15 @@ import { MareaText } from '../foundation/marea-text';
     }
   `,
   styles: `
-    :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .note { margin: 0; overflow-wrap: anywhere; }
+    :host {
+      display: block;
+      min-inline-size: 0;
+      color: var(--marea-text-primary);
+    }
+    .note {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
   `,
 })
 export class MareaCompatibilityNotice {

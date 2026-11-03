@@ -36,13 +36,19 @@ const INCLUSION_COPY: Readonly<Record<MareaInclusion, MareaCopyKey>> = {
   imports: [MareaStatusBadge, MareaText],
   template: `
     <section class="bundle-components">
-      <h3 marea-text variant="heading" class="heading">{{ heading() ?? i18n.text('components') }}</h3>
+      <h3 marea-text variant="heading" class="heading">
+        {{ heading() ?? i18n.text('components') }}
+      </h3>
       <ul class="lines">
         @for (line of components(); track line.lineId) {
           <li class="line">
             <div class="line-head">
               <span marea-text variant="label" class="line-name">{{ line.displayName }}</span>
-              <span marea-status-badge [tone]="inclusionTone(line.inclusion)" [label]="inclusionLabel(line.inclusion)"></span>
+              <span
+                marea-status-badge
+                [tone]="inclusionTone(line.inclusion)"
+                [label]="inclusionLabel(line.inclusion)"
+              ></span>
               @if (line.quantity > 1) {
                 <span marea-text variant="meta" class="quantity">×{{ line.quantity }}</span>
               }
@@ -58,18 +64,50 @@ const INCLUSION_COPY: Readonly<Record<MareaInclusion, MareaCopyKey>> = {
     </section>
   `,
   styles: `
-    :host { display: block; min-inline-size: 0; color: var(--marea-text-primary); }
-    .bundle-components { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-3); min-inline-size: 0; }
-    .heading { margin: 0; }
-    .lines { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-2); margin: 0; padding: 0; list-style: none; }
-    .line { display: grid;
-      grid-template-columns: minmax(0, 1fr); gap: var(--marea-space-1); min-inline-size: 0; }
-    .line-head { display: flex; flex-wrap: wrap; align-items: center; gap: var(--marea-space-2); }
-    .line-name { font-weight: 600; overflow-wrap: anywhere; }
-    .quantity { font-variant-numeric: tabular-nums; }
-    .expands { margin: 0; }
+    :host {
+      display: block;
+      min-inline-size: 0;
+      color: var(--marea-text-primary);
+    }
+    .bundle-components {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-3);
+      min-inline-size: 0;
+    }
+    .heading {
+      margin: 0;
+    }
+    .lines {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-2);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .line {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--marea-space-1);
+      min-inline-size: 0;
+    }
+    .line-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--marea-space-2);
+    }
+    .line-name {
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+    .quantity {
+      font-variant-numeric: tabular-nums;
+    }
+    .expands {
+      margin: 0;
+    }
   `,
 })
 export class MareaBundleComponents {

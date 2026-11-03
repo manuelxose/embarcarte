@@ -11,9 +11,18 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   },
   template: '',
   styles: `
-    :host { display: block; border: 0; border-block-start: var(--marea-border-width-hairline, 1px) solid var(--marea-line); margin: var(--marea-space-4) 0; }
-    :host(.marea-divider--tight) { margin: var(--marea-space-2) 0; }
-    :host(.marea-divider--loose) { margin: var(--marea-space-8) 0; }
+    :host {
+      display: block;
+      border: 0;
+      border-block-start: var(--marea-border-width-hairline, 1px) solid var(--marea-line);
+      margin: var(--marea-space-4) 0;
+    }
+    :host(.marea-divider--tight) {
+      margin: var(--marea-space-2) 0;
+    }
+    :host(.marea-divider--loose) {
+      margin: var(--marea-space-8) 0;
+    }
   `,
 })
 export class MareaDivider {

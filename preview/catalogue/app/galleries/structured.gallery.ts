@@ -4,14 +4,32 @@ import { MareaText } from '../../../../src/app/marea-design-system/components/fo
 import { MareaStack } from '../../../../src/app/marea-design-system/components/foundation/marea-stack';
 import { MareaDivider } from '../../../../src/app/marea-design-system/components/foundation/marea-divider';
 import { MareaSectionHeading } from '../../../../src/app/marea-design-system/components/foundation/marea-section-heading';
-import { MareaTabs, type MareaTabItem } from '../../../../src/app/marea-design-system/components/structured/marea-tabs';
+import {
+  MareaTabs,
+  type MareaTabItem,
+} from '../../../../src/app/marea-design-system/components/structured/marea-tabs';
 import { MareaTabPanel } from '../../../../src/app/marea-design-system/components/structured/marea-tab-panel';
-import { MareaAccordion, type MareaAccordionItem } from '../../../../src/app/marea-design-system/components/structured/marea-accordion';
+import {
+  MareaAccordion,
+  type MareaAccordionItem,
+} from '../../../../src/app/marea-design-system/components/structured/marea-accordion';
 import { MareaDisclosure } from '../../../../src/app/marea-design-system/components/structured/marea-disclosure';
-import { MareaSpecTable, type MareaSpecRow } from '../../../../src/app/marea-design-system/components/structured/marea-spec-table';
-import { MareaDefinitionList, type MareaDefinitionItem } from '../../../../src/app/marea-design-system/components/structured/marea-definition-list';
-import { MareaResponsiveNav, type MareaNavItem } from '../../../../src/app/marea-design-system/components/structured/marea-responsive-nav';
-import { MareaBreadcrumb, type MareaBreadcrumbItem } from '../../../../src/app/marea-design-system/components/structured/marea-breadcrumb';
+import {
+  MareaSpecTable,
+  type MareaSpecRow,
+} from '../../../../src/app/marea-design-system/components/structured/marea-spec-table';
+import {
+  MareaDefinitionList,
+  type MareaDefinitionItem,
+} from '../../../../src/app/marea-design-system/components/structured/marea-definition-list';
+import {
+  MareaResponsiveNav,
+  type MareaNavItem,
+} from '../../../../src/app/marea-design-system/components/structured/marea-responsive-nav';
+import {
+  MareaBreadcrumb,
+  type MareaBreadcrumbItem,
+} from '../../../../src/app/marea-design-system/components/structured/marea-breadcrumb';
 import { MareaStatusDisplay } from '../../../../src/app/marea-design-system/components/structured/marea-status-display';
 import {
   MareaFeatureComparison,
@@ -77,22 +95,49 @@ function familyFixture(familyId: string): MareaFixtureFamily {
           [activeId]="activeTab()"
           (activeIdChange)="activeTab.set($event)"
         />
-        <marea-tab-panel itemId="structured-tab-nav" [active]="activeTab() === 'structured-tab-nav'">
+        <marea-tab-panel
+          itemId="structured-tab-nav"
+          [active]="activeTab() === 'structured-tab-nav'"
+        >
           <marea-stack [gap]="1">
-            <p marea-text variant="bodySmall">{{ navFamily.displayName }} · {{ i18n.text('editions') }}: {{ navFamily.editionCount }}</p>
-            <p marea-text variant="meta">{{ navFamily.definitionStatus }} · {{ navFamily.readiness }} · SYNTHETIC_INTERNAL_FIXTURE</p>
+            <p marea-text variant="bodySmall">
+              {{ navFamily.displayName }} · {{ i18n.text('editions') }}:
+              {{ navFamily.editionCount }}
+            </p>
+            <p marea-text variant="meta">
+              {{ navFamily.definitionStatus }} · {{ navFamily.readiness }} ·
+              SYNTHETIC_INTERNAL_FIXTURE
+            </p>
           </marea-stack>
         </marea-tab-panel>
-        <marea-tab-panel itemId="structured-tab-pilot" [active]="activeTab() === 'structured-tab-pilot'">
+        <marea-tab-panel
+          itemId="structured-tab-pilot"
+          [active]="activeTab() === 'structured-tab-pilot'"
+        >
           <marea-stack [gap]="1">
-            <p marea-text variant="bodySmall">{{ pilotFamily.displayName }} · {{ i18n.text('editions') }}: {{ pilotFamily.editionCount }}</p>
-            <p marea-text variant="meta">{{ pilotFamily.definitionStatus }} · {{ pilotFamily.readiness }} · SYNTHETIC_INTERNAL_FIXTURE</p>
+            <p marea-text variant="bodySmall">
+              {{ pilotFamily.displayName }} · {{ i18n.text('editions') }}:
+              {{ pilotFamily.editionCount }}
+            </p>
+            <p marea-text variant="meta">
+              {{ pilotFamily.definitionStatus }} · {{ pilotFamily.readiness }} ·
+              SYNTHETIC_INTERNAL_FIXTURE
+            </p>
           </marea-stack>
         </marea-tab-panel>
-        <marea-tab-panel itemId="structured-tab-fleet" [active]="activeTab() === 'structured-tab-fleet'">
+        <marea-tab-panel
+          itemId="structured-tab-fleet"
+          [active]="activeTab() === 'structured-tab-fleet'"
+        >
           <marea-stack [gap]="1">
-            <p marea-text variant="bodySmall">{{ fleetFamily.displayName }} · {{ i18n.text('editions') }}: {{ fleetFamily.editionCount }}</p>
-            <p marea-text variant="meta">{{ fleetFamily.definitionStatus }} · {{ fleetFamily.readiness }} · SYNTHETIC_INTERNAL_FIXTURE</p>
+            <p marea-text variant="bodySmall">
+              {{ fleetFamily.displayName }} · {{ i18n.text('editions') }}:
+              {{ fleetFamily.editionCount }}
+            </p>
+            <p marea-text variant="meta">
+              {{ fleetFamily.definitionStatus }} · {{ fleetFamily.readiness }} ·
+              SYNTHETIC_INTERNAL_FIXTURE
+            </p>
           </marea-stack>
         </marea-tab-panel>
         <marea-component-doc componentId="marea-tabs" />
@@ -136,9 +181,12 @@ function familyFixture(familyId: string): MareaFixtureFamily {
         >
           <marea-stack [gap]="2">
             <p marea-text variant="bodySmall">
-              Este contenido no es documentación aprobada ni una afirmación comercial. El estado abierto vive en el consumidor y no en el componente.
+              Este contenido no es documentación aprobada ni una afirmación comercial. El estado
+              abierto vive en el consumidor y no en el componente.
             </p>
-            <p marea-text variant="meta">Sin enlaces públicos y sin datos de cliente, embarcación o certificación.</p>
+            <p marea-text variant="meta">
+              Sin enlaces públicos y sin datos de cliente, embarcación o certificación.
+            </p>
           </marea-stack>
         </marea-disclosure>
         <marea-component-doc componentId="marea-disclosure" />
@@ -154,7 +202,10 @@ function familyFixture(familyId: string): MareaFixtureFamily {
           heading="Tabla de especificaciones"
           lead="Seis filas densas con una columna de valor larga. La tabla conserva caption y encabezados de fila, y se desplaza dentro de una región enfocable sin desbordar la página."
         />
-        <marea-spec-table caption="Ficha técnica de fixtures internos (seis filas)" [rows]="specRows" />
+        <marea-spec-table
+          caption="Ficha técnica de fixtures internos (seis filas)"
+          [rows]="specRows"
+        />
         <marea-component-doc componentId="marea-spec-table" />
       </section>
 
@@ -307,9 +358,18 @@ function familyFixture(familyId: string): MareaFixtureFamily {
           lead="Tres categorías de restricción. El encabezado se deriva del diccionario existente y el cuerpo declara el ámbito interno sin afirmar aprobación alguna."
         />
         <marea-stack [gap]="4">
-          <marea-permission-notice kind="PUBLICATION_NOT_AUTHORIZED" scope="MAREA NAV · fixture interno no publicado" />
-          <marea-permission-notice kind="TRADEMARK_NOT_CLEARED" scope="MAREA NAV · identidad propuesta, no adoptada" />
-          <marea-permission-notice kind="SAFETY_GATE_BLOCKED" detail="MAREA PILOT · concepto supervisado sin control de gobierno en vivo" />
+          <marea-permission-notice
+            kind="PUBLICATION_NOT_AUTHORIZED"
+            scope="MAREA NAV · fixture interno no publicado"
+          />
+          <marea-permission-notice
+            kind="TRADEMARK_NOT_CLEARED"
+            scope="MAREA NAV · identidad propuesta, no adoptada"
+          />
+          <marea-permission-notice
+            kind="SAFETY_GATE_BLOCKED"
+            detail="MAREA PILOT · concepto supervisado sin control de gobierno en vivo"
+          />
         </marea-stack>
         <marea-component-doc componentId="marea-permission-notice" />
       </section>
@@ -371,7 +431,11 @@ export class StructuredGallery {
   get specRows(): readonly MareaSpecRow[] {
     return [
       { label: 'NAV · definitionStatus', value: this.navFamily.definitionStatus },
-      { label: 'NAV · readiness', value: this.navFamily.readiness, note: 'SYNTHETIC_INTERNAL_FIXTURE' },
+      {
+        label: 'NAV · readiness',
+        value: this.navFamily.readiness,
+        note: 'SYNTHETIC_INTERNAL_FIXTURE',
+      },
       { label: 'NAV · editionCount', value: String(this.navFamily.editionCount) },
       { label: 'PILOT · readiness', value: this.pilotFamily.readiness },
       { label: 'FLEET · readiness', value: this.fleetFamily.readiness },
@@ -385,7 +449,10 @@ export class StructuredGallery {
 
   get definitionItems(): readonly MareaDefinitionItem[] {
     return [
-      { term: 'NAV', definition: `${this.navFamily.definitionStatus} · ${this.navFamily.readiness}` },
+      {
+        term: 'NAV',
+        definition: `${this.navFamily.definitionStatus} · ${this.navFamily.readiness}`,
+      },
       {
         term: 'PILOT',
         definition: `${this.pilotFamily.definitionStatus} · ${this.pilotFamily.readiness}`,
@@ -405,7 +472,12 @@ export class StructuredGallery {
   }
 
   readonly navItems: readonly MareaNavItem[] = [
-    { id: 'structured-nav-current', label: 'Estructura e interacción', href: '#estructura', current: true },
+    {
+      id: 'structured-nav-current',
+      label: 'Estructura e interacción',
+      href: '#estructura',
+      current: true,
+    },
     { id: 'structured-nav-commerce', label: 'Presentación comercial', href: '#comercio' },
     { id: 'structured-nav-instrument', label: 'Instrumentación interna', href: '#instrumentos' },
     { id: 'structured-nav-foundation', label: 'Fundamentos', href: '#fundamentos' },
@@ -424,8 +496,10 @@ export class StructuredGallery {
   ];
 
   get comparisonRows(): readonly MareaComparisonRow[] {
-    const has = (family: MareaFixtureFamily, restriction: (typeof family.restrictions)[number]): boolean =>
-      family.restrictions.includes(restriction);
+    const has = (
+      family: MareaFixtureFamily,
+      restriction: (typeof family.restrictions)[number],
+    ): boolean => family.restrictions.includes(restriction);
     return [
       {
         feature: 'editionCount',

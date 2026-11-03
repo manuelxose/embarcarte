@@ -17,7 +17,7 @@
   },
   "knownLimitations": [
     "No independent accessibility audit and no assistive-technology testing (screen reader, voice control, switch access) has been performed.",
-    "Automated coverage is axe-core with wcag2a, wcag2aa, wcag21a, wcag21aa and wcag22aa tags in Chromium only. The recorded summary reports 0 violations in web-light, instrument-day and instrument-sunlight, and 0 color-contrast violations after the correction inside the preview-only component documentation block.",
+    "Automated coverage is axe-core with wcag2a, wcag2aa, wcag21a, wcag21aa and wcag22aa tags in Chromium only. The recorded summary at 4a9043b reports 0 violations, 36 passes and 0 incomplete in each of the four modes (web-light, instrument-day, instrument-sunlight, instrument-night). The earlier single instrument-night color-contrast finding in the preview-only component documentation block was corrected and is retained only as a historical failure artifact.",
     "Contrast ratios are computed from declared token values; anti-aliasing, glare, night adaptation and display hardware are not modelled.",
     "Instrument day/sunlight/night modes are software-only specimens; no marine hardware visibility or night-vision performance is validated.",
     "The internal catalogue is not a public page and has no main landmark; axe region rules are disabled there, which is a documented deviation from a public-page audit.",

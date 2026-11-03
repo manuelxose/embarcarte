@@ -44,13 +44,33 @@ const TONE_ICON: Readonly<Record<MareaTone, MareaIconName>> = {
       letter-spacing: 0.02em;
       white-space: normal;
     }
-    :host(.marea-status-badge--critical) { color: var(--marea-state-critical); background: var(--marea-state-critical-surface); }
-    :host(.marea-status-badge--warning) { color: var(--marea-state-warning); background: var(--marea-state-warning-surface); }
-    :host(.marea-status-badge--safe) { color: var(--marea-state-safe); background: var(--marea-state-safe-surface); }
-    :host(.marea-status-badge--stale) { color: var(--marea-state-stale); background: var(--marea-state-stale-surface); }
-    :host(.marea-status-badge--info) { color: var(--marea-state-info); background: var(--marea-state-info-surface); }
-    :host(.marea-status-badge--neutral) { color: var(--marea-text-secondary); background: var(--marea-surface-raised); }
-    .text { overflow-wrap: anywhere; }
+    :host(.marea-status-badge--critical) {
+      color: var(--marea-state-critical);
+      background: var(--marea-state-critical-surface);
+    }
+    :host(.marea-status-badge--warning) {
+      color: var(--marea-state-warning);
+      background: var(--marea-state-warning-surface);
+    }
+    :host(.marea-status-badge--safe) {
+      color: var(--marea-state-safe);
+      background: var(--marea-state-safe-surface);
+    }
+    :host(.marea-status-badge--stale) {
+      color: var(--marea-state-stale);
+      background: var(--marea-state-stale-surface);
+    }
+    :host(.marea-status-badge--info) {
+      color: var(--marea-state-info);
+      background: var(--marea-state-info-surface);
+    }
+    :host(.marea-status-badge--neutral) {
+      color: var(--marea-text-secondary);
+      background: var(--marea-surface-raised);
+    }
+    .text {
+      overflow-wrap: anywhere;
+    }
   `,
 })
 export class MareaStatusBadge {

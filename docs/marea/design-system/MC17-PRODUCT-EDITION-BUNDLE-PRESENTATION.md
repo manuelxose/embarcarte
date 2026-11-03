@@ -155,17 +155,19 @@ These absences are structural, not editorial:
 | `MC17-24` | Shared entitlement ledgers grouped and exercised by fixtures |
 | `MC17-26` | One component set and exactly 26 edition ids |
 
-The run command is `npm run test:design-system`. The recorded run in
-`docs/marea/design-system/evidence/validator-run.json` is overall **FAIL (historical snapshot; the current committed run is 38/38)**, but the
-five portfolio checks above are recorded **PASS**: `MC17-20`, `MC17-21`, `MC17-22`,
-`MC17-23` and `MC17-24`. The failures are missing-file/document-set items unrelated to the
-portfolio counts (`MC17-32`/`33`/`34`/`35`/`36`); three of those files were added after the
-run, so the evidence is stale. Overall status is not a pass.
+The run command is `npm run test:design-system`. The recorded run at `4a9043b` in
+`docs/marea/design-system/evidence/validator-run.json` is overall **PASS, 38/38**, and
+the five portfolio checks above are recorded **PASS**: `MC17-20`, `MC17-21`, `MC17-22`,
+`MC17-23` and `MC17-24`. Earlier FAIL snapshots (31/38 and 36/38 during authoring,
+37/38 at `7cbc99e` while D23/D24 were absent) are historical and superseded by the
+third-round correction.
 
 ## 10. Known gaps
 
-- **Not independently reviewed.** No `MC17-INDEPENDENT-REVIEW.md` exists yet.
-- **No measured validator output committed.** The evidence file is absent.
+- **Independent review not final.** `MC17-INDEPENDENT-REVIEW.md` exists with two
+  rounds, both PARTIAL; the third-round verdict on `4a9043b` is pending.
+- **Measured validator output is committed.** `evidence/validator-run.json` records
+  PASS, 38/38 at `4a9043b`.
 - **Edition-level presentation is sampled, not exhaustive.** The commerce gallery renders
   NAV-ESSENTIAL, PILOT-PRO and DISPLAY-LARGE-CONDITIONAL; all 26 are representable by the
   fixture and data contract, but only those three are visually exercised in the gallery.

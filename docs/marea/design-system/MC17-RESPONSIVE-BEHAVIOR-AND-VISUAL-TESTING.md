@@ -9,7 +9,7 @@
 | Suite | `e2e/design-system/responsive.spec.ts`, `visual.spec.ts` |
 | Browser | Chromium (Playwright `Desktop Chrome`) on Windows |
 | Visual baselines | 26 PNGs under `e2e/design-system/visual.spec.ts-snapshots/` |
-| Recorded run | 28/28 tests across six spec files; final status `passed` |
+| Recorded run | **30/30 tests across six spec files at `4a9043b`**; final status `passed`. The authoring records were 28/28 and 29/29; the count is re-measured at the correction commit |
 
 ## 1. Responsive strategy
 
@@ -85,22 +85,25 @@ browser-zoom review or a screen-reader test.
 The latest recorded Playwright run covers six spec files: `accessibility`,
 `commerce`, `keyboard`, `responsive`, `ssr-contract` and `visual`. The retained
 final-status file `test-results/design-system/artifacts/.last-run.json` says
-`{"status":"passed","failedTests":[]}` and the Lead-recorded count is **28/28
-passed**, of which:
+`{"status":"passed","failedTests":[]}`. At `4a9043b` the suite is **30/30 passed**,
+of which:
 
 | Spec | Tests | Relevant to this document |
 |---|---:|---|
 | `responsive.spec.ts` | 2 | six-width reflow; 200% text scaling |
-| `visual.spec.ts` | 6 | 4 modes at 1440; 2 modes at 320; ES/EN pair |
-| other four specs | 20 | accessibility, keyboard, commerce, SSR contract |
-| **Total** | **28** | six files |
+| `visual.spec.ts` | 6 | 4 modes at 1440; 2 modes at 320; commerce ES/EN pair |
+| other four specs | 22 | accessibility, keyboard, commerce, SSR contract |
+| **Total** | **30** | six files |
+
+The count is re-measured at the correction commit and is not hardcoded as a final
+number: a later test addition changes it. The authoring-time snapshot was 28 tests
+(29 after the audit correction); those counts are historical.
 
 Caveat on the JSON reporter: the retained
 `test-results/design-system/results.json` contains 28 `skipped` entries with zero
-results and a start time of the same run. It is a reporter artifact, not the
+results and a start time of an earlier run. It is a reporter artifact, not the
 completion record; the completion record is `.last-run.json` plus the generated
-baselines, screenshots and summaries. This document does not claim a fresher run
-than the recorded one.
+baselines, screenshots and summaries.
 
 ### 4.1 Exact responsive test names
 
@@ -118,7 +121,7 @@ than the recorded one.
 | `visual.spec.ts` | `all galleries at 1440x900 in instrument-sunlight` | 4 |
 | `visual.spec.ts` | `all galleries at 1440x900 in instrument-night` | 4 |
 | `visual.spec.ts` | `all galleries at 320x812 in web-light and instrument-night` | 8 |
-| `visual.spec.ts` | `foundation gallery ES vs EN pair at 1440x900` | 2 |
+| `visual.spec.ts` | `commerce gallery ES vs EN pair at 1440x900` | 2 |
 
 ## 5. Defect found and fixed
 
@@ -153,7 +156,8 @@ would be quantified.
 ## 6. Visual baseline inventory
 
 Playwright writes snapshots with the `-chromium-win32` suffix. The exact inventory
-at authoring time is **26 PNGs**:
+at `4a9043b` is **26 PNGs** after removing the two orphaned foundation locale
+captures; the ES/EN pair is now the commerce gallery pair:
 
 | # | Baseline file | Viewport | Content |
 |---:|---|---|---|
@@ -181,8 +185,8 @@ at authoring time is **26 PNGs**:
 | 22 | `commerce-320x812-instrument-night-chromium-win32.png` | 320×812 | commerce, instrument-night |
 | 23 | `instrument-320x812-web-light-chromium-win32.png` | 320×812 | instrument, web-light |
 | 24 | `instrument-320x812-instrument-night-chromium-win32.png` | 320×812 | instrument, instrument-night |
-| 25 | `foundation-1440x900-web-light-locale-es-chromium-win32.png` | 1440×900 | ES copy pair |
-| 26 | `foundation-1440x900-web-light-locale-en-chromium-win32.png` | 1440×900 | EN copy pair |
+| 25 | `commerce-1440x900-web-light-locale-es-chromium-win32.png` | 1440×900 | commerce ES copy pair (sha256 `a57f0370…`) |
+| 26 | `commerce-1440x900-web-light-locale-en-chromium-win32.png` | 1440×900 | commerce EN copy pair (sha256 `27132adf…`) |
 
 Snapshot settings in `visual.spec.ts`: `maxDiffPixelRatio: 0.002`,
 `animations: 'disabled'`, `fullPage: false`, `caret: 'hide'`, `scale: 'css'`;
@@ -193,14 +197,22 @@ scrolled so the gallery starts at the top of the viewport before each capture.
 
 - The baselines are **Chromium/Windows-specific** (`-chromium-win32`). Firefox,
   WebKit, macOS, Linux, real phones and high-DPI hardware are not covered.
-- They were generated on the **frozen MC-17 implementation commit** by
-  `--update-snapshots`. Git access is outside this task, so the commit SHA is not
-  quoted here; the Lead holds it and the independent auditor must re-run against the
-  reviewed commit.
+- Source commits: `3a8d4fd` (initial 26-baseline set), `7cbc99e` (audit corrections),
+  `4a9043b` (commerce locale pair replacing the orphaned foundation pair). The
+  previous wording that no SHA could be quoted is superseded.
+- Environment: Windows, Chromium as installed by `@playwright/test` 1.64.1, Node
+  24.18.0.
+- Generation is explicit and reviewable: `npm run build:design-system-preview` builds
+  the catalogue, a first run with `--update-snapshots` writes snapshots **only on an
+  explicitly reviewed tree**, and every acceptance comparison runs **without**
+  `--update-snapshots`. The two orphaned foundation locale captures were deleted
+  because the visual spec now captures the commerce locale pair.
 - The baselines do **not self-validate**. Generating them in the same run that
-  compares them would make any implementation pass; the committed process is:
+  compares them cannot prove the implementation correct; the committed process is:
   generate once on a reviewed tree, then compare on later runs and fail on a
   material difference.
+- The ES/EN pair differs: sha256 `27132adf1af3…` (EN) vs `a57f03700f6b…` (ES), so the
+  pair now discriminates locale rendering.
 - The 26 files are evidence of the visual state, not proof that the state is
   correct. A human must review a diff; a passing comparison only proves the pixels
   did not change.
