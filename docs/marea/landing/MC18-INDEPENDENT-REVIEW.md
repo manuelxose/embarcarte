@@ -1,18 +1,19 @@
 # MC-18 — Independent review (D21)
 
-| Field                         | Value                                                                                                                                 |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| Deliverable                   | D21 `MC18-INDEPENDENT-REVIEW.md`                                                                                                      |
-| Milestone                     | MC-18/36 — internal MAREA corporate landing (EMBARCARTE)                                                                              |
-| Auditor                       | Agent G — independent auditor (did not author the implementation)                                                                     |
-| Frozen audit SHA              | `ca64ec7f9f079326321cc7070ad2b1acf2832bc9` (`feat(mc18): implement isolated bilingual MAREA corporate landing`)                       |
-| Base / predecessor SHA        | `6002c49f898e755154c1b65c97781177719ce11c` (verified MC-17 HEAD)                                                                      |
-| Branch                        | `feature/marea-mc18-bilingual-corporate-landing` (local only, no upstream)                                                            |
-| Date                          | 2026-11-03                                                                                                                            |
-| Worktree state at audit start | Clean — `git status --porcelain=v1` empty, `git diff HEAD --quiet` exit 0                                                             |
-| Worktree state at end         | Only the two D21 deliverables added; test-generated evidence files restored byte-for-byte to the frozen commit (see §2.4)             |
-| Recommendation                | `PASS_INTERNAL_LANDING_SCOPE` (0 open BLOCKING, 0 open MAJOR; 3 MINOR OPEN, 2 INFORMATIONAL) — programme verdict deliberately not set |
-| Publication                   | `NOT_AUTHORIZED` — no merge, deployment, publication, sitemap submission or MC-19 start observed                                      |
+| Field                         | Value                                                                                                                                  |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| Deliverable                   | D21 `MC18-INDEPENDENT-REVIEW.md`                                                                                                       |
+| Milestone                     | MC-18/36 — internal MAREA corporate landing (EMBARCARTE)                                                                               |
+| Auditor                       | Agent G — independent auditor (did not author the implementation)                                                                      |
+| Frozen audit SHA              | `ca64ec7f9f079326321cc7070ad2b1acf2832bc9` (`feat(mc18): implement isolated bilingual MAREA corporate landing`)                        |
+| Correction-round HEAD         | `27d60a11f211856cdcacf5577bbcc058386dd812` (corrections `d5e99802…`, delivery docs D22/D23 in `27d60a1`)                               |
+| Base / predecessor SHA        | `6002c49f898e755154c1b65c97781177719ce11c` (verified MC-17 HEAD)                                                                       |
+| Branch                        | `feature/marea-mc18-bilingual-corporate-landing` (pushed; draft PR #25, base MC-17 branch)                                             |
+| Date                          | 2026-11-03                                                                                                                             |
+| Worktree state at audit start | Clean — `git status --porcelain=v1` empty, `git diff HEAD --quiet` exit 0                                                              |
+| Worktree state at end         | Only this D21 and `data/review-findings.json` changed in the correction round; test-generated evidence restored to `27d60a1` (see §9)  |
+| Recommendation                | `PASS_INTERNAL_LANDING_SCOPE` (0 open BLOCKING/MAJOR/MINOR; IR-01/02/03 CLOSED at `d5e9980`; IR-04/05 accepted) — no programme verdict |
+| Publication                   | `NOT_AUTHORIZED` — no merge, deployment, publication, sitemap submission or MC-19 start observed                                       |
 
 This is an independent audit of the frozen implementation, not a delivery summary and not a
 programme verdict. Every number below comes from a command executed in this worktree on
@@ -388,19 +389,106 @@ The tracked evidence files rewritten by the test/e2e runs were restored byte-for
 `git archive HEAD` after measurement, so the only additions to the frozen tree are the two D21
 deliverables. This is stated so the Lead can regenerate the validator evidence at delivery time.
 
-## 9. Verdict
+## 9. Correction round — re-verification at `27d60a1`
+
+The Lead applied the audit corrections in `d5e99802df7b2073a25556e5d0d723273bf743a8` and the
+delivery documents in `27d60a11f211856cdcacf5577bbcc058386dd812`. The worktree was clean
+(`git status --porcelain=v1` empty, `git diff HEAD --quiet` exit 0) and the branch is pushed with
+draft PR #25 (base `feature/marea-mc17-premium-design-system`, OPEN / DRAFT / MERGEABLE). The delta
+since `ca64ec7` is 11 files: the four corrections, D22/D23, this review and the findings dataset,
+and regenerated validator evidence. No public route, style, sitemap, design-system, commerce-data
+or predecessor evidence file changed.
+
+### 9.1 Corrections verified
+
+| Finding    | Correction observed                                                                                                                 | Verification                                                                                                                                                                                           |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| MC18-IR-02 | `evidence.ts` now says `HUB_OVERVIEW (pageType as recorded in the canonical dataset)`; `content-evidence.json` regenerated          | `npm run check:landing:data` exit 0 (12 current); validator MC18-45 PASS                                                                                                                               |
+| MC18-IR-03 | `preview/landing/server.ts` starts `app.listen` only inside `isMainModule(import.meta.url)` (ternary; `server` is `null` on import) | `npm run build:landing:preview` output has 0 preview-banner lines; `npm run test:design-system` 38/38 with 0 banner lines; `node dist/marea-landing-preview/server/server.mjs` still starts and serves |
+| MC18-IR-05 | `preview-isolation.json` carries `developerRootAlias` for `/`; the builder emits it                                                 | dataset read; `check:landing:data` current                                                                                                                                                             |
+| MC17-31    | `landing-preview.ts` comment reworded without the forbidden structured-data token                                                   | `npm run test:design-system` 38/38                                                                                                                                                                     |
+| MC18-IR-01 | D22/D23 exist; D23 §2/§4 reconcile the frozen, post-audit and final counts                                                          | validator MC18-51 and MC18-54 PASS                                                                                                                                                                     |
+
+### 9.2 Commands re-run (exact)
+
+| Command                                                                      | Exit      | Observed result                                                                                                                                                                                                                            |
+| ---------------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `git rev-parse HEAD` / `git status --porcelain=v1` / `git diff HEAD --quiet` | 0         | `27d60a11…`; clean; exit 0                                                                                                                                                                                                                 |
+| `git diff --stat ca64ec7..HEAD`                                              | 0         | 11 files, +1,061 / −26                                                                                                                                                                                                                     |
+| `npm run test:landing`                                                       | 0         | **60/60** PASS (MC18-51 and MC18-54 now pass)                                                                                                                                                                                              |
+| `npm run test:landing:unit`                                                  | 0         | **45/45**                                                                                                                                                                                                                                  |
+| `npx tsc -p tsconfig.app.json --noEmit` / preview                            | 0 / 0     | clean                                                                                                                                                                                                                                      |
+| `npm run format:check`                                                       | 0         | all matched files formatted                                                                                                                                                                                                                |
+| `npm run check:landing:data`                                                 | 0         | 12 generated artefacts current                                                                                                                                                                                                             |
+| `git diff --check`                                                           | 0         | clean                                                                                                                                                                                                                                      |
+| `npm run build:landing:preview`                                              | 0         | 0 prerendered routes; **0** preview-banner lines in the build output                                                                                                                                                                       |
+| `npm run test:design-system`                                                 | 0         | MC-17 **38/38**; **0** preview-banner lines                                                                                                                                                                                                |
+| `npm run test:design-system:unit`                                            | 0         | **41/41** (spot-check of the D23 snapshot)                                                                                                                                                                                                 |
+| `npx playwright test -c playwright.landing.config.ts`                        | 0         | **44/44** passed, 1.9 min; axe 0/0/0/0; hydration PASS 0 console errors; responsive 12/12; visual 8/8, 0 mismatches, 5 unstable recorded                                                                                                   |
+| Preview SSR probes `/marea`, `/en/marea`                                     | 200 / 200 | `es-ES` / `en`; 316,049 / 313,958 bytes; 10 sections, 9 families, 6 bundles, one `h1`, banner; no canonical/hreflang/OG/Twitter/JSON-LD; `X-Robots-Tag: noindex`; unknown paths 404; forged Host 403; 0 forms/inputs/external URLs/cookies |
+| `npm run build` (public)                                                     | 0         | 96 routes; 330 files / 7,866,024 B; **0** landing identifiers in `dist/embarcarte`                                                                                                                                                         |
+| Production server probes                                                     | —         | `/marea` **404**, `/en/marea` **404**, `/` 200, `/en` 200                                                                                                                                                                                  |
+| `gh pr view 25` / `24`                                                       | 0         | #25 OPEN/DRAFT/MERGEABLE base MC-17; #24 OPEN/DRAFT base MC-16                                                                                                                                                                             |
+
+The committed validator evidence records `head: d5e9980` because that was the code HEAD when the
+run was made; final HEAD `27d60a1` is docs-only and changes no checked code. This is a provenance
+detail, not a defect.
+
+### 9.3 Finding status after re-verification
+
+| Finding    | Previous      | Final               | Correction commit | Independent re-verification                                                                                                                        |
+| ---------- | ------------- | ------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MC18-IR-01 | MINOR OPEN    | **CLOSED**          | `d5e99802…`       | D23 §2/§4 records 56/60 frozen → 58/60 post-audit → **60/60** final and green `format:check`; validator 60/60 confirms                             |
+| MC18-IR-02 | MINOR OPEN    | **CLOSED**          | `d5e99802…`       | `evidence.ts` and regenerated `content-evidence.json` say `HUB_OVERVIEW`; canonical dataset re-read; `check:landing:data` current; MC18-45 PASS    |
+| MC18-IR-03 | MINOR OPEN    | **CLOSED**          | `d5e99802…`       | listener guarded by `isMainModule`; build and design-system validator print 0 preview banners; `node dist/.../server.mjs` still serves the preview |
+| MC18-IR-04 | INFORMATIONAL | ACCEPTED_LIMITATION | —                 | inherited label variance unchanged; predecessor files untouched                                                                                    |
+| MC18-IR-05 | INFORMATIONAL | ACCEPTED_LIMITATION | —                 | `developerRootAlias` recorded; preview-only alias remains loopback/noindex                                                                         |
+
+No new BLOCKING, MAJOR or MINOR finding was raised in the correction round. Totals: 0 open
+BLOCKING, 0 open MAJOR, 3 MINOR CLOSED, 2 INFORMATIONAL accepted.
+
+### 9.4 D22/D23 accuracy spot-check
+
+- **Gate snapshot:** `test:landing` 60/60, `test:landing:unit` 45/45, both `tsc` runs, `format:check`,
+  `check:landing:data`, `build:landing:preview`, `test:design-system` 38/38, public build
+  (96 routes; 330 files; 0 landing identifiers), production 404s and `git diff --check` were all
+  re-observed as stated. D23's 7.866.000 B is a rounded figure (observed 7,866,024 B); immaterial.
+- **No-publication block:** D23 §7 contains `MC18_PUBLICATION = NOT_AUTHORIZED`, `MERGED = false`,
+  `DEPLOYED = false`, `PUBLISHED = false`, `MC19_STARTED = false` and `MC18_VERDICT = PARTIAL`;
+  validator MC18-54 PASS. PR #25 is an open draft against the MC-17 branch; production returns 404
+  for both landing paths.
+- **D22 §K preview JS size:** recorded 1,851,809 B; the final build is 1,851,827 B (+18 bytes from
+  the IR-02 evidence-string correction). CSS 11,586 B matches. Immaterial.
+- **D22 §J 200% text zoom:** this check is not in the committed MC-18 suite (D10 records 200% as
+  untested in the suite). The auditor independently loaded both locales at 320/360/390/768/1024/1440
+  with `html { font-size: 200% !important; }`: **0 page-level overflow** and banner, `h1`, 9
+  families and 9/9 limitations visible in all 12 combinations. The statement is behaviourally
+  true; recording the check in the evidence datasets would make it auditable. No defect.
+- **D22/D23 claims not re-run** because their inputs are unchanged in this delta: public e2e 15/15,
+  MC-17 visual 37/37, commerce-data 1811/1811, i18n/commerce/SEO/backup, inherited financial 76/77
+  red and `npm audit`. They remain as recorded, not re-verified in this round.
+
+### 9.5 Worktree discipline
+
+Running the suites rewrote tracked evidence (landing data evidence, validator run, design-system
+evidence and screenshots). Those files were restored to `27d60a1` from a `git archive HEAD`
+snapshot after measurement, and the EOL state of the original worktree was preserved. The final
+worktree difference is only `MC18-INDEPENDENT-REVIEW.md` and `data/review-findings.json`. No Git
+write command, merge, deployment or publication was run.
+
+## 10. Verdict
 
 ```text
 MC18_INDEPENDENT_AUDIT_RECOMMENDATION = PASS_INTERNAL_LANDING_SCOPE
 ```
 
-Rationale: all six audited claims are VERIFIED, no BLOCKING and no MAJOR finding is OPEN, the
-implementation is isolated from the public application, the publication gates fail closed and the
-public site is byte-isolated from the landing. The recommendation is limited to the internal
-landing scope and is **not** a programme verdict, publication approval, legal clearance or WCAG
-conformance statement.
+Rationale: all six audited claims remain VERIFIED at `27d60a1`; MC18-IR-01, MC18-IR-02 and
+MC18-IR-03 are **CLOSED** at `d5e9980` after independent re-verification; MC18-IR-04 and
+MC18-IR-05 remain accepted informational limitations. No BLOCKING, MAJOR or MINOR finding is
+OPEN. The implementation is isolated from the public application, the publication gates fail
+closed and the public site is byte-isolated from the landing. The recommendation is limited to the
+internal landing scope and is **not** a programme verdict, publication approval, legal clearance or
+WCAG conformance statement.
 
-The recommendation is conditional on the Lead completing D22 and D23 and reconciling MC18-IR-01
-in D23; MC18-IR-02 and MC18-IR-03 should be corrected in the implementation/content before any
-future publication milestone. External approvals (§7) must still close before any public use of
-MAREA or any deployment. `MC18_PUBLICATION = NOT_AUTHORIZED`; `MC19_STARTED = false`.
+External approvals (§7) must still close before any public use of MAREA or any deployment.
+`MC18_PUBLICATION = NOT_AUTHORIZED`; `MC19_STARTED = false`.

@@ -46,7 +46,7 @@ publicación.
 | Rama MC-18                         | Creada desde `6002c49`; sólo local hasta el primer push                                |
 | Implementación                     | `ca64ec7f9f079326321cc7070ad2b1acf2832bc9`                                             |
 | Correcciones de auditoría          | `d5e99802df7b2073a25556e5d0d723273bf743a8`                                             |
-| HEAD final                         | este commit de documentación de entrega (D22 + D23)                                    |
+| HEAD final                         | commits documentales de entrega (D22 + D23 + evidencia final); implementación `d5e9980` |
 | PR de entrega                      | [#25](https://github.com/manuelxose/embarcarte/pull/25), borrador, nunca contra `main` |
 | Fusionado / desplegado / publicado | `false` / `false` / `false`                                                            |
 
@@ -176,13 +176,13 @@ La previsualización se construyó con SSR real (Angular `AngularNodeAppEngine`,
   `aria-expanded`/`aria-controls` y cierre con Escape (ruta documentada).
 - Responsive: 12/12 combinaciones (320/360/390/768/1024/1440 × ES/EN) sin desbordamiento
   horizontal; banner, hero, 9 familias, 6 paquetes y 9/9 limitaciones visibles a 320px.
-- Movimiento reducido respetado; zoom de texto al 200 % aproximado sin desbordamiento.
+- Movimiento reducido respetado. La comprobación al 200 % de zoom no forma parte de la suite comprometida: el auditor independiente verificó manualmente ambos idiomas en 320–1440 sin desbordamiento de página (12/12).
 - Límites: sólo Chromium, sin lectores de pantalla ni sesiones con AT.
 
 ## K. Rendimiento y aislamiento de producción
 
 - Medición de laboratorio local (una ejecución, sin datos de campo): HTML SSR 316.049 B
-  (ES) / 313.958 B (EN); CSS 11.586 B; JS de la previsualización 1.851.809 B en build
+  (ES) / 313.958 B (EN); CSS 11.586 B; JS de la previsualización 1.851.827 B en build
   de desarrollo sin compresión; CLS 0; apertura de nav 32,5/20,9 ms.
 - Aislamiento: `dist/embarcarte` (330 archivos, 7.866.000 B) contiene **0** apariciones
   de `marea-landing`, `data-marea-landing`, `marea-landing-preview` y `MareaLanding`.

@@ -5,8 +5,8 @@
   "status": "INTERNAL_PROPOSED",
   "owner": "independent auditor (Agent G)",
   "publicationStatus": "NOT_AUTHORIZED",
-  "description": "Independent audit findings for the frozen MC-18 internal bilingual landing at ca64ec7. Severities are BLOCKING/MAJOR/MINOR/INFORMATIONAL; the recommendation is limited to the internal landing scope and is not a programme verdict, publication approval or WCAG conformance statement. External legal/commercial/hardware approvals are recorded as limitations, not implementation defects.",
-  "generationMethod": "Independent audit executed in the frozen worktree at ca64ec7f9f079326321cc7070ad2b1acf2832bc9: diff inspection, npm run test:landing (56/60), npm run test:landing:unit (45/45), 37 independently reproduced adversarial mutations, tsc app+preview, preview build/probe, Playwright landing suite (44/44), public build isolation probe, screenshot SHA-256 verification, data re-derivation, content/evidence/parity checks and document-vs-code cross-check.",
+  "description": "Independent audit findings for the MC-18 internal bilingual landing. The initial audit was performed at ca64ec7f9f079326321cc7070ad2b1acf2832bc9 and the correction round was re-verified at 27d60a11f211856cdcacf5577bbcc058386dd812 (corrections d5e99802df7b2073a25556e5d0d723273bf743a8). Severities are BLOCKING/MAJOR/MINOR/INFORMATIONAL; the recommendation is limited to the internal landing scope and is not a programme verdict, publication approval or WCAG conformance statement. External legal/commercial/hardware approvals are recorded as limitations, not implementation defects.",
+  "generationMethod": "Two independent rounds in the frozen worktrees. Round 1 (ca64ec7): diff inspection, validator 56/60, unit 45/45, 37 reproduced adversarial mutations, tsc app+preview, preview build/SSR probes, Playwright 44/44, public build isolation probe, screenshot SHA-256 verification, data re-derivation and document-vs-code cross-check. Round 2 (27d60a1): corrections diff (d5e9980), validator 60/60, unit 45/45, tsc, format:check, check:landing:data, preview build and design-system validator with banner-absence checks, SSR/header probes, Playwright 44/44, public build with zero-landing-identifier scan, production 404 probes, 200% text-zoom probe, D22/D23 spot-check; tracked evidence restored to HEAD after measurement.",
   "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
   "knownLimitations": [
     "External approvals do not exist and are not MC-18 implementation defects: trademark clearance NOT_GRANTED and public use NO_GO, source-IP/licensing not cleared, legal identity not verified, no approved price or stock, no selected hardware, no conformity/CE/NMEA 2000/CRA evidence, no SLA, PILOT safety gate BLOCKED, no customer evidence, no WCAG conformance, no Search Console/hosting/TLS evidence.",
@@ -15,14 +15,38 @@
     "Visual baselines were generated and compared by the same QA run and were not reviewed by a second human; 5 of 8 repeat captures are not byte-identical and are disclosed with both hashes.",
     "Performance evidence is a single lab run over loopback without throttling or field data and asserts no thresholds.",
     "Hydration is proven in Chromium only on the development preview configuration; the preview is loopback-only, not a public host.",
-    "The preview serves / as a documented developer alias inside the loopback preview; it is not listed in preview-isolation.json previewOnlyRoutes and is not a public route.",
-    "Documents D01/D02/D08/D09/D14 still quote authoring-time counts (55/60, format:check exit 1, uncommitted worktree); D23 must record the frozen-state values. This is recorded as MC18-IR-01."
+    "The preview serves / as a documented developerRootAlias recorded in preview-isolation.json; it is loopback-only, noindex and not a public route.",
+    "D01/D02/D08/D09/D14 remain authoring-time snapshots; D23 §2/§4 explicitly supersedes their counts (MC18-IR-01 CLOSED). The D22 §J 200% text-zoom statement is not part of the committed suite; the auditor's independent probe passed 12/12 combinations and recording it in the evidence datasets remains optional.",
+    "The committed validator evidence records head d5e9980 (the code HEAD at run time) while final HEAD 27d60a1 is docs-only; this is a provenance detail, not a defect."
   ],
   "data": {
     "auditedSha": "ca64ec7f9f079326321cc7070ad2b1acf2832bc9",
+    "reverifiedSha": "27d60a11f211856cdcacf5577bbcc058386dd812",
+    "correctionCommit": "d5e99802df7b2073a25556e5d0d723273bf743a8",
     "baseSha": "6002c49f898e755154c1b65c97781177719ce11c",
     "auditedAt": "2026-11-03",
     "recommendation": "PASS_INTERNAL_LANDING_SCOPE",
+    "correctionRound": {
+      "initialAuditSha": "ca64ec7f9f079326321cc7070ad2b1acf2832bc9",
+      "correctionCommit": "d5e99802df7b2073a25556e5d0d723273bf743a8",
+      "finalHead": "27d60a11f211856cdcacf5577bbcc058386dd812",
+      "delta": "11 files, +1061/-26; four corrections, D22/D23, D21/findings and regenerated validator evidence",
+      "results": {
+        "validator": "60/60 PASS",
+        "unit": "45/45",
+        "playwright": "44/44",
+        "designSystem": "38/38 (unit 41/41)",
+        "tsc": "app and preview exit 0",
+        "formatCheck": "exit 0",
+        "checkLandingData": "exit 0, 12 current",
+        "previewBuild": "exit 0, 0 preview-banner lines",
+        "ssr": "/marea 200 es-ES 316049 B; /en/marea 200 en 313958 B; 10 sections/9 families/6 bundles/1 h1/banner; no canonical, hreflang, OG, Twitter or JSON-LD; X-Robots-Tag noindex; unknown 404; forged Host 403",
+        "publicBuild": "exit 0, 96 routes, 330 files/7866024 B, 0 landing identifiers; production /marea and /en/marea 404",
+        "zoom200": "12/12 combinations without page-level overflow",
+        "pr": "#25 OPEN/DRAFT/MERGEABLE base MC-17; #24 OPEN/DRAFT base MC-16"
+      },
+      "testEvidenceRestored": "Tracked evidence regenerated by the suites was restored to 27d60a1 after measurement; only D21 and this findings dataset differ."
+    },
     "findings": [
       {
         "findingId": "MC18-IR-01",
@@ -30,13 +54,13 @@
         "area": "Documentation accuracy / frozen-state reconciliation",
         "file": "docs/marea/landing/MC-18-BASELINE-AND-GOVERNANCE.md; docs/marea/landing/MC18-LANDING-ARCHITECTURE.md; docs/marea/landing/MC18-ANGULAR-SSR-AND-HYDRATION.md; docs/marea/landing/MC18-SEO-METADATA-AND-INDEXATION-CONTRACT.md; docs/marea/landing/MC18-LEGACY-SITE-NON-REGRESSION.md",
         "lineOrRange": "D01 §2.3-2.4; D02 §8/§10; D08 §3.1-3.2; D09 §9.5/§11; D14 §1/§2.1/§2.3/§6",
-        "evidence": "At the frozen commit the validator reports 56/60 (not 55/60), npm run format:check exits 0 (not 1), HEAD is committed ca64ec7 and src/app contains only newly added landing files (not an uncommitted or empty diff), and the SSR byte counts are 316,049/313,958 (not 315,629/313,904). The affected documents quote authoring-time observations, not the frozen state.",
-        "reproduction": "Run npm run test:landing, npm run format:check, git rev-parse HEAD, git diff --name-only 6002c49..HEAD -- src/app, and HTTP probes against the freshly built preview.",
-        "requiredCorrection": "D23 must record ca64ec7 and the frozen command results and explicitly supersede these authoring-time snapshots; alternatively update D01/D02/D08/D09/D14 before delivery. No source change required.",
+        "evidence": "At the initial frozen commit the validator reported 56/60 (not 55/60), format:check exited 0 (not 1), HEAD was committed ca64ec7 and src/app contained only newly added landing files, and the SSR byte counts were 316,049/313,958 (not 315,629/313,904). D22/D23 now record the frozen, post-audit and final counts and explicitly supersede the authoring-time snapshots.",
+        "reproduction": "Read D23 §2 and §4; run npm run test:landing (60/60), npm run format:check (exit 0), git rev-parse HEAD and git diff --name-only 6002c49..HEAD -- src/app.",
+        "requiredCorrection": "Completed by D23 §2/§4 and D22 §O, which reconcile and supersede the stale authoring-time counts.",
         "owner": "docs-a (documents group A) + Lead for D23",
-        "status": "OPEN",
-        "correctionCommit": null,
-        "independentReverification": null
+        "status": "CLOSED",
+        "correctionCommit": "d5e99802df7b2073a25556e5d0d723273bf743a8",
+        "independentReverification": "At 27d60a1: npm run test:landing is 60/60 PASS with MC18-51 and MC18-54 PASS; npm run format:check exits 0; D23 §2/§4 records 56/60 frozen, 58/60 post-audit and 60/60 final and supersedes D01/D02/D08/D09/D14; D22 §O repeats the reconciliation. Re-verified by reading D23/D22 and re-running the validator."
       },
       {
         "findingId": "MC18-IR-02",
@@ -44,13 +68,13 @@
         "area": "Content evidence provenance",
         "file": "src/app/marea-landing/content/evidence.ts; docs/marea/landing/data/content-evidence.json",
         "lineOrRange": "evidence.ts:74-79 (EV-MC15-ROUTES.establishes); content-evidence.json:60-64",
-        "evidence": "The evidence descriptor says the canonical dataset establishes PAGE_MAREA_OVERVIEW, but docs/marea/information-architecture/data/proposed-routes.json items[0].pageType is HUB_OVERVIEW and models/page-identity.ts correctly uses HUB_OVERVIEW. D09 §2 already records the inconsistency as informational; validator MC18-45 passes because the typed identity is correct, not because the evidence text is.",
-        "reproduction": "Read evidence.ts and the generated content-evidence.json; run node -e over proposed-routes.json to print items.find(r => r.routeId === 'mareaOverview').pageType (HUB_OVERVIEW).",
-        "requiredCorrection": "Change the establishes text to HUB_OVERVIEW (optionally noting the master-prompt label) and regenerate with npm run build:landing:data, or explicitly annotate the master-prompt label inside the string. Do not edit the canonical MC-15 dataset.",
+        "evidence": "The initial evidence descriptor said the canonical dataset establishes PAGE_MAREA_OVERVIEW, while docs/marea/information-architecture/data/proposed-routes.json items[0].pageType is HUB_OVERVIEW. The correction changes the descriptor to HUB_OVERVIEW (pageType as recorded in the canonical dataset) and regenerates the dataset.",
+        "reproduction": "Read evidence.ts and the generated content-evidence.json; run node -e over proposed-routes.json to print items.find(r => r.routeId === 'mareaOverview').pageType (HUB_OVERVIEW); run npm run check:landing:data.",
+        "requiredCorrection": "Completed: descriptor corrected to HUB_OVERVIEW and content-evidence.json regenerated.",
         "owner": "MC-18 content owner + docs owner",
-        "status": "OPEN",
-        "correctionCommit": null,
-        "independentReverification": null
+        "status": "CLOSED",
+        "correctionCommit": "d5e99802df7b2073a25556e5d0d723273bf743a8",
+        "independentReverification": "At 27d60a1: evidence.ts carries 'HUB_OVERVIEW (pageType as recorded in the canonical dataset)'; generated content-evidence.json carries the same text; npm run check:landing:data exits 0 (12 current); validator MC18-45 PASS; canonical proposed-routes.json re-read (HUB_OVERVIEW)."
       },
       {
         "findingId": "MC18-IR-03",
@@ -58,13 +82,13 @@
         "area": "Preview tooling / build portability",
         "file": "preview/landing/server.ts",
         "lineOrRange": "lines 95-103",
-        "evidence": "app.listen(port, host, ...) is top-level, outside the if (isMainModule(import.meta.url)) block, which is empty. npm run build:landing:preview prints the runtime banner 'MC-18 internal landing preview (NOT PUBLISHED): http://127.0.0.1:4302/marea', proving the Angular build evaluates the server entry and reaches app.listen during the build. The build still exits 0 on this Windows host (duplicate-bind tolerance), but on a host that does not tolerate a second bind the build can fail with EADDRINUSE when 4302 is occupied.",
-        "reproduction": "With port 4302 free, run npm run build:landing:preview and observe the startup lines in the build output; node dist/marea-landing-preview/server/server.mjs still serves correctly.",
-        "requiredCorrection": "Move app.listen(...) and its log lines inside the existing isMainModule guard (keep the reqHandler export). Isolation behaviour is otherwise correct.",
+        "evidence": "Initially app.listen was top-level, outside the empty isMainModule block; ng build evaluated the server entry, printed the preview banner and could collide on the port. The correction moves the listener into a conditional on isMainModule(import.meta.url), leaving server null on import.",
+        "reproduction": "With port 4302 free, run npm run build:landing:preview and npm run test:design-system and inspect their output for the preview banner (0 lines); then run node dist/marea-landing-preview/server/server.mjs and probe /marea.",
+        "requiredCorrection": "Completed: listener guarded by isMainModule; reqHandler export retained.",
         "owner": "preview implementation owner",
-        "status": "OPEN",
-        "correctionCommit": null,
-        "independentReverification": null
+        "status": "CLOSED",
+        "correctionCommit": "d5e99802df7b2073a25556e5d0d723273bf743a8",
+        "independentReverification": "At 27d60a1: npm run build:landing:preview exits 0 with 0 preview-banner lines; npm run test:design-system is 38/38 with 0 banner lines; node dist/marea-landing-preview/server/server.mjs still starts and serves /marea and /en/marea as 200 with the expected headers and 404/403 behaviour."
       },
       {
         "findingId": "MC18-IR-04",
@@ -78,21 +102,21 @@
         "owner": "docs owners (pre-existing, inherited)",
         "status": "ACCEPTED_LIMITATION",
         "correctionCommit": null,
-        "independentReverification": "Register re-read at ca64ec7: MC16-FINAL-02, MC16-FINAL-09, FINANCIAL_V18 (OPEN_INHERITED), MC13-F-05, MC13-F-11, MC13-F-14, MC15-GSC-01 and MC15-GSC-02 are present and open; git diff for predecessor docs directories is empty."
+        "independentReverification": "Register re-read at 27d60a1: MC16-FINAL-02, MC16-FINAL-09, FINANCIAL_V18 (OPEN_INHERITED), MC13-F-05, MC13-F-11, MC13-F-14, MC15-GSC-01 and MC15-GSC-02 are present and open; git diff ca64ec7..HEAD for predecessor docs directories is empty."
       },
       {
         "findingId": "MC18-IR-05",
         "severity": "INFORMATIONAL",
         "area": "Preview isolation dataset completeness",
         "file": "preview/landing/app.routes.ts; docs/marea/landing/data/preview-isolation.json",
-        "lineOrRange": "app.routes.ts:14; preview-isolation.json data.previewOnlyRoutes",
-        "evidence": "The preview serves / as a developer alias for the ES landing (documented in D02 §2.2 and D08 §3.2 and covered by the same loopback/Host/noindex controls), but previewOnlyRoutes lists only /marea and /en/marea. This is a documentation/data-completeness gap, not a publication risk: the alias is loopback-only, noindexed and never mounted in the public application.",
-        "reproduction": "GET http://127.0.0.1:4302/ returns 200 with the ES landing; read preview-isolation.json.",
-        "requiredCorrection": "None required for internal scope; if the alias is kept, add it to the isolation dataset as a documented developer alias in a future data regeneration.",
+        "lineOrRange": "app.routes.ts:14; preview-isolation.json data.developerRootAlias",
+        "evidence": "The preview serves / as a developer alias for the ES landing, documented in D02 §2.2 and D08 §3.2 and covered by the same loopback/Host/noindex controls. preview-isolation.json now records it as developerRootAlias with path '/', locale 'es' and a non-public note.",
+        "reproduction": "Read preview-isolation.json developerRootAlias; GET http://127.0.0.1:4302/ returns 200 with the ES landing inside the loopback preview.",
+        "requiredCorrection": "Completed: the alias is recorded in the generated isolation dataset; no public route exists.",
         "owner": "preview/data owner",
         "status": "ACCEPTED_LIMITATION",
         "correctionCommit": null,
-        "independentReverification": "HTTP probe and dataset read at ca64ec7: / returns 200 ES landing while previewOnlyRoutes lists only the two locale paths."
+        "independentReverification": "At 27d60a1: preview-isolation.json includes developerRootAlias {path:'/', locale:'es', note}; npm run check:landing:data exits 0; HTTP / returns 200 ES inside the loopback preview only."
       }
     ],
     "totals": {

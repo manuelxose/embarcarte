@@ -10,7 +10,7 @@
 | Commit de correcciones de auditoría | `d5e99802df7b2073a25556e5d0d723273bf743a8`                                                                                         |
 | SHA auditado independientemente     | `ca64ec7f9f079326321cc7070ad2b1acf2832bc9` (recomendación `PASS_INTERNAL_LANDING_SCOPE`)                                           |
 | Correcciones re-verificadas         | `d5e99802df7b2073a25556e5d0d723273bf743a8`                                                                                         |
-| HEAD final                          | este commit de entrega (D22 + D23 y evidencias finales)                                                                            |
+| HEAD final                          | este commit y los commits documentales posteriores; implementación `d5e9980` (los commits de documentación no cambian el SHA implementado)                                                                            |
 | PR                                  | [#25](https://github.com/manuelxose/embarcarte/pull/25) — borrador, base `feature/marea-mc17-premium-design-system`, sin fusionar  |
 | Veredicto                           | `MC18_VERDICT = PARTIAL`                                                                                                           |
 | Ámbito interno                      | `MC18_INTERNAL_LANDING_SCOPE = PASS_INTERNAL_LANDING_SCOPE`                                                                        |
@@ -44,7 +44,7 @@
 | `npx tsc -p tsconfig.app.json --noEmit`                                                    | PASS (exit 0)                                                                                         |
 | `npx tsc -p preview/landing/tsconfig.json --noEmit`                                        | PASS (exit 0)                                                                                         |
 | `npm run build:landing:preview`                                                            | PASS (exit 0)                                                                                         |
-| `npm run build`                                                                            | PASS, 96 rutas; 330 archivos / 7.866.000 B; **0** identificadores de la landing                       |
+| `npm run build`                                                                            | PASS, 96 rutas; 330 archivos / 7.866.024 B; **0** identificadores de la landing                       |
 | Aislamiento de producción                                                                  | `/marea` y `/en/marea` → **404** en el servidor público; estilos de producción sólo `src/styles.scss` |
 | `npm run format:check`                                                                     | PASS                                                                                                  |
 | `npm run test:design-system` / `:unit` / `:visual`                                         | PASS 38/38 · 41/41 · 37/37                                                                            |
