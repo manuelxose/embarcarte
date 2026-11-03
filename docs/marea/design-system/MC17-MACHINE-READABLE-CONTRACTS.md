@@ -78,7 +78,7 @@ evidence or a contract mirrored in code and is enforced indirectly.
 
 **Present/absent at `4a9043b`:** all 20 files exist. `review-findings.json` is
 owned by the independent review (D22), whose two rounds are recorded and whose
-third-round verdict on `4a9043b` is pending. No author of this document fabricated
+third round completed at `f2c9ec2` with PASS_INTERNAL_DESIGN_SYSTEM_SCOPE (see D22 section 11). No author of this document fabricated
 review findings to make the check green.
 
 ### Count reconciliation
@@ -102,7 +102,7 @@ Run from the repository root:
 | `node scripts/build-marea-design-system-baseline.mjs --check` | baseline matches the Git object database at the pinned commit | "Baseline current: …" |
 | `node scripts/build-marea-design-system-catalogue-data.mjs --check` | `registry.generated.ts` and `component-states.json` are byte-current | "Catalogue metadata current: 49 registered components." |
 | `node scripts/check-marea-design-system.mjs` | all 38 checks; rewrites validator + contrast evidence | `MC-17 design system validator: … passed` |
-| `node --test --test-isolation=none scripts/check-marea-design-system.test.mjs scripts/check-marea-design-system-adversarial.test.mjs` | 27 unit/adversarial tests | `pass 27`, `fail 0` |
+| `node --test --test-isolation=none scripts/check-marea-design-system.test.mjs scripts/check-marea-design-system-adversarial.test.mjs` | 41 unit/adversarial tests | `pass 27`, `fail 0` |
 
 The first four exit non-zero and print `STALE`/`MISSING` when an artefact is not
 current. The validator exits non-zero if any check fails. `--check` must be run

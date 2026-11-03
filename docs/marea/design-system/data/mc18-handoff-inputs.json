@@ -14,7 +14,7 @@
   "knownLimitations": [
     "Only contracts, component count, preview commands and CTA restrictions are established here. Visual, responsive, performance, visual-regression and accessibility-audit evidence now exist and are recorded in D13/D14/D16 and their datasets (responsive-evidence.json, performance-evidence.json, visual-regression-evidence.json, accessibility-requirements.json); this file does not duplicate them.",
     "Component counts are the counts recorded in component-registry.json and verified against the implementation by check MC17-12; a later registry change makes this file stale.",
-    "The recorded validator run at 4a9043b is PASS, 38/38. Earlier FAIL snapshots (31/38 and 36/38 during authoring) are historical. This handoff is READY_WITH_NAMED_GAPS, not a milestone pass.",
+    "The recorded validator run at f2c9ec2 is PASS, 38/38. Earlier FAIL snapshots (31/38 and 36/38 during authoring) are historical. This handoff is READY_WITH_NAMED_GAPS, not a milestone pass.",
     "No MC-18 code, route, page or test exists; mc18Started and mc18ImplementationPresent are false by observation, not by policy alone."
   ],
   "sourceRefs": [
@@ -36,12 +36,16 @@
     "mc18ImplementationPresent": false,
     "publicationState": "NOT_AUTHORIZED",
     "publicBrandAdoption": "NOT_AUTHORIZED",
-    "mc17State": "IMPLEMENTED_AND_TECHNICALLY_VERIFIED_PENDING_FINAL_RE_AUDIT",
-    "mc17ValidatorStatus": "PASS_38_OF_38_AT_4A9043B",
+    "mc17State": "IMPLEMENTED_AND_VERIFIED_INTERNAL_SCOPE",
+    "mc17Verdict": "PARTIAL",
+    "mc17InternalScope": "PASS_INTERNAL_DESIGN_SYSTEM_SCOPE",
+    "mc17ValidatorStatus": "PASS_38_OF_38_AT_F2C9EC2",
     "mc17ValidatorLastObserved": "PASS_38_OF_38",
-    "mc17ValidatorNote": "The evidence file is rewritten on every run. Historical observations (31/38 at 02:47 and 36/38 at 02:56 on 2026-11-03) are retained as history; read evidence/validator-run.json for the current result.",
-    "mc17IndependentReview": "PARTIAL_TWO_ROUNDS_PENDING_THIRD",
-    "note": "MC-17 is internally implemented and technically verified but not finally PASS: the independent review has two PARTIAL rounds and the third-round verdict on 4a9043b is pending in `MC17-INDEPENDENT-REVIEW.md`. MC-18 must not be started from this file."
+    "mc17ValidatorNote": "The evidence file is rewritten on every run. Historical observations (31/38 at 02:47 and 36/38 at 02:56 on 2026-11-03) are retained as history; read evidence/validator-run.json for the current result. Third-round frozen SHA: f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d.",
+    "mc17IndependentReview": "THIRD_ROUND_PASS_INTERNAL_DESIGN_SYSTEM_SCOPE",
+    "mc17ReviewRounds": "ROUND1_PARTIAL, ROUND2_PARTIAL, ROUND3_PASS_INTERNAL",
+    "mc17ReviewedImplementationSha": "f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d",
+    "note": "MC-17 is internally implemented and independently verified (round 3: PASS_INTERNAL_DESIGN_SYSTEM_SCOPE at f2c9ec2), but MC17_VERDICT remains PARTIAL because trademark clearance, brand adoption, price/stock approval, hardware validation and publication are not granted. MC-18 must not be started from this file."
   },
   "contracts": [
     {
@@ -227,8 +231,8 @@
     "Inherited blockers stay inherited (see blocker-register.json); MC-18 may not close them."
   ],
   "namedGaps": [
-    "Design-system validator records PASS, 38/38, at 4a9043b; all 20 datasets and 24 documents exist. Earlier FAIL snapshots are historical.",
-    "The independent review has two PARTIAL rounds; the third-round verdict on 4a9043b is pending. No final independent PASS exists.",
+    "Design-system validator records PASS, 38/38, at f2c9ec2; all 20 datasets and 24 documents exist and the catalogue suite is 37/37. Earlier FAIL snapshots are historical.",
+    "The independent review has three rounds: rounds 1-2 PARTIAL and round 3 PASS_INTERNAL_DESIGN_SYSTEM_SCOPE at f2c9ec2. The milestone remains PARTIAL because external authorisations (trademark, brand use, price/stock, hardware, publication) are not granted.",
     "Accessibility/visual-regression/responsive/performance evidence exists and is recorded in D13/D14/D16 and its datasets, but this handoff does not reproduce it and no WCAG conformance claim is made.",
     "No authorised ES/EN public copy and no approved claims (0 of 42 claims public-authorised).",
     "No read API for MC-16 data; presentation uses generated synthetic fixtures, not a runtime service.",

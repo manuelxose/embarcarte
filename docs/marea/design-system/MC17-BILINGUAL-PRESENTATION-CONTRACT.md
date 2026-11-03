@@ -221,7 +221,7 @@ count of the dictionary and is confirmed by the recorded `MC17-25` detail.
 - **Catalogue prose is Spanish-only** (section leads, demo documentation titles).
 - **No RTL/Arabic** — explicitly out of scope, not a regression.
 - **Independent review is not final.** `MC17-INDEPENDENT-REVIEW.md` exists with two
-  rounds, both PARTIAL; the third-round verdict on `4a9043b` is pending.
+  rounds, both PARTIAL; the third round completed at `f2c9ec2` with PASS_INTERNAL_DESIGN_SYSTEM_SCOPE (see D22 section 11); the milestone verdict stays PARTIAL for external gates.
 
 ## 15. Source map
 

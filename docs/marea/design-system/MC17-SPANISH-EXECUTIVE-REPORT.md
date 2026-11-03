@@ -11,8 +11,8 @@
 ## A. Veredicto MC-17
 
 - **Ámbito interno del sistema de diseño:** implementado y verificado técnicamente (tokens, 48 componentes Angular + 1 directiva, catálogo interno, pruebas, documentación y datasets).
-- **Revisión independiente:** dos rondas, ambas **PARTIAL**. La primera encontró 2 hallazgos MAJOR (límites familiares definidos pero no renderizados; estado revisado sin commit) y 6 MINOR. La segunda, sobre `7cbc99e`, cerró el MAJOR de reproducibilidad y confirmó que el MAJOR de presentación seguía abierto; el seguimiento (tarjetas AIS/WATCH/SENSE/DISPLAY, prueba e2e por familia, reparación documental, `format:check` en verde, par ES/EN distinto) está implementado y congelado en el commit de entrega, pero **no existía cuando se cerró la segunda re-revisión**.
-- **Conclusión honesta:** `MC17_VERDICT = PARTIAL`. El sistema es internamente usable y verificable, pero la tercera re-revisión independiente del SHA final y los hallazgos menores restantes (IR-06, IR-07, IR-08, IR-10) impiden declarar PASS interno completo en este acto.
+- **Revisión independiente:** tres rondas. La primera encontró 2 MAJOR (límites familiares definidos pero no renderizados; estado revisado sin commit) y 6 MINOR. La segunda, sobre `7cbc99e`, cerró el MAJOR de reproducibilidad y confirmó que el MAJOR de presentación seguía abierto. La tercera, sobre `4a9043b`, exigió correcciones (9 familias, guardas de aislamiento/variantes, procedencia visual, gobernanza y cobertura de formato); el commit de corrección `f2c9ec2` fue re-auditado con resultado **PASS_INTERNAL_DESIGN_SYSTEM_SCOPE** (0 BLOCKING/MAJOR/MINOR abiertos).
+- **Conclusión honesta:** `MC17_VERDICT = PARTIAL` porque las autorizaciones externas (marca, uso público, precio/stock, hardware, publicación) no están concedidas; el alcance interno del sistema de diseño sí queda verificado. No se autoriza fusión, despliegue, publicación, venta, adopción de marca ni inicio de MC-18.
 
 ## B. Arquitectura del sistema de diseño
 
@@ -98,7 +98,7 @@
 
 ```text
 MC17_VERDICT = PARTIAL
-MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = IMPLEMENTED_AND_TECHNICALLY_VERIFIED_PENDING_FINAL_RE_AUDIT
+MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = PASS_INTERNAL_DESIGN_SYSTEM_SCOPE
 
 MC17_TOKEN_SYSTEM = PASS
 MC17_ANGULAR_COMPONENT_LIBRARY = PASS
@@ -113,7 +113,7 @@ MC17_RESPONSIVE_VALIDATION = PASS_6_WIDTHS_AND_200_PERCENT_TEXT
 MC17_PERFORMANCE_VALIDATION = LAB_MEASURED_DS_ZERO_PRODUCTION_BYTES
 MC17_SSR_HYDRATION = STRUCTURAL_CONTRACT_VERIFIED_NOT_RENDERED_IN_PUBLIC_SSR
 MC17_LEGACY_UI_NON_REGRESSION = PASS_BYTE_IDENTICAL
-MC17_INDEPENDENT_REVIEW = PARTIAL_FINAL_RE_AUDIT_PENDING
+MC17_INDEPENDENT_REVIEW = THIRD_ROUND_PASS_INTERNAL_DESIGN_SYSTEM_SCOPE
 
 MC17_PUBLICATION = NOT_AUTHORIZED
 MC17_PUBLIC_BRAND_ADOPTION = NOT_AUTHORIZED
@@ -140,31 +140,45 @@ DEPLOYED = false
 MC18_STARTED = false
 ```
 
-## Addendum — Ronda 3 (2026-11-03)
+## Addendum — Ronda 3 completada (2026-11-03)
 
-La tercera auditoría independiente se ejecutó sobre el SHA congelado `4a9043b`
-(commit de entrega documental). Su resultado **no es un PASS** y no se adelanta aquí:
-el veredicto final lo registra el revisor independiente en
-`MC17-INDEPENDENT-REVIEW.md`. Estado real de los hallazgos en ese SHA:
+La tercera auditoría independiente se ejecutó primero sobre el candidato congelado
+`4a9043b` (Stage A). El resultado fue **NEEDS_REVISION**: 0 BLOCKING, 1 MAJOR
+(`MC17-IR-01`, solo 7 de 9 familias renderizadas y prueba e2e de cuerpo completo),
+y seguían abiertos `MC17-IR-03`, `MC17-IR-05`, `MC17-IR-06`, `MC17-IR-07`,
+`MC17-IR-08`, `MC17-IR-10`, `MC17-CR-02`, más dos hallazgos nuevos (foco
+transparente y baselines huérfanas). Las correcciones se congelaron en
+`f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d` y el revisor independiente las
+re-auditó.
 
-| Hallazgo | Estado real en `4a9043b` |
+| Hallazgo | Estado final en `f2c9ec2` |
 |---|---|
-| `MC17-IR-01` — límites familiares definidos pero no presentados | **ABIERTO/PARCIAL**: la galería comercial ya renderiza fichas NAV, PILOT, FLEET, AIS, WATCH, SENSE y DISPLAY y existe una prueba e2e por familia (`commerce.spec.ts`, «every family-specific limit is rendered by a family card»), pero HUB y WEATHER no tienen ficha propia y la tercera ronda aún no ha validado el cierre. |
-| `MC17-IR-03` — entregables obsoletos/contradictorios | **ABIERTO**: frases corruptas y contradictorias en varios documentos y datasets. La corrección de esta ronda las repara y conserva el histórico con fecha/SHA. |
-| `MC17-IR-05` — el validador no detecta la importación del preview | **ABIERTO/MITIGADO**: `MC17-08` sigue siendo textual; la prueba e2e `ssr-contract.spec.ts` sí detecta la importación, pero el check nombrado no. |
-| `MC17-IR-06` — baselines autogeneradas y par ES/EN idéntico | **PARCIALMENTE ABIERTO**: el par ES/EN ahora es el de la galería comercial y difiere (`27132adf…` vs `a57f0370…`), y la procedencia se reescribe con commits, entorno y SHA-256; la aceptación debe compararse siempre sin `--update-snapshots`. |
-| `MC17-IR-07` — cobertura de variantes de `MC17-13` | **ABIERTO**: la extracción de literales entre comillas dobles mejoró, pero siguen sin cubrirse alias, enums y valores por defecto, y el detalle sigue imprimiendo un recuento vacío. |
-| `MC17-IR-08` — gobernanza de MC-17 no registrada | **PARCIALMENTE ABIERTO**: la fila 17 del registro ya existe y esta corrección añade las cadenas exactas de veredicto y alcance más la decisión D-073; el veredicto final sigue pendiente. |
-| `MC17-IR-10` — cobertura de `format:check` | **ABIERTO**: la cobertura se amplía en un agente paralelo a `src/app/marea-design-system`, `preview`, `e2e/design-system` y `playwright.design-system.config.ts`; el resultado debe re-medirse en el commit de corrección. |
-| `MC17-CR-02` — documentos corruptos por la corrección anterior | **ABIERTO**: se reparan las frases malformadas de D08 y las afirmaciones contradictorias; no se hace un reemplazo ciego. |
+| `MC17-IR-01` — límites familiares | **CLOSED_VERIFIED**: 9 fichas (NAV, PILOT, FLEET, AIS, WATCH, SENSE, DISPLAY, WEATHER, HUB), límite propio y chip material primero en ES y EN, nota de kit SENSE y 6 casos adversariales; prueba por ficha, no por cuerpo. |
+| `MC17-IR-03` / `MC17-CR-02` — documentos obsoletos/corruptos | **CLOSED_VERIFIED**: D01-D24 y datasets conciliados con la evidencia; histórico FAIL conservado con fecha/SHA; frases malformadas reparadas. |
+| `MC17-IR-05` — aislamiento de producción | **CLOSED_VERIFIED**: guarda AST compartida; 5/5 mutaciones de importación detectadas (literal, re-export, dinámica, alias y puente transitivo). |
+| `MC17-IR-06` / `MC17-IR-13` — evidencia visual | **CLOSED_VERIFIED**: 26 baselines con SHA-256, commits, entorno y procedimiento; par ES/EN distinto; 2 huérfanas eliminadas; 2 capturas móviles refrescadas tras revisión antes/después. |
+| `MC17-IR-07` — variantes | **CLOSED_VERIFIED**: comparación bidireccional con el compilador de TypeScript; alias y enums detectados; recuento real (33 entradas / 126 valores). |
+| `MC17-IR-08` — gobernanza | **CLOSED_VERIFIED**: registro, D-073 y handoff con los valores finales; MC-16 conserva su histórico con nota de supersesión. |
+| `MC17-IR-10` — formato | **CLOSED_VERIFIED**: cobertura ampliada a código, preview y e2e del sistema; generados validados por sus generadores; `format:check` en verde. |
+| `MC17-IR-12` — foco transparente | **CLOSED_VERIFIED**: la guarda rechaza `outline: none`, ancho cero y color transparente; mutación detectada. |
 
-Las correcciones se están implementando en el árbol de trabajo y no se atribuyen al
-SHA auditado. El veredicto final de la ronda 3 y el cierre o no de cada hallazgo los
-añadirá el revisor independiente; hasta entonces:
+Resultados verificados en el SHA congelado: validador **38/38**, unitarias/adversariales
+**41/41**, Playwright del catálogo **37/37** sin `--update-snapshots`, e2e pública
+**15/15**, axe **0 violaciones / 36 pases / 0 incompletos en los cuatro modos**,
+`format:check` en verde, build de producción con **0 identificadores** del sistema de
+diseño, 35 ficheros legacy y 15 activos públicos idénticos a MC-16, y arnés de
+mutaciones **9/9** detectadas. El fallo heredado V-18 sigue siendo el único gate
+financiero en rojo.
 
 ```text
 MC17_VERDICT = PARTIAL
-MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = IMPLEMENTED_AND_TECHNICALLY_VERIFIED_PENDING_FINAL_RE_AUDIT
+MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = PASS_INTERNAL_DESIGN_SYSTEM_SCOPE
+MC17_FINAL_REAUDIT = COMPLETE
+MC17_REVIEWED_IMPLEMENTATION_SHA = f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d
+MC17_OPEN_BLOCKING = 0
+MC17_OPEN_MAJOR = 0
+MC17_OPEN_MINOR = 0
+MC18_STARTED = false
 ```
 
 No se autoriza fusión, despliegue, publicación, venta, adopción de marca ni inicio

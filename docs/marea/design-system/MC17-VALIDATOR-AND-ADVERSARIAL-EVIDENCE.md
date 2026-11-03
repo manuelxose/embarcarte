@@ -203,7 +203,7 @@ Those missing artefacts were subsequently authored (D22–D24 and
 `review-findings.json`) and the third-round correction at `4a9043b` records a clean
 38/38 run. No code, token, isolation, commerce, baseline or test-artefact check has
 ever failed. The evidence file is the authority; this document does not claim a
-milestone PASS, because the final independent verdict is still pending.
+milestone PASS; the internal scope was independently verified at `f2c9ec2` (round 3 PASS_INTERNAL_DESIGN_SYSTEM_SCOPE) while the milestone stays PARTIAL for external gates.
 
 ## 6. Exit behaviour
 
@@ -232,8 +232,8 @@ milestone PASS, because the final independent verdict is still pending.
    governance fields; a syntactically valid but substantively wrong dataset could
    pass that check.
 5. **Self-authored evidence.** The validator, datasets and documents share authors;
-   the independent review (D22) is the control, and its final third-round verdict on
-   `4a9043b` is still pending after two PARTIAL rounds.
+   the independent review (D22) is the control; its third round completed at
+   `f2c9ec2` with PASS_INTERNAL_DESIGN_SYSTEM_SCOPE after two PARTIAL rounds.
 6. **The recorded run is a snapshot.** The file is rewritten on every run and can go
    stale as parallel work lands; read it at review time, not this document.
 7. **No browser run is performed by the validator.** Keyboard, focus, reflow, axe
@@ -242,7 +242,7 @@ milestone PASS, because the final independent verdict is still pending.
 8. **The 876 px responsive defect** is a Lead-recorded before-state, not
    reconstructable without reverting the tree; the current assertion is the
    reproducible part.
-9. **No independent execution.** The 27 unit/adversarial tests and the validator were
+9. **No independent execution.** The 41 unit/adversarial tests and the validator were
    run by the author on this tree; independent re-execution is still required.
 
 ## 8. Reproduce the evidence

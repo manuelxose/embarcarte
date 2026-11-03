@@ -253,7 +253,7 @@ Commands: `npm run test:design-system`, `npm run test:design-system:visual`.
   all four raw runs now record zero violations.
 - **Independent review.** `MC17-INDEPENDENT-REVIEW.md` exists and is committed: round 1
   PARTIAL (two MAJOR), round 2 PARTIAL on `7cbc99e` with IR-02 and IR-04 closed. The
-  third-round verdict on the delivery SHA `4a9043b` is pending; the review record, not
+  third round completed at `f2c9ec2` with PASS_INTERNAL_DESIGN_SYSTEM_SCOPE; the review record, not
   this policy, is authoritative for its status.
 - **Gate-open behaviour is untested in a shipped surface.** No surface passes
   `releaseGateOpen: true`; the suppression branch is code-reviewed only.

@@ -20,9 +20,9 @@ alone, publish, deploy or enable commerce.
 
 MC-18 does not receive:
 
-- a final independent PASS: the validator records PASS 38/38 at `4a9043b`, but the
-  independent review has two PARTIAL rounds and the third-round verdict is still
-  pending;
+- a final independent PASS of the whole milestone: the validator records PASS 38/38 at
+  `f2c9ec2` and the third round recorded `PASS_INTERNAL_DESIGN_SYSTEM_SCOPE`, but
+  `MC17_VERDICT` stays PARTIAL because external gates are not granted;
 - authorized ES/EN public copy (0 claims public-authorized), trademark clearance
   (NOT_GRANTED) or public brand use (NO_GO);
 - any route authorization, price, stock, checkout, subscription or entitlement;
@@ -31,11 +31,11 @@ MC-18 does not receive:
 The machine handoff file `docs/marea/design-system/data/mc18-handoff-inputs.json` records
 `mc18Started: false`, `mc18ImplementationPresent: false`, `publicationState: NOT_AUTHORIZED`,
 `publicBrandAdoption: NOT_AUTHORIZED`, `mc17ValidatorStatus: PASS_38_OF_38` and
-`mc17IndependentReview: PARTIAL_TWO_ROUNDS_PENDING_THIRD`. The earlier
-`FAIL_31_OF_38_AT_AUTHORING_TIME` observations are historical and retained in the
-evidence history. The handoff dataset is reconciled to the `4a9043b` evidence
-as part of the third-round correction, and its historical `FAIL_31_OF_38` observation
-is retained with a date.
+`mc17IndependentReview: THIRD_ROUND_PASS_INTERNAL_DESIGN_SYSTEM_SCOPE` at
+`f2c9ec2`. The earlier `FAIL_31_OF_38_AT_AUTHORING_TIME` observations are
+historical and retained in the evidence history. The handoff dataset is reconciled
+to the `f2c9ec2` evidence, and its historical `FAIL_31_OF_38` observation is
+retained with a date.
 
 ## 2. Target surface and route boundary
 
@@ -135,8 +135,10 @@ sizes are CSS `clamp()` expressions, so no pixel equivalent is asserted.
 
 Mobile-first is the rule. The Playwright responsive spec verifies 320, 360, 390, 768, 1024
 and 1440 with no page-level horizontal overflow and with dense tables inside labelled,
-focusable scroll regions. At authoring time that suite was not clean (no responsive
-screenshots committed), so treat the conventions as documented, not runtime-certified.
+focusable scroll regions. At `f2c9ec2` the responsive and visual suite is clean
+(37/37 Playwright tests, six responsive screenshots and 26 baselines committed);
+the earlier authoring-time dirty run is historical. Treat the conventions as
+runtime-tested but not as a WCAG conformance claim.
 
 ## 7. Accessible navigation and disclosure patterns
 
@@ -272,12 +274,12 @@ A validator pass, a build, an internal decision or this handoff closes none of t
 
 | Evidence | Status |
 |---|---|
-| `npm run test:design-system` | **PASS, 38/38** at `4a9043b` (`evidence/validator-run.json`); earlier FAIL snapshots are historical |
+| `npm run test:design-system` | **PASS, 38/38** at `f2c9ec2` (`evidence/validator-run.json`); earlier FAIL snapshots are historical |
 | `data/contrast-evidence.json` | PASS — 296 pair/mode measurements, 0 failures |
 | `evidence/axe-summary.json` + `test-results/design-system/axe-*.json` | four modes present; **0 violations, 36 passes, 0 incomplete in each of all four modes**; conformance NONE |
-| Playwright visual/responsive | **30/30 at `4a9043b`** (count re-measured at the correction commit); six responsive screenshots retained; 26 visual baselines committed; the ES/EN commerce pair differs (SHA-256 `27132adf…` vs `a57f0370…`) |
-| Independent review | two rounds recorded, both PARTIAL; third-round verdict on `4a9043b` pending — `MC17-INDEPENDENT-REVIEW.md` |
-| Public-site E2E | 15/15 inherited run recorded in the delivery record; not re-run by this specialist |
+| Playwright visual/responsive | **37/37 at `f2c9ec2`** without `--update-snapshots`; six responsive screenshots retained; 26 visual baselines committed; the ES/EN commerce pair differs (SHA-256 `27132adf…` vs `a57f0370…`); two 320x812 instrument captures refreshed after a documented renderer-drift review |
+| Independent review | three rounds recorded: rounds 1-2 PARTIAL, round 3 `PASS_INTERNAL_DESIGN_SYSTEM_SCOPE` at `f2c9ec2` — `MC17-INDEPENDENT-REVIEW.md` |
+| Public-site E2E | 15/15 inherited run recorded in the delivery record and re-run at the correction commit |
 
 Commands MC-18 should re-run before trusting any contract: `npm run build:tokens`,
 `npm run test:design-system`, `npm run test:design-system:unit`,
@@ -288,9 +290,10 @@ Commands MC-18 should re-run before trusting any contract: `npm run build:tokens
 
 1. MC16-FINAL-02 (OPEN_UNTIL_REVERIFIED), V-18, MC-13 F-05/F-11/F-14.
 2. MC-15 GSC-01/GSC-02.
-3. MC-17 final independent verdict pending (two PARTIAL rounds); the validator itself
-   passes 38/38 at `4a9043b` and no instrument-night axe finding remains.
-4. No final independent PASS; no authorized copy; trademark/public use NOT_GRANTED/NO_GO.
+3. MC-17 internal scope is verified (round 3 `PASS_INTERNAL_DESIGN_SYSTEM_SCOPE` at
+   `f2c9ec2`: validator 38/38, unit 41/41, Playwright 37/37, axe 0 violations in four
+   modes); `MC17_VERDICT` stays PARTIAL only for external authorisations.
+4. No authorized public copy; trademark/public use NOT_GRANTED/NO_GO.
 5. No hardware validation; no WCAG claim; font metrics unmeasured.
 6. No real price/stock/API; no public-site visual baseline.
 

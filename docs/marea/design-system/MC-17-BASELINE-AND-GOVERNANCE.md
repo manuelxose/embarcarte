@@ -11,7 +11,7 @@
 | Public use | `NO_GO` |
 | Branch | `feature/marea-mc17-premium-design-system` |
 | Verified base commit | `6d8287c8507038c4f90fd6e35471f78081ca4676` |
-| Independent review | `MC17-INDEPENDENT-REVIEW.md` (D22) present — two rounds recorded, both PARTIAL; third-round verdict on `4a9043b` pending |
+| Independent review | `MC17-INDEPENDENT-REVIEW.md` (D22) present — three rounds recorded: rounds 1-2 PARTIAL and round 3 PASS_INTERNAL_DESIGN_SYSTEM_SCOPE at `f2c9ec2` |
 | Validator status | `PASS` — 38/38 at `4a9043b` (`evidence/validator-run.json`); the two FAIL observations in §7 are historical authoring snapshots |
 
 This document fixes what MC-17 is, what it is authorised to change, which
@@ -200,13 +200,13 @@ retained only as a failure artifact.
 
 **Current state:** the validator is `PASS` 38/38 at `4a9043b`, but this document
 still does **not** claim a milestone PASS. Two independent rounds are recorded, both
-PARTIAL; the third-round verdict on `4a9043b` is pending. An earlier version of this
+PARTIAL; the third round completed at `f2c9ec2` with PASS_INTERNAL_DESIGN_SYSTEM_SCOPE (see D22 section 11); the milestone verdict stays PARTIAL for external gates. An earlier version of this
 document reported the authoring-time `FAIL` snapshots as the current state; that
 wording is superseded by the third-round correction (D-073) and the historical rows
 above are kept with date and SHA.
 
 Verified at `4a9043b` (recorded evidence, not re-run by this document):
-`npm run build` PASS, Playwright catalogue 30/30, unit/adversarial 27/27,
+`npm run build` PASS, Playwright catalogue 37/37, unit/adversarial 41/41,
 26 visual baselines, six responsive screenshots and the performance evidence file.
 `format:check` passed on the delivered glob at `4a9043b`, but the parallel agent's
 expanded coverage (design-system source, preview, e2e/design-system and the
@@ -242,9 +242,9 @@ inherited entries remain open and no predecessor verdict is amended.
    scope statement, not a repository quote.
 2. The registry row 17 was `PLANNED` during implementation; at `4a9043b` it records
    `PARTIAL` with the evidence strings and the correction-commit placeholder. It
-   must be updated again only after the third-round verdict.
+   was updated after the third round completed (PASS_INTERNAL at f2c9ec2).
 3. PR #23 state is quoted from committed MC-16 records, not re-verified live.
-4. The independent review has two PARTIAL rounds; the third-round verdict is pending.
+4. The independent review has three rounds: rounds 1-2 PARTIAL and round 3 PASS_INTERNAL_DESIGN_SYSTEM_SCOPE at f2c9ec2; the milestone verdict stays PARTIAL for external gates.
    Author review is not independent review.
 5. The validator records PASS 38/38 at `4a9043b`; the two earlier FAIL snapshots are
    historical. A new SHA requires a fresh run.

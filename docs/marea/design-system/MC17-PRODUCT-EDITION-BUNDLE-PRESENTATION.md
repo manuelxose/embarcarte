@@ -165,7 +165,7 @@ third-round correction.
 ## 10. Known gaps
 
 - **Independent review not final.** `MC17-INDEPENDENT-REVIEW.md` exists with two
-  rounds, both PARTIAL; the third-round verdict on `4a9043b` is pending.
+  rounds, both PARTIAL; the third round completed at `f2c9ec2` with PASS_INTERNAL_DESIGN_SYSTEM_SCOPE (see D22 section 11); the milestone verdict stays PARTIAL for external gates.
 - **Measured validator output is committed.** `evidence/validator-run.json` records
   PASS, 38/38 at `4a9043b`.
 - **Edition-level presentation is sampled, not exhaustive.** The commerce gallery renders

@@ -8,7 +8,7 @@
   "scope": "Inherited MC-13/MC-14/MC-15/MC-16 blockers that MC-17 must carry without closing, plus MC-17-specific blockers and pending items. No inherited blocker is closed by MC-17 and no historical verdict is amended; three MC-17-internal findings are recorded as closed-historical after repair and verification at 4a9043b.",
   "knownLimitations": [
     "Status values record the state observed at authoring time. An inherited blocker is never closed by this file; only the named owner with real external evidence may close one.",
-    "The MC-17 independent review has been performed twice; both rounds are PARTIAL and the third-round verdict on 4a9043b is pending. Entry MC17-INDEPENDENT-REVIEW is PARTIAL_PENDING_FINAL_REAUDIT, not passed.",
+    "The MC-17 independent review has been performed three times: rounds 1-2 PARTIAL and round 3 PASS_INTERNAL_DESIGN_SYSTEM_SCOPE at f2c9ec2. Entry MC17-INDEPENDENT-REVIEW is CLOSED_VERIFIED for the internal scope; the milestone verdict remains PARTIAL for external authorisations.",
     "The recorded validator run (docs/marea/design-system/evidence/validator-run.json) is PASS 38/38 at 4a9043b. The earlier FAIL observations (31/38 at 02:47, 36/38 at 02:56, 37/38 at 7cbc99e) are retained as dated history, not as the current gate result.",
     "Severity here is the severity recorded by the originating milestone. Where the originating milestone records a category instead (for example 'informational residual'), that category is preserved in the severity field."
   ],
@@ -168,15 +168,15 @@
     },
     {
       "id": "MC17-INDEPENDENT-REVIEW",
-      "title": "Independent review recorded twice (both PARTIAL); third-round verdict pending",
+      "title": "Independent review completed: rounds 1-2 PARTIAL, round 3 PASS_INTERNAL_DESIGN_SYSTEM_SCOPE",
       "origin": "MC-17",
       "severity": "MAJOR",
-      "status": "PARTIAL_PENDING_FINAL_REAUDIT",
+      "status": "CLOSED_VERIFIED",
       "inherited": false,
-      "evidence": "MC17-INDEPENDENT-REVIEW.md exists and is committed: round 1 PARTIAL on 3a8d4fd (2 MAJOR, 6 MINOR, 3 INFORMATIONAL, 0 BLOCKING) and round 2 PARTIAL on 7cbc99e. The third-round audit of 4a9043b is in progress and its verdict is not yet recorded.",
-      "impact": "MC-17 cannot be graded PASS on author review. Author review is not independent review.",
+      "evidence": "MC17-INDEPENDENT-REVIEW.md exists and is committed: round 1 PARTIAL on 3a8d4fd (2 MAJOR, 6 MINOR, 3 INFORMATIONAL, 0 BLOCKING), round 2 PARTIAL on 7cbc99e, and round 3 PASS_INTERNAL_DESIGN_SYSTEM_SCOPE on f2c9ec2 with 0 BLOCKING/MAJOR/MINOR open for the internal scope.",
+      "impact": "The internal design-system scope is independently verified; the milestone verdict stays PARTIAL because external authorisations are not granted.",
       "owner": "Independent reviewer (not the author, not the implementer)",
-      "nextAction": "Record the third-round verdict on 4a9043b and the per-finding status in MC17-INDEPENDENT-REVIEW.md and review-findings.json."
+      "nextAction": "None for the internal scope; external authorisations remain with their named owners."
     },
     {
       "id": "MC17-VALIDATOR-NOT-PASSING",
@@ -246,7 +246,8 @@
     "minor": 5,
     "informational": 2,
     "open": 7,
-    "partialPendingFinalReaudit": 1,
+    "closedVerified": 1,
+    "partialPendingFinalReaudit": 0,
     "blockedExternal": 2,
     "openUntilReverified": 1,
     "openDoc": 1,
@@ -258,10 +259,10 @@
       "OPEN_DOC": 1,
       "OPEN_UNTIL_REVERIFIED": 1,
       "BLOCKED_EXTERNAL": 2,
-      "PARTIAL_PENDING_FINAL_REAUDIT": 1,
+      "CLOSED_VERIFIED": 1,
       "CLOSED_HISTORICAL": 3
     },
-    "closedByMc17": 0,
-    "note": "Counts are a tally of the entries above (7 + 2 + 1 + 1 + 2 + 1 + 3 = 17; 4 + 6 + 5 + 2 = 17). No inherited blocker is closed by MC-17 and no inherited verdict is amended; the three CLOSED_HISTORICAL entries are MC-17-internal findings repaired and verified at 4a9043b, with their earlier FAIL observations retained with date/SHA."
+    "closedByMc17": 1,
+    "note": "Counts are a tally of the entries above (7 + 2 + 1 + 1 + 2 + 1 + 3 = 17; 4 + 6 + 5 + 2 = 17). The CLOSED_VERIFIED entry is the MC-17 independent review (round 3 PASS_INTERNAL at f2c9ec2), not an inherited blocker. No inherited blocker is closed by MC-17 and no inherited verdict is amended; the three CLOSED_HISTORICAL entries are MC-17-internal findings repaired and verified, with their earlier FAIL observations retained with date/SHA."
   }
 }

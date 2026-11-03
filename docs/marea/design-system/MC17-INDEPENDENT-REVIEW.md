@@ -562,3 +562,227 @@ production build.
 The review is a snapshot of the dirty working tree described in §2; any later
 write requires the final gate to be run again at the committed SHA. For the
 correction-round re-review at `7cbc99e`, see §10.
+
+## 11. Third-round independent audit (Stage A) and correction re-verification (Stage C)
+
+This section is append-only. Sections 1–10 are the historical record of the first
+two audits and are not rewritten. The reviewer remains independent of the
+implementation: the correction commit was authored by implementation agents and
+the Lead (git owner), not by this reviewer. The reviewer personally re-read the
+changed source, tests, scripts and documents and re-ran every gate below.
+
+### 11.1 Frozen states
+
+| Field | Value |
+|---|---|
+| First third-round candidate (Stage A) | `4a9043b98144c0ad4313728642321cd3752f5ccf` |
+| Correction commit (Stage C candidate) | `f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d` |
+| Base commit | `6d8287c8507038c4f90fd6e35471f78081ca4676` (MC-16 HEAD) |
+| Branch | `feature/marea-mc17-premium-design-system` |
+| PR #24 | OPEN / DRAFT / MERGEABLE / `mergedAt=null`; base `feature/marea-mc16-commerce-product-data-model` |
+| Ancestry | `git merge-base --is-ancestor 6d8287c… 4a9043b…` and `…f2c9ec2…` exit 0 |
+| Worktree | clean at both audited SHAs; `git status --porcelain` empty and `git diff HEAD --quiet` exit 0 |
+| Diff 7cbc99e..4a9043b | 34 paths (docs, e2e specs, gallery, validator, 8 PNGs); family card and adapter unchanged from 7cbc99e |
+| Diff 4a9043b..f2c9ec2 | 85 paths (implementation, tests, validator+guards, format, docs, 3 PNGs deleted, 2 refreshed) |
+
+The Stage A candidate was not accepted. It still rendered only seven of the nine
+family cards, its family e2e test searched `document.body.innerText`, and the
+validator still missed aliased/transitive imports and aliased/enum variant values.
+Stage A therefore recorded `NEEDS_REVISION` with 1 MAJOR, 7 MINOR/INFORMATIONAL
+and 0 BLOCKING findings.
+
+### 11.2 Method
+
+1. Read the actual source (`marea-family-card.ts`, `commerce-presentation.adapter.ts`,
+   `core/i18n.ts`, `core/ids.ts`), all galleries, all design-system e2e specs, the
+   validator and its unit/adversarial suites, `package.json`/`angular.json` and
+   D01–D24 plus the 20 datasets. No delivery summary was accepted as evidence.
+2. Ran every required gate at 4a9043b and again at f2c9ec2, recording real exit codes.
+3. Rendered the built catalogue and probed each family card independently in ES and
+   EN (`.tmp/audit3/family-probe.mjs`), scoped per card rather than per document.
+4. Built an I/O-overlay mutation harness around the real validator
+   (`.tmp/audit3/mutation-harness.mjs`): literal/re-export/dynamic/aliased/transitive
+   preview imports, aliased union and enum variants, hidden and transparent focus
+   rings.
+5. Re-ran the Playwright suite WITHOUT `--update-snapshots`; reviewed every changed
+   baseline against its previous image and computed pixel-difference statistics.
+6. Re-ran the public-site suite, inherited validators, production build, both
+   typechecks, the four deterministic generators and `npm audit`.
+7. Verified the production bundle contains no design-system or catalogue code and
+   that the 35 watched legacy files and 15 public assets are unchanged.
+
+### 11.3 Stage A findings reproduced at 4a9043b
+
+| Finding | Severity | Stage A status | Reproduction evidence |
+|---|---|---|---|
+| MC17-IR-01 family limits | MAJOR | STILL OPEN | DOM probe: only 7 `marea-family-card` (NAV, PILOT, FLEET, AIS, WATCH, SENSE, DISPLAY); WEATHER and HUB absent; `FAMILY_LIMIT_KEYS` had no HUB; `senseEssentialsKit` never rendered; all seven cards displayed the same four generic chips while the material restriction was fifth; the e2e test `every family-specific limit is rendered by a family card` searched `document.body.innerText` in ES only. |
+| MC17-IR-02 committed state | MAJOR | CLOSED | HEAD 4a9043b, clean tree, `.tmp/` absent and ignored, 24 docs/20 datasets/26 test-relevant PNGs committed. |
+| MC17-IR-03 stale docs | MINOR | STILL OPEN | Contradictory `FAIL (historical snapshot; the current committed run is 38/38)`, `PENDING` review, `0 violations in 3 modes`, `performance-evidence.json is missing`, `no responsive screenshots or baselines`, malformed D08 `MareaIds` sentences, D09 `fieldSequence OPEN`. |
+| MC17-IR-04 hidden focus | MINOR | CLOSED | Mutation `outline: none` detected by MC17-15. |
+| MC17-IR-05 import isolation | MINOR | STILL OPEN | Mutation `@catalogue/*` → `preview/*` with `import '@catalogue/main'` passed; transitive bridge `src/main.ts` → `./preview-bridge` → `../preview/main` passed; validator MC17-08 only matched `marea`/`preview/` substrings. |
+| MC17-IR-06 visual provenance | MINOR | STILL OPEN | 28 PNG files on disk while evidence claimed 26; 2 orphaned foundation locale captures byte-identical to foundation web-light; provenance still used a placeholder SHA and the update-snapshots caveat; the new commerce ES/EN pair did differ (`27132adf…` vs `a57f0370…`). |
+| MC17-IR-07 variant coverage | MINOR | STILL OPEN | Mutations with `type UndocumentedVariant = 'bogus'` and `enum BadgeTone { bogus = 'bogus' }` passed MC17-13; detail printed `39 option values and  variants documented`. |
+| MC17-IR-08 governance | MINOR | PARTIAL | Registry row 17 had prose but not both exact constants; `mc18-handoff-inputs.json` still said `PENDING`/`FAIL_35_OF_38`; D-071/D-072 existed. |
+| MC17-IR-09 performance | INFORMATIONAL | ACCEPTED LIMITATION | Single laboratory run; production bytes re-measured; no field/RUM data. |
+| MC17-IR-10 format coverage | INFORMATIONAL | STILL OPEN | `format:check` globbed only `e2e`, `playwright.config.ts` and enumerated scripts; design-system source, preview and `playwright.design-system.config.ts` excluded. |
+| MC17-IR-11 moving tree | INFORMATIONAL | CLOSED | Clean frozen commit at 4a9043b. |
+| MC17-CR-01 format red | MINOR | CLOSED | `npm run format:check` exit 0 at 4a9043b. |
+| MC17-CR-02 corrupted docs | MINOR | OPEN | Same corrupted sentences as IR-03 remained at 4a9043b. |
+| MC17-CR-03 post-gate drift | INFORMATIONAL | CLOSED | Follow-up work committed at 4a9043b; clean tree. |
+| MC17-IR-12 (new) transparent focus | MINOR | OPEN | A focus rule referencing `--marea-focus-ring` and then setting `outline-color: transparent` or `outline: none` still passed the MC17-15 heuristic. |
+| MC17-IR-13 (new) orphan baselines | MINOR | OPEN | 28 committed PNGs vs 26 recorded; two unreferenced foundation locale captures. |
+
+### 11.4 Correction commit f2c9ec2 (authored by implementers, verified here)
+
+- **Family presentation (IR-01):** `FAMILY_LIMIT_KEYS` covers all nine families
+  (HUB → `compatibilityUnverified`); `selectVisibleRestrictions()` orders
+  SAFETY → LICENSING → COMPATIBILITY → trademark/brand → price → stock →
+  publication, deduplicates by copy key and applies the four-chip cap AFTER
+  prioritisation, is null-safe and falls back to `permission` for unknown kinds;
+  the card renders a family limit and an optional SENSE kit note; the gallery
+  renders nine family cards with stable `data-testid`s, the PROTECT bundle with the
+  `SENSE-POWER, SENSE-BILGE` expansion, and six adversarial family specimens
+  (safety first, safety fifth, duplicates, missing array, unknown kind, dual
+  blocking); `commerce.spec.ts` now asserts, in ES and EN, each family's exact
+  limit and material chip inside that family's own card plus all six adversarial
+  cases.
+- **Isolation (IR-05):** a shared AST resolver (`scripts/marea-design-system-guards.mjs`)
+  now follows static imports, re-exports, dynamic imports and local transitive
+  modules from the five production entries, resolving tsconfig `paths`/`baseUrl`
+  aliases (JSONC) and falling back to a literal check. The validator and the
+  Playwright SSR-contract test use the same resolver.
+- **Variants (IR-07):** MC17-13 is now a TypeScript-compiler-based comparison of
+  every option-like input's resolved value set (aliases, imported aliases, enums,
+  default values, literal unions) against the registry in both directions; the dead
+  arithmetic detail is gone and unresolved constructs fail closed.
+- **Focus (IR-12):** MC17-15 rejects `outline: none|0`, `outline-style: none`,
+  zero-width outlines and transparent outline colours even when the focus token is
+  present.
+- **Format (IR-10):** `format`/`format:check` cover `e2e/design-system`,
+  `src/app/marea-design-system`, `preview` and `playwright.design-system.config.ts`
+  (plus the shared guard module). `**/*.generated.ts` is intentionally excluded from
+  Prettier and validated instead by the three deterministic generators; a unit test
+  asserts both facts. All hand-authored design-system/preview files were formatted.
+- **Documents/evidence (IR-03, CR-02, IR-06, IR-08, IR-13):** D01–D24 and the
+  datasets were reconciled against the real evidence (validator 38/38, axe 0
+  violations in four modes, D22 present, 30/30 at 4a9043b, 26 baselines, evidence
+  present), with stale runs kept as dated historical records; the two orphaned
+  baselines were deleted; `visual-regression-evidence.json` now records source
+  commits, environment, per-file SHA-256, the ES/EN difference and the
+  generation/acceptance procedure; registry row 17 and D-073 record the exact
+  constants; `mc18-handoff-inputs.json` no longer claims evidence is missing; the
+  MC-16 handoff keeps its historical text plus a dated supersession note.
+
+The only baseline-content change is a deliberate refresh of the two 320x812
+instrument captures: the committed baselines no longer matched the same
+Chromium/Windows renderer. Before/after images were compared by the reviewer —
+identical layout and content, pixel differences confined to text antialiasing
+(mean absolute delta ≈1.2/255). The other 24 baselines are byte-identical. This is
+a renderer-environment refresh, not a design change, and it is recorded in
+`visual-regression-evidence.json`.
+
+### 11.5 Stage C re-verification at f2c9ec2 (real exits)
+
+| # | Command | Result | Exit |
+|---:|---|---|---:|
+| 1 | `git status --porcelain` / `git diff HEAD --quiet` | empty / no diff | 0 |
+| 2 | `node scripts/check-marea-design-system.mjs` | **38/38 PASS** | 0 |
+| 3 | `npm run test:design-system:unit` | **41/41 PASS** | 0 |
+| 4 | `npx tsc -p tsconfig.app.json --noEmit` | no diagnostics | 0 |
+| 5 | `npx tsc -p preview/tsconfig.json --noEmit` | no diagnostics | 0 |
+| 6 | `npm run format:check` | all covered files formatted (expanded coverage) | 0 |
+| 7 | `node scripts/build-marea-design-tokens.mjs --check` | 262 rows / 4 modes current | 0 |
+| 8 | `node scripts/build-marea-design-system-fixtures.mjs --check` | 9 families / 26 editions / 6 bundles current | 0 |
+| 9 | `node scripts/build-marea-design-system-catalogue-data.mjs --check` | 49 components current | 0 |
+| 10 | `node scripts/build-marea-design-system-baseline.mjs --check` | 35 watched files current vs 6d8287c | 0 |
+| 11 | `npm run build` | 96 static routes; 168 files / 3,032,021 bytes; no budget error | 0 |
+| 12 | `npx ng build marea-design-system-catalogue` | catalogue build; 60 files / 4,601,309 bytes | 0 |
+| 13 | `npx playwright test -c playwright.design-system.config.ts` (no `--update-snapshots`) | **37/37 PASS**, 1 worker (4.9 min cold, 1.7 min warm) | 0 |
+| 14 | `npm run test:e2e` (public site) | **15/15 PASS** | 0 |
+| 15 | `npm run test:i18n` / `test:commerce` / `test:seo` | PASS / PASS / PASS | 0 |
+| 16 | `npm audit --omit=dev --audit-level=high` | 0 vulnerabilities | 0 |
+| 17 | Production bundle scan (`dist/embarcarte`) | 0 design-system/catalogue identifiers; styles exactly `["src/styles.scss"]` | 0 |
+| 18 | Independent DOM probe, ES and EN | 9/9 families render their own limit and material-first chip; six adversarial cases behave; SENSE kit note and PROTECT expansion visible | 0 |
+| 19 | Mutation harness against the real validator | **9/9** mutations detected (literal, re-export, dynamic, alias, transitive, aliased union, enum, hidden focus, transparent focus) | 0 |
+| 20 | `git diff --check` | clean | 0 |
+
+The complete inherited suite set was also re-run (commerce-data 1786/1786, unit
+suites, IA/SEO, legal/commercial, products 106/106 unit, bundles, hardware,
+economics, market, customer research/recovery, i18n, commerce, SEO, backup,
+performance). Every suite passed except the inherited financial `V-18` failure
+(76/77; 28/29 unit), which was not modified.
+
+### 11.6 Final finding closure
+
+| Finding | Severity | Final status | Evidence |
+|---|---|---|---|
+| MC17-IR-01 | MAJOR | **CLOSED_VERIFIED** | nine cards ES/EN; per-card Playwright tests; material-first chips; adversarial cases; SENSE kit; HUB key |
+| MC17-IR-02 | MAJOR | CLOSED | committed clean states 7cbc99e/4a9043b/f2c9ec2 |
+| MC17-IR-03 | MINOR | **CLOSED_VERIFIED** | documents reconciled against current evidence; historical runs preserved with dates |
+| MC17-IR-04 | MINOR | CLOSED | hidden outline mutation detected |
+| MC17-IR-05 | MINOR | **CLOSED_VERIFIED** | alias + transitive mutations detected by validator and e2e shared resolver |
+| MC17-IR-06 | MINOR | **CLOSED_VERIFIED** | 26 baselines, SHA/env/procedure recorded, ES/EN differ, orphan pair removed, refresh reviewed |
+| MC17-IR-07 | MINOR | **CLOSED_VERIFIED** | TS-based both-direction comparison; alias/enum mutations detected; truthful counts |
+| MC17-IR-08 | MINOR | **CLOSED_VERIFIED** | exact constants in registry/D-073/D24; handoff inputs updated; MC-16 supersession dated |
+| MC17-IR-09 | INFORMATIONAL | ACCEPTED LIMITATION | single laboratory run; no field data claimed |
+| MC17-IR-10 | INFORMATIONAL | **CLOSED_VERIFIED** | expanded format coverage + generated-artefact governance + regression test |
+| MC17-IR-11 | INFORMATIONAL | CLOSED | frozen clean SHAs |
+| MC17-CR-01 | MINOR | **CLOSED_VERIFIED** | format:check green at 4a9043b and f2c9ec2 |
+| MC17-CR-02 | MINOR | **CLOSED_VERIFIED** | corrupted sentences repaired; only reviewer-owned historical mentions remain |
+| MC17-CR-03 | INFORMATIONAL | **CLOSED_VERIFIED** | follow-up committed at 4a9043b/f2c9ec2; clean tree |
+| MC17-IR-12 | MINOR | **CLOSED_VERIFIED** | transparent/hidden focus rejected; mutation detected |
+| MC17-IR-13 | MINOR | **CLOSED_VERIFIED** | 28 → 26 baselines; provenance and counts reconciled |
+
+No BLOCKING or MAJOR finding remains open for the internal design-system scope.
+
+### 11.7 Residual limitations and explicit non-claims
+
+- Visual baselines remain Chromium/Windows-specific. Two mobile instrument captures
+  had to be refreshed for renderer drift; a future environment change needs a new
+  platform suffix, not a silent overwrite.
+- Axe reports 0 violations / 36 passes / 0 incomplete in each of the four modes with
+  axe-core 4.11.4; this is automated evidence only. No screen-reader, real-device,
+  cross-browser, glare, night-vision or WCAG 2.2 AA conformance claim exists.
+- Performance is one laboratory measurement; the production bundle contribution is
+  zero bytes at this SHA, but no field/RUM data and no marine-hardware validation
+  exists.
+- Hydration is argued from deterministic ids and static copy; the design system is
+  not rendered by the public SSR server.
+- The 49-entry registry is an internal contract, not a public API.
+- No public route, sitemap entry, metadata, brand asset, price, stock, purchase,
+  cart, checkout, subscription or entitlement grant exists or is authorised.
+
+**No claim is made of:** WCAG conformance/certification, trademark clearance, MAREA
+brand adoption or public use, hardware readability, AIS transmission, CE/NMEA
+certification, tested third-party compatibility, price approval, verified stock,
+commercial availability, publication, deployment, merge or MC-18 execution.
+
+### 11.8 Third-round verdict
+
+The three rounds now form a complete, reproducible chain: the implementation at
+`3a8d4fd`, the first audit corrections at `7cbc99e`, the delivery candidate
+`4a9043b` (Stage A, rejected), and the correction commit `f2c9ec2` (Stage C). At
+`f2c9ec2` the nine family limitations are rendered and independently proven per
+card in both locales, the isolation and variant guards detect every adversarial
+mutation tested, the format gate covers the new source and is green, the visual
+evidence is traceable, and the documentation matches the code. The public site is
+byte-identical to the MC-16 baseline, the design system remains absent from the
+production bundle, and every commercial/publication gate is still closed.
+
+```text
+MC17_INDEPENDENT_REVIEW = PASS_INTERNAL_DESIGN_SYSTEM_SCOPE
+MC17_VERDICT = PARTIAL
+MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = PASS_INTERNAL_DESIGN_SYSTEM_SCOPE
+MC17_FINAL_REAUDIT = COMPLETE
+MC17_REVIEWED_IMPLEMENTATION_SHA = f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d
+MC17_OPEN_BLOCKING = 0
+MC17_OPEN_MAJOR = 0
+MC17_OPEN_MINOR = 0
+MC18_STARTED = false
+```
+
+The overall milestone stays `PARTIAL` because trademark clearance, brand adoption,
+hardware validation, price/stock approval and public publication remain external,
+unauthorised gates; the internal design-system scope itself is verified. No merge,
+deployment, publication, sale, brand adoption or MC-18 start is authorised by this
+review.

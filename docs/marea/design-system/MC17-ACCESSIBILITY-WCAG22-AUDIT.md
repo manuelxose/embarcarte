@@ -184,8 +184,9 @@ review of every surface.
 - Design system: `INTERNAL_PROPOSED`, `NOT_ADOPTED`, public use `NO_GO`.
 - Accessibility: no conformance claim, no audit certificate, no approval.
 - Publication and deployment: not authorised.
-- Independent MC-17 review: two rounds recorded, both PARTIAL; third-round verdict on
-  `4a9043b` pending (`MC17-INDEPENDENT-REVIEW.md`).
+- Independent MC-17 review: three rounds recorded (rounds 1-2 PARTIAL, round 3
+  PASS_INTERNAL_DESIGN_SYSTEM_SCOPE at `f2c9ec2`; `MC17-INDEPENDENT-REVIEW.md`). No
+  WCAG conformance claim is made.
 
 ## 8. Evidence index
 

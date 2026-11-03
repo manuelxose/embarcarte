@@ -142,7 +142,7 @@ none of this and publishes no route.
 | G4 | No hardware validation for instrument modes | Day/sunlight/night readability, glare and night-vision performance are unmeasured | Modes are labelled software-only specimens; no hardware claim in copy | HARDWARE_LEAD | Physical display and daylight/night test evidence on named hardware |
 | G5 | No full WCAG 2.2 AA conformance claim | Accessibility evidence is partial; a public claim would be false | `conformanceClaim: "NOT_CLAIMED"`; axe + keyboard + reflow tests only | Programme lead (no audit owner assigned) | Independent audit with assistive technology and manual checks; findings closed |
 | G6 | Catalogue screenshots are Chromium/Windows-specific | Visual evidence does not cover Firefox, WebKit, macOS, Linux, mobile hardware or real DPI | Evidence is labelled as such; one worker, Chromium only | Design-system maintainer | Cross-engine/platform evidence or a documented, approved scope decision |
-| G7 | Independent review not final | Self-assessment cannot become a PASS; two rounds are recorded but neither is a PASS | `MC17-INDEPENDENT-REVIEW.md` exists with two PARTIAL rounds; the author does not sign off their own work | Programme lead | A reviewer distinct from the author audits the real diff at `4a9043b` and issues the final PASS/PARTIAL/BLOCKED/FAIL |
+| G7 | Independent review not final | Self-assessment cannot become a PASS | `MC17-INDEPENDENT-REVIEW.md` records three rounds: rounds 1-2 PARTIAL, round 3 PASS_INTERNAL_DESIGN_SYSTEM_SCOPE at `f2c9ec2`; the author does not sign off their own work | Programme lead | Closed for the internal scope; external authorisations remain open |
 | G8 | Font metrics were not re-measured | Typography roles rely on MC-04 evidence; pixel equivalents are not asserted | `typography-roles.json` records the limitation; sizes are CSS expressions | Design-system maintainer | Re-measured metrics with method and environment recorded |
 | G9 | No real price, stock or API integration | The system cannot represent live commerce; sample data is synthetic | Structural absence of amount/quantity APIs; synthetic fixtures only | Programme lead with FINANCE_LEAD / data owner | An authorized, server-authoritative read API with approved price and verified stock; not before G1-G3 and gate closure |
 | G10 | ~~Recorded validator run is FAIL and stale~~ **CLOSED at `4a9043b`** | The recorded evidence now demonstrates a passing contract: `PASS`, 38/38 | The earlier FAIL snapshots (31/38, 36/38, 37/38) are retained as history with date/SHA; the current evidence file is authoritative | Design-system maintainer | Closed: `npm run test:design-system` was re-run at `4a9043b` and recorded PASS 38/38 |
@@ -161,7 +161,7 @@ FAIL snapshots (31/38 at 02:47, 36/38 at 02:56, 37/38 at `7cbc99e`) remain in D0
 | `docs/marea/design-system/data/contrast-evidence.json` | PRESENT — `status: PASS`, 296 pair/mode measurements, 0 failures |
 | `docs/marea/design-system/evidence/axe-summary.json` | PRESENT — 0 violations, 36 passes, 0 incomplete in each of all four modes (`web-light`, `instrument-day`, `instrument-sunlight`, `instrument-night`) |
 | `test-results/design-system/**` | PRESENT — four axe JSON files, six responsive screenshots, `results.json` reporter artifact and `artifacts/.last-run.json`; four historical Playwright failure directories retained |
-| `MC17-INDEPENDENT-REVIEW.md` | PRESENT — two rounds recorded, both PARTIAL; third-round verdict pending |
+| `MC17-INDEPENDENT-REVIEW.md` | PRESENT — two rounds recorded, both PARTIAL; THIRD ROUND PASS_INTERNAL_DESIGN_SYSTEM_SCOPE AT f2c9ec2 |
 | `docs/marea/design-system/data/component-registry.json` | PRESENT — 49 components; `MC17-12`/`MC17-14` PASS in the recorded run |
 | `docs/marea/design-system/data/mc18-handoff-inputs.json` | PRESENT — `mc18Started: false`; reconciled to `mc18ValidatorStatus: PASS_38_OF_38` |
 | `docs/marea/design-system/data/asset-provenance.json` | PRESENT — `adoption: NOT_ADOPTED`, `publicUse: NO_GO` |
@@ -171,7 +171,7 @@ FAIL snapshots (31/38 at 02:47, 36/38 at 02:56, 37/38 at `7cbc99e`) remain in D0
 This specialist authored D10, D11, D15, D16, D17, D18 and D19 and did not execute the gate
 commands; the delivery record and the recorded evidence files are the authority. The current
 validator run is **PASS**, but MC-17 as a milestone remains `PARTIAL` because the final
-independent verdict is still pending.
+independent verdict is complete at `f2c9ec2` (PASS_INTERNAL_DESIGN_SYSTEM_SCOPE).
 
 ## 5. What is explicitly not claimed
 
@@ -181,8 +181,8 @@ independent verdict is still pending.
 - No hardware performance, daylight readability or night-vision performance.
 - No publication, deployment, indexation or route activation.
 - No market, commercial, accessibility or brand adoption.
-- No final independent verdict for MC-17; two PARTIAL rounds are recorded and the
-  third-round verdict is pending.
+- The internal MC-17 scope was independently verified at `f2c9ec2` (round 3
+  PASS_INTERNAL); the milestone verdict stays PARTIAL for external authorisations.
 
 ## 6. Governance invariants preserved
 

@@ -213,7 +213,7 @@ commit, and the design system remains internal-only.
 - **Runtime gates were not executed by this specialist.** E2E, accessibility, i18n and
   SEO results are recorded elsewhere in the package; `test-results/` retains four
   historical Playwright failure directories from the design-system suite, which are not
-  public-site evidence. The current suite passes 30/30 at `4a9043b`.
+  public-site evidence. The current suite passes 37/37 at `f2c9ec2`.
 - **Baseline commit resolution is not re-audited here.** The dataset says
   `baselineCommitResolved` equals `6d8287c…`; this document quotes it rather than
   re-running Git.

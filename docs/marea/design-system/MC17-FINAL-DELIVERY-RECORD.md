@@ -8,11 +8,11 @@
 | Base | `feature/marea-mc16-commerce-product-data-model` @ `6d8287c8507038c4f90fd6e35471f78081ca4676` (PR #23 OPEN/DRAFT/MERGEABLE, unmerged) |
 | Implementation commit | `3a8d4fd9797db953271e1c5951c68c89cecc9fce` |
 | Audit-correction commit | `7cbc99e1a1499f22ddc6053d661983e1d91f841b` |
-| Delivery candidate (round 2) | `4a9043b98144c0ad4313728642321cd3752f5ccf` |
-| Correction commit (round 3) | the commit that contains this file (documentation/evidence reconciliation; SHA filled by the Lead at commit time) |
-| Independent review | `MC17-INDEPENDENT-REVIEW.md` (two rounds; both PARTIAL at the reviewed SHAs; third-round verdict on `4a9043b` pending) |
-| Verdict | `MC17_VERDICT = PARTIAL` |
-| Internal scope | `MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = IMPLEMENTED_AND_TECHNICALLY_VERIFIED_PENDING_FINAL_RE_AUDIT` |
+| Delivery candidate (round 2) | `4a9043b98144c0ad4313728642321cd3752f5ccf` (Stage A rejected: NEEDS_REVISION) |
+| Correction commit (round 3) | `f2c9ec2ea07f90154cbb91cae36e4a7681b5e27d` |
+| Independent review | `MC17-INDEPENDENT-REVIEW.md` (three rounds; rounds 1–2 PARTIAL, round 3 PASS_INTERNAL on `f2c9ec2`) |
+| Verdict | `MC17_VERDICT = PARTIAL` (external gates not granted) |
+| Internal scope | `MC17_INTERNAL_DESIGN_SYSTEM_SCOPE = PASS_INTERNAL_DESIGN_SYSTEM_SCOPE` |
 
 ## 1. Delivered artefacts
 
@@ -24,31 +24,33 @@
 | Presentation adapter and fixtures | `data/` | Delivered, fail-closed, synthetic |
 | Internal catalogue (separate Angular project) | `preview/`, `angular.json` project `marea-design-system-catalogue` | Delivered, isolated |
 | Playwright suites (catalogue + public site) | `e2e/design-system/`, `playwright.design-system.config.ts` | Delivered |
-| Design-system tests | `scripts/check-marea-design-system*.mjs` | Delivered |
+| Design-system tests | `scripts/check-marea-design-system*.mjs` + `scripts/marea-design-system-guards.mjs` | Delivered |
 | Documentation D01–D24 | `docs/marea/design-system/` | Delivered (D22 owned by the independent reviewer) |
 | Datasets (20) | `docs/marea/design-system/data/` | Delivered |
 | Evidence | `docs/marea/design-system/evidence/` | Delivered |
 
-## 2. Gate snapshot at the correction round
+## 2. Final gate snapshot at `f2c9ec2`
 
 | Gate | Result |
 |---|---|
 | `npm run test:design-system` | **PASS, 38/38 checks** (`evidence/validator-run.json`, status PASS) |
-| `npm run test:design-system:unit` | **PASS, 27/27** (16 unit + 11 adversarial) |
-| `npm run test:design-system:visual` | **PASS, 30/30 at `4a9043b`**; the count is re-measured at the correction commit and rises if a parallel agent adds tests. Includes axe: **0 violations, 36 passes, 0 incomplete in each of all four modes** |
+| `npm run test:design-system:unit` | **PASS, 41/41** (unit + adversarial, including the isolation, variant and focus guards) |
+| `npm run test:design-system:visual` | **PASS, 37/37 at `f2c9ec2`** without `--update-snapshots`; axe **0 violations, 36 passes, 0 incomplete in all four modes** (automated only, no conformance claim) |
 | `npm run test:e2e` | 15/15 inherited public site (internal specs excluded via `testIgnore`) |
 | `npm run test:commerce-data` | 1786/1786 |
-| `npm run build` | PASS |
+| `npm run build` | PASS — 96 routes, 168 files / 3,032,021 bytes; production bundle 0 design-system/catalogue identifiers; production styles exactly `["src/styles.scss"]` |
 | `npx tsc -p tsconfig.app.json --noEmit` / `preview/tsconfig.json` | PASS / PASS |
-| `npm run format:check` | PASS on the delivered glob at `4a9043b`. A parallel agent has since expanded the glob to `src/app/marea-design-system`, `preview`, `e2e/design-system`, `playwright.design-system.config.ts` and `scripts/marea-design-system-guards.mjs`; the expanded check is **not yet green** (it reported 47 unformatted files at the time of this reconciliation) and must be re-run after the parallel formatting work |
+| `npm run format:check` | **PASS with expanded coverage**: `e2e/design-system`, `src/app/marea-design-system`, `preview`, `playwright.design-system.config.ts` and the shared guard module. Machine-generated `*.generated.ts` files are explicitly excluded from Prettier and validated by their deterministic generators; a unit test asserts both facts |
+| Deterministic generators (`--check`) | tokens 262 rows / 4 modes; 9 families / 26 editions / 6 bundles; 49 components; 35 legacy watched files — all current |
 | `npm audit --omit=dev --audit-level=high` | 0 vulnerabilities |
-| `npm run test:financial` | FAIL only on inherited V-18 (unchanged) |
+| `npm run test:financial` | FAIL only on inherited V-18 (76/77; 28/29 unit, unchanged) |
+| Production bundle scan | 0 `marea-design-system` / catalogue identifiers |
+| Public surface | 35 watched legacy files and 15 public assets byte-identical to MC-16; no route/sitemap/metadata change |
 
-Exact per-run outputs are recorded in the CI/local logs and in
-`evidence/{validator-run,axe-summary}.json`; the numbers above are the state at
-`4a9043b`. The expanded `format:check` coverage and any added tests must be
-re-measured at the correction commit. The visual test count is not frozen: it was
-28 at authoring, 29 after the second-round correction and 30 at `4a9043b`.
+The design-system Playwright count is 37 at `f2c9ec2` (30 at `4a9043b`): eight
+per-family/adversarial commerce tests replaced one body-wide assertion. Full
+per-run outputs are recorded in `evidence/validator-run.json`,
+`evidence/axe-summary.json` and `test-results/design-system/`.
 
 ## 3. Boundaries preserved
 
@@ -61,22 +63,23 @@ re-measured at the correction commit. The visual test count is not frozen: it wa
 
 ## 4. Residual gaps carried forward
 
-1. **Third-round independent review record pending.** The two recorded rounds are
-   both PARTIAL; the final verdict on the delivery/correction SHA must be written by
-   the independent reviewer. No final PASS is claimed here.
-2. Minor findings still tracked at the correction commit: MC17-IR-05 (validator
-   `MC17-08` preview-import scan), MC17-IR-06 (visual evidence provenance — rewritten
-   in this correction; acceptance comparison must run without `--update-snapshots`),
-   MC17-IR-07 (aliased enum extraction in validator `MC17-13`), MC17-IR-10 (expanded
-   `format:check` coverage; re-measure at the correction commit). MC17-IR-03 and
-   MC17-CR-02 are repaired in this documentation round.
-3. Hardware validation BLOCKED; no marine readability, night-vision, AIS transmission
-   or certification claim.
-4. No WCAG conformance claim; no assistive-technology laboratory run.
-5. No authorised public ES/EN copy; MC-18 remains blocked from publishing.
-6. `MC16-FINAL-02` approved-price immutability must be hardened before any future
+1. External authorisations remain closed: trademark clearance, brand adoption,
+   hardware validation, price/stock approval and public publication. They keep
+   `MC17_VERDICT = PARTIAL` even though the internal scope is verified.
+2. Hardware validation BLOCKED; no marine readability, night-vision, AIS
+   transmission or certification claim.
+3. No WCAG conformance claim; no assistive-technology laboratory run. Axe is
+   automated evidence only.
+4. No authorised public ES/EN copy; MC-18 remains blocked from publishing.
+5. `MC16-FINAL-02` approved-price immutability must be hardened before any future
    price approval; `FINANCIAL_V18` remains inherited-open.
+6. Visual baselines are Chromium/Windows-specific; the two refreshed 320x812
+   instrument captures are documented in `visual-regression-evidence.json`.
 
 ## 5. Delivery statement
 
-The internal design system is implemented, documented, tested and isolated. Delivering it does **not** authorise merging, deploying, publishing, selling, adopting the MAREA brand or starting MC-18. The PR remains a draft targeting the MC-16 branch and must not be merged until the final independent re-audit closes the residual findings.
+The internal design system is implemented, documented, independently reviewed and
+isolated. Delivering it does **not** authorise merging, deploying, publishing,
+selling, adopting the MAREA brand or starting MC-18. The PR remains a draft
+targeting the MC-16 branch; no merge, deployment, publication or sale is
+authorised by this record.

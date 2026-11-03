@@ -9,7 +9,7 @@
 | Suite | `e2e/design-system/responsive.spec.ts`, `visual.spec.ts` |
 | Browser | Chromium (Playwright `Desktop Chrome`) on Windows |
 | Visual baselines | 26 PNGs under `e2e/design-system/visual.spec.ts-snapshots/` |
-| Recorded run | **30/30 tests across six spec files at `4a9043b`**; final status `passed`. The authoring records were 28/28 and 29/29; the count is re-measured at the correction commit |
+| Recorded run | **37/37 tests across six spec files at `f2c9ec2` (30/30 at `4a9043b`)**; final status `passed`. The authoring records were 28/28 and 29/29; the count is re-measured at the correction commit |
 
 ## 1. Responsive strategy
 
@@ -85,7 +85,7 @@ browser-zoom review or a screen-reader test.
 The latest recorded Playwright run covers six spec files: `accessibility`,
 `commerce`, `keyboard`, `responsive`, `ssr-contract` and `visual`. The retained
 final-status file `test-results/design-system/artifacts/.last-run.json` says
-`{"status":"passed","failedTests":[]}`. At `4a9043b` the suite is **30/30 passed**,
+`{"status":"passed","failedTests":[]}`. At `f2c9ec2` the suite is **37/37 passed**,
 of which:
 
 | Spec | Tests | Relevant to this document |

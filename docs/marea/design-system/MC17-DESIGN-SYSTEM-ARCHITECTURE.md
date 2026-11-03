@@ -295,7 +295,7 @@ At `4a9043b` the validator records **PASS, 38/38**
 missing deliverables/datasets (`MC17-35`, `MC17-36`) owned by other authors, not
 architecture failures; they are historical and retained in D01 §7. This document
 does not convert that state into a milestone PASS, because the third-round
-independent verdict is still pending. It also does not claim that the design system
+independent verdict completed at `f2c9ec2` (PASS_INTERNAL_DESIGN_SYSTEM_SCOPE). It also does not claim that the design system
 works inside the live site: no route imports it, so that integration is untested.
 
 Source references: `src/app/marea-design-system/**`, `preview/**`, `angular.json`,

@@ -165,7 +165,7 @@ The historical Playwright failure artifact is
 `test-results/accessibility-all-four-vis-6661a-d-automated-WCAG-A-AA-rules-chromium/`.
 Three other historical failure directories exist (status-badge text, CTA purchase/price
 copy, price/stock amount). They are not current failures: the catalogue suite passes
-30/30 at `4a9043b`.
+37/37 at `f2c9ec2` (30/30 at `4a9043b`).
 
 Six responsive screenshots and 26 visual baselines are committed. Evidence is
 reproducible with `npm run build:design-system-preview` followed by
@@ -219,7 +219,7 @@ Commands: `npm run test:design-system`, `npm run test:design-system:unit`,
 
 - **Instrument-night axe contrast finding is closed at `4a9043b`.** The current summary
   and all four raw runs record 0 violations; the historical failure artifact is retained.
-- **The visual and responsive suites pass at `4a9043b`.** 30/30 catalogue tests, six
+- **The visual and responsive suites pass at `4a9043b`.** 37/37 catalogue tests, six
   responsive screenshots and 26 committed baselines; four historical failure directories
   are retained from pre-correction runs.
 - **Chromium-only, Windows-specific** screenshots; Firefox/WebKit and macOS/Linux captures
@@ -227,7 +227,7 @@ Commands: `npm run test:design-system`, `npm run test:design-system:unit`,
 - **Catalogue prose is Spanish-only**, including demo documentation titles and the
   component-doc captions.
 - **Independent review not final**: `MC17-INDEPENDENT-REVIEW.md` exists with two rounds,
-  both PARTIAL; the third-round verdict on `4a9043b` is pending.
+  both PARTIAL; the third round completed at `f2c9ec2` with PASS_INTERNAL_DESIGN_SYSTEM_SCOPE (see D22 section 11); the milestone verdict stays PARTIAL for external gates.
 - **No accessibility conformance claim**: axe is partial evidence, not an audit. The
   recorded summary explicitly says `conformanceClaim: NONE`.
 - **Validator at `4a9043b` is `PASS` 38/38** (`evidence/validator-run.json`). The earlier
