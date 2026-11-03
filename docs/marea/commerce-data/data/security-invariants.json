@@ -1,0 +1,255 @@
+{
+  "contractId": "MC16-SECURITY-INVARIANTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "invariants": [
+    {
+      "invariantId": "SEC-MC16-01",
+      "statement": "Server-authoritative purchasability only; no client price, stock, readiness or availability is trusted.",
+      "enforcement": [
+        "SCHEMA_TRIGGER",
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-02",
+      "statement": "Admin activation is never sufficient authorization for sale.",
+      "enforcement": [
+        "SCHEMA_TRIGGER",
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-03",
+      "statement": "Every sale-capable operation must call evaluatePurchasability before quoting, reserving or charging.",
+      "enforcement": [
+        "SCHEMA_TRIGGER",
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-04",
+      "statement": "The MC-16 evaluator is not imported by any public route, checkout or Stripe handler.",
+      "enforcement": [
+        "SCHEMA_TRIGGER",
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-05",
+      "statement": "A merchant SKU cannot exist without an edition, approved price, verified inventory or contracted fulfilment, and all applicable gates closed.",
+      "enforcement": [
+        "SCHEMA_TRIGGER",
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-06",
+      "statement": "A price cannot be APPROVED without verified external price evidence and an authorized approver.",
+      "enforcement": [
+        "SCHEMA_TRIGGER",
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-07",
+      "statement": "Unknown price is null and never coerced to zero.",
+      "enforcement": [
+        "SCHEMA_TRIGGER",
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-08",
+      "statement": "Inventory reservations are atomic and cannot oversell.",
+      "enforcement": [
+        "SCHEMA_TRIGGER",
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-09",
+      "statement": "Quantity alone does not authorize fulfilment.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-10",
+      "statement": "A blocked release gate cannot be bypassed by application state.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-11",
+      "statement": "External evidence must be fresh, verified and not expired or revoked.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-12",
+      "statement": "Audit events are append-only, hash-chained and carry actor/role/reason/evidence.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-13",
+      "statement": "No real entitlement grant or subscription may be created during MC-16.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-14",
+      "statement": "Local PILOT/SENSE/WATCH safety functions are independent of subscription state.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-15",
+      "statement": "NAV/WEATHER shared entitlements are resolved once through a canonical ledger.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-16",
+      "statement": "FLEET entitlement scope is organization/tenant/vessel-bound and client-supplied scope is ignored.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-17",
+      "statement": "No cross-tenant entitlement leakage.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-18",
+      "statement": "No MAREA Product/Offer JSON-LD may be emitted while publication is blocked.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-19",
+      "statement": "No proposed MAREA route may be published or indexed by MC-16.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-20",
+      "statement": "No production schema migration runs on application startup.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-21",
+      "statement": "No legacy order, product or customer data is modified or deleted.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-22",
+      "statement": "No secret, payment credential or card data is stored in the audit trail.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-23",
+      "statement": "Tests must use synthetic fixtures only.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-24",
+      "statement": "The public legacy shop remains on its existing code path.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    },
+    {
+      "invariantId": "SEC-MC16-25",
+      "statement": "An empty or null evidence reference never counts as evidence.",
+      "enforcement": [
+        "DOMAIN_EVALUATOR",
+        "VALIDATOR"
+      ],
+      "status": "ENFORCED_BY_DESIGN_AND_TESTS"
+    }
+  ],
+  "authorization": {
+    "trustedSource": "SERVER_SESSION_AND_ROLE",
+    "clientSuppliedRolesTrusted": false,
+    "adminActivationBypassesReadiness": false,
+    "requiredApproverRolesForPrice": [
+      "FINANCE_LEAD",
+      "COMMERCIAL_DIRECTOR"
+    ],
+    "requiredApproverRolesForPublication": [
+      "PROGRAMME_LEAD",
+      "COMMERCIAL_DIRECTOR"
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "contractId": "MC16-READINESS-DIMENSIONS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "dimensions": [
+    {
+      "dimension": "definition",
+      "readyValue": "COMPLETE_TARGET_SPECIFICATION",
+      "failureCode": "DEFINITION_INCOMPLETE",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-DEFINITION-READY"
+    },
+    {
+      "dimension": "engineering",
+      "readyValue": "ENGINEERING_VERIFIED",
+      "failureCode": "ENGINEERING_NOT_VERIFIED",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-ENGINEERING-READY"
+    },
+    {
+      "dimension": "licensing",
+      "readyValue": "CLEARED",
+      "failureCode": "LICENSING_NOT_CLEARED",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-LICENSING-READY"
+    },
+    {
+      "dimension": "hardware",
+      "readyValue": "CERTIFIED",
+      "failureCode": "HARDWARE_NOT_CERTIFIED",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-HARDWARE-READY"
+    },
+    {
+      "dimension": "dataRights",
+      "readyValue": "GRANTED_PER_TERRITORY",
+      "failureCode": "DATA_RIGHTS_NOT_GRANTED",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-DATARIGHTS-READY"
+    },
+    {
+      "dimension": "compliance",
+      "readyValue": "CONFORMITY_EVIDENCE_ON_FILE",
+      "failureCode": "COMPLIANCE_NOT_READY",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-COMPLIANCE-READY"
+    },
+    {
+      "dimension": "safety",
+      "readyValue": "SAFETY_APPROVED",
+      "failureCode": "SAFETY_BLOCKED",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-SAFETY-READY"
+    },
+    {
+      "dimension": "pricing",
+      "readyValue": "APPROVED",
+      "failureCode": "PRICE_NOT_APPROVED",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-PRICING-READY"
+    },
+    {
+      "dimension": "brandPublication",
+      "readyValue": "PUBLICATION_APPROVED",
+      "failureCode": "BRAND_NOT_CLEARED",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-BRANDPUBLICATION-READY"
+    },
+    {
+      "dimension": "operations",
+      "readyValue": "OPERATIONS_READY",
+      "failureCode": "OPERATIONS_NOT_READY",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-OPERATIONS-READY"
+    },
+    {
+      "dimension": "availability",
+      "readyValue": "FOR_SALE",
+      "failureCode": "NOT_FOR_SALE",
+      "currentStatus": "NOT_READY",
+      "requiredEvidence": "EV-AVAILABILITY-READY"
+    }
+  ],
+  "rule": "Every dimension is evaluated independently. A later state in one dimension never clears another. All dimensions must be ready before COMMERCIALLY_AVAILABLE.",
+  "failClosed": true
+}

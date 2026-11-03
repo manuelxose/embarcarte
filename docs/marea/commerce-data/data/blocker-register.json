@@ -1,0 +1,329 @@
+{
+  "contractId": "MC16-BLOCKER-REGISTER",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "REPOSITORY_VERIFIED",
+  "summary": {
+    "releaseGatesOpen": 13,
+    "requiredDocumentsUnexecuted": 24,
+    "websiteFindingsOpen": 34,
+    "websiteFindingsRemediated": 0,
+    "mc16PreconditionsMet": 0,
+    "mc16PreconditionsTotal": 10
+  },
+  "gates": [
+    {
+      "blockerId": "GATE-MARKET-PLACEMENT",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "PRODUCT_COMPLIANCE_ENGINEER",
+      "evidenceRequired": [
+        "Final-product conformity assessment",
+        "EU declaration of conformity",
+        "Accredited test reports",
+        "Technical documentation file",
+        "Traceability and labelling",
+        "Instructions and safety information in the required language"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-SAFETY-PILOT",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "HARDWARE_LEAD",
+      "evidenceRequired": [
+        "Independent hazard analysis and safety case",
+        "Physical E-stop and fail-closed evidence",
+        "Bench/HIL test reports",
+        "Supervised sea-trial reports",
+        "Independent safety review",
+        "Product liability insurance"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-IP-CLEARANCE",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "LEGAL_COUNSEL",
+      "evidenceRequired": [
+        "Assignment/ownership chain",
+        "Contributor waivers",
+        "Outbound licence decision",
+        "Third-party notices bundle and SBOM",
+        "MAREA trademark clearance and filing",
+        "NMEA licence/certification if claimed"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-DATA-LICENSING",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "DATA_RIGHTS_OWNER",
+      "evidenceRequired": [
+        "Signed chart licence or user-supplied-chart policy",
+        "Signed weather licence with display/cache/offline rights",
+        "Tile/basemap licence or self-hosted licensed stack",
+        "Attribution and freshness implementation",
+        "Provider terms register"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-PRIVACY-DPA-DPIA",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "DPO",
+      "evidenceRequired": [
+        "Controller/processor role map",
+        "DPIA screening and report",
+        "Article 28 DPA and subprocessor register",
+        "Privacy notices ES/EN",
+        "Retention and export schedule",
+        "Breach-response runbook",
+        "Tenant isolation test"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-CRA-CYBERSECURITY",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "SECURITY_LEAD",
+      "evidenceRequired": [
+        "CRA classification memo",
+        "Secure development lifecycle",
+        "Vulnerability-handling and CVD policy",
+        "SBOM and dependency monitoring",
+        "Support-period decision",
+        "Incident-reporting runbook and exercise",
+        "Conformity assessment and technical documentation"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-CONSUMER-TERMS",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "LEGAL_COUNSEL",
+      "evidenceRequired": [
+        "Consumer terms of sale ES/EN",
+        "B2B sales terms",
+        "Subscription terms",
+        "Returns/cancellation policy",
+        "Warranty and RMA workflow",
+        "Installer/distributor agreements",
+        "Counsel sign-off"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-COMMERCIAL-CLAIMS",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "COMMERCIAL_DIRECTOR",
+      "evidenceRequired": [
+        "Approved claim records with evidence",
+        "Bilingual semantic parity check",
+        "Channel and audience approval",
+        "Trademark public-use decision",
+        "Financial-claim prohibition review"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-PRICING",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "FINANCE_LEAD",
+      "evidenceRequired": [
+        "Approved price list",
+        "Bottom-up cost and margin evidence",
+        "VAT and tax confirmation",
+        "Price-display and renewal rules"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-PAYMENTS",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "FINANCE_LEAD",
+      "evidenceRequired": [
+        "Executed merchant agreement",
+        "Payment-role and SCA analysis",
+        "Refund/chargeback procedure",
+        "PCI-scope confirmation",
+        "Checkout test evidence"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-INSURANCE",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "FINANCE_LEAD",
+      "evidenceRequired": [
+        "Broker indication and quotation",
+        "Policy wording with limits/exclusions/territory",
+        "PILOT-specific cover decision",
+        "Cyber cover decision",
+        "Documented residual-risk acceptance if deferred"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-LEGAL-ENTITY",
+      "type": "RELEASE_GATE",
+      "status": "BLOCKED",
+      "open": true,
+      "closureOwner": "COMMERCIAL_DIRECTOR",
+      "evidenceRequired": [
+        "Verified company registration data",
+        "Legal notice",
+        "Privacy and cookie policy",
+        "Terms of use",
+        "Cookie consent implementation"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    },
+    {
+      "blockerId": "GATE-WEBSITE-REMEDIATION",
+      "type": "RELEASE_GATE",
+      "status": "EVIDENCE_REQUIRED",
+      "open": true,
+      "closureOwner": "COMMERCIAL_DIRECTOR",
+      "evidenceRequired": [
+        "D15 findings closed with evidence",
+        "Claims review of remediated copy",
+        "Structured-data policy",
+        "MC-15 migration authorization"
+      ],
+      "sourceRef": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+    }
+  ],
+  "preconditions": [
+    {
+      "preconditionId": "PRE-MC16-01",
+      "description": "Written MC-16 authorisation separate from MC-15",
+      "status": "NOT_GRANTED",
+      "met": false
+    },
+    {
+      "preconditionId": "PRE-MC16-02",
+      "description": "All 13 release gates closed with verified external evidence",
+      "status": "OPEN_0_OF_13",
+      "met": false
+    },
+    {
+      "preconditionId": "PRE-MC16-03",
+      "description": "All 24 required documents executed and verified",
+      "status": "OPEN_0_OF_24",
+      "met": false
+    },
+    {
+      "preconditionId": "PRE-MC16-04",
+      "description": "All 34 website findings remediated and independently reviewed",
+      "status": "OPEN_0_OF_34",
+      "met": false
+    },
+    {
+      "preconditionId": "PRE-MC16-05",
+      "description": "Verified legal identity and approved consumer terms",
+      "status": "BLOCKED",
+      "met": false
+    },
+    {
+      "preconditionId": "PRE-MC16-06",
+      "description": "Approved price list, VAT basis and stock provenance",
+      "status": "NONE",
+      "met": false
+    },
+    {
+      "preconditionId": "PRE-MC16-07",
+      "description": "Trademark clearance and recorded public-use decision",
+      "status": "NOT_GRANTED",
+      "met": false
+    },
+    {
+      "preconditionId": "PRE-MC16-08",
+      "description": "Chart, weather and software licensing cleared",
+      "status": "NOT_CLEARED",
+      "met": false
+    },
+    {
+      "preconditionId": "PRE-MC16-09",
+      "description": "Privacy, DPIA and processor agreements complete",
+      "status": "BLOCKED",
+      "met": false
+    },
+    {
+      "preconditionId": "PRE-MC16-10",
+      "description": "PILOT safety case and independent review complete",
+      "status": "BLOCKED",
+      "met": false
+    }
+  ],
+  "inheritedDebt": [
+    {
+      "id": "V-18",
+      "classification": "INHERITED_VALIDATOR_STATE_DEBT",
+      "status": "OPEN",
+      "file": "scripts/check-marea-financial-model.mjs"
+    },
+    {
+      "id": "F-05",
+      "classification": "MC13_RESIDUAL_DEBT",
+      "status": "OPEN"
+    },
+    {
+      "id": "F-11",
+      "classification": "MC13_RESIDUAL_DEBT",
+      "status": "OPEN"
+    },
+    {
+      "id": "F-14",
+      "classification": "MC13_RESIDUAL_DEBT",
+      "status": "OPEN"
+    },
+    {
+      "id": "GSC-01",
+      "classification": "MC15_OPERATIONAL_DEBT",
+      "status": "OPEN"
+    },
+    {
+      "id": "GSC-02",
+      "classification": "MC15_OPERATIONAL_DEBT",
+      "status": "OPEN"
+    }
+  ],
+  "externalEvidence": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "mareaPublicUse": "NO_GO",
+    "sourceIpClearance": "NOT_CLEARED",
+    "licensingRightsGranted": false,
+    "formalSupplierQuotations": "NONE",
+    "priceApproved": "NONE",
+    "customerWtpValidated": false,
+    "customerEvidence": "NONE",
+    "ceMarkingClaim": "PROHIBITED",
+    "nmea2000Certified": false,
+    "testedCompatibilityRows": 0,
+    "publicationAuthorized": false,
+    "productionDeployment": "NOT_AUTHORIZED"
+  }
+}

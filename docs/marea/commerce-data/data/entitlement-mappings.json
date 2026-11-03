@@ -1,0 +1,156 @@
+{
+  "contractId": "MC16-ENTITLEMENT-MAPPINGS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "sourceRefs": [
+    "docs/marea/bundles/bundle-definitions.json",
+    "docs/marea/information-architecture/data/mc16-handoff-inputs.json"
+  ],
+  "sharedLedgers": [
+    {
+      "ledgerKey": "ACCOUNT:NAV_PRO",
+      "canonicalEntitlementId": "ENT-NAV-PRO",
+      "rule": "One NAV Pro entitlement per account; repeated references across bundles resolve to one active entitlement."
+    },
+    {
+      "ledgerKey": "ACCOUNT:WEATHER",
+      "canonicalEntitlementId": "ENT-WEATHER",
+      "rule": "One WEATHER entitlement ledger; overlapping NAV and WEATHER presentation surfaces never create a second charge."
+    },
+    {
+      "ledgerKey": "ACCOUNT:WATCH_MONITORING",
+      "canonicalEntitlementId": "ENT-WATCH",
+      "rule": "One WATCH monitoring entitlement per account, whether required by PROTECT, COMPLETE or FLEET."
+    },
+    {
+      "ledgerKey": "ORGANIZATION:FLEET_VESSEL",
+      "canonicalEntitlementId": "ENT-FLEET",
+      "rule": "FLEET subscription is scoped to organization and vessel; no cross-tenant grant."
+    }
+  ],
+  "bundleEntitlementRefs": [
+    {
+      "bundleId": "START",
+      "references": [
+        "SE-ST-01",
+        "SE-ST-02"
+      ]
+    },
+    {
+      "bundleId": "CRUISE",
+      "references": [
+        "SE-CR-01",
+        "SE-CR-02",
+        "SE-CR-03"
+      ]
+    },
+    {
+      "bundleId": "SAIL",
+      "references": [
+        "SE-SL-01",
+        "SE-SL-02"
+      ]
+    },
+    {
+      "bundleId": "PROTECT",
+      "references": [
+        "SE-PR-01",
+        "SE-PR-02",
+        "SE-PR-03"
+      ]
+    },
+    {
+      "bundleId": "COMPLETE",
+      "references": [
+        "SE-CP-01",
+        "SE-CP-02",
+        "SE-CP-03",
+        "SE-CP-04"
+      ]
+    },
+    {
+      "bundleId": "FLEET",
+      "references": [
+        "SE-FP-01",
+        "SE-FP-02",
+        "SE-FP-03"
+      ]
+    }
+  ],
+  "referenceToEntitlement": [
+    {
+      "referenceId": "SE-ST-01",
+      "entitlementId": "ENT-NAV-PRO"
+    },
+    {
+      "referenceId": "SE-ST-02",
+      "entitlementId": "ENT-DISPLAY"
+    },
+    {
+      "referenceId": "SE-CR-01",
+      "entitlementId": "ENT-NAV-ESSENTIAL"
+    },
+    {
+      "referenceId": "SE-CR-02",
+      "entitlementId": "ENT-DISPLAY"
+    },
+    {
+      "referenceId": "SE-CR-03",
+      "entitlementId": "ENT-AIS"
+    },
+    {
+      "referenceId": "SE-SL-01",
+      "entitlementId": "ENT-NAV-PRO"
+    },
+    {
+      "referenceId": "SE-SL-02",
+      "entitlementId": "ENT-PILOT-LOCAL"
+    },
+    {
+      "referenceId": "SE-PR-01",
+      "entitlementId": "ENT-WATCH"
+    },
+    {
+      "referenceId": "SE-PR-02",
+      "entitlementId": "ENT-SENSE-LOCAL"
+    },
+    {
+      "referenceId": "SE-CP-01",
+      "entitlementId": "ENT-NAV-PRO"
+    },
+    {
+      "referenceId": "SE-CP-02",
+      "entitlementId": "ENT-WATCH"
+    },
+    {
+      "referenceId": "SE-CP-03",
+      "entitlementId": "ENT-DISPLAY"
+    },
+    {
+      "referenceId": "SE-CP-04",
+      "entitlementId": "ENT-PILOT-LOCAL"
+    },
+    {
+      "referenceId": "SE-FP-01",
+      "entitlementId": "ENT-FLEET"
+    },
+    {
+      "referenceId": "SE-FP-02",
+      "entitlementId": "ENT-FLEET"
+    },
+    {
+      "referenceId": "SE-FP-03",
+      "entitlementId": "ENT-WATCH"
+    }
+  ],
+  "isolationRules": [
+    "Entitlement definitions are not grants.",
+    "A subscription plan is not a billing contract.",
+    "A billing contract is not an entitlement grant.",
+    "Local safety functions are never gated by a subscription or entitlement.",
+    "No duplicate ledger charge for a shared entitlement.",
+    "Tenant scope is validated server-side; client-supplied tenant ids are ignored."
+  ]
+}

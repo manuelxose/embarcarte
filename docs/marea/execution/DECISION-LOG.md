@@ -1682,3 +1682,39 @@ no merge, no deployment.
 **Evidence.** `MC15-SEARCH-CONSOLE-EVIDENCE.md`; `data/search-console-evidence.json`; `data/url-evidence.json` (`EV-GSC-001`…`EV-GSC-024`); `data/indexation-policy.json`; `data/risk-register.json` (`SEO-RISK-22`); `MC15-SEARCH-CONSOLE-REVIEW.md`; D20/D21/D22.
 
 **Status effect.** Indexation evidence `SEARCH_CONSOLE_VERIFIED_PARTIAL`; overall verdict still PARTIAL; no merge, deployment, publication, indexation request or MC-16 start.
+
+## D-068 - 2026-11-03 - MC-16 defines an isolated, non-activatable commerce domain
+
+**Context.** MC-16 must design the commercial domain that will later support nine product families, 26 editions and six bundles, without any product becoming publishable, purchasable or billable. The existing Node/Express/SQLite shop is a generic legacy storefront whose `products.active` flag has no legal, price, stock or readiness meaning.
+
+**Decision.** Implement the canonical contract under `docs/marea/commerce-data/`, the typed pure evaluators in `src/server/marea-commerce/domain.ts` and the disposable SQLite schema in `src/server/marea-commerce/schema.ts`. Preserve 9 families, 26 editions, 6 bundles and 23 proposed routes. Keep `merchantSkuCode=null`, `merchantable=false`, `priceApproved=false`, `commercialAvailability=NOT_FOR_SALE` for every edition; keep 0 approved prices, 0 verified inventory, 0 real subscriptions and 0 real entitlement grants. All 13 release gates remain open. The domain is not imported by any public route, shop, checkout or Stripe path.
+
+**Rationale.** A domain that can be tested without being activated is the only defensible way to prepare commerce while brand, licensing, safety, price and legal evidence remain unavailable. A fail-closed evaluator and schema guards make accidental activation a deliberate migration, not a UI toggle.
+
+**Evidence.** `docs/marea/commerce-data/` D01-D23 + 21 datasets; `src/server/marea-commerce/domain.ts`; `schema.ts`; `scripts/check-marea-commerce-data.mjs`; `scripts/marea-commerce-schema.mjs`; independent review D21 at `ee4f5d2`.
+
+**Status effect.** Internal commerce-data scope PASS; overall MC-16 PARTIAL; no publication, sale, billing, deployment or MC-17 start.
+
+## D-069 - 2026-11-03 - MC-16 preserves the inherited V-18 failure and does not rewrite MC-13
+
+**Context.** The MC-13 financial validator asserts that registry row 14 must remain `PLANNED`. MC-14 was executed and recorded `PARTIAL`, so `npm run test:financial` and `test:financial:unit` fail only on V-18. MC-15 already recorded the failure as inherited.
+
+**Decision.** Reproduce V-18 against the verified MC-15 base, classify it as inherited validator-state debt, and leave it open. Do not alter MC-13's validator, financial data, the registry history or the MC-14 row to obtain a green financial suite. Record the failure in D16 and D23.
+
+**Rationale.** Falsifying history to satisfy a stale assertion would be worse than an honest inherited failure. The correction belongs to the MC-13/MC-14 financial-model owner with its own traceable diff and evidence.
+
+**Evidence.** `scripts/check-marea-financial-model.mjs` V-18; `docs/marea/commerce-data/MC16-EXTERNAL-EVIDENCE-AND-BLOCKERS.md`; `data/blocker-register.json`; independent review D21.
+
+**Status effect.** Financial suite remains 76/77 (and 28/29 unit); no MC-13/MC-14 modification; no full-green claim.
+
+## D-070 - 2026-11-03 - MC-16 records the independent audit and the residual internal MINOR
+
+**Context.** The first independent audit of `4e67ae2` found no BLOCKING/MAJOR but identified latent contract-hardening and documentation defects. Corrections `0a30a62`, `c9ef80e`, `981c53f` and `ee4f5d2` closed the build failure, evidence fail-open, family publication guard, validator no-op, hash reproducibility and SKU-evidence regression. The final audit of `ee4f5d2` re-ran build, typecheck, validator, unit and financial gates.
+
+**Decision.** Record `MC16_INTERNAL_COMMERCE_DATA_SCOPE = PASS_INTERNAL_COMMERCE_DATA_SCOPE` and `MC16_VERDICT = PARTIAL`. Record the one residual MINOR (additional approved-price fields for a future schema hardening) and the informative observations as non-blocking. Do not claim that the internal PASS is a commercial, legal, price, stock, publication or deployment approval.
+
+**Rationale.** The internal model is implemented and tested; the external evidence and the full programme remain incomplete. An honest PARTIAL preserves the distinction.
+
+**Evidence.** `MC16-INDEPENDENT-REVIEW.md` (D21); `data/review-findings.json`; `MC16-DELIVERY.md` (D23); `MC16-EXECUTIVE-REPORT-ES.md` (D22); PR #23 (draft, unmerged).
+
+**Status effect.** Internal-scope PASS recorded; overall PARTIAL; no merge, deploy, publication, sale, billing or MC-17 execution.

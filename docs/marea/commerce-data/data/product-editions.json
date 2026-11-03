@@ -1,0 +1,1573 @@
+{
+  "contractId": "MC16-PRODUCT-EDITIONS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "sourceRefs": [
+    "docs/marea/information-architecture/data/mc16-handoff-inputs.json",
+    "docs/marea/products/PRODUCT-EDITIONS-NAV-HUB-AIS.md",
+    "docs/marea/products/PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md",
+    "docs/marea/products/PRODUCT-EDITIONS-DISPLAY-WEATHER-FLEET.md"
+  ],
+  "editions": [
+    {
+      "editionId": "NAV-ESSENTIAL",
+      "familyId": "NAV",
+      "definitionStatus": "DEFINED",
+      "editionType": "SOFTWARE_SUBSCRIPTION",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "NAV_CHARTS",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.NAV",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "NAV_ROUTING",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.NAV",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "NAV_INSTRUMENTS",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.NAV",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "NAV_AIS_TARGETS",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.NAV",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [
+        "ENT-NAV-ESSENTIAL"
+      ],
+      "evidenceIds": [
+        "EV-MC05-NAV",
+        "EV-MC16-NAV-ESSENTIAL",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "NAV-PRO",
+      "familyId": "NAV",
+      "definitionStatus": "DEFINED",
+      "editionType": "SOFTWARE_SUBSCRIPTION",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "NAV_CHARTS",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.NAV",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "NAV_ROUTING",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.NAV",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "NAV_INSTRUMENTS",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.NAV",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "NAV_AIS_TARGETS",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.NAV",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [
+        "ENT-NAV-PRO"
+      ],
+      "evidenceIds": [
+        "EV-MC05-NAV",
+        "EV-MC16-NAV-PRO",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "HUB-STANDARD",
+      "familyId": "HUB",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_DEVICE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "HUB_LOCAL_DATA",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.HUB",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "HUB_WIFI",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.HUB",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "HUB_NMEA_INTERFACE",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.HUB",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-HUB",
+        "EV-MC16-HUB-STANDARD",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "HUB-PRO",
+      "familyId": "HUB",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_DEVICE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "HUB_LOCAL_DATA",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.HUB",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "HUB_WIFI",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.HUB",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "HUB_NMEA_INTERFACE",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.HUB",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-HUB",
+        "EV-MC16-HUB-PRO",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "AIS-RECEIVER",
+      "familyId": "AIS",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_DEVICE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "RECEIVE_ONLY_NO_TRANSMISSION",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "AIS_RECEIVE_ONLY",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.AIS",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "AIS_TARGET_LIST",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.AIS",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-AIS",
+        "EV-MC16-AIS-RECEIVER",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "Receive-only; AIS_TRANSMISSION_OFFERED=false."
+    },
+    {
+      "editionId": "AIS-CONNECTED",
+      "familyId": "AIS",
+      "definitionStatus": "CONDITIONAL",
+      "editionType": "HARDWARE_DEVICE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "RECEIVE_ONLY_NO_TRANSMISSION",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "AIS_RECEIVE_ONLY",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.AIS",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "AIS_TARGET_LIST",
+          "sourceRef": "docs/marea/products/product-definitions.batch-01.json#products.AIS",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-AIS",
+        "EV-MC16-AIS-CONNECTED",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "Conditional on evidenced richer local networking and diagnostics; not selected by default."
+    },
+    {
+      "editionId": "PILOT-COASTAL",
+      "familyId": "PILOT",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_SYSTEM",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "BLOCKED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": true,
+      "featureDefinitions": [
+        {
+          "featureKey": "PILOT_SUPERVISED_STEERING",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.PILOT",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "PILOT_MANUAL_TAKEOVER",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.PILOT",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "PILOT_ESTOP",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.PILOT",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-PILOT",
+        "EV-MC16-PILOT-COASTAL",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-SAFETY-PILOT",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "Supervised steering; vessel-specific survey and quotation; never a fixed retail line."
+    },
+    {
+      "editionId": "PILOT-SAIL",
+      "familyId": "PILOT",
+      "definitionStatus": "CONDITIONAL",
+      "editionType": "HARDWARE_SYSTEM",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "BLOCKED",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": true,
+      "featureDefinitions": [
+        {
+          "featureKey": "PILOT_SUPERVISED_STEERING",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.PILOT",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "PILOT_MANUAL_TAKEOVER",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.PILOT",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "PILOT_ESTOP",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.PILOT",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-PILOT",
+        "EV-MC16-PILOT-SAIL",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-SAFETY-PILOT",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "Conditional on verified wind-angle steering; PILOT_SAFETY_GATE=BLOCKED."
+    },
+    {
+      "editionId": "PILOT-PRO",
+      "familyId": "PILOT",
+      "definitionStatus": "INSTALLATION_PACKAGE",
+      "editionType": "INSTALLATION_PACKAGE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "BLOCKED",
+      "priceStatus": "NOT_APPLICABLE",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "INSTALLATION_PACKAGE_NOT_A_SKU",
+      "requiresQuotation": true,
+      "featureDefinitions": [
+        {
+          "featureKey": "PILOT_SUPERVISED_STEERING",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.PILOT",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "PILOT_MANUAL_TAKEOVER",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.PILOT",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "PILOT_ESTOP",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.PILOT",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-PILOT",
+        "EV-MC16-PILOT-PRO",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-SAFETY-PILOT",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "Installation package only; never a priced retail SKU, bundle line or checkout item."
+    },
+    {
+      "editionId": "SENSE-WIND",
+      "familyId": "SENSE",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_MODULE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_ALARM_INDEPENDENT",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "SENSE_LOCAL_MEASUREMENT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "SENSE_LOCAL_ALARM",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-SENSE",
+        "EV-MC16-SENSE-WIND",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "SENSE-POWER",
+      "familyId": "SENSE",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_MODULE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_ALARM_INDEPENDENT",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "SENSE_LOCAL_MEASUREMENT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "SENSE_LOCAL_ALARM",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-SENSE",
+        "EV-MC16-SENSE-POWER",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "SENSE-BILGE",
+      "familyId": "SENSE",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_MODULE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_ALARM_INDEPENDENT",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "SENSE_LOCAL_MEASUREMENT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "SENSE_LOCAL_ALARM",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-SENSE",
+        "EV-MC16-SENSE-BILGE",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "SENSE-TANKS",
+      "familyId": "SENSE",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_MODULE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_ALARM_INDEPENDENT",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "SENSE_LOCAL_MEASUREMENT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "SENSE_LOCAL_ALARM",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-SENSE",
+        "EV-MC16-SENSE-TANKS",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "SENSE-ENV",
+      "familyId": "SENSE",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_MODULE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_ALARM_INDEPENDENT",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "SENSE_LOCAL_MEASUREMENT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "SENSE_LOCAL_ALARM",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-SENSE",
+        "EV-MC16-SENSE-ENV",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "SENSE-ESSENTIALS",
+      "familyId": "SENSE",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_KIT",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_ALARM_INDEPENDENT",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "SENSE_LOCAL_MEASUREMENT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "SENSE_LOCAL_ALARM",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [
+        "SENSE-POWER",
+        "SENSE-BILGE"
+      ],
+      "expandsTo": [
+        "SENSE-POWER",
+        "SENSE-BILGE"
+      ],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-SENSE",
+        "EV-MC16-SENSE-ESSENTIALS",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "Kit that expands exactly to SENSE-POWER + SENSE-BILGE; a kit is packaging, not a new capability."
+    },
+    {
+      "editionId": "SENSE-SAIL",
+      "familyId": "SENSE",
+      "definitionStatus": "CONDITIONAL",
+      "editionType": "HARDWARE_KIT",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_ALARM_INDEPENDENT",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "SENSE_LOCAL_MEASUREMENT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "SENSE_LOCAL_ALARM",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [
+        "SENSE-WIND",
+        "SENSE-ENV"
+      ],
+      "expandsTo": [
+        "SENSE-WIND",
+        "SENSE-ENV"
+      ],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-SENSE",
+        "EV-MC16-SENSE-SAIL",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "SENSE-SYSTEMS",
+      "familyId": "SENSE",
+      "definitionStatus": "CONDITIONAL",
+      "editionType": "HARDWARE_KIT",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_ALARM_INDEPENDENT",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "SENSE_LOCAL_MEASUREMENT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "SENSE_LOCAL_ALARM",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [
+        "SENSE-POWER",
+        "SENSE-BILGE",
+        "SENSE-TANKS",
+        "SENSE-ENV"
+      ],
+      "expandsTo": [
+        "SENSE-POWER",
+        "SENSE-BILGE",
+        "SENSE-TANKS",
+        "SENSE-ENV"
+      ],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-SENSE",
+        "EV-MC16-SENSE-SYSTEMS",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "WATCH-CORE",
+      "familyId": "WATCH",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_DEVICE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_SAFETY_INDEPENDENT",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "WATCH_LOCAL_ALARM",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.WATCH",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "WATCH_REMOTE_MONITORING",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.WATCH",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [
+        "ENT-WATCH"
+      ],
+      "evidenceIds": [
+        "EV-MC05-WATCH",
+        "EV-MC16-WATCH-CORE",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "Monitoring subscription entitlement is required for remote monitoring."
+    },
+    {
+      "editionId": "WATCH-PLUS",
+      "familyId": "WATCH",
+      "definitionStatus": "CONDITIONAL",
+      "editionType": "HARDWARE_DEVICE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_SAFETY_INDEPENDENT",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "WATCH_LOCAL_ALARM",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.WATCH",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "WATCH_REMOTE_MONITORING",
+          "sourceRef": "docs/marea/products/product-definitions.batch-02.json#products.WATCH",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [
+        "ENT-WATCH"
+      ],
+      "evidenceIds": [
+        "EV-MC05-WATCH",
+        "EV-MC16-WATCH-PLUS",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "DISPLAY-7",
+      "familyId": "DISPLAY",
+      "definitionStatus": "DEFINED",
+      "editionType": "HARDWARE_DEVICE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "DISPLAY_CHART_VIEW",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.DISPLAY",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "DISPLAY_INSTRUMENTS",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.DISPLAY",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-DISPLAY",
+        "EV-MC16-DISPLAY-7",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "7-inch-class is a commercial working label; SIZE_NOT_FROZEN and HARDWARE_NOT_SELECTED."
+    },
+    {
+      "editionId": "DISPLAY-LARGE-CONDITIONAL",
+      "familyId": "DISPLAY",
+      "definitionStatus": "CONDITIONAL",
+      "editionType": "HARDWARE_DEVICE",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "DISPLAY_CHART_VIEW",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.DISPLAY",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "DISPLAY_INSTRUMENTS",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.DISPLAY",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [],
+      "evidenceIds": [
+        "EV-MC05-DISPLAY",
+        "EV-MC16-DISPLAY-LARGE-CONDITIONAL",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "No price and no measured size; never selectable as an available size and never included in a bundle."
+    },
+    {
+      "editionId": "WEATHER-STANDARD",
+      "familyId": "WEATHER",
+      "definitionStatus": "DEFINED",
+      "editionType": "SOFTWARE_SUBSCRIPTION",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "WEATHER_FORECAST",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.WEATHER",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "WEATHER_LAYERS",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.WEATHER",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [
+        "ENT-WEATHER"
+      ],
+      "evidenceIds": [
+        "EV-MC05-WEATHER",
+        "EV-MC16-WEATHER-STANDARD",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "One entitlement ledger with WEATHER-PRO; double billing is prohibited."
+    },
+    {
+      "editionId": "WEATHER-PRO",
+      "familyId": "WEATHER",
+      "definitionStatus": "CONDITIONAL",
+      "editionType": "SOFTWARE_SUBSCRIPTION",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "WEATHER_FORECAST",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.WEATHER",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "WEATHER_LAYERS",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.WEATHER",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [
+        "ENT-WEATHER"
+      ],
+      "evidenceIds": [
+        "EV-MC05-WEATHER",
+        "EV-MC16-WEATHER-PRO",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "Conditional; one entitlement ledger with WEATHER-STANDARD."
+    },
+    {
+      "editionId": "FLEET-START",
+      "familyId": "FLEET",
+      "definitionStatus": "DEFINED",
+      "editionType": "CONTRACTED_SAAS",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "FLEET_TENANCY",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "FLEET_VESSEL_REGISTRY",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "FLEET_ROLES",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "FLEET_AUDIT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [
+        "ENT-FLEET"
+      ],
+      "evidenceIds": [
+        "EV-MC05-FLEET",
+        "EV-MC16-FLEET-START",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "Per vessel per month, VAT excluded; hardware never included by default."
+    },
+    {
+      "editionId": "FLEET-BUSINESS",
+      "familyId": "FLEET",
+      "definitionStatus": "DEFINED",
+      "editionType": "CONTRACTED_SAAS",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "requiresQuotation": false,
+      "featureDefinitions": [
+        {
+          "featureKey": "FLEET_TENANCY",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "FLEET_VESSEL_REGISTRY",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "FLEET_ROLES",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "FLEET_AUDIT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [
+        "ENT-FLEET"
+      ],
+      "evidenceIds": [
+        "EV-MC05-FLEET",
+        "EV-MC16-FLEET-BUSINESS",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "FLEET-ENTERPRISE",
+      "familyId": "FLEET",
+      "definitionStatus": "CONDITIONAL",
+      "editionType": "CONTRACTED_SAAS",
+      "lifecycleState": "DEFINED",
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "priceStatus": "NOT_ESTABLISHED",
+      "commercialStatus": "NOT_FOR_SALE",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "skuIdentity": "CONTRACTED_TIER_NOT_A_CHECKOUT_SKU",
+      "requiresQuotation": true,
+      "featureDefinitions": [
+        {
+          "featureKey": "FLEET_TENANCY",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "FLEET_VESSEL_REGISTRY",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "FLEET_ROLES",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        },
+        {
+          "featureKey": "FLEET_AUDIT",
+          "sourceRef": "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+          "status": "DEFINED_INTERNAL_NOT_VERIFIED"
+        }
+      ],
+      "dependencyIds": [],
+      "expandsTo": [],
+      "subscriptionCapabilityIds": [
+        "ENT-FLEET"
+      ],
+      "evidenceIds": [
+        "EV-MC05-FLEET",
+        "EV-MC16-FLEET-ENTERPRISE",
+        "EV-MC15-HANDOFF"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "notes": "Contracted tier with no standard price and NO_SLA_ESTABLISHED."
+    }
+  ]
+}

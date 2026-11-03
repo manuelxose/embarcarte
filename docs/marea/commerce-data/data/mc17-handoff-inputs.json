@@ -1,0 +1,66 @@
+{
+  "contractId": "MC16-MC17-HANDOFF-INPUTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "READY_FOR_MC17_WITH_NAMED_GAPS",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "mc17Started": false,
+  "mc17ImplementationAuthorized": false,
+  "publicUiChangeAuthorized": false,
+  "productEntityShape": {
+    "familyKey": "familyId",
+    "editionKey": "editionId",
+    "skuKey": "skuCandidateId",
+    "displayName": "language-neutral",
+    "localizedContent": "one entity, zero duplicated SKU per locale",
+    "readinessLabelSource": "derived server-side only"
+  },
+  "presentationContract": {
+    "familyPage": "one family page exposes zero or more editions; never one page per edition",
+    "editionDisplay": "show definition status and readiness labels; never a price or buy CTA",
+    "bundleDisplay": "show component and exclusion truthfully; never a fixed package price",
+    "publication": "all 23 proposed routes remain non-deployable",
+    "ctaStates": [
+      "DISABLED",
+      "COMING_SOON",
+      "REQUEST_INFORMATION",
+      "QUOTE_ONLY",
+      "NOT_AVAILABLE"
+    ],
+    "buyCtaAllowed": false,
+    "priceVisible": false,
+    "availabilityVisible": false,
+    "cartAllowed": false
+  },
+  "contentContracts": {
+    "es": "pending authorised copy; no public MAREA claim is approved",
+    "en": "pending authorised copy; one entity, not a second SKU",
+    "claimsSource": "docs/marea/legal-commercial/data/claims-policy.json",
+    "trademarkStatus": "NOT_GRANTED"
+  },
+  "accessibilityConstraints": [
+    "WCAG 2.2 AA",
+    "keyboard navigation",
+    "visible focus",
+    "no colour-only status",
+    "status text must accompany colour"
+  ],
+  "safeFixtures": {
+    "useOnlySyntheticInternalData": true,
+    "noCustomerData": true,
+    "noVesselTelemetry": true,
+    "noLivePrice": true,
+    "noLiveStock": true,
+    "fixturesRef": "test fixtures in scripts/check-marea-commerce-data.test.mjs"
+  },
+  "dataRequirements": [
+    "family/edition identity",
+    "readiness labels",
+    "blocked CTA state",
+    "legal claim restrictions",
+    "entitlement presentation rules",
+    "price visibility rules",
+    "inventory availability rules",
+    "bundle component presentation"
+  ]
+}
