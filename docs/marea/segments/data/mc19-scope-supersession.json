@@ -15,12 +15,8 @@
     "docs/marea/segments/MC19-DEPENDENCIES-AND-BLOCKERS.md",
     "docs/marea/segments/MC19-ACCEPTANCE-CRITERIA.md",
     "docs/marea/segments/MC19-RISK-REGISTER.md",
-    "docs/marea/segments/MC19-MC20-HANDOFF-INPUTS.md",
-    "docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md",
     "docs/marea/segments/data/mc19-scope-proposal.json",
     "docs/marea/segments/data/mc19-source-verification.json",
-    "docs/marea/segments/data/mc19-risk-register.json",
-    "docs/marea/segments/data/mc19-mc20-handoff-inputs.json",
     "docs/marea/segments/data/mc19-review-findings.json",
     "docs/marea/segments/data/manifest.json"
   ],
@@ -83,5 +79,23 @@
     "playwright.segments.config.ts",
     "docs/marea/execution/DECISION-LOG.md",
     "docs/marea/execution/MASTER-PROMPT-REGISTRY.md"
+  ],
+  "updatedInPlace": [
+    {
+      "path": "docs/marea/segments/MC19-MC20-HANDOFF-INPUTS.md",
+      "reason": "updated to record the authorized implementation and the current verdict; the v1 content is preserved in git history"
+    },
+    {
+      "path": "docs/marea/segments/data/mc19-mc20-handoff-inputs.json",
+      "reason": "updated to record the authorized implementation and the current verdict; the v1 content is preserved in git history"
+    },
+    {
+      "path": "docs/marea/segments/data/mc19-risk-register.json",
+      "reason": "updated to record the authorized implementation and the current verdict; the v1 content is preserved in git history"
+    },
+    {
+      "path": "docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md",
+      "reason": "updated to record the authorized implementation and the current verdict; the v1 content is preserved in git history"
+    }
   ]
 }

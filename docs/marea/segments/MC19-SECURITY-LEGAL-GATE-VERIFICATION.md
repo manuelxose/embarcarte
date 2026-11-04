@@ -1,10 +1,10 @@
 # MC-19/36 — Security and legal gate verification
 
-| Field       | Value                                                     |
-| ----------- | --------------------------------------------------------- |
-| Deliverable | MC-19 security boundary and legal/commercial gate record   |
-| Status      | `VERIFIED_INTERNAL`; external gates `OUTSTANDING`          |
-| Baseline    | `ba63baa0e529ab9cb482fd929632d359fec1d328`                 |
+| Field       | Value                                                    |
+| ----------- | -------------------------------------------------------- |
+| Deliverable | MC-19 security boundary and legal/commercial gate record |
+| Status      | `VERIFIED_INTERNAL`; external gates `OUTSTANDING`        |
+| Baseline    | `ba63baa0e529ab9cb482fd929632d359fec1d328`               |
 
 ## 1. Gate state (unchanged by MC-19)
 
@@ -37,17 +37,19 @@ deliverable is not evidence for any external approval, so every gate stays exact
 
 ## 3. Security boundary — measured controls
 
-| Control                          | Implementation                                                                 | Evidence                                   |
-| -------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------ |
-| Loopback binding                 | `const host = '127.0.0.1'` in the preview server                                | Playwright isolation suite; validator MC19-I11 |
-| Host allowlist (DNS rebinding)   | `ALLOWED_HOSTS` rejects any other `Host` with 403                                | Playwright `a non-loopback Host header is rejected` (403) |
-| Noindex                          | `X-Robots-Tag: noindex, nofollow, noarchive` on every response; `robots` meta    | SSR evidence; validator MC19-I11           |
-| Framing / sniffing               | `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`                      | preview server source                      |
-| CSP                              | `default-src 'self'`, `object-src 'none'`, `frame-ancestors 'none'`, `form-action 'none'`, `connect-src 'self'` | SSR headers probe |
-| No external service              | no HTTP client, no fetch, no analytics, no third-party script                   | validator MC19-I08                         |
-| No personal data                 | no form, input, storage, cookie write or endpoint                              | validator MC19-I08; Playwright no-interaction suite |
-| No public surface                | production route files and bundle contain no MC-19 identifier                   | validator MC19-I09/I10; Playwright production-isolation suite |
-| No prerender                     | every preview route is `RenderMode.Server`; no static output                    | validator MC19-I11                         |
+| Control                        | Implementation                                                                                                                                                                                                                       | Evidence                                                      |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------- |
+| Loopback binding               | `const host = '127.0.0.1'` in the preview server                                                                                                                                                                                     | Playwright isolation suite; validator MC19-I11                |
+| Host allowlist (DNS rebinding) | `ALLOWED_HOSTS` rejects any other `Host` with 403                                                                                                                                                                                    | Playwright `a non-loopback Host header is rejected` (403)     |
+| Noindex                        | `X-Robots-Tag: noindex, nofollow, noarchive` on every response; `robots` meta                                                                                                                                                        | SSR evidence; validator MC19-I11                              |
+| Framing / sniffing             | `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`                                                                                                                                                                           | preview server source                                         |
+| CSP                            | `default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; form-action 'none'` | SSR headers probe                                             |
+| No external service            | no HTTP client, no fetch, no analytics, no third-party script                                                                                                                                                                        | validator MC19-I08                                            |
+| No personal data               | no form, input, storage, cookie write or endpoint                                                                                                                                                                                    | validator MC19-I08; Playwright no-interaction suite           |
+| No public surface              | production route files and bundle contain no MC-19 identifier                                                                                                                                                                        | validator MC19-I09/I10; Playwright production-isolation suite |
+| No prerender                   | every preview route is `RenderMode.Server`; no static output                                                                                                                                                                         | validator MC19-I11                                            |
+
+The policy still allows inline styles and inline scripts (`'unsafe-inline'`), because Angular inlines component styles and the SSR bootstrap needs its inline script. That is a real weakness of the current preview and is stated here rather than omitted.
 
 ## 4. What is NOT claimed
 

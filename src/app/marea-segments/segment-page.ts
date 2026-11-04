@@ -107,12 +107,20 @@ import { MareaSegmentClosing } from './sections/section-closing';
             {{ locale() === 'es' ? 'EN' : 'ES' }}
           </a>
         </div>
-        <div class="section-nav">
-          <marea-responsive-nav
-            [label]="shared().labels.sectionNav.text[locale()]"
-            [items]="sectionNavItems()"
-          />
-        </div>
+        <!--
+          A document section index, not a second collapsible nav: at 320px two
+          identical "open navigation" toggles would be ambiguous for keyboard and
+          screen-reader users. A wrapped anchor list is readable at every width.
+        -->
+        <nav class="section-nav" [attr.aria-label]="shared().labels.sectionNav.text[locale()]">
+          <ul class="section-nav-list">
+            @for (item of sectionNavItems(); track item.id) {
+              <li class="section-nav-item">
+                <a class="section-nav-link" [href]="item.href">{{ item.label }}</a>
+              </li>
+            }
+          </ul>
+        </nav>
       </header>
 
       <main id="segment-main" tabindex="-1" data-marea-segment-main>
@@ -263,9 +271,39 @@ import { MareaSegmentClosing } from './sections/section-closing';
       border-color: var(--marea-action);
     }
     .section-nav {
-      padding-block-end: var(--marea-space-2);
+      inline-size: min(100% - 2 * var(--marea-space-4), var(--marea-container-wide, 1360px));
+      margin-inline: auto;
+      padding-block: var(--marea-space-2);
       border-block-start: var(--marea-border-width-hairline) solid var(--marea-line);
-      padding-block-start: var(--marea-space-2);
+    }
+    .section-nav-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 var(--marea-space-4);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .section-nav-item {
+      min-inline-size: 0;
+    }
+    .section-nav-link {
+      display: inline-flex;
+      align-items: center;
+      min-block-size: var(--marea-control-md);
+      color: var(--marea-text-secondary);
+      font-family: var(--marea-font-body);
+      font-size: var(--marea-type-body-small-size);
+      line-height: var(--marea-type-body-small-line-height);
+      text-decoration: none;
+    }
+    .section-nav-link:hover {
+      color: var(--marea-action);
+      text-decoration: underline;
+    }
+    .section-nav-link:focus-visible {
+      outline: var(--marea-focus-width) var(--marea-focus-style) var(--marea-focus-ring);
+      outline-offset: var(--marea-focus-inset);
     }
     .footer {
       border-block-start: var(--marea-border-width-strong) solid var(--marea-border-strong);

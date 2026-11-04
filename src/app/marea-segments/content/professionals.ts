@@ -36,8 +36,8 @@ export const PROFESSIONALS_COPY: SegmentPageCopy = {
       'SEG-PRO.hero.heading',
       'PROPOSED_INTENT',
       [...EV.ia, ...EV.handoff18],
-      'Para quien especifica, opera o mantiene varias embarcaciones, no para un único armador.',
-      'For those who specify, operate or maintain several vessels — not for a single owner.',
+      'Para quien especifica, opera o mantiene embarcaciones de terceros, no para un armador particular.',
+      'For those who specify, operate or maintain vessels on behalf of others — not for an individual owner.',
     ),
     lead: b(
       'hero',
@@ -269,8 +269,8 @@ export const PROFESSIONALS_COPY: SegmentPageCopy = {
       family(
         'HUB',
         'SEG-PRO.families.hub',
-        'Pasarela de datos a bordo: reúne posición GNSS, instrumentos compatibles y datos de la embarcación. La integración se rige por una matriz publicada, no por nombres de protocolo.',
-        'Onboard data gateway: gathers GNSS position, compatible instruments and vessel data. Integration is governed by a published matrix, not by protocol names.',
+        'Pasarela de datos a bordo: reúne posición GNSS, instrumentos compatibles y datos de la embarcación. La integración se rige por una matriz por dispositivo y firmware que aún no está publicada, no por nombres de protocolo.',
+        'Onboard data gateway: gathers GNSS position, compatible instruments and vessel data. Integration is governed by a per-device, per-firmware matrix that is not published yet, not by protocol names.',
         [...EV.products1, ...EV.hardware],
       ),
       family(
@@ -444,8 +444,8 @@ export const PROFESSIONALS_COPY: SegmentPageCopy = {
         'SEG-PRO.ecosystem.2',
         'Agregación local',
         'Local aggregation',
-        'HUB reúne esos datos. La integración depende de una matriz publicada, no de una promesa de interoperabilidad.',
-        'HUB gathers that data. Integration depends on a published matrix, not on a promise of interoperability.',
+        'HUB reúne esos datos. La integración depende de la matriz prevista, que no está publicada, y no de una promesa de interoperabilidad.',
+        'HUB gathers that data. Integration depends on the planned matrix, which is not published, not on a promise of interoperability.',
         [...EV.products1, ...EV.hardware],
       ),
       step(
@@ -499,8 +499,8 @@ export const PROFESSIONALS_COPY: SegmentPageCopy = {
       'SEG-PRO.readiness.lead',
       'CONSTRAINT_STATEMENT',
       [...EV.gates, ...EV.claims],
-      'La etiqueta global se deriva en servidor a partir de las dimensiones canónicas; una página nunca promueve el ciclo de vida de un producto.',
-      'The overall label is derived server-side from the canonical dimensions; a page never promotes a product lifecycle.',
+      'La etiqueta global se deriva de las dimensiones canónicas; una página nunca promueve el ciclo de vida de un producto.',
+      'The overall label is derived from the canonical dimensions; a page never promotes a product lifecycle.',
     ),
     statements: [
       b(
@@ -644,8 +644,8 @@ export const PROFESSIONALS_COPY: SegmentPageCopy = {
         'SEG-PRO.closing.statement.1',
         'CONSTRAINT_STATEMENT',
         GATE_ONLY,
-        'No hay formulario, endpoint, almacén de leads, alta de partner ni solicitud de propuesta.',
-        'There is no form, endpoint, lead store, partner enrolment or proposal request.',
+        'No hay formulario, endpoint de negocio, almacén de leads, alta de partner ni solicitud de propuesta.',
+        'There is no form, business endpoint, lead store, partner enrolment or proposal request.',
       ),
       b(
         'closing',
@@ -661,8 +661,8 @@ export const PROFESSIONALS_COPY: SegmentPageCopy = {
       'SEG-PRO.closing.restriction',
       'CONSTRAINT_STATEMENT',
       [...EV.instruction, ...EV.gates],
-      'La acción de contacto está deshabilitada de forma deliberada y no existe una ruta alternativa, oculta o deshabilitada a un endpoint.',
-      'The contact action is deliberately disabled; there is no hidden or disabled route to an endpoint.',
+      'La acción de contacto está deshabilitada de forma deliberada y no existe una ruta alternativa, oculta o deshabilitada a un endpoint de negocio.',
+      'The contact action is deliberately disabled; there is no alternative, hidden or disabled route to a business endpoint.',
     ),
     actionLabel: b(
       'closing',

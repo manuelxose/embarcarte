@@ -263,9 +263,25 @@ test('a negated prohibited claim is allowed', () => {
   assert.deepEqual(out, []);
 });
 
-test('a monetary amount is rejected', () => {
-  const out = claimProblems([{ where: 'x', text: 'Desde 499 €.' }]);
-  assert.ok(out.some((item) => item.includes('monetary amount')));
+test('monetary amounts are rejected in all common forms', () => {
+  for (const text of ['Desde 499 €.', '€499', '$499', '499 euros', '499 EUR']) {
+    const out = claimProblems([{ where: 'x', text }]);
+    assert.ok(
+      out.some((item) => item.includes('monetary amount')),
+      `amount not detected in: ${text}`,
+    );
+  }
+});
+
+test('English prohibited phrases are rejected', () => {
+  for (const text of [
+    'Available now',
+    'In stock',
+    'Compatible with third-party units',
+    'CE certified',
+  ]) {
+    assert.ok(claimProblems([{ where: 'x', text }]).length > 0, `not detected: ${text}`);
+  }
 });
 
 // ---------------------------------------------------------------- differentiation

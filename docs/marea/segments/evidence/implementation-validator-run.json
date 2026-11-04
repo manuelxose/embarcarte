@@ -2,12 +2,13 @@
   "contractId": "MC19-IMPLEMENTATION-VALIDATOR-RUN",
   "contractVersion": "1.0.0",
   "milestone": "MC-19",
+  "generatedAt": "2026-11-04T17:30:14.669Z",
   "status": "PASS",
   "total": 17,
   "passed": 17,
   "failed": 0,
   "baseline": "ba63baa0e529ab9cb482fd929632d359fec1d328",
-  "head": "ba63baa0e529ab9cb482fd929632d359fec1d328",
+  "head": "cc3a62cb28da3a6c21dce16ee07580edb216debd",
   "branch": "feature/marea-mc19-internal-audience-pages",
   "counts": {
     "identities": 3,
@@ -122,7 +123,7 @@
       "id": "MC19-I08",
       "description": "no form, endpoint, lead store, purchase path or browser storage",
       "status": "PASS",
-      "detail": "0 forms, 0 endpoints, 0 storage; 1 disabled CTA"
+      "detail": "0 forms, 0 business endpoints, 0 storage; 1 disabled CTA"
     },
     {
       "id": "MC19-I09",
@@ -164,7 +165,7 @@
       "id": "MC19-I15",
       "description": "the changed set stays inside the authorised MC-19 scope",
       "status": "PASS",
-      "detail": "65 changed paths within scope"
+      "detail": "67 changed paths within scope"
     },
     {
       "id": "MC19-I16",

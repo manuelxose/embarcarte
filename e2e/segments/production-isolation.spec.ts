@@ -10,11 +10,18 @@ import { PAGES, measuredAt, writeEvidence } from './helpers';
  * Three independent checks:
  *   1. the preview rejects a non-loopback Host header (DNS-rebinding defence);
  *   2. unknown internal paths return 404;
- *   3. if a production build exists, its browser bundle contains no MC-19
- *      identifier at all, and the production route files do not reference them.
+ *   3. the production build exists, its browser AND server bundles contain no
+ *      MC-19 identifier, and the production route files do not reference them.
  */
 
 const PREVIEW = 'http://127.0.0.1:4302';
+const PREVIEW_HOST = '127.0.0.1:4302';
+const PRODUCTION_TOKENS = [
+  'internal/segments',
+  'data-marea-segment',
+  'marea-segments',
+  'shipowners',
+];
 
 function get(path: string, hostHeader: string): Promise<{ status: number; body: string }> {
   return new Promise((resolvePromise, reject) => {
@@ -40,7 +47,7 @@ function walk(directory: string, files: string[] = []): string[] {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
     const path = join(directory, entry.name);
     if (entry.isDirectory()) walk(path, files);
-    else files.push(path);
+    else if (statSync(path).isFile()) files.push(path);
   }
   return files;
 }
@@ -52,11 +59,17 @@ test('a non-loopback Host header is rejected', async () => {
 });
 
 test('unknown internal paths return 404', async () => {
-  const response = await get('/internal/segments/not-a-page', '127.0.0.1:4302');
+  const response = await get('/internal/segments/not-a-page', PREVIEW_HOST);
   expect(response.status).toBe(404);
 });
 
-test('the production routes and bundle contain no MC-19 identifier', async () => {
+test('the production build exists and contains no MC-19 identifier', async () => {
+  const productionRoot = resolve(process.cwd(), 'dist/embarcarte');
+  expect(
+    existsSync(productionRoot),
+    'production build missing: run `npm run build` before the isolation suite',
+  ).toBe(true);
+
   const productionSources = [
     'src/app/app.routes.ts',
     'src/app/app.routes.server.ts',
@@ -69,36 +82,44 @@ test('the production routes and bundle contain no MC-19 identifier', async () =>
     expect(text, `${file} imports the segment module`).not.toContain('marea-segments');
   }
 
-  const bundleRoot = resolve(process.cwd(), 'dist/embarcarte/browser');
-  const bundleExists = existsSync(bundleRoot);
   const contaminated: string[] = [];
-  if (bundleExists) {
-    for (const file of walk(bundleRoot)) {
+  const scanned: string[] = [];
+  for (const bundle of ['browser', 'server']) {
+    for (const file of walk(join(productionRoot, bundle))) {
       if (!/\.(js|mjs|css|html|json)$/.test(file)) continue;
-      if (!statSync(file).isFile()) continue;
+      scanned.push(file.replace(process.cwd(), '').replace(/\\/g, '/'));
       const text = readFileSync(file, 'utf8');
-      if (text.includes('internal/segments') || text.includes('data-marea-segment')) {
-        contaminated.push(file.replace(resolve(process.cwd()), '').replace(/\\/g, '/'));
+      for (const token of PRODUCTION_TOKENS) {
+        if (text.includes(token)) {
+          contaminated.push(`${file.replace(process.cwd(), '')} :: ${token}`);
+        }
       }
     }
-    expect(contaminated, 'production bundle contains MC-19 identifiers').toEqual([]);
   }
+  expect(contaminated, 'production bundle contains MC-19 identifiers').toEqual([]);
+
+  // Re-measure the two preview probes so the evidence file stores observed
+  // statuses, not literals copied from an assertion.
+  const hostProbe = await get(PAGES[0].path, 'evil.example');
+  const unknownProbe = await get('/internal/segments/not-a-page', PREVIEW_HOST);
+  expect(hostProbe.status).toBe(403);
+  expect(unknownProbe.status).toBe(404);
 
   writeEvidence('production-isolation-evidence.json', {
     contractId: 'MC19-PRODUCTION-ISOLATION-EVIDENCE',
     milestone: 'MC-19',
     measuredAt: measuredAt(),
-    hostAllowlistRejection: 403,
-    unknownPath: 404,
-    productionBundleScanned: bundleExists,
-    contaminatedFiles: contaminated,
+    measured: {
+      nonLoopbackHostStatus: hostProbe.status,
+      unknownInternalPathStatus: unknownProbe.status,
+    },
+    productionBundle: {
+      root: 'dist/embarcarte',
+      bundlesScanned: ['browser', 'server'],
+      filesScanned: scanned.length,
+      tokens: PRODUCTION_TOKENS,
+      contaminatedFiles: contaminated,
+    },
     productionSources,
   });
-
-  if (!bundleExists)
-    test.info().annotations.push({
-      type: 'production-bundle',
-      description:
-        'dist/embarcarte/browser not present during this run; the static route-file check still ran.',
-    });
 });

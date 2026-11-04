@@ -125,7 +125,7 @@ export const SHIPOWNERS_COPY: SegmentPageCopy = {
       item(
         'OWN-FOR-2',
         'SEG-OWN.scope.for.2.label',
-        'Coposesores y familias',
+        'Copropietarios y familias',
         'Co-owners and families',
         'SEG-OWN.scope.for.2.body',
         'Quien comparte embarcación y necesita saber quién puede ver qué datos y con qué permiso.',
@@ -509,8 +509,8 @@ export const SHIPOWNERS_COPY: SegmentPageCopy = {
       'SEG-OWN.readiness.lead',
       'CONSTRAINT_STATEMENT',
       [...EV.gates, ...EV.claims],
-      'La preparación se deriva en servidor. Esta página no puede promocionar un producto ni convertir una hipótesis de precio en una oferta.',
-      'Readiness is derived server-side. This page cannot promote a product or turn a price hypothesis into an offer.',
+      'La preparación se deriva de datos canónicos. Esta página no puede promocionar un producto ni convertir una hipótesis de precio en una oferta.',
+      'Readiness is derived from canonical data. This page cannot promote a product or turn a price hypothesis into an offer.',
     ),
     statements: [
       b(
@@ -654,8 +654,8 @@ export const SHIPOWNERS_COPY: SegmentPageCopy = {
         'SEG-OWN.closing.statement.1',
         'CONSTRAINT_STATEMENT',
         [...EV.gates, ...EV.claims],
-        'No hay compra, reserva, lista de espera, formulario, correo de contacto ni captación de datos.',
-        'There is no purchase, reservation, waiting list, form, contact email or data capture.',
+        'No hay compra, reserva, lista de espera, formulario, endpoint de negocio, correo de contacto ni captación de datos.',
+        'There is no purchase, reservation, waiting list, form, business endpoint, contact email or data capture.',
       ),
       b(
         'closing',
@@ -672,7 +672,7 @@ export const SHIPOWNERS_COPY: SegmentPageCopy = {
       'CONSTRAINT_STATEMENT',
       [...EV.instruction, ...EV.gates],
       'La acción de compra está deshabilitada de forma deliberada y no existe una ruta alternativa, oculta o deshabilitada a un pago.',
-      'The purchase action is deliberately disabled; there is no hidden or disabled route to a payment.',
+      'The purchase action is deliberately disabled; there is no alternative, hidden or disabled route to a payment.',
     ),
     actionLabel: b(
       'closing',

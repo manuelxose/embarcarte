@@ -1,0 +1,52 @@
+{
+  "contractId": "MC19-PRODUCTION-404-PROBES",
+  "milestone": "MC-19",
+  "measuredAt": "2026-11-04T17:29:48.972Z",
+  "server": "dist/embarcarte/server/server.mjs on 127.0.0.1:4310",
+  "results": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/marea",
+      "status": 404
+    },
+    {
+      "path": "/en/marea",
+      "status": 404
+    },
+    {
+      "path": "/internal/segments/professionals",
+      "status": 404
+    },
+    {
+      "path": "/en/internal/segments/professionals",
+      "status": 404
+    },
+    {
+      "path": "/internal/segments/installers",
+      "status": 404
+    },
+    {
+      "path": "/internal/segments/shipowners",
+      "status": 404
+    },
+    {
+      "path": "/profesionales",
+      "status": 404
+    },
+    {
+      "path": "/instaladores",
+      "status": 404
+    },
+    {
+      "path": "/armadores",
+      "status": 404
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "ok": 9
+  }
+}

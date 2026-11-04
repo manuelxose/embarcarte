@@ -147,26 +147,3 @@ export function segmentPreviewHref(segmentId: SegmentId, locale: 'es' | 'en'): s
 export function isSegmentId(value: unknown): value is SegmentId {
   return typeof value === 'string' && (SEGMENT_IDS as readonly string[]).includes(value);
 }
-
-/** Resolves an internal preview path to its segment and locale. */
-export function segmentForPath(path: string): { segmentId: SegmentId; locale: 'es' | 'en' } | null {
-  const normalized = path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
-  const withoutSlash = normalized.replace(/^\//, '');
-  for (const route of SEGMENT_PREVIEW_ROUTES) {
-    if (route.path === withoutSlash) {
-      return { segmentId: route.segmentId, locale: route.locale };
-    }
-  }
-  return null;
-}
-
-/**
- * Public route and sitemap surfaces that must not contain any MC-19 identity.
- * Checked by `scripts/check-mc19-implementation.mjs`.
- */
-export const PRODUCTION_SURFACES = [
-  'src/app/app.routes.ts',
-  'src/app/app.routes.server.ts',
-  'src/app/core/i18n/locale-routes.ts',
-  'src/server.ts',
-] as const;

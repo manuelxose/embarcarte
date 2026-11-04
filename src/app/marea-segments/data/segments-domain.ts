@@ -17,7 +17,6 @@ import type {
 import {
   LANDING_COMMERCIAL_PRESENTATION,
   LANDING_EDITION_COUNT,
-  LANDING_FAMILY_IDS,
   LANDING_STATUS_FACTS,
   buildReadinessSummary,
   familySummaryFor,
@@ -25,13 +24,6 @@ import {
 import { SEGMENT_CONTENT } from '../content';
 import type { SegmentSectionId } from '../content/content.types';
 import type { SegmentId } from '../models/segment-identity';
-
-/** Canonical family ids each audience page presents, in document order. */
-export const SEGMENT_FAMILY_IDS: Readonly<Record<SegmentId, readonly string[]>> = {
-  professionals: ['FLEET', 'HUB', 'AIS', 'DISPLAY', 'NAV', 'WATCH'],
-  installers: ['HUB', 'AIS', 'PILOT', 'SENSE', 'WATCH', 'DISPLAY'],
-  shipowners: ['NAV', 'HUB', 'AIS', 'SENSE', 'WATCH', 'DISPLAY', 'WEATHER'],
-};
 
 export const SEGMENT_COMMERCIAL_PRESENTATION = LANDING_COMMERCIAL_PRESENTATION;
 
@@ -49,9 +41,6 @@ export const SEGMENT_STATUS_FACTS = {
   testedCompatibilityRows: LANDING_STATUS_FACTS.testedCompatibilityRows,
   merchantSkuCodes: LANDING_STATUS_FACTS.merchantSkuCodes,
 };
-
-/** Canonical family ids, exported so the validator can prove the selection. */
-export const CANONICAL_FAMILY_IDS: readonly string[] = LANDING_FAMILY_IDS;
 
 /**
  * Builds the MC-17 family summaries for one audience page.

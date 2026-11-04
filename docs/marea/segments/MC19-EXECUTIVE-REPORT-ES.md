@@ -1,15 +1,15 @@
 # MC-19/36 — Informe ejecutivo (ES)
 
-| Campo                 | Valor                                                                                                                    |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------ |
-| Entregable            | D07 — informe ejecutivo en español                                                                                       |
-| Hito                  | MC-19/36 — páginas de segmento/solución y flujos de consulta (armadores, instaladores, profesionales)                     |
-| Rama                  | `feature/marea-mc19-scope-proposal`                                                                                      |
-| Base                  | MC-18 HEAD `3490c0f71eb6eaa89588b7a6d75bb3b6066cd094` (`feature/marea-mc18-bilingual-corporate-landing`)                  |
-| Estado                | **BLOCKED** — propuesta de alcance entregada; implementación no iniciada                                                 |
-| PR                    | Borrador contra `feature/marea-mc18-bilingual-corporate-landing`, sin fusionar                                           |
-| Publicación           | **NOT_AUTHORIZED**                                                                                                       |
-| Paquete               | `docs/marea/segments/` (D01-D07 + 6 datasets + evidencia del validador)                                                  |
+| Campo       | Valor                                                                                                    |
+| ----------- | -------------------------------------------------------------------------------------------------------- |
+| Entregable  | D07 — informe ejecutivo en español                                                                       |
+| Hito        | MC-19/36 — páginas de segmento/solución y flujos de consulta (armadores, instaladores, profesionales)    |
+| Rama        | `feature/marea-mc19-scope-proposal`                                                                      |
+| Base        | MC-18 HEAD `3490c0f71eb6eaa89588b7a6d75bb3b6066cd094` (`feature/marea-mc18-bilingual-corporate-landing`) |
+| Estado      | **BLOCKED** — propuesta de alcance entregada; implementación no iniciada                                 |
+| PR          | Borrador contra `feature/marea-mc18-bilingual-corporate-landing`, sin fusionar                           |
+| Publicación | **NOT_AUTHORIZED**                                                                                       |
+| Paquete     | `docs/marea/segments/` (D01-D07 + 6 datasets + evidencia del validador)                                  |
 
 ## A. Resumen ejecutivo
 
@@ -62,15 +62,15 @@ propietario (P01/P02/P10), no más código.
 
 ## C. Línea base y preservación
 
-| Elemento                            | Valor                                                                                   |
-| ----------------------------------- | --------------------------------------------------------------------------------------- |
-| HEAD local / remoto MC-18           | `3490c0f71eb6eaa89588b7a6d75bb3b6066cd094` (idénticos)                                  |
-| PR #25                              | OPEN / DRAFT / MERGEABLE, base `feature/marea-mc17-premium-design-system`, sin fusionar  |
-| `main`                              | No contiene la cadena MC-17/MC-18; el PR sigue apilado, nunca contra `main`              |
-| Implementación MC-18 / sistema MC-17| Sin cambios (`git diff` vacío contra `3490c0f`)                                          |
-| Rutas públicas / sitemap / `public/`| Sin cambios                                                                              |
-| Evidencia y auditoría MC-18         | Preservadas; el validador MC-18 se re-ejecuta sin modificar su evidencia histórica       |
-| Deuda heredada                      | Visible y abierta; no se cierra ninguna partida                                          |
+| Elemento                             | Valor                                                                                   |
+| ------------------------------------ | --------------------------------------------------------------------------------------- |
+| HEAD local / remoto MC-18            | `3490c0f71eb6eaa89588b7a6d75bb3b6066cd094` (idénticos)                                  |
+| PR #25                               | OPEN / DRAFT / MERGEABLE, base `feature/marea-mc17-premium-design-system`, sin fusionar |
+| `main`                               | No contiene la cadena MC-17/MC-18; el PR sigue apilado, nunca contra `main`             |
+| Implementación MC-18 / sistema MC-17 | Sin cambios (`git diff` vacío contra `3490c0f`)                                         |
+| Rutas públicas / sitemap / `public/` | Sin cambios                                                                             |
+| Evidencia y auditoría MC-18          | Preservadas; el validador MC-18 se re-ejecuta sin modificar su evidencia histórica      |
+| Deuda heredada                       | Visible y abierta; no se cierra ninguna partida                                         |
 
 ## D. Descubrimiento y decisión de alcance
 
@@ -93,36 +93,36 @@ forma suficiente**:
 
 ## E. Inventario de entregables
 
-| Entregable | Ruta                                                              | Estado      |
-| ---------- | ----------------------------------------------------------------- | ----------- |
-| D01        | `docs/marea/segments/MC19-SCOPE-PROPOSAL.md`                      | Entregado   |
-| D02        | `docs/marea/segments/MC19-SOURCE-VERIFICATION.md`                 | Entregado   |
-| D03        | `docs/marea/segments/MC19-DEPENDENCIES-AND-BLOCKERS.md`           | Entregado   |
-| D04        | `docs/marea/segments/MC19-ACCEPTANCE-CRITERIA.md`                 | Entregado   |
-| D05        | `docs/marea/segments/MC19-RISK-REGISTER.md`                       | Entregado   |
-| D06        | `docs/marea/segments/MC19-MC20-HANDOFF-INPUTS.md`                 | Entregado   |
-| D07        | `docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md`                 | Entregado   |
+| Entregable | Ruta                                                                                                                                                                       | Estado     |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| D01        | `docs/marea/segments/MC19-SCOPE-PROPOSAL.md`                                                                                                                               | Entregado  |
+| D02        | `docs/marea/segments/MC19-SOURCE-VERIFICATION.md`                                                                                                                          | Entregado  |
+| D03        | `docs/marea/segments/MC19-DEPENDENCIES-AND-BLOCKERS.md`                                                                                                                    | Entregado  |
+| D04        | `docs/marea/segments/MC19-ACCEPTANCE-CRITERIA.md`                                                                                                                          | Entregado  |
+| D05        | `docs/marea/segments/MC19-RISK-REGISTER.md`                                                                                                                                | Entregado  |
+| D06        | `docs/marea/segments/MC19-MC20-HANDOFF-INPUTS.md`                                                                                                                          | Entregado  |
+| D07        | `docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md`                                                                                                                          | Entregado  |
 | Datos      | `data/mc19-scope-proposal.json`, `mc19-source-verification.json`, `mc19-risk-register.json`, `mc19-mc20-handoff-inputs.json`, `mc19-review-findings.json`, `manifest.json` | Entregados |
-| Validador  | `scripts/check-mc19-scope.mjs` + `scripts/check-mc19-scope.test.mjs` | Entregados |
-| Evidencia  | `docs/marea/segments/evidence/scope-validator-run.json`           | Generada    |
+| Validador  | `scripts/check-mc19-scope.mjs` + `scripts/check-mc19-scope.test.mjs`                                                                                                       | Entregados |
+| Evidencia  | `docs/marea/segments/evidence/scope-validator-run.json`                                                                                                                    | Generada   |
 
 **No entregado (deliberadamente):** ninguna página, ruta, componente, formulario, endpoint,
 almacén de leads, registro de instaladores, precio, SKU o artefacto público de MC-19.
 
 ## F. Matriz de criterios de aceptación (resumen)
 
-| ID    | Criterio                                                                                  | Estado   |
-| ----- | ----------------------------------------------------------------------------------------- | -------- |
-| AC-01 | Master Prompt emitido y alcance aprobado (P01, P10)                                       | PROPOSED |
-| AC-02 | Decisión IA/ruta/entidad con comprobación de colisiones (P02)                             | PROPOSED |
-| AC-03 | Una página por árbol de componentes bilingüe, bloques con evidencia y estados fijos       | PROPOSED |
-| AC-04 | Reutilización del sistema MC-17 sin fork                                                   | PROPOSED |
-| AC-05 | Sin ruta pública, canonical, hreflang, JSON-LD ni sitemap; preview loopback con noindex    | PROPOSED |
-| AC-06 | Sin formulario, endpoint, lead, registro, quote o pre-registration; CTA fail-closed        | PROPOSED |
-| AC-07 | SSR/hidratación, teclado, foco, movimiento reducido y responsive 320-1440                  | PROPOSED |
-| AC-08 | Compuertas con recuentos exactos y sin PASS prefijado                                     | PROPOSED |
-| AC-09 | Revisión independiente con 0 BLOCKING y 0 MAJOR abiertos                                  | PROPOSED |
-| AC-10 | PR en borrador; sin merge, despliegue, publicación ni activación pública                  | PROPOSED |
+| ID    | Criterio                                                                                | Estado   |
+| ----- | --------------------------------------------------------------------------------------- | -------- |
+| AC-01 | Master Prompt emitido y alcance aprobado (P01, P10)                                     | PROPOSED |
+| AC-02 | Decisión IA/ruta/entidad con comprobación de colisiones (P02)                           | PROPOSED |
+| AC-03 | Una página por árbol de componentes bilingüe, bloques con evidencia y estados fijos     | PROPOSED |
+| AC-04 | Reutilización del sistema MC-17 sin fork                                                | PROPOSED |
+| AC-05 | Sin ruta pública, canonical, hreflang, JSON-LD ni sitemap; preview loopback con noindex | PROPOSED |
+| AC-06 | Sin formulario, endpoint, lead, registro, quote o pre-registration; CTA fail-closed     | PROPOSED |
+| AC-07 | SSR/hidratación, teclado, foco, movimiento reducido y responsive 320-1440               | PROPOSED |
+| AC-08 | Compuertas con recuentos exactos y sin PASS prefijado                                   | PROPOSED |
+| AC-09 | Revisión independiente con 0 BLOCKING y 0 MAJOR abiertos                                | PROPOSED |
+| AC-10 | PR en borrador; sin merge, despliegue, publicación ni activación pública                | PROPOSED |
 
 `MC19_ACCEPTANCE_CRITERIA_VERIFIED = 0`. Una propuesta no puede aprobar un hito.
 
@@ -135,27 +135,27 @@ re-ejecutó en **60/60** y su registro se conserva en
 `docs/marea/segments/evidence/landing-gate-run.json` sin sobrescribir la evidencia histórica
 de MC-18.
 
-| Comando                                     | Resultado observado                                                                 |
-| ------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `npm run test:mc19-scope`                   | **23/23** comprobaciones deterministas, exit 0; evidencia en `evidence/scope-validator-run.json` |
-| `npm run test:mc19-scope:unit`              | **29/29** pruebas unitarias/adversarias, exit 0                                     |
-| `npm run test:landing` (árbol limpio)       | **60/60**, exit 0; evidencia MC-18 restaurada tras la medición                      |
-| `npm run test:landing:unit`                 | **45/45**, exit 0                                                                   |
-| `npx tsc -p tsconfig.app.json --noEmit`     | exit 0                                                                              |
-| `npx tsc -p preview/landing/tsconfig.json --noEmit` | exit 0                                                                      |
-| `npm run build`                             | exit 0; 330 archivos / 7.865.978 B; **0** identificadores de la landing             |
-| `npm run build:landing:preview`             | exit 0; 0 rutas prerenderizadas                                                     |
-| Probes del servidor público (`PORT=4398`)   | `/` 200, `/en` 200, `/marea` **404**, `/en/marea` **404**                            |
-| `npm run test:design-system` / `:unit`      | **38/38** / **41/41**, exit 0                                                       |
-| `npm run test:commerce-data`                | **1811/1811**, exit 0                                                               |
-| `npm run test:ia-seo`                       | PASS: 20 datasets, 21 rutas actuales, 23 propuestas, 34 hallazgos, 13 compuertas    |
-| `npm run test:legal-commercial`             | **54/54**, exit 0                                                                   |
-| `npm run test:i18n` / `test:commerce`       | PASS (i18n y comercio server-authoritative)                                         |
-| `npm run test:seo` / `test:backup`          | PASS (101 URLs de sitemap) / PASS (backup y restore verificados)                    |
-| `npm run test:e2e`                          | **15/15**, exit 0                                                                   |
-| `npm run format:check`                      | exit 0                                                                              |
-| `npm run test:financial`                    | **76/77**, exit 1; solo la heredada `V-18` (no se oculta)                           |
-| `npm audit --omit=dev --audit-level=high`   | 0 vulnerabilidades                                                                  |
+| Comando                                             | Resultado observado                                                                              |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `npm run test:mc19-scope`                           | **23/23** comprobaciones deterministas, exit 0; evidencia en `evidence/scope-validator-run.json` |
+| `npm run test:mc19-scope:unit`                      | **29/29** pruebas unitarias/adversarias, exit 0                                                  |
+| `npm run test:landing` (árbol limpio)               | **60/60**, exit 0; evidencia MC-18 restaurada tras la medición                                   |
+| `npm run test:landing:unit`                         | **45/45**, exit 0                                                                                |
+| `npx tsc -p tsconfig.app.json --noEmit`             | exit 0                                                                                           |
+| `npx tsc -p preview/landing/tsconfig.json --noEmit` | exit 0                                                                                           |
+| `npm run build`                                     | exit 0; 330 archivos / 7.865.978 B; **0** identificadores de la landing                          |
+| `npm run build:landing:preview`                     | exit 0; 0 rutas prerenderizadas                                                                  |
+| Probes del servidor público (`PORT=4398`)           | `/` 200, `/en` 200, `/marea` **404**, `/en/marea` **404**                                        |
+| `npm run test:design-system` / `:unit`              | **38/38** / **41/41**, exit 0                                                                    |
+| `npm run test:commerce-data`                        | **1811/1811**, exit 0                                                                            |
+| `npm run test:ia-seo`                               | PASS: 20 datasets, 21 rutas actuales, 23 propuestas, 34 hallazgos, 13 compuertas                 |
+| `npm run test:legal-commercial`                     | **54/54**, exit 0                                                                                |
+| `npm run test:i18n` / `test:commerce`               | PASS (i18n y comercio server-authoritative)                                                      |
+| `npm run test:seo` / `test:backup`                  | PASS (101 URLs de sitemap) / PASS (backup y restore verificados)                                 |
+| `npm run test:e2e`                                  | **15/15**, exit 0                                                                                |
+| `npm run format:check`                              | exit 0                                                                                           |
+| `npm run test:financial`                            | **76/77**, exit 1; solo la heredada `V-18` (no se oculta)                                        |
+| `npm audit --omit=dev --audit-level=high`           | 0 vulnerabilidades                                                                               |
 
 No se ha ejecutado ninguna prueba nueva de implementación porque no hay implementación. Las
 compuertas anteriores verifican que la propuesta no altera el sitio público, el sistema de
@@ -171,15 +171,15 @@ Ronda 1: `NEEDS_REVISION`. Ronda 2 sobre `77e0699`: IR-02..IR-05 `CLOSED`; IR-01
 para el defecto reportado; nuevos IR-06 (MAJOR, bypass por rename) e IR-07 (MINOR,
 evidencia) — corregidos en la ronda 3 y pendientes de la re-verificación independiente.
 
-| ID    | Severidad     | Problema                                                                 | Corrección                                                                                     |
-| ----- | ------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
-| IR-01 | MAJOR         | La guarda de “sin implementación” era eludible (git diff, sin untracked) | Cambio completo contra baseline + `git status --untracked-files=all`, allowlist, helper conectado y pruebas adversariales |
-| IR-02 | MINOR         | La declaración de parada sobredeclaraba (“ningún código/dataset”)         | Cualificada a “ningún código de producto/implementación, ruta, página, formulario, endpoint o artefacto público” |
-| IR-03 | MINOR         | P03 aparecía como bloqueo de implementación, contradiciendo la opción A  | P03 separado en `enquiryFlowBlockers`; tablas D03 reetiquetadas                                |
-| IR-04 | MINOR         | La ausencia del Master Prompt se infería del registro placeholder         | P01 se afirma desde el mandato y la ausencia de aprobación registrada; se declara la limitación |
-| IR-05 | INFORMATIONAL | Revisión pendiente en D07 y 5 vs 6 datasets                              | D07 y `review-findings` actualizados; manifiesto con 6 datasets                                |
+| ID    | Severidad     | Problema                                                                 | Corrección                                                                                                                     |
+| ----- | ------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| IR-01 | MAJOR         | La guarda de “sin implementación” era eludible (git diff, sin untracked) | Cambio completo contra baseline + `git status --untracked-files=all`, allowlist, helper conectado y pruebas adversariales      |
+| IR-02 | MINOR         | La declaración de parada sobredeclaraba (“ningún código/dataset”)        | Cualificada a “ningún código de producto/implementación, ruta, página, formulario, endpoint o artefacto público”               |
+| IR-03 | MINOR         | P03 aparecía como bloqueo de implementación, contradiciendo la opción A  | P03 separado en `enquiryFlowBlockers`; tablas D03 reetiquetadas                                                                |
+| IR-04 | MINOR         | La ausencia del Master Prompt se infería del registro placeholder        | P01 se afirma desde el mandato y la ausencia de aprobación registrada; se declara la limitación                                |
+| IR-05 | INFORMATIONAL | Revisión pendiente en D07 y 5 vs 6 datasets                              | D07 y `review-findings` actualizados; manifiesto con 6 datasets                                                                |
 | IR-06 | MAJOR         | El allowlist era eludible renombrando un fichero fuente fuera de alcance | `porcelainPaths` devuelve ambos lados del rename; `git diff`/`status` usan `--no-renames`; prueba adversarial del path antiguo |
-| IR-07 | MINOR         | D07 declaraba 23/23 en un HEAD donde la medición era 22/23                | Se declara 22/23 mientras IR-06 esté abierto; 23/23 y evidencia final tras el cierre            |
+| IR-07 | MINOR         | D07 declaraba 23/23 en un HEAD donde la medición era 22/23               | Se declara 22/23 mientras IR-06 esté abierto; 23/23 y evidencia final tras el cierre                                           |
 
 Las correcciones se aplican en los commits de remediación; el cierre de cada hallazgo y la
 re-verificación independiente se registran en `data/mc19-review-findings.json`. Ningún
@@ -202,18 +202,18 @@ de publicación, un clearance legal ni una conformidad WCAG.
 
 ## I. Dependencias y riesgos
 
-| ID  | Dependencia/bloqueo                                              | Estado      |
-| --- | ---------------------------------------------------------------- | ----------- |
-| P01 | Master Prompt autoritativo de MC-19 registrado/suministrado      | ABSENT      |
-| P02 | Decisión IA/ruta/entidad de segmentos y soluciones               | ABSENT      |
-| P03 | Privacidad/DPA/DPIA (B07) — solo subámbito de consulta diferido  | BLOCKED     |
-| P04 | Copy público (B05) y claims (B06)                                | ABSENT      |
-| P05 | Datos comerciales y precio (B08)                                 | ABSENT      |
-| P06 | Publicación/indexación/despliegue y release (B09)                | ABSENT      |
-| P07 | Marca y uso público de MAREA (B01/B02)                           | NOT_GRANTED |
-| P08 | IP de origen y licencias (B03)                                   | NOT_CLEARED |
-| P09 | Programa de 13 compuertas MC-14 (B10)                            | 0/13        |
-| P10 | Aprobación de esta propuesta, propietarios y ámbitos de escritura | ABSENT     |
+| ID  | Dependencia/bloqueo                                               | Estado      |
+| --- | ----------------------------------------------------------------- | ----------- |
+| P01 | Master Prompt autoritativo de MC-19 registrado/suministrado       | ABSENT      |
+| P02 | Decisión IA/ruta/entidad de segmentos y soluciones                | ABSENT      |
+| P03 | Privacidad/DPA/DPIA (B07) — solo subámbito de consulta diferido   | BLOCKED     |
+| P04 | Copy público (B05) y claims (B06)                                 | ABSENT      |
+| P05 | Datos comerciales y precio (B08)                                  | ABSENT      |
+| P06 | Publicación/indexación/despliegue y release (B09)                 | ABSENT      |
+| P07 | Marca y uso público de MAREA (B01/B02)                            | NOT_GRANTED |
+| P08 | IP de origen y licencias (B03)                                    | NOT_CLEARED |
+| P09 | Programa de 13 compuertas MC-14 (B10)                             | 0/13        |
+| P10 | Aprobación de esta propuesta, propietarios y ámbitos de escritura | ABSENT      |
 
 Riesgos principales: invención de alcance (R01), colisión/ambigüedad IA (R02), captación sin
 base jurídica (R03), activación pública accidental (R04), fuga de claims/precio/stock (R05),

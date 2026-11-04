@@ -1,19 +1,25 @@
 #!/usr/bin/env node
 /**
- * MC-19 scope-proposal validator.
+ * MC-19 scope-contract validator (v1 proposal guard, supersession-aware).
  *
- * The MC-19 contractual scope is not sufficiently defined for implementation.
- * This validator therefore enforces the *proposal* contract and, critically, the
- * absence of an unauthorized implementation:
+ * The v1 proposal was a BLOCKED milestone: it enforced the *proposal* contract
+ * and the absence of an unauthorized implementation. The MC-19 execution prompt
+ * later authorised OPTION A, and `data/mc19-scope-supersession.json` records that
+ * supersession so this guard keeps its value instead of being deleted:
  *
- *   - the proposal package exists and is internally consistent;
- *   - the baseline is the verified MC-18 head and is preserved;
- *   - no MC-19 segment/solution page, form, endpoint or public route exists;
- *   - every governance flag and inherited debt item is preserved;
- *   - the independent review is recorded when it has happened.
+ *   - the v1 proposal documents and datasets are preserved as history, and the
+ *     historical BLOCKED verdict is not rewritten;
+ *   - the baseline is still an ancestor and the MC-18/MC-17 evidence is intact;
+ *   - the authorized implementation stays inside the MC-19 module and keeps the
+ *     public surface, dependencies and legal gates unchanged;
+ *   - the supersession record is itself validated against the instruction record;
+ *   - the independent review and the registry/decision-log state are consistent.
  *
- * It writes docs/marea/segments/evidence/scope-validator-run.json and exits 0
- * only when every check passes.
+ * When no supersession record exists, the v1 no-implementation behaviour is kept.
+ *
+ * It writes `evidence/scope-validator-run.json` (v1) or
+ * `evidence/scope-validator-run-v2.json` (superseded) and exits 0 only when every
+ * check passes.
  *
  * Run:
  *   npm run test:mc19-scope
@@ -617,6 +623,28 @@ function main() {
       (path) => path.startsWith('scripts/') && !allowed.some((prefix) => path.startsWith(prefix)),
     );
     return listProblems(changed, '0 out-of-scope script changes');
+  });
+
+  add('MC19-24', 'the supersession record is valid and bound to the instruction', () => {
+    if (!supersession) return pass('no supersession record; v1 behaviour retained');
+    const out = [];
+    if (supersession.contractId !== 'MC19-SCOPE-SUPERSESSION') out.push('wrong contractId');
+    if (supersession.status !== 'SUPERSEDED_BY_AUTHORIZED_INSTRUCTION') out.push('wrong status');
+    if (supersession.implementationAuthorized !== true)
+      out.push('implementationAuthorized must be true');
+    if (!exists(supersession.supersededBy)) out.push('supersededBy document missing');
+    const instruction = exists(supersession.instructionRecord)
+      ? readJson(supersession.instructionRecord)
+      : null;
+    if (!instruction) out.push('instruction record missing');
+    else if (instruction.status !== 'AUTHORIZED_INTERNAL_SCOPE')
+      out.push('instruction record is not AUTHORIZED_INTERNAL_SCOPE');
+    const preserved = supersession.preservedProposalArtefacts ?? [];
+    if (preserved.length < 4) out.push('preserved artefacts are not recorded');
+    for (const file of preserved) {
+      if (!exists(file)) out.push(`preserved artefact missing: ${file}`);
+    }
+    return listProblems(out, 'supersession bound to AUTHORIZED_INTERNAL_SCOPE');
   });
 
   const failed = checks.filter((check) => check.status === 'FAIL');

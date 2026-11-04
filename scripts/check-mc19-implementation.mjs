@@ -97,6 +97,13 @@ export const PROHIBITED_CLAIMS = [
   'líder del mercado',
   'el mejor del mercado',
   'disponible ahora',
+  'available now',
+  'in stock',
+  'compatible with',
+  'ce certified',
+  'ce marked',
+  'nmea 2000 certified',
+  'accuracy of',
   'en stock',
   'añadir al carrito',
   'comprar ahora',
@@ -363,7 +370,7 @@ export function claimProblems(texts) {
         index = lower.indexOf(phrase, index + phrase.length);
       }
     }
-    if (/\d+(?:[.,]\d+)?\s*(?:€|eur\b|usd\b|\$)/i.test(text))
+    if (/(?:€|\$)\s?\d|\d+(?:[.,]\d+)?\s*(?:€|eur\b|euros?\b|usd\b|dollars?\b|\$)/i.test(text))
       out.push(`${where}: monetary amount or price represented`);
   }
   return out;
@@ -688,7 +695,10 @@ function main() {
       )
     )
       return fail('the disabled CTA marker is missing');
-    return list(interactionProblems(named), '0 forms, 0 endpoints, 0 storage; 1 disabled CTA');
+    return list(
+      interactionProblems(named),
+      '0 forms, 0 business endpoints, 0 storage; 1 disabled CTA',
+    );
   });
 
   add('MC19-I09', 'the public application cannot reach the segment pages', () =>
@@ -840,6 +850,7 @@ function main() {
     contractId: 'MC19-IMPLEMENTATION-VALIDATOR-RUN',
     contractVersion: '1.0.0',
     milestone: 'MC-19',
+    generatedAt: new Date().toISOString(),
     status: failed.length === 0 ? 'PASS' : 'FAIL',
     total: checks.length,
     passed: checks.length - failed.length,

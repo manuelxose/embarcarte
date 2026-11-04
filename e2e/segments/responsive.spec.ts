@@ -62,7 +62,8 @@ test('the mobile navigation opens, closes with Escape and returns focus', async 
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   await expect(toggle).toBeFocused();
 
-  const desktop = page.locator('header .section-nav button.toggle');
   await page.setViewportSize({ width: 1440, height: 900 });
-  await expect(desktop).toBeHidden();
+  const sectionNav = page.locator('header .section-nav');
+  await expect(sectionNav).toBeVisible();
+  await expect(sectionNav.locator('a')).toHaveCount(8);
 });
