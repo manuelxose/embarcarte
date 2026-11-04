@@ -15,9 +15,11 @@
 
 MC-19 no se ha implementado. El programa define el objetivo del hito (páginas de
 segmento/solución y flujos de consulta para armadores, instaladores y profesionales) y su
-dependencia de MC-18, pero no existe el **Master Prompt autoritativo de MC-19**: el registro
-de 36 prompts declara expresamente que los prompts 03-36 son marcadores de planificación y
-que el texto emitido por el cliente es la autoridad. Además, el registro de rutas de MC-15 no
+dependencia de MC-18, pero **no está registrado ni suministrado el Master Prompt autoritativo
+de MC-19**: el registro de 36 prompts declara expresamente que los prompts 03-36 son
+marcadores de planificación y que el texto emitido por el cliente es la autoridad. La
+ausencia en el repositorio no prueba por sí sola que no se emitiera sin commitear (precedente
+MC-18); la parada se apoya también en bloqueos verificables. El registro de rutas de MC-15 no
 contiene ninguna página de armadores, y todos los flujos de consulta/captación de leads están
 bloqueados por la compuerta de privacidad `GATE-PRIVACY-DPA-DPIA` (24 documentos requeridos,
 0 ejecutados).
@@ -41,7 +43,7 @@ MC19_VERDICT = BLOCKED
 MC19_SCOPE_PROPOSAL = DELIVERED
 MC19_IMPLEMENTATION_STARTED = false
 MC19_IMPLEMENTATION_AUTHORIZED = false
-MC19_MASTER_PROMPT = NOT_ISSUED
+MC19_MASTER_PROMPT = NOT_RECORDED_OR_SUPPLIED
 MC19_IA_ROUTE_DECISION = ABSENT
 MC19_PRIVACY_GATE = BLOCKED
 MC19_PUBLICATION = NOT_AUTHORIZED
@@ -76,7 +78,9 @@ comercial, los documentos MC-18 D18/D21/D22/D23, el JSON de handoff
 de comercio MC-16. El resultado es que el alcance contractual de MC-19 **no está definido de
 forma suficiente**:
 
-- falta el Master Prompt autoritativo;
+- no hay constancia de emisión ni suministro del Master Prompt autoritativo; la ausencia en
+  el repositorio no lo prueba por sí sola (MC-18 registra el mismo hueco de prompt no
+  commiteado), por lo que la parada se apoya también en los bloqueos verificables;
 - no existe ruta/entidad/página de armadores en MC-15;
 - no está decidido si “segment/solution pages” son 3 páginas de audiencia, las 2 páginas
   profesionales de MC-15, la portada de soluciones más 6 páginas de paquete, o un subconjunto;
@@ -122,35 +126,65 @@ almacén de leads, registro de instaladores, precio, SKU o artefacto público de
 
 ## G. Evidencia de pruebas y compuertas
 
-Mediciones reales en el HEAD de la propuesta; la tabla final se re-ejecuta tras la revisión
-independiente y se actualiza con los recuentos exactos.
+Mediciones reales en el HEAD de la propuesta (`b53f67e`), re-ejecutadas tras la ronda de
+corrección. La cifra `59/60` de la fase pre-commit no se oculta: era un control de alcance
+del árbol de trabajo de MC-18, no una regresión; tras el commit la compuerta se re-ejecutó en
+**60/60** y su registro se conserva en `docs/marea/segments/evidence/landing-gate-run.json`
+sin sobrescribir la evidencia histórica de MC-18.
 
-| Comando                              | Resultado observado                                                        |
-| ------------------------------------ | -------------------------------------------------------------------------- |
-| `npm run test:mc19-scope`            | Validador determinista de la propuesta (20 comprobaciones)                 |
-| `npm run test:mc19-scope:unit`       | **21/21** pruebas unitarias/adversarias                                    |
-| `npm run test:landing`               | **59/60** en árbol pre-commit; solo `MC18-56` por el directorio nuevo; se re-ejecuta limpio tras el commit |
-| `npm run test:landing:unit`          | **45/45**                                                                  |
-| `npx tsc -p tsconfig.app.json --noEmit` | exit 0                                                                  |
-| `npm run format:check`               | exit 0                                                                     |
+| Comando                                     | Resultado observado                                                                 |
+| ------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `npm run test:mc19-scope`                   | **23/23** comprobaciones deterministas tras la re-verificación, exit 0              |
+| `npm run test:mc19-scope:unit`              | **28/28** pruebas unitarias/adversarias, exit 0                                     |
+| `npm run test:landing` (árbol limpio)       | **60/60**, exit 0; evidencia MC-18 restaurada tras la medición                      |
+| `npm run test:landing:unit`                 | **45/45**, exit 0                                                                   |
+| `npx tsc -p tsconfig.app.json --noEmit`     | exit 0                                                                              |
+| `npx tsc -p preview/landing/tsconfig.json --noEmit` | exit 0                                                                      |
+| `npm run build`                             | exit 0; 330 archivos / 7.865.962 B; **0** identificadores de la landing             |
+| `npm run build:landing:preview`             | exit 0; 0 rutas prerenderizadas                                                     |
+| Probes del servidor público (`PORT=4398`)   | `/` 200, `/en` 200, `/marea` **404**, `/en/marea` **404**                            |
+| `npm run test:design-system` / `:unit`      | **38/38** / **41/41**, exit 0                                                       |
+| `npm run test:commerce-data`                | **1811/1811**, exit 0                                                               |
+| `npm run test:ia-seo`                       | PASS: 20 datasets, 21 rutas actuales, 23 propuestas, 34 hallazgos, 13 compuertas    |
+| `npm run test:legal-commercial`             | **54/54**, exit 0                                                                   |
+| `npm run test:i18n` / `test:commerce`       | PASS (i18n y comercio server-authoritative)                                         |
+| `npm run test:seo` / `test:backup`          | PASS (101 URLs de sitemap) / PASS (backup y restore verificados)                    |
+| `npm run test:e2e`                          | **15/15**, exit 0                                                                   |
+| `npm run format:check`                      | exit 0                                                                              |
+| `npm run test:financial`                    | **76/77**, exit 1; solo la heredada `V-18` (no se oculta)                           |
+| `npm audit --omit=dev --audit-level=high`   | 0 vulnerabilidades                                                                  |
 
-La cifra `59/60` no se oculta: es un control de alcance del árbol de trabajo de MC-18, no una
-regresión de implementación. El commit de la propuesta deja el árbol limpio y la compuerta se
-re-ejecuta en la entrega.
+No se ha ejecutado ninguna prueba nueva de implementación porque no hay implementación. Las
+compuertas anteriores verifican que la propuesta no altera el sitio público, el sistema de
+diseño, los datos de comercio ni la evidencia heredada.
 
 ## H. Auditoría independiente y correcciones
 
-Revisión independiente: pendiente en el momento de redactar este informe. Se actualizará con
-el SHA revisado, el veredicto, los hallazgos y las correcciones antes de la entrega final. No
-se declara PASS de auditoría sin evidencia.
+La revisión independiente se ejecutó sobre el commit congelado `b53f67e`. El backend Claude
+Code falló dos veces a nivel de producto (exit 1, invalid-result) y se registra como no
+disponible; la revisión la realizó un agente independiente nativo (id
+`3c8d2129-b23b-4e26-9254-353e108439ac`), distinto del autor. Recomendación de la ronda 1:
+`NEEDS_REVISION`.
+
+| ID    | Severidad     | Problema                                                                 | Corrección                                                                                     |
+| ----- | ------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
+| IR-01 | MAJOR         | La guarda de “sin implementación” era eludible (git diff, sin untracked) | Cambio completo contra baseline + `git status --untracked-files=all`, allowlist, helper conectado y pruebas adversariales |
+| IR-02 | MINOR         | La declaración de parada sobredeclaraba (“ningún código/dataset”)         | Cualificada a “ningún código de producto/implementación, ruta, página, formulario, endpoint o artefacto público” |
+| IR-03 | MINOR         | P03 aparecía como bloqueo de implementación, contradiciendo la opción A  | P03 separado en `enquiryFlowBlockers`; tablas D03 reetiquetadas                                |
+| IR-04 | MINOR         | La ausencia del Master Prompt se infería del registro placeholder         | P01 se afirma desde el mandato y la ausencia de aprobación registrada; se declara la limitación |
+| IR-05 | INFORMATIONAL | Revisión pendiente en D07 y 5 vs 6 datasets                              | D07 y `review-findings` actualizados; manifiesto con 6 datasets                                |
+
+Las correcciones se aplican en el commit de remediación; el cierre de cada hallazgo y la
+re-verificación independiente se registran en `data/mc19-review-findings.json`. Ningún
+hallazgo se declara `CLOSED` antes de esa re-verificación.
 
 ## I. Dependencias y riesgos
 
 | ID  | Dependencia/bloqueo                                              | Estado      |
 | --- | ---------------------------------------------------------------- | ----------- |
-| P01 | Master Prompt autoritativo de MC-19                              | ABSENT      |
+| P01 | Master Prompt autoritativo de MC-19 registrado/suministrado      | ABSENT      |
 | P02 | Decisión IA/ruta/entidad de segmentos y soluciones               | ABSENT      |
-| P03 | Privacidad/DPA/DPIA (B07)                                        | BLOCKED     |
+| P03 | Privacidad/DPA/DPIA (B07) — solo subámbito de consulta diferido  | BLOCKED     |
 | P04 | Copy público (B05) y claims (B06)                                | ABSENT      |
 | P05 | Datos comerciales y precio (B08)                                 | ABSENT      |
 | P06 | Publicación/indexación/despliegue y release (B09)                | ABSENT      |
@@ -219,7 +253,7 @@ MC19_INTERNAL_ENGINEERING = NOT_APPLICABLE_NO_IMPLEMENTATION
 MC19_GLOBAL_COMMERCIAL_READINESS = NOT_READY
 MC19_IMPLEMENTATION_STARTED = false
 MC19_IMPLEMENTATION_AUTHORIZED = false
-MC19_MASTER_PROMPT = NOT_ISSUED
+MC19_MASTER_PROMPT = NOT_RECORDED_OR_SUPPLIED
 MC19_IA_ROUTE_DECISION = ABSENT
 MC19_PRIVACY_GATE = BLOCKED
 MC19_PUBLICATION = NOT_AUTHORIZED

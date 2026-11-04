@@ -79,6 +79,11 @@
       "observed": "59/60 at the pre-commit working tree; only MC18-56 fails because the new untracked docs/marea/segments/ directory is outside the MC-18 file scope. All other MC-18 checks pass. This is not an implementation regression."
     },
     {
+      "command": "npm run test:landing (committed proposal tree)",
+      "exitCode": 0,
+      "observed": "60/60; MC-18 evidence restored byte-for-byte after measurement; the generated record is preserved at docs/marea/segments/evidence/landing-gate-run.json."
+    },
+    {
       "command": "npm run test:landing:unit",
       "exitCode": 0,
       "observed": "45/45 tests pass"
@@ -98,8 +103,8 @@
     {
       "id": "S01",
       "path": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md",
-      "establishes": "Row 19 defines MC-19 at one-line granularity (status PLANNED). The registry header states prompts 03-36 are planning placeholders and the client-issued Master Prompt is authoritative.",
-      "usedFor": "Scope sufficiency assessment; P01"
+      "establishes": "Row 19 defines MC-19 at one-line granularity (status PLANNED). The registry header states prompts 03-36 are planning placeholders and the client-issued Master Prompt is authoritative. This proves the placeholder status, not the non-issuance of an uncommitted prompt; MC-18 records that precedent.",
+      "usedFor": "Scope sufficiency assessment; P01 (with the uncommitted-prompt caveat)"
     },
     {
       "id": "S02",
@@ -171,9 +176,9 @@
   "findings": [
     {
       "id": "F01",
-      "finding": "The authoritative MC-19 Master Prompt has not been issued.",
-      "evidence": "MASTER-PROMPT-REGISTRY header: prompts 03-36 are planning placeholders; the client-issued Master Prompt is authoritative. No MC-19 Master Prompt file exists.",
-      "impact": "Implementation would invent requirements."
+      "finding": "No authoritative MC-19 Master Prompt is recorded in the repository or supplied in this milestone mandate.",
+      "evidence": "MASTER-PROMPT-REGISTRY header: prompts 03-36 are planning placeholders; the client-issued Master Prompt is authoritative. No MC-19 Master Prompt is recorded. Repository absence cannot prove non-issuance: MC-18 records that its own authorising prompt existed but was never committed while registry row 18 still said PLANNED (MC-18-BASELINE-AND-GOVERNANCE.md section 3). P01 is asserted from the mandate and the absence of a recorded approval, not from the placeholder alone.",
+      "impact": "Implementation would lack a recorded contractual scope; the stop decision also rests on independently verifiable blockers."
     },
     {
       "id": "F02",

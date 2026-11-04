@@ -10,15 +10,17 @@
 | MC-19 implementation     | **NOT STARTED**                                                                                                             |
 | MC-19 verdict            | `BLOCKED` — the contractual scope is not sufficiently defined; implementation prerequisites are absent                       |
 | Publication              | `NOT_AUTHORIZED`                                                                                                            |
-| Machine-readable package | `docs/marea/segments/data/mc19-scope-proposal.json`, `mc19-source-verification.json`                                        |
+| Machine-readable package | `docs/marea/segments/data/` — six datasets: proposal, source verification, risk register, MC-20 handoff, review findings and manifest |
 | Companion documents      | D02 source verification · D03 dependencies/blockers · D04 acceptance criteria · D05 risk register · D06 MC-20 handoff · D07 |
 
 ## 0. Stop statement
 
-This document is a **scope proposal**, not an implementation. No MC-19 code, route, page,
-form, endpoint, dataset or public artefact has been created. The milestone is `BLOCKED`
-because the programme has not issued the authoritative MC-19 Master Prompt and because the
-enquiry-flow half of the declared scope is blocked by the open privacy gate.
+This document is a **scope proposal**, not an implementation. No MC-19 product or
+implementation code, route, page, form, endpoint, lead store or public artefact has been
+created. The documentation package, six datasets, validator and adversarial tests are the
+deliverable. The milestone is `BLOCKED` because no authoritative MC-19 Master Prompt is
+recorded or supplied and because the enquiry-flow half of the declared scope is blocked by
+the open privacy gate.
 
 The instruction for this milestone was explicit: do not invent the MC-19 scope; if the
 roadmap or handoff does not define it sufficiently, produce a documented scope proposal and
@@ -45,7 +47,7 @@ could implement and verify. The gaps are material, not cosmetic:
 
 | Gap                                             | Consequence                                                                                                      |
 | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| No authoritative MC-19 Master Prompt            | The exact deliverables, page set, owners, dates and acceptance thresholds are not contractual.                  |
+| No authoritative MC-19 Master Prompt recorded or supplied | The exact deliverables, page set, owners, dates and acceptance thresholds are not contractual. Repository absence cannot distinguish “not issued” from “issued but uncommitted” (MC-18 precedent), so the stop decision also rests on the independently verifiable gaps below. |
 | No owners route/entity/page type                | Implementing an owners page would require inventing an IA identity that MC-15 never approved.                    |
 | No decision between segment pages and solution pages | “Segment/solution pages” could mean 3 audience pages, 2 MC-15 professional pages, the solutions overview plus 6 bundle pages, or a subset. |
 | No content contract or copy approval            | Section structure, copy ownership, evidence registry and ES/EN text are undefined; public copy approval is absent. |
@@ -56,8 +58,10 @@ could implement and verify. The gaps are material, not cosmetic:
 
 ## 3. Why implementation must not start (fail-closed)
 
-1. **No authority.** The registry says the client-issued Master Prompt is authoritative. It
-   has not been issued, so any page set would be an invented requirement.
+1. **No recorded authority.** The registry says the client-issued Master Prompt is
+   authoritative. No MC-19 Master Prompt is recorded or supplied. Repository absence cannot
+   prove it was never issued uncommitted (MC-18 records the same gap), but no recorded
+   approval exists, and the other gaps below independently block implementation.
 2. **No route for owners.** The authoritative IA registry has no owners page. Creating one
    would be a route-registry decision, not an implementation detail.
 3. **No lawful enquiry flow.** `GATE-PRIVACY-DPA-DPIA` is blocked and 0 of 24 required
@@ -124,9 +128,9 @@ execution plan; this proposal does not assign them.
 
 | ID  | Item                                                             | Status       | Blocks                     |
 | --- | ---------------------------------------------------------------- | ------------ | -------------------------- |
-| P01 | Authoritative MC-19 Master Prompt                                | ABSENT       | Implementation, approval   |
+| P01 | Authoritative MC-19 Master Prompt recorded/supplied               | ABSENT       | Implementation, approval   |
 | P02 | IA/route/entity decision for segment and solution pages          | ABSENT       | Implementation             |
-| P03 | Privacy/DPA/DPIA approval (B07)                                  | BLOCKED      | Enquiry/lead flows         |
+| P03 | Privacy/DPA/DPIA approval (B07)                                  | BLOCKED      | Enquiry/lead flows only (deferred; not required by Option A) |
 | P04 | Public copy (B05) and claims (B06) authorization                 | ABSENT       | Publication                |
 | P05 | Commercial data and pricing decision (B08)                       | ABSENT       | Public commercial CTAs     |
 | P06 | Publication/indexation/deployment and release authorization (B09)| ABSENT       | Publication                |
@@ -168,7 +172,7 @@ MC19_VERDICT = BLOCKED
 MC19_SCOPE_PROPOSAL = DELIVERED
 MC19_IMPLEMENTATION_STARTED = false
 MC19_IMPLEMENTATION_AUTHORIZED = false
-MC19_MASTER_PROMPT = NOT_ISSUED
+MC19_MASTER_PROMPT = NOT_RECORDED_OR_SUPPLIED
 MC19_IA_ROUTE_DECISION = ABSENT
 MC19_PRIVACY_GATE = BLOCKED
 MC19_PUBLICATION = NOT_AUTHORIZED

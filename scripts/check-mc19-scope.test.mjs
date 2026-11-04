@@ -12,10 +12,14 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
 import {
+  changedFileProblems,
   governanceProblems,
+  implementationProblems,
   mc20Problems,
+  porcelainPaths,
   proposalProblems,
   reviewProblems,
+  riskSummaryProblems,
   routeGapProblems,
 } from './check-mc19-scope.mjs';
 
@@ -58,10 +62,12 @@ test('rejects an implementation that has started', () => {
   assert.ok(proposalProblems(mutated).some((problem) => problem.includes('implementationStarted')));
 });
 
-test('rejects a claim that the Master Prompt was issued', () => {
+test('rejects a claim that the Master Prompt is recorded or supplied', () => {
   const mutated = clone();
-  mutated.mc19ExecutionState.masterPromptIssued = true;
-  assert.ok(proposalProblems(mutated).some((problem) => problem.includes('masterPromptIssued')));
+  mutated.mc19ExecutionState.masterPromptRecordedOrSupplied = true;
+  assert.ok(
+    proposalProblems(mutated).some((problem) => problem.includes('masterPromptRecordedOrSupplied')),
+  );
 });
 
 test('rejects a claim that the scope is sufficient for implementation', () => {
@@ -194,4 +200,89 @@ test('rejects an MC-20 handoff that starts MC-20 or depends on MC-19', () => {
   mutated.mc20DependencyOnMc19Implementation = true;
   assert.ok(mc20Problems(mutated).some((problem) => problem.includes('mc20Started')));
   assert.ok(mc20Problems(mutated).some((problem) => problem.includes('mc20Dependency')));
+});
+
+test('rejects P03 listed as an implementation blocker of option A', () => {
+  const mutated = clone();
+  mutated.implementationBlockers.push('P03');
+  assert.ok(proposalProblems(mutated).some((problem) => problem.includes('P03')));
+});
+
+test('rejects a missing enquiry-flow blocker', () => {
+  const mutated = clone();
+  mutated.enquiryFlowBlockers = [];
+  assert.ok(proposalProblems(mutated).some((problem) => problem.includes('enquiryFlowBlockers')));
+});
+
+test('accepts the real proposal package paths and rejects an out-of-path implementation file', () => {
+  assert.deepEqual(
+    changedFileProblems([
+      'docs/marea/segments/MC19-SCOPE-PROPOSAL.md',
+      'docs/marea/segments/data/mc19-scope-proposal.json',
+      'scripts/check-mc19-scope.mjs',
+      'scripts/check-mc19-scope.test.mjs',
+      'package.json',
+      'docs/marea/execution/DECISION-LOG.md',
+      'docs/marea/execution/MASTER-PROMPT-REGISTRY.md',
+    ]),
+    [],
+  );
+  assert.ok(
+    changedFileProblems(['src/server/enquiry.ts']).some((problem) =>
+      problem.includes('src/server/enquiry.ts'),
+    ),
+  );
+  assert.ok(
+    changedFileProblems(['e2e/segments/owners.spec.ts']).some((problem) =>
+      problem.includes('e2e/segments'),
+    ),
+  );
+});
+
+test('rejects an untracked public or unknown file', () => {
+  assert.ok(
+    changedFileProblems(['public/marea-hero.svg']).some((problem) =>
+      problem.includes('public/marea-hero.svg'),
+    ),
+  );
+  assert.ok(changedFileProblems(['notes.txt']).some((problem) => problem.includes('notes.txt')));
+});
+
+test('implementationProblems catches a changed implementation path', () => {
+  assert.deepEqual(
+    implementationProblems({
+      implementationChanged: ['src/app/marea-landing/segments/owners.ts'],
+      publicChanged: [],
+    }).length,
+    1,
+  );
+  assert.deepEqual(implementationProblems(), []);
+});
+
+test('parses leading-space, untracked and renamed porcelain paths', () => {
+  const output =
+    ' M docs/marea/segments/MC19-SCOPE-PROPOSAL.md\n?? src/server/enquiry.ts\nR  old.ts -> new.ts\n';
+  assert.deepEqual(porcelainPaths(output), [
+    'docs/marea/segments/MC19-SCOPE-PROPOSAL.md',
+    'src/server/enquiry.ts',
+    'new.ts',
+  ]);
+});
+
+test('rejects a risk summary that does not match the risk entries', () => {
+  const risks = [
+    { id: 'R01', impact: 'HIGH', status: 'OPEN' },
+    { id: 'R02', impact: 'HIGH', status: 'OPEN' },
+    { id: 'R03', impact: 'BLOCKER', status: 'OPEN' },
+    { id: 'R04', impact: 'MEDIUM', status: 'OPEN' },
+  ];
+  assert.deepEqual(
+    riskSummaryProblems(risks, { total: 4, blocker: 1, high: 2, medium: 1, closed: 0 }),
+    [],
+  );
+  assert.ok(
+    riskSummaryProblems(risks, { total: 4, blocker: 1, high: 3, medium: 1, closed: 0 }).some(
+      (problem) => problem.includes('risk summary high'),
+    ),
+  );
 });

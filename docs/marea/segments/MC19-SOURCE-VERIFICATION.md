@@ -43,8 +43,9 @@ MC-02.
 | `npm run format:check`                                                 | 0    | all matched files formatted                                                                                                           |
 
 `MC18-56` is a working-tree scope check, not a content failure: once this documentation
-package is committed the working tree is clean and the check is re-run at delivery (D07).
-The MC-18 validator evidence was restored byte-for-byte after the run, so the MC-18 delivery
+package is committed the working tree is clean. At the committed proposal tree the same gate
+returned **60/60** (recorded in `docs/marea/segments/evidence/landing-gate-run.json`). The
+MC-18 validator evidence was restored byte-for-byte after each run, so the MC-18 delivery
 evidence is unchanged.
 
 ## 3. Machine-readable facts re-derived from the canonical datasets
@@ -85,8 +86,13 @@ evidence is unchanged.
 
 ## 5. Findings that decide the scope question
 
-- **F01 — No authoritative MC-19 Master Prompt.** The registry is explicit: the placeholder
-  row is not the contract. Implementing from it would invent requirements.
+- **F01 — No authoritative MC-19 Master Prompt recorded or supplied.** The registry is
+  explicit that prompts 03–36 are placeholders and the client Master Prompt is authoritative.
+  Repository absence cannot prove non-issuance: MC-18 records that its own authorising prompt
+  existed but was never committed while registry row 18 still said `PLANNED`
+  (`MC-18-BASELINE-AND-GOVERNANCE.md` §3). P01 is therefore asserted from the milestone
+  mandate and the absence of any recorded approval, not inferred from the placeholder alone;
+  the other findings independently justify stopping.
 - **F02 — No owners route.** The IA registry has no owners/armadores entity or page type.
   An owners page needs a recorded IA decision, not a coding decision.
 - **F03 — Enquiry flows are blocked.** The privacy gate is `BLOCKED`, 24 required documents
@@ -104,4 +110,5 @@ evidence is unchanged.
 The baseline is verified and preserved. The MC-19 scope is **not sufficiently defined for
 implementation**. The correct deliverable is the documented scope proposal in D01, the
 dependencies in D03, the proposed acceptance matrix in D04, the risk register in D05 and
-the MC-20 handoff inputs in D06. No code was written.
+the MC-20 handoff inputs in D06. No product or implementation code was written; the
+deliverable is the documentation package, six datasets, the validator and its tests.

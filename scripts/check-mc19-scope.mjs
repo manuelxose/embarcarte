@@ -101,7 +101,7 @@ export function proposalProblems(proposal) {
     ['scopeProposalDelivered', true],
     ['implementationStarted', false],
     ['scopeApproved', false],
-    ['masterPromptIssued', false],
+    ['masterPromptRecordedOrSupplied', false],
     ['iaRouteDecisionRecorded', false],
     ['enquiryFlowAuthorized', false],
     ['leadCaptureAuthorized', false],
@@ -130,6 +130,10 @@ export function proposalProblems(proposal) {
     if (!(proposal?.implementationBlockers ?? []).includes(id))
       out.push(`implementationBlockers must include ${id}`);
   }
+  if ((proposal?.implementationBlockers ?? []).includes('P03'))
+    out.push('implementationBlockers must not include P03 (deferred enquiry sub-scope only)');
+  if (!(proposal?.enquiryFlowBlockers ?? []).includes('P03'))
+    out.push('enquiryFlowBlockers must include P03');
 
   const options = proposal?.options ?? [];
   if (options.length !== 3) out.push('exactly 3 scope options are required');
@@ -244,6 +248,86 @@ export function implementationProblems({ implementationChanged = [], publicChang
   return out;
 }
 
+/** Every path the MC-19 proposal is allowed to touch, and nothing else. */
+export const ALLOWED_CHANGE_PREFIXES = ['docs/marea/segments/', 'scripts/check-mc19-scope'];
+export const ALLOWED_CHANGE_EXACT = [
+  'package.json',
+  'docs/marea/execution/DECISION-LOG.md',
+  'docs/marea/execution/MASTER-PROMPT-REGISTRY.md',
+];
+
+/**
+ * Full changed-set allowlist. `git diff` alone is not enough: it ignores
+ * untracked files, so the caller must pass the union of committed changes and
+ * `git status --porcelain=v1 --untracked-files=all`.
+ */
+export function changedFileProblems(changed) {
+  const out = [];
+  if (!Array.isArray(changed)) return ['changed files are not an array'];
+  for (const raw of changed) {
+    const path = String(raw).replace(/\\/g, '/');
+    if (!path || path.startsWith('/') || path.includes('..')) {
+      out.push(`invalid path: ${raw}`);
+      continue;
+    }
+    const allowed =
+      ALLOWED_CHANGE_EXACT.includes(path) ||
+      ALLOWED_CHANGE_PREFIXES.some((prefix) => path.startsWith(prefix));
+    if (!allowed) out.push(`out-of-scope change: ${path}`);
+  }
+  return out;
+}
+
+/** The risk register summary must be derived from its own entries. */
+export function riskSummaryProblems(risks, summary) {
+  const out = [];
+  if (!Array.isArray(risks)) return ['risks are not an array'];
+  const counts = { BLOCKER: 0, HIGH: 0, MEDIUM: 0, LOW: 0 };
+  for (const risk of risks) {
+    const impact = String(risk.impact ?? '').toUpperCase();
+    if (!(impact in counts)) out.push(`risk ${risk.id} has an unknown impact`);
+    else counts[impact] += 1;
+  }
+  const closed = risks.filter((risk) => String(risk.status).toUpperCase() === 'CLOSED').length;
+  const expected = {
+    total: risks.length,
+    blocker: counts.BLOCKER,
+    high: counts.HIGH,
+    medium: counts.MEDIUM,
+    closed,
+  };
+  for (const [key, value] of Object.entries(expected)) {
+    if (summary?.[key] !== value) out.push(`risk summary ${key} must be ${value}`);
+  }
+  return out;
+}
+
+/** Union of committed changes from the baseline and every working-tree change. */
+/**
+ * Parse `git status --porcelain=v1` paths, including untracked (`??`) and
+ * renamed (`R  old -> new`) entries. A leading space is part of the status
+ * prefix, so the input must not be trimmed before slicing.
+ */
+export function porcelainPaths(output) {
+  return String(output)
+    .split(/\r?\n/)
+    .filter((line) => line.length > 3)
+    .map((line) => {
+      const rest = line.slice(3).trim();
+      return rest.includes(' -> ') ? rest.split(' -> ').pop() : rest;
+    })
+    .filter(Boolean);
+}
+
+function fullChangedSet() {
+  const committed = git(['diff', '--name-only', `${BASELINE}..HEAD`]);
+  const statusOutput = execFileSync('git', ['status', '--porcelain=v1', '--untracked-files=all'], {
+    cwd: root,
+    encoding: 'utf8',
+  });
+  return [...new Set([...committed, ...porcelainPaths(statusOutput)])];
+}
+
 function main() {
   const checks = [];
   const add = (id, description, fn) => {
@@ -278,6 +362,7 @@ function main() {
   const routes = readJson('docs/marea/information-architecture/data/proposed-routes.json').items;
   const legal = readJson('docs/marea/legal-commercial/data/release-evidence-gates.json');
   const claims = readJson('docs/marea/legal-commercial/data/bilingual-claims.json');
+  const riskRegister = readJson(`${DATA}/mc19-risk-register.json`);
 
   add('MC19-01', 'the seven proposal documents exist and are substantive', () => {
     const missing = REQUIRED_DOCS.filter((name) => !exists(`${DOCS}/${name}`));
@@ -353,17 +438,18 @@ function main() {
     return listProblems(changed, 'public surface unchanged');
   });
 
-  add('MC19-08', 'no MC-19 implementation file exists', () => {
-    const changed = git([
-      'diff',
-      '--name-only',
-      BASELINE,
-      '--',
-      'src/app',
-      'preview',
-      'e2e/landing',
-    ]);
-    return listProblems(changed, '0 implementation files changed');
+  add('MC19-08', 'no implementation file exists in the full changed set', () => {
+    const changed = fullChangedSet();
+    const implementationChanged = changed.filter(
+      (path) => /^(src|preview)\//.test(path) || path.startsWith('e2e/landing/'),
+    );
+    const publicChanged = changed.filter(
+      (path) => /^(public|deploy)\//.test(path) || path === 'Dockerfile',
+    );
+    return listProblems(
+      implementationProblems({ implementationChanged, publicChanged }),
+      `0 implementation files in ${changed.length} changed paths`,
+    );
   });
 
   add('MC19-09', 'no new dependency or lockfile change is introduced', () => {
@@ -410,11 +496,14 @@ function main() {
   );
 
   add('MC19-15', 'the manifest matches the package counts', () => {
+    if (manifest.counts.documents !== 7) return fail('document count differs');
+    if (manifest.counts.datasets !== 6) return fail('dataset count differs');
     if (manifest.counts.prerequisites !== 10) return fail('prerequisite count differs');
     if (manifest.counts.acceptanceCriteria !== 10) return fail('acceptance count differs');
     if (manifest.counts.risks !== 14) return fail('risk count differs');
     if (manifest.implementationState.implementationStarted !== false)
       return fail('manifest records implementation started');
+    if (manifest.datasets.length !== 6) return fail('manifest dataset list differs');
     return pass('manifest counts and implementation state valid');
   });
 
@@ -460,6 +549,28 @@ function main() {
     if (!source.commands.some((entry) => entry.command === 'git rev-parse HEAD'))
       return fail('no git rev-parse HEAD record');
     return pass(`${source.commands.length} commands recorded`);
+  });
+
+  add('MC19-21', 'every changed file is inside the MC-19 proposal scope', () => {
+    const changed = fullChangedSet();
+    return listProblems(
+      changedFileProblems(changed),
+      `${changed.length} changed paths within scope`,
+    );
+  });
+
+  add('MC19-22', 'the risk summary matches the risk entries', () =>
+    listProblems(
+      riskSummaryProblems(riskRegister.risks, riskRegister.summary),
+      `${riskRegister.risks.length} risks; summary derived from entries`,
+    ),
+  );
+
+  add('MC19-23', 'the validator and test files are the only new scripts', () => {
+    const changed = fullChangedSet().filter(
+      (path) => path.startsWith('scripts/') && !path.startsWith('scripts/check-mc19-scope'),
+    );
+    return listProblems(changed, '0 out-of-scope script changes');
   });
 
   const failed = checks.filter((check) => check.status === 'FAIL');

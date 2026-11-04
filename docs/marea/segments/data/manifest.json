@@ -35,20 +35,28 @@
     {
       "path": "docs/marea/segments/data/mc19-review-findings.json",
       "role": "independent review findings and correction status"
+    },
+    {
+      "path": "docs/marea/segments/data/manifest.json",
+      "role": "package manifest, counts and implementation state"
     }
   ],
   "counts": {
     "documents": 7,
-    "datasets": 5,
+    "datasets": 6,
     "prerequisites": 10,
     "options": 3,
     "acceptanceCriteria": 10,
     "tasks": 9,
     "risks": 14
   },
+  "reviewStatus": "NEEDS_REVISION_REMEDIATED_PENDING_REVERIFICATION",
   "implementationState": {
     "implementationStarted": false,
-    "codeFilesCreated": 0,
+    "productImplementationFilesCreated": 0,
+    "validatorAndTestFilesCreated": 2,
+    "documentsCreated": 7,
+    "datasetsCreated": 6,
     "routesCreated": 0,
     "formsCreated": 0,
     "endpointsCreated": 0,

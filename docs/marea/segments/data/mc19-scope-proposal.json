@@ -41,7 +41,7 @@
     "scopeProposalDelivered": true,
     "implementationStarted": false,
     "scopeApproved": false,
-    "masterPromptIssued": false,
+    "masterPromptRecordedOrSupplied": false,
     "iaRouteDecisionRecorded": false,
     "enquiryFlowAuthorized": false,
     "leadCaptureAuthorized": false,
@@ -60,7 +60,7 @@
   },
   "definitionAssessment": {
     "sufficientForImplementation": false,
-    "reason": "The authoritative MC-19 Master Prompt has not been issued; the 36-prompt registry explicitly marks prompts 03-36 as planning placeholders. The roadmap row and handoff define the objective and audiences, but not the exact page set, route/entity identities, content contract, CTA behaviour or enquiry-flow design. The owners segment has no MC-15 route/entity/page type, and enquiry/lead flows are blocked by the open privacy gate.",
+    "reason": "The authoritative MC-19 Master Prompt is not recorded in the repository or supplied in this milestone mandate; the 36-prompt registry explicitly marks prompts 03-36 as planning placeholders, but a repository search alone cannot prove non-issuance because MC-18 records the same uncommitted-prompt gap. The stop decision also rests on independently verifiable blockers: the roadmap row and handoff define the objective and audiences but not the exact page set, route/entity identities, content contract, CTA behaviour or enquiry-flow design; the owners segment has no MC-15 route/entity/page type; and enquiry/lead flows are blocked by the open privacy gate.",
     "defined": [
       "High-level objective: segment/solution pages and enquiry flows for owners, installers and professionals (registry row 19; handoff section 6).",
       "Dependency: MC-18 (registry row 19).",
@@ -73,7 +73,7 @@
       "Non-goals: no price, stock, purchase, certification, testimonial, sea-trial or licensing claim; no merge, deploy or publication (handoff section 17)."
     ],
     "undefined": [
-      "Authoritative MC-19 Master Prompt text and its exact deliverables. The registry states that prompts 03-36 are planning placeholders and the client-issued Master Prompt is authoritative.",
+      "Authoritative MC-19 Master Prompt text and its exact deliverables. The registry states that prompts 03-36 are planning placeholders and the client-issued Master Prompt is authoritative; the prompt is not recorded here, and repository absence cannot prove it was never issued uncommitted.",
       "Exact page set: three segment pages, two MC-15 professional pages, the MC-15 solutions overview and/or the six bundle solution pages are all plausible readings of 'segment/solution pages'.",
       "Route/entity/page-type identities for an owners page and a professional-fleets page; MC-15 defines 'professionals' and 'installers' but no 'owners' route.",
       "Bilingual content contract, copy ownership, evidence registry and section structure for each page.",
@@ -87,10 +87,10 @@
   "prerequisites": [
     {
       "id": "P01",
-      "title": "Authoritative MC-19 Master Prompt issued",
+      "title": "Authoritative MC-19 Master Prompt recorded or supplied",
       "status": "ABSENT",
       "affects": ["IMPLEMENTATION", "SCOPE_APPROVAL"],
-      "evidence": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md: prompts 03-36 are planning placeholders; the client-issued Master Prompt is authoritative. No MC-19 Master Prompt file exists in the repository."
+      "evidence": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md: prompts 03-36 are planning placeholders; the client-issued Master Prompt is authoritative. No MC-19 Master Prompt is recorded in the repository or supplied in this milestone mandate. Repository absence cannot distinguish 'not issued' from 'issued but uncommitted' (MC-18 records the same gap); P01 is asserted from the mandate and the absence of any recorded approval, and the stop decision also rests on independently verifiable blockers."
     },
     {
       "id": "P02",
@@ -156,7 +156,8 @@
       "evidence": "This proposal is authored by the programme lead and is not self-approving; no MC-19 task DAG has been approved."
     }
   ],
-  "implementationBlockers": ["P01", "P02", "P03", "P10"],
+  "implementationBlockers": ["P01", "P02", "P10"],
+  "enquiryFlowBlockers": ["P03"],
   "publicationBlockers": ["P04", "P05", "P06", "P07", "P08", "P09"],
   "options": [
     {
@@ -366,13 +367,13 @@
     "MC15_GSC01 = OPEN",
     "MC15_GSC02 = OPEN"
   ],
-  "stopStatement": "MC19_IMPLEMENTATION_STARTED = false. No code, route, form, endpoint, dataset or public artefact for MC-19 was created or modified. The scope proposal is the deliverable; implementation requires the prerequisites above.",
+  "stopStatement": "MC19_IMPLEMENTATION_STARTED = false. No MC-19 product/implementation code, route, page, form, endpoint, lead store or public artefact was created or modified. The documentation package, six datasets, validator and adversarial tests are the deliverable; implementation requires the prerequisites above.",
   "verdictBlock": {
     "MC19_VERDICT": "BLOCKED",
     "MC19_SCOPE_PROPOSAL": "DELIVERED",
     "MC19_IMPLEMENTATION_STARTED": false,
     "MC19_IMPLEMENTATION_AUTHORIZED": false,
-    "MC19_MASTER_PROMPT": "NOT_ISSUED",
+    "MC19_MASTER_PROMPT": "NOT_RECORDED_OR_SUPPLIED",
     "MC19_IA_ROUTE_DECISION": "ABSENT",
     "MC19_PRIVACY_GATE": "BLOCKED",
     "MC19_PUBLICATION": "NOT_AUTHORIZED",
