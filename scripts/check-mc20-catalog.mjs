@@ -24,6 +24,7 @@ import {
   contentStrings,
   englishClusterProblem,
   findForbiddenReach,
+  localizedStrings,
   normaliseRoutePath,
   providerNameProblems,
   scopeProblems,
@@ -74,7 +75,10 @@ const canonical = {
 
 const SCOPE = ['NAV', 'HUB', 'AIS', 'SENSE', 'WATCH', 'WEATHER'];
 const familyContents = SCOPE.map((familyId) => content.CATALOG_CONTENT[familyId]);
-const allStrings = familyContents.flatMap((entry) => contentStrings(entry));
+const allStrings = [
+  ...familyContents.flatMap((entry) => contentStrings(entry)),
+  ...localizedStrings(content.CATALOG_SHARED),
+];
 const englishStrings = familyContents.flatMap((entry) => contentEnglishStrings(entry));
 const allCanonicalDefinitions = [
   ...canonical.definitions.products,
@@ -247,29 +251,35 @@ add('MC20-08', 'NAV/WEATHER are software, HUB/AIS/SENSE hardware, WATCH hardware
   );
 });
 
-add('MC20-09', 'bundle inclusions match the canonical bundle composition', () => {
-  for (const record of projection.CATALOG_FAMILIES) {
-    const expected = [];
-    for (const bundle of canonical.bundles) {
-      const lines = [...(bundle.components ?? []), ...(bundle.optionalComponents ?? [])];
-      const match = lines.find((line) => line.familyId === record.familyId);
-      if (match)
-        expected.push({
-          bundleId: bundle.bundleId,
-          editionId: match.editionId,
-          inclusion: match.inclusion,
-        });
+add(
+  'MC20-09',
+  'bundle inclusions match every canonical bundle line (component and optional)',
+  () => {
+    for (const record of projection.CATALOG_FAMILIES) {
+      const expected = [];
+      for (const bundle of canonical.bundles) {
+        const lines = [...(bundle.components ?? []), ...(bundle.optionalComponents ?? [])];
+        for (const match of lines.filter((line) => line.familyId === record.familyId)) {
+          expected.push({
+            bundleId: bundle.bundleId,
+            editionId: match.editionId,
+            lineId: match.lineId,
+            inclusion: match.inclusion,
+          });
+        }
+      }
+      const actual = record.bundleInclusions.map((row) => ({
+        bundleId: row.bundleId,
+        editionId: row.editionId,
+        lineId: row.lineId,
+        inclusion: row.inclusion,
+      }));
+      if (JSON.stringify(actual) !== JSON.stringify(expected))
+        return fail(`${record.familyId} bundle inclusions differ from canonical`);
     }
-    const actual = record.bundleInclusions.map((row) => ({
-      bundleId: row.bundleId,
-      editionId: row.editionId,
-      inclusion: row.inclusion,
-    }));
-    if (JSON.stringify(actual) !== JSON.stringify(expected))
-      return fail(`${record.familyId} bundle inclusions differ from canonical`);
-  }
-  return pass('NAV 4 included, HUB 4 included + 2 optional, AIS 1 included + 1 optional');
-});
+    return pass('every (bundleId, editionId, lineId, inclusion) tuple matches canonical');
+  },
+);
 
 // ------------------------------------------------------------------ 10-18 content integrity
 add('MC20-10', 'every family renders the frozen ten sections', () => {
@@ -738,18 +748,14 @@ add('MC20-37', 'the acceptance matrix uses only real statuses and evidence-bound
   return pass('15 rows with PASS/PARTIAL/PENDING only; PASS rows carry evidence conditions');
 });
 
-add('MC20-38', 'MC-21 is not started and no later milestone is activated', () => {
+add('MC20-38', 'MC-21 is present as PARTIAL and MC-22 is not started', () => {
   const registry = read('docs/marea/execution/MASTER-PROMPT-REGISTRY.md');
   const row21 = registry.split('\n').find((line) => /^\|\s*21\s*\|/.test(line)) ?? '';
-  if (!row21.includes('PLANNED')) return fail('MC-21 is not PLANNED');
-  const record = 'docs/marea/catalog/MC20-DELIVERY-RECORD.md';
-  if (
-    exists(record) &&
-    !/MC-21[^\n]*NOT[ _]STARTED/i.test(read(record)) &&
-    !/NOT_STARTED/.test(read(record))
-  )
-    return fail('delivery record does not state MC-21 not started');
-  return pass('MC-21 PLANNED; no automatic start');
+  const row22 = registry.split('\n').find((line) => /^\|\s*22\s*\|/.test(line)) ?? '';
+  if (!row21.includes('PARTIAL')) return fail('MC-21 row does not record the PARTIAL verdict');
+  if (/\|\s*PASS\s*\|/.test(row21)) return fail('MC-21 row claims a global PASS');
+  if (!row22.includes('PLANNED')) return fail('MC-22 is not PLANNED');
+  return pass('MC-21 PARTIAL (internal scope only); MC-22 PLANNED');
 });
 
 add('MC20-39', 'the roadmap row for MC-20 is updated and not marked PASS', () => {
@@ -855,7 +861,8 @@ add('MC21-04', 'WEATHER names no data provider and states provenance not contrac
     'no se nombra ningún proveedor',
     'external uncontracted source',
     'no provider is named',
-    'WEATHER_PROVIDER_RIGHTS = NOT_GRANTED',
+    'providerRightsGranted = false',
+    'forecastAccuracyClaimed = false',
   ]) {
     if (!weather.includes(required)) return fail(`missing WEATHER provenance notice: ${required}`);
   }

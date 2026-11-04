@@ -26,6 +26,7 @@ export interface CatalogBundleInclusion {
   readonly displayName: string;
   readonly routeId: string;
   readonly inclusion: string;
+  readonly lineId: string;
   readonly editionId: string;
 }
 
@@ -147,10 +148,11 @@ export const CATALOG_FAMILIES: readonly CatalogFamilyRecord[] = [
     releaseGateIds: ["GATE-COMMERCIAL-CLAIMS","GATE-CONSUMER-TERMS","GATE-CRA-CYBERSECURITY","GATE-DATA-LICENSING","GATE-INSURANCE","GATE-IP-CLEARANCE","GATE-LEGAL-ENTITY","GATE-MARKET-PLACEMENT","GATE-PAYMENTS","GATE-PRICING","GATE-PRIVACY-DPA-DPIA","GATE-WEBSITE-REMEDIATION"],
     evidenceIds: ["EV-MC05-NAV","EV-MC15-HANDOFF","EV-MC14-GATES"],
     bundleInclusions: [
-        { bundleId: "START", displayName: "MAREA START", routeId: "mareaSolutionStart", inclusion: "INCLUDED", editionId: "NAV-PRO" },
-        { bundleId: "CRUISE", displayName: "MAREA CRUISE", routeId: "mareaSolutionCruise", inclusion: "INCLUDED", editionId: "NAV-ESSENTIAL" },
-        { bundleId: "SAIL", displayName: "MAREA SAIL", routeId: "mareaSolutionSail", inclusion: "INCLUDED", editionId: "NAV-PRO" },
-        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", editionId: "NAV-PRO" },
+        { bundleId: "START", displayName: "MAREA START", routeId: "mareaSolutionStart", inclusion: "INCLUDED", lineId: "ST-02", editionId: "NAV-PRO" },
+        { bundleId: "CRUISE", displayName: "MAREA CRUISE", routeId: "mareaSolutionCruise", inclusion: "INCLUDED", lineId: "CR-01", editionId: "NAV-ESSENTIAL" },
+        { bundleId: "CRUISE", displayName: "MAREA CRUISE", routeId: "mareaSolutionCruise", inclusion: "OPTIONAL", lineId: "CR-05", editionId: "NAV-PRO" },
+        { bundleId: "SAIL", displayName: "MAREA SAIL", routeId: "mareaSolutionSail", inclusion: "INCLUDED", lineId: "SL-01", editionId: "NAV-PRO" },
+        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", lineId: "CP-01", editionId: "NAV-PRO" },
     ],
     proposedRoute: {
       routeId: "mareaFamilyNav",
@@ -201,12 +203,13 @@ export const CATALOG_FAMILIES: readonly CatalogFamilyRecord[] = [
     releaseGateIds: ["GATE-COMMERCIAL-CLAIMS","GATE-CONSUMER-TERMS","GATE-CRA-CYBERSECURITY","GATE-INSURANCE","GATE-IP-CLEARANCE","GATE-LEGAL-ENTITY","GATE-MARKET-PLACEMENT","GATE-PAYMENTS","GATE-PRICING","GATE-WEBSITE-REMEDIATION"],
     evidenceIds: ["EV-MC05-HUB","EV-MC15-HANDOFF","EV-MC14-GATES"],
     bundleInclusions: [
-        { bundleId: "START", displayName: "MAREA START", routeId: "mareaSolutionStart", inclusion: "INCLUDED", editionId: "HUB-STANDARD" },
-        { bundleId: "CRUISE", displayName: "MAREA CRUISE", routeId: "mareaSolutionCruise", inclusion: "INCLUDED", editionId: "HUB-STANDARD" },
-        { bundleId: "SAIL", displayName: "MAREA SAIL", routeId: "mareaSolutionSail", inclusion: "INCLUDED", editionId: "HUB-STANDARD" },
-        { bundleId: "PROTECT", displayName: "MAREA PROTECT", routeId: "mareaSolutionProtect", inclusion: "OPTIONAL", editionId: "HUB-STANDARD" },
-        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", editionId: "HUB-PRO" },
-        { bundleId: "FLEET", displayName: "MAREA FLEET", routeId: "mareaSolutionFleet", inclusion: "OPTIONAL", editionId: "HUB-STANDARD" },
+        { bundleId: "START", displayName: "MAREA START", routeId: "mareaSolutionStart", inclusion: "INCLUDED", lineId: "ST-01", editionId: "HUB-STANDARD" },
+        { bundleId: "START", displayName: "MAREA START", routeId: "mareaSolutionStart", inclusion: "OPTIONAL", lineId: "ST-03", editionId: "HUB-PRO" },
+        { bundleId: "CRUISE", displayName: "MAREA CRUISE", routeId: "mareaSolutionCruise", inclusion: "INCLUDED", lineId: "CR-02", editionId: "HUB-STANDARD" },
+        { bundleId: "SAIL", displayName: "MAREA SAIL", routeId: "mareaSolutionSail", inclusion: "INCLUDED", lineId: "SL-02", editionId: "HUB-STANDARD" },
+        { bundleId: "PROTECT", displayName: "MAREA PROTECT", routeId: "mareaSolutionProtect", inclusion: "OPTIONAL", lineId: "PR-04", editionId: "HUB-STANDARD" },
+        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", lineId: "CP-02", editionId: "HUB-PRO" },
+        { bundleId: "FLEET", displayName: "MAREA FLEET", routeId: "mareaSolutionFleet", inclusion: "OPTIONAL", lineId: "FP-06", editionId: "HUB-STANDARD" },
     ],
     proposedRoute: {
       routeId: "mareaFamilyHub",
@@ -257,8 +260,9 @@ export const CATALOG_FAMILIES: readonly CatalogFamilyRecord[] = [
     releaseGateIds: ["GATE-COMMERCIAL-CLAIMS","GATE-CONSUMER-TERMS","GATE-CRA-CYBERSECURITY","GATE-DATA-LICENSING","GATE-INSURANCE","GATE-IP-CLEARANCE","GATE-LEGAL-ENTITY","GATE-MARKET-PLACEMENT","GATE-PAYMENTS","GATE-PRICING","GATE-WEBSITE-REMEDIATION"],
     evidenceIds: ["EV-MC05-AIS","EV-MC15-HANDOFF","EV-MC14-GATES"],
     bundleInclusions: [
-        { bundleId: "CRUISE", displayName: "MAREA CRUISE", routeId: "mareaSolutionCruise", inclusion: "INCLUDED", editionId: "AIS-RECEIVER" },
-        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "OPTIONAL", editionId: "AIS-RECEIVER" },
+        { bundleId: "CRUISE", displayName: "MAREA CRUISE", routeId: "mareaSolutionCruise", inclusion: "INCLUDED", lineId: "CR-03", editionId: "AIS-RECEIVER" },
+        { bundleId: "CRUISE", displayName: "MAREA CRUISE", routeId: "mareaSolutionCruise", inclusion: "CONDITIONAL", lineId: "CR-06", editionId: "AIS-CONNECTED" },
+        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "OPTIONAL", lineId: "CP-10", editionId: "AIS-RECEIVER" },
     ],
     proposedRoute: {
       routeId: "mareaFamilyAis",
@@ -309,9 +313,12 @@ export const CATALOG_FAMILIES: readonly CatalogFamilyRecord[] = [
     releaseGateIds: ["GATE-COMMERCIAL-CLAIMS","GATE-CONSUMER-TERMS","GATE-CRA-CYBERSECURITY","GATE-INSURANCE","GATE-IP-CLEARANCE","GATE-LEGAL-ENTITY","GATE-MARKET-PLACEMENT","GATE-PAYMENTS","GATE-PRICING","GATE-WEBSITE-REMEDIATION"],
     evidenceIds: ["EV-MC05-SENSE","EV-MC15-HANDOFF","EV-MC14-GATES"],
     bundleInclusions: [
-        { bundleId: "SAIL", displayName: "MAREA SAIL", routeId: "mareaSolutionSail", inclusion: "CONDITIONAL", editionId: "SENSE-WIND" },
-        { bundleId: "PROTECT", displayName: "MAREA PROTECT", routeId: "mareaSolutionProtect", inclusion: "INCLUDED", editionId: "SENSE-ESSENTIALS" },
-        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", editionId: "SENSE-POWER" },
+        { bundleId: "SAIL", displayName: "MAREA SAIL", routeId: "mareaSolutionSail", inclusion: "CONDITIONAL", lineId: "SL-04", editionId: "SENSE-WIND" },
+        { bundleId: "PROTECT", displayName: "MAREA PROTECT", routeId: "mareaSolutionProtect", inclusion: "INCLUDED", lineId: "PR-02", editionId: "SENSE-ESSENTIALS" },
+        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", lineId: "CP-05", editionId: "SENSE-POWER" },
+        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", lineId: "CP-06", editionId: "SENSE-BILGE" },
+        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", lineId: "CP-07", editionId: "SENSE-TANKS" },
+        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", lineId: "CP-08", editionId: "SENSE-ENV" },
     ],
     proposedRoute: {
       routeId: "mareaFamilySense",
@@ -362,9 +369,10 @@ export const CATALOG_FAMILIES: readonly CatalogFamilyRecord[] = [
     releaseGateIds: ["GATE-COMMERCIAL-CLAIMS","GATE-CONSUMER-TERMS","GATE-CRA-CYBERSECURITY","GATE-INSURANCE","GATE-IP-CLEARANCE","GATE-LEGAL-ENTITY","GATE-MARKET-PLACEMENT","GATE-PAYMENTS","GATE-PRICING","GATE-PRIVACY-DPA-DPIA","GATE-WEBSITE-REMEDIATION"],
     evidenceIds: ["EV-MC05-WATCH","EV-MC15-HANDOFF","EV-MC14-GATES"],
     bundleInclusions: [
-        { bundleId: "PROTECT", displayName: "MAREA PROTECT", routeId: "mareaSolutionProtect", inclusion: "INCLUDED", editionId: "WATCH-CORE" },
-        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", editionId: "WATCH-CORE" },
-        { bundleId: "FLEET", displayName: "MAREA FLEET", routeId: "mareaSolutionFleet", inclusion: "OPTIONAL", editionId: "WATCH-CORE" },
+        { bundleId: "PROTECT", displayName: "MAREA PROTECT", routeId: "mareaSolutionProtect", inclusion: "INCLUDED", lineId: "PR-01", editionId: "WATCH-CORE" },
+        { bundleId: "PROTECT", displayName: "MAREA PROTECT", routeId: "mareaSolutionProtect", inclusion: "CONDITIONAL", lineId: "PR-05", editionId: "WATCH-PLUS" },
+        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "INCLUDED", lineId: "CP-04", editionId: "WATCH-CORE" },
+        { bundleId: "FLEET", displayName: "MAREA FLEET", routeId: "mareaSolutionFleet", inclusion: "OPTIONAL", lineId: "FP-05", editionId: "WATCH-CORE" },
     ],
     proposedRoute: {
       routeId: "mareaFamilyWatch",
@@ -415,9 +423,9 @@ export const CATALOG_FAMILIES: readonly CatalogFamilyRecord[] = [
     releaseGateIds: ["GATE-COMMERCIAL-CLAIMS","GATE-CONSUMER-TERMS","GATE-CRA-CYBERSECURITY","GATE-DATA-LICENSING","GATE-IP-CLEARANCE","GATE-LEGAL-ENTITY","GATE-MARKET-PLACEMENT","GATE-PAYMENTS","GATE-PRICING","GATE-WEBSITE-REMEDIATION"],
     evidenceIds: ["EV-MC05-WEATHER","EV-MC15-HANDOFF","EV-MC14-GATES"],
     bundleInclusions: [
-        { bundleId: "START", displayName: "MAREA START", routeId: "mareaSolutionStart", inclusion: "OPTIONAL", editionId: "WEATHER-STANDARD" },
-        { bundleId: "CRUISE", displayName: "MAREA CRUISE", routeId: "mareaSolutionCruise", inclusion: "OPTIONAL", editionId: "WEATHER-STANDARD" },
-        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "OPTIONAL", editionId: "WEATHER-PRO" },
+        { bundleId: "START", displayName: "MAREA START", routeId: "mareaSolutionStart", inclusion: "OPTIONAL", lineId: "ST-04", editionId: "WEATHER-STANDARD" },
+        { bundleId: "CRUISE", displayName: "MAREA CRUISE", routeId: "mareaSolutionCruise", inclusion: "OPTIONAL", lineId: "CR-08", editionId: "WEATHER-STANDARD" },
+        { bundleId: "COMPLETE", displayName: "MAREA COMPLETE", routeId: "mareaSolutionComplete", inclusion: "OPTIONAL", lineId: "CP-11", editionId: "WEATHER-PRO" },
     ],
     proposedRoute: {
       routeId: "mareaFamilyWeather",

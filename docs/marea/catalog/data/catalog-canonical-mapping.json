@@ -50,6 +50,11 @@
           "editionId": "NAV-ESSENTIAL"
         },
         {
+          "bundleId": "CRUISE",
+          "inclusion": "OPTIONAL",
+          "editionId": "NAV-PRO"
+        },
+        {
           "bundleId": "SAIL",
           "inclusion": "INCLUDED",
           "editionId": "NAV-PRO"
@@ -95,6 +100,11 @@
           "bundleId": "START",
           "inclusion": "INCLUDED",
           "editionId": "HUB-STANDARD"
+        },
+        {
+          "bundleId": "START",
+          "inclusion": "OPTIONAL",
+          "editionId": "HUB-PRO"
         },
         {
           "bundleId": "CRUISE",
@@ -159,6 +169,11 @@
           "editionId": "AIS-RECEIVER"
         },
         {
+          "bundleId": "CRUISE",
+          "inclusion": "CONDITIONAL",
+          "editionId": "AIS-CONNECTED"
+        },
+        {
           "bundleId": "COMPLETE",
           "inclusion": "OPTIONAL",
           "editionId": "AIS-RECEIVER"
@@ -215,6 +230,21 @@
           "bundleId": "COMPLETE",
           "inclusion": "INCLUDED",
           "editionId": "SENSE-POWER"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "inclusion": "INCLUDED",
+          "editionId": "SENSE-BILGE"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "inclusion": "INCLUDED",
+          "editionId": "SENSE-TANKS"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "inclusion": "INCLUDED",
+          "editionId": "SENSE-ENV"
         }
       ],
       "proposedPublicPath": {
@@ -252,6 +282,11 @@
           "bundleId": "PROTECT",
           "inclusion": "INCLUDED",
           "editionId": "WATCH-CORE"
+        },
+        {
+          "bundleId": "PROTECT",
+          "inclusion": "CONDITIONAL",
+          "editionId": "WATCH-PLUS"
         },
         {
           "bundleId": "COMPLETE",

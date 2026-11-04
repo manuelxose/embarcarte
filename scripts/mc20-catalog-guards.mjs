@@ -10,7 +10,10 @@ import { dirname, resolve } from 'node:path';
 
 /** Claims that may never appear in an internal catalogue page, in either locale. */
 export const PROHIBITED_CLAIMS = [
-  { id: 'currency', pattern: /(?:€|\bEUR\s?\d|\b\d+\s?(?:€|EUR)\b)/i },
+  {
+    id: 'currency',
+    pattern: /€|\$\s?\d|\b\d+\s?(?:€|\$|EUR|USD|euros?|dólares?|dollars?)\b|\b(?:EUR|USD)\s?\d/i,
+  },
   {
     id: 'positive-guarantee',
     pattern:
@@ -84,6 +87,15 @@ export const PROHIBITED_CLAIMS = [
     pattern:
       /\b(?:disponible para la venta|a la venta|en venta|on sale|available for (?:sale|purchase)|listo para (?:comprar|enviar)|ready to (?:buy|ship)|aprobado para (?:la )?venta|approved for sale)\b/i,
   },
+  {
+    id: 'numeric-accuracy',
+    pattern: /±\s?\d|\b\d+\s?%|\b(?:accuracy|hit[- ]rate|acierto)\b[^.;,!?]{0,12}\b\d+\s?%/i,
+  },
+  { id: 'ip-rating', pattern: /\bIP\s?\d{1,2}[A-Z]?\b|\bIPX\s?\d\b/i },
+  {
+    id: 'ordering',
+    pattern: /\b(?:pre[- ]?order|preventa|pre[- ]?venta|pre[- ]?reserva|pre[- ]?reservation)\b/i,
+  },
 ];
 
 /** Assertion rules whose match may legitimately appear inside a negated clause. */
@@ -101,22 +113,32 @@ const NEGATABLE = new Set([
   'sla-claim',
   'guaranteed-delivery',
   'positive-availability',
+  'numeric-accuracy',
+  'ip-rating',
+  'ordering',
 ]);
 
 const CLAUSE_NEGATION = /\b(?:no|sin|not|never|without|ni|neither|nor)\b/i;
-const CLAUSE_BOUNDARY = /[.;:!?]/g;
+// Commas and coordinating conjunctions end a clause, so a negation in an
+// earlier clause ("Sin permanencia,") cannot suppress a claim in a later one.
+// Negation particles (ni/nor/neither) are NOT boundaries: they continue the
+// negation of the current clause.
+const CLAUSE_BOUNDARY = /[.;,]|\b(?:y|e|o|u|pero|and|or|but)\b/g;
 
 /**
- * True when the clause that starts before `index` already contains a negation.
- * The check is clause-local, so an unrelated negation in a previous sentence
- * cannot suppress a later positive claim.
+ * True when the clause that starts before `start` already contains a negation.
+ * The scan runs from the clause start to `end` (the full matched span), so a
+ * spread pattern such as "entrega … garantizada" that carries its own negation
+ * inside the span ("entrega no garantizada") is recognised as negated, while
+ * "Sin permanencia, SLA garantizado" is not (the comma starts a fresh clause).
  */
-function isNegatedClause(text, index) {
-  let start = 0;
+function isNegatedClause(text, start, end) {
+  let clauseStart = 0;
   for (const match of text.matchAll(CLAUSE_BOUNDARY)) {
-    if (match.index !== undefined && match.index < index) start = match.index + 1;
+    if (match.index !== undefined && match.index < start)
+      clauseStart = match.index + match[0].length;
   }
-  return CLAUSE_NEGATION.test(text.slice(start, index));
+  return CLAUSE_NEGATION.test(text.slice(clauseStart, end));
 }
 
 /**
@@ -124,15 +146,27 @@ function isNegatedClause(text, index) {
  *
  * Assertion rules are clause-negation aware: "no plug-and-play universal
  * gateway is offered" must pass while "universal plug-and-play" must fail.
+ * Every match is scanned (not only the first), so a later non-negated claim
+ * cannot escape behind an earlier negated one.
  */
 export function catalogClaimProblems(text) {
   if (typeof text !== 'string') return ['not-a-string'];
   const problems = [];
   for (const rule of PROHIBITED_CLAIMS) {
-    const match = rule.pattern.exec(text);
-    if (!match) continue;
-    if (NEGATABLE.has(rule.id) && isNegatedClause(text, match.index)) continue;
-    problems.push(rule.id);
+    const global = new RegExp(
+      rule.pattern.source,
+      rule.pattern.flags.includes('g') ? rule.pattern.flags : `${rule.pattern.flags}g`,
+    );
+    let hit = false;
+    for (const match of text.matchAll(global)) {
+      if (match.index === undefined) continue;
+      const end = match.index + match[0].length;
+      if (!(NEGATABLE.has(rule.id) && isNegatedClause(text, match.index, end))) {
+        hit = true;
+        break;
+      }
+    }
+    if (hit) problems.push(rule.id);
   }
   return problems;
 }
@@ -216,8 +250,16 @@ export function bilingualTextProblems(content) {
   const problems = [];
   const pairs = [];
   const collect = (id, value) => {
-    if (value && typeof value === 'object' && 'es' in value && 'en' in value) {
-      pairs.push({ id, es: value.es, en: value.en });
+    if (value && typeof value === 'object') {
+      const hasEs = 'es' in value;
+      const hasEn = 'en' in value;
+      if (hasEs || hasEn) {
+        if (!hasEs || !hasEn) {
+          problems.push(`${id}: missing locale`);
+        } else {
+          pairs.push({ id, es: value.es, en: value.en });
+        }
+      }
     }
   };
 
@@ -384,6 +426,30 @@ export function contentEnglishStrings(content) {
     if (index % 2 === 1) strings.push(text);
   }
   return strings;
+}
+
+/**
+ * Recursively collects every localized (es/en) string from a nested object or
+ * array, used to scan shared copy (CATALOG_SHARED) that is not a family content
+ * contract. Non-localized leaves (numbers, booleans, plain strings) are ignored.
+ */
+export function localizedStrings(value) {
+  const out = [];
+  const walk = (node) => {
+    if (node && typeof node === 'object') {
+      if (typeof node.es === 'string' && typeof node.en === 'string') {
+        out.push(node.es, node.en);
+        return;
+      }
+      if (Array.isArray(node)) {
+        for (const item of node) walk(item);
+      } else {
+        for (const child of Object.values(node)) walk(child);
+      }
+    }
+  };
+  walk(value);
+  return out;
 }
 
 /** All content blocks with the metadata the validator enforces. */

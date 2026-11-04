@@ -95,6 +95,15 @@
           "editionId": "NAV-ESSENTIAL"
         },
         {
+          "bundleId": "CRUISE",
+          "displayName": "MAREA CRUISE",
+          "customerFacingName": "MAREA CRUISE",
+          "routeId": "mareaSolutionCruise",
+          "inclusion": "OPTIONAL",
+          "lineId": "CR-05",
+          "editionId": "NAV-PRO"
+        },
+        {
           "bundleId": "SAIL",
           "displayName": "MAREA SAIL",
           "customerFacingName": "MAREA SAIL",
@@ -188,6 +197,15 @@
           "inclusion": "INCLUDED",
           "lineId": "ST-01",
           "editionId": "HUB-STANDARD"
+        },
+        {
+          "bundleId": "START",
+          "displayName": "MAREA START",
+          "customerFacingName": "MAREA START",
+          "routeId": "mareaSolutionStart",
+          "inclusion": "OPTIONAL",
+          "lineId": "ST-03",
+          "editionId": "HUB-PRO"
         },
         {
           "bundleId": "CRUISE",
@@ -313,6 +331,15 @@
           "editionId": "AIS-RECEIVER"
         },
         {
+          "bundleId": "CRUISE",
+          "displayName": "MAREA CRUISE",
+          "customerFacingName": "MAREA CRUISE",
+          "routeId": "mareaSolutionCruise",
+          "inclusion": "CONDITIONAL",
+          "lineId": "CR-06",
+          "editionId": "AIS-CONNECTED"
+        },
+        {
           "bundleId": "COMPLETE",
           "displayName": "MAREA COMPLETE",
           "customerFacingName": "MAREA COMPLETE",
@@ -421,6 +448,33 @@
           "inclusion": "INCLUDED",
           "lineId": "CP-05",
           "editionId": "SENSE-POWER"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "displayName": "MAREA COMPLETE",
+          "customerFacingName": "MAREA COMPLETE",
+          "routeId": "mareaSolutionComplete",
+          "inclusion": "INCLUDED",
+          "lineId": "CP-06",
+          "editionId": "SENSE-BILGE"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "displayName": "MAREA COMPLETE",
+          "customerFacingName": "MAREA COMPLETE",
+          "routeId": "mareaSolutionComplete",
+          "inclusion": "INCLUDED",
+          "lineId": "CP-07",
+          "editionId": "SENSE-TANKS"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "displayName": "MAREA COMPLETE",
+          "customerFacingName": "MAREA COMPLETE",
+          "routeId": "mareaSolutionComplete",
+          "inclusion": "INCLUDED",
+          "lineId": "CP-08",
+          "editionId": "SENSE-ENV"
         }
       ],
       "proposedRoute": {
@@ -499,6 +553,15 @@
           "inclusion": "INCLUDED",
           "lineId": "PR-01",
           "editionId": "WATCH-CORE"
+        },
+        {
+          "bundleId": "PROTECT",
+          "displayName": "MAREA PROTECT",
+          "customerFacingName": "MAREA PROTECT",
+          "routeId": "mareaSolutionProtect",
+          "inclusion": "CONDITIONAL",
+          "lineId": "PR-05",
+          "editionId": "WATCH-PLUS"
         },
         {
           "bundleId": "COMPLETE",

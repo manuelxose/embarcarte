@@ -200,10 +200,10 @@ export const WATCH_CONTENT: CatalogFamilyContent = {
     {
       contentId: 'watch.overview.safety',
       text: {
-        es: 'Las funciones locales y de seguridad son independientes de la suscripción; ninguna suscripción impaga las desactiva.',
-        en: 'Local and safety-relevant functions are independent of the subscription; no unpaid subscription disables them.',
+        es: 'Es un requisito de diseño, no una función probada: la especificación exige que las funciones locales y de seguridad sean independientes de la suscripción, pero el servicio no está implementado ni probado.',
+        en: 'This is a design requirement, not a tested behaviour: the specification requires local and safety-relevant functions to be independent of the subscription, but the service is not implemented or tested.',
       },
-      evidenceClass: 'VERIFIED_REPO',
+      evidenceClass: 'OPEN',
       sourceRefs: [MC06, SPEC],
     },
   ],
@@ -355,10 +355,10 @@ export const WATCH_CONTENT: CatalogFamilyContent = {
         {
           contentId: 'watch.comp.licence.local',
           text: {
-            es: 'La monitorización local, los avisos locales y el registro local siguen funcionando sin suscripción activa.',
-            en: 'Local monitoring, local alerts and local buffering keep working without an active subscription.',
+            es: 'Requisito de diseño, no un comportamiento probado: la especificación exige que la monitorización local, los avisos locales y el registro local sigan funcionando sin suscripción activa, pero no está implementado ni probado.',
+            en: 'Design requirement, not a tested behaviour: the specification requires local monitoring, local alerts and local buffering to keep working without an active subscription, but this is not implemented or tested.',
           },
-          evidenceClass: 'VERIFIED_REPO',
+          evidenceClass: 'OPEN',
           sourceRefs: [MC06, SPEC],
         },
       ],

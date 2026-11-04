@@ -420,6 +420,73 @@ test('a WATCH guaranteed-delivery claim is rejected', () => {
   assert.ok(catalogClaimProblems('Entrega de avisos garantizada al instante').length > 0);
 });
 
+test('currency words and symbols are rejected', () => {
+  for (const text of [
+    '149 euros',
+    '149 dólares',
+    '149 dollars',
+    '$149',
+    '149 USD',
+    '149 EUR',
+    'USD 149',
+    'Precio: 149 €',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('numeric accuracy, IP rating and ordering wording are rejected', () => {
+  for (const text of [
+    'Precisión de ±0,1 m/s',
+    '±0,1 m/s',
+    '95% accuracy',
+    'hit-rate 95%',
+    'IP67',
+    'IP 67',
+    'IPX7',
+    'pre-order',
+    'preorder',
+    'preventa',
+    'pre-venta',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('honest negations of the new claim classes remain accepted', () => {
+  for (const text of [
+    'Sin precio aprobado y sin stock verificado',
+    'No accuracy figure is announced',
+    'Sin cifra de acierto ni porcentaje garantizado',
+    'No IP67 rating is claimed',
+    'Sin clasificación IP67',
+    'Sin pre-order ni preventa',
+  ]) {
+    assert.deepEqual(catalogClaimProblems(text), [], `wrongly rejected: ${text}`);
+  }
+});
+
+test('negation scanning covers every match, not only the first', () => {
+  const text = 'Sin precisión garantizada, exactitud garantizada de ±0,1 m/s';
+  assert.ok(catalogClaimProblems(text).length > 0, 'later non-negated claim must be rejected');
+});
+
+test('a comma ends a clause so a later non-negated claim is rejected', () => {
+  assert.ok(catalogClaimProblems('Sin permanencia, SLA garantizado').length > 0);
+});
+
+test('a content pair missing one locale is a hard failure', () => {
+  const weather = content.CATALOG_CONTENT.WEATHER;
+  const missingEn = {
+    ...weather,
+    hero: { ...weather.hero, lead: { es: weather.hero.lead.es } },
+  };
+  assert.ok(
+    bilingualTextProblems(missingEn).some((problem) => problem.includes('missing locale')),
+    'missing EN hero.lead must be reported as a missing locale',
+  );
+});
+
 test('an ES/EN parity break in the new families is rejected', () => {
   const weather = content.CATALOG_CONTENT.WEATHER;
   const broken = {

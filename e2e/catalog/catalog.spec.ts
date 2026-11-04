@@ -149,8 +149,20 @@ test.describe('MC-21 catalogue — new family honesty blocks', () => {
     await expect(body).toContainText('fuente externa no contratada');
     await expect(body).toContainText('no se nombra ningún proveedor');
     await expect(body).toContainText('NOT_FOR_SALE');
-    await expect(body).not.toContainText('meteoblue');
-    await expect(body).not.toContainText('PredictWind');
+    for (const provider of [
+      'Copernicus',
+      'EMODnet',
+      'AEMET',
+      'Open-Meteo',
+      'MeteoGalicia',
+      'Puertos del Estado',
+      'OpenWeather',
+      'IHM',
+      'meteoblue',
+      'PredictWind',
+    ]) {
+      await expect(body).not.toContainText(provider);
+    }
   });
 
   test('SENSE renders accuracy/ingress/NMEA 2000 limitations', async ({ page }) => {

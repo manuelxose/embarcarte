@@ -659,8 +659,8 @@ export const WEATHER_CONTENT: CatalogFamilyContent = {
       {
         contentId: 'weather.close.provenance',
         text: {
-          es: 'WEATHER_PROVIDER_RIGHTS = NOT_GRANTED y WEATHER_FORECAST_EVALUATION = NOT_PERFORMED en los datos canónicos: no se nombra proveedor ni se afirma exactitud.',
-          en: 'WEATHER_PROVIDER_RIGHTS = NOT_GRANTED and WEATHER_FORECAST_EVALUATION = NOT_PERFORMED in the canonical data: no provider is named and no accuracy is claimed.',
+          es: 'providerRightsGranted = false y forecastAccuracyClaimed = false en los datos canónicos de MC-07: no se nombra proveedor ni se afirma exactitud.',
+          en: 'providerRightsGranted = false and forecastAccuracyClaimed = false in the canonical MC-07 data: no provider is named and no accuracy is claimed.',
         },
         evidenceClass: 'VERIFIED_REPO',
         sourceRefs: [MC07, DATA_RIGHTS],

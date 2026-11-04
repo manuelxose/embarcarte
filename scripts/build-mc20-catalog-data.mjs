@@ -223,17 +223,17 @@ const bundleInclusions = (familyId) => {
   const rows = [];
   for (const bundle of bundlesDoc.bundles) {
     const lines = [...(bundle.components ?? []), ...(bundle.optionalComponents ?? [])];
-    const match = lines.find((line) => line.familyId === familyId);
-    if (!match) continue;
-    rows.push({
-      bundleId: bundle.bundleId,
-      displayName: bundle.displayName,
-      customerFacingName: bundle.customerFacingName,
-      routeId: bundle.routeId,
-      inclusion: match.inclusion,
-      lineId: match.lineId,
-      editionId: match.editionId,
-    });
+    for (const match of lines.filter((line) => line.familyId === familyId)) {
+      rows.push({
+        bundleId: bundle.bundleId,
+        displayName: bundle.displayName,
+        customerFacingName: bundle.customerFacingName,
+        routeId: bundle.routeId,
+        inclusion: match.inclusion,
+        lineId: match.lineId,
+        editionId: match.editionId,
+      });
+    }
   }
   return rows;
 };
@@ -330,7 +330,7 @@ const tsFamilies = familyRecords
     const bundles = family.bundleInclusions
       .map(
         (row) =>
-          `        { bundleId: ${quote(row.bundleId)}, displayName: ${quote(row.displayName)}, routeId: ${quote(row.routeId)}, inclusion: ${quote(row.inclusion)}, editionId: ${quote(row.editionId)} },`,
+          `        { bundleId: ${quote(row.bundleId)}, displayName: ${quote(row.displayName)}, routeId: ${quote(row.routeId)}, inclusion: ${quote(row.inclusion)}, lineId: ${quote(row.lineId)}, editionId: ${quote(row.editionId)} },`,
       )
       .join('\n');
     return `  {
@@ -419,6 +419,7 @@ export interface CatalogBundleInclusion {
   readonly displayName: string;
   readonly routeId: string;
   readonly inclusion: string;
+  readonly lineId: string;
   readonly editionId: string;
 }
 
