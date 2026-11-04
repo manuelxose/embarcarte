@@ -126,16 +126,16 @@ almacén de leads, registro de instaladores, precio, SKU o artefacto público de
 
 ## G. Evidencia de pruebas y compuertas
 
-Mediciones reales en el HEAD de la corrección (`77e0699`), antes del cierre formal de la
-revisión. La cifra `59/60` de la fase pre-commit no se oculta: era un control de alcance del
-árbol de trabajo de MC-18, no una regresión; tras el commit la compuerta se re-ejecutó en
+Mediciones reales en los HEAD de corrección (`77e0699` y `c0dc986`), antes del cierre formal
+de la revisión. La cifra `59/60` de la fase pre-commit no se oculta: era un control de alcance
+del árbol de trabajo de MC-18, no una regresión; tras el commit la compuerta se re-ejecutó en
 **60/60** y su registro se conserva en `docs/marea/segments/evidence/landing-gate-run.json`
 sin sobrescribir la evidencia histórica de MC-18.
 
 | Comando                                     | Resultado observado                                                                 |
 | ------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `npm run test:mc19-scope`                   | **22/23** en `77e0699` mientras `MC19-IR-01` sigue abierto; solo `MC19-14` falla. El 23/23 y la evidencia final se registran tras el cierre de la revisión. |
-| `npm run test:mc19-scope:unit`              | **29/29** pruebas unitarias/adversarias, exit 0                                     |
+| `npm run test:mc19-scope`                   | **22/23** en `77e0699` y en `c0dc986` mientras `MC19-IR-06` sigue abierto; solo `MC19-14` falla. El 23/23 y la evidencia final se registran tras el cierre de la revisión. |
+| `npm run test:mc19-scope:unit`              | **28/28** en `77e0699`; **29/29** en `c0dc986` (prueba de rename), exit 0            |
 | `npm run test:landing` (árbol limpio)       | **60/60**, exit 0; evidencia MC-18 restaurada tras la medición                      |
 | `npm run test:landing:unit`                 | **45/45**, exit 0                                                                   |
 | `npx tsc -p tsconfig.app.json --noEmit`     | exit 0                                                                              |
@@ -176,7 +176,7 @@ evidencia) — corregidos en la ronda 3 y pendientes de la re-verificación inde
 | IR-04 | MINOR         | La ausencia del Master Prompt se infería del registro placeholder         | P01 se afirma desde el mandato y la ausencia de aprobación registrada; se declara la limitación |
 | IR-05 | INFORMATIONAL | Revisión pendiente en D07 y 5 vs 6 datasets                              | D07 y `review-findings` actualizados; manifiesto con 6 datasets                                |
 | IR-06 | MAJOR         | El allowlist era eludible renombrando un fichero fuente fuera de alcance | `porcelainPaths` devuelve ambos lados del rename; `git diff`/`status` usan `--no-renames`; prueba adversarial del path antiguo |
-| IR-07 | MINOR         | D07 declaraba 23/23 en un HEAD donde la medición era 22/23                | Se declara 22/23 mientras IR-01/IR-06 estén abiertos; 23/23 y evidencia final tras el cierre   |
+| IR-07 | MINOR         | D07 declaraba 23/23 en un HEAD donde la medición era 22/23                | Se declara 22/23 mientras IR-06 esté abierto; 23/23 y evidencia final tras el cierre            |
 
 Las correcciones se aplican en los commits de remediación; el cierre de cada hallazgo y la
 re-verificación independiente se registran en `data/mc19-review-findings.json`. Ningún
