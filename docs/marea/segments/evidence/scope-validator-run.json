@@ -2,13 +2,13 @@
   "contractId": "MC19-SCOPE-VALIDATOR-RUN",
   "contractVersion": "1.0.0",
   "milestone": "MC-19",
-  "generatedAt": "2026-11-04T14:11:04.330Z",
-  "head": "a6cb1c455a82ccecb793a0533a6f2f600b0b19ae",
+  "generatedAt": "2026-11-04T14:37:16.332Z",
+  "head": "353a61a232710ff402d0109d33a793a134c21835",
   "branch": "feature/marea-mc19-scope-proposal",
   "baseline": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094",
   "status": "PASS",
-  "total": 20,
-  "passed": 20,
+  "total": 23,
+  "passed": 23,
   "failed": 0,
   "checks": [
     {
@@ -55,9 +55,9 @@
     },
     {
       "id": "MC19-08",
-      "description": "no MC-19 implementation file exists",
+      "description": "no implementation file exists in the full changed set",
       "status": "PASS",
-      "detail": "0 implementation files changed"
+      "detail": "0 implementation files in 20 changed paths"
     },
     {
       "id": "MC19-09",
@@ -93,7 +93,7 @@
       "id": "MC19-14",
       "description": "the independent review is recorded or explicitly pending",
       "status": "PASS",
-      "detail": "review status: PENDING_INDEPENDENT_REVIEW"
+      "detail": "review status: COMPLETE"
     },
     {
       "id": "MC19-15",
@@ -129,7 +129,25 @@
       "id": "MC19-20",
       "description": "the source-verification dataset records the real baseline commands",
       "status": "PASS",
-      "detail": "14 commands recorded"
+      "detail": "15 commands recorded"
+    },
+    {
+      "id": "MC19-21",
+      "description": "every changed file is inside the MC-19 proposal scope",
+      "status": "PASS",
+      "detail": "20 changed paths within scope"
+    },
+    {
+      "id": "MC19-22",
+      "description": "the risk summary matches the risk entries",
+      "status": "PASS",
+      "detail": "14 risks; summary derived from entries"
+    },
+    {
+      "id": "MC19-23",
+      "description": "the validator and test files are the only new scripts",
+      "status": "PASS",
+      "detail": "0 out-of-scope script changes"
     }
   ]
 }

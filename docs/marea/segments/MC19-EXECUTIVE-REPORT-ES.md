@@ -128,8 +128,8 @@ almacén de leads, registro de instaladores, precio, SKU o artefacto público de
 
 ## G. Evidencia de pruebas y compuertas
 
-Mediciones finales en el HEAD de cierre (corrección `c0dc986`, etiquetas `8909ad5`), tras el
-cierre de la revisión. La cifra `59/60` de la fase pre-commit no se oculta: era un control de
+Mediciones finales en el HEAD de cierre (`353a61a`; corrección `c0dc986`, etiquetas
+`8909ad5`), tras el cierre de la revisión. La cifra `59/60` de la fase pre-commit no se oculta: era un control de
 alcance del árbol de trabajo de MC-18, no una regresión; tras el commit la compuerta se
 re-ejecutó en **60/60** y su registro se conserva en
 `docs/marea/segments/evidence/landing-gate-run.json` sin sobrescribir la evidencia histórica
@@ -143,7 +143,7 @@ de MC-18.
 | `npm run test:landing:unit`                 | **45/45**, exit 0                                                                   |
 | `npx tsc -p tsconfig.app.json --noEmit`     | exit 0                                                                              |
 | `npx tsc -p preview/landing/tsconfig.json --noEmit` | exit 0                                                                      |
-| `npm run build`                             | exit 0; 330 archivos / 7.865.962 B; **0** identificadores de la landing             |
+| `npm run build`                             | exit 0; 330 archivos / 7.865.978 B; **0** identificadores de la landing             |
 | `npm run build:landing:preview`             | exit 0; 0 rutas prerenderizadas                                                     |
 | Probes del servidor público (`PORT=4398`)   | `/` 200, `/en` 200, `/marea` **404**, `/en/marea` **404**                            |
 | `npm run test:design-system` / `:unit`      | **38/38** / **41/41**, exit 0                                                       |
