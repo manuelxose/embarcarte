@@ -1,0 +1,65 @@
+{
+  "contractId": "MC19-DATA-MANIFEST",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-19",
+  "date": "2026-11-04",
+  "owner": "programme lead (proposal preparer)",
+  "status": "BLOCKED_PENDING_SCOPE_APPROVAL",
+  "description": "Manifest of the MC-19 scope-proposal package. It records the baseline, the machine-readable datasets and the explicit no-implementation state.",
+  "relevantCommit": "docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md (D07)",
+  "baseline": {
+    "head": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094",
+    "branch": "feature/marea-mc18-bilingual-corporate-landing",
+    "pullRequest": 25,
+    "merged": false,
+    "deployed": false,
+    "published": false
+  },
+  "datasets": [
+    {
+      "path": "docs/marea/segments/data/mc19-scope-proposal.json",
+      "role": "authoritative proposal: baseline, definition assessment, prerequisites, options, acceptance criteria, DAG, governance, verdict"
+    },
+    {
+      "path": "docs/marea/segments/data/mc19-source-verification.json",
+      "role": "commands, observed facts and source inventory used for the scope decision"
+    },
+    {
+      "path": "docs/marea/segments/data/mc19-risk-register.json",
+      "role": "14 risks with owner, mitigation and status"
+    },
+    {
+      "path": "docs/marea/segments/data/mc19-mc20-handoff-inputs.json",
+      "role": "what MC-20 may rely on and what MC-19 did not deliver"
+    },
+    {
+      "path": "docs/marea/segments/data/mc19-review-findings.json",
+      "role": "independent review findings and correction status"
+    },
+    {
+      "path": "docs/marea/segments/data/manifest.json",
+      "role": "package manifest, counts and implementation state"
+    }
+  ],
+  "counts": {
+    "documents": 7,
+    "datasets": 6,
+    "prerequisites": 10,
+    "options": 3,
+    "acceptanceCriteria": 10,
+    "tasks": 9,
+    "risks": 14
+  },
+  "reviewStatus": "COMPLETE_PASS_INTERNAL_SCOPE_PROPOSAL",
+  "implementationState": {
+    "implementationStarted": false,
+    "productImplementationFilesCreated": 0,
+    "validatorAndTestFilesCreated": 2,
+    "documentsCreated": 7,
+    "datasetsCreated": 6,
+    "routesCreated": 0,
+    "formsCreated": 0,
+    "endpointsCreated": 0,
+    "publicArtefactsChanged": 0
+  }
+}

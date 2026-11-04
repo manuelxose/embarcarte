@@ -1,0 +1,388 @@
+{
+  "contractId": "MC19-SCOPE-PROPOSAL",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-19",
+  "milestoneTitle": "Segment/solution pages and enquiry flows (owners, installers, professionals)",
+  "date": "2026-11-04",
+  "owner": "programme lead (proposal preparer)",
+  "status": "BLOCKED_PENDING_SCOPE_APPROVAL",
+  "verdict": "BLOCKED",
+  "description": "Documented scope proposal for MC-19/36. The roadmap row and the MC-18→MC-19 handoff define the objective and the audience segments, but they do not define an authoritative MC-19 Master Prompt, the exact page/route/entity set, the content contract, the CTA behaviour or the enquiry-flow design. The owners segment has no MC-15 proposed route, and every enquiry/lead flow is blocked by the open privacy gate. Implementation is therefore not started; this package is the required prerequisite input for a later authorized execution.",
+  "generationMethod": "Authored from the verified repository state at MC-18 HEAD 3490c0f71eb6eaa89588b7a6d75bb3b6066cd094, the 36-milestone registry, the MC-18 delivery/audit package, the MC-18→MC-19 handoff inputs, the MC-15 proposed route registry and the MC-14 release-evidence gates. No implementation file was created or modified.",
+  "relevantCommit": "docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md (D07)",
+  "knownLimitations": [
+    "This is a proposal, not an MC-19 plan, estimate, schedule or approval.",
+    "MC-19 implementation has not started: no segment page, solution page, enquiry form, lead endpoint, installer registration or contact channel exists.",
+    "The proposal does not create, register or activate any public route, canonical, hreflang, structured data or sitemap entry.",
+    "The recommended option is conditional on an explicitly issued MC-19 Master Prompt and a recorded IA/route decision; it is not self-approving.",
+    "External approvals (trademark, public use, source IP, public copy, claims, privacy, commercial data, publication, MC-14 gate programme) remain absent and are not reinterpreted as internal implementation approval."
+  ],
+  "baseline": {
+    "repository": "manuelxose/embarcarte",
+    "branch": "feature/marea-mc18-bilingual-corporate-landing",
+    "head": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094",
+    "headSubject": "chore(mc18): refresh validator evidence at final delivery HEAD",
+    "remoteHead": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094",
+    "mc18Base": "feature/marea-mc17-premium-design-system",
+    "mc18BaseHead": "6002c49f898e755154c1b65c97781177719ce11c",
+    "pullRequest": 25,
+    "pullRequestState": "OPEN_DRAFT_MERGEABLE",
+    "pullRequestBase": "feature/marea-mc17-premium-design-system",
+    "merged": false,
+    "deployed": false,
+    "published": false,
+    "publicationAuthorized": false,
+    "indexationAuthorized": false,
+    "mc18Verdict": "PARTIAL",
+    "mc18InternalScope": "PASS_INTERNAL_LANDING_SCOPE"
+  },
+  "mc19ExecutionState": {
+    "discoveryCompleted": true,
+    "scopeProposalDelivered": true,
+    "implementationStarted": false,
+    "scopeApproved": false,
+    "masterPromptRecordedOrSupplied": false,
+    "iaRouteDecisionRecorded": false,
+    "enquiryFlowAuthorized": false,
+    "leadCaptureAuthorized": false,
+    "publicRouteActivated": false
+  },
+  "declaredScope": {
+    "roadmapRegistryId": 19,
+    "roadmapObjective": "Segment/solution pages and enquiry flows (owners, installers, professionals)",
+    "roadmapDependencies": ["MC-18"],
+    "roadmapExpectedOutput": "Segment pages + lead flows",
+    "roadmapVerificationCriterion": "Real CTAs only (quote/pre-registration/coming-soon per readiness)",
+    "roadmapStatusAtVerification": "PLANNED",
+    "handoffDeclaredScope": "Segment/solution pages and enquiry flows for owners, installers and professional fleets",
+    "handoffStatus": "INTERNAL_PROPOSED; not an MC-19 plan or approval",
+    "audienceSegments": ["OWNERS", "INSTALLERS", "PROFESSIONAL_FLEETS"]
+  },
+  "definitionAssessment": {
+    "sufficientForImplementation": false,
+    "reason": "The authoritative MC-19 Master Prompt is not recorded in the repository or supplied in this milestone mandate; the 36-prompt registry explicitly marks prompts 03-36 as planning placeholders, but a repository search alone cannot prove non-issuance because MC-18 records the same uncommitted-prompt gap. The stop decision also rests on independently verifiable blockers: the roadmap row and handoff define the objective and audiences but not the exact page set, route/entity identities, content contract, CTA behaviour or enquiry-flow design; the owners segment has no MC-15 route/entity/page type; and enquiry/lead flows are blocked by the open privacy gate.",
+    "defined": [
+      "High-level objective: segment/solution pages and enquiry flows for owners, installers and professionals (registry row 19; handoff section 6).",
+      "Dependency: MC-18 (registry row 19).",
+      "Expected output: segment pages + lead flows (registry row 19).",
+      "Verification theme: real CTAs only, per readiness (registry row 19).",
+      "Three audience references reserved by MC-18: OWNERS, INSTALLERS, PROFESSIONAL_FLEETS (handoff section 6).",
+      "Reuse constraint: MC-17 design system and the single bilingual component tree, no fork (handoff section 17).",
+      "Publication constraint: no public route, canonical, hreflang, JSON-LD or sitemap entry before the gates and release authorization (handoff sections 11 and 17).",
+      "Privacy constraint: no enquiry/lead flow before privacy approval, DPA, DPIA, consent, minimisation, anti-abuse and security review (handoff section 9).",
+      "Non-goals: no price, stock, purchase, certification, testimonial, sea-trial or licensing claim; no merge, deploy or publication (handoff section 17)."
+    ],
+    "undefined": [
+      "Authoritative MC-19 Master Prompt text and its exact deliverables. The registry states that prompts 03-36 are planning placeholders and the client-issued Master Prompt is authoritative; the prompt is not recorded here, and repository absence cannot prove it was never issued uncommitted.",
+      "Exact page set: three segment pages, two MC-15 professional pages, the MC-15 solutions overview and/or the six bundle solution pages are all plausible readings of 'segment/solution pages'.",
+      "Route/entity/page-type identities for an owners page and a professional-fleets page; MC-15 defines 'professionals' and 'installers' but no 'owners' route.",
+      "Bilingual content contract, copy ownership, evidence registry and section structure for each page.",
+      "CTA behaviour: 'real CTAs only' is stated, but quote/pre-registration require lead capture and a privacy basis that does not exist; 'coming-soon' has no defined design or acceptance test.",
+      "Enquiry/lead-flow design, lawful basis, consent capture, retention, anti-abuse, endpoint security and data minimisation.",
+      "Measured acceptance thresholds and the exact test matrix for MC-19.",
+      "Whether MC-19 solution pages duplicate or overlap MC-23 bundle comparison and MC-20-22 family pages.",
+      "Publication and indexation authorization for any MC-19 route."
+    ]
+  },
+  "prerequisites": [
+    {
+      "id": "P01",
+      "title": "Authoritative MC-19 Master Prompt recorded or supplied",
+      "status": "ABSENT",
+      "affects": ["IMPLEMENTATION", "SCOPE_APPROVAL"],
+      "evidence": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md: prompts 03-36 are planning placeholders; the client-issued Master Prompt is authoritative. No MC-19 Master Prompt is recorded in the repository or supplied in this milestone mandate. Repository absence cannot distinguish 'not issued' from 'issued but uncommitted' (MC-18 records the same gap); P01 is asserted from the mandate and the absence of any recorded approval, and the stop decision also rests on independently verifiable blockers."
+    },
+    {
+      "id": "P02",
+      "title": "IA/route registry decision for segment and solution pages",
+      "status": "ABSENT",
+      "affects": ["IMPLEMENTATION"],
+      "evidence": "docs/marea/information-architecture/data/proposed-routes.json records 'professionals', 'installers' and 'mareaSolutions' plus six bundle routes, but no owners or professional-fleets route. Every proposed route is PROPOSED_INTERNAL_NOT_DEPLOYABLE with publicationAuthorized=false."
+    },
+    {
+      "id": "P03",
+      "title": "Privacy/DPA/DPIA approval (B07) for enquiry or lead flows",
+      "status": "BLOCKED",
+      "affects": ["ENQUIRY_FLOW", "LEAD_CAPTURE"],
+      "evidence": "GATE-PRIVACY-DPA-DPIA is BLOCKED; 24 required documents, 0 executed; MC-18 handoff section 9 lists six privacy prerequisites before any submission form."
+    },
+    {
+      "id": "P04",
+      "title": "Public copy approval (B05) and claims authorization (B06)",
+      "status": "ABSENT",
+      "affects": ["PUBLICATION"],
+      "evidence": "MC-18 handoff blockers B05/B06 OPEN; 42 catalogued claims, 0 public-authorized."
+    },
+    {
+      "id": "P05",
+      "title": "Commercial data and pricing decision (B08)",
+      "status": "ABSENT",
+      "affects": ["COMMERCIAL_CTA", "PUBLICATION"],
+      "evidence": "PRICE_APPROVED=NONE; COMMERCIAL_AVAILABILITY=NOT_FOR_SALE; 0 approved prices; 0 merchant SKU codes."
+    },
+    {
+      "id": "P06",
+      "title": "Publication, indexation, deployment and release authorization (B09)",
+      "status": "ABSENT",
+      "affects": ["PUBLICATION", "INDEXATION"],
+      "evidence": "PUBLICATION_AUTHORIZED=false; LANDING_RELEASE_AUTHORIZATION=null; no release authorization record exists for MC-19."
+    },
+    {
+      "id": "P07",
+      "title": "Trademark legal clearance and MAREA public-use authorization (B01/B02)",
+      "status": "NOT_GRANTED",
+      "affects": ["PUBLIC_BRAND_USE"],
+      "evidence": "TRADEMARK_LEGAL_CLEARANCE=NOT_GRANTED; MAREA_PUBLIC_USE=NO_GO."
+    },
+    {
+      "id": "P08",
+      "title": "Source IP and data licensing clearance (B03)",
+      "status": "NOT_CLEARED",
+      "affects": ["PUBLICATION", "DATA_CLAIMS"],
+      "evidence": "SOURCE_IP_CLEARANCE=NOT_CLEARED; LICENSING_RIGHTS_GRANTED=false."
+    },
+    {
+      "id": "P09",
+      "title": "MC-14 release-gate programme closure (B10)",
+      "status": "OPEN",
+      "affects": ["PUBLICATION"],
+      "evidence": "13 gates, 0 closed; 24 required documents, 0 executed; 42 claims, 0 public-authorized."
+    },
+    {
+      "id": "P10",
+      "title": "Explicit approval of this scope proposal and assignment of owners/write scopes",
+      "status": "ABSENT",
+      "affects": ["IMPLEMENTATION"],
+      "evidence": "This proposal is authored by the programme lead and is not self-approving; no MC-19 task DAG has been approved."
+    }
+  ],
+  "implementationBlockers": ["P01", "P02", "P10"],
+  "enquiryFlowBlockers": ["P03"],
+  "publicationBlockers": ["P04", "P05", "P06", "P07", "P08", "P09"],
+  "options": [
+    {
+      "id": "A",
+      "title": "Internal audience pages without enquiry flows (recommended)",
+      "pages": [
+        "OWNERS segment page (ES/EN, one component tree)",
+        "INSTALLERS segment page (ES/EN, MC-15 'installers' identity unless the IA decision changes it)",
+        "PROFESSIONAL_FLEETS segment page (ES/EN, FLEET remains a contracted solution)"
+      ],
+      "solutionContext": "Embedded per-segment bundle/family context reusing the MC-18 presentation; no separate bundle detail routes in MC-19.",
+      "ctas": "Informational navigation and fail-closed 'coming soon / not for sale' presentation only; no quote, pre-registration, form or lead capture.",
+      "requires": ["P01", "P02", "P10"],
+      "estimatedPages": 3,
+      "newRoutes": "Provisional: owners and professional-fleets identities require an IA decision; installers can reuse the MC-15 proposed route. No public registration in this milestone.",
+      "rationale": "Smallest complete internal scope that matches the three declared audiences, preserves every gate and avoids blocking on privacy. Enquiry flows are explicitly deferred."
+    },
+    {
+      "id": "B",
+      "title": "MC-15-aligned professional and solution pages",
+      "pages": [
+        "professionals page (MC-15 route)",
+        "installers page (MC-15 route)",
+        "mareaSolutions overview (MC-15 route)",
+        "six bundle solution pages (MC-15 routes)"
+      ],
+      "solutionContext": "Separate solution/bundle routes.",
+      "ctas": "Informational and fail-closed; no enquiry flow.",
+      "requires": ["P01", "P02", "P10"],
+      "estimatedPages": 9,
+      "newRoutes": "Reuses MC-15 proposed identities but still requires a scope decision against MC-20-23 (family pages and bundle comparison) to avoid duplicate page ownership.",
+      "rationale": "Closer to the literal 'solution pages' wording, but it overlaps MC-20-23 and is not the smallest scope. It also does not resolve the missing owners route."
+    },
+    {
+      "id": "C",
+      "title": "Full MC-07B scope including enquiry and lead flows",
+      "pages": ["Option A or B pages", "enquiry/quote/pre-registration workflow"],
+      "solutionContext": "As decided by the owner.",
+      "ctas": "Real quote/pre-registration CTAs with server-authoritative, privacy-approved handling.",
+      "requires": ["P01", "P02", "P03", "P04", "P05", "P06", "P07", "P08", "P09", "P10"],
+      "estimatedPages": "Not determinable before P01/P02",
+      "newRoutes": "Not determinable before the IA decision.",
+      "rationale": "Not executable now: lead capture is prohibited until privacy/DPA/DPIA approval exists, and publication is not authorized."
+    }
+  ],
+  "recommendedOption": "A",
+  "recommendation": "Do not implement MC-19 until P01 (authoritative Master Prompt), P02 (IA decision for the segment/solution route set) and P10 (explicit scope approval) exist. Then execute Option A as an isolated internal preview, reusing the MC-17 design system and MC-18 patterns, with every CTA fail-closed and enquiry/lead flows deferred until P03 and the publication gates close. This is a proposal, not an approval.",
+  "proposedAcceptanceCriteria": [
+    {
+      "id": "AC-01",
+      "criterion": "The accountable owner has issued the MC-19 Master Prompt and approved this scope (P01, P10).",
+      "verification": "Recorded approval with the exact scope revision and owner names."
+    },
+    {
+      "id": "AC-02",
+      "criterion": "The IA/route decision records every MC-19 route, entity, page type and locale path, including the owners and professional-fleets segments, with a collision check against the 21 existing public route ids and the 23 MC-15 proposed routes (P02).",
+      "verification": "Route decision record plus collision dataset; no public registration."
+    },
+    {
+      "id": "AC-03",
+      "criterion": "Each approved page exists once as a locale-aware component tree with one bilingual content source; every rendered block has contentId, sectionId, copyClass, evidenceIds, publicationStatus=INTERNAL_DRAFT_NOT_APPROVED and approvalStatus=NOT_APPROVED.",
+      "verification": "TypeScript build plus content validator and ES/EN parity check."
+    },
+    {
+      "id": "AC-04",
+      "criterion": "MC-17 design-system components are reused without fork or duplicate implementation.",
+      "verification": "Import graph and selector-collision check; design-system diff empty."
+    },
+    {
+      "id": "AC-05",
+      "criterion": "No public route, sitemap entry, canonical, hreflang, Open Graph, Twitter card or JSON-LD is emitted; the pages are served only by the loopback preview with noindex and a Host allowlist; the production server returns 404 for every MC-19 path.",
+      "verification": "SSR header probes, production build scan and production 404 probes."
+    },
+    {
+      "id": "AC-06",
+      "criterion": "No enquiry form, input, contact endpoint, lead storage, installer registration, quote request or pre-registration exists while P03 is blocked; CTAs are informational and fail-closed, with no price, stock, purchase, certification or availability claim.",
+      "verification": "Form/input/endpoint scan, claim guard scan and adversarial mutations."
+    },
+    {
+      "id": "AC-07",
+      "criterion": "SSR and hydration agree in both locales; keyboard navigation, visible focus, reduced motion and responsive layout 320-1440 pass the agreed automated checks, with manual accessibility limits disclosed.",
+      "verification": "Playwright SSR/hydration, responsive and keyboard runs; axe results with stated limits."
+    },
+    {
+      "id": "AC-08",
+      "criterion": "All relevant gates run with exact counts: typecheck, deterministic validator, unit/adversarial suite, Playwright, public build, i18n/commerce/SEO/backup regressions and production isolation.",
+      "verification": "Recorded commands, exit codes and counts; no prefixed PASS."
+    },
+    {
+      "id": "AC-09",
+      "criterion": "An independent reviewer who did not implement the pages reviews the real diff and evidence; 0 BLOCKING and 0 MAJOR findings remain open.",
+      "verification": "Independent review record plus review-findings dataset."
+    },
+    {
+      "id": "AC-10",
+      "criterion": "Delivery stays in a draft PR stacked on the verified MC-18 branch; no merge, deployment, publication, sitemap submission or public MAREA activation; every governance flag and inherited debt item remains visible.",
+      "verification": "PR state, git history, public build scan, governance flag check and inherited-debt register."
+    }
+  ],
+  "proposedTaskDag": [
+    {
+      "id": "T01",
+      "title": "MC-19 scope approval and Master Prompt binding",
+      "kind": "requirements",
+      "dependsOn": [],
+      "prerequisites": ["P01", "P10"],
+      "ownerRole": "accountable release owner"
+    },
+    {
+      "id": "T02",
+      "title": "IA/route/entity decision for segment and solution pages",
+      "kind": "requirements",
+      "dependsOn": ["T01"],
+      "prerequisites": ["P02"],
+      "ownerRole": "architecture owner"
+    },
+    {
+      "id": "T03",
+      "title": "Bilingual content contract, evidence registry and draft copy",
+      "kind": "work",
+      "dependsOn": ["T02"],
+      "prerequisites": [],
+      "ownerRole": "content owner"
+    },
+    {
+      "id": "T04",
+      "title": "Segment/solution page implementation",
+      "kind": "implementation",
+      "dependsOn": ["T03"],
+      "prerequisites": [],
+      "ownerRole": "implementation engineer"
+    },
+    {
+      "id": "T05",
+      "title": "Deterministic datasets, validator and adversarial suite",
+      "kind": "work",
+      "dependsOn": ["T03"],
+      "prerequisites": [],
+      "ownerRole": "verification engineer"
+    },
+    {
+      "id": "T06",
+      "title": "Verification: typecheck, validator, unit/adversarial, Playwright, build and isolation",
+      "kind": "verification",
+      "dependsOn": ["T04", "T05"],
+      "prerequisites": [],
+      "ownerRole": "verifier"
+    },
+    {
+      "id": "T07",
+      "title": "Independent review of the frozen implementation and evidence",
+      "kind": "review",
+      "dependsOn": ["T06"],
+      "prerequisites": [],
+      "ownerRole": "independent reviewer"
+    },
+    {
+      "id": "T08",
+      "title": "Delivery record, Spanish report and draft PR",
+      "kind": "integration",
+      "dependsOn": ["T07"],
+      "prerequisites": [],
+      "ownerRole": "programme lead"
+    },
+    {
+      "id": "T09",
+      "title": "Enquiry/lead flow (deferred, not scheduled)",
+      "kind": "work",
+      "dependsOn": ["T08"],
+      "prerequisites": ["P03", "P06"],
+      "ownerRole": "not assigned",
+      "status": "BLOCKED"
+    }
+  ],
+  "governance": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "mareaPublicUse": "NO_GO",
+    "sourceIpClearance": "NOT_CLEARED",
+    "licensingRightsGranted": false,
+    "priceApproved": "NONE",
+    "commercialAvailability": "NOT_FOR_SALE",
+    "pilotSafetyGate": "BLOCKED",
+    "testedCompatibilityRows": 0,
+    "publicationAuthorized": false,
+    "indexationAuthorized": false,
+    "deploymentAuthorized": false,
+    "purchaseFunctionality": false,
+    "leadCollection": false,
+    "publicRoutesActivated": 0
+  },
+  "legalCommercialState": {
+    "releaseGates": 13,
+    "releaseGatesClosed": 0,
+    "requiredDocuments": 24,
+    "documentsExecuted": 0,
+    "cataloguedClaims": 42,
+    "claimsPublicAuthorized": 0,
+    "privacyGateId": "GATE-PRIVACY-DPA-DPIA",
+    "privacyGateStatus": "BLOCKED"
+  },
+  "inheritedDebt": [
+    "FINANCIAL_V18 = INHERITED_OPEN",
+    "MC16_FINAL_02 = OPEN_UNTIL_REVERIFIED",
+    "MC13_F05 = OPEN",
+    "MC13_F11 = OPEN",
+    "MC13_F14 = OPEN",
+    "MC15_GSC01 = OPEN",
+    "MC15_GSC02 = OPEN"
+  ],
+  "stopStatement": "MC19_IMPLEMENTATION_STARTED = false. No MC-19 product/implementation code, route, page, form, endpoint, lead store or public artefact was created or modified. The documentation package, six datasets, validator and adversarial tests are the deliverable; implementation requires the prerequisites above.",
+  "verdictBlock": {
+    "MC19_VERDICT": "BLOCKED",
+    "MC19_SCOPE_PROPOSAL": "DELIVERED",
+    "MC19_INDEPENDENT_AUDIT_RECOMMENDATION": "PASS_INTERNAL_SCOPE_PROPOSAL",
+    "MC19_OPEN_FINDINGS": 0,
+    "MC19_IMPLEMENTATION_STARTED": false,
+    "MC19_IMPLEMENTATION_AUTHORIZED": false,
+    "MC19_MASTER_PROMPT": "NOT_RECORDED_OR_SUPPLIED",
+    "MC19_IA_ROUTE_DECISION": "ABSENT",
+    "MC19_PRIVACY_GATE": "BLOCKED",
+    "MC19_PUBLICATION": "NOT_AUTHORIZED",
+    "MC19_LEAD_CAPTURE": false,
+    "MC19_PUBLIC_ROUTES_ACTIVATED": 0,
+    "MC19_MERGED": false,
+    "MC19_DEPLOYED": false,
+    "MC19_PUBLISHED": false
+  }
+}

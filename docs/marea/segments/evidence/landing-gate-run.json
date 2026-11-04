@@ -1,0 +1,378 @@
+{
+  "contractId": "MC18-LANDING-VALIDATOR-RUN",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "owner": "MC-18 implementation team",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "status": "PASS",
+  "runAt": "2026-11-04T14:37:11.287Z",
+  "head": "353a61a232710ff402d0109d33a793a134c21835",
+  "baseCommit": "6002c49f898e755154c1b65c97781177719ce11c",
+  "totals": {
+    "checks": 60,
+    "passed": 60,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "id": "MC18-01",
+      "description": "real landing component exists and reuses the MC-17 theme",
+      "status": "PASS",
+      "detail": "landing.ts present, standalone, theme host reused"
+    },
+    {
+      "id": "MC18-02",
+      "description": "isolated SSR preview project is configured",
+      "status": "PASS",
+      "detail": "separate SSR project, own output path, tokens scoped to preview"
+    },
+    {
+      "id": "MC18-03",
+      "description": "all ten sections exist and are composed in order",
+      "status": "PASS",
+      "detail": "10 section components, 0 structural warnings, correct order"
+    },
+    {
+      "id": "MC18-04",
+      "description": "one locale-aware component tree for ES and EN",
+      "status": "PASS",
+      "detail": "single landing component, one locale input, no per-locale duplicate page"
+    },
+    {
+      "id": "MC18-05",
+      "description": "no duplicate locale-specific product entity exists",
+      "status": "PASS",
+      "detail": "9 unique family copy entities, 6 unique bundle copy entities"
+    },
+    {
+      "id": "MC18-06",
+      "description": "the nine canonical family ids are preserved",
+      "status": "PASS",
+      "detail": "NAV,HUB,AIS,PILOT,SENSE,WATCH,DISPLAY,WEATHER,FLEET in all three layers"
+    },
+    {
+      "id": "MC18-07",
+      "description": "the six canonical bundle ids are preserved",
+      "status": "PASS",
+      "detail": "START,CRUISE,SAIL,PROTECT,COMPLETE,FLEET"
+    },
+    {
+      "id": "MC18-08",
+      "description": "26 editions stay canonical and are not merchant SKUs",
+      "status": "PASS",
+      "detail": "26 editions, 0 merchantable, 0 merchant SKU codes"
+    },
+    {
+      "id": "MC18-09",
+      "description": "no approved price is invented",
+      "status": "PASS",
+      "detail": "0 approved prices, no amount/currency representation, no price copy"
+    },
+    {
+      "id": "MC18-10",
+      "description": "no verified stock is invented",
+      "status": "PASS",
+      "detail": "0 verified stock rows, no stock/order copy"
+    },
+    {
+      "id": "MC18-11",
+      "description": "no purchase, cart or checkout action exists",
+      "status": "PASS",
+      "detail": "no form/button/input/click/http in the landing; DS CTA remains explanation only"
+    },
+    {
+      "id": "MC18-12",
+      "description": "no pre-order, reservation or waitlist promise exists",
+      "status": "PASS",
+      "detail": "no pre-order, reservation or waitlist copy"
+    },
+    {
+      "id": "MC18-13",
+      "description": "PILOT supervised-only safety limitations are visible",
+      "status": "PASS",
+      "detail": "PILOT safety gate + supervised concept visible through the DS family card and content"
+    },
+    {
+      "id": "MC18-14",
+      "description": "AIS receive-only limitations are visible",
+      "status": "PASS",
+      "detail": "AIS receive-only with explicit no-transmission negation"
+    },
+    {
+      "id": "MC18-15",
+      "description": "WATCH no-guarantee limitations are visible",
+      "status": "PASS",
+      "detail": "WATCH alerts explicitly not guaranteed"
+    },
+    {
+      "id": "MC18-16",
+      "description": "FLEET excludes default hardware and an established SLA",
+      "status": "PASS",
+      "detail": "FLEET contracted, no default hardware, no SLA, constraints visible"
+    },
+    {
+      "id": "MC18-17",
+      "description": "SENSE kit composition is not double-counted",
+      "status": "PASS",
+      "detail": "kit expansion nested once; no bundle double-counts POWER/BILGE"
+    },
+    {
+      "id": "MC18-18",
+      "description": "DISPLAY dimensions are not fabricated",
+      "status": "PASS",
+      "detail": "no invented dimension or final size"
+    },
+    {
+      "id": "MC18-19",
+      "description": "NAV and WEATHER data rights remain unlicensed",
+      "status": "PASS",
+      "detail": "chart and weather data explicitly not licensed/not included"
+    },
+    {
+      "id": "MC18-20",
+      "description": "all content references resolve",
+      "status": "PASS",
+      "detail": "174 blocks, 13 evidence ids, 13 registry entries all resolve"
+    },
+    {
+      "id": "MC18-21",
+      "description": "ES and EN keep semantic parity",
+      "status": "PASS",
+      "detail": "348 locale records, numeric parity, no placeholder text, negations preserved"
+    },
+    {
+      "id": "MC18-22",
+      "description": "no unsupported certification, safety or authority claim exists",
+      "status": "PASS",
+      "detail": "no certification, autonomy, transmission, testimonial, trademark or telemetry claim"
+    },
+    {
+      "id": "MC18-23",
+      "description": "no unauthorized public identity assertion exists",
+      "status": "PASS",
+      "detail": "proposed brand, identity not adopted, public use NO_GO, no registered mark"
+    },
+    {
+      "id": "MC18-24",
+      "description": "the preview is visibly internal and provisional",
+      "status": "PASS",
+      "detail": "unconditional internal banner + provisional brand + preview label in both locales"
+    },
+    {
+      "id": "MC18-25",
+      "description": "the preview is non-indexable",
+      "status": "PASS",
+      "detail": "robots meta + host metadata + X-Robots-Tag, no opt-in path"
+    },
+    {
+      "id": "MC18-26",
+      "description": "no public canonical or hreflang is emitted",
+      "status": "PASS",
+      "detail": "planning candidates kept out of live output; canonical/hreflang not emitted"
+    },
+    {
+      "id": "MC18-27",
+      "description": "no Product/Offer JSON-LD or social preview is emitted",
+      "status": "PASS",
+      "detail": "no JSON-LD, no Open Graph/Twitter tags, dataset reports emission disabled"
+    },
+    {
+      "id": "MC18-28",
+      "description": "no proposed route is added to the production application",
+      "status": "PASS",
+      "detail": "production route files unchanged, no MAREA reference, preview table only under preview/landing"
+    },
+    {
+      "id": "MC18-29",
+      "description": "no sitemap entry is added for the proposed landing",
+      "status": "PASS",
+      "detail": "0 public sitemap file(s) unchanged, no MAREA entry"
+    },
+    {
+      "id": "MC18-30",
+      "description": "no public navigation or corporate UI is changed",
+      "status": "PASS",
+      "detail": "only src/app/marea-landing was added; public app and MC-17 design system untouched"
+    },
+    {
+      "id": "MC18-31",
+      "description": "no public brand asset is copied",
+      "status": "PASS",
+      "detail": "15 public files unchanged, 0 MAREA assets"
+    },
+    {
+      "id": "MC18-32",
+      "description": "the production checkout remains unchanged",
+      "status": "PASS",
+      "detail": "production entry, SSR config, tsconfig and styles are byte-equal to the MC-17 baseline"
+    },
+    {
+      "id": "MC18-33",
+      "description": "the public corporate site has zero landing bytes",
+      "status": "PASS",
+      "detail": "86 production modules scanned; zero reach the landing or preview"
+    },
+    {
+      "id": "MC18-34",
+      "description": "the preview requires no customer or vessel data",
+      "status": "PASS",
+      "detail": "no forms, storage, cookies, customer/vessel fields or network client"
+    },
+    {
+      "id": "MC18-35",
+      "description": "all design-system imports come from the canonical MC-17 library",
+      "status": "PASS",
+      "detail": "18 canonical DS modules imported, no parallel component library, no selector collision"
+    },
+    {
+      "id": "MC18-36",
+      "description": "SSR renders the real landing (not a static approximation)",
+      "status": "PASS",
+      "detail": "Angular SSR engine wired to the real landing routes on the server"
+    },
+    {
+      "id": "MC18-37",
+      "description": "hydration is verified without mismatch",
+      "status": "PASS",
+      "detail": "independent Playwright hydration evidence: PASS, 0 console errors, no duplicate DOM"
+    },
+    {
+      "id": "MC18-38",
+      "description": "no production bundle imports the landing",
+      "status": "PASS",
+      "detail": "production entries unchanged and do not reference the landing"
+    },
+    {
+      "id": "MC18-39",
+      "description": "no previous milestone verdict is overwritten",
+      "status": "PASS",
+      "detail": "MC-17 delivery record unchanged"
+    },
+    {
+      "id": "MC18-40",
+      "description": "no MC-19 execution is recorded",
+      "status": "PASS",
+      "detail": "MC19_STARTED=false, no segment pages, no enquiry flow"
+    },
+    {
+      "id": "MC18-41",
+      "description": "generated artefacts are deterministic and current",
+      "status": "PASS",
+      "detail": "domain projection and every dataset match the generator output"
+    },
+    {
+      "id": "MC18-42",
+      "description": "publication gates fail closed",
+      "status": "PASS",
+      "detail": "missing values are false, current evaluation is blocked, no override path"
+    },
+    {
+      "id": "MC18-43",
+      "description": "a single boolean cannot activate public metadata",
+      "status": "PASS",
+      "detail": "activation requires a non-existent authorization record; boolean alone is insufficient"
+    },
+    {
+      "id": "MC18-44",
+      "description": "every machine-readable dataset exists with its provenance envelope",
+      "status": "PASS",
+      "detail": "20 datasets with full provenance envelope"
+    },
+    {
+      "id": "MC18-45",
+      "description": "page identity matches the canonical MC-15 proposed route",
+      "status": "PASS",
+      "detail": "mareaOverview / ENT-HUB-MAREA / HUB_OVERVIEW matches MC-15"
+    },
+    {
+      "id": "MC18-46",
+      "description": "the preview is bound to loopback and access controlled",
+      "status": "PASS",
+      "detail": "loopback binding, Host allowlist, no external services, restrictive CSP"
+    },
+    {
+      "id": "MC18-47",
+      "description": "no external service or third-party asset is contacted",
+      "status": "PASS",
+      "detail": "no external URLs, no remote assets, no raster images"
+    },
+    {
+      "id": "MC18-48",
+      "description": "no secret or credential is committed",
+      "status": "PASS",
+      "detail": "no credential, key or token literal in landing artefacts"
+    },
+    {
+      "id": "MC18-49",
+      "description": "the landing reuses the design-system components it claims",
+      "status": "PASS",
+      "detail": "12/12 required DS components reused through their real APIs"
+    },
+    {
+      "id": "MC18-50",
+      "description": "the page has one meaningful H1 and a skip link",
+      "status": "PASS",
+      "detail": "exactly one h1 (hero), main landmark, skip link, stable heading id"
+    },
+    {
+      "id": "MC18-51",
+      "description": "all required MC-18 documents exist",
+      "status": "PASS",
+      "detail": "21 MC-18 documents present"
+    },
+    {
+      "id": "MC18-52",
+      "description": "evidence datasets record real runs, not claims",
+      "status": "PASS",
+      "detail": "6 evidence datasets carry measured data and generation method"
+    },
+    {
+      "id": "MC18-53",
+      "description": "no blocking or major review finding is open",
+      "status": "PASS",
+      "detail": "5 findings recorded; 0 open BLOCKING/MAJOR"
+    },
+    {
+      "id": "MC18-54",
+      "description": "the delivery record preserves the no-publication state",
+      "status": "PASS",
+      "detail": "no merge, deployment, publication or MC-19 start recorded"
+    },
+    {
+      "id": "MC18-55",
+      "description": "the MC-17 playwrightTests index discrepancy is classified, not rewritten",
+      "status": "PASS",
+      "detail": "MC-17 manifest left at 28; final measured count 37 recorded with classification"
+    },
+    {
+      "id": "MC18-56",
+      "description": "the changed-file scope stays inside MC-18",
+      "status": "PASS",
+      "detail": "working tree changes limited to the MC-18 scope (0 entries)"
+    },
+    {
+      "id": "MC18-57",
+      "description": "no new dependency or lockfile change is introduced",
+      "status": "PASS",
+      "detail": "no dependency added or removed; lockfile unchanged"
+    },
+    {
+      "id": "MC18-58",
+      "description": "the English content carries no untranslated Spanish copy",
+      "status": "PASS",
+      "detail": "EN blocks show no Spanish function-word clustering"
+    },
+    {
+      "id": "MC18-59",
+      "description": "the internal banner is present in the SSR output contract",
+      "status": "PASS",
+      "detail": "preview host renders the real landing with noindex metadata only"
+    },
+    {
+      "id": "MC18-60",
+      "description": "no public asset, sitemap or hosting artefact is added",
+      "status": "PASS",
+      "detail": "deploy config, Dockerfile and public/ unchanged"
+    }
+  ]
+}
