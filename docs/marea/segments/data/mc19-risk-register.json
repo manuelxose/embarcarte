@@ -1,10 +1,10 @@
 {
   "contractId": "MC19-RISK-REGISTER",
-  "contractVersion": "1.0.0",
+  "contractVersion": "1.1.0",
   "milestone": "MC-19",
   "date": "2026-11-04",
   "status": "ACTIVE",
-  "description": "Risk register for the MC-19 scope proposal and a future authorized implementation. No risk is closed by the proposal.",
+  "description": "Risk register for MC-19: the scope proposal (R01-R14) and the authorized internal implementation (R15-R20).",
   "risks": [
     {
       "id": "R01",
@@ -13,7 +13,8 @@
       "impact": "HIGH",
       "mitigation": "Stop implementation until P01/P10; bind the exact Master Prompt to the scope revision.",
       "owner": "programme lead",
-      "status": "OPEN"
+      "status": "CLOSED",
+      "closureEvidence": "MC-19 instruction recorded 2026-11-04 (data/mc19-scope-instruction.json); scope frozen to Option A."
     },
     {
       "id": "R02",
@@ -22,7 +23,8 @@
       "impact": "HIGH",
       "mitigation": "Record an IA/route decision (P02) with a collision check before any code; do not touch LOCALIZED_ROUTES in the internal milestone.",
       "owner": "architecture owner",
-      "status": "OPEN"
+      "status": "CLOSED",
+      "closureEvidence": "MC19-IA-DECISION.md + validator MC19-I02: 3 identities, 0 collisions with 21 public and 23 proposed routes, no public shipowners path."
     },
     {
       "id": "R03",
@@ -76,7 +78,8 @@
       "impact": "MEDIUM",
       "mitigation": "Decide page ownership in P02; Option A embeds solution context instead of creating bundle routes.",
       "owner": "programme lead",
-      "status": "OPEN"
+      "status": "CLOSED",
+      "closureEvidence": "Boundary table recorded in MC19-IA-DECISION.md section 5; no family/bundle page implemented."
     },
     {
       "id": "R09",
@@ -121,7 +124,8 @@
       "impact": "HIGH",
       "mitigation": "Do not start before P01 is frozen; bind the prompt to a scope revision; re-plan if it changes.",
       "owner": "programme lead",
-      "status": "OPEN"
+      "status": "CLOSED",
+      "closureEvidence": "Instruction bound to contractVersion 1.0.0 and baseline ba63baa; later change requires a new recorded instruction."
     },
     {
       "id": "R14",
@@ -131,13 +135,67 @@
       "mitigation": "Draft PR only; no merge/deploy; explicit base/head; delivery record states the state.",
       "owner": "programme lead",
       "status": "OPEN"
+    },
+    {
+      "id": "R15",
+      "risk": "The reused MC-18 preview server serves a stale build during an evidence run.",
+      "likelihood": "MEDIUM",
+      "impact": "BLOCKER",
+      "mitigation": "Rebuild preview before the Playwright run; reuseExistingServer documented; production-bundle scan and noindex probes.",
+      "owner": "verification owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R16",
+      "risk": "A public shipowners route or path is created later without an IA and publication decision.",
+      "likelihood": "LOW",
+      "impact": "BLOCKER",
+      "mitigation": "Identity model reserves no public path; validator rejects a reserved shipowners path; proposed routes unchanged.",
+      "owner": "architecture owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R17",
+      "risk": "The internal segment routes are prerendered into a static, indexable artefact.",
+      "likelihood": "LOW",
+      "impact": "HIGH",
+      "mitigation": "All preview routes are RenderMode.Server; validator rejects prerender/client render; no static output in dist/marea-landing-preview.",
+      "owner": "implementation owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R18",
+      "risk": "A validator passes against stale committed datasets.",
+      "likelihood": "MEDIUM",
+      "impact": "MEDIUM",
+      "mitigation": "Dataset check compares re-derived projection and per-file SHA-256; build:mc19:data --check gate.",
+      "owner": "verification owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R19",
+      "risk": "Content parity or claim guards pass while a rendered page differs from the source.",
+      "likelihood": "MEDIUM",
+      "impact": "MEDIUM",
+      "mitigation": "Playwright SSR/hydration and content tests derive expectations from the same content source.",
+      "owner": "verification owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R20",
+      "risk": "The English copy is not reviewed by a professional marine translator.",
+      "likelihood": "HIGH",
+      "impact": "MEDIUM",
+      "mitigation": "Disclosed as a limitation; automated parity only; no claim of professional translation review.",
+      "owner": "content owner",
+      "status": "OPEN"
     }
   ],
   "summary": {
-    "total": 14,
-    "blocker": 4,
-    "high": 5,
-    "medium": 5,
-    "closed": 0
+    "total": 20,
+    "blocker": 6,
+    "high": 6,
+    "medium": 8,
+    "closed": 4
   }
 }

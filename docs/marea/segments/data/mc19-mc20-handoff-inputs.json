@@ -1,13 +1,14 @@
 {
   "contractId": "MC19-MC20-HANDOFF-INPUTS",
-  "contractVersion": "1.0.0",
+  "contractVersion": "1.1.0",
   "milestone": "MC-19",
   "targetMilestone": "MC-20",
   "date": "2026-11-04",
   "status": "INPUTS_ONLY",
-  "description": "Handoff inputs from the MC-19 scope-proposal milestone to MC-20 (product catalog batch 1: NAV, HUB, AIS). MC-20 has not started and is not authorized by this document. The inputs record what MC-20 may rely on and what MC-19 did not deliver.",
-  "mc19Verdict": "BLOCKED",
-  "mc19ImplementationStarted": false,
+  "description": "Handoff inputs from MC-19 to MC-20 (product catalog batch 1: NAV, HUB, AIS). MC-20 has not started and is not authorized by this document. The inputs record what MC-20 may rely on, what MC-19 delivered as internal preview only, and what MC-20 must not assume.",
+  "mc19Verdict": "PARTIAL",
+  "mc19ImplementationStarted": true,
+  "mc19InternalImplementation": "PASS_INTERNAL_SCOPE",
   "mc20Started": false,
   "mc20ScopeApproved": false,
   "mc20DependencyOnMc19Implementation": false,
@@ -47,34 +48,48 @@
       "input": "MC-18 independent audit and delivery conclusions",
       "state": "PRESERVED",
       "source": "docs/marea/landing/MC18-INDEPENDENT-REVIEW.md; MC18-FINAL-DELIVERY-RECORD.md"
+    },
+    {
+      "id": "I07",
+      "input": "MC-19 internal audience-page pattern: one bilingual component tree, eight sections, evidence-bound copy, fail-closed CTA, internal preview namespace",
+      "state": "IMPLEMENTED_INTERNAL_PREVIEW_ONLY",
+      "source": "src/app/marea-segments/; preview/landing/; docs/marea/segments/MC19-IA-DECISION.md"
+    },
+    {
+      "id": "I08",
+      "input": "MC-19 deterministic content projection and validator pattern",
+      "state": "VERIFIED_INTERNAL",
+      "source": "scripts/check-mc19-implementation.mjs; docs/marea/segments/data/mc19-content-projection.json"
     }
   ],
   "mustNotAssume": [
-    "MC-19 segment or solution pages exist; they do not.",
-    "Any public MAREA route exists; /marea and /en/marea are 404 in production.",
-    "Any price, stock, SKU, purchase or subscription capability exists; all products are NOT_FOR_SALE.",
-    "Any lead capture, enquiry form, contact endpoint or installer registration exists; the privacy gate is blocked.",
-    "Any trademark, public-use, source-IP, licensing or publication authorization exists.",
-    "Any MC-19 acceptance criterion is verified; D04 is a proposal."
+    "That the MC-19 audience pages have any public route, canonical, hreflang, sitemap entry or indexable metadata; they are internal preview only.",
+    "That a public shipowner route exists or is approved; it does not, and no public path is reserved.",
+    "That any price, stock, SKU, purchase, subscription or delivery capability exists; all products remain NOT_FOR_SALE.",
+    "That any lead capture, enquiry form, contact endpoint or installer registration exists; the privacy gate is blocked.",
+    "That any installer, distributor or partner programme, accreditation or agreement exists; DOC-17 is NOT_EXECUTED.",
+    "That any trademark, public-use, source-IP, licensing, publication or deployment authorisation exists.",
+    "That MC-19 acceptance criteria extended to publication, indexation or commercial activation; they do not.",
+    "That MC-20 may reuse the MC-19 internal preview namespace as a public path."
   ],
   "missingInputs": [
     {
       "id": "M01",
-      "input": "Approved segment-page patterns and audience context",
+      "input": "Approved public segment-page copy and route activation",
       "status": "ABSENT",
-      "reason": "MC-19 implementation was not started."
+      "reason": "MC-19 pages are internal draft copy in an internal namespace; publication and indexation are not authorised."
     },
     {
       "id": "M02",
       "input": "Approved solution-page/component boundary against MC-23",
       "status": "ABSENT",
-      "reason": "MC-19 scope proposal leaves the boundary to the owner decision."
+      "reason": "MC-19 deliberately implements no solution or bundle pages; MC-20–MC-23 retain that ownership."
     },
     {
       "id": "M03",
       "input": "Catalog-specific content-block/evidence contract",
       "status": "PARTIAL",
-      "reason": "MC-18 conventions exist but no catalog-specific contract was added."
+      "reason": "MC-18/MC-19 conventions exist (evidence-bound blocks, fixed literals, one bilingual source) but no catalog-specific contract was added."
     },
     {
       "id": "M04",
@@ -91,11 +106,11 @@
   ],
   "mc20EntryConditions": [
     "MC-20 Master Prompt issued and bound to a scope revision.",
-    "MC-20 IA decision for the nine family pages, reusing MC-15 proposed routes and the MC-16 product data contract.",
-    "MC-17 design system and MC-18 landing patterns reused, not forked.",
+    "MC-20 IA decision for the batch-1 family pages (NAV, HUB, AIS), reusing the MC-15 proposed routes and the MC-16 product data contract.",
+    "The MC-17 design system and the MC-18 bilingual component patterns are reused, not forked. Reusing the MC-19 internal pattern is optional; MC-20 must not depend on the MC-19 implementation.",
     "Every family page stays preview-only and non-indexable until the publication gates and a release authorization record exist.",
-    "No price, stock, SKU, purchase, lead or certification claim is introduced.",
-    "Inherited debt remains visible; FINANCIAL_V18 is still open."
+    "No price, stock, SKU, purchase, lead, certification, compatibility or installability claim is introduced.",
+    "Inherited debt remains visible; FINANCIAL_V18 is still open and MC16_FINAL_02 is open until re-verified."
   ],
-  "nonAuthorization": "This handoff does not start MC-20, does not assign MC-20 owners or dates and does not approve any MC-20 route, page, price or publication."
+  "nonAuthorization": "This handoff does not start MC-20, does not assign MC-20 owners or dates and does not approve any MC-20 route, page, price, claim or publication."
 }

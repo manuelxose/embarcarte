@@ -1,0 +1,132 @@
+{
+  "contractId": "MC19-SCOPE-INSTRUCTION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-19",
+  "recordedOn": "2026-11-04",
+  "status": "AUTHORIZED_INTERNAL_SCOPE",
+  "selectedOption": "A",
+  "title": "Three internal bilingual audience pages: professionals, installers, shipowners",
+  "promptProvenance": {
+    "suppliedBy": "requesting product owner, through the MC-19 master execution prompt",
+    "suppliedOn": "2026-11-04",
+    "previouslyRecordedInRepository": false,
+    "recordedInCommit": true,
+    "recordedAt": "docs/marea/segments/MC19-IMPLEMENTATION-CONTRACT.md",
+    "statement": "This instruction was supplied in the MC-19 master execution prompt. It was not previously present in the repository and is not signed by any authority other than the requesting product owner. Recording it here does not create a legal, commercial, trademark, privacy, licensing or publication approval."
+  },
+  "implementationAuthorizedBy": "MC-19 master execution prompt (2026-11-04), Option A internal engineering scope",
+  "namedApproverBeyondProductOwner": "OUTSTANDING",
+  "approvalsOutstanding": [
+    {
+      "id": "LEGAL_TRADEMARK",
+      "requirement": "Trademark clearance and MAREA public use",
+      "status": "NOT_GRANTED"
+    },
+    {
+      "id": "SOURCE_IP_LICENSING",
+      "requirement": "Source IP and data licensing clearance",
+      "status": "NOT_CLEARED"
+    },
+    {
+      "id": "PUBLICATION_INDEXATION",
+      "requirement": "Publication, indexation, sitemap and release authorisation",
+      "status": "NOT_AUTHORIZED"
+    },
+    {
+      "id": "PRIVACY_DPA_DPIA",
+      "requirement": "Privacy approval, DPA and DPIA for any enquiry or lead flow",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "COMMERCIAL_PRICING",
+      "requirement": "Approved prices and commercial availability",
+      "status": "NONE"
+    }
+  ],
+  "audienceIdentities": [
+    {
+      "segmentId": "professionals",
+      "identityClass": "MC15_REUSED",
+      "entityId": "ENT-PAGE-PROFESSIONALS",
+      "mc15RouteId": "professionals",
+      "publicPathReservedNotActivated": "/profesionales"
+    },
+    {
+      "segmentId": "installers",
+      "identityClass": "MC15_REUSED",
+      "entityId": "ENT-PAGE-INSTALLERS",
+      "mc15RouteId": "installers",
+      "publicPathReservedNotActivated": "/instaladores"
+    },
+    {
+      "segmentId": "shipowners",
+      "identityClass": "NEW_INTERNAL_ONLY",
+      "entityId": "ENT-INTERNAL-SHIPOWNERS",
+      "mc15RouteId": null,
+      "publicPathReservedNotActivated": null,
+      "note": "MC-15 defines no owners route, entity or page type. No public path is created, reserved or proposed for this identity."
+    }
+  ],
+  "deferredScope": [
+    {
+      "id": "ENQUIRY_FLOWS",
+      "status": "BLOCKED",
+      "blockedBy": "GATE-PRIVACY-DPA-DPIA",
+      "reopeningCondition": "Privacy approval, DPA and DPIA executed with real evidence"
+    },
+    {
+      "id": "INSTALLER_REGISTRATION",
+      "status": "BLOCKED",
+      "blockedBy": "PRIVACY_DPA_DPIA + DOC-17 installer/distributor agreements NOT_EXECUTED",
+      "reopeningCondition": "Privacy basis plus executed installer agreements"
+    },
+    {
+      "id": "PUBLIC_ROUTES_AND_INDEXATION",
+      "status": "NOT_AUTHORIZED",
+      "blockedBy": "PUBLICATION_INDEXATION",
+      "reopeningCondition": "MC-14 release gates closed and a release authorisation record exists"
+    }
+  ],
+  "governance": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "mareaPublicUse": "NO_GO",
+    "sourceIpClearance": "NOT_CLEARED",
+    "licensingRightsGranted": false,
+    "priceApproved": "NONE",
+    "commercialAvailability": "NOT_FOR_SALE",
+    "pilotSafetyGate": "BLOCKED",
+    "testedCompatibilityRows": 0,
+    "publicationAuthorized": false,
+    "indexationAuthorized": false,
+    "deploymentAuthorized": false,
+    "purchaseFunctionality": false,
+    "leadCollection": false,
+    "publicRoutesActivated": 0
+  },
+  "deliveryState": {
+    "merged": false,
+    "deployed": false,
+    "published": false,
+    "publicRouteActivated": false,
+    "leadCapture": false,
+    "draftPullRequest": true
+  },
+  "inheritedDebt": [
+    "FINANCIAL_V18 = INHERITED_OPEN",
+    "MC16_FINAL_02 = OPEN_UNTIL_REVERIFIED",
+    "MC13_F05 = OPEN",
+    "MC13_F11 = OPEN",
+    "MC13_F14 = OPEN",
+    "MC15_GSC01 = OPEN",
+    "MC15_GSC02 = OPEN"
+  ],
+  "globalVerdict": "PARTIAL",
+  "verdictBasis": "Internal engineering scope completed and independently reviewed; external legal, commercial, privacy and publication authorisations remain unresolved, so the global verdict cannot be PASS.",
+  "verdictBlock": {
+    "MC19_INTERNAL_IMPLEMENTATION": "PASS_INTERNAL_SCOPE",
+    "MC19_VERDICT": "PARTIAL",
+    "MC19_PUBLICATION": "NOT_AUTHORIZED",
+    "MC19_LEAD_CAPTURE": false,
+    "MC19_PUBLIC_ROUTES_ACTIVATED": 0
+  }
+}

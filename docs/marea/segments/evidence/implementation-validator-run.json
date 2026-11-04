@@ -1,0 +1,183 @@
+{
+  "contractId": "MC19-IMPLEMENTATION-VALIDATOR-RUN",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-19",
+  "generatedAt": "2026-11-04T17:41:40.935Z",
+  "status": "PASS",
+  "total": 17,
+  "passed": 17,
+  "failed": 0,
+  "baseline": "ba63baa0e529ab9cb482fd929632d359fec1d328",
+  "head": "3f19601fba77efe734d0ae2cb30c61051cecc638",
+  "branch": "feature/marea-mc19-internal-audience-pages",
+  "counts": {
+    "identities": 3,
+    "pages": 3,
+    "locales": 2,
+    "sectionsPerPage": 8,
+    "pageBlocksPerAudience": {
+      "professionals": {
+        "segmentId": "professionals",
+        "entityId": "ENT-PAGE-PROFESSIONALS",
+        "blocks": 104,
+        "families": [
+          "FLEET",
+          "HUB",
+          "AIS",
+          "DISPLAY",
+          "NAV",
+          "WATCH"
+        ],
+        "capabilities": 5,
+        "useCases": 3,
+        "documentationReferences": 5,
+        "sections": 8,
+        "locales": 2
+      },
+      "installers": {
+        "segmentId": "installers",
+        "entityId": "ENT-PAGE-INSTALLERS",
+        "blocks": 104,
+        "families": [
+          "HUB",
+          "AIS",
+          "PILOT",
+          "SENSE",
+          "WATCH",
+          "DISPLAY"
+        ],
+        "capabilities": 5,
+        "useCases": 3,
+        "documentationReferences": 5,
+        "sections": 8,
+        "locales": 2
+      },
+      "shipowners": {
+        "segmentId": "shipowners",
+        "entityId": "ENT-INTERNAL-SHIPOWNERS",
+        "blocks": 105,
+        "families": [
+          "NAV",
+          "HUB",
+          "AIS",
+          "SENSE",
+          "WATCH",
+          "DISPLAY",
+          "WEATHER"
+        ],
+        "capabilities": 5,
+        "useCases": 3,
+        "documentationReferences": 5,
+        "sections": 8,
+        "locales": 2
+      }
+    },
+    "pageBlockTotal": 313,
+    "sharedBlocks": 41,
+    "resolvedRecords": 708
+  },
+  "checks": [
+    {
+      "id": "MC19-I01",
+      "description": "the authorised scope instruction is recorded with real provenance",
+      "status": "PASS",
+      "detail": "provenance recorded; verdict PARTIAL"
+    },
+    {
+      "id": "MC19-I02",
+      "description": "three internal identities with no public route collision",
+      "status": "PASS",
+      "detail": "3 identities; 6 preview routes; no collision with 21 public or 23 proposed routes"
+    },
+    {
+      "id": "MC19-I03",
+      "description": "one content source with fixed literals, evidence and sections",
+      "status": "PASS",
+      "detail": "708 resolved records; 313 page blocks"
+    },
+    {
+      "id": "MC19-I04",
+      "description": "ES/EN parity with no untranslated Spanish and no diacritics drift",
+      "status": "PASS",
+      "detail": "708 bilingual records checked"
+    },
+    {
+      "id": "MC19-I05",
+      "description": "no affirmative prohibited claim and no monetary amount",
+      "status": "PASS",
+      "detail": "708 texts scanned"
+    },
+    {
+      "id": "MC19-I06",
+      "description": "the three audiences are substantially different and complete",
+      "status": "PASS",
+      "detail": "3 differentiated family selections; 5 capabilities, 3 use cases and 5 references each"
+    },
+    {
+      "id": "MC19-I07",
+      "description": "MC-17 components are reused and never forked",
+      "status": "PASS",
+      "detail": "15 MC-17 modules reused; 0 design-system changes"
+    },
+    {
+      "id": "MC19-I08",
+      "description": "no form, endpoint, lead store, purchase path or browser storage",
+      "status": "PASS",
+      "detail": "0 forms, 0 business endpoints, 0 storage; 1 disabled CTA"
+    },
+    {
+      "id": "MC19-I09",
+      "description": "the public application cannot reach the segment pages",
+      "status": "PASS",
+      "detail": "production entry points do not reference MC-19"
+    },
+    {
+      "id": "MC19-I10",
+      "description": "public route, sitemap and predecessor files are unchanged",
+      "status": "PASS",
+      "detail": "0 changed production/predecessor paths"
+    },
+    {
+      "id": "MC19-I11",
+      "description": "the preview is loopback-only, noindex and non-prerendered",
+      "status": "PASS",
+      "detail": "loopback host allowlist, noindex, SSR-only preview"
+    },
+    {
+      "id": "MC19-I12",
+      "description": "legal, commercial and privacy gates are preserved",
+      "status": "PASS",
+      "detail": "13/0 gates, 24/0 documents, 42/0 claims, privacy BLOCKED, DOC-17 NOT_EXECUTED"
+    },
+    {
+      "id": "MC19-I13",
+      "description": "the MC-20 handoff is updated and MC-20 is not started",
+      "status": "PASS",
+      "detail": "MC-20 not started; handoff updated with 6+ non-assumptions"
+    },
+    {
+      "id": "MC19-I14",
+      "description": "committed datasets are the current bytes",
+      "status": "PASS",
+      "detail": "46 inventory files and the content projection are current"
+    },
+    {
+      "id": "MC19-I15",
+      "description": "the changed set stays inside the authorised MC-19 scope",
+      "status": "PASS",
+      "detail": "70 changed paths within scope"
+    },
+    {
+      "id": "MC19-I16",
+      "description": "the implementation branch and delivery state are correct",
+      "status": "PASS",
+      "detail": "feature/marea-mc19-internal-audience-pages"
+    },
+    {
+      "id": "MC19-I17",
+      "description": "the section set is frozen at eight anchors per page",
+      "status": "PASS",
+      "detail": "8 sections, 8 unique in-page anchors"
+    }
+  ]
+}

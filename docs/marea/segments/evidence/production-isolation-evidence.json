@@ -1,0 +1,30 @@
+{
+  "contractId": "MC19-PRODUCTION-ISOLATION-EVIDENCE",
+  "milestone": "MC-19",
+  "measuredAt": "2026-11-04T17:42:05.561Z",
+  "measured": {
+    "nonLoopbackHostStatus": 403,
+    "unknownInternalPathStatus": 404
+  },
+  "productionBundle": {
+    "root": "dist/embarcarte",
+    "bundlesScanned": [
+      "browser",
+      "server"
+    ],
+    "filesScanned": 305,
+    "tokens": [
+      "internal/segments",
+      "data-marea-segment",
+      "marea-segments",
+      "shipowners"
+    ],
+    "contaminatedFiles": []
+  },
+  "productionSources": [
+    "src/app/app.routes.ts",
+    "src/app/app.routes.server.ts",
+    "src/app/core/i18n/locale-routes.ts",
+    "src/server.ts"
+  ]
+}
