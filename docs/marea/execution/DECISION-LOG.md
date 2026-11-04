@@ -1828,3 +1828,16 @@ no merge, no deployment.
 **Evidence.** `docs/marea/segments/data/mc19-review-findings.json` (7/7 CLOSED); `npm run test:mc19-scope` 23/23; `npm run test:mc19-scope:unit` 29/29; commits `b53f67e`, `77e0699`, `c0dc986`, `8909ad5`; `MC19-EXECUTIVE-REPORT-ES.md` section H.
 
 **Status effect.** `MC19_VERDICT = BLOCKED`; `MC19_INDEPENDENT_AUDIT_RECOMMENDATION = PASS_INTERNAL_SCOPE_PROPOSAL` for the proposal scope; no implementation, public route, form, lead capture, merge, deployment or publication.
+
+
+## D-080 - 2026-11-04 - MC-19 executes the authorized internal audience-page scope
+
+**Context.** The MC-19 master execution prompt was supplied by the requesting product owner on 2026-11-04 and explicitly authorizes OPTION A: three internal bilingual audience pages (`professionals`, `installers`, `shipowners`) with no enquiry flows. The previous BLOCKED proposal, its seven documents, six datasets and independent audit are preserved as historical evidence. External legal, commercial, privacy and publication approvals remain outstanding and are not implied by the instruction.
+
+**Decision.** Implement the three pages inside the isolated loopback preview, in a new internal namespace `internal/segments/*` (English: `/en/internal/segments/*`), reusing the MC-17 design system and the MC-18 bilingual content pattern. `shipowners` is a new internal-only identity with no reserved public path. Enquiry/lead flows remain BLOCKED by `GATE-PRIVACY-DPA-DPIA`; every action is deliberately disabled. Record the IA decision, the scope instruction with provenance, the acceptance matrix, the security/legal gate verification, the test report, the independent audit, the risk/dependency update, the Spanish executive report and the MC-20 handoff update. Delivery is a draft PR only.
+
+**Rationale.** The instruction removes the three implementation blockers (P01/P02/P10) without closing any external gate. A single bilingual component tree, evidence-bound copy and a deterministic validator keep the internal scope verifiable while making accidental publication unlikely and detectable.
+
+**Evidence.** `docs/marea/segments/MC19-IMPLEMENTATION-CONTRACT.md`; `data/mc19-scope-instruction.json`; `MC19-IA-DECISION.md`; `src/app/marea-segments/`; `preview/landing/`; `npm run test:mc19` 17/17; `npm run test:mc19:unit` 42/42; `npm run test:mc19:e2e` 22/22; production build and inherited gates recorded in `MC19-TEST-REPORT.md`; independent audit in `MC19-INDEPENDENT-AUDIT.md`.
+
+**Status effect.** `MC19_INTERNAL_IMPLEMENTATION = PASS_INTERNAL_SCOPE`; `MC19_VERDICT = PARTIAL`. No public route, indexation, form, lead capture, price, purchase, merge, deployment or publication. `FINANCIAL_V18`, `MC16_FINAL_02`, MC-13 F-05/F-11/F-14 and MC-15 GSC-01/GSC-02 remain open. MC-20 is not started.

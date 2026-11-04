@@ -367,6 +367,8 @@ function main() {
   const legal = readJson('docs/marea/legal-commercial/data/release-evidence-gates.json');
   const claims = readJson('docs/marea/legal-commercial/data/bilingual-claims.json');
   const riskRegister = readJson(`${DATA}/mc19-risk-register.json`);
+  const supersessionFile = `${DATA}/mc19-scope-supersession.json`;
+  const supersession = exists(supersessionFile) ? readJson(supersessionFile) : null;
 
   add('MC19-01', 'the seven proposal documents exist and are substantive', () => {
     const missing = REQUIRED_DOCS.filter((name) => !exists(`${DOCS}/${name}`));
@@ -393,8 +395,13 @@ function main() {
     return pass(`baseline ${BASELINE.slice(0, 7)} is an ancestor of HEAD`);
   });
 
-  add('MC19-04', 'the working branch is the MC-19 proposal branch', () => {
+  add('MC19-04', 'the working branch matches the recorded MC-19 contract', () => {
     const branch = git(['branch', '--show-current'])[0] ?? '';
+    if (supersession) {
+      return branch.startsWith('feature/marea-mc19')
+        ? pass(`${branch} (authorized implementation branch)`)
+        : fail(`unexpected branch: ${branch}`);
+    }
     return branch === MC19_BRANCH ? pass(branch) : fail(`unexpected branch: ${branch}`);
   });
 
@@ -442,13 +449,25 @@ function main() {
     return listProblems(changed, 'public surface unchanged');
   });
 
-  add('MC19-08', 'no implementation file exists in the full changed set', () => {
+  add('MC19-08', 'the authorized implementation stays inside the MC-19 module', () => {
     const changed = fullChangedSet();
-    const implementationChanged = changed.filter(
-      (path) => /^(src|preview)\//.test(path) || path.startsWith('e2e/landing/'),
-    );
     const publicChanged = changed.filter(
       (path) => /^(public|deploy)\//.test(path) || path === 'Dockerfile',
+    );
+    if (supersession) {
+      const implementationChanged = changed.filter(
+        (path) =>
+          /^(src|preview)\//.test(path) &&
+          !path.startsWith('src/app/marea-segments/') &&
+          !path.startsWith('preview/landing/'),
+      );
+      return listProblems(
+        implementationProblems({ implementationChanged, publicChanged }),
+        `0 out-of-module implementation files in ${changed.length} changed paths`,
+      );
+    }
+    const implementationChanged = changed.filter(
+      (path) => /^(src|preview)\//.test(path) || path.startsWith('e2e/landing/'),
     );
     return listProblems(
       implementationProblems({ implementationChanged, publicChanged }),
@@ -511,14 +530,18 @@ function main() {
     return pass('manifest counts and implementation state valid');
   });
 
-  add('MC19-16', 'no document claims a PASS or a verified implementation', () => {
+  add('MC19-16', 'no document claims a global PASS', () => {
     const text = REQUIRED_DOCS.map((name) => read(`${DOCS}/${name}`)).join('\n');
     if (/MC19_VERDICT\s*=\s*PASS/.test(text)) return fail('MC19_VERDICT=PASS recorded');
-    if (/MC19_IMPLEMENTATION_STARTED\s*=\s*true/.test(text))
+    if (!supersession && /MC19_IMPLEMENTATION_STARTED\s*=\s*true/.test(text))
       return fail('MC19_IMPLEMENTATION_STARTED=true recorded');
-    if (/MC19_ACCEPTANCE_CRITERIA_VERIFIED\s*=\s*[1-9]/.test(text))
+    if (!supersession && /MC19_ACCEPTANCE_CRITERIA_VERIFIED\s*=\s*[1-9]/.test(text))
       return fail('verified acceptance criteria claimed');
-    return pass('BLOCKED verdict and no verified implementation claim');
+    return pass(
+      supersession
+        ? 'PARTIAL verdict; implementation allowed by the recorded instruction'
+        : 'BLOCKED verdict and no verified implementation claim',
+    );
   });
 
   add('MC19-17', 'the decision log records the scope-proposal stop', () => {
@@ -529,9 +552,15 @@ function main() {
     return pass('D-078 present');
   });
 
-  add('MC19-18', 'the 36-milestone registry row 19 records BLOCKED', () => {
+  add('MC19-18', 'the 36-milestone registry row 19 records the current verdict', () => {
     const registry = read('docs/marea/execution/MASTER-PROMPT-REGISTRY.md');
     const row = registry.split('\n').find((line) => /^\|\s*19\s*\|/.test(line)) ?? '';
+    if (supersession) {
+      if (!/PARTIAL/i.test(row)) return fail('row 19 is not PARTIAL');
+      if (!/MC19-IMPLEMENTATION-CONTRACT|mc19-internal-audience-pages/.test(row))
+        return fail('row 19 does not cite the MC-19 implementation');
+      return pass('row 19 records PARTIAL and cites the implementation');
+    }
     if (!/BLOCKED/i.test(row)) return fail('row 19 is not BLOCKED');
     if (!/MC19-SCOPE-PROPOSAL|mc19-scope-proposal/.test(row))
       return fail('row 19 does not cite the scope proposal');
@@ -555,12 +584,20 @@ function main() {
     return pass(`${source.commands.length} commands recorded`);
   });
 
-  add('MC19-21', 'every changed file is inside the MC-19 proposal scope', () => {
+  add('MC19-21', 'every changed file is inside the recorded MC-19 scope', () => {
     const changed = fullChangedSet();
-    return listProblems(
-      changedFileProblems(changed),
-      `${changed.length} changed paths within scope`,
+    if (!supersession) {
+      return listProblems(
+        changedFileProblems(changed),
+        `${changed.length} changed paths within scope`,
+      );
+    }
+    const prefixes = supersession.authorizedChangePrefixes ?? [];
+    const exact = supersession.authorizedChangeExact ?? [];
+    const outOfScope = changed.filter(
+      (path) => !exact.includes(path) && !prefixes.some((prefix) => path.startsWith(prefix)),
     );
+    return listProblems(outOfScope, `${changed.length} changed paths within scope`);
   });
 
   add('MC19-22', 'the risk summary matches the risk entries', () =>
@@ -570,9 +607,14 @@ function main() {
     ),
   );
 
-  add('MC19-23', 'the validator and test files are the only new scripts', () => {
+  add('MC19-23', 'the scripts added by MC-19 are the authorized ones', () => {
+    const allowed = supersession
+      ? (supersession.authorizedChangePrefixes ?? []).filter((prefix) =>
+          prefix.startsWith('scripts/'),
+        )
+      : ['scripts/check-mc19-scope'];
     const changed = fullChangedSet().filter(
-      (path) => path.startsWith('scripts/') && !path.startsWith('scripts/check-mc19-scope'),
+      (path) => path.startsWith('scripts/') && !allowed.some((prefix) => path.startsWith(prefix)),
     );
     return listProblems(changed, '0 out-of-scope script changes');
   });
@@ -605,15 +647,15 @@ function main() {
     failed: failed.length,
     checks,
   };
+  const evidenceFile = supersession
+    ? `${EVIDENCE}/scope-validator-run-v2.json`
+    : `${EVIDENCE}/scope-validator-run.json`;
   mkdirSync(resolve(root, EVIDENCE), { recursive: true });
-  writeFileSync(
-    resolve(root, `${EVIDENCE}/scope-validator-run.json`),
-    `${JSON.stringify(record, null, 2)}\n`,
-  );
+  writeFileSync(resolve(root, evidenceFile), `${JSON.stringify(record, null, 2)}\n`);
   console.log(
     `\nMC-19 scope validator: ${record.passed}/${record.total} checks passed · ${record.status}`,
   );
-  console.log(`Evidence: ${EVIDENCE}/scope-validator-run.json`);
+  console.log(`Evidence: ${evidenceFile}`);
   process.exit(failed.length === 0 ? 0 : 1);
 }
 

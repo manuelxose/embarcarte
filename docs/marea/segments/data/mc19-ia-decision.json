@@ -1,0 +1,75 @@
+{
+  "contractId": "MC19-IA-DECISION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-19",
+  "date": "2026-11-04",
+  "status": "DECIDED_INTERNAL_ONLY",
+  "publicationAuthorized": false,
+  "indexationAuthorized": false,
+  "deploymentAuthorized": false,
+  "publicRouteRegistered": false,
+  "previewNamespace": "internal/segments",
+  "identities": [
+    {
+      "segmentId": "professionals",
+      "identityClass": "MC15_REUSED",
+      "entityId": "ENT-PAGE-PROFESSIONALS",
+      "mc15RouteId": "professionals",
+      "mc15PageType": "PROFESSIONALS",
+      "preview": { "es": "/internal/segments/professionals", "en": "/en/internal/segments/professionals" },
+      "reservedPublicPath": { "es": "/profesionales", "en": "/en/professionals" },
+      "reservedPublicPathActivated": false,
+      "publicRouteRegistered": false
+    },
+    {
+      "segmentId": "installers",
+      "identityClass": "MC15_REUSED",
+      "entityId": "ENT-PAGE-INSTALLERS",
+      "mc15RouteId": "installers",
+      "mc15PageType": "INSTALLERS",
+      "preview": { "es": "/internal/segments/installers", "en": "/en/internal/segments/installers" },
+      "reservedPublicPath": { "es": "/instaladores", "en": "/en/installers" },
+      "reservedPublicPathActivated": false,
+      "publicRouteRegistered": false
+    },
+    {
+      "segmentId": "shipowners",
+      "identityClass": "NEW_INTERNAL_ONLY",
+      "entityId": "ENT-INTERNAL-SHIPOWNERS",
+      "mc15RouteId": null,
+      "mc15PageType": null,
+      "preview": { "es": "/internal/segments/shipowners", "en": "/en/internal/segments/shipowners" },
+      "reservedPublicPath": null,
+      "reservedPublicPathActivated": false,
+      "publicRouteRegistered": false,
+      "note": "No public owners route, entity or page type exists in MC-15; none is created or proposed here."
+    }
+  ],
+  "audienceSemantics": {
+    "professionals": "Professional marine businesses that specify, operate or maintain more than one vessel. Not installers, not individual owners, not a partner programme.",
+    "installers": "Independent installers and technical workshops evaluating installation, commissioning and calibration work. Not a registration, accreditation, directory or agreement.",
+    "shipowners": "The individual owner of a recreational vessel. Commercial shipowners, merchant vessels, professional fleets and the contracted FLEET solution are explicitly excluded.",
+    "armadorAmbiguity": "Spanish 'armador' designates both a recreational-vessel owner and a merchant-vessel owner/operator. This page addresses only the former; the two are never treated as equivalent."
+  },
+  "collisionCheck": {
+    "publicRoutes": 21,
+    "proposedRoutes": 23,
+    "collisions": 0,
+    "method": "Exact comparison of both preview paths against LOCALIZED_ROUTES (es/en) and proposed-routes.json routePatternEs/routePatternEn"
+  },
+  "boundaries": {
+    "mc20": "NAV/HUB/AIS family pages stay MC-20-owned; not implemented or pre-empted here.",
+    "mc21": "Subsequent catalogue work defined by the actual roadmap; not implemented.",
+    "mc22": "Subsequent commercial presentation work defined by the actual roadmap; not implemented.",
+    "mc23": "Bundle/comparison work in its actual roadmap scope; not implemented."
+  },
+  "isolation": {
+    "renderer": "preview/landing (marea-landing-preview), RenderMode.Server, loopback 127.0.0.1",
+    "noIndex": true,
+    "hostAllowlist": ["127.0.0.1", "localhost"],
+    "externalServices": 0,
+    "personalData": false,
+    "productionImport": false,
+    "production404VerifiedBy": "MC19-I10 + e2e/segments production isolation test"
+  }
+}

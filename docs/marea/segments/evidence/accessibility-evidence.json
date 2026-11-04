@@ -1,0 +1,87 @@
+{
+  "contractId": "MC19-ACCESSIBILITY-EVIDENCE",
+  "milestone": "MC-19",
+  "measuredAt": "2026-11-04T17:12:27.842Z",
+  "tool": "@axe-core/playwright",
+  "tags": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+  ],
+  "automatedOnly": true,
+  "manualLimits": [
+    "Screen-reader announcement order was not tested with a real assistive technology.",
+    "Automated contrast checks cover rendered text nodes only.",
+    "Zoom and OS-level text scaling were not exercised."
+  ],
+  "pages": [
+    {
+      "path": "/internal/segments/professionals",
+      "segmentId": "professionals",
+      "locale": "es",
+      "violations": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0,
+      "details": []
+    },
+    {
+      "path": "/en/internal/segments/professionals",
+      "segmentId": "professionals",
+      "locale": "en",
+      "violations": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0,
+      "details": []
+    },
+    {
+      "path": "/internal/segments/installers",
+      "segmentId": "installers",
+      "locale": "es",
+      "violations": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0,
+      "details": []
+    },
+    {
+      "path": "/en/internal/segments/installers",
+      "segmentId": "installers",
+      "locale": "en",
+      "violations": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0,
+      "details": []
+    },
+    {
+      "path": "/internal/segments/shipowners",
+      "segmentId": "shipowners",
+      "locale": "es",
+      "violations": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0,
+      "details": []
+    },
+    {
+      "path": "/en/internal/segments/shipowners",
+      "segmentId": "shipowners",
+      "locale": "en",
+      "violations": 0,
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0,
+      "details": []
+    }
+  ]
+}

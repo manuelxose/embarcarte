@@ -21,6 +21,7 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import { SEGMENT_PREVIEW_ROUTES } from '../../src/app/marea-segments/models/segment-identity';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 const host = '127.0.0.1';
@@ -66,10 +67,11 @@ app.use((req, res, next) => {
 app.get('/__preview/health', (_req, res) => {
   res.json({
     status: 'ok',
-    preview: 'MC-18 internal landing',
+    preview: 'MC-18 internal landing + MC-19 internal audience pages',
     publication: 'NOT_AUTHORIZED',
     indexation: 'noindex, nofollow, noarchive',
     host,
+    segmentPaths: SEGMENT_PREVIEW_ROUTES.map((route) => `/${route.path}`),
   });
 });
 
@@ -100,8 +102,11 @@ app.use((_req, res) => {
  */
 const server = isMainModule(import.meta.url)
   ? app.listen(port, host, () => {
-      console.log(`MC-18 internal landing preview (NOT PUBLISHED): http://${host}:${port}/marea`);
+      console.log(`MC-18/MC-19 internal preview (NOT PUBLISHED): http://${host}:${port}/marea`);
       console.log('Publication NOT_AUTHORIZED · indexation disabled · loopback only');
+      for (const route of SEGMENT_PREVIEW_ROUTES) {
+        console.log(`  segment: http://${host}:${port}/${route.path} (${route.segmentId})`);
+      }
     })
   : null;
 

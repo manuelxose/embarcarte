@@ -1,0 +1,87 @@
+{
+  "contractId": "MC19-SCOPE-SUPERSESSION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-19",
+  "date": "2026-11-04",
+  "status": "SUPERSEDED_BY_AUTHORIZED_INSTRUCTION",
+  "supersededContract": "MC19-SCOPE-PROPOSAL (v1.0.0, status BLOCKED_PENDING_SCOPE_APPROVAL)",
+  "supersededBy": "docs/marea/segments/MC19-IMPLEMENTATION-CONTRACT.md",
+  "instructionRecord": "docs/marea/segments/data/mc19-scope-instruction.json",
+  "authorizedScope": "OPTION_A — three internal bilingual audience pages (professionals, installers, shipowners)",
+  "implementationAuthorized": true,
+  "preservedProposalArtefacts": [
+    "docs/marea/segments/MC19-SCOPE-PROPOSAL.md",
+    "docs/marea/segments/MC19-SOURCE-VERIFICATION.md",
+    "docs/marea/segments/MC19-DEPENDENCIES-AND-BLOCKERS.md",
+    "docs/marea/segments/MC19-ACCEPTANCE-CRITERIA.md",
+    "docs/marea/segments/MC19-RISK-REGISTER.md",
+    "docs/marea/segments/MC19-MC20-HANDOFF-INPUTS.md",
+    "docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md",
+    "docs/marea/segments/data/mc19-scope-proposal.json",
+    "docs/marea/segments/data/mc19-source-verification.json",
+    "docs/marea/segments/data/mc19-risk-register.json",
+    "docs/marea/segments/data/mc19-mc20-handoff-inputs.json",
+    "docs/marea/segments/data/mc19-review-findings.json",
+    "docs/marea/segments/data/manifest.json"
+  ],
+  "preservationRule": "The v1 proposal documents and datasets are preserved as historical evidence. Their BLOCKED verdict describes the state before the instruction was supplied and is not retroactively edited.",
+  "v1ChecksRetained": [
+    "MC19-01 documents exist",
+    "MC19-02 datasets exist",
+    "MC19-03 baseline is an ancestor",
+    "MC19-05 MC-18 implementation preserved",
+    "MC19-06 predecessor evidence preserved",
+    "MC19-07 public surface unchanged",
+    "MC19-09 no dependency change",
+    "MC19-10 proposal contract internally consistent",
+    "MC19-11 owners public route still absent",
+    "MC19-12 legal/privacy state unchanged",
+    "MC19-13 MC-20 not started",
+    "MC19-14 independent review recorded",
+    "MC19-15 manifest counts",
+    "MC19-19 no merge/deploy/publish",
+    "MC19-20 source verification commands",
+    "MC19-22 risk summary derived"
+  ],
+  "v1ChecksSuperseded": [
+    {
+      "check": "MC19-04",
+      "reason": "The authorized implementation runs on its own branch, not the proposal branch."
+    },
+    {
+      "check": "MC19-08",
+      "reason": "Implementation absence is no longer correct; the check now proves the implementation stays inside the authorized module."
+    },
+    {
+      "check": "MC19-16",
+      "reason": "MC19_IMPLEMENTATION_STARTED is now true by authorization; MC19_VERDICT=PASS remains forbidden."
+    },
+    {
+      "check": "MC19-18",
+      "reason": "The 36-milestone registry row now records PARTIAL with the implementation contract."
+    },
+    {
+      "check": "MC19-21",
+      "reason": "The changed-file allowlist now covers the authorized implementation scope."
+    },
+    {
+      "check": "MC19-23",
+      "reason": "New MC-19 scripts (validator, dataset builder, projection) are authorized."
+    }
+  ],
+  "authorizedChangePrefixes": [
+    "src/app/marea-segments/",
+    "preview/landing/",
+    "e2e/segments/",
+    "scripts/check-mc19",
+    "scripts/build-mc19",
+    "scripts/mc19-",
+    "docs/marea/segments/"
+  ],
+  "authorizedChangeExact": [
+    "package.json",
+    "playwright.segments.config.ts",
+    "docs/marea/execution/DECISION-LOG.md",
+    "docs/marea/execution/MASTER-PROMPT-REGISTRY.md"
+  ]
+}
