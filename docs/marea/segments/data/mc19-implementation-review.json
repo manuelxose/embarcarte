@@ -1,0 +1,241 @@
+{
+  "contractId": "MC19-IMPLEMENTATION-REVIEW",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-19",
+  "status": "PENDING_ROUND_3",
+  "base": "ba63baa0e529ab9cb482fd929632d359fec1d328",
+  "implementationCommit": "cc3a62cb28da3a6c21dce16ee07580edb216debd",
+  "correctionCommit": "102c6f14f313c96c7dd0a39212add5642a3cb5f8",
+  "independence": "Neither reviewer authored the implementation; neither committed, pushed, merged or deployed.",
+  "rounds": [
+    {
+      "round": 1,
+      "reviewer": "Claude Opus 5.5 (external specialist)",
+      "access": "STATIC_ONLY_SHELL_DENIED",
+      "verdict": "NEEDS_REVISION",
+      "parentFindings": 16,
+      "findings": [
+        {
+          "id": "IR-01",
+          "severity": "MAJOR",
+          "status": "CLOSED",
+          "area": "documentation truthfulness",
+          "requiredFix": "Do not claim review/acceptance before artefacts exist",
+          "closure": "AC-10/AC-12 kept pending until persisted; PASS not declared before round 3"
+        },
+        {
+          "id": "IR-02",
+          "severity": "MAJOR",
+          "status": "CLOSED",
+          "area": "inherited regression",
+          "requiredFix": "Run MC-18 browser regression",
+          "closure": "test:landing:e2e 44/44; test:commerce-data PASS"
+        },
+        {
+          "id": "IR-03",
+          "severity": "MAJOR",
+          "status": "CLOSED",
+          "area": "copy accuracy",
+          "requiredFix": "Remove published-matrix overclaim",
+          "closure": "Reworded to unpublished per-device matrix"
+        },
+        {
+          "id": "IR-04",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "isolation evidence",
+          "requiredFix": "Record measured probes and scan both bundles",
+          "closure": "Measured statuses; browser+server scan; 404 probe artefact"
+        },
+        {
+          "id": "IR-05",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "evidence integrity",
+          "requiredFix": "Regenerate evidence at the closure commit",
+          "closure": "Evidence-only commit at closure"
+        },
+        {
+          "id": "IR-06",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "claim guard",
+          "requiredFix": "Widen monetary/claim patterns and add tests",
+          "closure": "Regex + symmetric phrases + adversarial tests"
+        },
+        {
+          "id": "IR-07",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "MC-20 boundary",
+          "requiredFix": "Make MC-19 reuse optional; batch-1 wording",
+          "closure": "Handoff and IA aligned"
+        },
+        {
+          "id": "IR-08",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "preservation",
+          "requiredFix": "Correct preserved-artefact list",
+          "closure": "updatedInPlace split; risk register 1.1.0"
+        },
+        {
+          "id": "IR-09",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "supersession",
+          "requiredFix": "Validate the supersession record",
+          "closure": "MC19-24"
+        },
+        {
+          "id": "IR-10",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "copy accuracy",
+          "requiredFix": "Remove server-side derivation claim",
+          "closure": "Derived from canonical dimensions"
+        },
+        {
+          "id": "IR-11",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "bilingual",
+          "requiredFix": "Correct pre-sale/co-owner/alternative wording",
+          "closure": "Corrected in ES and EN"
+        },
+        {
+          "id": "IR-12",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "security docs",
+          "requiredFix": "Document full CSP and unsafe-inline",
+          "closure": "Full policy + limitation"
+        },
+        {
+          "id": "IR-13",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "minimality",
+          "requiredFix": "Remove dead exports",
+          "closure": "Removed"
+        },
+        {
+          "id": "IR-14",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "docs errata",
+          "requiredFix": "Fix citation and counts",
+          "closure": "Citation and counts reconciled"
+        },
+        {
+          "id": "IR-15",
+          "severity": "INFORMATIONAL",
+          "status": "CLOSED",
+          "area": "IA wording",
+          "requiredFix": "Resolve one-vessel owner boundary",
+          "closure": "On behalf of others vs individual owner"
+        },
+        {
+          "id": "IR-16",
+          "severity": "INFORMATIONAL",
+          "status": "CLOSED",
+          "area": "security wording",
+          "requiredFix": "Distinguish business endpoint from health route",
+          "closure": "Business/data-collection endpoint; health route disclosed"
+        }
+      ],
+      "openBlocking": 0,
+      "openMajor": 0
+    },
+    {
+      "round": 2,
+      "reviewer": "independent native auditor (deepseek-v4-pro), full shell",
+      "access": "FULL_SHELL",
+      "verdict": "NEEDS_REVISION",
+      "commands": {
+        "test:mc19": "17/17 PASS",
+        "test:mc19:unit": "43/43 PASS",
+        "check:mc19:data": "PASS",
+        "test:mc19-scope": "24/24 PASS",
+        "tsc:app": "exit 0",
+        "tsc:preview": "exit 0",
+        "build:landing:preview": "exit 0, 0 prerendered",
+        "playwright:segments": "22/22 PASS",
+        "test:commerce-data": "1832/1832 PASS",
+        "productionBundleScan": "0 MC-19 identifiers",
+        "predecessorDiffs": "empty"
+      },
+      "findings": [
+        {
+          "id": "IR2-01",
+          "severity": "MAJOR",
+          "status": "CLOSED",
+          "area": "evidence integrity",
+          "requiredFix": "Regenerate all evidence at the closure commit and commit it",
+          "closure": "Evidence-only commit after the closure commit"
+        },
+        {
+          "id": "IR2-02",
+          "severity": "MAJOR",
+          "status": "CLOSED",
+          "area": "review persistence",
+          "requiredFix": "Persist audit doc and review JSON",
+          "closure": "MC19-INDEPENDENT-AUDIT.md + this dataset"
+        },
+        {
+          "id": "IR2-03",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "counts",
+          "requiredFix": "Reconcile unit 43/43 and scope 24/24",
+          "closure": "All documents updated"
+        },
+        {
+          "id": "IR2-04",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "consistency",
+          "requiredFix": "Reconcile 58/60",
+          "closure": "Test report reconciled"
+        },
+        {
+          "id": "IR2-05",
+          "severity": "MINOR",
+          "status": "CLOSED",
+          "area": "verdict hygiene",
+          "requiredFix": "Do not declare PASS before re-verification",
+          "closure": "PENDING_FINAL_REVERIFICATION until round 3"
+        },
+        {
+          "id": "IR2-06",
+          "severity": "INFORMATIONAL",
+          "status": "CLOSED",
+          "area": "working tree",
+          "requiredFix": "Record the drift explicitly",
+          "closure": "Closure commits record it"
+        }
+      ],
+      "openBlocking": 0,
+      "openMajor": 0
+    }
+  ],
+  "round3": {
+    "status": "PENDING",
+    "requestedFrom": "round-2 independent native auditor",
+    "scope": "verify IR2-01/IR2-02 closure, evidence-only commit, counts and PASS wording"
+  },
+  "summary": {
+    "blocking": 0,
+    "majorClosed": 5,
+    "minorInformationalClosed": 17,
+    "openBlocking": 0,
+    "openMajor": 0,
+    "finalVerdict": "PENDING_ROUND_3"
+  },
+  "limits": [
+    "No manual WCAG/assistive-technology audit (AC-08 PARTIAL).",
+    "No second browser engine or 400% zoom test.",
+    "English copy is not professionally translated (R20).",
+    "No penetration test or OS-level isolation proof."
+  ]
+}

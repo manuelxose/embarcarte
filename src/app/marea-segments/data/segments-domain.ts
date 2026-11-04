@@ -59,7 +59,7 @@ export function segmentFamilySummaries(segmentId: SegmentId): readonly MareaFami
   return summaries;
 }
 
-/** Derived fail-closed readiness summary with MC-19-localized dimension labels. */
+/** Fail-closed readiness summary derived from canonical dimensions, with MC-19-localized labels. */
 export function segmentReadinessSummary(locale: MareaLocale): MareaReadinessSummary {
   const labels = SEGMENT_CONTENT.shared.readinessLabels.map((entry) => ({
     dimensionId: entry.dimensionId,

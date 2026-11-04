@@ -80,7 +80,7 @@ MC-18 components reused by import, not copied: `MareaLandingSectionFrame`,
 | `scripts/mc19-segments-projection.mjs`       | pure projection of the content source                           |
 | `scripts/build-mc19-segments-data.mjs`       | writes/`--check`s the two deterministic datasets                |
 | `scripts/check-mc19-implementation.mjs`      | 17-check validator, writes run evidence                         |
-| `scripts/check-mc19-implementation.test.mjs` | 42 unit/adversarial tests of the guards                         |
+| `scripts/check-mc19-implementation.test.mjs` | 43 unit/adversarial tests of the guards                         |
 | `scripts/check-mc19-scope.mjs`               | v1 proposal guard, supersession-aware (historical preservation) |
 | `e2e/segments/`                              | SSR/hydration, accessibility, content, responsive, isolation    |
 | `playwright.segments.config.ts`              | isolated preview E2E configuration                              |
@@ -91,7 +91,7 @@ MC-18 components reused by import, not copied: `MareaLandingSectionFrame`,
 npm run build:mc19:data      # write datasets
 npm run check:mc19:data      # fail on stale datasets
 npm run test:mc19            # deterministic validator (17 checks)
-npm run test:mc19:unit       # unit + adversarial (42 tests)
+npm run test:mc19:unit       # unit + adversarial (43 tests)
 npm run test:mc19:e2e        # build preview + Playwright (22 tests)
 npm run build:landing:preview
 ```

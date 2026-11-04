@@ -2,13 +2,13 @@
   "contractId": "MC19-SCOPE-VALIDATOR-RUN",
   "contractVersion": "1.0.0",
   "milestone": "MC-19",
-  "generatedAt": "2026-11-04T17:12:06.668Z",
-  "head": "ba63baa0e529ab9cb482fd929632d359fec1d328",
+  "generatedAt": "2026-11-04T17:33:39.216Z",
+  "head": "102c6f14f313c96c7dd0a39212add5642a3cb5f8",
   "branch": "feature/marea-mc19-internal-audience-pages",
   "baseline": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094",
   "status": "PASS",
-  "total": 23,
-  "passed": 23,
+  "total": 24,
+  "passed": 24,
   "failed": 0,
   "checks": [
     {
@@ -57,7 +57,7 @@
       "id": "MC19-08",
       "description": "the authorized implementation stays inside the MC-19 module",
       "status": "PASS",
-      "detail": "0 out-of-module implementation files in 75 changed paths"
+      "detail": "0 out-of-module implementation files in 80 changed paths"
     },
     {
       "id": "MC19-09",
@@ -135,7 +135,7 @@
       "id": "MC19-21",
       "description": "every changed file is inside the recorded MC-19 scope",
       "status": "PASS",
-      "detail": "75 changed paths within scope"
+      "detail": "80 changed paths within scope"
     },
     {
       "id": "MC19-22",
@@ -148,6 +148,12 @@
       "description": "the scripts added by MC-19 are the authorized ones",
       "status": "PASS",
       "detail": "0 out-of-scope script changes"
+    },
+    {
+      "id": "MC19-24",
+      "description": "the supersession record is valid and bound to the instruction",
+      "status": "PASS",
+      "detail": "supersession bound to AUTHORIZED_INTERNAL_SCOPE"
     }
   ]
 }

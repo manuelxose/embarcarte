@@ -25,7 +25,7 @@ import { MareaSegmentHeading } from '../components/segment-heading';
 /**
  * Section 06 — explicit availability and readiness states.
  *
- * The readiness summary is derived server-side from the canonical dimensions.
+ * The readiness summary is derived from the canonical dimensions.
  * The recorded facts are copied from the generated projection and the commercial
  * CTA is the verified fail-closed MC-17 component: no button, no price, no stock.
  */

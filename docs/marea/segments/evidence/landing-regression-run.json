@@ -5,13 +5,13 @@
   "owner": "MC-18 implementation team",
   "publicationStatus": "NOT_AUTHORIZED",
   "status": "FAIL",
-  "runAt": "2026-11-04T17:10:34.817Z",
-  "head": "ba63baa0e529ab9cb482fd929632d359fec1d328",
+  "runAt": "2026-11-04T17:30:49.852Z",
+  "head": "102c6f14f313c96c7dd0a39212add5642a3cb5f8",
   "baseCommit": "6002c49f898e755154c1b65c97781177719ce11c",
   "totals": {
     "checks": 60,
-    "passed": 59,
-    "failed": 1
+    "passed": 58,
+    "failed": 2
   },
   "checks": [
     {
@@ -191,8 +191,8 @@
     {
       "id": "MC18-30",
       "description": "no public navigation or corporate UI is changed",
-      "status": "PASS",
-      "detail": "only src/app/marea-landing was added; public app and MC-17 design system untouched"
+      "status": "FAIL",
+      "detail": "public source changed: src/app/marea-segments/components/segment-heading.ts, src/app/marea-segments/content/blocks.ts, src/app/marea-segments/content/content.types.ts, src/app/marea-segments/content/evidence.ts, src/app/marea-segments/content/factories.ts, src/app/marea-segments/content/index.ts, src/app/marea-segments/content/installers.ts, src/app/marea-segments/content/professionals.ts, src/app/marea-segments/content/shared.ts, src/app/marea-segments/content/shipowners.ts"
     },
     {
       "id": "MC18-31",
@@ -348,7 +348,7 @@
       "id": "MC18-56",
       "description": "the changed-file scope stays inside MC-18",
       "status": "FAIL",
-      "detail": "out-of-scope changes: docs/marea/segments/data/mc19-mc20-handoff-inputs.json, docs/marea/segments/data/mc19-risk-register.json, scripts/check-mc19-scope.mjs, docs/marea/segments/MC19-ACCEPTANCE-MATRIX.md, docs/marea/segments/MC19-IA-DECISION.md, docs/marea/segments/MC19-IMPLEMENTATION-CONTRACT.md, docs/marea/segments/MC19-TECHNICAL-INVENTORY.md, docs/marea/segments/data/mc19-content-projection.json"
+      "detail": "out-of-scope changes: docs/marea/segments/evidence/scope-validator-run-v2.json"
     },
     {
       "id": "MC18-57",

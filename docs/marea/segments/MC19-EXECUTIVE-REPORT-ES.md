@@ -1,228 +1,108 @@
 # MC-19/36 — Informe ejecutivo (ES)
 
-| Campo       | Valor                                                                                                    |
-| ----------- | -------------------------------------------------------------------------------------------------------- |
-| Entregable  | D07 — informe ejecutivo en español                                                                       |
-| Hito        | MC-19/36 — páginas de segmento/solución y flujos de consulta (armadores, instaladores, profesionales)    |
-| Rama        | `feature/marea-mc19-scope-proposal`                                                                      |
-| Base        | MC-18 HEAD `3490c0f71eb6eaa89588b7a6d75bb3b6066cd094` (`feature/marea-mc18-bilingual-corporate-landing`) |
-| Estado      | **BLOCKED** — propuesta de alcance entregada; implementación no iniciada                                 |
-| PR          | Borrador contra `feature/marea-mc18-bilingual-corporate-landing`, sin fusionar                           |
-| Publicación | **NOT_AUTHORIZED**                                                                                       |
-| Paquete     | `docs/marea/segments/` (D01-D07 + 6 datasets + evidencia del validador)                                  |
+| Campo                                 | Valor                                                                                        |
+| ------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Hito                                  | MC-19/36 — páginas de segmento y flujos de consulta (armadores, instaladores, profesionales) |
+| Alcance ejecutado                     | OPTION A — tres páginas internas bilingües de audiencia                                      |
+| Rama                                  | `feature/marea-mc19-internal-audience-pages`                                                 |
+| Baseline                              | `ba63baa0e529ab9cb482fd929632d359fec1d328`                                                   |
+| Commit de implementación              | `cc3a62cb28da3a6c21dce16ee07580edb216debd`                                                   |
+| Commit de correcciones (ronda 1)      | `102c6f14f313c96c7dd0a39212add5642a3cb5f8`                                                   |
+| PR                                    | [#27](https://github.com/manuelxose/embarcarte/pull/27) — draft, sin merge                   |
+| PR previo preservado                  | [#26](https://github.com/manuelxose/embarcarte/pull/26) — draft, sin merge                   |
+| Publicación / indexación / despliegue | `NOT_AUTHORIZED`                                                                             |
+| Veredicto global                      | `MC19_VERDICT = PARTIAL`                                                                     |
 
-## A. Resumen ejecutivo
+## 1. Resumen ejecutivo
 
-MC-19 no se ha implementado. El programa define el objetivo del hito (páginas de
-segmento/solución y flujos de consulta para armadores, instaladores y profesionales) y su
-dependencia de MC-18, pero **no está registrado ni suministrado el Master Prompt autoritativo
-de MC-19**: el registro de 36 prompts declara expresamente que los prompts 03-36 son
-marcadores de planificación y que el texto emitido por el cliente es la autoridad. La
-ausencia en el repositorio no prueba por sí sola que no se emitiera sin commitear (precedente
-MC-18); la parada se apoya también en bloqueos verificables. El registro de rutas de MC-15 no
-contiene ninguna página de armadores, y todos los flujos de consulta/captación de leads están
-bloqueados por la compuerta de privacidad `GATE-PRIVACY-DPA-DPIA` (24 documentos requeridos,
-0 ejecutados).
+La instrucción de ejecución de MC-19, entregada por el product owner solicitante el 2026-11-04,
+autorizó el alcance interno **OPTION A**: tres páginas de audiencia bilingües
+(`professionals`, `installers`, `shipowners`), sin flujos de consulta ni captación de datos, dentro
+de la previsualización aislada en loopback. Esa instrucción se ha registrado con su procedencia real
+en `MC19-IMPLEMENTATION-CONTRACT.md` y `data/mc19-scope-instruction.json`; no se atribuye a ninguna
+autoridad distinta del product owner y las aprobaciones externas se registran como **OUTSTANDING**,
+no como concedidas.
 
-Implementar ahora habría exigido inventar el conjunto de páginas, la ruta/entidad de
-armadores, el contrato de contenido y el comportamiento de las CTA, además de introducir
-captación de datos personales no autorizada. Por eso se aplicó la regla explícita del
-encargo: **documentar una propuesta de alcance y detener la implementación**.
+El resultado es una implementación interna completa y verificable: un único árbol de componentes
+para tres audiencias y dos idiomas, ocho secciones por página, contenido bilingüe tipado con
+evidencia resoluble, reutilización verificada del sistema de diseño MC-17, acciones deliberadamente
+deshabilitadas y aislamiento estricto respecto a la aplicación pública. No se ha creado ninguna ruta
+pública, formulario, endpoint de negocio, almacén de leads, precio, compra, sitemap, canonical,
+hreflang ni JSON-LD.
 
-La propuesta es completa y accionable: tres opciones de alcance, diez prerrequisitos, diez
-criterios de aceptación propuestos, un DAG de nueve tareas, un registro de catorce riesgos,
-un plan de verificación y un traspaso a MC-20 que no presupone que MC-19 se haya
-implementado. La opción recomendada (A) es la más pequeña que respeta a las tres audiencias:
-tres páginas internas bilingües, sin flujo de consulta, en la previsualización aislada y con
-las CTA fail-closed.
+El veredicto global es **PARTIAL**, no PASS: la ingeniería interna está completa, pero las
+autorizaciones legal, comercial, de privacidad y de publicación siguen sin resolverse.
 
-## B. Veredicto
+## 2. Qué se ha implementado
 
-```text
-MC19_VERDICT = BLOCKED
-MC19_SCOPE_PROPOSAL = DELIVERED
-MC19_INDEPENDENT_AUDIT_RECOMMENDATION = PASS_INTERNAL_SCOPE_PROPOSAL
-MC19_OPEN_FINDINGS = 0
-MC19_IMPLEMENTATION_STARTED = false
-MC19_IMPLEMENTATION_AUTHORIZED = false
-MC19_MASTER_PROMPT = NOT_RECORDED_OR_SUPPLIED
-MC19_IA_ROUTE_DECISION = ABSENT
-MC19_PRIVACY_GATE = BLOCKED
-MC19_PUBLICATION = NOT_AUTHORIZED
-MC19_LEAD_CAPTURE = false
-MC19_PUBLIC_ROUTES_ACTIVATED = 0
-MC19_MERGED = false
-MC19_DEPLOYED = false
-MC19_PUBLISHED = false
-```
+| Identidad       | Entidad                                         | Ruta interna ES / EN                                                       | Ruta pública                   |
+| --------------- | ----------------------------------------------- | -------------------------------------------------------------------------- | ------------------------------ |
+| `professionals` | `ENT-PAGE-PROFESSIONALS` (MC-15)                | `/internal/segments/professionals` · `/en/internal/segments/professionals` | ninguna                        |
+| `installers`    | `ENT-PAGE-INSTALLERS` (MC-15)                   | `/internal/segments/installers` · `/en/internal/segments/installers`       | ninguna                        |
+| `shipowners`    | `ENT-INTERNAL-SHIPOWNERS` (nueva, solo interna) | `/internal/segments/shipowners` · `/en/internal/segments/shipowners`       | ninguna; no se reserva ninguna |
 
-`BLOCKED` no es `FAIL`: no se ha perdido implementación requerida y la propuesta elimina la
-ambigüedad que impedía una ejecución defendible. El siguiente paso es una decisión del
-propietario (P01/P02/P10), no más código.
+Cada página contiene: introducción específica de audiencia; límite semántico («para quién es / para
+quién no es»); referencias canónicas a familias de producto; casos de uso basados en evidencia;
+capacidades con límite obligatorio; contexto de arquitectura/ecosistema; disponibilidad y
+preparación derivadas; referencias documentales con estado real; y un cierre con acción
+deshabilitada de forma segura.
 
-## C. Línea base y preservación
+Cifras del contenido: 313 bloques por idioma (104/104/105 por audiencia), 41 bloques compartidos,
+708 registros bilingües resueltos, 18 fuentes de evidencia y 8 secciones con anclas estables.
 
-| Elemento                             | Valor                                                                                   |
-| ------------------------------------ | --------------------------------------------------------------------------------------- |
-| HEAD local / remoto MC-18            | `3490c0f71eb6eaa89588b7a6d75bb3b6066cd094` (idénticos)                                  |
-| PR #25                               | OPEN / DRAFT / MERGEABLE, base `feature/marea-mc17-premium-design-system`, sin fusionar |
-| `main`                               | No contiene la cadena MC-17/MC-18; el PR sigue apilado, nunca contra `main`             |
-| Implementación MC-18 / sistema MC-17 | Sin cambios (`git diff` vacío contra `3490c0f`)                                         |
-| Rutas públicas / sitemap / `public/` | Sin cambios                                                                             |
-| Evidencia y auditoría MC-18          | Preservadas; el validador MC-18 se re-ejecuta sin modificar su evidencia histórica      |
-| Deuda heredada                       | Visible y abierta; no se cierra ninguna partida                                         |
+## 3. Decisión de arquitectura de información
 
-## D. Descubrimiento y decisión de alcance
+`shipowners` es una identidad **nueva y solo interna**: MC-15 no define ruta, entidad ni tipo de
+página para armadores, por lo que no se crea ni se reserva ninguna ruta pública. `professionals` e
+`installers` reutilizan sus identidades MC-15 y sus rutas públicas propuestas quedan como referencia
+de planificación, **sin registrar**.
 
-Se inspeccionaron el repositorio y su historia, el registro de 36 prompts, la roadmap
-comercial, los documentos MC-18 D18/D21/D22/D23, el JSON de handoff
-`data/mc19-handoff-inputs.json`, el registro de rutas MC-15, las compuertas MC-14 y el estado
-de comercio MC-16. El resultado es que el alcance contractual de MC-19 **no está definido de
-forma suficiente**:
+Se documenta explícitamente que «armador» no es un único público: la página trata al **armador
+particular de una embarcación de recreo** y excluye al armador comercial, a los buques mercantes y a
+la flota profesional. `FLEET` es una solución B2B contratada y no se presenta como producto de
+armador.
 
-- no hay constancia de emisión ni suministro del Master Prompt autoritativo; la ausencia en
-  el repositorio no lo prueba por sí sola (MC-18 registra el mismo hueco de prompt no
-  commiteado), por lo que la parada se apoya también en los bloqueos verificables;
-- no existe ruta/entidad/página de armadores en MC-15;
-- no está decidido si “segment/solution pages” son 3 páginas de audiencia, las 2 páginas
-  profesionales de MC-15, la portada de soluciones más 6 páginas de paquete, o un subconjunto;
-- “real CTAs only” no define el comportamiento de las CTA, y quote/pre-registration
-  requieren captación de leads y base jurídica inexistentes;
-- no hay contrato de contenido, copy aprobado, criterios medibles ni frontera con MC-20-23;
-- la compuerta de privacidad está bloqueada y 0/24 documentos están ejecutados.
+La comprobación de colisiones es determinista: 0 colisiones con las 21 rutas públicas y con las 23
+rutas propuestas de MC-15 (validador MC19-I02).
 
-## E. Inventario de entregables
+## 4. Diseño y reutilización
 
-| Entregable | Ruta                                                                                                                                                                       | Estado     |
-| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
-| D01        | `docs/marea/segments/MC19-SCOPE-PROPOSAL.md`                                                                                                                               | Entregado  |
-| D02        | `docs/marea/segments/MC19-SOURCE-VERIFICATION.md`                                                                                                                          | Entregado  |
-| D03        | `docs/marea/segments/MC19-DEPENDENCIES-AND-BLOCKERS.md`                                                                                                                    | Entregado  |
-| D04        | `docs/marea/segments/MC19-ACCEPTANCE-CRITERIA.md`                                                                                                                          | Entregado  |
-| D05        | `docs/marea/segments/MC19-RISK-REGISTER.md`                                                                                                                                | Entregado  |
-| D06        | `docs/marea/segments/MC19-MC20-HANDOFF-INPUTS.md`                                                                                                                          | Entregado  |
-| D07        | `docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md`                                                                                                                          | Entregado  |
-| Datos      | `data/mc19-scope-proposal.json`, `mc19-source-verification.json`, `mc19-risk-register.json`, `mc19-mc20-handoff-inputs.json`, `mc19-review-findings.json`, `manifest.json` | Entregados |
-| Validador  | `scripts/check-mc19-scope.mjs` + `scripts/check-mc19-scope.test.mjs`                                                                                                       | Entregados |
-| Evidencia  | `docs/marea/segments/evidence/scope-validator-run.json`                                                                                                                    | Generada   |
+Se reutilizan 15 módulos del sistema MC-17, entre ellos `marea-theme`, `marea-text`,
+`marea-notice`, `marea-responsive-nav`, `marea-family-card`, `marea-readiness-panel`,
+`marea-commercial-cta`, `marea-definition-list` y `marea-button`. No se ha modificado ni bifurcado el
+sistema de diseño: el diff de `src/app/marea-design-system` es vacío y el validador rechaza
+selectores duplicados y definiciones de tokens propios (MC19-I07).
 
-**No entregado (deliberadamente):** ninguna página, ruta, componente, formulario, endpoint,
-almacén de leads, registro de instaladores, precio, SKU o artefacto público de MC-19.
+La página usa composición propia solo para cáscara y secciones; no hay una segunda biblioteca de
+componentes. Se reutilizan también `marea-landing-section` y `marea-landing-sheet-index` del MC-18
+sin modificar el landing.
 
-## F. Matriz de criterios de aceptación (resumen)
+## 5. Bilingüismo
 
-| ID    | Criterio                                                                                | Estado   |
-| ----- | --------------------------------------------------------------------------------------- | -------- |
-| AC-01 | Master Prompt emitido y alcance aprobado (P01, P10)                                     | PROPOSED |
-| AC-02 | Decisión IA/ruta/entidad con comprobación de colisiones (P02)                           | PROPOSED |
-| AC-03 | Una página por árbol de componentes bilingüe, bloques con evidencia y estados fijos     | PROPOSED |
-| AC-04 | Reutilización del sistema MC-17 sin fork                                                | PROPOSED |
-| AC-05 | Sin ruta pública, canonical, hreflang, JSON-LD ni sitemap; preview loopback con noindex | PROPOSED |
-| AC-06 | Sin formulario, endpoint, lead, registro, quote o pre-registration; CTA fail-closed     | PROPOSED |
-| AC-07 | SSR/hidratación, teclado, foco, movimiento reducido y responsive 320-1440               | PROPOSED |
-| AC-08 | Compuertas con recuentos exactos y sin PASS prefijado                                   | PROPOSED |
-| AC-09 | Revisión independiente con 0 BLOCKING y 0 MAJOR abiertos                                | PROPOSED |
-| AC-10 | PR en borrador; sin merge, despliegue, publicación ni activación pública                | PROPOSED |
+Un único origen de contenido (`src/app/marea-segments/content/index.ts`) alimenta un único árbol de
+componentes. Cada bloque tiene `contentId` estable, `sectionId`, `copyClass`, `evidenceIds` y los
+literales fijos `INTERNAL_DRAFT_NOT_APPROVED` / `NOT_APPROVED`. El validador comprueba paridad
+estructural, ausencia de español sin traducir en inglés, resolución de evidencias y ausencia de
+afirmaciones prohibidas o importes monetarios (MC19-I03/I04/I05/I06).
 
-`MC19_ACCEPTANCE_CRITERIA_VERIFIED = 0`. Una propuesta no puede aprobar un hito.
+Límite declarado: la copia inglesa es redacción interna, no una traducción profesional revisada
+(riesgo R20). No se afirma calidad de traducción.
 
-## G. Evidencia de pruebas y compuertas
+## 6. Aislamiento y seguridad de la previsualización
 
-Mediciones finales en el HEAD de cierre (`353a61a`; corrección `c0dc986`, etiquetas
-`8909ad5`), tras el cierre de la revisión. La cifra `59/60` de la fase pre-commit no se oculta: era un control de
-alcance del árbol de trabajo de MC-18, no una regresión; tras el commit la compuerta se
-re-ejecutó en **60/60** y su registro se conserva en
-`docs/marea/segments/evidence/landing-gate-run.json` sin sobrescribir la evidencia histórica
-de MC-18.
+- Enlace exclusivo a `127.0.0.1` y lista de hosts permitidos; un `Host` no loopback recibe **403**.
+- `X-Robots-Tag: noindex, nofollow, noarchive` y meta `robots` en todas las páginas.
+- CSP con `default-src 'self'`, `object-src 'none'`, `frame-ancestors 'none'` y `form-action 'none'`;
+  se documenta que `style-src`/`script-src` siguen permitiendo `'unsafe-inline'`.
+- Todas las rutas de previsualización usan `RenderMode.Server`; no hay prerender ni artefacto
+  estático indexable.
+- Sin formularios, `<input>`, `fetch`, `HttpClient`, almacenamiento, cookies, analítica ni servicios
+  externos en el módulo o el host de previsualización.
+- La aplicación pública no importa el módulo; el bundle de producción contiene **0** identificadores
+  de MC-19 y las rutas internas, `/marea`, `/en/marea`, `/profesionales`, `/instaladores` y
+  `/armadores` devuelven **404** en el servidor de producción.
 
-| Comando                                             | Resultado observado                                                                              |
-| --------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `npm run test:mc19-scope`                           | **23/23** comprobaciones deterministas, exit 0; evidencia en `evidence/scope-validator-run.json` |
-| `npm run test:mc19-scope:unit`                      | **29/29** pruebas unitarias/adversarias, exit 0                                                  |
-| `npm run test:landing` (árbol limpio)               | **60/60**, exit 0; evidencia MC-18 restaurada tras la medición                                   |
-| `npm run test:landing:unit`                         | **45/45**, exit 0                                                                                |
-| `npx tsc -p tsconfig.app.json --noEmit`             | exit 0                                                                                           |
-| `npx tsc -p preview/landing/tsconfig.json --noEmit` | exit 0                                                                                           |
-| `npm run build`                                     | exit 0; 330 archivos / 7.865.978 B; **0** identificadores de la landing                          |
-| `npm run build:landing:preview`                     | exit 0; 0 rutas prerenderizadas                                                                  |
-| Probes del servidor público (`PORT=4398`)           | `/` 200, `/en` 200, `/marea` **404**, `/en/marea` **404**                                        |
-| `npm run test:design-system` / `:unit`              | **38/38** / **41/41**, exit 0                                                                    |
-| `npm run test:commerce-data`                        | **1811/1811**, exit 0                                                                            |
-| `npm run test:ia-seo`                               | PASS: 20 datasets, 21 rutas actuales, 23 propuestas, 34 hallazgos, 13 compuertas                 |
-| `npm run test:legal-commercial`                     | **54/54**, exit 0                                                                                |
-| `npm run test:i18n` / `test:commerce`               | PASS (i18n y comercio server-authoritative)                                                      |
-| `npm run test:seo` / `test:backup`                  | PASS (101 URLs de sitemap) / PASS (backup y restore verificados)                                 |
-| `npm run test:e2e`                                  | **15/15**, exit 0                                                                                |
-| `npm run format:check`                              | exit 0                                                                                           |
-| `npm run test:financial`                            | **76/77**, exit 1; solo la heredada `V-18` (no se oculta)                                        |
-| `npm audit --omit=dev --audit-level=high`           | 0 vulnerabilidades                                                                               |
-
-No se ha ejecutado ninguna prueba nueva de implementación porque no hay implementación. Las
-compuertas anteriores verifican que la propuesta no altera el sitio público, el sistema de
-diseño, los datos de comercio ni la evidencia heredada.
-
-## H. Auditoría independiente y correcciones
-
-La revisión independiente se ejecutó sobre el commit congelado `b53f67e` y se re-verificó
-sobre el commit de corrección `77e0699`. El backend Claude Code falló dos veces a nivel de
-producto (exit 1, invalid-result) y se registra como no disponible; la revisión la realizó un
-agente independiente nativo (id `3c8d2129-b23b-4e26-9254-353e108439ac`), distinto del autor.
-Ronda 1: `NEEDS_REVISION`. Ronda 2 sobre `77e0699`: IR-02..IR-05 `CLOSED`; IR-01 `CLOSED`
-para el defecto reportado; nuevos IR-06 (MAJOR, bypass por rename) e IR-07 (MINOR,
-evidencia) — corregidos en la ronda 3 y pendientes de la re-verificación independiente.
-
-| ID    | Severidad     | Problema                                                                 | Corrección                                                                                                                     |
-| ----- | ------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| IR-01 | MAJOR         | La guarda de “sin implementación” era eludible (git diff, sin untracked) | Cambio completo contra baseline + `git status --untracked-files=all`, allowlist, helper conectado y pruebas adversariales      |
-| IR-02 | MINOR         | La declaración de parada sobredeclaraba (“ningún código/dataset”)        | Cualificada a “ningún código de producto/implementación, ruta, página, formulario, endpoint o artefacto público”               |
-| IR-03 | MINOR         | P03 aparecía como bloqueo de implementación, contradiciendo la opción A  | P03 separado en `enquiryFlowBlockers`; tablas D03 reetiquetadas                                                                |
-| IR-04 | MINOR         | La ausencia del Master Prompt se infería del registro placeholder        | P01 se afirma desde el mandato y la ausencia de aprobación registrada; se declara la limitación                                |
-| IR-05 | INFORMATIONAL | Revisión pendiente en D07 y 5 vs 6 datasets                              | D07 y `review-findings` actualizados; manifiesto con 6 datasets                                                                |
-| IR-06 | MAJOR         | El allowlist era eludible renombrando un fichero fuente fuera de alcance | `porcelainPaths` devuelve ambos lados del rename; `git diff`/`status` usan `--no-renames`; prueba adversarial del path antiguo |
-| IR-07 | MINOR         | D07 declaraba 23/23 en un HEAD donde la medición era 22/23               | Se declara 22/23 mientras IR-06 esté abierto; 23/23 y evidencia final tras el cierre                                           |
-
-Las correcciones se aplican en los commits de remediación; el cierre de cada hallazgo y la
-re-verificación independiente se registran en `data/mc19-review-findings.json`. Ningún
-hallazgo se declara `CLOSED` antes de esa re-verificación.
-
-**Cierre.** Ronda 3 sobre `c0dc986` y `8909ad5`: IR-06 `CLOSED` y IR-07 `CLOSED`.
-Recomendación final del revisor independiente:
-
-```text
-MC19_INDEPENDENT_AUDIT_RECOMMENDATION = PASS_INTERNAL_SCOPE_PROPOSAL
-MC19_OPEN_BLOCKING_FINDINGS = 0
-MC19_OPEN_MAJOR_FINDINGS = 0
-MC19_OPEN_MINOR_FINDINGS = 0
-```
-
-La condición administrativa de cierre (ronda 3, `reviewedCommit` `c0dc986`, evidencia del
-validador 23/23) queda completada en el commit de cierre. Esta recomendación se limita al
-ámbito interno de la propuesta de alcance; no es un veredicto de programa, una autorización
-de publicación, un clearance legal ni una conformidad WCAG.
-
-## I. Dependencias y riesgos
-
-| ID  | Dependencia/bloqueo                                               | Estado      |
-| --- | ----------------------------------------------------------------- | ----------- |
-| P01 | Master Prompt autoritativo de MC-19 registrado/suministrado       | ABSENT      |
-| P02 | Decisión IA/ruta/entidad de segmentos y soluciones                | ABSENT      |
-| P03 | Privacidad/DPA/DPIA (B07) — solo subámbito de consulta diferido   | BLOCKED     |
-| P04 | Copy público (B05) y claims (B06)                                 | ABSENT      |
-| P05 | Datos comerciales y precio (B08)                                  | ABSENT      |
-| P06 | Publicación/indexación/despliegue y release (B09)                 | ABSENT      |
-| P07 | Marca y uso público de MAREA (B01/B02)                            | NOT_GRANTED |
-| P08 | IP de origen y licencias (B03)                                    | NOT_CLEARED |
-| P09 | Programa de 13 compuertas MC-14 (B10)                             | 0/13        |
-| P10 | Aprobación de esta propuesta, propietarios y ámbitos de escritura | ABSENT      |
-
-Riesgos principales: invención de alcance (R01), colisión/ambigüedad IA (R02), captación sin
-base jurídica (R03), activación pública accidental (R04), fuga de claims/precio/stock (R05),
-fork del sistema de diseño (R06), paridad ES/EN (R07), solapamiento con MC-20-23 (R08),
-deriva de evidencia (R09), deuda V-18 oculta (R10), sobredeclaración de accesibilidad (R11),
-debilidad de aislamiento del preview (R12), rebinding tardío del Master Prompt (R13) y merge
-accidental (R14). El registro completo está en D05.
-
-## J. Estado legal y de publicación
+## 7. Puertas legales y comerciales (sin cambios)
 
 ```text
 TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED
@@ -236,62 +116,86 @@ TESTED_COMPATIBILITY_ROWS = 0
 PUBLICATION_AUTHORIZED = false
 INDEXATION_AUTHORIZED = false
 PRODUCTION_DEPLOYMENT = NOT_AUTHORIZED
+GATE-PRIVACY-DPA-DPIA = BLOCKED
+DOC-17 (acuerdos de instalador/distribuidor) = NOT_EXECUTED
 ```
 
-13 compuertas MC-14, 0 cerradas; 24 documentos requeridos, 0 ejecutados; 42 afirmaciones, 0
-autorizadas públicamente. Ningún éxito interno de MC-19 se interpreta como aprobación legal o
-comercial externa.
+13 puertas MC-14, 0 cerradas; 24 documentos exigidos, 0 ejecutados; 42 claims, 0 autorizados
+públicamente. Ninguna aprobación externa se ha cerrado ni reinterpretado.
 
-## K. Traspaso a MC-20
+## 8. Verificación ejecutada
 
-MC-20 (catálogo de producto, lote 1: NAV, HUB, AIS) depende de MC-02/16/18, no de una MC-19
-implementada. No debe asumir que existen páginas de segmento o solución, rutas públicas,
-precios, SKU, compra, captación de leads o autorización de publicación. Los inputs
-disponibles y ausentes están en D06 y `data/mc19-mc20-handoff-inputs.json`.
+| Comando                                                            | Resultado observado                                                                   |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
+| `npm run test:mc19`                                                | 17/17 PASS                                                                            |
+| `npm run test:mc19:unit`                                           | 43/43 PASS                                                                            |
+| `npm run test:mc19:e2e`                                            | 22/22 PASS                                                                            |
+| `npm run test:mc19-scope`                                          | 24/24 PASS (v1 preservado; supersesión validada)                                      |
+| `npx tsc -p tsconfig.app.json --noEmit`                            | exit 0                                                                                |
+| `npx tsc -p preview/landing/tsconfig.json --noEmit`                | exit 0                                                                                |
+| `npm run build`                                                    | exit 0                                                                                |
+| `npm run test:landing:e2e`                                         | 44/44 PASS                                                                            |
+| `npm run test:commerce-data`                                       | PASS                                                                                  |
+| `npm run test:i18n` / `test:commerce` / `test:seo` / `test:backup` | PASS                                                                                  |
+| `npm run test:design-system` / `:unit`                             | 38/38 y 41/41 PASS                                                                    |
+| `npm run test:landing:unit` / `check:landing:data`                 | 45/45 PASS; artefactos vigentes                                                       |
+| `npm run format:check`                                             | PASS                                                                                  |
+| `npm run test:landing` (validador MC-18)                           | 58/60; solo fallan MC18-30 y MC18-56, comprobaciones de alcance de rama no aplicables |
+| `npm run test:financial`                                           | **FAIL V-18** — deuda heredada, reportada en rojo                                     |
 
-```text
-MC20_STARTED = false
-MC20_SCOPE_APPROVED = false
-MC20_DEPENDENCY_ON_MC19_IMPLEMENTATION = false
-```
+Detalle y rastros en `MC19-TEST-REPORT.md` y en `docs/marea/segments/evidence/`.
 
-## L. Próxima acción requerida
+## 9. Revisión independiente
 
-1. Emitir el Master Prompt autoritativo de MC-19 (P01) y aprobar una revisión exacta del
-   alcance (P10).
-2. Registrar la decisión IA/ruta/entidad, incluida la página de armadores y la frontera con
-   MC-20-23 (P02).
-3. Si se aprueba la opción A, ejecutar las tareas T01-T08 con la matriz D04 y el DAG D03, sin
-   flujo de consulta.
-4. Reabrir el flujo de consulta solo cuando P03 y P06 cierren; ninguna CTA de quote o
-   pre-registration puede existir antes.
+La ronda 1 (revisor independiente, Claude Opus 5.5, auditoría estática) devolvió
+**NEEDS_REVISION** con 3 hallazgos MAJOR y 13 menores/informativos: afirmaciones documentales
+prematuras, regresión de navegador del MC-18 no ejecutada, sobreafirmación sobre una «matriz
+publicada», evidencia de aislamiento débil, desajuste de HEAD en evidencias, guardas de claims
+mejorables, contradicción en el traspaso a MC-20, lista de artefactos preservados inexacta,
+supersesión sin validar, «derivado en servidor», deriva bilingüe, CSP incompleta, exports muertos y
+errata documental.
 
-## M. Bloque de veredicto final
+Las correcciones se registran en el commit `102c6f1`: se corrigió el contenido, se reforzaron las
+guardas (incluidos importes en todas sus formas), se validó el registro de supersesión, se midieron
+las pruebas de aislamiento, se escanearon los bundles de navegador y servidor, se eliminaron exports
+muertos y se alineó el traspaso a MC-20.
 
-```text
-MC19_VERDICT = BLOCKED
-MC19_SCOPE_PROPOSAL = DELIVERED
-MC19_INTERNAL_ENGINEERING = NOT_APPLICABLE_NO_IMPLEMENTATION
-MC19_GLOBAL_COMMERCIAL_READINESS = NOT_READY
-MC19_IMPLEMENTATION_STARTED = false
-MC19_IMPLEMENTATION_AUTHORIZED = false
-MC19_MASTER_PROMPT = NOT_RECORDED_OR_SUPPLIED
-MC19_IA_ROUTE_DECISION = ABSENT
-MC19_PRIVACY_GATE = BLOCKED
-MC19_PUBLICATION = NOT_AUTHORIZED
-MC19_LEAD_CAPTURE = false
-MC19_PUBLIC_ROUTES_ACTIVATED = 0
-MC19_MERGED = false
-MC19_DEPLOYED = false
-MC19_PUBLISHED = false
+Ronda 2 (auditor nativo independiente, `deepseek-v4-pro`, con acceso completo a shell):
+**NEEDS_REVISION**, sin defecto BLOCKING de seguridad o publicación, con 2 hallazgos MAJOR de
+integridad de evidencia (evidencia comprometida desactualizada y ausencia del registro de auditoría)
+y 4 menores. El auditor ejecutó de forma independiente: validador 17/17, unitarios 43/43, guardia de
+alcance 24/24, ambos `tsc` en 0, build de previsualización en 0 con 0 rutas prerenderizadas,
+Playwright 22/22, `test:commerce-data` 1832/1832 y escaneo del bundle de producción con 0
+identificadores; los diffs de sistema de diseño, landing y propuesta v1 estaban vacíos.
 
-MC18_VERDICT = PARTIAL
-MC18_INTERNAL_LANDING_SCOPE = PASS_INTERNAL_LANDING_SCOPE
-FINANCIAL_V18 = INHERITED_OPEN
-MC16_FINAL_02 = OPEN_UNTIL_REVERIFIED
-MC13_F05 = OPEN
-MC13_F11 = OPEN
-MC13_F14 = OPEN
-MC15_GSC01 = OPEN
-MC15_GSC02 = OPEN
-```
+Las correcciones de ronda 2 se registran en un commit de cierre y un commit posterior **solo de
+evidencias** (un commit no puede contener evidencia que nombre su propio hash); la re-verificación
+final (ronda 3) se solicita al mismo auditor. El resultado se registra en `MC19-INDEPENDENT-AUDIT.md`
+y `data/mc19-implementation-review.json`. No se declara PASS_INTERNAL_SCOPE hasta que exista esa
+evidencia.
+
+## 10. Estado de entrega
+
+- Rama `feature/marea-mc19-internal-audience-pages` creada desde el baseline verificado
+  `ba63baa0e529ab9cb482fd929632d359fec1d328`.
+- PR #27 en **draft**, con base en el PR #26 (también draft). PR #26 preservado.
+- Sin merge, sin despliegue, sin publicación, sin indexación, sin sitemap.
+- MC-20 no iniciado.
+
+## 11. Riesgos y deuda heredada
+
+Registro: 20 riesgos, 6 BLOCKER, 6 HIGH, 8 MEDIUM; 4 cerrados (R01, R02, R08, R13).
+Riesgos nuevos R15–R20: build reutilizado en la previsualización, ruta pública de armadores no
+autorizada, prerender accidental, datasets obsoletos, divergencia entre fuente y página renderizada y
+falta de revisión profesional de la traducción.
+
+Deuda heredada intacta: `FINANCIAL_V18 = INHERITED_OPEN`, `MC16_FINAL_02 = OPEN_UNTIL_REVERIFIED`,
+`MC13_F05/F11/F14 = OPEN`, `MC15_GSC01/GSC02 = OPEN`.
+
+## 12. Recomendación
+
+Mantener el veredicto global **PARTIAL**, no fusionar ni publicar, y no iniciar MC-20. El siguiente
+paso es la decisión del owner sobre las autorizaciones externas (marca, propiedad intelectual y
+licencias, copy público y claims, datos comerciales y precio, publicación/indexación y privacidad) y,
+si se desea activación pública, un nuevo hito con auditoría manual de accesibilidad y revisión
+profesional de traducción.
