@@ -1809,10 +1809,22 @@ no merge, no deployment.
 
 **Context.** The 36-prompt registry row 19 defines MC-19 as "Segment/solution pages and enquiry flows (owners, installers, professionals)" with dependency MC-18. The registry also states that prompts 03-36 are planning placeholders and that the client-issued Master Prompt is authoritative. The MC-18→MC-19 handoff declares the scope but is not an MC-19 plan or approval. The authoritative MC-15 route registry has no owners route. Every enquiry/lead flow is blocked by `GATE-PRIVACY-DPA-DPIA` (24 required documents, 0 executed; 42 claims, 0 public-authorized).
 
-**Decision.** Do not implement MC-19. Deliver the documented scope proposal package in `docs/marea/segments/` (D01-D07, five datasets, a deterministic validator and 21 unit/adversarial tests), record `MC19_VERDICT = BLOCKED`, and require P01 (authoritative Master Prompt), P02 (IA/route decision) and P10 (scope approval) before implementation. Defer enquiry flows until P03 and the publication gates close. The recommended option A is three internal audience pages (owners, installers, professional fleets) with no enquiry flow, isolated preview only, reusing MC-17/MC-18.
+**Decision.** Do not implement MC-19. Deliver the documented scope proposal package in `docs/marea/segments/` (D01-D07, six datasets, a deterministic validator and 29 unit/adversarial tests after the audit correction rounds), record `MC19_VERDICT = BLOCKED`, and require P01 (authoritative Master Prompt), P02 (IA/route decision) and P10 (scope approval) before implementation. Defer enquiry flows until P03 and the publication gates close. The recommended option A is three internal audience pages (owners, installers, professional fleets) with no enquiry flow, isolated preview only, reusing MC-17/MC-18.
 
 **Rationale.** Implementing from a placeholder would invent the page set, the owners route and the CTA behaviour, and could introduce unauthorized customer data collection. The programme's own rule is to stop and propose rather than invent requirements.
 
-**Evidence.** `docs/marea/segments/MC19-SCOPE-PROPOSAL.md`; `data/mc19-scope-proposal.json`; `data/mc19-source-verification.json`; `scripts/check-mc19-scope.mjs`; `npm run test:mc19-scope:unit` 21/21; baseline `3490c0f71eb6eaa89588b7a6d75bb3b6066cd094`.
+**Evidence.** `docs/marea/segments/MC19-SCOPE-PROPOSAL.md`; `data/mc19-scope-proposal.json`; `data/mc19-source-verification.json`; `scripts/check-mc19-scope.mjs`; `npm run test:mc19-scope:unit` 29/29 after the audit rounds; baseline `3490c0f71eb6eaa89588b7a6d75bb3b6066cd094`.
 
 **Status effect.** MC-19 BLOCKED; no implementation, public route, form, lead capture, merge, deployment or publication. MC-18 implementation, evidence and audit conclusions preserved; inherited debt unchanged.
+
+## D-079 - 2026-11-04 - MC-19 independent audit closes after three correction rounds
+
+**Context.** The independent review of the MC-19 scope proposal returned `NEEDS_REVISION` at `b53f67e` with five findings (IR-01 MAJOR guard bypass; IR-02 stop-statement overclaim; IR-03 P03 contradiction; IR-04 P01 evidence strength; IR-05 review/manifest reconciliation). Corrections at `77e0699` closed IR-01..IR-05; round 2 opened IR-06 (MAJOR rename allowlist bypass) and IR-07 (MINOR evidence accuracy). Corrections at `c0dc986` and `8909ad5` closed both. The Claude Code backend failed twice at the product layer (exit 1, invalid-result); the review was performed by an independent native reviewer (id `3c8d2129-b23b-4e26-9254-353e108439ac`), distinct from the author.
+
+**Decision.** Close all seven findings, record review round 3 with `reviewedCommit` `c0dc986` and the label review at `8909ad5`, regenerate the validator evidence at the post-closure HEAD (**23/23**), keep `MC19_VERDICT = BLOCKED`, and record the independent recommendation `PASS_INTERNAL_SCOPE_PROPOSAL` for the proposal scope only.
+
+**Rationale.** The guard now scans the full changed set, including untracked files and both sides of renames, with a strict allowlist; the evidence matches the measured state. No code defect remains. The milestone remains BLOCKED because the implementation prerequisites (P01/P02/P10) are absent.
+
+**Evidence.** `docs/marea/segments/data/mc19-review-findings.json` (7/7 CLOSED); `npm run test:mc19-scope` 23/23; `npm run test:mc19-scope:unit` 29/29; commits `b53f67e`, `77e0699`, `c0dc986`, `8909ad5`; `MC19-EXECUTIVE-REPORT-ES.md` section H.
+
+**Status effect.** `MC19_VERDICT = BLOCKED`; `MC19_INDEPENDENT_AUDIT_RECOMMENDATION = PASS_INTERNAL_SCOPE_PROPOSAL` for the proposal scope; no implementation, public route, form, lead capture, merge, deployment or publication.

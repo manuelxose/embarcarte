@@ -4,11 +4,12 @@
   "milestone": "MC-19",
   "date": "2026-11-04",
   "status": "COMPLETE",
-  "reviewRound": 2,
+  "reviewRound": 3,
   "reviewer": "independent native review agent (id 3c8d2129-b23b-4e26-9254-353e108439ac); the Claude Code backend failed twice at the product layer (exit 1, invalid-result) and is recorded as unavailable for this review",
-  "reviewedScope": "round 1: tests 3490c0f..b53f67e; round 2: correction diff b53f67e..77e0699",
-  "reviewedCommit": "77e069998f895d4a21ee01e958f446f6ce2790fd",
-  "recommendation": "NEEDS_REVISION",
+  "reviewedScope": "round 1: tests 3490c0f..b53f67e; round 2: correction diff b53f67e..77e0699; round 3: correction diff 77e0699..c0dc986 plus label review at 8909ad5",
+  "reviewedCommit": "c0dc9862cb4d0c7446aacb11715c44046490679c",
+  "finalLabelReviewCommit": "8909ad5d40ce74a6fd24863163689cbf5e2bb4f9",
+  "recommendation": "PASS_INTERNAL_SCOPE_PROPOSAL",
   "findings": [
     {
       "id": "MC19-IR-01",
@@ -68,24 +69,24 @@
     {
       "id": "MC19-IR-06",
       "severity": "MAJOR",
-      "status": "CORRECTED_PENDING_INDEPENDENT_REVERIFICATION",
+      "status": "CLOSED",
       "area": "rename allowlist bypass",
       "file": "scripts/check-mc19-scope.mjs; scripts/check-mc19-scope.test.mjs",
       "problem": "porcelainPaths() dropped the old side of a rename and the committed diff used rename detection, so an out-of-scope source file renamed into docs/marea/segments/ could pass the allowlist.",
       "requiredFix": "Parse both sides of a rename, add --no-renames to the committed diff and status commands, and add a test that the old out-of-scope path is rejected.",
-      "correctionCommit": null,
-      "independentReverification": null
+      "correctionCommit": "c0dc9862cb4d0c7446aacb11715c44046490679c",
+      "independentReverification": "Round 3 independently checked `R src/server/enquiry.ts -> docs/marea/segments/enquiry.ts` and `R src/app/marea-landing/landing.ts -> docs/marea/segments/landing.ts`: both sides are returned and both old source paths are rejected. `--no-renames` is used for the committed diff and status. Unit suite 29/29; MC19-21 passes on the real 20-path set. CLOSED."
     },
     {
       "id": "MC19-IR-07",
       "severity": "MINOR",
-      "status": "CORRECTED_PENDING_INDEPENDENT_REVERIFICATION",
+      "status": "CLOSED",
       "area": "evidence date and count",
       "file": "docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md; docs/marea/segments/evidence/scope-validator-run.json",
-      "problem": "D07 claimed a 23/23 validator run at b53f67e while the committed evidence was 20/20 at a6cb1c4 and the actual run at 77e0699 was 22/23 (only MC19-14, expected while IR-01 was open).",
+      "problem": "D07 claimed a 23/23 validator run at b53f67e while the committed evidence was 20/20 at a6cb1c4 and the actual run at 77e0699 was 22/23 (only MC19-14, expected while IR-06 was open).",
       "requiredFix": "State 22/23 until the review closure, then re-run at the resulting HEAD, commit the 23/23 evidence and update D07's HEAD and counts.",
-      "correctionCommit": null,
-      "independentReverification": null
+      "correctionCommit": "8909ad5d40ce74a6fd24863163689cbf5e2bb4f9",
+      "independentReverification": "Round 3 confirmed D07 covers both correction HEADs, states 22/23 while IR-06 was open and 28/28 at 77e0699 versus 29/29 at c0dc986, and no longer calls IR-01 open. Final 23/23 evidence is regenerated at the post-closure HEAD and committed. CLOSED."
     }
   ],
   "summary": {
@@ -94,8 +95,8 @@
     "major": 2,
     "minor": 4,
     "informational": 1,
-    "open": 2,
-    "closed": 5
+    "open": 0,
+    "closed": 7
   },
-  "note": "Round 1 NEEDS_REVISION at b53f67e (IR-01..IR-05). Round 2 at 77e0699 closed IR-01..IR-05 and opened IR-06 (MAJOR) and IR-07 (MINOR). IR-06/IR-07 corrections are pending independent re-verification. No PASS is claimed before that."
+  "note": "Round 1 NEEDS_REVISION at b53f67e (IR-01..IR-05). Round 2 at 77e0699 closed IR-01..IR-05 and opened IR-06 (MAJOR, rename bypass) and IR-07 (MINOR, evidence accuracy). Round 3 at c0dc986/8909ad5 closed IR-06 and IR-07. Final recommendation: PASS_INTERNAL_SCOPE_PROPOSAL, 0 open findings. The final 23/23 validator evidence is regenerated and committed at the post-closure HEAD."
 }

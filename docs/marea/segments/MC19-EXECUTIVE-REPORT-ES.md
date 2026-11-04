@@ -41,6 +41,8 @@ las CTA fail-closed.
 ```text
 MC19_VERDICT = BLOCKED
 MC19_SCOPE_PROPOSAL = DELIVERED
+MC19_INDEPENDENT_AUDIT_RECOMMENDATION = PASS_INTERNAL_SCOPE_PROPOSAL
+MC19_OPEN_FINDINGS = 0
 MC19_IMPLEMENTATION_STARTED = false
 MC19_IMPLEMENTATION_AUTHORIZED = false
 MC19_MASTER_PROMPT = NOT_RECORDED_OR_SUPPLIED
@@ -126,16 +128,17 @@ almacén de leads, registro de instaladores, precio, SKU o artefacto público de
 
 ## G. Evidencia de pruebas y compuertas
 
-Mediciones reales en los HEAD de corrección (`77e0699` y `c0dc986`), antes del cierre formal
-de la revisión. La cifra `59/60` de la fase pre-commit no se oculta: era un control de alcance
-del árbol de trabajo de MC-18, no una regresión; tras el commit la compuerta se re-ejecutó en
-**60/60** y su registro se conserva en `docs/marea/segments/evidence/landing-gate-run.json`
-sin sobrescribir la evidencia histórica de MC-18.
+Mediciones finales en el HEAD de cierre (corrección `c0dc986`, etiquetas `8909ad5`), tras el
+cierre de la revisión. La cifra `59/60` de la fase pre-commit no se oculta: era un control de
+alcance del árbol de trabajo de MC-18, no una regresión; tras el commit la compuerta se
+re-ejecutó en **60/60** y su registro se conserva en
+`docs/marea/segments/evidence/landing-gate-run.json` sin sobrescribir la evidencia histórica
+de MC-18.
 
 | Comando                                     | Resultado observado                                                                 |
 | ------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `npm run test:mc19-scope`                   | **22/23** en `77e0699` y en `c0dc986` mientras `MC19-IR-06` sigue abierto; solo `MC19-14` falla. El 23/23 y la evidencia final se registran tras el cierre de la revisión. |
-| `npm run test:mc19-scope:unit`              | **28/28** en `77e0699`; **29/29** en `c0dc986` (prueba de rename), exit 0            |
+| `npm run test:mc19-scope`                   | **23/23** comprobaciones deterministas, exit 0; evidencia en `evidence/scope-validator-run.json` |
+| `npm run test:mc19-scope:unit`              | **29/29** pruebas unitarias/adversarias, exit 0                                     |
 | `npm run test:landing` (árbol limpio)       | **60/60**, exit 0; evidencia MC-18 restaurada tras la medición                      |
 | `npm run test:landing:unit`                 | **45/45**, exit 0                                                                   |
 | `npx tsc -p tsconfig.app.json --noEmit`     | exit 0                                                                              |
@@ -181,6 +184,21 @@ evidencia) — corregidos en la ronda 3 y pendientes de la re-verificación inde
 Las correcciones se aplican en los commits de remediación; el cierre de cada hallazgo y la
 re-verificación independiente se registran en `data/mc19-review-findings.json`. Ningún
 hallazgo se declara `CLOSED` antes de esa re-verificación.
+
+**Cierre.** Ronda 3 sobre `c0dc986` y `8909ad5`: IR-06 `CLOSED` y IR-07 `CLOSED`.
+Recomendación final del revisor independiente:
+
+```text
+MC19_INDEPENDENT_AUDIT_RECOMMENDATION = PASS_INTERNAL_SCOPE_PROPOSAL
+MC19_OPEN_BLOCKING_FINDINGS = 0
+MC19_OPEN_MAJOR_FINDINGS = 0
+MC19_OPEN_MINOR_FINDINGS = 0
+```
+
+La condición administrativa de cierre (ronda 3, `reviewedCommit` `c0dc986`, evidencia del
+validador 23/23) queda completada en el commit de cierre. Esta recomendación se limita al
+ámbito interno de la propuesta de alcance; no es un veredicto de programa, una autorización
+de publicación, un clearance legal ni una conformidad WCAG.
 
 ## I. Dependencias y riesgos
 
