@@ -21,9 +21,11 @@ import {
   bilingualTextProblems,
   contentEnglishStrings,
   contentInventory,
+  contentStrings,
   englishClusterProblem,
   findForbiddenReach,
   normaliseRoutePath,
+  providerNameProblems,
   scopeProblems,
   sourceRefPath,
   walk,
@@ -37,18 +39,30 @@ const content = await importLocal('src/app/marea-catalog/content/index.ts');
 const identity = await importLocal('src/app/marea-catalog/models/catalog-identity.ts');
 const domain = await importLocal('src/app/marea-catalog/data/catalog-domain.ts');
 
-const FAMILIES = ['NAV', 'HUB', 'AIS'];
+const FAMILIES = ['NAV', 'HUB', 'AIS', 'SENSE', 'WATCH', 'WEATHER'];
 
-test('projection exposes the three canonical families and six editions', () => {
+test('projection exposes the six canonical families and eighteen editions', () => {
   assert.deepEqual(
     projection.CATALOG_FAMILIES.map((entry) => entry.familyId),
     FAMILIES,
   );
-  assert.equal(projection.CATALOG_EDITIONS.length, 6);
+  assert.equal(projection.CATALOG_EDITIONS.length, 18);
   assert.deepEqual(
-    projection.CATALOG_EDITIONS.map((entry) => entry.editionId),
-    ['NAV-ESSENTIAL', 'NAV-PRO', 'HUB-STANDARD', 'HUB-PRO', 'AIS-RECEIVER', 'AIS-CONNECTED'],
+    projection.CATALOG_EDITIONS.filter((entry) => entry.familyId === 'SENSE').map(
+      (entry) => entry.editionId,
+    ),
+    [
+      'SENSE-WIND',
+      'SENSE-POWER',
+      'SENSE-BILGE',
+      'SENSE-TANKS',
+      'SENSE-ENV',
+      'SENSE-ESSENTIALS',
+      'SENSE-SAIL',
+      'SENSE-SYSTEMS',
+    ],
   );
+  assert.equal(projection.CATALOG_GOVERNANCE_GATES.length, 10);
 });
 
 test('no commercial state is merchantable, priced or SKU-identified', () => {
@@ -274,15 +288,16 @@ test('malformed guards fail closed instead of throwing', () => {
 });
 
 test('preview routing is internal, complete and unique', () => {
-  assert.equal(identity.CATALOG_PREVIEW_ROUTES.length, 6);
+  assert.equal(identity.CATALOG_PREVIEW_ROUTES.length, 12);
   const paths = identity.CATALOG_PREVIEW_ROUTES.map((route) => route.path);
-  assert.equal(new Set(paths).size, 6);
+  assert.equal(new Set(paths).size, 12);
   for (const route of identity.CATALOG_PREVIEW_ROUTES) {
     assert.ok(route.path.includes('internal/catalog/'));
     assert.equal(route.renderMode, 'Server');
   }
   assert.equal(identity.isCatalogFamilyId('PILOT'), false);
   assert.equal(identity.isCatalogFamilyId('NAV'), true);
+  assert.equal(identity.isCatalogFamilyId('WEATHER'), true);
   assert.equal(normaliseRoutePath('/internal/catalog/nav/'), 'internal/catalog/nav');
 });
 
@@ -300,6 +315,132 @@ test('no production module reaches the catalogue', () => {
   });
   assert.deepEqual(reach.offenders, []);
   assert.ok(reach.scanned > 30);
+});
+
+test('the cross-family summaries include the new families from the canonical fixture', () => {
+  const sense = domain.familyCardSummary('SENSE');
+  assert.ok(sense);
+  assert.equal(sense.editionCount, 8);
+  const watch = domain.familyCardSummary('WATCH');
+  assert.ok(watch);
+  assert.equal(watch.editionCount, 2);
+  const weather = domain.familyCardSummary('WEATHER');
+  assert.ok(weather);
+  assert.equal(weather.editionCount, 2);
+});
+
+test('the WEATHER content names no data provider', () => {
+  const weather = content.CATALOG_CONTENT.WEATHER;
+  const strings = contentStrings(weather).join('\n');
+  assert.deepEqual(providerNameProblems(strings), []);
+  assert.ok(strings.includes('fuente externa no contratada'));
+  assert.ok(strings.includes('no provider is named'));
+});
+
+test('a named provider inserted into the catalogue is rejected', () => {
+  assert.ok(providerNameProblems('Datos de meteoblue con cobertura mundial').length > 0);
+  assert.ok(providerNameProblems('Powered by PredictWind').length > 0);
+});
+
+test('all eight mandated data providers are rejected when injected into WEATHER content', () => {
+  const base = contentStrings(content.CATALOG_CONTENT.WEATHER).join('\n');
+  const providers = [
+    'Copernicus',
+    'EMODnet',
+    'AEMET',
+    'Open-Meteo',
+    'MeteoGalicia',
+    'Puertos del Estado',
+    'OpenWeather',
+    'IHM',
+  ];
+  for (const provider of providers) {
+    const injected = `${base}\nDatos del proveedor ${provider} para esta previsión.`;
+    assert.ok(
+      providerNameProblems(injected).length > 0,
+      `provider not rejected when injected: ${provider}`,
+    );
+  }
+});
+
+test('a legitimate provider-free sentence passes and substrings are not false positives', () => {
+  assert.deepEqual(
+    providerNameProblems('Fuente externa no contratada; no se nombra ningún proveedor de datos.'),
+    [],
+  );
+  // Short markers match only as standalone tokens, never inside a longer word.
+  assert.deepEqual(providerNameProblems('xihmx y aemetic'), []);
+  assert.deepEqual(providerNameProblems('IHM'), ['ihm']);
+  assert.deepEqual(providerNameProblems('AEMET'), ['aemet']);
+});
+
+test('fabricated forecast-accuracy, SLA and delivery claims are rejected', () => {
+  for (const text of [
+    'Previsión con un 95% de acierto garantizado',
+    'Exactitud garantizada de ±0,1 m/s',
+    'We guarantee a 99% hit rate',
+    'SLA garantizado de 99,9%',
+    'Guaranteed service level agreement included',
+    'Entrega de avisos garantizada en 30 segundos',
+    'Guaranteed alert delivery to your phone',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('an availability claim above DEFINED is rejected', () => {
+  for (const text of [
+    'Disponible para la venta',
+    'Available for sale now',
+    'En venta ya',
+    'Ready to buy',
+    'Listo para comprar',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('the honest negations remain accepted', () => {
+  for (const text of [
+    'No está a la venta ni disponible para la venta',
+    'Not for sale and never presented as available',
+    'Sin SLA y sin nivel de servicio garantizado',
+    'No accuracy figure is announced',
+    'No garantiza la entrega de avisos',
+  ]) {
+    assert.deepEqual(catalogClaimProblems(text), [], `wrongly rejected: ${text}`);
+  }
+});
+
+test('a SENSE accuracy claim is rejected', () => {
+  assert.ok(catalogClaimProblems('Precisión garantizada de ±0,1 m/s para el viento').length > 0);
+});
+
+test('a WATCH guaranteed-delivery claim is rejected', () => {
+  assert.ok(catalogClaimProblems('Entrega de avisos garantizada al instante').length > 0);
+});
+
+test('an ES/EN parity break in the new families is rejected', () => {
+  const weather = content.CATALOG_CONTENT.WEATHER;
+  const broken = {
+    ...weather,
+    limitations: weather.limitations.map((entry, index) =>
+      index === 0 ? { ...entry, description: { ...entry.description, en: '' } } : entry,
+    ),
+  };
+  assert.ok(
+    bilingualTextProblems(broken).some((problem) => problem.includes('empty locale')),
+    'empty EN WEATHER limitation must be rejected',
+  );
+});
+
+test('every new-family block carries a non-empty evidence class and source', () => {
+  for (const familyId of ['SENSE', 'WATCH', 'WEATHER']) {
+    for (const block of contentBlocks(content.CATALOG_CONTENT[familyId])) {
+      assert.ok(block.evidenceClass, `${block.contentId} has no evidence class`);
+      assert.ok(block.sourceRefs.length > 0, `${block.contentId} has no source`);
+    }
+  }
 });
 
 test('the catalogue module contains no component fork of an MC-17 selector', () => {

@@ -64,6 +64,26 @@ export const PROHIBITED_CLAIMS = [
     pattern:
       /(?<!no )(?<!not )\btransmite (?:AIS|tu posición|la posición)\b|(?<!not )\btransmits (?:AIS|your position)\b/i,
   },
+  {
+    id: 'forecast-accuracy',
+    pattern:
+      /\b(?:% de acierto|\d+\s?% de acierto|tasa de acierto|hit rate|accuracy rate|exactitud garantizada|precisión garantizada|guaranteed accuracy|accuracy guaranteed|verified accuracy)\b/i,
+  },
+  {
+    id: 'sla-claim',
+    pattern:
+      /\b(?:SLA garantizado|SLA de |guaranteed SLA|SLA guaranteed|nivel de servicio garantizado|guaranteed service level|service[- ]level agreement)\b/i,
+  },
+  {
+    id: 'guaranteed-delivery',
+    pattern:
+      /\b(?:entrega|aviso|alerta)\b[^.;!?]{0,24}\bgarantizad[ao]s?\b|\bgarantizad[ao]s?\b[^.;!?]{0,24}\b(?:entrega|aviso|alerta)\b|\bguaranteed (?:delivery|alert)\b|\b(?:delivery|alert) guaranteed\b/i,
+  },
+  {
+    id: 'positive-availability',
+    pattern:
+      /\b(?:disponible para la venta|a la venta|en venta|on sale|available for (?:sale|purchase)|listo para (?:comprar|enviar)|ready to (?:buy|ship)|aprobado para (?:la )?venta|approved for sale)\b/i,
+  },
 ];
 
 /** Assertion rules whose match may legitimately appear inside a negated clause. */
@@ -77,6 +97,10 @@ const NEGATABLE = new Set([
   'positive-collision-avoidance',
   'universal-compatibility',
   'positive-transmission',
+  'forecast-accuracy',
+  'sla-claim',
+  'guaranteed-delivery',
+  'positive-availability',
 ]);
 
 const CLAUSE_NEGATION = /\b(?:no|sin|not|never|without|ni|neither|nor)\b/i;
@@ -114,6 +138,49 @@ export function catalogClaimProblems(text) {
 }
 
 /**
+ * Data-provider names that may never appear in the internal catalogue: no
+ * provider is contracted (provider rights NOT_GRANTED). Returns the names found,
+ * case-insensitively, or an empty array. Matching is word-boundary aware so a
+ * short marker (IHM, AEMET) is never matched as a substring of an unrelated
+ * word; multi-word and hyphenated names are matched as whole forms.
+ */
+export const NAMED_PROVIDER_MARKERS = [
+  'meteoblue',
+  'meteogroup',
+  'predictwind',
+  'windy.com',
+  'ecmwf',
+  'navionics',
+  'tidetech',
+  'stormglass',
+  'openweather',
+  'windfinder',
+  'windguru',
+  'buoyweather',
+  'meteofrance',
+  'noaa',
+  'aemet',
+  'ipma',
+  // MC-21 mandated providers (finding F-1): none is contracted, so none may be
+  // named. AEMET and OpenWeather were already covered above.
+  'copernicus',
+  'emodnet',
+  'open-meteo',
+  'meteogalicia',
+  'puertos del estado',
+  'ihm',
+];
+
+export function providerNameProblems(text) {
+  if (typeof text !== 'string') return [];
+  const lower = text.toLowerCase();
+  return NAMED_PROVIDER_MARKERS.filter((name) => {
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    return new RegExp(`\\b${escaped}\\b`).test(lower);
+  });
+}
+
+/**
  * Spanish function-word clustering in an English sentence. Two or more hits
  * indicate an untranslated block; a single hit is tolerated because several of
  * these tokens are legitimate English words.
@@ -135,7 +202,7 @@ export function sourceRefPath(ref) {
 
 /** Proper-noun-like tokens may legitimately be identical in both locales. */
 const LOCALE_INVARIANT =
-  /^(?:MAREA(?:\s+(?:NAV|HUB|AIS|START|CRUISE|SAIL|PROTECT|COMPLETE|FLEET))?|NAV|HUB|AIS|Software|Hardware|Signal K|NMEA 0183|Wi-Fi|[A-Z0-9][A-Z0-9 ·_-]*|NAV (?:Essential|Pro)|HUB (?:Standard|Pro)|AIS (?:Receiver|Connected))$/;
+  /^(?:MAREA(?:\s+(?:NAV|HUB|AIS|SENSE|WATCH|WEATHER|START|CRUISE|SAIL|PROTECT|COMPLETE|FLEET))?|NAV|HUB|AIS|SENSE|WATCH|WEATHER|Software|Hardware|Signal K|NMEA 0183|Wi-Fi|[A-Z0-9][A-Z0-9 ·_-]*|NAV (?:Essential|Pro)|HUB (?:Standard|Pro)|AIS (?:Receiver|Connected)|SENSE (?:Wind|Power|Bilge|Tanks|Environment|Essentials|Sail|Systems)|WATCH (?:Core|Plus)|WEATHER (?:Standard|Pro))$/;
 
 const NEGATION_ES = /\b(?:no|sin|sólo|solo|ni|nunca)\b/i;
 const NEGATION_EN = /\b(?:no|not|never|without|only|neither|nor|receive-only)\b/i;

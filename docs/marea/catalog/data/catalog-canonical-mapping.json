@@ -11,7 +11,21 @@
     "docs/marea/information-architecture/data/proposed-routes.json",
     "docs/marea/legal-commercial/data/release-evidence-gates.json",
     "docs/marea/legal-commercial/data/claims-policy.json",
-    "docs/marea/products/product-definitions.batch-01.json"
+    "docs/marea/products/product-definitions.batch-01.json",
+    "docs/marea/products/product-definitions.batch-02.json",
+    "docs/marea/products/product-definitions.batch-03.json"
+  ],
+  "governanceGates": [
+    "TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED",
+    "MAREA_PUBLIC_USE = NO_GO",
+    "SOURCE_IP_CLEARANCE = NOT_CLEARED",
+    "LICENSING_RIGHTS_GRANTED = false",
+    "PRICE_APPROVED = NONE",
+    "COMMERCIAL_AVAILABILITY = NOT_FOR_SALE",
+    "PUBLICATION_AUTHORIZED = false",
+    "INDEXATION_AUTHORIZED = false",
+    "PRODUCTION_DEPLOYMENT = NOT_AUTHORIZED",
+    "GATE-PRIVACY-DPA-DPIA = BLOCKED"
   ],
   "families": [
     {
@@ -168,6 +182,153 @@
         "docs/marea/commerce-data/data/product-editions.json#editions[familyId=AIS]",
         "docs/marea/information-architecture/data/proposed-routes.json#items[routeId=mareaFamilyAis]",
         "docs/marea/products/product-definitions.batch-01.json#products.AIS"
+      ]
+    },
+    {
+      "familyId": "SENSE",
+      "displayName": "MAREA SENSE",
+      "entityType": "PRODUCT_FAMILY",
+      "productType": "HARDWARE",
+      "routeId": "mareaFamilySense",
+      "editionIds": [
+        "SENSE-WIND",
+        "SENSE-POWER",
+        "SENSE-BILGE",
+        "SENSE-TANKS",
+        "SENSE-ENV",
+        "SENSE-ESSENTIALS",
+        "SENSE-SAIL",
+        "SENSE-SYSTEMS"
+      ],
+      "bundles": [
+        {
+          "bundleId": "SAIL",
+          "inclusion": "CONDITIONAL",
+          "editionId": "SENSE-WIND"
+        },
+        {
+          "bundleId": "PROTECT",
+          "inclusion": "INCLUDED",
+          "editionId": "SENSE-ESSENTIALS"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "inclusion": "INCLUDED",
+          "editionId": "SENSE-POWER"
+        }
+      ],
+      "proposedPublicPath": {
+        "routeId": "mareaFamilySense",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-SENSE",
+        "es": "marea/sense",
+        "en": "en/marea/sense",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      },
+      "sourceRefs": [
+        "docs/marea/commerce-data/data/product-families.json#families[familyId=SENSE]",
+        "docs/marea/commerce-data/data/product-editions.json#editions[familyId=SENSE]",
+        "docs/marea/information-architecture/data/proposed-routes.json#items[routeId=mareaFamilySense]",
+        "docs/marea/products/product-definitions.batch-02.json#products.SENSE"
+      ]
+    },
+    {
+      "familyId": "WATCH",
+      "displayName": "MAREA WATCH",
+      "entityType": "PRODUCT_FAMILY",
+      "productType": "HARDWARE_SERVICE",
+      "routeId": "mareaFamilyWatch",
+      "editionIds": [
+        "WATCH-CORE",
+        "WATCH-PLUS"
+      ],
+      "bundles": [
+        {
+          "bundleId": "PROTECT",
+          "inclusion": "INCLUDED",
+          "editionId": "WATCH-CORE"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "inclusion": "INCLUDED",
+          "editionId": "WATCH-CORE"
+        },
+        {
+          "bundleId": "FLEET",
+          "inclusion": "OPTIONAL",
+          "editionId": "WATCH-CORE"
+        }
+      ],
+      "proposedPublicPath": {
+        "routeId": "mareaFamilyWatch",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-WATCH",
+        "es": "marea/watch",
+        "en": "en/marea/watch",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      },
+      "sourceRefs": [
+        "docs/marea/commerce-data/data/product-families.json#families[familyId=WATCH]",
+        "docs/marea/commerce-data/data/product-editions.json#editions[familyId=WATCH]",
+        "docs/marea/information-architecture/data/proposed-routes.json#items[routeId=mareaFamilyWatch]",
+        "docs/marea/products/product-definitions.batch-02.json#products.WATCH"
+      ]
+    },
+    {
+      "familyId": "WEATHER",
+      "displayName": "MAREA WEATHER",
+      "entityType": "PRODUCT_FAMILY",
+      "productType": "SOFTWARE",
+      "routeId": "mareaFamilyWeather",
+      "editionIds": [
+        "WEATHER-STANDARD",
+        "WEATHER-PRO"
+      ],
+      "bundles": [
+        {
+          "bundleId": "START",
+          "inclusion": "OPTIONAL",
+          "editionId": "WEATHER-STANDARD"
+        },
+        {
+          "bundleId": "CRUISE",
+          "inclusion": "OPTIONAL",
+          "editionId": "WEATHER-STANDARD"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "inclusion": "OPTIONAL",
+          "editionId": "WEATHER-PRO"
+        }
+      ],
+      "proposedPublicPath": {
+        "routeId": "mareaFamilyWeather",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-WEATHER",
+        "es": "marea/weather",
+        "en": "en/marea/weather",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      },
+      "sourceRefs": [
+        "docs/marea/commerce-data/data/product-families.json#families[familyId=WEATHER]",
+        "docs/marea/commerce-data/data/product-editions.json#editions[familyId=WEATHER]",
+        "docs/marea/information-architecture/data/proposed-routes.json#items[routeId=mareaFamilyWeather]",
+        "docs/marea/products/product-definitions.batch-03.json#products.WEATHER"
       ]
     }
   ]

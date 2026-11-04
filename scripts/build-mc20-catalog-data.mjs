@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 /**
- * MC-20 internal catalogue data generator.
+ * MC-20 internal catalogue data generator (extended to the six-family MC-21
+ * scope in place; the filename is kept for continuity — recorded naming debt).
  *
  * Reads the authoritative MC-16 commerce datasets, the MC-15 proposed-route
- * registry, the MC-14 release-gate/claims datasets and the MC-05 product
- * definitions, then emits:
+ * registry, the MC-14 release-gate/claims datasets and the MC-05/06/07 product
+ * definitions (batches 01, 02 and 03), then emits:
  *   - src/app/marea-catalog/data/catalog.generated.ts (bounded projection used by the UI)
  *   - docs/marea/catalog/data/catalog-projection.json   (machine-readable projection)
  *   - docs/marea/catalog/data/catalog-canonical-mapping.json (identity/edition/bundle map)
@@ -29,6 +30,8 @@ const MC16 = 'docs/marea/commerce-data/data';
 const MC15 = 'docs/marea/information-architecture/data';
 const MC14 = 'docs/marea/legal-commercial/data';
 const MC05 = 'docs/marea/products/product-definitions.batch-01.json';
+const MC05_BATCH_02 = 'docs/marea/products/product-definitions.batch-02.json';
+const MC05_BATCH_03 = 'docs/marea/products/product-definitions.batch-03.json';
 const OUT_DIR = 'docs/marea/catalog/data';
 const TS_OUT = 'src/app/marea-catalog/data/catalog.generated.ts';
 const JSON_OUT = `${OUT_DIR}/catalog-projection.json`;
@@ -50,8 +53,13 @@ const routesDoc = readJson(`${MC15}/proposed-routes.json`);
 const gatesDoc = readJson(`${MC14}/release-evidence-gates.json`);
 const claimsDoc = readJson(`${MC14}/claims-policy.json`);
 const definitionsDoc = readJson(MC05);
+const definitionsDoc02 = readJson(MC05_BATCH_02);
+const definitionsDoc03 = readJson(MC05_BATCH_03);
 
-const SCOPE_FAMILY_IDS = ['NAV', 'HUB', 'AIS'];
+// Canonical MC-16 family order, filtered to the six in-scope families. The
+// MC-21 registry row names WEATHER, SENSE, WATCH as the new batch; that does
+// not reorder the canonical families (NAV, HUB, AIS, SENSE, WATCH, WEATHER).
+const SCOPE_FAMILY_IDS = ['NAV', 'HUB', 'AIS', 'SENSE', 'WATCH', 'WEATHER'];
 const DIMENSION_IDS = [
   'definition',
   'engineering',
@@ -64,6 +72,21 @@ const DIMENSION_IDS = [
   'brandPublication',
   'operations',
   'availability',
+];
+
+// The ten governance gates, preserved verbatim. They gate publication and
+// commerce and are never weakened by the projection or the content.
+const GOVERNANCE_GATES = [
+  'TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED',
+  'MAREA_PUBLIC_USE = NO_GO',
+  'SOURCE_IP_CLEARANCE = NOT_CLEARED',
+  'LICENSING_RIGHTS_GRANTED = false',
+  'PRICE_APPROVED = NONE',
+  'COMMERCIAL_AVAILABILITY = NOT_FOR_SALE',
+  'PUBLICATION_AUTHORIZED = false',
+  'INDEXATION_AUTHORIZED = false',
+  'PRODUCTION_DEPLOYMENT = NOT_AUTHORIZED',
+  'GATE-PRIVACY-DPA-DPIA = BLOCKED',
 ];
 
 // ------------------------------------------------------------------ canonical invariants
@@ -81,7 +104,7 @@ assert(
 );
 assert(
   JSON.stringify(familiesDoc.families.map((entry) => entry.familyId).slice(0, 3)) ===
-    JSON.stringify(SCOPE_FAMILY_IDS),
+    JSON.stringify(['NAV', 'HUB', 'AIS']),
   'the first three canonical families must be NAV, HUB, AIS',
 );
 assert(
@@ -117,8 +140,20 @@ assert(claimsDoc.summary?.publicAuthorized === 0, 'no claim may be public-author
 assert(definitionsDoc.products?.length === 3, 'MC-05 batch-01 must expose exactly 3 products');
 assert(
   JSON.stringify(definitionsDoc.products.map((entry) => entry.id)) ===
-    JSON.stringify(SCOPE_FAMILY_IDS),
+    JSON.stringify(['NAV', 'HUB', 'AIS']),
   'MC-05 batch-01 product order/ids changed',
+);
+assert(definitionsDoc02.products?.length === 3, 'MC-06 batch-02 must expose exactly 3 products');
+assert(
+  JSON.stringify(definitionsDoc02.products.map((entry) => entry.id)) ===
+    JSON.stringify(['PILOT', 'SENSE', 'WATCH']),
+  'MC-06 batch-02 product order/ids changed',
+);
+assert(definitionsDoc03.products?.length === 3, 'MC-07 batch-03 must expose exactly 3 products');
+assert(
+  JSON.stringify(definitionsDoc03.products.map((entry) => entry.id)) ===
+    JSON.stringify(['DISPLAY', 'WEATHER', 'FLEET']),
+  'MC-07 batch-03 product order/ids changed',
 );
 assert(
   definitionsDoc.globalRestrictions?.aisTransmissionOffered === false,
@@ -128,15 +163,38 @@ assert(
   definitionsDoc.globalRestrictions?.commercialAvailability === 'NOT_FOR_SALE',
   'the canonical restrictions must keep every product NOT_FOR_SALE',
 );
+assert(
+  definitionsDoc03.globalRestrictions?.dataProviderRightsGranted === false,
+  'the canonical restrictions must keep WEATHER provider rights un-granted',
+);
+assert(
+  definitionsDoc03.globalRestrictions?.forecastAccuracyClaimed === false,
+  'the canonical restrictions must keep forecast accuracy un-claimed',
+);
+
+const allDefinitions = [
+  ...definitionsDoc.products,
+  ...definitionsDoc02.products,
+  ...definitionsDoc03.products,
+];
+const definitionSourceFor = (familyId) => {
+  if (definitionsDoc.products.some((entry) => entry.id === familyId)) return MC05;
+  if (definitionsDoc02.products.some((entry) => entry.id === familyId)) return MC05_BATCH_02;
+  if (definitionsDoc03.products.some((entry) => entry.id === familyId)) return MC05_BATCH_03;
+  return null;
+};
+const definitionFor = (familyId) => allDefinitions.find((entry) => entry.id === familyId);
+
 for (const familyId of SCOPE_FAMILY_IDS) {
   const family = familiesDoc.families.find((entry) => entry.familyId === familyId);
-  const definition = definitionsDoc.products.find((entry) => entry.id === familyId);
+  const definition = definitionFor(familyId);
   assert(family, `missing canonical family ${familyId}`);
-  assert(definition, `missing MC-05 definition ${familyId}`);
+  assert(definition, `missing MC-05/06/07 definition ${familyId}`);
+  assert(definitionSourceFor(familyId), `missing definition source for ${familyId}`);
   if (!family || !definition) continue;
   assert(
-    family.editionIds.length > 0 && family.editionIds.length <= 3,
-    `${familyId} must have between 1 and 3 editions`,
+    family.editionIds.length > 0 && family.editionIds.length <= 8,
+    `${familyId} must have between 1 and 8 editions`,
   );
   for (const editionId of family.editionIds) {
     const edition = editionsDoc.editions.find((entry) => entry.editionId === editionId);
@@ -347,7 +405,8 @@ const ts = `// GENERATED FILE - do not edit by hand.
 // Source: ${MC16}/{product-families,product-editions,bundle-compositions,readiness-dimensions}.json,
 //         ${MC15}/proposed-routes.json, ${MC14}/{release-evidence-gates,claims-policy}.json
 // Generator: node scripts/build-mc20-catalog-data.mjs
-// Projection: bounded internal MC-20 catalogue presentation (NAV, HUB, AIS).
+// Projection: bounded internal six-family catalogue presentation
+//             (NAV, HUB, AIS, SENSE, WATCH, WEATHER).
 // No price, stock, SKU, customer or vessel data. Publication: NOT_AUTHORIZED.
 // Every commercial state below is NOT_FOR_SALE and every release gate is open.
 
@@ -442,6 +501,9 @@ export interface CatalogDomainFacts {
 export const CATALOG_SCOPE_FAMILY_IDS = ${quote(SCOPE_FAMILY_IDS)} as const;
 export type CatalogFamilyId = (typeof CATALOG_SCOPE_FAMILY_IDS)[number];
 
+/** The ten governance gates, preserved verbatim from MC-14/MC-16. */
+export const CATALOG_GOVERNANCE_GATES = ${quote(GOVERNANCE_GATES)} as const;
+
 export const CATALOG_FAMILIES: readonly CatalogFamilyRecord[] = [
 ${tsFamilies}
 ];
@@ -472,6 +534,7 @@ const projectionJson = `${JSON.stringify(
     commercialAvailability: 'NOT_FOR_SALE',
     indexationAuthorized: false,
     publicRoutesRegistered: 0,
+    governanceGates: GOVERNANCE_GATES,
     families: familyRecords,
     editions: editionRecords,
     readinessDimensions: readinessDoc.dimensions.map((dimension) => ({
@@ -499,7 +562,10 @@ const mappingJson = `${JSON.stringify(
       `${MC14}/release-evidence-gates.json`,
       `${MC14}/claims-policy.json`,
       MC05,
+      MC05_BATCH_02,
+      MC05_BATCH_03,
     ],
+    governanceGates: GOVERNANCE_GATES,
     families: familyRecords.map((family) => ({
       familyId: family.familyId,
       displayName: family.displayName,
@@ -517,7 +583,7 @@ const mappingJson = `${JSON.stringify(
         `${MC16}/product-families.json#families[familyId=${family.familyId}]`,
         `${MC16}/product-editions.json#editions[familyId=${family.familyId}]`,
         `${MC15}/proposed-routes.json#items[routeId=${family.routeId}]`,
-        `${MC05}#products.${family.familyId}`,
+        `${definitionSourceFor(family.familyId)}#products.${family.familyId}`,
       ],
     })),
   },

@@ -75,6 +75,30 @@ export const CATALOG_IDENTITIES: Readonly<Record<CatalogFamilyId, CatalogIdentit
   NAV: identity('NAV', 'mareaFamilyNav', 'ENT-FAMILY-NAV', 'nav', '/marea/nav', '/en/marea/nav'),
   HUB: identity('HUB', 'mareaFamilyHub', 'ENT-FAMILY-HUB', 'hub', '/marea/hub', '/en/marea/hub'),
   AIS: identity('AIS', 'mareaFamilyAis', 'ENT-FAMILY-AIS', 'ais', '/marea/ais', '/en/marea/ais'),
+  SENSE: identity(
+    'SENSE',
+    'mareaFamilySense',
+    'ENT-FAMILY-SENSE',
+    'sense',
+    '/marea/sense',
+    '/en/marea/sense',
+  ),
+  WATCH: identity(
+    'WATCH',
+    'mareaFamilyWatch',
+    'ENT-FAMILY-WATCH',
+    'watch',
+    '/marea/watch',
+    '/en/marea/watch',
+  ),
+  WEATHER: identity(
+    'WEATHER',
+    'mareaFamilyWeather',
+    'ENT-FAMILY-WEATHER',
+    'weather',
+    '/marea/weather',
+    '/en/marea/weather',
+  ),
 } as const;
 
 export const CATALOG_IDENTITY_LIST: readonly CatalogIdentity[] = CATALOG_SCOPE_FAMILY_IDS.map(
