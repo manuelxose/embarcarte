@@ -68,7 +68,7 @@ app.use((req, res, next) => {
 app.get('/__preview/health', (_req, res) => {
   res.json({
     status: 'ok',
-    preview: 'MC-18 internal landing + MC-20 internal catalogue',
+    preview: 'MC-18 internal landing + MC-20/MC-21 internal catalogue',
     publication: 'NOT_AUTHORIZED',
     indexation: 'noindex, nofollow, noarchive',
     host,
@@ -103,7 +103,7 @@ app.use((_req, res) => {
  */
 const server = isMainModule(import.meta.url)
   ? app.listen(port, host, () => {
-      console.log(`MC-18/MC-20 internal preview (NOT PUBLISHED): http://${host}:${port}/marea`);
+      console.log(`MC-18/MC-21 internal preview (NOT PUBLISHED): http://${host}:${port}/marea`);
       console.log('Publication NOT_AUTHORIZED · indexation disabled · loopback only');
       for (const route of CATALOG_PREVIEW_ROUTES) {
         console.log(`  catalogue: http://${host}:${port}/${route.path} (${route.familyId})`);

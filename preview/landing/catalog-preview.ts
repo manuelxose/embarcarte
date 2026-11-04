@@ -8,12 +8,12 @@ import { isCatalogFamilyId } from '../../src/app/marea-catalog/models/catalog-id
 import type { CatalogFamilyId } from '../../src/app/marea-catalog/data/catalog.generated';
 
 /**
- * Internal preview host for the three MC-20 catalogue pages.
+ * Internal preview host for the six MC-20/MC-21 catalogue families.
  *
  * Applies non-indexable, non-public metadata and then renders the real catalogue
  * page. It emits NO canonical link, NO alternative-language links, NO Open
- * Graph/Twitter tags and NO JSON-LD: MC-20 has no publication or indexation
- * authorisation.
+ * Graph/Twitter tags and NO JSON-LD: the catalogue has no publication or
+ * indexation authorisation.
  */
 @Component({
   selector: 'marea-catalog-preview',

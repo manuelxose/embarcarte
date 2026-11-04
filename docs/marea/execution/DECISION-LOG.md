@@ -1828,3 +1828,87 @@ no merge, no deployment.
 **Evidence.** `scripts/build-mc20-catalog-data.mjs`; `src/app/marea-catalog/`; `preview/landing/catalog-preview.ts`; validator 40/40; unit/adversarial 20/20; Playwright 35/35; build 0 catalogue identifiers; 0 prices, 0 SKUs, 0 stock rows, 0 tested compatibility rows.
 
 **Status effect.** `MC20_INTERNAL_IMPLEMENTATION = PASS_INTERNAL_SCOPE`; `MC20_VERDICT = PARTIAL`; publication, indexation, commerce and deployment remain unauthorized; MC-21 not started.
+
+## D-083 - 2026-11-04 - MC-21 extends the MC-20 catalogue in place instead of forking a second pipeline
+
+**Context.** MC-21 adds WEATHER, SENSE and WATCH to the verified MC-20 catalogue (NAV, HUB, AIS). The MC-20 generator, validator, guards, content contract and preview host are generic apart from hardcoded three-family scope values. A second MC-21 pipeline would duplicate the projection, the fail-closed adapter and the isolation logic, and would create two authorities over the same canonical MC-16 data.
+
+**Decision.** Extend the MC-20 module in place: keep the existing filenames (`scripts/build-mc20-catalog-data.mjs`, `scripts/check-mc20-catalog.mjs`, `scripts/check-mc20-catalog.test.mjs`, `scripts/mc20-catalog-guards.mjs`) and every `src/app/marea-catalog/**` and `preview/landing/**` file, generalizing the three-family assumptions to six. Add MC-21 aliases (`build:mc21:data`, `check:mc21:data`, `test:mc21`, `test:mc21:unit`, `test:mc21:e2e`) without removing the MC-20 commands. The retained `mc20-*` names are recorded as naming debt, not hidden.
+
+**Rationale.** One authority over canonical data, one component tree and one isolation implementation; no duplication and no drift between two catalogues; the smallest complete change that satisfies MC-21.
+
+**Evidence.** Implementation `f2609a8`; `node scripts/build-mc20-catalog-data.mjs --check` byte-stable; `test:mc20` 50/50; `test:mc20:unit` 33/33; no parallel pipeline or duplicate projection exists.
+
+**Status effect.** Six-family catalogue served by the shared module; MC-20 batch-1 assertions generalized, not weakened; MC-19 remains an independent unmerged draft.
+
+## D-084 - 2026-11-04 - Canonical family order governs the six-family catalogue
+
+**Context.** Registry row 21 describes the batch as "WEATHER, SENSE, WATCH", which is a batch description, while MC-16 orders the families `NAV, HUB, AIS, SENSE, WATCH, WEATHER`. Order-sensitive structures (scope list, allowlist, generated arrays, route table) must have exactly one authority.
+
+**Decision.** The canonical MC-16 order `NAV, HUB, AIS, SENSE, WATCH, WEATHER` governs every order-sensitive structure and every generated array. The registry wording is a scope description, not an ordering instruction.
+
+**Rationale.** A single deterministic order keeps the projection byte-stable, makes `--check` meaningful and prevents registry prose from silently reordering canonical data.
+
+**Evidence.** `CATALOG_SCOPE_FAMILY_IDS`; `MC21-01`; generator `--check` exit 0.
+
+**Status effect.** Deterministic projection; no canonical reordering.
+
+## D-085 - 2026-11-04 - Edition count corrected from 12 to 18 from canonical data
+
+**Context.** The initial internal acceptance wording assumed "12 editions" (6 existing + 6 new, two per family). The MC-16 `product-editions.json` dataset carries 8 SENSE editions (5 modules + 3 kits) plus 2 WEATHER and 2 WATCH editions, so a faithful projection of six families has 18 editions. Emitting 12 would require dropping six canonical editions.
+
+**Decision.** The projection emits and the validator asserts **18** canonical editions (NAV 2, HUB 2, AIS 2, SENSE 8, WATCH 2, WEATHER 2). The verifier's acceptance contract was formally amended from 12 to 18 before verification ran; the reason and the previous value are recorded in the task revision ledger.
+
+**Rationale.** Canonical data is authoritative; an arithmetic assumption in a prompt must not delete canonical rows or fail correct behaviour.
+
+**Evidence.** `catalog.generated.ts` (18 editions); `MC20-04` / `MC21-01`; verifier contract amendment on task t5.
+
+**Status effect.** Acceptance corrected before verification; no post-amendment code change was made to accommodate it.
+
+## D-086 - 2026-11-04 - MC-21 specialist team, model routing and independence
+
+**Context.** MC-21 requires real specialist delegation, dependency-aware parallel work, independent verification and an independent audit, on routes verified as available rather than assumed.
+
+**Decision.** Run four AgentTeams members (architect, product, implementer, verifier) on `deepseek-official/deepseek-v4-pro`; run security/legal as a separate native subagent on the same route; run the external audit on Claude Opus 5.5 through Claude Code (*route superseded for all future audits by D-088: external ceiling Sonnet 5.5*). Only the implementer writes code and the captain is the only integrator/committer. Parallel work is read-only. The implementer is never the verifier or reviewer; the external audit uses a different model family.
+
+**Rationale.** Separation of duties and a distinct review family reduce self-approval risk; verified routes prevent invented capability claims; a single writer keeps the working tree coherent.
+
+**Evidence.** `MC21-AGENT-EXECUTION-AND-MODEL-ROUTING.md`; task/attempt ids and results; `MC21-INDEPENDENT-AUDIT.md`.
+
+**Status effect.** Independent review `pass` (0 findings); external audit recorded; no author self-approval. Monetary cost remains UNKNOWN; Claude Code is subscription-unpriced.
+
+## D-087 - 2026-11-04 - F-1 guard repair is closed on captain-measured evidence
+
+**Context.** Independent verification found that the named-provider guard covered only 2 of the 8 providers mandated by the MC-21 provenance rule, and proved that injecting "Copernicus" still passed. The repair author's member session could not execute the validator because of the environment's named-pipe `EPERM` boundary, so that session could not honestly complete the task.
+
+**Decision.** Keep the repair (additive, 2 files) and re-gate it on captain-measured evidence in the unrestricted environment (`test:mc20` 50/50, `test:mc20:unit` 33/33), then require the independent reviewer to reproduce rejection of the injected provider names.
+
+**Rationale.** A green claim from a session that could not execute is not evidence; a correct repair must not be discarded because of an environment limit. The gate is the measurement, not the narrator.
+
+**Evidence.** `scripts/mc20-catalog-guards.mjs`; `scripts/check-mc20-catalog.test.mjs` (8 negative controls); reviewer injection `Copernicus/EMODnet/Puertos del Estado` → `MC21-04 FAIL` 49/50 exit 1, reverted byte-identically.
+
+**Status effect.** F-1 CLOSED; 0 open BLOCKING/MAJOR/MINOR; residual claim-guard heuristic limitation recorded.
+
+## D-088 - 2026-11-05 - External model ceiling: Sonnet 5.5; Opus 5.5 no longer used
+
+**Context.** MC-21's first external audit was executed with Claude Opus 5.5 through Claude Code. The product owner then instructed that Opus 5.5 must not be used again and that the maximum external model is Sonnet 5.5.
+
+**Decision.** No further Claude Opus 5.5 execution is authorised in this programme. The external review ceiling is `claude-sonnet-5-5` via `subagent_claude_code` / `subagent_claude_code_sonnet_55`. The single Opus 5.5 audit already executed is preserved as historical evidence and is not re-run with that model; remediation is re-audited with Sonnet 5.5. Native DeepSeek routes are unchanged.
+
+**Rationale.** The product owner constrains cost/capability ceiling explicitly. A completed execution cannot be un-run, but it can be recorded accurately and not repeated.
+
+**Evidence.** `MC21-AGENT-EXECUTION-AND-MODEL-ROUTING.md`; `MC21-INDEPENDENT-AUDIT.md`; external re-audit subagent (Sonnet 5.5).
+
+**Status effect.** Opus 5.5 retired from use; Sonnet 5.5 is the external maximum; no change to any legal or commercial gate.
+
+## D-089 - 2026-11-05 - External audit findings are accepted only after independent re-verification
+
+**Context.** The external audit was static-only (its shell was denied) and returned `NEEDS_REVISION` with 4 MAJOR and 9 MINOR/INFO findings, contradicting the internal reviewer's "0 findings". Two MAJOR findings (XA-01, XA-04) were confirmed by the captain against the canonical MC-16/C-06 data and were real live inaccuracies.
+
+**Decision.** Accept and repair the verified findings (XA-01..XA-04, XA-09..XA-11) in commit `f7d3a3a`; record XA-05..XA-08 and XA-12 as accepted MINOR residuals with their rationale, and XA-13 as informational; re-run every gate after the repair; and re-audit the remediation externally with Sonnet 5.5. Do not treat the internal reviewer's clean verdict as final, and do not treat an unexecuted external audit as an executed one.
+
+**Rationale.** A second independent view found defects the first missed; accepting findings without verification, or dismissing them because the auditor could not execute, would both corrupt the record. The only honest path is verify → repair → re-measure → re-audit.
+
+**Evidence.** `MC21-INDEPENDENT-AUDIT.md` (findings and dispositions); commit `f7d3a3a`; captain re-runs: validator 50/50, unit 39/39, e2e 60/60, build 0 catalogue identifiers, design-system 38/38, landing 45/45, financial 76/77 inherited.
+
+**Status effect.** No BLOCKING/MAJOR finding open; 5 MINOR + 1 INFO accepted and documented; internal-scope verdict unchanged at `PARTIAL` with external gates blocked.

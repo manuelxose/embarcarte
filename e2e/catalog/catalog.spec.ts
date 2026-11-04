@@ -15,7 +15,7 @@ import AxeBuilder from '@axe-core/playwright';
  *   - internal isolation: no public family route and no purchase path.
  */
 
-const FAMILIES = ['nav', 'hub', 'ais'] as const;
+const FAMILIES = ['nav', 'hub', 'ais', 'sense', 'watch', 'weather'] as const;
 const PAGES = [
   ...FAMILIES.map((family) => ({ path: `/internal/catalog/${family}`, locale: 'es', family })),
   ...FAMILIES.map((family) => ({ path: `/en/internal/catalog/${family}`, locale: 'en', family })),
@@ -60,20 +60,29 @@ test.describe('MC-20 catalogue — SSR, isolation and hydration', () => {
   });
 
   test('the proposed public family route is not served by the preview', async ({ request }) => {
-    for (const path of ['/marea/nav', '/marea/hub', '/marea/ais']) {
+    for (const path of [
+      '/marea/nav',
+      '/marea/hub',
+      '/marea/ais',
+      '/marea/sense',
+      '/marea/watch',
+      '/marea/weather',
+    ]) {
       const response = await request.get(path);
       expect(response.status(), path).toBe(404);
     }
   });
 
-  test('health endpoint lists exactly the six catalogue paths', async ({ request }) => {
+  test('health endpoint lists exactly the twelve catalogue paths', async ({ request }) => {
     const response = await request.get('/__preview/health');
     expect(response.status()).toBe(200);
     const body = await response.json();
     expect(body.publication).toBe('NOT_AUTHORIZED');
-    expect(body.cataloguePaths).toHaveLength(6);
+    expect(body.cataloguePaths).toHaveLength(12);
     expect(body.cataloguePaths).toContain('/internal/catalog/nav');
     expect(body.cataloguePaths).toContain('/en/internal/catalog/ais');
+    expect(body.cataloguePaths).toContain('/internal/catalog/weather');
+    expect(body.cataloguePaths).toContain('/en/internal/catalog/sense');
   });
 
   test('hydration renders the real page with no console error', async ({ page }) => {
@@ -133,6 +142,62 @@ test.describe('MC-20 catalogue — canonical facts', () => {
   });
 });
 
+test.describe('MC-21 catalogue — new family honesty blocks', () => {
+  test('WEATHER names no provider and states provenance not contracted', async ({ page }) => {
+    await page.goto('/internal/catalog/weather');
+    const body = page.locator('body');
+    await expect(body).toContainText('fuente externa no contratada');
+    await expect(body).toContainText('no se nombra ningún proveedor');
+    await expect(body).toContainText('NOT_FOR_SALE');
+    for (const provider of [
+      'Copernicus',
+      'EMODnet',
+      'AEMET',
+      'Open-Meteo',
+      'MeteoGalicia',
+      'Puertos del Estado',
+      'OpenWeather',
+      'IHM',
+      'meteoblue',
+      'PredictWind',
+    ]) {
+      await expect(body).not.toContainText(provider);
+    }
+  });
+
+  test('SENSE renders accuracy/ingress/NMEA 2000 limitations', async ({ page }) => {
+    await page.goto('/internal/catalog/sense');
+    const body = page.locator('body');
+    await expect(body).toContainText('NOT_MEASURED');
+    await expect(body).toContainText('NOT_VERIFIED');
+    await expect(body).toContainText('NOT_IMPLEMENTED');
+    await expect(body).toContainText('NMEA 2000 no está implementado');
+    await expect(page.locator('[data-marea-edition="SENSE-WIND"]')).toBeVisible();
+    await expect(page.locator('[data-marea-edition="SENSE-SYSTEMS"]')).toBeVisible();
+  });
+
+  test('WATCH renders ingestion/connectivity/privacy limitations', async ({ page }) => {
+    await page.goto('/internal/catalog/watch');
+    const body = page.locator('body');
+    await expect(body).toContainText('NOT_VERIFIED');
+    await expect(body).toContainText('NOT_FOUND');
+    await expect(body).toContainText('GATE-PRIVACY-DPA-DPIA = BLOCKED');
+    await expect(body).toContainText('no garantiza la entrega');
+    await expect(page.locator('[data-marea-edition="WATCH-CORE"]')).toBeVisible();
+  });
+
+  test('the six-family navigation marks the current family and links siblings', async ({
+    page,
+  }) => {
+    await page.goto('/internal/catalog/sense');
+    const nav = page.locator('marea-responsive-nav nav');
+    await expect(nav).toBeVisible();
+    await expect(nav.locator('[aria-current="page"]')).toHaveText('SENSE');
+    await expect(nav.locator('a[href="/internal/catalog/weather"]')).toHaveCount(1);
+    await expect(nav.locator('a[href="/internal/catalog/watch"]')).toHaveCount(1);
+  });
+});
+
 test.describe('MC-20 catalogue — bilingual parity', () => {
   for (const family of FAMILIES) {
     test(`${family}: ES and EN render the same section structure`, async ({ page }) => {
@@ -156,9 +221,15 @@ test.describe('MC-20 catalogue — bilingual parity', () => {
       expect(esSections).toHaveLength(SECTION_HOSTS);
       expect(enTitle).toBe(esTitle);
       expect(Math.abs(enParagraphs - esParagraphs)).toBeLessThanOrEqual(2);
-      await expect(page.locator('h1')).toHaveText(
-        family === 'nav' ? 'MAREA NAV' : family === 'hub' ? 'MAREA HUB' : 'MAREA AIS',
-      );
+      const headingByFamily: Record<string, string> = {
+        nav: 'MAREA NAV',
+        hub: 'MAREA HUB',
+        ais: 'MAREA AIS',
+        sense: 'MAREA SENSE',
+        watch: 'MAREA WATCH',
+        weather: 'MAREA WEATHER',
+      };
+      await expect(page.locator('h1')).toHaveText(headingByFamily[family]);
     });
   }
 });

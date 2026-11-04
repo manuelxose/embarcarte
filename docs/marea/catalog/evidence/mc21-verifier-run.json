@@ -1,0 +1,122 @@
+{
+  "contractId": "MC21-VERIFIER-RUN",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-21",
+  "kind": "verification",
+  "verifier": "verifier",
+  "head": "115a1acdb59683aa8dbe71ce5a865fef9b116631",
+  "branch": "feature/marea-mc21-weather-sense-watch-catalog",
+  "runAt": "2026-11-04T23:00:00+01:00",
+  "verdict": "PASS",
+  "blockingFindings": 0,
+  "nonBlockingFindings": 1,
+  "commands": [
+    {
+      "command": "node --import ./scripts/marea-landing-ts-register.mjs --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-mc20-catalog-data.mjs --check",
+      "exitCode": 0,
+      "observed": "MC-20 catalogue data is up to date (3 generated files).",
+      "counts": "6 families / 18 editions / 6 bundles / 10 governance gates (byte-stable)"
+    },
+    {
+      "command": "npm run test:mc20",
+      "exitCode": 0,
+      "observed": "MC-20 catalogue validator: 50/50 PASS (PASS)",
+      "counts": "50/50 (MC20-01..40 + MC21-01..10)"
+    },
+    {
+      "command": "npm run test:mc20:unit",
+      "exitCode": 0,
+      "observed": "tests 31, pass 31, fail 0, skipped 0",
+      "counts": "31/31"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "observed": "Application bundle generation complete. [38.039 seconds]. Prerendered 96 static routes.",
+      "counts": "96 static routes; 168 browser bundle files"
+    },
+    {
+      "command": "npm run test:landing:unit",
+      "exitCode": 0,
+      "observed": "tests 45, pass 45, fail 0, skipped 0",
+      "counts": "45/45 (MC-18 landing regression unchanged)"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0,
+      "observed": "All matched files use Prettier code style!",
+      "counts": "0 formatting violations"
+    },
+    {
+      "command": "npm run test:mc20:e2e",
+      "exitCode": 0,
+      "observed": "60 passed (2.8m)",
+      "counts": "60/60 across 12 preview routes (SSR/hydration/a11y/responsive/no-commerce)"
+    },
+    {
+      "command": "npm run test:financial",
+      "exitCode": 1,
+      "observed": "77 checks - 76 PASS / 1 FAIL (V-18 No MC-14 execution)",
+      "counts": "76/77",
+      "classification": "INHERITED (pre-existing FINANCIAL_V18, unchanged by MC-21, not a new failure)"
+    }
+  ],
+  "isolation": {
+    "bundleFileCount": 168,
+    "browserBundleIdentifiers": {
+      "internal/catalog": 0,
+      "data-marea-catalog": 0,
+      "marea-catalog-page": 0,
+      "WEATHER-STANDARD": 0,
+      "SENSE-WIND": 0,
+      "WATCH-CORE": 0
+    },
+    "productionRouteTables": {
+      "src/app/app.routes.ts": 0,
+      "src/app/app.routes.server.ts": 0,
+      "src/app/core/i18n/locale-routes.ts": 0,
+      "src/server.ts": 0,
+      "public/": 0
+    }
+  },
+  "projection": {
+    "familyOrder": ["NAV", "HUB", "AIS", "SENSE", "WATCH", "WEATHER"],
+    "familyCount": 6,
+    "editionsByFamily": { "NAV": 2, "HUB": 2, "AIS": 2, "SENSE": 8, "WATCH": 2, "WEATHER": 2 },
+    "editionCount": 18,
+    "governanceGateCount": 10,
+    "allFamiliesPublicationState": "INTERNAL_ONLY",
+    "allFamiliesAvailability": "NOT_FOR_SALE"
+  },
+  "contentLegalAssertions": {
+    "namedProviderMatches": 0,
+    "providersGreped": ["Copernicus", "EMODnet", "AEMET", "Open-Meteo", "MeteoGalicia", "Puertos del Estado", "OpenWeather", "IHM"],
+    "positiveSlaMatches": 0,
+    "currencyMatches": 0,
+    "numericPercentageMatches": 0,
+    "positiveNmea2000CompatibleMatches": 0,
+    "positiveCommerceMatches": 0
+  },
+  "adversarialMutations": [
+    { "mutation": "injected provider name 'Copernicus no está contratado' into WEATHER hero highlight", "rejected": false, "result": "validator 50/50 PASS (MC21-04 still PASS) — FINDING F-1" },
+    { "mutation": "injected price 'Precio: 149 € al año' into WEATHER-STANDARD edition note", "rejected": true, "result": "validator 48/50 FAIL, exit 1 (currency claim MC20-15 + MC21-05)" },
+    { "mutation": "injected 'Con un 95% de acierto garantizado y un SLA de disponibilidad del 99,9%'", "rejected": true, "result": "validator 48/50 FAIL, exit 1 (forecast-accuracy + sla-claim)" },
+    { "mutation": "emptied EN description of weather.lim.forecast", "rejected": true, "result": "validator 47/50 FAIL, exit 1 (MC20-16/17 + MC21-02)" }
+  ],
+  "revertStatus": "all mutations reverted byte-identically; weather.ts SHA-256 B6D4A0EDF649AF90DBE050B59D24B12C557AE5A74CCB80FD2E849D9BB0C7C2A5 restored; git status shows only the 19 original entries",
+  "findings": [
+    {
+      "id": "F-1",
+      "severity": "medium",
+      "file": "scripts/mc20-catalog-guards.mjs",
+      "line": 140,
+      "problem": "NAMED_PROVIDER_MARKERS omits 6 of the 8 provider names mandated by the MC-21 verification contract (Copernicus, EMODnet, Open-Meteo, MeteoGalicia, Puertos del Estado, IHM). Only AEMET and OpenWeather are covered. An independently injected 'Copernicus no está contratado' into WEATHER content passes the validator 50/50 (MC21-04 still PASS), so the fail-closed provider-name gate would not catch a future insertion of these names. The e2e WEATHER test only asserts absence of 'meteoblue' and 'PredictWind' (neither is in the mandated list).",
+      "requiredFix": "Extend NAMED_PROVIDER_MARKERS to include at least Copernicus, EMODnet, Open-Meteo, MeteoGalicia, Puertos del Estado and IHM, and add corresponding unit (providerNameProblems) and e2e negative assertions for those names. Content itself is currently clean (independent grep = 0 matches for all 8 mandated names), so this is a defense-in-depth completeness gap, not a live content violation."
+    }
+  ],
+  "notes": [
+    "docs/marea/catalog/evidence/validator-run.json is the in-scope validator's auto-generated evidence output; it lives under docs/marea/catalog/ (the validator's canonical MC-20 scope) rather than t3's narrower docs/marea/catalog/data/ inScope. Content is 50/50 PASS and was regenerated identically by this verification run.",
+    "MC20-04 edition bound widened from <=3 to <=8 to accommodate the 8 canonical SENSE editions; it remains a bounded sanity assertion, not a weakened gate.",
+    "MC-14 release-evidence-gates.json carries 13 gates (12 BLOCKED + 1 EVIDENCE_REQUIRED, all fail-closed); the catalogue's 10-gate summary (CATALOG_GOVERNANCE_GATES) is a derived, verbatim-consistent, all-fail-closed subset — no gate flipped."
+  ]
+}
