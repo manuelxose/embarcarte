@@ -73,7 +73,7 @@ re-run in the implementation environment with the audit artifact present.
 | `npm run build:landing:preview` | PASS |
 | `npm run test:landing:unit` | PASS — 45/45 |
 | `npm run test:landing:e2e` | PASS — 44/44 |
-| `npm run test:landing` | 59/60 pre-commit (MC18-56), 58/60 post-commit (MC18-30 + MC18-56) — branch-scope invariants only |
+| `npm run test:landing` | 59/60 pre-commit (MC18-56) and 59/60 post-commit (MC18-30) — one branch-scope invariant depends on commit state |
 | `npm run test:financial` | FAIL 76/77 — inherited `FINANCIAL_V18`, preserved |
 | `npm run format:check` | PASS |
 

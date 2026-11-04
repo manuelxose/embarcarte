@@ -30,13 +30,13 @@
 | 11 | `npm run test:products` | PASS — 52/52 |
 | 12 | `npm run test:bundles` | PASS — 35/35 |
 | 13 | `npm run test:commerce-data` | PASS — 1834/1834 |
-| 14 | `npm run test:landing` | 59/60 pre-commit (MC18-56 only) · 58/60 post-commit (MC18-30 + MC18-56) — see §3 |
+| 14 | `npm run test:landing` | 59/60 pre-commit (MC18-56 only) and 59/60 post-commit (MC18-30 only) — one branch-scope check depends on commit state, see §3 |
 | 15 | `npm run test:landing:unit` | PASS — 45/45 |
 | 16 | `npm run test:landing:e2e` | PASS — 44/44 (includes visual baselines) |
 | 17 | `npm run test:financial` | **FAIL — 76/77; V-18 inherited** (see §4) |
 | 18 | `npm run format:check` | PASS — generated artefacts included |
 
-## 3. MC-18 validator: 58/60 / 59/60 is branch scope, not a regression
+## 3. MC-18 validator: 59/60 in both states is branch scope, not a regression
 
 The MC-18 validator contains two checks that bind the **MC-18 change set** to its own base commit:
 
@@ -47,7 +47,7 @@ The MC-18 validator contains two checks that bind the **MC-18 change set** to it
 - **MC18-56** ("the changed-file scope stays inside MC-18") reads `git status --porcelain` and
   rejects untracked MC-20 paths, so it fails in both states.
 
-Both failures are exactly the MC-20 deliverable being present. They are branch-scope invariants,
+Exactly one of these two checks fails at a time: MC18-56 before the commit (untracked MC-20 files) and MC18-30 after it (tracked MC-20 files), so the measured result is 59/60 both pre-commit and post-commit. They are branch-scope invariants,
 not a functional regression: every substantive MC-18 invariant (public routes, design system
 byte-identity, no canonical/hreflang, preview isolation, landing content, visual baselines) still
 passes, and the other 58 checks pass. The MC-18 evidence record was restored after each run:

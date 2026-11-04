@@ -41,7 +41,7 @@
 | `npm run test:i18n` / `test:commerce` / `test:seo` | PASS |
 | `npm run test:products` / `test:bundles` / `test:commerce-data` | PASS (52/52, 35/35, 1834/1834) |
 | `npm run test:financial` | FAIL 1/77 — inherited `FINANCIAL_V18`, preserved |
-| MC-18 validator on this branch | 59/60 pre-commit, 58/60 post-commit — only MC18-30/MC18-56 branch-scope checks |
+| MC-18 validator on this branch | 59/60 pre-commit (MC18-56) and 59/60 post-commit (MC18-30) — one branch-scope check depends on commit state |
 | `npm run format:check` | PASS |
 
 No test was weakened, skipped or deleted. The MC-18 evidence file was restored byte-identically
@@ -71,9 +71,7 @@ GATE-PRIVACY-DPA-DPIA = BLOCKED
 
 ## 5. Commits
 
-Recorded after the implementation is committed; see the final commit list in the PR description.
-The delivery record itself travels in a follow-up commit so it can name the implementation commit
-without inventing a self-referential hash.
+Implementation commit: `7cd8ed9f6982feeaf8f6c6f74592a88f8d1ecc93`. Draft PR: https://github.com/manuelxose/embarcarte/pull/28. This record travels in a follow-up commit so it can name the implementation commit without inventing a self-referential hash.
 
 ## 6. Not done (by design)
 

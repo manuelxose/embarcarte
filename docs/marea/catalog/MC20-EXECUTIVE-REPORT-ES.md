@@ -45,7 +45,7 @@ tocar la aplicación pública, el sistema de diseño MC-17 ni el landing MC-18.
 | i18n, comercio, SEO | PASS |
 | Productos / paquetes / datos de comercio | 52/52, 35/35, 1834/1834 |
 | Landing MC-18 (unitarias / E2E) | 45/45 y 44/44 |
-| Validador MC-18 en esta rama | 59/60 antes del commit y 58/60 después: sólo MC18-30 y MC18-56, que fijan el alcance de MC-18 y no son regresiones |
+| Validador MC-18 en esta rama | 59/60 antes del commit (MC18-56) y 59/60 después (MC18-30): una comprobación de alcance de rama que depende del estado de commit, no una regresión |
 | `FINANCIAL_V18` | FAIL heredado (76/77); se conserva como fallo explícito |
 
 ## 5. Riesgos y límites que permanecen
