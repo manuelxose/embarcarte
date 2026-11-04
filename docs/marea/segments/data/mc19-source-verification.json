@@ -1,0 +1,210 @@
+{
+  "contractId": "MC19-SOURCE-VERIFICATION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-19",
+  "date": "2026-11-04",
+  "owner": "programme lead (proposal preparer)",
+  "status": "VERIFIED_BASELINE",
+  "description": "Machine-readable record of the repository, roadmap, handoff and governance facts used to decide that the MC-19 contractual scope is not sufficiently defined for implementation. Facts were re-observed on 2026-11-04; no value is copied from a delivery summary without the cited source.",
+  "baseline": {
+    "repository": "manuelxose/embarcarte",
+    "head": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094",
+    "headSubject": "chore(mc18): refresh validator evidence at final delivery HEAD",
+    "branch": "feature/marea-mc18-bilingual-corporate-landing",
+    "remoteHead": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094",
+    "remoteRef": "refs/heads/feature/marea-mc18-bilingual-corporate-landing",
+    "workingTree": "clean before this package, except the pre-existing untracked .tmp-build.log; that file was preserved outside the repository at $TEMP/embarcarte-mc19-preexisting-tmp-build.log and was not modified",
+    "pullRequest": 25,
+    "pullRequestState": "OPEN",
+    "pullRequestDraft": true,
+    "pullRequestMergeable": "MERGEABLE",
+    "pullRequestBase": "feature/marea-mc17-premium-design-system",
+    "pullRequestHead": "feature/marea-mc18-bilingual-corporate-landing",
+    "merged": false
+  },
+  "commands": [
+    {
+      "command": "git rev-parse HEAD",
+      "exitCode": 0,
+      "observed": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094"
+    },
+    {
+      "command": "git ls-remote origin refs/heads/feature/marea-mc18-bilingual-corporate-landing",
+      "exitCode": 0,
+      "observed": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094"
+    },
+    {
+      "command": "gh pr view 25 --json number,state,isDraft,mergeable,baseRefName,headRefName,headRefOid,url",
+      "exitCode": 0,
+      "observed": "{\"baseRefName\":\"feature/marea-mc17-premium-design-system\",\"headRefName\":\"feature/marea-mc18-bilingual-corporate-landing\",\"headRefOid\":\"3490c0f71eb6eaa89588b7a6d75bb3b6066cd094\",\"isDraft\":true,\"mergeable\":\"MERGEABLE\",\"number\":25,\"state\":\"OPEN\"}"
+    },
+    {
+      "command": "git diff --name-only 3490c0f -- src/app/app.routes.ts src/app/app.routes.server.ts src/app/core/i18n/locale-routes.ts src/server.ts public",
+      "exitCode": 0,
+      "observed": "empty (no public route, sitemap or public asset change)"
+    },
+    {
+      "command": "git diff --name-only 3490c0f -- src/app/marea-landing src/app/marea-design-system preview/landing e2e/landing",
+      "exitCode": 0,
+      "observed": "empty (MC-18 implementation and MC-17 design system unchanged)"
+    },
+    {
+      "command": "git merge-base --is-ancestor 3490c0f HEAD",
+      "exitCode": 0,
+      "observed": "0 (MC-18 HEAD is an ancestor of the MC-19 branch)"
+    },
+    {
+      "command": "node -e \"read docs/marea/information-architecture/data/proposed-routes.json\"",
+      "exitCode": 0,
+      "observed": "23 proposed routes; 6 bundle routes; all PROPOSED_INTERNAL_NOT_DEPLOYABLE with publicationAuthorized=false; professionals=/profesionales; installers=/instaladores; mareaSolutions=/marea/soluciones; no owners/armadores route"
+    },
+    {
+      "command": "node -e \"read docs/marea/legal-commercial/data/release-evidence-gates.json\"",
+      "exitCode": 0,
+      "observed": "13 gates; 0 closed; 24 required documents; 0 executed (18 NOT_EXECUTED, 6 DRAFT_REQUIRED); GATE-PRIVACY-DPA-DPIA status BLOCKED"
+    },
+    {
+      "command": "node -e \"read docs/marea/legal-commercial/data/bilingual-claims.json\"",
+      "exitCode": 0,
+      "observed": "42 catalogued claims; 0 public-authorized"
+    },
+    {
+      "command": "node -e \"read docs/marea/commerce-data/data/*.json\"",
+      "exitCode": 0,
+      "observed": "9 families; 26 editions; 6 bundles; 0 merchant SKU codes; 0 approved prices; NOT_FOR_SALE"
+    },
+    {
+      "command": "npm run test:landing",
+      "exitCode": 1,
+      "observed": "59/60 at the pre-commit working tree; only MC18-56 fails because the new untracked docs/marea/segments/ directory is outside the MC-18 file scope. All other MC-18 checks pass. This is not an implementation regression."
+    },
+    {
+      "command": "npm run test:landing:unit",
+      "exitCode": 0,
+      "observed": "45/45 tests pass"
+    },
+    {
+      "command": "npx tsc -p tsconfig.app.json --noEmit",
+      "exitCode": 0,
+      "observed": "clean"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0,
+      "observed": "all matched files use Prettier code style"
+    }
+  ],
+  "sources": [
+    {
+      "id": "S01",
+      "path": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md",
+      "establishes": "Row 19 defines MC-19 at one-line granularity (status PLANNED). The registry header states prompts 03-36 are planning placeholders and the client-issued Master Prompt is authoritative.",
+      "usedFor": "Scope sufficiency assessment; P01"
+    },
+    {
+      "id": "S02",
+      "path": "docs/marea/WEBSITE-AND-ROADMAP.md",
+      "establishes": "Proposed site map includes /profesionales, /instaladores and bundle pages; MC-07B 'Marine solution pages' lists customer segment routes, sales CTAs and enquiry flows but no exact page/route/acceptance contract.",
+      "usedFor": "Scope analysis; option mapping"
+    },
+    {
+      "id": "S03",
+      "path": "docs/marea/landing/MC18-MC19-HANDOFF.md",
+      "establishes": "D18 handoff: MC-19 declared scope is segment/solution pages and enquiry flows for owners, installers and professional fleets; it is not an MC-19 plan or approval; section 9 lists six privacy prerequisites; section 17 lists explicit non-goals.",
+      "usedFor": "Scope boundaries; privacy blocker; non-goals"
+    },
+    {
+      "id": "S04",
+      "path": "docs/marea/landing/data/mc19-handoff-inputs.json",
+      "establishes": "mc19Started=false; publicationAuthorized=false; indexationAuthorized=false; purchase=false; leadCapture=false; 12 open blockers B01-B12.",
+      "usedFor": "Governance baseline; P03-P09"
+    },
+    {
+      "id": "S05",
+      "path": "docs/marea/landing/MC18-INDEPENDENT-REVIEW.md",
+      "establishes": "Independent audit recommendation PASS_INTERNAL_LANDING_SCOPE; no MC-19 start; no form, input, endpoint or contact channel exists.",
+      "usedFor": "Inherited state; no-enquiry baseline"
+    },
+    {
+      "id": "S06",
+      "path": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md",
+      "establishes": "MC18_VERDICT=PARTIAL; MC18_INTERNAL_LANDING_SCOPE=PASS_INTERNAL_LANDING_SCOPE; publication/merge/deploy/publish all false; MC19_STARTED=false; governance flags.",
+      "usedFor": "Baseline verdicts and flags"
+    },
+    {
+      "id": "S07",
+      "path": "docs/marea/landing/MC18-SPANISH-EXECUTIVE-REPORT.md",
+      "establishes": "Spanish delivery narrative; no enquiry flow; D18 handoff pointer; MC19_STARTED=false.",
+      "usedFor": "Continuity of handoff"
+    },
+    {
+      "id": "S08",
+      "path": "docs/marea/information-architecture/data/proposed-routes.json",
+      "establishes": "23 proposed routes; professionals, installers and six bundle routes exist; no owners route; all not deployable and not publication-authorized.",
+      "usedFor": "IA gap; P02"
+    },
+    {
+      "id": "S09",
+      "path": "docs/marea/legal-commercial/data/release-evidence-gates.json",
+      "establishes": "13 gates, 0 closed; 24 documents, 0 executed; privacy gate BLOCKED.",
+      "usedFor": "P03, P09"
+    },
+    {
+      "id": "S10",
+      "path": "docs/marea/legal-commercial/data/bilingual-claims.json",
+      "establishes": "42 claims; 0 public-authorized.",
+      "usedFor": "P04; claim guard"
+    },
+    {
+      "id": "S11",
+      "path": "docs/marea/commerce-data/data/product-families.json, product-editions.json, bundle-compositions.json, sku-candidates.json",
+      "establishes": "9 families, 26 editions, 6 bundles, 0 merchant SKU codes.",
+      "usedFor": "Commercial data status; P05"
+    },
+    {
+      "id": "S12",
+      "path": "docs/marea/execution/DECISION-LOG.md",
+      "establishes": "D-074 to D-077 record MC-18 decisions and explicitly state no MC-19 execution.",
+      "usedFor": "Decision continuity; D-078 to be appended"
+    }
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "finding": "The authoritative MC-19 Master Prompt has not been issued.",
+      "evidence": "MASTER-PROMPT-REGISTRY header: prompts 03-36 are planning placeholders; the client-issued Master Prompt is authoritative. No MC-19 Master Prompt file exists.",
+      "impact": "Implementation would invent requirements."
+    },
+    {
+      "id": "F02",
+      "finding": "The owners segment has no MC-15 proposed route, entity or page type.",
+      "evidence": "proposed-routes.json contains professionals and installers, but no owners/armadores route. Handoff section 6 calls an owner page 'possible'.",
+      "impact": "A new IA decision is required before an owner page can exist."
+    },
+    {
+      "id": "F03",
+      "finding": "Every enquiry/lead flow is blocked by an open privacy gate.",
+      "evidence": "GATE-PRIVACY-DPA-DPIA is BLOCKED; 24 required documents, 0 executed; handoff section 9 lists six prerequisites.",
+      "impact": "The 'lead flows' part of the MC-19 expected output cannot be implemented or tested now."
+    },
+    {
+      "id": "F04",
+      "finding": "Publication, indexation and deployment are not authorized.",
+      "evidence": "D23 records publication NOT_AUTHORIZED, merge/deploy/publish false; no release authorization record exists.",
+      "impact": "MC-19 pages must remain isolated internal previews if later approved."
+    },
+    {
+      "id": "F05",
+      "finding": "The MC-19 acceptance criterion is a theme, not a measurable contract.",
+      "evidence": "Registry row 19 verification column: 'Real CTAs only (quote/pre-registration/coming-soon per readiness)'.",
+      "impact": "Acceptance criteria must be proposed and approved before implementation."
+    },
+    {
+      "id": "F06",
+      "finding": "MC-19 solution pages may overlap MC-20-23.",
+      "evidence": "MC-20-22 own family pages; MC-23 owns bundle comparison and upgrade paths; MC-15 already proposes mareaSolutions and six bundle routes.",
+      "impact": "The page ownership boundary must be decided with the Master Prompt."
+    }
+  ],
+  "conclusion": "The roadmap and handoff define the MC-19 objective and audiences but not a contractual, implementable scope. The required next artefact is a documented scope proposal and an explicit owner decision, not code. The baseline is verified and no MC-19 implementation exists."
+}

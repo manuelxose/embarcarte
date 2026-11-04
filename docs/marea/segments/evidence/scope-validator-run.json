@@ -1,0 +1,135 @@
+{
+  "contractId": "MC19-SCOPE-VALIDATOR-RUN",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-19",
+  "generatedAt": "2026-11-04T14:10:20.808Z",
+  "head": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094",
+  "branch": "feature/marea-mc19-scope-proposal",
+  "baseline": "3490c0f71eb6eaa89588b7a6d75bb3b6066cd094",
+  "status": "PASS",
+  "total": 20,
+  "passed": 20,
+  "failed": 0,
+  "checks": [
+    {
+      "id": "MC19-01",
+      "description": "the seven proposal documents exist and are substantive",
+      "status": "PASS",
+      "detail": "7 documents present"
+    },
+    {
+      "id": "MC19-02",
+      "description": "the six machine-readable datasets exist and parse",
+      "status": "PASS",
+      "detail": "6 datasets parse"
+    },
+    {
+      "id": "MC19-03",
+      "description": "the baseline is the verified MC-18 head and its ancestor",
+      "status": "PASS",
+      "detail": "baseline 3490c0f is an ancestor of HEAD"
+    },
+    {
+      "id": "MC19-04",
+      "description": "the working branch is the MC-19 proposal branch",
+      "status": "PASS",
+      "detail": "feature/marea-mc19-scope-proposal"
+    },
+    {
+      "id": "MC19-05",
+      "description": "MC-18 implementation, audit and evidence are unchanged",
+      "status": "PASS",
+      "detail": "MC-18 landing package unchanged"
+    },
+    {
+      "id": "MC19-06",
+      "description": "MC-17 design system and predecessor evidence are unchanged",
+      "status": "PASS",
+      "detail": "predecessor evidence unchanged"
+    },
+    {
+      "id": "MC19-07",
+      "description": "no public route, sitemap, server or public asset changed",
+      "status": "PASS",
+      "detail": "public surface unchanged"
+    },
+    {
+      "id": "MC19-08",
+      "description": "no MC-19 implementation file exists",
+      "status": "PASS",
+      "detail": "0 implementation files changed"
+    },
+    {
+      "id": "MC19-09",
+      "description": "no new dependency or lockfile change is introduced",
+      "status": "PASS",
+      "detail": "dependencies unchanged; lockfile unchanged"
+    },
+    {
+      "id": "MC19-10",
+      "description": "the proposal contract is internally consistent",
+      "status": "PASS",
+      "detail": "proposal contract valid"
+    },
+    {
+      "id": "MC19-11",
+      "description": "the IA registry still shows the owners route gap",
+      "status": "PASS",
+      "detail": "23 proposed routes; owners route absent"
+    },
+    {
+      "id": "MC19-12",
+      "description": "the legal and privacy state matches the canonical datasets",
+      "status": "PASS",
+      "detail": "13/0 gates, 24/0 documents, 42/0 claims, privacy BLOCKED"
+    },
+    {
+      "id": "MC19-13",
+      "description": "the MC-20 handoff is inputs-only and not a start signal",
+      "status": "PASS",
+      "detail": "MC-20 not started and not dependent on MC-19"
+    },
+    {
+      "id": "MC19-14",
+      "description": "the independent review is recorded or explicitly pending",
+      "status": "PASS",
+      "detail": "review status: PENDING_INDEPENDENT_REVIEW"
+    },
+    {
+      "id": "MC19-15",
+      "description": "the manifest matches the package counts",
+      "status": "PASS",
+      "detail": "manifest counts and implementation state valid"
+    },
+    {
+      "id": "MC19-16",
+      "description": "no document claims a PASS or a verified implementation",
+      "status": "PASS",
+      "detail": "BLOCKED verdict and no verified implementation claim"
+    },
+    {
+      "id": "MC19-17",
+      "description": "the decision log records the scope-proposal stop",
+      "status": "PASS",
+      "detail": "D-078 present"
+    },
+    {
+      "id": "MC19-18",
+      "description": "the 36-milestone registry row 19 records BLOCKED",
+      "status": "PASS",
+      "detail": "row 19 records BLOCKED and cites the proposal"
+    },
+    {
+      "id": "MC19-19",
+      "description": "no merge, deployment or publication is recorded",
+      "status": "PASS",
+      "detail": "MC19_MERGED/DEPLOYED/PUBLISHED = false"
+    },
+    {
+      "id": "MC19-20",
+      "description": "the source-verification dataset records the real baseline commands",
+      "status": "PASS",
+      "detail": "14 commands recorded"
+    }
+  ]
+}

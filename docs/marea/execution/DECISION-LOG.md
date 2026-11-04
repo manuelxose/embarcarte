@@ -1804,3 +1804,15 @@ no merge, no deployment.
 **Evidence.** `MC18-INDEPENDENT-REVIEW.md` (including the correction-round section); `data/review-findings.json` (IR-01/02/03 CLOSED with correctionCommit and independentReverification); D22/D23; final validator 60/60; landing Playwright 44/44; production isolation 0 landing identifiers and public `/marea` 404.
 
 **Status effect.** Internal landing scope PASS; overall MC-18 PARTIAL; no merge, deployment, publication, brand adoption or MC-19 execution. `FINANCIAL_V18`, `MC16_FINAL_02`, MC-13 F-05/F-11/F-14 and MC-15 GSC-01/GSC-02 remain open.
+
+## D-078 - 2026-11-04 - MC-19 stops at a documented scope proposal
+
+**Context.** The 36-prompt registry row 19 defines MC-19 as "Segment/solution pages and enquiry flows (owners, installers, professionals)" with dependency MC-18. The registry also states that prompts 03-36 are planning placeholders and that the client-issued Master Prompt is authoritative. The MC-18→MC-19 handoff declares the scope but is not an MC-19 plan or approval. The authoritative MC-15 route registry has no owners route. Every enquiry/lead flow is blocked by `GATE-PRIVACY-DPA-DPIA` (24 required documents, 0 executed; 42 claims, 0 public-authorized).
+
+**Decision.** Do not implement MC-19. Deliver the documented scope proposal package in `docs/marea/segments/` (D01-D07, five datasets, a deterministic validator and 21 unit/adversarial tests), record `MC19_VERDICT = BLOCKED`, and require P01 (authoritative Master Prompt), P02 (IA/route decision) and P10 (scope approval) before implementation. Defer enquiry flows until P03 and the publication gates close. The recommended option A is three internal audience pages (owners, installers, professional fleets) with no enquiry flow, isolated preview only, reusing MC-17/MC-18.
+
+**Rationale.** Implementing from a placeholder would invent the page set, the owners route and the CTA behaviour, and could introduce unauthorized customer data collection. The programme's own rule is to stop and propose rather than invent requirements.
+
+**Evidence.** `docs/marea/segments/MC19-SCOPE-PROPOSAL.md`; `data/mc19-scope-proposal.json`; `data/mc19-source-verification.json`; `scripts/check-mc19-scope.mjs`; `npm run test:mc19-scope:unit` 21/21; baseline `3490c0f71eb6eaa89588b7a6d75bb3b6066cd094`.
+
+**Status effect.** MC-19 BLOCKED; no implementation, public route, form, lead capture, merge, deployment or publication. MC-18 implementation, evidence and audit conclusions preserved; inherited debt unchanged.

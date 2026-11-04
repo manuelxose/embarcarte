@@ -1,0 +1,143 @@
+{
+  "contractId": "MC19-RISK-REGISTER",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-19",
+  "date": "2026-11-04",
+  "status": "ACTIVE",
+  "description": "Risk register for the MC-19 scope proposal and a future authorized implementation. No risk is closed by the proposal.",
+  "risks": [
+    {
+      "id": "R01",
+      "risk": "Scope invented from a one-line placeholder does not match the owner's intent.",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "mitigation": "Stop implementation until P01/P10; bind the exact Master Prompt to the scope revision.",
+      "owner": "programme lead",
+      "status": "OPEN"
+    },
+    {
+      "id": "R02",
+      "risk": "Owners/professional-fleets pages create route or entity collisions, or contradict MC-15.",
+      "likelihood": "HIGH",
+      "impact": "HIGH",
+      "mitigation": "Record an IA/route decision (P02) with a collision check before any code; do not touch LOCALIZED_ROUTES in the internal milestone.",
+      "owner": "architecture owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R03",
+      "risk": "A form, endpoint or lead store is introduced without a lawful privacy basis.",
+      "likelihood": "MEDIUM",
+      "impact": "BLOCKER",
+      "mitigation": "Hard gate: no form/input/endpoint/lead store while GATE-PRIVACY-DPA-DPIA is blocked; adversarial tests and independent review.",
+      "owner": "privacy owner + programme lead",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "R04",
+      "risk": "A segment page is accidentally registered in the public router, sitemap or navigation.",
+      "likelihood": "MEDIUM",
+      "impact": "BLOCKER",
+      "mitigation": "Preview-only routes; no production import; build-scan and 404 probes; route-diff check.",
+      "owner": "implementation owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R05",
+      "risk": "Price, stock, purchase, certification or availability claims leak into segment copy or CTAs.",
+      "likelihood": "MEDIUM",
+      "impact": "BLOCKER",
+      "mitigation": "Claims guard, copy-class constraints, fail-closed CTA component, adversarial mutations.",
+      "owner": "content owner + programme lead",
+      "status": "OPEN"
+    },
+    {
+      "id": "R06",
+      "risk": "The design system is forked or a second bilingual component tree is created.",
+      "likelihood": "LOW",
+      "impact": "HIGH",
+      "mitigation": "Reuse MC-17 components; import-graph check; empty design-system diff; independent review.",
+      "owner": "implementation owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R07",
+      "risk": "ES/EN parity or translation quality is claimed without evidence.",
+      "likelihood": "MEDIUM",
+      "impact": "MEDIUM",
+      "mitigation": "Deterministic parity checks; evidence-provenanced blocks; no claim of professional translation review.",
+      "owner": "content owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R08",
+      "risk": "MC-19 solution pages duplicate MC-20-23 family or bundle pages.",
+      "likelihood": "HIGH",
+      "impact": "MEDIUM",
+      "mitigation": "Decide page ownership in P02; Option A embeds solution context instead of creating bundle routes.",
+      "owner": "programme lead",
+      "status": "OPEN"
+    },
+    {
+      "id": "R09",
+      "risk": "Evidence drifts or counts are prefixed before execution.",
+      "likelihood": "MEDIUM",
+      "impact": "MEDIUM",
+      "mitigation": "Single deterministic validator; regenerate datasets; record real command output; independent re-run.",
+      "owner": "verification owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R10",
+      "risk": "The inherited V-18 financial gate is hidden or reported as green.",
+      "likelihood": "LOW",
+      "impact": "MEDIUM",
+      "mitigation": "Keep FINANCIAL_V18 = INHERITED_OPEN; run test:financial and report the real result.",
+      "owner": "programme lead",
+      "status": "OPEN"
+    },
+    {
+      "id": "R11",
+      "risk": "Automated axe results are overstated as WCAG 2.2 AA conformance.",
+      "likelihood": "MEDIUM",
+      "impact": "MEDIUM",
+      "mitigation": "State the automated, Chromium-only limits; no conformance claim without manual/screen-reader review.",
+      "owner": "accessibility reviewer",
+      "status": "OPEN"
+    },
+    {
+      "id": "R12",
+      "risk": "The loopback preview isolation is weakened (public bind, Host allowlist removed, noindex lost).",
+      "likelihood": "LOW",
+      "impact": "BLOCKER",
+      "mitigation": "Keep the MC-18 server controls; isolation probes and adversarial mutations; independent review.",
+      "owner": "implementation owner",
+      "status": "OPEN"
+    },
+    {
+      "id": "R13",
+      "risk": "A late Master Prompt rebinds the scope after implementation starts.",
+      "likelihood": "MEDIUM",
+      "impact": "HIGH",
+      "mitigation": "Do not start before P01 is frozen; bind the prompt to a scope revision; re-plan if it changes.",
+      "owner": "programme lead",
+      "status": "OPEN"
+    },
+    {
+      "id": "R14",
+      "risk": "The stacked draft PR is merged or deployed by mistake.",
+      "likelihood": "LOW",
+      "impact": "HIGH",
+      "mitigation": "Draft PR only; no merge/deploy; explicit base/head; delivery record states the state.",
+      "owner": "programme lead",
+      "status": "OPEN"
+    }
+  ],
+  "summary": {
+    "total": 14,
+    "blocker": 4,
+    "high": 6,
+    "medium": 4,
+    "closed": 0
+  }
+}
