@@ -1,0 +1,174 @@
+{
+  "contractId": "MC20-CANONICAL-MAPPING",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-20",
+  "owner": "MC-20 implementation team",
+  "sourceOfTruth": [
+    "docs/marea/commerce-data/data/product-families.json",
+    "docs/marea/commerce-data/data/product-editions.json",
+    "docs/marea/commerce-data/data/bundle-compositions.json",
+    "docs/marea/commerce-data/data/readiness-dimensions.json",
+    "docs/marea/information-architecture/data/proposed-routes.json",
+    "docs/marea/legal-commercial/data/release-evidence-gates.json",
+    "docs/marea/legal-commercial/data/claims-policy.json",
+    "docs/marea/products/product-definitions.batch-01.json"
+  ],
+  "families": [
+    {
+      "familyId": "NAV",
+      "displayName": "MAREA NAV",
+      "entityType": "PRODUCT_FAMILY",
+      "productType": "SOFTWARE",
+      "routeId": "mareaFamilyNav",
+      "editionIds": [
+        "NAV-ESSENTIAL",
+        "NAV-PRO"
+      ],
+      "bundles": [
+        {
+          "bundleId": "START",
+          "inclusion": "INCLUDED",
+          "editionId": "NAV-PRO"
+        },
+        {
+          "bundleId": "CRUISE",
+          "inclusion": "INCLUDED",
+          "editionId": "NAV-ESSENTIAL"
+        },
+        {
+          "bundleId": "SAIL",
+          "inclusion": "INCLUDED",
+          "editionId": "NAV-PRO"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "inclusion": "INCLUDED",
+          "editionId": "NAV-PRO"
+        }
+      ],
+      "proposedPublicPath": {
+        "routeId": "mareaFamilyNav",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-NAV",
+        "es": "marea/nav",
+        "en": "en/marea/nav",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      },
+      "sourceRefs": [
+        "docs/marea/commerce-data/data/product-families.json#families[familyId=NAV]",
+        "docs/marea/commerce-data/data/product-editions.json#editions[familyId=NAV]",
+        "docs/marea/information-architecture/data/proposed-routes.json#items[routeId=mareaFamilyNav]",
+        "docs/marea/products/product-definitions.batch-01.json#products.NAV"
+      ]
+    },
+    {
+      "familyId": "HUB",
+      "displayName": "MAREA HUB",
+      "entityType": "PRODUCT_FAMILY",
+      "productType": "HARDWARE",
+      "routeId": "mareaFamilyHub",
+      "editionIds": [
+        "HUB-STANDARD",
+        "HUB-PRO"
+      ],
+      "bundles": [
+        {
+          "bundleId": "START",
+          "inclusion": "INCLUDED",
+          "editionId": "HUB-STANDARD"
+        },
+        {
+          "bundleId": "CRUISE",
+          "inclusion": "INCLUDED",
+          "editionId": "HUB-STANDARD"
+        },
+        {
+          "bundleId": "SAIL",
+          "inclusion": "INCLUDED",
+          "editionId": "HUB-STANDARD"
+        },
+        {
+          "bundleId": "PROTECT",
+          "inclusion": "OPTIONAL",
+          "editionId": "HUB-STANDARD"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "inclusion": "INCLUDED",
+          "editionId": "HUB-PRO"
+        },
+        {
+          "bundleId": "FLEET",
+          "inclusion": "OPTIONAL",
+          "editionId": "HUB-STANDARD"
+        }
+      ],
+      "proposedPublicPath": {
+        "routeId": "mareaFamilyHub",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-HUB",
+        "es": "marea/hub",
+        "en": "en/marea/hub",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      },
+      "sourceRefs": [
+        "docs/marea/commerce-data/data/product-families.json#families[familyId=HUB]",
+        "docs/marea/commerce-data/data/product-editions.json#editions[familyId=HUB]",
+        "docs/marea/information-architecture/data/proposed-routes.json#items[routeId=mareaFamilyHub]",
+        "docs/marea/products/product-definitions.batch-01.json#products.HUB"
+      ]
+    },
+    {
+      "familyId": "AIS",
+      "displayName": "MAREA AIS",
+      "entityType": "PRODUCT_FAMILY",
+      "productType": "HARDWARE",
+      "routeId": "mareaFamilyAis",
+      "editionIds": [
+        "AIS-RECEIVER",
+        "AIS-CONNECTED"
+      ],
+      "bundles": [
+        {
+          "bundleId": "CRUISE",
+          "inclusion": "INCLUDED",
+          "editionId": "AIS-RECEIVER"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "inclusion": "OPTIONAL",
+          "editionId": "AIS-RECEIVER"
+        }
+      ],
+      "proposedPublicPath": {
+        "routeId": "mareaFamilyAis",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-AIS",
+        "es": "marea/ais",
+        "en": "en/marea/ais",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      },
+      "sourceRefs": [
+        "docs/marea/commerce-data/data/product-families.json#families[familyId=AIS]",
+        "docs/marea/commerce-data/data/product-editions.json#editions[familyId=AIS]",
+        "docs/marea/information-architecture/data/proposed-routes.json#items[routeId=mareaFamilyAis]",
+        "docs/marea/products/product-definitions.batch-01.json#products.AIS"
+      ]
+    }
+  ]
+}

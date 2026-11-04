@@ -1,0 +1,256 @@
+{
+  "contractId": "MC20-CATALOG-VALIDATOR-RUN",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-20",
+  "owner": "MC-20 implementation team",
+  "baseCommit": "3490c0f",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "status": "PASS",
+  "total": 40,
+  "passed": 40,
+  "failed": 0,
+  "runAt": "2026-11-04T19:54:42.164Z",
+  "head": "4d41d8392d0258c6e809702b3f51e3ea78fb6255",
+  "checks": [
+    {
+      "id": "MC20-01",
+      "title": "the projection exposes exactly NAV, HUB and AIS in canonical order",
+      "status": "PASS",
+      "detail": "NAV, HUB, AIS in canonical MC-16 order"
+    },
+    {
+      "id": "MC20-02",
+      "title": "family type/lifecycle/publication/availability match the canonical record",
+      "status": "PASS",
+      "detail": "3 families copy product type, lifecycle, publication and availability"
+    },
+    {
+      "id": "MC20-03",
+      "title": "all eleven readiness dimensions equal the canonical values",
+      "status": "PASS",
+      "detail": "3 families × 11 dimensions copied byte-for-byte"
+    },
+    {
+      "id": "MC20-04",
+      "title": "six canonical editions keep their ids, family, type and feature keys",
+      "status": "PASS",
+      "detail": "6 editions: NAV-ESSENTIAL/PRO, HUB-STANDARD/PRO, AIS-RECEIVER/CONNECTED"
+    },
+    {
+      "id": "MC20-05",
+      "title": "AIS transmission is false in the canonical data and in the catalogue copy",
+      "status": "PASS",
+      "detail": "receive-only framing present in ES and EN hero and limitations"
+    },
+    {
+      "id": "MC20-06",
+      "title": "no edition is merchantable, priced or assigned a merchant SKU",
+      "status": "PASS",
+      "detail": "0 approved prices, 0 merchantable editions, 0 merchant SKUs"
+    },
+    {
+      "id": "MC20-07",
+      "title": "every MC-15 proposed family route stays internal and not deployable",
+      "status": "PASS",
+      "detail": "3 routes: proposed internal, not deployable, no collision, no publication"
+    },
+    {
+      "id": "MC20-08",
+      "title": "NAV is software, HUB and AIS are hardware with unselected hardware",
+      "status": "PASS",
+      "detail": "NAS=software; HUB/AIS=hardware NOT_SELECTED; all NOT_FOR_SALE"
+    },
+    {
+      "id": "MC20-09",
+      "title": "bundle inclusions match the canonical bundle composition",
+      "status": "PASS",
+      "detail": "NAV 4 included, HUB 4 included + 2 optional, AIS 1 included + 1 optional"
+    },
+    {
+      "id": "MC20-10",
+      "title": "every family renders the frozen ten sections",
+      "status": "PASS",
+      "detail": "3 families × 10 frozen sections"
+    },
+    {
+      "id": "MC20-11",
+      "title": "content ids are unique across the whole catalogue",
+      "status": "PASS",
+      "detail": "121 unique content blocks"
+    },
+    {
+      "id": "MC20-12",
+      "title": "every content block declares an evidence class and existing sources",
+      "status": "PASS",
+      "detail": "all blocks carry an evidence class and only existing source files"
+    },
+    {
+      "id": "MC20-13",
+      "title": "the committed projection is up to date with the canonical datasets",
+      "status": "PASS",
+      "detail": "scripts/build-mc20-catalog-data.mjs --check exits 0"
+    },
+    {
+      "id": "MC20-14",
+      "title": "the generated projection carries no price, stock or SKU field",
+      "status": "PASS",
+      "detail": "no amount, quantity or SKU value in the projection"
+    },
+    {
+      "id": "MC20-15",
+      "title": "the five families of copy avoid prohibited commercial claims",
+      "status": "PASS",
+      "detail": "836 bilingual strings scanned, 0 prohibited claims"
+    },
+    {
+      "id": "MC20-16",
+      "title": "every string has a non-empty, distinct ES and EN value",
+      "status": "PASS",
+      "detail": "43 sampled bilingual values are non-empty and locale-specific"
+    },
+    {
+      "id": "MC20-17",
+      "title": "ES and EN expose the same inventory and every pair is genuinely bilingual",
+      "status": "PASS",
+      "detail": "structural inventory plus every localized pair: non-empty, translated, limitations negated"
+    },
+    {
+      "id": "MC20-18",
+      "title": "the English copy shows no untranslated Spanish clustering",
+      "status": "PASS",
+      "detail": "0 English strings with Spanish function-word clustering"
+    },
+    {
+      "id": "MC20-19",
+      "title": "the page composes all ten sections in the frozen order",
+      "status": "PASS",
+      "detail": "10 sections plus the closing section rendered in order"
+    },
+    {
+      "id": "MC20-20",
+      "title": "section components contain no per-family presentation branch",
+      "status": "PASS",
+      "detail": "sections are driven by the canonical record and the content contract"
+    },
+    {
+      "id": "MC20-21",
+      "title": "the catalogue reuses MC-17 components and does not fork the design system",
+      "status": "PASS",
+      "detail": "10 verified MC-17 components reused; design system byte-identical to the MC-18 base"
+    },
+    {
+      "id": "MC20-22",
+      "title": "the MC-18 landing module is unchanged",
+      "status": "PASS",
+      "detail": "src/app/marea-landing is unchanged from the MC-18 base"
+    },
+    {
+      "id": "MC20-23",
+      "title": "the preview route table defines six family/locale routes",
+      "status": "PASS",
+      "detail": "3 families × 2 locales, all Server-rendered, all under internal/catalog"
+    },
+    {
+      "id": "MC20-24",
+      "title": "the preview host emits no public metadata",
+      "status": "PASS",
+      "detail": "noindex + NOT_AUTHORIZED only; no canonical, hreflang, OG, Twitter or JSON-LD"
+    },
+    {
+      "id": "MC20-25",
+      "title": "the preview server stays loopback-only with a noindex header",
+      "status": "PASS",
+      "detail": "127.0.0.1 bind, host allowlist, noindex, CSP form-action none"
+    },
+    {
+      "id": "MC20-26",
+      "title": "the catalogue defines no form, input, storage or network call",
+      "status": "PASS",
+      "detail": "23 catalogue modules: 0 form, 0 storage, 0 network call"
+    },
+    {
+      "id": "MC20-27",
+      "title": "no purchase path can be rendered",
+      "status": "PASS",
+      "detail": "MC-17 fail-closed adapter; release gate closed; no purchase, cart or price"
+    },
+    {
+      "id": "MC20-28",
+      "title": "the production application and design system are untouched",
+      "status": "PASS",
+      "detail": "public routes, SSR entry, public assets and deployment config unchanged"
+    },
+    {
+      "id": "MC20-29",
+      "title": "no production module reaches the catalogue or the preview",
+      "status": "PASS",
+      "detail": "86 production modules scanned; 0 reach the catalogue, preview or landing"
+    },
+    {
+      "id": "MC20-30",
+      "title": "no catalogue identifier appears in a production bundle if one exists",
+      "status": "PASS",
+      "detail": "168 production bundle files carry 0 catalogue identifiers"
+    },
+    {
+      "id": "MC20-31",
+      "title": "no dependency or lockfile change is introduced",
+      "status": "PASS",
+      "detail": "dependencies and lockfile unchanged"
+    },
+    {
+      "id": "MC20-32",
+      "title": "every changed path is inside the MC-20 write scope",
+      "status": "PASS",
+      "detail": "0 working-tree entries inside the MC-20 scope"
+    },
+    {
+      "id": "MC20-33",
+      "title": "the generated projection is deterministic",
+      "status": "PASS",
+      "detail": "regeneration matches the committed bytes exactly (--check exits 0)"
+    },
+    {
+      "id": "MC20-34",
+      "title": "catalogue pages expose no link to a proposed public route",
+      "status": "PASS",
+      "detail": "only internal/catalog paths are referenced"
+    },
+    {
+      "id": "MC20-35",
+      "title": "the public sitemap and robots files are unchanged",
+      "status": "PASS",
+      "detail": "0 public sitemap file(s) unchanged, no catalogue entry"
+    },
+    {
+      "id": "MC20-36",
+      "title": "the delivery record preserves the governance gates",
+      "status": "PASS",
+      "detail": "10 governance gates recorded verbatim"
+    },
+    {
+      "id": "MC20-37",
+      "title": "the acceptance matrix uses only real statuses and evidence-bound PASS rows",
+      "status": "PASS",
+      "detail": "15 rows with PASS/PARTIAL/PENDING only; PASS rows carry evidence conditions"
+    },
+    {
+      "id": "MC20-38",
+      "title": "MC-21 is not started and no later milestone is activated",
+      "status": "PASS",
+      "detail": "MC-21 PLANNED; no automatic start"
+    },
+    {
+      "id": "MC20-39",
+      "title": "the roadmap row for MC-20 is updated and not marked PASS",
+      "status": "PASS",
+      "detail": "MC-20 row records internal evidence and keeps the verdict partial"
+    },
+    {
+      "id": "MC20-40",
+      "title": "the test report and independent audit are evidence-bound",
+      "status": "PASS",
+      "detail": "test report, audit, ES executive report and MC-21 handoff present"
+    }
+  ]
+}

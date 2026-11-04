@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Isolated SSR server for the MC-18 internal landing preview.
+ * Isolated SSR server for the MC-18 landing + MC-20 catalogue previews.
  *
  * Isolation and security:
  *   - binds to 127.0.0.1 only (loopback); no publicly hosted preview exists;
@@ -12,6 +12,7 @@
  * Usage:
  *   npm run build:landing:preview
  *   npm run serve:landing:preview       # http://127.0.0.1:4302/marea
+ *                                       # http://127.0.0.1:4302/internal/catalog/nav
  */
 import {
   AngularNodeAppEngine,
@@ -21,6 +22,7 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import { CATALOG_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/catalog-identity';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 const host = '127.0.0.1';
@@ -66,10 +68,11 @@ app.use((req, res, next) => {
 app.get('/__preview/health', (_req, res) => {
   res.json({
     status: 'ok',
-    preview: 'MC-18 internal landing',
+    preview: 'MC-18 internal landing + MC-20 internal catalogue',
     publication: 'NOT_AUTHORIZED',
     indexation: 'noindex, nofollow, noarchive',
     host,
+    cataloguePaths: CATALOG_PREVIEW_ROUTES.map((route) => `/${route.path}`),
   });
 });
 
@@ -100,8 +103,11 @@ app.use((_req, res) => {
  */
 const server = isMainModule(import.meta.url)
   ? app.listen(port, host, () => {
-      console.log(`MC-18 internal landing preview (NOT PUBLISHED): http://${host}:${port}/marea`);
+      console.log(`MC-18/MC-20 internal preview (NOT PUBLISHED): http://${host}:${port}/marea`);
       console.log('Publication NOT_AUTHORIZED · indexation disabled · loopback only');
+      for (const route of CATALOG_PREVIEW_ROUTES) {
+        console.log(`  catalogue: http://${host}:${port}/${route.path} (${route.familyId})`);
+      }
     })
   : null;
 
