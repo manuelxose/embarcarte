@@ -87,11 +87,14 @@ steps: a **closure commit** with all code and documentation, then an **evidence-
 adds the validator, Playwright and probe outputs recorded against the closure commit. The evidence-only
 commit changes no code and no documentation content, so the reviewed bytes are the delivered bytes.
 
-Round-3 re-verification (same independent auditor) result: **PENDING** at the time this document was
-first written; the final verdict is recorded below once received.
+Round-3 re-verification (same independent auditor): **PASS_INTERNAL_SCOPE**. IR2-01 and IR2-02 are
+closed (the evidence-only diff is exactly nine files under `docs/marea/segments/evidence/`; both
+persisted audit files exist and list rounds 1–2). No new BLOCKING/MAJOR finding. One MINOR residue
+(IR3-01, verdict wording across six documents) was corrected in the final documentation commit; the
+persisted artefacts now all read `PASS_INTERNAL_SCOPE`.
 
 ```text
 MC19_IMPLEMENTATION_ROUND_1 = NEEDS_REVISION (3 MAJOR, 13 MINOR/INFORMATIONAL; no BLOCKING)
 MC19_IMPLEMENTATION_ROUND_2 = NEEDS_REVISION (2 MAJOR evidence-integrity, 4 MINOR/INFORMATIONAL; no BLOCKING)
-MC19_IMPLEMENTATION_ROUND_3 = PENDING
+MC19_IMPLEMENTATION_ROUND_3 = PASS_INTERNAL_SCOPE
 ```

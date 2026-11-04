@@ -2,7 +2,7 @@
   "contractId": "MC19-IMPLEMENTATION-REVIEW",
   "contractVersion": "1.0.0",
   "milestone": "MC-19",
-  "status": "PENDING_ROUND_3",
+  "status": "COMPLETE_PASS_INTERNAL_SCOPE",
   "base": "ba63baa0e529ab9cb482fd929632d359fec1d328",
   "implementationCommit": "cc3a62cb28da3a6c21dce16ee07580edb216debd",
   "correctionCommit": "102c6f14f313c96c7dd0a39212add5642a3cb5f8",
@@ -220,17 +220,24 @@
     }
   ],
   "round3": {
-    "status": "PENDING",
-    "requestedFrom": "round-2 independent native auditor",
-    "scope": "verify IR2-01/IR2-02 closure, evidence-only commit, counts and PASS wording"
+    "status": "PASS_INTERNAL_SCOPE",
+    "closed": ["IR2-01", "IR2-02", "IR2-03", "IR2-04", "IR2-06"],
+    "residual": {
+      "id": "IR3-01",
+      "severity": "MINOR",
+      "problem": "verdict wording not unified across six documents",
+      "closure": "final documentation commit unifies PASS_INTERNAL_SCOPE"
+    },
+    "openBlocking": 0,
+    "openMajor": 0
   },
   "summary": {
     "blocking": 0,
     "majorClosed": 5,
-    "minorInformationalClosed": 17,
+    "minorInformationalClosed": 18,
     "openBlocking": 0,
     "openMajor": 0,
-    "finalVerdict": "PENDING_ROUND_3"
+    "finalVerdict": "PASS_INTERNAL_SCOPE"
   },
   "limits": [
     "No manual WCAG/assistive-technology audit (AC-08 PARTIAL).",

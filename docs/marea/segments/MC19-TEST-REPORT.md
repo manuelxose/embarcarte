@@ -1,10 +1,10 @@
 # MC-19/36 — Test report
 
-| Field       | Value                                                                                                 |
-| ----------- | ----------------------------------------------------------------------------------------------------- |
-| Deliverable | MC-19 test report                                                                                     |
-| Baseline    | `ba63baa0e529ab9cb482fd929632d359fec1d328`                                                            |
-| Status      | internal suites PASS; `PASS_INTERNAL_SCOPE` pending final re-verification; inherited V-18 remains red |
+| Field       | Value                                                                                                           |
+| ----------- | --------------------------------------------------------------------------------------------------------------- |
+| Deliverable | MC-19 test report                                                                                               |
+| Baseline    | `ba63baa0e529ab9cb482fd929632d359fec1d328`                                                                      |
+| Status      | `PASS_INTERNAL_SCOPE` for the internal suites (round-3 independent re-verification); inherited V-18 remains red |
 
 Every result below is from a command executed in this working tree. A command that did not run is
 not reported as passing. The exact observed tails are quoted.

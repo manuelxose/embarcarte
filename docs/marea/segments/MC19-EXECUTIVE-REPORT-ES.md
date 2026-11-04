@@ -168,11 +168,13 @@ alcance 24/24, ambos `tsc` en 0, build de previsualización en 0 con 0 rutas pre
 Playwright 22/22, `test:commerce-data` 1832/1832 y escaneo del bundle de producción con 0
 identificadores; los diffs de sistema de diseño, landing y propuesta v1 estaban vacíos.
 
-Las correcciones de ronda 2 se registran en un commit de cierre y un commit posterior **solo de
-evidencias** (un commit no puede contener evidencia que nombre su propio hash); la re-verificación
-final (ronda 3) se solicita al mismo auditor. El resultado se registra en `MC19-INDEPENDENT-AUDIT.md`
-y `data/mc19-implementation-review.json`. No se declara PASS_INTERNAL_SCOPE hasta que exista esa
-evidencia.
+Las correcciones de ronda 2 se registraron en el commit de cierre `3f19601` y en un commit posterior
+**solo de evidencias** `65d1f6d` (un commit no puede contener evidencia que nombre su propio hash).
+
+Ronda 3 (re-verificación del mismo auditor independiente): **PASS_INTERNAL_SCOPE**, con IR2-01 e
+IR2-02 cerrados y sin hallazgos BLOCKING/MAJOR nuevos. Queda un único residuo MINOR (IR3-01:
+unificar la redacción del veredicto), corregido en el commit de documentación final. El detalle está
+en `MC19-INDEPENDENT-AUDIT.md` y `data/mc19-implementation-review.json`.
 
 ## 10. Estado de entrega
 
