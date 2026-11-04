@@ -613,7 +613,14 @@ add('MC20-30', 'no catalogue identifier appears in a production bundle if one ex
   for (const file of files) {
     if (!file.endsWith('.js')) continue;
     const source = read(file);
-    for (const marker of ['internal/catalog', 'data-marea-catalog', 'marea-catalog-page']) {
+    for (const marker of [
+      'internal/catalog',
+      'data-marea-catalog',
+      'marea-catalog-page',
+      'WEATHER-STANDARD',
+      'SENSE-WIND',
+      'WATCH-CORE',
+    ]) {
       if (source.includes(marker)) offenders.push(`${file}:${marker}`);
     }
   }
@@ -634,10 +641,13 @@ add('MC20-31', 'no dependency or lockfile change is introduced', () => {
 });
 
 add('MC20-32', 'every changed path is inside the MC-20 write scope', () => {
-  const lines = git(['status', '--porcelain=v1'])
+  const workingTree = git(['status', '--porcelain=v1', '--untracked-files=all'])
     .split('\n')
     .map((line) => line.trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .map((line) => line.replace(/^[A-Z?!]{1,2}\s+/, ''));
+  const sinceBase = changedSinceBase([]);
+  const changedPaths = [...new Set([...workingTree, ...sinceBase])];
   const allowedPrefixes = [
     `${CATALOG}/`,
     `${PREVIEW}/`,
@@ -654,9 +664,11 @@ add('MC20-32', 'every changed path is inside the MC-20 write scope', () => {
     'docs/marea/execution/DECISION-LOG.md',
     'docs/marea/execution/MASTER-PROMPT-REGISTRY.md',
   ];
-  const outOfScope = scopeProblems(lines, allowedPrefixes, allowedExact);
+  const outOfScope = scopeProblems(changedPaths, allowedPrefixes, allowedExact);
   if (outOfScope.length > 0) return fail(`out of scope: ${outOfScope.slice(0, 8).join(', ')}`);
-  return pass(`${lines.length} working-tree entries inside the MC-20 scope`);
+  return pass(
+    `${changedPaths.length} changed paths (working tree + since ${BASE_COMMIT}) inside scope`,
+  );
 });
 
 add('MC20-33', 'the generated projection is deterministic', () => {

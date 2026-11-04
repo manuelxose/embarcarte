@@ -467,7 +467,7 @@ test('honest negations of the new claim classes remain accepted', () => {
 });
 
 test('negation scanning covers every match, not only the first', () => {
-  const text = 'Sin precisión garantizada, exactitud garantizada de ±0,1 m/s';
+  const text = 'Sin SLA garantizado, SLA garantizado';
   assert.ok(catalogClaimProblems(text).length > 0, 'later non-negated claim must be rejected');
 });
 

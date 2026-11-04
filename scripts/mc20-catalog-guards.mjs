@@ -313,12 +313,23 @@ export function bilingualTextProblems(content) {
   content.closing.governance.forEach((entry, index) => collect(`closing.gov.${index}`, entry.text));
   collect('closing.next', content.closing.nextMilestone.text);
 
+  for (const field of ['kicker', 'heading', 'lead', 'category']) {
+    const value = content.hero?.[field];
+    if (
+      !value ||
+      typeof value !== 'object' ||
+      typeof value.es !== 'string' ||
+      typeof value.en !== 'string'
+    ) {
+      problems.push(`hero.${field}: missing localized field`);
+    }
+  }
+
   for (const pair of pairs) {
     if (!pair.es.trim() || !pair.en.trim()) problems.push(`${pair.id}: empty locale`);
     if (pair.es.trim() === pair.en.trim() && !LOCALE_INVARIANT.test(pair.es.trim())) {
       problems.push(`${pair.id}: identical ES/EN text`);
     }
-    if (!pair.es.trim() || !pair.en.trim()) continue;
   }
   for (const limitation of content.limitations) {
     const es = `${limitation.label.es} ${limitation.description.es}`;

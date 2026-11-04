@@ -348,10 +348,10 @@ export const SENSE_CONTENT: CatalogFamilyContent = {
         {
           contentId: 'sense.comp.licence.calibration',
           text: {
-            es: 'Un módulo sin calibrar, con la calibración caducada o con la configuración cambiada no presenta su número como una medición fiable.',
-            en: 'A module that is uncalibrated, has an overdue calibration or has changed configuration does not present its number as a reliable measurement.',
+            es: 'Requisito de diseño, no un comportamiento probado: la especificación exige que un módulo sin calibrar, con la calibración caducada o con la configuración cambiada no presente su número como una medición fiable, pero no está implementado ni probado.',
+            en: 'Design requirement, not a tested behaviour: the specification requires that a module which is uncalibrated, has an overdue calibration or has changed configuration must not present its number as a reliable measurement, but this is not implemented or tested.',
           },
-          evidenceClass: 'VERIFIED_REPO',
+          evidenceClass: 'OPEN',
           sourceRefs: [CALIBRATION, SPEC],
         },
         {
