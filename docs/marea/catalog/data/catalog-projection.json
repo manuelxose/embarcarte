@@ -1,0 +1,489 @@
+{
+  "contractId": "MC20-CATALOG-PROJECTION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-20",
+  "owner": "MC-20 implementation team",
+  "generationMethod": "node scripts/build-mc20-catalog-data.mjs",
+  "publicationState": "NOT_AUTHORIZED",
+  "commercialAvailability": "NOT_FOR_SALE",
+  "indexationAuthorized": false,
+  "publicRoutesRegistered": 0,
+  "families": [
+    {
+      "familyId": "NAV",
+      "displayName": "MAREA NAV",
+      "productType": "SOFTWARE",
+      "lifecycleState": "DEFINED",
+      "definitionStatus": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyNav",
+      "editionIds": [
+        "NAV-ESSENTIAL",
+        "NAV-PRO"
+      ],
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "NOT_EVALUATED",
+        "operations": "NOT_READY"
+      },
+      "releaseGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-NAV",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "bundleInclusions": [
+        {
+          "bundleId": "START",
+          "displayName": "MAREA START",
+          "customerFacingName": "MAREA START",
+          "routeId": "mareaSolutionStart",
+          "inclusion": "INCLUDED",
+          "lineId": "ST-02",
+          "editionId": "NAV-PRO"
+        },
+        {
+          "bundleId": "CRUISE",
+          "displayName": "MAREA CRUISE",
+          "customerFacingName": "MAREA CRUISE",
+          "routeId": "mareaSolutionCruise",
+          "inclusion": "INCLUDED",
+          "lineId": "CR-01",
+          "editionId": "NAV-ESSENTIAL"
+        },
+        {
+          "bundleId": "SAIL",
+          "displayName": "MAREA SAIL",
+          "customerFacingName": "MAREA SAIL",
+          "routeId": "mareaSolutionSail",
+          "inclusion": "INCLUDED",
+          "lineId": "SL-01",
+          "editionId": "NAV-PRO"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "displayName": "MAREA COMPLETE",
+          "customerFacingName": "MAREA COMPLETE",
+          "routeId": "mareaSolutionComplete",
+          "inclusion": "INCLUDED",
+          "lineId": "CP-01",
+          "editionId": "NAV-PRO"
+        }
+      ],
+      "proposedRoute": {
+        "routeId": "mareaFamilyNav",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-NAV",
+        "es": "marea/nav",
+        "en": "en/marea/nav",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      }
+    },
+    {
+      "familyId": "HUB",
+      "displayName": "MAREA HUB",
+      "productType": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "definitionStatus": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyHub",
+      "editionIds": [
+        "HUB-STANDARD",
+        "HUB-PRO"
+      ],
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "NOT_EVALUATED",
+        "operations": "NOT_READY"
+      },
+      "releaseGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-HUB",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "bundleInclusions": [
+        {
+          "bundleId": "START",
+          "displayName": "MAREA START",
+          "customerFacingName": "MAREA START",
+          "routeId": "mareaSolutionStart",
+          "inclusion": "INCLUDED",
+          "lineId": "ST-01",
+          "editionId": "HUB-STANDARD"
+        },
+        {
+          "bundleId": "CRUISE",
+          "displayName": "MAREA CRUISE",
+          "customerFacingName": "MAREA CRUISE",
+          "routeId": "mareaSolutionCruise",
+          "inclusion": "INCLUDED",
+          "lineId": "CR-02",
+          "editionId": "HUB-STANDARD"
+        },
+        {
+          "bundleId": "SAIL",
+          "displayName": "MAREA SAIL",
+          "customerFacingName": "MAREA SAIL",
+          "routeId": "mareaSolutionSail",
+          "inclusion": "INCLUDED",
+          "lineId": "SL-02",
+          "editionId": "HUB-STANDARD"
+        },
+        {
+          "bundleId": "PROTECT",
+          "displayName": "MAREA PROTECT",
+          "customerFacingName": "MAREA PROTECT",
+          "routeId": "mareaSolutionProtect",
+          "inclusion": "OPTIONAL",
+          "lineId": "PR-04",
+          "editionId": "HUB-STANDARD"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "displayName": "MAREA COMPLETE",
+          "customerFacingName": "MAREA COMPLETE",
+          "routeId": "mareaSolutionComplete",
+          "inclusion": "INCLUDED",
+          "lineId": "CP-02",
+          "editionId": "HUB-PRO"
+        },
+        {
+          "bundleId": "FLEET",
+          "displayName": "MAREA FLEET",
+          "customerFacingName": "MAREA FLEET package",
+          "routeId": "mareaSolutionFleet",
+          "inclusion": "OPTIONAL",
+          "lineId": "FP-06",
+          "editionId": "HUB-STANDARD"
+        }
+      ],
+      "proposedRoute": {
+        "routeId": "mareaFamilyHub",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-HUB",
+        "es": "marea/hub",
+        "en": "en/marea/hub",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      }
+    },
+    {
+      "familyId": "AIS",
+      "displayName": "MAREA AIS",
+      "productType": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "definitionStatus": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyAis",
+      "editionIds": [
+        "AIS-RECEIVER",
+        "AIS-CONNECTED"
+      ],
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "RECEIVE_ONLY_NO_TRANSMISSION",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "RECEIVE_ONLY_NO_TRANSMISSION",
+        "operations": "NOT_READY"
+      },
+      "releaseGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-AIS",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "bundleInclusions": [
+        {
+          "bundleId": "CRUISE",
+          "displayName": "MAREA CRUISE",
+          "customerFacingName": "MAREA CRUISE",
+          "routeId": "mareaSolutionCruise",
+          "inclusion": "INCLUDED",
+          "lineId": "CR-03",
+          "editionId": "AIS-RECEIVER"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "displayName": "MAREA COMPLETE",
+          "customerFacingName": "MAREA COMPLETE",
+          "routeId": "mareaSolutionComplete",
+          "inclusion": "OPTIONAL",
+          "lineId": "CP-10",
+          "editionId": "AIS-RECEIVER"
+        }
+      ],
+      "proposedRoute": {
+        "routeId": "mareaFamilyAis",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-AIS",
+        "es": "marea/ais",
+        "en": "en/marea/ais",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      }
+    }
+  ],
+  "editions": [
+    {
+      "editionId": "NAV-ESSENTIAL",
+      "familyId": "NAV",
+      "editionType": "SOFTWARE_SUBSCRIPTION",
+      "definitionStatus": "DEFINED",
+      "requiresQuotation": false,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "NAV_CHARTS",
+        "NAV_ROUTING",
+        "NAV_INSTRUMENTS",
+        "NAV_AIS_TARGETS"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "NAV-PRO",
+      "familyId": "NAV",
+      "editionType": "SOFTWARE_SUBSCRIPTION",
+      "definitionStatus": "DEFINED",
+      "requiresQuotation": false,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "NAV_CHARTS",
+        "NAV_ROUTING",
+        "NAV_INSTRUMENTS",
+        "NAV_AIS_TARGETS"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "HUB-STANDARD",
+      "familyId": "HUB",
+      "editionType": "HARDWARE_DEVICE",
+      "definitionStatus": "DEFINED",
+      "requiresQuotation": false,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "HUB_LOCAL_DATA",
+        "HUB_WIFI",
+        "HUB_NMEA_INTERFACE"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "HUB-PRO",
+      "familyId": "HUB",
+      "editionType": "HARDWARE_DEVICE",
+      "definitionStatus": "DEFINED",
+      "requiresQuotation": false,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "HUB_LOCAL_DATA",
+        "HUB_WIFI",
+        "HUB_NMEA_INTERFACE"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "AIS-RECEIVER",
+      "familyId": "AIS",
+      "editionType": "HARDWARE_DEVICE",
+      "definitionStatus": "DEFINED",
+      "requiresQuotation": false,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "AIS_RECEIVE_ONLY",
+        "AIS_TARGET_LIST"
+      ],
+      "notes": "Receive-only; AIS_TRANSMISSION_OFFERED=false."
+    },
+    {
+      "editionId": "AIS-CONNECTED",
+      "familyId": "AIS",
+      "editionType": "HARDWARE_DEVICE",
+      "definitionStatus": "CONDITIONAL",
+      "requiresQuotation": false,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "AIS_RECEIVE_ONLY",
+        "AIS_TARGET_LIST"
+      ],
+      "notes": "Conditional on evidenced richer local networking and diagnostics; not selected by default."
+    }
+  ],
+  "readinessDimensions": [
+    {
+      "dimension": "definition",
+      "currentStatus": "NOT_READY"
+    },
+    {
+      "dimension": "engineering",
+      "currentStatus": "NOT_READY"
+    },
+    {
+      "dimension": "licensing",
+      "currentStatus": "NOT_READY"
+    },
+    {
+      "dimension": "hardware",
+      "currentStatus": "NOT_READY"
+    },
+    {
+      "dimension": "dataRights",
+      "currentStatus": "NOT_READY"
+    },
+    {
+      "dimension": "compliance",
+      "currentStatus": "NOT_READY"
+    },
+    {
+      "dimension": "safety",
+      "currentStatus": "NOT_READY"
+    },
+    {
+      "dimension": "pricing",
+      "currentStatus": "NOT_READY"
+    },
+    {
+      "dimension": "brandPublication",
+      "currentStatus": "NOT_READY"
+    },
+    {
+      "dimension": "operations",
+      "currentStatus": "NOT_READY"
+    },
+    {
+      "dimension": "availability",
+      "currentStatus": "NOT_READY"
+    }
+  ],
+  "facts": {
+    "families": 3,
+    "editions": 6,
+    "bundlesReferencingScope": 6,
+    "readinessDimensions": 11,
+    "releaseGates": 13,
+    "releaseGatesClosed": 0,
+    "requiredDocuments": 24,
+    "documentsExecuted": 0,
+    "cataloguedClaims": 42,
+    "publicAuthorizedClaims": 0,
+    "approvedPrices": 0,
+    "merchantableEditions": 0,
+    "merchantSkuCodes": 0,
+    "verifiedStockRows": 0,
+    "testedCompatibilityRows": 0
+  }
+}

@@ -1804,3 +1804,27 @@ no merge, no deployment.
 **Evidence.** `MC18-INDEPENDENT-REVIEW.md` (including the correction-round section); `data/review-findings.json` (IR-01/02/03 CLOSED with correctionCommit and independentReverification); D22/D23; final validator 60/60; landing Playwright 44/44; production isolation 0 landing identifiers and public `/marea` 404.
 
 **Status effect.** Internal landing scope PASS; overall MC-18 PARTIAL; no merge, deployment, publication, brand adoption or MC-19 execution. `FINANCIAL_V18`, `MC16_FINAL_02`, MC-13 F-05/F-11/F-14 and MC-15 GSC-01/GSC-02 remain open.
+
+## D-081 - 2026-11-04 - MC-20 starts from the MC-18 base and not from MC-19
+
+**Context.** MC-20 depends on MC-02, MC-16 and MC-18. MC-19 exists as a parallel draft branch (`37921a9`, PR #27) whose internal audience pages are not a dependency and whose work is not merged. The MC-19 handoff explicitly states that MC-20 must not depend on the MC-19 implementation.
+
+**Decision.** Branch MC-20 from the verified MC-18 delivery HEAD `3490c0f`. Do not incorporate, revert or duplicate any MC-19 code. Keep every MC-19 page and route out of the MC-20 branch. Reserve decision numbers D-078..D-080 for the MC-19 branch to avoid a merge collision, and use D-081 onwards for MC-20.
+
+**Rationale.** Smallest verified dependency set; no inherited unrelated changes; MC-20 can be reviewed and merged independently of MC-19. A branch that mixed MC-19 and MC-20 would make both milestones unreviewable and would couple two independent scopes.
+
+**Evidence.** `git merge-base --is-ancestor 3490c0f <MC-19 head>`; MC-20 branch base `3490c0f`; no `src/app/marea-segments` or MC-19 preview route exists on this branch; validator MC20-28/29/30 (public app unchanged, 0 catalogue reach, 0 catalogue identifiers in the production bundle).
+
+**Status effect.** MC-20 base verified; MC-19 remains an independent unmerged draft.
+
+## D-082 - 2026-11-04 - MC-20 implements one generated bilingual catalogue inside the internal preview
+
+**Context.** MC-20 must present NAV, HUB and AIS as a complete internal catalogue without creating a second commerce data source, a CMS, a backend or a public route. The three families differ materially: NAV is software, HUB is hardware with unselected hardware, AIS is a receive-only receiver with an unresolved GPL-3.0 decoder licence.
+
+**Decision.** Generate a bounded projection from the MC-16/MC-15/MC-14/MC-05 datasets (`scripts/build-mc20-catalog-data.mjs`) and render it through one locale-aware Angular component tree in `src/app/marea-catalog/`, reusing the MC-17 design system and the MC-18 preview host. Serve the six pages only at `internal/catalog/*` on loopback, with noindex, no canonical/hreflang, no sitemap and no commerce. Author only editorial copy in a typed bilingual content contract; every block carries an evidence class and canonical source references. Never publish a price, including MC-05 AIS hypotheses.
+
+**Rationale.** One authority and one presentation tree prevent drift; the generated projection makes canonical state reproducible and testable; the internal namespace prevents accidental publication; the fail-closed commercial adapter makes a purchase path impossible.
+
+**Evidence.** `scripts/build-mc20-catalog-data.mjs`; `src/app/marea-catalog/`; `preview/landing/catalog-preview.ts`; validator 40/40; unit/adversarial 20/20; Playwright 35/35; build 0 catalogue identifiers; 0 prices, 0 SKUs, 0 stock rows, 0 tested compatibility rows.
+
+**Status effect.** `MC20_INTERNAL_IMPLEMENTATION = PASS_INTERNAL_SCOPE`; `MC20_VERDICT = PARTIAL`; publication, indexation, commerce and deployment remain unauthorized; MC-21 not started.
