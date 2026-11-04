@@ -259,14 +259,30 @@ test('implementationProblems catches a changed implementation path', () => {
   assert.deepEqual(implementationProblems(), []);
 });
 
-test('parses leading-space, untracked and renamed porcelain paths', () => {
+test('parses leading-space, untracked and both sides of renamed porcelain paths', () => {
   const output =
     ' M docs/marea/segments/MC19-SCOPE-PROPOSAL.md\n?? src/server/enquiry.ts\nR  old.ts -> new.ts\n';
   assert.deepEqual(porcelainPaths(output), [
     'docs/marea/segments/MC19-SCOPE-PROPOSAL.md',
     'src/server/enquiry.ts',
+    'old.ts',
     'new.ts',
   ]);
+});
+
+test('rejects a rename that hides an out-of-scope source path', () => {
+  const output =
+    'R  src/server/enquiry.ts -> docs/marea/segments/enquiry.ts\nR  src/app/marea-landing/landing.ts -> docs/marea/segments/landing.ts\n';
+  const paths = porcelainPaths(output);
+  assert.deepEqual(paths, [
+    'src/server/enquiry.ts',
+    'docs/marea/segments/enquiry.ts',
+    'src/app/marea-landing/landing.ts',
+    'docs/marea/segments/landing.ts',
+  ]);
+  const problems = changedFileProblems(paths);
+  assert.ok(problems.some((problem) => problem.includes('src/server/enquiry.ts')));
+  assert.ok(problems.some((problem) => problem.includes('src/app/marea-landing/landing.ts')));
 });
 
 test('rejects a risk summary that does not match the risk entries', () => {

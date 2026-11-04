@@ -302,29 +302,33 @@ export function riskSummaryProblems(risks, summary) {
   return out;
 }
 
-/** Union of committed changes from the baseline and every working-tree change. */
 /**
  * Parse `git status --porcelain=v1` paths, including untracked (`??`) and
- * renamed (`R  old -> new`) entries. A leading space is part of the status
- * prefix, so the input must not be trimmed before slicing.
+ * renamed (`R  old -> new`) entries. Both sides of a rename are returned: an
+ * out-of-scope old path must be rejected even when the new path is allowlisted.
+ * A leading space is part of the status prefix, so the input must not be
+ * trimmed before slicing.
  */
 export function porcelainPaths(output) {
   return String(output)
     .split(/\r?\n/)
     .filter((line) => line.length > 3)
-    .map((line) => {
+    .flatMap((line) => {
       const rest = line.slice(3).trim();
-      return rest.includes(' -> ') ? rest.split(' -> ').pop() : rest;
+      return rest.includes(' -> ') ? rest.split(' -> ').map((path) => path.trim()) : [rest];
     })
     .filter(Boolean);
 }
 
+/** Union of committed changes from the baseline and every working-tree change. */
 function fullChangedSet() {
-  const committed = git(['diff', '--name-only', `${BASELINE}..HEAD`]);
-  const statusOutput = execFileSync('git', ['status', '--porcelain=v1', '--untracked-files=all'], {
-    cwd: root,
-    encoding: 'utf8',
-  });
+  // `--no-renames` keeps a rename as delete+add so neither side can be hidden.
+  const committed = git(['diff', '--no-renames', '--name-only', `${BASELINE}..HEAD`]);
+  const statusOutput = execFileSync(
+    'git',
+    ['status', '--porcelain=v1', '--untracked-files=all', '--no-renames'],
+    { cwd: root, encoding: 'utf8' },
+  );
   return [...new Set([...committed, ...porcelainPaths(statusOutput)])];
 }
 

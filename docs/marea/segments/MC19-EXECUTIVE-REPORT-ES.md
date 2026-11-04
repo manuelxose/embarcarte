@@ -126,16 +126,16 @@ almacén de leads, registro de instaladores, precio, SKU o artefacto público de
 
 ## G. Evidencia de pruebas y compuertas
 
-Mediciones reales en el HEAD de la propuesta (`b53f67e`), re-ejecutadas tras la ronda de
-corrección. La cifra `59/60` de la fase pre-commit no se oculta: era un control de alcance
-del árbol de trabajo de MC-18, no una regresión; tras el commit la compuerta se re-ejecutó en
+Mediciones reales en el HEAD de la corrección (`77e0699`), antes del cierre formal de la
+revisión. La cifra `59/60` de la fase pre-commit no se oculta: era un control de alcance del
+árbol de trabajo de MC-18, no una regresión; tras el commit la compuerta se re-ejecutó en
 **60/60** y su registro se conserva en `docs/marea/segments/evidence/landing-gate-run.json`
 sin sobrescribir la evidencia histórica de MC-18.
 
 | Comando                                     | Resultado observado                                                                 |
 | ------------------------------------------- | ----------------------------------------------------------------------------------- |
-| `npm run test:mc19-scope`                   | **23/23** comprobaciones deterministas tras la re-verificación, exit 0              |
-| `npm run test:mc19-scope:unit`              | **28/28** pruebas unitarias/adversarias, exit 0                                     |
+| `npm run test:mc19-scope`                   | **22/23** en `77e0699` mientras `MC19-IR-01` sigue abierto; solo `MC19-14` falla. El 23/23 y la evidencia final se registran tras el cierre de la revisión. |
+| `npm run test:mc19-scope:unit`              | **29/29** pruebas unitarias/adversarias, exit 0                                     |
 | `npm run test:landing` (árbol limpio)       | **60/60**, exit 0; evidencia MC-18 restaurada tras la medición                      |
 | `npm run test:landing:unit`                 | **45/45**, exit 0                                                                   |
 | `npx tsc -p tsconfig.app.json --noEmit`     | exit 0                                                                              |
@@ -160,11 +160,13 @@ diseño, los datos de comercio ni la evidencia heredada.
 
 ## H. Auditoría independiente y correcciones
 
-La revisión independiente se ejecutó sobre el commit congelado `b53f67e`. El backend Claude
-Code falló dos veces a nivel de producto (exit 1, invalid-result) y se registra como no
-disponible; la revisión la realizó un agente independiente nativo (id
-`3c8d2129-b23b-4e26-9254-353e108439ac`), distinto del autor. Recomendación de la ronda 1:
-`NEEDS_REVISION`.
+La revisión independiente se ejecutó sobre el commit congelado `b53f67e` y se re-verificó
+sobre el commit de corrección `77e0699`. El backend Claude Code falló dos veces a nivel de
+producto (exit 1, invalid-result) y se registra como no disponible; la revisión la realizó un
+agente independiente nativo (id `3c8d2129-b23b-4e26-9254-353e108439ac`), distinto del autor.
+Ronda 1: `NEEDS_REVISION`. Ronda 2 sobre `77e0699`: IR-02..IR-05 `CLOSED`; IR-01 `CLOSED`
+para el defecto reportado; nuevos IR-06 (MAJOR, bypass por rename) e IR-07 (MINOR,
+evidencia) — corregidos en la ronda 3 y pendientes de la re-verificación independiente.
 
 | ID    | Severidad     | Problema                                                                 | Corrección                                                                                     |
 | ----- | ------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- |
@@ -173,8 +175,10 @@ disponible; la revisión la realizó un agente independiente nativo (id
 | IR-03 | MINOR         | P03 aparecía como bloqueo de implementación, contradiciendo la opción A  | P03 separado en `enquiryFlowBlockers`; tablas D03 reetiquetadas                                |
 | IR-04 | MINOR         | La ausencia del Master Prompt se infería del registro placeholder         | P01 se afirma desde el mandato y la ausencia de aprobación registrada; se declara la limitación |
 | IR-05 | INFORMATIONAL | Revisión pendiente en D07 y 5 vs 6 datasets                              | D07 y `review-findings` actualizados; manifiesto con 6 datasets                                |
+| IR-06 | MAJOR         | El allowlist era eludible renombrando un fichero fuente fuera de alcance | `porcelainPaths` devuelve ambos lados del rename; `git diff`/`status` usan `--no-renames`; prueba adversarial del path antiguo |
+| IR-07 | MINOR         | D07 declaraba 23/23 en un HEAD donde la medición era 22/23                | Se declara 22/23 mientras IR-01/IR-06 estén abiertos; 23/23 y evidencia final tras el cierre   |
 
-Las correcciones se aplican en el commit de remediación; el cierre de cada hallazgo y la
+Las correcciones se aplican en los commits de remediación; el cierre de cada hallazgo y la
 re-verificación independiente se registran en `data/mc19-review-findings.json`. Ningún
 hallazgo se declara `CLOSED` antes de esa re-verificación.
 

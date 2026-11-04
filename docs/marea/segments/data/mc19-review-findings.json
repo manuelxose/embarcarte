@@ -4,76 +4,98 @@
   "milestone": "MC-19",
   "date": "2026-11-04",
   "status": "COMPLETE",
-  "reviewRound": 1,
+  "reviewRound": 2,
   "reviewer": "independent native review agent (id 3c8d2129-b23b-4e26-9254-353e108439ac); the Claude Code backend failed twice at the product layer (exit 1, invalid-result) and is recorded as unavailable for this review",
-  "reviewedScope": "the full MC-19 scope-proposal diff 3490c0f..b53f67e, the proposal documents, datasets, validator and tests, and the baseline governance state",
-  "reviewedCommit": "b53f67eb43557537e7e711c5777fcce098be87d3",
+  "reviewedScope": "round 1: tests 3490c0f..b53f67e; round 2: correction diff b53f67e..77e0699",
+  "reviewedCommit": "77e069998f895d4a21ee01e958f446f6ce2790fd",
   "recommendation": "NEEDS_REVISION",
   "findings": [
     {
       "id": "MC19-IR-01",
       "severity": "MAJOR",
-      "status": "CORRECTED_PENDING_INDEPENDENT_REVERIFICATION",
+      "status": "CLOSED",
       "area": "no-implementation enforcement",
       "file": "scripts/check-mc19-scope.mjs",
       "problem": "The no-implementation guard was bypassable: implementationProblems() was exported but never called; checks 05-08 used git diff only, which ignores untracked files and out-of-path committed implementation; the tests never exercised the git/file checks.",
       "requiredFix": "Scan git status --porcelain --untracked-files=all union the full committed diff against the baseline, allowlist only the proposal package, wire implementationProblems, and add adversarial tests for untracked and out-of-path files.",
-      "correctionCommit": null,
-      "independentReverification": null
+      "correctionCommit": "77e069998f895d4a21ee01e958f446f6ce2790fd",
+      "independentReverification": "Round 2 independently exercised the new functions: 20 changed paths all allowed; out-of-path/untracked/public paths rejected; implementationProblems rejects src/app change. Closed for the reported defect; the rename residual is tracked as MC19-IR-06."
     },
     {
       "id": "MC19-IR-02",
       "severity": "MINOR",
-      "status": "CORRECTED_PENDING_INDEPENDENT_REVERIFICATION",
+      "status": "CLOSED",
       "area": "stop-statement accuracy",
       "file": "docs/marea/segments/MC19-SCOPE-PROPOSAL.md; docs/marea/segments/data/mc19-scope-proposal.json; docs/marea/segments/MC19-SOURCE-VERIFICATION.md",
       "problem": "The stop statement said no MC-19 code or dataset was created, but the package deliberately adds a validator, tests, documents and datasets.",
       "requiredFix": "Qualify the statement as no product/implementation code, route, page, form, endpoint, lead store or public artefact; list the validator, tests, documents and datasets as package artefacts.",
-      "correctionCommit": null,
-      "independentReverification": null
+      "correctionCommit": "77e069998f895d4a21ee01e958f446f6ce2790fd",
+      "independentReverification": "Round 2 verified the qualified wording in D01, D02 and the JSON; no residual old wording found."
     },
     {
       "id": "MC19-IR-03",
       "severity": "MINOR",
-      "status": "CORRECTED_PENDING_INDEPENDENT_REVERIFICATION",
+      "status": "CLOSED",
       "area": "prerequisite consistency",
       "file": "docs/marea/segments/data/mc19-scope-proposal.json; docs/marea/segments/MC19-DEPENDENCIES-AND-BLOCKERS.md; docs/marea/segments/MC19-SCOPE-PROPOSAL.md",
       "problem": "implementationBlockers included P03, but Option A does not require the privacy gate and P03 blocks only the deferred enquiry/lead-flow sub-scope; the D03 table repeated the contradiction.",
       "requiredFix": "Remove P03 from implementationBlockers, add an explicit enquiryFlowBlockers list, and relabel the D03 tables.",
-      "correctionCommit": null,
-      "independentReverification": null
+      "correctionCommit": "77e069998f895d4a21ee01e958f446f6ce2790fd",
+      "independentReverification": "Round 2 verified implementationBlockers = P01/P02/P10, enquiryFlowBlockers = P03, D03 split into three tables, and the validator rejects P03 in implementationBlockers."
     },
     {
       "id": "MC19-IR-04",
       "severity": "MINOR",
-      "status": "CORRECTED_PENDING_INDEPENDENT_REVERIFICATION",
+      "status": "CLOSED",
       "area": "P01 evidence strength",
       "file": "docs/marea/segments/MC19-SCOPE-PROPOSAL.md; docs/marea/segments/MC19-SOURCE-VERIFICATION.md; docs/marea/segments/data/mc19-scope-proposal.json",
       "problem": "The absence of the MC-19 Master Prompt was inferred from the placeholder registry. MC-18 records that its own authorising prompt existed but was never committed, so repository absence cannot prove non-issuance.",
       "requiredFix": "State P01 as asserted from the milestone mandate and the absence of a recorded approval, disclose the uncommitted-prompt limitation, and rely on the independently verifiable blockers for the stop decision.",
-      "correctionCommit": null,
-      "independentReverification": null
+      "correctionCommit": "77e069998f895d4a21ee01e958f446f6ce2790fd",
+      "independentReverification": "Round 2 verified the qualification in D01, D02 and JSON P01, including the MC-18 precedent and the independently verifiable blockers."
     },
     {
       "id": "MC19-IR-05",
       "severity": "INFORMATIONAL",
-      "status": "CORRECTED_PENDING_INDEPENDENT_REVERIFICATION",
+      "status": "CLOSED",
       "area": "review and manifest reconciliation",
       "file": "docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md; docs/marea/segments/data/manifest.json",
       "problem": "D07 promised a review update before final delivery while the review was still PENDING, and the manifest counted five datasets while the package has six JSON files.",
       "requiredFix": "Record the review result and correction status in D07 and review-findings, and reconcile the dataset count (six including manifest.json).",
+      "correctionCommit": "77e069998f895d4a21ee01e958f446f6ce2790fd",
+      "independentReverification": "Round 2 verified D07 section H, the six-dataset manifest and the round-1 review record."
+    },
+    {
+      "id": "MC19-IR-06",
+      "severity": "MAJOR",
+      "status": "CORRECTED_PENDING_INDEPENDENT_REVERIFICATION",
+      "area": "rename allowlist bypass",
+      "file": "scripts/check-mc19-scope.mjs; scripts/check-mc19-scope.test.mjs",
+      "problem": "porcelainPaths() dropped the old side of a rename and the committed diff used rename detection, so an out-of-scope source file renamed into docs/marea/segments/ could pass the allowlist.",
+      "requiredFix": "Parse both sides of a rename, add --no-renames to the committed diff and status commands, and add a test that the old out-of-scope path is rejected.",
+      "correctionCommit": null,
+      "independentReverification": null
+    },
+    {
+      "id": "MC19-IR-07",
+      "severity": "MINOR",
+      "status": "CORRECTED_PENDING_INDEPENDENT_REVERIFICATION",
+      "area": "evidence date and count",
+      "file": "docs/marea/segments/MC19-EXECUTIVE-REPORT-ES.md; docs/marea/segments/evidence/scope-validator-run.json",
+      "problem": "D07 claimed a 23/23 validator run at b53f67e while the committed evidence was 20/20 at a6cb1c4 and the actual run at 77e0699 was 22/23 (only MC19-14, expected while IR-01 was open).",
+      "requiredFix": "State 22/23 until the review closure, then re-run at the resulting HEAD, commit the 23/23 evidence and update D07's HEAD and counts.",
       "correctionCommit": null,
       "independentReverification": null
     }
   ],
   "summary": {
-    "total": 5,
+    "total": 7,
     "blocking": 0,
-    "major": 1,
-    "minor": 3,
+    "major": 2,
+    "minor": 4,
     "informational": 1,
-    "open": 5,
-    "closed": 0
+    "open": 2,
+    "closed": 5
   },
-  "note": "Round 1 recommendation NEEDS_REVISION at b53f67e. Corrections are applied in the correction round; this file is updated to CLOSED only after independent re-verification of the correction commit."
+  "note": "Round 1 NEEDS_REVISION at b53f67e (IR-01..IR-05). Round 2 at 77e0699 closed IR-01..IR-05 and opened IR-06 (MAJOR) and IR-07 (MINOR). IR-06/IR-07 corrections are pending independent re-verification. No PASS is claimed before that."
 }
