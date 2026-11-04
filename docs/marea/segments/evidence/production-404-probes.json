@@ -1,7 +1,7 @@
 {
   "contractId": "MC19-PRODUCTION-404-PROBES",
   "milestone": "MC-19",
-  "measuredAt": "2026-11-04T17:29:48.972Z",
+  "measuredAt": "2026-11-04T17:44:52.018Z",
   "server": "dist/embarcarte/server/server.mjs on 127.0.0.1:4310",
   "results": [
     {
@@ -29,7 +29,15 @@
       "status": 404
     },
     {
+      "path": "/en/internal/segments/installers",
+      "status": 404
+    },
+    {
       "path": "/internal/segments/shipowners",
+      "status": 404
+    },
+    {
+      "path": "/en/internal/segments/shipowners",
       "status": 404
     },
     {
@@ -46,7 +54,8 @@
     }
   ],
   "summary": {
-    "total": 10,
-    "ok": 9
+    "total": 12,
+    "notFound": 11,
+    "ok": 1
   }
 }
