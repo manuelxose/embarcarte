@@ -1,0 +1,85 @@
+{
+  "schema": "mc23-validator-run/1",
+  "runAt": "2026-11-05T11:04:48.495Z",
+  "total": 15,
+  "passed": 15,
+  "skipped": 0,
+  "failed": 0,
+  "results": [
+    {
+      "id": "MC23-01",
+      "status": "PASS",
+      "detail": "6 bundles in contract order: START, CRUISE, SAIL, PROTECT, COMPLETE, FLEET"
+    },
+    {
+      "id": "MC23-02",
+      "status": "PASS",
+      "detail": "6 bundles: lifecycle, availability and publication verbatim"
+    },
+    {
+      "id": "MC23-03",
+      "status": "PASS",
+      "detail": "63 composition lines, 0 illegal vocabulary values"
+    },
+    {
+      "id": "MC23-03b",
+      "status": "PASS",
+      "detail": "63 contract lines present with matching edition and inclusion"
+    },
+    {
+      "id": "MC23-03c",
+      "status": "PASS",
+      "detail": "6 bundles: blockers, gates and outcomes match the contract exactly"
+    },
+    {
+      "id": "MC23-03d",
+      "status": "PASS",
+      "detail": "15 upgrade paths and 8 cross-sell rules present (incl. non-supported UM-CR-03)"
+    },
+    {
+      "id": "MC23-04",
+      "status": "PASS",
+      "detail": "20 catalogue modules, 0 purchasable-state literals"
+    },
+    {
+      "id": "MC23-05",
+      "status": "PASS",
+      "detail": "6 bundle notes bilingual; not-for-sale, PILOT gate and FLEET limits stated"
+    },
+    {
+      "id": "MC23-06",
+      "status": "PASS",
+      "detail": "16 localized pairs, all non-empty and distinct"
+    },
+    {
+      "id": "MC23-07",
+      "status": "PASS",
+      "detail": "delegates the table to marea-feature-comparison"
+    },
+    {
+      "id": "MC23-08",
+      "status": "PASS",
+      "detail": "inclusion cells carry the vocabulary label, never a boolean"
+    },
+    {
+      "id": "MC23-09",
+      "status": "PASS",
+      "detail": "fieldset, legend, button, aria-pressed, live region, focus ring, output()"
+    },
+    {
+      "id": "MC23-10",
+      "status": "PASS",
+      "detail": "no navigation, submit, storage or network call"
+    },
+    {
+      "id": "MC23-11",
+      "status": "PASS",
+      "detail": "no clock, no randomness in the upgrade-path module"
+    },
+    {
+      "id": "MC23-12",
+      "status": "PASS",
+      "detail": "20 catalogue modules, 0 price or purchase affordances"
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 import type { Localized } from './content.types';
 
+/** Re-exported so callers can type localized maps without reaching into content.types. */
+export type BundleContentLocalized = Localized;
+
 /** MC-23 bilingual chrome copy for the bundle comparison and upgrade selector. */
 export const BUNDLE_CONTENT_LABELS: Readonly<Record<string, Localized>> = {
   comparisonHeading: { es: 'Comparativa de paquetes', en: 'Bundle comparison' },
@@ -9,8 +12,8 @@ export const BUNDLE_CONTENT_LABELS: Readonly<Record<string, Localized>> = {
   },
   selectorHeading: { es: 'Selector de paquete', en: 'Bundle selector' },
   selectorLabel: {
-    es: 'Elige un conjunto para ver su composición canónica.',
-    en: 'Choose a set to view its canonical composition.',
+    es: 'Elige un conjunto para ver sus ampliaciones previstas.',
+    en: 'Choose a set to see its planned upgrade additions.',
   },
   inclusionLegend: {
     es: 'Leyenda de inclusión: elementos que forman parte de la composición canónica del paquete.',
@@ -18,8 +21,8 @@ export const BUNDLE_CONTENT_LABELS: Readonly<Record<string, Localized>> = {
   },
   upgradeHeading: { es: 'De un conjunto a otro', en: 'From one bundle to another' },
   quotationRequired: {
-    es: 'Toda ampliación requiere una propuesta formal revisada antes de considerarse.',
-    en: 'Every upgrade requires a formal proposal reviewed before it can be considered.',
+    es: 'Algunas ampliaciones requieren una propuesta formal revisada antes de considerarse; otras solo confirmación de precio y compatibilidad.',
+    en: 'Some upgrades require a formal proposal reviewed before they can be considered; others need only price and compatibility confirmation.',
   },
   notForSale: { es: 'No se vende', en: 'Not for sale' },
   blockedByPilotGate: {

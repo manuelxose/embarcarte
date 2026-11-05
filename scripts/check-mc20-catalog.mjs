@@ -755,12 +755,20 @@ add('MC20-32', 'every changed path is inside the MC-20 write scope', () => {
     'scripts/test.mjs',
     'scripts/run-tsc.mjs',
     'scripts/mc23-git-reader.mjs',
+    'scripts/build-mc23-bundle-data.mjs',
     'scripts/check-mc23-bundles.mjs',
     'scripts/check-mc23-bundles.test.mjs',
     // MC-23: line-ending normalisation for the generated projection.
     '.gitattributes',
   ];
-  const outOfScope = scopeProblems(changedPaths, allowedPrefixes, allowedExact);
+  // Local editor/LSP state (e.g. .serena/) is not repository content: it is
+  // untracked in the main checkout and must not be judged as a milestone change.
+  const toolState = workingTree.filter((path) => path.startsWith('.serena/') || path === '.serena');
+  const outOfScope = scopeProblems(
+    changedPaths.filter((path) => !toolState.includes(path)),
+    allowedPrefixes,
+    allowedExact,
+  );
   if (outOfScope.length > 0) return fail(`out of scope: ${outOfScope.slice(0, 8).join(', ')}`);
   return pass(
     `${changedPaths.length} changed paths (working tree + since ${BASE_COMMIT}) inside scope`,
