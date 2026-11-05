@@ -21,7 +21,7 @@ Lo entregado es una aplicación real, no una maqueta:
 - un **triaje interno** que clasifica la consulta en una cola de tratamiento;
 - una **interfaz bilingüe ES/EN real** en Angular 21, servida en la preview interna
   (solo loopback, sin indexación);
-- un **validador** con 13 comprobaciones, **25 pruebas adversarias** y **17 pruebas
+- un **validador** con 13 comprobaciones, **26 pruebas adversarias** y **17 pruebas
   fin a fin** sobre el servidor real.
 
 El resultado más importante es un **"no" honesto**: hoy **no existe ninguna fila de
@@ -109,7 +109,7 @@ defectos se corrigieron antes de la entrega.
 | Validador MC-23 (regresión)                  | 15/15                                     |
 | Unitarias MC-23 (regresión)                  | 16/16                                     |
 | Validador MC-24                              | **13/13**                                 |
-| Pruebas adversarias MC-24                    | **25/25**                                 |
+| Pruebas adversarias MC-24                    | **26/26**                                 |
 | Compilación real + enlace inválido rechazado | **PASS**                                  |
 | Playwright catálogo (incl. 17 MC-24)         | **101/101**                               |
 | i18n / SEO / comercio (aplicación pública)   | PASS / PASS / PASS                        |
@@ -122,6 +122,42 @@ defectos se corrigieron antes de la entrega.
   teclado; sin desbordamiento horizontal a 320/390/768/1440.
 - **NO hecho:** pruebas con **lector de pantalla = NO EJECUTADAS**.
 - **NO se afirma conformidad WCAG**: las comprobaciones automáticas no la demuestran.
+
+---
+
+## 5.bis Auditoría independiente y corrección
+
+La auditoría independiente emitió **PASS_INTERNAL_SCOPE**. Conviene explicar cómo
+se obtuvo y qué encontró, porque el proceso importa tanto como el resultado.
+
+**Rutas de auditoría.** El primer auditor (Claude Code) **no emitió veredicto**:
+su sesión denegó todo acceso a herramientas y se negó a adivinar, que es lo
+correcto. El segundo (Codex) **falló por límite de uso**. La auditoría la completó
+finalmente **DeepSeek V4-Pro**, una familia distinta de la que implementó el código.
+Esta limitación se declara en lugar de disimularse. El capitán reejecutó además
+**todos** los comandos y reprodujo cada hallazgo por su cuenta.
+
+**Hallazgo crítico (ya corregido y confirmado por el auditor).** Antes de cerrar la
+auditoría, una prueba adversaria propia descubrió que
+`VALIDATED_SELF_INSTALL_RULES` se exportaba como **array mutable**: una sola
+llamada `push()` hacía alcanzable «instalación propia válida». La regla de gobierno
+de D5 se sostenía **por convención, no por construcción**, y el validador, las
+pruebas y las E2E pasaban igualmente. Se corrigió congelando el registro y leyendo
+una copia privada congelada; el auditor intentó derrotar la corrección y **no pudo**.
+
+Ese episodio es la lección más valiosa del hito: **un conjunto de pruebas en verde
+no se autentica a sí mismo**. Por eso se añadieron pruebas que atacan las propias
+puertas, incluida una que demuestra que la puerta de compilación **rechaza
+certificar** cuando no hay nada roto de verdad.
+
+**Hallazgos menores** (todos corregidos y con prueba de regresión, salvo los
+aceptados): tres paráfrasis de disponibilidad («ahora disponible», «actualmente
+disponible», «already available»); lecturas de respuestas por cadena de prototipos;
+espacios Unicode invisibles que contaban como respuesta; y un control de formulario
+que no cubría enlaces de Angular ni `formAction`. Queda **abierto y aceptado** un
+posible falso positivo del control de pulgadas y, como **fuera de alcance**, el
+caso de ejecución de código arbitrario. No queda ningún hallazgo **bloqueante ni
+grave** abierto.
 
 ---
 

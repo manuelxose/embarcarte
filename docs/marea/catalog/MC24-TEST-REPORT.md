@@ -14,7 +14,7 @@ All results below were **executed**; no stage is reported as passing without a r
 | 5   | MC-23 unit tests                               | (stage `unit` of 2)                                     | 16/16                                                  | 0    |
 | 6   | MC-24 projection drift gate                    | `node scripts/build-mc24-configurator-data.mjs --check` | up to date (32 questions, 12 rules, 20 conflict rules) | 0    |
 | 7   | MC-24 configuration validator                  | `npm run test:mc24`                                     | **13/13 PASS**                                         | 0    |
-| 8   | MC-24 adversarial unit suite                   | `npm run test:mc24:unit`                                | **25/25 pass**                                         | 0    |
+| 8   | MC-24 adversarial unit suite                   | `npm run test:mc24:unit`                                | **26/26 pass**                                         | 0    |
 | 9   | **Real Angular build gate + negative binding** | `node scripts/check-mc24-build.mjs`                     | **VERDICT: PASS**                                      | 0    |
 | 10  | Catalogue E2E (incl. 17 MC-24)                 | `playwright test -c playwright.catalog.config.ts`       | **101 passed**                                         | 0    |
 | 11  | Public i18n                                    | `npm run test:i18n`                                     | PASS                                                   | 0    |
@@ -64,7 +64,7 @@ Angular failures. They were fixed with one typed `t()` accessor.
 | MC24-12 | Build gate wired (preview, production, MC-24)                      | PASS                           |
 | MC24-13 | F-2/F-15 reproducible and recorded                                 | PASS                           |
 
-## 4. Adversarial unit suite — 25 tests
+## 4. Adversarial unit suite — 26 tests
 
 Boundaries attacked rather than exercised:
 
