@@ -706,6 +706,14 @@ const outputs = [
   [MAPPING_OUT, mappingJson],
 ];
 
+/**
+ * MC-23 in-process entry point. The ENGINE-03 runner cannot spawn a child, so it
+ * calls runConfined() instead of `node <file> --check`.
+ */
+export function runConfined() {
+  return checkOutputs();
+}
+
 if (CHECK) {
   let failed = false;
   for (const [path, content] of outputs) {
@@ -717,12 +725,22 @@ if (CHECK) {
       failed = true;
       continue;
     }
-    if (current !== content) {
+    // MC-23 line endings: Git checks these files out with core.autocrlf=true on
+    // Windows, so a CRLF checkout is not stale content. Real differences still fail.
+    if (current.replace(/\r\n/g, '\n') !== content.replace(/\r\n/g, '\n')) {
       console.error(`STALE generated file: ${path}`);
       failed = true;
     }
   }
-  if (failed) process.exit(1);
+  return !failed;
+}
+
+if (CHECK) {
+  const ok = checkOutputs();
+  if (!ok) {
+    console.log('MC-20 catalogue data is STALE.');
+    process.exit(1);
+  }
   console.log(`MC-20 catalogue data is up to date (${outputs.length} generated files).`);
   process.exit(0);
 }
