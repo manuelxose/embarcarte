@@ -236,7 +236,31 @@ ${csBlocks}
 ];
 `;
 
-if (CHECK) {
+/**
+ * Compare the committed module with a fresh transcription of the contract.
+ * Returns true when they match, false on drift. Exported so the confined runner
+ * can execute this check in-process (it cannot spawn a child).
+ */
+export function checkDrift() {
+  const current = readFileSync(resolve(root, OUT), 'utf8');
+  return current.replace(/\r\n/g, '\n') === output.replace(/\r\n/g, '\n');
+}
+
+export function runConfined() {
+  const ok = checkDrift();
+  console.log(
+    ok
+      ? `MC-23 bundle data is up to date (${Object.keys(canon).length} bundles, ${upgradePaths.length} upgrade paths, ${crossSell.length} cross-sell rules).`
+      : `STALE: ${OUT} does not match ${CONTRACT}. Run: node scripts/build-mc23-bundle-data.mjs`,
+  );
+  return ok;
+}
+
+// Only act as a CLI when executed directly, not when imported by the runner.
+const isCli = process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (!isCli) {
+  // Imported for the in-process check; nothing else to do.
+} else if (CHECK) {
   const current = readFileSync(resolve(root, OUT), 'utf8');
   if (current.replace(/\r\n/g, '\n') !== output.replace(/\r\n/g, '\n')) {
     console.error(`STALE: ${OUT} does not match ${CONTRACT}.`);
@@ -249,7 +273,9 @@ if (CHECK) {
   process.exit(0);
 }
 
-writeFileSync(resolve(root, OUT), output);
-console.log(
-  `MC-23 bundle data generated: ${Object.keys(canon).length} bundles, ${upgradePaths.length} upgrade paths, ${crossSell.length} cross-sell rules.`,
-);
+if (isCli && !CHECK) {
+  writeFileSync(resolve(root, OUT), output);
+  console.log(
+    `MC-23 bundle data generated: ${Object.keys(canon).length} bundles, ${upgradePaths.length} upgrade paths, ${crossSell.length} cross-sell rules.`,
+  );
+}

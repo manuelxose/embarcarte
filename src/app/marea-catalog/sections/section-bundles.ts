@@ -82,7 +82,7 @@ const BUNDLE_NAMES: Readonly<Record<string, BundleContentLocalized>> = {
         </h2>
         <marea-bundle-comparison-table
           [bundles]="comparisonBundles()"
-          [families]="comparisonFamilies()"
+          [rows]="comparisonRows()"
           [legend]="legend()"
           [labels]="comparisonLabels()"
         />
@@ -98,16 +98,16 @@ const BUNDLE_NAMES: Readonly<Record<string, BundleContentLocalized>> = {
           (bundleSelected)="onSelect($event)"
         />
         @if (selectedId(); as selected) {
-          <ul class="paths" role="list" [attr.aria-label]="labels['upgradeHeading'][locale()]">
+          <ul class="paths" [attr.aria-label]="labels['upgradeHeading'][locale()]">
             @for (path of pathsForSelected(); track path.upgradeId) {
               <li class="path">
-                <p marea-text variant="label">{{ path.path }}</p>
-                <p marea-text variant="meta">{{ path.condition }}</p>
+                <p marea-text variant="label">{{ bundleName(path.fromBundleId) }}</p>
                 @if (path.adds.length > 0) {
                   <p marea-text variant="bodySmall">
-                    {{ labels['selectorLabel'][locale()] }}: {{ path.adds.join(' · ') }}
+                    {{ labels['inclusionLegend'][locale()] }}: {{ path.adds.join(' · ') }}
                   </p>
                 }
+                <p marea-text variant="meta">{{ quoteNote(path.requiresNewQuotation) }}</p>
               </li>
             }
           </ul>
@@ -118,7 +118,7 @@ const BUNDLE_NAMES: Readonly<Record<string, BundleContentLocalized>> = {
         <h2 id="mc23-state" marea-text variant="title2">
           {{ labels['inclusionLegend'][locale()] }}
         </h2>
-        <ul class="notes" role="list">
+        <ul class="notes">
           @for (entry of stateNotes(); track entry.bundleId) {
             <li class="note">
               <p marea-text variant="label">{{ entry.name }}</p>
@@ -193,7 +193,7 @@ export class MareaBundleSection {
    * NAV-ESSENTIAL as the same "Included", which is exactly the ambiguity the
    * review flagged. Each row is a contract line, labelled with its edition.
    */
-  readonly comparisonFamilies = computed<readonly MareaBundleComparisonFamilyRow[]>(() => {
+  readonly comparisonRows = computed<readonly MareaBundleComparisonFamilyRow[]>(() => {
     const locale = this.locale();
     const rows: MareaBundleComparisonFamilyRow[] = [];
     const seen = new Set<string>();
@@ -264,6 +264,25 @@ export class MareaBundleSection {
     if (selected === null) return [];
     return upgradePaths(selected).filter((path) => isSupportedUpgradePath(path.upgradeId));
   });
+
+  /** Localized display name for a bundle id, or the raw id when unknown. */
+  bundleName(bundleId: string | null): string {
+    if (bundleId === null) return '';
+    return BUNDLE_NAMES[bundleId]?.[this.locale()] ?? bundleId;
+  }
+
+  /**
+   * Localized note about whether the path needs a new quotation.
+   *
+   * The contract's own `condition` prose is internal wording (it mentions
+   * hypotheses and blocked gates), so it is never printed as buyer-facing copy.
+   */
+  quoteNote(requiresNewQuotation: boolean): string {
+    const locale = this.locale();
+    return requiresNewQuotation
+      ? BUNDLE_CONTENT_LABELS['quotationRequired'][locale]
+      : BUNDLE_CONTENT_LABELS['priceConfirmOnly'][locale];
+  }
 
   readonly stateNotes = computed(() => {
     const locale = this.locale();

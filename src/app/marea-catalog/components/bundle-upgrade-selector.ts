@@ -80,9 +80,9 @@ export interface MareaUpgradeSelectorLabels {
       >
         @if (selectedBundle(); as selected) {
           @if (selected.pathAdditions.length > 0) {
-            <ul class="path" role="list" [attr.aria-label]="labels().pathListLabel">
+            <ul class="path" [attr.aria-label]="labels().pathListLabel">
               @for (addition of selected.pathAdditions; track $index) {
-                <li role="listitem">{{ addition }}</li>
+                <li>{{ addition }}</li>
               }
             </ul>
           }

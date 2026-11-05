@@ -22,6 +22,7 @@ process.env.MC23_CONFINED = '1';
 const stages = [
   { id: 'mc20', file: 'scripts/check-mc20-catalog.mjs' },
   { id: 'data', file: 'scripts/build-mc20-catalog-data.mjs' },
+  { id: 'mc23data', file: 'scripts/build-mc23-bundle-data.mjs' },
   { id: 'mc23', file: 'scripts/check-mc23-bundles.mjs', optional: true },
   { id: 'unit', file: 'scripts/check-mc23-bundles.test.mjs', optional: true, tests: true },
 ];

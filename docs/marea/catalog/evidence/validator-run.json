@@ -9,8 +9,8 @@
   "total": 56,
   "passed": 56,
   "failed": 0,
-  "runAt": "2026-11-05T03:04:48.275Z",
-  "head": "ae1e431a03460b22eed968e1f20b690d894d7883",
+  "runAt": "2026-11-05T11:15:54.394Z",
+  "head": "e6abe1b60652b86dc6243c35fcaa9f9f79531423",
   "checks": [
     {
       "id": "MC20-01",
@@ -88,7 +88,7 @@
       "id": "MC20-13",
       "title": "the committed projection is up to date with the canonical datasets",
       "status": "PASS",
-      "detail": "scripts/build-mc20-catalog-data.mjs --check exits 0"
+      "detail": "delegated to the confined runner data stage"
     },
     {
       "id": "MC20-14",
@@ -166,7 +166,7 @@
       "id": "MC20-26",
       "title": "the catalogue defines no form, input, storage or network call",
       "status": "PASS",
-      "detail": "29 catalogue modules: 0 form, 0 storage, 0 network call"
+      "detail": "36 catalogue modules: 0 form, 0 storage, 0 network call"
     },
     {
       "id": "MC20-27",
@@ -202,7 +202,7 @@
       "id": "MC20-32",
       "title": "every changed path is inside the MC-20 write scope",
       "status": "PASS",
-      "detail": "38 changed paths (working tree + since 1dc9aa0) inside scope"
+      "detail": "55 changed paths (working tree + since 1dc9aa0) inside scope"
     },
     {
       "id": "MC20-34",

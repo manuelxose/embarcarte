@@ -80,9 +80,9 @@ export interface MareaBundleComparisonLabels {
       [options]="options()"
       [rows]="comparisonRows()"
     />
-    <ul class="states" role="list">
+    <ul class="states">
       @for (bundle of bundles(); track bundle.bundleId) {
-        <li role="listitem">
+        <li>
           <span class="state-name">{{ bundle.displayName }}</span>
           <span marea-text variant="meta">{{ bundle.stateLabel }}</span>
         </li>
@@ -90,10 +90,9 @@ export interface MareaBundleComparisonLabels {
     </ul>
     <div class="legend">
       <p marea-text variant="label">{{ labels().legendTitle }}</p>
-      <ul class="legend-list" role="list">
+      <ul class="legend-list">
         @for (entry of legend(); track entry.vocabulary) {
           <li
-            role="listitem"
             marea-text
             variant="bodySmall"
             [attr.data-marea-vocabulary]="entry.vocabulary"

@@ -30,6 +30,10 @@ export const BUNDLE_CONTENT_LABELS: Readonly<Record<string, Localized>> = {
     en: 'Blocked by the PILOT safety gate',
   },
   notImplemented: { es: 'No implementado', en: 'Not implemented' },
+  priceConfirmOnly: {
+    es: 'Solo requiere confirmación de precio y compatibilidad.',
+    en: 'Requires only price and compatibility confirmation.',
+  },
 };
 
 /** One short honest state note per MC-08 bundle, ES and EN. */

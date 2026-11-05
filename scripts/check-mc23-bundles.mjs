@@ -22,6 +22,8 @@ const CONTRACT = 'docs/marea/bundles/bundle-definitions.json';
 const DOMAIN = 'src/app/marea-catalog/data';
 const CONTENT = 'src/app/marea-catalog/content';
 const COMPONENTS = 'src/app/marea-catalog/components';
+const SECTIONS = 'src/app/marea-catalog/sections';
+const PREVIEW = 'preview/landing';
 const EVIDENCE = 'docs/marea/catalog/evidence';
 
 const results = [];
@@ -195,7 +197,13 @@ add('MC23-03d', 'every upgrade path and cross-sell rule in the contract is prese
 });
 
 add('MC23-04', 'no catalogue module can produce a purchasable or ORDERABLE state', () => {
-  const sources = [...filesUnder(DOMAIN), ...filesUnder(CONTENT), ...filesUnder(COMPONENTS)];
+  const sources = [
+    ...filesUnder(DOMAIN),
+    ...filesUnder(CONTENT),
+    ...filesUnder(COMPONENTS),
+    ...filesUnder(SECTIONS),
+    ...filesUnder(PREVIEW),
+  ];
   if (sources.length === 0) return skip('catalogue modules not present on this branch');
   const banned = /['"`](ORDERABLE|PURCHASABLE|IN_STOCK|ADD_TO_CART|BUY_NOW)['"`]/gu;
   const hits = [];
@@ -230,7 +238,25 @@ add('MC23-05', 'the MC-23 copy states the canonical not-for-sale and safety fact
       return fail(`${bundle.id} note is missing a locale`);
     }
   }
-  return pass('6 bundle notes bilingual; not-for-sale, PILOT gate and FLEET limits stated');
+  // Each note must state not-for-sale; the PILOT gate must appear in SAIL and
+  // COMPLETE specifically, and the FLEET limit in FLEET specifically.
+  const noteBlocks = {};
+  for (const bundle of contractBundles) {
+    const block = new RegExp('\\b' + bundle.id + '\\s*:\\s*\\{([\\s\\S]*?)\\}', 'u').exec(notes[1]);
+    noteBlocks[bundle.id] = block ? block[1] : '';
+  }
+  for (const bundle of contractBundles) {
+    if (!/not for sale/iu.test(noteBlocks[bundle.id])) return fail(bundle.id + ' note does not state not for sale');
+  }
+  for (const bundle of ['SAIL', 'COMPLETE']) {
+    if (!/PILOT safety gate/iu.test(noteBlocks[bundle]) || !/puerta de seguridad de PILOT/iu.test(noteBlocks[bundle])) {
+      return fail(bundle + ' note does not state the PILOT safety gate in both locales');
+    }
+  }
+  if (!/not implemented/iu.test(noteBlocks['FLEET']) || !/no está implementado/iu.test(noteBlocks['FLEET'])) {
+    return fail('FLEET note does not state not implemented in both locales');
+  }
+  return pass('6 notes bilingual; every note says not for sale; SAIL/COMPLETE cite the PILOT gate; FLEET cites the limit');
 });
 
 add('MC23-06', 'ES and EN are structurally identical and non-empty', () => {
@@ -311,7 +337,13 @@ add('MC23-11', 'the upgrade logic is deterministic', () => {
 });
 
 add('MC23-12', 'no catalogue file introduces a price or a purchase affordance', () => {
-  const sources = [...filesUnder(DOMAIN), ...filesUnder(CONTENT), ...filesUnder(COMPONENTS)];
+  const sources = [
+    ...filesUnder(DOMAIN),
+    ...filesUnder(CONTENT),
+    ...filesUnder(COMPONENTS),
+    ...filesUnder(SECTIONS),
+    ...filesUnder(PREVIEW),
+  ];
   if (sources.length === 0) return skip('catalogue modules not present on this branch');
   const banned = [
     ['currency', /['"`][^'"`]*\d+\s*(?:EUR|€|euros?)[^'"`]*['"`]/iu],
@@ -333,6 +365,9 @@ add('MC23-12', 'no catalogue file introduces a price or a purchase affordance', 
 const failed = results.filter((r) => r.status === 'FAIL');
 const passed = results.filter((r) => r.status === 'PASS');
 const skipped = results.filter((r) => r.status === 'SKIP');
+// A skip means a required artefact was absent, so the gate could not measure it.
+// In CI that is a failure, not a pass: MC23_ALLOW_SKIP=1 is the only way to opt out.
+const skipFails = process.env.MC23_ALLOW_SKIP !== '1';
 
 for (const result of results) {
   console.log(`${result.status.padEnd(4)} ${result.id} — ${result.title}`);
@@ -349,7 +384,7 @@ console.log(
 if (exists(EVIDENCE)) {
   const payload = {
     schema: 'mc23-validator-run/1',
-    runAt: new Date().toISOString(),
+    // No timestamp: the evidence file must be byte-stable for a given tree.
     total: results.length,
     passed: passed.length,
     skipped: skipped.length,
@@ -360,7 +395,7 @@ if (exists(EVIDENCE)) {
   writeFileSync(target, `${JSON.stringify(payload, null, 2)}\n`);
 }
 
-if (failed.length > 0) process.exitCode = 1;
+if (failed.length > 0 || (skipFails && skipped.length > 0)) process.exitCode = 1;
 
 /** ENGINE-03 runner entry point: no process spawn, no argv dependency. */
 export function runConfined() {
