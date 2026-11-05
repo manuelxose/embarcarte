@@ -33,18 +33,19 @@ the production application has no route, no bundle entry and no navigation to it
 | --- | --- | ---: |
 | `scripts/build-mc25-governance-data.mjs` | projection generator + contract-contradiction refusals + `--check` | 427 |
 | `src/app/marea-catalog/data/governance.generated.ts` | generated projection (9 families, 26 editions, 26 candidates, 13 gates, 11 provenance digests) | generated |
-| `src/app/marea-catalog/governance/governance-facts.ts` | deep-frozen snapshot, private indexes, lookups | 143 |
+| `src/app/marea-catalog/governance/governance-facts.ts` | deep-frozen snapshot, private indexes, lookups | 144 |
 | `src/app/marea-catalog/governance/sku-identity.ts` | identity kinds and resolution | 256 |
-| `src/app/marea-catalog/governance/sku-lifecycle.ts` | states, transitions, guards, derivation | 287 |
-| `src/app/marea-catalog/governance/sku-readiness.ts` | prerequisites, decision, matrix, refusal | 522 |
-| `src/app/marea-catalog/governance/admin-authorization.ts` | action matrix, refusal codes, non-persistence | 212 |
+| `src/app/marea-catalog/governance/sku-lifecycle.ts` | states, transitions, guards, derivation | 296 |
+| `src/app/marea-catalog/governance/sku-readiness.ts` | prerequisites, decision, matrix, refusal | 538 |
+| `src/app/marea-catalog/governance/admin-authorization.ts` | action matrix, refusal codes, non-persistence | 246 |
 | `src/app/marea-catalog/governance/review-workflow-adapter.ts` | UI action surface | 30 |
-| `src/app/marea-catalog/content/governance.ts` | 88 bilingual pairs | 199 |
+| `src/app/marea-catalog/governance/readiness-verdict.ts` | verdict derived from the decision (AUD-03) | 36 |
+| `src/app/marea-catalog/content/governance.ts` | 88 bilingual pairs | 207 |
 | `src/app/marea-catalog/models/governance-identity.ts` | preview routes + isolation facts | 37 |
-| `src/app/marea-catalog/sections/section-sku-governance.ts` | admin screen (tables, live region, keyboard) | 724 |
+| `src/app/marea-catalog/sections/section-sku-governance.ts` | admin screen (tables, live region, keyboard) | 727 |
 | `preview/landing/governance-preview.ts` | noindex preview host | 106 |
-| `scripts/check-mc25-governance.mjs` | 20-check validator | 868 |
-| `scripts/check-mc25-governance.test.mjs` | 58 adversarial unit tests | 669 |
+| `scripts/check-mc25-governance.mjs` | 20-check validator | 943 |
+| `scripts/check-mc25-governance.test.mjs` | 58 adversarial unit tests | 768 |
 | `e2e/catalog/governance.spec.ts` | 15 Playwright + axe cases | 182 |
 
 ## 3. Files modified (and why)
