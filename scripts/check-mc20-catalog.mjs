@@ -755,6 +755,8 @@ add('MC20-32', 'every changed path is inside the MC-20 write scope', () => {
     'scripts/test.mjs',
     'scripts/run-tsc.mjs',
     'scripts/mc23-git-reader.mjs',
+    'scripts/check-mc23-bundles.mjs',
+    'scripts/check-mc23-bundles.test.mjs',
     // MC-23: line-ending normalisation for the generated projection.
     '.gitattributes',
   ];
