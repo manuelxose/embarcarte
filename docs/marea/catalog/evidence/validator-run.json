@@ -1,40 +1,40 @@
 {
   "contractId": "MC20-CATALOG-VALIDATOR-RUN",
   "contractVersion": "1.0.0",
-  "milestone": "MC-20",
-  "owner": "MC-20 implementation team",
-  "baseCommit": "3490c0f",
+  "milestone": "MC-22",
+  "owner": "MC-22 implementation team",
+  "baseCommit": "1dc9aa0",
   "publicationStatus": "NOT_AUTHORIZED",
   "status": "PASS",
-  "total": 50,
-  "passed": 50,
+  "total": 56,
+  "passed": 56,
   "failed": 0,
-  "runAt": "2026-11-04T23:39:56.973Z",
-  "head": "93b686a6cb7afebe04446d0505582f973b9fe67a",
+  "runAt": "2026-11-05T03:04:48.275Z",
+  "head": "ae1e431a03460b22eed968e1f20b690d894d7883",
   "checks": [
     {
       "id": "MC20-01",
-      "title": "the projection exposes exactly the six canonical families in order",
+      "title": "the projection exposes exactly the nine canonical families",
       "status": "PASS",
-      "detail": "NAV, HUB, AIS, SENSE, WATCH, WEATHER in canonical MC-16 order"
+      "detail": "9 canonical families; projection scope, projection records and content agree"
     },
     {
       "id": "MC20-02",
       "title": "family type/lifecycle/publication/availability match the canonical record",
       "status": "PASS",
-      "detail": "6 families copy product type, lifecycle, publication and availability"
+      "detail": "9 families copy product type, lifecycle, publication and availability"
     },
     {
       "id": "MC20-03",
       "title": "all eleven readiness dimensions equal the canonical values",
       "status": "PASS",
-      "detail": "6 families × 11 dimensions copied byte-for-byte"
+      "detail": "9 families × 11 dimensions copied byte-for-byte"
     },
     {
       "id": "MC20-04",
-      "title": "eighteen canonical editions keep their ids, family, type and feature keys",
+      "title": "all twenty-six canonical editions keep their ids, family, type and feature keys",
       "status": "PASS",
-      "detail": "18 editions across NAV/HUB/AIS/SENSE/WATCH/WEATHER (SENSE carries 8)"
+      "detail": "26 editions across the nine families, none missing"
     },
     {
       "id": "MC20-05",
@@ -52,13 +52,13 @@
       "id": "MC20-07",
       "title": "every MC-15 proposed family route stays internal and not deployable",
       "status": "PASS",
-      "detail": "6 routes: proposed internal, not deployable, no collision, no publication"
+      "detail": "9 routes: proposed internal, not deployable, no collision, no publication"
     },
     {
       "id": "MC20-08",
-      "title": "NAV/WEATHER are software, HUB/AIS/SENSE hardware, WATCH hardware+service",
+      "title": "every family copies its canonical product type, hardware and safety status",
       "status": "PASS",
-      "detail": "NAV/WEATHER software; HUB/AIS/SENSE hardware; WATCH hardware+service; all NOT_FOR_SALE"
+      "detail": "9 families copy canonical product type, hardware and safety status"
     },
     {
       "id": "MC20-09",
@@ -70,13 +70,13 @@
       "id": "MC20-10",
       "title": "every family renders the frozen ten sections",
       "status": "PASS",
-      "detail": "6 families × 10 frozen sections"
+      "detail": "9 families × 10 frozen sections"
     },
     {
       "id": "MC20-11",
       "title": "content ids are unique across the whole catalogue",
       "status": "PASS",
-      "detail": "232 unique content blocks"
+      "detail": "352 unique content blocks"
     },
     {
       "id": "MC20-12",
@@ -98,15 +98,15 @@
     },
     {
       "id": "MC20-15",
-      "title": "the six families of copy avoid prohibited commercial claims",
+      "title": "the nine families of copy avoid prohibited commercial claims",
       "status": "PASS",
-      "detail": "1932 bilingual strings scanned, 0 prohibited claims"
+      "detail": "2800 bilingual strings scanned, 0 prohibited claims"
     },
     {
       "id": "MC20-16",
       "title": "every string has a non-empty, distinct ES and EN value",
       "status": "PASS",
-      "detail": "88 sampled bilingual values are non-empty and locale-specific"
+      "detail": "134 sampled bilingual values are non-empty and locale-specific"
     },
     {
       "id": "MC20-17",
@@ -146,9 +146,9 @@
     },
     {
       "id": "MC20-23",
-      "title": "the preview route table defines twelve family/locale routes",
+      "title": "the preview route table defines the eighteen family/locale routes",
       "status": "PASS",
-      "detail": "6 families × 2 locales, all Server-rendered, all under internal/catalog"
+      "detail": "9 families × 2 locales, all Server-rendered, all under internal/catalog"
     },
     {
       "id": "MC20-24",
@@ -166,7 +166,7 @@
       "id": "MC20-26",
       "title": "the catalogue defines no form, input, storage or network call",
       "status": "PASS",
-      "detail": "26 catalogue modules: 0 form, 0 storage, 0 network call"
+      "detail": "29 catalogue modules: 0 form, 0 storage, 0 network call"
     },
     {
       "id": "MC20-27",
@@ -202,13 +202,7 @@
       "id": "MC20-32",
       "title": "every changed path is inside the MC-20 write scope",
       "status": "PASS",
-      "detail": "74 changed paths (working tree + since 3490c0f) inside scope"
-    },
-    {
-      "id": "MC20-33",
-      "title": "the generated projection is deterministic",
-      "status": "PASS",
-      "detail": "regeneration matches the committed bytes exactly (--check exits 0)"
+      "detail": "38 changed paths (working tree + since 1dc9aa0) inside scope"
     },
     {
       "id": "MC20-34",
@@ -236,9 +230,9 @@
     },
     {
       "id": "MC20-38",
-      "title": "MC-21 is present as PARTIAL and MC-22 is not started",
+      "title": "MC-21 records PARTIAL and MC-22 does not claim a global PASS",
       "status": "PASS",
-      "detail": "MC-21 PARTIAL (internal scope only); MC-22 PLANNED"
+      "detail": "MC-21 PARTIAL (internal scope only); MC-22 not globally PASS"
     },
     {
       "id": "MC20-39",
@@ -254,21 +248,21 @@
     },
     {
       "id": "MC21-01",
-      "title": "six families and eighteen editions in canonical MC-16 order",
+      "title": "nine families, twenty-six editions and ten governance gates",
       "status": "PASS",
-      "detail": "NAV, HUB, AIS, SENSE, WATCH, WEATHER · 18 editions · 10 governance gates"
+      "detail": "9 families · 26 editions · 10 governance gates"
     },
     {
       "id": "MC21-02",
-      "title": "SENSE/WATCH/WEATHER content has ES/EN structural parity",
+      "title": "every family content has ES/EN structural parity and matching editions",
       "status": "PASS",
-      "detail": "three new families: 10 sections, editions match projection, bilingual parity"
+      "detail": "9 families: 10 sections, editions match projection, bilingual parity"
     },
     {
       "id": "MC21-03",
-      "title": "every new-family block carries an evidence class and a real source",
+      "title": "every family block carries an evidence class and a real source",
       "status": "PASS",
-      "detail": "every SENSE/WATCH/WEATHER block cites an evidence class and an existing source"
+      "detail": "every block across the 9 families cites an evidence class and an existing source"
     },
     {
       "id": "MC21-04",
@@ -280,7 +274,7 @@
       "id": "MC21-05",
       "title": "availability stays DEFINED / INTERNAL_ONLY / NOT_FOR_SALE with no commerce language",
       "status": "PASS",
-      "detail": "6 families DEFINED/INTERNAL_ONLY/NOT_FOR_SALE; 0 availability or commerce claims"
+      "detail": "9 families DEFINED/INTERNAL_ONLY/NOT_FOR_SALE; 0 availability or commerce claims"
     },
     {
       "id": "MC21-06",
@@ -296,9 +290,9 @@
     },
     {
       "id": "MC21-08",
-      "title": "the ten governance gates are preserved verbatim",
+      "title": "the ten governance gates are preserved verbatim against the baseline",
       "status": "PASS",
-      "detail": "10 gates verbatim in content, projection and validator"
+      "detail": "10 gates verbatim in current content, projection and the baseline commit"
     },
     {
       "id": "MC21-09",
@@ -308,9 +302,51 @@
     },
     {
       "id": "MC21-10",
-      "title": "all twelve preview routes are loopback-only and Server-rendered",
+      "title": "all eighteen preview routes are loopback-only and Server-rendered",
       "status": "PASS",
-      "detail": "12 loopback Server routes; preview server bound to 127.0.0.1"
+      "detail": "18 loopback Server routes; preview server bound to 127.0.0.1"
+    },
+    {
+      "id": "MC22-01",
+      "title": "canonical release gates, claims and product definitions are consistent",
+      "status": "PASS",
+      "detail": "13 release gates open; 0 public-authorized claims; 9 definitions present"
+    },
+    {
+      "id": "MC22-02",
+      "title": "DISPLAY stays SIZE_NOT_FROZEN / HARDWARE_NOT_SELECTED / BOM_NOT_ESTABLISHED",
+      "status": "PASS",
+      "detail": "DISPLAY size/hardware/BOM frozen as NOT_*; measuredPerformance false; no PILOT authority"
+    },
+    {
+      "id": "MC22-03",
+      "title": "DISPLAY publishes no dimension, resolution, brightness, IP or power claim",
+      "status": "PASS",
+      "detail": "0 DISPLAY dimension/resolution/brightness/environmental/power claims"
+    },
+    {
+      "id": "MC22-04",
+      "title": "PILOT safety gate is BLOCKED and no autonomy or certification is claimed",
+      "status": "PASS",
+      "detail": "PILOT BLOCKED; sea trials false; NOT_FOUND evidence; supervised-only copy"
+    },
+    {
+      "id": "MC22-05",
+      "title": "PILOT publishes no autonomy, certification, reliability or approval claim",
+      "status": "PASS",
+      "detail": "0 PILOT autonomy/certification/reliability/approval/helm claims"
+    },
+    {
+      "id": "MC22-06",
+      "title": "FLEET stays not-implemented with NO_SLA_ESTABLISHED and read-only telemetry",
+      "status": "PASS",
+      "detail": "FLEET not-implemented; NO_SLA_ESTABLISHED; read-only telemetry; NO_ACCESS"
+    },
+    {
+      "id": "MC22-07",
+      "title": "FLEET publishes no SLA, availability, hardware, customer or certification claim",
+      "status": "PASS",
+      "detail": "0 FLEET SLA/availability/hardware/customer/contract/certification claims"
     }
   ]
 }

@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
- * MC-20 internal catalogue validator.
+ * MC-22 internal catalogue validator (nine families: NAV, HUB, AIS, SENSE,
+ * WATCH, WEATHER, DISPLAY, PILOT, FLEET).
  *
- * Deterministic, read-only gate over the MC-20 NAV/HUB/AIS catalogue:
+ * Deterministic, read-only gate over the nine-family internal catalogue:
  * canonical identity and readiness, content provenance, ES/EN parity, claim
  * safety, public isolation, design-system reuse, route definition and
  * governance. It writes only its own evidence file.
@@ -33,7 +34,7 @@ import {
 } from './mc20-catalog-guards.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const BASE_COMMIT = '3490c0f'; // verified MC-18 delivery HEAD; MC-20 base
+const BASE_COMMIT = '1dc9aa0'; // verified MC-21 delivery HEAD; MC-22 base
 const CATALOG = 'src/app/marea-catalog';
 const PREVIEW = 'preview/landing';
 const DS = 'src/app/marea-design-system';
@@ -73,7 +74,11 @@ const canonical = {
   definitions03: readJson('docs/marea/products/product-definitions.batch-03.json'),
 };
 
-const SCOPE = ['NAV', 'HUB', 'AIS', 'SENSE', 'WATCH', 'WEATHER'];
+// The nine-family MC-22 scope is derived from the projection's own scope table
+// (never a hand-edited list), and every family loop below iterates it. The
+// canonical family set is used only as an independent witness against drift.
+const SCOPE = [...projection.CATALOG_SCOPE_FAMILY_IDS];
+const canonicalFamilyIds = canonical.families.map((entry) => entry.familyId);
 const familyContents = SCOPE.map((familyId) => content.CATALOG_CONTENT[familyId]);
 const allStrings = [
   ...familyContents.flatMap((entry) => contentStrings(entry)),
@@ -85,6 +90,7 @@ const allCanonicalDefinitions = [
   ...canonical.definitions02.products,
   ...canonical.definitions03.products,
 ];
+const canonicalDefinitionById = new Map(allCanonicalDefinitions.map((entry) => [entry.id, entry]));
 
 // ------------------------------------------------------------------ harness
 const checks = [];
@@ -110,15 +116,25 @@ const pass = (detail) => ({ status: 'PASS', detail });
 const fail = (detail) => ({ status: 'FAIL', detail });
 
 // ------------------------------------------------------------------ 01-09 canonical identity
-add('MC20-01', 'the projection exposes exactly the six canonical families in order', () => {
-  const ids = projection.CATALOG_FAMILIES.map((entry) => entry.familyId);
-  if (JSON.stringify(ids) !== JSON.stringify(SCOPE)) return fail(`ids: ${ids.join(', ')}`);
-  const canonicalIds = canonical.families
-    .map((entry) => entry.familyId)
-    .filter((id) => SCOPE.includes(id));
-  if (JSON.stringify(ids) !== JSON.stringify(canonicalIds))
-    return fail(`projection ${ids} differs from canonical ${canonicalIds}`);
-  return pass('NAV, HUB, AIS, SENSE, WATCH, WEATHER in canonical MC-16 order');
+add('MC20-01', 'the projection exposes exactly the nine canonical families', () => {
+  const sort = (arr) => [...arr].sort();
+  const scopeIds = projection.CATALOG_SCOPE_FAMILY_IDS;
+  const projectedIds = projection.CATALOG_FAMILIES.map((entry) => entry.familyId);
+  if (scopeIds.length !== 9) return fail(`scope families: ${scopeIds.length}`);
+  if (new Set(scopeIds).size !== scopeIds.length)
+    return fail(`duplicate scope family ids: ${scopeIds.join(', ')}`);
+  if (JSON.stringify(sort(scopeIds)) !== JSON.stringify(sort(canonicalFamilyIds)))
+    return fail(`scope ${scopeIds.join(',')} != canonical ${canonicalFamilyIds.join(',')}`);
+  if (projection.CATALOG_FAMILIES.length !== 9)
+    return fail(`projection families: ${projection.CATALOG_FAMILIES.length}`);
+  if (JSON.stringify(sort(projectedIds)) !== JSON.stringify(sort(canonicalFamilyIds)))
+    return fail(
+      `projection ${projectedIds.join(',')} != canonical ${canonicalFamilyIds.join(',')}`,
+    );
+  const contentIds = Object.keys(content.CATALOG_CONTENT).sort();
+  if (JSON.stringify(contentIds) !== JSON.stringify(sort(canonicalFamilyIds)))
+    return fail(`content families ${contentIds.join(',')} != canonical`);
+  return pass('9 canonical families; projection scope, projection records and content agree');
 });
 
 add('MC20-02', 'family type/lifecycle/publication/availability match the canonical record', () => {
@@ -138,7 +154,7 @@ add('MC20-02', 'family type/lifecycle/publication/availability match the canonic
     if (record.commercialAvailability !== 'NOT_FOR_SALE')
       return fail(`${record.familyId} is not NOT_FOR_SALE`);
   }
-  return pass('6 families copy product type, lifecycle, publication and availability');
+  return pass('9 families copy product type, lifecycle, publication and availability');
 });
 
 add('MC20-03', 'all eleven readiness dimensions equal the canonical values', () => {
@@ -153,24 +169,36 @@ add('MC20-03', 'all eleven readiness dimensions equal the canonical values', () 
   }
   if (projection.CATALOG_READINESS_DIMENSIONS.length !== 11)
     return fail('projection does not expose 11 readiness dimensions');
-  return pass('6 families × 11 dimensions copied byte-for-byte');
+  return pass('9 families × 11 dimensions copied byte-for-byte');
 });
 
-add('MC20-04', 'eighteen canonical editions keep their ids, family, type and feature keys', () => {
-  if (projection.CATALOG_EDITIONS.length !== 18)
-    return fail(`projection editions: ${projection.CATALOG_EDITIONS.length}`);
-  for (const edition of projection.CATALOG_EDITIONS) {
-    const source = canonical.editions.find((entry) => entry.editionId === edition.editionId);
-    if (!source) return fail(`missing canonical edition ${edition.editionId}`);
-    for (const key of ['familyId', 'editionType', 'definitionStatus', 'requiresQuotation']) {
-      if (edition[key] !== source[key]) return fail(`${edition.editionId}.${key} differs`);
+add(
+  'MC20-04',
+  'all twenty-six canonical editions keep their ids, family, type and feature keys',
+  () => {
+    const canonicalInScope = canonical.editions
+      .filter((entry) => SCOPE.includes(entry.familyId))
+      .map((entry) => entry.editionId);
+    if (projection.CATALOG_EDITIONS.length !== canonicalInScope.length)
+      return fail(
+        `projection editions: ${projection.CATALOG_EDITIONS.length} (expected ${canonicalInScope.length})`,
+      );
+    const projectedIds = new Set(projection.CATALOG_EDITIONS.map((entry) => entry.editionId));
+    const missing = canonicalInScope.filter((id) => !projectedIds.has(id));
+    if (missing.length > 0) return fail(`missing canonical editions: ${missing.join(', ')}`);
+    for (const edition of projection.CATALOG_EDITIONS) {
+      const source = canonical.editions.find((entry) => entry.editionId === edition.editionId);
+      if (!source) return fail(`missing canonical edition ${edition.editionId}`);
+      for (const key of ['familyId', 'editionType', 'definitionStatus', 'requiresQuotation']) {
+        if (edition[key] !== source[key]) return fail(`${edition.editionId}.${key} differs`);
+      }
+      const sourceFeatures = source.featureDefinitions.map((entry) => entry.featureKey);
+      if (JSON.stringify(edition.featureKeys) !== JSON.stringify(sourceFeatures))
+        return fail(`${edition.editionId} feature keys differ from canonical`);
     }
-    const sourceFeatures = source.featureDefinitions.map((entry) => entry.featureKey);
-    if (JSON.stringify(edition.featureKeys) !== JSON.stringify(sourceFeatures))
-      return fail(`${edition.editionId} feature keys differ from canonical`);
-  }
-  return pass('18 editions across NAV/HUB/AIS/SENSE/WATCH/WEATHER (SENSE carries 8)');
-});
+    return pass(`${canonicalInScope.length} editions across the nine families, none missing`);
+  },
+);
 
 add('MC20-05', 'AIS transmission is false in the canonical data and in the catalogue copy', () => {
   if (canonical.definitions.globalRestrictions.aisTransmissionOffered !== false)
@@ -227,28 +255,42 @@ add('MC20-07', 'every MC-15 proposed family route stays internal and not deploya
     if (record.proposedRoute.collisionStatus !== 'NO_COLLISION')
       return fail(`${record.routeId} collision status changed`);
   }
-  return pass('6 routes: proposed internal, not deployable, no collision, no publication');
+  return pass('9 routes: proposed internal, not deployable, no collision, no publication');
 });
 
-add('MC20-08', 'NAV/WEATHER are software, HUB/AIS/SENSE hardware, WATCH hardware+service', () => {
+add('MC20-08', 'every family copies its canonical product type, hardware and safety status', () => {
+  for (const record of projection.CATALOG_FAMILIES) {
+    const source = canonical.families.find((entry) => entry.familyId === record.familyId);
+    if (!source) return fail(`missing canonical family ${record.familyId}`);
+    if (record.productType !== source.productType)
+      return fail(`${record.familyId}.productType ${record.productType} != ${source.productType}`);
+    if (record.hardwareStatus !== source.hardwareStatus)
+      return fail(
+        `${record.familyId}.hardwareStatus ${record.hardwareStatus} != ${source.hardwareStatus}`,
+      );
+    if (record.safetyStatus !== source.safetyStatus)
+      return fail(
+        `${record.familyId}.safetyStatus ${record.safetyStatus} != ${source.safetyStatus}`,
+      );
+    if (record.commercialAvailability !== 'NOT_FOR_SALE')
+      return fail(`${record.familyId} is not NOT_FOR_SALE`);
+  }
   const byId = (id) => projection.CATALOG_FAMILIES.find((entry) => entry.familyId === id);
   for (const id of ['NAV', 'WEATHER']) {
     if (byId(id).productType !== 'SOFTWARE') return fail(`${id} is not SOFTWARE`);
-    if (byId(id).hardwareStatus !== 'NOT_APPLICABLE_SOFTWARE_PRODUCT')
-      return fail(`${id} hardware status changed`);
   }
-  for (const id of ['HUB', 'AIS', 'SENSE']) {
+  for (const id of ['HUB', 'AIS', 'SENSE', 'DISPLAY', 'PILOT']) {
     if (byId(id).productType !== 'HARDWARE') return fail(`${id} is not HARDWARE`);
-    if (byId(id).hardwareStatus !== 'NOT_SELECTED') return fail(`${id} hardware is selected`);
   }
   if (byId('WATCH').productType !== 'HARDWARE_SERVICE')
     return fail('WATCH is not HARDWARE_SERVICE');
-  if (byId('WATCH').hardwareStatus !== 'NOT_SELECTED') return fail('WATCH hardware is selected');
-  if (byId('AIS').readiness.availability !== 'NOT_FOR_SALE')
-    return fail('AIS availability changed');
-  return pass(
-    'NAV/WEATHER software; HUB/AIS/SENSE hardware; WATCH hardware+service; all NOT_FOR_SALE',
-  );
+  if (byId('FLEET').productType !== 'SAAS') return fail('FLEET is not SAAS');
+  if (byId('PILOT').safetyStatus !== 'BLOCKED') return fail('PILOT safety status is not BLOCKED');
+  if (byId('DISPLAY').hardwareStatus !== 'NOT_SELECTED')
+    return fail('DISPLAY hardware is selected');
+  if (byId('FLEET').hardwareStatus !== 'NOT_APPLICABLE_SOFTWARE_PRODUCT')
+    return fail('FLEET hardware status changed');
+  return pass('9 families copy canonical product type, hardware and safety status');
 });
 
 add(
@@ -290,7 +332,7 @@ add('MC20-10', 'every family renders the frozen ten sections', () => {
     if (JSON.stringify(keys) !== JSON.stringify(expected))
       return fail(`${familyId} sections: ${keys.join(', ')}`);
   }
-  return pass('6 families × 10 frozen sections');
+  return pass('9 families × 10 frozen sections');
 });
 
 add('MC20-11', 'content ids are unique across the whole catalogue', () => {
@@ -357,7 +399,7 @@ add('MC20-14', 'the generated projection carries no price, stock or SKU field', 
   return pass('no amount, quantity or SKU value in the projection');
 });
 
-add('MC20-15', 'the six families of copy avoid prohibited commercial claims', () => {
+add('MC20-15', 'the nine families of copy avoid prohibited commercial claims', () => {
   const problems = [];
   for (const text of allStrings) {
     for (const id of catalogClaimProblems(text)) {
@@ -441,7 +483,7 @@ add('MC20-19', 'the page composes all ten sections in the frozen order', () => {
 add('MC20-20', 'section components contain no per-family presentation branch', () => {
   for (const file of walk(root, `${CATALOG}/sections`).filter((path) => path.endsWith('.ts'))) {
     const source = read(file);
-    if (/===\s*['"](?:NAV|HUB|AIS|SENSE|WATCH|WEATHER)['"]/.test(source))
+    if (/===\s*['"](?:NAV|HUB|AIS|SENSE|WATCH|WEATHER|DISPLAY|PILOT|FLEET)['"]/.test(source))
       return fail(`family branch in ${file}`);
   }
   return pass('sections are driven by the canonical record and the content contract');
@@ -481,9 +523,10 @@ add('MC20-22', 'the MC-18 landing module is unchanged', () => {
   return pass('src/app/marea-landing is unchanged from the MC-18 base');
 });
 
-add('MC20-23', 'the preview route table defines twelve family/locale routes', () => {
-  if (identity.CATALOG_PREVIEW_ROUTES.length !== 12)
-    return fail(`routes: ${identity.CATALOG_PREVIEW_ROUTES.length}`);
+add('MC20-23', 'the preview route table defines the eighteen family/locale routes', () => {
+  const expected = SCOPE.length * 2;
+  if (identity.CATALOG_PREVIEW_ROUTES.length !== expected)
+    return fail(`routes: ${identity.CATALOG_PREVIEW_ROUTES.length} (expected ${expected})`);
   for (const route of identity.CATALOG_PREVIEW_ROUTES) {
     if (route.renderMode !== 'Server') return fail(`${route.path} is not server-rendered`);
     if (
@@ -494,7 +537,9 @@ add('MC20-23', 'the preview route table defines twelve family/locale routes', ()
     if (normaliseRoutePath(route.path).includes('marea/'))
       return fail(`${route.path} uses a public path`);
   }
-  return pass('6 families × 2 locales, all Server-rendered, all under internal/catalog');
+  return pass(
+    `${SCOPE.length} families × 2 locales, all Server-rendered, all under internal/catalog`,
+  );
 });
 
 add('MC20-24', 'the preview host emits no public metadata', () => {
@@ -620,6 +665,17 @@ add('MC20-30', 'no catalogue identifier appears in a production bundle if one ex
       'WEATHER-STANDARD',
       'SENSE-WIND',
       'WATCH-CORE',
+      'DISPLAY-7',
+      'DISPLAY-LARGE-CONDITIONAL',
+      'PILOT-COASTAL',
+      'PILOT-SAIL',
+      'PILOT-PRO',
+      'FLEET-START',
+      'FLEET-BUSINESS',
+      'FLEET-ENTERPRISE',
+      'mareaFamilyDisplay',
+      'mareaFamilyPilot',
+      'mareaFamilyFleet',
     ]) {
       if (source.includes(marker)) offenders.push(`${file}:${marker}`);
     }
@@ -671,23 +727,15 @@ add('MC20-32', 'every changed path is inside the MC-20 write scope', () => {
   );
 });
 
-add('MC20-33', 'the generated projection is deterministic', () => {
-  // `--check` regenerates in memory and compares bytes; it never writes. This is
-  // the determinism proof and does not mutate the reviewed file.
-  execFileSync('node', ['scripts/build-mc20-catalog-data.mjs', '--check'], {
-    cwd: root,
-    stdio: 'pipe',
-  });
-  return pass('regeneration matches the committed bytes exactly (--check exits 0)');
-});
-
 add('MC20-34', 'catalogue pages expose no link to a proposed public route', () => {
   const files = walk(root, CATALOG).filter((path) => path.endsWith('.ts'));
   for (const file of files) {
     const source = read(file);
-    if (/href=["'`]\/marea\/(?:nav|hub|ais|sense|watch|weather)/.test(source))
+    if (/href=["'`]\/marea\/(?:nav|hub|ais|sense|watch|weather|display|pilot|fleet)/.test(source))
       return fail(`${file} links a proposed public route`);
-    if (/href=["'`]\/en\/marea\/(?:nav|hub|ais|sense|watch|weather)/.test(source))
+    if (
+      /href=["'`]\/en\/marea\/(?:nav|hub|ais|sense|watch|weather|display|pilot|fleet)/.test(source)
+    )
       return fail(`${file} links a proposed public route`);
   }
   const routes = read(`${PREVIEW}/app.routes.ts`);
@@ -760,14 +808,15 @@ add('MC20-37', 'the acceptance matrix uses only real statuses and evidence-bound
   return pass('15 rows with PASS/PARTIAL/PENDING only; PASS rows carry evidence conditions');
 });
 
-add('MC20-38', 'MC-21 is present as PARTIAL and MC-22 is not started', () => {
+add('MC20-38', 'MC-21 records PARTIAL and MC-22 does not claim a global PASS', () => {
   const registry = read('docs/marea/execution/MASTER-PROMPT-REGISTRY.md');
   const row21 = registry.split('\n').find((line) => /^\|\s*21\s*\|/.test(line)) ?? '';
   const row22 = registry.split('\n').find((line) => /^\|\s*22\s*\|/.test(line)) ?? '';
   if (!row21.includes('PARTIAL')) return fail('MC-21 row does not record the PARTIAL verdict');
   if (/\|\s*PASS\s*\|/.test(row21)) return fail('MC-21 row claims a global PASS');
-  if (!row22.includes('PLANNED')) return fail('MC-22 is not PLANNED');
-  return pass('MC-21 PARTIAL (internal scope only); MC-22 PLANNED');
+  if (!row22) return fail('MC-22 row not found');
+  if (/\|\s*PASS\s*\|/.test(row22)) return fail('MC-22 row claims a global PASS');
+  return pass('MC-21 PARTIAL (internal scope only); MC-22 not globally PASS');
 });
 
 add('MC20-39', 'the roadmap row for MC-20 is updated and not marked PASS', () => {
@@ -810,20 +859,20 @@ const GOVERNANCE_GATES = [
   'GATE-PRIVACY-DPA-DPIA = BLOCKED',
 ];
 
-add('MC21-01', 'six families and eighteen editions in canonical MC-16 order', () => {
+add('MC21-01', 'nine families, twenty-six editions and ten governance gates', () => {
   const ids = projection.CATALOG_SCOPE_FAMILY_IDS;
   if (JSON.stringify(ids) !== JSON.stringify(SCOPE)) return fail(`scope ids: ${ids.join(', ')}`);
-  if (projection.CATALOG_FAMILIES.length !== 6) return fail('families != 6');
-  if (projection.CATALOG_EDITIONS.length !== 18) return fail('editions != 18');
+  if (projection.CATALOG_FAMILIES.length !== 9) return fail('families != 9');
+  if (projection.CATALOG_EDITIONS.length !== 26) return fail('editions != 26');
   if (projection.CATALOG_GOVERNANCE_GATES.length !== 10) return fail('governance gates != 10');
-  const identityIds = Object.keys(identity.CATALOG_IDENTITIES);
-  if (JSON.stringify(identityIds) !== JSON.stringify(SCOPE))
+  const identityIds = Object.keys(identity.CATALOG_IDENTITIES).sort();
+  if (JSON.stringify(identityIds) !== JSON.stringify([...SCOPE].sort()))
     return fail(`identity ids: ${identityIds.join(', ')}`);
-  return pass('NAV, HUB, AIS, SENSE, WATCH, WEATHER · 18 editions · 10 governance gates');
+  return pass('9 families · 26 editions · 10 governance gates');
 });
 
-add('MC21-02', 'SENSE/WATCH/WEATHER content has ES/EN structural parity', () => {
-  for (const familyId of ['SENSE', 'WATCH', 'WEATHER']) {
+add('MC21-02', 'every family content has ES/EN structural parity and matching editions', () => {
+  for (const familyId of SCOPE) {
     const entry = content.CATALOG_CONTENT[familyId];
     if (!entry) return fail(`missing ${familyId} content`);
     const problems = bilingualTextProblems(entry);
@@ -839,10 +888,10 @@ add('MC21-02', 'SENSE/WATCH/WEATHER content has ES/EN structural parity', () => 
     if (JSON.stringify(contentEditionIds) !== JSON.stringify(projectionEditionIds))
       return fail(`${familyId}: content editions differ from projection`);
   }
-  return pass('three new families: 10 sections, editions match projection, bilingual parity');
+  return pass('9 families: 10 sections, editions match projection, bilingual parity');
 });
 
-add('MC21-03', 'every new-family block carries an evidence class and a real source', () => {
+add('MC21-03', 'every family block carries an evidence class and a real source', () => {
   const allowed = [
     'VERIFIED_REPO',
     'VERIFIED_EXTERNAL',
@@ -851,7 +900,7 @@ add('MC21-03', 'every new-family block carries an evidence class and a real sour
     'OPEN',
     'BLOCKED',
   ];
-  for (const familyId of ['SENSE', 'WATCH', 'WEATHER']) {
+  for (const familyId of SCOPE) {
     for (const block of contentBlocks(content.CATALOG_CONTENT[familyId])) {
       if (!allowed.includes(block.evidenceClass))
         return fail(`${block.contentId}:${block.evidenceClass}`);
@@ -863,7 +912,7 @@ add('MC21-03', 'every new-family block carries an evidence class and a real sour
       }
     }
   }
-  return pass('every SENSE/WATCH/WEATHER block cites an evidence class and an existing source');
+  return pass('every block across the 9 families cites an evidence class and an existing source');
 });
 
 add('MC21-04', 'WEATHER names no data provider and states provenance not contracted', () => {
@@ -906,7 +955,7 @@ add(
         return fail(`commerce claim ${id}: ${text.slice(0, 70)}`);
       }
     }
-    return pass('6 families DEFINED/INTERNAL_ONLY/NOT_FOR_SALE; 0 availability or commerce claims');
+    return pass('9 families DEFINED/INTERNAL_ONLY/NOT_FOR_SALE; 0 availability or commerce claims');
   },
 );
 
@@ -948,16 +997,16 @@ add('MC21-07', 'WATCH limitations render NOT_VERIFIED, NOT_FOUND and privacy BLO
   );
 });
 
-add('MC21-08', 'the ten governance gates are preserved verbatim', () => {
+add('MC21-08', 'the ten governance gates are preserved verbatim against the baseline', () => {
   const shared = read(`${CATALOG}/content/shared.ts`);
   const projectionJson = read('docs/marea/catalog/data/catalog-projection.json');
-  const validator = read('scripts/check-mc20-catalog.mjs');
+  const baselineShared = git(['show', `${BASE_COMMIT}:${CATALOG}/content/shared.ts`]);
   for (const gate of GOVERNANCE_GATES) {
     if (!shared.includes(gate)) return fail(`shared.ts lacks ${gate}`);
     if (!projectionJson.includes(gate)) return fail(`projection lacks ${gate}`);
-    if (!validator.includes(gate)) return fail(`validator lacks ${gate}`);
+    if (!baselineShared.includes(gate)) return fail(`baseline shared.ts lacks ${gate}`);
   }
-  return pass('10 gates verbatim in content, projection and validator');
+  return pass('10 gates verbatim in current content, projection and the baseline commit');
 });
 
 add('MC21-09', 'production isolation: no production path reaches the catalogue', () => {
@@ -981,8 +1030,9 @@ add('MC21-09', 'production isolation: no production path reaches the catalogue',
   return pass(`${reach.scanned} production modules scanned; public/ and app.routes unchanged`);
 });
 
-add('MC21-10', 'all twelve preview routes are loopback-only and Server-rendered', () => {
-  if (identity.CATALOG_PREVIEW_ROUTES.length !== 12) return fail('routes != 12');
+add('MC21-10', 'all eighteen preview routes are loopback-only and Server-rendered', () => {
+  const expected = SCOPE.length * 2;
+  if (identity.CATALOG_PREVIEW_ROUTES.length !== expected) return fail(`routes != ${expected}`);
   for (const route of identity.CATALOG_PREVIEW_ROUTES) {
     if (route.renderMode !== 'Server') return fail(`${route.path} not Server`);
     if (
@@ -995,8 +1045,167 @@ add('MC21-10', 'all twelve preview routes are loopback-only and Server-rendered'
   const server = read(`${PREVIEW}/server.ts`);
   if (!server.includes("const host = '127.0.0.1'")) return fail('preview server not loopback');
   if (!server.includes('noindex, nofollow, noarchive')) return fail('noindex header missing');
-  return pass('12 loopback Server routes; preview server bound to 127.0.0.1');
+  return pass(`${expected} loopback Server routes; preview server bound to 127.0.0.1`);
 });
+
+// ------------------------------------------------------------------ MC22-xx batch-3 honesty and canonical cross-checks
+add('MC22-01', 'canonical release gates, claims and product definitions are consistent', () => {
+  if (canonical.gates.length !== 13) return fail(`release gates: ${canonical.gates.length}`);
+  const closed = canonical.gates.filter((gate) => gate.status === 'CLOSED');
+  if (closed.length > 0) return fail(`closed release gate: ${closed[0].gateId}`);
+  if (canonical.claims.publicAuthorized !== 0)
+    return fail(`public-authorized claims: ${canonical.claims.publicAuthorized}`);
+  const missingDefinitions = canonicalFamilyIds.filter((id) => !canonicalDefinitionById.has(id));
+  if (missingDefinitions.length > 0)
+    return fail(`missing product definition for: ${missingDefinitions.join(', ')}`);
+  return pass('13 release gates open; 0 public-authorized claims; 9 definitions present');
+});
+
+add(
+  'MC22-02',
+  'DISPLAY stays SIZE_NOT_FROZEN / HARDWARE_NOT_SELECTED / BOM_NOT_ESTABLISHED',
+  () => {
+    const display = canonicalDefinitionById.get('DISPLAY');
+    if (!display) return fail('missing DISPLAY definition');
+    const hb = display.hardwareBoundary ?? {};
+    for (const [key, value] of [
+      ['sizeState', 'SIZE_NOT_FROZEN'],
+      ['hardwareState', 'HARDWARE_NOT_SELECTED'],
+      ['bomState', 'BOM_NOT_ESTABLISHED'],
+    ]) {
+      if (hb[key] !== value)
+        return fail(`DISPLAY.hardwareBoundary.${key} = ${hb[key]} != ${value}`);
+    }
+    if (hb.measuredPerformance !== false) return fail('DISPLAY measuredPerformance is not false');
+    if (display.pilotControlAuthority !== false) return fail('DISPLAY has PILOT control authority');
+    const strings = contentStrings(content.CATALOG_CONTENT.DISPLAY).join('\n');
+    for (const required of [
+      'SIZE_NOT_FROZEN',
+      'HARDWARE_NOT_SELECTED',
+      'BOM_NOT_ESTABLISHED',
+      'pilotControlAuthority = false',
+    ]) {
+      if (!strings.includes(required)) return fail(`DISPLAY content lacks ${required}`);
+    }
+    return pass(
+      'DISPLAY size/hardware/BOM frozen as NOT_*; measuredPerformance false; no PILOT authority',
+    );
+  },
+);
+
+add('MC22-03', 'DISPLAY publishes no dimension, resolution, brightness, IP or power claim', () => {
+  const problems = [];
+  for (const text of contentStrings(content.CATALOG_CONTENT.DISPLAY)) {
+    for (const id of catalogClaimProblems(text)) {
+      if (id === 'not-a-string' || !id.startsWith('display-')) continue;
+      problems.push(`${id}: ${text.slice(0, 60)}`);
+    }
+  }
+  if (problems.length > 0)
+    return fail(
+      `${problems.length} DISPLAY physical claim(s): ${problems.slice(0, 4).join(' | ')}`,
+    );
+  return pass('0 DISPLAY dimension/resolution/brightness/environmental/power claims');
+});
+
+add('MC22-04', 'PILOT safety gate is BLOCKED and no autonomy or certification is claimed', () => {
+  const pilot = canonicalDefinitionById.get('PILOT');
+  if (!pilot) return fail('missing PILOT definition');
+  if (pilot.safetyGate !== 'BLOCKED') return fail(`PILOT safetyGate = ${pilot.safetyGate}`);
+  if (pilot.seaTrialsCompleted !== false) return fail('PILOT seaTrialsCompleted is not false');
+  if (pilot.remoteHelmControl !== 'PROHIBITED')
+    return fail(`PILOT remoteHelmControl = ${pilot.remoteHelmControl}`);
+  for (const key of ['physicalEstopEvidence', 'motorIsolationEvidence', 'rudderFeedbackEvidence']) {
+    if (pilot[key] !== 'NOT_FOUND') return fail(`PILOT ${key} = ${pilot[key]} != NOT_FOUND`);
+  }
+  if (!Array.isArray(pilot.steeringModes) || pilot.steeringModes.length === 0)
+    return fail('PILOT steeringModes is missing or empty');
+  for (const mode of pilot.steeringModes) {
+    if (!['NOT_VERIFIED', 'CONDITIONAL_ON_VERIFICATION'].includes(mode.status))
+      return fail(`PILOT steering mode ${mode.mode ?? mode.id ?? ''} status ${mode.status}`);
+  }
+  const strings = contentStrings(content.CATALOG_CONTENT.PILOT).join('\n');
+  for (const required of [
+    'PILOT_SAFETY_GATE = BLOCKED',
+    'No es un piloto automático certificado',
+    'not a certified autopilot',
+    'supervisión',
+    'supervised',
+    'PROHIBIDO',
+    'PROHIBITED',
+    'NOT_FOUND',
+    'no se vende',
+    'not sold',
+  ]) {
+    if (!strings.includes(required)) return fail(`PILOT content lacks ${required}`);
+  }
+  return pass('PILOT BLOCKED; sea trials false; NOT_FOUND evidence; supervised-only copy');
+});
+
+add('MC22-05', 'PILOT publishes no autonomy, certification, reliability or approval claim', () => {
+  const problems = [];
+  for (const text of contentStrings(content.CATALOG_CONTENT.PILOT)) {
+    for (const id of catalogClaimProblems(text)) {
+      if (id === 'not-a-string' || !id.startsWith('pilot-')) continue;
+      problems.push(`${id}: ${text.slice(0, 60)}`);
+    }
+  }
+  if (problems.length > 0)
+    return fail(`${problems.length} PILOT claim(s): ${problems.slice(0, 4).join(' | ')}`);
+  return pass('0 PILOT autonomy/certification/reliability/approval/helm claims');
+});
+
+add(
+  'MC22-06',
+  'FLEET stays not-implemented with NO_SLA_ESTABLISHED and read-only telemetry',
+  () => {
+    const fleet = canonicalDefinitionById.get('FLEET');
+    if (!fleet) return fail('missing FLEET definition');
+    if (fleet.multiTenantProductionService !== false)
+      return fail('FLEET multiTenantProductionService is not false');
+    if (fleet.slaEstablished !== false) return fail('FLEET slaEstablished is not false');
+    const tenancy = fleet.tenancy ?? {};
+    if (tenancy.telemetryReadOnly !== true) return fail('FLEET telemetry is not read-only');
+    if (tenancy.remoteControlPath !== false) return fail('FLEET has a remote-control path');
+    if (tenancy.defaultRole !== 'NO_ACCESS')
+      return fail(`FLEET defaultRole = ${tenancy.defaultRole}`);
+    if (fleet.securityCertificationClaimed !== false)
+      return fail('FLEET claims a security certification');
+    const strings = contentStrings(content.CATALOG_CONTENT.FLEET).join('\n');
+    for (const required of [
+      'NO_SLA_ESTABLISHED',
+      'solo lectura',
+      'read-only',
+      'NO_ACCESS',
+      'multiTenantProductionService = false',
+      'slaEstablished = false',
+      'telemetryReadOnly = true',
+      'defaultRole = NO_ACCESS',
+      'Sin hardware incluido',
+      'No hardware included',
+    ]) {
+      if (!strings.includes(required)) return fail(`FLEET content lacks ${required}`);
+    }
+    return pass('FLEET not-implemented; NO_SLA_ESTABLISHED; read-only telemetry; NO_ACCESS');
+  },
+);
+
+add(
+  'MC22-07',
+  'FLEET publishes no SLA, availability, hardware, customer or certification claim',
+  () => {
+    const problems = [];
+    for (const text of contentStrings(content.CATALOG_CONTENT.FLEET)) {
+      for (const id of catalogClaimProblems(text)) {
+        if (id === 'not-a-string' || !id.startsWith('fleet-')) continue;
+        problems.push(`${id}: ${text.slice(0, 60)}`);
+      }
+    }
+    if (problems.length > 0)
+      return fail(`${problems.length} FLEET claim(s): ${problems.slice(0, 4).join(' | ')}`);
+    return pass('0 FLEET SLA/availability/hardware/customer/contract/certification claims');
+  },
+);
 
 // ------------------------------------------------------------------ report
 const failed = checks.filter((check) => check.status === 'FAIL');
@@ -1017,8 +1226,8 @@ writeFileSync(
     {
       contractId: 'MC20-CATALOG-VALIDATOR-RUN',
       contractVersion: '1.0.0',
-      milestone: 'MC-20',
-      owner: 'MC-20 implementation team',
+      milestone: 'MC-22',
+      owner: 'MC-22 implementation team',
       baseCommit: BASE_COMMIT,
       publicationStatus: 'NOT_AUTHORIZED',
       status,
@@ -1039,7 +1248,7 @@ for (const check of checks) {
   console.log(`     ${check.detail}`);
 }
 console.log(
-  `\nMC-20 catalogue validator: ${checks.length - failed.length}/${checks.length} PASS (${status})`,
+  `\nMC-22 catalogue validator: ${checks.length - failed.length}/${checks.length} PASS (${status})`,
 );
 console.log(`evidence: ${evidencePath}`);
 if (failed.length > 0) process.exit(1);

@@ -102,6 +102,9 @@ export const CATALOG_SHARED: CatalogSharedContent = {
     { familyId: 'SENSE', label: l('SENSE', 'SENSE') },
     { familyId: 'WATCH', label: l('WATCH', 'WATCH') },
     { familyId: 'WEATHER', label: l('WEATHER', 'WEATHER') },
+    { familyId: 'DISPLAY', label: l('DISPLAY', 'DISPLAY') },
+    { familyId: 'PILOT', label: l('PILOT', 'PILOT') },
+    { familyId: 'FLEET', label: l('FLEET', 'FLEET') },
   ],
   navigation: [
     { id: 'overview', label: l('Visión general', 'Overview'), href: '#vision-general' },
@@ -200,6 +203,13 @@ export const CATALOG_SHARED: CatalogSharedContent = {
     NOT_FOUND: l('No encontrado', 'Not found'),
     NOT_PERFORMED: l('No realizado', 'Not performed'),
     UNRESOLVED: l('Sin resolver', 'Unresolved'),
+    SIZE_NOT_FROZEN: l('Tamaño no congelado', 'Size not frozen'),
+    HARDWARE_NOT_SELECTED: l('Hardware no seleccionado', 'Hardware not selected'),
+    BOM_NOT_ESTABLISHED: l(
+      'Lista de materiales no establecida',
+      'Bill of materials not established',
+    ),
+    NO_SLA_ESTABLISHED: l('Sin nivel de servicio establecido', 'No service level established'),
     PARTIAL: l('Parcial', 'Partial'),
     INCLUDED: l('Incluido en el paquete', 'Included in the bundle'),
     OPTIONAL: l('Opcional en el paquete', 'Optional in the bundle'),

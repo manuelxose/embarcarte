@@ -1,12 +1,14 @@
 /**
  * MC-20 internal catalogue — frozen identity and preview routing.
  *
- * Three canonical family identities come from MC-16 (`NAV`, `HUB`, `AIS`) and
- * the MC-15 proposed-route registry (`mareaFamilyNav`, `mareaFamilyHub`,
- * `mareaFamilyAis`). The public paths `/marea/nav`, `/marea/hub` and
- * `/marea/ais` are recorded as *planning references only*: every proposed route
- * stays `PROPOSED_INTERNAL_NOT_DEPLOYABLE`, not implementation-ready and not
- * indexable.
+ * Nine canonical family identities come from MC-16 (`NAV`, `HUB`, `AIS`,
+ * `SENSE`, `WATCH`, `WEATHER`, `DISPLAY`, `PILOT`, `FLEET`) and the MC-15
+ * proposed-route registry (`mareaFamilyNav`, `mareaFamilyHub`, `mareaFamilyAis`,
+ * `mareaFamilySense`, `mareaFamilyWatch`, `mareaFamilyWeather`,
+ * `mareaFamilyDisplay`, `mareaFamilyPilot`, `mareaFamilyFleet`). The public
+ * paths `/marea/{slug}` are recorded as *planning references only*: every
+ * proposed route stays `PROPOSED_INTERNAL_NOT_DEPLOYABLE`, not
+ * implementation-ready and not indexable.
  *
  * This milestone serves the catalogue only from the isolated loopback preview
  * under `internal/catalog/*`. Nothing here registers a public route, a sitemap
@@ -98,6 +100,33 @@ export const CATALOG_IDENTITIES: Readonly<Record<CatalogFamilyId, CatalogIdentit
     'weather',
     '/marea/weather',
     '/en/marea/weather',
+  ),
+  // Batch-3 identities. The route ids below are read verbatim from the MC-15
+  // proposed-route registry (docs/marea/information-architecture/data/proposed-routes.json):
+  // mareaFamilyDisplay, mareaFamilyPilot, mareaFamilyFleet.
+  DISPLAY: identity(
+    'DISPLAY',
+    'mareaFamilyDisplay',
+    'ENT-FAMILY-DISPLAY',
+    'display',
+    '/marea/display',
+    '/en/marea/display',
+  ),
+  PILOT: identity(
+    'PILOT',
+    'mareaFamilyPilot',
+    'ENT-FAMILY-PILOT',
+    'pilot',
+    '/marea/pilot',
+    '/en/marea/pilot',
+  ),
+  FLEET: identity(
+    'FLEET',
+    'mareaFamilyFleet',
+    'ENT-FAMILY-FLEET',
+    'fleet',
+    '/marea/fleet',
+    '/en/marea/fleet',
   ),
 } as const;
 

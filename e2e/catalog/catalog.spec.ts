@@ -5,7 +5,7 @@ import AxeBuilder from '@axe-core/playwright';
  * MC-20 internal catalogue end-to-end suite.
  *
  * Proves, against the real loopback SSR preview:
- *   - six server-rendered family/locale pages with noindex and no public metadata;
+ *   - nine server-rendered family/locale pages with noindex and no public metadata;
  *   - client hydration without console errors;
  *   - canonical facts on the rendered page (editions, readiness, AIS receive-only);
  *   - ES/EN structural parity;
@@ -15,7 +15,17 @@ import AxeBuilder from '@axe-core/playwright';
  *   - internal isolation: no public family route and no purchase path.
  */
 
-const FAMILIES = ['nav', 'hub', 'ais', 'sense', 'watch', 'weather'] as const;
+const FAMILIES = [
+  'nav',
+  'hub',
+  'ais',
+  'sense',
+  'watch',
+  'weather',
+  'display',
+  'pilot',
+  'fleet',
+] as const;
 const PAGES = [
   ...FAMILIES.map((family) => ({ path: `/internal/catalog/${family}`, locale: 'es', family })),
   ...FAMILIES.map((family) => ({ path: `/en/internal/catalog/${family}`, locale: 'en', family })),
@@ -67,22 +77,28 @@ test.describe('MC-20 catalogue — SSR, isolation and hydration', () => {
       '/marea/sense',
       '/marea/watch',
       '/marea/weather',
+      '/marea/display',
+      '/marea/pilot',
+      '/marea/fleet',
     ]) {
       const response = await request.get(path);
       expect(response.status(), path).toBe(404);
     }
   });
 
-  test('health endpoint lists exactly the twelve catalogue paths', async ({ request }) => {
+  test('health endpoint lists exactly the eighteen catalogue paths', async ({ request }) => {
     const response = await request.get('/__preview/health');
     expect(response.status()).toBe(200);
     const body = await response.json();
     expect(body.publication).toBe('NOT_AUTHORIZED');
-    expect(body.cataloguePaths).toHaveLength(12);
+    expect(body.cataloguePaths).toHaveLength(18);
     expect(body.cataloguePaths).toContain('/internal/catalog/nav');
     expect(body.cataloguePaths).toContain('/en/internal/catalog/ais');
     expect(body.cataloguePaths).toContain('/internal/catalog/weather');
     expect(body.cataloguePaths).toContain('/en/internal/catalog/sense');
+    expect(body.cataloguePaths).toContain('/internal/catalog/display');
+    expect(body.cataloguePaths).toContain('/internal/catalog/pilot');
+    expect(body.cataloguePaths).toContain('/internal/catalog/fleet');
   });
 
   test('hydration renders the real page with no console error', async ({ page }) => {
@@ -186,7 +202,7 @@ test.describe('MC-21 catalogue — new family honesty blocks', () => {
     await expect(page.locator('[data-marea-edition="WATCH-CORE"]')).toBeVisible();
   });
 
-  test('the six-family navigation marks the current family and links siblings', async ({
+  test('the nine-family navigation marks the current family and links siblings', async ({
     page,
   }) => {
     await page.goto('/internal/catalog/sense');
@@ -195,6 +211,54 @@ test.describe('MC-21 catalogue — new family honesty blocks', () => {
     await expect(nav.locator('[aria-current="page"]')).toHaveText('SENSE');
     await expect(nav.locator('a[href="/internal/catalog/weather"]')).toHaveCount(1);
     await expect(nav.locator('a[href="/internal/catalog/watch"]')).toHaveCount(1);
+    await expect(nav.locator('a[href="/internal/catalog/display"]')).toHaveCount(1);
+    await expect(nav.locator('a[href="/internal/catalog/pilot"]')).toHaveCount(1);
+    await expect(nav.locator('a[href="/internal/catalog/fleet"]')).toHaveCount(1);
+  });
+});
+
+test.describe('MC-22 catalogue — batch-3 honesty blocks', () => {
+  test('DISPLAY renders size/hardware/BOM cautions and no PILOT control authority', async ({
+    page,
+  }) => {
+    await page.goto('/internal/catalog/display');
+    const body = page.locator('body');
+    await expect(body).toContainText('SIZE_NOT_FROZEN');
+    await expect(body).toContainText('HARDWARE_NOT_SELECTED');
+    await expect(body).toContainText('BOM_NOT_ESTABLISHED');
+    await expect(body).toContainText('Sin autoridad de control sobre PILOT');
+    await expect(page.locator('[data-marea-edition="DISPLAY-7"]')).toBeVisible();
+    await expect(page.locator('[data-marea-edition="DISPLAY-LARGE-CONDITIONAL"]')).toBeVisible();
+    await expect(body).not.toContainText('Añadir al carrito');
+  });
+
+  test('PILOT renders the BLOCKED safety gate and supervised-only framing', async ({ page }) => {
+    await page.goto('/internal/catalog/pilot');
+    const body = page.locator('body');
+    await expect(body).toContainText('PILOT_SAFETY_GATE = BLOCKED');
+    await expect(body).toContainText('No es un piloto automático certificado');
+    await expect(body).toContainText('NOT_FOUND');
+    await expect(body).toContainText('PROHIBIDO');
+    await expect(body).toContainText('no se vende');
+    await expect(page.locator('[data-marea-edition="PILOT-COASTAL"]')).toBeVisible();
+    await expect(page.locator('[data-marea-edition="PILOT-PRO"]')).toBeVisible();
+    await expect(body).not.toContainText('Fiabilidad garantizada');
+    await expect(body).not.toContainText('Añadir al carrito');
+  });
+
+  test('FLEET renders the B2B not-implemented framing with NO_SLA_ESTABLISHED', async ({
+    page,
+  }) => {
+    await page.goto('/internal/catalog/fleet');
+    const body = page.locator('body');
+    await expect(body).toContainText('NO_SLA_ESTABLISHED');
+    await expect(body).toContainText('Sin hardware incluido');
+    await expect(body).toContainText('Sin certificación de seguridad');
+    await expect(body).toContainText('Telemetría de solo lectura');
+    await expect(page.locator('[data-marea-edition="FLEET-START"]')).toBeVisible();
+    await expect(page.locator('[data-marea-edition="FLEET-ENTERPRISE"]')).toBeVisible();
+    await expect(body).not.toContainText('Disponibilidad garantizada');
+    await expect(body).not.toContainText('Añadir al carrito');
   });
 });
 
@@ -228,6 +292,9 @@ test.describe('MC-20 catalogue — bilingual parity', () => {
         sense: 'MAREA SENSE',
         watch: 'MAREA WATCH',
         weather: 'MAREA WEATHER',
+        display: 'MAREA DISPLAY',
+        pilot: 'MAREA PILOT',
+        fleet: 'MAREA FLEET',
       };
       await expect(page.locator('h1')).toHaveText(headingByFamily[family]);
     });
@@ -248,7 +315,7 @@ test.describe('MC-20 catalogue — keyboard and responsive behaviour', () => {
     await expect(page.locator('#catalog-main')).toBeFocused();
   });
 
-  test('the family navigation marks the current family and links the other two', async ({
+  test('the family navigation marks the current family and links its siblings', async ({
     page,
   }) => {
     await page.goto('/internal/catalog/hub');

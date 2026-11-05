@@ -4,6 +4,14 @@
  * These are evidence helpers, not application runtime code: they are used by
  * `scripts/check-mc20-catalog.mjs` and the node:test suite. They never write to
  * the repository and never contact the network.
+ *
+ * HEURISTIC BACKSTOP — NOT A PROOF OF ABSENCE. The prohibited-claim regexes and
+ * the clause-negation heuristic reject an enumerated family of phrasings plus
+ * the tested variants; they cannot enumerate the unbounded space of natural
+ * language. A clean `catalogClaimProblems` result is a supporting check, not a
+ * guarantee that no invented claim exists. The primary controls are the typed
+ * content contract (src/app/marea-catalog/content/*), the canonical-data
+ * cross-checks in the validator, and human content review.
  */
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -12,7 +20,8 @@ import { dirname, resolve } from 'node:path';
 export const PROHIBITED_CLAIMS = [
   {
     id: 'currency',
-    pattern: /€|\$\s?\d|\b\d+\s?(?:€|\$|EUR|USD|euros?|dólares?|dollars?)\b|\b(?:EUR|USD)\s?\d/i,
+    pattern:
+      /€|\$\s?\d|£\s?\d|\b\d+\s?(?:€|\$|£|EUR|USD|GBP|euros?|dólares?|dollars?|libras?|pounds?)\b|\b(?:EUR|USD|GBP)\s?\d|\b(?:desde|from)\s+\d+(?:[.,]\d+)?\s+(?:al|por)\s+(?:mes|año|month|year)\b|\b\d+(?:[.,]\d+)?\s+(?:per\s+(?:vessel\s+)?(?:per\s+)?month|per\s+year|al\s+mes|por\s+mes|al\s+año)\b|\b(?:price|precio):?\s*\d|\b\d+\s*\+\s*(?:IVA|VAT)\b/i,
   },
   {
     id: 'positive-guarantee',
@@ -25,19 +34,25 @@ export const PROHIBITED_CLAIMS = [
   },
   { id: 'approved-by', pattern: /\baprobado por\b|\bapproved by\b/i },
   { id: 'homologated', pattern: /\bhomologad[oa]s?\b/i },
-  { id: 'sea-trial', pattern: /\bpruebas? de mar\b|\bsea[- ]trials?\b/i },
+  {
+    id: 'sea-trial',
+    pattern:
+      /\b(?:pruebas? de mar|sea[- ]trials?)\b[^.;!?]{0,32}\b(?:completad[oa]s?|realizad[oa]s?|superad[oa]s?|complet(?:aron|ó)|realiz(?:aron|ó)|super(?:aron|ó)|completed|performed|passed|done|carried\s+out)\b|\b(?:completad[oa]s?|realizad[oa]s?|superad[oa]s?|complet(?:aron|ó)|realiz(?:aron|ó)|super(?:aron|ó)|se\s+(?:complet(?:aron|ó)|realiz(?:aron|ó)|super(?:aron|ó)|han\s+(?:completado|realizado))|ha\s+superado|completed|performed|passed|done|carried\s+out|has\s+completed|have\s+completed)\b[^.;!?]{0,32}\b(?:pruebas? de mar|sea[- ]trials?)\b/i,
+  },
   { id: 'testimonial', pattern: /\btestimonios?\b|\btestimonials?\b/i },
   { id: 'in-stock', pattern: /\ben stock\b|\bin stock\b/i },
   { id: 'add-to-cart', pattern: /\bañadir al carrito\b|\badd to cart\b/i },
   { id: 'buy-now', pattern: /\bcomprar ahora\b|\bbuy now\b/i },
-  { id: 'checkout', pattern: /\bcheckout\b|\bcarrito de compra\b/i },
+  // "checkout item" is the honest disclaimed noun ("never a checkout item");
+  // "checkout" as a commerce-flow word remains prohibited in both locales.
+  { id: 'checkout', pattern: /\bcheckout\b(?!\s+item\b)|\bcarrito de compra\b/i },
   { id: 'delivery-date', pattern: /\bplazos? de entrega\b|\bdelivery date\b|\bentrega en \d+\b/i },
   { id: 'price-amount', pattern: /\bprecio(?:s)? (?:de|desde)\s?\d/i },
   { id: 'stock-quantity', pattern: /\b\d+\s+(?:unidades|units)\s+(?:en stock|available)\b/i },
   {
     id: 'positive-certification',
     pattern:
-      /\b(?:está|están|is|are) certificad[oa]s?\b|\bproducto certificad[oa]\b|\bcertificad[oa] por\b|\bcertified (?:by|to|under)\b/i,
+      /\b(?:está|están|es|son|is|are) certificad[oa]s?\b|\b(?:es|son|is|are) certified\b|\bproducto certificad[oa]\b|\bcertificad[oa] por\b|\bcertified (?:by|to|under)\b/i,
   },
   {
     id: 'positive-nmea-compatibility',
@@ -96,12 +111,106 @@ export const PROHIBITED_CLAIMS = [
     id: 'ordering',
     pattern: /\b(?:pre[- ]?order|preventa|pre[- ]?venta|pre[- ]?reserva|pre[- ]?reservation)\b/i,
   },
+  // ---- MC-22 batch-3 DISPLAY — no physical or measured figure may be claimed ----
+  {
+    id: 'display-dimension',
+    pattern:
+      /\b\d{1,3}(?:[.,]\d+)?\s*(?:mm|cm|pulgadas?|pulg\.|inches?|in\.?)\b|\b\d{1,3}(?:[.,]\d+)?[-–](?:inch(?:es)?|pulgadas?|in\.?)\b|\b\d{1,3}(?:[.,]\d+)?\s*["″]|\b(?:uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce|trece|catorce|quince|veinte|treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa|cien|ciento|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)[\s-]*(?:pulgadas?|inch(?:es)?|pulg\.?|["″])\b/i,
+  },
+  {
+    id: 'display-resolution',
+    pattern:
+      /\b\d{3,4}\s*[x×]\s*\d{3,4}\b|\b(?:resolución|resolution)\b[^.;!?]{0,20}\b\d{3,4}\s*[x×]|\b(?:Full\s*HD|4K|1080p|UHD|Ultra\s*HD|Quad\s*HD)\b/i,
+  },
+  {
+    id: 'display-brightness',
+    pattern:
+      /\b\d{2,4}\s*(?:nits?|cd\/m2|cd\/m²)(?:\b|(?=[\s.;,!?]|$))|\b(?:luminosidad|brightness|brillo|luminance)\b[^.;!?]{0,20}\b\d{2,4}\b/i,
+  },
+  {
+    id: 'display-ingress',
+    pattern:
+      /\b(?:estanc[oa]|impermeable|waterproof|water[- ]resistant|sumergible|submersible|resistente al agua)\b/i,
+  },
+  {
+    id: 'display-power',
+    pattern:
+      /\b(?:consumo|potencia|power (?:consumption|draw))\b[^.;!?]{0,20}\b\d+(?:[.,]\d+)?\s*(?:W|vatios?|watts?)\b/i,
+  },
+  // ---- MC-22 batch-3 PILOT — supervised-only, never autonomous or certified ----
+  {
+    id: 'pilot-certified-autopilot',
+    pattern:
+      /\b(?:es un|es una|como|as|ofrece|offers?|incluye|includes?)\b[^.;!?]{0,30}\b(?:piloto automático|autopiloto|autopilot)\b[^.;!?]{0,20}\b(?:certificad[oa]s?|homologad[oa]s?|approved|certified)\b|\b(?:certificad[oa]s?|certified|homologad[oa]s?)\b\s+(?:autopiloto|autopilot|piloto automático)\b/i,
+  },
+  {
+    id: 'pilot-autonomous-navigation',
+    pattern:
+      /\b(?:navegación autónoma|navegación automática|navegación autopilotada|autonomous navigation|autonomous steering|autonomous operation|autonomous|autonomously|automatically|automáticamente|self[- ]steering|de forma autónoma|autónom[oa]s?)\b/i,
+  },
+  {
+    id: 'pilot-unsupervised',
+    pattern:
+      /\b(?:sin supervisión|sin intervención(?:\s+humana)?|sin vigilancia|sin supervisor|funcionamiento desatendido|funcionamiento sin supervisión|unsupervised|unattended\s+operation|hands[- ]free|without supervision)\b/i,
+  },
+  {
+    id: 'pilot-safety-critical-reliability',
+    pattern:
+      /\b(?:fiabilidad (?:garantizada|verificada|certificada)|guaranteed reliability|verified reliability|certified reliability|safety[- ]critical reliability)\b/i,
+  },
+  {
+    id: 'pilot-regulatory-approval',
+    pattern:
+      /\b(?:aprobación regulatoria|regulatory approval|type[- ]approval|type approval|homologación|homologation)\b[^.;!?]{0,24}\b(?:obtenid[oa]|concedid[oa]|otorgad[oa]|recibid[oa]|granted|obtained|received|secured)\b|\b(?:ha obtenido|obtuvo|ha recibido|recibió|has received|received|has obtained|obtained)\b[^.;!?]{0,24}\b(?:aprobación regulatoria|regulatory approval|type[- ]approval|type approval|homologación)\b/i,
+  },
+  {
+    id: 'pilot-helm-verified',
+    pattern:
+      /\b(?:integración verificada con (?:el )?(?:timón|gobierno)|verified (?:steering|helm|rudder) integration|integración de gobierno verificada)\b/i,
+  },
+  // ---- MC-22 batch-3 FLEET — no SLA / availability / hardware / deployment ----
+  {
+    id: 'fleet-availability-percentage',
+    pattern: /\b(?:disponibilidad|availability|uptime)\b[^.;!?]{0,24}\b\d{1,3}(?:[.,]\d+)?\s*%/i,
+  },
+  {
+    id: 'fleet-guaranteed-availability',
+    pattern:
+      /\b(?:disponibilidad garantizada|uptime garantizado|guaranteed availability|availability guaranteed|disponibilidad asegurada)\b/i,
+  },
+  {
+    id: 'fleet-hardware-included',
+    pattern:
+      /\b(?:hardware incluido|hardware included|incluye hardware|includes hardware|hardware incorporado|hardware (?:está|viene|es|se) incluido|hardware se incluye|hardware (?:is|comes(?: as)?) included|hardware (?:is supplied|is provided|se suministra)|hardware included (?:by default|as standard)|incluido de serie)\b/i,
+  },
+  {
+    id: 'fleet-deployed-customer',
+    pattern:
+      /\b(?:cliente desplegado|desplegado en (?:producción|cliente)|deployed (?:customer|client|fleet)|en producción con|live with)\b/i,
+  },
+  {
+    id: 'fleet-service-contract',
+    pattern:
+      /\b(?:contrato de servicio (?:firmado|en vigor|activo)|service contract (?:signed|in place)|nivel de servicio contratado)\b/i,
+  },
+  {
+    id: 'fleet-commercial-package',
+    pattern: /\b(?:paquete comercial|commercial package|paquete empresarial|commercial bundle)\b/i,
+  },
+  {
+    id: 'fleet-security-certification',
+    pattern:
+      /\b(?:certificación de seguridad (?:obtenida|concedida|lograda)|security certification (?:obtained|achieved|granted)|certified (?:secure|for security)|ISO\s?27001|SOC\s?2|SOC2)\b/i,
+  },
 ];
 
 /** Assertion rules whose match may legitimately appear inside a negated clause. */
 const NEGATABLE = new Set([
   'positive-guarantee',
   'positive-warranty',
+  'sea-trial',
+  'approved-by',
+  'homologated',
   'positive-certification',
   'positive-nmea-compatibility',
   'warranty-term',
@@ -116,29 +225,105 @@ const NEGATABLE = new Set([
   'numeric-accuracy',
   'ip-rating',
   'ordering',
+  'display-dimension',
+  'display-resolution',
+  'display-brightness',
+  'display-ingress',
+  'display-power',
+  'pilot-certified-autopilot',
+  'pilot-autonomous-navigation',
+  'pilot-unsupervised',
+  'pilot-safety-critical-reliability',
+  'pilot-regulatory-approval',
+  'pilot-helm-verified',
+  'fleet-availability-percentage',
+  'fleet-guaranteed-availability',
+  'fleet-hardware-included',
+  'fleet-deployed-customer',
+  'fleet-service-contract',
+  'fleet-commercial-package',
+  'fleet-security-certification',
 ]);
 
-const CLAUSE_NEGATION = /\b(?:no|sin|not|never|without|ni|neither|nor)\b/i;
-// Commas and coordinating conjunctions end a clause, so a negation in an
-// earlier clause ("Sin permanencia,") cannot suppress a claim in a later one.
-// Negation particles (ni/nor/neither) are NOT boundaries: they continue the
-// negation of the current clause.
-const CLAUSE_BOUNDARY = /[.;,]|\b(?:y|e|o|u|pero|and|or|but)\b/g;
+// A strong negator negates the claim it directly precedes. Idiomatic "no" /
+// "not" / "nunca" uses ("no issues", "no failures", "no solo", "no
+// intervention", "no hay duda", "not only", "nunca fue tan fácil") are NOT
+// negators. Contractions (cannot/can't/isn't/doesn't/don't/won't) negate, as
+// does Spanish "carece(n)" (lacks).
+const STRONG_NEGATION =
+  /\b(?:no(?!\s+(?:issues?|problems?|failures?|faults?|worries|solo|intervention|hay\s+duda)\b)|not(?!\s+only\b)|cannot|can't|isn't|doesn't|don't|won't|never|ni|neither|nor|nunca(?!\s+fue\s+tan\s+f[aá]cil)|jam[aá]s|ning[uú]n[oa]?|nadie|tampoco|none|nothing|carece|carecen)\b/i;
+// "sin"/"without" negate only the noun directly after them; an idiomatic
+// "sin …" quality noun is not a negator.
+const WEAK_NEGATION =
+  /\b(?:sin(?!\s+(?:embargo|duda|fallos?|problemas?|marco|pérdida|cables|esfuerzo)\b)|without(?!\s+issues?\b))\b/i;
+// A negated predicate after the claim, in English and Spanish. Applied only
+// inside the same sentence/clause by isNegatedClause.
+const POST_NEGATION =
+  /\b(?:is|are|was|were)\s+(?:not|never)?\s*(?:prohibited|excluded|out\s+of\s+scope)\b|\b(?:is|are|was|were)\s+(?:not|never)\s+(?:offered|available|implemented|certified|verified|tested|established|sold|claimed|announced|supported|included)\b|\b(?:not|never)\s+(?:offered|available|implemented|certified|verified|tested|established|sold|claimed|announced|supported|included|prohibited|excluded)\b|\b(?:no|no\s+está|no\s+están|no\s+se)\s+(?:ofrece|incluye|promete|disponible|incluida|incluido|implementado|certificado|homologado|congelado|establecido|ofrecido)\b/i;
+// Sentence punctuation, dashes, newlines, contrastive conjunctions and
+// subordinators end the strong-negation scope. A comma continues a strong
+// negated list ("No A, B or C"); it ends only the weak scope.
+const HARD_BOUNDARY =
+  /[.;:?!\n\u2014\u2013]|\b(?:pero|but|sino|aunque|mientras|whereas|while|although|porque|because|since)\b/g;
+const WEAK_BOUNDARY =
+  /[.;:?!,\n\u2014\u2013]|\b(?:pero|but|sino|aunque|mientras|whereas|while|although|porque|because|since)\b/g;
+const COORDINATION = /\b(?:y|e|o|u|and|or)\b/i;
+// A coordination (or "yet") followed within a few words by a finite verb
+// starts a new predicate and ends the strong-negation scope.
+const NEW_PREDICATE =
+  /\b(?:and|or|y|e|o|u|yet)\b[^.;:?!,\n]{0,20}\b(?:is|are|es|está|están|son|hay|has|have|does|did|can|will|navega|navigates|steers|steer|opera|operates|funciona|works|ofrece|offers|incluye|includes|provides|proporciona|va|viene|comes)\b/i;
 
 /**
- * True when the clause that starts before `start` already contains a negation.
- * The scan runs from the clause start to `end` (the full matched span), so a
- * spread pattern such as "entrega … garantizada" that carries its own negation
- * inside the span ("entrega no garantizada") is recognised as negated, while
- * "Sin permanencia, SLA garantizado" is not (the comma starts a fresh clause).
+ * True when the claim is genuinely negated. A negator counts only when it
+ * directly negates the matched claim:
+ *  - a strong negator before the claim whose scope is not cut by a new
+ *    predicate (coordination + finite verb);
+ *  - a strong negator inside the claim span (a spread claim);
+ *  - a weak "sin"/"without" immediately before the claim, never across a
+ *    coordination;
+ *  - a negated predicate after the claim, within the same sentence/clause;
+ *  - a "Not included:" / "Excluded:" colon-list prefix.
+ * Ambiguous cases fail closed (rejected rather than passed).
  */
 function isNegatedClause(text, start, end) {
-  let clauseStart = 0;
-  for (const match of text.matchAll(CLAUSE_BOUNDARY)) {
+  let strongStart = 0;
+  for (const match of text.matchAll(HARD_BOUNDARY)) {
     if (match.index !== undefined && match.index < start)
-      clauseStart = match.index + match[0].length;
+      strongStart = match.index + match[0].length;
   }
-  return CLAUSE_NEGATION.test(text.slice(clauseStart, end));
+  const strongBefore = text.slice(strongStart, start);
+  const strongMatches = [...strongBefore.matchAll(new RegExp(STRONG_NEGATION.source, 'gi'))];
+  if (strongMatches.length > 0) {
+    const last = strongMatches[strongMatches.length - 1];
+    const afterNeg = strongBefore.slice(last.index + last[0].length);
+    if (!NEW_PREDICATE.test(afterNeg)) return true;
+  }
+
+  let weakStart = 0;
+  for (const match of text.matchAll(WEAK_BOUNDARY)) {
+    if (match.index !== undefined && match.index < start) weakStart = match.index + match[0].length;
+  }
+  const weakBefore = text.slice(weakStart, start).slice(-18);
+  const weakMatches = [...weakBefore.matchAll(new RegExp(WEAK_NEGATION.source, 'gi'))];
+  if (weakMatches.length > 0) {
+    const last = weakMatches[weakMatches.length - 1];
+    const afterWeak = weakBefore.slice(last.index + last[0].length);
+    if (!COORDINATION.test(afterWeak)) return true;
+  }
+
+  if (STRONG_NEGATION.test(text.slice(start, end))) return true;
+
+  if (
+    /(?:not\s+included|excluded|out\s+of\s+scope|no\s+incluido|excluido)\s*:\s*$/i.test(
+      text.slice(0, start),
+    )
+  )
+    return true;
+
+  const afterFull = text.slice(end);
+  const sentenceEnd = afterFull.search(/[.;?!]/);
+  const afterSentence = sentenceEnd === -1 ? afterFull : afterFull.slice(0, sentenceEnd);
+  return POST_NEGATION.test(afterSentence);
 }
 
 /**
@@ -236,9 +421,9 @@ export function sourceRefPath(ref) {
 
 /** Proper-noun-like tokens may legitimately be identical in both locales. */
 const LOCALE_INVARIANT =
-  /^(?:MAREA(?:\s+(?:NAV|HUB|AIS|SENSE|WATCH|WEATHER|START|CRUISE|SAIL|PROTECT|COMPLETE|FLEET))?|NAV|HUB|AIS|SENSE|WATCH|WEATHER|Software|Hardware|Signal K|NMEA 0183|Wi-Fi|[A-Z0-9][A-Z0-9 ·_-]*|NAV (?:Essential|Pro)|HUB (?:Standard|Pro)|AIS (?:Receiver|Connected)|SENSE (?:Wind|Power|Bilge|Tanks|Environment|Essentials|Sail|Systems)|WATCH (?:Core|Plus)|WEATHER (?:Standard|Pro))$/;
+  /^(?:MAREA(?:\s+(?:NAV|HUB|AIS|SENSE|WATCH|WEATHER|DISPLAY|PILOT|FLEET|START|CRUISE|SAIL|PROTECT|COMPLETE))?|NAV|HUB|AIS|SENSE|WATCH|WEATHER|Software|Hardware|Signal K|NMEA 0183|Wi-Fi|[A-Z0-9][A-Z0-9 ·_-]*|NAV (?:Essential|Pro)|HUB (?:Standard|Pro)|AIS (?:Receiver|Connected)|SENSE (?:Wind|Power|Bilge|Tanks|Environment|Essentials|Sail|Systems)|WATCH (?:Core|Plus)|WEATHER (?:Standard|Pro)|DISPLAY 7|DISPLAY Large|PILOT (?:Coastal|Sail|Pro)|FLEET (?:Start|Business|Enterprise)|Roles)$/;
 
-const NEGATION_ES = /\b(?:no|sin|sólo|solo|ni|nunca)\b/i;
+const NEGATION_ES = /\b(?:no|sin|sólo|solo|ni|nunca|jam[aá]s|ning[uú]n[oa]?|nadie|tampoco)\b/i;
 const NEGATION_EN = /\b(?:no|not|never|without|only|neither|nor|receive-only)\b/i;
 
 /**
