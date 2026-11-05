@@ -121,6 +121,22 @@ controls proving honest batch-3 negations remain accepted.
 - The Windows/Dsh environment confines nothing here by construction; isolation is achieved by the
   route table, project separation and reachability. A future accidental production import would be
   caught by the bundle-grep checks, not prevented at compile time.
-- The claim guard is heuristic and rejects enumerated families plus tested variants, not every
-  paraphrase. Residual risk R-06 remains.
 - Manual WCAG 2.2 AA and assistive-technology review remain NOT_RUN (inherited debt).
+
+## 8. Known limits of the prohibited-claim control
+
+The `catalogClaimProblems` guard in `scripts/mc20-catalog-guards.mjs` is a **heuristic backstop,
+not a proof of absence**. Two structural limitations must not be mistaken for a guarantee:
+
+1. **Unbounded phrase space.** The guard rejects an enumerated list of prohibited phrasings plus
+   the tested adversarial variants. Natural language has infinitely many paraphrases, so a clean
+   scan cannot prove that no invented claim exists anywhere in the content.
+2. **Approximate negation scope.** The clause-negation heuristic (strong/weak negators, clause
+   boundaries, coordination and post-negation windows) approximates human parsing. It is tuned to
+   fail closed on the tested corpus, but genuinely ambiguous sentences can still be mis-scoped.
+
+The primary defences are therefore the **typed bilingual content contract**
+(`src/app/marea-catalog/content/*`), the **canonical-data cross-checks** in the validator
+(MC22-01..07 read `docs/marea/commerce-data/*` and `product-definitions.batch-0X.json` directly),
+and **human content review**. The guard and its 60+ adversarial tests are a regression tripwire,
+never the sole control.

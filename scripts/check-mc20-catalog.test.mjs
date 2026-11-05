@@ -858,3 +858,57 @@ test('r2 must-allow: honest negated disclaimers', () => {
     assert.deepEqual(catalogClaimProblems(text), [], `wrongly rejected: ${text}`);
   }
 });
+
+// ------------------------------------------------------------------ MC-22 r3 hard acceptance matrix
+test('r3 must-reject: price, brightness and autonomy coordination', () => {
+  for (const text of [
+    'Pantalla de 1000 cd/m².',
+    'PILOT is not supervised and is fully autonomous.',
+    'No hay que intervenir y el sistema es autónomo.',
+    'Navega sin esfuerzo y sin supervisión.',
+    'PILOT is not certified yet navigates autonomously.',
+    'PILOT steers autonomously; the add-on is not included.',
+    'PILOT steers the boat automatically.',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('r3 must-reject: commercial price strings', () => {
+  for (const text of [
+    'Desde 49 al mes.',
+    '£699',
+    'price: 1290',
+    '49 per vessel per month',
+    'GBP 79',
+    '699 + IVA',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('r3 must-reject: spelled-out sizes and reflexive hardware inclusion', () => {
+  for (const text of [
+    'Pantalla de sesenta pulgadas.',
+    'Screen of sixty inches.',
+    'El hardware se incluye.',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('r3 must-allow: honest disclaimers with contractions, colon lists and elision', () => {
+  for (const text of [
+    'PILOT cannot navigate autonomously.',
+    'Autonomous operation is prohibited.',
+    'Not included: autonomous navigation.',
+    'No autonomous navigation, unattended operation or certified autopilot is offered.',
+    'Navegación autónoma: no disponible.',
+    'El hardware no se incluye.',
+    'El hardware no está incluido.',
+    'No se publica ningún tamaño de pantalla en pulgadas.',
+    'No incluye navegación autónoma.',
+  ]) {
+    assert.deepEqual(catalogClaimProblems(text), [], `wrongly rejected: ${text}`);
+  }
+});

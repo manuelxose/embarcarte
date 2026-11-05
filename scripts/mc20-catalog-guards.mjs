@@ -4,6 +4,14 @@
  * These are evidence helpers, not application runtime code: they are used by
  * `scripts/check-mc20-catalog.mjs` and the node:test suite. They never write to
  * the repository and never contact the network.
+ *
+ * HEURISTIC BACKSTOP — NOT A PROOF OF ABSENCE. The prohibited-claim regexes and
+ * the clause-negation heuristic reject an enumerated family of phrasings plus
+ * the tested variants; they cannot enumerate the unbounded space of natural
+ * language. A clean `catalogClaimProblems` result is a supporting check, not a
+ * guarantee that no invented claim exists. The primary controls are the typed
+ * content contract (src/app/marea-catalog/content/*), the canonical-data
+ * cross-checks in the validator, and human content review.
  */
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
@@ -12,7 +20,8 @@ import { dirname, resolve } from 'node:path';
 export const PROHIBITED_CLAIMS = [
   {
     id: 'currency',
-    pattern: /€|\$\s?\d|\b\d+\s?(?:€|\$|EUR|USD|euros?|dólares?|dollars?)\b|\b(?:EUR|USD)\s?\d/i,
+    pattern:
+      /€|\$\s?\d|£\s?\d|\b\d+\s?(?:€|\$|£|EUR|USD|GBP|euros?|dólares?|dollars?|libras?|pounds?)\b|\b(?:EUR|USD|GBP)\s?\d|\b(?:desde|from)\s+\d+(?:[.,]\d+)?\s+(?:al|por)\s+(?:mes|año|month|year)\b|\b\d+(?:[.,]\d+)?\s+(?:per\s+(?:vessel\s+)?(?:per\s+)?month|per\s+year|al\s+mes|por\s+mes|al\s+año)\b|\b(?:price|precio):?\s*\d|\b\d+\s*\+\s*(?:IVA|VAT)\b/i,
   },
   {
     id: 'positive-guarantee',
@@ -106,7 +115,7 @@ export const PROHIBITED_CLAIMS = [
   {
     id: 'display-dimension',
     pattern:
-      /\b\d{1,3}(?:[.,]\d+)?\s*(?:mm|cm|pulgadas?|pulg\.|inches?|in\.?)\b|\b\d{1,3}(?:[.,]\d+)?[-–](?:inch(?:es)?|pulgadas?|in\.?)\b|\b\d{1,3}(?:[.,]\d+)?\s*["″]|\b(?:uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce|trece|catorce|quince|veinte|treinta|cuarenta|cincuenta|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|twenty|thirty|forty|fifty)[\s-]*(?:pulgadas?|inch(?:es)?|pulg\.?|["″])\b/i,
+      /\b\d{1,3}(?:[.,]\d+)?\s*(?:mm|cm|pulgadas?|pulg\.|inches?|in\.?)\b|\b\d{1,3}(?:[.,]\d+)?[-–](?:inch(?:es)?|pulgadas?|in\.?)\b|\b\d{1,3}(?:[.,]\d+)?\s*["″]|\b(?:uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce|trece|catorce|quince|veinte|treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa|cien|ciento|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)[\s-]*(?:pulgadas?|inch(?:es)?|pulg\.?|["″])\b/i,
   },
   {
     id: 'display-resolution',
@@ -116,7 +125,7 @@ export const PROHIBITED_CLAIMS = [
   {
     id: 'display-brightness',
     pattern:
-      /\b\d{2,4}\s*(?:nits?|cd\/m2|cd\/m²)\b|\b(?:luminosidad|brightness|brillo|luminance)\b[^.;!?]{0,20}\b\d{2,4}\b/i,
+      /\b\d{2,4}\s*(?:nits?|cd\/m2|cd\/m²)(?:\b|(?=[\s.;,!?]|$))|\b(?:luminosidad|brightness|brillo|luminance)\b[^.;!?]{0,20}\b\d{2,4}\b/i,
   },
   {
     id: 'display-ingress',
@@ -137,7 +146,7 @@ export const PROHIBITED_CLAIMS = [
   {
     id: 'pilot-autonomous-navigation',
     pattern:
-      /\b(?:navegación autónoma|navegación automática|navegación autopilotada|autonomous navigation|autonomous steering|autonomous operation|autonomous|autonomously|self[- ]steering|de forma autónoma|autónom[oa]s?)\b/i,
+      /\b(?:navegación autónoma|navegación automática|navegación autopilotada|autonomous navigation|autonomous steering|autonomous operation|autonomous|autonomously|automatically|automáticamente|self[- ]steering|de forma autónoma|autónom[oa]s?)\b/i,
   },
   {
     id: 'pilot-unsupervised',
@@ -172,7 +181,7 @@ export const PROHIBITED_CLAIMS = [
   {
     id: 'fleet-hardware-included',
     pattern:
-      /\b(?:hardware incluido|hardware included|incluye hardware|includes hardware|hardware incorporado|hardware (?:está|viene|es) incluido|hardware (?:is|comes(?: as)?) included|hardware included (?:by default|as standard)|incluido de serie)\b/i,
+      /\b(?:hardware incluido|hardware included|incluye hardware|includes hardware|hardware incorporado|hardware (?:está|viene|es|se) incluido|hardware se incluye|hardware (?:is|comes(?: as)?) included|hardware (?:is supplied|is provided|se suministra)|hardware included (?:by default|as standard)|incluido de serie)\b/i,
   },
   {
     id: 'fleet-deployed-customer',
@@ -239,45 +248,80 @@ const NEGATABLE = new Set([
 // A strong negator negates the claim it directly precedes. Idiomatic "no" /
 // "not" / "nunca" uses ("no issues", "no failures", "no solo", "no
 // intervention", "no hay duda", "not only", "nunca fue tan fácil") are NOT
-// negators.
+// negators. Contractions (cannot/can't/isn't/doesn't/don't/won't) negate, as
+// does Spanish "carece(n)" (lacks).
 const STRONG_NEGATION =
-  /\b(?:no(?!\s+(?:issues?|problems?|failures?|faults?|worries|solo|intervention|hay\s+duda)\b)|not(?!\s+only\b)|never|ni|neither|nor|nunca(?!\s+fue\s+tan\s+f[aá]cil)|jam[aá]s|ning[uú]n[oa]?|nadie|tampoco|none|nothing)\b/i;
+  /\b(?:no(?!\s+(?:issues?|problems?|failures?|faults?|worries|solo|intervention|hay\s+duda)\b)|not(?!\s+only\b)|cannot|can't|isn't|doesn't|don't|won't|never|ni|neither|nor|nunca(?!\s+fue\s+tan\s+f[aá]cil)|jam[aá]s|ning[uú]n[oa]?|nadie|tampoco|none|nothing|carece|carecen)\b/i;
 // "sin"/"without" negate only the noun directly after them; an idiomatic
 // "sin …" quality noun is not a negator.
 const WEAK_NEGATION =
-  /\b(?:sin(?!\s+(?:embargo|duda|fallos?|problemas?|marco|pérdida|cables)\b)|without(?!\s+issues?\b))\b/i;
+  /\b(?:sin(?!\s+(?:embargo|duda|fallos?|problemas?|marco|pérdida|cables|esfuerzo)\b)|without(?!\s+issues?\b))\b/i;
 // A negated predicate after the claim, in English and Spanish. Applied only
-// inside the same sentence, so it never reaches across a period.
+// inside the same sentence/clause by isNegatedClause.
 const POST_NEGATION =
-  /\b(?:is|are|was|were)\s+(?:not|never)\s+(?:offered|available|implemented|certified|verified|tested|established|sold|claimed|announced|supported|included)\b|\b(?:not|never)\s+(?:offered|available|implemented|certified|verified|tested|established|sold|claimed|announced|supported|included)\b|\bno\s+(?:está|están|se)\s+(?:ofrece|incluye|promete|disponible|incluido|implementado|certificado|homologado|congelado|establecido|ofrecido)\b/i;
+  /\b(?:is|are|was|were)\s+(?:not|never)?\s*(?:prohibited|excluded|out\s+of\s+scope)\b|\b(?:is|are|was|were)\s+(?:not|never)\s+(?:offered|available|implemented|certified|verified|tested|established|sold|claimed|announced|supported|included)\b|\b(?:not|never)\s+(?:offered|available|implemented|certified|verified|tested|established|sold|claimed|announced|supported|included|prohibited|excluded)\b|\b(?:no|no\s+está|no\s+están|no\s+se)\s+(?:ofrece|incluye|promete|disponible|incluida|incluido|implementado|certificado|homologado|congelado|establecido|ofrecido)\b/i;
 // Sentence punctuation, dashes, newlines, contrastive conjunctions and
-// subordinators end the negation scope. Coordinating conjunctions that join a
-// negated list (y/e/o/u/and/or/ni/nor/neither) do NOT end it. A decimal comma
-// ("99,9") is not a boundary.
-const CLAUSE_BOUNDARY =
-  /[.;:?!\n\u2014\u2013]|,(?!\d)|\b(?:pero|but|sino|aunque|mientras|whereas|while|although|porque|because|since)\b/g;
+// subordinators end the strong-negation scope. A comma continues a strong
+// negated list ("No A, B or C"); it ends only the weak scope.
+const HARD_BOUNDARY =
+  /[.;:?!\n\u2014\u2013]|\b(?:pero|but|sino|aunque|mientras|whereas|while|although|porque|because|since)\b/g;
+const WEAK_BOUNDARY =
+  /[.;:?!,\n\u2014\u2013]|\b(?:pero|but|sino|aunque|mientras|whereas|while|although|porque|because|since)\b/g;
+const COORDINATION = /\b(?:y|e|o|u|and|or)\b/i;
+// A coordination (or "yet") followed within a few words by a finite verb
+// starts a new predicate and ends the strong-negation scope.
+const NEW_PREDICATE =
+  /\b(?:and|or|y|e|o|u|yet)\b[^.;:?!,\n]{0,20}\b(?:is|are|es|está|están|son|hay|has|have|does|did|can|will|navega|navigates|steers|steer|opera|operates|funciona|works|ofrece|offers|incluye|includes|provides|proporciona|va|viene|comes)\b/i;
 
 /**
  * True when the claim is genuinely negated. A negator counts only when it
  * directly negates the matched claim:
- *  - a strong negator before the claim in the current clause;
+ *  - a strong negator before the claim whose scope is not cut by a new
+ *    predicate (coordination + finite verb);
  *  - a strong negator inside the claim span (a spread claim);
- *  - a weak "sin"/"without" immediately before the claim (≤ ~2 tokens);
- *  - a negated predicate after the claim, within the same sentence.
+ *  - a weak "sin"/"without" immediately before the claim, never across a
+ *    coordination;
+ *  - a negated predicate after the claim, within the same sentence/clause;
+ *  - a "Not included:" / "Excluded:" colon-list prefix.
  * Ambiguous cases fail closed (rejected rather than passed).
  */
 function isNegatedClause(text, start, end) {
-  let clauseStart = 0;
-  for (const match of text.matchAll(CLAUSE_BOUNDARY)) {
+  let strongStart = 0;
+  for (const match of text.matchAll(HARD_BOUNDARY)) {
     if (match.index !== undefined && match.index < start)
-      clauseStart = match.index + match[0].length;
+      strongStart = match.index + match[0].length;
   }
-  const before = text.slice(clauseStart, start);
-  if (STRONG_NEGATION.test(before)) return true;
-  if (WEAK_NEGATION.test(before.slice(-18))) return true;
+  const strongBefore = text.slice(strongStart, start);
+  const strongMatches = [...strongBefore.matchAll(new RegExp(STRONG_NEGATION.source, 'gi'))];
+  if (strongMatches.length > 0) {
+    const last = strongMatches[strongMatches.length - 1];
+    const afterNeg = strongBefore.slice(last.index + last[0].length);
+    if (!NEW_PREDICATE.test(afterNeg)) return true;
+  }
+
+  let weakStart = 0;
+  for (const match of text.matchAll(WEAK_BOUNDARY)) {
+    if (match.index !== undefined && match.index < start) weakStart = match.index + match[0].length;
+  }
+  const weakBefore = text.slice(weakStart, start).slice(-18);
+  const weakMatches = [...weakBefore.matchAll(new RegExp(WEAK_NEGATION.source, 'gi'))];
+  if (weakMatches.length > 0) {
+    const last = weakMatches[weakMatches.length - 1];
+    const afterWeak = weakBefore.slice(last.index + last[0].length);
+    if (!COORDINATION.test(afterWeak)) return true;
+  }
+
   if (STRONG_NEGATION.test(text.slice(start, end))) return true;
+
+  if (
+    /(?:not\s+included|excluded|out\s+of\s+scope|no\s+incluido|excluido)\s*:\s*$/i.test(
+      text.slice(0, start),
+    )
+  )
+    return true;
+
   const afterFull = text.slice(end);
-  const sentenceEnd = afterFull.search(/[.?!]/);
+  const sentenceEnd = afterFull.search(/[.;?!]/);
   const afterSentence = sentenceEnd === -1 ? afterFull : afterFull.slice(0, sentenceEnd);
   return POST_NEGATION.test(afterSentence);
 }

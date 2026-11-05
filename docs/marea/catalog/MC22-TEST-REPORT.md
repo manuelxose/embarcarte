@@ -196,3 +196,54 @@ covered by `MC20-13`; no coverage was removed and the unit suite grew.
 
 **PASS** — the 15 confirmed prohibited-claim bypasses are closed, the honest disclaimers still pass,
 all six gates are green, and no test was deleted or skipped.
+
+## 11. Re-verification r2 (final) — post-repair-r2 on the delivery commit
+
+Independent re-verification after repair round 2 (verifier ≠ repairer). Machine-readable record:
+`docs/marea/catalog/evidence/mc22-reverification-r2.json`. HEAD = `8f5b14b` (the MC-22 commit).
+
+### 11.1 Round-2 matrix (executed against the committed guard module)
+
+A temporary node script **outside the repository** called `catalogClaimProblems` on the 17 MUST-REJECT and
+9 MUST-ALLOW round-2 inputs (26 total; the task header's "16" undercounts the reject list, which has 17 —
+all 17 were verified). Result: **17/17 rejected, 9/9 allowed, 0 mismatches, exit 0**.
+
+Round-1 regression re-executed: **15/15 rejects and 6/6 allows, 0 mismatches** (no regression). Review
+addenda re-executed: F1 (hardware está/viene/es incluido, comes included), F2 (sea-trial preterite),
+FNE-01 (spelled-out sizes cinco/veinte/cincuenta pulgadas, five-inch/fifty-inch display) — all rejected.
+
+### 11.2 Gate re-measurement (post-repair-r2, on commit 8f5b14b)
+
+| Command | Exit | Count |
+| --- | --- | --- |
+| `node scripts/build-mc20-catalog-data.mjs --check` | 0 | byte-stable |
+| `npm run test:mc22` | 0 | **56/56** |
+| `npm run test:mc22:unit` | 0 | **66/66** (0 fail, 0 skipped) |
+| `npm run test:mc22:e2e` | 0 | **84 passed (2.3m)** across 18 routes |
+| `npm run build` | 0 | **96 static routes** (19.436s, clean run) |
+| `npm run format:check` | 0 | 0 violations |
+
+### 11.3 Content, validator and governance confirmation
+
+- `display.ts`: no published-component contradiction ("no component is selected"), excluded heading
+  "Excluido del alcance / Excluded from scope" (no purchase wording), "cartography" fixed.
+- `pilot.ts`: E-stop listed only as "(requisito de diseño) / (design requirement)", never a tested function.
+- `fleet.ts`: no present-tense revocation claim (design requirement only), "por embarcación"/"per-vessel"
+  removed, bundle-note grammar fixed in both locales.
+- `MC22-04` now requires a non-empty PILOT steering-modes array (fail-open closed).
+- Ten governance gates byte-identical to base `1dc9aa0`; release gates 12 BLOCKED + 1 EVIDENCE_REQUIRED,
+  0 CLOSED.
+
+### 11.4 Residual guard gaps (disclosed, outside the committed 26-case matrix)
+
+Additional invented-input probing found 3 low-severity residual false-negatives, disclosed (not part of
+the committed matrix, no current content violation): "PILOT steers the boat automatically." (adverb
+"automatically" not in the autonomy vocabulary), "Pantalla de sesenta pulgadas / Screen of sixty inches."
+(spelled-out sizes above 50), and "El hardware se incluye." (reflexive "se incluye" form). Recommended for
+a future hardening round.
+
+### 11.5 Verdict (r2)
+
+**PASS** — all 26 round-2 matrix cases correct, no round-1 regression, the review addenda (F1/F2/FNE-01)
+closed, content/validator fixes confirmed, ten gates intact, and all six gates green with recorded counts.
+3 low-severity residual guard gaps remain and are disclosed for a future round.
