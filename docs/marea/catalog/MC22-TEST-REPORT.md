@@ -247,3 +247,56 @@ a future hardening round.
 **PASS** — all 26 round-2 matrix cases correct, no round-1 regression, the review addenda (F1/F2/FNE-01)
 closed, content/validator fixes confirmed, ten gates intact, and all six gates green with recorded counts.
 3 low-severity residual guard gaps remain and are disclosed for a future round.
+
+## 12. Re-verification r3 (binding, final) — on the delivery commit 450441d
+
+Independent binding re-verification after repair round 3 (verifier ≠ repairer). Machine-readable record:
+`docs/marea/catalog/evidence/mc22-reverification-r3.json`. HEAD = `450441d`
+(`fix(mc22): harden prohibited-claim control after three audit rounds`), base `1dc9aa0`. `git status --short`
+was empty before measuring.
+
+### 12.1 Accumulated matrix (executed against the committed guard module)
+
+A temporary node script **outside the repository** ran `catalogClaimProblems` on the full accumulated matrix:
+round-1 (15 reject + 6 allow), round-2 (17 reject + 9 allow) and round-3 (16 reject + 9 allow) = **72 cases,
+0 mismatches, exit 0**. RES-01/02/03 (residuals from r2) explicitly verified closed; their honest controls
+still allowed.
+
+### 12.2 Invented adversarial inputs (not from the captain's matrix)
+
+The verifier invented 14 additional MUST-REJECT and 4 MUST-ALLOW inputs (ES/EN) covering autonomy,
+certification, regulatory approval, guaranteed performance, display measurement, SLA and price. 11/14
+rejects and 4/4 allows correct. Three low-severity residual paraphrases were found and disclosed
+(consistent with §8's "unbounded phrase space" limitation, not part of the committed matrix, no current
+content violation): "Certificado NMEA 2000." (RES-04), "Aprobación CE obtenida." (RES-05), and
+"PILOT operates without a skipper." (RES-06). Recommended for a future hardening round.
+
+### 12.3 Gate re-measurement (on commit 450441d)
+
+| Command | Exit | Count |
+| --- | --- | --- |
+| `node scripts/build-mc20-catalog-data.mjs --check` | 0 | byte-stable |
+| `npm run test:mc22` | 0 | **56/56** |
+| `npm run test:mc22:unit` | 0 | **70/70** (0 fail, 0 skipped) |
+| `npm run test:mc22:e2e` | 0 | **84 passed (2.9m)** across 18 routes |
+| `npm run build` | 0 | **96 static routes** (23.583s, clean run) |
+| `npm run format:check` | 0 | 0 violations |
+
+### 12.4 Isolation, governance and known limits
+
+- Production build re-checked: **0** catalogue identifiers (`internal/catalog`, `marea-catalog`,
+  `mareaFamilyDisplay`, `DISPLAY-LARGE-CONDITIONAL`, `SIZE_NOT_FROZEN`, `PILOT_SAFETY_GATE`,
+  `NO_SLA_ESTABLISHED`) in `dist/embarcarte`; public route table, sitemap, robots and SEO files unchanged in
+  `1dc9aa0..450441d`; `/marea/*` remains `PROPOSED_INTERNAL_NOT_DEPLOYABLE` (404).
+- Ten governance gates byte-identical to base `1dc9aa0`; release gates 12 BLOCKED + 1 EVIDENCE_REQUIRED,
+  0 CLOSED.
+- Known-limits section (`MC22-SECURITY-AND-ISOLATION-EVIDENCE.md` §8) present and honest: names the guard a
+  "heuristic backstop, not a proof of absence", lists the unbounded phrase space and approximate negation
+  scope, and names the typed contract + canonical cross-checks + human review as the primary defences.
+
+### 12.5 Verdict (r3, binding)
+
+**PASS** — the 72-case accumulated matrix is perfect, RES-01/02/03 are closed, all six gates are green with
+recorded counts (validator 56/56, unit 70/70, e2e 84, build 96 routes), isolation and the ten governance
+gates are intact, and the control's limits are documented honestly. Three low-severity residual paraphrases
+(RES-04/05/06) remain from the verifier's own invented inputs and are disclosed for a future round.
