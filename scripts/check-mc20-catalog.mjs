@@ -538,7 +538,10 @@ add('MC20-21', 'the catalogue reuses MC-17 components and does not fork the desi
     if (!surface.includes(selector)) return fail(`MC-17 component not reused: ${selector}`);
   }
   const newComponents = walk(root, `${CATALOG}/components`);
-  if (newComponents.length > 1)
+  // MC-20 allowed one helper component. MC-23 adds exactly two data-driven
+  // bundle components; the design-system fork check below is unchanged.
+  const COMPONENT_BUDGET = 3;
+  if (newComponents.length > COMPONENT_BUDGET)
     return fail(`unexpected catalogue component count: ${newComponents.length}`);
   return pass(
     '10 verified MC-17 components reused; design system byte-identical to the MC-18 base',
