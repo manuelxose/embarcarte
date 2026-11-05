@@ -23,6 +23,7 @@ import {
 import express from 'express';
 import { join } from 'node:path';
 import { CATALOG_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/catalog-identity';
+import { CONFIGURATOR_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/configurator-identity';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 const host = '127.0.0.1';
@@ -73,6 +74,7 @@ app.get('/__preview/health', (_req, res) => {
     indexation: 'noindex, nofollow, noarchive',
     host,
     cataloguePaths: CATALOG_PREVIEW_ROUTES.map((route) => `/${route.path}`),
+    configuratorPaths: CONFIGURATOR_PREVIEW_ROUTES.map((route) => `/${route.path}`),
   });
 });
 
@@ -107,6 +109,9 @@ const server = isMainModule(import.meta.url)
       console.log('Publication NOT_AUTHORIZED · indexation disabled · loopback only');
       for (const route of CATALOG_PREVIEW_ROUTES) {
         console.log(`  catalogue: http://${host}:${port}/${route.path} (${route.familyId})`);
+      }
+      for (const route of CONFIGURATOR_PREVIEW_ROUTES) {
+        console.log(`  configurator: http://${host}:${port}/${route.path} (${route.locale})`);
       }
     })
   : null;

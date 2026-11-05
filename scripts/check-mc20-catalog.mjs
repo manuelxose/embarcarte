@@ -607,10 +607,11 @@ add('MC20-25', 'the preview server stays loopback-only with a noindex header', (
 
 add('MC20-26', 'the catalogue defines no form, input, storage or network call', () => {
   const files = walk(root, CATALOG).filter((path) => path.endsWith('.ts'));
+  let formFiles = 0;
   for (const file of files) {
     const source = read(file);
+    // Storage and network are never permitted in a catalogue module.
     for (const forbidden of [
-      '<form',
       'HttpClient',
       'fetch(',
       'localStorage',
@@ -620,8 +621,31 @@ add('MC20-26', 'the catalogue defines no form, input, storage or network call', 
     ]) {
       if (source.includes(forbidden)) return fail(`${file} contains ${forbidden}`);
     }
+    // A <form> is permitted ONLY for the MC-24 internal configurator, and only
+    // when it is provably local: no action, no method and no remote target. It
+    // performs a pure in-page classification and never submits data anywhere.
+    if (source.includes('<form')) {
+      formFiles += 1;
+      if (!file.endsWith('sections/section-configurator.ts')) {
+        return fail(`${file} contains <form outside the MC-24 configurator`);
+      }
+      if (/<form[^>]*\baction\s*=/i.test(source)) return fail(`${file} sets a form action`);
+      if (/<form[^>]*\bmethod\s*=/i.test(source)) return fail(`${file} sets a form method`);
+      // Independent audit D-03: an Angular binding or HTML5 formAction would also
+      // route the form, so they are rejected as well (defence in depth; the CSP
+      // `form-action 'none'` is a second independent barrier).
+      if (/\[(?:attr\.)?action\]\s*=/i.test(source)) return fail(`${file} binds a form action`);
+      if (/\[(?:attr\.)?method\]\s*=/i.test(source)) return fail(`${file} binds a form method`);
+      if (/\bformAction\b/i.test(source)) return fail(`${file} uses formAction`);
+      if (!/\(ngSubmit\)=/.test(source)) return fail(`${file} form is not an Angular local submit`);
+      for (const prohibited of ['type="email"', 'type="tel"', 'type="password"', 'name="email"']) {
+        if (source.includes(prohibited)) return fail(`${file} collects ${prohibited}`);
+      }
+    }
   }
-  return pass(`${files.length} catalogue modules: 0 form, 0 storage, 0 network call`);
+  return pass(
+    `${files.length} catalogue modules: 0 storage, 0 network call, ${formFiles} local-only configurator form`,
+  );
 });
 
 add('MC20-27', 'no purchase path can be rendered', () => {
@@ -760,6 +784,14 @@ add('MC20-32', 'every changed path is inside the MC-20 write scope', () => {
     'scripts/check-mc23-bundles.test.mjs',
     // MC-23: line-ending normalisation for the generated projection.
     '.gitattributes',
+    // MC-24: configurator projection generator, real-Angular build gate and the
+    // MC-24 validator/adversarial suite. Shared tooling, not catalogue content;
+    // declared here so the write-scope control stays authoritative rather than
+    // being bypassed.
+    'scripts/build-mc24-configurator-data.mjs',
+    'scripts/check-mc24-configurator.mjs',
+    'scripts/check-mc24-configurator.test.mjs',
+    'scripts/check-mc24-build.mjs',
   ];
   // Local editor/LSP state (e.g. .serena/) is not repository content: it is
   // untracked in the main checkout and must not be judged as a milestone change.
