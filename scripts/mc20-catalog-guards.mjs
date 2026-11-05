@@ -25,8 +25,13 @@ export const PROHIBITED_CLAIMS = [
   },
   {
     id: 'positive-guarantee',
+    // MC-24 F-02: the first-person "garantizamos" was the only Spanish verb
+    // form matched, so the passive/participle claim ("garantizado", "soporte
+    // garantizado", "entrega garantizada") bypassed the guard. The participle
+    // is matched as a whole word so the honest negation ("no garantizado",
+    // "sin garantizar") still passes through the negatable-clause rules.
     pattern:
-      /\bgarantizamos\b|\bwe guarantee\b|\bcompatibilidad garantizada\b|\bguaranteed compatib/i,
+      /\bgarantizamos\b|\bwe guarantee\b|\bcompatibilidad garantizada\b|\bguaranteed compatib|\bgarantizad[oa]s?\b|\bgarantiza\s+(?:la|el|un|una|los|las)\b|\bgarantizan\b|\bguaranteed\b/i,
   },
   {
     id: 'positive-warranty',
@@ -98,9 +103,15 @@ export const PROHIBITED_CLAIMS = [
       /\b(?:entrega|aviso|alerta)\b[^.;!?]{0,24}\bgarantizad[ao]s?\b|\bgarantizad[ao]s?\b[^.;!?]{0,24}\b(?:entrega|aviso|alerta)\b|\bguaranteed (?:delivery|alert)\b|\b(?:delivery|alert) guaranteed\b/i,
   },
   {
+    // MC-24 F-01: the bare availability predicate is asserted in Spanish with
+    // "ya" before or after "disponible" ("disponible ya", "ya disponible"), and
+    // in English as "now available" / "available now". The earlier pattern only
+    // listed explicit sale idioms, so both word orders bypassed the guard. A
+    // bare "disponible" / "available" is deliberately NOT matched alone: the
+    // honest negated form must keep working through the negatable-clause rules.
     id: 'positive-availability',
     pattern:
-      /\b(?:disponible para la venta|a la venta|en venta|on sale|available for (?:sale|purchase)|listo para (?:comprar|enviar)|ready to (?:buy|ship)|aprobado para (?:la )?venta|approved for sale)\b/i,
+      /\b(?:disponible para la venta|a la venta|en venta|on sale|available for (?:sale|purchase)|listo para (?:comprar|enviar)|ready to (?:buy|ship)|aprobado para (?:la )?venta|approved for sale|disponible\s+ya|ya\s+(?:est[áa]\s+)?disponible|now\s+available|available\s+now)\b/i,
   },
   {
     id: 'numeric-accuracy',
