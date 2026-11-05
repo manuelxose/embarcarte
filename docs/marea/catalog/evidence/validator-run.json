@@ -9,8 +9,8 @@
   "total": 56,
   "passed": 56,
   "failed": 0,
-  "runAt": "2026-11-05T11:22:51.994Z",
-  "head": "ad0ab43fc22f6d124566e639fdce47881886d0ae",
+  "runAt": "2026-11-05T13:47:04.075Z",
+  "head": "56d95dd3d696572fe1c7c3008c758252271f78dd",
   "checks": [
     {
       "id": "MC20-01",
@@ -166,7 +166,7 @@
       "id": "MC20-26",
       "title": "the catalogue defines no form, input, storage or network call",
       "status": "PASS",
-      "detail": "36 catalogue modules: 0 form, 0 storage, 0 network call"
+      "detail": "42 catalogue modules: 0 storage, 0 network call, 1 local-only configurator form"
     },
     {
       "id": "MC20-27",
@@ -202,7 +202,7 @@
       "id": "MC20-32",
       "title": "every changed path is inside the MC-20 write scope",
       "status": "PASS",
-      "detail": "57 changed paths (working tree + since 1dc9aa0) inside scope"
+      "detail": "69 changed paths (working tree + since 1dc9aa0) inside scope"
     },
     {
       "id": "MC20-34",

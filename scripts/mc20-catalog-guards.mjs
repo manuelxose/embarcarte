@@ -126,7 +126,7 @@ export const PROHIBITED_CLAIMS = [
   {
     id: 'display-dimension',
     pattern:
-      /\b\d{1,3}(?:[.,]\d+)?\s*(?:mm|cm|pulgadas?|pulg\.|inches?|in\.?)\b|\b\d{1,3}(?:[.,]\d+)?[-–](?:inch(?:es)?|pulgadas?|in\.?)\b|\b\d{1,3}(?:[.,]\d+)?\s*["″]|\b(?:uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce|trece|catorce|quince|veinte|treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa|cien|ciento|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)[\s-]*(?:pulgadas?|inch(?:es)?|pulg\.?|["″])\b/i,
+      /\b\d{1,3}(?:[.,]\d+)?\s*(?:mm|cm|pulgadas?|pulg\.|inches?|in\.?)\b|\b\d{1,3}(?:[.,]\d+)?[-–](?:inch(?:es)?|pulgadas?|in\.?)\b|(?<![="'\w-])\d{1,3}(?:[.,]\d+)?\s*["″](?!\s*[>\s]*<)|\b(?:uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce|trece|catorce|quince|veinte|treinta|cuarenta|cincuenta|sesenta|setenta|ochenta|noventa|cien|ciento|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)[\s-]*(?:pulgadas?|inch(?:es)?|pulg\.?|["″])\b/i,
   },
   {
     id: 'display-resolution',

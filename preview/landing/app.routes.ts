@@ -3,8 +3,10 @@ import { LandingPreview } from './landing-preview';
 import { LandingPreviewNotFound } from './preview-not-found';
 import { CatalogPreview } from './catalog-preview';
 import { BundlePreview } from './bundle-preview';
+import { ConfiguratorPreview } from './configurator-preview';
 import { CATALOG_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/catalog-identity';
 import { BUNDLE_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/bundle-identity';
+import { CONFIGURATOR_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/configurator-identity';
 
 /**
  * Isolated preview routes.
@@ -30,11 +32,18 @@ const bundleRoutes: Routes = BUNDLE_PREVIEW_ROUTES.map((route) => ({
   data: { locale: route.locale },
 }));
 
+const configuratorRoutes: Routes = CONFIGURATOR_PREVIEW_ROUTES.map((route) => ({
+  path: route.path,
+  component: ConfiguratorPreview,
+  data: { locale: route.locale },
+}));
+
 export const landingPreviewRoutes: Routes = [
   { path: '', pathMatch: 'full', component: LandingPreview, data: { locale: 'es' } },
   { path: 'marea', component: LandingPreview, data: { locale: 'es' } },
   { path: 'en/marea', component: LandingPreview, data: { locale: 'en' } },
   ...catalogRoutes,
   ...bundleRoutes,
+  ...configuratorRoutes,
   { path: '**', component: LandingPreviewNotFound },
 ];
