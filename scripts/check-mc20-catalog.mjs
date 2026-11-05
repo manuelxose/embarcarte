@@ -792,6 +792,12 @@ add('MC20-32', 'every changed path is inside the MC-20 write scope', () => {
     'scripts/check-mc24-configurator.mjs',
     'scripts/check-mc24-configurator.test.mjs',
     'scripts/check-mc24-build.mjs',
+    // MC-25: SKU governance projection generator, validator and adversarial
+    // suite. Shared tooling, not catalogue content; declared here so the
+    // write-scope control stays authoritative rather than being bypassed.
+    'scripts/build-mc25-governance-data.mjs',
+    'scripts/check-mc25-governance.mjs',
+    'scripts/check-mc25-governance.test.mjs',
   ];
   // Local editor/LSP state (e.g. .serena/) is not repository content: it is
   // untracked in the main checkout and must not be judged as a milestone change.

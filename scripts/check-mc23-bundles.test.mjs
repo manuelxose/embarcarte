@@ -144,14 +144,19 @@ both('r2 an unknown bundle is NOT_ELIGIBLE', () => {
 });
 
 both('r2 an ineligible line is rejected', () => {
-  assert.equal(domain.inclusionFor('SAIL', 'PILOT-PRO'), 'INELIGIBLE');
+  assert.equal(domain.inclusionValue('SAIL', 'PILOT-PRO'), 'INELIGIBLE');
   assert.equal(domain.evaluateEligibility('SAIL', ['PILOT-PRO']).outcome, 'NOT_ELIGIBLE');
   assert.equal(domain.evaluateEligibility('COMPLETE', ['DISPLAY-LARGE-CONDITIONAL']).outcome, 'NOT_ELIGIBLE');
 });
 
-both('r2 inclusionFor on an unknown bundle is undefined, never "not included"', () => {
-  assert.equal(domain.inclusionFor('NOT_A_BUNDLE', 'NAV-PRO'), undefined);
-  assert.equal(domain.inclusionFor('START', 'NOT_AN_EDITION'), 'NOT_INCLUDED');
+// MC-25 F-15: the unknown-bundle and unknown-edition cases are now distinct
+// typed states. This test previously asserted the defect (`'NOT_INCLUDED'`),
+// which is exactly what MC-23 recorded as F-15.
+both('r2 inclusionFor distinguishes an unknown bundle and an unknown edition', () => {
+  assert.equal(domain.inclusionFor('NOT_A_BUNDLE', 'NAV-PRO').kind, 'UNKNOWN_BUNDLE');
+  assert.equal(domain.inclusionFor('START', 'NOT_AN_EDITION').kind, 'UNKNOWN_EDITION');
+  assert.equal(domain.inclusionFor('START', 'FLEET-START').kind, 'NOT_INCLUDED');
+  assert.equal(domain.inclusionFor('START', 'HUB-STANDARD').inclusion, 'INCLUDED');
 });
 
 // ── determinism ─────────────────────────────────────────────────────────────

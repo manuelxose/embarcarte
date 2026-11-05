@@ -74,16 +74,37 @@ const production = run('positive-production-build', 'npx', ['ng', 'build', 'emba
 // disposable project sandbox, inject ONE invalid binding, and require the
 // Angular compiler to fail. The sandbox reuses the installed dependencies via a
 // junction-free copy of the two tsconfig/angular files it needs.
-const COMPONENT = 'src/app/marea-catalog/sections/section-configurator.ts';
-const BROKEN_MEMBER = 'mc24DeliberatelyMissingBinding';
+//
+// MC-25 reuses the SAME gate for the governance section instead of forking it:
+// the four values below are overridable by argv while the MC-24 defaults keep
+// the inherited invocation byte-identical.
+const argvValue = (name, fallback) => {
+  const index = process.argv.indexOf(`--${name}`);
+  if (index < 0) return fallback;
+  const value = process.argv[index + 1];
+  return typeof value === 'string' && value.length > 0 ? value : fallback;
+};
+
+const COMPONENT = argvValue(
+  'component',
+  'src/app/marea-catalog/sections/section-configurator.ts',
+);
+const MARKER = argvValue('marker', 'data-mc24-configurator');
+const BROKEN_MEMBER = argvValue('member', 'mc24DeliberatelyMissingBinding');
+const EXPORT = argvValue('export', 'MareaCatalogConfigurator');
+
+/** `src/app/x/y.ts` -> `./app/x/y` (an import specifier inside the sandbox). */
+function importSpecifier(component) {
+  return `./${component.replace(/^src\//u, '').replace(/\.ts$/u, '')}`;
+}
 
 function negativeStage() {
   const workspace = mkdtempSync(join(tmpdir(), 'mc24-build-gate-'));
   try {
     // A minimal Angular application that imports the REAL component.
     const source = readFileSync(resolve(root, COMPONENT), 'utf8');
-    if (!source.includes('data-mc24-configurator')) {
-      return { ok: false, reason: 'component under test is not the delivered configurator' };
+    if (!source.includes(MARKER)) {
+      return { ok: false, reason: `component under test does not carry ${MARKER}` };
     }
 
     const appDir = join(workspace, 'probe');
@@ -92,10 +113,14 @@ function negativeStage() {
     cpSync(resolve(root, 'src'), join(appDir, 'src'), { recursive: true });
 
     const componentPath = join(appDir, COMPONENT);
-    const broken = source.replace(
-      'data-mc24-configurator>',
-      `data-mc24-configurator [attr.data-broken]="${BROKEN_MEMBER}">`,
-    );
+    const occurrences = source.split(MARKER).length - 1;
+    if (occurrences !== 1) {
+      return {
+        ok: false,
+        reason: `expected exactly one ${MARKER} marker in the component, found ${occurrences}`,
+      };
+    }
+    const broken = source.replace(MARKER, `${MARKER} [attr.data-broken]="${BROKEN_MEMBER}"`);
     if (broken === source) {
       return { ok: false, reason: 'could not inject the invalid binding into the component' };
     }
@@ -105,8 +130,8 @@ function negativeStage() {
       join(appDir, 'src/main.ts'),
       [
         "import { bootstrapApplication } from '@angular/platform-browser';",
-        "import { MareaCatalogConfigurator } from './app/marea-catalog/sections/section-configurator';",
-        'bootstrapApplication(MareaCatalogConfigurator).catch((error) => console.error(error));',
+        `import { ${EXPORT} } from '${importSpecifier(COMPONENT)}';`,
+        `bootstrapApplication(${EXPORT}).catch((error) => console.error(error));`,
         '',
       ].join('\n'),
     );
