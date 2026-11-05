@@ -2,7 +2,7 @@
 ## Informe ejecutivo (ES)
 
 **Hito:** MC-25 — «SKU readiness and catalog governance in admin/commerce»
-**Rama:** `feature/marea-mc25-sku-governance`, creada desde el HEAD verificado de MC-24 (`c4d9d76`)
+**Rama:** `feature/marea-mc25-sku-governance`, creada desde el HEAD verificado de MC-24 (`c4d9d76`). Commits: `c8eb23b` (implementación) y `6ffcbb9` (remediación de auditoría). PR borrador [#33](https://github.com/manuelxose/embarcarte/pull/33)
 **Alcance:** interno. Sin fusión, sin despliegue, sin publicación, sin venta.
 **Veredicto:** `MC25_INTERNAL_IMPLEMENTATION = PASS_INTERNAL_SCOPE` (sujeto al informe de auditoría independiente adjunto)
 **Veredicto global:** `MC25_VERDICT = PARTIAL` — las puertas externas legales y comerciales siguen abiertas.
