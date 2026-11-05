@@ -60,6 +60,7 @@ const lifecycle = await import('../src/app/marea-catalog/governance/sku-lifecycl
 const readiness = await import('../src/app/marea-catalog/governance/sku-readiness.ts');
 const facts = await import('../src/app/marea-catalog/governance/governance-facts.ts');
 const authorization = await import('../src/app/marea-catalog/governance/admin-authorization.ts');
+const verdicts = await import('../src/app/marea-catalog/governance/readiness-verdict.ts');
 const reviewAdapter =
   await import('../src/app/marea-catalog/governance/review-workflow-adapter.ts');
 const upgrade = await import('../src/app/marea-catalog/data/bundle-upgrade-paths.ts');
@@ -238,6 +239,11 @@ check('MC25-04', 'no canonical edition is orderable and the matrix is determinis
     'two evaluations produced different fingerprints',
   );
   for (const decision of matrix) readiness.assertNotOrderable(decision);
+  assert(
+    readiness.READINESS_FACTS.orderableEditions ===
+      matrix.filter((decision) => decision.orderable).length,
+    'the published orderable-edition count is not derived from the matrix (AUD-04)',
+  );
   return `${matrix.length} editions evaluated twice: 0 orderable, identical fingerprints, explicit reasons`;
 });
 
@@ -270,6 +276,11 @@ check('MC25-05', 'no candidate SKU and no bundle is orderable', () => {
     readiness.READINESS_FACTS.orderableEditions === 0 &&
       readiness.READINESS_FACTS.orderableBundles === 0,
     'the published facts report an orderable item',
+  );
+  assert(
+    readiness.READINESS_FACTS.orderableBundles ===
+      bundles.filter((decision) => decision.orderable).length,
+    'the published orderable-bundle count is not derived from the matrix (AUD-04)',
   );
   return `${candidates.length} candidates + ${bundles.length} bundles: 0 orderable`;
 });
@@ -503,7 +514,29 @@ check(
       !/fetch\(|localStorage|sessionStorage|indexedDB|HttpClient/u.test(section),
       'the screen performs I/O',
     );
-    return `${invoked} direct invocations across 7 actions x 2 principals: 0 applied, 0 persisted, 0 durable approvals`;
+    // AUD-07: a malformed request or a control-character subject is a refusal,
+    // never a crash and never a way to inject a second audit line.
+    const malformed = authorization.submitReviewAction(null);
+    assert(
+      malformed.applied === false && malformed.persisted === false,
+      'null request was applied',
+    );
+    const injected = authorization.submitReviewAction({
+      action: 'REQUEST_EVIDENCE',
+      editionId: 'NAV-ESSENTIAL\nFORGED-LINE',
+      principal: {
+        role: 'PROGRAMME_LEAD',
+        authenticated: true,
+        authorizationMechanism: 'VERIFIED_SESSION',
+        principalRef: 'FORGED\nLINE',
+      },
+    });
+    assert(injected.applied === false, 'a malformed subject was applied');
+    assert(injected.editionId === null, 'a non-canonical edition id reached the audit draft');
+    assert(!/[\r\n]/u.test(injected.auditDraft), 'the audit draft accepted a newline injection');
+    const nullPrincipal = authorization.authorizeAdminAction('REQUEST_EVIDENCE', null);
+    assert(nullPrincipal.allowed === false, 'a null principal was authorized');
+    return `${invoked} direct invocations across 7 actions x 2 principals: 0 applied, 0 persisted, 0 durable approvals; null/malformed input refused`;
   },
 );
 
@@ -631,8 +664,37 @@ check('MC25-14', 'F-2 upgrade-path relationship integrity is reproduced and repa
     `legitimate paths rejected: ${invalid.map((entry) => entry.upgradeId).join(', ')}`,
   );
   const verified = integrity.reduce((total, entry) => total + entry.verifiedAdditions.length, 0);
+  const unverified = integrity.reduce(
+    (total, entry) => total + entry.unverifiedAdditions.length,
+    0,
+  );
   const textual = integrity.reduce((total, entry) => total + entry.textualAdditions.length, 0);
   assert(verified >= 30, `only ${verified} edition relationships were verified`);
+  assert(
+    unverified >= 1,
+    'target-less paths must report their edition tokens as unverified, not verified',
+  );
+  // AUD-01: a target-less path may not claim a verified relationship.
+  const targetless = upgrade.validateUpgradePath({
+    upgradeId: 'X',
+    path: 'edition upgrades without a target',
+    fromBundleId: 'START',
+    adds: ['FLEET-START'],
+  });
+  assert(targetless.status === 'VALID', 'a target-less path was rejected outright');
+  assert(
+    targetless.verifiedAdditions.length === 0 && targetless.unverifiedAdditions.length === 1,
+    'a target-less addition was counted as verified',
+  );
+  // AUD-02: the two contract paths whose fromBundleId is the target context must
+  // be surfaced as notes, not silently accepted.
+  for (const upgradeId of ['UM-SL-02', 'UM-CP-02']) {
+    const entry = upgrade.upgradePathIntegrity(upgradeId);
+    assert(
+      entry.notes.some((note) => note.code === 'FROM_BUNDLE_IS_TARGET_CONTEXT'),
+      `${upgradeId} does not surface its fromBundleId/target-context discrepancy`,
+    );
+  }
 
   const fabricated = [
     [
@@ -675,7 +737,7 @@ check('MC25-14', 'F-2 upgrade-path relationship integrity is reproduced and repa
     upgrade.upgradePathIntegrity('NOPE').status === 'UNKNOWN_PATH',
     'an unknown path id resolved',
   );
-  return `inherited revision has no validation; 15 paths VALID, ${verified} relationships verified, ${textual} textual, 6 fabricated rejected`;
+  return `inherited revision has no validation; 15 paths VALID, ${verified} relationships verified, ${unverified} target-less edition tokens unverified, ${textual} textual, 6 fabricated rejected`;
 });
 
 // ---------------------------------------------------------------------------
@@ -885,8 +947,21 @@ check(
         'decision has no version',
       );
       assert(/^[0-9a-f]{8}$/u.test(decision.evidenceFingerprint), 'decision has no fingerprint');
+      assert(
+        verdicts.verdictFor(decision.commercialOrderability).code === 'NOT_ORDERABLE',
+        'a real decision renders a non-refusal verdict (AUD-03)',
+      );
     }
-    return '26 decisions each carry identity, contracts, 10 gates, blockers, evidence, result, version and fingerprint';
+    // The positive branch exists but is never a sale or availability claim.
+    const positive = verdicts.verdictFor('ORDERABLE');
+    assert(positive.code === 'ORDERABLE', 'the orderable verdict is not derived');
+    assert(
+      !/buy|purchase|add to cart|available|disponible/i.test(
+        `${positive.labelKey} ${positive.explanationKey}`,
+      ),
+      'the positive verdict is a purchase or availability claim',
+    );
+    return '26 decisions each carry identity, contracts, 10 gates, blockers, evidence, result, version and fingerprint; verdicts derived from the decision';
   },
 );
 

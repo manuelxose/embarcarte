@@ -61,6 +61,14 @@ export const GOVERNANCE_LABELS: Readonly<Record<string, Localized>> = {
     es: 'Al menos un requisito comercial no se cumple. Mientras falte uno solo, la edición no puede convertirse en un SKU vendible.',
     en: 'At least one commercial prerequisite is not satisfied. While a single one is missing, the edition cannot become a sellable SKU.',
   },
+  verdictRequiresAuthorization: {
+    es: 'REQUIERE AUTORIZACIÓN COMERCIAL',
+    en: 'REQUIRES COMMERCIAL AUTHORIZATION',
+  },
+  verdictRequiresAuthorizationExplanation: {
+    es: 'Los requisitos internos están completos, pero la autorización comercial, la publicación y el despliegue siguen sin concederse. La preparación no es una oferta ni una autorización de venta.',
+    en: 'The internal prerequisites are complete, but commercial authorization, publication and deployment are still not granted. Readiness is not an offer and not a sales authorization.',
+  },
   missingHeading: { es: 'Requisitos pendientes', en: 'Outstanding prerequisites' },
   missingIntro: {
     es: 'Estos son los requisitos que hoy impiden la venta, en el orden del contrato.',

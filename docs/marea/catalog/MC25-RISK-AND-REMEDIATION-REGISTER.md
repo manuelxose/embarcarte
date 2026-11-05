@@ -15,6 +15,36 @@ Status vocabulary: **CLOSED**, **OPEN**, **ACCEPTED**, **BLOCKED** (external).
 No finding was closed by declaration. Each has a reproduction or a failing
 control, a repair and a re-verification.
 
+## 1b. Independent-audit findings and disposition
+
+Auditor A (Claude Sonnet 5.5, static review) and Auditor B (DeepSeek V4-Pro,
+executed attacks) findings are recorded in `MC25-INDEPENDENT-AUDIT.md`. Summary:
+
+| ID | Severity | Disposition |
+| --- | --- | --- |
+| AUD-01 | MAJOR | FIXED — target-less tokens are `unverifiedAdditions`; never verified |
+| AUD-02 | MINOR | FIXED — `FROM_BUNDLE_IS_TARGET_CONTEXT` note surfaced |
+| AUD-03 | MAJOR | FIXED — verdict derived from the decision, not hardcoded |
+| AUD-04 | MINOR | FIXED — facts computed from the matrices; bundle orderability derived |
+| AUD-05 | MAJOR | FIXED — `.gitattributes` pins the contract JSONs to LF |
+| AUD-06 | MINOR | FIXED — MC-25 runner stages are required |
+| AUD-07 | MINOR | FIXED — total, sanitising request handling |
+| AUD-08 | MINOR | FIXED — `applied: false` on every transition result |
+| AUD-09 | NIT | ACCEPTED — inherited loopback preview CSP (`RES-MC25-07`) |
+| AUD-10 | NIT | NOT APPLICABLE — `dist/` is gitignored, not delivered |
+| F-01 | NIT | FIXED — comment corrected (freeze, not strict mode, is the defence) |
+| F-02 | NIT | ACCEPTED — documented test-only combinator (`RES-MC25-08`) |
+| F-03 | NIT | FIXED via AUD-03 |
+| F-04 | NIT | DOCUMENTED — invocation contract for the inherited validator |
+| F-05 | TRANSPARENCY | ACKNOWLEDGED — evidence regeneration is the documented mechanism |
+
+## 1c. Findings raised by the author's own probing during implementation
+
+| ID | Finding | Disposition |
+| --- | --- | --- |
+| SELF-01 | The verdict badge was originally hardcoded; the author found it before delivery and the audit independently raised it as AUD-03 | CLOSED by the AUD-03 fix |
+| SELF-02 | `deepFreeze` skipped already-frozen top-level arrays (INH-02) | CLOSED, test `t1` |
+
 ## 2. Residual risk accepted in this milestone
 
 | ID | Risk | Why accepted | Mitigation |
@@ -25,6 +55,8 @@ control, a repair and a re-verification.
 | RES-MC25-04 | No screen-reader or assistive-technology testing | Out of the available tooling; claiming it would be false | axe-core + keyboard E2E recorded; manual AT verification preserved as debt |
 | RES-MC25-05 | No professional English copy review | Outside the milestone | Bilingual parity machine-checked; professional review preserved as debt |
 | RES-MC25-06 | There is no durable approval audit trail | No authorized persistence contract exists; creating one would be an unauthorized commercial backend | Every mutation is refused; the audit draft is explicitly `NOT_PERSISTED` |
+| RES-MC25-07 | The preview CSP allows `'unsafe-inline'` for script/style | Inherited loopback-only preview configuration; a nonce pipeline is outside this milestone | Loopback binding + Host allow-list + no public route; the surface renders no third-party content |
+| RES-MC25-08 | `combinePrerequisites` is exported and can return `orderable: true` for a hand-crafted array | It is a pure combinator used by the logic tests; the real engine takes one argument and no caller facts | Units `r5`, `t3` prove no real decision can be forged; the result is never surfaced as a commercial decision |
 
 ## 3. Inherited debt preserved (not reinterpreted)
 

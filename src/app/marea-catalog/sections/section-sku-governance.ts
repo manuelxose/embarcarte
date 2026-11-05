@@ -20,6 +20,7 @@ import {
   editionById,
   familyById,
 } from '../governance/governance-facts';
+import { verdictFor } from '../governance/readiness-verdict';
 import { resolveCandidateIdentity, resolveEditionIdentity } from '../governance/sku-identity';
 import {
   REVIEW_ACTIONS,
@@ -115,11 +116,11 @@ import {
         <p class="verdict">
           <span
             marea-status-badge
-            tone="critical"
-            [label]="t('verdictNotOrderable')"
-            data-mc25-verdict
+            [tone]="verdict().tone"
+            [label]="t(verdict().labelKey)"
+            [attr.data-mc25-verdict]="verdict().code"
           ></span>
-          <span>{{ t('verdictExplanation') }}</span>
+          <span>{{ t(verdict().explanationKey) }}</span>
         </p>
 
         <div
@@ -618,6 +619,9 @@ export class MareaCatalogSkuGovernance {
   readonly family = computed(() => this.familyId());
   readonly edition = computed(() => this.editionId());
   readonly outcome = computed(() => this.reviewOutcome());
+
+  /** Derived from the engine, never authored in the template (AUD-03). */
+  readonly verdict = computed(() => verdictFor(this.decision().commercialOrderability));
 
   readonly familyOptions = computed(() =>
     GOVERNANCE_SNAPSHOT.families.map((family) => ({

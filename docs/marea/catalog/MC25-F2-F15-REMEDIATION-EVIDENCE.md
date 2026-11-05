@@ -60,10 +60,19 @@ each adds token ──► edition id? ── yes ──► family of edition == 
 Addable inclusions are `INCLUDED`, `OPTIONAL`, `CONDITIONAL`,
 `QUOTATION_REQUIRED`, `REQUIRED_EXTERNAL`; `NOT_INCLUDED` and `INELIGIBLE` are
 refused. Prose entries such as "customer records and exports" cannot be resolved
-and are reported in `textualAdditions`, never counted as verified.
+and are reported in `textualAdditions`, never counted as verified. Edition tokens
+on a path with no target are reported in `unverifiedAdditions`: they exist in the
+catalogue but there is no target to relate them to, so they are not verified
+either. This distinction was added after independent audit finding AUD-01.
 
 `upgradePathIntegrity(id)` returns `UNKNOWN_PATH` for an unknown id;
 `allUpgradePathIntegrity()` validates all 15 contract paths.
+
+Two contract paths (`UM-SL-02`, `UM-CP-02`) record the **target** bundle in
+`fromBundleId` while the path text names the real sources. That representation is
+surfaced as a `FROM_BUNDLE_IS_TARGET_CONTEXT` note instead of being silently
+accepted (audit finding AUD-02); the paths remain VALID because the contract's
+own field is the target context, not a self-upgrade claim.
 
 ### 1.4 Verification
 
@@ -71,12 +80,13 @@ and are reported in `textualAdditions`, never counted as verified.
 | --- | --- |
 | Contract upgrade paths | 15 |
 | Valid paths after repair | **15 / 15** (legitimate paths preserved) |
-| Verified edition relationships | 37 |
-| Textual (unverified) additions | 7 |
+| Verified edition relationships | 30 |
+| Edition tokens on target-less paths (unverified) | 7 |
+| Textual (prose) additions | 7 |
 | Fabricated shapes rejected | 6 (nonexistent edition, wrong family, not in target, already in source, self-target, unresolved target/unknown source) |
 | Malformed inputs rejected | `null`, number, string, array, missing fields, non-string `adds` |
 
-Unit tests: `f2-1` … `f2-9`. Validator: `MC25-14`.
+Unit tests: `f2-1` … `f2-11`. Validator: `MC25-14`.
 
 ## 2. F-15 — nonexistent edition behaviour
 

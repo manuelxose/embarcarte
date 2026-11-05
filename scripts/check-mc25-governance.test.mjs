@@ -52,6 +52,7 @@ const lifecycle = await load('src/app/marea-catalog/governance/sku-lifecycle.ts'
 const readiness = await load('src/app/marea-catalog/governance/sku-readiness.ts');
 const facts = await load('src/app/marea-catalog/governance/governance-facts.ts');
 const authorization = await load('src/app/marea-catalog/governance/admin-authorization.ts');
+const verdicts = await load('src/app/marea-catalog/governance/readiness-verdict.ts');
 const upgrade = await load('src/app/marea-catalog/data/bundle-upgrade-paths.ts');
 const content = await load('src/app/marea-catalog/content/governance.ts');
 
@@ -731,4 +732,110 @@ both('c6 the section template is bound to a real component', () => {
   assert.match(section, /data-mc25-governance/u);
   assert.match(section, /selector: 'marea-catalog-sku-governance'/u);
   assert.match(section, /export class MareaCatalogSkuGovernance/u);
+});
+
+// ── remediation of the independent audit (AUD-01 … AUD-08) ─────────────────
+
+both('v1 the rendered verdict is derived from the decision', () => {
+  assert.equal(verdicts.verdictFor('NOT_ORDERABLE').code, 'NOT_ORDERABLE');
+  assert.equal(verdicts.verdictFor('NOT_ORDERABLE').tone, 'critical');
+  assert.equal(verdicts.verdictFor('ORDERABLE').code, 'ORDERABLE');
+  assert.equal(verdicts.verdictFor('ORDERABLE').tone, 'warning');
+  for (const probe of [null, undefined, '', 'orderable', 42, {}]) {
+    assert.equal(verdicts.verdictFor(probe).code, 'NOT_ORDERABLE');
+  }
+  // The positive branch is an authorization requirement, not a sale claim.
+  const positive = verdicts.verdictFor('ORDERABLE');
+  assert.equal(/buy|purchase|available|disponible/i.test(positive.labelKey), false);
+  assert.equal(/buy|purchase|available|disponible/i.test(positive.explanationKey), false);
+});
+
+both('r11 the published facts are computed from the matrices', () => {
+  const editions = readiness.readinessMatrix();
+  const bundles = readiness.bundleReadinessMatrix();
+  assert.equal(
+    readiness.READINESS_FACTS.orderableEditions,
+    editions.filter((decision) => decision.orderable).length,
+  );
+  assert.equal(
+    readiness.READINESS_FACTS.orderableBundles,
+    bundles.filter((decision) => decision.orderable).length,
+  );
+  assert.equal(readiness.READINESS_FACTS.orderableEditions, 0);
+  assert.equal(readiness.READINESS_FACTS.orderableBundles, 0);
+});
+
+both('l6 a permitted transition is never applied', () => {
+  const permitted = lifecycle.transition('DRAFT', 'INCOMPLETE');
+  assert.equal(permitted.ok, true);
+  assert.equal(permitted.applied, false);
+  assert.equal(permitted.persisted, false);
+  const refused = lifecycle.transition('AWAITING_EVIDENCE', 'READY_FOR_REVIEW');
+  assert.equal(refused.ok, false);
+  assert.equal(refused.applied, false);
+});
+
+both('f2-10 a target-less path never claims a verified relationship', () => {
+  const result = upgrade.validateUpgradePath({
+    upgradeId: 'X',
+    path: 'edition upgrades without a target',
+    fromBundleId: 'START',
+    adds: ['FLEET-START', 'HUB-PRO'],
+  });
+  assert.equal(result.status, 'VALID');
+  assert.equal(result.verifiedAdditions.length, 0);
+  assert.equal(result.unverifiedAdditions.length, 2);
+  assert.equal(result.target.kind, 'NONE');
+});
+
+both('f2-11 a fromBundleId that is the target context is surfaced, not hidden', () => {
+  for (const upgradeId of ['UM-SL-02', 'UM-CP-02']) {
+    const entry = upgrade.upgradePathIntegrity(upgradeId);
+    assert.equal(entry.status, 'VALID', upgradeId);
+    assert.ok(
+      entry.notes.some((note) => note.code === 'FROM_BUNDLE_IS_TARGET_CONTEXT'),
+      upgradeId + ' does not surface the context discrepancy',
+    );
+  }
+  const clean = upgrade.upgradePathIntegrity('UM-ST-01');
+  assert.equal(clean.notes.length, 0);
+});
+
+both('a7 malformed requests and principals are refused without throwing', () => {
+  for (const probe of [null, undefined]) {
+    const outcome = authorization.submitReviewAction(probe);
+    assert.equal(outcome.applied, false);
+    assert.equal(outcome.persisted, false);
+    assert.equal(outcome.durableApproval, false);
+  }
+  const injected = authorization.submitReviewAction({
+    action: 'REQUEST_EVIDENCE',
+    editionId: 'NAV-ESSENTIAL\nFORGED',
+    principal: {
+      role: 'PROGRAMME_LEAD',
+      authenticated: true,
+      authorizationMechanism: 'VERIFIED_SESSION',
+      principalRef: 'FORGED\nLINE',
+    },
+  });
+  assert.equal(injected.editionId, null);
+  assert.equal(/[\r\n]/u.test(injected.auditDraft), false);
+  assert.equal(injected.applied, false);
+  // A null-prototype principal is not a verified one.
+  const bare = Object.create(null);
+  const decision = authorization.authorizeAdminAction('REQUEST_EVIDENCE', bare);
+  assert.equal(decision.allowed, false);
+  assert.equal(decision.code, 'NO_VERIFIED_AUTHORIZATION_MECHANISM');
+});
+
+both('a8 the audit does not claim persistence', () => {
+  for (const action of authorization.ADMIN_ACTIONS) {
+    const outcome = authorization.submitReviewAction({
+      action,
+      editionId: 'NAV-ESSENTIAL',
+      principal: FORGED_PRINCIPAL,
+    });
+    assert.equal(outcome.auditDraft.endsWith(':NOT_PERSISTED'), true);
+    assert.equal(outcome.durableApproval, false);
+  }
 });

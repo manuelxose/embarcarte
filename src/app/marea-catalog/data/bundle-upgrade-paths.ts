@@ -416,14 +416,27 @@ export interface UpgradePathFinding {
 
 export type UpgradePathStatus = 'VALID' | 'INVALID' | 'UNKNOWN_PATH';
 
+/** Informational note that does not invalidate a contract path. */
+export interface UpgradePathNote {
+  readonly code: 'FROM_BUNDLE_IS_TARGET_CONTEXT';
+  readonly detail: string;
+}
+
 export interface UpgradePathIntegrity {
   readonly upgradeId: string;
   readonly status: UpgradePathStatus;
   readonly fromBundleId: string | null;
   readonly target: { readonly kind: 'BUNDLE' | 'EDITION' | 'NONE'; readonly id: string | null };
+  /** Additions whose target relationship was validated end to end. */
   readonly verifiedAdditions: readonly UpgradePathEditionAddition[];
+  /**
+   * Edition tokens on a target-less path. They exist in the catalogue, but there
+   * is no target to relate them to, so they are NOT verified relationships.
+   */
+  readonly unverifiedAdditions: readonly UpgradePathEditionAddition[];
   readonly textualAdditions: readonly string[];
   readonly findings: readonly UpgradePathFinding[];
+  readonly notes: readonly UpgradePathNote[];
 }
 
 const QUALIFIER_SUFFIX = /\s+(?:optional|quotation|conditional|capabilities?|capability)$/iu;
@@ -440,8 +453,10 @@ function malformed(detail: string): UpgradePathIntegrity {
     fromBundleId: null,
     target: { kind: 'NONE', id: null },
     verifiedAdditions: [],
+    unverifiedAdditions: [],
     textualAdditions: [],
     findings: [{ code: 'MALFORMED_PATH', detail }],
+    notes: [],
   };
 }
 
@@ -472,7 +487,9 @@ export function validateUpgradePath(input: unknown): UpgradePathIntegrity {
   }
 
   const findings: UpgradePathFinding[] = [];
+  const notes: UpgradePathNote[] = [];
   const verifiedAdditions: UpgradePathEditionAddition[] = [];
+  const unverifiedAdditions: UpgradePathEditionAddition[] = [];
   const textualAdditions: string[] = [];
   const fromBundleId = candidate.fromBundleId ?? null;
 
@@ -512,6 +529,17 @@ export function validateUpgradePath(input: unknown): UpgradePathIntegrity {
     findings.push({
       code: 'TARGET_EQUALS_SOURCE',
       detail: `path ${candidate.upgradeId} names ${target.id} as both source and target`,
+    });
+  }
+
+  // AUD-02: the contract sometimes records the TARGET bundle in `fromBundleId`
+  // (UM-SL-02, UM-CP-02) while the path text names the real sources. That is a
+  // contract representation, not a self-upgrade; it is surfaced as a note so the
+  // discrepancy is never silent, and it does not invalidate a legitimate path.
+  if (target.kind === 'BUNDLE' && target.id !== null && fromBundleId === target.id) {
+    notes.push({
+      code: 'FROM_BUNDLE_IS_TARGET_CONTEXT',
+      detail: `contract records ${target.id} as fromBundleId while the path text names ${targetMatch ? targetMatch[1] : 'other sources'}; treated as the target context, not a self-upgrade`,
     });
   }
 
@@ -594,7 +622,10 @@ export function validateUpgradePath(input: unknown): UpgradePathIntegrity {
         continue;
       }
     }
-    verifiedAdditions.push({
+    // Target-less path (an edition upgrade or an expansion scoped by prose):
+    // the edition exists, but there is no target to relate it to. It is reported
+    // as UNVERIFIED, never as a verified relationship.
+    unverifiedAdditions.push({
       token,
       editionId: token,
       familyId: edition.familyId,
@@ -609,8 +640,10 @@ export function validateUpgradePath(input: unknown): UpgradePathIntegrity {
     fromBundleId,
     target,
     verifiedAdditions: Object.freeze(verifiedAdditions),
+    unverifiedAdditions: Object.freeze(unverifiedAdditions),
     textualAdditions: Object.freeze(textualAdditions),
     findings: Object.freeze(findings),
+    notes: Object.freeze(notes),
   };
 }
 
@@ -624,8 +657,10 @@ export function upgradePathIntegrity(upgradeId: string): UpgradePathIntegrity {
       fromBundleId: null,
       target: { kind: 'NONE', id: null },
       verifiedAdditions: [],
+      unverifiedAdditions: [],
       textualAdditions: [],
       findings: [],
+      notes: [],
     };
   }
   return validateUpgradePath(path);

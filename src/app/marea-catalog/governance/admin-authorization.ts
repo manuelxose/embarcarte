@@ -20,6 +20,7 @@
  * `submitReviewAction` is the single entry point the UI calls. It is pure: no
  * fetch, no storage, no clock. `applied` is false for every request today.
  */
+import { isGovernanceEditionId } from './governance-facts';
 
 /** Internal review actions the governance screen can offer. */
 export const ADMIN_ACTIONS = [
@@ -125,18 +126,21 @@ export function authorizeAdminAction(
   action: unknown,
   principal: AdminPrincipal = CURRENT_PRINCIPAL,
 ): AuthorizationDecision {
+  // Total function: a null/malformed principal degrades to the anonymous one
+  // instead of throwing (AUD-07).
+  const actor = safePrincipal(principal);
   if (!isAdminAction(action)) {
     return {
-      action: String(action),
+      action: typeof action === 'string' ? action.slice(0, 120) : 'UNKNOWN_ACTION',
       allowed: false,
       readOnly: false,
       code: 'UNKNOWN_ACTION',
       reasons: ['the action is not part of the governance vocabulary'],
-      principalRef: principal.principalRef,
+      principalRef: actor.principalRef,
     };
   }
   const readOnly = READ_ONLY_ADMIN_ACTIONS.includes(action);
-  const base = { action, readOnly, principalRef: principal.principalRef };
+  const base = { action, readOnly, principalRef: actor.principalRef };
   if (PROHIBITED_ADMIN_ACTIONS.includes(action)) {
     return {
       ...base,
@@ -156,7 +160,7 @@ export function authorizeAdminAction(
       reasons: ['read-only inspection computes a decision and stores nothing'],
     };
   }
-  if (principal.authorizationMechanism !== 'VERIFIED_SESSION' || !principal.authenticated) {
+  if (actor.authorizationMechanism !== 'VERIFIED_SESSION' || !actor.authenticated) {
     return {
       ...base,
       allowed: false,
@@ -164,12 +168,12 @@ export function authorizeAdminAction(
       reasons: ['there is no verified session or administrative authentication mechanism'],
     };
   }
-  if (!isAdminRole(principal.role) || !ROLE_ACTIONS[principal.role].includes(action)) {
+  if (!isAdminRole(actor.role) || !ROLE_ACTIONS[actor.role].includes(action)) {
     return {
       ...base,
       allowed: false,
       code: 'ROLE_NOT_AUTHORIZED',
-      reasons: [`role ${principal.role} may not perform ${action}`],
+      reasons: [`role ${actor.role} may not perform ${action}`],
     };
   }
   if (APPROVAL_PERSISTENCE_CONTRACT === 'ABSENT') {
@@ -202,22 +206,54 @@ export interface ReviewActionOutcome {
 }
 
 /**
+ * Sanitise an untrusted string for the audit draft.
+ *
+ * Removes control characters (so a value cannot inject a newline into a log
+ * line) and bounds the length. Non-strings become the fallback.
+ */
+function safeText(value: unknown, fallback: string): string {
+  if (typeof value !== 'string') return fallback;
+  const stripped = value.replace(/[\u0000-\u001f\u007f]/gu, ' ').trim();
+  return stripped.length === 0 ? fallback : stripped.slice(0, 120);
+}
+
+function safePrincipal(value: unknown): AdminPrincipal {
+  if (value === null || typeof value !== 'object') return CURRENT_PRINCIPAL;
+  const candidate = value as Partial<AdminPrincipal>;
+  return {
+    role: isAdminRole(candidate.role) ? candidate.role : 'ANONYMOUS',
+    authenticated: candidate.authenticated === true,
+    authorizationMechanism:
+      candidate.authorizationMechanism === 'VERIFIED_SESSION' ? 'VERIFIED_SESSION' : 'NONE',
+    principalRef: safeText(candidate.principalRef, 'UNVERIFIED'),
+  };
+}
+
+/**
  * The only mutation entry point. It CANNOT apply anything: no persistence
  * contract exists, so it reports the authorization decision and an audit draft.
  * Calling it directly — bypassing the UI entirely — is refused identically.
+ *
+ * Total function: a `null`/malformed request, a null-prototype principal or a
+ * control-character subject is handled as a refusal, never as a crash.
  */
-export function submitReviewAction(request: ReviewActionRequest): ReviewActionOutcome {
-  const principal = request.principal ?? CURRENT_PRINCIPAL;
-  const authorization = authorizeAdminAction(request.action, principal);
-  const editionId = typeof request.editionId === 'string' ? request.editionId : null;
+export function submitReviewAction(request?: ReviewActionRequest | null): ReviewActionOutcome {
+  const input: Partial<ReviewActionRequest> =
+    request !== null && typeof request === 'object' ? request : {};
+  const action = safeText(input.action, 'UNKNOWN_ACTION');
+  const principal = safePrincipal(input.principal);
+  const authorization = authorizeAdminAction(action, principal);
+  const rawEdition = safeText(input.editionId, '');
+  // Only a canonical edition may appear in the draft; anything else is opaque.
+  const editionId = isGovernanceEditionId(rawEdition) ? rawEdition : null;
   return Object.freeze({
-    action: String(request.action),
+    action,
     editionId,
     applied: false,
     persisted: false,
     durableApproval: false,
     authorization,
-    auditDraft: `MC25-REVIEW:${String(request.action)}:${editionId ?? 'NO-SUBJECT'}:${authorization.code}:NOT_PERSISTED`,
+    auditDraft: `MC25-REVIEW:${action}:${editionId ?? 'NO-SUBJECT'}:${authorization.code}:NOT_PERSISTED`,
   });
 }
 

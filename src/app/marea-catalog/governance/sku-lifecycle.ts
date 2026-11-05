@@ -196,6 +196,9 @@ export type TransitionResult =
       readonly fromState: SkuGovernanceState;
       readonly toState: SkuGovernanceState;
       readonly auditDraft: string;
+      /** `ok` means "legal and permitted by the guard", not "applied". */
+      /** Nothing is ever applied: there is no approval backend. */
+      readonly applied: false;
       readonly persisted: false;
     }
   | {
@@ -205,6 +208,7 @@ export type TransitionResult =
       readonly fromState: unknown;
       readonly toState: unknown;
       readonly refusalCode: string | null;
+      readonly applied: false;
       readonly persisted: false;
     };
 
@@ -223,6 +227,7 @@ export function transition(from: unknown, to: unknown): TransitionResult {
       fromState: from,
       toState: to,
       refusalCode: null,
+      applied: false,
       persisted: false,
     };
   }
@@ -233,6 +238,7 @@ export function transition(from: unknown, to: unknown): TransitionResult {
       fromState: from,
       toState: to,
       refusalCode: null,
+      applied: false,
       persisted: false,
     };
   }
@@ -246,6 +252,7 @@ export function transition(from: unknown, to: unknown): TransitionResult {
       fromState: from,
       toState: to,
       refusalCode: null,
+      applied: false,
       persisted: false,
     };
   }
@@ -256,6 +263,7 @@ export function transition(from: unknown, to: unknown): TransitionResult {
       fromState: from,
       toState: to,
       refusalCode: match.guardRefusalCode,
+      applied: false,
       persisted: false,
     };
   }
@@ -265,6 +273,7 @@ export function transition(from: unknown, to: unknown): TransitionResult {
     fromState: from,
     toState: to,
     auditDraft: `${match.transitionId}:${from}->${to}:NOT_PERSISTED`,
+    applied: false,
     persisted: false,
   };
 }

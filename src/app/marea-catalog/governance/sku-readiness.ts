@@ -454,8 +454,8 @@ export function evaluateFamilyReadiness(familyId: unknown): ReadinessDecision {
 
 export interface BundleReadinessDecision {
   readonly bundleId: string;
-  readonly commercialOrderability: 'NOT_ORDERABLE';
-  readonly orderable: false;
+  readonly commercialOrderability: CommercialOrderability;
+  readonly orderable: boolean;
   readonly includedEditionIds: readonly string[];
   readonly refusalReasons: readonly RefusalReason[];
   readonly evaluationVersion: typeof READINESS_EVALUATION_VERSION;
@@ -504,10 +504,20 @@ export function evaluateBundleReadiness(bundleId: unknown): BundleReadinessDecis
       }
     }
   }
+
+  // Computed, not asserted: a bundle is orderable only when it is a known
+  // bundle whose every INCLUDED edition is orderable, whose own availability is
+  // COMMERCIALLY_AVAILABLE and which no safety gate holds.
+  const editionsOrderable =
+    included.length > 0 && included.every((editionId) => evaluateSkuReadiness(editionId).orderable);
+  const availabilityOrderable = bundle?.commercialAvailability === 'COMMERCIALLY_AVAILABLE';
+  const safetyHold = bundle?.gates.some((gate) => /PILOT_SAFETY_GATE_BLOCKED/u.test(gate)) ?? true;
+  const orderable = Boolean(bundle) && editionsOrderable && availabilityOrderable && !safetyHold;
+
   return Object.freeze({
     bundleId: id,
-    commercialOrderability: 'NOT_ORDERABLE',
-    orderable: false,
+    commercialOrderability: orderable ? ('ORDERABLE' as const) : ('NOT_ORDERABLE' as const),
+    orderable,
     includedEditionIds: Object.freeze(included),
     refusalReasons: Object.freeze(refusalReasons),
     evaluationVersion: READINESS_EVALUATION_VERSION,
@@ -535,14 +545,23 @@ export function assertNotOrderable(decision: ReadinessDecision | BundleReadiness
   }
 }
 
-/** Facts the engine publishes about itself. */
+/**
+ * Facts the engine publishes about itself.
+ *
+ * Computed from the same matrices the UI renders, not hard-coded: a constant
+ * `orderableEditions: 0` would keep saying zero even if an evaluation started
+ * returning orderable, which is exactly the dishonesty this milestone forbids.
+ */
+const EDITION_MATRIX = readinessMatrix();
+const BUNDLE_MATRIX = bundleReadinessMatrix();
+
 export const READINESS_FACTS = Object.freeze({
   evaluationVersion: READINESS_EVALUATION_VERSION,
   prerequisiteCount: READINESS_PREREQUISITES.length,
   editionCount: GOVERNANCE_SNAPSHOT.editions.length,
   bundleCount: BUNDLE_ORDER.length,
-  orderableEditions: 0,
-  orderableBundles: 0,
+  orderableEditions: EDITION_MATRIX.filter((decision) => decision.orderable).length,
+  orderableBundles: BUNDLE_MATRIX.filter((decision) => decision.orderable).length,
   approvedPrices: GOVERNANCE_SNAPSHOT.priceState.approvedPrices,
   verifiedStockRows: GOVERNANCE_SNAPSHOT.inventoryState.inventoryItemCount,
   openReleaseGates: GOVERNANCE_SNAPSHOT.blockers.filter((blocker) => blocker.open).length,

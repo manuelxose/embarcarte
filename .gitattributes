@@ -7,3 +7,9 @@ docs/marea/catalog/evidence/*.json text eol=lf
 scripts/mc23-git-reader.mjs text eol=lf
 scripts/test.mjs text eol=lf
 scripts/run-tsc.mjs text eol=lf
+# MC-25: the provenance digests hash the raw bytes of these contracts, and the
+# generated projection must be byte-identical on every checkout. Pin them so a
+# core.autocrlf=true Windows checkout cannot present them as modified.
+src/app/marea-catalog/data/governance.generated.ts text eol=lf
+docs/marea/commerce-data/data/*.json text eol=lf
+docs/marea/bundles/*.json text eol=lf

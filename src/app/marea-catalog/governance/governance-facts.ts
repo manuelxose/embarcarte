@@ -4,8 +4,9 @@
  * The generated projection (`../data/governance.generated`) is frozen deeply at
  * module load and indexed once. Nothing downstream may mutate it:
  *
- *  - the snapshot is frozen recursively, so a `push`/assignment on any array or
- *    object throws in strict mode;
+ *  - the snapshot is frozen recursively, so a `push` throws and a property
+ *    assignment is either rejected (strict mode) or ignored (sloppy mode); in
+ *    both cases the data never changes;
  *  - the lookup `Map`s are module-private, so a consumer cannot swap an entry
  *    behind the readiness engine's back.
  *

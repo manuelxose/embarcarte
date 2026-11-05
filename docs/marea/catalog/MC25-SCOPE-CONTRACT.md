@@ -77,7 +77,7 @@ than trusting the earlier documentation evidence.
   evidence.
 - Real Angular preview **and** production builds succeed; the negative template
   binding is rejected by the compiler naming the injected member.
-- `test:mc25` 20/20, `test:mc25:unit` 51/51, catalogue E2E green, inherited
+- `test:mc25` 20/20, `test:mc25:unit` 58/58, catalogue E2E green, inherited
   MC-20..MC-24 suites unchanged or stricter.
 - Independent audit by a different model, with every BLOCKER/MAJOR closed and
   re-verified.

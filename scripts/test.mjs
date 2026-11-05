@@ -26,9 +26,10 @@ const stages = [
   { id: 'mc23', file: 'scripts/check-mc23-bundles.mjs', optional: true },
   { id: 'unit', file: 'scripts/check-mc23-bundles.test.mjs', optional: true, tests: true },
   // MC-25: the validator re-derives the projection in-process, so importing it
-  // here is both the governance stage and the generator drift gate.
-  { id: 'mc25', file: 'scripts/check-mc25-governance.mjs', optional: true },
-  { id: 'mc25unit', file: 'scripts/check-mc25-governance.test.mjs', optional: true, tests: true },
+  // here is both the governance stage and the generator drift gate. These two
+  // stages are REQUIRED: a missing MC-25 control must fail the runner.
+  { id: 'mc25', file: 'scripts/check-mc25-governance.mjs' },
+  { id: 'mc25unit', file: 'scripts/check-mc25-governance.test.mjs', tests: true },
 ];
 
 const results = [];
@@ -75,5 +76,7 @@ for (const stage of stages) {
 }
 
 const failed = results.filter((r) => !r.pass).length;
-console.log(`\nMC-23 confined runner: ${failed === 0 ? 'PASS' : 'FAIL'} (${results.length - failed}/${results.length} stages green)`);
+console.log(
+  `\nMC-23 confined runner: ${failed === 0 ? 'PASS' : 'FAIL'} (${results.length - failed}/${results.length} stages green)`,
+);
 process.exit(failed === 0 ? 0 : 1);
