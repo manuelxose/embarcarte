@@ -631,6 +631,12 @@ add('MC20-26', 'the catalogue defines no form, input, storage or network call', 
       }
       if (/<form[^>]*\baction\s*=/i.test(source)) return fail(`${file} sets a form action`);
       if (/<form[^>]*\bmethod\s*=/i.test(source)) return fail(`${file} sets a form method`);
+      // Independent audit D-03: an Angular binding or HTML5 formAction would also
+      // route the form, so they are rejected as well (defence in depth; the CSP
+      // `form-action 'none'` is a second independent barrier).
+      if (/\[(?:attr\.)?action\]\s*=/i.test(source)) return fail(`${file} binds a form action`);
+      if (/\[(?:attr\.)?method\]\s*=/i.test(source)) return fail(`${file} binds a form method`);
+      if (/\bformAction\b/i.test(source)) return fail(`${file} uses formAction`);
       if (!/\(ngSubmit\)=/.test(source)) return fail(`${file} form is not an Angular local submit`);
       for (const prohibited of ['type="email"', 'type="tel"', 'type="password"', 'name="email"']) {
         if (source.includes(prohibited)) return fail(`${file} collects ${prohibited}`);

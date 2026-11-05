@@ -111,7 +111,7 @@ export const PROHIBITED_CLAIMS = [
     // honest negated form must keep working through the negatable-clause rules.
     id: 'positive-availability',
     pattern:
-      /\b(?:disponible para la venta|a la venta|en venta|on sale|available for (?:sale|purchase)|listo para (?:comprar|enviar)|ready to (?:buy|ship)|aprobado para (?:la )?venta|approved for sale|disponible\s+ya|ya\s+(?:est[áa]\s+)?disponible|now\s+available|available\s+now)\b/i,
+      /\b(?:disponible para la venta|a la venta|en venta|on sale|available for (?:sale|purchase)|listo para (?:comprar|enviar)|ready to (?:buy|ship)|aprobado para (?:la )?venta|approved for sale|disponible\s+ya|ya\s+(?:est[áa]\s+)?disponible|(?:ahora|actualmente)\s+disponible|now\s+available|available\s+now|already\s+available)\b/i,
   },
   {
     id: 'numeric-accuracy',

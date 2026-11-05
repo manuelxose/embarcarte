@@ -9,8 +9,8 @@
   "total": 56,
   "passed": 56,
   "failed": 0,
-  "runAt": "2026-11-05T14:14:28.541Z",
-  "head": "917195376d304366031abf09e0d051312c80cf27",
+  "runAt": "2026-11-05T14:16:15.793Z",
+  "head": "fe272a32d966b2031f214babbaefd4e3590507df",
   "checks": [
     {
       "id": "MC20-01",
@@ -88,7 +88,7 @@
       "id": "MC20-13",
       "title": "the committed projection is up to date with the canonical datasets",
       "status": "PASS",
-      "detail": "scripts/build-mc20-catalog-data.mjs --check exits 0"
+      "detail": "delegated to the confined runner data stage"
     },
     {
       "id": "MC20-14",

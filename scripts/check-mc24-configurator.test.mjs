@@ -369,6 +369,9 @@ both('a22 the F-01 and F-02 bypasses stay closed under paraphrase drift', () => 
     'ya está disponible en tienda',
     'now available',
     'available now',
+    'ahora disponible',
+    'actualmente disponible',
+    'already available',
     'soporte garantizado',
     'garantizado de por vida',
     'garantizada',
@@ -411,15 +414,37 @@ both('a24 the validated-rule registry cannot be mutated at runtime', () => {
   assert.equal(result.eligible, false);
 });
 
-both('a25 inherited-property answers cannot satisfy the questionnaire', () => {
-  // An answers object whose fields live on the prototype must not count as filled.
+both('a25 answers living on the prototype do not fill the questionnaire', () => {
+  // Independent audit F-01: `answers[id]` resolves the prototype chain, so an
+  // inherited-property answers object used to count as fully filled. An answer
+  // must be an OWN property, so this is reported as INSUFFICIENT_INFORMATION.
   const proto = Object.fromEntries(
     (engine.MANDATORY_QUESTION_IDS['START'] ?? []).map((id) => [id, 'x']),
   );
   const inherited = Object.create(proto);
   const result = engine.resolveConfiguration({ bundleId: 'START', answers: inherited });
-  // Whatever the outcome, it must never be an eligible one; and because the
-  // answers are absent own-properties, it is reported as insufficient.
   assert.equal(result.eligible, false);
   assert.notEqual(result.outcome, 'ELIGIBLE_SELF_INSTALL');
+  assert.equal(result.outcome, 'INSUFFICIENT_INFORMATION');
+  assert.equal(result.unresolvedQuestionIds.length, engine.MANDATORY_QUESTION_IDS['START'].length);
+});
+
+both('a26 a zero-width or non-breaking answer counts as blank', () => {
+  // Independent audit F-02: trim() keeps some Unicode blanks, so they counted as
+  // a filled answer.
+  for (const blank of ['\u200b', '\u00a0', '\ufeff', '\u200b\u200b', ' \u00a0 ']) {
+    const answers = { ...answersFor('START'), 'GQ-01': blank };
+    const result = engine.resolveConfiguration({ bundleId: 'START', answers });
+    assert.equal(
+      result.outcome,
+      'INSUFFICIENT_INFORMATION',
+      `blank ${JSON.stringify(blank)} accepted`,
+    );
+    assert.ok(result.unresolvedQuestionIds.includes('GQ-01'));
+  }
+  const filled = engine.resolveConfiguration({
+    bundleId: 'START',
+    answers: { ...answersFor('START'), 'GQ-01': 'velero' },
+  });
+  assert.equal(filled.outcome, 'INSTALLER_ASSESSMENT_REQUIRED');
 });

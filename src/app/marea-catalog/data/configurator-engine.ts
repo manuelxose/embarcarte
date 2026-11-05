@@ -135,10 +135,24 @@ export function isKnownBundle(bundleId: unknown): bundleId is string {
   return typeof bundleId === 'string' && (BUNDLE_IDS as readonly string[]).includes(bundleId);
 }
 
+/**
+ * Read one answer as an OWN property.
+ *
+ * `answers[id]` resolves through the prototype chain, so an answers object whose
+ * fields live on its prototype (or a polluted `Object.prototype`) would count as
+ * filled — the independent audit's finding F-01. An answer only exists when the
+ * caller actually supplied it.
+ */
+function answerOf(answers: ConfiguratorAnswers, id: string): string | undefined {
+  if (!Object.hasOwn(answers, id)) return undefined;
+  return normalized(answers[id]);
+}
+
 function normalized(value: string | undefined): string | undefined {
   if (typeof value !== 'string') return undefined;
-  const trimmed = value.trim().toLowerCase();
-  return trimmed.length === 0 ? undefined : trimmed;
+  // Zero-width space/joiners, nbsp and BOM count as blank though trim() keeps some.
+  const stripped = value.replace(/[\s\u200b-\u200d\ufeff]/g, '');
+  return stripped.length === 0 ? undefined : stripped.toLowerCase();
 }
 
 /**
@@ -192,7 +206,7 @@ export function resolveConfiguration(request: ConfiguratorRequest): Configurator
   const mandatory = MANDATORY_QUESTION_IDS[request.bundleId] ?? [];
   const contradictory = contradictionIds(request.bundleId, request.answers, requested);
   const unresolved = mandatory.filter(
-    (id) => normalized(request.answers[id]) === undefined || contradictory.includes(id),
+    (id) => answerOf(request.answers, id) === undefined || contradictory.includes(id),
   );
   if (unresolved.length > 0) {
     return result('INSUFFICIENT_INFORMATION', request.bundleId, {
@@ -206,7 +220,7 @@ export function resolveConfiguration(request: ConfiguratorRequest): Configurator
     (rule) =>
       rule.bundleId === request.bundleId &&
       Object.entries(rule.requiredAnswers).every(
-        ([id, value]) => normalized(request.answers[id]) === normalized(value),
+        ([id, value]) => answerOf(request.answers, id) === normalized(value),
       ),
   );
   if (matched) {
