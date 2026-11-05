@@ -1,0 +1,73 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "layer": "C_REPOSITORY_AGGREGATE",
+  "checks": [
+    {
+      "checkId": "QC-01",
+      "check": "Every machine-readable data file parses as JSON with a final newline",
+      "result": "COMPLETE",
+      "evidence": "node scripts/check-marea-customer-research.mjs"
+    },
+    {
+      "checkId": "QC-02",
+      "check": "Every aggregate count reconciles with data/research-status.json",
+      "result": "COMPLETE",
+      "evidence": "participants, interviews, funnel, pricing and coding registers all zero"
+    },
+    {
+      "checkId": "QC-03",
+      "check": "Frozen experiment thresholds recompute to the recorded SHA-256",
+      "result": "COMPLETE",
+      "evidence": "data/experiments.json thresholdSha256 vs records in docs/marea/market-validation/data/validation-experiments.json"
+    },
+    {
+      "checkId": "QC-04",
+      "check": "PII scan of the repository aggregate layer",
+      "result": "COMPLETE",
+      "evidence": "no email, phone, IBAN, DNI/NIE/NIF, postal address, name or contact field found; NO_PII_FOUND"
+    },
+    {
+      "checkId": "QC-05",
+      "check": "No raw audio, verbatim transcript or Layer A/B record in the repository",
+      "result": "COMPLETE",
+      "evidence": "transcriptsInRepo=false; audioInRepo=false; Layer A/B stores do not exist in this environment"
+    },
+    {
+      "checkId": "QC-06",
+      "check": "Synthetic fixtures are excluded from the real tree and from every total",
+      "result": "COMPLETE",
+      "evidence": "fixtures exist only in operating-system temporary directories under the negative-mutation suite"
+    },
+    {
+      "checkId": "QC-07",
+      "check": "Cross-file participant/interview/pricing ID consistency",
+      "result": "COMPLETE",
+      "evidence": "0 participants, 0 interviews, 0 pricing responses: no reference can be unresolved"
+    },
+    {
+      "checkId": "QC-08",
+      "check": "No reported rate has a zero denominator",
+      "result": "COMPLETE",
+      "evidence": "no proportion is reported; denominators are 0 and therefore every rate is undefined, not 0% and not 100%"
+    },
+    {
+      "checkId": "QC-09",
+      "check": "No evidence-bearing finding exists without a valid interview record",
+      "result": "COMPLETE",
+      "evidence": "data/findings.json is empty and no interview record exists"
+    }
+  ],
+  "participantsReconciled": true,
+  "countsReconciled": true,
+  "fixturesExcludedFromTotals": true,
+  "piiScan": "NO_PII_FOUND",
+  "transcriptsInRepo": false,
+  "audioInRepo": false,
+  "layerAProvisioned": false,
+  "layerBProvisioned": false,
+  "note": "Preparation-time data-quality evidence only. It proves that the aggregate layer is empty, reconciled and free of personal data; it is not a quality measure of research that was never executed."
+}

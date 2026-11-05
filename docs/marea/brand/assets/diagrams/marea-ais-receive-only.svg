@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 880" role="img">
+  <title>MAREA AIS — recepción únicamente: cadena de escucha / AIS receive-only chain (ilustrativo / illustrative)</title>
+  <desc>Diagrama de la cadena AIS de recepción únicamente: antena y splitter, receptor VHF, decodificador, HUB/NAV, análisis AIS y presentación. No existe ruta de transmisión. Ilustrativo, sin revisión de ingeniería. / Receive-only AIS chain: antenna and splitter, VHF receiver, decoder, HUB/NAV, AIS analysis, presentation. No transmit path. Illustrative; engineering review pending.</desc>
+  <rect width="1200" height="880" fill="#ffffff"/>
+
+  <!-- Header -->
+  <text x="40" y="56" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="22" font-weight="700" fill="#17365d">MAREA AIS — recepción únicamente: cadena de escucha</text>
+  <text x="40" y="82" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="14" fill="#57708a">AIS receive-only chain — illustrative; not a certified product; engineering review pending</text>
+  <rect x="40" y="96" width="760" height="26" rx="4" fill="#fff8ec" stroke="#8a5a00" stroke-width="1.5"/>
+  <text x="52" y="113" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#8a5a00">ILUSTRATIVO / ILLUSTRATIVE · no certificado / not certified · revisión de ingeniería pendiente / engineering review pending</text>
+  <text x="1160" y="34" text-anchor="end" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">D-11 · MR-DIA-001 · v1</text>
+
+  <!-- No transmit path callout -->
+  <circle cx="300" cy="140" r="13" fill="#ffffff" stroke="#a32b22" stroke-width="2.5"/>
+  <line x1="291" y1="131" x2="309" y2="149" stroke="#a32b22" stroke-width="2.5"/>
+  <line x1="300" y1="153" x2="300" y2="188" stroke="#a32b22" stroke-width="2" stroke-dasharray="4 4"/>
+  <text x="322" y="132" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="700" fill="#a32b22">SIN RUTA DE TRANSMISIÓN / NO TRANSMIT PATH</text>
+  <text x="322" y="148" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#a32b22">sin transpondedor ni DSC · no transponder, no DSC · recepción únicamente / receive-only</text>
+
+  <!-- Chain: 6 boxes -->
+  <!-- Box 1 antenna / splitter -->
+  <rect x="40" y="190" width="160" height="160" rx="6" fill="#f2f9fd" stroke="#57708a" stroke-width="2"/>
+  <g transform="translate(108,200)" fill="none" stroke="#17365d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="15" width="6" height="6" rx="1.5"/>
+    <line x1="6" y1="15" x2="6" y2="8"/>
+    <circle cx="6" cy="8" r="1" fill="#17365d" stroke="none"/>
+    <path d="M9.54 4.46 A5 5 0 0 1 9.54 11.54"/>
+    <path d="M11.66 2.34 A8 8 0 0 1 11.66 13.66"/>
+  </g>
+  <text x="120" y="248" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#17365d">Antena / splitter</text>
+  <text x="120" y="264" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#57708a">Antenna / splitter</text>
+  <text x="120" y="288" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">entrada RF</text>
+  <text x="120" y="303" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">RF input</text>
+
+  <!-- Box 2 VHF receiver -->
+  <rect x="220" y="190" width="160" height="160" rx="6" fill="#f2f9fd" stroke="#57708a" stroke-width="2"/>
+  <g transform="translate(288,200)" fill="none" stroke="#17365d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="7" width="18" height="10" rx="2"/>
+    <circle cx="8" cy="12" r="2"/>
+    <line x1="12" y1="11" x2="18" y2="11"/>
+    <line x1="12" y1="14" x2="18" y2="14"/>
+  </g>
+  <text x="300" y="248" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#17365d">Receptor VHF</text>
+  <text x="300" y="264" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#57708a">VHF receiver</text>
+  <text x="300" y="288" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">escucha; sin TX</text>
+  <text x="300" y="303" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">listening only; no TX</text>
+
+  <!-- Box 3 decoder -->
+  <rect x="400" y="190" width="160" height="160" rx="6" fill="#f2f9fd" stroke="#57708a" stroke-width="2"/>
+  <g transform="translate(468,200)" fill="none" stroke="#17365d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="5" y="5" width="14" height="14" rx="1.5"/>
+    <circle cx="12" cy="12" r="2.5"/>
+    <line x1="12" y1="2" x2="12" y2="5"/>
+    <line x1="12" y1="19" x2="12" y2="22"/>
+    <line x1="2" y1="12" x2="5" y2="12"/>
+    <line x1="19" y1="12" x2="22" y2="12"/>
+  </g>
+  <text x="480" y="248" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#17365d">Decodificador AIS</text>
+  <text x="480" y="264" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#57708a">AIS decoder</text>
+  <text x="480" y="288" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">ejecutable separado</text>
+  <text x="480" y="303" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">separate executable</text>
+
+  <!-- Box 4 HUB / NAV -->
+  <rect x="580" y="190" width="160" height="160" rx="6" fill="#f2f9fd" stroke="#57708a" stroke-width="2"/>
+  <g transform="translate(648,200)" fill="none" stroke="#17365d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="11" rx="2"/>
+    <line x1="8" y1="16" x2="8" y2="20"/>
+    <line x1="12" y1="16" x2="12" y2="20"/>
+    <line x1="16" y1="16" x2="16" y2="20"/>
+  </g>
+  <text x="660" y="248" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#17365d">HUB / NAV</text>
+  <text x="660" y="264" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#57708a">HUB / NAV</text>
+  <text x="660" y="288" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">ingesta + bus a bordo</text>
+  <text x="660" y="303" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">ingestion + vessel bus</text>
+
+  <!-- Box 5 AIS analysis -->
+  <rect x="760" y="190" width="160" height="160" rx="6" fill="#ffffff" stroke="#17365d" stroke-width="2"/>
+  <g transform="translate(828,200)" fill="none" stroke="#17365d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8" stroke-dasharray="3 3"/>
+    <path d="M12 5 L16.5 18.5 H7.5 Z"/>
+  </g>
+  <text x="840" y="248" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#17365d">Análisis AIS</text>
+  <text x="840" y="264" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#57708a">AIS analysis</text>
+  <text x="840" y="288" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">apoyo a la decisión</text>
+  <text x="840" y="303" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">decision support</text>
+  <text x="840" y="318" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#8a5a00">no evitación / not avoidance</text>
+
+  <!-- Box 6 presentation -->
+  <rect x="940" y="190" width="160" height="160" rx="6" fill="#ffffff" stroke="#17365d" stroke-width="2"/>
+  <g transform="translate(1008,200)" fill="none" stroke="#17365d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="5" width="18" height="12" rx="2"/>
+    <line x1="9" y1="17" x2="9" y2="20"/>
+    <line x1="15" y1="17" x2="15" y2="20"/>
+    <line x1="7" y1="20" x2="17" y2="20"/>
+  </g>
+  <text x="1020" y="248" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#17365d">Presentación</text>
+  <text x="1020" y="264" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#57708a">Presentation</text>
+  <text x="1020" y="288" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">pantalla y alarmas</text>
+  <text x="1020" y="303" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">display and alerts</text>
+  <text x="1020" y="318" text-anchor="middle" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">estados de dato / data states</text>
+
+  <!-- Arrows between boxes -->
+  <g fill="#57708a" stroke="#57708a" stroke-width="2" stroke-linecap="round">
+    <line x1="202" y1="270" x2="208" y2="270"/>
+    <path d="M208 265 L218 270 L208 275 Z" fill="#57708a" stroke="none"/>
+    <line x1="382" y1="270" x2="388" y2="270"/>
+    <path d="M388 265 L398 270 L388 275 Z" fill="#57708a" stroke="none"/>
+    <line x1="562" y1="270" x2="568" y2="270"/>
+    <path d="M568 265 L578 270 L568 275 Z" fill="#57708a" stroke="none"/>
+    <line x1="742" y1="270" x2="748" y2="270"/>
+    <path d="M748 265 L758 270 L748 275 Z" fill="#57708a" stroke="none"/>
+    <line x1="922" y1="270" x2="928" y2="270"/>
+    <path d="M928 265 L938 270 L928 275 Z" fill="#57708a" stroke="none"/>
+  </g>
+
+  <!-- No shore uplink -->
+  <circle cx="940" cy="376" r="8" fill="#ffffff" stroke="#a32b22" stroke-width="2"/>
+  <line x1="934.5" y1="370.5" x2="945.5" y2="381.5" stroke="#a32b22" stroke-width="2"/>
+  <text x="954" y="380" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#a32b22">SIN SUBIDA A TIERRA / NO SHORE UPLINK</text>
+
+  <!-- Chain direction label -->
+  <text x="40" y="380" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="#17365d">DIRECCIÓN ÚNICA: RECEPCIÓN → PRESENTACIÓN / ONE DIRECTION: RECEPTION → PRESENTATION</text>
+
+  <!-- Boundary rules and non-claims -->
+  <rect x="40" y="400" width="540" height="200" rx="6" fill="#ffffff" stroke="#57708a" stroke-width="1.5"/>
+  <text x="60" y="428" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#17365d">Reglas de frontera / Boundary rules</text>
+  <text x="60" y="450" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">Recepción permanente: no existe ruta de transmisión.</text>
+  <text x="60" y="462" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Receive-only, permanently: no transmit path exists.</text>
+  <text x="60" y="482" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">El decodificador es un ejecutable separado (licencia por decidir).</text>
+  <text x="60" y="494" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">The decoder is a separate executable (licence decision pending).</text>
+  <text x="60" y="514" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">Pérdida de recepción, un solo canal o fallo de antena: estado explícito.</text>
+  <text x="60" y="526" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Reception loss, single-channel or antenna fault: explicit state.</text>
+  <text x="60" y="546" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">El silencio no significa «sin tráfico».</text>
+  <text x="60" y="558" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Silence does not mean “no traffic”.</text>
+  <text x="60" y="578" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">CPA/TCPA es apoyo a la decisión con limitaciones declaradas.</text>
+  <text x="60" y="590" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">CPA/TCPA is decision support with declared limitations.</text>
+
+  <rect x="620" y="400" width="540" height="200" rx="6" fill="#ffffff" stroke="#57708a" stroke-width="1.5"/>
+  <text x="640" y="428" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#17365d">Lo que este diagrama no afirma / What this diagram does not claim</text>
+  <text x="640" y="450" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">No es un sistema de evitación de colisiones.</text>
+  <text x="640" y="462" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">It is not a collision-avoidance system.</text>
+  <text x="640" y="482" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">No es un transpondedor AIS ni un equipo certificado.</text>
+  <text x="640" y="494" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">It is not an AIS transponder or a certified device.</text>
+  <text x="640" y="514" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">No todos los buques emiten AIS.</text>
+  <text x="640" y="526" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Not every vessel transmits AIS.</text>
+  <text x="640" y="546" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">No existe evidencia de RF, recepción ni instalación real.</text>
+  <text x="640" y="558" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">There is no RF, reception or real-installation evidence.</text>
+  <text x="640" y="578" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">Sin compatibilidad implicada con equipos de terceros.</text>
+  <text x="640" y="590" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">No implied compatibility with third-party equipment.</text>
+
+  <!-- Mandatory disclaimers -->
+  <rect x="40" y="620" width="1120" height="200" rx="6" fill="#ffffff" stroke="#57708a" stroke-width="1.5"/>
+  <rect x="40" y="620" width="5" height="200" rx="2" fill="#5f6f7d"/>
+  <text x="60" y="646" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#17365d">Avisos obligatorios / Mandatory disclaimers</text>
+  <text x="60" y="672" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#17365d">AIS (ES): «La recepción AIS es únicamente de escucha: no todos los buques emiten AIS. No constituye un sistema de evitación de colisiones ni un transpondedor.»</text>
+  <text x="60" y="688" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">AIS (EN): “AIS reception is receive-only: not every vessel transmits AIS. It is not a collision-avoidance system and not a transponder.”</text>
+  <text x="60" y="712" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">Navegación (ES): «Este producto es una ayuda a la navegación y no sustituye a la carta náutica oficial, al equipo reglamentario de la embarcación, a la vigilancia</text>
+  <text x="60" y="726" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">continuada ni al buen hacer marinero. La responsabilidad de la navegación corresponde siempre al patrón.»</text>
+  <text x="60" y="746" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">Navigation (EN): “This product is a navigational aid. It does not replace official nautical charts, the vessel’s required equipment, continuous watchkeeping</text>
+  <text x="60" y="759" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">or good seamanship. Responsibility for navigation always rests with the skipper.”</text>
+  <text x="60" y="788" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Texto literal del brief §7.7 / COMMERCIAL-BRAND-CLAIMS-POLICY §9 — no parafraseado. Base técnica: MAREA-COMMERCIAL-ARCHITECTURE.md §10.1–10.2.</text>
+  <text x="60" y="802" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Sin sellos de certificación · sin datos en vivo · sin implicación de compatibilidad · revisión de ingeniería pendiente / no certification marks · no live data · no implied compatibility · engineering review pending.</text>
+</svg>

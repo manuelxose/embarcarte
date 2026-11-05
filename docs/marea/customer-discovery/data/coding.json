@@ -1,0 +1,23 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "schemaVersion": "MC10-CODING-1.0.0",
+  "codebookStatus": "PRE_REGISTERED",
+  "codedUnits": 0,
+  "doubleCodedUnits": 0,
+  "doubleCodingRatioTarget": 0.25,
+  "doubleCodingRatioAchieved": null,
+  "cohensKappa": null,
+  "kappaStatus": "NOT_COMPUTED",
+  "saturation": {
+    "reached": false,
+    "perSegment": [],
+    "rule": "Saturation is recorded per segment as no new code in the last two real interviews. With zero interviews it is false and must not be claimed."
+  },
+  "negativeCases": 0,
+  "denominatorRule": "No rate may be reported where its denominator is zero. With zero coded units every proportion is undefined, not 0% and not 100%.",
+  "note": "Nothing was coded because no interview record exists. Cohen's kappa is null and its status is NOT_COMPUTED; no agreement value may be invented to satisfy the double-coding target."
+}

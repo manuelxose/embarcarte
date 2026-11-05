@@ -1,0 +1,133 @@
+{
+  "contractId": "MC18-SSR-HYDRATION-EVIDENCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "MC-18 QA",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "description": "SSR/no-JavaScript contract and Chromium hydration verification for the internal MC-18 landing preview (/marea and /en/marea).",
+  "generationMethod": [
+    "npm run build:landing:preview",
+    "npx playwright test -c playwright.landing.config.ts"
+  ],
+  "measuredAt": "2026-11-03T11:43:20.899Z",
+  "browser": {
+    "name": "Chromium",
+    "version": "156.0.8078.4"
+  },
+  "platform": "win32",
+  "knownLimitations": [
+    "SSR is verified on the isolated loopback preview only; no public host serves these routes.",
+    "Hydration is verified in Chromium (Playwright Desktop Chrome) only; Safari and Firefox were not executed.",
+    "The preview build is a development configuration (optimization disabled); production bundle behaviour is out of scope for this dataset.",
+    "noindex/X-Robots-Tag are defence in depth, not access control: the server binds to 127.0.0.1."
+  ],
+  "data": {
+    "previewOrigin": "http://127.0.0.1:4302",
+    "ssr": {
+      "es": {
+        "status": 200
+      },
+      "en": {
+        "status": 200
+      },
+      "noCanonical": true,
+      "noHreflang": true,
+      "noJsonLd": true,
+      "noOg": true,
+      "noTwitter": true,
+      "xRobots": "noindex, nofollow, noarchive",
+      "metaRobotsNoindex": true,
+      "htmlLang": {
+        "es": "es-ES",
+        "en": "en"
+      },
+      "heroHeading": {
+        "es": "Nueve familias, una arquitectura marina compartida: definida por partes, pendiente de verificación.",
+        "en": "Nine families, one shared marine architecture: defined in parts, still to be verified."
+      },
+      "counts": {
+        "es": {
+          "sections": 10,
+          "families": 9,
+          "bundles": 6
+        },
+        "en": {
+          "sections": 10,
+          "families": 9,
+          "bundles": 6
+        }
+      },
+      "notFound": [
+        {
+          "path": "/marea/unknown",
+          "status": 404,
+          "xRobots": "noindex, nofollow, noarchive"
+        },
+        {
+          "path": "/en/marea/unknown",
+          "status": 404,
+          "xRobots": "noindex, nofollow, noarchive"
+        },
+        {
+          "path": "/unknown",
+          "status": 404,
+          "xRobots": "noindex, nofollow, noarchive"
+        }
+      ]
+    },
+    "hydration": {
+      "status": "PASS",
+      "consoleErrors": 0,
+      "duplicateDom": false,
+      "mismatch": false,
+      "perLocale": {
+        "es": {
+          "status": "PASS",
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "duplicateDom": false,
+          "mismatch": false,
+          "ssrSections": 10,
+          "liveSections": 10,
+          "ssrFamilies": 9,
+          "liveFamilies": 9,
+          "ssrBundles": 6,
+          "liveBundles": 6,
+          "ssrH1": 1,
+          "liveH1": 1,
+          "bannerVisible": true,
+          "heroHeadingStable": true,
+          "keyboardAfterHydration": true,
+          "hydrationLog": "Angular hydrated 674 component(s) and 3959 node(s), 0 component(s) were skipped. Learn more at https://v21.angular.dev/guide/hydration."
+        },
+        "en": {
+          "status": "PASS",
+          "consoleErrors": 0,
+          "consoleWarnings": 0,
+          "duplicateDom": false,
+          "mismatch": false,
+          "ssrSections": 10,
+          "liveSections": 10,
+          "ssrFamilies": 9,
+          "liveFamilies": 9,
+          "ssrBundles": 6,
+          "liveBundles": 6,
+          "ssrH1": 1,
+          "liveH1": 1,
+          "bannerVisible": true,
+          "heroHeadingStable": true,
+          "keyboardAfterHydration": true,
+          "hydrationLog": "Angular hydrated 674 component(s) and 3957 node(s), 0 component(s) were skipped. Learn more at https://v21.angular.dev/guide/hydration."
+        }
+      },
+      "keyboardAfterHydration": true,
+      "heroHeadingStable": true
+    },
+    "evidencePaths": {
+      "results": "test-results/landing/results.json",
+      "artifacts": "test-results/landing/artifacts"
+    }
+  }
+}

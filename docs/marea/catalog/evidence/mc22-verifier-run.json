@@ -1,0 +1,152 @@
+{
+  "contractId": "MC22-VERIFIER-RUN",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-22",
+  "kind": "verification",
+  "verifier": "architecture (independent verifier; did not implement the catalogue, content, validator or tests)",
+  "head": "1dc9aa0d85d418709cfaccd41fe1f2335462c672",
+  "branch": "feature/marea-mc22-display-pilot-fleet-catalog",
+  "runAt": "2026-11-05T01:46:00+01:00",
+  "verdict": "PASS",
+  "blockingFindings": 0,
+  "nonBlockingFindings": 0,
+  "commands": [
+    {
+      "command": "node scripts/build-mc20-catalog-data.mjs --check",
+      "exitCode": 0,
+      "observed": "MC-20 catalogue data is up to date (3 generated files).",
+      "counts": "9 families / 26 editions / 6 bundles / 10 governance gates (byte-stable; working tree unchanged after run)"
+    },
+    {
+      "command": "npm run test:mc22",
+      "exitCode": 0,
+      "observed": "MC-22 catalogue validator: 57/57 PASS (PASS)",
+      "counts": "57/57 (MC20-01..40 + MC21-01..10 + MC22-01..07)",
+      "evidenceFile": "docs/marea/catalog/evidence/validator-run.json"
+    },
+    {
+      "command": "npm run test:mc22:unit",
+      "exitCode": 0,
+      "observed": "tests 55, pass 55, fail 0, cancelled 0, skipped 0",
+      "counts": "55/55 (incl. 16 batch-3 adversarial negative mutations)"
+    },
+    {
+      "command": "npm run test:mc22:e2e",
+      "exitCode": 0,
+      "observed": "84 passed (2.2m)",
+      "counts": "84/84 across 18 preview routes (9 families x ES/EN; SSR/hydration/bilingual parity/a11y/responsive/no-commerce + public-route 404)"
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "observed": "Application bundle generation complete. [18.383 seconds]. Prerendered 96 static routes.",
+      "counts": "96 static routes; production browser bundle contains 0 catalogue identifiers"
+    },
+    {
+      "command": "npm run test:landing:unit",
+      "exitCode": 0,
+      "observed": "tests 45, pass 45, fail 0, skipped 0",
+      "counts": "45/45 (MC-18 landing regression unchanged)"
+    },
+    {
+      "command": "npm run test:design-system",
+      "exitCode": 0,
+      "observed": "MC-17 design system validator: 38/38 passed, 0 failed.",
+      "counts": "38/38 (MC-17 design system unchanged)"
+    },
+    {
+      "command": "npm run test:i18n",
+      "exitCode": 0,
+      "observed": "Server-rendering checks passed: lang attributes, private shells, alternates and per-request locale isolation. i18n foundation checks passed: locale detection, route mapping and translations.",
+      "counts": "PASS"
+    },
+    {
+      "command": "npm run test:seo",
+      "exitCode": 0,
+      "observed": "SEO checks passed: 101 sitemap URLs, canonical, reciprocal hreflang, JSON-LD and private noindex.",
+      "counts": "101 sitemap URLs; 0 catalogue entries"
+    },
+    {
+      "command": "npm run format:check",
+      "exitCode": 0,
+      "observed": "All matched files use Prettier code style!",
+      "counts": "0 formatting violations"
+    },
+    {
+      "command": "npm run test:financial",
+      "exitCode": 1,
+      "observed": "77 checks - 76 PASS / 1 FAIL (FAIL V-18 - No MC-14 execution; registry row 14 is not PLANNED)",
+      "counts": "76/77",
+      "classification": "INHERITED (pre-existing FINANCIAL_V18, unchanged by MC-22, not a new failure)"
+    }
+  ],
+  "isolation": {
+    "bundleFileCount": 168,
+    "browserBundleIdentifiers": {
+      "internal/catalog": 0,
+      "marea-catalog": 0,
+      "mareaFamilyDisplay": 0,
+      "DISPLAY-LARGE-CONDITIONAL": 0,
+      "SIZE_NOT_FROZEN": 0,
+      "PILOT_SAFETY_GATE": 0,
+      "NO_SLA_ESTABLISHED": 0
+    },
+    "note": "grep over dist/embarcarte (whole production build) returned 0 matches for all seven identifiers above.",
+    "productionRouteTables": {
+      "src/app grep for 'marea-catalog'": "49 matches, all inside src/app/marea-catalog/** only",
+      "src/app/app.routes.ts": 0,
+      "src/app/app.routes.server.ts": 0,
+      "src/app/core/i18n/locale-routes.ts": 0,
+      "public/": 0
+    }
+  },
+  "projection": {
+    "familyOrder": ["NAV", "HUB", "AIS", "SENSE", "WATCH", "WEATHER", "DISPLAY", "PILOT", "FLEET"],
+    "familyCount": 9,
+    "editionsByFamily": { "NAV": 2, "HUB": 2, "AIS": 2, "SENSE": 8, "WATCH": 2, "WEATHER": 2, "DISPLAY": 2, "PILOT": 3, "FLEET": 3 },
+    "editionCount": 26,
+    "governanceGateCount": 10,
+    "releaseGates": 13,
+    "releaseGatesClosed": 0,
+    "readinessDimensions": 11,
+    "bundlesReferencingScope": 6,
+    "approvedPrices": 0,
+    "merchantableEditions": 0,
+    "merchantSkuCodes": 0,
+    "publicAuthorizedClaims": 0,
+    "verifiedStockRows": 0,
+    "testedCompatibilityRows": 0,
+    "publicRoutesRegistered": 0,
+    "previewRouteCount": 18,
+    "allFamiliesPublicationState": "INTERNAL_ONLY",
+    "allFamiliesAvailability": "NOT_FOR_SALE"
+  },
+  "governanceGatesVerbatim": [
+    "TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED",
+    "MAREA_PUBLIC_USE = NO_GO",
+    "SOURCE_IP_CLEARANCE = NOT_CLEARED",
+    "LICENSING_RIGHTS_GRANTED = false",
+    "PRICE_APPROVED = NONE",
+    "COMMERCIAL_AVAILABILITY = NOT_FOR_SALE",
+    "PUBLICATION_AUTHORIZED = false",
+    "INDEXATION_AUTHORIZED = false",
+    "PRODUCTION_DEPLOYMENT = NOT_AUTHORIZED",
+    "GATE-PRIVACY-DPA-DPIA = BLOCKED"
+  ],
+  "contentSpotCheck": {
+    "display": "SIZE_NOT_FROZEN / HARDWARE_NOT_SELECTED / BOM_NOT_ESTABLISHED / measuredPerformance=false / pilotControlAuthority=false; no physical dimension, resolution, brightness, IP rating or power figure published; 2 editions (DISPLAY-7, DISPLAY-LARGE-CONDITIONAL)",
+    "pilot": "PILOT_SAFETY_GATE=BLOCKED / seaTrialsCompleted=false (NOT_PERFORMED) / remoteHelmControl=PROHIBITED / E-stop+isolation+rudder NOT_FOUND; supervised-only, not a certified autopilot, no autonomous navigation; 2 editions + installation package (PILOT-PRO never a SKU)",
+    "fleet": "multiTenantProductionService=false (NOT_IMPLEMENTED) / slaEstablished=false (NO_SLA_ESTABLISHED) / telemetryReadOnly=true / remoteControlPath=false / defaultRole=NO_ACCESS; no hardware, no SLA/availability guarantee, no security certification, no customer deployment; 3 editions",
+    "inventedTechnicalFacts": 0,
+    "autonomousNavigationLanguage": 0,
+    "slaOrAvailabilityGuarantee": 0,
+    "customerDeployments": 0
+  },
+  "findings": [],
+  "notes": [
+    "test:financial exits 1 (V-18) — inherited, pre-existing debt unchanged by MC-22; disclosed as FAIL (inherited), never concealed.",
+    "docs/marea/catalog/evidence/validator-run.json is the in-scope validator's auto-generated evidence output, re-written deterministically by `npm run test:mc22` (it was already present as modified in the working tree before this run).",
+    "The 10 governanceGates in the projection are a derived, verbatim-consistent, all-fail-closed subset; the canonical MC-14 register carries 13 release-evidence gates, 0 CLOSED (12 BLOCKED + 1 EVIDENCE_REQUIRED).",
+    "No write Git command was executed; only the two in-scope evidence files were written by this verifier."
+  ]
+}

@@ -1,0 +1,2039 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "workstream": "competitors",
+  "owner": "agent-b-competitors",
+  "scopeNote": "Forty-eight publicly observable competitor/substitute observations covering all nine MAREA families and the six bundles, captured 2026-10-31; prices keep original currency and stated tax treatment and no currency conversion is applied.",
+  "observations": [
+    {
+      "obsId": "OBS-CMP-001",
+      "vendor": "Orca Navigation",
+      "product": "Orca Plus subscription",
+      "category": "Marine navigation app subscription (charts, routing, weather)",
+      "mareaFamilies": [
+        "NAV",
+        "WEATHER"
+      ],
+      "mareaBundles": [
+        "START",
+        "CRUISE"
+      ],
+      "customerSegment": "Coastal cruiser / tablet-first sailor who keeps existing instruments",
+      "market": "EU/GLOBAL",
+      "manufacturerUrl": "https://help.getorca.com/en/articles/6541858-subscription-prices-and-functionality",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 49,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED_ON_PAGE",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 49/year; renewal and cancellation terms not stated on the help page",
+      "dataLicense": "Chart data licensed by Orca; licence scope and redistribution terms not published",
+      "connectivity": "Internet required for online charts and cloud routing; offline chart download supported on this tier",
+      "advertisedCapabilities": [
+        "Offline charts and offline routing",
+        "Satellite hybrid charts",
+        "Sail routing up to 5-day forecast",
+        "Weather model access (automatic model selection, 5-day horizon)"
+      ],
+      "relevantLimitations": [
+        "Territory: chart access restrictions in Australia, Sweden, Denmark, Germany and Turkey",
+        "No manual weather-model selection and no live rerouting at this tier",
+        "AIS via internet only; on-board AIS needs a receiver/Core"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer help page, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "Tax treatment, regional EUR price variation, app-store billing fees, chart licence scope",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-002",
+      "vendor": "Orca Navigation",
+      "product": "Orca Smart Navigation subscription",
+      "category": "Marine navigation app subscription (charts, routing, weather, AIS/CPA)",
+      "mareaFamilies": [
+        "NAV",
+        "WEATHER"
+      ],
+      "mareaBundles": [
+        "START",
+        "CRUISE"
+      ],
+      "customerSegment": "Cruising sailor needing routing, AIS visibility and longer forecasts",
+      "market": "EU/GLOBAL",
+      "manufacturerUrl": "https://help.getorca.com/en/articles/6541858-subscription-prices-and-functionality",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 149,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED_ON_PAGE",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 149/year; a year of Smart Navigation is included with Orca Core or Orca Display purchase",
+      "dataLicense": "Chart data licensed by Orca; forecast models from third-party providers under Orca's terms",
+      "connectivity": "Internet for online charts, live rerouting and AIS-over-internet; offline charts supported",
+      "advertisedCapabilities": [
+        "Manual weather-model selection and 10-day forecast horizon",
+        "AIS target images, CPA/TCPA visualisation",
+        "Live rerouting, 5-year logbook history",
+        "Guard-mode anchor alarm and battery-voltage monitoring"
+      ],
+      "relevantLimitations": [
+        "Guard mode requires powered/online devices and is not a cellular monitoring service",
+        "AIS over internet depends on MarineTraffic terrestrial coverage; on-board AIS receiver still required for local targets",
+        "Same territory restrictions as the Plus tier"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer help page, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "Tax treatment, renewal terms, actual chart coverage quality by region",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-003",
+      "vendor": "Garmin (Navionics)",
+      "product": "Navionics Boating app subscription",
+      "category": "Marine navigation app subscription",
+      "mareaFamilies": [
+        "NAV"
+      ],
+      "mareaBundles": [
+        "START"
+      ],
+      "customerSegment": "Recreational boater using tablet/phone navigation",
+      "market": "ES",
+      "manufacturerUrl": "https://support.garmin.com/en-GB/?faq=JtG5vAJ1Eu5n8dlEqxRKl7",
+      "retailerUrl": "https://tuapppara.com/aplicaciones/navionics/",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": null,
+      "currency": "EUR",
+      "vatTreatment": "UNKNOWN",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "Reported in-app purchases of EUR 49.99 to EUR 149.99 per item; exact entitlement per item UNKNOWN",
+      "dataLicense": "UNKNOWN (Garmin/Navionics chart licence terms not retrieved)",
+      "connectivity": "Internet for download/update; offline charts after download",
+      "advertisedCapabilities": [
+        "Charts for selected regions",
+        "Route planning and sonar-chart community layers"
+      ],
+      "relevantLimitations": [
+        "Only a reported range, not a single verified price; manufacturer FAQ rendered without content",
+        "Range mixes different products/regions; not directly comparable to a EUR 99-149/year MAREA NAV tier"
+      ],
+      "availability": "UNVERIFIED (manufacturer price page inaccessible on capture date)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Official Garmin/Navionics EUR price list, territory scope, VAT treatment",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-004",
+      "vendor": "Digital Yacht",
+      "product": "NavLink2 NMEA 2000 to Wi-Fi gateway",
+      "category": "NMEA 2000 Wi-Fi gateway (onboard data bridge)",
+      "mareaFamilies": [
+        "HUB"
+      ],
+      "mareaBundles": [
+        "START",
+        "CRUISE"
+      ],
+      "customerSegment": "Boat owner with existing NMEA 2000 instruments wanting app/tablet data",
+      "market": "ES",
+      "manufacturerUrl": "https://digitalyacht.es/categoria-producto/sistemas-de-pc/accesorios-de-pc/?max_price=1380&orderby=price",
+      "retailerUrl": "https://digitalyacht.es/categoria-producto/sistemas-de-pc/accesorios-de-pc/?max_price=1380&orderby=price",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 300,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED_ON_LISTING",
+      "hardwareIncluded": true,
+      "softwareIncluded": false,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "No cloud data service; local network only",
+      "connectivity": "Wi-Fi access point/bridge to NMEA 2000 data",
+      "advertisedCapabilities": [
+        "Publishes NMEA 2000 navigation data to apps and PCs",
+        "Easy installation stated by manufacturer"
+      ],
+      "relevantLimitations": [
+        "Gateway only: no diagnostics, orchestration, local automation or monitoring service",
+        "No price confirmation of VAT treatment on the listing"
+      ],
+      "availability": "LISTED (manufacturer's Spanish shop, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "VAT treatment, stock status, regional shipping, warranty terms",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-005",
+      "vendor": "Digital Yacht",
+      "product": "iKonvert NMEA 2000 / NMEA 0183 converter (USB variant, from-price)",
+      "category": "NMEA protocol converter/gateway",
+      "mareaFamilies": [
+        "HUB"
+      ],
+      "mareaBundles": [
+        "START"
+      ],
+      "customerSegment": "Owner bridging legacy NMEA 0183 equipment to NMEA 2000",
+      "market": "ES",
+      "manufacturerUrl": "https://digitalyacht.es/producto/ikonvert/",
+      "retailerUrl": "https://digitalyacht.es/categoria-producto/sistemas-de-pc/accesorios-de-pc/?max_price=1380&orderby=price",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 240,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED_ON_LISTING",
+      "hardwareIncluded": true,
+      "softwareIncluded": false,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A (local conversion)",
+      "connectivity": "Wired NMEA 2000 and NMEA 0183; USB variant for a computer",
+      "advertisedCapabilities": [
+        "Bidirectional NMEA 2000 to NMEA 0183 conversion",
+        "DIP-switch data modes (heading, sounder, AIS, GPS, wind, instruments)",
+        "Galvanic isolation"
+      ],
+      "relevantLimitations": [
+        "'A partir de' from-price for a multi-variant product: EUR 240 is the lowest variant, not a firm price for every variant",
+        "Point converter only; no publishing interface, no remote access"
+      ],
+      "availability": "LISTED (manufacturer's Spanish shop, retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Variant-specific prices, VAT treatment, stock status",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-006",
+      "vendor": "Victron Energy",
+      "product": "Cerbo GX MK2 communication centre",
+      "category": "Onboard monitoring/communication gateway (energy and NMEA 2000 inputs)",
+      "mareaFamilies": [
+        "HUB",
+        "WATCH"
+      ],
+      "mareaBundles": [
+        "PROTECT",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "customerSegment": "Owner/installer integrating energy, tank and temperature data with remote access",
+      "market": "ES",
+      "manufacturerUrl": "https://www.victronenergy.com/",
+      "retailerUrl": "https://cuencasolar.es/producto/pack-victron-cerbo-gx-mk2-pantalla-gx-touch-50-flush/",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 240.09,
+      "currency": "EUR",
+      "vatTreatment": "IVA_INCLUDED (retailer states 'IVA incluido')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "VRM remote portal is used with the device; subscription terms/limits not priced on the retrieved page",
+      "dataLicense": "UNKNOWN (VRM data terms not retrieved)",
+      "connectivity": "Wi-Fi, Ethernet, Bluetooth, VE.Direct, VE.Can, USB; remote access via VRM portal",
+      "advertisedCapabilities": [
+        "Centralised monitoring of Victron energy devices",
+        "4 tank level, 4 temperature and 4 digital inputs",
+        "2 programmable relays",
+        "Remote monitoring through VRM portal"
+      ],
+      "relevantLimitations": [
+        "No marine charts, no AIS, no navigation surface; not a NMEA 2000 navigation gateway per se",
+        "Sensors and shunts are extra; professional installation assumed but not included",
+        "Remote monitoring depends on internet connectivity and the VRM service"
+      ],
+      "availability": "LISTED_IN_STOCK (retailer bundle listing, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "VRM service terms, precise NMEA 2000 instrument support, installation cost",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-007",
+      "vendor": "PredictWind",
+      "product": "PredictWind DataHub",
+      "category": "Marine data hub / NMEA 2000 streaming and remote access device",
+      "mareaFamilies": [
+        "HUB",
+        "WATCH"
+      ],
+      "mareaBundles": [
+        "CRUISE",
+        "PROTECT",
+        "FLEET"
+      ],
+      "customerSegment": "Coastal cruiser wanting N2K data streaming, GPS tracking and remote access",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://www.predictwind.com/datahub/family",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 299,
+      "currency": "USD",
+      "vatTreatment": "TAX_EXCLUSIVE_LIST_PRICE (PredictWind states taxes added at checkout)",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "GPS tracking page free for all users; advanced features need PredictWind Professional forecast subscription; optional LTE data plan USD 10/month",
+      "dataLicense": "UNKNOWN (PredictWind data terms not retrieved)",
+      "connectivity": "Wi-Fi, Starlink DTC ready, optional LTE; NMEA 2000 via cable pack",
+      "advertisedCapabilities": [
+        "Broadcasts NMEA 2000 instrument data over Wi-Fi",
+        "Live GPS tracking page for friends/family",
+        "Anchor alert app and boat battery status",
+        "Remote DataHub Connect access"
+      ],
+      "relevantLimitations": [
+        "Not a satellite communicator; offshore use still needs Iridium/Starlink",
+        "Over-the-Horizon AIS and AI Polars require a Professional subscription",
+        "No navigation/chart software from this device alone"
+      ],
+      "availability": "LISTED (manufacturer page, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "VAT treatment in EU, N2K cable pack price, shipping/import duties, warranty terms",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-008",
+      "vendor": "PredictWind",
+      "product": "PredictWind DataHub Pro",
+      "category": "Marine data hub / NMEA 2000 streaming and remote access device (higher tier)",
+      "mareaFamilies": [
+        "HUB",
+        "WATCH"
+      ],
+      "mareaBundles": [
+        "CRUISE",
+        "PROTECT",
+        "FLEET"
+      ],
+      "customerSegment": "Cruiser/racer with multiple devices, Starlink and remote-support needs",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://www.predictwind.com/datahub/family",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 599,
+      "currency": "USD",
+      "vatTreatment": "TAX_EXCLUSIVE_LIST_PRICE (PredictWind states taxes added at checkout)",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "GPS tracking free; advanced features require Professional forecast subscription; optional LTE plan USD 10/month",
+      "dataLicense": "UNKNOWN (PredictWind data terms not retrieved)",
+      "connectivity": "Wi-Fi 6, built-in 4G LTE, Starlink integration, four Ethernet ports, USB",
+      "advertisedCapabilities": [
+        "3x faster CPU and Wi-Fi 6",
+        "Native Starlink integration and GPS derived from Starlink when paired",
+        "Far-field Wi-Fi (stated 100 m line of sight)",
+        "Remote DataHub Connect access and MOB app"
+      ],
+      "relevantLimitations": [
+        "Premium price/scope above a basic onboard gateway; requires subscriptions for AIS/AI features",
+        "LTE SIM supplied is T-Mobile US; EU data plan implications UNKNOWN"
+      ],
+      "availability": "LISTED (manufacturer page, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "EU availability, import duties, LTE plan options in Spain",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-009",
+      "vendor": "Digital Yacht",
+      "product": "AIS100 AIS receiver with USB",
+      "category": "Receive-only AIS receiver",
+      "mareaFamilies": [
+        "AIS"
+      ],
+      "mareaBundles": [
+        "CRUISE",
+        "COMPLETE"
+      ],
+      "customerSegment": "Owner wanting AIS targets on a PC/Mac/Linux navigation app",
+      "market": "ES",
+      "manufacturerUrl": "https://digitalyacht.es/producto/receptor-ais/",
+      "retailerUrl": "https://digitalyacht.es/categoria-producto/sistemas-de-pc/accesorios-de-pc/?max_price=1380&orderby=price",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 360,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED_ON_LISTING",
+      "hardwareIncluded": true,
+      "softwareIncluded": false,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A (received AIS data, no chart licence)",
+      "connectivity": "USB to computer; NMEA 0183 output on the PRO variant",
+      "advertisedCapabilities": [
+        "Receives AIS targets for display in navigation software",
+        "No transmission (receive-only)"
+      ],
+      "relevantLimitations": [
+        "Requires a VHF/AIS antenna or certified splitter (extra cost)",
+        "No CPA/TCPA alarms, no charting, no cloud/AIS-over-internet",
+        "VAT treatment unstated on the listing"
+      ],
+      "availability": "LISTED (manufacturer's Spanish shop, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "VAT treatment, antenna cost, stock status, receiver sensitivity specification",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-010",
+      "vendor": "Digital Yacht",
+      "product": "AIS transponder with NMEA 2000/Wi-Fi converter pack (AIT6000-based)",
+      "category": "AIS Class B+ transponder pack (transmit and receive)",
+      "mareaFamilies": [
+        "AIS"
+      ],
+      "mareaBundles": [
+        "CRUISE",
+        "COMPLETE"
+      ],
+      "customerSegment": "Owner wanting both to see and be seen, plus app data",
+      "market": "ES",
+      "manufacturerUrl": "https://digitalyacht.es/categoria-producto/ais/",
+      "retailerUrl": "https://digitalyacht.es/categoria-producto/ais/",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 1620,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED_ON_LISTING",
+      "hardwareIncluded": true,
+      "softwareIncluded": false,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A",
+      "connectivity": "NMEA 2000 and Wi-Fi to navigation apps",
+      "advertisedCapabilities": [
+        "AIS Class B+ transmission and reception",
+        "Wi-Fi distribution of NMEA 2000 data"
+      ],
+      "relevantLimitations": [
+        "Transmits: a different regulatory and liability scope from MAREA's receive-only AIS",
+        "Requires GPS antenna and VHF antenna/splitter",
+        "Substantially higher price than a receiver"
+      ],
+      "availability": "LISTED (manufacturer's Spanish shop, retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "VAT treatment, licensing/registration obligations for transmission, installation",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-011",
+      "vendor": "Digital Yacht",
+      "product": "AIS transponder with NavAlert and NavAlarm NMEA 2000 pack",
+      "category": "AIS Class B+ transponder pack with CPA/TCPA alarms",
+      "mareaFamilies": [
+        "AIS"
+      ],
+      "mareaBundles": [
+        "CRUISE",
+        "COMPLETE"
+      ],
+      "customerSegment": "Owner prioritising AIS CPA/TCPA alerting",
+      "market": "ES",
+      "manufacturerUrl": "https://digitalyacht.es/categoria-producto/ais/",
+      "retailerUrl": "https://digitalyacht.es/categoria-producto/ais/",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 2046,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED_ON_LISTING",
+      "hardwareIncluded": true,
+      "softwareIncluded": false,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A",
+      "connectivity": "NMEA 2000 and Wi-Fi",
+      "advertisedCapabilities": [
+        "AIS Class B+ transponder",
+        "Independent AIS CPA/TCPA alarms (NavAlert/NavAlarm)",
+        "Wi-Fi connectivity"
+      ],
+      "relevantLimitations": [
+        "Transmits, unlike MAREA receive-only AIS",
+        "Alarm product is not a certified collision-avoidance system",
+        "Requires antenna installation"
+      ],
+      "availability": "LISTED (manufacturer's Spanish shop, retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "VAT treatment, alarm certification, installation cost",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-012",
+      "vendor": "Digital Yacht",
+      "product": "AIS transponder with ICOM M510 VHF, splitter and Wi-Fi pack",
+      "category": "AIS + VHF radio combined pack",
+      "mareaFamilies": [
+        "AIS"
+      ],
+      "mareaBundles": [
+        "CRUISE",
+        "COMPLETE"
+      ],
+      "customerSegment": "Owner upgrading VHF and AIS together",
+      "market": "ES",
+      "manufacturerUrl": "https://digitalyacht.es/categoria-producto/ais/",
+      "retailerUrl": "https://digitalyacht.es/categoria-producto/ais/",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 2100,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED_ON_LISTING",
+      "hardwareIncluded": true,
+      "softwareIncluded": false,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A",
+      "connectivity": "NMEA 2000, Wi-Fi; VHF radio integrated",
+      "advertisedCapabilities": [
+        "AIS Class B+ transponder",
+        "ICOM M510 VHF radio",
+        "Integrated VHF splitter and Wi-Fi"
+      ],
+      "relevantLimitations": [
+        "Combines categories (radio + AIS); not a like-for-like AIS comparator",
+        "Transmits AIS",
+        "Installation and antenna work excluded"
+      ],
+      "availability": "LISTED (manufacturer's Spanish shop, retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "VAT treatment, radio licensing, installation cost",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-013",
+      "vendor": "Raymarine",
+      "product": "Evolution EV-100 Wheel autopilot pack",
+      "category": "Wheel-drive autopilot system (hardware + control head + heading sensor)",
+      "mareaFamilies": [
+        "PILOT"
+      ],
+      "mareaBundles": [
+        "SAIL",
+        "COMPLETE"
+      ],
+      "customerSegment": "Sailing-yacht owner up to 7.5 t displacement upgrading steering automation",
+      "market": "ES",
+      "manufacturerUrl": "https://www.raymarine.com/es-es/",
+      "retailerUrl": "https://www.latiendadelnavegante.com/producto_ampliado.asp?c=090800010112",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 2050,
+      "currency": "EUR",
+      "vatTreatment": "IVA_INCLUDED (retailer states 'IVA incluido, gastos de envío excluidos')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A",
+      "connectivity": "SeaTalkng/NMEA 2000 (cabling kit included in the pack)",
+      "advertisedCapabilities": [
+        "Wheel drive actuator, ACU-100, EV-1 heading processor and P70s control head",
+        "Integrated autopilot for wheel-steered sailing yachts up to 7.5 t"
+      ],
+      "relevantLimitations": [
+        "Backorder status ('bajo pedido'); no confirmed stock",
+        "No vessel survey, commissioning, sea trial or installer labour",
+        "Not a supervised/assisted system: no remote engagement, no human-takeover design evidence comparable to MAREA PILOT claims"
+      ],
+      "availability": "BACKORDER (retailer, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "Stock date, installation/commissioning cost, warranty terms, compatibility survey",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-014",
+      "vendor": "Simrad",
+      "product": "NAC-2 autopilot processor",
+      "category": "Autopilot processor (component)",
+      "mareaFamilies": [
+        "PILOT"
+      ],
+      "mareaBundles": [
+        "SAIL",
+        "COMPLETE"
+      ],
+      "customerSegment": "Boat owner up to ~10 m integrating an autopilot with a Simrad MFD",
+      "market": "ES",
+      "manufacturerUrl": "https://www.simrad-yachting.com/es-es/simrad/serie/nac-autopilot-computers/list/",
+      "retailerUrl": "https://www.simrad-yachting.com/es-es/simrad/serie/nac-autopilot-computers/list/",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 1217.26,
+      "currency": "EUR",
+      "vatTreatment": "IVA_INCLUDED (manufacturer store states 'IVA incluido')",
+      "hardwareIncluded": true,
+      "softwareIncluded": false,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A",
+      "connectivity": "Simrad/SimNet/NMEA 2000 ecosystem",
+      "advertisedCapabilities": [
+        "Autopilot processor for low-current drive units up to about 10 m / 35 ft"
+      ],
+      "relevantLimitations": [
+        "Processor only: drive unit, control head, compass and cabling are extra",
+        "Manufacturer store returns schema.org/OutOfStock for the listing",
+        "No installation, commissioning or sea trial"
+      ],
+      "availability": "OUT_OF_STOCK_FLAG_ON_MANUFACTURER_STORE (retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Complete system price with compatible drive, actual availability, installation cost",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-015",
+      "vendor": "Simrad",
+      "product": "NAC-3 autopilot processor",
+      "category": "Autopilot processor (component)",
+      "mareaFamilies": [
+        "PILOT"
+      ],
+      "mareaBundles": [
+        "SAIL",
+        "COMPLETE"
+      ],
+      "customerSegment": "Boat owner over 10 m requiring a high-current drive",
+      "market": "ES",
+      "manufacturerUrl": "https://www.simrad-yachting.com/es-es/simrad/serie/nac-autopilot-computers/list/",
+      "retailerUrl": "https://www.simrad-yachting.com/es-es/simrad/serie/nac-autopilot-computers/list/",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 2136.86,
+      "currency": "EUR",
+      "vatTreatment": "IVA_INCLUDED (manufacturer store states 'IVA incluido')",
+      "hardwareIncluded": true,
+      "softwareIncluded": false,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A",
+      "connectivity": "Simrad/SimNet/NMEA 2000 ecosystem",
+      "advertisedCapabilities": [
+        "Autopilot processor for high-current drive units on boats over 10 m / 33 ft"
+      ],
+      "relevantLimitations": [
+        "Processor only; drive, control head and commissioning extra",
+        "OutOfStock schema flag on the manufacturer listing",
+        "No installation or sea trial"
+      ],
+      "availability": "OUT_OF_STOCK_FLAG_ON_MANUFACTURER_STORE (retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Drive unit and control head costs, availability, installation",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-016",
+      "vendor": "Simrad",
+      "product": "NAC-2 basic autopilot pack",
+      "category": "Autopilot system pack",
+      "mareaFamilies": [
+        "PILOT"
+      ],
+      "mareaBundles": [
+        "SAIL",
+        "COMPLETE"
+      ],
+      "customerSegment": "Boat owner up to ~10 m wanting a complete Simrad autopilot kit",
+      "market": "ES",
+      "manufacturerUrl": "https://www.simrad-yachting.com/es-es/simrad/serie/nac-autopilot-computers/list/",
+      "retailerUrl": "https://www.simrad-yachting.com/es-es/simrad/serie/nac-autopilot-computers/list/",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 2100.56,
+      "currency": "EUR",
+      "vatTreatment": "IVA_INCLUDED (manufacturer store states 'IVA incluido')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A",
+      "connectivity": "Simrad/SimNet/NMEA 2000",
+      "advertisedCapabilities": [
+        "Basic autopilot system components for tiller-steered boats up to about 10 m"
+      ],
+      "relevantLimitations": [
+        "Pack contents vary by drive type; compatibility with a given vessel requires survey",
+        "OutOfStock schema flag on the listing",
+        "No installation, commissioning or sea trial"
+      ],
+      "availability": "OUT_OF_STOCK_FLAG_ON_MANUFACTURER_STORE (retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Exact pack contents, availability, installation",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-017",
+      "vendor": "Simrad",
+      "product": "NAC-3 basic autopilot pack",
+      "category": "Autopilot system pack",
+      "mareaFamilies": [
+        "PILOT"
+      ],
+      "mareaBundles": [
+        "SAIL",
+        "COMPLETE"
+      ],
+      "customerSegment": "Boat owner over 10 m with tiller/steering wanting a complete kit",
+      "market": "ES",
+      "manufacturerUrl": "https://www.simrad-yachting.com/es-es/simrad/serie/nac-autopilot-computers/list/",
+      "retailerUrl": "https://www.simrad-yachting.com/es-es/simrad/serie/nac-autopilot-computers/list/",
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 3083.08,
+      "currency": "EUR",
+      "vatTreatment": "IVA_INCLUDED (manufacturer store states 'IVA incluido')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A",
+      "connectivity": "Simrad/SimNet/NMEA 2000",
+      "advertisedCapabilities": [
+        "Basic autopilot system pack for rudder-steered boats over 10 m / 33 ft"
+      ],
+      "relevantLimitations": [
+        "Pack composition depends on drive selection; vessel survey required",
+        "Out of stock flag; two other drive packs on the same page are labelled discontinued",
+        "No installation or commissioning included"
+      ],
+      "availability": "OUT_OF_STOCK_FLAG_ON_MANUFACTURER_STORE (retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Pack contents, availability date, installation/commissioning costs",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-018",
+      "vendor": "Victron Energy",
+      "product": "SmartShunt 500A IP65 battery monitor",
+      "category": "Battery/energy measurement sensor with Bluetooth",
+      "mareaFamilies": [
+        "SENSE"
+      ],
+      "mareaBundles": [
+        "PROTECT",
+        "COMPLETE"
+      ],
+      "customerSegment": "Owner/installer wanting battery state-of-charge, voltage, current and temperature",
+      "market": "ES",
+      "manufacturerUrl": "https://www.victronenergy.com/",
+      "retailerUrl": "https://cuencasolar.es/producto/monitor-de-baterias-victron-smartshunt-500a-ip65/",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 90.21,
+      "currency": "EUR",
+      "vatTreatment": "IVA_INCLUDED (retailer states 'IVA incluido')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "UNKNOWN (app/cloud terms not retrieved)",
+      "connectivity": "Bluetooth to VictronConnect app; VE.Direct to GX devices; optional temperature sensor",
+      "advertisedCapabilities": [
+        "State of charge, voltage, current and history (46 days)",
+        "Configurable auxiliary input (second battery, midpoint or temperature)",
+        "IP65, up to 500 A"
+      ],
+      "relevantLimitations": [
+        "Single measurement point; no bilge, tank or wind sensing",
+        "No NMEA 2000 publishing without a GX device",
+        "No alerting/delivery service"
+      ],
+      "availability": "IN_STOCK (retailer, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "NMEA 2000 integration path, installation cost, app data terms",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-019",
+      "vendor": "B&G",
+      "product": "WS310 wind vane sensor",
+      "category": "Masthead wind sensor",
+      "mareaFamilies": [
+        "SENSE"
+      ],
+      "mareaBundles": [
+        "SAIL",
+        "COMPLETE"
+      ],
+      "customerSegment": "Sailing-yacht owner needing wind angle/speed measurement",
+      "market": "ES",
+      "manufacturerUrl": "https://www.bandg.com/",
+      "retailerUrl": "https://es.comptoirnautique.com/instrumento-bg/12265-7546-bg-paquete-de-paletas-triton2.html",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 489.95,
+      "currency": "EUR",
+      "vatTreatment": "IMPUESTOS_INCLUIDOS (retailer page basis; related-item listing)",
+      "hardwareIncluded": true,
+      "softwareIncluded": false,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A",
+      "connectivity": "Wired NMEA 2000 (masthead unit to instrument system)",
+      "advertisedCapabilities": [
+        "Apparent/true wind angle and speed measurement for B&G instrument systems"
+      ],
+      "relevantLimitations": [
+        "Sensor only: needs a compatible instrument display/system to show values",
+        "Masthead installation is skilled labour and not included",
+        "Listing states last units in stock"
+      ],
+      "availability": "LAST_UNITS_IN_STOCK (retailer related listing, retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Exact VAT basis of related-item price, stock confirmation, installation",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-020",
+      "vendor": "B&G",
+      "product": "Triton2 paddle-wheel instrument pack",
+      "category": "Instrument display + speed/temperature transducer pack",
+      "mareaFamilies": [
+        "SENSE",
+        "DISPLAY"
+      ],
+      "mareaBundles": [
+        "SAIL",
+        "COMPLETE"
+      ],
+      "customerSegment": "Sailing-yacht owner displaying wind/speed/depth instruments",
+      "market": "ES",
+      "manufacturerUrl": "https://www.bandg.com/",
+      "retailerUrl": "https://es.comptoirnautique.com/instrumento-bg/12265-7546-bg-paquete-de-paletas-triton2.html",
+      "sourceType": "PRIMARY_RETAILER",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 1149.4,
+      "currency": "EUR",
+      "vatTreatment": "IMPUESTOS_INCLUIDOS (retailer shows EUR 1,149.40 incl. and EUR 949.92 ex-tax)",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "None stated",
+      "dataLicense": "N/A",
+      "connectivity": "NMEA 2000",
+      "advertisedCapabilities": [
+        "Triton2 instrument display plus paddle-wheel speed/temperature transducer",
+        "NMEA 2000 connectivity"
+      ],
+      "relevantLimitations": [
+        "Promotional -10% pack price",
+        "Instrument display is a separate surface from a chartplotter; no charts",
+        "Installation and hull transducer fitting not included"
+      ],
+      "availability": "IN_STOCK_LAST_UNITS (retailer, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "Promotion end date, installation cost, exact pack contents",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-021",
+      "vendor": "Raymarine",
+      "product": "Element 7 HV chartplotter",
+      "category": "Multifunction display / chartplotter (7-inch)",
+      "mareaFamilies": [
+        "DISPLAY"
+      ],
+      "mareaBundles": [
+        "CRUISE",
+        "SAIL",
+        "COMPLETE"
+      ],
+      "customerSegment": "Small/coastal boat owner wanting a fixed helm display",
+      "market": "ES",
+      "manufacturerUrl": "https://www.raymarine.com/es-es/nuestros-productos/chartplotters/element/element-hv",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 659.45,
+      "currency": "EUR",
+      "vatTreatment": "IVA_INCLUDED (manufacturer store states 'El precio incluye el IVA')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "No mandatory subscription stated for base operation; premium chart subscriptions and chart cards are separate",
+      "dataLicense": "Base software included; chart data licensed separately (LightHouse/Navionics/C-MAP)",
+      "connectivity": "NMEA 2000/SeaTalkng, Wi-Fi, GNSS receiver, microSD",
+      "advertisedCapabilities": [
+        "7-inch sunlight-viewable display with GNSS",
+        "HyperVision CHIRP sonar support",
+        "Wi-Fi and NMEA 2000 connectivity"
+      ],
+      "relevantLimitations": [
+        "Bare display: transducer, charts and installation are extra unless a bundle SKU is chosen",
+        "No AIS receiver, no autopilot, no monitoring service",
+        "Not the same value proposition as a general-purpose marine display without chart entitlement"
+      ],
+      "availability": "LISTED (manufacturer's Spanish store, retrieved 2026-10-31)",
+      "comparisonConfidence": "HIGH",
+      "missingEvidence": "SKU-specific stock, chart pack prices, installation",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-022",
+      "vendor": "Raymarine",
+      "product": "Element 9 HV chartplotter",
+      "category": "Multifunction display / chartplotter (9-inch)",
+      "mareaFamilies": [
+        "DISPLAY"
+      ],
+      "mareaBundles": [
+        "CRUISE",
+        "SAIL",
+        "COMPLETE"
+      ],
+      "customerSegment": "Coastal cruiser wanting a larger fixed helm display",
+      "market": "ES",
+      "manufacturerUrl": "https://www.raymarine.com/es-es/nuestros-productos/chartplotters/element/element-hv",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 901.45,
+      "currency": "EUR",
+      "vatTreatment": "IVA_INCLUDED (manufacturer store states 'El precio incluye el IVA')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "Chart subscription/card separate",
+      "dataLicense": "Chart data licensed separately",
+      "connectivity": "NMEA 2000/SeaTalkng, Wi-Fi, GNSS, microSD",
+      "advertisedCapabilities": [
+        "9-inch display with HyperVision sonar support",
+        "NMEA 2000 and Wi-Fi integration"
+      ],
+      "relevantLimitations": [
+        "Transducer, charts and installation extra unless bundled",
+        "No AIS receiver, autopilot or remote monitoring"
+      ],
+      "availability": "LISTED (manufacturer's Spanish store, retrieved 2026-10-31)",
+      "comparisonConfidence": "HIGH",
+      "missingEvidence": "Stock, bundled chart card price, installation",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-023",
+      "vendor": "Raymarine",
+      "product": "Element 12 HV chartplotter",
+      "category": "Multifunction display / chartplotter (12-inch)",
+      "mareaFamilies": [
+        "DISPLAY"
+      ],
+      "mareaBundles": [
+        "COMPLETE"
+      ],
+      "customerSegment": "Larger yacht owner wanting a big fixed display",
+      "market": "ES",
+      "manufacturerUrl": "https://www.raymarine.com/es-es/nuestros-productos/chartplotters/element/element-hv",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 1506.45,
+      "currency": "EUR",
+      "vatTreatment": "IVA_INCLUDED (manufacturer store states 'El precio incluye el IVA')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "Chart subscription/card separate",
+      "dataLicense": "Chart data licensed separately",
+      "connectivity": "NMEA 2000/SeaTalkng, Wi-Fi, GNSS, microSD",
+      "advertisedCapabilities": [
+        "12-inch IPS display with HyperVision sonar support",
+        "NMEA 2000 and Wi-Fi integration"
+      ],
+      "relevantLimitations": [
+        "Display only; transducer, charts and installation extra",
+        "Reference point above the likely MAREA DISPLAY-LARGE scope"
+      ],
+      "availability": "LISTED (manufacturer's Spanish store, retrieved 2026-10-31)",
+      "comparisonConfidence": "HIGH",
+      "missingEvidence": "Stock, chart card price, installation",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-024",
+      "vendor": "Orca Navigation",
+      "product": "Orca Display 2",
+      "category": "Marine-grade tablet display for a navigation system",
+      "mareaFamilies": [
+        "DISPLAY"
+      ],
+      "mareaBundles": [
+        "CRUISE",
+        "COMPLETE"
+      ],
+      "customerSegment": "Cruiser fitting a sunlight-readable helm display for an app-based system",
+      "market": "DE/EU",
+      "manufacturerUrl": "https://getorca.com/",
+      "retailerUrl": "https://www.yacht.de/en/sailing-knowledge/navigation/navigation-orca-put-to-the-test-clear-map-display-and-powerful-weather-routing/",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 999,
+      "currency": "EUR",
+      "vatTreatment": "VAT_INCLUDED_DE (test reports 'Price including VAT')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "One year of Smart Navigation included with Display/Core purchase (manufacturer help page)",
+      "dataLicense": "Orca chart licence; not transferable",
+      "connectivity": "Wi-Fi/Bluetooth to Orca Core and devices; water-resistant",
+      "advertisedCapabilities": [
+        "10-inch marine-grade sunlight-viewable display",
+        "Works with the Orca app and Core for NMEA 2000 data",
+        "Battery plus inductive charging mount"
+      ],
+      "relevantLimitations": [
+        "Requires Core for NMEA 2000 integration and autopilot control",
+        "Battery lasted 4-6 h at high brightness in the test vs 8 h claimed",
+        "Charging mount EUR 349 extra; installation not included"
+      ],
+      "availability": "CURRENT_OFFER_REPORTED (secondary test, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "Manufacturer store price/stock confirmation, VAT basis, warranty in ES",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-025",
+      "vendor": "Siren Marine (Yamaha)",
+      "product": "Siren 3 boat monitoring system",
+      "category": "Cellular boat monitoring hardware + subscription service",
+      "mareaFamilies": [
+        "WATCH"
+      ],
+      "mareaBundles": [
+        "PROTECT"
+      ],
+      "customerSegment": "US boat owner with shore power or solar wanting remote monitoring",
+      "market": "US",
+      "manufacturerUrl": "https://sirenmarine.com/",
+      "retailerUrl": "https://smartboats.org/guides/siren-vs-armit-vs-yacht-sentinel",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 299.99,
+      "currency": "USD",
+      "vatTreatment": "UNKNOWN (US sales tax varies by state)",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "USD 225/year annual service plan reported; seasonal plan USD 150/year reported",
+      "dataLicense": "Proprietary cloud; no documented raw-data export (secondary claim)",
+      "connectivity": "Global LTE cellular (4G/5G LTE-M); NMEA 2000 built in; optional SirenSat satellite tracking",
+      "advertisedCapabilities": [
+        "Remote bilge, battery, entry and temperature monitoring with alerts",
+        "NMEA 2000 engine/boat data",
+        "Wireless sensors (USD 139.09 each reported)"
+      ],
+      "relevantLimitations": [
+        "Secondary-source pricing only; vendor storefront returned no price data",
+        "US-centric cellular coverage; EU availability/service terms UNKNOWN",
+        "No certified distress service; proprietary cloud with no documented export"
+      ],
+      "availability": "REPORTED_CURRENT (secondary source re-verified 2026-08-20; vendor page inaccessible 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Vendor price page, EU availability, VAT/import, sensor bundle contents",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-026",
+      "vendor": "Siren Marine (Yamaha)",
+      "product": "Siren 3 Pro boat monitoring system",
+      "category": "Cellular boat monitoring hardware + subscription service (higher tier)",
+      "mareaFamilies": [
+        "WATCH"
+      ],
+      "mareaBundles": [
+        "PROTECT",
+        "FLEET"
+      ],
+      "customerSegment": "US boat owner wanting digital switching, NMEA 2000 integration and more inputs",
+      "market": "US",
+      "manufacturerUrl": "https://sirenmarine.com/",
+      "retailerUrl": "https://smartboats.org/guides/siren-vs-armit-vs-yacht-sentinel",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 799.99,
+      "currency": "USD",
+      "vatTreatment": "UNKNOWN (US sales tax varies by state)",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "USD 225/year reported; SirenSat add-on USD 259.99 plus USD 350/year reported",
+      "dataLicense": "Proprietary cloud; no documented raw-data export (secondary claim)",
+      "connectivity": "Global LTE cellular; NMEA 2000; satellite tracking add-on",
+      "advertisedCapabilities": [
+        "Digital switching and more wired inputs/outputs",
+        "NMEA 2000 engine data and monitoring",
+        "Optional satellite position tracking"
+      ],
+      "relevantLimitations": [
+        "Secondary-source pricing only; vendor page inaccessible",
+        "Satellite add-on tracks position only, not sensor alerts",
+        "Professional installation recommended; no installation price"
+      ],
+      "availability": "REPORTED_CURRENT (secondary source re-verified 2026-08-20; vendor page inaccessible 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Vendor price/stock, EU distribution, VAT/import, installation cost",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-027",
+      "vendor": "ArmIt",
+      "product": "BilgeMAX One kit",
+      "category": "Battery-powered bilge monitoring kit on a private network",
+      "mareaFamilies": [
+        "WATCH",
+        "SENSE"
+      ],
+      "mareaBundles": [
+        "PROTECT"
+      ],
+      "customerSegment": "Mooring/trailer-sailor needing bilge alerting without boat power",
+      "market": "US",
+      "manufacturerUrl": "UNKNOWN",
+      "retailerUrl": "https://smartboats.org/guides/siren-vs-armit-vs-yacht-sentinel",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 229.99,
+      "currency": "USD",
+      "vatTreatment": "UNKNOWN (US sales tax varies by state)",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "USD 100/year Sentinel plan reported (USD 150/year up to three devices, USD 275/year unlimited)",
+      "dataLicense": "Proprietary; no documented export",
+      "connectivity": "Private EarthSmart Maritime Network by location; optional Voyager add-on for onboard internet",
+      "advertisedCapabilities": [
+        "Bilge float plus wireless sensor, no hub, no boat power",
+        "Battery-powered devices with multi-year life stated"
+      ],
+      "relevantLimitations": [
+        "Only works where the private network covers the mooring; US-centric",
+        "No NMEA 2000 integration",
+        "Secondary-source pricing only; manufacturer site not verified"
+      ],
+      "availability": "REPORTED_CURRENT (secondary source, retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Vendor page, EU coverage, EU availability, VAT/import",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-028",
+      "vendor": "Yacht Sentinel",
+      "product": "YS Pro boat monitoring system",
+      "category": "Cellular boat monitoring hardware + subscription service",
+      "mareaFamilies": [
+        "WATCH"
+      ],
+      "mareaBundles": [
+        "PROTECT",
+        "FLEET"
+      ],
+      "customerSegment": "European cruiser needing multi-country cellular coverage",
+      "market": "EU",
+      "manufacturerUrl": "https://yachtsentinel.com/pricing/",
+      "retailerUrl": "https://smartboats.org/guides/siren-vs-armit-vs-yacht-sentinel",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 1590,
+      "currency": "EUR",
+      "vatTreatment": "VAT_EXCLUDED (secondary source explicitly states 'excl. VAT')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 240/year reported for EU/US zones (approx. EUR 20/month)",
+      "dataLicense": "Proprietary; no documented export",
+      "connectivity": "Embedded 3G/4G SIM with published coverage in 100+ countries; boat's own SIM/Wi-Fi/Ethernet",
+      "advertisedCapabilities": [
+        "Bilge, entry, motion, smoke, heat, humidity, shore power and voltage monitoring",
+        "NMEA 2000 plus J1939/CAN/Modbus reading",
+        "Relay to power the NMEA 2000 network on request"
+      ],
+      "relevantLimitations": [
+        "Current availability UNCONFIRMED: the vendor's .com domain served a parked/for-sale page on capture date",
+        "Only secondary-source pricing; EU VAT excluded",
+        "Sensor add-ons EUR 60-130 each reported"
+      ],
+      "availability": "UNCONFIRMED (vendor domain parked; secondary source reports current product)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Working vendor price page, EU stock/availability, VAT treatment for consumers, installation",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-029",
+      "vendor": "Orca Navigation",
+      "product": "Orca Core guard mode (anchor alarm and basic remote monitoring)",
+      "category": "App-based remote monitoring/guard feature requiring hardware Core",
+      "mareaFamilies": [
+        "WATCH"
+      ],
+      "mareaBundles": [
+        "PROTECT"
+      ],
+      "customerSegment": "Cruiser wanting basic anchor-drag and battery monitoring without a separate monitoring system",
+      "market": "EU",
+      "manufacturerUrl": "https://help.getorca.com/en/articles/6541858-subscription-prices-and-functionality",
+      "retailerUrl": "https://www.yacht.de/en/sailing-knowledge/navigation/navigation-orca-put-to-the-test-clear-map-display-and-powerful-weather-routing/",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 149,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED_ON_PAGE",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "Requires Smart Navigation at EUR 149/year plus Orca Core hardware (EUR 649 reported)",
+      "dataLicense": "UNKNOWN",
+      "connectivity": "Internet connection on connected devices; Core must be powered",
+      "advertisedCapabilities": [
+        "Anchor alarm with custom safety area",
+        "Battery voltage monitoring and Core location visibility"
+      ],
+      "relevantLimitations": [
+        "Requires devices switched on and online/Wi-Fi; not a cellular service",
+        "No bilge, entry or shore-power monitoring",
+        "Not independently tested for alert delivery"
+      ],
+      "availability": "CURRENT_FEATURE (secondary test, retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Alert delivery evidence, offline/cellular behaviour, notification reliability",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-030",
+      "vendor": "PredictWind",
+      "product": "PredictWind Basic forecast subscription",
+      "category": "Marine weather forecast subscription",
+      "mareaFamilies": [
+        "WEATHER"
+      ],
+      "mareaBundles": [
+        "START",
+        "CRUISE"
+      ],
+      "customerSegment": "Recreational sailor needing basic global forecast models",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://www.predictwind.com/pricing",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 29,
+      "currency": "USD",
+      "vatTreatment": "TAX_EXCLUSIVE_FOR_MOST_TERRITORIES (taxes added at checkout)",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "USD 29/year, auto-renewing; 3-month money-back guarantee stated",
+      "dataLicense": "Proprietary forecast models; GRIB access under PredictWind terms",
+      "connectivity": "Internet; offline GRIB via apps and satellite/Iridium options at higher tiers",
+      "advertisedCapabilities": [
+        "11 forecast models, wind/wave, local knowledge, daily briefing, GRIB viewer, 50 km resolution, GPS tracking"
+      ],
+      "relevantLimitations": [
+        "Weather routing and departure planning are NOT included in Basic",
+        "USD list price before local taxes",
+        "No chartplotter navigation entitlement"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "HIGH",
+      "missingEvidence": "EUR billing conversion, exact model list per tier, VAT for EU consumers",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-031",
+      "vendor": "PredictWind",
+      "product": "PredictWind Standard forecast subscription",
+      "category": "Marine weather forecast subscription (with routing)",
+      "mareaFamilies": [
+        "WEATHER"
+      ],
+      "mareaBundles": [
+        "START",
+        "CRUISE",
+        "SAIL",
+        "COMPLETE"
+      ],
+      "customerSegment": "Coastal cruiser needing routing and higher-resolution weather",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://www.predictwind.com/pricing",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 249,
+      "currency": "USD",
+      "vatTreatment": "TAX_EXCLUSIVE_FOR_MOST_TERRITORIES (taxes added at checkout)",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "USD 249/year, auto-renewing",
+      "dataLicense": "Proprietary models; routing and tidal-current data under PredictWind terms",
+      "connectivity": "Internet; offline apps; satellite/SSB delivery at this tier",
+      "advertisedCapabilities": [
+        "Weather routing and departure planning",
+        "Sea temperature, high-resolution tidal currents, observations/webcams, lightning, rain radar"
+      ],
+      "relevantLimitations": [
+        "USD list before tax",
+        "No boat hardware included",
+        "Still a forecast/routing service, not a navigation chart entitlement"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "HIGH",
+      "missingEvidence": "EU consumer VAT, EUR price, exact routing limits by region",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-032",
+      "vendor": "PredictWind",
+      "product": "PredictWind Professional forecast subscription",
+      "category": "Marine weather forecast subscription (professional tier)",
+      "mareaFamilies": [
+        "WEATHER",
+        "FLEET"
+      ],
+      "mareaBundles": [
+        "CRUISE",
+        "SAIL",
+        "COMPLETE",
+        "FLEET"
+      ],
+      "customerSegment": "Racer/professional needing highest-resolution models and boat-motion data",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://www.predictwind.com/pricing",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 499,
+      "currency": "USD",
+      "vatTreatment": "TAX_EXCLUSIVE_FOR_MOST_TERRITORIES (taxes added at checkout)",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "USD 499/year, auto-renewing",
+      "dataLicense": "Proprietary; AI Polars require DataHub",
+      "connectivity": "Internet; satellite/SSB delivery; DataHub integration",
+      "advertisedCapabilities": [
+        "Ocean and tidal currents, high-res routing and departure planning",
+        "AI polars, boat motion data, extreme weather warnings"
+      ],
+      "relevantLimitations": [
+        "Highest cost tier; USD before tax",
+        "AI Polars need compatible hardware (DataHub)",
+        "No hardware, no installation"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "HIGH",
+      "missingEvidence": "EU VAT treatment, EUR price, commercial redistribution rights",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-033",
+      "vendor": "Windy",
+      "product": "Windy Premium (including Passage Planner routing plugin)",
+      "category": "Weather app subscription with routing plugin",
+      "mareaFamilies": [
+        "WEATHER"
+      ],
+      "mareaBundles": [
+        "START",
+        "CRUISE"
+      ],
+      "customerSegment": "Coastal sailor wanting low-cost weather and routing",
+      "market": "EU",
+      "manufacturerUrl": "https://www.windy.com/premium",
+      "retailerUrl": "https://www.yacht.de/it/conoscenza/navigazione/navigazione-passage-planner-plugin-di-instradamento-meteo-per-windy/",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 19,
+      "currency": "EUR",
+      "vatTreatment": "UNKNOWN (editorial statement only)",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 19/year reported; renewal terms not verified",
+      "dataLicense": "Windy model/data terms not retrieved",
+      "connectivity": "Internet",
+      "advertisedCapabilities": [
+        "Multiple global weather models",
+        "Weather routing via Passage Planner plugin",
+        "Multi-departure-time planning"
+      ],
+      "relevantLimitations": [
+        "No nautical charts: routing over a plain map (review found implausible routes)",
+        "Only 23 polar diagrams at test time",
+        "Windy's own premium page inaccessible; price from a secondary review"
+      ],
+      "availability": "REPORTED_CURRENT (secondary review, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "Official Windy price/tax/renewal terms, route-quality evidence",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-034",
+      "vendor": "Full Ahead Maritime",
+      "product": "Full Ahead Maritime Vessel plan (up to 5 ships)",
+      "category": "Fleet technical-management SaaS (fleet-size pricing)",
+      "mareaFamilies": [
+        "FLEET"
+      ],
+      "mareaBundles": [
+        "FLEET"
+      ],
+      "customerSegment": "Small commercial fleet technical superintendent (up to 5 ships)",
+      "market": "EU",
+      "manufacturerUrl": "https://fullaheadmaritime.com/pricing",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 1490,
+      "currency": "EUR",
+      "vatTreatment": "TAX_MAY_APPLY_BY_LOCATION (page states 'taxes may apply based on your location')",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 1,490/year, or from EUR 149/month; 30-day money-back guarantee",
+      "dataLicense": "Proprietary SaaS; no data export terms published",
+      "connectivity": "Web app with offline working; no vessel hardware or telemetry included",
+      "advertisedCapabilities": [
+        "Predictive PMS, statutory certificate register, drills as jobs",
+        "EU ETS and FuelEU reporting, audit evidence library, tamper-evident maintenance ledger"
+      ],
+      "relevantLimitations": [
+        "Commercial-shipping compliance scope, not recreational telematics or consumer monitoring",
+        "No hardware, installation, connectivity or AIS/watch features",
+        "No customer has yet configured a fleet from scratch per the vendor's own limitation note"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "Onboarding/implementation effort, VAT by country, API/data export, SLA",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-035",
+      "vendor": "UOC International",
+      "product": "UOC Core (per vessel, monthly)",
+      "category": "Commercial fleet operations SaaS (per-vessel pricing)",
+      "mareaFamilies": [
+        "FLEET"
+      ],
+      "mareaBundles": [
+        "FLEET"
+      ],
+      "customerSegment": "Commercial vessel operator / small fleet with crew and reporting workflows",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://uocintl.com/platform/pricing",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 259,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 259 per vessel per month; 30-day free pilot",
+      "dataLicense": "Proprietary platform; terms via subscription agreement",
+      "connectivity": "Cloud platform; complimentary VPN and emergency satellite continuity only where feasible",
+      "advertisedCapabilities": [
+        "Fleet monitoring, crew management, noon reports, location validation",
+        "Fuel monitoring and operational analysis, role-based access"
+      ],
+      "relevantLimitations": [
+        "Commercial shipping operations scope: not recreational telematics",
+        "Tax treatment unstated; subject to order form and terms",
+        "Onboarding included as a service but its cost is embedded, not itemised"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "VAT, contractual minimum term, hardware compatibility, data export",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-036",
+      "vendor": "UOC International",
+      "product": "UOC two-vessel annual plan",
+      "category": "Commercial fleet operations SaaS (annual fleet plan)",
+      "mareaFamilies": [
+        "FLEET"
+      ],
+      "mareaBundles": [
+        "FLEET"
+      ],
+      "customerSegment": "Small commercial fleet of two vessels",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://uocintl.com/platform/pricing",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 4900,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 4,900/year for two vessels (stated approx. EUR 204 per vessel per month)",
+      "dataLicense": "Proprietary platform",
+      "connectivity": "Cloud platform",
+      "advertisedCapabilities": [
+        "Same UOC Core scope for two vessels, billed annually, stated EUR 1,316 saving"
+      ],
+      "relevantLimitations": [
+        "Two-vessel only; per-vessel economics not directly comparable to MAREA FLEET single-vessel hypothesis",
+        "VAT and contract terms unstated"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "VAT, minimum term, hardware/telemetry inclusion",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-037",
+      "vendor": "Seafarers.pro",
+      "product": "Starter (Crew) plan",
+      "category": "Crew-management SaaS for small operators",
+      "mareaFamilies": [
+        "FLEET"
+      ],
+      "mareaBundles": [
+        "FLEET"
+      ],
+      "customerSegment": "Small operator (1-5 vessels) moving off spreadsheets",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://www.seafarers.pro/pricing",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 150,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 150 per vessel per month; 40% launch discount first 12 months; annual billing = 10 months",
+      "dataLicense": "Proprietary SaaS",
+      "connectivity": "Web portal",
+      "advertisedCapabilities": [
+        "Crew management, certificate tracking, roster planning, crew changes, portal access"
+      ],
+      "relevantLimitations": [
+        "Crew-management scope only at this tier",
+        "Launch offer is promotional",
+        "No hardware, no telemetry, no vessel monitoring"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "VAT, promotion end date, data export, SLA",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-038",
+      "vendor": "Seafarers.pro",
+      "product": "Professional (Crew + Payroll) plan",
+      "category": "Crew/payroll/PMS SaaS for growing operators",
+      "mareaFamilies": [
+        "FLEET"
+      ],
+      "mareaBundles": [
+        "FLEET"
+      ],
+      "customerSegment": "Fleet operator (3-20 vessels) needing PMS and compliance",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://www.seafarers.pro/pricing",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 240,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 240 per vessel per month (volume discounts to EUR 180); annual billing = 10 months",
+      "dataLicense": "Proprietary SaaS",
+      "connectivity": "Web portal; WebSocket real-time alerts",
+      "advertisedCapabilities": [
+        "PMS, procurement, QHSE compliance, reports/Excel export, priority support"
+      ],
+      "relevantLimitations": [
+        "Commercial operations scope, not recreational fleet or consumer monitoring",
+        "No vessel hardware or AIS/watch telemetry",
+        "Tax treatment unstated"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "VAT, contract term, implementation effort",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-039",
+      "vendor": "Seafarers.pro",
+      "product": "Enterprise (Fleet) plan",
+      "category": "Fleet analytics/compliance SaaS for large fleets",
+      "mareaFamilies": [
+        "FLEET"
+      ],
+      "mareaBundles": [
+        "FLEET"
+      ],
+      "customerSegment": "Large fleet or agency (15+ vessels)",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://www.seafarers.pro/pricing",
+      "retailerUrl": null,
+      "sourceType": "PRIMARY_OFFICIAL",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 360,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 360 per vessel per month; white-label, API and 99.9% SLA stated at this tier",
+      "dataLicense": "Proprietary SaaS with API access",
+      "connectivity": "Web portal, API",
+      "advertisedCapabilities": [
+        "Analytics/BI, API access, custom integrations, white-label, dedicated success manager, 99.9% SLA"
+      ],
+      "relevantLimitations": [
+        "Distinct from recreational/marina fleet needs",
+        "No hardware/installation",
+        "Tax and contract terms unstated"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "VAT, actual SLA contract, API scope",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-040",
+      "vendor": "Orca Navigation",
+      "product": "START-equivalent solution: Orca Core 2 (first year of Smart Navigation included) plus Orca Plus from year two",
+      "category": "Composed complete solution (onboard data + navigation subscription)",
+      "mareaFamilies": [
+        "NAV",
+        "HUB"
+      ],
+      "mareaBundles": [
+        "START"
+      ],
+      "customerSegment": "Owner keeping existing instruments who wants modern navigation plus onboard data",
+      "market": "DE/EU",
+      "manufacturerUrl": "https://help.getorca.com/en/articles/6541858-subscription-prices-and-functionality",
+      "retailerUrl": "https://www.yacht.de/en/sailing-knowledge/navigation/navigation-orca-put-to-the-test-clear-map-display-and-powerful-weather-routing/",
+      "sourceType": "MODEL_DERIVED",
+      "capturedAt": "2026-10-31",
+      "observedPrice": null,
+      "currency": null,
+      "vatTreatment": null,
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "Orca Plus EUR 49/year from year two; one year of Smart Navigation included with Orca Core 2",
+      "dataLicense": "Orca charts; licence scope not published",
+      "connectivity": "Core 2 provides NMEA 2000 integration and wireless bridge; internet for online charts",
+      "advertisedCapabilities": [
+        "Existing NMEA 2000 instruments visible in the app",
+        "Offline charts and routing at the Plus tier"
+      ],
+      "relevantLimitations": [
+        "Composition, not a vendor-delivered bundle: derived EUR 649 in year one (Core 2 includes one year of Smart Navigation) and EUR 698 from year two (Core 2 + Orca Plus)",
+        "Mix of a secondary hardware price and a tax-unspecified subscription",
+        "No installation, no commissioning, no support contract"
+      ],
+      "availability": "COMPOSED_FROM_CURRENT_OBSERVATIONS (2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Single-vendor bundle price, installed quote, VAT treatment, local support",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-041",
+      "vendor": "Orca Navigation",
+      "product": "Orca complete hardware package (Display 2 + Core 2 + charging mount)",
+      "category": "Composed hardware solution with navigation software",
+      "mareaFamilies": [
+        "NAV",
+        "HUB",
+        "DISPLAY",
+        "AIS"
+      ],
+      "mareaBundles": [
+        "CRUISE"
+      ],
+      "customerSegment": "Cruiser fitting a fixed display with onboard data and AIS-over-internet",
+      "market": "DE/EU",
+      "manufacturerUrl": "https://help.getorca.com/en/articles/6541858-subscription-prices-and-functionality",
+      "retailerUrl": "https://www.yacht.de/en/sailing-knowledge/navigation/navigation-orca-put-to-the-test-clear-map-display-and-powerful-weather-routing/",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 1997,
+      "currency": "EUR",
+      "vatTreatment": "VAT_INCLUDED_DE (test reports 'Price including VAT')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "One year of Smart Navigation included with Display/Core purchase; renewal EUR 149/year",
+      "dataLicense": "Orca chart licence included for the subscription period",
+      "connectivity": "Wi-Fi/Bluetooth to Core; NMEA 2000 via Core; internet required for online charts and AIS-over-internet",
+      "advertisedCapabilities": [
+        "10-inch display, NMEA 2000 integration, charts, routing, weather, autopilot control (read/command of an existing pilot), AIS via internet or onboard receiver"
+      ],
+      "relevantLimitations": [
+        "AIS targets via internet depend on MarineTraffic coverage; no receive-only AIS receiver included",
+        "No installation, antenna work, commissioning or warranty extension",
+        "The package is a test-configurator sum, not a vendor 'CRUISE' bundle"
+      ],
+      "availability": "CURRENT_HARDWARE_REPORTED (secondary test, retrieved 2026-10-31)",
+      "comparisonConfidence": "MEDIUM",
+      "missingEvidence": "Manufacturer store confirmation, VAT/stock in ES, installation cost, AIS receiver add-on price",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-042",
+      "vendor": "Raymarine / Digital Yacht",
+      "product": "CRUISE-equivalent composition: Element 7 HV + AIS100 + NavLink2",
+      "category": "Composed complete solution (display + receive-only AIS + gateway)",
+      "mareaFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "DISPLAY"
+      ],
+      "mareaBundles": [
+        "CRUISE"
+      ],
+      "customerSegment": "Coastal cruiser wanting a fixed helm display, AIS targets and app data",
+      "market": "ES",
+      "manufacturerUrl": "https://www.raymarine.com/es-es/nuestros-productos/chartplotters/element/element-hv",
+      "retailerUrl": "https://digitalyacht.es/categoria-producto/sistemas-de-pc/accesorios-de-pc/?max_price=1380&orderby=price",
+      "sourceType": "MODEL_DERIVED",
+      "capturedAt": "2026-10-31",
+      "observedPrice": null,
+      "currency": null,
+      "vatTreatment": null,
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "Navigation app is not included; chart cards/subscriptions and gateway configuration are separate",
+      "dataLicense": "Raymarine/Navionics/C-MAP charts licensed separately; no NAV app subscription in the sum",
+      "connectivity": "NMEA 2000/SeaTalkng, Wi-Fi, GNSS; AIS receiver to USB/NMEA 0183; NavLink2 bridges N2K to Wi-Fi",
+      "advertisedCapabilities": [
+        "Fixed 7-inch chartplotter with GNSS and sonar support",
+        "Receive-only AIS targets in navigation software",
+        "NMEA 2000 data to apps via Wi-Fi"
+      ],
+      "relevantLimitations": [
+        "Composition, not a vendor bundle: derived total EUR 1,319.45 (EUR 659.45 + EUR 360 + EUR 300)",
+        "No navigation-app subscription, no charts beyond the display base, no AIS antenna/splitter",
+        "Mixed tax basis: one VAT-inclusive price plus two tax-unspecified prices"
+      ],
+      "availability": "COMPOSED_FROM_CURRENT_OBSERVATIONS (2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Installed quote, AIS antenna/splitter cost, installation labour, app subscription cost",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-043",
+      "vendor": "Raymarine / B&G / Digital Yacht",
+      "product": "SAIL-equivalent composition: EV-100 Wheel + Element 7 HV + WS310 + NavLink2",
+      "category": "Composed sailing solution (autopilot + display + wind sensor + gateway)",
+      "mareaFamilies": [
+        "PILOT",
+        "SENSE",
+        "DISPLAY",
+        "HUB",
+        "NAV"
+      ],
+      "mareaBundles": [
+        "SAIL"
+      ],
+      "customerSegment": "Sailing-yacht owner wanting integrated helm, steering assistance and measured wind",
+      "market": "ES",
+      "manufacturerUrl": "https://www.raymarine.com/es-es/nuestros-productos/chartplotters/element/element-hv",
+      "retailerUrl": "https://www.latiendadelnavegante.com/producto_ampliado.asp?c=090800010112",
+      "sourceType": "MODEL_DERIVED",
+      "capturedAt": "2026-10-31",
+      "observedPrice": null,
+      "currency": null,
+      "vatTreatment": null,
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "No mandatory software subscription in the sum; charts and app subscriptions extra",
+      "dataLicense": "Mixed vendor licences (Raymarine display software; B&G sensor)",
+      "connectivity": "NMEA 2000/SeaTalkng backbone; Wi-Fi gateway for apps",
+      "advertisedCapabilities": [
+        "Wheel autopilot, chartplotter, wind measurement, app data bridge"
+      ],
+      "relevantLimitations": [
+        "Composition only: derived total EUR 3,499.40, mixing brands and tax bases",
+        "Wind vane alone has no display surface in this composition; an instrument display is missing",
+        "No vessel survey, commissioning, sea trial or installer labour; no MAREA-equivalent safety case"
+      ],
+      "availability": "COMPOSED_FROM_CURRENT_OBSERVATIONS (2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Cost of instrument display for wind, installed quote, survey, commissioning, sea-trial evidence",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-044",
+      "vendor": "Yacht Sentinel",
+      "product": "PROTECT-equivalent: YS Pro monitoring plus annual subscription",
+      "category": "Composed monitoring solution (hardware + service + sensors)",
+      "mareaFamilies": [
+        "WATCH",
+        "SENSE"
+      ],
+      "mareaBundles": [
+        "PROTECT"
+      ],
+      "customerSegment": "Absent European boat owner in a marina wanting power and bilge awareness ashore",
+      "market": "EU",
+      "manufacturerUrl": "https://yachtsentinel.com/pricing/",
+      "retailerUrl": "https://smartboats.org/guides/siren-vs-armit-vs-yacht-sentinel",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 1590,
+      "currency": "EUR",
+      "vatTreatment": "VAT_EXCLUDED (secondary source states 'excl. VAT')",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 240/year reported for EU/US zones",
+      "dataLicense": "Proprietary; no documented export",
+      "connectivity": "Embedded 3G/4G SIM, 100+ countries stated; own SIM/Wi-Fi/Ethernet; NMEA 2000",
+      "advertisedCapabilities": [
+        "Bilge, battery-voltage, entry, motion and environmental monitoring with alerts",
+        "NMEA 2000/J1939/CAN/Modbus reading"
+      ],
+      "relevantLimitations": [
+        "Current availability UNCONFIRMED (vendor domain parked); secondary pricing only",
+        "VAT excluded; sensors EUR 60-130 each extra",
+        "Annual service cost adds to year-one total; installation excluded"
+      ],
+      "availability": "UNCONFIRMED_VENDOR (secondary source; domain parked 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Working vendor price page, stock, VAT-inclusive consumer price, sensor bundle, installation",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-045",
+      "vendor": "Siren Marine (Yamaha)",
+      "product": "PROTECT-equivalent: Siren 3 plus annual service plan",
+      "category": "Composed monitoring solution (hardware + service + sensor)",
+      "mareaFamilies": [
+        "WATCH",
+        "SENSE"
+      ],
+      "mareaBundles": [
+        "PROTECT"
+      ],
+      "customerSegment": "US absent boat owner wanting bilge and battery alerts ashore",
+      "market": "US",
+      "manufacturerUrl": "https://sirenmarine.com/",
+      "retailerUrl": "https://smartboats.org/guides/siren-vs-armit-vs-yacht-sentinel",
+      "sourceType": "SECONDARY_INDEPENDENT",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 299.99,
+      "currency": "USD",
+      "vatTreatment": "UNKNOWN (US sales tax varies by state)",
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "USD 225/year reported; one high-water sensor at USD 139.09 reported",
+      "dataLicense": "Proprietary cloud; no documented export",
+      "connectivity": "Global LTE; NMEA 2000; optional satellite tracking",
+      "advertisedCapabilities": [
+        "Bilge/high-water, battery and entry monitoring with app alerts"
+      ],
+      "relevantLimitations": [
+        "Secondary pricing only; vendor page inaccessible",
+        "US cellular focus; EU availability/service UNKNOWN",
+        "Sensor and installation extra; three-year total reported around USD 1,114-1,392"
+      ],
+      "availability": "REPORTED_CURRENT (secondary source; vendor page inaccessible 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Vendor price, EU service, VAT/import, installation, alert reliability evidence",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-046",
+      "vendor": "Raymarine / B&G / Victron / Digital Yacht",
+      "product": "COMPLETE-equivalent composition: display + autopilot + wind + AIS receiver + monitoring gateway",
+      "category": "Composed full boat electronics solution",
+      "mareaFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "DISPLAY",
+        "WATCH"
+      ],
+      "mareaBundles": [
+        "COMPLETE"
+      ],
+      "customerSegment": "Owner/refit customer seeking one coordinated professional integration",
+      "market": "ES",
+      "manufacturerUrl": "https://www.raymarine.com/es-es/nuestros-productos/chartplotters/element/element-hv",
+      "retailerUrl": "https://www.latiendadelnavegante.com/producto_ampliado.asp?c=090800010112",
+      "sourceType": "MODEL_DERIVED",
+      "capturedAt": "2026-10-31",
+      "observedPrice": null,
+      "currency": null,
+      "vatTreatment": null,
+      "hardwareIncluded": true,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "No single subscription in the sum; charts, monitoring service and PILOT commissioning extra",
+      "dataLicense": "Mixed licences; no unified data licence exists across brands",
+      "connectivity": "NMEA 2000 backbone plus Wi-Fi gateway; Victron VRM remote monitoring; internet dependent",
+      "advertisedCapabilities": [
+        "Navigation, AIS reception, autopilot, wind measurement, battery monitoring"
+      ],
+      "relevantLimitations": [
+        "Composition only: derived total EUR 3,799.49, mixed brands and tax bases",
+        "No bilge/tank/environment sensors beyond Cerbo inputs; no safety case or survey",
+        "No installation, commissioning, integration warranty or support contract; not a turnkey quote"
+      ],
+      "availability": "COMPOSED_FROM_CURRENT_OBSERVATIONS (2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Installed/commissioned quote, sensor list, integration labour, support/SLA",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-047",
+      "vendor": "Full Ahead Maritime",
+      "product": "FLEET-package-equivalent: Vessel SaaS plus (no onboarding/hardware quote)",
+      "category": "Composed fleet package (SaaS only, onboarding unpriced)",
+      "mareaFamilies": [
+        "FLEET"
+      ],
+      "mareaBundles": [
+        "FLEET"
+      ],
+      "customerSegment": "Charter/marina/management operator needing fleet records and reporting",
+      "market": "EU",
+      "manufacturerUrl": "https://fullaheadmaritime.com/pricing",
+      "retailerUrl": null,
+      "sourceType": "MODEL_DERIVED",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 1490,
+      "currency": "EUR",
+      "vatTreatment": "TAX_MAY_APPLY_BY_LOCATION",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 1,490/year up to 5 ships; onboarding, hardware, connectivity and installation NOT included or priced",
+      "dataLicense": "Proprietary",
+      "connectivity": "Cloud SaaS; no vessel telemetry",
+      "advertisedCapabilities": [
+        "Fleet technical management: PMS, certificates, statutory work, reporting"
+      ],
+      "relevantLimitations": [
+        "Not a MAREA FLEET equivalent: no telemetry, no WATCH, no devices, no installation",
+        "Onboarding/setup cost not published; vendor notes no customer has yet configured a fleet from scratch",
+        "Commercial compliance scope differs from recreational operator needs"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "Onboarding cost, device/telemetry layer, installation, support scope, VAT",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    },
+    {
+      "obsId": "OBS-CMP-048",
+      "vendor": "UOC International",
+      "product": "FLEET-package-equivalent: two-vessel annual platform",
+      "category": "Composed fleet package (SaaS only, onboarding included as service)",
+      "mareaFamilies": [
+        "FLEET"
+      ],
+      "mareaBundles": [
+        "FLEET"
+      ],
+      "customerSegment": "Two-vessel commercial operator",
+      "market": "GLOBAL",
+      "manufacturerUrl": "https://uocintl.com/platform/pricing",
+      "retailerUrl": null,
+      "sourceType": "MODEL_DERIVED",
+      "capturedAt": "2026-10-31",
+      "observedPrice": 4900,
+      "currency": "EUR",
+      "vatTreatment": "NOT_STATED",
+      "hardwareIncluded": false,
+      "softwareIncluded": true,
+      "installationIncluded": false,
+      "subscription": "EUR 4,900/year for two vessels; personal onboarding and setup stated as included; hardware/connectivity only where technically feasible",
+      "dataLicense": "Proprietary; terms via subscription agreement",
+      "connectivity": "Cloud platform; optional complimentary VPN/satellite continuity where feasible",
+      "advertisedCapabilities": [
+        "Fleet monitoring, crew management, noon reports, fuel analysis, role-based access, onboarding and reviews"
+      ],
+      "relevantLimitations": [
+        "Commercial shipping scope, not recreational/marina fleet",
+        "No hardware, no installation, no WATCH/AIS telemetry product",
+        "VAT and minimum term unstated"
+      ],
+      "availability": "CURRENT_PUBLISHED_OFFER (manufacturer pricing page, retrieved 2026-10-31)",
+      "comparisonConfidence": "LOW",
+      "missingEvidence": "VAT, contract term, hardware integration, data export",
+      "researcher": "agent-b-competitors",
+      "lastVerifiedAt": "2026-10-31"
+    }
+  ]
+}

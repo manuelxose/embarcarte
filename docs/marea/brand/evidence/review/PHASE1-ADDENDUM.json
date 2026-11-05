@@ -1,0 +1,96 @@
+{
+  "document": "MC-04 independent review — Phase 1 addendum (D-06, D-07, D-17 landed after the interim report)",
+  "reviewer": "independent-reviewer (AI agent; author != reviewer)",
+  "snapshotAt": "2026-10-30T19:05Z",
+  "supersedes": [],
+  "findingsStatusChanges": [
+    {
+      "id": "IR-04",
+      "newStatus": "RESOLVED (withdrawn)",
+      "reason": "My first run was made against scripts/check-typography.mjs at 18:31:06 local; the author replaced the script at 18:31:40, fixing oflDocumentExemption to match 'using the Font Software' and adding oflBundling. Re-running the current script reproduces the doc's §9 quoted output exactly (ofl11/permission/bundling/document-exemption/RFN-clause all true, RFN-declared=false, required=68, missing=0, 48/72/100 px figures identical; RESULT PASS). No defect remains; TYPOGRAPHY-SYSTEM.md T-1/T-8 now state the correct licence facts.",
+      "evidence": "docs/marea/brand/evidence/review/raw/typography-run2-full.txt; docs/marea/brand/evidence/review/tools/claims-audit.py (45 checks, colour/typography all match)"
+    },
+    {
+      "id": "IR-10",
+      "newStatus": "RESOLVED by Lead",
+      "reason": "Lead reports MC-04-EXECUTION-PLAN.md §1 now authorizes scripts/check-typography.mjs with the reason recorded. Verified in Phase 2 on the frozen tree.",
+      "evidence": "Lead message 2026-10-30"
+    },
+    {
+      "id": "IR-07",
+      "newSeverity": "NIT",
+      "newStatus": "PARTIALLY ADDRESSED",
+      "reason": "COLOUR-SYSTEM.md §1/§3/§12 clarifies that role naming is the contract for the instrument role sets and that the web-light block is a measured legacy baseline mapping onto --mist/--paper/--sky/--navy/--muted. The token file's one-line 'roleNamesOnly' statement is still broader than the file content, hence NIT rather than MINOR."
+    },
+    {
+      "id": "IR-08",
+      "newSeverity": "NIT",
+      "newStatus": "PARTIALLY ADDRESSED",
+      "reason": "COLOUR-SYSTEM.md §7 and §14 are precise: F-1 is 'resolved by proposal' and the live site stays PARTIAL until MC-06 implements #0f5f8c. The token JSON's webTokenMapping string 'replaces the failing focus colour; resolves F-1' still reads as a closed finding; wording only."
+    }
+  ],
+  "newFindings": [
+    {
+      "id": "IR-11",
+      "severity": "MINOR",
+      "title": "MC-04-ACCESSIBILITY-EVIDENCE.md disposition-count arithmetic is wrong",
+      "files": ["docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md (Disposition count line under §2)"],
+      "evidence": "Independent parse of the 28 QA rows (raw/claims-audit.json): PASS 4 (QA-16, 21, 25, 27), PARTIAL 16, NOT_TESTED 5, BLOCKED 3 = 28. The document states 'PASS 4 · PARTIAL 13 · NOT_TESTED 6 · BLOCKED 3 (28 total)': PARTIAL understated by 3, NOT_TESTED overstated by 1, and the stated parts sum to 26, not 28. Individual QA dispositions are correct and conservative; only the count line is wrong.",
+      "impact": "A reviewer or reader could take the counts at face value; the error is in the direction of looking less complete than the record actually is, but the line is contradictory (26 ≠ 28).",
+      "disposition": "OPEN — correct the count line to 4/16/5/3."
+    },
+    {
+      "id": "IR-12",
+      "severity": "MINOR",
+      "title": "TYPOGRAPHY-SYSTEM.md says only the numeric role moves family, but units and timestamps also move from DM Sans (brief §4.4) to Manrope",
+      "files": ["docs/marea/brand/TYPOGRAPHY-SYSTEM.md:244-246 and §5 role table"],
+      "evidence": "§5 table: 'Unit / suffix | Manrope 500' and 'Timestamp / age | Manrope 500–600, tabular'; the brief's §4.4 table assigns Unit/suffix to DM Sans 500 and metadata/timestamps to DM Sans 400–500. The summary sentence claims 'The numeric role is the only role that moves family relative to the brief's §4.4 table'. The token JSON also lists 'units' under displayNumeric roles.",
+      "impact": "Documentation accuracy of a deviation record; the deviation itself is justified (units must not inherit proportional digits from a different family) but should be recorded as covering the whole numeric treatment bundle, not one row.",
+      "disposition": "OPEN — reword the deviation to 'numeric treatment (value + unit + timestamp/age spans)', or state explicitly that units and timestamps follow the numeric family."
+    }
+  ],
+  "newlyVerified": [
+    {
+      "claim": "D-06 typography: every numeric/quoted claim in TYPOGRAPHY-SYSTEM.md",
+      "status": "VERIFIED",
+      "evidence": "raw/claims-audit.json (45 checks, only the two IR-11 count mismatches): the §4.2 table (DM Sans 16.3125/24.4844/34.0000; Manrope 0.0781/0.1094/0.1563), column deltas (DM 40.4688/27.7656/34.0000; Manrope 0.0000), minus widths, digit advances, §2 woff2 bytes (36,932 / 24,836 / 18,228 / 15,120) and sha256 prefixes, 12/6 builds with 0/1 tnum, unitsPerEm 1000/2000, LICENSE 93 lines each, and the two package-lock sha512 integrity strings all match the real files; token sha256 824e8f4d... matches."
+    },
+    {
+      "claim": "D-06 T-4/T-7 self-hosting and byte accounting",
+      "status": "VERIFIED",
+      "evidence": "dist/embarcarte/browser/styles-*.css has 8 @font-face, all url('./media/...woff2'), 0 external/data URLs, font-display swap in all 8, no fonts.googleapis/gstatic; dist contains exactly the 8 woff2 files totalling 130,132 B; package totals 537,888 B (12 DM Sans) + 74,972 B (6 Manrope) match the doc (raw/dist-font-audit output)."
+    },
+    {
+      "claim": "D-07 colour: every ratio and finding value in COLOUR-SYSTEM.md",
+      "status": "VERIFIED",
+      "evidence": "raw/claims-audit.json: 24 independently recomputed ratios (F-1 1.6529/1.5540/1.5149; F-5 4.9631/4.6663; F-6 4.8275/4.7059; F-7 4.7762/4.7371; F-1 proposal 6.9173/6.5036/6.34; day/sunlight/night role minimums) all match the document at its stated precision; token sha256 matches; and the earlier full-matrix recomputation still holds (190/190 pairs, max delta 0.0000)."
+    },
+    {
+      "claim": "D-17 colour evidence boards are real, render clean and are labelled",
+      "status": "VERIFIED",
+      "evidence": "raw/board-audit.json: both boards load in Playwright Chromium 156 with 0 console messages and 0 page errors; cvd-simulation-board has 4 feColorMatrix filters (deuteranopia/protanopia/tritanopia/achromatopsia) and 5 filter sections; greyscale-board has the WCAG luminance matrix filter and 3 day/sunlight/night sections; both carry INTERNAL + PROPOSED + ILLUSTRATIVE + NOT LIVE DATA; screenshots saved (raw/board-cvd.png, raw/board-greyscale.png). This verifies the evidence exists and renders — it does NOT make QA-03/QA-04 a human visual review or a colour-blind certification."
+    },
+    {
+      "claim": "D-17 QA-16 / QA-21 / QA-25 / QA-27 PASSes",
+      "status": "VERIFIED WITH SCOPE CAVEATS",
+      "evidence": "QA-16: both evidence HTML files declare lang='en' and contain no Spanish state copy, so the PASS is true for its stated scope (evidence HTML only); it is not a statement about the product UI. QA-21: every TypeColour artefact carries INTERNAL_PROPOSED and the boards add ILLUSTRATIVE/NOT LIVE DATA; the accessibility doc's own scope excludes AssetProduction assets. QA-25: no raster exists under the author's write scope (nothing to measure) — true, but milestome-wide raster budgets remain an AssetProduction/Phase-2 item. QA-27: my independent cross-document check (raw/reference-check.json) found 47 backtick refs across 10 documents with only 2 unmatched patterns, both intentional globs (`icons/ui/*.svg`, future `public/assets/marea/**`); 0 real broken references."
+    },
+    {
+      "claim": "D-16/D-12 external sources and honesty",
+      "status": "PARTIALLY VERIFIED (external resolution NOT VERIFIED)",
+      "evidence": "ORIGINALITY-AND-PRIOR-ART-CHECK.md cites 20 unique public URLs on plausible domains (euipo.europa.eu, trademarks.ipo.gov.uk, vendor and editorial sites) with 27 retrieval dates and explicit evidence classes; no invented domain pattern (no example.com/localhost). PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md cites no external sources, which is appropriate for an art-direction brief. This session's web-fetch endpoint failed, so I could not resolve any cited URL: their content and live status are NOT VERIFIED by me. The document's status fields remain PENDING/NOT_GRANTED/BLOCKED and it makes no clearance claim."
+    }
+  ],
+  "pendingDependencies": [
+    "MC-04-ASSETS.yaml (manifest) — still absent",
+    "MC-04-DELIVERY.md (D-18) — still absent",
+    "IDENTITY-SYSTEM.md / TERRITORY-COMPARISON.md (D-01/D-02) — still absent (territories art exists, system docs do not)",
+    "scored shortlist (§9 of D-16) — PENDING until Lead records it",
+    "revised lockups / specimens / re-rendered rasters — Lead will announce FREEZE"
+  ],
+  "agentLimits": [
+    "This is an AI-agent review. It is not human user research, not professional certification, not legal clearance, not a trademark/originality opinion and not a colour-vision-deficiency usability test, and it cannot substitute for them.",
+    "No external URL/registry/icon-library verification was possible in this session (web fetch endpoint returned HTTP 404). Anything that depends on external sources is recorded NOT VERIFIED, never PASS.",
+    "Hardware, sunlight, night photometry, print proof and glove tests remain BLOCKED/NOT_TESTED by definition."
+  ]
+}

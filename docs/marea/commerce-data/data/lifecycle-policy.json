@@ -1,0 +1,241 @@
+{
+  "contractId": "MC16-LIFECYCLE-POLICY",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "states": [
+    "CONCEPT",
+    "DEFINED",
+    "ENGINEERING_VERIFIED",
+    "REGULATORY_READY",
+    "OPERATIONS_READY",
+    "COMMERCIALLY_AVAILABLE",
+    "RETIRED"
+  ],
+  "initialStates": {
+    "families": "DEFINED",
+    "editions": "DEFINED",
+    "bundles": "DEFINED"
+  },
+  "currentState": {
+    "commerciallyAvailable": 0,
+    "regulatoryReady": 0,
+    "operationsReady": 0,
+    "engineeringVerified": 0,
+    "defined": 9,
+    "maxReachableStateDuringMc16": "DEFINED"
+  },
+  "dimensions": [
+    "definition",
+    "engineering",
+    "licensing",
+    "hardware",
+    "dataRights",
+    "compliance",
+    "safety",
+    "pricing",
+    "brandPublication",
+    "operations",
+    "availability"
+  ],
+  "transitions": [
+    {
+      "transitionId": "TR-CONCEPT-DEFINED",
+      "fromState": "CONCEPT",
+      "toState": "DEFINED",
+      "requiredGateIds": [],
+      "requiredEvidenceIds": [
+        "EV-DEFINITION-COMPLETE"
+      ],
+      "requiredApproverRoles": [
+        "PRODUCT_GOVERNANCE"
+      ],
+      "mc16Allowed": false,
+      "authorizationStatus": "DENIED_BY_DEFAULT",
+      "auditEventRequired": true,
+      "failClosed": true,
+      "currentEligible": false,
+      "blockers": [
+        "MISSING_EXTERNAL_EVIDENCE",
+        "RELEASE_GATE_OPEN",
+        "MC16_ACTIVATION_PROHIBITED"
+      ]
+    },
+    {
+      "transitionId": "TR-DEFINED-ENGINEERING",
+      "fromState": "DEFINED",
+      "toState": "ENGINEERING_VERIFIED",
+      "requiredGateIds": [],
+      "requiredEvidenceIds": [
+        "EV-ENGINEERING-VERIFICATION"
+      ],
+      "requiredApproverRoles": [
+        "HARDWARE_LEAD",
+        "ENGINEERING_LEAD"
+      ],
+      "mc16Allowed": false,
+      "authorizationStatus": "DENIED_BY_DEFAULT",
+      "auditEventRequired": true,
+      "failClosed": true,
+      "currentEligible": false,
+      "blockers": [
+        "MISSING_EXTERNAL_EVIDENCE",
+        "RELEASE_GATE_OPEN",
+        "MC16_ACTIVATION_PROHIBITED"
+      ]
+    },
+    {
+      "transitionId": "TR-ENGINEERING-REGULATORY",
+      "fromState": "ENGINEERING_VERIFIED",
+      "toState": "REGULATORY_READY",
+      "requiredGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-SAFETY-PILOT"
+      ],
+      "requiredEvidenceIds": [
+        "EV-CONFORMITY-ASSESSMENT",
+        "EV-DECLARATION-OF-CONFORMITY",
+        "EV-SAFETY-CASE"
+      ],
+      "requiredApproverRoles": [
+        "PRODUCT_COMPLIANCE_ENGINEER",
+        "SECURITY_LEAD",
+        "HARDWARE_LEAD"
+      ],
+      "mc16Allowed": false,
+      "authorizationStatus": "DENIED_BY_DEFAULT",
+      "auditEventRequired": true,
+      "failClosed": true,
+      "currentEligible": false,
+      "blockers": [
+        "MISSING_EXTERNAL_EVIDENCE",
+        "RELEASE_GATE_OPEN",
+        "MC16_ACTIVATION_PROHIBITED"
+      ]
+    },
+    {
+      "transitionId": "TR-REGULATORY-OPERATIONS",
+      "fromState": "REGULATORY_READY",
+      "toState": "OPERATIONS_READY",
+      "requiredGateIds": [
+        "GATE-CONSUMER-TERMS",
+        "GATE-PAYMENTS",
+        "GATE-LEGAL-ENTITY",
+        "GATE-INSURANCE",
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "requiredEvidenceIds": [
+        "EV-CONTRACT-TERMS",
+        "EV-PAYMENT-READINESS",
+        "EV-LEGAL-ENTITY",
+        "EV-INSURANCE"
+      ],
+      "requiredApproverRoles": [
+        "LEGAL_COUNSEL",
+        "FINANCE_LEAD",
+        "COMMERCIAL_DIRECTOR"
+      ],
+      "mc16Allowed": false,
+      "authorizationStatus": "DENIED_BY_DEFAULT",
+      "auditEventRequired": true,
+      "failClosed": true,
+      "currentEligible": false,
+      "blockers": [
+        "MISSING_EXTERNAL_EVIDENCE",
+        "RELEASE_GATE_OPEN",
+        "MC16_ACTIVATION_PROHIBITED"
+      ]
+    },
+    {
+      "transitionId": "TR-OPERATIONS-COMMERCIAL",
+      "fromState": "OPERATIONS_READY",
+      "toState": "COMMERCIALLY_AVAILABLE",
+      "requiredGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-ALL-RELEASE-GATES-CLOSED",
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "requiredApproverRoles": [
+        "PROGRAMME_LEAD",
+        "COMMERCIAL_DIRECTOR",
+        "FINANCE_LEAD",
+        "LEGAL_COUNSEL"
+      ],
+      "mc16Allowed": false,
+      "authorizationStatus": "DENIED_BY_DEFAULT",
+      "auditEventRequired": true,
+      "failClosed": true,
+      "currentEligible": false,
+      "blockers": [
+        "MISSING_EXTERNAL_EVIDENCE",
+        "RELEASE_GATE_OPEN",
+        "MC16_ACTIVATION_PROHIBITED"
+      ]
+    },
+    {
+      "transitionId": "TR-ANY-RETIRED",
+      "fromState": "*",
+      "toState": "RETIRED",
+      "requiredGateIds": [],
+      "requiredEvidenceIds": [
+        "EV-RETIREMENT-AUTHORIZATION"
+      ],
+      "requiredApproverRoles": [
+        "PROGRAMME_LEAD",
+        "COMMERCIAL_DIRECTOR"
+      ],
+      "mc16Allowed": false,
+      "authorizationStatus": "DENIED_BY_DEFAULT",
+      "auditEventRequired": true,
+      "failClosed": true,
+      "currentEligible": false,
+      "blockers": [
+        "MISSING_EXTERNAL_EVIDENCE",
+        "RELEASE_GATE_OPEN",
+        "MC16_ACTIVATION_PROHIBITED"
+      ]
+    }
+  ],
+  "transitionContract": {
+    "requiredFields": [
+      "transitionId",
+      "entityId",
+      "fromState",
+      "toState",
+      "requiredGateIds",
+      "requiredEvidenceIds",
+      "requiredApproverRoles",
+      "authorizationStatus",
+      "auditEventId"
+    ],
+    "deniedWhen": [
+      "external legal gate open",
+      "licence missing",
+      "price unapproved",
+      "stock provenance absent",
+      "safety case blocked",
+      "required approval missing",
+      "actor lacks permission",
+      "prerequisite document expired or revoked"
+    ]
+  },
+  "evidenceRule": "A passing test is not evidence that a regulator, rights holder or supplier approved anything."
+}

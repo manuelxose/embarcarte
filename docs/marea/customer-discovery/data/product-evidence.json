@@ -1,0 +1,204 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "schemaVersion": "MC10-PRODUCT-EVIDENCE-1.0.0",
+  "sourceOrder": "docs/marea/market-validation/data/product-assessments.json (MC-09 commercialScore, descending)",
+  "currentEvidenceStatus": "NOT_TESTED",
+  "counterevidencePolicy": "Absence of primary evidence is not evidence of absence. No product may be advanced, deferred or discontinued on the basis of zero interviews.",
+  "products": [
+    {
+      "family": "NAV",
+      "mc09Rank": 1,
+      "mc09Score": 4.23,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether the boat-data fragmentation problem is recurring and economically consequential for real owners",
+        "Whether a real recent purchase exists that addresses that problem",
+        "Whether NAV composition and its chart/installation exclusions are understood"
+      ],
+      "nextValidationStep": "EXP-MC10-01 and EXP-MC10-06 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "family": "WEATHER",
+      "mc09Rank": 2,
+      "mc09Score": 3.77,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether recurring weather-data subscriptions are acceptable once local functions stop",
+        "Whether participants can separate chart licensing from a MAREA service fee"
+      ],
+      "nextValidationStep": "EXP-MC10-03 and EXP-MC10-05 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "family": "WATCH",
+      "mc09Rank": 3,
+      "mc09Score": 3.38,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether owners of unattended vessels value bilge/power/geofence alerts enough to act on them",
+        "Whether the alerting limitations are understood and no guarantee is inferred"
+      ],
+      "nextValidationStep": "EXP-MC10-09 and EXP-MC10-10 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "family": "HUB",
+      "mc09Rank": 4,
+      "mc09Score": 3.37,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether installers require a published compatibility matrix and named liability position before fitting",
+        "Whether a hardware gateway purchase is acceptable at the prepared price hypothesis"
+      ],
+      "nextValidationStep": "EXP-MC10-02 and EXP-MC10-04 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "family": "FLEET",
+      "mc09Rank": 5,
+      "mc09Score": 3.22,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether fleet operators can state a measurable trial success criterion",
+        "Whether cross-tenant isolation and data-processing terms are acceptable",
+        "No trial, pilot, distribution agreement or contract exists"
+      ],
+      "nextValidationStep": "EXP-MC10-07 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "family": "AIS",
+      "mc09Rank": 6,
+      "mc09Score": 2.9,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether receive-only AIS is understood and not confused with transponder transmission",
+        "Whether the AIS exclusions are restated correctly"
+      ],
+      "nextValidationStep": "EXP-MC10-06 and EXP-MC10-01 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "family": "SENSE",
+      "mc09Rank": 7,
+      "mc09Score": 2.84,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether sensor installation and liability conditions are acceptable to installers",
+        "Whether measurement accuracy expectations are realistic"
+      ],
+      "nextValidationStep": "EXP-MC10-02 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    },
+    {
+      "family": "PILOT",
+      "mc09Rank": 8,
+      "mc09Score": 2.64,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether any PILOT value case exists independent of the blocked safety gate",
+        "Whether remote-helm prohibitions are understood",
+        "PILOT safety gate remains BLOCKED and no remote control is permitted"
+      ],
+      "nextValidationStep": "No customer-validation step changes the PILOT safety gate; EXP-MC10-02 may record installer conditions after AUTH-MC10-001 is GRANTED.",
+      "readinessUnchanged": true
+    },
+    {
+      "family": "DISPLAY",
+      "mc09Rank": 9,
+      "mc09Score": 2.47,
+      "primaryEvidenceStatus": "NOT_TESTED",
+      "participants": 0,
+      "purchaseHistoryEvidence": 0,
+      "comprehensionEvidence": 0,
+      "pricingEvidence": 0,
+      "installerChannelEvidence": 0,
+      "counterevidence": 0,
+      "evidenceQuality": "NONE",
+      "recommendation": "NOT_TESTED",
+      "remainingUnknowns": [
+        "Whether a separate display is valued over existing chartplotters",
+        "Whether hardware size and interaction requirements are acceptable"
+      ],
+      "nextValidationStep": "EXP-MC10-01 and EXP-MC10-06 after AUTH-MC10-001 is GRANTED; no readiness change before then.",
+      "readinessUnchanged": true
+    }
+  ],
+  "aggregate": {
+    "products": 9,
+    "tested": 0,
+    "notTested": 9,
+    "withPrimaryEvidence": 0,
+    "readinessUpgrades": 0
+  },
+  "note": "All nine families keep their MC-09 desk-research priority order and remain NOT_TESTED. MC-09 scores are prioritisation outcomes, not measured demand, and are reproduced here only as the frozen reference order."
+}

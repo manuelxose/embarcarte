@@ -1,0 +1,143 @@
+{
+  "contractId": "MAREA-MC12-LICENSING-RIGHTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-12",
+  "date": "2026-11-02",
+  "owner": "licensing-data-rights-researcher + programme-lead",
+  "currency": "EUR",
+  "note": "Rights required to sell a MAREA product, compared with the rights actually evidenced. No provider contract, OEM agreement or redistribution licence exists. A public-domain or open-licence source is recorded as PERMITTED, but permission to use a dataset is not evidence that it is sufficient for the intended paid product.",
+  "rights": [
+    {
+      "id": "LR-CHART-001",
+      "dependency": "CHART_DATA",
+      "rightRequired": "Commercial redistribution and offline caching of official electronic navigational charts for Spanish, Portuguese and adjacent cruising waters inside a paid navigation application",
+      "rightsStatus": "NOT_GRANTED",
+      "evidenceClass": "OFFICIAL_LICENSING_DOCUMENT",
+      "sourceRecordIds": ["PE-CW-003", "PE-CW-004", "PE-CW-005", "PE-CW-006"],
+      "blocksProductIds": ["NAV"],
+      "blockerId": "BLK-LIC-01",
+      "notes": "IHO S-57/S-63 distribution requires an OEM/data-server agreement and the national hydrographic offices (UKHO, Shom, IHM) publish no fee schedule and were not read. No agreement exists, so the right is NOT_GRANTED. This is the binding licensing blocker for MAREA NAV in its target geography."
+    },
+    {
+      "id": "LR-CHART-002",
+      "dependency": "CHART_DATA",
+      "rightRequired": "Use of a fee-free public chart/bathymetry source as a display or context layer",
+      "rightsStatus": "PERMITTED",
+      "evidenceClass": "OFFICIAL_LICENSING_DOCUMENT",
+      "sourceRecordIds": ["PE-CW-001", "PE-CW-002", "PE-CW-010", "PE-CW-013", "PE-CW-026"],
+      "blocksProductIds": [],
+      "blockerId": null,
+      "notes": "NOAA ENC is public domain but covers United States waters, not the MAREA target area; EMODnet bathymetry and OSM/ODbL data are context layers, not navigation-grade charts, and OSM tile usage policy forbids a heavy production tile load. Permission does not imply fitness for navigation, and no navigational guarantee may be made."
+    },
+    {
+      "id": "LR-CHART-003",
+      "dependency": "CHART_DATA",
+      "rightRequired": "Redistribution of a commercial third-party chart product inside the MAREA application",
+      "rightsStatus": "REQUIRES_CONTRACT",
+      "evidenceClass": "OFFICIAL_LICENSING_DOCUMENT",
+      "sourceRecordIds": ["PE-CW-007", "PE-CW-008", "PE-CW-009", "PE-CW-011"],
+      "blocksProductIds": ["NAV", "DISPLAY"],
+      "blockerId": "BLK-LIC-02",
+      "notes": "Garmin/Navionics offers an OEM/developer route but no published terms or price; C-MAP's EULA prohibits the use required; OSM tile policy prohibits heavy re-use. Any route needs a negotiated OEM contract, which is not authorised in MC-12."
+    },
+    {
+      "id": "LR-WEATHER-001",
+      "dependency": "WEATHER_DATA",
+      "rightRequired": "Commercial display and caching of marine forecast data in a paid consumer application, with the provider's attribution and forecast-validity rules",
+      "rightsStatus": "NOT_GRANTED",
+      "evidenceClass": "OFFICIAL_LICENSING_DOCUMENT",
+      "sourceRecordIds": ["PE-CW-014", "PE-CW-015", "PE-CW-016", "PE-CW-017", "PE-CW-019", "PE-CW-020", "PE-CW-022"],
+      "blocksProductIds": ["WEATHER", "NAV"],
+      "blockerId": "BLK-LIC-03",
+      "notes": "Copernicus Marine and DWD publish open licences with attribution conditions, but commercial re-display of a derived marine forecast product, SLA continuity and liability are not contractually confirmed. Meteomatics is quote-only and Stormglass terms were inaccessible. No executed data licence exists, so the right required for a paid WEATHER product is NOT_GRANTED."
+    },
+    {
+      "id": "LR-WEATHER-002",
+      "dependency": "WEATHER_DATA",
+      "rightRequired": "Use of a fee-free or metered weather source for an internal or low-volume prototype",
+      "rightsStatus": "REQUIRES_CONTRACT",
+      "evidenceClass": "PUBLISHED_PROVIDER_TARIFF",
+      "sourceRecordIds": ["PE-CW-017", "PE-CW-022"],
+      "blocksProductIds": [],
+      "blockerId": null,
+      "notes": "A published self-serve plan (e.g. Stormglass EUR 49/month medium plan, Visual Crossing metered records) could support a prototype, but it is a published tariff, not a negotiated right, and does not settle redistribution or service continuity."
+    },
+    {
+      "id": "LR-NMEA-001",
+      "dependency": "NMEA_LICENCE",
+      "rightRequired": "NMEA 0183 standard licence and, where a NMEA 2000 interface is claimed, NMEA 2000 product certification",
+      "rightsStatus": "NOT_GRANTED",
+      "evidenceClass": "PUBLISHED_PROVIDER_TARIFF",
+      "sourceRecordIds": ["PE-CW-023", "PE-CW-024", "PE-CW-025"],
+      "blocksProductIds": ["HUB", "SENSE", "DISPLAY", "AIS"],
+      "blockerId": "BLK-LIC-04",
+      "notes": "NMEA 0183 fee tiers are published (USD 1,150 manufacturer member / 7,500 / 10,000, USD 200 mnemonic) as a budgetary indication only; NMEA 2000 fee schedule and certification were not retrieved. NMEA2000_CERTIFIED = false. No licence, membership or certification is held."
+    },
+    {
+      "id": "LR-CONN-001",
+      "dependency": "CELLULAR_CONNECTIVITY",
+      "rightRequired": "Machine-to-machine data plan with EU roaming, eSIM/SIM provisioning and a documented fair-use limit for WATCH telemetry",
+      "rightsStatus": "NOT_GRANTED",
+      "evidenceClass": "PUBLISHED_PROVIDER_TARIFF",
+      "sourceRecordIds": [],
+      "blocksProductIds": ["WATCH", "HUB", "FLEET"],
+      "blockerId": "BLK-LIC-05",
+      "notes": "No operator contract, reseller agreement, SIM/eSIM supply agreement or activation exists. Published IoT tariffs are observations only. Terrestrial coverage offshore is not assumed."
+    },
+    {
+      "id": "LR-CLOUD-001",
+      "dependency": "CLOUD_INFRA",
+      "rightRequired": "EU-region hosting agreement with a data-processing agreement covering vessel telemetry and personal data",
+      "rightsStatus": "NOT_GRANTED",
+      "evidenceClass": "PUBLISHED_PROVIDER_TARIFF",
+      "sourceRecordIds": [],
+      "blocksProductIds": ["WATCH", "FLEET", "NAV", "WEATHER"],
+      "blockerId": "BLK-LIC-06",
+      "notes": "No cloud account agreement, DPA or data-residency decision is executed. Published on-demand tariffs are observations only."
+    },
+    {
+      "id": "LR-MAP-001",
+      "dependency": "MAP_TILES",
+      "rightRequired": "Production map-tile serving for the application basemap",
+      "rightsStatus": "REQUIRES_CONTRACT",
+      "evidenceClass": "OFFICIAL_LICENSING_DOCUMENT",
+      "sourceRecordIds": ["PE-CW-011"],
+      "blocksProductIds": ["NAV", "WEATHER", "FLEET"],
+      "blockerId": "BLK-LIC-07",
+      "notes": "The OpenStreetMap Foundation tile usage policy prohibits heavy production use; a commercial tile provider or self-hosted tile stack is required, with its own cost and attribution obligations. No tile agreement exists."
+    },
+    {
+      "id": "LR-IP-001",
+      "dependency": "SOURCE_IP",
+      "rightRequired": "Clearance of the source code and third-party components incorporated into the products (inherited MC-02 state)",
+      "rightsStatus": "NOT_GRANTED",
+      "evidenceClass": "UNKNOWN",
+      "sourceRecordIds": [],
+      "blocksProductIds": ["NAV", "HUB", "AIS", "PILOT", "SENSE", "WATCH", "DISPLAY", "WEATHER", "FLEET"],
+      "blockerId": "BLK-LIC-08",
+      "notes": "Inherited: SOURCE_IP_CLEARANCE = NOT_CLEARED. MC-12 does not clear it and may not assume a licence income stream from it."
+    },
+    {
+      "id": "LR-BRAND-001",
+      "dependency": "TRADEMARK",
+      "rightRequired": "Legal clearance and registration of the MAREA mark",
+      "rightsStatus": "NOT_GRANTED",
+      "evidenceClass": "UNKNOWN",
+      "sourceRecordIds": [],
+      "blocksProductIds": ["NAV", "HUB", "AIS", "PILOT", "SENSE", "WATCH", "DISPLAY", "WEATHER", "FLEET"],
+      "blockerId": "BLK-LIC-09",
+      "notes": "Inherited: TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED. MAREA is a proposed brand; no brand-derived pricing, licensing revenue or 'registered' claim may be modelled."
+    }
+  ],
+  "summary": {
+    "chartRightsGranted": false,
+    "weatherRightsGranted": false,
+    "nmeaCertified": false,
+    "connectivityContract": false,
+    "cloudContract": false,
+    "productionTileRight": false,
+    "sourceIpCleared": false,
+    "brandCleared": false,
+    "blockingRights": 9
+  }
+}

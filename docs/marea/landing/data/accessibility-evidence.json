@@ -1,0 +1,198 @@
+{
+  "contractId": "MC18-ACCESSIBILITY-EVIDENCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "MC-18 QA",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "description": "Automated axe-core results (WCAG A/AA tag set) for the internal MC-18 landing at 1440x900 and 390x844 in ES and EN, plus a prefers-reduced-motion check. Automated rules only: no WCAG conformance claim.",
+  "generationMethod": [
+    "npm run build:landing:preview",
+    "npx playwright test -c playwright.landing.config.ts"
+  ],
+  "measuredAt": "2026-11-03T11:42:29.491Z",
+  "browser": {
+    "name": "Chromium",
+    "version": "156.0.8078.4"
+  },
+  "platform": "win32",
+  "knownLimitations": [
+    "Automated axe rules only; this is not a WCAG 2.2 AA conformance claim.",
+    "No screen reader, switch device, magnifier or real assistive-technology session was executed.",
+    "Chromium only; Firefox and Safari were not tested.",
+    "Colour contrast is evaluated by axe against computed styles; real displays, glare and device colour profiles are out of scope.",
+    "Inherited MC-17 design-system limitation (not an MC-18 defect): Escape closes the mobile nav only when focus is inside the list; Escape on the toggle itself does not close it.",
+    "Axe incomplete checks are recorded but not resolved manually in this dataset.",
+    "Axe runs after hydration and after finite CSS entrance animations settle; transient styles during the entrance animation are not evaluated."
+  ],
+  "data": {
+    "results": [
+      {
+        "locale": "es",
+        "viewport": "1440x900",
+        "url": "/marea",
+        "violations": {
+          "critical": 0,
+          "serious": 0,
+          "moderate": 0,
+          "minor": 0
+        },
+        "passes": 27,
+        "incomplete": 1,
+        "inapplicable": 35,
+        "violationRules": [],
+        "incompleteRules": [
+          "color-contrast"
+        ],
+        "engine": "4.11.4"
+      },
+      {
+        "locale": "es",
+        "viewport": "390x844",
+        "url": "/marea",
+        "violations": {
+          "critical": 0,
+          "serious": 0,
+          "moderate": 0,
+          "minor": 0
+        },
+        "passes": 29,
+        "incomplete": 1,
+        "inapplicable": 33,
+        "violationRules": [],
+        "incompleteRules": [
+          "color-contrast"
+        ],
+        "engine": "4.11.4"
+      },
+      {
+        "locale": "en",
+        "viewport": "1440x900",
+        "url": "/en/marea",
+        "violations": {
+          "critical": 0,
+          "serious": 0,
+          "moderate": 0,
+          "minor": 0
+        },
+        "passes": 27,
+        "incomplete": 1,
+        "inapplicable": 35,
+        "violationRules": [],
+        "incompleteRules": [
+          "color-contrast"
+        ],
+        "engine": "4.11.4"
+      },
+      {
+        "locale": "en",
+        "viewport": "390x844",
+        "url": "/en/marea",
+        "violations": {
+          "critical": 0,
+          "serious": 0,
+          "moderate": 0,
+          "minor": 0
+        },
+        "passes": 29,
+        "incomplete": 1,
+        "inapplicable": 33,
+        "violationRules": [],
+        "incompleteRules": [
+          "color-contrast"
+        ],
+        "engine": "4.11.4"
+      }
+    ],
+    "summary": {
+      "critical": 0,
+      "serious": 0,
+      "moderate": 0,
+      "minor": 0
+    },
+    "engine": {
+      "name": "axe-core",
+      "version": "4.11.4",
+      "integration": "@axe-core/playwright",
+      "tags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag22aa"
+      ]
+    },
+    "conformanceClaim": "NONE. Automated coverage is partial; manual WCAG 2.2 AA review remains required before any accessibility claim.",
+    "reducedMotion": [
+      {
+        "locale": "es",
+        "viewport": "1440x900",
+        "controlCount": 15,
+        "longRunning": [],
+        "maxAnimationMs": 0.01,
+        "maxTransitionMs": 0.01,
+        "scrollBehaviours": [
+          "auto"
+        ],
+        "bodyTextLength": 27610,
+        "h1Count": 1,
+        "bannerVisible": true,
+        "scrollWidth": 1440,
+        "clientWidth": 1440
+      },
+      {
+        "locale": "es",
+        "viewport": "390x844",
+        "controlCount": 15,
+        "longRunning": [],
+        "maxAnimationMs": 0.01,
+        "maxTransitionMs": 0.01,
+        "scrollBehaviours": [
+          "auto"
+        ],
+        "bodyTextLength": 27508,
+        "h1Count": 1,
+        "bannerVisible": true,
+        "scrollWidth": 390,
+        "clientWidth": 390
+      },
+      {
+        "locale": "en",
+        "viewport": "1440x900",
+        "controlCount": 15,
+        "longRunning": [],
+        "maxAnimationMs": 0.01,
+        "maxTransitionMs": 0.01,
+        "scrollBehaviours": [
+          "auto"
+        ],
+        "bodyTextLength": 26180,
+        "h1Count": 1,
+        "bannerVisible": true,
+        "scrollWidth": 1440,
+        "clientWidth": 1440
+      },
+      {
+        "locale": "en",
+        "viewport": "390x844",
+        "controlCount": 15,
+        "longRunning": [],
+        "maxAnimationMs": 0.01,
+        "maxTransitionMs": 0.01,
+        "scrollBehaviours": [
+          "auto"
+        ],
+        "bodyTextLength": 26080,
+        "h1Count": 1,
+        "bannerVisible": true,
+        "scrollWidth": 390,
+        "clientWidth": 390
+      }
+    ],
+    "evidencePaths": {
+      "results": "test-results/landing/results.json",
+      "artifacts": "test-results/landing/artifacts"
+    }
+  }
+}

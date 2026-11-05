@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1020" role="img">
+  <title>MAREA PILOT — gobierno asistido y supervisado: fronteras de control / PILOT supervised steering boundaries (ilustrativo / illustrative)</title>
+  <desc>Diagrama de fronteras del gobierno asistido: operador humano, mando local, controlador de motor, watchdog, parada de emergencia física, toma manual, dependencias de sensores y aislamiento del comercio web. La falta de hardware se marca como requisito de diseño. Ilustrativo; revisión de ingeniería y seguridad pendiente. / Supervised steering boundary diagram: human operator, local control head, motor controller, watchdog, physical E-stop, manual takeover, sensor dependencies and isolation from web commerce. Missing hardware is marked as a design requirement. Illustrative; engineering and safety review pending.</desc>
+  <rect width="1200" height="1020" fill="#ffffff"/>
+
+  <!-- Header -->
+  <text x="40" y="56" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="22" font-weight="700" fill="#17365d">MAREA PILOT — gobierno asistido y supervisado</text>
+  <text x="40" y="82" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="14" fill="#57708a">Supervised assisted steering — illustrative; not certified; engineering and safety review pending</text>
+  <rect x="40" y="96" width="880" height="24" rx="4" fill="#fff8ec" stroke="#8a5a00" stroke-width="1.5"/>
+  <text x="52" y="112" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#8a5a00">ILUSTRATIVO / ILLUSTRATIVE · requisitos de diseño marcados / design requirements marked · sin evidencia de banco o mar / no bench or sea evidence</text>
+  <text x="1160" y="34" text-anchor="end" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">D-11 · MR-DIA-002 · v1</text>
+  <rect x="40" y="130" width="16" height="12" fill="#fff8ec" stroke="#8a5a00" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="64" y="140" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#8a5a00">ámbar discontinuo = requisito de diseño no implementado / dashed amber = design requirement, not implemented</text>
+  <rect x="700" y="130" width="16" height="12" fill="#ffffff" stroke="#a32b22" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="724" y="140" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#a32b22">rojo discontinuo = frontera de seguridad / red dashed = safety boundary</text>
+
+  <!-- Safety-critical domain boundary -->
+  <rect x="36" y="150" width="680" height="600" rx="8" fill="none" stroke="#a32b22" stroke-width="2.5" stroke-dasharray="8 6"/>
+  <text x="52" y="172" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#a32b22">DOMINIO DE SEGURIDAD CRÍTICO — LOCAL, CABLEADO</text>
+  <text x="52" y="188" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#a32b22">SAFETY-CRITICAL DOMAIN — LOCAL, WIRED · final authority is human</text>
+
+  <!-- Operator -->
+  <rect x="56" y="210" width="260" height="120" rx="6" fill="#ffffff" stroke="#17365d" stroke-width="2"/>
+  <text x="74" y="236" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#17365d">Patrón / operador</text>
+  <text x="74" y="252" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#57708a">Skipper / operator</text>
+  <text x="74" y="276" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">vigilancia continua</text>
+  <text x="74" y="290" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">continuous watchkeeping</text>
+  <text x="74" y="308" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">toma manual en todo momento</text>
+  <text x="74" y="322" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">manual takeover at all times</text>
+  <circle cx="286" cy="240" r="7" fill="none" stroke="#17365d" stroke-width="2"/>
+  <path d="M272 274 C272 256, 300 256, 300 274" fill="none" stroke="#17365d" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Physical E-stop -->
+  <rect x="350" y="210" width="220" height="100" rx="6" fill="#fff7f6" stroke="#a32b22" stroke-width="2.5"/>
+  <text x="368" y="236" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#a32b22">PARADA DE EMERGENCIA</text>
+  <text x="368" y="252" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#a32b22">PHYSICAL E-STOP</text>
+  <text x="368" y="274" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">corte de potencia independiente</text>
+  <text x="368" y="287" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">independent power cut — DESIGN REQUIREMENT</text>
+
+  <!-- Control head -->
+  <rect x="56" y="360" width="260" height="100" rx="6" fill="#ffffff" stroke="#17365d" stroke-width="2"/>
+  <text x="74" y="386" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#17365d">Mando local</text>
+  <text x="74" y="402" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#57708a">Local control head</text>
+  <text x="74" y="424" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">supervisado, no autónomo</text>
+  <text x="74" y="438" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">supervised, not autonomous</text>
+  <rect x="250" y="386" width="46" height="26" rx="3" fill="none" stroke="#17365d" stroke-width="2"/>
+  <circle cx="273" cy="399" r="5" fill="none" stroke="#17365d" stroke-width="2"/>
+  <circle cx="259" cy="399" r="1.5" fill="#17365d"/>
+  <circle cx="287" cy="399" r="1.5" fill="#17365d"/>
+
+  <!-- Motor controller -->
+  <rect x="350" y="360" width="220" height="100" rx="6" fill="#ffffff" stroke="#17365d" stroke-width="2"/>
+  <text x="368" y="386" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#17365d">Controlador de motor</text>
+  <text x="368" y="402" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#57708a">Motor controller</text>
+  <text x="368" y="424" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">PWM + DIR · relé de potencia: requisito</text>
+  <text x="368" y="437" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">PWM + DIR · power relay: requirement</text>
+  <rect x="516" y="366" width="38" height="20" rx="2" fill="none" stroke="#17365d" stroke-width="2"/>
+  <circle cx="535" cy="376" r="4" fill="none" stroke="#17365d" stroke-width="2"/>
+
+  <!-- Rudder / actuator -->
+  <rect x="350" y="500" width="220" height="90" rx="6" fill="#ffffff" stroke="#17365d" stroke-width="2"/>
+  <text x="368" y="526" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12.5" font-weight="700" fill="#17365d">Timón / actuador</text>
+  <text x="368" y="542" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#57708a">Rudder / actuator</text>
+  <text x="368" y="564" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#8a5a00">realimentación de timón: requisito de diseño</text>
+  <text x="368" y="577" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#8a5a00">rudder feedback: design requirement</text>
+  <circle cx="540" cy="518" r="4" fill="none" stroke="#17365d" stroke-width="2"/>
+  <line x1="540" y1="522" x2="540" y2="548" stroke="#17365d" stroke-width="2"/>
+  <path d="M526 548 Q540 560 554 548" fill="none" stroke="#17365d" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Sensor dependencies -->
+  <rect x="56" y="500" width="260" height="150" rx="6" fill="#f2f9fd" stroke="#57708a" stroke-width="2"/>
+  <text x="74" y="526" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="#17365d">DEPENDENCIAS DE SENSORES</text>
+  <text x="74" y="541" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">SENSOR DEPENDENCIES</text>
+  <text x="74" y="564" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#17365d">rumbo (brújula) · viento · GNSS</text>
+  <text x="74" y="578" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">heading (compass) · wind · GNSS</text>
+  <text x="74" y="602" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#8a5a00">sin calibración ni tabla de desviación</text>
+  <text x="74" y="615" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#8a5a00">no calibration or deviation table (REQ)</text>
+  <g fill="none" stroke="#17365d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <g transform="translate(74,624) scale(0.75)"><circle cx="12" cy="12" r="8"/><line x1="12" y1="12" x2="16" y2="8"/><circle cx="12" cy="12" r="1.5" fill="#17365d" stroke="none"/></g>
+    <g transform="translate(116,624) scale(0.75)"><line x1="12" y1="21" x2="12" y2="6"/><line x1="12" y1="17" x2="18" y2="11"/><polyline points="15.2 11.8 18 11 17.2 13.8"/></g>
+    <g transform="translate(158,624) scale(0.75)"><circle cx="12" cy="12" r="7"/><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><circle cx="12" cy="12" r="1.5" fill="#17365d" stroke="none"/></g>
+  </g>
+
+  <!-- Watchdog (design requirement) -->
+  <rect x="350" y="620" width="220" height="90" rx="6" fill="#fff8ec" stroke="#8a5a00" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="368" y="646" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="#8a5a00">WATCHDOG DE HARDWARE</text>
+  <text x="368" y="661" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#8a5a00">HARDWARE WATCHDOG</text>
+  <text x="368" y="684" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#8a5a00">requisito de diseño — no implementado</text>
+  <text x="368" y="697" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#8a5a00">DESIGN REQUIREMENT — not implemented</text>
+  <circle cx="540" cy="655" r="12" fill="none" stroke="#8a5a00" stroke-width="2"/>
+  <polyline points="530 655 535 655 538 646 543 664 546 655 551 655" fill="none" stroke="#8a5a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Missing hardware summary -->
+  <rect x="56" y="660" width="260" height="80" rx="6" fill="#fff8ec" stroke="#8a5a00" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="74" y="682" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="700" fill="#8a5a00">FALTA EN EL DISEÑO / MISSING IN DESIGN</text>
+  <text x="74" y="700" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#8a5a00">watchdog HW · relé · realimentación de timón</text>
+  <text x="74" y="714" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#8a5a00">HW watchdog · relay · rudder feedback</text>
+  <text x="74" y="728" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#8a5a00">toma manual · auth del API / takeover · auth</text>
+
+  <!-- Internal arrows -->
+  <g stroke-linecap="round">
+    <!-- operator <-> control head -->
+    <line x1="186" y1="333" x2="186" y2="357" stroke="#17365d" stroke-width="2"/>
+    <path d="M181 341 L186 333 L191 341 Z" fill="#17365d"/>
+    <path d="M181 349 L186 357 L191 349 Z" fill="#17365d"/>
+    <!-- operator <-> e-stop -->
+    <line x1="318" y1="250" x2="348" y2="250" stroke="#a32b22" stroke-width="2" stroke-dasharray="4 3"/>
+    <path d="M340 245 L348 250 L340 255 Z" fill="#a32b22"/>
+    <!-- e-stop -> motor controller -->
+    <line x1="460" y1="312" x2="460" y2="357" stroke="#a32b22" stroke-width="2.5" stroke-dasharray="5 3"/>
+    <path d="M455 349 L460 357 L465 349 Z" fill="#a32b22"/>
+    <text x="470" y="338" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#a32b22">corte de potencia / power cut — REQ</text>
+    <!-- control head -> motor controller -->
+    <line x1="318" y1="410" x2="348" y2="410" stroke="#17365d" stroke-width="2"/>
+    <path d="M340 405 L348 410 L340 415 Z" fill="#17365d"/>
+    <!-- motor -> rudder -->
+    <line x1="460" y1="462" x2="460" y2="497" stroke="#17365d" stroke-width="2"/>
+    <path d="M455 489 L460 497 L465 489 Z" fill="#17365d"/>
+    <!-- sensors -> control head -->
+    <line x1="186" y1="498" x2="186" y2="463" stroke="#57708a" stroke-width="2" stroke-dasharray="4 3"/>
+    <path d="M181 471 L186 463 L191 471 Z" fill="#57708a"/>
+    <!-- watchdog -> motor controller (route right) -->
+    <polyline points="570 665 690 665 690 410 572 410" fill="none" stroke="#8a5a00" stroke-width="2" stroke-dasharray="5 3"/>
+    <path d="M580 405 L572 410 L580 415 Z" fill="#8a5a00"/>
+    <text x="582" y="604" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#8a5a00">corte por watchdog</text>
+    <text x="582" y="616" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#8a5a00">watchdog cut (REQ)</text>
+  </g>
+  <text x="330" y="742" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#a32b22">FRONTERA FÍSICA — no depende de la red / PHYSICAL BOUNDARY</text>
+
+  <!-- Presentation domain -->
+  <rect x="740" y="170" width="420" height="210" rx="6" fill="#ffffff" stroke="#57708a" stroke-width="2"/>
+  <text x="758" y="196" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#17365d">DOMINIO DE PRESENTACIÓN — RED A BORDO</text>
+  <text x="758" y="212" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">PRESENTATION DOMAIN — ONBOARD NETWORK</text>
+  <text x="758" y="238" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">NAV / DISPLAY muestran estado y datos.</text>
+  <text x="758" y="253" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">NAV / DISPLAY show state and data.</text>
+  <text x="758" y="277" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">Comandos solo bajo supervisión humana.</text>
+  <text x="758" y="292" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Commands only under human supervision.</text>
+  <text x="758" y="316" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#8a5a00">autenticación del plano de control: pendiente</text>
+  <text x="758" y="330" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#8a5a00">control-plane authentication: pending (REQ)</text>
+  <text x="758" y="356" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#a32b22">sin autoridad autónoma / no autonomous authority</text>
+
+  <!-- Commerce domain -->
+  <rect x="740" y="410" width="420" height="160" rx="6" fill="#f7f9fb" stroke="#5f6f7d" stroke-width="2"/>
+  <text x="758" y="436" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#17365d">DOMINIO DE COMERCIO — WEB / NUBE</text>
+  <text x="758" y="452" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#57708a">COMMERCE DOMAIN — WEB / CLOUD</text>
+  <text x="758" y="476" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">EMBARCARTE: catálogo, pedidos, cuenta, soporte.</text>
+  <text x="758" y="491" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">EMBARCARTE: catalogue, orders, account, support.</text>
+  <text x="758" y="515" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">Sin autoridad de gobierno ni ruta de escritura al barco.</text>
+  <text x="758" y="530" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">No steering authority and no write path to the vessel.</text>
+  <text x="758" y="554" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="700" fill="#5f6f7d">aislado del dominio de seguridad / isolated from the safety domain</text>
+
+  <!-- Human authority panel -->
+  <rect x="740" y="600" width="420" height="150" rx="6" fill="#17365d"/>
+  <text x="758" y="630" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#ffffff">LA AUTORIDAD FINAL ES HUMANA</text>
+  <text x="758" y="648" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10.5" fill="#cfe0ee">FINAL AUTHORITY IS HUMAN</text>
+  <text x="758" y="676" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#ffffff">E-stop físico + toma manual en todo momento.</text>
+  <text x="758" y="692" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#cfe0ee">Physical E-stop + manual takeover at all times.</text>
+  <text x="758" y="718" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#ffffff">La supervisión no se delega a la nube.</text>
+  <text x="758" y="734" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#cfe0ee">Supervision is not delegated to the cloud.</text>
+
+  <!-- Links to safety domain -->
+  <line x1="740" y1="275" x2="718" y2="275" stroke="#8a5a00" stroke-width="2" stroke-dasharray="4 3"/>
+  <path d="M726 270 L718 275 L726 280 Z" fill="#8a5a00"/>
+  <text x="742" y="390" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="8.5" fill="#8a5a00">— — red a bordo / onboard network · amber = requisito / requirement</text>
+  <line x1="740" y1="490" x2="726" y2="490" stroke="#5f6f7d" stroke-width="2" stroke-dasharray="4 3"/>
+  <circle cx="718" cy="490" r="8" fill="#ffffff" stroke="#a32b22" stroke-width="2"/>
+  <line x1="712.5" y1="484.5" x2="723.5" y2="495.5" stroke="#a32b22" stroke-width="2"/>
+
+  <!-- Main supervised-only statement -->
+  <text x="40" y="782" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="16" font-weight="700" fill="#a32b22">SOLO SUPERVISIÓN HUMANA — SIN GOBIERNO AUTÓNOMO NI REMOTO</text>
+  <text x="40" y="802" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="11.5" fill="#a32b22">SUPERVISED ONLY — NO AUTONOMOUS STEERING OR UNATTENDED REMOTE CONTROL</text>
+
+  <!-- Mandatory disclaimers -->
+  <rect x="40" y="820" width="1120" height="185" rx="6" fill="#ffffff" stroke="#57708a" stroke-width="1.5"/>
+  <rect x="40" y="820" width="5" height="185" rx="2" fill="#5f6f7d"/>
+  <text x="60" y="846" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="700" fill="#17365d">Avisos obligatorios / Mandatory disclaimers</text>
+  <text x="60" y="872" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">PILOT (ES): «El sistema de gobierno es asistido y supervisado: exige vigilancia y capacidad de toma de control manual en todo momento. No permite gobierno autónomo ni control remoto sin supervisión.»</text>
+  <text x="60" y="887" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">PILOT (EN): “The steering system is assisted and supervised: it requires continuous watchkeeping and the ability to take manual control at all times. It does not provide autonomous steering or unattended remote control.”</text>
+  <text x="60" y="910" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">Navegación (ES): «Este producto es una ayuda a la navegación y no sustituye a la carta náutica oficial, al equipo reglamentario de la embarcación, a la vigilancia</text>
+  <text x="60" y="924" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="10" fill="#17365d">continuada ni al buen hacer marinero. La responsabilidad de la navegación corresponde siempre al patrón.»</text>
+  <text x="60" y="944" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">Navigation (EN): “This product is a navigational aid. It does not replace official nautical charts, the vessel’s required equipment, continuous watchkeeping</text>
+  <text x="60" y="957" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9.5" fill="#57708a">or good seamanship. Responsibility for navigation always rests with the skipper.”</text>
+  <text x="60" y="980" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Texto literal del brief §7.7 / COMMERCIAL-BRAND-CLAIMS-POLICY §9 — no parafraseado. Requisitos de hardware ausentes según HARDWARE-COMPLIANCE-MATRIX F-A20/F-A21/F-A23/F-A24/F-A25.</text>
+  <text x="60" y="994" font-family="Manrope, 'Segoe UI', Arial, sans-serif" font-size="9" fill="#57708a">Sin sellos de certificación · sin prueba de banco ni de mar · sin implicación de autonomía · revisión de ingeniería y seguridad pendiente / no certification marks · no bench or sea-trial evidence · engineering and safety review pending.</text>
+</svg>

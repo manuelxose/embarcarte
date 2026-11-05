@@ -1,0 +1,196 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "workstream": "mc10-preparation",
+  "owner": "agent-g-mc10",
+  "scopeNote": "Planned MC-10 customer-discovery experiments only. MC-09 executes none of them: no recruitment, interviews, surveys, outreach, advertising or purchases have occurred and no response data exists.",
+  "experiments": [
+    {
+      "experimentId": "EXP-MC10-01",
+      "hypothesis": "At least four of the eight defined buyer segments experience a recurring, economically consequential boat-data fragmentation problem that they already spend money or time to work around, and can describe a recent real purchase made to address it.",
+      "segment": "B2C owners (recreational motorboat, sailing, marina-based) and B2B operators (charter, fleet manager, marina/shipyard); installers and retailers are interviewed as intermediaries, not as problem owners.",
+      "recruitment": "Purposive quota sampling through: berth-holder lists held by partner marinas (never obtained by MC-09), yacht-club noticeboards, installer customer rosters with written introducer consent, trade-association member channels, publicly listed charter/fleet operators contacted only after the MC-10 outreach authorisation. No purchased contact lists, no scraped personal emails, no paid advertising.",
+      "minimumEvidence": "Minimum 5 and target 8-10 completed interviews per narrowly defined segment (n=40-80 total), each with a verbatim-coded transcript and a documented purchase-history answer naming product, year, amount band and currency. Two independent coders. Saturation recorded per segment (no new code in the last two interviews). Statistical inference is explicitly not attempted.",
+      "dataCapture": "Pseudonymous participant ID, segment, country/region, vessel or business profile, verbatim quotes for pain points, coded problem statements, documented current-spend and recent-purchase records with amount bands, alternative products/services named, willingness-to-pay fields left NOT_MEASURED during the qualitative stage.",
+      "decisionThreshold": "PASS (problem exists): a problem theme appears unprompted in >=60% of coded units in a segment AND >=50% of that segment's participants name a concrete prior spend or workaround cost. FAIL (no material problem): theme appears in <=20% of participants and no current spend is evidenced. Between 20% and 60% = INCONCLUSIVE, requiring a quantitative stage. No threshold may be relaxed after fielding.",
+      "confounders": [
+        "Purposive recruitment over-represents engaged owners and marina-affiliated owners",
+        "Interviewer familiarity with MAREA concepts can bias probing",
+        "Retrospective purchase recall error and amount rounding",
+        "Selection of early-adopter respondents by gatekeepers",
+        "Seasonality (autumn 2026 refit and lay-up period)"
+      ],
+      "limitations": "Qualitative, non-probability sample; no margin of error, no representativeness and no market-size inference. Cannot validate a price. Single geography at first (Galicia/Rias Baixas and northern Portugal). Small n per segment detects only strong signals.",
+      "ethics": "Explicit consent; pseudonymisation; no recording without separate consent; no collection of vessel registration numbers, billing data or customer-identifying lists; GDPR Article 6(1)(a), data minimisation and storage limitation per the discovery plan; ICC/ESOMAR code followed; no minors or vulnerable participants.",
+      "interpretation": "A PASS establishes only that this sample consistently reports a costly problem worth a later quantitative test; it does not establish demand size, conversion, revenue or willingness to pay. WTP status remains NOT_MEASURED for every product and bundle after this experiment."
+    },
+    {
+      "experimentId": "EXP-MC10-02",
+      "hypothesis": "Marine-electronics installers will not fit an unproven multi-brand gateway or sensor system into customer vessels without a published compatibility matrix, a documented commissioning procedure, a named warranty/liability position and a rework path; their objections, not boat-owner enthusiasm, are the binding constraint on refit-led adoption.",
+      "segment": "Independent marine electronics installers and small refit yards in Galicia, northern Portugal and the wider Spanish Atlantic coast.",
+      "recruitment": "Trade association channels, yard directory listings verified manually by phone during authorised MC-10 outreach, and refer-by-interview chains. Gatekeeper is the business owner or technical lead. No cold automated campaigns.",
+      "minimumEvidence": "Minimum 5 completed interviews with installers who have at least 5 years of refit experience and have installed first-party electronics from at least two brands in the last 24 months. Each interview must produce a named list of go/no-go installation requirements and a liability/insurance statement in the participant's own words.",
+      "dataCapture": "Installer profile (years active, brands, typical install size), verbatim objections coded into: compatibility evidence, protocol/NMEA knowledge, liability/insurance, warranty/RMA, labour time and quoting, customer handover, training. Recorded willingness to run a supervised demo install as a categorical yes/no/conditional (not a purchase).",
+      "decisionThreshold": "PASS (channel viable in principle): >=70% of installers independently name compatibility evidence and warranty/RMA clarity as mandatory before fitting, and >=50% say a documented checklist plus named liability position would make them willing to run a supervised trial install. FAIL: the majority say no checklist or documentation would change their position. Documented signed trial intent would be a separate later test; verbal interest alone is not evidence of a trial.",
+      "confounders": [
+        "Small number of installers in the initial geography; easy to exhaust population",
+        "Brand-loyalty and dealer-margin effects unrelated to MAREA",
+        "Installers may overstate caution in a recorded interview",
+        "Absence of a physical sample product means reactions are hypothetical",
+        "Insurance and liability law differ between Spain and Portugal"
+      ],
+      "limitations": "Reactions to a product that does not exist and has no tested compatibility rows; no physical hardware, no quote process and no terms to react to. Cannot be read as installed-channel revenue evidence.",
+      "ethics": "Consent; no recording of customer or vessel data; no request for commercially confidential dealer terms; no obligation or implication that an installer has committed to distribute. GDPR-compliant business-contact handling.",
+      "interpretation": "Findings set the compatibility, warranty and commissioning requirements that must be met before any installer distribution claim. They do not prove installers will sell or that a channel exists; that would require signed partner agreements in a later milestone."
+    },
+    {
+      "experimentId": "EXP-MC10-03",
+      "hypothesis": "Owners and small operators reject an always-on subscription for locally available functions but will consider a subscription for genuinely continuous external services (forecast data, remote monitoring, connectivity), provided local safety and navigation functions keep working without it.",
+      "segment": "Sailing and motorboat owners (B2C), charter organisations and fleet managers (B2B); marina-based owners as a remotely-monitored sub-segment.",
+      "recruitment": "Same pool as EXP-MC10-01 with segment quotas; no overlap of the same participant in both a qualitative and a pricing session without a documented protocol deviation.",
+      "minimumEvidence": "All interviewed participants complete the subscription-attitude block; >=5 objection codes per segment and at least one unprompted alternative payment model per participant. Van Westendorp subscription module completed by every participant (n=5-10 per segment, indicative only).",
+      "dataCapture": "Objection code, preferred billing cadence, acceptable annual band per service type, reaction to local-function lockout scenario, cancellation/export expectations, willingness to share entitlement across devices, and whether a price is stated as per-vessel, per-user or per-account.",
+      "decisionThreshold": "PASS (subscription model conditionally acceptable): >=50% of a segment names at least one external-service subscription they would consider AND >=50% state that loss of local functions would be a blocking objection that must be answered. FAIL: a majority reject any recurring charge regardless of service scope. Indicative acceptable ranges from Van Westendorp are recorded as hypotheses for quantitative testing only.",
+      "confounders": [
+        "Subscription fatigue and prior bad experiences with marine apps",
+        "Confusion between chart-data licensing and MAREA service fees",
+        "Hypothetical local-function lockout described only in words",
+        "Owner confusion between per-vessel and per-user pricing",
+        "Small n making percentage thresholds unstable"
+      ],
+      "limitations": "Hypothetical service descriptions with no working product; stated acceptance is not conversion. Small sample cannot estimate churn or price elasticity. Subscription prices remain NOT_MEASURED.",
+      "ethics": "Consent; no billing data collected; no card or account details; no pricing presented as an offer. Participants told repeatedly that nothing is for sale.",
+      "interpretation": "A PASS licenses only the decision to test a subscription model quantitatively with real price points and a working prototype. It does not validate any price, conversion rate or recurring-revenue assumption."
+    },
+    {
+      "experimentId": "EXP-MC10-04",
+      "hypothesis": "Purchase intent for a reference NAV+HUB configuration and for a monitoring configuration declines gradually rather than collapsing across the tested price ladder, and the 50% intent price band differs materially between owner segments and channels.",
+      "segment": "Sailing owners, recreational motorboat owners and marina-based owners; installers asked about the resale price they could defend to a customer.",
+      "recruitment": "Same purposive pool with quotas per segment. Pricing module administered only after the qualitative block so price does not anchor problem discussion.",
+      "minimumEvidence": "Gabor-Granger ladder with at least five price points per configuration (hypothesis figures only, never shown as orderable), every participant answering all points; n>=8 per segment per configuration. Buy-response scale fixed before fielding. Price ladders derived from MC-09 price observations, not invented on the day.",
+      "dataCapture": "Per participant per price point: definite / probable / might / probably not / definitely not. Segment, country, existing equipment value band, prior spend band. All price points stored with currency and VAT treatment; no conversion to other currencies inside the raw record.",
+      "decisionThreshold": "Indicative only in MC-10: a monotone demand curve and a 50% intent price interval recorded per segment. No price may be approved from this experiment. PASS for progression means the data are internally consistent (monotone decline in at least 4 of 5 ladders, no participant answering in under 60 seconds) and produce a testable range for a later quantitative study with n>=100 per segment. FAIL: non-monotone or unusable responses in the majority of ladders.",
+      "confounders": [
+        "Hypothetical bias: stated intent overstates real purchase",
+        "Price anchoring from the qualitative discussion",
+        "Bundle composition described only verbally",
+        "Installation and chart-licence costs excluded from the tested figure can inflate intent",
+        "Segment mixing if quotas are not enforced"
+      ],
+      "limitations": "Qualitative-scale n; stated intent is not demand. Cannot produce revenue, margin or elasticity estimates with defensible confidence intervals. All willingness-to-pay values remain NOT_MEASURED as commercial evidence; only indicative price hypotheses are generated.",
+      "ethics": "No price presented as an available offer, no pre-order, no deposit and no card data. Participants informed that tested figures are exploratory hypotheses for research, not products for sale.",
+      "interpretation": "A monotone curve with a plausible range justifies designing a quantitative pricing study; it never justifies publishing a price or a purchasable bundle."
+    },
+    {
+      "experimentId": "EXP-MC10-05",
+      "hypothesis": "Owners and operators hold a coherent acceptable price range for navigation/weather software and for monitoring hardware-plus-subscription, and their too-cheap, bargain, expensive and too-expensive points cluster by segment rather than being randomly distributed.",
+      "segment": "B2C owners (sailing, motorboat, marina-based) and B2B operators (charter, fleet managers) asked separately about software and about hardware-plus-service constructs.",
+      "recruitment": "Same purposive pool as EXP-MC10-04; the Van Westendorp module is run on the same constructs but in a separate section to avoid contaminating the Gabor-Granger ladder.",
+      "minimumEvidence": "All four Van Westendorp questions answered per construct; n>=8 per segment per construct; consistency check (too cheap < bargain < expensive < too expensive) enforced and violations recorded, not silently corrected.",
+      "dataCapture": "Four raw price responses per participant per construct, with currency, VAT treatment, whether the answer referred to one-off or recurring price, and the participant's reasoning verbatim. Derived point-price ranges and the acceptable-range band computed per segment and stored as derived values.",
+      "decisionThreshold": "PASS (usable price structure): >=70% of responses are internally consistent and the sample produces a non-degenerate acceptable range (range exists and is bounded by at least two responses on each side). FAIL: fewer than 50% consistent responses, or answers effectively uninterpretable because participants cannot separate hardware, software and installation cost.",
+      "confounders": [
+        "Participants unfamiliar with pricing marine software anchor on consumer apps",
+        "Mixing hardware and installation in one mental price",
+        "Currency and VAT confusion in cross-border samples",
+        "Cultural willingness to state 'don't know' differs by segment",
+        "Small n makes range boundaries unstable"
+      ],
+      "limitations": "Van Westendorp is a stated-preference method and cannot measure actual purchase behaviour. Sample too small for segment-level statistical confidence. Results are hypotheses for quantitative validation and remain NOT_MEASURED as commercial price evidence.",
+      "ethics": "Consent; exploratory-price disclosure; no implication of availability; no personal financial data collected beyond the expressed price opinion.",
+      "interpretation": "A usable acceptable range narrows the design space for a quantitative study. It does not approve any price, and any range that includes a figure below a defensible cost floor must be flagged for negative-margin review before use."
+    },
+    {
+      "experimentId": "EXP-MC10-06",
+      "hypothesis": "After hearing neutral concept descriptions, owners and operators can correctly restate what each bundle does and, critically, what it excludes (charts, installation, transponder transmission, collision avoidance, assured connectivity) without being prompted.",
+      "segment": "B2C owners and B2B operators; installers and retailers tested as explainers because they will repeat the description to customers.",
+      "recruitment": "Same pool; comprehension test administered before any pricing discussion so price cannot crowd out comprehension.",
+      "minimumEvidence": "Unaided recall of composition and exclusions for at least three bundle concepts; two independent coders scoring against a fixed rubric; n>=5 per segment; verbatim transcript of the explanation step retained.",
+      "dataCapture": "Per concept: unaided restatement, count of correct inclusions, count of correct exclusions, count of critical misconceptions (for example, believing navigation software includes charts, believing AIS receives transponder transmission, believing monitoring is guaranteed against theft), and verbatim reasoning.",
+      "decisionThreshold": "PASS: >=70% of participants correctly restate at least two exclusions per concept AND <=20% hold a critical misconception. FAIL: >40% hold a critical misconception on any concept, which blocks any public copy for that concept. Between = INCONCLUSIVE, requiring copy revision and retest with a new sample.",
+      "confounders": [
+        "Interviewer explanation quality varies despite a scripted neutral description",
+        "Participants may repeat wording without understanding it",
+        "Concepts are unfamiliar, so comprehension may reflect novelty rather than copy quality",
+        "Testing three concepts in one session causes interference"
+      ],
+      "limitations": "Comprehension in a research session is not comprehension on a website under time pressure. No page, visual or real product exists to test. Results cannot validate claims or copy legally.",
+      "ethics": "Consent; no misleading presentation of unavailable products; explicit statement that concepts are not for sale and are not certified; no fabricated product imagery.",
+      "interpretation": "A PASS permits a copy drafting attempt for that concept and a later usability test; it does not validate any claim and does not authorise publication. A FAIL biases toward renaming or recomposing the bundle before any market-facing step."
+    },
+    {
+      "experimentId": "EXP-MC10-07",
+      "hypothesis": "Small fleet managers and charter operators will consider a supervised, time-boxed operational trial of monitoring or fleet software and can articulate a concrete success criterion, but will not commit to a paying contract before installation, support and data-processing terms are defined.",
+      "segment": "Charter organisations (5-30 vessels), fleet managers, sailing schools and marina/shipyard operators managing third-party vessels.",
+      "recruitment": "Publicly listed operators contacted individually during authorised MC-10 outreach; trade associations; referrals from installers. Decision maker and technical operator interviewed separately where possible.",
+      "minimumEvidence": "Minimum 5 interviews with operators responsible for at least 5 vessels; at least 3 must state a measurable trial success criterion (for example, alert response time, maintenance backlog, seasonal handover time). Recorded trial interest is categorical and conditional, never a signed contract.",
+      "dataCapture": "Fleet size and composition, current tools (spreadsheets, radio calls, first-party SaaS), operational problem, data-protection constraints, IT/security review path, procurement/decision process, stated trial scope and success metric, blockers (installation, connectivity, per-vessel pricing, tenancy isolation).",
+      "decisionThreshold": "PASS (trial pathway exists): >=60% of operators state a concrete success criterion AND >=50% would accept a supervised trial with written data-processing terms. FAIL: operators decline any trial before a purchase-ready product exists. A letter of intent is required before any pilot is called agreed; verbal interest alone is not.",
+      "confounders": [
+        "Seasonal workload distorting availability",
+        "Owner/manager split: the person with the problem may not be the buyer",
+        "Fleet software procurement cycles longer than the discovery window",
+        "Security review requirements are rarely fundable at prototype stage",
+        "Small number of addressable fleets in the initial geography"
+      ],
+      "limitations": "No pilot product exists; fleet software is a CONCEPT, so responses are necessarily hypothetical. Cannot establish contract value, retention or churn. B2B willingness to pay is NOT_MEASURED.",
+      "ethics": "Consent at organisational level plus individual consent; no access to vessel telemetry, customer manifests or personal data during discovery; no implication of a preferred-vendor relationship.",
+      "interpretation": "A PASS supports designing a later supervised pilot with legal support and a data-processing agreement; it does not establish sales traction or enterprise demand."
+    },
+    {
+      "experimentId": "EXP-MC10-08",
+      "hypothesis": "Marine retailers and chandlers will stock or display a marine data gateway/sensor product only if it is demonstrable, has a clear returns and warranty process, and does not require them to provide technical support they cannot staff.",
+      "segment": "Independent chandlers and small marine retail chains in Galicia and northern Portugal, plus one or two online specialists.",
+      "recruitment": "Store visits and phone calls to publicly listed businesses during authorised MC-10 outreach; trade-association introductions; no paid listing, no mystery shopping in MC-09.",
+      "minimumEvidence": "Minimum 5 interviews with owners or buyers authorised to decide ranging; each must state margin expectation, returns handling and support boundary in their own words.",
+      "dataCapture": "Category ownership, current ranged brands, margin and payment terms ranges stated voluntarily, returns/warranty expectations, demonstration requirements, expected training, interest in consignment versus wholesale, and a categorical stocking stance (no / conditional / yes).",
+      "decisionThreshold": "PASS (retail channel plausible): >=60% name a condition they could meet at launch (demo unit, documented returns, staff training) and none identifies an unmet condition that MAREA cannot satisfy. FAIL: retailers require exclusivity, guaranteed sell-through or funded in-store support that the programme cannot offer.",
+      "confounders": [
+        "Retail caution at prototype stage is not evidence of permanent rejection",
+        "Margin statements vary with willingness to disclose",
+        "Small store owners conflate retail and installer roles",
+        "Seasonality of stocking decisions"
+      ],
+      "limitations": "No physical product, no packaging, no distributor terms; cannot establish channel margins or sell-through. Stated stocking stance is not a purchase order.",
+      "ethics": "Business-to-business consent; no commercially sensitive terms obtained under pressure; no misrepresentation of readiness or availability.",
+      "interpretation": "A PASS defines the conditions a future retail listing would require. It does not prove channel access and must not be reported as retail demand."
+    },
+    {
+      "experimentId": "EXP-MC10-09",
+      "hypothesis": "Owners of unattended vessels and marina/shipyard operators share the same operational problem (knowing whether a boat is safe afloat) but value different evidence: owners want bilge/power/geofence alerts, operators want work-list and handover information rather than raw sensor feeds.",
+      "segment": "Marina-based owner-occupiers, marina operators and shipyards that manage third-party vessels in the water.",
+      "recruitment": "Partner marinas and yacht clubs approached during authorised outreach; operator interviews via marina associations; owner interviews through club channels. No access to berth-holder personal data.",
+      "minimumEvidence": "Minimum 5 owner interviews and 3 operator interviews; each participant must describe a concrete recent incident or near-miss with an unattended vessel and what information they lacked.",
+      "dataCapture": "Incident narrative, existing monitoring or manual checking routine, who is called and how, seasonal frequency, current spend on security/checking, willingness to share access with a third party, data-retention concerns, and mobile coverage reality at the berth.",
+      "decisionThreshold": "PASS (shared problem, different jobs): >=60% of owners name at least one alert they would act on AND >=2 operators name a handover or work-list information need. FAIL: monitoring is considered a marina-provided service that owners will not pay for separately.",
+      "confounders": [
+        "Insurance-driven behaviour rather than willingness to buy",
+        "Marinas may fear liability from a monitoring service",
+        "Mobile data coverage at berths is variable and hard to verify quickly",
+        "Owner and operator incentives can be opposed (operator wants fewer calls, owner wants more alerts)"
+      ],
+      "limitations": "No deployed monitoring hardware; connectivity, battery and alerting promises cannot be tested. Any monitoring service remains a CONCEPT.",
+      "ethics": "Consent; no vessel, berth or access-control credentials collected; no implication that monitoring prevents theft or guarantees safety; no special-category data.",
+      "interpretation": "A PASS establishes a two-sided information need worth prototyping; it does not validate a monitoring price or a marina partnership."
+    },
+    {
+      "experimentId": "EXP-MC10-10",
+      "hypothesis": "Trust, warranty and data-ownership concerns (who owns vessel data, what happens on subscription lapse, who is liable for an installation fault, whether the brand will exist in five years) block purchase decisions more often than feature gaps do.",
+      "segment": "All B2C and B2B segments; analysed as a cross-segment barrier set rather than a single segment result.",
+      "recruitment": "Embedded block in every interview from EXP-MC10-01 to EXP-MC10-09; no separate recruitment required.",
+      "minimumEvidence": "Every participant ranked or stated the top-3 barriers to adoption; barrier codes applied by two coders; at least one verbatim per barrier per segment.",
+      "dataCapture": "Ranked barriers, verbatim wording, the point in the conversation where the barrier arose, whether the participant would require a written warranty or data-processing term before trialling, and which competitor or incumbent they compared trust against.",
+      "decisionThreshold": "PASS (trust is the binding constraint): data-ownership or warranty/liability concerns appear among the top-3 barriers for >=50% of participants in at least three segments, which requires a documented warranty, liability and data-ownership position before any pilot. FAIL: barriers are distributed with no dominant theme.",
+      "confounders": [
+        "Brand unfamiliarity confounded with distrust of a young company",
+        "Warranty expectations shaped by incumbent brands with long support records",
+        "Interviewer disclosure of MAREA's conceptual status can itself trigger the barrier",
+        "Barrier ranking may be inconsistent with unstated behaviour"
+      ],
+      "limitations": "Attitudes toward a brand that is not legally cleared and a product that does not exist. Cannot be used to claim trust readiness; the brand and legal seller identity remain OPEN.",
+      "ethics": "Consent; honest disclosure that MAREA is a proposed brand with no certified or purchasable product; no fabricated warranty, certification or customer reference.",
+      "interpretation": "A PASS makes warranty, liability and data-ownership documentation a precondition for later pilots, not a marketing message. It does not validate any warranty term."
+    }
+  ]
+}

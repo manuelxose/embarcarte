@@ -1,0 +1,27 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "schemaVersion": "MC10-FINDING-1.0.0",
+  "status": "NOT_EXECUTED",
+  "findings": [],
+  "findingSchema": {
+    "requiredFields": [
+      "findingId",
+      "experimentId",
+      "claim",
+      "evidenceInterviewIds",
+      "codedUnitIds",
+      "segmentScope",
+      "denominator",
+      "confidence",
+      "limitations",
+      "permittedNextStep"
+    ],
+    "quoteRule": "A verbatim quotation may appear in a finding only when that participant recorded the QUOTATION permission and the quotation is attributed to a pseudonymous participant ID. A quotation without recorded permission is a defect.",
+    "traceabilityRule": "No finding may exist without at least one traceable, valid interview record and its coded units. Desk research, simulated dialogue and second-hand reports are never findings."
+  },
+  "note": "Empty by design: no valid interview record exists, therefore no finding may exist. Zero findings is an absence of data, not a negative result."
+}

@@ -1,0 +1,4782 @@
+{
+  "contractId": "MC18-BILINGUAL-CONTENT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "owner": "MC-18 implementation team",
+  "status": "INTERNAL_PROPOSED",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Bilingual landing content resolved per locale. Every record is INTERNAL_DRAFT_NOT_APPROVED and NOT_APPROVED.",
+  "generationMethod": "node scripts/build-marea-landing-data.mjs",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "Internal draft copy only: no public copy authorization exists (0 of 42 claims public-authorized).",
+    "No professional translator review has been performed.",
+    "Text is generated from src/app/marea-landing/content/landing-content.ts; that file is the authority."
+  ],
+  "data": {
+    "records": [
+      {
+        "contentId": "brand.internal-banner",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC15-INDEXATION",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Vista interna no publicada. Copia no aprobada, fuera de índice y sin autorización de uso público."
+      },
+      {
+        "contentId": "brand.internal-banner",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC15-INDEXATION",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Internal unpublished preview. Draft copy: not approved, not indexed and not authorised for public use."
+      },
+      {
+        "contentId": "brand.provisional-brand",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC04-BRAND",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "MAREA es una marca propuesta: la identidad no está adoptada, el uso público es NO_GO y el clearance de marca es NOT_GRANTED."
+      },
+      {
+        "contentId": "brand.provisional-brand",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC04-BRAND",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "MAREA is a proposed brand: the identity is not adopted, public use is NO_GO and trademark clearance is NOT_GRANTED."
+      },
+      {
+        "contentId": "brand.footer-classification",
+        "sectionId": "closing",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC14-CLAIMS",
+          "EV-MC04-BRAND"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Documento interno de MC-18. No es una oferta comercial, no es copia pública y no cuenta con aprobación de publicación."
+      },
+      {
+        "contentId": "brand.footer-classification",
+        "sectionId": "closing",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC14-CLAIMS",
+          "EV-MC04-BRAND"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "MC-18 internal document. It is not a commercial offer, not public copy and has no publication approval."
+      },
+      {
+        "contentId": "brand.skip-link",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF",
+          "EV-MC18-IMPLEMENTATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Saltar al contenido"
+      },
+      {
+        "contentId": "brand.skip-link",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF",
+          "EV-MC18-IMPLEMENTATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Skip to content"
+      },
+      {
+        "contentId": "brand.preview-label",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC15-INDEXATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Vista previa interna"
+      },
+      {
+        "contentId": "brand.preview-label",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC15-INDEXATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Internal preview"
+      },
+      {
+        "contentId": "hero.kicker",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Ecosistema marino propuesto"
+      },
+      {
+        "contentId": "hero.kicker",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "A proposed marine ecosystem"
+      },
+      {
+        "contentId": "hero.heading",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Nueve familias, una arquitectura marina compartida: definida por partes, pendiente de verificación."
+      },
+      {
+        "contentId": "hero.heading",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Nine families, one shared marine architecture: defined in parts, still to be verified."
+      },
+      {
+        "contentId": "hero.lead",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "MAREA se propone como un ecosistema de instrumentación marina que reúne navegación, supervisión y datos de a bordo en un mismo lenguaje de producto."
+      },
+      {
+        "contentId": "hero.lead",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "MAREA is proposed as a marine instrumentation ecosystem that brings navigation, supervision and onboard data into one product language."
+      },
+      {
+        "contentId": "hero.classification",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC18-IMPLEMENTATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Borrador interno. No es una oferta comercial ni una página pública autorizada."
+      },
+      {
+        "contentId": "hero.classification",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC18-IMPLEMENTATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Internal draft. It is not a commercial offer and not an authorised public page."
+      },
+      {
+        "contentId": "hero.supporting",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Las nueve familias están definidas, pero no hay precio aprobado ni venta autorizada."
+      },
+      {
+        "contentId": "hero.supporting",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The nine families are defined, but no price is approved and no sale is authorised."
+      },
+      {
+        "contentId": "hero.highlight.families",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Nueve familias definidas: NAV, HUB, AIS, PILOT, SENSE, WATCH, DISPLAY, WEATHER y FLEET."
+      },
+      {
+        "contentId": "hero.highlight.families",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Nine defined families: NAV, HUB, AIS, PILOT, SENSE, WATCH, DISPLAY, WEATHER and FLEET."
+      },
+      {
+        "contentId": "hero.highlight.bundles",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Seis conceptos de solución definidos internamente: sin precio, sin stock y sin entrega."
+      },
+      {
+        "contentId": "hero.highlight.bundles",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Six internally defined solution concepts: no price, no stock and no delivery."
+      },
+      {
+        "contentId": "hero.highlight.integration",
+        "sectionId": "hero",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Integración no verificada: no hay pruebas de compatibilidad registradas."
+      },
+      {
+        "contentId": "hero.highlight.integration",
+        "sectionId": "hero",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Unverified integration: no compatibility tests are recorded."
+      },
+      {
+        "contentId": "ecosystem.kicker",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Ecosistema"
+      },
+      {
+        "contentId": "ecosystem.kicker",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Ecosystem"
+      },
+      {
+        "contentId": "ecosystem.heading",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Cinco capas para leer, supervisar y conectar el barco"
+      },
+      {
+        "contentId": "ecosystem.heading",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Five layers to read, supervise and connect the vessel"
+      },
+      {
+        "contentId": "ecosystem.lead",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La propuesta organiza el ecosistema en capas: hardware, software a bordo, monitorización y sensores, integración y conectividad, y servicios digitales."
+      },
+      {
+        "contentId": "ecosystem.lead",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The proposal organises the ecosystem in layers: hardware, onboard software, monitoring and sensors, integration and connectivity, and digital services."
+      },
+      {
+        "contentId": "ecosystem.hardware.title",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Hardware"
+      },
+      {
+        "contentId": "ecosystem.hardware.title",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Hardware"
+      },
+      {
+        "contentId": "ecosystem.hardware.body",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Las familias HUB, AIS, PILOT, SENSE, WATCH y DISPLAY cubren el hardware previsto del ecosistema."
+      },
+      {
+        "contentId": "ecosystem.hardware.body",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The HUB, AIS, PILOT, SENSE, WATCH and DISPLAY families cover the planned hardware of the ecosystem."
+      },
+      {
+        "contentId": "ecosystem.onboard-software.title",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Software a bordo"
+      },
+      {
+        "contentId": "ecosystem.onboard-software.title",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Onboard software"
+      },
+      {
+        "contentId": "ecosystem.onboard-software.body",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "NAV y WEATHER son las familias de software definidas; el software a bordo se describe como parte de la arquitectura."
+      },
+      {
+        "contentId": "ecosystem.onboard-software.body",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "NAV and WEATHER are the defined software families; onboard software is described as part of the architecture."
+      },
+      {
+        "contentId": "ecosystem.monitoring.title",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Monitorización y sensores"
+      },
+      {
+        "contentId": "ecosystem.monitoring.title",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Monitoring and sensors"
+      },
+      {
+        "contentId": "ecosystem.monitoring.body",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE define módulos de viento, energía, sentinas, tanques y ambiente; WATCH se define como supervisión con alertas."
+      },
+      {
+        "contentId": "ecosystem.monitoring.body",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE defines wind, power, bilge, tank and environmental modules; WATCH is defined as supervision with alerts."
+      },
+      {
+        "contentId": "ecosystem.integration.title",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Integración y conectividad"
+      },
+      {
+        "contentId": "ecosystem.integration.title",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Integration and connectivity"
+      },
+      {
+        "contentId": "ecosystem.integration.body",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La integración se propone sobre interfaces documentadas; no hay compatibilidad probada ni matriz de integración publicada."
+      },
+      {
+        "contentId": "ecosystem.integration.body",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Integration is proposed over documented interfaces; no compatibility is tested and no integration matrix is published."
+      },
+      {
+        "contentId": "ecosystem.digital-services.title",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Servicios digitales"
+      },
+      {
+        "contentId": "ecosystem.digital-services.title",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Digital services"
+      },
+      {
+        "contentId": "ecosystem.digital-services.body",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET se define como solución contratada de gestión de flota; no incluye hardware por defecto ni tiene SLA establecido."
+      },
+      {
+        "contentId": "ecosystem.digital-services.body",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET is defined as a contracted fleet-management solution; it includes no default hardware and has no established SLA."
+      },
+      {
+        "contentId": "ecosystem.note",
+        "sectionId": "ecosystem",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Las capas son una propuesta de arquitectura interna: no acreditan interoperabilidad, conformidad ni disponibilidad comercial."
+      },
+      {
+        "contentId": "ecosystem.note",
+        "sectionId": "ecosystem",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The layers are an internal architecture proposal: they attest no interoperability, no conformity and no commercial availability."
+      },
+      {
+        "contentId": "families.kicker",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Familias"
+      },
+      {
+        "contentId": "families.kicker",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Families"
+      },
+      {
+        "contentId": "families.heading",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Nueve familias, cada una con su alcance declarado"
+      },
+      {
+        "contentId": "families.heading",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Nine families, each with a declared scope"
+      },
+      {
+        "contentId": "families.lead",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Cada familia se registra con su estado de ciclo de vida, sus dimensiones de disponibilidad y su disponibilidad comercial."
+      },
+      {
+        "contentId": "families.lead",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Each family is recorded with its lifecycle state, its availability dimensions and its commercial availability."
+      },
+      {
+        "contentId": "families.nav.summary",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS",
+          "EV-MC14-BILINGUAL-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "NAV es la familia de software de navegación: planificación de rutas, vista de carta, cuaderno de bitácora digital y visualización de datos de instrumentos, en dos ediciones definidas."
+      },
+      {
+        "contentId": "families.nav.summary",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS",
+          "EV-MC14-BILINGUAL-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "NAV is the navigation software family: route planning, chart view, digital logbook and instrument data display, in two defined editions."
+      },
+      {
+        "contentId": "families.nav.material",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Las cartas náuticas no están licenciadas ni se representan como incluidas."
+      },
+      {
+        "contentId": "families.nav.material",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Nautical charts are not licensed and are not represented as included."
+      },
+      {
+        "contentId": "families.nav.commercial",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "NAV no está disponible para compra: no hay precio aprobado ni suscripción autorizada."
+      },
+      {
+        "contentId": "families.nav.commercial",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "NAV is not available for purchase: no price is approved and no subscription is authorised."
+      },
+      {
+        "contentId": "families.hub.summary",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "HUB se define como la pasarela de datos y conectividad a bordo, en dos ediciones internas."
+      },
+      {
+        "contentId": "families.hub.summary",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "HUB is defined as the onboard data gateway and connectivity appliance, in two internal editions."
+      },
+      {
+        "contentId": "families.hub.material",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "No hay hardware seleccionado ni evidencia de conformidad para HUB."
+      },
+      {
+        "contentId": "families.hub.material",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "No hardware is selected and no conformity evidence exists for HUB."
+      },
+      {
+        "contentId": "families.hub.commercial",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "HUB no se vende: no hay stock, precio aprobado ni plazo de entrega."
+      },
+      {
+        "contentId": "families.hub.commercial",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "HUB is not sold: there is no stock, no approved price and no delivery lead time."
+      },
+      {
+        "contentId": "families.ais.summary",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "AIS se define como receptor de solo escucha para identificar tráfico cercano."
+      },
+      {
+        "contentId": "families.ais.summary",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "AIS is defined as a receive-only receiver for identifying nearby traffic."
+      },
+      {
+        "contentId": "families.ais.material",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC14-CLAIMS",
+          "EV-MC14-BILINGUAL-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La recepción AIS no transmite, no evita colisiones y no sustituye la vigilancia: no todos los buques emiten AIS."
+      },
+      {
+        "contentId": "families.ais.material",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC14-CLAIMS",
+          "EV-MC14-BILINGUAL-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "AIS reception does not transmit, does not prevent collisions and does not replace watchkeeping: not every vessel transmits AIS."
+      },
+      {
+        "contentId": "families.ais.commercial",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "AIS no está disponible para pedido: no hay precio aprobado ni existencias."
+      },
+      {
+        "contentId": "families.ais.commercial",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "AIS is not available to order: no price is approved and no stock exists."
+      },
+      {
+        "contentId": "families.pilot.summary",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PILOT se define como gobierno asistido y supervisado: mantiene un rumbo o sigue una ruta autorizada por el patrón, con toma de control manual siempre disponible."
+      },
+      {
+        "contentId": "families.pilot.summary",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PILOT is defined as assisted, supervised steering: it holds a heading or follows a route authorised by the skipper, with manual takeover always available."
+      },
+      {
+        "contentId": "families.pilot.material",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "El gate de seguridad de PILOT está bloqueado: no hay gobierno autónomo, ni control remoto sin supervisión, ni prueba de mar registrada."
+      },
+      {
+        "contentId": "families.pilot.material",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PILOT safety gate is blocked: there is no autonomous steering, no unattended remote control and no recorded sea trial."
+      },
+      {
+        "contentId": "families.pilot.commercial",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PILOT no es comprable en ningún estado: no se ofrece precio ni disponibilidad."
+      },
+      {
+        "contentId": "families.pilot.commercial",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PILOT is not purchasable in any state: no price and no availability are offered."
+      },
+      {
+        "contentId": "families.sense.summary",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE reúne módulos de viento, energía, sentinas, tanques y ambiente; SENSE-ESSENTIALS representa energía y sentinas."
+      },
+      {
+        "contentId": "families.sense.summary",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE brings together wind, power, bilge, tank and environmental modules; SENSE-ESSENTIALS represents power and bilge."
+      },
+      {
+        "contentId": "families.sense.material",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE-ESSENTIALS representa POWER y BILGE; los módulos no se cuentan dos veces en la composición del paquete."
+      },
+      {
+        "contentId": "families.sense.material",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE-ESSENTIALS represents POWER and BILGE; the modules are not counted twice in the bundle composition."
+      },
+      {
+        "contentId": "families.sense.commercial",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE no está a la venta: no hay precio aprobado, stock ni disponibilidad."
+      },
+      {
+        "contentId": "families.sense.commercial",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE is not for sale: no approved price, stock or availability exists."
+      },
+      {
+        "contentId": "families.watch.summary",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WATCH se define como supervisión del barco con alertas locales y avisos al propietario cuando la conectividad lo permite."
+      },
+      {
+        "contentId": "families.watch.summary",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WATCH is defined as vessel supervision with local alerts and owner notifications when connectivity permits."
+      },
+      {
+        "contentId": "families.watch.material",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC14-CLAIMS",
+          "EV-MC14-BILINGUAL-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Las alertas pueden retrasarse o perderse; no hay monitorización remota continua garantizada ni servicio de emergencia."
+      },
+      {
+        "contentId": "families.watch.material",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC14-CLAIMS",
+          "EV-MC14-BILINGUAL-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Alerts may be delayed or lost; there is no guaranteed continuous remote monitoring and no emergency service."
+      },
+      {
+        "contentId": "families.watch.commercial",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WATCH no está disponible para compra: no hay SLA establecido ni precio aprobado."
+      },
+      {
+        "contentId": "families.watch.commercial",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WATCH is not available for purchase: no SLA is established and no price is approved."
+      },
+      {
+        "contentId": "families.display.summary",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "DISPLAY se define como pantalla multifunción de puesto de mando, en dos ediciones internas, una de ellas condicional."
+      },
+      {
+        "contentId": "families.display.summary",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "DISPLAY is defined as a helm multifunction display, in two internal editions, one of them conditional."
+      },
+      {
+        "contentId": "families.display.material",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "No hay unidad fabricada ni tamaño de pantalla congelado; no se publican dimensiones finales."
+      },
+      {
+        "contentId": "families.display.material",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "No manufactured unit exists and the screen size is not frozen; no final dimensions are published."
+      },
+      {
+        "contentId": "families.display.commercial",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "DISPLAY no se vende: no hay precio aprobado ni disponibilidad."
+      },
+      {
+        "contentId": "families.display.commercial",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "DISPLAY is not sold: no price is approved and no availability exists."
+      },
+      {
+        "contentId": "families.weather.summary",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WEATHER se define como servicio de previsión marina con fuente y hora por dato, dentro de un área y horizonte declarados."
+      },
+      {
+        "contentId": "families.weather.summary",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WEATHER is defined as a marine forecast service with source and timestamp per data point, within a declared area and horizon."
+      },
+      {
+        "contentId": "families.weather.material",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Los datos meteorológicos no están licenciados ni se representan como incluidos; las previsiones son probabilísticas."
+      },
+      {
+        "contentId": "families.weather.material",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Weather data is not licensed and is not represented as included; forecasts are probabilistic."
+      },
+      {
+        "contentId": "families.weather.commercial",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WEATHER no está a la venta: no hay precio ni suscripción aprobada."
+      },
+      {
+        "contentId": "families.weather.commercial",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WEATHER is not for sale: no price and no subscription are approved."
+      },
+      {
+        "contentId": "families.fleet.summary",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET se define como solución de gestión de flota para armadores y operadores pequeños, con telemetría de solo lectura."
+      },
+      {
+        "contentId": "families.fleet.summary",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET is defined as a fleet-management solution for owners and small operators, with read-only telemetry."
+      },
+      {
+        "contentId": "families.fleet.material",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET no incluye hardware por defecto, no tiene SLA establecido y no dispone de disponibilidad medida."
+      },
+      {
+        "contentId": "families.fleet.material",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET includes no default hardware, has no established SLA and has no measured availability."
+      },
+      {
+        "contentId": "families.fleet.commercial",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET es una solución contratada: no se ofrece como autoservicio ni con precio público."
+      },
+      {
+        "contentId": "families.fleet.commercial",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET is a contracted solution: it is not offered as self-service and has no public price."
+      },
+      {
+        "contentId": "families.note",
+        "sectionId": "families",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Las nueve fichas declaran su restricción material y comercial; no se presentan como productos disponibles."
+      },
+      {
+        "contentId": "families.note",
+        "sectionId": "families",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "All nine entries state their material and commercial restriction; they are not presented as available products."
+      },
+      {
+        "contentId": "architecture.kicker",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Arquitectura"
+      },
+      {
+        "contentId": "architecture.kicker",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Architecture"
+      },
+      {
+        "contentId": "architecture.heading",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencias conceptuales, no interoperabilidad verificada"
+      },
+      {
+        "contentId": "architecture.heading",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependencies, not verified interoperability"
+      },
+      {
+        "contentId": "architecture.lead",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "El diagrama relaciona las nueve familias con fuentes de datos externas y con la instalación profesional."
+      },
+      {
+        "contentId": "architecture.lead",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The diagram relates the nine families to external data sources and to professional installation."
+      },
+      {
+        "contentId": "architecture.node.nav",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "NAV: navegación, vista de carta y cuaderno de bitácora."
+      },
+      {
+        "contentId": "architecture.node.nav",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "NAV: navigation, chart view and logbook."
+      },
+      {
+        "contentId": "architecture.node.hub",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "HUB: pasarela de datos y conectividad a bordo."
+      },
+      {
+        "contentId": "architecture.node.hub",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "HUB: onboard data gateway and connectivity."
+      },
+      {
+        "contentId": "architecture.node.ais",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "AIS: recepción de tráfico de solo escucha."
+      },
+      {
+        "contentId": "architecture.node.ais",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "AIS: receive-only traffic reception."
+      },
+      {
+        "contentId": "architecture.node.pilot",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PILOT: gobierno asistido y supervisado."
+      },
+      {
+        "contentId": "architecture.node.pilot",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PILOT: assisted and supervised steering."
+      },
+      {
+        "contentId": "architecture.node.sense",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE: módulos de medición a bordo."
+      },
+      {
+        "contentId": "architecture.node.sense",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE: onboard measurement modules."
+      },
+      {
+        "contentId": "architecture.node.watch",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WATCH: supervisión y alertas al propietario."
+      },
+      {
+        "contentId": "architecture.node.watch",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WATCH: supervision and owner alerts."
+      },
+      {
+        "contentId": "architecture.node.display",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "DISPLAY: pantalla multifunción de puesto de mando."
+      },
+      {
+        "contentId": "architecture.node.display",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "DISPLAY: helm multifunction display."
+      },
+      {
+        "contentId": "architecture.node.weather",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WEATHER: previsión marina con fuente y hora por dato."
+      },
+      {
+        "contentId": "architecture.node.weather",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "WEATHER: marine forecast with source and timestamp per data point."
+      },
+      {
+        "contentId": "architecture.node.fleet",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET: gestión de flota con telemetría de solo lectura."
+      },
+      {
+        "contentId": "architecture.node.fleet",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET: fleet management with read-only telemetry."
+      },
+      {
+        "contentId": "architecture.node.external-data",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Datos externos: cartas y previsión de terceros, no licenciadas."
+      },
+      {
+        "contentId": "architecture.node.external-data",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "External data: third-party chart and forecast sources that are not licensed."
+      },
+      {
+        "contentId": "architecture.node.professional-installation",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Instalación profesional: requisito de montaje y puesta en marcha."
+      },
+      {
+        "contentId": "architecture.node.professional-installation",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Professional installation: installation and commissioning requirement."
+      },
+      {
+        "contentId": "architecture.link.hub-nav",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencia conceptual: NAV puede leer los datos locales de HUB; no hay integración probada."
+      },
+      {
+        "contentId": "architecture.link.hub-nav",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependency: NAV may read HUB local data; no tested integration exists."
+      },
+      {
+        "contentId": "architecture.link.hub-ais",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencia conceptual: HUB puede agregar objetivos AIS de escucha; no hay prueba de compatibilidad."
+      },
+      {
+        "contentId": "architecture.link.hub-ais",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependency: HUB may aggregate receive-only AIS targets; no compatibility test exists."
+      },
+      {
+        "contentId": "architecture.link.hub-sense",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencia conceptual: HUB puede leer módulos SENSE; no hay matriz de compatibilidad publicada."
+      },
+      {
+        "contentId": "architecture.link.hub-sense",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependency: HUB may read SENSE modules; no compatibility matrix is published."
+      },
+      {
+        "contentId": "architecture.link.hub-display",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencia conceptual: DISPLAY puede leer la interfaz local de HUB; no hay integración verificada."
+      },
+      {
+        "contentId": "architecture.link.hub-display",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependency: DISPLAY may read the HUB local interface; no verified integration exists."
+      },
+      {
+        "contentId": "architecture.link.hub-watch",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencia conceptual: WATCH puede leer datos autorizados de HUB; no hay condiciones de conectividad establecidas."
+      },
+      {
+        "contentId": "architecture.link.hub-watch",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependency: WATCH may read authorised HUB data; no connectivity terms are established."
+      },
+      {
+        "contentId": "architecture.link.hub-pilot",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencia conceptual: PILOT puede recibir datos acotados de HUB; no hay control de terceros ni integración verificada."
+      },
+      {
+        "contentId": "architecture.link.hub-pilot",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependency: PILOT may receive bounded HUB data; there is no third-party control and no verified integration."
+      },
+      {
+        "contentId": "architecture.link.nav-external-data",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencia conceptual de cartas y previsión externas; no hay licencia firmada."
+      },
+      {
+        "contentId": "architecture.link.nav-external-data",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependency on external charts and forecasts; no licence is signed."
+      },
+      {
+        "contentId": "architecture.link.weather-external-data",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencia conceptual de proveedores externos; no hay derechos de redistribución concedidos."
+      },
+      {
+        "contentId": "architecture.link.weather-external-data",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependency on external providers; no redistribution rights are granted."
+      },
+      {
+        "contentId": "architecture.link.fleet-external-data",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencia conceptual de datos de conectividad y servicios externos; no hay condiciones contratadas."
+      },
+      {
+        "contentId": "architecture.link.fleet-external-data",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependency on connectivity data and external services; no terms are contracted."
+      },
+      {
+        "contentId": "architecture.link.installation-hub",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Dependencia conceptual: la instalación profesional condiciona el montaje de HUB; no hay procedimiento aprobado."
+      },
+      {
+        "contentId": "architecture.link.installation-hub",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual dependency: professional installation conditions the HUB fitting; no procedure is approved."
+      },
+      {
+        "contentId": "architecture.diagram-alt",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC11-HARDWARE",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Diagrama conceptual de la arquitectura: HUB se relaciona con NAV, AIS, PILOT, SENSE, WATCH y DISPLAY; NAV, WEATHER y FLEET dependen de datos externos; la instalación profesional se relaciona con HUB. Todas las uniones son dependencias conceptuales no verificadas."
+      },
+      {
+        "contentId": "architecture.diagram-alt",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC11-HARDWARE",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conceptual architecture diagram: HUB relates to NAV, AIS, PILOT, SENSE, WATCH and DISPLAY; NAV, WEATHER and FLEET depend on external data; professional installation relates to HUB. Every connection is a conceptual dependency that is not verified."
+      },
+      {
+        "contentId": "architecture.legend.hardware",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Hardware: familia física propuesta."
+      },
+      {
+        "contentId": "architecture.legend.hardware",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Hardware: proposed physical family."
+      },
+      {
+        "contentId": "architecture.legend.software",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Software: familia de aplicación o servicio definido."
+      },
+      {
+        "contentId": "architecture.legend.software",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Software: defined application or service family."
+      },
+      {
+        "contentId": "architecture.legend.service",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Servicio: capacidad operativa o de supervisión."
+      },
+      {
+        "contentId": "architecture.legend.service",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Service: operational or supervision capability."
+      },
+      {
+        "contentId": "architecture.legend.external",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Datos externos: fuentes de terceros que no están licenciadas."
+      },
+      {
+        "contentId": "architecture.legend.external",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "External data: third-party sources that are not licensed."
+      },
+      {
+        "contentId": "architecture.note",
+        "sectionId": "architecture",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "El diagrama no prueba integración, compatibilidad ni conformidad; las uniones describen intención de diseño."
+      },
+      {
+        "contentId": "architecture.note",
+        "sectionId": "architecture",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The diagram proves no integration, compatibility or conformity; the connections describe design intent."
+      },
+      {
+        "contentId": "bundles.kicker",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Paquetes"
+      },
+      {
+        "contentId": "bundles.kicker",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Bundles"
+      },
+      {
+        "contentId": "bundles.heading",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Seis conceptos de solución definidos internamente"
+      },
+      {
+        "contentId": "bundles.heading",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Six internally defined solution concepts"
+      },
+      {
+        "contentId": "bundles.lead",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "START, CRUISE, SAIL, PROTECT, COMPLETE y FLEET se definen como composiciones internas de ediciones."
+      },
+      {
+        "contentId": "bundles.lead",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "START, CRUISE, SAIL, PROTECT, COMPLETE and FLEET are defined as internal compositions of editions."
+      },
+      {
+        "contentId": "bundles.start.summary",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "START combina HUB Standard y NAV Pro, con HUB Pro y WEATHER Standard como opciones internas."
+      },
+      {
+        "contentId": "bundles.start.summary",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "START combines HUB Standard and NAV Pro, with HUB Pro and WEATHER Standard as internal options."
+      },
+      {
+        "contentId": "bundles.start.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "START es un concepto interno de solución: no tiene precio, stock ni plazo de entrega."
+      },
+      {
+        "contentId": "bundles.start.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "START is an internal solution concept: it has no price, no stock and no delivery lead time."
+      },
+      {
+        "contentId": "bundles.start.constraint.installation",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La instalación, el cableado y la puesta en marcha no están incluidos: requieren asistencia de instalador."
+      },
+      {
+        "contentId": "bundles.start.constraint.installation",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Installation, cabling and commissioning are not included: they require installer assistance."
+      },
+      {
+        "contentId": "bundles.cruise.summary",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "CRUISE combina NAV Essential, HUB Standard, AIS Receiver y la edición DISPLAY 7, con ampliaciones opcionales."
+      },
+      {
+        "contentId": "bundles.cruise.summary",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "CRUISE combines NAV Essential, HUB Standard, AIS Receiver and the DISPLAY 7 edition, with optional extensions."
+      },
+      {
+        "contentId": "bundles.cruise.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "CRUISE no incluye precio aprobado, stock ni fecha de entrega: es un concepto interno de solución."
+      },
+      {
+        "contentId": "bundles.cruise.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "CRUISE includes no approved price, no stock and no delivery date: it is an internal solution concept."
+      },
+      {
+        "contentId": "bundles.cruise.constraint.installation",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La instalación profesional es obligatoria; el cableado y la puesta en marcha no se incluyen."
+      },
+      {
+        "contentId": "bundles.cruise.constraint.installation",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Professional installation is mandatory; cabling and commissioning are not included."
+      },
+      {
+        "contentId": "bundles.sail.summary",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SAIL combina NAV Pro y HUB Standard con PILOT Coastal, sujeto a cotización interna."
+      },
+      {
+        "contentId": "bundles.sail.summary",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SAIL combines NAV Pro and HUB Standard with PILOT Coastal, subject to an internal quotation."
+      },
+      {
+        "contentId": "bundles.sail.constraint.safety",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PILOT en SAIL es asistido y supervisado: no permite gobierno autónomo ni control remoto sin supervisión, y el gate de seguridad sigue bloqueado."
+      },
+      {
+        "contentId": "bundles.sail.constraint.safety",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PILOT in SAIL is assisted and supervised: it allows no autonomous steering and no unattended remote control, and the safety gate remains blocked."
+      },
+      {
+        "contentId": "bundles.sail.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SAIL no tiene precio, stock ni entrega definidos: no es una oferta comercial."
+      },
+      {
+        "contentId": "bundles.sail.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SAIL has no price, no stock and no delivery defined: it is not a commercial offer."
+      },
+      {
+        "contentId": "bundles.protect.summary",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PROTECT combina WATCH Core con SENSE Essentials, que representa energía y sentinas."
+      },
+      {
+        "contentId": "bundles.protect.summary",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PROTECT combines WATCH Core with SENSE Essentials, which represents power and bilge."
+      },
+      {
+        "contentId": "bundles.protect.constraint.composition",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE Essentials representa POWER y BILGE; los módulos no se cuentan dos veces en la composición."
+      },
+      {
+        "contentId": "bundles.protect.constraint.composition",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "SENSE Essentials represents POWER and BILGE; the modules are not counted twice in the composition."
+      },
+      {
+        "contentId": "bundles.protect.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PROTECT no incluye alertas garantizadas ni monitorización remota continua; no hay precio ni stock."
+      },
+      {
+        "contentId": "bundles.protect.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PROTECT includes no guaranteed alerts and no continuous remote monitoring; there is no price and no stock."
+      },
+      {
+        "contentId": "bundles.complete.summary",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "COMPLETE reúne NAV Pro, HUB Pro, DISPLAY 7, WATCH Core, los módulos SENSE definidos y PILOT Coastal."
+      },
+      {
+        "contentId": "bundles.complete.summary",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "COMPLETE brings together NAV Pro, HUB Pro, DISPLAY 7, WATCH Core, the defined SENSE modules and PILOT Coastal."
+      },
+      {
+        "contentId": "bundles.complete.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "COMPLETE no está disponible para pedido: no tiene precio, stock ni entrega, y PILOT mantiene el gate de seguridad bloqueado."
+      },
+      {
+        "contentId": "bundles.complete.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "COMPLETE is not available to order: it has no price, no stock and no delivery, and PILOT keeps its safety gate blocked."
+      },
+      {
+        "contentId": "bundles.complete.constraint.conditions",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Las ediciones condicionales no son seleccionables: PILOT Pro y DISPLAY Large Conditional no forman parte del paquete."
+      },
+      {
+        "contentId": "bundles.complete.constraint.conditions",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conditional editions are not selectable: PILOT Pro and DISPLAY Large Conditional are not part of the bundle."
+      },
+      {
+        "contentId": "bundles.fleet.summary",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET se define como solución contratada de gestión de flota para flotas profesionales."
+      },
+      {
+        "contentId": "bundles.fleet.summary",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET is defined as a contracted fleet-management solution for professional fleets."
+      },
+      {
+        "contentId": "bundles.fleet.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET es una solución contratada: no incluye hardware por defecto y no tiene SLA establecido."
+      },
+      {
+        "contentId": "bundles.fleet.constraint.commercial",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET is a contracted solution: it includes no default hardware and has no established SLA."
+      },
+      {
+        "contentId": "bundles.fleet.constraint.availability",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET no tiene precio público ni disponibilidad: no se ofrece como autoservicio."
+      },
+      {
+        "contentId": "bundles.fleet.constraint.availability",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET has no public price and no availability: it is not offered as self-service."
+      },
+      {
+        "contentId": "bundles.note",
+        "sectionId": "bundles",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Los paquetes son conceptos internos de solución: no constituyen una oferta, no hay precio, stock ni entrega, y ningún paquete se puede comprar."
+      },
+      {
+        "contentId": "bundles.note",
+        "sectionId": "bundles",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Bundles are internal solution concepts: they are not an offer, there is no price, stock or delivery, and no bundle can be purchased."
+      },
+      {
+        "contentId": "software-hardware.kicker",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Software y hardware"
+      },
+      {
+        "contentId": "software-hardware.kicker",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Software and hardware"
+      },
+      {
+        "contentId": "software-hardware.heading",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Arquitectura definida, componentes condicionales"
+      },
+      {
+        "contentId": "software-hardware.heading",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Defined architecture, conditional components"
+      },
+      {
+        "contentId": "software-hardware.lead",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "El sistema se describe como arquitectura de referencia; cada componente conserva su estado de verificación."
+      },
+      {
+        "contentId": "software-hardware.lead",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The system is described as a reference architecture; each component keeps its verification state."
+      },
+      {
+        "contentId": "software-hardware.defined-architecture.title",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Arquitectura definida"
+      },
+      {
+        "contentId": "software-hardware.defined-architecture.title",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Defined architecture"
+      },
+      {
+        "contentId": "software-hardware.defined-architecture.body",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La arquitectura y las nueve familias están definidas en el catálogo interno; definición no implica disponibilidad."
+      },
+      {
+        "contentId": "software-hardware.defined-architecture.body",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The architecture and the nine families are defined in the internal catalogue; definition does not imply availability."
+      },
+      {
+        "contentId": "software-hardware.conditional-components.title",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Componentes condicionales"
+      },
+      {
+        "contentId": "software-hardware.conditional-components.title",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-EDITIONS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Conditional components"
+      },
+      {
+        "contentId": "software-hardware.conditional-components.body",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-EDITIONS",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Algunas ediciones son condicionales y no son seleccionables por defecto."
+      },
+      {
+        "contentId": "software-hardware.conditional-components.body",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-EDITIONS",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Some editions are conditional and are not selectable by default."
+      },
+      {
+        "contentId": "software-hardware.unverified-integration.title",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Integración no verificada"
+      },
+      {
+        "contentId": "software-hardware.unverified-integration.title",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Unverified integration"
+      },
+      {
+        "contentId": "software-hardware.unverified-integration.body",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "No hay filas de compatibilidad probadas; la integración permanece conceptual."
+      },
+      {
+        "contentId": "software-hardware.unverified-integration.body",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "No compatibility rows are tested; integration remains conceptual."
+      },
+      {
+        "contentId": "software-hardware.external-licensing.title",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Licencias externas"
+      },
+      {
+        "contentId": "software-hardware.external-licensing.title",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "External licensing"
+      },
+      {
+        "contentId": "software-hardware.external-licensing.body",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Cartas y datos meteorológicos dependen de licencias no concedidas; no se representan como incluidos."
+      },
+      {
+        "contentId": "software-hardware.external-licensing.body",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Chart and weather data depend on licences that are not granted; they are not represented as included."
+      },
+      {
+        "contentId": "software-hardware.note",
+        "sectionId": "softwareHardware",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "No hay conformidad, certificación ni prueba de mar registrada para ningún componente; no se presenta ninguna como tal."
+      },
+      {
+        "contentId": "software-hardware.note",
+        "sectionId": "softwareHardware",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC11-HARDWARE",
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "No conformity, certification or sea trial is recorded for any component; none is presented as such."
+      },
+      {
+        "contentId": "professionals.kicker",
+        "sectionId": "professionals",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Profesionales"
+      },
+      {
+        "contentId": "professionals.kicker",
+        "sectionId": "professionals",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Professionals"
+      },
+      {
+        "contentId": "professionals.heading",
+        "sectionId": "professionals",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Lectura profesional del ecosistema"
+      },
+      {
+        "contentId": "professionals.heading",
+        "sectionId": "professionals",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "A professional reading of the ecosystem"
+      },
+      {
+        "contentId": "professionals.lead",
+        "sectionId": "professionals",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La propuesta se dirige a armadores, instaladores y flotas profesionales."
+      },
+      {
+        "contentId": "professionals.lead",
+        "sectionId": "professionals",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The proposal is addressed to owners, installers and professional fleets."
+      },
+      {
+        "contentId": "professionals.owners.title",
+        "sectionId": "professionals",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Armadores"
+      },
+      {
+        "contentId": "professionals.owners.title",
+        "sectionId": "professionals",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Owners"
+      },
+      {
+        "contentId": "professionals.owners.body",
+        "sectionId": "professionals",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Lectura del barco y de la supervisión como un conjunto de familias definidas."
+      },
+      {
+        "contentId": "professionals.owners.body",
+        "sectionId": "professionals",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "A reading of the vessel and of supervision as a set of defined families."
+      },
+      {
+        "contentId": "professionals.installers.title",
+        "sectionId": "professionals",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Instaladores"
+      },
+      {
+        "contentId": "professionals.installers.title",
+        "sectionId": "professionals",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Installers"
+      },
+      {
+        "contentId": "professionals.installers.body",
+        "sectionId": "professionals",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La instalación profesional se reconoce como requisito de los paquetes y de la arquitectura."
+      },
+      {
+        "contentId": "professionals.installers.body",
+        "sectionId": "professionals",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Professional installation is recognised as a requirement of the bundles and of the architecture."
+      },
+      {
+        "contentId": "professionals.fleets.title",
+        "sectionId": "professionals",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Flotas profesionales"
+      },
+      {
+        "contentId": "professionals.fleets.title",
+        "sectionId": "professionals",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Professional fleets"
+      },
+      {
+        "contentId": "professionals.fleets.body",
+        "sectionId": "professionals",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET se define como solución contratada de gestión de flota, con telemetría de solo lectura."
+      },
+      {
+        "contentId": "professionals.fleets.body",
+        "sectionId": "professionals",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-BUNDLES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "FLEET is defined as a contracted fleet-management solution, with read-only telemetry."
+      },
+      {
+        "contentId": "professionals.note",
+        "sectionId": "professionals",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF",
+          "EV-MC18-IMPLEMENTATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Esta sección es solo informativa: no hay formulario de contacto, solicitud de presupuesto, registro ni canal de consulta."
+      },
+      {
+        "contentId": "professionals.note",
+        "sectionId": "professionals",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF",
+          "EV-MC18-IMPLEMENTATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "This section is informational only: there is no enquiry form, no quote request, no registration and no contact channel."
+      },
+      {
+        "contentId": "documentation.kicker",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Documentación"
+      },
+      {
+        "contentId": "documentation.kicker",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Documentation"
+      },
+      {
+        "contentId": "documentation.heading",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Documentación de definición, sin aprobación de publicación"
+      },
+      {
+        "contentId": "documentation.heading",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Definition documentation, with no publication approval"
+      },
+      {
+        "contentId": "documentation.lead",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC14-GATES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La documentación interna describe el contrato de producto, sus estados y sus límites."
+      },
+      {
+        "contentId": "documentation.lead",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC14-GATES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The internal documentation describes the product contract, its states and its limits."
+      },
+      {
+        "contentId": "documentation.definition-contract.title",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Contrato de definición"
+      },
+      {
+        "contentId": "documentation.definition-contract.title",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Definition contract"
+      },
+      {
+        "contentId": "documentation.definition-contract.body",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Cada familia y paquete documenta composición, estado de ciclo de vida y dimensiones de disponibilidad."
+      },
+      {
+        "contentId": "documentation.definition-contract.body",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Every family and bundle records composition, lifecycle state and availability dimensions."
+      },
+      {
+        "contentId": "documentation.readiness-record.title",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Registro de disponibilidad"
+      },
+      {
+        "contentId": "documentation.readiness-record.title",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Readiness record"
+      },
+      {
+        "contentId": "documentation.readiness-record.body",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Las once dimensiones se registran por familia; no hay ninguna cerrada ni aprobada."
+      },
+      {
+        "contentId": "documentation.readiness-record.body",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The eleven dimensions are recorded per family; no dimension is closed or approved."
+      },
+      {
+        "contentId": "documentation.evidence-provenance.title",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Procedencia de la evidencia"
+      },
+      {
+        "contentId": "documentation.evidence-provenance.title",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Evidence provenance"
+      },
+      {
+        "contentId": "documentation.evidence-provenance.body",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Cada afirmación de esta vista cita una fuente interna registrada."
+      },
+      {
+        "contentId": "documentation.evidence-provenance.body",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Every statement in this preview cites a recorded internal source."
+      },
+      {
+        "contentId": "documentation.publication-gate.title",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC14-GATES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Puerta de publicación"
+      },
+      {
+        "contentId": "documentation.publication-gate.title",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC14-GATES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Publication gate"
+      },
+      {
+        "contentId": "documentation.publication-gate.body",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La publicación no está autorizada; no existe copia pública aprobada en español ni en inglés."
+      },
+      {
+        "contentId": "documentation.publication-gate.body",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Publication is not authorised; no approved public copy exists in Spanish or English."
+      },
+      {
+        "contentId": "documentation.scope",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC15-INDEXATION",
+          "EV-MC15-ROUTES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Alcance: contenido interno de MC-18 para una landing aislada, no indexable y sin destino comercial."
+      },
+      {
+        "contentId": "documentation.scope",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC15-INDEXATION",
+          "EV-MC15-ROUTES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Scope: MC-18 internal content for an isolated landing, not indexable and with no commercial destination."
+      },
+      {
+        "contentId": "documentation.note",
+        "sectionId": "documentation",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La documentación no sustituye licencias, certificados ni contratos; no hay documento externo ejecutado."
+      },
+      {
+        "contentId": "documentation.note",
+        "sectionId": "documentation",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Documentation does not replace licences, certificates or contracts; no external document has been executed."
+      },
+      {
+        "contentId": "availability.kicker",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Disponibilidad"
+      },
+      {
+        "contentId": "availability.kicker",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Availability"
+      },
+      {
+        "contentId": "availability.heading",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Once dimensiones de disponibilidad declaradas"
+      },
+      {
+        "contentId": "availability.heading",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Eleven declared availability dimensions"
+      },
+      {
+        "contentId": "availability.lead",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La disponibilidad se registra por dimensión y por familia en el catálogo interno."
+      },
+      {
+        "contentId": "availability.lead",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Availability is recorded per dimension and per family in the internal catalogue."
+      },
+      {
+        "contentId": "availability.dimension.definition",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Definición: especificación objetivo de cada familia."
+      },
+      {
+        "contentId": "availability.dimension.definition",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Definition: target specification for each family."
+      },
+      {
+        "contentId": "availability.dimension.engineering",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Ingeniería: estado de verificación técnica."
+      },
+      {
+        "contentId": "availability.dimension.engineering",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Engineering: technical verification status."
+      },
+      {
+        "contentId": "availability.dimension.licensing",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Licencias: estado de licencias de software y datos."
+      },
+      {
+        "contentId": "availability.dimension.licensing",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Licensing: software and data licence status."
+      },
+      {
+        "contentId": "availability.dimension.hardware",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Hardware: estado de selección del componente físico."
+      },
+      {
+        "contentId": "availability.dimension.hardware",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Hardware: physical component selection status."
+      },
+      {
+        "contentId": "availability.dimension.data-rights",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Derechos de datos: estado de derechos sobre cartas y previsión."
+      },
+      {
+        "contentId": "availability.dimension.data-rights",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Data rights: rights status for charts and forecasts."
+      },
+      {
+        "contentId": "availability.dimension.compliance",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Cumplimiento: estado de evaluación regulatoria."
+      },
+      {
+        "contentId": "availability.dimension.compliance",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Compliance: regulatory assessment status."
+      },
+      {
+        "contentId": "availability.dimension.pricing",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Precio: estado de aprobación de precios."
+      },
+      {
+        "contentId": "availability.dimension.pricing",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Pricing: price approval status."
+      },
+      {
+        "contentId": "availability.dimension.pricing.note",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-EDITIONS",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Los precios son hipótesis no aprobadas; no existe lista de precios aprobada."
+      },
+      {
+        "contentId": "availability.dimension.pricing.note",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC16-EDITIONS",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Prices are unapproved hypotheses; no approved price list exists."
+      },
+      {
+        "contentId": "availability.dimension.brand-publication",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC04-BRAND"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Marca y publicación: autorización de marca y de superficie."
+      },
+      {
+        "contentId": "availability.dimension.brand-publication",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC04-BRAND"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Brand and publication: brand and surface authorisation."
+      },
+      {
+        "contentId": "availability.dimension.availability",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Disponibilidad comercial: estado de venta."
+      },
+      {
+        "contentId": "availability.dimension.availability",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Commercial availability: sale status."
+      },
+      {
+        "contentId": "availability.dimension.safety",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Seguridad: evaluación de seguridad del producto."
+      },
+      {
+        "contentId": "availability.dimension.safety",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Safety: product safety assessment."
+      },
+      {
+        "contentId": "availability.dimension.safety.note",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "El gate de seguridad de PILOT está bloqueado; no hay evaluación de seguridad completada."
+      },
+      {
+        "contentId": "availability.dimension.safety.note",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "PILOT safety gate is blocked; no safety assessment is complete."
+      },
+      {
+        "contentId": "availability.dimension.operations",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Operaciones: preparación operativa y de soporte."
+      },
+      {
+        "contentId": "availability.dimension.operations",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Operations: operational and support readiness."
+      },
+      {
+        "contentId": "availability.status.launch",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "El lanzamiento comercial no está autorizado; no existe fecha de lanzamiento."
+      },
+      {
+        "contentId": "availability.status.launch",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The commercial launch is not authorised; no launch date exists."
+      },
+      {
+        "contentId": "availability.status.waitlist",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "No hay lista de espera, reserva ni preventa para ninguna familia o paquete."
+      },
+      {
+        "contentId": "availability.status.waitlist",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-CLAIMS",
+          "EV-MC16-FAMILIES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "There is no waiting list, reservation or pre-order for any family or bundle."
+      },
+      {
+        "contentId": "availability.status.gates",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Ninguna de las trece puertas de release está cerrada; no hay aprobación externa registrada."
+      },
+      {
+        "contentId": "availability.status.gates",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "None of the thirteen release gates is closed; no external approval is recorded."
+      },
+      {
+        "contentId": "availability.status.indexation",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC15-INDEXATION",
+          "EV-MC15-ROUTES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La landing permanece fuera de índice y sin metadatos públicos mientras no exista autorización."
+      },
+      {
+        "contentId": "availability.status.indexation",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC15-INDEXATION",
+          "EV-MC15-ROUTES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The landing remains out of the index and without public metadata while no authorisation exists."
+      },
+      {
+        "contentId": "availability.gate-note",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Trece puertas de release y cero cerradas: no se autoriza publicación ni operación comercial."
+      },
+      {
+        "contentId": "availability.gate-note",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Thirteen release gates, none closed: no publication and no commercial operation are authorised."
+      },
+      {
+        "contentId": "availability.classification-note",
+        "sectionId": "availability",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC14-CLAIMS",
+          "EV-MC04-BRAND"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Clasificación: borrador interno no aprobado; no es oferta ni comunicación comercial."
+      },
+      {
+        "contentId": "availability.classification-note",
+        "sectionId": "availability",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC18-IMPLEMENTATION",
+          "EV-MC14-CLAIMS",
+          "EV-MC04-BRAND"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Classification: unapproved internal draft; it is not an offer or a commercial communication."
+      },
+      {
+        "contentId": "closing.kicker",
+        "sectionId": "closing",
+        "locale": "es",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Cierre"
+      },
+      {
+        "contentId": "closing.kicker",
+        "sectionId": "closing",
+        "locale": "en",
+        "sourceType": "INTERNAL_DOCUMENT",
+        "copyClass": "NAVIGATIONAL",
+        "evidenceIds": [
+          "EV-MC17-HANDOFF"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Closing"
+      },
+      {
+        "contentId": "closing.heading",
+        "sectionId": "closing",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Una propuesta honesta de un sistema todavía en definición"
+      },
+      {
+        "contentId": "closing.heading",
+        "sectionId": "closing",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC05-PRODUCTS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "An honest proposal for a system still being defined"
+      },
+      {
+        "contentId": "closing.lead",
+        "sectionId": "closing",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "El ecosistema MAREA se define por partes y se publicará solo cuando cada parte esté autorizada."
+      },
+      {
+        "contentId": "closing.lead",
+        "sectionId": "closing",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The MAREA ecosystem is defined in parts and will be published only when each part is authorised."
+      },
+      {
+        "contentId": "closing.statement.foundation",
+        "sectionId": "closing",
+        "locale": "es",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La propuesta se apoya en nueve familias y seis conceptos de solución definidos internamente."
+      },
+      {
+        "contentId": "closing.statement.foundation",
+        "sectionId": "closing",
+        "locale": "en",
+        "sourceType": "CANONICAL_DOMAIN_DATA",
+        "copyClass": "INTERNAL_EVIDENCED",
+        "evidenceIds": [
+          "EV-MC16-FAMILIES",
+          "EV-MC16-BUNDLES"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "The proposal rests on nine families and six internally defined solution concepts."
+      },
+      {
+        "contentId": "closing.statement.verification",
+        "sectionId": "closing",
+        "locale": "es",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "La verificación será por partes: definición, ingeniería, licencias y conformidad antes de cualquier afirmación pública."
+      },
+      {
+        "contentId": "closing.statement.verification",
+        "sectionId": "closing",
+        "locale": "en",
+        "sourceType": "AUTHORED_DRAFT",
+        "copyClass": "PROPOSED_INTENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC11-HARDWARE"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Verification will proceed in parts: definition, engineering, licensing and conformity before any public statement."
+      },
+      {
+        "contentId": "closing.statement.gates",
+        "sectionId": "closing",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Mientras las puertas sigan abiertas, no hay disponibilidad comercial ni copia pública autorizada."
+      },
+      {
+        "contentId": "closing.statement.gates",
+        "sectionId": "closing",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC14-GATES",
+          "EV-MC14-CLAIMS"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "While the gates remain open, there is no commercial availability and no authorised public copy."
+      },
+      {
+        "contentId": "closing.restriction",
+        "sectionId": "closing",
+        "locale": "es",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC04-BRAND",
+          "EV-MC15-INDEXATION",
+          "EV-MC18-IMPLEMENTATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Uso restringido: vista interna no publicada, no indexable y sin autorización de marca ni de publicación."
+      },
+      {
+        "contentId": "closing.restriction",
+        "sectionId": "closing",
+        "locale": "en",
+        "sourceType": "RELEASE_GATE_RECORD",
+        "copyClass": "CONSTRAINT_STATEMENT",
+        "evidenceIds": [
+          "EV-MC04-BRAND",
+          "EV-MC15-INDEXATION",
+          "EV-MC18-IMPLEMENTATION"
+        ],
+        "publicationStatus": "INTERNAL_DRAFT_NOT_APPROVED",
+        "approvalStatus": "NOT_APPROVED",
+        "text": "Restricted use: internal unpublished preview, not indexable, with no brand or publication authorisation."
+      }
+    ]
+  }
+}

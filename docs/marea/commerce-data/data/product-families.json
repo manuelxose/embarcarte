@@ -1,0 +1,641 @@
+{
+  "contractId": "MC16-PRODUCT-FAMILIES",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "sourceRefs": [
+    "docs/marea/information-architecture/data/mc16-handoff-inputs.json",
+    "docs/marea/products/product-definitions.batch-01.json",
+    "docs/marea/products/product-definitions.batch-02.json",
+    "docs/marea/products/product-definitions.batch-03.json"
+  ],
+  "families": [
+    {
+      "familyId": "NAV",
+      "displayName": "MAREA NAV",
+      "productType": "SOFTWARE",
+      "intendedFunctionality": "Internally defined software family NAV; no public availability claim is made.",
+      "contentKey": "family:NAV",
+      "localizedContent": {
+        "es": {
+          "available": false,
+          "ref": null
+        },
+        "en": {
+          "available": false,
+          "ref": null
+        }
+      },
+      "sourceDocs": [
+        "docs/marea/products/product-definitions.batch-01.json#products.NAV",
+        "docs/marea/products/MAREA-NINE-PRODUCT-ECOSYSTEM.md"
+      ],
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyNav",
+      "editionIds": [
+        "NAV-ESSENTIAL",
+        "NAV-PRO"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-NAV",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "NOT_EVALUATED",
+        "operations": "NOT_READY"
+      }
+    },
+    {
+      "familyId": "HUB",
+      "displayName": "MAREA HUB",
+      "productType": "HARDWARE",
+      "intendedFunctionality": "Internally defined hardware family HUB; no public availability claim is made.",
+      "contentKey": "family:HUB",
+      "localizedContent": {
+        "es": {
+          "available": false,
+          "ref": null
+        },
+        "en": {
+          "available": false,
+          "ref": null
+        }
+      },
+      "sourceDocs": [
+        "docs/marea/products/product-definitions.batch-01.json#products.HUB",
+        "docs/marea/products/MAREA-NINE-PRODUCT-ECOSYSTEM.md"
+      ],
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyHub",
+      "editionIds": [
+        "HUB-STANDARD",
+        "HUB-PRO"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-HUB",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "NOT_EVALUATED",
+        "operations": "NOT_READY"
+      }
+    },
+    {
+      "familyId": "AIS",
+      "displayName": "MAREA AIS",
+      "productType": "HARDWARE",
+      "intendedFunctionality": "Internally defined hardware family AIS; no public availability claim is made.",
+      "contentKey": "family:AIS",
+      "localizedContent": {
+        "es": {
+          "available": false,
+          "ref": null
+        },
+        "en": {
+          "available": false,
+          "ref": null
+        }
+      },
+      "sourceDocs": [
+        "docs/marea/products/product-definitions.batch-01.json#products.AIS",
+        "docs/marea/products/MAREA-NINE-PRODUCT-ECOSYSTEM.md"
+      ],
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "RECEIVE_ONLY_NO_TRANSMISSION",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyAis",
+      "editionIds": [
+        "AIS-RECEIVER",
+        "AIS-CONNECTED"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-AIS",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "RECEIVE_ONLY_NO_TRANSMISSION",
+        "operations": "NOT_READY"
+      }
+    },
+    {
+      "familyId": "PILOT",
+      "displayName": "MAREA PILOT",
+      "productType": "HARDWARE",
+      "intendedFunctionality": "Internally defined hardware family PILOT; no public availability claim is made.",
+      "contentKey": "family:PILOT",
+      "localizedContent": {
+        "es": {
+          "available": false,
+          "ref": null
+        },
+        "en": {
+          "available": false,
+          "ref": null
+        }
+      },
+      "sourceDocs": [
+        "docs/marea/products/product-definitions.batch-02.json#products.PILOT",
+        "docs/marea/products/MAREA-NINE-PRODUCT-ECOSYSTEM.md"
+      ],
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "BLOCKED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyPilot",
+      "editionIds": [
+        "PILOT-COASTAL",
+        "PILOT-SAIL",
+        "PILOT-PRO"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-SAFETY-PILOT",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-PILOT",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "BLOCKED",
+        "operations": "NOT_READY"
+      }
+    },
+    {
+      "familyId": "SENSE",
+      "displayName": "MAREA SENSE",
+      "productType": "HARDWARE",
+      "intendedFunctionality": "Internally defined hardware family SENSE; no public availability claim is made.",
+      "contentKey": "family:SENSE",
+      "localizedContent": {
+        "es": {
+          "available": false,
+          "ref": null
+        },
+        "en": {
+          "available": false,
+          "ref": null
+        }
+      },
+      "sourceDocs": [
+        "docs/marea/products/product-definitions.batch-02.json#products.SENSE",
+        "docs/marea/products/MAREA-NINE-PRODUCT-ECOSYSTEM.md"
+      ],
+      "engineeringStatus": "PARTIALLY_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_ALARM_INDEPENDENT",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilySense",
+      "editionIds": [
+        "SENSE-WIND",
+        "SENSE-POWER",
+        "SENSE-BILGE",
+        "SENSE-TANKS",
+        "SENSE-ENV",
+        "SENSE-ESSENTIALS",
+        "SENSE-SAIL",
+        "SENSE-SYSTEMS"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-SENSE",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "LOCAL_ALARM_INDEPENDENT",
+        "operations": "NOT_READY"
+      }
+    },
+    {
+      "familyId": "WATCH",
+      "displayName": "MAREA WATCH",
+      "productType": "HARDWARE_SERVICE",
+      "intendedFunctionality": "Internally defined hardware_service family WATCH; no public availability claim is made.",
+      "contentKey": "family:WATCH",
+      "localizedContent": {
+        "es": {
+          "available": false,
+          "ref": null
+        },
+        "en": {
+          "available": false,
+          "ref": null
+        }
+      },
+      "sourceDocs": [
+        "docs/marea/products/product-definitions.batch-02.json#products.WATCH",
+        "docs/marea/products/MAREA-NINE-PRODUCT-ECOSYSTEM.md"
+      ],
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "LOCAL_SAFETY_INDEPENDENT",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyWatch",
+      "editionIds": [
+        "WATCH-CORE",
+        "WATCH-PLUS"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-WATCH",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "LOCAL_SAFETY_INDEPENDENT",
+        "operations": "NOT_READY"
+      }
+    },
+    {
+      "familyId": "DISPLAY",
+      "displayName": "MAREA DISPLAY",
+      "productType": "HARDWARE",
+      "intendedFunctionality": "Internally defined hardware family DISPLAY; no public availability claim is made.",
+      "contentKey": "family:DISPLAY",
+      "localizedContent": {
+        "es": {
+          "available": false,
+          "ref": null
+        },
+        "en": {
+          "available": false,
+          "ref": null
+        }
+      },
+      "sourceDocs": [
+        "docs/marea/products/product-definitions.batch-03.json#products.DISPLAY",
+        "docs/marea/products/MAREA-NINE-PRODUCT-ECOSYSTEM.md"
+      ],
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyDisplay",
+      "editionIds": [
+        "DISPLAY-7",
+        "DISPLAY-LARGE-CONDITIONAL"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-DISPLAY",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "NOT_EVALUATED",
+        "operations": "NOT_READY"
+      }
+    },
+    {
+      "familyId": "WEATHER",
+      "displayName": "MAREA WEATHER",
+      "productType": "SOFTWARE",
+      "intendedFunctionality": "Internally defined software family WEATHER; no public availability claim is made.",
+      "contentKey": "family:WEATHER",
+      "localizedContent": {
+        "es": {
+          "available": false,
+          "ref": null
+        },
+        "en": {
+          "available": false,
+          "ref": null
+        }
+      },
+      "sourceDocs": [
+        "docs/marea/products/product-definitions.batch-03.json#products.WEATHER",
+        "docs/marea/products/MAREA-NINE-PRODUCT-ECOSYSTEM.md"
+      ],
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyWeather",
+      "editionIds": [
+        "WEATHER-STANDARD",
+        "WEATHER-PRO"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-WEATHER",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "NOT_EVALUATED",
+        "operations": "NOT_READY"
+      }
+    },
+    {
+      "familyId": "FLEET",
+      "displayName": "MAREA FLEET",
+      "productType": "SAAS",
+      "intendedFunctionality": "Internally defined saas family FLEET; no public availability claim is made.",
+      "contentKey": "family:FLEET",
+      "localizedContent": {
+        "es": {
+          "available": false,
+          "ref": null
+        },
+        "en": {
+          "available": false,
+          "ref": null
+        }
+      },
+      "sourceDocs": [
+        "docs/marea/products/product-definitions.batch-03.json#products.FLEET",
+        "docs/marea/products/MAREA-NINE-PRODUCT-ECOSYSTEM.md"
+      ],
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyFleet",
+      "editionIds": [
+        "FLEET-START",
+        "FLEET-BUSINESS",
+        "FLEET-ENTERPRISE"
+      ],
+      "releaseGateDependencies": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-FLEET",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "NOT_EVALUATED",
+        "operations": "NOT_READY"
+      }
+    }
+  ]
+}

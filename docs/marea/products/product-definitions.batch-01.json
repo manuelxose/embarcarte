@@ -1,0 +1,2070 @@
+{
+  "contractId": "MC-05-PRODUCT-DEFINITIONS-BATCH-01",
+  "contractVersion": "1.0.0",
+  "status": "INTERNAL_PRODUCT_DEFINITION_CONTRACT",
+  "milestone": "MC-05",
+  "date": "2026-10-30",
+  "owner": "Product Governance and QA Engineer",
+  "notACommerceCatalog": true,
+  "notTheFutureCommerceDataModel": true,
+  "publicationState": "INTERNAL_ONLY",
+  "fieldEntryStatusMeaning": "COMPLETE means the field is fully specified in the source dossier and traceable to it. It does not mean that the capability is verified, certified, approved or available; evidence openness is carried separately by evidenceClass and readinessValue.",
+  "lifecycleDecision": "D-007",
+  "lifecycleAuthority": "docs/marea/execution/DECISION-LOG.md (D-007); docs/marea/COMMERCIAL-PORTFOLIO.md; docs/marea/products/README.md §3",
+  "lifecycleVocabulary": [
+    "CONCEPT",
+    "DEFINED",
+    "ENGINEERING_VERIFIED",
+    "REGULATORY_READY",
+    "OPERATIONS_READY",
+    "COMMERCIALLY_AVAILABLE",
+    "RETIRED"
+  ],
+  "lifecycleMapping": [
+    {
+      "proposed": "CONCEPT",
+      "binding": "CONCEPT"
+    },
+    {
+      "proposed": "DEFINED",
+      "binding": "DEFINED"
+    },
+    {
+      "proposed": "ENGINEERING",
+      "binding": "ENGINEERING_VERIFIED"
+    },
+    {
+      "proposed": "VALIDATION",
+      "binding": "ENGINEERING_VERIFIED"
+    },
+    {
+      "proposed": "COMPLIANCE_REVIEW",
+      "binding": "REGULATORY_READY"
+    },
+    {
+      "proposed": "SALES_APPROVED",
+      "binding": "OPERATIONS_READY"
+    },
+    {
+      "proposed": "RELEASED",
+      "binding": "COMMERCIALLY_AVAILABLE"
+    },
+    {
+      "proposed": "RETIRED",
+      "binding": "RETIRED"
+    }
+  ],
+  "readinessDimensions": {
+    "definition": [
+      "COMPLETE_TARGET_SPECIFICATION"
+    ],
+    "engineering": [
+      "NOT_VERIFIED",
+      "PARTIALLY_VERIFIED",
+      "ENGINEERING_VERIFIED"
+    ],
+    "licensing": [
+      "NOT_CLEARED",
+      "CONDITIONAL",
+      "CLEARED"
+    ],
+    "hardware": [
+      "NOT_SELECTED",
+      "DESIGN_IN_PROGRESS",
+      "PROTOTYPED",
+      "CERTIFIED",
+      "NOT_APPLICABLE_SOFTWARE_PRODUCT"
+    ],
+    "dataRights": [
+      "NOT_GRANTED",
+      "PARTIAL",
+      "GRANTED_PER_TERRITORY"
+    ],
+    "compliance": [
+      "NOT_STARTED",
+      "ASSESSMENT_PENDING",
+      "CONFORMITY_EVIDENCE_ON_FILE"
+    ],
+    "pricing": [
+      "HYPOTHESIS_UNAPPROVED",
+      "COSTED_UNAPPROVED",
+      "APPROVED"
+    ],
+    "brandPublication": [
+      "NOT_GRANTED",
+      "INTERNAL_ONLY_APPROVED",
+      "PUBLICATION_APPROVED"
+    ],
+    "availability": [
+      "NOT_FOR_SALE",
+      "PREORDER_NOT_AUTHORISED",
+      "FOR_SALE"
+    ]
+  },
+  "evidenceClasses": [
+    "VERIFIED_REPO",
+    "VERIFIED_EXTERNAL",
+    "ASSUMPTION",
+    "HYPOTHESIS",
+    "OPEN",
+    "BLOCKED"
+  ],
+  "globalRestrictions": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "sourceIpClearance": "NOT_CLEARED",
+    "commercialAvailability": "NOT_FOR_SALE",
+    "aisTransmissionOffered": false,
+    "nmea2000Certified": false,
+    "ecdiscClaimed": false,
+    "chartRightsGranted": false,
+    "imageGeneration": "BLOCKED"
+  },
+  "sourceDocuments": {
+    "conventions": "docs/marea/products/README.md",
+    "dossiers": {
+      "NAV": "docs/marea/products/MAREA-NAV-COMMERCIAL-SPEC.md",
+      "HUB": "docs/marea/products/MAREA-HUB-COMMERCIAL-SPEC.md",
+      "AIS": "docs/marea/products/MAREA-AIS-COMMERCIAL-SPEC.md"
+    },
+    "editions": "docs/marea/products/PRODUCT-EDITIONS-NAV-HUB-AIS.md",
+    "compatibility": "docs/marea/products/PRODUCT-COMPATIBILITY-NAV-HUB-AIS.md",
+    "pricing": "docs/marea/products/PRODUCT-PRICING-AND-CHANNEL-MODEL.md",
+    "journeys": "docs/marea/products/CUSTOMER-JOURNEYS-NAV-HUB-AIS.md",
+    "assets": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS.md",
+    "claimsPolicy": "docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md",
+    "blockers": "docs/marea/compliance/MC-02-BLOCKERS-AND-DECISIONS.md"
+  },
+  "assets": [
+    {
+      "assetId": "NAV-HERO-01",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#NAV-HERO-01",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "NAV-USE-02",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#NAV-USE-02",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "NAV-OVR-03",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#NAV-OVR-03",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "NAV-EDN-04",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#NAV-EDN-04",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "NAV-ECO-05",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#NAV-ECO-05",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "NAV-INS-06",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#NAV-INS-06",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "NAV-MOB-07",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#NAV-MOB-07",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "NAV-TMB-08",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#NAV-TMB-08",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "NAV-OG-09",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#NAV-OG-09",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "NAV-TEC-10",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#NAV-TEC-10",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "HUB-HERO-01",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#HUB-HERO-01",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "HUB-USE-02",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#HUB-USE-02",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "HUB-OVR-03",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#HUB-OVR-03",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "HUB-EDN-04",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#HUB-EDN-04",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "HUB-ECO-05",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#HUB-ECO-05",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "HUB-INS-06",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#HUB-INS-06",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "HUB-MOB-07",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#HUB-MOB-07",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "HUB-TMB-08",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#HUB-TMB-08",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "HUB-OG-09",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#HUB-OG-09",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "HUB-TEC-10",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#HUB-TEC-10",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "AIS-HERO-01",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#AIS-HERO-01",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "AIS-USE-02",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#AIS-USE-02",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "AIS-OVR-03",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#AIS-OVR-03",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "AIS-EDN-04",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#AIS-EDN-04",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "AIS-ECO-05",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#AIS-ECO-05",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "AIS-INS-06",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#AIS-INS-06",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "AIS-MOB-07",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#AIS-MOB-07",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "AIS-TMB-08",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#AIS-TMB-08",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "AIS-OG-09",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#AIS-OG-09",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    },
+    {
+      "assetId": "AIS-TEC-10",
+      "status": "CONCEPT",
+      "source": "PRODUCT-ASSET-REQUIREMENTS.md#AIS-TEC-10",
+      "note": "MC-05 planning identifier for a future visual; no image file exists and none may be generated while X-03 is BLOCKED."
+    }
+  ],
+  "products": [
+    {
+      "id": "NAV",
+      "displayName": "MAREA NAV",
+      "type": "SOFTWARE",
+      "lifecycleState": "DEFINED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "editions": [
+        {
+          "id": "NAV-ESSENTIAL",
+          "displayName": "MAREA NAV Essential",
+          "priceHypothesis": {
+            "amount": 99,
+            "currency": "EUR",
+            "vatBasis": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+            "period": "YEAR",
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05"
+            ]
+          },
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 §1.3 records the edition split as retained and still DEFINED; no MAREA edition is approved at MC-05 and publication remains conditional on the pricing and compatibility gates (X-05, D-01, P-01).",
+            "evidenceRefs": [
+              "MAREA-NAV-COMMERCIAL-SPEC.md#F06",
+              "PRODUCT-EDITIONS-NAV-HUB-AIS.md#1.3",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "NAV-PRO",
+          "displayName": "MAREA NAV Pro",
+          "priceHypothesis": {
+            "amount": 149,
+            "currency": "EUR",
+            "vatBasis": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+            "period": "YEAR",
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "D-01",
+              "P-01"
+            ]
+          },
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 §1.3 keeps the Pro split only if at least one verified live-data path exists before market; the connected capabilities are BLOCKED by D-01 and P-01 and no edition is approved at MC-05.",
+            "evidenceRefs": [
+              "MAREA-NAV-COMMERCIAL-SPEC.md#F06",
+              "PRODUCT-EDITIONS-NAV-HUB-AIS.md#1.3",
+              "MC-02:X-05",
+              "MC-02:D-01",
+              "MC-02:P-01"
+            ]
+          }
+        }
+      ],
+      "fields": {
+        "identity": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "MAREA NAV is the software navigation application of the MAREA family. It is intended to let a recreational sailing or motor-vessel skipper plan a route, navigate it with a chart view, record the passage and see the boat's own data where compatible equipment provides it, on a phone, tablet or desktop.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F01",
+            "MC-02:D-01",
+            "MC-02:P-01",
+            "MC-02:X-01",
+            "MC-02:H-04"
+          ],
+          "ownerFunction": "Product Management (NAV Product Director)",
+          "blockers": [
+            "D-01",
+            "P-01",
+            "X-01",
+            "H-04"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "customerSegments": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Primary: owners of recreational sailing and motor vessels, roughly 8–15 m, who cruise day and coastal waters in Galicia and northern Portugal, already have a boat with older or mixed electronics, and use a phone or tablet at the helm. Secondary: skippers planning multi-day coastal passages, sailing schools and small charter operators who want one shared logbook and one route library per vessel; and installers who specify or commission the boat-side equipment.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F02",
+            "MC-02:X-06",
+            "MC-02:X-05",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "X-05",
+            "P-10"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "customerProblems": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "The intended customer currently runs three or more disconnected experiences: a chart plotter for navigation, a separate weather application, instrument displays at the helm, and paper or notes for the log. Planning done at home is not portable to the boat; chart subscriptions are tied to one device; the boat's own wind, speed and depth data never reach the planning tool; freshness, coverage and source of data are unclear; and routes risk being lost if a service ends.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F03",
+            "MC-02:X-06",
+            "MC-02:D-01"
+          ],
+          "ownerFunction": "Product Management",
+          "blockers": [
+            "X-06",
+            "D-01"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "finalFunctionality": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The final product covers thirty capability domains, all described in the F04/A annex below: vessel and skipper profile; navigation home; licensed charts; geographic coverage; route planning; waypoints; route editing; route libraries; passage planning; saved destinations; GNSS positioning; heading, speed and course; instrument overlays; wind; depth where supported; AIS traffic visualisation; CPA/TCPA where valid data exists; route and weather overlays; tides and currents when licensed; forecast validity and source; legally supported offline regions; history and logbook; multi-device account access; import and export of the customer's own navigation records; data availability and freshness; missing-position and disconnected states; notifications; application updates; accessibility; and support and subscription lifecycle. Each domain is classified by layer — core software function, licensed data entitlement, optional connected instrument function, optional AIS receiver hardware, optional HUB integration, or optional WEATHER entitlement — so that no buyer mistakes a data licence or a third-party device for a MAREA NAV feature.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F04",
+            "MC-02:D-01",
+            "MC-02:D-06",
+            "MC-02:D-08",
+            "MC-02:D-10",
+            "MC-02:P-01",
+            "MC-02:P-10",
+            "MC-02:D-04",
+            "MC-02:D-05",
+            "MC-02:P-02",
+            "MC-02:P-03"
+          ],
+          "ownerFunction": "Engineering (Navigation Software) with Product Management",
+          "blockers": [
+            "D-01",
+            "D-06",
+            "D-08",
+            "D-10",
+            "P-01",
+            "P-10",
+            "D-04",
+            "D-05",
+            "P-02",
+            "P-03"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "PARTIALLY_VERIFIED"
+        },
+        "differentiation": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "The intended relevance versus alternatives is integration and ownership experience, not visual polish or a performance claim: one account and one vessel profile across planning, navigation and logbook; the customer's own instrument and AIS data inside the planning surface where compatible equipment exists; licensed-chart capability with the source and the licence stated openly; honest freshness, coverage and offline status; and exportable customer records that survive cancellation. A buyer should choose MAREA NAV because it uses the boat they already have and because EMBARCARTE can install, support and maintain the surrounding equipment, not because the product claims superior accuracy.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F05",
+            "MC-02:D-01",
+            "MC-02:X-06",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "D-01",
+            "X-06",
+            "P-10"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "editions": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Exactly two editions, no third tier, with boundaries aligned to the Lead-owned edition matrix in `PRODUCT-EDITIONS-NAV-HUB-AIS.md` §2. Essential is the planning-and-passage edition: navigation, route planning and editing, waypoints, route libraries, saved destinations, passage planning, logbook and export, licensed chart access within the customer's entitlement, basic AIS target display where a receive-only AIS source is present, and a basic licensed forecast view.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F06",
+            "MC-02:P-01",
+            "MC-02:D-01",
+            "MC-02:X-05",
+            "MC-02:D-04"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy and Pricing",
+          "blockers": [
+            "P-01",
+            "D-01",
+            "X-05",
+            "D-04"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "includedItems": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "For each edition the intended subscription includes: access to the edition's software capabilities on the supported platforms; one MAREA account with the vessel and skipper profile; the edition's entitlement (`nav.essential` or `nav.pro`); application updates and security fixes during the subscription; support under the published support policy; data export of the customer's own records; access to licensed chart, tide, current or forecast data only to the extent the customer's own entitlement or licence allows; and — in both editions, where a compatible receive-only AIS source is present — basic AIS target list and detail display. It does not include chart data by default, GNSS hardware, an AIS receiver, a HUB, a WEATHER subscription, installation labour, connectivity or any navigation certification.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F07",
+            "MC-02:D-01",
+            "MC-02:P-01",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "D-01",
+            "P-01",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "optionalAccessories": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The intended optional ecosystem next to NAV is: licensed chart/data entitlements for named regions; a MAREA WEATHER subscription (Standard or Pro) whose entitlement is linked to the same account without double billing; MAREA HUB for vessel-data integration; a MAREA AIS Receiver or AIS Connected for receive-only traffic; a compatible GNSS or instrument source supplied by the customer or an installer; a mount, power item or cable for the customer's tablet; and an installer service for retrofits. Each optional product is a separate commercial object with its own readiness and its own compatibility statement.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F08",
+            "MC-02:P-02",
+            "MC-02:P-03",
+            "MC-02:D-10",
+            "MC-02:H-04",
+            "MC-02:H-08"
+          ],
+          "ownerFunction": "Product Management with the HUB Product Director (integration owner for compatibility)",
+          "blockers": [
+            "P-02",
+            "P-03",
+            "D-10",
+            "H-04",
+            "H-08"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "integration": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The intended integration model is read-mostly and evidence-based. NAV consumes: GNSS position from the customer's device; vessel data published by compatible sources (Signal K where a tested per-device, per-firmware, per-direction result is recorded; NMEA 0183 sentences where the tested matrix says so; or a MAREA HUB that publishes a documented local interface); receive-only AIS targets from a compatible receiver; and licensed weather, tide and current data from the account's entitlements.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F09",
+            "MC-02:P-01",
+            "MC-02:P-02",
+            "MC-02:P-10",
+            "MC-02:H-04",
+            "MC-02:P-03"
+          ],
+          "ownerFunction": "Engineering (Integration) with the HUB Product Director as integration owner",
+          "blockers": [
+            "P-01",
+            "P-02",
+            "P-10",
+            "H-04",
+            "P-03"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "PARTIALLY_VERIFIED"
+        },
+        "professionalInstallation": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "No professional installation is required to use MAREA NAV on a phone or tablet: the customer installs the application and signs in. Professional work is offered or required only for the surrounding vessel integration — a HUB retrofit, AIS antenna and splitter work, instrument or GNSS wiring, and vessel-data commissioning — and is quoted separately per vessel, never sold as a product edition.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F10",
+            "MC-02:P-02",
+            "MC-02:P-03",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Support Operations with Channel Management",
+          "blockers": [
+            "P-02",
+            "P-03",
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "onboarding": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The intended first-use experience: create the account; choose an edition or start a time-limited trial; complete the vessel, skipper and unit profile; grant device location permission with a plain-language explanation; choose the chart source and entitlement that applies; download a licensed region where the licence permits; verify GNSS and any connected data source with a visible quality and freshness check; tour route planning, waypoints and logbook; and read the navigation, data-provenance and limitation pages with the approved disclaimers before the first passage. Education includes ES/EN help articles, a compatibility and installation sheet, an export guide and a cancellation guide.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F11",
+            "MC-02:P-10",
+            "MC-02:D-03",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "UX, Content and Localization with Engineering",
+          "blockers": [
+            "P-10",
+            "D-03",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "licensingSubscriptions": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "MAREA NAV is intended to be sold as an annual, prepaid, renewable subscription per account, with entitlements that follow the account across devices up to the edition limit. The customer buys a right to use the software and to reach the licensed data their own entitlement allows; the customer never acquires ownership of chart, weather or tide data, and no third-party data right is transferred beyond the provider's own end-user terms.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F12",
+            "MC-02:L-01",
+            "MC-02:L-02",
+            "MC-02:L-03",
+            "MC-02:X-02",
+            "MC-02:X-05",
+            "MC-02:D-04"
+          ],
+          "ownerFunction": "Commercial Strategy with Legal and Compliance",
+          "blockers": [
+            "L-01",
+            "L-02",
+            "L-03",
+            "X-02",
+            "X-05",
+            "D-04"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retailAndPartnerPricing": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Consumer hypothesis, VAT-inclusive retail where stated, both `HYPOTHESIS_UNAPPROVED` and not offers: MAREA NAV Essential EUR 99/year; MAREA NAV Pro EUR 149/year. The intended upgrade from Essential to Pro is a paid difference at renewal or a prorated top-up within the term, with the mechanics still `OPEN`.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F13",
+            "MC-02:X-05",
+            "MC-02:X-06",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Commercial Strategy and Pricing",
+          "blockers": [
+            "X-05",
+            "X-06",
+            "P-10"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "directAndOngoingCosts": {
+          "status": "COMPLETE",
+          "evidenceClass": "BLOCKED",
+          "summary": "The subscription cost model is a framework with named inputs, not a computed margin: chart data licence per region and term; licensed basemap or self-hosted tile operating cost; weather provider plan or self-hosted service cost; tide and current data terms; cloud hosting for accounts, entitlements, sync and support; payment and app-distribution fees; support staff time per active account; refunds and chargebacks; customer acquisition cost; subscription churn; application development and security updates; and amortised legal and compliance work. The contribution framework is: net revenue (VAT-excluded where applicable) minus the recurring data, hosting, support, payment, acquisition and compliance costs.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F14",
+            "MC-02:X-05",
+            "MC-02:D-04",
+            "MC-02:D-05"
+          ],
+          "ownerFunction": "Finance with Commercial Strategy",
+          "blockers": [
+            "X-05",
+            "D-04",
+            "D-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "channelEconomics": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The intended default channel is direct-to-consumer subscription through the EMBARCARTE site. The intended secondary channel is the installer and small-fleet partner: the partner assesses compatibility, commissions vessel integration and trains the customer; EMBARCARTE owns the software entitlement, the licensed data relationship, support and updates.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F15",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial Strategy with Channel Management",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "competitorComparison": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_EXTERNAL",
+          "summary": "Descriptive anchors only, checked on public pages on 2026-10-30, with no parity or superiority claim: Orca publishes Plus at EUR 49/year and Smart Navigation at EUR 149/year (confirmed in that provider's public help page); a Garmin Navionics Boating annual subscription and several other navigation applications exist at entry prices in the same order of magnitude, but their coverage region, entitlement scope and VAT basis differ and their exact European figures are not currently verified in this dossier. These listings establish that navigation and weather are crowded, price-sensitive subscription categories and that EUR 99–149/year must be justified by licensed and offline integration rather than presentation.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F16",
+            "MC-02:X-06",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "salesArguments": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Buyer benefits, phrased conditionally: one place for planning, navigating and logging; the boat's own data visible where compatible equipment exists; licensed-chart capability with source, coverage and freshness shown honestly; your records exportable, so the account does not hold your data hostage; an upgrade path to Pro when instruments, AIS or weather are added; and installation and support by EMBARCARTE where that service is actually deliverable. Objection handling: \"Do I have to replace my electronics?\" No — MAREA NAV is software and uses what the boat has, with compatibility published per device and version.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F17",
+            "MC-02:X-01",
+            "MC-02:X-06",
+            "MC-02:D-01"
+          ],
+          "ownerFunction": "Commercial Strategy with Brand and Compliance",
+          "blockers": [
+            "X-01",
+            "X-06",
+            "D-01"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "faq": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended pre-sales and post-sales answers. What do I get? Access to the edition's capabilities, one account, updates and support; not chart data, hardware or installation.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F18",
+            "MC-02:P-01",
+            "MC-02:D-01",
+            "MC-02:D-04",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Support Operations with Product Management",
+          "blockers": [
+            "P-01",
+            "D-01",
+            "D-04",
+            "P-10"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "warrantyAndSupport": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The intended support model: ES/EN help centre, in-product guidance, an incident intake with a recorded case, defect triage and fix, a published supported-version and update policy, security updates, and assisted data export on cancellation. The customer receives statutory consumer rights once a sale exists; the commercial warranty wording, seller legal identity, response expectations and end-of-support policy are not written, so no duration, response time, 24/7 coverage or service-level commitment may be stated.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F19",
+            "MC-02:X-02",
+            "MC-02:H-13",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Support Operations with Legal and Compliance",
+          "blockers": [
+            "X-02",
+            "H-13",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        },
+        "bilingualProductPageCopy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The customer-facing product copy in Spanish and English is not written in this dossier; it is the D8 deliverable `docs/marea/products/copy/nav.es.md` and `docs/marea/products/copy/nav.en.md`, owned by UX, Content and Localization, and both files are present in this checkout. The files are structured the same way in both locales: 24 numbered sections from SEO title to closing argument, followed by an \"Approved disclaimers (verbatim)\" / «Avisos aprobados (texto literal)» block and a DRAFT / INTERNAL / NOT FOR SALE status banner.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F20",
+            "MC-02:X-01",
+            "MC-02:D-01",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "UX, Content and Localization",
+          "blockers": [
+            "X-01",
+            "D-01",
+            "X-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "crossSells": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The intended ladder: Essential to Pro as the first upgrade; NAV plus WEATHER where the customer wants licensed forecast overlays, with entitlement sharing and no double billing; NAV plus a compatible HUB for vessel data; NAV plus a MAREA AIS receiver for receive-only traffic; and, at ecosystem level only, the MAREA START and MAREA CRUISE bundles as defined by MC-08. Cross-sell material must state which included product is not ready and must never imply that a bundle is purchasable.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F21",
+            "MC-02:P-02",
+            "MC-02:P-03",
+            "MC-02:X-05",
+            "MC-02:X-01"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "P-02",
+            "P-03",
+            "X-05",
+            "X-01"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "retentionStrategy": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Retention is intended to come from value that compounds with use, not from lock-in: onboarding that reaches a first saved route and a first logged passage; a logbook and route library the customer wants to keep and can always export; multi-device convenience; the Pro upgrade when the boat's equipment grows; and shared WEATHER entitlement without duplicate billing. Renewal reminders state the renewal date and the VAT-inclusive price; cancellation is available in-product; export is offered before expiry; and no dark pattern, fake urgency or \"lifetime\" promise is permitted.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F22",
+            "MC-02:X-05",
+            "MC-02:P-10",
+            "MC-02:D-04"
+          ],
+          "ownerFunction": "Commercial Strategy with Customer Success",
+          "blockers": [
+            "X-05",
+            "P-10",
+            "D-04"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "successMetrics": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "A metric framework with no approved targets. Commercial: evaluation-to-paid conversion, annual recurring revenue, average revenue per account, Essential-to-Pro upgrade rate.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F23",
+            "MC-02:X-05",
+            "MC-02:X-06",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Commercial Strategy with Product Analytics",
+          "blockers": [
+            "X-05",
+            "X-06",
+            "P-10"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "endToEndAcceptance": {
+          "status": "COMPLETE",
+          "evidenceClass": "BLOCKED",
+          "summary": "Acceptance of the complete product means evidence that a customer can complete the full journey on real data and real devices, not a document review. The required evidence set is the §8 scenarios executed under the MC-13-NAV gate: executed TypeScript and end-to-end suites; real chart conversion on real files; route planning and passage execution on real GNSS tracks; a licensed region loaded with its metadata and source; an offline region used with connectivity disabled; GNSS loss; stale AIS; chart entitlement expiry; WEATHER entitlement sharing; cancellation with export; multi-device access; application update; and accessibility.",
+          "evidenceRefs": [
+            "MAREA-NAV-COMMERCIAL-SPEC.md#F24",
+            "MC-02:P-10",
+            "MC-02:P-01",
+            "MC-02:D-01",
+            "MC-02:D-03",
+            "MC-02:D-04"
+          ],
+          "ownerFunction": "Quality Assurance with Engineering; independent verification by a reviewer who is not the author",
+          "blockers": [
+            "P-10",
+            "P-01",
+            "D-01",
+            "D-03",
+            "D-04"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "PARTIALLY_VERIFIED"
+        }
+      },
+      "copy": {
+        "es": "docs/marea/products/copy/nav.es.md",
+        "en": "docs/marea/products/copy/nav.en.md"
+      },
+      "assets": [
+        {
+          "assetId": "NAV-HERO-01"
+        },
+        {
+          "assetId": "NAV-USE-02"
+        },
+        {
+          "assetId": "NAV-OVR-03"
+        },
+        {
+          "assetId": "NAV-EDN-04"
+        },
+        {
+          "assetId": "NAV-ECO-05"
+        },
+        {
+          "assetId": "NAV-INS-06"
+        },
+        {
+          "assetId": "NAV-MOB-07"
+        },
+        {
+          "assetId": "NAV-TMB-08"
+        },
+        {
+          "assetId": "NAV-OG-09"
+        },
+        {
+          "assetId": "NAV-TEC-10"
+        }
+      ],
+      "mc02Blockers": [
+        "D-01",
+        "D-02",
+        "D-03",
+        "D-04",
+        "D-05",
+        "D-06",
+        "D-08",
+        "D-10",
+        "P-01",
+        "P-10",
+        "L-01",
+        "L-02",
+        "L-03",
+        "X-01",
+        "X-05"
+      ]
+    },
+    {
+      "id": "HUB",
+      "displayName": "MAREA HUB",
+      "type": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "editions": [
+        {
+          "id": "HUB-STANDARD",
+          "displayName": "MAREA HUB Standard",
+          "priceHypothesis": {
+            "amount": 349,
+            "currency": "EUR",
+            "vatBasis": "GENERALLY_VAT_INCLUSIVE_RETAIL_HYPOTHESIS",
+            "period": "ONE_OFF",
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "H-05",
+              "H-07"
+            ]
+          },
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 §1.3 retains the Standard split conditioned on a frozen, tested connectivity envelope (H-04, H-05); no hardware exists and no edition is approved at MC-05.",
+            "evidenceRefs": [
+              "MAREA-HUB-COMMERCIAL-SPEC.md#F06",
+              "PRODUCT-EDITIONS-NAV-HUB-AIS.md#1.3",
+              "MC-02:X-05",
+              "MC-02:H-05",
+              "MC-02:H-07"
+            ]
+          }
+        },
+        {
+          "id": "HUB-PRO",
+          "displayName": "MAREA HUB Pro",
+          "priceHypothesis": {
+            "amount": 499,
+            "currency": "EUR",
+            "vatBasis": "GENERALLY_VAT_INCLUSIVE_RETAIL_HYPOTHESIS",
+            "period": "ONE_OFF",
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "H-04",
+              "H-07"
+            ]
+          },
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 §1.3 retains the Pro split only if the additional validated connection families are tested (H-04, H-07); the additional envelope is TARGET evidence and no edition is approved at MC-05.",
+            "evidenceRefs": [
+              "MAREA-HUB-COMMERCIAL-SPEC.md#F06",
+              "PRODUCT-EDITIONS-NAV-HUB-AIS.md#1.3",
+              "MC-02:X-05",
+              "MC-02:H-04",
+              "MC-02:H-07"
+            ]
+          }
+        }
+      ],
+      "fields": {
+        "identity": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "MAREA HUB is the onboard data gateway and connectivity appliance of the MAREA family: one installed unit that gathers supported vessel data — GNSS position, compatible instrument data, Signal K streams, wind, depth where available, battery and utility status and receive-only AIS targets — normalises it into a single documented local vessel data interface, and serves that interface to MAREA NAV, MAREA DISPLAY, compatible instruments and the owner's own devices on the vessel network. Category: onboard data gateway/connectivity appliance (HARDWARE).",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F01",
+            "MC-02:H-05",
+            "MC-02:H-07",
+            "MC-02:P-02"
+          ],
+          "ownerFunction": "Product management (HUB)",
+          "blockers": [
+            "H-05",
+            "H-07",
+            "P-02"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "customerSegments": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Primary segment: owners of recreational sailing and motor vessels who are modernising or consolidating mixed-age onboard electronics, with the pilot go-to-market in Galicia and northern Portugal. Secondary segment: independent marine electronics installers and refit yards who need a repeatable, documented integration product.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F02",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Product marketing and commercial development",
+          "blockers": [
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "customerProblems": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_EXTERNAL",
+          "summary": "The problems MAREA HUB is designed to remove: (1) a fragmented helm in which plotter, wind instrument, AIS, battery monitor and phone each hold part of the picture; (2) legacy instruments that cannot feed a modern application and no reliable statement of what actually connects; (3) upgrade proposals that replace working equipment because integration is unknown; (4) installers improvising interfaces, so the owner cannot tell what was tested and what was hoped; (5) data trapped in vendor ecosystems with no local export or record; (6) battery, utility and navigation status in separate places; (7) the retrofit fear that nothing will work on this particular boat. Existing alternatives: single-purpose protocol gateways, replacing whole instrument systems, DIY single-board-computer plus Signal K builds, and dealer/brand instrument bundles.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F03",
+            "MC-02:X-06",
+            "MC-02:P-02"
+          ],
+          "ownerFunction": "Product management",
+          "blockers": [
+            "X-06",
+            "P-02"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "finalFunctionality": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "At end state a customer receives a fully installed, configured and supported onboard data gateway that: ingests the supported sources listed in its published compatibility matrix; normalises them into one documented units/timestamp/quality vocabulary; publishes that interface on the vessel network; presents a local dashboard, connection diagnostics, installation status, device identity, configuration, history retention and backup/recovery; operates offline by design; degrades visibly and safely when a source fails; updates with rollback; supports ownership transfer; and is delivered through an EMBARCARTE professional installation service with handover, training and support. The 28 mandatory final capability domains are enumerated in §4 and every one is part of the finished commercial offer.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F04",
+            "MC-02:H-04",
+            "MC-02:H-05",
+            "MC-02:P-02",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Product management (HUB) with engineering",
+          "blockers": [
+            "H-04",
+            "H-05",
+            "P-02",
+            "P-10"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "PARTIALLY_VERIFIED"
+        },
+        "differentiation": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "HUB is relevant because it combines four things narrow alternatives do not: (1) assessed consolidation of several source families into one documented local interface; (2) an installation and configuration service with a named responsibility boundary; (3) a compatibility matrix published per device, per firmware version and per read/write direction, with the limitations stated; (4) a local-first design in which the boat keeps working when the commercial website is not reachable. It is not differentiated by claiming superior accuracy, superiority to named competitors or effort-free connection behaviour.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F05",
+            "MC-02:P-02",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Product management and commercial strategy",
+          "blockers": [
+            "P-02",
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "editions": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Two editions, differing by a customer-value boundary rather than by \"more powerful\": MAREA HUB Standard addresses a single-vessel mixed legacy installation within a documented base interface/connection envelope; MAREA HUB Pro extends the validated interface and connection envelope, increases integration capacity for denser or more varied equipment sets, and adds configuration and diagnostics depth plus installer tooling and support depth. The exact boundary is a product-engineering requirement that must be frozen after hardware design and physical tests; no port count, protocol list, radio feature or processor specification is invented here.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F06",
+            "MC-02:H-05",
+            "MC-02:H-07",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product management (HUB)",
+          "blockers": [
+            "H-05",
+            "H-07",
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "includedItems": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Intended included content per edition: the MAREA HUB appliance; the mounting and power accessory items specified for that SKU (exact item list `OPEN` until the BOM is frozen); the connection and setup guide; the compatibility assessment for the purchased configuration; the licence to use the appliance's on-device software and local services for the published support window; a defined support entitlement; and professional installation only when the configuration is purchased as professionally installed. Intended exclusions, stated before purchase: the vessel network backbone, unrelated sensors, vendor-specific licensed cabling beyond the documented adapter list, third-party chart or weather licences, MAREA PILOT or any steering hardware, installation labour when self-installed, and any compatibility that is not published in the matrix.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F07",
+            "MC-02:H-05",
+            "MC-02:H-07",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product management with hardware engineering",
+          "blockers": [
+            "H-05",
+            "H-07",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_SELECTED"
+        },
+        "optionalAccessories": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Intended optional items, always described by function and never given an invented MAREA product name: documented adapter and cabling items required by specific installations; network expansion items; power accessory items; an external GNSS antenna where the installation requires one; MAREA SENSE sensor modules (wind, battery, bilge or other verified signals); the receive-only MAREA AIS product where traffic awareness is bought; and service items such as professional installation, extended support or a later edition upgrade. Every optional item is only compatible within the tested matrix.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F08",
+            "MC-02:H-07",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product management with procurement",
+          "blockers": [
+            "H-07",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_SELECTED"
+        },
+        "integration": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Integration is governed by a published matrix, not by protocol names. The intended supported inputs are: documented NMEA 0183 sentence inputs over supported serial/USB paths (sentence parsing only; parsing is not conformance to the NMEA 0183 standard); Signal K streams from supported sources, path by path and direction by direction; GNSS position/time/course/speed from a supported receiver; wind, depth where available, and battery/utility data from supported sources; and receive-only AIS targets from a compatible receive-only receiver.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F09",
+            "MC-02:H-04",
+            "MC-02:H-02",
+            "MC-02:P-02",
+            "MC-02:S-06",
+            "MC-02:D-09"
+          ],
+          "ownerFunction": "Integration owner (HUB Product Director) with engineering",
+          "blockers": [
+            "H-04",
+            "H-02",
+            "P-02",
+            "S-06",
+            "D-09"
+          ],
+          "readinessDimension": "dataRights",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "professionalInstallation": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Professional installation is the intended route for every configuration outside a documented low-risk self-install set. The finished service runs from a pre-sale vessel questionnaire through equipment inventory, compatibility assessment, written installation proposal, required-materials list, scheduled installation, configuration, function checks, customer handover, user training, support and warranty responsibility, and later upgrades.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F10",
+            "MC-02:P-02",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Service operations with the installer network",
+          "blockers": [
+            "P-02",
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "onboarding": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The first-use experience is a guided local configuration, not a manual and a hope. Delivery sequence: the compatibility assessment is offered before purchase; on power-up the appliance presents a local setup path that confirms network join, detects and lists sources, asks the owner or installer to label each source and vessel, confirms time and position, offers dashboard presets, and writes a configuration snapshot before leaving setup.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F11",
+            "MC-02:P-02",
+            "MC-02:H-07"
+          ],
+          "ownerFunction": "UX and content with support engineering",
+          "blockers": [
+            "P-02",
+            "H-07"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "licensingSubscriptions": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "MAREA HUB is intended as a perpetual hardware purchase, under commercial terms that are not yet approved: owning the unit includes the licence to use its on-device software and local services, with security and corrective updates inside the published support window. No mandatory cloud subscription is required for local data functions, and no entitlement check or licence expiry may disable ingest, normalisation, local dashboard, diagnostics, configuration, history or recovery.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F12",
+            "MC-02:L-01",
+            "MC-02:L-02",
+            "MC-02:L-03",
+            "MC-02:S-06",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product management with legal",
+          "blockers": [
+            "L-01",
+            "L-02",
+            "L-03",
+            "S-06",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retailAndPartnerPricing": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Consumer price hypotheses, recorded for internal planning only and published nowhere: MAREA HUB Standard EUR 349, MAREA HUB Pro EUR 499, VAT-inclusive retail hypothesis, both `HYPOTHESIS_UNAPPROVED` and subject to real BOM and conformity cost. They are not \"from\" prices, not launch or limited offers, not discounts and not orderable.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F13",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Commercial strategy and pricing with finance",
+          "blockers": [
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "directAndOngoingCosts": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "A costing framework with named inputs only, because no figure exists: manufacturing, assembly, factory test, enclosure and labelling; conformity programme (EMC/RED/GPSR/RoHS/WEEE/CRA technical file, accredited laboratory, notified-body work where required); freight, packaging and fulfilment; payment fees; warranty accrual; returns allowance; technical and installer support; firmware maintenance including security and vulnerability handling; documentation, localisation and post-sale communication; stock financing; channel discount or installer commission. Recurring connectivity or data cost applies only if a SKU ever includes such a service, which is `OPEN`.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F14",
+            "MC-02:H-07",
+            "MC-02:H-13",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Finance and procurement with product management",
+          "blockers": [
+            "H-07",
+            "H-13",
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "channelEconomics": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Intended channel model: direct sale by EMBARCARTE plus authorised professional installers and refit yards, starting in Galicia and northern Portugal. Responsibility split: EMBARCARTE owns the product definition, compatibility-matrix authority, warranty and support policy; the installer owns the vessel survey, mechanical and electrical work, configuration, function checks, handover and first-line support, and is accountable for workmanship.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F15",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial development with service operations",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "competitorComparison": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_EXTERNAL",
+          "summary": "Verifiable indirect comparables, used as context and never as a superiority claim: single-purpose gateways establish a price band for narrower functionality (published retailer examples: Digital Yacht iKonvert at EUR 240 and a Yacht Devices YDWG-02N WiFi NMEA 2000 gateway at EUR 205.84 net of VAT / EUR 236.55 recommended retail price (retailer listing, 2026-10-30; the earlier EUR 249.07 anchor could not be reproduced)); replacing an instrument ecosystem establishes the \"replace everything\" alternative; a DIY single-board-computer plus Signal K build establishes the low-cost self-build alternative. MAREA HUB is not compared on unmeasured performance, accuracy or reliability.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F16",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial strategy",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "salesArguments": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Honest buyer arguments and the objection handling that goes with them. Arguments: one place for the data the boat already has, installed and supported; what connects is published before purchase, and what does not connect is said clearly; the local boat keeps working without the commercial website; start with a gateway and add navigation, traffic awareness or sensors later.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F17",
+            "MC-02:H-04",
+            "MC-02:P-02",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Product marketing with sales enablement",
+          "blockers": [
+            "H-04",
+            "P-02",
+            "X-06"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "faq": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The pre-sale and post-sale questions this product must answer truthfully. What is in the box?",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F18",
+            "MC-02:H-04",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product management with content and support",
+          "blockers": [
+            "H-04",
+            "X-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "warrantyAndSupport": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended after-sales position: the statutory consumer guarantee under Spanish and EU law, plus a contractual warranty whose duration and conditions are not yet defined and must be written before sale. Support covers compatibility questions, interpretation of diagnostics, update assistance and the fault-return process.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F19",
+            "MC-02:X-02",
+            "MC-02:H-13",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Customer support with legal",
+          "blockers": [
+            "X-02",
+            "H-13",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "bilingualProductPageCopy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The customer-facing Spanish and English copy is owned by the UX, Content and Localization Specialist and lives in `docs/marea/products/copy/hub.es.md` and `docs/marea/products/copy/hub.en.md` (deliverable D8). This dossier does not duplicate that copy; it fixes the facts the copy may use and the claims it may not make.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F20",
+            "MC-02:X-01",
+            "MC-02:H-04"
+          ],
+          "ownerFunction": "UX, content and localisation (copy) with product review (facts)",
+          "blockers": [
+            "X-01",
+            "H-04"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "crossSells": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Intended commercial path: HUB as the entry appliance, then MAREA NAV for the navigation experience (HUB is never required for NAV's standalone GNSS/chart use), receive-only MAREA AIS for traffic awareness, MAREA SENSE modules for wind/battery/bilge monitoring, MAREA DISPLAY for a fixed helm view, MAREA WATCH where shore monitoring exists, and MAREA WEATHER/NAV subscriptions as separate entitlements without double billing. Bundle content and pricing belong to MC-08 and are not decided here; no bundle price exists.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F21",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Commercial product management",
+          "blockers": [
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "retentionStrategy": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Retention is earned by the installed base, not by lock-in: a growing published compatibility matrix, a maintained firmware/update cadence, responsive support, local records the owner values, installer loyalty and a clear upgrade path into NAV, AIS, SENSE, DISPLAY and WATCH. The owner can export the vessel configuration and records and leave without losing essential local function.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F22",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Customer success with product management",
+          "blockers": [
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "successMetrics": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Metrics to be defined and measured, with no invented targets: post-install activation rate; share of assessed devices that connect as published; unsupported-device triage rate; return and RMA rate; warranty incidence; measured installation hours per configuration (only once measured); support tickets per hundred units; compatibility-matrix coverage and freshness; update uptake and recovery success; ownership-transfer completion; cross-sell attachment into NAV, AIS, SENSE and DISPLAY; owner satisfaction; and contribution per unit only after real BOM, quote and channel data exist. Baselines and targets are `OPEN`; stating a number now would be invented.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F23",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Product operations with finance",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "endToEndAcceptance": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Acceptance means the complete product demonstrably works end to end: the eight acceptance scenarios in §9 are executed and recorded; the published compatibility matrix is backed by device-level tests with firmware versions and direction; electrical, thermal, ingress and recovery behaviour is measured on a physical article; EMC/RED/GPSR/RoHS/WEEE/CRA evidence exists for the actual SKU; the installer chain has been validated on real vessels; the update and backup/restore paths have been exercised; and a real owner has completed handover and support. Documentation alone, unit tests or simulation do not constitute acceptance.",
+          "evidenceRefs": [
+            "MAREA-HUB-COMMERCIAL-SPEC.md#F24",
+            "MC-02:H-02",
+            "MC-02:H-04",
+            "MC-02:H-05",
+            "MC-02:H-06",
+            "MC-02:H-07",
+            "MC-02:H-13",
+            "MC-02:P-02",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Quality assurance with engineering and compliance",
+          "blockers": [
+            "H-02",
+            "H-04",
+            "H-05",
+            "H-06",
+            "H-07",
+            "H-13",
+            "P-02",
+            "P-10"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        }
+      },
+      "copy": {
+        "es": "docs/marea/products/copy/hub.es.md",
+        "en": "docs/marea/products/copy/hub.en.md"
+      },
+      "assets": [
+        {
+          "assetId": "HUB-HERO-01"
+        },
+        {
+          "assetId": "HUB-USE-02"
+        },
+        {
+          "assetId": "HUB-OVR-03"
+        },
+        {
+          "assetId": "HUB-EDN-04"
+        },
+        {
+          "assetId": "HUB-ECO-05"
+        },
+        {
+          "assetId": "HUB-INS-06"
+        },
+        {
+          "assetId": "HUB-MOB-07"
+        },
+        {
+          "assetId": "HUB-TMB-08"
+        },
+        {
+          "assetId": "HUB-OG-09"
+        },
+        {
+          "assetId": "HUB-TEC-10"
+        }
+      ],
+      "mc02Blockers": [
+        "H-02",
+        "H-04",
+        "H-05",
+        "H-06",
+        "H-07",
+        "H-13",
+        "P-02",
+        "P-10",
+        "S-06",
+        "X-01",
+        "X-05"
+      ]
+    },
+    {
+      "id": "AIS",
+      "displayName": "MAREA AIS",
+      "type": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "editions": [
+        {
+          "id": "AIS-RECEIVER",
+          "displayName": "MAREA AIS Receiver",
+          "priceHypothesis": {
+            "amount": 249,
+            "currency": "EUR",
+            "vatBasis": "GENERALLY_VAT_INCLUSIVE_RETAIL_HYPOTHESIS",
+            "period": "ONE_OFF",
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "H-08",
+              "H-05"
+            ]
+          },
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 §1.3 records the Receiver as the base receive-only package, conditioned on receiver hardware selection and RF conformity evidence (H-08, H-05); no edition is approved at MC-05.",
+            "evidenceRefs": [
+              "MAREA-AIS-COMMERCIAL-SPEC.md#F06",
+              "PRODUCT-EDITIONS-NAV-HUB-AIS.md#1.3",
+              "MC-02:X-05",
+              "MC-02:H-08",
+              "MC-02:H-05"
+            ]
+          }
+        },
+        {
+          "id": "AIS-CONNECTED",
+          "displayName": "MAREA AIS Connected",
+          "priceHypothesis": {
+            "amount": 399,
+            "currency": "EUR",
+            "vatBasis": "GENERALLY_VAT_INCLUSIVE_RETAIL_HYPOTHESIS",
+            "period": "ONE_OFF",
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "H-08",
+              "H-05",
+              "P-02"
+            ]
+          },
+          "editionVerdict": {
+            "status": "CONDITIONAL",
+            "publicationConditional": true,
+            "verdict": "NOT_YET_JUSTIFIED",
+            "rationale": "MAREA-AIS-COMMERCIAL-SPEC.md §3 records the Receiver vs Connected customer-value verdict as CONDITIONAL / not yet justified: Connected may only ship as a separate edition if the frozen hardware design evidences richer local networking and diagnostics; otherwise the product collapses to one SKU plus an optional accessory. No edition is approved at MC-05.",
+            "evidenceRefs": [
+              "MAREA-AIS-COMMERCIAL-SPEC.md#F06",
+              "PRODUCT-EDITIONS-NAV-HUB-AIS.md#1.3",
+              "MC-02:X-05",
+              "MC-02:H-08",
+              "MC-02:H-05",
+              "MC-02:P-02"
+            ]
+          }
+        }
+      ],
+      "fields": {
+        "identity": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "MAREA AIS is the MAREA hardware product line's **receive-only** VHF AIS receiver package: an on-board receiver that listens to AIS VHF broadcasts and makes received vessel traffic available to compatible on-board systems. It is not a transponder, does not transmit the vessel's identity or position, is not a DSC device, is not a collision-avoidance system and is not a navigation system.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F01",
+            "MC-02:X-01",
+            "MC-02:H-08"
+          ],
+          "ownerFunction": "Product (AIS Product Director) with Brand",
+          "blockers": [
+            "X-01",
+            "H-08"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "customerSegments": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Primary segment: recreational sailing and motor-cruiser owners on coastal and day passages who already carry a chartplotter, tablet or laptop and have no AIS reception. Secondary: owners refitting older electronics, and boatyards/marine electricians who specify and install.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F02",
+            "MC-02:X-06",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product with Market Research",
+          "blockers": [
+            "X-06",
+            "X-05"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "customerProblems": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_EXTERNAL",
+          "summary": "The problems are: (1) hidden traffic — vessels sharing the water that the crew does not see because there is no traffic information at the helm; AIS reception adds information only about vessels that transmit AIS; (2) older electronics — installed chartplotters and instruments often have no AIS input, and replacing them is expensive; (3) fragmented data — traffic, position and instrument data sit on separate screens. Existing alternatives: an integrated chartplotter with AIS input (full replacement), a standalone receive-only AIS receiver box from an established marine brand, a class A/B AIS transponder (a different product that transmits, with different licensing and installation consequences, excluded here), or a tablet/phone application that still requires AIS hardware to provide data.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F03",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Product",
+          "blockers": [
+            "X-06"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "finalFunctionality": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The complete end-state product is a receive-only AIS receiver that listens to AIS VHF broadcasts through a connected VHF antenna, decodes them into vessel identity and movement information, maintains per-target state with message age and source, presents target lists and a traffic view, and publishes traffic data plus receiver health to compatible consumers (MAREA NAV, MAREA HUB, compatible third-party systems). It displays proximity values (CPA/TCPA) only when the required own-vessel inputs and a validated computation path exist; otherwise it states that they are unavailable instead of estimating.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F04",
+            "MC-02:H-05",
+            "MC-02:H-08",
+            "MC-02:P-03",
+            "MC-02:S-01",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Product with Hardware Engineering, Firmware and Integration (HUB owner)",
+          "blockers": [
+            "H-05",
+            "H-08",
+            "P-03",
+            "S-01",
+            "P-10"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "differentiation": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_EXTERNAL",
+          "summary": "Differentiation rests on four honest, checkable ideas rather than performance claims: (1) a receive-only receiver designed from the start to feed the MAREA data layer instead of replacing a chartplotter; (2) transparent target state — source, age, stale and lost — so the customer can judge what is on screen; (3) two editions in which Connected adds documented local networking and diagnostics, not a label; (4) an entry-price hypothesis below the published benchmark listings, which is a positioning hypothesis and not proof of margin. MAREA AIS does not compete with transponders, does not claim superior sensitivity, range or update rate, and no comparative performance claim exists.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F05",
+            "MC-02:H-08",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Product with Commercial Strategy",
+          "blockers": [
+            "H-08",
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "editions": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Two editions: MAREA AIS Receiver (`AIS-RECEIVER`, hypothesis EUR 249) with a basic documented compatible local output, and MAREA AIS Connected (`AIS-CONNECTED`, hypothesis EUR 399) with documented richer local networking, diagnostics and integration. Connected must deliver a verifiable customer benefit over Receiver (at least documented networking for more than one local consumer where the hardware supports it, and diagnostics the Receiver does not expose); it may not be a label or a software toggle.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F06",
+            "MC-02:H-08",
+            "MC-02:H-05",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product with Hardware Engineering and Commercial Strategy",
+          "blockers": [
+            "H-08",
+            "H-05",
+            "X-05"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "includedItems": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Both editions are intended to include the receiver unit, a documented power lead, a quick-start guide, a mounting solution appropriate to the chosen enclosure and a support registration path. Neither edition includes the AIS VHF antenna, a VHF splitter, mast coax and connectors, professional installation, MAREA NAV or MAREA HUB.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F07",
+            "MC-02:H-05",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product with Hardware Engineering and Supply",
+          "blockers": [
+            "H-05",
+            "X-05"
+          ],
+          "readinessDimension": "hardware",
+          "readinessValue": "NOT_SELECTED"
+        },
+        "optionalAccessories": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Optional, separately priced and separately stocked: a dedicated AIS VHF antenna; a VHF splitter for sharing an existing antenna; mast coax, connectors and mounting hardware; longer local data cabling; MAREA HUB; MAREA NAV subscription; professional installation and commissioning. No accessory price, stock or availability is stated and no accessory is bundled free.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F08",
+            "MC-02:X-05",
+            "MC-02:H-08"
+          ],
+          "ownerFunction": "Product with Commercial and Operations",
+          "blockers": [
+            "X-05",
+            "H-08"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "integration": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "MAREA AIS is designed as a data source inside the MAREA ecosystem: MAREA NAV is the intended primary visualisation surface, MAREA HUB the intended local aggregator, and compatible third-party systems may consume the same local output. Intended protocols are standard AIS NMEA 0183 `!AIVDM` sentences over a documented local transport and a Signal K path where tested.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F09",
+            "MC-02:P-03",
+            "MC-02:P-10",
+            "MC-02:H-04"
+          ],
+          "ownerFunction": "Integration (HUB Product Director) with Product and Engineering",
+          "blockers": [
+            "P-03",
+            "P-10",
+            "H-04"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "professionalInstallation": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Professional installation is expected for most retrofits because antenna placement, splitter installation, mast coax, RF connectors and power routing determine both reception quality and electrical safety. Self-install is permitted only for a low-risk configuration defined in support documentation, which does not exist yet.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F10",
+            "MC-02:H-08",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Service Operations with Product",
+          "blockers": [
+            "H-08",
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "onboarding": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "First use must be safe and honest: mount the receiver, connect antenna or splitter and fused power, connect the local output, select the AIS input on NAV/HUB or compatible equipment, confirm the status shows listening with recent messages, see a target list with ages, and read the receive-only disclaimer before relying on the display. Onboarding must explicitly teach stale and lost target states and the fact that vessels not transmitting AIS are invisible.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F11",
+            "MC-02:P-10",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "UX, Content and Localization with Support",
+          "blockers": [
+            "P-10",
+            "X-06"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "licensingSubscriptions": {
+          "status": "COMPLETE",
+          "evidenceClass": "BLOCKED",
+          "summary": "The customer buys hardware; no subscription is intended for AIS reception itself. Software licensing is unresolved: the external GPL-3.0 decoder (AIS-catcher) cannot be shipped until DEC-04 is decided (GPL-compliant distribution with source offer and notices, a replacement permissively licensed decoder, or user-installed with documented separation), so no licence terms, update entitlement or source-offer position can be stated.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F12",
+            "MC-02:S-01",
+            "MC-02:P-03",
+            "MC-02:D-09"
+          ],
+          "ownerFunction": "Engineering with Counsel and Product",
+          "blockers": [
+            "S-01",
+            "P-03",
+            "D-09"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retailAndPartnerPricing": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Price hypotheses, not offers: MAREA AIS Receiver EUR 249 and MAREA AIS Connected EUR 399. Both are retail hypotheses awaiting written approval; VAT treatment, territory (initially ES/PT) and the exact included configuration at each price must be fixed by an approved price list after bottom-up costing.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F13",
+            "MC-02:X-05",
+            "MC-02:H-08"
+          ],
+          "ownerFunction": "Commercial Strategy and Pricing with Product",
+          "blockers": [
+            "X-05",
+            "H-08"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "directAndOngoingCosts": {
+          "status": "COMPLETE",
+          "evidenceClass": "BLOCKED",
+          "summary": "A framework with named inputs only; no cost, margin or contribution figure is asserted. Inputs: receiver BOM and assembly; enclosure, harness and packaging; factory test and RF/EMC pre-scan; RED/EMC conformity assessment and technical file; GPSR risk analysis and technical documentation; RoHS material declarations; WEEE registration and take-back; CRA secure-update and vulnerability handling; GPL-3.0 compliance (source bundle/offer or replacement decoder); documentation and localisation; fulfilment and shipping; payment fees; warranty accrual and returns reserve; installer support and RMA logistics; antenna/splitter pass-through if any SKU ever bundles them.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F14",
+            "MC-02:X-05",
+            "MC-02:H-08"
+          ],
+          "ownerFunction": "Finance and Procurement with Product",
+          "blockers": [
+            "X-05",
+            "H-08"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "channelEconomics": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "No distributor, installer or marketplace agreement exists. The intended channel is installer-led (refit yards and marine electricians) for antenna, splitter, installation and commissioning, with a possible direct online purchase of the Receiver edition only after operations readiness.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F15",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial Strategy and Channel",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "competitorComparison": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_EXTERNAL",
+          "summary": "The direct alternatives are standalone receive-only AIS receiver boxes and AIS-capable chartplotters. Class A/B AIS transponders are a different product category because they transmit, and they must not be compared with a receive-only receiver as equivalent.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F16",
+            "MC-02:H-08",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Commercial Strategy with Product",
+          "blockers": [
+            "H-08",
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "salesArguments": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Approved-direction arguments, all conditional on evidence before publication: \"Add traffic awareness to the equipment you already own.\" \"Receive-only by design: you see what other vessels broadcast; you never transmit.\" \"Targets show their age and source, so you can judge what you see.\" \"Feeds MAREA NAV and MAREA HUB where the compatibility matrix says so.\" \"Two editions: a straightforward receiver, and a Connected edition with documented networking and diagnostics.\" Objection handling must state plainly that antenna, splitter and installation are extra; that not every vessel transmits AIS; that the product does not prevent collisions and does not replace watchkeeping; that no range figure is promised; and that the price is a hypothesis until approved.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F17",
+            "MC-02:X-01",
+            "MC-02:H-08",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product with Marketing and Brand",
+          "blockers": [
+            "X-01",
+            "H-08",
+            "X-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "faq": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Twelve intended pre- and post-sales questions, answered truthfully: transmit, completeness, collision avoidance, antenna, NAV/HUB dependency, connectivity, range, CPA/TCPA, third-party compatibility, stale targets, subscription and warranty. All answers are target wording pending evidence; the full list is in the table below this block.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F18",
+            "MC-02:X-02",
+            "MC-02:H-08"
+          ],
+          "ownerFunction": "Support with Product",
+          "blockers": [
+            "X-02",
+            "H-08"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "warrantyAndSupport": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Once sold, the statutory consumer guarantee under Spanish and EU consumer law applies and cannot be excluded. The contractual warranty duration, coverage (unit, excluded antenna, water damage, installation faults), spare parts, repair/replacement route and support response are undefined and must not be stated until approved.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F19",
+            "MC-02:X-02",
+            "MC-02:S-01"
+          ],
+          "ownerFunction": "Support and Legal with Product",
+          "blockers": [
+            "X-02",
+            "S-01"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "bilingualProductPageCopy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The complete Spanish and English customer-facing drafts are specified at `docs/marea/products/copy/ais.es.md` and `docs/marea/products/copy/ais.en.md`, owned by UX, Content and Localization (deliverable D8); this dossier does not duplicate them. Each must state receive-only operation, excluded transmission and DSC, antenna/splitter/installation exclusions, NAV/HUB separation, limitations, and must carry the AIS receive-only disclaimer and the navigation/instruments disclaimer verbatim; both are internal draft copy and must never be published while the gates are open.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F20",
+            "MC-02:X-01",
+            "MC-02:H-08"
+          ],
+          "ownerFunction": "UX, Content and Localization",
+          "blockers": [
+            "X-01",
+            "H-08"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "crossSells": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "Complementary products: MAREA NAV (visualisation, AIS overlay and CPA/TCPA where supported), MAREA HUB (local aggregation and multi-consumer distribution), antenna and splitter accessories, and professional installation. The MAREA CRUISE bundle (NAV + HUB + receive-only AIS + DISPLAY, hypothesis EUR 1,399) is ecosystem context only; bundle contents, pricing and publication are governed by MC-08 and are not decided here.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F21",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product with Commercial Strategy",
+          "blockers": [
+            "X-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "retentionStrategy": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Retention is product-led, not subscription-locked: firmware and diagnostic improvements within a defined support period, documentation and compatibility-matrix updates, a working service/RMA experience, and honest cross-sell into NAV or HUB only where the customer needs them. No recurring fee is assumed for reception; if a future service is added it must be described exactly and never as \"free forever\".",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F22",
+            "MC-02:X-02",
+            "MC-02:H-06"
+          ],
+          "ownerFunction": "Support with Product",
+          "blockers": [
+            "X-02",
+            "H-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "successMetrics": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Metrics to be instrumented only with real data; no targets or baselines are asserted. Commercial: units sold, gross contribution per unit after the named costs of F14, return rate and channel mix.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F23",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Product Analytics with Commercial",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "definition",
+          "readinessValue": "COMPLETE_TARGET_SPECIFICATION"
+        },
+        "endToEndAcceptance": {
+          "status": "COMPLETE",
+          "evidenceClass": "BLOCKED",
+          "summary": "Acceptance is defined by the nine scenarios in §7 plus physical and integration evidence. The overall status is NOT_EXECUTED: no receiver hardware exists, no RF or EMC test exists, no installation or on-water trial exists and no NAV/HUB integration test exists, so no scenario can be recorded as passed.",
+          "evidenceRefs": [
+            "MAREA-AIS-COMMERCIAL-SPEC.md#F24",
+            "MC-02:H-05",
+            "MC-02:H-06",
+            "MC-02:H-08",
+            "MC-02:P-03",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Product with Engineering, Compliance and Quality Gate",
+          "blockers": [
+            "H-05",
+            "H-06",
+            "H-08",
+            "P-03",
+            "P-10"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        }
+      },
+      "copy": {
+        "es": "docs/marea/products/copy/ais.es.md",
+        "en": "docs/marea/products/copy/ais.en.md"
+      },
+      "assets": [
+        {
+          "assetId": "AIS-HERO-01"
+        },
+        {
+          "assetId": "AIS-USE-02"
+        },
+        {
+          "assetId": "AIS-OVR-03"
+        },
+        {
+          "assetId": "AIS-EDN-04"
+        },
+        {
+          "assetId": "AIS-ECO-05"
+        },
+        {
+          "assetId": "AIS-INS-06"
+        },
+        {
+          "assetId": "AIS-MOB-07"
+        },
+        {
+          "assetId": "AIS-TMB-08"
+        },
+        {
+          "assetId": "AIS-OG-09"
+        },
+        {
+          "assetId": "AIS-TEC-10"
+        }
+      ],
+      "mc02Blockers": [
+        "H-08",
+        "H-05",
+        "H-06",
+        "D-09",
+        "S-01",
+        "P-03",
+        "P-10",
+        "X-01",
+        "X-05"
+      ]
+    }
+  ]
+}

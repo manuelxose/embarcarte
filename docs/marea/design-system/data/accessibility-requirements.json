@@ -1,0 +1,307 @@
+{
+  "contractId": "MC17-ACCESSIBILITY-REQUIREMENTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "programme-docs",
+  "generationMethod": "Manual authoring from the actual implementation at branch feature/marea-mc17-premium-design-system: core/types.ts, components/*, theme/marea-theme.ts, docs/marea/design-system/data/{layout-tokens,color-roles,typography-roles}.json, scripts/check-marea-design-system.mjs and e2e/design-system/*.spec.ts. No automated audit generated this dataset.",
+  "scope": "Applicable WCAG 2.2 Level AA criteria for the isolated MC-17 design system and its internal catalogue, with the component/test evidence that exists and the evidence that does not.",
+  "conformanceClaim": "NOT_CLAIMED",
+  "conformanceStatement": "No WCAG conformance claim is made for the design system, the internal catalogue or the public website. Automated axe rules and component assertions are partial evidence only; no independent accessibility audit has been completed.",
+  "targetLevel": "WCAG 2.2 AA (design target, not a certified conformance level)",
+  "qualityTarget": {
+    "criterion": "2.4.13 Focus Appearance (AAA)",
+    "level": "AAA",
+    "claimed": false,
+    "reason": "The implementation targets a 3px solid focus ring with offset/inset tokens as an internal quality target; AAA focus appearance is not measured or claimed."
+  },
+  "knownLimitations": [
+    "No independent accessibility audit and no assistive-technology testing (screen reader, voice control, switch access) has been performed.",
+    "Automated coverage is axe-core with wcag2a, wcag2aa, wcag21a, wcag21aa and wcag22aa tags in Chromium only. The recorded summary at 4a9043b reports 0 violations, 36 passes and 0 incomplete in each of the four modes (web-light, instrument-day, instrument-sunlight, instrument-night). The earlier single instrument-night color-contrast finding in the preview-only component documentation block was corrected and is retained only as a historical failure artifact.",
+    "Contrast ratios are computed from declared token values; anti-aliasing, glare, night adaptation and display hardware are not modelled.",
+    "Instrument day/sunlight/night modes are software-only specimens; no marine hardware visibility or night-vision performance is validated.",
+    "The internal catalogue is not a public page and has no main landmark; axe region rules are disabled there, which is a documented deviation from a public-page audit.",
+    "Catalogue screenshots and axe runs are Chromium/Windows-specific; other engines and platforms are not covered.",
+    "1.4.12 Text Spacing has no dedicated override test at authoring time.",
+    "No full-conformance claim is authorised by this dataset or by the validator."
+  ],
+  "sourceRefs": [
+    "https://www.w3.org/TR/WCAG22/",
+    "src/app/marea-design-system/core/types.ts",
+    "src/app/marea-design-system/components/foundation/marea-button.ts",
+    "src/app/marea-design-system/components/foundation/marea-form-field.ts",
+    "src/app/marea-design-system/components/foundation/marea-status-badge.ts",
+    "src/app/marea-design-system/components/structured/marea-responsive-nav.ts",
+    "src/app/marea-design-system/components/structured/marea-disclosure.ts",
+    "src/app/marea-design-system/theme/marea-theme.ts",
+    "docs/marea/design-system/data/layout-tokens.json",
+    "docs/marea/design-system/data/color-roles.json",
+    "docs/marea/design-system/data/typography-roles.json",
+    "scripts/check-marea-design-system.mjs",
+    "e2e/design-system/accessibility.spec.ts",
+    "e2e/design-system/keyboard.spec.ts",
+    "e2e/design-system/responsive.spec.ts",
+    "e2e/accessibility.spec.ts"
+  ],
+  "criteria": [
+    {
+      "id": "1.3.1",
+      "name": "Info and Relationships",
+      "level": "A",
+      "applicability": "APPLICABLE",
+      "why": "Family, edition, bundle and readiness surfaces encode relationships through headings, lists, definition lists, tables and labelled regions; an incorrect structure would misrepresent the product hierarchy.",
+      "howTested": "Semantic elements in MareaSectionHeading, MareaSpecTable, MareaDefinitionList, MareaDataQuality and MareaReadinessPanel; axe tags wcag2a in e2e/design-system/accessibility.spec.ts; manual heading-order review remains pending.",
+      "testReferences": [
+        "scripts/check-marea-design-system.mjs MC17-14",
+        "e2e/design-system/accessibility.spec.ts (axe)",
+        "src/app/marea-design-system/components/foundation/marea-section-heading.ts",
+        "src/app/marea-design-system/components/structured/marea-spec-table.ts"
+      ],
+      "testStatus": "AUTOMATED_PARTIAL_MANUAL_PENDING"
+    },
+    {
+      "id": "1.4.1",
+      "name": "Use of Color",
+      "level": "A",
+      "applicability": "APPLICABLE",
+      "why": "Status tones (critical, warning, safe, stale, info, neutral) could otherwise be the only carrier of meaning in badges, notices and readiness rows.",
+      "howTested": "Status badge requires a text label plus a shape icon (MC17-18); the Playwright test asserts every marea-status-badge has non-empty visible text and is not hidden; catalogue renders explanation paragraphs next to every derived state.",
+      "testReferences": [
+        "scripts/check-marea-design-system.mjs MC17-18",
+        "e2e/design-system/accessibility.spec.ts (status badge text test)",
+        "src/app/marea-design-system/components/foundation/marea-status-badge.ts",
+        "src/app/marea-design-system/components/commerce/marea-commercial-cta.ts"
+      ],
+      "testStatus": "AUTOMATED_PARTIAL_MANUAL_PENDING"
+    },
+    {
+      "id": "1.4.3",
+      "name": "Contrast (Minimum)",
+      "level": "AA",
+      "applicability": "APPLICABLE",
+      "why": "Normal and large text must reach 4.5:1 and 3:1 respectively on every declared mode and surface before any public use.",
+      "howTested": "scripts/check-marea-design-system.mjs computes WCAG relative luminance over declared token pairs for all four modes and writes data/contrast-evidence.json. The recorded file is status PASS with 296 pair/mode measurements and 0 failures.",
+      "testReferences": [
+        "scripts/check-marea-design-system.mjs MC17-04",
+        "docs/marea/design-system/data/color-roles.json contrastPairs",
+        "docs/marea/design-system/data/contrast-evidence.json"
+      ],
+      "testStatus": "RECORDED_PASS_DECLARED_VALUES"
+    },
+    {
+      "id": "1.4.4",
+      "name": "Resize Text",
+      "level": "AA",
+      "applicability": "APPLICABLE",
+      "why": "The catalogue and components use fluid type and must remain usable when text is enlarged to 200%.",
+      "howTested": "e2e/design-system/responsive.spec.ts applies html { font-size: 200% } at six widths and asserts no horizontal page overflow, no clipped controls and no overlapping sibling controls.",
+      "testReferences": [
+        "e2e/design-system/responsive.spec.ts"
+      ],
+      "testStatus": "AUTOMATED_PARTIAL"
+    },
+    {
+      "id": "1.4.10",
+      "name": "Reflow",
+      "level": "AA",
+      "applicability": "APPLICABLE",
+      "why": "Content must not require two-dimensional scrolling at 320 CSS px width and at 200% zoom; dense specification tables are the main risk.",
+      "howTested": "e2e/design-system/responsive.spec.ts checks widths 320, 360, 390, 768, 1024 and 1440, asserts documentElement.scrollWidth <= innerWidth + 1, and requires every table to sit in a labelled, focusable, horizontally scrollable region.",
+      "testReferences": [
+        "e2e/design-system/responsive.spec.ts",
+        "docs/marea/design-system/data/layout-tokens.json breakpoint bp320"
+      ],
+      "testStatus": "AUTOMATED_PARTIAL"
+    },
+    {
+      "id": "1.4.11",
+      "name": "Non-text Contrast",
+      "level": "AA",
+      "applicability": "APPLICABLE",
+      "why": "Control boundaries, focus indicators and status shapes must reach 3:1 against adjacent colours; the design system exposes borderStrong, focusRing and status tokens for this purpose.",
+      "howTested": "Token contrast pairs of kind ui are computed by the validator; the recorded contrast evidence is PASS with 0 failures. MareaButton and MareaFormField use border-strong and focus tokens; a 3:1 internal floor is declared for the disabled text token even though WCAG exempts disabled controls.",
+      "testReferences": [
+        "scripts/check-marea-design-system.mjs MC17-04",
+        "docs/marea/design-system/data/color-roles.json (borderStrong, focusRing, disabled)",
+        "docs/marea/design-system/data/contrast-evidence.json",
+        "src/app/marea-design-system/components/foundation/marea-button.ts"
+      ],
+      "testStatus": "RECORDED_PASS_DECLARED_VALUES"
+    },
+    {
+      "id": "1.4.12",
+      "name": "Text Spacing",
+      "level": "AA",
+      "applicability": "APPLICABLE",
+      "why": "Component text must remain usable when a user overrides line height, paragraph spacing, letter spacing or word spacing.",
+      "howTested": "No dedicated text-spacing override test exists at authoring time; the 200% font-size test is not a substitute. This is recorded as an unimplemented check.",
+      "testReferences": [],
+      "testStatus": "NOT_TESTED"
+    },
+    {
+      "id": "2.1.1",
+      "name": "Keyboard",
+      "level": "A",
+      "applicability": "APPLICABLE",
+      "why": "Tabs, accordions, disclosures, the responsive navigation, buttons and links must be fully operable without a pointer, with no keyboard trap.",
+      "howTested": "e2e/design-system/keyboard.spec.ts exercises real Tab/Enter/Space/Escape/Arrow/Home/End events for tabs, accordion, disclosure, responsive navigation and a disabled button, and runs a 40-press trap check. Disabled MareaButton remains reachable via aria-disabled and blocks activation.",
+      "testReferences": [
+        "e2e/design-system/keyboard.spec.ts",
+        "scripts/check-marea-design-system.mjs MC17-17",
+        "src/app/marea-design-system/components/structured/marea-tabs.ts",
+        "src/app/marea-design-system/components/structured/marea-responsive-nav.ts"
+      ],
+      "testStatus": "AUTOMATED_PARTIAL"
+    },
+    {
+      "id": "2.2.2",
+      "name": "Pause, Stop, Hide",
+      "level": "A",
+      "applicability": "APPLICABLE",
+      "why": "The system must not auto-update, blink or move content without a user control; alert motion is capped and reduced-motion is honoured.",
+      "howTested": "No auto-rotating or auto-updating surface exists in the catalogue; motion tokens cap state transitions at 120-200ms and disable transitions under prefers-reduced-motion; alert pulse is capped at 1 Hz by token. Manual review of future consumers remains required.",
+      "testReferences": [
+        "docs/marea/design-system/data/layout-tokens.json motion.alertMaxHz",
+        "src/app/marea-design-system/components/foundation/marea-button.ts (@media prefers-reduced-motion)"
+      ],
+      "testStatus": "DESIGN_REVIEW_ONLY"
+    },
+    {
+      "id": "2.3.1",
+      "name": "Three Flashes or Below Threshold",
+      "level": "A",
+      "applicability": "APPLICABLE",
+      "why": "No component may flash more than three times per second, particularly alarm and status surfaces.",
+      "howTested": "No flashing animation is implemented; the optional alert pulse token is capped at 1 Hz; no automated flash test exists. Manual review of animated content remains required.",
+      "testReferences": [
+        "docs/marea/design-system/data/layout-tokens.json motion.alertMaxHz"
+      ],
+      "testStatus": "DESIGN_REVIEW_ONLY"
+    },
+    {
+      "id": "2.4.3",
+      "name": "Focus Order",
+      "level": "A",
+      "applicability": "APPLICABLE",
+      "why": "Sequential focus must follow a meaningful order in the catalogue and in composed surfaces.",
+      "howTested": "e2e/design-system/keyboard.spec.ts presses Tab 40 times and asserts no consecutive repeat and more than ten distinct focus targets; tabs use a roving tab index; navigation returns focus to its toggle after Escape.",
+      "testReferences": [
+        "e2e/design-system/keyboard.spec.ts"
+      ],
+      "testStatus": "AUTOMATED_PARTIAL"
+    },
+    {
+      "id": "2.4.7",
+      "name": "Focus Visible",
+      "level": "AA",
+      "applicability": "APPLICABLE",
+      "why": "Every keyboard-operable control must show a visible focus indicator.",
+      "howTested": "Components declare :focus-visible with focus tokens (MC17-15); e2e/design-system/accessibility.spec.ts reaches the first button and first link by Tab and asserts an outline or box-shadow ring in web-light and instrument-night.",
+      "testReferences": [
+        "scripts/check-marea-design-system.mjs MC17-15",
+        "e2e/design-system/accessibility.spec.ts (focus ring test)"
+      ],
+      "testStatus": "AUTOMATED_PARTIAL"
+    },
+    {
+      "id": "2.4.11",
+      "name": "Focus Not Obscured (Minimum)",
+      "level": "AA",
+      "applicability": "APPLICABLE",
+      "why": "A focused control must not be entirely hidden by sticky or overlay content.",
+      "howTested": "The focus test asserts indicator presence but does not yet measure obstruction by sticky headers or overlays; the responsive navigation is non-overlay by design. Gap recorded.",
+      "testReferences": [
+        "e2e/design-system/accessibility.spec.ts"
+      ],
+      "testStatus": "PARTIAL_NOT_OBSTRUCTION_TESTED"
+    },
+    {
+      "id": "2.5.8",
+      "name": "Target Size (Minimum)",
+      "level": "AA",
+      "applicability": "APPLICABLE",
+      "why": "Pointer targets must be at least 24 by 24 CSS px or have equivalent spacing.",
+      "howTested": "Layout tokens declare --marea-touch-target-min: 24px and MareaButton uses it as min-inline-size with a 32-48px block size. No dedicated Playwright target-size assertion exists at authoring time.",
+      "testReferences": [
+        "docs/marea/design-system/data/layout-tokens.json size.touchTargetMin",
+        "src/app/marea-design-system/components/foundation/marea-button.ts"
+      ],
+      "testStatus": "TOKEN_ASSERTED_TEST_PENDING"
+    },
+    {
+      "id": "3.3.1",
+      "name": "Error Identification",
+      "level": "A",
+      "applicability": "APPLICABLE",
+      "why": "Form errors must be described in text and programmatically associated with the field.",
+      "howTested": "MareaFormField renders the error paragraph with role=alert and exposes describedBy() so the consumer can bind aria-describedby; the field never relies on a red border alone. No automated form-error test exists.",
+      "testReferences": [
+        "src/app/marea-design-system/components/foundation/marea-form-field.ts"
+      ],
+      "testStatus": "COMPONENT_REVIEW_ONLY"
+    },
+    {
+      "id": "3.3.3",
+      "name": "Error Suggestion",
+      "level": "AA",
+      "applicability": "APPLICABLE",
+      "why": "When an input error is detected, a correction suggestion must be provided in text.",
+      "howTested": "The component provides the error slot; the suggestion text is supplied by the consumer. No validation logic or suggestion catalogue exists in the design system, so this is a consumer obligation.",
+      "testReferences": [
+        "src/app/marea-design-system/components/foundation/marea-form-field.ts"
+      ],
+      "testStatus": "CONSUMER_OBLIGATION"
+    },
+    {
+      "id": "4.1.2",
+      "name": "Name, Role, Value",
+      "level": "A",
+      "applicability": "APPLICABLE",
+      "why": "Custom compositions must expose correct accessible names, roles and states, especially tabs, accordions, navigation toggles and status badges.",
+      "howTested": "Native elements are preferred (button, details/summary, nav, table); ARIA is limited to aria-current, aria-expanded, aria-controls, aria-selected, aria-labelledby and aria-describedby; axe tags wcag2a/wcag2aa/wcag21a/wcag21aa/wcag22aa run on all four modes.",
+      "testReferences": [
+        "e2e/design-system/accessibility.spec.ts (axe)",
+        "e2e/design-system/keyboard.spec.ts",
+        "src/app/marea-design-system/components/structured/marea-tabs.ts",
+        "src/app/marea-design-system/components/structured/marea-responsive-nav.ts"
+      ],
+      "testStatus": "AUTOMATED_PARTIAL_MANUAL_PENDING"
+    }
+  ],
+  "evidence": {
+    "automatedAudit": {
+      "tool": "@axe-core/playwright (axe-core)",
+      "tags": [
+        "wcag2a",
+        "wcag2aa",
+        "wcag21a",
+        "wcag21aa",
+        "wcag22aa"
+      ],
+      "scope": "internal catalogue, four visual modes, default ES locale, Chromium",
+      "output": "docs/marea/design-system/evidence/axe-summary.json and test-results/design-system/axe-<mode>.json (present)",
+      "conformanceClaim": "NONE"
+    },
+    "manualReview": {
+      "performed": false,
+      "owner": "not assigned",
+      "requiredBeforeClaim": true
+    },
+    "publicSiteEvidence": {
+      "suite": "npm run test:e2e / e2e/accessibility.spec.ts",
+      "scope": "existing public pages with axe tags, serious/critical violations only",
+      "relation": "covers the untouched public site, not the MC-17 design system"
+    }
+  },
+  "enforcement": {
+    "validator": "scripts/check-marea-design-system.mjs",
+    "checks": [
+      "MC17-15",
+      "MC17-17",
+      "MC17-18",
+      "MC17-38"
+    ],
+    "check38Expectation": "required criteria 1.3.1, 1.4.1, 1.4.3, 1.4.11, 2.1.1, 2.4.7, 2.4.11, 2.5.8, 3.3.1 and 4.1.2 present; no full-conformance claim recorded",
+    "historicalVerdict": "MC16_VERDICT = PARTIAL"
+  }
+}

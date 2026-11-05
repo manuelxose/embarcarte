@@ -1,0 +1,3100 @@
+MC-04 typography verification (T-1ÔÇªT-10) ÔÇö real evidence
+Environment: node v24.18.0, @playwright/test 1.64.1, chromium 156.0.8078.4, win32
+
+## dm-sans (body text and instrument numerics)
+  package      : @fontsource-variable/dm-sans@5.3.0
+  licence      : OFL-1.1 (Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts) DMSans-Italic[opsz,wght].ttf: Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts))
+  OFL checks   : ofl11=true permission=true bundling=true document-exemption=true RFN-clause=true RFN-declared=false
+  upstream     : v17 (2025-09-11) from https://github.com/google/fonts
+  axes         : wght 100ÔÇô1000 (default 400)
+  feature tags : calt, ccmp, dnom, frac, kern, liga, locl, mark, mkmk, numr ÔÇö tnum=false zero=false
+  woff2        : node_modules\@fontsource-variable\dm-sans\files\dm-sans-latin-ext-wght-normal.woff2 18228 B a5d38fe99f930275ÔÇª font-display=swap weight=100 1000 unitsPerEm=1000 tables=20 dir=64B
+  woff2        : node_modules\@fontsource-variable\dm-sans\files\dm-sans-latin-wght-normal.woff2 36932 B 9fea608a947e6702ÔÇª font-display=swap weight=100 1000 unitsPerEm=1000 tables=20 dir=66B
+  builds       : 12 woff2 shipped, 0 declare tnum
+  default digit spread (font unitsÔåÆpx@100): 37.2000 px
+
+## manrope (display / headings / product-family lockup)
+  package      : @fontsource-variable/manrope@5.3.0
+  licence      : OFL-1.1 (Copyright 2019 The Manrope Project Authors (https://github.com/sharanda/manrope))
+  OFL checks   : ofl11=true permission=true bundling=true document-exemption=true RFN-clause=true RFN-declared=false
+  upstream     : v20 (2025-09-05) from https://github.com/google/fonts
+  axes         : wght 200ÔÇô800 (default 200)
+  feature tags : calt, dnom, frac, kern, liga, locl, numr, pnum, tnum ÔÇö tnum=true zero=false
+  woff2        : node_modules\@fontsource-variable\manrope\files\manrope-cyrillic-ext-wght-normal.woff2 2552 B de37de877dc17e45ÔÇª font-display=swap weight=200 800 unitsPerEm=2000 tables=19 dir=57B
+  woff2        : node_modules\@fontsource-variable\manrope\files\manrope-cyrillic-wght-normal.woff2 14500 B c268b459a9329e59ÔÇª font-display=swap weight=200 800 unitsPerEm=2000 tables=19 dir=60B
+  woff2        : node_modules\@fontsource-variable\manrope\files\manrope-greek-wght-normal.woff2 9444 B 2fb2e8cbfd52ae46ÔÇª font-display=swap weight=200 800 unitsPerEm=2000 tables=19 dir=59B
+  woff2        : node_modules\@fontsource-variable\manrope\files\manrope-vietnamese-wght-normal.woff2 8520 B 6bbb044ab420e07eÔÇª font-display=swap weight=200 800 unitsPerEm=2000 tables=19 dir=59B
+  woff2        : node_modules\@fontsource-variable\manrope\files\manrope-latin-ext-wght-normal.woff2 15120 B 3911b66d9f2e005aÔÇª font-display=swap weight=200 800 unitsPerEm=2000 tables=19 dir=61B
+  woff2        : node_modules\@fontsource-variable\manrope\files\manrope-latin-wght-normal.woff2 24836 B a30ddcd349703affÔÇª font-display=swap weight=200 800 unitsPerEm=2000 tables=19 dir=63B
+  builds       : 6 woff2 shipped, 1 declare tnum
+  default digit spread (font unitsÔåÆpx@100): 26.2000 px
+
+## Glyph coverage (cmap Ôê® declared unicode-range)
+  dm-sans: required=68 missing=0 strings-with-gaps=0
+    optional probe: prime 8242 available=false
+    optional probe: double prime 8243 available=false
+  manrope: required=68 missing=0 strings-with-gaps=0
+    optional probe: prime 8242 available=false
+    optional probe: double prime 8243 available=false
+
+## Chromium measurement (local woff2 over file://, weight 700)
+  dm-sans: loaded=true numericRole=false tabularFiguresOk=false
+     48 px: normal=16.3125 tabular-nums=16.3125 tnum=16.3125 tolerance=0.0960 px
+     72 px: normal=24.4844 tabular-nums=24.4844 tnum=24.4844 tolerance=0.1440 px
+    100 px: normal=34.0000 tabular-nums=34.0000 tnum=34.0000 tolerance=0.2000 px
+  manrope: loaded=true numericRole=true tabularFiguresOk=true
+     48 px: normal=10.5625 tabular-nums=0.0781 tnum=0.0781 tolerance=0.0960 px
+     72 px: normal=15.8438 tabular-nums=0.1094 tnum=0.1094 tolerance=0.1440 px
+    100 px: normal=22.0000 tabular-nums=0.1563 tnum=0.1563 tolerance=0.2000 px
+
+  digit advances at 100 px (px, normal / tabular-nums / tnum):
+  dm-sans
+    normal       70.41 36.41 57.70 60.31 65.00 62.11 63.41 53.61 63.20 63.41
+    tabular-nums 70.41 36.41 57.70 60.31 65.00 62.11 63.41 53.61 63.20 63.41
+    tnum         70.41 36.41 57.70 60.31 65.00 62.11 63.41 53.61 63.20 63.41
+  manrope
+    normal       65.81 43.81 59.56 58.16 60.86 58.61 62.16 53.36 61.25 62.16
+    tabular-nums 62.00 62.00 62.00 62.00 62.00 62.00 62.16 62.00 62.00 62.00
+    tnum         62.00 62.00 62.00 62.00 62.00 62.00 62.16 62.00 62.00 62.00
+
+  column alignment deltas (max px across same-length strings):
+    MareaDMProbe normal: "00:00" vs "23:59" ÔåÆ 40.4688 px
+    MareaDMProbe normal: "000┬░" vs "359┬░" ÔåÆ 27.7656 px
+    MareaDMProbe normal: "08.4 m" vs "18.4 m" ÔåÆ 34.0000 px
+    MareaDMProbe cssTabular: "00:00" vs "23:59" ÔåÆ 40.4688 px
+    MareaDMProbe cssTabular: "000┬░" vs "359┬░" ÔåÆ 27.7656 px
+    MareaDMProbe cssTabular: "08.4 m" vs "18.4 m" ÔåÆ 34.0000 px
+    MareaDMProbe featureTnum: "00:00" vs "23:59" ÔåÆ 40.4688 px
+    MareaDMProbe featureTnum: "000┬░" vs "359┬░" ÔåÆ 27.7656 px
+    MareaDMProbe featureTnum: "08.4 m" vs "18.4 m" ÔåÆ 34.0000 px
+    MareaManropeProbe normal: "00:00" vs "23:59" ÔåÆ 24.7500 px
+    MareaManropeProbe normal: "000┬░" vs "359┬░" ÔåÆ 18.5000 px
+    MareaManropeProbe normal: "08.4 m" vs "18.4 m" ÔåÆ 22.0000 px
+    MareaManropeProbe cssTabular: "00:00" vs "23:59" ÔåÆ 0.0000 px
+    MareaManropeProbe cssTabular: "000┬░" vs "359┬░" ÔåÆ 0.0000 px
+    MareaManropeProbe cssTabular: "08.4 m" vs "18.4 m" ÔåÆ 0.0000 px
+    MareaManropeProbe featureTnum: "00:00" vs "23:59" ÔåÆ 0.0000 px
+    MareaManropeProbe featureTnum: "000┬░" vs "359┬░" ÔåÆ 0.0000 px
+    MareaManropeProbe featureTnum: "08.4 m" vs "18.4 m" ÔåÆ 0.0000 px
+
+  required numeric string widths (px, normal ÔåÆ tnum):
+    MareaDMProbe  "00:00"        307.11 ÔåÆ 307.11 (tnum feature 307.11)
+    MareaDMProbe  "23:59"        266.64 ÔåÆ 266.64 (tnum feature 266.64)
+    MareaDMProbe  "000┬░"         247.50 ÔåÆ 247.50 (tnum feature 247.50)
+    MareaDMProbe  "359┬░"         219.73 ÔåÆ 219.73 (tnum feature 219.73)
+    MareaDMProbe  "6.4 kn"       293.33 ÔåÆ 293.33 (tnum feature 293.33)
+    MareaDMProbe  "12.8 V"       276.81 ÔåÆ 276.81 (tnum feature 276.81)
+    MareaDMProbe  "14.2 A"       278.81 ÔåÆ 278.81 (tnum feature 278.81)
+    MareaDMProbe  "37.5┬░ N"      327.41 ÔåÆ 327.41 (tnum feature 327.41)
+    MareaDMProbe  "008┬░ W"       365.70 ÔåÆ 365.70 (tnum feature 365.70)
+    MareaDMProbe  "1013 hPa"     405.61 ÔåÆ 405.61 (tnum feature 405.61)
+    MareaDMProbe  "24.6 ┬░C"      341.30 ÔåÆ 341.30 (tnum feature 341.30)
+    MareaManropeProbe "00:00"        297.45 ÔåÆ 282.25 (tnum feature 282.25)
+    MareaManropeProbe "23:59"        272.70 ÔåÆ 282.25 (tnum feature 282.25)
+    MareaManropeProbe "000┬░"         242.41 ÔåÆ 231.00 (tnum feature 231.00)
+    MareaManropeProbe "359┬░"         223.91 ÔåÆ 231.00 (tnum feature 231.00)
+    MareaManropeProbe "6.4 kn"       289.70 ÔåÆ 290.86 (tnum feature 290.86)
+    MareaManropeProbe "12.8 V"       279.00 ÔåÆ 300.41 (tnum feature 300.41)
+    MareaManropeProbe "14.2 A"       279.61 ÔåÆ 303.41 (tnum feature 303.41)
+    MareaManropeProbe "37.5┬░ N"      335.59 ÔåÆ 353.16 (tnum feature 353.16)
+    MareaManropeProbe "008┬░ W"       355.41 ÔåÆ 348.56 (tnum feature 348.56)
+    MareaManropeProbe "1013 hPa"     414.22 ÔåÆ 450.67 (tnum feature 450.67)
+    MareaManropeProbe "24.6 ┬░C"      347.75 ÔåÆ 355.36 (tnum feature 355.36)
+
+  minus sign U+2212 vs hyphen U+002D vs zero (px):
+    dm-sans: ÔêÆ 57.906 / - 57.609 / 0 70.406
+    manrope: ÔêÆ 54.000 / - 42.000 / 0 65.813
+
+DEVIATION TYPO-DEVIATION-01: Instrument numeric role carried by manrope instead of DM Sans (brief ┬º4.4 proposal)
+          reason: the installed DM Sans 5.3.0 builds expose no tnum feature and render proportional digits; the brief N-1/N-2 requirement is non-negotiable
+WARN  dm-sans: no shipped woff2 build declares a GSUB/GPOS 'tnum' feature ÔÇö tabular figures are unavailable in this package
+WARN  dm-sans: display family is not fully tabular (spread 34.0000 px at 100 px); do not use it for mutable values, prices in tables or instrument numerics
+
+RESULT: PASS
+
+JSON (machine-readable):
+{
+  "checkedAt": "2026-10-30T17:40:19.225Z",
+  "environment": {
+    "node": "v24.18.0",
+    "playwright": "1.64.1",
+    "chromium": "156.0.8078.4",
+    "platform": "win32"
+  },
+  "measureSizesPx": [
+    48,
+    72,
+    100
+  ],
+  "measurePx": 100,
+  "tabularToleranceEm": 0.002,
+  "numericFamily": "manrope",
+  "packages": [
+    {
+      "id": "dm-sans",
+      "role": "body text and instrument numerics",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "metadataVersion": "v17",
+      "metadataLastModified": "2025-09-11",
+      "metadataAttribution": "Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts) DMSans-Italic[opsz,wght].ttf: Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts)",
+      "metadataSource": "https://github.com/google/fonts",
+      "metadataSubsets": [
+        "latin",
+        "latin-ext"
+      ],
+      "variableAxes": {
+        "ital": {
+          "default": "0",
+          "min": "0",
+          "max": "1",
+          "step": "1"
+        },
+        "opsz": {
+          "default": "14",
+          "min": "9",
+          "max": "40",
+          "step": "0.1"
+        },
+        "wght": {
+          "default": "400",
+          "min": "100",
+          "max": "1000",
+          "step": "1"
+        }
+      },
+      "licenseChecks": {
+        "ofl11": true,
+        "oflPermission": true,
+        "oflDocumentExemption": true,
+        "oflBundling": true,
+        "reservedFontNameClause": true,
+        "copyrightLine": "Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts) DMSans-Italic[opsz,wght].ttf: Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts)",
+        "reservedFontNameDeclared": false
+      },
+      "fontFaces": [
+        {
+          "file": "node_modules\\@fontsource-variable\\dm-sans\\files\\dm-sans-latin-ext-wght-normal.woff2",
+          "bytes": 18228,
+          "sha256": "a5d38fe99f930275684999b462c7123faa063d9e44e73b4b241723d884aa0f49",
+          "fontDisplay": "swap",
+          "fontWeight": "100 1000",
+          "unitsPerEm": 1000,
+          "tableCount": 20,
+          "tableTags": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "avar",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "loca",
+            "gvar",
+            "head",
+            "hhea",
+            "hmtx",
+            "maxp",
+            "name",
+            "post",
+            "prep"
+          ],
+          "cmapFormats": [
+            4,
+            4
+          ],
+          "featureTags": [
+            "ccmp",
+            "kern",
+            "locl",
+            "mark",
+            "mkmk"
+          ],
+          "axes": [
+            {
+              "tag": "wght",
+              "min": 100,
+              "default": 400,
+              "max": 1000
+            }
+          ],
+          "names": {
+            "copyright": "Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts)",
+            "family": "DM Sans 9pt",
+            "subfamily": "Regular",
+            "version": "Version 4.004;gftools[0.9.30]",
+            "license": null,
+            "licenseUrl": "https://scripts.sil.org/OFL"
+          },
+          "digitAdvances": [
+            {
+              "char": "0",
+              "glyphId": 127,
+              "advanceUnits": 684,
+              "advancePxAt100": 68.4
+            },
+            {
+              "char": "1",
+              "glyphId": 128,
+              "advanceUnits": 312,
+              "advancePxAt100": 31.2
+            },
+            {
+              "char": "2",
+              "glyphId": 129,
+              "advanceUnits": 576,
+              "advancePxAt100": 57.599999999999994
+            },
+            {
+              "char": "3",
+              "glyphId": 130,
+              "advanceUnits": 591,
+              "advancePxAt100": 59.099999999999994
+            },
+            {
+              "char": "4",
+              "glyphId": 131,
+              "advanceUnits": 607,
+              "advancePxAt100": 60.699999999999996
+            },
+            {
+              "char": "5",
+              "glyphId": 132,
+              "advanceUnits": 610,
+              "advancePxAt100": 61
+            },
+            {
+              "char": "6",
+              "glyphId": 133,
+              "advanceUnits": 628,
+              "advancePxAt100": 62.8
+            },
+            {
+              "char": "7",
+              "glyphId": 134,
+              "advanceUnits": 534,
+              "advancePxAt100": 53.400000000000006
+            },
+            {
+              "char": "8",
+              "glyphId": 135,
+              "advanceUnits": 608,
+              "advancePxAt100": 60.8
+            },
+            {
+              "char": "9",
+              "glyphId": 136,
+              "advanceUnits": 628,
+              "advancePxAt100": 62.8
+            }
+          ]
+        },
+        {
+          "file": "node_modules\\@fontsource-variable\\dm-sans\\files\\dm-sans-latin-wght-normal.woff2",
+          "bytes": 36932,
+          "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543",
+          "fontDisplay": "swap",
+          "fontWeight": "100 1000",
+          "unitsPerEm": 1000,
+          "tableCount": 20,
+          "tableTags": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "avar",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "loca",
+            "gvar",
+            "head",
+            "hhea",
+            "hmtx",
+            "maxp",
+            "name",
+            "post",
+            "prep"
+          ],
+          "cmapFormats": [
+            4,
+            4
+          ],
+          "featureTags": [
+            "calt",
+            "ccmp",
+            "dnom",
+            "frac",
+            "kern",
+            "liga",
+            "locl",
+            "mark",
+            "mkmk",
+            "numr"
+          ],
+          "axes": [
+            {
+              "tag": "wght",
+              "min": 100,
+              "default": 400,
+              "max": 1000
+            }
+          ],
+          "names": {
+            "copyright": "Copyright 2014 The DM Sans Project Authors (https://github.com/googlefonts/dm-fonts)",
+            "family": "DM Sans 9pt",
+            "subfamily": "Regular",
+            "version": "Version 4.004;gftools[0.9.30]",
+            "license": null,
+            "licenseUrl": "https://scripts.sil.org/OFL"
+          },
+          "digitAdvances": [
+            {
+              "char": "0",
+              "glyphId": 127,
+              "advanceUnits": 684,
+              "advancePxAt100": 68.4
+            },
+            {
+              "char": "1",
+              "glyphId": 128,
+              "advanceUnits": 312,
+              "advancePxAt100": 31.2
+            },
+            {
+              "char": "2",
+              "glyphId": 129,
+              "advanceUnits": 576,
+              "advancePxAt100": 57.599999999999994
+            },
+            {
+              "char": "3",
+              "glyphId": 130,
+              "advanceUnits": 591,
+              "advancePxAt100": 59.099999999999994
+            },
+            {
+              "char": "4",
+              "glyphId": 131,
+              "advanceUnits": 607,
+              "advancePxAt100": 60.699999999999996
+            },
+            {
+              "char": "5",
+              "glyphId": 132,
+              "advanceUnits": 610,
+              "advancePxAt100": 61
+            },
+            {
+              "char": "6",
+              "glyphId": 133,
+              "advanceUnits": 628,
+              "advancePxAt100": 62.8
+            },
+            {
+              "char": "7",
+              "glyphId": 134,
+              "advanceUnits": 534,
+              "advancePxAt100": 53.400000000000006
+            },
+            {
+              "char": "8",
+              "glyphId": 135,
+              "advanceUnits": 608,
+              "advancePxAt100": 60.8
+            },
+            {
+              "char": "9",
+              "glyphId": 136,
+              "advanceUnits": 628,
+              "advancePxAt100": 62.8
+            }
+          ]
+        }
+      ],
+      "fontNumeric": {
+        "hasTnumFeature": false,
+        "hasZeroFeature": false,
+        "featureTags": [
+          "calt",
+          "ccmp",
+          "dnom",
+          "frac",
+          "kern",
+          "liga",
+          "locl",
+          "mark",
+          "mkmk",
+          "numr"
+        ],
+        "axes": [
+          {
+            "tag": "wght",
+            "min": 100,
+            "default": 400,
+            "max": 1000
+          }
+        ],
+        "defaultDigitAdvanceSpreadPxAt100": 37.2
+      },
+      "builds": [
+        {
+          "file": "dm-sans-latin-ext-opsz-italic.woff2",
+          "bytes": 40840,
+          "gsubFeatureTags": [
+            "ccmp",
+            "locl"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-ext-opsz-normal.woff2",
+          "bytes": 31292,
+          "gsubFeatureTags": [
+            "ccmp",
+            "locl"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-ext-standard-italic.woff2",
+          "bytes": 40840,
+          "gsubFeatureTags": [
+            "ccmp",
+            "locl"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-ext-standard-normal.woff2",
+          "bytes": 31292,
+          "gsubFeatureTags": [
+            "ccmp",
+            "locl"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-ext-wght-italic.woff2",
+          "bytes": 20808,
+          "gsubFeatureTags": [
+            "ccmp",
+            "locl"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-ext-wght-normal.woff2",
+          "bytes": 18228,
+          "gsubFeatureTags": [
+            "ccmp",
+            "locl"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-opsz-italic.woff2",
+          "bytes": 76248,
+          "gsubFeatureTags": [
+            "calt",
+            "ccmp",
+            "dnom",
+            "frac",
+            "liga",
+            "locl",
+            "numr"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-opsz-normal.woff2",
+          "bytes": 62724,
+          "gsubFeatureTags": [
+            "calt",
+            "ccmp",
+            "dnom",
+            "frac",
+            "liga",
+            "locl",
+            "numr"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-standard-italic.woff2",
+          "bytes": 76248,
+          "gsubFeatureTags": [
+            "calt",
+            "ccmp",
+            "dnom",
+            "frac",
+            "liga",
+            "locl",
+            "numr"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-standard-normal.woff2",
+          "bytes": 62724,
+          "gsubFeatureTags": [
+            "calt",
+            "ccmp",
+            "dnom",
+            "frac",
+            "liga",
+            "locl",
+            "numr"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-wght-italic.woff2",
+          "bytes": 39712,
+          "gsubFeatureTags": [
+            "calt",
+            "ccmp",
+            "dnom",
+            "frac",
+            "liga",
+            "locl",
+            "numr"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "dm-sans-latin-wght-normal.woff2",
+          "bytes": 36932,
+          "gsubFeatureTags": [
+            "calt",
+            "ccmp",
+            "dnom",
+            "frac",
+            "liga",
+            "locl",
+            "numr"
+          ],
+          "gposFeatureTags": [
+            "kern",
+            "mark",
+            "mkmk"
+          ],
+          "hasTnum": false
+        }
+      ]
+    },
+    {
+      "id": "manrope",
+      "role": "display / headings / product-family lockup",
+      "version": "5.3.0",
+      "license": "OFL-1.1",
+      "metadataVersion": "v20",
+      "metadataLastModified": "2025-09-05",
+      "metadataAttribution": "Copyright 2019 The Manrope Project Authors (https://github.com/sharanda/manrope)",
+      "metadataSource": "https://github.com/google/fonts",
+      "metadataSubsets": [
+        "cyrillic",
+        "cyrillic-ext",
+        "greek",
+        "latin",
+        "latin-ext",
+        "vietnamese"
+      ],
+      "variableAxes": {
+        "wght": {
+          "default": "400",
+          "min": "200",
+          "max": "800",
+          "step": "1"
+        }
+      },
+      "licenseChecks": {
+        "ofl11": true,
+        "oflPermission": true,
+        "oflDocumentExemption": true,
+        "oflBundling": true,
+        "reservedFontNameClause": true,
+        "copyrightLine": "Copyright 2019 The Manrope Project Authors (https://github.com/sharanda/manrope)",
+        "reservedFontNameDeclared": false
+      },
+      "fontFaces": [
+        {
+          "file": "node_modules\\@fontsource-variable\\manrope\\files\\manrope-cyrillic-ext-wght-normal.woff2",
+          "bytes": 2552,
+          "sha256": "de37de877dc17e4577341fa68bb5cb526b53d54cb29721e674208546a3c7849d",
+          "fontDisplay": "swap",
+          "fontWeight": "200 800",
+          "unitsPerEm": 2000,
+          "tableCount": 19,
+          "tableTags": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "loca",
+            "gvar",
+            "head",
+            "hhea",
+            "hmtx",
+            "maxp",
+            "name",
+            "post",
+            "prep"
+          ],
+          "cmapFormats": [
+            4,
+            4
+          ],
+          "featureTags": [
+            "kern"
+          ],
+          "axes": [
+            {
+              "tag": "wght",
+              "min": 200,
+              "default": 200,
+              "max": 800
+            }
+          ],
+          "names": {
+            "copyright": "Copyright 2019 The Manrope Project Authors (https://github.com/sharanda/manrope)",
+            "family": "Manrope ExtraLight",
+            "subfamily": "Regular",
+            "version": "Version 4.504",
+            "license": null,
+            "licenseUrl": "http://scripts.sil.org/OFL"
+          },
+          "digitAdvances": [
+            {
+              "char": "0",
+              "glyphId": 131,
+              "advanceUnits": 1156,
+              "advancePxAt100": 57.8
+            },
+            {
+              "char": "1",
+              "glyphId": 132,
+              "advanceUnits": 716,
+              "advancePxAt100": 35.8
+            },
+            {
+              "char": "2",
+              "glyphId": 133,
+              "advanceUnits": 1106,
+              "advancePxAt100": 55.300000000000004
+            },
+            {
+              "char": "3",
+              "glyphId": 134,
+              "advanceUnits": 1068,
+              "advancePxAt100": 53.400000000000006
+            },
+            {
+              "char": "4",
+              "glyphId": 135,
+              "advanceUnits": 1154,
+              "advancePxAt100": 57.699999999999996
+            },
+            {
+              "char": "5",
+              "glyphId": 136,
+              "advanceUnits": 1144,
+              "advancePxAt100": 57.199999999999996
+            },
+            {
+              "char": "6",
+              "glyphId": 137,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            },
+            {
+              "char": "7",
+              "glyphId": 138,
+              "advanceUnits": 962,
+              "advancePxAt100": 48.1
+            },
+            {
+              "char": "8",
+              "glyphId": 139,
+              "advanceUnits": 1118,
+              "advancePxAt100": 55.900000000000006
+            },
+            {
+              "char": "9",
+              "glyphId": 140,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            }
+          ]
+        },
+        {
+          "file": "node_modules\\@fontsource-variable\\manrope\\files\\manrope-cyrillic-wght-normal.woff2",
+          "bytes": 14500,
+          "sha256": "c268b459a9329e59fecf39a17618efd44c71735532048d60b12aab76a8c14914",
+          "fontDisplay": "swap",
+          "fontWeight": "200 800",
+          "unitsPerEm": 2000,
+          "tableCount": 19,
+          "tableTags": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "loca",
+            "gvar",
+            "head",
+            "hhea",
+            "hmtx",
+            "maxp",
+            "name",
+            "post",
+            "prep"
+          ],
+          "cmapFormats": [
+            4,
+            4
+          ],
+          "featureTags": [
+            "kern",
+            "locl"
+          ],
+          "axes": [
+            {
+              "tag": "wght",
+              "min": 200,
+              "default": 200,
+              "max": 800
+            }
+          ],
+          "names": {
+            "copyright": "Copyright 2019 The Manrope Project Authors (https://github.com/sharanda/manrope)",
+            "family": "Manrope ExtraLight",
+            "subfamily": "Regular",
+            "version": "Version 4.504",
+            "license": null,
+            "licenseUrl": "http://scripts.sil.org/OFL"
+          },
+          "digitAdvances": [
+            {
+              "char": "0",
+              "glyphId": 131,
+              "advanceUnits": 1156,
+              "advancePxAt100": 57.8
+            },
+            {
+              "char": "1",
+              "glyphId": 132,
+              "advanceUnits": 716,
+              "advancePxAt100": 35.8
+            },
+            {
+              "char": "2",
+              "glyphId": 133,
+              "advanceUnits": 1106,
+              "advancePxAt100": 55.300000000000004
+            },
+            {
+              "char": "3",
+              "glyphId": 134,
+              "advanceUnits": 1068,
+              "advancePxAt100": 53.400000000000006
+            },
+            {
+              "char": "4",
+              "glyphId": 135,
+              "advanceUnits": 1154,
+              "advancePxAt100": 57.699999999999996
+            },
+            {
+              "char": "5",
+              "glyphId": 136,
+              "advanceUnits": 1144,
+              "advancePxAt100": 57.199999999999996
+            },
+            {
+              "char": "6",
+              "glyphId": 137,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            },
+            {
+              "char": "7",
+              "glyphId": 138,
+              "advanceUnits": 962,
+              "advancePxAt100": 48.1
+            },
+            {
+              "char": "8",
+              "glyphId": 139,
+              "advanceUnits": 1118,
+              "advancePxAt100": 55.900000000000006
+            },
+            {
+              "char": "9",
+              "glyphId": 140,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            }
+          ]
+        },
+        {
+          "file": "node_modules\\@fontsource-variable\\manrope\\files\\manrope-greek-wght-normal.woff2",
+          "bytes": 9444,
+          "sha256": "2fb2e8cbfd52ae46179a8b6024eb162f1f9c6de3d22d6e3a30d8f395de7220be",
+          "fontDisplay": "swap",
+          "fontWeight": "200 800",
+          "unitsPerEm": 2000,
+          "tableCount": 19,
+          "tableTags": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "loca",
+            "gvar",
+            "head",
+            "hhea",
+            "hmtx",
+            "maxp",
+            "name",
+            "post",
+            "prep"
+          ],
+          "cmapFormats": [
+            4,
+            4
+          ],
+          "featureTags": [
+            "kern"
+          ],
+          "axes": [
+            {
+              "tag": "wght",
+              "min": 200,
+              "default": 200,
+              "max": 800
+            }
+          ],
+          "names": {
+            "copyright": "Copyright 2019 The Manrope Project Authors (https://github.com/sharanda/manrope)",
+            "family": "Manrope ExtraLight",
+            "subfamily": "Regular",
+            "version": "Version 4.504",
+            "license": null,
+            "licenseUrl": "http://scripts.sil.org/OFL"
+          },
+          "digitAdvances": [
+            {
+              "char": "0",
+              "glyphId": 131,
+              "advanceUnits": 1156,
+              "advancePxAt100": 57.8
+            },
+            {
+              "char": "1",
+              "glyphId": 132,
+              "advanceUnits": 716,
+              "advancePxAt100": 35.8
+            },
+            {
+              "char": "2",
+              "glyphId": 133,
+              "advanceUnits": 1106,
+              "advancePxAt100": 55.300000000000004
+            },
+            {
+              "char": "3",
+              "glyphId": 134,
+              "advanceUnits": 1068,
+              "advancePxAt100": 53.400000000000006
+            },
+            {
+              "char": "4",
+              "glyphId": 135,
+              "advanceUnits": 1154,
+              "advancePxAt100": 57.699999999999996
+            },
+            {
+              "char": "5",
+              "glyphId": 136,
+              "advanceUnits": 1144,
+              "advancePxAt100": 57.199999999999996
+            },
+            {
+              "char": "6",
+              "glyphId": 137,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            },
+            {
+              "char": "7",
+              "glyphId": 138,
+              "advanceUnits": 962,
+              "advancePxAt100": 48.1
+            },
+            {
+              "char": "8",
+              "glyphId": 139,
+              "advanceUnits": 1118,
+              "advancePxAt100": 55.900000000000006
+            },
+            {
+              "char": "9",
+              "glyphId": 140,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            }
+          ]
+        },
+        {
+          "file": "node_modules\\@fontsource-variable\\manrope\\files\\manrope-vietnamese-wght-normal.woff2",
+          "bytes": 8520,
+          "sha256": "6bbb044ab420e07edb0a3042d2eb314b85e83a0182e945a15ab3b9092668dfd5",
+          "fontDisplay": "swap",
+          "fontWeight": "200 800",
+          "unitsPerEm": 2000,
+          "tableCount": 19,
+          "tableTags": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "loca",
+            "gvar",
+            "head",
+            "hhea",
+            "hmtx",
+            "maxp",
+            "name",
+            "post",
+            "prep"
+          ],
+          "cmapFormats": [
+            4,
+            4
+          ],
+          "featureTags": [
+            "kern"
+          ],
+          "axes": [
+            {
+              "tag": "wght",
+              "min": 200,
+              "default": 200,
+              "max": 800
+            }
+          ],
+          "names": {
+            "copyright": "Copyright 2019 The Manrope Project Authors (https://github.com/sharanda/manrope)",
+            "family": "Manrope ExtraLight",
+            "subfamily": "Regular",
+            "version": "Version 4.504",
+            "license": null,
+            "licenseUrl": "http://scripts.sil.org/OFL"
+          },
+          "digitAdvances": [
+            {
+              "char": "0",
+              "glyphId": 131,
+              "advanceUnits": 1156,
+              "advancePxAt100": 57.8
+            },
+            {
+              "char": "1",
+              "glyphId": 132,
+              "advanceUnits": 716,
+              "advancePxAt100": 35.8
+            },
+            {
+              "char": "2",
+              "glyphId": 133,
+              "advanceUnits": 1106,
+              "advancePxAt100": 55.300000000000004
+            },
+            {
+              "char": "3",
+              "glyphId": 134,
+              "advanceUnits": 1068,
+              "advancePxAt100": 53.400000000000006
+            },
+            {
+              "char": "4",
+              "glyphId": 135,
+              "advanceUnits": 1154,
+              "advancePxAt100": 57.699999999999996
+            },
+            {
+              "char": "5",
+              "glyphId": 136,
+              "advanceUnits": 1144,
+              "advancePxAt100": 57.199999999999996
+            },
+            {
+              "char": "6",
+              "glyphId": 137,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            },
+            {
+              "char": "7",
+              "glyphId": 138,
+              "advanceUnits": 962,
+              "advancePxAt100": 48.1
+            },
+            {
+              "char": "8",
+              "glyphId": 139,
+              "advanceUnits": 1118,
+              "advancePxAt100": 55.900000000000006
+            },
+            {
+              "char": "9",
+              "glyphId": 140,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            }
+          ]
+        },
+        {
+          "file": "node_modules\\@fontsource-variable\\manrope\\files\\manrope-latin-ext-wght-normal.woff2",
+          "bytes": 15120,
+          "sha256": "3911b66d9f2e005a4b989223405d0e5032619c668597ba467cc76a23c8fffcfb",
+          "fontDisplay": "swap",
+          "fontWeight": "200 800",
+          "unitsPerEm": 2000,
+          "tableCount": 19,
+          "tableTags": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "loca",
+            "gvar",
+            "head",
+            "hhea",
+            "hmtx",
+            "maxp",
+            "name",
+            "post",
+            "prep"
+          ],
+          "cmapFormats": [
+            4,
+            4
+          ],
+          "featureTags": [
+            "kern",
+            "locl"
+          ],
+          "axes": [
+            {
+              "tag": "wght",
+              "min": 200,
+              "default": 200,
+              "max": 800
+            }
+          ],
+          "names": {
+            "copyright": "Copyright 2019 The Manrope Project Authors (https://github.com/sharanda/manrope)",
+            "family": "Manrope ExtraLight",
+            "subfamily": "Regular",
+            "version": "Version 4.504",
+            "license": null,
+            "licenseUrl": "http://scripts.sil.org/OFL"
+          },
+          "digitAdvances": [
+            {
+              "char": "0",
+              "glyphId": 131,
+              "advanceUnits": 1156,
+              "advancePxAt100": 57.8
+            },
+            {
+              "char": "1",
+              "glyphId": 132,
+              "advanceUnits": 716,
+              "advancePxAt100": 35.8
+            },
+            {
+              "char": "2",
+              "glyphId": 133,
+              "advanceUnits": 1106,
+              "advancePxAt100": 55.300000000000004
+            },
+            {
+              "char": "3",
+              "glyphId": 134,
+              "advanceUnits": 1068,
+              "advancePxAt100": 53.400000000000006
+            },
+            {
+              "char": "4",
+              "glyphId": 135,
+              "advanceUnits": 1154,
+              "advancePxAt100": 57.699999999999996
+            },
+            {
+              "char": "5",
+              "glyphId": 136,
+              "advanceUnits": 1144,
+              "advancePxAt100": 57.199999999999996
+            },
+            {
+              "char": "6",
+              "glyphId": 137,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            },
+            {
+              "char": "7",
+              "glyphId": 138,
+              "advanceUnits": 962,
+              "advancePxAt100": 48.1
+            },
+            {
+              "char": "8",
+              "glyphId": 139,
+              "advanceUnits": 1118,
+              "advancePxAt100": 55.900000000000006
+            },
+            {
+              "char": "9",
+              "glyphId": 140,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            }
+          ]
+        },
+        {
+          "file": "node_modules\\@fontsource-variable\\manrope\\files\\manrope-latin-wght-normal.woff2",
+          "bytes": 24836,
+          "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972",
+          "fontDisplay": "swap",
+          "fontWeight": "200 800",
+          "unitsPerEm": 2000,
+          "tableCount": 19,
+          "tableTags": [
+            "GDEF",
+            "GPOS",
+            "GSUB",
+            "HVAR",
+            "OS/2",
+            "STAT",
+            "cmap",
+            "fvar",
+            "gasp",
+            "glyf",
+            "loca",
+            "gvar",
+            "head",
+            "hhea",
+            "hmtx",
+            "maxp",
+            "name",
+            "post",
+            "prep"
+          ],
+          "cmapFormats": [
+            4,
+            4
+          ],
+          "featureTags": [
+            "calt",
+            "dnom",
+            "frac",
+            "kern",
+            "liga",
+            "locl",
+            "numr",
+            "pnum",
+            "tnum"
+          ],
+          "axes": [
+            {
+              "tag": "wght",
+              "min": 200,
+              "default": 200,
+              "max": 800
+            }
+          ],
+          "names": {
+            "copyright": "Copyright 2019 The Manrope Project Authors (https://github.com/sharanda/manrope)",
+            "family": "Manrope ExtraLight",
+            "subfamily": "Regular",
+            "version": "Version 4.504",
+            "license": null,
+            "licenseUrl": "http://scripts.sil.org/OFL"
+          },
+          "digitAdvances": [
+            {
+              "char": "0",
+              "glyphId": 131,
+              "advanceUnits": 1156,
+              "advancePxAt100": 57.8
+            },
+            {
+              "char": "1",
+              "glyphId": 132,
+              "advanceUnits": 716,
+              "advancePxAt100": 35.8
+            },
+            {
+              "char": "2",
+              "glyphId": 133,
+              "advanceUnits": 1106,
+              "advancePxAt100": 55.300000000000004
+            },
+            {
+              "char": "3",
+              "glyphId": 134,
+              "advanceUnits": 1068,
+              "advancePxAt100": 53.400000000000006
+            },
+            {
+              "char": "4",
+              "glyphId": 135,
+              "advanceUnits": 1154,
+              "advancePxAt100": 57.699999999999996
+            },
+            {
+              "char": "5",
+              "glyphId": 136,
+              "advanceUnits": 1144,
+              "advancePxAt100": 57.199999999999996
+            },
+            {
+              "char": "6",
+              "glyphId": 137,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            },
+            {
+              "char": "7",
+              "glyphId": 138,
+              "advanceUnits": 962,
+              "advancePxAt100": 48.1
+            },
+            {
+              "char": "8",
+              "glyphId": 139,
+              "advanceUnits": 1118,
+              "advancePxAt100": 55.900000000000006
+            },
+            {
+              "char": "9",
+              "glyphId": 140,
+              "advanceUnits": 1240,
+              "advancePxAt100": 62
+            }
+          ]
+        }
+      ],
+      "fontNumeric": {
+        "hasTnumFeature": true,
+        "hasZeroFeature": false,
+        "featureTags": [
+          "calt",
+          "dnom",
+          "frac",
+          "kern",
+          "liga",
+          "locl",
+          "numr",
+          "pnum",
+          "tnum"
+        ],
+        "axes": [
+          {
+            "tag": "wght",
+            "min": 200,
+            "default": 200,
+            "max": 800
+          }
+        ],
+        "defaultDigitAdvanceSpreadPxAt100": 26.200000000000003
+      },
+      "builds": [
+        {
+          "file": "manrope-cyrillic-ext-wght-normal.woff2",
+          "bytes": 2552,
+          "gsubFeatureTags": [],
+          "gposFeatureTags": [
+            "kern"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "manrope-cyrillic-wght-normal.woff2",
+          "bytes": 14500,
+          "gsubFeatureTags": [
+            "locl"
+          ],
+          "gposFeatureTags": [
+            "kern"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "manrope-greek-wght-normal.woff2",
+          "bytes": 9444,
+          "gsubFeatureTags": [],
+          "gposFeatureTags": [
+            "kern"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "manrope-latin-ext-wght-normal.woff2",
+          "bytes": 15120,
+          "gsubFeatureTags": [
+            "locl"
+          ],
+          "gposFeatureTags": [
+            "kern"
+          ],
+          "hasTnum": false
+        },
+        {
+          "file": "manrope-latin-wght-normal.woff2",
+          "bytes": 24836,
+          "gsubFeatureTags": [
+            "calt",
+            "dnom",
+            "frac",
+            "liga",
+            "locl",
+            "numr",
+            "pnum",
+            "tnum"
+          ],
+          "gposFeatureTags": [
+            "kern"
+          ],
+          "hasTnum": true
+        },
+        {
+          "file": "manrope-vietnamese-wght-normal.woff2",
+          "bytes": 8520,
+          "gsubFeatureTags": [],
+          "gposFeatureTags": [
+            "kern"
+          ],
+          "hasTnum": false
+        }
+      ]
+    }
+  ],
+  "browserMeasurements": {
+    "checks": {
+      "MareaDMProbe": {
+        "loaded": true,
+        "fontVariantNumericSupported": true
+      },
+      "MareaManropeProbe": {
+        "loaded": true,
+        "fontVariantNumericSupported": true
+      }
+    },
+    "digitWidths": {
+      "MareaDMProbe": {
+        "48": {
+          "normal": [
+            33.796875,
+            17.484375,
+            27.703125,
+            28.953125,
+            31.203125,
+            29.8125,
+            30.4375,
+            25.734375,
+            30.34375,
+            30.4375
+          ],
+          "cssTabular": [
+            33.796875,
+            17.484375,
+            27.703125,
+            28.953125,
+            31.203125,
+            29.8125,
+            30.4375,
+            25.734375,
+            30.34375,
+            30.4375
+          ],
+          "featureTnum": [
+            33.796875,
+            17.484375,
+            27.703125,
+            28.953125,
+            31.203125,
+            29.8125,
+            30.4375,
+            25.734375,
+            30.34375,
+            30.4375
+          ]
+        },
+        "72": {
+          "normal": [
+            50.703125,
+            26.21875,
+            41.546875,
+            43.421875,
+            46.8125,
+            44.71875,
+            45.65625,
+            38.59375,
+            45.515625,
+            45.65625
+          ],
+          "cssTabular": [
+            50.703125,
+            26.21875,
+            41.546875,
+            43.421875,
+            46.8125,
+            44.71875,
+            45.65625,
+            38.59375,
+            45.515625,
+            45.65625
+          ],
+          "featureTnum": [
+            50.703125,
+            26.21875,
+            41.546875,
+            43.421875,
+            46.8125,
+            44.71875,
+            45.65625,
+            38.59375,
+            45.515625,
+            45.65625
+          ]
+        },
+        "100": {
+          "normal": [
+            70.40625,
+            36.40625,
+            57.703125,
+            60.3125,
+            65,
+            62.109375,
+            63.40625,
+            53.609375,
+            63.203125,
+            63.40625
+          ],
+          "cssTabular": [
+            70.40625,
+            36.40625,
+            57.703125,
+            60.3125,
+            65,
+            62.109375,
+            63.40625,
+            53.609375,
+            63.203125,
+            63.40625
+          ],
+          "featureTnum": [
+            70.40625,
+            36.40625,
+            57.703125,
+            60.3125,
+            65,
+            62.109375,
+            63.40625,
+            53.609375,
+            63.203125,
+            63.40625
+          ]
+        }
+      },
+      "MareaManropeProbe": {
+        "48": {
+          "normal": [
+            31.59375,
+            21.03125,
+            28.59375,
+            27.921875,
+            29.21875,
+            28.140625,
+            29.84375,
+            25.609375,
+            29.40625,
+            29.84375
+          ],
+          "cssTabular": [
+            29.765625,
+            29.765625,
+            29.765625,
+            29.765625,
+            29.765625,
+            29.765625,
+            29.84375,
+            29.765625,
+            29.765625,
+            29.765625
+          ],
+          "featureTnum": [
+            29.765625,
+            29.765625,
+            29.765625,
+            29.765625,
+            29.765625,
+            29.765625,
+            29.84375,
+            29.765625,
+            29.765625,
+            29.765625
+          ]
+        },
+        "72": {
+          "normal": [
+            47.390625,
+            31.546875,
+            42.890625,
+            41.875,
+            43.8125,
+            42.203125,
+            44.75,
+            38.421875,
+            44.109375,
+            44.75
+          ],
+          "cssTabular": [
+            44.640625,
+            44.640625,
+            44.640625,
+            44.640625,
+            44.640625,
+            44.640625,
+            44.75,
+            44.640625,
+            44.640625,
+            44.640625
+          ],
+          "featureTnum": [
+            44.640625,
+            44.640625,
+            44.640625,
+            44.640625,
+            44.640625,
+            44.640625,
+            44.75,
+            44.640625,
+            44.640625,
+            44.640625
+          ]
+        },
+        "100": {
+          "normal": [
+            65.8125,
+            43.8125,
+            59.5625,
+            58.15625,
+            60.859375,
+            58.609375,
+            62.15625,
+            53.359375,
+            61.25,
+            62.15625
+          ],
+          "cssTabular": [
+            62,
+            62,
+            62,
+            62,
+            62,
+            62,
+            62.15625,
+            62,
+            62,
+            62
+          ],
+          "featureTnum": [
+            62,
+            62,
+            62,
+            62,
+            62,
+            62,
+            62.15625,
+            62,
+            62,
+            62
+          ]
+        }
+      }
+    },
+    "spreads": {
+      "MareaDMProbe": {
+        "48": {
+          "normal": 16.3125,
+          "cssTabular": 16.3125,
+          "featureTnum": 16.3125
+        },
+        "72": {
+          "normal": 24.484375,
+          "cssTabular": 24.484375,
+          "featureTnum": 24.484375
+        },
+        "100": {
+          "normal": 34,
+          "cssTabular": 34,
+          "featureTnum": 34
+        }
+      },
+      "MareaManropeProbe": {
+        "48": {
+          "normal": 10.5625,
+          "cssTabular": 0.078125,
+          "featureTnum": 0.078125
+        },
+        "72": {
+          "normal": 15.84375,
+          "cssTabular": 0.109375,
+          "featureTnum": 0.109375
+        },
+        "100": {
+          "normal": 22,
+          "cssTabular": 0.15625,
+          "featureTnum": 0.15625
+        }
+      }
+    },
+    "columns": [
+      {
+        "family": "MareaDMProbe",
+        "variant": "normal",
+        "left": "00:00",
+        "right": "23:59",
+        "maxColumnDeltaPx": 40.46875
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "normal",
+        "left": "000┬░",
+        "right": "359┬░",
+        "maxColumnDeltaPx": 27.765625
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "normal",
+        "left": "6.4 kn",
+        "right": "6.4 kn",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "normal",
+        "left": "08.4 m",
+        "right": "18.4 m",
+        "maxColumnDeltaPx": 34
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "cssTabular",
+        "left": "00:00",
+        "right": "23:59",
+        "maxColumnDeltaPx": 40.46875
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "cssTabular",
+        "left": "000┬░",
+        "right": "359┬░",
+        "maxColumnDeltaPx": 27.765625
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "cssTabular",
+        "left": "6.4 kn",
+        "right": "6.4 kn",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "cssTabular",
+        "left": "08.4 m",
+        "right": "18.4 m",
+        "maxColumnDeltaPx": 34
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "featureTnum",
+        "left": "00:00",
+        "right": "23:59",
+        "maxColumnDeltaPx": 40.46875
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "featureTnum",
+        "left": "000┬░",
+        "right": "359┬░",
+        "maxColumnDeltaPx": 27.765625
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "featureTnum",
+        "left": "6.4 kn",
+        "right": "6.4 kn",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaDMProbe",
+        "variant": "featureTnum",
+        "left": "08.4 m",
+        "right": "18.4 m",
+        "maxColumnDeltaPx": 34
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "normal",
+        "left": "00:00",
+        "right": "23:59",
+        "maxColumnDeltaPx": 24.75
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "normal",
+        "left": "000┬░",
+        "right": "359┬░",
+        "maxColumnDeltaPx": 18.5
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "normal",
+        "left": "6.4 kn",
+        "right": "6.4 kn",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "normal",
+        "left": "08.4 m",
+        "right": "18.4 m",
+        "maxColumnDeltaPx": 22
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "cssTabular",
+        "left": "00:00",
+        "right": "23:59",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "cssTabular",
+        "left": "000┬░",
+        "right": "359┬░",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "cssTabular",
+        "left": "6.4 kn",
+        "right": "6.4 kn",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "cssTabular",
+        "left": "08.4 m",
+        "right": "18.4 m",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "featureTnum",
+        "left": "00:00",
+        "right": "23:59",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "featureTnum",
+        "left": "000┬░",
+        "right": "359┬░",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "featureTnum",
+        "left": "6.4 kn",
+        "right": "6.4 kn",
+        "maxColumnDeltaPx": 0
+      },
+      {
+        "family": "MareaManropeProbe",
+        "variant": "featureTnum",
+        "left": "08.4 m",
+        "right": "18.4 m",
+        "maxColumnDeltaPx": 0
+      }
+    ],
+    "stringWidths": [
+      {
+        "family": "MareaDMProbe",
+        "value": "00:00",
+        "normalPx": 307.109375,
+        "tabularPx": 307.109375,
+        "featureTnumPx": 307.109375
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "23:59",
+        "normalPx": 266.640625,
+        "tabularPx": 266.640625,
+        "featureTnumPx": 266.640625
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "000┬░",
+        "normalPx": 247.5,
+        "tabularPx": 247.5,
+        "featureTnumPx": 247.5
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "359┬░",
+        "normalPx": 219.734375,
+        "tabularPx": 219.734375,
+        "featureTnumPx": 219.734375
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "6.4 kn",
+        "normalPx": 293.328125,
+        "tabularPx": 293.328125,
+        "featureTnumPx": 293.328125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "12.8 V",
+        "normalPx": 276.8125,
+        "tabularPx": 276.8125,
+        "featureTnumPx": 276.8125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "14.2 A",
+        "normalPx": 278.8125,
+        "tabularPx": 278.8125,
+        "featureTnumPx": 278.8125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "37.5┬░ N",
+        "normalPx": 327.40625,
+        "tabularPx": 327.40625,
+        "featureTnumPx": 327.40625
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "008┬░ W",
+        "normalPx": 365.703125,
+        "tabularPx": 365.703125,
+        "featureTnumPx": 365.703125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "1013 hPa",
+        "normalPx": 405.609375,
+        "tabularPx": 405.609375,
+        "featureTnumPx": 405.609375
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "24.6 ┬░C",
+        "normalPx": 341.296875,
+        "tabularPx": 341.296875,
+        "featureTnumPx": 341.296875
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Marea alta",
+        "normalPx": 516.921875,
+        "tabularPx": 516.921875,
+        "featureTnumPx": 516.921875
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Profundidad",
+        "normalPx": 605.421875,
+        "tabularPx": 605.421875,
+        "featureTnumPx": 605.421875
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Babor",
+        "normalPx": 289.703125,
+        "tabularPx": 289.703125,
+        "featureTnumPx": 289.703125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Estribor",
+        "normalPx": 388.8125,
+        "tabularPx": 388.8125,
+        "featureTnumPx": 388.8125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Rumbo 045┬░",
+        "normalPx": 602.5,
+        "tabularPx": 602.5,
+        "featureTnumPx": 602.5
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "6,4 kn",
+        "normalPx": 296.109375,
+        "tabularPx": 296.109375,
+        "featureTnumPx": 296.109375
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "18,5 ┬░C",
+        "normalPx": 320,
+        "tabularPx": 320,
+        "featureTnumPx": 320
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "┬┐Actualizar?",
+        "normalPx": 602.640625,
+        "tabularPx": 602.640625,
+        "featureTnumPx": 602.640625
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "ping├╝ino",
+        "normalPx": 425.8125,
+        "tabularPx": 425.8125,
+        "featureTnumPx": 425.8125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "├ü├ë├ì├ô├Ü├æ├£",
+        "normalPx": 444.609375,
+        "tabularPx": 444.609375,
+        "featureTnumPx": 444.609375
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Mar├®",
+        "normalPx": 247.515625,
+        "tabularPx": 247.515625,
+        "featureTnumPx": 247.515625
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Profundidade",
+        "normalPx": 665.625,
+        "tabularPx": 665.625,
+        "featureTnumPx": 665.625
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Estibordo",
+        "normalPx": 473.625,
+        "tabularPx": 473.625,
+        "featureTnumPx": 473.625
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Rumo",
+        "normalPx": 279.703125,
+        "tabularPx": 279.703125,
+        "featureTnumPx": 279.703125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "6,4 n├│s",
+        "normalPx": 352.40625,
+        "tabularPx": 352.40625,
+        "featureTnumPx": 352.40625
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Mar├®e",
+        "normalPx": 307.71875,
+        "tabularPx": 307.71875,
+        "featureTnumPx": 307.71875
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Profondeur",
+        "normalPx": 548.515625,
+        "tabularPx": 548.515625,
+        "featureTnumPx": 548.515625
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "B├óbord",
+        "normalPx": 354.421875,
+        "tabularPx": 354.421875,
+        "featureTnumPx": 354.421875
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "Cap",
+        "normalPx": 197.8125,
+        "tabularPx": 197.8125,
+        "featureTnumPx": 197.8125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "6,4 nd",
+        "normalPx": 303.8125,
+        "tabularPx": 303.8125,
+        "featureTnumPx": 303.8125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "045┬░ T",
+        "normalPx": 317.109375,
+        "tabularPx": 317.109375,
+        "featureTnumPx": 317.109375
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "045┬░ M",
+        "normalPx": 346,
+        "tabularPx": 346,
+        "featureTnumPx": 346
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "1.234,5",
+        "normalPx": 331.3125,
+        "tabularPx": 331.3125,
+        "featureTnumPx": 331.3125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "1,234.5",
+        "normalPx": 331.3125,
+        "tabularPx": 331.3125,
+        "featureTnumPx": 331.3125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "STALE 00:12",
+        "normalPx": 581.125,
+        "tabularPx": 581.125,
+        "featureTnumPx": 581.125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "OFFLINE",
+        "normalPx": 404,
+        "tabularPx": 404,
+        "featureTnumPx": 404
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "NO DATA",
+        "normalPx": 427.953125,
+        "tabularPx": 427.953125,
+        "featureTnumPx": 427.953125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "ÔÇö",
+        "normalPx": 91.8125,
+        "tabularPx": 91.8125,
+        "featureTnumPx": 91.8125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "ÔêÆ0,5",
+        "normalPx": 212,
+        "tabularPx": 212,
+        "featureTnumPx": 212
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "├æand├║",
+        "normalPx": 320.40625,
+        "tabularPx": 320.40625,
+        "featureTnumPx": 320.40625
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "d├¡a",
+        "normalPx": 150.8125,
+        "tabularPx": 150.8125,
+        "featureTnumPx": 150.8125
+      },
+      {
+        "family": "MareaDMProbe",
+        "value": "a├▒o",
+        "normalPx": 181.3125,
+        "tabularPx": 181.3125,
+        "featureTnumPx": 181.3125
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "00:00",
+        "normalPx": 297.453125,
+        "tabularPx": 282.25,
+        "featureTnumPx": 282.25
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "23:59",
+        "normalPx": 272.703125,
+        "tabularPx": 282.25,
+        "featureTnumPx": 282.25
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "000┬░",
+        "normalPx": 242.40625,
+        "tabularPx": 231,
+        "featureTnumPx": 231
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "359┬░",
+        "normalPx": 223.90625,
+        "tabularPx": 231,
+        "featureTnumPx": 231
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "6.4 kn",
+        "normalPx": 289.703125,
+        "tabularPx": 290.859375,
+        "featureTnumPx": 290.859375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "12.8 V",
+        "normalPx": 279,
+        "tabularPx": 300.40625,
+        "featureTnumPx": 300.40625
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "14.2 A",
+        "normalPx": 279.609375,
+        "tabularPx": 303.40625,
+        "featureTnumPx": 303.40625
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "37.5┬░ N",
+        "normalPx": 335.59375,
+        "tabularPx": 353.15625,
+        "featureTnumPx": 353.15625
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "008┬░ W",
+        "normalPx": 355.40625,
+        "tabularPx": 348.5625,
+        "featureTnumPx": 348.5625
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "1013 hPa",
+        "normalPx": 414.21875,
+        "tabularPx": 450.671875,
+        "featureTnumPx": 450.671875
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "24.6 ┬░C",
+        "normalPx": 347.75,
+        "tabularPx": 355.359375,
+        "featureTnumPx": 355.359375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Marea alta",
+        "normalPx": 505.359375,
+        "tabularPx": 505.359375,
+        "featureTnumPx": 505.359375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Profundidad",
+        "normalPx": 597.375,
+        "tabularPx": 597.375,
+        "featureTnumPx": 597.375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Babor",
+        "normalPx": 284,
+        "tabularPx": 284,
+        "featureTnumPx": 284
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Estribor",
+        "normalPx": 387.203125,
+        "tabularPx": 387.203125,
+        "featureTnumPx": 387.203125
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Rumbo 045┬░",
+        "normalPx": 592.109375,
+        "tabularPx": 592.859375,
+        "featureTnumPx": 592.859375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "6,4 kn",
+        "normalPx": 289.703125,
+        "tabularPx": 290.859375,
+        "featureTnumPx": 290.859375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "18,5 ┬░C",
+        "normalPx": 332.859375,
+        "tabularPx": 355.203125,
+        "featureTnumPx": 355.203125
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "┬┐Actualizar?",
+        "normalPx": 602.609375,
+        "tabularPx": 602.609375,
+        "featureTnumPx": 602.609375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "ping├╝ino",
+        "normalPx": 427.921875,
+        "tabularPx": 427.921875,
+        "featureTnumPx": 427.921875
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "├ü├ë├ì├ô├Ü├æ├£",
+        "normalPx": 444.359375,
+        "tabularPx": 444.359375,
+        "featureTnumPx": 444.359375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Mar├®",
+        "normalPx": 243.203125,
+        "tabularPx": 243.203125,
+        "featureTnumPx": 243.203125
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Profundidade",
+        "normalPx": 657.578125,
+        "tabularPx": 657.578125,
+        "featureTnumPx": 657.578125
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Estibordo",
+        "normalPx": 469.8125,
+        "tabularPx": 469.8125,
+        "featureTnumPx": 469.8125
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Rumo",
+        "normalPx": 279.421875,
+        "tabularPx": 279.421875,
+        "featureTnumPx": 279.421875
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "6,4 n├│s",
+        "normalPx": 349.78125,
+        "tabularPx": 350.921875,
+        "featureTnumPx": 350.921875
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Mar├®e",
+        "normalPx": 303.40625,
+        "tabularPx": 303.40625,
+        "featureTnumPx": 303.40625
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Profondeur",
+        "normalPx": 548.21875,
+        "tabularPx": 548.21875,
+        "featureTnumPx": 548.21875
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "B├óbord",
+        "normalPx": 344.703125,
+        "tabularPx": 344.703125,
+        "featureTnumPx": 344.703125
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "Cap",
+        "normalPx": 193.0625,
+        "tabularPx": 193.0625,
+        "featureTnumPx": 193.0625
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "6,4 nd",
+        "normalPx": 296.78125,
+        "tabularPx": 297.921875,
+        "featureTnumPx": 297.921875
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "045┬░ T",
+        "normalPx": 310.90625,
+        "tabularPx": 311.65625,
+        "featureTnumPx": 311.65625
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "045┬░ M",
+        "normalPx": 335.75,
+        "tabularPx": 336.5,
+        "featureTnumPx": 336.5
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "1.234,5",
+        "normalPx": 335.65625,
+        "tabularPx": 370.703125,
+        "featureTnumPx": 370.703125
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "1,234.5",
+        "normalPx": 335.65625,
+        "tabularPx": 370.703125,
+        "featureTnumPx": 370.703125
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "STALE 00:12",
+        "normalPx": 592.5,
+        "tabularPx": 605.5625,
+        "featureTnumPx": 605.5625
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "OFFLINE",
+        "normalPx": 391.359375,
+        "tabularPx": 391.359375,
+        "featureTnumPx": 391.359375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "NO DATA",
+        "normalPx": 421.5625,
+        "tabularPx": 421.5625,
+        "featureTnumPx": 421.5625
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "ÔÇö",
+        "normalPx": 78,
+        "tabularPx": 78,
+        "featureTnumPx": 78
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "ÔêÆ0,5",
+        "normalPx": 208.75,
+        "tabularPx": 208.359375,
+        "featureTnumPx": 208.359375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "├æand├║",
+        "normalPx": 315.375,
+        "tabularPx": 315.375,
+        "featureTnumPx": 315.375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "d├¡a",
+        "normalPx": 147.359375,
+        "tabularPx": 147.359375,
+        "featureTnumPx": 147.359375
+      },
+      {
+        "family": "MareaManropeProbe",
+        "value": "a├▒o",
+        "normalPx": 181.953125,
+        "tabularPx": 181.953125,
+        "featureTnumPx": 181.953125
+      }
+    ],
+    "minus": {
+      "MareaDMProbe": {
+        "minusU2212": 57.90625,
+        "hyphenU002D": 57.609375,
+        "zero": 70.40625
+      },
+      "MareaManropeProbe": {
+        "minusU2212": 54,
+        "hyphenU002D": 42,
+        "zero": 65.8125
+      }
+    },
+    "loadedFaces": [
+      {
+        "family": "MareaDMProbe",
+        "status": "unloaded",
+        "weight": "100 1000",
+        "unicodeRange": "U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF"
+      },
+      {
+        "family": "MareaDMProbe",
+        "status": "loaded",
+        "weight": "100 1000",
+        "unicodeRange": "U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+      },
+      {
+        "family": "MareaManropeProbe",
+        "status": "unloaded",
+        "weight": "200 800",
+        "unicodeRange": "U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F"
+      },
+      {
+        "family": "MareaManropeProbe",
+        "status": "unloaded",
+        "weight": "200 800",
+        "unicodeRange": "U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116"
+      },
+      {
+        "family": "MareaManropeProbe",
+        "status": "unloaded",
+        "weight": "200 800",
+        "unicodeRange": "U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF"
+      },
+      {
+        "family": "MareaManropeProbe",
+        "status": "unloaded",
+        "weight": "200 800",
+        "unicodeRange": "U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB"
+      },
+      {
+        "family": "MareaManropeProbe",
+        "status": "unloaded",
+        "weight": "200 800",
+        "unicodeRange": "U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF"
+      },
+      {
+        "family": "MareaManropeProbe",
+        "status": "loaded",
+        "weight": "200 800",
+        "unicodeRange": "U+0-FF, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD"
+      }
+    ]
+  },
+  "coverage": [
+    {
+      "font": "dm-sans",
+      "requiredChars": 68,
+      "missingChars": [],
+      "stringsWithGaps": [],
+      "numericStrings": [
+        {
+          "kind": "numeric",
+          "value": "00:00",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "23:59",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "000┬░",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "359┬░",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "6.4 kn",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "12.8 V",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "14.2 A",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "37.5┬░ N",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "008┬░ W",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "1013 hPa",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "24.6 ┬░C",
+          "uncovered": []
+        }
+      ],
+      "localeStrings": [
+        {
+          "kind": "locale",
+          "value": "Marea alta",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Profundidad",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Babor",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Estribor",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Rumbo 045┬░",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "6,4 kn",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "18,5 ┬░C",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "┬┐Actualizar?",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "ping├╝ino",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "├ü├ë├ì├ô├Ü├æ├£",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Mar├®",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Profundidade",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Estibordo",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Rumo",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "6,4 n├│s",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Mar├®e",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Profondeur",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "B├óbord",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Cap",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "6,4 nd",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "045┬░ T",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "045┬░ M",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "1.234,5",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "1,234.5",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "STALE 00:12",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "OFFLINE",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "NO DATA",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "ÔÇö",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "ÔêÆ0,5",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "├æand├║",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "d├¡a",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "a├▒o",
+          "uncovered": []
+        }
+      ],
+      "optionalProbes": [
+        {
+          "char": "ÔÇ▓",
+          "codePoint": 8242,
+          "name": "prime",
+          "available": false
+        },
+        {
+          "char": "ÔÇ│",
+          "codePoint": 8243,
+          "name": "double prime",
+          "available": false
+        }
+      ]
+    },
+    {
+      "font": "manrope",
+      "requiredChars": 68,
+      "missingChars": [],
+      "stringsWithGaps": [],
+      "numericStrings": [
+        {
+          "kind": "numeric",
+          "value": "00:00",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "23:59",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "000┬░",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "359┬░",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "6.4 kn",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "12.8 V",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "14.2 A",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "37.5┬░ N",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "008┬░ W",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "1013 hPa",
+          "uncovered": []
+        },
+        {
+          "kind": "numeric",
+          "value": "24.6 ┬░C",
+          "uncovered": []
+        }
+      ],
+      "localeStrings": [
+        {
+          "kind": "locale",
+          "value": "Marea alta",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Profundidad",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Babor",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Estribor",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Rumbo 045┬░",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "6,4 kn",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "18,5 ┬░C",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "┬┐Actualizar?",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "ping├╝ino",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "├ü├ë├ì├ô├Ü├æ├£",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Mar├®",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Profundidade",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Estibordo",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Rumo",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "6,4 n├│s",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Mar├®e",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Profondeur",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "B├óbord",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "Cap",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "6,4 nd",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "045┬░ T",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "045┬░ M",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "1.234,5",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "1,234.5",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "STALE 00:12",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "OFFLINE",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "NO DATA",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "ÔÇö",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "ÔêÆ0,5",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "├æand├║",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "d├¡a",
+          "uncovered": []
+        },
+        {
+          "kind": "locale",
+          "value": "a├▒o",
+          "uncovered": []
+        }
+      ],
+      "optionalProbes": [
+        {
+          "char": "ÔÇ▓",
+          "codePoint": 8242,
+          "name": "prime",
+          "available": false
+        },
+        {
+          "char": "ÔÇ│",
+          "codePoint": 8243,
+          "name": "double prime",
+          "available": false
+        }
+      ]
+    }
+  ],
+  "deviations": [
+    {
+      "id": "TYPO-DEVIATION-01",
+      "decision": "Instrument numeric role carried by manrope instead of DM Sans (brief ┬º4.4 proposal)",
+      "reason": "the installed DM Sans 5.3.0 builds expose no tnum feature and render proportional digits; the brief N-1/N-2 requirement is non-negotiable",
+      "evidence": "scripts/check-typography.mjs: GSUB/GPOS scan of every shipped woff2 + Chromium digit-advance measurement"
+    }
+  ],
+  "findings": [
+    "dm-sans: every shipped @font-face declares font-display: swap",
+    "manrope: every shipped @font-face declares font-display: swap",
+    "manrope: 1 of 6 shipped woff2 builds declare 'tnum' (manrope-latin-wght-normal.woff2)",
+    "dm-sans: all 68 required characters are present in cmap AND served by a declared unicode-range",
+    "manrope: all 68 required characters are present in cmap AND served by a declared unicode-range",
+    "dm-sans: digit advance spread normal/tabular-nums/tnum at 48px 16.313/16.313/16.313 ┬À 72px 24.484/24.484/24.484 ┬À 100px 34.000/34.000/34.000",
+    "manrope: digit advance spread normal/tabular-nums/tnum at 48px 10.563/0.078/0.078 ┬À 72px 15.844/0.109/0.109 ┬À 100px 22.000/0.156/0.156"
+  ],
+  "warnings": [
+    "dm-sans: no shipped woff2 build declares a GSUB/GPOS 'tnum' feature ÔÇö tabular figures are unavailable in this package",
+    "dm-sans: display family is not fully tabular (spread 34.0000 px at 100 px); do not use it for mutable values, prices in tables or instrument numerics"
+  ],
+  "failures": [],
+  "result": "PASS"
+}

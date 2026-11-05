@@ -1,0 +1,39 @@
+{
+  "contractId": "MAREA-MC13-WORKING-CAPITAL",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "hardware-manufacturing-economics",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "status": "SCENARIO_ASSUMPTIONS_ONLY",
+  "note": "No MOQ, payment term, price-hold, credit line or FX hedge exists.",
+  "safetyStockMonths": 1,
+  "minimumOrderQuantityUnits": 25,
+  "leadTimeMonths": 2,
+  "supplierPaymentTerms": {
+    "depositPct": 30,
+    "depositAtOrder": true,
+    "balanceDueAfterDays": 30,
+    "assumptionIds": [
+      "ASM-MC13-011",
+      "ASM-MC13-012"
+    ],
+    "contracted": false
+  },
+  "customerCollection": {
+    "directSettlementDays": 2,
+    "distributorDays": 60,
+    "assumptionIds": [
+      "ASM-MC13-018",
+      "ASM-MC13-019"
+    ],
+    "contracted": false
+  },
+  "inventoryCarryingCostPctPerYear": 2,
+  "obsolescenceWriteDownPctPerYear": 5,
+  "initialInventoryUnits": 0,
+  "fxHedgeExists": false,
+  "creditFacilityExists": false,
+  "inventoryValuation": "CONSTANT_UNIT_COST_PER_SCENARIO"
+}

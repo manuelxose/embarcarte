@@ -1,0 +1,1273 @@
+{
+  "contractId": "MAREA-MC13-REVENUE-DRIVERS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "financial-architecture",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "note": "Price hypotheses are HYPOTHESIS_UNAPPROVED. Demand profiles are ILLUSTRATIVE SCENARIO ASSUMPTIONS with no customer evidence.",
+  "productFamilies": [
+    {
+      "id": "NAV",
+      "editions": [
+        "NAV-ESSENTIAL",
+        "NAV-PRO"
+      ],
+      "commercialAvailability": "NOT_FOR_SALE",
+      "clearanceGate": "CHART_LICENCE",
+      "clearanceDependencyId": "CLR-BASE_HYPOTHETICAL-NAV",
+      "safetyBlocked": false,
+      "notes": "Commercial availability stays NOT_FOR_SALE regardless of any hypothetical scenario."
+    },
+    {
+      "id": "HUB",
+      "editions": [
+        "HUB-STANDARD",
+        "HUB-PRO"
+      ],
+      "commercialAvailability": "NOT_FOR_SALE",
+      "clearanceGate": "RED_CERTIFICATION",
+      "clearanceDependencyId": "CLR-BASE_HYPOTHETICAL-HUB",
+      "safetyBlocked": false,
+      "notes": "Commercial availability stays NOT_FOR_SALE regardless of any hypothetical scenario."
+    },
+    {
+      "id": "AIS",
+      "editions": [
+        "AIS-RECEIVER",
+        "AIS-CONNECTED"
+      ],
+      "commercialAvailability": "NOT_FOR_SALE",
+      "clearanceGate": "NMEA_LICENCE",
+      "clearanceDependencyId": "CLR-BASE_HYPOTHETICAL-AIS",
+      "safetyBlocked": false,
+      "notes": "Commercial availability stays NOT_FOR_SALE regardless of any hypothetical scenario."
+    },
+    {
+      "id": "PILOT",
+      "editions": [
+        "PILOT-COASTAL",
+        "PILOT-SAIL",
+        "PILOT-PRO"
+      ],
+      "commercialAvailability": "NOT_FOR_SALE",
+      "clearanceGate": "SAFETY_GATE",
+      "clearanceDependencyId": "CLR-BASE_HYPOTHETICAL-PILOT",
+      "safetyBlocked": true,
+      "notes": "Safety gate BLOCKED; no cost, revenue or units are modelled."
+    },
+    {
+      "id": "SENSE",
+      "editions": [
+        "SENSE-WIND",
+        "SENSE-POWER",
+        "SENSE-BILGE",
+        "SENSE-TANKS",
+        "SENSE-ENV",
+        "SENSE-ESSENTIALS",
+        "SENSE-SAIL",
+        "SENSE-SYSTEMS"
+      ],
+      "commercialAvailability": "NOT_FOR_SALE",
+      "clearanceGate": "RED_CERTIFICATION",
+      "clearanceDependencyId": "CLR-BASE_HYPOTHETICAL-SENSE",
+      "safetyBlocked": false,
+      "notes": "Commercial availability stays NOT_FOR_SALE regardless of any hypothetical scenario."
+    },
+    {
+      "id": "WATCH",
+      "editions": [
+        "WATCH-CORE",
+        "WATCH-PLUS"
+      ],
+      "commercialAvailability": "NOT_FOR_SALE",
+      "clearanceGate": "RED_CERTIFICATION",
+      "clearanceDependencyId": "CLR-BASE_HYPOTHETICAL-WATCH",
+      "safetyBlocked": false,
+      "notes": "Commercial availability stays NOT_FOR_SALE regardless of any hypothetical scenario."
+    },
+    {
+      "id": "DISPLAY",
+      "editions": [
+        "DISPLAY-7",
+        "DISPLAY-LARGE-CONDITIONAL"
+      ],
+      "commercialAvailability": "NOT_FOR_SALE",
+      "clearanceGate": "RED_CERTIFICATION",
+      "clearanceDependencyId": "CLR-BASE_HYPOTHETICAL-DISPLAY",
+      "safetyBlocked": false,
+      "notes": "Commercial availability stays NOT_FOR_SALE regardless of any hypothetical scenario."
+    },
+    {
+      "id": "WEATHER",
+      "editions": [
+        "WEATHER-STANDARD",
+        "WEATHER-PRO"
+      ],
+      "commercialAvailability": "NOT_FOR_SALE",
+      "clearanceGate": "WEATHER_LICENCE",
+      "clearanceDependencyId": "CLR-BASE_HYPOTHETICAL-WEATHER",
+      "safetyBlocked": false,
+      "notes": "Commercial availability stays NOT_FOR_SALE regardless of any hypothetical scenario."
+    },
+    {
+      "id": "FLEET",
+      "editions": [
+        "FLEET-START",
+        "FLEET-BUSINESS",
+        "FLEET-ENTERPRISE"
+      ],
+      "commercialAvailability": "NOT_FOR_SALE",
+      "clearanceGate": "NONE",
+      "clearanceDependencyId": "CLR-BASE_HYPOTHETICAL-FLEET",
+      "safetyBlocked": false,
+      "notes": "Commercial availability stays NOT_FOR_SALE regardless of any hypothetical scenario."
+    }
+  ],
+  "hardwareSkus": [
+    {
+      "id": "HUB-STANDARD",
+      "familyId": "HUB",
+      "editionId": "HUB-STANDARD",
+      "contractualEdition": true,
+      "modelEnabled": true,
+      "productContractPath": "docs/marea/products/product-definitions.batch-01.json",
+      "priceHypothesis": {
+        "grossAmountEur": 349,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "ONE_OFF",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-01.json",
+        "sourceRecordId": "HUB.editions.HUB-STANDARD"
+      },
+      "knownVariableCostEur": 281.13,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-HUB-HUB-STANDARD-100-BASE",
+        "volumeTier": 100,
+        "case": "BASE"
+      },
+      "costCompleteness": "COMPLETE_KNOWN_VARIABLE_COSTS",
+      "recurringCostDriverIds": [
+        "ASM-MC13-029"
+      ],
+      "notes": "Known variable cost at the MC-11 100-unit BASE tier; fixed tooling and certification excluded."
+    },
+    {
+      "id": "HUB-PRO",
+      "familyId": "HUB",
+      "editionId": "HUB-PRO",
+      "contractualEdition": true,
+      "modelEnabled": true,
+      "productContractPath": "docs/marea/products/product-definitions.batch-01.json",
+      "priceHypothesis": {
+        "grossAmountEur": 499,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "ONE_OFF",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-01.json",
+        "sourceRecordId": "HUB.editions.HUB-PRO"
+      },
+      "knownVariableCostEur": 281.13,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-HUB-HUB-PRO-100-BASE",
+        "volumeTier": 100,
+        "case": "BASE"
+      },
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "unknownCostCategories": [
+        {
+          "category": "HUB_PRO_INCREMENTAL_COST",
+          "reason": "No edition-specific cost exists; the HUB-STANDARD floor understates the PRO cost."
+        }
+      ],
+      "recurringCostDriverIds": [
+        "ASM-MC13-029"
+      ],
+      "notes": "Uses the HUB-STANDARD variable-cost floor; the incremental PRO cost is unknown."
+    },
+    {
+      "id": "DISPLAY-7",
+      "familyId": "DISPLAY",
+      "editionId": "DISPLAY-7",
+      "contractualEdition": true,
+      "modelEnabled": true,
+      "productContractPath": "docs/marea/products/product-definitions.batch-03.json",
+      "priceHypothesis": {
+        "grossAmountEur": 699,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "ONE_OFF",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-03.json",
+        "sourceRecordId": "DISPLAY.editions.DISPLAY-7"
+      },
+      "knownVariableCostEur": 303.32,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-DISPLAY-DISPLAY-7-100-BASE",
+        "volumeTier": 100,
+        "case": "BASE"
+      },
+      "costCompleteness": "COMPLETE_KNOWN_VARIABLE_COSTS",
+      "recurringCostDriverIds": [
+        "ASM-MC13-029"
+      ],
+      "notes": "Strongest conditional hardware case carried from MC-12."
+    },
+    {
+      "id": "AIS-RECEIVER",
+      "familyId": "AIS",
+      "editionId": "AIS-RECEIVER",
+      "contractualEdition": true,
+      "modelEnabled": true,
+      "productContractPath": "docs/marea/products/product-definitions.batch-01.json",
+      "priceHypothesis": {
+        "grossAmountEur": 249,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "ONE_OFF",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-01.json",
+        "sourceRecordId": "AIS.editions.AIS-RECEIVER"
+      },
+      "knownVariableCostEur": 281.35,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-AIS-AIS-RECEIVER-100-BASE",
+        "volumeTier": 100,
+        "case": "BASE"
+      },
+      "costCompleteness": "COMPLETE_KNOWN_VARIABLE_COSTS",
+      "recurringCostDriverIds": [
+        "ASM-MC13-029"
+      ],
+      "notes": "Receive-only AIS; no transmission offer or revenue is modelled. Negative contribution at hypotheses."
+    },
+    {
+      "id": "SENSE-ENTRY-SYMBOLIC",
+      "familyId": "SENSE",
+      "editionId": null,
+      "contractualEdition": false,
+      "modelEnabled": true,
+      "productContractPath": "docs/marea/products/product-definitions.batch-02.json",
+      "priceHypothesis": {
+        "grossAmountEur": 99,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "ONE_OFF",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-02.json",
+        "sourceRecordId": "SENSE.entryPriceHypothesis"
+      },
+      "knownVariableCostEur": 88.27,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-SENSE-MODULE-100-BASE",
+        "volumeTier": 100,
+        "case": "BASE"
+      },
+      "costCompleteness": "COMPLETE_KNOWN_VARIABLE_COSTS",
+      "recurringCostDriverIds": [
+        "ASM-MC13-029"
+      ],
+      "notes": "SYMBOLIC family entry hypothesis, not an edition price. No SENSE edition has an established price."
+    },
+    {
+      "id": "WATCH-CORE",
+      "familyId": "WATCH",
+      "editionId": "WATCH-CORE",
+      "contractualEdition": true,
+      "modelEnabled": true,
+      "productContractPath": "docs/marea/products/product-definitions.batch-02.json",
+      "priceHypothesis": {
+        "grossAmountEur": 299,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "ONE_OFF",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-02.json",
+        "sourceRecordId": "WATCH.editions.WATCH-CORE"
+      },
+      "knownVariableCostEur": 190.9,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-WATCH-WATCH-CORE-100-BASE",
+        "volumeTier": 100,
+        "case": "BASE"
+      },
+      "costCompleteness": "COMPLETE_KNOWN_VARIABLE_COSTS",
+      "recurringCostDriverIds": [
+        "ASM-MC13-029",
+        "ASM-MC13-030",
+        "ASM-MC13-031"
+      ],
+      "notes": "Cellular and notification recurring drivers apply. No guaranteed alert delivery is claimed."
+    },
+    {
+      "id": "AIS-CONNECTED",
+      "familyId": "AIS",
+      "editionId": "AIS-CONNECTED",
+      "contractualEdition": true,
+      "modelEnabled": false,
+      "productContractPath": "docs/marea/products/product-definitions.batch-01.json",
+      "priceHypothesis": {
+        "grossAmountEur": 399,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "ONE_OFF",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-01.json",
+        "sourceRecordId": "AIS.editions.AIS-CONNECTED"
+      },
+      "knownVariableCostEur": null,
+      "costBasis": null,
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "notes": "Cost model incomplete; no revenue is modelled rather than inventing a cost."
+    },
+    {
+      "id": "PILOT-COASTAL",
+      "familyId": "PILOT",
+      "editionId": "PILOT-COASTAL",
+      "contractualEdition": true,
+      "modelEnabled": false,
+      "safetyBlocked": true,
+      "productContractPath": "docs/marea/products/product-definitions.batch-02.json",
+      "priceHypothesis": {
+        "grossAmountEur": 1290,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "ONE_OFF",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-02.json",
+        "sourceRecordId": "PILOT.editions.PILOT-COASTAL"
+      },
+      "knownVariableCostEur": null,
+      "costBasis": null,
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "notes": "PILOT safety gate BLOCKED: zero units, no cost, no revenue in every scenario."
+    }
+  ],
+  "subscriptionSkus": [
+    {
+      "id": "NAV-ESSENTIAL",
+      "familyId": "NAV",
+      "editionId": "NAV-ESSENTIAL",
+      "modelEnabled": true,
+      "billingPeriod": "YEAR",
+      "gatesLocalSafety": false,
+      "productContractPath": "docs/marea/products/product-definitions.batch-01.json",
+      "priceHypothesis": {
+        "grossAmountEur": 99,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "YEAR",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-01.json",
+        "sourceRecordId": "NAV.editions.NAV-ESSENTIAL"
+      },
+      "knownDirectCostEurPerYear": 10.43,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-NAV-NAV-ESSENTIAL-ANNUAL"
+      },
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "unknownCostCategories": [
+        {
+          "category": "DATA_LICENCE",
+          "reason": "Chart/weather licence right not granted and cost unknown."
+        }
+      ],
+      "sharedEntitlementLedgerId": "ENT-NAV-WEATHER",
+      "notes": "Licensing blocked. Local safety functions are never gated by this subscription."
+    },
+    {
+      "id": "NAV-PRO",
+      "familyId": "NAV",
+      "editionId": "NAV-PRO",
+      "modelEnabled": true,
+      "billingPeriod": "YEAR",
+      "gatesLocalSafety": false,
+      "productContractPath": "docs/marea/products/product-definitions.batch-01.json",
+      "priceHypothesis": {
+        "grossAmountEur": 149,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "YEAR",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-01.json",
+        "sourceRecordId": "NAV.editions.NAV-PRO"
+      },
+      "knownDirectCostEurPerYear": 12.42,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-NAV-NAV-PRO-ANNUAL"
+      },
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "unknownCostCategories": [
+        {
+          "category": "DATA_LICENCE",
+          "reason": "Chart/data licence right not granted and cost unknown."
+        }
+      ],
+      "sharedEntitlementLedgerId": "ENT-NAV-WEATHER",
+      "notes": "Licensing blocked."
+    },
+    {
+      "id": "WEATHER-STANDARD",
+      "familyId": "WEATHER",
+      "editionId": "WEATHER-STANDARD",
+      "modelEnabled": true,
+      "billingPeriod": "YEAR",
+      "gatesLocalSafety": false,
+      "productContractPath": "docs/marea/products/product-definitions.batch-03.json",
+      "priceHypothesis": {
+        "grossAmountEur": 49,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "YEAR",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-03.json",
+        "sourceRecordId": "WEATHER.editions.WEATHER-STANDARD"
+      },
+      "knownDirectCostEurPerYear": 5.45,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-WEATHER-WEATHER-STANDARD-ANNUAL"
+      },
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "unknownCostCategories": [
+        {
+          "category": "DATA_LICENCE",
+          "reason": "Weather provider re-display right not granted and cost unknown."
+        }
+      ],
+      "sharedEntitlementLedgerId": "ENT-NAV-WEATHER",
+      "notes": "Licensing blocked; shared NAV/WEATHER entitlement costed once."
+    },
+    {
+      "id": "WEATHER-PRO",
+      "familyId": "WEATHER",
+      "editionId": "WEATHER-PRO",
+      "modelEnabled": true,
+      "billingPeriod": "YEAR",
+      "gatesLocalSafety": false,
+      "productContractPath": "docs/marea/products/product-definitions.batch-03.json",
+      "priceHypothesis": {
+        "grossAmountEur": 89,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "YEAR",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-03.json",
+        "sourceRecordId": "WEATHER.editions.WEATHER-PRO"
+      },
+      "knownDirectCostEurPerYear": 7.04,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-WEATHER-WEATHER-PRO-ANNUAL"
+      },
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "unknownCostCategories": [
+        {
+          "category": "DATA_LICENCE",
+          "reason": "Weather provider re-display right not granted and cost unknown."
+        }
+      ],
+      "sharedEntitlementLedgerId": "ENT-NAV-WEATHER",
+      "notes": "Licensing blocked."
+    },
+    {
+      "id": "WATCH-MONITORING",
+      "familyId": "WATCH",
+      "editionId": "WATCH-CORE",
+      "modelEnabled": true,
+      "billingPeriod": "YEAR",
+      "gatesLocalSafety": false,
+      "productContractPath": "docs/marea/products/product-definitions.batch-02.json",
+      "priceHypothesis": {
+        "grossAmountEur": 118.8,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED",
+        "period": "YEAR",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-02.json",
+        "sourceRecordId": "WATCH.editions.WATCH-CORE.subscriptionHypothesis"
+      },
+      "knownDirectCostEurPerYear": 13.05,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL"
+      },
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "unknownCostCategories": [
+        {
+          "category": "WATCH_PLUS_SERVICE",
+          "reason": "WATCH-PLUS service scope and cost are not established."
+        }
+      ],
+      "sharedEntitlementLedgerId": null,
+      "notes": "EUR 9.90/month hypothesis; annual amount 118.80. No guaranteed alert delivery is claimed."
+    },
+    {
+      "id": "FLEET-START",
+      "familyId": "FLEET",
+      "editionId": "FLEET-START",
+      "modelEnabled": true,
+      "billingPeriod": "MONTH",
+      "gatesLocalSafety": false,
+      "productContractPath": "docs/marea/products/product-definitions.batch-03.json",
+      "priceHypothesis": {
+        "grossAmountEur": 49,
+        "currency": "EUR",
+        "vatBasis": "VAT_EXCLUDED_B2B",
+        "period": "MONTH",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-03.json",
+        "sourceRecordId": "FLEET.editions.FLEET-START"
+      },
+      "knownDirectCostEurPerYear": 37.08,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-FLEET-FLEET-START-VESSEL-ANNUAL"
+      },
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "unknownCostCategories": [
+        {
+          "category": "FLEET_ONBOARDING_DPA_SLA",
+          "reason": "Onboarding, DPA and SLA cost are not established."
+        }
+      ],
+      "sharedEntitlementLedgerId": null,
+      "notes": "Hardware-free per-vessel SaaS by default. No SLA or contract exists."
+    },
+    {
+      "id": "FLEET-BUSINESS",
+      "familyId": "FLEET",
+      "editionId": "FLEET-BUSINESS",
+      "modelEnabled": false,
+      "billingPeriod": "MONTH",
+      "gatesLocalSafety": false,
+      "productContractPath": "docs/marea/products/product-definitions.batch-03.json",
+      "priceHypothesis": {
+        "grossAmountEur": 79,
+        "currency": "EUR",
+        "vatBasis": "VAT_EXCLUDED_B2B",
+        "period": "MONTH",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-03.json",
+        "sourceRecordId": "FLEET.editions.FLEET-BUSINESS"
+      },
+      "knownDirectCostEurPerYear": 42.48,
+      "costBasis": {
+        "sourcePath": "docs/marea/economics/data/unit-economics.json",
+        "sourceRecordId": "UE-FLEET-FLEET-BUSINESS-VESSEL-ANNUAL"
+      },
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "unknownCostCategories": [
+        {
+          "category": "FLEET_ONBOARDING_DPA_SLA",
+          "reason": "Onboarding, DPA and SLA cost are not established."
+        }
+      ],
+      "sharedEntitlementLedgerId": null,
+      "notes": "Not modelled as demand: no contract, SLA or validated fleet customer exists."
+    },
+    {
+      "id": "FLEET-ENTERPRISE",
+      "familyId": "FLEET",
+      "editionId": "FLEET-ENTERPRISE",
+      "modelEnabled": false,
+      "billingPeriod": "MONTH",
+      "gatesLocalSafety": false,
+      "productContractPath": "docs/marea/products/product-definitions.batch-03.json",
+      "priceHypothesis": {
+        "grossAmountEur": null,
+        "currency": "EUR",
+        "vatBasis": "VAT_UNKNOWN",
+        "period": "MONTH",
+        "status": "NOT_ESTABLISHED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-03.json",
+        "sourceRecordId": "FLEET.editions.FLEET-ENTERPRISE"
+      },
+      "knownDirectCostEurPerYear": null,
+      "costBasis": null,
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "notes": "Price and cost not established; not modelled."
+    },
+    {
+      "id": "WATCH-PLUS",
+      "familyId": "WATCH",
+      "editionId": "WATCH-PLUS",
+      "modelEnabled": false,
+      "billingPeriod": "YEAR",
+      "gatesLocalSafety": false,
+      "productContractPath": "docs/marea/products/product-definitions.batch-02.json",
+      "priceHypothesis": {
+        "grossAmountEur": null,
+        "currency": "EUR",
+        "vatBasis": "VAT_UNKNOWN",
+        "period": "YEAR",
+        "status": "NOT_ESTABLISHED",
+        "sourcePath": "docs/marea/products/product-definitions.batch-02.json",
+        "sourceRecordId": "WATCH.editions.WATCH-PLUS"
+      },
+      "knownDirectCostEurPerYear": null,
+      "costBasis": null,
+      "costCompleteness": "INCOMPLETE_UNKNOWN_COSTS",
+      "notes": "Not modelled: edition price and service scope are not established."
+    }
+  ],
+  "bundles": [
+    {
+      "id": "START",
+      "priceHypothesisId": "PH-01",
+      "priceHypothesis": {
+        "amountEur": 499,
+        "currency": "EUR",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/bundles/bundle-definitions.json",
+        "sourceRecordId": "priceHypothesisRegister.PH-01"
+      },
+      "componentEditionIds": [
+        "HUB-STANDARD",
+        "NAV-PRO"
+      ],
+      "hardwareByDefault": true,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "notes": "Bundle price hypothesis only; no checkout value exists and no bundle is purchasable."
+    },
+    {
+      "id": "CRUISE",
+      "priceHypothesisId": "PH-02",
+      "priceHypothesis": {
+        "amountEur": 1399,
+        "currency": "EUR",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/bundles/bundle-definitions.json",
+        "sourceRecordId": "priceHypothesisRegister.PH-02"
+      },
+      "componentEditionIds": [
+        "NAV-ESSENTIAL",
+        "HUB-STANDARD",
+        "AIS-RECEIVER",
+        "DISPLAY-7",
+        "AIS-CONNECTED",
+        "DISPLAY-LARGE-CONDITIONAL"
+      ],
+      "hardwareByDefault": true,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "notes": "Bundle price hypothesis only; no checkout value exists and no bundle is purchasable."
+    },
+    {
+      "id": "SAIL",
+      "priceHypothesisId": "PH-03",
+      "priceHypothesis": {
+        "amountEur": 1990,
+        "currency": "EUR",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/bundles/bundle-definitions.json",
+        "sourceRecordId": "priceHypothesisRegister.PH-03"
+      },
+      "componentEditionIds": [
+        "NAV-PRO",
+        "HUB-STANDARD",
+        "PILOT-COASTAL",
+        "SENSE-WIND",
+        "PILOT-SAIL",
+        "PILOT-PRO"
+      ],
+      "hardwareByDefault": true,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "notes": "Bundle price hypothesis only; no checkout value exists and no bundle is purchasable."
+    },
+    {
+      "id": "PROTECT",
+      "priceHypothesisId": "PH-04",
+      "priceHypothesis": {
+        "amountEur": 399,
+        "currency": "EUR",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/bundles/bundle-definitions.json",
+        "sourceRecordId": "priceHypothesisRegister.PH-04"
+      },
+      "componentEditionIds": [
+        "WATCH-CORE",
+        "SENSE-ESSENTIALS",
+        "WATCH-PLUS"
+      ],
+      "hardwareByDefault": true,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "notes": "Bundle price hypothesis only; no checkout value exists and no bundle is purchasable."
+    },
+    {
+      "id": "COMPLETE",
+      "priceHypothesisId": "PH-05",
+      "priceHypothesis": {
+        "amountEur": 3490,
+        "currency": "EUR",
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "sourcePath": "docs/marea/bundles/bundle-definitions.json",
+        "sourceRecordId": "priceHypothesisRegister.PH-05"
+      },
+      "componentEditionIds": [
+        "NAV-PRO",
+        "HUB-PRO",
+        "DISPLAY-7",
+        "WATCH-CORE",
+        "SENSE-POWER",
+        "SENSE-BILGE",
+        "SENSE-TANKS",
+        "SENSE-ENV",
+        "PILOT-COASTAL",
+        "PILOT-PRO",
+        "PILOT-SAIL",
+        "DISPLAY-LARGE-CONDITIONAL"
+      ],
+      "hardwareByDefault": true,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "notes": "Bundle price hypothesis only; no checkout value exists and no bundle is purchasable."
+    },
+    {
+      "id": "FLEET",
+      "priceHypothesisId": "PH-06",
+      "priceHypothesis": {
+        "amountEur": null,
+        "currency": "EUR",
+        "status": "NOT_ESTABLISHED",
+        "sourcePath": "docs/marea/bundles/bundle-definitions.json",
+        "sourceRecordId": "priceHypothesisRegister.PH-06"
+      },
+      "componentEditionIds": [
+        "FLEET-START",
+        "FLEET-ENTERPRISE"
+      ],
+      "hardwareByDefault": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "notes": "Bundle price hypothesis only; no checkout value exists and no bundle is purchasable."
+    }
+  ],
+  "demandProfiles": [
+    {
+      "id": "DMD-001",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "HUB-STANDARD",
+      "familyId": "HUB",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 16,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-055",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-002",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "HUB-STANDARD",
+      "familyId": "HUB",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 40,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-056",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-003",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "HUB-STANDARD",
+      "familyId": "HUB",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 64,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-057",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-004",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "HUB-PRO",
+      "familyId": "HUB",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 3,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-058",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-005",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "HUB-PRO",
+      "familyId": "HUB",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 8,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-059",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-006",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "HUB-PRO",
+      "familyId": "HUB",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 13,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-060",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-007",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "DISPLAY-7",
+      "familyId": "DISPLAY",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 8,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-061",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-008",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "DISPLAY-7",
+      "familyId": "DISPLAY",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 20,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-062",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-009",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "DISPLAY-7",
+      "familyId": "DISPLAY",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 32,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-063",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-010",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "AIS-RECEIVER",
+      "familyId": "AIS",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 5,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-064",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-011",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "AIS-RECEIVER",
+      "familyId": "AIS",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 12,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-065",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-012",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "AIS-RECEIVER",
+      "familyId": "AIS",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 19,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-066",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-013",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "SENSE-ENTRY-SYMBOLIC",
+      "familyId": "SENSE",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 10,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-067",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-014",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "SENSE-ENTRY-SYMBOLIC",
+      "familyId": "SENSE",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 25,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-068",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-015",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "SENSE-ENTRY-SYMBOLIC",
+      "familyId": "SENSE",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 40,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-069",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-016",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "WATCH-CORE",
+      "familyId": "WATCH",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 12,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-070",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-017",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "WATCH-CORE",
+      "familyId": "WATCH",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 30,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-071",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-018",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "WATCH-CORE",
+      "familyId": "WATCH",
+      "launchOffsetMonths": 0,
+      "rampMonths": 6,
+      "matureMonthlyUnits": 48,
+      "matureMonthlyAccounts": null,
+      "assumptionId": "ASM-MC13-072",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-019",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "NAV-ESSENTIAL",
+      "familyId": "NAV",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 40,
+      "assumptionId": "ASM-MC13-073",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-020",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "NAV-ESSENTIAL",
+      "familyId": "NAV",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 100,
+      "assumptionId": "ASM-MC13-074",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-021",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "NAV-ESSENTIAL",
+      "familyId": "NAV",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 160,
+      "assumptionId": "ASM-MC13-075",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-022",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "NAV-PRO",
+      "familyId": "NAV",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 24,
+      "assumptionId": "ASM-MC13-076",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-023",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "NAV-PRO",
+      "familyId": "NAV",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 60,
+      "assumptionId": "ASM-MC13-077",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-024",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "NAV-PRO",
+      "familyId": "NAV",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 96,
+      "assumptionId": "ASM-MC13-078",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-025",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "WEATHER-STANDARD",
+      "familyId": "WEATHER",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 16,
+      "assumptionId": "ASM-MC13-079",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-026",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "WEATHER-STANDARD",
+      "familyId": "WEATHER",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 40,
+      "assumptionId": "ASM-MC13-080",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-027",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "WEATHER-STANDARD",
+      "familyId": "WEATHER",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 64,
+      "assumptionId": "ASM-MC13-081",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-028",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "WEATHER-PRO",
+      "familyId": "WEATHER",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 8,
+      "assumptionId": "ASM-MC13-082",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-029",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "WEATHER-PRO",
+      "familyId": "WEATHER",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 20,
+      "assumptionId": "ASM-MC13-083",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-030",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "WEATHER-PRO",
+      "familyId": "WEATHER",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 32,
+      "assumptionId": "ASM-MC13-084",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-031",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "WATCH-MONITORING",
+      "familyId": "WATCH",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 8,
+      "assumptionId": "ASM-MC13-085",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-032",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "WATCH-MONITORING",
+      "familyId": "WATCH",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 20,
+      "assumptionId": "ASM-MC13-086",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-033",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "WATCH-MONITORING",
+      "familyId": "WATCH",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 32,
+      "assumptionId": "ASM-MC13-087",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-034",
+      "scenarioId": "DOWNSIDE",
+      "skuId": "FLEET-START",
+      "familyId": "FLEET",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 4,
+      "assumptionId": "ASM-MC13-088",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-035",
+      "scenarioId": "BASE_HYPOTHETICAL",
+      "skuId": "FLEET-START",
+      "familyId": "FLEET",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 10,
+      "assumptionId": "ASM-MC13-089",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    },
+    {
+      "id": "DMD-036",
+      "scenarioId": "UPSIDE_HYPOTHETICAL",
+      "skuId": "FLEET-START",
+      "familyId": "FLEET",
+      "launchOffsetMonths": 0,
+      "rampMonths": 4,
+      "matureMonthlyUnits": null,
+      "matureMonthlyAccounts": 16,
+      "assumptionId": "ASM-MC13-090",
+      "evidenceClass": "SCENARIO_ASSUMPTION"
+    }
+  ],
+  "portfolioCriteria": {
+    "NAV": {
+      "licensingDependency": 5,
+      "evidenceReadinessScore": 2,
+      "implementationDependency": 3,
+      "capitalAllocationEur": 70000,
+      "inheritedMc12Classification": "LICENSING_BLOCKED",
+      "inheritedMc12SourceId": "decision-matrix.NAV"
+    },
+    "HUB": {
+      "licensingDependency": 2,
+      "evidenceReadinessScore": 3,
+      "implementationDependency": 4,
+      "capitalAllocationEur": 60000,
+      "inheritedMc12Classification": "DEFER_RECOMMENDED",
+      "inheritedMc12SourceId": "decision-matrix.HUB"
+    },
+    "AIS": {
+      "licensingDependency": 3,
+      "evidenceReadinessScore": 2,
+      "implementationDependency": 4,
+      "capitalAllocationEur": 30000,
+      "inheritedMc12Classification": "DEFER_RECOMMENDED",
+      "inheritedMc12SourceId": "decision-matrix.AIS"
+    },
+    "PILOT": {
+      "licensingDependency": 3,
+      "evidenceReadinessScore": 1,
+      "implementationDependency": 5,
+      "capitalAllocationEur": 25000,
+      "inheritedMc12Classification": "SAFETY_BLOCKED",
+      "inheritedMc12SourceId": "decision-matrix.PILOT"
+    },
+    "SENSE": {
+      "licensingDependency": 2,
+      "evidenceReadinessScore": 3,
+      "implementationDependency": 3,
+      "capitalAllocationEur": 35000,
+      "inheritedMc12Classification": "DEFER_RECOMMENDED",
+      "inheritedMc12SourceId": "decision-matrix.SENSE"
+    },
+    "WATCH": {
+      "licensingDependency": 3,
+      "evidenceReadinessScore": 2,
+      "implementationDependency": 4,
+      "capitalAllocationEur": 45000,
+      "inheritedMc12Classification": "COST_MODEL_INCOMPLETE",
+      "inheritedMc12SourceId": "decision-matrix.WATCH"
+    },
+    "DISPLAY": {
+      "licensingDependency": 3,
+      "evidenceReadinessScore": 3,
+      "implementationDependency": 3,
+      "capitalAllocationEur": 55000,
+      "inheritedMc12Classification": "CONDITIONAL_ECONOMIC_CASE",
+      "inheritedMc12SourceId": "decision-matrix.DISPLAY"
+    },
+    "WEATHER": {
+      "licensingDependency": 5,
+      "evidenceReadinessScore": 2,
+      "implementationDependency": 2,
+      "capitalAllocationEur": 35000,
+      "inheritedMc12Classification": "LICENSING_BLOCKED",
+      "inheritedMc12SourceId": "decision-matrix.WEATHER"
+    },
+    "FLEET": {
+      "licensingDependency": 2,
+      "evidenceReadinessScore": 2,
+      "implementationDependency": 3,
+      "capitalAllocationEur": 47500,
+      "inheritedMc12Classification": "COST_MODEL_INCOMPLETE",
+      "inheritedMc12SourceId": "decision-matrix.FLEET"
+    }
+  },
+  "inheritedMc12Conclusions": [
+    "NAV and WEATHER licensing is blocked; a unit contribution before an unknown data licence is not a decision number.",
+    "FLEET is economically interesting but incomplete; no contract, SLA or vessel customer exists.",
+    "DISPLAY is the strongest conditional hardware case.",
+    "WATCH is a potentially interesting hardware-plus-service structure, with unverified recurring contracts.",
+    "HUB is marginal at the 100-unit BASE cost.",
+    "SENSE entry price is below modelled cost.",
+    "AIS is negative at current hypotheses.",
+    "PILOT is safety blocked and cannot be modelled financially.",
+    "PROTECT is negative at its historical bundle hypothesis."
+  ]
+}

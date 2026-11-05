@@ -1,0 +1,618 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "workstream": "market",
+  "owner": "agent-a-market",
+  "scopeNote": "Weighted geographic assessment of the recreational marine markets considered by Workstream A. Criteria and weights were frozen before any region was scored; the weighted score measures absolute attractiveness, while the recommendation field adds a separately labelled sequencing overlay.",
+  "weightsFrozenAt": "2026-10-31",
+  "weightsFrozenBeforeScoring": true,
+  "scoringScale": "Each criterion is scored 1-5. Weighted score = sum(score x weight), range 1.00-5.00. Normalised score = weighted / 5 x 100. Scores are analyst judgements anchored to the cited claims; they are not measurements and carry the confidence of their weakest supporting claim.",
+  "weights": {
+    "baseDensity": 0.25,
+    "demandMomentum": 0.15,
+    "addressableMix": 0.15,
+    "commercialOperators": 0.15,
+    "seasonalityWindow": 0.1,
+    "channelEcosystem": 0.1,
+    "evidenceQuality": 0.1
+  },
+  "weightSum": 1.0,
+  "weightDefinitions": {
+    "baseDensity": {
+      "definition": "Documented recreational berth capacity and vessel population available in the region.",
+      "rationale": "Installation-heavy hardware needs a physically present installed base; this is the strongest single determinant of reachable demand and the criterion with the best available evidence."
+    },
+    "demandMomentum": {
+      "definition": "Direction of new recreational registrations in the most recent published year (2025 vs 2024).",
+      "rationale": "New owners are the most likely equipment buyers; momentum signals a growing rather than contracting addressable pool. Weighted below base because a one-year change on a small provincial base is noisy."
+    },
+    "addressableMix": {
+      "definition": "Plausible share of craft in the 6-16 m band where navigation, gateway and monitoring electronics are economically sensible.",
+      "rationale": "Electronics relevance is a hard eligibility filter. Scored conservatively because no regional length distribution exists; the national registration mix is used as a proxy."
+    },
+    "commercialOperators": {
+      "definition": "Presence of charter, rental, school or small-professional operators that could buy MAREA FLEET.",
+      "rationale": "The only segment with a plausible recurring per-vessel revenue model that does not depend on individual owner spending."
+    },
+    "seasonalityWindow": {
+      "definition": "Length and intensity of the operating season, including documented peak occupancy.",
+      "rationale": "Installation, commissioning and service capacity are consumed in a short window; a long shoulder season raises the number of installs a partner can complete."
+    },
+    "channelEcosystem": {
+      "definition": "Documented presence of installers, refit yards and chandlery able to sell and support hardware.",
+      "rationale": "Hardware cannot be sold without competent local installation; evidence is weak (two individual provider pages), so the weight is deliberately limited."
+    },
+    "evidenceQuality": {
+      "definition": "Availability and robustness of region-specific published data for the other six criteria.",
+      "rationale": "A market that cannot be evidenced cannot be planned; this is a decision-risk criterion, kept modest so it never dominates market attractiveness."
+    }
+  },
+  "rankingMethod": "Regions sorted by normalised weighted score, descending; the regions array is stored in rank order and ranks are sequential 1..n. Ties would be broken by baseDensity and then by evidenceQuality; no tie occurred.",
+  "sequencingOverlay": {
+    "label": "ANALYST_JUDGEMENT_SEPARATE_FROM_SCORE",
+    "purpose": "The weighted score measures absolute attractiveness. Sequencing additionally considers logistics contiguity, shared administration and language, and the cost of serving a second region from the same team.",
+    "criteria": [
+      "Contiguity with the Galician home base and shared regional administration (Xunta / Portos de Galicia)",
+      "Single-language operations and the same VAT and consumer regime",
+      "Cost and time of installer travel and spare-parts logistics",
+      "Avoidance of markets that need a different channel model in the first phase"
+    ]
+  },
+  "regions": [
+    {
+      "regionId": "REG-GA-PO",
+      "name": "Rías Baixas (Pontevedra coast: Vigo, Baiona, Sanxenxo, Vilagarcía, Marín)",
+      "country": "ES",
+      "rank": 1,
+      "scores": {
+        "baseDensity": 5,
+        "demandMomentum": 5,
+        "addressableMix": 3,
+        "commercialOperators": 3,
+        "seasonalityWindow": 4,
+        "channelEcosystem": 3,
+        "evidenceQuality": 4
+      },
+      "weightedScore": 4.0,
+      "normalisedScore": 80.0,
+      "recommendation": "ALLOCATE_NOW",
+      "recommendationRationale": "Highest absolute attractiveness in the research area and directly reachable from the Galician home base. It should carry the first installation, demonstration-vessel and installer-partnership effort.",
+      "evidenceClaimIds": ["CLM-MKT-013", "CLM-MKT-011", "CLM-MKT-010", "CLM-MKT-009", "CLM-MKT-004", "CLM-MKT-006", "CLM-MKT-014", "CLM-MKT-020", "CLM-MKT-012", "CLM-MKT-025", "CLM-MKT-024"],
+      "evidenceGaps": [
+        "Regional length and age distribution of moored craft (UNAV-MKT-002 is national/regional; see UNK-MKT-002 and UNK-MKT-003)",
+        "Galician charter/rental fleet size by province (UNAV-MKT-007)",
+        "Installer count and capacity (UNAV-MKT-006)",
+        "Berth counts by individual port rather than provincial aggregate"
+      ],
+      "dimensions": {
+        "baseDensity": {
+          "score": 5,
+          "rationale": "More than 4,600 berths across around twenty facilities, about 44% of Galicia's 10,500 documented berths and the densest recreational capacity in the focus area.",
+          "evidenceClaimIds": ["CLM-MKT-013", "CLM-MKT-011", "CLM-MKT-010"]
+        },
+        "demandMomentum": {
+          "score": 5,
+          "rationale": "Pontevedra registered 229 new craft in 2025 against 162 in 2024 (+41.4%), the only coastal Galician province growing and the strongest provincial growth in the region.",
+          "evidenceClaimIds": ["CLM-MKT-009"]
+        },
+        "addressableMix": {
+          "score": 3,
+          "rationale": "No regional length distribution is published. Scored at the neutral midpoint: marina berths skew larger than the national registration mix (70% of new craft are under 6 m), but nothing regional confirms the size cohort that buys electronics.",
+          "evidenceClaimIds": ["CLM-MKT-004", "CLM-MKT-013"]
+        },
+        "commercialOperators": {
+          "score": 3,
+          "rationale": "Active charter and rental activity is documented for the area but not quantified: no disaggregated Galician rental-registration data exist in the ANEN reporting, so the score reflects visible operation, not a measured fleet size.",
+          "evidenceClaimIds": ["CLM-MKT-006", "CLM-MKT-014"]
+        },
+        "seasonalityWindow": {
+          "score": 4,
+          "rationale": "August berth occupancy at Sanxenxo reached 100% with a waiting list while July was around 50%, and regional transit traffic was 6,321 vessels in 2024: a strong but concentrated season with a usable shoulder.",
+          "evidenceClaimIds": ["CLM-MKT-020", "CLM-MKT-012"]
+        },
+        "channelEcosystem": {
+          "score": 3,
+          "rationale": "At least one Galician company documents a repair/rigging/engine workshop with a physical and online chandlery, and one cooperative advertises on-board electronics installation. Existence is evidenced; density and capacity are not.",
+          "evidenceClaimIds": ["CLM-MKT-025", "CLM-MKT-024"]
+        },
+        "evidenceQuality": {
+          "score": 4,
+          "rationale": "Berth capacity, provincial registration flows, transit counts and peak occupancy are all published; fleet counts, length mix and rental fleet are not.",
+          "evidenceClaimIds": ["CLM-MKT-013", "CLM-MKT-009", "CLM-MKT-020"]
+        }
+      }
+    },
+    {
+      "regionId": "REG-ES-IB",
+      "name": "Balearic Islands (comparator, not beachhead)",
+      "country": "ES",
+      "rank": 2,
+      "scores": {
+        "baseDensity": 4,
+        "demandMomentum": 2,
+        "addressableMix": 4,
+        "commercialOperators": 5,
+        "seasonalityWindow": 3,
+        "channelEcosystem": 3,
+        "evidenceQuality": 3
+      },
+      "weightedScore": 3.55,
+      "normalisedScore": 71.0,
+      "recommendation": "DEFER",
+      "recommendationRationale": "Second-highest absolute attractiveness and the best commercial-operator evidence in the set, but deferred: 1,000+ km from the Galician base, a different channel structure (charter brokers, local installers), the most aggressive seasonality and the highest competitive density. Revisit only after the Galician beachhead is proven.",
+      "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-010", "CLM-MKT-023", "CLM-MKT-006", "CLM-MKT-020"],
+      "evidenceGaps": [
+        "No Balearic berth capacity figure",
+        "Charter-share claim is an excerpt-level reading (CLM-MKT-023)",
+        "No installer or channel mapping",
+        "No charter-fleet count, only registration share"
+      ],
+      "dimensions": {
+        "baseDensity": {
+          "score": 4,
+          "rationale": "Baleares led Spanish registrations in 2024 (904) and is part of the Mediterranean capacity pool that holds 67% of Spanish berths; the archipelago's own berth count is not in the retrieved evidence.",
+          "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-010", "CLM-MKT-023"]
+        },
+        "demandMomentum": {
+          "score": 2,
+          "rationale": "Registrations fell from 818 to 664 (-18.8%) in 2025.",
+          "evidenceClaimIds": ["CLM-MKT-009"]
+        },
+        "addressableMix": {
+          "score": 4,
+          "rationale": "A large-vessel and charter-oriented market with high electronics intensity; the 2024 registration total of 904 shows a bigger addressable pool than any Galician province.",
+          "evidenceClaimIds": ["CLM-MKT-023", "CLM-MKT-009"]
+        },
+        "commercialOperators": {
+          "score": 5,
+          "rationale": "59% of 2024 Balearic registrations were charter-market registrations, the strongest documented commercial-operator signal in the evidence set.",
+          "evidenceClaimIds": ["CLM-MKT-023", "CLM-MKT-006"]
+        },
+        "seasonalityWindow": {
+          "score": 3,
+          "rationale": "A very intensive summer season with a long shoulder, but also the most concentrated seasonal pressure; installation labour is scarce in peak months.",
+          "evidenceClaimIds": ["CLM-MKT-020"]
+        },
+        "channelEcosystem": {
+          "score": 3,
+          "rationale": "A charter-heavy market implies a dense service ecosystem, but no Balearic provider was independently documented in this session.",
+          "evidenceClaimIds": ["CLM-MKT-023"]
+        },
+        "evidenceQuality": {
+          "score": 3,
+          "rationale": "Registration and charter-share signals exist, but the charter figure was read from a tag-index excerpt and no berth or installer data were retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-023", "CLM-MKT-009"]
+        }
+      }
+    },
+    {
+      "regionId": "REG-ES-CT",
+      "name": "Catalonia / Barcelona (comparator, not beachhead)",
+      "country": "ES",
+      "rank": 3,
+      "scores": {
+        "baseDensity": 3,
+        "demandMomentum": 3,
+        "addressableMix": 4,
+        "commercialOperators": 4,
+        "seasonalityWindow": 3,
+        "channelEcosystem": 3,
+        "evidenceQuality": 3
+      },
+      "weightedScore": 3.3,
+      "normalisedScore": 66.0,
+      "recommendation": "DEFER",
+      "recommendationRationale": "Attractive but remote from the Galician base, with a distinct channel structure and no local evidence. It is a later expansion market, not a beachhead.",
+      "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-010", "CLM-MKT-006", "CLM-MKT-020", "CLM-MKT-019"],
+      "evidenceGaps": ["Berth capacity", "Installer mapping", "Girona decline explanation", "No local occupancy data"],
+      "dimensions": {
+        "baseDensity": {
+          "score": 3,
+          "rationale": "Barcelona registered 564 new craft in 2025, the second-largest provincial flow in Spain, and sits in the Mediterranean capacity pool.",
+          "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-010"]
+        },
+        "demandMomentum": {
+          "score": 3,
+          "rationale": "Barcelona was essentially flat (570 to 564, -1.1%) while Girona fell 26.5%, so provincial momentum within Catalonia is mixed.",
+          "evidenceClaimIds": ["CLM-MKT-009"]
+        },
+        "addressableMix": {
+          "score": 4,
+          "rationale": "A large Mediterranean cruising and charter market with electronics-intensive craft; supported by registration volume, not by a length distribution.",
+          "evidenceClaimIds": ["CLM-MKT-009"]
+        },
+        "commercialOperators": {
+          "score": 4,
+          "rationale": "Barcelona recorded 194 rental registrations in 2025, the second-largest charter flow nationally.",
+          "evidenceClaimIds": ["CLM-MKT-006"]
+        },
+        "seasonalityWindow": {
+          "score": 3,
+          "rationale": "Long Mediterranean season but strong summer concentration; no local occupancy evidence retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-020"]
+        },
+        "channelEcosystem": {
+          "score": 3,
+          "rationale": "A large market implies channel depth, but no Catalan provider was documented in this session.",
+          "evidenceClaimIds": ["CLM-MKT-019"]
+        },
+        "evidenceQuality": {
+          "score": 3,
+          "rationale": "Registration and rental series available; nothing on berths, installers or fleet.",
+          "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-006"]
+        }
+      }
+    },
+    {
+      "regionId": "REG-GA-C",
+      "name": "A Coruña and Costa da Morte (A Coruña, Sada, Ares, Camariñas, Malpica)",
+      "country": "ES",
+      "rank": 4,
+      "scores": {
+        "baseDensity": 4,
+        "demandMomentum": 2,
+        "addressableMix": 3,
+        "commercialOperators": 2,
+        "seasonalityWindow": 4,
+        "channelEcosystem": 3,
+        "evidenceQuality": 4
+      },
+      "weightedScore": 3.15,
+      "normalisedScore": 63.0,
+      "recommendation": "PHASE_2",
+      "recommendationRationale": "Ranked fourth on absolute attractiveness but sequenced second: same regional administration, same language and VAT regime, contiguous coastline, and the second-largest Galician registration flow. It can be served by the same team and partners at marginal cost.",
+      "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-019", "CLM-MKT-011", "CLM-MKT-004", "CLM-MKT-006", "CLM-MKT-024", "CLM-MKT-025"],
+      "evidenceGaps": [
+        "No provincial berth inventory",
+        "No installer density; one yard and one cooperative are existence evidence only",
+        "Occupancy evidence is a single-summer press report"
+      ],
+      "dimensions": {
+        "baseDensity": {
+          "score": 4,
+          "rationale": "A Coruña is the second-largest Galician registration market and its sports ports are documented at close to 90% summer occupancy; provincial berth capacity is not published, so the score is not higher.",
+          "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-019", "CLM-MKT-011"]
+        },
+        "demandMomentum": {
+          "score": 2,
+          "rationale": "Registrations fell from 231 in 2024 to 209 in 2025 (-9.5%), in line with the national contraction.",
+          "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-001"]
+        },
+        "addressableMix": {
+          "score": 3,
+          "rationale": "No regional length distribution; the same national registration proxy is applied as for Rías Baixas.",
+          "evidenceClaimIds": ["CLM-MKT-004", "CLM-MKT-019"]
+        },
+        "commercialOperators": {
+          "score": 2,
+          "rationale": "Charter activity is less evident in the retrieved sources than in Rías Baixas, and no regional rental data exist to quantify it.",
+          "evidenceClaimIds": ["CLM-MKT-006"]
+        },
+        "seasonalityWindow": {
+          "score": 4,
+          "rationale": "Summer occupancy of about 90% with waiting lists for crane and dry use shows a comparable summer peak.",
+          "evidenceClaimIds": ["CLM-MKT-019"]
+        },
+        "channelEcosystem": {
+          "score": 3,
+          "rationale": "A documented yard/chandlery operates on this coast, plus a naval-electronics services provider in the region; density is unmeasured.",
+          "evidenceClaimIds": ["CLM-MKT-025", "CLM-MKT-024"]
+        },
+        "evidenceQuality": {
+          "score": 4,
+          "rationale": "Provincial registration series and local occupancy reporting exist; berth counts by port and length mix do not.",
+          "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-019"]
+        }
+      }
+    },
+    {
+      "regionId": "REG-PT-N",
+      "name": "Northern Portugal (Viana do Castelo, Póvoa de Varzim, Vila do Conde, Leixões/Matosinhos, Douro/Porto)",
+      "country": "PT",
+      "rank": 5,
+      "scores": {
+        "baseDensity": 3,
+        "demandMomentum": 2,
+        "addressableMix": 3,
+        "commercialOperators": 3,
+        "seasonalityWindow": 4,
+        "channelEcosystem": 2,
+        "evidenceQuality": 2
+      },
+      "weightedScore": 2.75,
+      "normalisedScore": 55.0,
+      "recommendation": "PHASE_2",
+      "recommendationRationale": "Sequenced after Rías Baixas and A Coruña despite ranking fifth: it is the only non-Spanish market contiguous with the Galician base, and an 85,000-craft national fleet is the largest documented population in the research area. Entering it needs a Portuguese-language support and installation partner first, which is why it is not phase 1.",
+      "evidenceClaimIds": ["CLM-MKT-017", "CLM-MKT-015", "CLM-MKT-016", "CLM-MKT-018", "CLM-MKT-026"],
+      "evidenceGaps": [
+        "No regional Portuguese fleet or registration series (UNAV-MKT-002)",
+        "Unreconciled national fleet counts (CLM-MKT-015 vs CLM-MKT-016)",
+        "No national berth inventory (UNAV-MKT-008)",
+        "No Portuguese installer or chandlery evidence",
+        "Undated tourism-portal capacity data; 2019-sourced official port list"
+      ],
+      "dimensions": {
+        "baseDensity": {
+          "score": 3,
+          "rationale": "At least 1,088 documented berths across four northern marinas, in a country with about 85,000 registered recreational craft; the national fleet is large but the documented northern marina base is roughly a tenth of Galicia's and incomplete.",
+          "evidenceClaimIds": ["CLM-MKT-017", "CLM-MKT-015", "CLM-MKT-018"]
+        },
+        "demandMomentum": {
+          "score": 2,
+          "rationale": "No regional Portuguese registration series was found; the score is neutral-low because momentum cannot be evidenced either way.",
+          "evidenceClaimIds": ["CLM-MKT-015", "CLM-MKT-016"]
+        },
+        "addressableMix": {
+          "score": 3,
+          "rationale": "Marina berth limits (18-20 m maximum length, 2.5-3 m draught) indicate a mid-sized craft population suited to electronics, but no Portuguese length distribution was retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-017", "CLM-MKT-026"]
+        },
+        "commercialOperators": {
+          "score": 3,
+          "rationale": "The Douro and Leixões marinas and the official shelter-port list evidence organised recreational boating and operator infrastructure, but no charter-fleet counts were retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-018", "CLM-MKT-017"]
+        },
+        "seasonalityWindow": {
+          "score": 4,
+          "rationale": "An Atlantic season comparable to Galicia with an extended autumn shoulder; no Portuguese occupancy data were retrieved, so the score rests on the same climatic argument rather than on measurement.",
+          "evidenceClaimIds": ["CLM-MKT-017"]
+        },
+        "channelEcosystem": {
+          "score": 2,
+          "rationale": "No Portuguese installer or chandlery was identified in this session; cross-border service logistics are unproven.",
+          "evidenceClaimIds": ["CLM-MKT-018"]
+        },
+        "evidenceQuality": {
+          "score": 2,
+          "rationale": "National fleet totals exist but are approximate, mutually contradictory (85,000 vs 73,765) and undifferentiated by region; marina pages are undated.",
+          "evidenceClaimIds": ["CLM-MKT-015", "CLM-MKT-016"]
+        }
+      }
+    },
+    {
+      "regionId": "REG-ES-CB",
+      "name": "Cantabria (Santander, Laredo, Castro Urdiales, San Vicente de la Barquera)",
+      "country": "ES",
+      "rank": 6,
+      "scores": {
+        "baseDensity": 2,
+        "demandMomentum": 4,
+        "addressableMix": 2,
+        "commercialOperators": 2,
+        "seasonalityWindow": 3,
+        "channelEcosystem": 2,
+        "evidenceQuality": 3
+      },
+      "weightedScore": 2.5,
+      "normalisedScore": 50.0,
+      "recommendation": "MONITOR",
+      "recommendationRationale": "Positive momentum but no capacity or channel evidence and far from the Galician base. Watch, do not enter.",
+      "evidenceClaimIds": ["CLM-MKT-010", "CLM-MKT-030", "CLM-MKT-004", "CLM-MKT-006", "CLM-MKT-019", "CLM-MKT-024", "CLM-MKT-009"],
+      "evidenceGaps": ["Berth capacity", "Channel presence", "Whether the 2025 growth is structural or a small-base fluctuation"],
+      "dimensions": {
+        "baseDensity": {
+          "score": 2,
+          "rationale": "No berth count retrieved; the province is small relative to Galicia.",
+          "evidenceClaimIds": ["CLM-MKT-010"]
+        },
+        "demandMomentum": {
+          "score": 4,
+          "rationale": "Registrations rose from 105 to 138 (+31.4%) in 2025, the strongest growth among the Cantabrian comparators.",
+          "evidenceClaimIds": ["CLM-MKT-030"]
+        },
+        "addressableMix": {
+          "score": 2,
+          "rationale": "No regional mix data; growth is concentrated in small craft nationally, which argues against a high electronics-relevant share.",
+          "evidenceClaimIds": ["CLM-MKT-004"]
+        },
+        "commercialOperators": {
+          "score": 2,
+          "rationale": "No operator evidence retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-006"]
+        },
+        "seasonalityWindow": {
+          "score": 3,
+          "rationale": "A comparable Cantabrian season; not independently evidenced.",
+          "evidenceClaimIds": ["CLM-MKT-019"]
+        },
+        "channelEcosystem": {
+          "score": 2,
+          "rationale": "No provider evidence retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-024"]
+        },
+        "evidenceQuality": {
+          "score": 3,
+          "rationale": "Registration series only.",
+          "evidenceClaimIds": ["CLM-MKT-009"]
+        }
+      }
+    },
+    {
+      "regionId": "REG-ES-AS",
+      "name": "Asturias (Gijón, Avilés, Luanco, Ribadesella)",
+      "country": "ES",
+      "rank": 7,
+      "scores": {
+        "baseDensity": 2,
+        "demandMomentum": 2,
+        "addressableMix": 2,
+        "commercialOperators": 2,
+        "seasonalityWindow": 3,
+        "channelEcosystem": 2,
+        "evidenceQuality": 3
+      },
+      "weightedScore": 2.2,
+      "normalisedScore": 44.0,
+      "recommendation": "MONITOR",
+      "recommendationRationale": "Third-region expansion without any local channel evidence; not fundable in this milestone.",
+      "evidenceClaimIds": ["CLM-MKT-010", "CLM-MKT-030", "CLM-MKT-004", "CLM-MKT-006", "CLM-MKT-019", "CLM-MKT-024", "CLM-MKT-009"],
+      "evidenceGaps": ["Berth capacity", "Channel presence", "Any regional operator data"],
+      "dimensions": {
+        "baseDensity": {
+          "score": 2,
+          "rationale": "No berth count retrieved for Asturias and no provincial capacity source identified.",
+          "evidenceClaimIds": ["CLM-MKT-010"]
+        },
+        "demandMomentum": {
+          "score": 2,
+          "rationale": "Registrations fell from 150 in 2024 to 129 in 2025 (-14.0%).",
+          "evidenceClaimIds": ["CLM-MKT-030"]
+        },
+        "addressableMix": {
+          "score": 2,
+          "rationale": "No regional length or fleet data; scored low because nothing supports a higher judgement.",
+          "evidenceClaimIds": ["CLM-MKT-004"]
+        },
+        "commercialOperators": {
+          "score": 2,
+          "rationale": "No charter or fleet-operator evidence retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-006"]
+        },
+        "seasonalityWindow": {
+          "score": 3,
+          "rationale": "A Cantabrian-coast season comparable to northern Galicia; not independently evidenced.",
+          "evidenceClaimIds": ["CLM-MKT-019"]
+        },
+        "channelEcosystem": {
+          "score": 2,
+          "rationale": "No Asturian provider evidence retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-024"]
+        },
+        "evidenceQuality": {
+          "score": 3,
+          "rationale": "Only the national registration series covers it; no regional market data.",
+          "evidenceClaimIds": ["CLM-MKT-009"]
+        }
+      }
+    },
+    {
+      "regionId": "REG-ES-PV",
+      "name": "Basque Country (Vizcaya, Guipúzcoa)",
+      "country": "ES",
+      "rank": 8,
+      "scores": {
+        "baseDensity": 2,
+        "demandMomentum": 1,
+        "addressableMix": 2,
+        "commercialOperators": 2,
+        "seasonalityWindow": 3,
+        "channelEcosystem": 2,
+        "evidenceQuality": 3
+      },
+      "weightedScore": 2.05,
+      "normalisedScore": 41.0,
+      "recommendation": "MONITOR",
+      "recommendationRationale": "Contracting market and no evidence of a channel; deprioritised.",
+      "evidenceClaimIds": ["CLM-MKT-030", "CLM-MKT-004", "CLM-MKT-006", "CLM-MKT-019", "CLM-MKT-024", "CLM-MKT-009"],
+      "evidenceGaps": ["Berth capacity", "Channel presence", "Explanation for the Vizcaya collapse"],
+      "dimensions": {
+        "baseDensity": {
+          "score": 2,
+          "rationale": "No berth count retrieved; Vizcaya and Guipúzcoa registered only 87 new craft between them in 2025.",
+          "evidenceClaimIds": ["CLM-MKT-030"]
+        },
+        "demandMomentum": {
+          "score": 1,
+          "rationale": "Vizcaya fell from 117 to 53 (-54.7%) and Guipúzcoa from 38 to 34 (-10.5%), the weakest momentum in the comparator set.",
+          "evidenceClaimIds": ["CLM-MKT-030"]
+        },
+        "addressableMix": {
+          "score": 2,
+          "rationale": "No regional mix data.",
+          "evidenceClaimIds": ["CLM-MKT-004"]
+        },
+        "commercialOperators": {
+          "score": 2,
+          "rationale": "No operator evidence retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-006"]
+        },
+        "seasonalityWindow": {
+          "score": 3,
+          "rationale": "Cantabrian season; not independently evidenced.",
+          "evidenceClaimIds": ["CLM-MKT-019"]
+        },
+        "channelEcosystem": {
+          "score": 2,
+          "rationale": "No provider evidence retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-024"]
+        },
+        "evidenceQuality": {
+          "score": 3,
+          "rationale": "Registration series only.",
+          "evidenceClaimIds": ["CLM-MKT-009"]
+        }
+      }
+    },
+    {
+      "regionId": "REG-GA-LU",
+      "name": "A Mariña (Lugo: Ribadeo, Viveiro, Celeiro, Foz)",
+      "country": "ES",
+      "rank": 9,
+      "scores": {
+        "baseDensity": 2,
+        "demandMomentum": 3,
+        "addressableMix": 2,
+        "commercialOperators": 1,
+        "seasonalityWindow": 3,
+        "channelEcosystem": 1,
+        "evidenceQuality": 2
+      },
+      "weightedScore": 2.0,
+      "normalisedScore": 40.0,
+      "recommendation": "MONITOR",
+      "recommendationRationale": "Lowest score in the set. Do not allocate first-phase resource; re-assess only if an installer partner appears there or if Lugo growth continues for several years.",
+      "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-011", "CLM-MKT-004", "CLM-MKT-006", "CLM-MKT-012", "CLM-MKT-024"],
+      "evidenceGaps": ["Berth capacity in Lugo", "Installer and yard presence", "Any commercial-operator evidence"],
+      "dimensions": {
+        "baseDensity": {
+          "score": 2,
+          "rationale": "Lugo registers a small fraction of Galician new craft (27 of 465 coastal registrations in 2025) and no berth count for the province was retrieved.",
+          "evidenceClaimIds": ["CLM-MKT-009", "CLM-MKT-011"]
+        },
+        "demandMomentum": {
+          "score": 3,
+          "rationale": "Registrations rose from 22 to 27 (+22.7%), a small-base improvement.",
+          "evidenceClaimIds": ["CLM-MKT-009"]
+        },
+        "addressableMix": {
+          "score": 2,
+          "rationale": "A substantial small-boat and inshore fishing-port character is plausible but unmeasured; no data support a higher score.",
+          "evidenceClaimIds": ["CLM-MKT-004"]
+        },
+        "commercialOperators": {
+          "score": 1,
+          "rationale": "No charter or fleet-operator evidence was retrieved for this coast.",
+          "evidenceClaimIds": ["CLM-MKT-006"]
+        },
+        "seasonalityWindow": {
+          "score": 3,
+          "rationale": "An Atlantic season comparable to the rest of Galicia but with thinner visitor-infrastructure evidence.",
+          "evidenceClaimIds": ["CLM-MKT-012"]
+        },
+        "channelEcosystem": {
+          "score": 1,
+          "rationale": "No installer, yard or chandlery was identified on this coast in this session.",
+          "evidenceClaimIds": ["CLM-MKT-024"]
+        },
+        "evidenceQuality": {
+          "score": 2,
+          "rationale": "Only the provincial registration series is available; nothing on capacity, mix or channels.",
+          "evidenceClaimIds": ["CLM-MKT-009"]
+        }
+      }
+    }
+  ],
+  "portfolioConclusion": {
+    "primary": "REG-GA-PO",
+    "secondary": ["REG-GA-C", "REG-PT-N"],
+    "watchlist": ["REG-ES-CB", "REG-ES-AS", "REG-ES-PV", "REG-GA-LU"],
+    "deferredComparators": ["REG-ES-IB", "REG-ES-CT"],
+    "statement": "The evidence supports a Galicia-first concentration: Rías Baixas is the only region combining the densest documented berth base with the strongest current registration growth in the focus area; A Coruña is a near-cost second wave; Northern Portugal is the only contiguous non-Spanish market, gated on a Portuguese-language installation partner. The two highest-value Spanish markets (Baleares, Catalonia) are deliberately deferred because their attractiveness does not offset distance, channel difference and seasonality in a first phase.",
+    "whatWouldChangeThis": [
+      "A measured Galician berth length/age distribution showing that most berths hold under-6 m or low-electronics craft would lower Rías Baixas' addressableMix and could make Northern Portugal or A Coruña relatively stronger.",
+      "Evidence of a capable installer partner in Northern Portugal would raise that region above A Coruña for phase 2.",
+      "A sustained multi-year decline in Pontevedra registrations would remove its momentum advantage, leaving it scored on base density alone."
+    ]
+  }
+}

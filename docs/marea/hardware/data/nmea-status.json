@@ -1,0 +1,73 @@
+{
+  "contractId": "MAREA-MC11-HARDWARE-EVIDENCE-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-11",
+  "date": "2026-11-02",
+  "owner": "hw-architect",
+  "scopeNote": "Separates six questions that are routinely conflated: technical implementation, membership/licensing, manufacturer identification, product certification, approved terminology and logo use. MC-11 satisfies NONE of them.",
+  "nmea2000": {
+    "technicalImplementation": "NOT_IMPLEMENTED. No NMEA 2000 stack, CAN interface, PGN encoder/decoder or address-claiming logic exists in any MAREA product definition. The legacy OPEN-MARINE stack contains only a TypeScript interface union (socketcan/pcan/usbcan/native) and a no-op actuator stub, recorded as HW-09 NO_ARTICLE in docs/marea/compliance/HARDWARE-COMPLIANCE-MATRIX.md. Protocol-level interoperability is therefore NOT_TESTED and no statement of NMEA 2000 capability may be made.",
+    "membership": "NOT_A_MEMBER. No NMEA membership, NMEA 2000 licence, NMEA 0183 standard licence or manufacturer mnemonic code has been purchased. D2 §4 invariants NMEA2000_CERTIFIED=false apply.",
+    "manufacturerIdentification": "NOT_ASSIGNED. No NMEA 2000 manufacturer code and no product code exist. NMEA states manufacturer-code assignment takes up to 60 days (EVD-MC11-002). No application was filed in MC-11.",
+    "productCertification": "NOT_CERTIFIED. NMEA states that all products that read and/or transmit NMEA 2000 information must be certified by NMEA and that certification is granted only after validation of an encrypted certification file (EVD-MC11-001). No certification tool run, no submission, no certificate.",
+    "approvedTerminology": "PROHIBITED_TERMS_WITHHELD. The terms 'NMEA 2000 certified', 'NMEA 2000 compatible', 'NMEA 2000 approved' and any equivalent are prohibited in every MAREA artefact until certification exists. Permitted wording is descriptive only: 'NMEA 2000 is not implemented, not licensed and not certified by MAREA'.",
+    "logoUse": "NOT_PERMITTED. The NMEA 2000 mark is a registered trademark of NMEA and NMEA states that logo and 'NMEA 2000 Certified' use follows certification (EVD-MC11-001). No MAREA asset may include the mark.",
+    "testedCompatibilityRows": 0,
+    "claimsPermitted": [
+      "MAREA does not implement NMEA 2000 in any MC-11 product definition.",
+      "NMEA 2000 certification is required by NMEA for products that read and/or transmit NMEA 2000 information.",
+      "A candidate NMEA 2000 interface would require the NMEA 2000 license agreement, a manufacturer code and per-product certification before any compatibility claim."
+    ],
+    "claimsProhibited": [
+      "NMEA 2000 certified",
+      "NMEA 2000 compatible / compatible with NMEA 2000 networks",
+      "NMEA 2000 ready",
+      "NMEA 2000 approved by NMEA",
+      "plug-and-play with NMEA 2000 instruments",
+      "any logo, wordmark or look-alike mark"
+    ]
+  },
+  "nmea0183": {
+    "technicalImplementation": "SENTENCE_PARSING_ONLY. Executed evidence in the audited legacy stack covers an MWV/MWD wind parser (unit tests) and a GNSS sentence parser (RMC/GGA/GSA/GSV/VTG, code only). No NMEA 0183 electrical-layer implementation (RS-422 differential talker/listener with opto-isolation) exists; USB-serial adapters were assumed. Parsing a sentence is not conformance to the standard and no conformance claim is made.",
+    "membership": "NOT_A_MEMBER. NMEA 0183 is a copyrighted standard available only from NMEA; published prices are USD 1,150 for a manufacturer member, USD 7,500 government/industrial/testing and USD 10,000 consumer electronics (EVD-MC11-003). No copy was purchased, so the MAREA parser is written from public sentence documentation, not from the licensed standard text.",
+    "manufacturerIdentification": "NOT_ASSIGNED. NMEA 0183 manufacturer mnemonic codes cost USD 200 plus purchase of the standard and are issued to companies only (EVD-MC11-004). No code was requested.",
+    "productCertification": "NOT_CERTIFIED. NMEA 0183 is a copyrighted document licence, not a product-certification scheme in the sense of NMEA 2000; MAREA holds no licence and claims no conformance. No test report, no declaration of conformity to NMEA 0183 and no official sentence conformance exists.",
+    "approvedTerminology": "PROHIBITED_TERMS_WITHHELD. 'NMEA 0183 compliant', 'NMEA 0183 certified', 'conforms to NMEA 0183' and 'official NMEA 0183 implementation' are prohibited. Permitted wording: 'parses documented NMEA 0183 sentence types' plus the explicit statement that parsing is not conformance.",
+    "logoUse": "NOT_PERMITTED. No NMEA mark, logo or standard-document extract may be reproduced.",
+    "testedCompatibilityRows": 0,
+    "claimsPermitted": [
+      "MAREA parses a documented subset of NMEA 0183 sentence types; parsing is not conformance to the standard.",
+      "NMEA 0183 is a copyrighted standard licensed by NMEA, not a freely redistributable specification.",
+      "A documented NMEA 0183 interface must be validated per sentence, per device, per firmware version and per direction before any compatibility row is published."
+    ],
+    "claimsProhibited": [
+      "NMEA 0183 compliant",
+      "NMEA 0183 certified",
+      "conforms to NMEA 0183",
+      "works with any NMEA 0183 device",
+      "reproduces the NMEA 0183 standard"
+    ]
+  },
+  "governanceSources": [
+    {
+      "url": "https://www.nmea.org/nmea-2000.html",
+      "publisher": "National Marine Electronics Association",
+      "retrievedOn": "2026-11-02",
+      "whatItEstablishes": "Certification is mandatory for products that read and/or transmit NMEA 2000 information; manufacturer code and per-product product code are required; the mark is a registered trademark; certification follows validation of an encrypted certification file.",
+      "evidenceId": "EVD-MC11-001"
+    },
+    {
+      "url": "https://www.nmea.org/nmea-0183.html",
+      "publisher": "National Marine Electronics Association",
+      "retrievedOn": "2026-11-02",
+      "whatItEstablishes": "NMEA 0183 is a copyrighted document licensed by NMEA with published price tiers; the electrical/protocol definition is 4800 baud (38.4 kbaud for 0183-HS); manufacturer mnemonic codes are issued to companies for USD 200.",
+      "evidenceId": "EVD-MC11-003"
+    }
+  ],
+  "crossReferences": {
+    "hardwareComplianceMatrix": "docs/marea/compliance/HARDWARE-COMPLIANCE-MATRIX.md §4.1-§4.6 and §2.7",
+    "invariants": "MC11-BASELINE-AND-GOVERNANCE.md §4 (NMEA2000_CERTIFIED=false, TESTED_COMPATIBILITY_ROWS=0)",
+    "protocolAssessment": "architecture/MC11-PROTOCOL-AND-COMPATIBILITY-ASSESSMENT.md",
+    "claimsPolicy": "docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md"
+  }
+}

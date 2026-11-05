@@ -1,0 +1,553 @@
+{
+  "contractId": "MC17-LAYOUT-TOKENS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "lead",
+  "generationMethod": "node scripts/build-marea-design-tokens.mjs",
+  "scope": "Spacing, sizing, grid, shape, elevation, opacity, focus, motion, breakpoints, stacking and icon scales.",
+  "knownLimitations": [
+    "Breakpoints are exposed as informational custom properties; media queries are authored in component SCSS and validated by the responsive evidence set."
+  ],
+  "sourceRefs": [
+    "docs/marea/brand/tokens/marea-instrument-tokens.proposed.json",
+    "docs/marea/brand/COLOUR-SYSTEM.md",
+    "docs/marea/brand/TYPOGRAPHY-SYSTEM.md",
+    "docs/marea/brand/ICONOGRAPHY-SYSTEM.md",
+    "docs/marea/brand/MC-04-VISUAL-IDENTITY-BRIEF.md",
+    "docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md",
+    "src/styles.scss"
+  ],
+  "categories": {
+    "space": {
+      "space1": {
+        "cssVar": "--marea-space-1",
+        "value": "4px",
+        "semanticRole": "Hairline separation.",
+        "sourceTokenId": "MC04:/density/space/--inst-space-1",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "space2": {
+        "cssVar": "--marea-space-2",
+        "value": "8px",
+        "semanticRole": "Inline icon-to-label gap.",
+        "sourceTokenId": "MC04:/density/space/--inst-space-2",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "space3": {
+        "cssVar": "--marea-space-3",
+        "value": "12px",
+        "semanticRole": "Dense stack gap.",
+        "sourceTokenId": "MC04:/density/space/--inst-space-3",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "space4": {
+        "cssVar": "--marea-space-4",
+        "value": "16px",
+        "semanticRole": "Default control and panel gap.",
+        "sourceTokenId": "MC04:/density/space/--inst-space-4",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "space5": {
+        "cssVar": "--marea-space-5",
+        "value": "24px",
+        "semanticRole": "Panel padding.",
+        "sourceTokenId": "MC04:/density/space/--inst-space-5",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "space6": {
+        "cssVar": "--marea-space-6",
+        "value": "32px",
+        "semanticRole": "Section rhythm.",
+        "sourceTokenId": "MC04:/density/space/--inst-space-6",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "space7": {
+        "cssVar": "--marea-space-7",
+        "value": "40px",
+        "semanticRole": "Large block separation.",
+        "sourceTokenId": "DERIVED:/MC04 density scale",
+        "status": "DERIVED_INTERNAL"
+      },
+      "space8": {
+        "cssVar": "--marea-space-8",
+        "value": "48px",
+        "semanticRole": "Page section gap.",
+        "sourceTokenId": "DERIVED:/MC04 density scale",
+        "status": "DERIVED_INTERNAL"
+      },
+      "space9": {
+        "cssVar": "--marea-space-9",
+        "value": "64px",
+        "semanticRole": "Major section gap.",
+        "sourceTokenId": "DERIVED:/MC04 density scale",
+        "status": "DERIVED_INTERNAL"
+      },
+      "space10": {
+        "cssVar": "--marea-space-10",
+        "value": "80px",
+        "semanticRole": "Editorial section gap.",
+        "sourceTokenId": "DERIVED:/MC04 density scale",
+        "status": "DERIVED_INTERNAL"
+      },
+      "space11": {
+        "cssVar": "--marea-space-11",
+        "value": "96px",
+        "semanticRole": "Landing block gap.",
+        "sourceTokenId": "DERIVED:/MC04 density scale",
+        "status": "DERIVED_INTERNAL"
+      },
+      "space12": {
+        "cssVar": "--marea-space-12",
+        "value": "128px",
+        "semanticRole": "Maximum section gap.",
+        "sourceTokenId": "DERIVED:/MC04 density scale",
+        "status": "DERIVED_INTERNAL"
+      }
+    },
+    "size": {
+      "controlSm": {
+        "cssVar": "--marea-control-sm",
+        "value": "32px",
+        "semanticRole": "Compact control height; still above the 24px AA floor.",
+        "sourceTokenId": "DERIVED:/MC17 touch target",
+        "status": "DERIVED_INTERNAL"
+      },
+      "controlMd": {
+        "cssVar": "--marea-control-md",
+        "value": "40px",
+        "semanticRole": "Default control height.",
+        "sourceTokenId": "DERIVED:/MC17 touch target",
+        "status": "DERIVED_INTERNAL"
+      },
+      "controlLg": {
+        "cssVar": "--marea-control-lg",
+        "value": "48px",
+        "semanticRole": "Preferred wet/glove control height (internal design goal, not a WCAG minimum).",
+        "sourceTokenId": "MC04:/typography/sizes/touchTarget",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "touchTargetMin": {
+        "cssVar": "--marea-touch-target-min",
+        "value": "24px",
+        "semanticRole": "WCAG 2.2 SC 2.5.8 minimum target size.",
+        "sourceTokenId": "WCAG22:/2.5.8",
+        "status": "NORMATIVE_WCAG_22_AA"
+      },
+      "wetTargetPreferred": {
+        "cssVar": "--marea-wet-target-preferred",
+        "value": "44px",
+        "semanticRole": "Internal preference for wet/glove use; NOT the AA minimum.",
+        "sourceTokenId": "MC04:/typography/sizes/touchTarget",
+        "status": "INTERNAL_DESIGN_GOAL"
+      },
+      "iconSm": {
+        "cssVar": "--marea-icon-sm",
+        "value": "16px",
+        "semanticRole": "Inline metadata icon.",
+        "sourceTokenId": "MC04:/shape/--inst-stroke-icon",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "iconMd": {
+        "cssVar": "--marea-icon-md",
+        "value": "20px",
+        "semanticRole": "Inline control icon.",
+        "sourceTokenId": "MC04:/shape/--inst-stroke-icon",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "iconLg": {
+        "cssVar": "--marea-icon-lg",
+        "value": "24px",
+        "semanticRole": "Status and section icon.",
+        "sourceTokenId": "MC04:/shape/--inst-stroke-icon",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "iconXl": {
+        "cssVar": "--marea-icon-xl",
+        "value": "32px",
+        "semanticRole": "Instrument tile icon.",
+        "sourceTokenId": "DERIVED:/MC17 icon scale",
+        "status": "DERIVED_INTERNAL"
+      },
+      "tileMin": {
+        "cssVar": "--marea-tile-min",
+        "value": "160px",
+        "semanticRole": "Minimum instrument tile width; tiles wrap instead of shrinking text.",
+        "sourceTokenId": "DERIVED:/MC17 instrument layout",
+        "status": "DERIVED_INTERNAL"
+      }
+    },
+    "grid": {
+      "containerNarrow": {
+        "cssVar": "--marea-container-narrow",
+        "value": "800px",
+        "semanticRole": "Prose and documentation column width.",
+        "sourceTokenId": "DERIVED:/src/styles.scss/.wrap-narrow",
+        "status": "DERIVED_INTERNAL"
+      },
+      "containerDefault": {
+        "cssVar": "--marea-container-default",
+        "value": "1160px",
+        "semanticRole": "Default corporate content width.",
+        "sourceTokenId": "MC04:/src/styles.scss/.wrap",
+        "status": "EXISTING_MEASURED_BASELINE"
+      },
+      "containerWide": {
+        "cssVar": "--marea-container-wide",
+        "value": "1360px",
+        "semanticRole": "Wide data tables and catalogues.",
+        "sourceTokenId": "DERIVED:/MC17 grid",
+        "status": "DERIVED_INTERNAL"
+      },
+      "columns": {
+        "cssVar": "--marea-grid-columns",
+        "value": "12",
+        "unit": "count",
+        "semanticRole": "Reference grid columns (documented; components use fluid minmax grids).",
+        "sourceTokenId": "DERIVED:/MC17 grid",
+        "status": "DERIVED_INTERNAL"
+      },
+      "gutterSm": {
+        "cssVar": "--marea-gutter-sm",
+        "value": "16px",
+        "semanticRole": "Gutter below 768px.",
+        "sourceTokenId": "DERIVED:/MC17 grid",
+        "status": "DERIVED_INTERNAL"
+      },
+      "gutterMd": {
+        "cssVar": "--marea-gutter-md",
+        "value": "24px",
+        "semanticRole": "Gutter at 768-1159px.",
+        "sourceTokenId": "DERIVED:/MC17 grid",
+        "status": "DERIVED_INTERNAL"
+      },
+      "gutterLg": {
+        "cssVar": "--marea-gutter-lg",
+        "value": "32px",
+        "semanticRole": "Gutter at 1160px and above.",
+        "sourceTokenId": "DERIVED:/MC17 grid",
+        "status": "DERIVED_INTERNAL"
+      },
+      "measure": {
+        "cssVar": "--marea-measure",
+        "value": "68ch",
+        "semanticRole": "Maximum reading line length.",
+        "sourceTokenId": "DERIVED:/MC17 typography",
+        "status": "DERIVED_INTERNAL"
+      }
+    },
+    "radius": {
+      "none": {
+        "cssVar": "--marea-radius-none",
+        "value": "0",
+        "semanticRole": "Square technical surface.",
+        "sourceTokenId": "DERIVED:/MC04 shape",
+        "status": "DERIVED_INTERNAL"
+      },
+      "control": {
+        "cssVar": "--marea-radius-control",
+        "value": "3px",
+        "semanticRole": "Control corners (MC-04 range 2-4px).",
+        "sourceTokenId": "MC04:/shape/--inst-radius-control",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "surface": {
+        "cssVar": "--marea-radius-surface",
+        "value": "6px",
+        "semanticRole": "Surface corners (MC-04 range 4-8px).",
+        "sourceTokenId": "MC04:/shape/--inst-radius-surface",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "pill": {
+        "cssVar": "--marea-radius-pill",
+        "value": "999px",
+        "semanticRole": "Status chips with text only; never a decorative pill elsewhere.",
+        "sourceTokenId": "MC04:/shape/notes pills",
+        "status": "INTERNAL_PROPOSED"
+      }
+    },
+    "border": {
+      "hairline": {
+        "cssVar": "--marea-border-width-hairline",
+        "value": "1px",
+        "semanticRole": "Decorative rule.",
+        "sourceTokenId": "DERIVED:/MC04 shape",
+        "status": "DERIVED_INTERNAL"
+      },
+      "strong": {
+        "cssVar": "--marea-border-width-strong",
+        "value": "2px",
+        "semanticRole": "Control boundary.",
+        "sourceTokenId": "DERIVED:/MC04 shape",
+        "status": "DERIVED_INTERNAL"
+      },
+      "focus": {
+        "cssVar": "--marea-border-width-focus",
+        "value": "3px",
+        "semanticRole": "Focus indicator width (WCAG 2.2 SC 2.4.7 perceivability).",
+        "sourceTokenId": "WCAG22:/2.4.7",
+        "status": "NORMATIVE_WCAG_22_AA"
+      },
+      "icon": {
+        "cssVar": "--marea-icon-stroke",
+        "value": "2px",
+        "semanticRole": "Icon stroke width.",
+        "sourceTokenId": "MC04:/shape/--inst-stroke-icon",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "chart": {
+        "cssVar": "--marea-chart-stroke",
+        "value": "2px",
+        "semanticRole": "Chart line stroke.",
+        "sourceTokenId": "MC04:/shape/--inst-stroke-chart",
+        "status": "INTERNAL_PROPOSED"
+      }
+    },
+    "elevation": {
+      "none": {
+        "cssVar": "--marea-elevation-none",
+        "value": "none",
+        "semanticRole": "Default: flat surfaces, no decorative shadow.",
+        "sourceTokenId": "MC04:/brief/one-elevation",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "overlay": {
+        "cssVar": "--marea-elevation-overlay",
+        "value": "0 18px 40px rgba(11, 37, 64, 0.18)",
+        "semanticRole": "Overlays only (navigation panel, explanatory panel). Never used for cards.",
+        "sourceTokenId": "MC04:/brief/one-elevation",
+        "status": "INTERNAL_PROPOSED"
+      }
+    },
+    "opacity": {
+      "full": {
+        "cssVar": "--marea-opacity-full",
+        "value": "1",
+        "semanticRole": "Default opacity.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      },
+      "decorative": {
+        "cssVar": "--marea-opacity-decorative",
+        "value": "0.6",
+        "semanticRole": "Decorative only; never applied to essential text or status.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      },
+      "mutedIcon": {
+        "cssVar": "--marea-opacity-muted-icon",
+        "value": "0.85",
+        "semanticRole": "Non-essential icon softening; text never softened.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      }
+    },
+    "focus": {
+      "width": {
+        "cssVar": "--marea-focus-width",
+        "value": "3px",
+        "semanticRole": "Focus outline width.",
+        "sourceTokenId": "WCAG22:/2.4.7",
+        "status": "NORMATIVE_WCAG_22_AA"
+      },
+      "offset": {
+        "cssVar": "--marea-focus-offset",
+        "value": "2px",
+        "semanticRole": "Focus outline offset on flat surfaces.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      },
+      "inset": {
+        "cssVar": "--marea-focus-inset",
+        "value": "-3px",
+        "semanticRole": "Inset focus ring inside filled controls.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      },
+      "style": {
+        "cssVar": "--marea-focus-style",
+        "value": "solid",
+        "semanticRole": "Focus outline style.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      }
+    },
+    "motion": {
+      "durationState": {
+        "cssVar": "--marea-motion-state",
+        "value": "120ms",
+        "semanticRole": "State transition (hover/press).",
+        "sourceTokenId": "MC04:/motion/--inst-motion-state",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "durationEnter": {
+        "cssVar": "--marea-motion-enter",
+        "value": "180ms",
+        "semanticRole": "Disclosure expansion entrance.",
+        "sourceTokenId": "DERIVED:/MC17 motion",
+        "status": "DERIVED_INTERNAL"
+      },
+      "durationExit": {
+        "cssVar": "--marea-motion-exit",
+        "value": "200ms",
+        "semanticRole": "Disclosure collapse.",
+        "sourceTokenId": "DERIVED:/MC17 motion",
+        "status": "DERIVED_INTERNAL"
+      },
+      "easeStandard": {
+        "cssVar": "--marea-ease-standard",
+        "value": "cubic-bezier(0.2, 0, 0, 1)",
+        "semanticRole": "Calm standard easing; no bounce, no spring.",
+        "sourceTokenId": "DERIVED:/MC17 motion",
+        "status": "DERIVED_INTERNAL"
+      },
+      "alertMaxHz": {
+        "cssVar": "--marea-alert-max-hz",
+        "value": "1",
+        "unit": "count",
+        "semanticRole": "Maximum optional alert pulse rate; reduced-motion disables it.",
+        "sourceTokenId": "MC04:/motion/--inst-motion-alert-max-hz",
+        "status": "INTERNAL_PROPOSED"
+      }
+    },
+    "breakpoint": {
+      "bp320": {
+        "cssVar": "--marea-bp-320",
+        "value": "320px",
+        "semanticRole": "Minimum supported viewport; reflow test floor.",
+        "sourceTokenId": "WCAG22:/1.4.10",
+        "status": "NORMATIVE_WCAG_22_AA"
+      },
+      "bp360": {
+        "cssVar": "--marea-bp-360",
+        "value": "360px",
+        "semanticRole": "Small phone.",
+        "sourceTokenId": "DERIVED:/MC17 responsive",
+        "status": "DERIVED_INTERNAL"
+      },
+      "bp390": {
+        "cssVar": "--marea-bp-390",
+        "value": "390px",
+        "semanticRole": "Modern phone.",
+        "sourceTokenId": "DERIVED:/MC17 responsive",
+        "status": "DERIVED_INTERNAL"
+      },
+      "bp480": {
+        "cssVar": "--marea-bp-480",
+        "value": "480px",
+        "semanticRole": "Large phone / small landscape.",
+        "sourceTokenId": "DERIVED:/MC17 responsive",
+        "status": "DERIVED_INTERNAL"
+      },
+      "bp768": {
+        "cssVar": "--marea-bp-768",
+        "value": "768px",
+        "semanticRole": "Tablet portrait; two-column compositions.",
+        "sourceTokenId": "DERIVED:/MC17 responsive",
+        "status": "DERIVED_INTERNAL"
+      },
+      "bp900": {
+        "cssVar": "--marea-bp-900",
+        "value": "900px",
+        "semanticRole": "Wide tablet; sidebar compositions.",
+        "sourceTokenId": "DERIVED:/MC17 responsive",
+        "status": "DERIVED_INTERNAL"
+      },
+      "bp1024": {
+        "cssVar": "--marea-bp-1024",
+        "value": "1024px",
+        "semanticRole": "Desktop; full navigation pattern.",
+        "sourceTokenId": "DERIVED:/MC17 responsive",
+        "status": "DERIVED_INTERNAL"
+      },
+      "bp1160": {
+        "cssVar": "--marea-bp-1160",
+        "value": "1160px",
+        "semanticRole": "Default container width reached.",
+        "sourceTokenId": "DERIVED:/MC17 responsive",
+        "status": "DERIVED_INTERNAL"
+      },
+      "bp1440": {
+        "cssVar": "--marea-bp-1440",
+        "value": "1440px",
+        "semanticRole": "Large desktop reference width.",
+        "sourceTokenId": "DERIVED:/MC17 responsive",
+        "status": "DERIVED_INTERNAL"
+      }
+    },
+    "zIndex": {
+      "base": {
+        "cssVar": "--marea-z-base",
+        "value": "0",
+        "semanticRole": "Normal flow.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      },
+      "raised": {
+        "cssVar": "--marea-z-raised",
+        "value": "10",
+        "semanticRole": "Instrument tile overlays.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      },
+      "sticky": {
+        "cssVar": "--marea-z-sticky",
+        "value": "20",
+        "semanticRole": "Sticky section chrome inside the catalogue.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      },
+      "nav": {
+        "cssVar": "--marea-z-nav",
+        "value": "30",
+        "semanticRole": "Responsive navigation panel.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      },
+      "overlay": {
+        "cssVar": "--marea-z-overlay",
+        "value": "40",
+        "semanticRole": "Overlay scrim and explanatory panel.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      },
+      "skip": {
+        "cssVar": "--marea-z-skip",
+        "value": "50",
+        "semanticRole": "Skip link.",
+        "sourceTokenId": "DERIVED:/MC17",
+        "status": "DERIVED_INTERNAL"
+      }
+    },
+    "icon": {
+      "sm": {
+        "cssVar": "--marea-icon-size-sm",
+        "value": "16px",
+        "semanticRole": "Inline metadata icon size.",
+        "sourceTokenId": "MC04:/icons",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "md": {
+        "cssVar": "--marea-icon-size-md",
+        "value": "20px",
+        "semanticRole": "Control icon size.",
+        "sourceTokenId": "MC04:/icons",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "lg": {
+        "cssVar": "--marea-icon-size-lg",
+        "value": "24px",
+        "semanticRole": "Status icon size.",
+        "sourceTokenId": "MC04:/icons",
+        "status": "INTERNAL_PROPOSED"
+      },
+      "xl": {
+        "cssVar": "--marea-icon-size-xl",
+        "value": "32px",
+        "semanticRole": "Tile icon size.",
+        "sourceTokenId": "MC04:/icons",
+        "status": "INTERNAL_PROPOSED"
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "lead",
+  "scopeNote": "Programme decisions made during MC-10. They mirror MC10-DECISION-REGISTER.md and the programme DECISION-LOG.md entries. They never approve a price, a product release or a commercial commitment.",
+  "decisions": [
+    {
+      "decisionId": "D-029",
+      "date": "2026-11-01",
+      "title": "MC-10 stops at the outreach authorization gate and reports BLOCKED, not PASS",
+      "status": "IN_FORCE",
+      "summary": "No explicit, dated and scoped customer-outreach authorization exists, so no candidate may be identified or contacted and no interview may be counted. MC-10 delivers the complete Wave 0 preparation package, records fieldwork as NOT_EXECUTED and reports BLOCKED instead of converting preparation into an apparent primary-research PASS.",
+      "evidence": [
+        "docs/marea/customer-discovery/data/fieldwork-authorization.json",
+        "docs/marea/customer-discovery/data/research-status.json",
+        "docs/marea/customer-discovery/MC10-FIELDWORK-AUTHORIZATION.md"
+      ],
+      "statusEffect": "No participant, interview or price evidence exists; no commercial status changes."
+    },
+    {
+      "decisionId": "D-030",
+      "date": "2026-11-01",
+      "title": "The MC-09 priority order remains unvalidated and no product or bundle advances",
+      "status": "IN_FORCE",
+      "summary": "Absence of primary evidence is not evidence of absence. The nine families and six bundles keep their MC-09 desk-research priorities and are classified NOT_TESTED in MC-10. No product may be advanced, deferred or discontinued on the basis of zero interviews, and no product readiness is upgraded.",
+      "evidence": [
+        "docs/marea/customer-discovery/MC10-PRODUCT-PRIMARY-EVIDENCE.md",
+        "docs/marea/customer-discovery/MC10-BUNDLE-PRIMARY-EVIDENCE.md",
+        "docs/marea/market-validation/MC09-PORTFOLIO-PRIORITIZATION.md"
+      ],
+      "statusEffect": "No lifecycle change; no readiness upgrade; no investment approval."
+    },
+    {
+      "decisionId": "D-031",
+      "date": "2026-11-01",
+      "title": "Instruments and experiment thresholds are frozen before fielding; Portuguese versions are withheld",
+      "status": "IN_FORCE",
+      "summary": "The MC-09 instrument suite is frozen as version 1.0.0 with recorded source hashes; any change requires a dated amendment and a new version. The ten experiment thresholds are frozen from the MC-09 registry and verified by hash. Portuguese instruments are deliberately not produced without qualified linguistic review, so northern Portugal cannot be fielded.",
+      "evidence": [
+        "docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md",
+        "docs/marea/customer-discovery/methodology/instruments.json",
+        "docs/marea/customer-discovery/data/experiments.json"
+      ],
+      "statusEffect": "A post-hoc threshold or instrument change would be detectable and is prohibited."
+    },
+    {
+      "decisionId": "D-032",
+      "date": "2026-11-01",
+      "title": "No commercial restriction is weakened by MC-10 and stated preference remains NOT_MEASURED",
+      "status": "IN_FORCE",
+      "summary": "Trademark, IP, sales, publication, deployment, profitability, PILOT safety, compatibility and price approvals are unchanged. Because zero pricing modules were administered, WTP_STATED_PREFERENCE_OBSERVED and WTP_COMMERCIALLY_VALIDATED remain false and APPROVED_PRICES remains 0.",
+      "evidence": [
+        "docs/marea/customer-discovery/data/governance-status.json",
+        "docs/marea/customer-discovery/pricing/MC10-GABOR-GRANGER.md",
+        "docs/marea/customer-discovery/pricing/MC10-VAN-WESTENDORP.md"
+      ],
+      "statusEffect": "No price approval, publication, order path or commercial claim."
+    },
+    {
+      "decisionId": "D-033",
+      "date": "2026-11-01",
+      "title": "MC-11 cannot inherit customer evidence and must first unblock fieldwork or explicitly re-scope",
+      "status": "IN_FORCE",
+      "summary": "MC-11 (hardware, supplier, conformity and feasibility) receives no customer-validation input from MC-10 because none was collected. Its handoff separates hardware/supplier questions that can be researched internally from customer questions that remain blocked behind AUTH-MC10-001.",
+      "evidence": [
+        "docs/marea/customer-discovery/MC10-MC11-HANDOFF.md"
+      ],
+      "statusEffect": "No hardware, BOM, supplier order or conformity claim is authorised."
+    }
+  ]
+}

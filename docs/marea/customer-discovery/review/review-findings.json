@@ -1,0 +1,110 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "reviewId": "MC10-REVIEW-03",
+  "reviewRound": 3,
+  "supersedesReviewId": "MC10-REVIEW-02",
+  "reviewer": "agent-g-auditor",
+  "reviewedCommit": "f083c782428b82226d9f1a3d50e0fb2ceec7f2d2",
+  "previousReviewedCommit": "a7645f67fd2bb2147ce370d82db41fbd23e630cf",
+  "firstReviewedCommit": "cdfe67895fd138e1f1c87dffc90ee3c620aed277",
+  "baseCommit": "9d206cc251ea63c7edd1cda0ca7a2d028ae7cca3",
+  "date": "2026-11-01",
+  "verdict": "PASS",
+  "verdictScope": "Wave-0 preparation scope only; fieldwork BLOCKED; no pass issued for primary customer research",
+  "primaryResearchPass": false,
+  "fieldworkStatus": "BLOCKED",
+  "findings": [
+    {
+      "findingId": "F-01",
+      "severity": "BLOCKING",
+      "status": "CLOSED",
+      "criterion": "Fabrication detection in narrative deliverables",
+      "title": "Narrative-fabrication forms are rejected by CR-62 after the round-3 fix",
+      "evidence": "Round 1: a blockquoted fabricated quotation (probe A9) and a quantifier-less fabricated observation (probe A10) were accepted at 61/61. Round 2 added CR-62 and rejected those forms but left six inline attribution forms accepted (A9e, B1, B2, B3, B4, B9). Round 3 at f083c78 adds optional-article support to the dash and pre-quotation rules, reverse-order and parenthetical rules, and no longer exempts closing-quote rules from the meta-quote guard. In a fresh throwaway fixture at f083c78, all six residual probes are rejected by CR-62, as are A9, A9b, A9c, A9d and A10; unresolvable pseudonymous participant references are rejected anywhere in a document; the real tree still validates at 62/62; the suite is 96/96. Data-contract section 2.8 and the validator header now match the implementation. Verified closed in round 3.",
+      "remediation": "No further action for the preparation scope. Keep the CR-62 rules and the new negative tests in place."
+    },
+    {
+      "findingId": "F-02",
+      "severity": "MINOR",
+      "status": "CLOSED",
+      "criterion": "Participant data location control",
+      "title": "CR-47 now scans application-layer content, not only filenames",
+      "evidence": "Round 1: participant-content JSON under a throwaway fixture src/ directory with a neutral filename passed at 61/61, and CR-47 was the only check without a negative test. At a7645f6 and again at f083c78, CR-47 content-scans src/, public/ and deploy/ for participant, interview, consent, price-response and contact markers. Probe A11 (participant JSON under src/ with a neutral filename) and probe A11b (interview-record Markdown under public/ with a neutral filename) are both rejected with CR-47, and the suite contains a CR-47 negative test. Verified closed in round 2 and re-verified in round 3.",
+      "remediation": "No further action; keep the content scan and the negative test in place."
+    },
+    {
+      "findingId": "F-03",
+      "severity": "MINOR",
+      "status": "CLOSED",
+      "criterion": "Internal consistency of planning-defect records",
+      "title": "Planning-inconsistency count corrected to five",
+      "evidence": "MC10-EXPERIMENT-RESULTS.md section 11 now says five plan inconsistencies, lists PI-01 to PI-05 and describes PI-05; MC10-DECISION-REGISTER.md section 4 records five planning defects and its OD-11 references IV-01 to IV-09; data/research-status.json holds five entries PI-01 to PI-05. All agree at f083c78. Verified closed in round 2 and re-verified in round 3.",
+      "remediation": "No further action."
+    },
+    {
+      "findingId": "F-04",
+      "severity": "INFORMATIONAL",
+      "status": "OPEN",
+      "criterion": "Delivery narrative finalisation",
+      "title": "D28 still carries provisional pre-review delivery fields",
+      "evidence": "MC-10-DELIVERY.md section 7 still lists pending independent re-runs at the reviewed commit for the validator and the negative suite, its header still says the preparation is independently audited, and section 10 still defers the implementation and review-correction commits to a final delivery update. The Spanish executive report was corrected in round 2 and no longer claims the preparation was audited, so this finding is limited to D28.",
+      "remediation": "Lead finalizes in the delivery commit: replace the pending rows with the reproduced results from section 5 of the round-3 review, record the reviewed commit f083c78 and the review-correction commit, and keep the audit wording only once the review is committed."
+    },
+    {
+      "findingId": "F-05",
+      "severity": "INFORMATIONAL",
+      "status": "OPEN",
+      "criterion": "Programme registry accuracy",
+      "title": "The Master-Prompt registry row for prompt 10 is still PLANNED",
+      "evidence": "docs/marea/execution/MASTER-PROMPT-REGISTRY.md line 56 still marks prompt 10 as PLANNED with evidence '-', while the change-control section requires the Lead to update the registry at the end of every prompt with status and commit/PR evidence. None of the three fix commits touches it.",
+      "remediation": "Lead finalizes in the delivery commit: update the prompt-10 row to the honest status with branch, commit, review and gate evidence."
+    },
+    {
+      "findingId": "F-06",
+      "severity": "INFORMATIONAL",
+      "status": "CLOSED",
+      "criterion": "Authorization-record clarity",
+      "title": "Authorization revision author field renamed to recordedBy",
+      "evidence": "data/fieldwork-authorization.json line 51 reads recordedBy; the top-level authorizer, authorizerRole, date, scopes and fieldworkLead remain null or empty, so the record still cannot be read as an outreach authorization. Verified closed in round 2 and re-verified in round 3.",
+      "remediation": "No further action."
+    },
+    {
+      "findingId": "F-07",
+      "severity": "INFORMATIONAL",
+      "status": "CLOSED",
+      "criterion": "Freeze stability",
+      "title": "All frozen sources are LF-only without BOM, so text-mode and byte-mode hashes agree",
+      "evidence": "Independent byte inspection at f083c78: discovery plan 39322 bytes with 548 LF and 0 CRLF; experiment registry 27649 with 196 LF and 0 CRLF; pricing ladders 20398 with 284 LF and 0 CRLF; instruments 5199 with 117 LF and 0 CRLF; frozen experiments 24490 with 311 LF and 0 CRLF; no BOM. The instrument source hash matches under both utf8-text and raw-byte hashing, and all 12 freeze values recompute.",
+      "remediation": "No action required. Recorded so a future editor does not introduce CRLF or a BOM into a hashed source."
+    },
+    {
+      "findingId": "F-08",
+      "severity": "INFORMATIONAL",
+      "status": "CLOSED",
+      "criterion": "PII containment",
+      "title": "Two historical git-author email strings in the decision log are outside the MC-10 research contract",
+      "evidence": "docs/marea/execution/DECISION-LOG.md lines 68 and 69 contain email strings inherited from MC-02 at base commit 9d206cc; they are not participant data and were not added by MC-10. An independent PII scan of every MC-10 document, data file and the instrument freeze returned zero hits for email, phone, IBAN, DNI/NIE and postal-address patterns.",
+      "remediation": "None for MC-10. A future repository-hygiene pass may redact historical author addresses."
+    },
+    {
+      "findingId": "F-09",
+      "severity": "INFORMATIONAL",
+      "status": "CLOSED",
+      "criterion": "Document accuracy",
+      "title": "The delivery record says 17 files while the data directory holds 18 JSON files",
+      "evidence": "MC-10-DELIVERY.md section 5 says '17-file machine-readable layer'. The data directory holds 18 JSON files: the 17 governed files indexed by manifest.json plus manifest.json itself. The manifest inventory and CR-02/CR-03 agree on the 17 governed files, so the wording is the only inaccuracy.",
+      "remediation": "Optional wording fix: state 17 governed data files plus the manifest index."
+    },
+    {
+      "findingId": "F-10",
+      "severity": "INFORMATIONAL",
+      "status": "OPEN",
+      "criterion": "Heuristic breadth of the narrative-fabrication check",
+      "title": "CR-62 is a heuristic limited to the documented lexical forms",
+      "evidence": "Breadth probes at f083c78 returned 62/62 for four variants outside the documented forms: a role noun placed before a reporting verb outside the covered verb set; a quotation using single-quote characters; a quotation using guillemet characters; and a fabricated quotation attributed to a role noun outside the English list. Data-contract section 2.8 lists the covered inline forms in prose but does not state the lexical limit, and the validator header is silent on it. The tree contains zero quotations of any form (guillemet and single-quote attribution scans returned zero), so this is a breadth limit of a heuristic control rather than an open fabrication path in an existing document; the twelve probes that previously demonstrated a real bypass are all rejected.",
+      "remediation": "Either extend CR-62 to additional quotation characters, bilingual role nouns and a wider reporting-verb set, or record the lexical scope explicitly in data-contract section 2.8 and the validator header. Required before any Spanish-language narrative reporting or before the gate is relied on for quotations in languages other than English. Not blocking for the current preparation scope; Lead may fold it into the delivery commit or schedule a follow-up."
+    }
+  ]
+}

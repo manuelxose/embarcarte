@@ -1,0 +1,77 @@
+MC-04 contrast verification ÔÇö WCAG 2.x relative luminance
+Token file : docs/marea/brand/tokens/marea-instrument-tokens.proposed.json
+Token sha256: 0ff5cd48a4c773129e6a19512af2488ade9b2a79be4b023e7bc8ff9ccca5e2b0
+Evidence   : docs/marea/brand/evidence/contrast/contrast-matrix.json, docs/marea/brand/evidence/contrast/contrast-failures.json
+Environment: node v24.18.0, win32
+
+Thresholds (from the token file, ┬º5.5 of the brief):
+  text-normal  AA 4.5:1  internal 5:1
+  text-large   AA 3:1  internal 4.5:1
+  ui           AA 3:1  internal 3:1
+  ui-graphic   AA 3:1  internal 4.5:1
+  focus        AA 3:1  internal 4.5:1
+  cockpit      AA 4.5:1  internal 7:1
+  disabled     AA exempt  internal 3:1
+  decorative   AA exempt  internal exempt
+
+## web-light ÔÇö Corporate website, docs, product pages (existing light theme; stays light ÔÇö brief ┬º5.4).
+   gate=aa valueStatus=EXISTING_MEASURED_BASELINE appliedInRepository=true
+   pairs=28 pass=16 aaMiss=3 internalMiss=12
+   text-normal  n=20 tightest 4.67:1 (internal 5:1) ÔÇö sea on surface
+   cockpit      n= 2 tightest 5.41:1 (internal 7:1) ÔÇö stateSafe on canvas
+   text-large   n= 1 tightest 15.52:1 (internal 4.5:1) ÔÇö themeColor on canvas
+   focus        n= 3 tightest 1.51:1 (internal 4.5:1) ÔÇö focusRing on surfaceRaised
+
+## instrument-day ÔÇö App/NAV/DISPLAY daytime, bridge daylight (software only; not the corporate website).
+   gate=aa+internal valueStatus=PROPOSED appliedInRepository=false
+   pairs=54 pass=54 aaMiss=0 internalMiss=0
+   text-normal  n=35 tightest 5.16:1 (internal 5:1) ÔÇö action on surfaceRaised
+   text-large   n= 1 tightest 11.46:1 (internal 4.5:1) ÔÇö textPrimary on canvas
+   cockpit      n= 3 tightest 11.18:1 (internal 7:1) ÔÇö dataPrimary on surfaceRaised
+   ui-graphic   n= 2 tightest 11.46:1 (internal 4.5:1) ÔÇö chartLine on canvas
+   ui           n= 3 tightest 3.18:1 (internal 3:1) ÔÇö chartGrid on surfaceRaised
+   focus        n= 5 tightest 5.63:1 (internal 4.5:1) ÔÇö focusRingOnFill on action
+   disabled     n= 3 tightest 3.15:1 (internal 3:1) ÔÇö disabled on surfaceRaised
+
+## instrument-sunlight ÔÇö Same surfaces under high ambient light and glare (hardware validation BLOCKED ÔÇö no display exists).
+   gate=aa+internal valueStatus=PROPOSED appliedInRepository=false
+   pairs=54 pass=54 aaMiss=0 internalMiss=0
+   text-normal  n=35 tightest 6.06:1 (internal 5:1) ÔÇö textMeta on surfaceRaised
+   text-large   n= 1 tightest 15.66:1 (internal 4.5:1) ÔÇö textPrimary on canvas
+   cockpit      n= 3 tightest 14.36:1 (internal 7:1) ÔÇö dataPrimary on surfaceRaised
+   ui-graphic   n= 2 tightest 15.06:1 (internal 4.5:1) ÔÇö chartLine on surface
+   ui           n= 3 tightest 4.13:1 (internal 3:1) ÔÇö chartGrid on surfaceRaised
+   focus        n= 5 tightest 8.74:1 (internal 4.5:1) ÔÇö focusRingOnFill on action
+   disabled     n= 3 tightest 3.80:1 (internal 3:1) ÔÇö disabled on surfaceRaised
+
+## instrument-night ÔÇö App/NAV/DISPLAY at night, watchkeeping (software only).
+   gate=aa+internal valueStatus=PROPOSED appliedInRepository=false
+   pairs=54 pass=54 aaMiss=0 internalMiss=0
+   text-normal  n=35 tightest 5.23:1 (internal 5:1) ÔÇö textSecondary on surfaceRaised
+   text-large   n= 1 tightest 10.65:1 (internal 4.5:1) ÔÇö textPrimary on canvas
+   cockpit      n= 3 tightest 8.01:1 (internal 7:1) ÔÇö dataPrimary on surfaceRaised
+   ui-graphic   n= 2 tightest 9.38:1 (internal 4.5:1) ÔÇö chartLine on surface
+   ui           n= 3 tightest 3.15:1 (internal 3:1) ÔÇö chartGrid on surfaceRaised
+   focus        n= 5 tightest 8.01:1 (internal 4.5:1) ÔÇö focusRing on surfaceRaised
+   disabled     n= 3 tightest 3.93:1 (internal 3:1) ÔÇö disabled on surfaceRaised
+
+Known pre-existing baseline findings (recorded, not regressions):
+  F-6 textSecondary on surface = 4.8275:1 (target 5:1, internal, web-light)
+  F-6 textSecondary on surfaceRaised = 4.7059:1 (target 5:1, internal, web-light)
+  F-6 textMeta on surface = 4.8275:1 (target 5:1, internal, web-light)
+  F-5 sea on canvas = 4.9631:1 (target 5:1, internal, web-light)
+  F-5 sea on surface = 4.6663:1 (target 5:1, internal, web-light)
+  F-7 stateSafe on badgeSafeBg = 4.7762:1 (target 5:1, internal, web-light)
+  F-7 stateCritical on badgeCriticalBg = 4.7371:1 (target 5:1, internal, web-light)
+  F-4 stateCritical on canvas = 5.554:1 (target 7:1, internal, web-light)
+  F-4 stateSafe on canvas = 5.413:1 (target 7:1, internal, web-light)
+  F-1 focusRing on canvas = 1.6529:1 (target 3:1, wcag-aa, web-light)
+  F-1 focusRing on canvas = 1.6529:1 (target 4.5:1, internal, web-light)
+  F-1 focusRing on surface = 1.554:1 (target 3:1, wcag-aa, web-light)
+  F-1 focusRing on surface = 1.554:1 (target 4.5:1, internal, web-light)
+  F-1 focusRing on surfaceRaised = 1.5149:1 (target 3:1, wcag-aa, web-light)
+  F-1 focusRing on surfaceRaised = 1.5149:1 (target 4.5:1, internal, web-light)
+
+
+Summary: 190 pairs measured across 4 modes; 3 AA miss(es), 12 internal-target miss(es), 15 known baseline finding(s), 0 failure(s).
+RESULT: PASS

@@ -1,0 +1,319 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "documentType": "BUNDLE_ASSESSMENT",
+  "owner": "lead",
+  "frozenAt": "2026-10-31",
+  "framework": "The same twelve commercial dimensions and weights used for product families, applied at the complete-customer-solution level. Bundle commercial attractiveness is scored independently from release readiness, whose state is taken from the canonical MC-08 bundle contract. A favourable commercial score never changes a bundle's NOT_FOR_SALE status or its MC-08 blockers.",
+  "scoringFormula": "commercialScore = round(sum(weights[d] * scores[d]), 3); scores 1-5 where 5 is most favourable",
+  "weights": {
+    "problemSeverity": 0.12,
+    "demandEvidence": 0.12,
+    "differentiationPotential": 0.1,
+    "revenueAndContribution": 0.1,
+    "recurringRevenuePotential": 0.09,
+    "distributionFeasibility": 0.09,
+    "installationSimplicity": 0.07,
+    "developmentAndIntegrationReadiness": 0.08,
+    "ipLicensingExposure": 0.06,
+    "conformityAndSafetyExposure": 0.06,
+    "supportAndWarrantyBurden": 0.06,
+    "timeToValidatedReadiness": 0.05
+  },
+  "bundles": [
+    {
+      "bundleId": "PROTECT",
+      "scores": {
+        "problemSeverity": 5,
+        "demandEvidence": 4,
+        "differentiationPotential": 3,
+        "revenueAndContribution": 3,
+        "recurringRevenuePotential": 5,
+        "distributionFeasibility": 4,
+        "installationSimplicity": 3,
+        "developmentAndIntegrationReadiness": 2,
+        "ipLicensingExposure": 2,
+        "conformityAndSafetyExposure": 2,
+        "supportAndWarrantyBurden": 2,
+        "timeToValidatedReadiness": 3
+      },
+      "commercialScore": 3.37,
+      "commercialAttractiveness": "HIGH",
+      "releaseReadiness": {
+        "state": "INTERNAL_ONLY_DEFINED",
+        "blockers": [
+          "X-01",
+          "X-05",
+          "X-07",
+          "H-05",
+          "H-12",
+          "P-05",
+          "P-06",
+          "DEC-05",
+          "COST_NOT_JUSTIFIED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "PRIORITIZE_FOR_CUSTOMER_VALIDATION",
+      "evidenceClaimIds": [
+        "CLM-CMP-021",
+        "CLM-CMP-004",
+        "CLM-CMP-007",
+        "CLM-CMP-002",
+        "CLM-ECO-007"
+      ],
+      "rationale": "The clearest recurring-revenue story in the portfolio and the bundle closest to a real customer job (leaving the boat unattended). The historical EUR 399 hypothesis is contradicted by its own composition (WATCH hardware plus two SENSE modules at EUR 497 before installation), so validation must rebuild the price from the customer's problem, not the price list.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "bundleId": "START",
+      "scores": {
+        "problemSeverity": 4,
+        "demandEvidence": 4,
+        "differentiationPotential": 3,
+        "revenueAndContribution": 3,
+        "recurringRevenuePotential": 4,
+        "distributionFeasibility": 3,
+        "installationSimplicity": 3,
+        "developmentAndIntegrationReadiness": 3,
+        "ipLicensingExposure": 2,
+        "conformityAndSafetyExposure": 3,
+        "supportAndWarrantyBurden": 3,
+        "timeToValidatedReadiness": 3
+      },
+      "commercialScore": 3.27,
+      "commercialAttractiveness": "MEDIUM",
+      "releaseReadiness": {
+        "state": "INTERNAL_ONLY_DEFINED",
+        "blockers": [
+          "X-01",
+          "X-05",
+          "X-06",
+          "H-04",
+          "H-05",
+          "H-07",
+          "P-02",
+          "P-01",
+          "P-10",
+          "D-01",
+          "D-02",
+          "D-03",
+          "DEC-05",
+          "PUBLICATION_BLOCKED",
+          "BRAND_CLEARANCE_NOT_GRANTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "PRIORITIZE_FOR_CUSTOMER_VALIDATION",
+      "evidenceClaimIds": [
+        "CLM-CMP-027",
+        "CLM-CMP-024",
+        "CLM-CMP-001",
+        "CLM-CMP-008",
+        "CLM-CHN-019"
+      ],
+      "rationale": "The most plausible entry bundle because it is HUB plus a NAV subscription: a real consolidation outcome with a recurring component. It remains hardware-led with an unresolved BOM and installed price, so MC-10 should test concept comprehension and current spend rather than defend EUR 499.",
+      "confidence": "LOW"
+    },
+    {
+      "bundleId": "FLEET",
+      "scores": {
+        "problemSeverity": 4,
+        "demandEvidence": 2,
+        "differentiationPotential": 3,
+        "revenueAndContribution": 4,
+        "recurringRevenuePotential": 5,
+        "distributionFeasibility": 3,
+        "installationSimplicity": 4,
+        "developmentAndIntegrationReadiness": 2,
+        "ipLicensingExposure": 2,
+        "conformityAndSafetyExposure": 4,
+        "supportAndWarrantyBurden": 3,
+        "timeToValidatedReadiness": 2
+      },
+      "commercialScore": 3.22,
+      "commercialAttractiveness": "MEDIUM",
+      "releaseReadiness": {
+        "state": "INTERNAL_ONLY_DEFINED",
+        "blockers": [
+          "X-01",
+          "X-05",
+          "X-07",
+          "P-09",
+          "H-12",
+          "D-014",
+          "E-26",
+          "NO_SLA_ESTABLISHED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "LONG_TERM_OPPORTUNITY",
+      "evidenceClaimIds": [
+        "CLM-CMP-012",
+        "CLM-CMP-013",
+        "CLM-CMP-014",
+        "CLM-CMP-026",
+        "CLM-CHN-018"
+      ],
+      "rationale": "The only bundle with a genuinely scalable recurring model, but MAREA FLEET package is a bespoke contract with no price, no SLA and an unimplemented platform. It is the post-beachhead expansion path, not a 2026 validation priority.",
+      "confidence": "LOW"
+    },
+    {
+      "bundleId": "CRUISE",
+      "scores": {
+        "problemSeverity": 4,
+        "demandEvidence": 4,
+        "differentiationPotential": 3,
+        "revenueAndContribution": 4,
+        "recurringRevenuePotential": 4,
+        "distributionFeasibility": 3,
+        "installationSimplicity": 2,
+        "developmentAndIntegrationReadiness": 2,
+        "ipLicensingExposure": 1,
+        "conformityAndSafetyExposure": 2,
+        "supportAndWarrantyBurden": 2,
+        "timeToValidatedReadiness": 2
+      },
+      "commercialScore": 2.99,
+      "commercialAttractiveness": "MEDIUM",
+      "releaseReadiness": {
+        "state": "INTERNAL_ONLY_DEFINED",
+        "blockers": [
+          "X-01",
+          "X-05",
+          "X-06",
+          "H-04",
+          "H-05",
+          "H-07",
+          "H-08",
+          "H-11",
+          "P-02",
+          "P-03",
+          "P-07",
+          "D-01",
+          "D-02",
+          "D-03",
+          "D-09",
+          "DEC-05",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "FURTHER_RESEARCH_REQUIRED",
+      "evidenceClaimIds": [
+        "CLM-CMP-028",
+        "CLM-CMP-008",
+        "CLM-CMP-009",
+        "CLM-CMP-015",
+        "CLM-CMP-024"
+      ],
+      "rationale": "A complete helm solution at a mid price, but an equivalent Raymarine/Digital Yacht composition is already purchasable and transparently priced. MAREA must prove an integration outcome worth paying for; the bundle depends on the least-ready hardware families.",
+      "confidence": "LOW"
+    },
+    {
+      "bundleId": "SAIL",
+      "scores": {
+        "problemSeverity": 4,
+        "demandEvidence": 4,
+        "differentiationPotential": 3,
+        "revenueAndContribution": 5,
+        "recurringRevenuePotential": 3,
+        "distributionFeasibility": 2,
+        "installationSimplicity": 1,
+        "developmentAndIntegrationReadiness": 1,
+        "ipLicensingExposure": 1,
+        "conformityAndSafetyExposure": 1,
+        "supportAndWarrantyBurden": 2,
+        "timeToValidatedReadiness": 1
+      },
+      "commercialScore": 2.65,
+      "commercialAttractiveness": "LOW",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "X-01",
+          "X-05",
+          "X-06",
+          "H-01",
+          "P-04",
+          "H-03",
+          "H-10",
+          "P-05",
+          "X-07",
+          "D-01",
+          "D-02",
+          "D-03",
+          "PILOT_SAFETY_GATE_BLOCKED",
+          "NO_FIXED_TURNKEY_PRICE_PERMITTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "DEFER",
+      "evidenceClaimIds": [
+        "CLM-CMP-029",
+        "CLM-CMP-016",
+        "CLM-CMP-017",
+        "CLM-CMP-020"
+      ],
+      "rationale": "The highest-dependency bundle: safety-critical PILOT plus instrument and display families, with no permitted fixed turnkey price. Equivalent equipment sets are already sold and serviced by established brands; the research does not support prioritising SAIL.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "bundleId": "COMPLETE",
+      "scores": {
+        "problemSeverity": 4,
+        "demandEvidence": 2,
+        "differentiationPotential": 2,
+        "revenueAndContribution": 5,
+        "recurringRevenuePotential": 4,
+        "distributionFeasibility": 1,
+        "installationSimplicity": 1,
+        "developmentAndIntegrationReadiness": 1,
+        "ipLicensingExposure": 1,
+        "conformityAndSafetyExposure": 1,
+        "supportAndWarrantyBurden": 2,
+        "timeToValidatedReadiness": 1
+      },
+      "commercialScore": 2.31,
+      "commercialAttractiveness": "LOW",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "X-01",
+          "X-05",
+          "X-06",
+          "X-07",
+          "H-01",
+          "P-04",
+          "H-03",
+          "H-10",
+          "P-05",
+          "P-06",
+          "H-12",
+          "H-11",
+          "H-08",
+          "P-03",
+          "P-07",
+          "D-01",
+          "D-02",
+          "D-03",
+          "D-04",
+          "D-05",
+          "D-07",
+          "D-09",
+          "PILOT_SAFETY_GATE_BLOCKED",
+          "NO_FIXED_TURNKEY_PRICE_PERMITTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "RECONSIDER_PRODUCT_STRATEGY",
+      "evidenceClaimIds": [
+        "CLM-CMP-030",
+        "CLM-CMP-025",
+        "CLM-CMP-024"
+      ],
+      "rationale": "The integrated single-supplier thesis in its purest form: it needs every unready family at once, has 22 MC-08 blockers and no permitted fixed turnkey price. No evidence shows buyers want one supplier for all electronics; the outcome can be delivered by integrating existing equipment instead of selling a complete hardware stack.",
+      "confidence": "MEDIUM"
+    }
+  ]
+}

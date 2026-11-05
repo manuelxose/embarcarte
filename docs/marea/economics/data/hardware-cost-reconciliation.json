@@ -1,0 +1,2190 @@
+{
+  "contractId": "MAREA-MC12-HARDWARE-COST-RECONCILIATION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-12",
+  "date": "2026-11-02",
+  "owner": "hardware-manufacturing-cost-analyst",
+  "currency": "EUR",
+  "sourceAuthority": [
+    "docs/marea/hardware/data/cost-scenarios.json",
+    "docs/marea/hardware/data/engineering-bom.json",
+    "docs/marea/hardware/data/manufacturing-bom.json",
+    "docs/marea/hardware/data/price-observations.json",
+    "docs/marea/hardware/data/supplier-register.json",
+    "docs/marea/hardware/data/conformity-applicability.json",
+    "docs/marea/hardware/data/risks.json",
+    "docs/marea/hardware/data/hardware-families.json",
+    "docs/marea/hardware/data/DATA-CONTRACT.md",
+    "docs/marea/hardware/MC11-MC12-HANDOFF.md",
+    "docs/marea/hardware/economics/MC11-HARDWARE-COST-MODEL.md",
+    "docs/marea/products/product-definitions.batch-01.json",
+    "docs/marea/products/product-definitions.batch-02.json",
+    "docs/marea/products/product-definitions.batch-03.json",
+    "docs/marea/economics/MC-12-BASELINE-AND-GOVERNANCE.md"
+  ],
+  "invariant": {
+    "id": "INV-TOOLING-01",
+    "statement": "knownSubtotalEur includes the COST-16 tooling/NRE amortisation; toolingAmortizationEur repeats it and must not be added again.",
+    "scenariosChecked": 90,
+    "maxAbsSubtotalDeltaEur": 0,
+    "toolingFieldMismatches": 0,
+    "result": "PASS",
+    "toleranceEur": 0.005
+  },
+  "categoryBasis": [
+    {
+      "categoryId": "COST-01",
+      "treatment": "OBSERVED_PARTIAL",
+      "variable": true,
+      "note": "Only the EBOM lines with a public list price: 0-6 priced lines of 11-22 per BOM, converted at the recorded FX assumption. The amount is the observed subtotal at the volume price tier multiplied by the labelled FX case multiplier; it is NOT a component cost."
+    },
+    {
+      "categoryId": "COST-02",
+      "treatment": "ASSUMPTION_ALLOWANCE",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-011 per-unit allowance for unpriced electronic/module items, multiplied by the ASM-004 volume factor. Largest element is the unquoted class-B SOM/modem/panel/receiver. No quotation exists."
+    },
+    {
+      "categoryId": "COST-03",
+      "treatment": "ASSUMPTION_ALLOWANCE",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-012 PCB fabrication allowance multiplied by ASM-004; advertised PCB from-prices are not comparable and are not adopted."
+    },
+    {
+      "categoryId": "COST-04",
+      "treatment": "ASSUMPTION_ALLOWANCE",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-012 PCBA assembly-service allowance multiplied by ASM-004; advertised PCBA from-prices exclude components and are not adopted."
+    },
+    {
+      "categoryId": "COST-05",
+      "treatment": "ASSUMPTION_ALLOWANCE",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-012 enclosure/mechanical allowance multiplied by ASM-004; no enclosure quotation exists."
+    },
+    {
+      "categoryId": "COST-06",
+      "treatment": "ASSUMPTION_ALLOWANCE",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-012 connectors/cable/antenna allowance multiplied by ASM-004; no supplier price was retrieved."
+    },
+    {
+      "categoryId": "COST-07",
+      "treatment": "ASSUMPTION_ALLOWANCE",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-012 label/serialisation/traceability allowance multiplied by ASM-004."
+    },
+    {
+      "categoryId": "COST-08",
+      "treatment": "ASSUMPTION_ALLOWANCE",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-012 packaging/documentation allowance multiplied by ASM-004; no packaging specification exists."
+    },
+    {
+      "categoryId": "COST-09",
+      "treatment": "ASSUMPTION_ALLOWANCE",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-012 consumables/process-material allowance multiplied by ASM-004; no manufacturing route is selected."
+    },
+    {
+      "categoryId": "COST-10",
+      "treatment": "LABOUR_ASSUMPTION",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-005 hours x case labour rate x ASM-013 learning factor; no EMS rate card, time study or labour quotation exists."
+    },
+    {
+      "categoryId": "COST-11",
+      "treatment": "TEST_LABOUR_ASSUMPTION",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-005 test/programming/inspection/calibration hours x case labour rate x ASM-013 learning factor; no test strategy exists."
+    },
+    {
+      "categoryId": "COST-12",
+      "treatment": "INSTALLATION_SERVICE",
+      "variable": true,
+      "note": "Separate service cost (ASM-010 field hours x case labour rate, no learning factor); only included when the configuration includes installation. Excluded from the unit variable-cost comparison and from the MC-12 unit contribution, and never counted twice."
+    },
+    {
+      "categoryId": "COST-13",
+      "treatment": "LANDED_COST_ASSUMPTION",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-009 percentage of material; no Incoterms, freight tariff or customs ruling, and import VAT/duty treatment is UNKNOWN."
+    },
+    {
+      "categoryId": "COST-14",
+      "treatment": "SCRAP_YIELD_ASSUMPTION",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-006 allowance on material; no yield data, prototype or first-article run exists."
+    },
+    {
+      "categoryId": "COST-15",
+      "treatment": "WARRANTY_ALLOWANCE",
+      "variable": true,
+      "note": "ENGINEERING_ASSUMPTION ASM-007 percentage of material plus assembly/test labour; no warranty terms, failure-rate data or RMA history exists."
+    },
+    {
+      "categoryId": "COST-16",
+      "treatment": "FIXED_NRE_AMORTISATION",
+      "variable": false,
+      "note": "Excluded from unit contribution; recovered through volume. It is ALREADY INSIDE knownSubtotalEur as one labelled line (ASM-008 one-off envelope / volume); the separate scenario field toolingAmortizationEur repeats the same amount and is never added again (INV-TOOLING-01). No tooling or NRE quotation exists."
+    },
+    {
+      "categoryId": "COST-17",
+      "treatment": "UNKNOWN",
+      "variable": null,
+      "note": "Certification cost unknown in every scenario (no laboratory contacted, no public price, no quotation). null in all 90 scenarios; never zero-filled and never subtracted. This is why every scenario is INCOMPLETE and why no total is claimed."
+    }
+  ],
+  "families": [
+    {
+      "familyId": "HUB",
+      "editions": [
+        "HUB-STANDARD",
+        "HUB-PRO"
+      ],
+      "bomIds": [
+        "EBOM-HUB-STANDARD-01",
+        "EBOM-HUB-PRO-01"
+      ],
+      "manufacturingBomIds": [
+        "MBOM-HUB-STANDARD-01",
+        "MBOM-HUB-PRO-01"
+      ],
+      "ebomKnownSubtotalEur": 9.04,
+      "ebomPricedLines": 4,
+      "ebomTotalLines": 18,
+      "mbomKnownSubtotalEur": 42,
+      "scenarios": [
+        {
+          "volume": 1,
+          "case": "LOW",
+          "knownSubtotalEur": 9839.26,
+          "recomputedSubtotalEur": 9839.26,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 9600,
+          "toolingAmortizationFieldEur": 9600,
+          "variableCostExcludingToolingEur": 239.26,
+          "installationCostEur": 28.8,
+          "variableCostExcludingToolingAndInstallationEur": 210.46,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1,
+          "case": "BASE",
+          "knownSubtotalEur": 12351.22,
+          "recomputedSubtotalEur": 12351.22,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 12000,
+          "toolingAmortizationFieldEur": 12000,
+          "variableCostExcludingToolingEur": 351.22,
+          "installationCostEur": 36,
+          "variableCostExcludingToolingAndInstallationEur": 315.22,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1,
+          "case": "HIGH",
+          "knownSubtotalEur": 18561.01,
+          "recomputedSubtotalEur": 18561.01,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 18000,
+          "toolingAmortizationFieldEur": 18000,
+          "variableCostExcludingToolingEur": 561.01,
+          "installationCostEur": 50.4,
+          "variableCostExcludingToolingAndInstallationEur": 510.61,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "LOW",
+          "knownSubtotalEur": 1192.54,
+          "recomputedSubtotalEur": 1192.54,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 960,
+          "toolingAmortizationFieldEur": 960,
+          "variableCostExcludingToolingEur": 232.54,
+          "installationCostEur": 28.8,
+          "variableCostExcludingToolingAndInstallationEur": 203.74,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "BASE",
+          "knownSubtotalEur": 1541.2,
+          "recomputedSubtotalEur": 1541.2,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 1200,
+          "toolingAmortizationFieldEur": 1200,
+          "variableCostExcludingToolingEur": 341.2,
+          "installationCostEur": 36,
+          "variableCostExcludingToolingAndInstallationEur": 305.2,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "HIGH",
+          "knownSubtotalEur": 2344.79,
+          "recomputedSubtotalEur": 2344.79,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 1800,
+          "toolingAmortizationFieldEur": 1800,
+          "variableCostExcludingToolingEur": 544.79,
+          "installationCostEur": 50.4,
+          "variableCostExcludingToolingAndInstallationEur": 494.39,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "LOW",
+          "knownSubtotalEur": 312.12,
+          "recomputedSubtotalEur": 312.12,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 96,
+          "toolingAmortizationFieldEur": 96,
+          "variableCostExcludingToolingEur": 216.12,
+          "installationCostEur": 28.8,
+          "variableCostExcludingToolingAndInstallationEur": 187.32,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "BASE",
+          "knownSubtotalEur": 437.13,
+          "recomputedSubtotalEur": 437.13,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 120,
+          "toolingAmortizationFieldEur": 120,
+          "variableCostExcludingToolingEur": 317.13,
+          "installationCostEur": 36,
+          "variableCostExcludingToolingAndInstallationEur": 281.13,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "HIGH",
+          "knownSubtotalEur": 686.35,
+          "recomputedSubtotalEur": 686.35,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 180,
+          "toolingAmortizationFieldEur": 180,
+          "variableCostExcludingToolingEur": 506.35,
+          "installationCostEur": 50.4,
+          "variableCostExcludingToolingAndInstallationEur": 455.95,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "LOW",
+          "knownSubtotalEur": 222.3,
+          "recomputedSubtotalEur": 222.3,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 19.2,
+          "toolingAmortizationFieldEur": 19.2,
+          "variableCostExcludingToolingEur": 203.1,
+          "installationCostEur": 28.8,
+          "variableCostExcludingToolingAndInstallationEur": 174.3,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "BASE",
+          "knownSubtotalEur": 322.5,
+          "recomputedSubtotalEur": 322.5,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 24,
+          "toolingAmortizationFieldEur": 24,
+          "variableCostExcludingToolingEur": 298.5,
+          "installationCostEur": 36,
+          "variableCostExcludingToolingAndInstallationEur": 262.5,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "HIGH",
+          "knownSubtotalEur": 513.26,
+          "recomputedSubtotalEur": 513.26,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 36,
+          "toolingAmortizationFieldEur": 36,
+          "variableCostExcludingToolingEur": 477.26,
+          "installationCostEur": 50.4,
+          "variableCostExcludingToolingAndInstallationEur": 426.86,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "LOW",
+          "knownSubtotalEur": 205.5,
+          "recomputedSubtotalEur": 205.5,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 9.6,
+          "toolingAmortizationFieldEur": 9.6,
+          "variableCostExcludingToolingEur": 195.9,
+          "installationCostEur": 28.8,
+          "variableCostExcludingToolingAndInstallationEur": 167.1,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "BASE",
+          "knownSubtotalEur": 300.05,
+          "recomputedSubtotalEur": 300.05,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 12,
+          "toolingAmortizationFieldEur": 12,
+          "variableCostExcludingToolingEur": 288.05,
+          "installationCostEur": 36,
+          "variableCostExcludingToolingAndInstallationEur": 252.05,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "HIGH",
+          "knownSubtotalEur": 478.81,
+          "recomputedSubtotalEur": 478.81,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 18,
+          "toolingAmortizationFieldEur": 18,
+          "variableCostExcludingToolingEur": 460.81,
+          "installationCostEur": 50.4,
+          "variableCostExcludingToolingAndInstallationEur": 410.41,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        }
+      ],
+      "note": "Scenarios cost HUB-STANDARD only (HUB-PRO has EBOM-HUB-PRO-01 and MBOM-HUB-PRO-01 at 13.87 EUR EBOM known subtotal and 42.00 EUR MBOM known subtotal, but no scenario); both editions are listed in bomIds."
+    },
+    {
+      "familyId": "WATCH",
+      "editions": [
+        "WATCH-CORE"
+      ],
+      "bomIds": [
+        "EBOM-WATCH-CORE-01"
+      ],
+      "manufacturingBomIds": [
+        "MBOM-WATCH-CORE-01"
+      ],
+      "ebomKnownSubtotalEur": 7.81,
+      "ebomPricedLines": 3,
+      "ebomTotalLines": 18,
+      "mbomKnownSubtotalEur": 36,
+      "scenarios": [
+        {
+          "volume": 1,
+          "case": "LOW",
+          "knownSubtotalEur": 6587.04,
+          "recomputedSubtotalEur": 6587.04,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 6400,
+          "toolingAmortizationFieldEur": 6400,
+          "variableCostExcludingToolingEur": 187.04,
+          "installationCostEur": 43.2,
+          "variableCostExcludingToolingAndInstallationEur": 143.84,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1,
+          "case": "BASE",
+          "knownSubtotalEur": 8268.51,
+          "recomputedSubtotalEur": 8268.51,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 8000,
+          "toolingAmortizationFieldEur": 8000,
+          "variableCostExcludingToolingEur": 268.51,
+          "installationCostEur": 54,
+          "variableCostExcludingToolingAndInstallationEur": 214.51,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1,
+          "case": "HIGH",
+          "knownSubtotalEur": 12434.4,
+          "recomputedSubtotalEur": 12434.4,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 12000,
+          "toolingAmortizationFieldEur": 12000,
+          "variableCostExcludingToolingEur": 434.4,
+          "installationCostEur": 75.6,
+          "variableCostExcludingToolingAndInstallationEur": 358.8,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "LOW",
+          "knownSubtotalEur": 822.45,
+          "recomputedSubtotalEur": 822.45,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 640,
+          "toolingAmortizationFieldEur": 640,
+          "variableCostExcludingToolingEur": 182.45,
+          "installationCostEur": 43.2,
+          "variableCostExcludingToolingAndInstallationEur": 139.25,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "BASE",
+          "knownSubtotalEur": 1061.69,
+          "recomputedSubtotalEur": 1061.69,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 800,
+          "toolingAmortizationFieldEur": 800,
+          "variableCostExcludingToolingEur": 261.69,
+          "installationCostEur": 54,
+          "variableCostExcludingToolingAndInstallationEur": 207.69,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "HIGH",
+          "knownSubtotalEur": 1623,
+          "recomputedSubtotalEur": 1623,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 1200,
+          "toolingAmortizationFieldEur": 1200,
+          "variableCostExcludingToolingEur": 423,
+          "installationCostEur": 75.6,
+          "variableCostExcludingToolingAndInstallationEur": 347.4,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "LOW",
+          "knownSubtotalEur": 234.89,
+          "recomputedSubtotalEur": 234.89,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 64,
+          "toolingAmortizationFieldEur": 64,
+          "variableCostExcludingToolingEur": 170.89,
+          "installationCostEur": 43.2,
+          "variableCostExcludingToolingAndInstallationEur": 127.69,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "BASE",
+          "knownSubtotalEur": 324.9,
+          "recomputedSubtotalEur": 324.9,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 80,
+          "toolingAmortizationFieldEur": 80,
+          "variableCostExcludingToolingEur": 244.9,
+          "installationCostEur": 54,
+          "variableCostExcludingToolingAndInstallationEur": 190.9,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "HIGH",
+          "knownSubtotalEur": 515.55,
+          "recomputedSubtotalEur": 515.55,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 120,
+          "toolingAmortizationFieldEur": 120,
+          "variableCostExcludingToolingEur": 395.55,
+          "installationCostEur": 75.6,
+          "variableCostExcludingToolingAndInstallationEur": 319.95,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "LOW",
+          "knownSubtotalEur": 174.7,
+          "recomputedSubtotalEur": 174.7,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 12.8,
+          "toolingAmortizationFieldEur": 12.8,
+          "variableCostExcludingToolingEur": 161.9,
+          "installationCostEur": 43.2,
+          "variableCostExcludingToolingAndInstallationEur": 118.7,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "BASE",
+          "knownSubtotalEur": 248.1,
+          "recomputedSubtotalEur": 248.1,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 16,
+          "toolingAmortizationFieldEur": 16,
+          "variableCostExcludingToolingEur": 232.1,
+          "installationCostEur": 54,
+          "variableCostExcludingToolingAndInstallationEur": 178.1,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "HIGH",
+          "knownSubtotalEur": 399.04,
+          "recomputedSubtotalEur": 399.04,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 24,
+          "toolingAmortizationFieldEur": 24,
+          "variableCostExcludingToolingEur": 375.04,
+          "installationCostEur": 75.6,
+          "variableCostExcludingToolingAndInstallationEur": 299.44,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "LOW",
+          "knownSubtotalEur": 163.32,
+          "recomputedSubtotalEur": 163.32,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 6.4,
+          "toolingAmortizationFieldEur": 6.4,
+          "variableCostExcludingToolingEur": 156.92,
+          "installationCostEur": 43.2,
+          "variableCostExcludingToolingAndInstallationEur": 113.72,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "BASE",
+          "knownSubtotalEur": 232.93,
+          "recomputedSubtotalEur": 232.93,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 8,
+          "toolingAmortizationFieldEur": 8,
+          "variableCostExcludingToolingEur": 224.93,
+          "installationCostEur": 54,
+          "variableCostExcludingToolingAndInstallationEur": 170.93,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "HIGH",
+          "knownSubtotalEur": 375.44,
+          "recomputedSubtotalEur": 375.44,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 12,
+          "toolingAmortizationFieldEur": 12,
+          "variableCostExcludingToolingEur": 363.44,
+          "installationCostEur": 75.6,
+          "variableCostExcludingToolingAndInstallationEur": 287.84,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        }
+      ],
+      "note": "Scenarios cost WATCH-CORE. WATCH-PLUS is a canonical edition with no MC-11 BOM."
+    },
+    {
+      "familyId": "SENSE",
+      "editions": [
+        "SENSE-POWER",
+        "SENSE-BILGE",
+        "SENSE-WIND",
+        "SENSE-ENV",
+        "SENSE-TANKS"
+      ],
+      "bomIds": [
+        "EBOM-SENSE-POWER-01",
+        "EBOM-SENSE-BILGE-01",
+        "EBOM-SENSE-WIND-01",
+        "EBOM-SENSE-ENV-01",
+        "EBOM-SENSE-TANKS-01"
+      ],
+      "manufacturingBomIds": [
+        "MBOM-SENSE-POWER-01",
+        "MBOM-SENSE-BILGE-01",
+        "MBOM-SENSE-WIND-01",
+        "MBOM-SENSE-ENV-01",
+        "MBOM-SENSE-TANKS-01"
+      ],
+      "ebomKnownSubtotalEur": 9.38,
+      "ebomPricedLines": 4,
+      "ebomTotalLines": 12,
+      "mbomKnownSubtotalEur": 25.5,
+      "scenarios": [
+        {
+          "volume": 1,
+          "case": "LOW",
+          "knownSubtotalEur": 2908.17,
+          "recomputedSubtotalEur": 2908.17,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 2800,
+          "toolingAmortizationFieldEur": 2800,
+          "variableCostExcludingToolingEur": 108.17,
+          "installationCostEur": 36,
+          "variableCostExcludingToolingAndInstallationEur": 72.17,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1,
+          "case": "BASE",
+          "knownSubtotalEur": 3645.27,
+          "recomputedSubtotalEur": 3645.27,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 3500,
+          "toolingAmortizationFieldEur": 3500,
+          "variableCostExcludingToolingEur": 145.27,
+          "installationCostEur": 45,
+          "variableCostExcludingToolingAndInstallationEur": 100.27,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1,
+          "case": "HIGH",
+          "knownSubtotalEur": 5475.15,
+          "recomputedSubtotalEur": 5475.15,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 5250,
+          "toolingAmortizationFieldEur": 5250,
+          "variableCostExcludingToolingEur": 225.15,
+          "installationCostEur": 63,
+          "variableCostExcludingToolingAndInstallationEur": 162.15,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "LOW",
+          "knownSubtotalEur": 385.87,
+          "recomputedSubtotalEur": 385.87,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 280,
+          "toolingAmortizationFieldEur": 280,
+          "variableCostExcludingToolingEur": 105.87,
+          "installationCostEur": 36,
+          "variableCostExcludingToolingAndInstallationEur": 69.87,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "BASE",
+          "knownSubtotalEur": 492.05,
+          "recomputedSubtotalEur": 492.05,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 350,
+          "toolingAmortizationFieldEur": 350,
+          "variableCostExcludingToolingEur": 142.05,
+          "installationCostEur": 45,
+          "variableCostExcludingToolingAndInstallationEur": 97.05,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "HIGH",
+          "knownSubtotalEur": 744.89,
+          "recomputedSubtotalEur": 744.89,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 525,
+          "toolingAmortizationFieldEur": 525,
+          "variableCostExcludingToolingEur": 219.89,
+          "installationCostEur": 63,
+          "variableCostExcludingToolingAndInstallationEur": 156.89,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "LOW",
+          "knownSubtotalEur": 127.3,
+          "recomputedSubtotalEur": 127.3,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 28,
+          "toolingAmortizationFieldEur": 28,
+          "variableCostExcludingToolingEur": 99.3,
+          "installationCostEur": 36,
+          "variableCostExcludingToolingAndInstallationEur": 63.3,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "BASE",
+          "knownSubtotalEur": 168.27,
+          "recomputedSubtotalEur": 168.27,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 35,
+          "toolingAmortizationFieldEur": 35,
+          "variableCostExcludingToolingEur": 133.27,
+          "installationCostEur": 45,
+          "variableCostExcludingToolingAndInstallationEur": 88.27,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "HIGH",
+          "knownSubtotalEur": 258.77,
+          "recomputedSubtotalEur": 258.77,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 52.5,
+          "toolingAmortizationFieldEur": 52.5,
+          "variableCostExcludingToolingEur": 206.27,
+          "installationCostEur": 63,
+          "variableCostExcludingToolingAndInstallationEur": 143.27,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "LOW",
+          "knownSubtotalEur": 99.33,
+          "recomputedSubtotalEur": 99.33,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 5.6,
+          "toolingAmortizationFieldEur": 5.6,
+          "variableCostExcludingToolingEur": 93.73,
+          "installationCostEur": 36,
+          "variableCostExcludingToolingAndInstallationEur": 57.73,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "BASE",
+          "knownSubtotalEur": 133.01,
+          "recomputedSubtotalEur": 133.01,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 7,
+          "toolingAmortizationFieldEur": 7,
+          "variableCostExcludingToolingEur": 126.01,
+          "installationCostEur": 45,
+          "variableCostExcludingToolingAndInstallationEur": 81.01,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "HIGH",
+          "knownSubtotalEur": 205.91,
+          "recomputedSubtotalEur": 205.91,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 10.5,
+          "toolingAmortizationFieldEur": 10.5,
+          "variableCostExcludingToolingEur": 195.41,
+          "installationCostEur": 63,
+          "variableCostExcludingToolingAndInstallationEur": 132.41,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "LOW",
+          "knownSubtotalEur": 93.51,
+          "recomputedSubtotalEur": 93.51,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 2.8,
+          "toolingAmortizationFieldEur": 2.8,
+          "variableCostExcludingToolingEur": 90.71,
+          "installationCostEur": 36,
+          "variableCostExcludingToolingAndInstallationEur": 54.71,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "BASE",
+          "knownSubtotalEur": 125.55,
+          "recomputedSubtotalEur": 125.55,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 3.5,
+          "toolingAmortizationFieldEur": 3.5,
+          "variableCostExcludingToolingEur": 122.05,
+          "installationCostEur": 45,
+          "variableCostExcludingToolingAndInstallationEur": 77.05,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "HIGH",
+          "knownSubtotalEur": 194.72,
+          "recomputedSubtotalEur": 194.72,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 5.25,
+          "toolingAmortizationFieldEur": 5.25,
+          "variableCostExcludingToolingEur": 189.47,
+          "installationCostEur": 63,
+          "variableCostExcludingToolingAndInstallationEur": 126.47,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        }
+      ],
+      "note": "Scenarios cost SENSE-POWER as the representative module; the EBOM/MBOM summary fields describe SENSE-POWER. The other four modules have their own BOMs (listed) but no scenario, and their priced-line coverage differs."
+    },
+    {
+      "familyId": "DISPLAY",
+      "editions": [
+        "DISPLAY-7"
+      ],
+      "bomIds": [
+        "EBOM-DISPLAY-7-01"
+      ],
+      "manufacturingBomIds": [
+        "MBOM-DISPLAY-7-01"
+      ],
+      "ebomKnownSubtotalEur": 4.21,
+      "ebomPricedLines": 2,
+      "ebomTotalLines": 13,
+      "mbomKnownSubtotalEur": 33,
+      "scenarios": [
+        {
+          "volume": 1,
+          "case": "LOW",
+          "knownSubtotalEur": 7466.58,
+          "recomputedSubtotalEur": 7466.58,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 7200,
+          "toolingAmortizationFieldEur": 7200,
+          "variableCostExcludingToolingEur": 266.58,
+          "installationCostEur": 48,
+          "variableCostExcludingToolingAndInstallationEur": 218.58,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1,
+          "case": "BASE",
+          "knownSubtotalEur": 9399.13,
+          "recomputedSubtotalEur": 9399.13,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 9000,
+          "toolingAmortizationFieldEur": 9000,
+          "variableCostExcludingToolingEur": 399.13,
+          "installationCostEur": 60,
+          "variableCostExcludingToolingAndInstallationEur": 339.13,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1,
+          "case": "HIGH",
+          "knownSubtotalEur": 14160.79,
+          "recomputedSubtotalEur": 14160.79,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 13500,
+          "toolingAmortizationFieldEur": 13500,
+          "variableCostExcludingToolingEur": 660.79,
+          "installationCostEur": 84,
+          "variableCostExcludingToolingAndInstallationEur": 576.79,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "LOW",
+          "knownSubtotalEur": 979.62,
+          "recomputedSubtotalEur": 979.62,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 720,
+          "toolingAmortizationFieldEur": 720,
+          "variableCostExcludingToolingEur": 259.62,
+          "installationCostEur": 48,
+          "variableCostExcludingToolingAndInstallationEur": 211.62,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "BASE",
+          "knownSubtotalEur": 1288.42,
+          "recomputedSubtotalEur": 1288.42,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 900,
+          "toolingAmortizationFieldEur": 900,
+          "variableCostExcludingToolingEur": 388.42,
+          "installationCostEur": 60,
+          "variableCostExcludingToolingAndInstallationEur": 328.42,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "HIGH",
+          "knownSubtotalEur": 1992.67,
+          "recomputedSubtotalEur": 1992.67,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 1350,
+          "toolingAmortizationFieldEur": 1350,
+          "variableCostExcludingToolingEur": 642.67,
+          "installationCostEur": 84,
+          "variableCostExcludingToolingAndInstallationEur": 558.67,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "LOW",
+          "knownSubtotalEur": 315.2,
+          "recomputedSubtotalEur": 315.2,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 72,
+          "toolingAmortizationFieldEur": 72,
+          "variableCostExcludingToolingEur": 243.2,
+          "installationCostEur": 48,
+          "variableCostExcludingToolingAndInstallationEur": 195.2,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "BASE",
+          "knownSubtotalEur": 453.32,
+          "recomputedSubtotalEur": 453.32,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 90,
+          "toolingAmortizationFieldEur": 90,
+          "variableCostExcludingToolingEur": 363.32,
+          "installationCostEur": 60,
+          "variableCostExcludingToolingAndInstallationEur": 303.32,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "HIGH",
+          "knownSubtotalEur": 735.42,
+          "recomputedSubtotalEur": 735.42,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 135,
+          "toolingAmortizationFieldEur": 135,
+          "variableCostExcludingToolingEur": 600.42,
+          "installationCostEur": 84,
+          "variableCostExcludingToolingAndInstallationEur": 516.42,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "LOW",
+          "knownSubtotalEur": 245.28,
+          "recomputedSubtotalEur": 245.28,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 14.4,
+          "toolingAmortizationFieldEur": 14.4,
+          "variableCostExcludingToolingEur": 230.88,
+          "installationCostEur": 48,
+          "variableCostExcludingToolingAndInstallationEur": 182.88,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "BASE",
+          "knownSubtotalEur": 362.77,
+          "recomputedSubtotalEur": 362.77,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 18,
+          "toolingAmortizationFieldEur": 18,
+          "variableCostExcludingToolingEur": 344.77,
+          "installationCostEur": 60,
+          "variableCostExcludingToolingAndInstallationEur": 284.77,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "HIGH",
+          "knownSubtotalEur": 596.53,
+          "recomputedSubtotalEur": 596.53,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 27,
+          "toolingAmortizationFieldEur": 27,
+          "variableCostExcludingToolingEur": 569.53,
+          "installationCostEur": 84,
+          "variableCostExcludingToolingAndInstallationEur": 485.53,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "LOW",
+          "knownSubtotalEur": 231.11,
+          "recomputedSubtotalEur": 231.11,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 7.2,
+          "toolingAmortizationFieldEur": 7.2,
+          "variableCostExcludingToolingEur": 223.91,
+          "installationCostEur": 48,
+          "variableCostExcludingToolingAndInstallationEur": 175.91,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "BASE",
+          "knownSubtotalEur": 343.11,
+          "recomputedSubtotalEur": 343.11,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 9,
+          "toolingAmortizationFieldEur": 9,
+          "variableCostExcludingToolingEur": 334.11,
+          "installationCostEur": 60,
+          "variableCostExcludingToolingAndInstallationEur": 274.11,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "HIGH",
+          "knownSubtotalEur": 565.2,
+          "recomputedSubtotalEur": 565.2,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 13.5,
+          "toolingAmortizationFieldEur": 13.5,
+          "variableCostExcludingToolingEur": 551.7,
+          "installationCostEur": 84,
+          "variableCostExcludingToolingAndInstallationEur": 467.7,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        }
+      ],
+      "note": "Scenarios cost DISPLAY-7. DISPLAY-LARGE-CONDITIONAL is a canonical edition with no MC-11 BOM."
+    },
+    {
+      "familyId": "AIS",
+      "editions": [
+        "AIS-RECEIVER"
+      ],
+      "bomIds": [
+        "EBOM-AIS-RECEIVER-01"
+      ],
+      "manufacturingBomIds": [
+        "MBOM-AIS-RECEIVER-01"
+      ],
+      "ebomKnownSubtotalEur": 9.04,
+      "ebomPricedLines": 4,
+      "ebomTotalLines": 13,
+      "mbomKnownSubtotalEur": 27,
+      "scenarios": [
+        {
+          "volume": 1,
+          "case": "LOW",
+          "knownSubtotalEur": 4219.99,
+          "recomputedSubtotalEur": 4219.99,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 4000,
+          "toolingAmortizationFieldEur": 4000,
+          "variableCostExcludingToolingEur": 219.99,
+          "installationCostEur": 31.2,
+          "variableCostExcludingToolingAndInstallationEur": 188.79,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1,
+          "case": "BASE",
+          "knownSubtotalEur": 5353.62,
+          "recomputedSubtotalEur": 5353.62,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 5000,
+          "toolingAmortizationFieldEur": 5000,
+          "variableCostExcludingToolingEur": 353.62,
+          "installationCostEur": 39,
+          "variableCostExcludingToolingAndInstallationEur": 314.62,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1,
+          "case": "HIGH",
+          "knownSubtotalEur": 8150.64,
+          "recomputedSubtotalEur": 8150.64,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 7500,
+          "toolingAmortizationFieldEur": 7500,
+          "variableCostExcludingToolingEur": 650.64,
+          "installationCostEur": 54.6,
+          "variableCostExcludingToolingAndInstallationEur": 596.04,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "LOW",
+          "knownSubtotalEur": 614.16,
+          "recomputedSubtotalEur": 614.16,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 400,
+          "toolingAmortizationFieldEur": 400,
+          "variableCostExcludingToolingEur": 214.16,
+          "installationCostEur": 31.2,
+          "variableCostExcludingToolingAndInstallationEur": 182.96,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "BASE",
+          "knownSubtotalEur": 843.91,
+          "recomputedSubtotalEur": 843.91,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 500,
+          "toolingAmortizationFieldEur": 500,
+          "variableCostExcludingToolingEur": 343.91,
+          "installationCostEur": 39,
+          "variableCostExcludingToolingAndInstallationEur": 304.91,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 10,
+          "case": "HIGH",
+          "knownSubtotalEur": 1382.3,
+          "recomputedSubtotalEur": 1382.3,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 750,
+          "toolingAmortizationFieldEur": 750,
+          "variableCostExcludingToolingEur": 632.3,
+          "installationCostEur": 54.6,
+          "variableCostExcludingToolingAndInstallationEur": 577.7,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "LOW",
+          "knownSubtotalEur": 239.63,
+          "recomputedSubtotalEur": 239.63,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 40,
+          "toolingAmortizationFieldEur": 40,
+          "variableCostExcludingToolingEur": 199.63,
+          "installationCostEur": 31.2,
+          "variableCostExcludingToolingAndInstallationEur": 168.43,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "BASE",
+          "knownSubtotalEur": 370.35,
+          "recomputedSubtotalEur": 370.35,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 50,
+          "toolingAmortizationFieldEur": 50,
+          "variableCostExcludingToolingEur": 320.35,
+          "installationCostEur": 39,
+          "variableCostExcludingToolingAndInstallationEur": 281.35,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 100,
+          "case": "HIGH",
+          "knownSubtotalEur": 663.55,
+          "recomputedSubtotalEur": 663.55,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 75,
+          "toolingAmortizationFieldEur": 75,
+          "variableCostExcludingToolingEur": 588.55,
+          "installationCostEur": 54.6,
+          "variableCostExcludingToolingAndInstallationEur": 533.95,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "LOW",
+          "knownSubtotalEur": 195.92,
+          "recomputedSubtotalEur": 195.92,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 8,
+          "toolingAmortizationFieldEur": 8,
+          "variableCostExcludingToolingEur": 187.92,
+          "installationCostEur": 31.2,
+          "variableCostExcludingToolingAndInstallationEur": 156.72,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "BASE",
+          "knownSubtotalEur": 312.06,
+          "recomputedSubtotalEur": 312.06,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 10,
+          "toolingAmortizationFieldEur": 10,
+          "variableCostExcludingToolingEur": 302.06,
+          "installationCostEur": 39,
+          "variableCostExcludingToolingAndInstallationEur": 263.06,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 500,
+          "case": "HIGH",
+          "knownSubtotalEur": 570.63,
+          "recomputedSubtotalEur": 570.63,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 15,
+          "toolingAmortizationFieldEur": 15,
+          "variableCostExcludingToolingEur": 555.63,
+          "installationCostEur": 54.6,
+          "variableCostExcludingToolingAndInstallationEur": 501.03,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "LOW",
+          "knownSubtotalEur": 185.37,
+          "recomputedSubtotalEur": 185.37,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 4,
+          "toolingAmortizationFieldEur": 4,
+          "variableCostExcludingToolingEur": 181.37,
+          "installationCostEur": 31.2,
+          "variableCostExcludingToolingAndInstallationEur": 150.17,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "BASE",
+          "knownSubtotalEur": 296.63,
+          "recomputedSubtotalEur": 296.63,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 5,
+          "toolingAmortizationFieldEur": 5,
+          "variableCostExcludingToolingEur": 291.63,
+          "installationCostEur": 39,
+          "variableCostExcludingToolingAndInstallationEur": 252.63,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        },
+        {
+          "volume": 1000,
+          "case": "HIGH",
+          "knownSubtotalEur": 544.12,
+          "recomputedSubtotalEur": 544.12,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": 7.5,
+          "toolingAmortizationFieldEur": 7.5,
+          "variableCostExcludingToolingEur": 536.62,
+          "installationCostEur": 54.6,
+          "variableCostExcludingToolingAndInstallationEur": 482.02,
+          "unknownCategories": [
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "LOW"
+        }
+      ],
+      "note": "Scenarios cost AIS-RECEIVER (receive-only integration). AIS-CONNECTED is a canonical edition with no MC-11 BOM."
+    },
+    {
+      "familyId": "PILOT",
+      "editions": [
+        "PILOT-COASTAL"
+      ],
+      "bomIds": [
+        "EBOM-PILOT-COASTAL-01"
+      ],
+      "manufacturingBomIds": [
+        "MBOM-PILOT-COASTAL-01"
+      ],
+      "ebomKnownSubtotalEur": 0,
+      "ebomPricedLines": 0,
+      "ebomTotalLines": 12,
+      "mbomKnownSubtotalEur": 0,
+      "scenarios": [
+        {
+          "volume": 1,
+          "case": "LOW",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 1,
+          "case": "BASE",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 1,
+          "case": "HIGH",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 10,
+          "case": "LOW",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 10,
+          "case": "BASE",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 10,
+          "case": "HIGH",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 100,
+          "case": "LOW",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 100,
+          "case": "BASE",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 100,
+          "case": "HIGH",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 500,
+          "case": "LOW",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 500,
+          "case": "BASE",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 500,
+          "case": "HIGH",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 1000,
+          "case": "LOW",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 1000,
+          "case": "BASE",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        },
+        {
+          "volume": 1000,
+          "case": "HIGH",
+          "knownSubtotalEur": 0,
+          "recomputedSubtotalEur": 0,
+          "sumCheckDeltaEur": 0,
+          "cost16ToolingEur": null,
+          "toolingAmortizationFieldEur": null,
+          "variableCostExcludingToolingEur": null,
+          "installationCostEur": null,
+          "variableCostExcludingToolingAndInstallationEur": null,
+          "unknownCategories": [
+            "COST-01",
+            "COST-02",
+            "COST-03",
+            "COST-04",
+            "COST-05",
+            "COST-06",
+            "COST-07",
+            "COST-08",
+            "COST-09",
+            "COST-10",
+            "COST-11",
+            "COST-12",
+            "COST-13",
+            "COST-14",
+            "COST-15",
+            "COST-16",
+            "COST-17"
+          ],
+          "totalStatus": "INCOMPLETE",
+          "confidence": "NONE"
+        }
+      ],
+      "note": "NO PILOT COST EXISTS: 0.00 EUR recorded known subtotal (no category is KNOWN), all 12 EBOM lines and all 12 MBOM lines unpriced, all 17 scenario categories UNKNOWN, and the derived variable-cost fields are null rather than 0 because COST-16 and COST-12 are unknown. The from-EUR-1,290 hypothesis is a starting price, not a cost. PILOT-SAIL and PILOT-PRO have no BOM and the PILOT safety gate is BLOCKED."
+    }
+  ],
+  "totals": {
+    "scenarios": 90,
+    "scenariosIncomplete": 90,
+    "scenariosWithUnknownCertification": 90,
+    "observedPriceCoverageRangePct": "0.8-4.7",
+    "families": 6
+  },
+  "unknowns": [
+    {
+      "id": "UNK-HW-01",
+      "description": "Certification/EMC/RED cost",
+      "appliesTo": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS",
+        "PILOT"
+      ],
+      "materiality": "MATERIAL",
+      "ownerAction": "Obtain a test-house quotation under a separate authorization."
+    },
+    {
+      "id": "UNK-HW-02",
+      "description": "Tooling and NRE quotation (enclosure tooling, stencils, fixtures, programming jig) — only the ASM-008 envelope exists",
+      "appliesTo": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS",
+        "PILOT"
+      ],
+      "materiality": "MATERIAL",
+      "ownerAction": "Request tooling/NRE quotations under a separate authorization; until then COST-16 is a labelled amortisation sensitivity, not a price."
+    },
+    {
+      "id": "UNK-HW-03",
+      "description": "Assembly/test labour rate and time study (ASM-005 and ASM-013 are assumptions; no EMS rate card or measured hours)",
+      "appliesTo": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "materiality": "MATERIAL",
+      "ownerAction": "Obtain an EMS rate card and a measured time study under a separate authorization."
+    },
+    {
+      "id": "UNK-HW-04",
+      "description": "Inbound freight, customs and landed cost (ASM-009 only; no Incoterms, tariff or customs ruling, import VAT UNKNOWN)",
+      "appliesTo": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "materiality": "MATERIAL",
+      "ownerAction": "Obtain freight/Incoterms and customs treatment under a separate authorization."
+    },
+    {
+      "id": "UNK-HW-05",
+      "description": "Warranty and RMA reserve (ASM-007 only; no failure-rate or RMA history)",
+      "appliesTo": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "materiality": "MATERIAL",
+      "ownerAction": "Collect reliability/failure evidence from a first-article run before treating any warranty allowance as a reserve."
+    },
+    {
+      "id": "UNK-HW-06",
+      "description": "Observed EUR/USD rate (ASM-001 engineering assumption; the single ECB reference-rate retrieval failed with HTTP 404)",
+      "appliesTo": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "materiality": "MATERIAL",
+      "ownerAction": "Retrieve an observed ECB reference rate with URL and retrieval date in a later authorized session."
+    },
+    {
+      "id": "UNK-HW-07",
+      "description": "VAT status of inputs (37 of 42 observations VAT_UNKNOWN; no purchase, import or reverse-charge position exists)",
+      "appliesTo": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "materiality": "MATERIAL",
+      "ownerAction": "Obtain written tax advice and supplier VAT treatment; no ex-VAT cost can be established from the current record."
+    },
+    {
+      "id": "UNK-HW-08",
+      "description": "PILOT cost does not exist (0.00 known subtotal; 12/12 EBOM and 12/12 MBOM lines unpriced; all 17 categories UNKNOWN)",
+      "appliesTo": [
+        "PILOT"
+      ],
+      "materiality": "MATERIAL",
+      "ownerAction": "No PILOT price or cost may be cited; PILOT remains a blocked quotation package pending the safety gate."
+    },
+    {
+      "id": "UNK-HW-09",
+      "description": "Supplier quotations, MOQ and lead time (19 of 19 suppliers NOT_CONTACTED, RFQ NOT_SENT, 0 quotations)",
+      "appliesTo": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS",
+        "PILOT"
+      ],
+      "materiality": "MATERIAL",
+      "ownerAction": "No quotation may be cited; a procurement authorization is required before any supplier contact."
+    },
+    {
+      "id": "UNK-HW-10",
+      "description": "Volume price breaks beyond published manufacturer tiers (ASM-004 volume factor and ASM-013 learning factor are assumptions, not observed discounts)",
+      "appliesTo": [
+        "HUB",
+        "WATCH",
+        "SENSE",
+        "DISPLAY",
+        "AIS"
+      ],
+      "materiality": "MATERIAL",
+      "ownerAction": "Obtain supplier volume break schedules under a separate authorization."
+    }
+  ],
+  "conclusions": [
+    "INV-TOOLING-01 PASS for all 90 scenarios: the sum of the numeric scenario lines equals knownSubtotalEur with a maximum absolute delta of 0.00 EUR, and toolingAmortizationEur equals the COST-16 line amount in all 90 cases (0 mismatches). The COST-16 amount is already inside knownSubtotalEur and is never added again.",
+    "All 90 scenarios have totalStatus INCOMPLETE because COST-17 (conformity/certification) is UNKNOWN in every scenario. No knownSubtotalEur is a unit cost, a total cost, a landed cost or a price.",
+    "At 100 units BASE the variable cost excluding the COST-16 tooling/NRE amortisation line and the COST-12 installation service line (EUR per unit) is: HUB 281.13, WATCH 190.90, SENSE 88.27, DISPLAY 303.32, AIS 281.35, PILOT 0.00 known (no cost exists).",
+    "The COST-16 line is 27.5% of the HUB 100-unit known subtotal, 24.6% for WATCH, 20.8% for SENSE, 19.9% for DISPLAY and 13.5% for AIS: it is a one-off cost divided by volume, not a property of the product.",
+    "Observed public-price coverage (COST-01 share of the 100-unit BASE known subtotal) is HUB 1.8%, WATCH 2.0%, SENSE 4.7%, DISPLAY 0.8%, AIS 2.1%; every other material category is an ENGINEERING_ASSUMPTION. Coverage therefore spans 0.8-4.7% of the modelled subtotal.",
+    "CONDITIONAL (not a margin or profitability statement): under the MC-12 governance VAT convention (Spain 21% illustration, net = gross / 1.21, disclosed per revenue line) and the unapproved VAT-inclusive retail hypotheses, at 100 units BASE the known variable cost excluding COST-16 and COST-12 exceeds the ex-VAT price hypothesis for AIS (281.35 vs 205.79) and SENSE (88.27 vs 81.82); it is below the hypothesis for HUB (281.13 vs 288.43), WATCH (190.90 vs 247.11) and DISPLAY (303.32 vs 577.69).",
+    "CONDITIONAL, same assumptions: AIS is above its ex-VAT price hypothesis at every modelled BASE volume (1/10/100/500/1000); SENSE is above it at 1, 10 and 100 units and falls below it at 500 and 1000 units. PILOT cannot be compared because no PILOT cost amount exists.",
+    "COST-12 installation is a separate service line of HUB 36.00, WATCH 54.00, SENSE 45.00, DISPLAY 60.00 and AIS 39.00 EUR per unit at 100 units BASE; it is excluded from the variable-cost comparison above, is included only when the configuration includes installation, and no installer rate or channel price exists.",
+    "No amount in this reconciliation is a quotation: 42 public price observations exist (37 manufacturer list prices of which 36 USD, 5 distributor retail prices; 37 VAT_UNKNOWN, 5 VAT_EXCLUDED), 0 supplier quotations, and 19 of 19 suppliers are NOT_CONTACTED with the RFQ NOT_SENT.",
+    "The certification cost is UNKNOWN with no numeric amount: certificationCosts[] has 0 numeric amounts across 9 items, all 127 applicable conformity rows carry costConfidence UNKNOWN, engineeringCosts[] is 7 of 7 UNKNOWN and recurringOperatingCosts[] is 8 of 8 UNKNOWN.",
+    "PILOT has no cost: 0.00 EUR recorded known subtotal at every volume and case, 12 of 12 EBOM lines and 12 of 12 MBOM lines unpriced, and all 17 scenario categories UNKNOWN, so its derived variable-cost fields are null and not 0. The from-EUR-1,290 PILOT hypothesis is a starting price, not a cost and not an available price."
+  ]
+}

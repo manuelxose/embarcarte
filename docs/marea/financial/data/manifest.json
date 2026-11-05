@@ -1,0 +1,112 @@
+{
+  "contractId": "MAREA-MC13-FINANCIAL-MANIFEST",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "branch": "feature/marea-mc13-financial-model-cashflow-break-even",
+  "baseCommit": "e59a8b9b3916d979d8eaeff78acd3795fd26c125",
+  "baseBranch": "feature/marea-mc12-recurring-data-unit-economics",
+  "status": "INTERNAL_FINANCIAL_ANALYSIS",
+  "modelHorizonMonths": 60,
+  "reportingViewsMonths": [
+    12,
+    36,
+    60
+  ],
+  "commercialAvailability": "NOT_FOR_SALE",
+  "priceApproved": "NONE",
+  "files": {
+    "assumptions": "assumptions.json",
+    "source-ledger": "source-ledger.json",
+    "revenue-drivers": "revenue-drivers.json",
+    "recurring-revenue": "recurring-revenue.json",
+    "operating-costs": "operating-costs.json",
+    "capital-investments": "capital-investments.json",
+    "working-capital": "working-capital.json",
+    "scenario-definitions": "scenario-definitions.json",
+    "mc13-handoff-consumption": "mc13-handoff-consumption.json",
+    "blocker-register": "blocker-register.json",
+    "mc14-handoff-inputs": "mc14-handoff-inputs.json",
+    "review-findings": "review-findings.json",
+    "monthly-financial-model": "monthly-financial-model.json",
+    "scenario-results": "scenario-results.json",
+    "stress-tests": "stress-tests.json",
+    "break-even-thresholds": "break-even-thresholds.json",
+    "portfolio-prioritization": "portfolio-prioritization.json",
+    "manifest": "manifest.json"
+  },
+  "evidenceCounts": {
+    "formalQuotations": 0,
+    "executedContracts": 0,
+    "verifiedObserved": 1,
+    "publishedTariffs": 7,
+    "officialLicensingDocuments": 1,
+    "inheritedAssumptions": 1,
+    "engineeringAssumptions": 11,
+    "scenarioAssumptions": 125,
+    "unknown": 7,
+    "blocked": 0
+  },
+  "unknownSummary": [
+    {
+      "inputId": "ASM-MC13-045",
+      "name": "EMBARCARTE current company cash and funding position",
+      "unknownReason": "Unknown; no bank statement, funding commitment or capital authorization exists."
+    },
+    {
+      "inputId": "ASM-MC13-047",
+      "name": "Product liability insurance premium",
+      "unknownReason": "No quotation, broker indication or public tariff exists; MC-12 forbids estimating it as a percentage of revenue."
+    },
+    {
+      "inputId": "ASM-MC13-048",
+      "name": "CRA/security-maintenance lifecycle cost",
+      "unknownReason": "No scope, rate or support contract exists for the 5-year support / update period."
+    },
+    {
+      "inputId": "ASM-MC13-049",
+      "name": "Chart/weather data-licence cost",
+      "unknownReason": "Rights are NOT_GRANTED and no price exists; the cost must not become zero by omission."
+    },
+    {
+      "inputId": "ASM-MC13-050",
+      "name": "Customer acquisition cost",
+      "unknownReason": "CUSTOMER_EVIDENCE = NONE; CAC_VALIDATED = false."
+    },
+    {
+      "inputId": "ASM-MC13-051",
+      "name": "Validated churn and renewal rates",
+      "unknownReason": "CHURN_VALIDATED = false and RENEWAL_RATE_VALIDATED = false; all rates in this model are illustrative scenario assumptions."
+    },
+    {
+      "inputId": "ASM-MC13-052",
+      "name": "Customer willingness to pay",
+      "unknownReason": "CUSTOMER_WTP_VALIDATED = false; no price response exists."
+    }
+  ],
+  "statusBlock": {
+    "MC13_VERDICT": "PARTIAL",
+    "MC13_INTERNAL_FINANCIAL_SCOPE": "PASS_INTERNAL_FINANCIAL_SCOPE",
+    "MC13_60_MONTH_MODEL": "IMPLEMENTED",
+    "MC13_12_36_60_RECONCILIATION": "PASS",
+    "MC13_CASHFLOW_VALIDATED": "PASS_INTERNAL_SCOPE",
+    "MC13_FINANCING_REQUIREMENT_MODEL": "CONDITIONAL_HYPOTHETICAL",
+    "MC13_BREAK_EVEN_STATUS": "CONDITIONAL_HYPOTHETICAL_ONLY",
+    "MC13_CUSTOMER_DEMAND_EVIDENCE": "NONE",
+    "MC13_EXTERNAL_COMMERCIAL_VALIDATION": "BLOCKED_OR_NOT_OBTAINED",
+    "MC13_INDEPENDENT_REVIEW": "PASS_INTERNAL_FINANCIAL_SCOPE",
+    "MC12_VERDICT": "PARTIAL",
+    "MC12_INTERNAL_ECONOMICS_SCOPE": "PASS_INTERNAL_ECONOMICS_SCOPE",
+    "PRICE_APPROVED": "NONE",
+    "LICENSING_RIGHTS_GRANTED": false,
+    "CUSTOMER_WTP_VALIDATED": false,
+    "COMMERCIAL_AVAILABILITY": "NOT_FOR_SALE",
+    "PR_CREATED": true,
+    "MERGED": false,
+    "DEPLOYED": false,
+    "MC14_STARTED": false
+  }
+}

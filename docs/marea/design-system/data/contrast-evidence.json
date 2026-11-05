@@ -1,0 +1,2992 @@
+{
+  "contractId": "MC17-CONTRAST-EVIDENCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-17",
+  "status": "PASS",
+  "owner": "lead",
+  "generationMethod": "node scripts/check-marea-design-system.mjs (WCAG 2.x relative luminance formula on declared token values)",
+  "scope": "Declared foreground/background token pairs per visual mode.",
+  "knownLimitations": [
+    "Ratios are computed from declared token values only; glare, anti-aliasing, display hardware and night adaptation are not modelled.",
+    "This is not a WCAG conformance certificate for any public website."
+  ],
+  "sourceRefs": [
+    "src/app/marea-design-system/tokens/marea-design-tokens.source.json",
+    "https://www.w3.org/TR/WCAG22/"
+  ],
+  "thresholds": {
+    "text-normal": {
+      "wcagAa": 4.5
+    },
+    "ui": {
+      "wcagAa": 3
+    },
+    "focus": {
+      "wcagAa": 3
+    }
+  },
+  "measuredPairs": 296,
+  "failures": [],
+  "results": [
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#f2f9fd",
+      "ratio": 11.46,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#eaf7ff",
+      "ratio": 11.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#fbfdff",
+      "ratio": 11.96,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#ffffff",
+      "ratio": 5.13,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#f2f9fd",
+      "ratio": 4.83,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#eaf7ff",
+      "ratio": 4.71,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#fbfdff",
+      "ratio": 5.04,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#ffffff",
+      "ratio": 5.13,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#f2f9fd",
+      "ratio": 4.83,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#eaf7ff",
+      "ratio": 4.71,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#fbfdff",
+      "ratio": 5.04,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#f2f9fd",
+      "ratio": 11.46,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#eaf7ff",
+      "ratio": 11.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#fbfdff",
+      "ratio": 11.96,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#ffffff",
+      "ratio": 5.13,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#f2f9fd",
+      "ratio": 4.83,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#eaf7ff",
+      "ratio": 4.71,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#57708a",
+      "background": "#fbfdff",
+      "ratio": 5.04,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#b4423a",
+      "background": "#ffffff",
+      "ratio": 5.55,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#b4423a",
+      "background": "#f2f9fd",
+      "ratio": 5.22,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#b4423a",
+      "background": "#eaf7ff",
+      "ratio": 5.09,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#b4423a",
+      "background": "#fbfdff",
+      "ratio": 5.45,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#8a5a00",
+      "background": "#ffffff",
+      "ratio": 5.93,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#8a5a00",
+      "background": "#f2f9fd",
+      "ratio": 5.57,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#8a5a00",
+      "background": "#eaf7ff",
+      "ratio": 5.43,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#8a5a00",
+      "background": "#fbfdff",
+      "ratio": 5.81,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#27775c",
+      "background": "#ffffff",
+      "ratio": 5.41,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#27775c",
+      "background": "#f2f9fd",
+      "ratio": 5.09,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#27775c",
+      "background": "#eaf7ff",
+      "ratio": 4.96,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#27775c",
+      "background": "#fbfdff",
+      "ratio": 5.31,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#555555",
+      "background": "#ffffff",
+      "ratio": 7.46,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#555555",
+      "background": "#f2f9fd",
+      "ratio": 7.01,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#555555",
+      "background": "#eaf7ff",
+      "ratio": 6.83,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#555555",
+      "background": "#fbfdff",
+      "ratio": 7.31,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#ffffff",
+      "ratio": 5.63,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#f2f9fd",
+      "ratio": 5.29,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#eaf7ff",
+      "ratio": 5.16,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#fbfdff",
+      "ratio": 5.52,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-canvas",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#ffffff",
+      "ratio": 5.63,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-surface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#f2f9fd",
+      "ratio": 5.29,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#eaf7ff",
+      "ratio": 5.16,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#fbfdff",
+      "ratio": 5.52,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#f2f9fd",
+      "ratio": 11.46,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#eaf7ff",
+      "ratio": 11.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#4a6579",
+      "background": "#f2f9fd",
+      "ratio": 5.76,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#4a6579",
+      "background": "#ffffff",
+      "ratio": 6.12,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#4a6579",
+      "background": "#eaf7ff",
+      "ratio": 5.61,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#4a6579",
+      "background": "#ffffff",
+      "ratio": 6.12,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#52697f",
+      "background": "#f2f9fd",
+      "ratio": 5.36,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#52697f",
+      "background": "#ffffff",
+      "ratio": 5.7,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#52697f",
+      "background": "#eaf7ff",
+      "ratio": 5.22,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#52697f",
+      "background": "#ffffff",
+      "ratio": 5.7,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#f2f9fd",
+      "ratio": 11.46,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#eaf7ff",
+      "ratio": 11.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#4a6579",
+      "background": "#f2f9fd",
+      "ratio": 5.76,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#4a6579",
+      "background": "#ffffff",
+      "ratio": 6.12,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#4a6579",
+      "background": "#eaf7ff",
+      "ratio": 5.61,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#4a6579",
+      "background": "#ffffff",
+      "ratio": 6.12,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#a32b22",
+      "background": "#f2f9fd",
+      "ratio": 6.75,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#a32b22",
+      "background": "#ffffff",
+      "ratio": 7.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#a32b22",
+      "background": "#eaf7ff",
+      "ratio": 6.58,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#a32b22",
+      "background": "#ffffff",
+      "ratio": 7.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#8a5a00",
+      "background": "#f2f9fd",
+      "ratio": 5.57,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#8a5a00",
+      "background": "#ffffff",
+      "ratio": 5.93,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#8a5a00",
+      "background": "#eaf7ff",
+      "ratio": 5.43,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#8a5a00",
+      "background": "#ffffff",
+      "ratio": 5.93,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#1f5f49",
+      "background": "#f2f9fd",
+      "ratio": 7.07,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#1f5f49",
+      "background": "#ffffff",
+      "ratio": 7.52,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#1f5f49",
+      "background": "#eaf7ff",
+      "ratio": 6.9,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#1f5f49",
+      "background": "#ffffff",
+      "ratio": 7.52,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#55646f",
+      "background": "#f2f9fd",
+      "ratio": 5.74,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#55646f",
+      "background": "#ffffff",
+      "ratio": 6.11,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#55646f",
+      "background": "#eaf7ff",
+      "ratio": 5.6,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#55646f",
+      "background": "#ffffff",
+      "ratio": 6.11,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#f2f9fd",
+      "ratio": 11.46,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#eaf7ff",
+      "ratio": 11.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#f2f9fd",
+      "ratio": 5.29,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#ffffff",
+      "ratio": 5.63,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#eaf7ff",
+      "ratio": 5.16,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#ffffff",
+      "ratio": 5.63,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b2440",
+      "background": "#ffffff",
+      "ratio": 15.66,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b2440",
+      "background": "#f7fbfe",
+      "ratio": 15.06,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b2440",
+      "background": "#eaf7ff",
+      "ratio": 14.36,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b2440",
+      "background": "#ffffff",
+      "ratio": 15.66,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#3f5468",
+      "background": "#ffffff",
+      "ratio": 7.84,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#3f5468",
+      "background": "#f7fbfe",
+      "ratio": 7.53,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#3f5468",
+      "background": "#eaf7ff",
+      "ratio": 7.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#3f5468",
+      "background": "#ffffff",
+      "ratio": 7.84,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#4a5f73",
+      "background": "#ffffff",
+      "ratio": 6.61,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#4a5f73",
+      "background": "#f7fbfe",
+      "ratio": 6.36,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#4a5f73",
+      "background": "#eaf7ff",
+      "ratio": 6.06,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#4a5f73",
+      "background": "#ffffff",
+      "ratio": 6.61,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b2440",
+      "background": "#ffffff",
+      "ratio": 15.66,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b2440",
+      "background": "#f7fbfe",
+      "ratio": 15.06,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b2440",
+      "background": "#eaf7ff",
+      "ratio": 14.36,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b2440",
+      "background": "#ffffff",
+      "ratio": 15.66,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#3f5468",
+      "background": "#ffffff",
+      "ratio": 7.84,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#3f5468",
+      "background": "#f7fbfe",
+      "ratio": 7.53,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#3f5468",
+      "background": "#eaf7ff",
+      "ratio": 7.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#3f5468",
+      "background": "#ffffff",
+      "ratio": 7.84,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#8f1a12",
+      "background": "#ffffff",
+      "ratio": 9.03,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#8f1a12",
+      "background": "#f7fbfe",
+      "ratio": 8.68,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#8f1a12",
+      "background": "#eaf7ff",
+      "ratio": 8.28,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#8f1a12",
+      "background": "#ffffff",
+      "ratio": 9.03,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#6b4300",
+      "background": "#ffffff",
+      "ratio": 8.65,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#6b4300",
+      "background": "#f7fbfe",
+      "ratio": 8.31,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#6b4300",
+      "background": "#eaf7ff",
+      "ratio": 7.93,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#6b4300",
+      "background": "#ffffff",
+      "ratio": 8.65,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#10513c",
+      "background": "#ffffff",
+      "ratio": 9.27,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#10513c",
+      "background": "#f7fbfe",
+      "ratio": 8.91,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#10513c",
+      "background": "#eaf7ff",
+      "ratio": 8.5,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#10513c",
+      "background": "#ffffff",
+      "ratio": 9.27,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#46586a",
+      "background": "#ffffff",
+      "ratio": 7.33,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#46586a",
+      "background": "#f7fbfe",
+      "ratio": 7.05,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#46586a",
+      "background": "#eaf7ff",
+      "ratio": 6.72,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#46586a",
+      "background": "#ffffff",
+      "ratio": 7.33,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#f7fbfe",
+      "ratio": 11.72,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#eaf7ff",
+      "ratio": 11.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b4f78",
+      "background": "#ffffff",
+      "ratio": 8.74,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b4f78",
+      "background": "#f7fbfe",
+      "ratio": 8.4,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b4f78",
+      "background": "#eaf7ff",
+      "ratio": 8.01,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b4f78",
+      "background": "#ffffff",
+      "ratio": 8.74,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#0d1b26",
+      "ratio": 10.65,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#132733",
+      "ratio": 9.38,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#1a3343",
+      "ratio": 8.01,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textPrimary-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#0f202b",
+      "ratio": 10.15,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#0d1b26",
+      "ratio": 6.96,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#132733",
+      "ratio": 6.12,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#1a3343",
+      "ratio": 5.23,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textSecondary-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#0f202b",
+      "ratio": 6.63,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#a9b7c4",
+      "background": "#0d1b26",
+      "ratio": 8.53,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#a9b7c4",
+      "background": "#132733",
+      "ratio": 7.51,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#a9b7c4",
+      "background": "#1a3343",
+      "ratio": 6.42,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:textMeta-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#a9b7c4",
+      "background": "#0f202b",
+      "ratio": 8.13,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#0d1b26",
+      "ratio": 10.65,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#132733",
+      "ratio": 9.38,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#1a3343",
+      "ratio": 8.01,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataPrimary-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#0f202b",
+      "ratio": 10.15,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#0d1b26",
+      "ratio": 6.96,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#132733",
+      "ratio": 6.12,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#1a3343",
+      "ratio": 5.23,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:dataSecondary-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#0f202b",
+      "ratio": 6.63,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ff9b8f",
+      "background": "#0d1b26",
+      "ratio": 8.6,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ff9b8f",
+      "background": "#132733",
+      "ratio": 7.57,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ff9b8f",
+      "background": "#1a3343",
+      "ratio": 6.47,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateCritical-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ff9b8f",
+      "background": "#0f202b",
+      "ratio": 8.19,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ffc46b",
+      "background": "#0d1b26",
+      "ratio": 11.12,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ffc46b",
+      "background": "#132733",
+      "ratio": 9.78,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ffc46b",
+      "background": "#1a3343",
+      "ratio": 8.36,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateWarning-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ffc46b",
+      "background": "#0f202b",
+      "ratio": 10.59,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#7bd8b0",
+      "background": "#0d1b26",
+      "ratio": 10.23,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#7bd8b0",
+      "background": "#132733",
+      "ratio": 9,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#7bd8b0",
+      "background": "#1a3343",
+      "ratio": 7.69,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateSafe-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#7bd8b0",
+      "background": "#0f202b",
+      "ratio": 9.74,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#a9b7c4",
+      "background": "#0d1b26",
+      "ratio": 8.53,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#a9b7c4",
+      "background": "#132733",
+      "ratio": 7.51,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#a9b7c4",
+      "background": "#1a3343",
+      "ratio": 6.42,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateStale-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#a9b7c4",
+      "background": "#0f202b",
+      "ratio": 8.13,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#0d1b26",
+      "ratio": 6.96,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#132733",
+      "ratio": 6.12,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#1a3343",
+      "ratio": 5.23,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:stateInfo-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#0f202b",
+      "ratio": 6.63,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#0d1b26",
+      "ratio": 10.65,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#132733",
+      "ratio": 9.38,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#1a3343",
+      "ratio": 8.01,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "text-on-surfaces:action-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#0f202b",
+      "ratio": 10.15,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-action",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#176ca6",
+      "ratio": 5.63,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-actionHover",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#12568a",
+      "ratio": 7.71,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateCritical",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#b4423a",
+      "ratio": 5.55,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateWarning",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#8a5a00",
+      "ratio": 5.93,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateSafe",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#27775c",
+      "ratio": 5.41,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-action",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#176ca6",
+      "ratio": 5.63,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-actionHover",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#12568a",
+      "ratio": 7.71,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateCritical",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#a32b22",
+      "ratio": 7.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateWarning",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#8a5a00",
+      "ratio": 5.93,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateSafe",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#1f5f49",
+      "ratio": 7.52,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-action",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#0b4f78",
+      "ratio": 8.74,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-actionHover",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#083f61",
+      "ratio": 11.09,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateCritical",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#8f1a12",
+      "ratio": 9.03,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateWarning",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#6b4300",
+      "ratio": 8.65,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateSafe",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#ffffff",
+      "background": "#10513c",
+      "ratio": 9.27,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-action",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#0d1b26",
+      "background": "#8fd3f5",
+      "ratio": 10.65,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-actionHover",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#0d1b26",
+      "background": "#b6e2fa",
+      "ratio": 12.69,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateCritical",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#0d1b26",
+      "background": "#ff9b8f",
+      "ratio": 8.6,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateWarning",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#0d1b26",
+      "background": "#ffc46b",
+      "ratio": 11.12,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "on-accent-on-fills:textOnAccent-on-stateSafe",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#0d1b26",
+      "background": "#7bd8b0",
+      "ratio": 10.23,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateCritical-on-stateCriticalSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#b4423a",
+      "background": "#fbe9e7",
+      "ratio": 4.74,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateWarning-on-stateWarningSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#8a5a00",
+      "background": "#fff4dc",
+      "ratio": 5.43,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateSafe-on-stateSafeSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#27775c",
+      "background": "#e2f5ee",
+      "ratio": 4.78,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateStale-on-stateStaleSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#555555",
+      "background": "#f1f1f1",
+      "ratio": 6.6,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateInfo-on-stateInfoSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#eaf3fa",
+      "ratio": 5.01,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateCritical-on-stateCriticalSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#a32b22",
+      "background": "#fbe9e7",
+      "ratio": 6.12,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateWarning-on-stateWarningSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#8a5a00",
+      "background": "#fff4dc",
+      "ratio": 5.43,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateSafe-on-stateSafeSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#1f5f49",
+      "background": "#e2f5ee",
+      "ratio": 6.64,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateStale-on-stateStaleSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#55646f",
+      "background": "#eef2f4",
+      "ratio": 5.42,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateInfo-on-stateInfoSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#eaf3fa",
+      "ratio": 10.86,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateCritical-on-stateCriticalSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#8f1a12",
+      "background": "#fbe9e7",
+      "ratio": 7.71,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateWarning-on-stateWarningSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#6b4300",
+      "background": "#fff4dc",
+      "ratio": 7.92,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateSafe-on-stateSafeSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#10513c",
+      "background": "#e2f5ee",
+      "ratio": 8.18,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateStale-on-stateStaleSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#46586a",
+      "background": "#eef2f4",
+      "ratio": 6.51,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateInfo-on-stateInfoSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#17365d",
+      "background": "#eaf3fa",
+      "ratio": 10.86,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateCritical-on-stateCriticalSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ff9b8f",
+      "background": "#3a1e1c",
+      "ratio": 7.48,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateWarning-on-stateWarningSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ffc46b",
+      "background": "#3a2c14",
+      "ratio": 8.62,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateSafe-on-stateSafeSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#7bd8b0",
+      "background": "#17332a",
+      "ratio": 7.96,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateStale-on-stateStaleSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#a9b7c4",
+      "background": "#232f38",
+      "ratio": 6.68,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "status-text-on-status-surface:stateInfo-on-stateInfoSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#93a6b5",
+      "background": "#1e2f3c",
+      "ratio": 5.48,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "action-text-on-quiet-surface:action-on-actionQuietSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#f2f9fd",
+      "ratio": 5.29,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "action-text-on-quiet-surface:action-on-actionQuietSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#176ca6",
+      "background": "#eaf7ff",
+      "ratio": 5.16,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "action-text-on-quiet-surface:action-on-actionQuietSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#0b4f78",
+      "background": "#eaf7ff",
+      "ratio": 8.01,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "action-text-on-quiet-surface:action-on-actionQuietSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#8fd3f5",
+      "background": "#1a3343",
+      "ratio": 8.01,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "internal-banner-text:internalBannerText-on-internalBannerSurface",
+      "mode": "web-light",
+      "kind": "text-normal",
+      "foreground": "#6b4500",
+      "background": "#fff6e6",
+      "ratio": 7.91,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "internal-banner-text:internalBannerText-on-internalBannerSurface",
+      "mode": "instrument-day",
+      "kind": "text-normal",
+      "foreground": "#6b4500",
+      "background": "#fff6e6",
+      "ratio": 7.91,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "internal-banner-text:internalBannerText-on-internalBannerSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-normal",
+      "foreground": "#5c3a00",
+      "background": "#fff6e6",
+      "ratio": 9.5,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "internal-banner-text:internalBannerText-on-internalBannerSurface",
+      "mode": "instrument-night",
+      "kind": "text-normal",
+      "foreground": "#ffd9a0",
+      "background": "#332a18",
+      "ratio": 10.56,
+      "minRatio": 4.5,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-disabledSurface",
+      "mode": "web-light",
+      "kind": "text-disabled-internal",
+      "foreground": "#6b7f90",
+      "background": "#f1f5f7",
+      "ratio": 3.78,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-canvas",
+      "mode": "web-light",
+      "kind": "text-disabled-internal",
+      "foreground": "#6b7f90",
+      "background": "#ffffff",
+      "ratio": 4.15,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-surface",
+      "mode": "web-light",
+      "kind": "text-disabled-internal",
+      "foreground": "#6b7f90",
+      "background": "#f2f9fd",
+      "ratio": 3.9,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-disabledSurface",
+      "mode": "instrument-day",
+      "kind": "text-disabled-internal",
+      "foreground": "#7a8d9b",
+      "background": "#eef3f6",
+      "ratio": 3.07,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-canvas",
+      "mode": "instrument-day",
+      "kind": "text-disabled-internal",
+      "foreground": "#7a8d9b",
+      "background": "#f2f9fd",
+      "ratio": 3.23,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-surface",
+      "mode": "instrument-day",
+      "kind": "text-disabled-internal",
+      "foreground": "#7a8d9b",
+      "background": "#ffffff",
+      "ratio": 3.44,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-disabledSurface",
+      "mode": "instrument-sunlight",
+      "kind": "text-disabled-internal",
+      "foreground": "#6a7f92",
+      "background": "#eef3f6",
+      "ratio": 3.71,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "text-disabled-internal",
+      "foreground": "#6a7f92",
+      "background": "#ffffff",
+      "ratio": 4.15,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "text-disabled-internal",
+      "foreground": "#6a7f92",
+      "background": "#f7fbfe",
+      "ratio": 3.99,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-disabledSurface",
+      "mode": "instrument-night",
+      "kind": "text-disabled-internal",
+      "foreground": "#7d8f9d",
+      "background": "#1a2833",
+      "ratio": 4.51,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-canvas",
+      "mode": "instrument-night",
+      "kind": "text-disabled-internal",
+      "foreground": "#7d8f9d",
+      "background": "#0d1b26",
+      "ratio": 5.23,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "disabled-text-internal-target:disabled-on-surface",
+      "mode": "instrument-night",
+      "kind": "text-disabled-internal",
+      "foreground": "#7d8f9d",
+      "background": "#132733",
+      "ratio": 4.6,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-canvas",
+      "mode": "web-light",
+      "kind": "focus",
+      "foreground": "#0f5f8c",
+      "background": "#ffffff",
+      "ratio": 6.92,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-surface",
+      "mode": "web-light",
+      "kind": "focus",
+      "foreground": "#0f5f8c",
+      "background": "#f2f9fd",
+      "ratio": 6.5,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-surfaceRaised",
+      "mode": "web-light",
+      "kind": "focus",
+      "foreground": "#0f5f8c",
+      "background": "#eaf7ff",
+      "ratio": 6.34,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "focus",
+      "foreground": "#0f5f8c",
+      "background": "#fbfdff",
+      "ratio": 6.78,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-canvas",
+      "mode": "instrument-day",
+      "kind": "focus",
+      "foreground": "#0f5f8c",
+      "background": "#f2f9fd",
+      "ratio": 6.5,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-surface",
+      "mode": "instrument-day",
+      "kind": "focus",
+      "foreground": "#0f5f8c",
+      "background": "#ffffff",
+      "ratio": 6.92,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-surfaceRaised",
+      "mode": "instrument-day",
+      "kind": "focus",
+      "foreground": "#0f5f8c",
+      "background": "#eaf7ff",
+      "ratio": 6.34,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "focus",
+      "foreground": "#0f5f8c",
+      "background": "#ffffff",
+      "ratio": 6.92,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "focus",
+      "foreground": "#0a4568",
+      "background": "#ffffff",
+      "ratio": 10.17,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "focus",
+      "foreground": "#0a4568",
+      "background": "#f7fbfe",
+      "ratio": 9.78,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-surfaceRaised",
+      "mode": "instrument-sunlight",
+      "kind": "focus",
+      "foreground": "#0a4568",
+      "background": "#eaf7ff",
+      "ratio": 9.32,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "focus",
+      "foreground": "#0a4568",
+      "background": "#ffffff",
+      "ratio": 10.17,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-canvas",
+      "mode": "instrument-night",
+      "kind": "focus",
+      "foreground": "#8fd3f5",
+      "background": "#0d1b26",
+      "ratio": 10.65,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-surface",
+      "mode": "instrument-night",
+      "kind": "focus",
+      "foreground": "#8fd3f5",
+      "background": "#132733",
+      "ratio": 9.38,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-surfaceRaised",
+      "mode": "instrument-night",
+      "kind": "focus",
+      "foreground": "#8fd3f5",
+      "background": "#1a3343",
+      "ratio": 8.01,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-surfaces:focusRing-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "focus",
+      "foreground": "#8fd3f5",
+      "background": "#0f202b",
+      "ratio": 10.15,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-action",
+      "mode": "web-light",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#176ca6",
+      "ratio": 5.63,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-actionHover",
+      "mode": "web-light",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#12568a",
+      "ratio": 7.71,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-stateCritical",
+      "mode": "web-light",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#b4423a",
+      "ratio": 5.55,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-stateWarning",
+      "mode": "web-light",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#8a5a00",
+      "ratio": 5.93,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-action",
+      "mode": "instrument-day",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#176ca6",
+      "ratio": 5.63,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-actionHover",
+      "mode": "instrument-day",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#12568a",
+      "ratio": 7.71,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-stateCritical",
+      "mode": "instrument-day",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#a32b22",
+      "ratio": 7.18,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-stateWarning",
+      "mode": "instrument-day",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#8a5a00",
+      "ratio": 5.93,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-action",
+      "mode": "instrument-sunlight",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#0b4f78",
+      "ratio": 8.74,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-actionHover",
+      "mode": "instrument-sunlight",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#083f61",
+      "ratio": 11.09,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-stateCritical",
+      "mode": "instrument-sunlight",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#8f1a12",
+      "ratio": 9.03,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-stateWarning",
+      "mode": "instrument-sunlight",
+      "kind": "focus",
+      "foreground": "#ffffff",
+      "background": "#6b4300",
+      "ratio": 8.65,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-action",
+      "mode": "instrument-night",
+      "kind": "focus",
+      "foreground": "#0d1b26",
+      "background": "#8fd3f5",
+      "ratio": 10.65,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-actionHover",
+      "mode": "instrument-night",
+      "kind": "focus",
+      "foreground": "#0d1b26",
+      "background": "#b6e2fa",
+      "ratio": 12.69,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-stateCritical",
+      "mode": "instrument-night",
+      "kind": "focus",
+      "foreground": "#0d1b26",
+      "background": "#ff9b8f",
+      "ratio": 8.6,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "focus-ring-on-fill:focusRingOnFill-on-stateWarning",
+      "mode": "instrument-night",
+      "kind": "focus",
+      "foreground": "#0d1b26",
+      "background": "#ffc46b",
+      "ratio": 11.12,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-canvas",
+      "mode": "web-light",
+      "kind": "ui",
+      "foreground": "#7d8b97",
+      "background": "#ffffff",
+      "ratio": 3.49,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-surface",
+      "mode": "web-light",
+      "kind": "ui",
+      "foreground": "#7d8b97",
+      "background": "#f2f9fd",
+      "ratio": 3.28,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-fieldSurface",
+      "mode": "web-light",
+      "kind": "ui",
+      "foreground": "#7d8b97",
+      "background": "#fbfdff",
+      "ratio": 3.43,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-canvas",
+      "mode": "instrument-day",
+      "kind": "ui",
+      "foreground": "#788997",
+      "background": "#f2f9fd",
+      "ratio": 3.39,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-surface",
+      "mode": "instrument-day",
+      "kind": "ui",
+      "foreground": "#788997",
+      "background": "#ffffff",
+      "ratio": 3.61,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-fieldSurface",
+      "mode": "instrument-day",
+      "kind": "ui",
+      "foreground": "#788997",
+      "background": "#ffffff",
+      "ratio": 3.61,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "ui",
+      "foreground": "#74879a",
+      "background": "#ffffff",
+      "ratio": 3.7,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "ui",
+      "foreground": "#74879a",
+      "background": "#f7fbfe",
+      "ratio": 3.56,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-fieldSurface",
+      "mode": "instrument-sunlight",
+      "kind": "ui",
+      "foreground": "#74879a",
+      "background": "#ffffff",
+      "ratio": 3.7,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-canvas",
+      "mode": "instrument-night",
+      "kind": "ui",
+      "foreground": "#5d7282",
+      "background": "#0d1b26",
+      "ratio": 3.49,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-surface",
+      "mode": "instrument-night",
+      "kind": "ui",
+      "foreground": "#5d7282",
+      "background": "#132733",
+      "ratio": 3.07,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "control-boundary:borderStrong-on-fieldSurface",
+      "mode": "instrument-night",
+      "kind": "ui",
+      "foreground": "#5d7282",
+      "background": "#0f202b",
+      "ratio": 3.32,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartGrid-on-canvas",
+      "mode": "web-light",
+      "kind": "ui",
+      "foreground": "#748d9f",
+      "background": "#ffffff",
+      "ratio": 3.47,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartGrid-on-surface",
+      "mode": "web-light",
+      "kind": "ui",
+      "foreground": "#748d9f",
+      "background": "#f2f9fd",
+      "ratio": 3.26,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartLine-on-canvas",
+      "mode": "web-light",
+      "kind": "ui",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartLine-on-surface",
+      "mode": "web-light",
+      "kind": "ui",
+      "foreground": "#17365d",
+      "background": "#f2f9fd",
+      "ratio": 11.46,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartGrid-on-canvas",
+      "mode": "instrument-day",
+      "kind": "ui",
+      "foreground": "#748d9f",
+      "background": "#f2f9fd",
+      "ratio": 3.26,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartGrid-on-surface",
+      "mode": "instrument-day",
+      "kind": "ui",
+      "foreground": "#748d9f",
+      "background": "#ffffff",
+      "ratio": 3.47,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartLine-on-canvas",
+      "mode": "instrument-day",
+      "kind": "ui",
+      "foreground": "#17365d",
+      "background": "#f2f9fd",
+      "ratio": 11.46,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartLine-on-surface",
+      "mode": "instrument-day",
+      "kind": "ui",
+      "foreground": "#17365d",
+      "background": "#ffffff",
+      "ratio": 12.19,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartGrid-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "ui",
+      "foreground": "#5f7a8e",
+      "background": "#ffffff",
+      "ratio": 4.51,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartGrid-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "ui",
+      "foreground": "#5f7a8e",
+      "background": "#f7fbfe",
+      "ratio": 4.33,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartLine-on-canvas",
+      "mode": "instrument-sunlight",
+      "kind": "ui",
+      "foreground": "#0b2440",
+      "background": "#ffffff",
+      "ratio": 15.66,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartLine-on-surface",
+      "mode": "instrument-sunlight",
+      "kind": "ui",
+      "foreground": "#0b2440",
+      "background": "#f7fbfe",
+      "ratio": 15.06,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartGrid-on-canvas",
+      "mode": "instrument-night",
+      "kind": "ui",
+      "foreground": "#6a7f8d",
+      "background": "#0d1b26",
+      "ratio": 4.19,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartGrid-on-surface",
+      "mode": "instrument-night",
+      "kind": "ui",
+      "foreground": "#6a7f8d",
+      "background": "#132733",
+      "ratio": 3.69,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartLine-on-canvas",
+      "mode": "instrument-night",
+      "kind": "ui",
+      "foreground": "#8fd3f5",
+      "background": "#0d1b26",
+      "ratio": 10.65,
+      "minRatio": 3,
+      "status": "PASS"
+    },
+    {
+      "pairId": "chart-supporting-cues:chartLine-on-surface",
+      "mode": "instrument-night",
+      "kind": "ui",
+      "foreground": "#8fd3f5",
+      "background": "#132733",
+      "ratio": 9.38,
+      "minRatio": 3,
+      "status": "PASS"
+    }
+  ]
+}

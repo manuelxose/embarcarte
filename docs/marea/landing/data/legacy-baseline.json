@@ -1,0 +1,38 @@
+{
+  "contractId": "MC18-LEGACY-BASELINE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "MC-18 QA",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Public-site non-regression baseline for MC-18: git-diff facts for the watched public paths since commit 6002c49, proving that no public route or public style changed.",
+  "generationMethod": [
+    "git diff --name-only 6002c49 -- src/app src/server.ts src/styles.scss public angular.json playwright.config.ts",
+    "node e2e/landing/measure-production.mjs"
+  ],
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "measuredAt": "2026-11-03T11:39:07.162Z",
+  "knownLimitations": [
+    "The comparison base is commit 6002c49 (last recorded MC-17 delivery); it does not include uncommitted or untracked public files.",
+    "git diff --name-only lists tracked changes only: new MC-18 files are untracked and intentionally excluded from the watched set.",
+    "No full public e2e suite is run by this dataset; the inherited public gates are the Lead responsibility."
+  ],
+  "data": {
+    "watchedPathsUnchanged": true,
+    "command": "git diff --name-only 6002c49 -- src/app src/server.ts src/styles.scss public angular.json playwright.config.ts",
+    "exitCode": 0,
+    "stdout": "angular.json\nplaywright.config.ts",
+    "paths": [
+      "angular.json",
+      "playwright.config.ts"
+    ],
+    "publicRouteOrStyleChanges": [],
+    "isolationOnlyChanges": [
+      "angular.json: only the isolated \"marea-landing-preview\" project is added (68 insertions, 0 deletions); no public embarcarte route/style target changed.",
+      "playwright.config.ts: only testIgnore gains \"**/landing/**\" so the internal landing suite does not run from the public config; no public route, server or style behaviour changed."
+    ],
+    "angularJsonChange": "Only the isolated \"marea-landing-preview\" project is added (68 insertions, 0 deletions); no public embarcarte route/style target changed.",
+    "playwrightConfigChange": "Only the public suite ignore list gains \"**/landing/**\"; the public baseURL, webServer and projects are unchanged.",
+    "interpretation": "watchedPathsUnchanged=true means no public route, public server entry, public stylesheet or public behaviour changed. The two tracked watched-path edits are isolation-only: angular.json registers the isolated preview project and playwright.config.ts excludes e2e/landing from the public suite."
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "contractId": "MC20-CATALOG-VALIDATOR-RUN",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-22",
+  "owner": "MC-22 implementation team",
+  "baseCommit": "1dc9aa0",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "status": "PASS",
+  "total": 56,
+  "passed": 56,
+  "failed": 0,
+  "runAt": "2026-11-05T11:22:51.994Z",
+  "head": "ad0ab43fc22f6d124566e639fdce47881886d0ae",
+  "checks": [
+    {
+      "id": "MC20-01",
+      "title": "the projection exposes exactly the nine canonical families",
+      "status": "PASS",
+      "detail": "9 canonical families; projection scope, projection records and content agree"
+    },
+    {
+      "id": "MC20-02",
+      "title": "family type/lifecycle/publication/availability match the canonical record",
+      "status": "PASS",
+      "detail": "9 families copy product type, lifecycle, publication and availability"
+    },
+    {
+      "id": "MC20-03",
+      "title": "all eleven readiness dimensions equal the canonical values",
+      "status": "PASS",
+      "detail": "9 families × 11 dimensions copied byte-for-byte"
+    },
+    {
+      "id": "MC20-04",
+      "title": "all twenty-six canonical editions keep their ids, family, type and feature keys",
+      "status": "PASS",
+      "detail": "26 editions across the nine families, none missing"
+    },
+    {
+      "id": "MC20-05",
+      "title": "AIS transmission is false in the canonical data and in the catalogue copy",
+      "status": "PASS",
+      "detail": "receive-only framing present in ES and EN hero and limitations"
+    },
+    {
+      "id": "MC20-06",
+      "title": "no edition is merchantable, priced or assigned a merchant SKU",
+      "status": "PASS",
+      "detail": "0 approved prices, 0 merchantable editions, 0 merchant SKUs"
+    },
+    {
+      "id": "MC20-07",
+      "title": "every MC-15 proposed family route stays internal and not deployable",
+      "status": "PASS",
+      "detail": "9 routes: proposed internal, not deployable, no collision, no publication"
+    },
+    {
+      "id": "MC20-08",
+      "title": "every family copies its canonical product type, hardware and safety status",
+      "status": "PASS",
+      "detail": "9 families copy canonical product type, hardware and safety status"
+    },
+    {
+      "id": "MC20-09",
+      "title": "bundle inclusions match every canonical bundle line (component and optional)",
+      "status": "PASS",
+      "detail": "every (bundleId, editionId, lineId, inclusion) tuple matches canonical"
+    },
+    {
+      "id": "MC20-10",
+      "title": "every family renders the frozen ten sections",
+      "status": "PASS",
+      "detail": "9 families × 10 frozen sections"
+    },
+    {
+      "id": "MC20-11",
+      "title": "content ids are unique across the whole catalogue",
+      "status": "PASS",
+      "detail": "352 unique content blocks"
+    },
+    {
+      "id": "MC20-12",
+      "title": "every content block declares an evidence class and existing sources",
+      "status": "PASS",
+      "detail": "all blocks carry an evidence class and only existing source files"
+    },
+    {
+      "id": "MC20-13",
+      "title": "the committed projection is up to date with the canonical datasets",
+      "status": "PASS",
+      "detail": "delegated to the confined runner data stage"
+    },
+    {
+      "id": "MC20-14",
+      "title": "the generated projection carries no price, stock or SKU field",
+      "status": "PASS",
+      "detail": "no amount, quantity or SKU value in the projection"
+    },
+    {
+      "id": "MC20-15",
+      "title": "the nine families of copy avoid prohibited commercial claims",
+      "status": "PASS",
+      "detail": "2800 bilingual strings scanned, 0 prohibited claims"
+    },
+    {
+      "id": "MC20-16",
+      "title": "every string has a non-empty, distinct ES and EN value",
+      "status": "PASS",
+      "detail": "134 sampled bilingual values are non-empty and locale-specific"
+    },
+    {
+      "id": "MC20-17",
+      "title": "ES and EN expose the same inventory and every pair is genuinely bilingual",
+      "status": "PASS",
+      "detail": "structural inventory plus every localized pair: non-empty, translated, limitations negated"
+    },
+    {
+      "id": "MC20-18",
+      "title": "the English copy shows no untranslated Spanish clustering",
+      "status": "PASS",
+      "detail": "0 English strings with Spanish function-word clustering"
+    },
+    {
+      "id": "MC20-19",
+      "title": "the page composes all ten sections in the frozen order",
+      "status": "PASS",
+      "detail": "10 sections plus the closing section rendered in order"
+    },
+    {
+      "id": "MC20-20",
+      "title": "section components contain no per-family presentation branch",
+      "status": "PASS",
+      "detail": "sections are driven by the canonical record and the content contract"
+    },
+    {
+      "id": "MC20-21",
+      "title": "the catalogue reuses MC-17 components and does not fork the design system",
+      "status": "PASS",
+      "detail": "10 verified MC-17 components reused; design system byte-identical to the MC-18 base"
+    },
+    {
+      "id": "MC20-22",
+      "title": "the MC-18 landing module is unchanged",
+      "status": "PASS",
+      "detail": "src/app/marea-landing is unchanged from the MC-18 base"
+    },
+    {
+      "id": "MC20-23",
+      "title": "the preview route table defines the eighteen family/locale routes",
+      "status": "PASS",
+      "detail": "9 families × 2 locales, all Server-rendered, all under internal/catalog"
+    },
+    {
+      "id": "MC20-24",
+      "title": "the preview host emits no public metadata",
+      "status": "PASS",
+      "detail": "noindex + NOT_AUTHORIZED only; no canonical, hreflang, OG, Twitter or JSON-LD"
+    },
+    {
+      "id": "MC20-25",
+      "title": "the preview server stays loopback-only with a noindex header",
+      "status": "PASS",
+      "detail": "127.0.0.1 bind, host allowlist, noindex, CSP form-action none"
+    },
+    {
+      "id": "MC20-26",
+      "title": "the catalogue defines no form, input, storage or network call",
+      "status": "PASS",
+      "detail": "36 catalogue modules: 0 form, 0 storage, 0 network call"
+    },
+    {
+      "id": "MC20-27",
+      "title": "no purchase path can be rendered",
+      "status": "PASS",
+      "detail": "MC-17 fail-closed adapter; release gate closed; no purchase, cart or price"
+    },
+    {
+      "id": "MC20-28",
+      "title": "the production application and design system are untouched",
+      "status": "PASS",
+      "detail": "public routes, SSR entry, public assets and deployment config unchanged"
+    },
+    {
+      "id": "MC20-29",
+      "title": "no production module reaches the catalogue or the preview",
+      "status": "PASS",
+      "detail": "86 production modules scanned; 0 reach the catalogue, preview or landing"
+    },
+    {
+      "id": "MC20-30",
+      "title": "no catalogue identifier appears in a production bundle if one exists",
+      "status": "PASS",
+      "detail": "168 production bundle files carry 0 catalogue identifiers"
+    },
+    {
+      "id": "MC20-31",
+      "title": "no dependency or lockfile change is introduced",
+      "status": "PASS",
+      "detail": "dependencies and lockfile unchanged"
+    },
+    {
+      "id": "MC20-32",
+      "title": "every changed path is inside the MC-20 write scope",
+      "status": "PASS",
+      "detail": "57 changed paths (working tree + since 1dc9aa0) inside scope"
+    },
+    {
+      "id": "MC20-34",
+      "title": "catalogue pages expose no link to a proposed public route",
+      "status": "PASS",
+      "detail": "only internal/catalog paths are referenced"
+    },
+    {
+      "id": "MC20-35",
+      "title": "the public sitemap and robots files are unchanged",
+      "status": "PASS",
+      "detail": "0 public sitemap file(s) unchanged, no catalogue entry"
+    },
+    {
+      "id": "MC20-36",
+      "title": "the delivery record preserves the governance gates",
+      "status": "PASS",
+      "detail": "10 governance gates recorded verbatim"
+    },
+    {
+      "id": "MC20-37",
+      "title": "the acceptance matrix uses only real statuses and evidence-bound PASS rows",
+      "status": "PASS",
+      "detail": "15 rows with PASS/PARTIAL/PENDING only; PASS rows carry evidence conditions"
+    },
+    {
+      "id": "MC20-38",
+      "title": "MC-21 records PARTIAL and MC-22 does not claim a global PASS",
+      "status": "PASS",
+      "detail": "MC-21 PARTIAL (internal scope only); MC-22 not globally PASS"
+    },
+    {
+      "id": "MC20-39",
+      "title": "the roadmap row for MC-20 is updated and not marked PASS",
+      "status": "PASS",
+      "detail": "MC-20 row records internal evidence and keeps the verdict partial"
+    },
+    {
+      "id": "MC20-40",
+      "title": "the test report and independent audit are evidence-bound",
+      "status": "PASS",
+      "detail": "test report, audit, ES executive report and MC-21 handoff present"
+    },
+    {
+      "id": "MC21-01",
+      "title": "nine families, twenty-six editions and ten governance gates",
+      "status": "PASS",
+      "detail": "9 families · 26 editions · 10 governance gates"
+    },
+    {
+      "id": "MC21-02",
+      "title": "every family content has ES/EN structural parity and matching editions",
+      "status": "PASS",
+      "detail": "9 families: 10 sections, editions match projection, bilingual parity"
+    },
+    {
+      "id": "MC21-03",
+      "title": "every family block carries an evidence class and a real source",
+      "status": "PASS",
+      "detail": "every block across the 9 families cites an evidence class and an existing source"
+    },
+    {
+      "id": "MC21-04",
+      "title": "WEATHER names no data provider and states provenance not contracted",
+      "status": "PASS",
+      "detail": "no named provider, explicit provenance notice, no forecast-accuracy claim"
+    },
+    {
+      "id": "MC21-05",
+      "title": "availability stays DEFINED / INTERNAL_ONLY / NOT_FOR_SALE with no commerce language",
+      "status": "PASS",
+      "detail": "9 families DEFINED/INTERNAL_ONLY/NOT_FOR_SALE; 0 availability or commerce claims"
+    },
+    {
+      "id": "MC21-06",
+      "title": "SENSE limitations render NOT_MEASURED, NOT_VERIFIED, NOT_IMPLEMENTED",
+      "status": "PASS",
+      "detail": "SENSE accuracy NOT_MEASURED, ingress NOT_VERIFIED, NMEA 2000 NOT_IMPLEMENTED"
+    },
+    {
+      "id": "MC21-07",
+      "title": "WATCH limitations render NOT_VERIFIED, NOT_FOUND and privacy BLOCKED",
+      "status": "PASS",
+      "detail": "WATCH ingestion NOT_VERIFIED, connectivity/notification/identity NOT_FOUND, privacy BLOCKED"
+    },
+    {
+      "id": "MC21-08",
+      "title": "the ten governance gates are preserved verbatim against the baseline",
+      "status": "PASS",
+      "detail": "10 gates verbatim in current content, projection and the baseline commit"
+    },
+    {
+      "id": "MC21-09",
+      "title": "production isolation: no production path reaches the catalogue",
+      "status": "PASS",
+      "detail": "86 production modules scanned; public/ and app.routes unchanged"
+    },
+    {
+      "id": "MC21-10",
+      "title": "all eighteen preview routes are loopback-only and Server-rendered",
+      "status": "PASS",
+      "detail": "18 loopback Server routes; preview server bound to 127.0.0.1"
+    },
+    {
+      "id": "MC22-01",
+      "title": "canonical release gates, claims and product definitions are consistent",
+      "status": "PASS",
+      "detail": "13 release gates open; 0 public-authorized claims; 9 definitions present"
+    },
+    {
+      "id": "MC22-02",
+      "title": "DISPLAY stays SIZE_NOT_FROZEN / HARDWARE_NOT_SELECTED / BOM_NOT_ESTABLISHED",
+      "status": "PASS",
+      "detail": "DISPLAY size/hardware/BOM frozen as NOT_*; measuredPerformance false; no PILOT authority"
+    },
+    {
+      "id": "MC22-03",
+      "title": "DISPLAY publishes no dimension, resolution, brightness, IP or power claim",
+      "status": "PASS",
+      "detail": "0 DISPLAY dimension/resolution/brightness/environmental/power claims"
+    },
+    {
+      "id": "MC22-04",
+      "title": "PILOT safety gate is BLOCKED and no autonomy or certification is claimed",
+      "status": "PASS",
+      "detail": "PILOT BLOCKED; sea trials false; NOT_FOUND evidence; supervised-only copy"
+    },
+    {
+      "id": "MC22-05",
+      "title": "PILOT publishes no autonomy, certification, reliability or approval claim",
+      "status": "PASS",
+      "detail": "0 PILOT autonomy/certification/reliability/approval/helm claims"
+    },
+    {
+      "id": "MC22-06",
+      "title": "FLEET stays not-implemented with NO_SLA_ESTABLISHED and read-only telemetry",
+      "status": "PASS",
+      "detail": "FLEET not-implemented; NO_SLA_ESTABLISHED; read-only telemetry; NO_ACCESS"
+    },
+    {
+      "id": "MC22-07",
+      "title": "FLEET publishes no SLA, availability, hardware, customer or certification claim",
+      "status": "PASS",
+      "detail": "0 FLEET SLA/availability/hardware/customer/contract/certification claims"
+    }
+  ]
+}

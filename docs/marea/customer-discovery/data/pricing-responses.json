@@ -1,0 +1,43 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "schemaVersion": "MC10-PRICING-RESPONSE-1.0.0",
+  "administered": false,
+  "responses": [],
+  "participantsCompletingPricingModule": 0,
+  "gaborGrangerLaddersCompleted": 0,
+  "vanWestendorpModulesCompleted": 0,
+  "ladderReference": {
+    "path": "docs/marea/customer-discovery/data/pricing-ladders.json",
+    "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+    "contractVersion": "1.0.0",
+    "frozenAt": "2026-11-01",
+    "status": "PRE_REGISTERED_HYPOTHESIS",
+    "rule": "A price response may only reference a frozen ladder construct and a known point index from that file. The ladder is a hypothesis; it is never an offer."
+  },
+  "requiredResponseFields": [
+    "responseId",
+    "participantId",
+    "constructId",
+    "method",
+    "pointIndex",
+    "amount",
+    "currency",
+    "vatTreatment",
+    "intentScale",
+    "responseTimeSeconds",
+    "ladderVersion",
+    "responseDate"
+  ],
+  "unknownHandling": "An unknown amount, currency or VAT treatment is recorded as null/UNKNOWN. It is never coerced to zero and never converted to another currency inside the raw record.",
+  "prohibitions": [
+    "No conversion rate may be derived from stated intent.",
+    "No elasticity, revenue or margin may be computed from these responses.",
+    "No price may be approved from these responses.",
+    "No ladder point may be re-ordered or adjusted after observing a response."
+  ],
+  "note": "No pricing module was administered because AUTH-MC10-001 is NOT_GRANTED. WTP_STATED_PREFERENCE_OBSERVED and WTP_COMMERCIALLY_VALIDATED remain false and APPROVED_PRICES remains 0."
+}

@@ -1,0 +1,2061 @@
+{
+  "contractId": "MAREA-MC11-HARDWARE-EVIDENCE-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-11",
+  "date": "2026-11-02",
+  "owner": "hw-architect",
+  "statusNote": "All options are PROPOSED_NOT_APPROVED. Weights are frozen from D2 §6 and were not changed after scoring. A weighted score never overrides a hard gate: PILOT remains BLOCKED, AIS transmission remains prohibited and FLEET includes no default hardware.",
+  "criteriaWeights": {
+    "technicalFeasibility": 15,
+    "componentAvailability": 10,
+    "supplierLongevity": 10,
+    "energyConsumption": 5,
+    "manufacturingCostUncertainty": 8,
+    "conformityComplexity": 12,
+    "maintainability": 8,
+    "connectivity": 6,
+    "security": 8,
+    "mechanicalIntegration": 8,
+    "fieldServiceRequirements": 10
+  },
+  "criteriaWeightSum": 100,
+  "scoringScale": "1-5 integers per criterion; weightedScore = sum(score x weight) / 100, rounded to 2 decimals.",
+  "hardGates": [
+    {
+      "gateId": "PILOT_SAFETY_GATE",
+      "statement": "PILOT remains BLOCKED and no actuator, motor-control or steering command path is designed, scored as approved or authorised.",
+      "state": "BLOCKED",
+      "appliesToFamilies": [
+        "PILOT"
+      ]
+    },
+    {
+      "gateId": "AIS_TRANSMISSION_PROHIBITION",
+      "statement": "No architecture may add AIS transmission, transponder or DSC capability.",
+      "state": "PROHIBITED",
+      "appliesToFamilies": [
+        "AIS"
+      ]
+    },
+    {
+      "gateId": "FLEET_DEFAULT_HARDWARE",
+      "statement": "No architecture may include hardware in the FLEET per-vessel subscription; hardware remains a separate purchase.",
+      "state": "PROHIBITED",
+      "appliesToFamilies": [
+        "FLEET"
+      ]
+    },
+    {
+      "gateId": "NMEA2000_CERTIFICATION",
+      "statement": "No architecture may be described as NMEA 2000 certified, compatible or approved; certification is not obtained.",
+      "state": "NOT_OBTAINED",
+      "appliesToFamilies": [
+        "HUB",
+        "AIS",
+        "SENSE",
+        "PILOT",
+        "DISPLAY",
+        "WATCH"
+      ]
+    },
+    {
+      "gateId": "G1_ARCHITECTURE_SELECTION",
+      "statement": "Architecture selection gate remains CANDIDATE_ONLY; responsible engineering approval has not been given.",
+      "state": "CANDIDATE_ONLY",
+      "appliesToFamilies": [
+        "NAV",
+        "HUB",
+        "AIS",
+        "PILOT",
+        "SENSE",
+        "WATCH",
+        "DISPLAY",
+        "WEATHER",
+        "FLEET"
+      ]
+    }
+  ],
+  "options": [
+    {
+      "architectureId": "ARCH-HUB-A",
+      "familyId": "HUB",
+      "optionClass": "A",
+      "label": "Development-board appliance (Raspberry Pi 5 class SBC with HATs)",
+      "description": "Build the HUB around a retail single-board computer with a 40-pin HAT stack for serial isolation and power protection. Lowest engineering effort to a working bench prototype; the board is a consumer product with no marine qualification.",
+      "buildingBlocks": [
+        "PROC",
+        "MCU",
+        "N183",
+        "ETH",
+        "WIFI",
+        "BLE",
+        "GNSS",
+        "PWR",
+        "MEM",
+        "MECH",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 5,
+        "supplierLongevity": 2,
+        "energyConsumption": 2,
+        "manufacturingCostUncertainty": 3,
+        "conformityComplexity": 2,
+        "maintainability": 4,
+        "connectivity": 5,
+        "security": 2,
+        "mechanicalIntegration": 2,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "consumer SBC not qualified for marine vibration, humidity, salt fog or wide temperature",
+        "no industrial lifecycle guarantee or change notification",
+        "no hardware root of trust in the base design",
+        "USB and SD storage are failure-prone in an unattended marine installation",
+        "thermal design assumes a case and airflow the enclosure must provide"
+      ],
+      "verificationNeeded": [
+        "thermal and power measurement on a representative enclosure",
+        "SD/USB storage endurance and corruption test under power loss",
+        "EMC pre-scan of the assembled appliance",
+        "supply-chain continuity check"
+      ],
+      "conformityImplications": [
+        "EMC/RED as an assembled appliance, not as a module",
+        "CRA obligations for the software platform",
+        "no reliance on the SBC vendor for end-product conformity"
+      ],
+      "costImplication": "Lowest unit material cost observed through a public retail page; NRE low. Build cost class ENGINEERING_ASSUMPTION, not a quotation.",
+      "evidenceIds": [
+        "EVD-MC11-005",
+        "EVD-MC11-006",
+        "EVD-MC11-018"
+      ],
+      "weightedScore": 3.12,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-HUB-B",
+      "familyId": "HUB",
+      "optionClass": "B",
+      "label": "Industrial system-on-module on a custom carrier (Toradex Verdin iMX8M Plus class)",
+      "description": "Use a documented industrial SOM with -40 to +85 C rating, two CAN FD controllers, two Ethernet interfaces and a published lifecycle commitment, mounted on a MAREA carrier that owns power protection, isolation, connectors and enclosure.",
+      "buildingBlocks": [
+        "PROC",
+        "MCU",
+        "CAN",
+        "N183",
+        "ETH",
+        "WIFI",
+        "BLE",
+        "SEC",
+        "PWR",
+        "MEM",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 4,
+        "supplierLongevity": 5,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 4,
+        "maintainability": 4,
+        "connectivity": 5,
+        "security": 4,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "requires a custom carrier design, a second PCB and its own DFM/DFT effort",
+        "wireless variant needs its own radio conformity and antenna design",
+        "module cost is higher than a retail SBC",
+        "vendor lock-in at the module level"
+      ],
+      "verificationNeeded": [
+        "carrier schematic and layout review",
+        "signal-integrity and EMC test on the carrier",
+        "thermal test at the rated extremes",
+        "module lifecycle and PCN monitoring process"
+      ],
+      "conformityImplications": [
+        "modular radio approval still requires end-product RED assessment",
+        "EMC on the carrier and enclosure",
+        "CRA obligations unchanged"
+      ],
+      "costImplication": "Higher BOM and NRE than option A, with a known module price class; still COST_UNVERIFIED because no distributor or supplier price was retrieved.",
+      "evidenceIds": [
+        "EVD-MC11-010",
+        "EVD-MC11-011"
+      ],
+      "weightedScore": 3.85,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-HUB-C",
+      "familyId": "HUB",
+      "optionClass": "C",
+      "label": "Custom gateway around a high-performance MCU (STM32H743 class) without a general-purpose OS",
+      "description": "Implement acquisition, normalisation and the local interface on a single Cortex-M7 MCU with two CAN FD controllers, an Ethernet MAC and a bare-metal or RTOS firmware. Lowest power and best determinism, but every application-layer capability must be written for a constrained environment.",
+      "buildingBlocks": [
+        "MCU",
+        "CAN",
+        "N183",
+        "ETH",
+        "SEC",
+        "PWR",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST",
+        "LOG"
+      ],
+      "scores": {
+        "technicalFeasibility": 3,
+        "componentAvailability": 5,
+        "supplierLongevity": 4,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 4,
+        "maintainability": 3,
+        "connectivity": 3,
+        "security": 3,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "no Linux-class environment: charts/dashboard clients and containerised update tooling are out of reach",
+        "custom firmware scope is large for a small team",
+        "TLS/HTTP stack on an MCU increases security review burden",
+        "no Wi-Fi/BLE without an added radio module and its own conformity"
+      ],
+      "verificationNeeded": [
+        "firmware architecture review",
+        "security review of the TLS/update stack",
+        "power and thermal measurement",
+        "long-term firmware maintenance plan"
+      ],
+      "conformityImplications": [
+        "MCU-based design avoids the module-radio question unless a radio is added",
+        "EMC and CRA still apply"
+      ],
+      "costImplication": "Lowest steady-state BOM potential and lowest energy, offset by firmware NRE; COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-012"
+      ],
+      "weightedScore": 3.62,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-HUB-D",
+      "familyId": "HUB",
+      "optionClass": "D",
+      "label": "Hybrid: low-power MCU does deterministic acquisition, an application processor does services",
+      "description": "Split the design: an MCU owns time-critical capture, isolation supervision, watchdog and safe-state handling; an application processor owns normalisation, dashboard, storage and updates. This is the candidate that best matches the HUB requirements without claiming a frozen design.",
+      "buildingBlocks": [
+        "PROC",
+        "MCU",
+        "CAN",
+        "N183",
+        "ETH",
+        "WIFI",
+        "BLE",
+        "GNSS",
+        "SEC",
+        "PWR",
+        "MEM",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST",
+        "LOG"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 4,
+        "supplierLongevity": 4,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 4,
+        "maintainability": 4,
+        "connectivity": 5,
+        "security": 4,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "two processors increase BOM, firmware interfaces and boot coordination complexity",
+        "inter-processor link and its failure behaviour must be designed and tested",
+        "still needs a carrier or a fully custom board",
+        "more failure modes to diagnose in the field"
+      ],
+      "verificationNeeded": [
+        "inter-processor protocol and watchdog test",
+        "boot-order and brownout sequencing test",
+        "independent safe-state verification",
+        "thermal and EMC test of the combined design"
+      ],
+      "conformityImplications": [
+        "EMC on a mixed-signal board with switching supplies and radios",
+        "CRA for a two-processor software estate"
+      ],
+      "costImplication": "Highest component count among A-D; expected to cost more than A and less than a fully custom C design at low volume; COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-012",
+        "EVD-MC11-010",
+        "EVD-MC11-007"
+      ],
+      "weightedScore": 3.85,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-HUB-E",
+      "familyId": "HUB",
+      "optionClass": "E",
+      "label": "Software/service-first: documented integration of third-party certified gateways",
+      "description": "Do not build a HUB appliance first. Publish a documented local data contract and support a small set of third-party certified NMEA 2000/0183 gateways and Signal K servers as the acquisition layer, with MAREA software providing the vessel model, diagnostics and support experience. Hardware dependency becomes an integration list, not a board.",
+      "buildingBlocks": [
+        "ETH",
+        "WIFI",
+        "N183",
+        "LOG",
+        "SEC",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 5,
+        "componentAvailability": 5,
+        "supplierLongevity": 3,
+        "energyConsumption": 4,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 5,
+        "maintainability": 5,
+        "connectivity": 4,
+        "security": 3,
+        "mechanicalIntegration": 5,
+        "fieldServiceRequirements": 5
+      },
+      "limitations": [
+        "no proprietary HUB margin or differentiation on the physical appliance",
+        "third-party gateway behaviour, firmware and lifecycle are outside MAREA control",
+        "a bidirectional gateway (for example a USB NMEA 2000 converter that can write routes) must be constrained to read-only",
+        "support burden moves to integration and compatibility evidence"
+      ],
+      "verificationNeeded": [
+        "per-gateway compatibility test with recorded firmware",
+        "read-only enforcement proof",
+        "update and fault behaviour of the third-party device",
+        "support-scope definition"
+      ],
+      "conformityImplications": [
+        "MAREA does not claim conformity for third-party equipment; the combined installation is not a single CE-marked product",
+        "third-party device certification does not certify MAREA software"
+      ],
+      "costImplication": "Lowest NRE and no tooling; recurring cost is integration and support labour. Cannot be costed to a BOM in MC-11.",
+      "evidenceIds": [
+        "EVD-MC11-009"
+      ],
+      "weightedScore": 4.53,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-AIS-A",
+      "familyId": "AIS",
+      "optionClass": "A",
+      "label": "Development-board receiver (RTL-SDR-class front end hosted on an SBC)",
+      "description": "Host a software-defined-radio receiver on a single-board computer running an open-source AIS decoder. Fastest route to a bench demonstration; unsuitable as a shippable receive-only product without a complete redesign of the RF front end and its enclosure.",
+      "buildingBlocks": [
+        "RF",
+        "PROC",
+        "N183",
+        "PWR",
+        "MECH",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 3,
+        "componentAvailability": 5,
+        "supplierLongevity": 2,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 2,
+        "maintainability": 3,
+        "connectivity": 4,
+        "security": 2,
+        "mechanicalIntegration": 1,
+        "fieldServiceRequirements": 2
+      },
+      "limitations": [
+        "SDR dongles are not marine-qualified and have unknown RF performance and spurious response",
+        "no antenna protection, no filtering and no lightning/surge path",
+        "decoder licence obligations (GPL-3.0) on distribution",
+        "consumer SBC lifecycle under the marine environment",
+        "no dual-channel guarantee"
+      ],
+      "verificationNeeded": [
+        "RF measurement including sensitivity and spurious response",
+        "lightning/surge and antenna-fault test",
+        "GPL-3.0 distribution decision",
+        "environmental qualification"
+      ],
+      "conformityImplications": [
+        "RED applies to a receive-only radio; an SDR-based design still needs the full RED route",
+        "no certification inherited from a dongle or an SBC"
+      ],
+      "costImplication": "Very low prototype cost and no tooling; not a production cost model.",
+      "evidenceIds": [
+        "EVD-MC11-005",
+        "EVD-MC11-007"
+      ],
+      "weightedScore": 2.86,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-AIS-B",
+      "familyId": "AIS",
+      "optionClass": "B",
+      "label": "SOM-based receiver appliance with a dedicated receiver front end",
+      "description": "Combine a dedicated receive-only AIS receiver front end with an industrial SOM-class host that decodes, maintains target state and publishes local output. Splits RF design from application software; requires a carrier board, an RF layout and its own conformity.",
+      "buildingBlocks": [
+        "RF",
+        "PROC",
+        "MCU",
+        "N183",
+        "PWR",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 3,
+        "componentAvailability": 3,
+        "supplierLongevity": 4,
+        "energyConsumption": 4,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 3,
+        "maintainability": 3,
+        "connectivity": 4,
+        "security": 3,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "requires an RF-capable design team or a certified receiver module partner",
+        "two-board architecture costs more than a single custom module",
+        "antenna and splitter behaviour dominate reception quality and are outside the appliance",
+        "no dual-channel confirmation yet"
+      ],
+      "verificationNeeded": [
+        "RF bench qualification",
+        "carrier EMC and enclosure test",
+        "long-term receiver supply and lifecycle review",
+        "installed-antenna comparison against a reference receiver"
+      ],
+      "conformityImplications": [
+        "RED for the receiver; EMC; GPSR/RoHS/WEEE; CRA if network-connectable",
+        "MED scope question must be answered for the intended vessel use"
+      ],
+      "costImplication": "Moderate BOM and NRE; COST_UNVERIFIED and no supplier quote exists.",
+      "evidenceIds": [
+        "EVD-MC11-010",
+        "EVD-MC11-015"
+      ],
+      "weightedScore": 3.21,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-AIS-C",
+      "familyId": "AIS",
+      "optionClass": "C",
+      "label": "Custom single-board receiver module (dedicated AIS receiver IC or discrete RF chain + MCU)",
+      "description": "Design a dedicated receive-only AIS board: RF front end, AIS receiver IC or discrete demodulator, and an MCU that decodes and publishes. Smallest and lowest-power product, but the highest engineering and conformity effort and the least tolerance for error.",
+      "buildingBlocks": [
+        "RF",
+        "MCU",
+        "N183",
+        "PWR",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 2,
+        "componentAvailability": 3,
+        "supplierLongevity": 3,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 3,
+        "maintainability": 3,
+        "connectivity": 3,
+        "security": 3,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "RF design, EMC and antenna protection are all first-principles work",
+        "receiver IC availability and lifecycle are unknown in MC-11",
+        "no redundant path: a single design error blocks the product",
+        "requires test equipment and RF expertise not currently evidenced"
+      ],
+      "verificationNeeded": [
+        "RF design review by an RF specialist",
+        "full RED test programme",
+        "design-for-manufacture and test-fixture development",
+        "receiver IC lifebuy/second-source review"
+      ],
+      "conformityImplications": [
+        "Full RED, EMC, GPSR, RoHS, WEEE, CRA",
+        "no certification can be taken from a reference design"
+      ],
+      "costImplication": "Lowest recurring BOM per unit at volume; highest fixed engineering cost and tooling. COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-015"
+      ],
+      "weightedScore": 2.95,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-AIS-D",
+      "familyId": "AIS",
+      "optionClass": "D",
+      "label": "Hybrid: certified third-party receiver module behind a MAREA supervisory MCU and interface board",
+      "description": "Integrate a commercially available receive-only AIS receiver module as the RF engine, and add a MAREA MCU board that supervises the module, maintains target state, provides diagnostics and publishes a documented local output. Keeps RF conformity with the module supplier while MAREA owns the product experience.",
+      "buildingBlocks": [
+        "RF",
+        "MCU",
+        "PROC",
+        "N183",
+        "PWR",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 4,
+        "supplierLongevity": 3,
+        "energyConsumption": 4,
+        "manufacturingCostUncertainty": 3,
+        "conformityComplexity": 3,
+        "maintainability": 4,
+        "connectivity": 4,
+        "security": 3,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "module availability, price and lifecycle are not established",
+        "the module supplier may change firmware behaviour without notice",
+        "MAREA still owns end-product RED and EMC",
+        "the module may not support dual-channel reception as required"
+      ],
+      "verificationNeeded": [
+        "module qualification and second-source study",
+        "end-product EMC and RED",
+        "supervisory firmware test",
+        "supply and PCN monitoring"
+      ],
+      "conformityImplications": [
+        "Module certification does not confer end-product conformity",
+        "RED and EMC remain MAREA obligations"
+      ],
+      "costImplication": "Moderate BOM with predictable module cost class; COST_UNVERIFIED because no supplier was contacted.",
+      "evidenceIds": [
+        "EVD-MC11-015",
+        "EVD-MC11-016"
+      ],
+      "weightedScore": 3.62,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-AIS-E",
+      "familyId": "AIS",
+      "optionClass": "E",
+      "label": "Software/service-first: integrate third-party certified receivers, defer MAREA receiver hardware",
+      "description": "Ship no MAREA AIS hardware in the near term. Define and test the receive-only integration contract for a small list of third-party AIS receivers and publish target visualisation through NAV and HUB. This removes the RF, RED and antenna engineering risk from the critical path and keeps the traffic-awareness outcome deliverable through integration.",
+      "buildingBlocks": [
+        "N183",
+        "ETH",
+        "WIFI",
+        "LOG",
+        "TEST",
+        "SEC"
+      ],
+      "scores": {
+        "technicalFeasibility": 5,
+        "componentAvailability": 5,
+        "supplierLongevity": 5,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 5,
+        "maintainability": 5,
+        "connectivity": 4,
+        "security": 4,
+        "mechanicalIntegration": 5,
+        "fieldServiceRequirements": 5
+      },
+      "limitations": [
+        "no MAREA receiver SKU and no hardware differentiation",
+        "the customer must buy and install third-party hardware",
+        "AIS data rights for retention/redistribution remain ungranted",
+        "support depends on equipment MAREA does not control"
+      ],
+      "verificationNeeded": [
+        "per-receiver compatibility test (device, firmware, output transport, direction)",
+        "installation guidance for antenna/splitter",
+        "target-age and stale-state behaviour validation"
+      ],
+      "conformityImplications": [
+        "No radio is placed on the market by MAREA in this option, so the RED burden for the receiver belongs to the third party",
+        "MAREA software still needs CRA assessment"
+      ],
+      "costImplication": "No hardware BOM; cost is integration and support labour. This is the only AIS option with no RF tooling exposure.",
+      "evidenceIds": [
+        "EVD-MC11-009",
+        "EVD-MC11-015"
+      ],
+      "weightedScore": 4.86,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-WATCH-A",
+      "familyId": "WATCH",
+      "optionClass": "A",
+      "label": "Development-board monitor with modem HAT",
+      "description": "Build the WATCH device from a retail single-board computer plus a cellular modem HAT and sensor breakouts. Fastest prototype, highest quiescent drain and weakest enclosure story.",
+      "buildingBlocks": [
+        "PROC",
+        "CELL",
+        "SEC",
+        "PWR",
+        "SENSE",
+        "MECH",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 3,
+        "componentAvailability": 4,
+        "supplierLongevity": 2,
+        "energyConsumption": 2,
+        "manufacturingCostUncertainty": 4,
+        "conformityComplexity": 2,
+        "maintainability": 3,
+        "connectivity": 5,
+        "security": 3,
+        "mechanicalIntegration": 2,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "a monitoring device that runs a full Linux stack draws far more average current than a dedicated MCU design and can drain the battery it monitors",
+        "no hardware root of trust in the base design",
+        "modem HAT antenna design and regulatory acceptance unresolved",
+        "consumer board in an unattended wet compartment"
+      ],
+      "verificationNeeded": [
+        "quiescent and average current measurement over a full unattended cycle",
+        "modem RF and operator acceptance",
+        "battery-backup behaviour",
+        "environmental qualification"
+      ],
+      "conformityImplications": [
+        "RED for the cellular radio; EMC; GPSR; CRA",
+        "no certified alarm or distress claim"
+      ],
+      "costImplication": "Low NRE, moderate BOM; recurring data cost is external and unpriced.",
+      "evidenceIds": [
+        "EVD-MC11-005",
+        "EVD-MC11-012"
+      ],
+      "weightedScore": 2.95,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-WATCH-B",
+      "familyId": "WATCH",
+      "optionClass": "B",
+      "label": "Industrial SOM monitor with a custom carrier",
+      "description": "Use an industrial SOM with a real-time core for sensing supervision and an application core for connectivity and updates. Balances updateability with determinism at the cost of a custom carrier and higher BOM.",
+      "buildingBlocks": [
+        "PROC",
+        "MCU",
+        "CELL",
+        "GNSS",
+        "SEC",
+        "PWR",
+        "SENSE",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 3,
+        "supplierLongevity": 4,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 3,
+        "maintainability": 4,
+        "connectivity": 5,
+        "security": 4,
+        "mechanicalIntegration": 3,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "still a Linux-class average current unless the application core is duty-cycled or a low-power mode is engineered",
+        "carrier NRE and two-board complexity",
+        "modem integration and antenna keep-out",
+        "no supplier quote for a modem or module"
+      ],
+      "verificationNeeded": [
+        "power-state design and measurement",
+        "carrier EMC and thermal test",
+        "modem operator acceptance",
+        "update and recovery test"
+      ],
+      "conformityImplications": [
+        "RED, EMC, CRA, GPSR",
+        "data protection for telemetry"
+      ],
+      "costImplication": "Higher BOM and NRE than option A, lower than a fully custom board; COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-010",
+        "EVD-MC11-012"
+      ],
+      "weightedScore": 3.45,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-WATCH-C",
+      "familyId": "WATCH",
+      "optionClass": "C",
+      "label": "Custom low-power MCU monitor with dedicated modem",
+      "description": "Design around a low-power MCU with a dedicated cellular module, deep-sleep duty cycling, local buffering and a hardware root of trust. Best fit for the battery-drain constraint; requires the most firmware and modem-integration work.",
+      "buildingBlocks": [
+        "MCU",
+        "CELL",
+        "GNSS",
+        "SEC",
+        "PWR",
+        "SENSE",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 4,
+        "supplierLongevity": 4,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 4,
+        "maintainability": 3,
+        "connectivity": 4,
+        "security": 4,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "large custom firmware scope including TLS, buffering and OTA inside constrained resources",
+        "modem certification/operator acceptance is a project of its own",
+        "no Linux to reuse existing services",
+        "single design team dependency"
+      ],
+      "verificationNeeded": [
+        "power budget and deep-sleep measurement",
+        "modem integration and operator acceptance",
+        "OTA with rollback on a constrained target",
+        "security review of key storage and update"
+      ],
+      "conformityImplications": [
+        "RED for the radio, EMC, CRA, GPSR",
+        "if the MCU design omits a secure element, CRA evidence weakens"
+      ],
+      "costImplication": "Lowest steady-state BOM and lowest quiescent drain in principle; highest firmware NRE. COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-012",
+        "EVD-MC11-014"
+      ],
+      "weightedScore": 3.81,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-WATCH-D",
+      "familyId": "WATCH",
+      "optionClass": "D",
+      "label": "Hybrid: low-power MCU always-on supervision + application processor for connectivity and updates",
+      "description": "Keep a low-power MCU permanently responsible for sensing, buffering and local alarm, and wake or duty-cycle a higher-level processor for connectivity, rule sync and updates. This directly addresses the requirement that subscription or connectivity failure never disables local functions.",
+      "buildingBlocks": [
+        "MCU",
+        "PROC",
+        "CELL",
+        "GNSS",
+        "SEC",
+        "PWR",
+        "SENSE",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 4,
+        "supplierLongevity": 4,
+        "energyConsumption": 4,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 4,
+        "maintainability": 4,
+        "connectivity": 5,
+        "security": 4,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "two processors and a power-state machine add failure modes",
+        "firmware interfaces and update orchestration are more complex",
+        "higher component count than option C",
+        "quiescent drain still requires measurement, not assumption"
+      ],
+      "verificationNeeded": [
+        "power-state machine test including brownout",
+        "subscription-expiry isolation test proving local functions survive",
+        "inter-processor watchdog test",
+        "modem and OTA test"
+      ],
+      "conformityImplications": [
+        "RED, EMC, CRA, GPSR",
+        "privacy impact assessment for position telemetry"
+      ],
+      "costImplication": "Moderate BOM, high engineering effort; COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-012",
+        "EVD-MC11-014"
+      ],
+      "weightedScore": 3.9,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-WATCH-E",
+      "familyId": "WATCH",
+      "optionClass": "E",
+      "label": "Software/service-first: onboard monitoring service around certified third-party hardware",
+      "description": "Offer the WATCH monitoring service and software on top of a small set of third-party certified trackers/monitors that expose a documented interface, instead of building the monitoring device. Fastest to a service, but cedes the device relationship and the measured power behaviour.",
+      "buildingBlocks": [
+        "CELL",
+        "LOG",
+        "SEC",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 4,
+        "supplierLongevity": 2,
+        "energyConsumption": 4,
+        "manufacturingCostUncertainty": 4,
+        "conformityComplexity": 5,
+        "maintainability": 5,
+        "connectivity": 5,
+        "security": 3,
+        "mechanicalIntegration": 5,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "device lifecycle, firmware and data terms belong to the third party",
+        "the power-drain analysis is not MAREA-controlled",
+        "subscription stacking and double billing risk",
+        "limited ability to guarantee local buffering semantics"
+      ],
+      "verificationNeeded": [
+        "per-device interface and data-rights test",
+        "provider outage and delivery measurement",
+        "support-scope and liability definition"
+      ],
+      "conformityImplications": [
+        "MAREA places no radio on the market in this option",
+        "service and app still attract CRA/data-protection duties"
+      ],
+      "costImplication": "No device BOM; revenue is service-only and unit economics depend on third-party pricing, UNKNOWN.",
+      "evidenceIds": [
+        "EVD-MC11-014"
+      ],
+      "weightedScore": 4.06,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-SENSE-A",
+      "familyId": "SENSE",
+      "optionClass": "A",
+      "label": "Discrete development-board modules (one dev board per measurement type)",
+      "description": "Prototype each measurement with an off-the-shelf development board. Fast and cheap for bench validation, but each module becomes a different consumer board with a different lifecycle, enclosure problem and quiescent drain.",
+      "buildingBlocks": [
+        "MCU",
+        "SENSE",
+        "PWR",
+        "MECH",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 5,
+        "supplierLongevity": 2,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 3,
+        "maintainability": 3,
+        "connectivity": 3,
+        "security": 2,
+        "mechanicalIntegration": 2,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "five different boards means five enclosures, five firmware targets and five lifecycle problems",
+        "no calibration record identity built in",
+        "consumer boards in wet/engine compartments",
+        "no common connector or harness story"
+      ],
+      "verificationNeeded": [
+        "per-board measurement validation",
+        "calibration procedure and record",
+        "environmental qualification per compartment",
+        "immobilisation and connector review"
+      ],
+      "conformityImplications": [
+        "EMC; RED only if a radio is added (intended: none)",
+        "GPSR, RoHS, WEEE"
+      ],
+      "costImplication": "Low NRE, high per-unit overhead; not a credible volume cost model.",
+      "evidenceIds": [
+        "EVD-MC11-012"
+      ],
+      "weightedScore": 3.25,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-SENSE-B",
+      "familyId": "SENSE",
+      "optionClass": "B",
+      "label": "Shared SOM carrier with measurement front-end variants",
+      "description": "Use one industrial SOM carrier model and vary the front-end board per module. Shares firmware, enclosure platform and connectors; costs a custom carrier and does not reduce average power enough for a permanently-powered sensor.",
+      "buildingBlocks": [
+        "PROC",
+        "MCU",
+        "SENSE",
+        "PWR",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 3,
+        "supplierLongevity": 4,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 4,
+        "maintainability": 4,
+        "connectivity": 4,
+        "security": 3,
+        "mechanicalIntegration": 3,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "SOM cost and power are high for a simple sensor module",
+        "front-end variants still require separate qualification",
+        "carrier NRE",
+        "overkill for a float switch or tank sender"
+      ],
+      "verificationNeeded": [
+        "power measurement",
+        "front-end EMC per variant",
+        "carrier thermal and ingress design"
+      ],
+      "conformityImplications": [
+        "EMC, GPSR, RoHS, WEEE, CRA if network-connected",
+        "no certification from the SOM"
+      ],
+      "costImplication": "High BOM for the sensing function; COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-010",
+        "EVD-MC11-012"
+      ],
+      "weightedScore": 3.43,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-SENSE-C",
+      "familyId": "SENSE",
+      "optionClass": "C",
+      "label": "Custom MCU module per measurement type on a shared platform",
+      "description": "Design a common MCU/PCB/enclosure platform with a per-type analogue or digital front end. Lowest cost and power per module, common firmware core, but requires full design, tooling and calibration-fixture investment.",
+      "buildingBlocks": [
+        "MCU",
+        "SENSE",
+        "PWR",
+        "N183",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST",
+        "PKG"
+      ],
+      "scores": {
+        "technicalFeasibility": 5,
+        "componentAvailability": 5,
+        "supplierLongevity": 4,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 3,
+        "conformityComplexity": 4,
+        "maintainability": 4,
+        "connectivity": 3,
+        "security": 3,
+        "mechanicalIntegration": 5,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "calibration fixture and reference equipment must be built and maintained",
+        "measurement accuracy must be proven, not assumed",
+        "five product variants multiply qualification work",
+        "firmware update infrastructure must reach every module"
+      ],
+      "verificationNeeded": [
+        "design and DFM review",
+        "calibration-fixture development and traceability",
+        "environmental and EMC qualification",
+        "accuracy and drift measurement"
+      ],
+      "conformityImplications": [
+        "EMC, GPSR, RoHS, WEEE; CRA only if network-connected",
+        "no certified alarm claim"
+      ],
+      "costImplication": "Best volume cost potential; highest fixed engineering and tooling cost. COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-012"
+      ],
+      "weightedScore": 4.16,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-SENSE-D",
+      "familyId": "SENSE",
+      "optionClass": "D",
+      "label": "Hybrid: shared multi-input hub module plus per-type sensing heads",
+      "description": "One shared acquisition module accepts several measurement heads (wind adapter, power, bilge, tanks, environment) and publishes a single normalised stream. Reduces per-module electronics and enclosure count while keeping the sensing element where the physical quantity is.",
+      "buildingBlocks": [
+        "MCU",
+        "SENSE",
+        "N183",
+        "PWR",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST",
+        "LOG"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 4,
+        "supplierLongevity": 4,
+        "energyConsumption": 4,
+        "manufacturingCostUncertainty": 3,
+        "conformityComplexity": 4,
+        "maintainability": 4,
+        "connectivity": 4,
+        "security": 3,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "cabling topology and cable length become the limiting factor",
+        "one shared module is a single point of failure for several measurements",
+        "a sensing-head connector standard must be created",
+        "installation complexity rises"
+      ],
+      "verificationNeeded": [
+        "cable-length and noise test",
+        "shared-module failure-mode analysis",
+        "connector ingress and corrosion test",
+        "per-head calibration"
+      ],
+      "conformityImplications": [
+        "EMC, GPSR, RoHS, WEEE, CRA if network-connected"
+      ],
+      "costImplication": "Fewer enclosures and boards per installation; COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-012"
+      ],
+      "weightedScore": 3.74,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-SENSE-E",
+      "familyId": "SENSE",
+      "optionClass": "E",
+      "label": "Third-party instrument reuse: adapter/software-first sensing",
+      "description": "Do not build original sensing elements first. Publish adapters and a documented measurement contract for existing third-party instruments and senders, and let MAREA software provide provenance, calibration state and freshness. Removes the sensing-element qualification from the critical path.",
+      "buildingBlocks": [
+        "N183",
+        "SENSE",
+        "ETH",
+        "WIFI",
+        "LOG",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 5,
+        "componentAvailability": 5,
+        "supplierLongevity": 5,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 4,
+        "maintainability": 5,
+        "connectivity": 3,
+        "security": 3,
+        "mechanicalIntegration": 5,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "accuracy and drift belong to the third-party device and cannot be claimed by MAREA",
+        "a module with no direct consumer still produces no user-facing data",
+        "adapter compatibility is per device and per firmware",
+        "calibration still needs a reference and a record"
+      ],
+      "verificationNeeded": [
+        "per-device adapter test",
+        "calibration record workflow",
+        "field-replacement procedure"
+      ],
+      "conformityImplications": [
+        "MAREA places no original sensor on the market in this option; EMC applies to any adapter hardware",
+        "no NMEA conformance claim"
+      ],
+      "costImplication": "No sensing-element BOM; adapter and integration labour only. Cannot be costed in MC-11.",
+      "evidenceIds": [
+        "EVD-MC11-009"
+      ],
+      "weightedScore": 4.5,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-DISPLAY-A",
+      "familyId": "DISPLAY",
+      "optionClass": "A",
+      "label": "Tablet-based helm display (customer or supplied tablet in a marine mount)",
+      "description": "Deliver the DISPLAY experience as a browser application on a tablet in a rated mount and power item. Fastest and cheapest route to a helm screen; the product then depends on a consumer device MAREA does not control.",
+      "buildingBlocks": [
+        "DISP",
+        "PROC",
+        "WIFI",
+        "PWR",
+        "MECH",
+        "PKG"
+      ],
+      "scores": {
+        "technicalFeasibility": 5,
+        "componentAvailability": 5,
+        "supplierLongevity": 3,
+        "energyConsumption": 4,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 3,
+        "maintainability": 5,
+        "connectivity": 4,
+        "security": 3,
+        "mechanicalIntegration": 3,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "no control over panel brightness, thermal throttling or sunlight performance",
+        "consumer device lifecycle and OS updates",
+        "wet/gloved usability unverified",
+        "no dedicated runtime or signed update path",
+        "not a dedicated marine instrument"
+      ],
+      "verificationNeeded": [
+        "sunlight and night usability measurement",
+        "thermal behaviour in a closed helm",
+        "wet/glove test",
+        "device matrix and OS-version policy"
+      ],
+      "conformityImplications": [
+        "the tablet is a third-party CE product; MAREA software still needs CRA assessment",
+        "no IP or brightness claim may be made"
+      ],
+      "costImplication": "Avoids panel and enclosure tooling; depends on customer device cost, no BOM.",
+      "evidenceIds": [
+        "EVD-MC11-005"
+      ],
+      "weightedScore": 4.03,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-DISPLAY-B",
+      "familyId": "DISPLAY",
+      "optionClass": "B",
+      "label": "Industrial HMI module + SOM carrier",
+      "description": "Use an industrial display module with a documented brightness/lifetime class and an industrial SOM carrier for compute. Best balance of sunlight capability evidence, lifecycle and thermal design at the cost of a custom carrier and enclosure.",
+      "buildingBlocks": [
+        "DISP",
+        "PROC",
+        "MEM",
+        "PWR",
+        "ETH",
+        "WIFI",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 4,
+        "supplierLongevity": 4,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 4,
+        "maintainability": 4,
+        "connectivity": 4,
+        "security": 4,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "panel and SOM suppliers must both be qualified and monitored",
+        "carrier and enclosure design effort is substantial",
+        "optical bonding and anti-reflection still need process development",
+        "no supplier quote or sample exists"
+      ],
+      "verificationNeeded": [
+        "photometric sunlight/night test on the actual panel",
+        "thermal and ingress qualification",
+        "SOM carrier EMC",
+        "lifecycle and PCN monitoring"
+      ],
+      "conformityImplications": [
+        "EMC; RED only if a radio is included; GPSR, RoHS, WEEE, CRA",
+        "LVD non-applicability position to confirm"
+      ],
+      "costImplication": "Moderate-high BOM and NRE; COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-010",
+        "EVD-MC11-005"
+      ],
+      "weightedScore": 3.69,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-DISPLAY-C",
+      "familyId": "DISPLAY",
+      "optionClass": "C",
+      "label": "Custom screen + custom carrier + custom enclosure",
+      "description": "Design the panel stack, carrier, enclosure and mounting from first principles for the marine helm. Maximum control of sunlight readability, sealing and interaction, and the highest engineering, tooling and conformity effort.",
+      "buildingBlocks": [
+        "DISP",
+        "PROC",
+        "MEM",
+        "PWR",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST",
+        "PKG"
+      ],
+      "scores": {
+        "technicalFeasibility": 3,
+        "componentAvailability": 3,
+        "supplierLongevity": 3,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 1,
+        "conformityComplexity": 3,
+        "maintainability": 3,
+        "connectivity": 4,
+        "security": 4,
+        "mechanicalIntegration": 3,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "optical bonding, backlight and thermal design are specialist work",
+        "tooling cost for enclosure and bezel",
+        "panel minimum order quantities and lifecycle risk",
+        "the largest conformity surface of any family"
+      ],
+      "verificationNeeded": [
+        "panel qualification and optical bonding process",
+        "full environmental qualification",
+        "EMC and RED if radio",
+        "tooling and DFM review"
+      ],
+      "conformityImplications": [
+        "EMC, RED if radio, GPSR, RoHS, WEEE, CRA",
+        "no brightness or IP claim before measurement"
+      ],
+      "costImplication": "Highest fixed cost and tooling; not credible at low volume without a partner.",
+      "evidenceIds": [
+        "EVD-MC11-005"
+      ],
+      "weightedScore": 2.98,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-DISPLAY-D",
+      "familyId": "DISPLAY",
+      "optionClass": "D",
+      "label": "Hybrid: industrial panel + MAREA carrier + SOM compute",
+      "description": "Buy the panel as a qualified industrial component, design the carrier/enclosure around it and use a documented SOM for compute. Keeps the display stack evidence with the panel supplier while MAREA controls interaction, sealing and mounting.",
+      "buildingBlocks": [
+        "DISP",
+        "PROC",
+        "MEM",
+        "PWR",
+        "ETH",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 4,
+        "supplierLongevity": 4,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 4,
+        "maintainability": 4,
+        "connectivity": 4,
+        "security": 4,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "panel supplier dependency and MOQ",
+        "carrier and enclosure NRE",
+        "bonding and front-surface treatment still need a process partner",
+        "no sample or quote exists"
+      ],
+      "verificationNeeded": [
+        "panel datasheet and sample verification",
+        "carrier/enclosure thermal and ingress test",
+        "EMC",
+        "optical measurement"
+      ],
+      "conformityImplications": [
+        "EMC, RED if radio, GPSR, RoHS, WEEE, CRA"
+      ],
+      "costImplication": "Balanced BOM/NRE; COST_UNVERIFIED.",
+      "evidenceIds": [
+        "EVD-MC11-010"
+      ],
+      "weightedScore": 3.69,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-DISPLAY-E",
+      "familyId": "DISPLAY",
+      "optionClass": "E",
+      "label": "Third-party display integration (MAREA runtime on a certified MFD or tablet platform)",
+      "description": "Deliver the DISPLAY outcome as a MAREA runtime on a third-party certified marine display or a managed tablet platform, with MAREA owning the interaction, alarm and data presentation. Defers panel, enclosure and photometric work.",
+      "buildingBlocks": [
+        "DISP",
+        "PROC",
+        "ETH",
+        "WIFI",
+        "LOG",
+        "SEC",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 5,
+        "componentAvailability": 5,
+        "supplierLongevity": 5,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 4,
+        "maintainability": 5,
+        "connectivity": 3,
+        "security": 3,
+        "mechanicalIntegration": 5,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "the hardware relationship and lifecycle belong to the third party",
+        "sunlight and thermal performance are inherited and cannot be claimed independently",
+        "platform lock-in and app-store/partner terms",
+        "the product is not a dedicated MAREA display"
+      ],
+      "verificationNeeded": [
+        "platform compatibility test",
+        "alarm and interaction validation on the actual device",
+        "partner terms review"
+      ],
+      "conformityImplications": [
+        "third-party device conformity is the partner responsibility; MAREA software still needs CRA assessment",
+        "no MAREA certification claim"
+      ],
+      "costImplication": "No display BOM; software and integration only. Cannot be costed in MC-11.",
+      "evidenceIds": [
+        "EVD-MC11-005"
+      ],
+      "weightedScore": 4.5,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-PILOT-A",
+      "familyId": "PILOT",
+      "optionClass": "A",
+      "label": "Development-board prototype (SBC + MCU + H-bridge) documented only",
+      "description": "The architecture visible in the audited legacy prototype: a single-board computer for guidance, an MCU for PWM/direction and heartbeat supervision, and a brushed-DC H-bridge driving a legacy drive. Documentation-only; no actuator is designed or authorised in MC-11.",
+      "buildingBlocks": [
+        "PROC",
+        "MCU",
+        "PWR",
+        "MECH",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 2,
+        "componentAvailability": 4,
+        "supplierLongevity": 2,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 4,
+        "conformityComplexity": 1,
+        "maintainability": 2,
+        "connectivity": 4,
+        "security": 1,
+        "mechanicalIntegration": 2,
+        "fieldServiceRequirements": 2
+      },
+      "limitations": [
+        "the legacy control API is unauthenticated, bound to 0.0.0.0, with no TLS",
+        "no hardware watchdog in the MCU firmware",
+        "no rudder feedback and no manual-takeover detection",
+        "drive provenance and rating unknown",
+        "safety-critical by definition and blocked"
+      ],
+      "verificationNeeded": [
+        "none permitted in MC-11; all gates G1-G9 unmet"
+      ],
+      "conformityImplications": [
+        "motor-drive EMC, LVD/EMC/GPSR, CRA if connectable, product liability and insurance"
+      ],
+      "costImplication": "Prototype-cost only; commercially meaningless and not to be costed.",
+      "evidenceIds": [
+        "EVD-MC11-017"
+      ],
+      "weightedScore": 2.33,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-PILOT-B",
+      "familyId": "PILOT",
+      "optionClass": "B",
+      "label": "Industrial SOM control computer + independent motor-control MCU",
+      "description": "Move the guidance computer to an industrial SOM and keep an independent motor-control MCU. Improves lifecycle and thermal margin but does not by itself create the independent safety evidence the gate requires.",
+      "buildingBlocks": [
+        "PROC",
+        "MCU",
+        "PWR",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 3,
+        "componentAvailability": 3,
+        "supplierLongevity": 4,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 2,
+        "maintainability": 3,
+        "connectivity": 4,
+        "security": 3,
+        "mechanicalIntegration": 3,
+        "fieldServiceRequirements": 2
+      },
+      "limitations": [
+        "no fail-safe evidence yet: power cut, watchdog, E-stop channel, overcurrent redundancy",
+        "no rudder feedback",
+        "no sea-trial programme",
+        "PILOT_SAFETY_GATE remains BLOCKED"
+      ],
+      "verificationNeeded": [
+        "none permitted in MC-11"
+      ],
+      "conformityImplications": [
+        "motor-drive EMC; LVD/EMC/GPSR; independent marine-engineering review"
+      ],
+      "costImplication": "Higher prototype cost; no commercial cost basis.",
+      "evidenceIds": [
+        "EVD-MC11-010"
+      ],
+      "weightedScore": 2.86,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-PILOT-C",
+      "familyId": "PILOT",
+      "optionClass": "C",
+      "label": "Custom safety-oriented control board with two-channel supervision",
+      "description": "Design one custom board with redundant supervision: a safety MCU with its own watchdog and a second independent channel for E-stop and overcurrent, plus a power contactor with verified DC rating. This is the architecture the safety case would need, but it is not designed in MC-11.",
+      "buildingBlocks": [
+        "MCU",
+        "PWR",
+        "MECH",
+        "PCB",
+        "PCBA",
+        "TEST",
+        "LOG"
+      ],
+      "scores": {
+        "technicalFeasibility": 2,
+        "componentAvailability": 3,
+        "supplierLongevity": 4,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 2,
+        "conformityComplexity": 2,
+        "maintainability": 2,
+        "connectivity": 3,
+        "security": 4,
+        "mechanicalIntegration": 3,
+        "fieldServiceRequirements": 2
+      },
+      "limitations": [
+        "requires a functional-safety process, not only hardware",
+        "no qualified safety engineer engaged",
+        "two-channel supervision evidence requires bench and HIL tests",
+        "blocked"
+      ],
+      "verificationNeeded": [
+        "none permitted in MC-11"
+      ],
+      "conformityImplications": [
+        "EMC for a switched motor drive; LVD/EMC/GPSR; insurance"
+      ],
+      "costImplication": "High NRE; no commercial cost basis.",
+      "evidenceIds": [
+        "EVD-MC11-012"
+      ],
+      "weightedScore": 2.65,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-PILOT-D",
+      "familyId": "PILOT",
+      "optionClass": "D",
+      "label": "Hybrid: MAREA supervision layer + third-party certified drive and motor-control electronics",
+      "description": "MAREA provides the supervision, commissioning, records and human-interface layer; the drive and its motor-control electronics come from a qualified marine supplier with its own certification and support. This reduces MAREA s safety surface to supervision and integration, but still requires a safety case, independent review and insurance.",
+      "buildingBlocks": [
+        "MCU",
+        "PWR",
+        "MECH",
+        "TEST",
+        "LOG"
+      ],
+      "scores": {
+        "technicalFeasibility": 3,
+        "componentAvailability": 3,
+        "supplierLongevity": 3,
+        "energyConsumption": 3,
+        "manufacturingCostUncertainty": 3,
+        "conformityComplexity": 2,
+        "maintainability": 3,
+        "connectivity": 4,
+        "security": 3,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 3
+      },
+      "limitations": [
+        "the integration boundary itself is safety-relevant",
+        "the third-party drive still needs a vessel-specific survey",
+        "no supplier has been contacted",
+        "PILOT_SAFETY_GATE remains BLOCKED"
+      ],
+      "verificationNeeded": [
+        "none permitted in MC-11"
+      ],
+      "conformityImplications": [
+        "EMC of the combined installation; product liability allocation; independent review"
+      ],
+      "costImplication": "Driven by third-party drive price, which is UNKNOWN and not retrieved.",
+      "evidenceIds": [
+        "EVD-MC11-010"
+      ],
+      "weightedScore": 3.02,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-PILOT-E",
+      "familyId": "PILOT",
+      "optionClass": "E",
+      "label": "Software/service-first: supervisory software, documentation and service only, no MAREA actuator",
+      "description": "Deliver nothing that can move a helm. Provide documentation, survey methodology, commissioning records, read-only status presentation and service tooling, or integrate a qualified third-party certified autopilot without taking control authority. This is the only PILOT option compatible with the current gate.",
+      "buildingBlocks": [
+        "LOG",
+        "SEC",
+        "TEST",
+        "ETH",
+        "WIFI"
+      ],
+      "scores": {
+        "technicalFeasibility": 4,
+        "componentAvailability": 5,
+        "supplierLongevity": 5,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 4,
+        "maintainability": 5,
+        "connectivity": 4,
+        "security": 4,
+        "mechanicalIntegration": 4,
+        "fieldServiceRequirements": 4
+      },
+      "limitations": [
+        "no PILOT hardware product and no steering revenue",
+        "a third-party autopilot integration is still safety-adjacent and requires a written boundary",
+        "the safety case and qualified review remain prerequisites for any future step"
+      ],
+      "verificationNeeded": [
+        "safety-case outline completion",
+        "qualified engineering engagement (not authorised)",
+        "documented boundary that no MAREA software commands an actuator"
+      ],
+      "conformityImplications": [
+        "no radio placed on the market by this option; software CRA duties remain"
+      ],
+      "costImplication": "No hardware BOM; service and documentation cost only. DEFER is a decision, not a costed product.",
+      "evidenceIds": [
+        "EVD-MC11-017"
+      ],
+      "weightedScore": 4.41,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-NAV-E",
+      "familyId": "NAV",
+      "optionClass": "E",
+      "label": "Software-first navigation application with licensed data entitlements",
+      "description": "Build NAV as a software product on customer devices, consuming licensed data and optional vessel data sources through documented interfaces. This is the canonical NAV definition: no MAREA hardware is supplied and every hardware dependency is optional and separately purchased.",
+      "buildingBlocks": [
+        "GNSS",
+        "LOG",
+        "SEC",
+        "ETH",
+        "WIFI",
+        "MEM",
+        "PKG"
+      ],
+      "scores": {
+        "technicalFeasibility": 5,
+        "componentAvailability": 5,
+        "supplierLongevity": 5,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 4,
+        "maintainability": 5,
+        "connectivity": 4,
+        "security": 4,
+        "mechanicalIntegration": 5,
+        "fieldServiceRequirements": 5
+      },
+      "limitations": [
+        "chart and weather rights are not granted",
+        "no tested device integration exists",
+        "app-store and device OS lifecycle dependencies"
+      ],
+      "verificationNeeded": [
+        "chart/weather contract, then licence-conformance test",
+        "device and adapter integration matrix",
+        "offline and degraded-state tests"
+      ],
+      "conformityImplications": [
+        "CRA for the connectable application; consumer software duties; no navigation certification"
+      ],
+      "costImplication": "No hardware BOM; subscription economics depend on data cost, UNKNOWN.",
+      "evidenceIds": [
+        "EVD-MC11-015"
+      ],
+      "weightedScore": 4.74,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-WEATHER-E",
+      "familyId": "WEATHER",
+      "optionClass": "E",
+      "label": "Licensed-data service with provenance-first presentation",
+      "description": "Deliver WEATHER as a subscription service over licensed provider data with explicit provenance and freshness, and no hardware of its own. Every capability depends on provider rights, not on an engineering choice.",
+      "buildingBlocks": [
+        "LOG",
+        "SEC",
+        "PKG",
+        "TEST"
+      ],
+      "scores": {
+        "technicalFeasibility": 5,
+        "componentAvailability": 5,
+        "supplierLongevity": 5,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 4,
+        "maintainability": 5,
+        "connectivity": 4,
+        "security": 4,
+        "mechanicalIntegration": 5,
+        "fieldServiceRequirements": 5
+      },
+      "limitations": [
+        "provider rights not granted",
+        "no forecast evaluation exists",
+        "accuracy and coverage remain unclaimable"
+      ],
+      "verificationNeeded": [
+        "provider contracts",
+        "declared evaluation methodology",
+        "freshness and entitlement tests"
+      ],
+      "conformityImplications": [
+        "CRA if in scope; data protection for location data"
+      ],
+      "costImplication": "Recurring provider and hosting cost, UNKNOWN.",
+      "evidenceIds": [
+        "EVD-MC11-015"
+      ],
+      "weightedScore": 4.74,
+      "status": "PROPOSED_NOT_APPROVED"
+    },
+    {
+      "architectureId": "ARCH-FLEET-E",
+      "familyId": "FLEET",
+      "optionClass": "E",
+      "label": "Multi-tenant SaaS platform with read-only telemetry",
+      "description": "Deliver FLEET as a B2B SaaS with organisation tenancy, role model and read-only telemetry from compatible devices. No hardware is included by default and no command path exists.",
+      "buildingBlocks": [
+        "LOG",
+        "SEC",
+        "PKG",
+        "TEST",
+        "CELL",
+        "ETH"
+      ],
+      "scores": {
+        "technicalFeasibility": 5,
+        "componentAvailability": 5,
+        "supplierLongevity": 5,
+        "energyConsumption": 5,
+        "manufacturingCostUncertainty": 5,
+        "conformityComplexity": 4,
+        "maintainability": 5,
+        "connectivity": 4,
+        "security": 4,
+        "mechanicalIntegration": 5,
+        "fieldServiceRequirements": 5
+      },
+      "limitations": [
+        "no tenancy service, billing or terms exist",
+        "read-only telemetry depends on external devices",
+        "no SLA or security certification can be claimed"
+      ],
+      "verificationNeeded": [
+        "tenant-isolation and authorisation adversarial test",
+        "read-only boundary proof",
+        "data export and deletion test"
+      ],
+      "conformityImplications": [
+        "CRA and GDPR obligations; no security certification"
+      ],
+      "costImplication": "Recurring hosting and support cost, UNKNOWN.",
+      "evidenceIds": [
+        "EVD-MC11-015"
+      ],
+      "weightedScore": 4.74,
+      "status": "PROPOSED_NOT_APPROVED"
+    }
+  ],
+  "recommendations": [
+    {
+      "familyId": "HUB",
+      "preferredArchitectureId": "ARCH-HUB-D",
+      "rationale": "The hybrid architecture is the only candidate that satisfies deterministic acquisition, safe-state supervision, local services and a credible upgrade path while keeping a proprietary appliance. Option B is the fallback if a two-processor design cannot be justified; option E is the cheapest route to a first integration product but removes the appliance. None is approved.",
+      "confidence": "LOW",
+      "explicitlyUnfrozen": "Processor family, SOM vs custom board, radio set, port count, edition interface boundary and all conformity routes remain unfrozen."
+    },
+    {
+      "familyId": "NAV",
+      "preferredArchitectureId": "ARCH-NAV-E",
+      "rationale": "NAV is software only by canonical definition; the engineering decision is the data-rights and integration stack, not hardware.",
+      "confidence": "MEDIUM",
+      "explicitlyUnfrozen": "Chart and weather rights, device matrix and offline-region policy are unfrozen."
+    },
+    {
+      "familyId": "AIS",
+      "preferredArchitectureId": "ARCH-AIS-E",
+      "rationale": "Software-first integration of third-party certified receive-only receivers removes the RF, RED and antenna risk from the critical path. Own receiver hardware (option D) should only follow a funded RF programme with a certified module partner. Transmit capability is not an option in any architecture and is prohibited.",
+      "confidence": "MEDIUM",
+      "explicitlyUnfrozen": "Receiver hardware class, dual-channel requirement, decoder licence decision and AIS-CONNECTED edition verdict are unfrozen."
+    },
+    {
+      "familyId": "PILOT",
+      "preferredArchitectureId": "ARCH-PILOT-E",
+      "rationale": "Only a no-actuator, software and service posture is compatible with PILOT_SAFETY_GATE=BLOCKED. Any steering architecture requires the full safety case, qualified engineering, bench/HIL, sea trials, independent review and insurance before it may be considered; MC-11 does not select one.",
+      "confidence": "HIGH",
+      "explicitlyUnfrozen": "PILOT disposition recorded as DEFER_SAFETY_CRITICAL_DEVELOPMENT; every steering architecture remains unfrozen and blocked."
+    },
+    {
+      "familyId": "SENSE",
+      "preferredArchitectureId": "ARCH-SENSE-C",
+      "rationale": "A common custom MCU platform with per-type front ends is the only option that can meet unit cost, power and calibration-record requirements at volume. Option E is the fastest way to publish honest measurement provenance without building sensing elements, and options C and E are complementary rather than exclusive.",
+      "confidence": "LOW",
+      "explicitlyUnfrozen": "Sensing elements, front-end topologies, calibration fixture and kit composition remain unfrozen."
+    },
+    {
+      "familyId": "WATCH",
+      "preferredArchitectureId": "ARCH-WATCH-D",
+      "rationale": "The hybrid low-power supervision plus higher-level connectivity architecture is the most defensible answer to the battery-drain and subscription-isolation requirements. Option C is the fallback at lower BOM; option A is rejected for production because its quiescent drain cannot be defended.",
+      "confidence": "LOW",
+      "explicitlyUnfrozen": "Modem family, SIM/eSIM strategy, backup energy source, enclosure and antenna are unfrozen."
+    },
+    {
+      "familyId": "DISPLAY",
+      "preferredArchitectureId": "ARCH-DISPLAY-D",
+      "rationale": "A qualified industrial panel plus a MAREA carrier and SOM keeps the display-stack evidence with the panel supplier while MAREA owns interaction and sealing; option A is the fastest learning platform but cannot support a dedicated-display claim.",
+      "confidence": "LOW",
+      "explicitlyUnfrozen": "Size stays SIZE_NOT_FROZEN; panel technology, compute module, mount family and transient design are unfrozen."
+    },
+    {
+      "familyId": "WEATHER",
+      "preferredArchitectureId": "ARCH-WEATHER-E",
+      "rationale": "WEATHER is entirely a licensed-data and software product; the architecture question is the provider and entitlement model, not hardware.",
+      "confidence": "MEDIUM",
+      "explicitlyUnfrozen": "Provider set, caching rights, evaluation method and edition boundaries are unfrozen."
+    },
+    {
+      "familyId": "FLEET",
+      "preferredArchitectureId": "ARCH-FLEET-E",
+      "rationale": "FLEET is SaaS by definition with no default hardware; the engineering decision is tenancy, authorisation and the read-only telemetry boundary.",
+      "confidence": "MEDIUM",
+      "explicitlyUnfrozen": "Hosting, tier limits, integration scope and SLA position are unfrozen; no SLA may be claimed."
+    }
+  ],
+  "summaryTable": [
+    {
+      "architectureId": "ARCH-HUB-A",
+      "familyId": "HUB",
+      "optionClass": "A",
+      "weightedScore": 3.12
+    },
+    {
+      "architectureId": "ARCH-HUB-B",
+      "familyId": "HUB",
+      "optionClass": "B",
+      "weightedScore": 3.85
+    },
+    {
+      "architectureId": "ARCH-HUB-C",
+      "familyId": "HUB",
+      "optionClass": "C",
+      "weightedScore": 3.62
+    },
+    {
+      "architectureId": "ARCH-HUB-D",
+      "familyId": "HUB",
+      "optionClass": "D",
+      "weightedScore": 3.85
+    },
+    {
+      "architectureId": "ARCH-HUB-E",
+      "familyId": "HUB",
+      "optionClass": "E",
+      "weightedScore": 4.53
+    },
+    {
+      "architectureId": "ARCH-AIS-A",
+      "familyId": "AIS",
+      "optionClass": "A",
+      "weightedScore": 2.86
+    },
+    {
+      "architectureId": "ARCH-AIS-B",
+      "familyId": "AIS",
+      "optionClass": "B",
+      "weightedScore": 3.21
+    },
+    {
+      "architectureId": "ARCH-AIS-C",
+      "familyId": "AIS",
+      "optionClass": "C",
+      "weightedScore": 2.95
+    },
+    {
+      "architectureId": "ARCH-AIS-D",
+      "familyId": "AIS",
+      "optionClass": "D",
+      "weightedScore": 3.62
+    },
+    {
+      "architectureId": "ARCH-AIS-E",
+      "familyId": "AIS",
+      "optionClass": "E",
+      "weightedScore": 4.86
+    },
+    {
+      "architectureId": "ARCH-WATCH-A",
+      "familyId": "WATCH",
+      "optionClass": "A",
+      "weightedScore": 2.95
+    },
+    {
+      "architectureId": "ARCH-WATCH-B",
+      "familyId": "WATCH",
+      "optionClass": "B",
+      "weightedScore": 3.45
+    },
+    {
+      "architectureId": "ARCH-WATCH-C",
+      "familyId": "WATCH",
+      "optionClass": "C",
+      "weightedScore": 3.81
+    },
+    {
+      "architectureId": "ARCH-WATCH-D",
+      "familyId": "WATCH",
+      "optionClass": "D",
+      "weightedScore": 3.9
+    },
+    {
+      "architectureId": "ARCH-WATCH-E",
+      "familyId": "WATCH",
+      "optionClass": "E",
+      "weightedScore": 4.06
+    },
+    {
+      "architectureId": "ARCH-SENSE-A",
+      "familyId": "SENSE",
+      "optionClass": "A",
+      "weightedScore": 3.25
+    },
+    {
+      "architectureId": "ARCH-SENSE-B",
+      "familyId": "SENSE",
+      "optionClass": "B",
+      "weightedScore": 3.43
+    },
+    {
+      "architectureId": "ARCH-SENSE-C",
+      "familyId": "SENSE",
+      "optionClass": "C",
+      "weightedScore": 4.16
+    },
+    {
+      "architectureId": "ARCH-SENSE-D",
+      "familyId": "SENSE",
+      "optionClass": "D",
+      "weightedScore": 3.74
+    },
+    {
+      "architectureId": "ARCH-SENSE-E",
+      "familyId": "SENSE",
+      "optionClass": "E",
+      "weightedScore": 4.5
+    },
+    {
+      "architectureId": "ARCH-DISPLAY-A",
+      "familyId": "DISPLAY",
+      "optionClass": "A",
+      "weightedScore": 4.03
+    },
+    {
+      "architectureId": "ARCH-DISPLAY-B",
+      "familyId": "DISPLAY",
+      "optionClass": "B",
+      "weightedScore": 3.69
+    },
+    {
+      "architectureId": "ARCH-DISPLAY-C",
+      "familyId": "DISPLAY",
+      "optionClass": "C",
+      "weightedScore": 2.98
+    },
+    {
+      "architectureId": "ARCH-DISPLAY-D",
+      "familyId": "DISPLAY",
+      "optionClass": "D",
+      "weightedScore": 3.69
+    },
+    {
+      "architectureId": "ARCH-DISPLAY-E",
+      "familyId": "DISPLAY",
+      "optionClass": "E",
+      "weightedScore": 4.5
+    },
+    {
+      "architectureId": "ARCH-PILOT-A",
+      "familyId": "PILOT",
+      "optionClass": "A",
+      "weightedScore": 2.33
+    },
+    {
+      "architectureId": "ARCH-PILOT-B",
+      "familyId": "PILOT",
+      "optionClass": "B",
+      "weightedScore": 2.86
+    },
+    {
+      "architectureId": "ARCH-PILOT-C",
+      "familyId": "PILOT",
+      "optionClass": "C",
+      "weightedScore": 2.65
+    },
+    {
+      "architectureId": "ARCH-PILOT-D",
+      "familyId": "PILOT",
+      "optionClass": "D",
+      "weightedScore": 3.02
+    },
+    {
+      "architectureId": "ARCH-PILOT-E",
+      "familyId": "PILOT",
+      "optionClass": "E",
+      "weightedScore": 4.41
+    },
+    {
+      "architectureId": "ARCH-NAV-E",
+      "familyId": "NAV",
+      "optionClass": "E",
+      "weightedScore": 4.74
+    },
+    {
+      "architectureId": "ARCH-WEATHER-E",
+      "familyId": "WEATHER",
+      "optionClass": "E",
+      "weightedScore": 4.74
+    },
+    {
+      "architectureId": "ARCH-FLEET-E",
+      "familyId": "FLEET",
+      "optionClass": "E",
+      "weightedScore": 4.74
+    }
+  ],
+  "crossReferences": {
+    "weightsAuthority": "MC11-BASELINE-AND-GOVERNANCE.md §6",
+    "families": "data/hardware-families.json",
+    "assessmentDocuments": [
+      "architecture/MC11-EMBEDDED-ARCHITECTURE-OPTIONS.md",
+      "architecture/MC11-HUB-ARCHITECTURE.md",
+      "architecture/MC11-WATCH-SENSE-ARCHITECTURE.md",
+      "architecture/MC11-AIS-DISPLAY-PILOT-BOUNDARIES.md"
+    ]
+  }
+}

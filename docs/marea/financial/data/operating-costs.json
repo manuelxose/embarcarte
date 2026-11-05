@@ -1,0 +1,325 @@
+{
+  "contractId": "MAREA-MC13-OPERATING-COSTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "saas-economics",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "note": "Known envelopes are illustrative; insurance and CRA lifecycle costs remain UNKNOWN and are never zero.",
+  "costLines": [
+    {
+      "id": "OPEX-ENG",
+      "category": "ENGINEERING",
+      "description": "Hardware and firmware engineering capacity",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 19000,
+        "BASE_HYPOTHETICAL": 16000,
+        "UPSIDE_HYPOTHETICAL": 10500
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "SCENARIO_ASSUMPTION",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-ENG",
+      "assumptionId": "ASM-MC13-142",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Illustrative capacity envelope, not current payroll."
+    },
+    {
+      "id": "OPEX-SUPPORT",
+      "category": "SUPPORT",
+      "description": "Customer and installer support capacity",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 4400,
+        "BASE_HYPOTHETICAL": 3500,
+        "UPSIDE_HYPOTHETICAL": 2300
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "SCENARIO_ASSUMPTION",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-SUPPORT",
+      "assumptionId": "ASM-MC13-143",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Illustrative support envelope; downside carries a higher support burden."
+    },
+    {
+      "id": "OPEX-OPS",
+      "category": "OPERATIONS",
+      "description": "Operations and supply-chain coordination",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 2500,
+        "BASE_HYPOTHETICAL": 2000,
+        "UPSIDE_HYPOTHETICAL": 1300
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "SCENARIO_ASSUMPTION",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-OPS",
+      "assumptionId": "ASM-MC13-144",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Illustrative operations envelope."
+    },
+    {
+      "id": "OPEX-INFRA",
+      "category": "INFRASTRUCTURE_MANAGEMENT",
+      "description": "Cloud, identity and device-management operations",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 1800,
+        "BASE_HYPOTHETICAL": 1500,
+        "UPSIDE_HYPOTHETICAL": 1000
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "SCENARIO_ASSUMPTION",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-INFRA",
+      "assumptionId": "ASM-MC13-145",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Illustrative infrastructure management envelope."
+    },
+    {
+      "id": "OPEX-SM",
+      "category": "SALES_MARKETING",
+      "description": "Sales and marketing envelope (no validated CAC exists)",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 4800,
+        "BASE_HYPOTHETICAL": 4000,
+        "UPSIDE_HYPOTHETICAL": 2600
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "SCENARIO_ASSUMPTION",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-SM",
+      "assumptionId": "ASM-MC13-146",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Illustrative; CAC_VALIDATED = false."
+    },
+    {
+      "id": "OPEX-LEGAL",
+      "category": "LEGAL_ACCOUNTING",
+      "description": "Legal, accounting and trademark administration",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 2200,
+        "BASE_HYPOTHETICAL": 1800,
+        "UPSIDE_HYPOTHETICAL": 1200
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "SCENARIO_ASSUMPTION",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-LEGAL",
+      "assumptionId": "ASM-MC13-147",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Illustrative; IP clearance is not included."
+    },
+    {
+      "id": "OPEX-PRODUCT",
+      "category": "PRODUCT_MANAGEMENT",
+      "description": "Product management and documentation",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 2400,
+        "BASE_HYPOTHETICAL": 2000,
+        "UPSIDE_HYPOTHETICAL": 1300
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "SCENARIO_ASSUMPTION",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-PRODUCT",
+      "assumptionId": "ASM-MC13-148",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Illustrative product-management envelope."
+    },
+    {
+      "id": "OPEX-CYBER",
+      "category": "SECURITY_MAINTENANCE",
+      "description": "Security updates and vulnerability response (CRA-related)",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 3000,
+        "BASE_HYPOTHETICAL": 2500,
+        "UPSIDE_HYPOTHETICAL": 1600
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "SCENARIO_ASSUMPTION",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-CYBER",
+      "assumptionId": "ASM-MC13-149",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Illustrative; real CRA scope is unknown."
+    },
+    {
+      "id": "OPEX-WARRANTY",
+      "category": "WARRANTY_RESERVE",
+      "description": "Warranty administration (reserve is inside variable cost)",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 1000,
+        "BASE_HYPOTHETICAL": 800,
+        "UPSIDE_HYPOTHETICAL": 520
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "SCENARIO_ASSUMPTION",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-WARRANTY",
+      "assumptionId": "ASM-MC13-150",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Illustrative administration cost only."
+    },
+    {
+      "id": "OPEX-COMPLIANCE",
+      "category": "COMPLIANCE",
+      "description": "Conformity, documentation and market surveillance",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 1800,
+        "BASE_HYPOTHETICAL": 1500,
+        "UPSIDE_HYPOTHETICAL": 1000
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "SCENARIO_ASSUMPTION",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-COMPLIANCE",
+      "assumptionId": "ASM-MC13-151",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Illustrative; certification programme cost is capitalised separately."
+    },
+    {
+      "id": "OPEX-CLOUD-FLOOR",
+      "category": "CLOUD",
+      "description": "Cloud minimum commitment floor",
+      "behaviour": "FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": {
+        "DOWNSIDE": 750,
+        "BASE_HYPOTHETICAL": 600,
+        "UPSIDE_HYPOTHETICAL": 400
+      },
+      "inflationPctPerYear": 3,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "PUBLISHED_TARIFF",
+      "status": "CONDITIONAL",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-CLOUD-FLOOR",
+      "assumptionId": "ASM-MC13-152",
+      "unknownReason": null,
+      "dependencies": [
+        "ASM-MC13-042"
+      ],
+      "notes": "Provider minimum/step floors from MC-12; not a contract."
+    },
+    {
+      "id": "OPEX-INSURANCE",
+      "category": "INSURANCE",
+      "description": "Product liability insurance premium",
+      "behaviour": "ANNUAL_FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": null,
+      "inflationPctPerYear": null,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "UNKNOWN",
+      "status": "UNKNOWN",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-INSURANCE",
+      "assumptionId": "ASM-MC13-047",
+      "unknownReason": "No quotation, broker indication or public tariff exists.",
+      "dependencies": [],
+      "notes": "Explicit unknown. Never treated as zero and excluded from the conditional result."
+    },
+    {
+      "id": "OPEX-CRA",
+      "category": "CRA_LIFECYCLE",
+      "description": "CRA support-period engineering and update obligation",
+      "behaviour": "ANNUAL_FIXED",
+      "monthlyAmountEur": null,
+      "scenarioValues": null,
+      "inflationPctPerYear": null,
+      "appliesFromMonth": 1,
+      "appliesToMonth": 60,
+      "evidenceClass": "UNKNOWN",
+      "status": "UNKNOWN",
+      "sourcePath": "docs/marea/financial/data/operating-costs.json",
+      "sourceRecordId": "OPEX-CRA",
+      "assumptionId": "ASM-MC13-048",
+      "unknownReason": "No scope, rate or support contract exists.",
+      "dependencies": [],
+      "notes": "Explicit unknown. Never treated as zero and excluded from the conditional result."
+    }
+  ]
+}

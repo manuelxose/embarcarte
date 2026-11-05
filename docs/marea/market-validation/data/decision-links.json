@@ -1,0 +1,201 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "documentType": "DECISION_LINKS",
+  "owner": "lead",
+  "date": "2026-10-31",
+  "note": "Every business recommendation is traced to the research claims that support it. Decisions are commercial-investment decisions for customer validation; they do not change canonical NOT_FOR_SALE status, approve prices, or clear brand, IP, data or safety blockers.",
+  "decisions": [
+    {
+      "decisionId": "DEC-MC09-01",
+      "category": "PRIORITIZE_FOR_CUSTOMER_VALIDATION",
+      "subject": "NAV",
+      "title": "Validate MAREA NAV as the software-first entry point",
+      "claimIds": ["CLM-BUY-001", "CLM-BUY-009", "CLM-CMP-001", "CLM-CMP-022", "CLM-CHN-019"],
+      "rationale": "Navigation fragmentation and recurring chart/weather cost are the best-evidenced owner problems, and NAV is the only family that can reach customers without hardware, BOM or installation. It therefore has the shortest path to real validation.",
+      "evidenceThreshold": "Change if MC-10 shows owners already consolidate navigation at acceptable cost or refuse a recurring navigation subscription in 7 of 10 interviews.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-02",
+      "category": "PRIORITIZE_FOR_CUSTOMER_VALIDATION",
+      "subject": "WATCH",
+      "title": "Validate unattended-vessel monitoring and its recurring model",
+      "claimIds": ["CLM-BUY-015", "CLM-CMP-004", "CLM-CMP-007", "CLM-CMP-021", "CLM-ECO-007"],
+      "rationale": "Monitoring is the most credible recurring-revenue job to be done, with real paid benchmarks (Siren Marine USD 225/year, Yacht Sentinel, Orca guard mode) and a clear unattended-vessel trigger.",
+      "evidenceThreshold": "Change if owners report current monitoring spend below EUR 5/month with acceptable reliability, or 7 of 10 reject any recurring fee.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-03",
+      "category": "PRIORITIZE_FOR_CUSTOMER_VALIDATION",
+      "subject": "PROTECT",
+      "title": "Test the PROTECT solution concept before rebuilding its price",
+      "claimIds": ["CLM-CMP-021", "CLM-CMP-002", "CLM-CMP-004", "CLM-ECO-007"],
+      "rationale": "Monitoring-led protection is the bundle with the strongest recurring logic. The EUR 399 hypothesis is commercially incoherent (composition alone is EUR 497), so the concept must be validated independently of the historical figure.",
+      "evidenceThreshold": "Re-price only after MC-10 records actual current spend and installation tolerance; abandon if the problem is not rated urgent by at least half of S3/S6 interviewees.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-04",
+      "category": "PRIORITIZE_FOR_CUSTOMER_VALIDATION",
+      "subject": "START",
+      "title": "Test START as a consolidation concept, not an orderable kit",
+      "claimIds": ["CLM-CMP-027", "CLM-CMP-024", "CLM-CMP-001", "CLM-CHN-019"],
+      "rationale": "START is the most plausible hardware-led entry bundle, but its BOM and installed price are unresolved and its near-equivalent alternatives are already purchasable.",
+      "evidenceThreshold": "Change if MC-10 shows owners will not pay a premium over Orca Core plus subscription for consolidation.",
+      "confidence": "LOW"
+    },
+    {
+      "decisionId": "DEC-MC09-05",
+      "category": "FURTHER_RESEARCH_REQUIRED",
+      "subject": "HUB",
+      "title": "Research HUB's multi-device orchestration before committing hardware",
+      "claimIds": ["CLM-CMP-008", "CLM-CMP-011", "CLM-CMP-019", "CLM-BUY-002"],
+      "rationale": "Gateways are a real but price-anchored category at EUR 240-300. HUB's differentiation rests on integration behaviour that is not verified by any evidence in this milestone.",
+      "evidenceThreshold": "Proceed only with written integration evidence and MC-10 confirmation that installers value orchestration beyond a standard gateway.",
+      "confidence": "LOW"
+    },
+    {
+      "decisionId": "DEC-MC09-06",
+      "category": "FURTHER_RESEARCH_REQUIRED",
+      "subject": "WEATHER",
+      "title": "Do not sell WEATHER standalone before provider rights exist",
+      "claimIds": ["CLM-CMP-005", "CLM-CMP-006", "CLM-CMP-023", "CLM-BUY-009"],
+      "rationale": "Demand is strong and direct distribution is feasible, but the product has no granted redistribution or offline rights and cannot be priced or launched without them.",
+      "evidenceThreshold": "Route to a provider-rights decision (MC-02 D-blockers) before any commercial validation of standalone WEATHER.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-07",
+      "category": "LONG_TERM_OPPORTUNITY",
+      "subject": "FLEET",
+      "title": "Treat FLEET as the post-beachhead recurring expansion",
+      "claimIds": ["CLM-CMP-012", "CLM-CMP-013", "CLM-CMP-026", "CLM-CHN-018"],
+      "rationale": "Per-vessel B2B SaaS is the scalable revenue model, but competitors are operationally broader and the platform is unimplemented. The Galicia/Northern-Portugal beachhead cannot fund the programme alone, which makes FLEET the eventual answer rather than the first product.",
+      "evidenceThreshold": "Revisit after commercial validation of WATCH/PROTECT and a measurable marina/charter cohort; require a signed pipeline before platform investment.",
+      "confidence": "LOW"
+    },
+    {
+      "decisionId": "DEC-MC09-08",
+      "category": "RECONSIDER_PRODUCT_STRATEGY",
+      "subject": "AIS",
+      "title": "Replace AIS hardware with AIS integration in the software layer",
+      "claimIds": ["CLM-CMP-009", "CLM-CMP-010", "CLM-CMP-031", "CLM-BUY-004"],
+      "rationale": "Receive-only AIS hardware is a commodity with an unresolved GPL decoder, and a MAREA receiver adds little to an established EUR 360 product. AIS reception is the kind of input the HUB/NAV layer can consume from third-party devices.",
+      "evidenceThreshold": "Reopen only if DEC-04 resolves licensing and MC-10 shows a reception price/quality gap owners will pay for.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-09",
+      "category": "RECONSIDER_PRODUCT_STRATEGY",
+      "subject": "DISPLAY",
+      "title": "Use the customer's device instead of building a proprietary display",
+      "claimIds": ["CLM-CMP-015", "CLM-CMP-002", "CLM-BUY-018"],
+      "rationale": "Raymarine Element 7 HV at EUR 659.45 and complete Orca systems set a hard benchmark; a MAREA display carries capital, conformity and support exposure with no evidenced advantage over a tablet.",
+      "evidenceThreshold": "Reopen only with a demonstrated display-specific customer need and a certified hardware partner.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-10",
+      "category": "DEFER",
+      "subject": "SENSE",
+      "title": "Defer standalone SENSE modules until a monitoring use case is validated",
+      "claimIds": ["CLM-CMP-018", "CLM-CMP-020", "CLM-CMP-006", "CLM-BUY-003"],
+      "rationale": "Battery monitoring is already served by Victron at EUR 90.21 and instrument packs are established. SENSE has value only as WATCH/PROTECT input.",
+      "evidenceThreshold": "Reopen as a component of a validated PROTECT/WATCH offer.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-11",
+      "category": "DEFER",
+      "subject": "PILOT",
+      "title": "Defer PILOT beyond concept comprehension in MC-10",
+      "claimIds": ["CLM-CMP-016", "CLM-CMP-017", "CLM-BUY-011", "CLM-BUY-007"],
+      "rationale": "PILOT is safety-critical, unverified, sea-trial-free and blocked, while established autopilot systems already occupy the price band. MC-09 cannot justify development funding.",
+      "evidenceThreshold": "Requires the PILOT safety gate to be executed with real sea-trial and hazard evidence before any commercial prioritisation.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-12",
+      "category": "FURTHER_RESEARCH_REQUIRED",
+      "subject": "CRUISE",
+      "title": "Hold CRUISE until the integration outcome is demonstrable",
+      "claimIds": ["CLM-CMP-028", "CLM-CMP-008", "CLM-CMP-015", "CLM-CMP-024"],
+      "rationale": "An equivalent composition is already purchasable at transparent prices, and CRUISE depends on the least-ready hardware families.",
+      "evidenceThreshold": "Proceed only after HUB/AIS integration evidence and a validated willingness to pay above the sum of parts.",
+      "confidence": "LOW"
+    },
+    {
+      "decisionId": "DEC-MC09-13",
+      "category": "DEFER",
+      "subject": "SAIL",
+      "title": "Defer SAIL as a complete offer",
+      "claimIds": ["CLM-CMP-029", "CLM-CMP-016", "CLM-CMP-017", "CLM-CMP-020"],
+      "rationale": "SAIL combines safety-critical PILOT with the least mature families and cannot carry a fixed turnkey price. Established brands already sell and service the equivalent.",
+      "evidenceThreshold": "Only after PILOT's safety gate is cleared and an installer channel is validated.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-14",
+      "category": "RECONSIDER_PRODUCT_STRATEGY",
+      "subject": "COMPLETE",
+      "title": "Decouple the integrated outcome from a single-supplier hardware stack",
+      "claimIds": ["CLM-CMP-030", "CLM-CMP-025", "CLM-CMP-024"],
+      "rationale": "COMPLETE requires every unready family at once, has 22 MC-08 blockers and no permitted fixed price. Integration of existing equipment is a more defensible route to the same customer outcome.",
+      "evidenceThreshold": "Reopen only with evidence that buyers want single-vendor procurement and a verified complete-system integration.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-15",
+      "category": "FURTHER_RESEARCH_REQUIRED",
+      "subject": "GENERAL",
+      "title": "Test software-first before funding hardware-first development",
+      "claimIds": ["CLM-CMP-001", "CLM-CMP-003", "CLM-BUY-001", "CLM-ECO-001", "CLM-CHN-001"],
+      "rationale": "Software has lower capital intensity, direct distribution and faster validation, while hardware requires BOM, conformity, installation and support that are all unestablished. The evidence favours validating the software/services thesis first, not committing to hardware manufacturing.",
+      "evidenceThreshold": "Switch to hardware-first only with validated demand, a sourced BOM and a signed installer channel.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-16",
+      "category": "FURTHER_RESEARCH_REQUIRED",
+      "subject": "GEO:RIAS_BAIXAS",
+      "title": "Concentrate MC-10 recruitment in Rías Baixas with Northern Portugal as phase 2",
+      "claimIds": ["CLM-MKT-011", "CLM-MKT-013", "CLM-MKT-014", "CLM-MKT-029", "CLM-MKT-030"],
+      "rationale": "Rías Baixas combines the largest local berth base with the strongest provincial registration momentum; Northern Portugal has the larger registered population but the weakest verifiable evidence. Baleares and Catalonia are deferred on distance and channel grounds.",
+      "evidenceThreshold": "Expand only after a defensible local cohort is recruited and the regional spend band is tested.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-17",
+      "category": "INSUFFICIENT_EVIDENCE",
+      "subject": "GENERAL",
+      "title": "Do not approve any bundle or family price",
+      "claimIds": ["CLM-CMP-032", "CLM-CMP-024", "CLM-CMP-025", "CLM-ECO-002", "CLM-ECO-010"],
+      "rationale": "Competitor prices are heterogeneous in currency, VAT and inclusion; no installed bundle price exists in the market; installation hours, BOM, warranty and channel terms are unknown. Every historical MAREA figure remains HYPOTHESIS_UNAPPROVED.",
+      "evidenceThreshold": "A price can only be proposed after MC-10 WTP results plus real supplier quotes and a Spanish installation rate.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-18",
+      "category": "INSUFFICIENT_EVIDENCE",
+      "subject": "GENERAL",
+      "title": "Keep profitability NOT ESTABLISHED across the portfolio",
+      "claimIds": ["CLM-ECO-001", "CLM-ECO-003", "CLM-ECO-010", "CLM-ECO-011", "CLM-CHN-005", "CLM-CHN-036"],
+      "rationale": "No BOM, supplier quotation, provider licence, channel margin or CAC exists, and the only labour evidence is a published foreign rate card. Any margin statement would be fabricated.",
+      "evidenceThreshold": "Revisit after MC-11 supplier quotations and MC-12 licensed cost model.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "decisionId": "DEC-MC09-19",
+      "category": "FURTHER_RESEARCH_REQUIRED",
+      "subject": "GENERAL",
+      "title": "Treat installer and distributor economics as an open research question",
+      "claimIds": ["CLM-CHN-001", "CLM-CHN-002", "CLM-CHN-011", "CLM-CHN-036", "CLM-CHN-017"],
+      "rationale": "Spanish yard labour is publicly priced (Marina Coruña 59-76 EUR/hour; electronics line at 61 EUR/hour) and vendor dealer programmes are observable as process, but no ES/PT dealer or distributor margin is public. Channel economics must be discovered in MC-10, not assumed.",
+      "evidenceThreshold": "Obtain written installer/distributor terms from at least two real channel partners.",
+      "confidence": "MEDIUM"
+    }
+  ]
+}

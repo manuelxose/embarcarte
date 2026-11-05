@@ -1,0 +1,219 @@
+{
+  "contractId": "MC18-DESIGN-SYSTEM-DEPENDENCIES",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "owner": "MC-18 implementation team",
+  "status": "INTERNAL_PROPOSED",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Every MC-17 design-system module imported by the landing, with locale/registry resolution status.",
+  "generationMethod": "node scripts/build-marea-landing-data.mjs",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "Only direct imports from src/app/marea-design-system are listed; template-only reuse is not detectable.",
+    "Unregistered modules are allowed only for pure data/type contracts and are reported as such."
+  ],
+  "data": {
+    "dependencies": [
+      {
+        "importPath": "src/app/marea-design-system/components/commerce/marea-bundle-components.ts",
+        "importedBy": [
+          "src/app/marea-landing/sections/section-bundles.ts"
+        ],
+        "selector": "marea-bundle-components",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/commerce/marea-bundle-exclusions.ts",
+        "importedBy": [
+          "src/app/marea-landing/sections/section-bundles.ts"
+        ],
+        "selector": "marea-bundle-exclusions",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/commerce/marea-commercial-cta.ts",
+        "importedBy": [
+          "src/app/marea-landing/sections/section-availability.ts"
+        ],
+        "selector": "marea-commercial-cta",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/commerce/marea-family-card.ts",
+        "importedBy": [
+          "src/app/marea-landing/sections/section-families.ts"
+        ],
+        "selector": "marea-family-card",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/commerce/marea-readiness-panel.ts",
+        "importedBy": [
+          "src/app/marea-landing/sections/section-availability.ts"
+        ],
+        "selector": "marea-readiness-panel",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/foundation/marea-container.ts",
+        "importedBy": [
+          "src/app/marea-landing/components/landing-footer.ts",
+          "src/app/marea-landing/components/landing-section.ts",
+          "src/app/marea-landing/sections/section-hero.ts"
+        ],
+        "selector": "marea-container",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/foundation/marea-notice.ts",
+        "importedBy": [
+          "src/app/marea-landing/components/internal-banner.ts",
+          "src/app/marea-landing/sections/section-architecture.ts",
+          "src/app/marea-landing/sections/section-availability.ts",
+          "src/app/marea-landing/sections/section-bundles.ts",
+          "src/app/marea-landing/sections/section-closing.ts",
+          "src/app/marea-landing/sections/section-documentation.ts",
+          "src/app/marea-landing/sections/section-ecosystem.ts",
+          "src/app/marea-landing/sections/section-families.ts",
+          "src/app/marea-landing/sections/section-professionals.ts",
+          "src/app/marea-landing/sections/section-software-hardware.ts"
+        ],
+        "selector": "marea-notice",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/foundation/marea-section-heading.ts",
+        "importedBy": [
+          "src/app/marea-landing/sections/section-architecture.ts",
+          "src/app/marea-landing/sections/section-availability.ts",
+          "src/app/marea-landing/sections/section-bundles.ts",
+          "src/app/marea-landing/sections/section-closing.ts",
+          "src/app/marea-landing/sections/section-documentation.ts",
+          "src/app/marea-landing/sections/section-ecosystem.ts",
+          "src/app/marea-landing/sections/section-families.ts",
+          "src/app/marea-landing/sections/section-professionals.ts",
+          "src/app/marea-landing/sections/section-software-hardware.ts"
+        ],
+        "selector": "marea-section-heading",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/foundation/marea-stack.ts",
+        "importedBy": [
+          "src/app/marea-landing/components/landing-footer.ts"
+        ],
+        "selector": "marea-stack",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/foundation/marea-status-badge.ts",
+        "importedBy": [
+          "src/app/marea-landing/sections/section-availability.ts",
+          "src/app/marea-landing/sections/section-bundles.ts",
+          "src/app/marea-landing/sections/section-hero.ts"
+        ],
+        "selector": "span[marea-status-badge]",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/foundation/marea-surface.ts",
+        "importedBy": [
+          "src/app/marea-landing/sections/section-architecture.ts",
+          "src/app/marea-landing/sections/section-availability.ts",
+          "src/app/marea-landing/sections/section-bundles.ts",
+          "src/app/marea-landing/sections/section-documentation.ts",
+          "src/app/marea-landing/sections/section-hero.ts",
+          "src/app/marea-landing/sections/section-software-hardware.ts"
+        ],
+        "selector": "marea-surface",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/foundation/marea-text.ts",
+        "importedBy": [
+          "src/app/marea-landing/components/landing-footer.ts",
+          "src/app/marea-landing/sections/section-architecture.ts",
+          "src/app/marea-landing/sections/section-availability.ts",
+          "src/app/marea-landing/sections/section-bundles.ts",
+          "src/app/marea-landing/sections/section-closing.ts",
+          "src/app/marea-landing/sections/section-documentation.ts",
+          "src/app/marea-landing/sections/section-ecosystem.ts",
+          "src/app/marea-landing/sections/section-families.ts",
+          "src/app/marea-landing/sections/section-hero.ts",
+          "src/app/marea-landing/sections/section-professionals.ts",
+          "src/app/marea-landing/sections/section-software-hardware.ts"
+        ],
+        "selector": "[marea-text]",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/components/structured/marea-responsive-nav.ts",
+        "importedBy": [
+          "src/app/marea-landing/components/landing-header.ts"
+        ],
+        "selector": "marea-responsive-nav",
+        "registered": true
+      },
+      {
+        "importPath": "src/app/marea-design-system/core/i18n.ts",
+        "importedBy": [
+          "src/app/marea-landing/components/internal-banner.ts",
+          "src/app/marea-landing/components/landing-footer.ts",
+          "src/app/marea-landing/components/landing-header.ts",
+          "src/app/marea-landing/landing.ts",
+          "src/app/marea-landing/sections/section-architecture.ts",
+          "src/app/marea-landing/sections/section-availability.ts",
+          "src/app/marea-landing/sections/section-bundles.ts",
+          "src/app/marea-landing/sections/section-closing.ts",
+          "src/app/marea-landing/sections/section-documentation.ts",
+          "src/app/marea-landing/sections/section-ecosystem.ts",
+          "src/app/marea-landing/sections/section-families.ts",
+          "src/app/marea-landing/sections/section-hero.ts",
+          "src/app/marea-landing/sections/section-professionals.ts",
+          "src/app/marea-landing/sections/section-software-hardware.ts"
+        ],
+        "selector": null,
+        "registered": false
+      },
+      {
+        "importPath": "src/app/marea-design-system/core/types.ts",
+        "importedBy": [
+          "src/app/marea-landing/components/landing-header.ts",
+          "src/app/marea-landing/content/content.ts",
+          "src/app/marea-landing/data/landing-domain.ts",
+          "src/app/marea-landing/landing.ts",
+          "src/app/marea-landing/sections/section-bundles.ts",
+          "src/app/marea-landing/sections/section-families.ts"
+        ],
+        "selector": null,
+        "registered": false
+      },
+      {
+        "importPath": "src/app/marea-design-system/data/commerce-presentation.adapter.ts",
+        "importedBy": [
+          "src/app/marea-landing/data/landing-domain.ts"
+        ],
+        "selector": null,
+        "registered": false
+      },
+      {
+        "importPath": "src/app/marea-design-system/data/fixtures/marea-fixtures.generated.ts",
+        "importedBy": [
+          "src/app/marea-landing/data/landing-domain.ts"
+        ],
+        "selector": null,
+        "registered": false
+      },
+      {
+        "importPath": "src/app/marea-design-system/theme/marea-theme.ts",
+        "importedBy": [
+          "src/app/marea-landing/landing.ts"
+        ],
+        "selector": "marea-theme",
+        "registered": true
+      }
+    ],
+    "designSystemRoot": "src/app/marea-design-system",
+    "parallelComponentLibrary": false
+  }
+}

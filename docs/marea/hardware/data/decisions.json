@@ -1,0 +1,149 @@
+{
+  "contractId": "MAREA-MC11-HARDWARE-EVIDENCE-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-11",
+  "date": "2026-11-02",
+  "owner": "lead",
+  "note": "MC-11 program decisions, numbered continuously after D-040. Each decision states what it authorises and what it does not; no decision upgrades a commercial status, price, certification, compatibility or safety gate.",
+  "decisions": [
+    {
+      "decisionId": "D-041",
+      "date": "2026-11-02",
+      "title": "MC-11 is internal hardware feasibility only; formal procurement evidence stays blocked",
+      "context": "The authoritative registry requires real supplier quotation evidence for milestone 11. No supplier could be contacted in MC-11 and no genuine quotation exists.",
+      "decision": "Deliver a complete internal engineering feasibility package and report the milestone as PARTIAL: internal feasibility scope PASS, formal procurement evidence BLOCKED_OR_NOT_OBTAINED. Catalogue prices are classified as observations, never as quotations.",
+      "rationale": "A missing quotation cannot be replaced by a distributor web price; the only honest way to satisfy the registry requirement is to record it as not obtained.",
+      "consequences": "No BOM is production-approved, no price is approved and no procurement may start; MC-12 inherits per-line cost confidence and explicit quotation gaps.",
+      "evidence": ["docs/marea/hardware/MC11-RESEARCH-SCOPE.md", "docs/marea/hardware/MC11-BASELINE-AND-GOVERNANCE.md", "docs/marea/hardware/data/governance-status.json"],
+      "statusEffect": "MC11 verdict PARTIAL; no commercial status change."
+    },
+    {
+      "decisionId": "D-042",
+      "date": "2026-11-02",
+      "title": "No hardware architecture is frozen; HUB-D is the engineering preference and HUB-E is a commercial-strategy question",
+      "context": "Scored candidates show the hybrid gateway (ARCH-HUB-D, 3.85) as the best proprietary engineering option while the software-first option (ARCH-HUB-E, 4.53) scores highest overall; DISPLAY size and architecture and AIS hardware posture are also open.",
+      "decision": "Record all candidates as PROPOSED_NOT_APPROVED. Keep HUB-D as the engineering preference for a proprietary gateway, escalate the build-appliance-versus-integrate-certified-gateways choice (HUB-D vs HUB-E) as a commercial decision, and keep DISPLAY and AIS hardware unfrozen.",
+      "rationale": "The weighted score measures engineering/operational fit, not commercial strategy, and no customer requirement exists to break the tie.",
+      "consequences": "Gate G1 remains CANDIDATE_ONLY; no schematic, carrier board, tooling or supplier engagement may be started on the basis of this preference.",
+      "evidence": ["docs/marea/hardware/architecture/MC11-HUB-ARCHITECTURE.md", "docs/marea/hardware/architecture/MC11-EMBEDDED-ARCHITECTURE-OPTIONS.md", "docs/marea/hardware/data/architecture-options.json"],
+      "statusEffect": "Architecture status PROPOSED_NOT_APPROVED; G1 not passed."
+    },
+    {
+      "decisionId": "D-043",
+      "date": "2026-11-02",
+      "title": "AIS transmitter development is prohibited; receive-only integration goes through third-party certified equipment",
+      "context": "AIS is four different products (receive-only, third-party integration, transponder hardware, software visualisation). Radio transmission adds RED, spectrum, maritime approval and liability obligations that MC-11 cannot evaluate.",
+      "decision": "Permit only receive-only data integration and software visualisation in the candidate portfolio; prohibit any AIS transmitter/transponder development; defer MAREA-branded AIS receiver hardware until a certified-module route is evaluated.",
+      "rationale": "The conformity and liability burden of transmitting equipment is materially larger than its commercial value at this stage, and no approval route has been investigated.",
+      "consequences": "AIS_TRANSMISSION_OFFERED = false; any future transmitter proposal needs a separate authorised programme, not an MC-11 extension.",
+      "evidence": ["docs/marea/hardware/architecture/MC11-AIS-DISPLAY-PILOT-BOUNDARIES.md", "docs/marea/hardware/data/nmea-status.json"],
+      "statusEffect": "AIS transmit capability prohibited; no product approval."
+    },
+    {
+      "decisionId": "D-044",
+      "date": "2026-11-02",
+      "title": "PILOT remains safety-blocked with a documented deferral disposition",
+      "context": "PILOT has a hard safety gate. MC-11 produced a documentation-only safety feasibility analysis; no actuator, E-stop, redundancy or vessel test exists.",
+      "decision": "Keep PILOT_SAFETY_GATE = BLOCKED and record the disposition DEFER_SAFETY_CRITICAL_DEVELOPMENT combined with REQUIRES_QUALIFIED_SAFETY_ENGINEERING and BLOCKED_PENDING_FUNDING_AND_TEST_PLAN. No control output, motor driver, steering command or firmware change is authorised.",
+      "rationale": "A hardware BOM or a motor-driver component does not create safety evidence; qualified engineering, funded testing and insurance are prerequisites.",
+      "consequences": "PILOT appears in no bundle line and no BOM is authorised for actuation; the safety case outline remains an outline.",
+      "evidence": ["docs/marea/hardware/architecture/MC11-AIS-DISPLAY-PILOT-BOUNDARIES.md", "docs/marea/products/PILOT-SAFETY-CASE-OUTLINE.md"],
+      "statusEffect": "PILOT safety gate unchanged: BLOCKED."
+    },
+    {
+      "decisionId": "D-045",
+      "date": "2026-11-02",
+      "title": "Hardware price and claim grading rules adopted as binding for MC-11 and later milestones",
+      "context": "Public catalogue prices, engineering estimates and assumptions are routinely confused with quotations, and component approvals are routinely confused with product conformity.",
+      "decision": "Adopt the MC-11 evidence classes: every external figure is classified (manufacturer list price, authorised distributor, third-party reseller, historical observation, calculated estimate, engineering assumption, budgetary indication, unknown); a formal quotation requires a genuine attributable quotation; unknown is never zero; a non-EUR price converts only with a recorded rate; component-level conformity never becomes product-level conformity; compatibility is never TESTED or SUPPORTED without a recorded device test.",
+      "rationale": "The economics and conformity conclusions are only useful if their evidence class is auditable and stable across milestones.",
+      "consequences": "MC-12/MC-13 must reuse these classes; any artefact that violates one fails the deterministic validator.",
+      "evidence": ["docs/marea/hardware/data/DATA-CONTRACT.md", "docs/marea/hardware/data/governance-status.json", "scripts/check-marea-hardware.mjs"],
+      "statusEffect": "Evidence grading enforced; no price approved."
+    },
+    {
+      "decisionId": "D-046",
+      "date": "2026-11-02",
+      "title": "RFQ packages are prepared but not sent; supplier engagement and purchasing remain unauthorised",
+      "context": "MC-11 may prepare professional RFQ material but may not contact suppliers, create accounts, request quotations or buy samples.",
+      "decision": "Keep all ten RFQ drafts at RFQ_DRAFT_PREPARED / RFQ_APPROVAL_REQUIRED / RFQ_NOT_SENT with SUPPLIER_NOT_CONTACTED and FORMAL_QUOTE_NOT_OBTAINED. Symbolically authorise nothing: G2, G3, G4 and G5 remain not authorised.",
+      "rationale": "Supplier contact is a separate control requiring explicit programme-owner permission; conflating preparation with transmission would fabricate progress.",
+      "consequences": "No quotation, MOQ, lead time, tooling price, warranty term or sample exists; MC-12 must plan around missing quotations.",
+      "evidence": ["docs/marea/hardware/sourcing/MC11-RFQ-PACKAGE-NOT-SENT.md", "docs/marea/hardware/data/decisions.json"],
+      "statusEffect": "No supplier contact, no purchase, no prototype procurement."
+    },
+    {
+      "decisionId": "D-047",
+      "date": "2026-11-02",
+      "title": "The MC-11 data contract and 54-check validator become the hardware evidence gate",
+      "context": "MC-11 produced 18 machine-readable files and a large volume of engineering claims that must stay internally consistent after the milestone closes.",
+      "decision": "Adopt docs/marea/hardware/data/DATA-CONTRACT.md as binding and scripts/check-marea-hardware.mjs (50 mandated integrity rules plus 4 structural checks, with adversarial negative tests) as the deterministic gate for MC-11 artefacts and their later updates.",
+      "rationale": "Independent review cannot scale to hand-checking every cross-reference; a deterministic gate with negative tests makes fabrication and silent upgrades fail closed.",
+      "consequences": "Any future change to hardware data must pass the gate; weakening a rule requires a new decision, a contract version and independent re-verification.",
+      "evidence": ["scripts/check-marea-hardware.mjs", "scripts/check-marea-hardware.test.mjs", "docs/marea/hardware/data/DATA-CONTRACT.md"],
+      "statusEffect": "Validation gate active; no commercial or safety status change."
+    },
+    {
+      "decisionId": "D-048",
+      "date": "2026-11-02",
+      "title": "MC-11 delivers internal hardware feasibility and stays PARTIAL because no formal quotation exists",
+      "context": "The registry requires hardware BOM, supplier quotations and a conformity plan, but MC-11 was authorised only for internal engineering and public-source research: no supplier contact, RFQ, purchase, prototype or certification. The evidence environment could not retrieve application/datasheet PDFs, so no datasheet was retrieved and verified parameters come from manufacturer HTML pages, recorded as a disclosed limitation.",
+      "decision": "Deliver D1-D37 as an internal feasibility package and record the verdict as PARTIAL with MC11_FORMAL_PROCUREMENT_EVIDENCE = BLOCKED_OR_NOT_OBTAINED; keep every architecture, price, compatibility and conformity statement unapproved; apply the independent audit corrections and require the auditor to re-verify them before any internal-scope PASS is claimed.",
+      "rationale": "A catalogue price is not a quotation and an internal design review is not a certification; reporting a full PASS would require fabricating supplier or laboratory evidence, which the milestone forbids.",
+      "consequences": "No BOM is production-approved and no price is approved; gates G1-G7 remain closed; MC-12 inherits per-line cost confidence, labelled assumptions and quotation gaps; MC-13 inherits capital, tooling, certification and working-capital gaps; draft PR #18 remains stacked and unmerged.",
+      "evidence": ["docs/marea/hardware/MC11-EXECUTIVE-REPORT.md", "docs/marea/hardware/MC-11-DELIVERY.md", "docs/marea/hardware/review/MC-11-REVIEW.md", "docs/marea/execution/DECISION-LOG.md"],
+      "statusEffect": "No supplier contact, purchase, test, certification, price approval, publication, merge or deployment."
+    }
+  ],
+  "gates": [
+    {
+      "gateId": "G1",
+      "name": "Architecture selection",
+      "state": "CANDIDATE_ONLY",
+      "requirementsNeeded": ["documented tradeoff review", "responsible engineering approval", "customer requirement evidence or an explicit accepted risk"],
+      "authorized": false
+    },
+    {
+      "gateId": "G2",
+      "name": "Supplier engagement",
+      "state": "NOT_AUTHORIZED",
+      "requirementsNeeded": ["explicit permission naming suppliers and scope", "budget authority for any chargeable activity"],
+      "authorized": false
+    },
+    {
+      "gateId": "G3",
+      "name": "Prototype procurement",
+      "state": "NOT_AUTHORIZED",
+      "requirementsNeeded": ["approved budget", "approved BOM revision", "selected suppliers", "purchasing authority"],
+      "authorized": false
+    },
+    {
+      "gateId": "G4",
+      "name": "Prototype testing",
+      "state": "NOT_AUTHORIZED",
+      "requirementsNeeded": ["safe test plans", "test equipment", "qualified personnel", "test authorisation"],
+      "authorized": false
+    },
+    {
+      "gateId": "G5",
+      "name": "Marine integration testing",
+      "state": "NOT_AUTHORIZED",
+      "requirementsNeeded": ["vessel-specific safety review", "installation permission", "qualified test personnel"],
+      "authorized": false
+    },
+    {
+      "gateId": "G6",
+      "name": "Regulatory evaluation",
+      "state": "NOT_STARTED",
+      "requirementsNeeded": ["frozen design configuration", "technical file", "real test evidence", "qualified external involvement"],
+      "authorized": false
+    },
+    {
+      "gateId": "G7",
+      "name": "Production release",
+      "state": "NOT_AUTHORIZED",
+      "requirementsNeeded": ["formal engineering approval", "quality approval", "legal approval", "commercial approval"],
+      "authorized": false
+    }
+  ]
+}

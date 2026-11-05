@@ -1,0 +1,140 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "lead",
+  "date": "2026-11-01",
+  "baseCommit": "9d206cc251ea63c7edd1cda0ca7a2d028ae7cca3",
+  "milestoneStatus": "BLOCKED",
+  "statusReason": "OUTREACH_AUTHORIZATION_NOT_GRANTED",
+  "scopeStatus": "WAVE_0_PREPARATION_COMPLETE_FIELDWORK_NOT_EXECUTED",
+  "outreachAuthorization": "NOT_GRANTED",
+  "fieldworkStatus": "BLOCKED",
+  "fieldworkExecuted": false,
+  "fieldworkStartDate": null,
+  "fieldworkEndDate": null,
+  "participantCounts": {
+    "identified": 0,
+    "contactAuthorized": 0,
+    "invited": 0,
+    "responded": 0,
+    "screened": 0,
+    "eligible": 0,
+    "consented": 0,
+    "interviewCompleted": 0,
+    "analysisEligible": 0,
+    "withdrawn": 0,
+    "excluded": 0
+  },
+  "segmentCounts": [
+    { "segmentId": "SEG-01", "name": "Recreational motorboat owners", "plannedMin": 5, "plannedMax": 8, "completedInterviews": 0, "validAnalysisCases": 0 },
+    { "segmentId": "SEG-02", "name": "Sailing yacht owners", "plannedMin": 5, "plannedMax": 8, "completedInterviews": 0, "validAnalysisCases": 0 },
+    { "segmentId": "SEG-03", "name": "Marina-based unattended-vessel owners", "plannedMin": 5, "plannedMax": 8, "completedInterviews": 0, "validAnalysisCases": 0 },
+    { "segmentId": "SEG-04", "name": "Marine electronics installers", "plannedMin": 5, "plannedMax": 7, "completedInterviews": 0, "validAnalysisCases": 0 },
+    { "segmentId": "SEG-05", "name": "Marine retailers and chandlers", "plannedMin": 5, "plannedMax": 7, "completedInterviews": 0, "validAnalysisCases": 0 },
+    { "segmentId": "SEG-06", "name": "Marina or shipyard operators", "plannedMin": 3, "plannedMax": 5, "completedInterviews": 0, "validAnalysisCases": 0 },
+    { "segmentId": "SEG-07", "name": "Charter operators and sailing schools", "plannedMin": 5, "plannedMax": 8, "completedInterviews": 0, "validAnalysisCases": 0 },
+    { "segmentId": "SEG-08", "name": "Fleet managers", "plannedMin": 4, "plannedMax": 6, "completedInterviews": 0, "validAnalysisCases": 0 }
+  ],
+  "sample": {
+    "totalInterviewsPlannedMin": 40,
+    "totalInterviewsPlannedMax": 80,
+    "completedInterviews": 0,
+    "validAnalyticalCases": 0,
+    "saturationReachedPerSegment": []
+  },
+  "pricing": {
+    "participantsCompletingPricingModule": 0,
+    "priceResponsesRecorded": 0,
+    "gaborGrangerLaddersCompleted": 0,
+    "vanWestendorpModulesCompleted": 0,
+    "wtpStatedPreferenceObserved": false,
+    "wtpCommerciallyValidated": false,
+    "approvedPrices": 0
+  },
+  "coding": {
+    "codedUnits": 0,
+    "doubleCodedUnits": 0,
+    "doubleCodingTargetRatio": 0.25,
+    "cohensKappa": null,
+    "saturationRecorded": false
+  },
+  "wave0Checklist": [
+    { "itemId": "W0-01", "item": "Verified MC-09 baseline", "status": "COMPLETE", "evidence": "Branch feature/marea-mc09 at 9d206cc; PR #15 open, draft, MERGEABLE; clean tree." },
+    { "itemId": "W0-02", "item": "Named research owner", "status": "COMPLETE", "evidence": "Lead / research programme director named in MC10-RESEARCH-SCOPE.md." },
+    { "itemId": "W0-03", "item": "Named data controller", "status": "BLOCKED", "evidence": "No data controller designated; legal seller identity remains OPEN (MC-09 X-02)." },
+    { "itemId": "W0-04", "item": "Verified controller contact information", "status": "BLOCKED", "evidence": "No verified privacy contact exists; cannot be invented." },
+    { "itemId": "W0-05", "item": "Lawful basis reviewed and approved", "status": "BLOCKED", "evidence": "GDPR Art. 6(1)(a) consent proposed in MC10-RESEARCH-ETHICS-AND-PRIVACY.md; no qualified legal review, no national-law sign-off (ES LOPDGDD / PT Lei 58/2019)." },
+    { "itemId": "W0-06", "item": "Participant information and privacy notices approved", "status": "NOT_APPROVED", "evidence": "ES/EN drafts exist in the MC-09 discovery plan and outreach templates; controller identity empty, so no notice can be issued." },
+    { "itemId": "W0-07", "item": "Spanish and English instruments reviewed", "status": "PARTIAL", "evidence": "Internal structural/meaning review recorded in MC10-INSTRUMENT-VERSIONS.md; no qualified bilingual sign-off, translation equivalence not statistically established." },
+    { "itemId": "W0-08", "item": "Portuguese instruments produced where required", "status": "NOT_PRODUCED", "evidence": "PT instruments deliberately not produced without appropriate linguistic review; northern Portugal is therefore not available for fielding." },
+    { "itemId": "W0-09", "item": "Defined geographic and recruitment scope", "status": "COMPLETE", "evidence": "Rías Baixas / Galicia prepared; northern Portugal conditional on PT instruments." },
+    { "itemId": "W0-10", "item": "Approved outreach channels", "status": "BLOCKED", "evidence": "No channel is authorized; recruitment plan lists candidate channels only." },
+    { "itemId": "W0-11", "item": "Approved interviewer responsibilities", "status": "NOT_APPROVED", "evidence": "Interviewer instructions prepared; no interviewer panel assigned or trained." },
+    { "itemId": "W0-12", "item": "Secure research-data storage provisioned", "status": "BLOCKED", "evidence": "Layer A/B storage does not exist in this environment; repository must not hold participant data." },
+    { "itemId": "W0-13", "item": "Restricted access policy in force", "status": "NOT_APPROVED", "evidence": "Policy designed in MC10-RESEARCH-ETHICS-AND-PRIVACY.md; no operator has accepted it." },
+    { "itemId": "W0-14", "item": "Retention and deletion rules in force", "status": "NOT_APPROVED", "evidence": "Rules drafted; no controller means no accountable retention owner." },
+    { "itemId": "W0-15", "item": "Incentive policy approved (even if zero)", "status": "NOT_APPROVED", "evidence": "Zero-incentive policy proposed; approval outstanding." },
+    { "itemId": "W0-16", "item": "Experiment thresholds and price ladders frozen", "status": "COMPLETE", "evidence": "MC10-EXPERIMENT-RESULTS.md, data/experiments.json and data/pricing-ladders.json freeze the MC-09 registered versions before any data exists." },
+    { "itemId": "W0-17", "item": "Recorded fieldwork start authorization", "status": "BLOCKED", "evidence": "AUTH-MC10-001 records NOT_GRANTED." }
+  ],
+  "blockers": [
+    { "blockerId": "BLK-MC10-01", "code": "OUTREACH_AUTHORIZATION_NOT_GRANTED", "description": "No dated, scoped external-outreach authorization was issued.", "unblockCondition": "A written authorization record naming authorizer, date, participant categories, geography, channels, volume, spend/incentive status, duration and fieldwork lead.", "owner": "programme owner" },
+    { "blockerId": "BLK-MC10-02", "code": "DATA_CONTROLLER_NOT_DESIGNATED", "description": "No named data controller or verified privacy contact exists.", "unblockCondition": "Designate the controller, record its identity and a verified privacy contact, and approve the participant information notice.", "owner": "programme owner" },
+    { "blockerId": "BLK-MC10-03", "code": "LAWFUL_BASIS_NOT_LEGALLY_REVIEWED", "description": "Consent-based processing and recruitment communications have not had qualified legal review.", "unblockCondition": "Documented review of GDPR Art. 6/7/13 obligations and Spanish/Portuguese national implementations.", "owner": "legal adviser" },
+    { "blockerId": "BLK-MC10-04", "code": "OUTREACH_CHANNELS_NOT_AUTHORIZED", "description": "No yacht club, marina, association, installer or retailer channel is authorized for invitations.", "unblockCondition": "Channel-level authorization and gatekeeper permissions.", "owner": "programme owner" },
+    { "blockerId": "BLK-MC10-05", "code": "SECURE_RESEARCH_DATA_STORE_NOT_PROVISIONED", "description": "No access-controlled Layer A/B store outside the repository exists.", "unblockCondition": "Provision an approved store with access list, encryption, retention and deletion procedure.", "owner": "data steward" },
+    { "blockerId": "BLK-MC10-06", "code": "NO_APPROVED_OUTBOUND_RESEARCH_CHANNEL", "description": "The agent tool surface exposes no email, telephony or messaging tool. The repository's nodemailer/SMTP path is commerce-notification application code, is not configured as a research channel and is not an approved contact method; a human interviewer panel or an approved research platform is required.", "unblockCondition": "Assign and train human interviewers with approved channels and scripts, or approve an external research platform as a data processor.", "owner": "fieldwork lead" },
+    { "blockerId": "BLK-MC10-07", "code": "PT_INSTRUMENTS_NOT_PRODUCED", "description": "Portuguese instruments lack linguistic review and are deliberately absent.", "unblockCondition": "Qualified PT translation and review, frozen as a new instrument version before use in Portugal.", "owner": "research methodologist" }
+  ],
+  "commercialInvariants": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "sourceIpClearance": "NOT_CLEARED",
+    "productSales": "BLOCKED",
+    "commercialPublication": "BLOCKED",
+    "productionDeployment": "NOT_AUTHORIZED",
+    "profitabilityNotEstablished": true,
+    "pilotSafetyGate": "BLOCKED",
+    "compatibilityTested": "NO",
+    "approvedPrices": 0,
+    "orderableProducts": 0
+  },
+  "evidencePolicy": "Counts in this file are aggregate operational counts only. No participant identity, contact data, verbatim transcript or audio may be stored in the repository. Counts above are 0 because no fieldwork was executed.",
+  "planningInconsistencies": [
+    {
+      "id": "PI-01",
+      "severity": "BLOCKING_BEFORE_FIELDING",
+      "description": "Per-segment quota minima/maxima sum to 37/57 completed interviews, while the MC-09 plan, the experiment registry and this milestone's sample target state 40-80 total. The totals are not derived from the quotas.",
+      "resolution": "Dated plan amendment reconciling the quota table with the total target before any fielding. MC-10 does not change either value.",
+      "evidence": ["docs/marea/market-validation/buyers/MC09-MC10-CUSTOMER-DISCOVERY-PLAN.md sections 2-3", "docs/marea/customer-discovery/methodology/MC10-RESEARCH-PROTOCOL.md"]
+    },
+    {
+      "id": "PI-02",
+      "severity": "BLOCKING_BEFORE_FIELDING",
+      "description": "Three conflicting per-segment minimum/target readings exist: plan summary 'minimum 5, target 8 (operators/retailers minimum 3)', segment table SEG-04/05 minimum 5, experiment registry 'target 8-10' (which exceeds the max-8 quota).",
+      "resolution": "Single authoritative quota statement in a dated amendment; segments must not be silently redefined.",
+      "evidence": ["docs/marea/market-validation/data/validation-experiments.json", "docs/marea/market-validation/buyers/MC09-MC10-CUSTOMER-DISCOVERY-PLAN.md"]
+    },
+    {
+      "id": "PI-03",
+      "severity": "BLOCKING_BEFORE_PRICING_ANALYSIS",
+      "description": "EXP-MC10-04/05 require n>=8 per segment per construct, but preserved quotas cap SEG-04 at 7, SEG-05 at 7, SEG-06 at 5 and SEG-08 at 6. A compliant pricing result is unreachable for those segments without an amendment.",
+      "resolution": "Either amend the quotas or report those segments as BELOW_REGISTERED_MINIMUM. No silent reduction of the minimum.",
+      "evidence": ["docs/marea/market-validation/data/validation-experiments.json", "docs/marea/customer-discovery/data/pricing-ladders.json"]
+    },
+    {
+      "id": "PI-04",
+      "severity": "BLOCKING_BEFORE_FIELDING",
+      "description": "Instrument amendments IV-01..IV-06 are required: consent wording on quotation de-identification, frozen brand-disclosure text, PRICE-01 ladder provenance freeze for data/pricing-ladders.json, consent-version/language capture in NOTE-01/SCHEMA-01, ANA-01 v1.1.0 codebook amendment (12 operational codes vs 8 theme families), and a supervisory-authority complaint route that depends on the undesignated controller.",
+      "resolution": "Dated instrument amendment to v1.1.0 with source hashes, before any fielding; no unreviewed translation.",
+      "evidence": ["docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md", "docs/marea/customer-discovery/methodology/instruments.json"]
+    },
+    {
+      "id": "PI-05",
+      "severity": "BLOCKING_BEFORE_WAVE_1_AND_WAVE_3",
+      "description": "Owner-side instrument gaps identified during preparation: GUIDE-01 v1.0.0 has no dedicated incident/near-miss question required by EXP-MC10-09 minimum evidence; GUIDE-01 Q11 states function before exclusions, conflicting with the programme 'exclusions before benefits' rule; and the GUIDE-01 concept set A-E does not match the programme concept IDs used by the comprehension mirror. Recorded as amendments IV-07..IV-09.",
+      "resolution": "Dated instrument amendment to v1.1.0 before fielding; the prepared comprehension scripts in MC10-CONCEPT-COMPREHENSION.md are labelled PREPARED, NOT FROZEN.",
+      "evidence": ["docs/marea/customer-discovery/owners/MC10-OWNER-DISCOVERY.md", "docs/marea/customer-discovery/MC10-CONCEPT-COMPREHENSION.md", "docs/marea/customer-discovery/methodology/MC10-INSTRUMENT-VERSIONS.md"]
+    }
+  ]
+}

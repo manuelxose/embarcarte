@@ -1,0 +1,319 @@
+npm notice run embarcarte@1.0.0 test:e2e
+npm notice run playwright test
+[WebServer] (node:10708) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:35320) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] Node Express server listening on http://localhost:4310
+[WebServer] {"level":"info","event":"http_request","request_id":"f496460f-198b-4f3d-a9f8-610d9e825aa7","method":"GET","path":"/healthz","status":200,"duration_ms":3.2402}
+[WebServer] {"level":"info","event":"http_request","request_id":"cf60019f-a1d3-46c9-9312-8f35367e9ae0","method":"POST","path":"/api/auth/login","status":200,"duration_ms":33.68}
+[WebServer] {"level":"info","event":"http_request","request_id":"a7c36f7b-d935-4813-8d81-5dc187a069eb","method":"POST","path":"/api/admin/products","status":201,"duration_ms":3.863}
+[WebServer] {"level":"info","event":"http_request","request_id":"14210019-9e60-4c21-b0ed-f62f8dbfd180","method":"GET","path":"/healthz","status":200,"duration_ms":0.2453}
+
+Running 15 tests using 1 worker
+
+[WebServer] {"level":"info","event":"http_request","request_id":"9f3162f6-f680-4f62-bee0-304da6dcc218","method":"POST","path":"/api/admin/products","status":201,"duration_ms":3.3721}
+[WebServer] {"level":"info","event":"http_request","request_id":"c6319ab7-0929-4cba-b527-e50a198f7657","method":"POST","path":"/api/admin/products","status":201,"duration_ms":3.1417}
+[WebServer] {"level":"info","event":"http_request","request_id":"dcc32d23-3a3a-4f73-9e32-4132f14113eb","method":"POST","path":"/api/auth/register","status":201,"duration_ms":32.6498}
+[WebServer] {"level":"info","event":"http_request","request_id":"d3182f20-83d5-4352-96c8-bd02e276b2cc","method":"POST","path":"/api/auth/register","status":201,"duration_ms":31.0994}
+[WebServer] E2E server ready on http://127.0.0.1:4310 (C:\Users\Admin\AppData\Local\Temp\embarcarte-e2e-WZoT0D)
+(node:38928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] {"level":"info","event":"http_request","request_id":"b01606dd-2b7c-4fd2-a018-e5da70fa0250","method":"GET","path":"/","status":200,"duration_ms":69.6264}
+[WebServer] {"level":"info","event":"http_request","request_id":"c0006dc1-5356-4e5d-b832-0612bf2784ac","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.8465}
+[WebServer] {"level":"info","event":"http_request","request_id":"00f35caf-074b-40d7-b95f-72ccf7352231","method":"GET","path":"/en","status":200,"duration_ms":2.9626}
+[WebServer] {"level":"info","event":"http_request","request_id":"65320bb5-590f-472a-bc08-f98b3e6f9b10","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3605}
+[WebServer] {"level":"info","event":"http_request","request_id":"e89a745e-47a5-42b1-93eb-f4aa09a4616c","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.6145}
+[WebServer] {"level":"info","event":"http_request","request_id":"b433ddfb-cdd7-46ce-8f5d-66153ce11fd3","method":"GET","path":"/en/shop","status":200,"duration_ms":217.6039}
+[WebServer] {"level":"info","event":"http_request","request_id":"a2e629b1-fb4b-4a12-b3e9-f0410b63eada","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.5272}
+[WebServer] {"level":"info","event":"http_request","request_id":"21cd420f-00f9-4a59-97e8-be5da5beaa17","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.6965}
+[WebServer] {"level":"info","event":"http_request","request_id":"cd5d0724-6614-4a2d-845c-9e7e916d9ec0","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.6478}
+[WebServer] {"level":"info","event":"http_request","request_id":"2c0b6a2d-1cbb-435e-89a8-3e2323313a9e","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":67.3631}
+[WebServer] {"level":"info","event":"http_request","request_id":"2c51d222-20d9-42d6-9c25-9bf26aedc265","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4418}
+[WebServer] {"level":"info","event":"http_request","request_id":"7ef27027-0b5e-416b-b689-f554e8d72461","method":"GET","path":"/en/cart","status":200,"duration_ms":1.4126}
+[WebServer] {"level":"info","event":"http_request","request_id":"b3f9625c-4b61-446d-b97c-503cb3aea8cc","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3907}
+[WebServer] {"level":"info","event":"http_request","request_id":"3f5a9a1c-cff3-4e2f-b847-8ba276f6b65e","method":"GET","path":"/api/shop/config","status":200,"duration_ms":0.6689}
+[WebServer] {"level":"info","event":"http_request","request_id":"7d980739-52a4-40ab-b21c-0cd9897d995c","method":"GET","path":"/en/contact","status":200,"duration_ms":3.0496}
+[WebServer] {"level":"info","event":"http_request","request_id":"78cf2785-5acb-49d4-b955-6ba28f2bb7f6","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.6326}
+[WebServer] {"level":"info","event":"http_request","request_id":"272854bf-118c-4e1b-8b4d-189704c694e5","method":"GET","path":"/en/login","status":200,"duration_ms":0.7202}
+[WebServer] {"level":"info","event":"http_request","request_id":"f73003ed-24a6-4a0d-bf02-f1eb2571023f","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3832}
+  ok  1 [chromium] ÔÇ║ e2e\accessibility.spec.ts:7:5 ÔÇ║ key public pages have no serious or critical automated accessibility violations (16.2s)
+[WebServer] {"level":"info","event":"http_request","request_id":"c65c718a-f5e2-46aa-a7db-88c55329a7df","method":"GET","path":"/en","status":200,"duration_ms":2.5593}
+[WebServer] {"level":"info","event":"http_request","request_id":"ddd6dfe9-97be-4fc8-98d8-0a49d4db03c2","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.7105}
+[WebServer] {"level":"info","event":"http_request","request_id":"8907d6fa-5bfb-4722-95e1-a77010b92a60","method":"GET","path":"/","status":200,"duration_ms":2.5259}
+[WebServer] {"level":"info","event":"http_request","request_id":"3bbf94c3-da59-4f6c-b232-776b5de8b3f5","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.5279}
+[WebServer] {"level":"info","event":"http_request","request_id":"025a8462-9885-4a30-bc64-4fe8006dd85f","method":"GET","path":"/en","status":304,"duration_ms":1.345}
+[WebServer] {"level":"info","event":"http_request","request_id":"17947bbc-b91b-472a-8cbb-d4dd0d998620","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4324}
+  ok  2 [chromium] ÔÇ║ e2e\accessibility.spec.ts:29:5 ÔÇ║ keyboard skip link and mobile menu are operable (653ms)
+[WebServer] {"level":"info","event":"http_request","request_id":"496dc303-ffdc-4188-8e19-b3182b6844b9","method":"GET","path":"/en/login","status":200,"duration_ms":0.7588}
+[WebServer] {"level":"info","event":"http_request","request_id":"a2805069-7728-417a-a95a-9b7558514b41","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3356}
+[WebServer] {"level":"info","event":"http_request","request_id":"0cc92e45-7581-4985-bef6-8e8a7ee2f894","method":"POST","path":"/api/auth/login","status":200,"duration_ms":50.066}
+[WebServer] {"level":"info","event":"http_request","request_id":"27cb4069-ed69-4d92-8e12-e28031a48dd3","method":"GET","path":"/api/orders","status":200,"duration_ms":1.0234}
+  ok  3 [chromium] ÔÇ║ e2e\accessibility.spec.ts:48:5 ÔÇ║ authenticated account has no serious or critical automated violations (965ms)
+[WebServer] {"level":"info","event":"http_request","request_id":"49d8bba4-1f1f-4eda-a234-c7889f593954","method":"GET","path":"/en/login","status":200,"duration_ms":0.8553}
+[WebServer] {"level":"info","event":"http_request","request_id":"a3790953-c1f9-40a8-87b4-0b76b1983ef4","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4472}
+[WebServer] {"level":"info","event":"http_request","request_id":"910483b0-2de2-4daa-8ca0-a8adbafdca6a","method":"POST","path":"/api/auth/register","status":201,"duration_ms":52.6604}
+[WebServer] {"level":"info","event":"http_request","request_id":"44432d35-b725-42c3-80da-6f837e1883c6","method":"GET","path":"/api/orders","status":200,"duration_ms":0.8257}
+[WebServer] {"level":"info","event":"http_request","request_id":"e57d7bf6-3b0e-42b8-bb7d-6aa1d4657aaa","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.5255}
+[WebServer] {"level":"info","event":"http_request","request_id":"f0992ec5-5bb0-4326-acc3-564cf301cfc3","method":"GET","path":"/en/shop","status":200,"duration_ms":63.7273}
+[WebServer] {"level":"info","event":"http_request","request_id":"c26b2144-bdac-46db-b878-37ef3a212557","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.8568}
+[WebServer] {"level":"info","event":"http_request","request_id":"80c87118-2676-4e57-aaf7-3e60494664b1","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.71}
+[WebServer] {"level":"info","event":"http_request","request_id":"973256f8-4282-4bea-b5cc-309ab9fcbbdd","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.5053}
+[WebServer] {"level":"info","event":"http_request","request_id":"947f31f4-54fc-4689-8f3a-0a58bf29b803","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":35.7888}
+[WebServer] {"level":"info","event":"http_request","request_id":"7bf698cb-bd83-4f36-83f8-6dece0f17989","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.6287}
+[WebServer] {"level":"info","event":"http_request","request_id":"a744cbcd-c07b-495b-a29d-4f3bf10cf8d1","method":"GET","path":"/en/cart","status":200,"duration_ms":0.6955}
+[WebServer] {"level":"info","event":"http_request","request_id":"4f78a67f-40b0-4dee-963d-962005e06ffa","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.6364}
+[WebServer] {"level":"info","event":"http_request","request_id":"4d2b3178-7fb1-44e9-928d-3964a7925d47","method":"GET","path":"/api/shop/config","status":200,"duration_ms":0.4689}
+[WebServer] {"level":"info","event":"http_request","request_id":"fdd43ec1-6646-45e1-b5c3-6b6388ac6fe9","method":"GET","path":"/api/shop/config","status":304,"duration_ms":0.669}
+[WebServer] {"level":"info","event":"http_request","request_id":"6bfbb345-8580-4dbd-b09d-cf06cbeb3ee3","method":"GET","path":"/api/shop/config","status":304,"duration_ms":0.5275}
+[WebServer] {"level":"info","event":"http_request","request_id":"ed502d11-9dc1-413b-8d56-65dd673cda0b","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.6068}
+[WebServer] {"level":"info","event":"http_request","request_id":"6c8ee9f9-382c-4a32-bd2c-e41f21659230","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":63.9459}
+[WebServer] {"level":"info","event":"http_request","request_id":"9e24de28-4983-4df5-be18-d003a476a1ba","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.6665}
+[WebServer] {"level":"info","event":"http_request","request_id":"ab39562b-5a9b-42f9-99f9-fc6737b91a58","method":"GET","path":"/en/cart","status":200,"duration_ms":0.8107}
+[WebServer] {"level":"info","event":"http_request","request_id":"134857ab-c939-42cc-a7cc-52b121172ff3","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.8934}
+[WebServer] {"level":"info","event":"http_request","request_id":"73dd5145-b622-44a0-82a2-66618a9a55b6","method":"GET","path":"/api/shop/config","status":304,"duration_ms":0.5071}
+[WebServer] [mail] SMTP no configurado; email omitido (i***@embarcarte.com): [embarcarte.com] Nuevo pedido #1
+[WebServer] [mail] SMTP no configurado; email omitido (b***@example.test): We received your order #1
+[WebServer] {"level":"info","event":"http_request","request_id":"36fb86db-6050-439c-8b53-5a0684b6dd0a","method":"POST","path":"/api/orders","status":201,"duration_ms":6.8084}
+[WebServer] {"level":"info","event":"http_request","request_id":"ff3db857-b4ab-4835-8ab5-db6d35da1b7f","method":"GET","path":"/api/orders/1","status":200,"duration_ms":0.9161}
+[WebServer] {"level":"info","event":"http_request","request_id":"09e0198e-34ac-4141-bf9a-3423318ef469","method":"GET","path":"/api/orders/1","status":200,"duration_ms":0.962}
+[WebServer] {"level":"info","event":"http_request","request_id":"c43de72b-97fc-485e-8423-bf3f41d6c8a7","method":"GET","path":"/api/orders/1","status":200,"duration_ms":0.7607}
+[WebServer] {"level":"info","event":"http_request","request_id":"0f755ed2-2c50-4ad4-9d3b-bcef53540ba5","method":"GET","path":"/en/account","status":200,"duration_ms":0.7536}
+[WebServer] {"level":"info","event":"http_request","request_id":"6542a914-9a65-45f7-8b5f-e8d057b34b21","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.661}
+[WebServer] {"level":"info","event":"http_request","request_id":"b23356ca-8951-438c-9593-22b2e4441bc9","method":"GET","path":"/api/orders","status":200,"duration_ms":0.8636}
+[WebServer] {"level":"info","event":"http_request","request_id":"619f8ce8-7a22-4fa1-942c-3d249dd5864a","method":"GET","path":"/api/orders/1","status":200,"duration_ms":0.857}
+[WebServer] {"level":"info","event":"http_request","request_id":"1fb36844-df3e-47b2-a439-318e52215400","method":"GET","path":"/en/account","status":200,"duration_ms":0.7848}
+[WebServer] {"level":"info","event":"http_request","request_id":"4eb903cc-cc43-4bbb-9890-469319951ea2","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.6581}
+[WebServer] {"level":"info","event":"http_request","request_id":"e3f6cb61-63aa-46c8-b9da-c2b97fccf544","method":"GET","path":"/api/orders","status":200,"duration_ms":0.7953}
+[WebServer] {"level":"info","event":"http_request","request_id":"5217ecf4-509d-40f8-af24-fbadf82bde9c","method":"GET","path":"/api/orders","status":200,"duration_ms":0.919}
+[WebServer] {"level":"info","event":"http_request","request_id":"94a75589-80df-4b90-9233-35a045106a0b","method":"GET","path":"/api/orders","status":200,"duration_ms":0.6785}
+[WebServer] {"level":"info","event":"http_request","request_id":"6d141233-71be-426b-b4a0-8d6137c92bce","method":"GET","path":"/en/login","status":200,"duration_ms":0.7348}
+[WebServer] {"level":"info","event":"http_request","request_id":"fe9c2760-332a-4cc0-9161-96dbebbad609","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4423}
+[WebServer] {"level":"info","event":"http_request","request_id":"8c4a2fc9-b53c-4aed-909f-bb1c9d765f26","method":"POST","path":"/api/auth/login","status":200,"duration_ms":47.8834}
+[WebServer] {"level":"info","event":"http_request","request_id":"39c7bc18-bd69-4549-8bb9-c4226d6901e0","method":"GET","path":"/api/orders","status":200,"duration_ms":0.7822}
+[WebServer] {"level":"info","event":"http_request","request_id":"0b216c70-f120-42d3-802a-633bb3351388","method":"GET","path":"/en/account/orders/1","status":200,"duration_ms":0.7536}
+[WebServer] {"level":"info","event":"http_request","request_id":"c7555a9f-7117-41f4-99e7-ecb2f0c8c81d","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.5266}
+[WebServer] {"level":"warn","event":"http_request","request_id":"aa778cf1-4f45-4971-a6ae-846dada2d66a","method":"GET","path":"/api/orders/1","status":404,"duration_ms":0.945}
+  ok  4 [chromium] ÔÇ║ e2e\commerce.spec.ts:4:5 ÔÇ║ catalogue, cart, checkout, account and order ownership (3.1s)
+[WebServer] {"level":"info","event":"http_request","request_id":"5654d131-3523-4b3f-aa6c-342f71753bfd","method":"GET","path":"/en","status":200,"duration_ms":1.4158}
+[WebServer] {"level":"info","event":"http_request","request_id":"f0602027-e9ec-438e-b09c-4a97268b9e05","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4137}
+[WebServer] {"level":"info","event":"http_request","request_id":"b25babd7-08c8-4660-a688-757cf497abfa","method":"GET","path":"/en","status":200,"duration_ms":1.5179}
+[WebServer] {"level":"info","event":"http_request","request_id":"2bdd09a5-2ba1-4102-a65a-5e91ec9450c3","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4293}
+  ok  5 [chromium] ÔÇ║ e2e\failure.spec.ts:11:5 ÔÇ║ empty catalogue and catalogue network failures stay usable (702ms)
+[WebServer] {"level":"info","event":"http_request","request_id":"8c364db6-45b9-40b3-9d8d-e957ccc120bd","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.5298}
+[WebServer] {"level":"info","event":"http_request","request_id":"3fdbf250-3194-4d01-846b-ed764f8dc092","method":"GET","path":"/en/shop","status":200,"duration_ms":111.4966}
+[WebServer] {"level":"info","event":"http_request","request_id":"7c46c857-e13b-47bb-ac77-6bc76dc77a4f","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4169}
+[WebServer] {"level":"info","event":"http_request","request_id":"bb89a5a0-154b-4c97-88ef-8a63afbd648b","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.5439}
+  ok  6 [chromium] ÔÇ║ e2e\failure.spec.ts:31:5 ÔÇ║ a product API error is not turned into a 404 (481ms)
+[WebServer] {"level":"warn","event":"http_request","request_id":"d100d29c-73be-4c4d-9b94-2dd566c66267","method":"GET","path":"/api/shop/products/no-existe","status":404,"duration_ms":0.4915}
+[WebServer] {"level":"warn","event":"http_request","request_id":"88b514cf-c460-42e3-88ba-e09f162afb54","method":"GET","path":"/en/shop/no-existe","status":404,"duration_ms":47.8565}
+[WebServer] {"level":"info","event":"http_request","request_id":"574e436c-ad97-44bb-aa7c-b1df6252ab28","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3928}
+[WebServer] {"level":"warn","event":"http_request","request_id":"6d8fa86c-4344-4bc4-93c0-224e5162ee34","method":"GET","path":"/api/shop/products/no-existe","status":404,"duration_ms":0.5847}
+[WebServer] {"level":"warn","event":"http_request","request_id":"1eb1972e-314e-486e-9640-33abf0a32b90","method":"GET","path":"/en/no-existe","status":404,"duration_ms":35.2137}
+[WebServer] {"level":"info","event":"http_request","request_id":"42621f65-7177-4e4a-a7fc-d53788a30933","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4851}
+[WebServer] {"level":"info","event":"http_request","request_id":"4aee6736-593b-405d-80fb-a3669445cc67","method":"GET","path":"/en/login","status":200,"duration_ms":0.6778}
+[WebServer] {"level":"info","event":"http_request","request_id":"9abd77ca-7b06-4bcd-aa7f-1a72b196c9e8","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4299}
+[WebServer] {"level":"info","event":"http_request","request_id":"91cead98-4af8-411a-85c7-2909844db0b0","method":"POST","path":"/api/auth/login","status":200,"duration_ms":49.1014}
+[WebServer] {"level":"info","event":"http_request","request_id":"4e2e2559-511b-49f2-aec0-2ba66af4117d","method":"GET","path":"/api/orders","status":200,"duration_ms":0.7324}
+[WebServer] {"level":"info","event":"http_request","request_id":"6f977963-c943-44cb-a91b-c7ba64b623fc","method":"GET","path":"/en/account","status":200,"duration_ms":0.5648}
+[WebServer] {"level":"info","event":"http_request","request_id":"4672fb48-da31-40aa-8209-906146ffc0ff","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3403}
+  ok  7 [chromium] ÔÇ║ e2e\failure.spec.ts:46:5 ÔÇ║ unavailable product, unknown URL and session expiry (825ms)
+[WebServer] {"level":"info","event":"http_request","request_id":"c54763ea-0f1c-413e-9718-c9855e43fd36","method":"GET","path":"/en/login","status":200,"duration_ms":0.6618}
+[WebServer] {"level":"info","event":"http_request","request_id":"2baf8d02-1882-4100-8c73-2dcb77d5d883","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4056}
+[WebServer] {"level":"info","event":"http_request","request_id":"6b04986a-0d56-41d1-9521-c366357be476","method":"POST","path":"/api/auth/register","status":201,"duration_ms":50.5867}
+[WebServer] {"level":"info","event":"http_request","request_id":"2ffc96ea-620c-4bc3-9a07-98cb1c47f5f3","method":"GET","path":"/api/orders","status":200,"duration_ms":0.7004}
+[WebServer] {"level":"info","event":"http_request","request_id":"b033aff3-cbad-4e72-b18b-78fefb91d61b","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.4289}
+[WebServer] {"level":"info","event":"http_request","request_id":"941d73e3-3099-4727-8a01-30aa0bb5bf08","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":42.8832}
+[WebServer] {"level":"info","event":"http_request","request_id":"ef07bccc-ceca-4c3f-b071-cd211deac8fe","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.5027}
+[WebServer] {"level":"info","event":"http_request","request_id":"8c5252b6-56b8-4cc5-abdb-f953cd1cf387","method":"GET","path":"/en/cart","status":200,"duration_ms":0.6739}
+[WebServer] {"level":"info","event":"http_request","request_id":"b6e87447-3458-4e6b-9f3b-4a2e2e017842","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.5719}
+[WebServer] {"level":"info","event":"http_request","request_id":"823d60b1-c769-435e-b75c-571ac616854f","method":"GET","path":"/api/shop/config","status":200,"duration_ms":0.5548}
+[WebServer] {"level":"info","event":"http_request","request_id":"5f50fd2a-5681-4fe0-9392-7678a6d762d0","method":"GET","path":"/en/cart","status":200,"duration_ms":0.6598}
+[WebServer] {"level":"info","event":"http_request","request_id":"25c23c3a-6726-4e29-8eeb-afc207a41fab","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.5399}
+[WebServer] {"level":"info","event":"http_request","request_id":"ee2e93e2-e5b4-41f7-be86-14e5a801e14c","method":"GET","path":"/api/shop/config","status":304,"duration_ms":0.4943}
+[WebServer] {"level":"warn","event":"http_request","request_id":"c111efec-be89-4f9d-8f60-e32898a82624","method":"POST","path":"/api/orders","status":409,"duration_ms":0.9885}
+  ok  8 [chromium] ÔÇ║ e2e\failure.spec.ts:63:5 ÔÇ║ checkout failures are reported without creating a live payment (1.4s)
+[WebServer] {"level":"warn","event":"http_request","request_id":"d943c1c1-d316-45e1-958e-07df6cc70aa2","method":"GET","path":"/api/orders","status":401,"duration_ms":0.4495}
+[WebServer] {"level":"warn","event":"http_request","request_id":"b841a743-4794-4182-9bef-3a38aa7d73d2","method":"GET","path":"/api/orders/1","status":401,"duration_ms":0.4027}
+[WebServer] {"level":"warn","event":"http_request","request_id":"8c81a909-4a8c-4440-a126-31f12af62797","method":"GET","path":"/api/admin/stats","status":401,"duration_ms":0.5656}
+  ok  9 [chromium] ÔÇ║ e2e\failure.spec.ts:94:5 ÔÇ║ private API endpoints reject unauthenticated access (32ms)
+[WebServer] {"level":"info","event":"http_request","request_id":"597ae956-d1a2-4054-8601-a208db3707e3","method":"GET","path":"/","status":200,"duration_ms":1.2773}
+[WebServer] {"level":"info","event":"http_request","request_id":"8b535052-9e7f-481b-8086-4299c5b1b521","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3802}
+[WebServer] {"level":"info","event":"http_request","request_id":"a8894b56-daea-426e-acd9-25e50b481719","method":"GET","path":"/en","status":200,"duration_ms":1.4713}
+[WebServer] {"level":"info","event":"http_request","request_id":"b57412a8-16f1-4e94-bbda-011a0320fc5e","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3568}
+[WebServer] {"level":"info","event":"http_request","request_id":"5ee35a76-a5b1-4a77-a5db-3baad61895df","method":"GET","path":"/tecnologia","status":200,"duration_ms":2.6079}
+[WebServer] {"level":"info","event":"http_request","request_id":"ef34f555-e985-4e85-a4d2-548fc35d204f","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4073}
+[WebServer] {"level":"info","event":"http_request","request_id":"f20ca632-8921-4b1f-87ba-378c51701ac9","method":"GET","path":"/en/technology","status":200,"duration_ms":2.5647}
+[WebServer] {"level":"info","event":"http_request","request_id":"8c56c4ca-7380-4d70-a07e-3852dc52014a","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3943}
+[WebServer] {"level":"info","event":"http_request","request_id":"49bd9a7c-65f1-41b2-9850-ea4994360687","method":"GET","path":"/tecnologia/navegador","status":200,"duration_ms":2.4836}
+[WebServer] {"level":"info","event":"http_request","request_id":"4bb9ee26-0f11-4d84-91e2-c9c1acc86887","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4179}
+[WebServer] {"level":"info","event":"http_request","request_id":"82588fbe-0739-4d83-9117-c603d0eb31fa","method":"GET","path":"/en/technology/navegador","status":200,"duration_ms":2.2469}
+[WebServer] {"level":"info","event":"http_request","request_id":"e24281c8-79ff-4361-af69-427371f3543f","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3767}
+[WebServer] {"level":"info","event":"http_request","request_id":"62fc1ce5-c617-42bb-874b-f54dfc9017ed","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.6554}
+[WebServer] {"level":"info","event":"http_request","request_id":"7c33385c-689d-45c9-aaf2-9d76b7e08bae","method":"GET","path":"/tienda","status":200,"duration_ms":58.3676}
+[WebServer] {"level":"info","event":"http_request","request_id":"1c922c08-61ea-4bab-8bb5-d9f2d9c79689","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4008}
+[WebServer] {"level":"info","event":"http_request","request_id":"8bee4f7b-ffbd-477a-ae23-469803813d4a","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.5891}
+[WebServer] {"level":"info","event":"http_request","request_id":"57f4fb7e-2b68-4fb7-bbc8-d82248ec53ad","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.4907}
+[WebServer] {"level":"info","event":"http_request","request_id":"b624fa2d-2242-4fcf-93a4-51dbfa9fbd62","method":"GET","path":"/en/shop","status":200,"duration_ms":30.2841}
+[WebServer] {"level":"info","event":"http_request","request_id":"eae13a42-bbcf-4778-82a8-909d20b1648e","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3704}
+[WebServer] {"level":"info","event":"http_request","request_id":"4c08d13c-cb50-4056-a91c-42b535389028","method":"GET","path":"/api/shop/products","status":304,"duration_ms":0.5495}
+[WebServer] {"level":"info","event":"http_request","request_id":"d8da4367-5ac8-4ded-b4c7-985f97a8da91","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.4734}
+[WebServer] {"level":"info","event":"http_request","request_id":"abbfb250-df38-4d8a-a755-8b12a5f17ea1","method":"GET","path":"/tienda/e2e-hub","status":200,"duration_ms":58.7663}
+[WebServer] {"level":"info","event":"http_request","request_id":"b9e8d749-9ab5-4031-8a26-e3ac0e1adfd3","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.5837}
+[WebServer] {"level":"info","event":"http_request","request_id":"b223ab8c-6c34-4c0f-86d7-f5f364a2dfe8","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.4867}
+[WebServer] {"level":"info","event":"http_request","request_id":"ba05b5b0-a1fc-4ca5-bf3d-60d6b1e7a6de","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":32.0048}
+[WebServer] {"level":"info","event":"http_request","request_id":"edd9670f-00e2-435a-8b9d-bbadd11cc3f8","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4572}
+[WebServer] {"level":"info","event":"http_request","request_id":"afd98c44-a70f-4753-8f14-359a42a24e70","method":"GET","path":"/servicios","status":200,"duration_ms":2.2028}
+[WebServer] {"level":"info","event":"http_request","request_id":"a70ba9ee-d76f-4a73-bf35-c5377bc0f2a4","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4288}
+[WebServer] {"level":"info","event":"http_request","request_id":"a3540084-6adc-4bfa-b45c-3c07df3eae36","method":"GET","path":"/en/services","status":200,"duration_ms":2.0529}
+[WebServer] {"level":"info","event":"http_request","request_id":"c85766ce-b7ab-4ea6-9637-b3257dd3bc53","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4405}
+[WebServer] {"level":"info","event":"http_request","request_id":"9fb0912a-3005-41ce-afcc-3004a145d928","method":"GET","path":"/contacto","status":200,"duration_ms":2.1811}
+[WebServer] {"level":"info","event":"http_request","request_id":"956f1589-f906-4d21-839c-413611a98518","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3579}
+[WebServer] {"level":"info","event":"http_request","request_id":"ac42b50b-fc16-473e-a9e0-6036d747cc46","method":"GET","path":"/en/contact","status":200,"duration_ms":1.1678}
+[WebServer] {"level":"info","event":"http_request","request_id":"3546146e-df51-4633-a342-54bc518a71bd","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3407}
+[WebServer] {"level":"info","event":"http_request","request_id":"2d5bb24b-8d19-4c89-a2ee-213e42b0d704","method":"GET","path":"/guias","status":200,"duration_ms":2.5926}
+[WebServer] {"level":"info","event":"http_request","request_id":"8ed5549b-0b46-4c7e-a83c-af204ec811ce","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4393}
+[WebServer] {"level":"info","event":"http_request","request_id":"382751e0-3498-4e97-a706-8965fafeaa77","method":"GET","path":"/en/guides","status":200,"duration_ms":2.6903}
+[WebServer] {"level":"info","event":"http_request","request_id":"7a3d53f1-cd48-41e0-a7e4-911cd9a9a131","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4238}
+[WebServer] {"level":"info","event":"http_request","request_id":"d8464451-3a2a-4a73-991c-ac914964b28c","method":"GET","path":"/guias/que-es-signal-k","status":200,"duration_ms":2.3437}
+[WebServer] {"level":"info","event":"http_request","request_id":"d48b11b8-ccaf-4f3a-8716-61ebb6fd428e","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3793}
+[WebServer] {"level":"info","event":"http_request","request_id":"d4147e0c-fc0d-4818-ac7f-7235b472c596","method":"GET","path":"/en/guides/que-es-signal-k","status":200,"duration_ms":2.1382}
+[WebServer] {"level":"info","event":"http_request","request_id":"29e50a5b-f25f-4bc6-b357-19485f9b1388","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4081}
+[WebServer] {"level":"info","event":"http_request","request_id":"7cc9c579-1314-4fcf-b100-02a08fc82ab2","method":"GET","path":"/aviso-legal","status":200,"duration_ms":3.0026}
+[WebServer] {"level":"info","event":"http_request","request_id":"7c31526c-6ea3-4dfe-bbc4-5e4b1b19b16a","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3886}
+[WebServer] {"level":"info","event":"http_request","request_id":"b42aea65-057b-457c-98ad-0a849055a529","method":"GET","path":"/en/legal-notice","status":200,"duration_ms":2.1657}
+[WebServer] {"level":"info","event":"http_request","request_id":"224a7ebd-dd74-4c45-bcd7-58c4ecad09c0","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.329}
+[WebServer] {"level":"info","event":"http_request","request_id":"58380ed6-8eb1-45da-8bd2-f241955a1f03","method":"GET","path":"/privacidad","status":200,"duration_ms":2.214}
+[WebServer] {"level":"info","event":"http_request","request_id":"802ed972-52c7-46c0-8661-55523395821d","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3495}
+[WebServer] {"level":"info","event":"http_request","request_id":"5b8fd1fd-4bdc-4a23-9f03-006d11a915db","method":"GET","path":"/en/privacy","status":200,"duration_ms":2.1932}
+[WebServer] {"level":"info","event":"http_request","request_id":"f8625000-876c-4c95-a8c8-fe3fa7984bb1","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3489}
+[WebServer] {"level":"info","event":"http_request","request_id":"7afc757b-124b-4838-81d1-93be71f1e358","method":"GET","path":"/cookies","status":200,"duration_ms":2.191}
+[WebServer] {"level":"info","event":"http_request","request_id":"cef4a04a-f2b6-4490-a308-8a9c49aad132","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3574}
+[WebServer] {"level":"info","event":"http_request","request_id":"2a879725-0d6e-408c-9cd9-825c65817788","method":"GET","path":"/en/cookies","status":200,"duration_ms":2.3233}
+[WebServer] {"level":"info","event":"http_request","request_id":"c513af43-c98b-4576-a691-8380c2aff324","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3403}
+[WebServer] {"level":"info","event":"http_request","request_id":"9808e259-88e5-4eef-a87c-3c9060c51176","method":"GET","path":"/condiciones-de-venta","status":200,"duration_ms":2.2989}
+[WebServer] {"level":"info","event":"http_request","request_id":"b979c5e4-83f7-4207-bb78-888b945272e7","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4702}
+[WebServer] {"level":"info","event":"http_request","request_id":"c0d02e51-119d-4124-9852-85ba021a367e","method":"GET","path":"/en/terms-of-sale","status":200,"duration_ms":2.0791}
+[WebServer] {"level":"info","event":"http_request","request_id":"af9c04d3-849f-4d83-8f63-c142685c4140","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4117}
+  ok 10 [chromium] ÔÇ║ e2e\public.spec.ts:20:5 ÔÇ║ public bilingual surface renders in both locales (2.6s)
+[WebServer] {"level":"info","event":"http_request","request_id":"c8739874-1ec2-40e2-8864-85b6c846c441","method":"GET","path":"/","status":200,"duration_ms":2.0211}
+[WebServer] {"level":"info","event":"http_request","request_id":"b51b6c5b-d63f-4323-af92-bf1da89329ae","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3721}
+[WebServer] {"level":"info","event":"http_request","request_id":"d16f0054-fce8-4fe0-b7c0-bd2a5ace8c2c","method":"GET","path":"/en/technology/navegador","status":200,"duration_ms":1.4231}
+[WebServer] {"level":"info","event":"http_request","request_id":"52add21d-a9ce-4ddd-9c0d-249b788b18e9","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4268}
+[WebServer] {"level":"info","event":"http_request","request_id":"b661e650-ea3b-42cc-bb90-2b4827a65020","method":"GET","path":"/en/guides/que-es-signal-k","status":200,"duration_ms":1.1847}
+[WebServer] {"level":"info","event":"http_request","request_id":"da3a32e1-899d-4f35-a55b-765ceec0f51e","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4562}
+[WebServer] {"level":"info","event":"http_request","request_id":"251b5986-9ebd-4b05-ad90-20a95d2c6834","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.5007}
+[WebServer] {"level":"info","event":"http_request","request_id":"ded747c5-260d-4127-9c3d-86351cc99747","method":"GET","path":"/en/shop","status":200,"duration_ms":68.111}
+[WebServer] {"level":"info","event":"http_request","request_id":"204d7a98-c895-48e9-bc6c-4eabbe34164b","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3604}
+[WebServer] {"level":"info","event":"http_request","request_id":"b8e33de9-941d-4adc-9e84-5b9839180acd","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.6267}
+[WebServer] {"level":"info","event":"http_request","request_id":"d55af3de-b13e-45d2-bc64-130de3556449","method":"GET","path":"/api/shop/products","status":304,"duration_ms":0.5959}
+[WebServer] {"level":"info","event":"http_request","request_id":"f0c1e9be-9227-4163-8360-7c3757f5754c","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.5115}
+[WebServer] {"level":"info","event":"http_request","request_id":"708612f1-2361-4bd4-8497-d5b14f66086d","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":25.9089}
+[WebServer] {"level":"info","event":"http_request","request_id":"c0bf83d7-cd05-4d87-9863-20854d9e59b7","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4524}
+  ok 11 [chromium] ÔÇ║ e2e\public.spec.ts:40:5 ÔÇ║ language switcher preserves identity, query and fragment (1.1s)
+[WebServer] {"level":"info","event":"http_request","request_id":"3d648eb3-b6b9-4a8e-8e77-d3f25d900562","method":"GET","path":"/en/login","status":200,"duration_ms":0.6094}
+[WebServer] {"level":"info","event":"http_request","request_id":"42b5fb33-6b4f-4525-97cb-20d715aa7ba4","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3578}
+  ok 12 [chromium] ÔÇ║ e2e\public.spec.ts:77:5 ÔÇ║ login exposes the Google sign-in entry point (362ms)
+[WebServer] {"level":"info","event":"http_request","request_id":"4ce52cbc-e7fd-4764-a13b-d89edf970460","method":"GET","path":"/en","status":200,"duration_ms":1.1361}
+[WebServer] {"level":"info","event":"http_request","request_id":"a17c7870-8ab0-4d73-8d28-d068a0a3eda1","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3671}
+[WebServer] {"level":"info","event":"http_request","request_id":"45e1de2d-a8f4-42f1-83bd-00bd74850b59","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.4444}
+  ok 13 [chromium] ÔÇ║ e2e\public.spec.ts:84:5 ÔÇ║ mobile navigation opens, navigates and closes (503ms)
+[WebServer] {"level":"info","event":"http_request","request_id":"508f974b-94f4-40aa-9aab-fb7c4d4c8499","method":"GET","path":"/","status":200,"duration_ms":1.1927}
+[WebServer] {"level":"info","event":"http_request","request_id":"95f892bc-41c2-46fe-813c-92b892424b27","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3837}
+[WebServer] {"level":"info","event":"http_request","request_id":"73d6430e-e33e-4bde-8763-1bbbb05c70fc","method":"GET","path":"/en","status":200,"duration_ms":1.1394}
+[WebServer] {"level":"info","event":"http_request","request_id":"c7275ee7-ced7-4a25-9579-2665b6e29e66","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.2953}
+[WebServer] {"level":"info","event":"http_request","request_id":"a3cb6946-6906-47be-833f-bedb8f4e94bb","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.4382}
+[WebServer] {"level":"info","event":"http_request","request_id":"de8133c7-b0f7-4627-83ba-f9773673916f","method":"GET","path":"/en/shop","status":200,"duration_ms":44.193}
+[WebServer] {"level":"info","event":"http_request","request_id":"685cb13b-2deb-43aa-8f99-5618fda2ef17","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3508}
+[WebServer] {"level":"info","event":"http_request","request_id":"276b73d9-7bf8-450f-884e-0f346d35cce0","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.6237}
+[WebServer] {"level":"info","event":"http_request","request_id":"d826bb6e-0461-48a6-8b56-1ddc15f96397","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.2797}
+[WebServer] {"level":"info","event":"http_request","request_id":"48e36b75-27c7-40f3-b28c-eadd64f0e9e4","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":39.7254}
+[WebServer] {"level":"info","event":"http_request","request_id":"2fdba1ef-bebd-4715-a8d0-a361273a5ebe","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3833}
+[WebServer] {"level":"info","event":"http_request","request_id":"8b90e09f-5b51-4af5-8603-d99ad983fce4","method":"GET","path":"/en/contact","status":200,"duration_ms":1.196}
+[WebServer] {"level":"info","event":"http_request","request_id":"85800c43-383b-45d1-819b-22cf7d09f39c","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.2895}
+[WebServer] {"level":"info","event":"http_request","request_id":"3d5bd3eb-de3f-4277-a94b-1f8a208c3e71","method":"GET","path":"/en/login","status":200,"duration_ms":0.6986}
+[WebServer] {"level":"info","event":"http_request","request_id":"aa84f735-63dc-455b-9f6c-243f07b37fe3","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3484}
+[WebServer] {"level":"info","event":"http_request","request_id":"d35e3bca-112a-4e67-8fb1-6a47d0142119","method":"GET","path":"/","status":304,"duration_ms":0.8907}
+[WebServer] {"level":"info","event":"http_request","request_id":"0d0b6e39-5cfa-4464-ad50-01f34696aefa","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3905}
+[WebServer] {"level":"info","event":"http_request","request_id":"79c3d704-da0b-43c4-916f-e01aa85677a2","method":"GET","path":"/en","status":304,"duration_ms":0.7833}
+[WebServer] {"level":"info","event":"http_request","request_id":"a4716eea-4e05-4c74-a1d7-09003a914759","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3447}
+[WebServer] {"level":"info","event":"http_request","request_id":"9113de60-a63e-4fc1-bd07-0f9b69b14c30","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.4288}
+[WebServer] {"level":"info","event":"http_request","request_id":"12a9f4e6-5745-4ecd-a006-dfdc4da38de6","method":"GET","path":"/en/shop","status":200,"duration_ms":39.446}
+[WebServer] {"level":"info","event":"http_request","request_id":"cd816c4a-c890-484a-9c40-ff56fe6ca999","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4358}
+[WebServer] {"level":"info","event":"http_request","request_id":"28624e92-bfcc-4a06-bb1c-62b0abb29454","method":"GET","path":"/api/shop/products","status":304,"duration_ms":0.5817}
+[WebServer] {"level":"info","event":"http_request","request_id":"45a57f10-0470-47ef-8c6d-60ab40734f85","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.3676}
+[WebServer] {"level":"info","event":"http_request","request_id":"35918bd0-714a-423c-9b17-d5e05a3b6e59","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":30.1318}
+[WebServer] {"level":"info","event":"http_request","request_id":"d6a90b74-fc6f-4cc1-8b29-1a286da483f8","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3648}
+[WebServer] {"level":"info","event":"http_request","request_id":"6a4f18bf-f59f-469b-a664-8f0d1e6b6caf","method":"GET","path":"/en/contact","status":304,"duration_ms":0.8372}
+[WebServer] {"level":"info","event":"http_request","request_id":"6ff6d7c3-0724-45fb-9615-9207269b80b1","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3758}
+[WebServer] {"level":"info","event":"http_request","request_id":"7ea58da4-a329-4f1a-8b22-005450ac4f41","method":"GET","path":"/en/login","status":200,"duration_ms":0.551}
+[WebServer] {"level":"info","event":"http_request","request_id":"0012bb2d-1e2f-4700-ab28-378c0ffb25c0","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3248}
+[WebServer] {"level":"info","event":"http_request","request_id":"b5cbe5d1-8ea7-419c-8233-f2d005e3e79e","method":"GET","path":"/","status":304,"duration_ms":0.9805}
+[WebServer] {"level":"info","event":"http_request","request_id":"4ed240c1-7b6b-4b2c-947a-1a1e440b1516","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3755}
+[WebServer] {"level":"info","event":"http_request","request_id":"8737904c-b10f-4c33-af22-4766da766daa","method":"GET","path":"/en","status":304,"duration_ms":0.8533}
+[WebServer] {"level":"info","event":"http_request","request_id":"3df75a36-bb09-4207-becf-5f6ea5ad79f1","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3693}
+[WebServer] {"level":"info","event":"http_request","request_id":"a640e1ea-f30f-44e8-a6dc-18f4924e33bd","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.3526}
+[WebServer] {"level":"info","event":"http_request","request_id":"a033a4ef-dad3-40bc-8a44-c86e1af86b81","method":"GET","path":"/en/shop","status":200,"duration_ms":52.0696}
+[WebServer] {"level":"info","event":"http_request","request_id":"f0552d25-1e7f-4d66-82fb-4cd72b56d314","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3739}
+[WebServer] {"level":"info","event":"http_request","request_id":"7b955b44-8a7c-46dc-a7e6-4eaaf3e3ce47","method":"GET","path":"/api/shop/products","status":304,"duration_ms":0.5692}
+[WebServer] {"level":"info","event":"http_request","request_id":"835caabe-028e-48fb-919b-afcb343d7c81","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.3833}
+[WebServer] {"level":"info","event":"http_request","request_id":"51d41bbe-1b85-487e-acb4-42562fb89b0d","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":44.3423}
+[WebServer] {"level":"info","event":"http_request","request_id":"9578a389-49af-4880-991f-ebfc6a518224","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4118}
+[WebServer] {"level":"info","event":"http_request","request_id":"03a9d46e-33b9-433e-a741-80b3ecadbfb5","method":"GET","path":"/en/contact","status":304,"duration_ms":0.9515}
+[WebServer] {"level":"info","event":"http_request","request_id":"99d979d7-df4c-431e-938d-00e82a5c9984","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3771}
+[WebServer] {"level":"info","event":"http_request","request_id":"58274a4e-baf1-42a2-8c6c-4ebd0e691dab","method":"GET","path":"/en/login","status":200,"duration_ms":0.59}
+[WebServer] {"level":"info","event":"http_request","request_id":"83118b17-b17b-4e15-bc86-bbd35d8431af","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3667}
+[WebServer] {"level":"info","event":"http_request","request_id":"13d2e830-bc60-4d19-a605-90aaa3f97d2b","method":"GET","path":"/","status":304,"duration_ms":0.8004}
+[WebServer] {"level":"info","event":"http_request","request_id":"589047ba-7117-408b-b128-c85e4d41be5d","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.379}
+[WebServer] {"level":"info","event":"http_request","request_id":"3fe2a048-e64c-4378-9dce-7c1dc7067c8b","method":"GET","path":"/en","status":304,"duration_ms":0.8315}
+[WebServer] {"level":"info","event":"http_request","request_id":"6670836d-306e-4357-bd0e-7abeab2dc433","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3503}
+[WebServer] {"level":"info","event":"http_request","request_id":"062b6ce8-2278-4a08-87a6-e9059782bfd8","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.4114}
+[WebServer] {"level":"info","event":"http_request","request_id":"212c8b35-9d01-461e-86f2-f01d3f29ad3b","method":"GET","path":"/en/shop","status":200,"duration_ms":59.1955}
+[WebServer] {"level":"info","event":"http_request","request_id":"60d223d3-eda6-4b53-addc-5a82961b04c2","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3744}
+[WebServer] {"level":"info","event":"http_request","request_id":"58eb9c61-54ed-499c-8229-c6474b77c360","method":"GET","path":"/api/shop/products","status":304,"duration_ms":0.5305}
+[WebServer] {"level":"info","event":"http_request","request_id":"c44a3715-4411-44d6-8075-27d80592bd48","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.3825}
+[WebServer] {"level":"info","event":"http_request","request_id":"76518d71-60c2-4686-b034-f12974326304","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":41.6919}
+[WebServer] {"level":"info","event":"http_request","request_id":"33c553a1-3db1-4c2a-96c1-d7953bcbea84","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4295}
+[WebServer] {"level":"info","event":"http_request","request_id":"59e170ff-78f9-41e1-b27b-64373c887550","method":"GET","path":"/en/contact","status":304,"duration_ms":1.0622}
+[WebServer] {"level":"info","event":"http_request","request_id":"1032a88e-33bc-481e-b859-f19d3cd71ca8","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3442}
+[WebServer] {"level":"info","event":"http_request","request_id":"dcead8c4-4ff0-4113-9a9a-84efe2da1eec","method":"GET","path":"/en/login","status":200,"duration_ms":0.685}
+[WebServer] {"level":"info","event":"http_request","request_id":"1111e263-e9b9-4bcc-9dc9-1d2375a9b83c","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3762}
+[WebServer] {"level":"info","event":"http_request","request_id":"6d0903c4-2708-4a59-9772-64081412f2d5","method":"GET","path":"/","status":304,"duration_ms":0.8161}
+[WebServer] {"level":"info","event":"http_request","request_id":"6c395798-763b-415b-b52c-5fb8b34a10ca","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4103}
+[WebServer] {"level":"info","event":"http_request","request_id":"f97414f4-30ec-48a7-ae32-7fb36b0eca5c","method":"GET","path":"/en","status":304,"duration_ms":0.8057}
+[WebServer] {"level":"info","event":"http_request","request_id":"8cfa9d24-b4e2-486c-b6bc-f86c30ce9fec","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3613}
+[WebServer] {"level":"info","event":"http_request","request_id":"bb9e1c63-8b31-479b-b4a9-60793f5a7593","method":"GET","path":"/api/shop/products","status":200,"duration_ms":0.633}
+[WebServer] {"level":"info","event":"http_request","request_id":"f3eeadc8-b27e-46ab-a8bc-710dc8685fb3","method":"GET","path":"/en/shop","status":200,"duration_ms":40.2568}
+[WebServer] {"level":"info","event":"http_request","request_id":"a9bffe14-3d42-4650-8bed-a1db4994946d","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4335}
+[WebServer] {"level":"info","event":"http_request","request_id":"df260bac-0f6e-4058-b616-c72f0962e4a8","method":"GET","path":"/api/shop/products","status":304,"duration_ms":0.5853}
+[WebServer] {"level":"info","event":"http_request","request_id":"14f29257-f5d4-464f-b22f-684bce1491e4","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.4834}
+[WebServer] {"level":"info","event":"http_request","request_id":"09ee1daf-5779-4015-9a55-7164ca027f7e","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":29.3703}
+[WebServer] {"level":"info","event":"http_request","request_id":"778d4bc9-2b17-4282-ba0f-bb2e36c6b640","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4348}
+[WebServer] {"level":"info","event":"http_request","request_id":"0c6699af-0e64-423b-ba5c-4616781cf891","method":"GET","path":"/en/contact","status":304,"duration_ms":0.8656}
+[WebServer] {"level":"info","event":"http_request","request_id":"0da8fb33-0e5c-4669-b5e4-c5e61456b647","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3699}
+[WebServer] {"level":"info","event":"http_request","request_id":"7de06a2c-9688-473d-b322-0a8ddd0d1012","method":"GET","path":"/en/login","status":200,"duration_ms":0.6102}
+[WebServer] {"level":"info","event":"http_request","request_id":"f44049e8-1c03-471f-8e8e-213f27396a26","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.2969}
+  ok 14 [chromium] ÔÇ║ e2e\responsive.spec.ts:21:5 ÔÇ║ representative viewports have no horizontal overflow (20.3s)
+[WebServer] {"level":"info","event":"http_request","request_id":"385832ae-341c-4502-a4bc-f4ab3a3c1255","method":"GET","path":"/en/login","status":200,"duration_ms":0.6306}
+[WebServer] {"level":"info","event":"http_request","request_id":"0b27be58-12ea-4fa9-ab1b-ee6125633c74","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.3683}
+[WebServer] {"level":"info","event":"http_request","request_id":"87be28bf-9a7f-473d-bd6b-21c7b7af2c64","method":"POST","path":"/api/auth/login","status":200,"duration_ms":48.7414}
+[WebServer] {"level":"info","event":"http_request","request_id":"e2320428-ee3a-42c9-8eb3-efe56690d7a3","method":"GET","path":"/api/orders","status":200,"duration_ms":0.5988}
+[WebServer] {"level":"info","event":"http_request","request_id":"03f5aa2b-a672-4eca-8918-09e9e725bb79","method":"GET","path":"/api/shop/products/e2e-hub","status":200,"duration_ms":0.354}
+[WebServer] {"level":"info","event":"http_request","request_id":"1ebd1ce6-9f43-4b79-a4d5-bd061771b018","method":"GET","path":"/en/shop/e2e-hub","status":200,"duration_ms":65.2775}
+[WebServer] {"level":"info","event":"http_request","request_id":"8a1d0276-ab23-4b68-a199-ce67985a498f","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4544}
+[WebServer] {"level":"info","event":"http_request","request_id":"d0784e82-cb49-48b0-a4cf-7bdcdd869d51","method":"GET","path":"/en/cart","status":200,"duration_ms":0.5978}
+[WebServer] {"level":"info","event":"http_request","request_id":"0c8e3982-aafa-4c39-9865-080a9ab02d54","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.4744}
+[WebServer] {"level":"info","event":"http_request","request_id":"093c6192-ce44-4ae3-8877-63550c5daf98","method":"GET","path":"/api/shop/config","status":200,"duration_ms":0.3989}
+[WebServer] {"level":"info","event":"http_request","request_id":"e6f81668-0e77-4d41-9c6d-a5cfe9a307ef","method":"GET","path":"/en/cart","status":200,"duration_ms":0.5018}
+[WebServer] {"level":"info","event":"http_request","request_id":"ebbc5346-f801-463a-a779-306e42ff650a","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.619}
+[WebServer] {"level":"info","event":"http_request","request_id":"7a5b31b6-12ef-4a85-91c3-d3fa589496be","method":"GET","path":"/api/shop/config","status":304,"duration_ms":0.5086}
+[WebServer] {"level":"info","event":"http_request","request_id":"ff09e200-6db4-4c4a-b5f6-f6cf27f98aef","method":"GET","path":"/en/cart","status":200,"duration_ms":0.5485}
+[WebServer] {"level":"info","event":"http_request","request_id":"b1401fef-41f6-4584-a54a-5cc31a8c7ed8","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.7}
+[WebServer] {"level":"info","event":"http_request","request_id":"b6baebb6-d4a2-497e-b43a-0d65c445b8c1","method":"GET","path":"/api/shop/config","status":304,"duration_ms":0.5378}
+[WebServer] {"level":"info","event":"http_request","request_id":"d91dfa00-86c2-41c5-bb6d-3c5cbca53d87","method":"GET","path":"/en/account","status":200,"duration_ms":0.6003}
+[WebServer] {"level":"info","event":"http_request","request_id":"0443f752-7dc9-48c0-ad4f-08d68b3afd65","method":"GET","path":"/api/auth/me","status":200,"duration_ms":0.477}
+[WebServer] {"level":"info","event":"http_request","request_id":"00193634-b5f7-4742-a18f-f7baa9d095d0","method":"GET","path":"/api/orders","status":200,"duration_ms":0.5996}
+  ok 15 [chromium] ÔÇ║ e2e\responsive.spec.ts:43:5 ÔÇ║ cart tables and controls fit mobile viewports and keep usable targets (1.0s)
+
+  15 passed (51.9s)
+EXIT=0

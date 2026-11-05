@@ -1,0 +1,405 @@
+{
+  "contractId": "MAREA-MC09-RESEARCH-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-09",
+  "documentType": "PRODUCT_FAMILY_ASSESSMENT",
+  "owner": "lead",
+  "frozenAt": "2026-10-31",
+  "framework": "Twelve-dimension weighted scoring frozen before scoring, applied identically to all nine canonical families. Commercial attractiveness (market/pricing/channel opportunity) is scored and reported independently from release readiness (legal, technical, manufacturability, support, sellability). No legal, safety, licensing or conformity blocker can be offset by a high commercial score.",
+  "scoringFormula": "commercialScore = round(sum(weights[d] * scores[d]), 3); scores 1-5 where 5 is most favourable",
+  "weights": {
+    "problemSeverity": 0.12,
+    "demandEvidence": 0.12,
+    "differentiationPotential": 0.1,
+    "revenueAndContribution": 0.1,
+    "recurringRevenuePotential": 0.09,
+    "distributionFeasibility": 0.09,
+    "installationSimplicity": 0.07,
+    "developmentAndIntegrationReadiness": 0.08,
+    "ipLicensingExposure": 0.06,
+    "conformityAndSafetyExposure": 0.06,
+    "supportAndWarrantyBurden": 0.06,
+    "timeToValidatedReadiness": 0.05
+  },
+  "weightRationale": {
+    "problemSeverity": "The portfolio exists to solve a real, frequent and expensive problem; severity is the first commercial filter.",
+    "demandEvidence": "Observable demand and public problem signals must outweigh internal enthusiasm.",
+    "differentiationPotential": "A family that cannot be distinguished from a market benchmark has weak pricing power.",
+    "revenueAndContribution": "Per-unit revenue potential drives payback and channel interest.",
+    "recurringRevenuePotential": "Recurring revenue is the only route to a durable EMBARCARTE business model, but it is not assumed profitable.",
+    "distributionFeasibility": "EMBARCARTE has no established channel; direct and installer routes differ materially.",
+    "installationSimplicity": "Installation complexity transfers risk and cost to the customer and the channel.",
+    "developmentAndIntegrationReadiness": "Families that are already partially verified can reach validation faster.",
+    "ipLicensingExposure": "Higher score means lower IP/licensing exposure; unresolved GPL, chart or data rights cap the score.",
+    "conformityAndSafetyExposure": "Higher score means lower conformity and safety exposure; safety-critical hardware scores low.",
+    "supportAndWarrantyBurden": "Higher score means a lower expected support and warranty burden.",
+    "timeToValidatedReadiness": "How quickly customer validation can start without manufacturing or certification dependencies."
+  },
+  "families": [
+    {
+      "familyId": "NAV",
+      "scores": {
+        "problemSeverity": 5,
+        "demandEvidence": 5,
+        "differentiationPotential": 3,
+        "revenueAndContribution": 3,
+        "recurringRevenuePotential": 5,
+        "distributionFeasibility": 5,
+        "installationSimplicity": 5,
+        "developmentAndIntegrationReadiness": 4,
+        "ipLicensingExposure": 2,
+        "conformityAndSafetyExposure": 5,
+        "supportAndWarrantyBurden": 4,
+        "timeToValidatedReadiness": 4
+      },
+      "commercialScore": 4.23,
+      "commercialAttractiveness": "HIGH",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "SOURCE_IP_NOT_CLEARED",
+          "CHART_RIGHTS_NOT_GRANTED",
+          "DATA_RIGHTS_NOT_GRANTED",
+          "BRAND_CLEARANCE_NOT_GRANTED",
+          "COMPLIANCE_NOT_STARTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "PRIORITIZE_FOR_CUSTOMER_VALIDATION",
+      "evidenceClaimIds": [
+        "CLM-MKT-001",
+        "CLM-BUY-001",
+        "CLM-BUY-009",
+        "CLM-CMP-001",
+        "CLM-CMP-003",
+        "CLM-CMP-022"
+      ],
+      "rationale": "Highest-severity, best-evidenced owner problem in the research: fragmented navigation, recurring chart/weather cost and several established software alternatives at EUR 49-149/year. It is the only family that can be distributed directly today (no hardware), so its commercial case is strong. Readiness is blocked by chart/data rights and source-IP clearance, so validation is commercial and qualitative, not a launch.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "familyId": "WEATHER",
+      "scores": {
+        "problemSeverity": 4,
+        "demandEvidence": 5,
+        "differentiationPotential": 2,
+        "revenueAndContribution": 2,
+        "recurringRevenuePotential": 5,
+        "distributionFeasibility": 5,
+        "installationSimplicity": 5,
+        "developmentAndIntegrationReadiness": 3,
+        "ipLicensingExposure": 1,
+        "conformityAndSafetyExposure": 5,
+        "supportAndWarrantyBurden": 4,
+        "timeToValidatedReadiness": 4
+      },
+      "commercialScore": 3.77,
+      "commercialAttractiveness": "MEDIUM",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "DATA_PROVIDER_RIGHTS_NOT_GRANTED",
+          "SOURCE_IP_NOT_CLEARED",
+          "BRAND_CLEARANCE_NOT_GRANTED",
+          "COMPLIANCE_NOT_STARTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "FURTHER_RESEARCH_REQUIRED",
+      "evidenceClaimIds": [
+        "CLM-CMP-005",
+        "CLM-CMP-006",
+        "CLM-CMP-023",
+        "CLM-BUY-009",
+        "CLM-BUY-010"
+      ],
+      "rationale": "Demand is excellent (PredictWind USD 29-499/year, Windy at EUR 19) and distribution is direct, but MAREA WEATHER is a thin layer over providers with no granted redistribution rights. It is strategically essential to NAV but cannot be sold standalone before a provider agreement.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "familyId": "WATCH",
+      "scores": {
+        "problemSeverity": 5,
+        "demandEvidence": 4,
+        "differentiationPotential": 3,
+        "revenueAndContribution": 4,
+        "recurringRevenuePotential": 4,
+        "distributionFeasibility": 4,
+        "installationSimplicity": 3,
+        "developmentAndIntegrationReadiness": 2,
+        "ipLicensingExposure": 2,
+        "conformityAndSafetyExposure": 2,
+        "supportAndWarrantyBurden": 2,
+        "timeToValidatedReadiness": 3
+      },
+      "commercialScore": 3.38,
+      "commercialAttractiveness": "HIGH",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "HARDWARE_NOT_SELECTED",
+          "BOM_NOT_ESTABLISHED",
+          "SOURCE_IP_NOT_CLEARED",
+          "COMPLIANCE_NOT_STARTED",
+          "WATCH_INGESTION_NOT_VERIFIED",
+          "BRAND_CLEARANCE_NOT_GRANTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "PRIORITIZE_FOR_CUSTOMER_VALIDATION",
+      "evidenceClaimIds": [
+        "CLM-BUY-015",
+        "CLM-CMP-004",
+        "CLM-CMP-007",
+        "CLM-CMP-021",
+        "CLM-ECO-007"
+      ],
+      "rationale": "Unattended-vessel monitoring has the clearest recurring-revenue logic and real competitor anchors (Siren Marine USD 299.99 plus USD 225/year, Yacht Sentinel, Orca guard mode). Recurring acceptance is unproven and the alert-delivery pipeline is unverified, so the next step is customer validation, not hardware commitment.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "familyId": "HUB",
+      "scores": {
+        "problemSeverity": 4,
+        "demandEvidence": 4,
+        "differentiationPotential": 4,
+        "revenueAndContribution": 4,
+        "recurringRevenuePotential": 2,
+        "distributionFeasibility": 3,
+        "installationSimplicity": 3,
+        "developmentAndIntegrationReadiness": 4,
+        "ipLicensingExposure": 3,
+        "conformityAndSafetyExposure": 2,
+        "supportAndWarrantyBurden": 3,
+        "timeToValidatedReadiness": 3
+      },
+      "commercialScore": 3.37,
+      "commercialAttractiveness": "MEDIUM",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "HARDWARE_NOT_SELECTED",
+          "BOM_NOT_ESTABLISHED",
+          "NMEA2000_NOT_CERTIFIED",
+          "SOURCE_IP_NOT_CLEARED",
+          "COMPLIANCE_NOT_STARTED",
+          "BRAND_CLEARANCE_NOT_GRANTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "FURTHER_RESEARCH_REQUIRED",
+      "evidenceClaimIds": [
+        "CLM-CMP-008",
+        "CLM-CMP-011",
+        "CLM-CMP-019",
+        "CLM-CMP-007",
+        "CLM-BUY-002",
+        "CLM-BUY-008"
+      ],
+      "rationale": "A real consolidation problem exists and gateways are a genuine category (Digital Yacht EUR 240-300, Victron Cerbo EUR 240.09, PredictWind DataHub USD 299). Differentiation depends on multi-device orchestration and installer-grade integration that are not verified; the category is price-anchored and hardware-led.",
+      "confidence": "LOW"
+    },
+    {
+      "familyId": "FLEET",
+      "scores": {
+        "problemSeverity": 4,
+        "demandEvidence": 2,
+        "differentiationPotential": 3,
+        "revenueAndContribution": 4,
+        "recurringRevenuePotential": 5,
+        "distributionFeasibility": 3,
+        "installationSimplicity": 4,
+        "developmentAndIntegrationReadiness": 2,
+        "ipLicensingExposure": 2,
+        "conformityAndSafetyExposure": 4,
+        "supportAndWarrantyBurden": 3,
+        "timeToValidatedReadiness": 2
+      },
+      "commercialScore": 3.22,
+      "commercialAttractiveness": "MEDIUM",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "FLEET_NOT_IMPLEMENTED",
+          "NO_SLA_ESTABLISHED",
+          "TENANCY_NOT_VERIFIED",
+          "SOURCE_IP_NOT_CLEARED",
+          "COMPLIANCE_NOT_STARTED",
+          "BRAND_CLEARANCE_NOT_GRANTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "LONG_TERM_OPPORTUNITY",
+      "evidenceClaimIds": [
+        "CLM-CMP-012",
+        "CLM-CMP-013",
+        "CLM-CMP-014",
+        "CLM-CMP-026",
+        "CLM-BUY-013",
+        "CLM-BUY-014"
+      ],
+      "rationale": "Per-vessel B2B SaaS is where the recurring revenue actually is, but competitors price at EUR 150-259 per vessel per month for operationally broader products, and the platform is not implemented. The small-vessel beachhead cannot fund the programme alone, so FLEET is the strategic expansion path rather than the first product.",
+      "confidence": "LOW"
+    },
+    {
+      "familyId": "AIS",
+      "scores": {
+        "problemSeverity": 4,
+        "demandEvidence": 4,
+        "differentiationPotential": 2,
+        "revenueAndContribution": 4,
+        "recurringRevenuePotential": 2,
+        "distributionFeasibility": 3,
+        "installationSimplicity": 3,
+        "developmentAndIntegrationReadiness": 2,
+        "ipLicensingExposure": 2,
+        "conformityAndSafetyExposure": 2,
+        "supportAndWarrantyBurden": 3,
+        "timeToValidatedReadiness": 2
+      },
+      "commercialScore": 2.9,
+      "commercialAttractiveness": "LOW",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "GPL_DECODER_LICENCE_UNDECIDED",
+          "HARDWARE_NOT_SELECTED",
+          "BOM_NOT_ESTABLISHED",
+          "COMPLIANCE_NOT_STARTED",
+          "BRAND_CLEARANCE_NOT_GRANTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "RECONSIDER_PRODUCT_STRATEGY",
+      "evidenceClaimIds": [
+        "CLM-CMP-009",
+        "CLM-CMP-010",
+        "CLM-CMP-031",
+        "CLM-BUY-004",
+        "CLM-MKT-027"
+      ],
+      "rationale": "Receive-only AIS is a commodity: Digital Yacht AIS100 at EUR 360 is established, and the MAREA hypothesis cannot undercut it while the GPL decoder decision is unresolved. The customer value of a further receive-only receiver is weak; AIS as a software integration is more defensible than AIS as hardware.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "familyId": "SENSE",
+      "scores": {
+        "problemSeverity": 4,
+        "demandEvidence": 3,
+        "differentiationPotential": 3,
+        "revenueAndContribution": 3,
+        "recurringRevenuePotential": 2,
+        "distributionFeasibility": 3,
+        "installationSimplicity": 2,
+        "developmentAndIntegrationReadiness": 3,
+        "ipLicensingExposure": 2,
+        "conformityAndSafetyExposure": 2,
+        "supportAndWarrantyBurden": 3,
+        "timeToValidatedReadiness": 3
+      },
+      "commercialScore": 2.84,
+      "commercialAttractiveness": "LOW",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "HARDWARE_NOT_SELECTED",
+          "SENSOR_ACCURACY_NOT_MEASURED",
+          "BOM_NOT_ESTABLISHED",
+          "SOURCE_IP_NOT_CLEARED",
+          "COMPLIANCE_NOT_STARTED",
+          "BRAND_CLEARANCE_NOT_GRANTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "DEFER",
+      "evidenceClaimIds": [
+        "CLM-CMP-018",
+        "CLM-CMP-020",
+        "CLM-CMP-006",
+        "CLM-BUY-003"
+      ],
+      "rationale": "SENSE modules only acquire commercial meaning as enablers of WATCH/PROTECT, where Victron SmartShunt at EUR 90.21 already occupies the battery-monitoring slot. Standalone sensor hardware is a low-differentiation, install-heavy category; defer until a monitoring use case is validated.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "familyId": "PILOT",
+      "scores": {
+        "problemSeverity": 5,
+        "demandEvidence": 4,
+        "differentiationPotential": 3,
+        "revenueAndContribution": 4,
+        "recurringRevenuePotential": 2,
+        "distributionFeasibility": 2,
+        "installationSimplicity": 1,
+        "developmentAndIntegrationReadiness": 1,
+        "ipLicensingExposure": 2,
+        "conformityAndSafetyExposure": 1,
+        "supportAndWarrantyBurden": 2,
+        "timeToValidatedReadiness": 1
+      },
+      "commercialScore": 2.64,
+      "commercialAttractiveness": "LOW",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "PILOT_SAFETY_GATE_BLOCKED",
+          "SEA_TRIALS_NOT_PERFORMED",
+          "E_STOP_AND_MOTOR_ISOLATION_NOT_FOUND",
+          "HARDWARE_NOT_SELECTED",
+          "BOM_NOT_ESTABLISHED",
+          "COMPLIANCE_NOT_STARTED",
+          "BRAND_CLEARANCE_NOT_GRANTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "DEFER",
+      "evidenceClaimIds": [
+        "CLM-CMP-016",
+        "CLM-CMP-017",
+        "CLM-BUY-011",
+        "CLM-BUY-007"
+      ],
+      "rationale": "Established autopilot systems already cost EUR 2,050-3,083 installed-class packs, and an official accident report shows how rudder-feedback loss disables both autopilot and follow-up steering. Safety criticality caps the commercial score and the safety gate is BLOCKED; PILOT must not be advanced in MC-10 beyond concept comprehension.",
+      "confidence": "MEDIUM"
+    },
+    {
+      "familyId": "DISPLAY",
+      "scores": {
+        "problemSeverity": 3,
+        "demandEvidence": 4,
+        "differentiationPotential": 2,
+        "revenueAndContribution": 5,
+        "recurringRevenuePotential": 2,
+        "distributionFeasibility": 2,
+        "installationSimplicity": 2,
+        "developmentAndIntegrationReadiness": 1,
+        "ipLicensingExposure": 2,
+        "conformityAndSafetyExposure": 1,
+        "supportAndWarrantyBurden": 2,
+        "timeToValidatedReadiness": 1
+      },
+      "commercialScore": 2.47,
+      "commercialAttractiveness": "LOW",
+      "releaseReadiness": {
+        "state": "BLOCKED",
+        "blockers": [
+          "HARDWARE_NOT_SELECTED",
+          "SIZE_NOT_FROZEN",
+          "BOM_NOT_ESTABLISHED",
+          "COMPLIANCE_NOT_STARTED",
+          "BRAND_CLEARANCE_NOT_GRANTED",
+          "NOT_FOR_SALE"
+        ]
+      },
+      "decision": "RECONSIDER_PRODUCT_STRATEGY",
+      "evidenceClaimIds": [
+        "CLM-CMP-015",
+        "CLM-CMP-002",
+        "CLM-CMP-022",
+        "CLM-BUY-018"
+      ],
+      "rationale": "A proprietary display competes directly with Raymarine Element 7 HV at EUR 659.45 and Orca's EUR 1,997 system, requires capital-intensive hardware certification and offers no evidenced advantage over using the customer's own tablet. The portfolio should rent the display surface, not build it.",
+      "confidence": "MEDIUM"
+    }
+  ]
+}

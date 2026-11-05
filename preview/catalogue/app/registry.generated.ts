@@ -1,0 +1,4425 @@
+// GENERATED FILE — do not edit by hand.
+// Source: docs/marea/design-system/data/component-registry.json
+// Generator: node scripts/build-marea-design-system-catalogue-data.mjs
+// Internal catalogue metadata only. Never imported by the production application.
+export interface MareaRegistryInput {
+  readonly name: string;
+  readonly type: string;
+  readonly required: boolean;
+  readonly defaultValue: string | null;
+  readonly description: string;
+}
+
+export interface MareaRegistryOutput {
+  readonly name: string;
+  readonly type: string;
+  readonly description: string;
+}
+
+export interface MareaRegistryComponent {
+  readonly componentId: string;
+  readonly componentName: string;
+  readonly version: string;
+  readonly purpose: string;
+  readonly status: string;
+  readonly implementationKind: string;
+  readonly implementationPath: string;
+  readonly selector: string;
+  readonly semanticElement: string;
+  readonly inputs: readonly MareaRegistryInput[];
+  readonly outputs: readonly MareaRegistryOutput[];
+  readonly visualVariants: readonly string[];
+  readonly supportedModes: readonly string[];
+  readonly responsiveRules: string;
+  readonly tokenDependencies: readonly string[];
+  readonly keyboardContract: string;
+  readonly focusContract: string;
+  readonly ariaContract: string;
+  readonly localizationRequirements: string;
+  readonly commercialRestrictions: readonly string[];
+  readonly states: Readonly<Record<string, string>>;
+  readonly testReferences: readonly string[];
+  readonly knownLimitations: readonly string[];
+  readonly usage: string;
+}
+
+export const COMPONENT_REGISTRY: readonly MareaRegistryComponent[] = [
+  {
+    "componentId": "marea-theme",
+    "componentName": "MareaTheme",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/theme/marea-theme.ts",
+    "selector": "marea-theme",
+    "purpose": "Scopes the MAREA token layer, visual mode and document locale to one isolated surface. It must never restyle the public website or imply brand adoption.",
+    "semanticElement": "Custom element block host that renders only projected content; no native landmark is added.",
+    "inputs": [
+      {
+        "name": "mode",
+        "type": "MareaMode",
+        "required": false,
+        "defaultValue": "'web-light'",
+        "description": "Visual mode for the isolated surface; selects the token set."
+      },
+      {
+        "name": "locale",
+        "type": "MareaLocale",
+        "required": false,
+        "defaultValue": "'es'",
+        "description": "Document locale applied to MareaI18n before children render."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Block host fills the available inline size and wraps projected content; it adds no fixed width and no horizontal overflow of its own.",
+    "tokenDependencies": [
+      "--marea-canvas",
+      "--marea-text-primary",
+      "--marea-font-body",
+      "--marea-type-body-size",
+      "--marea-type-body-line-height"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the theme host is not focusable and adds no key handling; projected controls keep their own behaviour.",
+    "focusContract": "NOT_APPLICABLE: the host removes its own outline and never receives focus; focus belongs to projected controls.",
+    "ariaContract": "No ARIA role is added. The host exposes data-marea-theme, data-marea-mode, data-marea-context and lang, so assistive technology receives the document language.",
+    "localizationRequirements": "No user-facing copy. The locale input drives MareaI18n for every descendant, with ES as default and EN as an equivalent translation.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Applies the selected mode, locale and context attributes to a block host and renders projected content.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: projected content may be empty; the host still renders without a distinct empty state.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The host only scopes tokens; it does not provide a theme service, global stylesheet or mode persistence.",
+      "The proposed MAREA identity is not adopted; the component applies internal tokens only."
+    ],
+    "usage": "<marea-theme mode=\"instrument-day\" locale=\"es\"> ... </marea-theme>"
+  },
+  {
+    "componentId": "marea-text",
+    "componentName": "MareaText",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-text.ts",
+    "selector": "[marea-text]",
+    "purpose": "Applies a typography role and semantic tone to a consumer-supplied element. It must never add a wrapper, invent a heading level or imply emphasis the copy does not state.",
+    "semanticElement": "Consumer-supplied native <p>/<span>/<h3> (attribute selector); no extra wrapper is introduced.",
+    "inputs": [
+      {
+        "name": "variant",
+        "type": "MareaTextRole",
+        "required": false,
+        "defaultValue": "'body'",
+        "description": "Typography role applied through the marea-text--<variant> class."
+      },
+      {
+        "name": "tone",
+        "type": "MareaTextTone",
+        "required": false,
+        "defaultValue": "'primary'",
+        "description": "Semantic text colour; tone never changes size or weight."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "display1",
+      "display2",
+      "title1",
+      "title2",
+      "heading",
+      "body",
+      "bodySmall",
+      "label",
+      "meta"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Text wraps at the token measure (max-inline-size var(--marea-measure), 24ch for display1) with text-wrap: pretty; it never clips, truncates or forces horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-type-body-family",
+      "--marea-type-body-size",
+      "--marea-type-body-line-height",
+      "--marea-type-body-weight",
+      "--marea-type-body-tracking",
+      "--marea-text-primary",
+      "--marea-measure",
+      "--marea-type-display1-family",
+      "--marea-type-display1-size",
+      "--marea-type-display1-line-height",
+      "--marea-type-display1-weight",
+      "--marea-type-display1-tracking",
+      "--marea-type-display2-family",
+      "--marea-type-display2-size",
+      "--marea-type-display2-line-height",
+      "--marea-type-display2-weight",
+      "--marea-type-display2-tracking",
+      "--marea-type-title1-family",
+      "--marea-type-title1-size",
+      "--marea-type-title1-line-height",
+      "--marea-type-title1-weight",
+      "--marea-type-title1-tracking",
+      "--marea-type-title2-family",
+      "--marea-type-title2-size",
+      "--marea-type-title2-line-height",
+      "--marea-type-title2-weight",
+      "--marea-type-title2-tracking",
+      "--marea-type-heading-family",
+      "--marea-type-heading-size",
+      "--marea-type-heading-line-height",
+      "--marea-type-heading-weight",
+      "--marea-type-body-small-size",
+      "--marea-type-body-small-line-height",
+      "--marea-type-label-family",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-weight",
+      "--marea-type-label-tracking",
+      "--marea-type-meta-family",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking",
+      "--marea-text-meta",
+      "--marea-text-secondary",
+      "--marea-data-primary",
+      "--marea-action",
+      "--marea-state-critical",
+      "--marea-state-warning",
+      "--marea-state-safe",
+      "--marea-state-stale",
+      "--marea-state-info"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: text is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: text is not focusable.",
+    "ariaContract": "No role or ARIA attribute is added; the semantic meaning comes from the native element chosen by the consumer.",
+    "localizationRequirements": "All copy is consumer-supplied; the component reads no MareaI18n keys, so ES/EN parity is the caller responsibility.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the selected typography role and tone on the consumer element.",
+      "HOVER": "NOT_APPLICABLE: text has no pointer affordance.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: copy is projected; empty text is a content decision, not a component state.",
+      "ERROR": "tone='critical' renders the critical colour; the meaning is carried by the supplied text.",
+      "WARNING": "tone='warning' renders the warning colour; the meaning is carried by the supplied text.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The measure cap is intentional; callers that need full width must override max-inline-size at their own level.",
+      "Heading rank is not controlled by the component; the page must still keep a valid heading order."
+    ],
+    "usage": "<p marea-text variant=\"body\">Texto</p>"
+  },
+  {
+    "componentId": "marea-section-heading",
+    "componentName": "MareaSectionHeading",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-section-heading.ts",
+    "selector": "marea-section-heading",
+    "purpose": "Renders a section title with optional kicker, lead and projected actions. It must never emit an h1 or imply a page hierarchy the page did not define.",
+    "semanticElement": "Native <h2> or <h3> selected by level, with optional <p> kicker and lead and a projected actions container.",
+    "inputs": [
+      {
+        "name": "heading",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible section title; lands in h2 or h3 according to level."
+      },
+      {
+        "name": "kicker",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional short label above the title."
+      },
+      {
+        "name": "lead",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional lead paragraph below the title."
+      },
+      {
+        "name": "level",
+        "type": "2 | 3",
+        "required": false,
+        "defaultValue": "2",
+        "description": "Heading rank; only 2 or 3 is accepted so the page keeps its single h1."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The heading and action row wrap; below 768px actions align to the start and stack under the heading instead of overflowing.",
+    "tokenDependencies": [
+      "--marea-space-4",
+      "--marea-space-5",
+      "--marea-space-2",
+      "--marea-action",
+      "--marea-space-1",
+      "--marea-space-3"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the component adds no key handling; projected actions keep their own keyboard behaviour.",
+    "focusContract": "NOT_APPLICABLE: the heading is not focusable; focus stays on projected actions.",
+    "ariaContract": "Native heading semantics only. Kicker and lead are plain <p> elements, and no h1 can be emitted by the component.",
+    "localizationRequirements": "Heading, kicker and lead are consumer-supplied; the component reads no MareaI18n keys.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the supplied heading, optional kicker/lead and projected actions.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: heading is required, so a headingless section is impossible.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Supports only ranks 2 and 3; a consumer needing another rank must not use this component.",
+      "Kicker and lead are not localized internally; the caller supplies each language."
+    ],
+    "usage": "<marea-section-heading heading=\"Especificaciones\" level=\"2\" />"
+  },
+  {
+    "componentId": "marea-container",
+    "componentName": "MareaContainer",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-container.ts",
+    "selector": "marea-container",
+    "purpose": "Constrains content to a readable maximum width with fluid gutters. It must never cause horizontal page overflow or imply a layout guarantee outside its host.",
+    "semanticElement": "Neutral custom element wrapping projected flow content; no landmark or list semantics.",
+    "inputs": [
+      {
+        "name": "size",
+        "type": "'narrow' | 'default' | 'wide'",
+        "required": false,
+        "defaultValue": "'default'",
+        "description": "Maximum content width preset."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "narrow",
+      "default",
+      "wide"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Inline size is min(100% minus 2 gutters, the preset maximum); below 480px gutters shrink from space-4 to space-3, and the element never exceeds the viewport.",
+    "tokenDependencies": [
+      "--marea-space-4",
+      "--marea-container-default",
+      "--marea-container-narrow",
+      "--marea-container-wide",
+      "--marea-space-3"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: layout container with no interaction.",
+    "focusContract": "NOT_APPLICABLE: the container is not focusable.",
+    "ariaContract": "No role or ARIA attribute is added; semantic grouping remains with the consumer.",
+    "localizationRequirements": "No user-facing strings; layout only.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Applies the selected maximum width and fluid gutters.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: the component has no content-collection state of its own.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Does not create a landmark or section; the consumer still owns page structure."
+    ],
+    "usage": "<marea-container size=\"default\"> ... </marea-container>"
+  },
+  {
+    "componentId": "marea-grid",
+    "componentName": "MareaGrid",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-grid.ts",
+    "selector": "marea-grid",
+    "purpose": "Lays out children in a responsive auto-fit grid. It must never force a fixed column count or overflow the viewport at narrow widths.",
+    "semanticElement": "Neutral custom element with projected children; no list semantics are implied.",
+    "inputs": [
+      {
+        "name": "minItem",
+        "type": "string",
+        "required": false,
+        "defaultValue": "'240px'",
+        "description": "CSS length used as the minimum comfortable column width."
+      },
+      {
+        "name": "gap",
+        "type": "'compact' | 'default' | 'roomy'",
+        "required": false,
+        "defaultValue": "'default'",
+        "description": "Grid gap preset mapped to spacing tokens."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "compact",
+      "default",
+      "roomy"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Uses repeat(auto-fit, minmax(min(100%, minItem), 1fr)); below 768px it collapses to one column with the small gutter, so children never force page overflow.",
+    "tokenDependencies": [
+      "--marea-grid-min",
+      "--marea-gutter-md",
+      "--marea-space-3",
+      "--marea-space-6",
+      "--marea-gutter-sm"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: layout container with no key handling.",
+    "focusContract": "NOT_APPLICABLE: the grid is not focusable.",
+    "ariaContract": "No role or ARIA attribute is added; reading order follows DOM order.",
+    "localizationRequirements": "No user-facing strings; layout only.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the intrinsic auto-fit grid with the selected gap.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: an empty grid simply collapses; there is no distinct empty contract.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Column count is intrinsic; there is no explicit breakpoint or columns API."
+    ],
+    "usage": "<marea-grid minItem=\"240px\" gap=\"default\"> ... </marea-grid>"
+  },
+  {
+    "componentId": "marea-stack",
+    "componentName": "MareaStack",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-stack.ts",
+    "selector": "marea-stack",
+    "purpose": "Provides vertical rhythm between projected children. It must never change child semantics or imply grouping beyond visual order.",
+    "semanticElement": "Neutral custom element with projected children; no list semantics.",
+    "inputs": [
+      {
+        "name": "gap",
+        "type": "1 | 2 | 3 | 4 | 5 | 6 | 8",
+        "required": false,
+        "defaultValue": "4",
+        "description": "Vertical gap step mapped to the matching spacing token."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Single-column flex stack with min-inline-size: 0; it wraps only vertically and never introduces horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-stack-gap",
+      "--marea-space-4",
+      "--marea-space-1",
+      "--marea-space-2",
+      "--marea-space-3",
+      "--marea-space-5",
+      "--marea-space-6",
+      "--marea-space-8"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: layout container with no key handling.",
+    "focusContract": "NOT_APPLICABLE: the stack is not focusable.",
+    "ariaContract": "No role or ARIA attribute is added; DOM order defines reading order.",
+    "localizationRequirements": "No user-facing strings; layout only.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Applies the selected vertical gap between projected children.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: an empty stack collapses; there is no distinct empty contract.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Gap accepts 1 to 6 and 8; the value 7 is not part of the contract."
+    ],
+    "usage": "<marea-stack [gap]=\"4\"> ... </marea-stack>"
+  },
+  {
+    "componentId": "marea-inline",
+    "componentName": "MareaInline",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-inline.ts",
+    "selector": "marea-inline",
+    "purpose": "Groups children horizontally and wraps them when space runs out. It must never clip, hide or reorder content.",
+    "semanticElement": "Neutral custom element with projected children; no list semantics.",
+    "inputs": [
+      {
+        "name": "gap",
+        "type": "2 | 3 | 4 | 5",
+        "required": false,
+        "defaultValue": "3",
+        "description": "Horizontal gap step mapped to the matching spacing token."
+      },
+      {
+        "name": "align",
+        "type": "'start' | 'between'",
+        "required": false,
+        "defaultValue": "'start'",
+        "description": "Main-axis alignment preset."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "start",
+      "between"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Flex-wrap: wrap allows children to move to a new line instead of clipping; min-inline-size: 0 keeps the group from forcing page overflow.",
+    "tokenDependencies": [
+      "--marea-inline-gap",
+      "--marea-space-3",
+      "--marea-space-2",
+      "--marea-space-4",
+      "--marea-space-5"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: layout container with no key handling.",
+    "focusContract": "NOT_APPLICABLE: the group is not focusable.",
+    "ariaContract": "No role or ARIA attribute is added; visual grouping does not create a semantic group.",
+    "localizationRequirements": "No user-facing strings; layout only.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders a wrapping horizontal group with the selected gap and alignment.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: an empty group collapses; there is no distinct empty contract.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Wraps but provides no overflow menu, collapse behaviour or horizontal scrolling."
+    ],
+    "usage": "<marea-inline [gap]=\"3\" align=\"between\"> ... </marea-inline>"
+  },
+  {
+    "componentId": "marea-divider",
+    "componentName": "MareaDivider",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-divider.ts",
+    "selector": "hr[marea-divider]",
+    "purpose": "Draws a decorative horizontal rule between content groups. It must never convey structural or status meaning, so it is hidden from assistive technology.",
+    "semanticElement": "Native <hr> (attribute selector) rendered with aria-hidden because the rule is decorative.",
+    "inputs": [
+      {
+        "name": "spacing",
+        "type": "'tight' | 'default' | 'loose'",
+        "required": false,
+        "defaultValue": "'default'",
+        "description": "Vertical margin preset."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "tight",
+      "default",
+      "loose"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Occupies the full inline width of its container; spacing changes only vertically and no responsive reflow is applied.",
+    "tokenDependencies": [
+      "--marea-border-width-hairline",
+      "--marea-line",
+      "--marea-space-4",
+      "--marea-space-2",
+      "--marea-space-8"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: decorative rule with no interaction.",
+    "focusContract": "NOT_APPLICABLE: the rule is not focusable.",
+    "ariaContract": "aria-hidden='true' on the host; the native hr semantics are intentionally suppressed so the decorative line is not announced.",
+    "localizationRequirements": "No user-facing strings.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders a hairline rule with the selected vertical spacing.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: the component has no content-collection state of its own.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Decorative and hidden from AT; it cannot serve as a semantic separator that assistive technology should perceive."
+    ],
+    "usage": "<hr marea-divider spacing=\"default\" />"
+  },
+  {
+    "componentId": "marea-surface",
+    "componentName": "MareaSurface",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-surface.ts",
+    "selector": "marea-surface",
+    "purpose": "Provides one data-surface container for a related information group. It must never act as a decorative card stack or imply more than one elevation level.",
+    "semanticElement": "Neutral custom element wrapper; role=group with aria-labelledby only when labelledBy is supplied.",
+    "inputs": [
+      {
+        "name": "variant",
+        "type": "'surface' | 'raised' | 'outline'",
+        "required": false,
+        "defaultValue": "'surface'",
+        "description": "Surface treatment: base, raised or outline."
+      },
+      {
+        "name": "padding",
+        "type": "'none' | 'tight' | 'default' | 'roomy'",
+        "required": false,
+        "defaultValue": "'default'",
+        "description": "Inner padding preset."
+      },
+      {
+        "name": "labelledBy",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Id of the visible heading that labels the surface."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "surface",
+      "raised",
+      "outline",
+      "none",
+      "tight",
+      "default",
+      "roomy"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Padding falls from space-5/default and space-7/roomy to space-4/space-5 below 480px; content wraps inside and never forces horizontal scroll.",
+    "tokenDependencies": [
+      "--marea-surface",
+      "--marea-text-primary",
+      "--marea-border-width-hairline",
+      "--marea-line",
+      "--marea-radius-surface",
+      "--marea-space-5",
+      "--marea-surface-raised",
+      "--marea-border-strong",
+      "--marea-space-3",
+      "--marea-space-7",
+      "--marea-space-4"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the surface adds no key handling; projected controls keep their own.",
+    "focusContract": "NOT_APPLICABLE: the surface is not focusable.",
+    "ariaContract": "role='group' and aria-labelledby are rendered only when labelledBy is supplied; otherwise the host has no ARIA.",
+    "localizationRequirements": "No strings; accessible naming comes from the consumer heading referenced by labelledBy.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the selected surface treatment and padding.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: empty projected content is permitted but is not a distinct state.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Not an interactive card: it has no hover, focus or elevation interaction states."
+    ],
+    "usage": "<marea-surface variant=\"raised\" padding=\"default\" labelledBy=\"section-title\"> ... </marea-surface>"
+  },
+  {
+    "componentId": "marea-icon",
+    "componentName": "MareaIcon",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-icon.ts",
+    "selector": "marea-icon",
+    "purpose": "Renders an original geometric glyph that is decorative unless labelled. It must never be the sole carrier of status or imply the proposed MAREA identity artwork.",
+    "semanticElement": "Inline <svg> that is decorative by default and role=img when an accessible label is supplied.",
+    "inputs": [
+      {
+        "name": "name",
+        "type": "MareaIconName",
+        "required": true,
+        "defaultValue": null,
+        "description": "Icon key from the original MAREA_ICON_PATHS set."
+      },
+      {
+        "name": "label",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Accessible name; when set, the SVG becomes role=img instead of aria-hidden."
+      },
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg' | 'xl'",
+        "required": false,
+        "defaultValue": "'md'",
+        "description": "Square icon size preset."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "sm",
+      "md",
+      "lg",
+      "xl"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Uses fixed square token sizes and flex: none, so the glyph never stretches, shrinks below its token or clips.",
+    "tokenDependencies": [
+      "--marea-icon-size-md",
+      "--marea-icon-size-sm",
+      "--marea-icon-size-lg",
+      "--marea-icon-size-xl"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the icon is not focusable and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the icon is not focusable.",
+    "ariaContract": "svg focusable='false'; aria-hidden='true' when unlabelled, or role='img' plus aria-label when label is supplied.",
+    "localizationRequirements": "The label is consumer-supplied; the component reads no dictionary key, so ES/EN parity is the caller responsibility.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the selected glyph at the selected size, decorative by default.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: name is required, so an unnamed glyph cannot be rendered.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Glyphs are original MC-17 geometry with no originality clearance claimed and are not the proposed brand artwork.",
+      "An icon alone is never a complete status message; a text label must accompany it."
+    ],
+    "usage": "<marea-icon name=\"warning\" label=\"Aviso\" size=\"md\" />"
+  },
+  {
+    "componentId": "marea-button",
+    "componentName": "MareaButton",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-button.ts",
+    "selector": "button[marea-button]",
+    "purpose": "Native button for internal design-system actions with an explicit disabled and loading contract. It must never imply a purchase path, price or commercial commitment.",
+    "semanticElement": "Native <button> (attribute selector); the component styles it and does not replace it.",
+    "inputs": [
+      {
+        "name": "variant",
+        "type": "MareaButtonVariant",
+        "required": false,
+        "defaultValue": "'action'",
+        "description": "Visual action variant."
+      },
+      {
+        "name": "size",
+        "type": "'sm' | 'md' | 'lg'",
+        "required": false,
+        "defaultValue": "'md'",
+        "description": "Control height and horizontal padding preset."
+      },
+      {
+        "name": "type",
+        "type": "'button' | 'submit' | 'reset'",
+        "required": false,
+        "defaultValue": "'button'",
+        "description": "Native button type; submission only when explicitly requested."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Disables the control; without a reason it uses the native disabled attribute."
+      },
+      {
+        "name": "disabledReason",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Explanation exposed through aria-describedby; switches to aria-disabled."
+      },
+      {
+        "name": "loading",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Marks the control busy, adds a clock icon and blocks activation."
+      },
+      {
+        "name": "icon",
+        "type": "null | 'chevron-right' | 'arrow-right' | 'external' | 'check' | 'close' | 'download' | 'document'",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional trailing icon name."
+      }
+    ],
+    "outputs": [
+      {
+        "name": "activated",
+        "type": "void",
+        "description": "Emitted when an enabled, non-loading button is activated."
+      }
+    ],
+    "visualVariants": [
+      "action",
+      "secondary",
+      "ghost",
+      "critical",
+      "sm",
+      "md",
+      "lg"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Inline-flex control with a minimum 44px touch target; the label wraps inside the button and no fixed width is imposed.",
+    "tokenDependencies": [
+      "--marea-space-2",
+      "--marea-control-md",
+      "--marea-touch-target-min",
+      "--marea-space-4",
+      "--marea-border-width-hairline",
+      "--marea-radius-control",
+      "--marea-font-body",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-tracking",
+      "--marea-motion-state",
+      "--marea-ease-standard",
+      "--marea-action",
+      "--marea-text-on-accent",
+      "--marea-action-hover",
+      "--marea-action-quiet-surface",
+      "--marea-border-strong",
+      "--marea-state-critical",
+      "--marea-control-sm",
+      "--marea-space-3",
+      "--marea-control-lg",
+      "--marea-space-5",
+      "--marea-focus-width",
+      "--marea-focus-style",
+      "--marea-focus-ring",
+      "--marea-focus-offset",
+      "--marea-focus-ring-on-fill",
+      "--marea-focus-inset",
+      "--marea-disabled-surface",
+      "--marea-disabled"
+    ],
+    "keyboardContract": "Tab focuses the button; Enter and Space activate it natively. Disabled or loading controls prevent default and stop propagation, so activated is not emitted.",
+    "focusContract": "Native :focus-visible outline using focus tokens; filled action and critical variants use the inset offset so the ring is not clipped.",
+    "ariaContract": "Native button; host sets type, disabled or aria-disabled, aria-busy while loading, and aria-describedby to the screen-reader reason when aria-disabled is used.",
+    "localizationRequirements": "The visible label and disabledReason are consumer-supplied; the loading announcement comes from MareaI18n key 'loading', localized ES/EN by the theme host.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Enabled native button rendered with the selected variant and size.",
+      "HOVER": "Background and border change per variant (action hover, quiet surface or action border).",
+      "FOCUS_VISIBLE": "Token focus outline is visible; filled variants inset the ring so it is not obscured.",
+      "PRESSED": "Native button active state; no authored pressed style, and activated is emitted once.",
+      "DISABLED": "Without a reason the native disabled attribute is used; with it, aria-disabled=true keeps the control focusable, described by the reason, and blocks activation.",
+      "LOADING": "aria-busy=true, clock icon and screen-reader loading text; activation is blocked and no timer is required to understand the state.",
+      "EMPTY": "NOT_APPLICABLE: the component has no content-collection state of its own.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "disabled or loading prevents click, Enter and Space and stops propagation; no action is emitted."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "No purchase, price, stock or commercial action is modelled.",
+      "The loading state is synchronous presentation only; the component does not start or track asynchronous work."
+    ],
+    "usage": "<button marea-button variant=\"action\" (activated)=\"save()\">Guardar</button>"
+  },
+  {
+    "componentId": "marea-link",
+    "componentName": "MareaLink",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-link.ts",
+    "selector": "a[marea-link]",
+    "purpose": "Styles a native anchor and adds an external-link cue with a text alternative. It must never create navigation to unapproved public pages or imply that an external destination is endorsed.",
+    "semanticElement": "Native <a> (attribute selector); the component styles the anchor and does not replace it.",
+    "inputs": [
+      {
+        "name": "href",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Anchor destination; null renders an anchor without href."
+      },
+      {
+        "name": "external",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Adds target=_blank, rel=noopener noreferrer and the external cue."
+      },
+      {
+        "name": "variant",
+        "type": "'inline' | 'quiet' | 'standalone'",
+        "required": false,
+        "defaultValue": "'inline'",
+        "description": "Inline, quiet or standalone link treatment."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "inline",
+      "quiet",
+      "standalone"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Inline-flex within running text; the link wraps with the paragraph and the external icon follows the text instead of clipping.",
+    "tokenDependencies": [
+      "--marea-space-1",
+      "--marea-action",
+      "--marea-font-body",
+      "--marea-radius-control",
+      "--marea-action-hover",
+      "--marea-focus-width",
+      "--marea-focus-style",
+      "--marea-focus-ring",
+      "--marea-focus-offset",
+      "--marea-text-primary",
+      "--marea-type-body-size"
+    ],
+    "keyboardContract": "Tab focuses the anchor; Enter follows the native link. The component adds no custom key handler.",
+    "focusContract": "Token focus outline with offset on the rounded control; the ring is not hidden by the underline.",
+    "ariaContract": "Native anchor with href. External links add target=_blank and rel=noopener noreferrer; the decorative icon is followed by a screen-reader-only external suffix.",
+    "localizationRequirements": "Link text is consumer-supplied; the external cue resolves its screen-reader suffix from MareaI18n key 'external', localized ES/EN by the theme host.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the selected link variant with the supplied href.",
+      "HOVER": "Colour changes to action-hover; quiet links add underline on hover.",
+      "FOCUS_VISIBLE": "Token focus outline is visible with an offset, independent of the link colour.",
+      "PRESSED": "Native anchor activation; no authored pressed style.",
+      "DISABLED": "NOT_APPLICABLE: anchors have no disabled input; omit href or do not render the link.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: the consumer supplies the link text; empty copy is a content decision.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "No disabled anchor state exists; a disabled-looking link is not supported.",
+      "The external suffix is screen-reader only and does not describe the destination."
+    ],
+    "usage": "<a marea-link href=\"/interno\" variant=\"inline\">Ver ficha</a>"
+  },
+  {
+    "componentId": "marea-status-badge",
+    "componentName": "MareaStatusBadge",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-status-badge.ts",
+    "selector": "span[marea-status-badge]",
+    "purpose": "Renders a tone-coded label with a shape icon so status never relies on colour. It must never infer a status that the supplied label does not state.",
+    "semanticElement": "Native <span> (attribute selector) containing a decorative icon and the required visible text label.",
+    "inputs": [
+      {
+        "name": "tone",
+        "type": "MareaTone",
+        "required": true,
+        "defaultValue": null,
+        "description": "Semantic tone selecting the icon and surface colour."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible status text; required so an icon-only chip cannot be produced."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Inline-flex chip with white-space: normal and overflow-wrap: anywhere, so the label wraps instead of clipping at narrow widths.",
+    "tokenDependencies": [
+      "--marea-space-1",
+      "--marea-space-2",
+      "--marea-border-width-hairline",
+      "--marea-radius-pill",
+      "--marea-font-body",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-state-critical",
+      "--marea-state-critical-surface",
+      "--marea-state-warning",
+      "--marea-state-warning-surface",
+      "--marea-state-safe",
+      "--marea-state-safe-surface",
+      "--marea-state-stale",
+      "--marea-state-stale-surface",
+      "--marea-state-info",
+      "--marea-state-info-surface",
+      "--marea-text-secondary",
+      "--marea-surface-raised"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the badge is not focusable and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the badge is not focusable.",
+    "ariaContract": "No role or ARIA attribute is added. The icon is decorative and the required visible label carries the status.",
+    "localizationRequirements": "The label is consumer-supplied; the tone selects only an icon and colour, so ES/EN parity is the caller responsibility.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the selected tone with its shape icon and the required text label.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: the component has no content-collection state of its own.",
+      "ERROR": "tone='critical' renders the critical surface, critical icon and the supplied text.",
+      "WARNING": "tone='warning' renders the warning surface, warning icon and the supplied text.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Tone values come from the shared MareaTone type; the catalogue documents the critical and warning cases through the states field."
+    ],
+    "usage": "<span marea-status-badge tone=\"warning\" label=\"No verificado\"></span>"
+  },
+  {
+    "componentId": "marea-notice",
+    "componentName": "MareaNotice",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-notice.ts",
+    "selector": "marea-notice",
+    "purpose": "Presents an informational, warning, critical, permission or internal message with an opt-in live region. It must never claim an approval, clearance or availability that the copy does not state.",
+    "semanticElement": "Custom element containing a heading <p>, optional body <p>, a decorative icon and projected content.",
+    "inputs": [
+      {
+        "name": "heading",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible notice heading."
+      },
+      {
+        "name": "body",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional explanatory paragraph."
+      },
+      {
+        "name": "variant",
+        "type": "MareaNoticeVariant",
+        "required": false,
+        "defaultValue": "'info'",
+        "description": "Visual and icon variant."
+      },
+      {
+        "name": "live",
+        "type": "'off' | 'polite' | 'assertive'",
+        "required": false,
+        "defaultValue": "'off'",
+        "description": "Opt-in live-region behaviour; off by default."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "info",
+      "warning",
+      "critical",
+      "permission",
+      "internal",
+      "off",
+      "polite",
+      "assertive"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The icon and body flex row wraps; padding reduces from space-4 to space-3 below 480px, and the body never forces horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-space-3",
+      "--marea-space-4",
+      "--marea-border-width-hairline",
+      "--marea-border-width-strong",
+      "--marea-radius-surface",
+      "--marea-surface",
+      "--marea-text-primary",
+      "--marea-state-info",
+      "--marea-state-warning",
+      "--marea-state-warning-surface",
+      "--marea-state-critical",
+      "--marea-state-critical-surface",
+      "--marea-internal-banner-text",
+      "--marea-internal-banner-surface",
+      "--marea-space-1",
+      "--marea-font-display",
+      "--marea-type-heading-size"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the notice adds no key handling; projected controls keep their own.",
+    "focusContract": "NOT_APPLICABLE: the notice is not focusable.",
+    "ariaContract": "No live region by default. role='status' and aria-live='polite' for live=polite; role='alert' and aria-live='assertive' only when assertive is explicitly requested.",
+    "localizationRequirements": "Heading and body are consumer-supplied; the variant icon carries no text, so ES/EN parity is the caller responsibility.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the info variant without a live region.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: the component has no content-collection state of its own.",
+      "ERROR": "variant='critical' uses the critical surface; role=alert and aria-live=assertive are set only when live='assertive'.",
+      "WARNING": "variant='warning' uses the warning surface and icon with the supplied text.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "variant='permission' or 'internal' renders the internal-banner treatment for a withheld scope; it never grants access."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Assertive live regions are opt-in and should be reserved for genuinely urgent, user-triggered messages."
+    ],
+    "usage": "<marea-notice variant=\"warning\" heading=\"Aviso\" body=\"Texto\" live=\"off\" />"
+  },
+  {
+    "componentId": "marea-state-panel",
+    "componentName": "MareaStatePanel",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-state-panel.ts",
+    "selector": "marea-state-panel",
+    "purpose": "Presents loading, empty, error or unavailable states without animation dependence. It must never fabricate content or a fallback value to fill the state.",
+    "semanticElement": "Custom element with an icon, title <p>, optional description <p> and projected actions.",
+    "inputs": [
+      {
+        "name": "kind",
+        "type": "MareaStateKind",
+        "required": false,
+        "defaultValue": "'empty'",
+        "description": "State kind selecting icon and announcement behaviour."
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible state title."
+      },
+      {
+        "name": "description",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional supporting explanation."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "loading",
+      "empty",
+      "error",
+      "unavailable"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Centered grid panel with the description capped at var(--marea-measure); it fills its container and never forces horizontal scrolling.",
+    "tokenDependencies": [
+      "--marea-space-2",
+      "--marea-space-8",
+      "--marea-space-4",
+      "--marea-border-width-hairline",
+      "--marea-border-strong",
+      "--marea-radius-surface",
+      "--marea-surface",
+      "--marea-text-primary",
+      "--marea-state-critical",
+      "--marea-font-display",
+      "--marea-type-heading-size",
+      "--marea-measure",
+      "--marea-text-secondary"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the panel adds no key handling; projected actions keep their own behaviour.",
+    "focusContract": "NOT_APPLICABLE: the panel is not focusable.",
+    "ariaContract": "role='status' for loading, empty and unavailable; role='alert' with aria-live='assertive' for error; aria-busy='true' while loading.",
+    "localizationRequirements": "Title and description are consumer-supplied; the component reads no dictionary strings.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders kind=empty with role=status and a dash icon.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "kind='loading' sets aria-busy=true and role=status with a clock icon; no spinner is required.",
+      "EMPTY": "kind='empty' uses role=status and a dash icon; it never fabricates content.",
+      "ERROR": "kind='error' sets role=alert and aria-live=assertive with a critical icon.",
+      "WARNING": "NOT_APPLICABLE: no warning kind exists; use marea-notice variant=warning for warnings.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "kind='unavailable' announces a withheld state with a lock icon and role=status."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "No retry action is built in; callers project actions and must handle them."
+    ],
+    "usage": "<marea-state-panel kind=\"empty\" title=\"Sin contenido\" description=\"No hay datos.\" />"
+  },
+  {
+    "componentId": "marea-form-field",
+    "componentName": "MareaFormField",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-form-field.ts",
+    "selector": "marea-form-field",
+    "purpose": "Wires a projected native control to a label, hint and error message with correct programmatic relationships. It must never replace the control or imply validation the server did not perform.",
+    "semanticElement": "Custom element with a native <label>, projected control, hint <p> and error <p role=alert>.",
+    "inputs": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible label text associated with controlId."
+      },
+      {
+        "name": "controlId",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Id of the projected native control."
+      },
+      {
+        "name": "hint",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional help text referenced by describedBy."
+      },
+      {
+        "name": "error",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional error paragraph rendered with role=alert."
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Adds the required marker and screen-reader text."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Grid field with a 100% inline-size projected control; label, hint and error wrap and no fixed field width is imposed.",
+    "tokenDependencies": [
+      "--marea-space-1",
+      "--marea-font-body",
+      "--marea-type-label-size",
+      "--marea-text-primary",
+      "--marea-state-critical",
+      "--marea-type-body-small-size",
+      "--marea-text-secondary",
+      "--marea-control-md",
+      "--marea-space-2",
+      "--marea-space-3",
+      "--marea-border-width-hairline",
+      "--marea-border-strong",
+      "--marea-radius-control",
+      "--marea-field-surface",
+      "--marea-type-body-size",
+      "--marea-type-body-line-height",
+      "--marea-action",
+      "--marea-focus-width",
+      "--marea-focus-style",
+      "--marea-focus-ring",
+      "--marea-focus-offset",
+      "--marea-border-width-strong",
+      "--marea-disabled-surface",
+      "--marea-disabled"
+    ],
+    "keyboardContract": "No key handler of its own; Tab reaches the projected native control in DOM order and native field keys are unchanged.",
+    "focusContract": "The projected control receives marea-form-field's .marea-input:focus-visible outline with offset; label and hint do not cover it.",
+    "ariaContract": "label[for=controlId]; hint and error ids are exposed through describedBy; the error paragraph is role=alert; required adds a visual asterisk plus screen-reader text.",
+    "localizationRequirements": "Label, hint and error are consumer-supplied; the required marker's screen-reader text comes from MareaI18n key 'required', localized ES/EN.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the label, projected control and optional hint.",
+      "HOVER": "The projected .marea-input border changes to the action colour on hover.",
+      "FOCUS_VISIBLE": "The projected .marea-input shows the token focus outline with offset.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "A native disabled projected control uses the disabled surface and colour; the field adds no state of its own.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: the component has no content-collection state of its own.",
+      "ERROR": "The error paragraph renders with role=alert and is referenced by describedBy; pair it with mareaInput invalid on the control.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: readonly is native and not modelled by this component.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The projected control is styled through a namespaced ::ng-deep block inside the field host.",
+      "Hint and error copy are consumer-supplied; the field performs no validation of its own."
+    ],
+    "usage": "<marea-form-field label=\"Nombre\" controlId=\"name\" [required]=\"true\"><input id=\"name\" mareaInput /></marea-form-field>"
+  },
+  {
+    "componentId": "marea-input",
+    "componentName": "MareaInput",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-directive",
+    "implementationPath": "src/app/marea-design-system/components/foundation/marea-input.ts",
+    "selector": "input[mareaInput], select[mareaInput], textarea[mareaInput]",
+    "purpose": "Applies the text-input appearance and invalid/required ARIA contract to native form controls. It must never replace the element, its label or native validation semantics.",
+    "semanticElement": "Native <input>, <select> or <textarea> (attribute directive); the element is not replaced.",
+    "inputs": [
+      {
+        "name": "invalid",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Adds aria-invalid and the invalid appearance class."
+      },
+      {
+        "name": "required",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Adds aria-required to the native control."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The native control fills its container when paired with marea-form-field; the directive itself imposes no width or breakpoint behaviour.",
+    "tokenDependencies": [],
+    "keyboardContract": "Native input, select and textarea keyboard behaviour is preserved; the directive adds no key handler.",
+    "focusContract": "Focus styling is provided by marea-form-field's ::ng-deep .marea-input:focus-visible rule; the directive adds no styles of its own.",
+    "ariaContract": "The directive sets aria-invalid when invalid, aria-required when required, and the namespace class marea-input--invalid; native labels and validation stay untouched.",
+    "localizationRequirements": "No strings; native validation messages are browser-owned and the visible error text belongs to marea-form-field.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "The native control keeps its own value and appearance; only the invalid/required attributes are added.",
+      "HOVER": "Border hover comes from marea-form-field's .marea-input rule.",
+      "FOCUS_VISIBLE": "The focus ring comes from marea-form-field's .marea-input:focus-visible rule.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the directive models no disabled state; native disabled styling is provided by marea-form-field.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: native value emptiness is not a component state.",
+      "ERROR": "invalid=true adds aria-invalid=true and the marea-input--invalid class; visible error text belongs to marea-form-field.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: native readonly is allowed but not styled or exposed as a contract state.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The directive declares no styles; standalone use is unstyled and the appearance comes from marea-form-field's ::ng-deep block.",
+      "No validation, masking or formatting is performed; those remain native or consumer responsibilities."
+    ],
+    "usage": "<input mareaInput [invalid]=\"true\" [required]=\"true\" />"
+  },
+  {
+    "componentId": "marea-tabs",
+    "componentName": "MareaTabs",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-tabs.ts",
+    "selector": "marea-tabs",
+    "purpose": "Renders a roving-tabindex tab strip whose selection is owned by the parent. It must never hold a second selection state or render panels itself.",
+    "semanticElement": "Custom element containing a role=tablist with native <button role=tab> elements.",
+    "inputs": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Accessible name for the tablist."
+      },
+      {
+        "name": "items",
+        "type": "readonly MareaTabItem[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Tab ids and labels; ids must match the tab-panel itemId values."
+      },
+      {
+        "name": "activeId",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Controlled active tab id; null leaves the first tab as the tab stop."
+      }
+    ],
+    "outputs": [
+      {
+        "name": "activeIdChange",
+        "type": "string",
+        "description": "Emitted with the newly selected tab id; the parent owns the state."
+      }
+    ],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The tab strip wraps; tabs keep the 44px touch minimum and max-inline-size: 100%, so labels wrap at 320px instead of widening the page.",
+    "tokenDependencies": [
+      "--marea-border-width-hairline",
+      "--marea-line",
+      "--marea-control-md",
+      "--marea-touch-target-min",
+      "--marea-space-2",
+      "--marea-space-3",
+      "--marea-border-width-focus",
+      "--marea-text-secondary",
+      "--marea-font-body",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-tracking",
+      "--marea-text-primary",
+      "--marea-action-quiet-surface",
+      "--marea-action",
+      "--marea-focus-width",
+      "--marea-focus-style",
+      "--marea-focus-ring",
+      "--marea-focus-inset"
+    ],
+    "keyboardContract": "Tab enters the strip once through the roving tabindex; ArrowRight/ArrowLeft move and wrap, Home/End jump to the first/last tab, and focus activates automatically. Click also selects.",
+    "focusContract": "Tab buttons show an inset focus outline using focus tokens; the active tab also has a heavier weight and a 3px action border, so focus and selection are not colour-only.",
+    "ariaContract": "div role=tablist with aria-label; each button is role=tab with aria-selected, aria-controls={id}-panel and a roving tabindex. The paired marea-tab-panel supplies role=tabpanel and aria-labelledby.",
+    "localizationRequirements": "The tablist label and tab labels come from inputs, not MareaI18n; ES/EN parity is the caller responsibility.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the strip with the controlled active tab, or the first tab as the tab stop when activeId is null.",
+      "HOVER": "Tabs change to primary text on an action-quiet background.",
+      "FOCUS_VISIBLE": "The focused tab shows a token outline with inset offset; selection is also weight and border coded.",
+      "PRESSED": "NOT_APPLICABLE: activation happens on focus or click; no aria-pressed or separate pressed style exists.",
+      "DISABLED": "NOT_APPLICABLE: the API has no disabled tab item.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "An empty items array renders an empty tablist; the caller must not present it as a usable strip.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Panels are not rendered by the strip; mismatched ids break aria-controls and aria-labelledby.",
+      "Selection is fully controlled; the component never stores its own active id."
+    ],
+    "usage": "<marea-tabs label=\"Secciones\" [items]=\"tabs\" [activeId]=\"active\" (activeIdChange)=\"active = $event\" />"
+  },
+  {
+    "componentId": "marea-tab-panel",
+    "componentName": "MareaTabPanel",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-tab-panel.ts",
+    "selector": "marea-tab-panel",
+    "purpose": "Renders one focusable tab panel with native hidden semantics. It must never claim to be active when the parent has not selected its id.",
+    "semanticElement": "Custom element containing a div role=tabpanel with tabindex=0 and the native hidden attribute.",
+    "inputs": [
+      {
+        "name": "itemId",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Id shared with the matching tab; forms the panel and tab ARIA ids."
+      },
+      {
+        "name": "active",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Shows the panel and removes the hidden attribute when true."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Fills the inline size and lets content wrap; it introduces no horizontal scrolling and no fixed width.",
+    "tokenDependencies": [
+      "--marea-space-4",
+      "--marea-focus-width",
+      "--marea-focus-style",
+      "--marea-focus-ring",
+      "--marea-focus-offset"
+    ],
+    "keyboardContract": "Tab moves focus into the panel because tabindex=0; the component adds no other key handling.",
+    "focusContract": "The panel shows the token focus outline with offset when focused.",
+    "ariaContract": "div role=tabpanel tabindex=0, id={itemId}-panel, aria-labelledby={itemId}-tab, and hidden when inactive so content leaves the accessibility tree and tab order.",
+    "localizationRequirements": "Projected content is consumer-supplied; the component reads no dictionary strings.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Visible panel for the selected itemId, with role=tabpanel and focusability.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "The panel shows the token focus outline when it receives focus.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "Empty projected content is allowed; the panel still exposes its tabpanel role.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "ARIA relationships resolve only when itemId matches the tab button id."
+    ],
+    "usage": "<marea-tab-panel itemId=\"overview\" [active]=\"active === 'overview'\"> ... </marea-tab-panel>"
+  },
+  {
+    "componentId": "marea-accordion",
+    "componentName": "MareaAccordion",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-accordion.ts",
+    "selector": "marea-accordion",
+    "purpose": "Renders a list of native details/summary disclosures, optionally exclusive. It must never add ARIA state or imply content that the item data does not contain.",
+    "semanticElement": "Custom element containing native <details>/<summary> pairs, one per item.",
+    "inputs": [
+      {
+        "name": "items",
+        "type": "readonly MareaAccordionItem[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Disclosure items with title, body and optional note."
+      },
+      {
+        "name": "mode",
+        "type": "'single' | 'multiple'",
+        "required": false,
+        "defaultValue": "'multiple'",
+        "description": "single shares one native name for exclusive disclosure; multiple leaves items independent."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "single",
+      "multiple"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Single-column details list; summary, body and note text use overflow-wrap: anywhere and never force horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-border-width-hairline",
+      "--marea-line",
+      "--marea-control-md",
+      "--marea-space-3",
+      "--marea-space-1",
+      "--marea-font-display",
+      "--marea-type-heading-size",
+      "--marea-type-heading-line-height",
+      "--marea-text-primary",
+      "--marea-action",
+      "--marea-focus-width",
+      "--marea-focus-style",
+      "--marea-focus-ring",
+      "--marea-focus-inset",
+      "--marea-space-2",
+      "--marea-space-5",
+      "--marea-space-4"
+    ],
+    "keyboardContract": "Each summary is a native focus stop; Enter and Space toggle its details with native browser behaviour. Shared name gives exclusive behaviour in single mode.",
+    "focusContract": "Summary shows a token focus outline with inset offset; the native marker and text remain visible.",
+    "ariaContract": "Native details/summary semantics; no ARIA attributes are added. Expanded state and the announcement come from the browser.",
+    "localizationRequirements": "Item titles, bodies and notes are consumer-supplied; the component reads no dictionary strings.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders all items collapsed by default with native details/summary behaviour.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "The focused summary shows a token outline with inset offset.",
+      "PRESSED": "NOT_APPLICABLE: the native details toggle is used; no authored pressed state exists.",
+      "DISABLED": "NOT_APPLICABLE: the API has no disabled item.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "An empty items array renders an empty bordered container; no message is manufactured.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The exclusive name attribute relies on native details name support; unsupported browsers degrade to independent disclosures."
+    ],
+    "usage": "<marea-accordion mode=\"single\" [items]=\"items\" />"
+  },
+  {
+    "componentId": "marea-disclosure",
+    "componentName": "MareaDisclosure",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-disclosure.ts",
+    "selector": "marea-disclosure",
+    "purpose": "Renders one native details disclosure controlled by an open input. It must never keep hidden internal state or imply expansion beyond the bound value.",
+    "semanticElement": "Custom element containing one native <details>/<summary> with projected content.",
+    "inputs": [
+      {
+        "name": "summary",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible summary text."
+      },
+      {
+        "name": "open",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "false",
+        "description": "Controlled open state; the component keeps no second state."
+      },
+      {
+        "name": "meta",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional secondary line inside the summary."
+      }
+    ],
+    "outputs": [
+      {
+        "name": "openedChange",
+        "type": "boolean",
+        "description": "Emitted with the native open state after a user toggle."
+      }
+    ],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Block details element; summary, meta and content wrap with overflow-wrap: anywhere and never clip.",
+    "tokenDependencies": [
+      "--marea-border-width-hairline",
+      "--marea-line",
+      "--marea-radius-surface",
+      "--marea-surface",
+      "--marea-control-md",
+      "--marea-space-3",
+      "--marea-space-4",
+      "--marea-font-display",
+      "--marea-type-heading-size",
+      "--marea-type-heading-line-height",
+      "--marea-text-primary",
+      "--marea-action",
+      "--marea-focus-width",
+      "--marea-focus-style",
+      "--marea-focus-ring",
+      "--marea-focus-inset",
+      "--marea-space-1",
+      "--marea-font-body",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking",
+      "--marea-text-meta"
+    ],
+    "keyboardContract": "The summary is a native focus stop; Enter and Space toggle the details, and openedChange reports the resulting state.",
+    "focusContract": "The summary shows a token focus outline with inset offset.",
+    "ariaContract": "Native details/summary semantics with no extra ARIA; the open attribute is bound from the open input.",
+    "localizationRequirements": "Summary, meta and projected content are consumer-supplied; the component reads no dictionary strings.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Closed by default, or open when the open input is true.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "The focused summary shows a token outline with inset offset.",
+      "PRESSED": "NOT_APPLICABLE: the native details toggle is used; no authored pressed state exists.",
+      "DISABLED": "NOT_APPLICABLE: the API has no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "Projected content may be empty; the details element still toggles.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Toggle filtering relies on the native details toggle event, and the open input remains authoritative."
+    ],
+    "usage": "<marea-disclosure summary=\"Detalles\" [open]=\"open\" (openedChange)=\"open = $event\"> ... </marea-disclosure>"
+  },
+  {
+    "componentId": "marea-spec-table",
+    "componentName": "MareaSpecTable",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-spec-table.ts",
+    "selector": "marea-spec-table",
+    "purpose": "Renders a dense two-column specification table inside a labelled scroll region. It must never widen the page or imply a specification value the rows do not supply.",
+    "semanticElement": "Custom element wrapping a <table> with a visible <caption> and <th scope=col/row>.",
+    "inputs": [
+      {
+        "name": "caption",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible table caption and accessible name of the scroll region."
+      },
+      {
+        "name": "rows",
+        "type": "readonly MareaSpecRow[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Label, value and optional note rows."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The table scrolls horizontally inside a max-inline-size: 100% region; a visible scroll hint appears below 768px and the page itself never overflows at 320px.",
+    "tokenDependencies": [
+      "--marea-space-2",
+      "--marea-font-body",
+      "--marea-type-body-small-size",
+      "--marea-type-body-small-line-height",
+      "--marea-text-secondary",
+      "--marea-border-width-hairline",
+      "--marea-line",
+      "--marea-radius-surface",
+      "--marea-surface",
+      "--marea-focus-width",
+      "--marea-focus-style",
+      "--marea-focus-ring",
+      "--marea-focus-inset",
+      "--marea-text-primary",
+      "--marea-space-3",
+      "--marea-space-4",
+      "--marea-font-display",
+      "--marea-type-heading-size",
+      "--marea-type-heading-line-height",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-tracking",
+      "--marea-surface-raised",
+      "--marea-space-1",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-tracking",
+      "--marea-text-meta"
+    ],
+    "keyboardContract": "Tab focuses the scroll region, and arrow/Page keys scroll it horizontally when rows exceed the width; no custom key handler is added.",
+    "focusContract": "The scroll region shows a token focus outline with inset offset inside its bordered container.",
+    "ariaContract": "Native table with caption and th scope=col/row; the scroll wrapper is role=region with tabindex=0 and aria-label equal to the caption.",
+    "localizationRequirements": "Caption, labels, values and notes are consumer-supplied; column headers come from MareaI18n keys 'rowHeader' and 'valueLabel', and the hint from 'scrollHint', localized ES/EN.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the caption and all supplied rows with header associations.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "The scroll region shows a token outline with inset offset when focused.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "A rows=[] array renders the table headers with no body rows; callers should use a state panel for genuine absence.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Horizontal scrolling is the responsive strategy; rows are not reflowed into cards.",
+      "No sorting, filtering or pagination is provided."
+    ],
+    "usage": "<marea-spec-table caption=\"Ficha técnica\" [rows]=\"rows\" />"
+  },
+  {
+    "componentId": "marea-definition-list",
+    "componentName": "MareaDefinitionList",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-definition-list.ts",
+    "selector": "marea-definition-list",
+    "purpose": "Renders native term/definition pairs with an optional visible label. It must never invent definitions or replace the dl semantics with a grid of generic elements.",
+    "semanticElement": "Custom element containing native <dl>/<dt>/<dd>, with an optional visible label paragraph.",
+    "inputs": [
+      {
+        "name": "label",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional visible label used as the dl accessible name."
+      },
+      {
+        "name": "items",
+        "type": "readonly MareaDefinitionItem[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Term, definition and optional note items."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Two-column term/definition grid above 768px and one column below; terms and definitions use overflow-wrap: anywhere and never force horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-space-3",
+      "--marea-space-2",
+      "--marea-space-4",
+      "--marea-font-body",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-tracking",
+      "--marea-text-primary",
+      "--marea-space-1",
+      "--marea-type-body-small-size",
+      "--marea-type-body-small-line-height",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-tracking",
+      "--marea-text-meta"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the definition list is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered.",
+    "ariaContract": "Native dl/dt/dd semantics; the dl is labelled by the visible label when one is supplied. No other ARIA is added.",
+    "localizationRequirements": "Label, terms, definitions and notes are consumer-supplied; the component reads no dictionary strings.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the supplied term/definition pairs, labelled when a label is supplied.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "An empty items array renders an empty dl; no placeholder is added.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Below 768px the two-column layout collapses to one column; dense definitions become vertically long."
+    ],
+    "usage": "<marea-definition-list label=\"Ficha\" [items]=\"items\" />"
+  },
+  {
+    "componentId": "marea-responsive-nav",
+    "componentName": "MareaResponsiveNav",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-responsive-nav.ts",
+    "selector": "marea-responsive-nav",
+    "purpose": "Renders a mobile-first navigation landmark with a native toggle. It must never trap focus, create an overlay or imply that proposed routes are deployed.",
+    "semanticElement": "Custom element containing <nav aria-label>, a native toggle <button> and a <ul> of anchors.",
+    "inputs": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Accessible name for the nav landmark."
+      },
+      {
+        "name": "items",
+        "type": "readonly MareaNavItem[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Navigation items with href, label and optional current flag."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Below 1024px the toggle controls a vertical list; at 1024px and above the toggle is hidden and the list is horizontal and wrapping. No overlay or focus trap is used.",
+    "tokenDependencies": [
+      "--marea-space-2",
+      "--marea-control-md",
+      "--marea-touch-target-min",
+      "--marea-space-1",
+      "--marea-space-3",
+      "--marea-border-width-hairline",
+      "--marea-border-strong",
+      "--marea-radius-control",
+      "--marea-surface",
+      "--marea-text-primary",
+      "--marea-font-body",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-tracking",
+      "--marea-focus-width",
+      "--marea-focus-style",
+      "--marea-focus-ring",
+      "--marea-focus-offset",
+      "--marea-type-body-small-size",
+      "--marea-type-body-small-line-height",
+      "--marea-action",
+      "--marea-focus-inset"
+    ],
+    "keyboardContract": "Tab reaches the toggle; Enter or Space toggles the list; Escape closes an open list and returns focus to the toggle; links use native Tab and Enter.",
+    "focusContract": "Toggle and links show token focus outlines; the toggle ring uses offset and is not covered by the list.",
+    "ariaContract": "nav with aria-label; the toggle exposes aria-expanded and aria-controls=listId; the current link uses aria-current='page' plus weight and underline.",
+    "localizationRequirements": "Label and item labels are consumer-supplied; toggle text comes from MareaI18n keys 'openNavigation' and 'closeNavigation', localized ES/EN.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Closed below 1024px with the toggle visible; open when toggled; always horizontal at 1024px and above.",
+      "HOVER": "Toggle and links change to the action colour, and links add underline.",
+      "FOCUS_VISIBLE": "Toggle and links show token outlines; offset variants keep the ring visible.",
+      "PRESSED": "NOT_APPLICABLE: the toggle is a stateful button, not a pressed-button control; aria-expanded carries its state.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled item or toggle state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "An empty items array renders the nav with no links; the toggle can open an empty list.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "No focus trap or overlay is provided by design; the toggle and list remain in normal flow.",
+      "The current page marker is consumer-supplied through items[].current."
+    ],
+    "usage": "<marea-responsive-nav label=\"Navegación principal\" [items]=\"items\" />"
+  },
+  {
+    "componentId": "marea-breadcrumb",
+    "componentName": "MareaBreadcrumb",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-breadcrumb.ts",
+    "selector": "marea-breadcrumb",
+    "purpose": "Renders a native breadcrumb trail where the last item is the current page. It must never turn the current page into a link or promise a route that does not exist.",
+    "semanticElement": "Custom element containing <nav aria-label> with an <ol>/<li> trail; the last item is a span.",
+    "inputs": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": false,
+        "defaultValue": "''",
+        "description": "Optional accessible name; falls back to the localized breadcrumb string."
+      },
+      {
+        "name": "items",
+        "type": "readonly MareaBreadcrumbItem[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Trail items; the last is rendered as the current page."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The inline list wraps onto multiple lines; each item keeps the 44px touch minimum and CSS-generated separators do not become extra content.",
+    "tokenDependencies": [
+      "--marea-font-body",
+      "--marea-type-body-small-size",
+      "--marea-type-body-small-line-height",
+      "--marea-touch-target-min",
+      "--marea-space-1",
+      "--marea-text-meta",
+      "--marea-text-primary",
+      "--marea-text-secondary"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the breadcrumb adds no key handling; rendered anchors keep native Tab and Enter behaviour.",
+    "focusContract": "Focus lands on rendered marea-link anchors, which show the shared token outline and offset; the current page is not focusable.",
+    "ariaContract": "nav with aria-label from the label input or the localized 'breadcrumb' string; ol/li structure; the last span has aria-current='page'; separators are CSS content.",
+    "localizationRequirements": "Item labels are consumer-supplied; the fallback nav label comes from MareaI18n key 'breadcrumb', localized ES/EN.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the trail with links for earlier items and a non-link current page.",
+      "HOVER": "Rendered marea-link items change to the action colour on hover.",
+      "FOCUS_VISIBLE": "Repository links show the shared focus outline; the current page has no focus ring because it is not a control.",
+      "PRESSED": "Native anchor activation; no authored pressed style.",
+      "DISABLED": "NOT_APPLICABLE: the API has no disabled trail item.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "An empty items array renders an empty nav; no placeholder is added.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "No BreadcrumbList structured data is emitted; the component is visual and navigational only.",
+      "The last item is always treated as the current page, so a partial trail cannot end in a link."
+    ],
+    "usage": "<marea-breadcrumb [items]=\"trail\" />"
+  },
+  {
+    "componentId": "marea-status-display",
+    "componentName": "MareaStatusDisplay",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-status-display.ts",
+    "selector": "marea-status-display",
+    "purpose": "Renders a tone-labelled status with a decorative icon and optional description or meta. It must never announce itself as a live update or infer status from colour.",
+    "semanticElement": "Custom element with a decorative icon and <p> label, description and meta elements.",
+    "inputs": [
+      {
+        "name": "tone",
+        "type": "MareaTone",
+        "required": true,
+        "defaultValue": null,
+        "description": "Tone selecting the icon colour."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible status text; the icon is decorative."
+      },
+      {
+        "name": "description",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional supporting description."
+      },
+      {
+        "name": "meta",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional meta line."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Flex row with the icon held at flex: none and the body wrapping; label, description and meta use overflow-wrap: anywhere.",
+    "tokenDependencies": [
+      "--marea-space-3",
+      "--marea-text-secondary",
+      "--marea-state-critical",
+      "--marea-state-warning",
+      "--marea-state-safe",
+      "--marea-state-stale",
+      "--marea-state-info",
+      "--marea-space-1",
+      "--marea-font-body",
+      "--marea-type-body-small-size",
+      "--marea-type-body-small-line-height",
+      "--marea-text-primary",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking",
+      "--marea-text-meta"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the status line is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the host is not focusable.",
+    "ariaContract": "No role, aria-live or aria-label is added; the icon is decorative and the visible label is the status text.",
+    "localizationRequirements": "Tone, label, description and meta are consumer-supplied; the component reads no dictionary strings.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the required label with the selected tone icon and optional description/meta.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: the component has no content-collection state of its own.",
+      "ERROR": "tone='critical' colours the icon critical; the required label carries the meaning.",
+      "WARNING": "tone='warning' colours the icon warning; the required label carries the meaning.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Tone values come from the shared MareaTone type; the catalogue documents the critical and warning cases through the states field."
+    ],
+    "usage": "<marea-status-display tone=\"warning\" label=\"No verificado\" description=\"0 filas probadas.\" />"
+  },
+  {
+    "componentId": "marea-feature-comparison",
+    "componentName": "MareaFeatureComparison",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-feature-comparison.ts",
+    "selector": "marea-feature-comparison",
+    "purpose": "Renders a feature/option comparison table with explicit unverified cells. It must never leave a blank cell or imply a capability that was not confirmed.",
+    "semanticElement": "Custom element wrapping a <table> with caption, option column headers and feature row headers.",
+    "inputs": [
+      {
+        "name": "caption",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible caption and accessible name of the scroll region."
+      },
+      {
+        "name": "options",
+        "type": "readonly MareaComparisonOption[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Comparison columns."
+      },
+      {
+        "name": "rows",
+        "type": "readonly MareaComparisonRow[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Feature rows whose values are keyed by option id."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The table scrolls horizontally inside a labelled region with a visible hint below 768px; the page never overflows and the hint is hidden at 768px and above.",
+    "tokenDependencies": [
+      "--marea-space-2",
+      "--marea-font-body",
+      "--marea-type-body-small-size",
+      "--marea-type-body-small-line-height",
+      "--marea-text-secondary",
+      "--marea-border-width-hairline",
+      "--marea-line",
+      "--marea-radius-surface",
+      "--marea-surface",
+      "--marea-focus-width",
+      "--marea-focus-style",
+      "--marea-focus-ring",
+      "--marea-focus-inset",
+      "--marea-text-primary",
+      "--marea-space-3",
+      "--marea-space-4",
+      "--marea-font-display",
+      "--marea-type-heading-size",
+      "--marea-type-heading-line-height",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-tracking",
+      "--marea-surface-raised"
+    ],
+    "keyboardContract": "Tab focuses the scroll region, and arrow/Page keys scroll it horizontally when the table exceeds the width; no custom key handler is added.",
+    "focusContract": "The scroll region shows a token focus outline with inset offset.",
+    "ariaContract": "Native table with caption and th scope=col/row; the scroll wrapper is role=region with tabindex=0 and aria-label equal to the caption.",
+    "localizationRequirements": "Caption, option labels, feature names and string values are consumer-supplied; boolean and missing cells are localized through MareaI18n keys 'yes', 'no' and 'comparisonUnverified', with ES/EN headers from the dictionary.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the comparison table with booleans and missing cells converted to explicit text.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "The scroll region shows a token outline with inset offset when focused.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "A rows=[] array renders headers with no rows; null or undefined cells render as unverified instead of blank.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "String cell values are passed through unchanged and may need localization by the caller.",
+      "No sorting, filtering or sticky columns are provided."
+    ],
+    "usage": "<marea-feature-comparison caption=\"Comparación\" [options]=\"options\" [rows]=\"rows\" />"
+  },
+  {
+    "componentId": "marea-data-quality",
+    "componentName": "MareaDataQuality",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-data-quality.ts",
+    "selector": "marea-data-quality",
+    "purpose": "Reports the quality of one data dimension with a text status badge and optional evidence. It must never infer verified status or upgrade the supplied status.",
+    "semanticElement": "Custom element with a status badge <span>, dimension text, and optional evidence and note <p> elements.",
+    "inputs": [
+      {
+        "name": "dimension",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Name of the data dimension."
+      },
+      {
+        "name": "status",
+        "type": "MareaDataStatus",
+        "required": true,
+        "defaultValue": null,
+        "description": "Supplied data status; never inferred by the component."
+      },
+      {
+        "name": "evidence",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional evidence string shown as a label/value pair."
+      },
+      {
+        "name": "note",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional note."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The head row wraps and the evidence/note lines use overflow-wrap: anywhere; the component never forces horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-space-2",
+      "--marea-font-display",
+      "--marea-type-heading-size",
+      "--marea-type-heading-line-height",
+      "--marea-text-primary",
+      "--marea-font-body",
+      "--marea-type-body-small-size",
+      "--marea-type-body-small-line-height",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-tracking",
+      "--marea-text-secondary",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking",
+      "--marea-text-meta"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the data-quality line is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the host is not focusable.",
+    "ariaContract": "No role or live region is added; the status badge text and the visible dimension, evidence and note carry the meaning.",
+    "localizationRequirements": "Dimension, evidence and note are consumer-supplied; status labels come from MareaI18n keys verified, partial, unverified, staleData and missing, localized ES/EN.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the supplied status as a text badge plus the dimension name.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: MISSING is a data-quality value, not an empty-content state.",
+      "ERROR": "status='MISSING' maps to the critical badge and text; the component adds no other error surface.",
+      "WARNING": "status='UNVERIFIED' maps to the warning badge and text.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Verified is rendered only when supplied; the component cannot verify evidence or promote a status."
+    ],
+    "usage": "<marea-data-quality dimension=\"Precio\" status=\"UNVERIFIED\" evidence=\"Sin fuente\" />"
+  },
+  {
+    "componentId": "marea-permission-notice",
+    "componentName": "MareaPermissionNotice",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/structured/marea-permission-notice.ts",
+    "selector": "marea-permission-notice",
+    "purpose": "Reports a gate-derived restriction with the internal-scope note. It must never claim an authorisation, publication or purchase capability.",
+    "semanticElement": "Custom element delegating to marea-notice variant=permission, with an internal-scope <p> and localized heading/body.",
+    "inputs": [
+      {
+        "name": "kind",
+        "type": "MareaRestrictionKind",
+        "required": true,
+        "defaultValue": null,
+        "description": "Gate-derived restriction kind mapped to a localized heading."
+      },
+      {
+        "name": "scope",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional scope text used as the body when detail is absent."
+      },
+      {
+        "name": "detail",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional detail text that takes precedence over scope."
+      },
+      {
+        "name": "live",
+        "type": "'off' | 'polite' | 'assertive'",
+        "required": false,
+        "defaultValue": "'off'",
+        "description": "Opt-in live-region behaviour."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "off",
+      "polite",
+      "assertive"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Delegates to marea-notice; its body wraps and its padding shrinks below 480px without horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-font-body",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking",
+      "--marea-internal-banner-text"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the notice adds no key handling and is not focusable.",
+    "focusContract": "NOT_APPLICABLE: the notice is not focusable.",
+    "ariaContract": "Inherits marea-notice semantics: no live region by default, role=status or role=alert only when live is requested. The internal-scope line is visible text.",
+    "localizationRequirements": "Heading is derived from MareaI18n restriction keys; scope and detail are consumer-supplied; the meta line uses 'internalScope'. ES default and EN parity.",
+    "commercialRestrictions": [
+      "No commercial action is offered by this component."
+    ],
+    "states": {
+      "DEFAULT": "Renders the permission notice for the supplied restriction kind with the internal-scope note.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: the component has no content-collection state of its own.",
+      "ERROR": "NOT_APPLICABLE: no error variant exists; the chrome is always the permission notice.",
+      "WARNING": "A restriction that limits use but is not a closed gate is presented with the same permission chrome and supplied text.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "Gate-closed kinds such as PUBLICATION_NOT_AUTHORIZED or SAFETY_GATE_BLOCKED render a blocked-scope notice; nothing is authorised."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The body falls back to scope when detail is absent, so both may be null and only the heading plus internal-scope line is shown."
+    ],
+    "usage": "<marea-permission-notice kind=\"PUBLICATION_NOT_AUTHORIZED\" detail=\"Ámbito interno\" live=\"off\" />"
+  },
+  {
+    "componentId": "marea-readiness-panel",
+    "componentName": "MareaReadinessPanel",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-readiness-panel.ts",
+    "selector": "marea-readiness-panel",
+    "purpose": "Displays derived readiness dimensions and an opaque blocked-gate count. It must never promote a lifecycle state or expose gate evidence.",
+    "semanticElement": "Custom element with a <section>, heading, status badge, note and a <ul> of dimensions.",
+    "inputs": [
+      {
+        "name": "summary",
+        "type": "MareaReadinessSummary",
+        "required": true,
+        "defaultValue": null,
+        "description": "Derived readiness dimensions and overall status."
+      },
+      {
+        "name": "heading",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional heading override."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Full-width grid; badge rows wrap and the dimensions list stacks, so the panel never forces horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-text-primary",
+      "--marea-space-3",
+      "--marea-space-2",
+      "--marea-space-1",
+      "--marea-border-width-hairline",
+      "--marea-line"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the panel is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered.",
+    "ariaContract": "Heading plus status-badge text; no live region is added, and the blocked-gate count is visible text rather than colour.",
+    "localizationRequirements": "Heading default, readiness labels, derived note, blocked gates label and none-recorded text come from MareaI18n; dimension labels and notes are consumer-supplied. ES/EN parity.",
+    "commercialRestrictions": [
+      "Readiness labels are derived server-side and never promoted by the panel; no certification, price or purchase capability is implied."
+    ],
+    "states": {
+      "DEFAULT": "Renders the overall readiness badge, the derived note, each dimension and the blocked-gate summary.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "A summary with no dimensions renders only the overall badge, note and gate summary.",
+      "ERROR": "NOT_APPLICABLE: the panel reports derived readiness; it is not an error surface.",
+      "WARNING": "overall or dimension status NOT_READY maps to the warning badge and text.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "overall or dimension status BLOCKED maps to the critical badge; the blocked-gate count is display-only and exposes no gate evidence."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Only derived labels and an opaque gate count are rendered; evidence stays in the domain layer and is not inspectable here."
+    ],
+    "usage": "<marea-readiness-panel [summary]=\"summary\" />"
+  },
+  {
+    "componentId": "marea-family-card",
+    "componentName": "MareaFamilyCard",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-family-card.ts",
+    "selector": "marea-family-card",
+    "purpose": "Summarises a product family, its derived readiness and its limits. It must never imply availability, a price or a purchase action.",
+    "semanticElement": "Custom element containing an <article> inside marea-surface, with an h3 title, badges, summary and restriction list.",
+    "inputs": [
+      {
+        "name": "family",
+        "type": "MareaFamilySummary",
+        "required": true,
+        "defaultValue": null,
+        "description": "Family summary with identity, readiness and restrictions."
+      },
+      {
+        "name": "presentation",
+        "type": "MareaCommercialPresentation",
+        "required": true,
+        "defaultValue": null,
+        "description": "Fail-closed commercial presentation; no purchase action is possible."
+      },
+      {
+        "name": "ctaHint",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional caller-supplied hint above the CTA explanation."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Surface and article use min-inline-size: 0; the head and restriction chips wrap, so the card never forces its grid column to overflow.",
+    "tokenDependencies": [
+      "--marea-text-primary",
+      "--marea-space-3",
+      "--marea-space-2",
+      "--marea-space-1",
+      "--marea-border-width-hairline",
+      "--marea-line",
+      "--marea-radius-pill",
+      "--marea-surface-raised",
+      "--marea-text-secondary",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the card renders no focusable action; the embedded CTA is explanation only.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered by the card.",
+    "ariaContract": "marea-surface is labelled by the h3 title (role=group plus aria-labelledby); the restrictions list has aria-label from 'limitations'; badges carry visible text.",
+    "localizationRequirements": "Family name and summary come from data; readiness, editions and limitation labels come from MareaI18n. ES/EN parity is provided by the dictionary.",
+    "commercialRestrictions": [
+      "No price, stock quantity or purchase action is rendered; the embedded CTA is explanation only.",
+      "Readiness and restrictions are displayed exactly as supplied; the card never promotes lifecycle or availability."
+    ],
+    "states": {
+      "DEFAULT": "Renders family identity, readiness badge, summary, restriction chips and the explanation-only CTA.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: family and presentation are required, so an empty card cannot be produced.",
+      "ERROR": "NOT_APPLICABLE: the card has no error variant; readiness carries the derived condition.",
+      "WARNING": "Readiness NOT_READY or warning restrictions render warning badges and chips without promoting the state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "Readiness BLOCKED or gate restrictions render critical badges; the embedded CTA still renders no action."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Restriction chips are deduplicated and capped at four, so additional restrictions are not shown."
+    ],
+    "usage": "<marea-family-card [family]=\"family\" [presentation]=\"presentation\" />"
+  },
+  {
+    "componentId": "marea-edition-card",
+    "componentName": "MareaEditionCard",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-edition-card.ts",
+    "selector": "marea-edition-card",
+    "purpose": "Presents one edition definition with its withheld price and availability blocks. It must never present an edition as a merchant SKU or an offer.",
+    "semanticElement": "Custom element containing an <article> inside marea-surface, with an h3 title, badges and fixed withheld-price/availability sections.",
+    "inputs": [
+      {
+        "name": "edition",
+        "type": "MareaEditionSummary",
+        "required": true,
+        "defaultValue": null,
+        "description": "Edition summary, including definition status and quotation flag."
+      },
+      {
+        "name": "presentation",
+        "type": "MareaCommercialPresentation",
+        "required": true,
+        "defaultValue": null,
+        "description": "Fail-closed commercial presentation."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Surface and article use min-inline-size: 0; the head badges wrap and the fixed price/stock blocks stack without horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-text-primary",
+      "--marea-space-3",
+      "--marea-space-2"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the card renders no focusable action.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered by the card.",
+    "ariaContract": "marea-surface is labelled by the h3 title (role=group plus aria-labelledby); badges carry text; no purchase role or control is rendered.",
+    "localizationRequirements": "Edition name and type are consumer-supplied; definition, requires-quotation, installation and quotation-only labels come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "No price or stock is shown; the withheld-price and withheld-availability blocks are always rendered.",
+      "An edition is a definition, not a merchant SKU; no purchase action exists."
+    ],
+    "states": {
+      "DEFAULT": "Renders the edition identity, definition badge, CTA explanation and the fixed withheld price/availability blocks.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: edition and presentation are required.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "A CONDITIONAL definition or requiresQuotation renders warning badges.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "The card always renders withheld price and availability; no amount, quantity or purchase path is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The withheld-price and withheld-availability blocks are fixed and cannot be disabled by the caller."
+    ],
+    "usage": "<marea-edition-card [edition]=\"edition\" [presentation]=\"presentation\" />"
+  },
+  {
+    "componentId": "marea-bundle-components",
+    "componentName": "MareaBundleComponents",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-bundle-components.ts",
+    "selector": "marea-bundle-components",
+    "purpose": "Lists the component lines of a bundle with inclusion labels. It must never count a kit expansion twice or imply that an optional line is included.",
+    "semanticElement": "Custom element with a <section>, <h3> heading and a <ul> of bundle lines.",
+    "inputs": [
+      {
+        "name": "components",
+        "type": "readonly MareaBundleLine[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Bundle lines with inclusion and expansion data."
+      },
+      {
+        "name": "heading",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional heading override."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "List items use flex-wrap and overflow-wrap: anywhere; names, badges and quantities wrap without widening the container.",
+    "tokenDependencies": [
+      "--marea-text-primary",
+      "--marea-space-3",
+      "--marea-space-2",
+      "--marea-space-1"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the list is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered.",
+    "ariaContract": "section with h3 and ul/li; status badges include text; kit expansions are a visible includes line.",
+    "localizationRequirements": "Line names and expansion ids are consumer-supplied; the heading default, inclusion labels and 'includes' text come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "Inclusion labels are descriptive only; no price, stock or purchase action is offered.",
+      "A kit expansion is never counted as an extra billable line."
+    ],
+    "states": {
+      "DEFAULT": "Renders the heading and each supplied component line with its inclusion badge.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "A components=[] array renders the heading and an empty list; no placeholder line is added.",
+      "ERROR": "NOT_APPLICABLE: the list has no error variant.",
+      "WARNING": "CONDITIONAL or QUOTATION_REQUIRED inclusion renders the warning badge.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Kit expansions appear as a nested includes line and are not added to the component count."
+    ],
+    "usage": "<marea-bundle-components [components]=\"components\" />"
+  },
+  {
+    "componentId": "marea-bundle-exclusions",
+    "componentName": "MareaBundleExclusions",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-bundle-exclusions.ts",
+    "selector": "marea-bundle-exclusions",
+    "purpose": "States bundle exclusions, contract-only lines and external requirements. It must never silently omit an empty set or imply that an exclusion is available.",
+    "semanticElement": "Custom element with <section> groups, <h4> headings and <ul> items, or a marea-state-panel for the empty case.",
+    "inputs": [
+      {
+        "name": "contractOnly",
+        "type": "readonly MareaBundleExclusion[]",
+        "required": false,
+        "defaultValue": "[]",
+        "description": "Contract-only exclusions."
+      },
+      {
+        "name": "ineligible",
+        "type": "readonly MareaBundleExclusion[]",
+        "required": false,
+        "defaultValue": "[]",
+        "description": "Ineligible exclusions."
+      },
+      {
+        "name": "externalRequirements",
+        "type": "readonly string[]",
+        "required": false,
+        "defaultValue": "[]",
+        "description": "External requirement strings."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Groups stack vertically and each item uses flex-wrap plus overflow-wrap: anywhere, so long reasons never force horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-text-primary",
+      "--marea-space-4",
+      "--marea-space-2",
+      "--marea-space-1"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the exclusion list is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered; the empty case uses a non-focusable state panel.",
+    "ariaContract": "section groups with h4 and ul/li; the empty case delegates to marea-state-panel with role=status.",
+    "localizationRequirements": "Exclusion names, reasons and external requirements are consumer-supplied; group headings, contract-only/exclusions labels and the empty message come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "Exclusions and contract-only lines describe limits; they are not availability, pricing or an offer."
+    ],
+    "states": {
+      "DEFAULT": "Renders the populated groups of contract-only, ineligible and external-requirement items.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "All three arrays empty renders marea-state-panel kind=empty with the 'none recorded' text.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "Contract-only and ineligible groups render as explicit limits with visible reasons.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "Contract-only lines are not available as standard components; no availability or purchase path is implied."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The empty set is stated explicitly; it is not treated as an error or as missing data."
+    ],
+    "usage": "<marea-bundle-exclusions [contractOnly]=\"contractOnly\" [ineligible]=\"ineligible\" [externalRequirements]=\"requirements\" />"
+  },
+  {
+    "componentId": "marea-entitlement-summary",
+    "componentName": "MareaEntitlementSummary",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-entitlement-summary.ts",
+    "selector": "marea-entitlement-summary",
+    "purpose": "Summarises entitlements and collapses entitlements that share a ledger into one row. It must never present one right twice or turn an entitlement into an offer.",
+    "semanticElement": "Custom element with a <section>, <h3> heading and a <ul> of entitlement rows.",
+    "inputs": [
+      {
+        "name": "entitlements",
+        "type": "readonly MareaEntitlement[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Entitlements to group by shared ledger."
+      },
+      {
+        "name": "heading",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional heading override."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Rows stack and the row head wraps; names and terms use overflow-wrap: anywhere and never force horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-text-primary",
+      "--marea-space-3",
+      "--marea-space-2",
+      "--marea-space-1",
+      "--marea-border-width-hairline",
+      "--marea-line"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the summary is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered.",
+    "ariaContract": "section with h3 and ul/li; the shared-ledger and local-safety notes are visible text; no extra ARIA is needed.",
+    "localizationRequirements": "Entitlement names and terms are consumer-supplied; the heading default, shared-entitlement and local-safety-independent notes come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "Entitlements are usage rights, not offers or prices; shared ledgers are presented once."
+    ],
+    "states": {
+      "DEFAULT": "Renders one row per ledger key with the entitlement names and terms.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "An entitlements=[] array renders the heading and an empty list.",
+      "ERROR": "NOT_APPLICABLE: the summary has no error variant.",
+      "WARNING": "NOT_APPLICABLE: the summary states usage rights and has no warning tone.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no gate or purchase block is represented here."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Grouping is by sharedLedgerKey; terms are language-neutral domain codes rather than localized labels."
+    ],
+    "usage": "<marea-entitlement-summary [entitlements]=\"entitlements\" />"
+  },
+  {
+    "componentId": "marea-compatibility-notice",
+    "componentName": "MareaCompatibilityNotice",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-compatibility-notice.ts",
+    "selector": "marea-compatibility-notice",
+    "purpose": "States compatibility and treats zero tested rows as unverified. It must never assert third-party compatibility beyond tested evidence.",
+    "semanticElement": "Custom element delegating to marea-notice variant=warning, or a plain <p> note when verified.",
+    "inputs": [
+      {
+        "name": "status",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Opaque compatibility status code; zero tested rows overrides it as unverified."
+      },
+      {
+        "name": "testedRows",
+        "type": "number",
+        "required": false,
+        "defaultValue": "0",
+        "description": "Number of tested rows; zero means unverified."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Single text block that wraps with overflow-wrap: anywhere; the notice body wraps and never forces horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-text-primary"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the notice is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the notice is not focusable.",
+    "ariaContract": "Unverified case is marea-notice variant=warning with no live region; the verified case is a plain <p>.",
+    "localizationRequirements": "Status is consumer-supplied; the heading, unverified body and evidence label come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "No compatibility is asserted without tested rows; zero tested rows always renders as unverified."
+    ],
+    "states": {
+      "DEFAULT": "Renders the verified case as a text note with status and tested-row count.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: testedRows=0 is handled as unverified, not as an empty-content state.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "Zero tested rows or status UNTESTED renders the unverified warning notice.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "Zero tested rows blocks any compatibility claim; the warning copy is shown instead of a positive statement."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Status is an opaque string; the component overrides it when testedRows is zero."
+    ],
+    "usage": "<marea-compatibility-notice status=\"UNTESTED\" [testedRows]=\"0\" />"
+  },
+  {
+    "componentId": "marea-price-unavailable",
+    "componentName": "MareaPriceUnavailable",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-price-unavailable.ts",
+    "selector": "marea-price-unavailable",
+    "purpose": "States that no approved price exists without rendering an amount. It must never display a price, currency or purchase action.",
+    "semanticElement": "Custom element with a <section>, <h4> heading and <p> text lines.",
+    "inputs": [
+      {
+        "name": "priceStatus",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Opaque MC-16 price status code; never an amount."
+      },
+      {
+        "name": "heading",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional heading override."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Full-width grid block; text wraps and no fixed width or horizontal scrolling is introduced.",
+    "tokenDependencies": [
+      "--marea-text-primary",
+      "--marea-space-1"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the block is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered.",
+    "ariaContract": "section with h4 and p text; no role, no amount element and no purchase control.",
+    "localizationRequirements": "priceStatus is an opaque consumer-supplied code; the heading default, withheld-price body, status label and not-for-sale label come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "No amount, currency or numeric price can enter this component.",
+      "The not-for-sale label is not an offer, and no purchase path exists."
+    ],
+    "states": {
+      "DEFAULT": "Always renders the withheld-price heading, explanation and not-for-sale label; the optional status line appears only when priceStatus is supplied.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "priceStatus=null simply omits the status line; the withheld-price statement always renders.",
+      "ERROR": "NOT_APPLICABLE: the block has no error variant.",
+      "WARNING": "The not-for-sale label uses the warning tone; it is a restriction, not an offer.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "The price block states that no approved price exists; no amount, currency or purchase action is rendered."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "No price amount or currency input exists; priceStatus is opaque and cannot be turned into an amount."
+    ],
+    "usage": "<marea-price-unavailable priceStatus=\"MC16_STATUS\" />"
+  },
+  {
+    "componentId": "marea-stock-unavailable",
+    "componentName": "MareaStockUnavailable",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-stock-unavailable.ts",
+    "selector": "marea-stock-unavailable",
+    "purpose": "States that availability is unverified without rendering a quantity. It must never show stock or claim the product is sold out.",
+    "semanticElement": "Custom element with a <section>, <h4> heading and <p> text lines.",
+    "inputs": [
+      {
+        "name": "stockState",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Opaque MC-16 availability state code; never a quantity."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Full-width grid block; text wraps and no fixed width or horizontal scrolling is introduced.",
+    "tokenDependencies": [
+      "--marea-text-primary",
+      "--marea-space-1"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the block is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered.",
+    "ariaContract": "section with h4 and p text; no role, no quantity element and no purchase control.",
+    "localizationRequirements": "stockState is an opaque consumer-supplied code; the heading, unavailable body, status label and not-for-sale label come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "No quantity, availability or sold-out claim is representable.",
+      "The not-for-sale label is not an offer, and no purchase path exists."
+    ],
+    "states": {
+      "DEFAULT": "Always renders the availability-unverified heading, explanation and not-for-sale label; the optional status line appears only when stockState is supplied.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "stockState=null simply omits the status line; the unavailable statement always renders.",
+      "ERROR": "NOT_APPLICABLE: the block has no error variant.",
+      "WARNING": "The not-for-sale label uses the warning tone; it is a restriction, not an offer.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "Availability is withheld; no quantity, sold-out claim or purchase action is rendered."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "No stock quantity or availability input exists; stockState is opaque and cannot be turned into a quantity."
+    ],
+    "usage": "<marea-stock-unavailable stockState=\"MC16_STATUS\" />"
+  },
+  {
+    "componentId": "marea-commercial-cta",
+    "componentName": "MareaCommercialCta",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-commercial-cta.ts",
+    "selector": "marea-commercial-cta",
+    "purpose": "Explains the derived CTA state and blocked commercial signals without rendering an action. It must never render a button, link or purchasable state.",
+    "semanticElement": "Custom element with a status badge, explanatory <p> lines and critical notices; no button, anchor or role=button.",
+    "inputs": [
+      {
+        "name": "presentation",
+        "type": "MareaCommercialPresentation",
+        "required": true,
+        "defaultValue": null,
+        "description": "Fail-closed commercial presentation; drives the derived explanation."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Full-width grid block; the explanation is capped at var(--marea-measure) and rule lines use overflow-wrap: anywhere.",
+    "tokenDependencies": [
+      "--marea-text-primary",
+      "--marea-space-2",
+      "--marea-measure"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the CTA explanation contains no interactive control and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered.",
+    "ariaContract": "Status badge text plus explanatory p elements; blocked signals render as critical marea-notice instances. There is no button, anchor or role='button'.",
+    "localizationRequirements": "All copy comes from MareaI18n keyed by ctaState and blocked signals; no consumer strings are used. ES default and EN parity.",
+    "commercialRestrictions": [
+      "The CTA is a derived explanation, never a button, link or disabled-looking action.",
+      "Blocked price, stock and purchase signals are surfaced as critical notices and never recovered."
+    ],
+    "states": {
+      "DEFAULT": "ctaState='DISABLED' renders the neutral no-action badge and explanation.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "The DISABLED ctaState renders the neutral no-action badge and its explanation.",
+      "LOADING": "NOT_APPLICABLE: the explanation never enters a pending state.",
+      "EMPTY": "NOT_APPLICABLE: presentation is required, so no empty CTA state exists.",
+      "ERROR": "ctaState='NOT_AVAILABLE' renders the critical badge and not-available explanation.",
+      "WARNING": "ctaState='QUOTE_ONLY' renders the warning badge; no solicitation control is created.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "Blocked signals render critical notices; the blocked commercial action is reported, never recovered."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The CTA state is sanitized from the presentation; a blocked or invalid state can never produce an action."
+    ],
+    "usage": "<marea-commercial-cta [presentation]=\"presentation\" />"
+  },
+  {
+    "componentId": "marea-quote-status",
+    "componentName": "MareaQuoteStatus",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-quote-status.ts",
+    "selector": "marea-quote-status",
+    "purpose": "States the quotation-only category and its limits. It must never imply an offer, a date, an amount or a guaranteed quotation.",
+    "semanticElement": "Custom element delegating to marea-notice variant=warning with an optional scope <p>.",
+    "inputs": [
+      {
+        "name": "scope",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional scope code identifying the entity."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The notice body and scope line wrap; the notice padding shrinks below 480px without horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-text-primary"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the notice is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the notice is not focusable.",
+    "ariaContract": "Delegates to marea-notice variant=warning with no live region by default; the scope is visible text.",
+    "localizationRequirements": "Scope is consumer-supplied; the quotation-only heading and body come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "Quotation is a future category, not an offer, price or guaranteed quotation."
+    ],
+    "states": {
+      "DEFAULT": "Renders the quotation-only warning notice, with the optional scope line when supplied.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "scope=null omits the optional scope line; the quotation statement always renders.",
+      "ERROR": "NOT_APPLICABLE: the notice has no error variant.",
+      "WARNING": "The notice is warning-toned and states the quotation-only limits.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "The quotation category is not an offer; no amount, date or commitment is rendered."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "No date, amount or quotation commitment is representable."
+    ],
+    "usage": "<marea-quote-status scope=\"FAMILY-NAV\" />"
+  },
+  {
+    "componentId": "marea-documentation-panel",
+    "componentName": "MareaDocumentationPanel",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/commerce/marea-documentation-panel.ts",
+    "selector": "marea-documentation-panel",
+    "purpose": "Lists documentation items with availability status and no links. It must never expose an unapproved public document or imply that pending documents exist.",
+    "semanticElement": "Custom element with a <section>, <h3> heading and a <ul> of document items, or a state panel when empty.",
+    "inputs": [
+      {
+        "name": "familyId",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Family identifier shown with the family label."
+      },
+      {
+        "name": "items",
+        "type": "readonly MareaDocumentationItem[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Documentation items with status and optional limitation."
+      },
+      {
+        "name": "heading",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional heading override."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Document rows wrap; titles and kinds use overflow-wrap: anywhere and never force horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-text-primary",
+      "--marea-space-3",
+      "--marea-space-2",
+      "--marea-space-1"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the panel renders no links or controls and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered.",
+    "ariaContract": "section with h3 and ul/li; badges carry text; the empty case delegates to marea-state-panel with role=status.",
+    "localizationRequirements": "familyId, document titles, kinds and limitations are consumer-supplied; heading default, no-documentation message, family label and document status labels come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "Documents are status-labelled items without links; no unapproved publication is exposed."
+    ],
+    "states": {
+      "DEFAULT": "Renders each document with its availability badge and optional limitation.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "items=[] renders marea-state-panel kind=empty with the no-documentation copy.",
+      "ERROR": "NOT_APPLICABLE: the panel has no error variant.",
+      "WARNING": "PENDING documents render the pending status badge and are never presented as available.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "Documents are status-only with no links; no download or publication path is exposed."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Documents render without links; no download action exists."
+    ],
+    "usage": "<marea-documentation-panel familyId=\"NAV\" [items]=\"items\" />"
+  },
+  {
+    "componentId": "marea-numeric-readout",
+    "componentName": "MareaNumericReadout",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/instrument/marea-numeric-readout.ts",
+    "selector": "marea-numeric-readout",
+    "purpose": "Renders a preformatted instrument value with unit, demo tag and freshness marker. It must never compute or locale-format a value, claim a live reading or show zero for missing data.",
+    "semanticElement": "Custom element with role=group, label, figure value/unit, screen-reader alternative and a freshness badge.",
+    "inputs": [
+      {
+        "name": "value",
+        "type": "string | null",
+        "required": true,
+        "defaultValue": null,
+        "description": "Preformatted value; null renders an em dash and no-data text."
+      },
+      {
+        "name": "unit",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Unit string rendered next to the value."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Accessible group label and visible label."
+      },
+      {
+        "name": "size",
+        "type": "MareaNumericReadoutSize",
+        "required": false,
+        "defaultValue": "'primary'",
+        "description": "Numeric type scale preset."
+      },
+      {
+        "name": "freshness",
+        "type": "MareaFreshnessState",
+        "required": false,
+        "defaultValue": "'FRESH'",
+        "description": "Freshness state rendered by the freshness marker."
+      },
+      {
+        "name": "ageSeconds",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Age in seconds for the stale marker; formatted mm:ss."
+      },
+      {
+        "name": "demo",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "description": "Marks the readout as synthetic; fabricated data must never disable it."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "primary",
+      "secondary",
+      "tertiary"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The figure flex row wraps so value, unit and no-data text stay visible; long values use overflow-wrap: anywhere and never clip at narrow tile widths.",
+    "tokenDependencies": [
+      "--marea-space-1",
+      "--marea-type-label-family",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-weight",
+      "--marea-type-label-tracking",
+      "--marea-text-secondary",
+      "--marea-space-2",
+      "--marea-type-numeric-primary-numeric",
+      "--marea-data-primary",
+      "--marea-type-numeric-primary-family",
+      "--marea-type-numeric-primary-size",
+      "--marea-type-numeric-primary-line-height",
+      "--marea-type-numeric-primary-weight",
+      "--marea-type-numeric-primary-tracking",
+      "--marea-type-numeric-secondary-family",
+      "--marea-type-numeric-secondary-size",
+      "--marea-type-numeric-secondary-line-height",
+      "--marea-type-numeric-secondary-weight",
+      "--marea-type-numeric-secondary-tracking",
+      "--marea-type-numeric-secondary-numeric",
+      "--marea-type-numeric-tertiary-family",
+      "--marea-type-numeric-tertiary-size",
+      "--marea-type-numeric-tertiary-line-height",
+      "--marea-type-numeric-tertiary-weight",
+      "--marea-type-numeric-tertiary-tracking",
+      "--marea-type-numeric-tertiary-numeric",
+      "--marea-type-unit-family",
+      "--marea-type-unit-size",
+      "--marea-type-unit-line-height",
+      "--marea-type-unit-weight",
+      "--marea-type-unit-tracking",
+      "--marea-type-unit-transform",
+      "--marea-text-meta",
+      "--marea-type-meta-family",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking",
+      "--marea-internal-banner-text",
+      "--marea-internal-banner-surface",
+      "--marea-border-width-hairline",
+      "--marea-radius-pill"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the readout is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the host is not focusable.",
+    "ariaContract": "div role=group with aria-label from label; a screen-reader-only sentence repeats label, value and unit; the demo and freshness markers are visible text.",
+    "localizationRequirements": "Label, unit, value and age are consumer-supplied or preformatted; the no-data and demo labels come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "No price, stock or purchase action is represented.",
+      "Synthetic DEMO data is never represented as a live, certified or hardware-validated measurement."
+    ],
+    "states": {
+      "DEFAULT": "Renders the preformatted value, unit, demo tag and freshness marker.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "value=null renders an em dash plus the no-data text; it never renders zero or a frozen last reading.",
+      "ERROR": "freshness='OFFLINE' renders the critical offline badge alongside the readout.",
+      "WARNING": "freshness='STALE' renders the stale badge with the mm:ss age.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The value is preformatted by the caller; the component never computes or locale-formats it.",
+      "No live, certified or hardware-validated source is represented; demo defaults to true."
+    ],
+    "usage": "<marea-numeric-readout value=\"12.4\" unit=\"kn\" label=\"Velocidad\" size=\"primary\" freshness=\"FRESH\" [demo]=\"true\" />"
+  },
+  {
+    "componentId": "marea-measurement",
+    "componentName": "MareaMeasurement",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/instrument/marea-measurement.ts",
+    "selector": "marea-measurement",
+    "purpose": "Renders a measurement label, unit and optional detail without a numeric value. It must never present a reading on its own or imply a certified measurement.",
+    "semanticElement": "Custom element with inline <span> label, unit and detail; no numeric element.",
+    "inputs": [
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Measurement label."
+      },
+      {
+        "name": "unit",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Unit string."
+      },
+      {
+        "name": "detail",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional detail."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Inline-flex with flex-wrap: wrap; label, unit and detail wrap onto new lines instead of clipping in narrow tiles.",
+    "tokenDependencies": [
+      "--marea-space-2",
+      "--marea-type-label-family",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-weight",
+      "--marea-type-label-tracking",
+      "--marea-text-primary",
+      "--marea-type-unit-family",
+      "--marea-type-unit-size",
+      "--marea-type-unit-line-height",
+      "--marea-type-unit-weight",
+      "--marea-type-unit-tracking",
+      "--marea-type-unit-transform",
+      "--marea-text-meta",
+      "--marea-type-meta-family",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the annotation is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the host is not focusable.",
+    "ariaContract": "No role or ARIA is added; the visible spans carry the label, unit and detail.",
+    "localizationRequirements": "Label, unit and detail are consumer-supplied; the component reads no dictionary strings.",
+    "commercialRestrictions": [
+      "No price, stock or purchase action is represented.",
+      "No numeric value is carried, so the component cannot present a measurement on its own."
+    ],
+    "states": {
+      "DEFAULT": "Renders the label, unit and optional detail with no numeric value.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "NOT_APPLICABLE: detail is optional and is simply omitted when null.",
+      "ERROR": "NOT_APPLICABLE: the annotation has no error variant.",
+      "WARNING": "NOT_APPLICABLE: the annotation has no warning variant.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Carries no numeric value and cannot present a reading on its own."
+    ],
+    "usage": "<marea-measurement label=\"Profundidad\" unit=\"m\" detail=\"Bajo la quilla\" />"
+  },
+  {
+    "componentId": "marea-freshness",
+    "componentName": "MareaFreshness",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/instrument/marea-freshness.ts",
+    "selector": "marea-freshness",
+    "purpose": "Renders the freshness of a synthetic readout as text plus a shape-coded badge. It must never present stale data as fresh or imply live connectivity.",
+    "semanticElement": "Custom element wrapping a single marea-status-badge span.",
+    "inputs": [
+      {
+        "name": "state",
+        "type": "MareaFreshnessState",
+        "required": true,
+        "defaultValue": null,
+        "description": "Supplied freshness state."
+      },
+      {
+        "name": "ageSeconds",
+        "type": "number | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Age in seconds; only STALE renders it."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Inline-flex badge; the label wraps with the chip and no fixed width is imposed.",
+    "tokenDependencies": [],
+    "keyboardContract": "NOT_APPLICABLE: the marker is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the marker is not focusable.",
+    "ariaContract": "Delegates to marea-status-badge: a text label plus a shape-coded decorative icon; no live region is added.",
+    "localizationRequirements": "State and age are consumer-supplied; labels come from MareaI18n and the age is formatted mm:ss without locale APIs. ES/EN parity.",
+    "commercialRestrictions": [
+      "No price, stock or purchase action is represented.",
+      "Freshness describes synthetic readouts only and never implies live or certified connectivity."
+    ],
+    "states": {
+      "DEFAULT": "state='FRESH' renders the safe badge with the current label.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: freshness is a supplied value, not a pending operation.",
+      "EMPTY": "state='NO_DATA' renders the no-data badge; no value is implied.",
+      "ERROR": "state='OFFLINE' renders the critical offline badge.",
+      "WARNING": "state='STALE' renders the stale badge with the mm:ss age.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Age is formatted mm:ss without locale APIs, so only STALE renders it."
+    ],
+    "usage": "<marea-freshness state=\"STALE\" [ageSeconds]=\"95\" />"
+  },
+  {
+    "componentId": "marea-sensor-unavailable",
+    "componentName": "MareaSensorUnavailable",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/instrument/marea-sensor-unavailable.ts",
+    "selector": "marea-sensor-unavailable",
+    "purpose": "Explains that a sensor has no usable data and why. It must never invent a fallback reading, a zero or a frozen last value.",
+    "semanticElement": "Custom element delegating to marea-notice variant=info, with state and optional unit text.",
+    "inputs": [
+      {
+        "name": "state",
+        "type": "MareaSensorState",
+        "required": true,
+        "defaultValue": null,
+        "description": "Sensor state mapped to localized text."
+      },
+      {
+        "name": "unit",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional unit shown as metadata."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "The notice body wraps and the state text uses overflow-wrap: anywhere; no horizontal overflow is introduced.",
+    "tokenDependencies": [
+      "--marea-type-label-family",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-weight",
+      "--marea-type-label-tracking",
+      "--marea-text-primary",
+      "--marea-type-meta-family",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking",
+      "--marea-text-meta"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the notice is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the notice is not focusable.",
+    "ariaContract": "Delegates to marea-notice variant=info with no live region; state and unit are visible text.",
+    "localizationRequirements": "state and unit are consumer-supplied; the heading, no-data body, sensor-state labels and unit label come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "No price, stock or purchase action is represented.",
+      "No fallback value is rendered; the component cannot claim a reading or certification."
+    ],
+    "states": {
+      "DEFAULT": "state='NOT_INSTALLED' states that the sensor is not installed and shows no value.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "state='CALIBRATING' states that calibration is in progress without a value.",
+      "EMPTY": "The no-data message always states that no value is available; no zero or frozen reading is rendered.",
+      "ERROR": "state='ERROR' reports the sensor failure in text.",
+      "WARNING": "state='NO_SIGNAL' reports a degraded sensor without a fallback reading.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "state='UNLICENSED' states that the data is not licensed; no reading is shown."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "No numeric fallback exists; the component cannot show a last value."
+    ],
+    "usage": "<marea-sensor-unavailable state=\"NO_SIGNAL\" unit=\"kn\" />"
+  },
+  {
+    "componentId": "marea-instrument-status",
+    "componentName": "MareaInstrumentStatus",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/instrument/marea-instrument-status.ts",
+    "selector": "marea-instrument-status",
+    "purpose": "Renders an instrument status line with cause and required action. It must never deliver an alarm, monitor the vessel or claim safety-critical operation.",
+    "semanticElement": "Custom element with a decorative icon and <p> label, cause and action lines.",
+    "inputs": [
+      {
+        "name": "tone",
+        "type": "MareaTone",
+        "required": true,
+        "defaultValue": null,
+        "description": "Tone selecting the icon colour and emphasis."
+      },
+      {
+        "name": "label",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Primary status label."
+      },
+      {
+        "name": "cause",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional cause text."
+      },
+      {
+        "name": "action",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional required action, prefixed with the localized required label."
+      },
+      {
+        "name": "live",
+        "type": "'off' | 'polite' | 'assertive'",
+        "required": false,
+        "defaultValue": "'off'",
+        "description": "Opt-in live-region behaviour."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [
+      "off",
+      "polite",
+      "assertive"
+    ],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Flex row with the icon held fixed and the body wrapping; label, cause and action use overflow-wrap: anywhere.",
+    "tokenDependencies": [
+      "--marea-space-2",
+      "--marea-text-primary",
+      "--marea-state-critical",
+      "--marea-state-warning",
+      "--marea-state-safe",
+      "--marea-state-stale",
+      "--marea-state-info",
+      "--marea-text-secondary",
+      "--marea-space-1",
+      "--marea-type-heading-family",
+      "--marea-type-heading-size",
+      "--marea-type-heading-line-height",
+      "--marea-type-body-small-family",
+      "--marea-type-body-small-size",
+      "--marea-type-body-small-line-height",
+      "--marea-type-label-family",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-weight",
+      "--marea-type-label-tracking"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the status line is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the host is not focusable.",
+    "ariaContract": "No live region by default; role='status' with aria-live='polite' or role='alert' with aria-live='assertive' only when live is requested. The icon is decorative.",
+    "localizationRequirements": "Label, cause and action are consumer-supplied; the required action prefix comes from MareaI18n key 'required'. ES/EN parity.",
+    "commercialRestrictions": [
+      "No price, stock or purchase action is represented.",
+      "The component does not deliver alarms, monitor a vessel or claim safety-critical operation."
+    ],
+    "states": {
+      "DEFAULT": "Renders the supplied label with the selected tone icon and optional cause/action.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: no loading tone exists.",
+      "EMPTY": "NOT_APPLICABLE: the component has no content-collection state of its own.",
+      "ERROR": "tone='critical' renders the critical icon and copy; role=alert is used only when live='assertive'.",
+      "WARNING": "tone='warning' renders the warning icon and copy.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: the status line reports information; no gate is exposed."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "No alarm delivery or remote monitoring is provided; live regions are opt-in."
+    ],
+    "usage": "<marea-instrument-status tone=\"warning\" label=\"Sin señal\" cause=\"Sensor desconectado\" action=\"Revisar cableado\" />"
+  },
+  {
+    "componentId": "marea-connectivity",
+    "componentName": "MareaConnectivity",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/instrument/marea-connectivity.ts",
+    "selector": "marea-connectivity",
+    "purpose": "Describes a synthetic link state with a text badge and optional device or last-seen metadata. It must never claim a certified or hardware-validated connection.",
+    "semanticElement": "Custom element with a label span, status badge and optional meta spans.",
+    "inputs": [
+      {
+        "name": "state",
+        "type": "MareaConnectivityState",
+        "required": true,
+        "defaultValue": null,
+        "description": "Supplied connectivity state."
+      },
+      {
+        "name": "device",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional device identifier."
+      },
+      {
+        "name": "lastSeen",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional caller-formatted last-seen string."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Inline-flex with flex-wrap: wrap so label, badge, device and last-seen metadata wrap on narrow instrument tiles.",
+    "tokenDependencies": [
+      "--marea-space-2",
+      "--marea-type-label-family",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-weight",
+      "--marea-type-label-tracking",
+      "--marea-text-primary",
+      "--marea-type-meta-family",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking",
+      "--marea-text-meta",
+      "--marea-text-secondary"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the marker is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: the host is not focusable.",
+    "ariaContract": "No ARIA role is added; the status badge supplies text plus a decorative icon, and device/last-seen are visible text.",
+    "localizationRequirements": "state, device and lastSeen are consumer-supplied; connectivity, state, device and last-update labels come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "No price, stock or purchase action is represented.",
+      "The link state is synthetic and is not a certified, live or hardware-validated connection report."
+    ],
+    "states": {
+      "DEFAULT": "state='ONLINE' renders the safe online badge with optional metadata.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: connectivity is a supplied value, not a pending operation.",
+      "EMPTY": "NOT_APPLICABLE: state UNKNOWN is not an empty-content state.",
+      "ERROR": "state='OFFLINE' renders the critical offline badge.",
+      "WARNING": "state='DEGRADED' renders the warning degraded badge.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "lastSeen is caller-formatted and is never computed here; the state remains synthetic."
+    ],
+    "usage": "<marea-connectivity state=\"DEGRADED\" device=\"Hub\" lastSeen=\"hace 2 min\" />"
+  },
+  {
+    "componentId": "marea-instrument-tile",
+    "componentName": "MareaInstrumentTile",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/instrument/marea-instrument-tile.ts",
+    "selector": "marea-instrument-tile",
+    "purpose": "Provides a labelled data-surface shell for projected instrument readouts. It must never fetch, calculate or present content as a live measurement.",
+    "semanticElement": "Custom element wrapping marea-surface with an <h3> title and projected body.",
+    "inputs": [
+      {
+        "name": "title",
+        "type": "string",
+        "required": true,
+        "defaultValue": null,
+        "description": "Visible tile heading and accessible group name."
+      },
+      {
+        "name": "demo",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "description": "Shows the synthetic demo tag."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Uses min-inline-size: min(100%, var(--marea-tile-min)) with max-inline-size: 100%; the heading wraps and content never exceeds the tile.",
+    "tokenDependencies": [
+      "--marea-tile-min",
+      "--marea-space-2",
+      "--marea-space-3",
+      "--marea-type-heading-family",
+      "--marea-type-heading-size",
+      "--marea-type-heading-line-height",
+      "--marea-type-heading-weight",
+      "--marea-type-heading-tracking",
+      "--marea-text-primary",
+      "--marea-type-meta-family",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking",
+      "--marea-internal-banner-text",
+      "--marea-internal-banner-surface",
+      "--marea-border-width-hairline",
+      "--marea-radius-pill",
+      "--marea-space-1"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the tile shell is not interactive and adds no key handling; projected controls keep their own.",
+    "focusContract": "NOT_APPLICABLE: the shell is not focusable.",
+    "ariaContract": "marea-surface is role=group with aria-labelledby=titleId; the h3 supplies the name and the demo tag is visible text.",
+    "localizationRequirements": "The title is consumer-supplied; the demo tag comes from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "No price, stock or purchase action is represented.",
+      "The tile only shells projected content; it does not claim a live or certified measurement."
+    ],
+    "states": {
+      "DEFAULT": "Renders the surface, title and visible demo tag with projected readouts.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "Projected body may be empty; the tile still renders its heading and demo tag.",
+      "ERROR": "NOT_APPLICABLE: the API exposes no error state.",
+      "WARNING": "NOT_APPLICABLE: the API exposes no warning state.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "The tile does not fetch or calculate; synthetic content is marked by the demo tag."
+    ],
+    "usage": "<marea-instrument-tile title=\"Viento\" [demo]=\"true\"> ... </marea-instrument-tile>"
+  },
+  {
+    "componentId": "marea-telemetry-list",
+    "componentName": "MareaTelemetryList",
+    "version": "1.0.0",
+    "status": "INTERNAL_READY",
+    "implementationKind": "angular-component",
+    "implementationPath": "src/app/marea-design-system/components/instrument/marea-telemetry-list.ts",
+    "selector": "marea-telemetry-list",
+    "purpose": "Lists synthetic telemetry rows with units and freshness, or an explicit empty state. It must never render a frozen or fabricated value for a missing reading.",
+    "semanticElement": "Custom element with a heading, a <dl>/<dt>/<dd> list, or a state panel when items are empty.",
+    "inputs": [
+      {
+        "name": "items",
+        "type": "readonly MareaTelemetryItem[]",
+        "required": true,
+        "defaultValue": null,
+        "description": "Telemetry rows with preformatted values and freshness."
+      },
+      {
+        "name": "caption",
+        "type": "string | null",
+        "required": false,
+        "defaultValue": null,
+        "description": "Optional caption used as the dl accessible name."
+      },
+      {
+        "name": "demo",
+        "type": "boolean",
+        "required": false,
+        "defaultValue": "true",
+        "description": "Shows the synthetic demo tag."
+      }
+    ],
+    "outputs": [],
+    "visualVariants": [],
+    "supportedModes": [
+      "web-light",
+      "instrument-day",
+      "instrument-sunlight",
+      "instrument-night"
+    ],
+    "responsiveRules": "Two-column dl above 480px and one column below, where values move to start alignment; text wraps and never creates horizontal overflow.",
+    "tokenDependencies": [
+      "--marea-space-2",
+      "--marea-space-3",
+      "--marea-type-label-family",
+      "--marea-type-label-size",
+      "--marea-type-label-line-height",
+      "--marea-type-label-weight",
+      "--marea-type-label-tracking",
+      "--marea-text-primary",
+      "--marea-type-meta-family",
+      "--marea-type-meta-size",
+      "--marea-type-meta-line-height",
+      "--marea-type-meta-weight",
+      "--marea-type-meta-tracking",
+      "--marea-internal-banner-text",
+      "--marea-internal-banner-surface",
+      "--marea-border-width-hairline",
+      "--marea-radius-pill",
+      "--marea-space-1",
+      "--marea-space-4",
+      "--marea-type-body-small-family",
+      "--marea-type-body-small-size",
+      "--marea-type-body-small-line-height",
+      "--marea-text-secondary",
+      "--marea-type-numeric-tertiary-family",
+      "--marea-type-numeric-tertiary-size",
+      "--marea-type-numeric-tertiary-line-height",
+      "--marea-type-numeric-tertiary-weight",
+      "--marea-type-numeric-tertiary-tracking",
+      "--marea-type-numeric-tertiary-numeric",
+      "--marea-data-primary",
+      "--marea-type-unit-family",
+      "--marea-type-unit-size",
+      "--marea-type-unit-line-height",
+      "--marea-type-unit-weight",
+      "--marea-type-unit-tracking",
+      "--marea-type-unit-transform",
+      "--marea-text-meta"
+    ],
+    "keyboardContract": "NOT_APPLICABLE: the list is not interactive and adds no key handling.",
+    "focusContract": "NOT_APPLICABLE: no focusable element is rendered.",
+    "ariaContract": "dl/dt/dd relationships, with optional aria-labelledby from the caption; the empty case delegates to marea-state-panel with role=status.",
+    "localizationRequirements": "Labels, values and units are consumer-supplied and preformatted; no-data, demo and freshness labels come from MareaI18n. ES/EN parity.",
+    "commercialRestrictions": [
+      "No price, stock or purchase action is represented.",
+      "Values are synthetic and preformatted; no reading is claimed as live or certified."
+    ],
+    "states": {
+      "DEFAULT": "Renders all telemetry rows with units and non-fresh markers where applicable.",
+      "HOVER": "NOT_APPLICABLE: no pointer-activated affordance is rendered.",
+      "FOCUS_VISIBLE": "NOT_APPLICABLE: the host is not focusable; focus stays on consumer controls.",
+      "PRESSED": "NOT_APPLICABLE: the component has no activation or toggle behaviour.",
+      "DISABLED": "NOT_APPLICABLE: the API exposes no disabled state.",
+      "LOADING": "NOT_APPLICABLE: the component performs no asynchronous work.",
+      "EMPTY": "items=[] renders marea-state-panel kind=empty with the no-data title.",
+      "ERROR": "Rows with freshness OFFLINE render the critical offline badge.",
+      "WARNING": "Rows with freshness STALE render the stale badge with age.",
+      "READ_ONLY": "NOT_APPLICABLE: the component is not a form control.",
+      "BLOCKED": "NOT_APPLICABLE: no commercial, permission or safety gate is represented."
+    },
+    "testReferences": [
+      "e2e/design-system/accessibility.spec.ts",
+      "e2e/design-system/keyboard.spec.ts",
+      "e2e/design-system/responsive.spec.ts",
+      "e2e/design-system/visual.spec.ts",
+      "e2e/design-system/commerce.spec.ts"
+    ],
+    "knownLimitations": [
+      "Values are preformatted; missing values render an em dash, never zero.",
+      "The demo tag defaults to true and should not be turned off for fabricated data."
+    ],
+    "usage": "<marea-telemetry-list caption=\"Telemetría\" [items]=\"items\" [demo]=\"true\" />"
+  }
+] as const;
+
+export const REGISTRY_META = {
+  "contractId": "MC17-COMPONENT-REGISTRY",
+  "contractVersion": "1.0.0",
+  "status": "INTERNAL_PROPOSED",
+  "componentCount": 49
+} as const;
+
+export function findComponent(componentId: string): MareaRegistryComponent | undefined {
+  return COMPONENT_REGISTRY.find((entry) => entry.componentId === componentId);
+}

@@ -1,0 +1,164 @@
+============================================================
+MC-04 GOVERNEDPATHS TRIAL — would the proposed contract expansion keep test:brand passing?
+Exact command : pwsh -NoProfile -File docs/marea/brand/evidence/governance/run-governedpaths-trial.ps1
+Run at        : 2026-10-30T18:38:15+01:00
+Host          : MSI-MANUEL / PowerShell 7.6.9
+Real contract : NEVER modified (a copy is written under each trial root); verified after the run
+
+Why a trial root: scripts/check-brand.mjs exempts the contract named by --contract from text
+scanning. A trial copy at the canonical path inside an isolated root reproduces the real run
+exactly, including how new governed documents are scanned.
+
+NOT governable by this validator at all: docs/marea/assets/manifest/MC-04-BRIEFS.yaml
+  (scripts/check-brand.mjs rejects governedPaths outside docs/marea/brand/).
+KNOWN FAILURE RISK: docs/marea/brand/MC-03-REVIEW.md must NOT be added (quoted MAREA® fixtures).
+============================================================
+
+################################################################
+SCENARIO A-full — 12 proposed addition(s)
+Trial root    : docs/marea/brand/evidence/governance/trial-root-A-full
+Command       : node scripts/check-brand.mjs --root docs/marea/brand/evidence/governance/trial-root-A-full
+Additions     :
+   + docs/marea/brand/ORIGINALITY-AND-PRIOR-ART-CHECK.md
+   + docs/marea/brand/PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md
+   + docs/marea/brand/IDENTITY-SYSTEM.md
+   + docs/marea/brand/TERRITORY-COMPARISON.md
+   + docs/marea/brand/TYPOGRAPHY-SYSTEM.md
+   + docs/marea/brand/COLOUR-SYSTEM.md
+   + docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md
+   + docs/marea/brand/ICONOGRAPHY-SYSTEM.md
+   + docs/marea/brand/ILLUSTRATION-STANDARDS.md
+   + docs/marea/brand/HARDWARE-CMF-DIRECTION.md
+   + docs/marea/brand/PACKAGING-DIRECTION.md
+   + docs/marea/brand/BRAND-GOVERNANCE-IMPLEMENTATION.md
+Copied into trial root: 17 existing governed file(s); not-yet-produced (skipped, not a failure): 5
+   skipped (does not exist yet): docs/marea/brand/IDENTITY-SYSTEM.md
+   skipped (does not exist yet): docs/marea/brand/TERRITORY-COMPARISON.md
+   skipped (does not exist yet): docs/marea/brand/COLOUR-SYSTEM.md
+   skipped (does not exist yet): docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md
+   skipped (does not exist yet): docs/marea/brand/ILLUSTRATION-STANDARDS.md
+
+--- validator output (verbatim) ---
+Brand governance validator — EMBARCARTE / MAREA (contract 1.0.0, PROPOSED)
+Contract: docs/marea/brand/brand-identity.contract.json
+Root: docs/marea/brand/evidence/governance/trial-root-A-full
+
+PASS  contract.identity
+PASS  contract.company
+PASS  contract.productBrand
+PASS  contract.technologyFoundation
+PASS  contract.productFamilies
+PASS  contract.bundles
+PASS  contract.fleetDisambiguation
+PASS  contract.namingRules
+PASS  contract.attributionRules
+PASS  contract.claimsPolicy
+PASS  contract.messages
+PASS  contract.governedPaths — 23 governed paths
+PASS  contract.checkProfiles
+PASS  contract.publicationCopies — 0 publication copies in scope (extension point)
+PASS  brand.docs.readable
+PASS  brand.docs.trademarkSymbols
+PASS  brand.docs.productNames
+PASS  brand.docs.attribution
+PASS  brand.docs.clearanceClaims
+PASS  brand.policyCoverage — 6 prohibited claim patterns checked
+PASS  brand.publicationCopies — 0 publication copies in scope (extension point; empty list passes)
+
+Governed files (only these are read; everything else is out of scope):
+  scanned   docs/marea/brand/brand-identity.contract.json — contract validated structurally; text rules exempt (the contract must quote prohibited statements)
+  scanned   docs/marea/brand/BRAND-ARCHITECTURE.md — 232 lines
+  scanned   docs/marea/brand/BRAND-VOICE-ES-EN.md — 252 lines
+  scanned   docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md — 237 lines
+  scanned   docs/marea/brand/BRAND-AND-IP-DECISION-PACKAGE.md — 279 lines
+  scanned   docs/marea/brand/TRADEMARK-CLEARANCE-RESEARCH.md — 643 lines
+  scanned   docs/marea/brand/MAREA-BRAND-STRATEGY.md — 466 lines
+  scanned   docs/marea/brand/PRODUCT-NAMING-SYSTEM.md — 365 lines
+  scanned   docs/marea/brand/COMPETITIVE-POSITIONING-EVIDENCE.md — 302 lines
+  scanned   docs/marea/brand/MC-04-VISUAL-IDENTITY-BRIEF.md — 2013 lines
+  scanned   docs/marea/brand/ORIGINALITY-AND-PRIOR-ART-CHECK.md — 662 lines
+  scanned   docs/marea/brand/PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md — 639 lines
+  scanned   docs/marea/brand/WEBSITE-BRAND-MIGRATION.md — 717 lines
+  scanned   docs/marea/brand/TYPOGRAPHY-SYSTEM.md — 431 lines
+  scanned   docs/marea/brand/ICONOGRAPHY-SYSTEM.md — 449 lines
+  scanned   docs/marea/brand/HARDWARE-CMF-DIRECTION.md — 254 lines
+  scanned   docs/marea/brand/PACKAGING-DIRECTION.md — 193 lines
+  scanned   docs/marea/brand/BRAND-GOVERNANCE-IMPLEMENTATION.md — 206 lines
+  skipped   docs/marea/brand/IDENTITY-SYSTEM.md — not found (content not evaluated)
+  skipped   docs/marea/brand/TERRITORY-COMPARISON.md — not found (content not evaluated)
+  skipped   docs/marea/brand/COLOUR-SYSTEM.md — not found (content not evaluated)
+  skipped   docs/marea/brand/MC-04-ACCESSIBILITY-EVIDENCE.md — not found (content not evaluated)
+  skipped   docs/marea/brand/ILLUSTRATION-STANDARDS.md — not found (content not evaluated)
+
+Summary: 21 checks run, 21 passed, 0 failed; 18 files scanned, 5 skipped.
+RESULT: PASS
+--- end validator output ---
+
+SCENARIO A-full RESULT: exit code = 0 (0 = PASS, 1 = FAIL)
+################################################################
+
+################################################################
+SCENARIO B-minimal — 2 proposed addition(s)
+Trial root    : docs/marea/brand/evidence/governance/trial-root-B-minimal
+Command       : node scripts/check-brand.mjs --root docs/marea/brand/evidence/governance/trial-root-B-minimal
+Additions     :
+   + docs/marea/brand/ORIGINALITY-AND-PRIOR-ART-CHECK.md
+   + docs/marea/brand/PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md
+Copied into trial root: 12 existing governed file(s); not-yet-produced (skipped, not a failure): 0
+
+--- validator output (verbatim) ---
+Brand governance validator — EMBARCARTE / MAREA (contract 1.0.0, PROPOSED)
+Contract: docs/marea/brand/brand-identity.contract.json
+Root: docs/marea/brand/evidence/governance/trial-root-B-minimal
+
+PASS  contract.identity
+PASS  contract.company
+PASS  contract.productBrand
+PASS  contract.technologyFoundation
+PASS  contract.productFamilies
+PASS  contract.bundles
+PASS  contract.fleetDisambiguation
+PASS  contract.namingRules
+PASS  contract.attributionRules
+PASS  contract.claimsPolicy
+PASS  contract.messages
+PASS  contract.governedPaths — 13 governed paths
+PASS  contract.checkProfiles
+PASS  contract.publicationCopies — 0 publication copies in scope (extension point)
+PASS  brand.docs.readable
+PASS  brand.docs.trademarkSymbols
+PASS  brand.docs.productNames
+PASS  brand.docs.attribution
+PASS  brand.docs.clearanceClaims
+PASS  brand.policyCoverage — 6 prohibited claim patterns checked
+PASS  brand.publicationCopies — 0 publication copies in scope (extension point; empty list passes)
+
+Governed files (only these are read; everything else is out of scope):
+  scanned   docs/marea/brand/brand-identity.contract.json — contract validated structurally; text rules exempt (the contract must quote prohibited statements)
+  scanned   docs/marea/brand/BRAND-ARCHITECTURE.md — 232 lines
+  scanned   docs/marea/brand/BRAND-VOICE-ES-EN.md — 252 lines
+  scanned   docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md — 237 lines
+  scanned   docs/marea/brand/BRAND-AND-IP-DECISION-PACKAGE.md — 279 lines
+  scanned   docs/marea/brand/TRADEMARK-CLEARANCE-RESEARCH.md — 643 lines
+  scanned   docs/marea/brand/MAREA-BRAND-STRATEGY.md — 466 lines
+  scanned   docs/marea/brand/PRODUCT-NAMING-SYSTEM.md — 365 lines
+  scanned   docs/marea/brand/COMPETITIVE-POSITIONING-EVIDENCE.md — 302 lines
+  scanned   docs/marea/brand/MC-04-VISUAL-IDENTITY-BRIEF.md — 2013 lines
+  scanned   docs/marea/brand/ORIGINALITY-AND-PRIOR-ART-CHECK.md — 662 lines
+  scanned   docs/marea/brand/PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md — 639 lines
+  scanned   docs/marea/brand/WEBSITE-BRAND-MIGRATION.md — 717 lines
+
+Summary: 21 checks run, 21 passed, 0 failed; 13 files scanned, 0 skipped.
+RESULT: PASS
+--- end validator output ---
+
+SCENARIO B-minimal RESULT: exit code = 0 (0 = PASS, 1 = FAIL)
+################################################################
+
+SUMMARY
+  Scenario A (full proposed list of 12) : exit 0 -> PASS
+  Scenario B (D-16 + D-12 only)         : exit 0 -> PASS
+  Real contract governedPaths after trial: 13 (unchanged by this script)
+
+If Scenario A fails, read the FAIL lines: they name the exact document and line that must be
+reworded before that document can be governed. The Lead fixes the wording, never the validator.

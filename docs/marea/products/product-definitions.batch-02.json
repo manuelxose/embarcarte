@@ -1,0 +1,2514 @@
+{
+  "contractId": "MC-06-PRODUCT-DEFINITIONS-BATCH-02",
+  "contractVersion": "1.0.0",
+  "status": "INTERNAL_PRODUCT_DEFINITION_CONTRACT",
+  "milestone": "MC-06",
+  "batch": 2,
+  "batch01Contract": "docs/marea/products/product-definitions.batch-01.json",
+  "date": "2026-10-30",
+  "owner": "Product Contract and QA Engineer",
+  "notACommerceCatalog": true,
+  "notTheFutureCommerceDataModel": true,
+  "publicationState": "INTERNAL_ONLY",
+  "publicationControls": {
+    "publicationState": "INTERNAL_ONLY",
+    "published": false,
+    "forSale": false,
+    "purchaseCtaAllowed": false,
+    "pricesInCopyAllowed": false,
+    "pricesLabelled": "HYPOTHESIS_UNAPPROVED",
+    "remoteSteeringAllowed": false,
+    "instantAlertGuaranteeAllowed": false,
+    "certificationClaimAllowed": false
+  },
+  "dependencySemantics": {
+    "meaning": "\"required\" means required for the named outcome, never that a module is unusable alone.",
+    "localModuleUse": "A SENSE module works within its own local scope without an active HUB or WATCH entitlement; alone it produces no consolidated view and no remote alerting.",
+    "mareaConsolidatedView": "A HUB is required for MAREA NAV, DISPLAY or WATCH to receive SENSE measurements through the published local data contract; it is optional for a tested third-party consumer. A HUB has no sensing element and cannot obtain a measurement by itself.",
+    "remoteAlerts": "WATCH plus connectivity and an active subscription are required for any remote alert; WATCH is never required for measurement or calibration and is insufficient as a substitute for a module.",
+    "display": "A local display is optional and never a measurement authority; calibration state and freshness are always shown with the value."
+  },
+  "fieldEntryStatusMeaning": "COMPLETE means the field is fully specified in the source dossier and traceable to it. It does not mean that the capability is verified, certified, approved or available; evidence openness is carried separately by evidenceClass and readinessValue.",
+  "lifecycleDecision": "D-007",
+  "lifecycleAuthority": "docs/marea/execution/DECISION-LOG.md (D-007, D-008, D-009); docs/marea/COMMERCIAL-PORTFOLIO.md; docs/marea/products/README.md §3 and §14",
+  "lifecycleVocabulary": [
+    "CONCEPT",
+    "DEFINED",
+    "ENGINEERING_VERIFIED",
+    "REGULATORY_READY",
+    "OPERATIONS_READY",
+    "COMMERCIALLY_AVAILABLE",
+    "RETIRED"
+  ],
+  "lifecycleMapping": [
+    {
+      "proposed": "CONCEPT",
+      "binding": "CONCEPT"
+    },
+    {
+      "proposed": "DEFINED",
+      "binding": "DEFINED"
+    },
+    {
+      "proposed": "ENGINEERING",
+      "binding": "ENGINEERING_VERIFIED"
+    },
+    {
+      "proposed": "VALIDATION",
+      "binding": "ENGINEERING_VERIFIED"
+    },
+    {
+      "proposed": "COMPLIANCE_REVIEW",
+      "binding": "REGULATORY_READY"
+    },
+    {
+      "proposed": "SALES_APPROVED",
+      "binding": "OPERATIONS_READY"
+    },
+    {
+      "proposed": "RELEASED",
+      "binding": "COMMERCIALLY_AVAILABLE"
+    },
+    {
+      "proposed": "RETIRED",
+      "binding": "RETIRED"
+    }
+  ],
+  "readinessDimensions": {
+    "definition": [
+      "COMPLETE_TARGET_SPECIFICATION"
+    ],
+    "engineering": [
+      "NOT_VERIFIED",
+      "PARTIALLY_VERIFIED",
+      "ENGINEERING_VERIFIED"
+    ],
+    "licensing": [
+      "NOT_CLEARED",
+      "CONDITIONAL",
+      "CLEARED"
+    ],
+    "hardware": [
+      "NOT_SELECTED",
+      "DESIGN_IN_PROGRESS",
+      "PROTOTYPED",
+      "CERTIFIED",
+      "NOT_APPLICABLE_SOFTWARE_PRODUCT"
+    ],
+    "dataRights": [
+      "NOT_GRANTED",
+      "PARTIAL",
+      "GRANTED_PER_TERRITORY"
+    ],
+    "compliance": [
+      "NOT_STARTED",
+      "ASSESSMENT_PENDING",
+      "CONFORMITY_EVIDENCE_ON_FILE"
+    ],
+    "pricing": [
+      "HYPOTHESIS_UNAPPROVED",
+      "COSTED_UNAPPROVED",
+      "APPROVED"
+    ],
+    "brandPublication": [
+      "NOT_GRANTED",
+      "INTERNAL_ONLY_APPROVED",
+      "PUBLICATION_APPROVED"
+    ],
+    "availability": [
+      "NOT_FOR_SALE",
+      "PREORDER_NOT_AUTHORISED",
+      "FOR_SALE"
+    ]
+  },
+  "evidenceClasses": [
+    "VERIFIED_REPO",
+    "VERIFIED_EXTERNAL",
+    "ASSUMPTION",
+    "HYPOTHESIS",
+    "OPEN",
+    "BLOCKED"
+  ],
+  "globalRestrictions": {
+    "trademarkLegalClearance": "NOT_GRANTED",
+    "sourceIpClearance": "NOT_CLEARED",
+    "commercialAvailability": "NOT_FOR_SALE",
+    "aisTransmissionOffered": false,
+    "nmea2000Certified": false,
+    "ecdiscClaimed": false,
+    "chartRightsGranted": false,
+    "imageGeneration": "BLOCKED",
+    "remoteHelmControl": "PROHIBITED",
+    "instantAlertGuarantee": false,
+    "sensorAccuracyClaimed": false,
+    "ipRatingClaimed": false
+  },
+  "notificationStates": [
+    "EVENT_OBSERVED",
+    "RULE_MATCHED",
+    "ALERT_CREATED",
+    "QUEUED",
+    "PROVIDER_ACCEPTED",
+    "DELIVERED_WHEN_CONFIRMED",
+    "ACKNOWLEDGED",
+    "EXPIRED",
+    "FAILED",
+    "DELIVERY_UNKNOWN"
+  ],
+  "notificationTimestamps": [
+    "eventTime",
+    "deviceClockTime",
+    "serverReceiptTime",
+    "alertCreationTime",
+    "notificationHandoffTime",
+    "providerAcceptanceTime",
+    "deliveryConfirmationTime",
+    "userAcknowledgementTime"
+  ],
+  "subscriptionIsolationRules": [
+    {
+      "id": "STEERING_NOT_GATED",
+      "statement": "A commercial entitlement, subscription expiry or failed payment never disables local steering or any PILOT safety behaviour."
+    },
+    {
+      "id": "LOCAL_SENSING_NOT_GATED",
+      "statement": "A commercial entitlement never disables valid local sensing or changes a valid local measurement into an invalid one for commercial reasons."
+    },
+    {
+      "id": "LOCAL_ALARMS_NOT_GATED",
+      "statement": "A commercial entitlement never disables local alarms or other safety-relevant independent functions."
+    },
+    {
+      "id": "PAYMENT_FAILURE_NEVER_DISABLES_LOCAL_FUNCTIONS",
+      "statement": "Payment failure or subscription expiry affects only the remote commercial entitlement and never disables local or safety-relevant functions. This is a design requirement of the specification, not a tested behaviour."
+    }
+  ],
+  "crossProductAuthority": [
+    {
+      "relationship": "PILOT ↔ NAV",
+      "permitted": "NAV may supply route and waypoint information to a future authorised local integration once verified.",
+      "prohibited": "NAV may never command the actuator; route data is an input, not authority."
+    },
+    {
+      "relationship": "PILOT ↔ HUB",
+      "permitted": "HUB may publish bounded instrument and navigation data and read PILOT status.",
+      "prohibited": "HUB is not the actuator controller; no unreviewed data path enables helm control."
+    },
+    {
+      "relationship": "PILOT ↔ WATCH",
+      "permitted": "WATCH may display authorised read-only PILOT status.",
+      "prohibited": "No remote engage or disengage, no heading adjustment, no steering command."
+    },
+    {
+      "relationship": "PILOT ↔ SENSE",
+      "permitted": "Validated, calibrated measurements may be consumed after safety qualification.",
+      "prohibited": "No generic sensor module is automatically acceptable as a steering input."
+    },
+    {
+      "relationship": "SENSE ↔ HUB",
+      "permitted": "HUB receives and publishes measurements with source, units, quality and freshness.",
+      "prohibited": "No invented protocol compatibility."
+    },
+    {
+      "relationship": "SENSE ↔ WATCH",
+      "permitted": "WATCH consumes approved readings and sends conditional remote notifications.",
+      "prohibited": "SENSE never claims connectivity or push by itself."
+    },
+    {
+      "relationship": "WATCH ↔ FLEET",
+      "permitted": "FLEET may consume authorised read-only telemetry under a future contract.",
+      "prohibited": "WATCH is not a multi-tenant fleet platform by default."
+    },
+    {
+      "relationship": "Any ↔ Subscription",
+      "permitted": "Local safety-relevant functions keep working without an active subscription.",
+      "prohibited": "No entitlement gates local steering, local alarms or valid local sensing."
+    }
+  ],
+  "safetyGates": [
+    {
+      "product": "PILOT",
+      "gate": "PILOT_SAFETY_GATE",
+      "state": "BLOCKED",
+      "closingEvidence": []
+    },
+    {
+      "product": "PILOT",
+      "gate": "PILOT_PHYSICAL_ESTOP",
+      "state": "BLOCKED",
+      "closingEvidence": []
+    },
+    {
+      "product": "PILOT",
+      "gate": "PILOT_MOTOR_ISOLATION",
+      "state": "BLOCKED",
+      "closingEvidence": []
+    },
+    {
+      "product": "PILOT",
+      "gate": "PILOT_RUDDER_FEEDBACK",
+      "state": "BLOCKED",
+      "closingEvidence": []
+    },
+    {
+      "product": "PILOT",
+      "gate": "PILOT_SEA_TRIALS",
+      "state": "BLOCKED",
+      "closingEvidence": []
+    },
+    {
+      "product": "SENSE",
+      "gate": "SENSE_MEASUREMENT_ACCURACY",
+      "state": "BLOCKED",
+      "closingEvidence": []
+    },
+    {
+      "product": "WATCH",
+      "gate": "WATCH_NOTIFICATION_PIPELINE",
+      "state": "BLOCKED",
+      "closingEvidence": []
+    },
+    {
+      "product": "WATCH",
+      "gate": "WATCH_DEVICE_IDENTITY",
+      "state": "BLOCKED",
+      "closingEvidence": []
+    },
+    {
+      "product": "WATCH",
+      "gate": "WATCH_SUBSCRIPTION_SERVICE",
+      "state": "BLOCKED",
+      "closingEvidence": []
+    },
+    {
+      "product": "WATCH",
+      "gate": "WATCH_CONNECTIVITY_CONTRACT",
+      "state": "BLOCKED",
+      "closingEvidence": []
+    }
+  ],
+  "sourceDocuments": {
+    "conventions": "docs/marea/products/README.md",
+    "dossiers": {
+      "PILOT": "docs/marea/products/MAREA-PILOT-COMMERCIAL-SPEC.md",
+      "SENSE": "docs/marea/products/MAREA-SENSE-COMMERCIAL-SPEC.md",
+      "WATCH": "docs/marea/products/MAREA-WATCH-COMMERCIAL-SPEC.md"
+    },
+    "editions": "docs/marea/products/PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md",
+    "compatibility": "docs/marea/products/PRODUCT-COMPATIBILITY-PILOT-SENSE-WATCH.md",
+    "pricing": "docs/marea/products/PRODUCT-PRICING-AND-CHANNEL-MODEL-BATCH-02.md",
+    "journeys": "docs/marea/products/CUSTOMER-JOURNEYS-PILOT-SENSE-WATCH.md",
+    "assets": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md",
+    "safetyCase": "docs/marea/products/PILOT-SAFETY-CASE-OUTLINE.md",
+    "calibrationPlan": "docs/marea/products/SENSE-MEASUREMENT-AND-CALIBRATION-PLAN.md",
+    "alertDeliveryContract": "docs/marea/products/WATCH-ALERT-DELIVERY-AND-PRIVACY-CONTRACT.md",
+    "claimsPolicy": "docs/marea/brand/COMMERCIAL-BRAND-CLAIMS-POLICY.md",
+    "blockers": "docs/marea/compliance/MC-02-BLOCKERS-AND-DECISIONS.md"
+  },
+  "assets": [
+    {
+      "assetId": "PILOT-HERO-01",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#PILOT-HERO-01",
+      "note": "MC-06 planning identifier 1 for a future PILOT visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "PILOT-USE-02",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#PILOT-USE-02",
+      "note": "MC-06 planning identifier 2 for a future PILOT visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "PILOT-OVR-03",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#PILOT-OVR-03",
+      "note": "MC-06 planning identifier 3 for a future PILOT visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "PILOT-EDN-04",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#PILOT-EDN-04",
+      "note": "MC-06 planning identifier 4 for a future PILOT visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "PILOT-ECO-05",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#PILOT-ECO-05",
+      "note": "MC-06 planning identifier 5 for a future PILOT visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "PILOT-INS-06",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#PILOT-INS-06",
+      "note": "MC-06 planning identifier 6 for a future PILOT visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "PILOT-MOB-07",
+      "status": "CONCEPT",
+      "classification": "AUTHORED_NEW_SPECIFICATION",
+      "provenance": "Authored new asset specification; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#PILOT-MOB-07",
+      "note": "MC-06 planning identifier 7 for a future PILOT visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "PILOT-TMB-08",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#PILOT-TMB-08",
+      "note": "MC-06 planning identifier 8 for a future PILOT visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "PILOT-OG-09",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#PILOT-OG-09",
+      "note": "MC-06 planning identifier 9 for a future PILOT visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "PILOT-TEC-10",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#PILOT-TEC-10",
+      "note": "MC-06 planning identifier 10 for a future PILOT visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "SENSE-HERO-01",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#SENSE-HERO-01",
+      "note": "MC-06 planning identifier 1 for a future SENSE visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "SENSE-USE-02",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#SENSE-USE-02",
+      "note": "MC-06 planning identifier 2 for a future SENSE visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "SENSE-OVR-03",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#SENSE-OVR-03",
+      "note": "MC-06 planning identifier 3 for a future SENSE visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "SENSE-EDN-04",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#SENSE-EDN-04",
+      "note": "MC-06 planning identifier 4 for a future SENSE visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "SENSE-ECO-05",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#SENSE-ECO-05",
+      "note": "MC-06 planning identifier 5 for a future SENSE visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "SENSE-INS-06",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#SENSE-INS-06",
+      "note": "MC-06 planning identifier 6 for a future SENSE visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "SENSE-MOB-07",
+      "status": "CONCEPT",
+      "classification": "AUTHORED_NEW_SPECIFICATION",
+      "provenance": "Authored new asset specification; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#SENSE-MOB-07",
+      "note": "MC-06 planning identifier 7 for a future SENSE visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "SENSE-TMB-08",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#SENSE-TMB-08",
+      "note": "MC-06 planning identifier 8 for a future SENSE visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "SENSE-OG-09",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#SENSE-OG-09",
+      "note": "MC-06 planning identifier 9 for a future SENSE visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "SENSE-TEC-10",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#SENSE-TEC-10",
+      "note": "MC-06 planning identifier 10 for a future SENSE visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WATCH-HERO-01",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#WATCH-HERO-01",
+      "note": "MC-06 planning identifier 1 for a future WATCH visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WATCH-USE-02",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#WATCH-USE-02",
+      "note": "MC-06 planning identifier 2 for a future WATCH visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WATCH-OVR-03",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#WATCH-OVR-03",
+      "note": "MC-06 planning identifier 3 for a future WATCH visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WATCH-EDN-04",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#WATCH-EDN-04",
+      "note": "MC-06 planning identifier 4 for a future WATCH visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WATCH-ECO-05",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#WATCH-ECO-05",
+      "note": "MC-06 planning identifier 5 for a future WATCH visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WATCH-INS-06",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#WATCH-INS-06",
+      "note": "MC-06 planning identifier 6 for a future WATCH visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WATCH-MOB-07",
+      "status": "CONCEPT",
+      "classification": "AUTHORED_NEW_SPECIFICATION",
+      "provenance": "Authored new asset specification; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#WATCH-MOB-07",
+      "note": "MC-06 planning identifier 7 for a future WATCH visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WATCH-TMB-08",
+      "status": "BLOCKED_ON_IMAGE_GENERATION",
+      "classification": "REQUIRES_GENERATION",
+      "provenance": "No image file exists; generation remains blocked on X-03.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#WATCH-TMB-08",
+      "note": "MC-06 planning identifier 8 for a future WATCH visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WATCH-OG-09",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#WATCH-OG-09",
+      "note": "MC-06 planning identifier 9 for a future WATCH visual; CONCEPT, not REAL_PRODUCT."
+    },
+    {
+      "assetId": "WATCH-TEC-10",
+      "status": "CONCEPT",
+      "classification": "REUSED_MC04_VECTOR_OR_BRIEF",
+      "provenance": "MC-04 vector or brief reused as a structural input only; no image file exists and none may be generated while X-03 is BLOCKED.",
+      "source": "docs/marea/products/PRODUCT-ASSET-REQUIREMENTS-BATCH-02.md#WATCH-TEC-10",
+      "note": "MC-06 planning identifier 10 for a future WATCH visual; CONCEPT, not REAL_PRODUCT."
+    }
+  ],
+  "products": [
+    {
+      "id": "PILOT",
+      "displayName": "MAREA PILOT",
+      "type": "HARDWARE_SOFTWARE",
+      "lifecycleState": "DEFINED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "availability": "NOT_FOR_SALE",
+      "safetyGate": "BLOCKED",
+      "remoteHelmControl": "PROHIBITED",
+      "seaTrialsCompleted": false,
+      "physicalEstopEvidence": "NOT_FOUND",
+      "motorIsolationEvidence": "NOT_FOUND",
+      "rudderFeedbackEvidence": "NOT_FOUND",
+      "priceInclusiveQuotation": false,
+      "quotationRequired": true,
+      "steeringModes": [
+        {
+          "id": "HEADING_HOLD",
+          "prerequisites": "Verified compass heading source, rudder feedback or a validated open-loop case, and commissioning evidence.",
+          "status": "NOT_VERIFIED"
+        },
+        {
+          "id": "WIND_ANGLE",
+          "prerequisites": "Verified wind-angle source and verified wind-mode steering behaviour (H-01).",
+          "status": "CONDITIONAL_ON_VERIFICATION"
+        },
+        {
+          "id": "ROUTE_FOLLOW",
+          "prerequisites": "Approved local NAV route integration, validated GNSS quality and cross-track behaviour, and supervised sea trials.",
+          "status": "CONDITIONAL_ON_VERIFICATION"
+        }
+      ],
+      "editions": [
+        {
+          "id": "PILOT-COASTAL",
+          "displayName": "MAREA PILOT Coastal",
+          "priceState": "HYPOTHESIS_UNAPPROVED",
+          "priceHypothesis": {
+            "amount": 1290,
+            "currency": "EUR",
+            "vatBasis": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+            "period": "ONE_OFF",
+            "startingPrice": true,
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05"
+            ],
+            "notAnInclusiveQuotation": true,
+            "quotationRequired": true
+          },
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 and the PILOT dossier keep Coastal DEFINED with a from EUR 1,290 starting hypothesis. It is not an all-inclusive quotation and publication remains conditional on the safety, pricing and compatibility gates (H-01, P-04, X-05).",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#PILOT-COASTAL",
+              "MC-02:H-01",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "PILOT-SAIL",
+          "displayName": "MAREA PILOT Sail",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "CONDITIONAL",
+            "publicationConditional": true,
+            "rationale": "D-008 keeps Sail CONDITIONAL on verified wind-angle steering (H-01): the edition differentiator depends on an unverified capability and the condition that closes it is a verified wind-mode evidence set. No Sail price is established.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#PILOT-SAIL",
+              "MC-02:H-01",
+              "MC-02:P-04"
+            ]
+          }
+        },
+        {
+          "id": "PILOT-PRO",
+          "displayName": "MAREA PILOT Pro",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "INSTALLATION_PACKAGE",
+            "publicationConditional": true,
+            "rationale": "D-008 makes PILOT Pro a vessel-specific quoted installation package, not a retail SKU; its scope is defined only after a vessel survey and it carries no fixed price.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#PILOT-PRO",
+              "MC-02:H-01",
+              "MC-02:X-05"
+            ]
+          }
+        }
+      ],
+      "fields": {
+        "identity": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "MAREA PILOT is the supervised steering-assist system of the MAREA family: a control head, a control computer and independent motor-control electronics that hold a compass heading or follow a route the skipper has explicitly authorised. Manual takeover remains possible at all times and no remote or autonomous steering is offered.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F01",
+            "MC-02:H-01",
+            "MC-02:H-02",
+            "MC-02:P-04"
+          ],
+          "ownerFunction": "Product Management (PILOT Product Director)",
+          "blockers": [
+            "H-01",
+            "H-02",
+            "P-04"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "customerSegments": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Primary: owners of recreational sailing and motor vessels roughly 8–15 m cruising Galicia and northern Portugal who want relief from continuous hand-steering on coastal passages but will not accept unattended operation. Secondary: sailing schools, small charter operators and installers who need a repeatable, documented installation and a conservative operating envelope.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F02",
+            "MC-02:X-06",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "P-10"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "customerProblems": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "The intended customer hand-steers for hours in wind, swell and rain, and existing autopilots may not match the boat drive family or may force a closed ecosystem. The product is meant to reduce helming workload on long legs while keeping the skipper in command, with installation quoted per vessel and compatibility stated per drive family and evidence status.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F03",
+            "MC-02:X-06",
+            "MC-02:H-01"
+          ],
+          "ownerFunction": "Product Management",
+          "blockers": [
+            "X-06",
+            "H-01"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "finalFunctionality": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The final product is intended to hold a selected heading, hold an apparent or true wind angle where the wind mode is verified, and follow an authorised route with simple course changes, all engaged and adjusted only at the local control head. It includes a physical E-stop, independent motor-power isolation, rudder or steering feedback, a command heartbeat and watchdog, alarm classification, commissioning and supervised sea-trial procedures, and a defined safe state per drive family. None of this is built or physically verified at MC-06.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F04",
+            "MC-02:H-01",
+            "MC-02:H-02",
+            "MC-02:H-03",
+            "MC-02:H-10",
+            "MC-02:P-04"
+          ],
+          "ownerFunction": "Engineering (Control Systems) with Safety Engineering",
+          "blockers": [
+            "H-01",
+            "H-02",
+            "H-03",
+            "H-10",
+            "P-04"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "differentiation": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "The intended relevance is an honestly bounded, installable steering assist with documented authority boundaries, an independent motor-power isolation concept and a quotation-based fit to the vessel, rather than an autonomy or performance claim. Differentiation depends on evidence the programme does not yet have, so no superiority claim is made.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F05",
+            "MC-02:X-06",
+            "MC-02:H-01",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "H-01",
+            "X-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "editions": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Three edition structures: MAREA PILOT Coastal and MAREA PILOT Sail are editions, and MAREA PILOT Pro is a vessel-specific installation package rather than a retail SKU (D-008). Coastal is DEFINED, Sail is CONDITIONAL on verified wind-angle steering, and Pro is INSTALLATION_PACKAGE with a quotation scope and no fixed price.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F06",
+            "MC-02:X-05",
+            "MC-02:H-01",
+            "MC-02:P-04"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy and Pricing",
+          "blockers": [
+            "X-05",
+            "H-01",
+            "P-04"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "includedItems": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "The intended Coastal and Sail packages include the control head, control computer, independent motor-control electronics, the drive-family interface specified in the quotation, a physical E-stop, the wiring and connectors within the defined scope, commissioning, documentation and operator training. The vessel-specific installation package adds surveyed work, sea-trial preparation and configuration that cannot be sold as a fixed retail bundle.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F07",
+            "MC-02:H-05",
+            "MC-02:H-07",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "H-05",
+            "H-07",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "optionalAccessories": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended optional ecosystem items are a MAREA HUB for bounded instrument and navigation data, a compatible rudder or steering feedback device where the drive family requires one, a display or tablet surface for read-only status, and the installer commissioning and maintenance service. No optional item removes the local control boundary or grants remote steering.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F08",
+            "MC-02:H-03",
+            "MC-02:H-05",
+            "MC-02:P-02"
+          ],
+          "ownerFunction": "Product Management with the HUB Product Director (integration owner)",
+          "blockers": [
+            "H-03",
+            "H-05",
+            "P-02"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "integration": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "PILOT is intended to consume only bounded inputs: GNSS and route information from NAV, instrument and navigation data from HUB, validated SENSE measurements after safety qualification, and authorised read-only status publication to WATCH. NMEA 2000 is not implemented (H-04) and Signal K compatibility is per device, firmware and direction; no third party may command the actuator.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F09",
+            "MC-02:H-04",
+            "MC-02:H-02",
+            "MC-02:P-02",
+            "MC-02:P-06"
+          ],
+          "ownerFunction": "Engineering (Integration) with Safety Engineering",
+          "blockers": [
+            "H-04",
+            "H-02",
+            "P-02",
+            "P-06"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "professionalInstallation": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Professional installation, commissioning and acceptance are required for every PILOT edition; the work is surveyed and quoted per vessel and is never represented as a self-install kit. Installation includes drive-family compatibility assessment, E-stop and motor-power isolation commissioning, dockside checks, supervised sea trials and operator training, all of which remain incomplete.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F10",
+            "MC-02:H-03",
+            "MC-02:H-10",
+            "MC-02:P-04"
+          ],
+          "ownerFunction": "Support Operations with Channel Management",
+          "blockers": [
+            "H-03",
+            "H-10",
+            "P-04"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "onboarding": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended first use covers pre-installation survey, authority and boundary briefing, control-head familiarisation, commissioning checks, a supervised dockside test, a supervised sea trial and written operator training with the limitations and manual-takeover procedure. No onboarding evidence exists today.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F11",
+            "MC-02:P-04",
+            "MC-02:H-10"
+          ],
+          "ownerFunction": "UX, Content and Localization with Engineering",
+          "blockers": [
+            "P-04",
+            "H-10"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "licensingSubscriptions": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "PILOT is intended to be sold as hardware plus installation with no mandatory subscription for local steering; any future software entitlement must never disable local steering or safety behaviour. Licensing of reused source and of third-party drive components is not cleared.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F12",
+            "MC-02:L-01",
+            "MC-02:L-02",
+            "MC-02:L-03",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Commercial Strategy with Legal and Compliance",
+          "blockers": [
+            "L-01",
+            "L-02",
+            "L-03",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retailAndPartnerPricing": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "The only allowed PILOT price hypothesis is a starting price for the minimum usable Coastal configuration of from EUR 1,290, labelled HYPOTHESIS_UNAPPROVED, explicitly not an all-inclusive quotation. Sail and Pro prices are not established and the commercial model is quotation-based (D-009).",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F13",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial Strategy and Pricing",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "directAndOngoingCosts": {
+          "status": "BLOCKED",
+          "evidenceClass": "BLOCKED",
+          "summary": "The cost model is a framework of named inputs: control head, computer and motor-control electronics, drive-family interface hardware, labour, survey, sea-trial time, support, warranty reserve, external safety review, conformity testing and training. No BOM, supplier quote, installation cost or margin is established, so no cost figure is computed.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F14",
+            "MC-02:X-05",
+            "MC-02:H-07"
+          ],
+          "ownerFunction": "Finance with Commercial Strategy",
+          "blockers": [
+            "X-05",
+            "H-07"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "channelEconomics": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The intended channel is a specialist installer or boatyard that surveys the vessel, installs the system, runs commissioning and the supervised sea trial, and owns local support, while EMBARCARTE owns design authority, the safety case, software and documentation. Channel margins and partner terms are OPEN.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F15",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial Strategy with Channel Management",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "competitorComparison": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Comparisons are intended to be descriptive only, anchored on public sources with access dates, and must not claim parity or superiority. No competitor price is reproduced here and no verified comparison evidence exists in this contract.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F16",
+            "MC-02:X-06",
+            "MC-02:H-01"
+          ],
+          "ownerFunction": "Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "H-01"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "salesArguments": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Buyer arguments are conditional: supervised workload relief, a documented local authority boundary, independent motor-power isolation, quotation-based fit to the existing vessel and installer-supported commissioning. Any objection handling about autonomy, remote control or certification must reject those capabilities.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F17",
+            "MC-02:H-01",
+            "MC-02:X-01",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial Strategy with Brand and Compliance",
+          "blockers": [
+            "H-01",
+            "X-01",
+            "X-06"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "faq": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended pre-sales and post-sales answers cover what is included, why a survey and quotation are required, why the price is not turnkey, which drive families are in scope, what happens on sensor loss or power interruption, how manual takeover works and why no sea trial, certification or autonomy is claimed yet.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F18",
+            "MC-02:P-04",
+            "MC-02:H-01",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Support Operations with Product Management",
+          "blockers": [
+            "P-04",
+            "H-01",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "warrantyAndSupport": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The intended support model includes installer-led commissioning, documentation, ES/EN help material, an incident intake and a warranty policy to be defined; statutory consumer rights would apply only to a future sale. Duration, response times and service levels are not written.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F19",
+            "MC-02:X-02",
+            "MC-02:H-13",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Support Operations with Legal and Compliance",
+          "blockers": [
+            "X-02",
+            "H-13",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        },
+        "bilingualProductPageCopy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The customer-facing PILOT copy in Spanish and English is the D8 deliverable at docs/marea/products/copy/pilot.es.md and pilot.en.md, using the 24 numbered sections of the batch-01 copy, followed by the approved-disclaimer block. Both files are internal drafts and remain NOT FOR SALE and NOT PUBLISHED.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F20",
+            "MC-02:X-01",
+            "MC-02:X-03"
+          ],
+          "ownerFunction": "UX, Content and Localization",
+          "blockers": [
+            "X-01",
+            "X-03"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "crossSells": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended cross-sells are a MAREA HUB for bounded data, MAREA SENSE modules as steering inputs only after safety qualification, MAREA WATCH for read-only status, MAREA NAV as a route input and the ecosystem bundles defined by MC-08. No cross-sell may imply purchase availability or a control path.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F21",
+            "MC-02:P-02",
+            "MC-02:P-05",
+            "MC-02:P-06",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "P-02",
+            "P-05",
+            "P-06",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "retentionStrategy": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Retention is intended to come from supervised-use value, installer support, maintenance and training, not from lock-in; a lapsed commercial entitlement must never disable local steering. Renewal and service programmes are not designed.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F22",
+            "MC-02:X-05",
+            "MC-02:P-04"
+          ],
+          "ownerFunction": "Commercial Strategy with Customer Success",
+          "blockers": [
+            "X-05",
+            "P-04"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "successMetrics": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "The metric framework covers installation completion, commissioning checks passed, supervised hours, manual-takeover drills completed, incident and near-miss reporting, support responsiveness and safety-review findings, with no approved targets. No measurement programme exists.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F23",
+            "MC-02:P-10",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Commercial Strategy with Product Analytics",
+          "blockers": [
+            "P-10",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "endToEndAcceptance": {
+          "status": "BLOCKED",
+          "evidenceClass": "BLOCKED",
+          "summary": "Acceptance means physical bench evidence, HIL, independent verification, supervised sea trials, conformity assessment and signed safety-case review, not document review. The gate is BLOCKED: no E-stop, motor-isolation or rudder-feedback evidence exists and no sea trial has been performed.",
+          "evidenceRefs": [
+            "MAREA-PILOT-COMMERCIAL-SPEC.md#F24",
+            "MC-02:H-01",
+            "MC-02:H-10",
+            "MC-02:P-04",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Quality Assurance with Engineering; independent verification by a reviewer who is not the author",
+          "blockers": [
+            "H-01",
+            "H-10",
+            "P-04",
+            "P-10"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        }
+      },
+      "copy": {
+        "es": "docs/marea/products/copy/pilot.es.md",
+        "en": "docs/marea/products/copy/pilot.en.md"
+      },
+      "assets": [
+        {
+          "assetId": "PILOT-HERO-01"
+        },
+        {
+          "assetId": "PILOT-USE-02"
+        },
+        {
+          "assetId": "PILOT-OVR-03"
+        },
+        {
+          "assetId": "PILOT-EDN-04"
+        },
+        {
+          "assetId": "PILOT-ECO-05"
+        },
+        {
+          "assetId": "PILOT-INS-06"
+        },
+        {
+          "assetId": "PILOT-MOB-07"
+        },
+        {
+          "assetId": "PILOT-TMB-08"
+        },
+        {
+          "assetId": "PILOT-OG-09"
+        },
+        {
+          "assetId": "PILOT-TEC-10"
+        }
+      ],
+      "mc02Blockers": [
+        "H-01",
+        "H-02",
+        "H-03",
+        "H-05",
+        "H-06",
+        "H-07",
+        "H-10",
+        "H-13",
+        "P-04",
+        "P-10",
+        "X-01",
+        "X-05",
+        "X-06",
+        "X-03"
+      ]
+    },
+    {
+      "id": "SENSE",
+      "displayName": "MAREA SENSE",
+      "type": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "accuracyVerified": false,
+      "accuracyEvidenceState": "NOT_MEASURED",
+      "nmea2000Certified": false,
+      "nmea2000State": "NOT_IMPLEMENTED",
+      "directRemoteAlerts": false,
+      "ipRatingClaimed": false,
+      "ingressEvidenceState": "NOT_VERIFIED",
+      "entryPriceHypothesis": {
+        "amount": 99,
+        "currency": "EUR",
+        "vatBasis": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+        "period": "ONE_OFF",
+        "startingPrice": true,
+        "status": "HYPOTHESIS_UNAPPROVED",
+        "validationRequired": true,
+        "blockers": [
+          "X-05"
+        ]
+      },
+      "modules": [
+        {
+          "id": "SENSE-WIND",
+          "displayName": "MAREA SENSE Wind",
+          "hubDependency": "REQUIRED_FOR_MAREA_CONSOLIDATED_VIEW",
+          "watchDependency": "REQUIRED_FOR_REMOTE_ALERTS",
+          "displayDependency": "OPTIONAL",
+          "directRemoteAlerts": false,
+          "hubRequired": true,
+          "watchRequired": true,
+          "displayRequired": false
+        },
+        {
+          "id": "SENSE-POWER",
+          "displayName": "MAREA SENSE Power",
+          "hubDependency": "REQUIRED_FOR_MAREA_CONSOLIDATED_VIEW",
+          "watchDependency": "REQUIRED_FOR_REMOTE_ALERTS",
+          "displayDependency": "OPTIONAL",
+          "directRemoteAlerts": false,
+          "hubRequired": true,
+          "watchRequired": true,
+          "displayRequired": false
+        },
+        {
+          "id": "SENSE-BILGE",
+          "displayName": "MAREA SENSE Bilge",
+          "hubDependency": "REQUIRED_FOR_MAREA_CONSOLIDATED_VIEW",
+          "watchDependency": "REQUIRED_FOR_REMOTE_ALERTS",
+          "displayDependency": "OPTIONAL",
+          "directRemoteAlerts": false,
+          "hubRequired": true,
+          "watchRequired": true,
+          "displayRequired": false
+        },
+        {
+          "id": "SENSE-TANKS",
+          "displayName": "MAREA SENSE Tanks",
+          "hubDependency": "REQUIRED_FOR_MAREA_CONSOLIDATED_VIEW",
+          "watchDependency": "REQUIRED_FOR_REMOTE_ALERTS",
+          "displayDependency": "OPTIONAL",
+          "directRemoteAlerts": false,
+          "hubRequired": true,
+          "watchRequired": true,
+          "displayRequired": false
+        },
+        {
+          "id": "SENSE-ENV",
+          "displayName": "MAREA SENSE Environment",
+          "hubDependency": "REQUIRED_FOR_MAREA_CONSOLIDATED_VIEW",
+          "watchDependency": "REQUIRED_FOR_REMOTE_ALERTS",
+          "displayDependency": "OPTIONAL",
+          "directRemoteAlerts": false,
+          "hubRequired": true,
+          "watchRequired": true,
+          "displayRequired": false
+        }
+      ],
+      "kits": [
+        {
+          "id": "SENSE-ESSENTIALS",
+          "displayName": "MAREA SENSE Essentials",
+          "modules": [
+            "SENSE-POWER",
+            "SENSE-BILGE"
+          ],
+          "displayRequired": false
+        },
+        {
+          "id": "SENSE-SAIL",
+          "displayName": "MAREA SENSE Sail",
+          "modules": [
+            "SENSE-WIND",
+            "SENSE-ENV"
+          ],
+          "displayRequired": false
+        },
+        {
+          "id": "SENSE-SYSTEMS",
+          "displayName": "MAREA SENSE Systems",
+          "modules": [
+            "SENSE-POWER",
+            "SENSE-BILGE",
+            "SENSE-TANKS",
+            "SENSE-ENV"
+          ],
+          "displayRequired": false
+        }
+      ],
+      "editions": [
+        {
+          "id": "SENSE-WIND",
+          "displayName": "MAREA SENSE Wind",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 and the SENSE dossier keep the MAREA SENSE Wind module DEFINED as a customer-facing configuration; it is still not sellable and carries no established price of its own.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#SENSE-WIND",
+              "MC-02:P-05",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "SENSE-POWER",
+          "displayName": "MAREA SENSE Power",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 and the SENSE dossier keep the MAREA SENSE Power module DEFINED as a customer-facing configuration; it is still not sellable and carries no established price of its own.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#SENSE-POWER",
+              "MC-02:P-05",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "SENSE-BILGE",
+          "displayName": "MAREA SENSE Bilge",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 and the SENSE dossier keep the MAREA SENSE Bilge module DEFINED as a customer-facing configuration; it is still not sellable and carries no established price of its own.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#SENSE-BILGE",
+              "MC-02:P-05",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "SENSE-TANKS",
+          "displayName": "MAREA SENSE Tanks",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 and the SENSE dossier keep the MAREA SENSE Tanks module DEFINED as a customer-facing configuration; it is still not sellable and carries no established price of its own.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#SENSE-TANKS",
+              "MC-02:P-05",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "SENSE-ENV",
+          "displayName": "MAREA SENSE Environment",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "D4 and the SENSE dossier keep the MAREA SENSE Environment module DEFINED as a customer-facing configuration; it is still not sellable and carries no established price of its own.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#SENSE-ENV",
+              "MC-02:P-05",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "SENSE-ESSENTIALS",
+          "displayName": "MAREA SENSE Essentials",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "Essentials is the entry kit and is DEFINED; it adds only modules that already exist as SKUs and no capability absent from them. Its price is not established.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#SENSE-ESSENTIALS",
+              "MC-02:P-05",
+              "MC-02:P-02"
+            ]
+          }
+        },
+        {
+          "id": "SENSE-SAIL",
+          "displayName": "MAREA SENSE Sail",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "CONDITIONAL",
+            "publicationConditional": true,
+            "rationale": "Sail is CONDITIONAL: the added value depends on the sailing-specific module combination and on evidence the programme does not yet hold. The closing condition is stated in D4.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#SENSE-SAIL",
+              "MC-02:P-05",
+              "MC-02:P-02"
+            ]
+          }
+        },
+        {
+          "id": "SENSE-SYSTEMS",
+          "displayName": "MAREA SENSE Systems",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": null,
+          "editionVerdict": {
+            "status": "CONDITIONAL",
+            "publicationConditional": true,
+            "rationale": "Systems is CONDITIONAL: the full-module kit depends on unverified module performance and integration evidence, so the kit verdict stays conditional.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#SENSE-SYSTEMS",
+              "MC-02:P-05",
+              "MC-02:P-02"
+            ]
+          }
+        }
+      ],
+      "fields": {
+        "identity": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "MAREA SENSE is the modular sensing family of the MAREA ecosystem: separate wind, power, bilge, tank and environmental modules that publish measurements, with optional kits that preconfigure several modules. It is intended to feed a local display or a MAREA HUB, not to create an autonomous monitoring service.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F01",
+            "MC-02:H-04",
+            "MC-02:H-05",
+            "MC-02:P-05"
+          ],
+          "ownerFunction": "Product Management (SENSE Product Director)",
+          "blockers": [
+            "H-04",
+            "H-05",
+            "P-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "customerSegments": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Primary: recreational sailing and motor owners who want specific boat data without replacing their electronics and can accept calibration and installation work. Secondary: sailing schools, small charter operators and installers who standardise on a small set of modules and kits.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F02",
+            "MC-02:X-06",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "P-10"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "customerProblems": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Existing instruments are often partial, ageing or closed, and the boat has no honest, calibrated view of wind, electrical state, bilge or tank level. The intended answer is a small set of clearly bounded modules whose measurements, ranges and calibration requirements are stated rather than hidden.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F03",
+            "MC-02:X-06",
+            "MC-02:P-05"
+          ],
+          "ownerFunction": "Product Management",
+          "blockers": [
+            "X-06",
+            "P-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "finalFunctionality": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Each SENSE module is intended to measure one defined quantity with stated units, range and calibration requirement, show invalid or stale values as invalid, and publish to a local display or HUB with source, quality and freshness. Kits combine existing modules only, and remote alerting requires WATCH, connectivity and an active subscription.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F04",
+            "MC-02:P-05",
+            "MC-02:P-06",
+            "MC-02:H-04"
+          ],
+          "ownerFunction": "Engineering (Sensing) with Product Management",
+          "blockers": [
+            "P-05",
+            "P-06",
+            "H-04"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "PARTIALLY_VERIFIED"
+        },
+        "differentiation": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "The intended relevance is honesty and complementarity: per-module calibration records, no accuracy or ingress claim before measurement, and an ecosystem path into HUB, NAV and WATCH rather than a closed sensor app. No superiority claim is made.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F05",
+            "MC-02:X-06",
+            "MC-02:P-05"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "P-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "editions": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Five individual module SKUs (Wind, Power, Bilge, Tanks, Environment) and three kits (Essentials, Sail, Systems). All modules are DEFINED; Essentials is DEFINED, while Sail and Systems are CONDITIONAL until the additional benefits are validated.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F06",
+            "MC-02:X-05",
+            "MC-02:P-05"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy and Pricing",
+          "blockers": [
+            "X-05",
+            "P-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "includedItems": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Each module package is intended to include the module, its mounting and connection hardware within the defined scope, calibration instructions and a calibration record template; kits add the modules they name and no capability absent from them. A SENSE module has no connectivity of its own and no remote alerting.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F07",
+            "MC-02:H-05",
+            "MC-02:H-07",
+            "MC-02:P-06"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "H-05",
+            "H-07",
+            "P-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "optionalAccessories": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Optional ecosystem items are a MAREA HUB for integration and publishing, MAREA WATCH plus connectivity and subscription for remote alerts, a compatible local display, replacement and calibration services, and installation by an approved installer. No accessory turns a module into a certified alarm.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F08",
+            "MC-02:P-02",
+            "MC-02:P-06",
+            "MC-02:H-04"
+          ],
+          "ownerFunction": "Product Management with the HUB Product Director (integration owner)",
+          "blockers": [
+            "P-02",
+            "P-06",
+            "H-04"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "integration": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "SENSE modules are intended to publish to a local display or to HUB, with source, units, quality and freshness metadata; NMEA 2000 is not implemented (H-04) and per-device compatibility is only ever claimed with recorded evidence. No invented protocol compatibility is stated.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F09",
+            "MC-02:H-04",
+            "MC-02:P-02",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Engineering (Integration) with the HUB Product Director",
+          "blockers": [
+            "H-04",
+            "P-02",
+            "P-10"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "PARTIALLY_VERIFIED"
+        },
+        "professionalInstallation": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Some modules can be installed by a competent owner and others, such as through-hull bilge or tank sensors, require an installer; calibration is required after installation or replacement. Installation scope and pricing are OPEN and no labour price may be stated.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F10",
+            "MC-02:H-05",
+            "MC-02:P-05",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Support Operations with Channel Management",
+          "blockers": [
+            "H-05",
+            "P-05",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "onboarding": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended first use covers module-selection guidance, installation checks, calibration, a range and plausibility test, a display or HUB pairing test and an explanation that uncalibrated or stale values are shown as invalid. No hardware evidence exists for these steps.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F11",
+            "MC-02:P-05",
+            "MC-02:H-05"
+          ],
+          "ownerFunction": "UX, Content and Localization with Engineering",
+          "blockers": [
+            "P-05",
+            "H-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "licensingSubscriptions": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "SENSE hardware is intended to be owned outright with no mandatory subscription for local measurement; any data service or remote alert requires a separate WATCH entitlement. Source-IP and component licensing are not cleared.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F12",
+            "MC-02:L-01",
+            "MC-02:L-02",
+            "MC-02:L-03",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Commercial Strategy with Legal and Compliance",
+          "blockers": [
+            "L-01",
+            "L-02",
+            "L-03",
+            "X-05"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retailAndPartnerPricing": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "The only allowed SENSE price hypothesis is a starting price for the cheapest individual module of from EUR 99, labelled HYPOTHESIS_UNAPPROVED. Other module prices, kit prices, installation and calibration prices are not established.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F13",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial Strategy and Pricing",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "directAndOngoingCosts": {
+          "status": "BLOCKED",
+          "evidenceClass": "BLOCKED",
+          "summary": "The cost framework names module hardware, sensor elements, connectors, calibration labour, installation, support, replacement, environmental testing and conformity work as inputs. No BOM, supplier quote, yield, support cost or margin is established.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F14",
+            "MC-02:X-05",
+            "MC-02:H-07"
+          ],
+          "ownerFunction": "Finance with Commercial Strategy",
+          "blockers": [
+            "X-05",
+            "H-07"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "channelEconomics": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The intended channel mixes direct module sales with installer fitting and calibration, with partner economics OPEN. No channel margin, distributor percentage or installer rate is stated.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F15",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial Strategy with Channel Management",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "competitorComparison": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Comparison is limited to descriptive, sourced anchors from official public pages with access dates, and no parity, accuracy or price superiority is claimed. No comparison table with verified evidence exists in this contract.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F16",
+            "MC-02:X-06",
+            "MC-02:P-05"
+          ],
+          "ownerFunction": "Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "P-05"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "salesArguments": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Buyer arguments are conditional: a small modular step instead of a full electronics replacement, stated units and calibration, and an ecosystem path to HUB, NAV and WATCH. Every argument must carry the measurement limitation and the remote-alert dependency.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F17",
+            "MC-02:X-01",
+            "MC-02:X-06",
+            "MC-02:P-05"
+          ],
+          "ownerFunction": "Commercial Strategy with Brand and Compliance",
+          "blockers": [
+            "X-01",
+            "X-06",
+            "P-05"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "faq": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended answers cover which module measures what, which modules need an installer, why calibration is mandatory, why no accuracy figure or IP rating is stated, what invalid values look like and why SENSE alone sends no remote alert.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F18",
+            "MC-02:P-05",
+            "MC-02:H-04",
+            "MC-02:H-05"
+          ],
+          "ownerFunction": "Support Operations with Product Management",
+          "blockers": [
+            "P-05",
+            "H-04",
+            "H-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "warrantyAndSupport": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The intended support model is module replacement, calibration after replacement, installation fault isolation and ES/EN help material; warranty duration, response times and service levels are OPEN. No certified alarm or safety service is offered.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F19",
+            "MC-02:X-02",
+            "MC-02:H-05",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Support Operations with Legal and Compliance",
+          "blockers": [
+            "X-02",
+            "H-05",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        },
+        "bilingualProductPageCopy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The SENSE customer copy in Spanish and English is the D8 deliverable at docs/marea/products/copy/sense.es.md and sense.en.md, using the 24 numbered sections, the navigation disclaimer and the SENSE limitation statement verbatim. Both files remain INTERNAL DRAFT and NOT FOR SALE.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F20",
+            "MC-02:X-01",
+            "MC-02:X-03"
+          ],
+          "ownerFunction": "UX, Content and Localization",
+          "blockers": [
+            "X-01",
+            "X-03"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "crossSells": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended cross-sells are HUB for integration, WATCH for remote alerting, NAV for display, additional modules and kits, and the MC-08 bundles; material must state which included product is not ready and that no bundle is purchasable.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F21",
+            "MC-02:P-02",
+            "MC-02:P-06",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "P-02",
+            "P-06",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "retentionStrategy": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Retention is intended to come from reliable local measurements, calibration records, replacement parts and ecosystem expansion, not from lock-in. No retention programme or renewal mechanic is defined.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F22",
+            "MC-02:X-05",
+            "MC-02:P-05"
+          ],
+          "ownerFunction": "Commercial Strategy with Customer Success",
+          "blockers": [
+            "X-05",
+            "P-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "successMetrics": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "The metric framework covers installation completion, calibration completion, invalid-value handling, support cases per module, replacement rate and ecosystem attachment, with no approved targets. No measurement programme exists.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F23",
+            "MC-02:P-10",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Commercial Strategy with Product Analytics",
+          "blockers": [
+            "P-10",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "endToEndAcceptance": {
+          "status": "BLOCKED",
+          "evidenceClass": "BLOCKED",
+          "summary": "Acceptance requires physical modules, executed calibration, range and plausibility tests, environmental evidence, field accuracy measurement and independent review. The gate is BLOCKED and the calibration plan defines proposed, not executed, criteria.",
+          "evidenceRefs": [
+            "MAREA-SENSE-COMMERCIAL-SPEC.md#F24",
+            "MC-02:H-05",
+            "MC-02:P-05",
+            "MC-02:P-10"
+          ],
+          "ownerFunction": "Quality Assurance with Engineering; independent verification by a reviewer who is not the author",
+          "blockers": [
+            "H-05",
+            "P-05",
+            "P-10"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "PARTIALLY_VERIFIED"
+        }
+      },
+      "copy": {
+        "es": "docs/marea/products/copy/sense.es.md",
+        "en": "docs/marea/products/copy/sense.en.md"
+      },
+      "assets": [
+        {
+          "assetId": "SENSE-HERO-01"
+        },
+        {
+          "assetId": "SENSE-USE-02"
+        },
+        {
+          "assetId": "SENSE-OVR-03"
+        },
+        {
+          "assetId": "SENSE-EDN-04"
+        },
+        {
+          "assetId": "SENSE-ECO-05"
+        },
+        {
+          "assetId": "SENSE-INS-06"
+        },
+        {
+          "assetId": "SENSE-MOB-07"
+        },
+        {
+          "assetId": "SENSE-TMB-08"
+        },
+        {
+          "assetId": "SENSE-OG-09"
+        },
+        {
+          "assetId": "SENSE-TEC-10"
+        }
+      ],
+      "mc02Blockers": [
+        "H-04",
+        "H-05",
+        "H-06",
+        "H-07",
+        "H-11",
+        "P-02",
+        "P-05",
+        "P-06",
+        "P-10",
+        "X-01",
+        "X-05",
+        "X-06",
+        "X-03"
+      ]
+    },
+    {
+      "id": "WATCH",
+      "displayName": "MAREA WATCH",
+      "type": "HARDWARE_SERVICE",
+      "lifecycleState": "DEFINED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "serviceImplemented": false,
+      "ingestionState": "NOT_VERIFIED",
+      "notificationPipelineState": "NOT_FOUND",
+      "deviceIdentityState": "NOT_FOUND",
+      "subscriptionServiceState": "NOT_FOUND",
+      "connectivityContractState": "NOT_FOUND",
+      "instantAlertGuarantee": false,
+      "distressServiceCertified": false,
+      "remoteHelmControl": "PROHIBITED",
+      "connectivityDependent": true,
+      "subscriptionTermsStatus": "OPEN",
+      "editions": [
+        {
+          "id": "WATCH-CORE",
+          "displayName": "MAREA WATCH Core",
+          "priceState": "HYPOTHESIS_UNAPPROVED",
+          "priceHypothesis": {
+            "amount": 299,
+            "currency": "EUR",
+            "vatBasis": "VAT_INCLUDED_CONSUMER_RETAIL_HYPOTHESIS",
+            "period": "ONE_OFF",
+            "startingPrice": false,
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "validationRequired": true,
+            "blockers": [
+              "X-05"
+            ]
+          },
+          "subscriptionHypothesis": {
+            "amount": 9.9,
+            "currency": "EUR",
+            "period": "MONTH",
+            "startingPrice": true,
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "includes": "OPEN",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "H-12"
+            ],
+            "note": "Core monitoring subscription hypothesis only; what the subscription includes is OPEN and no connectivity is included."
+          },
+          "editionVerdict": {
+            "status": "DEFINED",
+            "publicationConditional": true,
+            "rationale": "WATCH Core is DEFINED as the hardware-plus-service entry edition with a EUR 299 hardware hypothesis and a from EUR 9.90 per month subscription hypothesis. What the subscription includes remains OPEN and publication stays conditional.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#WATCH-CORE",
+              "MC-02:P-06",
+              "MC-02:X-05"
+            ]
+          }
+        },
+        {
+          "id": "WATCH-PLUS",
+          "displayName": "MAREA WATCH Plus",
+          "priceState": "NOT_ESTABLISHED",
+          "priceHypothesis": null,
+          "subscriptionHypothesis": {
+            "amount": null,
+            "currency": "EUR",
+            "period": "MONTH",
+            "priceState": "NOT_ESTABLISHED",
+            "status": "HYPOTHESIS_UNAPPROVED",
+            "includes": "OPEN",
+            "validationRequired": true,
+            "blockers": [
+              "X-05",
+              "H-12"
+            ],
+            "note": "WATCH Plus carries a required subscription entitlement, but its price and additional benefits are NOT ESTABLISHED (D-008, README §17)."
+          },
+          "editionVerdict": {
+            "status": "CONDITIONAL",
+            "publicationConditional": true,
+            "rationale": "WATCH Plus is CONDITIONAL until its additional benefits are validated and costed; it carries a required subscription entitlement whose price is NOT ESTABLISHED and no established hardware price.",
+            "evidenceRefs": [
+              "PRODUCT-EDITIONS-PILOT-SENSE-WATCH.md#WATCH-PLUS",
+              "MC-02:P-06",
+              "MC-02:X-05"
+            ]
+          }
+        }
+      ],
+      "fields": {
+        "identity": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "MAREA WATCH is the conditional remote-awareness service of the MAREA family: a hardware device plus alerting and monitoring service that informs the owner about vessel conditions when power, network coverage and notification providers permit. It is not a certified distress service, not theft prevention and has no steering function.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F01",
+            "MC-02:H-12",
+            "MC-02:P-06",
+            "MC-02:X-07"
+          ],
+          "ownerFunction": "Product Management (WATCH Product Director)",
+          "blockers": [
+            "H-12",
+            "P-06",
+            "X-07"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "customerSegments": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Primary: owners who leave their vessel at a marina, mooring or yard and want conditional awareness of bilge, power, position or motion. Secondary: families and co-owners who need authorised read-only visibility, and small fleets requiring a future contract.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F02",
+            "MC-02:X-06",
+            "MC-02:X-07",
+            "MC-02:P-06"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "X-07",
+            "P-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "customerProblems": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Owners cannot see what is happening on the boat while away, and existing alarms are local or closed. The intended answer is conditional remote awareness with explicit dependencies, freshness and privacy boundaries, not a guarantee that an alert reaches a human.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F03",
+            "MC-02:X-06",
+            "MC-02:P-06"
+          ],
+          "ownerFunction": "Product Management",
+          "blockers": [
+            "X-06",
+            "P-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "finalFunctionality": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "WATCH is intended to ingest authorised vessel data, apply configurable rules, create alerts and carry them through the canonical notification state model while showing last-known-good values with freshness. It includes device identity, ownership, subscription entitlement, privacy controls and a documented alert-delivery contract; none of these services is implemented.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F04",
+            "MC-02:P-06",
+            "MC-02:H-12",
+            "MC-02:X-07",
+            "MC-02:H-13"
+          ],
+          "ownerFunction": "Engineering (Cloud and Device Services) with Product Management",
+          "blockers": [
+            "P-06",
+            "H-12",
+            "X-07",
+            "H-13"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "differentiation": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "The intended relevance is honest conditional awareness with a documented delivery model, privacy roles and subscription isolation, rather than an instant-alert or theft-prevention promise. No service exists to substantiate a superiority claim.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F05",
+            "MC-02:X-06",
+            "MC-02:P-06",
+            "MC-02:X-07"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "P-06",
+            "X-07"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "editions": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Two editions: MAREA WATCH Core is DEFINED and MAREA WATCH Plus is CONDITIONAL until its additional benefits are validated and costed. Every WATCH edition carries a subscription entitlement, and no edition is sellable at MC-06.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F06",
+            "MC-02:X-05",
+            "MC-02:P-06"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy and Pricing",
+          "blockers": [
+            "X-05",
+            "P-06"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "includedItems": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "WATCH Core is intended to include the WATCH hardware, device provisioning, the monitoring subscription entitlement, app and web access, configured alert rules, the documented delivery model and support. Connectivity, SIM/data terms and the exact subscription inclusions are OPEN, and no connectivity is bundled.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F07",
+            "MC-02:H-12",
+            "MC-02:P-06",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "H-12",
+            "P-06",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "optionalAccessories": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Optional items are a MAREA HUB for vessel-data integration, MAREA SENSE modules as approved data sources, approved marine installation and the future FLEET contract. No accessory provides remote steering or a guaranteed alert path.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F08",
+            "MC-02:P-02",
+            "MC-02:P-05",
+            "MC-02:H-12"
+          ],
+          "ownerFunction": "Product Management with the HUB Product Director (integration owner)",
+          "blockers": [
+            "P-02",
+            "P-05",
+            "H-12"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "integration": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "WATCH is intended to consume authorised read-only data from HUB and approved SENSE readings, and to publish only read-only status to authorised users; it never commands PILOT or any actuator. Connectivity terms are not established (H-12) and device identity, ownership and revocation are NOT_FOUND.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F09",
+            "MC-02:H-12",
+            "MC-02:P-02",
+            "MC-02:P-06",
+            "MC-02:X-07"
+          ],
+          "ownerFunction": "Engineering (Integration) with the HUB Product Director",
+          "blockers": [
+            "H-12",
+            "P-02",
+            "P-06",
+            "X-07"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        },
+        "professionalInstallation": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "Professional installation is expected for hardware fitting, power and network connection and provisioning, with the work quoted by an installer. Exact installation scope, requirements and price are OPEN.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F10",
+            "MC-02:H-11",
+            "MC-02:H-12",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Support Operations with Channel Management",
+          "blockers": [
+            "H-11",
+            "H-12",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "onboarding": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended onboarding covers account creation, device provisioning and ownership proof, subscription activation, notification-permission education, alert-rule choice, a test of the delivery path with the distinction between provider acceptance and delivery, and a privacy briefing. No implemented onboarding exists.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F11",
+            "MC-02:P-06",
+            "MC-02:X-07",
+            "MC-02:H-13"
+          ],
+          "ownerFunction": "UX, Content and Localization with Engineering",
+          "blockers": [
+            "P-06",
+            "X-07",
+            "H-13"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "licensingSubscriptions": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "WATCH requires a recurring subscription entitlement for monitoring and alerting; local vessel behaviour must remain safe when the subscription expires or a payment fails. Subscription contents, term, renewal, cancellation and data retention are OPEN.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F12",
+            "MC-02:X-05",
+            "MC-02:P-06",
+            "MC-02:X-07"
+          ],
+          "ownerFunction": "Commercial Strategy with Legal and Compliance",
+          "blockers": [
+            "X-05",
+            "P-06",
+            "X-07"
+          ],
+          "readinessDimension": "licensing",
+          "readinessValue": "NOT_CLEARED"
+        },
+        "retailAndPartnerPricing": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Only two WATCH price hypotheses are allowed: core hardware EUR 299 and core monitoring subscription from EUR 9.90 per month, both HYPOTHESIS_UNAPPROVED; what the subscription includes is OPEN. WATCH Plus, data plans and connectivity prices are not established.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F13",
+            "MC-02:X-05",
+            "MC-02:H-12"
+          ],
+          "ownerFunction": "Commercial Strategy and Pricing",
+          "blockers": [
+            "X-05",
+            "H-12"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "directAndOngoingCosts": {
+          "status": "BLOCKED",
+          "evidenceClass": "BLOCKED",
+          "summary": "The cost framework names hardware, cellular module and SIM/data, cloud ingestion and storage, notification provider fees, device identity and security operations, support, privacy compliance and payment fees as inputs. No BOM, connectivity quote, provider price or margin is established.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F14",
+            "MC-02:X-05",
+            "MC-02:H-12",
+            "MC-02:H-07"
+          ],
+          "ownerFunction": "Finance with Commercial Strategy",
+          "blockers": [
+            "X-05",
+            "H-12",
+            "H-07"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "channelEconomics": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The intended channel mixes direct hardware sale and subscription with installer fitting and marina or fleet partnerships; all channel terms are OPEN. No margin or partner percentage is stated.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F15",
+            "MC-02:X-05",
+            "MC-02:X-06"
+          ],
+          "ownerFunction": "Commercial Strategy with Channel Management",
+          "blockers": [
+            "X-05",
+            "X-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "competitorComparison": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Comparison is limited to descriptive anchors from official public pages with access dates, and no instant-delivery, coverage or theft-prevention superiority is claimed. No verified comparison evidence exists in this contract.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F16",
+            "MC-02:X-06",
+            "MC-02:P-06"
+          ],
+          "ownerFunction": "Commercial Strategy",
+          "blockers": [
+            "X-06",
+            "P-06"
+          ],
+          "readinessDimension": "pricing",
+          "readinessValue": "HYPOTHESIS_UNAPPROVED"
+        },
+        "salesArguments": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Buyer arguments are conditional: awareness when away, an explicit dependency and delivery model, privacy roles and local behaviour that survives payment failure. No argument may promise immediate delivery, a certified distress service or theft prevention.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F17",
+            "MC-02:X-01",
+            "MC-02:X-06",
+            "MC-02:P-06",
+            "MC-02:X-07"
+          ],
+          "ownerFunction": "Commercial Strategy with Brand and Compliance",
+          "blockers": [
+            "X-01",
+            "X-06",
+            "P-06",
+            "X-07"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "faq": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended answers cover what WATCH can and cannot detect, why delivery is not guaranteed, what provider acceptance means, what happens on power or network loss, how privacy roles work and why no remote helm function exists.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F18",
+            "MC-02:P-06",
+            "MC-02:H-12",
+            "MC-02:X-07"
+          ],
+          "ownerFunction": "Support Operations with Product Management",
+          "blockers": [
+            "P-06",
+            "H-12",
+            "X-07"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "warrantyAndSupport": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "The intended support model includes hardware replacement, device reprovisioning, subscription support and ES/EN help material; warranty duration, response times and service levels are OPEN. No certified distress service is provided.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F19",
+            "MC-02:X-02",
+            "MC-02:H-11",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Support Operations with Legal and Compliance",
+          "blockers": [
+            "X-02",
+            "H-11",
+            "X-05"
+          ],
+          "readinessDimension": "compliance",
+          "readinessValue": "NOT_STARTED"
+        },
+        "bilingualProductPageCopy": {
+          "status": "COMPLETE",
+          "evidenceClass": "VERIFIED_REPO",
+          "summary": "The WATCH customer copy in Spanish and English is the D8 deliverable at docs/marea/products/copy/watch.es.md and watch.en.md, using the 24 numbered sections, the navigation disclaimer and the WATCH limitation statement verbatim. Both files remain INTERNAL DRAFT and NOT FOR SALE.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F20",
+            "MC-02:X-01",
+            "MC-02:X-03"
+          ],
+          "ownerFunction": "UX, Content and Localization",
+          "blockers": [
+            "X-01",
+            "X-03"
+          ],
+          "readinessDimension": "brandPublication",
+          "readinessValue": "NOT_GRANTED"
+        },
+        "crossSells": {
+          "status": "COMPLETE",
+          "evidenceClass": "OPEN",
+          "summary": "Intended cross-sells are HUB for vessel data, SENSE modules as approved sources, additional hardware for a second vessel and the MC-08 bundles; material must state readiness and that no bundle is purchasable.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F21",
+            "MC-02:P-02",
+            "MC-02:P-05",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Product Management with Commercial Strategy",
+          "blockers": [
+            "P-02",
+            "P-05",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "retentionStrategy": {
+          "status": "COMPLETE",
+          "evidenceClass": "HYPOTHESIS",
+          "summary": "Retention is intended to come from service value and reliability visibility, never from disabling local safety functions when payment fails. Renewal, cancellation and device-replacement journeys are OPEN.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F22",
+            "MC-02:X-05",
+            "MC-02:P-06"
+          ],
+          "ownerFunction": "Commercial Strategy with Customer Success",
+          "blockers": [
+            "X-05",
+            "P-06"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "successMetrics": {
+          "status": "COMPLETE",
+          "evidenceClass": "ASSUMPTION",
+          "summary": "The metric framework covers activation, delivery confirmation, acknowledgement, false-alert rate, provider latency, subscription retention and support cases, with no approved targets. No service exists to measure.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F23",
+            "MC-02:P-10",
+            "MC-02:X-05"
+          ],
+          "ownerFunction": "Commercial Strategy with Product Analytics",
+          "blockers": [
+            "P-10",
+            "X-05"
+          ],
+          "readinessDimension": "availability",
+          "readinessValue": "NOT_FOR_SALE"
+        },
+        "endToEndAcceptance": {
+          "status": "BLOCKED",
+          "evidenceClass": "BLOCKED",
+          "summary": "Acceptance requires a production ingestion service, device identity and revocation, a billing and entitlement service, a notification provider contract, delivery evidence and privacy review. These are NOT_FOUND, the service is not implemented and no instant-delivery guarantee may be asserted.",
+          "evidenceRefs": [
+            "MAREA-WATCH-COMMERCIAL-SPEC.md#F24",
+            "MC-02:P-06",
+            "MC-02:H-12",
+            "MC-02:H-13",
+            "MC-02:X-07"
+          ],
+          "ownerFunction": "Quality Assurance with Engineering; independent verification by a reviewer who is not the author",
+          "blockers": [
+            "P-06",
+            "H-12",
+            "H-13",
+            "X-07"
+          ],
+          "readinessDimension": "engineering",
+          "readinessValue": "NOT_VERIFIED"
+        }
+      },
+      "copy": {
+        "es": "docs/marea/products/copy/watch.es.md",
+        "en": "docs/marea/products/copy/watch.en.md"
+      },
+      "assets": [
+        {
+          "assetId": "WATCH-HERO-01"
+        },
+        {
+          "assetId": "WATCH-USE-02"
+        },
+        {
+          "assetId": "WATCH-OVR-03"
+        },
+        {
+          "assetId": "WATCH-EDN-04"
+        },
+        {
+          "assetId": "WATCH-ECO-05"
+        },
+        {
+          "assetId": "WATCH-INS-06"
+        },
+        {
+          "assetId": "WATCH-MOB-07"
+        },
+        {
+          "assetId": "WATCH-TMB-08"
+        },
+        {
+          "assetId": "WATCH-OG-09"
+        },
+        {
+          "assetId": "WATCH-TEC-10"
+        }
+      ],
+      "mc02Blockers": [
+        "D-09",
+        "H-05",
+        "H-06",
+        "H-11",
+        "H-12",
+        "H-13",
+        "P-06",
+        "P-10",
+        "X-01",
+        "X-05",
+        "X-06",
+        "X-07",
+        "X-03"
+      ]
+    }
+  ]
+}

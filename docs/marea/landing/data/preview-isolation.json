@@ -1,0 +1,59 @@
+{
+  "contractId": "MC18-PREVIEW-ISOLATION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "owner": "MC-18 implementation team",
+  "status": "INTERNAL_PROPOSED",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Isolation contract for the internal landing preview: separate Angular project, loopback binding, noindex headers, no production imports.",
+  "generationMethod": "node scripts/build-marea-landing-data.mjs",
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "knownLimitations": [
+    "No publicly hosted preview is authorized.",
+    "noindex headers are defence in depth, not a substitute for access control: the server binds to 127.0.0.1."
+  ],
+  "data": {
+    "project": "marea-landing-preview",
+    "sourceRoot": "preview/landing",
+    "outputPath": "dist/marea-landing-preview",
+    "previewOnlyRoutes": [
+      "/marea",
+      "/en/marea"
+    ],
+    "developerRootAlias": {
+      "path": "/",
+      "locale": "es",
+      "note": "Developer convenience alias rendered by the preview shell; it is not a public route, not canonical and not sitemap-eligible."
+    },
+    "productionEntryPoints": [
+      "src/main.ts",
+      "src/main.server.ts",
+      "src/app/app.routes.ts",
+      "src/app/core/i18n/locale-routes.ts",
+      "src/server.ts"
+    ],
+    "productionStyles": [
+      "src/styles.scss"
+    ],
+    "productionBrowserEntry": "src/main.ts",
+    "loopbackHost": "127.0.0.1",
+    "previewPort": 4302,
+    "robotsHeader": "noindex, nofollow, noarchive",
+    "noExternalServices": true,
+    "collectsPersonalData": false,
+    "scripts": {
+      "build:design-system-preview": "ng build marea-design-system-catalogue",
+      "preview:design-system": "ng serve marea-design-system-catalogue --port 4301",
+      "serve:design-system-preview": "node scripts/marea-ds-preview-server.mjs",
+      "build:landing:data": "node --import ./scripts/marea-landing-ts-register.mjs --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-marea-landing-data.mjs",
+      "check:landing:data": "node --import ./scripts/marea-landing-ts-register.mjs --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-marea-landing-data.mjs --check",
+      "build:landing:preview": "ng build marea-landing-preview",
+      "serve:landing:preview": "node dist/marea-landing-preview/server/server.mjs",
+      "test:landing": "node --import ./scripts/marea-landing-ts-register.mjs --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-marea-landing.mjs",
+      "test:landing:unit": "node --import ./scripts/marea-landing-ts-register.mjs --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --test --test-isolation=none scripts/check-marea-landing.test.mjs scripts/check-marea-landing-adversarial.test.mjs",
+      "test:landing:e2e": "npm run build:landing:preview && playwright test -c playwright.landing.config.ts",
+      "test:landing:visual": "npm run build:landing:preview && playwright test -c playwright.landing.config.ts --grep @visual",
+      "check:landing": "node --import ./scripts/marea-landing-ts-register.mjs --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-marea-landing.mjs"
+    }
+  }
+}

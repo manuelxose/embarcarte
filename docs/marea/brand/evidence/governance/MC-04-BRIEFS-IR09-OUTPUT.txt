@@ -1,0 +1,64 @@
+============================================================
+MC-04 IR-09 VERIFICATION — Spanish accents in MC-04-BRIEFS.yaml
+Run at  : 2026-10-30T18:43:05+01:00
+Host    : MSI-MANUEL / PowerShell 7.6.9
+============================================================
+
+FILE: docs/marea/assets/manifest/MC-04-BRIEFS.yaml — 87917 B
+lines: 1718
+
+--- CHECK 1: node docs/marea/brand/evidence/governance/ir09-fix-accents.mjs --check-only ---
+IR-09 accent restoration — docs/marea/assets/manifest/MC-04-BRIEFS.yaml
+mapping entries            : 48
+already-correct entries    : 48
+replacements applied       : 0 (across 0 distinct ES strings)
+ES string values           : 68 total, 68 with « »
+non-ASCII chars in ES vals : before 247 -> after 247
+accent-stripped forms left : 0
+
+RESULT: CHECK-ONLY — already fixed, nothing to write.
+CHECK 1 exit = 0 (0 expected; 0 pending replacements)
+
+--- CHECK 2: pwsh -NoProfile -File docs/marea/brand/evidence/governance/check-briefs-structure.ps1 ---
+============================================================
+MC-04-BRIEFS.yaml structural + Spanish-quality check
+Command : pwsh -NoProfile -File docs/marea/brand/evidence/governance/check-briefs-structure.ps1
+Run at  : 2026-10-30T18:43:05+01:00
+File    : docs/marea/assets/manifest/MC-04-BRIEFS.yaml (87917 B, 1718 lines)
+============================================================
+entries found: 17 (expected 17)
+  MR-COR-001   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-COR-002   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-COR-003   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-COR-004   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-001   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-002   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-006   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-011   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-012   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-004   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-005   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-007   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-008   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-009   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-010   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-MKT-001   status=BLOCKED_ON_IMAGE_GENERATION  fields=20/20 files_empty=True generated_at_null=True
+  MR-PRD-003   status=PRODUCIBLE_WITHOUT_GENERATION fields=20/20 files_empty=True generated_at_null=True
+blocked entries: 16 (expected 16)
+invented file paths: 0 (expected 0) | real sha256 values: 0 (expected 0) | generated_at dates: 0 (expected 0)
+ES strings: 68 (expected 68) | with guillemets: 68 | non-ASCII chars: 247 | accent-stripped forms: 0
+ES/EN key counts: 68 / 68
+
+RESULT: PASS
+CHECK 2 exit = 0 (0 expected = PASS)
+
+--- CHECK 3: npx prettier --check docs/marea/assets/manifest/MC-04-BRIEFS.yaml ---
+npm notice run embarcarte@1.0.0 npx
+npm notice run prettier --check docs/marea/assets/manifest/MC-04-BRIEFS.yaml
+Checking formatting...
+All matched files use Prettier code style!
+CHECK 3 exit = 0 (0 expected)
+
+============================================================
+SUMMARY: check1=0 check2=0 check3=0 | ALL PASS
+============================================================

@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MAREA — INTERNAL/PROPOSED — MC-04 colour-blind simulation board</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        background: #f4f6f8;
+        color: #101820;
+      }
+      body {
+        margin: 0;
+        padding: 28px 32px 48px;
+      }
+      header {
+        max-width: 1180px;
+        margin: 0 auto 18px;
+        border-left: 6px solid #a32b22;
+        padding: 10px 16px;
+        background: #fff;
+      }
+      header h1 {
+        font-size: 20px;
+        margin: 0 0 6px;
+        letter-spacing: 0.01em;
+      }
+      header p {
+        margin: 3px 0;
+        font-size: 12.5px;
+        line-height: 1.5;
+        max-width: 95ch;
+      }
+      .tag {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        background: #101820;
+        color: #fff;
+        padding: 3px 8px;
+        margin-right: 6px;
+      }
+      .tag.proposed {
+        background: #a32b22;
+      }
+      main {
+        max-width: 1180px;
+        margin: 0 auto;
+      }
+      section.sim {
+        margin: 22px 0;
+        background: #fff;
+        border: 1px solid #cfd8e0;
+      }
+      section.sim > h2 {
+        font-size: 13px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 9px 14px;
+        color: #fff;
+        background: #263645;
+      }
+      section.sim > h2 span {
+        font-weight: 400;
+        text-transform: none;
+        letter-spacing: 0;
+        font-size: 11.5px;
+        opacity: 0.85;
+        margin-left: 10px;
+      }
+      .specimen {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        padding: 14px;
+      }
+      .mode {
+        border-radius: 4px;
+        padding: 12px;
+        background: var(--t-canvas);
+        color: var(--t-text-primary);
+        border: 1px solid rgba(0, 0, 0, 0.16);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+      .mode-title {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--t-text-meta);
+        margin: 0 0 8px;
+      }
+      .alert-banner {
+        display: flex;
+        gap: 8px;
+        align-items: flex-start;
+        border: 2px solid var(--t-state-critical);
+        background: var(--t-surface);
+        color: var(--t-state-critical);
+        padding: 7px 9px;
+        border-radius: 3px;
+        margin-bottom: 9px;
+        font-weight: 600;
+      }
+      .alert-banner svg {
+        flex: none;
+      }
+      .alert-banner small {
+        display: block;
+        font-weight: 400;
+        color: var(--t-text-secondary);
+      }
+      .primary {
+        background: var(--t-surface);
+        border-radius: 3px;
+        padding: 9px 11px;
+        margin-bottom: 9px;
+      }
+      .readout {
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 1;
+        color: var(--t-data-primary);
+        letter-spacing: 0;
+      }
+      .readout .unit {
+        font-size: 0.55em;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--t-text-secondary);
+        padding-left: 5px;
+      }
+      .meta {
+        color: var(--t-text-meta);
+        font-size: 10.5px;
+        margin-top: 5px;
+      }
+      .secondary {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        margin-bottom: 9px;
+      }
+      .secondary div {
+        background: var(--t-surface-raised);
+        border-radius: 3px;
+        padding: 6px 7px;
+        color: var(--t-data-secondary);
+        font-size: 10.5px;
+      }
+      .secondary b {
+        display: block;
+        font-size: 17px;
+        color: var(--t-data-primary);
+      }
+      .states {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 9px;
+      }
+      .state {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        border-radius: 3px;
+        padding: 4px 6px;
+        background: var(--t-surface);
+        font-size: 10.5px;
+        font-weight: 600;
+      }
+      .state svg {
+        flex: none;
+      }
+      .stale {
+        border: 1px dashed var(--t-state-stale);
+        color: var(--t-state-stale);
+      }
+      .nodata {
+        color: var(--t-state-stale);
+        letter-spacing: 0.04em;
+      }
+      .chart {
+        background: var(--t-surface);
+        border-radius: 3px;
+        padding: 6px 8px 4px;
+      }
+      .chart svg {
+        display: block;
+        width: 100%;
+        height: 46px;
+      }
+      .focus-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin-top: 9px;
+      }
+      .btn {
+        background: var(--t-action);
+        color: var(--t-text-on-accent);
+        border-radius: 3px;
+        padding: 6px 12px;
+        font-size: 11px;
+        font-weight: 700;
+      }
+      .btn.focus {
+        outline: 3px solid var(--t-focus-ring);
+        outline-offset: 2px;
+      }
+      .btn.fill-focus {
+        outline: 3px solid var(--t-focus-ring-on-fill);
+        outline-offset: -5px;
+      }
+      .focus-label {
+        color: var(--t-text-meta);
+        font-size: 10px;
+      }
+      footer {
+        max-width: 1180px;
+        margin: 26px auto 0;
+        font-size: 11.5px;
+        color: #3b4a58;
+        line-height: 1.55;
+        border-top: 1px solid #cfd8e0;
+        padding-top: 12px;
+      }
+      .legend {
+        max-width: 1180px;
+        margin: 0 auto 6px;
+        font-size: 11.5px;
+        color: #3b4a58;
+      }
+      @media print {
+        body {
+          background: #fff;
+        }
+        section.sim {
+          break-inside: avoid;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <span class="tag">INTERNAL</span><span class="tag proposed">PROPOSED</span
+        ><span class="tag">NOT A CERTIFICATION</span>
+      </div>
+      <h1>MAREA — colour-blind simulation board (deuteranopia / protanopia / tritanopia / achromatopsia)</h1>
+      <p>
+        MC-04 colour evidence (D-07/D-08). The specimen is <strong>illustrative UI only</strong>; every
+        value in it is <strong>ILLUSTRATIVE / NOT LIVE DATA</strong>. Simulations are approximations of
+        colour-vision deficiency applied with <code>feColorMatrix</code>; they are a design-review aid,
+        not a diagnosis, not a user test and not a WCAG certification.
+      </p>
+      <p>
+        Acceptance rule: with hue removed, every state must still be identifiable by shape, text label
+        and pattern/age (brief §5.6/§5.7). The independent reviewer signs QA-03/QA-04 from rendered
+        screenshots of this file; MC-04 itself makes no conformance claim.
+      </p>
+    </header>
+    <main id="board" aria-live="off"></main>
+    <footer>
+      <p>
+        <strong>Status:</strong> INTERNAL_PROPOSED · <strong>Adoption:</strong> NOT_ADOPTED ·
+        <strong>Applied to src/:</strong> NO. Palette values mirror
+        <code>docs/marea/brand/tokens/marea-instrument-tokens.proposed.json</code>; measured contrast is
+        in <code>docs/marea/brand/evidence/contrast/contrast-matrix.json</code>.
+      </p>
+      <p>
+        Simulation matrices: Viénot–Brettel–Mollon style sRGB approximations for protanopia,
+        deuteranopia and tritanopia; achromatopsia uses the WCAG relative-luminance weights
+        (0.2126/0.7152/0.0722). Hardware sunlight/glare validation and human-participant testing are
+        <strong>NOT_TESTED / BLOCKED</strong>.
+      </p>
+    </footer>
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style="position: absolute">
+      <filter id="deuteranopia" color-interpolation-filters="sRGB">
+        <feColorMatrix
+          type="matrix"
+          values="0.367322 0.860646 -0.227968 0 0
+                  0.280085 0.672501 0.047413 0 0
+                  -0.011820 0.042940 0.968881 0 0
+                  0 0 0 1 0"
+        />
+      </filter>
+      <filter id="protanopia" color-interpolation-filters="sRGB">
+        <feColorMatrix
+          type="matrix"
+          values="0.152286 1.052583 -0.204868 0 0
+                  0.114503 0.786281 0.099216 0 0
+                  -0.003882 -0.048116 1.051998 0 0
+                  0 0 0 1 0"
+        />
+      </filter>
+      <filter id="tritanopia" color-interpolation-filters="sRGB">
+        <feColorMatrix
+          type="matrix"
+          values="1.255528 -0.076749 -0.178779 0 0
+                  -0.078411 0.930809 0.147602 0 0
+                  0.004733 0.691367 0.303900 0 0
+                  0 0 0 1 0"
+        />
+      </filter>
+      <filter id="achromatopsia" color-interpolation-filters="sRGB">
+        <feColorMatrix
+          type="matrix"
+          values="0.2126 0.7152 0.0722 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0.2126 0.7152 0.0722 0 0
+                  0 0 0 1 0"
+        />
+      </filter>
+    </svg>
+    <script>
+      // Values mirrored from docs/marea/brand/tokens/marea-instrument-tokens.proposed.json.
+      // Kept inline so this board is self-contained (no network, no external CSS/fonts).
+      const MODES = [
+        {
+          id: 'day',
+          label: 'Instrument day',
+          tokens: {
+            canvas: '#f2f9fd',
+            surface: '#ffffff',
+            surfaceRaised: '#eaf7ff',
+            textPrimary: '#17365d',
+            textSecondary: '#4a6579',
+            textMeta: '#52697f',
+            textOnAccent: '#ffffff',
+            dataPrimary: '#17365d',
+            dataSecondary: '#4a6579',
+            chartLine: '#17365d',
+            chartGrid: '#748d9f',
+            stateCritical: '#a32b22',
+            stateWarning: '#8a5a00',
+            stateSafe: '#1f5f49',
+            stateStale: '#55646f',
+            stateInfo: '#17365d',
+            action: '#176ca6',
+            focusRing: '#0f5f8c',
+            focusRingOnFill: '#ffffff',
+            disabled: '#7a8d9b',
+          },
+        },
+        {
+          id: 'sunlight',
+          label: 'Sunlight (simulated)',
+          tokens: {
+            canvas: '#ffffff',
+            surface: '#f7fbfe',
+            surfaceRaised: '#eaf7ff',
+            textPrimary: '#0b2440',
+            textSecondary: '#3f5468',
+            textMeta: '#4a5f73',
+            textOnAccent: '#ffffff',
+            dataPrimary: '#0b2440',
+            dataSecondary: '#3f5468',
+            chartLine: '#0b2440',
+            chartGrid: '#5f7a8e',
+            stateCritical: '#8f1a12',
+            stateWarning: '#6b4300',
+            stateSafe: '#10513c',
+            stateStale: '#46586a',
+            stateInfo: '#17365d',
+            action: '#0b4f78',
+            focusRing: '#0a4568',
+            focusRingOnFill: '#ffffff',
+            disabled: '#6a7f92',
+          },
+        },
+        {
+          id: 'night',
+          label: 'Instrument night',
+          tokens: {
+            canvas: '#0d1b26',
+            surface: '#132733',
+            surfaceRaised: '#1a3343',
+            textPrimary: '#8fd3f5',
+            textSecondary: '#93a6b5',
+            textMeta: '#a9b7c4',
+            textOnAccent: '#0d1b26',
+            dataPrimary: '#8fd3f5',
+            dataSecondary: '#93a6b5',
+            chartLine: '#8fd3f5',
+            chartGrid: '#6a7f8d',
+            stateCritical: '#ff9b8f',
+            stateWarning: '#ffc46b',
+            stateSafe: '#7bd8b0',
+            stateStale: '#a9b7c4',
+            stateInfo: '#93a6b5',
+            action: '#8fd3f5',
+            focusRing: '#8fd3f5',
+            focusRingOnFill: '#0d1b26',
+            disabled: '#7d8f9d',
+          },
+        },
+      ];
+      const SIMULATIONS = [
+        { css: 'none', label: 'Original colour', note: 'reference' },
+        { css: 'url(#deuteranopia)', label: 'Deuteranopia', note: 'green-cone deficiency (approx.)' },
+        { css: 'url(#protanopia)', label: 'Protanopia', note: 'red-cone deficiency (approx.)' },
+        { css: 'url(#tritanopia)', label: 'Tritanopia', note: 'blue-cone deficiency (approx.)' },
+        { css: 'url(#achromatopsia)', label: 'Achromatopsia', note: 'no hue; luminance only' },
+      ];
+      const svg = (inner) =>
+        `<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">${inner}</svg>`;
+      const SHAPES = {
+        safe: svg('<circle cx="7" cy="7" r="5" fill="currentColor"/>'),
+        info: svg(
+          '<rect x="2" y="2" width="10" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M7 6v4M7 4v1" stroke="currentColor" stroke-width="1.6"/>',
+        ),
+        warning: svg(
+          '<path d="M7 1.5 13 12.5H1Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 5v3.4M7 10.3v.9" stroke="currentColor" stroke-width="1.5"/>',
+        ),
+        critical: svg(
+          '<path d="M4.4 1h5.2L13 4.4v5.2L9.6 13H4.4L1 9.6V4.4Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 3.6v4M7 9.2v1.2" stroke="currentColor" stroke-width="1.5"/>',
+        ),
+        stale: svg(
+          '<rect x="2" y="2" width="10" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2.4 1.8"/><path d="M7 4v3.4l2 1.4" fill="none" stroke="currentColor" stroke-width="1.4"/>',
+        ),
+        nodata: svg(
+          '<rect x="2" y="2" width="10" height="10" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4.6 7h4.8" stroke="currentColor" stroke-width="1.6"/>',
+        ),
+        disabled: svg(
+          '<rect x="2" y="5" width="10" height="6" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M4 5V3.8a3 3 0 0 1 6 0V5" fill="none" stroke="currentColor" stroke-width="1.4"/>',
+        ),
+      };
+      const modeStyle = (tokens) =>
+        Object.entries(tokens)
+          .map(([key, value]) => `--t-${key.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`)}:${value};`)
+          .join('');
+      const specimen = () =>
+        `<div class="specimen">${MODES.map(
+          (mode) => `
+          <div class="mode" style="${modeStyle(mode.tokens)}">
+            <p class="mode-title">${mode.label} — ILLUSTRATIVE / NOT LIVE DATA</p>
+            <div class="alert-banner">${SHAPES.critical}<span>ALARM · cause: depth source lost<small>Required action: take manual depth · source HUB · age 00:12</small></span></div>
+            <div class="primary">
+              <div class="readout">6,4<span class="unit">kn</span></div>
+              <div class="meta">age 02 s · source HUB · true wind T</div>
+            </div>
+            <div class="secondary">
+              <div><b>18,5</b>°C temp</div>
+              <div><b>12,8</b>V battery</div>
+              <div><b>045</b>° T heading</div>
+            </div>
+            <div class="states">
+              <span class="state" style="color: var(--t-state-safe)">${SHAPES.safe}NORMAL</span>
+              <span class="state" style="color: var(--t-state-info)">${SHAPES.info}ADVISORY</span>
+              <span class="state" style="color: var(--t-state-warning)">${SHAPES.warning}CAUTION</span>
+              <span class="state stale">${SHAPES.stale}STALE 00:12</span>
+              <span class="state nodata" style="border:1px solid var(--t-state-stale)">${SHAPES.nodata}— NO DATA</span>
+              <span class="state" style="color: var(--t-disabled)">${SHAPES.disabled}DISABLED</span>
+            </div>
+            <div class="chart">
+              <svg viewBox="0 0 220 46" role="img" aria-label="Illustrative trend, not live data">
+                <g stroke-width="1" opacity="0.9">
+                  <line x1="0" y1="38" x2="220" y2="38" style="stroke: var(--t-chart-grid)" />
+                  <line x1="0" y1="24" x2="220" y2="24" style="stroke: var(--t-chart-grid)" stroke-dasharray="3 3" />
+                  <line x1="0" y1="10" x2="220" y2="10" style="stroke: var(--t-chart-grid)" stroke-dasharray="3 3" />
+                </g>
+                <polyline
+                  fill="none"
+                  style="stroke: var(--t-chart-line)"
+                  stroke-width="2"
+                  points="0,30 30,28 60,31 90,22 120,24 150,16 180,18 210,12"
+                />
+                <circle cx="210" cy="12" r="2.6" style="fill: var(--t-chart-line)" />
+              </svg>
+            </div>
+            <div class="focus-row">
+              <span class="btn focus">Action</span><span class="focus-label">focus on surface</span>
+              <span class="btn fill-focus">Mute</span><span class="focus-label">focus on fill</span>
+            </div>
+          </div>`,
+        ).join('')}</div>`;
+      document.getElementById('board').innerHTML = SIMULATIONS.map(
+        (sim) => `
+        <section class="sim">
+          <h2>${sim.label} <span>${sim.note} · filter: ${sim.css}</span></h2>
+          <div style="filter: ${sim.css}">${specimen()}</div>
+        </section>`,
+      ).join('');
+    </script>
+  </body>
+</html>

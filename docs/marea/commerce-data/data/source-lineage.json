@@ -1,0 +1,108 @@
+{
+  "contractId": "MC16-SOURCE-LINEAGE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "REPOSITORY_VERIFIED",
+  "sourceCommit": "99212a41f5942a6fef4ede75815132c11fa4de50",
+  "sources": [
+    {
+      "path": "docs/marea/information-architecture/MC15-MC16-HANDOFF.md",
+      "sha256": "3951e72deceb7da225c889c7b6f32707ee1f005d28456f5971053c856b8e15a2",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/information-architecture/data/mc16-handoff-inputs.json",
+      "sha256": "6b24a5ea721d37afb502e036dc1d4afd4a7560b2b9ec6f6a10ef1bcf3f63ebc6",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/products/product-definitions.batch-01.json",
+      "sha256": "b7069e57bda23f343bfb41d2e2874597e96c7b95fe8d13b4cb3dff001cf956b2",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/products/product-definitions.batch-02.json",
+      "sha256": "9f0da7d339b1a720c37484e239c6e04de7df24d48cb350e1d6e2a0a0a1c5ad98",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/products/product-definitions.batch-03.json",
+      "sha256": "886163cb239a54743547628152ee1c171c4c9c0baf3bfbe4581e060fc48298a3",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/bundles/bundle-definitions.json",
+      "sha256": "e35742f7d6d08f2e30fa7ad3c24b9e3de48f7f8c3aa6da76bd4766f9ed393a06",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/legal-commercial/data/release-evidence-gates.json",
+      "sha256": "3ff265106fa27c37af4f5adce47a0cd0c0bd5f4babe6066bc0b7e35243f72dd7",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/legal-commercial/data/claims-policy.json",
+      "sha256": "ccc44c3c14c3e0b84d2bfb0b86de32ad7c9df7941b781a859ddb69ce8655f58f",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/legal-commercial/data/bilingual-claims.json",
+      "sha256": "e4f5ef7f58c51be49b0d0d447e2bdf1f7542646ba553156c9df52854ad0ba11d",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/legal-commercial/data/risk-register.json",
+      "sha256": "cb5442563b617ac9f3278fbd342757da38706bdc5061836996e7af94fd01233e",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/legal-commercial/data/website-findings.json",
+      "sha256": "74c4ddf8071c7969c84a61785877beeabcefc349255ad002cde84f4e3cfd8b1d",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/information-architecture/data/proposed-routes.json",
+      "sha256": "b791d4f99dca6c810bd1d751154a4bc274d9ebd86385a6eaf0324f5e49003ec3",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/information-architecture/data/structured-data-policy.json",
+      "sha256": "fc5080589d59f438289021e83f411338dfdde373cadd40e377fe01a2ce7d6acf",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/information-architecture/data/publication-gates.json",
+      "sha256": "f0e9ee37c863ce79aee667269b4d6722f66e3299f0cfc93acd751f2355d35d7a",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/economics/MC12-PER-SKU-CONTRIBUTION-MODEL.md",
+      "sha256": "ce41464d19949a16c49b33eb3f7c1ec9cb5c22e78f17b1cfcc59bc742185377a",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    },
+    {
+      "path": "docs/marea/financial/MC13-FINANCIAL-DATA-CONTRACT.md",
+      "sha256": "251cb1a4d014a911897510f9aa858afd8603ce29e85df9e2a85fb713479ad796",
+      "evidenceClass": "REPOSITORY_VERIFIED",
+      "readOnly": true
+    }
+  ],
+  "generatedFrom": "MC-15 verified HEAD; no source document was modified by MC-16.",
+  "derivation": "The MC-16 datasets preserve every inherited identifier and copy only documented status values. Unknown values remain null."
+}

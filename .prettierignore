@@ -5,3 +5,5 @@ artifacts
 graphify-out
 .angular
 package-lock.json
+# Generated outputs are validated by their generators (scripts/build-marea-design-tokens.mjs, scripts/build-marea-design-system-fixtures.mjs, scripts/build-marea-design-system-catalogue-data.mjs), not Prettier.
+**/*.generated.ts

@@ -1,0 +1,2877 @@
+{
+  "contractId": "MAREA-MC15-MC16-HANDOFF-INPUTS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-15",
+  "date": "2026-11-02",
+  "owner": "legal-governance",
+  "sourceCommit": "e0be1e457456a401a529e1912770e07ed9a863e4",
+  "generationMethod": "deterministic derivation from MC-05..MC-08 product and bundle contracts, MC-14 release evidence and MC-15 route/IA contracts",
+  "evidenceState": "REPOSITORY_VERIFIED",
+  "scope": "MC-15 internal bilingual IA/SEO planning",
+  "readOnly": true,
+  "publicationAuthorized": false,
+  "MC16_STARTED": false,
+  "mc16ExecutionAuthorized": false,
+  "mc15Status": "INTERNAL_PLANNING_ONLY",
+  "handoffStatus": "READY_FOR_MC16_WITH_NAMED_GAPS",
+  "statusNote": "Handoff contract only. MC-16 is not started, no commerce model is designed or implemented, no price, stock, availability, entitlement or certification is approved, and no public content is authorised.",
+  "boundary": "This file records the inputs MC-16 must consume. It does not define the MC-16 commerce data model, schema, API, checkout, billing or deployment.",
+  "crossReferences": [
+    "docs/marea/legal-commercial/data/release-evidence-gates.json#MAREA-MC14-RELEASE-EVIDENCE-GATES",
+    "docs/marea/legal-commercial/data/mc15-handoff-inputs.json#MAREA-MC14-MC15-HANDOFF-INPUTS",
+    "docs/marea/legal-commercial/data/website-findings.json#MAREA-MC14-WEBSITE-FINDINGS",
+    "docs/marea/products/product-definitions.batch-01.json#MC-05-PRODUCT-DEFINITIONS-BATCH-01",
+    "docs/marea/products/product-definitions.batch-02.json",
+    "docs/marea/products/product-definitions.batch-03.json",
+    "docs/marea/bundles/bundle-definitions.json#MC-08-BUNDLE-DEFINITIONS",
+    "docs/marea/information-architecture/data/publication-gates.json#MAREA-MC15-PUBLICATION-GATES",
+    "docs/marea/information-architecture/data/website-remediation.json#MAREA-MC15-WEBSITE-REMEDIATION"
+  ],
+  "routeIdentities": [
+    {
+      "routeId": "home",
+      "surface": "CURRENT",
+      "pageId": "home",
+      "entityId": "ENT-PAGE-HOME",
+      "pageType": "PAGE_CORPORATE",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "technology",
+      "surface": "CURRENT",
+      "pageId": "technology",
+      "entityId": "ENT-PAGE-TECHNOLOGY",
+      "pageType": "PAGE_MARKETING",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "technologyDetail",
+      "surface": "CURRENT",
+      "pageId": "technologyDetail",
+      "entityId": "ENT-TECH-DETAIL",
+      "pageType": "PAGE_MARKETING_DETAIL",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "experiences",
+      "surface": "CURRENT",
+      "pageId": "experiences",
+      "entityId": "ENT-PAGE-EXPERIENCES",
+      "pageType": "PAGE_SERVICE",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "delivery",
+      "surface": "CURRENT",
+      "pageId": "delivery",
+      "entityId": "ENT-PAGE-DELIVERY",
+      "pageType": "PAGE_SERVICE",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "services",
+      "surface": "CURRENT",
+      "pageId": "services",
+      "entityId": "ENT-PAGE-SERVICES",
+      "pageType": "PAGE_SERVICE",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "about",
+      "surface": "CURRENT",
+      "pageId": "about",
+      "entityId": "ENT-PAGE-ABOUT",
+      "pageType": "PAGE_CORPORATE",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "contact",
+      "surface": "CURRENT",
+      "pageId": "contact",
+      "entityId": "ENT-PAGE-CONTACT",
+      "pageType": "PAGE_CONTACT",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "guides",
+      "surface": "CURRENT",
+      "pageId": "guides",
+      "entityId": "ENT-PAGE-GUIDES",
+      "pageType": "PAGE_RESOURCE",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "guideDetail",
+      "surface": "CURRENT",
+      "pageId": "guideDetail",
+      "entityId": "ENT-GUIDE",
+      "pageType": "PAGE_RESOURCE_DETAIL",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "shop",
+      "surface": "CURRENT",
+      "pageId": "shop",
+      "entityId": "ENT-SHOP-CATALOGUE",
+      "pageType": "PAGE_COMMERCE_INDEX",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "shopDetail",
+      "surface": "CURRENT",
+      "pageId": "shopDetail",
+      "entityId": "ENT-SHOP-PRODUCT",
+      "pageType": "PAGE_COMMERCE_DETAIL",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": "CONDITIONAL_ACTIVE_TRANSLATED_PRODUCT"
+    },
+    {
+      "routeId": "shopSample",
+      "surface": "CURRENT",
+      "pageId": "shopSample",
+      "entityId": "ENT-SHOP-SAMPLE",
+      "pageType": "PAGE_COMMERCE_SAMPLE",
+      "status": "EXISTING_RETAINED_NOINDEX",
+      "implemented": true,
+      "private": false,
+      "indexable": false
+    },
+    {
+      "routeId": "cart",
+      "surface": "CURRENT",
+      "pageId": "cart",
+      "entityId": "ENT-CART",
+      "pageType": "PAGE_PRIVATE",
+      "status": "EXISTING_RETAINED_PRIVATE",
+      "implemented": true,
+      "private": true,
+      "indexable": false
+    },
+    {
+      "routeId": "login",
+      "surface": "CURRENT",
+      "pageId": "login",
+      "entityId": "ENT-AUTH",
+      "pageType": "PAGE_PRIVATE",
+      "status": "EXISTING_RETAINED_PRIVATE",
+      "implemented": true,
+      "private": true,
+      "indexable": false
+    },
+    {
+      "routeId": "account",
+      "surface": "CURRENT",
+      "pageId": "account",
+      "entityId": "ENT-ACCOUNT",
+      "pageType": "PAGE_PRIVATE",
+      "status": "EXISTING_RETAINED_PRIVATE",
+      "implemented": true,
+      "private": true,
+      "indexable": false
+    },
+    {
+      "routeId": "orderDetail",
+      "surface": "CURRENT",
+      "pageId": "orderDetail",
+      "entityId": "ENT-ORDER",
+      "pageType": "PAGE_PRIVATE",
+      "status": "EXISTING_RETAINED_PRIVATE",
+      "implemented": true,
+      "private": true,
+      "indexable": false
+    },
+    {
+      "routeId": "legalNotice",
+      "surface": "CURRENT",
+      "pageId": "legalNotice",
+      "entityId": "ENT-LEGAL-NOTICE",
+      "pageType": "PAGE_LEGAL",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "privacy",
+      "surface": "CURRENT",
+      "pageId": "privacy",
+      "entityId": "ENT-PRIVACY",
+      "pageType": "PAGE_LEGAL",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "cookies",
+      "surface": "CURRENT",
+      "pageId": "cookies",
+      "entityId": "ENT-COOKIES",
+      "pageType": "PAGE_LEGAL",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "termsOfSale",
+      "surface": "CURRENT",
+      "pageId": "termsOfSale",
+      "entityId": "ENT-TERMS",
+      "pageType": "PAGE_LEGAL",
+      "status": "EXISTING_RETAINED",
+      "implemented": true,
+      "private": false,
+      "indexable": true
+    },
+    {
+      "routeId": "mareaOverview",
+      "surface": "PROPOSED",
+      "pageId": "mareaOverview",
+      "entityId": "ENT-HUB-MAREA",
+      "pageType": "PAGE_MAREA_OVERVIEW",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaProducts",
+      "surface": "PROPOSED",
+      "pageId": "mareaProducts",
+      "entityId": "ENT-HUB-PRODUCTS",
+      "pageType": "PAGE_PRODUCT_INDEX",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaSolutions",
+      "surface": "PROPOSED",
+      "pageId": "mareaSolutions",
+      "entityId": "ENT-HUB-SOLUTIONS",
+      "pageType": "PAGE_SOLUTION_INDEX",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaFamilyNav",
+      "surface": "PROPOSED",
+      "pageId": "mareaFamilyNav",
+      "entityId": "ENT-FAMILY-NAV",
+      "pageType": "PAGE_PRODUCT_FAMILY",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaFamilyHub",
+      "surface": "PROPOSED",
+      "pageId": "mareaFamilyHub",
+      "entityId": "ENT-FAMILY-HUB",
+      "pageType": "PAGE_PRODUCT_FAMILY",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaFamilyAis",
+      "surface": "PROPOSED",
+      "pageId": "mareaFamilyAis",
+      "entityId": "ENT-FAMILY-AIS",
+      "pageType": "PAGE_PRODUCT_FAMILY",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaFamilyPilot",
+      "surface": "PROPOSED",
+      "pageId": "mareaFamilyPilot",
+      "entityId": "ENT-FAMILY-PILOT",
+      "pageType": "PAGE_PRODUCT_FAMILY",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaFamilySense",
+      "surface": "PROPOSED",
+      "pageId": "mareaFamilySense",
+      "entityId": "ENT-FAMILY-SENSE",
+      "pageType": "PAGE_PRODUCT_FAMILY",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaFamilyWatch",
+      "surface": "PROPOSED",
+      "pageId": "mareaFamilyWatch",
+      "entityId": "ENT-FAMILY-WATCH",
+      "pageType": "PAGE_PRODUCT_FAMILY",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaFamilyDisplay",
+      "surface": "PROPOSED",
+      "pageId": "mareaFamilyDisplay",
+      "entityId": "ENT-FAMILY-DISPLAY",
+      "pageType": "PAGE_PRODUCT_FAMILY",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaFamilyWeather",
+      "surface": "PROPOSED",
+      "pageId": "mareaFamilyWeather",
+      "entityId": "ENT-FAMILY-WEATHER",
+      "pageType": "PAGE_PRODUCT_FAMILY",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaFamilyFleet",
+      "surface": "PROPOSED",
+      "pageId": "mareaFamilyFleet",
+      "entityId": "ENT-FAMILY-FLEET",
+      "pageType": "PAGE_PRODUCT_FAMILY",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaSolutionStart",
+      "surface": "PROPOSED",
+      "pageId": "mareaSolutionStart",
+      "entityId": "ENT-BUNDLE-START",
+      "pageType": "PAGE_BUNDLE_SOLUTION",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaSolutionCruise",
+      "surface": "PROPOSED",
+      "pageId": "mareaSolutionCruise",
+      "entityId": "ENT-BUNDLE-CRUISE",
+      "pageType": "PAGE_BUNDLE_SOLUTION",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaSolutionSail",
+      "surface": "PROPOSED",
+      "pageId": "mareaSolutionSail",
+      "entityId": "ENT-BUNDLE-SAIL",
+      "pageType": "PAGE_BUNDLE_SOLUTION",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaSolutionProtect",
+      "surface": "PROPOSED",
+      "pageId": "mareaSolutionProtect",
+      "entityId": "ENT-BUNDLE-PROTECT",
+      "pageType": "PAGE_BUNDLE_SOLUTION",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaSolutionComplete",
+      "surface": "PROPOSED",
+      "pageId": "mareaSolutionComplete",
+      "entityId": "ENT-BUNDLE-COMPLETE",
+      "pageType": "PAGE_BUNDLE_SOLUTION",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaSolutionFleet",
+      "surface": "PROPOSED",
+      "pageId": "mareaSolutionFleet",
+      "entityId": "ENT-BUNDLE-FLEET",
+      "pageType": "PAGE_BUNDLE_SOLUTION",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "mareaConfigurator",
+      "surface": "PROPOSED",
+      "pageId": "mareaConfigurator",
+      "entityId": "ENT-TOOL-CONFIGURATOR",
+      "pageType": "PAGE_CONFIGURATOR",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "professionals",
+      "surface": "PROPOSED",
+      "pageId": "professionals",
+      "entityId": "ENT-PAGE-PROFESSIONALS",
+      "pageType": "PAGE_PROFESSIONAL",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "installers",
+      "surface": "PROPOSED",
+      "pageId": "installers",
+      "entityId": "ENT-PAGE-INSTALLERS",
+      "pageType": "PAGE_INSTALLER_PROGRAM",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "support",
+      "surface": "PROPOSED",
+      "pageId": "support",
+      "entityId": "ENT-PAGE-SUPPORT",
+      "pageType": "PAGE_SUPPORT",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    },
+    {
+      "routeId": "productDocumentation",
+      "surface": "PROPOSED",
+      "pageId": "productDocumentation",
+      "entityId": "ENT-DOC-PRODUCT",
+      "pageType": "PAGE_PRODUCT_DOCUMENTATION",
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "routeDefined": true,
+      "implementationReady": false,
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "commercialTransactionAuthorized": false
+    }
+  ],
+  "familyIds": [
+    "NAV",
+    "HUB",
+    "AIS",
+    "PILOT",
+    "SENSE",
+    "WATCH",
+    "DISPLAY",
+    "WEATHER",
+    "FLEET"
+  ],
+  "families": [
+    {
+      "familyId": "NAV",
+      "displayName": "MAREA NAV",
+      "productType": "SOFTWARE",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyNav",
+      "editionIds": [
+        "NAV-ESSENTIAL",
+        "NAV-PRO"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "familyId": "HUB",
+      "displayName": "MAREA HUB",
+      "productType": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyHub",
+      "editionIds": [
+        "HUB-STANDARD",
+        "HUB-PRO"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "familyId": "AIS",
+      "displayName": "MAREA AIS",
+      "productType": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyAis",
+      "editionIds": [
+        "AIS-RECEIVER",
+        "AIS-CONNECTED"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "familyId": "PILOT",
+      "displayName": "MAREA PILOT",
+      "productType": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyPilot",
+      "editionIds": [
+        "PILOT-COASTAL",
+        "PILOT-SAIL",
+        "PILOT-PRO"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT",
+        "GATE-IP-CLEARANCE",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "familyId": "SENSE",
+      "displayName": "MAREA SENSE",
+      "productType": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilySense",
+      "editionIds": [
+        "SENSE-WIND",
+        "SENSE-POWER",
+        "SENSE-BILGE",
+        "SENSE-TANKS",
+        "SENSE-ENV",
+        "SENSE-ESSENTIALS",
+        "SENSE-SAIL",
+        "SENSE-SYSTEMS"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "PARTIALLY_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "familyId": "WATCH",
+      "displayName": "MAREA WATCH",
+      "productType": "HARDWARE_SERVICE",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyWatch",
+      "editionIds": [
+        "WATCH-CORE",
+        "WATCH-PLUS"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "familyId": "DISPLAY",
+      "displayName": "MAREA DISPLAY",
+      "productType": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyDisplay",
+      "editionIds": [
+        "DISPLAY-7",
+        "DISPLAY-LARGE-CONDITIONAL"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "familyId": "WEATHER",
+      "displayName": "MAREA WEATHER",
+      "productType": "SOFTWARE",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyWeather",
+      "editionIds": [
+        "WEATHER-STANDARD",
+        "WEATHER-PRO"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "familyId": "FLEET",
+      "displayName": "MAREA FLEET",
+      "productType": "SAAS",
+      "lifecycleState": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyFleet",
+      "editionIds": [
+        "FLEET-START",
+        "FLEET-BUSINESS",
+        "FLEET-ENTERPRISE"
+      ],
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE"
+      },
+      "blockingGateIds": [
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    }
+  ],
+  "editionIds": [
+    "NAV-ESSENTIAL",
+    "NAV-PRO",
+    "HUB-STANDARD",
+    "HUB-PRO",
+    "AIS-RECEIVER",
+    "AIS-CONNECTED",
+    "PILOT-COASTAL",
+    "PILOT-SAIL",
+    "PILOT-PRO",
+    "SENSE-WIND",
+    "SENSE-POWER",
+    "SENSE-BILGE",
+    "SENSE-TANKS",
+    "SENSE-ENV",
+    "SENSE-ESSENTIALS",
+    "SENSE-SAIL",
+    "SENSE-SYSTEMS",
+    "WATCH-CORE",
+    "WATCH-PLUS",
+    "DISPLAY-7",
+    "DISPLAY-LARGE-CONDITIONAL",
+    "WEATHER-STANDARD",
+    "WEATHER-PRO",
+    "FLEET-START",
+    "FLEET-BUSINESS",
+    "FLEET-ENTERPRISE"
+  ],
+  "editions": [
+    {
+      "editionId": "NAV-ESSENTIAL",
+      "familyId": "NAV",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyNav"
+    },
+    {
+      "editionId": "NAV-PRO",
+      "familyId": "NAV",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyNav"
+    },
+    {
+      "editionId": "HUB-STANDARD",
+      "familyId": "HUB",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyHub"
+    },
+    {
+      "editionId": "HUB-PRO",
+      "familyId": "HUB",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyHub"
+    },
+    {
+      "editionId": "AIS-RECEIVER",
+      "familyId": "AIS",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyAis",
+      "notes": "Receive-only; AIS_TRANSMISSION_OFFERED=false."
+    },
+    {
+      "editionId": "AIS-CONNECTED",
+      "familyId": "AIS",
+      "editionVerdict": "CONDITIONAL",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyAis",
+      "notes": "Conditional on evidenced richer local networking and diagnostics; not selected by default."
+    },
+    {
+      "editionId": "PILOT-COASTAL",
+      "familyId": "PILOT",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyPilot",
+      "requiresQuotation": true,
+      "notes": "Supervised steering; vessel-specific survey and quotation; never a fixed retail line."
+    },
+    {
+      "editionId": "PILOT-SAIL",
+      "familyId": "PILOT",
+      "editionVerdict": "CONDITIONAL",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyPilot",
+      "requiresQuotation": true,
+      "notes": "Conditional on verified wind-angle steering; PILOT_SAFETY_GATE=BLOCKED."
+    },
+    {
+      "editionId": "PILOT-PRO",
+      "familyId": "PILOT",
+      "editionVerdict": "INSTALLATION_PACKAGE",
+      "priceStatus": "NOT_APPLICABLE",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "INSTALLATION_PACKAGE_NOT_A_SKU",
+      "routeId": "mareaFamilyPilot",
+      "requiresQuotation": true,
+      "notes": "Installation package only; never a priced retail SKU, bundle line or checkout item."
+    },
+    {
+      "editionId": "SENSE-WIND",
+      "familyId": "SENSE",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilySense"
+    },
+    {
+      "editionId": "SENSE-POWER",
+      "familyId": "SENSE",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilySense"
+    },
+    {
+      "editionId": "SENSE-BILGE",
+      "familyId": "SENSE",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilySense"
+    },
+    {
+      "editionId": "SENSE-TANKS",
+      "familyId": "SENSE",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilySense"
+    },
+    {
+      "editionId": "SENSE-ENV",
+      "familyId": "SENSE",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilySense"
+    },
+    {
+      "editionId": "SENSE-ESSENTIALS",
+      "familyId": "SENSE",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilySense",
+      "notes": "Kit that expands exactly to SENSE-POWER + SENSE-BILGE; a kit is packaging, not a new capability."
+    },
+    {
+      "editionId": "SENSE-SAIL",
+      "familyId": "SENSE",
+      "editionVerdict": "CONDITIONAL",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilySense"
+    },
+    {
+      "editionId": "SENSE-SYSTEMS",
+      "familyId": "SENSE",
+      "editionVerdict": "CONDITIONAL",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilySense"
+    },
+    {
+      "editionId": "WATCH-CORE",
+      "familyId": "WATCH",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyWatch",
+      "notes": "Monitoring subscription entitlement is required for remote monitoring."
+    },
+    {
+      "editionId": "WATCH-PLUS",
+      "familyId": "WATCH",
+      "editionVerdict": "CONDITIONAL",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyWatch"
+    },
+    {
+      "editionId": "DISPLAY-7",
+      "familyId": "DISPLAY",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyDisplay",
+      "notes": "7-inch-class is a commercial working label; SIZE_NOT_FROZEN and HARDWARE_NOT_SELECTED."
+    },
+    {
+      "editionId": "DISPLAY-LARGE-CONDITIONAL",
+      "familyId": "DISPLAY",
+      "editionVerdict": "CONDITIONAL",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyDisplay",
+      "notes": "No price and no measured size; never selectable as an available size and never included in a bundle."
+    },
+    {
+      "editionId": "WEATHER-STANDARD",
+      "familyId": "WEATHER",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyWeather",
+      "notes": "One entitlement ledger with WEATHER-PRO; double billing is prohibited."
+    },
+    {
+      "editionId": "WEATHER-PRO",
+      "familyId": "WEATHER",
+      "editionVerdict": "CONDITIONAL",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyWeather",
+      "notes": "Conditional; one entitlement ledger with WEATHER-STANDARD."
+    },
+    {
+      "editionId": "FLEET-START",
+      "familyId": "FLEET",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyFleet",
+      "notes": "Per vessel per month, VAT excluded; hardware never included by default."
+    },
+    {
+      "editionId": "FLEET-BUSINESS",
+      "familyId": "FLEET",
+      "editionVerdict": "DEFINED",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "EDITION_ID_IS_STABLE_IDENTITY",
+      "routeId": "mareaFamilyFleet"
+    },
+    {
+      "editionId": "FLEET-ENTERPRISE",
+      "familyId": "FLEET",
+      "editionVerdict": "CONDITIONAL",
+      "priceStatus": "NOT_ESTABLISHED",
+      "priceApproved": false,
+      "merchantable": false,
+      "skuCodeDefined": false,
+      "skuIdentity": "CONTRACTED_TIER_NOT_A_CHECKOUT_SKU",
+      "routeId": "mareaFamilyFleet",
+      "requiresQuotation": true,
+      "notes": "Contracted tier with no standard price and NO_SLA_ESTABLISHED."
+    }
+  ],
+  "bundleIds": [
+    "START",
+    "CRUISE",
+    "SAIL",
+    "PROTECT",
+    "COMPLETE",
+    "FLEET"
+  ],
+  "bundles": [
+    {
+      "bundleId": "START",
+      "displayName": "MAREA START",
+      "referenceConfiguration": [
+        "HUB-STANDARD",
+        "NAV-PRO"
+      ],
+      "requiredQuotation": [],
+      "conditionalEditions": [],
+      "readinessState": "INTERNAL_ONLY_DEFINED",
+      "lifecycleState": "DEFINED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "fixedPackagePriceEstablished": false,
+      "routeId": "mareaSolutionStart",
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "bundleId": "CRUISE",
+      "displayName": "MAREA CRUISE",
+      "referenceConfiguration": [
+        "NAV-ESSENTIAL",
+        "HUB-STANDARD",
+        "AIS-RECEIVER",
+        "DISPLAY-7"
+      ],
+      "requiredQuotation": [],
+      "conditionalEditions": [
+        "AIS-CONNECTED",
+        "DISPLAY-LARGE-CONDITIONAL"
+      ],
+      "readinessState": "INTERNAL_ONLY_DEFINED",
+      "lifecycleState": "DEFINED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "fixedPackagePriceEstablished": false,
+      "routeId": "mareaSolutionCruise",
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "bundleId": "SAIL",
+      "displayName": "MAREA SAIL",
+      "referenceConfiguration": [
+        "NAV-PRO",
+        "HUB-STANDARD",
+        "PILOT-COASTAL",
+        "SENSE-WIND"
+      ],
+      "requiredQuotation": [
+        "PILOT-COASTAL"
+      ],
+      "conditionalEditions": [
+        "PILOT-SAIL"
+      ],
+      "readinessState": "BLOCKED",
+      "lifecycleState": "DEFINED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "fixedPackagePriceEstablished": false,
+      "routeId": "mareaSolutionSail",
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "bundleId": "PROTECT",
+      "displayName": "MAREA PROTECT",
+      "referenceConfiguration": [
+        "WATCH-CORE",
+        "SENSE-ESSENTIALS"
+      ],
+      "requiredQuotation": [],
+      "conditionalEditions": [
+        "WATCH-PLUS"
+      ],
+      "readinessState": "INTERNAL_ONLY_DEFINED",
+      "lifecycleState": "DEFINED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "fixedPackagePriceEstablished": false,
+      "routeId": "mareaSolutionProtect",
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "bundleId": "COMPLETE",
+      "displayName": "MAREA COMPLETE",
+      "referenceConfiguration": [
+        "NAV-PRO",
+        "HUB-PRO",
+        "DISPLAY-7",
+        "WATCH-CORE",
+        "SENSE-POWER",
+        "SENSE-BILGE",
+        "SENSE-TANKS",
+        "SENSE-ENV",
+        "PILOT-COASTAL"
+      ],
+      "requiredQuotation": [
+        "PILOT-COASTAL"
+      ],
+      "conditionalEditions": [
+        "PILOT-SAIL",
+        "PILOT-PRO",
+        "DISPLAY-LARGE-CONDITIONAL"
+      ],
+      "readinessState": "BLOCKED",
+      "lifecycleState": "DEFINED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "fixedPackagePriceEstablished": false,
+      "routeId": "mareaSolutionComplete",
+      "blockingGateIds": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    },
+    {
+      "bundleId": "FLEET",
+      "displayName": "MAREA FLEET",
+      "customerFacingName": "MAREA FLEET package",
+      "referenceConfiguration": [
+        "FLEET-START"
+      ],
+      "alternativeConfiguration": [
+        "FLEET-BUSINESS"
+      ],
+      "requiredQuotation": [
+        "ONBOARDING",
+        "REGISTRATION",
+        "TRAINING",
+        "SUPPORT",
+        "CONNECTIVITY"
+      ],
+      "conditionalEditions": [
+        "FLEET-ENTERPRISE"
+      ],
+      "readinessState": "INTERNAL_ONLY_DEFINED",
+      "lifecycleState": "DEFINED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "fixedPackagePriceEstablished": false,
+      "contractedSolution": true,
+      "hardwareIncludedByDefault": false,
+      "slaEstablished": false,
+      "routeId": "mareaSolutionFleet",
+      "blockingGateIds": [
+        "GATE-SAFETY-PILOT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ]
+    }
+  ],
+  "localeAndSlugRules": [
+    "Spanish public paths are unprefixed and must not move; English public paths are under /en.",
+    "The 23 proposed route ids and their ES/EN slugs are frozen by the MC-15 data contract; no extra route may be added.",
+    "Dynamic slugs are the same string in both locales so the entity identity stays stable.",
+    "The productDocumentation slug is the lowercase family id (nav, hub, ais, pilot, sense, watch, display, weather, fleet); an edition id must never appear in a URL.",
+    "No proposed slug may collide with a current route, a legacy redirect or an admin surface."
+  ],
+  "localeAndSlugMappings": [
+    {
+      "mappingId": "LOC-CUR-home",
+      "surface": "CURRENT",
+      "routeId": "home",
+      "esPath": "/",
+      "enPath": "/en",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-technology",
+      "surface": "CURRENT",
+      "routeId": "technology",
+      "esPath": "/tecnologia",
+      "enPath": "/en/technology",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-technologyDetail",
+      "surface": "CURRENT",
+      "routeId": "technologyDetail",
+      "esPath": "/tecnologia/:slug",
+      "enPath": "/en/technology/:slug",
+      "dynamic": true
+    },
+    {
+      "mappingId": "LOC-CUR-experiences",
+      "surface": "CURRENT",
+      "routeId": "experiences",
+      "esPath": "/experiencias",
+      "enPath": "/en/experiences",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-delivery",
+      "surface": "CURRENT",
+      "routeId": "delivery",
+      "esPath": "/traslados",
+      "enPath": "/en/delivery",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-services",
+      "surface": "CURRENT",
+      "routeId": "services",
+      "esPath": "/servicios",
+      "enPath": "/en/services",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-about",
+      "surface": "CURRENT",
+      "routeId": "about",
+      "esPath": "/sobre-nosotros",
+      "enPath": "/en/about",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-contact",
+      "surface": "CURRENT",
+      "routeId": "contact",
+      "esPath": "/contacto",
+      "enPath": "/en/contact",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-guides",
+      "surface": "CURRENT",
+      "routeId": "guides",
+      "esPath": "/guias",
+      "enPath": "/en/guides",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-guideDetail",
+      "surface": "CURRENT",
+      "routeId": "guideDetail",
+      "esPath": "/guias/:slug",
+      "enPath": "/en/guides/:slug",
+      "dynamic": true
+    },
+    {
+      "mappingId": "LOC-CUR-shop",
+      "surface": "CURRENT",
+      "routeId": "shop",
+      "esPath": "/tienda",
+      "enPath": "/en/shop",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-shopDetail",
+      "surface": "CURRENT",
+      "routeId": "shopDetail",
+      "esPath": "/tienda/:slug",
+      "enPath": "/en/shop/:slug",
+      "dynamic": true
+    },
+    {
+      "mappingId": "LOC-CUR-shopSample",
+      "surface": "CURRENT",
+      "routeId": "shopSample",
+      "esPath": "/tienda/muestra/:slug",
+      "enPath": "/en/shop/sample/:slug",
+      "dynamic": true
+    },
+    {
+      "mappingId": "LOC-CUR-cart",
+      "surface": "CURRENT",
+      "routeId": "cart",
+      "esPath": "/carrito",
+      "enPath": "/en/cart",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-login",
+      "surface": "CURRENT",
+      "routeId": "login",
+      "esPath": "/acceso",
+      "enPath": "/en/login",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-account",
+      "surface": "CURRENT",
+      "routeId": "account",
+      "esPath": "/cuenta",
+      "enPath": "/en/account",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-orderDetail",
+      "surface": "CURRENT",
+      "routeId": "orderDetail",
+      "esPath": "/cuenta/pedidos/:id",
+      "enPath": "/en/account/orders/:id",
+      "dynamic": true
+    },
+    {
+      "mappingId": "LOC-CUR-legalNotice",
+      "surface": "CURRENT",
+      "routeId": "legalNotice",
+      "esPath": "/aviso-legal",
+      "enPath": "/en/legal-notice",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-privacy",
+      "surface": "CURRENT",
+      "routeId": "privacy",
+      "esPath": "/privacidad",
+      "enPath": "/en/privacy",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-cookies",
+      "surface": "CURRENT",
+      "routeId": "cookies",
+      "esPath": "/cookies",
+      "enPath": "/en/cookies",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-CUR-termsOfSale",
+      "surface": "CURRENT",
+      "routeId": "termsOfSale",
+      "esPath": "/condiciones-de-venta",
+      "enPath": "/en/terms-of-sale",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaOverview",
+      "surface": "PROPOSED",
+      "routeId": "mareaOverview",
+      "entityId": "ENT-HUB-MAREA",
+      "esPath": "/marea",
+      "enPath": "/en/marea",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaProducts",
+      "surface": "PROPOSED",
+      "routeId": "mareaProducts",
+      "entityId": "ENT-HUB-PRODUCTS",
+      "esPath": "/marea/productos",
+      "enPath": "/en/marea/products",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaSolutions",
+      "surface": "PROPOSED",
+      "routeId": "mareaSolutions",
+      "entityId": "ENT-HUB-SOLUTIONS",
+      "esPath": "/marea/soluciones",
+      "enPath": "/en/marea/solutions",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaFamilyNav",
+      "surface": "PROPOSED",
+      "routeId": "mareaFamilyNav",
+      "entityId": "ENT-FAMILY-NAV",
+      "esPath": "/marea/nav",
+      "enPath": "/en/marea/nav",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaFamilyHub",
+      "surface": "PROPOSED",
+      "routeId": "mareaFamilyHub",
+      "entityId": "ENT-FAMILY-HUB",
+      "esPath": "/marea/hub",
+      "enPath": "/en/marea/hub",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaFamilyAis",
+      "surface": "PROPOSED",
+      "routeId": "mareaFamilyAis",
+      "entityId": "ENT-FAMILY-AIS",
+      "esPath": "/marea/ais",
+      "enPath": "/en/marea/ais",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaFamilyPilot",
+      "surface": "PROPOSED",
+      "routeId": "mareaFamilyPilot",
+      "entityId": "ENT-FAMILY-PILOT",
+      "esPath": "/marea/pilot",
+      "enPath": "/en/marea/pilot",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaFamilySense",
+      "surface": "PROPOSED",
+      "routeId": "mareaFamilySense",
+      "entityId": "ENT-FAMILY-SENSE",
+      "esPath": "/marea/sense",
+      "enPath": "/en/marea/sense",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaFamilyWatch",
+      "surface": "PROPOSED",
+      "routeId": "mareaFamilyWatch",
+      "entityId": "ENT-FAMILY-WATCH",
+      "esPath": "/marea/watch",
+      "enPath": "/en/marea/watch",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaFamilyDisplay",
+      "surface": "PROPOSED",
+      "routeId": "mareaFamilyDisplay",
+      "entityId": "ENT-FAMILY-DISPLAY",
+      "esPath": "/marea/display",
+      "enPath": "/en/marea/display",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaFamilyWeather",
+      "surface": "PROPOSED",
+      "routeId": "mareaFamilyWeather",
+      "entityId": "ENT-FAMILY-WEATHER",
+      "esPath": "/marea/weather",
+      "enPath": "/en/marea/weather",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaFamilyFleet",
+      "surface": "PROPOSED",
+      "routeId": "mareaFamilyFleet",
+      "entityId": "ENT-FAMILY-FLEET",
+      "esPath": "/marea/fleet",
+      "enPath": "/en/marea/fleet",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaSolutionStart",
+      "surface": "PROPOSED",
+      "routeId": "mareaSolutionStart",
+      "entityId": "ENT-BUNDLE-START",
+      "esPath": "/marea/soluciones/start",
+      "enPath": "/en/marea/solutions/start",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaSolutionCruise",
+      "surface": "PROPOSED",
+      "routeId": "mareaSolutionCruise",
+      "entityId": "ENT-BUNDLE-CRUISE",
+      "esPath": "/marea/soluciones/cruise",
+      "enPath": "/en/marea/solutions/cruise",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaSolutionSail",
+      "surface": "PROPOSED",
+      "routeId": "mareaSolutionSail",
+      "entityId": "ENT-BUNDLE-SAIL",
+      "esPath": "/marea/soluciones/sail",
+      "enPath": "/en/marea/solutions/sail",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaSolutionProtect",
+      "surface": "PROPOSED",
+      "routeId": "mareaSolutionProtect",
+      "entityId": "ENT-BUNDLE-PROTECT",
+      "esPath": "/marea/soluciones/protect",
+      "enPath": "/en/marea/solutions/protect",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaSolutionComplete",
+      "surface": "PROPOSED",
+      "routeId": "mareaSolutionComplete",
+      "entityId": "ENT-BUNDLE-COMPLETE",
+      "esPath": "/marea/soluciones/complete",
+      "enPath": "/en/marea/solutions/complete",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaSolutionFleet",
+      "surface": "PROPOSED",
+      "routeId": "mareaSolutionFleet",
+      "entityId": "ENT-BUNDLE-FLEET",
+      "esPath": "/marea/soluciones/fleet",
+      "enPath": "/en/marea/solutions/fleet",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-mareaConfigurator",
+      "surface": "PROPOSED",
+      "routeId": "mareaConfigurator",
+      "entityId": "ENT-TOOL-CONFIGURATOR",
+      "esPath": "/marea/configurador",
+      "enPath": "/en/marea/configurator",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-professionals",
+      "surface": "PROPOSED",
+      "routeId": "professionals",
+      "entityId": "ENT-PAGE-PROFESSIONALS",
+      "esPath": "/profesionales",
+      "enPath": "/en/professionals",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-installers",
+      "surface": "PROPOSED",
+      "routeId": "installers",
+      "entityId": "ENT-PAGE-INSTALLERS",
+      "esPath": "/instaladores",
+      "enPath": "/en/installers",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-support",
+      "surface": "PROPOSED",
+      "routeId": "support",
+      "entityId": "ENT-PAGE-SUPPORT",
+      "esPath": "/soporte",
+      "enPath": "/en/support",
+      "dynamic": false
+    },
+    {
+      "mappingId": "LOC-PROP-productDocumentation",
+      "surface": "PROPOSED",
+      "routeId": "productDocumentation",
+      "entityId": "ENT-DOC-PRODUCT",
+      "esPath": "/soporte/marea/:slug",
+      "enPath": "/en/support/marea/:slug",
+      "dynamic": true,
+      "slugParam": ":slug",
+      "slugSource": "FAMILY_ID_LOWERCASE",
+      "forbiddenSlugSource": "EDITION_ID"
+    }
+  ],
+  "pageVsSkuIdentity": [
+    {
+      "identityId": "IDENT-PAGE",
+      "granularity": "PAGE",
+      "identifier": "routeId / pageId",
+      "entityBinding": "entityId",
+      "rule": "A page represents a family, a bundle, a tool, a corporate index or a documentation entity. A page never represents one purchasable edition."
+    },
+    {
+      "identityId": "IDENT-SKU",
+      "granularity": "SKU_CANDIDATE",
+      "identifier": "editionId",
+      "rule": "The edition id is the stable SKU identity candidate. No separate merchant SKU code exists yet and none may be invented by MC-16."
+    },
+    {
+      "identityId": "IDENT-ENTITLEMENT",
+      "granularity": "ENTITLEMENT",
+      "identifier": "SE-* and RS-* entitlement ids",
+      "rule": "An entitlement is neither a page nor a SKU; it is a licensed capability reference attached to a SKU or bundle."
+    }
+  ],
+  "pageVsSkuRules": [
+    "One family page exposes zero or more editions; the page is indexable independently of edition merchantability, but only after its gates close.",
+    "No page may be created per edition, per price, per stock state or per locale variant beyond the ES/EN pair.",
+    "A bundle page represents a bundle entity, not a SKU; its reference configuration is a composition of edition ids.",
+    "PILOT-PRO is an INSTALLATION_PACKAGE, not a SKU and not a page; it may only appear as a quoted scope.",
+    "The productDocumentation entity is keyed by family id, never by edition id.",
+    "Page identity, SKU identity and entitlement identity must remain separate foreign keys in any future commerce model."
+  ],
+  "pageVsSkuExamples": [
+    {
+      "pageId": "mareaFamilyNav",
+      "entityId": "ENT-FAMILY-NAV",
+      "editionIds": [
+        "NAV-ESSENTIAL",
+        "NAV-PRO"
+      ],
+      "pageIsSku": false
+    },
+    {
+      "pageId": "mareaSolutionStart",
+      "entityId": "ENT-BUNDLE-START",
+      "referenceConfiguration": [
+        "HUB-STANDARD",
+        "NAV-PRO"
+      ],
+      "pageIsSku": false
+    },
+    {
+      "pageId": "mareaFamilyPilot",
+      "entityId": "ENT-FAMILY-PILOT",
+      "editionIds": [
+        "PILOT-COASTAL",
+        "PILOT-SAIL"
+      ],
+      "nonSkuEditionIds": [
+        "PILOT-PRO"
+      ],
+      "pageIsSku": false
+    }
+  ],
+  "lifecycleFields": [
+    {
+      "fieldSetId": "LIFECYCLE",
+      "name": "Lifecycle vocabulary",
+      "values": [
+        "CONCEPT",
+        "DEFINED",
+        "ENGINEERING_VERIFIED",
+        "REGULATORY_READY",
+        "OPERATIONS_READY",
+        "COMMERCIALLY_AVAILABLE",
+        "RETIRED"
+      ],
+      "note": "docs/marea/execution/DECISION-LOG.md D-007; docs/marea/COMMERCIAL-PORTFOLIO.md"
+    },
+    {
+      "fieldSetId": "CURRENT_LIFECYCLE",
+      "name": "Current lifecycle state",
+      "values": [
+        "DEFINED"
+      ],
+      "note": "All families DEFINED; editions DEFINED or CONDITIONAL; zero COMMERCIALLY_AVAILABLE."
+    },
+    {
+      "fieldSetId": "READINESS",
+      "name": "Readiness dimensions",
+      "values": [
+        "definition",
+        "engineering",
+        "licensing",
+        "hardware",
+        "dataRights",
+        "compliance",
+        "pricing",
+        "brandPublication",
+        "availability"
+      ],
+      "note": "Readiness is dimensioned, never a single flag."
+    },
+    {
+      "fieldSetId": "EDITION_VERDICT",
+      "name": "Edition verdict vocabulary",
+      "values": [
+        "DEFINED",
+        "CONDITIONAL",
+        "INSTALLATION_PACKAGE"
+      ],
+      "note": "No RELEASED, FOR_SALE or APPROVABLE verdict exists."
+    },
+    {
+      "fieldSetId": "PRICE_STATUS",
+      "name": "Price status vocabulary",
+      "values": [
+        "HYPOTHESIS_UNAPPROVED",
+        "NOT_ESTABLISHED",
+        "NOT_APPLICABLE"
+      ],
+      "note": "No approved price exists."
+    },
+    {
+      "fieldSetId": "PAGE_STATES",
+      "name": "Page publication states",
+      "values": [
+        "routeDefined",
+        "implementationReady",
+        "publicationAuthorized",
+        "indexationAuthorized",
+        "commercialTransactionAuthorized"
+      ],
+      "note": "Page publication states (routeDefined, implementationReady, publicationAuthorized, indexationAuthorized, commercialTransactionAuthorized) are independent of product lifecycle and readiness. A page state never promotes a product lifecycle, and a product lifecycle never authorises a page."
+    }
+  ],
+  "commercialGates": [
+    {
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "status": "BLOCKED",
+      "mc16Dependency": "No product placed on the market; no CE or traceability attributes."
+    },
+    {
+      "gateId": "GATE-SAFETY-PILOT",
+      "status": "BLOCKED",
+      "mc16Dependency": "PILOT unorderable; no safety or autonomy attribute."
+    },
+    {
+      "gateId": "GATE-IP-CLEARANCE",
+      "status": "BLOCKED",
+      "mc16Dependency": "No brand, ownership or licence attribute."
+    },
+    {
+      "gateId": "GATE-DATA-LICENSING",
+      "status": "BLOCKED",
+      "mc16Dependency": "No chart or weather licensed-data entitlement."
+    },
+    {
+      "gateId": "GATE-PRIVACY-DPA-DPIA",
+      "status": "BLOCKED",
+      "mc16Dependency": "No customer, vessel or telemetry data activation."
+    },
+    {
+      "gateId": "GATE-CRA-CYBERSECURITY",
+      "status": "BLOCKED",
+      "mc16Dependency": "No support-period or security attribute."
+    },
+    {
+      "gateId": "GATE-CONSUMER-TERMS",
+      "status": "BLOCKED",
+      "mc16Dependency": "No order, renewal or withdrawal state machine."
+    },
+    {
+      "gateId": "GATE-COMMERCIAL-CLAIMS",
+      "status": "BLOCKED",
+      "mc16Dependency": "No claim, compatibility or availability attribute."
+    },
+    {
+      "gateId": "GATE-PRICING",
+      "status": "BLOCKED",
+      "mc16Dependency": "No customer-visible price or VAT representation."
+    },
+    {
+      "gateId": "GATE-PAYMENTS",
+      "status": "BLOCKED",
+      "mc16Dependency": "No payment, refund or chargeback state."
+    },
+    {
+      "gateId": "GATE-INSURANCE",
+      "status": "BLOCKED",
+      "mc16Dependency": "No insurance or liability statement."
+    },
+    {
+      "gateId": "GATE-LEGAL-ENTITY",
+      "status": "BLOCKED",
+      "mc16Dependency": "No seller, merchant-of-record or invoice identity."
+    },
+    {
+      "gateId": "GATE-WEBSITE-REMEDIATION",
+      "status": "EVIDENCE_REQUIRED",
+      "mc16Dependency": "Existing shop, legal and SEO surfaces stay blocked."
+    }
+  ],
+  "commercialGateSummary": {
+    "gateCount": 13,
+    "gatesClosed": 0,
+    "gatesBlocked": 12,
+    "gatesEvidenceRequired": 1,
+    "requiredDocuments": 24,
+    "documentsExecuted": 0,
+    "mc16Rule": "MC-16 must treat every gate as open. No gate may be inferred CLOSED from a test pass, a build, a document draft, an internal decision or the existence of this handoff.",
+    "source": "docs/marea/legal-commercial/data/release-evidence-gates.json"
+  },
+  "seoPublicationEligibility": [
+    {
+      "surfaceId": "PROPOSED_ROUTES",
+      "surface": "23 proposed routes",
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "sitemapEligible": false,
+      "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+      "count": 23
+    },
+    {
+      "surfaceId": "CURRENT_ROUTES",
+      "surface": "21 current routes",
+      "policy": "Retain existing indexed URLs and canonical/hreflang behaviour; MC-15 does not change them."
+    },
+    {
+      "surfaceId": "SHOP",
+      "surface": "shop",
+      "policy": "indexable",
+      "sitemapEligible": true
+    },
+    {
+      "surfaceId": "SHOP_DETAIL",
+      "surface": "shopDetail",
+      "policy": "CONDITIONAL_ACTIVE_TRANSLATED_PRODUCT",
+      "sitemapEligible": "CONDITIONAL"
+    },
+    {
+      "surfaceId": "SHOP_SAMPLE",
+      "surface": "shopSample",
+      "policy": "NOINDEX",
+      "sitemapEligible": false
+    },
+    {
+      "surfaceId": "PRIVATE_ROUTES",
+      "surface": "cart, login, account, orderDetail",
+      "policy": "NOINDEX_AND_SITEMAP_EXCLUDED",
+      "sitemapEligible": false
+    },
+    {
+      "surfaceId": "METADATA_RULE_01",
+      "rule": "No MAREA brand string in any title, description, Open Graph or Twitter card until trademark clearance and a public-use decision exist."
+    },
+    {
+      "surfaceId": "METADATA_RULE_02",
+      "rule": "No availability, stock, price, delivery, certification or performance wording in metadata."
+    },
+    {
+      "surfaceId": "METADATA_RULE_03",
+      "rule": "Canonical is self-referencing per indexable page; hreflang groups are reciprocal; x-default remains home-only."
+    },
+    {
+      "surfaceId": "METADATA_RULE_04",
+      "rule": "No alternate is emitted for an untranslated page."
+    },
+    {
+      "surfaceId": "METADATA_RULE_05",
+      "rule": "A page blocked by any gate is never added to the sitemap, even if the route resolves locally."
+    }
+  ],
+  "structuredDataRestrictions": [
+    {
+      "nodeOrField": "Product for MAREA",
+      "restriction": "PROHIBITED"
+    },
+    {
+      "nodeOrField": "Offer",
+      "restriction": "PROHIBITED"
+    },
+    {
+      "nodeOrField": "price and priceCurrency",
+      "restriction": "PROHIBITED"
+    },
+    {
+      "nodeOrField": "availability",
+      "restriction": "PROHIBITED"
+    },
+    {
+      "nodeOrField": "aggregateRating and review",
+      "restriction": "PROHIBITED"
+    },
+    {
+      "nodeOrField": "certification or conformity markup",
+      "restriction": "PROHIBITED"
+    },
+    {
+      "nodeOrField": "brand",
+      "restriction": "Must not assert registered trademark status; Open Marine must not be used as a Product brand until the IPR-13/IPR-15 items close."
+    },
+    {
+      "nodeOrField": "Organization legal fields",
+      "restriction": "BLOCKED until GATE-LEGAL-ENTITY supplies verified identity."
+    },
+    {
+      "nodeOrField": "BreadcrumbList",
+      "restriction": "Only for an authorised, published page tree; no proposed MAREA route is authorised."
+    },
+    {
+      "nodeOrField": "admin-derived price and stock",
+      "restriction": "price_cents and stock from the admin model may never be emitted as an offer while GATE-PRICING is open."
+    }
+  ],
+  "structuredDataPolicyOwner": "MC-15 D10 structured-data governance owns the final schema policy; MC-16 must consume D10 plus this restriction list and must not expand it.",
+  "priceAndStockProvenance": [
+    {
+      "aspectId": "PRICE_FIELD",
+      "value": "price_cents, single integer in cents; no VAT rate, tax base or territory field exists."
+    },
+    {
+      "aspectId": "STOCK_FIELD",
+      "value": "stock, admin-entered integer; no fulfilment, warehouse or reservation record exists."
+    },
+    {
+      "aspectId": "SOURCE_FILES",
+      "value": "src/server/db.ts, src/server/api.ts, src/app/features/shop/shop-detail.ts"
+    },
+    {
+      "aspectId": "SERVER_AUTHORITY",
+      "value": "Price and stock are re-read server-side; client changes are rejected."
+    },
+    {
+      "aspectId": "STRUCTURED_DATA_DERIVATION",
+      "value": "Derived directly from admin price and stock; this is a defect (WEB-014)."
+    },
+    {
+      "aspectId": "APPROVED_PRICE",
+      "value": "NONE (PRICE_APPROVED = NONE)."
+    },
+    {
+      "aspectId": "APPROVED_STOCK",
+      "value": "NONE; no stock record exists."
+    },
+    {
+      "aspectId": "VAT_CONFIGURATION",
+      "value": "Absent."
+    },
+    {
+      "aspectId": "PUBLIC_DISPLAY",
+      "value": "Price and availability display NOT_AUTHORIZED."
+    }
+  ],
+  "priceAndStockRequirements": [
+    "Store price provenance (approved price list reference, VAT basis, territory, currency, approval record) separately from any hypothesis value.",
+    "Store stock provenance (fulfilment source, reservation record, timestamp) separately from any admin-entered integer.",
+    "Never derive a public offer, structured-data node or checkout amount from a HYPOTHESIS_UNAPPROVED price.",
+    "Keep server-authoritative validation; reject any client-supplied price or stock.",
+    "Keep the sample catalogue non-sale and noindex-separated from the real catalogue."
+  ],
+  "priceAndStockForbidden": [
+    "price from",
+    "IVA incluido without VAT basis",
+    "InStock/OutOfStock from admin stock",
+    "buy/add-to-cart CTAs for NOT_FOR_SALE entities",
+    "delivery dates"
+  ],
+  "entitlementReferences": [
+    {
+      "referenceId": "SE-ST-01",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "START",
+      "entitlement": "NAV-PRO annual software entitlement",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "SE-ST-02",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "START",
+      "entitlement": "HUB local software",
+      "term": "NONE",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "referenceId": "SE-CR-01",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "CRUISE",
+      "entitlement": "NAV-ESSENTIAL annual software entitlement",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "SE-CR-02",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "CRUISE",
+      "entitlement": "DISPLAY base software",
+      "term": "NONE",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "referenceId": "SE-CR-03",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "CRUISE",
+      "entitlement": "HUB and AIS local software",
+      "term": "NONE",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "referenceId": "SE-SL-01",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "SAIL",
+      "entitlement": "NAV-PRO annual software entitlement",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "SE-SL-02",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "SAIL",
+      "entitlement": "PILOT local steering and safety behaviour",
+      "term": "NONE",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "referenceId": "SE-PR-01",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "PROTECT",
+      "entitlement": "WATCH monitoring subscription",
+      "term": "MONTH",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "SE-PR-02",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "PROTECT",
+      "entitlement": "SENSE local measurement and local alarms",
+      "term": "NONE",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "referenceId": "SE-CP-01",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "COMPLETE",
+      "entitlement": "NAV-PRO annual software entitlement",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "SE-CP-02",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "COMPLETE",
+      "entitlement": "WATCH monitoring subscription",
+      "term": "MONTH",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "SE-CP-03",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "COMPLETE",
+      "entitlement": "DISPLAY base software",
+      "term": "NONE",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "referenceId": "SE-CP-04",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "COMPLETE",
+      "entitlement": "PILOT local steering and safety behaviour",
+      "term": "NONE",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "referenceId": "SE-FP-01",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "FLEET",
+      "entitlement": "FLEET per-vessel SaaS subscription",
+      "term": "MONTH",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "SE-FP-02",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "FLEET",
+      "entitlement": "Roles, tenant isolation, audit and export/deletion",
+      "term": "NONE",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "referenceId": "SE-FP-03",
+      "referenceType": "SOFTWARE_ENTITLEMENT",
+      "bundleId": "FLEET",
+      "entitlement": "WATCH monitoring subscription (optional)",
+      "term": "MONTH",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-ST-01",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "START",
+      "entitlement": "NAV_PRO_SUBSCRIPTION",
+      "familyId": "NAV",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-ST-02",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "START",
+      "entitlement": "WEATHER_SUBSCRIPTION",
+      "familyId": "WEATHER",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-CR-01",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "CRUISE",
+      "entitlement": "NAV_ESSENTIAL_SUBSCRIPTION",
+      "familyId": "NAV",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-CR-02",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "CRUISE",
+      "entitlement": "WEATHER_SUBSCRIPTION",
+      "familyId": "WEATHER",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-SL-01",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "SAIL",
+      "entitlement": "NAV_PRO_SUBSCRIPTION",
+      "familyId": "NAV",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-SL-02",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "SAIL",
+      "entitlement": "PILOT_LOCAL_SAFETY",
+      "familyId": "PILOT",
+      "term": "NONE",
+      "status": "NOT_APPLICABLE"
+    },
+    {
+      "referenceId": "RS-PR-01",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "PROTECT",
+      "entitlement": "WATCH_MONITORING_SUBSCRIPTION",
+      "familyId": "WATCH",
+      "term": "MONTH",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-PR-02",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "PROTECT",
+      "entitlement": "SIM_DATA_PLAN",
+      "familyId": null,
+      "term": "MONTH",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "referenceId": "RS-CP-01",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "COMPLETE",
+      "entitlement": "NAV_PRO_SUBSCRIPTION",
+      "familyId": "NAV",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-CP-02",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "COMPLETE",
+      "entitlement": "WATCH_MONITORING_SUBSCRIPTION",
+      "familyId": "WATCH",
+      "term": "MONTH",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-CP-03",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "COMPLETE",
+      "entitlement": "WEATHER_SUBSCRIPTION",
+      "familyId": "WEATHER",
+      "term": "YEAR",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-FP-01",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "FLEET",
+      "entitlement": "FLEET_SAAS_SUBSCRIPTION",
+      "familyId": "FLEET",
+      "term": "MONTH",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    },
+    {
+      "referenceId": "RS-FP-02",
+      "referenceType": "RECURRING_SUBSCRIPTION",
+      "bundleId": "FLEET",
+      "entitlement": "WATCH_MONITORING_SUBSCRIPTION",
+      "familyId": "WATCH",
+      "term": "MONTH",
+      "status": "HYPOTHESIS_UNAPPROVED"
+    }
+  ],
+  "entitlementSummary": {
+    "billingImplemented": false,
+    "entitlementLedgerImplemented": false,
+    "subscriptionIsolationRule": "Local safety-relevant function must never depend on subscription state; an expired entitlement never disables steering, local alarms or local measurement.",
+    "weatherEntitlementRule": "WEATHER uses one entitlement ledger; NAV Pro may include WEATHER Standard-equivalent read where provider rights allow; the same entitlement is never billed twice and cancelling NAV never deletes user-owned WEATHER records.",
+    "mc16Requirements": [
+      "Model entitlement identity separately from SKU identity and from page identity.",
+      "Do not implement billing, renewal, proration or dunning in MC-16; the handoff only records the contract references.",
+      "Enforce the single WEATHER entitlement ledger and prohibit double billing.",
+      "Enforce subscription isolation: local safety-relevant functions never depend on entitlement state."
+    ]
+  },
+  "currentCommerceIntegrationRisks": [
+    {
+      "riskId": "CIT-01",
+      "severity": "BLOCKING",
+      "description": "The only offer source is the admin product row (price_cents, stock, active); activating a row would publish an unapproved price and stock.",
+      "findingReferences": [
+        "WEB-013",
+        "WEB-014",
+        "WEB-027"
+      ],
+      "blockedByGates": [
+        "GATE-PRICING",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-MARKET-PLACEMENT"
+      ],
+      "mc16Handling": "Separate approved offer records from admin drafts; never derive a public offer from an admin row."
+    },
+    {
+      "riskId": "CIT-02",
+      "severity": "MAJOR",
+      "description": "Product/Offer JSON-LD is derived directly from admin price and stock with the Open Marine brand.",
+      "findingReferences": [
+        "WEB-014",
+        "WEB-016"
+      ],
+      "blockedByGates": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-IP-CLEARANCE"
+      ],
+      "mc16Handling": "Expose structured-data eligibility as a derived, gate-controlled flag; default false."
+    },
+    {
+      "riskId": "CIT-03",
+      "severity": "MAJOR",
+      "description": "The order email says the order is received as a thank-you before seller acceptance, conflating acknowledgement and contract conclusion.",
+      "findingReferences": [
+        "WEB-012"
+      ],
+      "blockedByGates": [
+        "GATE-CONSUMER-TERMS"
+      ],
+      "mc16Handling": "Model order acknowledgement, seller acceptance and payment as separate states."
+    },
+    {
+      "riskId": "CIT-04",
+      "severity": "MAJOR",
+      "description": "Registration consent is displayed but not submitted or stored, so no consent evidence exists.",
+      "findingReferences": [
+        "WEB-009"
+      ],
+      "blockedByGates": [
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "mc16Handling": "Store policy version, timestamp, source and lawful basis before account creation."
+    },
+    {
+      "riskId": "CIT-05",
+      "severity": "MAJOR",
+      "description": "Shipping and installation costs are excluded from the cart total and confirmed later.",
+      "findingReferences": [
+        "WEB-023"
+      ],
+      "blockedByGates": [
+        "GATE-CONSUMER-TERMS",
+        "GATE-PRICING"
+      ],
+      "mc16Handling": "Model delivery/installation cost components and expose the final payable amount before the order."
+    },
+    {
+      "riskId": "CIT-06",
+      "severity": "MAJOR",
+      "description": "The single checkout checkbox bundles privacy acknowledgement with contractual acceptance and no model withdrawal form is shown.",
+      "findingReferences": [
+        "WEB-011",
+        "WEB-024"
+      ],
+      "blockedByGates": [
+        "GATE-CONSUMER-TERMS",
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "mc16Handling": "Separate consent records; include pre-contract withdrawal information."
+    },
+    {
+      "riskId": "CIT-07",
+      "severity": "MAJOR",
+      "description": "Subscription and entitlement references exist only as hypotheses; no ledger, billing or renewal implementation exists.",
+      "findingReferences": [
+        "WEB-030"
+      ],
+      "blockedByGates": [
+        "GATE-CONSUMER-TERMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS"
+      ],
+      "mc16Handling": "Model entitlement references only; do not implement billing."
+    },
+    {
+      "riskId": "CIT-08",
+      "severity": "MINOR",
+      "description": "The sample catalogue is non-sale and noindex; the separation must survive any commerce refactor.",
+      "findingReferences": [
+        "WEB-031"
+      ],
+      "blockedByGates": [],
+      "mc16Handling": "Preserve the non-sale, noindex and no-hreflang behaviour for sample SKUs."
+    },
+    {
+      "riskId": "CIT-09",
+      "severity": "MINOR",
+      "description": "Google Identity Services script is not disclosed in the cookie information.",
+      "findingReferences": [
+        "WEB-010"
+      ],
+      "blockedByGates": [
+        "GATE-LEGAL-ENTITY",
+        "GATE-PRIVACY-DPA-DPIA"
+      ],
+      "mc16Handling": "Disclose the integration before any auth-dependent commerce flow is enabled."
+    },
+    {
+      "riskId": "CIT-10",
+      "severity": "BLOCKING",
+      "description": "Seller legal identity is empty and the public legal notice admits it is pending.",
+      "findingReferences": [
+        "WEB-001",
+        "WEB-002",
+        "WEB-007"
+      ],
+      "blockedByGates": [
+        "GATE-LEGAL-ENTITY"
+      ],
+      "mc16Handling": "Do not model a seller, merchant of record or invoice issuer until verified identity exists."
+    }
+  ],
+  "unresolvedWebsiteRemediation": {
+    "totalFindings": 34,
+    "remediated": 0,
+    "closed": 0,
+    "originalStatus": "NOT_REMEDIATED",
+    "mc15Status": "PLANNED_NOT_REMEDIATED",
+    "severityCounts": {
+      "BLOCKING": 6,
+      "MAJOR": 20,
+      "MINOR": 4,
+      "INFORMATIONAL": 4
+    },
+    "findingIds": [
+      "WEB-001",
+      "WEB-002",
+      "WEB-003",
+      "WEB-004",
+      "WEB-005",
+      "WEB-006",
+      "WEB-007",
+      "WEB-008",
+      "WEB-009",
+      "WEB-010",
+      "WEB-011",
+      "WEB-012",
+      "WEB-013",
+      "WEB-014",
+      "WEB-015",
+      "WEB-016",
+      "WEB-017",
+      "WEB-018",
+      "WEB-019",
+      "WEB-020",
+      "WEB-021",
+      "WEB-022",
+      "WEB-023",
+      "WEB-024",
+      "WEB-025",
+      "WEB-026",
+      "WEB-027",
+      "WEB-028",
+      "WEB-029",
+      "WEB-030",
+      "WEB-031",
+      "WEB-032",
+      "WEB-033",
+      "WEB-034"
+    ],
+    "reference": "docs/marea/information-architecture/data/website-remediation.json",
+    "mc16Rule": "MC-16 must treat every finding as open. A planned remediation is not a remediation."
+  },
+  "openDependencies": [
+    {
+      "dependencyId": "DEP-MC16-01",
+      "description": "Separate MC-16 authorisation",
+      "ownerRole": "PROGRAMME_LEAD",
+      "gateId": null,
+      "status": "NOT_GRANTED",
+      "mc16Impact": "MC-16 cannot start from this handoff; a new milestone authorisation is required."
+    },
+    {
+      "dependencyId": "DEP-MC16-02",
+      "description": "Verified legal identity and legal pack",
+      "ownerRole": "COMMERCIAL_DIRECTOR",
+      "gateId": "GATE-LEGAL-ENTITY",
+      "status": "BLOCKED",
+      "mc16Impact": "No seller, merchant-of-record, invoice or legal-entity model may be instantiated."
+    },
+    {
+      "dependencyId": "DEP-MC16-03",
+      "description": "MAREA trademark clearance and public-use decision",
+      "ownerRole": "LEGAL_COUNSEL",
+      "gateId": "GATE-IP-CLEARANCE",
+      "status": "NOT_GRANTED",
+      "mc16Impact": "No public brand field, page title or structured-data brand may assert MAREA."
+    },
+    {
+      "dependencyId": "DEP-MC16-04",
+      "description": "OPEN-MARINE ownership, assignment and outbound licence",
+      "ownerRole": "LEGAL_COUNSEL",
+      "gateId": "GATE-IP-CLEARANCE",
+      "status": "NOT_CLEARED",
+      "mc16Impact": "No ownership or open-source licence statement may be modelled as a product attribute."
+    },
+    {
+      "dependencyId": "DEP-MC16-05",
+      "description": "Chart and weather data licences",
+      "ownerRole": "DATA_RIGHTS_OWNER",
+      "gateId": "GATE-DATA-LICENSING",
+      "status": "NOT_GRANTED",
+      "mc16Impact": "No licensed-data entitlement may be exposed or bundled."
+    },
+    {
+      "dependencyId": "DEP-MC16-06",
+      "description": "DPIA, Article 28 DPA and privacy notices",
+      "ownerRole": "DPO",
+      "gateId": "GATE-PRIVACY-DPA-DPIA",
+      "status": "BLOCKED",
+      "mc16Impact": "No customer, vessel, telemetry or consent data model may be activated."
+    },
+    {
+      "dependencyId": "DEP-MC16-07",
+      "description": "CRA classification, support period and incident process",
+      "ownerRole": "SECURITY_LEAD",
+      "gateId": "GATE-CRA-CYBERSECURITY",
+      "status": "BLOCKED",
+      "mc16Impact": "No update, support-period or security attribute may be published."
+    },
+    {
+      "dependencyId": "DEP-MC16-08",
+      "description": "Consumer, B2B, subscription and installer terms",
+      "ownerRole": "LEGAL_COUNSEL",
+      "gateId": "GATE-CONSUMER-TERMS",
+      "status": "BLOCKED",
+      "mc16Impact": "No order, renewal, cancellation or withdrawal state machine may be activated."
+    },
+    {
+      "dependencyId": "DEP-MC16-09",
+      "description": "Approved claims with bilingual parity",
+      "ownerRole": "COMMERCIAL_DIRECTOR",
+      "gateId": "GATE-COMMERCIAL-CLAIMS",
+      "status": "NOT_AUTHORIZED",
+      "mc16Impact": "No claim, compatibility, availability or performance attribute may be published."
+    },
+    {
+      "dependencyId": "DEP-MC16-10",
+      "description": "Approved price list with VAT basis and territory",
+      "ownerRole": "FINANCE_LEAD",
+      "gateId": "GATE-PRICING",
+      "status": "NONE",
+      "mc16Impact": "No offer, price, currency or VAT attribute may become customer-visible."
+    },
+    {
+      "dependencyId": "DEP-MC16-11",
+      "description": "Merchant agreement and checkout evidence",
+      "ownerRole": "FINANCE_LEAD",
+      "gateId": "GATE-PAYMENTS",
+      "status": "BLOCKED",
+      "mc16Impact": "No payment, refund or chargeback state may be activated."
+    },
+    {
+      "dependencyId": "DEP-MC16-12",
+      "description": "Product liability insurance",
+      "ownerRole": "FINANCE_LEAD",
+      "gateId": "GATE-INSURANCE",
+      "status": "BLOCKED",
+      "mc16Impact": "No insurance or liability statement may be published."
+    },
+    {
+      "dependencyId": "DEP-MC16-13",
+      "description": "EU market placement, conformity and traceability",
+      "ownerRole": "PRODUCT_COMPLIANCE_ENGINEER",
+      "gateId": "GATE-MARKET-PLACEMENT",
+      "status": "BLOCKED",
+      "mc16Impact": "No serial, traceability or CE attribute may be published."
+    },
+    {
+      "dependencyId": "DEP-MC16-14",
+      "description": "PILOT independent safety case and supervised trials",
+      "ownerRole": "HARDWARE_LEAD",
+      "gateId": "GATE-SAFETY-PILOT",
+      "status": "BLOCKED",
+      "mc16Impact": "PILOT stays unorderable and outside every checkout path."
+    },
+    {
+      "dependencyId": "DEP-MC16-15",
+      "description": "Website findings remediation closure",
+      "ownerRole": "COMMERCIAL_DIRECTOR",
+      "gateId": "GATE-WEBSITE-REMEDIATION",
+      "status": "EVIDENCE_REQUIRED",
+      "mc16Impact": "Existing shop, legal and SEO surfaces stay blocked for publication."
+    },
+    {
+      "dependencyId": "DEP-MC16-16",
+      "description": "Commerce decision for the existing sample shop",
+      "ownerRole": "COMMERCIAL_DIRECTOR",
+      "gateId": "GATE-CONSUMER-TERMS",
+      "status": "UNDECIDED",
+      "mc16Impact": "No decision exists on disabling or separating the sample commerce before MAREA publication."
+    }
+  ],
+  "mc16Preconditions": [
+    {
+      "preconditionId": "PRE-MC16-01",
+      "description": "Written MC-16 authorisation separate from MC-15",
+      "status": "NOT_GRANTED"
+    },
+    {
+      "preconditionId": "PRE-MC16-02",
+      "description": "All 13 release gates closed with verified external evidence",
+      "status": "OPEN_0_OF_13"
+    },
+    {
+      "preconditionId": "PRE-MC16-03",
+      "description": "All 24 required documents executed and verified",
+      "status": "OPEN_0_OF_24"
+    },
+    {
+      "preconditionId": "PRE-MC16-04",
+      "description": "All 34 website findings remediated and independently reviewed",
+      "status": "OPEN_0_OF_34"
+    },
+    {
+      "preconditionId": "PRE-MC16-05",
+      "description": "Verified legal identity and approved consumer terms",
+      "status": "BLOCKED"
+    },
+    {
+      "preconditionId": "PRE-MC16-06",
+      "description": "Approved price list, VAT basis and stock provenance",
+      "status": "NONE"
+    },
+    {
+      "preconditionId": "PRE-MC16-07",
+      "description": "Trademark clearance and recorded public-use decision",
+      "status": "NOT_GRANTED"
+    },
+    {
+      "preconditionId": "PRE-MC16-08",
+      "description": "Chart, weather and software licensing cleared",
+      "status": "NOT_CLEARED"
+    },
+    {
+      "preconditionId": "PRE-MC16-09",
+      "description": "Privacy, DPIA and processor agreements complete",
+      "status": "BLOCKED"
+    },
+    {
+      "preconditionId": "PRE-MC16-10",
+      "description": "PILOT safety case and independent review complete",
+      "status": "BLOCKED"
+    }
+  ],
+  "handoffChecks": {
+    "gatesCarried": 13,
+    "documentsCarried": 24,
+    "familyIds": 9,
+    "editionIds": 26,
+    "bundleIds": 6,
+    "proposedRouteIds": 23,
+    "currentRouteIds": 21,
+    "findingsMapped": 34,
+    "findingsClosed": 0,
+    "routesPublished": 0,
+    "pricesApproved": 0,
+    "stockRecordsPresent": 0,
+    "certificationsGranted": 0,
+    "MC16_STARTED": false
+  },
+  "honestLimit": "Internal handoff only. No MC-16 model, schema, endpoint, checkout, price, stock, entitlement, entitlement ledger, billing, certification, clearance or publication is designed, implemented or authorised by this file."
+}

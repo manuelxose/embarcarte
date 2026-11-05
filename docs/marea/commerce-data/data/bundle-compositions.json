@@ -1,0 +1,785 @@
+{
+  "contractId": "MC16-BUNDLE-COMPOSITIONS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "sourceRefs": [
+    "docs/marea/bundles/bundle-definitions.json",
+    "docs/marea/information-architecture/data/mc16-handoff-inputs.json"
+  ],
+  "bundles": [
+    {
+      "bundleId": "START",
+      "displayName": "MAREA START",
+      "customerFacingName": "MAREA START",
+      "lifecycleState": "DEFINED",
+      "readinessState": "INTERNAL_ONLY_DEFINED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "fixedPackagePriceEstablished": false,
+      "contractedSolution": false,
+      "hardwareIncludedByDefault": false,
+      "slaEstablished": false,
+      "routeId": "mareaSolutionStart",
+      "components": [
+        {
+          "lineId": "ST-01",
+          "editionId": "HUB-STANDARD",
+          "familyId": "HUB",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "ST-02",
+          "editionId": "NAV-PRO",
+          "familyId": "NAV",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-NAV-PRO"
+          ]
+        }
+      ],
+      "optionalComponents": [
+        {
+          "lineId": "ST-03",
+          "editionId": "HUB-PRO",
+          "familyId": "HUB",
+          "quantity": 1,
+          "inclusion": "OPTIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "ST-04",
+          "editionId": "WEATHER-STANDARD",
+          "familyId": "WEATHER",
+          "quantity": 1,
+          "inclusion": "OPTIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-WEATHER"
+          ]
+        }
+      ],
+      "ineligibleEditions": [],
+      "contractOnlyEditions": [],
+      "externalRequirements": [
+        "installation",
+        "cabling",
+        "commissioning",
+        "licensed chart or weather data where applicable",
+        "SIM/connectivity where applicable"
+      ],
+      "compatibilityStatus": "UNTESTED",
+      "installationRequirement": "INSTALLER_ASSISTED",
+      "entitlementCapabilityIds": [
+        "ENT-NAV-PRO",
+        "ENT-WEATHER"
+      ],
+      "evidenceIds": [
+        "EV-MC08-START",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "releaseGateDependencies": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "priceEvidenceIds": [],
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "checkoutAllowed": false,
+      "orderable": false
+    },
+    {
+      "bundleId": "CRUISE",
+      "displayName": "MAREA CRUISE",
+      "customerFacingName": "MAREA CRUISE",
+      "lifecycleState": "DEFINED",
+      "readinessState": "INTERNAL_ONLY_DEFINED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "fixedPackagePriceEstablished": false,
+      "contractedSolution": false,
+      "hardwareIncludedByDefault": false,
+      "slaEstablished": false,
+      "routeId": "mareaSolutionCruise",
+      "components": [
+        {
+          "lineId": "CR-01",
+          "editionId": "NAV-ESSENTIAL",
+          "familyId": "NAV",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-NAV-ESSENTIAL"
+          ]
+        },
+        {
+          "lineId": "CR-02",
+          "editionId": "HUB-STANDARD",
+          "familyId": "HUB",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CR-03",
+          "editionId": "AIS-RECEIVER",
+          "familyId": "AIS",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CR-04",
+          "editionId": "DISPLAY-7",
+          "familyId": "DISPLAY",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        }
+      ],
+      "optionalComponents": [
+        {
+          "lineId": "CR-06",
+          "editionId": "AIS-CONNECTED",
+          "familyId": "AIS",
+          "quantity": 1,
+          "inclusion": "CONDITIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CR-05",
+          "editionId": "NAV-PRO",
+          "familyId": "NAV",
+          "quantity": 1,
+          "inclusion": "OPTIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-NAV-PRO"
+          ]
+        },
+        {
+          "lineId": "CR-08",
+          "editionId": "WEATHER-STANDARD",
+          "familyId": "WEATHER",
+          "quantity": 1,
+          "inclusion": "OPTIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-WEATHER"
+          ]
+        }
+      ],
+      "ineligibleEditions": [
+        {
+          "lineId": "CR-07",
+          "editionId": "DISPLAY-LARGE-CONDITIONAL",
+          "reason": "CONDITIONAL_SIZE_NOT_SELECTABLE"
+        }
+      ],
+      "contractOnlyEditions": [],
+      "externalRequirements": [
+        "installation",
+        "cabling",
+        "commissioning",
+        "licensed chart or weather data where applicable",
+        "SIM/connectivity where applicable"
+      ],
+      "compatibilityStatus": "UNTESTED",
+      "installationRequirement": "PROFESSIONAL_REQUIRED",
+      "entitlementCapabilityIds": [
+        "ENT-NAV-ESSENTIAL",
+        "ENT-NAV-PRO",
+        "ENT-WEATHER"
+      ],
+      "evidenceIds": [
+        "EV-MC08-CRUISE",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "releaseGateDependencies": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "priceEvidenceIds": [],
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "checkoutAllowed": false,
+      "orderable": false
+    },
+    {
+      "bundleId": "SAIL",
+      "displayName": "MAREA SAIL",
+      "customerFacingName": "MAREA SAIL",
+      "lifecycleState": "DEFINED",
+      "readinessState": "BLOCKED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "fixedPackagePriceEstablished": false,
+      "contractedSolution": false,
+      "hardwareIncludedByDefault": false,
+      "slaEstablished": false,
+      "routeId": "mareaSolutionSail",
+      "components": [
+        {
+          "lineId": "SL-01",
+          "editionId": "NAV-PRO",
+          "familyId": "NAV",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-NAV-PRO"
+          ]
+        },
+        {
+          "lineId": "SL-02",
+          "editionId": "HUB-STANDARD",
+          "familyId": "HUB",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "SL-03",
+          "editionId": "PILOT-COASTAL",
+          "familyId": "PILOT",
+          "quantity": 1,
+          "inclusion": "QUOTATION_REQUIRED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        }
+      ],
+      "optionalComponents": [
+        {
+          "lineId": "SL-04",
+          "editionId": "SENSE-WIND",
+          "familyId": "SENSE",
+          "quantity": 1,
+          "inclusion": "CONDITIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "SL-05",
+          "editionId": "PILOT-SAIL",
+          "familyId": "PILOT",
+          "quantity": 1,
+          "inclusion": "CONDITIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        }
+      ],
+      "ineligibleEditions": [
+        {
+          "lineId": "SL-06",
+          "editionId": "PILOT-PRO",
+          "reason": "INSTALLATION_PACKAGE_NEVER_A_PRICED_SKU_OR_BUNDLE_LINE"
+        }
+      ],
+      "contractOnlyEditions": [],
+      "externalRequirements": [
+        "installation",
+        "cabling",
+        "commissioning",
+        "licensed chart or weather data where applicable",
+        "SIM/connectivity where applicable"
+      ],
+      "compatibilityStatus": "UNTESTED",
+      "installationRequirement": "QUOTATION_REQUIRED",
+      "entitlementCapabilityIds": [
+        "ENT-NAV-PRO"
+      ],
+      "evidenceIds": [
+        "EV-MC08-SAIL",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "releaseGateDependencies": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "priceEvidenceIds": [],
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "checkoutAllowed": false,
+      "orderable": false
+    },
+    {
+      "bundleId": "PROTECT",
+      "displayName": "MAREA PROTECT",
+      "customerFacingName": "MAREA PROTECT",
+      "lifecycleState": "DEFINED",
+      "readinessState": "INTERNAL_ONLY_DEFINED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "fixedPackagePriceEstablished": false,
+      "contractedSolution": false,
+      "hardwareIncludedByDefault": false,
+      "slaEstablished": false,
+      "routeId": "mareaSolutionProtect",
+      "components": [
+        {
+          "lineId": "PR-01",
+          "editionId": "WATCH-CORE",
+          "familyId": "WATCH",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-WATCH"
+          ]
+        },
+        {
+          "lineId": "PR-02",
+          "editionId": "SENSE-ESSENTIALS",
+          "familyId": "SENSE",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [
+            "SENSE-POWER",
+            "SENSE-BILGE"
+          ],
+          "subscriptionCapabilityIds": []
+        }
+      ],
+      "optionalComponents": [
+        {
+          "lineId": "PR-05",
+          "editionId": "WATCH-PLUS",
+          "familyId": "WATCH",
+          "quantity": 1,
+          "inclusion": "CONDITIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-WATCH"
+          ]
+        },
+        {
+          "lineId": "PR-04",
+          "editionId": "HUB-STANDARD",
+          "familyId": "HUB",
+          "quantity": 1,
+          "inclusion": "OPTIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        }
+      ],
+      "ineligibleEditions": [],
+      "contractOnlyEditions": [],
+      "externalRequirements": [
+        "installation",
+        "cabling",
+        "commissioning",
+        "licensed chart or weather data where applicable",
+        "SIM/connectivity where applicable"
+      ],
+      "compatibilityStatus": "UNTESTED",
+      "installationRequirement": "INSTALLER_ASSISTED",
+      "entitlementCapabilityIds": [
+        "ENT-WATCH"
+      ],
+      "evidenceIds": [
+        "EV-MC08-PROTECT",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "releaseGateDependencies": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-IP-CLEARANCE",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "priceEvidenceIds": [],
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "checkoutAllowed": false,
+      "orderable": false
+    },
+    {
+      "bundleId": "COMPLETE",
+      "displayName": "MAREA COMPLETE",
+      "customerFacingName": "MAREA COMPLETE",
+      "lifecycleState": "DEFINED",
+      "readinessState": "BLOCKED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "fixedPackagePriceEstablished": false,
+      "contractedSolution": false,
+      "hardwareIncludedByDefault": false,
+      "slaEstablished": false,
+      "routeId": "mareaSolutionComplete",
+      "components": [
+        {
+          "lineId": "CP-01",
+          "editionId": "NAV-PRO",
+          "familyId": "NAV",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-NAV-PRO"
+          ]
+        },
+        {
+          "lineId": "CP-02",
+          "editionId": "HUB-PRO",
+          "familyId": "HUB",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CP-03",
+          "editionId": "DISPLAY-7",
+          "familyId": "DISPLAY",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CP-04",
+          "editionId": "WATCH-CORE",
+          "familyId": "WATCH",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-WATCH"
+          ]
+        },
+        {
+          "lineId": "CP-05",
+          "editionId": "SENSE-POWER",
+          "familyId": "SENSE",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CP-06",
+          "editionId": "SENSE-BILGE",
+          "familyId": "SENSE",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CP-07",
+          "editionId": "SENSE-TANKS",
+          "familyId": "SENSE",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CP-08",
+          "editionId": "SENSE-ENV",
+          "familyId": "SENSE",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CP-09",
+          "editionId": "PILOT-COASTAL",
+          "familyId": "PILOT",
+          "quantity": 1,
+          "inclusion": "QUOTATION_REQUIRED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        }
+      ],
+      "optionalComponents": [
+        {
+          "lineId": "CP-14",
+          "editionId": "PILOT-SAIL",
+          "familyId": "PILOT",
+          "quantity": 1,
+          "inclusion": "CONDITIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CP-10",
+          "editionId": "AIS-RECEIVER",
+          "familyId": "AIS",
+          "quantity": 1,
+          "inclusion": "OPTIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "CP-11",
+          "editionId": "WEATHER-PRO",
+          "familyId": "WEATHER",
+          "quantity": 1,
+          "inclusion": "OPTIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-WEATHER"
+          ]
+        }
+      ],
+      "ineligibleEditions": [
+        {
+          "lineId": "CP-13",
+          "editionId": "PILOT-PRO",
+          "reason": "INSTALLATION_PACKAGE_NEVER_A_PRICED_SKU_OR_BUNDLE_LINE"
+        },
+        {
+          "lineId": "CP-15",
+          "editionId": "DISPLAY-LARGE-CONDITIONAL",
+          "reason": "CONDITIONAL_SIZE_NOT_SELECTABLE"
+        }
+      ],
+      "contractOnlyEditions": [],
+      "externalRequirements": [
+        "installation",
+        "cabling",
+        "commissioning",
+        "licensed chart or weather data where applicable",
+        "SIM/connectivity where applicable"
+      ],
+      "compatibilityStatus": "UNTESTED",
+      "installationRequirement": "QUOTATION_REQUIRED",
+      "entitlementCapabilityIds": [
+        "ENT-NAV-PRO",
+        "ENT-WATCH",
+        "ENT-WEATHER"
+      ],
+      "evidenceIds": [
+        "EV-MC08-COMPLETE",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "releaseGateDependencies": [
+        "GATE-MARKET-PLACEMENT",
+        "GATE-SAFETY-PILOT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-INSURANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "priceEvidenceIds": [],
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "checkoutAllowed": false,
+      "orderable": false
+    },
+    {
+      "bundleId": "FLEET",
+      "displayName": "MAREA FLEET",
+      "customerFacingName": "MAREA FLEET package",
+      "lifecycleState": "DEFINED",
+      "readinessState": "INTERNAL_ONLY_DEFINED",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "publicationState": "INTERNAL_ONLY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "priceApproved": false,
+      "fixedPackagePriceEstablished": false,
+      "contractedSolution": true,
+      "hardwareIncludedByDefault": false,
+      "slaEstablished": false,
+      "routeId": "mareaSolutionFleet",
+      "components": [
+        {
+          "lineId": "FP-01",
+          "editionId": "FLEET-START",
+          "familyId": "FLEET",
+          "quantity": 1,
+          "inclusion": "INCLUDED",
+          "required": true,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-FLEET"
+          ]
+        }
+      ],
+      "optionalComponents": [
+        {
+          "lineId": "FP-05",
+          "editionId": "WATCH-CORE",
+          "familyId": "WATCH",
+          "quantity": 1,
+          "inclusion": "OPTIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": [
+            "ENT-WATCH"
+          ]
+        },
+        {
+          "lineId": "FP-06",
+          "editionId": "HUB-STANDARD",
+          "familyId": "HUB",
+          "quantity": 1,
+          "inclusion": "OPTIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        },
+        {
+          "lineId": "FP-12",
+          "editionId": "FLEET-BUSINESS",
+          "familyId": "FLEET",
+          "quantity": 1,
+          "inclusion": "OPTIONAL",
+          "required": false,
+          "expandsTo": [],
+          "subscriptionCapabilityIds": []
+        }
+      ],
+      "ineligibleEditions": [],
+      "contractOnlyEditions": [
+        {
+          "lineId": "FP-02",
+          "editionId": "FLEET-ENTERPRISE",
+          "reason": "CONTRACTED_B2B_TIER_NOT_SELF_SERVICE"
+        }
+      ],
+      "externalRequirements": [
+        "installation",
+        "cabling",
+        "commissioning",
+        "licensed chart or weather data where applicable",
+        "SIM/connectivity where applicable"
+      ],
+      "compatibilityStatus": "UNTESTED",
+      "installationRequirement": "QUOTATION_REQUIRED",
+      "entitlementCapabilityIds": [
+        "ENT-FLEET",
+        "ENT-WATCH"
+      ],
+      "evidenceIds": [
+        "EV-MC08-FLEET",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "releaseGateDependencies": [
+        "GATE-SAFETY-PILOT",
+        "GATE-IP-CLEARANCE",
+        "GATE-DATA-LICENSING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-CONSUMER-TERMS",
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-PRICING",
+        "GATE-PAYMENTS",
+        "GATE-LEGAL-ENTITY",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "priceEvidenceIds": [],
+      "publicationAuthorized": false,
+      "indexationAuthorized": false,
+      "checkoutAllowed": false,
+      "orderable": false
+    }
+  ]
+}

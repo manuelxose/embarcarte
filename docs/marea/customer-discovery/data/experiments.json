@@ -1,0 +1,311 @@
+{
+  "contractId": "MAREA-MC10-CUSTOMER-DISCOVERY-CONTRACT",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-10",
+  "owner": "agent-f-data",
+  "date": "2026-11-01",
+  "registeredVersion": "MC-09-REGISTRY-1.0.0",
+  "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+  "canonicalization": {
+    "algorithm": "Recursively sort every object key ascending; serialize the whole MC-09 experiment object with JSON.stringify(value, null, 2); no trailing newline; encode UTF-8; SHA-256; lowercase hexadecimal.",
+    "scope": "Entire MC-09 experiment record, not only the decisionThreshold field."
+  },
+  "gate": {
+    "authorizationRecord": "AUTH-MC10-001",
+    "authorizationStatus": "NOT_GRANTED",
+    "fieldworkStatus": "BLOCKED",
+    "executionAllowed": false
+  },
+  "experiments": [
+    {
+      "experimentId": "EXP-MC10-01",
+      "registeredVersion": "MC-09-REGISTRY-1.0.0",
+      "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+      "thresholdSha256": "199d1707131d0f104481d54c41902022403e266bcc6b3803a898d6db5671e28e",
+      "hypothesis": "At least four of the eight defined buyer segments experience a recurring, economically consequential boat-data fragmentation problem that they already spend money or time to work around, and can describe a recent real purchase made to address it.",
+      "segment": "B2C owners (recreational motorboat, sailing, marina-based) and B2B operators (charter, fleet manager, marina/shipyard); installers and retailers are interviewed as intermediaries, not as problem owners.",
+      "minimumEvidence": "Minimum 5 and target 8-10 completed interviews per narrowly defined segment (n=40-80 total), each with a verbatim-coded transcript and a documented purchase-history answer naming product, year, amount band and currency. Two independent coders. Saturation recorded per segment (no new code in the last two interviews). Statistical inference is explicitly not attempted.",
+      "decisionThreshold": "PASS (problem exists): a problem theme appears unprompted in >=60% of coded units in a segment AND >=50% of that segment's participants name a concrete prior spend or workaround cost. FAIL (no material problem): theme appears in <=20% of participants and no current spend is evidenced. Between 20% and 60% = INCONCLUSIVE, requiring a quantitative stage. No threshold may be relaxed after fielding.",
+      "executionStatus": "NOT_EXECUTED",
+      "resultStatus": "BLOCKED",
+      "blockerCodes": [
+        "BLK-MC10-01",
+        "BLK-MC10-02",
+        "BLK-MC10-03",
+        "BLK-MC10-04",
+        "BLK-MC10-05",
+        "BLK-MC10-06",
+        "BLK-MC10-07"
+      ],
+      "evidence": {
+        "participants": 0,
+        "validCases": 0,
+        "responses": 0
+      },
+      "whatWouldCountAsEvidence": "A completed record for a real eligible participant with valid consent, an unprompted problem statement captured before concept exposure, a documented recent purchase (product, year, amount band, currency) and a valid double-coded unit meeting the registered per-segment minimum.",
+      "interpretationLimits": "Qualitative, non-probability sample: no margin of error, no representativeness and no market-size or demand-size inference. Single prepared geography (Galicia / Rias Baixas).",
+      "nextStep": "None until AUTH-MC10-001 is GRANTED; then W1 with SEG-01, SEG-02 and SEG-03 first, under the frozen instrument version."
+    },
+    {
+      "experimentId": "EXP-MC10-02",
+      "registeredVersion": "MC-09-REGISTRY-1.0.0",
+      "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+      "thresholdSha256": "e4d4c05f1dc710f912476989185e977b75c1fef5225f38b60b9aaf2f6ebc887a",
+      "hypothesis": "Marine-electronics installers will not fit an unproven multi-brand gateway or sensor system into customer vessels without a published compatibility matrix, a documented commissioning procedure, a named warranty/liability position and a rework path; their objections, not boat-owner enthusiasm, are the binding constraint on refit-led adoption.",
+      "segment": "Independent marine electronics installers and small refit yards in Galicia, northern Portugal and the wider Spanish Atlantic coast.",
+      "minimumEvidence": "Minimum 5 completed interviews with installers who have at least 5 years of refit experience and have installed first-party electronics from at least two brands in the last 24 months. Each interview must produce a named list of go/no-go installation requirements and a liability/insurance statement in the participant's own words.",
+      "decisionThreshold": "PASS (channel viable in principle): >=70% of installers independently name compatibility evidence and warranty/RMA clarity as mandatory before fitting, and >=50% say a documented checklist plus named liability position would make them willing to run a supervised trial install. FAIL: the majority say no checklist or documentation would change their position. Documented signed trial intent would be a separate later test; verbal interest alone is not evidence of a trial.",
+      "executionStatus": "NOT_EXECUTED",
+      "resultStatus": "BLOCKED",
+      "blockerCodes": [
+        "BLK-MC10-01",
+        "BLK-MC10-02",
+        "BLK-MC10-03",
+        "BLK-MC10-04",
+        "BLK-MC10-05",
+        "BLK-MC10-06",
+        "BLK-MC10-07"
+      ],
+      "evidence": {
+        "participants": 0,
+        "validCases": 0,
+        "responses": 0
+      },
+      "whatWouldCountAsEvidence": "A completed record for a real eligible installer with valid consent, a go/no-go installation requirement list and a liability/insurance statement in the participant own words, meeting the registered minimum experience criteria.",
+      "interpretationLimits": "Reactions to a product that does not exist and has no tested compatibility rows; verbal interest is not a trial commitment and no installed-channel revenue is measured.",
+      "nextStep": "None until AUTH-MC10-001 is GRANTED; then W1/W3 with SEG-04 installers through authorized channels only."
+    },
+    {
+      "experimentId": "EXP-MC10-03",
+      "registeredVersion": "MC-09-REGISTRY-1.0.0",
+      "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+      "thresholdSha256": "46e535074b9e45fb2977362d9e37e9b2889308a5d72ec0c5ee400392acd72737",
+      "hypothesis": "Owners and small operators reject an always-on subscription for locally available functions but will consider a subscription for genuinely continuous external services (forecast data, remote monitoring, connectivity), provided local safety and navigation functions keep working without it.",
+      "segment": "Sailing and motorboat owners (B2C), charter organisations and fleet managers (B2B); marina-based owners as a remotely-monitored sub-segment.",
+      "minimumEvidence": "All interviewed participants complete the subscription-attitude block; >=5 objection codes per segment and at least one unprompted alternative payment model per participant. Van Westendorp subscription module completed by every participant (n=5-10 per segment, indicative only).",
+      "decisionThreshold": "PASS (subscription model conditionally acceptable): >=50% of a segment names at least one external-service subscription they would consider AND >=50% state that loss of local functions would be a blocking objection that must be answered. FAIL: a majority reject any recurring charge regardless of service scope. Indicative acceptable ranges from Van Westendorp are recorded as hypotheses for quantitative testing only.",
+      "executionStatus": "NOT_EXECUTED",
+      "resultStatus": "BLOCKED",
+      "blockerCodes": [
+        "BLK-MC10-01",
+        "BLK-MC10-02",
+        "BLK-MC10-03",
+        "BLK-MC10-04",
+        "BLK-MC10-05",
+        "BLK-MC10-06",
+        "BLK-MC10-07"
+      ],
+      "evidence": {
+        "participants": 0,
+        "validCases": 0,
+        "responses": 0
+      },
+      "whatWouldCountAsEvidence": "A completed record for a real eligible participant who answered the subscription-attitude block with a coded objection, an external-service consideration and a local-function lockout reaction, meeting the registered minimum per segment.",
+      "interpretationLimits": "Stated acceptance of a hypothetical service is not conversion; small n cannot estimate churn or price elasticity and no subscription price is measured.",
+      "nextStep": "None until AUTH-MC10-001 is GRANTED; then W2 after the comprehension gate, under the frozen instrument version."
+    },
+    {
+      "experimentId": "EXP-MC10-04",
+      "registeredVersion": "MC-09-REGISTRY-1.0.0",
+      "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+      "thresholdSha256": "9003cbc60cac89b900300466d67f21fb8a7dfbac253d3e5b51520776152db274",
+      "hypothesis": "Purchase intent for a reference NAV+HUB configuration and for a monitoring configuration declines gradually rather than collapsing across the tested price ladder, and the 50% intent price band differs materially between owner segments and channels.",
+      "segment": "Sailing owners, recreational motorboat owners and marina-based owners; installers asked about the resale price they could defend to a customer.",
+      "minimumEvidence": "Gabor-Granger ladder with at least five price points per configuration (hypothesis figures only, never shown as orderable), every participant answering all points; n>=8 per segment per configuration. Buy-response scale fixed before fielding. Price ladders derived from MC-09 price observations, not invented on the day.",
+      "decisionThreshold": "Indicative only in MC-10: a monotone demand curve and a 50% intent price interval recorded per segment. No price may be approved from this experiment. PASS for progression means the data are internally consistent (monotone decline in at least 4 of 5 ladders, no participant answering in under 60 seconds) and produce a testable range for a later quantitative study with n>=100 per segment. FAIL: non-monotone or unusable responses in the majority of ladders.",
+      "executionStatus": "NOT_EXECUTED",
+      "resultStatus": "BLOCKED",
+      "blockerCodes": [
+        "BLK-MC10-01",
+        "BLK-MC10-02",
+        "BLK-MC10-03",
+        "BLK-MC10-04",
+        "BLK-MC10-05",
+        "BLK-MC10-06",
+        "BLK-MC10-07"
+      ],
+      "evidence": {
+        "participants": 0,
+        "validCases": 0,
+        "responses": 0
+      },
+      "whatWouldCountAsEvidence": "Every registered Gabor-Granger price point answered by a real eligible participant on the frozen ladder, with currency, VAT treatment and the fixed buy-response scale, at the registered minimum per segment and configuration.",
+      "interpretationLimits": "Indicative stated preference only: no conversion, elasticity, revenue or approved price may be derived; hypothetical bias is not corrected by this design.",
+      "nextStep": "None until AUTH-MC10-001 is GRANTED; then W2 using only the frozen ladders recorded in data/pricing-ladders.json."
+    },
+    {
+      "experimentId": "EXP-MC10-05",
+      "registeredVersion": "MC-09-REGISTRY-1.0.0",
+      "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+      "thresholdSha256": "5d6d71906b77afb0594195c6163b63bc9d9031878cbe48a3f36e174d2a24b976",
+      "hypothesis": "Owners and operators hold a coherent acceptable price range for navigation/weather software and for monitoring hardware-plus-subscription, and their too-cheap, bargain, expensive and too-expensive points cluster by segment rather than being randomly distributed.",
+      "segment": "B2C owners (sailing, motorboat, marina-based) and B2B operators (charter, fleet managers) asked separately about software and about hardware-plus-service constructs.",
+      "minimumEvidence": "All four Van Westendorp questions answered per construct; n>=8 per segment per construct; consistency check (too cheap < bargain < expensive < too expensive) enforced and violations recorded, not silently corrected.",
+      "decisionThreshold": "PASS (usable price structure): >=70% of responses are internally consistent and the sample produces a non-degenerate acceptable range (range exists and is bounded by at least two responses on each side). FAIL: fewer than 50% consistent responses, or answers effectively uninterpretable because participants cannot separate hardware, software and installation cost.",
+      "executionStatus": "NOT_EXECUTED",
+      "resultStatus": "BLOCKED",
+      "blockerCodes": [
+        "BLK-MC10-01",
+        "BLK-MC10-02",
+        "BLK-MC10-03",
+        "BLK-MC10-04",
+        "BLK-MC10-05",
+        "BLK-MC10-06",
+        "BLK-MC10-07"
+      ],
+      "evidence": {
+        "participants": 0,
+        "validCases": 0,
+        "responses": 0
+      },
+      "whatWouldCountAsEvidence": "All four Van Westendorp questions answered for each construct by a real eligible participant, raw answers preserved with currency and VAT treatment, consistency violations recorded raw, at the registered minimum per segment.",
+      "interpretationLimits": "Stated-preference method only; sample too small for segment-level statistical confidence; derived ranges are hypotheses for a later quantitative study and never an approved price.",
+      "nextStep": "None until AUTH-MC10-001 is GRANTED; then W2, recording raw answers without silent correction."
+    },
+    {
+      "experimentId": "EXP-MC10-06",
+      "registeredVersion": "MC-09-REGISTRY-1.0.0",
+      "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+      "thresholdSha256": "ae2528b282482d23fb777f735660c988170df06bd65303331dca1e8531a4a742",
+      "hypothesis": "After hearing neutral concept descriptions, owners and operators can correctly restate what each bundle does and, critically, what it excludes (charts, installation, transponder transmission, collision avoidance, assured connectivity) without being prompted.",
+      "segment": "B2C owners and B2B operators; installers and retailers tested as explainers because they will repeat the description to customers.",
+      "minimumEvidence": "Unaided recall of composition and exclusions for at least three bundle concepts; two independent coders scoring against a fixed rubric; n>=5 per segment; verbatim transcript of the explanation step retained.",
+      "decisionThreshold": "PASS: >=70% of participants correctly restate at least two exclusions per concept AND <=20% hold a critical misconception. FAIL: >40% hold a critical misconception on any concept, which blocks any public copy for that concept. Between = INCONCLUSIVE, requiring copy revision and retest with a new sample.",
+      "executionStatus": "NOT_EXECUTED",
+      "resultStatus": "BLOCKED",
+      "blockerCodes": [
+        "BLK-MC10-01",
+        "BLK-MC10-02",
+        "BLK-MC10-03",
+        "BLK-MC10-04",
+        "BLK-MC10-05",
+        "BLK-MC10-06",
+        "BLK-MC10-07"
+      ],
+      "evidence": {
+        "participants": 0,
+        "validCases": 0,
+        "responses": 0
+      },
+      "whatWouldCountAsEvidence": "A real eligible participant shown the neutral concept description and scored by two independent coders against the fixed rubric, with unaided restatement, correct exclusions and critical misconceptions recorded in a completed record.",
+      "interpretationLimits": "Comprehension in a research session is not comprehension on a website under time pressure; no page, visual or real product exists and no copy claim is legally validated.",
+      "nextStep": "None until AUTH-MC10-001 is GRANTED; then W1 before any pricing discussion, under the frozen instrument version."
+    },
+    {
+      "experimentId": "EXP-MC10-07",
+      "registeredVersion": "MC-09-REGISTRY-1.0.0",
+      "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+      "thresholdSha256": "c16e255616e83bf6fcdf968f8349d0feaa45ae670d7693d11b151bae3314308e",
+      "hypothesis": "Small fleet managers and charter operators will consider a supervised, time-boxed operational trial of monitoring or fleet software and can articulate a concrete success criterion, but will not commit to a paying contract before installation, support and data-processing terms are defined.",
+      "segment": "Charter organisations (5-30 vessels), fleet managers, sailing schools and marina/shipyard operators managing third-party vessels.",
+      "minimumEvidence": "Minimum 5 interviews with operators responsible for at least 5 vessels; at least 3 must state a measurable trial success criterion (for example, alert response time, maintenance backlog, seasonal handover time). Recorded trial interest is categorical and conditional, never a signed contract.",
+      "decisionThreshold": "PASS (trial pathway exists): >=60% of operators state a concrete success criterion AND >=50% would accept a supervised trial with written data-processing terms. FAIL: operators decline any trial before a purchase-ready product exists. A letter of intent is required before any pilot is called agreed; verbal interest alone is not.",
+      "executionStatus": "NOT_EXECUTED",
+      "resultStatus": "BLOCKED",
+      "blockerCodes": [
+        "BLK-MC10-01",
+        "BLK-MC10-02",
+        "BLK-MC10-03",
+        "BLK-MC10-04",
+        "BLK-MC10-05",
+        "BLK-MC10-06",
+        "BLK-MC10-07"
+      ],
+      "evidence": {
+        "participants": 0,
+        "validCases": 0,
+        "responses": 0
+      },
+      "whatWouldCountAsEvidence": "A completed record for a real eligible operator responsible for at least five vessels, with a measurable trial success criterion, stated trial conditions and categorical (never contractual) trial interest.",
+      "interpretationLimits": "The pilot product does not exist; fleet software is a CONCEPT, so responses are hypothetical; no contract value, retention or churn can be established.",
+      "nextStep": "None until AUTH-MC10-001 is GRANTED; then W3. No pilot exists until a real authorized trial occurs in a later milestone."
+    },
+    {
+      "experimentId": "EXP-MC10-08",
+      "registeredVersion": "MC-09-REGISTRY-1.0.0",
+      "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+      "thresholdSha256": "1600ef293030f7f1ea4e6239226421c8419d37e614ad3432f86e053b11b3ba3f",
+      "hypothesis": "Marine retailers and chandlers will stock or display a marine data gateway/sensor product only if it is demonstrable, has a clear returns and warranty process, and does not require them to provide technical support they cannot staff.",
+      "segment": "Independent chandlers and small marine retail chains in Galicia and northern Portugal, plus one or two online specialists.",
+      "minimumEvidence": "Minimum 5 interviews with owners or buyers authorised to decide ranging; each must state margin expectation, returns handling and support boundary in their own words.",
+      "decisionThreshold": "PASS (retail channel plausible): >=60% name a condition they could meet at launch (demo unit, documented returns, staff training) and none identifies an unmet condition that MAREA cannot satisfy. FAIL: retailers require exclusivity, guaranteed sell-through or funded in-store support that the programme cannot offer.",
+      "executionStatus": "NOT_EXECUTED",
+      "resultStatus": "BLOCKED",
+      "blockerCodes": [
+        "BLK-MC10-01",
+        "BLK-MC10-02",
+        "BLK-MC10-03",
+        "BLK-MC10-04",
+        "BLK-MC10-05",
+        "BLK-MC10-06",
+        "BLK-MC10-07"
+      ],
+      "evidence": {
+        "participants": 0,
+        "validCases": 0,
+        "responses": 0
+      },
+      "whatWouldCountAsEvidence": "A completed record for a real eligible retailer or buyer authorized to decide ranging, stating margin expectation, returns handling and support boundary in their own words, with a categorical stocking stance.",
+      "interpretationLimits": "No physical product, packaging or distributor terms; stated stocking stance is not a purchase order and cannot establish channel margins or sell-through.",
+      "nextStep": "None until AUTH-MC10-001 is GRANTED; then W3 through authorized channels only."
+    },
+    {
+      "experimentId": "EXP-MC10-09",
+      "registeredVersion": "MC-09-REGISTRY-1.0.0",
+      "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+      "thresholdSha256": "73a403e980513e48cb932d3d8e34f607671efc8a2ab1e018ae169055fa3e11a4",
+      "hypothesis": "Owners of unattended vessels and marina/shipyard operators share the same operational problem (knowing whether a boat is safe afloat) but value different evidence: owners want bilge/power/geofence alerts, operators want work-list and handover information rather than raw sensor feeds.",
+      "segment": "Marina-based owner-occupiers, marina operators and shipyards that manage third-party vessels in the water.",
+      "minimumEvidence": "Minimum 5 owner interviews and 3 operator interviews; each participant must describe a concrete recent incident or near-miss with an unattended vessel and what information they lacked.",
+      "decisionThreshold": "PASS (shared problem, different jobs): >=60% of owners name at least one alert they would act on AND >=2 operators name a handover or work-list information need. FAIL: monitoring is considered a marina-provided service that owners will not pay for separately.",
+      "executionStatus": "NOT_EXECUTED",
+      "resultStatus": "BLOCKED",
+      "blockerCodes": [
+        "BLK-MC10-01",
+        "BLK-MC10-02",
+        "BLK-MC10-03",
+        "BLK-MC10-04",
+        "BLK-MC10-05",
+        "BLK-MC10-06",
+        "BLK-MC10-07"
+      ],
+      "evidence": {
+        "participants": 0,
+        "validCases": 0,
+        "responses": 0
+      },
+      "whatWouldCountAsEvidence": "A completed record for a real eligible owner naming a concrete recent unattended-vessel incident or near-miss and the information lacked, and for a real eligible operator naming a handover or work-list information need, at the registered minimum owner/operator split.",
+      "interpretationLimits": "No deployed monitoring hardware; connectivity, battery and alerting promises cannot be tested and monitoring remains a CONCEPT with no guarantee implied.",
+      "nextStep": "None until AUTH-MC10-001 is GRANTED; then W1/W3, with the owner and operator sides analysed separately."
+    },
+    {
+      "experimentId": "EXP-MC10-10",
+      "registeredVersion": "MC-09-REGISTRY-1.0.0",
+      "frozenFrom": "docs/marea/market-validation/data/validation-experiments.json",
+      "thresholdSha256": "0e5eb0e20b7a6714120aa469d889073cc6e190de66ccd5ec7dea0025c7d3364f",
+      "hypothesis": "Trust, warranty and data-ownership concerns (who owns vessel data, what happens on subscription lapse, who is liable for an installation fault, whether the brand will exist in five years) block purchase decisions more often than feature gaps do.",
+      "segment": "All B2C and B2B segments; analysed as a cross-segment barrier set rather than a single segment result.",
+      "minimumEvidence": "Every participant ranked or stated the top-3 barriers to adoption; barrier codes applied by two coders; at least one verbatim per barrier per segment.",
+      "decisionThreshold": "PASS (trust is the binding constraint): data-ownership or warranty/liability concerns appear among the top-3 barriers for >=50% of participants in at least three segments, which requires a documented warranty, liability and data-ownership position before any pilot. FAIL: barriers are distributed with no dominant theme.",
+      "executionStatus": "NOT_EXECUTED",
+      "resultStatus": "BLOCKED",
+      "blockerCodes": [
+        "BLK-MC10-01",
+        "BLK-MC10-02",
+        "BLK-MC10-03",
+        "BLK-MC10-04",
+        "BLK-MC10-05",
+        "BLK-MC10-06",
+        "BLK-MC10-07"
+      ],
+      "evidence": {
+        "participants": 0,
+        "validCases": 0,
+        "responses": 0
+      },
+      "whatWouldCountAsEvidence": "Every real eligible participant ranked or stated the top-three barriers, coded by two independent coders, with at least one verbatim per barrier per segment and a recorded written-term requirement.",
+      "interpretationLimits": "Attitudes toward a brand that is not legally cleared and a product that does not exist; cannot be used to claim trust readiness and does not validate any warranty term.",
+      "nextStep": "None until AUTH-MC10-001 is GRANTED; then embedded in every W1-W3 interview under the frozen instrument version."
+    }
+  ]
+}

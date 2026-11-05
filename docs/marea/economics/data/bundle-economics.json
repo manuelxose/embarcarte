@@ -1,0 +1,710 @@
+{
+  "contractId": "MAREA-MC12-BUNDLE-ECONOMICS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-12",
+  "date": "2026-11-02",
+  "owner": "commercial-finance-pricing-strategist",
+  "currency": "EUR",
+  "note": "All six MC-08 bundles. Bundle composition is read from bundle-definitions.json; no included product is invented. FLEET is hardware-free by default.",
+  "records": [
+    {
+      "id": "BE-START",
+      "bundleId": "START",
+      "priceHypothesisId": "PH-01",
+      "grossHypothesisEur": 499,
+      "vatBasis": "VAT_INCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": 412.4,
+      "componentEconomicIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE",
+        "UE-NAV-NAV-PRO-ANNUAL"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-HUB-HUB-STANDARD-100-BASE",
+          "knownVariableCostEur": 281.13,
+          "familyId": "HUB",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-NAV-NAV-PRO-ANNUAL",
+          "knownVariableCostEur": 12.42,
+          "familyId": "NAV",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        }
+      ],
+      "knownVariableCostEur": 293.55,
+      "unknownVariableCostCategories": [
+        {
+          "category": "CHART_DATA_LICENCE",
+          "reason": "START requires a licensed chart entitlement; no right or price.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": 118.85,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "LICENSING_BLOCKED",
+      "confidence": "LOW",
+      "notes": "PH-01 EUR 499 is an unapproved first-year product-only reference, not an installed-system price. The bundle requires a chart right that is NOT_GRANTED.",
+      "componentInclusions": [
+        {
+          "lineId": "ST-01",
+          "familyId": "HUB",
+          "editionId": "HUB-STANDARD",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "ST-02",
+          "familyId": "NAV",
+          "editionId": "NAV-PRO",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "fixedUnknownCosts": [
+        {
+          "category": "CERTIFICATION_CONFORMITY",
+          "amountEur": null,
+          "status": "UNKNOWN",
+          "note": "HUB certification is a fixed programme cost and is not part of unit contribution."
+        }
+      ],
+      "aggregateConversionBases": {
+        "hardware": "MC11_INHERITED_FX_ASSUMPTION_EUR_0.925925926_PER_USD (not rebased; ASM-MC12-015 / D-051)",
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
+    },
+    {
+      "id": "BE-CRUISE",
+      "bundleId": "CRUISE",
+      "priceHypothesisId": "PH-02",
+      "grossHypothesisEur": 1399,
+      "vatBasis": "VAT_INCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": 1156.2,
+      "componentEconomicIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE",
+        "UE-AIS-AIS-RECEIVER-100-BASE",
+        "UE-DISPLAY-DISPLAY-7-100-BASE",
+        "UE-NAV-NAV-ESSENTIAL-ANNUAL"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-HUB-HUB-STANDARD-100-BASE",
+          "knownVariableCostEur": 281.13,
+          "familyId": "HUB",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-AIS-AIS-RECEIVER-100-BASE",
+          "knownVariableCostEur": 281.35,
+          "familyId": "AIS",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-DISPLAY-DISPLAY-7-100-BASE",
+          "knownVariableCostEur": 303.32,
+          "familyId": "DISPLAY",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-NAV-NAV-ESSENTIAL-ANNUAL",
+          "knownVariableCostEur": 10.43,
+          "familyId": "NAV",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        }
+      ],
+      "knownVariableCostEur": 876.23,
+      "unknownVariableCostCategories": [
+        {
+          "category": "CHART_DATA_LICENCE",
+          "reason": "CRUISE requires a licensed chart entitlement.",
+          "materiality": "MATERIAL"
+        },
+        {
+          "category": "AIS_ANTENNA_SPLITTER_AND_CABLING",
+          "reason": "Antenna, splitter and cabling are excluded from the bundle definition and have no cost.",
+          "materiality": "MATERIAL"
+        },
+        {
+          "category": "INSTALLATION_COMMISSIONING",
+          "reason": "Installation is excluded and quoted separately.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": 279.97,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "LICENSING_BLOCKED",
+      "confidence": "LOW",
+      "notes": "PH-02 EUR 1,399 excludes antenna/splitter, mounts, cabling, installation, commissioning and channel margin. It is not an installed-system price.",
+      "componentInclusions": [
+        {
+          "lineId": "CR-01",
+          "familyId": "NAV",
+          "editionId": "NAV-ESSENTIAL",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CR-02",
+          "familyId": "HUB",
+          "editionId": "HUB-STANDARD",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CR-03",
+          "familyId": "AIS",
+          "editionId": "AIS-RECEIVER",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CR-04",
+          "familyId": "DISPLAY",
+          "editionId": "DISPLAY-7",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "conditionalComponents": [
+        {
+          "lineId": "CR-06",
+          "familyId": "AIS",
+          "editionId": "AIS-CONNECTED",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "fixedUnknownCosts": [
+        {
+          "category": "CERTIFICATION_CONFORMITY",
+          "amountEur": null,
+          "status": "UNKNOWN",
+          "note": "Fixed programme cost; excluded from unit contribution."
+        }
+      ],
+      "aggregateConversionBases": {
+        "hardware": "MC11_INHERITED_FX_ASSUMPTION_EUR_0.925925926_PER_USD (not rebased; ASM-MC12-015 / D-051)",
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
+    },
+    {
+      "id": "BE-PROTECT",
+      "bundleId": "PROTECT",
+      "priceHypothesisId": "PH-04",
+      "grossHypothesisEur": 399,
+      "vatBasis": "VAT_INCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": 329.75,
+      "componentEconomicIds": [
+        "UE-WATCH-WATCH-CORE-100-BASE",
+        "UE-SENSE-MODULE-100-BASE",
+        "UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-WATCH-WATCH-CORE-100-BASE",
+          "knownVariableCostEur": 190.9,
+          "familyId": "WATCH",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-SENSE-MODULE-100-BASE",
+          "knownVariableCostEur": 176.54,
+          "familyId": "SENSE",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-WATCH-WATCH-MONITORING-SUBSCRIPTION-ANNUAL",
+          "knownVariableCostEur": 13.05,
+          "familyId": "WATCH",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        }
+      ],
+      "knownVariableCostEur": 380.49,
+      "unknownVariableCostCategories": [
+        {
+          "category": "CELLULAR_CONNECTIVITY",
+          "reason": "WATCH connectivity contract does not exist.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": -50.74,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "DEFER_RECOMMENDED",
+      "confidence": "LOW",
+      "notes": "The historical PH-04 EUR 399 is below the conditional variable cost of its own composition (EUR 497 symbolic component floor already exceeds it). At the modelled 100-unit BASE cost the bundle contribution is negative; the price must rise or the composition change.",
+      "componentInclusions": [
+        {
+          "lineId": "PR-01",
+          "familyId": "WATCH",
+          "editionId": "WATCH-CORE",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "PR-02",
+          "familyId": "SENSE",
+          "editionId": "SENSE-ESSENTIALS",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": [
+            "SENSE-POWER",
+            "SENSE-BILGE"
+          ]
+        },
+        {
+          "lineId": "PR-07",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "conditionalComponents": [
+        {
+          "lineId": "PR-05",
+          "familyId": "WATCH",
+          "editionId": "WATCH-PLUS",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "fixedUnknownCosts": [
+        {
+          "category": "CERTIFICATION_CONFORMITY",
+          "amountEur": null,
+          "status": "UNKNOWN",
+          "note": "WATCH/SENSE certification is a fixed programme cost and is not part of unit contribution."
+        }
+      ],
+      "aggregateConversionBases": {
+        "hardware": "MC11_INHERITED_FX_ASSUMPTION_EUR_0.925925926_PER_USD (not rebased; ASM-MC12-015 / D-051)",
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
+    },
+    {
+      "id": "BE-SAIL",
+      "bundleId": "SAIL",
+      "priceHypothesisId": "PH-03",
+      "grossHypothesisEur": null,
+      "vatBasis": "VAT_EXCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": null,
+      "componentEconomicIds": [
+        "UE-HUB-HUB-STANDARD-100-BASE",
+        "UE-NAV-NAV-PRO-ANNUAL",
+        "UE-PILOT-COASTAL-100-BASE"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-HUB-HUB-STANDARD-100-BASE",
+          "knownVariableCostEur": 281.13,
+          "familyId": "HUB",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-NAV-NAV-PRO-ANNUAL",
+          "knownVariableCostEur": 12.42,
+          "familyId": "NAV",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-PILOT-COASTAL-100-BASE",
+          "knownVariableCostEur": null,
+          "familyId": "PILOT",
+          "basis": "No known variable cost exists for this component; it is carried as a fixed/unknown obligation, never as zero."
+        }
+      ],
+      "knownVariableCostEur": null,
+      "unknownVariableCostCategories": [
+        {
+          "category": "PILOT_INSTALLATION_SCOPE",
+          "reason": "Steering drive, actuator, rudder feedback, E-stop, survey, commissioning, sea trials and training are unpriced.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": null,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "SAFETY_BLOCKED",
+      "confidence": "LOW",
+      "notes": "SAIL includes PILOT, whose safety gate is BLOCKED. PH-03 EUR 1,990 is a historical turnkey reference only and is not a quotation. No bundle price or contribution is established.",
+      "componentInclusions": [
+        {
+          "lineId": "SL-01",
+          "familyId": "NAV",
+          "editionId": "NAV-PRO",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "SL-02",
+          "familyId": "HUB",
+          "editionId": "HUB-STANDARD",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "SL-03",
+          "familyId": "PILOT",
+          "editionId": "PILOT-COASTAL",
+          "inclusion": "QUOTATION_REQUIRED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "SL-09",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "QUOTATION_REQUIRED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "SL-10",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "QUOTATION_REQUIRED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "conditionalComponents": [
+        {
+          "lineId": "SL-04",
+          "familyId": "SENSE",
+          "editionId": "SENSE-WIND",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "SL-05",
+          "familyId": "PILOT",
+          "editionId": "PILOT-SAIL",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "aggregateConversionBases": {
+        "hardware": "MC11_INHERITED_FX_ASSUMPTION_EUR_0.925925926_PER_USD (not rebased; ASM-MC12-015 / D-051)",
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
+    },
+    {
+      "id": "BE-COMPLETE",
+      "bundleId": "COMPLETE",
+      "priceHypothesisId": "PH-05",
+      "grossHypothesisEur": null,
+      "vatBasis": "VAT_EXCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": null,
+      "componentEconomicIds": [
+        "UE-HUB-HUB-PRO-100-BASE",
+        "UE-DISPLAY-DISPLAY-7-100-BASE",
+        "UE-WATCH-WATCH-CORE-100-BASE",
+        "UE-SENSE-MODULE-100-BASE",
+        "UE-NAV-NAV-PRO-ANNUAL",
+        "UE-PILOT-COASTAL-100-BASE"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-HUB-HUB-PRO-100-BASE",
+          "knownVariableCostEur": 281.13,
+          "familyId": "HUB",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-DISPLAY-DISPLAY-7-100-BASE",
+          "knownVariableCostEur": 303.32,
+          "familyId": "DISPLAY",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-WATCH-WATCH-CORE-100-BASE",
+          "knownVariableCostEur": 190.9,
+          "familyId": "WATCH",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-SENSE-MODULE-100-BASE",
+          "knownVariableCostEur": 353.08,
+          "familyId": "SENSE",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-NAV-NAV-PRO-ANNUAL",
+          "knownVariableCostEur": 12.42,
+          "familyId": "NAV",
+          "basis": "Known variable cost from the referenced unit-economics record."
+        },
+        {
+          "componentId": "UE-PILOT-COASTAL-100-BASE",
+          "knownVariableCostEur": null,
+          "familyId": "PILOT",
+          "basis": "No known variable cost exists for this component; it is carried as a fixed/unknown obligation, never as zero."
+        }
+      ],
+      "knownVariableCostEur": null,
+      "unknownVariableCostCategories": [
+        {
+          "category": "PILOT_INSTALLATION_SCOPE",
+          "reason": "PILOT steering installation is unpriced and safety-blocked.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": null,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "SAFETY_BLOCKED",
+      "confidence": "LOW",
+      "notes": "COMPLETE includes PILOT (safety gate BLOCKED) and has no approved turnkey price. PH-05 EUR 3,490 is a historical reference only.",
+      "componentInclusions": [
+        {
+          "lineId": "CP-01",
+          "familyId": "NAV",
+          "editionId": "NAV-PRO",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-02",
+          "familyId": "HUB",
+          "editionId": "HUB-PRO",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-03",
+          "familyId": "DISPLAY",
+          "editionId": "DISPLAY-7",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-04",
+          "familyId": "WATCH",
+          "editionId": "WATCH-CORE",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-05",
+          "familyId": "SENSE",
+          "editionId": "SENSE-POWER",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-06",
+          "familyId": "SENSE",
+          "editionId": "SENSE-BILGE",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-07",
+          "familyId": "SENSE",
+          "editionId": "SENSE-TANKS",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-08",
+          "familyId": "SENSE",
+          "editionId": "SENSE-ENV",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-09",
+          "familyId": "PILOT",
+          "editionId": "PILOT-COASTAL",
+          "inclusion": "QUOTATION_REQUIRED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "CP-17",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "QUOTATION_REQUIRED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "conditionalComponents": [
+        {
+          "lineId": "CP-14",
+          "familyId": "PILOT",
+          "editionId": "PILOT-SAIL",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "aggregateConversionBases": {
+        "hardware": "MC11_INHERITED_FX_ASSUMPTION_EUR_0.925925926_PER_USD (not rebased; ASM-MC12-015 / D-051)",
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
+    },
+    {
+      "id": "BE-FLEET",
+      "bundleId": "FLEET",
+      "priceHypothesisId": "PH-06",
+      "grossHypothesisEur": null,
+      "vatBasis": "VAT_EXCLUDED",
+      "vatRatePct": 21,
+      "netRevenueEur": null,
+      "componentEconomicIds": [
+        "UE-FLEET-FLEET-START-VESSEL-ANNUAL"
+      ],
+      "componentCosts": [
+        {
+          "componentId": "UE-FLEET-FLEET-START-VESSEL-ANNUAL",
+          "knownVariableCostEur": null,
+          "familyId": "FLEET",
+          "basis": "Per-vessel SaaS hypothesis; no package price, onboarding price or contract exists. No hardware is included by default."
+        }
+      ],
+      "knownVariableCostEur": null,
+      "unknownVariableCostCategories": [
+        {
+          "category": "FLEET_PACKAGE",
+          "reason": "Bespoke contracted B2B solution: no package, onboarding, training, support, hardware or connectivity price is established.",
+          "materiality": "MATERIAL"
+        }
+      ],
+      "contributionBeforeUnknownsEur": null,
+      "contributionStatus": "INCOMPLETE_UNKNOWN_COSTS",
+      "contributionPct": null,
+      "classification": "COST_MODEL_INCOMPLETE",
+      "confidence": "LOW",
+      "notes": "FLEET is a per-vessel SaaS plus separately quoted onboarding, never default hardware. No package price exists; PH-06 is NOT_ESTABLISHED.",
+      "componentInclusions": [
+        {
+          "lineId": "FP-01",
+          "familyId": "FLEET",
+          "editionId": "FLEET-START",
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "FP-03",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "FP-04",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "FP-11",
+          "familyId": "FLEET",
+          "editionId": null,
+          "inclusion": "INCLUDED",
+          "requiredForOutcome": true,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "conditionalComponents": [
+        {
+          "lineId": "FP-02",
+          "familyId": "FLEET",
+          "editionId": "FLEET-ENTERPRISE",
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        },
+        {
+          "lineId": "FP-10",
+          "familyId": null,
+          "editionId": null,
+          "inclusion": "CONDITIONAL",
+          "requiredForOutcome": false,
+          "quantity": 1,
+          "expandsTo": null
+        }
+      ],
+      "aggregateConversionBases": {
+        "hardware": null,
+        "subscription": "ECB_EURO_REFERENCE_RATE_2026-11-02_EUR_0.8916_PER_USD for any USD-denominated recurring tariff (ASM-MC12-021)",
+        "note": "Each component keeps its own disclosed conversion basis. The bundle aggregate is a sum of component records from both bases and does not re-convert either component."
+      }
+    }
+  ]
+}

@@ -1,0 +1,613 @@
+{
+  "contractId": "MAREA-MC14-REVIEW-FINDINGS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-14",
+  "date": "2026-11-02",
+  "owner": "independent-auditor",
+  "status": "PARTIAL",
+  "verdict": "PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE",
+  "programmeStatus": "PARTIAL",
+  "reviewedCommit": "7f31db83797f9423bbd9d0b60764f8db22fe8bbf",
+  "reviewedBranch": "feature/marea-mc14-legal-commercial-risk-claims-policy",
+  "frozenCandidateCommit": "7f31db83797f9423bbd9d0b60764f8db22fe8bbf",
+  "previousFrozenCandidateCommit": "e32673ea26fa1b115e57b02b9755d3149c3db1ea",
+  "baseCommit": "f80c0f02ac14803e9e1539393abbb225d7f49e16",
+  "finalRecordCommit": "2626853d1049b9b615b77d17a773dbdad6784cc6",
+  "reVerificationRound": 3,
+  "reVerifiedAt": "2026-11-02",
+  "verdictDetail": "Third-round re-verification of residual-fix commit 7f31db83797f9423bbd9d0b60764f8db22fe8bbf (3 commits from base, no merges, no src/public/.github/deploy change; branch pushed and remote HEAD = 7f31db8; draft PR #21 OPEN targeting feature/marea-mc13-financial-model-cashflow-break-even, mergedAt null). All four residual defects from round 2 are closed: (A-01) dossier §1 key-date table (50 rows) and §3 transposition table now carry the governed verificationStatus for every shared source, no shared source carries two statuses, and §0 line 11 was corrected to 50 research records = 46 shared + 4 considered-only while governed 48 = 46 shared + 2 compilation additions; (A-04) D19 §3.3 now states the reduced bundle-assessment schema explicitly (bundle assessments use instrumentId/status/rationale/condition and inherit legalSourceIds/requirementIds/evidenceRequired from the included family assessments); (A-05) D03 WEATHER/BATTERIES and FLEET/BATTERIES now reproduce the governed rationales verbatim (210/210 rationale/status rows match); (A-06) data/mc15-handoff-inputs.json pageByPageIssues routes are now /tienda, /tecnologia, /aviso-legal, /privacidad, /cookies, /carrito, /sobre-nosotros with no /legal/* or /tienda/checkout path remaining. At 7f31db8 the gate is 54/54, the committed adversarial suite is 41/41, format:check passes, 5/5 fresh auditor mutations (N7-N11) are detected, 34/34 website findings remain verbatim, 0 unresolved foreign keys, manifest 23/23 counts, D02/D05 rows and 42-claim bilingual parity intact. A-02/A-03/A-07/A-08/A-09/A-10/A-11/A-13/A-17 were already closed in round 2. AWARD: PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE for the internal legal/commercial governance scope, with programme status PARTIAL: external legal clearance, certification, insurance, licences, prices and 19 external decisions remain NOT_GRANTED/PENDING (MC-13 mirror). Four INFORMATIONAL observations remain open by design (A-12 validator coverage gaps, A-14 inherited-status sentinel, A-15 record-commit artefacts, A-16 remote-state snapshot) and none blocks the internal award. No sale, certification, legal clearance, insurance, licence, publication, merge or deployment is authorised by this record; finalRecordCommit stays null until the Lead records this award.",
+  "externalLegalClearance": "NOT_GRANTED",
+  "publicationAuthorized": false,
+  "recordCommitActions": [
+    "Set data/manifest.json review.status = PARTIAL (programme verdict), review.reviewer = 'independent-auditor', review.frozenCandidateCommit = 7f31db83797f9423bbd9d0b60764f8db22fe8bbf, review.finalRecordCommit = the record commit SHA.",
+    "Set statusBlock.MC14_VERDICT = PARTIAL, MC14_INTERNAL_LEGAL_GOVERNANCE_SCOPE = PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE, MC14_INDEPENDENT_REVIEW = PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE, MC14_EXTERNAL_LEGAL_CLEARANCE = NOT_GRANTED, PR_CREATED = true (draft PR #21 exists).",
+    "Reconcile validator check MC14-050 for the recorded state: as frozen it requires review.verdict === manifest.review.status === MC14_VERDICT. With MC14_VERDICT = PARTIAL and the internal award PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE, compare MC14_INTERNAL_LEGAL_GOVERNANCE_SCOPE with review.verdict (or record the internal award as the review status) so the record commit still reaches 54/54.",
+    "Add D23 MC-14-DELIVERY.md, update MASTER-PROMPT-REGISTRY.md row 14 and the decision log (D-058..D-061 are staged but uncommitted at 7f31db8), and update MC14-EXECUTIVE-REPORT-ES.md's commit list to include 7f31db8 (it currently stops at e32673e).",
+    "Keep the external statuses NOT_GRANTED/NONE and the no-merge/no-deploy/no-publication statements; record finalRecordCommit only after the record commit exists."
+  ],
+  "commands": [
+    {
+      "command": "git rev-parse HEAD && git rev-parse --abbrev-ref HEAD && git status --porcelain --untracked-files=all",
+      "result": "7f31db83797f9423bbd9d0b60764f8db22fe8bbf on feature/marea-mc14-legal-commercial-risk-claims-policy; only an uncommitted docs/marea/execution/DECISION-LOG.md change (Lead record work, not the auditor's) before this record"
+    },
+    {
+      "command": "git merge-base --is-ancestor f80c0f02ac14803e9e1539393abbb225d7f49e16 7f31db83797f9423bbd9d0b60764f8db22fe8bbf",
+      "result": "exit 0 — the MC-13 record commit is an ancestor of 7f31db8"
+    },
+    {
+      "command": "git rev-list --merges f80c0f0..7f31db8 ; git log --format='%H %s' f80c0f0..7f31db8",
+      "result": "0 merge commits; 3 commits: 6fb2285 (frozen candidate), e32673e (first correction), 7f31db8 (residual-fix commit)"
+    },
+    {
+      "command": "git diff --name-only f80c0f0 7f31db8 ; filter ^(src/|public/|deploy/|\\.github/)",
+      "result": "45 changed paths, all inside docs/marea/legal-commercial/ + docs/marea/execution/DECISION-LOG.md (record artefact) + package.json + the two MC-14 scripts; forbidden-prefix filter returns nothing"
+    },
+    {
+      "command": "git diff --name-status e32673e 7f31db8",
+      "result": "A MC14-EXECUTIVE-REPORT-ES.md (D22 draft record) + M D19, D03, mc15-handoff-inputs.json, dossier, and the two auditor records (committed by the Lead) — exactly the residual-fix set"
+    },
+    {
+      "command": "git ls-remote origin feature/marea-mc14-legal-commercial-risk-claims-policy",
+      "result": "7f31db83797f9423bbd9d0b60764f8db22fe8bbf refs/heads/feature/marea-mc14-... — branch pushed and remote head equals the audited commit"
+    },
+    {
+      "command": "gh pr view 21 --json number,state,isDraft,baseRefName,headRefOid,mergedAt",
+      "result": "PR #21 OPEN, draft, base feature/marea-mc13-financial-model-cashflow-break-even, headRefOid 7f31db8, mergedAt null — not merged"
+    },
+    {
+      "command": "git branch --contains 7f31db8 ; git merge-base --is-ancestor 7f31db8 main",
+      "result": "contained only by feature/marea-mc14-...; exit 1 for main (not merged)"
+    },
+    {
+      "command": "npm run test:legal-commercial (at 7f31db8)",
+      "result": "MC-14 legal/commercial gate: 54/54 checks passed, exit 0"
+    },
+    {
+      "command": "npm run test:legal-commercial:unit (at 7f31db8)",
+      "result": "tests 41, pass 41, fail 0, exit 0"
+    },
+    {
+      "command": "npm run format:check (at 7f31db8)",
+      "result": "All matched files use Prettier code style, exit 0 (read-only; independently corroborates the D22 format row)"
+    },
+    {
+      "command": "node --input-type=module (auditor dossier reconciliation at 7f31db8)",
+      "result": "§1 key-date table: 50 rows, 0 verification-status mismatches vs legal-sources.json (governed vocabulary, CONSUMED shorthand no longer used for shared sources); §3: 0 RE_VERIFIED rows; remaining 'RE_VERIFIED' text only in the line-35 historical renaming note; §0 line 11: 50 = 46 shared + 4 considered-only and governed 48 = 46 shared + 2 additions -> A-01 CLOSED"
+    },
+    {
+      "command": "node --input-type=module (auditor check of D19/D03/mc15 fixes at 7f31db8)",
+      "result": "D19 §3.3 now declares the reduced bundle schema (instrumentId/status/rationale/condition + inherited legalSourceIds/requirementIds/evidenceRequired) -> A-04 CLOSED; D03 210/210 rationale+status rows match, including WEATHER/FLEET BATTERIES verbatim -> A-05 CLOSED; mc15-handoff-inputs routes = /tienda,/tecnologia,/aviso-legal,/privacidad,/cookies,/carrito,/sobre-nosotros, 0 wrong paths -> A-06 CLOSED"
+    },
+    {
+      "command": "node --input-type=module (auditor consolidated integrity at 7f31db8)",
+      "result": "34/34 website findings verbatim; manifest 23/23 counts; 0 unresolved foreign keys; D02 51/51 + 48/48; D05 95/95; 42 claims with 0 numeric-parity failures and 0 public authorised; D16/D17/D14 counts match; A-02/A-03/A-07/A-08/A-09/A-10/A-11/A-13/A-17 remain closed"
+    },
+    {
+      "command": "node --input-type=module (auditor fresh mutation harness at 7f31db8)",
+      "result": "5/5 fresh auditor mutations fail their intended check: N7 recorded PASS with an open MAJOR finding (MC14-050), N8 class C PUBLIC_AUTHORIZED with evidence (MC14-017), N9 invented source-IP clearance/rights granted (MC14-020), N10 class C conditional-public without evidence (MC14-042), N11 critical risk without required evidence (MC14-008)"
+    }
+  ],
+  "independentRecomputation": {
+    "description": "The auditor re-ran the provenance and document-to-data reconciliations at 7f31db8 with auditor-written loops and did not trust the correction summary. Fresh negative controls N7-N11 were written for this round; the earlier 19 + 6 controls remain recorded.",
+    "reVerificationOutcome": {
+      "residualItemsClosedInRound3": [
+        "A-01",
+        "A-04",
+        "A-05",
+        "A-06"
+      ],
+      "previouslyClosed": [
+        "A-02",
+        "A-03",
+        "A-07",
+        "A-08",
+        "A-09",
+        "A-10",
+        "A-11",
+        "A-13",
+        "A-17"
+      ],
+      "informationalOpenByDesign": [
+        "A-12",
+        "A-14",
+        "A-15",
+        "A-16"
+      ],
+      "gateAtReviewedCommit": "54/54",
+      "suiteAtReviewedCommit": "41/41",
+      "freshMutationsDetected": "5/5 (N7-N11)",
+      "remoteState": "branch pushed at 7f31db8; draft PR #21 OPEN, base MC-13 branch, mergedAt null"
+    },
+    "countsRecomputed": {
+      "legalSources": 48,
+      "legalRequirements": 51,
+      "productFamilies": 9,
+      "bundles": 6,
+      "applicabilityAssessments": 210,
+      "economicOperatorRoles": 11,
+      "supplyScenarios": 9,
+      "risks": 95,
+      "riskSeverity": {
+        "CRITICAL": 29,
+        "HIGH": 62,
+        "MEDIUM": 4
+      },
+      "predecessorMappings": {
+        "total": 134,
+        "MC-02": 58,
+        "MC-11": 39,
+        "MC-12": 23,
+        "MC-13": 14,
+        "MC-02ByCategory": {
+          "L": 9,
+          "S": 9,
+          "D": 10,
+          "H": 13,
+          "P": 10,
+          "X": 7
+        }
+      },
+      "mc13HandoffDependencies": 10,
+      "claims": {
+        "total": 42,
+        "A": 4,
+        "C": 3,
+        "P": 11,
+        "X": 24,
+        "INTERNAL_ONLY": 7,
+        "PUBLIC_PROHIBITED": 35,
+        "PUBLIC_AUTHORIZED": 0
+      },
+      "prohibitedClaimCategories": 30,
+      "websiteFindings": {
+        "total": 34,
+        "BLOCKING": 6,
+        "MAJOR": 20,
+        "MINOR": 4,
+        "INFORMATIONAL": 4,
+        "verbatimVerified": 34
+      },
+      "releaseGates": 13,
+      "releaseDocuments": 24,
+      "externalDecisions": 20,
+      "consumerObligations": 16,
+      "consumerTemplates": 8,
+      "privacyPurposes": 14,
+      "craRequirements": 14,
+      "craLifecycleControls": 12,
+      "licensingRights": 17,
+      "liabilityScenarios": 13,
+      "manifestCountMismatches": 0
+    },
+    "sourceStatusCrossCheck": {
+      "governedRegister": {
+        "total": 48,
+        "VERIFIED_THIS_SESSION": 4,
+        "CONSUMED_FROM_PREDECESSOR_EVIDENCE": 32,
+        "PARTIALLY_VERIFIED": 2,
+        "NOT_RETRIEVED": 6,
+        "INACCESSIBLE": 4
+      },
+      "researchCsv": {
+        "total": 48,
+        "sameIdsAsGoverned": true,
+        "statusMismatches": 0,
+        "statusDistribution": {
+          "VERIFIED_THIS_SESSION": 4,
+          "CONSUMED_FROM_PREDECESSOR_EVIDENCE": 32,
+          "PARTIALLY_VERIFIED": 2,
+          "NOT_RETRIEVED": 6,
+          "INACCESSIBLE": 4
+        }
+      },
+      "dossierSection1": {
+        "rows": 50,
+        "statusMismatchesForSharedSources": 0
+      },
+      "dossierSection2": {
+        "blocks": 50,
+        "statusMismatchesForSharedSources": 0,
+        "consideredOnlyMarked": 4
+      },
+      "dossierSection3": {
+        "reVerifiedLabelsForSharedSources": 0
+      },
+      "dossierSection0Membership": "50 = 46 shared + 4 considered-only; governed 48 = 46 shared + 2 compilation additions (SRC-EU-DB-96-9, SRC-ES-AEMET-TERMS)",
+      "assessment": "A-01 closed: one governed status per shared source across CSV/dossier §1/§2/§3/D02/legal-sources.json, with a documented membership rule"
+    }
+  },
+  "negativeControlEvidence": {
+    "method": "Auditor-written deep clones of the committed datasets + document map passed to the committed validateData(); no repository file was written. M01-M19 were the round-1 controls at 6fb2285; N1-N6 the round-2 controls at e32673e; N7-N11 are fresh controls at 7f31db8.",
+    "firstRoundMutations": [
+      {
+        "id": "M01",
+        "mutation": "invent CE certification (DOC-01 CERTIFIED)",
+        "intendedCheck": "MC14-021",
+        "detected": true
+      },
+      {
+        "id": "M02",
+        "mutation": "invent NMEA 2000 certification",
+        "intendedCheck": "MC14-021",
+        "detected": true
+      },
+      {
+        "id": "M03",
+        "mutation": "approve PILOT safety gate",
+        "intendedCheck": "MC14-018",
+        "detected": true
+      },
+      {
+        "id": "M04",
+        "mutation": "offer AIS transmission in a public claim",
+        "intendedCheck": "MC14-023",
+        "detected": true
+      },
+      {
+        "id": "M05",
+        "mutation": "authorise a price claim",
+        "intendedCheck": "MC14-025",
+        "detected": true
+      },
+      {
+        "id": "M06",
+        "mutation": "fabricate insurance cover in a public claim",
+        "intendedCheck": "MC14-027",
+        "detected": true
+      },
+      {
+        "id": "M07",
+        "mutation": "A-class public claim vs brand NO_GO",
+        "intendedCheck": "MC14-052",
+        "detected": true
+      },
+      {
+        "id": "M08",
+        "mutation": "contradict ES/EN numbers",
+        "intendedCheck": "MC14-015",
+        "detected": true
+      },
+      {
+        "id": "M09",
+        "mutation": "close a gate without evidence",
+        "intendedCheck": "MC14-021",
+        "detected": true
+      },
+      {
+        "id": "M10",
+        "mutation": "mark a risk CLOSED_VERIFIED",
+        "intendedCheck": "MC14-039",
+        "detected": true
+      },
+      {
+        "id": "M11",
+        "mutation": "invent source-IP clearance",
+        "intendedCheck": "MC14-020",
+        "detected": true
+      },
+      {
+        "id": "M12",
+        "mutation": "convert an UNKNOWN amount to zero",
+        "intendedCheck": "MC14-029",
+        "detected": true
+      },
+      {
+        "id": "M13",
+        "mutation": "write a non-ISO legal date",
+        "intendedCheck": "MC14-054",
+        "detected": true
+      },
+      {
+        "id": "M14",
+        "mutation": "delete a mandatory document",
+        "intendedCheck": "MC14-002",
+        "detected": true
+      },
+      {
+        "id": "M15",
+        "mutation": "delete an inherited MC-02 blocker",
+        "intendedCheck": "MC14-031",
+        "detected": true
+      },
+      {
+        "id": "M16",
+        "mutation": "assert a DPIA was performed",
+        "intendedCheck": "MC14-053",
+        "detected": true
+      },
+      {
+        "id": "M17",
+        "mutation": "mark a website finding REMEDIATED",
+        "intendedCheck": "MC14-035",
+        "detected": true
+      },
+      {
+        "id": "M18",
+        "mutation": "write a review verdict while manifest review is PENDING",
+        "intendedCheck": "MC14-050",
+        "detected": true
+      },
+      {
+        "id": "M19",
+        "mutation": "publish without publication authorisation",
+        "intendedCheck": "MC14-017",
+        "detected": true
+      }
+    ],
+    "round2Mutations": [
+      {
+        "id": "N1",
+        "mutation": "pre-record PASS verdict while manifest.review.status is PENDING",
+        "intendedCheck": "MC14-050",
+        "detected": true
+      },
+      {
+        "id": "N2",
+        "mutation": "class C claim PUBLIC_CONDITIONAL with empty evidence",
+        "intendedCheck": "MC14-042",
+        "detected": true
+      },
+      {
+        "id": "N3",
+        "mutation": "bundle NOT_APPLICABLE with a trivial rationale",
+        "intendedCheck": "MC14-010",
+        "detected": true
+      },
+      {
+        "id": "N4",
+        "mutation": "delete a referenced governed source",
+        "intendedCheck": "MC14-005",
+        "detected": true
+      },
+      {
+        "id": "N5",
+        "mutation": "publicationAuthorization AUTHORIZED without a claim",
+        "intendedCheck": "MC14-017",
+        "detected": true
+      },
+      {
+        "id": "N6",
+        "mutation": "invent NMEA certification",
+        "intendedCheck": "MC14-021",
+        "detected": true
+      }
+    ],
+    "freshRound3Mutations": [
+      {
+        "id": "N7",
+        "mutation": "recorded PASS award while a MAJOR finding is OPEN (manifest + review set to the award)",
+        "intendedCheck": "MC14-050",
+        "failedChecks": [
+          "MC14-002",
+          "MC14-050"
+        ],
+        "detected": true
+      },
+      {
+        "id": "N8",
+        "mutation": "class C claim PUBLIC_AUTHORIZED with synthetic evidence",
+        "intendedCheck": "MC14-017",
+        "failedChecks": [
+          "MC14-017",
+          "MC14-019",
+          "MC14-041",
+          "MC14-052"
+        ],
+        "detected": true
+      },
+      {
+        "id": "N9",
+        "mutation": "invent source-IP clearance and granted rights",
+        "intendedCheck": "MC14-020",
+        "failedChecks": [
+          "MC14-020"
+        ],
+        "detected": true
+      },
+      {
+        "id": "N10",
+        "mutation": "class C claim PUBLIC_CONDITIONAL without evidence",
+        "intendedCheck": "MC14-042",
+        "failedChecks": [
+          "MC14-042"
+        ],
+        "detected": true
+      },
+      {
+        "id": "N11",
+        "mutation": "remove required evidence from a critical risk",
+        "intendedCheck": "MC14-008",
+        "failedChecks": [
+          "MC14-008"
+        ],
+        "detected": true
+      }
+    ],
+    "detectionRate": "M01-M19 19/19 at 6fb2285; N1-N6 6/6 at e32673e; N7-N11 5/5 at 7f31db8"
+  },
+  "findings": [
+    {
+      "id": "A-01",
+      "classification": "MAJOR",
+      "title": "Research source trail vs governed register verification statuses (CLOSED in 7f31db8)",
+      "evidence": "At 7f31db8 the dossier §1 key-date table (50 rows) carries the governed verificationStatus for every shared source (0 mismatches: CRA/GPSR/DCD/UCPD/eCommerce/RD186/RD187/NMEA sources now CONSUMED_FROM_PREDECESSOR_EVIDENCE or NOT_RETRIEVED as governed; PLD/DelReg 2022/30/DelReg 2026/339/RD 188/2016 VERIFIED_THIS_SESSION; TRLGDCU/LSSI PARTIALLY_VERIFIED) and the §3 transposition table has 0 RE_VERIFIED labels for shared sources (CRA line now CONSUMED_FROM_PREDECESSOR_EVIDENCE); the only remaining 'RE_VERIFIED' text is the historical renaming note at line 35. §0 line 11 was corrected to '50 research records: 46 shared with the governed register plus 4 considered-only records marked NOT_IN_GOVERNED_REGISTER; the governed register contains 48 sources: those 46 shared plus 2 additions made during compilation (SRC-EU-DB-96-9, SRC-ES-AEMET-TERMS)'. The CSV remains a 48-row governed mirror with 0 mismatches. No shared source carries two statuses.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied: dossier §1/§3 labels aligned to the governed vocabulary; §0 membership arithmetic corrected; CSV/D02/§2 already reconciled in e32673e.",
+      "reVerification": "Auditor reconciliation at 7f31db8: §1 50 rows 0 mismatches, §3 0 RE_VERIFIED rows, §0 arithmetic correct, CSV/D02/legal-sources.json aligned."
+    },
+    {
+      "id": "A-02",
+      "classification": "MINOR",
+      "title": "Stale 2025-02-01 RED cybersecurity application date (closed in e32673e)",
+      "evidence": "REQ-DELREG-01 in legal-sources.json and D02:114 state 2025-08-01; only the explanatory correction note retains 2025-02-01.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied in e32673e.",
+      "reVerification": "grep 2025-02-01 in governed data/D02: only the correction note."
+    },
+    {
+      "id": "A-03",
+      "classification": "MINOR",
+      "title": "SCA RTS 2018/389 entry-into-force date (closed in e32673e)",
+      "evidence": "effectiveDate 2018-03-14 in legal-sources.json and the dossier row; no 2018-04-02 remains.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied in e32673e.",
+      "reVerification": "Record and dossier row both show 2018-03-14."
+    },
+    {
+      "id": "A-04",
+      "classification": "MINOR",
+      "title": "Bundle assessments vs D19-declared fields (CLOSED in 7f31db8)",
+      "evidence": "At 7f31db8 D19 §3.3 states: 'Bundle assessments use the reduced schema instrumentId, status, rationale, condition and inherit legalSourceIds, requirementIds and evidenceRequired from the included family assessments; D03 renders them accordingly', and adds 'every bundle has exactly one assessment per instrument'. The 84 bundle assessments match that declared reduced schema, so the data contract and the data now agree.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied: D19 §3.3 now documents the reduced bundle-assessment schema explicitly (and the bundle-per-instrument rule).",
+      "reVerification": "Compare bundle assessment keys with D19 §3.3 at 7f31db8; contract and data agree."
+    },
+    {
+      "id": "A-05",
+      "classification": "MINOR",
+      "title": "D03 does not reproduce two governed rationales (CLOSED in 7f31db8)",
+      "evidence": "At 7f31db8 D03:216 and :237 reproduce the governed WEATHER/FLEET BATTERIES rationales verbatim ('The WEATHER/FLEET offering is a software or data service and contains no battery placed on the market; the Batteries Regulation applies to battery-containing hardware, not to the service itself.'). Auditor comparison: 210/210 rationale/status rows now match the governed data.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied: the two D03 rows regenerated from the governed rationales.",
+      "reVerification": "Repeat rationale-to-row comparison: 210/210 match."
+    },
+    {
+      "id": "A-06",
+      "classification": "MINOR",
+      "title": "MC-15 handoff routes (CLOSED in 7f31db8)",
+      "evidence": "At 7f31db8 data/mc15-handoff-inputs.json pageByPageIssues routes are /tienda, /tecnologia, /aviso-legal, /privacidad, /cookies, /carrito, /sobre-nosotros (plus the non-route 'structured data / product detail' label); no /legal/* or /tienda/checkout path remains, and the route set matches LOCALIZED_ROUTES and D18.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied: the four wrong routes corrected to the real registry paths.",
+      "reVerification": "Check every handoff route against LOCALIZED_ROUTES: 0 wrong paths."
+    },
+    {
+      "id": "A-07",
+      "classification": "MINOR",
+      "title": "D20 gate-result statement (closed in e32673e)",
+      "evidence": "D20:112-117 states the reproducible 54/54 frozen result and the designed 53/54 pre-record state; the auditor re-ran the gate at both correction commits: 54/54.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied in e32673e.",
+      "reVerification": "D20 text matches the reproducible result."
+    },
+    {
+      "id": "A-08",
+      "classification": "MINOR",
+      "title": "Class C claim pre-evidence status (closed in e32673e)",
+      "evidence": "CLM-019/039/040 are INTERNAL_ONLY; policy and catalogue summaries are 7 internal / 35 public-prohibited / 0 authorised; D14 aligned.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied in e32673e.",
+      "reVerification": "Claims, policy workflow and summaries agree."
+    },
+    {
+      "id": "A-09",
+      "classification": "MINOR",
+      "title": "Requirement resting solely on a NOT_RETRIEVED source (closed in e32673e)",
+      "evidence": "REQ-ES-LGP-01 is UNDETERMINED and the D02 rule is qualified for conservative negative determinations; no requirement claims COMPLIANT_VERIFIED.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied in e32673e.",
+      "reVerification": "Requirement status and D02 rule are consistent."
+    },
+    {
+      "id": "A-10",
+      "classification": "MINOR",
+      "title": "Non-existent CRA 'recital 580' citation (closed in e32673e)",
+      "evidence": "The dossier cites Article 71 and no 'recital 580' occurrence remains.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied in e32673e.",
+      "reVerification": "grep 'recital 580' returns nothing."
+    },
+    {
+      "id": "A-11",
+      "classification": "INFORMATIONAL",
+      "title": "CI manual-gate position disclosed (closed in e32673e)",
+      "evidence": "D20 §6 states that CI does not execute the MC-14 gate and that it is a manual gate; .github/workflows/ci.yml is unchanged and consistent.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied as disclosure in e32673e.",
+      "reVerification": "D20 §6 matches ci.yml."
+    },
+    {
+      "id": "A-12",
+      "classification": "INFORMATIONAL",
+      "title": "Validator coverage gaps (accepted limitation)",
+      "evidence": "MC14-007 checks only that ownerRole is non-empty; MC14-010's source requirement applies only to families (now documented by the D19 reduced schema); external-decision blockingRiskIds and document-level false-PASS claims are not machine-checked. Auditor sweeps found 0 unresolved references; fresh mutation N7 shows a recorded false award with an open MAJOR finding is caught by MC14-050.",
+      "status": "OPEN",
+      "correction": "No correction required for this milestone; optional hardening.",
+      "reVerification": "Inspect the validator check list against these paths."
+    },
+    {
+      "id": "A-13",
+      "classification": "INFORMATIONAL",
+      "title": "'pilOtCoverage' typo (closed in e32673e)",
+      "evidence": "pilotCoverage present, pilOtCoverage absent.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied in e32673e.",
+      "reVerification": "Read insuranceStatus."
+    },
+    {
+      "id": "A-14",
+      "classification": "INFORMATIONAL",
+      "title": "MC-11/MC-12 inherited statuses via AS_RECORDED_IN_PREDECESSOR sentinel",
+      "evidence": "39/39 MC-11 and 23/23 MC-12 mapping records use the documented sentinel; MC-13 records exact statuses (14/14 match their predecessor register).",
+      "status": "OPEN",
+      "correction": "None required; optionally copy the literal predecessor status for MC-11/MC-12.",
+      "reVerification": "Compare mapping statuses with the predecessor registers."
+    },
+    {
+      "id": "A-15",
+      "classification": "INFORMATIONAL",
+      "title": "Record-commit artefacts remain pending (Lead duty; does not block the internal award)",
+      "evidence": "At 7f31db8 manifest.review.status is still PENDING, MC14_VERDICT is PENDING_INDEPENDENT_REVIEW, frozenCandidateCommit/reviewer are null, D23 does not exist and MASTER-PROMPT-REGISTRY.md row 14 is still PLANNED; D22 was committed as a draft record but its commit list stops at e32673e and it says the record commit is pending. The decision-log entries D-058..D-061 are staged but uncommitted. recordCommitActions lists the exact reconciliation steps.",
+      "status": "OPEN",
+      "correction": "Lead record commit per recordCommitActions: manifest review/statusBlock (PARTIAL verdict + PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE internal scope + PR_CREATED true + frozenCandidateCommit 7f31db8), MC14-050 recorded-state reconciliation, D23, D22 commit list, registry row 14, decision log, finalRecordCommit.",
+      "reVerification": "Run npm run test:legal-commercial at the record commit: 54/54 with the record documents present."
+    },
+    {
+      "id": "A-16",
+      "classification": "INFORMATIONAL",
+      "title": "Remote state now partially verified (branch pushed; PR #21 open/draft; no merge)",
+      "evidence": "git ls-remote shows origin/feature/marea-mc14-... = 7f31db8; gh pr view 21 shows OPEN, draft, base feature/marea-mc13-financial-model-cashflow-break-even, headRefOid 7f31db8, mergedAt null. Local: 0 merge commits, not in main, no src/public/deploy/.github change. Merge/deploy remain not performed.",
+      "status": "OPEN",
+      "correction": "None required; the Lead's record should keep the no-merge/no-deploy/no-publication statement.",
+      "reVerification": "Re-check the PR/remote state after the record commit."
+    },
+    {
+      "id": "A-17",
+      "classification": "INFORMATIONAL",
+      "title": "WEEE rationales implied producer registration (closed in e32673e)",
+      "evidence": "Both WEEE rationales now read 'falls to be registered separately' in data and D03.",
+      "status": "CLOSED_VERIFIED",
+      "correction": "Applied in e32673e.",
+      "reVerification": "grep 'is registered separately': no hit."
+    }
+  ],
+  "summary": {
+    "blocking": 0,
+    "major": 1,
+    "minor": 9,
+    "informational": 7,
+    "closed": 13,
+    "open": {
+      "blocking": 0,
+      "major": 0,
+      "minor": 0,
+      "informational": 4
+    }
+  },
+  "residualRisks": [
+    "External legal clearance is NOT_GRANTED by definition: 0 counsel engagements, 0 trademark clearances, 0 conformity assessments, 0 insurance policies, 0 data licences, 0 supplier quotations and 0 executed contracts; external decisions remain 19 PENDING + 1 OUT_OF_SCOPE_FOR_MC14.",
+    "No product is for sale, no price is approved and no public claim is authorised (0/42 claims PUBLIC_AUTHORIZED; publicationAuthorization NONE; 7 internal / 35 public-prohibited).",
+    "Applicability, CRA classification, RCD/MED boundaries, DPIA need, consumer contract architecture and insurance structure remain internal reasoned assessments requiring counsel.",
+    "Six legal sources are NOT_RETRIEVED and four INACCESSIBLE in the governed register; the Spanish PLD transposition text is not retrieved.",
+    "The four INFORMATIONAL findings (A-12 validator coverage, A-14 inherited-status sentinel, A-15 record-commit reconciliation, A-16 remote-state snapshot) remain open by design and do not block the internal award.",
+    "D22 contains Lead-reported build/E2E/npm-audit results that the auditor did not independently re-run (they would write build artifacts outside the auditor's write scope); the auditor independently re-ran format:check (PASS).",
+    "The auditor did not use a browser, deployment, credential or external commercial channel; no paid service, contact, purchase or publication occurred."
+  ],
+  "whatWouldChangeVerdict": [
+    "The award applies to frozen candidate 7f31db8 only. Any later change to the package must be re-verified against the new SHA.",
+    "The Lead's record commit must apply recordCommitActions (manifest/statusBlock, MC14-050 recorded-state reconciliation, D23, D22 commit list, registry row 14, decision log, finalRecordCommit) and keep external clearance NOT_GRANTED.",
+    "Re-run npm run test:legal-commercial and npm run test:legal-commercial:unit at the record commit; expect 54/54 and 41/41.",
+    "Any change that authorises a public claim, a sale, a certification, a price, a licence, insurance cover or a website change reopens this audit.",
+    "Do not record external legal clearance: the award is internal-scope only and the programme verdict stays PARTIAL."
+  ],
+  "honestLimit": "This is an internal-governance-scope audit of frozen candidate 7f31db8 and its two preceding commits. It is not a legal opinion, not a conformity assessment, not an insurance or licence review and not an authorisation to sell or publish. External legal clearance remains NOT_GRANTED and every external decision remains PENDING or OUT_OF_SCOPE_FOR_MC14. The award is PASS_INTERNAL_LEGAL_GOVERNANCE_SCOPE with programme status PARTIAL; finalRecordCommit stays null until the Lead records it. The audit did not re-fetch the full 48-source corpus (it verifies the register's provenance and reconciles it against the dossier/CSV/D02), did not run build/E2E/npm-audit (Lead-reported; format:check was independently re-run), and did not exercise any commercial or deployment channel. No sale, certification, legal clearance, publication, merge or deployment is authorised by this record."
+}

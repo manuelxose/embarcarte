@@ -1,0 +1,136 @@
+{
+ "generatedBy": "docs/marea/brand/evidence/review/tools/board-audit.mjs",
+ "generatedAt": "2026-10-30T17:59:32.177Z",
+ "boards": [
+  {
+   "file": "docs/marea/brand/evidence/contrast/cvd-simulation-board.html",
+   "bytes": 17134,
+   "consoleMessages": [],
+   "pageErrors": [],
+   "htmlLang": "en",
+   "title": "MAREA ÔÇö INTERNAL/PROPOSED ÔÇö MC-04 colour-blind simulation board",
+   "headings": [
+    "MAREA ÔÇö colour-blind simulation board (deuteranopia / protanopia / tritanopia / achromatopsia)",
+    "Original colour reference ┬À filter: none",
+    "Deuteranopia green-cone deficiency (approx.) ┬À filter: url(#deuteranopia)",
+    "Protanopia red-cone deficiency (approx.) ┬À filter: url(#protanopia)",
+    "Tritanopia blue-cone deficiency (approx.) ┬À filter: url(#tritanopia)",
+    "Achromatopsia no hue; luminance only ┬À filter: url(#achromatopsia)"
+   ],
+   "svgCount": 121,
+   "specimenLikeCount": 5,
+   "bodyTextLength": 6450,
+   "marks": {
+    "internal": true,
+    "proposed": true,
+    "illustrative": true,
+    "notLiveData": true,
+    "noCertification": false
+   },
+   "feColorMatrixCount": 4,
+   "filterIds": [
+    "deuteranopia",
+    "protanopia",
+    "tritanopia",
+    "achromatopsia"
+   ],
+   "mentions": {
+    "deuteranopia": true,
+    "protanopia": true,
+    "tritanopia": true,
+    "achromatopsia": true
+   },
+   "hasTable": 0,
+   "hasDataTableAlternative": false
+  },
+  {
+   "file": "docs/marea/brand/evidence/contrast/greyscale-board.html",
+   "bytes": 12643,
+   "consoleMessages": [],
+   "pageErrors": [],
+   "htmlLang": "en",
+   "title": "MAREA ÔÇö INTERNAL/PROPOSED ÔÇö MC-04 greyscale state-evidence board",
+   "headings": [
+    "MAREA ÔÇö greyscale state evidence (colour removed, meaning must remain)",
+    "Instrument day ÔÇö achromatopsia (luminance only) state still identifiable by shape + label + pattern?",
+    "Sunlight (simulated) ÔÇö achromatopsia (luminance only) state still identifiable by shape + label + pattern?",
+    "Instrument night ÔÇö achromatopsia (luminance only) state still identifiable by shape + label + pattern?"
+   ],
+   "svgCount": 25,
+   "specimenLikeCount": 0,
+   "bodyTextLength": 4095,
+   "marks": {
+    "internal": true,
+    "proposed": true,
+    "illustrative": true,
+    "notLiveData": true,
+    "noCertification": false
+   },
+   "feColorMatrixCount": 1,
+   "filterIds": [
+    "luminance-greyscale"
+   ],
+   "mentions": {
+    "deuteranopia": false,
+    "protanopia": false,
+    "tritanopia": false,
+    "achromatopsia": true
+   },
+   "hasTable": 0,
+   "hasDataTableAlternative": false
+  }
+ ],
+ "accessibilityDocPathCheck": {
+  "uniqueReferenced": 9,
+  "missing": []
+ },
+ "tokenStatus": {
+  "status": "INTERNAL_PROPOSED",
+  "adoption": "NOT_ADOPTED",
+  "appliedInRepository": false
+ },
+ "qa16": {
+  "claim": "MC-04 evidence HTML files declare lang=\"en\"",
+  "actual": [
+   {
+    "file": "docs/marea/brand/evidence/contrast/cvd-simulation-board.html",
+    "htmlLang": "en",
+    "bodyHasSpanish": false
+   },
+   {
+    "file": "docs/marea/brand/evidence/contrast/greyscale-board.html",
+    "htmlLang": "en",
+    "bodyHasSpanish": false
+   }
+  ]
+ },
+ "qa21": {
+  "claim": "every MC-04 evidence artefact visibly marked INTERNAL/PROPOSED",
+  "boardMarks": [
+   {
+    "file": "docs/marea/brand/evidence/contrast/cvd-simulation-board.html",
+    "marks": {
+     "internal": true,
+     "proposed": true,
+     "illustrative": true,
+     "notLiveData": true,
+     "noCertification": false
+    }
+   },
+   {
+    "file": "docs/marea/brand/evidence/contrast/greyscale-board.html",
+    "marks": {
+     "internal": true,
+     "proposed": true,
+     "illustrative": true,
+     "notLiveData": true,
+     "noCertification": false
+    }
+   }
+  ]
+ },
+ "qa25": {
+  "claim": "TypeColour created no raster",
+  "rasterUnderContrastDir": []
+ }
+}

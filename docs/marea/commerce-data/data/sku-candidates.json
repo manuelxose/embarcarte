@@ -1,0 +1,1037 @@
+{
+  "contractId": "MC16-SKU-CANDIDATES",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-16",
+  "status": "INTERNAL_ONLY",
+  "evidenceClass": "ENGINEERING_DESIGN",
+  "merchantSkuCodesEstablished": 0,
+  "candidates": [
+    {
+      "skuCandidateId": "SKU-CAND-NAV-ESSENTIAL",
+      "editionId": "NAV-ESSENTIAL",
+      "familyId": "NAV",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-NAV-PRO",
+      "editionId": "NAV-PRO",
+      "familyId": "NAV",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-HUB-STANDARD",
+      "editionId": "HUB-STANDARD",
+      "familyId": "HUB",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-HUB-PRO",
+      "editionId": "HUB-PRO",
+      "familyId": "HUB",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-AIS-RECEIVER",
+      "editionId": "AIS-RECEIVER",
+      "familyId": "AIS",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-AIS-CONNECTED",
+      "editionId": "AIS-CONNECTED",
+      "familyId": "AIS",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-PILOT-COASTAL",
+      "editionId": "PILOT-COASTAL",
+      "familyId": "PILOT",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-SAFETY-PILOT",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-PILOT-SAIL",
+      "editionId": "PILOT-SAIL",
+      "familyId": "PILOT",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-SAFETY-PILOT",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-PILOT-PRO",
+      "editionId": "PILOT-PRO",
+      "familyId": "PILOT",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "INELIGIBLE_INSTALLATION_PACKAGE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-SAFETY-PILOT",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-SENSE-WIND",
+      "editionId": "SENSE-WIND",
+      "familyId": "SENSE",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-SENSE-POWER",
+      "editionId": "SENSE-POWER",
+      "familyId": "SENSE",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-SENSE-BILGE",
+      "editionId": "SENSE-BILGE",
+      "familyId": "SENSE",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-SENSE-TANKS",
+      "editionId": "SENSE-TANKS",
+      "familyId": "SENSE",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-SENSE-ENV",
+      "editionId": "SENSE-ENV",
+      "familyId": "SENSE",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-SENSE-ESSENTIALS",
+      "editionId": "SENSE-ESSENTIALS",
+      "familyId": "SENSE",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-SENSE-SAIL",
+      "editionId": "SENSE-SAIL",
+      "familyId": "SENSE",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-SENSE-SYSTEMS",
+      "editionId": "SENSE-SYSTEMS",
+      "familyId": "SENSE",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-WATCH-CORE",
+      "editionId": "WATCH-CORE",
+      "familyId": "WATCH",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-WATCH-PLUS",
+      "editionId": "WATCH-PLUS",
+      "familyId": "WATCH",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-DISPLAY-7",
+      "editionId": "DISPLAY-7",
+      "familyId": "DISPLAY",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-DISPLAY-LARGE-CONDITIONAL",
+      "editionId": "DISPLAY-LARGE-CONDITIONAL",
+      "familyId": "DISPLAY",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CONDITIONAL_NOT_SELECTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-WEATHER-STANDARD",
+      "editionId": "WEATHER-STANDARD",
+      "familyId": "WEATHER",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-WEATHER-PRO",
+      "editionId": "WEATHER-PRO",
+      "familyId": "WEATHER",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-FLEET-START",
+      "editionId": "FLEET-START",
+      "familyId": "FLEET",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-FLEET-BUSINESS",
+      "editionId": "FLEET-BUSINESS",
+      "familyId": "FLEET",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CANDIDATE_ONLY_NOT_MERCHANTABLE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    },
+    {
+      "skuCandidateId": "SKU-CAND-FLEET-ENTERPRISE",
+      "editionId": "FLEET-ENTERPRISE",
+      "familyId": "FLEET",
+      "merchantSkuCode": null,
+      "merchantable": false,
+      "priceApproved": false,
+      "commercialAvailability": "NOT_FOR_SALE",
+      "lifecycleState": "CANDIDATE_ONLY",
+      "eligibility": "CONTRACTED_B2B_NOT_SELF_SERVICE",
+      "creationWorkflowId": "WF-MERCHANT-SKU-CREATION",
+      "creationPreconditions": [
+        "APPROVED_PRICE_WITH_EVIDENCE",
+        "VERIFIED_INVENTORY_OR_CONTRACTED_FULFILMENT",
+        "ALL_APPLICABLE_RELEASE_GATES_CLOSED_WITH_EXTERNAL_EVIDENCE",
+        "LEGAL_ENTITY_AND_CONSUMER_TERMS_CLOSED",
+        "AUTHORIZED_APPROVER_ROLES_RECORDED",
+        "AUDIT_EVENT_APPENDED"
+      ],
+      "blockingGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "requiredEvidenceIds": [
+        "EV-PRICE-APPROVAL",
+        "EV-INVENTORY-PROVENANCE",
+        "EV-LEGAL-CLEARANCE",
+        "EV-PUBLICATION-AUTHORIZATION"
+      ],
+      "notes": "The edition id is the stable future candidate identity. No merchant SKU code is established."
+    }
+  ]
+}

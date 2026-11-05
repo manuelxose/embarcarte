@@ -1,0 +1,131 @@
+====================================================================================================
+MAREA MC-04 render pipeline ÔÇö node v24.18.0, playwright 1.64.1
+repo C:\Users\Admin\Documents\workspace\embarcarte
+ffmpeg C:\ffmpeg\bin\ffmpeg.exe
+====================================================================================================
+chromium 156.0.8078.4 (headless, deterministic flags)
+----------------------------------------------------------------------------------------------------
+JOB packaging ÔÇö D-14 six packaging dielines (vector, PROPOSED)
+JOB packaging ÔÇö six vector dielines, 1:1 mm, PROPOSED dimensions
+wordmark source: logo/marea-wordmark.svg (inline vector, scaled per panel)
+OK     docs/marea/brand/assets/packaging/marea-packaging-dieline-display.svg  svg  viewBox=0 0 799 314  12 024 B  sha256=5efe663ea71b096bef7b010bbff06139616f333733722b8d52221612353d41fd
+OK     docs/marea/brand/assets/packaging/marea-packaging-dieline-hub.svg  svg  viewBox=0 0 719 274  11 996 B  sha256=b4336c2c8bd57552f838a7aa343892f2398c6c0b753897a4c2e6926b9463f850
+OK     docs/marea/brand/assets/packaging/marea-packaging-dieline-ais.svg  svg  viewBox=0 0 559 234  11 984 B  sha256=a2202f06f27dd3b00cf01983d343bda72e279363f0cbfbb6f2c26b9bb76abc91
+OK     docs/marea/brand/assets/packaging/marea-packaging-dieline-sense.svg  svg  viewBox=0 0 509 214  12 015 B  sha256=4c1ce0310ed6a301fe610eff47f41a2cf687fe28b99e8dd5c8e4e4534e32fa56
+OK     docs/marea/brand/assets/packaging/marea-packaging-dieline-watch.svg  svg  viewBox=0 0 449 204  11 993 B  sha256=b85d08e2d1071fcba822f916a3db653c755e5a1a69e9011979abaf66ea8d3d28
+OK     docs/marea/brand/assets/packaging/marea-packaging-dieline-pilot.svg  svg  viewBox=0 0 779 294  12 010 B  sha256=83808ea9cbb6acc2bc99a574d7754f176c8d940fa096d1a5963759a76a6c69b0
+----------------------------------------------------------------------------------------------------
+JOB app-icons ÔÇö D-04 app icon, favicon, ICO + 16/32 proof
+JOB app-icons ÔÇö D-04 construction from the compact mark + browser identity
+mark ink bbox 15.50x10.00 in viewBox 24x24; reduced-16 ink 10.00x7.80
+OK     docs/marea/brand/assets/icons/app/marea-app-icon-master.svg  svg  viewBox=0 0 1024 1024  845 B  sha256=164f275484b176826a1d008b0f4cde195b28b04916e6999291c9cbbd6d9617af
+OK     docs/marea/brand/assets/icons/app/marea-app-icon-maskable-background.svg  svg  viewBox=0 0 1024 1024  342 B  sha256=424fc2463261266a69eb932b652b3c9d14ad002beb87e17167bb22e799620042
+OK     docs/marea/brand/assets/icons/app/marea-app-icon-maskable-foreground.svg  svg  viewBox=0 0 1024 1024  766 B  sha256=b9a5b80cd22f8c6a4efb6dcf65ccecf0ae0253e37a40f3693ec96756eaa66033
+OK     docs/marea/brand/assets/icons/app/marea-app-icon-construction.svg  svg  viewBox=0 0 1024 1024  1 688 B  sha256=ef8daaef185431e7b208c7474d59127eea1365913ae666fdddf3656f4f1b69a6
+OK     docs/marea/brand/assets/icons/app/marea-favicon-source.svg  svg  viewBox=0 0 32 32  730 B  sha256=afe8275221483e25c197e336d4f767590233a56026a0f08c68afe9896a7445d4
+OK     docs/marea/brand/assets/icons/favicon.svg  svg  viewBox=0 0 32 32  730 B  sha256=afe8275221483e25c197e336d4f767590233a56026a0f08c68afe9896a7445d4
+OK     docs/marea/brand/assets/icons/marea-app-icon-1024.png  png  1024x1024  5 541 B  sha256=dde90c8abbbbccf5534f1f1919cc934cf8a937ef3776f3fae3e02a2d692edfd9
+OK     docs/marea/brand/assets/icons/marea-icon-512.png  png  512x512  2 263 B  sha256=95fc8298598b75547a9e17647e25d2d179e92e90d1b3d2242f301832807bd15b
+OK     docs/marea/brand/assets/icons/marea-icon-192.png  png  192x192  915 B  sha256=93a2e8660d8da6616220555a47e3e4f82be95db6970e01b1a1964df3e99b1cd2
+OK     docs/marea/brand/assets/icons/marea-apple-touch-180.png  png  180x180  882 B  sha256=ea67e179285159fea469d5e2d26b6738aeb1da3e8cb10258237ee2d146132baf
+OK     docs/marea/brand/assets/icons/app/marea-icon-16.png  png  16x16  370 B  sha256=5aee37ecdaf399ad996ef3d8c27a14a0080083601f25fbe77cccfe0d921bd971
+OK     docs/marea/brand/assets/icons/app/marea-icon-32.png  png  32x32  520 B  sha256=8c39ee6679e50774c18eed6ed40f0b6eb748176edea10b942d02880f58c55d43
+OK     docs/marea/brand/assets/icons/app/marea-icon-48.png  png  48x48  546 B  sha256=1fe2fc525e63e7005303903a32ed3638d651d1461e317082367754eff0780c1b
+OK     docs/marea/brand/assets/icons/favicon.ico  ico  16x16+32x32+48x48  1 490 B  sha256=3154fcba7953d298c17403852e63387b56468004f60864fae653342f2e50d3c5
+OK     docs/marea/brand/assets/icons/app/marea-favicon-16-32-proof.png  png  1200x900  97 475 B  sha256=1c6d7b6fd7a75acf220f366234bdcaae972fc38d0849cb395e2ff4cc9e9ad253
+----------------------------------------------------------------------------------------------------
+JOB og-cards ÔÇö D-05 ES/EN Open Graph cards 1200x630 JPEG
+JOB og-cards ÔÇö D-05 per-locale Open Graph cards, exactly 1200x630 JPEG
+OK     docs/marea/brand/assets/social/og-marea-es-1200x630.jpg  jpeg  1200x630  66 508 B  sha256=40d5c8afc5319c7fb489c8fd641b5c8700021bc3b5af9da69989a5df7dc366c7
+OK     docs/marea/brand/assets/social/og-marea-en-1200x630.jpg  jpeg  1200x630  63 308 B  sha256=079719888feb9db568ea92ef13997b2f634147fff499057a6ad43a137d0f702b
+----------------------------------------------------------------------------------------------------
+JOB print-pdf ÔÇö D-15 installer record A4 PDF evidence (ES/EN)
+JOB print-pdf ÔÇö D-15 installer commissioning record A4 evidence
+OK     docs/marea/brand/assets/print/marea-installer-commissioning-record-es.pdf  pdf  595x842 pt  247 899 B  sha256=9311033a4c35c22592fd851bb246190883badeb384070bfea013aa11fc66ef04
+OK     docs/marea/brand/assets/print/marea-installer-commissioning-record-en.pdf  pdf  595x842 pt  237 233 B  sha256=d65952ea2178d8ea75a522ac2be5f2e28e592180d15192fa5fb7eaa8957542c2
+----------------------------------------------------------------------------------------------------
+JOB evidence ÔÇö PNG evidence renders of authored proof sheets
+JOB evidence ÔÇö rendering authored proof sheets from other owners to PNG evidence
+evidence: 13 authored proof sheet(s) found
+evidence source: docs/marea/brand/territories/evidence/reading-test.html
+OK     docs/marea/brand/assets/evidence/renders/territories-evidence-reading-test.png  png  1200x912  57 216 B  sha256=35140b72d2d3ab9f19660cb07784af9e90da278dc516501b9f6c283e1419bef2
+evidence source: docs/marea/brand/territories/misuse-examples.html
+OK     docs/marea/brand/assets/evidence/renders/territories-misuse-examples.png  png  1200x995  88 070 B  sha256=1a65b47e4fd399efce7307915f317e8ab15b2e27a751a6ce533d39102bca9f8a
+evidence source: docs/marea/brand/territories/proof/territory-a-proof-sheet.html
+OK     docs/marea/brand/assets/evidence/renders/territories-proof-territory-a-proof-sheet.png  png  1200x4221  355 596 B  sha256=f09eda0ceacff8ddac0248d19060628139030b72974d4b4449d9e1d5da40c205
+evidence source: docs/marea/brand/territories/proof/territory-b-proof-sheet.html
+OK     docs/marea/brand/assets/evidence/renders/territories-proof-territory-b-proof-sheet.png  png  1200x4155  317 675 B  sha256=fbbc3982fcb674ecaeba17db9713aa832208c5876b896c75542f107ffdee6ce6
+evidence source: docs/marea/brand/territories/proof/territory-c-proof-sheet.html
+OK     docs/marea/brand/assets/evidence/renders/territories-proof-territory-c-proof-sheet.png  png  1200x4217  274 129 B  sha256=6938a1aac4acd0e1c5b88ba947681149b424eac7c31c5415ae10f5abb85ba7b7
+evidence source: docs/marea/brand/territories/territory-comparison.html
+OK     docs/marea/brand/assets/evidence/renders/territories-territory-comparison.png  png  1200x1717  153 193 B  sha256=05892eaa7abea95d3a365e7946a5a464746e2c5c267af1b0689029845a0ad72f
+evidence source: docs/marea/brand/specimens/alerts.html
+OK     docs/marea/brand/assets/evidence/renders/specimens-alerts.png  png  1200x3073  324 520 B  sha256=5fec0705235d04906a45dd3e889dde445d0a73e679a7abf113c78d91aa0f4732
+evidence source: docs/marea/brand/specimens/index.html
+OK     docs/marea/brand/assets/evidence/renders/specimens-index.png  png  1200x5236  502 899 B  sha256=cf4d61cb2c1a2c52e52e6ae2c1a9a6cd182726ce27cc9ad4d0770836288a7b06
+evidence source: docs/marea/brand/specimens/pilot.html
+OK     docs/marea/brand/assets/evidence/renders/specimens-pilot.png  png  1200x2502  328 792 B  sha256=93f9b17bcae91f6840796d296d79f4c298398f9ab99348b4fd4b9c71855a2b8a
+evidence source: docs/marea/brand/evidence/contrast/cvd-simulation-board.html
+OK     docs/marea/brand/assets/evidence/renders/evidence-contrast-cvd-simulation-board.png  png  1280x2842  432 232 B  sha256=64afb17336e66951d084c4634b724b119566a42127af2a92fcfcb60aaf01cf2d
+evidence source: docs/marea/brand/evidence/contrast/greyscale-board.html
+OK     docs/marea/brand/assets/evidence/renders/evidence-contrast-greyscale-board.png  png  1280x1475  157 937 B  sha256=eca90714df2bcdbee4b929b459232c6bd9c6093f44893d32716377a93ed44522
+evidence source: docs/marea/brand/assets/icons/ui/index.html
+OK     docs/marea/brand/assets/evidence/renders/assets-icons-ui-index.png  png  1200x7809  714 958 B  sha256=416abf172e69dd04b6c7b66f60951075829cec5ac2dfea602678551028a54dd6
+evidence source: docs/marea/brand/assets/icons/ui/reduction-proof.html
+OK     docs/marea/brand/assets/evidence/renders/assets-icons-ui-reduction-proof.png  png  1200x5420  410 859 B  sha256=cc9af1fad44086a46fac26dd18c0aaa3a2de085679e387b62e76e021e847d24e
+----------------------------------------------------------------------------------------------------
+JOB manifest ÔÇö produced-asset manifest regenerated from real files
+JOB manifest ÔÇö regenerating produced-asset manifest from real files
+OK     docs/marea/assets/manifest/MC-04-ASSETS.yaml  yaml  50 613 B  sha256=c3b2cc2be6614f855d84eb37d38a5f39303f43dd657e2f5c065b690f6fcec914
+manifest: 15 entries, 120/120 asset files registered (100%), 5 275 487 asset bytes total, 50 613 manifest bytes
+----------------------------------------------------------------------------------------------------
+JOB capabilities ÔÇö real capability probe (png/jpeg/webp/avif)
+CAPABILITY probe ÔÇö Playwright Chromium + ffmpeg encoders (real files, real bytes)
+CAPABILITY png      OK    240x120 via Playwright screenshot
+CAPABILITY jpeg     OK    240x120 via Playwright screenshot
+CAPABILITY webp    OK    240x120, 1 392 B via C:\ffmpeg\bin\ffmpeg.exe
+CAPABILITY avif    OK    240x120, 1 329 B via C:\ffmpeg\bin\ffmpeg.exe
+capability probe bytes live outside the repo (temporary directory); not deliverables
+====================================================================================================
+SUMMARY 39 output(s), 4 970 762 bytes total
+  docs/marea/brand/assets/packaging/marea-packaging-dieline-display.svg 799x314 mm 12 024 B sha256=5efe663ea71b096bef7b010bbff06139616f333733722b8d52221612353d41fd
+  docs/marea/brand/assets/packaging/marea-packaging-dieline-hub.svg 719x274 mm 11 996 B sha256=b4336c2c8bd57552f838a7aa343892f2398c6c0b753897a4c2e6926b9463f850
+  docs/marea/brand/assets/packaging/marea-packaging-dieline-ais.svg 559x234 mm 11 984 B sha256=a2202f06f27dd3b00cf01983d343bda72e279363f0cbfbb6f2c26b9bb76abc91
+  docs/marea/brand/assets/packaging/marea-packaging-dieline-sense.svg 509x214 mm 12 015 B sha256=4c1ce0310ed6a301fe610eff47f41a2cf687fe28b99e8dd5c8e4e4534e32fa56
+  docs/marea/brand/assets/packaging/marea-packaging-dieline-watch.svg 449x204 mm 11 993 B sha256=b85d08e2d1071fcba822f916a3db653c755e5a1a69e9011979abaf66ea8d3d28
+  docs/marea/brand/assets/packaging/marea-packaging-dieline-pilot.svg 779x294 mm 12 010 B sha256=83808ea9cbb6acc2bc99a574d7754f176c8d940fa096d1a5963759a76a6c69b0
+  docs/marea/brand/assets/icons/app/marea-app-icon-master.svg 1024x1024 845 B sha256=164f275484b176826a1d008b0f4cde195b28b04916e6999291c9cbbd6d9617af
+  docs/marea/brand/assets/icons/app/marea-app-icon-maskable-background.svg 1024x1024 342 B sha256=424fc2463261266a69eb932b652b3c9d14ad002beb87e17167bb22e799620042
+  docs/marea/brand/assets/icons/app/marea-app-icon-maskable-foreground.svg 1024x1024 766 B sha256=b9a5b80cd22f8c6a4efb6dcf65ccecf0ae0253e37a40f3693ec96756eaa66033
+  docs/marea/brand/assets/icons/app/marea-app-icon-construction.svg 1024x1024 1 688 B sha256=ef8daaef185431e7b208c7474d59127eea1365913ae666fdddf3656f4f1b69a6
+  docs/marea/brand/assets/icons/app/marea-favicon-source.svg 32x32 730 B sha256=afe8275221483e25c197e336d4f767590233a56026a0f08c68afe9896a7445d4
+  docs/marea/brand/assets/icons/favicon.svg 32x32 730 B sha256=afe8275221483e25c197e336d4f767590233a56026a0f08c68afe9896a7445d4
+  docs/marea/brand/assets/icons/marea-app-icon-1024.png 1024x1024 5 541 B sha256=dde90c8abbbbccf5534f1f1919cc934cf8a937ef3776f3fae3e02a2d692edfd9
+  docs/marea/brand/assets/icons/marea-icon-512.png 512x512 2 263 B sha256=95fc8298598b75547a9e17647e25d2d179e92e90d1b3d2242f301832807bd15b
+  docs/marea/brand/assets/icons/marea-icon-192.png 192x192 915 B sha256=93a2e8660d8da6616220555a47e3e4f82be95db6970e01b1a1964df3e99b1cd2
+  docs/marea/brand/assets/icons/marea-apple-touch-180.png 180x180 882 B sha256=ea67e179285159fea469d5e2d26b6738aeb1da3e8cb10258237ee2d146132baf
+  docs/marea/brand/assets/icons/app/marea-icon-16.png 16x16 370 B sha256=5aee37ecdaf399ad996ef3d8c27a14a0080083601f25fbe77cccfe0d921bd971
+  docs/marea/brand/assets/icons/app/marea-icon-32.png 32x32 520 B sha256=8c39ee6679e50774c18eed6ed40f0b6eb748176edea10b942d02880f58c55d43
+  docs/marea/brand/assets/icons/app/marea-icon-48.png 48x48 546 B sha256=1fe2fc525e63e7005303903a32ed3638d651d1461e317082367754eff0780c1b
+  docs/marea/brand/assets/icons/favicon.ico 48x48 [16/32/48] 1 490 B sha256=3154fcba7953d298c17403852e63387b56468004f60864fae653342f2e50d3c5
+  docs/marea/brand/assets/icons/app/marea-favicon-16-32-proof.png 1200x900 97 475 B sha256=1c6d7b6fd7a75acf220f366234bdcaae972fc38d0849cb395e2ff4cc9e9ad253
+  docs/marea/brand/assets/social/og-marea-es-1200x630.jpg 1200x630 66 508 B sha256=40d5c8afc5319c7fb489c8fd641b5c8700021bc3b5af9da69989a5df7dc366c7
+  docs/marea/brand/assets/social/og-marea-en-1200x630.jpg 1200x630 63 308 B sha256=079719888feb9db568ea92ef13997b2f634147fff499057a6ad43a137d0f702b
+  docs/marea/brand/assets/print/marea-installer-commissioning-record-es.pdf 595x842 247 899 B sha256=9311033a4c35c22592fd851bb246190883badeb384070bfea013aa11fc66ef04
+  docs/marea/brand/assets/print/marea-installer-commissioning-record-en.pdf 595x842 237 233 B sha256=d65952ea2178d8ea75a522ac2be5f2e28e592180d15192fa5fb7eaa8957542c2
+  docs/marea/brand/assets/evidence/renders/territories-evidence-reading-test.png 1200x912 57 216 B sha256=35140b72d2d3ab9f19660cb07784af9e90da278dc516501b9f6c283e1419bef2
+  docs/marea/brand/assets/evidence/renders/territories-misuse-examples.png 1200x995 88 070 B sha256=1a65b47e4fd399efce7307915f317e8ab15b2e27a751a6ce533d39102bca9f8a
+  docs/marea/brand/assets/evidence/renders/territories-proof-territory-a-proof-sheet.png 1200x4221 355 596 B sha256=f09eda0ceacff8ddac0248d19060628139030b72974d4b4449d9e1d5da40c205
+  docs/marea/brand/assets/evidence/renders/territories-proof-territory-b-proof-sheet.png 1200x4155 317 675 B sha256=fbbc3982fcb674ecaeba17db9713aa832208c5876b896c75542f107ffdee6ce6
+  docs/marea/brand/assets/evidence/renders/territories-proof-territory-c-proof-sheet.png 1200x4217 274 129 B sha256=6938a1aac4acd0e1c5b88ba947681149b424eac7c31c5415ae10f5abb85ba7b7
+  docs/marea/brand/assets/evidence/renders/territories-territory-comparison.png 1200x1717 153 193 B sha256=05892eaa7abea95d3a365e7946a5a464746e2c5c267af1b0689029845a0ad72f
+  docs/marea/brand/assets/evidence/renders/specimens-alerts.png 1200x3073 324 520 B sha256=5fec0705235d04906a45dd3e889dde445d0a73e679a7abf113c78d91aa0f4732
+  docs/marea/brand/assets/evidence/renders/specimens-index.png 1200x5236 502 899 B sha256=cf4d61cb2c1a2c52e52e6ae2c1a9a6cd182726ce27cc9ad4d0770836288a7b06
+  docs/marea/brand/assets/evidence/renders/specimens-pilot.png 1200x2502 328 792 B sha256=93f9b17bcae91f6840796d296d79f4c298398f9ab99348b4fd4b9c71855a2b8a
+  docs/marea/brand/assets/evidence/renders/evidence-contrast-cvd-simulation-board.png 1280x2842 432 232 B sha256=64afb17336e66951d084c4634b724b119566a42127af2a92fcfcb60aaf01cf2d
+  docs/marea/brand/assets/evidence/renders/evidence-contrast-greyscale-board.png 1280x1475 157 937 B sha256=eca90714df2bcdbee4b929b459232c6bd9c6093f44893d32716377a93ed44522
+  docs/marea/brand/assets/evidence/renders/assets-icons-ui-index.png 1200x7809 714 958 B sha256=416abf172e69dd04b6c7b66f60951075829cec5ac2dfea602678551028a54dd6
+  docs/marea/brand/assets/evidence/renders/assets-icons-ui-reduction-proof.png 1200x5420 410 859 B sha256=cc9af1fad44086a46fac26dd18c0aaa3a2de085679e387b62e76e021e847d24e
+  docs/marea/assets/manifest/MC-04-ASSETS.yaml 50 613 B sha256=c3b2cc2be6614f855d84eb37d38a5f39303f43dd657e2f5c065b690f6fcec914
+FILES 39 ┬À NODE v24.18.0 ┬À PLAYWRIGHT 1.64.1 ┬À CHROMIUM 156.0.8078.4
+RESULT PASS ÔÇö every requested job produced real, measured files

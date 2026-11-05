@@ -1,0 +1,1717 @@
+# =============================================================================
+# MAREA — MC-04 image/CGI brief manifest (D-12 companion)
+# =============================================================================
+# File:     docs/marea/assets/manifest/MC-04-BRIEFS.yaml
+# Date:     2026-10-30
+# Revision: 1
+# Owner:    Governance (MC-04 write scope: docs/marea/assets/manifest/MC-04-BRIEFS.yaml)
+# Related:  docs/marea/brand/PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md (human-readable briefs)
+#           docs/marea/assets/ASSET-PIPELINE.md §4.3 (schema), §10 (blockers)
+#           docs/marea/assets/ASSET-MANIFEST.template.yaml (field shapes)
+#           docs/marea/assets/manifest/MC-04-ASSETS.yaml (AssetProduction's real-file manifest)
+# =============================================================================
+#
+# READ THIS FIRST — WHAT THIS FILE IS
+#
+#   It is a DRAFT manifest of BRIEFS, not of delivered assets. Every entry below
+#   describes an image or CGI asset that CANNOT BE PRODUCED in MC-04 because image
+#   generation is blocked (no provider, no credential, no budget authorization).
+#
+#   IMAGE_GENERATION = BLOCKED
+#   Every blocked asset: provider.name = NONE_YET, files = [], status =
+#   BLOCKED_ON_IMAGE_GENERATION, generated_at = null, classification = CONCEPT,
+#   rights.ai_generated = true (it describes the FUTURE generated file only),
+#   rights.synthetic_content_disclosure = PENDING.
+#
+#   NO FILE EXISTS. No path to a generated file is invented. `files: []` stays empty
+#   until an authorised generation actually produces a file with a real SHA-256.
+#   A placeholder/mock-up/stock substitute for any of these IDs would be an MC-04
+#   §12.5 failure, not a delivery.
+#
+#   The vector asset MR-PRD-003 is recorded at the end with its TRUE status
+#   (PRODUCIBLE_WITHOUT_GENERATION, owned by a different MC-04 write scope) so no ID
+#   is missing from the registry. It is not an image-generation asset.
+#
+#   STATUS ENUM NOTE: the MC-04 programme uses BLOCKED_ON_IMAGE_GENERATION /
+#   PRODUCIBLE_WITHOUT_GENERATION in addition to the ASSET-PIPELINE §4.3 enum.
+#   This file uses the MC-04 vocabulary (MC-04-EXECUTION-PLAN.md §2.2) because that
+#   is the milestone's authoritative status language.
+#
+# 20-FIELD BRIEF MAP (every blocked entry carries all 20 fields under `brief:`)
+#   01 asset_id                 11 hardware_realism
+#   02 destination              12 classification
+#   03 subject                  13 aspect_ratio
+#   04 composition              14 target_pixel_dimensions
+#   05 camera_position          15 mobile_crop
+#   06 lens_perspective         16 negative_constraints
+#   07 lighting                 17 html_copy_safe_areas
+#   08 marine_environment       18 caption_alt_es_en
+#   09 background               19 usage_rights
+#   10 brand_colour_constraints 20 provider_status_actual
+# =============================================================================
+
+schema_version: 1
+document_id: 'MC-04 / D-12 / MC-04-BRIEFS'
+updated_at: '2026-10-30'
+author: 'governance'
+reviewer: null
+milestone: 'MC-04'
+programme: 'EMBARCARTE / MAREA'
+branch: 'feature/marea-mc04-visual-identity'
+status: 'BRIEF_DRAFT'
+image_generation: BLOCKED
+image_generation_blockers:
+  - 'MC-01 B1 — no image-generation capability in this harness'
+  - 'MC-01 B2 — no provider credentials'
+  - 'MC-01 B3 — no budget authorization'
+  - 'MC-01 B4 — provider model/account entitlement unverified'
+  - 'MC-03 X-03 / MC-04 B16 — inherited blocker'
+  - 'MC-04 B22 — EU AI Act synthetic-content disclosure form undecided'
+  - 'MC-04 B23 — no public/assets/marea/** write scope authorized'
+unblock_authorization_required:
+  - '1. Written budget authorization with a cost ceiling (company owner)'
+  - '2. Provisioned provider account + credential in the approved secret store'
+  - '3. Verified account/terms entitlement for commercial CONCEPT imagery'
+  - '4. Lead-approved write scope for the first real file + recorded disclosure decision'
+notes: >
+  DRAFT brief manifest only. MAREA is a PROPOSED brand pending trademark clearance;
+  nothing here asserts clearance, certification, availability or that any photograph,
+  render or installation exists. No prompt was sent to any provider. No file was
+  produced. The human-readable art direction and the full brief text live in
+  docs/marea/brand/PHOTOGRAPHY-AND-CGI-ART-DIRECTION.md.
+
+defaults_shared_across_assets:
+  classification: CONCEPT
+  status: BLOCKED_ON_IMAGE_GENERATION
+  provider:
+    name: NONE_YET
+    api: NONE_YET
+    endpoint: NONE_YET
+    model: NONE_YET
+    terms_version: NOT_REVIEWED
+    account_entitlement: NOT_VERIFIED
+  files: []
+  generated_at: null
+  rights:
+    ai_generated: true
+    model_provider: NONE_YET
+    terms_version: NOT_REVIEWED
+    attested_by: null
+    attested_at: null
+    synthetic_content_disclosure: PENDING
+  checks:
+    visual_review: PENDING
+    alt_review: PENDING
+    rights_check: PENDING
+    perf_budget: PENDING
+    axe_alt: PENDING
+    ssr_safe: PENDING
+    evidence: []
+
+assets:
+  # ---------------------------------------------------------------------------
+  # CORPORATE / ENVIRONMENT
+  # ---------------------------------------------------------------------------
+  - id: 'MR-COR-001'
+    slug: 'corporate-marine-hero-concept'
+    category: corporate
+    purpose: >
+      Corporate web hero: one cruising yacht, integrated systems, calm Atlantic competence.
+      Supports the future corporate home and the MAREA brand hub hero.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['corporate home (proposed)', 'marea brand hub (proposed)']
+      section: 'hero'
+      audience: 'recreational and professional vessel owners evaluating a marine technology family'
+    brief:
+      asset_id: 'MR-COR-001'
+      destination: 'Future corporate home / and /en; MAREA brand hub hero /marea'
+      subject: 'One 10-14 m cruising sailing yacht underway in the Rías Baixas, anonymous helm; used and maintained vessel, systems integrated but not a wall of gadgets'
+      composition: 'Wide establishing frame; vessel on the middle third; horizon upper third; calm level; negative sky/water for DOM headline'
+      camera_position: '1.5-2.5 m above waterline, chase boat, slightly abeam of the stern quarter; no drone top-down'
+      lens_perspective: '35-50 mm equivalent; natural perspective, no fisheye, no compressed telephoto'
+      lighting: 'Soft overcast Atlantic daylight or low golden light behind cloud; flat honest shadows; no visible sun flare'
+      marine_environment: '8-18 kn, 0.3-1.2 m chop, overcast grey-green water, distant Galician coast in haze'
+      background: 'Real coastline suggestion only (granite, pine, low haze); no landmark building, no marina crowd, no identifiable third-party vessel'
+      brand_colour_constraints: 'Natural marine palette only; no saturated brand colour, no neon, no branded sail graphics (colour tokens not yet produced by TypeColour)'
+      hardware_realism: 'Only plausible marine fittings; no invented MAREA hardware as hero object; no fake certification plate; no readable instrument values'
+      classification: CONCEPT
+      aspect_ratio: '16:9 master; 4:3 and 1:1 derivatives'
+      target_pixel_dimensions: 'Master 1536x1024 or 2048 w class -> AVIF/WebP 1920/1600/1280/960; LCP <= 120 kB @1920'
+      mobile_crop: 'Centre-left 4:5 safe crop keeps vessel and horizon; no subject inside outer 12%'
+      negative_constraints: 'storm drama, lens flare, neon grading, fake HUD, fake certifications, visible competitor devices, readable invented UI, faces, third-party logos, watermarks, AI artefacts (warped rigging, extra hands, impossible geometry)'
+      html_copy_safe_areas: 'Top-left 45% width / top 30% height free of subject; bottom 18% free for caption/disclaimer band'
+      caption_alt_es_en:
+        caption_es: '«Navegación de crucero en las Rías Baixas — imagen conceptual.»'
+        caption_en: 'Cruising in the Rías Baixas - concept image.'
+        alt_es: '«Velero de crucero navegando con mar rizada bajo cielo cubierto, costa gallega al fondo.»'
+        alt_en: 'Cruising sailboat underway in light chop under an overcast sky, Galician coast in the distance.'
+      usage_rights: 'None acquired. On production: written provider terms for commercial use; no third-party vessel/person without release; rights and disclosure recorded in manifest; EU AI Act disclosure form PENDING (B22)'
+      provider_status_actual: 'NONE_YET - no provider, no credential, no budget; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1536
+      height: 1024
+      aspect_ratio: '3:2 (master), delivered 16:9/4:3/1:1'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [960, 1280, 1600, 1920]
+      target_bytes: 120000
+      lcp: true
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept image; not a real installation; no provider call performed'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Velero de crucero navegando con mar rizada bajo cielo cubierto, costa gallega al fondo.»'
+      en: 'Cruising sailboat underway in light chop under an overcast sky, Galician coast in the distance.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — no representa un producto certificado / no es una fotografía de un producto real instalado.»'
+      en: 'Concept render - not a photograph of a certified product and not a real installation.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked (no provider, credential or budget). No file produced.'
+
+  - id: 'MR-COR-002'
+    slug: 'product-family-ecosystem-hero-concept'
+    category: ecosystem
+    purpose: >
+      Product-family page hero: a quiet helm arrangement suggesting several systems working as one.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea products page (proposed)']
+      section: 'hero'
+      audience: 'buyers comparing a fragmented electronics fit against an integrated family'
+    brief:
+      asset_id: 'MR-COR-002'
+      destination: '/marea/productos and /en/marea/products hero'
+      subject: 'Close quiet arrangement at a helm station: display housing edge, gateway enclosure edge, small sensor module, tidy cable loom; no invented final product geometry, no logos'
+      composition: 'Tight three-quarter arrangement, shallow depth; strong negative upper area for DOM heading; family story by proximity, not labelled parts'
+      camera_position: "Approximately helmsman's eye height, slightly above the units, 40 cm - 1 m working distance"
+      lens_perspective: '50-85 mm equivalent; controlled background falloff, no macro distortion'
+      lighting: 'Overcast daylight through a sprayhood; one soft key, honest fill; no specular product-hero hotspots'
+      marine_environment: 'Below-decks/helm station of a cruising yacht; teak, matte panels, faint salt film'
+      background: 'Out-of-focus cockpit/companionway; no readable brand, no chart imagery, no faces'
+      brand_colour_constraints: 'Neutral matte palette; no painted brand colour on hardware; no luminous accent'
+      hardware_realism: 'Plausible enclosures, screws, gaskets, glands; no invented certification label; blank screen areas; no ports labelled with unverified protocols'
+      classification: CONCEPT
+      aspect_ratio: '16:9 master; 4:3 derivative'
+      target_pixel_dimensions: 'Master 1600 w -> AVIF/WebP 1280/960; card <= 45 kB @960'
+      mobile_crop: '1:1 centre crop retains display housing edge and one cable run; nothing critical in outer 12%'
+      negative_constraints: 'fake packaging, product-name decals, readable screen text, implied certification, competitor devices, watermarks, AI artefacts'
+      html_copy_safe_areas: 'Upper 35% clear; right 30% clear for vertical DOM label on wide layouts'
+      caption_alt_es_en:
+        caption_es: '«Conjunto de sistemas a bordo — imagen conceptual.»'
+        caption_en: 'Systems together at the helm - concept image.'
+        alt_es: '«Primer plano de una consola de timón con una pantalla, una caja de conexiones y cableado ordenado.»'
+        alt_en: 'Close view of a helm console with a display, a gateway enclosure and tidy cabling.'
+      usage_rights: 'None acquired; provider terms pending; no third-party device design referenced or copied'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1600
+      height: 900
+      aspect_ratio: '16:9 (master), 4:3 derivative'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [960, 1280]
+      target_bytes: 45000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept image; not a real installation; no provider call performed'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Primer plano de una consola de timón con una pantalla, una caja de conexiones y cableado ordenado.»'
+      en: 'Close view of a helm console with a display, a gateway enclosure and tidy cabling.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — no representa un producto certificado.»'
+      en: 'Concept render - not a photograph of a certified product.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-COR-003'
+    slug: 'corporate-lifestyle-photography-direction-concept'
+    category: corporate
+    purpose: >
+      Corporate/lifestyle photography direction: documentary frames of anonymous crew and installed
+      equipment, inshore Atlantic. Illustrative staging, never a real customer.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea story sections (proposed)', 'professionals page (proposed)']
+      section: 'story / editorial'
+      audience: 'owners and professional crews assessing real-world credibility'
+    brief:
+      asset_id: 'MR-COR-003'
+      destination: '/marea story sections and /profesionales / /en/professionals'
+      subject: "Documentary-style series: anonymous crew working the boat (hands, oilskins, boots), equipment in use, a skipper's glance; story of competence, not product glory"
+      composition: 'Editorial reportage framing; calm imperfection; one clear focal gesture per frame; no staged smiles'
+      camera_position: 'Shoulder height close to the action; occasional low angle at deck level; never a staged studio eye-line'
+      lens_perspective: '28-50 mm equivalent; documentary naturalism; slight grain acceptable'
+      lighting: 'Available overcast light; no flat fill; no golden-hour advertising glow'
+      marine_environment: 'Inshore Atlantic; 8-18 kn; spray and wet decks; honest weather'
+      background: 'Sea, rigging, marina edges; no identifiable third-party yacht name, no customer logo, no charter branding'
+      brand_colour_constraints: 'Neutral documentary palette; no coloured gels; no brand colour injected'
+      hardware_realism: 'Real fittings and real wear; if MAREA hardware appears it is plausible and UNLABELLED (no invented model numbers)'
+      classification: CONCEPT
+      aspect_ratio: '4:3 and 3:2 series; 16:9 crop for story headers'
+      target_pixel_dimensions: 'Master 2048 w -> AVIF/WebP 1600/1280/960'
+      mobile_crop: 'Each chosen frame must survive a 4:5 crop with the gesture intact'
+      negative_constraints: 'identifiable people without release, customer testimonials, fake sea-trial evidence, staged laughter, stock-photo look, brand logos on clothing, legible tattoo/text'
+      html_copy_safe_areas: 'Frames selected with a calm quadrant for DOM caption/pull-quote; never over a face'
+      caption_alt_es_en:
+        caption_es: '«Tripulación anónima en navegación costera — imagen conceptual.»'
+        caption_en: 'Anonymous crew on a coastal passage - concept image.'
+        alt_es: '«Manos con guantes de navegación ajustando una escota en cubierta mojada.»'
+        alt_en: 'Gloved hands adjusting a sheet on a wet deck.'
+      usage_rights: 'No person or vessel release exists; production requires model releases and property releases; rights recorded in manifest'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 2048
+      height: 1365
+      aspect_ratio: '3:2 (master), 4:3 and 16:9 derivatives'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [960, 1280, 1600]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'illustrative staging; not a real customer, crew or installation'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Manos con guantes de navegación ajustando una escota en cubierta mojada.»'
+      en: 'Gloved hands adjusting a sheet on a wet deck.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — no representa una tripulación ni una instalación reales.»'
+      en: 'Concept render - not a real crew or installation.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-COR-004'
+    slug: 'sailing-motorboat-environment-pair-concept'
+    category: corporate
+    purpose: >
+      Matched two-frame environment set (sailing yacht, motorboat) for segment sections.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['vessel-types section (proposed)', 'segment sections on product pages (proposed)']
+      section: 'segment environment'
+      audience: 'sail and motor boat owners who need to recognise their own boat type'
+    brief:
+      asset_id: 'MR-COR-004 (frames -a sailing, -b motorboat)'
+      destination: '/marea vessel-types (proposed) and segment sections; /en equivalents'
+      subject: '(a) 10-12 m cruising sailboat under reefed main, honest heel; (b) 9-12 m motorboat at cruising speed with a dry plausible cockpit'
+      composition: 'Matching pair: same horizon height, same vessel scale, same light, so they sit side by side without one reading as an advertisement'
+      camera_position: 'Chase boat, 15-25 m abeam, 1.5-2.5 m above waterline'
+      lens_perspective: '50-70 mm equivalent; no wide-angle drama'
+      lighting: 'Same overcast/late-afternoon light for both frames'
+      marine_environment: '8-18 kn, 0.3-1.2 m chop, Atlantic inshore'
+      background: 'Soft coastline/haze; no harbour cranes, no landmark, no identifiable third-party vessel'
+      brand_colour_constraints: 'Natural palette; no coloured hull advertising graphics'
+      hardware_realism: 'Correct rig geometry for the sailboat; plausible radar/antenna/vents for the motorboat; no invented product fitted as hero'
+      classification: CONCEPT
+      aspect_ratio: '3:2 each; 16:9 and 1:1 derivatives'
+      target_pixel_dimensions: '2048 w each -> AVIF/WebP 1600/1280/960'
+      mobile_crop: '1:1 keeps the whole vessel silhouette; no crop through the mast'
+      negative_constraints: 'racing drama, implausible heel/broach, spray explosion, drone top-down, mismatched weather between the pair, third-party logos, flags'
+      html_copy_safe_areas: 'Sky band top 25% clear; water band bottom 20% clear'
+      caption_alt_es_en:
+        caption_es: '«Velero y lancha de crucero en la misma condición de mar — imágenes conceptuales.»'
+        caption_en: 'Sailing yacht and motorboat in the same sea state - concept images.'
+        alt_es: '«Velero de crucero navegando de ceñida con mar rizada; lancha de crucero navegando con estela suave.»'
+        alt_en: 'Cruising sailboat sailing close-hauled in light chop; cruising motorboat underway with a soft wake.'
+      usage_rights: 'None acquired; two frames, one authorised job only; provider terms pending'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 2048
+      height: 1365
+      aspect_ratio: '3:2 each (master), 16:9 and 1:1 derivatives'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [960, 1280, 1600]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept images; neither vessel is a MAREA installation'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Velero de crucero navegando de ceñida con mar rizada; lancha de crucero navegando con estela suave.»'
+      en: 'Cruising sailboat sailing close-hauled in light chop; cruising motorboat underway with a soft wake.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — no representa un producto certificado.»'
+      en: 'Concept render - not a photograph of a certified product.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  # ---------------------------------------------------------------------------
+  # PRODUCT HARDWARE CONCEPTUAL RENDERS
+  # ---------------------------------------------------------------------------
+  - id: 'MR-PRD-001'
+    slug: 'hub-appliance-installed-concept'
+    category: product-detail
+    purpose: >
+      MAREA HUB appliance concept render (installed/isolation) for the HUB page and bundle pages.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea hub page (proposed)', 'bundle pages (proposed)']
+      section: 'hero / detail'
+      audience: 'owner planning an electronics refit on an 8-14 m yacht'
+    brief:
+      asset_id: 'MR-PRD-001'
+      destination: '/marea/hub and /en/marea/hub hero and detail; bundle pages'
+      subject: 'Small onboard data-gateway appliance: matte enclosure, mounting ears, DOM-labelled connector face, tidy loom into a gland; generic plausible geometry only, not a defined industrial design'
+      composition: 'Three-quarter view, appliance middle third, service loop visible; nothing floating'
+      camera_position: 'Eye height above the mounting surface, 30-60 cm from the unit, 20-35 degrees above horizontal'
+      lens_perspective: '50-85 mm equivalent; product-render naturalism, mild perspective'
+      lighting: 'Overcast daylight through a locker hatch; soft key, honest shadow, matte highlights'
+      marine_environment: 'Dry equipment locker/bulkhead of a cruising yacht; paint, ply, faint salt; not a lagoon showroom'
+      background: 'Locker interior falloff; no other branded device, no chart imagery, no text'
+      brand_colour_constraints: 'Matte neutral enclosure (anodised/charcoal); no painted brand colour; no glowing LED'
+      hardware_realism: 'Real fastener types, gaskets, strain relief, cable keying; connectors plausible but unlabelled; no certification sticker; no fake IP rating'
+      classification: CONCEPT
+      aspect_ratio: '4:3 primary; 16:9 and 1:1 derivatives'
+      target_pixel_dimensions: 'Master 1536x1024 -> AVIF/WebP 1280/960/640'
+      mobile_crop: '1:1 centre crop keeps enclosure + one cable run; no connector cut off mid-way'
+      negative_constraints: 'fake bevels/gloss, invented accessory, IP-rating badge, certification mark, brand logo on the unit, readable invented specs, levitating unit, impossible cable routing, AI artefacts on screws/glands'
+      html_copy_safe_areas: 'Right 35% clear for spec list; bottom 15% clear for caption'
+      caption_alt_es_en:
+        caption_es: '«Unidad de pasarela de datos instalada — render conceptual, producto no disponible.»'
+        caption_en: 'Installed gateway unit - concept render, product not available.'
+        alt_es: '«Caja de conexiones mate atornillada a un mamparo interior, con cables recogidos hacia un pasaocables.»'
+        alt_en: 'Matte gateway enclosure bolted to an interior bulkhead, with cables tidily routed into a gland.'
+      usage_rights: 'None acquired; no third-party enclosure design may be referenced or copied (no competitor trade dress)'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1536
+      height: 1024
+      aspect_ratio: '3:2 / 4:3 delivered'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept render; no MAREA HUB hardware exists'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Caja de conexiones mate atornillada a un mamparo interior, con cables recogidos hacia un pasaocables.»'
+      en: 'Matte gateway enclosure bolted to an interior bulkhead, with cables tidily routed into a gland.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — no representa un producto certificado ni disponible.»'
+      en: 'Concept render - not a certified or available product.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-PRD-002'
+    slug: 'display-at-helm-installed-concept'
+    category: product-detail
+    purpose: >
+      MAREA DISPLAY at-helm installed concept render; screen area left blank for DOM composite.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea display page (proposed)', 'helm integration narrative (proposed)']
+      section: 'hero / detail'
+      audience: 'skipper evaluating a dedicated marine display'
+    brief:
+      asset_id: 'MR-PRD-002'
+      destination: '/marea/display and /en/marea/display hero and detail; helm integration narrative'
+      subject: 'Dedicated marine display housing mounted on a helm pod, screen BLANK for DOM composite; matte bezel, plausible sun-cover clip; no branding'
+      composition: '16:9 frame, display right third, wheel/console leading lines left; screen angled to avoid mirroring the sky'
+      camera_position: 'Seated/standing helm eye height, slightly right of centre, 60-90 cm from the unit'
+      lens_perspective: '35-50 mm equivalent; plausible sightlines, no wide-angle bezel distortion'
+      lighting: 'Overcast daylight, no direct sun on the screen; night variant only if plausible (soft instrument light, no neon)'
+      marine_environment: 'Cockpit helm station underway in light chop; sprayhood edge, teak, wet non-slip'
+      background: "Out-of-focus sea/horizon; no chart imagery, no other brand's device, no readable instrument values"
+      brand_colour_constraints: 'Neutral bezel; no brand colour; no RGB glow; screen blank'
+      hardware_realism: 'Plausible bezel thickness, bracket, cable entry with drip loop; no certification mark; no invented model badge; no sun/water resistance claim implied by styling'
+      classification: CONCEPT
+      aspect_ratio: '16:9 primary; 4:3 and 1:1 derivatives'
+      target_pixel_dimensions: 'Master 1536x1024 -> AVIF/WebP 1600/1280/960/640'
+      mobile_crop: '4:5 portrait keeps bezel + blank screen rectangle usable for the DOM composite'
+      negative_constraints: 'fake HUD/chart on screen, glossy glass with sky mirror, certification badge, waterproof styling cue, competitor device, readable numbers, dashboard chrome'
+      html_copy_safe_areas: 'Blank screen = DOM slot (outside 20% outer margin); left 30% clear; bottom 15% caption band'
+      caption_alt_es_en:
+        caption_es: '«Pantalla dedicada en el puesto de timón — render conceptual; la interfaz es una composición web, no una captura real.»'
+        caption_en: 'Dedicated display at the helm - concept render; the interface is a web composite, not a screenshot.'
+        alt_es: '«Soporte de pantalla mate montado en una consola de timón, con la pantalla en blanco y el mar al fondo.»'
+        alt_en: 'Matte display housing mounted on a helm console with a blank screen and the sea behind.'
+      usage_rights: 'None acquired; no chart/licensed data in the image under any circumstance (D-01/D-02/D-04)'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1536
+      height: 1024
+      aspect_ratio: '3:2 master delivered 16:9 / 4:3 / 1:1'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280, 1600]
+      target_bytes: 120000
+      lcp: true
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept render; no display hardware exists; sunlight/night legibility NOT_TESTED (B11)'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Soporte de pantalla mate montado en una consola de timón, con la pantalla en blanco y el mar al fondo.»'
+      en: 'Matte display housing mounted on a helm console with a blank screen and the sea behind.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — la interfaz mostrada es una composición web, no una captura del producto.»'
+      en: 'Concept render - the interface shown is a web composite, not a product screenshot.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-PRD-006'
+    slug: 'pilot-supervised-control-head-concept'
+    category: product-detail
+    purpose: >
+      MAREA PILOT supervised steering control head concept render with E-stop and manual takeover.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea pilot page (proposed)', 'installer/safety briefing (proposed)']
+      section: 'hero / safety'
+      audience: 'installer and skipper assessing a supervised steering system'
+    brief:
+      asset_id: 'MR-PRD-006'
+      destination: '/marea/pilot and /en/marea/pilot; installer and safety briefing material'
+      subject: 'Compact control head at a helm with a physically distinct E-stop and a clear manual-takeover affordance; supervisory intent visible without labels'
+      composition: 'Control head right, E-stop and manual lever left in the same frame - the relationship is the subject'
+      camera_position: 'Helm eye height/slightly above, 50-80 cm, angled to show both controls'
+      lens_perspective: '35-50 mm equivalent; both controls legible as shapes, no macro'
+      lighting: 'Overcast daylight; E-stop distinguished by shape and position, not colour alone'
+      marine_environment: 'Cockpit underway, light chop; wet non-slip, teak'
+      background: "Soft sea/horizon; no chart, no other brand's autopilot head, no readable labels"
+      brand_colour_constraints: 'Matte neutral; E-stop may be the single saturated element but colour must not be the only carrier of meaning'
+      hardware_realism: 'Plausible knob/button count; no invented certification; no fake model number; no remote/wireless handset implying remote helm'
+      classification: CONCEPT
+      aspect_ratio: '4:3 primary; 16:9 derivative'
+      target_pixel_dimensions: 'Master 1600 w -> AVIF/WebP 1280/960/640'
+      mobile_crop: '1:1 crop retains both E-stop and control head'
+      negative_constraints: 'autonomous/self-steering implication, remote-control imagery, hands-off-wheel celebration, certification badge, unverified protocol labels, competitor control heads'
+      html_copy_safe_areas: 'Bottom 25% clear for the supervised-steering disclaimer; top 20% clear for headline'
+      caption_alt_es_en:
+        caption_es: '«Puesto de control de gobierno asistido, con paro de emergencia y toma manual — render conceptual.»'
+        caption_en: 'Supervised steering control head with emergency stop and manual takeover - concept render.'
+        alt_es: '«Cabezal de control junto a un paro de emergencia y una palanca de toma manual en una consola de timón.»'
+        alt_en: 'Control head beside an emergency stop and a manual takeover lever on a helm console.'
+      usage_rights: 'None acquired; PILOT supervised-steering disclaimer required on any page use; safety review of the brief before production'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1600
+      height: 1200
+      aspect_ratio: '4:3 primary'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept render; PILOT is supervised-only; safety gate BLOCKED (H-01/P-04)'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Cabezal de control junto a un paro de emergencia y una palanca de toma manual en una consola de timón.»'
+      en: 'Control head beside an emergency stop and a manual takeover lever on a helm console.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — el gobierno es asistido y supervisado, nunca autónomo.»'
+      en: 'Concept render - steering is assisted and supervised, never autonomous.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-PRD-011'
+    slug: 'hub-connector-gland-macro-concept'
+    category: product-detail
+    purpose: >
+      Installation-quality macro detail (gland, strain relief, service loop) for HUB and installer material.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea hub detail (proposed)', 'installer documentation (proposed)']
+      section: 'detail / workmanship'
+      audience: 'installer and technically minded owner'
+    brief:
+      asset_id: 'MR-PRD-011'
+      destination: '/marea/hub detail, installer documentation, installation-quality narrative'
+      subject: 'Very close detail of a tidy cable entry: gland, strain relief, labelled cores, service loop, cable-tie spacing - the geometry of good workmanship'
+      composition: 'One cable entry filling the frame; strong diagonal of the loom; shallow depth of field'
+      camera_position: '10-25 cm from the entry, slightly above, parallel to the bulkhead'
+      lens_perspective: '85-100 mm equivalent macro; flat-field correction'
+      lighting: 'Soft raking light to show texture (matte paint, cable sheath); no blown highlights'
+      marine_environment: 'Interior bulkhead/locker of a used yacht; faint salt, real dust'
+      background: 'Bulkhead falling out of focus; no other branded part, no text'
+      brand_colour_constraints: 'Neutral matte; no brand colour; no glowing indicator'
+      hardware_realism: 'Correct gland type, cable sheath and plausible core colours; no invented IP rating printed anywhere; DOM labels only'
+      classification: CONCEPT
+      aspect_ratio: '3:2 primary; 4:3 and 1:1 derivatives'
+      target_pixel_dimensions: 'Master 1600 w -> AVIF/WebP 1280/960/640'
+      mobile_crop: '1:1 keeps gland + service loop; do not crop the entry in half'
+      negative_constraints: 'messy wiring presented as good, certification sticker, fake torque marks, readable invented specs, AI-melted cable strands, waterproof implication'
+      html_copy_safe_areas: 'Right 30% clear for a short technical caption; bottom 15% free'
+      caption_alt_es_en:
+        caption_es: '«Detalle de entrada de cables con prensaestopas y alivio de tracción — render conceptual de una instalación bien ejecutada.»'
+        caption_en: 'Cable-entry detail with gland and strain relief - concept render of good workmanship.'
+        alt_es: '«Primer plano de un prensaestopas con cables ordenados y un bucle de servicio en un mamparo mate.»'
+        alt_en: 'Close-up of a cable gland with neatly routed cables and a service loop on a matte bulkhead.'
+      usage_rights: 'None acquired; must never be cropped or used to imply a certified installation'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1600
+      height: 1067
+      aspect_ratio: '3:2 primary'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept render; not a real installation'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Primer plano de un prensaestopas con cables ordenados y un bucle de servicio en un mamparo mate.»'
+      en: 'Close-up of a cable gland with neatly routed cables and a service loop on a matte bulkhead.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — no representa una instalación real certificada.»'
+      en: 'Concept render - not a real certified installation.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-PRD-012'
+    slug: 'refit-installation-work-concept'
+    category: install-scenario
+    purpose: >
+      Refit/installation work in progress for installer programme and service narrative.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['installers page (proposed)', 'marea service narrative (proposed)']
+      section: 'service model'
+      audience: 'installers and owners planning a refit'
+    brief:
+      asset_id: 'MR-PRD-012'
+      destination: '/instaladores / /en/installers (proposed), /marea service narrative, /profesionales'
+      subject: 'Refit reality: anonymous installer hands and tools at a nav station mid-installation - panel off, cable run exposed, driver in use, tidy drop sheet; the boat is honestly in pieces'
+      composition: 'Over-shoulder into the work; hands and work area in focus; before/after implied, not staged'
+      camera_position: '30-60 cm from the work, at installer shoulder height, slight tilt'
+      lens_perspective: '35-50 mm equivalent; documentary close, not macro'
+      lighting: 'Work-light plus daylight; honest slightly uneven shadows'
+      marine_environment: 'Interior of a yacht in refit, marina/boatyard context; dust, tools, cables'
+      background: 'Boatyard/marina soft; no yard branding, no other customer boat identifiable, no vessel name'
+      brand_colour_constraints: 'Neutral work palette; hi-vis only if plausible; no brand colour'
+      hardware_realism: 'Real tool types, fasteners, correct cable practices; blank/unbranded wall plates; no certification badges, no fake test-meter readings'
+      classification: CONCEPT
+      aspect_ratio: '4:3 primary; 16:9 and 1:1 derivatives'
+      target_pixel_dimensions: 'Master 1600 w -> AVIF/WebP 1280/960/640'
+      mobile_crop: '1:1 keeps hands + tool + one cable run; face never enters'
+      negative_constraints: 'faces/identity without release, fake test readings, implied certification, certified-technician implication, staged thumbs-up, brand logos on tools, unsafe practice'
+      html_copy_safe_areas: 'Right 35% clear for service-model copy; bottom 18% clear for caption'
+      caption_alt_es_en:
+        caption_es: '«Trabajo de instalación en un puesto de navegación — render conceptual; no representa una instalación real certificada.»'
+        caption_en: 'Installation work at a nav station - concept render; not a real certified installation.'
+        alt_es: '«Manos de instalador con un destornillador junto a un panel abierto y cables en un puesto de navegación.»'
+        alt_en: "Installer's hands with a screwdriver beside an open panel and cables at a nav station."
+      usage_rights: 'None acquired; model release for any visible person; no technician-certification claim (scheme does not exist)'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1600
+      height: 1200
+      aspect_ratio: '4:3 primary'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept image; not a real installation, boatyard or technician'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Manos de instalador con un destornillador junto a un panel abierto y cables en un puesto de navegación.»'
+      en: "Installer's hands with a screwdriver beside an open panel and cables at a nav station."
+      decorative: false
+    caption:
+      es: '«Render conceptual — no representa una instalación real certificada.»'
+      en: 'Concept render - not a real certified installation.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  # ---------------------------------------------------------------------------
+  # SOFTWARE ON-DEVICE AND OPERATIONAL SCENARIOS (FAMILY COVERAGE)
+  # ---------------------------------------------------------------------------
+  - id: 'MR-PRD-004'
+    slug: 'nav-software-on-device-concept'
+    category: product-family
+    purpose: >
+      MAREA NAV software on-device presentation; screen left blank for the authored UI composite.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea nav page (proposed)', 'software section (proposed)']
+      section: 'hero / software'
+      audience: 'tablet/phone user planning and navigating'
+    brief:
+      asset_id: 'MR-PRD-004'
+      destination: '/marea/nav and /en/marea/nav; software section; future app-store-adjacent marketing'
+      subject: 'Tablet/phone in a plausible cockpit mount, screen BLANK for the authored UI composite; context communicates used at the helm, not device advert'
+      composition: 'Device right, helm context left; screen plane parallel enough to composite convincingly; no hand covering the screen'
+      camera_position: 'Helm eye height, 40-70 cm, slightly off-axis so the screen has a real viewing angle'
+      lens_perspective: '35-50 mm equivalent; bezel straight, no barrel distortion'
+      lighting: 'Overcast daylight; screen face evenly lit, no sun glare, no horizon reflection'
+      marine_environment: 'Cockpit at anchor or underway in light chop; sprayhood, winches, teak'
+      background: 'Soft sea/coast; no chart, no other device screen, no readable text'
+      brand_colour_constraints: 'Neutral context; no brand colour; no saturated UI colour in the image (UI comes from tokens)'
+      hardware_realism: 'Plausible mount, cable, case; no invented branding on the device; no implied water resistance'
+      classification: CONCEPT
+      aspect_ratio: '4:3 primary; 16:9 and 9:16 derivatives'
+      target_pixel_dimensions: 'Master 1600 w -> AVIF/WebP 1280/960/640'
+      mobile_crop: '9:16 crop keeps the full blank screen rectangle; no screen edge cut'
+      negative_constraints: 'generated UI, fake chart, fake waypoint names, readable numbers, GPS/app-store badges, works-anywhere styling, third-party device logos, AI-warped fingers'
+      html_copy_safe_areas: 'Blank screen = DOM slot; bottom 20% free for disclaimer; left 25% free for headline'
+      caption_alt_es_en:
+        caption_es: '«MAREA NAV en uso a bordo — render conceptual; la interfaz mostrada es una composición HTML, no una captura del producto.»'
+        caption_en: 'MAREA NAV in use aboard - concept render; the interface shown is an HTML composite, not a product screenshot.'
+        alt_es: '«Tableta montada en el puesto de timón de un velero, con la pantalla en blanco y el mar al fondo.»'
+        alt_en: 'Tablet mounted at a sailboat helm with a blank screen and the sea behind.'
+      usage_rights: 'None acquired; no licensed chart data may appear; on-device UI copy must carry the navigation-aid disclaimer'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1600
+      height: 1200
+      aspect_ratio: '4:3 primary; 9:16 derivative'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280, 1600]
+      target_bytes: 120000
+      lcp: true
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept image; screen UI is a future DOM composite, not generated'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Tableta montada en el puesto de timón de un velero, con la pantalla en blanco y el mar al fondo.»'
+      en: 'Tablet mounted at a sailboat helm with a blank screen and the sea behind.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — la interfaz mostrada es una composición HTML, no una captura del producto.»'
+      en: 'Concept render - the interface shown is an HTML composite, not a product screenshot.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-PRD-005'
+    slug: 'ais-receive-only-scenario-concept'
+    category: product-family
+    purpose: >
+      MAREA AIS receive-only traffic-awareness scenario: masthead antenna and receiver, never a transponder.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea ais page (proposed)', 'support documentation (proposed)']
+      section: 'hero / illustration'
+      audience: 'owner considering receive-only traffic awareness'
+    brief:
+      asset_id: 'MR-PRD-005'
+      destination: '/marea/ais and /en/marea/ais; support documentation illustrations'
+      subject: 'Masthead VHF/AIS antenna and a receive-only receiver with splitter, installed plausibly; never a transponder, never a transmission visual'
+      composition: 'Two-part frame: antenna top-left soft focus, receiver/splitter in focus bottom-right; installation logic readable'
+      camera_position: 'Deck level looking up at the masthead (low angle, 20-30 m) for the antenna; close 30-50 cm for the receiver'
+      lens_perspective: '24-35 mm for the mast context, 50-85 mm for the receiver; no exaggerated wide angle'
+      lighting: 'Overcast daylight; antenna against grey sky; no sun burst behind the mast'
+      marine_environment: 'Sailing yacht mast/deck; light chop; salt film on stainless'
+      background: 'Sky and rigging; no other vessel close enough to imply traffic shown, no land clutter'
+      brand_colour_constraints: 'Neutral marine palette; no brand colour on hardware'
+      hardware_realism: 'Plausible antenna base, coax, splitter, DOM-labelled ports; no certification sticker; no transmit indicator; no fake range graphic'
+      classification: CONCEPT
+      aspect_ratio: '4:3 primary; 16:9 derivative'
+      target_pixel_dimensions: 'Master 1600 w -> AVIF/WebP 1280/960/640'
+      mobile_crop: '1:1 keeps receiver + one connector; antenna may crop to a partial mast but must not look broken'
+      negative_constraints: 'transponder imagery, transmission waves/icons, radar-style HUD, sees-all-traffic implication, range circles over real geography, certification marks, competitor hardware'
+      html_copy_safe_areas: 'Top 25% sky clear for headline; right 35% clear for the receive-only statement'
+      caption_alt_es_en:
+        caption_es: '«Antena y receptor AIS de solo escucha — render conceptual.»'
+        caption_en: 'AIS receive-only antenna and receiver - concept render.'
+        alt_es: '«Antena de mástil y receptor AIS con cables coaxiales recogidos hacia un pasaocables.»'
+        alt_en: 'Masthead antenna and AIS receiver with coaxial cables routed into a gland.'
+      usage_rights: 'None acquired; AIS receive-only disclaimer required on any page use'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1600
+      height: 1200
+      aspect_ratio: '4:3 primary'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept image; AIS is receive-only; no transponder depicted'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Antena de mástil y receptor AIS con cables coaxiales recogidos hacia un pasaocables.»'
+      en: 'Masthead antenna and AIS receiver with coaxial cables routed into a gland.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — la recepción AIS es de solo escucha y no es un transpondedor.»'
+      en: 'Concept render - AIS reception is receive-only and not a transponder.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-PRD-007'
+    slug: 'sense-sensor-systems-concept'
+    category: product-family
+    purpose: >
+      MAREA SENSE sensor systems: bilge and tank-level installations, plausible and tidy.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea sense page (proposed)', 'monitoring sections (proposed)']
+      section: 'hero / detail'
+      audience: 'owner interested in onboard monitoring'
+    brief:
+      asset_id: 'MR-PRD-007'
+      destination: '/marea/sense and /en/marea/sense; monitoring sections of product pages'
+      subject: 'Two plausible sensor installations: bilge float/sensor on a bracket and a tank-level sender on a plastic tank; cables tidy and DOM-labelled'
+      composition: 'Frame A bilge low angle with water film; Frame B tank sender three-quarter; both share light and palette'
+      camera_position: 'Frame A 20-30 cm above the bilge floor; Frame B 40-60 cm from the tank'
+      lens_perspective: '35-50 mm equivalent; close but not macro; no fisheye in a confined space'
+      lighting: 'Available bilge light (dim, honest) and overcast daylight for the tank compartment; no studio fill'
+      marine_environment: 'Below-decks compartments of a used cruising yacht: paint, GRP, faint grime'
+      background: 'Compartment walls/pipe runs; no other branded device; no readable text'
+      brand_colour_constraints: 'Neutral matte; no brand colour; no glowing indicator'
+      hardware_realism: 'Correct sensor housing types, cable glands; no invented IP rating; no certification sticker; probes plausible, not sci-fi'
+      classification: CONCEPT
+      aspect_ratio: '4:3 each; 1:1 derivative'
+      target_pixel_dimensions: '1600 w each -> AVIF/WebP 1280/960/640'
+      mobile_crop: '1:1 must show the sensor and its mounting point together'
+      negative_constraints: 'dirty-horror bilge, flooding drama, fake alarm light, certification marks, invented labels, wires disappearing, AI artefacts on clamps'
+      html_copy_safe_areas: 'Right 35% clear for the sensor list; bottom 15% caption band'
+      caption_alt_es_en:
+        caption_es: '«Sensores de sentina y de nivel de tanque instalados — render conceptual.»'
+        caption_en: 'Installed bilge and tank-level sensors - concept render.'
+        alt_es: '«Sensor de sentina atornillado a un soporte y emisor de nivel en un depósito de plástico, con cables recogidos.»'
+        alt_en: 'Bilge sensor bolted to a bracket and a level sender on a plastic tank, with cables tidily routed.'
+      usage_rights: 'None acquired; provider terms pending'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1600
+      height: 1200
+      aspect_ratio: '4:3 each'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept image; not a real installation'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Sensor de sentina atornillado a un soporte y emisor de nivel en un depósito de plástico, con cables recogidos.»'
+      en: 'Bilge sensor bolted to a bracket and a level sender on a plastic tank, with cables tidily routed.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — no representa una instalación real certificada.»'
+      en: 'Concept render - not a real certified installation.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-PRD-008'
+    slug: 'watch-remote-monitoring-concept'
+    category: product-family
+    purpose: >
+      MAREA WATCH shore-side alert moment; phone screen blank for the DOM composite.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea watch page (proposed)', 'protect bundle page (proposed)']
+      section: 'hero / scenario'
+      audience: 'owner away from an unattended vessel'
+    brief:
+      asset_id: 'MR-PRD-008'
+      destination: '/marea/watch and /en/marea/watch; PROTECT bundle page'
+      subject: 'Shore-side moment: anonymous person out of focus on a quay/terrace checking a phone with a BLANK screen, moored/anchored yacht soft in the background'
+      composition: 'Phone in the near third (hand only), yacht in the far third, honest weather; the gap between them is the story'
+      camera_position: 'Chest height behind/beside the person, 40-60 cm from the phone; over-the-shoulder, no face'
+      lens_perspective: '35-50 mm equivalent; background softly defocused but recognisable as marina/anchorage'
+      lighting: 'Overcast/early evening; screen face neutrally lit for a later composite; no sun flare'
+      marine_environment: 'Sheltered marina/anchorage, 8-15 kn, choppy grey water'
+      background: 'Other moored boats (no logos, no names), quay, grey sky; no identifiable person'
+      brand_colour_constraints: 'Neutral; no brand colour; no notification glow colour that would read as an alert state'
+      hardware_realism: 'Ordinary consumer phone in a plain case, no visible brand; WATCH hardware is not shown as a hero (service + optional kit)'
+      classification: CONCEPT
+      aspect_ratio: '4:3 primary; 16:9 and 9:16 derivatives'
+      target_pixel_dimensions: '1600 w -> AVIF/WebP 1280/960/640'
+      mobile_crop: '9:16 keeps phone + yacht relationship; no face enters the crop'
+      negative_constraints: 'readable notification text, fake alarm UI, phone brand logo, 24/7 certified monitoring implication, stock imagery, identifiable people, third-party boat names'
+      html_copy_safe_areas: 'Blank phone screen = DOM slot; top-left 40% clear for headline'
+      caption_alt_es_en:
+        caption_es: '«Aviso en tierra con la embarcación fondeada — render conceptual; la pantalla mostrada es una composición.»'
+        caption_en: 'Shore-side alert with the vessel at anchor - concept render; the screen shown is a composite.'
+        alt_es: '«Mano sosteniendo un teléfono con la pantalla en blanco, con un velero fondeado desenfocado al fondo.»'
+        alt_en: 'Hand holding a phone with a blank screen, a sailboat at anchor softly out of focus behind.'
+      usage_rights: 'None acquired; model release required for any visible person; connectivity claims prohibited (H-12)'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1600
+      height: 1200
+      aspect_ratio: '4:3 primary; 9:16 derivative'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept image; not a real customer, crew or alert'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Mano sosteniendo un teléfono con la pantalla en blanco, con un velero fondeado desenfocado al fondo.»'
+      en: 'Hand holding a phone with a blank screen, a sailboat at anchor softly out of focus behind.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — la pantalla mostrada es una composición, no una notificación real.»'
+      en: 'Concept render - the screen shown is a composite, not a real notification.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-PRD-009'
+    slug: 'weather-route-planning-concept'
+    category: product-family
+    purpose: >
+      MAREA WEATHER route-planning scene at the chart table; no licensed chart or forecast data shown.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea weather page (proposed)', 'route-planning narrative (proposed)']
+      section: 'hero / scenario'
+      audience: 'cruiser planning a passage'
+    brief:
+      asset_id: 'MR-PRD-009'
+      destination: '/marea/weather and /en/marea/weather; route-planning narrative'
+      subject: 'Chart table with paper notes, a tablet, a hand tracing a route on a PLAIN unprinted planning surface; planning, not a forecast screenshot'
+      composition: 'Table from above at 30-40 degrees; hands and objects; blank device area for the DOM forecast panel; no readable numbers'
+      camera_position: '60-80 cm above the table, angled; overhead-ish but not flat top-down'
+      lens_perspective: '35-50 mm equivalent; natural table perspective'
+      lighting: 'Warm cabin lamp plus overcast daylight from a companionway; honest mixed light, no colour cast'
+      marine_environment: 'Cabin of a cruising yacht at anchor; teak table, charts rolled but unreadable/blank'
+      background: 'Cabin joinery, soft; no chart publisher mark, no third-party brand'
+      brand_colour_constraints: 'Neutral; only natural saturated elements (wood/paper); no brand colour'
+      hardware_realism: 'Plausible instruments, pencils, dividers; blank screens; no licensed chart imagery (D-01/D-04)'
+      classification: CONCEPT
+      aspect_ratio: '4:3 primary; 16:9 derivative'
+      target_pixel_dimensions: '1600 w -> AVIF/WebP 1280/960/640'
+      mobile_crop: '1:1 keeps hands + blank device area; route line may run out of frame naturally'
+      negative_constraints: 'weather-map screenshots, hurricane drama, most-accurate badges, real chart reproduction, readable dates/wind numbers, provider logos, AI-mangled hands'
+      html_copy_safe_areas: 'Blank device/paper area = DOM slot; bottom 20% clear for the forecast-uncertainty disclaimer'
+      caption_alt_es_en:
+        caption_es: '«Planificación de travesía en la mesa de cartas — render conceptual; la previsión mostrada es una composición web.»'
+        caption_en: 'Passage planning at the chart table - concept render; the forecast shown is a web composite.'
+        alt_es: '«Manos sobre una mesa de cartas con una tableta de pantalla en blanco y material de navegación.»'
+        alt_en: 'Hands on a chart table with a blank tablet and navigation tools.'
+      usage_rights: 'None acquired; no licensed chart or forecast data may be reproduced; weather disclaimer required'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1600
+      height: 1200
+      aspect_ratio: '4:3 primary'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept image; no chart or forecast data reproduced'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Manos sobre una mesa de cartas con una tableta de pantalla en blanco y material de navegación.»'
+      en: 'Hands on a chart table with a blank tablet and navigation tools.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — las previsiones son probabilísticas; la mostrada es una composición web.»'
+      en: 'Concept render - forecasts are probabilistic; the one shown is a web composite.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  - id: 'MR-PRD-010'
+    slug: 'fleet-operations-concept'
+    category: professional
+    purpose: >
+      MAREA FLEET shore-side multi-vessel operations scene; screens blank for DOM composites.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['marea fleet page (proposed)', 'B2B pages (proposed)']
+      section: 'hero / operations'
+      audience: 'fleet operator and professional marine business'
+    brief:
+      asset_id: 'MR-PRD-010'
+      destination: "/marea/fleet and /en/marea/fleet; B2B pages; bundle customer-facing form is 'MAREA FLEET package'"
+      subject: 'Quiet operations office: two anonymous people at a desk, monitor with BLANK screen, blank wall display, harbour view; operations reality, not startup stock'
+      composition: 'Wide desk frame, people small (no faces), screens blank for DOM composites, window balances'
+      camera_position: '1.6 m height, 3-4 m back, slightly off-axis; documentary distance'
+      lens_perspective: '35-50 mm equivalent; realistic office proportions'
+      lighting: 'Mixed window daylight plus overhead office light; honest, slightly flat'
+      marine_environment: 'Coastal operations office overlooking a working harbour/quay; 10-18 kn outside'
+      background: 'Harbour, unbranded cranes, grey water; no customer logos, no fleet names, no vessel identities'
+      brand_colour_constraints: 'Neutral office palette; screens blank; no brand colour injected'
+      hardware_realism: 'Ordinary monitors/laptops without brand logos; no fake dashboard chrome; blank screens'
+      classification: CONCEPT
+      aspect_ratio: '16:9 primary; 4:3 derivative'
+      target_pixel_dimensions: '1600 w -> AVIF/WebP 1280/960/640'
+      mobile_crop: '4:5 keeps one screen area + window; no faces enter frame'
+      negative_constraints: 'readable dashboards/numbers, customer logos, fleet-size claims, 24/7 wall text, high-five stock cliche, identifiable people, fake certificates on the wall'
+      html_copy_safe_areas: 'Blank wall display = optional DOM slot; left 35% clear for B2B headline'
+      caption_alt_es_en:
+        caption_es: '«Operación de flota desde tierra — render conceptual; las pantallas mostradas son composiciones web.»'
+        caption_en: 'Shore-side fleet operations - concept render; the screens shown are web composites.'
+        alt_es: '«Oficina con vistas al puerto, dos personas trabajando y pantallas en blanco.»'
+        alt_en: 'Office overlooking a harbour with two people working and blank screens.'
+      usage_rights: 'None acquired; model releases for any visible person; no customer logos or data'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 1600
+      height: 900
+      aspect_ratio: '16:9 primary'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [640, 960, 1280]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept image; not a real customer, fleet or operation'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Oficina con vistas al puerto, dos personas trabajando y pantallas en blanco.»'
+      en: 'Office overlooking a harbour with two people working and blank screens.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — las pantallas mostradas son composiciones web, no datos reales.»'
+      en: 'Concept render - the screens shown are web composites, not real data.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  # ---------------------------------------------------------------------------
+  # TRADE / PROFESSIONAL MARKETING
+  # ---------------------------------------------------------------------------
+  - id: 'MR-MKT-001'
+    slug: 'trade-professional-key-visual-concept'
+    category: campaign
+    purpose: >
+      Trade/professional key visual: working marina/boatyard at scale, anonymous installer, no customer identity.
+    classification: CONCEPT
+    status: BLOCKED_ON_IMAGE_GENERATION
+    target:
+      pages: ['professionals page (proposed)', 'installer programme page (proposed)']
+      section: 'key visual'
+      audience: 'professional installers, dealers and marine businesses'
+    brief:
+      asset_id: 'MR-MKT-001'
+      destination: '/profesionales, installer-programme pages, partner/dealer briefing material (internal until clearance)'
+      subject: "Working marina/boatyard at scale: several vessels, pontoon, unbranded service van, installer walking with a tool bag; message is 'we work on real boats'"
+      composition: 'Wide calm documentary; pontoon as leading line; vessels middle distance; negative sky for DOM headline; no hero product'
+      camera_position: '1.6-2 m above deck/quay, 8-15 m back; natural reportage'
+      lens_perspective: '35-50 mm equivalent; no architectural wide-angle drama'
+      lighting: 'Overcast Atlantic morning; flat honest light, wet surfaces'
+      marine_environment: 'Working marina/boatyard in Galicia; 8-18 kn; grey-green water'
+      background: 'Pontoon, unbranded yard sheds, other boats without names/logos; no customer identification'
+      brand_colour_constraints: 'Neutral, slightly desaturated; no brand colour; no hi-vis brand blocking'
+      hardware_realism: 'Real yard equipment, fenders/lines; no invented MAREA product as hero; no certification signage'
+      classification: CONCEPT
+      aspect_ratio: '16:9 primary; 4:3 and 1:1 derivatives'
+      target_pixel_dimensions: '2048 w master -> AVIF/WebP 1600/1280/960'
+      mobile_crop: '4:5 keeps one vessel + installer figure; figure remains anonymous at crop'
+      negative_constraints: 'customer logos/boat names, available-now signage, price tags, awards, fleet-size claims, stock-business imagery, identifiable people, competitor vans/logos'
+      html_copy_safe_areas: 'Top 30% sky clear; left 40% clear for B2B headline; bottom 15% caption band'
+      caption_alt_es_en:
+        caption_es: '«Trabajo profesional en el puerto — imagen conceptual; no representa un cliente real.»'
+        caption_en: 'Professional work in the harbour - concept image; not a real customer.'
+        alt_es: '«Muelle de trabajo con varias embarcaciones, un pontón y una persona con bolsa de herramientas.»'
+        alt_en: 'Working pontoon with several vessels and a person carrying a tool bag.'
+      usage_rights: 'None acquired; model releases for every person; no customer or partner logos; B2B claims limited to claims-policy Class A/C'
+      provider_status_actual: 'NONE_YET; files: []; BLOCKED_ON_IMAGE_GENERATION'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NONE_YET
+      endpoint: NONE_YET
+      model: NONE_YET
+      terms_version: NOT_REVIEWED
+      account_entitlement: NOT_VERIFIED
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: 2048
+      height: 1152
+      aspect_ratio: '16:9 primary'
+    optimization:
+      formats: ['avif', 'webp']
+      responsive_widths: [960, 1280, 1600]
+      target_bytes: 120000
+      lcp: false
+    rights:
+      classification: CONCEPT
+      license: 'provider output terms - pending review'
+      provenance: 'synthetic concept image; not a real customer, yard or installation'
+      ai_generated: true
+      model_provider: NONE_YET
+      terms_version: NOT_REVIEWED
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: PENDING
+    alt:
+      es: '«Muelle de trabajo con varias embarcaciones, un pontón y una persona con bolsa de herramientas.»'
+      en: 'Working pontoon with several vessels and a person carrying a tool bag.'
+      decorative: false
+    caption:
+      es: '«Render conceptual — no representa un cliente, socio ni instalación reales.»'
+      en: 'Concept render - not a real customer, partner or installation.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: PENDING
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: BLOCKED_ON_IMAGE_GENERATION
+        reason: 'Brief written; image generation blocked. No file produced.'
+
+  # ---------------------------------------------------------------------------
+  # VECTOR ASSET RECORDED FOR REGISTRY COMPLETENESS — NOT AN IMAGE-GENERATION ASSET
+  # ---------------------------------------------------------------------------
+  - id: 'MR-PRD-003'
+    slug: 'product-family-technical-illustration-set'
+    category: diagram
+    purpose: >
+      Product family technical illustration set (orthographic + isometric line drawings) for
+      HUB/AIS/SENSE/WATCH/DISPLAY/PILOT. Recorded here ONLY so that no MC-04 asset ID is missing
+      from the registry; the actual delivery is owned by InstrumentIcons/AssetProduction per
+      MC-04-EXECUTION-PLAN.md §1 and recorded in their manifest (MC-04-ASSETS.yaml).
+    classification: DIAGRAM
+    status: PRODUCIBLE_WITHOUT_GENERATION
+    not_a_generation_asset: true
+    ownership_note: >
+      Not owned by Governance. No file expected from this manifest. If a photoreal CGI variant of the
+      family set is ever requested it must take a NEW id and start BLOCKED_ON_IMAGE_GENERATION.
+    target:
+      pages: ['product pages (proposed)', 'datasheets, manuals (proposed)']
+      section: 'technical illustration'
+      audience: 'installer/technical buyer'
+    brief:
+      asset_id: 'MR-PRD-003'
+      destination: 'Product pages, datasheets, manuals; SVG per product plus print PDF A4'
+      subject: 'Orthographic views plus one 30-degree isometric per product; HUB, AIS, SENSE, WATCH, DISPLAY, PILOT'
+      composition: 'One scale per figure, numbered bilingual callouts, service clearances, one idea per figure'
+      camera_position: 'Not a photograph; orthographic + one 30-degree isometric projection'
+      lens_perspective: 'Not applicable - vector projection, no perspective lens'
+      lighting: 'Not applicable - flat one tone per material, single light source upper-left convention'
+      marine_environment: 'Not applicable - no environment; show service clearances instead'
+      background: 'Not applicable - white/transparent technical figure'
+      brand_colour_constraints: 'Single ink line work; colour only if the token system permits and never as sole carrier of meaning'
+      hardware_realism: "Dimensions only when engineering-supplied; show 'NOT TO SCALE' when true; labels only when engineering-verified, otherwise generic and marked illustrative"
+      classification: DIAGRAM
+      aspect_ratio: 'Per figure; no raster aspect ratio'
+      target_pixel_dimensions: 'Vector SVG; usable at 320 px card and A4 print; no raster target'
+      mobile_crop: 'Not applicable - vector scales; ensure figure remains legible at 320 px width'
+      negative_constraints: 'invented dimensions, fake UI text, implied certification, competitor devices, licensed charts, AI-generated diagrams, impossible vessel geometry'
+      html_copy_safe_areas: 'Legend placed outside the figure in DOM text; no essential information only inside the SVG'
+      caption_alt_es_en:
+        caption_es: '«Ilustración técnica ilustrativa — no a escala salvo indicación; sujeta a revisión de ingeniería.»'
+        caption_en: 'Illustrative technical drawing - not to scale unless stated; subject to engineering review.'
+        alt_es: '«Vistas ortográficas e isométrica de un producto, con llamadas numeradas y leyenda bilingüe.»'
+        alt_en: 'Orthographic and isometric views of a product with numbered callouts and a bilingual legend.'
+      usage_rights: 'EMBARCARTE-authored vector; no third-party artwork, no licensed charts'
+      provider_status_actual: 'NONE_YET - no provider required (vector authored); NOT a blocked generation asset'
+    brief_fields_complete: 20
+    provider:
+      name: NONE_YET
+      api: NOT_APPLICABLE
+      endpoint: NOT_APPLICABLE
+      model: NONE_YET
+      terms_version: NOT_APPLICABLE
+      account_entitlement: NOT_APPLICABLE
+    created_at: '2026-10-30'
+    generated_at: null
+    files: []
+    dimensions:
+      width: null
+      height: null
+      aspect_ratio: null
+    optimization:
+      formats: ['svg']
+      responsive_widths: []
+      target_bytes: 8000
+      lcp: false
+      notes: 'Vector master; print variant PDF A4 when produced.'
+    rights:
+      classification: DIAGRAM
+      license: 'EMBARCARTE-authored internal artwork'
+      provenance: 'authored vector geometry; no tracing; no generative model'
+      ai_generated: false
+      model_provider: null
+      terms_version: NOT_APPLICABLE
+      attested_by: null
+      attested_at: null
+      synthetic_content_disclosure: NOT_APPLICABLE
+    alt:
+      es: '«Vistas ortográficas e isométrica de un producto, con llamadas numeradas y leyenda bilingüe.»'
+      en: 'Orthographic and isometric views of a product with numbered callouts and a bilingual legend.'
+      decorative: false
+    caption:
+      es: '«Ilustración técnica ilustrativa — no a escala salvo indicación.»'
+      en: 'Illustrative technical drawing - not to scale unless stated.'
+    checks:
+      visual_review: PENDING
+      alt_review: PENDING
+      rights_check: PENDING
+      perf_budget: NOT_APPLICABLE
+      axe_alt: PENDING
+      ssr_safe: PENDING
+      engineering_review: PENDING
+      evidence: []
+    integration:
+      angular_path: null
+      component: 'none yet - page not implemented'
+      last_build_verified_at: null
+    history:
+      - at: '2026-10-30'
+        by: 'governance'
+        from: null
+        to: PRODUCIBLE_WITHOUT_GENERATION
+        reason: 'Recorded for registry completeness only; delivery owned by InstrumentIcons/AssetProduction.'
+
+# =============================================================================
+# VALIDATION RULES THIS FILE MUST SATISFY (checked by hand and by whoever owns
+# the future MC-04 manifest validator; no validator exists yet - MC-01 B8)
+# =============================================================================
+#  1. Every blocked entry: provider.name == NONE_YET, files == [], status ==
+#     BLOCKED_ON_IMAGE_GENERATION, classification == CONCEPT, generated_at == null,
+#     rights.ai_generated == true, rights.synthetic_content_disclosure == PENDING.
+#  2. Every blocked entry has brief_fields_complete: 20 and all 20 brief keys present.
+#  3. No entry has a non-empty files list, a sha256, a path to a generated file, or a
+#     generated_at date. No such file exists anywhere in the repository.
+#  4. MR-PRD-003 is the ONLY entry with status PRODUCIBLE_WITHOUT_GENERATION and
+#     rights.ai_generated false; it has no files and no dimensions.
+#  5. No entry asserts certification, availability, price, performance or a real
+#     installation; captions carry the CONCEPT disclaimer in ES and EN.
+#  6. No secrets, API keys, account ids or private URLs appear in this file.
+# =============================================================================

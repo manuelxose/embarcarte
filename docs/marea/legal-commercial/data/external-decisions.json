@@ -1,0 +1,411 @@
+{
+  "contractId": "MAREA-MC14-EXTERNAL-DECISIONS",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-14",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "status": "PENDING_HUMAN_AND_EXTERNAL_AUTHORITY",
+  "note": "Required external decisions for MC-14. None may be made by an autonomous agent. No option is selected, no permission is granted, no provider or authority has been contacted, and no legal clearance is implied. A decision is CLOSED only when the named external artefact exists.",
+  "decisions": [
+    {
+      "decisionId": "DEC-MC14-001",
+      "title": "Appoint qualified Spanish/EU counsel for market placement, liability and consumer law",
+      "question": "Which qualified counsel will confirm the applicable market-placement duties, product-liability exposure (including Directive (EU) 2024/2853 and its Spanish transposition), consumer terms and the remediation route for each MAREA family?",
+      "options": [
+        "Spanish law firm with EU product-regulation practice",
+        "EU-level firm with Spanish desk",
+        "Specialist marine/consumer counsel retained per workstream"
+      ],
+      "recommendation": "Retain one accountable counsel for the market-placement and liability workstream before any product is offered.",
+      "blockingRiskIds": ["LEG-01", "LEG-03", "LEG-05", "LEG-07"],
+      "predecessorDecisionIds": ["DEC-01", "DEC-07"],
+      "legalSourceIds": ["SRC-EU-PLD-2024-2853", "SRC-EU-GPSR-2023-988", "SRC-ES-TRLGDCU-RDL-1-2007"],
+      "requiredAuthority": "Company owner",
+      "ownerRole": "PROGRAMME_LEAD",
+      "dueDate": "2026-12-09",
+      "evidenceToClose": ["Signed engagement letter", "Counsel opinion on scope and open questions", "Privilege and conflict confirmation"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-002",
+      "title": "Choose the economic-operator model per supply scenario",
+      "question": "For own-branded hardware, imported white-label hardware, third-party certified modules, Raspberry Pi appliances, Pico controllers, installer-supplied systems and hosted services, will EMBARCARTE be manufacturer, importer, distributor, seller, installer, SaaS provider or a combination?",
+      "options": [
+        "EMBARCARTE is legal manufacturer for all own-branded hardware",
+        "OEM/white-label supplier remains manufacturer and EMBARCARTE is importer/distributor",
+        "Mixed model, documented per SKU and supplier"
+      ],
+      "recommendation": "Mixed model, decided per SKU and recorded in the economic-operator matrix and supplier contracts.",
+      "blockingRiskIds": ["LEG-02", "LEG-06", "LEG-10"],
+      "predecessorDecisionIds": ["DEC-07"],
+      "legalSourceIds": ["SRC-EU-GPSR-2023-988", "SRC-EU-CE-MARKING-GUIDANCE", "SRC-EU-BLUE-GUIDE-2022"],
+      "requiredAuthority": "Company owner",
+      "ownerRole": "PROGRAMME_LEAD",
+      "dueDate": "2027-01-31",
+      "evidenceToClose": ["Signed economic-operator decision", "Supplier contracts naming the manufacturer", "Importer identification on product/packaging"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-003",
+      "title": "Resolve OPEN-MARINE ownership chain and contributor rights",
+      "question": "Which entity owns OPEN-MARINE, which contributors must assign or waive rights, and what documentary chain proves EMBARCARTE may commercialise, sublicense and distribute the code and firmware?",
+      "options": [
+        "Full assignment to EMBARCARTE by all contributors and the custodian entity",
+        "Exclusive licence to EMBARCARTE with documented scope",
+        "Abandon the disputed code and rebuild the affected components"
+      ],
+      "recommendation": "Full assignment or exclusive licence before any distribution; do not rely on repository custody.",
+      "blockingRiskIds": ["IPR-01", "IPR-02", "IPR-03", "IPR-04", "IPR-05", "IPR-07", "IPR-08"],
+      "predecessorDecisionIds": ["DEC-01"],
+      "legalSourceIds": ["SRC-EU-EUTMR-2017-1001"],
+      "requiredAuthority": "Company owner + contributors + counsel",
+      "ownerRole": "LEGAL_COUNSEL",
+      "dueDate": "2027-01-31",
+      "evidenceToClose": ["Signed assignments/waivers", "Employer confirmation", "Corporate IP schedule", "Repository transfer or licence"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-004",
+      "title": "Choose the OPEN-MARINE outbound licence and distribution position",
+      "question": "Is the MAREA product proprietary, permissive or source-available, and how are third-party notices, source-provision and firmware distribution handled under that choice?",
+      "options": [
+        "Proprietary baseline after assignments",
+        "Permissive/open-source distribution",
+        "Source-available/dual licensing"
+      ],
+      "recommendation": "Proprietary baseline for MAREA products, with a documented third-party notice and compliance pack.",
+      "blockingRiskIds": ["IPR-01", "IPR-06", "IPR-10", "IPR-11", "IPR-12"],
+      "predecessorDecisionIds": ["DEC-01", "DEC-04"],
+      "legalSourceIds": ["SRC-EU-EUTMR-2017-1001"],
+      "requiredAuthority": "Company owner + counsel",
+      "ownerRole": "LEGAL_COUNSEL",
+      "dueDate": "2027-01-31",
+      "evidenceToClose": ["Adopted outbound licence file", "Third-party notices bundle", "GPL compliance decision", "Licence/SBOM release gate"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-005",
+      "title": "Commission MAREA trademark clearance and decide public brand use",
+      "question": "Is MAREA registrable and clear for the intended goods/services in the EU and Spain, and what MC-14 rule supersedes the MC-03 class-A public-brand allowance while clearance is NOT_GRANTED?",
+      "options": [
+        "Commission EUIPO/OEPM clearance and file",
+        "Rename the brand",
+        "Keep MAREA internal-only indefinitely"
+      ],
+      "recommendation": "Commission clearance; keep MAREA_PUBLIC_USE = NO_GO until a registration or written clearance exists.",
+      "blockingRiskIds": ["IPR-13", "IPR-14", "CLM-01"],
+      "predecessorDecisionIds": ["DEC-01"],
+      "legalSourceIds": ["SRC-EU-EUTMR-2017-1001", "SRC-EUIPO-MAREA-SEARCH", "SRC-OEPM-MAREA-SEARCH"],
+      "requiredAuthority": "Company owner + counsel",
+      "ownerRole": "LEGAL_COUNSEL",
+      "dueDate": "2027-02-28",
+      "evidenceToClose": ["Clearance search report", "Counsel opinion", "Filing/registration evidence", "Recorded public-use decision"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-006",
+      "title": "Choose the chart/ENC licensing strategy",
+      "question": "Will NAV pursue official ENC distribution (IHM/IC-ENC/OEM), use user-supplied charts only, or partner with a chart provider?",
+      "options": [
+        "Pursue official ENC distribution agreement",
+        "User-supplied charts with no official-chart claim",
+        "Partner with a licensed chart provider"
+      ],
+      "recommendation": "User-supplied charts initially, with explicit navigation-aid disclaimers, unless an ENC agreement is funded.",
+      "blockingRiskIds": ["DATA-01", "DATA-03", "DATA-04", "LIA-06"],
+      "predecessorDecisionIds": ["DEC-02"],
+      "legalSourceIds": ["SRC-ES-IHM-CHART-LICENSING", "SRC-EU-DB-96-9"],
+      "requiredAuthority": "Company owner + product + counsel",
+      "ownerRole": "DATA_RIGHTS_OWNER",
+      "dueDate": "2027-02-28",
+      "evidenceToClose": ["Recorded chart strategy", "Signed licence or explicit user-supplied-chart policy", "Updated product copy and disclaimers"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-007",
+      "title": "Choose the weather data provider strategy",
+      "question": "Will WEATHER use a paid commercial licence, a self-hosted AGPL stack, or a public-sector agreement, and which display/cache/redistribution rights are granted?",
+      "options": [
+        "Paid commercial provider",
+        "Self-hosted AGPL stack with compliance analysis",
+        "Public-sector agreement (AEMET/MeteoGalicia/Puertos)"
+      ],
+      "recommendation": "Paid commercial provider with explicit display, cache and offline terms.",
+      "blockingRiskIds": ["DATA-02", "DATA-05", "LIA-07"],
+      "predecessorDecisionIds": ["DEC-03"],
+      "legalSourceIds": ["SRC-EU-DB-96-9", "SRC-ES-AEMET-TERMS"],
+      "requiredAuthority": "Company owner + product + finance",
+      "ownerRole": "DATA_RIGHTS_OWNER",
+      "dueDate": "2027-02-28",
+      "evidenceToClose": ["Signed provider licence or written public-sector terms", "Rights matrix per variable", "Attribution/freshness implementation"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-008",
+      "title": "Choose the AIS decoder and receiver strategy",
+      "question": "Will AIS-catcher (GPL-3.0) be shipped with full compliance, replaced by a permissively licensed decoder, or user-installed, and which receiver module evidences radio conformity?",
+      "options": [
+        "Ship AIS-catcher with full GPL compliance",
+        "Replace with a permissive decoder",
+        "User-installed decoder with documented separation"
+      ],
+      "recommendation": "Replace or user-install the decoder; select a receiver module with existing conformity evidence.",
+      "blockingRiskIds": ["IPR-10", "PRD-03", "LEG-08", "LIA-05"],
+      "predecessorDecisionIds": ["DEC-04"],
+      "legalSourceIds": ["SRC-EU-RED-2014-53", "SRC-ES-LGT-11-2022"],
+      "requiredAuthority": "Engineering + counsel + hardware",
+      "ownerRole": "ENGINEERING_LEAD",
+      "dueDate": "2027-02-28",
+      "evidenceToClose": ["Decoder strategy record", "GPL compliance pack or replacement licence", "Receiver module conformity evidence"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-009",
+      "title": "Decide NMEA 2000 participation",
+      "question": "Will EMBARCARTE license NMEA 2000 and certify products, or support only NMEA 0183/Signal K with tested interoperability?",
+      "options": [
+        "License and certify NMEA 2000",
+        "NMEA 0183/Signal K only",
+        "Third-party certified NMEA gateway module"
+      ],
+      "recommendation": "NMEA 0183/Signal K only until a business case and licence exist.",
+      "blockingRiskIds": ["PRD-04", "PRD-05", "IPR-13"],
+      "predecessorDecisionIds": ["DEC-05"],
+      "legalSourceIds": ["SRC-NMEA-2000-LICENSING", "SRC-NMEA-CERTIFICATION"],
+      "requiredAuthority": "Company owner + product + counsel",
+      "ownerRole": "ENGINEERING_LEAD",
+      "dueDate": "2027-02-28",
+      "evidenceToClose": ["Decision record", "Membership/licence agreement if pursuing NMEA 2000", "Tested interoperability matrix"],
+      "requiresQualifiedCounsel": false,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-010",
+      "title": "Fund or defer the PILOT safety programme",
+      "question": "Will EMBARCARTE fund the staged safety programme (bench, HIL, supervised sea trials, independent assessment) or defer PILOT indefinitely?",
+      "options": [
+        "Fund the staged programme",
+        "Defer PILOT",
+        "Partner with a certified autopilot vendor"
+      ],
+      "recommendation": "Defer PILOT and keep the safety gate BLOCKED until the programme is funded.",
+      "blockingRiskIds": ["PRD-01", "PRD-02", "LIA-10"],
+      "predecessorDecisionIds": ["DEC-06"],
+      "legalSourceIds": ["SRC-EU-PLD-2024-2853", "SRC-EU-RCD-2013-53"],
+      "requiredAuthority": "Company owner",
+      "ownerRole": "HARDWARE_LEAD",
+      "dueDate": "2027-02-28",
+      "evidenceToClose": ["Funding authorization", "Safety programme plan", "Independent safety report and sea-trial evidence"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-011",
+      "title": "Choose the hardware manufacturing and supply model",
+      "question": "Will EMBARCARTE design and contract-manufacture, OEM/white-label, or partner for each hardware family, and who is the legal manufacturer?",
+      "options": [
+        "Design and contract manufacture",
+        "OEM/white-label",
+        "Partner with an established manufacturer"
+      ],
+      "recommendation": "Per-family decision documented with the supplier contract and the economic-operator matrix.",
+      "blockingRiskIds": ["PRD-06", "PRD-08", "PRD-09", "LEG-02"],
+      "predecessorDecisionIds": ["DEC-07"],
+      "legalSourceIds": ["SRC-EU-GPSR-2023-988", "SRC-EU-CE-MARKING-GUIDANCE"],
+      "requiredAuthority": "Company owner + hardware",
+      "ownerRole": "HARDWARE_LEAD",
+      "dueDate": "2027-02-28",
+      "evidenceToClose": ["Supplier selection record", "Manufacturing contract", "Legal manufacturer identification"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-012",
+      "title": "Obtain product liability, cyber and professional-indemnity insurance",
+      "question": "Which broker and insurer will quote cover for the intended product scope, territories and PILOT/cyber exposure, and at what premium, limits and exclusions?",
+      "options": [
+        "Broker indication now, bind only before first placement",
+        "Bind a limited pilot policy",
+        "Self-insure/defer with explicit residual-risk acceptance"
+      ],
+      "recommendation": "Obtain a broker indication before any launch decision; keep the premium UNKNOWN until quoted.",
+      "blockingRiskIds": ["LIA-13", "LIA-01", "LIA-02", "LIA-03", "LIA-04", "LIA-05", "LIA-06", "LIA-07", "LIA-08", "LIA-09", "LIA-10", "LIA-11", "LIA-12"],
+      "predecessorDecisionIds": ["DEC-07"],
+      "legalSourceIds": ["SRC-EU-PLD-2024-2853"],
+      "requiredAuthority": "Company owner + finance",
+      "ownerRole": "FINANCE_LEAD",
+      "dueDate": "2027-02-01",
+      "evidenceToClose": ["Broker indication", "Quotation and policy wording", "Coverage/exclusion confirmation", "Residual-risk acceptance if deferred"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-013",
+      "title": "Authorize the payment, merchant and tax model",
+      "question": "Which hosted/tokenised provider, merchant account, SCA model, refund/chargeback regime and VAT/OSS/import treatment will be used, and who confirms the tax position?",
+      "options": [
+        "Single hosted provider with tax adviser confirmation",
+        "Provider plus separate subscription-billing layer",
+        "Defer commerce until the entity and terms are ready"
+      ],
+      "recommendation": "Defer commerce; when authorized, use one hosted/tokenised provider and obtain professional tax confirmation.",
+      "blockingRiskIds": ["PAY-01", "PAY-02", "PAY-03", "PAY-04", "PAY-05"],
+      "predecessorDecisionIds": ["DEC-07"],
+      "legalSourceIds": ["SRC-EU-PSD2-2015-2366", "SRC-EU-SCA-2018-389", "SRC-EU-VAT-2006-112", "SRC-EU-OSS-282-2011"],
+      "requiredAuthority": "Company owner + finance + tax adviser",
+      "ownerRole": "FINANCE_LEAD",
+      "dueDate": "2027-02-28",
+      "evidenceToClose": ["Executed merchant agreement", "Tax adviser confirmation", "Payment flow test", "Refund/chargeback procedure"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-014",
+      "title": "Decide the privacy operating model, DPIA and processor agreements",
+      "question": "What are EMBARCARTE's controller/processor roles per purpose, does FLEET require a full DPIA, which subprocessors are used, and who is the DPO/contact?",
+      "options": [
+        "Appoint an internal DPO and contract processors",
+        "External DPO service",
+        "Reduce processing scope to lower-risk purposes"
+      ],
+      "recommendation": "Appoint an accountable privacy lead, run the DPIA and contract processors before any WATCH/FLEET processing.",
+      "blockingRiskIds": ["PRIV-01", "PRIV-02", "PRIV-03", "PRIV-04", "PRIV-05", "PRIV-06", "CYB-07"],
+      "predecessorDecisionIds": ["DEC-07"],
+      "legalSourceIds": ["SRC-EU-GDPR-2016-679", "SRC-ES-LOPDGDD-3-2018", "SRC-ES-AEPD-DPIA"],
+      "requiredAuthority": "Company owner",
+      "ownerRole": "DPO",
+      "dueDate": "2027-01-31",
+      "evidenceToClose": ["DPO appointment", "Role map", "DPIA report", "DPAs and subprocessor register"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-015",
+      "title": "Decide CRA classification, support period and conformity route",
+      "question": "Is each product family a default, important or critical product, what support period applies, which conformity-assessment route is used, and how are updates and incident reporting operated?",
+      "options": [
+        "Self-assessment for default products",
+        "Third-party assessment for important/critical products",
+        "Reduce functionality to remain default class"
+      ],
+      "recommendation": "Classify per family with counsel/notified body; adopt an explicit support-period policy.",
+      "blockingRiskIds": ["CYB-01", "CYB-02", "CYB-03", "CYB-04", "CYB-05", "CYB-06", "IPR-11", "LIA-11"],
+      "predecessorDecisionIds": ["DEC-01"],
+      "legalSourceIds": ["SRC-EU-CRA-2024-2847", "SRC-EU-DELREG-2026-339"],
+      "requiredAuthority": "Company owner + security + counsel",
+      "ownerRole": "SECURITY_LEAD",
+      "dueDate": "2027-06-30",
+      "evidenceToClose": ["Classification memo", "Support-period decision", "Conformity-assessment plan", "Incident-reporting procedure"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-016",
+      "title": "Approve the consumer, B2B, subscription and installer contract set",
+      "question": "Which counsel-reviewed templates will govern consumer sales, B2B supply, subscriptions, returns/RMA and installer/distributor relationships?",
+      "options": [
+        "Single counsel-reviewed template set with annexes",
+        "Separate consumer/B2B/installer sets drafted by specialists",
+        "Defer sale and keep the site non-transactional"
+      ],
+      "recommendation": "Separate consumer and B2B sets with installer and subscription annexes, approved before any sale.",
+      "blockingRiskIds": ["CONS-01", "CONS-02", "CONS-03", "CONS-04", "CONS-05", "CONS-06", "CONS-07", "CONS-08", "CONS-09"],
+      "predecessorDecisionIds": ["DEC-08"],
+      "legalSourceIds": ["SRC-EU-CRD-2011-83", "SRC-EU-CSD-2019-771", "SRC-EU-DCD-2019-770", "SRC-ES-TRLGDCU-RDL-1-2007"],
+      "requiredAuthority": "Company owner + counsel",
+      "ownerRole": "LEGAL_COUNSEL",
+      "dueDate": "2027-02-28",
+      "evidenceToClose": ["Approved templates ES/EN", "Counsel sign-off", "Publication/checkout gate"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-017",
+      "title": "Provide legal identity and authorize website commerce remediation",
+      "question": "What are the registered company name, tax ID, address and registry data, and who authorizes the legal-identity, cookie and commerce-surface remediation?",
+      "options": [
+        "Complete identity now and publish the legal pack",
+        "Publish identity only and disable commerce",
+        "Keep the site non-commercial until entity data is ready"
+      ],
+      "recommendation": "Complete identity and disable or clearly label non-MAREA sample commerce before any publication.",
+      "blockingRiskIds": ["OPS-01", "OPS-02", "PRIV-07", "LEG-09"],
+      "predecessorDecisionIds": ["DEC-08"],
+      "legalSourceIds": ["SRC-ES-LSSI-34-2002", "SRC-ES-LOPDGDD-3-2018", "SRC-EU-EPRIVACY-2002-58"],
+      "requiredAuthority": "Company owner",
+      "ownerRole": "COMMERCIAL_DIRECTOR",
+      "dueDate": "2026-12-31",
+      "evidenceToClose": ["Verified company registration data", "Legal notice and cookie policy", "Commerce-surface decision", "Remediation authorization"],
+      "requiresQualifiedCounsel": false,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-018",
+      "title": "Authorize claims-policy publication and website/SEO remediation",
+      "question": "Who approves the MC-14 claims policy, the bilingual claims catalogue and the future MC-15 website/SEO remediation, and under which release gates?",
+      "options": [
+        "Programme Lead approves internal governance, counsel approves public copy",
+        "External counsel pre-approves every public claim",
+        "No public claims until launch readiness"
+      ],
+      "recommendation": "Programme Lead approves internal governance; public copy waits for evidence and MC-15 gate.",
+      "blockingRiskIds": ["CLM-01", "CLM-02", "CLM-03", "CLM-04", "CLM-05", "CLM-06", "CLM-07", "OPS-03", "OPS-04"],
+      "predecessorDecisionIds": ["DEC-01"],
+      "legalSourceIds": ["SRC-EU-UCPD-2005-29", "SRC-ES-LCD-3-1991", "SRC-ES-LGP-34-1988"],
+      "requiredAuthority": "Company owner + counsel",
+      "ownerRole": "COMMERCIAL_DIRECTOR",
+      "dueDate": "2027-01-31",
+      "evidenceToClose": ["Signed claims policy", "Approved claim records with evidence", "MC-15 remediation authorization"],
+      "requiresQualifiedCounsel": true,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-019",
+      "title": "Register as a producer and evidence environmental compliance",
+      "question": "Which WEEE, RoHS, battery and packaging producer obligations apply, which registration numbers are required in Spain, and who operates take-back and reporting?",
+      "options": [
+        "Register directly with each Spanish producer scheme",
+        "Use a compliance take-back organisation",
+        "Manufacturer/importer bears the registration"
+      ],
+      "recommendation": "Register before first placement and collect supplier RoHS/material declarations.",
+      "blockingRiskIds": ["LEG-10"],
+      "predecessorDecisionIds": ["DEC-07"],
+      "legalSourceIds": ["SRC-EU-WEEE-2012-19", "SRC-EU-ROHS-2011-65", "SRC-EU-BATTERIES-2023-1542", "SRC-EU-PACKAGING-2025-40", "SRC-ES-PRODUCER-REGISTER"],
+      "requiredAuthority": "Company owner + compliance",
+      "ownerRole": "PRODUCT_COMPLIANCE_ENGINEER",
+      "dueDate": "2027-02-28",
+      "evidenceToClose": ["Producer registration numbers", "Take-back agreement", "RoHS/material declarations", "Packaging compliance declaration"],
+      "requiresQualifiedCounsel": false,
+      "status": "PENDING"
+    },
+    {
+      "decisionId": "DEC-MC14-020",
+      "title": "Authorize any future commercial launch (outside MC-14 scope)",
+      "question": "After every release gate closes, who authorizes the first commercial offer, and on which product/territory/price/terms?",
+      "options": [
+        "Company owner authorization through MC-36 release gate",
+        "Phased pilot with named customers under contract",
+        "No launch until external validation exists"
+      ],
+      "recommendation": "No launch decision is taken in MC-14. The decision belongs to the future release milestone and requires all gates CLOSED_VERIFIED.",
+      "blockingRiskIds": ["LEG-01", "LEG-05", "IPR-13", "CONS-01", "PRIV-02", "CYB-01", "PAY-01", "LIA-13", "OPS-01"],
+      "predecessorDecisionIds": ["DEC-08"],
+      "legalSourceIds": ["SRC-EU-GPSR-2023-988", "SRC-EU-PLD-2024-2853"],
+      "requiredAuthority": "Company owner",
+      "ownerRole": "PROGRAMME_LEAD",
+      "dueDate": "NOT_SCHEDULED",
+      "evidenceToClose": ["Release-gate closure evidence", "Launch authorization signed", "Final legal and insurance review"],
+      "requiresQualifiedCounsel": true,
+      "status": "OUT_OF_SCOPE_FOR_MC14"
+    }
+  ]
+}

@@ -1,0 +1,3369 @@
+{
+  "generatedBy": "territories/tools/check.mjs",
+  "date": "2026-10-30",
+  "files": [
+    {
+      "file": "docs/marea/brand/assets/logo/marea-construction-grid.svg",
+      "bytes": 3218,
+      "viewBox": {
+        "w": 44,
+        "h": 44
+      },
+      "ink": {
+        "x": 0,
+        "y": 0,
+        "w": 69.15469360351562,
+        "h": 44,
+        "right": 69.15469360351562,
+        "bottom": 44
+      },
+      "groups": [
+        {
+          "transform": "translate(6 6)",
+          "box": {
+            "x": 6,
+            "y": 6,
+            "w": 32,
+            "h": 32,
+            "right": 38,
+            "bottom": 38
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 44 × 44"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "3218 B ≤ 24576 B"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": true,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/marea-lockup-mono.svg",
+      "bytes": 2016,
+      "viewBox": {
+        "w": 704.8300170898438,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 604.8269653320312,
+        "h": 100.00019836425781,
+        "right": 654.8299827575684,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 704.8300170898438 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2016 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 654.83 150 inside 704.8300170898438×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 654.83,150 in 704.8300170898438×200; ≥50 units on all sides"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/marea-lockup-primary.svg",
+      "bytes": 2016,
+      "viewBox": {
+        "w": 704.8300170898438,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 604.8269653320312,
+        "h": 100.00019836425781,
+        "right": 654.8299827575684,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 704.8300170898438 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2016 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 654.83 150 inside 704.8300170898438×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 654.83,150 in 704.8300170898438×200; ≥50 units on all sides"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/marea-lockup-reversed.svg",
+      "bytes": 2016,
+      "viewBox": {
+        "w": 704.8300170898438,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 604.8269653320312,
+        "h": 100.00019836425781,
+        "right": 654.8299827575684,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 704.8300170898438 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2016 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 654.83 150 inside 704.8300170898438×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 654.83,150 in 704.8300170898438×200; ≥50 units on all sides"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/marea-mark-compact.svg",
+      "bytes": 993,
+      "viewBox": {
+        "w": 32,
+        "h": 32
+      },
+      "ink": {
+        "x": 1.1700000762939453,
+        "y": 1,
+        "w": 29.65999984741211,
+        "h": 30,
+        "right": 30.829999923706055,
+        "bottom": 31
+      },
+      "groups": [
+        {
+          "transform": "translate(0.23 0.4)",
+          "box": {
+            "x": 1.170000057220459,
+            "y": 1.0000000238418578,
+            "w": 29.65999984741211,
+            "h": 30,
+            "right": 30.82999990463257,
+            "bottom": 31.000000023841856
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 32 × 32"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "993 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 1.17 y 1 → 30.83 31 inside 32×32"
+        },
+        {
+          "id": "centred",
+          "ok": true,
+          "detail": "margins L 1.17 R 1.17 T 1 B 1"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/marea-mark-reduced-16.svg",
+      "bytes": 865,
+      "viewBox": {
+        "w": 16,
+        "h": 16
+      },
+      "ink": {
+        "x": 0.26999998092651367,
+        "y": 0.3500000238418579,
+        "w": 15.470000267028809,
+        "h": 15.300000190734863,
+        "right": 15.740000247955322,
+        "bottom": 15.650000214576721
+      },
+      "groups": [
+        {
+          "transform": "translate(0.14 0.05)",
+          "box": {
+            "x": 0.26999999523162843,
+            "y": 0.35000001192092894,
+            "w": 15.470000267028809,
+            "h": 15.300000190734863,
+            "right": 15.740000262260438,
+            "bottom": 15.650000202655793
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 16 × 16"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "865 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 0.27 y 0.35 → 15.74 15.65 inside 16×16"
+        },
+        {
+          "id": "centred",
+          "ok": true,
+          "detail": "margins L 0.27 R 0.26 T 0.35 B 0.35"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/marea-wordmark.svg",
+      "bytes": 1425,
+      "viewBox": {
+        "w": 430.9599914550781,
+        "h": 100
+      },
+      "ink": {
+        "x": 0,
+        "y": 0,
+        "w": 430.9599914550781,
+        "h": 100,
+        "right": 430.9599914550781,
+        "bottom": 100
+      },
+      "groups": [],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 430.9599914550781 × 100"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "1425 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 0 y 0 → 430.96 100 inside 430.9599914550781×100"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/family/marea-family-ais-lockup.svg",
+      "bytes": 2551,
+      "viewBox": {
+        "w": 853.6599731445312,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 753.6670532226562,
+        "h": 100.00019836425781,
+        "right": 803.6700706481934,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        },
+        {
+          "transform": "translate(680.83 80)",
+          "box": {
+            "x": 680.83,
+            "y": 80,
+            "w": 122.83999633789062,
+            "h": 70,
+            "right": 803.6699963378907,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 853.6599731445312 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2551 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 803.67 150 inside 853.6599731445312×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 803.67,150 in 853.6599731445312×200; ≥50 units on all sides"
+        },
+        {
+          "id": "familyRatio",
+          "ok": true,
+          "detail": "family ink height 70 = 0.7 × cap"
+        },
+        {
+          "id": "familyGap",
+          "ok": true,
+          "detail": "MAREA→family ink gap 26 = 0.26 × cap"
+        },
+        {
+          "id": "familyBaseline",
+          "ok": true,
+          "detail": "family baseline 150 vs 150"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/family/marea-family-display-lockup.svg",
+      "bytes": 3121,
+      "viewBox": {
+        "w": 1068.4599609375,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 968.467041015625,
+        "h": 100.00019836425781,
+        "right": 1018.4700584411621,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        },
+        {
+          "transform": "translate(680.83 80)",
+          "box": {
+            "x": 680.83,
+            "y": 80,
+            "w": 337.6400146484375,
+            "h": 70,
+            "right": 1018.4700146484375,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 1068.4599609375 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "3121 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 1018.47 150 inside 1068.4599609375×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 1018.47,150 in 1068.4599609375×200; ≥50 units on all sides"
+        },
+        {
+          "id": "familyRatio",
+          "ok": true,
+          "detail": "family ink height 70 = 0.7 × cap"
+        },
+        {
+          "id": "familyGap",
+          "ok": true,
+          "detail": "MAREA→family ink gap 26 = 0.26 × cap"
+        },
+        {
+          "id": "familyBaseline",
+          "ok": true,
+          "detail": "family baseline 150 vs 150"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/family/marea-family-fleet-lockup.svg",
+      "bytes": 2736,
+      "viewBox": {
+        "w": 992.6300048828125,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 892.6270141601562,
+        "h": 100.00019836425781,
+        "right": 942.6300315856934,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        },
+        {
+          "transform": "translate(680.83 80)",
+          "box": {
+            "x": 680.83,
+            "y": 80,
+            "w": 261.79998779296875,
+            "h": 70,
+            "right": 942.6299877929688,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 992.6300048828125 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2736 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 942.63 150 inside 992.6300048828125×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 942.63,150 in 992.6300048828125×200; ≥50 units on all sides"
+        },
+        {
+          "id": "familyRatio",
+          "ok": true,
+          "detail": "family ink height 70 = 0.7 × cap"
+        },
+        {
+          "id": "familyGap",
+          "ok": true,
+          "detail": "MAREA→family ink gap 26 = 0.26 × cap"
+        },
+        {
+          "id": "familyBaseline",
+          "ok": true,
+          "detail": "family baseline 150 vs 150"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/family/marea-family-hub-lockup.svg",
+      "bytes": 2622,
+      "viewBox": {
+        "w": 900.22998046875,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 800.2269897460938,
+        "h": 100.00019836425781,
+        "right": 850.2300071716309,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        },
+        {
+          "transform": "translate(680.83 80)",
+          "box": {
+            "x": 680.83,
+            "y": 80,
+            "w": 169.39999389648438,
+            "h": 70,
+            "right": 850.2299938964844,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 900.22998046875 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2622 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 850.23 150 inside 900.22998046875×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 850.23,150 in 900.22998046875×200; ≥50 units on all sides"
+        },
+        {
+          "id": "familyRatio",
+          "ok": true,
+          "detail": "family ink height 70 = 0.7 × cap"
+        },
+        {
+          "id": "familyGap",
+          "ok": true,
+          "detail": "MAREA→family ink gap 26 = 0.26 × cap"
+        },
+        {
+          "id": "familyBaseline",
+          "ok": true,
+          "detail": "family baseline 150 vs 150"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/family/marea-family-nav-lockup.svg",
+      "bytes": 2526,
+      "viewBox": {
+        "w": 908.5999755859375,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 808.5970458984375,
+        "h": 100.00019836425781,
+        "right": 858.6000633239746,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        },
+        {
+          "transform": "translate(680.83 80)",
+          "box": {
+            "x": 680.83,
+            "y": 80,
+            "w": 177.77000427246094,
+            "h": 70,
+            "right": 858.600004272461,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 908.5999755859375 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2526 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 858.6 150 inside 908.5999755859375×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 858.6,150 in 908.5999755859375×200; ≥50 units on all sides"
+        },
+        {
+          "id": "familyRatio",
+          "ok": true,
+          "detail": "family ink height 70 = 0.7 × cap"
+        },
+        {
+          "id": "familyGap",
+          "ok": true,
+          "detail": "MAREA→family ink gap 26 = 0.26 × cap"
+        },
+        {
+          "id": "familyBaseline",
+          "ok": true,
+          "detail": "family baseline 150 vs 150"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/family/marea-family-pilot-lockup.svg",
+      "bytes": 2642,
+      "viewBox": {
+        "w": 946.4299926757812,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 846.4270629882812,
+        "h": 100.00019836425781,
+        "right": 896.4300804138184,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        },
+        {
+          "transform": "translate(680.83 80)",
+          "box": {
+            "x": 680.83,
+            "y": 80,
+            "w": 215.60000610351562,
+            "h": 70,
+            "right": 896.4300061035157,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 946.4299926757812 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2642 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 896.43 150 inside 946.4299926757812×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 896.43,150 in 946.4299926757812×200; ≥50 units on all sides"
+        },
+        {
+          "id": "familyRatio",
+          "ok": true,
+          "detail": "family ink height 70 = 0.7 × cap"
+        },
+        {
+          "id": "familyGap",
+          "ok": true,
+          "detail": "MAREA→family ink gap 26 = 0.26 × cap"
+        },
+        {
+          "id": "familyBaseline",
+          "ok": true,
+          "detail": "family baseline 150 vs 150"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/family/marea-family-sense-lockup.svg",
+      "bytes": 3017,
+      "viewBox": {
+        "w": 1008.72998046875,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 908.7269897460938,
+        "h": 100.00019836425781,
+        "right": 958.7300071716309,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        },
+        {
+          "transform": "translate(680.83 80)",
+          "box": {
+            "x": 680.83,
+            "y": 80,
+            "w": 277.8999938964844,
+            "h": 70,
+            "right": 958.7299938964844,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 1008.72998046875 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "3017 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 958.73 150 inside 1008.72998046875×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 958.73,150 in 1008.72998046875×200; ≥50 units on all sides"
+        },
+        {
+          "id": "familyRatio",
+          "ok": true,
+          "detail": "family ink height 70 = 0.7 × cap"
+        },
+        {
+          "id": "familyGap",
+          "ok": true,
+          "detail": "MAREA→family ink gap 26 = 0.26 × cap"
+        },
+        {
+          "id": "familyBaseline",
+          "ok": true,
+          "detail": "family baseline 150 vs 150"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/family/marea-family-watch-lockup.svg",
+      "bytes": 2787,
+      "viewBox": {
+        "w": 1039.3199462890625,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 939.3270263671875,
+        "h": 100.00019836425781,
+        "right": 989.3300437927246,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        },
+        {
+          "transform": "translate(680.83 80)",
+          "box": {
+            "x": 680.83,
+            "y": 80,
+            "w": 308.5,
+            "h": 70,
+            "right": 989.33,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 1039.3199462890625 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2787 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 989.33 150 inside 1039.3199462890625×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 989.33,150 in 1039.3199462890625×200; ≥50 units on all sides"
+        },
+        {
+          "id": "familyRatio",
+          "ok": true,
+          "detail": "family ink height 70 = 0.7 × cap"
+        },
+        {
+          "id": "familyGap",
+          "ok": true,
+          "detail": "MAREA→family ink gap 26 = 0.26 × cap"
+        },
+        {
+          "id": "familyBaseline",
+          "ok": true,
+          "detail": "family baseline 150 vs 150"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/assets/logo/family/marea-family-weather-lockup.svg",
+      "bytes": 3242,
+      "viewBox": {
+        "w": 1165.3199462890625,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 1065.3270263671875,
+        "h": 100.00019836425781,
+        "right": 1115.3300437927246,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        },
+        {
+          "transform": "translate(680.83 80)",
+          "box": {
+            "x": 680.83,
+            "y": 80,
+            "w": 434.5,
+            "h": 70,
+            "right": 1115.33,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 1165.3199462890625 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "3242 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 1115.33 150 inside 1165.3199462890625×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 1115.33,150 in 1165.3199462890625×200; ≥50 units on all sides"
+        },
+        {
+          "id": "familyRatio",
+          "ok": true,
+          "detail": "family ink height 70 = 0.7 × cap"
+        },
+        {
+          "id": "familyGap",
+          "ok": true,
+          "detail": "MAREA→family ink gap 26 = 0.26 × cap"
+        },
+        {
+          "id": "familyBaseline",
+          "ok": true,
+          "detail": "family baseline 150 vs 150"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-a-construction.svg",
+      "bytes": 3869,
+      "viewBox": {
+        "w": 33,
+        "h": 34.5
+      },
+      "ink": {
+        "x": -18.5,
+        "y": -4.5,
+        "w": 48.505428314208984,
+        "h": 45,
+        "right": 30.005428314208984,
+        "bottom": 40.5
+      },
+      "groups": [],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 33 × 34.5"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "3869 B ≤ 24576 B"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": true,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-a-lockup-primary.svg",
+      "bytes": 2211,
+      "viewBox": {
+        "w": 698.72998046875,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00325012207031,
+        "y": 49.99654769897461,
+        "w": 598.7267456054688,
+        "h": 100.00514221191406,
+        "right": 648.7299957275391,
+        "bottom": 150.00168991088867
+      },
+      "groups": [
+        {
+          "transform": "translate(42.9 46.94) scale(4.305)",
+          "box": {
+            "x": 50.00325041055679,
+            "y": 49.99654990762472,
+            "w": 92.77275492668151,
+            "h": 100.00515624046325,
+            "right": 142.7760053372383,
+            "bottom": 150.00170614808798
+          }
+        },
+        {
+          "transform": "translate(217.77 50)",
+          "box": {
+            "x": 217.77,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 648.7299914550781,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 698.72998046875 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2211 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 648.73 150 inside 698.72998046875×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..150 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 74.99 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 648.73,150 in 698.72998046875×200; ≥50 units on all sides"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-a-mark-compact.svg",
+      "bytes": 757,
+      "viewBox": {
+        "w": 16,
+        "h": 16
+      },
+      "ink": {
+        "x": 1.399999976158142,
+        "y": 0.3100000023841858,
+        "w": 14,
+        "h": 15.019999504089355,
+        "right": 15.399999976158142,
+        "bottom": 15.329999506473541
+      },
+      "groups": [],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 16 × 16"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "757 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 1.4 y 0.31 → 15.4 15.33 inside 16×16"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-a-mark-mono.svg",
+      "bytes": 944,
+      "viewBox": {
+        "w": 24,
+        "h": 24
+      },
+      "ink": {
+        "x": 1.6500000953674316,
+        "y": 0.7099999785423279,
+        "w": 21.55000114440918,
+        "h": 23.23000144958496,
+        "right": 23.20000123977661,
+        "bottom": 23.94000142812729
+      },
+      "groups": [],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 24 × 24"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "944 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 1.65 y 0.71 → 23.2 23.94 inside 24×24"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-a-mark-reversed.svg",
+      "bytes": 948,
+      "viewBox": {
+        "w": 24,
+        "h": 24
+      },
+      "ink": {
+        "x": 1.6500000953674316,
+        "y": 0.7099999785423279,
+        "w": 21.55000114440918,
+        "h": 23.23000144958496,
+        "right": 23.20000123977661,
+        "bottom": 23.94000142812729
+      },
+      "groups": [],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 24 × 24"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "948 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 1.65 y 0.71 → 23.2 23.94 inside 24×24"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-b-construction.svg",
+      "bytes": 3704,
+      "viewBox": {
+        "w": 41,
+        "h": 42.5
+      },
+      "ink": {
+        "x": -4.900000095367432,
+        "y": -4.5,
+        "w": 41.400001525878906,
+        "h": 44.29999923706055,
+        "right": 36.500001430511475,
+        "bottom": 39.79999923706055
+      },
+      "groups": [
+        {
+          "transform": "translate(0.23 0.4)",
+          "box": {
+            "x": 1.170000057220459,
+            "y": 1.0000000238418578,
+            "w": 29.65999984741211,
+            "h": 30,
+            "right": 30.82999990463257,
+            "bottom": 31.000000023841856
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 41 × 42.5"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "3704 B ≤ 24576 B"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": true,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-b-lockup-primary.svg",
+      "bytes": 2020,
+      "viewBox": {
+        "w": 704.8300170898438,
+        "h": 200
+      },
+      "ink": {
+        "x": 50.00301742553711,
+        "y": 49.99980163574219,
+        "w": 604.8269653320312,
+        "h": 100.00019836425781,
+        "right": 654.8299827575684,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(46.87 48) scale(3.333)",
+          "box": {
+            "x": 50.00302019071579,
+            "y": 49.99980007946491,
+            "w": 98.85677949142456,
+            "h": 99.99000000000001,
+            "right": 148.85979968214036,
+            "bottom": 149.9898000794649
+          }
+        },
+        {
+          "transform": "translate(223.87 50)",
+          "box": {
+            "x": 223.87,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 654.8299914550781,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 704.8300170898438 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "2020 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 654.83 150 inside 704.8300170898438×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..149.99 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75.01 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 654.83,150 in 704.8300170898438×200; ≥50 units on all sides"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-b-mark-compact.svg",
+      "bytes": 771,
+      "viewBox": {
+        "w": 16,
+        "h": 16
+      },
+      "ink": {
+        "x": 0.26999998092651367,
+        "y": 0.3500000238418579,
+        "w": 15.470000267028809,
+        "h": 15.300000190734863,
+        "right": 15.740000247955322,
+        "bottom": 15.650000214576721
+      },
+      "groups": [
+        {
+          "transform": "translate(0.14 0.05)",
+          "box": {
+            "x": 0.26999999523162843,
+            "y": 0.35000001192092894,
+            "w": 15.470000267028809,
+            "h": 15.300000190734863,
+            "right": 15.740000262260438,
+            "bottom": 15.650000202655793
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 16 × 16"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "771 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 0.27 y 0.35 → 15.74 15.65 inside 16×16"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-b-mark-mono.svg",
+      "bytes": 802,
+      "viewBox": {
+        "w": 32,
+        "h": 32
+      },
+      "ink": {
+        "x": 1.1700000762939453,
+        "y": 1,
+        "w": 29.65999984741211,
+        "h": 30,
+        "right": 30.829999923706055,
+        "bottom": 31
+      },
+      "groups": [
+        {
+          "transform": "translate(0.23 0.4)",
+          "box": {
+            "x": 1.170000057220459,
+            "y": 1.0000000238418578,
+            "w": 29.65999984741211,
+            "h": 30,
+            "right": 30.82999990463257,
+            "bottom": 31.000000023841856
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 32 × 32"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "802 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 1.17 y 1 → 30.83 31 inside 32×32"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-b-mark-reversed.svg",
+      "bytes": 806,
+      "viewBox": {
+        "w": 32,
+        "h": 32
+      },
+      "ink": {
+        "x": 1.1700000762939453,
+        "y": 1,
+        "w": 29.65999984741211,
+        "h": 30,
+        "right": 30.829999923706055,
+        "bottom": 31
+      },
+      "groups": [
+        {
+          "transform": "translate(0.23 0.4)",
+          "box": {
+            "x": 1.170000057220459,
+            "y": 1.0000000238418578,
+            "w": 29.65999984741211,
+            "h": 30,
+            "right": 30.82999990463257,
+            "bottom": 31.000000023841856
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 32 × 32"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "806 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 1.17 y 1 → 30.83 31 inside 32×32"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-c-construction.svg",
+      "bytes": 3638,
+      "viewBox": {
+        "w": 33,
+        "h": 34.5
+      },
+      "ink": {
+        "x": -4.900000095367432,
+        "y": -4.5,
+        "w": 34.905426025390625,
+        "h": 36.29999923706055,
+        "right": 30.005425930023193,
+        "bottom": 31.799999237060547
+      },
+      "groups": [
+        {
+          "transform": "translate(4.25 3)",
+          "box": {
+            "x": 4.25,
+            "y": 7,
+            "w": 15.5,
+            "h": 10,
+            "right": 19.75,
+            "bottom": 17
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 33 × 34.5"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "3638 B ≤ 24576 B"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": true,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-c-lockup-primary.svg",
+      "bytes": 1986,
+      "viewBox": {
+        "w": 760.9600219726562,
+        "h": 200
+      },
+      "ink": {
+        "x": 50,
+        "y": 50,
+        "w": 660.9599609375,
+        "h": 100,
+        "right": 710.9599609375,
+        "bottom": 150
+      },
+      "groups": [
+        {
+          "transform": "translate(50 10) scale(10)",
+          "box": {
+            "x": 50,
+            "y": 50,
+            "w": 155,
+            "h": 100,
+            "right": 205,
+            "bottom": 150
+          }
+        },
+        {
+          "transform": "translate(280 50)",
+          "box": {
+            "x": 280,
+            "y": 50,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 710.9599914550781,
+            "bottom": 150
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 760.9600219726562 × 200"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "1986 B ≤ 20480 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 50 y 50 → 710.96 150 inside 760.9600219726562×200"
+        },
+        {
+          "id": "symbolCapBand",
+          "ok": true,
+          "detail": "symbol ink y 50..150 vs cap band 50..150"
+        },
+        {
+          "id": "inkGap075",
+          "ok": true,
+          "detail": "measured ink gap 75 = 0.75 × cap"
+        },
+        {
+          "id": "capHeight100",
+          "ok": true,
+          "detail": "wordmark cap band 100"
+        },
+        {
+          "id": "clearSpace",
+          "ok": true,
+          "detail": "ink 50,50 → 710.96,150 in 760.9600219726562×200; ≥50 units on all sides"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-c-mark-compact.svg",
+      "bytes": 784,
+      "viewBox": {
+        "w": 16,
+        "h": 16
+      },
+      "ink": {
+        "x": 3,
+        "y": 4.099999904632568,
+        "w": 10,
+        "h": 7.800000190734863,
+        "right": 13,
+        "bottom": 11.900000095367432
+      },
+      "groups": [
+        {
+          "transform": "translate(3 2.1)",
+          "box": {
+            "x": 3,
+            "y": 4.1,
+            "w": 10,
+            "h": 7.800000190734863,
+            "right": 13,
+            "bottom": 11.900000190734863
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 16 × 16"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 1 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "784 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 3 y 4.1 → 13 11.9 inside 16×16"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 1
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-c-mark-mono.svg",
+      "bytes": 774,
+      "viewBox": {
+        "w": 24,
+        "h": 24
+      },
+      "ink": {
+        "x": 4.25,
+        "y": 7,
+        "w": 15.5,
+        "h": 10,
+        "right": 19.75,
+        "bottom": 17
+      },
+      "groups": [
+        {
+          "transform": "translate(4.25 3)",
+          "box": {
+            "x": 4.25,
+            "y": 7,
+            "w": 15.5,
+            "h": 10,
+            "right": 19.75,
+            "bottom": 17
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 24 × 24"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 1 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "774 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 4.25 y 7 → 19.75 17 inside 24×24"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 1
+    },
+    {
+      "file": "docs/marea/brand/territories/territory-c-mark-reversed.svg",
+      "bytes": 778,
+      "viewBox": {
+        "w": 24,
+        "h": 24
+      },
+      "ink": {
+        "x": 4.25,
+        "y": 7,
+        "w": 15.5,
+        "h": 10,
+        "right": 19.75,
+        "bottom": 17
+      },
+      "groups": [
+        {
+          "transform": "translate(4.25 3)",
+          "box": {
+            "x": 4.25,
+            "y": 7,
+            "w": 15.5,
+            "h": 10,
+            "right": 19.75,
+            "bottom": 17
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 24 × 24"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "noEmbeddedText",
+          "ok": true,
+          "detail": "no <text> in delivered artwork"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 1 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "778 B ≤ 8192 B"
+        },
+        {
+          "id": "insideViewBox",
+          "ok": true,
+          "detail": "ink x 4.25 y 7 → 19.75 17 inside 24×24"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": false,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 1
+    },
+    {
+      "file": "docs/marea/brand/territories/wordmark-case-study.svg",
+      "bytes": 3770,
+      "viewBox": {
+        "w": 462.9599914550781,
+        "h": 338
+      },
+      "ink": {
+        "x": 0,
+        "y": 0,
+        "w": 462.9599914550781,
+        "h": 338,
+        "right": 462.9599914550781,
+        "bottom": 338
+      },
+      "groups": [
+        {
+          "transform": "translate(16 54)",
+          "box": {
+            "x": 16,
+            "y": 54,
+            "w": 430.9599914550781,
+            "h": 100,
+            "right": 446.9599914550781,
+            "bottom": 154
+          }
+        },
+        {
+          "transform": "translate(16 188)",
+          "box": {
+            "x": 16,
+            "y": 188,
+            "w": 378,
+            "h": 100.00009155273438,
+            "right": 394,
+            "bottom": 288.0000915527344
+          }
+        }
+      ],
+      "checks": [
+        {
+          "id": "parse",
+          "ok": true,
+          "detail": "well-formed"
+        },
+        {
+          "id": "hygiene",
+          "ok": true,
+          "detail": "no script/external/raster/import/filter/foreignObject/®™"
+        },
+        {
+          "id": "viewBox",
+          "ok": true,
+          "detail": "viewBox 462.9599914550781 × 338"
+        },
+        {
+          "id": "semantics",
+          "ok": true,
+          "detail": "role=img + title + desc"
+        },
+        {
+          "id": "decimals",
+          "ok": true,
+          "detail": "max 2 decimals"
+        },
+        {
+          "id": "bytes",
+          "ok": true,
+          "detail": "3770 B ≤ 24576 B"
+        }
+      ],
+      "hygiene": {
+        "script": false,
+        "externalRef": false,
+        "raster": false,
+        "importRule": false,
+        "filter": false,
+        "foreignObject": false,
+        "viewBox": true,
+        "roleImg": true,
+        "title": true,
+        "desc": true,
+        "textElement": true,
+        "trademarkSymbol": false
+      },
+      "maxDecimals": 2
+    }
+  ],
+  "failed": []
+}

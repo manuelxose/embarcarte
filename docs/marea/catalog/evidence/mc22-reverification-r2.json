@@ -1,0 +1,87 @@
+{
+  "contractId": "MC22-REVERIFICATION-R2",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-22",
+  "kind": "verification",
+  "round": "repair-round-2-final",
+  "verifier": "verifier (independent; did not perform repair r2)",
+  "head": "8f5b14b836e371808dcade5f471f96f345f42ef6",
+  "branch": "feature/marea-mc22-display-pilot-fleet-catalog",
+  "baseCommit": "1dc9aa0d85d418709cfaccd41fe1f2335462c672",
+  "runAt": "2026-11-05T02:07:40Z",
+  "verdict": "PASS",
+  "blockingFindings": 0,
+  "round2Matrix": {
+    "method": "temporary node script outside the repository importing scripts/mc20-catalog-guards.mjs (catalogClaimProblems)",
+    "mustReject": 17,
+    "mustRejectObservedRejected": 17,
+    "mustAllow": 9,
+    "mustAllowObservedAllowed": 9,
+    "mismatches": 0,
+    "note": "The task header says 'MUST-REJECT (16)' but the list contains 17 entries; all 17 were verified. 17 + 9 = 26 cases, 0 mismatches."
+  },
+  "round1Regression": {
+    "mustReject": 15,
+    "mustRejectObservedRejected": 15,
+    "mustAllow": 6,
+    "mustAllowObservedAllowed": 6,
+    "mismatches": 0,
+    "note": "No regression: all 15 round-1 bypasses still rejected, all 6 round-1 disclaimers still allowed."
+  },
+  "reviewAddenda": {
+    "F1 fleet-hardware-included copula forms": "closed (El hardware está/viene incluido, Hardware is/comes included, included by default -> rejected)",
+    "F2 sea-trial ES preterite": "closed (Las pruebas de mar se completaron, Se realizaron las pruebas de mar -> rejected)",
+    "FNE-01 spelled-out sizes": "closed (cinco/veinte/cincuenta pulgadas, five-inch/fifty-inch display -> rejected)",
+    "mismatches": 0
+  },
+  "residualFindings": [
+    {
+      "id": "RES-01",
+      "severity": "low",
+      "input": "PILOT steers the boat automatically.",
+      "observed": "ALLOWED",
+      "rule": "pilot-autonomous-navigation",
+      "problem": "The autonomy vocabulary covers autonomous/autonomously/autónom*/self-steering/hands-free/unattended/unsupervised but not the adverb 'automatically' ('automáticamente'/'automática'). A steers-automatically autonomy claim would pass the guard and validator MC22-05."
+    },
+    {
+      "id": "RES-02",
+      "severity": "low",
+      "input": "Pantalla de sesenta pulgadas. / Screen of sixty inches.",
+      "observed": "ALLOWED",
+      "rule": "display-dimension",
+      "problem": "The spelled-out size alternation covers uno..cincuenta (ES) and one..fifty (EN); sizes above 50 (sesenta, sixty, …) are not matched."
+    },
+    {
+      "id": "RES-03",
+      "severity": "low",
+      "input": "El hardware se incluye.",
+      "observed": "ALLOWED",
+      "rule": "fleet-hardware-included",
+      "problem": "The hardware-included pattern covers 'hardware está/viene/es incluido' and 'comes/is included (by default/as standard)' but not the reflexive 'hardware se incluye'."
+    }
+  ],
+  "commands": [
+    { "command": "node scripts/build-mc20-catalog-data.mjs --check", "exitCode": 0, "observed": "MC-20 catalogue data is up to date (3 generated files).", "counts": "byte-stable" },
+    { "command": "npm run test:mc22", "exitCode": 0, "observed": "MC-22 catalogue validator: 56/56 PASS (PASS)", "counts": "56/56", "evidenceFile": "docs/marea/catalog/evidence/validator-run.json" },
+    { "command": "npm run test:mc22:unit", "exitCode": 0, "observed": "tests 66, pass 66, fail 0, cancelled 0, skipped 0", "counts": "66/66, 0 skipped" },
+    { "command": "npm run test:mc22:e2e", "exitCode": 0, "observed": "84 passed (2.3m)", "counts": "84/84 across 18 preview routes" },
+    { "command": "npm run build", "exitCode": 0, "observed": "Prerendered 96 static routes. Application bundle generation complete. [19.436 seconds]", "counts": "96 static routes" },
+    { "command": "npm run format:check", "exitCode": 0, "observed": "All matched files use Prettier code style!", "counts": "0 violations" }
+  ],
+  "contentFixConfirmation": {
+    "display": "composition heading 'Componentes objetivo, no seleccionados' / 'Target components, not selected' with 'no component is selected' (no published-component contradiction); excluded-group heading 'Excluido del alcance' / 'Excluded from scope' (no purchase wording); 'cartography' replaces 'chartography' (lines 366, 539).",
+    "pilot": "E-stop feature label '(requisito de diseño)' / '(design requirement)'; capability text 'La parada de emergencia física es un requisito de diseño, no una función probada'; drive item 'una parada de emergencia física como requisito de diseño' / 'a physical E-stop as a design requirement' (line 312-313).",
+    "fleet": "hero highlight 'Dos niveles (FLEET-START, FLEET-BUSINESS)' / 'Two tiers (...)' — 'por embarcación'/'per-vessel' removed; revocation phrased 'design requirement, not deployed behaviour' (no present-tense claim, lines 285-286, 544-545); bundle note grammar 'incluye FLEET-START; FLEET-BUSINESS es opcional y FLEET-ENTERPRISE es un nivel contratado' / 'includes FLEET-START; FLEET-BUSINESS is optional and FLEET-ENTERPRISE is a contracted tier' (lines 589-590)."
+  },
+  "validatorFixConfirmation": {
+    "mc22_04": "PILOT steering-modes check requires a non-empty array (check-mc20-catalog.mjs line 1121-1122: 'if (!Array.isArray(pilot.steeringModes) || pilot.steeringModes.length === 0) return fail(...)') — fail-open closed.",
+    "governanceGates": "ten gates byte-identical to base 1dc9aa0 (git show 1dc9aa0:…/catalog.generated.ts vs HEAD — identical); release gates 12 BLOCKED + 1 EVIDENCE_REQUIRED = 0 CLOSED."
+  },
+  "testCounts": { "unit": 66, "validator": 56, "e2e": 84, "unitSkipped": 0 },
+  "findings": [],
+  "notes": [
+    "HEAD == 8f5b14b confirmed before measurement; the only working-tree modification after measurement is docs/marea/catalog/evidence/validator-run.json, whose diff vs the commit is only the head field (1dc9aa0 -> 8f5b14b) and the runAt timestamp — the regenerated record now correctly binds the validator run to the delivery commit.",
+    "The committed validator-run.json had a stale head=1dc9aa0 (written before the commit); the re-run corrects it to 8f5b14b.",
+    "3 residual low-severity guard gaps (RES-01..03) were found by additional invented-input probing OUTSIDE the committed 26-case matrix; they are disclosed and recommended for a future hardening round, not for this milestone's committed scope."
+  ]
+}

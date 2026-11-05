@@ -1,0 +1,201 @@
+{
+  "contractId": "MAREA-MC13-HANDOFF-CONSUMPTION",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-13",
+  "date": "2026-11-02",
+  "owner": "programme-lead",
+  "currency": "EUR",
+  "asOf": "2026-11-02",
+  "sourceContract": "docs/marea/economics/data/mc13-handoff-inputs.json",
+  "inputs": [
+    {
+      "inputId": "INV-01",
+      "item": "Tooling and NRE per family",
+      "treatment": "MODELLED",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Consumed as a labelled MC-11 engineering envelope, capitalised and amortised; never a variable cost and never a quotation."
+    },
+    {
+      "inputId": "INV-02",
+      "item": "Certification and conformity programme",
+      "treatment": "EXPLICIT_UNKNOWN",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "No quotation exists. MC-13 uses an illustrative envelope and keeps the blocking condition, not a verified cost."
+    },
+    {
+      "inputId": "INV-03",
+      "item": "Hardware, firmware and mechanical engineering NRE",
+      "treatment": "EXPLICIT_UNKNOWN",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Illustrative envelope only."
+    },
+    {
+      "inputId": "INV-04",
+      "item": "Cloud/connectivity integration",
+      "treatment": "EXPLICIT_UNKNOWN",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Illustrative envelope only."
+    },
+    {
+      "inputId": "INV-05",
+      "item": "Legal, trademark and IP clearance",
+      "treatment": "EXPLICIT_UNKNOWN",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Illustrative envelope; clearance remains NOT_GRANTED / NOT_CLEARED."
+    },
+    {
+      "inputId": "INV-06",
+      "item": "First-article and certification samples",
+      "treatment": "EXPLICIT_UNKNOWN",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Illustrative envelope only."
+    },
+    {
+      "inputId": "REC-01",
+      "item": "Cloud hosting and telemetry",
+      "treatment": "MODELLED",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Used as a published-tariff floor per device/account/vessel-month."
+    },
+    {
+      "inputId": "REC-02",
+      "item": "Cellular connectivity",
+      "treatment": "MODELLED",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Used as a published-tariff floor for WATCH."
+    },
+    {
+      "inputId": "REC-03",
+      "item": "Chart/weather data licence",
+      "treatment": "EXPLICIT_UNKNOWN",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Kept UNKNOWN. Never zero. NAV/WEATHER break-even is NOT_DETERMINABLE."
+    },
+    {
+      "inputId": "REC-04",
+      "item": "CRA firmware and security maintenance",
+      "treatment": "EXPLICIT_UNKNOWN",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Kept UNKNOWN; stress case uses a labelled envelope."
+    },
+    {
+      "inputId": "REC-05",
+      "item": "Customer and installer support",
+      "treatment": "MODELLED",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Used as labelled per-account/device/vessel assumptions."
+    },
+    {
+      "inputId": "REC-06",
+      "item": "Payment processing",
+      "treatment": "MODELLED",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Published tariff applied to cash transactions."
+    },
+    {
+      "inputId": "REC-07",
+      "item": "Warranty and RMA reserve",
+      "treatment": "MODELLED",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Inside the declared variable cost; refund/withdrawal allowance modelled separately."
+    },
+    {
+      "inputId": "REC-08",
+      "item": "Product liability insurance",
+      "treatment": "EXPLICIT_UNKNOWN",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Kept UNKNOWN; not estimated as a percentage of revenue."
+    },
+    {
+      "inputId": "CAC",
+      "item": "Customer acquisition cost",
+      "treatment": "EXPLICIT_UNKNOWN",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "CAC_VALIDATED = false; no funnel is invented."
+    },
+    {
+      "inputId": "CHURN",
+      "item": "Churn and renewal",
+      "treatment": "EXPLICIT_UNKNOWN",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Illustrative scenario rates only; CHURN_VALIDATED = false."
+    },
+    {
+      "inputId": "WC",
+      "item": "Working capital",
+      "treatment": "MODELLED",
+      "usedBy": [
+        "monthly-financial-model",
+        "scenario-results",
+        "break-even-thresholds"
+      ],
+      "notes": "Scenario assumptions for MOQ, lead time, safety stock, supplier and customer terms."
+    }
+  ],
+  "mc13Started": true,
+  "note": "MC-12 handoff consumed; no input silently dropped."
+}

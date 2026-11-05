@@ -1,0 +1,276 @@
+{
+  "contractId": "MC18-PERFORMANCE-EVIDENCE",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-18",
+  "status": "INTERNAL_PROPOSED",
+  "owner": "MC-18 QA",
+  "publicationStatus": "NOT_AUTHORIZED",
+  "description": "Local lab measurements of the isolated MC-18 landing preview (SSR HTML bytes, DOM counts, asset sizes/transfer, CLS, interaction timing) plus the public production build size and production isolation probe for /marea.",
+  "generationMethod": [
+    "npm run build:landing:preview",
+    "npx playwright test -c playwright.landing.config.ts",
+    "node e2e/landing/measure-production.mjs"
+  ],
+  "relevantCommit": "docs/marea/landing/MC18-FINAL-DELIVERY-RECORD.md (D23)",
+  "measuredAt": "2026-11-03T11:39:07.152Z",
+  "browser": {
+    "name": "Chromium",
+    "version": "156.0.8078.4"
+  },
+  "platform": "win32",
+  "knownLimitations": [
+    "Lab data only: one local run, no field data, no CPU/network throttling, no mobile hardware.",
+    "The preview build is a development configuration (optimization disabled, source maps emitted); its JS/CSS sizes are not production budgets.",
+    "Transfer bytes are measured over loopback without compression; real CDN compression would reduce them.",
+    "Interaction timings include two animation-frame waits (~one frame floor) and are not a benchmark.",
+    "CLS is observed with PerformanceObserver during a single load; it is not a Core Web Vitals field metric.",
+    "Production bundle sizes are measured from the local build on this machine and are not a deployment guarantee."
+  ],
+  "data": {
+    "protocol": {
+      "mode": "lab",
+      "runs": 1,
+      "throttling": "none",
+      "fieldData": false,
+      "notes": [
+        "Single local run, loopback server, no CPU/network throttling.",
+        "Asset transfer bytes are HTTP response body bytes from the loopback preview server (no compression configured).",
+        "Interaction timings are measured in-page with two animation-frame waits; they include frame latency and are not a benchmark."
+      ]
+    },
+    "preview": {
+      "ssrHtmlBytesEs": 316049,
+      "ssrHtmlBytesEn": 313958,
+      "cssBytes": 11586,
+      "jsBytes": 1851809,
+      "assetTransfer": {
+        "/styles.css": {
+          "status": 200,
+          "bytes": 11586,
+          "contentEncoding": null,
+          "contentType": "text/css; charset=utf-8"
+        },
+        "/main.js": {
+          "status": 200,
+          "bytes": 1851809,
+          "contentEncoding": null,
+          "contentType": "text/javascript; charset=utf-8"
+        }
+      },
+      "httpPages": {
+        "es": {
+          "path": "/marea",
+          "status": 200,
+          "bytes": 316049,
+          "xRobots": "noindex, nofollow, noarchive",
+          "noCanonical": true,
+          "noHreflang": true,
+          "noJsonLd": true
+        },
+        "en": {
+          "path": "/en/marea",
+          "status": 200,
+          "bytes": 313958,
+          "xRobots": "noindex, nofollow, noarchive",
+          "noCanonical": true,
+          "noHreflang": true,
+          "noJsonLd": true
+        }
+      },
+      "dist": {
+        "outputPath": "dist/marea-landing-preview",
+        "total": {
+          "files": 59,
+          "bytes": 19377195
+        },
+        "browser": {
+          "files": 38,
+          "bytes": 5003088
+        },
+        "server": {
+          "files": 19,
+          "bytes": 14274268
+        },
+        "sourceMapBytes": 12033881,
+        "mainJsSha256": "54a8274d03f6c69efd6b1ca5e7ce1198352101ba1173200c2318cfece3645f22",
+        "stylesCssSha256": "905fe8dbc12d7c365ff560a1d8ec5d925c380efdd6a3e71730ea3cf4b5148046"
+      },
+      "dom": {
+        "es": {
+          "elements": 1847,
+          "nodes": 2941,
+          "bodyTextLength": 27610,
+          "ssrHtmlBytes": 316049
+        },
+        "en": {
+          "elements": 1846,
+          "nodes": 2939,
+          "bodyTextLength": 26180,
+          "ssrHtmlBytes": 313958
+        }
+      },
+      "layoutShift": {
+        "es": {
+          "cls": 0,
+          "entryCount": 0,
+          "maxShift": 0,
+          "shifts": []
+        },
+        "en": {
+          "cls": 0,
+          "entryCount": 0,
+          "maxShift": 0,
+          "shifts": []
+        }
+      },
+      "navigationTiming": {
+        "es": {
+          "responseEndMs": 79,
+          "domContentLoadedMs": 229.5,
+          "loadEventEndMs": 233.0999999642372,
+          "ttfbMs": 58.89999997615814
+        },
+        "en": {
+          "responseEndMs": 128.10000002384186,
+          "domContentLoadedMs": 308.89999997615814,
+          "loadEventEndMs": 312.89999997615814,
+          "ttfbMs": 78.10000002384186
+        }
+      },
+      "interaction": [
+        {
+          "locale": "es",
+          "viewport": "390x844",
+          "openMobileNavMs": 32.5,
+          "scrollToFamiliesMs": 31.899999976158142
+        },
+        {
+          "locale": "en",
+          "viewport": "390x844",
+          "openMobileNavMs": 20.899999976158142,
+          "scrollToFamiliesMs": 22.899999976158142
+        }
+      ]
+    },
+    "productionBuild": {
+      "command": "npm run build",
+      "exitCode": 0,
+      "skipped": false,
+      "durationMs": 18286,
+      "outputTail": [
+        "...and 26 more lazy chunks files. Use \"--verbose\" to show all the files.",
+        "Prerendered 96 static routes.",
+        "Application bundle generation complete. [15.236 seconds] - 2026-11-03T11:39:04.702Z",
+        "Output location: C:\\Users\\Admin\\Documents\\workspace\\embarcarte\\dist\\embarcarte",
+        "npm notice run embarcarte@1.0.0 build",
+        "npm notice run ng build embarcarte",
+        "▲ [WARNING] Module 'debug' used by 'node_modules/https-proxy-agent/dist/index.js' is not ESM",
+        "  CommonJS or AMD dependencies can cause optimization bailouts.",
+        "  For more information see: https://angular.dev/tools/cli/build#configuring-commonjs-dependencies",
+        "▲ [WARNING] Module 'agent-base' used by 'node_modules/https-proxy-agent/dist/index.js' is not ESM",
+        "  CommonJS or AMD dependencies can cause optimization bailouts.",
+        "  For more information see: https://angular.dev/tools/cli/build#configuring-commonjs-dependencies",
+        "▲ [WARNING] Module 'node-domexception' used by 'node_modules/fetch-blob/from.js' is not ESM",
+        "  CommonJS or AMD dependencies can cause optimization bailouts.",
+        "  For more information see: https://angular.dev/tools/cli/build#configuring-commonjs-dependencies",
+        "▲ [WARNING] Module 'web-streams-polyfill/dist/ponyfill.es2018.js' used by 'node_modules/fetch-blob/streams.cjs' is not ESM",
+        "  CommonJS or AMD dependencies can cause optimization bailouts.",
+        "  For more information see: https://angular.dev/tools/cli/build#configuring-commonjs-dependencies"
+      ]
+    },
+    "productionSizes": {
+      "dist": {
+        "files": 330,
+        "bytes": 7866000
+      },
+      "browser": {
+        "files": 168,
+        "bytes": 3032050
+      },
+      "server": {
+        "files": 160,
+        "bytes": 4653149
+      },
+      "entryMainJs": [
+        {
+          "path": "dist/embarcarte/browser/main-RFVWCSHZ.js",
+          "bytes": 12870
+        }
+      ],
+      "entryStylesCss": [
+        {
+          "path": "dist/embarcarte/browser/styles-4YSTMKXD.css",
+          "bytes": 25415
+        }
+      ]
+    },
+    "productionIsolation": {
+      "landingIdentifiersFound": 0,
+      "publicRoutesActivated": 0,
+      "productionStyles": [
+        "src/styles.scss"
+      ],
+      "productionMareaStatus": 404,
+      "buildExitCode": 0,
+      "probes": [
+        {
+          "path": "/marea",
+          "status": 404,
+          "location": null,
+          "bodySnippet": "<!DOCTYPE html><html lang=\"es\" data-beasties-container><head>\n  <meta charset=\"utf-8\">\n  <title>Página no encontrada | E"
+        },
+        {
+          "path": "/en/marea",
+          "status": 404,
+          "location": null,
+          "bodySnippet": "<!DOCTYPE html><html lang=\"en\" data-beasties-container><head>\n  <meta charset=\"utf-8\">\n  <title>Page not found | Embarca"
+        }
+      ],
+      "scan": {
+        "filesScanned": 330,
+        "bytesScanned": 7866000,
+        "identifiers": {
+          "marea-landing": {
+            "occurrences": 0,
+            "files": []
+          },
+          "data-marea-landing": {
+            "occurrences": 0,
+            "files": []
+          },
+          "marea-landing-preview": {
+            "occurrences": 0,
+            "files": []
+          },
+          "MareaLanding": {
+            "occurrences": 0,
+            "files": []
+          }
+        },
+        "conclusion": "0 bytes of landing identifiers found in dist/embarcarte"
+      }
+    },
+    "publicSiteNonRegression": {
+      "command": "git diff --name-only 6002c49 -- src/app src/server.ts src/styles.scss public angular.json playwright.config.ts",
+      "exitCode": 0,
+      "stdout": "angular.json\nplaywright.config.ts",
+      "paths": [
+        "angular.json",
+        "playwright.config.ts"
+      ],
+      "publicRouteOrStyleChanges": [],
+      "isolationOnlyChanges": [
+        "angular.json: only the isolated \"marea-landing-preview\" project is added (68 insertions, 0 deletions); no public embarcarte route/style target changed.",
+        "playwright.config.ts: only testIgnore gains \"**/landing/**\" so the internal landing suite does not run from the public config; no public route, server or style behaviour changed."
+      ],
+      "angularJsonChange": "Only the isolated \"marea-landing-preview\" project is added (68 insertions, 0 deletions); no public embarcarte route/style target changed.",
+      "playwrightConfigChange": "Only the public suite ignore list gains \"**/landing/**\"; the public baseURL, webServer and projects are unchanged.",
+      "watchedPathsUnchanged": true,
+      "note": "No public route, public SSR entry, public style or public behaviour changed; the two watched-path changes are isolation-only (preview project registration in angular.json and the landing suite ignore entry in playwright.config.ts)."
+    },
+    "evidencePaths": {
+      "browserMeasurements": "test-results/landing/performance-browser.json",
+      "results": "test-results/landing/results.json"
+    }
+  }
+}
