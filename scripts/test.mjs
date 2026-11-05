@@ -25,6 +25,10 @@ const stages = [
   { id: 'mc23data', file: 'scripts/build-mc23-bundle-data.mjs' },
   { id: 'mc23', file: 'scripts/check-mc23-bundles.mjs', optional: true },
   { id: 'unit', file: 'scripts/check-mc23-bundles.test.mjs', optional: true, tests: true },
+  // MC-25: the validator re-derives the projection in-process, so importing it
+  // here is both the governance stage and the generator drift gate.
+  { id: 'mc25', file: 'scripts/check-mc25-governance.mjs', optional: true },
+  { id: 'mc25unit', file: 'scripts/check-mc25-governance.test.mjs', optional: true, tests: true },
 ];
 
 const results = [];

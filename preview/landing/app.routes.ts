@@ -4,9 +4,11 @@ import { LandingPreviewNotFound } from './preview-not-found';
 import { CatalogPreview } from './catalog-preview';
 import { BundlePreview } from './bundle-preview';
 import { ConfiguratorPreview } from './configurator-preview';
+import { GovernancePreview } from './governance-preview';
 import { CATALOG_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/catalog-identity';
 import { BUNDLE_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/bundle-identity';
 import { CONFIGURATOR_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/configurator-identity';
+import { GOVERNANCE_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/governance-identity';
 
 /**
  * Isolated preview routes.
@@ -38,6 +40,12 @@ const configuratorRoutes: Routes = CONFIGURATOR_PREVIEW_ROUTES.map((route) => ({
   data: { locale: route.locale },
 }));
 
+const governanceRoutes: Routes = GOVERNANCE_PREVIEW_ROUTES.map((route) => ({
+  path: route.path,
+  component: GovernancePreview,
+  data: { locale: route.locale },
+}));
+
 export const landingPreviewRoutes: Routes = [
   { path: '', pathMatch: 'full', component: LandingPreview, data: { locale: 'es' } },
   { path: 'marea', component: LandingPreview, data: { locale: 'es' } },
@@ -45,5 +53,6 @@ export const landingPreviewRoutes: Routes = [
   ...catalogRoutes,
   ...bundleRoutes,
   ...configuratorRoutes,
+  ...governanceRoutes,
   { path: '**', component: LandingPreviewNotFound },
 ];

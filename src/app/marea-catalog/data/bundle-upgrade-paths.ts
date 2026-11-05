@@ -27,6 +27,8 @@ import {
   INCLUSION_VOCABULARY,
   UPGRADE_PATHS,
 } from './bundle-comparison';
+import type { BundleUpgradePath } from './bundle-comparison';
+import { editionById, isGovernanceEditionId } from '../governance/governance-facts';
 
 export * from './bundle-comparison';
 
@@ -53,15 +55,58 @@ export function bundleRecord(bundleId: string): BundleRecord | undefined {
 /**
  * Inclusion of an edition inside a bundle, exactly as the contract encodes it.
  *
- * Returns `NOT_INCLUDED` when the bundle does not list that edition, and
- * `undefined` for an unknown bundle. A caller must treat `undefined` as
- * "cannot answer", never as "not included".
+ * MC-23 finding F-15 (remediated in MC-25): the previous signature returned
+ * `NOT_INCLUDED` both for "this bundle does not list the edition" and for "this
+ * edition id does not exist", so an unknown edition read as an ordinary
+ * commercial exclusion. The result is now a discriminated union, and a caller
+ * cannot collapse the two cases by accident.
  */
-export function inclusionFor(bundleId: string, editionId: string): BundleInclusion | undefined {
+export type InclusionLookup =
+  | {
+      readonly kind: 'INCLUDED_LINE';
+      readonly bundleId: string;
+      readonly editionId: string;
+      readonly lineId: string;
+      readonly familyId: string;
+      readonly inclusion: BundleInclusion;
+    }
+  | {
+      readonly kind: 'NOT_INCLUDED';
+      readonly bundleId: string;
+      readonly editionId: string;
+    }
+  | {
+      readonly kind: 'UNKNOWN_EDITION';
+      readonly editionId: string;
+    }
+  | {
+      readonly kind: 'UNKNOWN_BUNDLE';
+      readonly bundleId: string;
+    };
+
+export function inclusionFor(bundleId: string, editionId: string): InclusionLookup {
   const bundle = bundleRecord(bundleId);
-  if (!bundle) return undefined;
+  if (!bundle) return { kind: 'UNKNOWN_BUNDLE', bundleId: String(bundleId) };
+  // An id the contract does not know is never a commercial exclusion.
+  if (!isGovernanceEditionId(editionId)) {
+    return { kind: 'UNKNOWN_EDITION', editionId: String(editionId) };
+  }
   const match = bundle.lines.find((entry) => entry.editionId === editionId);
-  return match ? match.inclusion : 'NOT_INCLUDED';
+  if (!match) return { kind: 'NOT_INCLUDED', bundleId, editionId };
+  return {
+    kind: 'INCLUDED_LINE',
+    bundleId,
+    editionId,
+    lineId: match.lineId,
+    familyId: match.familyId ?? '',
+    inclusion: match.inclusion,
+  };
+}
+
+/** The inclusion value of a line, or null when the line does not exist. */
+export function inclusionValue(bundleId: string, editionId: string): BundleInclusion | null {
+  const lookup = inclusionFor(bundleId, editionId);
+  return lookup.kind === 'INCLUDED_LINE' ? lookup.inclusion : null;
 }
 
 /** True when the bundle declares this edition with this inclusion value. */
@@ -246,9 +291,20 @@ export function evaluateEligibility(
     return { outcome: 'NOT_ELIGIBLE', reasons: [...reasons, 'CONTRACT_HAS_NO_RESTRICTIVE_OUTCOME'] };
   };
 
-  const ineligible = requestedEditionIds.filter(
-    (editionId) => inclusionFor(bundleId, editionId) === 'INELIGIBLE',
+  const lookups = requestedEditionIds.map(
+    (editionId) => [editionId, inclusionFor(bundleId, editionId)] as const,
   );
+  // F-15: an unknown edition is a refusal, never an ordinary exclusion.
+  const unknown = lookups
+    .filter(([, lookup]) => lookup.kind === 'UNKNOWN_EDITION')
+    .map(([editionId]) => editionId);
+  if (unknown.length > 0) {
+    return clamp('NOT_ELIGIBLE', unknown.map((id) => `UNKNOWN_EDITION:${id}`));
+  }
+
+  const ineligible = lookups
+    .filter(([, lookup]) => lookup.kind === 'INCLUDED_LINE' && lookup.inclusion === 'INELIGIBLE')
+    .map(([editionId]) => editionId);
   if (ineligible.length > 0) {
     return clamp('NOT_ELIGIBLE', ineligible.map((id) => `INELIGIBLE:${id}`));
   }
@@ -257,9 +313,12 @@ export function evaluateEligibility(
     return clamp('NOT_ELIGIBLE', ['SAFETY_GATE_BLOCKED', ...bundle.gates.filter((g) => g === 'PILOT_SAFETY_GATE_BLOCKED')]);
   }
 
-  const quotation = requestedEditionIds.filter(
-    (editionId) => inclusionFor(bundleId, editionId) === 'QUOTATION_REQUIRED',
-  );
+  const quotation = lookups
+    .filter(
+      ([, lookup]) =>
+        lookup.kind === 'INCLUDED_LINE' && lookup.inclusion === 'QUOTATION_REQUIRED',
+    )
+    .map(([editionId]) => editionId);
   if (quotation.length > 0) {
     return clamp('QUOTATION_REQUIRED', quotation.map((id) => `QUOTATION:${id}`));
   }
@@ -305,4 +364,274 @@ export function familyInclusion(bundleId: string, familyId: string): BundleInclu
     if (values.includes(candidate)) return candidate;
   }
   return 'NOT_INCLUDED';
+}
+
+// ---------------------------------------------------------------------------
+// MC-23 finding F-2 — upgrade-path relationship integrity (remediated in MC-25)
+//
+// The inherited code compared upgrade paths by id: `upgradePathById` returned a
+// record and `upgradePaths(from)` filtered on `fromBundleId`, so a path whose
+// additions did not exist, belonged to another family, were absent from the
+// target bundle, or were already included in the source bundle was still
+// presented as a valid upgrade. The check below validates the COMPLETE
+// canonical relationship: path -> source bundle -> target bundle/edition ->
+// edition -> family -> line inclusion.
+//
+// Free-text entries the contract writes in prose ("customer records and
+// exports") cannot be resolved to an edition. They are reported as TEXTUAL and
+// are never counted as a verified relationship.
+// ---------------------------------------------------------------------------
+
+/** Inclusions that can legitimately describe an upgrade addition. */
+const ADDABLE_INCLUSIONS: readonly BundleInclusion[] = Object.freeze([
+  'INCLUDED',
+  'OPTIONAL',
+  'CONDITIONAL',
+  'QUOTATION_REQUIRED',
+  'REQUIRED_EXTERNAL',
+]);
+
+export interface UpgradePathEditionAddition {
+  /** The edition token as written in the contract. */
+  readonly token: string;
+  readonly editionId: string;
+  readonly familyId: string;
+  readonly inclusion: BundleInclusion;
+  readonly lineId: string;
+}
+
+export interface UpgradePathFinding {
+  readonly code:
+    | 'MALFORMED_PATH'
+    | 'UNKNOWN_FROM_BUNDLE'
+    | 'TARGET_UNRESOLVED'
+    | 'TARGET_EQUALS_SOURCE'
+    | 'ADDED_EDITION_NOT_FOUND'
+    | 'ADDED_EDITION_NOT_IN_TARGET'
+    | 'ADDED_EDITION_FAMILY_MISMATCH'
+    | 'ADDED_EDITION_NOT_ADDABLE'
+    | 'ADDITION_ALREADY_INCLUDED_IN_SOURCE';
+  readonly detail: string;
+}
+
+export type UpgradePathStatus = 'VALID' | 'INVALID' | 'UNKNOWN_PATH';
+
+export interface UpgradePathIntegrity {
+  readonly upgradeId: string;
+  readonly status: UpgradePathStatus;
+  readonly fromBundleId: string | null;
+  readonly target: { readonly kind: 'BUNDLE' | 'EDITION' | 'NONE'; readonly id: string | null };
+  readonly verifiedAdditions: readonly UpgradePathEditionAddition[];
+  readonly textualAdditions: readonly string[];
+  readonly findings: readonly UpgradePathFinding[];
+}
+
+const QUALIFIER_SUFFIX = /\s+(?:optional|quotation|conditional|capabilities?|capability)$/iu;
+const TARGET_PATTERN = /^(.+?)\s+to\s+([^\s(/]+)\s*(?:\([^)]*\))?\s*$/u;
+
+function editionTokenOf(entry: string): string {
+  return entry.replace(/\s*\([^)]*\)\s*$/u, '').replace(QUALIFIER_SUFFIX, '').trim();
+}
+
+function malformed(detail: string): UpgradePathIntegrity {
+  return {
+    upgradeId: '',
+    status: 'INVALID',
+    fromBundleId: null,
+    target: { kind: 'NONE', id: null },
+    verifiedAdditions: [],
+    textualAdditions: [],
+    findings: [{ code: 'MALFORMED_PATH', detail }],
+  };
+}
+
+/**
+ * Validate one upgrade path against the complete canonical relationship.
+ *
+ * Pure and total: it accepts any value, so the adversarial tests can feed it a
+ * fabricated path and require an INVALID result rather than a crash.
+ */
+export function validateUpgradePath(input: unknown): UpgradePathIntegrity {
+  if (input === null || typeof input !== 'object') return malformed('path is not an object');
+  const candidate = input as Partial<BundleUpgradePath>;
+  if (typeof candidate.upgradeId !== 'string' || candidate.upgradeId.length === 0) {
+    return malformed('upgradeId is missing');
+  }
+  if (typeof candidate.path !== 'string' || candidate.path.length === 0) {
+    return malformed('path text is missing');
+  }
+  if (!Array.isArray(candidate.adds) || candidate.adds.some((entry) => typeof entry !== 'string')) {
+    return malformed('adds is not an array of strings');
+  }
+  if (
+    candidate.fromBundleId !== null &&
+    candidate.fromBundleId !== undefined &&
+    typeof candidate.fromBundleId !== 'string'
+  ) {
+    return malformed('fromBundleId is neither a string nor null');
+  }
+
+  const findings: UpgradePathFinding[] = [];
+  const verifiedAdditions: UpgradePathEditionAddition[] = [];
+  const textualAdditions: string[] = [];
+  const fromBundleId = candidate.fromBundleId ?? null;
+
+  const targetMatch = TARGET_PATTERN.exec(candidate.path);
+  let target: UpgradePathIntegrity['target'] = { kind: 'NONE', id: null };
+  if (targetMatch) {
+    const token = targetMatch[2];
+    if (isBundleId(token)) target = { kind: 'BUNDLE', id: token };
+    else if (isGovernanceEditionId(token)) target = { kind: 'EDITION', id: token };
+    else {
+      findings.push({
+        code: 'TARGET_UNRESOLVED',
+        detail: `target ${token} is neither a canonical bundle nor a canonical edition`,
+      });
+    }
+  }
+
+  if (fromBundleId !== null && !isBundleId(fromBundleId)) {
+    findings.push({
+      code: 'UNKNOWN_FROM_BUNDLE',
+      detail: `fromBundleId ${fromBundleId} is not a canonical bundle`,
+    });
+  }
+  // `fromBundleId` is the contract's commercial source-bundle context, which is
+  // not always spelled out in the path text (e.g. "NAV-ESSENTIAL to NAV-PRO"
+  // carries `CRUISE`). What must be impossible is a path that names the SAME
+  // bundle on both sides of "to".
+  if (
+    targetMatch &&
+    target.kind === 'BUNDLE' &&
+    target.id !== null &&
+    targetMatch[1]
+      .split('/')
+      .map((part) => part.trim())
+      .includes(target.id)
+  ) {
+    findings.push({
+      code: 'TARGET_EQUALS_SOURCE',
+      detail: `path ${candidate.upgradeId} names ${target.id} as both source and target`,
+    });
+  }
+
+  const targetBundle = target.kind === 'BUNDLE' && target.id ? bundleRecord(target.id) : undefined;
+  const targetEdition = target.kind === 'EDITION' && target.id ? editionById(target.id) : undefined;
+
+  for (const entry of candidate.adds as readonly string[]) {
+    const token = editionTokenOf(entry);
+    if (!isGovernanceEditionId(token)) {
+      // An identifier-shaped token that resolves to no canonical edition is a
+      // nonexistent relationship, not prose. Prose can never be validated and
+      // is reported as textual.
+      if (/^[A-Z][A-Z0-9]*(?:-[A-Z0-9]+)+$/u.test(token)) {
+        findings.push({
+          code: 'ADDED_EDITION_NOT_FOUND',
+          detail: `${token} looks like an edition id but is not a canonical edition`,
+        });
+      } else {
+        textualAdditions.push(entry);
+      }
+      continue;
+    }
+    const edition = editionById(token);
+    if (!edition) {
+      textualAdditions.push(entry);
+      continue;
+    }
+    if (targetBundle && target.id) {
+      const lookup = inclusionFor(target.id, token);
+      if (lookup.kind === 'NOT_INCLUDED') {
+        findings.push({
+          code: 'ADDED_EDITION_NOT_IN_TARGET',
+          detail: `${token} is not a line of target bundle ${target.id}`,
+        });
+        continue;
+      }
+      if (lookup.kind !== 'INCLUDED_LINE') {
+        findings.push({
+          code: 'ADDED_EDITION_NOT_IN_TARGET',
+          detail: `${token} cannot be resolved inside target bundle ${target.id}`,
+        });
+        continue;
+      }
+      if (lookup.familyId !== edition.familyId) {
+        findings.push({
+          code: 'ADDED_EDITION_FAMILY_MISMATCH',
+          detail: `${token} belongs to ${edition.familyId} but line ${lookup.lineId} declares ${lookup.familyId}`,
+        });
+        continue;
+      }
+      if (!ADDABLE_INCLUSIONS.includes(lookup.inclusion)) {
+        findings.push({
+          code: 'ADDED_EDITION_NOT_ADDABLE',
+          detail: `${token} has inclusion ${lookup.inclusion} in ${target.id}`,
+        });
+        continue;
+      }
+      if (fromBundleId !== null && inclusionValue(fromBundleId, token) === 'INCLUDED') {
+        findings.push({
+          code: 'ADDITION_ALREADY_INCLUDED_IN_SOURCE',
+          detail: `${token} is already INCLUDED in source bundle ${fromBundleId}; it is retained, not added`,
+        });
+        continue;
+      }
+      verifiedAdditions.push({
+        token,
+        editionId: token,
+        familyId: edition.familyId,
+        inclusion: lookup.inclusion,
+        lineId: lookup.lineId,
+      });
+      continue;
+    }
+    if (targetEdition) {
+      if (targetEdition.familyId !== edition.familyId) {
+        findings.push({
+          code: 'ADDED_EDITION_FAMILY_MISMATCH',
+          detail: `${token} belongs to ${edition.familyId} but target edition ${targetEdition.editionId} belongs to ${targetEdition.familyId}`,
+        });
+        continue;
+      }
+    }
+    verifiedAdditions.push({
+      token,
+      editionId: token,
+      familyId: edition.familyId,
+      inclusion: 'INCLUDED',
+      lineId: 'NO_BUNDLE_TARGET',
+    });
+  }
+
+  return {
+    upgradeId: candidate.upgradeId,
+    status: findings.length === 0 ? 'VALID' : 'INVALID',
+    fromBundleId,
+    target,
+    verifiedAdditions: Object.freeze(verifiedAdditions),
+    textualAdditions: Object.freeze(textualAdditions),
+    findings: Object.freeze(findings),
+  };
+}
+
+/** Integrity of one contract upgrade path by id. Unknown ids never validate. */
+export function upgradePathIntegrity(upgradeId: string): UpgradePathIntegrity {
+  const path = upgradePathById(upgradeId);
+  if (!path) {
+    return {
+      upgradeId: String(upgradeId),
+      status: 'UNKNOWN_PATH',
+      fromBundleId: null,
+      target: { kind: 'NONE', id: null },
+      verifiedAdditions: [],
+      textualAdditions: [],
+      findings: [],
+    };
+  }
+  return validateUpgradePath(path);
+}
+
+/** Integrity of every contract upgrade path, in contract order. */
+export function allUpgradePathIntegrity(): readonly UpgradePathIntegrity[] {
+  return Object.freeze(UPGRADE_PATHS.map((path) => validateUpgradePath(path)));
 }

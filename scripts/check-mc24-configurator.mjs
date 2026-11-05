@@ -16,6 +16,7 @@ import { register } from 'node:module';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 register('./marea-landing-ts-loader.mjs', import.meta.url);
+import { fileAt } from './mc23-git-reader.mjs';
 
 const checks = [];
 function check(id, title, run) {
@@ -427,16 +428,31 @@ check('MC24-12', 'a deliberately invalid template binding is detected', () => {
 });
 
 // ---------------------------------------------------------------------------
-// F-2 / F-15 — inherited MC-23 findings, verified against the delivered branch
+// F-2 / F-15 — inherited MC-23 findings. MC-25 owns them: this check now proves
+// the historical defect is reproducible at the recorded revision AND that the
+// current branch has repaired it. It previously asserted the defect was still
+// open; leaving that assertion would have misreported the state after repair.
 // ---------------------------------------------------------------------------
-check('MC24-13', 'inherited MC-23 findings F-2 and F-15 remain reproducible and recorded', () => {
+check('MC24-13', 'inherited MC-23 findings F-2 and F-15 are reproduced at 8a4b5e0 and closed now', () => {
+  const inherited = fileAt(root, '8a4b5e0', 'src/app/marea-catalog/data/bundle-upgrade-paths.ts');
+  assert(typeof inherited === 'string' && inherited.length > 0, 'cannot read the inherited revision');
+  assert(
+    /return match \? match\.inclusion : 'NOT_INCLUDED';/u.test(inherited),
+    'F-15 is not reproducible at the recorded revision',
+  );
+  assert(
+    !/validateUpgradePath|UpgradePathIntegrity/u.test(inherited),
+    'F-2 is not reproducible at the recorded revision',
+  );
   const source = readText('src/app/marea-catalog/data/bundle-upgrade-paths.ts');
-  assert(source.includes('inclusionFor'), 'the inclusionFor query is missing');
-  const doc = readText('docs/marea/catalog/MC24-RISK-AND-INHERITED-DEBT-REGISTER.md');
+  assert(source.includes('validateUpgradePath'), 'F-2 was not repaired: no relationship validation');
+  assert(source.includes('UNKNOWN_EDITION'), 'F-15 was not repaired: no typed unknown-edition state');
+  const doc = readText('docs/marea/catalog/MC25-RISK-AND-REMEDIATION-REGISTER.md');
   for (const id of ['F-2', 'F-15']) {
-    assert(doc.includes(id), `${id} is not recorded in the risk register`);
+    assert(doc.includes(id), `${id} is not recorded in the MC-25 register`);
   }
-  return 'F-2/F-15 reproducible on the branch and recorded in the risk register';
+  assert(/CLOSED/u.test(doc), 'the MC-25 register does not mark the findings closed');
+  return 'F-2/F-15 reproduced at 8a4b5e0, repaired on this branch, closed and recorded';
 });
 
 // ---------------------------------------------------------------------------

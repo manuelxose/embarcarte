@@ -24,6 +24,7 @@ import express from 'express';
 import { join } from 'node:path';
 import { CATALOG_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/catalog-identity';
 import { CONFIGURATOR_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/configurator-identity';
+import { GOVERNANCE_PREVIEW_ROUTES } from '../../src/app/marea-catalog/models/governance-identity';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 const host = '127.0.0.1';
@@ -75,6 +76,7 @@ app.get('/__preview/health', (_req, res) => {
     host,
     cataloguePaths: CATALOG_PREVIEW_ROUTES.map((route) => `/${route.path}`),
     configuratorPaths: CONFIGURATOR_PREVIEW_ROUTES.map((route) => `/${route.path}`),
+    governancePaths: GOVERNANCE_PREVIEW_ROUTES.map((route) => `/${route.path}`),
   });
 });
 
@@ -112,6 +114,9 @@ const server = isMainModule(import.meta.url)
       }
       for (const route of CONFIGURATOR_PREVIEW_ROUTES) {
         console.log(`  configurator: http://${host}:${port}/${route.path} (${route.locale})`);
+      }
+      for (const route of GOVERNANCE_PREVIEW_ROUTES) {
+        console.log(`  governance: http://${host}:${port}/${route.path} (${route.locale})`);
       }
     })
   : null;
