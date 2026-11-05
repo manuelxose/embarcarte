@@ -1,14 +1,15 @@
 /**
  * MC-23 bundle comparison and upgrade-path queries.
  *
- * Pure, deterministic functions over the canonical MC-08 composition declared in
+ * Pure, deterministic functions over the generated MC-08 composition in
  * `./bundle-comparison`. No clock, no randomness, no I/O, no Angular.
  *
  * Fail-closed rules encoded here:
- *  - an unknown bundle never yields "included" or "permitted" answers;
+ *  - an unknown bundle never yields an included, purchasable or permissive answer;
+ *  - an eligibility result is always clamped to the bundle's own contract
+ *    outcomes, so no code path can invent an outcome the contract does not allow;
  *  - inclusion is a commercial classification, never a compatibility statement;
- *  - no function can produce `ORDERABLE`, a price, a stock position or a sale
- *    approval, because none of those exists in the MC-08 contract.
+ *  - no function returns `ORDERABLE`: the outcome does not exist in MC-08.
  */
 import type {
   BundleConfigurationOutcome,
@@ -21,77 +22,13 @@ import {
   BUNDLE_ORDER,
   BUNDLES,
   COMPARISON_FAMILY_ORDER,
+  CONFIGURATION_OUTCOMES,
+  CROSS_SELL_RULES,
   INCLUSION_VOCABULARY,
+  UPGRADE_PATHS,
 } from './bundle-comparison';
 
 export * from './bundle-comparison';
-
-/** One upgrade path from the contract (`upgradeMigration[]`). */
-export interface BundleUpgradePath {
-  readonly upgradeId: string;
-  /** Contract path label, e.g. "START to CRUISE". */
-  readonly path: string;
-  readonly fromBundleId: BundleId | null;
-  readonly adds: readonly string[];
-  readonly preserves: readonly string[];
-  readonly condition: string;
-  readonly requiresNewQuotation: boolean;
-}
-
-/** One cross-sell rule from the contract (`crossSellRules[]`). */
-export interface BundleCrossSellRule {
-  readonly ruleId: string;
-  readonly fromBundleIds: readonly string[];
-  readonly toBundleIds: readonly string[];
-  readonly adds: readonly string[];
-  readonly preserves: readonly string[];
-  readonly condition: string;
-  readonly prohibitsDoubleCharge: boolean;
-}
-
-/** Canonical upgrade paths, copied verbatim from `upgradeMigration[]`. */
-export const UPGRADE_PATHS: readonly BundleUpgradePath[] = [
-  {
-    upgradeId: 'UM-ST-01',
-    path: 'START to CRUISE',
-    fromBundleId: 'START',
-    adds: ['AIS-RECEIVER', 'DISPLAY-7'],
-    preserves: ['HUB-STANDARD', 'NAV-PRO or documented NAV-ESSENTIAL variant'],
-    condition: 'Compatibility evidence and installation assessment',
-    requiresNewQuotation: true,
-  },
-  {
-    upgradeId: 'UM-ST-02',
-    path: 'START to SAIL',
-    fromBundleId: 'START',
-    adds: ['PILOT-COASTAL (quotation)', 'SENSE-WIND'],
-    preserves: ['HUB-STANDARD', 'NAV-PRO'],
-    condition: 'Vessel and steering survey; PILOT safety gate BLOCKED',
-    requiresNewQuotation: true,
-  },
-  {
-    upgradeId: 'UM-ST-03',
-    path: 'START edition upgrades',
-    fromBundleId: 'START',
-    adds: ['HUB-PRO', 'NAV-PRO'],
-    preserves: ['customer records and exports'],
-    condition: 'Price and compatibility confirmation',
-    requiresNewQuotation: false,
-  },
-];
-
-/** Canonical cross-sell rules, copied verbatim from `crossSellRules[]`. */
-export const CROSS_SELL_RULES: readonly BundleCrossSellRule[] = [
-  {
-    ruleId: 'CS-01',
-    fromBundleIds: ['START'],
-    toBundleIds: ['CRUISE'],
-    adds: ['AIS-RECEIVER', 'DISPLAY-7'],
-    preserves: ['HUB-STANDARD', 'NAV subscription'],
-    condition: 'Customer needs a fixed helm display and receive-only AIS traffic',
-    prohibitsDoubleCharge: true,
-  },
-];
 
 /** True when `value` is a canonical bundle id. */
 export function isBundleId(value: unknown): value is BundleId {
@@ -103,6 +40,11 @@ export function isInclusion(value: unknown): value is BundleInclusion {
   return typeof value === 'string' && (INCLUSION_VOCABULARY as readonly string[]).includes(value);
 }
 
+/** True when `value` is a documented MC-08 configuration outcome. */
+export function isConfigurationOutcome(value: unknown): value is BundleConfigurationOutcome {
+  return typeof value === 'string' && (CONFIGURATION_OUTCOMES as readonly string[]).includes(value);
+}
+
 /** The canonical record for a bundle, or undefined for an unknown id. */
 export function bundleRecord(bundleId: string): BundleRecord | undefined {
   return BUNDLES.find((bundle) => bundle.bundleId === bundleId);
@@ -111,15 +53,22 @@ export function bundleRecord(bundleId: string): BundleRecord | undefined {
 /**
  * Inclusion of an edition inside a bundle, exactly as the contract encodes it.
  *
- * Returns `NOT_INCLUDED` when the bundle does not list the edition at all, and
- * `undefined` for an unknown bundle - the caller must fail closed rather than
- * assume a bundle contains or omits a line.
+ * Returns `NOT_INCLUDED` when the bundle does not list that edition, and
+ * `undefined` for an unknown bundle. A caller must treat `undefined` as
+ * "cannot answer", never as "not included".
  */
 export function inclusionFor(bundleId: string, editionId: string): BundleInclusion | undefined {
   const bundle = bundleRecord(bundleId);
   if (!bundle) return undefined;
   const match = bundle.lines.find((entry) => entry.editionId === editionId);
   return match ? match.inclusion : 'NOT_INCLUDED';
+}
+
+/** True when the bundle declares this edition with this inclusion value. */
+export function hasLine(bundleId: string, editionId: string, inclusion: BundleInclusion): boolean {
+  const bundle = bundleRecord(bundleId);
+  if (!bundle) return false;
+  return bundle.lines.some((entry) => entry.editionId === editionId && entry.inclusion === inclusion);
 }
 
 const editionsWith = (bundleId: string, inclusion: BundleInclusion): readonly string[] => {
@@ -130,7 +79,7 @@ const editionsWith = (bundleId: string, inclusion: BundleInclusion): readonly st
     .map((entry) => entry.editionId as string);
 };
 
-/** Edition ids a bundle actually includes (inclusion `INCLUDED` only). */
+/** Edition ids a bundle actually includes (`INCLUDED` only). */
 export function includedEditionIds(bundleId: string): readonly string[] {
   return editionsWith(bundleId, 'INCLUDED');
 }
@@ -145,16 +94,50 @@ export function quotationEditionIds(bundleId: string): readonly string[] {
   return editionsWith(bundleId, 'QUOTATION_REQUIRED');
 }
 
+/** Every line of a bundle, optionally filtered to one family. */
+export function bundleLines(bundleId: string, familyId?: string) {
+  const bundle = bundleRecord(bundleId);
+  if (!bundle) return [];
+  return familyId === undefined
+    ? bundle.lines
+    : bundle.lines.filter((entry) => entry.familyId === familyId);
+}
+
 /** True when a bundle is held by a recorded safety gate (e.g. the PILOT gate). */
 export function isBlocked(bundleId: string): boolean {
   const bundle = bundleRecord(bundleId);
-  return bundle ? bundle.readinessState === 'BLOCKED' : true;
+  if (!bundle) return true;
+  return (
+    bundle.readinessState === 'BLOCKED' ||
+    bundle.gates.includes('PILOT_SAFETY_GATE_BLOCKED')
+  );
 }
 
-/** True only when a bundle is purchasable. Always false in MC-08 and MC-23. */
+/** The contract gates that hold a bundle, in contract order. */
+export function blockingGates(bundleId: string): readonly string[] {
+  return bundleRecord(bundleId)?.gates ?? ['UNKNOWN_BUNDLE'];
+}
+
+/**
+ * True only when a bundle is purchasable.
+ *
+ * Written as an allow-list rather than "not NOT_FOR_SALE", so a future
+ * availability value cannot silently read as purchasable. Today it is always
+ * false because every MC-08 bundle is `NOT_FOR_SALE`.
+ */
 export function isPurchasable(bundleId: string): boolean {
   const bundle = bundleRecord(bundleId);
-  return bundle ? bundle.commercialAvailability !== 'NOT_FOR_SALE' : false;
+  return bundle ? bundle.commercialAvailability === 'COMMERCIALLY_AVAILABLE' : false;
+}
+
+/** True when a bundle's service is not implemented (FLEET today). */
+export function isServiceNotImplemented(bundleId: string): boolean {
+  return blockingGates(bundleId).includes('FLEET_SERVICE_NOT_IMPLEMENTED');
+}
+
+/** True when a bundle has no established service level (FLEET today). */
+export function hasNoEstablishedSla(bundleId: string): boolean {
+  return blockingGates(bundleId).includes('SLA_NOT_ESTABLISHED');
 }
 
 export interface BundleComparison {
@@ -164,45 +147,69 @@ export interface BundleComparison {
   readonly added: readonly string[];
   /** Editions included by both, in `from` order. */
   readonly retained: readonly string[];
-  /** Editions included by `from` and not by `to`, in `from` order. */
-  readonly removed: readonly string[];
+  /**
+   * Editions included by `from` that `to` does NOT include.
+   *
+   * This is `absentFromTo`, not "removed from the vessel": the contract's own
+   * `preserves` lists treat an edition that `to` merely makes OPTIONAL, or a
+   * different edition of the same family, as retained scope. Callers that talk
+   * to customers must use `preservedByContract` for that judgement.
+   */
+  readonly absentFromTo: readonly string[];
 }
 
 /**
  * Compare the INCLUDED composition of two bundles.
  *
- * Only `INCLUDED` lines count: optional, conditional, ineligible and
- * quotation-only lines are commercial classifications rather than composition,
- * so they never register as an addition or a removal. Unknown ids yield empty
- * sets, which the caller must treat as "no comparison available".
+ * Only `INCLUDED` lines count as composition; optional, conditional, ineligible
+ * and quotation-only lines are commercial classifications, not composition.
+ * Unknown ids yield empty arrays, which the caller must treat as
+ * "no comparison available" rather than as an empty difference.
  */
 export function compareBundles(fromBundleId: string, toBundleId: string): BundleComparison {
   const from = includedEditionIds(fromBundleId);
   const to = includedEditionIds(toBundleId);
-  const fromSet = new Set(from);
   const toSet = new Set(to);
+  const fromSet = new Set(from);
   return {
     fromBundleId,
     toBundleId,
     added: to.filter((editionId) => !fromSet.has(editionId)),
     retained: from.filter((editionId) => toSet.has(editionId)),
-    removed: from.filter((editionId) => !toSet.has(editionId)),
+    absentFromTo: from.filter((editionId) => !toSet.has(editionId)),
   };
 }
 
 /** Every upgrade path starting at a bundle (all paths when no id is given). */
-export function upgradePaths(fromBundleId?: string): readonly BundleUpgradePath[] {
+export function upgradePaths(fromBundleId?: string) {
   if (fromBundleId === undefined) return UPGRADE_PATHS;
   return UPGRADE_PATHS.filter((entry) => entry.fromBundleId === fromBundleId);
 }
 
+/** The upgrade path with this id, if it exists. */
+export function upgradePathById(upgradeId: string) {
+  return UPGRADE_PATHS.find((entry) => entry.upgradeId === upgradeId);
+}
+
+/**
+ * True only when the contract marks this path as a supported customer path.
+ *
+ * `UM-CR-03` is recorded for internal comparison and explicitly is not a
+ * supported downgrade, so it must never be presented as an upgrade.
+ */
+export function isSupportedUpgradePath(upgradeId: string): boolean {
+  const entry = upgradePathById(upgradeId);
+  if (!entry) return false;
+  return !/not a supported/i.test(entry.condition);
+}
+
 /** Cross-sell rules whose origin includes this bundle. */
-export function crossSellFrom(bundleId: string): readonly BundleCrossSellRule[] {
+export function crossSellFrom(bundleId: string) {
   return CROSS_SELL_RULES.filter((rule) => rule.fromBundleIds.includes(bundleId));
 }
 
 export interface BundleEligibility {
-  /** Always an internal MC-08 outcome; never a sale approval. */
+  /** Always one of the bundle's own MC-08 outcomes; never a sale approval. */
   readonly outcome: BundleConfigurationOutcome;
   /** Contract conditions that produced the outcome, in order. */
   readonly reasons: readonly string[];
@@ -211,11 +218,14 @@ export interface BundleEligibility {
 /**
  * Evaluate configuration eligibility for a bundle.
  *
- * Fails closed on three counts: an unknown bundle is NOT_ELIGIBLE, a bundle
- * whose readiness is BLOCKED can never resolve to CONFIGURATION_DEFINED_INTERNAL,
- * and PUBLICATION_BLOCKED is the permanent terminal state because no publication
- * authorisation exists in MC-08. No input can make a bundle ORDERABLE: that
- * outcome does not exist.
+ * The result is CLAMPED to `bundle.outcomes`: if the contract does not list the
+ * derived outcome, the bundle's most restrictive listed outcome is returned
+ * instead. `PUBLICATION_BLOCKED` is the terminal state because no publication
+ * authorisation exists in MC-08, and an unknown bundle is `NOT_ELIGIBLE`.
+ *
+ * No input can produce `ORDERABLE`, because that outcome does not exist, and no
+ * input can produce `CONFIGURATION_DEFINED_INTERNAL` either: every bundle is
+ * still unapproved for publication.
  */
 export function evaluateEligibility(
   bundleId: string,
@@ -224,33 +234,45 @@ export function evaluateEligibility(
   const bundle = bundleRecord(bundleId);
   if (!bundle) return { outcome: 'NOT_ELIGIBLE', reasons: ['UNKNOWN_BUNDLE'] };
 
+  const clamp = (outcome: BundleConfigurationOutcome, reasons: readonly string[]): BundleEligibility => {
+    if (bundle.outcomes.includes(outcome)) return { outcome, reasons };
+    // The contract does not permit this outcome for this bundle. Fall back to a
+    // restrictive one it does permit, never to a permissive one.
+    for (const fallback of ['PUBLICATION_BLOCKED', 'NOT_ELIGIBLE'] as const) {
+      if (bundle.outcomes.includes(fallback)) {
+        return { outcome: fallback, reasons: [...reasons, `CLAMPED_FROM:${outcome}`] };
+      }
+    }
+    return { outcome: 'NOT_ELIGIBLE', reasons: [...reasons, 'CONTRACT_HAS_NO_RESTRICTIVE_OUTCOME'] };
+  };
+
   const ineligible = requestedEditionIds.filter(
     (editionId) => inclusionFor(bundleId, editionId) === 'INELIGIBLE',
   );
   if (ineligible.length > 0) {
-    return { outcome: 'NOT_ELIGIBLE', reasons: ineligible.map((id) => `INELIGIBLE:${id}`) };
+    return clamp('NOT_ELIGIBLE', ineligible.map((id) => `INELIGIBLE:${id}`));
   }
 
-  if (bundle.readinessState === 'BLOCKED') {
-    return { outcome: 'NOT_ELIGIBLE', reasons: ['SAFETY_GATE_BLOCKED'] };
+  if (isBlocked(bundleId)) {
+    return clamp('NOT_ELIGIBLE', ['SAFETY_GATE_BLOCKED', ...bundle.gates.filter((g) => g === 'PILOT_SAFETY_GATE_BLOCKED')]);
   }
 
   const quotation = requestedEditionIds.filter(
     (editionId) => inclusionFor(bundleId, editionId) === 'QUOTATION_REQUIRED',
   );
   if (quotation.length > 0) {
-    return { outcome: 'QUOTATION_REQUIRED', reasons: quotation.map((id) => `QUOTATION:${id}`) };
+    return clamp('QUOTATION_REQUIRED', quotation.map((id) => `QUOTATION:${id}`));
   }
 
-  return { outcome: 'PUBLICATION_BLOCKED', reasons: ['PUBLICATION_NOT_AUTHORIZED'] };
+  return clamp('PUBLICATION_BLOCKED', ['PUBLICATION_NOT_AUTHORIZED']);
 }
 
-/** Families that appear in at least one bundle line, in canonical family order. */
+/** Families that appear in at least one bundle line, canonical family order. */
 export function comparisonFamilyIds(): readonly ComparisonFamilyId[] {
   const present = new Set<string>();
   for (const bundle of BUNDLES) {
-    for (const entry of bundle.lines) {
-      if (entry.familyId !== null) present.add(entry.familyId);
+    for (const line of bundle.lines) {
+      if (line.familyId !== null) present.add(line.familyId);
     }
   }
   return COMPARISON_FAMILY_ORDER.filter((familyId) => present.has(familyId));
@@ -259,8 +281,11 @@ export function comparisonFamilyIds(): readonly ComparisonFamilyId[] {
 /**
  * The strongest inclusion a bundle applies to a family, for one cell per family.
  *
- * Precedence runs from the strongest commercial scope to the weakest, and
- * `NOT_INCLUDED` is returned when the family does not appear at all.
+ * Precedence runs from the strongest commercial scope to the weakest;
+ * `NOT_INCLUDED` is returned when the family does not appear at all. Because a
+ * family can hold several editions with different inclusions, a caller that
+ * must show edition-level truth should read `bundleLines(bundleId, familyId)`
+ * rather than this one-cell summary.
  */
 export function familyInclusion(bundleId: string, familyId: string): BundleInclusion {
   const bundle = bundleRecord(bundleId);

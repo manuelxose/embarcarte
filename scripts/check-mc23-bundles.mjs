@@ -74,6 +74,13 @@ function filesUnder(relative) {
 const stripComments = (source) =>
   source.replace(/\/\*[\s\S]*?\*\//g, ' ').replace(/(^|[^:])\/\/[^\n]*/g, '$1 ');
 
+/**
+ * The generated module is emitted with JSON.stringify, so every literal is
+ * double-quoted. Normalise both quotes to a single marker before comparing, so
+ * the checks assert VALUES and not the generator's quoting style.
+ */
+const normaliseLiterals = (source) => source.replace(/"/gu, "'");
+
 const contract = JSON.parse(read(CONTRACT));
 const contractBundles = contract.bundles;
 
@@ -81,7 +88,7 @@ const contractBundles = contract.bundles;
 add('MC23-01', 'the six MC-08 bundles are described in canonical order', () => {
   const domainFile = `${DOMAIN}/bundle-comparison.ts`;
   if (!exists(domainFile)) return skip(`${domainFile} not present on this branch`);
-  const source = stripComments(read(domainFile));
+  const source = normaliseLiterals(stripComments(read(domainFile)));
   const order = /BUNDLE_ORDER\s*=\s*\[([^\]]*)\]/u.exec(source);
   if (!order) return fail('BUNDLE_ORDER not found');
   const ids = [...order[1].matchAll(/'([A-Z]+)'/gu)].map((m) => m[1]);
@@ -95,7 +102,7 @@ add('MC23-01', 'the six MC-08 bundles are described in canonical order', () => {
 add('MC23-02', 'per-bundle lifecycle and availability are copied verbatim', () => {
   const domainFile = `${DOMAIN}/bundle-comparison.ts`;
   if (!exists(domainFile)) return skip(`${domainFile} not present on this branch`);
-  const source = stripComments(read(domainFile));
+  const source = normaliseLiterals(stripComments(read(domainFile)));
   for (const bundle of contractBundles) {
     const block = source.slice(source.indexOf(`bundleId: '${bundle.id}'`));
     if (!source.includes(`bundleId: '${bundle.id}'`)) return fail(`${bundle.id} missing`);
@@ -116,13 +123,75 @@ add('MC23-02', 'per-bundle lifecycle and availability are copied verbatim', () =
 add('MC23-03', 'every inclusion value belongs to the MC-08 vocabulary', () => {
   const domainFile = `${DOMAIN}/bundle-comparison.ts`;
   if (!exists(domainFile)) return skip(`${domainFile} not present on this branch`);
-  const source = stripComments(read(domainFile));
+  const source = normaliseLiterals(stripComments(read(domainFile)));
   const legal = ['INCLUDED', 'REQUIRED_EXTERNAL', 'OPTIONAL', 'CONDITIONAL', 'NOT_INCLUDED', 'INELIGIBLE', 'QUOTATION_REQUIRED'];
-  const used = [...source.matchAll(/line\([^)]*'([A-Z_]+)'\s*\)/gu)].map((m) => m[1]);
+  const used = [...source.matchAll(/inclusion:\s*'([A-Z_]+)'/gu)].map((m) => m[1]);
   if (used.length === 0) return fail('no composition lines found');
   const illegal = used.filter((value) => !legal.includes(value));
   if (illegal.length > 0) return fail(`illegal inclusion values: ${[...new Set(illegal)].join(', ')}`);
   return pass(`${used.length} composition lines, 0 illegal vocabulary values`);
+});
+
+add('MC23-03b', 'every contract line is present verbatim, including external and installation lines', () => {
+  const domainFile = `${DOMAIN}/bundle-comparison.ts`;
+  if (!exists(domainFile)) return skip(`${domainFile} not present on this branch`);
+  const source = normaliseLiterals(stripComments(read(domainFile)));
+  const expected = contractBundles.flatMap((b) => [
+    ...(b.components ?? []).map((c) => ({ b: b.id, ...c })),
+    ...(b.optionalComponents ?? []).map((c) => ({ b: b.id, ...c })),
+  ]);
+  const missing = [];
+  for (const line of expected) {
+    const edition = line.editionId === null ? 'null' : `'${line.editionId}'`;
+    const needle = `lineId: '${line.lineId}'`;
+    const idx = source.indexOf(needle);
+    if (idx < 0) { missing.push(`${line.b}/${line.lineId}`); continue; }
+    const window = source.slice(idx, idx + 220);
+    if (!window.includes(`inclusion: '${line.inclusion}'`)) missing.push(`${line.b}/${line.lineId}(inclusion)`);
+    if (!window.includes(`editionId: ${line.editionId === null ? 'null' : `'${line.editionId}'`}`)) missing.push(`${line.b}/${line.lineId}(edition)`);
+  }
+  if (missing.length > 0) return fail(`missing or altered contract lines: ${missing.slice(0, 6).join(', ')}`);
+  return pass(`${expected.length} contract lines present with matching edition and inclusion`);
+});
+
+add('MC23-03c', 'blockers, gates and configuration outcomes are complete per bundle', () => {
+  const domainFile = `${DOMAIN}/bundle-comparison.ts`;
+  if (!exists(domainFile)) return skip(`${domainFile} not present on this branch`);
+  const source = normaliseLiterals(stripComments(read(domainFile)));
+  for (const bundle of contractBundles) {
+    const start = source.indexOf(`bundleId: '${bundle.id}'`);
+    if (start < 0) return fail(`${bundle.id} missing`);
+    const block = source.slice(start, source.indexOf('bundleId:', start + 10) > 0 ? source.indexOf('bundleId:', start + 10) : undefined);
+    for (const key of ['blockers', 'gates', 'outcomes']) {
+      const declared = /\b(blockers|gates|outcomes):\s*\[([^\]]*)\]/gu;
+      declared.lastIndex = 0;
+      const all = [...block.matchAll(declared)].find((m) => m[1] === key);
+      if (!all) return fail(`${bundle.id} has no ${key} array`);
+      const inCode = [...all[2].matchAll(/'([^']+)'/gu)].map((m) => m[1]);
+      const inContract = key === 'blockers' ? (bundle.releaseReadiness.blockers ?? [])
+        : key === 'gates' ? (bundle.releaseReadiness.gates ?? [])
+        : (bundle.configurationOutcomes ?? []);
+      const missing = inContract.filter((v) => !inCode.includes(v));
+      const extra = inCode.filter((v) => !inContract.includes(v));
+      if (missing.length > 0) return fail(`${bundle.id} ${key} missing: ${missing.slice(0, 4).join(', ')}`);
+      if (extra.length > 0) return fail(`${bundle.id} ${key} invented: ${extra.slice(0, 4).join(', ')}`);
+    }
+  }
+  return pass('6 bundles: blockers, gates and outcomes match the contract exactly');
+});
+
+add('MC23-03d', 'every upgrade path and cross-sell rule in the contract is present', () => {
+  const domainFile = `${DOMAIN}/bundle-comparison.ts`;
+  if (!exists(domainFile)) return skip(`${domainFile} not present on this branch`);
+  const source = normaliseLiterals(stripComments(read(domainFile)));
+  const upgrades = contractBundles.flatMap((b) => b.upgradeMigration ?? []);
+  const missingUpgrade = upgrades.filter((u) => !source.includes(`upgradeId: '${u.id}'`));
+  if (missingUpgrade.length > 0) return fail(`missing upgrade paths: ${missingUpgrade.map((u) => u.id).slice(0, 8).join(', ')}`);
+  const rules = contract.crossSellRules ?? [];
+  const missingRules = rules.filter((r) => !source.includes(`ruleId: '${r.id}'`));
+  if (missingRules.length > 0) return fail(`missing cross-sell rules: ${missingRules.map((r) => r.id).join(', ')}`);
+  const declaresUnsupported = source.includes('UM-CR-03');
+  return pass(`${upgrades.length} upgrade paths and ${rules.length} cross-sell rules present${declaresUnsupported ? ' (incl. non-supported UM-CR-03)' : ''}`);
 });
 
 add('MC23-04', 'no catalogue module can produce a purchasable or ORDERABLE state', () => {
