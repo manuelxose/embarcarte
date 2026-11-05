@@ -25,7 +25,7 @@
 2. **F-2** (upgrade-path compares ids without validating the full family↔edition↔
    inclusion relationship) and **F-15** (`inclusionFor` returns `NOT_INCLUDED` for a
    non-existent edition) are assigned to MC-25. Both are reproducible at
-   `3c2996b`; see `MC24-RISK-AND-INHERITED-DEBT-REGISTER.md` §2.
+   `8a4b5e0`; see `MC24-RISK-AND-INHERITED-DEBT-REGISTER.md` §2.
 3. **Six MC-23 files are unformatted** at the inherited HEAD (`bundle-comparison-table.ts`,
    `bundle-upgrade-selector.ts`, `bundle-comparison.ts`, `bundle-upgrade-paths.ts`,
    `section-bundles.ts`, `bundle-preview.ts`). Verified pre-existing in the MC-23
@@ -56,7 +56,7 @@ closing lifecycle/price/stock/compliance gate would violate the milestone.
 
 ## 4. Verification baseline MC-25 inherits
 
-| Gate                                              | Baseline at `3c2996b`              |
+| Gate                                              | Baseline at `8a4b5e0`              |
 | ------------------------------------------------- | ---------------------------------- |
 | `node scripts/run-tsc.mjs`                        | PASS                               |
 | `node scripts/test.mjs`                           | 5/5 stages (56/56, 15/15, 16/16)   |

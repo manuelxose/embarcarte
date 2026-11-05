@@ -21,7 +21,7 @@ Lo entregado es una aplicación real, no una maqueta:
 - un **triaje interno** que clasifica la consulta en una cola de tratamiento;
 - una **interfaz bilingüe ES/EN real** en Angular 21, servida en la preview interna
   (solo loopback, sin indexación);
-- un **validador** con 13 comprobaciones, **23 pruebas adversarias** y **17 pruebas
+- un **validador** con 13 comprobaciones, **25 pruebas adversarias** y **17 pruebas
   fin a fin** sobre el servidor real.
 
 El resultado más importante es un **"no" honesto**: hoy **no existe ninguna fila de
@@ -109,7 +109,7 @@ defectos se corrigieron antes de la entrega.
 | Validador MC-23 (regresión)                  | 15/15                                     |
 | Unitarias MC-23 (regresión)                  | 16/16                                     |
 | Validador MC-24                              | **13/13**                                 |
-| Pruebas adversarias MC-24                    | **23/23**                                 |
+| Pruebas adversarias MC-24                    | **25/25**                                 |
 | Compilación real + enlace inválido rechazado | **PASS**                                  |
 | Playwright catálogo (incl. 17 MC-24)         | **101/101**                               |
 | i18n / SEO / comercio (aplicación pública)   | PASS / PASS / PASS                        |

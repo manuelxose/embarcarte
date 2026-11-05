@@ -1,7 +1,7 @@
 # MC-24 — Acceptance criteria matrix
 
 **Revision bound:** all evidence below was produced at commit
-`3c2996b5e0e35a67094d472e1f72ac43146262f2` on `feature/marea-mc24-configurator`
+`8a4b5e0202133af67d6f3f632061509b35a5d98b` on `feature/marea-mc24-configurator`
 (base `7ed6ae6`), unless a row states otherwise.
 
 Status vocabulary: `PASS` (verified with executed evidence) · `PARTIAL` ·

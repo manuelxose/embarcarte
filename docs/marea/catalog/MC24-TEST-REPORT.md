@@ -1,6 +1,6 @@
 # MC-24 — Automated test report
 
-**Revision bound:** `3c2996b5e0e35a67094d472e1f72ac43146262f2` (`feature/marea-mc24-configurator`)
+**Revision bound:** `8a4b5e0202133af67d6f3f632061509b35a5d98b` (`feature/marea-mc24-configurator`)
 All results below were **executed**; no stage is reported as passing without a run.
 
 ## 1. Result summary
@@ -14,7 +14,7 @@ All results below were **executed**; no stage is reported as passing without a r
 | 5   | MC-23 unit tests                               | (stage `unit` of 2)                                     | 16/16                                                  | 0    |
 | 6   | MC-24 projection drift gate                    | `node scripts/build-mc24-configurator-data.mjs --check` | up to date (32 questions, 12 rules, 20 conflict rules) | 0    |
 | 7   | MC-24 configuration validator                  | `npm run test:mc24`                                     | **13/13 PASS**                                         | 0    |
-| 8   | MC-24 adversarial unit suite                   | `npm run test:mc24:unit`                                | **23/23 pass**                                         | 0    |
+| 8   | MC-24 adversarial unit suite                   | `npm run test:mc24:unit`                                | **25/25 pass**                                         | 0    |
 | 9   | **Real Angular build gate + negative binding** | `node scripts/check-mc24-build.mjs`                     | **VERDICT: PASS**                                      | 0    |
 | 10  | Catalogue E2E (incl. 17 MC-24)                 | `playwright test -c playwright.catalog.config.ts`       | **101 passed**                                         | 0    |
 | 11  | Public i18n                                    | `npm run test:i18n`                                     | PASS                                                   | 0    |
@@ -64,7 +64,7 @@ Angular failures. They were fixed with one typed `t()` accessor.
 | MC24-12 | Build gate wired (preview, production, MC-24)                      | PASS                           |
 | MC24-13 | F-2/F-15 reproducible and recorded                                 | PASS                           |
 
-## 4. Adversarial unit suite — 23 tests
+## 4. Adversarial unit suite — 25 tests
 
 Boundaries attacked rather than exercised:
 
@@ -85,6 +85,8 @@ Boundaries attacked rather than exercised:
 - `a21` every outcome explained in both locales
 - `a22` F-01/F-02 stay closed under paraphrase drift
 - `a23` F-16 attribute-quote class stays closed
+- `a24` the validated-rule registry is frozen and a push is refused (regression for the mutable-registry bypass)
+- `a25` inherited-property answers cannot satisfy the questionnaire
 
 ## 5. Playwright — 17 MC-24 tests
 
@@ -100,14 +102,41 @@ Total with the inherited suite: **101 passed** (84 inherited, 0 failed).
 
 ## 6. Defects found and fixed during verification
 
-| Defect                                                              | Found by                  | Fix                                                                                          |
-| ------------------------------------------------------------------- | ------------------------- | -------------------------------------------------------------------------------------------- |
-| 37 `TS4111` Angular template errors (index-signature member access) | the real preview build    | single typed `t()` accessor                                                                  |
-| Preview route returned 404                                          | MC-24 E2E                 | registered the paths in `app.routes.server.ts` (the `**` catch-all had been swallowing them) |
-| Negative build test passed for the wrong reason                     | self-review of the gate   | require the diagnostic to name the injected member                                           |
-| MC20-26 failed on the new local `<form>`                            | inherited confined runner | narrowed the control to a provably local, non-submitting form instead of a blanket ban       |
-| MC20-32 flagged the new MC-24 scripts                               | inherited confined runner | declared them in the write-scope control rather than bypassing it                            |
-| F-16 `display-dimension` false positive on attribute quotes         | MC24-10 check             | inch-mark branch now requires a non-attribute quote                                          |
+| Defect                                                                 | Found by                         | Fix                                                                                          |
+| ---------------------------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------- |
+| 37 `TS4111` Angular template errors (index-signature member access)    | the real preview build           | single typed `t()` accessor                                                                  |
+| Preview route returned 404                                             | MC-24 E2E                        | registered the paths in `app.routes.server.ts` (the `**` catch-all had been swallowing them) |
+| Negative build test passed for the wrong reason                        | self-review of the gate          | require the diagnostic to name the injected member                                           |
+| MC20-26 failed on the new local `<form>`                               | inherited confined runner        | narrowed the control to a provably local, non-submitting form instead of a blanket ban       |
+| MC20-32 flagged the new MC-24 scripts                                  | inherited confined runner        | declared them in the write-scope control rather than bypassing it                            |
+| F-16 `display-dimension` false positive on attribute quotes            | MC24-10 check                    | inch-mark branch now requires a non-attribute quote                                          |
+| **Mutable registry made `ELIGIBLE_SELF_INSTALL` reachable** (see §6.1) | captain's adversarial self-probe | `Object.freeze` + frozen private decision binding; validator and tests `a24`/`a25` added     |
+
+### 6.1 The mutable-registry bypass (found after the first green run)
+
+An adversarial self-probe — written _after_ the validator, unit suite and E2E were
+all green — found that `VALIDATED_SELF_INSTALL_RULES` was exported as a **mutable
+array** and read at call time:
+
+```js
+VALIDATED_SELF_INSTALL_RULES.push({
+  id: 'FAKE',
+  matrixRowId: 'X',
+  bundleId: 'START',
+  requiredAnswers: {},
+});
+// before the fix: ELIGIBLE_SELF_INSTALL, eligible=true
+```
+
+The D5 governance invariant was therefore holding **by convention, not by
+construction**, and none of the existing tests attacked the export itself. After
+the fix the public export is `Object.freeze([])`, the decision path reads a separate
+frozen module-private binding, and the push throws `TypeError`; prototype pollution
+of the rule shape also fails to reach the eligible outcome.
+
+This is recorded because it is the strongest evidence that the milestone's own
+green results are not self-certifying: the defect was found by attacking the
+claim, which is exactly the job of the independent audit.
 
 ## 7. Not run (reported honestly)
 
