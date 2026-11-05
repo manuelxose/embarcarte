@@ -56,10 +56,21 @@ const definitionsDoc = readJson(MC05);
 const definitionsDoc02 = readJson(MC05_BATCH_02);
 const definitionsDoc03 = readJson(MC05_BATCH_03);
 
-// Canonical MC-16 family order, filtered to the six in-scope families. The
-// MC-21 registry row names WEATHER, SENSE, WATCH as the new batch; that does
-// not reorder the canonical families (NAV, HUB, AIS, SENSE, WATCH, WEATHER).
-const SCOPE_FAMILY_IDS = ['NAV', 'HUB', 'AIS', 'SENSE', 'WATCH', 'WEATHER'];
+// Canonical MC-16 family order, extended in place from the six-family MC-21
+// scope to the nine-family MC-22 scope. Batch 3 appends DISPLAY, PILOT and
+// FLEET without reordering the six families already projected (NAV, HUB, AIS,
+// SENSE, WATCH, WEATHER). No canonical family is dropped.
+const SCOPE_FAMILY_IDS = [
+  'NAV',
+  'HUB',
+  'AIS',
+  'SENSE',
+  'WATCH',
+  'WEATHER',
+  'DISPLAY',
+  'PILOT',
+  'FLEET',
+];
 const DIMENSION_IDS = [
   'definition',
   'engineering',
@@ -203,6 +214,84 @@ for (const familyId of SCOPE_FAMILY_IDS) {
   }
 }
 
+// ------------------------------------------------------------------ batch-3 safety/commercial invariants
+// These read the canonical MC-06/MC-07 definitions (never the generated output)
+// and fail closed if a batch-3 safety or commercial fact is weakened upstream.
+const displayDefinition = definitionsDoc03.products.find((entry) => entry.id === 'DISPLAY');
+const pilotDefinition = definitionsDoc02.products.find((entry) => entry.id === 'PILOT');
+const fleetDefinition = definitionsDoc03.products.find((entry) => entry.id === 'FLEET');
+assert(displayDefinition, 'missing canonical DISPLAY definition');
+assert(pilotDefinition, 'missing canonical PILOT definition');
+assert(fleetDefinition, 'missing canonical FLEET definition');
+if (displayDefinition) {
+  assert(
+    displayDefinition.hardwareBoundary?.sizeState === 'SIZE_NOT_FROZEN',
+    'DISPLAY size state must be SIZE_NOT_FROZEN',
+  );
+  assert(
+    displayDefinition.hardwareBoundary?.hardwareState === 'HARDWARE_NOT_SELECTED',
+    'DISPLAY hardware state must be HARDWARE_NOT_SELECTED',
+  );
+  assert(
+    displayDefinition.hardwareBoundary?.bomState === 'BOM_NOT_ESTABLISHED',
+    'DISPLAY BOM state must be BOM_NOT_ESTABLISHED',
+  );
+  assert(
+    displayDefinition.hardwareBoundary?.measuredPerformance === false,
+    'DISPLAY measured performance must be false',
+  );
+  assert(
+    displayDefinition.pilotControlAuthority === false,
+    'DISPLAY must have no PILOT control authority',
+  );
+}
+if (pilotDefinition) {
+  assert(pilotDefinition.safetyGate === 'BLOCKED', 'PILOT safety gate must be BLOCKED');
+  assert(pilotDefinition.seaTrialsCompleted === false, 'PILOT sea trials must not be completed');
+  assert(
+    pilotDefinition.remoteHelmControl === 'PROHIBITED',
+    'PILOT remote helm control must be PROHIBITED',
+  );
+  assert(
+    pilotDefinition.physicalEstopEvidence === 'NOT_FOUND',
+    'PILOT E-stop evidence must be NOT_FOUND',
+  );
+  assert(
+    pilotDefinition.motorIsolationEvidence === 'NOT_FOUND',
+    'PILOT motor-isolation evidence must be NOT_FOUND',
+  );
+  assert(
+    pilotDefinition.rudderFeedbackEvidence === 'NOT_FOUND',
+    'PILOT rudder-feedback evidence must be NOT_FOUND',
+  );
+  assert(
+    pilotDefinition.steeringModes.every((mode) =>
+      ['NOT_VERIFIED', 'CONDITIONAL_ON_VERIFICATION'].includes(mode.status),
+    ),
+    'PILOT steering modes must stay NOT_VERIFIED or CONDITIONAL_ON_VERIFICATION',
+  );
+}
+if (fleetDefinition) {
+  assert(
+    fleetDefinition.multiTenantProductionService === false,
+    'FLEET must not be a production multi-tenant service',
+  );
+  assert(fleetDefinition.slaEstablished === false, 'FLEET must have no established SLA');
+  assert(fleetDefinition.tenancy?.telemetryReadOnly === true, 'FLEET telemetry must be read-only');
+  assert(
+    fleetDefinition.tenancy?.remoteControlPath === false,
+    'FLEET must have no remote-control path',
+  );
+  assert(
+    fleetDefinition.tenancy?.defaultRole === 'NO_ACCESS',
+    'FLEET default role must be NO_ACCESS',
+  );
+  assert(
+    fleetDefinition.securityCertificationClaimed === false,
+    'FLEET must claim no security certification',
+  );
+}
+
 // ------------------------------------------------------------------ projection
 const editionRecords = editionsDoc.editions
   .filter((entry) => SCOPE_FAMILY_IDS.includes(entry.familyId))
@@ -310,6 +399,18 @@ const facts = {
   testedCompatibilityRows: 0,
 };
 
+// The projection must cover every canonical family and must not drop any
+// canonical edition. The totals are asserted against the datasets, never a
+// hardcoded literal, so an upstream addition cannot be silently ignored.
+assert(
+  familyRecords.length === familiesDoc.families.length,
+  'the projection must expose every canonical family',
+);
+assert(
+  editionRecords.length === editionsDoc.editions.length,
+  'the projection must not drop any canonical edition',
+);
+
 assert(facts.approvedPrices === 0, 'no approved price may exist');
 assert(facts.merchantableEditions === 0, 'no merchantable edition may exist');
 assert(facts.merchantSkuCodes === 0, 'no merchant SKU code may exist');
@@ -405,8 +506,8 @@ const ts = `// GENERATED FILE - do not edit by hand.
 // Source: ${MC16}/{product-families,product-editions,bundle-compositions,readiness-dimensions}.json,
 //         ${MC15}/proposed-routes.json, ${MC14}/{release-evidence-gates,claims-policy}.json
 // Generator: node scripts/build-mc20-catalog-data.mjs
-// Projection: bounded internal six-family catalogue presentation
-//             (NAV, HUB, AIS, SENSE, WATCH, WEATHER).
+// Projection: bounded internal nine-family catalogue presentation
+//             (NAV, HUB, AIS, SENSE, WATCH, WEATHER, DISPLAY, PILOT, FLEET).
 // No price, stock, SKU, customer or vessel data. Publication: NOT_AUTHORIZED.
 // Every commercial state below is NOT_FOR_SALE and every release gate is open.
 

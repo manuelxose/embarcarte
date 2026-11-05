@@ -1,3 +1,4 @@
+import { CATALOG_SCOPE_FAMILY_IDS } from '../data/catalog.generated';
 import type { CatalogSectionId } from '../content/content.types';
 
 /** Stable, machine-checkable heading id for one family section. */
@@ -8,5 +9,5 @@ export function catalogHeadingId(familyId: string, sectionId: CatalogSectionId):
 /** Total number of sections in the frozen document order. */
 export const CATALOG_SECTION_COUNT = 10;
 
-/** Only the six canonical families may render a catalogue page. */
-export const CATALOG_PAGE_FAMILIES = ['NAV', 'HUB', 'AIS', 'SENSE', 'WATCH', 'WEATHER'] as const;
+/** Only the nine canonical families may render a catalogue page. */
+export const CATALOG_PAGE_FAMILIES = CATALOG_SCOPE_FAMILY_IDS;

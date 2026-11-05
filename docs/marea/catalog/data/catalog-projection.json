@@ -690,6 +690,286 @@
         "sitemapEligible": false,
         "collisionStatus": "NO_COLLISION"
       }
+    },
+    {
+      "familyId": "DISPLAY",
+      "displayName": "MAREA DISPLAY",
+      "productType": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "definitionStatus": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyDisplay",
+      "editionIds": [
+        "DISPLAY-7",
+        "DISPLAY-LARGE-CONDITIONAL"
+      ],
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "NOT_EVALUATED",
+        "operations": "NOT_READY"
+      },
+      "releaseGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-DISPLAY",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "bundleInclusions": [
+        {
+          "bundleId": "CRUISE",
+          "displayName": "MAREA CRUISE",
+          "customerFacingName": "MAREA CRUISE",
+          "routeId": "mareaSolutionCruise",
+          "inclusion": "INCLUDED",
+          "lineId": "CR-04",
+          "editionId": "DISPLAY-7"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "displayName": "MAREA COMPLETE",
+          "customerFacingName": "MAREA COMPLETE",
+          "routeId": "mareaSolutionComplete",
+          "inclusion": "INCLUDED",
+          "lineId": "CP-03",
+          "editionId": "DISPLAY-7"
+        }
+      ],
+      "proposedRoute": {
+        "routeId": "mareaFamilyDisplay",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-DISPLAY",
+        "es": "marea/display",
+        "en": "en/marea/display",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      }
+    },
+    {
+      "familyId": "PILOT",
+      "displayName": "MAREA PILOT",
+      "productType": "HARDWARE",
+      "lifecycleState": "DEFINED",
+      "definitionStatus": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyPilot",
+      "editionIds": [
+        "PILOT-COASTAL",
+        "PILOT-SAIL",
+        "PILOT-PRO"
+      ],
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_SELECTED",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "BLOCKED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_SELECTED",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "BLOCKED",
+        "operations": "NOT_READY"
+      },
+      "releaseGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-INSURANCE",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-MARKET-PLACEMENT",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-SAFETY-PILOT",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-PILOT",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "bundleInclusions": [
+        {
+          "bundleId": "SAIL",
+          "displayName": "MAREA SAIL",
+          "customerFacingName": "MAREA SAIL",
+          "routeId": "mareaSolutionSail",
+          "inclusion": "QUOTATION_REQUIRED",
+          "lineId": "SL-03",
+          "editionId": "PILOT-COASTAL"
+        },
+        {
+          "bundleId": "SAIL",
+          "displayName": "MAREA SAIL",
+          "customerFacingName": "MAREA SAIL",
+          "routeId": "mareaSolutionSail",
+          "inclusion": "CONDITIONAL",
+          "lineId": "SL-05",
+          "editionId": "PILOT-SAIL"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "displayName": "MAREA COMPLETE",
+          "customerFacingName": "MAREA COMPLETE",
+          "routeId": "mareaSolutionComplete",
+          "inclusion": "QUOTATION_REQUIRED",
+          "lineId": "CP-09",
+          "editionId": "PILOT-COASTAL"
+        },
+        {
+          "bundleId": "COMPLETE",
+          "displayName": "MAREA COMPLETE",
+          "customerFacingName": "MAREA COMPLETE",
+          "routeId": "mareaSolutionComplete",
+          "inclusion": "CONDITIONAL",
+          "lineId": "CP-14",
+          "editionId": "PILOT-SAIL"
+        }
+      ],
+      "proposedRoute": {
+        "routeId": "mareaFamilyPilot",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-PILOT",
+        "es": "marea/pilot",
+        "en": "en/marea/pilot",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      }
+    },
+    {
+      "familyId": "FLEET",
+      "displayName": "MAREA FLEET",
+      "productType": "SAAS",
+      "lifecycleState": "DEFINED",
+      "definitionStatus": "DEFINED",
+      "publicationState": "INTERNAL_ONLY",
+      "commercialAvailability": "NOT_FOR_SALE",
+      "routeId": "mareaFamilyFleet",
+      "editionIds": [
+        "FLEET-START",
+        "FLEET-BUSINESS",
+        "FLEET-ENTERPRISE"
+      ],
+      "engineeringStatus": "NOT_VERIFIED",
+      "licensingStatus": "NOT_CLEARED",
+      "hardwareStatus": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+      "dataRightsStatus": "NOT_GRANTED",
+      "complianceStatus": "NOT_STARTED",
+      "safetyStatus": "NOT_EVALUATED",
+      "operationsStatus": "NOT_READY",
+      "priceStatus": "HYPOTHESIS_UNAPPROVED",
+      "brandPublicationStatus": "NOT_GRANTED",
+      "readiness": {
+        "definition": "COMPLETE_TARGET_SPECIFICATION",
+        "engineering": "NOT_VERIFIED",
+        "licensing": "NOT_CLEARED",
+        "hardware": "NOT_APPLICABLE_SOFTWARE_PRODUCT",
+        "dataRights": "NOT_GRANTED",
+        "compliance": "NOT_STARTED",
+        "pricing": "HYPOTHESIS_UNAPPROVED",
+        "brandPublication": "NOT_GRANTED",
+        "availability": "NOT_FOR_SALE",
+        "safety": "NOT_EVALUATED",
+        "operations": "NOT_READY"
+      },
+      "releaseGateIds": [
+        "GATE-COMMERCIAL-CLAIMS",
+        "GATE-CONSUMER-TERMS",
+        "GATE-CRA-CYBERSECURITY",
+        "GATE-DATA-LICENSING",
+        "GATE-IP-CLEARANCE",
+        "GATE-LEGAL-ENTITY",
+        "GATE-PAYMENTS",
+        "GATE-PRICING",
+        "GATE-PRIVACY-DPA-DPIA",
+        "GATE-WEBSITE-REMEDIATION"
+      ],
+      "evidenceIds": [
+        "EV-MC05-FLEET",
+        "EV-MC15-HANDOFF",
+        "EV-MC14-GATES"
+      ],
+      "bundleInclusions": [
+        {
+          "bundleId": "FLEET",
+          "displayName": "MAREA FLEET",
+          "customerFacingName": "MAREA FLEET package",
+          "routeId": "mareaSolutionFleet",
+          "inclusion": "INCLUDED",
+          "lineId": "FP-01",
+          "editionId": "FLEET-START"
+        },
+        {
+          "bundleId": "FLEET",
+          "displayName": "MAREA FLEET",
+          "customerFacingName": "MAREA FLEET package",
+          "routeId": "mareaSolutionFleet",
+          "inclusion": "OPTIONAL",
+          "lineId": "FP-12",
+          "editionId": "FLEET-BUSINESS"
+        }
+      ],
+      "proposedRoute": {
+        "routeId": "mareaFamilyFleet",
+        "pageType": "PRODUCT_FAMILY",
+        "entityId": "ENT-FAMILY-FLEET",
+        "es": "marea/fleet",
+        "en": "en/marea/fleet",
+        "status": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationStatus": "PROPOSED_INTERNAL_NOT_DEPLOYABLE",
+        "publicationAuthorized": false,
+        "indexationAuthorized": false,
+        "sitemapEligible": false,
+        "collisionStatus": "NO_COLLISION"
+      }
     }
   ],
   "editions": [
@@ -788,6 +1068,54 @@
         "AIS_TARGET_LIST"
       ],
       "notes": "Conditional on evidenced richer local networking and diagnostics; not selected by default."
+    },
+    {
+      "editionId": "PILOT-COASTAL",
+      "familyId": "PILOT",
+      "editionType": "HARDWARE_SYSTEM",
+      "definitionStatus": "DEFINED",
+      "requiresQuotation": true,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "PILOT_SUPERVISED_STEERING",
+        "PILOT_MANUAL_TAKEOVER",
+        "PILOT_ESTOP"
+      ],
+      "notes": "Supervised steering; vessel-specific survey and quotation; never a fixed retail line."
+    },
+    {
+      "editionId": "PILOT-SAIL",
+      "familyId": "PILOT",
+      "editionType": "HARDWARE_SYSTEM",
+      "definitionStatus": "CONDITIONAL",
+      "requiresQuotation": true,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "PILOT_SUPERVISED_STEERING",
+        "PILOT_MANUAL_TAKEOVER",
+        "PILOT_ESTOP"
+      ],
+      "notes": "Conditional on verified wind-angle steering; PILOT_SAFETY_GATE=BLOCKED."
+    },
+    {
+      "editionId": "PILOT-PRO",
+      "familyId": "PILOT",
+      "editionType": "INSTALLATION_PACKAGE",
+      "definitionStatus": "INSTALLATION_PACKAGE",
+      "requiresQuotation": true,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "PILOT_SUPERVISED_STEERING",
+        "PILOT_MANUAL_TAKEOVER",
+        "PILOT_ESTOP"
+      ],
+      "notes": "Installation package only; never a priced retail SKU, bundle line or checkout item."
     },
     {
       "editionId": "SENSE-WIND",
@@ -940,6 +1268,36 @@
       "notes": null
     },
     {
+      "editionId": "DISPLAY-7",
+      "familyId": "DISPLAY",
+      "editionType": "HARDWARE_DEVICE",
+      "definitionStatus": "DEFINED",
+      "requiresQuotation": false,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "DISPLAY_CHART_VIEW",
+        "DISPLAY_INSTRUMENTS"
+      ],
+      "notes": "7-inch-class is a commercial working label; SIZE_NOT_FROZEN and HARDWARE_NOT_SELECTED."
+    },
+    {
+      "editionId": "DISPLAY-LARGE-CONDITIONAL",
+      "familyId": "DISPLAY",
+      "editionType": "HARDWARE_DEVICE",
+      "definitionStatus": "CONDITIONAL",
+      "requiresQuotation": false,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "DISPLAY_CHART_VIEW",
+        "DISPLAY_INSTRUMENTS"
+      ],
+      "notes": "No price and no measured size; never selectable as an available size and never included in a bundle."
+    },
+    {
       "editionId": "WEATHER-STANDARD",
       "familyId": "WEATHER",
       "editionType": "SOFTWARE_SUBSCRIPTION",
@@ -968,6 +1326,57 @@
         "WEATHER_LAYERS"
       ],
       "notes": "Conditional; one entitlement ledger with WEATHER-STANDARD."
+    },
+    {
+      "editionId": "FLEET-START",
+      "familyId": "FLEET",
+      "editionType": "CONTRACTED_SAAS",
+      "definitionStatus": "DEFINED",
+      "requiresQuotation": false,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "FLEET_TENANCY",
+        "FLEET_VESSEL_REGISTRY",
+        "FLEET_ROLES",
+        "FLEET_AUDIT"
+      ],
+      "notes": "Per vessel per month, VAT excluded; hardware never included by default."
+    },
+    {
+      "editionId": "FLEET-BUSINESS",
+      "familyId": "FLEET",
+      "editionType": "CONTRACTED_SAAS",
+      "definitionStatus": "DEFINED",
+      "requiresQuotation": false,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "FLEET_TENANCY",
+        "FLEET_VESSEL_REGISTRY",
+        "FLEET_ROLES",
+        "FLEET_AUDIT"
+      ],
+      "notes": null
+    },
+    {
+      "editionId": "FLEET-ENTERPRISE",
+      "familyId": "FLEET",
+      "editionType": "CONTRACTED_SAAS",
+      "definitionStatus": "CONDITIONAL",
+      "requiresQuotation": true,
+      "merchantable": false,
+      "priceApproved": false,
+      "merchantSkuCode": null,
+      "featureKeys": [
+        "FLEET_TENANCY",
+        "FLEET_VESSEL_REGISTRY",
+        "FLEET_ROLES",
+        "FLEET_AUDIT"
+      ],
+      "notes": "Contracted tier with no standard price and NO_SLA_ESTABLISHED."
     }
   ],
   "readinessDimensions": [
@@ -1017,8 +1426,8 @@
     }
   ],
   "facts": {
-    "families": 6,
-    "editions": 18,
+    "families": 9,
+    "editions": 26,
     "bundlesReferencingScope": 6,
     "readinessDimensions": 11,
     "releaseGates": 13,

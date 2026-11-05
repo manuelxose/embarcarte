@@ -1,0 +1,88 @@
+{
+  "contractId": "MC22-REVERIFICATION-R1",
+  "contractVersion": "1.0.0",
+  "milestone": "MC-22",
+  "kind": "verification",
+  "round": "repair-round-1",
+  "verifier": "architecture (independent re-verifier; did not perform the repair)",
+  "head": "1dc9aa0d85d418709cfaccd41fe1f2335462c672",
+  "branch": "feature/marea-mc22-display-pilot-fleet-catalog",
+  "runAt": "2026-11-05T02:20:00+01:00",
+  "verdict": "PASS",
+  "blockingFindings": 0,
+  "nonBlockingFindings": 0,
+  "adversarialMatrix": {
+    "method": "temporary node script outside the repository (OS temp) importing scripts/mc20-catalog-guards.mjs and calling catalogClaimProblems",
+    "mustReject": [
+      { "input": "Sin embargo funciona sin supervisión.", "rejected": true, "ids": ["pilot-unsupervised"] },
+      { "input": "Sin duda opera sin supervisión.", "rejected": true, "ids": ["pilot-unsupervised"] },
+      { "input": "Opera sin fallos sin supervisión.", "rejected": true, "ids": ["pilot-unsupervised"] },
+      { "input": "Works without issues unsupervised.", "rejected": true, "ids": ["pilot-unsupervised"] },
+      { "input": "No es solo asistencia: funciona sin supervisión.", "rejected": true, "ids": ["pilot-unsupervised"] },
+      { "input": "No es un autopiloto — opera sin supervisión.", "rejected": true, "ids": ["pilot-unsupervised"] },
+      { "input": "No solo ayuda sino que funciona sin supervisión.", "rejected": true, "ids": ["pilot-unsupervised"] },
+      { "input": "Las pruebas de mar sin fallos fueron completadas.", "rejected": true, "ids": ["sea-trial"] },
+      { "input": "Sea trials with no issues completed.", "rejected": true, "ids": ["sea-trial"] },
+      { "input": "Pantalla sin marco de 7 pulgadas.", "rejected": true, "ids": ["display-dimension"] },
+      { "input": "Resolución sin pérdida 1920x1080.", "rejected": true, "ids": ["display-resolution"] },
+      { "input": "Es autónomo.", "rejected": true, "ids": ["pilot-autonomous-navigation"] },
+      { "input": "Hands-free operation.", "rejected": true, "ids": ["pilot-unsupervised"] },
+      { "input": "Pantalla de 7-inch.", "rejected": true, "ids": ["display-dimension"] },
+      { "input": "Pantalla de 7\".", "rejected": true, "ids": ["display-dimension"] }
+    ],
+    "mustAllow": [
+      { "input": "MAREA PILOT no funciona sin supervisión.", "allowed": true },
+      { "input": "MAREA PILOT nunca opera sin supervisión.", "allowed": true },
+      { "input": "No incluye navegación autónoma.", "allowed": true },
+      { "input": "Las pruebas de mar no se han realizado.", "allowed": true },
+      { "input": "No hay SLA establecido ni disponibilidad garantizada.", "allowed": true },
+      { "input": "No se publica ningún tamaño de pantalla.", "allowed": true }
+    ],
+    "rejectedCount": 15,
+    "allowedCount": 6,
+    "mismatches": 0,
+    "exitCode": 0
+  },
+  "commands": [
+    { "command": "node scripts/build-mc20-catalog-data.mjs --check", "exitCode": 0, "observed": "MC-20 catalogue data is up to date (3 generated files).", "counts": "byte-stable" },
+    { "command": "npm run test:mc22", "exitCode": 0, "observed": "MC-22 catalogue validator: 56/56 PASS (PASS)", "counts": "56/56 (MC20-33 redundant determinism check removed; determinism still asserted by MC20-13)", "evidenceFile": "docs/marea/catalog/evidence/validator-run.json" },
+    { "command": "npm run test:mc22:unit", "exitCode": 0, "observed": "tests 61, pass 61, fail 0, cancelled 0, skipped 0", "counts": "61/61 (was 55; +6 regression tests for the 15 bypass inputs + honest corpus)" },
+    { "command": "npm run test:mc22:e2e", "exitCode": 0, "observed": "84 passed (6.5m)", "counts": "84/84 across 18 preview routes (unchanged from pre-repair)" },
+    { "command": "npm run build", "exitCode": 0, "observed": "Application bundle generation complete. [57.093 seconds]. Prerendered 96 static routes.", "counts": "96 static routes", "note": "first invocation hit a transient piscina worker-pool crash (exit 1, Node.js v24.18.0 ThreadPool stack); it did not reproduce on immediate re-run (exit 0, 96 routes)." },
+    { "command": "npm run format:check", "exitCode": 0, "observed": "All matched files use Prettier code style!", "counts": "0 violations" }
+  ],
+  "validatorRepairConfirmation": {
+    "baseCommit": "1dc9aa0",
+    "baseCommitFile": "scripts/check-mc20-catalog.mjs line 37",
+    "branchScope": "MC20-32 diffs against BASE_COMMIT=1dc9aa0, so MC-20/MC-21 committed files are no longer flagged as MC-22 changes",
+    "mc20_38": "now 'MC-21 records PARTIAL and MC-22 does not claim a global PASS' (no longer requires MC-22 to be PLANNED)",
+    "mc21_08": "cross-checks the ten gates against `git show 1dc9aa0:src/app/marea-catalog/content/shared.ts` (line 1003)",
+    "removedCheck": "MC20-33 'the generated projection is deterministic' removed as redundant with MC20-13 'the committed projection is up to date with the canonical datasets' (both run --check). No coverage lost."
+  },
+  "governanceGatesVersusBaseline": {
+    "baseline": "git show 1dc9aa0:src/app/marea-catalog/content/shared.ts",
+    "current": "src/app/marea-catalog/content/shared.ts",
+    "result": "ten gates identical (TRADEMARK_LEGAL_CLEARANCE=NOT_GRANTED, MAREA_PUBLIC_USE=NO_GO, SOURCE_IP_CLEARANCE=NOT_CLEARED, LICENSING_RIGHTS_GRANTED=false, PRICE_APPROVED=NONE, COMMERCIAL_AVAILABILITY=NOT_FOR_SALE, PUBLICATION_AUTHORIZED=false, INDEXATION_AUTHORIZED=false, PRODUCTION_DEPLOYMENT=NOT_AUTHORIZED, GATE-PRIVACY-DPA-DPIA=BLOCKED)",
+    "anyGateClosed": false
+  },
+  "contentFixConfirmation": {
+    "display": "no physical size figure ('7-inch'/'7 pulgadas' removed; 'DISPLAY 7' is a working commercial label only); composition reworded 'Componentes objetivo, no seleccionados'; no warranty wording",
+    "fleet": "no billing unit ('per-vessel per-month / por embarcación y mes' removed); fleet.lim.role access revocation now OPEN and 'design requirements, not deployed behaviour'; vessel range framed 'as a segment hypothesis'; no VERIFIED_REPO tag on undeployed behaviour",
+    "pilot": "steering/mode/E-stop feature labels now '(design requirement)'; E-stop and manual-takeover capabilities explicitly 'design requirement, not a tested function'"
+  },
+  "testCountComparison": {
+    "preRepair": { "validator": 57, "unit": 55, "e2e": 84 },
+    "postRepair": { "validator": 56, "unit": 61, "e2e": 84 },
+    "delta": { "validator": -1, "unit": 6, "e2e": 0 },
+    "unitSkipped": 0,
+    "unitTestEntries": 61,
+    "unitSkipEntries": 0,
+    "explanation": "validator -1 is the redundant MC20-33 determinism check deduplicated into MC20-13 (coverage preserved); unit +6 are the new bypass/disclaimer regression tests; e2e unchanged; zero tests skipped."
+  },
+  "findings": [],
+  "notes": [
+    "No test was deleted or skipped to reach green: the only validator delta is the deduplication of a redundant determinism check already covered by MC20-13.",
+    "The temporary adversarial script lives in the OS temp directory, outside the repository; nothing was added to the repository by this verifier except the two in-scope evidence files.",
+    "The first `npm run build` invocation crashed transiently in the piscina worker pool (exit 1); the immediate re-run completed cleanly (exit 0, 96 routes). Recorded for honesty, not treated as a milestone defect."
+  ]
+}

@@ -5,6 +5,9 @@ import { AIS_CONTENT } from './ais';
 import { SENSE_CONTENT } from './sense';
 import { WATCH_CONTENT } from './watch';
 import { WEATHER_CONTENT } from './weather';
+import { DISPLAY_CONTENT } from './display';
+import { PILOT_CONTENT } from './pilot';
+import { FLEET_CONTENT } from './fleet';
 
 export { CATALOG_SHARED } from './shared';
 export { CATALOG_SECTION_ANCHORS, CATALOG_SECTION_IDS } from './content.types';
@@ -18,6 +21,9 @@ export const CATALOG_CONTENT: Readonly<Record<string, CatalogFamilyContent>> = {
   SENSE: SENSE_CONTENT,
   WATCH: WATCH_CONTENT,
   WEATHER: WEATHER_CONTENT,
+  DISPLAY: DISPLAY_CONTENT,
+  PILOT: PILOT_CONTENT,
+  FLEET: FLEET_CONTENT,
 } as const;
 
 export const CATALOG_FAMILY_CONTENT_LIST: readonly CatalogFamilyContent[] = [
@@ -27,6 +33,9 @@ export const CATALOG_FAMILY_CONTENT_LIST: readonly CatalogFamilyContent[] = [
   SENSE_CONTENT,
   WATCH_CONTENT,
   WEATHER_CONTENT,
+  DISPLAY_CONTENT,
+  PILOT_CONTENT,
+  FLEET_CONTENT,
 ];
 
 export type CatalogFamilyContentId = keyof typeof CATALOG_CONTENT;

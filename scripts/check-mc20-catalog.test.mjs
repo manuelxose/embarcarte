@@ -39,14 +39,15 @@ const content = await importLocal('src/app/marea-catalog/content/index.ts');
 const identity = await importLocal('src/app/marea-catalog/models/catalog-identity.ts');
 const domain = await importLocal('src/app/marea-catalog/data/catalog-domain.ts');
 
-const FAMILIES = ['NAV', 'HUB', 'AIS', 'SENSE', 'WATCH', 'WEATHER'];
+const FAMILIES = ['NAV', 'HUB', 'AIS', 'SENSE', 'WATCH', 'WEATHER', 'DISPLAY', 'PILOT', 'FLEET'];
 
-test('projection exposes the six canonical families and eighteen editions', () => {
+test('projection exposes the nine canonical families and twenty-six editions', () => {
   assert.deepEqual(
-    projection.CATALOG_FAMILIES.map((entry) => entry.familyId),
-    FAMILIES,
+    [...projection.CATALOG_FAMILIES.map((entry) => entry.familyId)].sort(),
+    [...FAMILIES].sort(),
   );
-  assert.equal(projection.CATALOG_EDITIONS.length, 18);
+  assert.equal(projection.CATALOG_FAMILIES.length, 9);
+  assert.equal(projection.CATALOG_EDITIONS.length, 26);
   assert.deepEqual(
     projection.CATALOG_EDITIONS.filter((entry) => entry.familyId === 'SENSE').map(
       (entry) => entry.editionId,
@@ -91,10 +92,14 @@ test('readiness summary derives eleven dimensions with an explicit, lossy mappin
   for (const familyId of FAMILIES) {
     const summary = domain.catalogReadinessSummary(familyId, 'es');
     assert.equal(summary.dimensions.length, 11);
-    assert.equal(summary.overall, 'NOT_READY');
+    assert.ok(
+      ['NOT_READY', 'BLOCKED'].includes(summary.overall),
+      `${familyId} overall ${summary.overall} is not fail-closed`,
+    );
     assert.equal(summary.blockedGateIds.length, 1);
     assert.ok(summary.dimensions.every((dimension) => typeof dimension.label === 'string'));
   }
+  assert.equal(domain.catalogReadinessSummary('PILOT', 'es').overall, 'BLOCKED');
 });
 
 test('family restrictions always include publication, trademark, price and stock', () => {
@@ -287,15 +292,17 @@ test('malformed guards fail closed instead of throwing', () => {
   assert.equal(domain.statusLabel(undefined, 'es'), 'UNKNOWN');
 });
 
-test('preview routing is internal, complete and unique', () => {
-  assert.equal(identity.CATALOG_PREVIEW_ROUTES.length, 12);
+test('preview routing is internal, complete and unique across eighteen routes', () => {
+  assert.equal(identity.CATALOG_PREVIEW_ROUTES.length, 18);
   const paths = identity.CATALOG_PREVIEW_ROUTES.map((route) => route.path);
-  assert.equal(new Set(paths).size, 12);
+  assert.equal(new Set(paths).size, 18);
   for (const route of identity.CATALOG_PREVIEW_ROUTES) {
     assert.ok(route.path.includes('internal/catalog/'));
     assert.equal(route.renderMode, 'Server');
   }
-  assert.equal(identity.isCatalogFamilyId('PILOT'), false);
+  assert.equal(identity.isCatalogFamilyId('PILOT'), true);
+  assert.equal(identity.isCatalogFamilyId('DISPLAY'), true);
+  assert.equal(identity.isCatalogFamilyId('FLEET'), true);
   assert.equal(identity.isCatalogFamilyId('NAV'), true);
   assert.equal(identity.isCatalogFamilyId('WEATHER'), true);
   assert.equal(normaliseRoutePath('/internal/catalog/nav/'), 'internal/catalog/nav');
@@ -501,8 +508,8 @@ test('an ES/EN parity break in the new families is rejected', () => {
   );
 });
 
-test('every new-family block carries a non-empty evidence class and source', () => {
-  for (const familyId of ['SENSE', 'WATCH', 'WEATHER']) {
+test('every family block carries a non-empty evidence class and source', () => {
+  for (const familyId of FAMILIES) {
     for (const block of contentBlocks(content.CATALOG_CONTENT[familyId])) {
       assert.ok(block.evidenceClass, `${block.contentId} has no evidence class`);
       assert.ok(block.sourceRefs.length > 0, `${block.contentId} has no source`);
@@ -522,4 +529,332 @@ test('the catalogue module contains no component fork of an MC-17 selector', () 
     assert.ok(!selector.startsWith('marea-readiness-'), `forked ${selector}`);
   }
   assert.ok(selectors.has('marea-catalog-page'));
+});
+
+// ------------------------------------------------------------------ MC-22 adversarial mutations
+test('an invented DISPLAY screen dimension is rejected', () => {
+  for (const text of [
+    'Pantalla de 9 pulgadas de diagonal',
+    '9 pulgadas de pantalla',
+    'Pantalla de 10 pulgadas',
+  ]) {
+    assert.ok(
+      catalogClaimProblems(text).some((id) => id.startsWith('display-')),
+      `not rejected: ${text}`,
+    );
+  }
+});
+
+test('an invented DISPLAY resolution, brightness and power figure is rejected', () => {
+  for (const text of ['Resolución 1920×1080', 'Brillo de 1000 nits', 'Consumo de 12 W']) {
+    assert.ok(
+      catalogClaimProblems(text).some((id) => id.startsWith('display-')),
+      `not rejected: ${text}`,
+    );
+  }
+});
+
+test('an invented DISPLAY IP or environmental rating is rejected', () => {
+  for (const text of ['IP67', 'IPX7', 'Estanco IP68', 'Impermeable']) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('an invented SLA and availability guarantee is rejected', () => {
+  for (const text of [
+    'SLA garantizado de 99,9%',
+    'Disponibilidad garantizada del 99,9%',
+    '99,9% de uptime',
+    'Contrato de servicio firmado',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('an autonomous-navigation and unsupervised claim is rejected', () => {
+  for (const text of [
+    'PILOT ofrece navegación autónoma sin supervisión',
+    'Navegación autónoma sin supervisión',
+    'Sin supervisión',
+  ]) {
+    assert.ok(
+      catalogClaimProblems(text).some((id) => id.startsWith('pilot-')),
+      `not rejected: ${text}`,
+    );
+  }
+});
+
+test('a certified autopilot, guaranteed reliability and regulatory approval are rejected', () => {
+  for (const text of [
+    'PILOT es un autopiloto certificado',
+    'PILOT es un piloto automático certificado',
+    'Fiabilidad garantizada',
+    'Aprobación regulatoria obtenida',
+  ]) {
+    assert.ok(
+      catalogClaimProblems(text).some((id) => id.startsWith('pilot-')),
+      `not rejected: ${text}`,
+    );
+  }
+});
+
+test('a verified steering integration claim is rejected', () => {
+  for (const text of ['Integración verificada con el timón', 'Verified steering integration']) {
+    assert.ok(catalogClaimProblems(text).includes('pilot-helm-verified'), `not rejected: ${text}`);
+  }
+});
+
+test('a named customer deployment and included hardware are rejected', () => {
+  for (const text of ['Cliente desplegado en producción', 'Hardware incluido']) {
+    assert.ok(
+      catalogClaimProblems(text).some((id) => id.startsWith('fleet-')),
+      `not rejected: ${text}`,
+    );
+  }
+});
+
+test('a security certification and commercial package claim is rejected', () => {
+  for (const text of [
+    'Certificación de seguridad SOC 2',
+    'Certificación de seguridad obtenida',
+    'Paquete comercial disponible',
+  ]) {
+    assert.ok(
+      catalogClaimProblems(text).some((id) => id.startsWith('fleet-')),
+      `not rejected: ${text}`,
+    );
+  }
+});
+
+test('a named supplier injected into the catalogue is rejected', () => {
+  for (const text of ['Datos de meteoblue con cobertura mundial', 'Fuente: PredictWind']) {
+    assert.ok(providerNameProblems(text).length > 0, `supplier not rejected: ${text}`);
+  }
+});
+
+test('a weakened governance gate is rejected and the ten gates stay verbatim', () => {
+  const gates = projection.CATALOG_GOVERNANCE_GATES;
+  assert.equal(gates.length, 10);
+  assert.deepEqual(gates, [
+    'TRADEMARK_LEGAL_CLEARANCE = NOT_GRANTED',
+    'MAREA_PUBLIC_USE = NO_GO',
+    'SOURCE_IP_CLEARANCE = NOT_CLEARED',
+    'LICENSING_RIGHTS_GRANTED = false',
+    'PRICE_APPROVED = NONE',
+    'COMMERCIAL_AVAILABILITY = NOT_FOR_SALE',
+    'PUBLICATION_AUTHORIZED = false',
+    'INDEXATION_AUTHORIZED = false',
+    'PRODUCTION_DEPLOYMENT = NOT_AUTHORIZED',
+    'GATE-PRIVACY-DPA-DPIA = BLOCKED',
+  ]);
+  assert.ok(!gates.includes('COMMERCIAL_AVAILABILITY = FOR_SALE'));
+  assert.ok(!gates.includes('PUBLICATION_AUTHORIZED = true'));
+});
+
+test('a hardcoded six-family list is rejected by the nine-family projection', () => {
+  assert.equal(projection.CATALOG_FAMILIES.length, 9);
+  assert.equal(projection.CATALOG_SCOPE_FAMILY_IDS.length, 9);
+  assert.equal(Object.keys(content.CATALOG_CONTENT).length, 9);
+  const hardcodedSix = ['NAV', 'HUB', 'AIS', 'SENSE', 'WATCH', 'WEATHER'];
+  assert.notDeepEqual([...projection.CATALOG_SCOPE_FAMILY_IDS].sort(), [...hardcodedSix].sort());
+});
+
+test('every canonical edition is present and a dropped first row would be detected', () => {
+  const canonical = JSON.parse(
+    readFileSync(resolve(root, 'docs/marea/commerce-data/data/product-editions.json'), 'utf8'),
+  ).editions;
+  const projected = new Set(projection.CATALOG_EDITIONS.map((entry) => entry.editionId));
+  const scope = new Set(projection.CATALOG_SCOPE_FAMILY_IDS);
+  for (const edition of canonical) {
+    if (scope.has(edition.familyId)) {
+      assert.ok(projected.has(edition.editionId), `missing edition ${edition.editionId}`);
+    }
+  }
+  assert.ok(projected.has('DISPLAY-7'));
+  assert.ok(projected.has('PILOT-COASTAL'));
+  assert.ok(projected.has('FLEET-START'));
+});
+
+test('a missing locale in a batch-3 family is a hard failure', () => {
+  for (const familyId of ['DISPLAY', 'PILOT', 'FLEET']) {
+    const entry = content.CATALOG_CONTENT[familyId];
+    const missingEn = {
+      ...entry,
+      hero: { ...entry.hero, lead: { es: entry.hero.lead.es } },
+    };
+    assert.ok(
+      bilingualTextProblems(missingEn).some((problem) => problem.includes('missing locale')),
+      `missing EN hero.lead not reported for ${familyId}`,
+    );
+  }
+});
+
+test('honest batch-3 negations remain accepted', () => {
+  for (const text of [
+    'No es un piloto automático certificado, no gobierna sin supervisión y no ofrece mando remoto.',
+    'Sin aprobación regulatoria ni homologación',
+    'no SLA established',
+    'Sin hardware incluido',
+    'Sin certificación de seguridad',
+    'Tamaño no congelado: la designación «DISPLAY 7» es una etiqueta comercial, no una dimensión medida.',
+  ]) {
+    assert.deepEqual(catalogClaimProblems(text), [], `wrongly rejected: ${text}`);
+  }
+});
+
+test('the unsupervised claim does not fail open behind its own "sin" particle', () => {
+  assert.ok(catalogClaimProblems('Sin supervisión').includes('pilot-unsupervised'));
+  assert.deepEqual(catalogClaimProblems('no opera sin supervisión'), []);
+});
+
+// ------------------------------------------------------------------ MC-22 r1 negator-scoping regressions
+test('non-negating idioms do not suppress a PILOT autonomy claim', () => {
+  for (const text of [
+    'Sin embargo funciona sin supervisión.',
+    'Sin duda opera sin supervisión.',
+    'Opera sin fallos sin supervisión.',
+    'Works without issues unsupervised.',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('a negator in an earlier sub-clause does not suppress a later claim', () => {
+  for (const text of [
+    'No es solo asistencia: funciona sin supervisión.',
+    'No es un autopiloto — opera sin supervisión.',
+    'No solo ayuda sino que funciona sin supervisión.',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('an idiom inside a spread claim does not suppress the claim word', () => {
+  for (const text of [
+    'Las pruebas de mar sin fallos fueron completadas.',
+    'Sea trials with no issues completed.',
+    'Pantalla sin marco de 7 pulgadas.',
+    'Resolución sin pérdida 1920x1080.',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('the complete PILOT autonomy vocabulary is rejected', () => {
+  for (const text of [
+    'Es autónomo.',
+    'Hands-free operation.',
+    'Autonomous steering.',
+    'Funciona de forma autónoma.',
+    'Sin vigilancia.',
+    'Sin supervisor.',
+    'Without supervision.',
+    'Unattended operation.',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('the DISPLAY dimension guard rejects hyphen, quote, Full HD and 4K forms', () => {
+  for (const text of [
+    'Pantalla de 7-inch.',
+    'Pantalla de 7".',
+    'pantallas de 7 pulgadas',
+    'Full HD',
+    '4K',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('the honest disclaimer corpus remains allowed after the repair', () => {
+  for (const text of [
+    'MAREA PILOT no funciona sin supervisión.',
+    'MAREA PILOT nunca opera sin supervisión.',
+    'No incluye navegación autónoma.',
+    'Las pruebas de mar no se han realizado.',
+    'No hay SLA establecido ni disponibilidad garantizada.',
+    'No se publica ningún tamaño de pantalla.',
+    'Sin hardware incluido.',
+    'Sin certificación de seguridad.',
+  ]) {
+    assert.deepEqual(catalogClaimProblems(text), [], `wrongly rejected: ${text}`);
+  }
+});
+
+// ------------------------------------------------------------------ MC-22 r2 hard acceptance matrix
+test('r2 must-reject: autonomy, certification and approval claims', () => {
+  for (const text of [
+    'MAREA PILOT is fully autonomous.',
+    'MAREA PILOT is certified.',
+    'MAREA PILOT es certificado.',
+    'A certified autopilot for your boat.',
+    'PILOT ha obtenido la aprobación regulatoria.',
+    'has received type approval.',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('r2 must-reject: sea-trial claims in both word orders', () => {
+  for (const text of [
+    'Las pruebas de mar se completaron con éxito.',
+    'PILOT has completed sea trials.',
+    'Ha superado las pruebas de mar.',
+    'Sea trials with no failures were completed.',
+    'Las pruebas de mar se completaron.',
+    'Se realizaron las pruebas de mar.',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('r2 must-reject: subordinated and idiomatic autonomy claims', () => {
+  for (const text of [
+    'Unattended operation is supported. SLA is not offered.',
+    'No hay duda de que opera de forma autónoma.',
+    'No intervention needed because it provides autonomous operation.',
+    'Not only does it offer autonomous navigation.',
+    'Funciona sin cables de forma autónoma.',
+    'Nunca fue tan fácil navegar de forma autónoma.',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('r2 must-reject: spelled-out dimension and hardware-included forms', () => {
+  for (const text of [
+    'Pantalla de siete pulgadas.',
+    'Pantalla de cinco pulgadas.',
+    'Pantalla de veinte pulgadas.',
+    'Pantalla de cincuenta pulgadas.',
+    'five-inch display.',
+    'fifty-inch display.',
+    'twenty-inch screen.',
+    'El hardware está incluido.',
+    'El hardware viene incluido.',
+    'Hardware is included by default.',
+    'The hardware comes included.',
+  ]) {
+    assert.ok(catalogClaimProblems(text).length > 0, `not rejected: ${text}`);
+  }
+});
+
+test('r2 must-allow: honest negated disclaimers', () => {
+  for (const text of [
+    'Does not offer remote or autonomous steering.',
+    'No incluye navegación autónoma o funcionamiento desatendido.',
+    'Autonomous navigation is not included.',
+    'La navegación autónoma no está disponible.',
+    'Ningún cliente desplegado en producción.',
+    'MAREA PILOT no está homologado.',
+    'No se promete una disponibilidad del 99,9 %.',
+    'No se ha congelado el tamaño de 7 pulgadas.',
+    'Autonomous steering — not offered.',
+    'El hardware no está incluido.',
+    'Las pruebas de mar no se han realizado.',
+    'No se han completado las pruebas de mar.',
+  ]) {
+    assert.deepEqual(catalogClaimProblems(text), [], `wrongly rejected: ${text}`);
+  }
 });
