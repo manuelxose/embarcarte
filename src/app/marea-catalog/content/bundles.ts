@@ -25,11 +25,8 @@ export const BUNDLE_CONTENT_LABELS: Readonly<Record<string, Localized>> = {
     en: 'Some upgrades require a formal proposal reviewed before they can be considered; others need only price and compatibility confirmation.',
   },
   notForSale: { es: 'No se vende', en: 'Not for sale' },
-  blockedByPilotGate: {
-    es: 'Bloqueado por la puerta de seguridad de PILOT',
-    en: 'Blocked by the PILOT safety gate',
-  },
-  notImplemented: { es: 'No implementado', en: 'Not implemented' },
+  additionsLabel: { es: 'Añade', en: 'Adds' },
+  stateHeading: { es: 'Estado de cada conjunto', en: 'State of each bundle' },
   priceConfirmOnly: {
     es: 'Solo requiere confirmación de precio y compatibilidad.',
     en: 'Requires only price and compatibility confirmation.',

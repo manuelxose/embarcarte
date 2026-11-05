@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { MareaContainer } from '../../marea-design-system/components/foundation/marea-container';
 import { MareaNotice } from '../../marea-design-system/components/foundation/marea-notice';
 import { MareaText } from '../../marea-design-system/components/foundation/marea-text';
@@ -102,11 +102,6 @@ const BUNDLE_NAMES: Readonly<Record<string, BundleContentLocalized>> = {
             @for (path of pathsForSelected(); track path.upgradeId) {
               <li class="path">
                 <p marea-text variant="label">{{ bundleName(path.fromBundleId) }}</p>
-                @if (path.adds.length > 0) {
-                  <p marea-text variant="bodySmall">
-                    {{ labels['inclusionLegend'][locale()] }}: {{ path.adds.join(' · ') }}
-                  </p>
-                }
                 <p marea-text variant="meta">{{ quoteNote(path.requiresNewQuotation) }}</p>
               </li>
             }
@@ -116,7 +111,7 @@ const BUNDLE_NAMES: Readonly<Record<string, BundleContentLocalized>> = {
 
       <section class="block" aria-labelledby="mc23-state">
         <h2 id="mc23-state" marea-text variant="title2">
-          {{ labels['inclusionLegend'][locale()] }}
+          {{ labels['stateHeading'][locale()] }}
         </h2>
         <ul class="notes">
           @for (entry of stateNotes(); track entry.bundleId) {
@@ -240,7 +235,7 @@ export class MareaBundleSection {
     groupLabel: BUNDLE_CONTENT_LABELS['selectorLabel'][this.locale()],
     pathHeading: BUNDLE_CONTENT_LABELS['selectorHeading'][this.locale()],
     pathIdleLabel: BUNDLE_CONTENT_LABELS['selectorLabel'][this.locale()],
-    pathListLabel: BUNDLE_CONTENT_LABELS['upgradeHeading'][this.locale()],
+    pathListLabel: BUNDLE_CONTENT_LABELS['additionsLabel'][this.locale()],
   }));
 
   /** Selector options: only bundles that have at least one supported upgrade path. */
