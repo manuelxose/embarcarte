@@ -59,7 +59,12 @@ function run(label, command, args, cwd) {
 // ---------------------------------------------------------------------------
 // Stage 1 — POSITIVE: the real Angular builds
 // ---------------------------------------------------------------------------
-const preview = run('positive-preview-build', 'npx', ['ng', 'build', 'marea-landing-preview'], root);
+const preview = run(
+  'positive-preview-build',
+  'npx',
+  ['ng', 'build', 'marea-landing-preview'],
+  root,
+);
 const production = run('positive-production-build', 'npx', ['ng', 'build', 'embarcarte'], root);
 
 // ---------------------------------------------------------------------------
@@ -162,10 +167,14 @@ function negativeStage() {
     // so the sandbox must see the installed node_modules. A directory junction
     // performs no copy and is removed with the temp directory.
     const modules = join(appDir, 'node_modules');
-    const junction = spawnSync('cmd', ['/c', 'mklink', '/J', modules, resolve(root, 'node_modules')], {
-      encoding: 'utf8',
-      shell: false,
-    });
+    const junction = spawnSync(
+      'cmd',
+      ['/c', 'mklink', '/J', modules, resolve(root, 'node_modules')],
+      {
+        encoding: 'utf8',
+        shell: false,
+      },
+    );
     if (junction.status !== 0) {
       return { ok: false, reason: `could not link node_modules: ${junction.stderr?.trim()}` };
     }
@@ -180,7 +189,8 @@ function negativeStage() {
     if (attempt.ok) {
       return {
         ok: false,
-        reason: 'the deliberately invalid template binding BUILT SUCCESSFULLY — the gate cannot detect it',
+        reason:
+          'the deliberately invalid template binding BUILT SUCCESSFULLY — the gate cannot detect it',
       };
     }
     if (!attempt.output.includes(BROKEN_MEMBER)) {
@@ -189,9 +199,11 @@ function negativeStage() {
         .find((line) => line.includes('[ERROR]') || line.includes('ERROR'));
       return {
         ok: false,
-        reason: `broken build failed without naming the injected binding; first error: ${
-          (firstError ?? '<none>').trim().slice(0, 200)
-        }`,
+        reason: `broken build failed without naming the injected binding; first error: ${(
+          firstError ?? '<none>'
+        )
+          .trim()
+          .slice(0, 200)}`,
       };
     }
     if (!/NG8002|NG8008|NG9|Property .* does not exist/i.test(attempt.output)) {
@@ -212,8 +224,15 @@ function negativeStage() {
 const directory = dirname(resolve(root, COMPONENT));
 const fixtureLeak = existsSync(join(directory, '__mc24-broken-binding.fixture.ts'));
 const negative = negativeStage();
-results.push({ label: 'negative-broken-binding', ok: negative.ok, status: negative.ok ? 0 : 1, ms: 0 });
-console.log(`\n=== negative-broken-binding: ${negative.ok ? 'PASS' : 'FAIL'} — ${negative.reason} ===`);
+results.push({
+  label: 'negative-broken-binding',
+  ok: negative.ok,
+  status: negative.ok ? 0 : 1,
+  ms: 0,
+});
+console.log(
+  `\n=== negative-broken-binding: ${negative.ok ? 'PASS' : 'FAIL'} — ${negative.reason} ===`,
+);
 if (fixtureLeak) {
   console.log('FAIL fixture-leak — a broken-binding fixture was left in the source tree');
   results.push({ label: 'fixture-leak', ok: false, status: 1, ms: 0 });
@@ -235,5 +254,7 @@ if (!negative.ok) {
   console.log('VERDICT: FAIL — the negative template-binding test did not prove the gate works');
   process.exit(1);
 }
-console.log('VERDICT: PASS — preview and production builds succeed AND an invalid template binding is rejected');
+console.log(
+  'VERDICT: PASS — preview and production builds succeed AND an invalid template binding is rejected',
+);
 process.exit(0);

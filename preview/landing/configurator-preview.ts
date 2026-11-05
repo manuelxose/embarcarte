@@ -101,7 +101,10 @@ export class ConfiguratorPreview {
     this.document.documentElement.lang = locale === 'es' ? 'es-ES' : 'en';
     this.document.documentElement.setAttribute('data-marea-preview', 'internal-not-published');
     this.meta.updateTag({ name: 'robots', content: 'noindex, nofollow, noarchive' });
-    this.meta.updateTag({ name: 'description', content: CATALOG_SHARED.classificationBanner[locale] });
+    this.meta.updateTag({
+      name: 'description',
+      content: CATALOG_SHARED.classificationBanner[locale],
+    });
     this.meta.updateTag({ name: 'marea-publication', content: 'NOT_AUTHORIZED' });
   }
 }

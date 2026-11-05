@@ -54,10 +54,14 @@ const generated = await load('src/app/marea-catalog/data/configurator.generated.
 const identity = await load('src/app/marea-catalog/models/configurator-identity.ts');
 const content = await load('src/app/marea-catalog/content/configurator.ts');
 
-const contract = JSON.parse(readFileSync(resolve(root, 'docs/marea/bundles/bundle-definitions.json'), 'utf8'));
+const contract = JSON.parse(
+  readFileSync(resolve(root, 'docs/marea/bundles/bundle-definitions.json'), 'utf8'),
+);
 const BUNDLES = ['START', 'CRUISE', 'SAIL', 'PROTECT', 'COMPLETE', 'FLEET'];
 const answersFor = (bundleId) =>
-  Object.fromEntries((engine.MANDATORY_QUESTION_IDS[bundleId] ?? []).map((id) => [id, 'respuesta']));
+  Object.fromEntries(
+    (engine.MANDATORY_QUESTION_IDS[bundleId] ?? []).map((id) => [id, 'respuesta']),
+  );
 
 // ===========================================================================
 // The D5 governance invariant
@@ -75,7 +79,11 @@ both('a1 the eligible outcome is unreachable across the whole input space', () =
     }
     for (const answers of variants) {
       const result = engine.resolveConfiguration({ bundleId, answers });
-      assert.notEqual(result.outcome, 'ELIGIBLE_SELF_INSTALL', `${bundleId} produced an eligible result`);
+      assert.notEqual(
+        result.outcome,
+        'ELIGIBLE_SELF_INSTALL',
+        `${bundleId} produced an eligible result`,
+      );
       assert.equal(result.eligible, false, `${bundleId} set eligible=true`);
     }
   }
@@ -88,14 +96,30 @@ both('a2 there are exactly zero validated self-install rules', () => {
 });
 
 both('a3 the outcome vocabulary cannot be extended by an unknown value', () => {
-  assert.deepEqual([...engine.CONFIGURATOR_OUTCOMES], [
-    'ELIGIBLE_SELF_INSTALL',
-    'INSTALLER_ASSESSMENT_REQUIRED',
-    'NOT_SUPPORTED',
-    'INSUFFICIENT_INFORMATION',
-  ]);
-  for (const value of ['ORDERABLE', 'PURCHASABLE', 'AVAILABLE', 'available', '', null, undefined, 42]) {
-    assert.equal(engine.isConfiguratorOutcome(value), false, `${String(value)} accepted as an outcome`);
+  assert.deepEqual(
+    [...engine.CONFIGURATOR_OUTCOMES],
+    [
+      'ELIGIBLE_SELF_INSTALL',
+      'INSTALLER_ASSESSMENT_REQUIRED',
+      'NOT_SUPPORTED',
+      'INSUFFICIENT_INFORMATION',
+    ],
+  );
+  for (const value of [
+    'ORDERABLE',
+    'PURCHASABLE',
+    'AVAILABLE',
+    'available',
+    '',
+    null,
+    undefined,
+    42,
+  ]) {
+    assert.equal(
+      engine.isConfiguratorOutcome(value),
+      false,
+      `${String(value)} accepted as an outcome`,
+    );
   }
 });
 
@@ -140,7 +164,10 @@ both('a7 a blank or whitespace answer is unresolved', () => {
     const answers = { ...answersFor('START'), 'GQ-01': blank };
     const result = engine.resolveConfiguration({ bundleId: 'START', answers });
     assert.equal(result.outcome, 'INSUFFICIENT_INFORMATION');
-    assert.ok(result.unresolvedQuestionIds.includes('GQ-01'), `blank "${JSON.stringify(blank)}" accepted`);
+    assert.ok(
+      result.unresolvedQuestionIds.includes('GQ-01'),
+      `blank "${JSON.stringify(blank)}" accepted`,
+    );
   }
 });
 
@@ -204,17 +231,24 @@ both('a12 safety-sensitive bundles are escalated to a safety review', () => {
     assert.equal(record.priority, 'SAFETY_REVIEW', `${bundleId} not escalated`);
     assert.equal(record.requiresSafetyEvidence, true, `${bundleId} skipped safety evidence`);
   }
-  const start = triage.triageFor(engine.resolveConfiguration({ bundleId: 'START', answers: answersFor('START') }));
+  const start = triage.triageFor(
+    engine.resolveConfiguration({ bundleId: 'START', answers: answersFor('START') }),
+  );
   assert.equal(start.priority, 'ELEVATED');
 });
 
 both('a13 triage is deterministic and independent of call order', () => {
   const first = BUNDLES.map((bundleId) =>
-    JSON.stringify(triage.triageFor(engine.resolveConfiguration({ bundleId, answers: answersFor(bundleId) }))),
+    JSON.stringify(
+      triage.triageFor(engine.resolveConfiguration({ bundleId, answers: answersFor(bundleId) })),
+    ),
   );
-  const second = [...BUNDLES].reverse()
+  const second = [...BUNDLES]
+    .reverse()
     .map((bundleId) =>
-      JSON.stringify(triage.triageFor(engine.resolveConfiguration({ bundleId, answers: answersFor(bundleId) }))),
+      JSON.stringify(
+        triage.triageFor(engine.resolveConfiguration({ bundleId, answers: answersFor(bundleId) })),
+      ),
     )
     .reverse();
   assert.deepEqual(first, second);
@@ -277,7 +311,11 @@ both('a18 the preview registers no public route', () => {
   const locales = readFileSync(resolve(root, 'src/app/core/i18n/locale-routes.ts'), 'utf8');
   for (const route of identity.CONFIGURATOR_PREVIEW_ROUTES) {
     assert.ok(route.path.startsWith('internal/') || route.path.startsWith('en/internal/'));
-    assert.equal(locales.includes(`'${route.path}'`), false, `${route.path} collides with a public route`);
+    assert.equal(
+      locales.includes(`'${route.path}'`),
+      false,
+      `${route.path} collides with a public route`,
+    );
   }
   assert.equal(identity.CONFIGURATOR_PREVIEW_IDENTITY.publicRouteRegistered, false);
   assert.equal(identity.CONFIGURATOR_PREVIEW_IDENTITY.sitemapEligible, false);
@@ -312,7 +350,10 @@ both('a21 every outcome is explained in both locales', () => {
   for (const outcome of engine.CONFIGURATOR_OUTCOMES) {
     for (const locale of ['es', 'en']) {
       assert.ok(content.OUTCOME_LABELS[outcome][locale], `${outcome} label missing in ${locale}`);
-      assert.ok(content.OUTCOME_EXPLANATIONS[outcome][locale], `${outcome} explanation missing in ${locale}`);
+      assert.ok(
+        content.OUTCOME_EXPLANATIONS[outcome][locale],
+        `${outcome} explanation missing in ${locale}`,
+      );
       assert.ok({
         es: content.OUTCOME_EXPLANATIONS[outcome][locale],
         en: content.OUTCOME_EXPLANATIONS[outcome][locale],

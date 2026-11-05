@@ -23,7 +23,12 @@ function check(id, title, run) {
     const detail = run();
     checks.push({ id, title, pass: true, detail: detail ?? '' });
   } catch (error) {
-    checks.push({ id, title, pass: false, detail: error instanceof Error ? error.message : String(error) });
+    checks.push({
+      id,
+      title,
+      pass: false,
+      detail: error instanceof Error ? error.message : String(error),
+    });
   }
 }
 function assert(condition, message) {
@@ -46,7 +51,9 @@ const guards = await import('./mc20-catalog-guards.mjs');
 
 const contract = readJson('docs/marea/bundles/bundle-definitions.json');
 const allAnswers = (bundleId) =>
-  Object.fromEntries((engine.MANDATORY_QUESTION_IDS[bundleId] ?? []).map((id) => [id, 'respuesta']));
+  Object.fromEntries(
+    (engine.MANDATORY_QUESTION_IDS[bundleId] ?? []).map((id) => [id, 'respuesta']),
+  );
 
 // ---------------------------------------------------------------------------
 // AC-01 — the outcome vocabulary is exactly the four D5 §9.2 outcomes
@@ -161,19 +168,31 @@ check('MC24-05', 'excluded capabilities yield NOT_SUPPORTED', () => {
 check('MC24-06', 'triage is deterministic and produces no price, offer or orderable state', () => {
   const outcomes = engine.CONFIGURATOR_OUTCOMES;
   for (const outcome of outcomes) {
-    const result = { ...engine.resolveConfiguration({ bundleId: 'START', answers: allAnswers('START') }), outcome };
+    const result = {
+      ...engine.resolveConfiguration({ bundleId: 'START', answers: allAnswers('START') }),
+      outcome,
+    };
     const first = triage.triageFor(result);
     const second = triage.triageFor(result);
-    assert(JSON.stringify(first) === JSON.stringify(second), `triage of ${outcome} is not deterministic`);
+    assert(
+      JSON.stringify(first) === JSON.stringify(second),
+      `triage of ${outcome} is not deterministic`,
+    );
     assert(first.quotationProvided === false, `${outcome} claims a quotation`);
     assert(first.priceProvided === false, `${outcome} claims a price`);
     assert(first.orderable === false, `${outcome} claims an orderable state`);
     assert(triage.isTriageRoute(first.route), `${outcome} produced unknown route ${first.route}`);
   }
   const engineSource = readText('src/app/marea-catalog/data/configurator-engine.ts');
-  assert(!/Math\.random|Date\.now|new Date\(/.test(engineSource), 'engine uses a clock or randomness');
+  assert(
+    !/Math\.random|Date\.now|new Date\(/.test(engineSource),
+    'engine uses a clock or randomness',
+  );
   const triageSource = readText('src/app/marea-catalog/data/configurator-triage.ts');
-  assert(!/Math\.random|Date\.now|new Date\(/.test(triageSource), 'triage uses a clock or randomness');
+  assert(
+    !/Math\.random|Date\.now|new Date\(/.test(triageSource),
+    'triage uses a clock or randomness',
+  );
   return `${outcomes.length} outcomes: deterministic, no price, no offer, no orderable state`;
 });
 
@@ -201,11 +220,10 @@ check('MC24-07', 'every configurator string is complete in both ES and EN', () =
       // the same in ES and EN such as "No") is legitimate; an untranslated
       // English sentence is not.
       const identicalIsLegitimate =
-        /^[A-Z0-9-]+$/.test(value.es) || !/[a-z]{3,}/i.test(value.es) || value.es.split(/\s+/).length <= 1;
-      assert(
-        value.es !== value.en || identicalIsLegitimate,
-        `${name}.${key} is not translated`,
-      );
+        /^[A-Z0-9-]+$/.test(value.es) ||
+        !/[a-z]{3,}/i.test(value.es) ||
+        value.es.split(/\s+/).length <= 1;
+      assert(value.es !== value.en || identicalIsLegitimate, `${name}.${key} is not translated`);
       count += 1;
     }
   }
@@ -242,7 +260,10 @@ check('MC24-08', 'the rule projection matches the MC-08 contract exactly', () =>
   for (let index = 0; index < contractQuestions.length; index += 1) {
     const source = contractQuestions[index];
     const projected = generated.CONFIGURATOR_QUESTIONS[index];
-    assert(source.id === projected.id, `question ${index} id ${projected.id} != contract ${source.id}`);
+    assert(
+      source.id === projected.id,
+      `question ${index} id ${projected.id} != contract ${source.id}`,
+    );
     assert(
       source.question === projected.question,
       `question ${projected.id} text differs from the contract`,
@@ -282,14 +303,15 @@ check('MC24-09', 'the configurator registers no public route and no indexation s
   // No route may collide with a reserved public path.
   const reserved = readText('src/app/core/i18n/locale-routes.ts');
   for (const route of identity.CONFIGURATOR_PREVIEW_ROUTES) {
-    assert(!reserved.includes(`'${route.path}'`), `route ${route.path} collides with a public route`);
+    assert(
+      !reserved.includes(`'${route.path}'`),
+      `route ${route.path} collides with a public route`,
+    );
   }
   const preview = readText('preview/landing/configurator-preview.ts');
   assert(preview.includes('noindex, nofollow, noarchive'), 'preview does not set noindex');
   // Strip comments: the header comment legitimately names the tags it forbids.
-  const previewCode = preview
-    .replace(/\/\*[\s\S]*?\*\//g, '')
-    .replace(/(^|[^:])\/\/.*$/gm, '$1');
+  const previewCode = preview.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/.*$/gm, '$1');
   assert(
     !/rel="canonical"|rel='canonical'|hreflang|application\/ld\+json/i.test(previewCode),
     'preview emits an indexation tag',
@@ -352,7 +374,10 @@ check('MC24-11', 'F-01 and F-02 bypasses are rejected and negations still pass',
   ];
   for (const text of mustPass) {
     const problems = guards.catalogClaimProblems(text);
-    assert(problems.length === 0, `legitimate negation rejected: "${text}" -> ${problems.join(', ')}`);
+    assert(
+      problems.length === 0,
+      `legitimate negation rejected: "${text}" -> ${problems.join(', ')}`,
+    );
   }
   return `${mustReject.length} bypasses rejected, ${mustPass.length} negations preserved`;
 });

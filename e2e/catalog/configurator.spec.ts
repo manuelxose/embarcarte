@@ -240,7 +240,10 @@ test.describe('MC-24 configurator @mc24 - responsive', () => {
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
       );
-      expect(overflow, `horizontal overflow ${overflow}px at ${viewport.width}px`).toBeLessThanOrEqual(1);
+      expect(
+        overflow,
+        `horizontal overflow ${overflow}px at ${viewport.width}px`,
+      ).toBeLessThanOrEqual(1);
     }
   });
 

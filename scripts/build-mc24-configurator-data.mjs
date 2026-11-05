@@ -36,7 +36,8 @@ function build() {
   for (const key of GROUP_ORDER) {
     const group = questionnaires[key];
     if (!group) throw new Error(`missing questionnaire group ${key}`);
-    const appliesTo = Array.isArray(group.appliesTo) && group.appliesTo.length > 0 ? group.appliesTo : null;
+    const appliesTo =
+      Array.isArray(group.appliesTo) && group.appliesTo.length > 0 ? group.appliesTo : null;
     for (const question of group.questions) {
       questions.push({
         id: question.id,
@@ -100,7 +101,9 @@ function build() {
   lines.push(GROUP_ORDER.map((key) => `  ${lit(GROUP_ID[key])},`).join('\n'));
   lines.push('] as const;');
   lines.push('');
-  lines.push('export type ConfiguratorQuestionGroup = (typeof CONFIGURATOR_QUESTION_GROUPS)[number];');
+  lines.push(
+    'export type ConfiguratorQuestionGroup = (typeof CONFIGURATOR_QUESTION_GROUPS)[number];',
+  );
   lines.push('');
   lines.push('export interface ConfiguratorQuestion {');
   lines.push('  readonly id: string;');
@@ -110,7 +113,9 @@ function build() {
   lines.push('  readonly appliesTo: readonly string[] | null;');
   lines.push('}');
   lines.push('');
-  lines.push(`/** The ${questions.length} canonical MC-08 eligibility questions, in contract order. */`);
+  lines.push(
+    `/** The ${questions.length} canonical MC-08 eligibility questions, in contract order. */`,
+  );
   lines.push('export const CONFIGURATOR_QUESTIONS: readonly ConfiguratorQuestion[] = [');
   for (const question of questions) {
     lines.push(
@@ -146,7 +151,9 @@ function build() {
   lines.push('  readonly message: string;');
   lines.push('}');
   lines.push('');
-  lines.push(`/** The ${conflictRules.length} canonical MC-08 conflict rules, in contract order. */`);
+  lines.push(
+    `/** The ${conflictRules.length} canonical MC-08 conflict rules, in contract order. */`,
+  );
   lines.push('export const CONFIGURATOR_CONFLICT_RULES: readonly ConfiguratorConflictRule[] = [');
   for (const rule of conflictRules) {
     lines.push(
@@ -155,7 +162,9 @@ function build() {
   }
   lines.push('];');
   lines.push('');
-  lines.push('/** MC-08 internal configuration outcomes. `ORDERABLE` deliberately does not exist. */');
+  lines.push(
+    '/** MC-08 internal configuration outcomes. `ORDERABLE` deliberately does not exist. */',
+  );
   lines.push('export const CONFIGURATOR_CONTRACT_OUTCOMES = [');
   lines.push(outcomes.map((value) => `  ${lit(value)},`).join('\n'));
   lines.push('] as const;');
@@ -175,7 +184,14 @@ function build() {
   lines.push('} as const;');
   lines.push('');
 
-  return { text: lines.join('\n'), counts: { questions: questions.length, rules: rules.length, conflictRules: conflictRules.length } };
+  return {
+    text: lines.join('\n'),
+    counts: {
+      questions: questions.length,
+      rules: rules.length,
+      conflictRules: conflictRules.length,
+    },
+  };
 }
 
 const { text, counts } = build();
@@ -189,7 +205,9 @@ if (process.argv.includes('--check')) {
     process.exit(1);
   }
   if (current !== text) {
-    console.log('FAIL mc24 configurator data - generated projection has drifted from the MC-08 contract');
+    console.log(
+      'FAIL mc24 configurator data - generated projection has drifted from the MC-08 contract',
+    );
     process.exit(1);
   }
   console.log(

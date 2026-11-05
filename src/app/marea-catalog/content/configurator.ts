@@ -11,7 +11,10 @@ export type ConfiguratorContentLocalized = Localized;
  * compatibility promise. Every claim-sensitive sentence states what is NOT known.
  */
 export const CONFIGURATOR_LABELS: Readonly<Record<string, Localized>> = {
-  heading: { es: 'Configurador interno y clasificación de consultas', en: 'Internal configurator and enquiry triage' },
+  heading: {
+    es: 'Configurador interno y clasificación de consultas',
+    en: 'Internal configurator and enquiry triage',
+  },
   intro: {
     es: 'Esta herramienta clasifica una consulta interna según las reglas canónicas de MC-08 y los cuatro resultados de compatibilidad de D5. No calcula precios, no confirma compatibilidad y no permite comprar.',
     en: 'This tool classifies an internal enquiry against the MC-08 canonical rules and the four D5 compatibility outcomes. It does not compute prices, does not confirm compatibility and does not allow buying.',
@@ -58,7 +61,10 @@ export const CONFIGURATOR_LABELS: Readonly<Record<string, Localized>> = {
     es: 'Marca solo lo que el cliente haya pedido explícitamente. El control de gobierno y la certificación NMEA 2000 están excluidos por diseño.',
     en: 'Select only what the customer explicitly asked for. Steering control and NMEA 2000 certification are excluded by design.',
   },
-  excludedSteering: { es: 'Integración con el sistema de gobierno', en: 'Steering system integration' },
+  excludedSteering: {
+    es: 'Integración con el sistema de gobierno',
+    en: 'Steering system integration',
+  },
   excludedAutopilot: { es: 'Control del piloto automático', en: 'Autopilot control' },
   excludedNmea: { es: 'Certificación NMEA 2000', en: 'NMEA 2000 certification' },
   submit: { es: 'Clasificar consulta', en: 'Classify enquiry' },
@@ -86,7 +92,10 @@ export const CONFIGURATOR_LABELS: Readonly<Record<string, Localized>> = {
   triageYes: { es: 'Sí', en: 'Yes' },
   triageNo: { es: 'No', en: 'No' },
   nextActionHeading: { es: 'Siguiente paso', en: 'Next step' },
-  nextActionComplete: { es: 'Completar las respuestas que faltan.', en: 'Complete the missing answers.' },
+  nextActionComplete: {
+    es: 'Completar las respuestas que faltan.',
+    en: 'Complete the missing answers.',
+  },
   nextActionReadExclusion: {
     es: 'Leer el aviso de exclusión. No hay una variante que se pueda prometer.',
     en: 'Read the exclusion notice. There is no variant that can be promised.',
@@ -114,7 +123,10 @@ export const CONFIGURATOR_LABELS: Readonly<Record<string, Localized>> = {
   factQuestions: { es: 'Preguntas canónicas', en: 'Canonical questions' },
   factRules: { es: 'Reglas de configuración', en: 'Configuration rules' },
   factConflictRules: { es: 'Reglas de conflicto', en: 'Conflict rules' },
-  factValidatedRules: { es: 'Reglas de instalación propia validadas', en: 'Validated self-install rules' },
+  factValidatedRules: {
+    es: 'Reglas de instalación propia validadas',
+    en: 'Validated self-install rules',
+  },
   factTestedRows: { es: 'Filas de compatibilidad comprobadas', en: 'Tested compatibility rows' },
   limitationHeading: { es: 'Limitaciones explícitas', en: 'Explicit limitations' },
 };
@@ -166,7 +178,14 @@ export const PRIORITY_LABELS: Readonly<Record<string, Localized>> = {
 };
 
 /** Bundles offered by the configurator, with the canonical MC-08 id as label. */
-export const BUNDLE_OPTIONS: readonly string[] = ['START', 'CRUISE', 'SAIL', 'PROTECT', 'COMPLETE', 'FLEET'];
+export const BUNDLE_OPTIONS: readonly string[] = [
+  'START',
+  'CRUISE',
+  'SAIL',
+  'PROTECT',
+  'COMPLETE',
+  'FLEET',
+];
 
 /** Explicit limitations printed on the page, ES and EN. */
 export const CONFIGURATOR_LIMITATIONS: readonly Localized[] = [

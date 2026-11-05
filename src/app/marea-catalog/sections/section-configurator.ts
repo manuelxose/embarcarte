@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  input,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MareaFormField } from '../../marea-design-system/components/foundation/marea-form-field';
 import { MareaButton } from '../../marea-design-system/components/foundation/marea-button';
@@ -152,7 +146,12 @@ interface ResolvedView {
         <div class="live" role="status" aria-live="polite">
           @if (resolved(); as view) {
             <p class="outcome" [attr.data-outcome]="view.result.outcome">
-              <span marea-status-badge [tone]="outcomeTone(view.result.outcome)" [label]="outcomeLabel(view.result.outcome)" data-mc24-outcome></span>
+              <span
+                marea-status-badge
+                [tone]="outcomeTone(view.result.outcome)"
+                [label]="outcomeLabel(view.result.outcome)"
+                data-mc24-outcome
+              ></span>
               {{ outcomeExplanation(view.result.outcome) }}
             </p>
 
@@ -423,7 +422,9 @@ export class MareaCatalogConfigurator {
     ),
   );
 
-  readonly limitations = computed(() => CONFIGURATOR_LIMITATIONS.map((item) => item[this.locale()]));
+  readonly limitations = computed(() =>
+    CONFIGURATOR_LIMITATIONS.map((item) => item[this.locale()]),
+  );
 
   readonly groupedQuestions = computed(() => {
     const bundleId = this.bundle();

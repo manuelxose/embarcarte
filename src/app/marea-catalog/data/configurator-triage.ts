@@ -85,7 +85,11 @@ interface TriageExtras {
   readonly pendingQuestionIds?: readonly string[];
 }
 
-function record(route: TriageRoute, priority: TriagePriority, extras: TriageExtras = {}): TriageRecord {
+function record(
+  route: TriageRoute,
+  priority: TriagePriority,
+  extras: TriageExtras = {},
+): TriageRecord {
   return {
     route,
     priority,

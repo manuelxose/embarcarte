@@ -83,7 +83,11 @@ export type ConfiguratorAnswers = Readonly<Record<string, string | undefined>>;
  * Steering/autopilot integration is excluded by MC-05 D5 §2 and MC-07; requesting
  * it is never a "probably works" case.
  */
-export const EXCLUDED_CAPABILITIES = ['steering-integration', 'autopilot-control', 'nmea2000-certification'] as const;
+export const EXCLUDED_CAPABILITIES = [
+  'steering-integration',
+  'autopilot-control',
+  'nmea2000-certification',
+] as const;
 export type ExcludedCapability = (typeof EXCLUDED_CAPABILITIES)[number];
 
 export interface ConfiguratorRequest {
@@ -175,7 +179,9 @@ export function resolveConfiguration(request: ConfiguratorRequest): Configurator
     (id) => normalized(request.answers[id]) === undefined || contradictory.includes(id),
   );
   if (unresolved.length > 0) {
-    return result('INSUFFICIENT_INFORMATION', request.bundleId, { unresolvedQuestionIds: unresolved });
+    return result('INSUFFICIENT_INFORMATION', request.bundleId, {
+      unresolvedQuestionIds: unresolved,
+    });
   }
 
   // 3./4. A validated rule may only promote to ELIGIBLE when it exists.
@@ -205,7 +211,11 @@ interface ResultExtras {
   readonly eligible?: boolean;
 }
 
-function result(outcome: ConfiguratorOutcome, bundleId: string, extras: ResultExtras = {}): ConfiguratorResult {
+function result(
+  outcome: ConfiguratorOutcome,
+  bundleId: string,
+  extras: ResultExtras = {},
+): ConfiguratorResult {
   return {
     outcome,
     bundleId,
