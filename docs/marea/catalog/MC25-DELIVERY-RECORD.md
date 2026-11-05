@@ -13,7 +13,8 @@
 | MC-25 implementation commit | `c8eb23b` — SKU readiness engine, lifecycle, admin screen, F-2/F-15 |
 | Audit remediation commit | `6ffcbb9` — independent-audit findings, computed facts, derived verdict, sanitising boundary |
 | Delivery HEAD (code) | `6ffcbb9` |
-| Remote head | `6ffcbb93cc00a1ae96c056d08b6d1cec12b013e2` (`git ls-remote`) |
+| Evidence commit (this record) | `51f70a8` |
+| Remote head when this record was written | `51f70a860de755ab34101434ddb6a0176ae9d6c1` (`git ls-remote`) |
 | Draft PR | **#33** — OPEN, DRAFT, MERGEABLE, base `feature/marea-mc24-configurator` |
 | Merge / deploy / publication | **NONE** |
 
