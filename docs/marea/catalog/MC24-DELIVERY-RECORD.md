@@ -3,7 +3,7 @@
 **Milestone:** MC-24 — Compatibility configurator and quotation triage
 **Branch:** `feature/marea-mc24-configurator` (local)
 **Base:** `7ed6ae681eafe6fd36d0b48102c4c30efd09c568` (`feature/marea-mc23-integration`)
-**Delivery HEAD:** see §6
+**Delivery HEAD:** `ca186cdc405e0206bbbd458e0c9434abfb9b279e` (local = remote)
 **Verdict:** `MC24_INTERNAL_IMPLEMENTATION = PASS_INTERNAL_SCOPE`, `MC24_VERDICT = PARTIAL`
 
 ## 1. Repository and dependency verification
@@ -76,6 +76,23 @@ d16c0d5 feat(mc24): deliver the bilingual configurator UI, validator and real-bu
 | `npm run test:i18n` / `test:seo` / `test:commerce` | PASS / PASS / PASS                                                         |
 | Production bundle isolation                        | 0 catalogue identifiers; 96 prerendered routes; no configurator directory  |
 | Projection drift gate                              | up to date (32 questions, 12 rules, 20 conflict rules)                     |
+
+## 5.bis Remote preservation and draft PRs
+
+Verified with `gh pr view` and `git ls-remote`:
+
+| Item                  | State                                                                                                                                                                                                      |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MC-24 draft PR        | [#31](https://github.com/manuelxose/embarcarte/pull/31) — `OPEN`, `isDraft: true`, base `feature/marea-mc23-integration`, head `feature/marea-mc24-configurator`, `MERGEABLE`                              |
+| MC-23 preservation PR | [#32](https://github.com/manuelxose/embarcarte/pull/32) — `OPEN`, `isDraft: true`, base `main`, head `feature/marea-mc23-integration`, `MERGEABLE`; created to preserve a branch that existed only locally |
+| Remote head of MC-24  | `ca186cd` — identical to the local branch head                                                                                                                                                             |
+| Remote head of MC-23  | `7ed6ae6` — unchanged from its delivery                                                                                                                                                                    |
+| `origin/main`         | `092ae74` — **untouched**; no merge occurred                                                                                                                                                               |
+
+Both pull requests are **drafts**. Neither is merged, neither may be merged without
+explicit authorisation, and MC-24 is stacked on MC-23, so MC-24 cannot be merged
+before that dependency is decided. Creating the PRs preserved the work; it did not
+approve or publish anything.
 
 ## 6. Authorisation status
 
