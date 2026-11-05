@@ -714,7 +714,8 @@ export function runConfined() {
   return checkOutputs();
 }
 
-if (CHECK) {
+/** Shared drift check used by both the --check CLI path and runConfined(). */
+function checkOutputs() {
   let failed = false;
   for (const [path, content] of outputs) {
     let current = '';
