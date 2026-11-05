@@ -23,7 +23,7 @@ const stages = [
   { id: 'mc20', file: 'scripts/check-mc20-catalog.mjs' },
   { id: 'data', file: 'scripts/build-mc20-catalog-data.mjs' },
   { id: 'mc23', file: 'scripts/check-mc23-bundles.mjs', optional: true },
-  { id: 'unit', file: 'scripts/check-mc23-bundles.test.mjs', optional: true },
+  { id: 'unit', file: 'scripts/check-mc23-bundles.test.mjs', optional: true, tests: true },
 ];
 
 const results = [];
@@ -41,9 +41,25 @@ for (const stage of stages) {
   console.log(`\n=== stage ${stage.id}: ${stage.file} ===`);
   let pass = true;
   try {
-    {
+    if (stage.tests) {
+      // node:test reports through its own runner, which cannot reuse this
+      // process's registered loader and cannot be spawned inside the ACL
+      // sandbox. The test module therefore exposes runConfined(), which awaits
+      // its own node:test run and returns a boolean. A green stage means the
+      // assertions actually executed.
+      const mod = await import(pathToFileURL(target).href);
+      if (typeof mod.runConfined !== 'function') {
+        throw new Error('test module must export runConfined()');
+      }
+      pass = (await mod.runConfined()) === true;
+    } else {
+      const exitBefore = process.exitCode;
       const mod = await import(pathToFileURL(target).href);
       if (typeof mod.runConfined === 'function' && mod.runConfined() === false) pass = false;
+      if (process.exitCode !== undefined && process.exitCode !== exitBefore) {
+        pass = false;
+        process.exitCode = exitBefore;
+      }
     }
   } catch (error) {
     console.log(`FAIL ${stage.id} - ${error instanceof Error ? error.message : String(error)}`);
