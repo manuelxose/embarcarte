@@ -387,3 +387,39 @@ both('a23 the F-16 attribute-quote false positive stays closed', () => {
     assert.notDeepEqual(catalogClaimProblems(text), [], `dimension claim missed: "${text}"`);
   }
 });
+
+both('a24 the validated-rule registry cannot be mutated at runtime', () => {
+  // An earlier revision exported a mutable array; one push() made
+  // ELIGIBLE_SELF_INSTALL reachable. The invariant must hold structurally.
+  assert.equal(
+    Object.isFrozen(engine.VALIDATED_SELF_INSTALL_RULES),
+    true,
+    'registry is not frozen',
+  );
+  assert.throws(() => {
+    engine.VALIDATED_SELF_INSTALL_RULES.push({
+      id: 'FAKE',
+      matrixRowId: 'X',
+      bundleId: 'START',
+      requiredAnswers: {},
+    });
+  }, 'a push into the frozen registry did not throw');
+  assert.equal(engine.VALIDATED_SELF_INSTALL_RULES.length, 0, 'registry length changed');
+  // And the decision path still refuses after the attempt.
+  const result = engine.resolveConfiguration({ bundleId: 'START', answers: answersFor('START') });
+  assert.equal(result.outcome, 'INSTALLER_ASSESSMENT_REQUIRED');
+  assert.equal(result.eligible, false);
+});
+
+both('a25 inherited-property answers cannot satisfy the questionnaire', () => {
+  // An answers object whose fields live on the prototype must not count as filled.
+  const proto = Object.fromEntries(
+    (engine.MANDATORY_QUESTION_IDS['START'] ?? []).map((id) => [id, 'x']),
+  );
+  const inherited = Object.create(proto);
+  const result = engine.resolveConfiguration({ bundleId: 'START', answers: inherited });
+  // Whatever the outcome, it must never be an eligible one; and because the
+  // answers are absent own-properties, it is reported as insufficient.
+  assert.equal(result.eligible, false);
+  assert.notEqual(result.outcome, 'ELIGIBLE_SELF_INSTALL');
+});

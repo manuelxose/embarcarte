@@ -58,8 +58,24 @@ export interface ValidatedSelfInstallRule {
   readonly requiredAnswers: Readonly<Record<string, string>>;
 }
 
-/** Empty by construction: zero D5 rows are TESTED (MC-05, MC-22, MC-24 re-verified). */
-export const VALIDATED_SELF_INSTALL_RULES: readonly ValidatedSelfInstallRule[] = [];
+/**
+ * Empty by construction: zero D5 rows are TESTED (MC-05, MC-22, MC-24 re-verified).
+ *
+ * FROZEN on purpose. An earlier revision exported a mutable array, and a single
+ * `VALIDATED_SELF_INSTALL_RULES.push({...})` made the eligible outcome reachable:
+ * the governance invariant survived only by convention. Freezing makes the
+ * mutation throw in this module's strict context, so the invariant is structural.
+ * Test `a24` asserts the refusal.
+ */
+export const VALIDATED_SELF_INSTALL_RULES: readonly ValidatedSelfInstallRule[] = Object.freeze([]);
+
+/**
+ * The registry the engine actually consults. It is a separate, frozen, module-
+ * private binding from the same empty literal, so the decision path never reads
+ * a value a consumer could have swapped or mutated, even if the public export were
+ * shadowed in a future refactor.
+ */
+const VALIDATED_REGISTRY: readonly ValidatedSelfInstallRule[] = Object.freeze([]);
 
 /** Mandatory question ids per bundle, derived from the contract's own grouping. */
 export const MANDATORY_QUESTION_IDS: Readonly<Record<string, readonly string[]>> = buildMandatory();
@@ -185,7 +201,8 @@ export function resolveConfiguration(request: ConfiguratorRequest): Configurator
   }
 
   // 3./4. A validated rule may only promote to ELIGIBLE when it exists.
-  const matched = VALIDATED_SELF_INSTALL_RULES.find(
+  // Reads the private frozen registry, never the public export.
+  const matched = VALIDATED_REGISTRY.find(
     (rule) =>
       rule.bundleId === request.bundleId &&
       Object.entries(rule.requiredAnswers).every(

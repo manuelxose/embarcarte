@@ -34,6 +34,16 @@ function check(id, title, run) {
 function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
+/** Throws when `fn` does NOT throw; used for the freeze/refusal assertions. */
+assert.throws = (fn, message) => {
+  let threw = false;
+  try {
+    fn();
+  } catch {
+    threw = true;
+  }
+  if (!threw) throw new Error(message);
+};
 
 function readJson(relative) {
   return JSON.parse(readFileSync(resolve(root, relative), 'utf8'));
@@ -83,6 +93,22 @@ check('MC24-02', 'ELIGIBLE_SELF_INSTALL is unreachable while no validated rule e
     engine.VALIDATED_SELF_INSTALL_RULES.length === 0,
     `validated rule registry must be empty, found ${engine.VALIDATED_SELF_INSTALL_RULES.length}`,
   );
+  // The invariant must be structural, not conventional: an earlier revision
+  // exported a mutable array and one push() made the eligible outcome reachable.
+  assert(
+    Object.isFrozen(engine.VALIDATED_SELF_INSTALL_RULES),
+    'the validated rule registry is not frozen and can be mutated at runtime',
+  );
+  assert.throws(
+    () =>
+      engine.VALIDATED_SELF_INSTALL_RULES.push({
+        id: 'MC24-PROBE',
+        matrixRowId: 'PROBE',
+        bundleId: 'START',
+        requiredAnswers: {},
+      }),
+    'the registry accepted a pushed rule',
+  );
   const bundles = ['START', 'CRUISE', 'SAIL', 'PROTECT', 'COMPLETE', 'FLEET'];
   let eligible = 0;
   let evaluated = 0;
@@ -94,7 +120,7 @@ check('MC24-02', 'ELIGIBLE_SELF_INSTALL is unreachable while no validated rule e
     }
   }
   assert(eligible === 0, `${eligible} of ${evaluated} configurations produced an eligible result`);
-  return `${evaluated} configurations across 6 bundles: 0 eligible`;
+  return `${evaluated} configurations across 6 bundles: 0 eligible; registry frozen, push refused`;
 });
 
 // ---------------------------------------------------------------------------
