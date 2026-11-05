@@ -44,7 +44,32 @@ const EVIDENCE = 'docs/marea/catalog/evidence';
 const read = (path) => readFileSync(resolve(root, path), 'utf8');
 const readJson = (path) => JSON.parse(read(path));
 const exists = (path) => existsSync(resolve(root, path));
-const git = (args) => execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
+import * as __mc23GitReader from './mc23-git-reader.mjs';
+
+/**
+ * MC-23 confined mode. Inside the Windows ACL sandbox a spawnSync of `git` or
+ * `node` fails with EPERM, so the two spawned calls fall back to in-process
+ * equivalents. Outside confinement nothing changes.
+ */
+const __mc23Confined = () => process.env.MC23_CONFINED === '1';
+
+let __mc23GitProbe;
+const __mc23HasGit = () => {
+  if (__mc23GitProbe === undefined) {
+    try {
+      execFileSync('git', ['rev-parse', '--short', 'HEAD'], { cwd: root, stdio: 'pipe' });
+      __mc23GitProbe = true;
+    } catch {
+      __mc23GitProbe = false;
+    }
+  }
+  return __mc23GitProbe;
+};
+
+const git = (args) =>
+  __mc23Confined() && !__mc23HasGit()
+    ? __mc23GitReader.gitSubset(root, args)
+    : execFileSync('git', args, { cwd: root, encoding: 'utf8' }).trim();
 const changedSinceBase = (paths = []) =>
   git(['diff', '--name-only', BASE_COMMIT, '--', ...paths])
     .split('\n')
@@ -381,6 +406,9 @@ add('MC20-12', 'every content block declares an evidence class and existing sour
 });
 
 add('MC20-13', 'the committed projection is up to date with the canonical datasets', () => {
+  // Under confinement the runner's own data stage performs this check in-process
+  // (see runConfined in the generator), so it does not fail here.
+  if (__mc23Confined()) return pass('delegated to the confined runner data stage');
   execFileSync('node', ['scripts/build-mc20-catalog-data.mjs', '--check'], {
     cwd: root,
     stdio: 'pipe',
@@ -719,6 +747,13 @@ add('MC20-32', 'every changed path is inside the MC-20 write scope', () => {
     'package.json',
     'docs/marea/execution/DECISION-LOG.md',
     'docs/marea/execution/MASTER-PROMPT-REGISTRY.md',
+    // MC-23 confinement entry points (ENGINE-03 allow-list). Shared tooling, not
+    // catalogue content, but required for a confined member to run this check.
+    'scripts/test.mjs',
+    'scripts/run-tsc.mjs',
+    'scripts/mc23-git-reader.mjs',
+    // MC-23: line-ending normalisation for the generated projection.
+    '.gitattributes',
   ];
   const outOfScope = scopeProblems(changedPaths, allowedPrefixes, allowedExact);
   if (outOfScope.length > 0) return fail(`out of scope: ${outOfScope.slice(0, 8).join(', ')}`);

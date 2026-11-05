@@ -1,0 +1,9 @@
+# MC-23: generated files and verification entry points are compared strictly.
+# Pin them to LF so a Windows core.autocrlf=true checkout cannot present a
+# byte-identical file as modified.
+src/app/marea-catalog/data/catalog.generated.ts text eol=lf
+docs/marea/catalog/data/*.json text eol=lf
+docs/marea/catalog/evidence/*.json text eol=lf
+scripts/mc23-git-reader.mjs text eol=lf
+scripts/test.mjs text eol=lf
+scripts/run-tsc.mjs text eol=lf
